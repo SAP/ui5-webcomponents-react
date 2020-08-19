@@ -1,7 +1,6 @@
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/MultiComboBoxItem';
-import React, { FC } from 'react';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { FC } from 'react';
 
 export interface MultiComboBoxItemPropTypes extends WithWebComponentPropTypes {
   /**
@@ -15,8 +14,6 @@ export interface MultiComboBoxItemPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * <code>import { MultiComboBoxItem } from '@ui5/webcomponents-react/lib/MultiComboBoxItem';</code>
- * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/MultiComboBoxItem" target="_blank">UI5 Web Components Playground</a>
  */
 const MultiComboBoxItem: FC<MultiComboBoxItemPropTypes> = withWebComponent<MultiComboBoxItemPropTypes>(

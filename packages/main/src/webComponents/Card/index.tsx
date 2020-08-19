@@ -1,7 +1,6 @@
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/Card';
-import React, { FC, ReactNode } from 'react';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { FC, ReactNode } from 'react';
 
 export interface CardPropTypes extends WithWebComponentPropTypes {
   /**
@@ -13,13 +12,17 @@ export interface CardPropTypes extends WithWebComponentPropTypes {
    */
   heading?: string;
   /**
-   * Defines the status displayed in the <code>ui5-card</code> header.
+   * Defines the status displayed in the <code>ui5-card</code> header. <br><br> <b>Note:</b> If the <code>action</code> slot is set, the <code>status</code> will not be displayed, you can either have <code>action</code>, or <code>status</code>.
    */
   status?: string;
   /**
    * Defines the subheading displayed in the <code>ui5-card</code> header.
    */
   subheading?: string;
+  /**
+   * Defines an action, displayed in the right most part of the header. <br><br> <b>Note:</b> If set, the <code>status</code> text will not be displayed, you can either have <code>action</code>, or <code>status</code>.
+   */
+  action?: ReactNode | ReactNode[];
   /**
    * Defines the visual representation in the header of the card. Supports images and icons. <br><br> <b>Note:</b> SAP-icons font provides numerous options. To find all the available icons, see the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
    */
@@ -35,16 +38,14 @@ export interface CardPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * <code>import { Card } from '@ui5/webcomponents-react/lib/Card';</code>
- * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Card" target="_blank">UI5 Web Components Playground</a>
  */
 const Card: FC<CardPropTypes> = withWebComponent<CardPropTypes>(
   'ui5-card',
   ['heading', 'status', 'subheading'],
   ['headerInteractive'],
-  ['avatar'],
-  ['headerClick']
+  ['action', 'avatar'],
+  ['header-click']
 );
 
 Card.displayName = 'Card';

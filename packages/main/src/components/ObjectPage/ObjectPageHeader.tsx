@@ -16,7 +16,7 @@ interface Props {
   imageShapeCircle: boolean;
   classes: any;
   showTitleInHeaderContent: boolean;
-  headerContentProp: ReactNode;
+  headerContentProp: ReactElement;
   breadcrumbs: ReactNode;
   keyInfos: ReactNode;
   title: string;

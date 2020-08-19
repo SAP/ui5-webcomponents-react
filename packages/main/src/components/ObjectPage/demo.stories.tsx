@@ -1,5 +1,3 @@
-import { action } from '@storybook/addon-actions';
-import { boolean, select, text } from '@storybook/addon-knobs';
 import { Breadcrumbs } from '@ui5/webcomponents-react/lib/Breadcrumbs';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
@@ -12,10 +10,11 @@ import { ObjectPageSubSection } from '@ui5/webcomponents-react/lib/ObjectPageSub
 import { Text } from '@ui5/webcomponents-react/lib/Text';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
-import React from 'react';
+import React, { useState } from 'react';
 import SampleImage from './DemoImage.png';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
-export const renderDemo = () => {
+export const renderDemo = (props) => {
   return (
     <div style={{ width: 'calc(100% - 1rem)', height: 'calc(100% - 1rem)', position: 'relative', marginTop: '2rem' }}>
       <ObjectPage
@@ -54,28 +53,26 @@ export const renderDemo = () => {
             </div>
           </>
         }
-        title={text('title', 'Object Page Title')}
-        subTitle={text('subTitle', 'Object Page Sub Title')}
+        title={props.title}
+        subTitle={props.subTitle}
         headerActions={[
-          <Button key="1" design={ButtonDesign.Emphasized} onClick={action('onHeaderAction1Pressed')}>
+          <Button key="1" design={ButtonDesign.Emphasized}>
             Primary Action
           </Button>,
-          <Button key="2" onClick={action('onHeaderAction2Pressed')}>
-            Action
-          </Button>
+          <Button key="2">Action</Button>
         ]}
         image={SampleImage}
-        mode={select('mode', ObjectPageMode, ObjectPageMode.Default)}
-        imageShapeCircle={boolean('imageShapeCircle', false)}
-        showHideHeaderButton={boolean('showHideHeaderButton', true)}
-        selectedSectionId={text('selectedSectionId', '1')}
-        selectedSubSectionId={text('selectedSubSectionId', undefined)}
-        onSelectedSectionChanged={action('onSelectedSectionChanged')}
-        noHeader={boolean('noHeader', false)}
-        alwaysShowContentHeader={boolean('alwaysShowContentHeader', false)}
-        showTitleInHeaderContent={boolean('showTitleInHeaderContent', false)}
+        mode={props.mode}
+        imageShapeCircle={props.imageShapeCircle}
+        showHideHeaderButton={props.showHideHeaderButton}
+        selectedSectionId={props.selectedSectionId}
+        selectedSubSectionId={props.selectedSubSectionId}
+        onSelectedSectionChanged={props.onSelectedSectionChanged}
+        noHeader={props.noHeader}
+        alwaysShowContentHeader={props.alwaysShowContentHeader}
+        showTitleInHeaderContent={props.showTitleInHeaderContent}
         style={{ height: '700px' }}
-        headerContentPinnable={boolean('headerContentPinnable', true)}
+        headerContentPinnable={props.headerContentPinnable}
       >
         <ObjectPageSection title="Test 1" id="1">
           <div style={{ height: '200px' }}>Test1</div>
@@ -107,96 +104,80 @@ export const renderDemo = () => {
     </div>
   );
 };
-renderDemo.story = {
-  name: 'Default'
-};
+renderDemo.storyName = 'Default';
 
-export const renderComponentWithSections = () => (
-  <ObjectPage
-    title="Fiori Object Page Title"
-    subTitle="Sub Title"
-    headerActions={[<Button>Action</Button>]}
-    image={SampleImage}
-    headerContent={
-      <>
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <Link href="https://www.sap.com">www.myurl.com</Link>
-          <Text>Address 1</Text>
-        </div>
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <Text>Address 2</Text>
-          <Text>Address 3</Text>
-        </div>
-      </>
-    }
-    mode={select('mode', ObjectPageMode, ObjectPageMode.Default)}
-    style={{ height: '700px' }}
-  >
-    <ObjectPageSection title="Test 1" id="1">
-      <Label>My Content 1</Label>
-    </ObjectPageSection>
-    <ObjectPageSection title="Test 2" id="2">
-      <Label>My Content 2</Label>
-    </ObjectPageSection>
-    <ObjectPageSection title="Test 3" id="3">
-      <Label>My Content 3</Label>
-    </ObjectPageSection>
-  </ObjectPage>
-);
-renderComponentWithSections.story = {
-  name: 'with Sections Only'
-};
+export const renderComponentWithSections = (props) => {
+  const [numberOfSections, setNumberOfSections] = useState(3);
 
-export const renderShortContent = () => {
   return (
-    <div style={{ width: 'calc(100% - 1rem)', height: '100%', position: 'relative', marginTop: '2rem' }}>
-      <ObjectPage
-        title={text('title', 'Object Page Title')}
-        subTitle={text('subTitle', 'Object Page Sub Title')}
-        headerActions={[
-          <Button key="1" design={ButtonDesign.Emphasized} onClick={action('onHeaderAction1Pressed')}>
-            Primary Action
-          </Button>,
-          <Button key="2" onClick={action('onHeaderAction2Pressed')}>
-            Action
-          </Button>
-        ]}
-        image={SampleImage}
-        headerContent={
-          <>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <Link href="https://www.sap.com">www.myurl.com</Link>
-              <Text>Address 1</Text>
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <Text>Address 2</Text>
-              <Text>Address 3</Text>
-            </div>
-          </>
-        }
-        mode={select('mode', ObjectPageMode, ObjectPageMode.IconTabBar)}
-        imageShapeCircle={boolean('imageShapeCircle', false)}
-        showHideHeaderButton={boolean('showHideHeaderButton', true)}
-        selectedSectionId={text('selectedSectionId', '1')}
-        onSelectedSectionChanged={action('onSelectedSectionChanged')}
-        noHeader={boolean('noHeader', false)}
-        style={{ height: '700px' }}
-      >
-        <ObjectPageSection title="Test 1" id="1">
-          <div>My Content 1</div>
-        </ObjectPageSection>
-      </ObjectPage>
-    </div>
+    <ObjectPage
+      title="Fiori Object Page Title"
+      subTitle="Sub Title"
+      headerActions={[
+        <Button key="add-section" onClick={() => setNumberOfSections((old) => old + 1)}>
+          Add Section
+        </Button>
+      ]}
+      image={SampleImage}
+      headerContent={
+        <>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <Link href="https://www.sap.com">www.myurl.com</Link>
+            <Text>Address 1</Text>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <Text>Address 2</Text>
+            <Text>Address 3</Text>
+          </div>
+        </>
+      }
+      mode={props.mode}
+      style={{ height: '700px' }}
+    >
+      {Array(numberOfSections)
+        .fill('')
+        .map((_, index) => {
+          return (
+            <ObjectPageSection title={`Section ${index + 1}`} id={`${index}`} key={index}>
+              <Label>Section Content {index + 1}</Label>
+            </ObjectPageSection>
+          );
+        })}
+    </ObjectPage>
   );
 };
-renderShortContent.story = {
-  name: 'Short Content'
-};
+renderComponentWithSections.storyName = 'with Sections Only';
 
 export default {
   title: 'Components / ObjectPage',
   component: ObjectPage,
   parameters: {
     subcomponents: { ObjectPageSection, ObjectPageSubSection }
+  },
+  argTypes: {
+    ...createSelectArgTypes({ mode: ObjectPageMode }),
+    breadcrumbs: {
+      type: null
+    },
+    image: {
+      type: null
+    },
+    headerActions: {
+      type: null
+    },
+    headerContent: {
+      type: null
+    },
+    keyInfos: {
+      type: null
+    }
+  },
+  args: {
+    title: 'Object Page Title',
+    subTitle: 'Object Page Sub Title',
+    mode: ObjectPageMode.Default,
+    showHideHeaderButton: true,
+    selectedSectionId: '1',
+    headerContentPinnable: true
   }
 };

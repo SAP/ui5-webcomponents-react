@@ -6,14 +6,18 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
     'plugin:react/recommended',
-    'prettier'
+    'prettier',
+    './.eslint-imports.js'
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
+    ecmaFeatures: {
+      jsx: true
+    },
     project: 'tsconfig.json',
-    sourceType: 'module'
+    tsconfigRootDir: __dirname
   },
-  plugins: ['@typescript-eslint', '@typescript-eslint/tslint', 'prefer-arrow', 'react-hooks'],
+  plugins: ['@typescript-eslint', 'prefer-arrow', 'react-hooks'],
   settings: {
     react: {
       version: 'detect'
@@ -23,9 +27,8 @@ module.exports = {
     '@typescript-eslint/adjacent-overload-signatures': 'error',
     '@typescript-eslint/array-type': 'error',
     '@typescript-eslint/ban-types': 'error',
-    '@typescript-eslint/ban-ts-ignore': 'warn',
-    '@typescript-eslint/camelcase': 'off',
-    '@typescript-eslint/class-name-casing': 'error',
+    '@typescript-eslint/ban-ts-comment': 'warn',
+    '@typescript-eslint/naming-convention': 'off',
     '@typescript-eslint/consistent-type-assertions': 'error',
     '@typescript-eslint/explicit-member-accessibility': [
       'off',
@@ -34,7 +37,6 @@ module.exports = {
       }
     ],
     '@typescript-eslint/indent': 'off',
-    '@typescript-eslint/interface-name-prefix': 'off',
     '@typescript-eslint/member-delimiter-style': [
       'error',
       {
@@ -56,6 +58,10 @@ module.exports = {
     '@typescript-eslint/no-parameter-properties': 'off',
     '@typescript-eslint/no-use-before-define': 'off',
     '@typescript-eslint/no-var-requires': 'error',
+    '@typescript-eslint/no-unsafe-member-access': 'off',
+    '@typescript-eslint/no-unsafe-assignment': 'off',
+    '@typescript-eslint/no-unsafe-return': 'off',
+    '@typescript-eslint/no-unsafe-call': 'off',
     '@typescript-eslint/prefer-for-of': 'error',
     '@typescript-eslint/prefer-function-type': 'error',
     '@typescript-eslint/prefer-namespace-keyword': 'error',
@@ -116,14 +122,6 @@ module.exports = {
     'react/self-closing-comp': 'error',
     'spaced-comment': 'error',
     'use-isnan': 'error',
-    'valid-typeof': 'off',
-    '@typescript-eslint/tslint/config': [
-      'error',
-      {
-        rules: {
-          'jsdoc-format': true
-        }
-      }
-    ]
+    'valid-typeof': 'off'
   }
 };

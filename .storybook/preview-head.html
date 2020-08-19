@@ -1,19 +1,25 @@
 <style>
     body {
-        font-family: '72', Arial, Helvetica, sans-serif;
+        font-family: var(--sapFontFamily);
         background-color: var(--sapBackgroundColor);
     }
 
     .pageWithPadding > section {
         padding: 1rem;
     }
+
+    .sbdocs-title {
+        font-family: var(--sapFontFamily) !important;
+    }
+
+    .sbdocs-content {
+        max-width: 1400px !important;
+    }
 </style>
 <script data-ui5-config type="application/json">
     {
         "theme": "sap_fiori_3",
-        "language": "EN",
-        "compactSize": true
+        "language": "EN"
     }
 </script>
 
-<!--<script src="/custom-elements-es5-adapter.js"></script>-->

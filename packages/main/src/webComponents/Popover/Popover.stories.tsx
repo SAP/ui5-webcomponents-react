@@ -1,5 +1,4 @@
-import { action } from '@storybook/addon-actions';
-import { boolean, select, text } from '@storybook/addon-knobs';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import { Popover } from '@ui5/webcomponents-react/lib/Popover';
@@ -9,10 +8,36 @@ import React, { useCallback, useRef } from 'react';
 
 export default {
   title: 'UI5 Web Components / Popover',
-  component: Popover
+  component: Popover,
+  argTypes: {
+    ...createSelectArgTypes({
+      horizontalAlign: PopoverHorizontalAlign,
+      placementType: PlacementType,
+      verticalAlign: PopoverVerticalAlign
+    }),
+    children: {
+      type: null
+    },
+    ref: {
+      type: null
+    },
+    header: {
+      type: null
+    },
+    footer: {
+      type: null
+    }
+  },
+  args: {
+    headerText: 'Popover Header Text',
+    allowTargetOverlap: true,
+    horizontalAlign: PopoverHorizontalAlign.Center,
+    placementType: PlacementType.Right,
+    verticalAlign: PopoverVerticalAlign.Center
+  }
 };
 
-export const generatedDefaultStory = () => {
+export const generatedDefaultStory = (props) => {
   const popoverRef = useRef();
   const onButtonClick = useCallback(
     (e) => {
@@ -26,14 +51,14 @@ export const generatedDefaultStory = () => {
       <Button onClick={onButtonClick}>Open Popover</Button>
       <Popover
         ref={popoverRef}
-        allowTargetOverlap={boolean('allowTargetOverlap', true)}
-        headerText={text('headerText', 'Popover Header Text')}
-        horizontalAlign={select('horizontalAlign', PopoverHorizontalAlign, PopoverHorizontalAlign.Center)}
-        initialFocus={text('initialFocus', '')}
-        modal={boolean('modal', false)}
-        noArrow={boolean('noArrow', false)}
-        placementType={select('placementType', PlacementType, PlacementType.Right)}
-        verticalAlign={select('verticalAlign', PopoverVerticalAlign, PopoverVerticalAlign.Center)}
+        allowTargetOverlap={props.allowTargetOverlap}
+        headerText={props.headerText}
+        horizontalAlign={props.horizontalAlign}
+        initialFocus={props.initialFocus}
+        modal={props.modal}
+        noArrow={props.noArrow}
+        placementType={props.placementType}
+        verticalAlign={props.verticalAlign}
         footer={
           <div
             style={{
@@ -48,10 +73,10 @@ export const generatedDefaultStory = () => {
           </div>
         }
         header={null}
-        onAfterClose={action('onAfterClose')}
-        onAfterOpen={action('onAfterOpen')}
-        onBeforeClose={action('onBeforeClose')}
-        onBeforeOpen={action('onBeforeOpen')}
+        onAfterClose={props.onAfterClose}
+        onAfterOpen={props.onAfterOpen}
+        onBeforeClose={props.onBeforeClose}
+        onBeforeOpen={props.onBeforeOpen}
       >
         Some Content
       </Popover>
@@ -59,6 +84,4 @@ export const generatedDefaultStory = () => {
   );
 };
 
-generatedDefaultStory.story = {
-  name: 'Generated default story'
-};
+generatedDefaultStory.storyName = 'Generated default story';

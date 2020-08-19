@@ -1,21 +1,45 @@
-import { action } from '@storybook/addon-actions';
-import { boolean } from '@storybook/addon-knobs';
 import React from 'react';
 import { ColumnChart } from '../../lib/ColumnChart';
 import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
 
 export default {
   title: 'Charts /  ColumnChart',
-  component: ColumnChart
+  component: ColumnChart,
+  argTypes: {
+    dataset: {
+      type: null
+    },
+    measures: {
+      type: null
+    },
+    dimensions: {
+      type: null
+    }
+  },
+  args: {
+    chartConfig: {
+      yAxisVisible: false,
+      xAxisVisible: true,
+      gridStroke: ThemingParameters.sapList_BorderColor,
+      gridHorizontal: true,
+      gridVertical: false,
+      legendPosition: 'bottom',
+      legendHorizontalAlign: 'left',
+      zoomingTool: false,
+      resizeDebounce: 250
+    }
+  }
 };
 
-export const renderStory = () => (
+export const renderStory = (props) => (
   <ColumnChart
-    loading={boolean('loading', false)}
-    noLegend={boolean('noLegend', false)}
-    noAnimation={boolean('noAnimation', false)}
-    onDataPointClick={action('onDataPointClick')}
-    onLegendClick={action('onLegendClick')}
+    chartConfig={props.chartConfig}
+    loading={props.loading}
+    noLegend={props.noLegend}
+    noAnimation={props.noAnimation}
+    onDataPointClick={props.onDataPointClick}
+    onLegendClick={props.onLegendClick}
     dataset={complexDataSet}
     style={{ height: '60vh' }}
     dimensions={[
@@ -44,16 +68,16 @@ export const renderStory = () => (
   />
 );
 
-renderStory.story = {
-  name: 'Default'
-};
+renderStory.storyName = 'Default';
 
-export const renderStoryWithCustomColor = () => (
+export const renderStoryWithCustomColor = (props) => (
   <ColumnChart
-    loading={boolean('loading', false)}
-    noLegend={boolean('noLegend', false)}
-    noAnimation={boolean('noAnimation', false)}
-    onDataPointClick={action('onDataPointClick')}
+    chartConfig={props.chartConfig}
+    loading={props.loading}
+    noLegend={props.noLegend}
+    noAnimation={props.noAnimation}
+    onDataPointClick={props.onDataPointClick}
+    onLegendClick={props.onLegendClick}
     dimensions={[{ accessor: 'name' }]}
     measures={[{ accessor: 'users', color: 'red' }]}
     dataset={simpleDataSet}
@@ -61,16 +85,15 @@ export const renderStoryWithCustomColor = () => (
   />
 );
 
-renderStoryWithCustomColor.story = {
-  name: 'With custom color'
-};
+renderStoryWithCustomColor.storyName = 'With custom color';
 
-export const withSecondaryDimension = () => (
+export const withSecondaryDimension = (props) => (
   <ColumnChart
-    loading={boolean('loading', false)}
-    noLegend={boolean('noLegend', false)}
-    noAnimation={boolean('noAnimation', false)}
-    onDataPointClick={action('onDataPointClick')}
+    chartConfig={props.chartConfig}
+    loading={props.loading}
+    noLegend={props.noLegend}
+    noAnimation={props.noAnimation}
+    onDataPointClick={props.onDataPointClick}
     dimensions={[{ accessor: 'name' }, { accessor: 'dimension' }]}
     measures={[{ accessor: 'users', color: 'red' }]}
     dataset={secondaryDimensionDataSet}
@@ -78,17 +101,16 @@ export const withSecondaryDimension = () => (
   />
 );
 
-withSecondaryDimension.story = {
-  name: 'With secondary dimension'
-};
+withSecondaryDimension.storyName = 'With secondary dimension';
 
-export const renderLabelStory = () => (
+export const renderLabelStory = (props) => (
   <ColumnChart
-    loading={boolean('loading', false)}
-    noLegend={boolean('noLegend', false)}
-    noAnimation={boolean('noAnimation', false)}
-    onDataPointClick={action('onDataPointClick')}
-    onLegendClick={action('onLegendClick')}
+    chartConfig={props.chartConfig}
+    loading={props.loading}
+    noLegend={props.noLegend}
+    noAnimation={props.noAnimation}
+    onDataPointClick={props.onDataPointClick}
+    onLegendClick={props.onLegendClick}
     dimensions={[{ accessor: 'name' }]}
     measures={[
       {
@@ -105,23 +127,19 @@ export const renderLabelStory = () => (
     ]}
     dataset={complexDataSet}
     style={{ width: '95%', height: '40vh' }}
-    chartConfig={{
-      zoomingTool: true
-    }}
   />
 );
 
-renderLabelStory.story = {
-  name: 'With data labels'
-};
+renderLabelStory.storyName = 'With data labels';
 
-export const renderCustomDataLabelStory = () => (
+export const renderCustomDataLabelStory = (props) => (
   <ColumnChart
-    loading={boolean('loading', false)}
-    noLegend={boolean('noLegend', false)}
-    noAnimation={boolean('noAnimation', false)}
-    onDataPointClick={action('onDataPointClick')}
-    onLegendClick={action('onLegendClick')}
+    chartConfig={props.chartConfig}
+    loading={props.loading}
+    noLegend={props.noLegend}
+    noAnimation={props.noAnimation}
+    onDataPointClick={props.onDataPointClick}
+    onLegendClick={props.onLegendClick}
     dataset={complexDataSet}
     dimensions={[{ accessor: 'name', formatter: (element: string) => element.slice(0, 3) }]}
     measures={[
@@ -138,29 +156,22 @@ export const renderCustomDataLabelStory = () => (
       }
     ]}
     style={{ width: '95%', height: '40vh' }}
-    chartConfig={{
-      zoomingTool: true
-    }}
   />
 );
 
-renderCustomDataLabelStory.story = {
-  name: 'With formatter'
-};
+renderCustomDataLabelStory.storyName = 'With formatter';
 
 export const loadingPlaceholder = () => <ColumnChart style={{ width: '30%' }} dimensions={[]} measures={[]} />;
 
-loadingPlaceholder.story = {
-  name: 'Loading placeholder'
-};
+loadingPlaceholder.storyName = 'Loading placeholder';
 
-export const withReferenceLineStory = () => {
+export const withReferenceLineStory = (props) => {
   return (
     <ColumnChart
-      noLegend={boolean('noLegend', false)}
-      noAnimation={boolean('noAnimation', false)}
-      onDataPointClick={action('onDataPointClick')}
-      onLegendClick={action('onLegendClick')}
+      noLegend={props.noLegend}
+      noAnimation={props.noAnimation}
+      onDataPointClick={props.onDataPointClick}
+      onLegendClick={props.onLegendClick}
       dataset={complexDataSet}
       dimensions={[{ accessor: 'name' }]}
       measures={[
@@ -187,6 +198,4 @@ export const withReferenceLineStory = () => {
   );
 };
 
-withReferenceLineStory.story = {
-  name: 'With reference line'
-};
+withReferenceLineStory.storyName = 'With reference line';

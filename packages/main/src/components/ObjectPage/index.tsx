@@ -33,10 +33,15 @@ import React, {
 import { ObjectPageSectionPropTypes } from '../ObjectPageSection';
 import { ObjectPageSubSectionPropTypes } from '../ObjectPageSubSection';
 import { CollapsedAvatar } from './CollapsedAvatar';
-import styles from './ObjectPage.jss';
+import styles, { ObjectPageCssVariables } from './ObjectPage.jss';
 import { ObjectPageAnchorBar } from './ObjectPageAnchorBar';
 import { ObjectPageHeader } from './ObjectPageHeader';
-import { extractSectionIdFromHtmlId, getSectionById, safeGetChildrenArray } from './ObjectPageUtils';
+import {
+  extractSectionIdFromHtmlId,
+  getLastObjectPageSection,
+  getSectionById,
+  safeGetChildrenArray
+} from './ObjectPageUtils';
 import { useObserveHeights } from './useObserveHeights';
 
 declare const ResizeObserver;
@@ -72,9 +77,6 @@ export interface ObjectPagePropTypes extends CommonProps {
 
 const useStyles = createComponentStyles(styles, { name: 'ObjectPage' });
 
-/**
- * <code>import { ObjectPage } from '@ui5/webcomponents-react/lib/ObjectPage';</code>
- */
 const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDivElement>) => {
   const {
     title = '',
@@ -102,7 +104,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     keyInfos
   } = props;
 
-  const firstSectionId = safeGetChildrenArray(children)[0]?.props?.id;
+  const firstSectionId = safeGetChildrenArray<ReactElement>(children)[0]?.props?.id;
 
   const [internalSelectedSectionId, setInternalSelectedSectionId] = useState(selectedSectionId ?? firstSectionId);
   const [selectedSubSectionId, setSelectedSubSectionId] = useState(props.selectedSubSectionId);
@@ -253,12 +255,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     const fillerDivObserver = new ResizeObserver(() => {
       const maxHeight = Math.min(objectPageRef.current.clientHeight, window.innerHeight);
       const availableScrollHeight = maxHeight - totalHeaderHeight;
-      const sections = objectPageRef.current.querySelectorAll('[id^="ObjectPageSection"]');
-      if (!sections || sections.length < 1) {
-        return;
-      }
-
-      const lastSectionDomRef = sections[sections.length - 1] as HTMLElement;
+      const lastSectionDomRef = getLastObjectPageSection(objectPageRef);
       const subSections = lastSectionDomRef.querySelectorAll('[id^="ObjectPageSubSection"]');
 
       let lastSubSectionHeight;
@@ -273,7 +270,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       let heightDiff = availableScrollHeight - lastSubSectionHeight;
 
       heightDiff = heightDiff > 0 ? heightDiff : 0;
-      lastSectionDomRef.style.marginBottom = `${heightDiff}px`;
+      objectPageRef.current.style.setProperty(ObjectPageCssVariables.lastSectionMargin, `${heightDiff}px`);
     });
 
     fillerDivObserver.observe(objectPageRef.current);
@@ -281,7 +278,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     return () => {
       fillerDivObserver.disconnect();
     };
-  }, [totalHeaderHeight, objectPageRef]);
+  }, [totalHeaderHeight, objectPageRef, children]);
 
   const fireOnSelectedChangedEvent = debounce((e) => {
     onSelectedSectionChanged(
@@ -456,7 +453,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         classes={classes}
         imageShapeCircle={imageShapeCircle}
         showTitleInHeaderContent={showTitleInHeaderContent}
-        headerContentProp={headerContent}
+        headerContentProp={headerContent as ReactElement}
         breadcrumbs={breadcrumbs}
         keyInfos={keyInfos}
         title={title}

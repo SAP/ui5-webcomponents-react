@@ -1,0 +1,92 @@
+import { Meta, Title, Description, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { MicroBarChart } from '@ui5/webcomponents-react-charts/lib/MicroBarChart';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+
+<Meta
+  title="Charts /  MicroBarChart"
+  component={MicroBarChart}
+  argTypes={{
+    dataset: { type: null },
+    dimension: { type: null },
+    measure: { type: null }
+  }}
+  args={{
+    dataset: [
+      {
+        name: 'January',
+        data: 100
+      },
+      {
+        name: 'February',
+        data: 300
+      },
+      {
+        name: 'March',
+        data: 530
+      },
+      {
+        name: 'April',
+        data: 200
+      }
+    ]
+  }}
+/>
+
+<DocsHeader />
+
+<Canvas>
+  <Story name="Default">
+    {(args) => (
+      <MicroBarChart
+        dataset={args.dataset}
+        loading={args.loading}
+        style={{ width: '100%' }}
+        dimension={{
+          accessor: 'name'
+        }}
+        measure={{
+          accessor: 'data'
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
+
+<ArgsTable story="." />
+
+<Canvas>
+  <Story name="With custom props">
+    {(args) => (
+      <MicroBarChart
+        onDataPointClick={args.onDataPointClick}
+        dataset={args.dataset}
+        style={{ width: '50%' }}
+        loading={args.loading}
+        dimension={{
+          accessor: 'name'
+        }}
+        measure={{
+          accessor: 'data',
+          colors: ['#f0ab00', 'var(--sapHighlightColor)'],
+          formatter: (d) => (d > 200 ? 'over 200' : 'lower'),
+          width: 16
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Loading Placeholder">
+    <MicroBarChart
+      dataset={[]}
+      dimension={{
+        accessor: 'name'
+      }}
+      measure={{
+        accessor: 'data'
+      }}
+      style={{ width: '20%' }}
+    />
+  </Story>
+</Canvas>

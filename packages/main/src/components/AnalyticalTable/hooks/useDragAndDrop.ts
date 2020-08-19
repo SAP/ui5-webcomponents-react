@@ -42,7 +42,10 @@ export const useDragAndDrop = (props, setColumnOrder, columnOrder, resizeInfo, c
       const draggedColIdx = internalColumnOrder.findIndex((col) => col === draggedColId);
 
       const tempCols = [...internalColumnOrder];
-      tempCols.splice(droppedColIdx, 0, tempCols.splice(draggedColIdx, 1)[0]);
+
+      const targetIndex = droppedColIdx > draggedColIdx ? droppedColIdx - 1 : droppedColIdx;
+
+      tempCols.splice(targetIndex, 0, tempCols.splice(draggedColIdx, 1)[0]);
       setColumnOrder(tempCols);
 
       const columnsNewOrder = tempCols.map((tempColId) => columns.find((col) => getColumnId(col) === tempColId));
@@ -53,7 +56,7 @@ export const useDragAndDrop = (props, setColumnOrder, columnOrder, resizeInfo, c
         })
       );
     },
-    [columnOrder, onColumnsReordered]
+    [columnOrder, onColumnsReordered, columns]
   );
 
   const handleOnDragEnd = useCallback(() => {

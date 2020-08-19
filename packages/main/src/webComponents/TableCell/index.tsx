@@ -1,7 +1,6 @@
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/TableCell';
-import React, { FC, ReactNode } from 'react';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { FC, ReactNode } from 'react';
 
 export interface TableCellPropTypes extends WithWebComponentPropTypes {
   /**
@@ -11,8 +10,6 @@ export interface TableCellPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * <code>import { TableCell } from '@ui5/webcomponents-react/lib/TableCell';</code>
- * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/TableCell" target="_blank">UI5 Web Components Playground</a>
  */
 const TableCell: FC<TableCellPropTypes> = withWebComponent<TableCellPropTypes>('ui5-table-cell', [], [], [], []);

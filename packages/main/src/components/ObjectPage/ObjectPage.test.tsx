@@ -1,4 +1,4 @@
-import { createPassThroughPropsTest, getEventFromCallback } from '@shared/tests/utils';
+import { getEventFromCallback } from '@shared/tests/utils';
 import { mount } from 'enzyme';
 import { Breadcrumbs } from '@ui5/webcomponents-react/lib/Breadcrumbs';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
@@ -90,7 +90,6 @@ afterAll(() => {
   Element.prototype.scrollTo = original;
 });
 describe('ObjectPage', () => {
-
   test('With Subsections', () => {
     const wrapper = mount(renderComponent());
     expect(wrapper.render()).toMatchSnapshot();
@@ -210,5 +209,5 @@ describe('ObjectPage', () => {
     expect(wrapper.render()).toMatchSnapshot();
   });
 
-  createPassThroughPropsTest(ObjectPage);
+  // createPassThroughPropsTest(ObjectPage);
 });

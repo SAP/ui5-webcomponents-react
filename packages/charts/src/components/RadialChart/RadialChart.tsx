@@ -18,9 +18,6 @@ const radialChartMargin = { right: 30, left: 30, top: 30, bottom: 30 };
 const radialBarBackground = { fill: ThemingParameters.sapContent_ImagePlaceholderBackground };
 const radialBarLabelStyle = { fontSize: ThemingParameters.sapFontHeader3Size, fill: ThemingParameters.sapTextColor };
 
-/**
- * <code>import { RadialChart } from '@ui5/webcomponents-react-charts/lib/RadialChart';</code>
- */
 const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, ref: Ref<HTMLDivElement>) => {
   const { maxValue = 100, value, displayValue, onDataPointClick, color, style, className, tooltip, slot } = props;
 
@@ -67,12 +64,14 @@ const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, r
         startAngle={90}
         endAngle={-270}
       >
-        <PolarAngleAxis type="number" domain={range} tick={false} />
+        <PolarAngleAxis type="number" domain={range as any} tick={false} />
         <RadialBar
           background={radialBarBackground}
           dataKey="value"
           cornerRadius="50%"
           fill={color ?? ThemingParameters.sapChart_OrderedColor_1}
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
           onClick={onDataPointClickInternal}
         />
         <text

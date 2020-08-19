@@ -3,13 +3,20 @@ const mainWebComponentsSpec = require('@ui5/webcomponents/dist/api.json');
 const fioriWebComponentsSpec = require('@ui5/webcomponents-fiori/dist/api.json');
 const dedent = require('dedent');
 const prettier = require('prettier');
-const prettierConfig = require('../../../prettier.config');
+const prettierConfigRaw = require('../../../prettier.config');
 const path = require('path');
 const PATHS = require('../../../config/paths');
 const fs = require('fs');
 
+const prettierConfig = {
+  ...prettierConfigRaw,
+  parser: 'typescript'
+};
+
 const WEB_COMPONENTS_ROOT_DIR = path.join(PATHS.packages, 'main', 'src', 'webComponents');
 const LIB_DIR = path.join(PATHS.packages, 'main', 'src', 'lib');
+
+const KNOWN_EVENTS = new Set(['click', 'input', 'submit', 'change', 'select']);
 
 const PRIVATE_COMPONENTS = new Set([
   'CalendarHeader',
@@ -19,9 +26,12 @@ const PRIVATE_COMPONENTS = new Set([
   'ListItemBase',
   'MessageBundleAssets',
   'MonthPicker',
+  'NotificationListItemBase',
+  'NotificationOverflowAction',
   'Popup',
   'TabBase',
   'ThemePropertiesProvider',
+  'TreeListItem',
   'YearPicker',
   'WheelSlider'
 ]);
@@ -38,72 +48,19 @@ COMPONENTS_WITHOUT_DEMOS.add('TableColumn');
 COMPONENTS_WITHOUT_DEMOS.add('TableRow');
 COMPONENTS_WITHOUT_DEMOS.add('TabSeparator');
 COMPONENTS_WITHOUT_DEMOS.add('TimelineItem');
+COMPONENTS_WITHOUT_DEMOS.add('TreeItem');
 COMPONENTS_WITHOUT_DEMOS.add('ProductSwitchItem');
 COMPONENTS_WITHOUT_DEMOS.add('ComboBoxItem');
 COMPONENTS_WITHOUT_DEMOS.add('MultiComboBoxItem');
+COMPONENTS_WITHOUT_DEMOS.add('SideNavigationItem');
+COMPONENTS_WITHOUT_DEMOS.add('SideNavigationSubItem');
 COMPONENTS_WITHOUT_DEMOS.add('SuggestionItem');
 COMPONENTS_WITHOUT_DEMOS.add('UploadCollectionItem');
-
-const TagNames = new Map();
-TagNames.set('Avatar', 'ui5-avatar');
-TagNames.set('Badge', 'ui5-badge');
-TagNames.set('BusyIndicator', 'ui5-busyindicator');
-TagNames.set('Button', 'ui5-button');
-TagNames.set('Calendar', 'ui5-calendar');
-TagNames.set('Card', 'ui5-card');
-TagNames.set('Carousel', 'ui5-carousel');
-TagNames.set('CheckBox', 'ui5-checkbox');
-TagNames.set('ComboBox', 'ui5-combobox');
-TagNames.set('ComboBoxItem', 'ui5-cb-item');
-TagNames.set('CustomListItem', 'ui5-li-custom');
-TagNames.set('DatePicker', 'ui5-datepicker');
-TagNames.set('DateTimePicker', 'ui5-datetime-picker');
-TagNames.set('Dialog', 'ui5-dialog');
-TagNames.set('DurationPicker', 'ui5-duration-picker');
-TagNames.set('FileUploader', 'ui5-file-uploader');
-TagNames.set('GroupHeaderListItem', 'ui5-li-groupheader');
-TagNames.set('Icon', 'ui5-icon');
-TagNames.set('Input', 'ui5-input');
-TagNames.set('Label', 'ui5-label');
-TagNames.set('Link', 'ui5-link');
-TagNames.set('List', 'ui5-list');
-TagNames.set('MessageStrip', 'ui5-messagestrip');
-TagNames.set('MultiComboBox', 'ui5-multi-combobox');
-TagNames.set('MultiComboBoxItem', 'ui5-mcb-item');
-TagNames.set('Option', 'ui5-option');
-TagNames.set('Panel', 'ui5-panel');
-TagNames.set('Popover', 'ui5-popover');
-TagNames.set('ProductSwitch', 'ui5-product-switch');
-TagNames.set('ProductSwitchItem', 'ui5-product-switch-item');
-TagNames.set('RadioButton', 'ui5-radiobutton');
-TagNames.set('ResponsivePopover', 'ui5-responsive-popover');
-TagNames.set('SegmentedButton', 'ui5-segmentedbutton');
-TagNames.set('Select', 'ui5-select');
-TagNames.set('ShellBar', 'ui5-shellbar');
-TagNames.set('ShellBarItem', 'ui5-shellbar-item');
-TagNames.set('StandardListItem', 'ui5-li');
-TagNames.set('SuggestionItem', 'ui5-suggestion-item');
-TagNames.set('Switch', 'ui5-switch');
-TagNames.set('Tab', 'ui5-tab');
-TagNames.set('TabContainer', 'ui5-tabcontainer');
-TagNames.set('Table', 'ui5-table');
-TagNames.set('TableCell', 'ui5-table-cell');
-TagNames.set('TableColumn', 'ui5-table-column');
-TagNames.set('TableRow', 'ui5-table-row');
-TagNames.set('TabSeparator', 'ui5-tab-separator');
-TagNames.set('TextArea', 'ui5-textarea');
-TagNames.set('Timeline', 'ui5-timeline');
-TagNames.set('TimelineItem', 'ui5-timeline-item');
-TagNames.set('TimePicker', 'ui5-timepicker');
-TagNames.set('Title', 'ui5-title');
-TagNames.set('Toast', 'ui5-toast');
-TagNames.set('UploadCollection', 'ui5-upload-collection');
-TagNames.set('UploadCollectionItem', 'ui5-upload-collection-item');
-TagNames.set('ToggleButton', 'ui5-togglebutton');
 
 const componentsFromFioriPackage = new Set(fioriWebComponentsSpec.symbols.map((componentSpec) => componentSpec.module));
 
 const capitalizeFirstLetter = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+const snakeToCamel = (str) => str.replace(/([-_]\w)/g, (g) => g[1].toUpperCase());
 const filterNonPublicAttributes = (prop) =>
   prop.visibility === 'public' && prop.readonly !== 'true' && prop.static !== true;
 
@@ -124,6 +81,7 @@ const getTypeScriptTypeForProperty = (property) => {
     case 'number':
     case 'Number':
     case 'Integer':
+    case 'Float':
       return {
         importStatement: null,
         tsType: 'number'
@@ -214,6 +172,12 @@ const getTypeScriptTypeForProperty = (property) => {
         tsType: 'CarouselArrowsPlacement',
         isEnum: true
       };
+    case 'FCLLayout':
+      return {
+        importStatement: "import { FCLLayout } from '@ui5/webcomponents-react/lib/FCLLayout';",
+        tsType: 'FCLLayout',
+        isEnum: true
+      };
     case 'InputType':
       return {
         importStatement: "import { InputType } from '@ui5/webcomponents-react/lib/InputType';",
@@ -276,6 +240,12 @@ const getTypeScriptTypeForProperty = (property) => {
       return {
         importStatement: "import { PopoverVerticalAlign } from '@ui5/webcomponents-react/lib/PopoverVerticalAlign';",
         tsType: 'PopoverVerticalAlign',
+        isEnum: true
+      };
+    case 'Priority':
+      return {
+        importStatement: "import { Priority } from '@ui5/webcomponents-react/lib/Priority';",
+        tsType: 'Priority',
         isEnum: true
       };
     case 'SemanticColor':
@@ -351,6 +321,7 @@ const getEventParameters = (parameters) => {
 
 const createWebComponentWrapper = (
   name,
+  tag,
   types,
   importStatements,
   defaultProps,
@@ -359,15 +330,23 @@ const createWebComponentWrapper = (
   slotProps,
   eventProps
 ) => {
+  const eventsToBeOmitted = eventProps.filter((eventName) => KNOWN_EVENTS.has(eventName));
+
+  let tsExtendsStatement = 'WithWebComponentPropTypes';
+  if (eventsToBeOmitted.length > 0) {
+    tsExtendsStatement = `Omit<WithWebComponentPropTypes, ${eventsToBeOmitted
+      .map((eventName) => `'on${capitalizeFirstLetter(snakeToCamel(eventName))}'`)
+      .join(' | ')}>`;
+  }
+
   return prettier.format(
     `
-    import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
+    import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
     import '@ui5/webcomponents${componentsFromFioriPackage.has(name) ? '-fiori' : ''}/dist/${name}';
-    import React, { FC } from 'react';
-    import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+    import { FC } from 'react';
     ${importStatements.join('\n')}
     
-    export interface ${name}PropTypes extends WithWebComponentPropTypes {
+    export interface ${name}PropTypes extends ${tsExtendsStatement} {
       ${types.join('\n')}
     }
     
@@ -377,7 +356,7 @@ const createWebComponentWrapper = (
      * <a href="https://sap.github.io/ui5-webcomponents/playground/components/${name}" target="_blank">UI5 Web Components Playground</a>
      */
     const ${name}: FC<${name}PropTypes> = withWebComponent<${name}PropTypes>(
-      '${TagNames.get(name)}', 
+      '${tag}', 
       [${regularProps.map((v) => `'${v}'`).join(', ')}], 
       [${booleanProps.map((v) => `'${v}'`).join(', ')}],  
       [${slotProps
@@ -422,29 +401,15 @@ const createWebComponentTest = (name) => {
 const createWebComponentDemo = (componentSpec, componentProps) => {
   const componentName = componentSpec.module;
 
-  const storybookImports = [];
-  const storybookKnobImports = new Set();
   const enumImports = [];
-  const storybookProps = [];
 
-  const componentFiresEvents = componentSpec.events && componentSpec.events.length > 0;
-  if (componentFiresEvents) {
-    storybookImports.push("import { action } from '@storybook/addon-actions';");
-  }
-
-  const childrenProp = componentProps.find((prop) => prop.name === 'children');
+  const selectArgTypes = [];
+  const args = [];
 
   const additionalComponentDocs = componentSpec.hasOwnProperty('appenddocs') ? componentSpec.appenddocs.split(' ') : [];
   const additionalComponentImports = additionalComponentDocs.map(
     (component) => `import { ${component} } from '@ui5/webcomponents-react/lib/${component}';`
   );
-  let additionalComponentsParameters = '';
-  if (additionalComponentDocs.length > 0) {
-    additionalComponentsParameters = `,
-    parameters: {
-      subcomponents: { ${additionalComponentDocs.join(', ')} }
-    }`;
-  }
 
   componentProps
     .filter((prop) => prop.name !== 'children')
@@ -452,63 +417,50 @@ const createWebComponentDemo = (componentSpec, componentProps) => {
       if (prop.importStatement) {
         enumImports.push(prop.importStatement);
       }
-      let storybookKnob = `${prop.name}={`;
       if (prop.isEnum) {
-        storybookKnobImports.add('select');
-        storybookKnob += `select('${prop.name}', ${prop.tsType}, ${prop.tsType}.${prop.defaultValue.replace(
-          /['"]/g,
-          ''
-        )})`;
-      } else if (prop.tsType === 'number') {
-        storybookKnobImports.add('number');
-        storybookKnob += `number('${prop.name}', ${prop.defaultValue})`;
-      } else if (prop.tsType === 'boolean') {
-        storybookKnobImports.add('boolean');
-        storybookKnob += `boolean('${prop.name}', ${prop.defaultValue === 'true'})`;
-      } else if (prop.tsType === 'string') {
-        storybookKnobImports.add('text');
-        storybookKnob += `text('${prop.name}', ${prop.defaultValue})`;
-      } else {
-        console.warn(`Warning: Unknown Type for demo ${prop.name}: ${prop.tsType}`);
-        storybookKnob += 'null';
+        selectArgTypes.push(`${prop.name}: ${prop.tsType}`);
+        args.push(`${prop.name}: ${prop.tsType}.${prop.defaultValue.replace(/['"]/g, '')}`);
       }
-
-      storybookKnob += '}';
-      storybookProps.push(storybookKnob);
     });
 
-  const eventProps = (componentSpec.events || []).map(
-    (event) => `on${capitalizeFirstLetter(event.name)}={action('on${capitalizeFirstLetter(event.name)}')}`
-  );
-
-  const componentBody = childrenProp ? `>Some Content</${componentName}>` : ' />';
-
   return prettier.format(
-    `import React from 'react';
-     import { ${componentName} } from '@ui5/webcomponents-react/lib/${componentName}';
-     ${storybookImports.join('\n')}
-     import { ${[...storybookKnobImports].join(', ')} } from '@storybook/addon-knobs';
-     ${enumImports.join('\n')};
-     ${additionalComponentImports.join('\n')}
+    dedent`
+    import { Title, Subtitle, Description, Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+    import { ${componentName} } from '@ui5/webcomponents-react/lib/${componentName}';
+    ${enumImports.join('\n')}
+    ${additionalComponentImports.join('\n')}
+    import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
      
-     export default {
-       title: 'UI5 Web Components / ${componentName}',
-       component: ${componentName}${additionalComponentsParameters}
-     };
-     
-     export const generatedDefaultStory = () => (
-       <${componentName}
-         ${storybookProps.join('\n')}
-         ${eventProps.join('\n')}
-         ${componentBody}
-     );
-     
-     generatedDefaultStory.story = {
-       name: 'Generated default story'
-     };
+    <Meta
+     title="UI5 Web Components / ${componentName}"
+     component={${componentName}}
+     ${additionalComponentDocs.length > 0 ? `subcomponents={{ ${additionalComponentDocs.join(', ')} }}` : ''}
+     argTypes={{
+       ...createSelectArgTypes({${selectArgTypes.join(', ')}})
+     }}
+     args={{
+       ${args.join(',\n')}
+     }}
+    />
+    
+    <Title />
+    <Subtitle />
+    <Description />
+    
+    <Canvas>
+      <Story name="Default">
+        {(args) => {
+          return (
+            <${componentName} {...args} />
+          );
+        }}
+      </Story>
+    </Canvas>
+    
+    <ArgsTable story="." />
 
-  `,
-    prettierConfig
+    `,
+    { ...prettierConfigRaw, parser: 'mdx' }
   );
 };
 
@@ -593,7 +545,7 @@ resolvedWebComponents.forEach((componentSpec) => {
 
       propTypes.push(dedent`
     /**
-     * ${property.description
+     * ${(property.description || '')
        .replace(/\n\n<br><br> /g, '<br/><br/>\n  *\n  * ')
        .replace(/\n\n/g, '<br/><br/>\n  *\n  * ')}
      */
@@ -625,7 +577,7 @@ resolvedWebComponents.forEach((componentSpec) => {
       /**
        * ${eventSpec.description}
        */
-       on${capitalizeFirstLetter(eventSpec.name)}?: ${eventParameters.tsType};
+       on${capitalizeFirstLetter(snakeToCamel(eventSpec.name))}?: ${eventParameters.tsType};
       `);
     });
 
@@ -633,6 +585,7 @@ resolvedWebComponents.forEach((componentSpec) => {
 
   const webComponentWrapper = createWebComponentWrapper(
     componentSpec.module,
+    componentSpec.tagname,
     propTypes,
     uniqueAdditionalImports,
     defaultProps,
@@ -657,16 +610,16 @@ resolvedWebComponents.forEach((componentSpec) => {
   fs.writeFileSync(path.join(webComponentFolderPath, 'index.tsx'), webComponentWrapper);
 
   // create lib export
-  if (!fs.existsSync(path.join(LIB_DIR, `${componentSpec.module}.ts`))) {
-    const libContent = prettier.format(
-      `
-import { ${componentSpec.module} } from '../webComponents/${componentSpec.module}';
-
-export { ${componentSpec.module} };`,
-      prettierConfig
-    );
-    fs.writeFileSync(path.join(LIB_DIR, `${componentSpec.module}.ts`), libContent);
-  }
+  const libContent = prettier.format(
+    `
+    import { ${componentSpec.module} } from '../webComponents/${componentSpec.module}';
+    import type { ${componentSpec.module}PropTypes } from '../webComponents/${componentSpec.module}';
+    
+    export { ${componentSpec.module} };
+    export type { ${componentSpec.module}PropTypes };`,
+    prettierConfig
+  );
+  fs.writeFileSync(path.join(LIB_DIR, `${componentSpec.module}.ts`), libContent);
 
   // create test
   if (!fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.test.tsx`))) {
@@ -677,9 +630,10 @@ export { ${componentSpec.module} };`,
   // create demo
   if (
     !fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.tsx`)) &&
+    !fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`)) &&
     !COMPONENTS_WITHOUT_DEMOS.has(componentSpec.module)
   ) {
     const webComponentDemo = createWebComponentDemo(componentSpec, allComponentProperties);
-    fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.tsx`), webComponentDemo);
+    fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`), webComponentDemo);
   }
 });

@@ -1,8 +1,7 @@
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/Button';
-import React, { FC, ReactNode } from 'react';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { FC, ReactNode } from 'react';
 
 export interface ButtonPropTypes extends Omit<WithWebComponentPropTypes, 'onClick'> {
   /**
@@ -38,8 +37,6 @@ export interface ButtonPropTypes extends Omit<WithWebComponentPropTypes, 'onClic
 }
 
 /**
- * <code>import { Button } from '@ui5/webcomponents-react/lib/Button';</code>
- * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Button" target="_blank">UI5 Web Components Playground</a>
  */
 const Button: FC<ButtonPropTypes> = withWebComponent<ButtonPropTypes>(

@@ -26,15 +26,6 @@ Global Styles compliant to the Fiori 2.0 Design Guidelines are located in [ui5-w
 - If you have a stateful component and use `getDerivedStateFromProps`, please store the previous props in a `prevProps` object in the state.<br />
    e.g. `state = { selectedKey: 1, prevProps: { selectedKey: 2 } }`
 
-## Speed up your local build
-Creating the documentation (PropTables and Styling Infos) in the Storybook is very expensive. 
-Thus, the initial compile time as well as the hot module replacement takes a long time.<br />
-Due to this fact, we disabled the generation of the Prop-Tables by default. 
-In case you need these Prop-Tables, you can easily activate them by adding a local `.env` file in the root directory with the following content:
-```env
-UI5_WEBCOMPONENTS_FOR_REACT_RELEASE_BUILD=true
-```
-
 You must follow the coding style as best you can when submitting code. Take note of naming conventions, separation of concerns, and formatting rules. You can use the code formatter [Prettier](https://prettier.io/) to handle some of this for you automatically.
 
 ## Unit testing

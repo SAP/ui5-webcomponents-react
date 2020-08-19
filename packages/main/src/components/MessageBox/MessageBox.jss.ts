@@ -2,12 +2,14 @@ import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVaria
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 
 const style = {
+  messageBox: {
+    '--sapContent_Shadow0': 'none'
+  },
   header: {
     display: 'flex',
     height: CssSizeVariables.sapWcrBarHeight,
-    lineHeight: CssSizeVariables.sapWcrBarHeight,
     textAlign: 'center',
-    width: 'auto',
+    width: '100%',
     alignItems: 'center',
     padding: '0.25rem 1rem',
     boxSizing: 'border-box',
@@ -55,6 +57,7 @@ const style = {
   },
   footer: {
     height: CssSizeVariables.sapWcrBarHeight,
+    width: '100%',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-end',

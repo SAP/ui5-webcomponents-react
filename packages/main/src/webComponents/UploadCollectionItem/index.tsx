@@ -1,8 +1,7 @@
 import '@ui5/webcomponents-fiori/dist/UploadCollectionItem';
 import { UploadState } from '@ui5/webcomponents-react/lib/UploadState';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import React, { FC, ReactNode } from 'react';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { FC, ReactNode } from 'react';
 
 export interface UploadCollectionItemPropTypes extends WithWebComponentPropTypes {
   /**
@@ -14,7 +13,7 @@ export interface UploadCollectionItemPropTypes extends WithWebComponentPropTypes
    */
   fileName?: string;
   /**
-   * If set to <code>true</code> the file name will be clickable and it will fire <code>fileNameClick</code> event upon click.
+   * If set to <code>true</code> the file name will be clickable and it will fire <code>file-name-click</code> event upon click.
    */
   fileNameClickable?: boolean;
   /**
@@ -64,8 +63,6 @@ export interface UploadCollectionItemPropTypes extends WithWebComponentPropTypes
 }
 
 /**
- * <code>import { UploadCollectionItem } from '@ui5/webcomponents-react/lib/UploadCollectionItem';</code>
- * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/UploadCollectionItem" target="_blank">UI5 Web Components Playground</a>
  */
 const UploadCollectionItem: FC<UploadCollectionItemPropTypes> = withWebComponent<UploadCollectionItemPropTypes>(
@@ -73,7 +70,7 @@ const UploadCollectionItem: FC<UploadCollectionItemPropTypes> = withWebComponent
   ['file', 'fileName', 'progress', 'uploadState'],
   ['fileNameClickable', 'noDelete', 'noRetry', 'noTerminate'],
   ['thumbnail'],
-  ['fileNameClick', 'rename', 'retry', 'terminate']
+  ['file-name-click', 'rename', 'retry', 'terminate']
 );
 
 UploadCollectionItem.displayName = 'UploadCollectionItem';

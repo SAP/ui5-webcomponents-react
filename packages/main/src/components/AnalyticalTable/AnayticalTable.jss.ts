@@ -12,17 +12,10 @@ const styles = {
     minHeight: '3rem',
     fontFamily: ThemingParameters.sapFontFamily,
     fontSize: ThemingParameters.sapFontSize,
-    fontWeight: 'normal',
-    '&::-webkit-scrollbar': {
-      height: ThemingParameters.sapScrollBar_Dimension
-    },
-    '&::-webkit-scrollbar-thumb': {
-      height: ThemingParameters.sapScrollBar_Dimension
-    }
+    fontWeight: 'normal'
   },
   tableHeaderRow: {
     height: CssSizeVariables.sapWcrAnalyticalTableRowHeight,
-    position: 'relative',
     display: 'inline-flex'
   },
   th: {
@@ -62,6 +55,7 @@ const styles = {
     borderBottom: `1px solid ${ThemingParameters.sapList_BorderColor}`,
     boxSizing: 'border-box',
     display: 'flex',
+    willChange: 'transform',
     height: CssSizeVariables.sapWcrAnalyticalTableRowHeight,
     '&:hover': {
       backgroundColor: ThemingParameters.sapList_Hover_Background

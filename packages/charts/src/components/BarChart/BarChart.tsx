@@ -18,10 +18,12 @@ import {
   ReferenceLine,
   Tooltip,
   XAxis,
-  YAxis
+  YAxis,
+  Label
 } from 'recharts';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { useChartMargin } from '../../hooks/useChartMargin';
+import { useLabelFormatter } from '../../hooks/useLabelFormatter';
 import { useLongestYAxisLabelBar } from '../../hooks/useLongestYAxisLabelBar';
 import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
@@ -95,9 +97,6 @@ export interface BarChartProps extends IChartBaseProps {
   measures: MeasureConfig[];
 }
 
-/**
- * <code>import { BarChart } from '@ui5/webcomponents-react-charts/lib/BarChart';</code>
- */
 const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<HTMLDivElement>) => {
   const {
     loading,
@@ -143,6 +142,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
   const chartRef = useConsolidatedRef<any>(ref);
 
   const onItemLegendClick = useLegendItemClick(onLegendClick);
+  const labelFormatter = useLabelFormatter(primaryDimension);
 
   const onDataPointClickInternal = useCallback(
     (payload, i, event) => {
@@ -213,7 +213,6 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
                 type="category"
                 key={dimension.accessor}
                 dataKey={dimension.accessor}
-                xAxisId={index}
                 tick={<YAxisTicks config={dimension} />}
                 tickLine={index < 1}
                 axisLine={index < 1}
@@ -236,10 +235,13 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
               fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
               stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
               barSize={element.width}
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
               onClick={onDataPointClickInternal}
               isAnimationActive={noAnimation === false}
             >
               <LabelList
+                data={dataset}
                 valueAccessor={valueAccessor(element.accessor)}
                 content={<ChartDataLabel config={element} chartType="bar" position={'insideRight'} />}
               />
@@ -247,6 +249,8 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
           );
         })}
         {!noLegend && (
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
           <Legend
             verticalAlign={chartConfig.legendPosition}
             align={chartConfig.legendHorizontalAlign}
@@ -255,13 +259,16 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
           />
         )}
         {chartConfig.referenceLine && (
-          <ReferenceLine
-            stroke={chartConfig.referenceLine.color}
-            x={chartConfig.referenceLine.value}
-            label={chartConfig.referenceLine.label}
-          />
+          <ReferenceLine stroke={chartConfig.referenceLine.color} x={chartConfig.referenceLine.value}>
+            <Label>{chartConfig.referenceLine.label}</Label>
+          </ReferenceLine>
         )}
-        <Tooltip cursor={tooltipFillOpacity} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle} />
+        <Tooltip
+          cursor={tooltipFillOpacity}
+          formatter={tooltipValueFormatter}
+          contentStyle={tooltipContentStyle}
+          labelFormatter={labelFormatter}
+        />
         {chartConfig.zoomingTool && (
           <Brush
             y={10}

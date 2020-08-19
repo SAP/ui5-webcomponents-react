@@ -1,0 +1,50 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+<Meta title="Test Setup" />
+
+# Test Setup for UI5 Web Components for React
+
+This guide is applicable if you are using a standard `create-react-app` setup.
+
+## Install the jsdom 16 jest environment
+
+As the UI5 Web Components are based on the `customElements` Web Standard, you need to install the latest version of `jsdom` to your project and tell the `jest` test runner to use it.
+Therefore you need to install the `jest-environment-jsdom-sixteen` npm package.
+
+```sh
+npm install jest-environment-jsdom-sixteen --save-dev
+# OR
+yarn add jest-environment-jsdom-sixteen -D
+```
+
+## Tell jest to transpile the UI5 Web Components
+
+`create-react-app` offers you to modify specific parts of the `jest` config by adding `jest` object to your `package.json`.
+Here you need to tell `jest` to transpile the UI5 Web Components as well as the `lit-html` library:<br />
+`package.json:`
+
+```json
+{
+  "jest": {
+    "transformIgnorePatterns": ["node_modules/(?!(@ui5|lit-html)).*\\.js$"]
+  }
+}
+```
+
+## Modify the test script
+
+In order to tell the `jest` runner of `create-react-app` to use our newly installed jest environment, you need to add
+one addition parameter to the `test` script: `--env jest-environment-jsdom-sixteen`. Your scripts should now look like:
+
+```json
+{
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env jest-environment-jsdom-sixteen",
+    "eject": "react-scripts eject"
+  }
+}
+```
+
+Now you should be able to run your test by using `npm run test` or `yarn test`.

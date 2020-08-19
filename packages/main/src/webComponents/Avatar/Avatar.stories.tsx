@@ -1,4 +1,5 @@
-import { select, text } from '@storybook/addon-knobs';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import '@ui5/webcomponents-icons/dist/icons/employee';
 import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';
 import { AvatarBackgroundColor } from '@ui5/webcomponents-react/lib/AvatarBackgroundColor';
 import { AvatarFitType } from '@ui5/webcomponents-react/lib/AvatarFitType';
@@ -8,22 +9,38 @@ import React from 'react';
 
 export default {
   title: 'UI5 Web Components / Avatar',
-  component: Avatar
+  component: Avatar,
+  argTypes: {
+    ...createSelectArgTypes({
+      backgroundColor: AvatarBackgroundColor,
+      imageFitType: AvatarFitType,
+      shape: AvatarShape,
+      size: AvatarSize
+    }),
+    ref: {
+      type: null
+    }
+  },
+  args: {
+    backgroundColor: AvatarBackgroundColor.Accent6,
+    icon: 'employee',
+    imageFitType: AvatarFitType.Cover,
+    shape: AvatarShape.Circle,
+    size: AvatarSize.S
+  }
 };
 
-export const generatedDefaultStory = () => (
+export const generatedDefaultStory = (props) => (
   <Avatar
-    backgroundColor={select('backgroundColor', AvatarBackgroundColor, AvatarBackgroundColor.Accent6)}
-    icon={text('icon', 'employee')}
-    image={text('image', '')}
-    imageFitType={select('imageFitType', AvatarFitType, AvatarFitType.Cover)}
-    initials={text('initials', '')}
-    shape={select('shape', AvatarShape, AvatarShape.Circle)}
-    size={select('size', AvatarSize, AvatarSize.S)}
-    accessibleName={text('accessibleName', '')}
+    backgroundColor={props.backgroundColor}
+    icon={props.icon}
+    image={props.image}
+    imageFitType={props.imageFitType}
+    initials={props.initials}
+    shape={props.shape}
+    size={props.size}
+    accessibleName={props.accessibleName}
   />
 );
 
-generatedDefaultStory.story = {
-  name: 'Generated default story'
-};
+generatedDefaultStory.storyName = 'Generated default story';

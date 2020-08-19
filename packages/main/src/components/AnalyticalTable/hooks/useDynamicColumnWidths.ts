@@ -34,14 +34,70 @@ const columns = (columns, { instance }) => {
   });
 
   const calculateDefaultTableWidth = () => {
-    const columnsWithFixedWidth = visibleColumns.filter(({ width }) => width ?? false).map(({ width }) => width);
-    const fixedWidth = columnsWithFixedWidth.reduce((acc, val) => acc + val, 0);
+    const columnsWithWidthProperties = visibleColumns
+      .filter((column) => column.width ?? column.minWidth ?? column.maxWidth ?? false)
+      .map((column) => ({
+        accessor: column.id ?? column.accessor,
+        minWidth: column.minWidth,
+        width: column.width,
+        maxWidth: column.maxWidth
+      }));
+    let availableWidth = totalWidth;
+    let defaultColumnsCount = visibleColumns.length;
+    const columnsWithFixedWidth = columnsWithWidthProperties
+      .map((column) => {
+        const { width, minWidth, maxWidth, accessor } = column;
+        if (width) {
+          // necessary because of default minWidth
+          const acceptedWidth =
+            accessor !== '__ui5wcr__internal_highlight_column' &&
+            accessor !== '__ui5wcr__internal_selection_column' &&
+            width < 60
+              ? 60
+              : width;
+          availableWidth -= acceptedWidth;
+          defaultColumnsCount--;
+          return acceptedWidth;
+        }
 
-    const defaultColumnsCount = visibleColumns.length - columnsWithFixedWidth.length;
+        const columnsWithMaxWidth = columnsWithWidthProperties.filter((item) => item.maxWidth);
+        const aggregatedColumnsMaxWidth = columnsWithMaxWidth.reduce((acc, cur) => acc + cur.maxWidth, 0);
+        const aggregatedColumnsMinWidth = columnsWithWidthProperties
+          .filter((item) => item.minWidth && !item.maxWidth)
+          .reduce((acc, cur) => acc + cur.minWidth, 0);
+
+        if (minWidth > availableWidth / defaultColumnsCount) {
+          // don't apply minWidth if enough space is available because of maxWidth properties
+          if (
+            availableWidth - aggregatedColumnsMaxWidth >
+            aggregatedColumnsMinWidth + (columns.length - columnsWithWidthProperties.length) * 60
+          ) {
+            // apply minWidth only if it's larger than the calculated available width
+            if (minWidth > (availableWidth - aggregatedColumnsMaxWidth) / columnsWithMaxWidth.length) {
+              availableWidth -= minWidth;
+              defaultColumnsCount--;
+              return minWidth;
+            }
+            return false;
+          }
+          availableWidth -= minWidth;
+          defaultColumnsCount--;
+          return minWidth;
+        }
+        if (maxWidth < availableWidth / defaultColumnsCount) {
+          availableWidth -= maxWidth;
+          defaultColumnsCount--;
+          return maxWidth;
+        }
+        return false;
+      })
+      .filter(Boolean);
+
+    const fixedWidth = columnsWithFixedWidth.reduce((acc, val) => acc + val, 0);
 
     // check if columns are visible and table has width
     if (visibleColumns.length > 0 && totalWidth > 0) {
-      // set fixedWidth as defaultWidth if visible columns have fixed value
+      // set fixedWidth as defaultWidth if all visible columns have fixed value
       if (visibleColumns.length === columnsWithFixedWidth.length) {
         return fixedWidth / visibleColumns.length;
       }

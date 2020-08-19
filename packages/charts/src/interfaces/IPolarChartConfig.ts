@@ -1,3 +1,5 @@
+import { CSSProperties } from 'react';
+
 export interface IPolarChartConfig {
   paddingAngle?: number;
 
@@ -5,4 +7,7 @@ export interface IPolarChartConfig {
   outerRadius?: string;
 
   polarGridType?: string;
+
+  tooltipItemStyle?: CSSProperties;
+  tooltipLabelStyle?: CSSProperties;
 }

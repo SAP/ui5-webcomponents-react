@@ -1,5 +1,4 @@
-import { action } from '@storybook/addon-actions';
-import { boolean, number, select, text } from '@storybook/addon-knobs';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { Input } from '@ui5/webcomponents-react/lib/Input';
 import { InputType } from '@ui5/webcomponents-react/lib/InputType';
 import { SuggestionItem } from '@ui5/webcomponents-react/lib/SuggestionItem';
@@ -11,32 +10,47 @@ export default {
   component: Input,
   parameters: {
     subcomponents: { SuggestionItem }
+  },
+  argTypes: {
+    ...createSelectArgTypes({ type: InputType, valueState: ValueState }),
+    children: {
+      type: null
+    },
+    ref: {
+      type: null
+    },
+    icon: {
+      type: null
+    }
+  },
+  args: {
+    placeholder: 'Placeholder...',
+    type: InputType.Text,
+    valueState: ValueState.None
   }
 };
 
-export const generatedDefaultStory = () => (
+export const generatedDefaultStory = (props) => (
   <Input
-    disabled={boolean('disabled', false)}
-    maxlength={number('maxlength', undefined)}
-    name={text('name', '')}
-    placeholder={text('placeholder', 'Placeholder...')}
-    readonly={boolean('readonly', false)}
-    required={boolean('required', false)}
-    showSuggestions={boolean('showSuggestions', false)}
-    type={select('type', InputType, InputType.Text)}
-    value={text('value', '')}
-    valueState={select('valueState', ValueState, ValueState.None)}
+    disabled={props.disabled}
+    maxlength={props.maxlength}
+    name={props.name}
+    placeholder={props.placeholder}
+    readonly={props.readonly}
+    required={props.required}
+    showSuggestions={props.showSuggestions}
+    type={props.type}
+    value={props.value}
+    valueState={props.valueState}
+    onChange={props.onChange}
+    onInput={props.onInput}
+    onSubmit={props.onSubmit}
+    onSuggestionItemSelect={props.onSuggestionItemSelect}
     icon={null}
     valueStateMessage={null}
-    onChange={action('onChange')}
-    onInput={action('onInput')}
-    onSubmit={action('onSubmit')}
-    onSuggestionItemSelect={action('onSuggestionItemSelect')}
   >
     Some Content
   </Input>
 );
 
-generatedDefaultStory.story = {
-  name: 'Generated default story'
-};
+generatedDefaultStory.storyName = 'Generated default story';

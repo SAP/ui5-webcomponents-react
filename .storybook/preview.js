@@ -1,4 +1,3 @@
-import { select, withKnobs } from '@storybook/addon-knobs';
 import { makeDecorator } from '@storybook/addons';
 import { addDecorator, addParameters } from '@storybook/react';
 import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme';
@@ -10,23 +9,18 @@ import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import { ThemeProvider } from '@ui5/webcomponents-react/lib/ThemeProvider';
 import { Themes } from '@ui5/webcomponents-react/lib/Themes';
 import '@ui5/webcomponents/dist/Assets';
-import '@ui5/webcomponents-react/dist/Assets';
 import '@ui5/webcomponents/dist/features/InputElementsFormSupport';
 import React, { useEffect } from 'react';
 import 'react-app-polyfill/ie11';
+import { DocsPage } from '../shared/stories/DocsPage';
+import applyDirection from '@ui5/webcomponents-base/dist/locale/applyDirection';
 
 addParameters({
-  options: {
-    storySort: (a, b) => {
-      return a[1].kind === b[1].kind
-        ? 0
-        : a[1].id.localeCompare(b[1].id, undefined, { numeric: true, caseFirst: 'upper' });
-    },
-    showRoots: true
-  }
+  passArgsFirst: true,
+  viewMode: 'docs',
+  docs: { forceExtractedArgTypes: true, page: DocsPage },
+  actions: { argTypesRegex: '^on.*' }
 });
-
-addDecorator(withKnobs);
 
 const ThemeContainer = ({ theme, contentDensity, children, direction }) => {
   useEffect(() => {
@@ -37,9 +31,10 @@ const ThemeContainer = ({ theme, contentDensity, children, direction }) => {
     }
   }, [contentDensity]);
 
-  // useEffect(() => {
-  //   document.querySelector('html').setAttribute('dir', direction.toLowerCase());
-  // }, [direction]);
+  useEffect(() => {
+    document.querySelector('html').setAttribute('dir', direction);
+    applyDirection();
+  }, [direction]);
 
   useEffect(() => {
     setTheme(theme);
@@ -54,9 +49,9 @@ const withQuery = makeDecorator({
   wrapper: (getStory, context) => {
     return (
       <ThemeContainer
-        theme={select('Theme', Themes, Themes.sap_fiori_3)}
-        contentDensity={select('ContentDensity', ContentDensity, ContentDensity.Cozy)}
-        direction={select('Text Direction', ['LTR', 'RTL'], 'LTR')}
+        theme={context.globals.theme || Themes.sap_fiori_3}
+        contentDensity={context.globals.contentDensity}
+        direction={context.globals.direction}
       >
         {getStory(context)}
       </ThemeContainer>
@@ -65,3 +60,51 @@ const withQuery = makeDecorator({
 });
 
 addDecorator(withQuery);
+
+export const globalTypes = {
+  theme: {
+    name: 'Theme',
+    description: 'Fiori Theme',
+    defaultValue: Themes.sap_fiori_3,
+    toolbar: {
+      items: Object.keys(Themes).map((themeKey) => ({
+        value: themeKey,
+        title: themeKey
+      }))
+    }
+  },
+  contentDensity: {
+    name: 'Content Density',
+    description: 'Content Density',
+    defaultValue: ContentDensity.Cozy,
+    toolbar: {
+      items: [
+        {
+          value: ContentDensity.Cozy,
+          title: ContentDensity.Cozy
+        },
+        {
+          value: ContentDensity.Compact,
+          title: ContentDensity.Compact
+        }
+      ]
+    }
+  },
+  direction: {
+    name: 'Direction',
+    description: 'Text Direction',
+    defaultValue: 'ltr',
+    toolbar: {
+      items: [
+        {
+          value: 'ltr',
+          title: 'LTR'
+        },
+        {
+          value: 'rtl',
+          title: 'RTL'
+        }
+      ]
+    }
+  }
+};

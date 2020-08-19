@@ -79,9 +79,6 @@ const getIndentFromString = (indent, currentRange) => {
 
 const useStyles = createComponentStyles(styles, { name: 'Grid' });
 
-/**
- * <code>import { Grid } from '@ui5/webcomponents-react/lib/Grid';</code>
- */
 const Grid: FC<GridPropTypes> = forwardRef((props: GridPropTypes, ref: Ref<HTMLDivElement>) => {
   const {
     position,

@@ -1,23 +1,26 @@
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/Dialog';
-import React, { FC, ReactNode } from 'react';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { FC, ReactNode } from 'react';
 
 export interface DialogPropTypes extends WithWebComponentPropTypes {
-  /**
-   * Determines whether the <code>ui5-dialog</code> should be stretched to fullscreen. <br><br> <b>Note:</b> The <code>ui5-dialog</code> will be stretched to aproximetly 90% of the viewport.
-   */
-  stretch?: boolean;
   /**
    * Defines the header text. <br><br> <b>Note:</b> If <code>header</code> slot is provided, the <code>headerText</code> is ignored.
    */
   headerText?: string;
   /**
+   * Determines whether the <code>ui5-dialog</code> should be stretched to fullscreen. <br><br> <b>Note:</b> The <code>ui5-dialog</code> will be stretched to aproximetly 90% of the viewport.
+   */
+  stretch?: boolean;
+  /**
    * Defines the ID of the HTML Element, which will get the initial focus.
    */
   initialFocus?: string;
   /**
-   * Defines the content of the Web Component.
+   * Defines if the focus should be returned to the previously focused element, when the popup closes.
+   */
+  preventFocusRestore?: boolean;
+  /**
+   * Defines the content of the Popup.
    */
   children?: ReactNode | ReactNode[];
   /**
@@ -29,40 +32,39 @@ export interface DialogPropTypes extends WithWebComponentPropTypes {
    */
   header?: ReactNode | ReactNode[];
   /**
-   * Fired after the component is closed.
+   * Fired after the component is closed. This event does not bubble.
    */
   onAfterClose?: (event: CustomEvent<{}>) => void;
   /**
-   * Fired after the component is opened.
+   * Fired after the component is opened. This event does not bubble.
    */
   onAfterOpen?: (event: CustomEvent<{}>) => void;
   /**
-   * Fired before the component is closed.
+   * Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing. This event does not bubble.
    */
   onBeforeClose?: (event: CustomEvent<{ escPressed: boolean }>) => void;
   /**
-   * Fired before the component is opened.
+   * Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. This event does not bubble.
    */
   onBeforeOpen?: (event: CustomEvent<{}>) => void;
 }
 
 /**
- * <code>import { Dialog } from '@ui5/webcomponents-react/lib/Dialog';</code>
- * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Dialog" target="_blank">UI5 Web Components Playground</a>
  */
 const Dialog: FC<DialogPropTypes> = withWebComponent<DialogPropTypes>(
   'ui5-dialog',
   ['headerText', 'initialFocus'],
-  ['stretch'],
+  ['stretch', 'preventFocusRestore'],
   ['footer', 'header'],
-  ['afterClose', 'afterOpen', 'beforeClose', 'beforeOpen']
+  ['after-close', 'after-open', 'before-close', 'before-open']
 );
 
 Dialog.displayName = 'Dialog';
 
 Dialog.defaultProps = {
-  stretch: false
+  stretch: false,
+  preventFocusRestore: false
 };
 
 export { Dialog };

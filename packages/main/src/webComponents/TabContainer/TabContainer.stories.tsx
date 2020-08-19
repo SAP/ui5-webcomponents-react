@@ -1,5 +1,4 @@
-import { action } from '@storybook/addon-actions';
-import { boolean, select } from '@storybook/addon-knobs';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { Tab } from '@ui5/webcomponents-react/lib/Tab';
 import { TabContainer } from '@ui5/webcomponents-react/lib/TabContainer';
 import { TabContainerTabsPlacement } from '@ui5/webcomponents-react/lib/TabContainerTabsPlacement';
@@ -12,17 +11,30 @@ export default {
   component: TabContainer,
   parameters: {
     subcomponents: { Tab, TabSeparator }
+  },
+  argTypes: {
+    ...createSelectArgTypes({ tabLayout: TabLayout, tabsPlacement: TabContainerTabsPlacement }),
+    children: {
+      type: null
+    },
+    ref: {
+      type: null
+    }
+  },
+  args: {
+    tabLayout: TabLayout.Standard,
+    tabsPlacement: TabContainerTabsPlacement.Top
   }
 };
 
-export const generatedDefaultStory = () => (
+export const generatedDefaultStory = (props) => (
   <TabContainer
-    collapsed={boolean('collapsed', false)}
-    fixed={boolean('fixed', false)}
-    showOverflow={boolean('showOverflow', false)}
-    tabLayout={select('tabLayout', TabLayout, TabLayout.Standard)}
-    tabsPlacement={select('tabsPlacement', TabContainerTabsPlacement, TabContainerTabsPlacement.Top)}
-    onTabSelect={action('onTabSelect')}
+    collapsed={props.collapsed}
+    fixed={props.fixed}
+    showOverflow={props.showOverflow}
+    tabLayout={props.tabLayout}
+    tabsPlacement={props.tabsPlacement}
+    onTabSelect={props.onTabSelect}
   >
     <Tab text="Tab 1">Content Tab 1</Tab>
     <Tab text="Tab 2">Content Tab 2</Tab>
@@ -30,6 +42,4 @@ export const generatedDefaultStory = () => (
   </TabContainer>
 );
 
-generatedDefaultStory.story = {
-  name: 'Generated default story'
-};
+generatedDefaultStory.storyName = 'Generated default story';

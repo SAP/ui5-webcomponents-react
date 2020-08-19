@@ -1,5 +1,3 @@
-import { action } from '@storybook/addon-actions';
-import { text } from '@storybook/addon-knobs';
 import { mount } from 'enzyme';
 import * as React from 'react';
 import { simpleDataSet } from '../../resources/DemoProps';
@@ -10,12 +8,10 @@ describe('PieChart', () => {
     expect(
       mount(
         <PieChart
-          onDataPointClick={action('onDataPointClick')}
-          onLegendClick={action('onLegendClick')}
-          style={{ width: '50%' }}
           dataset={simpleDataSet}
+          style={{ width: '50%' }}
           chartConfig={{
-            innerRadius: text('innerRadius', '0%')
+            innerRadius: '0%'
           }}
           dimension={{
             accessor: 'name'

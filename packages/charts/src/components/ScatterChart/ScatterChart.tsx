@@ -16,7 +16,8 @@ import {
   Tooltip,
   XAxis,
   YAxis,
-  ZAxis
+  ZAxis,
+  Label
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin';
 import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
@@ -118,9 +119,6 @@ const measureDefaults = {
   formatter: defaultFormatter
 };
 
-/**
- * <code>import { ScatterChart } from '@ui5/webcomponents-react-charts/lib/ScatterChart';</code>
- */
 const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps, ref: Ref<HTMLDivElement>) => {
   const {
     dataset,
@@ -213,10 +211,14 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
             tick={<XAxisTicks config={xMeasure} />}
             padding={xAxisPadding}
             height={xAxisHeights[0]}
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             label={xMeasure?.label ? { value: xMeasure?.label, dy: 15, position: 'insideRight' } : 0}
           />
         )}
         <YAxis
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
           label={yMeasure?.label ? { value: yMeasure?.label, angle: -90, position: 'insideLeft' } : false}
           type={'number'}
           name={yMeasure?.label}
@@ -235,6 +237,8 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
           return (
             <Scatter
               className={typeof onDataPointClick === 'function' ? 'has-click-handler' : undefined}
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
               onMouseDown={onDataPointClickInternal}
               opacity={dataSet.opacity}
               data={dataSet?.data}
@@ -246,6 +250,8 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
           );
         })}
         {!noLegend && (
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
           <Legend
             verticalAlign={chartConfig.legendPosition}
             align={chartConfig.legendHorizontalAlign}
@@ -254,18 +260,14 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
           />
         )}
         {chartConfig.referenceLine && (
-          <ReferenceLine
-            stroke={chartConfig.referenceLine.color}
-            y={chartConfig.referenceLine.value}
-            label={chartConfig.referenceLine.label}
-          />
+          <ReferenceLine stroke={chartConfig.referenceLine.color} y={chartConfig.referenceLine.value}>
+            <Label>{chartConfig.referenceLine.label}</Label>
+          </ReferenceLine>
         )}
         {chartConfig.referenceLineX && (
-          <ReferenceLine
-            stroke={chartConfig.referenceLineX.color}
-            x={chartConfig.referenceLineX.value}
-            label={chartConfig.referenceLineX.label}
-          />
+          <ReferenceLine stroke={chartConfig.referenceLineX.color} x={chartConfig.referenceLineX.value}>
+            <Label>{chartConfig.referenceLineX.label}</Label>
+          </ReferenceLine>
         )}
         <Tooltip cursor={tooltipFillOpacity} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle} />
       </ScatterChartLib>

@@ -1,13 +1,8 @@
 import '@ui5/webcomponents-fiori/dist/ShellBar';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import React, { FC, ReactNode } from 'react';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { FC, ReactNode } from 'react';
 
 export interface ShellBarPropTypes extends WithWebComponentPropTypes {
-  /**
-   * Defines the <code>logo</code> source URI.
-   */
-  logo?: string;
   /**
    * Defines the <code>notificationCount</code>, displayed in the notification icon top-right corner.
    */
@@ -36,6 +31,10 @@ export interface ShellBarPropTypes extends WithWebComponentPropTypes {
    * Defines the <code>ui5-shellbar</code> aditional items. <br><br> <b>Note:</b> You can use the &nbsp;&lt;ui5-shellbar-item>&lt;/ui5-shellbar-item>.
    */
   children?: ReactNode | ReactNode[];
+  /**
+   * Defines the logo of the <code>ui5-shellbar</code>. For example, you can use <code>ui5-avatar</code> or <code>img</code> elements as logo.
+   */
+  logo?: ReactNode;
   /**
    * Defines the items displayed in menu after a click on the primary title. <br><br> <b>Note:</b> You can use the &nbsp;&lt;ui5-li>&lt;/ui5-li> and its ancestors.
    */
@@ -79,16 +78,14 @@ export interface ShellBarPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * <code>import { ShellBar } from '@ui5/webcomponents-react/lib/ShellBar';</code>
- * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/ShellBar" target="_blank">UI5 Web Components Playground</a>
  */
 const ShellBar: FC<ShellBarPropTypes> = withWebComponent<ShellBarPropTypes>(
   'ui5-shellbar',
-  ['logo', 'notificationCount', 'primaryTitle', 'secondaryTitle'],
+  ['notificationCount', 'primaryTitle', 'secondaryTitle'],
   ['showCoPilot', 'showNotifications', 'showProductSwitch'],
-  ['menuItems', 'profile', 'searchField', 'startButton'],
-  ['coPilotClick', 'logoClick', 'menuItemClick', 'notificationsClick', 'productSwitchClick', 'profileClick']
+  ['logo', 'menuItems', 'profile', 'searchField', 'startButton'],
+  ['co-pilot-click', 'logo-click', 'menu-item-click', 'notifications-click', 'product-switch-click', 'profile-click']
 );
 
 ShellBar.displayName = 'ShellBar';

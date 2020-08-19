@@ -1,8 +1,7 @@
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/FileUploader';
-import React, { FC, ReactNode } from 'react';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { FC, ReactNode } from 'react';
 
 export interface FileUploaderPropTypes extends Omit<WithWebComponentPropTypes, 'onChange'> {
   /**
@@ -52,8 +51,6 @@ export interface FileUploaderPropTypes extends Omit<WithWebComponentPropTypes, '
 }
 
 /**
- * <code>import { FileUploader } from '@ui5/webcomponents-react/lib/FileUploader';</code>
- * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/FileUploader" target="_blank">UI5 Web Components Playground</a>
  */
 const FileUploader: FC<FileUploaderPropTypes> = withWebComponent<FileUploaderPropTypes>(

@@ -1,38 +1,21 @@
-import { Children, ReactElement } from 'react';
+import { Children, ReactElement, ReactNode, RefObject } from 'react';
 
-export const safeGetChildrenArray = <T = any>(children): T[] => Children.toArray(children).filter(Boolean);
-
-// export const findSectionIndexById = (sections: ReactElement<any> | Array<ReactElement<any>>, id) => {
-//   const index = safeGetChildrenArray(sections).findIndex((objectPageSection) => objectPageSection.props?.id === id);
-//   if (index === -1) {
-//     return 0;
-//   }
-//   return index;
-// };
+export const safeGetChildrenArray = <T = Exclude<ReactNode, boolean | null | undefined>>(children: unknown): T[] =>
+  Children.toArray(children).filter(Boolean) as T[];
 
 export const getSectionById = (sections: ReactElement<any> | ReactElement<any>[], id) => {
-  return safeGetChildrenArray(sections).find((objectPageSection) => objectPageSection.props?.id === id);
+  return safeGetChildrenArray(sections).find((objectPageSection: ReactElement) => objectPageSection.props?.id === id);
 };
 
-// export const getProportionateScrollTop = (activeContainer, passiveContainer, base) => {
-//   const activeHeight = activeContainer.current.getBoundingClientRect().height;
-//   const passiveHeight = passiveContainer.current.getBoundingClientRect().height;
-//
-//   return (base / activeHeight) * passiveHeight;
-// };
-//
-// export const bindScrollEvent = (scrollContainer, handler) => {
-//   if (scrollContainer.current && handler.current) {
-//     scrollContainer.current.addEventListener('scroll', handler.current, { passive: true });
-//   }
-// };
-//
-// export const removeScrollEvent = (scrollContainer, handler) => {
-//   if (scrollContainer.current && handler.current) {
-//     scrollContainer.current.removeEventListener('scroll', handler.current);
-//   }
-// };
-
-export const extractSectionIdFromHtmlId = (id) => {
+export const extractSectionIdFromHtmlId = (id: string) => {
   return id.replace(/^ObjectPageSection-/, '');
+};
+
+export const getLastObjectPageSection = (ref: RefObject<HTMLDivElement>): HTMLElement => {
+  const sections = ref.current.querySelectorAll<HTMLElement>('[id^="ObjectPageSection"]');
+  if (!sections || sections.length < 1) {
+    return null;
+  }
+
+  return sections[sections.length - 1];
 };

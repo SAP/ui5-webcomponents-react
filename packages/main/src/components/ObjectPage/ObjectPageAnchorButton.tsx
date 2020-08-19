@@ -23,7 +23,7 @@ export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props: Obj
     if (subSectionsAvailable) {
       try {
         const element = ref.current?.parentElement?.shadowRoot?.querySelector(
-          `.ui5-tc__headerList li[aria-posinset="${index + 1}"] .ui5-tc__headerItemContent`
+          `.ui5-tc__headerList li[aria-posinset="${index + 1}"] .ui5-tab-strip-itemContent`
         );
 
         if (element && !element.querySelector('ui5-icon')) {

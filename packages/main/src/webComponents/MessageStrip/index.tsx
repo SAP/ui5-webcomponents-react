@@ -1,8 +1,7 @@
 import { MessageStripType } from '@ui5/webcomponents-react/lib/MessageStripType';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/MessageStrip';
-import React, { FC, ReactNode } from 'react';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { FC, ReactNode } from 'react';
 
 export interface MessageStripPropTypes extends WithWebComponentPropTypes {
   /**
@@ -34,8 +33,6 @@ export interface MessageStripPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * <code>import { MessageStrip } from '@ui5/webcomponents-react/lib/MessageStrip';</code>
- * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/MessageStrip" target="_blank">UI5 Web Components Playground</a>
  */
 const MessageStrip: FC<MessageStripPropTypes> = withWebComponent<MessageStripPropTypes>(

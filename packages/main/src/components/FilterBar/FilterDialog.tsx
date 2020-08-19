@@ -27,6 +27,8 @@ import { Text } from '@ui5/webcomponents-react/lib/Text';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import React, { Children, cloneElement, ReactElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { Ui5DialogDomRef } from '../../interfaces/Ui5DialogDomRef';
+import { stopPropagation } from '../../internal/stopPropagation';
 import styles from './FilterBarDialog.jss';
 import { filterValue, renderSearchWithValue } from './utils';
 
@@ -57,7 +59,7 @@ export const FilterDialog = (props) => {
   const searchRef = useRef(null);
   const [toggledFilters, setToggledFilters] = useState({});
   const dialogRefs = useRef({});
-  const dialogRef = useRef();
+  const dialogRef = useRef<Ui5DialogDomRef>();
 
   const [
     basicText,
@@ -105,6 +107,7 @@ export const FilterDialog = (props) => {
 
   const handleClose = useCallback(
     (e) => {
+      stopPropagation(e);
       if (!showGoButton) {
         handleSave(e);
         return;
@@ -176,7 +179,7 @@ export const FilterDialog = (props) => {
 
   const renderHeader = useCallback(
     () => (
-      <FlexBox direction={FlexBoxDirection.Column} className={classes.header}>
+      <FlexBox direction={FlexBoxDirection.Column} alignItems={FlexBoxAlignItems.Center} className={classes.header}>
         <Title level={TitleLevel.H4}>Filters</Title>
         {showSearch && (
           <Input placeholder={searchForFiltersText} onInput={handleSearch} icon={<Icon name="search" />} />
@@ -268,7 +271,7 @@ export const FilterDialog = (props) => {
   }, [renderChildren, toggledFilters, handleCheckBoxChange]);
 
   return (
-    <Dialog ref={dialogRef} onAfterClose={handleClose} header={renderHeader()} footer={renderFooter()}>
+    <Dialog ref={dialogRef} header={renderHeader()} footer={renderFooter()} onAfterClose={handleClose}>
       <div className={classes.dialog}>
         {renderFBSearch && (
           <div className={classes.fbSearch} ref={searchRef}>

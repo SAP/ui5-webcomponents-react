@@ -144,17 +144,6 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
       design="Default"
       icon="slim-arrow-down"
     />
-    <ui5-popover
-      horizontal-align="Center"
-      no-arrow="true"
-      placement-type="Bottom"
-      vertical-align="Center"
-    >
-      <ui5-list
-        mode="None"
-        separators="All"
-      />
-    </ui5-popover>
   </section>
   <section
     data-component-name="ObjectPageSection"
@@ -265,17 +254,6 @@ exports[`ObjectPage Just Some Sections 1`] = `
         text=""
       />
     </ui5-tabcontainer>
-    <ui5-popover
-      horizontal-align="Center"
-      no-arrow="true"
-      placement-type="Bottom"
-      vertical-align="Center"
-    >
-      <ui5-list
-        mode="None"
-        separators="All"
-      />
-    </ui5-popover>
   </section>
   <section
     data-component-name="ObjectPageSection"
@@ -447,17 +425,6 @@ exports[`ObjectPage Key Infos 1`] = `
         text=""
       />
     </ui5-tabcontainer>
-    <ui5-popover
-      horizontal-align="Center"
-      no-arrow="true"
-      placement-type="Bottom"
-      vertical-align="Center"
-    >
-      <ui5-list
-        mode="None"
-        separators="All"
-      />
-    </ui5-popover>
   </section>
   <section
     data-component-name="ObjectPageSection"
@@ -587,17 +554,6 @@ exports[`ObjectPage No Header 1`] = `
         text=""
       />
     </ui5-tabcontainer>
-    <ui5-popover
-      horizontal-align="Center"
-      no-arrow="true"
-      placement-type="Bottom"
-      vertical-align="Center"
-    >
-      <ui5-list
-        mode="None"
-        separators="All"
-      />
-    </ui5-popover>
   </section>
   <section
     data-component-name="ObjectPageSection"
@@ -713,17 +669,6 @@ exports[`ObjectPage Not crashing with 0 sections 1`] = `
       tab-layout="Standard"
       tabs-placement="Top"
     />
-    <ui5-popover
-      horizontal-align="Center"
-      no-arrow="true"
-      placement-type="Bottom"
-      vertical-align="Center"
-    >
-      <ui5-list
-        mode="None"
-        separators="All"
-      />
-    </ui5-popover>
   </section>
 </div>
 `;
@@ -801,17 +746,6 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
         text=""
       />
     </ui5-tabcontainer>
-    <ui5-popover
-      horizontal-align="Center"
-      no-arrow="true"
-      placement-type="Bottom"
-      vertical-align="Center"
-    >
-      <ui5-list
-        mode="None"
-        separators="All"
-      />
-    </ui5-popover>
   </section>
   <section
     data-component-name="ObjectPageSection"
@@ -912,17 +846,6 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
         text=""
       />
     </ui5-tabcontainer>
-    <ui5-popover
-      horizontal-align="Center"
-      no-arrow="true"
-      placement-type="Bottom"
-      vertical-align="Center"
-    >
-      <ui5-list
-        mode="None"
-        separators="All"
-      />
-    </ui5-popover>
   </section>
   <section
     data-component-name="ObjectPageSection"
@@ -1076,17 +999,6 @@ exports[`ObjectPage Only Sections 1`] = `
         text="Test 3"
       />
     </ui5-tabcontainer>
-    <ui5-popover
-      horizontal-align="Center"
-      no-arrow="true"
-      placement-type="Bottom"
-      vertical-align="Center"
-    >
-      <ui5-list
-        mode="None"
-        separators="All"
-      />
-    </ui5-popover>
   </section>
   <section
     data-component-name="ObjectPageSection"
@@ -1251,17 +1163,6 @@ exports[`ObjectPage Set selected section id 1`] = `
         text=""
       />
     </ui5-tabcontainer>
-    <ui5-popover
-      horizontal-align="Center"
-      no-arrow="true"
-      placement-type="Bottom"
-      vertical-align="Center"
-    >
-      <ui5-list
-        mode="None"
-        separators="All"
-      />
-    </ui5-popover>
   </section>
   <section
     data-component-name="ObjectPageSection"
@@ -1433,17 +1334,6 @@ exports[`ObjectPage With Subsections 1`] = `
       design="Default"
       icon="slim-arrow-down"
     />
-    <ui5-popover
-      horizontal-align="Center"
-      no-arrow="true"
-      placement-type="Bottom"
-      vertical-align="Center"
-    >
-      <ui5-list
-        mode="None"
-        separators="All"
-      />
-    </ui5-popover>
   </section>
   <section
     data-component-name="ObjectPageSection"

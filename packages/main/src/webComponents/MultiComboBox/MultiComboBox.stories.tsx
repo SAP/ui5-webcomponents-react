@@ -1,5 +1,4 @@
-import { action } from '@storybook/addon-actions';
-import { boolean, select, text } from '@storybook/addon-knobs';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { MultiComboBox } from '@ui5/webcomponents-react/lib/MultiComboBox';
 import { MultiComboBoxItem } from '@ui5/webcomponents-react/lib/MultiComboBoxItem';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
@@ -10,23 +9,35 @@ export default {
   component: MultiComboBox,
   parameters: {
     subcomponents: { MultiComboBoxItem }
+  },
+  argTypes: {
+    ...createSelectArgTypes({ valueState: ValueState }),
+    children: {
+      type: null
+    },
+    ref: {
+      type: null
+    }
+  },
+  args: {
+    valueState: ValueState.None
   }
 };
 
-export const generatedDefaultStory = () => (
+export const generatedDefaultStory = (props) => (
   <MultiComboBox
-    allowCustomValues={boolean('allowCustomValues', false)}
-    disabled={boolean('disabled', false)}
-    open={boolean('open', false)}
-    placeholder={text('placeholder', '')}
-    readonly={boolean('readonly', false)}
-    required={boolean('required', false)}
-    value={text('value', '')}
-    valueState={select('valueState', ValueState, ValueState.None)}
-    onChange={action('onChange')}
-    onInput={action('onInput')}
-    onOpenChange={action('onOpenChange')}
-    onSelectionChange={action('onSelectionChange')}
+    allowCustomValues={props.allowCustomValues}
+    disabled={props.disabled}
+    open={props.open}
+    placeholder={props.placeholder}
+    readonly={props.readonly}
+    required={props.required}
+    value={props.value}
+    valueState={props.valueState}
+    onChange={props.onChange}
+    onInput={props.onInput}
+    onOpenChange={props.onOpenChange}
+    onSelectionChange={props.onSelectionChange}
   >
     <MultiComboBoxItem text="Item 1" />
     <MultiComboBoxItem text="Item 2" />
@@ -36,6 +47,4 @@ export const generatedDefaultStory = () => (
   </MultiComboBox>
 );
 
-generatedDefaultStory.story = {
-  name: 'Generated default story'
-};
+generatedDefaultStory.storyName = 'Generated default story';

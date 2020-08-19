@@ -11,7 +11,7 @@ export const useObserveXAxisHeights = (chartRef: RefObject<SVGElement>, axisCoun
     const mutationObserver = new MutationObserver(
       debounce(() => {
         const defaultHeights = Array(axisCount).fill(defaultAxisHeight);
-        chartRef.current?.querySelectorAll<SVGElement>('.xAxis').forEach((xAxis, index) => {
+        chartRef.current?.querySelectorAll<SVGGraphicsElement>('.xAxis').forEach((xAxis, index) => {
           const currentAxisHeight = xAxis?.getBBox()?.height;
           if (currentAxisHeight > 30) {
             defaultHeights[index] = currentAxisHeight;

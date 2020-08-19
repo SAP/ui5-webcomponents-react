@@ -4,15 +4,23 @@ import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import { Popover } from '@ui5/webcomponents-react/lib/Popover';
 import { ToggleButton } from '@ui5/webcomponents-react/lib/ToggleButton';
-import React, { ReactElement, useCallback, useEffect, useRef, useState } from 'react';
+import React, { FC, ReactElement, ReactNode, useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
+import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
+import { stopPropagation } from '../../internal/stopPropagation';
 
-export function OverflowPopover(props) {
+interface OverflowPopoverProps {
+  lastVisibleIndex: number;
+  contentClass: string;
+  children: ReactNode;
+}
+
+export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopoverProps) => {
   const { lastVisibleIndex, contentClass, children } = props;
-  const popoverRef = useRef();
+  const popoverRef = useRef<Ui5PopoverDomRef>();
   const [pressed, setPressed] = useState(false);
 
-  const handleToggleButtonClick = (e) => {
+  const handleToggleButtonClick = useCallback((e) => {
     if (popoverRef.current) {
       if (!pressed) {
         popoverRef.current.openBy(e.target);
@@ -21,7 +29,7 @@ export function OverflowPopover(props) {
         popoverRef.current.close();
       }
     }
-  };
+  }, []);
 
   useEffect(() => {
     return () => {
@@ -31,36 +39,40 @@ export function OverflowPopover(props) {
     };
   }, []);
 
-  const handleClose = () => {
-    setPressed(false);
-  };
+  const handleClose = useCallback(
+    (e) => {
+      stopPropagation(e);
+      setPressed(false);
+    },
+    [setPressed]
+  );
 
   const renderChildren = useCallback(() => {
-    return React.Children.toArray(children?.type === React.Fragment ? children.props.children : children).map(
-      (item: ReactElement<any>, index) => {
-        if (index > lastVisibleIndex) {
-          if (item.type.displayName === 'ToolbarSeparator') {
-            return React.cloneElement(item, {
-              style: {
-                height: '0.0625rem',
-                margin: '0.375rem 0.1875rem',
-                width: '100%',
-                background: ThemingParameters.sapToolbar_SeparatorColor
-              }
-            });
-          }
-          return item;
+    return React.Children.toArray(
+      (children as ReactElement)?.type === React.Fragment ? (children as ReactElement).props.children : children
+    ).map((item: ReactElement<any>, index) => {
+      if (index > lastVisibleIndex) {
+        if ((item.type as any).displayName === 'ToolbarSeparator') {
+          return React.cloneElement(item, {
+            style: {
+              height: '0.0625rem',
+              margin: '0.375rem 0.1875rem',
+              width: '100%',
+              background: ThemingParameters.sapToolbar_SeparatorColor
+            }
+          });
         }
-        return null;
+        return item;
       }
-    );
+      return null;
+    });
   }, [children, lastVisibleIndex]);
 
   return (
     <>
       <ToggleButton
         design={ButtonDesign.Transparent}
-        icon="sap-icon://overflow"
+        icon="overflow"
         onClick={handleToggleButtonClick}
         pressed={pressed}
       />
@@ -72,4 +84,4 @@ export function OverflowPopover(props) {
       )}
     </>
   );
-}
+};

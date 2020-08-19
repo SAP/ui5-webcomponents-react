@@ -25,9 +25,6 @@ if (!document.querySelector('style[data-ui5-webcomponents-react-sizes]')) {
   document.head.appendChild(variables);
 }
 
-/**
- * <code>import { ThemeProvider } from '@ui5/webcomponents-react/lib/ThemeProvider';</code>
- */
 const ThemeProvider: FC<ThemeProviderProps> = (props: ThemeProviderProps) => {
   const { children } = props;
   const isCompactSize = document.body.classList.contains('ui5-content-density-compact');
@@ -52,9 +49,6 @@ const ThemeProvider: FC<ThemeProviderProps> = (props: ThemeProviderProps) => {
         watch: true,
         silent: true
       });
-    }
-    if (getRTL()) {
-      document.querySelector('html').dir = 'rtl';
     }
   }, []);
 

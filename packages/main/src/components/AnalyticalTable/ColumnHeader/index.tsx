@@ -40,6 +40,7 @@ export interface ColumnHeaderProps {
   isResizing: boolean;
   isDraggable: boolean;
   role: string;
+  isLastColumn: boolean;
 }
 
 const styles = {
@@ -81,21 +82,22 @@ const styles = {
   },
   resizer: {
     display: 'inline-block',
-    width: '16px',
+    width: '3px',
     height: '100%',
     position: 'absolute',
-    right: 0,
+    bottom: 0,
     top: 0,
-    transform: 'translateX(50%)',
-    zIndex: 1
+    transform: 'translateX(-50%)',
+    zIndex: 1,
+    cursor: 'col-resize',
+    '&:hover, &:active': {
+      backgroundColor: ThemingParameters.sapContent_DragAndDropActiveColor
+    }
   }
 };
 
 const useStyles = createComponentStyles(styles, { name: 'TableColumnHeader' });
 
-/**
- * <code>import { ColumnHeader } from '@ui5/webcomponents-react/lib/ColumnHeader';</code>
- */
 export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) => {
   const classes = useStyles(props);
 
@@ -114,15 +116,11 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     onDragEnd,
     isDraggable,
     dragOver,
-    role
+    role,
+    isLastColumn
   } = props;
 
   const isFiltered = column.filterValue && column.filterValue.length > 0;
-  const sortingIcon = column.isSorted ? (
-    <Icon name={column.isSortedDesc ? 'sort-descending' : 'sort-ascending'} />
-  ) : null;
-  const filterIcon = isFiltered ? <Icon name="filter" /> : null;
-  const groupingIcon = column.isGrouped ? <Icon name="group-2" /> : null;
 
   const textStyle = useMemo(() => {
     let margin = 0;
@@ -148,22 +146,13 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
   }, [column.isSorted, column.isGrouped, isFiltered]);
 
   const hasPopover = column.canGroupBy || column.canSort || column.canFilter;
-  const innerStyle: CSSProperties = useMemo(() => {
-    const modifiedStyles: CSSProperties = {
-      cursor: hasPopover ? 'pointer' : 'auto'
-    };
-    if (dragOver) {
-      modifiedStyles.borderLeft = `3px solid ${ThemingParameters.sapSelectedColor}`;
-    }
-    return modifiedStyles;
-  }, [dragOver, hasPopover]);
 
   const popoverRef = useRef<Ui5PopoverDomRef>(null);
 
   const onOpenPopover = useCallback(
     (e) => {
       if (popoverRef.current && hasPopover) {
-        popoverRef.current.openBy(e.target);
+        popoverRef.current.openBy(e.currentTarget);
       }
     },
     [popoverRef, hasPopover]
@@ -172,38 +161,50 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
   if (!column) return null;
 
   return (
-    <div
-      id={id}
-      className={className}
-      style={style}
-      role={role}
-      draggable={isDraggable}
-      onDragEnter={onDragEnter}
-      onDragOver={onDragOver}
-      onDragStart={onDragStart}
-      onDrop={onDrop}
-      onDragEnd={onDragEnd}
-      data-column-id={id}
-    >
-      <div style={innerStyle} onClick={onOpenPopover} className={classes.header} data-h-align={column.hAlign}>
-        <Text
-          tooltip={typeof children === 'string' ? children : null}
-          wrapping={false}
-          style={textStyle}
-          className={classes.text}
-        >
-          {children}
-        </Text>
-        <div className={classes.iconContainer}>
-          {filterIcon}
-          {sortingIcon}
-          {groupingIcon}
+    <>
+      <div
+        id={id}
+        className={className}
+        style={{
+          ...style,
+          cursor: hasPopover ? 'pointer' : 'auto',
+          borderLeft: dragOver ? `3px solid ${ThemingParameters.sapSelectedColor}` : undefined
+        }}
+        role={role}
+        draggable={isDraggable}
+        onDragEnter={onDragEnter}
+        onDragOver={onDragOver}
+        onDragStart={onDragStart}
+        onDrop={onDrop}
+        onDragEnd={onDragEnd}
+        data-column-id={id}
+        onClick={onOpenPopover}
+      >
+        <div className={classes.header} data-h-align={column.hAlign}>
+          <Text
+            tooltip={typeof children === 'string' ? children : null}
+            wrapping={false}
+            style={textStyle}
+            className={classes.text}
+          >
+            {children}
+          </Text>
+          <div className={classes.iconContainer}>
+            {isFiltered && <Icon name="filter" />}
+            {column.isSorted && <Icon name={column.isSortedDesc ? 'sort-descending' : 'sort-ascending'} />}
+            {column.isGrouped && <Icon name="group-2" />}
+          </div>
         </div>
+        {hasPopover && <ColumnHeaderModal column={column} onSort={onSort} onGroupBy={onGroupBy} ref={popoverRef} />}
       </div>
-      {hasPopover && <ColumnHeaderModal column={column} onSort={onSort} onGroupBy={onGroupBy} ref={popoverRef} />}
       {column.canResize && column.getResizerProps && (
-        <div {...column.getResizerProps()} data-resizer className={`${classes.resizer}`} />
+        <div
+          {...column.getResizerProps()}
+          data-resizer
+          className={classes.resizer}
+          style={{ left: `${column.totalLeft + column.totalFlexWidth - (isLastColumn ? 3 : 0)}px` }}
+        />
       )}
-    </div>
+    </>
   );
 };

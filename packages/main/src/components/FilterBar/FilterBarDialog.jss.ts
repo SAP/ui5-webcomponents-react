@@ -11,6 +11,7 @@ const styles = {
     maxHeight: '70vh'
   },
   header: {
+    width: '100%',
     padding: '0.25rem 1rem 0 1rem',
     '& *': {
       margin: '0.25rem 0 0.25rem 0'

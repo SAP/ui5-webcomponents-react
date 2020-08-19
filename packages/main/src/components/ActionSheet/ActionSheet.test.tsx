@@ -1,52 +1,40 @@
+import { cleanStaticAreaAfterEachTest, fireEvent, render, screen } from '@shared/tests';
 import { createPassThroughPropsTest } from '@shared/tests/utils';
-import { mount } from 'enzyme';
 import { ActionSheet } from '@ui5/webcomponents-react/lib/ActionSheet';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
 import React, { createRef, RefObject } from 'react';
-import sinon from 'sinon';
 import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
 
 describe('ActionSheet', () => {
+  cleanStaticAreaAfterEachTest();
+
   test('Render without Crashing', () => {
-    const button = <Button />;
-    const wrapper = mount(
-      <ActionSheet openBy={button} className="myCustomClass">
-        <Button icon={'add'}>Accept</Button>
+    const ref = createRef();
+    const wrapper = render(
+      <ActionSheet className="myCustomClass" ref={ref}>
+        <Button>Accept</Button>
         <Button>Reject</Button>
         <Button>This is my super long text!</Button>
       </ActionSheet>
     );
-    expect(wrapper.render()).toMatchSnapshot();
+
+    expect(wrapper.container.parentElement).toMatchSnapshot();
   });
 
   test('Button Click handler', () => {
-    const callback = sinon.spy();
-    const button = <Button />;
-    const wrapper = mount(
-      <ActionSheet openBy={button} className="myCustomClass">
-        <Button icon={'add'} onClick={callback}>
-          Accept
-        </Button>
+    const callback = jest.fn();
+    render(
+      <ActionSheet className="myCustomClass">
+        <Button onClick={callback}>Accept</Button>
         <Button>Reject</Button>
         <Button>This is my super long text!</Button>
       </ActionSheet>
     );
-    wrapper
-      .find('ui5-button')
-      .first()
-      .instance()
-      // @ts-ignore
-      .fireEvent('click');
-    wrapper.update();
 
-    wrapper
-      .find('ui5-responsive-popover ui5-button')
-      .first()
-      .instance()
-      // @ts-ignore
-      .fireEvent('click');
-    expect(callback.called).toBe(true);
+    fireEvent.click(screen.getByText('Accept'));
+
+    expect(callback).toBeCalled();
   });
 
   test('Test Legacy Ref', () => {
@@ -55,10 +43,9 @@ describe('ActionSheet', () => {
     const ref = (el) => {
       legacyRef = el;
     };
-    const button = <Button />;
-    mount(
-      <ActionSheet ref={ref} openBy={button}>
-        <Button icon={'add'}>Accept</Button>
+    render(
+      <ActionSheet ref={ref}>
+        <Button>Accept</Button>
         <Button>Reject</Button>
         <Button>This is my super long text!</Button>
       </ActionSheet>
@@ -68,19 +55,17 @@ describe('ActionSheet', () => {
 
   test('Ref object', () => {
     const ref: RefObject<Ui5PopoverDomRef> = createRef();
-    const button = <Button />;
-    mount(<ActionSheet ref={ref} openBy={button} />);
+    render(<ActionSheet ref={ref} />);
     expect((ref.current as any).tagName).toEqual('UI5-RESPONSIVE-POPOVER');
   });
 
   test('does not crash with other component', () => {
-    const button = <Button />;
-    const wrapper = mount(
-      <ActionSheet openBy={button}>
+    const { container } = render(
+      <ActionSheet>
         <Label>I should not crash</Label>
       </ActionSheet>
     );
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(container.parentElement).toMatchSnapshot();
   });
 
   createPassThroughPropsTest(ActionSheet);

@@ -1,7 +1,6 @@
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/SegmentedButton';
-import React, { FC, ReactNode } from 'react';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { FC, ReactNode } from 'react';
 
 export interface SegmentedButtonPropTypes extends WithWebComponentPropTypes {
   /**
@@ -15,8 +14,6 @@ export interface SegmentedButtonPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * <code>import { SegmentedButton } from '@ui5/webcomponents-react/lib/SegmentedButton';</code>
- * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/SegmentedButton" target="_blank">UI5 Web Components Playground</a>
  */
 const SegmentedButton: FC<SegmentedButtonPropTypes> = withWebComponent<SegmentedButtonPropTypes>(
@@ -24,7 +21,7 @@ const SegmentedButton: FC<SegmentedButtonPropTypes> = withWebComponent<Segmented
   [],
   [],
   [],
-  ['selectionChange']
+  ['selection-change']
 );
 
 SegmentedButton.displayName = 'SegmentedButton';

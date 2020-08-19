@@ -1,7 +1,6 @@
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/Label';
-import React, { FC, ReactNode } from 'react';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { FC, ReactNode } from 'react';
 
 export interface LabelPropTypes extends WithWebComponentPropTypes {
   /**
@@ -27,8 +26,6 @@ export interface LabelPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * <code>import { Label } from '@ui5/webcomponents-react/lib/Label';</code>
- * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Label" target="_blank">UI5 Web Components Playground</a>
  */
 const Label: FC<LabelPropTypes> = withWebComponent<LabelPropTypes>(

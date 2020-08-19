@@ -1,0 +1,66 @@
+import { Meta, Title, Description, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { ActionSheet } from '@ui5/webcomponents-react/lib/ActionSheet';
+import { Button } from '@ui5/webcomponents-react/lib/Button';
+import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
+import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/lib/PopoverHorizontalAlign';
+import { PopoverVerticalAlign } from '@ui5/webcomponents-react/lib/PopoverVerticalAlign';
+import { useCallback, useRef } from 'react';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+
+<Meta
+  title="Components / ActionSheet"
+  component={ActionSheet}
+  argTypes={{
+    ...createSelectArgTypes({
+      placementType: PlacementType,
+      horizontalAlign: PopoverHorizontalAlign,
+      verticalAlign: PopoverVerticalAlign
+    }),
+    children: {
+      type: null
+    },
+    footer: {
+      type: null
+    },
+    header: {
+      type: null
+    },
+    ref: {
+      type: null
+    }
+  }}
+  args={{
+    horizontalAlign: PopoverHorizontalAlign.Center,
+    placementType: PlacementType.Right,
+    verticalAlign: PopoverVerticalAlign.Center
+  }}
+/>
+
+<DocsHeader />
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      const actionSheetRef = useRef();
+      const onButtonClick = useCallback(
+        (e) => {
+          actionSheetRef.current.open(e.target);
+        },
+        [actionSheetRef]
+      );
+      return (
+        <>
+          <Button onClick={onButtonClick}>Open ActionSheet</Button>
+          <ActionSheet ref={actionSheetRef} {...args}>
+            <Button icon="add">Accept</Button>
+            <Button>Reject</Button>
+            <Button>This is my super long text!</Button>
+          </ActionSheet>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="." />

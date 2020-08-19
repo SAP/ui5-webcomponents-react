@@ -19,9 +19,11 @@ import {
   ReferenceLine,
   Tooltip,
   XAxis,
-  YAxis
+  YAxis,
+  Label
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin';
+import { useLabelFormatter } from '../../hooks/useLabelFormatter';
 import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
 import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
@@ -96,17 +98,14 @@ export interface ComposedChartProps extends IChartBaseProps {
   layout?: 'horizontal' | 'vertical';
 }
 
-enum ChartTypes {
-  line = Line,
-  bar = Bar,
-  area = Area
-}
+const ChartTypes = {
+  line: Line,
+  bar: Bar,
+  area: Area
+};
 
 type AvailableChartTypes = 'line' | 'bar' | 'area' | string;
 
-/**
- * <code>import { ComposedChart } from '@ui5/webcomponents-react-charts/lib/ComposedChart';</code>
- */
 const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartProps, ref: Ref<HTMLDivElement>) => {
   const {
     loading,
@@ -151,6 +150,8 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
   const primaryDimension = dimensions[0];
   const primaryMeasure = measures[0];
 
+  const labelFormatter = useLabelFormatter(primaryDimension);
+
   const dataKeys = measures.map(({ accessor }) => accessor);
   const colorSecondY = chartConfig.secondYAxis
     ? dataKeys.findIndex((key) => key === chartConfig.secondYAxis?.dataKey)
@@ -158,8 +159,8 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
 
   const onDataPointClickInternal = useCallback(
     (payload, eventOrIndex, event) => {
-      if (payload.name) {
-        typeof onDataPointClick === 'function' &&
+      if (typeof onDataPointClick === 'function') {
+        if (payload.name) {
           onDataPointClick(
             enrichEventWithDetails(event ?? eventOrIndex, {
               value: payload.value.length ? payload.value[1] - payload.value[0] : payload.value,
@@ -175,19 +176,16 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               payload: payload.payload
             })
           );
-      } else {
-        typeof onDataPointClick === 'function' &&
+        } else {
           onDataPointClick(
-            enrichEventWithDetails(
-              {},
-              {
-                value: eventOrIndex.value,
-                dataKey: eventOrIndex.dataKey,
-                dataIndex: eventOrIndex.index,
-                payload: eventOrIndex.payload
-              }
-            )
+            enrichEventWithDetails({} as any, {
+              value: eventOrIndex.value,
+              dataKey: eventOrIndex.dataKey,
+              dataIndex: eventOrIndex.index,
+              payload: eventOrIndex.payload
+            })
           );
+        }
       }
     },
     [onDataPointClick]
@@ -279,7 +277,15 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
         {chartConfig.secondYAxis?.dataKey && layout === 'horizontal' && (
           <YAxis
             dataKey={chartConfig.secondYAxis.dataKey}
-            stroke={chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`}
+            axisLine={{
+              stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
+            }}
+            tick={{ fill: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})` }}
+            tickLine={{
+              stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
+            }}
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             label={{ value: chartConfig.secondYAxis.name, offset: 2, angle: +90, position: 'center' }}
             orientation="right"
             interval={0}
@@ -289,7 +295,15 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
         {chartConfig.secondYAxis?.dataKey && layout === 'vertical' && (
           <XAxis
             dataKey={chartConfig.secondYAxis.dataKey}
-            stroke={chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`}
+            axisLine={{
+              stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
+            }}
+            tick={{ fill: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})` }}
+            tickLine={{
+              stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
+            }}
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             label={{ value: chartConfig.secondYAxis.name, offset: 2, angle: +90, position: 'center' }}
             orientation="top"
             interval={0}
@@ -302,13 +316,21 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
             stroke={chartConfig.referenceLine.color}
             y={layout === 'horizontal' ? chartConfig.referenceLine.value : undefined}
             x={layout === 'vertical' ? chartConfig.referenceLine.value : undefined}
-            label={chartConfig.referenceLine.label}
             yAxisId={layout === 'horizontal' ? 'primary' : undefined}
             xAxisId={layout === 'vertical' ? 'primary' : undefined}
-          />
+          >
+            <Label>{chartConfig.referenceLine.label}</Label>
+          </ReferenceLine>
         )}
-        <Tooltip cursor={tooltipFillOpacity} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle} />
+        <Tooltip
+          cursor={tooltipFillOpacity}
+          formatter={tooltipValueFormatter}
+          labelFormatter={labelFormatter}
+          contentStyle={tooltipContentStyle}
+        />
         {!noLegend && (
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
           <Legend
             verticalAlign={chartConfig.legendPosition}
             align={chartConfig.legendHorizontalAlign}

@@ -32,10 +32,12 @@ import { ComboBoxItem } from './lib/ComboBoxItem';
 import { ContentDensity } from './lib/ContentDensity';
 import { CustomListItem } from './lib/CustomListItem';
 import { DatePicker } from './lib/DatePicker';
+import { DateRangePicker } from './lib/DateRangePicker';
 import { DateTimePicker } from './lib/DateTimePicker';
 import { DeviationIndicator } from './lib/DeviationIndicator';
 import { Dialog } from './lib/Dialog';
 import { DurationPicker } from './lib/DurationPicker';
+import { FCLLayout } from './lib/FCLLayout';
 import { FileUploader } from './lib/FileUploader';
 import { FilterBar } from './lib/FilterBar';
 import { FilterGroupItem } from './lib/FilterGroupItem';
@@ -46,6 +48,7 @@ import { FlexBoxAlignItems } from './lib/FlexBoxAlignItems';
 import { FlexBoxDirection } from './lib/FlexBoxDirection';
 import { FlexBoxJustifyContent } from './lib/FlexBoxJustifyContent';
 import { FlexBoxWrap } from './lib/FlexBoxWrap';
+import { FlexibleColumnLayout } from './lib/FlexibleColumnLayout';
 import { Form } from './lib/Form';
 import { FormGroup } from './lib/FormGroup';
 import { FormItem } from './lib/FormItem';
@@ -72,8 +75,9 @@ import { MessageStrip } from './lib/MessageStrip';
 import { MessageStripType } from './lib/MessageStripType';
 import { MultiComboBox } from './lib/MultiComboBox';
 import { MultiComboBoxItem } from './lib/MultiComboBoxItem';
-import { Notification } from './lib/Notification';
-import { NotificationGroup } from './lib/NotificationGroup';
+import { NotificationListGroupItem } from './lib/NotificationListGroupItem';
+import { NotificationListItem } from './lib/NotificationListItem';
+import { NotificationOverflowAction } from './lib/NotificationOverflowAction';
 import { ObjectPage } from './lib/ObjectPage';
 import { ObjectPageMode } from './lib/ObjectPageMode';
 import { ObjectPageSection } from './lib/ObjectPageSection';
@@ -94,6 +98,7 @@ import { ProductSwitch } from './lib/ProductSwitch';
 import { ProductSwitchItem } from './lib/ProductSwitchItem';
 import { ProgressIndicator } from './lib/ProgressIndicator';
 import { RadioButton } from './lib/RadioButton';
+import { RatingIndicator } from './lib/RatingIndicator';
 import { ResponsivePopover } from './lib/ResponsivePopover';
 import { SegmentedButton } from './lib/SegmentedButton';
 import { Select } from './lib/Select';
@@ -101,8 +106,8 @@ import { SemanticColor } from './lib/SemanticColor';
 import { ShellBar } from './lib/ShellBar';
 import { ShellBarItem } from './lib/ShellBarItem';
 import { SideNavigation } from './lib/SideNavigation';
-import { SideNavigationListItem } from './lib/SideNavigationListItem';
-import { SideNavigationOpenState } from './lib/SideNavigationOpenState';
+import { SideNavigationItem } from './lib/SideNavigationItem';
+import { SideNavigationSubItem } from './lib/SideNavigationSubItem';
 import { Size } from './lib/Size';
 import { Spinner } from './lib/Spinner';
 import { StandardListItem } from './lib/StandardListItem';
@@ -141,12 +146,15 @@ import { ToolbarDesign } from './lib/ToolbarDesign';
 import { ToolbarSeparator } from './lib/ToolbarSeparator';
 import { ToolbarSpacer } from './lib/ToolbarSpacer';
 import { ToolbarStyle } from './lib/ToolbarStyle';
+import { Tree } from './lib/Tree';
+import { TreeItem } from './lib/TreeItem';
 import { UploadCollection } from './lib/UploadCollection';
 import { UploadCollectionItem } from './lib/UploadCollectionItem';
 import { UploadState } from './lib/UploadState';
 import { ValueState } from './lib/ValueState';
 import { VariantManagement } from './lib/VariantManagement';
 import { VerticalAlign } from './lib/VerticalAlign';
+import { withWebComponent } from './lib/withWebComponent';
 
 export {
   ActionSheet,
@@ -179,10 +187,12 @@ export {
   ContentDensity,
   CustomListItem,
   DatePicker,
+  DateRangePicker,
   DateTimePicker,
   DeviationIndicator,
   Dialog,
   DurationPicker,
+  FCLLayout,
   FileUploader,
   FilterBar,
   FilterGroupItem,
@@ -193,6 +203,7 @@ export {
   FlexBoxDirection,
   FlexBoxJustifyContent,
   FlexBoxWrap,
+  FlexibleColumnLayout,
   Form,
   FormGroup,
   FormItem,
@@ -219,8 +230,9 @@ export {
   MessageStripType,
   MultiComboBox,
   MultiComboBoxItem,
-  Notification,
-  NotificationGroup,
+  NotificationListGroupItem,
+  NotificationListItem,
+  NotificationOverflowAction,
   ObjectPage,
   ObjectPageMode,
   ObjectPageSection,
@@ -241,6 +253,7 @@ export {
   ProductSwitchItem,
   ProgressIndicator,
   RadioButton,
+  RatingIndicator,
   ResponsivePopover,
   SegmentedButton,
   Select,
@@ -248,8 +261,8 @@ export {
   ShellBar,
   ShellBarItem,
   SideNavigation,
-  SideNavigationListItem,
-  SideNavigationOpenState,
+  SideNavigationItem,
+  SideNavigationSubItem,
   Size,
   Spinner,
   StandardListItem,
@@ -288,10 +301,13 @@ export {
   ToolbarSeparator,
   ToolbarSpacer,
   ToolbarStyle,
+  Tree,
+  TreeItem,
   UploadCollection,
   UploadCollectionItem,
   UploadState,
   ValueState,
   VariantManagement,
-  VerticalAlign
+  VerticalAlign,
+  withWebComponent
 };

@@ -6,24 +6,25 @@ import '@ui5/webcomponents-icons/dist/icons/message-warning';
 import '@ui5/webcomponents-icons/dist/icons/question-mark';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { useConsolidatedRef, useI18nText, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/hooks';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 
 import {
-  CONFIRMATION,
-  ERROR,
-  HIGHLIGHT,
-  INFORMATION,
   ABORT,
   CANCEL,
   CLOSE,
+  CONFIRMATION,
   DELETE,
+  ERROR,
+  HIGHLIGHT,
   IGNORE,
+  INFORMATION,
   NO,
   OK,
   RETRY,
-  YES,
   SUCCESS,
-  WARNING
+  WARNING,
+  YES
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
@@ -37,6 +38,7 @@ import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import React, { FC, forwardRef, isValidElement, ReactNode, Ref, useCallback, useEffect, useMemo } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DialogDomRef } from '../../interfaces/Ui5DialogDomRef';
+import { stopPropagation } from '../../internal/stopPropagation';
 import styles from './MessageBox.jss';
 
 const actionTextMap = new Map();
@@ -62,9 +64,6 @@ export interface MessageBoxPropTypes extends CommonProps {
 
 const useStyles = createComponentStyles(styles, { name: 'MessageBox' });
 
-/**
- * <code>import { MessageBox } from '@ui5/webcomponents-react/lib/MessageBox';</code>
- */
 const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDomRef>) => {
   const { open, type, children, className, style, tooltip, slot, title, icon, actions, onClose } = props;
 
@@ -154,6 +153,7 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
   const handleOnClose = useCallback(
     (e) => {
       const { action } = e.target.dataset;
+      stopPropagation(e);
       onClose(enrichEventWithDetails(e, { action }));
     },
     [onClose]
@@ -173,14 +173,15 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
 
   const passThroughProps = usePassThroughHtmlProps(props, ['onClose']);
 
+  const messageBoxClassNames = StyleClassHelper.of(classes.messageBox).putIfPresent(className).className;
+
   return (
     <Dialog
       slot={slot}
       ref={dialogRef}
       style={style}
       tooltip={tooltip}
-      className={className}
-      onAfterClose={open ? handleOnClose : null}
+      className={messageBoxClassNames}
       header={
         <header className={classes.header} data-type={type}>
           {iconToRender}
@@ -203,6 +204,7 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
           })}
         </footer>
       }
+      onAfterClose={open ? handleOnClose : stopPropagation}
       {...passThroughProps}
     >
       <Text className={classes.content}>{children}</Text>

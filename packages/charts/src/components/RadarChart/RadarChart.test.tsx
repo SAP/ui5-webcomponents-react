@@ -1,5 +1,3 @@
-import { action } from '@storybook/addon-actions';
-import { boolean } from '@storybook/addon-knobs';
 import { mount } from 'enzyme';
 import * as React from 'react';
 import { complexDataSet } from '../../resources/DemoProps';
@@ -10,11 +8,8 @@ describe('RadarChart', () => {
     expect(
       mount(
         <RadarChart
-          loading={boolean('loading', false)}
-          onDataPointClick={action('onDataPointClick')}
-          onLegendClick={action('onLegendClick')}
           dataset={complexDataSet}
-          style={{ width: '100%' }}
+          style={{ width: '50%' }}
           dimensions={[
             {
               accessor: 'name',

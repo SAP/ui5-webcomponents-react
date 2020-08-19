@@ -1,8 +1,7 @@
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/RadioButton';
-import React, { FC } from 'react';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { FC } from 'react';
 
 export interface RadioButtonPropTypes extends Omit<WithWebComponentPropTypes, 'onSelect'> {
   /**
@@ -52,8 +51,6 @@ export interface RadioButtonPropTypes extends Omit<WithWebComponentPropTypes, 'o
 }
 
 /**
- * <code>import { RadioButton } from '@ui5/webcomponents-react/lib/RadioButton';</code>
- * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/RadioButton" target="_blank">UI5 Web Components Playground</a>
  */
 const RadioButton: FC<RadioButtonPropTypes> = withWebComponent<RadioButtonPropTypes>(

@@ -1,34 +1,42 @@
-import { action } from '@storybook/addon-actions';
-import { boolean, number, select, text } from '@storybook/addon-knobs';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { TextArea } from '@ui5/webcomponents-react/lib/TextArea';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React from 'react';
 
 export default {
   title: 'UI5 Web Components / TextArea',
-  component: TextArea
+  component: TextArea,
+  argTypes: {
+    ...createSelectArgTypes({ valueState: ValueState }),
+    ref: {
+      type: null
+    }
+  },
+  args: {
+    growingMaxLines: 0,
+    rows: 0,
+    valueState: ValueState.None
+  }
 };
 
-export const generatedDefaultStory = () => (
+export const generatedDefaultStory = (props) => (
   <TextArea
-    disabled={boolean('disabled', false)}
-    growing={boolean('growing', false)}
-    growingMaxLines={number('growingMaxLines', 0)}
-    maxlength={number('maxlength', null)}
-    name={text('name', undefined)}
-    placeholder={text('placeholder', '')}
-    readonly={boolean('readonly', false)}
-    required={boolean('required', false)}
-    rows={number('rows', 0)}
-    showExceededText={boolean('showExceededText', false)}
-    value={text('value', '')}
-    valueState={select('valueState', ValueState, ValueState.None)}
+    disabled={props.disabled}
+    growing={props.growing}
+    growingMaxLines={props.growingMaxLines}
+    maxlength={props.maxlength}
+    name={props.name}
+    placeholder={props.placeholder}
+    readonly={props.readonly}
+    required={props.required}
+    rows={props.rows}
+    showExceededText={props.showExceededText}
+    value={props.value}
+    valueState={props.valueState}
+    onChange={props.onChange}
+    onInput={props.onInput}
     valueStateMessage={<span>Value State Message</span>}
-    onChange={action('onChange')}
-    onInput={action('onInput')}
   />
 );
 
-generatedDefaultStory.story = {
-  name: 'Generated default story'
-};
+generatedDefaultStory.storyName = 'Generated default story';

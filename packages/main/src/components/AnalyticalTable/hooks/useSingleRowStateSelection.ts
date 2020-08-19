@@ -1,22 +1,6 @@
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
-import { useCallback } from 'react';
-
-const prepareRow = (row, { instance }) => {
-  row.selectSingleRow = (event, selectionCellClick = false) => {
-    instance.selectSingleRow(row, event, selectionCellClick);
-  };
-};
-
-const getRowProps = (rowProps, { row }) => {
-  return [
-    rowProps,
-    {
-      onClick: row.selectSingleRow
-    }
-  ];
-};
 
 const tagNamesWhichShouldNotSelectARow = new Set([
   'UI5-INPUT',
@@ -33,70 +17,68 @@ const tagNamesWhichShouldNotSelectARow = new Set([
   'UI5-TOGGLEBUTTON'
 ]);
 
-const useInstance = (instance) => {
-  const { webComponentsReactProperties, dispatch, toggleRowSelected, selectedFlatRows } = instance;
-  const { isTreeTable, selectionMode, onRowSelected, selectionBehavior } = webComponentsReactProperties;
-
-  const selectSingleRow = useCallback(
-    (row, e, selectionCellClick = false) => {
-      if (
-        e.target?.dataset?.name !== 'internal_selection_column' &&
-        !(e.markerAllowTableRowSelection === true || e.nativeEvent?.markerAllowTableRowSelection === true) &&
-        tagNamesWhichShouldNotSelectARow.has(e.target.tagName)
-      ) {
-        return;
-      }
-
-      const isEmptyRow = row.original?.emptyRow;
-      if ([TableSelectionMode.SINGLE_SELECT, TableSelectionMode.MULTI_SELECT].includes(selectionMode) && !isEmptyRow) {
-        if (row.isGrouped || (TableSelectionBehavior.ROW_SELECTOR === selectionBehavior && !selectionCellClick)) {
+const getRowProps = (rowProps, { row, instance }) => {
+  const { webComponentsReactProperties, toggleRowSelected, selectedFlatRows } = instance;
+  if (webComponentsReactProperties.selectionMode === TableSelectionMode.NONE) {
+    return rowProps;
+  }
+  return [
+    rowProps,
+    {
+      onClick: (e, selectionCellClick = false) => {
+        if (
+          e.target?.dataset?.name !== 'internal_selection_column' &&
+          !(e.markerAllowTableRowSelection === true || e.nativeEvent?.markerAllowTableRowSelection === true) &&
+          tagNamesWhichShouldNotSelectARow.has(e.target.tagName)
+        ) {
           return;
         }
-        if (isTreeTable) {
-          if (selectionMode === TableSelectionMode.MULTI_SELECT) {
-            dispatch({
-              type: 'SET_SELECTED_ROWS',
-              selectedIds: Object.assign({}, ...selectedFlatRows.map((item) => ({ [item.id]: true })), {
-                [row.id]: !row.isSelected
-              })
-            });
-          } else {
-            dispatch({ type: 'SET_SELECTED_ROWS', selectedIds: { [row.id]: !row.isSelected } });
-          }
-        } else {
-          row.toggleRowSelected();
+
+        // dont select empty rows
+        const isEmptyRow = row.original?.emptyRow;
+        if (isEmptyRow) {
+          return;
         }
+
+        // dont select grouped rows
+        if (row.isGrouped) {
+          return;
+        }
+
+        const { selectionBehavior, selectionMode, onRowSelected } = webComponentsReactProperties;
+
+        // dont continue if the row was clicked and selection mode is row selector only
+        if (selectionBehavior === TableSelectionBehavior.ROW_SELECTOR && !selectionCellClick) {
+          return;
+        }
+
+        if (selectionMode === TableSelectionMode.SINGLE_SELECT) {
+          for (const row of selectedFlatRows) {
+            toggleRowSelected(row.id, false);
+          }
+        }
+        instance.toggleRowSelected(row.id);
+
+        // fire event
         if (typeof onRowSelected === 'function') {
           const payload = {
             row,
-            isSelected: !row.isSelected
+            isSelected: !row.isSelected,
+            selectedFlatRows: !row.isSelected ? [row.id] : []
           };
-          const payloadWithFlatRows = {
-            ...payload,
-            selectedFlatRows: !row.isSelected
+          if (selectionMode === TableSelectionMode.MULTI_SELECT) {
+            payload.selectedFlatRows = !row.isSelected
               ? [...selectedFlatRows, row]
-              : selectedFlatRows.filter((prevRow) => prevRow.id !== row.id)
-          };
-          onRowSelected(
-            enrichEventWithDetails(e, TableSelectionMode.MULTI_SELECT === selectionMode ? payloadWithFlatRows : payload)
-          );
-        }
-        if (selectionMode === TableSelectionMode.SINGLE_SELECT && !isTreeTable) {
-          selectedFlatRows.forEach(({ id }) => {
-            toggleRowSelected(id, false);
-          });
+              : selectedFlatRows.filter((prevRow) => prevRow.id !== row.id);
+          }
+          onRowSelected(enrichEventWithDetails(e, payload));
         }
       }
-    },
-    [selectionMode, isTreeTable, dispatch, selectedFlatRows, onRowSelected, toggleRowSelected]
-  );
-
-  Object.assign(instance, { selectSingleRow });
+    }
+  ];
 };
 
 export const useSingleRowStateSelection = (hooks) => {
-  hooks.useInstance.push(useInstance);
-  hooks.prepareRow.push(prepareRow);
   hooks.getRowProps.push(getRowProps);
 };
 useSingleRowStateSelection.pluginName = 'useSingleRowStateSelection';

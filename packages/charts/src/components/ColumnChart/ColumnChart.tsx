@@ -13,6 +13,7 @@ import {
   BarChart as ColumnChartLib,
   Brush,
   CartesianGrid,
+  Label,
   LabelList,
   Legend,
   ReferenceLine,
@@ -22,6 +23,7 @@ import {
 } from 'recharts';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { useChartMargin } from '../../hooks/useChartMargin';
+import { useLabelFormatter } from '../../hooks/useLabelFormatter';
 import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
 import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
@@ -93,9 +95,6 @@ const valueAccessor = (attribute) => ({ payload }) => {
   return getValueByDataKey(payload, attribute);
 };
 
-/**
- * <code>import { ColumnChart } from '@ui5/webcomponents-react-charts/lib/ColumnChart';</code>
- */
 const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, ref: Ref<HTMLDivElement>) => {
   const {
     loading,
@@ -140,6 +139,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
   const primaryDimension = dimensions[0];
   const primaryMeasure = measures[0];
 
+  const labelFormatter = useLabelFormatter(primaryDimension);
   const chartRef = useConsolidatedRef<any>(ref);
 
   const dataKeys = measures.map(({ accessor }) => accessor);
@@ -225,7 +225,15 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
         {chartConfig.secondYAxis?.dataKey && (
           <YAxis
             dataKey={chartConfig.secondYAxis.dataKey}
-            stroke={chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`}
+            axisLine={{
+              stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
+            }}
+            tick={{ fill: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})` }}
+            tickLine={{
+              stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
+            }}
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             label={{ value: chartConfig.secondYAxis.name, offset: 2, angle: +90, position: 'center' }}
             orientation="right"
             yAxisId="right"
@@ -246,10 +254,13 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
               fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
               stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
               barSize={element.width}
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
               onClick={onDataPointClickInternal}
               isAnimationActive={noAnimation === false}
             >
               <LabelList
+                data={dataset}
                 valueAccessor={valueAccessor(element.accessor)}
                 content={<ChartDataLabel config={element} chartType="column" position={'insideTop'} />}
               />
@@ -257,6 +268,8 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
           );
         })}
         {!noLegend && (
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
           <Legend
             verticalAlign={chartConfig.legendPosition}
             align={chartConfig.legendHorizontalAlign}
@@ -265,14 +278,16 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
           />
         )}
         {chartConfig.referenceLine && (
-          <ReferenceLine
-            stroke={chartConfig.referenceLine.color}
-            y={chartConfig.referenceLine.value}
-            label={chartConfig.referenceLine.label}
-            yAxisId={'left'}
-          />
+          <ReferenceLine stroke={chartConfig.referenceLine.color} y={chartConfig.referenceLine.value} yAxisId="left">
+            <Label>{chartConfig.referenceLine.label}</Label>
+          </ReferenceLine>
         )}
-        <Tooltip cursor={tooltipFillOpacity} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle} />
+        <Tooltip
+          cursor={tooltipFillOpacity}
+          formatter={tooltipValueFormatter}
+          labelFormatter={labelFormatter}
+          contentStyle={tooltipContentStyle}
+        />
         {chartConfig.zoomingTool && (
           <Brush
             y={10}
