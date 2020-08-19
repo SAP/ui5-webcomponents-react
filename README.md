@@ -86,7 +86,7 @@ npm install @ui5/webcomponents-react --save
 ### Tutorial
 
 You are new to UI5 Web Components for React and don't know where to start?<br />
-Then take a look at our [Tutorial Mission at “SAP Developers”](https://developers.sap.com/mission.react-spa.html)!
+Then take a look at our [Tutorial Mission](https://developers.sap.com/mission.react-spa.html) at “SAP Developers”!
 There you get a first glimpse at how easy it is to create an Application with UI5 Web Components for React.<br />
 In about an hour you will create a business dashboard from scratch and get familiar with some React basics in case you don't know them already.
 
