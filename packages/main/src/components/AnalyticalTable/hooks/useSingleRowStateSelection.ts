@@ -8,13 +8,18 @@ const tagNamesWhichShouldNotSelectARow = new Set([
   'UI5-BUTTON',
   'UI5-CHECKBOX',
   'UI5-COMBOBOX',
-  'UI5-DATEPICKER',
   'UI5-MULTI-COMBOBOX',
   'UI5-SELECT',
   'UI5-RADIOBUTTON',
   'UI5-SEGMENTEDBUTTON',
   'UI5-SWITCH',
-  'UI5-TOGGLEBUTTON'
+  'UI5-TOGGLEBUTTON',
+  'UI5-DATE-PICKER',
+  'UI5-DATERANGE-PICKER',
+  'UI5-DATETIME-PICKER',
+  'UI5-DURATION-PICKER',
+  'UI5-TIME-PICKER',
+  'UI5-FILE-UPLOADER'
 ]);
 
 const getRowProps = (rowProps, { row, instance }) => {
