@@ -44,8 +44,8 @@ export const renderDemo = (props) => {
         }
         breadcrumbs={
           <Breadcrumbs currentLocationText="Employee Details">
-            <Link href="PathSegment1">Manager Cockpit</Link>
-            <Link href="PathSegment2">My Team</Link>
+            <Link>Manager Cockpit</Link>
+            <Link>My Team</Link>
           </Breadcrumbs>
         }
         title={props.title}
