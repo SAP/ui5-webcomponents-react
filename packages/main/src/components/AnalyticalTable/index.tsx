@@ -282,8 +282,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
 
   useEffect(() => {
     toggleAllRowsSelected(false);
-    // eslint-disable-next-line guard-for-in
     const validChars = /^(\d\.)*\d$/;
+    // eslint-disable-next-line guard-for-in
     for (const row in selectedRowIds) {
       if (reactTableOptions?.getRowId) {
         toggleRowSelected(row, selectedRowIds[row]);
