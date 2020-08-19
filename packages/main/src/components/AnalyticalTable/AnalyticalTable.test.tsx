@@ -311,7 +311,7 @@ describe('AnalyticalTable', () => {
     expect(wrapper.render()).toMatchSnapshot();
   });
 
-  test('highlight row with custom row key', () => {
+  test.skip('highlight row with custom row key', () => {
     const utils = render(
       <AnalyticalTable
         selectionMode={TableSelectionMode.SINGLE_SELECT}
