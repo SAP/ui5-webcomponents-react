@@ -24,8 +24,6 @@ const rollupConfigFactory = (pkgName, externals = []) => {
 
   const allLibFiles = allFilesAndFolders.filter((file) => fs.statSync(file).isFile());
 
-  console.log(require('@babel/runtime/package.json').version);
-
   const plugins = [
     nodeResolve({
       extensions: ['.mjs', '.js', '.json', '.node', '.jsx', '.ts', '.tsx']
@@ -80,7 +78,7 @@ const rollupConfigFactory = (pkgName, externals = []) => {
         '--declaration',
         '--emitDeclarationOnly',
         '--declarationDir',
-        path.resolve(PKG_BASE_PATH, 'types'),
+        PKG_BASE_PATH,
         '--removeComments',
         'false'
       ],
