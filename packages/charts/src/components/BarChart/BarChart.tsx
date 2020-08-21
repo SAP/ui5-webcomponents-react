@@ -273,6 +273,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
           <Brush
             y={10}
             dataKey={primaryDimensionAccessor}
+            tickFormatter={primaryDimension.formatter}
             stroke={ThemingParameters.sapObjectHeader_BorderColor}
             travellerWidth={10}
             height={20}
