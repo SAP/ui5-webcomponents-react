@@ -5,6 +5,7 @@ on:
   
 jobs:
   build-and-release:
+    if: github.actor === 'vbersch' || github.actor === 'Lukas742'
     runs-on: ubuntu-latest     
 
     steps:
