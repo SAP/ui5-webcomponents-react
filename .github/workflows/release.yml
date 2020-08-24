@@ -42,6 +42,8 @@ jobs:
         
     - name: 'Release RC'
       run: |
+        git config user.email ${{ secrets.BOT_GIT_EMAIL }}
+        git config user.name ${{ secrets.BOT_GIT_USERNAME }}
         ${GITHUB_WORKSPACE}/node_modules/.bin/lerna publish ${{ github.event.inputs.release_type }} \
           --conventional-graduate \
           --create-release github
