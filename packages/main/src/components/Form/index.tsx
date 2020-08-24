@@ -83,14 +83,6 @@ export interface FormPropTypes extends CommonProps {
 
 const useStyles = createComponentStyles(styles, { name: 'Form' });
 
-const createArrayOfLength = (length): unknown[][] => {
-  const arr = new Array(length);
-  for (let i = 0; i < length; i++) {
-    arr[i] = [];
-  }
-  return arr;
-};
-
 const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLDivElement>) => {
   const {
     title,
