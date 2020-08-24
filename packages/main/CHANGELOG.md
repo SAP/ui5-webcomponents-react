@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.10.5...v0.10.6) (2020-08-24)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** respect columnOrder prop ([#666](https://github.com/SAP/ui5-webcomponents-react/issues/666)) ([05382b8](https://github.com/SAP/ui5-webcomponents-react/commit/05382b887fb20ddeb13cfbc1b26c3c45649fcf42))
+* **Form:** fix tab order ([#665](https://github.com/SAP/ui5-webcomponents-react/issues/665)) ([d022fe7](https://github.com/SAP/ui5-webcomponents-react/commit/d022fe74be1e1cc8004b938cb7247473771f3016)), closes [#645](https://github.com/SAP/ui5-webcomponents-react/issues/645)
+
+
+
+
+
 ## [0.10.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.10.4...v0.10.5) (2020-08-19)
 
 
