@@ -174,7 +174,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     infiniteScroll,
     infiniteScrollThreshold = 20,
     onLoadMore,
-    extension
+    extension,
+    columnOrder
   } = props;
 
   const classes = useStyles();
@@ -330,6 +331,12 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     },
     [tableState.groupBy, onGroup, setGroupBy]
   );
+
+  useEffect(() => {
+    if (columnOrder?.length > 0) {
+      setColumnOrder(columnOrder);
+    }
+  }, [columnOrder]);
 
   const [dragOver, handleDragEnter, handleDragStart, handleDragOver, handleOnDrop, handleOnDragEnd] = useDragAndDrop(
     props,
