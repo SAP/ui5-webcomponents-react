@@ -1,7 +1,12 @@
 name: 'Release RC'
 
 on: 
-  workflow_dispatch
+  workflow_dispatch:
+    inputs:
+      release_type:
+        description: 'Release Type: patch | minor | major'
+        required: true
+        default: 'patch'
   
 jobs:
   build-and-release:
@@ -36,11 +41,9 @@ jobs:
         
     - name: 'Release RC'
       run: |
-        ${GITHUB_WORKSPACE}/node_modules/.bin/lerna publish prerelease \
-          --conventional-prerelease \
-          --create-release github \
-          --dist-tag next \
-          --pre-dist-tag next
+        ${GITHUB_WORKSPACE}/node_modules/.bin/lerna publish ${{ github.event.inputs.name }} \
+          --conventional-graduate \
+          --create-release github
       env:
         GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         
