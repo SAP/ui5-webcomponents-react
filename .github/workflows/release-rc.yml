@@ -1,4 +1,4 @@
-name: 'Release RC'
+name: 'Release - Release Candidate'
 
 on: 
   workflow_dispatch
@@ -25,18 +25,9 @@ jobs:
         yarn test
         yarn build
         
-    - name: 'npm auth'
+    - name: publish
       run: |
-        npm config set //registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN
-        npm config set //registry.npmjs.org/:username=${NPM_USERNAME}
-        npm config set //registry.npmjs.org/:email=${NPM_EMAIL}
-      env:
-        NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        NPM_USERNAME: ${{ secrets.NPM_USERNAME }}
-        NPM_EMAIL: ${{ secrets.NPM_EMAIL }}
-        
-    - name: 'Release RC'
-      run: |
+        npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}
         git config user.email ${{ secrets.BOT_GIT_EMAIL }}
         git config user.name ${{ secrets.BOT_GIT_USERNAME }}
         ${GITHUB_WORKSPACE}/node_modules/.bin/lerna publish prerelease \
