@@ -1,0 +1,45 @@
+name: 'Release RC'
+
+on: 
+  workflow_dispatch
+  
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest     
+
+    steps:
+    - uses: actions/checkout@v2.3.2
+      with:
+        token: ${{ secrets.ACCESS_TOKEN }}
+
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v2.1.0
+      with:
+        node-version: 12.x
+
+    - name: Install, test and build
+      run: |
+        yarn install
+        yarn test
+        yarn build
+        
+    - name: 'npm auth'
+      run: |
+        npm config set //registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN
+        npm config set //registry.npmjs.org/:username=${NPM_USERNAME}
+        npm config set //registry.npmjs.org/:email=${NPM_EMAIL}
+      env:
+        NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        NPM_USERNAME: ${{ secrets.NPM_USERNAME }}
+        NPM_EMAIL: ${{ secrets.NPM_EMAIL }}
+        
+    - name: 'Release RC'
+      run: |
+        ${GITHUB_WORKSPACE}/node_modules/.bin/lerna publish prerelease \
+          --conventional-prerelease \
+          --create-release github \
+          --dist-tag next \
+          --pre-dist-tag next
+      env:
+        GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        
