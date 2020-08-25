@@ -1,5 +1,4 @@
 
-// browser support
 import 'react-app-polyfill/ie11';
 import 'react-app-polyfill/stable';
 import '@ui5/webcomponents-base/dist/features/browsersupport/IE11.js';

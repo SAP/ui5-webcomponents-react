@@ -1,4 +1,3 @@
-// lifecycle & hooks
 import React from 'react';
 
 import error from '../assets/error.png';
