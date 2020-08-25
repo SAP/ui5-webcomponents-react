@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="p-4"
+    data-testid="shell-wrapper"
+    style="background-color: rgb(247, 247, 247); border-bottom: 1px solid #ececec; position: fixed; width: 100%; z-index: 100;"
+  >
+    <ui5-shellbar />
+  </div>
+</DocumentFragment>
+`;

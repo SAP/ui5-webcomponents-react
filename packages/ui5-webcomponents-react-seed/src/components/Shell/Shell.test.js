@@ -5,6 +5,11 @@ import { render } from '@testing-library/react';
 
 import Shell from './Shell';
 
+test('should match snapshot', () => {
+  const { asFragment } = render(<Shell />);
+  expect(asFragment()).toMatchSnapshot();
+});
+
 test('should render', () => {
   const { getByTestId } = render(<Shell />);
   const shell = getByTestId('shell-wrapper');
