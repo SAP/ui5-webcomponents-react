@@ -1,0 +1,44 @@
+{
+  "name": "ui5-webcomponents-react-seed",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "@ui5/webcomponents": "1.0.0-rc.8",
+    "@ui5/webcomponents-fiori": "1.0.0-rc.8",
+    "@ui5/webcomponents-icons": "1.0.0-rc.8",
+    "@ui5/webcomponents-react": "^0.10.0",
+    "jest-environment-jsdom-sixteen": "^1.0.3",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env jest-environment-jsdom-sixteen",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "jest": {
+    "transformIgnorePatterns": [
+      "node_modules/(?!(@ui5|lit-html)).*\\.js$"
+    ]
+  }
+}
