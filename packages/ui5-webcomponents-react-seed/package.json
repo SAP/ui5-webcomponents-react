@@ -21,7 +21,8 @@
     "start:mock": "nodemon --watch server/data --exec json-server --p 3001 server/mockserver.js --routes server/routes.json",
     "mock": "npm-run-all --parallel start:mock start:react",
     "build": "react-scripts build",
-    "test": "react-scripts test --env jest-environment-jsdom-sixteen",
+    "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
+    "test:coverage": "npm test -- --watchAll --coverage",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -46,6 +47,7 @@
     ]
   },
   "devDependencies": {
+    "husky": "^4.2.5",
     "nodemon": "^2.0.4",
     "npm-run-all": "^4.1.5",
     "react-app-polyfill": "^1.0.6"
