@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.10.5...v0.10.6) (2020-08-24)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** respect columnOrder prop ([#666](https://github.com/SAP/ui5-webcomponents-react/issues/666)) ([05382b8](https://github.com/SAP/ui5-webcomponents-react/commit/05382b887fb20ddeb13cfbc1b26c3c45649fcf42))
+* **Charts:** apply dimension formatter to zooming tool ([#663](https://github.com/SAP/ui5-webcomponents-react/issues/663)) ([972ee49](https://github.com/SAP/ui5-webcomponents-react/commit/972ee49594149e9ed7b8eea8a79656520b0f92c9))
+* **Form:** fix tab order ([#665](https://github.com/SAP/ui5-webcomponents-react/issues/665)) ([d022fe7](https://github.com/SAP/ui5-webcomponents-react/commit/d022fe74be1e1cc8004b938cb7247473771f3016)), closes [#645](https://github.com/SAP/ui5-webcomponents-react/issues/645)
+
+
+
+
+
+## [0.10.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.10.4...v0.10.5) (2020-08-19)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** prevent crash if unsupported rowId is set as selectedRowIds key ([#660](https://github.com/SAP/ui5-webcomponents-react/issues/660)) ([e3b1117](https://github.com/SAP/ui5-webcomponents-react/commit/e3b111766f8a9170294e5b1335eeced323c649d7))
+* **AnalyticalTable:** prevent event bubbling of ui5 controls ([#659](https://github.com/SAP/ui5-webcomponents-react/issues/659)) ([44bedf8](https://github.com/SAP/ui5-webcomponents-react/commit/44bedf8262a026b63c6b5292e8fc318dc3abddd3))
+* **FilterBar:** support new web-components controls, fix layout and labels ([#661](https://github.com/SAP/ui5-webcomponents-react/issues/661)) ([d0969b5](https://github.com/SAP/ui5-webcomponents-react/commit/d0969b53bcd524c2289fa1d228594678638cb671))
+
+
+
+
+
 ## [0.10.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.10.3...v0.10.4) (2020-08-19)
 
 

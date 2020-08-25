@@ -292,6 +292,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
           <Brush
             y={10}
             dataKey={primaryDimensionAccessor}
+            tickFormatter={primaryDimension.formatter}
             stroke={ThemingParameters.sapObjectHeader_BorderColor}
             travellerWidth={10}
             height={20}
