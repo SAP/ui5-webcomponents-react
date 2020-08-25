@@ -26,3 +26,33 @@ Executes the test runner and generates the report.
 
 Builds the app for production to the `build` folder.
 
+
+## Dev & Not Dev Dependencies
+
+### `commitlint`
+
+Used to check the commits before actually commits.
+
+### `env-cmd`
+
+Used for embed the enviroment variables during the API URL build.
+
+### `husky`
+
+Used to provide a checker before actions.
+
+### `nodemon`
+
+Used to update the files without restarting the server.
+
+### `npm-run-all`
+
+Used to run multiple commands without worrying about OS syntax.
+
+### `react-app-polyfill`
+
+Used to support old browsers.
+
+### `jest & jest-enviroment-jsom-sixteen`
+
+Used to support jest and its scripts with the new engine.
