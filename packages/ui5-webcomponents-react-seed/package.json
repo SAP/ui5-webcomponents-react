@@ -19,9 +19,11 @@
   "scripts": {
     "start:react": "react-scripts start",
     "start:mock": "nodemon --watch server/data --exec json-server --p 3001 server/mockserver.js --routes server/routes.json",
+    "start": "npm-run-all --parallel start:react",
     "mock": "npm-run-all --parallel start:mock start:react",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
+    "test:ci": "npm test -- --watchAll=false",
     "test:coverage": "npm test -- --watchAll=false --coverage",
     "eject": "react-scripts eject"
   },
@@ -45,6 +47,11 @@
     "transformIgnorePatterns": [
       "node_modules/(?!(@ui5|lit-html)).*\\.js$"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run test:ci"
+    }
   },
   "devDependencies": {
     "husky": "^4.2.5",
