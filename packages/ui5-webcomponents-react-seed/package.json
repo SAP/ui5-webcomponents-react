@@ -22,13 +22,12 @@
     "start": "env-cmd -f .env npm-run-all --parallel start:react",
     "mock": "env-cmd -f .env npm-run-all --parallel start:mock start:react",
     "build": "react-scripts build",
+    "lint": "eslint --quiet .",
     "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
     "test:ci": "npm test -- --watchAll=false",
     "test:coverage": "npm test -- --watchAll=false --coverage",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
+    "eject": "react-scripts eject",
+    "commit:pre": "npm-run-all --parallel test:ci lint"
   },
   "browserslist": {
     "production": [
@@ -50,7 +49,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run test:ci",
+      "pre-commit": "npm run commit:pre",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "prepare-commit-msg": "exec < /dev/tty && true"
     }
