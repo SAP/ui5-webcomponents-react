@@ -33,12 +33,16 @@
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
-      "last 1 safari version"
+      "last 1 safari version",
+      "ie 11"
     ]
   },
   "jest": {
     "transformIgnorePatterns": [
       "node_modules/(?!(@ui5|lit-html)).*\\.js$"
     ]
+  },
+  "devDependencies": {
+    "react-app-polyfill": "^1.0.6"
   }
 }
