@@ -10,4 +10,7 @@ export interface IPolarChartConfig {
 
   tooltipItemStyle?: CSSProperties;
   tooltipLabelStyle?: CSSProperties;
+
+  activeSegment?: number;
+  showActiveSegmentDataLabel?: boolean;
 }

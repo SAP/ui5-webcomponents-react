@@ -7,7 +7,8 @@ export default {
   component: PieChart,
   args: {
     innerRadius: '0%',
-    outerRadius: '80%'
+    outerRadius: '80%',
+    activeSegment: 2
   },
   argTypes: {
     dataset: {
