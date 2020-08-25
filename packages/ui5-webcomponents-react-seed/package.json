@@ -22,7 +22,7 @@
     "mock": "npm-run-all --parallel start:mock start:react",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
-    "test:coverage": "npm test -- --watchAll --coverage",
+    "test:coverage": "npm test -- --watchAll=false --coverage",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
