@@ -1,11 +1,11 @@
 import React from 'react'
 
-import CenteredText from '../../components/CenteredText/CenteredText';
+import CenteredLink from '../../components/CenteredLink/CenteredLink';
 
 export default function TodoList() {
       return (
             <div>
-                  <CenteredText />
+                  <CenteredLink />
             </div>
       )
 }
