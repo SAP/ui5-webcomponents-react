@@ -16,6 +16,7 @@ const Routes = () => {
         to={BrowserURL.TODO_LIST} />
       <RouteValidator
         allowedPermissions={['canAccessTodoListPage']}
+        allowenceKey='permissions'
         path={BrowserURL.TODO_LIST}
         component={TodoList} />
       <Route

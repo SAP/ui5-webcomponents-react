@@ -15,12 +15,12 @@ const fetchUser = async () => {
   return res.data;
 };
 
-const RouteValidator = ({ allowedPermissions, path, component, ...props }) => {
+const RouteValidator = ({ allowedPermissions, allowenceKey, path, component, ...props }) => {
   const { data, status } = useQuery('GET_USER_LOGGED', fetchUser);
 
   const getRoute = () => {
     if (status === Constants.CODES.RQ_SUCCESS) {
-      const hasAccess = data.data.user.permissions.some(permission => allowedPermissions.includes(permission));
+      const hasAccess = data.data.user[allowenceKey].some(permission => allowedPermissions.includes(permission));
       return <Route path={path} {...props} component={hasAccess ? component : NotFound} />;
     }
 

@@ -14,7 +14,7 @@ export default function TodoList() {
       <br />
       <CenteredLink onClick={() => history.push(BrowserURL.BUGGY)} text='Test Error Page' />
       <br />
-      <ComponentValidator allowedPermissions={['canAccessDropApplication']}>
+      <ComponentValidator allowedPermissions={['canAccessDropApplication']} allowenceKey='permissions'>
         <CenteredLink text='Drop Application (this is a restricted text and you should not see unless you have access)' />
       </ComponentValidator>
     </div>
