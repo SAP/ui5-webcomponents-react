@@ -6,7 +6,8 @@ module.exports = {
       "name": "Luis Valgoi",
       "permissions": [
         'canAccessTodoListPage',
-        'canAccessTodoEditPage'
+        'canAccessTodoEditPage',
+        'canAccessDropApplication'
       ]
     }
   }
