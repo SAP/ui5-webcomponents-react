@@ -5,7 +5,7 @@ import BrowserURL from '../util/BrowserURL';
 import TodoList from '../pages/Todo/List/TodoList';
 import NotFound from '../pages/Fallback/NotFound';
 import Buggy from '../pages/Fallback/Buggy';
-import RouteValidator from './RouteValidator';
+import RouteValidator from '../permissions/RouteValidator';
 
 const Routes = () => {
   return (
