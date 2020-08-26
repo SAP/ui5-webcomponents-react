@@ -17,11 +17,19 @@ export default {
     },
     dimension: {
       type: null
+    },
+    showActiveSegmentDataLabel: {
+      type: 'boolean'
+    },
+    activeSegment: {
+      type: 'number'
     }
   },
   args: {
     innerRadius: '20%',
-    outerRadius: '90%'
+    outerRadius: '90%',
+    activeSegment: 9,
+    showActiveSegmentDataLabel: true
   }
 };
 
@@ -35,6 +43,10 @@ export const renderStory = (props) => {
       onLegendClick={props.onLegendClick}
       style={{ width: '50%' }}
       dataset={simpleDataSet}
+      chartConfig={{
+        activeSegment: props.activeSegment,
+        showActiveSegmentDataLabel: props.showActiveSegmentDataLabel
+      }}
       dimension={{
         accessor: 'name'
       }}
