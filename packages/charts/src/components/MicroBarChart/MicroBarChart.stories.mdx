@@ -1,5 +1,6 @@
 import { Meta, Title, Description, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { MicroBarChart } from '@ui5/webcomponents-react-charts/lib/MicroBarChart';
+import { DocsHeader } from '@shared/stories/DocsHeader';
 
 <Meta
   title="Charts /  MicroBarChart"
@@ -31,8 +32,7 @@ import { MicroBarChart } from '@ui5/webcomponents-react-charts/lib/MicroBarChart
   }}
 />
 
-<Title />
-<Description />
+<DocsHeader />
 
 <Canvas>
   <Story name="Default">
@@ -52,7 +52,7 @@ import { MicroBarChart } from '@ui5/webcomponents-react-charts/lib/MicroBarChart
   </Story>
 </Canvas>
 
-<ArgsTable story="Default" of={MicroBarChart} />
+<ArgsTable story="." />
 
 <Canvas>
   <Story name="With custom props">

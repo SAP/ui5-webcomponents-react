@@ -106,9 +106,6 @@ const ChartTypes = {
 
 type AvailableChartTypes = 'line' | 'bar' | 'area' | string;
 
-/**
- * <code>import { ComposedChart } from '@ui5/webcomponents-react-charts/lib/ComposedChart';</code>
- */
 const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartProps, ref: Ref<HTMLDivElement>) => {
   const {
     loading,
@@ -406,6 +403,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
           <Brush
             y={10}
             dataKey={primaryDimensionAccessor}
+            tickFormatter={primaryDimension.formatter}
             stroke={ThemingParameters.sapObjectHeader_BorderColor}
             travellerWidth={10}
             height={20}

@@ -41,8 +41,6 @@ export interface FlexibleColumnLayoutPropTypes extends WithWebComponentPropTypes
 }
 
 /**
- * <code>import { FlexibleColumnLayout } from '@ui5/webcomponents-react/lib/FlexibleColumnLayout';</code>
- * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/FlexibleColumnLayout" target="_blank">UI5 Web Components Playground</a>
  */
 const FlexibleColumnLayout: FC<FlexibleColumnLayoutPropTypes> = withWebComponent<FlexibleColumnLayoutPropTypes>(

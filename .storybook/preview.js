@@ -9,15 +9,16 @@ import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import { ThemeProvider } from '@ui5/webcomponents-react/lib/ThemeProvider';
 import { Themes } from '@ui5/webcomponents-react/lib/Themes';
 import '@ui5/webcomponents/dist/Assets';
-import '@ui5/webcomponents-react/dist/Assets';
 import '@ui5/webcomponents/dist/features/InputElementsFormSupport';
 import React, { useEffect } from 'react';
 import 'react-app-polyfill/ie11';
+import { DocsPage } from '../shared/stories/DocsPage';
+import applyDirection from '@ui5/webcomponents-base/dist/locale/applyDirection';
 
 addParameters({
   passArgsFirst: true,
   viewMode: 'docs',
-  docs: { forceExtractedArgTypes: true },
+  docs: { forceExtractedArgTypes: true, page: DocsPage },
   actions: { argTypesRegex: '^on.*' }
 });
 
@@ -30,9 +31,10 @@ const ThemeContainer = ({ theme, contentDensity, children, direction }) => {
     }
   }, [contentDensity]);
 
-  // useEffect(() => {
-  //   document.querySelector('html').setAttribute('dir', direction);
-  // }, [direction]);
+  useEffect(() => {
+    document.querySelector('html').setAttribute('dir', direction);
+    applyDirection();
+  }, [direction]);
 
   useEffect(() => {
     setTheme(theme);
@@ -65,28 +67,10 @@ export const globalTypes = {
     description: 'Fiori Theme',
     defaultValue: Themes.sap_fiori_3,
     toolbar: {
-      items: [
-        {
-          value: Themes.sap_fiori_3,
-          title: Themes.sap_fiori_3
-        },
-        {
-          value: Themes.sap_fiori_3_dark,
-          title: Themes.sap_fiori_3_dark
-        },
-        {
-          value: Themes.sap_belize,
-          title: Themes.sap_belize
-        },
-        {
-          value: Themes.sap_belize_hcb,
-          title: Themes.sap_belize_hcb
-        },
-        {
-          value: Themes.sap_belize_hcw,
-          title: Themes.sap_belize_hcw
-        }
-      ]
+      items: Object.keys(Themes).map((themeKey) => ({
+        value: themeKey,
+        title: themeKey
+      }))
     }
   },
   contentDensity: {

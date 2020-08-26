@@ -73,9 +73,6 @@ export interface FilterBarPropTypes extends CommonProps {
 
 const useStyles = createComponentStyles(styles, { name: 'FilterBar' });
 
-/**
- * <code>import { FilterBar } from '@ui5/webcomponents-react/lib/FilterBar';</code>
- */
 const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivElement>) => {
   const {
     children,
@@ -308,6 +305,9 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
   const cssClasses = StyleClassHelper.of(classes.outerContainer);
   if (className) {
     cssClasses.put(className);
+  }
+  if (filterContainerWidth) {
+    cssClasses.put(classes.filterItemExpand);
   }
 
   useEffect(() => {

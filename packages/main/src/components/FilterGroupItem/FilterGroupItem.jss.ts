@@ -1,6 +1,6 @@
 const styles = {
   filterItem: {
-    width: '13rem',
+    width: 'var(--_ui5_input_width)',
     marginRight: '1rem',
     marginBottom: '1rem'
   },

@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.10.5...v0.10.6) (2020-08-24)
+
+
+### Bug Fixes
+
+* **Charts:** apply dimension formatter to zooming tool ([#663](https://github.com/SAP/ui5-webcomponents-react/issues/663)) ([972ee49](https://github.com/SAP/ui5-webcomponents-react/commit/972ee49594149e9ed7b8eea8a79656520b0f92c9))
+
+
+
+
+
+## [0.10.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.10.3...v0.10.4) (2020-08-19)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-charts
+
+
+
+
+
 ## [0.10.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.10.2...v0.10.3) (2020-08-06)
 
 **Note:** Version bump only for package @ui5/webcomponents-react-charts

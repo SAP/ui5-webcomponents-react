@@ -43,8 +43,6 @@ export interface TabPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * <code>import { Tab } from '@ui5/webcomponents-react/lib/Tab';</code>
- * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Tab" target="_blank">UI5 Web Components Playground</a>
  */
 const Tab: FC<TabPropTypes> = withWebComponent<TabPropTypes>(

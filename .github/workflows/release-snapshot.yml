@@ -1,0 +1,41 @@
+name: 'Release - Snapshot'
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2.3.2
+        with:
+          token: ${{ secrets.ACCESS_TOKEN }}
+          fetch-depth: 0
+
+      - name: Use Node.js
+        uses: actions/setup-node@v2.1.0
+        with:
+          node-version: '12.x'
+
+      - name: Install, test and build
+        run: |
+          yarn install
+          yarn test
+          yarn build
+
+      - name: publish
+        run: |
+          npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}
+          git config user.email ${{ secrets.BOT_GIT_EMAIL }}
+          git config user.name ${{ secrets.BOT_GIT_USERNAME }}
+
+          git_hash=$(git rev-parse --short "$GITHUB_SHA")
+
+          ${GITHUB_WORKSPACE}/node_modules/.bin/lerna publish "0.0.0-${git_hash}" \
+            --no-push \
+            --no-git-tag-version \
+            --dist-tag dev \

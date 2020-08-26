@@ -83,17 +83,6 @@ export interface FormPropTypes extends CommonProps {
 
 const useStyles = createComponentStyles(styles, { name: 'Form' });
 
-const createArrayOfLength = (length): unknown[][] => {
-  const arr = new Array(length);
-  for (let i = 0; i < length; i++) {
-    arr[i] = [];
-  }
-  return arr;
-};
-
-/**
- * <code>import { Form } from '@ui5/webcomponents-react/lib/Form';</code>
- */
 const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLDivElement>) => {
   const {
     title,
@@ -149,6 +138,9 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
 
   const classes = useStyles();
 
+  const currentNumberOfColumns = columnsMap.get(currentRange);
+  const currentLabelSpan = labelSpanMap.get(currentRange);
+
   const [formGroups, updatedTitle] = useMemo(() => {
     const computedFormGroups: any[] = [];
 
@@ -156,72 +148,86 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
       return [cloneElement(children as ReactElement, { title: null }), (children as ReactElement).props.title];
     }
 
-    const currentColumnCount = columnsMap.get(currentRange);
+    const currentColumnCount = currentNumberOfColumns;
     if (currentColumnCount === 1) {
       return [children, title];
     }
 
-    // if we are running on a large desktop device, we need some special logic for splitting up the form groups
-    const columns = createArrayOfLength(currentColumnCount);
-    Children.toArray(children).forEach((child, index) => {
-      columns[index % currentColumnCount].push(child);
+    const rows = [];
+    const childrenArray = Children.toArray(children);
+    const estimatedNumberOfGroupRows = childrenArray.length / currentColumnCount;
+    for (let i = 0; i < estimatedNumberOfGroupRows; i++) {
+      rows[i] = childrenArray.slice(i * currentColumnCount, i * currentColumnCount + currentColumnCount);
+    }
+
+    const maxRowsPerRow: number[] = [];
+    rows.forEach((rowGroup: ReactElement[], rowIndex) => {
+      const numberOfRowsOfEachForm = rowGroup.map((row) => {
+        if ((row.type as any).displayName === 'FormItem') {
+          return 1;
+        }
+        return Children.count(row.props.children) + (row.props?.title?.length > 0 ? 1 : 0);
+      });
+
+      maxRowsPerRow[rowIndex] = Math.max(...numberOfRowsOfEachForm);
     });
 
-    // no column can have more rows than the first column
-    let totalRowCount = 1;
-    for (let i = 0; i < columns[0].length; i++) {
-      const formGroupsForRow = columns.map((groups) => groups[i]);
-      const childrenOfFormGroups = createArrayOfLength(currentColumnCount);
+    let totalRowCount = 2;
 
-      formGroupsForRow.forEach((formGroup, index) => {
-        if (formGroup) {
-          computedFormGroups.push(
-            <Title
-              level={TitleLevel.H5}
-              style={{ paddingBottom: '0.75rem', gridColumn: 'span 12' }}
-              key={`title-col-${index}-row-${totalRowCount}`}
-            >
-              {(formGroup as ReactElement)?.props?.title ?? ''}
-            </Title>
-          );
-          childrenOfFormGroups[index] =
-            ((formGroup as ReactElement).type as any).displayName === 'FormItem'
-              ? [formGroup]
-              : Children.toArray((formGroup as ReactElement)?.props?.children);
-        }
-      });
-      totalRowCount++;
+    rows.forEach((column: ReactElement[], rowIndex) => {
+      const rowsForThisRow = maxRowsPerRow[rowIndex];
+      column.forEach((cell, columnIndex) => {
+        computedFormGroups.push(
+          <Title
+            level={TitleLevel.H5}
+            style={{
+              paddingBottom: '0.75rem',
+              gridColumnEnd: 'span 12',
+              gridColumnStart: columnIndex * 12 + 1,
+              gridRowStart: totalRowCount
+            }}
+            key={`title-col-${columnIndex}-row-${totalRowCount}`}
+          >
+            {cell?.props?.title ?? ''}
+          </Title>
+        );
 
-      const maxChildCount = Math.max(...childrenOfFormGroups.map((c) => c.length));
+        for (let i = 0; i < rowsForThisRow; i++) {
+          const itemToRender =
+            (cell.type as any).displayName === 'FormGroup'
+              ? Children.toArray(cell.props.children)[i]
+              : (cell.type as any).displayName === 'FormItem' && i === 0
+              ? cell
+              : null;
 
-      for (let childIndex = 0; childIndex < maxChildCount; childIndex++) {
-        childrenOfFormGroups.forEach((child, columnIndex) => {
-          if (child[childIndex]) {
-            // @ts-ignore
+          if (itemToRender) {
             computedFormGroups.push(
-              cloneElement(child[childIndex] as ReactElement, {
-                key: `col-${columnIndex}-row-${totalRowCount}`,
-                columnIndex
+              cloneElement(itemToRender as ReactElement, {
+                key: `col-${columnIndex}-row-${totalRowCount + i}`,
+                columnIndex,
+                rowIndex: totalRowCount + i + 1,
+                labelSpan: currentLabelSpan
               })
             );
           }
-        });
-        totalRowCount++;
+        }
+      });
+      totalRowCount += rowsForThisRow;
+      if (rowsForThisRow === 1) {
+        totalRowCount += 1;
       }
-    }
+    });
 
     return [computedFormGroups, title];
-  }, [children, currentRange, title, columnsMap.get(currentRange)]);
+  }, [children, currentRange, title, currentNumberOfColumns, currentLabelSpan]);
 
   const passThroughProps = usePassThroughHtmlProps(props);
 
   const formClassNames = StyleClassHelper.of(classes.form).putIfPresent(className);
 
   const gridStyles: CSSProperties = {};
-  gridStyles['--ui5wcr_form_content_span'] = 12 - labelSpanMap.get(currentRange);
-  gridStyles['--ui5wcr_form_label_span'] = labelSpanMap.get(currentRange);
-  gridStyles['--ui5wcr_form_full_span'] = `span ${columnsMap.get(currentRange) * 12}`;
-  gridStyles.gridTemplateColumns = `repeat(${columnsMap.get(currentRange) * 12}, 1fr)`;
+  gridStyles['--ui5wcr_form_content_span'] = 12 - currentLabelSpan;
+  gridStyles['--ui5wcr_form_label_span'] = currentLabelSpan;
 
   // special case for phones or label span 12
   if (gridStyles['--ui5wcr_form_content_span'] <= 0) {
@@ -239,6 +245,7 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
         ...gridStyles,
         ...(style || {})
       }}
+      data-columns={currentNumberOfColumns}
       {...passThroughProps}
     >
       {updatedTitle && (

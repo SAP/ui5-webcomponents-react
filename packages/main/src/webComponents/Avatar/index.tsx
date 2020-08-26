@@ -44,8 +44,6 @@ export interface AvatarPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * <code>import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';</code>
- * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Avatar" target="_blank">UI5 Web Components Playground</a>
  */
 const Avatar: FC<AvatarPropTypes> = withWebComponent<AvatarPropTypes>(

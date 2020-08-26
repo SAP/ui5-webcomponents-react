@@ -66,9 +66,6 @@ const measureDefaults = {
   opacity: 0.5
 };
 
-/**
- * <code>import { RadarChart } from '@ui5/webcomponents-react-charts/lib/RadarChart';</code>
- */
 const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref: Ref<HTMLDivElement>) => {
   const {
     loading,

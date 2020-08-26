@@ -10,8 +10,6 @@ export interface TableRowPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * <code>import { TableRow } from '@ui5/webcomponents-react/lib/TableRow';</code>
- * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/TableRow" target="_blank">UI5 Web Components Playground</a>
  */
 const TableRow: FC<TableRowPropTypes> = withWebComponent<TableRowPropTypes>('ui5-table-row', [], [], [], []);

@@ -68,9 +68,6 @@ const styles = {
 
 const useStyles = createComponentStyles(styles, { name: 'VariantManagement' });
 
-/**
- * <code>import { VariantManagement } from '@ui5/webcomponents-react/lib/VariantManagement';</code>
- */
 const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
   (props: VariantManagementPropTypes, ref: Ref<HTMLDivElement>) => {
     const {

@@ -49,8 +49,6 @@ export interface TimePickerPropTypes extends Omit<WithWebComponentPropTypes, 'on
 }
 
 /**
- * <code>import { TimePicker } from '@ui5/webcomponents-react/lib/TimePicker';</code>
- * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/TimePicker" target="_blank">UI5 Web Components Playground</a>
  */
 const TimePicker: FC<TimePickerPropTypes> = withWebComponent<TimePickerPropTypes>(

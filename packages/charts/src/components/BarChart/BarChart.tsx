@@ -97,9 +97,6 @@ export interface BarChartProps extends IChartBaseProps {
   measures: MeasureConfig[];
 }
 
-/**
- * <code>import { BarChart } from '@ui5/webcomponents-react-charts/lib/BarChart';</code>
- */
 const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<HTMLDivElement>) => {
   const {
     loading,
@@ -276,6 +273,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
           <Brush
             y={10}
             dataKey={primaryDimensionAccessor}
+            tickFormatter={primaryDimension.formatter}
             stroke={ThemingParameters.sapObjectHeader_BorderColor}
             travellerWidth={10}
             height={20}

@@ -1,5 +1,5 @@
 import { createPassThroughPropsTest } from '@shared/tests/utils';
-import { act, render, screen, fireEvent, cleanStaticAreaAfterEachTest, waitFor } from '@shared/tests';
+import { act, render, screen, fireEvent, cleanStaticAreaAfterEachTest, waitFor, getByText } from '@shared/tests';
 import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
 import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
@@ -217,6 +217,25 @@ describe('AnalyticalTable', () => {
     expect(wrapper.render()).toMatchSnapshot();
   });
 
+  test('with initial column order', () => {
+    const { getAllByRole, asFragment } = render(
+      <AnalyticalTable
+        data={data}
+        columns={columns}
+        groupable={false}
+        filterable={false}
+        sortable={false}
+        columnOrder={['age', 'friend.age', 'friend.name', 'name']}
+      />
+    );
+    const columnHeaders = getAllByRole('columnheader', { hidden: true });
+
+    ['Age', 'Friend Age', 'Friend Name', 'Name'].forEach((item, index) => {
+      getByText(columnHeaders[index], item);
+    });
+    expect(asFragment()).toMatchSnapshot();
+  });
+
   test('test drag and drop of a draggable column', () => {
     const wrapper = mount(<AnalyticalTable data={data} title={'Test'} columns={columns} />);
 
@@ -309,6 +328,29 @@ describe('AnalyticalTable', () => {
     );
 
     expect(wrapper.render()).toMatchSnapshot();
+  });
+
+  test('highlight row with custom row key', () => {
+    const utils = render(
+      <AnalyticalTable
+        selectionMode={TableSelectionMode.SINGLE_SELECT}
+        data={data}
+        columns={columns}
+        reactTableOptions={{
+          getRowId: (row, relativeIndex, parent) => {
+            return `${row.name ?? relativeIndex}`;
+          }
+        }}
+        selectedRowIds={{
+          ['Fra']: true
+        }}
+      />
+    );
+
+    expect(utils.asFragment()).toMatchSnapshot();
+
+    const row = screen.getByText('Fra').parentNode.parentNode;
+    expect(row).toHaveAttribute('data-is-selected');
   });
 
   createPassThroughPropsTest(AnalyticalTable);

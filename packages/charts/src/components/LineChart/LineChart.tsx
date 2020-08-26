@@ -82,9 +82,6 @@ const measureDefaults = {
   opacity: 1
 };
 
-/**
- * <code>import { LineChart } from '@ui5/webcomponents-react-charts/lib/LineChart';</code>
- */
 const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Ref<HTMLDivElement>) => {
   const {
     dataset,
@@ -272,6 +269,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
           <Brush
             y={10}
             dataKey={primaryDimensionAccessor}
+            tickFormatter={primaryDimension.formatter}
             stroke={ThemingParameters.sapObjectHeader_BorderColor}
             travellerWidth={10}
             height={20}

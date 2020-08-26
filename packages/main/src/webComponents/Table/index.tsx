@@ -34,8 +34,6 @@ export interface TablePropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * <code>import { Table } from '@ui5/webcomponents-react/lib/Table';</code>
- * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Table" target="_blank">UI5 Web Components Playground</a>
  */
 const Table: FC<TablePropTypes> = withWebComponent<TablePropTypes>(
