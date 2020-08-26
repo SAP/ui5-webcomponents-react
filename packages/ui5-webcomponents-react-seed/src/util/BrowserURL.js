@@ -1,6 +1,8 @@
 export default {
-  TODO_ALL: '/todo/all',
+  HOME: '/',
+  TODO_LIST: '/todo/list',
   TODO_DETAIL: '/todo/:id/detail',
   NOT_FOUND: '/notFound',
-  ANY: '*'
+  BUGGY: '/buggy',
+  ANY: '/*'
 };

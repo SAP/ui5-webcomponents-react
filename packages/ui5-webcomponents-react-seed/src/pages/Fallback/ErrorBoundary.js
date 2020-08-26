@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Error from '../../pages/Error';
+import Error from './Error';
 
 class ErrorBoundary extends React.Component {
   constructor(props) {

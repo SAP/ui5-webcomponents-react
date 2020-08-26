@@ -10,6 +10,7 @@
     "@ui5/webcomponents-fiori": "1.0.0-rc.8",
     "@ui5/webcomponents-icons": "1.0.0-rc.8",
     "@ui5/webcomponents-react": "^0.10.0",
+    "axios": "^0.20.0",
     "jest-environment-jsdom-sixteen": "^1.0.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -61,6 +62,7 @@
     "husky": "^4.2.5",
     "nodemon": "^2.0.4",
     "npm-run-all": "^4.1.5",
-    "react-app-polyfill": "^1.0.6"
+    "react-app-polyfill": "^1.0.6",
+    "react-query": "^2.12.1"
   }
 }

@@ -9,19 +9,18 @@ import { LinkDesign } from '@ui5/webcomponents-react/lib/LinkDesign';
 
 import './CenteredLink.css';
 
-function CenteredLink() {
+function CenteredLink({ text, onClick }) {
   return (
     <FlexBox
-      style={{ width: '100%', height: '100vh' }}
+      style={{ width: '100%', height: 'auto' }}
       direction={FlexBoxDirection.Column}
       justifyContent={FlexBoxJustifyContent.Center}
       alignItems={FlexBoxAlignItems.Center}
     >
       <Link
-        href="https://sap.github.io/ui5-webcomponents-react/"
-        target="_blank"
+        onClick={onClick}
         design={LinkDesign.Emphasized}>
-        Getting Started with UI5 Web Component for React
+        {text}
       </Link>
     </FlexBox>
   );

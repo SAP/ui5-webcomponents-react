@@ -1,7 +1,7 @@
 import React from 'react';
 
-import notfound from '../assets/notfound.png';
-import Fallback from '../components/Fallback/Fallback';
+import notfound from '../../assets/notfound.png';
+import Fallback from './Fallback';
 
 const NotFound = () => {
   return (
