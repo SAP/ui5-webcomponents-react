@@ -1,4 +1,44 @@
-## Available Scripts
+# Description
+This repository is the boostratp for all your UI5 WebComponents React project.
+
+# Features
+
+## From a Configuration point of view, it includes:
+
+- Jest Up & Runnning.
+
+- ESLint & EditorConfig Up & Running.
+
+- CommitLint Up & Running.
+
+<!-- - Redux Up & Running. -->
+
+- IE Support.
+
+- Multiple Scripts.
+
+
+## From a Components and Engines point of view, it inclues:
+
+- Fallback pages (`<ErrorBoundary />`, `<NotFound />` and `<Error />`).
+
+- MockServer Engine (w/ `json-server`).
+
+- HTTP Request Engine (w/ `Request` and `URLProvider`).
+
+<!-- - SessionTimeout Dialog.
+
+- Information Dialog. -->
+
+## From a Hooks point of view, it inclues:
+
+- useActions: Which wraps the redux action.
+
+- useBrowser: Which identifies the user browser.
+
+- useIsMobile: Which identifies the user device perspective.
+
+# Available Scripts
 
 In the project directory, you can run:
 
