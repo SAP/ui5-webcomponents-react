@@ -5,18 +5,21 @@ This repository is the boostratp for all your UI5 WebComponents React project.
 
 ## From a Configuration point of view, it includes:
 
-- Jest Up & Runnning.
+- JEST Up & Runnning.
 
 - ESLint & EditorConfig Up & Running.
 
 - CommitLint Up & Running.
+
+- Enviroment Variables Up & Running.
+
+- PR Template
 
 <!-- - Redux Up & Running. -->
 
 - IE Support.
 
 - Multiple Scripts.
-
 
 ## From a Engine point of view, it inclues:
 
