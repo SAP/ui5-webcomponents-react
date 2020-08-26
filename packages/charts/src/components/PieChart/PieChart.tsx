@@ -202,7 +202,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
 
   const renderLabelLine = useCallback(
     (props) => {
-      if (chartConfig.activeSegment === props.index) return null;
+      if (!measure.hideDataLabel || chartConfig.activeSegment === props.index) return null;
       return Pie.renderLabelLineItem(undefined, props);
     },
     [chartConfig.activeSegment]
