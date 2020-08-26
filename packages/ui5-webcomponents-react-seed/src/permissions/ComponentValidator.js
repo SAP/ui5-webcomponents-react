@@ -15,7 +15,6 @@ const ComponentValidator = ({ allowedPermissions, children }) => {
   const { data, status } = useQuery('GET_USER_LOGGED', fetchUser);
 
   const getRoute = () => {
-    debugger;
     if (status === Constants.CODES.RQ_SUCCESS) {
       const hasAccess = data.data.user.permissions.some(permission => allowedPermissions.includes(permission));
       if (hasAccess) {
