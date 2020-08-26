@@ -18,25 +18,27 @@ This repository is the boostratp for all your UI5 WebComponents React project.
 - Multiple Scripts.
 
 
-## From a Components and Engines point of view, it inclues:
+## From a Engine point of view, it inclues:
 
-- Fallback pages (`<ErrorBoundary />`, `<NotFound />` and `<Error />`).
+- Fallback Engine (`<ErrorBoundary />`, `<NotFound />` and `<Error />`).
 
 - MockServer Engine (w/ `json-server`).
 
 - HTTP Request Engine (w/ `Request` and `URLProvider`).
 
+- Permission Engine (w/ `RouteValidator` and `ComponentValidator`)
+
 <!-- - SessionTimeout Dialog.
 
 - Information Dialog. -->
 
-## From a Hooks point of view, it inclues:
+## From a Hook point of view, it inclues:
 
-- useActions: Which wraps the redux action.
+- `useActions`: Which wraps the redux action.
 
-- useBrowser: Which identifies the user browser.
+- `useBrowser`: Which identifies the user browser.
 
-- useIsMobile: Which identifies the user device perspective.
+- `useIsMobile`: Which identifies the user device perspective.
 
 # Available Scripts
 
