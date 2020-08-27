@@ -1,0 +1,12 @@
+{
+  "helmet.title.app": "TodoList App",
+  "helmet.title.error": "Buggy Component - TodoList App",
+  "helmet.title.notfound": "NotFound - TodoList App",
+  "shell.title": "TodoList Application",
+  "shell.logo.alt": "SAP Logo",
+  "page.error.text": "Ops! There was an error in loading this page",
+  "page.error.alt": "Error",
+  "page.notfound.text": "Hmmm, we could find this URL",
+  "page.notfound.alt": "Not Found",
+  "page.fallback.reload.text": "Reload this page"
+}

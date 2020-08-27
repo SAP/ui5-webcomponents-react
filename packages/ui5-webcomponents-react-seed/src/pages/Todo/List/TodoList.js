@@ -11,13 +11,20 @@ export default function TodoList() {
 
   return (
     <>
-      <Helmet title="List - TodoList App" />
-      <CenteredLink onClick={() => history.push('/dontexist')} text='Test NotFound Page' />
+      <Helmet title='List - TodoList App' />
+      <CenteredLink
+        onClick={() => history.push('/dontexist')}
+        text='Test NotFound Page' />
       <br />
-      <CenteredLink onClick={() => history.push(BrowserURL.BUGGY)} text='Test Error Page' />
+      <CenteredLink
+        onClick={() => history.push(BrowserURL.BUGGY)}
+        text='Test Error Page' />
       <br />
-      <ComponentValidator allowedAuthorities={['canAccessDropApplication']} authorityKey='permissions'>
-        <CenteredLink text='Drop Application (this is a restricted text and you should not see unless you have access)' />
+      <ComponentValidator
+        allowedAuthorities={['canAccessDropApplication']}
+        authorityKey='permissions'>
+        <CenteredLink
+          text='Drop Application (this is a restricted text and you should not see unless you have access)' />
       </ComponentValidator>
     </>
   )

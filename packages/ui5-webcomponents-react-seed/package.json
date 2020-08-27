@@ -11,10 +11,13 @@
     "@ui5/webcomponents-icons": "1.0.0-rc.8",
     "@ui5/webcomponents-react": "^0.10.0",
     "axios": "^0.20.0",
+    "i18next": "^19.7.0",
+    "i18next-browser-languagedetector": "^6.0.1",
     "jest-environment-jsdom-sixteen": "^1.0.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0",
+    "react-i18next": "^11.7.2",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3"
   },
