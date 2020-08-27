@@ -4,7 +4,7 @@ import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/components/C
 import { PieChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/PieChartPlaceholder';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
 import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo, isValidElement, cloneElement } from 'react';
-import { Cell, Label, Legend, Pie, PieChart as PieChartLib, Tooltip, Text } from 'recharts';
+import { Cell, Label, Legend, Pie, PieChart as PieChartLib, Tooltip, Text, Sector } from 'recharts';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
@@ -85,6 +85,8 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
     };
   }, [props.chartConfig]);
 
+  const showActiveSegmentDataLabel = chartConfig.showActiveSegmentDataLabel ?? true;
+
   const dimension: DimensionConfig = useMemo(
     () => ({
       formatter: defaultFormatter,
@@ -103,7 +105,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
 
   const dataLabel = useCallback(
     (props) => {
-      if (measure.hideDataLabel) return null;
+      if (measure.hideDataLabel || chartConfig.activeSegment === props.index) return null;
 
       if (isValidElement(measure.DataLabel)) {
         return cloneElement(measure.DataLabel, { ...props, config: measure });
@@ -115,7 +117,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
         </Text>
       );
     },
-    [measure]
+    [measure, chartConfig.activeSegment]
   );
 
   const tooltipValueFormatter = useCallback((value, name) => [measure.formatter(value), dimension.formatter(name)], [
@@ -142,6 +144,85 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
     },
     [onDataPointClick]
   );
+
+  const renderActiveShape = useCallback(
+    (props) => {
+      const RADIAN = Math.PI / 180;
+      const { cx, cy, midAngle, innerRadius, outerRadius, startAngle, endAngle, fill, payload, percent, value } = props;
+      const sin = Math.sin(-RADIAN * midAngle);
+      const cos = Math.cos(-RADIAN * midAngle);
+      const sx = cx + (outerRadius + 10) * cos;
+      const sy = cy + (outerRadius + 10) * sin;
+      const mx = cx + (outerRadius + 30) * cos;
+      const my = cy + (outerRadius + 30) * sin;
+      const ex = mx + (cos >= 0 ? 1 : -1) * 22;
+      const ey = my;
+      const textAnchor = cos >= 0 ? 'start' : 'end';
+
+      return (
+        <g>
+          <text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>
+            {payload.name}
+          </text>
+          <Sector
+            cx={cx}
+            cy={cy}
+            innerRadius={innerRadius}
+            outerRadius={outerRadius}
+            startAngle={startAngle}
+            endAngle={endAngle}
+            fill={fill}
+          />
+          <Sector
+            cx={cx}
+            cy={cy}
+            startAngle={startAngle}
+            endAngle={endAngle}
+            innerRadius={outerRadius + 6}
+            outerRadius={outerRadius + 10}
+            fill={fill}
+          />
+          {showActiveSegmentDataLabel && (
+            <>
+              <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={fill} fill="none" />
+              <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none" />
+              <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill={fill}>
+                {measure.formatter(value)}
+              </text>
+              <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} dy={18} textAnchor={textAnchor} fill={fill}>
+                {`(${(percent * 100).toFixed(2)}%)`}
+              </text>
+            </>
+          )}
+        </g>
+      );
+    },
+    [showActiveSegmentDataLabel]
+  );
+
+  const renderLabelLine = useCallback(
+    (props) => {
+      if (!measure.hideDataLabel || chartConfig.activeSegment === props.index) return null;
+      return Pie.renderLabelLineItem(undefined, props);
+    },
+    [chartConfig.activeSegment]
+  );
+
+  const legendWrapperStyle = useMemo(() => {
+    if (chartConfig.activeSegment != null && showActiveSegmentDataLabel) {
+      if (chartConfig.legendPosition === 'bottom') {
+        return {
+          paddingTop: '30px'
+        };
+      } else if (chartConfig.legendPosition === 'top') {
+        return {
+          paddingBottom: '30px'
+        };
+      }
+    }
+
+    return null;
+  }, [showActiveSegmentDataLabel, chartConfig.activeSegment, chartConfig.legendPosition]);
 
   return (
     <ChartContainer
@@ -172,8 +253,10 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
           data={dataset}
           animationBegin={0}
           isAnimationActive={noAnimation === false}
-          labelLine={measure.hideDataLabel !== true}
+          labelLine={renderLabelLine}
           label={dataLabel}
+          activeIndex={chartConfig.activeSegment}
+          activeShape={chartConfig.activeSegment != null && renderActiveShape}
         >
           {centerLabel && <Label position={'center'}>{centerLabel}</Label>}
           {dataset &&
@@ -199,6 +282,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
             verticalAlign={chartConfig.legendPosition}
             align={chartConfig.legendHorizontalAlign}
             onClick={onItemLegendClick}
+            wrapperStyle={legendWrapperStyle}
           />
         )}
       </PieChartLib>
