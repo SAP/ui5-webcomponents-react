@@ -1,25 +1,17 @@
 import React from 'react';
 import { Route } from "react-router-dom";
-import { useQuery } from 'react-query';
+import { useGet } from '../hooks/useRequest';
 
-import Request from '../util/Request';
-import Constants from '../util/Constants';
-import UrlProvider from '../util/URLProvider';
 import NotFound from '../pages/Fallback/NotFound';
-
 import Empty from '../pages/Fallback/Empty';
 
-const fetchUser = async () => {
-  const url = UrlProvider.getUrl('GET_USER_LOGGED');
-  const res = await Request.get(url)
-  return res.data;
-};
+import Constants from '../util/Constants';
 
 const RouteValidator = ({ allowedAuthorities, authorityKey, path, component, ...props }) => {
-  const { data, status } = useQuery('GET_USER_LOGGED', fetchUser);
+  const { data, status } = useGet(Constants.REACT_QUERY.KEYS.GET_USER_LOGGED, 'GET_USER_LOGGED', null);
 
   const getRoute = () => {
-    if (status === Constants.CODES.RQ_SUCCESS) {
+    if (status === Constants.REACT_QUERY.CODES.SUCCESS) {
       const hasAccess = data.data.user[authorityKey].some(permission => allowedAuthorities.includes(permission));
       return <Route path={path} {...props} component={hasAccess ? component : NotFound} />;
     }

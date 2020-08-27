@@ -37,11 +37,11 @@ The goal of this repository is to increase the boostrap time spent on a new proj
 
 ## From a Hook point of view, it includes:
 
-<!-- - `useActions`: Which wraps the redux action. -->
-
 - `useBrowser`: Which identifies the user browser.
 
 - `useIsMobile`: Which identifies the user device perspective.
+
+- `useRequest`: Which includes `get`, `post`, `patch`, `delete`, `put` HTTP helpers.
 
 # Available Scripts
 
