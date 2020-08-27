@@ -21,7 +21,7 @@ This repository is the boostratp for all your UI5 WebComponents React project.
 
 - Multiple Scripts.
 
-## From a Engine point of view, it inclues:
+## From a Engine point of view, it includes:
 
 - Fallback Engine (`<ErrorBoundary />`, `<NotFound />` and `<Error />`).
 
@@ -35,7 +35,7 @@ This repository is the boostratp for all your UI5 WebComponents React project.
 
 - Information Dialog. -->
 
-## From a Hook point of view, it inclues:
+## From a Hook point of view, it includes:
 
 - `useActions`: Which wraps the redux action.
 
