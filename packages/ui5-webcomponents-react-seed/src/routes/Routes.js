@@ -5,7 +5,7 @@ import BrowserURL from '../util/BrowserURL';
 import TodoList from '../pages/Todo/List/TodoList';
 import NotFound from '../pages/Fallback/NotFound';
 import Buggy from '../pages/Fallback/Buggy';
-import RouteValidator from '../permissions/RouteValidator';
+import RouteValidator from '../auth/RouteValidator';
 
 const Routes = () => {
   return (
@@ -15,8 +15,8 @@ const Routes = () => {
         exact
         to={BrowserURL.TODO_LIST} />
       <RouteValidator
-        allowedPermissions={['canAccessTodoListPage']}
-        allowenceKey='permissions'
+        allowedAuthorities={['canAccessTodoListPage']}
+        authorityKey='permissions'
         path={BrowserURL.TODO_LIST}
         component={TodoList} />
       <Route

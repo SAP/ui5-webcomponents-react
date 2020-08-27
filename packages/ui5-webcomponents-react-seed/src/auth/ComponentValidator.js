@@ -11,12 +11,12 @@ const fetchUser = async () => {
   return res.data;
 };
 
-const ComponentValidator = ({ allowedPermissions, allowenceKey, children }) => {
+const ComponentValidator = ({ allowedAuthorities, authorityKey, children }) => {
   const { data, status } = useQuery('GET_USER_LOGGED', fetchUser);
 
   const getRoute = () => {
     if (status === Constants.CODES.RQ_SUCCESS) {
-      const hasAccess = data.data.user[allowenceKey].some(permission => allowedPermissions.includes(permission));
+      const hasAccess = data.data.user[authorityKey].some(permission => allowedAuthorities.includes(permission));
       if (hasAccess) {
         return children;
       }
