@@ -7,7 +7,11 @@ class Buggy extends React.Component {
     throw new Error("An error has occured in Buggy component!");
   }
   render() {
-    return <h2>{this.state.greeting}</h2>;
+    return (
+      <>
+        <h2>{this.state.greeting}</h2>
+      </>
+    );
   }
 }
 
