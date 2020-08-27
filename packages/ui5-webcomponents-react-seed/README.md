@@ -1,5 +1,5 @@
 # Description
-This repository is the boostratp for all your UI5 WebComponents React project.
+This repository may be a boostratp for all your UI5 WebComponents React projects.
 
 # Features
 
