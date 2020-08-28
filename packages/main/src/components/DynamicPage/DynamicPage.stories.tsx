@@ -67,7 +67,7 @@ export const defaultStory = (props) => {
                 <Label>Halway: 23L</Label>
                 <Label>Rack: 34</Label>
               </div>
-              <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '2vw' }}>
                 <Label>Availability:</Label>
                 <ObjectStatus state={'Success'}>In Stock</ObjectStatus>
               </div>

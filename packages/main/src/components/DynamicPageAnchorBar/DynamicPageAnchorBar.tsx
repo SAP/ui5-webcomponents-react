@@ -1,13 +1,9 @@
 import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
-import { TabContainer } from '@ui5/webcomponents-react/lib/TabContainer';
 import { ToggleButton } from '@ui5/webcomponents-react/lib/ToggleButton';
 import React, { CSSProperties, forwardRef, ReactElement, RefObject, useCallback, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
-import { safeGetChildrenArray } from '../DynamicPage/DynamicPageUtils';
-import { DynamicPageAnchorButton } from './DynamicPageAnchorButton';
-import { ObjectPageAnchorButton } from '../ObjectPage/ObjectPageAnchorButton';
 import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
 
 addCustomCSS(
@@ -75,7 +71,8 @@ interface Props {
   headerContentHeight: number;
   headerContentPinnable: boolean;
   showHideHeaderButton: boolean;
-  selectedSectionId?: string;
+  headerPinned?: boolean;
+  setHeaderPinned?: (payload: any) => void;
 }
 
 const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElement>) => {
@@ -83,46 +80,31 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
     showHideHeaderButton,
     headerContentHeight,
     headerContentPinnable,
+    headerPinned,
+    setHeaderPinned,
     className,
-    style,
-    sections,
-    selectedSectionId
+    style
   } = props;
+
   const classes = useStyles();
 
   const shouldRenderHideHeaderButton = showHideHeaderButton;
   const shouldRenderHeaderPinnableButton = headerContentPinnable && headerContentHeight > 0;
   const showBothActions = shouldRenderHeaderPinnableButton && shouldRenderHideHeaderButton;
-  const [popoverContent, setPopoverContent] = useState<ReactElement>(null);
-  const popoverRef = useRef<Ui5PopoverDomRef>(null);
 
-  const onShowSubSectionPopover = useCallback(
-    (e, section) => {
-      setPopoverContent(section);
-      popoverRef.current.openBy(e.target.parentElement);
+  const onPinHeader = useCallback(
+    (e) => {
+      setHeaderPinned(e.target.pressed);
     },
-    [setPopoverContent, popoverRef]
+    [setHeaderPinned]
   );
 
   return (
     <section style={style} role="navigation" className={className} ref={ref}>
-      {/*<TabContainer collapsed fixed showOverflow>*/}
-      {/*  {safeGetChildrenArray(sections).map((section: ReactElement, index: number) => {*/}
-      {/*    return (*/}
-      {/*      <DynamicPageAnchorButton*/}
-      {/*        key={`Anchor-${section.props?.id}`}*/}
-      {/*        section={section}*/}
-      {/*        onShowSubSectionPopover={onShowSubSectionPopover}*/}
-      {/*        index={index}*/}
-      {/*        selected={selectedSectionId === section.props?.id}*/}
-      {/*      />*/}
-      {/*    );*/}
-      {/*  })}*/}
-      {/*</TabContainer>*/}
       {shouldRenderHideHeaderButton && (
         <Button
           icon={headerContentHeight === 0 ? 'slim-arrow-down' : 'slim-arrow-up'}
-          data-ui5wcr-dynamic-page-header-action=""
+          data-ui5wcr-object-page-header-action=""
           className={`${classes.anchorBarActionButton} ${classes.anchorBarActionButtonExpandable} ${
             showBothActions ? classes.anchorBarActionPinnableAndExandable : ''
           }`}
@@ -131,10 +113,12 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
       {shouldRenderHeaderPinnableButton && (
         <ToggleButton
           icon="pushpin-off"
-          data-ui5wcr-dynamic-page-header-action=""
+          data-ui5wcr-object-page-header-action=""
           className={`${classes.anchorBarActionButton} ${classes.anchorBarActionButtonPinnable} ${
             showBothActions ? classes.anchorBarActionPinnableAndExandable : ''
           }`}
+          pressed={headerPinned}
+          onClick={onPinHeader}
         />
       )}
     </section>
