@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="centeredContent"
+    style="max-width: 970px; padding: 1rem; margin: 0px auto;"
+  />
+</DocumentFragment>
+`;

@@ -9,6 +9,7 @@ import Shell from './components/Shell/Shell';
 import Routes from './routes/Routes';
 
 import './App.css';
+import CenteredContent from './components/Layout/CenteredContent';
 
 function App() {
   const { t } = useTranslation();
@@ -19,7 +20,9 @@ function App() {
       <Shell title={t('shell.title')} />
       <div style={{ paddingTop: '44px' }} />
       <ErrorBoundary>
-        <Routes />
+        <CenteredContent>
+          <Routes />
+        </CenteredContent>
       </ErrorBoundary>
     </BrowserRouter>
   );
