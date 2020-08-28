@@ -1,8 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SuggestionItem Basic Test (generated) 1`] = `
-<ui5-suggestion-item
-  info-state="None"
-  type="Active"
-/>
+<DocumentFragment>
+  <ui5-suggestion-item
+    info-state="None"
+    type="Active"
+  />
+</DocumentFragment>
 `;

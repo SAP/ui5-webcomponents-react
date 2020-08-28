@@ -1,9 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TextArea Basic Test (generated) 1`] = `
-<ui5-textarea
-  growing-max-lines="0"
-  rows="0"
-  value-state="None"
-/>
+<DocumentFragment>
+  <ui5-textarea
+    growing-max-lines="0"
+    rows="0"
+    value-state="None"
+  />
+</DocumentFragment>
 `;

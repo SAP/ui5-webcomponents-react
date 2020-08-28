@@ -1,11 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DurationPicker Basic Test (generated) 1`] = `
-<ui5-duration-picker
-  max-value="23:59:59"
-  minutes-step="1"
-  seconds-step="1"
-  value="00:00:00"
-  value-state="None"
-/>
+<DocumentFragment>
+  <ui5-duration-picker
+    max-value="23:59:59"
+    minutes-step="1"
+    seconds-step="1"
+    value="00:00:00"
+    value-state="None"
+  />
+</DocumentFragment>
 `;

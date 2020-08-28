@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NotificationListGroupItem Basic Test (generated) 1`] = `
-<ui5-li-notification-group
-  priority="None"
-/>
+<DocumentFragment>
+  <ui5-li-notification-group
+    priority="None"
+  />
+</DocumentFragment>
 `;

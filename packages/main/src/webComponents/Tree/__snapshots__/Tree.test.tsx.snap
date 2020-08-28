@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Tree Basic Test (generated) 1`] = `
-<ui5-tree
-  mode="None"
-/>
+<DocumentFragment>
+  <ui5-tree
+    mode="None"
+  />
+</DocumentFragment>
 `;

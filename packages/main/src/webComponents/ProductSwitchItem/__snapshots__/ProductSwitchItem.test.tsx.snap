@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ProductSwitchItem Basic Test (generated) 1`] = `
-<ui5-product-switch-item
-  target="_self"
-/>
+<DocumentFragment>
+  <ui5-product-switch-item
+    target="_self"
+  />
+</DocumentFragment>
 `;
