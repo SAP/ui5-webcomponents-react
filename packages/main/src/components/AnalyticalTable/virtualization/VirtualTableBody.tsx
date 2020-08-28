@@ -32,12 +32,6 @@ interface VirtualTableBodyProps {
   tableRef?: any;
   visibleColumnsWidth?: any;
   parentRef?: any;
-  // columnVirtualizer: {
-  //   virtualItems: VirtualItem[];
-  //   totalSize: number;
-  //   scrollToOffset: (index: number, options?: { align: ScrollAlignment }) => void;
-  //   scrollToIndex: (index: number, options?: { align: ScrollAlignment }) => void;
-  // };
 }
 
 export const VirtualTableBody = (props: VirtualTableBodyProps) => {
@@ -69,12 +63,11 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
   const overscan = overscanCount ? overscanCount : Math.floor(visibleRows / 2);
 
   const consolidatedParentRef = useConsolidatedRef(parentRef);
-  console.log(consolidatedParentRef);
   const rowVirtualizer = useVirtual({
     size: itemCount,
     parentRef: consolidatedParentRef,
     estimateSize: React.useCallback(() => internalRowHeight, [internalRowHeight]),
-    overscan: 0
+    overscan
   });
 
   const columnVirtualizer = useVirtual({
@@ -199,18 +192,6 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     [currentlyFocusedCell]
   );
   return (
-    // <div
-    //   // className={classNames.valueOf()}
-    //   ref={parentRef}
-    //   onScroll={onScroll}
-    //   style={{
-    //     position: 'relative',
-    //     backgroundColor: ThemingParameters.sapList_Background,
-    //     overflowY: 'hidden',
-    //     height: `${tableBodyHeight}px`,
-    //     width: `${totalColumnsWidth}px`
-    //   }}
-    // >
     <div
       tabIndex={0}
       onFocus={onTableFocus}
@@ -275,7 +256,6 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
                     left: 0
                   }}
                 >
-                  {/*{cell.value}*/}
                   {cell.render(contentToRender)}
                 </div>
               );
@@ -284,6 +264,5 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
         );
       })}
     </div>
-    // </div>
   );
 };

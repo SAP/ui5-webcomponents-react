@@ -32,10 +32,12 @@ import {
   useSortBy,
   useTable
 } from 'react-table';
+import { useVirtual } from 'react-virtual';
 import { AnalyticalTableColumnDefinition } from '../../interfaces/AnalyticalTableColumnDefinition';
 import { CommonProps } from '../../interfaces/CommonProps';
 import styles from './AnayticalTable.jss';
 import { ColumnHeader } from './ColumnHeader';
+import { ColumnHeaderContainer } from './ColumnHeader/ColumnHeaderContainer';
 import { DefaultColumn } from './defaults/Column';
 import { DefaultLoadingComponent } from './defaults/LoadingComponent';
 import { TablePlaceholder } from './defaults/LoadingComponent/TablePlaceholder';
@@ -259,10 +261,11 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   );
 
   // scroll bar detection
-  // useEffect(() => {
-  //   const visibleRowCount = rows.length < visibleRows ? Math.max(rows.length, minRows) : visibleRows;
-  //   dispatch({ type: 'TABLE_SCROLLING_ENABLED', payload: { isScrollable: rows.length > visibleRowCount } });
-  // }, [rows.length, minRows, visibleRows]);
+  //todo
+  useEffect(() => {
+    const visibleRowCount = rows.length < visibleRows ? Math.max(rows.length, minRows) : visibleRows;
+    dispatch({ type: 'TABLE_SCROLLING_ENABLED', payload: { isScrollable: rows.length > visibleRowCount } });
+  }, [rows.length, minRows, visibleRows]);
 
   const updateTableClientWidth = useCallback(() => {
     if (tableRef.current) {
@@ -385,24 +388,25 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     } as CSSProperties;
   }, [tableState.tableClientWidth, style, rowHeight]);
 
+  //todo maybe debounce whole function
   const parentRef = useRef(null);
   let timeout = useRef();
   const [isScrolling, setIsScrolling] = useState(false);
   const prevScrollLeft = useRef(null);
   const handleScroll = useCallback(
     (e) => {
+      e.preventDefault();
       if (prevScrollLeft && prevScrollLeft.current !== e.target.scrollLeft && e.target.scrollLeft !== 0) {
         setIsScrolling(true);
         if (timeout.current) {
           clearTimeout(timeout.current);
         }
       }
-      if (isScrolling) {
-        // @ts-ignore
-        timeout.current = setTimeout(() => {
-          setIsScrolling(false);
-        }, 100);
-      }
+      // @ts-ignore
+      timeout.current = setTimeout(() => {
+        setIsScrolling(false);
+      }, 100);
+
       prevScrollLeft.current = e.target.scrollLeft;
     },
     [timeout.current, prevScrollLeft.current, isScrolling]
@@ -427,30 +431,47 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
             headerProps = headerGroup.getHeaderGroupProps();
           }
           return (
+            tableRef.current && (
+              <ColumnHeaderContainer
+                visibleColumns={visibleColumns}
+                tableRef={tableRef}
+                visibleColumnsWidth={visibleColumnsWidth}
+                headerProps={headerProps}
+                headerGroup={headerGroup}
+                onSort={onSort}
+                onGroupBy={onGroupByChanged}
+                onDragStart={handleDragStart}
+                onDragOver={handleDragOver}
+                onDrop={handleOnDrop}
+                onDragEnter={handleDragEnter}
+                onDragEnd={handleOnDragEnd}
+              />
+            )
             // eslint-disable-next-line react/jsx-key
-            <header {...headerProps} role="rowgroup">
-              {headerGroup.headers.map((column, index) => {
-                const isLastColumn = !column.disableResizing && index + 1 === headerGroup.headers.length;
-                return (
-                  // eslint-disable-next-line react/jsx-key
-                  <ColumnHeader
-                    {...column.getHeaderProps()}
-                    isLastColumn={isLastColumn}
-                    onSort={onSort}
-                    onGroupBy={onGroupByChanged}
-                    onDragStart={handleDragStart}
-                    onDragOver={handleDragOver}
-                    onDrop={handleOnDrop}
-                    onDragEnter={handleDragEnter}
-                    onDragEnd={handleOnDragEnd}
-                    dragOver={column.id === dragOver}
-                    isDraggable={column.canReorder}
-                  >
-                    {column.render('Header')}
-                  </ColumnHeader>
-                );
-              })}
-            </header>
+            // <div {...headerProps} role="rowgroup">
+            //   {headerGroup.headers.map((column, index) => {
+            //     console.log(column);
+            //     const isLastColumn = !column.disableResizing && index + 1 === headerGroup.headers.length;
+            //     return (
+            //       // eslint-disable-next-line react/jsx-key
+            //       <ColumnHeader
+            //         {...column.getHeaderProps()}
+            //         isLastColumn={isLastColumn}
+            //         onSort={onSort}
+            //         onGroupBy={onGroupByChanged}
+            //         onDragStart={handleDragStart}
+            //         onDragOver={handleDragOver}
+            //         onDrop={handleOnDrop}
+            //         onDragEnter={handleDragEnter}
+            //         onDragEnd={handleOnDragEnd}
+            //         dragOver={column.id === dragOver}
+            //         isDraggable={column.canReorder}
+            //       >
+            //         {column.render('Header')}
+            //       </ColumnHeader>
+            //     );
+            //   })}
+            // </div>
           );
         })}
         {loading && props.data?.length > 0 && <LoadingComponent style={{ width: `${totalColumnsWidth}px` }} />}

@@ -41,6 +41,10 @@ export interface ColumnHeaderProps {
   isDraggable: boolean;
   role: string;
   isLastColumn: boolean;
+
+  //todo
+  width: any;
+  transform: any;
 }
 
 const styles = {
@@ -117,7 +121,10 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     isDraggable,
     dragOver,
     role,
-    isLastColumn
+    isLastColumn,
+
+    width,
+    transform
   } = props;
 
   const isFiltered = column.filterValue && column.filterValue.length > 0;
@@ -161,7 +168,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
   if (!column) return null;
 
   return (
-    <>
+    <div style={{ position: 'absolute', top: 0, left: 0, width, transform }}>
       <div
         id={id}
         className={className}
@@ -205,6 +212,6 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
           style={{ left: `${column.totalLeft + column.totalFlexWidth - (isLastColumn ? 3 : 0)}px` }}
         />
       )}
-    </>
+    </div>
   );
 };

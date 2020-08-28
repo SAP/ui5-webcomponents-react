@@ -6,6 +6,8 @@ const styles = {
     position: 'relative',
     width: '100%',
     maxWidth: '100%',
+    //todo
+    // overflowY: 'hidden',
     overflowY: 'auto',
     overflowX: 'auto',
     height: '100%',
@@ -56,7 +58,6 @@ const styles = {
     boxSizing: 'border-box',
     display: 'flex',
     willChange: 'transform',
-    // height: CssSizeVariables.sapWcrAnalyticalTableRowHeight,
     '&:hover': {
       backgroundColor: ThemingParameters.sapList_Hover_Background
     },

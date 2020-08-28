@@ -10,14 +10,12 @@ const approximateHeaderPxFromCharLength = (charLength) =>
   charLength < 15 ? Math.sqrt(charLength * 1500) : 8 * charLength;
 const approximateContentPxFromCharLength = (charLength) => 8 * charLength;
 
-const columnsDeps = (deps, { instance }) => {
-  return [
-    ...deps,
-    instance.state.tableClientWidth,
-    instance.webComponentsReactProperties.scaleWidthMode,
-    instance.webComponentsReactProperties.loading
-  ];
-};
+const columnsDeps = (deps, { instance: { state, webComponentsReactProperties } }) => [
+  ...deps,
+  state.tableClientWidth,
+  webComponentsReactProperties.scaleWidthMode,
+  webComponentsReactProperties.loading
+];
 
 const columns = (columns, { instance }) => {
   if (!instance.state || !instance.rows) {
