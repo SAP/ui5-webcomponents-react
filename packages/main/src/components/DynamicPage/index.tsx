@@ -8,13 +8,16 @@ import React, {
   FC,
   cloneElement,
   RefObject,
-  useRef
+  useRef,
+  useCallback,
+  useState
 } from 'react';
+import { createComponentStyles } from '@ui5/webcomponents-react-base';
 import { FlexBox, PageBackgroundDesign } from '../..';
-
 import { CommonProps } from '../../interfaces/CommonProps';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar/DynamicPageAnchorBar';
 import { useObserveHeights } from '../ObjectPage/useObserveHeights';
+import styles from './DynamicPage.jss';
 
 export interface DynamicPageProps extends CommonProps {
   /**
@@ -30,7 +33,7 @@ export interface DynamicPageProps extends CommonProps {
    */
   noHeader?: boolean;
 
-  headerPinned?: boolean;
+  alwaysShowContentHeader?: boolean;
 
   // slots
   title?: ReactElement;
@@ -45,13 +48,18 @@ export interface DynamicPageProps extends CommonProps {
 }
 
 const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, ref: Ref<HTMLDivElement>) => {
-  const { title, header, anchorBar, className, tooltip, style, noHeader = false, headerPinned = false } = props;
+  const { title, header, anchorBar, className, tooltip, style, noHeader = false, alwaysShowContentHeader } = props;
   const passThroughProps = usePassThroughHtmlProps(props);
+
+  const useStyles = createComponentStyles(styles, { name: 'DynamicPage' });
+  const classes = useStyles();
 
   const anchorBarRef: RefObject<HTMLDivElement> = useRef();
   const dynamicPageRef: RefObject<HTMLDivElement> = useConsolidatedRef(ref);
   const topHeaderRef: RefObject<HTMLDivElement> = useRef();
   const headerContentRef: RefObject<HTMLDivElement> = useRef();
+
+  const [headerPinned, setHeaderPinned] = useState(alwaysShowContentHeader);
 
   // observe heights of header parts
   const { topHeaderHeight, headerContentHeight, anchorBarHeight, totalHeaderHeight } = useObserveHeights(
@@ -62,9 +70,47 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
     { noHeader }
   );
 
+  const onToggleHeaderContentVisibility = useCallback(
+    (e) => {
+      const srcElement = e.target;
+      const shouldHideHeader = srcElement.icon === 'slim-arrow-up';
+      if (shouldHideHeader) {
+        dynamicPageRef.current.classList.add(classes.headerCollapsed);
+      } else {
+        dynamicPageRef.current.classList.remove(classes.headerCollapsed);
+      }
+
+      requestAnimationFrame(() => {
+        if (dynamicPageRef.current.scrollTop > 0 && !shouldHideHeader) {
+          const prevHeaderTop = headerContentRef.current.style.top;
+          headerContentRef.current.style.top = `${topHeaderHeight}px`;
+          const prevAnchorTop = anchorBarRef.current.style.top;
+          anchorBarRef.current.style.top = `${headerContentRef.current.offsetHeight + topHeaderHeight}px`;
+          dynamicPageRef.current.addEventListener(
+            'scroll',
+            (e) => {
+              if (prevHeaderTop ?? true) {
+                headerContentRef.current.style.top = prevHeaderTop;
+              } else {
+                headerContentRef.current.style.removeProperty('top');
+              }
+              if (prevAnchorTop ?? true) {
+                anchorBarRef.current.style.top = prevAnchorTop;
+              } else {
+                anchorBarRef.current.style.removeProperty('top');
+              }
+            },
+            { once: true }
+          );
+        }
+      });
+    },
+    [dynamicPageRef, classes.headerCollapsed, headerContentHeight, topHeaderHeight]
+  );
+
   return (
     <div ref={dynamicPageRef} title={tooltip} className={className} style={style} {...passThroughProps}>
-      {cloneElement(title, { style: { position: 'sticky' } })}
+      {cloneElement(title, { style: { position: 'sticky' }, ref: topHeaderRef })}
       {cloneElement(header, { ref: headerContentRef })}
       <FlexBox
         style={{
@@ -77,6 +123,8 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
           headerContentPinnable
           showHideHeaderButton
           headerContentHeight={headerContentHeight}
+          onToggleHeaderContentVisibility={onToggleHeaderContentVisibility}
+          setHeaderPinned={setHeaderPinned}
         />
       </FlexBox>
     </div>

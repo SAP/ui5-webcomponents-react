@@ -1,8 +1,8 @@
 import { CommonProps } from '../../interfaces/CommonProps';
 import { createComponentStyles, StyleClassHelper, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base';
 import { DynamicPageHeaderStyles } from './DynamicPageHeader.jss';
-import React, { FC, forwardRef, ReactNode, Ref, RefObject, useRef, useState } from 'react';
-import { FlexBox, FlexBoxAlignItems, FlexBoxDirection } from '../..';
+import React, { FC, forwardRef, ReactNode, Ref } from 'react';
+import { FlexBox, FlexBoxAlignItems } from '../..';
 
 export interface DynamicPageHeaderProps extends CommonProps {
   headerContent?: ReactNode;
