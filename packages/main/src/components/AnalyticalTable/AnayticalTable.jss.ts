@@ -6,7 +6,7 @@ const styles = {
     position: 'relative',
     width: '100%',
     maxWidth: '100%',
-    //todo
+    //todo hidden was default
     // overflowY: 'hidden',
     overflowY: 'auto',
     overflowX: 'auto',

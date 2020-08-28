@@ -81,7 +81,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
       [visibleColumnsWidth]
     ),
     horizontal: true,
-    overscan: 0
+    overscan: 10
   });
 
   reactWindowRef.current = {

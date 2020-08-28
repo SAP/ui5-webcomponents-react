@@ -411,7 +411,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     },
     [timeout.current, prevScrollLeft.current, isScrolling]
   );
-  console.log(isScrolling);
   return (
     <div className={className} style={inlineStyle} title={tooltip} ref={analyticalTableRef} {...passThroughProps}>
       {title && <TitleBar>{title}</TitleBar>}
@@ -423,13 +422,14 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
         aria-colcount={tableInternalColumns.length}
         data-per-page={visibleRows}
         ref={tableRef}
-        onScroll={handleScroll}
+        // onScroll={handleScroll}
       >
         {headerGroups.map((headerGroup) => {
           let headerProps = {};
           if (headerGroup.getHeaderGroupProps) {
             headerProps = headerGroup.getHeaderGroupProps();
           }
+
           return (
             tableRef.current && (
               <ColumnHeaderContainer

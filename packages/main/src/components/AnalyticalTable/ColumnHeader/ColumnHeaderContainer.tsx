@@ -20,7 +20,7 @@ export const ColumnHeaderContainer = (props) => {
     visibleColumnsWidth
   } = props;
   const columnVirtualizer = useVirtual({
-    size: headerGroup.headers.length,
+    size: visibleColumnsWidth.length,
     parentRef: tableRef,
     estimateSize: useCallback(
       (index) => {
@@ -30,7 +30,7 @@ export const ColumnHeaderContainer = (props) => {
       [visibleColumnsWidth]
     ),
     horizontal: true,
-    overscan: 0
+    overscan: 10
   });
   return (
     <div {...headerProps} role="rowgroup" style={{ width: `${columnVirtualizer.totalSize}px` }}>
@@ -51,8 +51,7 @@ export const ColumnHeaderContainer = (props) => {
             onDragEnd={handleOnDragEnd}
             dragOver={column.id === dragOver}
             isDraggable={column.canReorder}
-            width={`${virtualColumn.size}px`}
-            transform={`translateX(${virtualColumn.start}px)`}
+            virtualColumn={virtualColumn}
           >
             {column.render('Header')}
           </ColumnHeader>

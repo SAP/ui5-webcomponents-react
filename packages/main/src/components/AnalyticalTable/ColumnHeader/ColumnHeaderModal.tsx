@@ -1,6 +1,6 @@
 import '@ui5/webcomponents-icons/dist/icons/decline';
 import { useI18nText } from '@ui5/webcomponents-react-base/lib/hooks';
-// import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import {
   CLEAR_SORTING,
@@ -9,16 +9,15 @@ import {
   SORT_DESCENDING,
   UNGROUP
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
-// import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
-// import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
-// import { Icon } from '@ui5/webcomponents-react/lib/Icon';
-//todo
-// import { List } from '@ui5/webcomponents-react/lib/List';
-// import { ListItemTypes } from '@ui5/webcomponents-react/lib/ListItemTypes';
+import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
+import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
+import { Icon } from '@ui5/webcomponents-react/lib/Icon';
+import { List } from '@ui5/webcomponents-react/lib/List';
+import { ListItemTypes } from '@ui5/webcomponents-react/lib/ListItemTypes';
 import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import { Popover } from '@ui5/webcomponents-react/lib/Popover';
 import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/lib/PopoverHorizontalAlign';
-// import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
+import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
 import React, { CSSProperties, forwardRef, RefObject, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import { Ui5PopoverDomRef } from '../../../interfaces/Ui5PopoverDomRef';
@@ -120,47 +119,46 @@ export const ColumnHeaderModal = forwardRef((props: ColumnHeaderModalProperties,
       style={staticStyle as CSSProperties}
       onAfterClose={stopPropagation}
     >
-      <div />
-      {/*<List onItemClick={handleSort}>*/}
-      {/*  {isSortedAscending && (*/}
-      {/*    <StandardListItem type={ListItemTypes.Active} icon="decline" data-sort="clear">*/}
-      {/*      {clearSortingText}*/}
-      {/*    </StandardListItem>*/}
-      {/*  )}*/}
-      {/*  {showSort && !isSortedAscending && (*/}
-      {/*    <StandardListItem type={ListItemTypes.Active} icon="sort-ascending" data-sort="asc">*/}
-      {/*      {sortAscendingText}*/}
-      {/*    </StandardListItem>*/}
-      {/*  )}*/}
-      {/*  {showSort && !isSortedDescending && (*/}
-      {/*    <StandardListItem type={ListItemTypes.Active} icon="sort-descending" data-sort="desc">*/}
-      {/*      {sortDescendingText}*/}
-      {/*    </StandardListItem>*/}
-      {/*  )}*/}
-      {/*  {isSortedDescending && (*/}
-      {/*    <StandardListItem type={ListItemTypes.Active} icon="decline" data-sort="clear">*/}
-      {/*      {clearSortingText}*/}
-      {/*    </StandardListItem>*/}
-      {/*  )}*/}
-      {/*  {showFilter && !column.isGrouped && (*/}
-      {/*    <FlexBox*/}
-      {/*      alignItems={FlexBoxAlignItems.Center}*/}
-      {/*      style={{*/}
-      {/*        padding: '0px 1rem',*/}
-      {/*        height: 'var(--_ui5_custom_list_item_height)',*/}
-      {/*        borderBottom: `1px solid ${ThemingParameters.sapList_BorderColor}`*/}
-      {/*      }}*/}
-      {/*    >*/}
-      {/*      <Icon name="filter" style={{ paddingRight: '0.5rem', minWidth: '1rem', minHeight: '1rem' }} />*/}
-      {/*      <Filter column={column} popoverRef={ref} />*/}
-      {/*    </FlexBox>*/}
-      {/*  )}*/}
-      {/*  {showGroup && (*/}
-      {/*    <StandardListItem type={ListItemTypes.Active} icon="group-2" data-sort={'group'}>*/}
-      {/*      {column.isGrouped ? ungroupText : groupText}*/}
-      {/*    </StandardListItem>*/}
-      {/*  )}*/}
-      {/*</List>*/}
+      <List onItemClick={handleSort}>
+        {isSortedAscending && (
+          <StandardListItem type={ListItemTypes.Active} icon="decline" data-sort="clear">
+            {clearSortingText}
+          </StandardListItem>
+        )}
+        {showSort && !isSortedAscending && (
+          <StandardListItem type={ListItemTypes.Active} icon="sort-ascending" data-sort="asc">
+            {sortAscendingText}
+          </StandardListItem>
+        )}
+        {showSort && !isSortedDescending && (
+          <StandardListItem type={ListItemTypes.Active} icon="sort-descending" data-sort="desc">
+            {sortDescendingText}
+          </StandardListItem>
+        )}
+        {isSortedDescending && (
+          <StandardListItem type={ListItemTypes.Active} icon="decline" data-sort="clear">
+            {clearSortingText}
+          </StandardListItem>
+        )}
+        {showFilter && !column.isGrouped && (
+          <FlexBox
+            alignItems={FlexBoxAlignItems.Center}
+            style={{
+              padding: '0px 1rem',
+              height: 'var(--_ui5_custom_list_item_height)',
+              borderBottom: `1px solid ${ThemingParameters.sapList_BorderColor}`
+            }}
+          >
+            <Icon name="filter" style={{ paddingRight: '0.5rem', minWidth: '1rem', minHeight: '1rem' }} />
+            <Filter column={column} popoverRef={ref} />
+          </FlexBox>
+        )}
+        {showGroup && (
+          <StandardListItem type={ListItemTypes.Active} icon="group-2" data-sort={'group'}>
+            {column.isGrouped ? ungroupText : groupText}
+          </StandardListItem>
+        )}
+      </List>
     </Popover>,
     document.body
   );

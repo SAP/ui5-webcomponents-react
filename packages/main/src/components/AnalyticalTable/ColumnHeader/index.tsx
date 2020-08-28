@@ -43,8 +43,7 @@ export interface ColumnHeaderProps {
   isLastColumn: boolean;
 
   //todo
-  width: any;
-  transform: any;
+  virtualColumn: any;
 }
 
 const styles = {
@@ -123,8 +122,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     role,
     isLastColumn,
 
-    width,
-    transform
+    virtualColumn
   } = props;
 
   const isFiltered = column.filterValue && column.filterValue.length > 0;
@@ -166,9 +164,18 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
   );
 
   if (!column) return null;
+  const resizerRef = useRef();
 
   return (
-    <div style={{ position: 'absolute', top: 0, left: 0, width, transform }}>
+    <div
+      style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: `${virtualColumn.size}px`,
+        transform: `translateX(${virtualColumn.start}px)`
+      }}
+    >
       <div
         id={id}
         className={className}
@@ -206,10 +213,11 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
       </div>
       {column.canResize && column.getResizerProps && (
         <div
+          ref={resizerRef}
           {...column.getResizerProps()}
           data-resizer
           className={classes.resizer}
-          style={{ left: `${column.totalLeft + column.totalFlexWidth - (isLastColumn ? 3 : 0)}px` }}
+          style={{ left: `${column.totalFlexWidth - (isLastColumn ? 3 : 0)}px` }}
         />
       )}
     </div>
