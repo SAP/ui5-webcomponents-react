@@ -15,3 +15,10 @@ test('should render', () => {
   const shell = getByTestId('shell-wrapper');
   expect(shell).toBeInTheDocument();
 });
+
+test('should render with primaryTitle "Test"', () => {
+  const { getByTestId } = render(<Shell title='Test' />);
+  const shell = getByTestId('shell-wrapper');
+  expect(shell).toBeInTheDocument();
+  expect(shell).toHaveProperty('primaryTitle', 'Test');
+});
