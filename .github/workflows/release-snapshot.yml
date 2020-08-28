@@ -29,7 +29,6 @@ jobs:
 
       - name: publish
         run: |
-          npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}
           git config user.email ${{ secrets.BOT_GIT_EMAIL }}
           git config user.name ${{ secrets.BOT_GIT_USERNAME }}
 
@@ -39,3 +38,5 @@ jobs:
             --no-push \
             --no-git-tag-version \
             --dist-tag dev \
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

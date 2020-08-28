@@ -32,7 +32,6 @@ jobs:
         
     - name: publish
       run: |
-        npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}
         git config user.email ${{ secrets.BOT_GIT_EMAIL }}
         git config user.name ${{ secrets.BOT_GIT_USERNAME }}
         ${GITHUB_WORKSPACE}/node_modules/.bin/lerna publish ${{ github.event.inputs.release_type }} \
@@ -40,4 +39,4 @@ jobs:
           --create-release github
       env:
         GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
