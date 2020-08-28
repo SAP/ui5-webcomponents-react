@@ -1,10 +1,10 @@
+import { render } from '@shared/tests';
 import { TimelineItem } from '@ui5/webcomponents-react/lib/TimelineItem';
-import { mount } from 'enzyme';
 import React from 'react';
 
 describe('TimelineItem', () => {
   test('Basic Test (generated)', () => {
-    const wrapper = mount(<TimelineItem />);
-    expect(wrapper.render()).toMatchSnapshot();
+    const { asFragment } = render(<TimelineItem />);
+    expect(asFragment()).toMatchSnapshot();
   });
 });

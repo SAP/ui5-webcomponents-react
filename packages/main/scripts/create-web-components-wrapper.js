@@ -382,14 +382,14 @@ const createWebComponentWrapper = (
 const createWebComponentTest = (name) => {
   return prettier.format(
     `
-    import { mount } from 'enzyme';
-    import React from 'react';
+    import { render } from '@shared/tests';
     import { ${name} } from '@ui5/webcomponents-react/lib/${name}';
+    import React from 'react';
     
     describe('${name}', () => {
       test('Basic Test (generated)', () => {
-        const wrapper = mount(<${name} />);
-        expect(wrapper.render()).toMatchSnapshot();
+        const { asFragment } = render(<${name} />);
+        expect(asFragment()).toMatchSnapshot();
       });
     });
     
