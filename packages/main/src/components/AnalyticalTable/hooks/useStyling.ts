@@ -38,9 +38,9 @@ const getHeaderProps = (columnProps, { instance, column }) => {
     width: column.totalWidth
   };
 
-  if (instance.state.isScrollable && isLastColumn) {
-    style[isRTL ? 'paddingLeft' : 'paddingRight'] = ThemingParameters.sapScrollBar_Dimension;
-  }
+  // if (instance.state.isScrollable && isLastColumn) {
+  //   style[isRTL ? 'paddingLeft' : 'paddingRight'] = ThemingParameters.sapScrollBar_Dimension;
+  // }
 
   if (column.id === '__ui5wcr__internal_highlight_column' || column.id === '__ui5wcr__internal_selection_column') {
     style.padding = 0;

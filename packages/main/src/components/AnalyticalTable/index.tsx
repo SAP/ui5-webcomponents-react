@@ -18,7 +18,8 @@ import React, {
   useCallback,
   useEffect,
   useMemo,
-  useRef
+  useRef,
+  useState
 } from 'react';
 import {
   PluginHook,
@@ -31,7 +32,6 @@ import {
   useSortBy,
   useTable
 } from 'react-table';
-import { useVirtual } from 'react-virtual';
 import { AnalyticalTableColumnDefinition } from '../../interfaces/AnalyticalTableColumnDefinition';
 import { CommonProps } from '../../interfaces/CommonProps';
 import styles from './AnayticalTable.jss';
@@ -48,10 +48,12 @@ import { useSingleRowStateSelection } from './hooks/useSingleRowStateSelection';
 import { useStyling } from './hooks/useStyling';
 import { useTableScrollHandles } from './hooks/useTableScrollHandles';
 import { useToggleRowExpand } from './hooks/useToggleRowExpand';
+import { useVisibleColumnsWidth } from './hooks/useVisibleColumnsWidth';
 import { stateReducer } from './tableReducer/stateReducer';
 import { TitleBar } from './TitleBar';
 import { orderByFn } from './util';
 import { VirtualTableBody } from './virtualization/VirtualTableBody';
+import { VirtualTableBodyContainer } from './VirtualTableBodyContainer';
 
 export interface TableProps extends CommonProps {
   /**
@@ -209,6 +211,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     toggleRowSelected,
     toggleAllRowsSelected,
     visibleColumns,
+    visibleColumnsWidth,
     setGroupBy
   } = useTable(
     {
@@ -251,14 +254,15 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     useDynamicColumnWidths,
     useStyling,
     useToggleRowExpand,
+    useVisibleColumnsWidth,
     ...tableHooks
   );
 
   // scroll bar detection
-  useEffect(() => {
-    const visibleRowCount = rows.length < visibleRows ? Math.max(rows.length, minRows) : visibleRows;
-    dispatch({ type: 'TABLE_SCROLLING_ENABLED', payload: { isScrollable: rows.length > visibleRowCount } });
-  }, [rows.length, minRows, visibleRows]);
+  // useEffect(() => {
+  //   const visibleRowCount = rows.length < visibleRows ? Math.max(rows.length, minRows) : visibleRows;
+  //   dispatch({ type: 'TABLE_SCROLLING_ENABLED', payload: { isScrollable: rows.length > visibleRowCount } });
+  // }, [rows.length, minRows, visibleRows]);
 
   const updateTableClientWidth = useCallback(() => {
     if (tableRef.current) {
@@ -381,13 +385,29 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     } as CSSProperties;
   }, [tableState.tableClientWidth, style, rowHeight]);
 
-  const columnVirtualizer = useVirtual({
-    size: visibleColumns.length,
-    parentRef: tableRef,
-    estimateSize: useCallback((index) => visibleColumns[index].totalWidth, [visibleColumns]),
-    horizontal: true
-  });
-
+  const parentRef = useRef(null);
+  let timeout = useRef();
+  const [isScrolling, setIsScrolling] = useState(false);
+  const prevScrollLeft = useRef(null);
+  const handleScroll = useCallback(
+    (e) => {
+      if (prevScrollLeft && prevScrollLeft.current !== e.target.scrollLeft && e.target.scrollLeft !== 0) {
+        setIsScrolling(true);
+        if (timeout.current) {
+          clearTimeout(timeout.current);
+        }
+      }
+      if (isScrolling) {
+        // @ts-ignore
+        timeout.current = setTimeout(() => {
+          setIsScrolling(false);
+        }, 100);
+      }
+      prevScrollLeft.current = e.target.scrollLeft;
+    },
+    [timeout.current, prevScrollLeft.current, isScrolling]
+  );
+  console.log(isScrolling);
   return (
     <div className={className} style={inlineStyle} title={tooltip} ref={analyticalTableRef} {...passThroughProps}>
       {title && <TitleBar>{title}</TitleBar>}
@@ -399,6 +419,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
         aria-colcount={tableInternalColumns.length}
         data-per-page={visibleRows}
         ref={tableRef}
+        onScroll={handleScroll}
       >
         {headerGroups.map((headerGroup) => {
           let headerProps = {};
@@ -447,26 +468,37 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
         {!loading && props.data?.length === 0 && (
           <NoDataComponent noDataText={noDataText} className={classes.noDataContainer} style={noDataStyles} />
         )}
-        {props.data?.length > 0 && (
-          <VirtualTableBody
-            classes={classes}
-            prepareRow={prepareRow}
-            rows={rows}
-            minRows={minRows}
-            selectionMode={selectionMode}
-            reactWindowRef={reactWindowRef}
-            isTreeTable={isTreeTable}
-            internalRowHeight={internalRowHeight}
+        {props.data?.length > 0 && tableRef.current && (
+          <VirtualTableBodyContainer
             tableBodyHeight={tableBodyHeight}
-            visibleRows={visibleRows}
-            alternateRowColor={alternateRowColor}
-            overscanCount={overscanCount}
             totalColumnsWidth={totalColumnsWidth}
-            infiniteScroll={infiniteScroll}
-            infiniteScrollThreshold={infiniteScrollThreshold}
-            onLoadMore={onLoadMore}
-            columnVirtualizer={columnVirtualizer}
-          />
+            parentRef={parentRef}
+            isScrolling={isScrolling}
+            classes={classes}
+          >
+            <VirtualTableBody
+              classes={classes}
+              prepareRow={prepareRow}
+              rows={rows}
+              minRows={minRows}
+              selectionMode={selectionMode}
+              reactWindowRef={reactWindowRef}
+              isTreeTable={isTreeTable}
+              internalRowHeight={internalRowHeight}
+              tableBodyHeight={tableBodyHeight}
+              visibleRows={visibleRows}
+              alternateRowColor={alternateRowColor}
+              overscanCount={overscanCount}
+              totalColumnsWidth={totalColumnsWidth}
+              infiniteScroll={infiniteScroll}
+              infiniteScrollThreshold={infiniteScrollThreshold}
+              onLoadMore={onLoadMore}
+              tableRef={tableRef}
+              parentRef={parentRef}
+              visibleColumns={visibleColumns}
+              visibleColumnsWidth={visibleColumnsWidth}
+            />
+          </VirtualTableBodyContainer>
         )}
       </div>
     </div>
