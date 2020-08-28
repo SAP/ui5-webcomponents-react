@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.7](https://github.com/SAP/ui5-webcomponents-react/compare/v0.10.6...v0.10.7) (2020-08-28)
+
+
+### Bug Fixes
+
+* **PieChart / DonutChart:** fix hide data label logic ([#668](https://github.com/SAP/ui5-webcomponents-react/issues/668)) ([d8dc5ef](https://github.com/SAP/ui5-webcomponents-react/commit/d8dc5ef1faa96fcc24014790fb199999a3a9266d))
+
+
+### Features
+
+* **PieChart / DonutChart:** add option to mark chart segments as active ([#667](https://github.com/SAP/ui5-webcomponents-react/issues/667)) ([743d6d8](https://github.com/SAP/ui5-webcomponents-react/commit/743d6d8fcc79a58f0dd09f37e0f77030f96cb2f9))
+
+
+
+
+
 ## [0.10.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.10.5...v0.10.6) (2020-08-24)
 
 
