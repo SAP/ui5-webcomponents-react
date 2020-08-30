@@ -18,12 +18,3 @@ export * from '@testing-library/react';
 
 // override render method
 export { customRender as render };
-
-export const cleanStaticAreaAfterEachTest = () => {
-  // afterEach(() => {
-  //   const staticArea = document.body.querySelector('ui5-static-area');
-  //   if (staticArea) {
-  //     document.body.removeChild(staticArea);
-  //   }
-  // });
-};

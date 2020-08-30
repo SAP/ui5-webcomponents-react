@@ -1,13 +1,11 @@
 import { createPassThroughPropsTest } from '@shared/tests/utils';
-import { cleanStaticAreaAfterEachTest, fireEvent, render, screen } from '@tests/index';
+import { fireEvent, render, screen } from '@shared/tests';
 import { MessageBox } from '@ui5/webcomponents-react/lib/MessageBox';
 import { MessageBoxActions } from '@ui5/webcomponents-react/lib/MessageBoxActions';
 import { MessageBoxTypes } from '@ui5/webcomponents-react/lib/MessageBoxTypes';
 import React from 'react';
 
 describe('MessageBox', () => {
-  cleanStaticAreaAfterEachTest();
-
   test('Confirm - OK', () => {
     const callback = jest.fn();
     const { asFragment } = render(

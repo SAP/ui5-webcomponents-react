@@ -1,4 +1,4 @@
-import { cleanStaticAreaAfterEachTest, fireEvent, render, screen } from '@shared/tests';
+import { fireEvent, render, screen } from '@shared/tests';
 import { createPassThroughPropsTest } from '@shared/tests/utils';
 import { ActionSheet } from '@ui5/webcomponents-react/lib/ActionSheet';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
@@ -7,8 +7,6 @@ import React, { createRef, RefObject } from 'react';
 import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
 
 describe('ActionSheet', () => {
-  cleanStaticAreaAfterEachTest();
-
   test('Render without Crashing', () => {
     const ref = createRef();
     const wrapper = render(
