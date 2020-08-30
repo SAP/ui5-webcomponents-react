@@ -3,8 +3,16 @@
 exports[`NotificationListItem Basic Test (generated) 1`] = `
 <DocumentFragment>
   <ui5-li-notification
-    priority="None"
+    heading="My Notification"
+    priority="High"
+    show-close="true"
     wrap="false"
-  />
+  >
+    <ui5-notification-overflow-action
+      design="Transparent"
+      slot="actions"
+      text="My Action"
+    />
+  </ui5-li-notification>
 </DocumentFragment>
 `;
