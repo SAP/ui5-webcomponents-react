@@ -36,5 +36,5 @@ jobs:
           --pre-dist-tag next
       env:
         GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
         

@@ -20,8 +20,6 @@ jobs:
         uses: actions/setup-node@v2.1.0
         with:
           node-version: '12.x'
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Install, test and build
         run: |
@@ -42,4 +40,4 @@ jobs:
             --no-git-tag-version \
             --dist-tag dev
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
