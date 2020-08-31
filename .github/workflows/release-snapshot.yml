@@ -28,7 +28,7 @@ jobs:
 
       - name: publish
         run: |
-          npm whoami
+          npm config set //registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}
 
           git config user.email ${{ secrets.BOT_GIT_EMAIL }}
           git config user.name ${{ secrets.BOT_GIT_USERNAME }}
