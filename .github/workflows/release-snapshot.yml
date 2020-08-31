@@ -20,11 +20,12 @@ jobs:
         uses: actions/setup-node@v2.1.0
         with:
           node-version: '12.x'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Install, test and build
         run: |
           yarn install
-          yarn test
           yarn build
 
       - name: publish
