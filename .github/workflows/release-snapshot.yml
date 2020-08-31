@@ -29,6 +29,8 @@ jobs:
 
       - name: publish
         run: |
+          npm whoami
+
           git config user.email ${{ secrets.BOT_GIT_EMAIL }}
           git config user.name ${{ secrets.BOT_GIT_USERNAME }}
 
