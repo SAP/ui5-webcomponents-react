@@ -19,20 +19,20 @@
     "deploy:storybook": "lerna run build:i18n && storybook-to-ghpages --ci"
   },
   "dependencies": {
-    "@storybook/addon-actions": "6.0.13",
-    "@storybook/addon-controls": "6.0.13",
-    "@storybook/addon-docs": "6.0.13",
-    "@storybook/addon-toolbars": "6.0.13",
-    "@storybook/addons": "6.0.13",
-    "@storybook/cli": "6.0.13",
-    "@storybook/react": "6.0.13",
-    "@storybook/theming": "6.0.13",
+    "@storybook/addon-actions": "6.0.20",
+    "@storybook/addon-controls": "6.0.20",
+    "@storybook/addon-docs": "6.0.20",
+    "@storybook/addon-toolbars": "6.0.20",
+    "@storybook/addons": "6.0.20",
+    "@storybook/cli": "6.0.20",
+    "@storybook/react": "6.0.20",
+    "@storybook/theming": "6.0.20",
     "@ui5/webcomponents": "1.0.0-rc.8",
     "@ui5/webcomponents-fiori": "1.0.0-rc.8",
     "@ui5/webcomponents-icons": "1.0.0-rc.8",
     "react": "16.8.0",
     "react-dom": "16.8.0",
-    "react-syntax-highlighter": "^13.3.1"
+    "react-syntax-highlighter": "^13.5.1"
   },
   "devDependencies": {
     "@babel/core": "^7.11.0",

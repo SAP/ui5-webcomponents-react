@@ -37,6 +37,6 @@ jobs:
           ${GITHUB_WORKSPACE}/node_modules/.bin/lerna publish "0.0.0-${git_hash}" \
             --no-push \
             --no-git-tag-version \
-            --dist-tag dev \
+            --dist-tag dev
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
