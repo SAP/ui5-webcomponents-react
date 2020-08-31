@@ -2,6 +2,14 @@
 The goal of this repository is to increase the boostrap time spent on a new project with several things already set.
 
 
+# Getting Started
+
+- `yarn install`: To install this project dependencies.
+
+- `yarn mock`: To run this project with json-server.
+
+- `yarn start`: To run this project with backend (⚠️ currently not supported)
+
 # Configuration Included
 
 - JEST Up & Runnning.
