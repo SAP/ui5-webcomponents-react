@@ -1,3 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Option Basic Test (generated) 1`] = `<ui5-option />`;
+exports[`Option Basic Test (generated) 1`] = `
+<DocumentFragment>
+  <ui5-option />
+</DocumentFragment>
+`;

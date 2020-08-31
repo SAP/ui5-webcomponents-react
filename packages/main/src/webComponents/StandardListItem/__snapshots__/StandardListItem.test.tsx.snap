@@ -1,8 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`StandardListItem Basic Test (generated) 1`] = `
-<ui5-li
-  info-state="None"
-  type="Active"
-/>
+<DocumentFragment>
+  <ui5-li
+    actionable=""
+    info-state="None"
+    type="Active"
+  />
+</DocumentFragment>
 `;

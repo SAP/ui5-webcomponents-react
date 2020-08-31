@@ -1,5 +1,5 @@
-import { render, screen, fireEvent } from '@tests/index';
-import { createPassThroughPropsTest } from '@tests/utils';
+import { render, screen, fireEvent } from '@shared/tests';
+import { createPassThroughPropsTest } from '@shared/tests/utils';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
 import { Toolbar } from '@ui5/webcomponents-react/lib/Toolbar';
 import { ToolbarDesign } from '@ui5/webcomponents-react/lib/ToolbarDesign';
