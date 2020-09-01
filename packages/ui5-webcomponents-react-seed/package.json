@@ -31,7 +31,7 @@
     "lint": "eslint --quiet .",
     "test": "react-scripts test --silent --env=jest-environment-jsdom-sixteen",
     "test:ci": "npm run test -- --watchAll=false",
-    "test:coverage": "npm run test:ci --coverage",
+    "test:coverage": "npm run test -- --watchAll=false --coverage",
     "eject": "react-scripts eject",
     "commit:pre": "npm-run-all --parallel test:ci lint"
   },
