@@ -1,16 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should match snapshot 1`] = `
-<DocumentFragment>
-  <ui5-shellbar
-    data-testid="shell-wrapper"
-    style="position: fixed; width: 100%; z-index: 100;"
-  >
-    <img
-      alt="shell.logo.alt"
-      slot="logo"
-      src="https://sap.github.io/ui5-webcomponents/assets/images/sap-logo-svg.svg"
-    />
-  </ui5-shellbar>
-</DocumentFragment>
+<ui5-shellbar
+  data-testid="shell-wrapper"
+  style="position: fixed; width: 100%; z-index: 100;"
+>
+  <img
+    alt="shell.logo.alt"
+    slot="logo"
+    src="https://sap.github.io/ui5-webcomponents/assets/images/sap-logo-svg.svg"
+  />
+</ui5-shellbar>
 `;

@@ -29,9 +29,9 @@
     "mock": "env-cmd -f .env npm-run-all --parallel start:mock start:react",
     "build": "react-scripts build",
     "lint": "eslint --quiet .",
-    "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
-    "test:ci": "npm test -- --watchAll=false",
-    "test:coverage": "npm test -- --watchAll=false --coverage",
+    "test": "react-scripts test --silent --env=jest-environment-jsdom-sixteen",
+    "test:ci": "npm run test -- --watchAll=false",
+    "test:coverage": "npm run test:ci --coverage",
     "eject": "react-scripts eject",
     "commit:pre": "npm-run-all --parallel test:ci lint"
   },
@@ -61,6 +61,7 @@
     }
   },
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
     "@commitlint/cli": "^9.1.2",
     "@commitlint/config-conventional": "^9.1.2",
     "env-cmd": "^10.1.0",
