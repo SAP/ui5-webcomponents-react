@@ -38,7 +38,8 @@ export const ColumnHeaderContainer = (props) => {
     dragOver,
 
     tableRef,
-    visibleColumnsWidth
+    visibleColumnsWidth,
+    overscanCountHorizontal
   } = props;
   const columnVirtualizer = useVirtual({
     size: visibleColumnsWidth.length,
@@ -50,7 +51,7 @@ export const ColumnHeaderContainer = (props) => {
       [visibleColumnsWidth]
     ),
     horizontal: true,
-    overscan: 5
+    overscan: overscanCountHorizontal
   });
 
   const classes = useStyles();

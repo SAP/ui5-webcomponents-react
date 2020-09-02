@@ -15,12 +15,11 @@ interface VirtualTableBodyProps {
   visibleRows: number;
   alternateRowColor: boolean;
   overscanCount: number;
-
-  //todo
-  visibleColumns?: any;
-  tableRef?: any;
-  visibleColumnsWidth?: any;
-  parentRef?: any;
+  visibleColumns: any[];
+  tableRef: MutableRefObject<any>;
+  visibleColumnsWidth: any[];
+  parentRef: MutableRefObject<any>;
+  overscanCountHorizontal: number;
 }
 
 export const VirtualTableBody = (props: VirtualTableBodyProps) => {
@@ -37,7 +36,8 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     visibleColumns,
     tableRef,
     visibleColumnsWidth,
-    parentRef
+    parentRef,
+    overscanCountHorizontal
   } = props;
 
   const itemCount = Math.max(minRows, rows.length);
@@ -61,7 +61,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
       [visibleColumnsWidth]
     ),
     horizontal: true,
-    overscan: 5
+    overscan: overscanCountHorizontal
   });
 
   reactWindowRef.current = {

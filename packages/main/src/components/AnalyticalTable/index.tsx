@@ -125,6 +125,13 @@ export interface TableProps extends CommonProps {
    */
   selectedRowIds?: { [key: string]: boolean };
   isTreeTable?: boolean;
+  /**
+   * The amount of columns to load both behind and ahead of the current window range.
+   */
+  overscanCountHorizontal?: number;
+  /**
+   * The amount of rows to load both behind and ahead of current the window range.
+   */
   overscanCount?: number;
 
   // default components
@@ -169,6 +176,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     isTreeTable,
     alternateRowColor,
     overscanCount,
+    overscanCountHorizontal,
     scaleWidthMode,
     withRowHighlight,
     highlightField = 'status',
@@ -412,6 +420,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
                 visibleColumnsWidth={visibleColumnsWidth}
                 headerProps={headerProps}
                 headerGroup={headerGroup}
+                overscanCountHorizontal={overscanCountHorizontal}
                 onSort={onSort}
                 onGroupBy={onGroupByChanged}
                 onDragStart={handleDragStart}
@@ -467,6 +476,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
               parentRef={parentRef}
               visibleColumns={visibleColumns}
               visibleColumnsWidth={visibleColumnsWidth}
+              overscanCountHorizontal={overscanCountHorizontal}
             />
           </VirtualTableBodyContainer>
         )}
@@ -502,7 +512,8 @@ AnalyticalTable.defaultProps = {
   onRowExpandChange: () => {},
   onColumnsReordered: () => {},
   isTreeTable: false,
-  alternateRowColor: false
+  alternateRowColor: false,
+  overscanCountHorizontal: 5
 };
 
 export { AnalyticalTable };
