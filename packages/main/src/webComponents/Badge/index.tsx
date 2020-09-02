@@ -1,5 +1,4 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/Badge';
 import { FC, ReactNode } from 'react';
 
 export interface BadgePropTypes extends WithWebComponentPropTypes {
@@ -20,7 +19,14 @@ export interface BadgePropTypes extends WithWebComponentPropTypes {
 /**
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Badge" target="_blank">UI5 Web Components Playground</a>
  */
-const Badge: FC<BadgePropTypes> = withWebComponent<BadgePropTypes>('ui5-badge', ['colorScheme'], [], ['icon'], []);
+const Badge: FC<BadgePropTypes> = withWebComponent<BadgePropTypes>(
+  'ui5-badge',
+  () => import('@ui5/webcomponents/dist/Badge'),
+  ['colorScheme'],
+  [],
+  ['icon'],
+  []
+);
 
 Badge.displayName = 'Badge';
 

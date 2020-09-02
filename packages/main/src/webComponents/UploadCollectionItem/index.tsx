@@ -1,7 +1,7 @@
-import '@ui5/webcomponents-fiori/dist/UploadCollectionItem';
-import { UploadState } from '@ui5/webcomponents-react/lib/UploadState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import { FC, ReactNode } from 'react';
+import { FC } from 'react';
+import { UploadState } from '@ui5/webcomponents-react/lib/UploadState';
+import { ReactNode } from 'react';
 
 export interface UploadCollectionItemPropTypes extends WithWebComponentPropTypes {
   /**
@@ -67,6 +67,7 @@ export interface UploadCollectionItemPropTypes extends WithWebComponentPropTypes
  */
 const UploadCollectionItem: FC<UploadCollectionItemPropTypes> = withWebComponent<UploadCollectionItemPropTypes>(
   'ui5-upload-collection-item',
+  () => import('@ui5/webcomponents-fiori/dist/UploadCollectionItem'),
   ['file', 'fileName', 'progress', 'uploadState'],
   ['fileNameClickable', 'noDelete', 'noRetry', 'noTerminate'],
   ['thumbnail'],

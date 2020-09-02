@@ -1,7 +1,6 @@
 import { ListMode } from '@ui5/webcomponents-react/lib/ListMode';
 import { ListSeparators } from '@ui5/webcomponents-react/lib/ListSeparators';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/List';
 import { FC, ReactNode } from 'react';
 
 export interface ListPropTypes extends WithWebComponentPropTypes {
@@ -76,6 +75,7 @@ export interface ListPropTypes extends WithWebComponentPropTypes {
  */
 const List: FC<ListPropTypes> = withWebComponent<ListPropTypes>(
   'ui5-list',
+  () => import('@ui5/webcomponents/dist/List'),
   ['footerText', 'headerText', 'mode', 'noDataText', 'separators'],
   ['busy', 'infiniteScroll', 'inset'],
   ['header'],

@@ -1,6 +1,6 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/GroupHeaderListItem';
-import { FC, ReactNode } from 'react';
+import { FC } from 'react';
+import { ReactNode } from 'react';
 
 export interface GroupHeaderListItemPropTypes extends WithWebComponentPropTypes {
   /**
@@ -18,6 +18,7 @@ export interface GroupHeaderListItemPropTypes extends WithWebComponentPropTypes 
  */
 const GroupHeaderListItem: FC<GroupHeaderListItemPropTypes> = withWebComponent<GroupHeaderListItemPropTypes>(
   'ui5-li-groupheader',
+  () => import('@ui5/webcomponents/dist/GroupHeaderListItem'),
   [],
   ['selected'],
   [],

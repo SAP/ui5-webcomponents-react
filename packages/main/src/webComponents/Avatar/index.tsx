@@ -3,7 +3,6 @@ import { AvatarFitType } from '@ui5/webcomponents-react/lib/AvatarFitType';
 import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/Avatar';
 import { FC } from 'react';
 
 export interface AvatarPropTypes extends WithWebComponentPropTypes {
@@ -48,6 +47,7 @@ export interface AvatarPropTypes extends WithWebComponentPropTypes {
  */
 const Avatar: FC<AvatarPropTypes> = withWebComponent<AvatarPropTypes>(
   'ui5-avatar',
+  () => import('@ui5/webcomponents/dist/Avatar'),
   ['accessibleName', 'backgroundColor', 'icon', 'image', 'imageFitType', 'initials', 'shape', 'size'],
   [],
   [],

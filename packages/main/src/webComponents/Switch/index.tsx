@@ -1,5 +1,4 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/Switch';
 import { FC } from 'react';
 
 export interface SwitchPropTypes extends Omit<WithWebComponentPropTypes, 'onChange'> {
@@ -36,6 +35,7 @@ export interface SwitchPropTypes extends Omit<WithWebComponentPropTypes, 'onChan
  */
 const Switch: FC<SwitchPropTypes> = withWebComponent<SwitchPropTypes>(
   'ui5-switch',
+  () => import('@ui5/webcomponents/dist/Switch'),
   ['textOff', 'textOn'],
   ['checked', 'disabled', 'graphical'],
   [],

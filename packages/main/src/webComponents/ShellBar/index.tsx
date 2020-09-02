@@ -1,4 +1,3 @@
-import '@ui5/webcomponents-fiori/dist/ShellBar';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import { FC, ReactNode } from 'react';
 
@@ -82,6 +81,7 @@ export interface ShellBarPropTypes extends WithWebComponentPropTypes {
  */
 const ShellBar: FC<ShellBarPropTypes> = withWebComponent<ShellBarPropTypes>(
   'ui5-shellbar',
+  () => import('@ui5/webcomponents-fiori/dist/ShellBar'),
   ['notificationCount', 'primaryTitle', 'secondaryTitle'],
   ['showCoPilot', 'showNotifications', 'showProductSwitch'],
   ['logo', 'menuItems', 'profile', 'searchField', 'startButton'],

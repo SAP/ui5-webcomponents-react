@@ -1,4 +1,5 @@
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
+import { useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base/lib/useIsomorphicLayoutEffect';
 import React, {
   Children,
   cloneElement,
@@ -30,12 +31,18 @@ export interface WithWebComponentPropTypes extends CommonProps, HTMLAttributes<H
 
 export const withWebComponent = <T extends Record<string, any>>(
   TagName: string,
+  loader: () => Promise<any>,
   regularProperties: string[],
   booleanProperties: string[],
   slotProperties: string[],
   eventProperties: string[]
 ) => {
   const WithWebComponent = forwardRef((props: T & WithWebComponentPropTypes, wcRef: RefObject<Ui5DomRef>) => {
+    useIsomorphicLayoutEffect(() => {
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+      loader();
+    }, []);
+
     const { className, tooltip, children, ...rest } = props;
 
     const ref = useConsolidatedRef<HTMLElement>(wcRef);

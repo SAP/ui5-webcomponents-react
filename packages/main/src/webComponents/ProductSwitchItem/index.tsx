@@ -1,4 +1,3 @@
-import '@ui5/webcomponents-fiori/dist/ProductSwitchItem';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import { FC } from 'react';
 
@@ -36,6 +35,7 @@ export interface ProductSwitchItemPropTypes extends Omit<WithWebComponentPropTyp
  */
 const ProductSwitchItem: FC<ProductSwitchItemPropTypes> = withWebComponent<ProductSwitchItemPropTypes>(
   'ui5-product-switch-item',
+  () => import('@ui5/webcomponents-fiori/dist/ProductSwitchItem'),
   ['heading', 'icon', 'subtitle', 'target', 'targetSrc'],
   [],
   [],

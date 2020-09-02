@@ -342,7 +342,6 @@ const createWebComponentWrapper = (
   return prettier.format(
     `
     import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-    import '@ui5/webcomponents${componentsFromFioriPackage.has(name) ? '-fiori' : ''}/dist/${name}';
     import { FC } from 'react';
     ${importStatements.join('\n')}
     
@@ -351,12 +350,11 @@ const createWebComponentWrapper = (
     }
     
     /**
-     * <code>import { ${name} } from '@ui5/webcomponents-react/lib/${name}';</code>
-     * <br />
      * <a href="https://sap.github.io/ui5-webcomponents/playground/components/${name}" target="_blank">UI5 Web Components Playground</a>
      */
     const ${name}: FC<${name}PropTypes> = withWebComponent<${name}PropTypes>(
       '${tag}', 
+      () => import('@ui5/webcomponents${componentsFromFioriPackage.has(name) ? '-fiori' : ''}/dist/${name}'),
       [${regularProps.map((v) => `'${v}'`).join(', ')}], 
       [${booleanProps.map((v) => `'${v}'`).join(', ')}],  
       [${slotProps

@@ -1,7 +1,6 @@
 import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/DatePicker';
 import { FC, ReactNode } from 'react';
 
 export interface DatePickerPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput'> {
@@ -78,6 +77,7 @@ export interface DatePickerPropTypes extends Omit<WithWebComponentPropTypes, 'on
  */
 const DatePicker: FC<DatePickerPropTypes> = withWebComponent<DatePickerPropTypes>(
   'ui5-date-picker',
+  () => import('@ui5/webcomponents/dist/DatePicker'),
   ['formatPattern', 'maxDate', 'minDate', 'name', 'placeholder', 'primaryCalendarType', 'value', 'valueState'],
   ['disabled', 'hideWeekNumbers', 'readonly'],
   ['valueStateMessage'],

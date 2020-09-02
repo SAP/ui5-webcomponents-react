@@ -1,6 +1,6 @@
-import '@ui5/webcomponents-fiori/dist/ShellBarItem';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import { FC, ReactNode } from 'react';
+import { FC } from 'react';
+import { ReactNode } from 'react';
 
 export interface ShellBarItemPropTypes extends WithWebComponentPropTypes {
   /**
@@ -30,6 +30,7 @@ export interface ShellBarItemPropTypes extends WithWebComponentPropTypes {
  */
 const ShellBarItem: FC<ShellBarItemPropTypes> = withWebComponent<ShellBarItemPropTypes>(
   'ui5-shellbar-item',
+  () => import('@ui5/webcomponents-fiori/dist/ShellBarItem'),
   ['count', 'icon', 'stableDomRef', 'text'],
   [],
   [],

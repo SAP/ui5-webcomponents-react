@@ -1,6 +1,5 @@
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/FileUploader';
 import { FC, ReactNode } from 'react';
 
 export interface FileUploaderPropTypes extends Omit<WithWebComponentPropTypes, 'onChange'> {
@@ -55,6 +54,7 @@ export interface FileUploaderPropTypes extends Omit<WithWebComponentPropTypes, '
  */
 const FileUploader: FC<FileUploaderPropTypes> = withWebComponent<FileUploaderPropTypes>(
   'ui5-file-uploader',
+  () => import('@ui5/webcomponents/dist/FileUploader'),
   ['accept', 'name', 'placeholder', 'value', 'valueState'],
   ['disabled', 'hideInput', 'multiple'],
   [],

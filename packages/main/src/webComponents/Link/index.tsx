@@ -1,6 +1,5 @@
 import { LinkDesign } from '@ui5/webcomponents-react/lib/LinkDesign';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/Link';
 import { FC, ReactNode } from 'react';
 
 export interface LinkPropTypes extends Omit<WithWebComponentPropTypes, 'onClick'> {
@@ -39,6 +38,7 @@ export interface LinkPropTypes extends Omit<WithWebComponentPropTypes, 'onClick'
  */
 const Link: FC<LinkPropTypes> = withWebComponent<LinkPropTypes>(
   'ui5-link',
+  () => import('@ui5/webcomponents/dist/Link'),
   ['design', 'href', 'target'],
   ['disabled', 'wrap'],
   [],

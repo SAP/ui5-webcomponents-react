@@ -1,7 +1,6 @@
-import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/ProgressIndicator';
 import { FC } from 'react';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 
 export interface ProgressIndicatorPropTypes extends WithWebComponentPropTypes {
   /**
@@ -29,6 +28,7 @@ export interface ProgressIndicatorPropTypes extends WithWebComponentPropTypes {
  */
 const ProgressIndicator: FC<ProgressIndicatorPropTypes> = withWebComponent<ProgressIndicatorPropTypes>(
   'ui5-progress-indicator',
+  () => import('@ui5/webcomponents/dist/ProgressIndicator'),
   ['value', 'valueState'],
   ['disabled', 'hideValue'],
   [],

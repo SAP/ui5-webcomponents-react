@@ -1,5 +1,4 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/TabSeparator';
 import { FC } from 'react';
 
 export interface TabSeparatorPropTypes extends WithWebComponentPropTypes {}
@@ -9,6 +8,7 @@ export interface TabSeparatorPropTypes extends WithWebComponentPropTypes {}
  */
 const TabSeparator: FC<TabSeparatorPropTypes> = withWebComponent<TabSeparatorPropTypes>(
   'ui5-tab-separator',
+  () => import('@ui5/webcomponents/dist/TabSeparator'),
   [],
   [],
   [],

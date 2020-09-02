@@ -1,6 +1,5 @@
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/Select';
 import { FC, ReactNode } from 'react';
 
 export interface SelectPropTypes extends Omit<WithWebComponentPropTypes, 'onChange'> {
@@ -39,6 +38,7 @@ export interface SelectPropTypes extends Omit<WithWebComponentPropTypes, 'onChan
  */
 const Select: FC<SelectPropTypes> = withWebComponent<SelectPropTypes>(
   'ui5-select',
+  () => import('@ui5/webcomponents/dist/Select'),
   ['name', 'valueState'],
   ['disabled'],
   [],

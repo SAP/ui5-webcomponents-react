@@ -1,6 +1,6 @@
-import '@ui5/webcomponents-fiori/dist/SideNavigation';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import { FC, ReactNode } from 'react';
+import { FC } from 'react';
+import { ReactNode } from 'react';
 
 export interface SideNavigationPropTypes extends WithWebComponentPropTypes {
   /**
@@ -28,6 +28,7 @@ export interface SideNavigationPropTypes extends WithWebComponentPropTypes {
  */
 const SideNavigation: FC<SideNavigationPropTypes> = withWebComponent<SideNavigationPropTypes>(
   'ui5-side-navigation',
+  () => import('@ui5/webcomponents-fiori/dist/SideNavigation'),
   [],
   ['collapsed'],
   ['fixedItems'],

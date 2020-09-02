@@ -1,6 +1,5 @@
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/Button';
 import { FC, ReactNode } from 'react';
 
 export interface ButtonPropTypes extends Omit<WithWebComponentPropTypes, 'onClick'> {
@@ -41,6 +40,7 @@ export interface ButtonPropTypes extends Omit<WithWebComponentPropTypes, 'onClic
  */
 const Button: FC<ButtonPropTypes> = withWebComponent<ButtonPropTypes>(
   'ui5-button',
+  () => import('@ui5/webcomponents/dist/Button'),
   ['design', 'icon'],
   ['disabled', 'iconEnd', 'submits'],
   [],

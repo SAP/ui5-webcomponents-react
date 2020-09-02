@@ -1,5 +1,4 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/TableColumn';
 import { FC, ReactNode } from 'react';
 
 export interface TableColumnPropTypes extends WithWebComponentPropTypes {
@@ -26,6 +25,7 @@ export interface TableColumnPropTypes extends WithWebComponentPropTypes {
  */
 const TableColumn: FC<TableColumnPropTypes> = withWebComponent<TableColumnPropTypes>(
   'ui5-table-column',
+  () => import('@ui5/webcomponents/dist/TableColumn'),
   ['minWidth', 'popinText'],
   ['demandPopin'],
   [],

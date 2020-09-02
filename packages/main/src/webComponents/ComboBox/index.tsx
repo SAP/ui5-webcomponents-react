@@ -1,6 +1,5 @@
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/ComboBox';
 import { FC, ReactNode } from 'react';
 
 export interface ComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput'> {
@@ -61,6 +60,7 @@ export interface ComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
  */
 const ComboBox: FC<ComboBoxPropTypes> = withWebComponent<ComboBoxPropTypes>(
   'ui5-combobox',
+  () => import('@ui5/webcomponents/dist/ComboBox'),
   ['filter', 'filterValue', 'placeholder', 'value', 'valueState'],
   ['disabled', 'loading', 'readonly', 'required'],
   [],

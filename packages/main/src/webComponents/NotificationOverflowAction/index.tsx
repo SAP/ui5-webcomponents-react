@@ -1,4 +1,3 @@
-import '@ui5/webcomponents-fiori/dist/NotificationOverflowAction';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/MultiComboBoxItem';
@@ -25,7 +24,14 @@ export interface NotificationOverflowActionPropTypes extends WithWebComponentPro
 
 const NotificationOverflowAction: FC<NotificationOverflowActionPropTypes> = withWebComponent<
   NotificationOverflowActionPropTypes
->('ui5-notification-overflow-action', ['design', 'icon', 'text'], ['disabled'], [], []);
+>(
+  'ui5-notification-overflow-action',
+  () => import('@ui5/webcomponents-fiori/dist/NotificationOverflowAction'),
+  ['design', 'icon', 'text'],
+  ['disabled'],
+  [],
+  []
+);
 
 NotificationOverflowAction.displayName = 'NotificationOverflowAction';
 

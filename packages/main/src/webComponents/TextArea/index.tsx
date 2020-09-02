@@ -1,6 +1,5 @@
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/TextArea';
 import { FC, ReactNode } from 'react';
 
 export interface TextAreaPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput'> {
@@ -79,6 +78,7 @@ export interface TextAreaPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
  */
 const TextArea: FC<TextAreaPropTypes> = withWebComponent<TextAreaPropTypes>(
   'ui5-textarea',
+  () => import('@ui5/webcomponents/dist/TextArea'),
   ['growingMaxLines', 'maxlength', 'name', 'placeholder', 'rows', 'value', 'valueState'],
   ['disabled', 'growing', 'readonly', 'required', 'showExceededText'],
   ['valueStateMessage'],

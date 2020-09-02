@@ -1,5 +1,4 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/RatingIndicator';
 import { FC } from 'react';
 
 export interface RatingIndicatorPropTypes extends Omit<WithWebComponentPropTypes, 'onChange'> {
@@ -37,6 +36,7 @@ export interface RatingIndicatorPropTypes extends Omit<WithWebComponentPropTypes
  */
 const RatingIndicator: FC<RatingIndicatorPropTypes> = withWebComponent<RatingIndicatorPropTypes>(
   'ui5-rating-indicator',
+  () => import('@ui5/webcomponents/dist/RatingIndicator'),
   ['maxValue', 'value'],
   ['disabled', 'readonly'],
   [],

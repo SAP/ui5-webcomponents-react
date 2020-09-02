@@ -1,6 +1,5 @@
 import { MessageStripType } from '@ui5/webcomponents-react/lib/MessageStripType';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/MessageStrip';
 import { FC, ReactNode } from 'react';
 
 export interface MessageStripPropTypes extends WithWebComponentPropTypes {
@@ -37,6 +36,7 @@ export interface MessageStripPropTypes extends WithWebComponentPropTypes {
  */
 const MessageStrip: FC<MessageStripPropTypes> = withWebComponent<MessageStripPropTypes>(
   'ui5-messagestrip',
+  () => import('@ui5/webcomponents/dist/MessageStrip'),
   ['type'],
   ['noCloseButton', 'noIcon'],
   ['icon'],

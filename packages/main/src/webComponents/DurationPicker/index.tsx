@@ -1,5 +1,4 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/DurationPicker';
 import { FC } from 'react';
 
 export interface DurationPickerPropTypes extends Omit<WithWebComponentPropTypes, 'onChange'> {
@@ -56,6 +55,7 @@ export interface DurationPickerPropTypes extends Omit<WithWebComponentPropTypes,
  */
 const DurationPicker: FC<DurationPickerPropTypes> = withWebComponent<DurationPickerPropTypes>(
   'ui5-duration-picker',
+  () => import('@ui5/webcomponents/dist/DurationPicker'),
   ['maxValue', 'minutesStep', 'secondsStep', 'value', 'valueState'],
   ['disabled', 'hideHours', 'hideMinutes', 'hideSeconds', 'readonly'],
   [],

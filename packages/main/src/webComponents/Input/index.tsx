@@ -1,7 +1,6 @@
 import { InputType } from '@ui5/webcomponents-react/lib/InputType';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/Input';
 import { FC, ReactNode } from 'react';
 
 export interface InputPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput' | 'onSubmit'> {
@@ -98,6 +97,7 @@ export interface InputPropTypes extends Omit<WithWebComponentPropTypes, 'onChang
  */
 const Input: FC<InputPropTypes> = withWebComponent<InputPropTypes>(
   'ui5-input',
+  () => import('@ui5/webcomponents/dist/Input'),
   ['maxlength', 'name', 'placeholder', 'type', 'value', 'valueState'],
   ['disabled', 'highlight', 'readonly', 'required', 'showSuggestions'],
   ['icon', 'valueStateMessage'],

@@ -1,6 +1,5 @@
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/RadioButton';
 import { FC } from 'react';
 
 export interface RadioButtonPropTypes extends Omit<WithWebComponentPropTypes, 'onSelect'> {
@@ -55,6 +54,7 @@ export interface RadioButtonPropTypes extends Omit<WithWebComponentPropTypes, 'o
  */
 const RadioButton: FC<RadioButtonPropTypes> = withWebComponent<RadioButtonPropTypes>(
   'ui5-radiobutton',
+  () => import('@ui5/webcomponents/dist/RadioButton'),
   ['name', 'text', 'value', 'valueState'],
   ['disabled', 'readonly', 'selected', 'wrap'],
   [],

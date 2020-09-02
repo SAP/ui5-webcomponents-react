@@ -1,8 +1,8 @@
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { FC } from 'react';
 import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/DateRangePicker';
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 export interface DateRangePickerPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput'> {
   /**
@@ -82,6 +82,7 @@ export interface DateRangePickerPropTypes extends Omit<WithWebComponentPropTypes
  */
 const DateRangePicker: FC<DateRangePickerPropTypes> = withWebComponent<DateRangePickerPropTypes>(
   'ui5-daterange-picker',
+  () => import('@ui5/webcomponents/dist/DateRangePicker'),
   [
     'delimiter',
     'formatPattern',

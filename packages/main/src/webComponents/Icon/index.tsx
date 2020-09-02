@@ -1,5 +1,4 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/Icon';
 import { FC } from 'react';
 
 export interface IconPropTypes extends WithWebComponentPropTypes {
@@ -26,6 +25,7 @@ export interface IconPropTypes extends WithWebComponentPropTypes {
  */
 const Icon: FC<IconPropTypes> = withWebComponent<IconPropTypes>(
   'ui5-icon',
+  () => import('@ui5/webcomponents/dist/Icon'),
   ['accessibleName', 'name'],
   ['interactive', 'showTooltip'],
   [],

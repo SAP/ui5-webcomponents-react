@@ -1,7 +1,7 @@
-import { ListItemTypes } from '@ui5/webcomponents-react/lib/ListItemTypes';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/CustomListItem';
-import { FC, ReactNode } from 'react';
+import { FC } from 'react';
+import { ListItemTypes } from '@ui5/webcomponents-react/lib/ListItemTypes';
+import { ReactNode } from 'react';
 
 export interface CustomListItemPropTypes extends WithWebComponentPropTypes {
   /**
@@ -27,6 +27,7 @@ export interface CustomListItemPropTypes extends WithWebComponentPropTypes {
  */
 const CustomListItem: FC<CustomListItemPropTypes> = withWebComponent<CustomListItemPropTypes>(
   'ui5-li-custom',
+  () => import('@ui5/webcomponents/dist/CustomListItem'),
   ['type'],
   ['selected'],
   [],
