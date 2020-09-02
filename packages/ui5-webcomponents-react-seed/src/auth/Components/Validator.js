@@ -1,23 +1,13 @@
-import React from 'react';
-import { useGet } from '../../hooks/useRequest';
-
-import Constants from '../../util/Constants';
+import { useHasAccess } from '../../hooks/useHasAuthority';
 
 const ComponentValidator = ({ allowedAuthorities, authorityKey, children }) => {
-  const { data, status } = useGet(Constants.REACT_QUERY.KEYS.GET_USER_LOGGED, 'GET_USER_LOGGED', null);
+  const hasAccess = useHasAccess(allowedAuthorities, authorityKey)
+  if (!hasAccess) {
+    return null;
+  }
 
-  const getComponentValidated = () => {
-    if (status === Constants.REACT_QUERY.CODES.SUCCESS) {
-      const hasAccess = data.data.user[authorityKey].some(permission => allowedAuthorities.includes(permission));
-      if (hasAccess) {
-        return children;
-      }
-    }
+  return children;
+}
 
-    return <></>;
-  };
-
-  return getComponentValidated();
-};
 
 export default ComponentValidator;

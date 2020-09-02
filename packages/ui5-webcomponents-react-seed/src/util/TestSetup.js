@@ -1,16 +1,37 @@
 import React from 'react'
 
-import { render } from '@testing-library/react'
+import { render as rtlRender } from '@testing-library/react';
+import { BrowserRouter } from "react-router-dom";
+import { Router } from 'react-router-dom';
+import { createMemoryHistory } from 'history';
+import { rest } from 'msw'
+import { setupServer } from 'msw/node'
 
-const AllTheProviders = ({ children }) => {
-  return (
-    <>
-      {children}
-    </>
-  )
+import BrowserURL from './BrowserURL';
+
+const render = (ui, { route = BrowserURL.HOME, ...renderOptions } = {}) => {
+  const WrapperProvider = ({ children }) => {
+    const history = createMemoryHistory({ initialEntries: [route] });
+    return (
+      <BrowserRouter>
+        <Router history={history}>
+          {children}
+        </Router>
+      </BrowserRouter>
+    );
+  };
+
+  return rtlRender(ui, { wrapper: WrapperProvider, ...renderOptions });
+}
+
+const serverCustom = (apiUrl, data, status) => {
+  return setupServer(rest.get(`*${apiUrl}`, (req, res, ctx) => {
+    return (res(ctx.json({ data: data, status: status })));
+  }));
 };
 
-const customRender = (ui, options) => render(ui, { wrapper: AllTheProviders, ...options });
+export * from '@testing-library/react';
 
-export * from '@testing-library/react'
-export { customRender as render }
+export { render, serverCustom }
+
+

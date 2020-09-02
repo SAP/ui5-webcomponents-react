@@ -11,7 +11,6 @@ import BrowserURL from '../../util/BrowserURL'
 const style = {
   wrapper: {
     width: '100%',
-    height: '100vh'
   },
   image: {
     width: '30%'
