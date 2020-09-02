@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route } from "react-router-dom";
-import { useHasPendableAccess } from '../../hooks/useHasAuthority';
+import { useHasPendableAccess } from '../../hooks/useAuthority';
 
 import NotFound from '../../pages/Fallback/NotFound';
 import Empty from '../../pages/Fallback/Empty';
