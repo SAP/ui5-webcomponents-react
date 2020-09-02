@@ -95,6 +95,10 @@ export const renderFormatedStory = (props) => {
         accessor: 'users',
         formatter: (d) => (d > 200 ? 'over 200' : 'lower')
       }}
+      chartConfig={{
+        activeSegment: 1,
+        showActiveSegmentDataLabel: true
+      }}
     />
   );
 };
