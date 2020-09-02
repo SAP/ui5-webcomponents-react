@@ -82,20 +82,6 @@ const styles = {
     color: ThemingParameters.sapContent_IconColor,
     right: getRTL() === false ? '0.5rem' : undefined,
     left: getRTL() === true ? '0.5rem' : undefined
-  },
-  resizer: {
-    display: 'inline-block',
-    width: '3px',
-    height: '100%',
-    position: 'absolute',
-    bottom: 0,
-    top: 0,
-    transform: 'translateX(-50%)',
-    zIndex: 1,
-    cursor: 'col-resize',
-    '&:hover, &:active': {
-      backgroundColor: ThemingParameters.sapContent_DragAndDropActiveColor
-    }
   }
 };
 
@@ -120,7 +106,6 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     isDraggable,
     dragOver,
     role,
-    isLastColumn,
 
     virtualColumn
   } = props;
@@ -164,8 +149,6 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
   );
 
   if (!column) return null;
-  const resizerRef = useRef();
-
   return (
     <div
       style={{
@@ -211,15 +194,6 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
         </div>
         {hasPopover && <ColumnHeaderModal column={column} onSort={onSort} onGroupBy={onGroupBy} ref={popoverRef} />}
       </div>
-      {column.canResize && column.getResizerProps && (
-        <div
-          ref={resizerRef}
-          {...column.getResizerProps()}
-          data-resizer
-          className={classes.resizer}
-          style={{ left: `${column.totalFlexWidth - (isLastColumn ? 3 : 0)}px` }}
-        />
-      )}
     </div>
   );
 };

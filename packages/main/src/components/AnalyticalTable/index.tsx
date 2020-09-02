@@ -1,3 +1,4 @@
+import { StyleClassHelper } from '@ui5/webcomponents-react-base';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
@@ -18,8 +19,7 @@ import React, {
   useCallback,
   useEffect,
   useMemo,
-  useRef,
-  useState
+  useRef
 } from 'react';
 import {
   PluginHook,
@@ -32,11 +32,10 @@ import {
   useSortBy,
   useTable
 } from 'react-table';
-import { useVirtual } from 'react-virtual';
+import { GlobalStyleClasses } from '@ui5/webcomponents-react/lib/GlobalStyleClasses';
 import { AnalyticalTableColumnDefinition } from '../../interfaces/AnalyticalTableColumnDefinition';
 import { CommonProps } from '../../interfaces/CommonProps';
 import styles from './AnayticalTable.jss';
-import { ColumnHeader } from './ColumnHeader';
 import { ColumnHeaderContainer } from './ColumnHeader/ColumnHeaderContainer';
 import { DefaultColumn } from './defaults/Column';
 import { DefaultLoadingComponent } from './defaults/LoadingComponent';
@@ -259,9 +258,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     useVisibleColumnsWidth,
     ...tableHooks
   );
-
-  // scroll bar detection
-  //todo
   useEffect(() => {
     const visibleRowCount = rows.length < visibleRows ? Math.max(rows.length, minRows) : visibleRows;
     dispatch({ type: 'TABLE_SCROLLING_ENABLED', payload: { isScrollable: rows.length > visibleRowCount } });
@@ -388,29 +384,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     } as CSSProperties;
   }, [tableState.tableClientWidth, style, rowHeight]);
 
-  //todo maybe debounce whole function
   const parentRef = useRef(null);
-  let timeout = useRef();
-  const [isScrolling, setIsScrolling] = useState(false);
-  const prevScrollLeft = useRef(null);
-  const handleScroll = useCallback(
-    (e) => {
-      e.preventDefault();
-      if (prevScrollLeft && prevScrollLeft.current !== e.target.scrollLeft && e.target.scrollLeft !== 0) {
-        setIsScrolling(true);
-        if (timeout.current) {
-          clearTimeout(timeout.current);
-        }
-      }
-      // @ts-ignore
-      timeout.current = setTimeout(() => {
-        setIsScrolling(false);
-      }, 100);
 
-      prevScrollLeft.current = e.target.scrollLeft;
-    },
-    [timeout.current, prevScrollLeft.current, isScrolling]
-  );
   return (
     <div className={className} style={inlineStyle} title={tooltip} ref={analyticalTableRef} {...passThroughProps}>
       {title && <TitleBar>{title}</TitleBar>}
@@ -422,7 +397,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
         aria-colcount={tableInternalColumns.length}
         data-per-page={visibleRows}
         ref={tableRef}
-        // onScroll={handleScroll}
+        className={StyleClassHelper.of(classes.table, GlobalStyleClasses.sapScrollBar).className}
       >
         {headerGroups.map((headerGroup) => {
           let headerProps = {};
@@ -433,7 +408,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
           return (
             tableRef.current && (
               <ColumnHeaderContainer
-                visibleColumns={visibleColumns}
                 tableRef={tableRef}
                 visibleColumnsWidth={visibleColumnsWidth}
                 headerProps={headerProps}
@@ -445,33 +419,9 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
                 onDrop={handleOnDrop}
                 onDragEnter={handleDragEnter}
                 onDragEnd={handleOnDragEnd}
+                dragOver={dragOver}
               />
             )
-            // eslint-disable-next-line react/jsx-key
-            // <div {...headerProps} role="rowgroup">
-            //   {headerGroup.headers.map((column, index) => {
-            //     console.log(column);
-            //     const isLastColumn = !column.disableResizing && index + 1 === headerGroup.headers.length;
-            //     return (
-            //       // eslint-disable-next-line react/jsx-key
-            //       <ColumnHeader
-            //         {...column.getHeaderProps()}
-            //         isLastColumn={isLastColumn}
-            //         onSort={onSort}
-            //         onGroupBy={onGroupByChanged}
-            //         onDragStart={handleDragStart}
-            //         onDragOver={handleDragOver}
-            //         onDrop={handleOnDrop}
-            //         onDragEnter={handleDragEnter}
-            //         onDragEnd={handleOnDragEnd}
-            //         dragOver={column.id === dragOver}
-            //         isDraggable={column.canReorder}
-            //       >
-            //         {column.render('Header')}
-            //       </ColumnHeader>
-            //     );
-            //   })}
-            // </div>
           );
         })}
         {loading && props.data?.length > 0 && <LoadingComponent style={{ width: `${totalColumnsWidth}px` }} />}
@@ -494,26 +444,25 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
             tableBodyHeight={tableBodyHeight}
             totalColumnsWidth={totalColumnsWidth}
             parentRef={parentRef}
-            isScrolling={isScrolling}
             classes={classes}
+            infiniteScroll={infiniteScroll}
+            infiniteScrollThreshold={infiniteScrollThreshold}
+            onLoadMore={onLoadMore}
+            selectionMode={selectionMode}
+            internalRowHeight={internalRowHeight}
+            rows={rows}
           >
             <VirtualTableBody
               classes={classes}
               prepareRow={prepareRow}
               rows={rows}
               minRows={minRows}
-              selectionMode={selectionMode}
               reactWindowRef={reactWindowRef}
               isTreeTable={isTreeTable}
               internalRowHeight={internalRowHeight}
-              tableBodyHeight={tableBodyHeight}
               visibleRows={visibleRows}
               alternateRowColor={alternateRowColor}
               overscanCount={overscanCount}
-              totalColumnsWidth={totalColumnsWidth}
-              infiniteScroll={infiniteScroll}
-              infiniteScrollThreshold={infiniteScrollThreshold}
-              onLoadMore={onLoadMore}
               tableRef={tableRef}
               parentRef={parentRef}
               visibleColumns={visibleColumns}

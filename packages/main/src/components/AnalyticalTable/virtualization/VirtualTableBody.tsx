@@ -1,31 +1,20 @@
 import '@ui5/webcomponents-icons/dist/icons/navigation-down-arrow';
 import '@ui5/webcomponents-icons/dist/icons/navigation-right-arrow';
-import { ThemingParameters, useConsolidatedRef } from '@ui5/webcomponents-react-base';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
-import { GlobalStyleClasses } from '@ui5/webcomponents-react/lib/GlobalStyleClasses';
-import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
-import React, { MutableRefObject, useCallback, useEffect, useRef, useState } from 'react';
-import { useVirtual, VirtualItem } from 'react-virtual';
-
-type ScrollAlignment = 'start' | 'center' | 'end' | 'auto';
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
+import React, { MutableRefObject, useCallback, useRef } from 'react';
+import { useVirtual } from 'react-virtual';
 
 interface VirtualTableBodyProps {
   classes: Record<string, string>;
   prepareRow: (row: unknown) => void;
   rows: any[];
   minRows: number;
-  selectionMode: TableSelectionMode;
   reactWindowRef: MutableRefObject<any>;
   isTreeTable: boolean;
   internalRowHeight: number;
-  tableBodyHeight: number;
   visibleRows: number;
   alternateRowColor: boolean;
   overscanCount: number;
-  totalColumnsWidth: number;
-  infiniteScroll: boolean;
-  infiniteScrollThreshold: number;
-  onLoadMore?: (e?: { detail: { rowCount: number } }) => void;
 
   //todo
   visibleColumns?: any;
@@ -40,24 +29,16 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     prepareRow,
     rows,
     minRows,
-    selectionMode,
     reactWindowRef,
     isTreeTable,
     internalRowHeight,
-    tableBodyHeight,
     visibleRows,
     overscanCount,
-    totalColumnsWidth,
-    infiniteScroll,
-    infiniteScrollThreshold,
-    onLoadMore,
     visibleColumns,
     tableRef,
     visibleColumnsWidth,
     parentRef
   } = props;
-
-  const firedInfiniteLoadEvents = useRef(new Set());
 
   const itemCount = Math.max(minRows, rows.length);
   const overscan = overscanCount ? overscanCount : Math.floor(visibleRows / 2);
@@ -75,51 +56,18 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     parentRef: tableRef,
     estimateSize: useCallback(
       (index) => {
-        // console.log(index, visibleColumns[index].totalWidth);
         return visibleColumnsWidth[index];
       },
       [visibleColumnsWidth]
     ),
     horizontal: true,
-    overscan: 10
+    overscan: 5
   });
 
   reactWindowRef.current = {
     scrollToOffset: rowVirtualizer.scrollToOffset,
     scrollToIndex: rowVirtualizer.scrollToIndex
   };
-
-  const lastScrollTop = useRef(0);
-
-  const onScroll = useCallback(
-    (event) => {
-      const scrollOffset = event.target.scrollTop;
-      const isScrollingDown = lastScrollTop.current < scrollOffset;
-      if (isScrollingDown && infiniteScroll) {
-        lastScrollTop.current = scrollOffset;
-        const currentTopRow = Math.floor(scrollOffset / internalRowHeight);
-        if (rows.length - currentTopRow < infiniteScrollThreshold) {
-          if (!firedInfiniteLoadEvents.current.has(rows.length)) {
-            onLoadMore({
-              detail: {
-                rowCount: rows.length
-              }
-            });
-          }
-          firedInfiniteLoadEvents.current.add(rows.length);
-        }
-      }
-    },
-    [
-      infiniteScroll,
-      infiniteScrollThreshold,
-      onLoadMore,
-      rows.length,
-      internalRowHeight,
-      firedInfiniteLoadEvents,
-      lastScrollTop
-    ]
-  );
 
   const currentlyFocusedCell = useRef<HTMLDivElement>(null);
   const onTableFocus = useCallback(
@@ -191,6 +139,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     },
     [currentlyFocusedCell]
   );
+
   return (
     <div
       tabIndex={0}
@@ -219,7 +168,14 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
         prepareRow(row);
         const rowProps = row.getRowProps();
         return (
-          <div {...rowProps} style={{ height: `${virtualRow.size}px`, transform: `translateY(${virtualRow.start}px)` }}>
+          <div
+            {...rowProps}
+            style={{
+              height: `${virtualRow.size}px`,
+              transform: `translateY(${virtualRow.start}px)`,
+              position: 'absolute'
+            }}
+          >
             {columnVirtualizer.virtualItems.map((virtualColumn) => {
               const cell = row.cells[virtualColumn.index];
               const cellProps = cell.getCellProps();
