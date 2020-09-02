@@ -3,7 +3,7 @@ The goal of this repository is to increase the boostrap time spent on a new proj
 
 # Wanna Help?
 
-Take a look into our Kanban Board [here](https://github.com/LuisValgoi/ui5-webcomponents-react-seed/projects/1?fullscreen=true)
+Take a look into our Kanban Board [here](https://github.com/LuisValgoi/ui5-webcomponents-react-seed/projects/1?fullscreen=true).
 
 # Getting Started
 
@@ -11,7 +11,7 @@ Take a look into our Kanban Board [here](https://github.com/LuisValgoi/ui5-webco
 
 - `yarn mock`: To run this project with json-server.
 
-- `yarn start`: To run this project with backend (⚠️ currently not supported)
+- `yarn start`: To run this project with backend (⚠️ currently not supported).
 
 # Configuration Included
 
