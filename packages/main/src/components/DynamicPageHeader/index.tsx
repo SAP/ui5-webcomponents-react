@@ -1,36 +1,32 @@
 import { CommonProps } from '../../interfaces/CommonProps';
 import { createComponentStyles, StyleClassHelper, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base';
 import { DynamicPageHeaderStyles } from './DynamicPageHeader.jss';
-import React, { FC, forwardRef, ReactNode, Ref } from 'react';
+import React, { FC, forwardRef, ReactNode, Ref, useCallback } from 'react';
 import { FlexBox, FlexBoxAlignItems } from '../..';
 
 export interface DynamicPageHeaderProps extends CommonProps {
   headerContent?: ReactNode;
   alwaysShowContentHeader?: boolean;
   noHeader?: boolean;
+  classes: any;
 }
 
 const useStyles = createComponentStyles(DynamicPageHeaderStyles, { name: 'DynamicPageHeader' });
 
 const DynamicPageHeader: FC<DynamicPageHeaderProps> = forwardRef(
   (props: DynamicPageHeaderProps, ref: Ref<HTMLDivElement>) => {
-    const { headerContent, style, className } = props;
-
-    const classes = useStyles();
-    const containerClasses = StyleClassHelper.of(classes.container);
-
-    containerClasses.putIfPresent(className);
+    const { headerContent, style, classes } = props;
 
     const passThroughProps = usePassThroughHtmlProps(props);
     return (
       <div
         style={style}
         ref={ref}
-        className={containerClasses.className}
+        className={classes.header}
         data-component-name={'DynamicPageHeader'}
         {...passThroughProps}
       >
-        <FlexBox className={classes.headerContent} alignItems={FlexBoxAlignItems.Start}>
+        <FlexBox className={classes.contentHeader} alignItems={FlexBoxAlignItems.Start}>
           {headerContent}
         </FlexBox>
       </div>

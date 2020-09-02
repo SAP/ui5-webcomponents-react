@@ -12,12 +12,12 @@ import React, {
   useCallback,
   useState
 } from 'react';
-import { createComponentStyles } from '@ui5/webcomponents-react-base';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { FlexBox, PageBackgroundDesign } from '../..';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar/DynamicPageAnchorBar';
 import { useObserveHeights } from '../ObjectPage/useObserveHeights';
-import styles from './DynamicPage.jss';
+import styles, { DynamicPageCssVariables } from './DynamicPage.jss';
 
 export interface DynamicPageProps extends CommonProps {
   /**
@@ -111,7 +111,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
   return (
     <div ref={dynamicPageRef} title={tooltip} className={className} style={style} {...passThroughProps}>
       {cloneElement(title, { style: { position: 'sticky' }, ref: topHeaderRef })}
-      {cloneElement(header, { ref: headerContentRef })}
+      {cloneElement(header, { ref: headerContentRef, classes })}
       <FlexBox
         style={{
           top: noHeader ? 0 : headerPinned ? topHeaderHeight + headerContentHeight : topHeaderHeight,

@@ -16,7 +16,7 @@ const styles = {
     position: 'relative',
     whiteSpace: 'normal',
     fontFamily: ThemingParameters.sapFontFamily,
-    backgroundColor: ThemingParameters.sapBackgroundColor,
+    backgroundColor: 'black',
     overflowX: 'hidden',
     overflowY: 'auto',
     [DynamicPageCssVariables.lastSectionMargin]: 0
@@ -52,7 +52,10 @@ const styles = {
     backgroundColor: ThemingParameters.sapObjectHeader_Background,
     position: 'sticky',
     top: 0,
-    zIndex: 2
+    translucent: ThemingParameters.sapObjectHeader_Background,
+    transparent: 'transparent',
+    paddingTop: '1rem',
+    paddingBottom: '1rem'
   },
   contentHeader: {
     backgroundColor: ThemingParameters.sapObjectHeader_Background,

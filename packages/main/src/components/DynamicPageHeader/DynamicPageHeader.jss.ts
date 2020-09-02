@@ -19,7 +19,16 @@ export const DynamicPageHeaderStyles = {
     justifyContent: 'start'
   },
   headerContent: {
-    paddingTop: '1rem',
-    paddingBottom: '1rem'
+    backgroundColor: ThemingParameters.sapObjectHeader_Background,
+    position: 'sticky',
+    paddingBottom: '0.25rem',
+    maxHeight: '500px',
+    overflow: 'hidden',
+    paddingLeft: '2rem'
+  },
+  headerCollapsed: {
+    '& $headerContent': {
+      display: 'none'
+    }
   }
 };
