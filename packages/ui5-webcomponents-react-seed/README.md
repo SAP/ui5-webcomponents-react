@@ -51,6 +51,7 @@ Take a look into our Kanban Board [here](https://github.com/LuisValgoi/ui5-webco
 
 - `useRequest`: Which includes `get`, `post`, `patch`, `delete`, `put` HTTP helpers.
 
+- `useAuthority`: Which includes `hasAccess` helpers.
 
 # Scripts Included
 
