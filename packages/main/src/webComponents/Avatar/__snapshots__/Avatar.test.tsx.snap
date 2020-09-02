@@ -1,10 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Avatar Basic Test (generated) 1`] = `
-<ui5-avatar
-  background-color="Accent6"
-  image-fit-type="Cover"
-  shape="Circle"
-  size="S"
-/>
+<DocumentFragment>
+  <ui5-avatar
+    background-color="Accent6"
+    image-fit-type="Cover"
+    shape="Circle"
+    size="S"
+  />
+</DocumentFragment>
 `;

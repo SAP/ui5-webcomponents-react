@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Title Basic Test (generated) 1`] = `
-<ui5-title
-  level="H2"
-/>
+<DocumentFragment>
+  <ui5-title
+    level="H2"
+  />
+</DocumentFragment>
 `;

@@ -8,7 +8,6 @@ import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createC
 import { useConsolidatedRef, useI18nText, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
-
 import {
   ABORT,
   CANCEL,
@@ -35,7 +34,17 @@ import { MessageBoxTypes } from '@ui5/webcomponents-react/lib/MessageBoxTypes';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
-import React, { FC, forwardRef, isValidElement, ReactNode, Ref, useCallback, useEffect, useMemo } from 'react';
+import React, {
+  FC,
+  forwardRef,
+  isValidElement,
+  ReactNode,
+  Ref,
+  useCallback,
+  useEffect,
+  useMemo,
+  ReactNodeArray
+} from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DialogDomRef } from '../../interfaces/Ui5DialogDomRef';
 import { stopPropagation } from '../../internal/stopPropagation';
@@ -53,12 +62,35 @@ actionTextMap.set(MessageBoxActions.RETRY, 7);
 actionTextMap.set(MessageBoxActions.YES, 8);
 
 export interface MessageBoxPropTypes extends CommonProps {
+  /**
+   * Flag whether the Message Box should be opened or closed
+   */
   open?: boolean;
+  /**
+   * A custom title for the MessageBox. If not present, it will be derived from the `MessageBox` type.
+   */
   title?: string;
-  children: string;
+  /**
+   * Defines the content of the `MessageBox`.
+   *
+   * **Note: Although this prop accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.**
+   */
+  children: ReactNode | ReactNodeArray;
+  /**
+   * Array of actions of the MessageBox. Those actions will be transformed into buttons in the `MessageBox` footer.
+   */
   actions?: (MessageBoxActions | string)[];
+  /**
+   * A custom icon. If not present, it will be derived from the `MessageBox` type.
+   */
   icon?: ReactNode;
+  /**
+   * Defines the type of the `MessageBox` with predefined title, icon, actions and a visual highlight color.
+   */
   type?: MessageBoxTypes;
+  /**
+   * Callback to be executed when the `MessageBox` is closed. `event.detail.action` contains the pressed action button.
+   */
   onClose: (event: CustomEvent<{ action: MessageBoxActions }>) => void;
 }
 
@@ -84,9 +116,9 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
         return <Icon name="message-warning" />;
       case MessageBoxTypes.HIGHLIGHT:
         return <Icon name="hint" />;
+      default:
+        return null;
     }
-
-    return null;
   }, [icon, type]);
 
   const [
@@ -133,8 +165,9 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
         return titleWarning;
       case MessageBoxTypes.HIGHLIGHT:
         return titleHighlight;
+      default:
+        return null;
     }
-    return null;
   };
 
   const actionsToRender = useMemo(() => {

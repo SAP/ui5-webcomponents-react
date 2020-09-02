@@ -1,10 +1,10 @@
+import { render } from '@shared/tests';
 import { SideNavigationSubItem } from '@ui5/webcomponents-react/lib/SideNavigationSubItem';
-import { mount } from 'enzyme';
 import React from 'react';
 
 describe('SideNavigationSubItem', () => {
   test('Basic Test (generated)', () => {
-    const wrapper = mount(<SideNavigationSubItem />);
-    expect(wrapper.render()).toMatchSnapshot();
+    const { asFragment } = render(<SideNavigationSubItem />);
+    expect(asFragment()).toMatchSnapshot();
   });
 });

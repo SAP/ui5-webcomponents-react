@@ -1,9 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DateRangePicker Basic Test (generated) 1`] = `
-<ui5-daterange-picker
-  delimiter="-"
-  primary-calendar-type="Gregorian"
-  value-state="None"
-/>
+<DocumentFragment>
+  <ui5-daterange-picker
+    delimiter="-"
+    primary-calendar-type="Gregorian"
+    value-state="None"
+  />
+</DocumentFragment>
 `;

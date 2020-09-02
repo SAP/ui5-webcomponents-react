@@ -1,8 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TabContainer Basic Test (generated) 1`] = `
-<ui5-tabcontainer
-  tab-layout="Standard"
-  tabs-placement="Top"
-/>
+<DocumentFragment>
+  <ui5-tabcontainer
+    tab-layout="Standard"
+    tabs-placement="Top"
+  />
+</DocumentFragment>
 `;

@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Link Basic Test (generated) 1`] = `
-<ui5-link
-  design="Default"
-/>
+<DocumentFragment>
+  <ui5-link
+    design="Default"
+  />
+</DocumentFragment>
 `;

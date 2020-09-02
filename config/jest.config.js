@@ -26,7 +26,6 @@ module.exports = {
   transformIgnorePatterns: ['node_modules/(?!(@ui5|lit-html))'],
   moduleNameMapper: {
     '^@shared/(.*)$': '<rootDir>/shared/$1',
-    '^@tests/(.*)$': '<rootDir>/shared/tests/$1',
     '^@ui5/webcomponents-react/dist/(.*)$': '<rootDir>/packages/main/dist/$1',
     '^@ui5/webcomponents-react/(.*)$': '<rootDir>/packages/main/src/$1',
     '^@ui5/webcomponents-react-base/third-party/(.*)$': '<rootDir>/packages/base/third-party/$1',

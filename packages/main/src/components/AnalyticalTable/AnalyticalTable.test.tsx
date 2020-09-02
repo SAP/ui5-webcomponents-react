@@ -1,5 +1,5 @@
 import { createPassThroughPropsTest } from '@shared/tests/utils';
-import { act, render, screen, fireEvent, cleanStaticAreaAfterEachTest, waitFor, getByText } from '@shared/tests';
+import { act, render, screen, fireEvent, getByText } from '@shared/tests';
 import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
 import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
@@ -142,8 +142,6 @@ const dataTree = [
 ];
 
 describe('AnalyticalTable', () => {
-  cleanStaticAreaAfterEachTest();
-
   beforeEach(() => {
     window = Object.assign(window, { innerWidth: 1440 });
   });
