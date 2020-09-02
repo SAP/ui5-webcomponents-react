@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.8](https://github.com/SAP/ui5-webcomponents-react/compare/v0.10.7...v0.10.8) (2020-09-02)
+
+
+### Bug Fixes
+
+* **MessageBox:** allow any react node to be passed as children ([#670](https://github.com/SAP/ui5-webcomponents-react/issues/670)) ([b2fae12](https://github.com/SAP/ui5-webcomponents-react/commit/b2fae12ce5c9443c70934b5cc09b0ca17372dea2))
+* **PieChart/DonutChart:** re-release active segment feature ([0447b22](https://github.com/SAP/ui5-webcomponents-react/commit/0447b22a63e642d632b0d80521a4ee6a31213a4b))
+
+
+
+
+
 ## [0.10.7](https://github.com/SAP/ui5-webcomponents-react/compare/v0.10.6...v0.10.7) (2020-08-28)
 
 
