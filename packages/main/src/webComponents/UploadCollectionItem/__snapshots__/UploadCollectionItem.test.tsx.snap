@@ -1,8 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`UploadCollectionItem Basic Test (generated) 1`] = `
-<ui5-upload-collection-item
-  progress="0"
-  upload-state="Ready"
-/>
+<DocumentFragment>
+  <ui5-upload-collection-item
+    actionable=""
+    progress="0"
+    upload-state="Ready"
+  />
+</DocumentFragment>
 `;

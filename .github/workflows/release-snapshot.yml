@@ -24,12 +24,12 @@ jobs:
       - name: Install, test and build
         run: |
           yarn install
-          yarn test
           yarn build
 
       - name: publish
         run: |
-          npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}
+          npm config set //registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}
+
           git config user.email ${{ secrets.BOT_GIT_EMAIL }}
           git config user.name ${{ secrets.BOT_GIT_USERNAME }}
 
@@ -38,4 +38,6 @@ jobs:
           ${GITHUB_WORKSPACE}/node_modules/.bin/lerna publish "0.0.0-${git_hash}" \
             --no-push \
             --no-git-tag-version \
-            --dist-tag dev \
+            --dist-tag dev
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}

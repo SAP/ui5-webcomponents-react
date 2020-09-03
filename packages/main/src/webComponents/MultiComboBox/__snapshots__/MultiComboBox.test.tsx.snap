@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MultiComboBox Basic Test (generated) 1`] = `
-<ui5-multi-combobox
-  value-state="None"
-/>
+<DocumentFragment>
+  <ui5-multi-combobox
+    value-state="None"
+  />
+</DocumentFragment>
 `;

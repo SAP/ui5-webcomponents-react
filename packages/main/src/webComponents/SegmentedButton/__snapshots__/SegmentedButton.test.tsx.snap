@@ -1,3 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SegmentedButton Basic Test (generated) 1`] = `<ui5-segmentedbutton />`;
+exports[`SegmentedButton Basic Test (generated) 1`] = `
+<DocumentFragment>
+  <ui5-segmentedbutton>
+    <ui5-button
+      design="Default"
+    >
+      Segment 1
+    </ui5-button>
+    <ui5-button
+      design="Default"
+    >
+      Segment 2
+    </ui5-button>
+    <ui5-button
+      design="Default"
+    >
+      Segment 3
+    </ui5-button>
+  </ui5-segmentedbutton>
+</DocumentFragment>
+`;

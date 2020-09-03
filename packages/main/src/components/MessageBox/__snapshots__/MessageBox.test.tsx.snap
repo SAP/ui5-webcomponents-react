@@ -5,7 +5,7 @@ exports[`MessageBox Confirm - Cancel 1`] = `
   <ui5-dialog
     class="MessageBox-messageBox"
     opened=""
-    style="z-index: 104; display: block;"
+    style="z-index: 114; display: block;"
   >
     <footer
       class="MessageBox-footer"
@@ -47,7 +47,7 @@ exports[`MessageBox Confirm - Cancel 1`] = `
 </DocumentFragment>
 `;
 
-exports[`MessageBox Confirm - OK 1`] = `
+exports[`MessageBox Confirm 1`] = `
 <DocumentFragment>
   <ui5-dialog
     class="MessageBox-messageBox"
@@ -88,7 +88,7 @@ exports[`MessageBox Confirm - OK 1`] = `
     <span
       class="Text-text MessageBox-content"
     >
-      Confirm
+      My Message Box Content
     </span>
   </ui5-dialog>
 </DocumentFragment>
@@ -139,12 +139,48 @@ exports[`MessageBox Custom Action Text 1`] = `
 </DocumentFragment>
 `;
 
+exports[`MessageBox Don't crash on unknown type 1`] = `
+<DocumentFragment>
+  <ui5-dialog
+    class="MessageBox-messageBox"
+    opened=""
+    style="z-index: 122; display: block;"
+  >
+    <footer
+      class="MessageBox-footer"
+      slot="footer"
+    >
+      <ui5-button
+        data-action="OK"
+        design="Emphasized"
+      >
+        OK
+      </ui5-button>
+    </footer>
+    <header
+      class="MessageBox-header"
+      data-type="FOO_BAR"
+      slot="header"
+    >
+      <ui5-title
+        level="H5"
+      />
+    </header>
+    <span
+      class="Text-text MessageBox-content"
+    >
+      Unknown Type!
+    </span>
+  </ui5-dialog>
+</DocumentFragment>
+`;
+
 exports[`MessageBox Error 1`] = `
 <DocumentFragment>
   <ui5-dialog
     class="MessageBox-messageBox"
     opened=""
-    style="z-index: 110; display: block;"
+    style="z-index: 108; display: block;"
   >
     <footer
       class="MessageBox-footer"
@@ -174,7 +210,48 @@ exports[`MessageBox Error 1`] = `
     <span
       class="Text-text MessageBox-content"
     >
-      Error
+      My Message Box Content
+    </span>
+  </ui5-dialog>
+</DocumentFragment>
+`;
+
+exports[`MessageBox Highlight 1`] = `
+<DocumentFragment>
+  <ui5-dialog
+    class="MessageBox-messageBox"
+    opened=""
+    style="z-index: 112; display: block;"
+  >
+    <footer
+      class="MessageBox-footer"
+      slot="footer"
+    >
+      <ui5-button
+        data-action="OK"
+        design="Emphasized"
+      >
+        OK
+      </ui5-button>
+    </footer>
+    <header
+      class="MessageBox-header"
+      data-type="Highlight"
+      slot="header"
+    >
+      <ui5-icon
+        name="hint"
+      />
+      <ui5-title
+        level="H5"
+      >
+        Highlight
+      </ui5-title>
+    </header>
+    <span
+      class="Text-text MessageBox-content"
+    >
+      My Message Box Content
     </span>
   </ui5-dialog>
 </DocumentFragment>
@@ -185,7 +262,7 @@ exports[`MessageBox Information 1`] = `
   <ui5-dialog
     class="MessageBox-messageBox"
     opened=""
-    style="z-index: 112; display: block;"
+    style="z-index: 110; display: block;"
   >
     <footer
       class="MessageBox-footer"
@@ -215,7 +292,7 @@ exports[`MessageBox Information 1`] = `
     <span
       class="Text-text MessageBox-content"
     >
-      Information
+      My Message Box Content
     </span>
   </ui5-dialog>
 </DocumentFragment>
@@ -226,7 +303,7 @@ exports[`MessageBox No Title 1`] = `
   <ui5-dialog
     class="MessageBox-messageBox"
     opened=""
-    style="z-index: 118; display: block;"
+    style="z-index: 120; display: block;"
   >
     <footer
       class="MessageBox-footer"
@@ -312,7 +389,7 @@ exports[`MessageBox Show 1`] = `
   <ui5-dialog
     class="MessageBox-messageBox"
     opened=""
-    style="z-index: 114; display: block;"
+    style="z-index: 116; display: block;"
   >
     <footer
       class="MessageBox-footer"
@@ -359,7 +436,7 @@ exports[`MessageBox Success 1`] = `
   <ui5-dialog
     class="MessageBox-messageBox"
     opened=""
-    style="z-index: 106; display: block;"
+    style="z-index: 104; display: block;"
   >
     <footer
       class="MessageBox-footer"
@@ -389,7 +466,7 @@ exports[`MessageBox Success 1`] = `
     <span
       class="Text-text MessageBox-content"
     >
-      Success
+      My Message Box Content
     </span>
   </ui5-dialog>
 </DocumentFragment>
@@ -400,7 +477,7 @@ exports[`MessageBox Success w/ custom title 1`] = `
   <ui5-dialog
     class="MessageBox-messageBox"
     opened=""
-    style="z-index: 116; display: block;"
+    style="z-index: 118; display: block;"
   >
     <footer
       class="MessageBox-footer"
@@ -419,7 +496,7 @@ exports[`MessageBox Success w/ custom title 1`] = `
       slot="header"
     >
       <ui5-icon
-        name="message-success"
+        name="add"
       />
       <ui5-title
         level="H5"
@@ -441,7 +518,7 @@ exports[`MessageBox Warning 1`] = `
   <ui5-dialog
     class="MessageBox-messageBox"
     opened=""
-    style="z-index: 108; display: block;"
+    style="z-index: 106; display: block;"
   >
     <footer
       class="MessageBox-footer"
@@ -471,7 +548,7 @@ exports[`MessageBox Warning 1`] = `
     <span
       class="Text-text MessageBox-content"
     >
-      Warning
+      My Message Box Content
     </span>
   </ui5-dialog>
 </DocumentFragment>

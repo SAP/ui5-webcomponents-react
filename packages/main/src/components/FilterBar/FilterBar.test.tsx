@@ -1,5 +1,4 @@
 import { createPassThroughPropsTest } from '@shared/tests/utils';
-import { cleanStaticAreaAfterEachTest } from '@tests/index';
 import { Bar } from '@ui5/webcomponents-react/lib/Bar';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { CheckBox } from '@ui5/webcomponents-react/lib/CheckBox';
@@ -27,8 +26,6 @@ const variants = <VariantManagement variantItems={variantItems} />;
 const search = <Input placeholder={'Search'} />;
 
 describe('FilterBar', () => {
-  cleanStaticAreaAfterEachTest();
-
   it('Render without crashing - default props', () => {
     const wrapper = mount(
       <FilterBar>

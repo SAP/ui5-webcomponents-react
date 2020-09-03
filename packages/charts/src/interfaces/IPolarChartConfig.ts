@@ -10,4 +10,13 @@ export interface IPolarChartConfig {
 
   tooltipItemStyle?: CSSProperties;
   tooltipLabelStyle?: CSSProperties;
+
+  /**
+   * Index of the segment where an additional outer border should be applied as highlight.
+   */
+  activeSegment?: number;
+  /**
+   * Flag whether the highlighted segment should display its data label.
+   */
+  showActiveSegmentDataLabel?: boolean;
 }

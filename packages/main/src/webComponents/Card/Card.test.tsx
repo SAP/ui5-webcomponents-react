@@ -1,10 +1,10 @@
+import { render } from '@shared/tests';
 import { Card } from '@ui5/webcomponents-react/lib/Card';
-import { mount } from 'enzyme';
 import React from 'react';
 
 describe('Card', () => {
   test('Basic Test (generated)', () => {
-    const wrapper = mount(<Card />);
-    expect(wrapper.render()).toMatchSnapshot();
+    const { asFragment } = render(<Card />);
+    expect(asFragment()).toMatchSnapshot();
   });
 });

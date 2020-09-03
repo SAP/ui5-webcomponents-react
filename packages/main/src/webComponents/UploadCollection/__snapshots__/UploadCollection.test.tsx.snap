@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`UploadCollection Basic Test (generated) 1`] = `
-<ui5-upload-collection
-  mode="None"
-/>
+<DocumentFragment>
+  <ui5-upload-collection
+    mode="None"
+  />
+</DocumentFragment>
 `;

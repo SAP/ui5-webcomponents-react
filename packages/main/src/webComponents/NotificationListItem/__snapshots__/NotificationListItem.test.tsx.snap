@@ -1,8 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NotificationListItem Basic Test (generated) 1`] = `
-<ui5-li-notification
-  priority="None"
-  wrap="false"
-/>
+<DocumentFragment>
+  <ui5-li-notification
+    heading="My Notification"
+    priority="High"
+    show-close="true"
+    wrap="false"
+  >
+    <ui5-notification-overflow-action
+      design="Transparent"
+      slot="actions"
+      text="My Action"
+    />
+  </ui5-li-notification>
+</DocumentFragment>
 `;
