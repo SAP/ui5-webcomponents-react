@@ -1,5 +1,5 @@
 const getVisibleColumnsWidth = (instance) => {
-  const visibleColumnsWidth = instance.columns.map((item) => item.totalWidth);
+  const visibleColumnsWidth = instance.visibleColumns.map((item) => item.totalWidth);
   Object.assign(instance, { visibleColumnsWidth });
 };
 

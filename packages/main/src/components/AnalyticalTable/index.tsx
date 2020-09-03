@@ -1,4 +1,4 @@
-import { StyleClassHelper } from '@ui5/webcomponents-react-base';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
@@ -53,8 +53,8 @@ import { useVisibleColumnsWidth } from './hooks/useVisibleColumnsWidth';
 import { stateReducer } from './tableReducer/stateReducer';
 import { TitleBar } from './TitleBar';
 import { orderByFn } from './util';
-import { VirtualTableBody } from './virtualization/VirtualTableBody';
-import { VirtualTableBodyContainer } from './VirtualTableBodyContainer';
+import { VirtualTableBody } from './TableBody/VirtualTableBody';
+import { VirtualTableBodyContainer } from './TableBody/VirtualTableBodyContainer';
 
 export interface TableProps extends CommonProps {
   /**
@@ -107,7 +107,6 @@ export interface TableProps extends CommonProps {
   infiniteScrollThreshold?: number;
 
   // events
-
   onSort?: (e: CustomEvent<{ column: unknown; sortDirection: string }>) => void;
   onGroup?: (e: CustomEvent<{ column: unknown; groupedColumns: string[] }>) => void;
   onRowSelected?: (e?: CustomEvent<{ allRowsSelected?: boolean; row?: unknown; isSelected?: boolean }>) => any;
@@ -130,7 +129,7 @@ export interface TableProps extends CommonProps {
    */
   overscanCountHorizontal?: number;
   /**
-   * The amount of rows to load both behind and ahead of current the window range.
+   * The amount of rows to load both behind and ahead of the current window range.
    */
   overscanCount?: number;
 
@@ -458,7 +457,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
             infiniteScroll={infiniteScroll}
             infiniteScrollThreshold={infiniteScrollThreshold}
             onLoadMore={onLoadMore}
-            selectionMode={selectionMode}
             internalRowHeight={internalRowHeight}
             rows={rows}
           >

@@ -1,4 +1,4 @@
-import { StyleClassHelper } from '@ui5/webcomponents-react-base';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { GlobalStyleClasses } from '@ui5/webcomponents-react/lib/GlobalStyleClasses';
 
@@ -12,7 +12,6 @@ export const VirtualTableBodyContainer = (props) => {
     infiniteScroll,
     infiniteScrollThreshold,
     onLoadMore,
-    selectionMode,
     rows,
     internalRowHeight
   } = props;
@@ -29,7 +28,6 @@ export const VirtualTableBodyContainer = (props) => {
   const lastScrollTop = useRef(0);
   const firedInfiniteLoadEvents = useRef(new Set());
 
-  //todo test
   const onScroll = useCallback(
     (event) => {
       const scrollOffset = event.target.scrollTop;
@@ -61,20 +59,18 @@ export const VirtualTableBodyContainer = (props) => {
   );
 
   return (
-    <>
-      <div
-        className={classNames}
-        ref={parentRef}
-        onScroll={onScroll}
-        style={{
-          position: 'relative',
-          overflowY: 'auto',
-          height: `${tableBodyHeight}px`,
-          width: `${totalColumnsWidth}px`
-        }}
-      >
-        {isMounted && children}
-      </div>
-    </>
+    <div
+      className={classNames}
+      ref={parentRef}
+      onScroll={onScroll}
+      style={{
+        position: 'relative',
+        overflowY: 'auto',
+        height: `${tableBodyHeight}px`,
+        width: `${totalColumnsWidth}px`
+      }}
+    >
+      {isMounted && children}
+    </div>
   );
 };

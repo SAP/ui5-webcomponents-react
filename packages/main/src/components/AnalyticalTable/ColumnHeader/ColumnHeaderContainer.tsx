@@ -1,4 +1,4 @@
-import { ThemingParameters } from '@ui5/webcomponents-react-base';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import React, { useCallback } from 'react';
 import { createUseStyles } from 'react-jss';
 import { useVirtual } from 'react-virtual';
@@ -36,7 +36,6 @@ export const ColumnHeaderContainer = (props) => {
     onDragEnter,
     onDragEnd,
     dragOver,
-
     tableRef,
     visibleColumnsWidth,
     overscanCountHorizontal,

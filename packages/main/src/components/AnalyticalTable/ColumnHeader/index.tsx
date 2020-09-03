@@ -41,9 +41,7 @@ export interface ColumnHeaderProps {
   isDraggable: boolean;
   role: string;
   isLastColumn: boolean;
-
-  //todo
-  virtualColumn: any;
+  virtualColumn: ColumnType;
 }
 
 const styles = {
@@ -106,7 +104,6 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     isDraggable,
     dragOver,
     role,
-
     virtualColumn
   } = props;
 
