@@ -16,8 +16,6 @@ import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
 import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJustifyContent';
 
-import { TableWithManyColumns } from './demo2';
-
 <Meta
   title="Components / AnalyticalTable"
   component={AnalyticalTable}
@@ -129,7 +127,36 @@ import { TableWithManyColumns } from './demo2';
   <Story name="Default">
     {(args) => (
       <div style={{ display: 'flex', flexDirection: 'column' }}>
-        <TableWithManyColumns />
+        <AnalyticalTable
+          {...args}
+          title={args.title}
+          data={args.data}
+          columns={args.columns}
+          loading={args.loading}
+          alternateRowColor={args.alternateRowColor}
+          sortable={args.sortable}
+          filterable={args.filterable}
+          visibleRows={args.visibleRows}
+          minRows={args.minRows}
+          groupable={args.groupable}
+          selectionMode={args.selectionMode}
+          scaleWidthMode={args.scaleWidthMode}
+          onRowSelected={args.onRowSelected}
+          onSort={args.onSort}
+          onGroup={args.onGroup}
+          onRowExpandChange={args.onRowExpandChange}
+          groupBy={args.groupBy}
+          rowHeight={args.rowHeight}
+          selectedRowIds={args.selectedRowIds}
+          onColumnsReordered={args.onColumnsReordered}
+          withRowHighlight={args.withRowHighlight}
+          highlightField={args.highlightField}
+          infiniteScroll={args.infiniteScroll}
+          infiniteScrollThreshold={args.infiniteScrollThreshold}
+          onLoadMore={args.onLoadMore}
+          selectionBehavior={args.selectionBehavior}
+          overscanCountHorizontal={args.overscanCountHorizontal}
+        />
       </div>
     )}
   </Story>
