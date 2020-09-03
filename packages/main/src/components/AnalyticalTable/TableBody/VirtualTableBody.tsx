@@ -65,6 +65,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
   });
 
   reactWindowRef.current = {
+    ...reactWindowRef.current,
     scrollToOffset: rowVirtualizer.scrollToOffset,
     scrollToIndex: rowVirtualizer.scrollToIndex
   };

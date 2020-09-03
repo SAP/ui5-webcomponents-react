@@ -39,7 +39,8 @@ export const ColumnHeaderContainer = (props) => {
     tableRef,
     visibleColumnsWidth,
     overscanCountHorizontal,
-    resizeInfo
+    resizeInfo,
+    reactWindowRef
   } = props;
   const columnVirtualizer = useVirtual({
     size: visibleColumnsWidth.length,
@@ -53,6 +54,12 @@ export const ColumnHeaderContainer = (props) => {
     horizontal: true,
     overscan: overscanCountHorizontal
   });
+
+  reactWindowRef.current = {
+    ...reactWindowRef.current,
+    horizontalScrollToOffset: columnVirtualizer.scrollToOffset,
+    horizontalScrollToIndex: columnVirtualizer.scrollToIndex
+  };
 
   const classes = useStyles();
 
