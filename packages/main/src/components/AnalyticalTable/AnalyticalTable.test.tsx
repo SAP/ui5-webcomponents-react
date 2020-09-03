@@ -289,29 +289,54 @@ describe('AnalyticalTable', () => {
     const UsingTable = (props) => {
       tableRef = useRef(null);
       return (
-        <AnalyticalTable ref={tableRef} title="Table Title" data={data} columns={columns} visibleRows={1} minRows={1} />
+        <AnalyticalTable
+          style={{ width: '170px' }}
+          ref={tableRef}
+          title="Table Title"
+          data={data}
+          columns={columns}
+          visibleRows={1}
+          minRows={1}
+        />
       );
     };
 
-    render(<UsingTable />);
+    const { getByRole, container } = render(<UsingTable />);
 
     // Check existence + type
     expect(typeof tableRef.current.scrollTo).toBe('function');
     expect(typeof tableRef.current.scrollToItem).toBe('function');
+    expect(typeof tableRef.current.horizontalScrollTo).toBe('function');
+    expect(typeof tableRef.current.horizontalScrollToItem).toBe('function');
 
     // call functions
-    const tableInnerRef = tableRef.current.querySelector("div[class^='AnalyticalTable-table'] > div");
+    const tableBodyRef = tableRef.current.querySelector("div[class^='AnalyticalTable-tbody']");
+    const tableContainerRef = getByRole('grid', { hidden: true });
+
     act(() => {
       tableRef.current.scrollToItem(1, 'start');
     });
 
-    expect(tableInnerRef.scrollTop).toBe(44);
+    expect(tableBodyRef.scrollTop).toBe(44);
 
     act(() => {
       tableRef.current.scrollTo(2);
     });
 
-    expect(tableInnerRef.scrollTop).toBe(2);
+    expect(tableBodyRef.scrollTop).toBe(2);
+
+    screen.debug(tableContainerRef, 9999999);
+    act(() => {
+      tableRef.current.horizontalScrollToItem(1, 'start');
+    });
+
+    expect(tableContainerRef.scrollLeft).toBe(150);
+
+    act(() => {
+      tableRef.current.horizontalScrollTo(2);
+    });
+
+    expect(tableContainerRef.scrollLeft).toBe(2);
   });
 
   test('with highlight row', () => {
