@@ -2114,153 +2114,170 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
       data-per-page="15"
       role="grid"
     >
-      <header
+      <div
         class="AnalyticalTable-tableHeaderRow"
         role="rowgroup"
+        style="width: 0px;"
       >
         <div
-          class="AnalyticalTable-th"
-          data-column-id="__ui5wcr__internal_selection_column"
-          draggable="false"
-          id="__ui5wcr__internal_selection_column"
-          role="columnheader"
-          style="position: relative; width: 47px; padding: 0px; cursor: auto;"
+          style="position: absolute; top: 0px; left: 0px; transform: translateX(0px);"
         >
           <div
-            class="TableColumnHeader-header"
+            class="AnalyticalTable-th"
+            data-column-id="__ui5wcr__internal_selection_column"
+            draggable="false"
+            id="__ui5wcr__internal_selection_column"
+            role="columnheader"
+            style="position: relative; padding: 0px; cursor: auto;"
           >
-            <span
-              class="Text-text Text-noWrap TableColumnHeader-text"
-            />
             <div
-              class="TableColumnHeader-iconContainer"
-            />
-          </div>
-        </div>
-        <div
-          class="AnalyticalTable-th"
-          data-column-id="name"
-          draggable="true"
-          id="name"
-          role="columnheader"
-          style="position: relative; width: 150px; cursor: pointer;"
-        >
-          <div
-            class="TableColumnHeader-header"
-          >
-            <span
-              class="Text-text Text-noWrap TableColumnHeader-text"
-              title="Name"
+              class="TableColumnHeader-header"
             >
-              Name
-            </span>
-            <div
-              class="TableColumnHeader-iconContainer"
-            />
+              <span
+                class="Text-text Text-noWrap TableColumnHeader-text"
+              />
+              <div
+                class="TableColumnHeader-iconContainer"
+              />
+            </div>
           </div>
         </div>
         <div
-          class="TableColumnHeader-resizer"
+          class="resizer"
           data-resizer="true"
           draggable="false"
           role="separator"
-          style="left: 197px;"
         />
         <div
-          class="AnalyticalTable-th"
-          data-column-id="age"
-          draggable="true"
-          id="age"
-          role="columnheader"
-          style="position: relative; width: 150px; cursor: pointer;"
+          style="position: absolute; top: 0px; left: 0px; width: 150px; transform: translateX(NaNpx);"
         >
           <div
-            class="TableColumnHeader-header"
+            class="AnalyticalTable-th"
+            data-column-id="name"
+            draggable="true"
+            id="name"
+            role="columnheader"
+            style="position: relative; width: 150px; cursor: pointer;"
           >
-            <span
-              class="Text-text Text-noWrap TableColumnHeader-text"
-              title="Age"
-            >
-              Age
-            </span>
             <div
-              class="TableColumnHeader-iconContainer"
-            />
-          </div>
-        </div>
-        <div
-          class="TableColumnHeader-resizer"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="left: 347px;"
-        />
-        <div
-          class="AnalyticalTable-th"
-          data-column-id="friend.name"
-          draggable="true"
-          id="friend.name"
-          role="columnheader"
-          style="position: relative; width: 150px; cursor: pointer;"
-        >
-          <div
-            class="TableColumnHeader-header"
-          >
-            <span
-              class="Text-text Text-noWrap TableColumnHeader-text"
-              title="Friend Name"
+              class="TableColumnHeader-header"
             >
-              Friend Name
-            </span>
-            <div
-              class="TableColumnHeader-iconContainer"
-            />
-          </div>
-        </div>
-        <div
-          class="TableColumnHeader-resizer"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="left: 497px;"
-        />
-        <div
-          class="AnalyticalTable-th"
-          data-column-id="friend.age"
-          draggable="true"
-          id="friend.age"
-          role="columnheader"
-          style="position: relative; width: 150px; cursor: pointer;"
-        >
-          <div
-            class="TableColumnHeader-header"
-          >
-            <span
-              class="Text-text Text-noWrap TableColumnHeader-text"
-            >
-              <span>
-                Friend Age
+              <span
+                class="Text-text Text-noWrap TableColumnHeader-text"
+                title="Name"
+              >
+                Name
               </span>
-            </span>
-            <div
-              class="TableColumnHeader-iconContainer"
-            />
+              <div
+                class="TableColumnHeader-iconContainer"
+              />
+            </div>
           </div>
         </div>
         <div
-          class="TableColumnHeader-resizer"
+          class="resizer"
           data-resizer="true"
           draggable="false"
           role="separator"
-          style="left: 644px;"
         />
-      </header>
+        <div
+          style="position: absolute; top: 0px; left: 0px; width: 150px; transform: translateX(NaNpx);"
+        >
+          <div
+            class="AnalyticalTable-th"
+            data-column-id="age"
+            draggable="true"
+            id="age"
+            role="columnheader"
+            style="position: relative; width: 150px; cursor: pointer;"
+          >
+            <div
+              class="TableColumnHeader-header"
+            >
+              <span
+                class="Text-text Text-noWrap TableColumnHeader-text"
+                title="Age"
+              >
+                Age
+              </span>
+              <div
+                class="TableColumnHeader-iconContainer"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="resizer"
+          data-resizer="true"
+          draggable="false"
+          role="separator"
+        />
+        <div
+          style="position: absolute; top: 0px; left: 0px; width: 150px; transform: translateX(NaNpx);"
+        >
+          <div
+            class="AnalyticalTable-th"
+            data-column-id="friend.name"
+            draggable="true"
+            id="friend.name"
+            role="columnheader"
+            style="position: relative; width: 150px; cursor: pointer;"
+          >
+            <div
+              class="TableColumnHeader-header"
+            >
+              <span
+                class="Text-text Text-noWrap TableColumnHeader-text"
+                title="Friend Name"
+              >
+                Friend Name
+              </span>
+              <div
+                class="TableColumnHeader-iconContainer"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="resizer"
+          data-resizer="true"
+          draggable="false"
+          role="separator"
+        />
+        <div
+          style="position: absolute; top: 0px; left: 0px; width: 150px; transform: translateX(NaNpx);"
+        >
+          <div
+            class="AnalyticalTable-th"
+            data-column-id="friend.age"
+            draggable="true"
+            id="friend.age"
+            role="columnheader"
+            style="position: relative; width: 150px; cursor: pointer;"
+          >
+            <div
+              class="TableColumnHeader-header"
+            >
+              <span
+                class="Text-text Text-noWrap TableColumnHeader-text"
+              >
+                <span>
+                  Friend Age
+                </span>
+              </span>
+              <div
+                class="TableColumnHeader-iconContainer"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
       <div
         class="AnalyticalTable-tbody sapScrollBar"
-        style="height: 220px; width: 647px;"
+        style="position: relative; overflow-y: auto; height: 220px;"
       >
         <div
-          style="height: 220px; width: 647px; position: relative;"
+          style="position: relative; height: 220px; width: 0px;"
           tabindex="0"
         >
           <div
@@ -2268,13 +2285,13 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
             class="AnalyticalTable-tr AnalyticalTable-trActive"
             data-is-selected=""
             role="row"
-            style="height: 44px; transform: translateY(0px);"
+            style="height: 44px; transform: translateY(0px); position: absolute;"
           >
             <div
               aria-colindex="1"
               class="AnalyticalTable-tableCell"
               role="cell"
-              style="align-items: center; padding: 0px; width: 47px;"
+              style="align-items: center; padding: 0px; position: absolute; transform: translateX(0px); top: 0px; left: 0px;"
               tabindex="-1"
             >
               <div
@@ -2285,7 +2302,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               aria-colindex="2"
               class="AnalyticalTable-tableCell"
               role="cell"
-              style="align-items: center; width: 150px;"
+              style="align-items: center; width: 150px; position: absolute; transform: translateX(NaNpx); top: 0px; left: 0px;"
               tabindex="-1"
             >
               <span
@@ -2299,7 +2316,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               aria-colindex="3"
               class="AnalyticalTable-tableCell"
               role="cell"
-              style="align-items: center; width: 150px;"
+              style="align-items: center; width: 150px; position: absolute; transform: translateX(NaNpx); top: 0px; left: 0px;"
               tabindex="-1"
             >
               <span
@@ -2313,7 +2330,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell"
               role="cell"
-              style="align-items: center; width: 150px;"
+              style="align-items: center; width: 150px; position: absolute; transform: translateX(NaNpx); top: 0px; left: 0px;"
               tabindex="-1"
             >
               <span
@@ -2327,7 +2344,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               aria-colindex="5"
               class="AnalyticalTable-tableCell"
               role="cell"
-              style="align-items: center; width: 150px;"
+              style="align-items: center; width: 150px; position: absolute; transform: translateX(NaNpx); top: 0px; left: 0px;"
               tabindex="-1"
             >
               <span
@@ -2342,13 +2359,13 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
             aria-rowindex="1"
             class="AnalyticalTable-tr AnalyticalTable-trActive"
             role="row"
-            style="height: 44px; transform: translateY(44px);"
+            style="height: 44px; transform: translateY(44px); position: absolute;"
           >
             <div
               aria-colindex="1"
               class="AnalyticalTable-tableCell"
               role="cell"
-              style="align-items: center; padding: 0px; width: 47px;"
+              style="align-items: center; padding: 0px; position: absolute; transform: translateX(0px); top: 0px; left: 0px;"
               tabindex="-1"
             >
               <div
@@ -2359,7 +2376,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               aria-colindex="2"
               class="AnalyticalTable-tableCell"
               role="cell"
-              style="align-items: center; width: 150px;"
+              style="align-items: center; width: 150px; position: absolute; transform: translateX(NaNpx); top: 0px; left: 0px;"
               tabindex="-1"
             >
               <span
@@ -2373,7 +2390,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               aria-colindex="3"
               class="AnalyticalTable-tableCell"
               role="cell"
-              style="align-items: center; width: 150px;"
+              style="align-items: center; width: 150px; position: absolute; transform: translateX(NaNpx); top: 0px; left: 0px;"
               tabindex="-1"
             >
               <span
@@ -2387,7 +2404,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell"
               role="cell"
-              style="align-items: center; width: 150px;"
+              style="align-items: center; width: 150px; position: absolute; transform: translateX(NaNpx); top: 0px; left: 0px;"
               tabindex="-1"
             >
               <span
@@ -2401,7 +2418,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               aria-colindex="5"
               class="AnalyticalTable-tableCell"
               role="cell"
-              style="align-items: center; width: 150px;"
+              style="align-items: center; width: 150px; position: absolute; transform: translateX(NaNpx); top: 0px; left: 0px;"
               tabindex="-1"
             >
               <span
@@ -2416,13 +2433,13 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
             aria-rowindex="2"
             class="AnalyticalTable-tr"
             role="row"
-            style="height: 44px; transform: translateY(88px);"
+            style="height: 44px; transform: translateY(88px); position: absolute;"
           >
             <div
               aria-colindex="1"
               class="AnalyticalTable-tableCell"
               role="cell"
-              style="align-items: center; padding: 0px; width: 47px;"
+              style="align-items: center; padding: 0px;"
               tabindex="-1"
             />
             <div
@@ -2458,13 +2475,13 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
             aria-rowindex="3"
             class="AnalyticalTable-tr"
             role="row"
-            style="height: 44px; transform: translateY(132px);"
+            style="height: 44px; transform: translateY(132px); position: absolute;"
           >
             <div
               aria-colindex="1"
               class="AnalyticalTable-tableCell"
               role="cell"
-              style="align-items: center; padding: 0px; width: 47px;"
+              style="align-items: center; padding: 0px;"
               tabindex="-1"
             />
             <div
@@ -2500,13 +2517,13 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
             aria-rowindex="4"
             class="AnalyticalTable-tr"
             role="row"
-            style="height: 44px; transform: translateY(176px);"
+            style="height: 44px; transform: translateY(176px); position: absolute;"
           >
             <div
               aria-colindex="1"
               class="AnalyticalTable-tableCell"
               role="cell"
-              style="align-items: center; padding: 0px; width: 47px;"
+              style="align-items: center; padding: 0px;"
               tabindex="-1"
             />
             <div

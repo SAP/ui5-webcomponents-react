@@ -301,7 +301,7 @@ describe('AnalyticalTable', () => {
       );
     };
 
-    const { getByRole, container } = render(<UsingTable />);
+    const { getByRole } = render(<UsingTable />);
 
     // Check existence + type
     expect(typeof tableRef.current.scrollTo).toBe('function');
@@ -353,7 +353,7 @@ describe('AnalyticalTable', () => {
     expect(wrapper.render()).toMatchSnapshot();
   });
 
-  test.skip('highlight row with custom row key', () => {
+  test('highlight row with custom row key', () => {
     const utils = render(
       <AnalyticalTable
         selectionMode={TableSelectionMode.SINGLE_SELECT}
