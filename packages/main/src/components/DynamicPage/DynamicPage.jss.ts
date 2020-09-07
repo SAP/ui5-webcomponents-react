@@ -51,7 +51,7 @@ const styles = {
     flexShrink: 0,
     backgroundColor: ThemingParameters.sapObjectHeader_Background,
     position: 'sticky',
-    top: 0,
+    zIndex: 1,
     translucent: ThemingParameters.sapObjectHeader_Background,
     transparent: 'transparent',
     paddingTop: '1rem',
@@ -80,7 +80,10 @@ const styles = {
     boxSizing: 'border-box'
   },
   title: {
-    padding: '0.3125rem 0 0 0'
+    padding: '0.3125rem 0 0 0',
+    position: 'sticky',
+    zIndex: 2,
+    '--_ui5_tc_header_box_shadow': 'inset 0px -1px 0 0px rgba(0,0,0,0.15)'
   },
   subTitle: {
     verticalAlign: 'baseline',
@@ -90,7 +93,6 @@ const styles = {
     position: 'absolute',
     top: '0',
     paddingTop: '0.75rem',
-    zIndex: 1,
     right: `var(${DynamicPageCssVariables.anchorRight})`,
     left: `var(${DynamicPageCssVariables.anchorLeft})`,
     display: 'inline-block',

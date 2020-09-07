@@ -11,8 +11,6 @@ export interface DynamicPageHeaderProps extends CommonProps {
   classes: any;
 }
 
-const useStyles = createComponentStyles(DynamicPageHeaderStyles, { name: 'DynamicPageHeader' });
-
 const DynamicPageHeader: FC<DynamicPageHeaderProps> = forwardRef(
   (props: DynamicPageHeaderProps, ref: Ref<HTMLDivElement>) => {
     const { headerContent, style, classes } = props;

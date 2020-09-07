@@ -42,13 +42,15 @@ export interface DynamicPageProps extends CommonProps {
 
   anchorBar?: ReactElement;
 
+  contentArea?: ReactElement;
+
   children: ReactNode | ReactNodeArray;
 
   footer?: ReactElement;
 }
 
 const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, ref: Ref<HTMLDivElement>) => {
-  const { title, header, anchorBar, className, tooltip, style, noHeader = false, alwaysShowContentHeader } = props;
+  const { title, header, contentArea, className, tooltip, style, noHeader = false, alwaysShowContentHeader } = props;
   const passThroughProps = usePassThroughHtmlProps(props);
 
   const useStyles = createComponentStyles(styles, { name: 'DynamicPage' });
@@ -58,6 +60,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
   const dynamicPageRef: RefObject<HTMLDivElement> = useConsolidatedRef(ref);
   const topHeaderRef: RefObject<HTMLDivElement> = useRef();
   const headerContentRef: RefObject<HTMLDivElement> = useRef();
+  const contentAreaRef: RefObject<HTMLDivElement> = useRef();
 
   const [headerPinned, setHeaderPinned] = useState(alwaysShowContentHeader);
 
@@ -110,12 +113,16 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
 
   return (
     <div ref={dynamicPageRef} title={tooltip} className={className} style={style} {...passThroughProps}>
-      {cloneElement(title, { style: { position: 'sticky' }, ref: topHeaderRef })}
-      {cloneElement(header, { ref: headerContentRef, classes })}
+      {cloneElement(title, { ref: topHeaderRef })}
+      {cloneElement(header, {
+        ref: headerContentRef,
+        style: { top: noHeader ? 0 : topHeaderHeight },
+        classes
+      })}
       <FlexBox
+        className={classes.anchorBar}
         style={{
-          top: noHeader ? 0 : headerPinned ? topHeaderHeight + headerContentHeight : topHeaderHeight,
-          position: 'sticky'
+          top: noHeader ? 0 : headerPinned ? topHeaderHeight + headerContentHeight : topHeaderHeight
         }}
       >
         <DynamicPageAnchorBar
@@ -127,6 +134,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
           setHeaderPinned={setHeaderPinned}
         />
       </FlexBox>
+      {cloneElement(contentArea, { ref: contentAreaRef })}
     </div>
   );
 });

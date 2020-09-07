@@ -57,9 +57,9 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef(
 
     const passThroughProps = usePassThroughHtmlProps(props);
     return (
-      <div
+      <FlexBox
         style={style}
-        className={containerClasses.className}
+        className={classes.container}
         ref={ref}
         data-component-name="DynamicPageTitle"
         {...passThroughProps}
@@ -86,7 +86,7 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef(
         <FlexBox>
           <div className={classes.subTitle}>{subHeading}</div>
         </FlexBox>
-      </div>
+      </FlexBox>
     );
   }
 );

@@ -15,7 +15,10 @@ export const DynamicPageTitleStyles = {
     paddingBottom: '0.5rem',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    position: 'sticky',
+    top: 0,
+    zIndex: 1
   },
   breadcrumbs: {
     padding: '0.5rem 0 0.25rem 0'
