@@ -1,6 +1,6 @@
 # Description
-
-The goal of this repository is to increase the boostrap time spent on a new project with the React + UI5WebComponentsReact with several things already set.
+ 
+The goal of this repository is to increase the boostrap time spent on projects which uses **React + UI5 WebComponents React**.
 
 # Wanna Help?
 
