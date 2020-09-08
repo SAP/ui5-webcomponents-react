@@ -1,6 +1,6 @@
 {
   "name": "cra-template-ui5-webcomponents-react-seed",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "license": "MIT",
   "author": {
     "name": "Luis Valgoi",
@@ -11,6 +11,13 @@
   },
   "main": "template.json",
   "description": "A Seed of UI5 Web Components for React",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LuisValgoi/ui5-webcomponents-react-seed"
+  },
+  "bugs": {
+    "url": "https://github.com/LuisValgoi/ui5-webcomponents-react-seed/issues"
+  },
   "keywords": [
     "react",
     "create-react-app",
