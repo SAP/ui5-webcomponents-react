@@ -8,10 +8,13 @@ Take a look into our Kanban Board [here](https://github.com/LuisValgoi/ui5-webco
 
 # Usage
 
-- `cd your-development-folder`
-- `npx create-react-app your-project-name --template ui5-webcomponents-react-seed`
-- `npm install`
-- have fun with the other scripts :)
+- open the terminal;
+- go to a random folder you want;
+- `npx create-react-app folderrr --template ui5-webcomponents-react-seed`;
+- cd into `folderrr`;
+- run `yarn install`;
+- run `yarn test:ci` or any other;
+- have fun with the other scripts;
 
 PS.: It is important to add the `--template ui5-webcomponents-react-seed` at the end to get our template.
 
