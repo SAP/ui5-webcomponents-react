@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should match snapshot 1`] = `
+exports[`Validator.js Test Suite should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    data-testid="centeredContent"
+    data-testid="centered-content"
     style="max-width: 970px; padding: 1rem; margin: 0px auto;"
   />
 </DocumentFragment>

@@ -2,7 +2,7 @@ import React from 'react'
 import { useHistory } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
-import CenteredLink from '../../../components/Link/Link';
+import HyperLink from '../../../components/HyperLink/HyperLink';
 import BrowserURL from '../../../util/BrowserURL';
 import ComponentValidator from '../../../auth/Components/Validator';
 
@@ -12,18 +12,18 @@ export default function TodoList() {
   return (
     <>
       <Helmet title='List - TodoList App' />
-      <CenteredLink
+      <HyperLink
         onClick={() => history.push('/dontexist')}
         text='Test NotFound Page' />
       <br />
-      <CenteredLink
+      <HyperLink
         onClick={() => history.push(BrowserURL.BUGGY)}
         text='Test Error Page' />
       <br />
       <ComponentValidator
         allowedAuthorities={['canAccessDropApplication']}
         authorityKey='permissions'>
-        <CenteredLink
+        <HyperLink
           text='Drop Application (this is a restricted text and you should not see unless you have access)' />
       </ComponentValidator>
     </>

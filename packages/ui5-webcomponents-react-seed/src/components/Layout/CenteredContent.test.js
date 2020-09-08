@@ -5,25 +5,27 @@ import { render, screen } from '../../util/TestSetup';
 
 import CenteredContent from './CenteredContent';
 
-beforeEach(() => {
-  render(<CenteredContent />);
-});
+describe('Validator.js Test Suite', () => {
+  beforeEach(() => {
+    render(<CenteredContent />);
+  });
 
-test('should match snapshot', () => {
-  const { asFragment } = render(<CenteredContent />);
+  test('should match snapshot', () => {
+    const { asFragment } = render(<CenteredContent />);
 
-  expect(asFragment()).toMatchSnapshot();
-});
+    expect(asFragment()).toMatchSnapshot();
+  });
 
-test('should render', () => {
-  const content = screen.getByTestId('centeredContent');
+  test('should render', () => {
+    const content = screen.getByTestId('centered-content');
 
-  expect(content).toBeInTheDocument();
-});
+    expect(content).toBeInTheDocument();
+  });
 
-test('should have a g of 970px', () => {
-  const content = screen.getByTestId('centeredContent');
+  test('should have a g of 970px', () => {
+    const content = screen.getByTestId('centered-content');
 
-  expect(content).toBeInTheDocument();
-  expect(content).toHaveStyle(`max-width:970px`);
+    expect(content).toBeInTheDocument();
+    expect(content).toHaveStyle(`max-width:970px`);
+  });
 });

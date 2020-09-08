@@ -10,7 +10,7 @@ const style = {
 
 export default function CenteredContent({ children }) {
   return (
-    <div data-testid='centeredContent' style={style.centered}>
+    <div data-testid='centered-content' style={style.centered}>
       {children}
     </div>
   )

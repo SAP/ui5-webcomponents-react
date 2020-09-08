@@ -1,17 +1,17 @@
 import React from 'react';
 
-import { Link as LinkWC } from '@ui5/webcomponents-react/lib/Link';
+import { Link } from '@ui5/webcomponents-react/lib/Link';
 import { LinkDesign } from '@ui5/webcomponents-react/lib/LinkDesign';
 
-function Link({ text, onClick }) {
+function HyperLink({ text, onClick }) {
   return (
-    <LinkWC
+    <Link
       data-testid='link-wrapper'
       onClick={onClick}
       design={LinkDesign.Emphasized}>
       {text}
-    </LinkWC>
+    </Link>
   );
 }
 
-export default Link;
+export default HyperLink;
