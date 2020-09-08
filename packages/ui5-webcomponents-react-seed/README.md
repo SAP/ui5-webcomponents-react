@@ -2,10 +2,6 @@
  
 To deacrease the boostrap time spent on projects which uses **React + UI5 WebComponents React**.
 
-# Wanna Help?
-
-Take a look into our Kanban Board [here](https://github.com/LuisValgoi/ui5-webcomponents-react-seed/projects/1?fullscreen=true).
-
 # Usage
 
 - open the terminal;
@@ -169,3 +165,7 @@ Used to support old browsers.
 ### `jest & jest-enviroment-jsom-sixteen`
 
 Used to support jest and its scripts with the new engine.
+
+# Contributing
+
+Take a look into our Kanban Board [here](https://github.com/LuisValgoi/ui5-webcomponents-react-seed/projects/1?fullscreen=true).
