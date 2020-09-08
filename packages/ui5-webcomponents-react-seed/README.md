@@ -16,6 +16,8 @@ PS.: It is important to add the `--template ui5-webcomponents-react-seed` at the
 
 # Getting Started
 
+Once you have created your project using the `ui5-webcomponents-react-seed` template, you can start by:
+
 - `yarn install`: To install this project dependencies.
 
 - `yarn mock`: To run this project with json-server.
