@@ -1,8 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Shell.js Test Suite should match snapshot 1`] = `
-<ui5-link
-  data-testid="hyperlink-wrapper"
-  design="Emphasized"
-/>
-`;

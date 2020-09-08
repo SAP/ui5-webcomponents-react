@@ -11,12 +11,6 @@ describe('Shell.js Test Suite', () => {
     render(<HyperLink />);
   });
 
-  test('should match snapshot', () => {
-    const link = screen.getByTestId('hyperlink-wrapper');
-
-    expect(link).toMatchSnapshot();
-  });
-
   test('renders with "test" text', () => {
     render(<HyperLink text='test' />);
     const linkElement = screen.getByText('test');
