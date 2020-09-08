@@ -1,6 +1,6 @@
-# Description
+# Goal
  
-The goal of this repository is to increase the boostrap time spent on projects which uses **React + UI5 WebComponents React**.
+To deacrease the boostrap time spent on projects which uses **React + UI5 WebComponents React**.
 
 # Wanna Help?
 
