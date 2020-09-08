@@ -8,7 +8,7 @@ To deacrease the boostrap time spent on projects which uses **React + UI5 WebCom
 - go to a random folder you want;
 - `npx create-react-app folderrr --template ui5-webcomponents-react-seed`;
 - cd into `folderrr`;
-- run `yarn install`;
+- (no need to run `yarn install` since it already installs it for you);
 - run `yarn test:ci` or any other;
 - have fun with the other scripts;
 
