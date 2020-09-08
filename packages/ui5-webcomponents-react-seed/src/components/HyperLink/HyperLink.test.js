@@ -7,12 +7,12 @@ import HyperLink from './HyperLink';
 import { LinkDesign } from '@ui5/webcomponents-react/lib/LinkDesign';
 
 describe('Shell.js Test Suite', () => {
-  beforeEach(() => {
+  beforeAll(() => {
     render(<HyperLink />);
   });
 
   test('should match snapshot', () => {
-    const link = screen.getByTestId('link-wrapper');
+    const link = screen.getByTestId('hyperlink-wrapper');
 
     expect(link).toMatchSnapshot();
   });

@@ -2,7 +2,7 @@
 
 exports[`Shell.js Test Suite should match snapshot 1`] = `
 <ui5-link
-  data-testid="link-wrapper"
+  data-testid="hyperlink-wrapper"
   design="Emphasized"
 />
 `;

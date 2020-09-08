@@ -3,10 +3,10 @@ import React from 'react';
 import { Link } from '@ui5/webcomponents-react/lib/Link';
 import { LinkDesign } from '@ui5/webcomponents-react/lib/LinkDesign';
 
-function HyperLink({ text, onClick }) {
+const HyperLink = ({ text, onClick }) => {
   return (
     <Link
-      data-testid='link-wrapper'
+      data-testid='hyperlink-wrapper'
       onClick={onClick}
       design={LinkDesign.Emphasized}>
       {text}
