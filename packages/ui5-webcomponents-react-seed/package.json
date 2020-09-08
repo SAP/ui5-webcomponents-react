@@ -30,7 +30,6 @@
     "template.json"
   ],
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/",
     "tag": "latest",
     "access": "public"
   },
