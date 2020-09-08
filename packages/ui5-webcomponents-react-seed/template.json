@@ -1,0 +1,75 @@
+{
+  "package": {
+    "dependencies": {
+      "@babel/plugin-proposal-class-properties": "^7.10.4",
+      "@commitlint/cli": "^9.1.2",
+      "@commitlint/config-conventional": "^9.1.2",
+      "@testing-library/jest-dom": "^5.11.4",
+      "@testing-library/react": "^10.4.9",
+      "@testing-library/user-event": "^12.1.3",
+      "@types/jest": "^26.0.10",
+      "@ui5/webcomponents": "1.0.0-rc.8",
+      "@ui5/webcomponents-fiori": "1.0.0-rc.8",
+      "@ui5/webcomponents-icons": "1.0.0-rc.8",
+      "@ui5/webcomponents-react": "^0.10.0",
+      "axios": "^0.20.0",
+      "env-cmd": "^10.1.0",
+      "husky": "^4.2.5",
+      "i18next": "^19.7.0",
+      "i18next-browser-languagedetector": "^6.0.1",
+      "jest-environment-jsdom-sixteen": "^1.0.3",
+      "msw": "^0.20.5",
+      "nodemon": "^2.0.4",
+      "npm-run-all": "^4.1.5",
+      "react": "^16.13.1",
+      "react-app-polyfill": "^1.0.6",
+      "react-dom": "^16.13.1",
+      "react-helmet": "^6.1.0",
+      "react-i18next": "^11.7.2",
+      "react-query": "^2.12.1",
+      "react-router-dom": "^5.2.0",
+      "react-scripts": "3.4.3"
+    },
+    "scripts": {
+      "start:react": "react-scripts start",
+      "start:mock": "nodemon --watch server/data --exec json-server --p 3001 server/mockserver.js --routes server/routes.json",
+      "start": "env-cmd -f .env npm-run-all --parallel start:react",
+      "mock": "env-cmd -f .env npm-run-all --parallel start:mock start:react",
+      "build": "react-scripts build",
+      "lint": "eslint --quiet .",
+      "test": "react-scripts test --silent --env=jest-environment-jsdom-sixteen",
+      "test:ci": "npm run test -- --watchAll=false",
+      "test:coverage": "npm run test -- --watchAll=false --coverage",
+      "eject": "react-scripts eject",
+      "commit:pre": "npm-run-all --parallel test:ci lint",
+      "publish:clean": "rm -rf ./template/src ./template/server ./template/.vscode ./template/public && rm -f ./template/.editorconfig ./template/.env ./template/.eslintignore ./template/.eslintrc.js ./template/commitlint.config.js ./template/PULL_REQUEST_TEMPLATE.md ./template/README.md ./template/webpack.config.js",
+      "publish:copy": "cp -a ./src/. template/src && cp -a ./server/. template/server && cp -a ./.vscode/. template/.vscode && cp -a ./public/. template/public && cp .editorconfig .env .eslintignore .eslintrc.js commitlint.config.js PULL_REQUEST_TEMPLATE.md README.md webpack.config.js template/",
+      "publish:prepare": "npm-run-all publish:clean publish:copy"
+    },
+    "browserslist": {
+      "production": [
+        ">0.2%",
+        "not dead",
+        "not op_mini all"
+      ],
+      "development": [
+        "last 1 chrome version",
+        "last 1 firefox version",
+        "last 1 safari version",
+        "ie 11"
+      ]
+    },
+    "jest": {
+      "transformIgnorePatterns": [
+        "node_modules/(?!(@ui5|lit-html)).*\\.js$"
+      ]
+    },
+    "husky": {
+      "hooks": {
+        "pre-commit": "npm run commit:pre",
+        "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+        "prepare-commit-msg": "exec < /dev/tty && true"
+      }
+    }
+  }
+}
