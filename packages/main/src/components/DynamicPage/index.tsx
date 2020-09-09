@@ -116,7 +116,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
       topHeaderRef.current.style.borderBottom = `solid 0.0625rem ${ThemingParameters.sapObjectHeader_BorderColor}`;
       mouseOut = false;
     } else {
-      topHeaderRef.current.style.backgroundColor = ThemingParameters.sapObjectHeader_Background;
+      topHeaderRef.current.style.backgroundColor = null;
       topHeaderRef.current.style.borderBottom = null;
       mouseOut = true;
     }

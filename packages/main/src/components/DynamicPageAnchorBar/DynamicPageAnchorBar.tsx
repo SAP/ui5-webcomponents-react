@@ -31,6 +31,7 @@ const anchorBarStyles = {
     top: `-0.6875rem`,
     marginLeft: `-0.6875rem`,
     left: '50%',
+    zIndex: 3,
     '&:before, &:after': {
       content: '""',
       position: 'absolute',
@@ -53,7 +54,7 @@ const anchorBarStyles = {
     '&$anchorBarActionButtonPinnable': {
       marginLeft: '0.25rem',
       '&:before': {
-        backgroundImage: 'none'
+        backgroundColor: 'white'
       }
     },
     '&$anchorBarActionButtonExpandable': {
@@ -104,7 +105,7 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
   );
 
   return (
-    <section style={style} role="navigation" className={className} ref={ref}>
+    <section style={{ top: '0.025rem' }} role="navigation" className={classes.anchorBarActionButton} ref={ref}>
       {shouldRenderHideHeaderButton && (
         <Button
           icon={headerContentHeight === 0 ? 'slim-arrow-down' : 'slim-arrow-up'}
