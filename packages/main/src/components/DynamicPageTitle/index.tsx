@@ -31,7 +31,6 @@ export interface DynamicPageTitleProps extends CommonProps {
    * Use this aggregation to display a `Title` (or any other component that serves as a heading)
    */
   subHeading?: ReactNode;
-
   /**
    * The `DynamicPageTitle` navigation actions.<br />
    * *Note*: The `navigationActions` position depends on the control size.

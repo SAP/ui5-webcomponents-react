@@ -18,7 +18,7 @@ export const DynamicPageTitleStyles = {
     justifyContent: 'space-between',
     position: 'sticky',
     top: 0,
-    zIndex: 1
+    zIndex: 2
   },
   breadcrumbs: {
     padding: '0.5rem 0 0.25rem 0'
@@ -38,7 +38,8 @@ export const DynamicPageTitleStyles = {
   subTitle: {
     color: ThemingParameters.sapContent_LabelColor,
     fontSize: ThemingParameters.sapFontSize,
-    marginTop: '0.25rem'
+    marginTop: '0.25rem',
+    marginBottom: '0.25rem'
   },
   content: {
     flexShrink: 1.6,
