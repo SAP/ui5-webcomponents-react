@@ -1,3 +1,5 @@
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { useConsolidatedRef, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/hooks';
 import React, {
   forwardRef,
@@ -12,14 +14,11 @@ import React, {
   useCallback,
   useState
 } from 'react';
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { FlexBox, PageBackgroundDesign } from '../..';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar/DynamicPageAnchorBar';
 import { useObserveHeights } from '../ObjectPage/useObserveHeights';
-import styles, { DynamicPageCssVariables } from './DynamicPage.jss';
-import { ObjectPageAnchorBar } from '../ObjectPage/ObjectPageAnchorBar';
-import { ThemingParameters } from '@ui5/webcomponents-react-base';
+import styles from './DynamicPage.jss';
 
 export interface DynamicPageProps extends CommonProps {
   /**
@@ -112,6 +111,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
   let mouseOut = true;
   const onHoverToggleButton = (e) => {
     if (e && mouseOut) {
+      // TODO background color should be sapObjectHeader_Hover_Background (same color as sapTile_Active_Background)
       topHeaderRef.current.style.backgroundColor = ThemingParameters.sapTile_Active_Background;
       topHeaderRef.current.style.borderBottom = `solid 0.0625rem ${ThemingParameters.sapObjectHeader_BorderColor}`;
       mouseOut = false;
@@ -136,7 +136,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
       <FlexBox
         className={classes.anchorBar}
         style={{
-          top: noHeader ? 0 : headerPinned ? topHeaderHeight + headerContentHeight : topHeaderHeight
+          top: noHeader ? 0 : headerPinned ? headerContentRef.current.scrollHeight + topHeaderHeight : topHeaderHeight
         }}
       >
         <DynamicPageAnchorBar
