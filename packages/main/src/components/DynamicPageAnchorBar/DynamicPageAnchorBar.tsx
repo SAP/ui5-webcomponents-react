@@ -74,6 +74,7 @@ interface Props {
   headerPinned?: boolean;
   setHeaderPinned?: (payload: any) => void;
   onToggleHeaderContentVisibility: (e: any) => void;
+  onHoverToggleButton?: (e: any) => void;
 }
 
 const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElement>) => {
@@ -85,6 +86,7 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
     setHeaderPinned,
     onToggleHeaderContentVisibility,
     className,
+    onHoverToggleButton,
     style
   } = props;
 
@@ -111,6 +113,8 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
             showBothActions ? classes.anchorBarActionPinnableAndExandable : ''
           }`}
           onClick={onToggleHeaderContentVisibility}
+          onMouseOver={onHoverToggleButton}
+          onMouseLeave={onHoverToggleButton}
         />
       )}
       {shouldRenderHeaderPinnableButton && (

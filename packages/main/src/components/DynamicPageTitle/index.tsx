@@ -40,13 +40,24 @@ export interface DynamicPageTitleProps extends CommonProps {
    *
    */
   navigationActions?: ReactElement | ReactElement[];
+  onToggleHeaderContentVisibility: (e: any) => boolean;
 }
 
 const useStyles = createComponentStyles(DynamicPageTitleStyles, { name: 'DynamicPageTitle' });
 
 const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef(
   (props: DynamicPageTitleProps, ref: Ref<HTMLDivElement>) => {
-    const { actions, breadcrumbs, children, heading, subHeading, navigationActions, className, style } = props;
+    const {
+      actions,
+      onToggleHeaderContentVisibility,
+      breadcrumbs,
+      children,
+      heading,
+      subHeading,
+      navigationActions,
+      className,
+      style
+    } = props;
 
     const classes = useStyles();
 
@@ -74,7 +85,6 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef(
               <Toolbar toolbarStyle={ToolbarStyle.Clear}>{actions}</Toolbar>
             </div>
           </FlexBox>
-
           <div className={classes.navigationActions}>
             <Toolbar toolbarStyle={ToolbarStyle.Clear}>
               <ToolbarSeparator />

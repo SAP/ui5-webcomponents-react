@@ -19,6 +19,7 @@ import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar/DynamicPageAnchorB
 import { useObserveHeights } from '../ObjectPage/useObserveHeights';
 import styles, { DynamicPageCssVariables } from './DynamicPage.jss';
 import { ObjectPageAnchorBar } from '../ObjectPage/ObjectPageAnchorBar';
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
 
 export interface DynamicPageProps extends CommonProps {
   /**
@@ -105,12 +106,26 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
         dynamicPageRef.current.classList.remove(classes.headerCollapsed);
       }
     },
-    [dynamicPageRef, classes.headerCollapsed, headerContentHeight, topHeaderHeight]
+    [dynamicPageRef, classes.headerCollapsed]
   );
+
+  let mouseOut = true;
+  const onHoverToggleButton = (e) => {
+    if (e && mouseOut) {
+      topHeaderRef.current.style.backgroundColor = ThemingParameters.sapTile_Active_Background;
+      topHeaderRef.current.style.borderBottom = `solid 0.0625rem ${ThemingParameters.sapObjectHeader_BorderColor}`;
+      mouseOut = false;
+    } else {
+      topHeaderRef.current.style.backgroundColor = ThemingParameters.sapObjectHeader_Background;
+      topHeaderRef.current.style.borderBottom = null;
+      mouseOut = true;
+    }
+    return null;
+  };
 
   return (
     <div ref={dynamicPageRef} title={tooltip} className={className} style={style} {...passThroughProps}>
-      {cloneElement(title, { ref: topHeaderRef })}
+      {cloneElement(title, { ref: topHeaderRef, onToggleHeaderContentVisibility })}
       {cloneElement(header, {
         ref: headerContentRef,
         style: { top: noHeader ? 0 : topHeaderHeight },
@@ -132,6 +147,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
           onToggleHeaderContentVisibility={onToggleHeaderContentVisibility}
           setHeaderPinned={setHeaderPinned}
           headerPinned={headerPinned}
+          onHoverToggleButton={onHoverToggleButton}
         />
       </FlexBox>
       {cloneElement(contentArea, { ref: contentAreaRef })}
