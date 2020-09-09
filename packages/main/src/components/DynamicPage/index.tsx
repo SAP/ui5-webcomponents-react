@@ -18,6 +18,7 @@ import { CommonProps } from '../../interfaces/CommonProps';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar/DynamicPageAnchorBar';
 import { useObserveHeights } from '../ObjectPage/useObserveHeights';
 import styles, { DynamicPageCssVariables } from './DynamicPage.jss';
+import { ObjectPageAnchorBar } from '../ObjectPage/ObjectPageAnchorBar';
 
 export interface DynamicPageProps extends CommonProps {
   /**
@@ -32,8 +33,18 @@ export interface DynamicPageProps extends CommonProps {
    * Determines whether the header is shown.
    */
   noHeader?: boolean;
-
+  /**
+   * Determines whether the content header is shown.
+   */
   alwaysShowContentHeader?: boolean;
+  /**
+   * Determines whether the header button is shown.
+   */
+  showHideHeaderButton?: boolean;
+  /**
+   * Determines whether the pin button is shown.
+   */
+  headerContentPinnable?: boolean;
 
   // slots
   title?: ReactElement;
@@ -50,7 +61,18 @@ export interface DynamicPageProps extends CommonProps {
 }
 
 const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, ref: Ref<HTMLDivElement>) => {
-  const { title, header, contentArea, className, tooltip, style, noHeader = false, alwaysShowContentHeader } = props;
+  const {
+    title,
+    header,
+    contentArea,
+    className,
+    tooltip,
+    style,
+    noHeader = false,
+    showHideHeaderButton = true,
+    headerContentPinnable = true,
+    alwaysShowContentHeader
+  } = props;
   const passThroughProps = usePassThroughHtmlProps(props);
 
   const useStyles = createComponentStyles(styles, { name: 'DynamicPage' });
@@ -82,31 +104,6 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
       } else {
         dynamicPageRef.current.classList.remove(classes.headerCollapsed);
       }
-
-      requestAnimationFrame(() => {
-        if (dynamicPageRef.current.scrollTop > 0 && !shouldHideHeader) {
-          const prevHeaderTop = headerContentRef.current.style.top;
-          headerContentRef.current.style.top = `${topHeaderHeight}px`;
-          const prevAnchorTop = anchorBarRef.current.style.top;
-          anchorBarRef.current.style.top = `${headerContentRef.current.offsetHeight + topHeaderHeight}px`;
-          dynamicPageRef.current.addEventListener(
-            'scroll',
-            (e) => {
-              if (prevHeaderTop ?? true) {
-                headerContentRef.current.style.top = prevHeaderTop;
-              } else {
-                headerContentRef.current.style.removeProperty('top');
-              }
-              if (prevAnchorTop ?? true) {
-                anchorBarRef.current.style.top = prevAnchorTop;
-              } else {
-                anchorBarRef.current.style.removeProperty('top');
-              }
-            },
-            { once: true }
-          );
-        }
-      });
     },
     [dynamicPageRef, classes.headerCollapsed, headerContentHeight, topHeaderHeight]
   );
@@ -129,11 +126,12 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
       >
         <DynamicPageAnchorBar
           ref={anchorBarRef}
-          headerContentPinnable
-          showHideHeaderButton
+          headerContentPinnable={headerContentPinnable}
+          showHideHeaderButton={showHideHeaderButton && !noHeader}
           headerContentHeight={headerContentHeight}
           onToggleHeaderContentVisibility={onToggleHeaderContentVisibility}
           setHeaderPinned={setHeaderPinned}
+          headerPinned={headerPinned}
         />
       </FlexBox>
       {cloneElement(contentArea, { ref: contentAreaRef })}

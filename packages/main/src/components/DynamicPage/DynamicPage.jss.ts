@@ -33,16 +33,8 @@ const styles = {
     [DynamicPageCssVariables.anchorLeft]: '1.25rem',
     [DynamicPageCssVariables.avatarMargin]: '0 0 0 1rem'
   },
-  noHeader: {
-    '& $header': {
-      display: 'none'
-    },
-    '& $contentHeader': {
-      display: 'none'
-    }
-  },
   headerCollapsed: {
-    '& $contentHeader': {
+    '& $header': {
       display: 'none'
     }
   },
