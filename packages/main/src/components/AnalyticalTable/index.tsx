@@ -207,7 +207,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     totalColumnsWidth,
     toggleRowSelected,
     toggleAllRowsSelected,
-    setGroupBy
+    setGroupBy,
+    initialState
   } = useTable(
     {
       columns,
@@ -232,7 +233,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
         scaleWidthMode,
         loading,
         withRowHighlight,
-        highlightField
+        highlightField,
+        selectedRowIds
       },
       ...reactTableOptions
     },
@@ -282,14 +284,16 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   }, [groupBy, setGroupBy]);
 
   useEffect(() => {
-    toggleAllRowsSelected(false);
-    const validChars = /^\d+(\.\d+)*$/;
-    // eslint-disable-next-line guard-for-in
-    for (const row in selectedRowIds) {
-      if (reactTableOptions?.getRowId) {
-        toggleRowSelected(row, selectedRowIds[row]);
-      } else if (validChars.test(row)) {
-        toggleRowSelected(row, selectedRowIds[row]);
+    if (selectedRowIds) {
+      toggleAllRowsSelected(false);
+      const validChars = /^\d+(\.\d+)*$/;
+      // eslint-disable-next-line guard-for-in
+      for (const row in selectedRowIds) {
+        if (reactTableOptions?.getRowId) {
+          toggleRowSelected(row, selectedRowIds[row]);
+        } else if (validChars.test(row)) {
+          toggleRowSelected(row, selectedRowIds[row]);
+        }
       }
     }
   }, [toggleRowSelected, toggleAllRowsSelected, selectedRowIds, reactTableOptions?.getRowId]);
@@ -485,7 +489,6 @@ AnalyticalTable.defaultProps = {
   visibleRows: 15,
   subRowsKey: 'subRows',
   highlightField: 'status',
-  selectedRowIds: {},
   onGroup: () => {},
   onRowExpandChange: () => {},
   onColumnsReordered: () => {},

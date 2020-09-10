@@ -56,13 +56,14 @@ const getRowProps = (rowProps, { row, instance }) => {
         if (selectionBehavior === TableSelectionBehavior.ROW_SELECTOR && !selectionCellClick) {
           return;
         }
-
-        if (selectionMode === TableSelectionMode.SINGLE_SELECT) {
-          for (const row of selectedFlatRows) {
-            toggleRowSelected(row.id, false);
+        if (!webComponentsReactProperties.selectedRowIds) {
+          if (selectionMode === TableSelectionMode.SINGLE_SELECT) {
+            for (const row of selectedFlatRows) {
+              toggleRowSelected(row.id, false);
+            }
           }
+          instance.toggleRowSelected(row.id);
         }
-        instance.toggleRowSelected(row.id);
 
         // fire event
         if (typeof onRowSelected === 'function') {
