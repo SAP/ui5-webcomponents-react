@@ -14,11 +14,12 @@ import React, {
   useCallback,
   useState
 } from 'react';
-import { FlexBox, PageBackgroundDesign } from '../..';
+import { Badge, Breadcrumbs, Button, ButtonDesign, FlexBox, Label, Link, PageBackgroundDesign, Title } from '../..';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar/DynamicPageAnchorBar';
 import { useObserveHeights } from '../ObjectPage/useObserveHeights';
 import styles from './DynamicPage.jss';
+import { DynamicPageTitle } from '../DynamicPageTitle';
 
 export interface DynamicPageProps extends CommonProps {
   /**
@@ -128,7 +129,9 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
   };
 
   const onToggleHeaderContent = (e) => {
-    onToggleHeaderContentVisibility(e, anchorBarRef.current.children.item(0));
+    if (e.target.tagName === 'DIV') {
+      onToggleHeaderContentVisibility(e, anchorBarRef.current.children.item(0));
+    }
   };
 
   return (

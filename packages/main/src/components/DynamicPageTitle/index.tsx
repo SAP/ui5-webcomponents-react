@@ -1,6 +1,14 @@
 import { createComponentStyles, StyleClassHelper, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base';
 import React, { FC, forwardRef, ReactElement, ReactNode, ReactNodeArray, Ref } from 'react';
-import { FlexBox, FlexBoxAlignItems, Toolbar, ToolbarDesign, ToolbarSeparator, ToolbarStyle } from '../..';
+import {
+  FlexBox,
+  FlexBoxAlignItems,
+  Toolbar,
+  ToolbarDesign,
+  ToolbarSeparator,
+  ToolbarSpacer,
+  ToolbarStyle
+} from '../..';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { BreadcrumbsPropTypes } from '../Breadcrumbs';
 import { DynamicPageTitleStyles } from './DynamicPageTitle.jss';
@@ -72,7 +80,8 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef(
         ref={ref}
         data-component-name="DynamicPageTitle"
         {...passThroughProps}
-        onClick={props.onToggleHeaderContentVisibility}
+        // @ts-ignore
+        onClick={onToggleHeaderContentVisibility}
       >
         <div className={classes.breadcrumbs}>{breadcrumbs}</div>
         <FlexBox alignItems={FlexBoxAlignItems.Center} style={{ flexGrow: 1, width: '100%' }}>
@@ -81,16 +90,14 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef(
             <div className={classes.content}>
               <Toolbar toolbarStyle={ToolbarStyle.Clear}>{children}</Toolbar>
             </div>
-            <div className={classes.actions}>
-              <Toolbar toolbarStyle={ToolbarStyle.Clear}>{actions}</Toolbar>
-            </div>
-          </FlexBox>
-          <div className={classes.navigationActions}>
-            <Toolbar toolbarStyle={ToolbarStyle.Clear}>
-              <ToolbarSeparator />
-              {navigationActions}
+            <Toolbar className={classes.actions} toolbarStyle={ToolbarStyle.Clear}>
+              {actions}
             </Toolbar>
-          </div>
+          </FlexBox>
+          <Toolbar className={classes.navigationActions} toolbarStyle={ToolbarStyle.Clear}>
+            <ToolbarSpacer />
+            {navigationActions}
+          </Toolbar>
         </FlexBox>
         <FlexBox>
           <div className={classes.subTitle}>{subHeading}</div>

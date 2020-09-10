@@ -5,22 +5,13 @@ import '@ui5/webcomponents-icons/dist/icons/decline';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
 import React from 'react';
-import {
-  Badge,
-  FlexBox,
-  FlexBoxDirection,
-  Form,
-  FormGroup,
-  FormItem,
-  ObjectPageSubSection,
-  ObjectStatus,
-  Text
-} from '../..';
+import { Badge, Form, FormGroup, FormItem, ObjectStatus, Text } from '../..';
+import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { Breadcrumbs } from '../../lib/Breadcrumbs';
 import { Link } from '../../webComponents/Link';
 import { DynamicPageTitle } from '../DynamicPageTitle';
 import { DynamicPage } from './index';
-import { Button } from '../../lib/Button';
+import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { DynamicPageHeader } from '../DynamicPageHeader';
 import { DynamicPageContentArea } from '../DynamicPageContentArea';
 
@@ -39,11 +30,11 @@ export const defaultStory = (props) => {
         <DynamicPageTitle
           actions={
             <>
-              <Button design="Emphasized">Edit</Button>
-              <Button design="Transparent">Delete</Button>
-              <Button design="Transparent">Copy</Button>
-              <Button design="Transparent">Toggle Footer</Button>
-              <Button icon="action" design="Transparent"></Button>
+              <Button design={ButtonDesign.Emphasized}>Edit</Button>
+              <Button design={ButtonDesign.Transparent}>Delete</Button>
+              <Button design={ButtonDesign.Transparent}>Copy</Button>
+              <Button design={ButtonDesign.Transparent}>Toggle Footer</Button>
+              <Button icon="action" design={ButtonDesign.Transparent}></Button>
             </>
           }
           breadcrumbs={
