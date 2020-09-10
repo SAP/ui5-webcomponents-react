@@ -16,7 +16,7 @@ const styles = {
     position: 'relative',
     whiteSpace: 'normal',
     fontFamily: ThemingParameters.sapFontFamily,
-    backgroundColor: 'black',
+    backgroundColor: ThemingParameters.sapBackgroundColor,
     overflowX: 'hidden',
     overflowY: 'auto',
     [DynamicPageCssVariables.lastSectionMargin]: 0

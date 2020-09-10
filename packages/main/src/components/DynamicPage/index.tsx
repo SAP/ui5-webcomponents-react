@@ -124,7 +124,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
   };
 
   return (
-    <div ref={dynamicPageRef} title={tooltip} className={className} style={style} {...passThroughProps}>
+    <div ref={dynamicPageRef} title={tooltip} className={classes.dynamicPage} style={style} {...passThroughProps}>
       {cloneElement(title, { ref: topHeaderRef, onToggleHeaderContentVisibility })}
       {cloneElement(header, {
         ref: headerContentRef,
