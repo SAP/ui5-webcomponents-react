@@ -1424,7 +1424,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center; padding: 0px; width: 47px;"
+            style="align-items: center; padding: 0px;"
             tabindex="-1"
           >
             <div
@@ -1508,7 +1508,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center; padding: 0px; width: 47px;"
+            style="align-items: center; padding: 0px;"
             tabindex="-1"
           />
           <div
@@ -1550,7 +1550,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center; padding: 0px; width: 47px;"
+            style="align-items: center; padding: 0px;"
             tabindex="-1"
           />
           <div
@@ -1592,7 +1592,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center; padding: 0px; width: 47px;"
+            style="align-items: center; padding: 0px;"
             tabindex="-1"
           />
           <div
@@ -2263,7 +2263,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               aria-colindex="1"
               class="AnalyticalTable-tableCell"
               role="cell"
-              style="align-items: center; padding: 0px; width: 47px;"
+              style="align-items: center; padding: 0px;"
               tabindex="-1"
             >
               <div
@@ -2337,7 +2337,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               aria-colindex="1"
               class="AnalyticalTable-tableCell"
               role="cell"
-              style="align-items: center; padding: 0px; width: 47px;"
+              style="align-items: center; padding: 0px;"
               tabindex="-1"
             />
             <div
@@ -2379,7 +2379,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               aria-colindex="1"
               class="AnalyticalTable-tableCell"
               role="cell"
-              style="align-items: center; padding: 0px; width: 47px;"
+              style="align-items: center; padding: 0px;"
               tabindex="-1"
             />
             <div
@@ -2421,7 +2421,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               aria-colindex="1"
               class="AnalyticalTable-tableCell"
               role="cell"
-              style="align-items: center; padding: 0px; width: 47px;"
+              style="align-items: center; padding: 0px;"
               tabindex="-1"
             />
             <div
@@ -4462,7 +4462,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center; padding: 0px; width: 47px;"
+            style="align-items: center; padding: 0px;"
             tabindex="-1"
           >
             <div
@@ -4543,7 +4543,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center; padding: 0px; width: 47px;"
+            style="align-items: center; padding: 0px;"
             tabindex="-1"
           />
           <div
@@ -4592,7 +4592,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center; padding: 0px; width: 47px;"
+            style="align-items: center; padding: 0px;"
             tabindex="-1"
           />
           <div
@@ -4641,7 +4641,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center; padding: 0px; width: 47px;"
+            style="align-items: center; padding: 0px;"
             tabindex="-1"
           />
           <div

@@ -207,8 +207,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     totalColumnsWidth,
     toggleRowSelected,
     toggleAllRowsSelected,
-    setGroupBy,
-    initialState
+    setGroupBy
   } = useTable(
     {
       columns,
