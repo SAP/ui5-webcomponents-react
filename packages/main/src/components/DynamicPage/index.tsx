@@ -65,7 +65,6 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
     title,
     header,
     contentArea,
-    className,
     tooltip,
     style,
     noHeader = false,
@@ -96,8 +95,13 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
   );
 
   const onToggleHeaderContentVisibility = useCallback(
-    (e) => {
-      const srcElement = e.target;
+    (e, element?) => {
+      let srcElement = e.target;
+
+      if (element) {
+        srcElement = element;
+      }
+
       const shouldHideHeader = srcElement.icon === 'slim-arrow-up';
       if (shouldHideHeader) {
         dynamicPageRef.current.classList.add(classes.headerCollapsed);
@@ -123,9 +127,13 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
     return null;
   };
 
+  const onToggleHeaderContent = (e) => {
+    onToggleHeaderContentVisibility(e, anchorBarRef.current.children.item(0));
+  };
+
   return (
     <div ref={dynamicPageRef} title={tooltip} className={classes.dynamicPage} style={style} {...passThroughProps}>
-      {cloneElement(title, { ref: topHeaderRef, onToggleHeaderContentVisibility })}
+      {cloneElement(title, { ref: topHeaderRef, onToggleHeaderContentVisibility: onToggleHeaderContent })}
       {cloneElement(header, {
         ref: headerContentRef,
         style: { top: noHeader ? 0 : topHeaderHeight },
@@ -141,6 +149,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
       >
         <DynamicPageAnchorBar
           ref={anchorBarRef}
+          style={{ top: '0.025rem' }}
           headerContentPinnable={headerContentPinnable}
           showHideHeaderButton={showHideHeaderButton && !noHeader}
           headerContentHeight={headerContentHeight}

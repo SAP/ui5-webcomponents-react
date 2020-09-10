@@ -10,7 +10,7 @@ export interface DynamicPageHeaderProps extends CommonProps {
   noHeader?: boolean;
   headerPinned?: boolean;
   topHeaderHeight?: number;
-  classes: any;
+  classes?: any;
 }
 
 const DynamicPageHeader: FC<DynamicPageHeaderProps> = forwardRef(

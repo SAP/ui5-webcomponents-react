@@ -105,7 +105,7 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
   );
 
   return (
-    <section style={{ top: '0.025rem' }} role="navigation" className={classes.anchorBarActionButton} ref={ref}>
+    <section style={style} role="navigation" className={classes.anchorBarActionButton} ref={ref}>
       {shouldRenderHideHeaderButton && (
         <Button
           icon={headerContentHeight === 0 ? 'slim-arrow-down' : 'slim-arrow-up'}

@@ -64,7 +64,6 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef(
     const containerClasses = StyleClassHelper.of(classes.container);
 
     containerClasses.putIfPresent(className);
-
     const passThroughProps = usePassThroughHtmlProps(props);
     return (
       <FlexBox
@@ -73,6 +72,7 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef(
         ref={ref}
         data-component-name="DynamicPageTitle"
         {...passThroughProps}
+        onClick={props.onToggleHeaderContentVisibility}
       >
         <div className={classes.breadcrumbs}>{breadcrumbs}</div>
         <FlexBox alignItems={FlexBoxAlignItems.Center} style={{ flexGrow: 1, width: '100%' }}>
