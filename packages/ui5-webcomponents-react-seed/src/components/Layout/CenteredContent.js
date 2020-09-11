@@ -1,17 +1,17 @@
-import React from 'react'
+import React from 'react';
 
 const style = {
   centered: {
     maxWidth: '970px',
     padding: '1rem',
-    margin: '0 auto'
-  }
-}
+    margin: '0 auto',
+  },
+};
 
 export default function CenteredContent({ children }) {
   return (
-    <div data-testid='centered-content' style={style.centered}>
+    <div data-testid="centered-content" style={style.centered}>
       {children}
     </div>
-  )
+  );
 }

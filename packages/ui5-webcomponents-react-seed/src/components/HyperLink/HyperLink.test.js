@@ -12,14 +12,14 @@ describe('Shell.js Test Suite', () => {
   });
 
   test('renders with "test" text', () => {
-    render(<HyperLink text='test' />);
+    render(<HyperLink text="test" />);
     const linkElement = screen.getByText('test');
 
     expect(linkElement).toBeInTheDocument();
   });
 
   test('is Emphasized', () => {
-    render(<HyperLink text='test' />);
+    render(<HyperLink text="test" />);
     const linkElement = screen.getByText('test');
 
     expect(linkElement).toBeInTheDocument();

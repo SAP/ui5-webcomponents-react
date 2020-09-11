@@ -1,4 +1,3 @@
-
 import 'react-app-polyfill/ie11';
 import 'react-app-polyfill/stable';
 import '@ui5/webcomponents-base/dist/features/browsersupport/IE11.js';
@@ -14,6 +13,5 @@ import ReactDOM from 'react-dom';
 
 import './util/i18n';
 import App from './App';
-
 
 ReactDOM.render(<App />, document.getElementById('root'));

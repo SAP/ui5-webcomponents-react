@@ -23,7 +23,7 @@ describe('Shell.js Test Suite', () => {
   });
 
   test('should render with primaryTitle "Test"', () => {
-    render(<Shell title='Test' />);
+    render(<Shell title="Test" />);
 
     const shell = screen.queryAllByTestId('shell-wrapper')[1];
     expect(shell).toBeInTheDocument();

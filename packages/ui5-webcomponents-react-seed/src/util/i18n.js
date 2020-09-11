@@ -13,19 +13,19 @@ i18n
     debug: true,
     keySeparator: false,
     interpolation: {
-      escapeValue: false
+      escapeValue: false,
     },
     resources: {
       en: {
-        translation: translationEN
+        translation: translationEN,
       },
       pt: {
-        translation: translationPT
-      }
+        translation: translationPT,
+      },
     },
     react: {
-      useSuspense: false
-    }
+      useSuspense: false,
+    },
   });
 
 export default i18n;

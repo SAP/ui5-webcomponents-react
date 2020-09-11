@@ -8,7 +8,7 @@ export function useHasAccess(allowedAuthorities, authorityKey) {
     return null;
   }
 
-  return data.data.user[authorityKey].some(permission => allowedAuthorities.includes(permission));
+  return data.data.user[authorityKey].some((permission) => allowedAuthorities.includes(permission));
 }
 
 export function useHasPendableAccess(allowedAuthorities, authorityKey) {
@@ -22,5 +22,5 @@ export function useHasPendableAccess(allowedAuthorities, authorityKey) {
     return false;
   }
 
-  return data.data.user[authorityKey].some(permission => allowedAuthorities.includes(permission));
+  return data.data.user[authorityKey].some((permission) => allowedAuthorities.includes(permission));
 }

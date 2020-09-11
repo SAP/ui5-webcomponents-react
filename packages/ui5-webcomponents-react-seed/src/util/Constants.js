@@ -6,8 +6,8 @@ export default {
       ERROR: 'error',
     },
     KEYS: {
-      GET_USER_LOGGED: 'GET_USER_LOGGED'
-    }
+      GET_USER_LOGGED: 'GET_USER_LOGGED',
+    },
   },
   REQUEST: {
     GET: 'get',
@@ -15,5 +15,5 @@ export default {
     PUT: 'put',
     PATCH: 'patch',
     DELETE: 'delete',
-  }
+  },
 };

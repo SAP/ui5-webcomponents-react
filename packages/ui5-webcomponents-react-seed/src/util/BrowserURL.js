@@ -4,5 +4,5 @@ export default {
   TODO_DETAIL: '/todo/:id/detail',
   NOT_FOUND: '/notFound',
   BUGGY: '/buggy',
-  ANY: '/*'
+  ANY: '/*',
 };

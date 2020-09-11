@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
@@ -11,21 +11,14 @@ export default function TodoList() {
 
   return (
     <>
-      <Helmet title='List - TodoList App' />
-      <HyperLink
-        onClick={() => history.push('/dontexist')}
-        text='Test NotFound Page' />
+      <Helmet title="List - TodoList App" />
+      <HyperLink onClick={() => history.push('/dontexist')} text="Test NotFound Page" />
       <br />
-      <HyperLink
-        onClick={() => history.push(BrowserURL.BUGGY)}
-        text='Test Error Page' />
+      <HyperLink onClick={() => history.push(BrowserURL.BUGGY)} text="Test Error Page" />
       <br />
-      <ComponentValidator
-        allowedAuthorities={['canAccessDropApplication']}
-        authorityKey='permissions'>
-        <HyperLink
-          text='Drop Application (this is a restricted text and you should not see unless you have access)' />
+      <ComponentValidator allowedAuthorities={['canAccessDropApplication']} authorityKey="permissions">
+        <HyperLink text="Drop Application (this is a restricted text and you should not see unless you have access)" />
       </ComponentValidator>
     </>
-  )
+  );
 }

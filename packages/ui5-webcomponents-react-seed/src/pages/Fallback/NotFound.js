@@ -11,11 +11,7 @@ const NotFound = () => {
   return (
     <>
       <Helmet title={t('helmet.title.notfound')} />
-      <Fallback
-        image={notfound}
-        altImage={t('page.notfound.alt')}
-        text={t('page.notfound.text')}
-      />
+      <Fallback image={notfound} altImage={t('page.notfound.alt')} text={t('page.notfound.text')} />
     </>
   );
 };

@@ -3,28 +3,29 @@ module.exports = {
     browser: true,
     node: true,
     es6: true,
-    jest: true
+    jest: true,
   },
-  extends: ['eslint:recommended', 'plugin:react/recommended'],
+  extends: ['eslint:recommended', 'plugin:react/recommended', 'prettier'],
   settings: {
     react: {
-      version: require('./package.json').dependencies.react
-    }
+      version: require('./package.json').dependencies.react,
+    },
   },
   globals: {
     Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly'
+    SharedArrayBuffer: 'readonly',
   },
   parser: 'babel-eslint',
   parserOptions: {
     ecmaFeatures: {
-      jsx: true
+      jsx: true,
     },
     ecmaVersion: 2018,
-    sourceType: 'module'
+    sourceType: 'module',
   },
-  plugins: ['react', 'react-hooks'],
+  plugins: ['react', 'react-hooks', 'prettier'],
   rules: {
+    'prettier/prettier': ['error'],
     indent: [
       'error',
       2,
@@ -36,9 +37,9 @@ module.exports = {
         MemberExpression: 'off',
         ObjectExpression: 'first',
         SwitchCase: 1,
-        ignoredNodes: ['ConditionalExpression']
-      }
+        ignoredNodes: ['ConditionalExpression'],
+      },
     ],
-    'react/prop-types': 0
-  }
+    'react/prop-types': 0,
+  },
 };

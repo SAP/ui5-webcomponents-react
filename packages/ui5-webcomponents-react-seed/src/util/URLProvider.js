@@ -5,9 +5,7 @@ export default {
     const url = ApiURL[key];
 
     if (!url) {
-      throw new Error(
-        'Url defined by Constant: ' + key + ' not found in UrlProvider.js'
-      );
+      throw new Error('Url defined by Constant: ' + key + ' not found in UrlProvider.js');
     }
 
     return url;
@@ -15,5 +13,5 @@ export default {
 
   replace(url, replaceValue, searchValue = ':id') {
     return url.replace(searchValue, replaceValue);
-  }
+  },
 };

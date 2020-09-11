@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from "react-router-dom";
+import { Route } from 'react-router-dom';
 import { useHasPendableAccess } from '../../hooks/useAuthority';
 
 import NotFound from '../../pages/Fallback/NotFound';

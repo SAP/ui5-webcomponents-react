@@ -1,8 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-
 
 import ErrorBoundary from './pages/Fallback/ErrorBoundary';
 import Shell from './components/Shell/Shell';

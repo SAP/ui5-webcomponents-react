@@ -16,7 +16,9 @@ function isSmallerThenSize(setIsMediumScreen, size) {
 export function useIsMediumScreen() {
   const screenSize = 1000;
   const [isMediumScreen, setIsMediumScreen] = useState(getIsMediumScreen(screenSize));
-  useEffect(() => { isSmallerThenSize(setIsMediumScreen, screenSize); }, []);
+  useEffect(() => {
+    isSmallerThenSize(setIsMediumScreen, screenSize);
+  }, []);
 
   return isMediumScreen;
 }
@@ -24,7 +26,9 @@ export function useIsMediumScreen() {
 export function useIsSmallScreen() {
   const screenSize = 600;
   const [isSmallScreen, setIsSmallScreen] = useState(getIsMediumScreen(screenSize));
-  useEffect(() => { isSmallerThenSize(setIsSmallScreen, screenSize); }, []);
+  useEffect(() => {
+    isSmallerThenSize(setIsSmallScreen, screenSize);
+  }, []);
 
   return isSmallScreen;
 }

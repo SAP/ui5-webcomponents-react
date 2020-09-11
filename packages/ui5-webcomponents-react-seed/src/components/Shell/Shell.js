@@ -9,8 +9,8 @@ const style = {
   shell: {
     position: 'fixed',
     width: '100%',
-    zIndex: 100
-  }
+    zIndex: 100,
+  },
 };
 
 const Shell = ({ title, ...props }) => {
@@ -19,15 +19,14 @@ const Shell = ({ title, ...props }) => {
 
   return (
     <ShellBar
-      data-testid='shell-wrapper'
+      data-testid="shell-wrapper"
       style={style.shell}
       onLogoClick={() => history.push(BrowserURL.HOME)}
       primaryTitle={title}
-      logo={
-        <img alt={t('shell.logo.alt')} src="https://sap.github.io/ui5-webcomponents/assets/images/sap-logo-svg.svg" />
-      }
-      {...props} />
+      logo={<img alt={t('shell.logo.alt')} src="https://sap.github.io/ui5-webcomponents/assets/images/sap-logo-svg.svg" />}
+      {...props}
+    />
   );
-}
+};
 
 export default Shell;

@@ -13,12 +13,17 @@ export function isFirefox() {
 
 // Safari 3.0+ "[object HTMLElementConstructor]"
 export function isSafari() {
-  return /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === '[object SafariRemoteNotification]'; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
+  return (
+    /constructor/i.test(window.HTMLElement) ||
+    (function (p) {
+      return p.toString() === '[object SafariRemoteNotification]';
+    })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification))
+  );
 }
 
 // Internet Explorer 6-11
 export function isIE() {
-  return /*@cc_on!@*/false || !!document.documentMode;
+  return /*@cc_on!@*/ false || !!document.documentMode;
 }
 
 // Edge 20+
@@ -33,7 +38,7 @@ export function isChrome() {
 
 // Edge (based on chromium) detection
 export function isEdgeChromium() {
-  return isChrome && (navigator.userAgent.indexOf('Edg') != -1);
+  return isChrome && navigator.userAgent.indexOf('Edg') != -1;
 }
 
 // Blink engine detection
