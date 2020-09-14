@@ -1,0 +1,80 @@
+aliases:
+  - &node_executor
+    executor:
+      name: node/default
+
+  - &release_filter
+    branches:
+      only:
+        - master
+
+  - &pull_request_filter
+    branches:
+      ignore:
+        - master
+
+version: 2.1
+
+orbs:
+  node: circleci/node@1.1.6
+  coveralls: coveralls/coveralls@1.0.6
+
+jobs:
+  test:
+    <<: *node_executor
+    steps:
+      - checkout
+      - node/with-cache:
+          steps:
+            - run: npm run test:coverage
+            - coveralls/upload
+
+  build:
+    <<: *node_executor
+    steps:
+      - checkout
+      - node/with-cache:
+          steps:
+            - run: yarn build
+            - persist_to_workspace:
+                root: ./
+                paths:
+                  - public
+
+  deploy:
+    <<: *node_executor
+    steps:
+      - checkout
+      - node/with-cache:
+          steps:
+            - run: curl -X POST -d {} ${hook}
+
+workflows:
+  version: 2
+
+  pull_request:
+    jobs:
+      - test:
+          filters:
+            <<: *pull_request_filter
+      - build:
+          requires:
+            - test
+          filters:
+            <<: *pull_request_filter
+
+  release:
+    jobs:
+      - test:
+          filters:
+            <<: *release_filter
+      - build:
+          requires:
+            - test
+          filters:
+            <<: *release_filter
+      - deploy:
+          requires:
+            - build
+          filters:
+            <<: *release_filter

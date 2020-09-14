@@ -2,6 +2,8 @@
 
 To deacrease the boostrap time spent on projects which uses **React + UI5 WebComponents React**.
 
+[![Coverage Status](https://coveralls.io/repos/github/LuisValgoi/ui5-webcomponents-react-seed/badge.svg?branch=master)](https://coveralls.io/github/LuisValgoi/ui5-webcomponents-react-seed?branch=master)
+
 # Usage
 
 - open the terminal;
