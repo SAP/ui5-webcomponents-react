@@ -101,7 +101,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run commit:pre",
+      "pre-push": "npm run commit:pre",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "prepare-commit-msg": "exec < /dev/tty && true"
     }
