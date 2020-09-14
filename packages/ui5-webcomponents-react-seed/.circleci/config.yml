@@ -26,7 +26,7 @@ jobs:
       - checkout
       - node/with-cache:
           steps:
-            - run: npm run test:coverage
+            - run: npm install && npm run test:coverage
             - coveralls/upload
 
   build:
