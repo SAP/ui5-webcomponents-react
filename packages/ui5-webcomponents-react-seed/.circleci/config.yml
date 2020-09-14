@@ -1,17 +1,17 @@
 aliases:
   - &node_executor
-    executor:
-      name: node/default
+      executor:
+        name: node/default
 
   - &release_filter
-    branches:
-      only:
-        - master
+      branches:
+        only:
+          - master
 
   - &pull_request_filter
-    branches:
-      ignore:
-        - master
+      branches:
+        ignore:
+          - master
 
 version: 2.1
 
