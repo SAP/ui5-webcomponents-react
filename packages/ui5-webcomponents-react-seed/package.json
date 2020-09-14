@@ -1,6 +1,6 @@
 {
   "name": "cra-template-ui5-webcomponents-react-seed",
-  "version": "1.2.3",
+  "version": "1.2.5",
   "license": "MIT",
   "author": {
     "name": "Luis Valgoi",
@@ -77,8 +77,8 @@
     "test:coverage": "npm run test -- --watchAll=false --coverage",
     "eject": "react-scripts eject",
     "commit:pre": "npm-run-all --parallel test:ci lint",
-    "publish:clean": "rm -rf ./template/src ./template/server ./template/.vscode ./template/public && rm -f ./template/.editorconfig ./template/.env ./template/.eslintignore ./template/.eslintrc.js ./template/commitlint.config.js ./template/PULL_REQUEST_TEMPLATE.md ./template/README.md ./template/webpack.config.js",
-    "publish:copy": "cp -a ./src/. template/src && cp -a ./server/. template/server && cp -a ./.vscode/. template/.vscode && cp -a ./public/. template/public && cp .editorconfig .env .eslintignore .eslintrc.js commitlint.config.js PULL_REQUEST_TEMPLATE.md README.md webpack.config.js template/",
+    "publish:clean": "rm -rf ./template/src ./template/server ./template/.vscode ./template/public && rm -f ./template/.editorconfig ./template/.env ./template/.eslintignore ./template/.eslintrc.js ./template/.prettierrc ./template/commitlint.config.js ./template/PULL_REQUEST_TEMPLATE.md ./template/README.md ./template/webpack.config.js",
+    "publish:copy": "cp -a ./src/. template/src && cp -a ./server/. template/server && cp -a ./.vscode/. template/.vscode && cp -a ./public/. template/public && cp .editorconfig .env .eslintignore .eslintrc.js .prettierrc commitlint.config.js PULL_REQUEST_TEMPLATE.md README.md webpack.config.js template/",
     "publish:prepare": "npm-run-all publish:clean publish:copy"
   },
   "browserslist": {
