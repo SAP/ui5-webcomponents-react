@@ -1,8 +1,24 @@
-# Goal
+<a name="top"></a>
 
-To deacrease the boostrap time spent on projects which uses **React + UI5 WebComponents React**.
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/8363610/93131219-1e36c300-f6aa-11ea-90e6-581d3f8a4491.png" alt="UI5 Web Components for React Seed Logo" />
+</p>
+<p align="center">
+  <a href="https://app.netlify.com/sites/ui5-webcomponents-react-seed/deploys" target="_blank">
+    <img alt="Netlify Status" src="https://api.netlify.com/api/v1/badges/f74e468b-77e5-4acc-b8af-27992ddc5b30/deploy-status">
+  </a>
+  <a href='https://app.circleci.com/pipelines/github/LuisValgoi/ui5-webcomponents-react-seed' target="_blank">
+    <img alt='CircleCI Status' src='https://circleci.com/gh/LuisValgoi/ui5-webcomponents-react-seed.svg?style=shield' />
+  </a>
+  <a href='https://coveralls.io/github/LuisValgoi/ui5-webcomponents-react-seed' target="_blank">
+    <img alt='Coverage Status' src='https://coveralls.io/repos/github/LuisValgoi/ui5-webcomponents-react-seed/badge.svg' />
+  </a>
+  <a href="https://github.com/prettier/prettier" target="_blank">
+    <img alt="code style: prettier" src="https://badgen.net/badge/code%20style/prettier?color=pink">
+  </a>
+</p>
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/f74e468b-77e5-4acc-b8af-27992ddc5b30/deploy-status)](https://app.netlify.com/sites/ui5-webcomponents-react-seed/deploys) [![LuisValgoi](https://circleci.com/gh/LuisValgoi/ui5-webcomponents-react-seed.svg?style=shield)](https://app.circleci.com/pipelines/github/LuisValgoi/ui5-webcomponents-react-seed) [![Coverage Status](https://coveralls.io/repos/github/LuisValgoi/ui5-webcomponents-react-seed/badge.svg?branch=master)](https://coveralls.io/github/LuisValgoi/ui5-webcomponents-react-seed?branch=master) [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+`ui5-webcomponents-react-seed` deacreases the boostrap time spent on new projects, POCs or MVPs which uses **React + UI5 WebComponents React** by leveraging several out-of-the-box components.
 
 # Usage
 
