@@ -15,6 +15,8 @@ import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
 import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJustifyContent';
+import { DefaultLoadingComponent } from './defaults/LoadingComponent';
+import { DefaultNoDataComponent } from './defaults/NoDataComponent';
 
 <Meta
   title="Components / AnalyticalTable"
@@ -99,6 +101,8 @@ import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJusti
     infiniteScrollThreshold: 20,
     subRowsKey: 'subRows',
     isTreeTable: false,
+    NoDataComponent: DefaultNoDataComponent,
+    LoadingComponent: DefaultLoadingComponent,
     scaleWidthMode: TableScaleWidthMode.Default,
     selectionMode: TableSelectionMode.SINGLE_SELECT,
     selectionBehavior: TableSelectionBehavior.ROW,
