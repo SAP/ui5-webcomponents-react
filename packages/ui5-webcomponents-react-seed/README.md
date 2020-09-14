@@ -2,9 +2,7 @@
 
 To deacrease the boostrap time spent on projects which uses **React + UI5 WebComponents React**.
 
-[![Coverage Status](https://coveralls.io/repos/github/LuisValgoi/ui5-webcomponents-react-seed/badge.svg?branch=master)](https://coveralls.io/github/LuisValgoi/ui5-webcomponents-react-seed?branch=master)
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/f74e468b-77e5-4acc-b8af-27992ddc5b30/deploy-status)](https://app.netlify.com/sites/ui5-webcomponents-react-seed/deploys)
+[![Coverage Status](https://coveralls.io/repos/github/LuisValgoi/ui5-webcomponents-react-seed/badge.svg?branch=master)](https://coveralls.io/github/LuisValgoi/ui5-webcomponents-react-seed?branch=master) [![Netlify Status](https://api.netlify.com/api/v1/badges/f74e468b-77e5-4acc-b8af-27992ddc5b30/deploy-status)](https://app.netlify.com/sites/ui5-webcomponents-react-seed/deploys)
 
 # Usage
 
