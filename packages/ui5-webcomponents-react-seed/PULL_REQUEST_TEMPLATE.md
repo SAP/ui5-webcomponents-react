@@ -14,7 +14,7 @@ Are you adding a configuration file?
 
 Are you adding a new feature
 
-- [ ] Have you unpdate the `README.md`?
+- [ ] Have you updated the `README.md`?
 
 ## Testing
 
