@@ -71,6 +71,7 @@
     "mock": "env-cmd -f .env npm-run-all --parallel start:mock start:react",
     "build": "react-scripts build",
     "lint": "eslint --quiet .",
+    "lint:fix": "eslint . --fix",
     "test": "react-scripts test --silent --env=jest-environment-jsdom-sixteen",
     "test:ci": "npm run test -- --watchAll=false",
     "test:coverage": "npm run test -- --watchAll=false --coverage",

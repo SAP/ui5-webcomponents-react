@@ -1,5 +1,5 @@
 # Goal
- 
+
 To deacrease the boostrap time spent on projects which uses **React + UI5 WebComponents React**.
 
 # Usage
@@ -42,7 +42,6 @@ Once you have created your project using the `ui5-webcomponents-react-seed` temp
 
 - Multiple Scripts.
 
-
 # Engine Included
 
 - Fallback Engine (`<ErrorBoundary />`, `<NotFound />` and `<Error />`).
@@ -52,7 +51,6 @@ Once you have created your project using the `ui5-webcomponents-react-seed` temp
 - HTTP Request Engine (w/ `Request` and `URLProvider`).
 
 - Permission Engine (w/ `RouteValidator` and `ComponentValidator`)
-
 
 # Hooks Included
 
@@ -92,7 +90,6 @@ Executes the test runner and generates the report.
 
 Builds the app for production to the `build` folder.
 
-
 # Suggested Extensions
 
 ### [Auto Rename Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag)
@@ -115,6 +112,9 @@ This will help you run and debug your `*.test.js` file during file during test-d
 
 This will help you better see the folders and files icons according to its extensions/subject.
 
+### [prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+
+This will enforces a consistent style by parsing your code and re-printing it with its own rules, wrapping code when necessary.
 
 # Dependencies Included
 
