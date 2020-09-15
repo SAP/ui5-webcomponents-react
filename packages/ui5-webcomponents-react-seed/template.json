@@ -47,11 +47,7 @@
       "lint:fix": "eslint . --fix",
       "prettier": "./node_modules/.bin/prettier --config .prettierrc --check 'src/**/*.js'",
       "prettier:fix": "./node_modules/.bin/prettier --config .prettierrc --write 'src/**/*.js'",
-      "eject": "react-scripts eject",
-      "push:pre": "npm-run-all --parallel test:ci lint prettier",
-      "publish:clean": "rm -rf ./template/src ./template/server ./template/.vscode ./template/public && rm -f ./template/.editorconfig ./template/.env ./template/.eslintignore ./template/.eslintrc.js ./template/.prettierrc ./template/commitlint.config.js ./template/jest.config.json ./template/PULL_REQUEST_TEMPLATE.md ./template/README.md ./template/webpack.config.js",
-      "publish:copy": "cp -a ./src/. template/src && cp -a ./server/. template/server && cp -a ./.vscode/. template/.vscode && cp -a ./public/. template/public && cp .editorconfig .env .eslintignore .eslintrc.js .prettierrc commitlint.config.js jest.config.json PULL_REQUEST_TEMPLATE.md README.md webpack.config.js template/",
-      "publish:prepare": "npm-run-all publish:clean publish:copy"
+      "eject": "react-scripts eject"
     },
     "browserslist": {
       "production": [
