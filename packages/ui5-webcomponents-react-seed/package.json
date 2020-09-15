@@ -1,6 +1,6 @@
 {
   "name": "cra-template-ui5-webcomponents-react-seed",
-  "version": "1.2.7",
+  "version": "1.2.8",
   "license": "MIT",
   "author": {
     "name": "Luis Valgoi",
@@ -62,7 +62,10 @@
     "react-i18next": "^11.7.2",
     "react-query": "^2.17.2",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3"
+    "react-scripts": "3.4.3",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.1.1"
   },
   "scripts": {
     "build": "react-scripts build",
@@ -107,10 +110,5 @@
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "prepare-commit-msg": "exec < /dev/tty && true"
     }
-  },
-  "devDependencies": {
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "prettier": "^2.1.1"
   }
 }
