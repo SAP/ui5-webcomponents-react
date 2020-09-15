@@ -17,7 +17,7 @@ const style = {
   },
   reloadButton: {
     cursor: 'pointer',
-    color: '#0077FF',
+    color: 'var(--sapLinkColor)',
   },
 };
 
