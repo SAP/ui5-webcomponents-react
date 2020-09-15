@@ -16,6 +16,9 @@
   <a href="https://github.com/prettier/prettier" target="_blank">
     <img alt="code style: prettier" src="https://badgen.net/badge/code%20style/prettier?color=pink">
   </a>
+  <a href="https://www.npmjs.com/package/cra-template-ui5-webcomponents-react-seed" target="_blank">
+    <img alt="code style: prettier" src="https://badgen.net/npm/v/cra-template-ui5-webcomponents-react-seed?icon=npm">
+  </a>
 </p>
 
 `ui5-webcomponents-react-seed` deacreases the boostrap time spent on new projects, POCs or MVPs which uses **React + UI5 WebComponents React** by leveraging several out-of-the-box components.
