@@ -65,18 +65,20 @@
     "react-scripts": "3.4.3"
   },
   "scripts": {
+    "build": "react-scripts build",
+    "mock": "env-cmd -f .env npm-run-all --parallel start:mock start:react",
+    "start": "env-cmd -f .env npm-run-all --parallel start:react",
     "start:react": "react-scripts start",
     "start:mock": "nodemon --watch server/data --exec npx json-server --p 3001 server/mockserver.js --routes server/routes.json",
-    "start": "env-cmd -f .env npm-run-all --parallel start:react",
-    "mock": "env-cmd -f .env npm-run-all --parallel start:mock start:react",
-    "build": "react-scripts build",
-    "lint": "eslint --quiet .",
-    "lint:fix": "eslint . --fix",
     "test": "react-scripts test --silent --env=jest-environment-jsdom-sixteen",
     "test:ci": "npm run test -- --watchAll=false",
     "test:coverage": "npm run test -- --watchAll=false --coverage",
+    "lint": "eslint --quiet .",
+    "lint:fix": "eslint . --fix",
+    "prettier": "./node_modules/.bin/prettier --config .prettierrc --check 'src/**/*.js'",
+    "prettier:fix": "./node_modules/.bin/prettier --config .prettierrc --write 'src/**/*.js'",
     "eject": "react-scripts eject",
-    "commit:pre": "npm-run-all --parallel test:ci lint",
+    "push:pre": "npm-run-all --parallel test:ci lint prettier",
     "publish:clean": "rm -rf ./template/src ./template/server ./template/.vscode ./template/public && rm -f ./template/.editorconfig ./template/.env ./template/.eslintignore ./template/.eslintrc.js ./template/.prettierrc ./template/commitlint.config.js ./template/jest.config.json ./template/PULL_REQUEST_TEMPLATE.md ./template/README.md ./template/webpack.config.js",
     "publish:copy": "cp -a ./src/. template/src && cp -a ./server/. template/server && cp -a ./.vscode/. template/.vscode && cp -a ./public/. template/public && cp .editorconfig .env .eslintignore .eslintrc.js .prettierrc commitlint.config.js jest.config.json PULL_REQUEST_TEMPLATE.md README.md webpack.config.js template/",
     "publish:prepare": "npm-run-all publish:clean publish:copy"
@@ -101,7 +103,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "npm run commit:pre",
+      "pre-push": "npm run push:pre",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "prepare-commit-msg": "exec < /dev/tty && true"
     }
