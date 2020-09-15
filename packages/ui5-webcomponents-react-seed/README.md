@@ -87,13 +87,17 @@ Once you have created your project using the `ui5-webcomponents-react-seed` temp
 
 In the project directory, you can run:
 
+## Up & Running
+
 ### `yarn start`
 
-Runs the app in the development mode @ [http://localhost:3000](http://localhost:3000).
+Runs the app in the development mode @ [http://localhost:3000](http://localhost:3000) (⚠️ currently not supported).
 
 ### `yarn mock`
 
 Runs the app in the development mode @ [http://localhost:3001](http://localhost:3000) w/ json-server.
+
+## Testing
 
 ### `yarn test`
 
@@ -106,6 +110,26 @@ Executes the test runner without the interactive watch mode.
 ### `yarn test:coverage`
 
 Executes the test runner and generates the report.
+
+## Checks
+
+### `yarn lint`
+
+Checks all the files of the project according to the `.eslintrc.js` pre stablished configuration.
+
+### `yarn lint:fix`
+
+Fixes all the files of the project according to the `.eslintrc.js` pre stablished configuration.
+
+### `yarn prettier`
+
+Checks all the files of the project according to the `.prettierrc` pre stablished configuration.
+
+### `yarn prettier:fix`
+
+Fixes all the files of the project according to the `.prettierrc` pre stablished configuration.
+
+## Deploy
 
 ### `yarn build`
 
@@ -125,7 +149,7 @@ This will help you to use the defined coding style at the `.editoronfig` file du
 
 This will help you to use the defined coding style at the `.eslintrc` file during development.
 
-### [Jest](https://marketplace.visualstudio.com/items?itemName=Orta.vscode-jest#the-aim) & [Jest Runner](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+### [Jest](https://marketplace.visualstudio.com/items?itemName=Orta.vscode-jest) & [Jest Runner](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 
 This will help you run and debug your `*.test.js` file during file during test-development.
 
