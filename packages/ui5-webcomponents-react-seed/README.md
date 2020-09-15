@@ -21,7 +21,7 @@
   </a>
 </p>
 
-`ui5-webcomponents-react-seed` deacreases the boostrap time spent on new projects, POCs or MVPs which uses **React + UI5 WebComponents React** by leveraging several out-of-the-box components.
+`ui5-webcomponents-react-seed` deacreases the boostrap time spent on new projects, POCs or MVPs which uses **React + UI5 WebComponents React** by leveraging several out-of-the-box components, scripts & configurations.
 
 # Usage
 
