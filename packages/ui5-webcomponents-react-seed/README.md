@@ -26,9 +26,8 @@
 # Usage
 
 - open the terminal;
-- go to a random folder you want;
-- `npx create-react-app folderrr --template ui5-webcomponents-react-seed`;
-- cd into `folderrr`;
+- `npx create-react-app PROJECT_NAME --template ui5-webcomponents-react-seed`;
+- cd into `PROJECT_NAME`;
 - (no need to run `yarn install` since it already installs it for you);
 - run `yarn test:ci` or any other;
 - have fun with the other scripts;
@@ -38,8 +37,6 @@ PS.: It is important to add the `--template ui5-webcomponents-react-seed` at the
 # Getting Started
 
 Once you have created your project using the `ui5-webcomponents-react-seed` template, you can start by:
-
-- `yarn install`: To install this project dependencies.
 
 - `yarn mock`: To run this project with json-server.
 

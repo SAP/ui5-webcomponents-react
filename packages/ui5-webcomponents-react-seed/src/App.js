@@ -10,6 +10,12 @@ import Routes from './routes/Routes';
 import './App.css';
 import CenteredContent from './components/Layout/CenteredContent';
 
+const style = {
+  emptySpace: {
+    paddingTop: '44px',
+  },
+};
+
 function App() {
   const { t } = useTranslation();
 
@@ -17,7 +23,7 @@ function App() {
     <BrowserRouter>
       <Helmet title={t('helmet.title.app')} />
       <Shell title={t('shell.title')} />
-      <div style={{ paddingTop: '44px' }} />
+      <div style={style.emptySpace} />
       <ErrorBoundary>
         <CenteredContent>
           <Routes />

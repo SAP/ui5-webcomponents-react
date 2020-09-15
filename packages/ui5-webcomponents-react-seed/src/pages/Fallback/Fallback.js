@@ -15,6 +15,10 @@ const style = {
   image: {
     width: '30%',
   },
+  reloadButton: {
+    cursor: 'pointer',
+    color: '#0077FF',
+  },
 };
 
 const Fallback = ({ image, altImage, text, reload }) => {
@@ -25,7 +29,7 @@ const Fallback = ({ image, altImage, text, reload }) => {
       <img src={image} style={style.image} alt={altImage} />
       <h3 className="text-center">{text}</h3>
       {reload && (
-        <a style={{ cursor: 'pointer', color: '#0077FF' }} href={BrowserURL.HOME} target="_self">
+        <a style={style.reloadButton} href={BrowserURL.HOME} target="_self">
           {t('page.fallback.reload.text')}
         </a>
       )}
