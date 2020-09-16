@@ -86,7 +86,6 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
     headerPinned,
     setHeaderPinned,
     onToggleHeaderContentVisibility,
-    className,
     onHoverToggleButton,
     style
   } = props;

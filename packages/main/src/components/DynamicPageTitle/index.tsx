@@ -1,14 +1,6 @@
 import { createComponentStyles, StyleClassHelper, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base';
 import React, { FC, forwardRef, ReactElement, ReactNode, ReactNodeArray, Ref } from 'react';
-import {
-  FlexBox,
-  FlexBoxAlignItems,
-  Toolbar,
-  ToolbarDesign,
-  ToolbarSeparator,
-  ToolbarSpacer,
-  ToolbarStyle
-} from '../..';
+import { FlexBox, FlexBoxAlignItems, Toolbar, ToolbarSpacer, ToolbarStyle } from '../..';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { BreadcrumbsPropTypes } from '../Breadcrumbs';
 import { DynamicPageTitleStyles } from './DynamicPageTitle.jss';

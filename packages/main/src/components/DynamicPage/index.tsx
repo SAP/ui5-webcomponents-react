@@ -71,7 +71,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
     noHeader = false,
     showHideHeaderButton = true,
     headerContentPinnable = true,
-    alwaysShowContentHeader
+    alwaysShowContentHeader = false
   } = props;
   const passThroughProps = usePassThroughHtmlProps(props);
 
@@ -101,7 +101,6 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
       if (element) {
         srcElement = element;
       }
-
       const shouldHideHeader = srcElement.icon === 'slim-arrow-up';
       if (shouldHideHeader) {
         dynamicPageRef.current.classList.add(classes.headerCollapsed);
@@ -114,30 +113,28 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
           headerContentRef.current.style.top = `${topHeaderHeight}px`;
           dynamicPageRef.current.addEventListener(
             'scroll',
-            (e) => {
-              headerContentRef.current.style.removeProperty('top');
+            () => {
+              if (!anchorBarRef?.current?.children?.[1]?.attributes?.[6]) {
+                headerContentRef.current.style.removeProperty('top');
+              }
             },
             { once: true }
           );
         }
       });
     },
-    [dynamicPageRef, classes.headerCollapsed, headerContentHeight, topHeaderHeight]
+    [dynamicPageRef, classes.headerCollapsed, headerContentHeight, topHeaderHeight, headerPinned]
   );
 
-  let mouseOut = true;
   const onHoverToggleButton = (e) => {
-    if (e && mouseOut) {
+    if (e && e.type === 'mouseover') {
       // TODO background color should be sapObjectHeader_Hover_Background (same color as sapTile_Active_Background)
       topHeaderRef.current.style.backgroundColor = ThemingParameters.sapTile_Active_Background;
-      topHeaderRef.current.style.borderBottom = `solid 0.0625rem ${ThemingParameters.sapObjectHeader_BorderColor}`;
-      mouseOut = false;
+      // topHeaderRef.current.style.borderBottom = `solid 0.0625rem ${ThemingParameters.sapObjectHeader_BorderColor}`;
     } else {
       topHeaderRef.current.style.backgroundColor = null;
-      topHeaderRef.current.style.borderBottom = null;
-      mouseOut = true;
+      // topHeaderRef.current.style.borderBottom = `solid 0rem ${ThemingParameters.sapObjectHeader_BorderColor}`;
     }
-    return null;
   };
 
   const onToggleHeaderContent = (e) => {

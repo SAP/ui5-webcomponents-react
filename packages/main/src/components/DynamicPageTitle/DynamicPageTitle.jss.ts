@@ -17,8 +17,8 @@ export const DynamicPageTitleStyles = {
     zIndex: 2,
     '&:hover': {
       // TODO background color should be sapObjectHeader_Hover_Background (same color as sapTile_Active_Background)
-      backgroundColor: ThemingParameters.sapTile_Active_Background,
-      borderBottom: `solid 0.0625rem ${ThemingParameters.sapObjectHeader_BorderColor}`
+      backgroundColor: ThemingParameters.sapTile_Active_Background
+      // borderBottom: `solid 0.0625rem ${ThemingParameters.sapObjectHeader_BorderColor}`
     }
   },
   breadcrumbs: {
