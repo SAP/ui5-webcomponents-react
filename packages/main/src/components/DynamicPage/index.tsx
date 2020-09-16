@@ -12,14 +12,14 @@ import React, {
   RefObject,
   useRef,
   useCallback,
-  useState
+  useState,
+  useEffect
 } from 'react';
-import { Badge, Breadcrumbs, Button, ButtonDesign, FlexBox, Label, Link, PageBackgroundDesign, Title } from '../..';
+import { FlexBox, PageBackgroundDesign } from '../..';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar/DynamicPageAnchorBar';
 import { useObserveHeights } from '../ObjectPage/useObserveHeights';
 import styles from './DynamicPage.jss';
-import { DynamicPageTitle } from '../DynamicPageTitle';
 
 export interface DynamicPageProps extends CommonProps {
   /**
@@ -56,7 +56,7 @@ export interface DynamicPageProps extends CommonProps {
 
   contentArea?: ReactElement;
 
-  children: ReactNode | ReactNodeArray;
+  children?: ReactNode | ReactNodeArray;
 
   footer?: ReactElement;
 }
@@ -98,7 +98,6 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
   const onToggleHeaderContentVisibility = useCallback(
     (e, element?) => {
       let srcElement = e.target;
-
       if (element) {
         srcElement = element;
       }
@@ -109,8 +108,21 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
       } else {
         dynamicPageRef.current.classList.remove(classes.headerCollapsed);
       }
+
+      requestAnimationFrame(() => {
+        if (dynamicPageRef.current.scrollTop > 0 && !shouldHideHeader) {
+          headerContentRef.current.style.top = `${topHeaderHeight}px`;
+          dynamicPageRef.current.addEventListener(
+            'scroll',
+            (e) => {
+              headerContentRef.current.style.removeProperty('top');
+            },
+            { once: true }
+          );
+        }
+      });
     },
-    [dynamicPageRef, classes.headerCollapsed]
+    [dynamicPageRef, classes.headerCollapsed, headerContentHeight, topHeaderHeight]
   );
 
   let mouseOut = true;

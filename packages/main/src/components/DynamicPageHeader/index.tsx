@@ -1,8 +1,7 @@
-import { CommonProps } from '../../interfaces/CommonProps';
-import { createComponentStyles, StyleClassHelper, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base';
-import { DynamicPageHeaderStyles } from './DynamicPageHeader.jss';
-import React, { CSSProperties, FC, forwardRef, ReactNode, Ref, useCallback, useMemo } from 'react';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base';
+import React, { CSSProperties, FC, forwardRef, ReactNode, Ref, useMemo } from 'react';
 import { FlexBox, FlexBoxAlignItems } from '../..';
+import { CommonProps } from '../../interfaces/CommonProps';
 
 export interface DynamicPageHeaderProps extends CommonProps {
   headerContent?: ReactNode;
@@ -15,7 +14,7 @@ export interface DynamicPageHeaderProps extends CommonProps {
 
 const DynamicPageHeader: FC<DynamicPageHeaderProps> = forwardRef(
   (props: DynamicPageHeaderProps, ref: Ref<HTMLDivElement>) => {
-    const { headerContent, style, headerPinned, topHeaderHeight, classes } = props;
+    const { headerContent, headerPinned, topHeaderHeight, classes } = props;
 
     const passThroughProps = usePassThroughHtmlProps(props);
 

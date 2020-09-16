@@ -48,7 +48,7 @@ export interface DynamicPageTitleProps extends CommonProps {
    *
    */
   navigationActions?: ReactElement | ReactElement[];
-  onToggleHeaderContentVisibility: (e: any) => boolean;
+  onToggleHeaderContentVisibility?: (e: any) => boolean;
 }
 
 const useStyles = createComponentStyles(DynamicPageTitleStyles, { name: 'DynamicPageTitle' });
