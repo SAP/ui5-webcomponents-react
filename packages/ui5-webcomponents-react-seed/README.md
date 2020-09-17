@@ -29,18 +29,9 @@
 - `npx create-react-app PROJECT_NAME --template ui5-webcomponents-react-seed`;
 - cd into `PROJECT_NAME`;
 - (no need to run `yarn install` since it already installs it for you);
-- run `yarn test:ci` or any other;
-- have fun with the other scripts;
+- run the available scripts;
 
 PS.: It is important to add the `--template ui5-webcomponents-react-seed` at the end to get our template.
-
-# Getting Started
-
-Once you have created your project using the `ui5-webcomponents-react-seed` template, you can start by:
-
-- `yarn mock`: To run this project with json-server.
-
-- `yarn start`: To run this project with backend (⚠️ currently not supported).
 
 # Configuration Included
 
@@ -71,10 +62,6 @@ Once you have created your project using the `ui5-webcomponents-react-seed` temp
 - Permission Engine (w/ `RouteValidator` and `ComponentValidator`)
 
 # Hooks Included
-
-- `useBrowser`: Which identifies the user browser.
-
-- `useIsMobile`: Which identifies the user device perspective.
 
 - `useRequest`: Which includes `get`, `post`, `patch`, `delete`, `put` HTTP helpers.
 
@@ -181,6 +168,10 @@ Used to translate strings and text in the application following the Internationa
 ### `i18next-browser-languagedetector`
 
 Used to identify the browsers culture and change the applications text accordingly.
+
+### `react-device-detect``
+
+Used to identify the device, browser, ratios and etc.
 
 ### `commitlint`
 
