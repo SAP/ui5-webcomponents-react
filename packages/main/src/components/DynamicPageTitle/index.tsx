@@ -40,6 +40,9 @@ export interface DynamicPageTitleProps extends CommonProps {
    *
    */
   navigationActions?: ReactElement | ReactElement[];
+  /**
+   * The onToggleHeaderContentVisibility show or hide the header section
+   */
   onToggleHeaderContentVisibility?: (e: any) => boolean;
 }
 
