@@ -228,6 +228,8 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
     return Children.toArray(children) as unknown[];
   }, [toggledFilters, children]);
 
+  const prevChildren = useRef({});
+
   const renderChildren = useCallback(() => {
     const childProps = { considerGroupName, inFB: true } as any;
     return safeChildren()
@@ -252,10 +254,28 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
             filterItemProps = filterValue(dialogItemRef, child);
           }
         }
-        if (!child.props.children)
+        if (!child.props.children) {
           return cloneElement(child as ReactElement<any>, {
             ...childProps
           });
+        }
+        if (
+          prevChildren.current?.[child.key] &&
+          //Input
+          (child.props.children?.props?.value !== prevChildren.current?.[child.key]?.value ||
+            //Combobox
+            child.props.children?.props?.filterValue !== prevChildren.current?.[child.key]?.filterValue ||
+            //Checkbox
+            child.props.children?.props?.checked !== prevChildren.current?.[child.key]?.checked ||
+            //Selectable
+            child.props.children?.props?.children?.map((item) => item.props.selected).join(',') !==
+              prevChildren?.current?.[child.key]?.children?.map((item) => item.props.selected).join(','))
+        ) {
+          const { [child.key]: omit, ...rest } = dialogRefs;
+          setDialogRefs(rest);
+        }
+        prevChildren.current[child.key] = child.props.children.props;
+
         return cloneElement(child as ReactElement<any>, {
           ...childProps,
           children: {
