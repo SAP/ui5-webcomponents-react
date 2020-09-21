@@ -86,7 +86,6 @@ FilterGroupItem.displayName = 'FilterGroupItem';
 FilterGroupItem.defaultProps = {
   groupName: 'default',
   visible: true,
-  visibleInFilterBar: true,
   required: false,
   label: ''
 };
