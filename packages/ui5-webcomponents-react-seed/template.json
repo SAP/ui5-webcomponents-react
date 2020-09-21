@@ -36,8 +36,8 @@
     },
     "scripts": {
       "build": "react-scripts build",
-      "mock": "env-cmd -f .env npm-run-all --parallel start:mock start:react",
-      "start": "env-cmd -f .env npm-run-all --parallel start:react",
+      "mock": "env-cmd -f .env.development npm-run-all --parallel start:mock start:react",
+      "start": "env-cmd -f .env.production npm-run-all --parallel start:react",
       "start:react": "react-scripts start",
       "start:mock": "nodemon --watch server/data --exec npx json-server --p 3001 server/mockserver.js --routes server/routes.json",
       "test": "react-scripts test --silent --env=jest-environment-jsdom-sixteen",
