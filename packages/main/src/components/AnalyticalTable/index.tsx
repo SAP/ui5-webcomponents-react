@@ -97,6 +97,14 @@ export interface TableProps extends CommonProps {
   groupBy?: string[];
   selectionBehavior?: TableSelectionBehavior;
   selectionMode?: TableSelectionMode;
+  /**
+   * Defines the column growing behaviour. Possible Values:
+   *
+   * - **Default**: Every column without fixed width gets the maximum available space of the table.
+   * - **Smart**: Every column gets the space it needs for displaying the full header text. If all headers need more space than the available table width, horizontal scrolling will be enabled. If there is space left, columns with a long content will get more space until there is no more table space left.
+   * - **Grow**: Every column gets the space it needs for displaying it's full header text and full content of all cells. If it requires more space than the table has, horizontal scrolling will be enabled.
+   *
+   */
   scaleWidthMode?: TableScaleWidthMode;
   columnOrder?: string[];
   infiniteScroll?: boolean;
@@ -113,7 +121,7 @@ export interface TableProps extends CommonProps {
   /**
    * Additional options which will be passed to [react-table´s useTable hook](https://react-table.tanstack.com/docs/api/useTable#table-options)
    */
-  reactTableOptions?: object;
+  reactTableOptions?: Record<string, unknown>;
   tableHooks?: PluginHook<any>[];
   subRowsKey?: string;
   /**
