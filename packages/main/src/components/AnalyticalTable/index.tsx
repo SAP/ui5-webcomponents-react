@@ -102,7 +102,7 @@ export interface TableProps extends CommonProps {
    *
    * - **Default**: Every column without fixed width gets the maximum available space of the table.
    * - **Smart**: Every column gets the space it needs for displaying the full header text. If all headers need more space than the available table width, horizontal scrolling will be enabled. If there is space left, columns with a long content will get more space until there is no more table space left.
-   * - **Grow**: Every column gets the space it needs for displaying it's full header text and full content of all cells. If it requires more space than the table has, horizontal scrolling will be enabled.
+   * - **Grow**: Every column gets the space it needs for displaying its full header text and full content of all cells. If it requires more space than the table has, horizontal scrolling will be enabled.
    *
    */
   scaleWidthMode?: TableScaleWidthMode;
@@ -290,17 +290,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   }, [groupBy, setGroupBy]);
 
   useEffect(() => {
-    toggleAllRowsSelected(false);
-    const validChars = /^\d+(\.\d+)*$/;
-    // eslint-disable-next-line guard-for-in
-    for (const row in selectedRowIds) {
-      if (reactTableOptions?.getRowId) {
-        toggleRowSelected(row, selectedRowIds[row]);
-      } else if (validChars.test(row)) {
-        toggleRowSelected(row, selectedRowIds[row]);
-      }
-    }
-  }, [toggleRowSelected, toggleAllRowsSelected, selectedRowIds, reactTableOptions?.getRowId]);
+    dispatch({ type: 'SET_SELECTED_ROW_IDS', payload: { selectedRowIds } });
+  }, [selectedRowIds]);
 
   const calcRowHeight = parseInt(
     getComputedStyle(tableRef.current ?? document.body).getPropertyValue('--sapWcrAnalyticalTableRowHeight') || '44'
