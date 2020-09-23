@@ -1,4 +1,4 @@
-import { ThemingParameters } from '@ui5/webcomponents-react-base';
+import { StyleClassHelper, ThemingParameters } from '@ui5/webcomponents-react-base';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { useConsolidatedRef, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/hooks';
 import React, {
@@ -15,7 +15,10 @@ import React, {
   useState,
   useEffect
 } from 'react';
-import { FlexBox, PageBackgroundDesign } from '../..';
+import { PageBackgroundDesign } from '../..';
+import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
+import { GlobalStyleClasses } from '@ui5/webcomponents-react/lib/GlobalStyleClasses';
+
 import { CommonProps } from '../../interfaces/CommonProps';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar/DynamicPageAnchorBar';
 import { useObserveHeights } from '../ObjectPage/useObserveHeights';
@@ -77,6 +80,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
 
   const useStyles = createComponentStyles(styles, { name: 'DynamicPage' });
   const classes = useStyles();
+  const dynamicPageClasses = StyleClassHelper.of(classes.dynamicPage, GlobalStyleClasses.sapScrollBar);
 
   const anchorBarRef: RefObject<HTMLDivElement> = useRef();
   const dynamicPageRef: RefObject<HTMLDivElement> = useConsolidatedRef(ref);
@@ -150,7 +154,13 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
   }, [headerPinned]);
 
   return (
-    <div ref={dynamicPageRef} title={tooltip} className={classes.dynamicPage} style={style} {...passThroughProps}>
+    <div
+      ref={dynamicPageRef}
+      title={tooltip}
+      className={dynamicPageClasses.toString()}
+      style={style}
+      {...passThroughProps}
+    >
       {cloneElement(title, { ref: topHeaderRef, onToggleHeaderContentVisibility: onToggleHeaderContent })}
       {cloneElement(header, {
         ref: headerContentRef,
