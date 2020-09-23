@@ -173,11 +173,11 @@ Used to translate strings and text in the application following the Internationa
 
 Used to identify the browsers culture and change the applications text accordingly.
 
-### `react-device-detect``
+### `react-device-detect`
 
 Used to identify the device, browser, ratios and etc.
 
-### `react-query-devtools``
+### `react-query-devtools`
 
 Used to help developers during the React Query information flow.
 
