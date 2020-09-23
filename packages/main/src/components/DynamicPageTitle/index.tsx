@@ -1,6 +1,10 @@
 import { createComponentStyles, StyleClassHelper, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base';
+import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
+import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
+import { Toolbar } from '@ui5/webcomponents-react/lib/Toolbar';
+import { ToolbarSpacer } from '@ui5/webcomponents-react/lib/ToolbarSpacer';
+import { ToolbarStyle } from '@ui5/webcomponents-react/lib/ToolbarStyle';
 import React, { FC, forwardRef, ReactElement, ReactNode, ReactNodeArray, Ref } from 'react';
-import { FlexBox, FlexBoxAlignItems, Toolbar, ToolbarSpacer, ToolbarStyle } from '../..';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { BreadcrumbsPropTypes } from '../Breadcrumbs';
 import { DynamicPageTitleStyles } from './DynamicPageTitle.jss';
@@ -85,11 +89,11 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef(
             <div className={classes.content}>
               <Toolbar toolbarStyle={ToolbarStyle.Clear}>{children}</Toolbar>
             </div>
-            <Toolbar className={classes.actions} toolbarStyle={ToolbarStyle.Clear}>
-              {actions}
-            </Toolbar>
           </FlexBox>
-          <Toolbar className={classes.navigationActions} toolbarStyle={ToolbarStyle.Clear}>
+          <Toolbar className={classes.actions} toolbarStyle={ToolbarStyle.Clear}>
+            {actions}
+          </Toolbar>
+          <Toolbar toolbarStyle={ToolbarStyle.Clear}>
             <ToolbarSpacer />
             {navigationActions}
           </Toolbar>
