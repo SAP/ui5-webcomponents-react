@@ -5,6 +5,8 @@ export const stateReducer = (newState, action) => {
       return { ...newState, tableClientWidth: payload.tableClientWidth };
     case 'TABLE_SCROLLING_ENABLED':
       return { ...newState, isScrollable: payload.isScrollable };
+    case 'SET_SELECTED_ROW_IDS':
+      return { ...newState, selectedRowIds: payload.selectedRowIds };
     default:
       return newState;
   }
