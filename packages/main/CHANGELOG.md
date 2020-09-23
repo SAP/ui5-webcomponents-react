@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.9](https://github.com/SAP/ui5-webcomponents-react/compare/v0.10.8...v0.10.9) (2020-09-23)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** only apply selectedRowIds prop if its value has changed ([#685](https://github.com/SAP/ui5-webcomponents-react/issues/685)) ([8278f4b](https://github.com/SAP/ui5-webcomponents-react/commit/8278f4b4e9228c0748a68a7464178eadf41fec21))
+* **AnalyticalTable:** prevent an error in the storybook if loading prop was toggled  ([#679](https://github.com/SAP/ui5-webcomponents-react/issues/679)) ([296d75b](https://github.com/SAP/ui5-webcomponents-react/commit/296d75be01ecdaff5ed4533fa0d0bac897507dc5))
+* **AnalyticalTable:** selectedRowIds can contain more than one digit per segment ([#672](https://github.com/SAP/ui5-webcomponents-react/issues/672)) ([6882524](https://github.com/SAP/ui5-webcomponents-react/commit/6882524e57aa66b9d20537458cc1884a34ced3e2))
+* **FilterBar:** Add missing onFiltersDialogSave event properties and fix manually controlled visibleInFilterBar prop  ([#682](https://github.com/SAP/ui5-webcomponents-react/issues/682)) ([95a1078](https://github.com/SAP/ui5-webcomponents-react/commit/95a10785cd877168f3d7401bb2eae3d4797ac4ad))
+* **FilterBar:** after opening the filters-dialog, enable manual control of filters again ([#683](https://github.com/SAP/ui5-webcomponents-react/issues/683)) ([5727165](https://github.com/SAP/ui5-webcomponents-react/commit/5727165e945a1cd2a240cf620a0339513faed519))
+
+
+
+
+
 ## [0.10.8](https://github.com/SAP/ui5-webcomponents-react/compare/v0.10.7...v0.10.8) (2020-09-02)
 
 
