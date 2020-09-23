@@ -6,7 +6,8 @@ export default {
       ERROR: 'error',
     },
     KEYS: {
-      GET_USER_LOGGED: 'GET_USER_LOGGED',
+      RQ_GET_USER_LOGGED: 'RQ_GET_USER_LOGGED',
+      RQ_GET_TODO_LIST: 'RQ_GET_TODO_LIST',
     },
   },
 };

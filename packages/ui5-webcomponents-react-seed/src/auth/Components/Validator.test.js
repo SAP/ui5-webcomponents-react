@@ -3,19 +3,16 @@ import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 import { render, waitFor, screen, serverCustom } from '../../util/TestSetup';
 import ComponentValidator from './Validator';
-import Constants from '../../util/Constants';
 import ApiURL from '../../util/ApiURL';
 
 describe('Validator.js Test Suite', () => {
   const GET_USER_LOGGED_RESPONSE = {
-    user: {
-      id: 'UG9rZW1vbjowMDE=',
-      name: 'testeeeeeeeeeeeeeeeee',
-      permissions: ['canAccessTodoListPage', 'canAccessTodoEditPage', 'canAccessDropApplication'],
-    },
+    id: 'UG9rZW1vbjowMDE=',
+    name: 'testeeeeeeeeeeeeeeeee',
+    permissions: ['canAccessTodoListPage', 'canAccessTodoEditPage', 'canAccessDropApplication'],
   };
 
-  const server = serverCustom(ApiURL.GET_USER_LOGGED, GET_USER_LOGGED_RESPONSE, Constants.REACT_QUERY.CODES.SUCCESS);
+  const server = serverCustom(ApiURL.GET_USER_LOGGED, GET_USER_LOGGED_RESPONSE);
 
   beforeAll(() => server.listen());
   afterEach(() => server.resetHandlers());

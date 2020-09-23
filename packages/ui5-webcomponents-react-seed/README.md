@@ -61,6 +61,8 @@ PS.: It is important to add the `--template ui5-webcomponents-react-seed` at the
 
 - Permission Engine (w/ `RouteValidator` and `ComponentValidator`).
 
+- Pagination Engine (w/ custom hook `usePaginatedGet`).
+
 # Hooks Included
 
 - `useRequest`: Which includes `get`, `post`, `patch`, `delete`, `put` HTTP helpers;
@@ -174,6 +176,10 @@ Used to identify the browsers culture and change the applications text according
 ### `react-device-detect``
 
 Used to identify the device, browser, ratios and etc.
+
+### `react-query-devtools``
+
+Used to help developers during the React Query information flow.
 
 ### `commitlint`
 

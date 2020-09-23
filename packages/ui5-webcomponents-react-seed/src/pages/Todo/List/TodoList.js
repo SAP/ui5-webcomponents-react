@@ -6,6 +6,7 @@ import { MobileView, BrowserView, IEView, isMobile, isTablet, isDesktop, isIE, i
 import HyperLink from '../../../components/HyperLink/HyperLink';
 import BrowserURL from '../../../util/BrowserURL';
 import ComponentValidator from '../../../auth/Components/Validator';
+import TodoListPagination from './TodoListPagination';
 
 export default function TodoList() {
   const history = useHistory();
@@ -42,6 +43,9 @@ export default function TodoList() {
       <p>{isChrome ? 'This Text is rendered only for CHROME' : 'This Text is rendered only when is NOT CHROME'}</p>
       <p>{isIE ? 'This Text is rendered only for IE' : 'This Text is rendered only when is NOT IE'}</p>
       <p>{isOpera ? 'This Text is rendered only for OPERA' : 'This Text is rendered only when is NOT OPERA'}</p>
+
+      <h1>Pagination</h1>
+      <TodoListPagination />
     </>
   );
 }

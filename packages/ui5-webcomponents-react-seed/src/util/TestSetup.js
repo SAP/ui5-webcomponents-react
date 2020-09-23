@@ -22,10 +22,10 @@ const render = (ui, { route = BrowserURL.HOME, ...renderOptions } = {}) => {
   return rtlRender(ui, { wrapper: WrapperProvider, ...renderOptions });
 };
 
-const serverCustom = (apiUrl, data, status) => {
+const serverCustom = (apiUrl, data) => {
   return setupServer(
     rest.get(`*${apiUrl}`, (req, res, ctx) => {
-      return res(ctx.json({ data: data, status: status }));
+      return res(ctx.json(data));
     }),
   );
 };
