@@ -1,10 +1,15 @@
-import { createComponentStyles, StyleClassHelper, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base';
+import {
+  createComponentStyles,
+  StyleClassHelper,
+  ThemingParameters,
+  usePassThroughHtmlProps
+} from '@ui5/webcomponents-react-base';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
 import { Toolbar } from '@ui5/webcomponents-react/lib/Toolbar';
 import { ToolbarSpacer } from '@ui5/webcomponents-react/lib/ToolbarSpacer';
 import { ToolbarStyle } from '@ui5/webcomponents-react/lib/ToolbarStyle';
-import React, { FC, forwardRef, ReactElement, ReactNode, ReactNodeArray, Ref } from 'react';
+import React, { FC, forwardRef, ReactElement, ReactNode, ReactNodeArray, Ref, useEffect } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { BreadcrumbsPropTypes } from '../Breadcrumbs';
 import { DynamicPageTitleStyles } from './DynamicPageTitle.jss';
@@ -48,6 +53,7 @@ export interface DynamicPageTitleProps extends CommonProps {
    * The onToggleHeaderContentVisibility show or hide the header section
    */
   onToggleHeaderContentVisibility?: (e: any) => boolean;
+  headerVisible: boolean;
 }
 
 const useStyles = createComponentStyles(DynamicPageTitleStyles, { name: 'DynamicPageTitle' });
@@ -62,6 +68,7 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef(
       heading,
       subHeading,
       navigationActions,
+      headerVisible,
       className,
       style
     } = props;
@@ -72,6 +79,15 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef(
 
     containerClasses.putIfPresent(className);
     const passThroughProps = usePassThroughHtmlProps(props);
+
+    useEffect(() => {
+      if (headerVisible) {
+        ref.current.style.boxShadow = null;
+      } else {
+        ref.current.style.boxShadow = ThemingParameters.sapContent_HeaderShadow;
+      }
+    }, [headerVisible]);
+
     return (
       <FlexBox
         style={style}

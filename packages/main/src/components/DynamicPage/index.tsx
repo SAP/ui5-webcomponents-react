@@ -89,6 +89,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
   const contentAreaRef: RefObject<HTMLDivElement> = useRef();
 
   const [headerPinned, setHeaderPinned] = useState(alwaysShowContentHeader);
+  const [headerVisible, setHeaderVisible] = useState(true);
 
   // observe heights of header parts
   const { topHeaderHeight, headerContentHeight, anchorBarHeight, totalHeaderHeight } = useObserveHeights(
@@ -109,8 +110,10 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
       if (shouldHideHeader) {
         dynamicPageRef.current.classList.add(classes.headerCollapsed);
         setHeaderPinned(false);
+        setHeaderVisible(false);
       } else {
         dynamicPageRef.current.classList.remove(classes.headerCollapsed);
+        setHeaderVisible(true);
       }
       requestAnimationFrame(() => {
         if (dynamicPageRef.current.scrollTop > 0 && !shouldHideHeader) {
@@ -147,6 +150,23 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
     }
   };
 
+  let currentIcon = 'slim-arrow-up';
+  dynamicPageRef.current?.addEventListener('scroll', () => {
+    if (
+      anchorBarRef.current?.children?.[0].icon === 'slim-arrow-up' &&
+      anchorBarRef.current?.children?.[0].icon !== currentIcon
+    ) {
+      setHeaderVisible(true);
+      currentIcon = 'slim-arrow-up';
+    } else if (
+      anchorBarRef.current?.children?.[0].icon === 'slim-arrow-down' &&
+      anchorBarRef.current?.children?.[0].icon !== currentIcon
+    ) {
+      setHeaderVisible(false);
+      currentIcon = 'slim-arrow-down';
+    }
+  });
+
   useEffect(() => {
     if (headerPinned === true) {
       anchorBarRef.current.style.top = '0.025rem';
@@ -161,7 +181,11 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
       style={style}
       {...passThroughProps}
     >
-      {cloneElement(title, { ref: topHeaderRef, onToggleHeaderContentVisibility: onToggleHeaderContent })}
+      {cloneElement(title, {
+        ref: topHeaderRef,
+        headerVisible,
+        onToggleHeaderContentVisibility: onToggleHeaderContent
+      })}
       {cloneElement(header, {
         ref: headerContentRef,
         style: { top: noHeader ? 0 : topHeaderHeight },

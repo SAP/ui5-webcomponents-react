@@ -35,7 +35,8 @@ const styles = {
   },
   headerCollapsed: {
     '& $header': {
-      display: 'none'
+      display: 'none',
+      borderBottom: 'black'
     }
   },
   // header
