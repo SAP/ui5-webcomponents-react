@@ -92,6 +92,9 @@ const styles = {
 
 const useStyles = createComponentStyles(styles, { name: 'VariantManagement' });
 
+/**
+ * The `VariantManagement` component can be used to manage variants, such as FilterBar variants or AnalyticalTable variants.
+ */
 const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
   (props: VariantManagementPropTypes, ref: Ref<HTMLDivElement>) => {
     const {
