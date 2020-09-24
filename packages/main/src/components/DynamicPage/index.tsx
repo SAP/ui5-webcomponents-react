@@ -111,7 +111,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
         dynamicPageRef.current.classList.add(classes.headerCollapsed);
         setHeaderPinned(false);
         setHeaderVisible(false);
-        anchorBarRef.current.style.top = '-0.05rem';
+        anchorBarRef.current.style.top = '-0.025rem';
       } else {
         dynamicPageRef.current.classList.remove(classes.headerCollapsed);
         setHeaderVisible(true);
@@ -126,7 +126,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
             () => {
               if (!anchorBarRef?.current?.children?.[1]?.attributes?.[6]) {
                 headerContentRef.current.style.removeProperty('top');
-                anchorBarRef.current.style.top = '-0.05rem';
+                anchorBarRef.current.style.top = '-0.025rem';
               }
             },
             { once: true }
@@ -167,7 +167,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
     ) {
       setHeaderVisible(false);
       currentIcon = 'slim-arrow-down';
-      anchorBarRef.current.style.top = '-0.05rem';
+      anchorBarRef.current.style.top = '-0.025rem';
     }
   });
 
