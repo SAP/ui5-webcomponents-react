@@ -10,7 +10,6 @@ const { asyncCopyTo, highlightLog } = require('../utils');
 const replace = require('@rollup/plugin-replace');
 const glob = require('glob');
 const { terser } = require('rollup-plugin-terser');
-const sh = require('shelljs');
 const { spawnSync } = require('child_process');
 
 process.env.BABEL_ENV = 'production';
