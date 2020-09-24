@@ -1,95 +1,59 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`VariantManagement Render without crashing - disabled 1`] = `
-<div
-  class="VariantManagement-container-0 VariantManagement-disabled-0"
->
-  <ui5-title
-    class="VariantManagement-title-0"
-    level="H4"
+<DocumentFragment>
+  <div
+    class="VariantManagement-container VariantManagement-disabled"
   >
-    Variant 1
-  </ui5-title>
-  <ui5-button
-    design="Transparent"
-    disabled="true"
-    icon="navigation-down-arrow"
-  />
-</div>
+    <ui5-title
+      class="VariantManagement-title"
+      level="H4"
+    >
+      Variant 1
+    </ui5-title>
+    <ui5-button
+      design="Transparent"
+      disabled="true"
+      icon="navigation-down-arrow"
+    />
+  </div>
+</DocumentFragment>
 `;
 
 exports[`VariantManagement Render without crashing 1`] = `
-<div
-  class="VariantManagement-container-0"
->
-  <ui5-title
-    class="VariantManagement-title-0"
-    level="H4"
+<DocumentFragment>
+  <div
+    class="VariantManagement-container"
   >
-    Variant 1
-  </ui5-title>
-  <ui5-button
-    design="Transparent"
-    icon="navigation-down-arrow"
-  />
-</div>
+    <ui5-title
+      class="VariantManagement-title"
+      level="H4"
+    >
+      Variant 1
+    </ui5-title>
+    <ui5-button
+      design="Transparent"
+      icon="navigation-down-arrow"
+    />
+  </div>
+</DocumentFragment>
 `;
 
 exports[`VariantManagement With suggestions 1`] = `
-<div
-  class="VariantManagement-container-0"
->
-  <ui5-title
-    class="VariantManagement-title-0"
-    level="H4"
+<DocumentFragment>
+  <div
+    class="VariantManagement-container"
   >
-    Variant 1
-  </ui5-title>
-  <ui5-button
-    design="Transparent"
-    icon="navigation-down-arrow"
-  />
-  <ui5-responsive-popover
-    header-text="Variants"
-    horizontal-align="Center"
-    placement-type="Bottom"
-    style="z-index: 102; visibility: visible; display: none;"
-    vertical-align="Center"
-  >
+    <ui5-title
+      class="VariantManagement-title"
+      level="H4"
+    >
+      Variant 1
+    </ui5-title>
     <ui5-button
-      class="VariantManagement-footer-0"
-      design="Emphasized"
-      slot="footer"
-    >
-      Cancel
-    </ui5-button>
-    <ui5-list
-      mode="SingleSelect"
-      separators="All"
-    >
-      <ui5-li
-        actionable=""
-        data-key="1"
-        has-title=""
-        info-state="None"
-        selected="true"
-        style="width: 300px;"
-        type="Active"
-      >
-        Variant 1
-      </ui5-li>
-      <ui5-li
-        actionable=""
-        data-key="2"
-        has-title=""
-        info-state="None"
-        selected=""
-        style="width: 300px;"
-        type="Active"
-      >
-        Variant 2
-      </ui5-li>
-    </ui5-list>
-  </ui5-responsive-popover>
-</div>
+      design="Transparent"
+      icon="navigation-down-arrow"
+    />
+  </div>
+</DocumentFragment>
 `;
