@@ -57,7 +57,6 @@
     "@types/jest": "^26.0.8",
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.6",
-    "@types/sinon": "^9.0.0",
     "@typescript-eslint/eslint-plugin": "^3.7.0",
     "@typescript-eslint/parser": "^3.7.0",
     "@ui5/webcomponents-tools": "^1.0.0-rc.8",
@@ -95,7 +94,6 @@
     "rollup": "^2.23.0",
     "rollup-plugin-terser": "^6.1.0",
     "shelljs": "^0.8.3",
-    "sinon": "^9.0.2",
     "targz": "^1.0.1",
     "tmp": "^0.1.0",
     "typescript": "^3.9.7"

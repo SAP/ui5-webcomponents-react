@@ -1,8 +1,7 @@
-import { createPassThroughPropsTest, getEventFromCallback } from '@shared/tests/utils';
+import { createPassThroughPropsTest } from '@shared/tests/utils';
 import { mount } from 'enzyme';
 import { VariantManagement } from '@ui5/webcomponents-react/lib/VariantManagement';
 import React from 'react';
-import sinon from 'sinon';
 import { act } from 'react-dom/test-utils';
 
 const variantItems = [
@@ -22,7 +21,7 @@ describe('VariantManagement', () => {
   });
 
   test.skip('With suggestions', () => {
-    const callback = sinon.spy();
+    const callback = jest.fn();
     const wrapper = mount(<VariantManagement onSelect={callback} variantItems={variantItems} />, {
       attachTo: document.body.appendChild(document.createElement('div'))
     });
@@ -34,7 +33,7 @@ describe('VariantManagement', () => {
     });
 
     expect(wrapper.render()).toMatchSnapshot();
-    expect(getEventFromCallback(callback).detail.selectedItem).toEqual(variantItems[1]);
+    expect(callback.mock[0][0].detail.selectedItem).toEqual(variantItems[1]);
     wrapper.unmount();
   });
 
