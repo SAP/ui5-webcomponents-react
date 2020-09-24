@@ -92,7 +92,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
   const [headerVisible, setHeaderVisible] = useState(true);
 
   // observe heights of header parts
-  const { topHeaderHeight, headerContentHeight, anchorBarHeight, totalHeaderHeight } = useObserveHeights(
+  const { topHeaderHeight, headerContentHeight } = useObserveHeights(
     dynamicPageRef,
     topHeaderRef,
     headerContentRef,
@@ -111,9 +111,11 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
         dynamicPageRef.current.classList.add(classes.headerCollapsed);
         setHeaderPinned(false);
         setHeaderVisible(false);
+        anchorBarRef.current.style.top = '-0.05rem';
       } else {
         dynamicPageRef.current.classList.remove(classes.headerCollapsed);
         setHeaderVisible(true);
+        anchorBarRef.current.style.top = '0.025rem';
       }
       requestAnimationFrame(() => {
         if (dynamicPageRef.current.scrollTop > 0 && !shouldHideHeader) {
@@ -124,7 +126,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
             () => {
               if (!anchorBarRef?.current?.children?.[1]?.attributes?.[6]) {
                 headerContentRef.current.style.removeProperty('top');
-                anchorBarRef.current.style.top = '0.025rem';
+                anchorBarRef.current.style.top = '-0.05rem';
               }
             },
             { once: true }
@@ -158,12 +160,14 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
     ) {
       setHeaderVisible(true);
       currentIcon = 'slim-arrow-up';
+      anchorBarRef.current.style.top = '0.025rem';
     } else if (
       anchorBarRef.current?.children?.[0].icon === 'slim-arrow-down' &&
       anchorBarRef.current?.children?.[0].icon !== currentIcon
     ) {
       setHeaderVisible(false);
       currentIcon = 'slim-arrow-down';
+      anchorBarRef.current.style.top = '-0.05rem';
     }
   });
 
