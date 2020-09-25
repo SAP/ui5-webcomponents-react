@@ -1,7 +1,7 @@
 import { usePaginatedQuery, useQuery } from 'react-query';
 
 import UrlProvider from '../util/URLProvider';
-import Request from '../util/Request';
+import Request from '../util/Request/Request';
 
 const FIVE_MINUTES_IN_MILLISECONDS = 1000 * 60 * 5;
 
