@@ -52,7 +52,7 @@ import { TitleBar } from './TitleBar';
 import { orderByFn } from './util';
 import { VirtualTableBody } from './virtualization/VirtualTableBody';
 
-export interface TableProps extends CommonProps {
+export interface TableProps extends Omit<CommonProps, 'title'> {
   /**
    * Please look at the [AnalyticalTableColumnDefinition interface](#column-properties) for a full list of options.
    */
@@ -213,8 +213,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     setColumnOrder,
     dispatch,
     totalColumnsWidth,
-    toggleRowSelected,
-    toggleAllRowsSelected,
     setGroupBy
   } = useTable(
     {
