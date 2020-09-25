@@ -28,14 +28,38 @@ export interface VariantItem {
 }
 
 export interface VariantManagementPropTypes extends CommonProps {
+  /**
+   * Determines on which side the VariantManagement popover is placed at.
+   */
   placement?: PlacementType;
+  /**
+   * Describes the title of the VariantManagement popover.
+   */
   popupTitle?: string;
+  /**
+   * Selects the <code>variantItem</code> by its key.
+   */
   selectedKey?: string;
+  /**
+   * Defines whether the VariantManagement should be closed if an item was selected.
+   */
   closeOnItemSelect?: boolean;
+  /**
+   * Variant items displayed by the VariantManagement component.
+   */
   variantItems: VariantItem[];
-  onSelect?: (event: CustomEvent<{ item: HTMLElement; selectedItem: VariantItem }>) => void;
+  /**
+   * Describes the <code>heading</code> level of the variants.
+   */
   level?: TitleLevel;
+  /**
+   * Defines whether the VariantManagement is disabled.
+   */
   disabled?: boolean;
+  /**
+   * Fired after a variant has been selected.
+   */
+  onSelect?: (event: CustomEvent<{ item: HTMLElement; selectedItem: VariantItem }>) => void;
 }
 
 const styles = {
@@ -68,6 +92,9 @@ const styles = {
 
 const useStyles = createComponentStyles(styles, { name: 'VariantManagement' });
 
+/**
+ * The `VariantManagement` component can be used to manage variants, such as FilterBar variants or AnalyticalTable variants.
+ */
 const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
   (props: VariantManagementPropTypes, ref: Ref<HTMLDivElement>) => {
     const {

@@ -1,8 +1,7 @@
+import { fireEvent, render, screen, waitFor, getByText } from '@shared/tests';
 import { createPassThroughPropsTest } from '@shared/tests/utils';
-import { mount } from 'enzyme';
 import { VariantManagement } from '@ui5/webcomponents-react/lib/VariantManagement';
 import React from 'react';
-import { act } from 'react-dom/test-utils';
 
 const variantItems = [
   { label: 'Variant 1', key: '1' },
@@ -11,29 +10,30 @@ const variantItems = [
 
 describe('VariantManagement', () => {
   test('Render without crashing', () => {
-    const wrapper = mount(<VariantManagement variantItems={variantItems} selectedKey="1" />);
-    expect(wrapper.render()).toMatchSnapshot();
+    const wrapper = render(<VariantManagement variantItems={variantItems} selectedKey="1" />);
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   test('Render without crashing - disabled', () => {
-    const wrapper = mount(<VariantManagement variantItems={variantItems} disabled />);
-    expect(wrapper.render()).toMatchSnapshot();
+    const wrapper = render(<VariantManagement variantItems={variantItems} disabled />);
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
-  test.skip('With suggestions', () => {
+  test.skip('With suggestions', async () => {
     const callback = jest.fn();
-    const wrapper = mount(<VariantManagement onSelect={callback} variantItems={variantItems} />, {
-      attachTo: document.body.appendChild(document.createElement('div'))
+    const wrapper = render(<VariantManagement onSelect={callback} variantItems={variantItems} />);
+
+    fireEvent.click(wrapper.container.querySelector('ui5-button[icon="navigation-down-arrow"]'));
+
+    // wait for appearance
+    await waitFor(() => {
+      expect(screen.getByText(variantItems[1].label)).toBeVisible();
     });
 
-    wrapper.find('ui5-button').first().instance().fireEvent('click');
+    fireEvent.click(screen.getByText(variantItems[1].label));
 
-    act(() => {
-      wrapper.find('ui5-li').last().instance().fireItemPress({});
-    });
-
-    expect(wrapper.render()).toMatchSnapshot();
-    expect(callback.mock[0][0].detail.selectedItem).toEqual(variantItems[1]);
+    expect(wrapper.asFragment()).toMatchSnapshot();
+    expect(callback.mock.calls[0][0].detail.selectedItem).toEqual(variantItems[1]);
     wrapper.unmount();
   });
 
