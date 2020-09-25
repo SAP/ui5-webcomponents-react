@@ -1,4 +1,4 @@
-import debounce from 'lodash.debounce';
+import debounce from 'lodash/debounce';
 import { RefObject, useEffect, useRef, useState } from 'react';
 
 const defaultAxisHeight = 30;

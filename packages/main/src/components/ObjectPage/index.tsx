@@ -16,7 +16,7 @@ import { ToolbarDesign } from '@ui5/webcomponents-react/lib/ToolbarDesign';
 import { ToolbarSpacer } from '@ui5/webcomponents-react/lib/ToolbarSpacer';
 import { ToolbarStyle } from '@ui5/webcomponents-react/lib/ToolbarStyle';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import debounce from 'lodash.debounce';
+import debounce from 'lodash/debounce';
 import React, {
   ComponentType,
   FC,
