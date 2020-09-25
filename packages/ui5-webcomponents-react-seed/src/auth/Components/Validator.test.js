@@ -3,7 +3,7 @@ import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 import { render, waitFor, screen, serverCustom } from '../../util/TestSetup';
 import ComponentValidator from './Validator';
-import ApiURL from '../../util/ApiURL';
+import APIProvider from '../../util/URL/APIProvider';
 
 describe('Validator.js Test Suite', () => {
   const GET_USER_LOGGED_RESPONSE = {
@@ -12,7 +12,7 @@ describe('Validator.js Test Suite', () => {
     permissions: ['canAccessTodoListPage', 'canAccessTodoEditPage', 'canAccessDropApplication'],
   };
 
-  const server = serverCustom(ApiURL.GET_USER_LOGGED, GET_USER_LOGGED_RESPONSE);
+  const server = serverCustom(APIProvider.getUrl('GET_USER_LOGGED'), GET_USER_LOGGED_RESPONSE);
 
   beforeAll(() => server.listen());
   afterEach(() => server.resetHandlers());

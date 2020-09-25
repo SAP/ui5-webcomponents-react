@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom/extend-expect';
 
 import { serverCustom } from '../../util/TestSetup';
-import ApiURL from '../../util/ApiURL';
+import APIProvider from '../../util/URL/APIProvider';
 import Request from './Request';
 
 jest.mock('./Request');
@@ -13,7 +13,7 @@ const GET_USER_LOGGED_RESPONSE = {
 };
 
 describe('Request.js Test Suite', () => {
-  const server = serverCustom(ApiURL.GET_USER_LOGGED, GET_USER_LOGGED_RESPONSE);
+  const server = serverCustom(APIProvider.getUrl('GET_USER_LOGGED'), GET_USER_LOGGED_RESPONSE);
 
   beforeAll(() => server.listen());
   afterEach(() => server.resetHandlers());
@@ -24,7 +24,7 @@ describe('Request.js Test Suite', () => {
 
     Request.get.mockImplementationOnce(() => Promise.resolve(successfullyData));
 
-    await expect(Request.get(ApiURL.GET_USER_LOGGED)).resolves.toEqual(successfullyData);
+    await expect(Request.get(APIProvider.getUrl('GET_USER_LOGGED'))).resolves.toEqual(successfullyData);
   });
 
   it('should fetch erroneously data from an API', async () => {
@@ -32,7 +32,7 @@ describe('Request.js Test Suite', () => {
 
     Request.get.mockImplementationOnce(() => Promise.reject(new Error(errorMessage)));
 
-    await expect(Request.get(ApiURL.GET_USER_LOGGED)).rejects.toThrow(errorMessage);
+    await expect(Request.get(APIProvider.getUrl('GET_USER_LOGGED'))).rejects.toThrow(errorMessage);
   });
 
   test('should mount url properly', async () => {
@@ -40,8 +40,8 @@ describe('Request.js Test Suite', () => {
 
     Request.get.mockImplementationOnce(() => Promise.resolve(successfullyData));
 
-    await expect(Request.get(ApiURL.GET_USER_LOGGED)).resolves.toEqual(successfullyData);
+    await expect(Request.get(APIProvider.getUrl('GET_USER_LOGGED'))).resolves.toEqual(successfullyData);
 
-    expect(Request.get).toHaveBeenCalledWith(ApiURL.GET_USER_LOGGED);
+    expect(Request.get).toHaveBeenCalledWith(APIProvider.getUrl('GET_USER_LOGGED'));
   });
 });

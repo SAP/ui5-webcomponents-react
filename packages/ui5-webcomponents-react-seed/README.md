@@ -57,7 +57,7 @@ PS.: It is important to add the `--template ui5-webcomponents-react-seed` at the
 
 - MockServer Engine (w/ `json-server`);
 
-- HTTP Request Engine (w/ `Request` and `URLProvider`);
+- HTTP Request Engine (w/ `Request`, `APIProvider`, `BrowserProvider`);
 
 - Permission Engine (w/ `RouteValidator` and `ComponentValidator`).
 

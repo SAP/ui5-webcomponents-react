@@ -1,6 +1,6 @@
 import { usePaginatedQuery, useQuery } from 'react-query';
 
-import UrlProvider from '../util/URLProvider';
+import APIProvider from '../util/URL/APIProvider';
 import Request from '../util/Request/Request';
 
 const FIVE_MINUTES_IN_MILLISECONDS = 1000 * 60 * 5;
@@ -19,7 +19,7 @@ const REQUEST = {
 
 const _fetchData = (operation, urlKey, dataParam, config) => {
   return async () => {
-    const url = UrlProvider.getUrl(urlKey);
+    const url = APIProvider.getUrl(urlKey);
     const res = await Request[operation](url, dataParam, config);
     return res.data;
   };

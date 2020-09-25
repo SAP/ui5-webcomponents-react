@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { MobileView, BrowserView, IEView, isMobile, isTablet, isDesktop, isIE, isChrome, isOpera } from 'react-device-detect';
 
 import HyperLink from '../../../components/HyperLink/HyperLink';
-import BrowserURL from '../../../util/BrowserURL';
+import BrowserProvider from '../../../util/URL/BrowserProvider';
 import ComponentValidator from '../../../auth/Components/Validator';
 import TodoListPagination from './TodoListPagination';
 
@@ -17,7 +17,7 @@ export default function TodoList() {
       <h1>Routing</h1>
       <HyperLink onClick={() => history.push('/dontexist')} text="Test NotFound Page" />
       <br />
-      <HyperLink onClick={() => history.push(BrowserURL.BUGGY)} text="Test Error Page" />
+      <HyperLink onClick={() => history.push(BrowserProvider.BUGGY)} text="Test Error Page" />
       <br />
 
       <ComponentValidator allowedAuthorities={['canAccessDropApplication']} authorityKey="permissions">

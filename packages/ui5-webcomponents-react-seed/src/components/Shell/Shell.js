@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 
 import { ShellBar } from '@ui5/webcomponents-react/lib/ShellBar';
-import BrowserURL from '../../util/BrowserURL';
+import BrowserProvider from '../../util/URL/BrowserProvider';
 
 const style = {
   shell: {
@@ -21,7 +21,7 @@ const Shell = ({ title, ...props }) => {
     <ShellBar
       data-testid="shell-wrapper"
       style={style.shell}
-      onLogoClick={() => history.push(BrowserURL.HOME)}
+      onLogoClick={() => history.push(BrowserProvider.HOME)}
       primaryTitle={title}
       logo={<img alt={t('shell.logo.alt')} src="https://sap.github.io/ui5-webcomponents/assets/images/sap-logo-svg.svg" />}
       {...props}
