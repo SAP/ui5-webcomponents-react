@@ -9,23 +9,43 @@ exports[`Pagination.js Test Suite should match snapshot 1`] = `
   <ui5-button
     data-testid="leftarrow-pagination-wrapper"
     design="Transparent"
-    disabled="true"
   >
     &lt;
+  </ui5-button>
+  <ui5-button
+    data-testid="morePreviousPage-pagination-wrapper"
+    design="Transparent"
+    style="margin-right: 0.5rem;"
+  >
+    2
+  </ui5-button>
+  <ui5-button
+    data-testid="previousPage-pagination-wrapper"
+    design="Transparent"
+    style="margin-right: 0.5rem;"
+  >
+    3
   </ui5-button>
   <ui5-button
     data-testid="selectedPage-pagination-wrapper"
     design="Emphasized"
     style="margin-right: 0.5rem;"
   >
-    1
+    4
   </ui5-button>
   <ui5-button
     data-testid="nextPage-pagination-wrapper"
     design="Transparent"
     style="margin-right: 0.5rem;"
   >
-    2
+    5
+  </ui5-button>
+  <ui5-button
+    data-testid="moreNextPage-pagination-wrapper"
+    design="Transparent"
+    style="margin-right: 0.5rem;"
+  >
+    6
   </ui5-button>
   <ui5-button
     data-testid="afterarrow-pagination-wrapper"
