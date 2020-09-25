@@ -5,7 +5,7 @@ import { TableScaleWidthMode } from '@ui5/webcomponents-react/lib/TableScaleWidt
 import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
-import debounce from 'lodash.debounce';
+import debounce from 'lodash/debounce';
 import React, {
   ComponentType,
   CSSProperties,
