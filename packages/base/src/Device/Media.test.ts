@@ -1,4 +1,3 @@
-import * as sinon from 'sinon';
 import { setupMatchMedia } from '../../../../config/jestsetup';
 import { EventRegistry } from './EventRegistry';
 import { Media, RANGESETS } from './Media';
@@ -45,12 +44,12 @@ describe('Device - Media', () => {
 
   test('Attach, fire and Detach Event', () => {
     const media = new Media(defaultSupportInstance);
-    const callback = sinon.spy();
+    const callback = jest.fn();
     // @ts-ignore
     media.attachHandler(callback, this);
     expect(EventRegistry.mEventRegistry.hasOwnProperty('media_Std'));
     EventRegistry.fireEvent('media_Std');
-    expect(callback.called).toBe(true);
+    expect(callback).toBeCalled();
     // @ts-ignore
     media.detachHandler(callback, this);
     expect(EventRegistry.mEventRegistry.hasOwnProperty('media_Std')).toBe(false);

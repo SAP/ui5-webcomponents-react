@@ -1,11 +1,10 @@
-import * as sinon from 'sinon';
 import { EventRegistry } from './EventRegistry';
 import { Orientation } from './Orientation';
 
 describe('Device - Orientation', () => {
   test('Add and remove handler', () => {
     const instance = new Orientation();
-    const callback = sinon.spy();
+    const callback = jest.fn();
     // @ts-ignore
     instance.attachHandler(callback, this);
     // @ts-ignore
