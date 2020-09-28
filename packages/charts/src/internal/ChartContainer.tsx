@@ -16,7 +16,7 @@ export interface ContainerProps extends CommonProps {
 // eslint-disable-next-line no-underscore-dangle
 const __testingProps__: any = {};
 
-if ((process.env.NODE_ENV = 'test')) {
+if (process.env.NODE_ENV === 'test') {
   __testingProps__.width = 400;
   __testingProps__.height = 400;
 }
