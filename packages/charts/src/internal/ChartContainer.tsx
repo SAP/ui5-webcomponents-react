@@ -13,6 +13,14 @@ export interface ContainerProps extends CommonProps {
   resizeDebounce: number;
 }
 
+// eslint-disable-next-line no-underscore-dangle
+const __testingProps__: any = {};
+
+if ((process.env.NODE_ENV = 'test')) {
+  __testingProps__.width = 400;
+  __testingProps__.height = 400;
+}
+
 const loaderStyles: CSSProperties = {
   position: 'absolute',
   top: 0,
@@ -52,8 +60,12 @@ const ChartContainer: FC<ContainerProps> = forwardRef((props: ContainerProps, re
     <div ref={ref} style={internalStyles} className={className} title={tooltip} slot={slot}>
       {dataset?.length > 0 ? (
         <>
-          {loading && dataset.length > 0 && <Loader style={loaderStyles} />}
-          {dataset.length > 0 && <ResponsiveContainer debounce={resizeDebounce}>{children}</ResponsiveContainer>}
+          {loading && <Loader style={loaderStyles} />}
+          {
+            <ResponsiveContainer debounce={resizeDebounce} {...__testingProps__}>
+              {children}
+            </ResponsiveContainer>
+          }
         </>
       ) : (
         <Placeholder />

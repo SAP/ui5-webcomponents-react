@@ -917,7 +917,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
       />
     </header>
     <svg
-      aria-labelledby="ARIA-LABELLED-BY"
+      aria-labelledby="TITLE_ARIA_ID"
       height="220"
       role="img"
       style="height: 220px; width: 600px;"
@@ -929,10 +929,10 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
         Loading...
       </title>
       <rect
-        clip-path="CLIP-PATH-URL"
+        clip-path="STYLE-URL"
         height="100%"
         role="presentation"
-        style="fill: url(#STYLE-URL);"
+        style="fill: STYLE-URL;"
         width="100%"
         x="0"
         y="0"
@@ -941,7 +941,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
         role="presentation"
       >
         <clipPath
-          id="CLIP-PATH-URL"
+          id="DIFF_ID"
         >
           <rect
             height="16"
@@ -1105,7 +1105,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
           />
         </clipPath>
         <linearGradient
-          id="STYLE-URL"
+          id="DIFF_ID"
         >
           <stop
             offset="0%"
