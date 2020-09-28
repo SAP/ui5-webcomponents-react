@@ -1,6 +1,6 @@
-import { CSSProperties, Ref } from 'react';
+import { CSSProperties, Ref, HTMLAttributes } from 'react';
 
-export interface CommonProps {
+export interface CommonProps extends HTMLAttributes<HTMLElement> {
   /**
    * Element style which will be appended to the most outer element of a component.
    * Use this prop carefully, some css properties might break the component.

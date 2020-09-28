@@ -275,6 +275,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
             child.props.children?.props?.children?.map((item) => item.props.selected).join(',') !==
               prevChildren?.current?.[child.key]?.children?.map((item) => item.props.selected).join(','))
         ) {
+          // @ts-ignore
           const { [child.key]: omit, ...rest } = dialogRefs;
           setDialogRefs(rest);
         }

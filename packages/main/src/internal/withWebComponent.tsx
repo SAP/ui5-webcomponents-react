@@ -23,7 +23,7 @@ const createEventPropName = (eventName) => `on${capitalizeFirstLetter(kebabToCam
 
 type EventHandler = (event: CustomEvent<unknown>) => void;
 
-export interface WithWebComponentPropTypes extends CommonProps, HTMLAttributes<HTMLElement> {
+export interface WithWebComponentPropTypes extends CommonProps {
   ref?: Ref<any>;
   children?: any | void;
 }

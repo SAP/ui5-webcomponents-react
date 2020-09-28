@@ -5,7 +5,7 @@ import { TableScaleWidthMode } from '@ui5/webcomponents-react/lib/TableScaleWidt
 import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
-import debounce from 'lodash.debounce';
+import debounce from 'lodash/debounce';
 import React, {
   ComponentType,
   CSSProperties,
@@ -52,7 +52,7 @@ import { TitleBar } from './TitleBar';
 import { orderByFn } from './util';
 import { VirtualTableBody } from './virtualization/VirtualTableBody';
 
-export interface TableProps extends CommonProps {
+export interface TableProps extends Omit<CommonProps, 'title'> {
   /**
    * Please look at the [AnalyticalTableColumnDefinition interface](#column-properties) for a full list of options.
    */
@@ -213,8 +213,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     setColumnOrder,
     dispatch,
     totalColumnsWidth,
-    toggleRowSelected,
-    toggleAllRowsSelected,
     setGroupBy
   } = useTable(
     {
