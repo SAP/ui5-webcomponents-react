@@ -1,4 +1,3 @@
-import { getEventFromCallback } from '@shared/tests/utils';
 import { mount } from 'enzyme';
 import { Breadcrumbs } from '@ui5/webcomponents-react/lib/Breadcrumbs';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
@@ -12,7 +11,6 @@ import { Text } from '@ui5/webcomponents-react/lib/Text';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import React from 'react';
-import * as sinon from 'sinon';
 
 const headerContent = (
   <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -153,7 +151,7 @@ describe('ObjectPage', () => {
   });
 
   test.skip('onSelectedSectionChangedHandler', () => {
-    const callback = sinon.spy();
+    const callback = jest.fn();
     const wrapper = mount(
       <ObjectPage selectedSectionId={'2'} mode={ObjectPageMode.IconTabBar} onSelectedSectionChanged={callback}>
         <ObjectPageSection id={'1'}>Test</ObjectPageSection>
@@ -161,7 +159,7 @@ describe('ObjectPage', () => {
       </ObjectPage>
     );
     wrapper.find('section[role="navigation"] ui5-button').first().simulate('click');
-    expect(getEventFromCallback(callback).detail.selectedSectionId).toEqual('1');
+    expect(callback.mock[0][0].detail.selectedSectionId).toEqual('1');
   });
 
   test('No Header', () => {

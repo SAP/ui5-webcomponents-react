@@ -16,7 +16,7 @@ import React, { FC, forwardRef, ReactNode, RefObject, useEffect, useMemo } from 
 import { CommonProps } from '../../interfaces/CommonProps';
 import styles from './FilterItem.jss';
 
-export interface FilterItemPropTypes extends CommonProps {
+export interface FilterItemPropTypes extends Omit<CommonProps, 'onChange'> {
   placeholder?: string;
   type?: FilterType;
   label?: string;

@@ -6,7 +6,7 @@ import { TableScaleWidthMode } from '@ui5/webcomponents-react/lib/TableScaleWidt
 import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
-import debounce from 'lodash.debounce';
+import debounce from 'lodash/debounce';
 import React, {
   ComponentType,
   CSSProperties,
@@ -56,7 +56,7 @@ import { orderByFn } from './util';
 import { VirtualTableBody } from './TableBody/VirtualTableBody';
 import { VirtualTableBodyContainer } from './TableBody/VirtualTableBodyContainer';
 
-export interface TableProps extends CommonProps {
+export interface TableProps extends Omit<CommonProps, 'title'> {
   /**
    * Please look at the [AnalyticalTableColumnDefinition interface](#column-properties) for a full list of options.
    */
@@ -101,6 +101,14 @@ export interface TableProps extends CommonProps {
   groupBy?: string[];
   selectionBehavior?: TableSelectionBehavior;
   selectionMode?: TableSelectionMode;
+  /**
+   * Defines the column growing behaviour. Possible Values:
+   *
+   * - **Default**: Every column without fixed width gets the maximum available space of the table.
+   * - **Smart**: Every column gets the space it needs for displaying the full header text. If all headers need more space than the available table width, horizontal scrolling will be enabled. If there is space left, columns with a long content will get more space until there is no more table space left.
+   * - **Grow**: Every column gets the space it needs for displaying its full header text and full content of all cells. If it requires more space than the table has, horizontal scrolling will be enabled.
+   *
+   */
   scaleWidthMode?: TableScaleWidthMode;
   columnOrder?: string[];
   infiniteScroll?: boolean;
@@ -116,7 +124,7 @@ export interface TableProps extends CommonProps {
   /**
    * Additional options which will be passed to [react-table´s useTable hook](https://react-table.tanstack.com/docs/api/useTable#table-options)
    */
-  reactTableOptions?: object;
+  reactTableOptions?: Record<string, unknown>;
   tableHooks?: PluginHook<any>[];
   subRowsKey?: string;
   /**
@@ -216,8 +224,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     setColumnOrder,
     dispatch,
     totalColumnsWidth,
-    toggleRowSelected,
-    toggleAllRowsSelected,
     visibleColumns,
     visibleColumnsWidth,
     setGroupBy
@@ -296,17 +302,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   }, [groupBy, setGroupBy]);
 
   useEffect(() => {
-    toggleAllRowsSelected(false);
-    const validChars = /^\d+(\.\d+)*$/;
-    // eslint-disable-next-line guard-for-in
-    for (const row in selectedRowIds) {
-      if (reactTableOptions?.getRowId) {
-        toggleRowSelected(row, selectedRowIds[row]);
-      } else if (validChars.test(row)) {
-        toggleRowSelected(row, selectedRowIds[row]);
-      }
-    }
-  }, [toggleRowSelected, toggleAllRowsSelected, selectedRowIds, reactTableOptions?.getRowId]);
+    dispatch({ type: 'SET_SELECTED_ROW_IDS', payload: { selectedRowIds } });
+  }, [selectedRowIds]);
 
   const calcRowHeight = parseInt(
     getComputedStyle(tableRef.current ?? document.body).getPropertyValue('--sapWcrAnalyticalTableRowHeight') || '44'

@@ -1,4 +1,4 @@
-import { Title, Subtitle, Primary, Description, Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
 import { createSelectArgTypes } from '../../../../../shared/stories/createSelectArgTypes';
 import { TableScaleWidthMode } from '@ui5/webcomponents-react/lib/TableScaleWidthMode';
@@ -10,11 +10,8 @@ import '@ui5/webcomponents-icons/dist/icons/delete';
 import '@ui5/webcomponents-icons/dist/icons/edit';
 import '@ui5/webcomponents-icons/dist/icons/settings';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
-import { Text } from '@ui5/webcomponents-react/lib/Text';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
-import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
-import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJustifyContent';
 import { DefaultLoadingComponent } from './defaults/LoadingComponent';
 import { DefaultNoDataComponent } from './defaults/NoDataComponent';
 
@@ -22,7 +19,6 @@ import { DefaultNoDataComponent } from './defaults/NoDataComponent';
   title="Components / AnalyticalTable"
   component={AnalyticalTable}
   args={{
-    dataTree: generateData(20, true),
     data: generateData(1000),
     columns: [
       {
@@ -110,7 +106,6 @@ import { DefaultNoDataComponent } from './defaults/NoDataComponent';
   }}
   argTypes={{
     ref: { type: null },
-    dataTree: { type: null },
     data: { type: null },
     columns: { type: null },
     reactTableOptions: { type: null },
@@ -277,12 +272,12 @@ This even works if you resize the browser window!
 ## Tree Table
 
 <Canvas>
-  <Story name="Tree Table">
+  <Story name="Tree Table" args={{ data: generateData(20, true) }}>
     {(args) => (
       <AnalyticalTable
         {...args}
         title={args.title}
-        data={args.dataTree}
+        data={args.data}
         columns={args.columns}
         loading={args.loading}
         sortable={args.sortable}

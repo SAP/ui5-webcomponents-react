@@ -1,11 +1,10 @@
-import * as sinon from 'sinon';
 import { EventRegistry } from './EventRegistry';
 import { Resize } from './Resize';
 
 describe('Device - Resize', () => {
   test('Add and remove handler', () => {
     const instance = new Resize();
-    const callback = sinon.spy();
+    const callback = jest.fn();
     // @ts-ignore
     instance.attachHandler(callback, this);
     // @ts-ignore

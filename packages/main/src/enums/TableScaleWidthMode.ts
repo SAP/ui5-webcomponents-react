@@ -1,6 +1,6 @@
 export enum TableScaleWidthMode {
   /*
-   * Every column without fixed width get's the maximum available space of the table
+   * Every column without fixed width gets the maximum available space of the table
    */
   Default = 'Default',
   /*
@@ -10,7 +10,7 @@ export enum TableScaleWidthMode {
    */
   Smart = 'Smart',
   /*
-   * Every column get's the space it needs for displaying it's full header text and full content of all cells.
+   * Every column gets the space it needs for displaying it's full header text and full content of all cells.
    * If it requires more space than the table has, horizontal scrolling will be enabled.
    */
   Grow = 'Grow'

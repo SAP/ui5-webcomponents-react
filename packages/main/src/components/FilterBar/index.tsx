@@ -131,19 +131,18 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
   );
 
   useEffect(() => {
-    if (showFilterConfiguration) {
-      Children.toArray(children).forEach((item: ReactElement<any>) => {
-        if (
-          prevVisibleInFilterBarProps.current?.[item.key] !== undefined &&
-          prevVisibleInFilterBarProps.current?.[item.key] !== item.props.visibleInFilterBar
-        ) {
-          const updatedToggledFilters = toggledFilters;
-          delete updatedToggledFilters[item.key];
-          setToggledFilters(updatedToggledFilters);
+    Children.toArray(children).forEach((item: ReactElement<any>) => {
+      setToggledFilters((prev) => {
+        if (!item.props.hasOwnProperty('visibleInFilterBar') && prev?.[item.key] === undefined) {
+          return { ...prev, [item.key]: true };
         }
+        if (item.props.hasOwnProperty('visibleInFilterBar')) {
+          return { ...prev, [item.key]: item.props.visibleInFilterBar };
+        }
+        return prev;
       });
-    }
-  }, [children, prevVisibleInFilterBarProps, setToggledFilters, toggledFilters, showFilterConfiguration]);
+    });
+  }, [children, setToggledFilters]);
 
   useEffect(() => {
     setShowFilters(useToolbar ? filterBarExpanded : true);
@@ -171,9 +170,14 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
   const handleDialogSave = useCallback(
     (e, newRefs, updatedToggledFilters) => {
       setDialogRefs(newRefs);
-      setToggledFilters({ ...toggledFilters, ...updatedToggledFilters });
+      setToggledFilters((old) => ({ ...old, ...updatedToggledFilters }));
       if (onFiltersDialogSave) {
-        onFiltersDialogSave(enrichEventWithDetails(e));
+        onFiltersDialogSave(
+          enrichEventWithDetails(e, {
+            elements: newRefs,
+            toggledElements: { ...toggledFilters, ...updatedToggledFilters }
+          })
+        );
       }
       handleDialogClose(e);
     },
@@ -215,7 +219,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
   ]);
 
   const safeChildren = useCallback(() => {
-    if (showFilterConfiguration && Object.keys(toggledFilters).length > 0) {
+    if (Object.keys(toggledFilters).length > 0) {
       return Children.toArray(children).map((child: ReactElement) => {
         if (toggledFilters?.[child.key] !== undefined) {
           return cloneElement(child, {
@@ -227,6 +231,8 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
     }
     return Children.toArray(children) as unknown[];
   }, [toggledFilters, children]);
+
+  const prevChildren = useRef({});
 
   const renderChildren = useCallback(() => {
     const childProps = { considerGroupName, inFB: true } as any;
@@ -252,10 +258,29 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
             filterItemProps = filterValue(dialogItemRef, child);
           }
         }
-        if (!child.props.children)
+        if (!child.props.children) {
           return cloneElement(child as ReactElement<any>, {
             ...childProps
           });
+        }
+        if (
+          prevChildren.current?.[child.key] &&
+          //Input
+          (child.props.children?.props?.value !== prevChildren.current?.[child.key]?.value ||
+            //Combobox
+            child.props.children?.props?.filterValue !== prevChildren.current?.[child.key]?.filterValue ||
+            //Checkbox
+            child.props.children?.props?.checked !== prevChildren.current?.[child.key]?.checked ||
+            //Selectable
+            child.props.children?.props?.children?.map((item) => item.props.selected).join(',') !==
+              prevChildren?.current?.[child.key]?.children?.map((item) => item.props.selected).join(','))
+        ) {
+          // @ts-ignore
+          const { [child.key]: omit, ...rest } = dialogRefs;
+          setDialogRefs(rest);
+        }
+        prevChildren.current[child.key] = child.props.children.props;
+
         return cloneElement(child as ReactElement<any>, {
           ...childProps,
           children: {

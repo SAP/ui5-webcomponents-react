@@ -224,11 +224,11 @@ export const FilterDialog = (props) => {
   }, [children, searchString, filterBarRefs]);
 
   const handleCheckBoxChange = useCallback(
-    (element, toggledFilters) => (e) => {
+    (element) => (e) => {
       if (handleSelectionChange) {
         handleSelectionChange(enrichEventWithDetails(e, { element, checked: e.target.checked }));
       }
-      setToggledFilters({ ...toggledFilters, [element.key]: e.target.checked });
+      setToggledFilters((old) => ({ ...old, [element.key]: e.target.checked }));
     },
     [setToggledFilters, handleSelectionChange]
   );
@@ -251,7 +251,7 @@ export const FilterDialog = (props) => {
               {el}
               <CheckBox
                 checked={el.props.visibleInFilterBar || el.props.required || el.type.displayName !== 'FilterGroupItem'}
-                onChange={handleCheckBoxChange(el, toggledFilters)}
+                onChange={handleCheckBoxChange(el)}
                 disabled={el.props.required || el.type.displayName !== 'FilterGroupItem'}
               />
             </div>
@@ -282,7 +282,7 @@ export const FilterDialog = (props) => {
         )}
         {renderGroups()}
       </div>
-    </Dialog>, 
+    </Dialog>,
     document.body
   );
 };
