@@ -1,22 +1,16 @@
-import { Meta, Story, ArgsTable, Title, Subtitle, Description, Canvas } from '@storybook/addon-docs/blocks';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
-import { DocsHeader } from '@shared/stories/DocsHeader';
-import { Option } from '@ui5/webcomponents-react/lib/Option';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { Select } from '@ui5/webcomponents-react/lib/Select';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import { Option } from '@ui5/webcomponents-react/lib/Option';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
 
 <Meta
   title="UI5 Web Components / Select"
   component={Select}
   subcomponents={{ Option }}
   argTypes={{
-    ...createSelectArgTypes({ valueState: ValueState }),
-    children: {
-      type: null
-    },
-    ref: {
-      type: null
-    }
+    ...createSelectArgTypes({ valueState: ValueState })
   }}
   args={{
     valueState: ValueState.None
@@ -27,45 +21,15 @@ import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 
 <Canvas>
   <Story name="Default">
-    {(props) => (
-      <Select disabled={props.disabled} name={props.name} valueState={props.valueState} onChange={props.onChange}>
-        <Option>Option 1</Option>
-        <Option>Option 2</Option>
-        <Option>Option 3</Option>
-        <Option>Option 4</Option>
-        <Option>Option 5</Option>
-      </Select>
-    )}
+    {(args) => {
+      return <Select {...args} />;
+    }}
   </Story>
 </Canvas>
 
 <ArgsTable story="." />
-
-## Recipes
-
-### Get the ID of the selected item with `onChange`
-
-With the help of the HTML5 `data-` API you can define any primitive value (like numbers, strings)
-as an attribute on an element.
-This data will be available on the `onChange` event as part of the `dataset` object of the `selectedOption`:
-
-```jsx
-const data = [
-  { id: 1, text: 'Option 1' },
-  { id: 2, text: 'Option 2' }
-];
-
-const onChange = (event) => {
-  // event.detail.selectedOption is a reference to the selected HTML Element
-  // dataset contains all attributes that were passed with the data- prefix.
-  console.log(event.detail.selectedOption.dataset.id);
-};
-
-<Select onChange={onChange}>
-  {data.map((item) => (
-    <Option key={item.id} data-id={item.id}>
-      {item.text}
-    </Option>
-  ))}
-</Select>;
-```
+<h3>Keyboard Handling</h3>
+The <code>ui5-select</code> provides advanced keyboard handling. If the <code>ui5-select</code> is focused, you can open
+or close the drop-down by pressing <code>F4</code>, <code>ALT+UP</code> or <code>ALT+DOWN</code> keys. Once the
+drop-down is opened, you can use the <code>UP</code> and <code>DOWN</code> arrow keys to navigate through the available
+options and select one by pressing the <code>Space</code> or <code>Enter</code> keys. <br />

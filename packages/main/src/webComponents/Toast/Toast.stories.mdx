@@ -1,69 +1,44 @@
-import { Title, Subtitle, Description, Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { Toast } from '@ui5/webcomponents-react/lib/Toast';
-import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ToastPlacement } from '@ui5/webcomponents-react/lib/ToastPlacement';
+
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
-import { useRef } from 'react';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 
 <Meta
   title="UI5 Web Components / Toast"
   component={Toast}
   argTypes={{
-    ...createSelectArgTypes({ placement: ToastPlacement }),
-    children: { type: 'string' },
-    ref: { type: null }
+    ...createSelectArgTypes({ placement: ToastPlacement })
   }}
   args={{
-    placement: ToastPlacement.BottomCenter,
-    children: 'My Toast Text!'
+    placement: ToastPlacement.BottomCenter
   }}
 />
 
 <DocsHeader />
-<br />
-
-## Show a toast
-
-The `Toast` component has an imperative API for getting displayed. It will not be displayed just because it is part of the DOM.
-In order to show the Toast, you have to get a reference to the `Toast` DOM element and call the `show`-method.
-You can either access the DOM element by using a React `ref` or work with IDs.
-
-**Example**
-
-```jsx
-export const MyComponentWithAToast() {
-  const toast = useRef();
-
-  const showToast = () => {
-    toast.current.show();
-  };
-  return (
-    <ThemeProvider>
-      <Button onClick={showToast}>Show Toast</Button>
-      <Toast ref={toast}>This is my Toast!</Toast>
-    </ThemeProvider>
-  );
-}
-```
 
 <Canvas>
   <Story name="Default">
     {(args) => {
-      const toast = useRef();
-      const showToast = () => {
-        toast.current.show();
-      };
-      return (
-        <>
-          <Toast ref={toast} duration={args.duration} placement={args.placement}>
-            {args.children}
-          </Toast>
-          <Button onClick={showToast}>Show Toast</Button>
-        </>
-      );
+      return <Toast {...args} />;
     }}
   </Story>
 </Canvas>
 
 <ArgsTable story="." />
+<h3>Usage</h3>
+
+<h4>When to use:</h4>
+<ul>
+  <li>You want to display a short success or information message.</li>
+  <li>You do not want to interrupt users while they are performing an action.</li>
+  <li>You want to confirm a successful action.</li>
+</ul>
+<h4>When not to use:</h4>
+<ul>
+  <li>You want to display error or warning message.</li>
+  <li>You want to interrupt users while they are performing an action.</li>
+  <li>You want to make sure that users read the message before they leave the page.</li>
+  <li>You want users to be able to copy some part of the message text.</li>
+</ul>

@@ -1,0 +1,28 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { Timeline } from '@ui5/webcomponents-react/lib/Timeline';
+
+import { TimelineItem } from '@ui5/webcomponents-react/lib/TimelineItem';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+
+<Meta
+  title="UI5 Web Components / Timeline"
+  component={Timeline}
+  subcomponents={{ TimelineItem }}
+  argTypes={{
+    ...createSelectArgTypes({})
+  }}
+  args={{}}
+/>
+
+<DocsHeader />
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return <Timeline {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="." />

@@ -1,0 +1,40 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { List } from '@ui5/webcomponents-react/lib/List';
+import { ListMode } from '@ui5/webcomponents-react/lib/ListMode';
+import { ListSeparators } from '@ui5/webcomponents-react/lib/ListSeparators';
+import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
+import { CustomListItem } from '@ui5/webcomponents-react/lib/CustomListItem';
+import { GroupHeaderListItem } from '@ui5/webcomponents-react/lib/GroupHeaderListItem';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+
+<Meta
+  title="UI5 Web Components / List"
+  component={List}
+  subcomponents={{ StandardListItem, CustomListItem, GroupHeaderListItem }}
+  argTypes={{
+    ...createSelectArgTypes({ mode: ListMode, separators: ListSeparators })
+  }}
+  args={{
+    mode: ListMode.None,
+    separators: ListSeparators.All
+  }}
+/>
+
+<DocsHeader />
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return <List {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="." />
+<h3>ES6 Module Import</h3>
+
+<code>import "@ui5/webcomponents/dist/List.js";</code> <br />
+<code>import "@ui5/webcomponents/dist/StandardListItem.js";</code> (for <code>ui5-li</code>) <br />
+<code>import "@ui5/webcomponents/dist/CustomListItem.js";</code> (for <code>ui5-li-custom</code>) <br />
+<code>import "@ui5/webcomponents/dist/GroupHeaderListItem.js";</code> (for <code>ui5-li-group-header</code>)

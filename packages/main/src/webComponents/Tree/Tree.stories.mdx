@@ -1,11 +1,8 @@
-import { Title, Subtitle, Description, Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { Tree } from '@ui5/webcomponents-react/lib/Tree';
 import { ListMode } from '@ui5/webcomponents-react/lib/ListMode';
-import { ReactNode } from 'react';
 import { TreeItem } from '@ui5/webcomponents-react/lib/TreeItem';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
-import '@ui5/webcomponents-icons/dist/icons/copy';
-import '@ui5/webcomponents-icons/dist/icons/paste';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 
 <Meta
@@ -13,13 +10,10 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   component={Tree}
   subcomponents={{ TreeItem }}
   argTypes={{
-    ...createSelectArgTypes({ mode: ListMode }),
-    children: { type: null },
-    header: { type: null }
+    ...createSelectArgTypes({ mode: ListMode })
   }}
   args={{
-    mode: ListMode.None,
-    footerText: 'This is a footer text'
+    mode: ListMode.None
   }}
 />
 
@@ -27,30 +21,17 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
 
 <Canvas>
   <Story name="Default">
-    {(args) => (
-      <Tree {...args}>
-        <TreeItem expanded text="Tree 1" icon="paste" selected>
-          <TreeItem expanded text="Tree 1.1" selected>
-            <TreeItem text="Tree 1.1.1"></TreeItem>
-            <TreeItem text="Tree 1.1.2"></TreeItem>
-          </TreeItem>
-        </TreeItem>
-        <TreeItem text="Tree 2" icon="copy">
-          <TreeItem text="Tree 2.1">
-            <TreeItem text="Tree 2.1.1"></TreeItem>
-            <TreeItem text="Tree 2.1.2">
-              <TreeItem text="Tree 2.1.2.1"></TreeItem>
-              <TreeItem text="Tree 2.1.2.2"></TreeItem>
-              <TreeItem text="Tree 2.1.2.3"></TreeItem>
-              <TreeItem text="Tree 2.1.2.5"></TreeItem>
-            </TreeItem>
-          </TreeItem>
-          <TreeItem text="Tree 2.2"></TreeItem>
-        </TreeItem>
-        <TreeItem expanded text="Tree 3 (no icon)"></TreeItem>
-      </Tree>
-    )}
+    {(args) => {
+      return <Tree {...args} />;
+    }}
   </Story>
 </Canvas>
 
 <ArgsTable story="." />
+<h3>Keyboard Handling</h3>
+<code>ui5-tree</code> provides advanced keyboard handling. You can use the up/down arrow keys to navigate to the
+previous/next item in the list, representing the tree, regardless of nesting, but also the left/right arrow keys to
+drill down and go up the tree. If you press the right arrow on a tree node, it will expand, if not expanded. If you
+press the right arrow key once more, the first child of this node will be selected. If you press the left arrow on a
+tree node, it will collapse, if expanded. If you press the left arrow key once more, the parent node of this tree node
+will be selected.

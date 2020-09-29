@@ -1,0 +1,39 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { ResponsivePopover } from '@ui5/webcomponents-react/lib/ResponsivePopover';
+import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/lib/PopoverHorizontalAlign';
+import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
+import { PopoverVerticalAlign } from '@ui5/webcomponents-react/lib/PopoverVerticalAlign';
+
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+
+<Meta
+  title="UI5 Web Components / ResponsivePopover"
+  component={ResponsivePopover}
+  argTypes={{
+    ...createSelectArgTypes({
+      horizontalAlign: PopoverHorizontalAlign,
+      placementType: PlacementType,
+      verticalAlign: PopoverVerticalAlign
+    })
+  }}
+  args={{
+    horizontalAlign: PopoverHorizontalAlign.Center,
+    placementType: PlacementType.Right,
+    verticalAlign: PopoverVerticalAlign.Center
+  }}
+/>
+
+<DocsHeader />
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return <ResponsivePopover {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="." />
+<h3>Usage</h3>
+Use it when you want to make sure that all the content is visible on any device.

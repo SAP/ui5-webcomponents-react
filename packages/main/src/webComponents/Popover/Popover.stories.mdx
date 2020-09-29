@@ -1,0 +1,48 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { Popover } from '@ui5/webcomponents-react/lib/Popover';
+import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/lib/PopoverHorizontalAlign';
+import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
+import { PopoverVerticalAlign } from '@ui5/webcomponents-react/lib/PopoverVerticalAlign';
+
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+
+<Meta
+  title="UI5 Web Components / Popover"
+  component={Popover}
+  argTypes={{
+    ...createSelectArgTypes({
+      horizontalAlign: PopoverHorizontalAlign,
+      placementType: PlacementType,
+      verticalAlign: PopoverVerticalAlign
+    })
+  }}
+  args={{
+    horizontalAlign: PopoverHorizontalAlign.Center,
+    placementType: PlacementType.Right,
+    verticalAlign: PopoverVerticalAlign.Center
+  }}
+/>
+
+<DocsHeader />
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return <Popover {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="." />
+<h3>Structure</h3>
+
+The popover has three main areas:
+<ul>
+  <li>Header (optional)</li>
+  <li>Content</li>
+  <li>Footer (optional)</li>
+</ul>
+
+<b>Note:</b> The <code>ui5-popover</code> is closed when the user clicks or taps outside the popover or selects an
+action within the popover. You can prevent this with the <code>modal</code> property.

@@ -1,0 +1,32 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { UploadCollection } from '@ui5/webcomponents-react/lib/UploadCollection';
+import { ListMode } from '@ui5/webcomponents-react/lib/ListMode';
+import { UploadCollectionItem } from '@ui5/webcomponents-react/lib/UploadCollectionItem';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+
+<Meta
+  title="UI5 Web Components / UploadCollection"
+  component={UploadCollection}
+  subcomponents={{ UploadCollectionItem }}
+  argTypes={{
+    ...createSelectArgTypes({ mode: ListMode })
+  }}
+  args={{
+    mode: ListMode.None
+  }}
+/>
+
+<DocsHeader />
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return <UploadCollection {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="." />
+<h3>ES6 Module Import</h3>
+<code>import @ui5/webcomponents-fiori/dist/UploadCollection.js";</code>

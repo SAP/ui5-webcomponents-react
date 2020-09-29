@@ -1,8 +1,9 @@
-import { ListItemTypes } from '@ui5/webcomponents-react/lib/ListItemTypes';
-import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/StandardListItem';
-import { FC, ReactNode } from 'react';
+import { FC } from 'react';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import { ListItemTypes } from '@ui5/webcomponents-react/lib/ListItemTypes';
+import { ReactNode } from 'react';
 
 export interface StandardListItemPropTypes extends WithWebComponentPropTypes {
   /**
@@ -10,7 +11,7 @@ export interface StandardListItemPropTypes extends WithWebComponentPropTypes {
    */
   description?: string;
   /**
-   * Defines the <code>icon</code> source URI. <br><br> <b>Note:</b> SAP-icons font provides numerous buil-in icons. To find all the available icons, see the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
+   * Defines the <code>icon</code> source URI. <br><br> <b>Note:</b> SAP-icons font provides numerous buil-in icons. To find all the available icons, see the <StandardListItemnk target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</StandardListItemnk>.
    */
   icon?: string;
   /**
@@ -38,7 +39,7 @@ export interface StandardListItemPropTypes extends WithWebComponentPropTypes {
    */
   selected?: boolean;
   /**
-   * Defines the text of the <code>ui5-li</code>. <br><br> <b>Note:</b> Аlthough this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
+   * Defines the text of the <code>StandardListItem</code>. <br><br> <b>Note:</b> Аlthough this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
   children?: ReactNode | ReactNode[];
   /**
@@ -48,8 +49,11 @@ export interface StandardListItemPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/StandardListItem" target="_blank">UI5 Web Components Playground</a>
- */
+     * The <code>StandardListItem</code> represents the simplest type of item for a <code>StandardListItemst</code>. This is a
+list item, providing the most common use cases such as <code>text</code>, <code>image</code> and <code>icon</code>
+     
+     * <a href="https://sap.github.io/ui5-webcomponents/playground/components/StandardListItem" target="_blank">UI5 Web Components Playground</a>
+     */
 const StandardListItem: FC<StandardListItemPropTypes> = withWebComponent<StandardListItemPropTypes>(
   'ui5-li',
   ['description', 'icon', 'image', 'info', 'infoState', 'type'],

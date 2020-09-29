@@ -1,0 +1,34 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { Carousel } from '@ui5/webcomponents-react/lib/Carousel';
+import { CarouselArrowsPlacement } from '@ui5/webcomponents-react/lib/CarouselArrowsPlacement';
+
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+
+<Meta
+  title="UI5 Web Components / Carousel"
+  component={Carousel}
+  argTypes={{
+    ...createSelectArgTypes({ arrowsPlacement: CarouselArrowsPlacement })
+  }}
+  args={{
+    arrowsPlacement: CarouselArrowsPlacement.Content
+  }}
+/>
+
+<DocsHeader />
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return <Carousel {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="." />
+<h3>Usage</h3>
+
+When to use - The items you want to display are very different from each other. - You want to display the items one
+after the other. When not to use - The items you want to display need to be visible at the same time. - The items you
+want to display are uniform and very similar For the <code>Carousel</code>

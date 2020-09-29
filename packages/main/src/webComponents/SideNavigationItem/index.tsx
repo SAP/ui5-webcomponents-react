@@ -1,6 +1,7 @@
-import '@ui5/webcomponents-fiori/dist/SideNavigationItem';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import { FC, ReactNode } from 'react';
+import '@ui5/webcomponents-fiori/dist/SideNavigationItem';
+import { FC } from 'react';
+import { ReactNode } from 'react';
 
 export interface SideNavigationItemPropTypes extends WithWebComponentPropTypes {
   /**
@@ -28,8 +29,11 @@ export interface SideNavigationItemPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/SideNavigationItem" target="_blank">UI5 Web Components Playground</a>
- */
+     * The <code>SideNavigationItem</code> is used within <code>SideNavigation</code> only. Via the
+<code>SideNavigationItem</code> you control the content of the <code>SideNavigation</code>.
+     
+     * <a href="https://sap.github.io/ui5-webcomponents/playground/components/SideNavigationItem" target="_blank">UI5 Web Components Playground</a>
+     */
 const SideNavigationItem: FC<SideNavigationItemPropTypes> = withWebComponent<SideNavigationItemPropTypes>(
   'ui5-side-navigation-item',
   ['icon', 'text'],

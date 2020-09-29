@@ -1,0 +1,35 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { Badge } from '@ui5/webcomponents-react/lib/Badge';
+
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+
+<Meta
+  title="UI5 Web Components / Badge"
+  component={Badge}
+  argTypes={{
+    ...createSelectArgTypes({})
+  }}
+  args={{}}
+/>
+
+<DocsHeader />
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return <Badge {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="." />
+<h3>Usage Guidelines</h3>
+<ul>
+  <li>If the text is longer than the width of the component, it doesn’t wrap, it shows ellipsis.</li>
+  <li>
+    When truncated, the full text is not visible, therefore, it’s recommended to make more space for longer texts to be
+    fully displayed.
+  </li>
+  <li>Colors are not semantic and have no visual representation in High Contrast Black (sap_belize_hcb) theme.</li>
+</ul>

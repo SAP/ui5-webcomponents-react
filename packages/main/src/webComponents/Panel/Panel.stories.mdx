@@ -1,0 +1,36 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { Panel } from '@ui5/webcomponents-react/lib/Panel';
+import { PanelAccessibleRoles } from '@ui5/webcomponents-react/lib/PanelAccessibleRoles';
+import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
+
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+
+<Meta
+  title="UI5 Web Components / Panel"
+  component={Panel}
+  argTypes={{
+    ...createSelectArgTypes({ accessibleRole: PanelAccessibleRoles, headerLevel: TitleLevel })
+  }}
+  args={{
+    accessibleRole: PanelAccessibleRoles.Form,
+    headerLevel: TitleLevel.H2
+  }}
+/>
+
+<DocsHeader />
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return <Panel {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="." />
+<h3>Guidelines:</h3>
+<ul>
+  <li>Nesting two or more panels is not recommended.</li>
+  <li>Do not stack too many panels on one page.</li>
+</ul>

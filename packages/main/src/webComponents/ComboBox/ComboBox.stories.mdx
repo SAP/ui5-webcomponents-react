@@ -1,0 +1,40 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { ComboBox } from '@ui5/webcomponents-react/lib/ComboBox';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import { ComboBoxItem } from '@ui5/webcomponents-react/lib/ComboBoxItem';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+
+<Meta
+  title="UI5 Web Components / ComboBox"
+  component={ComboBox}
+  subcomponents={{ ComboBoxItem }}
+  argTypes={{
+    ...createSelectArgTypes({ valueState: ValueState })
+  }}
+  args={{
+    valueState: ValueState.None
+  }}
+/>
+
+<DocsHeader />
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return <ComboBox {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="." />
+<h3>Structure</h3>
+The <code>ui5-combobox</code> consists of the following elements:
+<ul>
+  <li>
+    Input field - displays the selected option or a custom user entry. Users can type to narrow down the list or enter
+    their own value.
+  </li>
+  <li>Drop-down arrow - expands\collapses the option list.</li>
+  <li>Option list - the list of available options.</li>
+</ul>

@@ -1,0 +1,29 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { Card } from '@ui5/webcomponents-react/lib/Card';
+
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+
+<Meta
+  title="UI5 Web Components / Card"
+  component={Card}
+  argTypes={{
+    ...createSelectArgTypes({})
+  }}
+  args={{}}
+/>
+
+<DocsHeader />
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return <Card {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="." />
+<h3>Keyboard handling</h3>
+In case you enable <code>headerInteractive</code> property, you can press the <code>ui5-card</code> header by Space and
+Enter keys.

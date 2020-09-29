@@ -1,14 +1,16 @@
-import { Title, Subtitle, Description, Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { RatingIndicator } from '@ui5/webcomponents-react/lib/RatingIndicator';
+
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 
 <Meta
   title="UI5 Web Components / RatingIndicator"
   component={RatingIndicator}
-  args={{
-    value: 3
+  argTypes={{
+    ...createSelectArgTypes({})
   }}
+  args={{}}
 />
 
 <DocsHeader />
@@ -22,3 +24,5 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
 </Canvas>
 
 <ArgsTable story="." />
+<h3>Usage</h3>
+The reccomended number of icons is between 5 and 7.

@@ -1,0 +1,29 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { SegmentedButton } from '@ui5/webcomponents-react/lib/SegmentedButton';
+
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+
+<Meta
+  title="UI5 Web Components / SegmentedButton"
+  component={SegmentedButton}
+  argTypes={{
+    ...createSelectArgTypes({})
+  }}
+  args={{}}
+/>
+
+<DocsHeader />
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return <SegmentedButton {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="." />
+<h3>ES6 Module Import</h3>
+
+<code>import "@ui5/webcomponents/dist/SegmentedButton";</code>

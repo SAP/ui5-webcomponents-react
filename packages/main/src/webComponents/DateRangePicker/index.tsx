@@ -1,8 +1,9 @@
-import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';
-import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/DateRangePicker';
-import { FC, ReactNode } from 'react';
+import { FC } from 'react';
+import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import { ReactNode } from 'react';
 
 export interface DateRangePickerPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput'> {
   /**
@@ -10,7 +11,7 @@ export interface DateRangePickerPropTypes extends Omit<WithWebComponentPropTypes
    */
   delimiter?: string;
   /**
-   * Determines whether the <code>ui5-date-picker</code> is displayed as disabled.
+   * Determines whether the <code>DatePicker</code> is displayed as disabled.
    */
   disabled?: boolean;
   /**
@@ -32,7 +33,7 @@ export interface DateRangePickerPropTypes extends Omit<WithWebComponentPropTypes
    */
   minDate?: string;
   /**
-   * Determines the name with which the <code>ui5-date-picker</code> will be submitted in an HTML form.<br/><br/>
+   * Determines the name with which the <code>DatePicker</code> will be submitted in an HTML form.<br/><br/>
    *
    * <b>Important:</b> For the <code>name</code> property to have effect, you must add the following import to your project: <code>import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";</code><br/><br/>
    *
@@ -40,7 +41,7 @@ export interface DateRangePickerPropTypes extends Omit<WithWebComponentPropTypes
    */
   name?: string;
   /**
-   * Defines a short hint, intended to aid the user with data entry when the <code>ui5-date-picker</code> has no value.<br/><br/>
+   * Defines a short hint, intended to aid the user with data entry when the <code>DatePicker</code> has no value.<br/><br/>
    *
    * <b>Note:</b> When no placeholder is set, the format pattern is displayed as a placeholder. Passing an empty string as the value of this property will make the <code>ui5-date-picker</code> appear empty - without placeholder or format pattern.
    */
@@ -50,7 +51,7 @@ export interface DateRangePickerPropTypes extends Omit<WithWebComponentPropTypes
    */
   primaryCalendarType?: CalendarType;
   /**
-   * Determines whether the <code>ui5-date-picker</code> is displayed as read-only.
+   * Determines whether the <code>DatePicker</code> is displayed as read-only.
    */
   readonly?: boolean;
   /**
@@ -58,11 +59,11 @@ export interface DateRangePickerPropTypes extends Omit<WithWebComponentPropTypes
    */
   value?: string;
   /**
-   * Defines the value state of the <code>ui5-date-picker</code>. <br><br> Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>
+   * Defines the value state of the <code>DatePicker</code>. <br><br> Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>
    */
   valueState?: ValueState;
   /**
-   * Defines the value state message that will be displayed as pop up under the <code>ui5-date-picker</code>. <br><br><br/><br/>
+   * Defines the value state message that will be displayed as pop up under the <code>DatePicker</code>. <br><br><br/><br/>
    *
    * <b>Note:</b> If not specified, a default text (in the respective language) will be displayed. <br> <b>Note:</b> The <code>valueStateMessage</code> would be displayed, when the <code>ui5-date-picker</code> is in <code>Information</code>, <code>Warning</code> or <code>Error</code> value state.
    */
@@ -72,14 +73,17 @@ export interface DateRangePickerPropTypes extends Omit<WithWebComponentPropTypes
    */
   onChange?: (event: CustomEvent<{}>) => void;
   /**
-   * Fired when the value of the <code>ui5-date-picker</code> is changed at each key stroke.
+   * Fired when the value of the <code>DatePicker</code> is changed at each key stroke.
    */
   onInput?: (event: CustomEvent<{}>) => void;
 }
 
 /**
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/DateRangePicker" target="_blank">UI5 Web Components Playground</a>
- */
+     * The DateRangePicker enables the users to enter a localized date range using touch, mouse, keyboard input, or by
+selecting a date range in the calendar.
+     
+     * <a href="https://sap.github.io/ui5-webcomponents/playground/components/DateRangePicker" target="_blank">UI5 Web Components Playground</a>
+     */
 const DateRangePicker: FC<DateRangePickerPropTypes> = withWebComponent<DateRangePickerPropTypes>(
   'ui5-daterange-picker',
   [

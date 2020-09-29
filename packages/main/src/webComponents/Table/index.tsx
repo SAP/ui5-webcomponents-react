@@ -1,6 +1,7 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/Table';
-import { FC, ReactNode } from 'react';
+import { FC } from 'react';
+import { ReactNode } from 'react';
 
 export interface TablePropTypes extends WithWebComponentPropTypes {
   /**
@@ -16,15 +17,15 @@ export interface TablePropTypes extends WithWebComponentPropTypes {
    */
   stickyColumnHeader?: boolean;
   /**
-   * Defines the configuration for the columns of the <code>ui5-table</code>. <br><br> <b>Note:</b> Use <code>ui5-table-column</code> for the intended design.
+   * Defines the configuration for the columns of the <code>Table</code>. <br><br> <b>Note:</b> Use <code>Table-column</code> for the intended design.
    */
   columns?: ReactNode | ReactNode[];
   /**
-   * Defines the <code>ui5-table</code> rows. <br><br> <b>Note:</b> Use <code>ui5-table-row</code> for the intended design.
+   * Defines the <code>Table</code> rows. <br><br> <b>Note:</b> Use <code>Table-row</code> for the intended design.
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Fired when the <code>ui5-table-column</code> is shown as a pop-in instead of hiding it.
+   * Fired when the <code>TableColumn</code> is shown as a pop-in instead of hiding it.
    */
   onPopinChange?: (event: CustomEvent<{ poppedColumns: unknown[] }>) => void;
   /**
@@ -34,8 +35,15 @@ export interface TablePropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Table" target="_blank">UI5 Web Components Playground</a>
- */
+     * The <code>Table</code> component provides a set of sophisticated and convenient functions for responsive table design.
+It provides a comprehensive set of features for displaying and dealing with vast amounts of data. <br /><br />
+To render the <code>Table</code> properly, the order of the <code>columns</code> should match with the order of the item
+<code>cells</code> in the <code>rows</code>. <br /><br />
+Desktop and tablet devices are supported. On tablets, special consideration should be given to the number of visible
+columns and rows due to the limited performance of some devices.
+     
+     * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Table" target="_blank">UI5 Web Components Playground</a>
+     */
 const Table: FC<TablePropTypes> = withWebComponent<TablePropTypes>(
   'ui5-table',
   ['noDataText'],

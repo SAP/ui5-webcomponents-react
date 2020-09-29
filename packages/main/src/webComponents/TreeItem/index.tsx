@@ -1,6 +1,7 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/TreeItem';
-import { FC, ReactNode } from 'react';
+import { FC } from 'react';
+import { ReactNode } from 'react';
 
 export interface TreeItemPropTypes extends WithWebComponentPropTypes {
   /**
@@ -16,7 +17,7 @@ export interface TreeItemPropTypes extends WithWebComponentPropTypes {
    */
   icon?: string;
   /**
-   * Defines whether the tree node is selected by the user. Only has effect if the <code>ui5-tree</code> is in one of the following modes: in <code>SingleSelect</code>, <code>SingleSelectBegin</code>, <code>SingleSelectEnd</code> and <code>MultiSelect</code>.
+   * Defines whether the tree node is selected by the user. Only has effect if the <code>Tree</code> is in one of the following modes: in <code>SingleSelect</code>, <code>SingleSelectBegin</code>, <code>SingleSelectEnd</code> and <code>MultiSelect</code>.
    */
   selected?: boolean;
   /**
@@ -24,14 +25,17 @@ export interface TreeItemPropTypes extends WithWebComponentPropTypes {
    */
   text?: string;
   /**
-   * Defines the items of this <code>ui5-tree-item</code>.
+   * Defines the items of this <code>TreeItem</code>.
    */
   children?: ReactNode | ReactNode[];
 }
 
 /**
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/TreeItem" target="_blank">UI5 Web Components Playground</a>
- */
+     * This is the item to use inside a <code>Tree</code>. You can represent an arbitrary tree structure by recursively nesting
+tree items.
+     
+     * <a href="https://sap.github.io/ui5-webcomponents/playground/components/TreeItem" target="_blank">UI5 Web Components Playground</a>
+     */
 const TreeItem: FC<TreeItemPropTypes> = withWebComponent<TreeItemPropTypes>(
   'ui5-tree-item',
   ['icon', 'text'],

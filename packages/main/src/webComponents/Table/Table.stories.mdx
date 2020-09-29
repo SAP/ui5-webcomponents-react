@@ -1,0 +1,36 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { Table } from '@ui5/webcomponents-react/lib/Table';
+
+import { TableColumn } from '@ui5/webcomponents-react/lib/TableColumn';
+import { TableRow } from '@ui5/webcomponents-react/lib/TableRow';
+import { TableCell } from '@ui5/webcomponents-react/lib/TableCell';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+
+<Meta
+  title="UI5 Web Components / Table"
+  component={Table}
+  subcomponents={{ TableColumn, TableRow, TableCell }}
+  argTypes={{
+    ...createSelectArgTypes({})
+  }}
+  args={{}}
+/>
+
+<DocsHeader />
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return <Table {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="." />
+<h3>ES6 Module Import</h3>
+
+<code>import "@ui5/webcomponents/dist/Table.js";</code> <br />
+<code>import "@ui5/webcomponents/dist/TableColumn.js";</code> (for <code>ui5-table-column</code>) <br />
+<code>import "@ui5/webcomponents/dist/TableRow.js";</code> (for <code>ui5-table-row</code>) <br />
+<code>import "@ui5/webcomponents/dist/TableCell.js";</code> (for <code>ui5-table-cell</code>)

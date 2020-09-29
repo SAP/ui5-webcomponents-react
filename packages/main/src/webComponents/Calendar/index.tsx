@@ -1,7 +1,7 @@
-import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/Calendar';
 import { FC } from 'react';
+import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';
 
 export interface CalendarPropTypes extends WithWebComponentPropTypes {
   /**
@@ -37,8 +37,11 @@ export interface CalendarPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Calendar" target="_blank">UI5 Web Components Playground</a>
- */
+     * The <code>Calendar</code> can be used standale to display the years, months, weeks and days, but the main purpose of the
+<code>Calendar</code> is to be used within a <code>DatePicker</code>
+     
+     * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Calendar" target="_blank">UI5 Web Components Playground</a>
+     */
 const Calendar: FC<CalendarPropTypes> = withWebComponent<CalendarPropTypes>(
   'ui5-calendar',
   ['maxDate', 'minDate', 'primaryCalendarType', 'selectedDates', 'timestamp'],

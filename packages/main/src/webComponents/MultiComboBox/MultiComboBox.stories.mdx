@@ -1,0 +1,38 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { MultiComboBox } from '@ui5/webcomponents-react/lib/MultiComboBox';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import { MultiComboBoxItem } from '@ui5/webcomponents-react/lib/MultiComboBoxItem';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+
+<Meta
+  title="UI5 Web Components / MultiComboBox"
+  component={MultiComboBox}
+  subcomponents={{ MultiComboBoxItem }}
+  argTypes={{
+    ...createSelectArgTypes({ valueState: ValueState })
+  }}
+  args={{
+    valueState: ValueState.None
+  }}
+/>
+
+<DocsHeader />
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return <MultiComboBox {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="." />
+<h3>Structure</h3>
+The <code>ui5-multi-combobox</code> consists of the following elements:
+<ul>
+  <li>Tokenizer - a list of tokens with selected options.</li>
+  <li>Input field - displays the selected option/s as token/s. Users can type to filter the list.</li>
+  <li>Drop-down arrow - expands\collapses the option list.</li>
+  <li>Option list - the list of available options.</li>
+</ul>

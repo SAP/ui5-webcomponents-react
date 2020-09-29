@@ -1,23 +1,18 @@
-import { Title, Subtitle, Description, Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { FlexibleColumnLayout } from '@ui5/webcomponents-react/lib/FlexibleColumnLayout';
 import { FCLLayout } from '@ui5/webcomponents-react/lib/FCLLayout';
-import { Label } from '@ui5/webcomponents-react/lib/Label';
-import { List } from '@ui5/webcomponents-react/lib/List';
-import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
-import { DocsHeader } from '@shared/stories/DocsHeader';
+
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
 
 <Meta
   title="UI5 Web Components / FlexibleColumnLayout"
   component={FlexibleColumnLayout}
   argTypes={{
-    ...createSelectArgTypes({ layout: FCLLayout }),
-    startColumn: { type: null },
-    midColumn: { type: null },
-    endColumn: { type: null }
+    ...createSelectArgTypes({ layout: FCLLayout })
   }}
   args={{
-    layout: FCLLayout.ThreeColumnsMidExpanded
+    layout: FCLLayout.OneColumn
   }}
 />
 
@@ -25,33 +20,15 @@ import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
 <Canvas>
   <Story name="Default">
-    {(args) => (
-      <FlexibleColumnLayout
-        {...args}
-        startColumn={
-          <List headerText="Start Column List">
-            <StandardListItem>List Item 1</StandardListItem>
-            <StandardListItem>List Item 2</StandardListItem>
-            <StandardListItem>List Item 3</StandardListItem>
-          </List>
-        }
-        midColumn={
-          <List headerText="Mid Column List">
-            <StandardListItem>List Item 1</StandardListItem>
-            <StandardListItem>List Item 2</StandardListItem>
-            <StandardListItem>List Item 3</StandardListItem>
-          </List>
-        }
-        endColumn={
-          <List headerText="End Column List">
-            <StandardListItem>List Item 1</StandardListItem>
-            <StandardListItem>List Item 2</StandardListItem>
-            <StandardListItem>List Item 3</StandardListItem>
-          </List>
-        }
-      />
-    )}
+    {(args) => {
+      return <FlexibleColumnLayout {...args} />;
+    }}
   </Story>
 </Canvas>
 
 <ArgsTable story="." />
+<h3>Usage</h3>
+
+Use this component for applications that need to display several logical levels of related information side by side
+(e.g. list of items, item, sub-item, etc.). The Component is flexible in a sense that the application can focus the
+user's attention on one particular column.

@@ -2,8 +2,6 @@
 
 exports[`Icon Basic Test (generated) 1`] = `
 <DocumentFragment>
-  <ui5-icon
-    name="add"
-  />
+  <ui5-icon />
 </DocumentFragment>
 `;

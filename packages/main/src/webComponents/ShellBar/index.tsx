@@ -1,6 +1,7 @@
-import '@ui5/webcomponents-fiori/dist/ShellBar';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import { FC, ReactNode } from 'react';
+import '@ui5/webcomponents-fiori/dist/ShellBar';
+import { FC } from 'react';
+import { ReactNode } from 'react';
 
 export interface ShellBarPropTypes extends WithWebComponentPropTypes {
   /**
@@ -28,11 +29,11 @@ export interface ShellBarPropTypes extends WithWebComponentPropTypes {
    */
   showProductSwitch?: boolean;
   /**
-   * Defines the <code>ui5-shellbar</code> aditional items. <br><br> <b>Note:</b> You can use the &nbsp;&lt;ui5-shellbar-item>&lt;/ui5-shellbar-item>.
+   * Defines the <code>ShellBar</code> aditional items. <br><br> <b>Note:</b> You can use the &nbsp;&lt;ShellBar-item>&lt;/ShellBar-item>.
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Defines the logo of the <code>ui5-shellbar</code>. For example, you can use <code>ui5-avatar</code> or <code>img</code> elements as logo.
+   * Defines the logo of the <code>ShellBar</code>. For example, you can use <code>Avatar</code> or <code>img</code> elements as logo.
    */
   logo?: ReactNode;
   /**
@@ -40,15 +41,15 @@ export interface ShellBarPropTypes extends WithWebComponentPropTypes {
    */
   menuItems?: ReactNode | ReactNode[];
   /**
-   * You can pass <code>ui5-avatar</code> to set the profile image/icon. If no profile slot is set - profile will be excluded from actions.
+   * You can pass <code>Avatar</code> to set the profile image/icon. If no profile slot is set - profile will be excluded from actions.
    */
   profile?: ReactNode;
   /**
-   * Defines the <code>ui5-input</code>, that will be used as a search field.
+   * Defines the <code>Input</code>, that will be used as a search field.
    */
   searchField?: ReactNode | ReactNode[];
   /**
-   * Defines a <code>ui5-button</code> in the bar that will be placed in the beginning. We encourage this slot to be used for a back or home button. It gets overstyled to match ShellBar's styling.
+   * Defines a <code>Button</code> in the bar that will be placed in the beginning. We encourage this slot to be used for a back or home button. It gets overstyled to match ShellBar's styling.
    */
   startButton?: ReactNode | ReactNode[];
   /**
@@ -78,8 +79,11 @@ export interface ShellBarPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/ShellBar" target="_blank">UI5 Web Components Playground</a>
- */
+     * The <code>ShellBar</code> is meant to serve as an application header and includes numerous built-in features, such as:
+logo, profile image/icon, title, search field, notifications and so on. <br /><br />
+     
+     * <a href="https://sap.github.io/ui5-webcomponents/playground/components/ShellBar" target="_blank">UI5 Web Components Playground</a>
+     */
 const ShellBar: FC<ShellBarPropTypes> = withWebComponent<ShellBarPropTypes>(
   'ui5-shellbar',
   ['notificationCount', 'primaryTitle', 'secondaryTitle'],

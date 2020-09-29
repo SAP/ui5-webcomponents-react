@@ -1,7 +1,8 @@
-import '@ui5/webcomponents-fiori/dist/NotificationListGroupItem';
-import { Priority } from '@ui5/webcomponents-react/lib/Priority';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import { FC, ReactNode } from 'react';
+import '@ui5/webcomponents-fiori/dist/NotificationListGroupItem';
+import { FC } from 'react';
+import { Priority } from '@ui5/webcomponents-react/lib/Priority';
+import { ReactNode } from 'react';
 
 export interface NotificationListGroupItemPropTypes extends WithWebComponentPropTypes {
   /**
@@ -33,7 +34,7 @@ export interface NotificationListGroupItemPropTypes extends WithWebComponentProp
    */
   selected?: boolean;
   /**
-   * Defines the items of the <code>ui5-li-notification-group</code>, usually <code>ui5-li-notification</code> items.
+   * Defines the items of the <code>NotificationListGroupItem</code>, usually <code>NotificationListItem</code> items.
    */
   children?: ReactNode | ReactNode[];
   /**
@@ -41,7 +42,7 @@ export interface NotificationListGroupItemPropTypes extends WithWebComponentProp
    */
   actions?: ReactNode;
   /**
-   * Fired when the <code>ui5-li-notification-group</code> is expanded/collapsed by user interaction.
+   * Fired when the <code>NotificationListGroupItem</code> is expanded/collapsed by user interaction.
    */
   onToggle?: (event: CustomEvent<{}>) => void;
   /**
@@ -51,8 +52,20 @@ export interface NotificationListGroupItemPropTypes extends WithWebComponentProp
 }
 
 /**
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/NotificationListGroupItem" target="_blank">UI5 Web Components Playground</a>
- */
+     * The <code>NotificationListGroupItem</code> is a special type of list item, that unlike others can group items within
+self, usually <code>NotificationListItem</code> items. <br />
+
+The component consists of:
+<ul>
+  <li><code>Toggle</code> button to expand and collapse the group</li>
+  <li><code>Priority</code> icon to display the priority of the group</li>
+  <li><code>Heading</code> to entitle the group</li>
+  <li>Custom actions - with the use of <code>ui5-notification-overflow-action</code></li>
+  <li>Items of the group</li>
+</ul>
+     
+     * <a href="https://sap.github.io/ui5-webcomponents/playground/components/NotificationListGroupItem" target="_blank">UI5 Web Components Playground</a>
+     */
 const NotificationListGroupItem: FC<NotificationListGroupItemPropTypes> = withWebComponent<
   NotificationListGroupItemPropTypes
 >(

@@ -1,0 +1,35 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { RadioButton } from '@ui5/webcomponents-react/lib/RadioButton';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+
+<Meta
+  title="UI5 Web Components / RadioButton"
+  component={RadioButton}
+  argTypes={{
+    ...createSelectArgTypes({ valueState: ValueState })
+  }}
+  args={{
+    valueState: ValueState.None
+  }}
+/>
+
+<DocsHeader />
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return <RadioButton {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="." />
+<h3>Keyboard Handling</h3>
+
+Once the <code>ui5-radiobutton</code> is on focus, it might be selected by pressing the Space and Enter keys. <br />
+The Arrow Down/Arrow Up and Arrow Left/Arrow Right keys can be used to change selection between next/previous radio
+buttons in one group, while TAB and SHIFT + TAB can be used to enter or leave the radio button group. <br />
+<b>Note:</b> On entering radio button group, the focus goes to the currently selected radio button.

@@ -1,13 +1,14 @@
-import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
-import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/lib/PopoverHorizontalAlign';
-import { PopoverVerticalAlign } from '@ui5/webcomponents-react/lib/PopoverVerticalAlign';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/ResponsivePopover';
-import { FC, ReactNode } from 'react';
+import { FC } from 'react';
+import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/lib/PopoverHorizontalAlign';
+import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
+import { PopoverVerticalAlign } from '@ui5/webcomponents-react/lib/PopoverVerticalAlign';
+import { ReactNode } from 'react';
 
 export interface ResponsivePopoverPropTypes extends WithWebComponentPropTypes {
   /**
-   * Determines if there is no enough space, the <code>ui5-popover</code> can be placed over the target.
+   * Determines if there is no enough space, the <code>Popover</code> can be placed over the target.
    */
   allowTargetOverlap?: boolean;
   /**
@@ -15,23 +16,23 @@ export interface ResponsivePopoverPropTypes extends WithWebComponentPropTypes {
    */
   headerText?: string;
   /**
-   * Determines the horizontal alignment of the <code>ui5-popover</code>. <br><br> Available options are: <ul> <li><code>Center</code></li> <li><code>Left</code></li> <li><code>Right</code></li> <li><code>Stretch</code></li> </ul>
+   * Determines the horizontal alignment of the <code>Popover</code>. <br><br> Available options are: <ul> <li><code>Center</code></li> <li><code>Left</code></li> <li><code>Right</code></li> <li><code>Stretch</code></li> </ul>
    */
   horizontalAlign?: PopoverHorizontalAlign;
   /**
-   * Defines whether the <code>ui5-popover</code> should close when clicking/tapping outside of the popover. If enabled, it blocks any interaction with the background.
+   * Defines whether the <code>Popover</code> should close when clicking/tapping outside of the popover. If enabled, it blocks any interaction with the background.
    */
   modal?: boolean;
   /**
-   * Determines whether the <code>ui5-popover</code> arrow is hidden.
+   * Determines whether the <code>Popover</code> arrow is hidden.
    */
   noArrow?: boolean;
   /**
-   * Determines on which side the <code>ui5-popover</code> is placed at. <br><br> Available options are: <ul> <li><code>Left</code></li> <li><code>Right</code></li> <li><code>Top</code></li> <li><code>Bottom</code></li> </ul>
+   * Determines on which side the <code>Popover</code> is placed at. <br><br> Available options are: <ul> <li><code>Left</code></li> <li><code>Right</code></li> <li><code>Top</code></li> <li><code>Bottom</code></li> </ul>
    */
   placementType?: PlacementType;
   /**
-   * Determines the vertical alignment of the <code>ui5-popover</code>. <br><br> Available options are: <ul> <li><code>Center</code></li> <li><code>Top</code></li> <li><code>Bottom</code></li> <li><code>Stretch</code></li> </ul>
+   * Determines the vertical alignment of the <code>Popover</code>. <br><br> Available options are: <ul> <li><code>Center</code></li> <li><code>Top</code></li> <li><code>Bottom</code></li> <li><code>Stretch</code></li> </ul>
    */
   verticalAlign?: PopoverVerticalAlign;
   /**
@@ -73,8 +74,11 @@ export interface ResponsivePopoverPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/ResponsivePopover" target="_blank">UI5 Web Components Playground</a>
- */
+     * The <code>ResponsivePopover</code> acts as a Popover on desktop and tablet, while on phone it acts as a Dialog. The
+component improves tremendously the user experience on mobile.
+     
+     * <a href="https://sap.github.io/ui5-webcomponents/playground/components/ResponsivePopover" target="_blank">UI5 Web Components Playground</a>
+     */
 const ResponsivePopover: FC<ResponsivePopoverPropTypes> = withWebComponent<ResponsivePopoverPropTypes>(
   'ui5-responsive-popover',
   ['headerText', 'horizontalAlign', 'placementType', 'verticalAlign', 'initialFocus'],

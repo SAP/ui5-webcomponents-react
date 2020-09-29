@@ -1,0 +1,40 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { TabContainer } from '@ui5/webcomponents-react/lib/TabContainer';
+import { TabLayout } from '@ui5/webcomponents-react/lib/TabLayout';
+import { TabContainerTabsPlacement } from '@ui5/webcomponents-react/lib/TabContainerTabsPlacement';
+import { Tab } from '@ui5/webcomponents-react/lib/Tab';
+import { TabSeparator } from '@ui5/webcomponents-react/lib/TabSeparator';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+
+<Meta
+  title="UI5 Web Components / TabContainer"
+  component={TabContainer}
+  subcomponents={{ Tab, TabSeparator }}
+  argTypes={{
+    ...createSelectArgTypes({ tabLayout: TabLayout, tabsPlacement: TabContainerTabsPlacement })
+  }}
+  args={{
+    tabLayout: TabLayout.Standard,
+    tabsPlacement: TabContainerTabsPlacement.Top
+  }}
+/>
+
+<DocsHeader />
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return <TabContainer {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="." />
+<h3>Structure</h3>
+
+The <code>ui5-tabcontainer</code> can hold two types of entities:
+<ul>
+  <li><code>ui5-tab</code> - contains all the information on an item (text and icon)</li>
+  <li><code>ui5-tab-separator</code> - used to separate tabs with a vertical line</li>
+</ul>

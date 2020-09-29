@@ -1,0 +1,33 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { MessageStrip } from '@ui5/webcomponents-react/lib/MessageStrip';
+import { MessageStripType } from '@ui5/webcomponents-react/lib/MessageStripType';
+
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+
+<Meta
+  title="UI5 Web Components / MessageStrip"
+  component={MessageStrip}
+  argTypes={{
+    ...createSelectArgTypes({ type: MessageStripType })
+  }}
+  args={{
+    type: MessageStripType.Information
+  }}
+/>
+
+<DocsHeader />
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return <MessageStrip {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="." />
+<h3>Usage</h3>
+
+For the <code>ui5-messagestrip</code> component, you can define whether it displays an icon in the beginning and a close
+button. Moreover, its size and background can be controlled with CSS.

@@ -1,0 +1,38 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { TimePicker } from '@ui5/webcomponents-react/lib/TimePicker';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+
+<Meta
+  title="UI5 Web Components / TimePicker"
+  component={TimePicker}
+  argTypes={{
+    ...createSelectArgTypes({ valueState: ValueState })
+  }}
+  args={{
+    valueState: ValueState.None
+  }}
+/>
+
+<DocsHeader />
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return <TimePicker {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="." />
+<h3>Usage</h3>
+The user can enter a time by:
+<ul>
+  <li>Using the sliders that opens in a popup</li>
+  <li>Typing it in directly in the input field</li>
+</ul>
+<br /><br />
+When the user makes an entry and chooses the enter key, the sliders shows the corresponding time. When the user directly
+triggers the sliders display, the actual time is displayed. For the <code>ui5-time-picker</code>

@@ -1,14 +1,9 @@
-import { Title, Subtitle, Description, Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { SideNavigation } from '@ui5/webcomponents-react/lib/SideNavigation';
+
 import { SideNavigationItem } from '@ui5/webcomponents-react/lib/SideNavigationItem';
 import { SideNavigationSubItem } from '@ui5/webcomponents-react/lib/SideNavigationSubItem';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
-import '@ui5/webcomponents-icons/dist/icons/home';
-import '@ui5/webcomponents-icons/dist/icons/group';
-import '@ui5/webcomponents-icons/dist/icons/locate-me';
-import '@ui5/webcomponents-icons/dist/icons/calendar';
-import '@ui5/webcomponents-icons/dist/icons/chain-link';
-import '@ui5/webcomponents-icons/dist/icons/history';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 
 <Meta
@@ -16,10 +11,9 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   component={SideNavigation}
   subcomponents={{ SideNavigationItem, SideNavigationSubItem }}
   argTypes={{
-    children: { type: null },
-    fixedItems: { type: null },
-    ref: { type: null }
+    ...createSelectArgTypes({})
   }}
+  args={{}}
 />
 
 <DocsHeader />
@@ -27,30 +21,15 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
 <Canvas>
   <Story name="Default">
     {(args) => {
-      return (
-        <SideNavigation
-          {...args}
-          fixedItems={
-            <>
-              <SideNavigationItem text="Useful Links" icon="chain-link" />
-              <SideNavigationItem text="History" icon="history" />
-            </>
-          }
-        >
-          <SideNavigationItem text="Home" icon="home" />
-          <SideNavigationItem text="People" expanded icon="group">
-            <SideNavigationSubItem text="From My Team" />
-            <SideNavigationSubItem text="From Other Teams" />
-          </SideNavigationItem>
-          <SideNavigationItem text="Locations" icon="locate-me" selected />
-          <SideNavigationItem text="Events" icon="calendar">
-            <SideNavigationSubItem text="Local" />
-            <SideNavigationSubItem text="Others" />
-          </SideNavigationItem>
-        </SideNavigation>
-      );
+      return <SideNavigation {...args} />;
     }}
   </Story>
 </Canvas>
 
 <ArgsTable story="." />
+<h3>Usage</h3>
+
+Use the available <code>SideNavigationItem</code> and <code>ui5-side-navigation-sub-item</code> components to build your
+menu. The items can consist of text only or an icon with text. The use or non-use of icons must be consistent for all
+items on one level. You must not combine entries with and without icons on the same level. We strongly recommend that
+you do not use icons on the second level.
