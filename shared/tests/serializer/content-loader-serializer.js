@@ -1,78 +1,18 @@
-// removing dynamic class names as well as code coverage instrumentation added by
-// istanbul-instrumenter-loader
-
-const MARKER = '__content-loader-serializer-marker__';
-const styleUrl = /fill: url\(#([\d\w-)]+)\)/i;
-
-const collectElements = (element, elements = []) => {
-  if (typeof element !== 'object') {
-    return elements;
-  }
-
-  elements.push(element);
-
-  if (element.children) {
-    element.children.forEach((child) => collectElements(child, elements));
-  }
-
-  return elements;
-};
-
-const markElements = (elements) =>
-  elements.forEach((element) => {
-    element[MARKER] = true;
-  });
-
-const replaceIds = (elements) => {
-  elements.forEach((element) => {
-    if (
-      element.node.name === 'clipPath' ||
-      element.props['clip-path'] ||
-      element.props['aria-labelledby'] ||
-      element.node.name === 'linearGradient' ||
-      element.node.name === 'title'
-    ) {
-      if (element.props['clip-path']) {
-        element.props['clip-path'] = 'CLIP-PATH-URL';
-      }
-      if (element.props['aria-labelledby']) {
-        element.props['aria-labelledby'] = 'ARIA-LABELLED-BY';
-      }
-
-      if (element.props.style) {
-        element.props.style = element.props.style.replace(styleUrl, (a, b) => {
-          return a.replace(b, 'STYLE-URL');
-        });
-      }
-
-      if (element.node.name === 'clipPath') {
-        element.props.id = 'CLIP-PATH-URL';
-      }
-
-      if (element.node.name === 'linearGradient') {
-        element.props.id = 'STYLE-URL';
-      }
-
-      if (element.node.name === 'title' && /[\d\w]+-aria/.exec(element.props.id)) {
-        element.props.id = 'TITLE_ARIA_ID';
-      }
-    }
-  });
-};
-
 module.exports = {
   test(value) {
-    return value && !value[MARKER] && value.$$typeof === Symbol.for('react.test.json');
+    return (value && typeof value === 'string' && /url\(/.test(value)) || /-aria$/.test(value) || /-diff$/.test(value);
   },
 
   print(value, serialize) {
-    // collect all react element nodes in the tree of the value
-    const elements = collectElements(value);
+    if (/-aria$/.test(value)) {
+      value = 'TITLE_ARIA_ID';
+    }
 
-    // mark the collected element nodes to avoid processing them several times
-    markElements(elements);
+    value = value.replace(/url\((.*)\)/, 'STYLE-URL');
 
-    replaceIds(elements);
+    if (/-diff$/.test(value)) {
+      value = 'DIFF_ID';
+    }
 
     return serialize(value);
   }
