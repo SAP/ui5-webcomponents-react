@@ -101,7 +101,8 @@ import { DefaultNoDataComponent } from './defaults/NoDataComponent';
     LoadingComponent: DefaultLoadingComponent,
     scaleWidthMode: TableScaleWidthMode.Default,
     selectionMode: TableSelectionMode.SINGLE_SELECT,
-    selectionBehavior: TableSelectionBehavior.ROW
+    selectionBehavior: TableSelectionBehavior.ROW,
+    overscanCountHorizontal: 5
   }}
   argTypes={{
     ref: { type: null },
@@ -153,6 +154,7 @@ import { DefaultNoDataComponent } from './defaults/NoDataComponent';
           infiniteScrollThreshold={args.infiniteScrollThreshold}
           onLoadMore={args.onLoadMore}
           selectionBehavior={args.selectionBehavior}
+          overscanCountHorizontal={args.overscanCountHorizontal}
         />
       </div>
     )}

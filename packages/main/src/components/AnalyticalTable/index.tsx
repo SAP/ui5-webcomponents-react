@@ -1,3 +1,4 @@
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
@@ -31,10 +32,11 @@ import {
   useSortBy,
   useTable
 } from 'react-table';
+import { GlobalStyleClasses } from '@ui5/webcomponents-react/lib/GlobalStyleClasses';
 import { AnalyticalTableColumnDefinition } from '../../interfaces/AnalyticalTableColumnDefinition';
 import { CommonProps } from '../../interfaces/CommonProps';
 import styles from './AnayticalTable.jss';
-import { ColumnHeader } from './ColumnHeader';
+import { ColumnHeaderContainer } from './ColumnHeader/ColumnHeaderContainer';
 import { DefaultColumn } from './defaults/Column';
 import { DefaultLoadingComponent } from './defaults/LoadingComponent';
 import { TablePlaceholder } from './defaults/LoadingComponent/TablePlaceholder';
@@ -47,10 +49,12 @@ import { useSingleRowStateSelection } from './hooks/useSingleRowStateSelection';
 import { useStyling } from './hooks/useStyling';
 import { useTableScrollHandles } from './hooks/useTableScrollHandles';
 import { useToggleRowExpand } from './hooks/useToggleRowExpand';
+import { useVisibleColumnsWidth } from './hooks/useVisibleColumnsWidth';
 import { stateReducer } from './tableReducer/stateReducer';
 import { TitleBar } from './TitleBar';
 import { orderByFn } from './util';
-import { VirtualTableBody } from './virtualization/VirtualTableBody';
+import { VirtualTableBody } from './TableBody/VirtualTableBody';
+import { VirtualTableBodyContainer } from './TableBody/VirtualTableBodyContainer';
 
 export interface TableProps extends Omit<CommonProps, 'title'> {
   /**
@@ -111,7 +115,6 @@ export interface TableProps extends Omit<CommonProps, 'title'> {
   infiniteScrollThreshold?: number;
 
   // events
-
   onSort?: (e: CustomEvent<{ column: unknown; sortDirection: string }>) => void;
   onGroup?: (e: CustomEvent<{ column: unknown; groupedColumns: string[] }>) => void;
   onRowSelected?: (e?: CustomEvent<{ allRowsSelected?: boolean; row?: unknown; isSelected?: boolean }>) => any;
@@ -129,6 +132,13 @@ export interface TableProps extends Omit<CommonProps, 'title'> {
    */
   selectedRowIds?: { [key: string]: boolean };
   isTreeTable?: boolean;
+  /**
+   * The amount of columns to load both behind and ahead of the current window range.
+   */
+  overscanCountHorizontal?: number;
+  /**
+   * The amount of rows to load both behind and ahead of the current window range.
+   */
   overscanCount?: number;
 
   // default components
@@ -173,6 +183,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     isTreeTable,
     alternateRowColor,
     overscanCount,
+    overscanCountHorizontal,
     scaleWidthMode,
     withRowHighlight,
     highlightField = 'status',
@@ -213,6 +224,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     setColumnOrder,
     dispatch,
     totalColumnsWidth,
+    visibleColumns,
+    visibleColumnsWidth,
     setGroupBy
   } = useTable(
     {
@@ -255,6 +268,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     useDynamicColumnWidths,
     useStyling,
     useToggleRowExpand,
+    useVisibleColumnsWidth,
     ...tableHooks
   );
 
@@ -376,6 +390,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     } as CSSProperties;
   }, [tableState.tableClientWidth, style, rowHeight]);
 
+  const parentRef = useRef(null);
+
   return (
     <div className={className} style={inlineStyle} title={tooltip} ref={analyticalTableRef} {...passThroughProps}>
       {title && <TitleBar>{title}</TitleBar>}
@@ -387,37 +403,34 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
         aria-colcount={tableInternalColumns.length}
         data-per-page={visibleRows}
         ref={tableRef}
+        className={StyleClassHelper.of(classes.table, GlobalStyleClasses.sapScrollBar).className}
       >
         {headerGroups.map((headerGroup) => {
           let headerProps = {};
           if (headerGroup.getHeaderGroupProps) {
             headerProps = headerGroup.getHeaderGroupProps();
           }
+
           return (
-            // eslint-disable-next-line react/jsx-key
-            <header {...headerProps} role="rowgroup">
-              {headerGroup.headers.map((column, index) => {
-                const isLastColumn = !column.disableResizing && index + 1 === headerGroup.headers.length;
-                return (
-                  // eslint-disable-next-line react/jsx-key
-                  <ColumnHeader
-                    {...column.getHeaderProps()}
-                    isLastColumn={isLastColumn}
-                    onSort={onSort}
-                    onGroupBy={onGroupByChanged}
-                    onDragStart={handleDragStart}
-                    onDragOver={handleDragOver}
-                    onDrop={handleOnDrop}
-                    onDragEnter={handleDragEnter}
-                    onDragEnd={handleOnDragEnd}
-                    dragOver={column.id === dragOver}
-                    isDraggable={column.canReorder}
-                  >
-                    {column.render('Header')}
-                  </ColumnHeader>
-                );
-              })}
-            </header>
+            tableRef.current && (
+              <ColumnHeaderContainer
+                reactWindowRef={reactWindowRef}
+                tableRef={tableRef}
+                resizeInfo={tableState.columnResizing}
+                visibleColumnsWidth={visibleColumnsWidth}
+                headerProps={headerProps}
+                headerGroup={headerGroup}
+                overscanCountHorizontal={overscanCountHorizontal}
+                onSort={onSort}
+                onGroupBy={onGroupByChanged}
+                onDragStart={handleDragStart}
+                onDragOver={handleDragOver}
+                onDrop={handleOnDrop}
+                onDragEnter={handleDragEnter}
+                onDragEnd={handleOnDragEnd}
+                dragOver={dragOver}
+              />
+            )
           );
         })}
         {loading && props.data?.length > 0 && <LoadingComponent style={{ width: `${totalColumnsWidth}px` }} />}
@@ -435,25 +448,36 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
         {!loading && props.data?.length === 0 && (
           <NoDataComponent noDataText={noDataText} className={classes.noDataContainer} style={noDataStyles} />
         )}
-        {props.data?.length > 0 && (
-          <VirtualTableBody
-            classes={classes}
-            prepareRow={prepareRow}
-            rows={rows}
-            minRows={minRows}
-            selectionMode={selectionMode}
-            reactWindowRef={reactWindowRef}
-            isTreeTable={isTreeTable}
-            internalRowHeight={internalRowHeight}
+        {props.data?.length > 0 && tableRef.current && (
+          <VirtualTableBodyContainer
             tableBodyHeight={tableBodyHeight}
-            visibleRows={visibleRows}
-            alternateRowColor={alternateRowColor}
-            overscanCount={overscanCount}
             totalColumnsWidth={totalColumnsWidth}
+            parentRef={parentRef}
+            classes={classes}
             infiniteScroll={infiniteScroll}
             infiniteScrollThreshold={infiniteScrollThreshold}
             onLoadMore={onLoadMore}
-          />
+            internalRowHeight={internalRowHeight}
+            rows={rows}
+          >
+            <VirtualTableBody
+              classes={classes}
+              prepareRow={prepareRow}
+              rows={rows}
+              minRows={minRows}
+              reactWindowRef={reactWindowRef}
+              isTreeTable={isTreeTable}
+              internalRowHeight={internalRowHeight}
+              visibleRows={visibleRows}
+              alternateRowColor={alternateRowColor}
+              overscanCount={overscanCount}
+              tableRef={tableRef}
+              parentRef={parentRef}
+              visibleColumns={visibleColumns}
+              visibleColumnsWidth={visibleColumnsWidth}
+              overscanCountHorizontal={overscanCountHorizontal}
+            />
+          </VirtualTableBodyContainer>
         )}
       </div>
     </div>
@@ -487,7 +511,8 @@ AnalyticalTable.defaultProps = {
   onRowExpandChange: () => {},
   onColumnsReordered: () => {},
   isTreeTable: false,
-  alternateRowColor: false
+  alternateRowColor: false,
+  overscanCountHorizontal: 5
 };
 
 export { AnalyticalTable };

@@ -27,7 +27,6 @@ export interface VariantItem {
   label: string;
 }
 
-
 export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'> {
   /**
    * Determines on which side the VariantManagement popover is placed at.
