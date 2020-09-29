@@ -1,7 +1,7 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import React, { useCallback } from 'react';
 import { createUseStyles } from 'react-jss';
-import { useVirtual } from 'react-virtual';
+import { useVirtual, VirtualItem } from 'react-virtual';
 import { ColumnHeader } from './index';
 
 const styles = {
@@ -65,7 +65,7 @@ export const ColumnHeaderContainer = (props) => {
 
   return (
     <div {...headerProps} role="rowgroup" style={{ width: `${columnVirtualizer.totalSize}px` }}>
-      {columnVirtualizer.virtualItems.map((virtualColumn) => {
+      {columnVirtualizer.virtualItems.map((virtualColumn: VirtualItem) => {
         const column = headerGroup.headers[virtualColumn.index];
         const isLastColumn = !column.disableResizing && virtualColumn.index + 1 === headerGroup.headers.length;
         return (

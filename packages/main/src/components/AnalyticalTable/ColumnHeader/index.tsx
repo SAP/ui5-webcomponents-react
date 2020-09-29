@@ -17,6 +17,7 @@ import React, {
   useMemo,
   useRef
 } from 'react';
+import { VirtualItem } from 'react-virtual';
 import { Ui5PopoverDomRef } from '../../../interfaces/Ui5PopoverDomRef';
 import { ColumnType } from '../types/ColumnType';
 import { ColumnHeaderModal } from './ColumnHeaderModal';
@@ -41,7 +42,7 @@ export interface ColumnHeaderProps {
   isDraggable: boolean;
   role: string;
   isLastColumn: boolean;
-  virtualColumn: ColumnType;
+  virtualColumn: VirtualItem;
 }
 
 const styles = {
