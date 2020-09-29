@@ -1,8 +1,6 @@
 import '@ui5/webcomponents-icons/dist/icons/navigation-down-arrow';
 import '@ui5/webcomponents-icons/dist/icons/navigation-right-arrow';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
-import { GlobalStyleClasses } from '@ui5/webcomponents-react/lib/GlobalStyleClasses';
-import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import React, { MutableRefObject, useCallback, useRef } from 'react';
 import { useVirtual } from 'react-virtual';
 
@@ -11,18 +9,17 @@ interface VirtualTableBodyProps {
   prepareRow: (row: unknown) => void;
   rows: any[];
   minRows: number;
-  selectionMode: TableSelectionMode;
   reactWindowRef: MutableRefObject<any>;
   isTreeTable: boolean;
   internalRowHeight: number;
-  tableBodyHeight: number;
   visibleRows: number;
   alternateRowColor: boolean;
   overscanCount: number;
-  totalColumnsWidth: number;
-  infiniteScroll: boolean;
-  infiniteScrollThreshold: number;
-  onLoadMore?: (e?: { detail: { rowCount: number } }) => void;
+  visibleColumns: any[];
+  tableRef: MutableRefObject<any>;
+  visibleColumnsWidth: any[];
+  parentRef: MutableRefObject<any>;
+  overscanCountHorizontal: number;
 }
 
 export const VirtualTableBody = (props: VirtualTableBodyProps) => {
@@ -31,71 +28,47 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     prepareRow,
     rows,
     minRows,
-    selectionMode,
     reactWindowRef,
     isTreeTable,
     internalRowHeight,
-    tableBodyHeight,
     visibleRows,
     overscanCount,
-    totalColumnsWidth,
-    infiniteScroll,
-    infiniteScrollThreshold,
-    onLoadMore
+    visibleColumns,
+    tableRef,
+    visibleColumnsWidth,
+    parentRef,
+    overscanCountHorizontal
   } = props;
-
-  const firedInfiniteLoadEvents = useRef(new Set());
 
   const itemCount = Math.max(minRows, rows.length);
   const overscan = overscanCount ? overscanCount : Math.floor(visibleRows / 2);
 
-  const parentRef = useRef();
-
+  const consolidatedParentRef = useConsolidatedRef(parentRef);
   const rowVirtualizer = useVirtual({
     size: itemCount,
-    parentRef,
+    parentRef: consolidatedParentRef,
     estimateSize: React.useCallback(() => internalRowHeight, [internalRowHeight]),
     overscan
   });
 
+  const columnVirtualizer = useVirtual({
+    size: visibleColumns.length,
+    parentRef: tableRef,
+    estimateSize: useCallback(
+      (index) => {
+        return visibleColumnsWidth[index];
+      },
+      [visibleColumnsWidth]
+    ),
+    horizontal: true,
+    overscan: overscanCountHorizontal
+  });
+
   reactWindowRef.current = {
+    ...reactWindowRef.current,
     scrollToOffset: rowVirtualizer.scrollToOffset,
     scrollToIndex: rowVirtualizer.scrollToIndex
   };
-
-  const classNames = StyleClassHelper.of(classes.tbody, GlobalStyleClasses.sapScrollBar);
-
-  const lastScrollTop = useRef(0);
-
-  const onScroll = useCallback(
-    (event) => {
-      const scrollOffset = event.target.scrollTop;
-      const isScrollingDown = lastScrollTop.current < scrollOffset;
-      if (isScrollingDown && infiniteScroll) {
-        lastScrollTop.current = scrollOffset;
-        const currentTopRow = Math.floor(scrollOffset / internalRowHeight);
-        if (rows.length - currentTopRow < infiniteScrollThreshold) {
-          if (!firedInfiniteLoadEvents.current.has(rows.length)) {
-            onLoadMore({
-              detail: {
-                rowCount: rows.length
-              }
-            });
-          }
-          firedInfiniteLoadEvents.current.add(rows.length);
-        }
-      }
-    },
-    [
-      infiniteScroll,
-      infiniteScrollThreshold,
-      onLoadMore,
-      rows.length,
-      internalRowHeight,
-      firedInfiniteLoadEvents,
-      lastScrollTop
-    ]
-  );
 
   const currentlyFocusedCell = useRef<HTMLDivElement>(null);
   const onTableFocus = useCallback(
@@ -170,80 +143,83 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
 
   return (
     <div
-      className={classNames.valueOf()}
-      ref={parentRef}
-      onScroll={onScroll}
+      tabIndex={0}
+      onFocus={onTableFocus}
+      onKeyDown={onKeyboardNavigation}
       style={{
-        height: `${tableBodyHeight}px`,
-        width: `${totalColumnsWidth}px`
+        position: 'relative',
+        height: `${rowVirtualizer.totalSize}px`,
+        width: `${columnVirtualizer.totalSize}px`
       }}
     >
-      <div
-        tabIndex={0}
-        onFocus={onTableFocus}
-        onKeyDown={onKeyboardNavigation}
-        style={{
-          height: `${rowVirtualizer.totalSize}px`,
-          width: `${totalColumnsWidth}px`,
-          position: 'relative'
-        }}
-      >
-        {rowVirtualizer.virtualItems.map((virtualRow) => {
-          const row = rows[virtualRow.index];
-          if (!row) {
-            return (
-              <div
-                key={`empty_row_${virtualRow.index}`}
-                className={classes.tr}
-                style={{
-                  height: `${virtualRow.size}px`,
-                  transform: `translateY(${virtualRow.start}px)`
-                }}
-              />
-            );
-          }
-          prepareRow(row);
-          const rowProps = row.getRowProps();
-
+      {rowVirtualizer.virtualItems.map((virtualRow) => {
+        const row = rows[virtualRow.index];
+        if (!row) {
           return (
             <div
-              {...rowProps}
+              key={`empty_row_${virtualRow.index}`}
+              className={classes.tr}
               style={{
                 height: `${virtualRow.size}px`,
                 transform: `translateY(${virtualRow.start}px)`
               }}
-            >
-              {row.cells.map((cell) => {
-                const cellProps = cell.getCellProps();
-                if (row.original?.emptyRow) {
-                  return <div {...cellProps} />;
-                }
-
-                let contentToRender;
-                if (
-                  cell.column.id === '__ui5wcr__internal_highlight_column' ||
-                  cell.column.id === '__ui5wcr__internal_selection_column'
-                ) {
-                  contentToRender = 'Cell';
-                } else if (isTreeTable) {
-                  contentToRender = 'Expandable';
-                } else if (cell.isGrouped) {
-                  contentToRender = 'Grouped';
-                } else if (cell.isAggregated) {
-                  contentToRender = 'Aggregated';
-                } else if (cell.isPlaceholder) {
-                  contentToRender = 'RepeatedValue';
-                } else {
-                  contentToRender = 'Cell';
-                }
-
-                // eslint-disable-next-line react/jsx-key
-                return <div {...cellProps}>{cell.render(contentToRender)}</div>;
-              })}
-            </div>
+            />
           );
-        })}
-      </div>
+        }
+        prepareRow(row);
+        const rowProps = row.getRowProps();
+        return (
+          <div
+            {...rowProps}
+            style={{
+              height: `${virtualRow.size}px`,
+              transform: `translateY(${virtualRow.start}px)`,
+              position: 'absolute'
+            }}
+          >
+            {columnVirtualizer.virtualItems.map((virtualColumn) => {
+              const cell = row.cells[virtualColumn.index];
+              const cellProps = cell.getCellProps();
+              if (row.original?.emptyRow) {
+                return <div {...cellProps} />;
+              }
+              let contentToRender;
+              if (
+                cell.column.id === '__ui5wcr__internal_highlight_column' ||
+                cell.column.id === '__ui5wcr__internal_selection_column'
+              ) {
+                contentToRender = 'Cell';
+              } else if (isTreeTable) {
+                contentToRender = 'Expandable';
+              } else if (cell.isGrouped) {
+                contentToRender = 'Grouped';
+              } else if (cell.isAggregated) {
+                contentToRender = 'Aggregated';
+              } else if (cell.isPlaceholder) {
+                contentToRender = 'RepeatedValue';
+              } else {
+                contentToRender = 'Cell';
+              }
+              // eslint-disable-next-line react/jsx-key
+              return (
+                <div
+                  {...cellProps}
+                  style={{
+                    ...cellProps.style,
+                    position: 'absolute',
+                    width: `${virtualColumn.size}px`,
+                    transform: `translateX(${virtualColumn.start}px)`,
+                    top: 0,
+                    left: 0
+                  }}
+                >
+                  {cell.render(contentToRender)}
+                </div>
+              );
+            })}
+          </div>
+        );
+      })}
     </div>
   );
 };
