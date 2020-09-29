@@ -1,1 +1,5 @@
+# general code owners
 * @MarcusNotheis @vbersch @Lukas742
+
+# Charts Package
+packages/charts @MarcusNotheis @Lukas742 @kleinju1017 

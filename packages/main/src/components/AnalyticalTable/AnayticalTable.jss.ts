@@ -56,7 +56,6 @@ const styles = {
     boxSizing: 'border-box',
     display: 'flex',
     willChange: 'transform',
-    height: CssSizeVariables.sapWcrAnalyticalTableRowHeight,
     '&:hover': {
       backgroundColor: ThemingParameters.sapList_Hover_Background
     },

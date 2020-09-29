@@ -1,0 +1,588 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RadialChart Renders with data 1`] = `
+<DocumentFragment>
+  <div
+    style="font-family: var(--sapFontFamily); width: 50%; height: 400px; position: relative;"
+  >
+    <div
+      class="recharts-responsive-container"
+      id="undefined"
+      style="width: 400px; height: 400px;"
+    >
+      <div
+        class="recharts-wrapper"
+        style="position: relative; cursor: default; width: 400px; height: 400px;"
+      >
+        <svg
+          class="recharts-surface"
+          cx="50%"
+          cy="50%"
+          height="400"
+          version="1.1"
+          viewBox="0 0 400 400"
+          width="400"
+        >
+          <defs>
+            <clippath
+              id="recharts2-clip"
+            >
+              <rect
+                height="340"
+                width="340"
+                x="30"
+                y="30"
+              />
+            </clippath>
+          </defs>
+          <g
+            class="recharts-layer recharts-polar-angle-axis"
+          >
+            <polygon
+              class="recharts-polygon angleAxis"
+              cx="200"
+              cy="200"
+              fill="none"
+              orientation="outer"
+              points="200,30 299.9234928897204,62.46711095625892 361.67960777017606,147.46711095625895 361.67960777017606,252.53288904374108 299.9234928897204,337.5328890437411 200,370 100.07650711027958,337.5328890437411 38.32039222982391,252.53288904374108 38.32039222982388,147.46711095625898 100.07650711027955,62.46711095625895 199.99999999999997,30"
+              radius="170"
+              type="number"
+            />
+            <g
+              class="recharts-layer recharts-polar-angle-axis-ticks"
+            >
+              <g
+                class="recharts-layer recharts-polar-angle-axis-tick"
+              >
+                <line
+                  class="angleAxis"
+                  cx="200"
+                  cy="200"
+                  fill="none"
+                  orientation="outer"
+                  radius="170"
+                  type="number"
+                  x1="200"
+                  x2="200"
+                  y1="30"
+                  y2="22"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-polar-angle-axis-tick"
+              >
+                <line
+                  class="angleAxis"
+                  cx="200"
+                  cy="200"
+                  fill="none"
+                  orientation="outer"
+                  radius="170"
+                  type="number"
+                  x1="299.9234928897204"
+                  x2="304.62577490806024"
+                  y1="62.46711095625892"
+                  y2="55.99497500125935"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-polar-angle-axis-tick"
+              >
+                <line
+                  class="angleAxis"
+                  cx="200"
+                  cy="200"
+                  fill="none"
+                  orientation="outer"
+                  radius="170"
+                  type="number"
+                  x1="361.67960777017606"
+                  x2="369.2880599005373"
+                  y1="147.46711095625895"
+                  y2="144.99497500125938"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-polar-angle-axis-tick"
+              >
+                <line
+                  class="angleAxis"
+                  cx="200"
+                  cy="200"
+                  fill="none"
+                  orientation="outer"
+                  radius="170"
+                  type="number"
+                  x1="361.67960777017606"
+                  x2="369.2880599005373"
+                  y1="252.53288904374108"
+                  y2="255.00502499874065"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-polar-angle-axis-tick"
+              >
+                <line
+                  class="angleAxis"
+                  cx="200"
+                  cy="200"
+                  fill="none"
+                  orientation="outer"
+                  radius="170"
+                  type="number"
+                  x1="299.9234928897204"
+                  x2="304.62577490806024"
+                  y1="337.5328890437411"
+                  y2="344.0050249987406"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-polar-angle-axis-tick"
+              >
+                <line
+                  class="angleAxis"
+                  cx="200"
+                  cy="200"
+                  fill="none"
+                  orientation="outer"
+                  radius="170"
+                  type="number"
+                  x1="200"
+                  x2="200"
+                  y1="370"
+                  y2="378"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-polar-angle-axis-tick"
+              >
+                <line
+                  class="angleAxis"
+                  cx="200"
+                  cy="200"
+                  fill="none"
+                  orientation="outer"
+                  radius="170"
+                  type="number"
+                  x1="100.07650711027958"
+                  x2="95.3742250919398"
+                  y1="337.5328890437411"
+                  y2="344.0050249987406"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-polar-angle-axis-tick"
+              >
+                <line
+                  class="angleAxis"
+                  cx="200"
+                  cy="200"
+                  fill="none"
+                  orientation="outer"
+                  radius="170"
+                  type="number"
+                  x1="38.32039222982391"
+                  x2="30.71194009946268"
+                  y1="252.53288904374108"
+                  y2="255.00502499874065"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-polar-angle-axis-tick"
+              >
+                <line
+                  class="angleAxis"
+                  cx="200"
+                  cy="200"
+                  fill="none"
+                  orientation="outer"
+                  radius="170"
+                  type="number"
+                  x1="38.32039222982388"
+                  x2="30.71194009946265"
+                  y1="147.46711095625898"
+                  y2="144.99497500125938"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-polar-angle-axis-tick"
+              >
+                <line
+                  class="angleAxis"
+                  cx="200"
+                  cy="200"
+                  fill="none"
+                  orientation="outer"
+                  radius="170"
+                  type="number"
+                  x1="100.07650711027955"
+                  x2="95.37422509193976"
+                  y1="62.46711095625895"
+                  y2="55.99497500125938"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-polar-angle-axis-tick"
+              >
+                <line
+                  class="angleAxis"
+                  cx="200"
+                  cy="200"
+                  fill="none"
+                  orientation="outer"
+                  radius="170"
+                  type="number"
+                  x1="199.99999999999997"
+                  x2="199.99999999999997"
+                  y1="30"
+                  y2="22"
+                />
+              </g>
+            </g>
+          </g>
+          <g
+            class="recharts-layer recharts-area"
+          >
+            <g
+              class="recharts-layer recharts-radial-bar-background"
+            >
+              <path
+                class="recharts-sector recharts-radial-bar-background-sector"
+                cx="200"
+                cy="200"
+                d="M 200,42.5
+    A 157.5,157.5,0,
+    1,1,
+    199.99725110642825,42.50000002398863
+  L 199.99742563935345,52.50000002246554
+            A 147.5,147.5,0,
+            1,0,
+            200,52.5 Z"
+                fill="var(--sapContent_ImagePlaceholderBackground)"
+              />
+            </g>
+            <g
+              class="recharts-layer recharts-radial-bar-sectors"
+            >
+              <g
+                class="recharts-layer"
+              />
+            </g>
+          </g>
+          <text
+            class="progress-label"
+            dominant-baseline="middle"
+            style="fill: var(--sapTextColor);"
+            text-anchor="middle"
+            x="50%"
+            y="50%"
+          >
+            67%
+          </text>
+        </svg>
+      </div>
+      <div />
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`RadialChart loading placeholder 1`] = `
+<DocumentFragment>
+  <div
+    style="font-family: var(--sapFontFamily); width: 50%; height: 400px; position: relative;"
+  >
+    <div
+      class="recharts-responsive-container"
+      id="undefined"
+      style="width: 400px; height: 400px;"
+    >
+      <div
+        class="recharts-wrapper"
+        style="position: relative; cursor: default; width: 400px; height: 400px;"
+      >
+        <svg
+          class="recharts-surface"
+          cx="50%"
+          cy="50%"
+          height="400"
+          version="1.1"
+          viewBox="0 0 400 400"
+          width="400"
+        >
+          <defs>
+            <clippath
+              id="recharts4-clip"
+            >
+              <rect
+                height="340"
+                width="340"
+                x="30"
+                y="30"
+              />
+            </clippath>
+          </defs>
+          <g
+            class="recharts-layer recharts-polar-angle-axis"
+          >
+            <polygon
+              class="recharts-polygon angleAxis"
+              cx="200"
+              cy="200"
+              fill="none"
+              orientation="outer"
+              points="200,30 299.9234928897204,62.46711095625892 361.67960777017606,147.46711095625895 361.67960777017606,252.53288904374108 299.9234928897204,337.5328890437411 200,370 100.07650711027958,337.5328890437411 38.32039222982391,252.53288904374108 38.32039222982388,147.46711095625898 100.07650711027955,62.46711095625895 199.99999999999997,30"
+              radius="170"
+              type="number"
+            />
+            <g
+              class="recharts-layer recharts-polar-angle-axis-ticks"
+            >
+              <g
+                class="recharts-layer recharts-polar-angle-axis-tick"
+              >
+                <line
+                  class="angleAxis"
+                  cx="200"
+                  cy="200"
+                  fill="none"
+                  orientation="outer"
+                  radius="170"
+                  type="number"
+                  x1="200"
+                  x2="200"
+                  y1="30"
+                  y2="22"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-polar-angle-axis-tick"
+              >
+                <line
+                  class="angleAxis"
+                  cx="200"
+                  cy="200"
+                  fill="none"
+                  orientation="outer"
+                  radius="170"
+                  type="number"
+                  x1="299.9234928897204"
+                  x2="304.62577490806024"
+                  y1="62.46711095625892"
+                  y2="55.99497500125935"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-polar-angle-axis-tick"
+              >
+                <line
+                  class="angleAxis"
+                  cx="200"
+                  cy="200"
+                  fill="none"
+                  orientation="outer"
+                  radius="170"
+                  type="number"
+                  x1="361.67960777017606"
+                  x2="369.2880599005373"
+                  y1="147.46711095625895"
+                  y2="144.99497500125938"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-polar-angle-axis-tick"
+              >
+                <line
+                  class="angleAxis"
+                  cx="200"
+                  cy="200"
+                  fill="none"
+                  orientation="outer"
+                  radius="170"
+                  type="number"
+                  x1="361.67960777017606"
+                  x2="369.2880599005373"
+                  y1="252.53288904374108"
+                  y2="255.00502499874065"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-polar-angle-axis-tick"
+              >
+                <line
+                  class="angleAxis"
+                  cx="200"
+                  cy="200"
+                  fill="none"
+                  orientation="outer"
+                  radius="170"
+                  type="number"
+                  x1="299.9234928897204"
+                  x2="304.62577490806024"
+                  y1="337.5328890437411"
+                  y2="344.0050249987406"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-polar-angle-axis-tick"
+              >
+                <line
+                  class="angleAxis"
+                  cx="200"
+                  cy="200"
+                  fill="none"
+                  orientation="outer"
+                  radius="170"
+                  type="number"
+                  x1="200"
+                  x2="200"
+                  y1="370"
+                  y2="378"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-polar-angle-axis-tick"
+              >
+                <line
+                  class="angleAxis"
+                  cx="200"
+                  cy="200"
+                  fill="none"
+                  orientation="outer"
+                  radius="170"
+                  type="number"
+                  x1="100.07650711027958"
+                  x2="95.3742250919398"
+                  y1="337.5328890437411"
+                  y2="344.0050249987406"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-polar-angle-axis-tick"
+              >
+                <line
+                  class="angleAxis"
+                  cx="200"
+                  cy="200"
+                  fill="none"
+                  orientation="outer"
+                  radius="170"
+                  type="number"
+                  x1="38.32039222982391"
+                  x2="30.71194009946268"
+                  y1="252.53288904374108"
+                  y2="255.00502499874065"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-polar-angle-axis-tick"
+              >
+                <line
+                  class="angleAxis"
+                  cx="200"
+                  cy="200"
+                  fill="none"
+                  orientation="outer"
+                  radius="170"
+                  type="number"
+                  x1="38.32039222982388"
+                  x2="30.71194009946265"
+                  y1="147.46711095625898"
+                  y2="144.99497500125938"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-polar-angle-axis-tick"
+              >
+                <line
+                  class="angleAxis"
+                  cx="200"
+                  cy="200"
+                  fill="none"
+                  orientation="outer"
+                  radius="170"
+                  type="number"
+                  x1="100.07650711027955"
+                  x2="95.37422509193976"
+                  y1="62.46711095625895"
+                  y2="55.99497500125938"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-polar-angle-axis-tick"
+              >
+                <line
+                  class="angleAxis"
+                  cx="200"
+                  cy="200"
+                  fill="none"
+                  orientation="outer"
+                  radius="170"
+                  type="number"
+                  x1="199.99999999999997"
+                  x2="199.99999999999997"
+                  y1="30"
+                  y2="22"
+                />
+              </g>
+            </g>
+          </g>
+          <g
+            class="recharts-layer recharts-area"
+          >
+            <g
+              class="recharts-layer recharts-radial-bar-background"
+            >
+              <path
+                class="recharts-sector recharts-radial-bar-background-sector"
+                cx="200"
+                cy="200"
+                d="M 200,42.5
+    A 157.5,157.5,0,
+    1,1,
+    199.99725110642825,42.50000002398863
+  L 199.99742563935345,52.50000002246554
+            A 147.5,147.5,0,
+            1,0,
+            200,52.5 Z"
+                fill="var(--sapContent_ImagePlaceholderBackground)"
+              />
+            </g>
+            <g
+              class="recharts-layer recharts-radial-bar-sectors"
+            >
+              <g
+                class="recharts-layer"
+              >
+                <path
+                  class="recharts-sector recharts-radial-bar-sector"
+                  cx="200"
+                  cy="200"
+                  d="M 200,47.58198925323819
+    A5,5,0,0,1,205.1639344262295,42.58467742547549
+    A157.5,157.5,0,0,1,357.4153225745245,194.8360655737705
+    A5,5,0,0,1,352.4180107467618,200
+  L352.4180107467618,200
+      A5,5,0,0,1,347.42069891899916,195.1639344262295
+      A147.5,147.5,0,0,0,204.8360655737705,52.579301081000864
+      A5,5,0,0,1,200,47.58198925323819Z"
+                  fill="var(--sapChart_OrderedColor_1)"
+                />
+              </g>
+            </g>
+          </g>
+          <text
+            class="progress-label"
+            dominant-baseline="middle"
+            style="fill: var(--sapTextColor);"
+            text-anchor="middle"
+            x="50%"
+            y="50%"
+          />
+        </svg>
+      </div>
+      <div />
+    </div>
+  </div>
+</DocumentFragment>
+`;
