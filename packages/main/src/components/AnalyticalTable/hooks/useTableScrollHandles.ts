@@ -18,10 +18,26 @@ export const useTableScrollHandles = (ref) => {
           if (typeof reactWindowRef.current?.scrollToIndex === 'function') {
             reactWindowRef.current.scrollToIndex(index, { align });
           }
+        },
+        horizontalScrollTo: (offset, align) => {
+          if (typeof reactWindowRef.current?.horizontalScrollToOffset === 'function') {
+            reactWindowRef.current.horizontalScrollToOffset(offset, { align });
+          }
+        },
+        horizontalScrollToItem: (index, align) => {
+          if (typeof reactWindowRef.current?.horizontalScrollToIndex === 'function') {
+            reactWindowRef.current.horizontalScrollToIndex(index, { align });
+          }
         }
       });
     }
-  }, [analyticalTableRef.current, reactWindowRef.current.scrollToIndex, reactWindowRef.current.scrollToOffset]);
+  }, [
+    analyticalTableRef.current,
+    reactWindowRef.current.scrollToIndex,
+    reactWindowRef.current.scrollToOffset,
+    reactWindowRef.current.horizontalScrollToIndex,
+    reactWindowRef.current.horizontalScrollToOffset
+  ]);
 
   return [analyticalTableRef, reactWindowRef];
 };

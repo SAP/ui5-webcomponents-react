@@ -8,12 +8,12 @@ exports[`Micro Bar Chart Render with default Props 1`] = `
     <div
       class="recharts-responsive-container"
       id="undefined"
-      style="width: 100%; height: 100%;"
+      style="width: 400px; height: 400px;"
     >
       <div
         class="MicroBarChart-container"
-        height="0"
-        width="0"
+        height="400"
+        width="400"
       >
         <div
           class="MicroBarChart-barContainer"
@@ -117,12 +117,12 @@ exports[`Micro Bar Chart With custom colors 1`] = `
     <div
       class="recharts-responsive-container"
       id="undefined"
-      style="width: 100%; height: 100%;"
+      style="width: 400px; height: 400px;"
     >
       <div
         class="MicroBarChart-container"
-        height="0"
-        width="0"
+        height="400"
+        width="400"
       >
         <div
           class="MicroBarChart-barContainer"
@@ -223,7 +223,7 @@ exports[`Micro Bar Chart loading placeholder 1`] = `
   style="font-family: var(--sapFontFamily); width: 50%; height: 400px; position: relative;"
 >
   <svg
-    aria-labelledby="ARIA-LABELLED-BY"
+    aria-labelledby="TITLE_ARIA_ID"
     height="100%"
     preserveAspectRatio="xMidYMid meet"
     role="img"
@@ -236,10 +236,10 @@ exports[`Micro Bar Chart loading placeholder 1`] = `
       Loading...
     </title>
     <rect
-      clip-path="CLIP-PATH-URL"
+      clip-path="STYLE-URL"
       height="100%"
       role="presentation"
-      style="fill: url(#STYLE-URL);"
+      style="fill: STYLE-URL;"
       width="100%"
       x="0"
       y="0"
@@ -248,7 +248,7 @@ exports[`Micro Bar Chart loading placeholder 1`] = `
       role="presentation"
     >
       <clipPath
-        id="CLIP-PATH-URL"
+        id="DIFF_ID"
       >
         <rect
           height="135"
@@ -294,7 +294,7 @@ exports[`Micro Bar Chart loading placeholder 1`] = `
         />
       </clipPath>
       <linearGradient
-        id="STYLE-URL"
+        id="DIFF_ID"
       >
         <stop
           offset="0%"

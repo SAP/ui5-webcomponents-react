@@ -17,6 +17,7 @@ import React, {
   useMemo,
   useRef
 } from 'react';
+import { VirtualItem } from 'react-virtual';
 import { Ui5PopoverDomRef } from '../../../interfaces/Ui5PopoverDomRef';
 import { ColumnType } from '../types/ColumnType';
 import { ColumnHeaderModal } from './ColumnHeaderModal';
@@ -41,6 +42,7 @@ export interface ColumnHeaderProps {
   isDraggable: boolean;
   role: string;
   isLastColumn: boolean;
+  virtualColumn: VirtualItem;
 }
 
 const styles = {
@@ -79,20 +81,6 @@ const styles = {
     color: ThemingParameters.sapContent_IconColor,
     right: getRTL() === false ? '0.5rem' : undefined,
     left: getRTL() === true ? '0.5rem' : undefined
-  },
-  resizer: {
-    display: 'inline-block',
-    width: '3px',
-    height: '100%',
-    position: 'absolute',
-    bottom: 0,
-    top: 0,
-    transform: 'translateX(-50%)',
-    zIndex: 1,
-    cursor: 'col-resize',
-    '&:hover, &:active': {
-      backgroundColor: ThemingParameters.sapContent_DragAndDropActiveColor
-    }
   }
 };
 
@@ -117,7 +105,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     isDraggable,
     dragOver,
     role,
-    isLastColumn
+    virtualColumn
   } = props;
 
   const isFiltered = column.filterValue && column.filterValue.length > 0;
@@ -159,9 +147,16 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
   );
 
   if (!column) return null;
-
   return (
-    <>
+    <div
+      style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: `${virtualColumn.size}px`,
+        transform: `translateX(${virtualColumn.start}px)`
+      }}
+    >
       <div
         id={id}
         className={className}
@@ -197,14 +192,6 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
         </div>
         {hasPopover && <ColumnHeaderModal column={column} onSort={onSort} onGroupBy={onGroupBy} ref={popoverRef} />}
       </div>
-      {column.canResize && column.getResizerProps && (
-        <div
-          {...column.getResizerProps()}
-          data-resizer
-          className={classes.resizer}
-          style={{ left: `${column.totalLeft + column.totalFlexWidth - (isLastColumn ? 3 : 0)}px` }}
-        />
-      )}
-    </>
+    </div>
   );
 };
