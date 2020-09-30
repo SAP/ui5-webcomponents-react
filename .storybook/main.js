@@ -81,7 +81,6 @@ module.exports = {
       '@ui5/webcomponents-react/dist': path.join(PATHS.root, 'packages', 'main', 'dist'),
       '@ui5/webcomponents-react': path.join(PATHS.root, 'packages', 'main', 'src'),
       '@ui5/webcomponents-react-charts': path.join(PATHS.root, 'packages', 'charts', 'src'),
-      '@ui5/webcomponents-react-base/third-party': path.join(PATHS.root, 'packages', 'base', 'third-party'),
       '@ui5/webcomponents-react-base': path.join(PATHS.root, 'packages', 'base', 'src')
     };
 

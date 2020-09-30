@@ -14,7 +14,6 @@
   "author": "SAP SE (https://www.sap.com)",
   "license": "Apache-2.0",
   "sideEffects": [
-    "**/third-party/*",
     "./polyfill/*",
     "core-js/**/*",
     "intersection-observer"
