@@ -52,7 +52,7 @@ describe('PopoverInfo.js Test Suite', () => {
     expect(title).toHaveTextContent('Some Title');
   });
 
-  test('should render without title if passed', async () => {
+  test('should render without title if none is passed', async () => {
     render(
       <>
         <p data-testid="opener-wrapper" onClick={(e) => popoverInfoRef.current.openBy(e.detail.targetRef)}>
