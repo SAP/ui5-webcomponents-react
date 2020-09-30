@@ -23,7 +23,8 @@
     "clean": "rimraf cjs Device hooks lib polyfill styling types utils index.esm.js index.d.ts",
     "build:rollup": "rollup -c rollup.config.js",
     "build:polyfills": "tsc ./src/polyfill/*.ts --outDir ./polyfill --skipLibCheck",
-    "build": "npm-run-all -s build:rollup build:polyfills"
+    "build": "npm-run-all -s build:rollup build:polyfills",
+    "build:types": "tsc --declaration --emitDeclarationOnly --declarationDir . --removeComments false"
   },
   "dependencies": {
     "@babel/runtime": "7.11.0",
