@@ -1,4 +1,5 @@
 import { getBrowser, getOS, getSystem, supportTouch } from '@ui5/webcomponents-base/dist/Device';
+import { deprecationNotice } from '@ui5/webcomponents-react-base/lib/Utils';
 import { EventRegistry } from './EventRegistry';
 import { MediaLegacy } from './Media';
 import { Orientation } from './Orientation';
@@ -26,8 +27,33 @@ let iLastResizeTime;
 const rInputTagRegex = /INPUT|TEXTAREA|SELECT/;
 
 class DeviceBuilder {
-  public os = getOS();
-  public browser = getBrowser();
+  public get os() {
+    deprecationNotice(
+      'Device.os',
+      `Accessing 'Device.os' is deprecated and will be removed in the next major version. 
+    Please use 'getOS()' ('import { getOS } from '@ui5/webcomponents-react/lib/Device') instead.`
+    );
+    return getOS();
+  }
+
+  public get browser() {
+    deprecationNotice(
+      'Device.browser',
+      `Accessing 'Device.browser' is deprecated and will be removed in the next major version. 
+    Please use 'getBrowser()' ('import { getBrowser } from '@ui5/webcomponents-react/lib/Device') instead.`
+    );
+    return getBrowser();
+  }
+
+  public get system() {
+    deprecationNotice(
+      'Device.system',
+      `Accessing 'Device.system' is deprecated and will be removed in the next major version. 
+    Please use 'getSystem()' ('import { getSystem } from '@ui5/webcomponents-react/lib/Device') instead.`
+    );
+    return getSystem();
+  }
+
   public support = {
     touch: supportTouch(),
     pointer: supportPointerEvents(),
@@ -40,7 +66,6 @@ class DeviceBuilder {
       placeholder: supportInputPlaceholder()
     }
   };
-  public system = getSystem();
   public media = new MediaLegacy();
   public orientation = new Orientation();
   public resize = new Resize();
