@@ -55,17 +55,74 @@ class DeviceBuilder {
   }
 
   public support = {
-    touch: supportTouch(),
-    pointer: supportPointerEvents(),
-    matchmedia: supportMatchMedia(),
-    matchmedialistener: supportMatchMediaListener(),
-    orientation: supportOrientation(),
-    retina: supportRetina(),
-    websocket: supportWebSocket(),
+    get touch() {
+      deprecationNotice(
+        'Device.support.touch',
+        `Accessing 'Device.support.touch' is deprecated and will be removed in the next major version. 
+    Please use 'supportTouch()' ('import { supportTouch } from '@ui5/webcomponents-react/lib/Device') instead.`
+      );
+      return supportTouch();
+    },
+    get pointer() {
+      deprecationNotice(
+        'Device.support.pointer',
+        `Accessing 'Device.support.pointer' is deprecated and will be removed in the next major version. 
+    Please use 'supportPointerEvents()' ('import { supportPointerEvents } from '@ui5/webcomponents-react/lib/Device') instead.`
+      );
+      return supportPointerEvents();
+    },
+    get matchmedia() {
+      deprecationNotice(
+        'Device.support.matchmedia',
+        `Accessing 'Device.support.matchmedia' is deprecated and will be removed in the next major version. 
+    Please use 'supportMatchMedia()' ('import { supportMatchMedia } from '@ui5/webcomponents-react/lib/Device') instead.`
+      );
+      return supportMatchMedia();
+    },
+    get matchmedialistener() {
+      deprecationNotice(
+        'Device.support.matchmedialistener',
+        `Accessing 'Device.support.matchmedialistener' is deprecated and will be removed in the next major version. 
+    Please use 'supportMatchMediaListener()' ('import { supportMatchMediaListener } from '@ui5/webcomponents-react/lib/Device') instead.`
+      );
+      return supportMatchMediaListener();
+    },
+    get orientation() {
+      deprecationNotice(
+        'Device.support.orientation',
+        `Accessing 'Device.support.orientation' is deprecated and will be removed in the next major version. 
+    Please use 'supportOrientation()' ('import { supportOrientation } from '@ui5/webcomponents-react/lib/Device') instead.`
+      );
+      return supportOrientation();
+    },
+    get retina() {
+      deprecationNotice(
+        'Device.support.retina',
+        `Accessing 'Device.support.retina' is deprecated and will be removed in the next major version. 
+    Please use 'supportRetina()' ('import { supportRetina } from '@ui5/webcomponents-react/lib/Device') instead.`
+      );
+      return supportRetina();
+    },
+    get websocket() {
+      deprecationNotice(
+        'Device.support.websocket',
+        `Accessing 'Device.support.websocket' is deprecated and will be removed in the next major version. 
+    Please use 'supportWebSocket()' ('import { supportWebSocket } from '@ui5/webcomponents-react/lib/Device') instead.`
+      );
+      return supportWebSocket();
+    },
     input: {
-      placeholder: supportInputPlaceholder()
+      get placeholder() {
+        deprecationNotice(
+          'Device.support.input.placeholder',
+          `Accessing 'Device.support.input.placeholder' is deprecated and will be removed in the next major version. 
+    Please use 'supportInputPlaceholder()' ('import { supportInputPlaceholder } from '@ui5/webcomponents-react/lib/Device') instead.`
+        );
+        return supportInputPlaceholder();
+      }
     }
   };
+
   public media = new MediaLegacy();
   public orientation = new Orientation();
   public resize = new Resize();
