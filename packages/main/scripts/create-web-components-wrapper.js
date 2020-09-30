@@ -39,6 +39,17 @@ const EXTENDED_PROP_DESCRIPTION = {
   primaryCalendarType: `<br/><b>Note:</b> Calendar types other than Gregorian must be imported manually:<br /><code>import "@ui5/webcomponents-localization/dist/features/calendar/{primaryCalendarType}.js";</code>`
 };
 
+const CUSTOM_DESCRIPTION_REPLACE = {
+  Input: {
+    children: (description) => {
+      return description.replace(
+        `<br> <Input show-suggestions> <ui5-suggestion-item text="Item #1"></ui5-suggestion-item> <ui5-suggestion-item text="Item #2"></ui5-suggestion-item> </Input>`,
+        ''
+      );
+    }
+  }
+};
+
 const COMPONENTS_WITHOUT_DEMOS = new Set(PRIVATE_COMPONENTS);
 COMPONENTS_WITHOUT_DEMOS.add('CustomListItem');
 COMPONENTS_WITHOUT_DEMOS.add('GroupHeaderListItem');
@@ -356,17 +367,19 @@ const createWebComponentWrapper = (
       .map((eventName) => `'on${capitalizeFirstLetter(snakeToCamel(eventName))}'`)
       .join(' | ')}>`;
   }
-  let headerDescription;
+  let componentDescription;
   try {
-    headerDescription = prettier.format(description, {
-      ...prettierConfigRaw,
-      parser: 'html'
-    });
+    componentDescription = prettier
+      .format(description, {
+        ...prettierConfigRaw,
+        parser: 'html'
+      })
+      .replace(/\s\s+/g, ' ');
   } catch (e) {
     console.warn(
       `Header description of ${name} couldn't be generated. \nThere is probably a syntax error in the associated description that can't be fixed automatically.`
     );
-    headerDescription = '';
+    componentDescription = '';
   }
   return prettier.format(
     `
@@ -380,7 +393,7 @@ const createWebComponentWrapper = (
     }
     
     /**
-     * ${headerDescription}     
+     * ${componentDescription}     
      * <a href="https://sap.github.io/ui5-webcomponents/playground/components/${name}" target="_blank">UI5 Web Components Playground</a>
      */
     const ${name}: FC<${name}PropTypes> = withWebComponent<${name}PropTypes>(
@@ -480,7 +493,7 @@ const createWebComponentDemo = (componentSpec, componentProps, description) => {
     }
   });
 
-  let formattedDescription = description.replace(/<br>/g, `<br/>`);
+  let formattedDescription = description.replace(/<br>/g, `<br/>`).replace(/\s\s+/g, ' ');
 
   try {
     if (componentSpec.module === 'Link') {
@@ -621,16 +634,22 @@ resolvedWebComponents.forEach((componentSpec) => {
         property.name = 'children';
       }
       const propDescription = () => {
-        const formattedDescription = (property.description || '')
+        let formattedDescription = (property.description || '')
           .replace(/\n\n<br><br> /g, '<br/><br/>\n  *\n  * ')
           .replace(/\n\n/g, '<br/><br/>\n  *\n  * ')
           .replace(new RegExp(componentSpec.tagname, 'g'), `${componentSpec.module}`);
+
+        const customDescriptionReplace = CUSTOM_DESCRIPTION_REPLACE[componentSpec.module];
+        if (customDescriptionReplace && customDescriptionReplace[property.name]) {
+          formattedDescription = customDescriptionReplace[property.name](formattedDescription);
+        }
 
         const extendedDescription = EXTENDED_PROP_DESCRIPTION[property.name];
         if (extendedDescription) {
           return replaceTagNameWithModuleName(`${formattedDescription}${extendedDescription}`);
         }
-        return replaceTagNameWithModuleName(`${formattedDescription}`);
+
+        return replaceTagNameWithModuleName(formattedDescription);
       };
 
       propTypes.push(dedent`

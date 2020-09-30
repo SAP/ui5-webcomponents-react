@@ -55,7 +55,7 @@ export interface InputPropTypes extends Omit<WithWebComponentPropTypes, 'onChang
    */
   valueState?: ValueState;
   /**
-   * Defines the <code>Input</code> suggestion items. <br><br> Example: <br><br> &lt;Input show-suggestions><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;ui5-suggestion-item text="Item #1">&lt;/ui5-suggestion-item><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;ui5-suggestion-item text="Item #2">&lt;/ui5-suggestion-item><br> &lt;/Input> <br> <Input show-suggestions> <ui5-suggestion-item text="Item #1"></ui5-suggestion-item> <ui5-suggestion-item text="Item #2"></ui5-suggestion-item> </Input> <br><br> <b>Note:</b> The suggestion would be displayed only if the <code>showSuggestions</code> property is set to <code>true</code>. <br><br> <b>Note:</b> The &lt;ui5-suggestion-item> is recommended to be used as a suggestion item. Importing the Input Suggestions Support feature: <br> <code>import "@ui5/webcomponents/dist/features/InputSuggestions.js";</code> <br> also automatically imports the &lt;ui5-suggestion-item> for your convenience.
+   * Defines the <code>Input</code> suggestion items. <br><br> Example: <br><br> &lt;Input show-suggestions><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;ui5-suggestion-item text="Item #1">&lt;/ui5-suggestion-item><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;ui5-suggestion-item text="Item #2">&lt;/ui5-suggestion-item><br> &lt;/Input>  <br><br> <b>Note:</b> The suggestion would be displayed only if the <code>showSuggestions</code> property is set to <code>true</code>. <br><br> <b>Note:</b> The &lt;ui5-suggestion-item> is recommended to be used as a suggestion item. Importing the Input Suggestions Support feature: <br> <code>import "@ui5/webcomponents/dist/features/InputSuggestions.js";</code> <br> also automatically imports the &lt;ui5-suggestion-item> for your convenience.
    */
   children?: ReactNode | ReactNode[];
   /**
@@ -98,8 +98,7 @@ export interface InputPropTypes extends Omit<WithWebComponentPropTypes, 'onChang
      * The <code>Input</code> component allows the user to enter and edit text or numeric values in one line. <br />
 Additionally, you can provide <code>suggestionItems</code>, that are displayed in a popover right under the input.
 <br /><br />
-The text field can be editable or read-only (<code>readonly</code> property), and it can be enabled or disabled (<code
-  >enabled</code
+The text field can be editable or read-only (<code>readonly</code> property), and it can be enabled or disabled (<code >enabled</code
 >
 property). To visualize semantic states, such as "error" or "warning", the <code>valueState</code> property is provided.
 When the user makes changes to the text, the change event is fired, which enables you to react on any text change.
