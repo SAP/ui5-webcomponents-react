@@ -1,8 +1,9 @@
 import { getRTL } from '@ui5/webcomponents-base/dist/config/RTL';
 import { getTheme } from '@ui5/webcomponents-base/dist/config/Theme';
-import { initRangeSet, RANGESETS } from '@ui5/webcomponents-react-base/lib/Media';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { cssVariablesStyles } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
+import { useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base/lib/hooks';
+import { initRangeSet, RANGESETS } from '@ui5/webcomponents-react-base/lib/Media';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import React, { FC, ReactNode, useEffect, useMemo } from 'react';
@@ -54,7 +55,7 @@ const ThemeProvider: FC<ThemeProviderProps> = (props: ThemeProviderProps) => {
   }, []);
 
   // init default media range sets
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     initRangeSet();
     initRangeSet(RANGESETS.SAP_STANDARD_EXTENDED);
   }, []);

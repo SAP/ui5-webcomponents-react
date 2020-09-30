@@ -149,6 +149,13 @@ export const hasRangeSet = (sName: string): boolean => {
 };
 
 export const getCurrentRange = (rangeSetName: string, width: number): RangeInfo => {
+  if (!initializedQuerySets[DEFAULT_RANGE_SET]) {
+    initRangeSet();
+  }
+  if (!initializedQuerySets[RANGESETS.SAP_STANDARD_EXTENDED]) {
+    initRangeSet(RANGESETS.SAP_STANDARD_EXTENDED);
+  }
+
   if (!hasRangeSet(rangeSetName)) {
     return null;
   }
@@ -254,8 +261,12 @@ export const detachHandler = (fnFunction, oListener?, name: string = DEFAULT_RAN
 
 export class MediaLegacy {
   constructor() {
-    initRangeSet();
-    initRangeSet(RANGESETS.SAP_STANDARD_EXTENDED);
+    if (!initializedQuerySets[DEFAULT_RANGE_SET]) {
+      initRangeSet();
+    }
+    if (!initializedQuerySets[RANGESETS.SAP_STANDARD_EXTENDED]) {
+      initRangeSet(RANGESETS.SAP_STANDARD_EXTENDED);
+    }
   }
 
   // Public API
