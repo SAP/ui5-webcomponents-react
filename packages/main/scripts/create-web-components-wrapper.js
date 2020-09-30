@@ -456,10 +456,15 @@ const createWebComponentDemo = (componentSpec, componentProps, description) => {
     if (componentSpec.module === 'Link') {
       formattedDescription = description.replace(`(<code><a></code>)`, ``);
     }
-    formattedDescription = prettier.format(formattedDescription, {
-      ...prettierConfigRaw,
-      parser: 'html'
-    });
+    if (formattedDescription) {
+      formattedDescription = `<div style={{fontFamily:'var(--sapFontFamily)', fontSize:'var(--sapFontSize)', color:'var(--sapTextColor)'}}>\n${prettier.format(
+        formattedDescription,
+        {
+          ...prettierConfigRaw,
+          parser: 'html'
+        }
+      )}</div>`;
+    }
   } catch (e) {
     formattedDescription = '';
     console.warn(
