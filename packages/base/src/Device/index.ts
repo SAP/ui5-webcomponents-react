@@ -178,7 +178,7 @@ class DeviceBuilder {
   };
 
   private isLandscape = (bFromOrientationChange) => {
-    if (this.support.touch && this.support.orientation && this.os.android) {
+    if (supportTouch() && supportOrientation() && getOS().android) {
       // if on screen keyboard is open and the call of this method is from orientation change listener,
       // reverse the last value. this is because when keyboard opens on android device, the height can be less
       // than the width even in portrait mode.
@@ -189,7 +189,7 @@ class DeviceBuilder {
         // when keyboard opens, the last orientation change value will be returned.
         return this.orientation.landscape;
       }
-    } else if (this.support.matchmedia && this.support.orientation) {
+    } else if (supportMatchMedia() && supportOrientation()) {
       // most desktop browsers and windows phone/tablet which not support orientationchange
       return !!window.matchMedia('(orientation: landscape)').matches;
     }
@@ -253,7 +253,7 @@ class DeviceBuilder {
     // when changing the size of a split view
     // therefore the following if needs to be adapted with additional check of iPad with version greater or equal 9
     // (splitview was introduced with iOS 9)
-    if (bResize && (bOrientationChange || (this.system.tablet && this.os.ios && this.os.version >= 9))) {
+    if (bResize && (bOrientationChange || (getSystem().tablet && getOS().ios && getOS().version >= 9))) {
       this.handleOrientationChange();
       this.handleResizeChange();
       bOrientationChange = false;
