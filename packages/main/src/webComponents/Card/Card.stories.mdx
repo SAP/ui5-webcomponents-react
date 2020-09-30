@@ -8,7 +8,10 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   title="UI5 Web Components / Card"
   component={Card}
   argTypes={{
-    ...createSelectArgTypes({})
+    ...createSelectArgTypes({}),
+    action: { control: { disable: true } },
+    avatar: { control: { disable: true } },
+    children: { control: { disable: true } }
   }}
   args={{}}
 />

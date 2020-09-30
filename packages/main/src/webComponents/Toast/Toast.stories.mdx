@@ -9,10 +9,12 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   title="UI5 Web Components / Toast"
   component={Toast}
   argTypes={{
-    ...createSelectArgTypes({ placement: ToastPlacement })
+    ...createSelectArgTypes({ placement: ToastPlacement }),
+    children: { control: 'text' }
   }}
   args={{
-    placement: ToastPlacement.BottomCenter
+    placement: ToastPlacement.BottomCenter,
+    children: 'Toast Text'
   }}
 />
 

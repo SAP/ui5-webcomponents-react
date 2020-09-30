@@ -10,7 +10,8 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   title="UI5 Web Components / DateRangePicker"
   component={DateRangePicker}
   argTypes={{
-    ...createSelectArgTypes({ primaryCalendarType: CalendarType, valueState: ValueState })
+    ...createSelectArgTypes({ primaryCalendarType: CalendarType, valueState: ValueState }),
+    valueStateMessage: { control: { disable: true } }
   }}
   args={{
     primaryCalendarType: CalendarType.Gregorian,

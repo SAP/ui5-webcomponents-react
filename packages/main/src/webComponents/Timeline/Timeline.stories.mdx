@@ -10,7 +10,8 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   component={Timeline}
   subcomponents={{ TimelineItem }}
   argTypes={{
-    ...createSelectArgTypes({})
+    ...createSelectArgTypes({}),
+    children: { control: { disable: true } }
   }}
   args={{}}
 />

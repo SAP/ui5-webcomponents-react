@@ -2,6 +2,8 @@ import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { Input } from '@ui5/webcomponents-react/lib/Input';
 import { InputType } from '@ui5/webcomponents-react/lib/InputType';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import '@ui5/webcomponents-icons/dist/icons/employee.js';
+import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { SuggestionItem } from '@ui5/webcomponents-react/lib/SuggestionItem';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
@@ -11,11 +13,15 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   component={Input}
   subcomponents={{ SuggestionItem }}
   argTypes={{
-    ...createSelectArgTypes({ type: InputType, valueState: ValueState })
+    ...createSelectArgTypes({ type: InputType, valueState: ValueState }),
+    children: { control: { disable: true } },
+    icon: { control: { disable: true } },
+    valueStateMessage: { control: { disable: true } }
   }}
   args={{
     type: InputType.Text,
-    valueState: ValueState.None
+    valueState: ValueState.None,
+    icon: <Icon name="employee" />
   }}
 />
 

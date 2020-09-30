@@ -1,6 +1,8 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { ToggleButton } from '@ui5/webcomponents-react/lib/ToggleButton';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
+import '@ui5/webcomponents-icons/dist/icons/employee.js';
+import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
@@ -9,10 +11,13 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   title="UI5 Web Components / ToggleButton"
   component={ToggleButton}
   argTypes={{
-    ...createSelectArgTypes({ design: ButtonDesign })
+    ...createSelectArgTypes({ design: ButtonDesign }),
+    children: { control: 'text' }
   }}
   args={{
-    design: ButtonDesign.Default
+    design: ButtonDesign.Default,
+    icon: 'employee',
+    children: 'ToggleButton Text'
   }}
 />
 

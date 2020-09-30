@@ -9,10 +9,12 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   title="UI5 Web Components / Title"
   component={Title}
   argTypes={{
-    ...createSelectArgTypes({ level: TitleLevel })
+    ...createSelectArgTypes({ level: TitleLevel }),
+    children: { control: 'text' }
   }}
   args={{
-    level: TitleLevel.H2
+    level: TitleLevel.H2,
+    children: 'Title Text'
   }}
 />
 

@@ -10,7 +10,9 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   title="UI5 Web Components / Panel"
   component={Panel}
   argTypes={{
-    ...createSelectArgTypes({ accessibleRole: PanelAccessibleRoles, headerLevel: TitleLevel })
+    ...createSelectArgTypes({ accessibleRole: PanelAccessibleRoles, headerLevel: TitleLevel }),
+    children: { control: { disable: true } },
+    header: { control: { disable: true } }
   }}
   args={{
     accessibleRole: PanelAccessibleRoles.Form,

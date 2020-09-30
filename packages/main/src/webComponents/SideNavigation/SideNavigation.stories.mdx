@@ -11,7 +11,9 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   component={SideNavigation}
   subcomponents={{ SideNavigationItem, SideNavigationSubItem }}
   argTypes={{
-    ...createSelectArgTypes({})
+    ...createSelectArgTypes({}),
+    children: { control: { disable: true } },
+    fixedItems: { control: { disable: true } }
   }}
   args={{}}
 />

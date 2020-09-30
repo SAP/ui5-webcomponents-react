@@ -10,7 +10,13 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   component={ShellBar}
   subcomponents={{ ShellBarItem }}
   argTypes={{
-    ...createSelectArgTypes({})
+    ...createSelectArgTypes({}),
+    children: { control: { disable: true } },
+    logo: { control: { disable: true } },
+    menuItems: { control: { disable: true } },
+    profile: { control: { disable: true } },
+    searchField: { control: { disable: true } },
+    startButton: { control: { disable: true } }
   }}
   args={{}}
 />

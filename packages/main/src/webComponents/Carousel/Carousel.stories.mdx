@@ -9,7 +9,8 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   title="UI5 Web Components / Carousel"
   component={Carousel}
   argTypes={{
-    ...createSelectArgTypes({ arrowsPlacement: CarouselArrowsPlacement })
+    ...createSelectArgTypes({ arrowsPlacement: CarouselArrowsPlacement }),
+    children: { control: { disable: true } }
   }}
   args={{
     arrowsPlacement: CarouselArrowsPlacement.Content

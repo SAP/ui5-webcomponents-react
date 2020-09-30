@@ -8,7 +8,10 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   title="UI5 Web Components / Dialog"
   component={Dialog}
   argTypes={{
-    ...createSelectArgTypes({})
+    ...createSelectArgTypes({}),
+    children: { control: { disable: true } },
+    footer: { control: { disable: true } },
+    header: { control: { disable: true } }
   }}
   args={{}}
 />

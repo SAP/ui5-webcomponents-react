@@ -8,7 +8,8 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   title="UI5 Web Components / SegmentedButton"
   component={SegmentedButton}
   argTypes={{
-    ...createSelectArgTypes({})
+    ...createSelectArgTypes({}),
+    children: { control: { disable: true } }
   }}
   args={{}}
 />

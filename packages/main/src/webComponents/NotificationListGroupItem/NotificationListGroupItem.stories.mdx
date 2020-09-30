@@ -10,7 +10,9 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   component={NotificationListGroupItem}
   subcomponents={{ NotificationOverflowAction }}
   argTypes={{
-    ...createSelectArgTypes({ priority: Priority })
+    ...createSelectArgTypes({ priority: Priority }),
+    children: { control: { disable: true } },
+    actions: { control: { disable: true } }
   }}
   args={{
     priority: Priority.None

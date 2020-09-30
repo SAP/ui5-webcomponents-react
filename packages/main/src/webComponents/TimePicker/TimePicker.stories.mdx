@@ -9,7 +9,8 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   title="UI5 Web Components / TimePicker"
   component={TimePicker}
   argTypes={{
-    ...createSelectArgTypes({ valueState: ValueState })
+    ...createSelectArgTypes({ valueState: ValueState }),
+    valueStateMessage: { control: { disable: true } }
   }}
   args={{
     valueState: ValueState.None

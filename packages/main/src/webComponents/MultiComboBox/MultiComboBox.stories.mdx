@@ -10,7 +10,8 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   component={MultiComboBox}
   subcomponents={{ MultiComboBoxItem }}
   argTypes={{
-    ...createSelectArgTypes({ valueState: ValueState })
+    ...createSelectArgTypes({ valueState: ValueState }),
+    children: { control: { disable: true } }
   }}
   args={{
     valueState: ValueState.None

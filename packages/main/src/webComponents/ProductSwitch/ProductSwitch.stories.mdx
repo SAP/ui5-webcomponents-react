@@ -10,7 +10,8 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   component={ProductSwitch}
   subcomponents={{ ProductSwitchItem }}
   argTypes={{
-    ...createSelectArgTypes({})
+    ...createSelectArgTypes({}),
+    children: { control: { disable: true } }
   }}
   args={{}}
 />

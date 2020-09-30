@@ -9,7 +9,8 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   title="UI5 Web Components / BusyIndicator"
   component={BusyIndicator}
   argTypes={{
-    ...createSelectArgTypes({ size: BusyIndicatorSize })
+    ...createSelectArgTypes({ size: BusyIndicatorSize }),
+    children: { control: { disable: true } }
   }}
   args={{
     size: BusyIndicatorSize.Medium

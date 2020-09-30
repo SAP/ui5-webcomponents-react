@@ -13,7 +13,9 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   component={List}
   subcomponents={{ StandardListItem, CustomListItem, GroupHeaderListItem }}
   argTypes={{
-    ...createSelectArgTypes({ mode: ListMode, separators: ListSeparators })
+    ...createSelectArgTypes({ mode: ListMode, separators: ListSeparators }),
+    children: { control: { disable: true } },
+    header: { control: { disable: true } }
   }}
   args={{
     mode: ListMode.None,

@@ -9,7 +9,10 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   title="UI5 Web Components / FlexibleColumnLayout"
   component={FlexibleColumnLayout}
   argTypes={{
-    ...createSelectArgTypes({ layout: FCLLayout })
+    ...createSelectArgTypes({ layout: FCLLayout }),
+    endColumn: { control: { disable: true } },
+    midColumn: { control: { disable: true } },
+    startColumn: { control: { disable: true } }
   }}
   args={{
     layout: FCLLayout.OneColumn

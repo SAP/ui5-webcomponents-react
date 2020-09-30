@@ -1,6 +1,8 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { MessageStrip } from '@ui5/webcomponents-react/lib/MessageStrip';
 import { MessageStripType } from '@ui5/webcomponents-react/lib/MessageStripType';
+import '@ui5/webcomponents-icons/dist/icons/employee.js';
+import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
@@ -9,10 +11,14 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   title="UI5 Web Components / MessageStrip"
   component={MessageStrip}
   argTypes={{
-    ...createSelectArgTypes({ type: MessageStripType })
+    ...createSelectArgTypes({ type: MessageStripType }),
+    children: { control: 'text' },
+    icon: { control: { disable: true } }
   }}
   args={{
-    type: MessageStripType.Information
+    type: MessageStripType.Information,
+    children: 'MessageStrip Text',
+    icon: <Icon name="employee" />
   }}
 />
 

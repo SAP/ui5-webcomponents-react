@@ -9,10 +9,12 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   title="UI5 Web Components / Link"
   component={Link}
   argTypes={{
-    ...createSelectArgTypes({ design: LinkDesign })
+    ...createSelectArgTypes({ design: LinkDesign }),
+    children: { control: 'text' }
   }}
   args={{
-    design: LinkDesign.Default
+    design: LinkDesign.Default,
+    children: 'Link Text'
   }}
 />
 

@@ -12,7 +12,8 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   component={TabContainer}
   subcomponents={{ Tab, TabSeparator }}
   argTypes={{
-    ...createSelectArgTypes({ tabLayout: TabLayout, tabsPlacement: TabContainerTabsPlacement })
+    ...createSelectArgTypes({ tabLayout: TabLayout, tabsPlacement: TabContainerTabsPlacement }),
+    children: { control: { disable: true } }
   }}
   args={{
     tabLayout: TabLayout.Standard,

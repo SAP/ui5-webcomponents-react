@@ -35,7 +35,9 @@ const PRIVATE_COMPONENTS = new Set([
   'WheelSlider'
 ]);
 
-const COMPONENTS_WITHOUT_TAGNAME = new Set([]);
+const EXTENDED_PROP_DESCRIPTION = {
+  primaryCalendarType: `<br/><b>Note:</b> Calendar types other than Gregorian must be imported manually:<br /><code>import "@ui5/webcomponents-localization/dist/features/calendar/{primaryCalendarType}.js";</code>`
+};
 
 const COMPONENTS_WITHOUT_DEMOS = new Set(PRIVATE_COMPONENTS);
 COMPONENTS_WITHOUT_DEMOS.add('CustomListItem');
@@ -426,29 +428,57 @@ const createWebComponentTest = (name) => {
 
 const createWebComponentDemo = (componentSpec, componentProps, description) => {
   const componentName = componentSpec.module;
-
   const enumImports = [];
-
   const selectArgTypes = [];
   const args = [];
+  const customArgTypes = [];
 
   const additionalComponentDocs = componentSpec.hasOwnProperty('appenddocs') ? componentSpec.appenddocs.split(' ') : [];
   const additionalComponentImports = additionalComponentDocs.map(
     (component) => `import { ${component} } from '@ui5/webcomponents-react/lib/${component}';`
   );
 
-  componentProps
-    .filter((prop) => prop.name !== 'children')
-    .forEach((prop) => {
-      if (prop.importStatement && prop.importStatement !== `import { ReactNode } from 'react';`) {
-        enumImports.push(prop.importStatement);
+  componentProps.forEach((prop) => {
+    if (prop.importStatement && prop.importStatement !== `import { ReactNode } from 'react';`) {
+      enumImports.push(prop.importStatement);
+    }
+    if (prop.name === 'primaryCalendarType') {
+      enumImports.push(`import "@ui5/webcomponents-localization/dist/features/calendar/Gregorian.js";`);
+      enumImports.push(`import "@ui5/webcomponents-localization/dist/features/calendar/Buddhist.js";`);
+      enumImports.push(`import "@ui5/webcomponents-localization/dist/features/calendar/Islamic.js";`);
+      enumImports.push(`import "@ui5/webcomponents-localization/dist/features/calendar/Japanese.js";`);
+      enumImports.push(`import "@ui5/webcomponents-localization/dist/features/calendar/Persian.js";`);
+    }
+    if (prop.name === 'children') {
+      if (
+        prop.description.includes(
+          'Аlthough this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.'
+        )
+      ) {
+        args.push(`children: "${componentName} Text"`);
+        customArgTypes.push(`children: {control: 'text'}`);
+      } else {
+        customArgTypes.push(`children: {control: {disable:true}}`);
       }
-      if (prop.isEnum) {
-        selectArgTypes.push(`${prop.name}: ${prop.tsType}`);
-        const defaultValue = prop.defaultValue ? `.${prop.defaultValue.replace(/['"]/g, '')}` : '';
-        args.push(`${prop.name}: ${prop.tsType}${defaultValue}`);
+    } else if (prop.name === 'icon') {
+      enumImports.push(`import "@ui5/webcomponents-icons/dist/icons/employee.js";`);
+      enumImports.push(`import { Icon } from '@ui5/webcomponents-react/lib/Icon';`);
+      if (prop.tsType === 'string') {
+        args.push(`icon: 'employee'`);
       }
-    });
+      if (prop.tsType.includes('ReactNode')) {
+        customArgTypes.push(`icon: {control: {disable: true}}`);
+        args.push(`icon: <Icon name="employee" />`);
+      }
+    } else if (prop.tsType.includes('ReactNode') || prop.tsType === 'unknown') {
+      customArgTypes.push(`${prop.name}: {control: {disable:true}}`);
+    }
+    if (prop.isEnum) {
+      selectArgTypes.push(`${prop.name}: ${prop.tsType}`);
+      const defaultValue = prop.defaultValue ? `.${prop.defaultValue.replace(/['"]/g, '')}` : '';
+      args.push(`${prop.name}: ${prop.tsType}${defaultValue}`);
+    }
+  });
 
   let formattedDescription = description.replace(/<br>/g, `<br/>`);
 
@@ -486,7 +516,7 @@ const createWebComponentDemo = (componentSpec, componentProps, description) => {
      component={${componentName}}
      ${additionalComponentDocs.length > 0 ? `subcomponents={{ ${additionalComponentDocs.join(', ')} }}` : ''}
      argTypes={{
-       ...createSelectArgTypes({${selectArgTypes.join(', ')}})
+       ...createSelectArgTypes({${selectArgTypes.join(', ')}}),${customArgTypes.join(',\n')}
      }}
      args={{
        ${args.join(',\n')}
@@ -595,7 +625,12 @@ resolvedWebComponents.forEach((componentSpec) => {
           .replace(/\n\n<br><br> /g, '<br/><br/>\n  *\n  * ')
           .replace(/\n\n/g, '<br/><br/>\n  *\n  * ')
           .replace(new RegExp(componentSpec.tagname, 'g'), `${componentSpec.module}`);
-        return replaceTagNameWithModuleName(formattedDescription);
+
+        const extendedDescription = EXTENDED_PROP_DESCRIPTION[property.name];
+        if (extendedDescription) {
+          return replaceTagNameWithModuleName(`${formattedDescription}${extendedDescription}`);
+        }
+        return replaceTagNameWithModuleName(`${formattedDescription}`);
       };
 
       propTypes.push(dedent`

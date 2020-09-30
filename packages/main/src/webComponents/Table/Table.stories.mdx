@@ -12,7 +12,9 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   component={Table}
   subcomponents={{ TableColumn, TableRow, TableCell }}
   argTypes={{
-    ...createSelectArgTypes({})
+    ...createSelectArgTypes({}),
+    columns: { control: { disable: true } },
+    children: { control: { disable: true } }
   }}
   args={{}}
 />

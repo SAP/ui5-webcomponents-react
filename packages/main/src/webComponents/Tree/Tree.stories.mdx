@@ -10,7 +10,9 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   component={Tree}
   subcomponents={{ TreeItem }}
   argTypes={{
-    ...createSelectArgTypes({ mode: ListMode })
+    ...createSelectArgTypes({ mode: ListMode }),
+    children: { control: { disable: true } },
+    header: { control: { disable: true } }
   }}
   args={{
     mode: ListMode.None
