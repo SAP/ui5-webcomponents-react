@@ -1,5 +1,6 @@
 import { getRTL } from '@ui5/webcomponents-base/dist/config/RTL';
 import { getTheme } from '@ui5/webcomponents-base/dist/config/Theme';
+import { initRangeSet, RANGESETS } from '@ui5/webcomponents-react-base/lib/Media';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { cssVariablesStyles } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
@@ -50,6 +51,12 @@ const ThemeProvider: FC<ThemeProviderProps> = (props: ThemeProviderProps) => {
         silent: true
       });
     }
+  }, []);
+
+  // init default media range sets
+  useEffect(() => {
+    initRangeSet();
+    initRangeSet(RANGESETS.SAP_STANDARD_EXTENDED);
   }, []);
 
   return <ReactJssThemeProvider theme={themeContext}>{children}</ReactJssThemeProvider>;

@@ -24,8 +24,7 @@ export const changeRootCSSClass = (sClassName, bRemove, sPrefix?) => {
   }
 };
 
-export const getQuery = (from, to, unit) => {
-  unit = unit || 'px';
+export const getQuery = (from: number, to: number, unit = 'px') => {
   let q = 'all';
   if (from > 0) {
     q = `${q} and (min-width:${from}${unit})`;

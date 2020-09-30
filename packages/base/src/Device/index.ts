@@ -1,9 +1,17 @@
-import { getBrowser, getOS, getSystem } from '@ui5/webcomponents-base/dist/Device';
+import { getBrowser, getOS, getSystem, supportTouch } from '@ui5/webcomponents-base/dist/Device';
 import { EventRegistry } from './EventRegistry';
-import { Media } from './Media';
+import { MediaLegacy } from './Media';
 import { Orientation } from './Orientation';
 import { Resize } from './Resize';
-import { Support } from './Support';
+import {
+  supportInputPlaceholder,
+  supportMatchMedia,
+  supportMatchMediaListener,
+  supportOrientation,
+  supportPointerEvents,
+  supportRetina,
+  supportWebSocket
+} from './Support';
 import { windowSize } from './utils';
 
 let iResizeTimeout;
@@ -16,29 +24,30 @@ let iWindowWidthOld = windowSize()[0];
 let bKeyboardOpen = false;
 let iLastResizeTime;
 const rInputTagRegex = /INPUT|TEXTAREA|SELECT/;
-let bSkipFirstResize;
 
 class DeviceBuilder {
   public os = getOS();
   public browser = getBrowser();
-  public support = new Support();
+  public support = {
+    touch: supportTouch(),
+    pointer: supportPointerEvents(),
+    matchmedia: supportMatchMedia(),
+    matchmedialistener: supportMatchMediaListener(),
+    orientation: supportOrientation(),
+    retina: supportRetina(),
+    websocket: supportWebSocket(),
+    input: {
+      placeholder: supportInputPlaceholder()
+    }
+  };
   public system = getSystem();
-  public media = new Media(this.support);
+  public media = new MediaLegacy();
   public orientation = new Orientation();
   public resize = new Resize();
 
   constructor() {
-    // On iPhone with iOS version 7.0.x and on iPad with iOS version 7.x
-    // (tested with all versions below 7.1.1), there's an invalid resize event fired
-    // when changing the orientation while keyboard is shown.
-    bSkipFirstResize =
-      this.os.ios &&
-      this.browser.name === 'sf' &&
-      ((this.system.phone && this.os.version >= 7 && this.os.version < 7.1) ||
-        (this.system.tablet && this.os.version >= 7));
-
     // Add handler for orientationchange and resize after initialization of Device API
-    if (this.support.touch && this.support.orientation) {
+    if (supportTouch() && supportOrientation()) {
       // logic for mobile devices which support orientationchange (like ios, android)
       window.addEventListener('resize', this.handleMobileOrientationResizeChange, false);
       window.addEventListener('orientationchange', this.handleMobileOrientationResizeChange, false);
@@ -109,7 +118,7 @@ class DeviceBuilder {
 
   private handleMobileOrientationResizeChange = (evt) => {
     if (evt.type === 'resize') {
-      if (bSkipFirstResize && rInputTagRegex.test(document.activeElement.tagName) && !bOrientationChange) {
+      if (rInputTagRegex.test(document.activeElement.tagName) && !bOrientationChange) {
         return;
       }
 
@@ -183,3 +192,8 @@ class DeviceBuilder {
 }
 
 export const Device = new DeviceBuilder();
+
+// re-export everything from the web components device
+export * from '@ui5/webcomponents-base/dist/Device';
+// export all support methods
+export * from './Support';
