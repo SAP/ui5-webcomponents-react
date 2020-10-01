@@ -69,6 +69,13 @@ PS.: It is important to add the `--template ui5-webcomponents-react-seed` at the
 
 - `useAuthority`: Which includes `hasAccess` helpers.
 
+# Project Structure
+
+Following one of the several recommendations for structuring files on a React based project, the seed use: [Grouping by file type](https://reactjs.org/docs/faq-structure.html#grouping-by-file-type).
+
+The only custom change we have incremented were the Custom Components and the folder for each project containing the `tests` artefacts.
+
+
 # Scripts Included
 
 In the project directory, you can run:
