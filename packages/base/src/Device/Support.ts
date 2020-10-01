@@ -31,5 +31,3 @@ export const supportOrientation = () => {
 export const supportRetina = () => {
   return (window as any).retina || window.devicePixelRatio >= 2;
 };
-
-export class Support {}
