@@ -2,8 +2,6 @@ import { getBrowser, getOS, getSystem, supportTouch } from '@ui5/webcomponents-b
 import { deprecationNotice } from '@ui5/webcomponents-react-base/lib/Utils';
 import { EventRegistry } from './EventRegistry';
 import { MediaLegacy } from './Media';
-import { Orientation } from './Orientation';
-import { Resize } from './Resize';
 import {
   supportInputPlaceholder,
   supportMatchMedia,
@@ -13,18 +11,172 @@ import {
   supportRetina,
   supportWebSocket
 } from './Support';
-import { windowSize } from './utils';
+import * as Utils from './utils';
 
 let iResizeTimeout;
 let bOrientationChange = false;
 let bResize = false;
 let iOrientationTimeout;
 let iClearFlagTimeout;
-let iWindowHeightOld = windowSize()[1];
-let iWindowWidthOld = windowSize()[0];
+let [iWindowWidthOld, iWindowHeightOld] = Utils.getWindowSize();
 let bKeyboardOpen = false;
 let iLastResizeTime;
 const rInputTagRegex = /INPUT|TEXTAREA|SELECT/;
+
+interface IOrientation {
+  landscape: boolean;
+  portrait: boolean;
+}
+
+interface IWindowSize {
+  height: number;
+  width: number;
+}
+
+const windowSize: IWindowSize = {
+  height: 0,
+  width: 0
+};
+
+const orientation: IOrientation = {
+  landscape: false,
+  portrait: false
+};
+
+// PRIVATE API
+
+const setResizeInfo = () => {
+  windowSize.width = Utils.getWindowSize()[0];
+  windowSize.height = Utils.getWindowSize()[1];
+};
+
+const setOrientationInfo = () => {
+  orientation.landscape = Utils.isLandscape(true, orientation, bKeyboardOpen);
+  orientation.portrait = !orientation.landscape;
+};
+
+const clearFlags = () => {
+  bOrientationChange = false;
+  bResize = false;
+  iClearFlagTimeout = null;
+};
+
+let eventListenersInitialized = false;
+const initEventListeners = () => {
+  // Add handler for orientationchange and resize after initialization of Device API
+  if (supportTouch() && supportOrientation()) {
+    // logic for mobile devices which support orientationchange (like ios, android)
+    window.addEventListener('resize', handleMobileOrientationResizeChange, false);
+    window.addEventListener('orientationchange', handleMobileOrientationResizeChange, false);
+  } else {
+    // desktop browsers and windows phone/tablet which not support orientationchange
+    window.addEventListener('resize', handleResizeEvent, false);
+  }
+  setResizeInfo();
+  setOrientationInfo();
+  eventListenersInitialized = true;
+};
+
+// orientation change
+const handleOrientationChange = () => {
+  setOrientationInfo();
+  EventRegistry.fireEvent('orientation', { landscape: orientation.landscape });
+};
+
+const handleMobileTimeout = () => {
+  // with ios split view, the browser fires only resize event and no orientationchange
+  // when changing the size of a split view
+  // therefore the following if needs to be adapted with additional check of iPad with version greater or equal 9
+  // (splitview was introduced with iOS 9)
+  if (bResize && (bOrientationChange || (getSystem().tablet && getOS().ios && getOS().version >= 9))) {
+    handleOrientationChange();
+    handleResizeChange();
+    bOrientationChange = false;
+    bResize = false;
+    if (iClearFlagTimeout) {
+      window.clearTimeout(iClearFlagTimeout);
+      iClearFlagTimeout = null;
+    }
+  }
+  iOrientationTimeout = null;
+};
+
+const handleMobileOrientationResizeChange = (evt) => {
+  if (evt.type === 'resize') {
+    if (rInputTagRegex.test(document.activeElement.tagName) && !bOrientationChange) {
+      return;
+    }
+
+    const [iWindowWidthNew, iWindowHeightNew] = Utils.getWindowSize();
+    const iTime = new Date().getTime();
+    // skip multiple resize events by only one orientationchange
+    if (iWindowHeightNew === iWindowHeightOld && iWindowWidthNew === iWindowWidthOld) {
+      return;
+    }
+    bResize = true;
+    // on mobile devices opening the keyboard on some devices leads to a resize event
+    // in this case only the height changes, not the width
+    if (iWindowHeightOld !== iWindowHeightNew && iWindowWidthOld === iWindowWidthNew) {
+      // Asus Transformer tablet fires two resize events when orientation changes while keyboard is open.
+      // Between these two events, only the height changes. The check of if keyboard is open has to be skipped because
+      // it may be judged as keyboard closed but the keyboard is still
+      // open which will affect the orientation detection
+      if (!iLastResizeTime || iTime - iLastResizeTime > 300) {
+        bKeyboardOpen = iWindowHeightNew < iWindowHeightOld;
+      }
+      handleResizeChange();
+    } else {
+      iWindowWidthOld = iWindowWidthNew;
+    }
+    iLastResizeTime = iTime;
+    iWindowHeightOld = iWindowHeightNew;
+
+    if (iClearFlagTimeout) {
+      window.clearTimeout(iClearFlagTimeout);
+      iClearFlagTimeout = null;
+    }
+    // Some Android build-in browser fires a resize event after the viewport is applied.
+    // This resize event has to be dismissed otherwise when the next orientationchange event happens,
+    // a UI5 resize event will be fired with the wrong window size.
+    iClearFlagTimeout = window.setTimeout(clearFlags, 1200);
+  } else if (evt.type === 'orientationchange') {
+    bOrientationChange = true;
+  }
+
+  if (iOrientationTimeout) {
+    clearTimeout(iOrientationTimeout);
+    iOrientationTimeout = null;
+  }
+  iOrientationTimeout = window.setTimeout(handleMobileTimeout, 50);
+};
+
+// RESIZE ONLY WITHOUT ORIENTATION CHANGE
+const handleResizeChange = () => {
+  setResizeInfo();
+  EventRegistry.fireEvent('resize', {
+    height: windowSize.height,
+    width: windowSize.width
+  });
+};
+
+const handleResizeTimeout = () => {
+  handleResizeChange();
+  iResizeTimeout = null;
+};
+
+const handleResizeEvent = () => {
+  const wasL = orientation.landscape;
+  const isL = Utils.isLandscape(false, orientation, bKeyboardOpen);
+  if (wasL !== isL) {
+    handleOrientationChange();
+  }
+  // throttle resize events because most browsers throw one or more resize events per pixel
+  // for every resize event inside the period from 150ms (starting from the first resize event),
+  // we only fire one resize event after this period
+  if (!iResizeTimeout) {
+    iResizeTimeout = window.setTimeout(handleResizeTimeout, 150);
+  }
+};
 
 class DeviceBuilder {
   public get os() {
@@ -123,154 +275,44 @@ class DeviceBuilder {
     }
   };
 
-  public media = new MediaLegacy();
-  public orientation = new Orientation();
-  public resize = new Resize();
-
-  constructor() {
-    // Add handler for orientationchange and resize after initialization of Device API
-    if (supportTouch() && supportOrientation()) {
-      // logic for mobile devices which support orientationchange (like ios, android)
-      window.addEventListener('resize', this.handleMobileOrientationResizeChange, false);
-      window.addEventListener('orientationchange', this.handleMobileOrientationResizeChange, false);
-    } else {
-      // desktop browsers and windows phone/tablet which not support orientationchange
-      window.addEventListener('resize', this.handleResizeEvent, false);
-    }
-    this.setOrientationInfo();
+  public get media() {
+    return new MediaLegacy();
   }
 
-  private handleResizeEvent = () => {
-    const wasL = this.orientation.landscape;
-    const isL = this.isLandscape(false);
-    if (wasL !== isL) {
-      this.handleOrientationChange();
+  public orientation = {
+    landscape: orientation.landscape,
+    portrait: orientation.portrait,
+    attachHandler: attachOrientationHandler,
+    detachHandler: detachOrientationHandler
+  };
+  public resize = {
+    width: windowSize.width,
+    height: windowSize.height,
+    setResizeInfo,
+    attachHandler: attachResizeHandler,
+    detachHandler: detachResizeHandler
+  };
+
+  constructor() {
+    if (!eventListenersInitialized) {
+      initEventListeners();
     }
-    // throttle resize events because most browsers throw one or more resize events per pixel
-    // for every resize event inside the period from 150ms (starting from the first resize event),
-    // we only fire one resize event after this period
-    if (!iResizeTimeout) {
-      iResizeTimeout = window.setTimeout(this.handleResizeTimeout, 150);
-    }
-  };
+  }
 
-  private handleResizeTimeout = () => {
-    this.handleResizeChange();
-    iResizeTimeout = null;
-  };
+  // LEGACY API
+  private setOrientationInfo = setOrientationInfo;
+  private isLandscape = (bFromOrientationChange) =>
+    Utils.isLandscape(bFromOrientationChange, orientation, bKeyboardOpen);
 
-  private handleResizeChange = () => {
-    this.resize.setResizeInfo();
-    EventRegistry.fireEvent('resize', {
-      height: this.resize.height,
-      width: this.resize.width
-    });
-  };
+  // orientation
+  private handleOrientationChange = handleOrientationChange;
+  private handleMobileTimeout = handleMobileTimeout;
+  private handleMobileOrientationResizeChange = handleMobileOrientationResizeChange;
 
-  private setOrientationInfo = () => {
-    this.orientation.landscape = this.isLandscape(true);
-    this.orientation.portrait = !this.orientation.landscape;
-  };
-
-  private handleOrientationChange = () => {
-    this.setOrientationInfo();
-    EventRegistry.fireEvent('orientation', { landscape: this.orientation.landscape });
-  };
-
-  private isLandscape = (bFromOrientationChange) => {
-    if (supportTouch() && supportOrientation() && getOS().android) {
-      // if on screen keyboard is open and the call of this method is from orientation change listener,
-      // reverse the last value. this is because when keyboard opens on android device, the height can be less
-      // than the width even in portrait mode.
-      if (bKeyboardOpen && bFromOrientationChange) {
-        return !this.orientation.landscape;
-      }
-      if (bKeyboardOpen) {
-        // when keyboard opens, the last orientation change value will be returned.
-        return this.orientation.landscape;
-      }
-    } else if (supportMatchMedia() && supportOrientation()) {
-      // most desktop browsers and windows phone/tablet which not support orientationchange
-      return !!window.matchMedia('(orientation: landscape)').matches;
-    }
-    // otherwise compare the width and height of window
-    const size = windowSize();
-    return size[0] > size[1];
-  };
-
-  private handleMobileOrientationResizeChange = (evt) => {
-    if (evt.type === 'resize') {
-      if (rInputTagRegex.test(document.activeElement.tagName) && !bOrientationChange) {
-        return;
-      }
-
-      const iWindowHeightNew = windowSize()[1];
-      const iWindowWidthNew = windowSize()[0];
-      const iTime = new Date().getTime();
-      // skip multiple resize events by only one orientationchange
-      if (iWindowHeightNew === iWindowHeightOld && iWindowWidthNew === iWindowWidthOld) {
-        return;
-      }
-      bResize = true;
-      // on mobile devices opening the keyboard on some devices leads to a resize event
-      // in this case only the height changes, not the width
-      if (iWindowHeightOld !== iWindowHeightNew && iWindowWidthOld === iWindowWidthNew) {
-        // Asus Transformer tablet fires two resize events when orientation changes while keyboard is open.
-        // Between these two events, only the height changes. The check of if keyboard is open has to be skipped because
-        // it may be judged as keyboard closed but the keyboard is still
-        // open which will affect the orientation detection
-        if (!iLastResizeTime || iTime - iLastResizeTime > 300) {
-          bKeyboardOpen = iWindowHeightNew < iWindowHeightOld;
-        }
-        this.handleResizeChange();
-      } else {
-        iWindowWidthOld = iWindowWidthNew;
-      }
-      iLastResizeTime = iTime;
-      iWindowHeightOld = iWindowHeightNew;
-
-      if (iClearFlagTimeout) {
-        window.clearTimeout(iClearFlagTimeout);
-        iClearFlagTimeout = null;
-      }
-      // Some Android build-in browser fires a resize event after the viewport is applied.
-      // This resize event has to be dismissed otherwise when the next orientationchange event happens,
-      // a UI5 resize event will be fired with the wrong window size.
-      iClearFlagTimeout = window.setTimeout(DeviceBuilder.clearFlags, 1200);
-    } else if (evt.type === 'orientationchange') {
-      bOrientationChange = true;
-    }
-
-    if (iOrientationTimeout) {
-      clearTimeout(iOrientationTimeout);
-      iOrientationTimeout = null;
-    }
-    iOrientationTimeout = window.setTimeout(this.handleMobileTimeout, 50);
-  };
-
-  private handleMobileTimeout = () => {
-    // with ios split view, the browser fires only resize event and no orientationchange
-    // when changing the size of a split view
-    // therefore the following if needs to be adapted with additional check of iPad with version greater or equal 9
-    // (splitview was introduced with iOS 9)
-    if (bResize && (bOrientationChange || (getSystem().tablet && getOS().ios && getOS().version >= 9))) {
-      this.handleOrientationChange();
-      this.handleResizeChange();
-      bOrientationChange = false;
-      bResize = false;
-      if (iClearFlagTimeout) {
-        window.clearTimeout(iClearFlagTimeout);
-        iClearFlagTimeout = null;
-      }
-    }
-    iOrientationTimeout = null;
-  };
-
-  private static clearFlags = () => {
-    bOrientationChange = false;
-    bResize = false;
-    iClearFlagTimeout = null;
-  };
+  // resize
+  private handleResizeEvent = handleResizeEvent;
+  private handleResizeChange = handleResizeChange;
+  private handleResizeTimeout = handleResizeTimeout;
 }
 
 export const Device = new DeviceBuilder();
@@ -279,3 +321,33 @@ export const Device = new DeviceBuilder();
 export * from '@ui5/webcomponents-base/dist/Device';
 // export all support methods
 export * from './Support';
+// resize events
+export const getWindowSize = () => {
+  return windowSize;
+};
+export const attachResizeHandler = (fnFunction: (windowSize: IWindowSize) => void, oListener: unknown): void => {
+  if (!eventListenersInitialized) {
+    initEventListeners();
+  }
+  EventRegistry.attachEvent('resize', fnFunction, oListener);
+};
+
+export const detachResizeHandler = (fnFunction: (windowSize: IWindowSize) => void, oListener: unknown) => {
+  EventRegistry.detachEvent('resize', fnFunction, oListener);
+};
+
+// orientation change events
+export const getOrientation = () => {
+  return orientation;
+};
+
+export const attachOrientationHandler = (fnFunction: (orientation: IOrientation) => void, oListener: unknown): void => {
+  if (!eventListenersInitialized) {
+    initEventListeners();
+  }
+  EventRegistry.attachEvent('orientation', fnFunction, oListener);
+};
+
+export const detachOrientationHandler = (fnFunction: (orientation: IOrientation) => void, oListener: unknown) => {
+  EventRegistry.detachEvent('orientation', fnFunction, oListener);
+};
