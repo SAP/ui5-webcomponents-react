@@ -1,7 +1,7 @@
 import { UIEvent } from 'react';
 
 export const deprecationNotice = (component: string, message: string) => {
-  if (process.env.NODE_ENV === 'development') {
+  if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
     const value = `*** ui5-webcomponents-react Deprecation Notice - ${component} ***\n`;
     // eslint-disable-next-line no-console
     console.warn(`${value}${message}`);

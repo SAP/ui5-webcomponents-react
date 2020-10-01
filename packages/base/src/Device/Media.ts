@@ -1,4 +1,5 @@
 import { Logger } from '@ui5/webcomponents-react-base/lib/Logger';
+import { deprecationNotice } from '@ui5/webcomponents-react-base/lib/Utils';
 import { EventRegistry } from './EventRegistry';
 import { supportMatchMediaListener } from './Support';
 import { changeRootCSSClass, getQuery, matchLegacyBySize } from './utils';
@@ -273,12 +274,65 @@ export class MediaLegacy {
   public RANGESETS = RANGESETS;
   public predefinedRangeSets = DEFAULT_RANGESETS;
 
-  public getCurrentRange = getCurrentRange;
-  public hasRangeSet = hasRangeSet;
-  public initRangeSet = initRangeSet;
-  public removeRangeSet = removeRangeSet;
-  public attachHandler = attachHandler;
-  public detachHandler = detachHandler;
+  public getCurrentRange(rangeSetName: string, width: number) {
+    deprecationNotice(
+      'Device.media.getCurrentRange',
+      `Accessing 'Device.media.getCurrentRange' is deprecated and will be removed in the next major version. 
+    Please use 'getCurrentRange' ('import { getCurrentRange } from '@ui5/webcomponents-react/lib/Media') instead.`
+    );
+    return getCurrentRange(rangeSetName, width);
+  }
+
+  public hasRangeSet(name) {
+    deprecationNotice(
+      'Device.media.hasRangeSet',
+      `Accessing 'Device.media.hasRangeSet' is deprecated and will be removed in the next major version. 
+    Please use 'hasRangeSet' ('import { hasRangeSet } from '@ui5/webcomponents-react/lib/Media') instead.`
+    );
+    return hasRangeSet(name);
+  }
+
+  public initRangeSet(
+    sName?: string,
+    aRangeBorders?: number[],
+    sUnit?: string,
+    aRangeNames?: string[],
+    bSuppressClasses?: boolean
+  ) {
+    deprecationNotice(
+      'Device.media.initRangeSet',
+      `Accessing 'Device.media.initRangeSet' is deprecated and will be removed in the next major version. 
+    Please use 'initRangeSet' ('import { initRangeSet } from '@ui5/webcomponents-react/lib/Media') instead.`
+    );
+    return initRangeSet(sName, aRangeBorders, sUnit, aRangeNames, bSuppressClasses);
+  }
+
+  public removeRangeSet(name) {
+    deprecationNotice(
+      'Device.media.removeRangeSet',
+      `Accessing 'Device.media.removeRangeSet' is deprecated and will be removed in the next major version. 
+    Please use 'removeRangeSet' ('import { removeRangeSet } from '@ui5/webcomponents-react/lib/Media') instead.`
+    );
+    return removeRangeSet(name);
+  }
+
+  public attachHandler(fnFunction, oListener?, name: string = DEFAULT_RANGE_SET) {
+    deprecationNotice(
+      'Device.media.attachHandler',
+      `Accessing 'Device.media.attachHandler' is deprecated and will be removed in the next major version. 
+    Please use 'attachHandler' ('import { attachHandler } from '@ui5/webcomponents-react/lib/Media') instead.`
+    );
+    return attachHandler(fnFunction, oListener, name);
+  }
+
+  public detachHandler(fnFunction, oListener?, name: string = DEFAULT_RANGE_SET) {
+    deprecationNotice(
+      'Device.media.detachHandler',
+      `Accessing 'Device.media.detachHandler' is deprecated and will be removed in the next major version. 
+    Please use 'detachHandler' ('import { detachHandler } from '@ui5/webcomponents-react/lib/Media') instead.`
+    );
+    return detachHandler(fnFunction, oListener, name);
+  }
 
   // Private API
   private static getRangeInfo = getRangeInfo;
