@@ -280,17 +280,80 @@ class DeviceBuilder {
   }
 
   public orientation = {
-    landscape: orientation.landscape,
-    portrait: orientation.portrait,
-    attachHandler: attachOrientationHandler,
-    detachHandler: detachOrientationHandler
+    get landscape() {
+      deprecationNotice(
+        'Device.orientation.landscape',
+        `Accessing 'Device.orientation.landscape' is deprecated and will be removed in the next major version. 
+    Please use 'getOrientation().landscape' ('import { getOrientation } from '@ui5/webcomponents-react/lib/Device') instead.`
+      );
+      return orientation.landscape;
+    },
+    get portrait() {
+      deprecationNotice(
+        'Device.orientation.portrait',
+        `Accessing 'Device.orientation.portrait' is deprecated and will be removed in the next major version. 
+    Please use 'getOrientation().portrait' ('import { getOrientation } from '@ui5/webcomponents-react/lib/Device') instead.`
+      );
+      return orientation.portrait;
+    },
+    get attachHandler() {
+      deprecationNotice(
+        'Device.orientation.attachHandler',
+        `Accessing 'Device.orientation.attachHandler' is deprecated and will be removed in the next major version. 
+    Please use 'attachOrientationChangeHandler' ('import { attachOrientationChangeHandler } from '@ui5/webcomponents-react/lib/Device') instead.`
+      );
+      return attachOrientationChangeHandler;
+    },
+    get detachHandler() {
+      deprecationNotice(
+        'Device.orientation.detachHandler',
+        `Accessing 'Device.orientation.detachHandler' is deprecated and will be removed in the next major version. 
+    Please use 'detachOrientationChangeHandler' ('import { detachOrientationChangeHandler } from '@ui5/webcomponents-react/lib/Device') instead.`
+      );
+      return detachOrientationChangeHandler;
+    }
   };
   public resize = {
-    width: windowSize.width,
-    height: windowSize.height,
-    setResizeInfo,
-    attachHandler: attachResizeHandler,
-    detachHandler: detachResizeHandler
+    get width() {
+      deprecationNotice(
+        'Device.resize.width',
+        `Accessing 'Device.resize.width' is deprecated and will be removed in the next major version. 
+    Please use 'getWindowSize().width' ('import { getWindowSize } from '@ui5/webcomponents-react/lib/Device') instead.`
+      );
+      return windowSize.width;
+    },
+    get portrait() {
+      deprecationNotice(
+        'Device.resize.height',
+        `Accessing 'Device.resize.height' is deprecated and will be removed in the next major version. 
+    Please use 'getWindowSize().height' ('import { getWindowSize } from '@ui5/webcomponents-react/lib/Device') instead.`
+      );
+      return windowSize.height;
+    },
+    get setResizeInfo() {
+      deprecationNotice(
+        'Device.resize.setResizeInfo',
+        `Accessing 'Device.resize.setResizeInfo' is deprecated and will be removed in the next major version. 
+        There will be no replacement as this was a private API.`
+      );
+      return setResizeInfo;
+    },
+    get attachHandler() {
+      deprecationNotice(
+        'Device.resize.attachHandler',
+        `Accessing 'Device.resize.attachHandler' is deprecated and will be removed in the next major version. 
+    Please use 'attachResizeHandler' ('import { attachResizeHandler } from '@ui5/webcomponents-react/lib/Device') instead.`
+      );
+      return attachResizeHandler;
+    },
+    get detachHandler() {
+      deprecationNotice(
+        'Device.resize.detachHandler',
+        `Accessing 'Device.resize.detachHandler' is deprecated and will be removed in the next major version. 
+    Please use 'detachResizeHandler' ('import { detachResizeHandler } from '@ui5/webcomponents-react/lib/Device') instead.`
+      );
+      return detachResizeHandler;
+    }
   };
 
   constructor() {
@@ -341,13 +404,16 @@ export const getOrientation = () => {
   return orientation;
 };
 
-export const attachOrientationHandler = (fnFunction: (orientation: IOrientation) => void, oListener: unknown): void => {
+export const attachOrientationChangeHandler = (
+  fnFunction: (orientation: IOrientation) => void,
+  oListener: unknown
+): void => {
   if (!eventListenersInitialized) {
     initEventListeners();
   }
   EventRegistry.attachEvent('orientation', fnFunction, oListener);
 };
 
-export const detachOrientationHandler = (fnFunction: (orientation: IOrientation) => void, oListener: unknown) => {
+export const detachOrientationChangeHandler = (fnFunction: (orientation: IOrientation) => void, oListener: unknown) => {
   EventRegistry.detachEvent('orientation', fnFunction, oListener);
 };
