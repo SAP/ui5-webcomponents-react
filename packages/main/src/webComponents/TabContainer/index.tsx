@@ -31,7 +31,7 @@ export interface TabContainerPropTypes extends WithWebComponentPropTypes {
    */
   tabsPlacement?: TabContainerTabsPlacement;
   /**
-   * Defines the tabs. <br><br> <b>Note:</b> Use <code>Tab</code> and <code>ui5-tab-separator</code> for the intended design.
+   * Defines the tabs. <br><br> <b>Note:</b> Use <code>Tab</code> and <code>TabSeparator</code> for the intended design.
    */
   children?: ReactNode | ReactNode[];
   /**

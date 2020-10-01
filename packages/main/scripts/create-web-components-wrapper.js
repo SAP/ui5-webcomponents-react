@@ -80,16 +80,16 @@ const filterNonPublicAttributes = (prop) =>
   prop.visibility === 'public' && prop.readonly !== 'true' && prop.static !== true;
 
 const replaceTagNameWithModuleName = (description) => {
-  const startIndices = [...description.matchAll(new RegExp(`<code>ui5-`, 'gi'))].map((item) => item.index + 6);
-  startIndices.forEach((tagIndexStart) => {
-    let tagName = description.slice(tagIndexStart);
-    tagName = tagName.slice(0, tagName.indexOf(`</code>`));
+  // replace all tag occurrences in description with module name
+  [...description.matchAll(new RegExp(`<code>ui5-`, 'g'))].forEach(() => {
+    const start = description.indexOf(`<code>ui5-`) + 6;
+    const end = description.indexOf(`</code>`, start);
+    const tagName = description.slice(start, end);
     const webComponentWithTagName = allWebComponents.find((item) => item.tagname === tagName);
     if (webComponentWithTagName) {
       description = description.replace(webComponentWithTagName.tagname, webComponentWithTagName.module);
     }
   });
-
   return description;
 };
 

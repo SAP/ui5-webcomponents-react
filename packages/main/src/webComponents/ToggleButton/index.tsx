@@ -14,7 +14,7 @@ export interface ToggleButtonPropTypes extends Omit<WithWebComponentPropTypes, '
    */
   design?: ButtonDesign;
   /**
-   * Defines whether the <code>Button</code> is disabled (default is set to <code>false</code>). A disabled <code>ui5-button</code> can't be pressed or focused, and it is not in the tab chain.
+   * Defines whether the <code>Button</code> is disabled (default is set to <code>false</code>). A disabled <code>Button</code> can't be pressed or focused, and it is not in the tab chain.
    */
   disabled?: boolean;
   /**

@@ -37,13 +37,13 @@ export interface DateRangePickerPropTypes extends Omit<WithWebComponentPropTypes
    *
    * <b>Important:</b> For the <code>name</code> property to have effect, you must add the following import to your project: <code>import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";</code><br/><br/>
    *
-   * <b>Note:</b> When set, a native <code>input</code> HTML element will be created inside the <code>ui5-date-picker</code> so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
+   * <b>Note:</b> When set, a native <code>input</code> HTML element will be created inside the <code>DatePicker</code> so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
    */
   name?: string;
   /**
    * Defines a short hint, intended to aid the user with data entry when the <code>DatePicker</code> has no value.<br/><br/>
    *
-   * <b>Note:</b> When no placeholder is set, the format pattern is displayed as a placeholder. Passing an empty string as the value of this property will make the <code>ui5-date-picker</code> appear empty - without placeholder or format pattern.
+   * <b>Note:</b> When no placeholder is set, the format pattern is displayed as a placeholder. Passing an empty string as the value of this property will make the <code>DatePicker</code> appear empty - without placeholder or format pattern.
    */
   placeholder?: string;
   /**
@@ -65,7 +65,7 @@ export interface DateRangePickerPropTypes extends Omit<WithWebComponentPropTypes
   /**
    * Defines the value state message that will be displayed as pop up under the <code>DatePicker</code>. <br><br><br/><br/>
    *
-   * <b>Note:</b> If not specified, a default text (in the respective language) will be displayed. <br> <b>Note:</b> The <code>valueStateMessage</code> would be displayed, when the <code>ui5-date-picker</code> is in <code>Information</code>, <code>Warning</code> or <code>Error</code> value state.
+   * <b>Note:</b> If not specified, a default text (in the respective language) will be displayed. <br> <b>Note:</b> The <code>valueStateMessage</code> would be displayed, when the <code>DatePicker</code> is in <code>Information</code>, <code>Warning</code> or <code>Error</code> value state.
    */
   valueStateMessage?: ReactNode;
   /**
