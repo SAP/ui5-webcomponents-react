@@ -65,25 +65,6 @@ const rollupConfigFactory = (pkgName, externals = []) => {
   console.info('Copy index file');
   asyncCopyTo(path.resolve(PKG_BASE_PATH, 'src', 'index.ts'), path.resolve(PKG_BASE_PATH, `index.esm.js`));
 
-  console.info('Create TS Types');
-  const tsConfigPath = path.resolve(PKG_BASE_PATH, 'tsconfig.json');
-  if (fs.existsSync(tsConfigPath)) {
-    spawnSync(
-      path.resolve(PATHS.nodeModules, '.bin', 'tsc'),
-      [
-        '--project',
-        tsConfigPath,
-        '--declaration',
-        '--emitDeclarationOnly',
-        '--declarationDir',
-        PKG_BASE_PATH,
-        '--removeComments',
-        'false'
-      ],
-      { stdio: 'inherit' }
-    );
-  }
-
   const external = (id) => {
     const containsThisModule = (pkg) => id === pkg || id.startsWith(pkg + '/');
     return externalModules.some(containsThisModule);

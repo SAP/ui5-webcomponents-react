@@ -2,7 +2,7 @@ import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createC
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
-import { Label } from '@ui5/webcomponents-react/lib/Label';
+import { Label, LabelPropTypes } from '@ui5/webcomponents-react/lib/Label';
 import React, { cloneElement, CSSProperties, FC, isValidElement, ReactElement, ReactNode, ReactNodeArray } from 'react';
 
 export interface FormItemProps {
@@ -50,18 +50,21 @@ const renderLabel = (
   }
 
   if (isValidElement(label)) {
-    return cloneElement(
+    return cloneElement<LabelPropTypes>(
       label,
       {
-        wrap: label.props.wrap ?? true,
-        className: `${classes.label} ${label.props.className ?? ''}`,
+        wrap: (label as ReactElement<LabelPropTypes>).props.wrap ?? true,
+        className: `${classes.label} ${(label as ReactElement<LabelPropTypes>).props.className ?? ''}`,
         style: {
           gridColumnStart: styles.gridColumnStart,
           gridRowStart: styles.gridRowStart,
-          ...(label.props.style || {})
+          ...((label as ReactElement<LabelPropTypes>).props.style || {})
         }
       },
-      label.props.children ? `${label.props.children}:` : ''
+      (label as ReactElement<LabelPropTypes>).props.children
+        ? // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+          `${(label as ReactElement<LabelPropTypes>).props.children}:`
+        : ''
     );
   }
 
