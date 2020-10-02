@@ -6,6 +6,8 @@ describe('Device - Media', () => {
     const media = new MediaLegacy();
     expect(media.hasRangeSet(RANGESETS.SAP_STANDARD)).toBe(true);
     expect(media.hasRangeSet(RANGESETS.SAP_STANDARD_EXTENDED)).toBe(true);
+    media.initRangeSet(RANGESETS.SAP_STANDARD_EXTENDED);
+    expect(media.hasRangeSet(RANGESETS.SAP_STANDARD)).toBe(true);
   });
 
   test('getCurrentRangeSet with undefined Range Set', () => {
