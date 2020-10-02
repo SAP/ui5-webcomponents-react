@@ -1,19 +1,62 @@
+import {
+  attachOrientationChangeHandler,
+  attachResizeHandler,
+  detachOrientationChangeHandler,
+  detachResizeHandler,
+  getOrientation,
+  getWindowSize
+} from './index';
+
 describe('Device', () => {
-  const FIREFOX_MAC = 'Mozilla/5.0 (Macintosh; Intel Mac OS X x.y; rv:42.0) Gecko/20100101 Firefox/42.0';
-  const FIREFOX_WIN = 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0';
+  test('resize handler', () => {
+    jest.useFakeTimers();
+    const callback = jest.fn();
+    attachResizeHandler(callback);
+    expect(getWindowSize()).toEqual({
+      height: 768,
+      width: 1024
+    });
+    Object.defineProperty(window, 'innerWidth', { writable: true, configurable: true, value: 200 });
+    global.dispatchEvent(new Event('resize'));
+    jest.runAllTimers();
+    expect(callback).toBeCalledWith({
+      height: 768,
+      width: 200
+    });
+    detachResizeHandler(callback);
+    Object.defineProperty(window, 'innerWidth', { writable: true, configurable: true, value: 500 });
+    global.dispatchEvent(new Event('resize'));
+    jest.runAllTimers();
+    expect(callback).toHaveBeenCalledTimes(1);
+    // restore original value
+    Object.defineProperty(window, 'innerWidth', { writable: true, configurable: true, value: 1024 });
+    global.dispatchEvent(new Event('resize'));
+    jest.runAllTimers();
+  });
 
-  const CHROME =
-    'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36';
-
-  const SAFARI =
-    'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.30 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1';
-
-  const IE = 'Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0)';
-
-  test('Firefox Mac', async (done) => {
-    Object.defineProperty(window.navigator, 'userAgent', { value: FIREFOX_MAC });
-    const device = (await import('./index')).Device;
-    expect(device.browser.firefox).toBe(true);
-    done();
+  test('orientation change', () => {
+    jest.useFakeTimers();
+    const callback = jest.fn();
+    attachOrientationChangeHandler(callback);
+    Object.defineProperty(window, 'innerWidth', { writable: true, configurable: true, value: 1024 });
+    Object.defineProperty(window, 'innerHeight', { writable: true, configurable: true, value: 768 });
+    expect(getOrientation()).toEqual({
+      landscape: true,
+      portrait: false
+    });
+    Object.defineProperty(window, 'innerWidth', { writable: true, configurable: true, value: 300 });
+    Object.defineProperty(window, 'innerHeight', { writable: true, configurable: true, value: 1000 });
+    global.dispatchEvent(new Event('resize'));
+    jest.runAllTimers();
+    expect(callback).toBeCalledWith({
+      portrait: true,
+      landscape: false
+    });
+    detachOrientationChangeHandler(callback);
+    Object.defineProperty(window, 'innerWidth', { writable: true, configurable: true, value: 1024 });
+    Object.defineProperty(window, 'innerHeight', { writable: true, configurable: true, value: 768 });
+    global.dispatchEvent(new Event('resize'));
+    jest.runAllTimers();
+    expect(callback).toHaveBeenCalledTimes(1);
   });
 });

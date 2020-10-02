@@ -80,7 +80,7 @@ const initEventListeners = () => {
 // orientation change
 const handleOrientationChange = () => {
   setOrientationInfo();
-  EventRegistry.fireEvent('orientation', { landscape: orientation.landscape });
+  EventRegistry.fireEvent('orientation', { landscape: orientation.landscape, portrait: orientation.portrait });
 };
 
 const handleMobileTimeout = () => {
@@ -388,14 +388,14 @@ export * from './Support';
 export const getWindowSize = () => {
   return windowSize;
 };
-export const attachResizeHandler = (fnFunction: (windowSize: IWindowSize) => void, oListener: unknown): void => {
+export const attachResizeHandler = (fnFunction: (windowSize: IWindowSize) => void, oListener?: unknown): void => {
   if (!eventListenersInitialized) {
     initEventListeners();
   }
   EventRegistry.attachEvent('resize', fnFunction, oListener);
 };
 
-export const detachResizeHandler = (fnFunction: (windowSize: IWindowSize) => void, oListener: unknown) => {
+export const detachResizeHandler = (fnFunction: (windowSize: IWindowSize) => void, oListener?: unknown) => {
   EventRegistry.detachEvent('resize', fnFunction, oListener);
 };
 
@@ -406,7 +406,7 @@ export const getOrientation = () => {
 
 export const attachOrientationChangeHandler = (
   fnFunction: (orientation: IOrientation) => void,
-  oListener: unknown
+  oListener?: unknown
 ): void => {
   if (!eventListenersInitialized) {
     initEventListeners();
@@ -414,6 +414,9 @@ export const attachOrientationChangeHandler = (
   EventRegistry.attachEvent('orientation', fnFunction, oListener);
 };
 
-export const detachOrientationChangeHandler = (fnFunction: (orientation: IOrientation) => void, oListener: unknown) => {
+export const detachOrientationChangeHandler = (
+  fnFunction: (orientation: IOrientation) => void,
+  oListener?: unknown
+) => {
   EventRegistry.detachEvent('orientation', fnFunction, oListener);
 };
