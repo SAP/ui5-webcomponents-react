@@ -1,3 +1,4 @@
+import '@ui5/webcomponents-react-base/types/UI5Device.d.ts';
 import { getBrowser, getOS, getSystem, supportTouch } from '@ui5/webcomponents-base/dist/Device';
 import { deprecationNotice } from '@ui5/webcomponents-react-base/lib/Utils';
 import { EventRegistry } from './EventRegistry';
