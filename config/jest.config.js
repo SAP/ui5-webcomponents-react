@@ -28,6 +28,7 @@ module.exports = {
     '^@shared/(.*)$': '<rootDir>/shared/$1',
     '^@ui5/webcomponents-react/dist/(.*)$': '<rootDir>/packages/main/dist/$1',
     '^@ui5/webcomponents-react/(.*)$': '<rootDir>/packages/main/src/$1',
+    '^@ui5/webcomponents-react-base/types(.*)$': '<rootDir>/packages/base/types/$1',
     '^@ui5/webcomponents-react-base/(.*)$': '<rootDir>/packages/base/src/$1',
     '^@ui5/webcomponents-react-charts/(.*)$': '<rootDir>/packages/charts/src/$1',
     '\\.(css|less)$': 'identity-obj-proxy'
