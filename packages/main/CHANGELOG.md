@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.10](https://github.com/SAP/ui5-webcomponents-react/compare/v0.10.9...v0.10.10) (2020-10-02)
+
+
+### Bug Fixes
+
+* **CommonProps:** add type definitions for HTML attributes ([#692](https://github.com/SAP/ui5-webcomponents-react/issues/692)) ([07c5b6a](https://github.com/SAP/ui5-webcomponents-react/commit/07c5b6adcd57b9ad1e59d65eb70e2855aa22fa91))
+
+
+### Features
+
+* **AnalyticalTable:** horizontal virtualization of table cells ([#640](https://github.com/SAP/ui5-webcomponents-react/issues/640)) ([05b1e6e](https://github.com/SAP/ui5-webcomponents-react/commit/05b1e6eae02cfd4b56471be1ece94ed6be9b71c2))
+
+
+
+
+
 ## [0.10.9](https://github.com/SAP/ui5-webcomponents-react/compare/v0.10.8...v0.10.9) (2020-09-23)
 
 
