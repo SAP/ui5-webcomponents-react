@@ -279,7 +279,7 @@ export class MediaLegacy {
     deprecationNotice(
       'Device.media.getCurrentRange',
       `Accessing 'Device.media.getCurrentRange' is deprecated and will be removed in the next major version. 
-    Please use 'getCurrentRange' ('import { getCurrentRange } from '@ui5/webcomponents-react/lib/Media') instead.`
+    Please use 'getCurrentRange' ('import { getCurrentRange } from '@ui5/webcomponents-react-base/lib/Media') instead.`
     );
     return getCurrentRange(rangeSetName, width);
   }
@@ -288,7 +288,7 @@ export class MediaLegacy {
     deprecationNotice(
       'Device.media.hasRangeSet',
       `Accessing 'Device.media.hasRangeSet' is deprecated and will be removed in the next major version. 
-    Please use 'hasRangeSet' ('import { hasRangeSet } from '@ui5/webcomponents-react/lib/Media') instead.`
+    Please use 'hasRangeSet' ('import { hasRangeSet } from '@ui5/webcomponents-react-base/lib/Media') instead.`
     );
     return hasRangeSet(name);
   }
@@ -303,7 +303,7 @@ export class MediaLegacy {
     deprecationNotice(
       'Device.media.initRangeSet',
       `Accessing 'Device.media.initRangeSet' is deprecated and will be removed in the next major version. 
-    Please use 'initRangeSet' ('import { initRangeSet } from '@ui5/webcomponents-react/lib/Media') instead.`
+    Please use 'initRangeSet' ('import { initRangeSet } from '@ui5/webcomponents-react-base/lib/Media') instead.`
     );
     return initRangeSet(sName, aRangeBorders, sUnit, aRangeNames, bSuppressClasses);
   }
@@ -312,7 +312,7 @@ export class MediaLegacy {
     deprecationNotice(
       'Device.media.removeRangeSet',
       `Accessing 'Device.media.removeRangeSet' is deprecated and will be removed in the next major version. 
-    Please use 'removeRangeSet' ('import { removeRangeSet } from '@ui5/webcomponents-react/lib/Media') instead.`
+    Please use 'removeRangeSet' ('import { removeRangeSet } from '@ui5/webcomponents-react-base/lib/Media') instead.`
     );
     return removeRangeSet(name);
   }
@@ -321,7 +321,7 @@ export class MediaLegacy {
     deprecationNotice(
       'Device.media.attachHandler',
       `Accessing 'Device.media.attachHandler' is deprecated and will be removed in the next major version. 
-    Please use 'attachHandler' ('import { attachHandler } from '@ui5/webcomponents-react/lib/Media') instead.`
+    Please use 'attachHandler' ('import { attachHandler } from '@ui5/webcomponents-react-base/lib/Media') instead.`
     );
     return attachHandler(fnFunction, oListener, name);
   }
@@ -330,7 +330,7 @@ export class MediaLegacy {
     deprecationNotice(
       'Device.media.detachHandler',
       `Accessing 'Device.media.detachHandler' is deprecated and will be removed in the next major version. 
-    Please use 'detachHandler' ('import { detachHandler } from '@ui5/webcomponents-react/lib/Media') instead.`
+    Please use 'detachHandler' ('import { detachHandler } from '@ui5/webcomponents-react-base/lib/Media') instead.`
     );
     return detachHandler(fnFunction, oListener, name);
   }
