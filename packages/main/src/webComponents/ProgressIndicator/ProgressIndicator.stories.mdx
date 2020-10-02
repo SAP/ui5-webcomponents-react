@@ -1,6 +1,7 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { ProgressIndicator } from '@ui5/webcomponents-react/lib/ProgressIndicator';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import { CSSProperties, Ref } from 'react';
 
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
@@ -9,10 +10,28 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   title="UI5 Web Components / ProgressIndicator"
   component={ProgressIndicator}
   argTypes={{
-    ...createSelectArgTypes({ valueState: ValueState })
+    ...createSelectArgTypes({ valueState: ValueState }),
+    slot: { control: { disable: true } },
+    ref: { control: { disable: true } },
+    style: {
+      type: CSSProperties,
+      description:
+        'Element style which will be appended to the most outer element of a component. Use this prop carefully, some css properties might break the component.'
+    },
+    className: {
+      type: 'string',
+      description:
+        'CSS Class Name which will be appended to the most outer element of a component. Use this prop carefully, overwriting CSS rules might break the component.'
+    },
+    tooltip: { type: 'string', description: 'A tooltip which will be shown on hover' }
   }}
   args={{
-    valueState: ValueState.None
+    valueState: ValueState.None,
+    style: {},
+    className: '',
+    tooltip: '',
+    slot: '',
+    ref: null
   }}
 />
 

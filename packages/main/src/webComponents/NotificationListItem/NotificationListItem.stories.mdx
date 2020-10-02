@@ -1,6 +1,7 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { NotificationListItem } from '@ui5/webcomponents-react/lib/NotificationListItem';
 import { Priority } from '@ui5/webcomponents-react/lib/Priority';
+import { CSSProperties, Ref } from 'react';
 import { NotificationOverflowAction } from '@ui5/webcomponents-react/lib/NotificationOverflowAction';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
@@ -15,11 +16,29 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
     avatar: { control: { disable: true } },
     children: { control: 'text' },
     footnotes: { control: { disable: true } },
-    actions: { control: { disable: true } }
+    actions: { control: { disable: true } },
+    slot: { control: { disable: true } },
+    ref: { control: { disable: true } },
+    style: {
+      type: CSSProperties,
+      description:
+        'Element style which will be appended to the most outer element of a component. Use this prop carefully, some css properties might break the component.'
+    },
+    className: {
+      type: 'string',
+      description:
+        'CSS Class Name which will be appended to the most outer element of a component. Use this prop carefully, overwriting CSS rules might break the component.'
+    },
+    tooltip: { type: 'string', description: 'A tooltip which will be shown on hover' }
   }}
   args={{
     priority: Priority.None,
-    children: 'NotificationListItem Text'
+    children: 'NotificationListItem Text',
+    style: {},
+    className: '',
+    tooltip: '',
+    slot: '',
+    ref: null
   }}
 />
 

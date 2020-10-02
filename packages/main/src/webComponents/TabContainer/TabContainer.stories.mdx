@@ -2,6 +2,7 @@ import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { TabContainer } from '@ui5/webcomponents-react/lib/TabContainer';
 import { TabLayout } from '@ui5/webcomponents-react/lib/TabLayout';
 import { TabContainerTabsPlacement } from '@ui5/webcomponents-react/lib/TabContainerTabsPlacement';
+import { CSSProperties, Ref } from 'react';
 import { Tab } from '@ui5/webcomponents-react/lib/Tab';
 import { TabSeparator } from '@ui5/webcomponents-react/lib/TabSeparator';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
@@ -13,11 +14,29 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   subcomponents={{ Tab, TabSeparator }}
   argTypes={{
     ...createSelectArgTypes({ tabLayout: TabLayout, tabsPlacement: TabContainerTabsPlacement }),
-    children: { control: { disable: true } }
+    children: { control: { disable: true } },
+    slot: { control: { disable: true } },
+    ref: { control: { disable: true } },
+    style: {
+      type: CSSProperties,
+      description:
+        'Element style which will be appended to the most outer element of a component. Use this prop carefully, some css properties might break the component.'
+    },
+    className: {
+      type: 'string',
+      description:
+        'CSS Class Name which will be appended to the most outer element of a component. Use this prop carefully, overwriting CSS rules might break the component.'
+    },
+    tooltip: { type: 'string', description: 'A tooltip which will be shown on hover' }
   }}
   args={{
     tabLayout: TabLayout.Standard,
-    tabsPlacement: TabContainerTabsPlacement.Top
+    tabsPlacement: TabContainerTabsPlacement.Top,
+    style: {},
+    className: '',
+    tooltip: '',
+    slot: '',
+    ref: null
   }}
 />
 

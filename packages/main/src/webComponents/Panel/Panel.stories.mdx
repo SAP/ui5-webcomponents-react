@@ -2,6 +2,7 @@ import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { Panel } from '@ui5/webcomponents-react/lib/Panel';
 import { PanelAccessibleRoles } from '@ui5/webcomponents-react/lib/PanelAccessibleRoles';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
+import { CSSProperties, Ref } from 'react';
 
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
@@ -12,11 +13,29 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   argTypes={{
     ...createSelectArgTypes({ accessibleRole: PanelAccessibleRoles, headerLevel: TitleLevel }),
     children: { control: { disable: true } },
-    header: { control: { disable: true } }
+    header: { control: { disable: true } },
+    slot: { control: { disable: true } },
+    ref: { control: { disable: true } },
+    style: {
+      type: CSSProperties,
+      description:
+        'Element style which will be appended to the most outer element of a component. Use this prop carefully, some css properties might break the component.'
+    },
+    className: {
+      type: 'string',
+      description:
+        'CSS Class Name which will be appended to the most outer element of a component. Use this prop carefully, overwriting CSS rules might break the component.'
+    },
+    tooltip: { type: 'string', description: 'A tooltip which will be shown on hover' }
   }}
   args={{
     accessibleRole: PanelAccessibleRoles.Form,
-    headerLevel: TitleLevel.H2
+    headerLevel: TitleLevel.H2,
+    style: {},
+    className: '',
+    tooltip: '',
+    slot: '',
+    ref: null
   }}
 />
 

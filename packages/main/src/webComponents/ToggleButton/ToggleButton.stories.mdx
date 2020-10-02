@@ -3,6 +3,7 @@ import { ToggleButton } from '@ui5/webcomponents-react/lib/ToggleButton';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import '@ui5/webcomponents-icons/dist/icons/employee.js';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
+import { CSSProperties, Ref } from 'react';
 
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
@@ -12,12 +13,30 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   component={ToggleButton}
   argTypes={{
     ...createSelectArgTypes({ design: ButtonDesign }),
-    children: { control: 'text' }
+    children: { control: 'text' },
+    slot: { control: { disable: true } },
+    ref: { control: { disable: true } },
+    style: {
+      type: CSSProperties,
+      description:
+        'Element style which will be appended to the most outer element of a component. Use this prop carefully, some css properties might break the component.'
+    },
+    className: {
+      type: 'string',
+      description:
+        'CSS Class Name which will be appended to the most outer element of a component. Use this prop carefully, overwriting CSS rules might break the component.'
+    },
+    tooltip: { type: 'string', description: 'A tooltip which will be shown on hover' }
   }}
   args={{
     design: ButtonDesign.Default,
     icon: 'employee',
-    children: 'ToggleButton Text'
+    children: 'ToggleButton Text',
+    style: {},
+    className: '',
+    tooltip: '',
+    slot: '',
+    ref: null
   }}
 />
 

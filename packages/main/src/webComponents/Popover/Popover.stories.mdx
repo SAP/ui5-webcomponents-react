@@ -3,6 +3,7 @@ import { Popover } from '@ui5/webcomponents-react/lib/Popover';
 import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/lib/PopoverHorizontalAlign';
 import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import { PopoverVerticalAlign } from '@ui5/webcomponents-react/lib/PopoverVerticalAlign';
+import { CSSProperties, Ref } from 'react';
 
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
@@ -18,12 +19,30 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
     }),
     footer: { control: { disable: true } },
     header: { control: { disable: true } },
-    children: { control: { disable: true } }
+    children: { control: { disable: true } },
+    slot: { control: { disable: true } },
+    ref: { control: { disable: true } },
+    style: {
+      type: CSSProperties,
+      description:
+        'Element style which will be appended to the most outer element of a component. Use this prop carefully, some css properties might break the component.'
+    },
+    className: {
+      type: 'string',
+      description:
+        'CSS Class Name which will be appended to the most outer element of a component. Use this prop carefully, overwriting CSS rules might break the component.'
+    },
+    tooltip: { type: 'string', description: 'A tooltip which will be shown on hover' }
   }}
   args={{
     horizontalAlign: PopoverHorizontalAlign.Center,
     placementType: PlacementType.Right,
-    verticalAlign: PopoverVerticalAlign.Center
+    verticalAlign: PopoverVerticalAlign.Center,
+    style: {},
+    className: '',
+    tooltip: '',
+    slot: '',
+    ref: null
   }}
 />
 

@@ -6,6 +6,7 @@ import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { AvatarFitType } from '@ui5/webcomponents-react/lib/AvatarFitType';
 import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
+import { CSSProperties, Ref } from 'react';
 
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
@@ -19,14 +20,32 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
       imageFitType: AvatarFitType,
       shape: AvatarShape,
       size: AvatarSize
-    })
+    }),
+    slot: { control: { disable: true } },
+    ref: { control: { disable: true } },
+    style: {
+      type: CSSProperties,
+      description:
+        'Element style which will be appended to the most outer element of a component. Use this prop carefully, some css properties might break the component.'
+    },
+    className: {
+      type: 'string',
+      description:
+        'CSS Class Name which will be appended to the most outer element of a component. Use this prop carefully, overwriting CSS rules might break the component.'
+    },
+    tooltip: { type: 'string', description: 'A tooltip which will be shown on hover' }
   }}
   args={{
     backgroundColor: AvatarBackgroundColor.Accent6,
     icon: 'employee',
     imageFitType: AvatarFitType.Cover,
     shape: AvatarShape.Circle,
-    size: AvatarSize.S
+    size: AvatarSize.S,
+    style: {},
+    className: '',
+    tooltip: '',
+    slot: '',
+    ref: null
   }}
 />
 

@@ -492,6 +492,22 @@ const createWebComponentDemo = (componentSpec, componentProps, description) => {
       args.push(`${prop.name}: ${prop.tsType}${defaultValue}`);
     }
   });
+  //todo remove after 'react-docgen' can handle this
+  args.push(`style: {}`);
+  args.push(`className: ''`);
+  args.push(`tooltip: ''`);
+  args.push(`slot: ''`);
+  args.push(`ref: null`);
+  customArgTypes.push(`slot: {control: {disable:true}}`);
+  customArgTypes.push(`ref: {control: {disable:true}}`);
+  customArgTypes.push(
+    `style: {type: CSSProperties, description: "Element style which will be appended to the most outer element of a component. Use this prop carefully, some css properties might break the component." }`
+  );
+  customArgTypes.push(
+    `className: {type: 'string', description: "CSS Class Name which will be appended to the most outer element of a component. Use this prop carefully, overwriting CSS rules might break the component."}`
+  );
+  customArgTypes.push(`tooltip: {type: 'string', description: "A tooltip which will be shown on hover"}`);
+  enumImports.push(`import { CSSProperties, Ref } from 'react';`);
 
   let formattedDescription = description.replace(/<br>/g, `<br/>`).replace(/\s\s+/g, ' ');
 

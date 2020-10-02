@@ -1,6 +1,7 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { UploadCollection } from '@ui5/webcomponents-react/lib/UploadCollection';
 import { ListMode } from '@ui5/webcomponents-react/lib/ListMode';
+import { CSSProperties, Ref } from 'react';
 import { UploadCollectionItem } from '@ui5/webcomponents-react/lib/UploadCollectionItem';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
@@ -12,10 +13,28 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   argTypes={{
     ...createSelectArgTypes({ mode: ListMode }),
     children: { control: { disable: true } },
-    header: { control: { disable: true } }
+    header: { control: { disable: true } },
+    slot: { control: { disable: true } },
+    ref: { control: { disable: true } },
+    style: {
+      type: CSSProperties,
+      description:
+        'Element style which will be appended to the most outer element of a component. Use this prop carefully, some css properties might break the component.'
+    },
+    className: {
+      type: 'string',
+      description:
+        'CSS Class Name which will be appended to the most outer element of a component. Use this prop carefully, overwriting CSS rules might break the component.'
+    },
+    tooltip: { type: 'string', description: 'A tooltip which will be shown on hover' }
   }}
   args={{
-    mode: ListMode.None
+    mode: ListMode.None,
+    style: {},
+    className: '',
+    tooltip: '',
+    slot: '',
+    ref: null
   }}
 />
 

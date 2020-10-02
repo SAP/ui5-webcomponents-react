@@ -6,6 +6,7 @@ import '@ui5/webcomponents-localization/dist/features/calendar/Buddhist.js';
 import '@ui5/webcomponents-localization/dist/features/calendar/Islamic.js';
 import '@ui5/webcomponents-localization/dist/features/calendar/Japanese.js';
 import '@ui5/webcomponents-localization/dist/features/calendar/Persian.js';
+import { CSSProperties, Ref } from 'react';
 
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
@@ -14,10 +15,28 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   title="UI5 Web Components / Calendar"
   component={Calendar}
   argTypes={{
-    ...createSelectArgTypes({ primaryCalendarType: CalendarType })
+    ...createSelectArgTypes({ primaryCalendarType: CalendarType }),
+    slot: { control: { disable: true } },
+    ref: { control: { disable: true } },
+    style: {
+      type: CSSProperties,
+      description:
+        'Element style which will be appended to the most outer element of a component. Use this prop carefully, some css properties might break the component.'
+    },
+    className: {
+      type: 'string',
+      description:
+        'CSS Class Name which will be appended to the most outer element of a component. Use this prop carefully, overwriting CSS rules might break the component.'
+    },
+    tooltip: { type: 'string', description: 'A tooltip which will be shown on hover' }
   }}
   args={{
-    primaryCalendarType: CalendarType
+    primaryCalendarType: CalendarType,
+    style: {},
+    className: '',
+    tooltip: '',
+    slot: '',
+    ref: null
   }}
 />
 
