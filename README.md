@@ -19,7 +19,7 @@
   <a href="https://github.com/prettier/prettier" target="_blank">
     <img alt="code style: prettier" src="https://badgen.net/badge/code%20style/prettier?color=pink"> 
   </a>
-  <a href="https://lernajs.io/" target="_blank">
+  <a href="https://github.com/lerna/lerna" target="_blank">
   <img alt="lerna" src="https://badgen.net/badge/maintained%20with/lerna?color=purple">
   </a>
   <a href="https://api.reuse.software/info/github.com/SAP/ui5-webcomponents-react" target="_blank">
