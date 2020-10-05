@@ -58,6 +58,11 @@ import { stateReducer } from './tableReducer/stateReducer';
 import { TitleBar } from './TitleBar';
 import { orderByFn } from './util';
 
+interface DivWithCustomScrollProp extends HTMLDivElement {
+  isExternalHorizontalScroll?: boolean;
+  isExternalVerticalScroll?: boolean;
+}
+
 export interface TableProps extends Omit<CommonProps, 'title'> {
   /**
    * Please look at the [AnalyticalTableColumnDefinition interface](#column-properties) for a full list of options.
@@ -202,7 +207,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   const classes = useStyles();
 
   const [analyticalTableRef, reactWindowRef] = useTableScrollHandles(ref);
-  const tableRef: RefObject<HTMLDivElement> = useRef();
+  const tableRef: RefObject<DivWithCustomScrollProp> = useRef();
 
   const getSubRows = useCallback((row) => row[subRowsKey] || [], [subRowsKey]);
 
@@ -391,10 +396,10 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     } as CSSProperties;
   }, [tableState.tableClientWidth, style, rowHeight]);
 
-  const parentRef = useRef(null);
+  const parentRef: RefObject<DivWithCustomScrollProp> = useRef(null);
 
-  const scrollBarRef = useRef(null);
-  const verticalScrollBarRef = useRef(null);
+  const scrollBarRef: RefObject<DivWithCustomScrollProp> = useRef(null);
+  const verticalScrollBarRef: RefObject<DivWithCustomScrollProp> = useRef(null);
 
   const handleTableScroll = () => {
     if (scrollBarRef.current && scrollBarRef.current.scrollLeft !== tableRef.current.scrollLeft) {
@@ -444,7 +449,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
           aria-rowcount={rows.length}
           aria-colcount={tableInternalColumns.length}
           data-per-page={visibleRows}
-          ref={tableRef}
+          ref={tableRef as any}
           className={StyleClassHelper.of(classes.table).className}
         >
           {headerGroups.map((headerGroup) => {
