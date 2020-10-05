@@ -2,6 +2,8 @@
 
 exports[`Option Basic Test (generated) 1`] = `
 <DocumentFragment>
-  <ui5-option />
+  <ui5-option
+    ui5-option=""
+  />
 </DocumentFragment>
 `;

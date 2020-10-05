@@ -7,23 +7,27 @@ exports[`ActionSheet Render without Crashing 1`] = `
     class="ActionSheet-actionSheet myCustomClass"
     horizontal-align="Center"
     placement-type="Right"
+    ui5-responsive-popover=""
     vertical-align="Center"
   >
     <ui5-button
       data-is-action-sheet-button=""
       design="Transparent"
+      ui5-button=""
     >
       Accept
     </ui5-button>
     <ui5-button
       data-is-action-sheet-button=""
       design="Transparent"
+      ui5-button=""
     >
       Reject
     </ui5-button>
     <ui5-button
       data-is-action-sheet-button=""
       design="Transparent"
+      ui5-button=""
     >
       This is my super long text!
     </ui5-button>
@@ -38,11 +42,13 @@ exports[`ActionSheet does not crash with other component 1`] = `
     class="ActionSheet-actionSheet"
     horizontal-align="Center"
     placement-type="Right"
+    ui5-responsive-popover=""
     vertical-align="Center"
   >
     <ui5-label
       data-is-action-sheet-button=""
       design="Transparent"
+      ui5-label=""
     >
       I should not crash
     </ui5-label>

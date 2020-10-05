@@ -9,6 +9,7 @@ exports[`Carousel Basic Test (generated) 1`] = `
     items-per-page-m="1"
     items-per-page-s="1"
     selected-index="0"
+    ui5-carousel=""
   />
 </DocumentFragment>
 `;

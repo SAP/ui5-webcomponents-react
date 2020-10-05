@@ -5,6 +5,7 @@ exports[`Toast Basic Test (generated) 1`] = `
   <ui5-toast
     duration="3000"
     placement="BottomCenter"
+    ui5-toast=""
   />
 </DocumentFragment>
 `;

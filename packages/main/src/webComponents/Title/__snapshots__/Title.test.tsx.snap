@@ -4,6 +4,7 @@ exports[`Title Basic Test (generated) 1`] = `
 <DocumentFragment>
   <ui5-title
     level="H2"
+    ui5-title=""
   />
 </DocumentFragment>
 `;

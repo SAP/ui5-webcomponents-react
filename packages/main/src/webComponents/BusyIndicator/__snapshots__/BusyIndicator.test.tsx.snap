@@ -4,6 +4,7 @@ exports[`BusyIndicator Basic Test (generated) 1`] = `
 <DocumentFragment>
   <ui5-busyindicator
     size="Medium"
+    ui5-busyindicator=""
   />
 </DocumentFragment>
 `;
