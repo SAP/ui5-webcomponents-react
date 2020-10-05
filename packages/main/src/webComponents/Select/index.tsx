@@ -17,6 +17,10 @@ export interface SelectPropTypes extends Omit<WithWebComponentPropTypes, 'onChan
    */
   name?: string;
   /**
+   * Defines whether the <code>ui5-select</code> is required.
+   */
+  required?: boolean;
+  /**
    * Defines the value state of the <code>ui5-select</code>. <br><br> Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>
    */
   valueState?: ValueState;
@@ -29,6 +33,12 @@ export interface SelectPropTypes extends Omit<WithWebComponentPropTypes, 'onChan
    */
   children?: ReactNode | ReactNode[];
   /**
+   * Defines the value state message that will be displayed as pop up under the <code>ui5-select</code>. <br><br><br/><br/>
+   *
+   * <b>Note:</b> If not specified, a default text (in the respective language) will be displayed. <br> <b>Note:</b> The <code>valueStateMessage</code> would be displayed, when the <code>ui5-select</code> is in <code>Information</code>, <code>Warning</code> or <code>Error</code> value state.
+   */
+  valueStateMessage?: ReactNode | ReactNode[];
+  /**
    * Fired when the selected option changes.
    */
   onChange?: (event: CustomEvent<{ selectedOption: ReactNode }>) => void;
@@ -40,8 +50,8 @@ export interface SelectPropTypes extends Omit<WithWebComponentPropTypes, 'onChan
 const Select: FC<SelectPropTypes> = withWebComponent<SelectPropTypes>(
   'ui5-select',
   ['name', 'valueState'],
-  ['disabled'],
-  [],
+  ['disabled', 'required'],
+  ['valueStateMessage'],
   ['change']
 );
 
@@ -49,6 +59,7 @@ Select.displayName = 'Select';
 
 Select.defaultProps = {
   disabled: false,
+  required: false,
   valueState: ValueState.None
 };
 

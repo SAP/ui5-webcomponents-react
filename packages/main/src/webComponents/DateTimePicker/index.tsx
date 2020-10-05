@@ -50,6 +50,10 @@ export interface DateTimePickerPropTypes extends Omit<WithWebComponentPropTypes,
    */
   readonly?: boolean;
   /**
+   * Defines whether the <code>ui5-datepicker</code> is required.
+   */
+  required?: boolean;
+  /**
    * Defines a formatted date value.
    */
   value?: string;
@@ -79,7 +83,7 @@ export interface DateTimePickerPropTypes extends Omit<WithWebComponentPropTypes,
 const DateTimePicker: FC<DateTimePickerPropTypes> = withWebComponent<DateTimePickerPropTypes>(
   'ui5-datetime-picker',
   ['formatPattern', 'maxDate', 'minDate', 'name', 'placeholder', 'primaryCalendarType', 'value', 'valueState'],
-  ['disabled', 'hideWeekNumbers', 'readonly'],
+  ['disabled', 'hideWeekNumbers', 'readonly', 'required'],
   ['valueStateMessage'],
   ['change', 'input']
 );
@@ -92,6 +96,7 @@ DateTimePicker.defaultProps = {
   placeholder: undefined,
   primaryCalendarType: CalendarType.Gregorian,
   readonly: false,
+  required: false,
   valueState: ValueState.None
 };
 

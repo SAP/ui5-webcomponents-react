@@ -27,6 +27,10 @@ export interface ToggleButtonPropTypes extends Omit<WithWebComponentPropTypes, '
    */
   iconEnd?: boolean;
   /**
+   * Defines the size of the icon inside the <code>ui5-button</code>.
+   */
+  iconSize?: string;
+  /**
    * When set to <code>true</code>, the <code>ui5-button</code> will automatically submit the nearest form element upon <code>press</code>. <br><br> <b>Important:</b> For the <code>submits</code> property to have effect, you must add the following import to your project: <code>import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";</code>
    */
   submits?: boolean;
@@ -45,7 +49,7 @@ export interface ToggleButtonPropTypes extends Omit<WithWebComponentPropTypes, '
  */
 const ToggleButton: FC<ToggleButtonPropTypes> = withWebComponent<ToggleButtonPropTypes>(
   'ui5-togglebutton',
-  ['design', 'icon'],
+  ['design', 'icon', 'iconSize'],
   ['pressed', 'disabled', 'iconEnd', 'submits'],
   [],
   ['click']
@@ -58,6 +62,7 @@ ToggleButton.defaultProps = {
   design: ButtonDesign.Default,
   disabled: false,
   iconEnd: false,
+  iconSize: undefined,
   submits: false
 };
 
