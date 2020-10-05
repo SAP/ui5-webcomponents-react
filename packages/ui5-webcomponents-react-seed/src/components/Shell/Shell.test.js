@@ -9,13 +9,6 @@ describe('Shell.js Test Suite', () => {
   beforeEach(() => {
     render(<Shell />);
   });
-
-  test('should match snapshot', () => {
-    const shell = screen.getByTestId('shell-wrapper');
-
-    expect(shell).toMatchSnapshot();
-  });
-
   test('should render', () => {
     const shell = screen.getByTestId('shell-wrapper');
 

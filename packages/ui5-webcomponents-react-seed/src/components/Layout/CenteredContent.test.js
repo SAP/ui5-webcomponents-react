@@ -10,12 +10,6 @@ describe('Validator.js Test Suite', () => {
     render(<CenteredContent />);
   });
 
-  test('should match snapshot', () => {
-    const { asFragment } = render(<CenteredContent />);
-
-    expect(asFragment()).toMatchSnapshot();
-  });
-
   test('should render', () => {
     const content = screen.getByTestId('centered-content');
 

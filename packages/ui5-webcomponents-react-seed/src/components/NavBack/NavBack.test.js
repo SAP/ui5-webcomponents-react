@@ -10,12 +10,6 @@ describe('NavBack.js Test Suite', () => {
     render(<NavBack />, { route: 'TODO_EDIT' });
   });
 
-  test('should match snapshot', () => {
-    const navback = screen.getByTestId('navback-wrapper');
-
-    expect(navback).toMatchSnapshot();
-  });
-
   test('should contains Back text if nothing is passed', () => {
     const navback = screen.getByTestId('navback-wrapper');
 

@@ -12,14 +12,6 @@ const descrOptions = [
 ];
 
 describe('Select.js Test Suite', () => {
-  test('should match snapshot', () => {
-    const { asFragment } = render(
-      <Select labelText="Text Content" name="description" options={descrOptions} field={{ name: 'description' }} form={{ touched: { name: 'description' }, errors: { name: 'description' } }} />,
-    );
-
-    expect(asFragment()).toMatchSnapshot();
-  });
-
   test('should have rendered with the fieldbase', () => {
     render(<Select labelText="Text Content" name="description" options={descrOptions} field={{ name: 'description' }} form={{ touched: { name: 'description' }, errors: { name: 'description' } }} />);
 

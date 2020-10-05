@@ -14,16 +14,6 @@ describe('FieldBase.js Test Suite', () => {
     );
   });
 
-  test('should match snapshot', () => {
-    const { asFragment } = render(
-      <FieldBase labelText="Text Content">
-        <p data-testid="inner-component-wrapper"></p>
-      </FieldBase>,
-    );
-
-    expect(asFragment()).toMatchSnapshot();
-  });
-
   test('should render', () => {
     const component = screen.getByTestId('fieldbase-wrapper');
 

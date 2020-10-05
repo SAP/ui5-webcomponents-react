@@ -18,20 +18,6 @@ describe('Validator.js Test Suite', () => {
   afterEach(() => server.resetHandlers());
   afterAll(() => server.close());
 
-  test('should match snapshot', async () => {
-    const childText = 'inner text';
-
-    render(
-      <ComponentValidator allowedAuthorities={['canAccessDropApplication']} authorityKey="permissions">
-        <p>{childText}</p>
-      </ComponentValidator>,
-      { route: '/todo/all' },
-    );
-    const child = await waitFor(() => screen.getByText(childText));
-
-    expect(child).toMatchSnapshot();
-  });
-
   test('should appear in the document', async () => {
     const childText = 'inner text';
 

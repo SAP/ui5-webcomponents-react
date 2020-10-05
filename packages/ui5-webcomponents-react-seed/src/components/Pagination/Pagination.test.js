@@ -28,12 +28,6 @@ describe('Pagination.js Test Suite', () => {
     render(<Pagination numberOfElements={sixButtonsPagination.numberOfElements} totalPages={sixButtonsPagination.totalPages} selectedPage={sixButtonsPagination.number} />);
   });
 
-  test('should match snapshot', () => {
-    const pagination = screen.getByTestId('pagination-wrapper');
-
-    expect(pagination).toMatchSnapshot();
-  });
-
   test('should have 6 buttons (< 2 3 4 5 6 >) with 61 records and a size of 10', () => {
     const pagination = screen.getByTestId('pagination-wrapper');
     const leftArrow = screen.getByTestId('leftarrow-pagination-wrapper');

@@ -6,16 +6,6 @@ import { render, screen } from '../../../util/TestSetup';
 import Label from '../Label/Label';
 
 describe('Label.js Test Suite', () => {
-  test('should match snapshot', () => {
-    const { asFragment } = render(
-      <Label>
-        <p data-testid="inner-text-wrapper">inner text</p>
-      </Label>,
-    );
-
-    expect(asFragment()).toMatchSnapshot();
-  });
-
   test('should render children', () => {
     render(
       <Label>
