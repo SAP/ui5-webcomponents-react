@@ -1,6 +1,6 @@
-const fs = require('fs');
-const prettier = require('prettier');
-const prettierConfig = require('../../prettier.config');
+import fs from 'fs';
+import prettier from 'prettier';
+import prettierConfig from '../../prettier.config.cjs';
 // All languages present in the file system
 const files = fs.readdirSync('dist/json-imports');
 

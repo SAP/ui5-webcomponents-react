@@ -1,3 +1,3 @@
-const rollupConfigFactory = require('../../scripts/rollup/configFactory');
+import rollupConfigFactory from '../../scripts/rollup/configFactory';
 
-module.exports = rollupConfigFactory('main', ['@ui5/webcomponents-base']);
+export default rollupConfigFactory('main', ['@ui5/webcomponents-base']);

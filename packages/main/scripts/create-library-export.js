@@ -1,6 +1,6 @@
-const path = require('path');
-const fs = require('fs');
-const PATHS = require('../../../config/paths');
+import path from 'path';
+import fs from 'fs';
+import PATHS from '../../../config/paths';
 
 const LIB_BASE_PATH = path.resolve(PATHS.packages, 'main', 'src', 'lib');
 const INTERNAL_COMPONENTS = ['ScrollContext'];

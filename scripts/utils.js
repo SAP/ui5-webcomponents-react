@@ -1,13 +1,13 @@
 'use strict';
 
-const ncp = require('ncp').ncp;
-const path = require('path');
-const mkdirp = require('mkdirp');
-const rimraf = require('rimraf');
-const exec = require('child_process').exec;
-const targz = require('targz');
+import { ncp } from 'ncp';
+import path from 'path';
+import mkdirp from 'mkdirp';
+import rimraf from 'rimraf';
+import { exec } from 'child_process';
+import targz from 'targz';
 
-function asyncCopyTo(from, to) {
+export function asyncCopyTo(from, to) {
   return asyncMkDirP(path.dirname(to)).then(
     () =>
       new Promise((resolve, reject) => {
@@ -23,7 +23,7 @@ function asyncCopyTo(from, to) {
   );
 }
 
-function asyncExecuteCommand(command) {
+export function asyncExecuteCommand(command) {
   return new Promise((resolve, reject) =>
     exec(command, (error, stdout) => {
       if (error) {
@@ -35,7 +35,7 @@ function asyncExecuteCommand(command) {
   );
 }
 
-function asyncExtractTar(options) {
+export function asyncExtractTar(options) {
   return new Promise((resolve, reject) =>
     targz.decompress(options, (error) => {
       if (error) {
@@ -47,11 +47,11 @@ function asyncExtractTar(options) {
   );
 }
 
-function asyncMkDirP(filepath) {
+export function asyncMkDirP(filepath) {
   return mkdirp(filepath);
 }
 
-function asyncRimRaf(filepath) {
+export function asyncRimRaf(filepath) {
   return new Promise((resolve, reject) =>
     rimraf(filepath, (error) => {
       if (error) {
@@ -63,7 +63,7 @@ function asyncRimRaf(filepath) {
   );
 }
 
-function resolvePath(filepath) {
+export function resolvePath(filepath) {
   if (filepath[0] === '~') {
     return path.join(process.env.HOME, filepath.slice(1));
   } else {
@@ -71,7 +71,7 @@ function resolvePath(filepath) {
   }
 }
 
-function highlightLog(projectName) {
+export function highlightLog(projectName) {
   const width = 100;
   console.log('');
   console.log('#'.repeat(width));
@@ -83,13 +83,3 @@ function highlightLog(projectName) {
   console.log('#'.repeat(width));
   console.log('');
 }
-
-module.exports = {
-  asyncCopyTo,
-  resolvePath,
-  asyncExecuteCommand,
-  asyncExtractTar,
-  asyncMkDirP,
-  asyncRimRaf,
-  highlightLog
-};

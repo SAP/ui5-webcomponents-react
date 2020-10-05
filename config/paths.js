@@ -1,4 +1,4 @@
-const path = require('path');
+import path from 'path';
 
 const root = path.resolve(__dirname, '..');
 const PATHS = {
@@ -13,4 +13,4 @@ const PATHS = {
   packages: path.join(root, 'packages')
 };
 
-module.exports = PATHS;
+export default PATHS;

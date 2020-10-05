@@ -1,4 +1,4 @@
-const rollupConfigFactory = require('../../scripts/rollup/configFactory');
+import rollupConfigFactory from '../../scripts/rollup/configFactory';
 
 const config = rollupConfigFactory('base');
-module.exports = config;
+export default config;

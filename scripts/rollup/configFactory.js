@@ -1,16 +1,15 @@
-const { nodeResolve } = require('@rollup/plugin-node-resolve');
-const commonjs = require('@rollup/plugin-commonjs');
-const { babel } = require('@rollup/plugin-babel');
-const path = require('path');
-const fs = require('fs');
-const json = require('@rollup/plugin-json');
-const micromatch = require('micromatch');
-const PATHS = require('../../config/paths');
-const { asyncCopyTo, highlightLog } = require('../utils');
-const replace = require('@rollup/plugin-replace');
-const glob = require('glob');
-const { terser } = require('rollup-plugin-terser');
-const { spawnSync } = require('child_process');
+import { nodeResolve } from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import { babel } from '@rollup/plugin-babel';
+import path from 'path';
+import fs from 'fs';
+import json from '@rollup/plugin-json';
+import micromatch from 'micromatch';
+import PATHS from '../../config/paths';
+import { asyncCopyTo, highlightLog } from '../utils';
+import replace from '@rollup/plugin-replace';
+import glob from 'glob';
+import { terser } from 'rollup-plugin-terser';
 
 process.env.BABEL_ENV = 'production';
 process.env.NODE_ENV = 'production';
@@ -32,7 +31,7 @@ const rollupConfigFactory = (pkgName, externals = []) => {
     babel({
       extensions: ['.js', '.jsx', '.ts', '.tsx'],
       babelHelpers: 'runtime',
-      configFile: path.resolve(PATHS.root, 'babel.config.js')
+      configFile: path.resolve(PATHS.root, 'babel.config.cjs')
     }),
     // Turn __DEV__ and process.env checks into constants.
     replace({
@@ -111,4 +110,4 @@ const rollupConfigFactory = (pkgName, externals = []) => {
   ];
 };
 
-module.exports = rollupConfigFactory;
+export default rollupConfigFactory;
