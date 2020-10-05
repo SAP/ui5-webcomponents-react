@@ -1,4 +1,10 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+
+//TODO:
+console.warn(
+  'Currently there are two tag-names missing or faulty: "ui5-notification-overflow-action" and "ui5-timeline-item"\n These have to be adjusted manually!\n'
+);
+
 const mainWebComponentsSpec = require('@ui5/webcomponents/dist/api.json');
 const fioriWebComponentsSpec = require('@ui5/webcomponents-fiori/dist/api.json');
 const dedent = require('dedent');
@@ -401,9 +407,9 @@ const createWebComponentWrapper = (
       [${regularProps.map((v) => `'${v}'`).join(', ')}],
       [${booleanProps.map((v) => `'${v}'`).join(', ')}],
       [${slotProps
-      .filter((name) => name !== 'children')
-      .map((v) => `'${v}'`)
-      .join(', ')}],
+        .filter((name) => name !== 'children')
+        .map((v) => `'${v}'`)
+        .join(', ')}],
       [${eventProps.map((v) => `'${v}'`).join(', ')}]
     );
 
@@ -650,6 +656,9 @@ resolvedWebComponents.forEach((componentSpec) => {
         property.name = 'children';
       }
       const propDescription = () => {
+        if (!componentSpec.tagname) {
+          return property.description || '';
+        }
         let formattedDescription = (property.description || '')
           .replace(/\n\n<br><br> /g, '<br/><br/>\n  *\n  * ')
           .replace(/\n\n/g, '<br/><br/>\n  *\n  * ')
@@ -664,7 +673,6 @@ resolvedWebComponents.forEach((componentSpec) => {
         if (extendedDescription) {
           return replaceTagNameWithModuleName(`${formattedDescription}${extendedDescription}`);
         }
-
         return replaceTagNameWithModuleName(formattedDescription);
       };
 
@@ -712,14 +720,15 @@ resolvedWebComponents.forEach((componentSpec) => {
     description = description.replace(`<h3 class="comment-api-title">Overview</h3>`, '');
     //strip ES6 Module import
     description = description.slice(0, description.indexOf(`<h3>ES6 Module Import</h3>`));
+    if (!componentSpec.tagname) {
+      return description.split(/(?=<h3>)/, 2);
+    }
     //replace tag-name with module-name
     description = description.replace(new RegExp(componentSpec.tagname, 'g'), `${componentSpec.module}`);
     //replace other ui5 tag-names
     description = replaceTagNameWithModuleName(description);
     //split string by main description and rest
-    const descriptionArray = description.split(/(?=<h3>)/, 2);
-
-    return descriptionArray;
+    return description.split(/(?=<h3>)/, 2);
   };
 
   const [mainDescription, description = ''] = formatDescription();
