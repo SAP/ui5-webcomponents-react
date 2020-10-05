@@ -12,7 +12,12 @@ const styles = {
     minHeight: '3rem',
     fontFamily: ThemingParameters.sapFontFamily,
     fontSize: ThemingParameters.sapFontSize,
-    fontWeight: 'normal'
+    fontWeight: 'normal',
+    scrollBarWidth: 'none !important',
+    '&::-webkit-scrollbar': {
+      width: 0,
+      height: 0
+    }
   },
   tableHeaderRow: {
     height: CssSizeVariables.sapWcrAnalyticalTableRowHeight,
@@ -41,7 +46,12 @@ const styles = {
     position: 'relative',
     backgroundColor: ThemingParameters.sapList_Background,
     overflowX: 'hidden',
-    overflowY: 'auto'
+    overflowY: 'auto',
+    scrollBarWidth: 'none !important',
+    '&::-webkit-scrollbar': {
+      width: 0,
+      height: 0
+    }
   },
   alternateRowColor: {
     backgroundColor: ThemingParameters.sapList_AlternatingBackground

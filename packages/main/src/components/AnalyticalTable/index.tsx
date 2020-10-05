@@ -1,7 +1,8 @@
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
+import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { TableScaleWidthMode } from '@ui5/webcomponents-react/lib/TableScaleWidthMode';
 import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
@@ -32,7 +33,6 @@ import {
   useSortBy,
   useTable
 } from 'react-table';
-import { GlobalStyleClasses } from '@ui5/webcomponents-react/lib/GlobalStyleClasses';
 import { AnalyticalTableColumnDefinition } from '../../interfaces/AnalyticalTableColumnDefinition';
 import { CommonProps } from '../../interfaces/CommonProps';
 import styles from './AnayticalTable.jss';
@@ -50,11 +50,13 @@ import { useStyling } from './hooks/useStyling';
 import { useTableScrollHandles } from './hooks/useTableScrollHandles';
 import { useToggleRowExpand } from './hooks/useToggleRowExpand';
 import { useVisibleColumnsWidth } from './hooks/useVisibleColumnsWidth';
+import { HorizontalScrollbar } from './scrollbars/HorizontalScrollbar';
+import { VerticalScrollbar } from './scrollbars/VerticalScrollbar';
+import { VirtualTableBody } from './TableBody/VirtualTableBody';
+import { VirtualTableBodyContainer } from './TableBody/VirtualTableBodyContainer';
 import { stateReducer } from './tableReducer/stateReducer';
 import { TitleBar } from './TitleBar';
 import { orderByFn } from './util';
-import { VirtualTableBody } from './TableBody/VirtualTableBody';
-import { VirtualTableBodyContainer } from './TableBody/VirtualTableBodyContainer';
 
 export interface TableProps extends Omit<CommonProps, 'title'> {
   /**
@@ -271,7 +273,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     useVisibleColumnsWidth,
     ...tableHooks
   );
-
   // scroll bar detection
   useEffect(() => {
     const visibleRowCount = rows.length < visibleRows ? Math.max(rows.length, minRows) : visibleRows;
@@ -392,94 +393,154 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
 
   const parentRef = useRef(null);
 
+  const scrollBarRef = useRef(null);
+  const verticalScrollBarRef = useRef(null);
+
+  const handleTableScroll = () => {
+    if (scrollBarRef.current && scrollBarRef.current.scrollLeft !== tableRef.current.scrollLeft) {
+      if (!tableRef.current.isExternalHorizontalScroll) {
+        scrollBarRef.current.scrollLeft = tableRef.current.scrollLeft;
+        scrollBarRef.current.isExternalHorizontalScroll = true;
+      }
+      tableRef.current.isExternalHorizontalScroll = false;
+    }
+  };
+
+  const handleBodyScroll = () => {
+    if (verticalScrollBarRef.current && verticalScrollBarRef.current.scrollTop !== parentRef.current.scrollTop) {
+      if (!parentRef.current.isExternalVerticalScroll) {
+        verticalScrollBarRef.current.scrollTop = parentRef.current.scrollTop;
+        verticalScrollBarRef.current.isExternalVerticalScroll = true;
+      }
+      parentRef.current.isExternalVerticalScroll = false;
+    }
+  };
+
+  const handleHorizontalScrollBarScroll = (e) => {
+    if (!scrollBarRef.current.isExternalHorizontalScroll) {
+      tableRef.current.scrollLeft = scrollBarRef.current.scrollLeft;
+      tableRef.current.isExternalHorizontalScroll = true;
+    }
+    scrollBarRef.current.isExternalHorizontalScroll = false;
+  };
+
+  const handleVerticalScrollBarScroll = () => {
+    if (!verticalScrollBarRef.current.isExternalVerticalScroll) {
+      parentRef.current.scrollTop = verticalScrollBarRef.current.scrollTop;
+      parentRef.current.isExternalVerticalScroll = true;
+    }
+    verticalScrollBarRef.current.isExternalVerticalScroll = false;
+  };
+
   return (
     <div className={className} style={inlineStyle} title={tooltip} ref={analyticalTableRef} {...passThroughProps}>
       {title && <TitleBar>{title}</TitleBar>}
       {extension && <div>{extension}</div>}
-      <div
-        {...getTableProps()}
-        role="grid"
-        aria-rowcount={rows.length}
-        aria-colcount={tableInternalColumns.length}
-        data-per-page={visibleRows}
-        ref={tableRef}
-        className={StyleClassHelper.of(classes.table, GlobalStyleClasses.sapScrollBar).className}
-      >
-        {headerGroups.map((headerGroup) => {
-          let headerProps = {};
-          if (headerGroup.getHeaderGroupProps) {
-            headerProps = headerGroup.getHeaderGroupProps();
-          }
+      <FlexBox>
+        <div
+          {...getTableProps()}
+          role="grid"
+          onScroll={handleTableScroll}
+          aria-rowcount={rows.length}
+          aria-colcount={tableInternalColumns.length}
+          data-per-page={visibleRows}
+          ref={tableRef}
+          className={StyleClassHelper.of(classes.table).className}
+        >
+          {headerGroups.map((headerGroup) => {
+            let headerProps = {};
+            if (headerGroup.getHeaderGroupProps) {
+              headerProps = headerGroup.getHeaderGroupProps();
+            }
 
-          return (
-            tableRef.current && (
-              <ColumnHeaderContainer
+            return (
+              tableRef.current && (
+                <ColumnHeaderContainer
+                  reactWindowRef={reactWindowRef}
+                  tableRef={tableRef}
+                  resizeInfo={tableState.columnResizing}
+                  visibleColumnsWidth={visibleColumnsWidth}
+                  headerProps={headerProps}
+                  headerGroup={headerGroup}
+                  overscanCountHorizontal={overscanCountHorizontal}
+                  onSort={onSort}
+                  onGroupBy={onGroupByChanged}
+                  onDragStart={handleDragStart}
+                  onDragOver={handleDragOver}
+                  onDrop={handleOnDrop}
+                  onDragEnter={handleDragEnter}
+                  onDragEnd={handleOnDragEnd}
+                  dragOver={dragOver}
+                />
+              )
+            );
+          })}
+          {loading && props.data?.length > 0 && <LoadingComponent style={{ width: `${totalColumnsWidth}px` }} />}
+          {loading && props.data?.length === 0 && (
+            <TablePlaceholder
+              columns={tableInternalColumns.filter(
+                (col) => (col.isVisible ?? true) && !tableState.hiddenColumns.includes(col.accessor)
+              )}
+              rows={props.minRows}
+              style={noDataStyles}
+              rowHeight={internalRowHeight}
+              tableWidth={totalColumnsWidth}
+            />
+          )}
+          {!loading && props.data?.length === 0 && (
+            <NoDataComponent noDataText={noDataText} className={classes.noDataContainer} style={noDataStyles} />
+          )}
+          {props.data?.length > 0 && tableRef.current && (
+            <VirtualTableBodyContainer
+              tableBodyHeight={tableBodyHeight}
+              totalColumnsWidth={totalColumnsWidth}
+              parentRef={parentRef}
+              classes={classes}
+              infiniteScroll={infiniteScroll}
+              infiniteScrollThreshold={infiniteScrollThreshold}
+              onLoadMore={onLoadMore}
+              internalRowHeight={internalRowHeight}
+              rows={rows}
+              handleExternalScroll={handleBodyScroll}
+            >
+              <VirtualTableBody
+                classes={classes}
+                prepareRow={prepareRow}
+                rows={rows}
+                minRows={minRows}
                 reactWindowRef={reactWindowRef}
+                isTreeTable={isTreeTable}
+                internalRowHeight={internalRowHeight}
+                visibleRows={visibleRows}
+                alternateRowColor={alternateRowColor}
+                overscanCount={overscanCount}
                 tableRef={tableRef}
-                resizeInfo={tableState.columnResizing}
+                parentRef={parentRef}
+                visibleColumns={visibleColumns}
                 visibleColumnsWidth={visibleColumnsWidth}
-                headerProps={headerProps}
-                headerGroup={headerGroup}
                 overscanCountHorizontal={overscanCountHorizontal}
-                onSort={onSort}
-                onGroupBy={onGroupByChanged}
-                onDragStart={handleDragStart}
-                onDragOver={handleDragOver}
-                onDrop={handleOnDrop}
-                onDragEnter={handleDragEnter}
-                onDragEnd={handleOnDragEnd}
-                dragOver={dragOver}
               />
-            )
-          );
-        })}
-        {loading && props.data?.length > 0 && <LoadingComponent style={{ width: `${totalColumnsWidth}px` }} />}
-        {loading && props.data?.length === 0 && (
-          <TablePlaceholder
-            columns={tableInternalColumns.filter(
-              (col) => (col.isVisible ?? true) && !tableState.hiddenColumns.includes(col.accessor)
-            )}
-            rows={props.minRows}
-            style={noDataStyles}
-            rowHeight={internalRowHeight}
-            tableWidth={totalColumnsWidth}
+            </VirtualTableBodyContainer>
+          )}
+        </div>
+        {tableState.isScrollable && (
+          <VerticalScrollbar
+            internalRowHeight={internalRowHeight}
+            tableRef={tableRef}
+            minRows={minRows}
+            rows={rows}
+            handleVerticalScrollBarScroll={handleVerticalScrollBarScroll}
+            verticalScrollBarRef={verticalScrollBarRef}
           />
         )}
-        {!loading && props.data?.length === 0 && (
-          <NoDataComponent noDataText={noDataText} className={classes.noDataContainer} style={noDataStyles} />
-        )}
-        {props.data?.length > 0 && tableRef.current && (
-          <VirtualTableBodyContainer
-            tableBodyHeight={tableBodyHeight}
-            totalColumnsWidth={totalColumnsWidth}
-            parentRef={parentRef}
-            classes={classes}
-            infiniteScroll={infiniteScroll}
-            infiniteScrollThreshold={infiniteScrollThreshold}
-            onLoadMore={onLoadMore}
-            internalRowHeight={internalRowHeight}
-            rows={rows}
-          >
-            <VirtualTableBody
-              classes={classes}
-              prepareRow={prepareRow}
-              rows={rows}
-              minRows={minRows}
-              reactWindowRef={reactWindowRef}
-              isTreeTable={isTreeTable}
-              internalRowHeight={internalRowHeight}
-              visibleRows={visibleRows}
-              alternateRowColor={alternateRowColor}
-              overscanCount={overscanCount}
-              tableRef={tableRef}
-              parentRef={parentRef}
-              visibleColumns={visibleColumns}
-              visibleColumnsWidth={visibleColumnsWidth}
-              overscanCountHorizontal={overscanCountHorizontal}
-            />
-          </VirtualTableBodyContainer>
-        )}
-      </div>
+      </FlexBox>
+      {tableRef?.current?.clientWidth !== tableRef?.current?.scrollWidth && (
+        <HorizontalScrollbar
+          scrollBarRef={scrollBarRef}
+          handleHorizontalScrollBarScroll={handleHorizontalScrollBarScroll}
+          totalColumnsWidth={totalColumnsWidth}
+        />
+      )}
     </div>
   );
 });
