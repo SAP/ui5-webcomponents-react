@@ -1,7 +1,8 @@
-import '@ui5/webcomponents-fiori/dist/UploadCollectionItem';
-import { UploadState } from '@ui5/webcomponents-react/lib/UploadState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import { FC, ReactNode } from 'react';
+import '@ui5/webcomponents-fiori/dist/UploadCollectionItem';
+import { FC } from 'react';
+import { UploadState } from '@ui5/webcomponents-react/lib/UploadState';
+import { ReactNode } from 'react';
 
 export interface UploadCollectionItemPropTypes extends WithWebComponentPropTypes {
   /**
@@ -17,7 +18,7 @@ export interface UploadCollectionItemPropTypes extends WithWebComponentPropTypes
    */
   fileNameClickable?: boolean;
   /**
-   * Removes delete option from <code>ui5-upload-collection</code> with <code>mode</code> <code>Delete</code> for this item.
+   * Removes delete option from <code>UploadCollection</code> with <code>mode</code> <code>Delete</code> for this item.
    */
   noDelete?: boolean;
   /**
@@ -37,11 +38,11 @@ export interface UploadCollectionItemPropTypes extends WithWebComponentPropTypes
    */
   uploadState?: UploadState;
   /**
-   * Hold the description of the <code>ui5-upload-collection-item</code>. Will be shown below the file name.
+   * Hold the description of the <code>UploadCollectionItem</code>. Will be shown below the file name.
    */
   children?: ReactNode | ReactNode[];
   /**
-   * A thumbnail, which will be shown in the beginning of the <code>ui5-upload-collection-item</code>. <br><br> <b>Note:</b> Use <code>ui5-icon</code> or <code>img</code> for the intended design.
+   * A thumbnail, which will be shown in the beginning of the <code>UploadCollectionItem</code>. <br><br> <b>Note:</b> Use <code>Icon</code> or <code>img</code> for the intended design.
    */
   thumbnail?: ReactNode;
   /**
@@ -49,7 +50,7 @@ export interface UploadCollectionItemPropTypes extends WithWebComponentPropTypes
    */
   onFileNameClick?: (event: CustomEvent<{}>) => void;
   /**
-   * Fired when the <code>fileName</code> property gets changed. <br><br> <b>Note:</b> An edit button is displayed on each item, when the <code>ui5-upload-collection-item</code> <code>type</code> property is set to <code>Detail</code>.
+   * Fired when the <code>fileName</code> property gets changed. <br><br> <b>Note:</b> An edit button is displayed on each item, when the <code>UploadCollectionItem</code> <code>type</code> property is set to <code>Detail</code>.
    */
   onRename?: (event: CustomEvent<{}>) => void;
   /**
@@ -63,8 +64,10 @@ export interface UploadCollectionItemPropTypes extends WithWebComponentPropTypes
 }
 
 /**
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/UploadCollectionItem" target="_blank">UI5 Web Components Playground</a>
- */
+     * A component to be used within the <code>UploadCollection</code>.
+     
+     * <a href="https://sap.github.io/ui5-webcomponents/playground/components/UploadCollectionItem" target="_blank">UI5 Web Components Playground</a>
+     */
 const UploadCollectionItem: FC<UploadCollectionItemPropTypes> = withWebComponent<UploadCollectionItemPropTypes>(
   'ui5-upload-collection-item',
   ['file', 'fileName', 'progress', 'uploadState'],

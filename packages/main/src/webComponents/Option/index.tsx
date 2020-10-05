@@ -8,18 +8,20 @@ export interface OptionPropTypes extends WithWebComponentPropTypes {
    */
   icon?: string;
   /**
-   * Defines the selected state of the <code>ui5-option</code>.
+   * Defines the selected state of the <code>Option</code>.
    */
   selected?: boolean;
   /**
-   * Defines the value of the <code>ui5-select</code> inside an HTML Form element when this <code>ui5-option</code> is selected. For more information on HTML Form support, see the <code>name</code> property of <code>ui5-select</code>.
+   * Defines the value of the <code>Select</code> inside an HTML Form element when this <code>Option</code> is selected. For more information on HTML Form support, see the <code>name</code> property of <code>Select</code>.
    */
   value?: string;
 }
 
 /**
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Option" target="_blank">UI5 Web Components Playground</a>
- */
+     * The <code>Option</code> component defines the content of an opton in the <code>Select</code>
+     
+     * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Option" target="_blank">UI5 Web Components Playground</a>
+     */
 const Option: FC<OptionPropTypes> = withWebComponent<OptionPropTypes>(
   'ui5-option',
   ['icon', 'value'],

@@ -1,7 +1,8 @@
-import '@ui5/webcomponents-fiori/dist/NotificationListItem';
-import { Priority } from '@ui5/webcomponents-react/lib/Priority';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import { FC, ReactNode } from 'react';
+import '@ui5/webcomponents-fiori/dist/NotificationListItem';
+import { FC } from 'react';
+import { Priority } from '@ui5/webcomponents-react/lib/Priority';
+import { ReactNode } from 'react';
 
 export interface NotificationListItemPropTypes extends WithWebComponentPropTypes {
   /**
@@ -35,19 +36,19 @@ export interface NotificationListItemPropTypes extends WithWebComponentPropTypes
    */
   selected?: boolean;
   /**
-   * Defines the avatar, displayed in the <code>ui5-li-notification</code>.<br/><br/>
+   * Defines the avatar, displayed in the <code>NotificationListItem</code>.<br/><br/>
    *
-   * <b>Note:</b> Consider using the <code>ui5-avatar</code> to display icons, initials or images.
+   * <b>Note:</b> Consider using the <code>Avatar</code> to display icons, initials or images.
    */
   avatar?: ReactNode;
   /**
-   * Defines the content of the <code>ui5-li-notification</code>, usually a description of the notification.<br/><br/>
+   * Defines the content of the <code>NotificationListItem</code>, usually a description of the notification.<br/><br/>
    *
    * <b>Note:</b> Аlthough this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Defines the elements, dipalyed in the footer of the of the <code>ui5-li-notification</code>.
+   * Defines the elements, dipalyed in the footer of the of the <code>NotificationListItem</code>.
    */
   footnotes?: ReactNode | ReactNode[];
   /**
@@ -61,6 +62,7 @@ export interface NotificationListItemPropTypes extends WithWebComponentPropTypes
 }
 
 /**
+ *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/NotificationListItem" target="_blank">UI5 Web Components Playground</a>
  */
 const NotificationListItem: FC<NotificationListItemPropTypes> = withWebComponent<NotificationListItemPropTypes>(
