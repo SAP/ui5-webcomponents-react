@@ -11,3 +11,7 @@ License: Apache-2.0
 Files: /packages/charts/src/components/PieChart/PieChart.tsx
 Copyright: 2016-2020 Recharts Group
 License: MIT
+
+Files: packages/base/src/hooks/useIsomorphicLayoutEffect.ts
+Copyright: 2019 Tanner Linsley
+License: MIT
