@@ -7,14 +7,14 @@ import { createMemoryHistory } from 'history';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 
-import BrowserProvider from './URL/BrowserProvider';
+import BrowserProvider from './browser/BrowserProvider';
 
-const render = (ui, { route = BrowserProvider.HOME, ...renderOptions } = {}) => {
-  const WrapperProvider = ({ children }) => {
+const render = (ui, { route = BrowserProvider.getUrl('HOME'), ...renderOptions } = {}) => {
+  const WrapperProvider = ({ ...props }) => {
     const history = createMemoryHistory({ initialEntries: [route] });
     return (
       <BrowserRouter>
-        <Router history={history}>{children}</Router>
+        <Router history={history}>{props.children}</Router>
       </BrowserRouter>
     );
   };

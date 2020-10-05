@@ -6,7 +6,7 @@ import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItem
 import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
 import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJustifyContent';
 
-import BrowserProvider from '../../util/URL/BrowserProvider';
+import BrowserProvider from '../../util/browser/BrowserProvider';
 
 const style = {
   wrapper: {
@@ -29,7 +29,7 @@ const Fallback = ({ image, altImage, text, reload }) => {
       <img src={image} style={style.image} alt={altImage} />
       <h3 className="text-center">{text}</h3>
       {reload && (
-        <a style={style.reloadButton} href={BrowserProvider.HOME} target="_self">
+        <a style={style.reloadButton} href={BrowserProvider.getUrl('HOME')} target="_self">
           {t('page.fallback.reload.text')}
         </a>
       )}

@@ -22,10 +22,10 @@ describe('Validator.js Test Suite', () => {
     expect(content).toBeInTheDocument();
   });
 
-  test('should have a g of 970px', () => {
+  test('should have a minWidth of 50% when desktop', () => {
     const content = screen.getByTestId('centered-content');
 
     expect(content).toBeInTheDocument();
-    expect(content).toHaveStyle(`max-width:970px`);
+    expect(content).toHaveStyle('min-width:50%');
   });
 });

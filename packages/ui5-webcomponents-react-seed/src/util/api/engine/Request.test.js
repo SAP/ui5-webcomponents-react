@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom/extend-expect';
 
-import { serverCustom } from '../../util/TestSetup';
-import APIProvider from '../../util/URL/APIProvider';
+import { serverCustom } from '../../TestSetup';
+import APIProvider from '../url/APIProvider';
 import Request from './Request';
 
 jest.mock('./Request');

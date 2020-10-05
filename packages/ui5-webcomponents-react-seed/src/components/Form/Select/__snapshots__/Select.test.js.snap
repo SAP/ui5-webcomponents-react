@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Select.js Test Suite should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="FlexBox-flexBox-0-2-1 FlexBox-flexBoxDirectionColumn-0-2-8 FlexBox-justifyContentStart-0-2-3 FlexBox-alignItemsStretch-0-2-15 FlexBox-flexWrapNoWrap-0-2-17"
+    data-testid="fieldbase-wrapper"
+  >
+    Label {
+      "_domRefReadyPromise": Promise {
+        "_deferredResolve": [Function],
+      },
+      "_firePropertyChange": false,
+      "_fullyConnected": false,
+      "_inDOM": false,
+      "_monitoredChildProps": Map {},
+      "_shouldInvalidateParent": false,
+      "_state": Object {
+        "for": "",
+        "required": false,
+        "showColon": false,
+        "wrap": true,
+      },
+      "_upToDate": false,
+    }
+    <ui5-select
+      data-testid="select-wrapper"
+      name="description"
+      style="margin-bottom: 0.5rem; width: 100%;"
+      value-state="None"
+    >
+      Option {
+        "_domRefReadyPromise": Promise {
+          "_deferredResolve": [Function],
+        },
+        "_firePropertyChange": false,
+        "_fullyConnected": false,
+        "_inDOM": false,
+        "_monitoredChildProps": Map {},
+        "_shouldInvalidateParent": false,
+        "_state": Object {
+          "icon": null,
+          "selected": false,
+          "value": "LOW",
+        },
+        "_upToDate": false,
+      }
+      Option {
+        "_domRefReadyPromise": Promise {
+          "_deferredResolve": [Function],
+        },
+        "_firePropertyChange": false,
+        "_fullyConnected": false,
+        "_inDOM": false,
+        "_monitoredChildProps": Map {},
+        "_shouldInvalidateParent": false,
+        "_state": Object {
+          "icon": null,
+          "selected": false,
+          "value": "MEDIUM",
+        },
+        "_upToDate": false,
+      }
+      Option {
+        "_domRefReadyPromise": Promise {
+          "_deferredResolve": [Function],
+        },
+        "_firePropertyChange": false,
+        "_fullyConnected": false,
+        "_inDOM": false,
+        "_monitoredChildProps": Map {},
+        "_shouldInvalidateParent": false,
+        "_state": Object {
+          "icon": null,
+          "selected": false,
+          "value": "HIGH",
+        },
+        "_upToDate": false,
+      }
+    </ui5-select>
+  </div>
+</DocumentFragment>
+`;

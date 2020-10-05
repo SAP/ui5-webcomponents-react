@@ -13,7 +13,7 @@ describe('APIProvider.js Test Suite', () => {
 
   test('should throw error when passed wrong key', () => {
     const key = 'DOES_NOT_EXIST';
-    const errorMessage = 'Url defined by Constant: ' + key + ' not found in APIProvider.js';
+    const errorMessage = 'Url defined: ' + key + ' not found';
 
     const getUrl = () => APIProvider.getUrl(key);
 
@@ -23,16 +23,16 @@ describe('APIProvider.js Test Suite', () => {
   test('should correctly replace key when passed correct replaceValue', () => {
     const key = 'GET_TODO_BY_ID';
 
-    const output = APIProvider.replace(APIProvider.getUrl(key), 1);
+    const output = APIProvider.getUrl(key, [{ value: 1 }]);
 
-    expect(output).toEqual('/v1/todo/detail/1');
+    expect(output).toEqual('/v1/todo/1');
   });
 
   test('should erroneously replace key when passed correct replaceValue', () => {
     const key = 'GET_TODO_BY_ID';
 
-    const replaceUrl = () => APIProvider.replace(APIProvider.getUrl(key), 1, ':not_id');
+    const replaceUrl = () => APIProvider.getUrl(key, [{ value: 1, search: ':not_id' }]);
 
-    expect(replaceUrl()).toEqual('/v1/todo/detail/:id');
+    expect(replaceUrl()).toEqual('/v1/todo/:id');
   });
 });

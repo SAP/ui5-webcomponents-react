@@ -3,7 +3,7 @@ import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 import { render, waitFor, screen, serverCustom } from '../../util/TestSetup';
 import ComponentValidator from './Validator';
-import APIProvider from '../../util/URL/APIProvider';
+import APIProvider from '../../util/api/url/APIProvider';
 
 describe('Validator.js Test Suite', () => {
   const GET_USER_LOGGED_RESPONSE = {
@@ -25,7 +25,7 @@ describe('Validator.js Test Suite', () => {
       <ComponentValidator allowedAuthorities={['canAccessDropApplication']} authorityKey="permissions">
         <p>{childText}</p>
       </ComponentValidator>,
-      { route: '/todo/list' },
+      { route: '/todo/all' },
     );
     const child = await waitFor(() => screen.getByText(childText));
 
@@ -39,22 +39,23 @@ describe('Validator.js Test Suite', () => {
       <ComponentValidator allowedAuthorities={['canAccessDropApplication']} authorityKey="permissions">
         <p>{childText}</p>
       </ComponentValidator>,
-      { route: '/todo/list' },
+      { route: '/todo/all' },
     );
     const child = await waitFor(() => screen.getByText(childText));
 
     expect(child).toBeInTheDocument();
   });
 
-  test('should not appear in the document', async () => {
+  test.only('should not appear in the document', async () => {
     const childText = 'inner text';
 
     render(
       <ComponentValidator allowedAuthorities={['canAccessDropApplication']} authorityKey="permissions">
         <p>{childText}</p>
       </ComponentValidator>,
-      { route: '/todo/list' },
+      { route: '/todo/all' },
     );
+    console.log('PATHHHHHH', window.location.pathname);
     const child = screen.queryByAltText(childText);
 
     expect(child).not.toBeInTheDocument();

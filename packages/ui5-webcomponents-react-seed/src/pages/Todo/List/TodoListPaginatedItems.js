@@ -1,15 +1,24 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { usePaginatedGet } from '../../../hooks/useRequest';
 
 import { List } from '@ui5/webcomponents-react/lib/List';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
 import { Spinner } from '@ui5/webcomponents-react';
 import { Pagination } from '../../../components/Pagination/Pagination';
-import Constants from '../../../util/Constants';
 
-export default function TodoListPagination() {
+import Constants from '../../../util/Constants';
+import BrowserProvider from '../../../util/browser/BrowserProvider';
+import APIProvider from '../../../util/api/url/APIProvider';
+
+export default function TodoListPaginatedItems() {
+  const history = useHistory();
   const [page, setPage] = useState(0);
-  const { resolvedData, status } = usePaginatedGet(Constants.REACT_QUERY.KEYS.RQ_GET_TODO_LIST, page, 'GET_TODO_LIST');
+  const { resolvedData, status } = usePaginatedGet(Constants.REACT_QUERY.KEYS.RQ_GET_TODO_LIST, page, APIProvider.getUrl('GET_TODO_LIST'));
+
+  const redirectToEditPage = (e) => {
+    history.push(BrowserProvider.getUrl('TODO_EDIT', [{ value: e.detail.item.dataset.id }]));
+  };
 
   return (
     <div>
@@ -18,23 +27,9 @@ export default function TodoListPagination() {
       ) : (
         <>
           <h3>{`Records (${resolvedData.numberOfElements} / ${resolvedData.totalElements})`}</h3>
-          <List
-            busy={false}
-            footerText={undefined}
-            header={null}
-            headerText={undefined}
-            infiniteScroll={false}
-            inset={false}
-            mode="None"
-            noDataText={undefined}
-            onItemClick={function noRefCheck() {}}
-            onItemDelete={function noRefCheck() {}}
-            onLoadMore={function noRefCheck() {}}
-            onSelectionChange={function noRefCheck() {}}
-            separators="All"
-          >
+          <List onItemClick={(e) => redirectToEditPage(e)}>
             {resolvedData.content.map((todo, index) => (
-              <StandardListItem key={index} iconEnd={false} info={todo.number} infoState="None" selected={false}>
+              <StandardListItem data-id={todo.id} key={index} iconEnd={false} info={todo.description} infoState="None" selected={false}>
                 {todo.name}
               </StandardListItem>
             ))}

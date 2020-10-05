@@ -4,7 +4,7 @@ exports[`Validator.js Test Suite should match snapshot 1`] = `
 <DocumentFragment>
   <div
     data-testid="centered-content"
-    style="max-width: 970px; padding: 1rem; margin: 0px auto;"
+    style="min-width: 50%; padding: 1rem; margin: 0px auto;"
   />
 </DocumentFragment>
 `;

@@ -11,5 +11,6 @@
   "page.error.alt": "Error",
   "page.notfound.text": "Hmmm, we could find this URL",
   "page.notfound.alt": "Not Found",
-  "page.fallback.reload.text": "Reload this page"
+  "page.fallback.reload.text": "Reload this page",
+  "components.navback.text": "Back"
 }

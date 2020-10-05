@@ -1,17 +1,18 @@
 import React from 'react';
+import { isMobile } from 'react-device-detect';
 
 const style = {
   centered: {
-    maxWidth: '970px',
+    minWidth: isMobile ? '80%' : '50%',
     padding: '1rem',
     margin: '0 auto',
   },
 };
 
-export default function CenteredContent({ children }) {
+export default function CenteredContent({ ...props }) {
   return (
     <div data-testid="centered-content" style={style.centered}>
-      {children}
+      {props.children}
     </div>
   );
 }
