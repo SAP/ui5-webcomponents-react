@@ -1,23 +1,33 @@
-import { supportTouch } from '@ui5/webcomponents-base/dist/Device';
-import '@ui5/webcomponents-react-base/third-party/modernizr';
-
-declare const Modernizr: {
-  pointerevents: boolean;
-  matchmedia: boolean;
-  deviceorientation: boolean;
-  websockets: boolean;
-  placeholder: boolean;
+export const supportPointerEvents = () => {
+  return 'onpointerdown' in window;
 };
 
-export class Support {
-  public touch: boolean = supportTouch();
-  public pointer: boolean = Modernizr.pointerevents;
-  public matchmedia: boolean = Modernizr.matchmedia;
-  public matchmedialistener = !!(this.matchmedia && window.matchMedia('all and (max-width:0px)'));
-  public orientation: boolean = Modernizr.deviceorientation;
-  public retina: boolean = (window as any).retina || window.devicePixelRatio >= 2;
-  public websocket: boolean = Modernizr.websockets;
-  public input = {
-    placeholder: Modernizr.placeholder
-  };
-}
+export const supportInputPlaceholder = () => {
+  return 'placeholder' in document.createElement('input') && 'placeholder' in document.createElement('textarea');
+};
+
+export const supportWebSocket = () => {
+  let isSupported = false;
+  try {
+    isSupported = 'WebSocket' in window && window.WebSocket.CLOSING === 2;
+  } catch (e) {
+    // do nothing
+  }
+  return isSupported;
+};
+
+export const supportMatchMedia = () => {
+  return 'matchMedia' in window;
+};
+
+export const supportMatchMediaListener = () => {
+  return !!(supportMatchMedia() && window.matchMedia('all and (max-width:0px)'));
+};
+
+export const supportOrientation = () => {
+  return 'DeviceOrientationEvent' in window;
+};
+
+export const supportRetina = () => {
+  return (window as any).retina || window.devicePixelRatio >= 2;
+};
