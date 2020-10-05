@@ -1,21 +1,16 @@
-import { ArgsTable, Canvas, Description, Meta, Story, Subtitle, Title } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { Token } from '@ui5/webcomponents-react/lib/Token';
-
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
 
 <Meta
   title="UI5 Web Components / Token"
   component={Token}
-  argTypes={{
-    ...createSelectArgTypes({})
+  args={{
+    text: 'Token 1'
   }}
-  args={{}}
 />
-;
 
-<Title />
-<Subtitle />
-<Description />
+<DocsHeader />
 
 <Canvas>
   <Story name="Default">
