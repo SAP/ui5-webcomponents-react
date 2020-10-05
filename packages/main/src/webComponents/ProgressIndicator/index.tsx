@@ -1,7 +1,7 @@
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/ProgressIndicator';
 import { FC } from 'react';
-import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 
 export interface ProgressIndicatorPropTypes extends WithWebComponentPropTypes {
   /**
@@ -25,11 +25,11 @@ export interface ProgressIndicatorPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
-     * Shows the progress of a process in a graphical way. To indicate the progress, the inside of the
-<code>ProgressIndicator</code> is filled with a color.
-     
-     * <a href="https://sap.github.io/ui5-webcomponents/playground/components/ProgressIndicator" target="_blank">UI5 Web Components Playground</a>
-     */
+ * Shows the progress of a process in a graphical way. To indicate the progress, the inside of the
+ <code>ProgressIndicator</code> is filled with a color.
+
+ * <a href="https://sap.github.io/ui5-webcomponents/playground/components/ProgressIndicator" target="_blank">UI5 Web Components Playground</a>
+ */
 const ProgressIndicator: FC<ProgressIndicatorPropTypes> = withWebComponent<ProgressIndicatorPropTypes>(
   'ui5-progress-indicator',
   ['value', 'valueState'],

@@ -1,9 +1,8 @@
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/Input';
-import { FC } from 'react';
 import { InputType } from '@ui5/webcomponents-react/lib/InputType';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
-import { ReactNode } from 'react';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
+import '@ui5/webcomponents/dist/Input';
+import { FC, ReactNode } from 'react';
 
 export interface InputPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput' | 'onSubmit'> {
   /**
@@ -95,20 +94,20 @@ export interface InputPropTypes extends Omit<WithWebComponentPropTypes, 'onChang
 }
 
 /**
-     * The <code>Input</code> component allows the user to enter and edit text or numeric values in one line. <br />
-Additionally, you can provide <code>suggestionItems</code>, that are displayed in a popover right under the input.
-<br /><br />
-The text field can be editable or read-only (<code>readonly</code> property), and it can be enabled or disabled (<code >enabled</code
->
-property). To visualize semantic states, such as "error" or "warning", the <code>valueState</code> property is provided.
-When the user makes changes to the text, the change event is fired, which enables you to react on any text change.
-<br /><br />
-<b>Note:</b> If you are using the <code>Input</code> as a single npm module, don't forget to import the
-<code>InputSuggestions</code> module from "@ui5/webcomponents/dist/features/InputSuggestions.js" to enable the
-suggestions functionality.
-     
-     * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Input" target="_blank">UI5 Web Components Playground</a>
-     */
+ * The <code>Input</code> component allows the user to enter and edit text or numeric values in one line. <br />
+ Additionally, you can provide <code>suggestionItems</code>, that are displayed in a popover right under the input.
+ <br /><br />
+ The text field can be editable or read-only (<code>readonly</code> property), and it can be enabled or disabled (<code >enabled</code
+ >
+ property). To visualize semantic states, such as "error" or "warning", the <code>valueState</code> property is provided.
+ When the user makes changes to the text, the change event is fired, which enables you to react on any text change.
+ <br /><br />
+ <b>Note:</b> If you are using the <code>Input</code> as a single npm module, don't forget to import the
+ <code>InputSuggestions</code> module from "@ui5/webcomponents/dist/features/InputSuggestions.js" to enable the
+ suggestions functionality.
+
+ * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Input" target="_blank">UI5 Web Components Playground</a>
+ */
 const Input: FC<InputPropTypes> = withWebComponent<InputPropTypes>(
   'ui5-input',
   ['maxlength', 'name', 'placeholder', 'type', 'value', 'valueState'],

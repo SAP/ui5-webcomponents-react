@@ -1,9 +1,8 @@
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/List';
-import { FC } from 'react';
 import { ListMode } from '@ui5/webcomponents-react/lib/ListMode';
 import { ListSeparators } from '@ui5/webcomponents-react/lib/ListSeparators';
-import { ReactNode } from 'react';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
+import '@ui5/webcomponents/dist/List';
+import { FC, ReactNode } from 'react';
 
 export interface ListPropTypes extends WithWebComponentPropTypes {
   /**
@@ -73,18 +72,18 @@ export interface ListPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
-     * The <code>List</code> component allows displaying a list of items, advanced keyboard handling support for navigating
-between items, and predefined modes to improve the development efficiency. <br /><br />
-The <code>List</code> is а container for the available list items:
-<ul> <li><code>StandardListItem</code></li> <li><code>CustomListItem</code></li> <li><code>ui5-li-group-header</code></li>
-</ul>
-<br /><br />
-To benefit from the built-in selection mechanism, you can use the available selection modes, such as
-<code>SingleSelect</code>, <code>MultiSelect</code> and <code>Delete</code>. <br /><br />
-Additionally, the <code>List</code> provides header, footer, and customization for the list item separators.
-     
-     * <a href="https://sap.github.io/ui5-webcomponents/playground/components/List" target="_blank">UI5 Web Components Playground</a>
-     */
+ * The <code>List</code> component allows displaying a list of items, advanced keyboard handling support for navigating
+ between items, and predefined modes to improve the development efficiency. <br /><br />
+ The <code>List</code> is а container for the available list items:
+ <ul> <li><code>StandardListItem</code></li> <li><code>CustomListItem</code></li> <li><code>ui5-li-group-header</code></li>
+ </ul>
+ <br /><br />
+ To benefit from the built-in selection mechanism, you can use the available selection modes, such as
+ <code>SingleSelect</code>, <code>MultiSelect</code> and <code>Delete</code>. <br /><br />
+ Additionally, the <code>List</code> provides header, footer, and customization for the list item separators.
+
+ * <a href="https://sap.github.io/ui5-webcomponents/playground/components/List" target="_blank">UI5 Web Components Playground</a>
+ */
 const List: FC<ListPropTypes> = withWebComponent<ListPropTypes>(
   'ui5-list',
   ['footerText', 'headerText', 'mode', 'noDataText', 'separators'],

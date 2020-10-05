@@ -1,8 +1,7 @@
+import { ToastPlacement } from '@ui5/webcomponents-react/lib/ToastPlacement';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/Toast';
-import { FC } from 'react';
-import { ToastPlacement } from '@ui5/webcomponents-react/lib/ToastPlacement';
-import { ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 
 export interface ToastPropTypes extends WithWebComponentPropTypes {
   /**
@@ -20,11 +19,11 @@ export interface ToastPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
-     * The <code>Toast</code> is a small, non-disruptive popup for success or information messages that disappears
-automatically after a few seconds.
-     
-     * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Toast" target="_blank">UI5 Web Components Playground</a>
-     */
+ * The <code>Toast</code> is a small, non-disruptive popup for success or information messages that disappears
+ automatically after a few seconds.
+
+ * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Toast" target="_blank">UI5 Web Components Playground</a>
+ */
 const Toast: FC<ToastPropTypes> = withWebComponent<ToastPropTypes>('ui5-toast', ['duration', 'placement'], [], [], []);
 
 Toast.displayName = 'Toast';

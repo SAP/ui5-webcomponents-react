@@ -1,9 +1,8 @@
+import { TabContainerTabsPlacement } from '@ui5/webcomponents-react/lib/TabContainerTabsPlacement';
+import { TabLayout } from '@ui5/webcomponents-react/lib/TabLayout';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/TabContainer';
-import { FC } from 'react';
-import { TabLayout } from '@ui5/webcomponents-react/lib/TabLayout';
-import { TabContainerTabsPlacement } from '@ui5/webcomponents-react/lib/TabContainerTabsPlacement';
-import { ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 
 export interface TabContainerPropTypes extends WithWebComponentPropTypes {
   /**
@@ -41,12 +40,12 @@ export interface TabContainerPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
-     * The <code>TabContainer</code> represents a collection of tabs with associated content. Navigation through the tabs
-changes the content display of the currently active content area. A tab can be labeled with text only, or icons with
-text.
-     
-     * <a href="https://sap.github.io/ui5-webcomponents/playground/components/TabContainer" target="_blank">UI5 Web Components Playground</a>
-     */
+ * The <code>TabContainer</code> represents a collection of tabs with associated content. Navigation through the tabs
+ changes the content display of the currently active content area. A tab can be labeled with text only, or icons with
+ text.
+
+ * <a href="https://sap.github.io/ui5-webcomponents/playground/components/TabContainer" target="_blank">UI5 Web Components Playground</a>
+ */
 const TabContainer: FC<TabContainerPropTypes> = withWebComponent<TabContainerPropTypes>(
   'ui5-tabcontainer',
   ['tabLayout', 'tabsPlacement'],

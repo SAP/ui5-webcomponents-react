@@ -1,9 +1,8 @@
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/DateTimePicker';
-import { FC } from 'react';
 import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
-import { ReactNode } from 'react';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
+import '@ui5/webcomponents/dist/DateTimePicker';
+import { FC, ReactNode } from 'react';
 
 export interface DateTimePickerPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput'> {
   /**
@@ -75,11 +74,11 @@ export interface DateTimePickerPropTypes extends Omit<WithWebComponentPropTypes,
 }
 
 /**
-     * The <code>DateTimePicker</code> component alows users to select both date (day, month and year) and time (hours, minutes
-and seconds) and for the purpose it consists of input field and Date/Time picker.
-     
-     * <a href="https://sap.github.io/ui5-webcomponents/playground/components/DateTimePicker" target="_blank">UI5 Web Components Playground</a>
-     */
+ * The <code>DateTimePicker</code> component alows users to select both date (day, month and year) and time (hours, minutes
+ and seconds) and for the purpose it consists of input field and Date/Time picker.
+
+ * <a href="https://sap.github.io/ui5-webcomponents/playground/components/DateTimePicker" target="_blank">UI5 Web Components Playground</a>
+ */
 const DateTimePicker: FC<DateTimePickerPropTypes> = withWebComponent<DateTimePickerPropTypes>(
   'ui5-datetime-picker',
   ['formatPattern', 'maxDate', 'minDate', 'name', 'placeholder', 'primaryCalendarType', 'value', 'valueState'],

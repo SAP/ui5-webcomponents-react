@@ -1,7 +1,7 @@
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents-fiori/dist/NotificationOverflowAction';
-import { FC } from 'react';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { FC } from 'react';
 
 export interface NotificationOverflowActionPropTypes extends WithWebComponentPropTypes {
   /**
@@ -23,11 +23,11 @@ export interface NotificationOverflowActionPropTypes extends WithWebComponentPro
 }
 
 /**
-     * The <code>ui5-notification-overflow-action</code> represents an abstract action, used in the
-<code>ui5-li-notification</code> and the <code>ui5-li-notification-group</code> items
-     
-     * <a href="https://sap.github.io/ui5-webcomponents/playground/components/NotificationOverflowAction" target="_blank">UI5 Web Components Playground</a>
-     */
+ * The <code>ui5-notification-overflow-action</code> represents an abstract action, used in the
+ <code>ui5-li-notification</code> and the <code>ui5-li-notification-group</code> items
+
+ * <a href="https://sap.github.io/ui5-webcomponents/playground/components/NotificationOverflowAction" target="_blank">UI5 Web Components Playground</a>
+ */
 const NotificationOverflowAction: FC<NotificationOverflowActionPropTypes> = withWebComponent<
   NotificationOverflowActionPropTypes
 >('ui5-notification-overflow-action', ['design', 'icon', 'text'], ['disabled'], [], []);

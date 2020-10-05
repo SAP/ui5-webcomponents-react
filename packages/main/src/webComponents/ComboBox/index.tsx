@@ -1,8 +1,7 @@
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/ComboBox';
-import { FC } from 'react';
-import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
-import { ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 
 export interface ComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput'> {
   /**
@@ -58,12 +57,12 @@ export interface ComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
 }
 
 /**
-     * The <code>ComboBox</code> component represents a drop-down menu with a list of the available options and a text input
-field to narrow down the options. It is commonly used to enable users to select one or more options from a predefined
-list.
-     
-     * <a href="https://sap.github.io/ui5-webcomponents/playground/components/ComboBox" target="_blank">UI5 Web Components Playground</a>
-     */
+ * The <code>ComboBox</code> component represents a drop-down menu with a list of the available options and a text input
+ field to narrow down the options. It is commonly used to enable users to select one or more options from a predefined
+ list.
+
+ * <a href="https://sap.github.io/ui5-webcomponents/playground/components/ComboBox" target="_blank">UI5 Web Components Playground</a>
+ */
 const ComboBox: FC<ComboBoxPropTypes> = withWebComponent<ComboBoxPropTypes>(
   'ui5-combobox',
   ['filter', 'filterValue', 'placeholder', 'value', 'valueState'],

@@ -1,7 +1,6 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/Table';
-import { FC } from 'react';
-import { ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 
 export interface TablePropTypes extends WithWebComponentPropTypes {
   /**
@@ -35,15 +34,15 @@ export interface TablePropTypes extends WithWebComponentPropTypes {
 }
 
 /**
-     * The <code>Table</code> component provides a set of sophisticated and convenient functions for responsive table design.
-It provides a comprehensive set of features for displaying and dealing with vast amounts of data. <br /><br />
-To render the <code>Table</code> properly, the order of the <code>columns</code> should match with the order of the item
-<code>cells</code> in the <code>rows</code>. <br /><br />
-Desktop and tablet devices are supported. On tablets, special consideration should be given to the number of visible
-columns and rows due to the limited performance of some devices.
-     
-     * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Table" target="_blank">UI5 Web Components Playground</a>
-     */
+ * The <code>Table</code> component provides a set of sophisticated and convenient functions for responsive table design.
+ It provides a comprehensive set of features for displaying and dealing with vast amounts of data. <br /><br />
+ To render the <code>Table</code> properly, the order of the <code>columns</code> should match with the order of the item
+ <code>cells</code> in the <code>rows</code>. <br /><br />
+ Desktop and tablet devices are supported. On tablets, special consideration should be given to the number of visible
+ columns and rows due to the limited performance of some devices.
+
+ * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Table" target="_blank">UI5 Web Components Playground</a>
+ */
 const Table: FC<TablePropTypes> = withWebComponent<TablePropTypes>(
   'ui5-table',
   ['noDataText'],

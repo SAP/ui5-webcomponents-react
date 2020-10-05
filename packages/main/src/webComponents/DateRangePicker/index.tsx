@@ -1,9 +1,8 @@
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/DateRangePicker';
-import { FC } from 'react';
 import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
-import { ReactNode } from 'react';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
+import '@ui5/webcomponents/dist/DateRangePicker';
+import { FC, ReactNode } from 'react';
 
 export interface DateRangePickerPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput'> {
   /**
@@ -79,11 +78,11 @@ export interface DateRangePickerPropTypes extends Omit<WithWebComponentPropTypes
 }
 
 /**
-     * The DateRangePicker enables the users to enter a localized date range using touch, mouse, keyboard input, or by
-selecting a date range in the calendar.
-     
-     * <a href="https://sap.github.io/ui5-webcomponents/playground/components/DateRangePicker" target="_blank">UI5 Web Components Playground</a>
-     */
+ * The DateRangePicker enables the users to enter a localized date range using touch, mouse, keyboard input, or by
+ selecting a date range in the calendar.
+
+ * <a href="https://sap.github.io/ui5-webcomponents/playground/components/DateRangePicker" target="_blank">UI5 Web Components Playground</a>
+ */
 const DateRangePicker: FC<DateRangePickerPropTypes> = withWebComponent<DateRangePickerPropTypes>(
   'ui5-daterange-picker',
   [

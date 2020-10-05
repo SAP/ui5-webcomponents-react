@@ -1,9 +1,8 @@
+import { ListItemTypes } from '@ui5/webcomponents-react/lib/ListItemTypes';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/StandardListItem';
-import { FC } from 'react';
-import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
-import { ListItemTypes } from '@ui5/webcomponents-react/lib/ListItemTypes';
-import { ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 
 export interface StandardListItemPropTypes extends WithWebComponentPropTypes {
   /**
@@ -49,11 +48,11 @@ export interface StandardListItemPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
-     * The <code>StandardListItem</code> represents the simplest type of item for a <code>StandardListItemst</code>. This is a
-list item, providing the most common use cases such as <code>text</code>, <code>image</code> and <code>icon</code>
-     
-     * <a href="https://sap.github.io/ui5-webcomponents/playground/components/StandardListItem" target="_blank">UI5 Web Components Playground</a>
-     */
+ * The <code>StandardListItem</code> represents the simplest type of item for a <code>StandardListItemst</code>. This is a
+ list item, providing the most common use cases such as <code>text</code>, <code>image</code> and <code>icon</code>
+
+ * <a href="https://sap.github.io/ui5-webcomponents/playground/components/StandardListItem" target="_blank">UI5 Web Components Playground</a>
+ */
 const StandardListItem: FC<StandardListItemPropTypes> = withWebComponent<StandardListItemPropTypes>(
   'ui5-li',
   ['description', 'icon', 'image', 'info', 'infoState', 'type'],

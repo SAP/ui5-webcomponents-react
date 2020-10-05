@@ -1,8 +1,7 @@
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/FileUploader';
-import { FC } from 'react';
-import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
-import { ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 
 export interface FileUploaderPropTypes extends Omit<WithWebComponentPropTypes, 'onChange'> {
   /**
@@ -52,16 +51,16 @@ export interface FileUploaderPropTypes extends Omit<WithWebComponentPropTypes, '
 }
 
 /**
-     * The <code>FileUploader</code> opens a file explorer dialog and enables users to upload files. The component consists of
-input field, but you can provide an HTML element by your choice to trigger the file upload, by using the default slot.
-Furthermore, you can set the property "hideInput" to "true" to hide the input field. <br />
-To get all selected files, you can simply use the read-only "files" property. To restrict the types of files the user
-can select, you can use the "accept" property. <br />
-And, similar to all input based components, the FileUploader supports "valueState", "placeholder", "name", and
-"disabled" properties. For the <code>FileUploader</code>
-     
-     * <a href="https://sap.github.io/ui5-webcomponents/playground/components/FileUploader" target="_blank">UI5 Web Components Playground</a>
-     */
+ * The <code>FileUploader</code> opens a file explorer dialog and enables users to upload files. The component consists of
+ input field, but you can provide an HTML element by your choice to trigger the file upload, by using the default slot.
+ Furthermore, you can set the property "hideInput" to "true" to hide the input field. <br />
+ To get all selected files, you can simply use the read-only "files" property. To restrict the types of files the user
+ can select, you can use the "accept" property. <br />
+ And, similar to all input based components, the FileUploader supports "valueState", "placeholder", "name", and
+ "disabled" properties. For the <code>FileUploader</code>
+
+ * <a href="https://sap.github.io/ui5-webcomponents/playground/components/FileUploader" target="_blank">UI5 Web Components Playground</a>
+ */
 const FileUploader: FC<FileUploaderPropTypes> = withWebComponent<FileUploaderPropTypes>(
   'ui5-file-uploader',
   ['accept', 'name', 'placeholder', 'value', 'valueState'],

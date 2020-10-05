@@ -1,8 +1,7 @@
+import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/ToggleButton';
-import { FC } from 'react';
-import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
-import { ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 
 export interface ToggleButtonPropTypes extends Omit<WithWebComponentPropTypes, 'onClick'> {
   /**
@@ -42,15 +41,15 @@ export interface ToggleButtonPropTypes extends Omit<WithWebComponentPropTypes, '
 }
 
 /**
-     * The <code>ToggleButton</code> component is an enhanced <code>Button</code> that can be toggled between pressed and
-normal states. Users can use the <code>ToggleButton</code> as a switch to turn a setting on or off. It can also be used
-to represent an independent choice similar to a check box. <br /><br />
-Clicking or tapping on a <code>ToggleButton</code> changes its state to <code>pressed</code>. The button returns to its
-initial state when the user clicks or taps on it again. By applying additional custom CSS-styling classes, apps can give
-a different style to any <code>ToggleButton</code>.
-     
-     * <a href="https://sap.github.io/ui5-webcomponents/playground/components/ToggleButton" target="_blank">UI5 Web Components Playground</a>
-     */
+ * The <code>ToggleButton</code> component is an enhanced <code>Button</code> that can be toggled between pressed and
+ normal states. Users can use the <code>ToggleButton</code> as a switch to turn a setting on or off. It can also be used
+ to represent an independent choice similar to a check box. <br /><br />
+ Clicking or tapping on a <code>ToggleButton</code> changes its state to <code>pressed</code>. The button returns to its
+ initial state when the user clicks or taps on it again. By applying additional custom CSS-styling classes, apps can give
+ a different style to any <code>ToggleButton</code>.
+
+ * <a href="https://sap.github.io/ui5-webcomponents/playground/components/ToggleButton" target="_blank">UI5 Web Components Playground</a>
+ */
 const ToggleButton: FC<ToggleButtonPropTypes> = withWebComponent<ToggleButtonPropTypes>(
   'ui5-togglebutton',
   ['design', 'icon'],

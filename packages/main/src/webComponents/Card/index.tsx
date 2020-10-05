@@ -1,7 +1,6 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/Card';
-import { FC } from 'react';
-import { ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 
 export interface CardPropTypes extends WithWebComponentPropTypes {
   /**
@@ -39,13 +38,13 @@ export interface CardPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
-     * The <code>Card</code> is a component that represents information in the form of a tile with separate header and content
-areas. The content area of a <code>Card</code> can be arbitrary HTML content. The header can be used through several
-properties, such as: <code>heading</code>, <code>subheading</code>, <code>status</code> and two slots:
-<code>avatar</code> and <code>action</code>.
-     
-     * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Card" target="_blank">UI5 Web Components Playground</a>
-     */
+ * The <code>Card</code> is a component that represents information in the form of a tile with separate header and content
+ areas. The content area of a <code>Card</code> can be arbitrary HTML content. The header can be used through several
+ properties, such as: <code>heading</code>, <code>subheading</code>, <code>status</code> and two slots:
+ <code>avatar</code> and <code>action</code>.
+
+ * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Card" target="_blank">UI5 Web Components Playground</a>
+ */
 const Card: FC<CardPropTypes> = withWebComponent<CardPropTypes>(
   'ui5-card',
   ['heading', 'status', 'subheading'],

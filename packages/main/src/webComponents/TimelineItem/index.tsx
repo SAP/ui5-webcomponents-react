@@ -1,7 +1,6 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/TimelineItem';
-import { FC } from 'react';
-import { ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 
 export interface TimelineItemPropTypes extends WithWebComponentPropTypes {
   /**
@@ -37,10 +36,10 @@ export interface TimelineItemPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
-     * An entry posted on the timeline
-     
-     * <a href="https://sap.github.io/ui5-webcomponents/playground/components/TimelineItem" target="_blank">UI5 Web Components Playground</a>
-     */
+ * An entry posted on the timeline
+
+ * <a href="https://sap.github.io/ui5-webcomponents/playground/components/TimelineItem" target="_blank">UI5 Web Components Playground</a>
+ */
 const TimelineItem: FC<TimelineItemPropTypes> = withWebComponent<TimelineItemPropTypes>(
   'ui5-timeline-item',
   ['icon', 'itemName', 'subtitleText', 'titleText'],

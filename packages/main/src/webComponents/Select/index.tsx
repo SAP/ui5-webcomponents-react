@@ -1,8 +1,7 @@
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/Select';
-import { FC } from 'react';
-import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
-import { ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 
 export interface SelectPropTypes extends Omit<WithWebComponentPropTypes, 'onChange'> {
   /**
@@ -36,11 +35,11 @@ export interface SelectPropTypes extends Omit<WithWebComponentPropTypes, 'onChan
 }
 
 /**
-     * The <code>Select</code> component is used to create a drop-down list. The items inside the <code>Select</code> define
-the available options by using the <code>Option</code> component.
-     
-     * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Select" target="_blank">UI5 Web Components Playground</a>
-     */
+ * The <code>Select</code> component is used to create a drop-down list. The items inside the <code>Select</code> define
+ the available options by using the <code>Option</code> component.
+
+ * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Select" target="_blank">UI5 Web Components Playground</a>
+ */
 const Select: FC<SelectPropTypes> = withWebComponent<SelectPropTypes>(
   'ui5-select',
   ['name', 'valueState'],

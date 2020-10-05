@@ -1,5 +1,5 @@
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents-fiori/dist/ProductSwitchItem';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import { FC } from 'react';
 
 export interface ProductSwitchItemPropTypes extends Omit<WithWebComponentPropTypes, 'onClick'> {
@@ -32,13 +32,13 @@ export interface ProductSwitchItemPropTypes extends Omit<WithWebComponentPropTyp
 }
 
 /**
-     * The <code>ProductSwitchItem</code> web component represents the items displayed in the <code>ProductSwitch</code> web
-component. <br /><br />
-<b>Note:</b> <code>ProductSwitchItem</code> is not supported when used outside of <code>ProductSwitch</code>.
-<br /><br />
-     
-     * <a href="https://sap.github.io/ui5-webcomponents/playground/components/ProductSwitchItem" target="_blank">UI5 Web Components Playground</a>
-     */
+ * The <code>ProductSwitchItem</code> web component represents the items displayed in the <code>ProductSwitch</code> web
+ component. <br /><br />
+ <b>Note:</b> <code>ProductSwitchItem</code> is not supported when used outside of <code>ProductSwitch</code>.
+ <br /><br />
+
+ * <a href="https://sap.github.io/ui5-webcomponents/playground/components/ProductSwitchItem" target="_blank">UI5 Web Components Playground</a>
+ */
 const ProductSwitchItem: FC<ProductSwitchItemPropTypes> = withWebComponent<ProductSwitchItemPropTypes>(
   'ui5-product-switch-item',
   ['heading', 'icon', 'subtitle', 'target', 'targetSrc'],

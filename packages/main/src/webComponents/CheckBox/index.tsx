@@ -1,7 +1,7 @@
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/CheckBox';
 import { FC } from 'react';
-import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 
 export interface CheckBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onChange'> {
   /**
@@ -43,15 +43,15 @@ export interface CheckBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
 }
 
 /**
-     * Allows the user to set a binary value, such as true/false or yes/no for an item. <br /><br />
-The <code>CheckBox</code> component consists of a box and a label that describes its purpose. If it's checked, an
-indicator is displayed inside the box. To check/uncheck the <code>CheckBox</code>, the user has to click or tap the
-square box or its label. <br /><br />
-The <code>CheckBox</code> component only has 2 states - checked and unchecked. Clicking or tapping toggles the
-<code>CheckBox</code> between checked and unchecked state.
-     
-     * <a href="https://sap.github.io/ui5-webcomponents/playground/components/CheckBox" target="_blank">UI5 Web Components Playground</a>
-     */
+ * Allows the user to set a binary value, such as true/false or yes/no for an item. <br /><br />
+ The <code>CheckBox</code> component consists of a box and a label that describes its purpose. If it's checked, an
+ indicator is displayed inside the box. To check/uncheck the <code>CheckBox</code>, the user has to click or tap the
+ square box or its label. <br /><br />
+ The <code>CheckBox</code> component only has 2 states - checked and unchecked. Clicking or tapping toggles the
+ <code>CheckBox</code> between checked and unchecked state.
+
+ * <a href="https://sap.github.io/ui5-webcomponents/playground/components/CheckBox" target="_blank">UI5 Web Components Playground</a>
+ */
 const CheckBox: FC<CheckBoxPropTypes> = withWebComponent<CheckBoxPropTypes>(
   'ui5-checkbox',
   ['name', 'text', 'valueState'],
