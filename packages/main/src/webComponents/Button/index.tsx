@@ -23,7 +23,7 @@ export interface ButtonPropTypes extends Omit<WithWebComponentPropTypes, 'onClic
    */
   iconEnd?: boolean;
   /**
-   * Defines the size of the icon inside the <code>ui5-button</code>.
+   * Defines the size of the icon inside the <code>Button</code>.
    */
   iconSize?: string;
   /**

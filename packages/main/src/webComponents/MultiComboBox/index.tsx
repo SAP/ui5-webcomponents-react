@@ -41,7 +41,7 @@ export interface MultiComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Defines the icon to be displayed in the <code>ui5-multi-combobox</code>.
+   * Defines the icon to be displayed in the <code>MultiComboBox</code>.
    */
   icon?: ReactNode | ReactNode[];
   /**

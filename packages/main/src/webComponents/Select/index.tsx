@@ -17,7 +17,7 @@ export interface SelectPropTypes extends Omit<WithWebComponentPropTypes, 'onChan
    */
   name?: string;
   /**
-   * Defines whether the <code>ui5-select</code> is required.
+   * Defines whether the <code>Select</code> is required.
    */
   required?: boolean;
   /**
@@ -33,9 +33,9 @@ export interface SelectPropTypes extends Omit<WithWebComponentPropTypes, 'onChan
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Defines the value state message that will be displayed as pop up under the <code>ui5-select</code>. <br><br><br/><br/>
+   * Defines the value state message that will be displayed as pop up under the <code>Select</code>. <br><br><br/><br/>
    *
-   * <b>Note:</b> If not specified, a default text (in the respective language) will be displayed. <br> <b>Note:</b> The <code>valueStateMessage</code> would be displayed, when the <code>ui5-select</code> is in <code>Information</code>, <code>Warning</code> or <code>Error</code> value state.
+   * <b>Note:</b> If not specified, a default text (in the respective language) will be displayed. <br> <b>Note:</b> The <code>valueStateMessage</code> would be displayed, when the <code>Select</code> is in <code>Information</code>, <code>Warning</code> or <code>Error</code> value state.
    */
   valueStateMessage?: ReactNode | ReactNode[];
   /**

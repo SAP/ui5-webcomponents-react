@@ -45,7 +45,7 @@ export interface FileUploaderPropTypes extends Omit<WithWebComponentPropTypes, '
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Defines the value state message that will be displayed as pop up under the <code>ui5-file-uploader</code>. <br><br><br/><br/>
+   * Defines the value state message that will be displayed as pop up under the <code>FileUploader</code>. <br><br><br/><br/>
    *
    * <b>Note:</b> If not specified, a default text (in the respective language) will be displayed. <br> <b>Note:</b> The <code>valueStateMessage</code> would be displayed, when the <code>ui5--file-uploader</code> is in <code>Information</code>, <code>Warning</code> or <code>Error</code> value state.
    */

@@ -46,9 +46,9 @@ export interface DurationPickerPropTypes extends Omit<WithWebComponentPropTypes,
    */
   valueState?: string;
   /**
-   * Defines the value state message that will be displayed as pop up under the <code>ui5-duration-picker</code>. <br><br><br/><br/>
+   * Defines the value state message that will be displayed as pop up under the <code>DurationPicker</code>. <br><br><br/><br/>
    *
-   * <b>Note:</b> If not specified, a default text (in the respective language) will be displayed. <br> <b>Note:</b> The <code>valueStateMessage</code> would be displayed, when the <code>ui5-duration-picker</code> is in <code>Information</code>, <code>Warning</code> or <code>Error</code> value state.
+   * <b>Note:</b> If not specified, a default text (in the respective language) will be displayed. <br> <b>Note:</b> The <code>valueStateMessage</code> would be displayed, when the <code>DurationPicker</code> is in <code>Information</code>, <code>Warning</code> or <code>Error</code> value state.
    */
   valueStateMessage?: ReactNode;
   /**

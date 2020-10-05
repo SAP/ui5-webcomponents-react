@@ -4,7 +4,7 @@ import { FC, ReactNode } from 'react';
 
 export interface DialogPropTypes extends WithWebComponentPropTypes {
   /**
-   * Determines whether the <code>ui5-dialog</code> is draggable. If this property is set to true, the Dialog will be draggable by its header. <br><br> <b>Note:</b> The <code>ui5-dialog</code> can be draggable only in desktop mode.
+   * Determines whether the <code>Dialog</code> is draggable. If this property is set to true, the Dialog will be draggable by its header. <br><br> <b>Note:</b> The <code>Dialog</code> can be draggable only in desktop mode.
    */
   draggable?: boolean;
   /**
