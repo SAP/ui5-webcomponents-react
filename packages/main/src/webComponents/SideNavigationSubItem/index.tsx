@@ -20,6 +20,8 @@ export interface SideNavigationSubItemPropTypes extends WithWebComponentPropType
 }
 
 /**
+ * The <code>SideNavigationSubItem</code> is intended to be used inside a <code>SideNavigationItem</code> only.
+
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/SideNavigationSubItem" target="_blank">UI5 Web Components Playground</a>
  */
 const SideNavigationSubItem: FC<SideNavigationSubItemPropTypes> = withWebComponent<SideNavigationSubItemPropTypes>(

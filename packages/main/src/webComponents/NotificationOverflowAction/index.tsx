@@ -1,8 +1,7 @@
 import '@ui5/webcomponents-fiori/dist/NotificationOverflowAction';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/MultiComboBoxItem';
-import React, { FC } from 'react';
+import { FC } from 'react';
 
 export interface NotificationOverflowActionPropTypes extends WithWebComponentPropTypes {
   /**
@@ -14,7 +13,7 @@ export interface NotificationOverflowActionPropTypes extends WithWebComponentPro
    */
   disabled?: boolean;
   /**
-   * Defines the <code>icon</code> source URI. <br><br> <b>Note:</b> SAP-icons font provides numerous built-in icons. To find all the available icons, see the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
+   * Defines the <code>icon</code> source URI. <br><br> <b>Note:</b> SAP-icons font provides numerous buil-in icons. To find all the available icons, see the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
    */
   icon?: string;
   /**
@@ -23,6 +22,12 @@ export interface NotificationOverflowActionPropTypes extends WithWebComponentPro
   text?: string;
 }
 
+/**
+ * The <code>ui5-notification-overflow-action</code> represents an abstract action, used in the
+ <code>ui5-li-notification</code> and the <code>ui5-li-notification-group</code> items
+
+ * <a href="https://sap.github.io/ui5-webcomponents/playground/components/NotificationOverflowAction" target="_blank">UI5 Web Components Playground</a>
+ */
 const NotificationOverflowAction: FC<NotificationOverflowActionPropTypes> = withWebComponent<
   NotificationOverflowActionPropTypes
 >('ui5-notification-overflow-action', ['design', 'icon', 'text'], ['disabled'], [], []);

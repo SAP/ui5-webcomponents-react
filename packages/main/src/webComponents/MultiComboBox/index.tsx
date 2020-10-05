@@ -9,7 +9,7 @@ export interface MultiComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 
    */
   allowCustomValues?: boolean;
   /**
-   * Defines whether <code>ui5-multi-combobox</code> is in disabled state. <br><br> <b>Note:</b> A disabled <code>ui5-multi-combobox</code> is completely noninteractive.
+   * Defines whether <code>MultiComboBox</code> is in disabled state. <br><br> <b>Note:</b> A disabled <code>MultiComboBox</code> is completely noninteractive.
    */
   disabled?: boolean;
   /**
@@ -17,27 +17,27 @@ export interface MultiComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 
    */
   open?: boolean;
   /**
-   * Defines a short hint intended to aid the user with data entry when the <code>ui5-multi-combobox</code> has no value.
+   * Defines a short hint intended to aid the user with data entry when the <code>MultiComboBox</code> has no value.
    */
   placeholder?: string;
   /**
-   * Defines whether the <code>ui5-multi-combobox</code> is read-only. <br><br> <b>Note:</b> A read-only <code>ui5-multi-combobox</code> is not editable, but still provides visual feedback upon user interaction.
+   * Defines whether the <code>MultiComboBox</code> is read-only. <br><br> <b>Note:</b> A read-only <code>MultiComboBox</code> is not editable, but still provides visual feedback upon user interaction.
    */
   readonly?: boolean;
   /**
-   * Defines whether the <code>ui5-multi-combobox</code> is required.
+   * Defines whether the <code>MultiComboBox</code> is required.
    */
   required?: boolean;
   /**
-   * Defines the value of the <code>ui5-multi-combobox</code>. <br><br> <b>Note:</b> The property is updated upon typing.
+   * Defines the value of the <code>MultiComboBox</code>. <br><br> <b>Note:</b> The property is updated upon typing.
    */
   value?: string;
   /**
-   * Defines the value state of the <code>ui5-multi-combobox</code>. <br><br> Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>
+   * Defines the value state of the <code>MultiComboBox</code>. <br><br> Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>
    */
   valueState?: ValueState;
   /**
-   * Defines the <code>ui5-multi-combobox</code> items. <br><br> Example: <br> &lt;ui5-multi-combobox><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;ui5-li>Item #1&lt;/ui5-li><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;ui5-li>Item #2&lt;/ui5-li><br> &lt;/ui5-multi-combobox> <br> <br>
+   * Defines the <code>MultiComboBox</code> items. <br><br> Example: <br> &lt;MultiComboBox><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;ui5-li>Item #1&lt;/ui5-li><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;ui5-li>Item #2&lt;/ui5-li><br> &lt;/MultiComboBox> <br> <br>
    */
   children?: ReactNode | ReactNode[];
   /**
@@ -55,7 +55,7 @@ export interface MultiComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 
    */
   onChange?: (event: CustomEvent<{}>) => void;
   /**
-   * Fired when the value of the <code>ui5-multi-combobox</code> changes at each keystroke.
+   * Fired when the value of the <code>MultiComboBox</code> changes at each keystroke.
    */
   onInput?: (event: CustomEvent<{}>) => void;
   /**
@@ -69,6 +69,12 @@ export interface MultiComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 
 }
 
 /**
+ * The <code>MultiComboBox</code> component provides a list box with items and a text field allowing the user to either
+ type a value directly into the control, or choose from the list of existing items. It is a drop-down list for selecting
+ and filtering values, commonly used to enable users to select one or more options from a predefined list. The control
+ provides an editable input field to filter the list, and a dropdown arrow of available options. The select options in
+ the list have checkboxes that permit multi-selection. Entered values are displayed as tokens.
+
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/MultiComboBox" target="_blank">UI5 Web Components Playground</a>
  */
 const MultiComboBox: FC<MultiComboBoxPropTypes> = withWebComponent<MultiComboBoxPropTypes>(

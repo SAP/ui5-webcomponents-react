@@ -9,7 +9,7 @@ export interface BusyIndicatorPropTypes extends WithWebComponentPropTypes {
    */
   active?: boolean;
   /**
-   * Defines the size of the <code>ui5-busyindicator</code>. <br><br> <b>Note:</b> Available options are "Small", "Medium", and "Large".
+   * Defines the size of the <code>BusyIndicator</code>. <br><br> <b>Note:</b> Available options are "Small", "Medium", and "Large".
    */
   size?: BusyIndicatorSize;
   /**
@@ -17,12 +17,15 @@ export interface BusyIndicatorPropTypes extends WithWebComponentPropTypes {
    */
   text?: string;
   /**
-   * Determines the content over which the <code>ui5-busyindicator</code> will appear.
+   * Determines the content over which the <code>BusyIndicator</code> will appear.
    */
   children?: ReactNode | ReactNode[];
 }
 
 /**
+ * The <code>BusyIndicator</code> signals that some operation is going on and that the user must wait. It does not block
+ the current UI screen so other operations could be triggered in parallel.
+
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/BusyIndicator" target="_blank">UI5 Web Components Playground</a>
  */
 const BusyIndicator: FC<BusyIndicatorPropTypes> = withWebComponent<BusyIndicatorPropTypes>(
