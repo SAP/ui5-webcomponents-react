@@ -37,11 +37,11 @@ export interface CarouselPropTypes extends WithWebComponentPropTypes {
    */
   selectedIndex?: number;
   /**
-   * Defines the content of the <code>ui5-carousel</code>.
+   * Defines the content of the <code>Carousel</code>.
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Fired for the last items of the <code>ui5-carousel</code> if it is scrolled and the direction of scrolling is to the end. The number of items for which the event is thrown is controlled by the <code>infiniteScrollOffset</code> property.
+   * Fired for the last items of the <code>Carousel</code> if it is scrolled and the direction of scrolling is to the end. The number of items for which the event is thrown is controlled by the <code>infiniteScrollOffset</code> property.
    */
   onLoadMore?: (event: CustomEvent<{}>) => void;
   /**
@@ -51,6 +51,9 @@ export interface CarouselPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
+ * The carousel allows the user to browse through a set of items by swiping right or left. The component is mostly used for
+ showing a gallery of images, but can hold any other HTML element.
+
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Carousel" target="_blank">UI5 Web Components Playground</a>
  */
 const Carousel: FC<CarouselPropTypes> = withWebComponent<CarouselPropTypes>(
