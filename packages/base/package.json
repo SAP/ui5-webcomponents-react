@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react-base",
-  "version": "0.10.1",
+  "version": "0.10.10",
   "description": "Base for ui5-webcomponents-react",
   "main": "index.cjs.js",
   "module": "index.esm.js",
@@ -14,13 +14,12 @@
   "author": "SAP SE (https://www.sap.com)",
   "license": "Apache-2.0",
   "sideEffects": [
-    "**/third-party/*",
     "./polyfill/*",
     "core-js/**/*",
     "intersection-observer"
   ],
   "scripts": {
-    "clean": "rimraf cjs Device hooks lib polyfill styling types utils index.esm.js index.d.ts",
+    "clean": "rimraf cjs Device hooks lib polyfill styling utils index.esm.js index.d.ts",
     "build:rollup": "rollup -c rollup.config.js",
     "build:polyfills": "tsc ./src/polyfill/*.ts --outDir ./polyfill --skipLibCheck",
     "build": "npm-run-all -s build:rollup build:polyfills",

@@ -1,5 +1,5 @@
+import { getCurrentRange } from '@ui5/webcomponents-react-base/lib/Media';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
-import { Device } from '@ui5/webcomponents-react-base/lib/Device';
 import { useConsolidatedRef, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
@@ -115,12 +115,12 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
 
   const formRef = useConsolidatedRef<HTMLDivElement>(ref);
   // use the window range set as first best guess
-  const [currentRange, setCurrentRange] = useState(Device.media.getCurrentRange('StdExt', window.innerWidth).name);
+  const [currentRange, setCurrentRange] = useState(getCurrentRange('StdExt', window.innerWidth).name);
   const lastRange = useRef(currentRange);
 
   useEffect(() => {
     const observer = new ResizeObserver(([form]) => {
-      const newRange = Device.media.getCurrentRange('StdExt', form.contentRect.width).name;
+      const newRange = getCurrentRange('StdExt', form.contentRect.width).name;
       if (lastRange.current !== newRange) {
         lastRange.current = newRange;
         setCurrentRange(newRange);
