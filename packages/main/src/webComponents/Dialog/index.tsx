@@ -6,7 +6,7 @@ export interface DialogPropTypes extends WithWebComponentPropTypes {
   /**
    * Determines whether the <code>ui5-dialog</code> is draggable. If this property is set to true, the Dialog will be draggable by its header. <br><br> <b>Note:</b> The <code>ui5-dialog</code> can be draggable only in desktop mode.
    */
-  draggable?: unknown;
+  draggable?: boolean;
   /**
    * Defines the header text. <br><br> <b>Note:</b> If <code>header</code> slot is provided, the <code>headerText</code> is ignored.
    */
