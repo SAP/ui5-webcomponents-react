@@ -6,7 +6,7 @@ console.warn(
 );
 
 // To only create a single component, add the component (module) name here:
-CREATE_SINGLE_COMPONENT = false;
+const CREATE_SINGLE_COMPONENT = false;
 
 const mainWebComponentsSpec = require('@ui5/webcomponents/dist/api.json');
 const fioriWebComponentsSpec = require('@ui5/webcomponents-fiori/dist/api.json');
