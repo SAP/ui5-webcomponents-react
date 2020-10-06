@@ -19,8 +19,8 @@
     "deploy:storybook": "lerna run build:i18n && storybook-to-ghpages --ci"
   },
   "dependencies": {
-    "@storybook/addon-a11y": "6.0.26",
     "@storybook/addon-actions": "6.0.26",
+    "@storybook/addon-a11y": "6.0.26",
     "@storybook/addon-controls": "6.0.26",
     "@storybook/addon-docs": "6.0.26",
     "@storybook/addon-toolbars": "6.0.26",
