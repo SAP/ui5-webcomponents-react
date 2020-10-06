@@ -1,0 +1,180 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { ResponsivePopover } from '@ui5/webcomponents-react/lib/ResponsivePopover';
+import { Bar } from '@ui5/webcomponents-react/lib/Bar';
+import { Title } from '@ui5/webcomponents-react/lib/Title';
+import { Icon } from '@ui5/webcomponents-react/lib/Icon';
+import { List } from '@ui5/webcomponents-react/lib/List';
+import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
+import { Button } from '@ui5/webcomponents-react/lib/Button';
+import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/lib/PopoverHorizontalAlign';
+import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
+import { PopoverVerticalAlign } from '@ui5/webcomponents-react/lib/PopoverVerticalAlign';
+import { CSSProperties, useRef } from 'react';
+import '@ui5/webcomponents-icons/dist/icons/settings.js';
+
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+
+<Meta
+  title="UI5 Web Components / ResponsivePopover"
+  component={ResponsivePopover}
+  argTypes={{
+    ...createSelectArgTypes({
+      horizontalAlign: PopoverHorizontalAlign,
+      placementType: PlacementType,
+      verticalAlign: PopoverVerticalAlign
+    }),
+    footer: { control: { disable: true } },
+    header: { control: { disable: true } },
+    children: { control: { disable: true } },
+    slot: { control: { disable: true } },
+    ref: { control: { disable: true } },
+    style: {
+      type: CSSProperties,
+      description:
+        'Element style which will be appended to the most outer element of a component. Use this prop carefully, some css properties might break the component.'
+    },
+    className: {
+      type: 'string',
+      description:
+        'CSS Class Name which will be appended to the most outer element of a component. Use this prop carefully, overwriting CSS rules might break the component.'
+    },
+    tooltip: { type: 'string', description: 'A tooltip which will be shown on hover' }
+  }}
+  args={{
+    horizontalAlign: PopoverHorizontalAlign.Center,
+    placementType: PlacementType.Right,
+    verticalAlign: PopoverVerticalAlign.Center,
+    style: {},
+    className: '',
+    tooltip: '',
+    slot: '',
+    ref: null
+  }}
+/>
+
+<DocsHeader />
+
+<br />
+
+### Opening ResponsivePopovers
+
+`ResponsivePopovers` can only be opened by attaching a `ref` to the component and then call the corresponding **`open`** method. The method receives the target element - _on which the `ResponsivePopover` is to be opened_ - as parameter.
+
+```JSX
+  const PopoverComponent = () => {
+    const popoverRef = useRef();
+    const onButtonClick = (e) => {
+        popoverRef.current.open(e.target);
+    };
+    return (
+      <>
+        <Button onClick={onButtonClick}>Open Popover</Button>
+        <ResponsivePopovers ref={popoverRef}>Some Content</ResponsivePopovers>
+      </>
+    );
+  };
+```
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      const popoverRef = useRef(null);
+      const onButtonClick = (e) => {
+        popoverRef.current.open(e.target);
+      };
+      return (
+        <>
+          <Button onClick={onButtonClick}>Open Popover</Button>
+          <ResponsivePopover {...args} ref={popoverRef} />
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="." />
+<div style={{ fontFamily: 'var(--sapFontFamily)', fontSize: 'var(--sapFontSize)', color: 'var(--sapTextColor)' }}>
+  <h3>Usage</h3>
+  Use it when you want to make sure that all the content is visible on any device
+</div>
+
+### Using ResponsivePopovers inside other components
+
+`ResponsivePopovers` are often used within other components, when opened this could sometimes have unwanted side effects.
+In this case, we recommend using [createPortal](https://reactjs.org/docs/portals.html) to mount the `ResponsivePopover` outside of the DOM hierarchy of the parent component.
+In most cases the root node should be sufficient.
+
+```JSX
+const PopoverComponent = () => {
+  const popoverRef = useRef(null);
+  const onButtonClick = (e) => {
+    popoverRef.current.open(e.target);
+  };
+  return (
+    <>
+      <Button onClick={onButtonClick}>Open Popover</Button>
+      {createPortal(<ResponsivePopovers ref={popoverRef} />, document.body)}
+    </>
+  );
+};
+```
+
+### Closing ResponsivePopovers
+
+Closing `ResponsivePopovers` works in the same way as opening them. So again an attached `ref` is needed on which the corresponding `close` method is called.
+
+```JSX
+  const PopoverComponent = () => {
+    const popoverRef = useRef();
+    const handleOpen = (e) => {
+        popoverRef.current.open(e.target);
+    };
+    const handleClose = () => {
+        popoverRef.current.close();
+    };
+    return (
+      <>
+        <Button onClick={handleOpen}>Open Popover</Button>
+        <ResponsivePopovers ref={popoverRef}>
+            <Button onClick={handleClose}>Close Popover</Button>
+        </ResponsivePopovers>
+      </>
+    );
+  };
+```
+
+# Stories
+
+## ResponsivePopover with content
+
+<Canvas>
+  <Story name="w/ content">
+    {(args) => {
+      const popoverRef = useRef(null);
+      const onButtonClick = (e) => {
+        popoverRef.current.open(e.target);
+      };
+      const handleClose = () => {
+        popoverRef.current.close();
+      };
+      return (
+        <>
+          <Button onClick={onButtonClick}>Open Popover</Button>
+          <ResponsivePopover
+            {...args}
+            ref={popoverRef}
+            header={<Bar contentMiddle={<Title>Popover</Title>} contentRight={<Icon name="settings" />} />}
+            footer={<Bar contentRight={<Button onClick={handleClose}>Close</Button>} />}
+          >
+            <List style={{ width: '200px' }}>
+              <StandardListItem info="3">List Item 1</StandardListItem>
+              <StandardListItem info="2">List Item 2</StandardListItem>
+              <StandardListItem info="1">List Item 3</StandardListItem>
+            </List>
+          </ResponsivePopover>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
