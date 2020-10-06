@@ -464,6 +464,10 @@ const createWebComponentDemo = (componentSpec, componentProps, description) => {
     if (prop.importStatement && prop.importStatement !== `import { ReactNode } from 'react';`) {
       enumImports.push(prop.importStatement);
     }
+    if (componentSpec.module === 'Icon' && prop.name === 'name') {
+      enumImports.push(`import "@ui5/webcomponents-icons/dist/icons/employee.js";`);
+      args.push(`name: 'employee'`);
+    }
     if (prop.name === 'primaryCalendarType') {
       enumImports.push(`import "@ui5/webcomponents-localization/dist/features/calendar/Gregorian.js";`);
       enumImports.push(`import "@ui5/webcomponents-localization/dist/features/calendar/Buddhist.js";`);
