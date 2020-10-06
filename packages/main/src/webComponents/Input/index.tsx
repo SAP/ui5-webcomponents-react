@@ -97,8 +97,7 @@ export interface InputPropTypes extends Omit<WithWebComponentPropTypes, 'onChang
  * The <code>Input</code> component allows the user to enter and edit text or numeric values in one line. <br />
  Additionally, you can provide <code>suggestionItems</code>, that are displayed in a popover right under the input.
  <br /><br />
- The text field can be editable or read-only (<code>readonly</code> property), and it can be enabled or disabled (<code >enabled</code
- >
+ The text field can be editable or read-only (<code>readonly</code> property), and it can be enabled or disabled (<code>enabled</code>
  property). To visualize semantic states, such as "error" or "warning", the <code>valueState</code> property is provided.
  When the user makes changes to the text, the change event is fired, which enables you to react on any text change.
  <br /><br />
