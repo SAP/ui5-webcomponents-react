@@ -1,13 +1,14 @@
 import {ArgsTable, Canvas, Meta, Story} from '@storybook/addon-docs/blocks';
-import {RatingIndicator} from '@ui5/webcomponents-react/lib/RatingIndicator';
+import {Icon} from '@ui5/webcomponents-react/lib/Icon';
+import '@ui5/webcomponents-icons/dist/icons/employee.js';
 import {CSSProperties} from 'react';
 
 import {createSelectArgTypes} from '@shared/stories/createSelectArgTypes';
 import {DocsHeader} from '@shared/stories/DocsHeader';
 
 <Meta
-    title="UI5 Web Components / RatingIndicator"
-    component={RatingIndicator}
+    title="UI5 Web Components / Icon"
+    component={Icon}
     argTypes={{
         ...createSelectArgTypes({}),
         slot: {control: {disable: true}},
@@ -25,6 +26,7 @@ import {DocsHeader} from '@shared/stories/DocsHeader';
         tooltip: {type: 'string', description: 'A tooltip which will be shown on hover'}
     }}
     args={{
+        name: 'employee',
         style: {},
         className: '',
         tooltip: '',
@@ -33,18 +35,14 @@ import {DocsHeader} from '@shared/stories/DocsHeader';
     }}
 />
 
-<DocsHeader />
+<DocsHeader/>
 
 <Canvas>
-  <Story name="Default">
-    {(args) => {
-      return <RatingIndicator {...args} />;
-    }}
-  </Story>
+    <Story name="Default">
+        {(args) => {
+            return <Icon {...args} />;
+        }}
+    </Story>
 </Canvas>
 
 <ArgsTable story="."/>
-<div style={{fontFamily: 'var(--sapFontFamily)', fontSize: 'var(--sapFontSize)', color: 'var(--sapTextColor)'}}>
-    <h3>Usage</h3>
-    The reccomended number of icons is between 5 and 7.
-</div>
