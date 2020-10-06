@@ -5,6 +5,9 @@ console.warn(
   'Currently there are two tag-names missing or faulty: "ui5-notification-overflow-action" and "ui5-timeline-item"\n These have to be adjusted manually!\n'
 );
 
+// To only create a single component, add the component (module) name here:
+CREATE_SINGLE_COMPONENT = false;
+
 const mainWebComponentsSpec = require('@ui5/webcomponents/dist/api.json');
 const fioriWebComponentsSpec = require('@ui5/webcomponents-fiori/dist/api.json');
 const dedent = require('dedent');
@@ -732,59 +735,61 @@ resolvedWebComponents.forEach((componentSpec) => {
   };
 
   const [mainDescription, description = ''] = formatDescription();
+  if (CREATE_SINGLE_COMPONENT === componentSpec.module || !CREATE_SINGLE_COMPONENT) {
+    const webComponentWrapper = createWebComponentWrapper(
+      componentSpec.module,
+      componentSpec.tagname,
+      mainDescription,
+      propTypes,
+      uniqueAdditionalImports,
+      defaultProps,
+      (componentSpec.properties || [])
+        .filter(filterNonPublicAttributes)
+        .filter(({ type }) => type !== 'boolean' && type !== 'Boolean')
+        .map(({ name }) => name),
+      (componentSpec.properties || [])
+        .filter(filterNonPublicAttributes)
+        .filter(({ type }) => type === 'boolean' || type === 'Boolean')
+        .map(({ name }) => name),
+      (componentSpec.slots || []).filter(filterNonPublicAttributes).map(({ name }) => name),
+      (componentSpec.events || []).filter(filterNonPublicAttributes).map(({ name }) => name)
+    );
 
-  const webComponentWrapper = createWebComponentWrapper(
-    componentSpec.module,
-    componentSpec.tagname,
-    mainDescription,
-    propTypes,
-    uniqueAdditionalImports,
-    defaultProps,
-    (componentSpec.properties || [])
-      .filter(filterNonPublicAttributes)
-      .filter(({ type }) => type !== 'boolean' && type !== 'Boolean')
-      .map(({ name }) => name),
-    (componentSpec.properties || [])
-      .filter(filterNonPublicAttributes)
-      .filter(({ type }) => type === 'boolean' || type === 'Boolean')
-      .map(({ name }) => name),
-    (componentSpec.slots || []).filter(filterNonPublicAttributes).map(({ name }) => name),
-    (componentSpec.events || []).filter(filterNonPublicAttributes).map(({ name }) => name)
-  );
+    // check if folder exists and create it if necessary
+    const webComponentFolderPath = path.join(WEB_COMPONENTS_ROOT_DIR, componentSpec.module);
+    if (!fs.existsSync(webComponentFolderPath)) {
+      fs.mkdirSync(webComponentFolderPath);
+    }
 
-  // check if folder exists and create it if necessary
-  const webComponentFolderPath = path.join(WEB_COMPONENTS_ROOT_DIR, componentSpec.module);
-  if (!fs.existsSync(webComponentFolderPath)) {
-    fs.mkdirSync(webComponentFolderPath);
-  }
+    fs.writeFileSync(path.join(webComponentFolderPath, 'index.tsx'), webComponentWrapper);
 
-  fs.writeFileSync(path.join(webComponentFolderPath, 'index.tsx'), webComponentWrapper);
-
-  // create lib export
-  const libContent = prettier.format(
-    `
+    // create lib export
+    const libContent = prettier.format(
+      `
     import { ${componentSpec.module} } from '../webComponents/${componentSpec.module}';
     import type { ${componentSpec.module}PropTypes } from '../webComponents/${componentSpec.module}';
 
     export { ${componentSpec.module} };
     export type { ${componentSpec.module}PropTypes };`,
-    prettierConfig
-  );
-  fs.writeFileSync(path.join(LIB_DIR, `${componentSpec.module}.ts`), libContent);
+      prettierConfig
+    );
+    fs.writeFileSync(path.join(LIB_DIR, `${componentSpec.module}.ts`), libContent);
 
-  // create test
-  if (!fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.test.tsx`))) {
-    const webComponentTest = createWebComponentTest(componentSpec.module);
-    fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.test.tsx`), webComponentTest);
-  }
+    // create test
+    if (!fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.test.tsx`))) {
+      const webComponentTest = createWebComponentTest(componentSpec.module);
+      fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.test.tsx`), webComponentTest);
+    }
 
-  // create demo
-  if (
-    !fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.tsx`)) &&
-    !fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`)) &&
-    !COMPONENTS_WITHOUT_DEMOS.has(componentSpec.module)
-  ) {
-    const webComponentDemo = createWebComponentDemo(componentSpec, allComponentProperties, description);
-    fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`), webComponentDemo);
+    // create demo
+    if (
+      CREATE_SINGLE_COMPONENT === componentSpec.module ||
+      (!fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.tsx`)) &&
+        !fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`)) &&
+        !COMPONENTS_WITHOUT_DEMOS.has(componentSpec.module))
+    ) {
+      const webComponentDemo = createWebComponentDemo(componentSpec, allComponentProperties, description);
+      fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`), webComponentDemo);
+    }
   }
 });
