@@ -1,0 +1,63 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { Badge } from '@ui5/webcomponents-react/lib/Badge';
+import '@ui5/webcomponents-icons/dist/icons/employee.js';
+import { Icon } from '@ui5/webcomponents-react/lib/Icon';
+import { CSSProperties, Ref } from 'react';
+
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+
+<Meta
+  title="UI5 Web Components / Badge"
+  component={Badge}
+  argTypes={{
+    ...createSelectArgTypes({}),
+    children: { control: 'text' },
+    icon: { control: { disable: true } },
+    slot: { control: { disable: true } },
+    ref: { control: { disable: true } },
+    style: {
+      type: CSSProperties,
+      description:
+        'Element style which will be appended to the most outer element of a component. Use this prop carefully, some css properties might break the component.'
+    },
+    className: {
+      type: 'string',
+      description:
+        'CSS Class Name which will be appended to the most outer element of a component. Use this prop carefully, overwriting CSS rules might break the component.'
+    },
+    tooltip: { type: 'string', description: 'A tooltip which will be shown on hover' }
+  }}
+  args={{
+    children: 'Badge Text',
+    icon: <Icon name="employee" />,
+    style: {},
+    className: '',
+    tooltip: '',
+    slot: '',
+    ref: null
+  }}
+/>
+
+<DocsHeader />
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return <Badge {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="." />
+<div style={{fontFamily:'var(--sapFontFamily)', fontSize:'var(--sapFontSize)', color:'var(--sapTextColor)'}}>
+<h3>Usage Guidelines</h3>
+<ul>
+  <li>If the text is longer than the width of the component, it doesn’t wrap, it shows ellipsis.</li>
+  <li>
+    When truncated, the full text is not visible, therefore, it’s recommended to make more space for longer texts to be
+    fully displayed.
+  </li>
+  <li>Colors are not semantic and have no visual representation in High Contrast Black (sap_belize_hcb) theme.</li>
+</ul>
+</div>

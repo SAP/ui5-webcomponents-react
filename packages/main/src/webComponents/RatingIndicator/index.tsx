@@ -18,7 +18,7 @@ export interface RatingIndicatorPropTypes extends Omit<WithWebComponentPropTypes
    */
   readonly?: boolean;
   /**
-   * The indicated value of the rating <br><br> <b>Note:</b> If you set a number which is not round, it would be shown as follows: <ul> <li>1.0 - 1.2 -> 1</li> <li>1.3 - 1.7 -> 1.5</li> <li>1.8 - 1.9 -> 2</li> <ul>
+   * The indicated value of the rating <br><br> <b>Note:</b> If you set a number which is not round, it would be shown as follows: <ul><li>1.0 - 1.2 -> 1</li><li>1.3 - 1.7 -> 1.5</li><li>1.8 - 1.9 -> 2</li></ul>
    */
   value?: number;
   /**
