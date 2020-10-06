@@ -1,0 +1,187 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Popover } from '@ui5/webcomponents-react/lib/Popover';
+import { Button } from '@ui5/webcomponents-react/lib/Button';
+import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/lib/PopoverHorizontalAlign';
+import { Title } from '@ui5/webcomponents-react/lib/Title';
+import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
+import { PopoverVerticalAlign } from '@ui5/webcomponents-react/lib/PopoverVerticalAlign';
+import { Icon } from '@ui5/webcomponents-react/lib/Icon';
+import { Bar } from '@ui5/webcomponents-react/lib/Bar';
+import { List } from '@ui5/webcomponents-react/lib/List';
+import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
+import { CSSProperties, useRef } from 'react';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+import '@ui5/webcomponents-icons/dist/icons/settings.js';
+
+<Meta
+  title="UI5 Web Components / Popover"
+  component={Popover}
+  argTypes={{
+    ...createSelectArgTypes({
+      horizontalAlign: PopoverHorizontalAlign,
+      placementType: PlacementType,
+      verticalAlign: PopoverVerticalAlign
+    }),
+    footer: { control: { disable: true } },
+    header: { control: { disable: true } },
+    children: { control: { disable: true } },
+    slot: { control: { disable: true } },
+    ref: { control: { disable: true } },
+    style: {
+      type: CSSProperties,
+      description:
+        'Element style which will be appended to the most outer element of a component. Use this prop carefully, some css properties might break the component.'
+    },
+    className: {
+      type: 'string',
+      description:
+        'CSS Class Name which will be appended to the most outer element of a component. Use this prop carefully, overwriting CSS rules might break the component.'
+    },
+    tooltip: { type: 'string', description: 'A tooltip which will be shown on hover' }
+  }}
+  args={{
+    horizontalAlign: PopoverHorizontalAlign.Center,
+    placementType: PlacementType.Right,
+    verticalAlign: PopoverVerticalAlign.Center,
+    style: {},
+    className: '',
+    tooltip: '',
+    slot: '',
+    ref: null
+  }}
+/>
+
+<DocsHeader />
+
+<br />
+
+### Opening Popovers
+
+`Popovers` can only be opened by attaching a `ref` to the component and then call the corresponding **`openBy`** method. The method receives the target element - _on which the `Popover` is to be opened_ - as parameter.
+
+```JSX
+  const PopoverComponent = () => {
+    const popoverRef = useRef();
+    const onButtonClick = (e) => {
+        popoverRef.current.openBy(e.target);
+    };
+    return (
+      <>
+        <Button onClick={onButtonClick}>Open Popover</Button>
+        <Popover ref={popoverRef}>Some Content</Popover>
+      </>
+    );
+  };
+```
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      const popoverRef = useRef(null);
+      const onButtonClick = (e) => {
+        popoverRef.current.openBy(e.target);
+      };
+      return (
+        <>
+          <Button onClick={onButtonClick}>Open Popover</Button>
+          <Popover {...args} ref={popoverRef} />
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Default" />
+
+<div style={{ fontFamily: 'var(--sapFontFamily)', fontSize: 'var(--sapFontSize)', color: 'var(--sapTextColor)' }}>
+  <h3>Structure</h3>
+  The popover has three main areas:
+  <ul>
+    <li>Header (optional)</li>
+    <li>Content</li>
+    <li>Footer (optional)</li>
+  </ul>
+  <b>Note:</b> The <code>Popover</code> is closed when the user clicks or taps outside the popover or selects an action within
+  the popover. You can prevent this with the <code>modal</code> property.
+</div>
+
+### Using Popovers inside other components
+
+`Popovers` are often used within other components, when opened this could sometimes have unwanted side effects.
+In this case, we recommend using [createPortal](https://reactjs.org/docs/portals.html) to mount the `Popover` outside of the DOM hierarchy of the parent component.
+In most cases the root node should be sufficient.
+
+```JSX
+const PopoverComponent = () => {
+  const popoverRef = useRef(null);
+  const onButtonClick = (e) => {
+    popoverRef.current.openBy(e.target);
+  };
+  return (
+    <>
+      <Button onClick={onButtonClick}>Open Popover</Button>
+      {createPortal(<Popover ref={popoverRef} />, document.body)}
+    </>
+  );
+};
+```
+
+### Closing Popovers
+
+Closing `Popovers` works in the same way as opening them. So again an attached `ref` is needed on which the corresponding `close` method is called.
+
+```JSX
+  const PopoverComponent = () => {
+    const popoverRef = useRef();
+    const handleOpen = (e) => {
+        popoverRef.current.openBy(e.target);
+    };
+    const handleClose = () => {
+        popoverRef.current.close();
+    };
+    return (
+      <>
+        <Button onClick={handleOpen}>Open Popover</Button>
+        <Popover ref={popoverRef}>
+            <Button onClick={handleClose}>Close Popover</Button>
+        </Popover>
+      </>
+    );
+  };
+```
+
+# Stories
+
+## Popover with content
+
+<Canvas>
+  <Story name="w/ content">
+    {(args) => {
+      const popoverRef = useRef(null);
+      const onButtonClick = (e) => {
+        popoverRef.current.openBy(e.target);
+      };
+      const handleClose = () => {
+        popoverRef.current.close();
+      };
+      return (
+        <>
+          <Button onClick={onButtonClick}>Open Popover</Button>
+          <Popover
+            {...args}
+            ref={popoverRef}
+            header={<Bar contentMiddle={<Title>Popover</Title>} contentRight={<Icon name="settings" />} />}
+            footer={<Bar contentRight={<Button onClick={handleClose}>Close</Button>} />}
+          >
+            <List style={{ width: '200px' }}>
+              <StandardListItem info="3">List Item 1</StandardListItem>
+              <StandardListItem info="2">List Item 2</StandardListItem>
+              <StandardListItem info="1">List Item 3</StandardListItem>
+            </List>
+          </Popover>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
