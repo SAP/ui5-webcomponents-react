@@ -1,6 +1,10 @@
 import { render, fireEvent, screen } from '@shared/tests';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { Dialog } from '@ui5/webcomponents-react/lib/Dialog';
+import {
+  setCustomElementsScopingSuffix,
+  setCustomElementsScopingRules
+} from '@ui5/webcomponents-base/dist/CustomElementsScope';
 import React from 'react';
 
 describe('withWebComponent', () => {
@@ -66,5 +70,16 @@ describe('withWebComponent', () => {
 
     rerender(<Button>Click Me</Button>);
     expect(screen.getByText('Click Me')).not.toHaveAttribute('disabled');
+  });
+
+  test('scoping', () => {
+    setCustomElementsScopingSuffix('ui5-wcr');
+    const { asFragment, rerender } = render(<Button>Scoping Test</Button>);
+    expect(asFragment()).toMatchSnapshot();
+
+    // now exclude the button
+    setCustomElementsScopingRules({ include: [/^ui5-/], exclude: [/^ui5-button/] });
+    rerender(<Button>Scoping Test</Button>);
+    expect(asFragment()).toMatchSnapshot();
   });
 });
