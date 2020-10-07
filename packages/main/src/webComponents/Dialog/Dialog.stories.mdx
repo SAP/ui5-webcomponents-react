@@ -6,12 +6,7 @@ import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { List } from '@ui5/webcomponents-react/lib/List';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
-import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
-import { Text } from '@ui5/webcomponents-react/lib/Text';
-import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
-import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
 import { CSSProperties, useRef } from 'react';
-
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 
@@ -20,7 +15,6 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   component={Dialog}
   argTypes={{
     ...createSelectArgTypes({}),
-    children: { control: { disable: true } },
     footer: { control: { disable: true } },
     header: { control: { disable: true } },
     slot: { control: { disable: true } },
@@ -38,6 +32,8 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
     tooltip: { type: 'string', description: 'A tooltip which will be shown on hover' }
   }}
   args={{
+    children: 'Press "Escape" to close the Dialog.',
+    headerText: 'Dialog Header',
     style: {},
     className: '',
     tooltip: '',
@@ -82,17 +78,7 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
       return (
         <>
           <Button onClick={onButtonClick}>Open Dialog</Button>
-          <Dialog {...args} ref={dialogRef}>
-            <FlexBox direction={FlexBoxDirection.Column}>
-              <Text>Press "Escape" to close this Dialog.</Text>
-              <br />
-              <br />
-              <FlexBox alignItems={FlexBoxAlignItems.Center}>
-                <Text>Or click here:</Text>
-                <Button onClick={handleClose}>Close</Button>
-              </FlexBox>
-            </FlexBox>
-          </Dialog>
+          <Dialog {...args} ref={dialogRef} footer={<Button onClick={handleClose}>Close</Button>} />
         </>
       );
     }}
@@ -154,7 +140,7 @@ Closing `Dialogs` works in the same way as opening them. So again an attached `r
 ## Dialog with content
 
 <Canvas>
-  <Story name="w/ content">
+  <Story name="with content">
     {(args) => {
       const dialogRef = useRef(null);
       const onButtonClick = () => {

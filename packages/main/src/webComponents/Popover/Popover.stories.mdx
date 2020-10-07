@@ -11,6 +11,8 @@ import { List } from '@ui5/webcomponents-react/lib/List';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
 import { CSSProperties, useRef } from 'react';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { BarChart } from '@ui5/webcomponents-react-charts/lib/BarChart';
+import { MicroBarChart } from '@ui5/webcomponents-react-charts/lib/MicroBarChart';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import '@ui5/webcomponents-icons/dist/icons/settings.js';
 
@@ -25,7 +27,6 @@ import '@ui5/webcomponents-icons/dist/icons/settings.js';
     }),
     footer: { control: { disable: true } },
     header: { control: { disable: true } },
-    children: { control: { disable: true } },
     slot: { control: { disable: true } },
     ref: { control: { disable: true } },
     style: {
@@ -41,6 +42,8 @@ import '@ui5/webcomponents-icons/dist/icons/settings.js';
     tooltip: { type: 'string', description: 'A tooltip which will be shown on hover' }
   }}
   args={{
+    children: 'Press "Escape" or click outside to close the Popover.',
+    headerText: 'Popover Header',
     horizontalAlign: PopoverHorizontalAlign.Center,
     placementType: PlacementType.Right,
     verticalAlign: PopoverVerticalAlign.Center,
@@ -155,7 +158,7 @@ Closing `Popovers` works in the same way as opening them. So again an attached `
 ## Popover with content
 
 <Canvas>
-  <Story name="w/ content">
+  <Story name="with content">
     {(args) => {
       const popoverRef = useRef(null);
       const onButtonClick = (e) => {
@@ -178,6 +181,118 @@ Closing `Popovers` works in the same way as opening them. So again an attached `
               <StandardListItem info="2">List Item 2</StandardListItem>
               <StandardListItem info="1">List Item 3</StandardListItem>
             </List>
+          </Popover>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Popover: open on hover
+
+Hover over the `MicroBarChart` to see a more detailed view.
+
+<Canvas>
+  <Story name="open on hover">
+    {(args) => {
+      const popoverRef = useRef(null);
+      const handleOpen = (e) => {
+        popoverRef.current.openBy(e.target);
+      };
+      const handleClose = () => {
+        popoverRef.current.close();
+      };
+      return (
+        <>
+          <div onMouseEnter={handleOpen} onMouseLeave={handleClose} style={{ width: '120px' }}>
+            <MicroBarChart
+              style={{ height: '70px' }}
+              dimension={{
+                accessor: 'name'
+              }}
+              measure={{
+                accessor: 'data'
+              }}
+              dataset={[
+                {
+                  name: 'January',
+                  data: 100
+                },
+                {
+                  name: 'February',
+                  data: 300
+                },
+                {
+                  name: 'March',
+                  data: 530
+                }
+              ]}
+            />
+          </div>
+          <Popover {...args} ref={popoverRef} headerText="Detailed Chart View">
+            <BarChart
+              style={{ height: '400px', width: '300px' }}
+              dimensions={[
+                {
+                  accessor: 'name'
+                }
+              ]}
+              measures={[
+                {
+                  accessor: 'data'
+                }
+              ]}
+              dataset={[
+                {
+                  name: 'January',
+                  data: 100
+                },
+                {
+                  name: 'February',
+                  data: 300
+                },
+                {
+                  name: 'March',
+                  data: 530
+                },
+                {
+                  name: 'April',
+                  data: 450
+                },
+                {
+                  name: 'May',
+                  data: 420
+                },
+                {
+                  name: 'June',
+                  data: 455
+                },
+                {
+                  name: 'July',
+                  data: 300
+                },
+                {
+                  name: 'August',
+                  data: 70
+                },
+                {
+                  name: 'September',
+                  data: 220
+                },
+                {
+                  name: 'October',
+                  data: 350
+                },
+                {
+                  name: 'November',
+                  data: 415
+                },
+                {
+                  name: 'December',
+                  data: 350
+                }
+              ]}
+            />
           </Popover>
         </>
       );

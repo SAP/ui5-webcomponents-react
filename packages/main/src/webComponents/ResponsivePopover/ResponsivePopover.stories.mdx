@@ -26,7 +26,6 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
     }),
     footer: { control: { disable: true } },
     header: { control: { disable: true } },
-    children: { control: { disable: true } },
     slot: { control: { disable: true } },
     ref: { control: { disable: true } },
     style: {
@@ -42,6 +41,9 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
     tooltip: { type: 'string', description: 'A tooltip which will be shown on hover' }
   }}
   args={{
+    children:
+      'Press "Esc", click outside or in mobile-mode press the "x" in the corner to close the ResponsivePopover.',
+    headerText: 'ResponsivePopover Header',
     horizontalAlign: PopoverHorizontalAlign.Center,
     placementType: PlacementType.Right,
     verticalAlign: PopoverVerticalAlign.Center,
@@ -148,7 +150,7 @@ Closing `ResponsivePopovers` works in the same way as opening them. So again an 
 ## ResponsivePopover with content
 
 <Canvas>
-  <Story name="w/ content">
+  <Story name="with content">
     {(args) => {
       const popoverRef = useRef(null);
       const onButtonClick = (e) => {
