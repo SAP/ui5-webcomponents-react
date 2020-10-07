@@ -1,4 +1,4 @@
-name: Mark stale issues and pull requests
+name: Mark and close stale issues
 
 on:
   schedule:
@@ -29,10 +29,6 @@ jobs:
           If the issue mentioned is still a concern, please open a new ticket and mention this old one. 
         # The labels to apply when an issue is exempt from being marked stale. Separate multiple labels with commas (eg. "label1,label2")
         exempt-issue-labels: 'good first issue,todo'
-        # The message to post on the pr when tagging it. If none provided, will not mark pull requests stale.
-        stale-pr-message: false
-        # The message to post on the pr when closing it. If none provided, will not comment when closing a pull requests.
-        close-pr-message: false
 
     
 
