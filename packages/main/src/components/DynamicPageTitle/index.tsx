@@ -7,14 +7,14 @@ import {
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
 import { Toolbar } from '@ui5/webcomponents-react/lib/Toolbar';
+import { ToolbarDesign } from '@ui5/webcomponents-react/lib/ToolbarDesign';
+import { ToolbarSeparator } from '@ui5/webcomponents-react/lib/ToolbarSeparator';
 import { ToolbarSpacer } from '@ui5/webcomponents-react/lib/ToolbarSpacer';
 import { ToolbarStyle } from '@ui5/webcomponents-react/lib/ToolbarStyle';
 import React, { FC, forwardRef, ReactElement, ReactNode, ReactNodeArray, Ref, useEffect } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { BreadcrumbsPropTypes } from '../Breadcrumbs';
 import { DynamicPageTitleStyles } from './DynamicPageTitle.jss';
-import { ToolbarDesign } from '@ui5/webcomponents-react/lib/ToolbarDesign';
-import { ToolbarSeparator } from '@ui5/webcomponents-react/lib/ToolbarSeparator';
+import { BreadcrumbsPropTypes } from '../Breadcrumbs';
 
 export interface DynamicPageTitleProps extends CommonProps {
   /**
@@ -55,7 +55,7 @@ export interface DynamicPageTitleProps extends CommonProps {
    * The onToggleHeaderContentVisibility show or hide the header section
    */
   onToggleHeaderContentVisibility?: (e: any) => boolean;
-  headerVisible: boolean;
+  headerVisible?: boolean;
 }
 
 const useStyles = createComponentStyles(DynamicPageTitleStyles, { name: 'DynamicPageTitle' });

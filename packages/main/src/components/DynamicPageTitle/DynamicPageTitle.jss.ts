@@ -1,5 +1,5 @@
-import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { sapUiResponsiveContentPadding, sapUiTinyMarginBeginEnd } from '@ui5/webcomponents-react-base/lib/spacing';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 
 export const DynamicPageTitleStyles = {
   container: {

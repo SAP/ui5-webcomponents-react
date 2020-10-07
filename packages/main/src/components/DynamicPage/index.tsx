@@ -15,9 +15,9 @@ import React, {
   useState,
   useEffect
 } from 'react';
-import { PageBackgroundDesign } from '../..';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { GlobalStyleClasses } from '@ui5/webcomponents-react/lib/GlobalStyleClasses';
+import { PageBackgroundDesign } from '@ui5/webcomponents-react/lib/PageBackgroundDesign';
 
 import { CommonProps } from '../../interfaces/CommonProps';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar/DynamicPageAnchorBar';

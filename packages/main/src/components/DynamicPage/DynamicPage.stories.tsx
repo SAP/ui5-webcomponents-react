@@ -4,16 +4,22 @@ import '@ui5/webcomponents-icons/dist/icons/exit-full-screen';
 import '@ui5/webcomponents-icons/dist/icons/decline';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
+import { Text } from '@ui5/webcomponents-react/lib/Text';
 import React from 'react';
-import { Badge, Form, FormGroup, FormItem, ObjectStatus, Text } from '../..';
-import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
-import { Breadcrumbs } from '../../lib/Breadcrumbs';
-import { Link } from '../../webComponents/Link';
-import { DynamicPageTitle } from '../DynamicPageTitle';
-import { DynamicPage } from './index';
+import { Breadcrumbs } from '@ui5/webcomponents-react/lib/Breadcrumbs';
+import { Link } from '@ui5/webcomponents-react/lib/Link';
+import { DynamicPageTitle } from '@ui5/webcomponents-react/lib/DynamicPageTitle';
+import { DynamicPage } from '@ui5/webcomponents-react/lib/DynamicPage';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
-import { DynamicPageHeader } from '../DynamicPageHeader';
-import { DynamicPageContentArea } from '../DynamicPageContentArea';
+import { DynamicPageHeader } from '@ui5/webcomponents-react/lib/DynamicPageHeader';
+import { DynamicPageContentArea } from '@ui5/webcomponents-react/lib/DynamicPageContentArea';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
+import { Badge } from '@ui5/webcomponents-react/lib/Badge';
+import { Form } from '@ui5/webcomponents-react/lib/Form';
+import { FormGroup } from '@ui5/webcomponents-react/lib/FormGroup';
+import { FormItem } from '@ui5/webcomponents-react/lib/FormItem';
+import { ObjectStatus } from '@ui5/webcomponents-react/lib/ObjectStatus';
 
 export default {
   title: 'Components / DynamicPage',
@@ -36,9 +42,9 @@ export const defaultStory = (props) => {
             <Button icon="action" design={ButtonDesign.Transparent}></Button>
           ]}
           navigationActions={[
-            <Button icon="full-screen" design="Transparent" />,
-            <Button icon="exit-full-screen" design="Transparent" />,
-            <Button icon="decline" design="Transparent" />
+            <Button icon="full-screen" design={ButtonDesign.Transparent} />,
+            <Button icon="exit-full-screen" design={ButtonDesign.Transparent} />,
+            <Button icon="decline" design={ButtonDesign.Transparent} />
           ]}
           breadcrumbs={
             <Breadcrumbs>
@@ -67,7 +73,7 @@ export const defaultStory = (props) => {
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '2vw' }}>
                 <Label>Availability:</Label>
-                <ObjectStatus state={'Success'}>In Stock</ObjectStatus>
+                <ObjectStatus state={ValueState.Success}>In Stock</ObjectStatus>
               </div>
             </>
           }
