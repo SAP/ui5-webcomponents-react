@@ -1,4 +1,5 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
+import { sapUiResponsiveContentPadding } from '@ui5/webcomponents-react-base/lib/spacing';
 
 export const DynamicPageCssVariables = {
   anchorFloat: '--_ui5wcr_ObjectPage_actions_float',
@@ -41,6 +42,7 @@ const styles = {
   },
   // header
   header: {
+    ...sapUiResponsiveContentPadding,
     flexShrink: 0,
     backgroundColor: ThemingParameters.sapObjectHeader_Background,
     position: 'sticky',
@@ -53,10 +55,10 @@ const styles = {
   contentHeader: {
     backgroundColor: ThemingParameters.sapObjectHeader_Background,
     position: 'sticky',
-    paddingBottom: '0.25rem',
+    paddingTop: '0.5rem',
+    paddingBottom: '0.5rem',
     maxHeight: '500px',
-    overflow: 'hidden',
-    paddingLeft: '2rem'
+    overflow: 'hidden'
   },
   anchorBar: {
     position: 'sticky',

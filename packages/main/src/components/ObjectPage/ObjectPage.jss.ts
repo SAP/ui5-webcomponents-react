@@ -68,12 +68,15 @@ const styles = {
     backgroundColor: ThemingParameters.sapObjectHeader_Background,
     position: 'sticky',
     top: 0,
-    zIndex: 2
+    zIndex: 2,
+    paddingTop: '1rem',
+    paddingBottom: '1rem'
   },
   contentHeader: {
     backgroundColor: ThemingParameters.sapObjectHeader_Background,
     position: 'sticky',
-    paddingBottom: '0.25rem',
+    paddingTop: '1rem',
+    paddingBottom: '1rem',
     maxHeight: '500px',
     overflow: 'hidden',
     paddingLeft: '2rem'
