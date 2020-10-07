@@ -13,6 +13,8 @@ import React, { FC, forwardRef, ReactElement, ReactNode, ReactNodeArray, Ref, us
 import { CommonProps } from '../../interfaces/CommonProps';
 import { BreadcrumbsPropTypes } from '../Breadcrumbs';
 import { DynamicPageTitleStyles } from './DynamicPageTitle.jss';
+import { ToolbarDesign } from '@ui5/webcomponents-react/lib/ToolbarDesign';
+import { ToolbarSeparator } from '@ui5/webcomponents-react/lib/ToolbarSeparator';
 
 export interface DynamicPageTitleProps extends CommonProps {
   /**
@@ -106,11 +108,10 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef(
               <Toolbar toolbarStyle={ToolbarStyle.Clear}>{children}</Toolbar>
             </div>
           </FlexBox>
-          <Toolbar className={classes.actions} toolbarStyle={ToolbarStyle.Clear}>
-            {actions}
-          </Toolbar>
-          <Toolbar toolbarStyle={ToolbarStyle.Clear}>
+          <Toolbar design={ToolbarDesign.Auto} toolbarStyle={ToolbarStyle.Clear}>
             <ToolbarSpacer />
+            {actions}
+            <ToolbarSeparator />
             {navigationActions}
           </Toolbar>
         </FlexBox>

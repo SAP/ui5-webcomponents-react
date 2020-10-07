@@ -51,8 +51,9 @@ export const DynamicPageTitleStyles = {
     marginLeft: 'auto'
   },
   navigationActions: {
-    display: 'flex',
-    alignItems: 'center'
+    flexShrink: 1.6,
+    paddingLeft: '0.5rem',
+    marginLeft: 'auto'
   },
   navigationActionsSeparator: {
     background: ThemingParameters.sapBackgroundColor,

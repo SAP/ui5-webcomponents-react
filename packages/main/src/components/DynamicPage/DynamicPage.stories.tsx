@@ -28,15 +28,18 @@ export const defaultStory = (props) => {
     <DynamicPage
       title={
         <DynamicPageTitle
-          actions={
-            <>
-              <Button design={ButtonDesign.Emphasized}>Edit</Button>
-              <Button design={ButtonDesign.Transparent}>Delete</Button>
-              <Button design={ButtonDesign.Transparent}>Copy</Button>
-              <Button design={ButtonDesign.Transparent}>Toggle Footer</Button>
-              <Button icon="action" design={ButtonDesign.Transparent}></Button>
-            </>
-          }
+          actions={[
+            <Button design={ButtonDesign.Emphasized}>Edit</Button>,
+            <Button design={ButtonDesign.Transparent}>Delete</Button>,
+            <Button design={ButtonDesign.Transparent}>Copy</Button>,
+            <Button design={ButtonDesign.Transparent}>Toggle Footer</Button>,
+            <Button icon="action" design={ButtonDesign.Transparent}></Button>
+          ]}
+          navigationActions={[
+            <Button icon="full-screen" design="Transparent" />,
+            <Button icon="exit-full-screen" design="Transparent" />,
+            <Button icon="decline" design="Transparent" />
+          ]}
           breadcrumbs={
             <Breadcrumbs>
               <Link>Home</Link>
@@ -49,13 +52,6 @@ export const defaultStory = (props) => {
           }
           heading={<Title>Header Title</Title>}
           subHeading={<Label>This is a subheading</Label>}
-          navigationActions={
-            <>
-              <Button icon="full-screen" design="Transparent" />
-              <Button icon="exit-full-screen" design="Transparent" />
-              <Button icon="decline" design="Transparent" />
-            </>
-          }
         >
           <Badge>Status: OK</Badge>
         </DynamicPageTitle>
