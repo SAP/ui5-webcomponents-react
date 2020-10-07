@@ -10,5 +10,4 @@ shared
 rollup.config.js
 index.cjs.js
 index.esm.js
-packages/base/third-party/
 packages/cra-template

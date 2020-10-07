@@ -41,6 +41,10 @@ export interface FlexibleColumnLayoutPropTypes extends WithWebComponentPropTypes
 }
 
 /**
+ * The <code>FlexibleColumnLayout</code> implements the master-detail-detail paradigm by displaying up to three pages in
+ separate columns. There are several possible layouts that can be changed either with the component API, or by pressing
+ the arrows, displayed between the columns.
+
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/FlexibleColumnLayout" target="_blank">UI5 Web Components Playground</a>
  */
 const FlexibleColumnLayout: FC<FlexibleColumnLayoutPropTypes> = withWebComponent<FlexibleColumnLayoutPropTypes>(

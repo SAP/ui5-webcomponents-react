@@ -1,0 +1,61 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { Link } from '@ui5/webcomponents-react/lib/Link';
+import { LinkDesign } from '@ui5/webcomponents-react/lib/LinkDesign';
+import { CSSProperties, Ref } from 'react';
+
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+
+<Meta
+  title="UI5 Web Components / Link"
+  component={Link}
+  argTypes={{
+    ...createSelectArgTypes({ design: LinkDesign }),
+    children: { control: 'text' },
+    slot: { control: { disable: true } },
+    ref: { control: { disable: true } },
+    style: {
+      type: CSSProperties,
+      description:
+        'Element style which will be appended to the most outer element of a component. Use this prop carefully, some css properties might break the component.'
+    },
+    className: {
+      type: 'string',
+      description:
+        'CSS Class Name which will be appended to the most outer element of a component. Use this prop carefully, overwriting CSS rules might break the component.'
+    },
+    tooltip: { type: 'string', description: 'A tooltip which will be shown on hover' }
+  }}
+  args={{
+    design: LinkDesign.Default,
+    children: 'Link Text',
+    style: {},
+    className: '',
+    tooltip: '',
+    slot: '',
+    ref: null
+  }}
+/>
+
+<DocsHeader />
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return <Link {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="." />
+<div style={{fontFamily:'var(--sapFontFamily)', fontSize:'var(--sapFontSize)', color:'var(--sapTextColor)'}}>
+<h3>Usage</h3>
+
+You can set the <code>Link</code> to be enabled or disabled. <br /><br />
+To create a visual hierarchy in large lists of links, you can set the less important links as <code>Subtle</code> or the
+more important ones as <code>Emphasized</code>, by using the <code>design</code> property. <br /><br />
+If the <code>href</code> property is set, the link behaves as the basic HTML anchor tag and opens the specified URL in
+the given target frame (<code>target</code> property). To specify where the linked content is opened, you can use the
+
+<code>target</code> property.
+</div>

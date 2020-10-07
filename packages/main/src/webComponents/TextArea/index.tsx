@@ -9,7 +9,7 @@ export interface TextAreaPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
    */
   disabled?: boolean;
   /**
-   * Enables the <code>ui5-textarea</code> to automatically grow and shrink dynamically with its content. <br><br> <b>Note:</b> If set to <code>true</code>, the CSS <code>height</code> property is ignored.
+   * Enables the <code>TextArea</code> to automatically grow and shrink dynamically with its content. <br><br> <b>Note:</b> If set to <code>true</code>, the CSS <code>height</code> property is ignored.
    */
   growing?: boolean;
   /**
@@ -21,11 +21,11 @@ export interface TextAreaPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
    */
   maxlength?: number;
   /**
-   * Determines the name with which the <code>ui5-textarea</code> will be submitted in an HTML form.<br/><br/>
+   * Determines the name with which the <code>TextArea</code> will be submitted in an HTML form.<br/><br/>
    *
    * <b>Important:</b> For the <code>name</code> property to have effect, you must add the following import to your project: <code>import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";</code><br/><br/>
    *
-   * <b>Note:</b> When set, a native <code>input</code> HTML element will be created inside the <code>ui5-textarea</code> so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
+   * <b>Note:</b> When set, a native <code>input</code> HTML element will be created inside the <code>TextArea</code> so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
    */
   name?: string;
   /**
@@ -33,11 +33,11 @@ export interface TextAreaPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
    */
   placeholder?: string;
   /**
-   * Defines whether the <code>ui5-textarea</code> is read-only. <br><br> <b>Note:</b> A read-only <code>ui5-textarea</code> is not editable, but still provides visual feedback upon user interaction.
+   * Defines whether the <code>TextArea</code> is read-only. <br><br> <b>Note:</b> A read-only <code>TextArea</code> is not editable, but still provides visual feedback upon user interaction.
    */
   readonly?: boolean;
   /**
-   * Defines whether the <code>ui5-textarea</code> is required.
+   * Defines whether the <code>TextArea</code> is required.
    */
   required?: boolean;
   /**
@@ -45,7 +45,7 @@ export interface TextAreaPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
    */
   rows?: number;
   /**
-   * Determines whether the characters exceeding the maximum allowed character count are visible in the <code>ui5-textarea</code>. <br><br> If set to <code>false</code>, the user is not allowed to enter more characters than what is set in the <code>maxlength</code> property. If set to <code>true</code> the characters exceeding the <code>maxlength</code> value are selected on paste and the counter below the <code>ui5-textarea</code> displays their number.
+   * Determines whether the characters exceeding the maximum allowed character count are visible in the <code>TextArea</code>. <br><br> If set to <code>false</code>, the user is not allowed to enter more characters than what is set in the <code>maxlength</code> property. If set to <code>true</code> the characters exceeding the <code>maxlength</code> value are selected on paste and the counter below the <code>TextArea</code> displays their number.
    */
   showExceededText?: boolean;
   /**
@@ -53,28 +53,33 @@ export interface TextAreaPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
    */
   value?: string;
   /**
-   * Defines the value state of the <code>ui5-textarea</code>. <br><br> Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul> <br><br> <b>Note:</b> If <code>maxlength</code> property is set, the component turns into "Warning" state once the characters exceeds the limit. In this case, only the "Error" state is considered and can be applied.
+   * Defines the value state of the <code>TextArea</code>. <br><br> Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul> <br><br> <b>Note:</b> If <code>maxlength</code> property is set, the component turns into "Warning" state once the characters exceeds the limit. In this case, only the "Error" state is considered and can be applied.
    */
   valueState?: ValueState;
   /**
-   * Defines the value state message that will be displayed as pop up under the <code>ui5-textarea</code>.<br/><br/>
+   * Defines the value state message that will be displayed as pop up under the <code>TextArea</code>.<br/><br/>
    *
    * <b>Note:</b> If not specified, a default text (in the respective language) will be displayed.<br/><br/>
    *
-   * <b>Note:</b> The <code>valueStateMessage</code> would be displayed if the <code>ui5-textarea</code> has <code>valueState</code> of type <code>Information</code>, <code>Warning</code> or <code>Error</code>.
+   * <b>Note:</b> The <code>valueStateMessage</code> would be displayed if the <code>TextArea</code> has <code>valueState</code> of type <code>Information</code>, <code>Warning</code> or <code>Error</code>.
    */
   valueStateMessage?: ReactNode | ReactNode[];
   /**
-   * Fired when the text has changed and the focus leaves the <code>ui5-textarea</code>.
+   * Fired when the text has changed and the focus leaves the <code>TextArea</code>.
    */
   onChange?: (event: CustomEvent<{}>) => void;
   /**
-   * Fired when the value of the <code>ui5-textarea</code> changes at each keystroke or when something is pasted.
+   * Fired when the value of the <code>TextArea</code> changes at each keystroke or when something is pasted.
    */
   onInput?: (event: CustomEvent<{}>) => void;
 }
 
 /**
+ * The <code>TextArea</code> component provides large spaces for text entries in the form of multiple rows. It has the
+ functionality of the <code>TextField</code> with the additional functionality for multiline texts. <br /><br />
+ When empty, it can hold a placeholder similar to a <code>Input</code>. You can define the rows of the
+ <code>TextArea</code> and also determine specific behavior when handling long texts.
+
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/TextArea" target="_blank">UI5 Web Components Playground</a>
  */
 const TextArea: FC<TextAreaPropTypes> = withWebComponent<TextAreaPropTypes>(

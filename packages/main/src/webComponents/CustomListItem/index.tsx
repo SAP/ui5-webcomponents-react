@@ -13,7 +13,7 @@ export interface CustomListItemPropTypes extends WithWebComponentPropTypes {
    */
   selected?: boolean;
   /**
-   * Defines the content of the <code>ui5-li-custom</code>.
+   * Defines the content of the <code>CustomListItem</code>.
    */
   children?: ReactNode | ReactNode[];
   /**
@@ -23,6 +23,10 @@ export interface CustomListItemPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
+ * A component to be used as custom list item within the <code>List</code> the same way as the standard
+ <code>StandardListItem</code>. The <code>CustomListItem</code> accepts arbitrary HTML content to allow full
+ customization
+
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/CustomListItem" target="_blank">UI5 Web Components Playground</a>
  */
 const CustomListItem: FC<CustomListItemPropTypes> = withWebComponent<CustomListItemPropTypes>(
