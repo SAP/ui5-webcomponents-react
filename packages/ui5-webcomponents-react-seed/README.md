@@ -31,6 +31,7 @@
 - open the terminal;
 - `npx create-react-app PROJECT_NAME --template ui5-webcomponents-react-seed`;
 - cd into `PROJECT_NAME`;
+- run `node post_create.js` to add **Husky** and move some dependencies to devDependencies (both are limitations of `create-react-app`)
 - (no need to run `yarn install` since it already installs it for you);
 - run the available scripts.
 

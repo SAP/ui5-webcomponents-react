@@ -70,13 +70,6 @@
       "transformIgnorePatterns": [
         "node_modules/(?!(@ui5|lit-html)).*\\.js$"
       ]
-    },
-    "husky": {
-      "hooks": {
-        "pre-push": "npm run push:pre",
-        "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-        "prepare-commit-msg": "exec < /dev/tty && true"
-      }
     }
   }
 }
