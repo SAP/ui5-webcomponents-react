@@ -50,16 +50,15 @@ import { useStyling } from './hooks/useStyling';
 import { useTableScrollHandles } from './hooks/useTableScrollHandles';
 import { useToggleRowExpand } from './hooks/useToggleRowExpand';
 import { useVisibleColumnsWidth } from './hooks/useVisibleColumnsWidth';
-import { HorizontalScrollbar } from './scrollbars/HorizontalScrollbar';
 import { VerticalScrollbar } from './scrollbars/VerticalScrollbar';
 import { VirtualTableBody } from './TableBody/VirtualTableBody';
 import { VirtualTableBodyContainer } from './TableBody/VirtualTableBodyContainer';
 import { stateReducer } from './tableReducer/stateReducer';
 import { TitleBar } from './TitleBar';
 import { orderByFn } from './util';
+import { GlobalStyleClasses } from '@ui5/webcomponents-react/lib/GlobalStyleClasses';
 
 interface DivWithCustomScrollProp extends HTMLDivElement {
-  isExternalHorizontalScroll?: boolean;
   isExternalVerticalScroll?: boolean;
 }
 
@@ -398,18 +397,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
 
   const parentRef: RefObject<DivWithCustomScrollProp> = useRef(null);
 
-  const scrollBarRef: RefObject<DivWithCustomScrollProp> = useRef(null);
   const verticalScrollBarRef: RefObject<DivWithCustomScrollProp> = useRef(null);
-
-  const handleTableScroll = () => {
-    if (scrollBarRef.current && scrollBarRef.current.scrollLeft !== tableRef.current.scrollLeft) {
-      if (!tableRef.current.isExternalHorizontalScroll) {
-        scrollBarRef.current.scrollLeft = tableRef.current.scrollLeft;
-        scrollBarRef.current.isExternalHorizontalScroll = true;
-      }
-      tableRef.current.isExternalHorizontalScroll = false;
-    }
-  };
 
   const handleBodyScroll = () => {
     if (verticalScrollBarRef.current && verticalScrollBarRef.current.scrollTop !== parentRef.current.scrollTop) {
@@ -419,14 +407,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       }
       parentRef.current.isExternalVerticalScroll = false;
     }
-  };
-
-  const handleHorizontalScrollBarScroll = (e) => {
-    if (!scrollBarRef.current.isExternalHorizontalScroll) {
-      tableRef.current.scrollLeft = scrollBarRef.current.scrollLeft;
-      tableRef.current.isExternalHorizontalScroll = true;
-    }
-    scrollBarRef.current.isExternalHorizontalScroll = false;
   };
 
   const handleVerticalScrollBarScroll = () => {
@@ -445,12 +425,11 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
         <div
           {...getTableProps()}
           role="grid"
-          onScroll={handleTableScroll}
           aria-rowcount={rows.length}
           aria-colcount={tableInternalColumns.length}
           data-per-page={visibleRows}
-          ref={tableRef as any}
-          className={StyleClassHelper.of(classes.table).className}
+          ref={tableRef}
+          className={StyleClassHelper.of(classes.table, GlobalStyleClasses.sapScrollBar).className}
         >
           {headerGroups.map((headerGroup) => {
             let headerProps = {};
@@ -528,24 +507,17 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
             </VirtualTableBodyContainer>
           )}
         </div>
-        {tableState.isScrollable && (
+        {(tableState.isScrollable === undefined || tableState.isScrollable) && (
           <VerticalScrollbar
             internalRowHeight={internalRowHeight}
             tableRef={tableRef}
             minRows={minRows}
             rows={rows}
             handleVerticalScrollBarScroll={handleVerticalScrollBarScroll}
-            verticalScrollBarRef={verticalScrollBarRef}
+            ref={verticalScrollBarRef}
           />
         )}
       </FlexBox>
-      {tableRef?.current?.clientWidth !== tableRef?.current?.scrollWidth && (
-        <HorizontalScrollbar
-          scrollBarRef={scrollBarRef}
-          handleHorizontalScrollBarScroll={handleHorizontalScrollBarScroll}
-          totalColumnsWidth={totalColumnsWidth}
-        />
-      )}
     </div>
   );
 });

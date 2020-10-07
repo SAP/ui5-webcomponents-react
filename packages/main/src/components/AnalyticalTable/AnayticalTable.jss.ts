@@ -12,12 +12,7 @@ const styles = {
     minHeight: '3rem',
     fontFamily: ThemingParameters.sapFontFamily,
     fontSize: ThemingParameters.sapFontSize,
-    fontWeight: 'normal',
-    scrollBarWidth: 'none !important',
-    '&::-webkit-scrollbar': {
-      width: 0,
-      height: 0
-    }
+    fontWeight: 'normal'
   },
   tableHeaderRow: {
     height: CssSizeVariables.sapWcrAnalyticalTableRowHeight,
