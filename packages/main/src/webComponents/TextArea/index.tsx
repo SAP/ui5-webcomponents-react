@@ -67,11 +67,11 @@ export interface TextAreaPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
   /**
    * Fired when the text has changed and the focus leaves the <code>TextArea</code>.
    */
-  onChange?: (event: CustomEvent<{}>) => void;
+  onChange?: (event: CustomEvent) => void;
   /**
    * Fired when the value of the <code>TextArea</code> changes at each keystroke or when something is pasted.
    */
-  onInput?: (event: CustomEvent<{}>) => void;
+  onInput?: (event: CustomEvent) => void;
 }
 
 /**

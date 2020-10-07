@@ -29,7 +29,7 @@ export interface MessageStripPropTypes extends WithWebComponentPropTypes {
   /**
    * Fired when the close button is pressed either with a click/tap or by using the Enter or Space key.
    */
-  onClose?: (event: CustomEvent<{}>) => void;
+  onClose?: (event: CustomEvent) => void;
 }
 
 /**
