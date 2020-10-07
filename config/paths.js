@@ -1,4 +1,9 @@
 import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const root = path.resolve(__dirname, '..');
 const PATHS = {
@@ -10,7 +15,7 @@ const PATHS = {
   coverage: path.join(root, 'coverage'),
   nycOutput: path.join(root, '.nyc_output'),
   nodeModules: path.join(root, 'node_modules'),
-  packages: path.join(root, 'packages')
+  packages: path.join(root, 'packages'),
 };
 
 export default PATHS;

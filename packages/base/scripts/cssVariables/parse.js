@@ -1,6 +1,6 @@
 import { writeFileSync } from 'fs';
 import { root } from '@sap-theming/theming-base-content/content/Base/baseLib/sap_fiori_3/variables.json';
-import PATHS from '../../../../config/paths';
+import PATHS from '../../../../config/paths.js';
 import path from 'path';
 import prettier from 'prettier';
 import prettierConfig from '../../../../prettier.config.cjs';

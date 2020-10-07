@@ -1,6 +1,6 @@
 'use strict';
 
-import { ncp } from 'ncp';
+import ncp from 'ncp';
 import path from 'path';
 import mkdirp from 'mkdirp';
 import rimraf from 'rimraf';
@@ -78,7 +78,9 @@ export function highlightLog(projectName) {
   let whitespacesPerSide = (width - 6 - projectName.length) / 2;
   whitespacesPerSide = Math.max(whitespacesPerSide, 1);
   console.log(
-    `###${' '.repeat(Math.ceil(whitespacesPerSide))}${projectName}${' '.repeat(Math.floor(whitespacesPerSide))}###`
+    `###${' '.repeat(Math.ceil(whitespacesPerSide))}${projectName}${' '.repeat(
+      Math.floor(whitespacesPerSide)
+    )}###`
   );
   console.log('#'.repeat(width));
   console.log('');

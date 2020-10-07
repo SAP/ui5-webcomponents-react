@@ -20,7 +20,7 @@
   ],
   "scripts": {
     "clean": "rimraf cjs Device hooks lib polyfill styling utils index.esm.js index.d.ts",
-    "build:rollup": "rollup -c rollup.config.js",
+    "build:rollup": "rollup -c rollup.config.mjs",
     "build:polyfills": "tsc ./src/polyfill/*.ts --outDir ./polyfill --skipLibCheck",
     "build": "npm-run-all -s build:rollup build:polyfills",
     "build:types": "tsc --declaration --emitDeclarationOnly --declarationDir . --removeComments false"

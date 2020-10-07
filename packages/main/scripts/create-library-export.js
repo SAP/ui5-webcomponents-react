@@ -1,6 +1,6 @@
 import path from 'path';
 import fs from 'fs';
-import PATHS from '../../../config/paths';
+import PATHS from '../../../config/paths.js';
 
 const LIB_BASE_PATH = path.resolve(PATHS.packages, 'main', 'src', 'lib');
 const INTERNAL_COMPONENTS = ['ScrollContext'];
@@ -33,4 +33,7 @@ fileContent += `
 };
 `;
 
-fs.writeFileSync(path.join(PATHS.packages, 'main', 'src', 'index.ts'), fileContent);
+fs.writeFileSync(
+  path.join(PATHS.packages, 'main', 'src', 'index.ts'),
+  fileContent
+);
