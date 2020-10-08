@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CheckBox Basic Test (generated) 1`] = `
+exports[`MultiInput Basic Test (generated) 1`] = `
 <DocumentFragment>
-  <ui5-checkbox
-    ui5-checkbox=""
+  <ui5-multi-input
+    type="Text"
     value-state="None"
   />
 </DocumentFragment>

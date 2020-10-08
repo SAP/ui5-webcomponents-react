@@ -2,6 +2,8 @@
 
 exports[`SideNavigationSubItem Basic Test (generated) 1`] = `
 <DocumentFragment>
-  <ui5-side-navigation-sub-item />
+  <ui5-side-navigation-sub-item
+    ui5-side-navigation-sub-item=""
+  />
 </DocumentFragment>
 `;

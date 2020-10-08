@@ -34,6 +34,10 @@ export interface TabContainerPropTypes extends WithWebComponentPropTypes {
    */
   children?: ReactNode | ReactNode[];
   /**
+   * Defines the button which will open the overflow menu. If nothing is provided to this slot, the default button will be used.
+   */
+  overflowButton?: ReactNode | ReactNode[];
+  /**
    * Fired when a tab is selected.
    */
   onTabSelect?: (event: CustomEvent<{ tab: ReactNode; tabIndex: number }>) => void;
@@ -50,7 +54,7 @@ const TabContainer: FC<TabContainerPropTypes> = withWebComponent<TabContainerPro
   'ui5-tabcontainer',
   ['tabLayout', 'tabsPlacement'],
   ['collapsed', 'fixed', 'showOverflow'],
-  [],
+  ['overflowButton'],
   ['tab-select']
 );
 

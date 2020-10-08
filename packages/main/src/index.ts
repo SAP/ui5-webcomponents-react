@@ -75,6 +75,7 @@ import { MessageStrip } from './lib/MessageStrip';
 import { MessageStripType } from './lib/MessageStripType';
 import { MultiComboBox } from './lib/MultiComboBox';
 import { MultiComboBoxItem } from './lib/MultiComboBoxItem';
+import { MultiInput } from './lib/MultiInput';
 import { NotificationListGroupItem } from './lib/NotificationListGroupItem';
 import { NotificationListItem } from './lib/NotificationListItem';
 import { NotificationOverflowAction } from './lib/NotificationOverflowAction';
@@ -230,6 +231,7 @@ export {
   MessageStripType,
   MultiComboBox,
   MultiComboBoxItem,
+  MultiInput,
   NotificationListGroupItem,
   NotificationListItem,
   NotificationOverflowAction,
