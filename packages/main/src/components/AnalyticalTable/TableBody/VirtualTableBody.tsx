@@ -179,6 +179,9 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
           >
             {columnVirtualizer.virtualItems.map((virtualColumn) => {
               const cell = row.cells[virtualColumn.index];
+              if (!cell) {
+                return null;
+              }
               const cellProps = cell.getCellProps();
               if (row.original?.emptyRow) {
                 return <div {...cellProps} />;
