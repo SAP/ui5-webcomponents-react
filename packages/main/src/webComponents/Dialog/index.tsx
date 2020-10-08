@@ -66,8 +66,8 @@ export interface DialogPropTypes extends WithWebComponentPropTypes {
  */
 const Dialog: FC<DialogPropTypes> = withWebComponent<DialogPropTypes>(
   'ui5-dialog',
-  ['draggable', 'headerText', 'initialFocus'],
-  ['stretch', 'preventFocusRestore'],
+  ['headerText', 'initialFocus'],
+  ['draggable', 'stretch', 'preventFocusRestore'],
   ['footer', 'header'],
   ['after-close', 'after-open', 'before-close', 'before-open']
 );
