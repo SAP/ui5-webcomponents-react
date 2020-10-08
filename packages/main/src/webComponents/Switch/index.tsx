@@ -28,7 +28,7 @@ export interface SwitchPropTypes extends Omit<WithWebComponentPropTypes, 'onChan
   /**
    * Fired when the <code>Switch</code> checked state changes.
    */
-  onChange?: (event: CustomEvent<{}>) => void;
+  onChange?: (event: CustomEvent) => void;
 }
 
 /**

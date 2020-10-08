@@ -31,7 +31,7 @@ export interface LinkPropTypes extends Omit<WithWebComponentPropTypes, 'onClick'
   /**
    * Fired when the <code>Link</code> is triggered either with a mouse/tap or by using the Enter key.
    */
-  onClick?: (event: CustomEvent<{}>) => void;
+  onClick?: (event: CustomEvent) => void;
 }
 
 /**

@@ -32,7 +32,7 @@ export interface TimelineItemPropTypes extends WithWebComponentPropTypes {
   /**
    * Fired when the item name is pressed either with a click/tap or by using the Enter or Space key. <br><br> <b>Note:</b> The event will not be fired if the <code>item-name-clickable</code> attribute is not set.
    */
-  onItemNameClick?: (event: CustomEvent<{}>) => void;
+  onItemNameClick?: (event: CustomEvent) => void;
 }
 
 /**

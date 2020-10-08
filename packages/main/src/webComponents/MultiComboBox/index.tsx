@@ -43,15 +43,15 @@ export interface MultiComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 
   /**
    * Fired when the input operation has finished by pressing Enter or on focusout.
    */
-  onChange?: (event: CustomEvent<{}>) => void;
+  onChange?: (event: CustomEvent) => void;
   /**
    * Fired when the value of the <code>MultiComboBox</code> changes at each keystroke.
    */
-  onInput?: (event: CustomEvent<{}>) => void;
+  onInput?: (event: CustomEvent) => void;
   /**
    * Fired when the dropdown is opened or closed.
    */
-  onOpenChange?: (event: CustomEvent<{}>) => void;
+  onOpenChange?: (event: CustomEvent) => void;
   /**
    * Fired when selection is changed by user interaction in <code>SingleSelect</code> and <code>MultiSelect</code> modes.
    */

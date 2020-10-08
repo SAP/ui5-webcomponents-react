@@ -64,7 +64,7 @@ export interface ListPropTypes extends WithWebComponentPropTypes {
   /**
    * Fired when the user scrolls to the bottom of the list. <br><br> <b>Note:</b> The event is fired when the <code>infiniteScroll</code> property is enabled.
    */
-  onLoadMore?: (event: CustomEvent<{}>) => void;
+  onLoadMore?: (event: CustomEvent) => void;
   /**
    * Fired when selection is changed by user interaction in <code>SingleSelect</code>, <code>SingleSelectBegin</code>, <code>SingleSelectEnd</code> and <code>MultiSelect</code> modes.
    */
