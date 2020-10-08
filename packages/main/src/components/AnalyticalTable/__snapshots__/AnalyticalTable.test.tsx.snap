@@ -2741,6 +2741,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
     >
       <ui5-title
         level="H2"
+        ui5-title=""
       >
         Test
       </ui5-title>
@@ -3147,6 +3148,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
     >
       <ui5-title
         level="H2"
+        ui5-title=""
       >
         Test
       </ui5-title>
@@ -3553,6 +3555,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
     >
       <ui5-title
         level="H2"
+        ui5-title=""
       >
         Test
       </ui5-title>

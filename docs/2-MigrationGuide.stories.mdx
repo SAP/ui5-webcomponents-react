@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta title="Migration Guide" />
 
@@ -14,8 +14,57 @@ or the [changelog](https://github.com/SAP/ui5-webcomponents-react/blob/master/CH
 
 ## Table of Contents
 
+- [0.10.x to 0.11.0](#migrating-from-010x-to-0110)
 - [0.9.x to 0.10.0](#migrating-from-09x-to-0100)
 - [0.8.x to 0.9.0](#migrating-from-08x-to-090)
+
+## Migrating from 0.10.x to 0.11.0
+
+<br />
+
+### Deleted Components
+
+The `FilterItem` component (which was deprecated in 0.10.0) is now deleted. Please use the `FilterGroupItem` component instead. <br />
+In addition to that, the `FilterBar` is now only accepting `FilterGroupItems` as children.
+
+If you have the following `FilterItem` in your codebase
+
+```jsx
+<FilterItem
+  filterItems={[
+    { text: 'Text 1', key: '1' },
+    { text: 'Text 2', key: '2' }
+  ]}
+  label="My Filter Item"
+  key="filter_item"
+  type={FilterType.Select}
+  loading
+/>
+```
+
+this will become
+
+```jsx
+<FilterGroupItem label="My Filter Item" loading>
+  <Select>
+    <Option data-key="1">Text 1</Option>
+    <Option data-key="2">Text 2</Option>
+  </Select>
+</FilterGroupItem>
+```
+
+The same pattern applies for other FilterTypes like `Default` or `MultiSelect`.
+
+### Components with changed API
+
+The `Token` component is now officially a public component, and its API has changed.
+The text content of a `Token` was previously defined via `children`, now you have to use `text` instead.
+
+Example:
+`<Token>My Token</Token>` will become `<Token text="My Token" />`
+
+Furthermore, the `onDelete` event is removed as the Token shouldn’t be used as a standalone component.
+Most probably, you will use the `Token` as child of `MultiInput` - there you can listen to the `onTokenDelete` event.
 
 ## Migrating from 0.9.x to 0.10.0
 

@@ -8,6 +8,7 @@ exports[`VariantManagement Render without crashing - disabled 1`] = `
     <ui5-title
       class="VariantManagement-title"
       level="H4"
+      ui5-title=""
     >
       Variant 1
     </ui5-title>
@@ -15,6 +16,7 @@ exports[`VariantManagement Render without crashing - disabled 1`] = `
       design="Transparent"
       disabled="true"
       icon="navigation-down-arrow"
+      ui5-button=""
     />
   </div>
 </DocumentFragment>
@@ -28,12 +30,14 @@ exports[`VariantManagement Render without crashing 1`] = `
     <ui5-title
       class="VariantManagement-title"
       level="H4"
+      ui5-title=""
     >
       Variant 1
     </ui5-title>
     <ui5-button
       design="Transparent"
       icon="navigation-down-arrow"
+      ui5-button=""
     />
   </div>
 </DocumentFragment>

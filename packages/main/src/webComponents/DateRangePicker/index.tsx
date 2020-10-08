@@ -54,6 +54,10 @@ export interface DateRangePickerPropTypes extends Omit<WithWebComponentPropTypes
    */
   readonly?: boolean;
   /**
+   * Defines whether the <code>ui5-datepicker</code> is required.
+   */
+  required?: boolean;
+  /**
    * Defines a formatted date value.
    */
   value?: string;
@@ -96,7 +100,7 @@ const DateRangePicker: FC<DateRangePickerPropTypes> = withWebComponent<DateRange
     'value',
     'valueState'
   ],
-  ['disabled', 'hideWeekNumbers', 'readonly'],
+  ['disabled', 'hideWeekNumbers', 'readonly', 'required'],
   ['valueStateMessage'],
   ['change', 'input']
 );
@@ -110,6 +114,7 @@ DateRangePicker.defaultProps = {
   placeholder: undefined,
   primaryCalendarType: CalendarType.Gregorian,
   readonly: false,
+  required: false,
   valueState: ValueState.None
 };
 
