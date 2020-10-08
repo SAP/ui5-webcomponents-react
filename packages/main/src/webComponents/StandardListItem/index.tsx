@@ -44,7 +44,7 @@ export interface StandardListItemPropTypes extends WithWebComponentPropTypes {
   /**
    * Fired when the user clicks on the detail button when type is <code>Detail</code>.
    */
-  onDetailClick?: (event: CustomEvent<{}>) => void;
+  onDetailClick?: (event: CustomEvent) => void;
 }
 
 /**

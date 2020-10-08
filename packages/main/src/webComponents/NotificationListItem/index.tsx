@@ -57,7 +57,7 @@ export interface NotificationListItemPropTypes extends WithWebComponentPropTypes
   /**
    * Fired when the <code>Close</code> button is pressed.
    */
-  onClose?: (event: CustomEvent<{}>) => void;
+  onClose?: (event: CustomEvent) => void;
 }
 
 /**

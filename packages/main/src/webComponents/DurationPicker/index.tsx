@@ -48,7 +48,7 @@ export interface DurationPickerPropTypes extends Omit<WithWebComponentPropTypes,
   /**
    * Fired when the input operation has finished by pressing Enter or on focusout.
    */
-  onChange?: (event: CustomEvent<{}>) => void;
+  onChange?: (event: CustomEvent) => void;
 }
 
 /**

@@ -344,6 +344,13 @@ const getEventParameters = (parameters) => {
 
   const importStatements = [];
 
+  if (resolvedEventParameters.length === 0) {
+    return {
+      tsType: `(event: CustomEvent) => void`,
+      importStatements
+    };
+  }
+
   const detailPayload = resolvedEventParameters.map((parameter) => {
     if (parameter.importStatement) {
       importStatements.push(parameter.importStatement);
