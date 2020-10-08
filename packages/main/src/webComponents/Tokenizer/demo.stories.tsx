@@ -19,9 +19,9 @@ export const defaultStory = (props) => (
     onTokenDelete={props.onTokenDelete}
     onShowMoreItemsPress={props.onShowMoreItemsPress}
   >
-    <Token>Token 1</Token>
-    <Token>Token 2</Token>
-    <Token>Token 3</Token>
+    <Token text="Token 1" />
+    <Token text="Token 2" />
+    <Token text="Token 3" />
   </Tokenizer>
 );
 
