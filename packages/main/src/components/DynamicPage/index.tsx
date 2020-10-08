@@ -1,6 +1,7 @@
 import { StyleClassHelper, ThemingParameters } from '@ui5/webcomponents-react-base';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { useConsolidatedRef, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/hooks';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import React, {
   forwardRef,
   ReactElement,
@@ -18,9 +19,7 @@ import React, {
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { GlobalStyleClasses } from '@ui5/webcomponents-react/lib/GlobalStyleClasses';
 import { PageBackgroundDesign } from '@ui5/webcomponents-react/lib/PageBackgroundDesign';
-
-import { CommonProps } from '../../interfaces/CommonProps';
-import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar/DynamicPageAnchorBar';
+import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
 import { useObserveHeights } from '../ObjectPage/useObserveHeights';
 import styles from './DynamicPage.jss';
 
