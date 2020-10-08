@@ -41,8 +41,6 @@ import { FCLLayout } from './lib/FCLLayout';
 import { FileUploader } from './lib/FileUploader';
 import { FilterBar } from './lib/FilterBar';
 import { FilterGroupItem } from './lib/FilterGroupItem';
-import { FilterItem } from './lib/FilterItem';
-import { FilterType } from './lib/FilterType';
 import { FlexBox } from './lib/FlexBox';
 import { FlexBoxAlignItems } from './lib/FlexBoxAlignItems';
 import { FlexBoxDirection } from './lib/FlexBoxDirection';
@@ -197,8 +195,6 @@ export {
   FileUploader,
   FilterBar,
   FilterGroupItem,
-  FilterItem,
-  FilterType,
   FlexBox,
   FlexBoxAlignItems,
   FlexBoxDirection,

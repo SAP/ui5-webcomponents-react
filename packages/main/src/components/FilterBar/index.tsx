@@ -238,12 +238,9 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
     const childProps = { considerGroupName, inFB: true } as any;
     return safeChildren()
       .filter((item: ReactElement<any, any>) => {
-        if (item.type.displayName !== 'FilterGroupItem') return true; // needed for deprecated FilterItem or custom elements
-
         return item?.props?.visible && item.props?.visibleInFilterBar;
       })
       .map((child: ReactElement<any, any>) => {
-        if (child.type.displayName !== 'FilterGroupItem') return child; // needed for deprecated FilterItem or custom elements
         if (filterContainerWidth) {
           childProps.style = { width: filterContainerWidth, ...child.props.style };
         }
