@@ -1,45 +1,45 @@
 name: 'Release'
 
-on: 
+on:
   workflow_dispatch:
     inputs:
       release_type:
         description: 'Release Type: patch | minor | major'
         required: true
         default: 'patch'
-  
+
 jobs:
   build-and-release:
     if: github.actor == 'MarcusNotheis' || github.actor == 'vbersch' || github.actor == 'Lukas742'
-    runs-on: ubuntu-latest     
+    runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2.3.2
-      with:
-        token: ${{ secrets.ACCESS_TOKEN }}
-        fetch-depth: 0
+      - uses: actions/checkout@v2.3.2
+        with:
+          token: ${{ secrets.ACCESS_TOKEN }}
+          fetch-depth: 0
 
-    - name: Setup Node.js environment
-      uses: actions/setup-node@v2.1.0
-      with:
-        node-version: 12.x
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.1.0
+        with:
+          node-version: 12.x
 
-    - name: Install, test and build
-      run: |
-        yarn install
-        yarn test
-        yarn build
-        
-    - name: publish
-      run: |
-        npm config set //registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}
+      - name: Install, test and build
+        run: |
+          yarn install
+          yarn test
+          yarn build
 
-        git config user.email ${{ secrets.BOT_GIT_EMAIL }}
-        git config user.name ${{ secrets.BOT_GIT_USERNAME }}
+      - name: publish
+        run: |
+          npm config set //registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}
 
-        ${GITHUB_WORKSPACE}/node_modules/.bin/lerna publish ${{ github.event.inputs.release_type }} \
-          --conventional-graduate \
-          --create-release github
-      env:
-        GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+          git config user.email ${{ secrets.BOT_GIT_EMAIL }}
+          git config user.name ${{ secrets.BOT_GIT_USERNAME }}
+
+          ${GITHUB_WORKSPACE}/node_modules/.bin/lerna publish ${{ github.event.inputs.release_type }} \
+            --conventional-graduate \
+            --create-release github
+        env:
+          GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
