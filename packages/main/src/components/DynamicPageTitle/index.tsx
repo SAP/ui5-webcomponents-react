@@ -1,9 +1,7 @@
-import {
-  createComponentStyles,
-  StyleClassHelper,
-  ThemingParameters,
-  usePassThroughHtmlProps
-} from '@ui5/webcomponents-react-base';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
 import { Toolbar } from '@ui5/webcomponents-react/lib/Toolbar';
@@ -13,8 +11,8 @@ import { ToolbarSpacer } from '@ui5/webcomponents-react/lib/ToolbarSpacer';
 import { ToolbarStyle } from '@ui5/webcomponents-react/lib/ToolbarStyle';
 import React, { FC, forwardRef, ReactElement, ReactNode, ReactNodeArray, Ref, useEffect } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { DynamicPageTitleStyles } from './DynamicPageTitle.jss';
 import { BreadcrumbsPropTypes } from '../Breadcrumbs';
+import { DynamicPageTitleStyles } from './DynamicPageTitle.jss';
 
 export interface DynamicPageTitleProps extends CommonProps {
   /**

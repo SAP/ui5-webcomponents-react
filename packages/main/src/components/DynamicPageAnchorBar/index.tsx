@@ -1,5 +1,5 @@
 import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming';
-import { ThemingParameters } from '@ui5/webcomponents-react-base';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ToggleButton } from '@ui5/webcomponents-react/lib/ToggleButton';
 import React, { CSSProperties, forwardRef, ReactElement, RefObject, useCallback, useRef, useState } from 'react';

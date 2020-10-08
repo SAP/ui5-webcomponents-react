@@ -1,7 +1,11 @@
-import { StyleClassHelper, ThemingParameters } from '@ui5/webcomponents-react-base';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { useConsolidatedRef, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/hooks';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
+import { GlobalStyleClasses } from '@ui5/webcomponents-react/lib/GlobalStyleClasses';
+import { PageBackgroundDesign } from '@ui5/webcomponents-react/lib/PageBackgroundDesign';
 import React, {
   forwardRef,
   ReactElement,
@@ -16,9 +20,6 @@ import React, {
   useState,
   useEffect
 } from 'react';
-import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
-import { GlobalStyleClasses } from '@ui5/webcomponents-react/lib/GlobalStyleClasses';
-import { PageBackgroundDesign } from '@ui5/webcomponents-react/lib/PageBackgroundDesign';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
 import { useObserveHeights } from '../ObjectPage/useObserveHeights';
 import styles from './DynamicPage.jss';
@@ -216,7 +217,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
           onHoverToggleButton={onHoverToggleButton}
         />
       </FlexBox>
-      {cloneElement(contentArea, { ref: contentAreaRef })}
+      {contentArea ? cloneElement(contentArea, { ref: contentAreaRef }) : null}
     </div>
   );
 });

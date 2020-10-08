@@ -1,4 +1,6 @@
-import { createComponentStyles, useConsolidatedRef, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import React, { FC, forwardRef, ReactNode, ReactNodeArray, RefObject } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import styles from './DynamicPageContentArea.jss';

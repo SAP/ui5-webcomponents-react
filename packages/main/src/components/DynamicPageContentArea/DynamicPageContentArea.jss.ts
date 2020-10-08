@@ -1,4 +1,4 @@
-import { ThemingParameters } from '@ui5/webcomponents-react-base';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 
 const styles = {
   container: {

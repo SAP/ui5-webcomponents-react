@@ -1,4 +1,4 @@
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
 import React, { CSSProperties, FC, forwardRef, ReactNode, Ref, useMemo } from 'react';
