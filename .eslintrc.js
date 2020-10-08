@@ -6,8 +6,10 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
     'plugin:react/recommended',
-    'prettier',
-    './.eslint-imports.js'
+    'plugin:import/errors',
+    'plugin:import/warnings',
+    'plugin:import/typescript',
+    'prettier'
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -122,6 +124,17 @@ module.exports = {
     'react/self-closing-comp': 'error',
     'spaced-comment': 'error',
     'use-isnan': 'error',
-    'valid-typeof': 'off'
+    'valid-typeof': 'off',
+    'import/order': [
+      'error',
+      {
+        'newlines-between': 'never',
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: true
+        }
+      }
+    ],
+    'import/no-duplicates': 2
   }
 };
