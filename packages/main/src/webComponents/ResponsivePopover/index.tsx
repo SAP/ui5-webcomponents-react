@@ -57,11 +57,11 @@ export interface ResponsivePopoverPropTypes extends WithWebComponentPropTypes {
   /**
    * Fired after the component is closed. This event does not bubble.
    */
-  onAfterClose?: (event: CustomEvent<{}>) => void;
+  onAfterClose?: (event: CustomEvent) => void;
   /**
    * Fired after the component is opened. This event does not bubble.
    */
-  onAfterOpen?: (event: CustomEvent<{}>) => void;
+  onAfterOpen?: (event: CustomEvent) => void;
   /**
    * Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing. This event does not bubble.
    */
@@ -69,7 +69,7 @@ export interface ResponsivePopoverPropTypes extends WithWebComponentPropTypes {
   /**
    * Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. This event does not bubble.
    */
-  onBeforeOpen?: (event: CustomEvent<{}>) => void;
+  onBeforeOpen?: (event: CustomEvent) => void;
 }
 
 /**

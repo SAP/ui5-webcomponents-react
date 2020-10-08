@@ -59,11 +59,11 @@ export interface ComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
   /**
    * Fired when the input operation has finished by pressing Enter, focusout or an item is selected.
    */
-  onChange?: (event: CustomEvent<{}>) => void;
+  onChange?: (event: CustomEvent) => void;
   /**
    * Fired when typing in input. <br><br> <b>Note:</b> filterValue property is updated, input is changed.
    */
-  onInput?: (event: CustomEvent<{}>) => void;
+  onInput?: (event: CustomEvent) => void;
 }
 
 /**
