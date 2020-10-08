@@ -193,7 +193,6 @@ export const FilterDialog = (props) => {
   const renderChildren = useCallback(() => {
     return children
       .filter((item) => {
-        if (item.type.displayName !== 'FilterGroupItem') return true; //needed for deprecated FilterItem or custom elements
         return (
           !!item?.props &&
           item.props?.visible &&
@@ -201,7 +200,6 @@ export const FilterDialog = (props) => {
         );
       })
       .map((child) => {
-        if (child.type.displayName !== 'FilterGroupItem') return child; //needed for deprecated FilterItem or custom elements
         const filterBarItemRef = filterBarRefs.current[child.key];
         let filterItemProps = {};
         if (filterBarItemRef) {

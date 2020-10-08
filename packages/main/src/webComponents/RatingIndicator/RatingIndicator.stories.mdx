@@ -1,14 +1,36 @@
-import { Title, Subtitle, Description, Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
-import { RatingIndicator } from '@ui5/webcomponents-react/lib/RatingIndicator';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
-import { DocsHeader } from '@shared/stories/DocsHeader';
+import {ArgsTable, Canvas, Meta, Story} from '@storybook/addon-docs/blocks';
+import {RatingIndicator} from '@ui5/webcomponents-react/lib/RatingIndicator';
+import {CSSProperties} from 'react';
+
+import {createSelectArgTypes} from '@shared/stories/createSelectArgTypes';
+import {DocsHeader} from '@shared/stories/DocsHeader';
 
 <Meta
-  title="UI5 Web Components / RatingIndicator"
-  component={RatingIndicator}
-  args={{
-    value: 3
-  }}
+    title="UI5 Web Components / RatingIndicator"
+    component={RatingIndicator}
+    argTypes={{
+        ...createSelectArgTypes({}),
+        slot: {control: {disable: true}},
+        ref: {control: {disable: true}},
+        style: {
+            type: CSSProperties,
+            description:
+                'Element style which will be appended to the most outer element of a component. Use this prop carefully, some css properties might break the component.'
+        },
+        className: {
+            type: 'string',
+            description:
+                'CSS Class Name which will be appended to the most outer element of a component. Use this prop carefully, overwriting CSS rules might break the component.'
+        },
+        tooltip: {type: 'string', description: 'A tooltip which will be shown on hover'}
+    }}
+    args={{
+        style: {},
+        className: '',
+        tooltip: '',
+        slot: '',
+        ref: null
+    }}
 />
 
 <DocsHeader />
@@ -21,4 +43,8 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   </Story>
 </Canvas>
 
-<ArgsTable story="." />
+<ArgsTable story="."/>
+<div style={{fontFamily: 'var(--sapFontFamily)', fontSize: 'var(--sapFontSize)', color: 'var(--sapTextColor)'}}>
+    <h3>Usage</h3>
+    The reccomended number of icons is between 5 and 7.
+</div>

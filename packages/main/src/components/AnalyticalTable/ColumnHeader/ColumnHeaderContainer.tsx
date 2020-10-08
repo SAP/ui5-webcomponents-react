@@ -67,6 +67,9 @@ export const ColumnHeaderContainer = (props) => {
     <div {...headerProps} role="rowgroup" style={{ width: `${columnVirtualizer.totalSize}px` }}>
       {columnVirtualizer.virtualItems.map((virtualColumn: VirtualItem) => {
         const column = headerGroup.headers[virtualColumn.index];
+        if (!column) {
+          return null;
+        }
         const isLastColumn = !column.disableResizing && virtualColumn.index + 1 === headerGroup.headers.length;
         return (
           <>

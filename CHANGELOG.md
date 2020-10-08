@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0-rc.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.10.10...v0.11.0-rc.0) (2020-10-08)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** don't crash when removing columns ([#716](https://github.com/SAP/ui5-webcomponents-react/issues/716)) ([6c74e5d](https://github.com/SAP/ui5-webcomponents-react/commit/6c74e5dcdefbdd41812c4a8d081afd060dbecdb0))
+
+
+### chore
+
+* delete deprecated FilterItem ([#717](https://github.com/SAP/ui5-webcomponents-react/issues/717)) ([f30d2fc](https://github.com/SAP/ui5-webcomponents-react/commit/f30d2fc83a6bc4173b83e303fc2659e673c8633b)), closes [#646](https://github.com/SAP/ui5-webcomponents-react/issues/646)
+
+
+### Features
+
+* upgrade ui5-webcomponents to 1.0.0-rc.9 ([#705](https://github.com/SAP/ui5-webcomponents-react/issues/705)) ([fb7d5c6](https://github.com/SAP/ui5-webcomponents-react/commit/fb7d5c62d10a6afa161cbd55c75850a068ec3383)), closes [#674](https://github.com/SAP/ui5-webcomponents-react/issues/674)
+
+
+### BREAKING CHANGES
+
+* deleted deprecated component `FilterItem`, please use `FilterGroupItem` instead. The `FilterBar` is now accepting only `FilterGroupItem`s as children.
+* **Token**: the Token text is now defined via the `text` prop, `children` has no effect anymore.
+* **Token**: `onDelete` is removed as the Token shouldn’t be used as a standalone component.
+
+
+
+
+
 ## [0.10.10](https://github.com/SAP/ui5-webcomponents-react/compare/v0.10.9...v0.10.10) (2020-10-02)
 
 

@@ -8,7 +8,7 @@ import { FC } from 'react';
 
 export interface AvatarPropTypes extends WithWebComponentPropTypes {
   /**
-   * Defines the text alternative of the <code>ui5-avatar</code>. If not provided a default text alternative will be set, if present.
+   * Defines the text alternative of the <code>Avatar</code>. If not provided a default text alternative will be set, if present.
    */
   accessibleName?: string;
   /**
@@ -16,7 +16,7 @@ export interface AvatarPropTypes extends WithWebComponentPropTypes {
    */
   backgroundColor?: AvatarBackgroundColor;
   /**
-   * Defines the name of the UI5 Icon, that would be displayed. <br> <b>Note:</b> If <code>image</code> is set, the property would be ignored. <br> <b>Note:</b> You should import the desired icon first, then use its name as "icon". <br><br> import "@ui5/webcomponents-icons/dist/icons/{icon_name}.js" <br> <pre>&lt;ui5-avatar icon-src="employee"></pre><br/><br/>
+   * Defines the name of the UI5 Icon, that would be displayed. <br> <b>Note:</b> If <code>image</code> is set, the property would be ignored. <br> <b>Note:</b> You should import the desired icon first, then use its name as "icon". <br><br> import "@ui5/webcomponents-icons/dist/icons/{icon_name}.js" <br> <pre>&lt;Avatar icon-src="employee"></pre><br/><br/>
    *
    * See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
    */
@@ -30,20 +30,24 @@ export interface AvatarPropTypes extends WithWebComponentPropTypes {
    */
   imageFitType?: AvatarFitType;
   /**
-   * Defines the displayed initials. <br> Up to two Latin letters can be displayed as initials in a <code>ui5-avatar</code>.
+   * Defines the displayed initials. <br> Up to two Latin letters can be displayed as initials in a <code>Avatar</code>.
    */
   initials?: string;
   /**
-   * Defines the shape of the <code>ui5-avatar</code>. <br><br> Available options are: <ul> <li><code>Circle</code></li> <li><code>Square</code></li> <ul>
+   * Defines the shape of the <code>Avatar</code>. <br><br> Available options are: <ul> <li><code>Circle</code></li> <li><code>Square</code></li> <ul>
    */
   shape?: AvatarShape;
   /**
-   * Defines predefined size of the <code>ui5-avatar</code>. <br><br> Available options are: <ul> <li><code>XS</code></li> <li><code>S</code></li> <li><code>M</code></li> <li><code>L</code></li> <li><code>XL</code></li> <ul>
+   * Defines predefined size of the <code>Avatar</code>. <br><br> Available options are: <ul> <li><code>XS</code></li> <li><code>S</code></li> <li><code>M</code></li> <li><code>L</code></li> <li><code>XL</code></li> <ul>
    */
   size?: AvatarSize;
 }
 
 /**
+ * An image-like control that has different display options for representing images and icons in different shapes and
+ sizes, depending on the use case. The shape can be circular or square. There are several predefined sizes, as well as an
+ option to set a custom size.
+
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Avatar" target="_blank">UI5 Web Components Playground</a>
  */
 const Avatar: FC<AvatarPropTypes> = withWebComponent<AvatarPropTypes>(

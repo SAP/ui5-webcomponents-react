@@ -1,6 +1,36 @@
 packages/*/src/lib/
-packages/*/lib/
-packages/*/dist/
+
+# build results for base package
+packages/base/cjs
+packages/base/Device
+packages/base/hooks
+packages/base/lib
+packages/base/polyfill
+packages/base/scripts
+packages/base/styling
+packages/base/types
+packages/base/utils
+
+# build results for charts package
+packages/charts/cjs
+packages/charts/components
+packages/charts/hooks
+packages/charts/interfaces
+packages/charts/internal
+packages/charts/lib
+
+# build results for main package
+packages/main/cjs
+packages/main/components
+packages/main/dist
+packages/main/enums
+packages/main/interfaces
+packages/main/internal
+packages/main/lib
+packages/main/scripts
+packages/main/webComponents
+
+
 scripts
 shared
 .eslintrc.js
@@ -11,3 +41,4 @@ rollup.config.js
 index.cjs.js
 index.esm.js
 packages/cra-template
+
