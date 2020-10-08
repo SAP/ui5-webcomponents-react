@@ -4,7 +4,6 @@ exports[`MessageBox Confirm - Cancel 1`] = `
 <DocumentFragment>
   <ui5-dialog
     class="MessageBox-messageBox"
-    draggable="false"
     opened=""
     style="z-index: 114; display: block;"
     ui5-dialog=""
@@ -57,7 +56,6 @@ exports[`MessageBox Confirm 1`] = `
 <DocumentFragment>
   <ui5-dialog
     class="MessageBox-messageBox"
-    draggable="false"
     opened=""
     style="z-index: 102; display: block;"
     ui5-dialog=""
@@ -110,7 +108,6 @@ exports[`MessageBox Custom Action Text 1`] = `
 <DocumentFragment>
   <ui5-dialog
     class="MessageBox-messageBox"
-    draggable="false"
     ui5-dialog=""
   >
     <footer
@@ -161,7 +158,6 @@ exports[`MessageBox Don't crash on unknown type 1`] = `
 <DocumentFragment>
   <ui5-dialog
     class="MessageBox-messageBox"
-    draggable="false"
     opened=""
     style="z-index: 122; display: block;"
     ui5-dialog=""
@@ -201,7 +197,6 @@ exports[`MessageBox Error 1`] = `
 <DocumentFragment>
   <ui5-dialog
     class="MessageBox-messageBox"
-    draggable="false"
     opened=""
     style="z-index: 108; display: block;"
     ui5-dialog=""
@@ -247,7 +242,6 @@ exports[`MessageBox Highlight 1`] = `
 <DocumentFragment>
   <ui5-dialog
     class="MessageBox-messageBox"
-    draggable="false"
     opened=""
     style="z-index: 112; display: block;"
     ui5-dialog=""
@@ -293,7 +287,6 @@ exports[`MessageBox Information 1`] = `
 <DocumentFragment>
   <ui5-dialog
     class="MessageBox-messageBox"
-    draggable="false"
     opened=""
     style="z-index: 110; display: block;"
     ui5-dialog=""
@@ -339,7 +332,6 @@ exports[`MessageBox No Title 1`] = `
 <DocumentFragment>
   <ui5-dialog
     class="MessageBox-messageBox"
-    draggable="false"
     opened=""
     style="z-index: 120; display: block;"
     ui5-dialog=""
@@ -392,7 +384,6 @@ exports[`MessageBox Not open 1`] = `
 <DocumentFragment>
   <ui5-dialog
     class="MessageBox-messageBox"
-    draggable="false"
     ui5-dialog=""
   >
     <footer
@@ -436,7 +427,6 @@ exports[`MessageBox Show 1`] = `
 <DocumentFragment>
   <ui5-dialog
     class="MessageBox-messageBox"
-    draggable="false"
     opened=""
     style="z-index: 116; display: block;"
     ui5-dialog=""
@@ -489,7 +479,6 @@ exports[`MessageBox Success 1`] = `
 <DocumentFragment>
   <ui5-dialog
     class="MessageBox-messageBox"
-    draggable="false"
     opened=""
     style="z-index: 104; display: block;"
     ui5-dialog=""
@@ -535,7 +524,6 @@ exports[`MessageBox Success w/ custom title 1`] = `
 <DocumentFragment>
   <ui5-dialog
     class="MessageBox-messageBox"
-    draggable="false"
     opened=""
     style="z-index: 118; display: block;"
     ui5-dialog=""
@@ -581,7 +569,6 @@ exports[`MessageBox Warning 1`] = `
 <DocumentFragment>
   <ui5-dialog
     class="MessageBox-messageBox"
-    draggable="false"
     opened=""
     style="z-index: 106; display: block;"
     ui5-dialog=""

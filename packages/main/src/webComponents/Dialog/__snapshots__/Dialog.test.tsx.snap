@@ -3,7 +3,6 @@
 exports[`Dialog Basic Test (generated) 1`] = `
 <DocumentFragment>
   <ui5-dialog
-    draggable="false"
     ui5-dialog=""
   />
 </DocumentFragment>
