@@ -75,7 +75,7 @@ export interface ListPropTypes extends WithWebComponentPropTypes {
  * The <code>List</code> component allows displaying a list of items, advanced keyboard handling support for navigating
  between items, and predefined modes to improve the development efficiency. <br /><br />
  The <code>List</code> is а container for the available list items:
- <ul> <li><code>StandardListItem</code></li> <li><code>CustomListItem</code></li> <li><code>ui5-li-group-header</code></li>
+ <ul> <li><code>StandardListItem</code></li> <li><code>CustomListItem</code></li> <li><code>GroupHeaderListItem</code></li>
  </ul>
  <br /><br />
  To benefit from the built-in selection mechanism, you can use the available selection modes, such as
