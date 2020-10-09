@@ -8,10 +8,12 @@ import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { ToolbarDesign } from '@ui5/webcomponents-react/lib/ToolbarDesign';
 import { ToolbarStyle } from '@ui5/webcomponents-react/lib/ToolbarStyle';
 import React, {
+  cloneElement,
   createRef,
   FC,
   forwardRef,
   ReactElement,
+  ReactFragment,
   ReactNode,
   ReactNodeArray,
   Ref,
@@ -29,7 +31,7 @@ import { styles } from './Toolbar.jss';
 const useStyles = createComponentStyles(styles, { name: 'Toolbar' });
 
 export interface ToolbarProptypes extends CommonProps {
-  children?: ReactNode | ReactNodeArray;
+  children?: ReactNode | ReactNodeArray | ReactFragment;
   toolbarStyle?: ToolbarStyle;
   design?: ToolbarDesign;
   active?: boolean;
@@ -72,9 +74,16 @@ const Toolbar: FC<ToolbarProptypes> = forwardRef((props: ToolbarProptypes, ref: 
   const childrenWithRef = useMemo(() => {
     controlMetaData.current = [];
 
-    return React.Children.toArray(
-      (children as ReactElement)?.type === React.Fragment ? (children as ReactElement).props.children : children
-    ).map((item: ReactElement, index) => {
+    const refactoredChildren = React.Children.toArray(children).map((child, index) => {
+      if ((child as ReactElement).type === React.Fragment) {
+        return (child as ReactElement).props.children.map((item, itemIndex: number) => {
+          return cloneElement(item, { key: `.${index}:${itemIndex}` });
+        });
+      }
+      return child;
+    });
+
+    return refactoredChildren.flat().map((item: ReactElement, index) => {
       const itemRef: RefObject<HTMLDivElement> = createRef();
 
       controlMetaData.current.push({
@@ -92,6 +101,7 @@ const Toolbar: FC<ToolbarProptypes> = forwardRef((props: ToolbarProptypes, ref: 
       );
     });
   }, [children, controlMetaData]);
+
   const overflowNeeded =
     (lastVisibleIndex || lastVisibleIndex === 0) && React.Children.count(childrenWithRef) !== lastVisibleIndex + 1;
 
@@ -188,7 +198,12 @@ const Toolbar: FC<ToolbarProptypes> = forwardRef((props: ToolbarProptypes, ref: 
       {overflowNeeded && (
         <div className={classes.overflowButtonContainer} title={showMoreText}>
           <OverflowPopover lastVisibleIndex={lastVisibleIndex} contentClass={classes.popoverContent}>
-            {children}
+            {React.Children.toArray(children).map((child) => {
+              if ((child as ReactElement).type === React.Fragment) {
+                return (child as ReactElement).props.children;
+              }
+              return child;
+            })}
           </OverflowPopover>
         </div>
       )}
