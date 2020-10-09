@@ -39,6 +39,7 @@ export interface ColumnHeaderProps {
   onDragEnd: DragEventHandler<HTMLDivElement>;
   dragOver: boolean;
   isResizing: boolean;
+  headerTooltip: string;
   isDraggable: boolean;
   role: string;
   isLastColumn: boolean;
@@ -102,6 +103,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     onDragStart,
     onDrop,
     onDragEnd,
+    headerTooltip,
     isDraggable,
     dragOver,
     role,
@@ -109,6 +111,16 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
   } = props;
 
   const isFiltered = column.filterValue && column.filterValue.length > 0;
+
+  const tooltip = useMemo(() => {
+    if (headerTooltip) {
+      return headerTooltip;
+    }
+    if (typeof children === 'string') {
+      return children;
+    }
+    return null;
+  }, [children, headerTooltip]);
 
   const textStyle = useMemo(() => {
     let margin = 0;
@@ -176,12 +188,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
         onClick={onOpenPopover}
       >
         <div className={classes.header} data-h-align={column.hAlign}>
-          <Text
-            tooltip={typeof children === 'string' ? children : null}
-            wrapping={false}
-            style={textStyle}
-            className={classes.text}
-          >
+          <Text tooltip={tooltip} wrapping={false} style={textStyle} className={classes.text}>
             {children}
           </Text>
           <div className={classes.iconContainer}>
