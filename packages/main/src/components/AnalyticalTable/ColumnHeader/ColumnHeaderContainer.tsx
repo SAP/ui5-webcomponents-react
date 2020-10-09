@@ -91,6 +91,7 @@ export const ColumnHeaderContainer = (props) => {
               onDragEnter={onDragEnter}
               onDragEnd={onDragEnd}
               dragOver={column.id === dragOver}
+              headerTooltip={column.headerTooltip}
               isDraggable={column.canReorder && !resizeInfo.isResizingColumn}
               virtualColumn={virtualColumn}
             >
