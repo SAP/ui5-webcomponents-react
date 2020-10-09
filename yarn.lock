@@ -16750,10 +16750,10 @@ react-transition-group@^2.5.0:
     prop-types "^15.6.2"
     react-lifecycles-compat "^3.0.4"
 
-react-virtual@2.2.4:
-  version "2.2.4"
-  resolved "https://registry.yarnpkg.com/react-virtual/-/react-virtual-2.2.4.tgz#f33c0a8150a7c46e063f0d807f3ad0296c6c6d9f"
-  integrity sha512-TOwr7aMozoAzUQvWamSqc+b6ZLY+gtveOnASi2UugIVZ/Vy6b943Vhsp6h7E3pOIVxLv0bpbUUcc/vw9AWj9lw==
+react-virtual@2.2.7:
+  version "2.2.7"
+  resolved "https://registry.yarnpkg.com/react-virtual/-/react-virtual-2.2.7.tgz#01f46e8eb1bfd722edb9a6e01daaef438dd7111f"
+  integrity sha512-ggnuqRwYRuuvFdkpD1tOfC5G4nr5xlZUvvp3b/c9r2Nf14dBXZR49oewESyNQnqyO5JT+offgd4oqugLxxdVsQ==
   dependencies:
     "@reach/observe-rect" "^1.1.0"
     ts-toolbelt "^6.4.2"

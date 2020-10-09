@@ -410,9 +410,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
           if (headerGroup.getHeaderGroupProps) {
             headerProps = headerGroup.getHeaderGroupProps();
           }
-
           return (
-            tableRef.current && (
+            tableRef?.current?.clientWidth > 0 && (
               <ColumnHeaderContainer
                 reactWindowRef={reactWindowRef}
                 tableRef={tableRef}
@@ -448,7 +447,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
         {!loading && props.data?.length === 0 && (
           <NoDataComponent noDataText={noDataText} className={classes.noDataContainer} style={noDataStyles} />
         )}
-        {props.data?.length > 0 && tableRef.current && (
+        {props.data?.length > 0 && tableRef?.current?.clientWidth > 0 && (
           <VirtualTableBodyContainer
             tableBodyHeight={tableBodyHeight}
             totalColumnsWidth={totalColumnsWidth}
