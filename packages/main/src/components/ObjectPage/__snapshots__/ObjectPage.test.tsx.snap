@@ -139,7 +139,7 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
       />
     </ui5-tabcontainer>
     <ui5-button
-      class="ObjectPageAnchorBar-anchorBarActionButton-0 ObjectPageAnchorBar-anchorBarActionButtonExpandable-0"
+      class="ObjectPageAnchorBar-anchorBarActionButton-1 ObjectPageAnchorBar-anchorBarActionButtonExpandable-1"
       data-ui5wcr-object-page-header-action=""
       design="Default"
       icon="slim-arrow-down"
@@ -1329,7 +1329,7 @@ exports[`ObjectPage With Subsections 1`] = `
       />
     </ui5-tabcontainer>
     <ui5-button
-      class="ObjectPageAnchorBar-anchorBarActionButton-0 ObjectPageAnchorBar-anchorBarActionButtonExpandable-0"
+      class="ObjectPageAnchorBar-anchorBarActionButton-1 ObjectPageAnchorBar-anchorBarActionButtonExpandable-1"
       data-ui5wcr-object-page-header-action=""
       design="Default"
       icon="slim-arrow-down"

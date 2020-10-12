@@ -1,3 +1,4 @@
+import { useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base/lib/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
@@ -282,7 +283,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     if (tableRef.current) {
       dispatch({ type: 'TABLE_RESIZE', payload: { tableClientWidth: tableRef.current.clientWidth } });
     }
-  }, []);
+  }, [tableRef.current]);
 
   useEffect(() => {
     // @ts-ignore
@@ -293,7 +294,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     };
   }, [updateTableClientWidth]);
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     updateTableClientWidth();
   }, [updateTableClientWidth]);
 
@@ -410,8 +411,9 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
           if (headerGroup.getHeaderGroupProps) {
             headerProps = headerGroup.getHeaderGroupProps();
           }
+
           return (
-            tableRef?.current?.clientWidth > 0 && (
+            tableRef.current && (
               <ColumnHeaderContainer
                 reactWindowRef={reactWindowRef}
                 tableRef={tableRef}
@@ -447,7 +449,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
         {!loading && props.data?.length === 0 && (
           <NoDataComponent noDataText={noDataText} className={classes.noDataContainer} style={noDataStyles} />
         )}
-        {props.data?.length > 0 && tableRef?.current?.clientWidth > 0 && (
+        {props.data?.length > 0 && tableRef.current && (
           <VirtualTableBodyContainer
             tableBodyHeight={tableBodyHeight}
             totalColumnsWidth={totalColumnsWidth}
