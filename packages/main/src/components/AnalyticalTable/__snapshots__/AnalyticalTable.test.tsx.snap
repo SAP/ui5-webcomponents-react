@@ -48,7 +48,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
           >
             <span
               class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
-              title="Name"
+              title="Full Name"
             >
               Name
             </span>
@@ -452,7 +452,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
           >
             <span
               class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
-              title="Name"
+              title="Full Name"
             >
               Name
             </span>
@@ -856,7 +856,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
           >
             <span
               class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
-              title="Name"
+              title="Full Name"
             >
               Name
             </span>
@@ -1274,7 +1274,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
           >
             <span
               class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
-              title="Name"
+              title="Full Name"
             >
               Name
             </span>
@@ -1746,7 +1746,7 @@ exports[`AnalyticalTable custom row height 1`] = `
           >
             <span
               class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
-              title="Name"
+              title="Full Name"
             >
               Name
             </span>
@@ -2164,7 +2164,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
             >
               <span
                 class="Text-text Text-noWrap TableColumnHeader-text"
-                title="Name"
+                title="Full Name"
               >
                 Name
               </span>
@@ -2610,7 +2610,7 @@ exports[`AnalyticalTable render without data 1`] = `
           >
             <span
               class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
-              title="Name"
+              title="Full Name"
             >
               Name
             </span>
@@ -2781,7 +2781,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             >
               <span
                 class="Text-text Text-noWrap TableColumnHeader-text"
-                title="Name"
+                title="Full Name"
               >
                 Name
               </span>
@@ -3188,7 +3188,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
             >
               <span
                 class="Text-text Text-noWrap TableColumnHeader-text"
-                title="Name"
+                title="Full Name"
               >
                 Name
               </span>
@@ -3595,7 +3595,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
             >
               <span
                 class="Text-text Text-noWrap TableColumnHeader-text"
-                title="Name"
+                title="Full Name"
               >
                 Name
               </span>
@@ -4000,7 +4000,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
           >
             <span
               class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
-              title="Name"
+              title="Full Name"
             >
               Name
             </span>
@@ -4453,7 +4453,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
           >
             <span
               class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
-              title="Name"
+              title="Full Name"
             >
               Name
             </span>
@@ -5030,7 +5030,7 @@ exports[`AnalyticalTable with initial column order 1`] = `
             >
               <span
                 class="Text-text Text-noWrap TableColumnHeader-text"
-                title="Name"
+                title="Full Name"
               >
                 Name
               </span>
@@ -5335,7 +5335,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
           >
             <span
               class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
-              title="Name"
+              title="Full Name"
             >
               Name
             </span>
