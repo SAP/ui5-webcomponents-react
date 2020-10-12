@@ -1,3 +1,4 @@
+import { useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base/lib/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
@@ -282,7 +283,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     if (tableRef.current) {
       dispatch({ type: 'TABLE_RESIZE', payload: { tableClientWidth: tableRef.current.clientWidth } });
     }
-  }, []);
+  }, [tableRef.current]);
 
   useEffect(() => {
     // @ts-ignore
@@ -293,7 +294,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     };
   }, [updateTableClientWidth]);
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     updateTableClientWidth();
   }, [updateTableClientWidth]);
 
