@@ -2,6 +2,8 @@
 
 exports[`Switch Basic Test (generated) 1`] = `
 <DocumentFragment>
-  <ui5-switch />
+  <ui5-switch
+    ui5-switch=""
+  />
 </DocumentFragment>
 `;

@@ -10,6 +10,7 @@ import React, { useRef } from 'react';
 const columns = [
   {
     Header: 'Name',
+    headerTooltip: 'Full Name', // A more extensive description!
     accessor: 'name' // String-based value accessors!
   },
   {

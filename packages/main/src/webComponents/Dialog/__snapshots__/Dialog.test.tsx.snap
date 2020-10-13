@@ -2,6 +2,8 @@
 
 exports[`Dialog Basic Test (generated) 1`] = `
 <DocumentFragment>
-  <ui5-dialog />
+  <ui5-dialog
+    ui5-dialog=""
+  />
 </DocumentFragment>
 `;

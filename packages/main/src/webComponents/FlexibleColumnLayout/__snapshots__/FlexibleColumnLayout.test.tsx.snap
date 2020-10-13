@@ -5,6 +5,7 @@ exports[`FlexibleColumnLayout Basic Test (generated) 1`] = `
   <ui5-flexible-column-layout
     _visible-columns="1"
     layout="OneColumn"
+    ui5-flexible-column-layout=""
   />
 </DocumentFragment>
 `;

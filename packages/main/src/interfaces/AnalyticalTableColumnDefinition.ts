@@ -11,6 +11,7 @@ export interface AnalyticalTableColumnDefinition {
   id?: string;
 
   Header?: string | ComponentType<any>;
+  headerTooltip?: string;
   Cell?: string | ComponentType<any>;
   width?: number;
   minWidth?: number;
