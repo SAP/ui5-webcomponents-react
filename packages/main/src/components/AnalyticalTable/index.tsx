@@ -1,9 +1,11 @@
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base/lib/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
+import { GlobalStyleClasses } from '@ui5/webcomponents-react/lib/GlobalStyleClasses';
 import { TableScaleWidthMode } from '@ui5/webcomponents-react/lib/TableScaleWidthMode';
 import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
@@ -57,7 +59,6 @@ import { VirtualTableBodyContainer } from './TableBody/VirtualTableBodyContainer
 import { stateReducer } from './tableReducer/stateReducer';
 import { TitleBar } from './TitleBar';
 import { orderByFn } from './util';
-import { GlobalStyleClasses } from '@ui5/webcomponents-react/lib/GlobalStyleClasses';
 
 interface DivWithCustomScrollProp extends HTMLDivElement {
   isExternalVerticalScroll?: boolean;
@@ -278,6 +279,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     useVisibleColumnsWidth,
     ...tableHooks
   );
+
   // scroll bar detection
   useEffect(() => {
     const visibleRowCount = rows.length < visibleRows ? Math.max(rows.length, minRows) : visibleRows;
@@ -384,17 +386,22 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     }
 
     if (tableState.tableClientWidth > 0) {
-      return {
+      const styles = {
         ...tableStyles,
         ...style
       } as CSSProperties;
+
+      if (totalColumnsWidth < tableState.tableClientWidth) {
+        return { ...styles, borderBottom: `1px solid ${ThemingParameters.sapList_BorderColor}` };
+      }
+      return styles;
     }
     return {
       ...tableStyles,
       ...style,
       visibility: 'hidden'
     } as CSSProperties;
-  }, [tableState.tableClientWidth, style, rowHeight]);
+  }, [tableState.tableClientWidth, style, rowHeight, totalColumnsWidth]);
 
   const parentRef: RefObject<DivWithCustomScrollProp> = useRef(null);
 
@@ -432,6 +439,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
           ref={tableRef}
           className={StyleClassHelper.of(classes.table, GlobalStyleClasses.sapScrollBar).className}
         >
+          <div className={classes.tableHeaderBackgroundElement} />
           {headerGroups.map((headerGroup) => {
             let headerProps = {};
             if (headerGroup.getHeaderGroupProps) {

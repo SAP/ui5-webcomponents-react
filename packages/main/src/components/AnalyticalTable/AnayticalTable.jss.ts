@@ -12,16 +12,27 @@ const styles = {
     minHeight: '3rem',
     fontFamily: ThemingParameters.sapFontFamily,
     fontSize: ThemingParameters.sapFontSize,
-    fontWeight: 'normal'
+    fontWeight: 'normal',
+    backgroundColor: ThemingParameters.sapList_Background
   },
   tableHeaderRow: {
     height: CssSizeVariables.sapWcrAnalyticalTableRowHeight,
     display: 'inline-flex'
   },
-  th: {
+  tableHeaderBackgroundElement: {
+    boxSizing: 'border-box',
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    height: CssSizeVariables.sapWcrAnalyticalTableRowHeight,
     backgroundColor: ThemingParameters.sapList_HeaderBackground,
+    borderTop: `1px solid ${ThemingParameters.sapList_BorderColor}`,
+    borderBottom: `1px solid ${ThemingParameters.sapList_BorderColor}`
+  },
+  th: {
     height: CssSizeVariables.sapWcrAnalyticalTableRowHeight,
     color: ThemingParameters.sapList_HeaderTextColor,
+    backgroundColor: ThemingParameters.sapList_HeaderBackground,
     borderTop: `1px solid ${ThemingParameters.sapList_BorderColor}`,
     borderBottom: `1px solid ${ThemingParameters.sapList_BorderColor}`,
     borderRight: `1px solid ${ThemingParameters.sapList_BorderColor}`,
@@ -39,7 +50,6 @@ const styles = {
   },
   tbody: {
     position: 'relative',
-    backgroundColor: ThemingParameters.sapList_Background,
     overflowX: 'hidden',
     overflowY: 'auto',
     scrollBarWidth: 'none !important',
