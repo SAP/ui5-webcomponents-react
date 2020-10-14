@@ -8,10 +8,12 @@ import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { ToolbarDesign } from '@ui5/webcomponents-react/lib/ToolbarDesign';
 import { ToolbarStyle } from '@ui5/webcomponents-react/lib/ToolbarStyle';
 import React, {
+  cloneElement,
   createRef,
   FC,
   forwardRef,
   ReactElement,
+  ReactFragment,
   ReactNode,
   ReactNodeArray,
   Ref,
@@ -29,13 +31,35 @@ import { styles } from './Toolbar.jss';
 const useStyles = createComponentStyles(styles, { name: 'Toolbar' });
 
 export interface ToolbarProptypes extends CommonProps {
-  children?: ReactNode | ReactNodeArray;
+  /**
+   * Defines the content of the `Toolbar`.
+   */
+  children?: ReactNode | ReactNodeArray | ReactFragment;
+  /**
+   * Defines the visual style of the `Toolbar`.<br />
+   * <b>Note:</b> The visual styles are theme-dependent.
+   */
   toolbarStyle?: ToolbarStyle;
+  /**
+   * Defines the `Toolbar` design.<br />
+   * <b>Note:</b> Design settings are theme-dependent.
+   */
   design?: ToolbarDesign;
+  /**
+   * Indicates that the whole `Toolbar` is clickable. The Press event is fired only if `active` is set to true.
+   */
   active?: boolean;
+  /**
+   * Fired when the user clicks on the `Toolbar`, if the `active` prop is set to "true".
+   */
   onToolbarClick?: (event: CustomEvent) => void;
 }
-
+/**
+ * Horizontal container most commonly used to display buttons, labels, selects and various other input controls.
+ *
+ * The content of the `Toolbar` moves into the overflow area from right to left when the available space is not enough in the visible area of the container.
+ * It can be accessed by the user through the overflow button that opens it in a popover.
+ */
 const Toolbar: FC<ToolbarProptypes> = forwardRef((props: ToolbarProptypes, ref: Ref<HTMLDivElement>) => {
   const { children, toolbarStyle, design, active, style, tooltip, className, onToolbarClick, slot } = props;
   const classes = useStyles(styles);
@@ -72,9 +96,16 @@ const Toolbar: FC<ToolbarProptypes> = forwardRef((props: ToolbarProptypes, ref: 
   const childrenWithRef = useMemo(() => {
     controlMetaData.current = [];
 
-    return React.Children.toArray(
-      (children as ReactElement)?.type === React.Fragment ? (children as ReactElement).props.children : children
-    ).map((item: ReactElement, index) => {
+    const refactoredChildren = React.Children.toArray(children).map((child, index) => {
+      if ((child as ReactElement).type === React.Fragment) {
+        return (child as ReactElement).props.children.filter(Boolean).map((item, itemIndex: number) => {
+          return cloneElement(item, { key: `.${index}:${itemIndex}` });
+        });
+      }
+      return child;
+    });
+
+    return refactoredChildren.flat().map((item: ReactElement, index) => {
       const itemRef: RefObject<HTMLDivElement> = createRef();
 
       controlMetaData.current.push({
@@ -92,6 +123,7 @@ const Toolbar: FC<ToolbarProptypes> = forwardRef((props: ToolbarProptypes, ref: 
       );
     });
   }, [children, controlMetaData]);
+
   const overflowNeeded =
     (lastVisibleIndex || lastVisibleIndex === 0) && React.Children.count(childrenWithRef) !== lastVisibleIndex + 1;
 
@@ -188,7 +220,12 @@ const Toolbar: FC<ToolbarProptypes> = forwardRef((props: ToolbarProptypes, ref: 
       {overflowNeeded && (
         <div className={classes.overflowButtonContainer} title={showMoreText}>
           <OverflowPopover lastVisibleIndex={lastVisibleIndex} contentClass={classes.popoverContent}>
-            {children}
+            {React.Children.toArray(children).map((child) => {
+              if ((child as ReactElement).type === React.Fragment) {
+                return (child as ReactElement).props.children;
+              }
+              return child;
+            })}
           </OverflowPopover>
         </div>
       )}
