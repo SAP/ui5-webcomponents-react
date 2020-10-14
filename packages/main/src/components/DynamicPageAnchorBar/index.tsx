@@ -2,21 +2,22 @@ import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ToggleButton } from '@ui5/webcomponents-react/lib/ToggleButton';
-import React, { CSSProperties, forwardRef, ReactElement, RefObject, useCallback, useRef, useState } from 'react';
+import React, { CSSProperties, forwardRef, ReactElement, RefObject, useCallback } from 'react';
 import { createUseStyles } from 'react-jss';
-import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
+import '@ui5/webcomponents-icons/dist/icons/slim-arrow-down.js';
+import '@ui5/webcomponents-icons/dist/icons/slim-arrow-up.js';
 
 addCustomCSS(
   'ui5-button',
   `
-:host([data-ui5wcr-object-page-header-action]) .ui5-button-root {
+:host([data-ui5wcr-dynamic-page-header-action]) .ui5-button-root {
  padding: 0;
 }`
 );
 addCustomCSS(
   'ui5-togglebutton',
   `
-:host([data-ui5wcr-object-page-header-action]) .ui5-button-root {
+:host([data-ui5wcr-dynamic-page-header-action]) .ui5-button-root {
  padding: 0;
 }`
 );
@@ -108,7 +109,7 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
       {shouldRenderHideHeaderButton && (
         <Button
           icon={headerContentHeight === 0 ? 'slim-arrow-down' : 'slim-arrow-up'}
-          data-ui5wcr-object-page-header-action=""
+          data-ui5wcr-dynamic-page-header-action=""
           className={`${classes.anchorBarActionButton} ${classes.anchorBarActionButtonExpandable} ${
             showBothActions ? classes.anchorBarActionPinnableAndExandable : ''
           }`}
@@ -120,7 +121,7 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
       {shouldRenderHeaderPinnableButton && (
         <ToggleButton
           icon="pushpin-off"
-          data-ui5wcr-object-page-header-action=""
+          data-ui5wcr-dynamic-page-header-action=""
           className={`${classes.anchorBarActionButton} ${classes.anchorBarActionButtonPinnable} ${
             showBothActions ? classes.anchorBarActionPinnableAndExandable : ''
           }`}

@@ -2,18 +2,18 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingPara
 import { sapUiResponsiveContentPadding } from '@ui5/webcomponents-react-base/lib/spacing';
 
 export const DynamicPageCssVariables = {
-  anchorFloat: '--_ui5wcr_ObjectPage_actions_float',
-  anchorLeft: '--_ui5wcr_ObjectPage_actions_left',
-  anchorRight: '--_ui5wcr_ObjectPage_actions_right',
-  avatarMargin: '--_ui5wcr_ObjectPage_avatar_margin',
-  lastSectionMargin: '--_ui5wcr_ObjectPage_last_section_margin_bottom'
+  anchorFloat: '--_ui5wcr_DynamicPage_actions_float',
+  anchorLeft: '--_ui5wcr_DynamicPage_actions_left',
+  anchorRight: '--_ui5wcr_DynamicPage_actions_right',
+  avatarMargin: '--_ui5wcr_DynamicPage_avatar_margin',
+  lastSectionMargin: '--_ui5wcr_DynamicPage_last_section_margin_bottom'
 };
 
 const styles = {
   dynamicPage: {
     width: '100%',
     height: '100%',
-    maxHeight: '100vh',
+    maxHeight: '100%',
     position: 'relative',
     whiteSpace: 'normal',
     fontFamily: ThemingParameters.sapFontFamily,

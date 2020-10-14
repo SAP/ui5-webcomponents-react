@@ -78,7 +78,7 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef(
     const containerClasses = StyleClassHelper.of(classes.container);
 
     containerClasses.putIfPresent(className);
-    const passThroughProps = usePassThroughHtmlProps(props);
+    const passThroughProps = usePassThroughHtmlProps(props, ['onToggleHeaderContentVisibility']);
 
     useEffect(() => {
       if (headerVisible) {
@@ -95,7 +95,6 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef(
         ref={ref}
         data-component-name="DynamicPageTitle"
         {...passThroughProps}
-        // @ts-ignore
         onClick={onToggleHeaderContentVisibility}
       >
         <div className={classes.breadcrumbs}>{breadcrumbs}</div>

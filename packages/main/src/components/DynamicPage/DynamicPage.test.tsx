@@ -1,4 +1,4 @@
-import { mount } from 'enzyme';
+import { render } from '@shared/tests';
 import { Breadcrumbs } from '@ui5/webcomponents-react/lib/Breadcrumbs';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
@@ -266,11 +266,11 @@ const renderComponentWithoutContent = () => (
 
 describe('DynamicPage', () => {
   test('with content', () => {
-    const wrapper = mount(renderComponent());
-    expect(wrapper.render()).toMatchSnapshot();
+    const wrapper = render(renderComponent());
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
   test('without content', () => {
-    const wrapper = mount(renderComponentWithoutContent());
-    expect(wrapper.render()).toMatchSnapshot();
+    const wrapper = render(renderComponentWithoutContent());
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 });
