@@ -59,16 +59,24 @@ import { ObjectStatus } from '@ui5/webcomponents-react/lib/ObjectStatus';
         title={
           <DynamicPageTitle
             actions={[
-              <Button design={ButtonDesign.Emphasized}>Edit</Button>,
-              <Button design={ButtonDesign.Transparent}>Delete</Button>,
-              <Button design={ButtonDesign.Transparent}>Copy</Button>,
-              <Button design={ButtonDesign.Transparent}>Toggle Footer</Button>,
-              <Button icon="action" design={ButtonDesign.Transparent}></Button>
+              <Button key={'edit'} design={ButtonDesign.Emphasized}>
+                Edit
+              </Button>,
+              <Button key={'delete'} design={ButtonDesign.Transparent}>
+                Delete
+              </Button>,
+              <Button key={'copy'} design={ButtonDesign.Transparent}>
+                Copy
+              </Button>,
+              <Button key={'toggleFoooter'} design={ButtonDesign.Transparent}>
+                Toggle Footer
+              </Button>,
+              <Button key={'action'} icon="action" design={ButtonDesign.Transparent}></Button>
             ]}
             navigationActions={[
-              <Button icon="full-screen" design={ButtonDesign.Transparent} />,
-              <Button icon="exit-full-screen" design={ButtonDesign.Transparent} />,
-              <Button icon="decline" design={ButtonDesign.Transparent} />
+              <Button key={'fullscreen'} icon="full-screen" design={ButtonDesign.Transparent} />,
+              <Button key={'exitFullscreen'} icon="exit-full-screen" design={ButtonDesign.Transparent} />,
+              <Button key={'decline'} icon="decline" design={ButtonDesign.Transparent} />
             ]}
             breadcrumbs={
               <Breadcrumbs>
