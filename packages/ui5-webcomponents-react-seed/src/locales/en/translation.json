@@ -1,4 +1,5 @@
 {
+  "app.generics.close": "Close",
   "helmet.title.app": "TodoList App",
   "helmet.title.error": "Buggy Component - TodoList App",
   "helmet.title.notfound": "NotFound - TodoList App",
@@ -7,6 +8,12 @@
   "shell.button.user.settings": "User Settings",
   "shell.button.user.settings.item.languageSwitch": "Language Switch",
   "shell.button.user.settings.item.themeSwitch": "Theme Switch",
+  "shell.button.user.settings.item.themeSwitch.option.default": "Default",
+  "shell.button.user.settings.item.themeSwitch.option.dark": "Dark",
+  "shell.button.user.settings.item.themeSwitch.option.highContrastBlack": "High Contrast Black",
+  "shell.button.user.settings.item.themeSwitch.option.highContrastWhite": "High Contrast White",
+  "shell.button.user.settings.item.themeSwitch.option.belize": "Belize",
+  "shell.button.user.settings.item.themeSwitch.title": "Theme Switch",
   "page.error.text": "Ops! There was an error in loading this page",
   "page.error.alt": "Error",
   "page.notfound.text": "Hmmm, we could find this URL",

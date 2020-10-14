@@ -11,4 +11,7 @@ export default {
       GET_TODO_BY_ID: 'GET_TODO_BY_ID',
     },
   },
+  SEED: {
+    SELECTED_THEME: 'SELECTED_THEME',
+  },
 };
