@@ -25,6 +25,22 @@ describe('Toolbar', () => {
     expect(screen.getByTestId('toolbar')).toHaveClass('Toolbar-active');
   });
 
+  test('Renders with children as react fragments', () => {
+    expect(
+      render(
+        <Toolbar active data-testid="toolbar">
+          <>
+            <Text>Item1</Text>
+            <Text>Item2</Text>
+            <Text>Item3</Text>
+          </>
+        </Toolbar>
+      ).asFragment()
+    ).toMatchSnapshot();
+    expect(screen.getByText('Item1').textContent).toEqual('Item1');
+    expect(screen.getByTestId('toolbar')).toHaveClass('Toolbar-active');
+  });
+
   // test('Renders overflowButton', async () => {
   //   let utils;
   //

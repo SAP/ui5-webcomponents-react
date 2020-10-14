@@ -35,6 +35,41 @@ exports[`Toolbar Renders with children 1`] = `
 </DocumentFragment>
 `;
 
+exports[`Toolbar Renders with children as react fragments 1`] = `
+<DocumentFragment>
+  <div
+    class="Toolbar-outerContainer Toolbar-active"
+    data-testid="toolbar"
+  >
+    <div
+      class="Toolbar-toolbar"
+    >
+      <div>
+        <span
+          class="Text-text"
+        >
+          Item1
+        </span>
+      </div>
+      <div>
+        <span
+          class="Text-text"
+        >
+          Item2
+        </span>
+      </div>
+      <div>
+        <span
+          class="Text-text"
+        >
+          Item3
+        </span>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
 exports[`Toolbar Renders with default Props 1`] = `
 <DocumentFragment>
   <div

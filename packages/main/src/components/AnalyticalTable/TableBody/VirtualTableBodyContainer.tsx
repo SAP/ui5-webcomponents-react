@@ -1,6 +1,5 @@
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { GlobalStyleClasses } from '@ui5/webcomponents-react/lib/GlobalStyleClasses';
 
 export const VirtualTableBodyContainer = (props) => {
   const {
@@ -13,7 +12,8 @@ export const VirtualTableBodyContainer = (props) => {
     infiniteScrollThreshold,
     onLoadMore,
     rows,
-    internalRowHeight
+    internalRowHeight,
+    handleExternalScroll
   } = props;
   const [isMounted, setIsMounted] = useState(false);
 
@@ -23,13 +23,14 @@ export const VirtualTableBodyContainer = (props) => {
     }
   }, [parentRef.current]);
 
-  const classNames = StyleClassHelper.of(classes.tbody, GlobalStyleClasses.sapScrollBar).className;
+  const classNames = StyleClassHelper.of(classes.tbody).className;
 
   const lastScrollTop = useRef(0);
   const firedInfiniteLoadEvents = useRef(new Set());
 
   const onScroll = useCallback(
     (event) => {
+      handleExternalScroll();
       const scrollOffset = event.target.scrollTop;
       const isScrollingDown = lastScrollTop.current < scrollOffset;
       if (isScrollingDown && infiniteScroll) {
@@ -54,7 +55,8 @@ export const VirtualTableBodyContainer = (props) => {
       rows.length,
       internalRowHeight,
       firedInfiniteLoadEvents,
-      lastScrollTop
+      lastScrollTop,
+      handleExternalScroll
     ]
   );
 
