@@ -49,8 +49,8 @@
       "test:coverage": "npm run test -- --watchAll=false --coverage",
       "lint": "eslint --quiet .",
       "lint:fix": "eslint . --fix",
-      "prettier": "./node_modules/.bin/prettier --config .prettierrc --check 'src/**/*.js'",
-      "prettier:fix": "./node_modules/.bin/prettier --config .prettierrc --write 'src/**/*.js'",
+      "prettier": "./node_modules/.bin/prettier --config .prettierrc --check \"src/**/*.js\"",
+      "prettier:fix": "./node_modules/.bin/prettier --config .prettierrc --write \"src/**/*.js\"",
       "eject": "react-scripts eject"
     },
     "browserslist": {
