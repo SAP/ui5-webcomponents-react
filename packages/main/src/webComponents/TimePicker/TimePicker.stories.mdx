@@ -1,11 +1,5 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
-import { DateRangePicker } from '@ui5/webcomponents-react/lib/DateRangePicker';
-import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';
-import '@ui5/webcomponents-localization/dist/features/calendar/Gregorian.js';
-import '@ui5/webcomponents-localization/dist/features/calendar/Buddhist.js';
-import '@ui5/webcomponents-localization/dist/features/calendar/Islamic.js';
-import '@ui5/webcomponents-localization/dist/features/calendar/Japanese.js';
-import '@ui5/webcomponents-localization/dist/features/calendar/Persian.js';
+import { TimePicker } from '@ui5/webcomponents-react/lib/TimePicker';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { CSSProperties, Ref } from 'react';
 
@@ -13,10 +7,10 @@ import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 
 <Meta
-  title="UI5 Web Components / DateRangePicker"
-  component={DateRangePicker}
+  title="UI5 Web Components / TimePicker"
+  component={TimePicker}
   argTypes={{
-    ...createSelectArgTypes({ primaryCalendarType: CalendarType, valueState: ValueState }),
+    ...createSelectArgTypes({ valueState: ValueState }),
     valueStateMessage: { control: { disable: true } },
     slot: { control: { disable: true } },
     ref: { control: { disable: true } },
@@ -33,7 +27,6 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
     tooltip: { type: 'string', description: 'A tooltip which will be shown on hover' }
   }}
   args={{
-    primaryCalendarType: CalendarType.Gregorian,
     valueState: ValueState.None,
     style: {},
     className: '',
@@ -48,14 +41,20 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
 <Canvas>
   <Story name="Default">
     {(args) => {
-      return <DateRangePicker {...args} />;
+      return <TimePicker {...args} />;
     }}
   </Story>
 </Canvas>
 
 <ArgsTable story="." />
-<div style={{ fontFamily: 'var(--sapFontFamily)', fontSize: 'var(--sapFontSize)', color: 'var(--sapTextColor)' }}>
-  <h3>Usage</h3>
-  The user can enter a date by: Using the calendar that opens in a popup or typing it in directly in the input field (not
-  available for mobile devices).
+<div style={{fontFamily:'var(--sapFontFamily)', fontSize:'var(--sapFontSize)', color:'var(--sapTextColor)'}}>
+<h3>Usage</h3>
+The user can enter a time by:
+<ul>
+  <li>Using the sliders that opens in a popup</li>
+  <li>Typing it in directly in the input field</li>
+</ul>
+<br /><br />
+When the user makes an entry and chooses the enter key, the sliders shows the corresponding time. When the user directly
+triggers the sliders display, the actual time is displayed.
 </div>
