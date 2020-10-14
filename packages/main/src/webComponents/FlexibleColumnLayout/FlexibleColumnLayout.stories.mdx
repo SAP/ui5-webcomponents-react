@@ -4,6 +4,7 @@ import { FCLLayout } from '@ui5/webcomponents-react/lib/FCLLayout';
 import { List } from '@ui5/webcomponents-react/lib/List';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
 import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
 <Meta
@@ -11,6 +12,7 @@ import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
   component={FlexibleColumnLayout}
   argTypes={{
     ...createSelectArgTypes({ layout: FCLLayout }),
+    ...DocsCommonProps,
     startColumn: { type: null },
     midColumn: { type: null },
     endColumn: { type: null }
