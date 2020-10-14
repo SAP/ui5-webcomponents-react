@@ -274,668 +274,670 @@ exports[`DynamicPage with content 1`] = `
         />
       </section>
     </div>
-    <div
-      class="DynamicPageContentArea-container"
-      data-component-name="DynamicPageContentArea"
-      title="Base data"
-    >
+    <div>
       <div
-        class="DynamicPageContentArea-content"
+        class="DynamicPageContentArea-container"
+        data-component-name="DynamicPageContentArea"
+        title="Base data"
       >
         <div
-          class="Form-form"
-          data-columns="4"
-          style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem; z-index: 0;"
+          class="DynamicPageContentArea-content"
         >
-          <ui5-title
-            level="H5"
-            style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
-            ui5-title=""
-          >
-            Phone Numbers
-          </ui5-title>
-          <ui5-label
-            class="FormItem-label"
-            style="grid-column-start: 1; grid-row-start: 3;"
-            ui5-label=""
-            wrap="true"
-          >
-            Home:
-          </ui5-label>
           <div
-            class="FormItem-content"
-            style="grid-column-start: 5; grid-row-start: 3;"
+            class="Form-form"
+            data-columns="4"
+            style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem; z-index: 0;"
           >
-            <span
-              class="Text-text"
+            <ui5-title
+              level="H5"
+              style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
+              ui5-title=""
             >
-              +1 234-567-8901
-            </span>
+              Phone Numbers
+            </ui5-title>
+            <ui5-label
+              class="FormItem-label"
+              style="grid-column-start: 1; grid-row-start: 3;"
+              ui5-label=""
+              wrap="true"
+            >
+              Home:
+            </ui5-label>
+            <div
+              class="FormItem-content"
+              style="grid-column-start: 5; grid-row-start: 3;"
+            >
+              <span
+                class="Text-text"
+              >
+                +1 234-567-8901
+              </span>
+            </div>
+            <ui5-label
+              class="FormItem-label"
+              style="grid-column-start: 1; grid-row-start: 4;"
+              ui5-label=""
+              wrap="true"
+            />
+            <div
+              class="FormItem-content"
+              style="grid-column-start: 5; grid-row-start: 4;"
+            >
+              <span
+                class="Text-text"
+              >
+                +1 234-567-5555
+              </span>
+            </div>
+            <ui5-title
+              level="H5"
+              style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
+              ui5-title=""
+            >
+              Social Accounts
+            </ui5-title>
+            <ui5-label
+              class="FormItem-label"
+              style="grid-column-start: 13; grid-row-start: 3;"
+              ui5-label=""
+              wrap="true"
+            >
+              LinkedIn:
+            </ui5-label>
+            <div
+              class="FormItem-content"
+              style="grid-column-start: 17; grid-row-start: 3;"
+            >
+              <span
+                class="Text-text"
+              >
+                /DeniseSmith
+              </span>
+            </div>
+            <ui5-label
+              class="FormItem-label"
+              style="grid-column-start: 13; grid-row-start: 4;"
+              ui5-label=""
+              wrap="true"
+            >
+              Twitter:
+            </ui5-label>
+            <div
+              class="FormItem-content"
+              style="grid-column-start: 17; grid-row-start: 4;"
+            >
+              <span
+                class="Text-text"
+              >
+                @DeniseSmith
+              </span>
+            </div>
           </div>
-          <ui5-label
-            class="FormItem-label"
-            style="grid-column-start: 1; grid-row-start: 4;"
-            ui5-label=""
-            wrap="true"
-          />
           <div
-            class="FormItem-content"
-            style="grid-column-start: 5; grid-row-start: 4;"
+            class="Form-form"
+            data-columns="4"
+            style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem;"
           >
-            <span
-              class="Text-text"
+            <ui5-title
+              level="H5"
+              style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
+              ui5-title=""
             >
-              +1 234-567-5555
-            </span>
+              Addresses
+            </ui5-title>
+            <ui5-label
+              class="FormItem-label"
+              style="grid-column-start: 1; grid-row-start: 3;"
+              ui5-label=""
+              wrap="true"
+            >
+              Home Address:
+            </ui5-label>
+            <div
+              class="FormItem-content"
+              style="grid-column-start: 5; grid-row-start: 3;"
+            >
+              <span
+                class="Text-text"
+              >
+                2096 Mission Street
+              </span>
+            </div>
+            <ui5-label
+              class="FormItem-label"
+              style="grid-column-start: 1; grid-row-start: 4;"
+              ui5-label=""
+              wrap="true"
+            >
+              Mailing Address:
+            </ui5-label>
+            <div
+              class="FormItem-content"
+              style="grid-column-start: 5; grid-row-start: 4;"
+            >
+              <span
+                class="Text-text"
+              >
+                PO Box 32114
+              </span>
+            </div>
+            <ui5-title
+              level="H5"
+              style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
+              ui5-title=""
+            >
+              Mailing Address
+            </ui5-title>
+            <ui5-label
+              class="FormItem-label"
+              style="grid-column-start: 13; grid-row-start: 3;"
+              ui5-label=""
+              wrap="true"
+            >
+              Work:
+            </ui5-label>
+            <div
+              class="FormItem-content"
+              style="grid-column-start: 17; grid-row-start: 3;"
+            >
+              <span
+                class="Text-text"
+              >
+                DeniseSmith@sap.com
+              </span>
+            </div>
           </div>
-          <ui5-title
-            level="H5"
-            style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
-            ui5-title=""
-          >
-            Social Accounts
-          </ui5-title>
-          <ui5-label
-            class="FormItem-label"
-            style="grid-column-start: 13; grid-row-start: 3;"
-            ui5-label=""
-            wrap="true"
-          >
-            LinkedIn:
-          </ui5-label>
           <div
-            class="FormItem-content"
-            style="grid-column-start: 17; grid-row-start: 3;"
+            class="Form-form"
+            data-columns="4"
+            style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem;"
           >
-            <span
-              class="Text-text"
+            <ui5-title
+              level="H5"
+              style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
+              ui5-title=""
             >
-              /DeniseSmith
-            </span>
+              Phone Numbers
+            </ui5-title>
+            <ui5-label
+              class="FormItem-label"
+              style="grid-column-start: 1; grid-row-start: 3;"
+              ui5-label=""
+              wrap="true"
+            >
+              Home:
+            </ui5-label>
+            <div
+              class="FormItem-content"
+              style="grid-column-start: 5; grid-row-start: 3;"
+            >
+              <span
+                class="Text-text"
+              >
+                +1 234-567-8901
+              </span>
+            </div>
+            <ui5-label
+              class="FormItem-label"
+              style="grid-column-start: 1; grid-row-start: 4;"
+              ui5-label=""
+              wrap="true"
+            />
+            <div
+              class="FormItem-content"
+              style="grid-column-start: 5; grid-row-start: 4;"
+            >
+              <span
+                class="Text-text"
+              >
+                +1 234-567-5555
+              </span>
+            </div>
+            <ui5-title
+              level="H5"
+              style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
+              ui5-title=""
+            >
+              Social Accounts
+            </ui5-title>
+            <ui5-label
+              class="FormItem-label"
+              style="grid-column-start: 13; grid-row-start: 3;"
+              ui5-label=""
+              wrap="true"
+            >
+              LinkedIn:
+            </ui5-label>
+            <div
+              class="FormItem-content"
+              style="grid-column-start: 17; grid-row-start: 3;"
+            >
+              <span
+                class="Text-text"
+              >
+                /DeniseSmith
+              </span>
+            </div>
+            <ui5-label
+              class="FormItem-label"
+              style="grid-column-start: 13; grid-row-start: 4;"
+              ui5-label=""
+              wrap="true"
+            >
+              Twitter:
+            </ui5-label>
+            <div
+              class="FormItem-content"
+              style="grid-column-start: 17; grid-row-start: 4;"
+            >
+              <span
+                class="Text-text"
+              >
+                @DeniseSmith
+              </span>
+            </div>
           </div>
-          <ui5-label
-            class="FormItem-label"
-            style="grid-column-start: 13; grid-row-start: 4;"
-            ui5-label=""
-            wrap="true"
-          >
-            Twitter:
-          </ui5-label>
           <div
-            class="FormItem-content"
-            style="grid-column-start: 17; grid-row-start: 4;"
+            class="Form-form"
+            data-columns="4"
+            style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem;"
           >
-            <span
-              class="Text-text"
+            <ui5-title
+              level="H5"
+              style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
+              ui5-title=""
             >
-              @DeniseSmith
-            </span>
+              Addresses
+            </ui5-title>
+            <ui5-label
+              class="FormItem-label"
+              style="grid-column-start: 1; grid-row-start: 3;"
+              ui5-label=""
+              wrap="true"
+            >
+              Home Address:
+            </ui5-label>
+            <div
+              class="FormItem-content"
+              style="grid-column-start: 5; grid-row-start: 3;"
+            >
+              <span
+                class="Text-text"
+              >
+                2096 Mission Street
+              </span>
+            </div>
+            <ui5-label
+              class="FormItem-label"
+              style="grid-column-start: 1; grid-row-start: 4;"
+              ui5-label=""
+              wrap="true"
+            >
+              Mailing Address:
+            </ui5-label>
+            <div
+              class="FormItem-content"
+              style="grid-column-start: 5; grid-row-start: 4;"
+            >
+              <span
+                class="Text-text"
+              >
+                PO Box 32114
+              </span>
+            </div>
+            <ui5-title
+              level="H5"
+              style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
+              ui5-title=""
+            >
+              Mailing Address
+            </ui5-title>
+            <ui5-label
+              class="FormItem-label"
+              style="grid-column-start: 13; grid-row-start: 3;"
+              ui5-label=""
+              wrap="true"
+            >
+              Work:
+            </ui5-label>
+            <div
+              class="FormItem-content"
+              style="grid-column-start: 17; grid-row-start: 3;"
+            >
+              <span
+                class="Text-text"
+              >
+                DeniseSmith@sap.com
+              </span>
+            </div>
           </div>
-        </div>
-        <div
-          class="Form-form"
-          data-columns="4"
-          style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem;"
-        >
-          <ui5-title
-            level="H5"
-            style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
-            ui5-title=""
-          >
-            Addresses
-          </ui5-title>
-          <ui5-label
-            class="FormItem-label"
-            style="grid-column-start: 1; grid-row-start: 3;"
-            ui5-label=""
-            wrap="true"
-          >
-            Home Address:
-          </ui5-label>
           <div
-            class="FormItem-content"
-            style="grid-column-start: 5; grid-row-start: 3;"
+            class="Form-form"
+            data-columns="4"
+            style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem; z-index: 0;"
           >
-            <span
-              class="Text-text"
+            <ui5-title
+              level="H5"
+              style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
+              ui5-title=""
             >
-              2096 Mission Street
-            </span>
+              Phone Numbers
+            </ui5-title>
+            <ui5-label
+              class="FormItem-label"
+              style="grid-column-start: 1; grid-row-start: 3;"
+              ui5-label=""
+              wrap="true"
+            >
+              Home:
+            </ui5-label>
+            <div
+              class="FormItem-content"
+              style="grid-column-start: 5; grid-row-start: 3;"
+            >
+              <span
+                class="Text-text"
+              >
+                +1 234-567-8901
+              </span>
+            </div>
+            <ui5-label
+              class="FormItem-label"
+              style="grid-column-start: 1; grid-row-start: 4;"
+              ui5-label=""
+              wrap="true"
+            />
+            <div
+              class="FormItem-content"
+              style="grid-column-start: 5; grid-row-start: 4;"
+            >
+              <span
+                class="Text-text"
+              >
+                +1 234-567-5555
+              </span>
+            </div>
+            <ui5-title
+              level="H5"
+              style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
+              ui5-title=""
+            >
+              Social Accounts
+            </ui5-title>
+            <ui5-label
+              class="FormItem-label"
+              style="grid-column-start: 13; grid-row-start: 3;"
+              ui5-label=""
+              wrap="true"
+            >
+              LinkedIn:
+            </ui5-label>
+            <div
+              class="FormItem-content"
+              style="grid-column-start: 17; grid-row-start: 3;"
+            >
+              <span
+                class="Text-text"
+              >
+                /DeniseSmith
+              </span>
+            </div>
+            <ui5-label
+              class="FormItem-label"
+              style="grid-column-start: 13; grid-row-start: 4;"
+              ui5-label=""
+              wrap="true"
+            >
+              Twitter:
+            </ui5-label>
+            <div
+              class="FormItem-content"
+              style="grid-column-start: 17; grid-row-start: 4;"
+            >
+              <span
+                class="Text-text"
+              >
+                @DeniseSmith
+              </span>
+            </div>
           </div>
-          <ui5-label
-            class="FormItem-label"
-            style="grid-column-start: 1; grid-row-start: 4;"
-            ui5-label=""
-            wrap="true"
-          >
-            Mailing Address:
-          </ui5-label>
           <div
-            class="FormItem-content"
-            style="grid-column-start: 5; grid-row-start: 4;"
+            class="Form-form"
+            data-columns="4"
+            style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem;"
           >
-            <span
-              class="Text-text"
+            <ui5-title
+              level="H5"
+              style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
+              ui5-title=""
             >
-              PO Box 32114
-            </span>
+              Addresses
+            </ui5-title>
+            <ui5-label
+              class="FormItem-label"
+              style="grid-column-start: 1; grid-row-start: 3;"
+              ui5-label=""
+              wrap="true"
+            >
+              Home Address:
+            </ui5-label>
+            <div
+              class="FormItem-content"
+              style="grid-column-start: 5; grid-row-start: 3;"
+            >
+              <span
+                class="Text-text"
+              >
+                2096 Mission Street
+              </span>
+            </div>
+            <ui5-label
+              class="FormItem-label"
+              style="grid-column-start: 1; grid-row-start: 4;"
+              ui5-label=""
+              wrap="true"
+            >
+              Mailing Address:
+            </ui5-label>
+            <div
+              class="FormItem-content"
+              style="grid-column-start: 5; grid-row-start: 4;"
+            >
+              <span
+                class="Text-text"
+              >
+                PO Box 32114
+              </span>
+            </div>
+            <ui5-title
+              level="H5"
+              style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
+              ui5-title=""
+            >
+              Mailing Address
+            </ui5-title>
+            <ui5-label
+              class="FormItem-label"
+              style="grid-column-start: 13; grid-row-start: 3;"
+              ui5-label=""
+              wrap="true"
+            >
+              Work:
+            </ui5-label>
+            <div
+              class="FormItem-content"
+              style="grid-column-start: 17; grid-row-start: 3;"
+            >
+              <span
+                class="Text-text"
+              >
+                DeniseSmith@sap.com
+              </span>
+            </div>
           </div>
-          <ui5-title
-            level="H5"
-            style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
-            ui5-title=""
-          >
-            Mailing Address
-          </ui5-title>
-          <ui5-label
-            class="FormItem-label"
-            style="grid-column-start: 13; grid-row-start: 3;"
-            ui5-label=""
-            wrap="true"
-          >
-            Work:
-          </ui5-label>
           <div
-            class="FormItem-content"
-            style="grid-column-start: 17; grid-row-start: 3;"
+            class="Form-form"
+            data-columns="4"
+            style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem;"
           >
-            <span
-              class="Text-text"
+            <ui5-title
+              level="H5"
+              style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
+              ui5-title=""
             >
-              DeniseSmith@sap.com
-            </span>
+              Phone Numbers
+            </ui5-title>
+            <ui5-label
+              class="FormItem-label"
+              style="grid-column-start: 1; grid-row-start: 3;"
+              ui5-label=""
+              wrap="true"
+            >
+              Home:
+            </ui5-label>
+            <div
+              class="FormItem-content"
+              style="grid-column-start: 5; grid-row-start: 3;"
+            >
+              <span
+                class="Text-text"
+              >
+                +1 234-567-8901
+              </span>
+            </div>
+            <ui5-label
+              class="FormItem-label"
+              style="grid-column-start: 1; grid-row-start: 4;"
+              ui5-label=""
+              wrap="true"
+            />
+            <div
+              class="FormItem-content"
+              style="grid-column-start: 5; grid-row-start: 4;"
+            >
+              <span
+                class="Text-text"
+              >
+                +1 234-567-5555
+              </span>
+            </div>
+            <ui5-title
+              level="H5"
+              style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
+              ui5-title=""
+            >
+              Social Accounts
+            </ui5-title>
+            <ui5-label
+              class="FormItem-label"
+              style="grid-column-start: 13; grid-row-start: 3;"
+              ui5-label=""
+              wrap="true"
+            >
+              LinkedIn:
+            </ui5-label>
+            <div
+              class="FormItem-content"
+              style="grid-column-start: 17; grid-row-start: 3;"
+            >
+              <span
+                class="Text-text"
+              >
+                /DeniseSmith
+              </span>
+            </div>
+            <ui5-label
+              class="FormItem-label"
+              style="grid-column-start: 13; grid-row-start: 4;"
+              ui5-label=""
+              wrap="true"
+            >
+              Twitter:
+            </ui5-label>
+            <div
+              class="FormItem-content"
+              style="grid-column-start: 17; grid-row-start: 4;"
+            >
+              <span
+                class="Text-text"
+              >
+                @DeniseSmith
+              </span>
+            </div>
           </div>
-        </div>
-        <div
-          class="Form-form"
-          data-columns="4"
-          style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem;"
-        >
-          <ui5-title
-            level="H5"
-            style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
-            ui5-title=""
-          >
-            Phone Numbers
-          </ui5-title>
-          <ui5-label
-            class="FormItem-label"
-            style="grid-column-start: 1; grid-row-start: 3;"
-            ui5-label=""
-            wrap="true"
-          >
-            Home:
-          </ui5-label>
           <div
-            class="FormItem-content"
-            style="grid-column-start: 5; grid-row-start: 3;"
+            class="Form-form"
+            data-columns="4"
+            style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem;"
           >
-            <span
-              class="Text-text"
+            <ui5-title
+              level="H5"
+              style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
+              ui5-title=""
             >
-              +1 234-567-8901
-            </span>
-          </div>
-          <ui5-label
-            class="FormItem-label"
-            style="grid-column-start: 1; grid-row-start: 4;"
-            ui5-label=""
-            wrap="true"
-          />
-          <div
-            class="FormItem-content"
-            style="grid-column-start: 5; grid-row-start: 4;"
-          >
-            <span
-              class="Text-text"
+              Addresses
+            </ui5-title>
+            <ui5-label
+              class="FormItem-label"
+              style="grid-column-start: 1; grid-row-start: 3;"
+              ui5-label=""
+              wrap="true"
             >
-              +1 234-567-5555
-            </span>
-          </div>
-          <ui5-title
-            level="H5"
-            style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
-            ui5-title=""
-          >
-            Social Accounts
-          </ui5-title>
-          <ui5-label
-            class="FormItem-label"
-            style="grid-column-start: 13; grid-row-start: 3;"
-            ui5-label=""
-            wrap="true"
-          >
-            LinkedIn:
-          </ui5-label>
-          <div
-            class="FormItem-content"
-            style="grid-column-start: 17; grid-row-start: 3;"
-          >
-            <span
-              class="Text-text"
+              Home Address:
+            </ui5-label>
+            <div
+              class="FormItem-content"
+              style="grid-column-start: 5; grid-row-start: 3;"
             >
-              /DeniseSmith
-            </span>
-          </div>
-          <ui5-label
-            class="FormItem-label"
-            style="grid-column-start: 13; grid-row-start: 4;"
-            ui5-label=""
-            wrap="true"
-          >
-            Twitter:
-          </ui5-label>
-          <div
-            class="FormItem-content"
-            style="grid-column-start: 17; grid-row-start: 4;"
-          >
-            <span
-              class="Text-text"
+              <span
+                class="Text-text"
+              >
+                2096 Mission Street
+              </span>
+            </div>
+            <ui5-label
+              class="FormItem-label"
+              style="grid-column-start: 1; grid-row-start: 4;"
+              ui5-label=""
+              wrap="true"
             >
-              @DeniseSmith
-            </span>
-          </div>
-        </div>
-        <div
-          class="Form-form"
-          data-columns="4"
-          style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem;"
-        >
-          <ui5-title
-            level="H5"
-            style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
-            ui5-title=""
-          >
-            Addresses
-          </ui5-title>
-          <ui5-label
-            class="FormItem-label"
-            style="grid-column-start: 1; grid-row-start: 3;"
-            ui5-label=""
-            wrap="true"
-          >
-            Home Address:
-          </ui5-label>
-          <div
-            class="FormItem-content"
-            style="grid-column-start: 5; grid-row-start: 3;"
-          >
-            <span
-              class="Text-text"
+              Mailing Address:
+            </ui5-label>
+            <div
+              class="FormItem-content"
+              style="grid-column-start: 5; grid-row-start: 4;"
             >
-              2096 Mission Street
-            </span>
-          </div>
-          <ui5-label
-            class="FormItem-label"
-            style="grid-column-start: 1; grid-row-start: 4;"
-            ui5-label=""
-            wrap="true"
-          >
-            Mailing Address:
-          </ui5-label>
-          <div
-            class="FormItem-content"
-            style="grid-column-start: 5; grid-row-start: 4;"
-          >
-            <span
-              class="Text-text"
+              <span
+                class="Text-text"
+              >
+                PO Box 32114
+              </span>
+            </div>
+            <ui5-title
+              level="H5"
+              style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
+              ui5-title=""
             >
-              PO Box 32114
-            </span>
-          </div>
-          <ui5-title
-            level="H5"
-            style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
-            ui5-title=""
-          >
-            Mailing Address
-          </ui5-title>
-          <ui5-label
-            class="FormItem-label"
-            style="grid-column-start: 13; grid-row-start: 3;"
-            ui5-label=""
-            wrap="true"
-          >
-            Work:
-          </ui5-label>
-          <div
-            class="FormItem-content"
-            style="grid-column-start: 17; grid-row-start: 3;"
-          >
-            <span
-              class="Text-text"
+              Mailing Address
+            </ui5-title>
+            <ui5-label
+              class="FormItem-label"
+              style="grid-column-start: 13; grid-row-start: 3;"
+              ui5-label=""
+              wrap="true"
             >
-              DeniseSmith@sap.com
-            </span>
-          </div>
-        </div>
-        <div
-          class="Form-form"
-          data-columns="4"
-          style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem; z-index: 0;"
-        >
-          <ui5-title
-            level="H5"
-            style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
-            ui5-title=""
-          >
-            Phone Numbers
-          </ui5-title>
-          <ui5-label
-            class="FormItem-label"
-            style="grid-column-start: 1; grid-row-start: 3;"
-            ui5-label=""
-            wrap="true"
-          >
-            Home:
-          </ui5-label>
-          <div
-            class="FormItem-content"
-            style="grid-column-start: 5; grid-row-start: 3;"
-          >
-            <span
-              class="Text-text"
+              Work:
+            </ui5-label>
+            <div
+              class="FormItem-content"
+              style="grid-column-start: 17; grid-row-start: 3;"
             >
-              +1 234-567-8901
-            </span>
-          </div>
-          <ui5-label
-            class="FormItem-label"
-            style="grid-column-start: 1; grid-row-start: 4;"
-            ui5-label=""
-            wrap="true"
-          />
-          <div
-            class="FormItem-content"
-            style="grid-column-start: 5; grid-row-start: 4;"
-          >
-            <span
-              class="Text-text"
-            >
-              +1 234-567-5555
-            </span>
-          </div>
-          <ui5-title
-            level="H5"
-            style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
-            ui5-title=""
-          >
-            Social Accounts
-          </ui5-title>
-          <ui5-label
-            class="FormItem-label"
-            style="grid-column-start: 13; grid-row-start: 3;"
-            ui5-label=""
-            wrap="true"
-          >
-            LinkedIn:
-          </ui5-label>
-          <div
-            class="FormItem-content"
-            style="grid-column-start: 17; grid-row-start: 3;"
-          >
-            <span
-              class="Text-text"
-            >
-              /DeniseSmith
-            </span>
-          </div>
-          <ui5-label
-            class="FormItem-label"
-            style="grid-column-start: 13; grid-row-start: 4;"
-            ui5-label=""
-            wrap="true"
-          >
-            Twitter:
-          </ui5-label>
-          <div
-            class="FormItem-content"
-            style="grid-column-start: 17; grid-row-start: 4;"
-          >
-            <span
-              class="Text-text"
-            >
-              @DeniseSmith
-            </span>
-          </div>
-        </div>
-        <div
-          class="Form-form"
-          data-columns="4"
-          style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem;"
-        >
-          <ui5-title
-            level="H5"
-            style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
-            ui5-title=""
-          >
-            Addresses
-          </ui5-title>
-          <ui5-label
-            class="FormItem-label"
-            style="grid-column-start: 1; grid-row-start: 3;"
-            ui5-label=""
-            wrap="true"
-          >
-            Home Address:
-          </ui5-label>
-          <div
-            class="FormItem-content"
-            style="grid-column-start: 5; grid-row-start: 3;"
-          >
-            <span
-              class="Text-text"
-            >
-              2096 Mission Street
-            </span>
-          </div>
-          <ui5-label
-            class="FormItem-label"
-            style="grid-column-start: 1; grid-row-start: 4;"
-            ui5-label=""
-            wrap="true"
-          >
-            Mailing Address:
-          </ui5-label>
-          <div
-            class="FormItem-content"
-            style="grid-column-start: 5; grid-row-start: 4;"
-          >
-            <span
-              class="Text-text"
-            >
-              PO Box 32114
-            </span>
-          </div>
-          <ui5-title
-            level="H5"
-            style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
-            ui5-title=""
-          >
-            Mailing Address
-          </ui5-title>
-          <ui5-label
-            class="FormItem-label"
-            style="grid-column-start: 13; grid-row-start: 3;"
-            ui5-label=""
-            wrap="true"
-          >
-            Work:
-          </ui5-label>
-          <div
-            class="FormItem-content"
-            style="grid-column-start: 17; grid-row-start: 3;"
-          >
-            <span
-              class="Text-text"
-            >
-              DeniseSmith@sap.com
-            </span>
-          </div>
-        </div>
-        <div
-          class="Form-form"
-          data-columns="4"
-          style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem;"
-        >
-          <ui5-title
-            level="H5"
-            style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
-            ui5-title=""
-          >
-            Phone Numbers
-          </ui5-title>
-          <ui5-label
-            class="FormItem-label"
-            style="grid-column-start: 1; grid-row-start: 3;"
-            ui5-label=""
-            wrap="true"
-          >
-            Home:
-          </ui5-label>
-          <div
-            class="FormItem-content"
-            style="grid-column-start: 5; grid-row-start: 3;"
-          >
-            <span
-              class="Text-text"
-            >
-              +1 234-567-8901
-            </span>
-          </div>
-          <ui5-label
-            class="FormItem-label"
-            style="grid-column-start: 1; grid-row-start: 4;"
-            ui5-label=""
-            wrap="true"
-          />
-          <div
-            class="FormItem-content"
-            style="grid-column-start: 5; grid-row-start: 4;"
-          >
-            <span
-              class="Text-text"
-            >
-              +1 234-567-5555
-            </span>
-          </div>
-          <ui5-title
-            level="H5"
-            style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
-            ui5-title=""
-          >
-            Social Accounts
-          </ui5-title>
-          <ui5-label
-            class="FormItem-label"
-            style="grid-column-start: 13; grid-row-start: 3;"
-            ui5-label=""
-            wrap="true"
-          >
-            LinkedIn:
-          </ui5-label>
-          <div
-            class="FormItem-content"
-            style="grid-column-start: 17; grid-row-start: 3;"
-          >
-            <span
-              class="Text-text"
-            >
-              /DeniseSmith
-            </span>
-          </div>
-          <ui5-label
-            class="FormItem-label"
-            style="grid-column-start: 13; grid-row-start: 4;"
-            ui5-label=""
-            wrap="true"
-          >
-            Twitter:
-          </ui5-label>
-          <div
-            class="FormItem-content"
-            style="grid-column-start: 17; grid-row-start: 4;"
-          >
-            <span
-              class="Text-text"
-            >
-              @DeniseSmith
-            </span>
-          </div>
-        </div>
-        <div
-          class="Form-form"
-          data-columns="4"
-          style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem;"
-        >
-          <ui5-title
-            level="H5"
-            style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
-            ui5-title=""
-          >
-            Addresses
-          </ui5-title>
-          <ui5-label
-            class="FormItem-label"
-            style="grid-column-start: 1; grid-row-start: 3;"
-            ui5-label=""
-            wrap="true"
-          >
-            Home Address:
-          </ui5-label>
-          <div
-            class="FormItem-content"
-            style="grid-column-start: 5; grid-row-start: 3;"
-          >
-            <span
-              class="Text-text"
-            >
-              2096 Mission Street
-            </span>
-          </div>
-          <ui5-label
-            class="FormItem-label"
-            style="grid-column-start: 1; grid-row-start: 4;"
-            ui5-label=""
-            wrap="true"
-          >
-            Mailing Address:
-          </ui5-label>
-          <div
-            class="FormItem-content"
-            style="grid-column-start: 5; grid-row-start: 4;"
-          >
-            <span
-              class="Text-text"
-            >
-              PO Box 32114
-            </span>
-          </div>
-          <ui5-title
-            level="H5"
-            style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
-            ui5-title=""
-          >
-            Mailing Address
-          </ui5-title>
-          <ui5-label
-            class="FormItem-label"
-            style="grid-column-start: 13; grid-row-start: 3;"
-            ui5-label=""
-            wrap="true"
-          >
-            Work:
-          </ui5-label>
-          <div
-            class="FormItem-content"
-            style="grid-column-start: 17; grid-row-start: 3;"
-          >
-            <span
-              class="Text-text"
-            >
-              DeniseSmith@sap.com
-            </span>
+              <span
+                class="Text-text"
+              >
+                DeniseSmith@sap.com
+              </span>
+            </div>
           </div>
         </div>
       </div>
