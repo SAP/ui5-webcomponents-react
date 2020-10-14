@@ -76,7 +76,7 @@ const Toolbar: FC<ToolbarProptypes> = forwardRef((props: ToolbarProptypes, ref: 
 
     const refactoredChildren = React.Children.toArray(children).map((child, index) => {
       if ((child as ReactElement).type === React.Fragment) {
-        return (child as ReactElement).props.children.map((item, itemIndex: number) => {
+        return (child as ReactElement).props.children.filter(Boolean).map((item, itemIndex: number) => {
           return cloneElement(item, { key: `.${index}:${itemIndex}` });
         });
       }
