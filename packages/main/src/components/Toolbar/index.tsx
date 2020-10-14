@@ -31,13 +31,35 @@ import { styles } from './Toolbar.jss';
 const useStyles = createComponentStyles(styles, { name: 'Toolbar' });
 
 export interface ToolbarProptypes extends CommonProps {
+  /**
+   * Defines the content of the `Toolbar`.
+   */
   children?: ReactNode | ReactNodeArray | ReactFragment;
+  /**
+   * Defines the visual style of the `Toolbar`.<br />
+   * <b>Note:</b> The visual styles are theme-dependent.
+   */
   toolbarStyle?: ToolbarStyle;
+  /**
+   * Defines the `Toolbar` design.<br />
+   * <b>Note:</b> Design settings are theme-dependent.
+   */
   design?: ToolbarDesign;
+  /**
+   * Indicates that the whole `Toolbar` is clickable. The Press event is fired only if `active` is set to true.
+   */
   active?: boolean;
+  /**
+   * Fired when the user clicks on the `Toolbar`, if the `active` prop is set to "true".
+   */
   onToolbarClick?: (event: CustomEvent) => void;
 }
-
+/**
+ * Horizontal container most commonly used to display buttons, labels, selects and various other input controls.
+ *
+ * The content of the `Toolbar` moves into the overflow area from right to left when the available space is not enough in the visible area of the container.
+ * It can be accessed by the user through the overflow button that opens it in a popover.
+ */
 const Toolbar: FC<ToolbarProptypes> = forwardRef((props: ToolbarProptypes, ref: Ref<HTMLDivElement>) => {
   const { children, toolbarStyle, design, active, style, tooltip, className, onToolbarClick, slot } = props;
   const classes = useStyles(styles);
@@ -76,7 +98,7 @@ const Toolbar: FC<ToolbarProptypes> = forwardRef((props: ToolbarProptypes, ref: 
 
     const refactoredChildren = React.Children.toArray(children).map((child, index) => {
       if ((child as ReactElement).type === React.Fragment) {
-        return (child as ReactElement).props.children.map((item, itemIndex: number) => {
+        return (child as ReactElement).props.children.filter(Boolean).map((item, itemIndex: number) => {
           return cloneElement(item, { key: `.${index}:${itemIndex}` });
         });
       }
