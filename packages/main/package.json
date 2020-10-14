@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react",
-  "version": "0.11.0-rc.0",
+  "version": "0.11.0-rc.1",
   "description": "React Wrapper for UI5 Web Components and additional components",
   "main": "index.cjs.js",
   "module": "index.esm.js",

@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0-rc.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.11.0-rc.0...v0.11.0-rc.1) (2020-10-13)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** show all columns in Dialog ([#722](https://github.com/SAP/ui5-webcomponents-react/issues/722)) ([5e21750](https://github.com/SAP/ui5-webcomponents-react/commit/5e21750443e76d2e92b276513af59562106e6f8e)), closes [#719](https://github.com/SAP/ui5-webcomponents-react/issues/719)
+
+
+### Features
+
+* **AnalyticalTable:** add header tooltip property to column ([#721](https://github.com/SAP/ui5-webcomponents-react/issues/721)) ([3cde696](https://github.com/SAP/ui5-webcomponents-react/commit/3cde6965f26e53465e9a8af1fef53874da910307)), closes [#704](https://github.com/SAP/ui5-webcomponents-react/issues/704)
+* **AnalyticalTable:** always show scrollbars if needed ([#706](https://github.com/SAP/ui5-webcomponents-react/issues/706)) ([6fcb42a](https://github.com/SAP/ui5-webcomponents-react/commit/6fcb42ae61ea3723a6bf7411a83cbf3c0aace9c4)), closes [#698](https://github.com/SAP/ui5-webcomponents-react/issues/698)
+
+
+
+
+
 # [0.11.0-rc.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.10.10...v0.11.0-rc.0) (2020-10-08)
 
 
