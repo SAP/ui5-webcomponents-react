@@ -5,6 +5,7 @@ import { InputType } from '@ui5/webcomponents-react/lib/InputType';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="UI5 Web Components / MultiInput"
@@ -12,7 +13,8 @@ import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
   subcomponents={{ MultiInput, Token }}
   argTypes={{
     ...createSelectArgTypes({ type: InputType, valueState: ValueState }),
-    tokens: null
+    tokens: null,
+    ...DocsCommonProps
   }}
 />
 

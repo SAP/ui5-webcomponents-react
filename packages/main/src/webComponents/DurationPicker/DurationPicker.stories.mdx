@@ -1,9 +1,9 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { DurationPicker } from '@ui5/webcomponents-react/lib/DurationPicker';
 import { CSSProperties } from 'react';
-
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="UI5 Web Components / DurationPicker"
@@ -11,19 +11,7 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   argTypes={{
     ...createSelectArgTypes({}),
     valueStateMessage: { control: { disable: true } },
-    slot: { control: { disable: true } },
-    ref: { control: { disable: true } },
-    style: {
-      type: CSSProperties,
-      description:
-        'Element style which will be appended to the most outer element of a component. Use this prop carefully, some css properties might break the component.'
-    },
-    className: {
-      type: 'string',
-      description:
-        'CSS Class Name which will be appended to the most outer element of a component. Use this prop carefully, overwriting CSS rules might break the component.'
-    },
-    tooltip: { type: 'string', description: 'A tooltip which will be shown on hover' }
+    ...DocsCommonProps
   }}
   args={{
     style: {},
@@ -45,15 +33,16 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
 </Canvas>
 
 <ArgsTable story="." />
-<div style={{fontFamily:'var(--sapFontFamily)', fontSize:'var(--sapFontSize)', color:'var(--sapTextColor)'}}>
-<h3>Usage</h3>
-The Duration Picker is used for input of time. Users are able to select hours, minutes and seconds. The user can enter a
-time by:
-<ul>
-  <li>Using the sliders that opens in a popup</li>
-  <li>Typing it in directly in the input field</li>
-</ul>
-<br /><br />
-When the user makes an entry and chooses the enter key, the sliders shows the corresponding time. When the user directly
-triggers the sliders display, the actual time is displayed.
+<div style={{ fontFamily: 'var(--sapFontFamily)', fontSize: 'var(--sapFontSize)', color: 'var(--sapTextColor)' }}>
+  <h3>Usage</h3>
+  The Duration Picker is used for input of time. Users are able to select hours, minutes and seconds. The user can enter
+  a time by:
+  <ul>
+    <li>Using the sliders that opens in a popup</li>
+    <li>Typing it in directly in the input field</li>
+  </ul>
+  <br />
+  <br />
+  When the user makes an entry and chooses the enter key, the sliders shows the corresponding time. When the user directly
+  triggers the sliders display, the actual time is displayed.
 </div>

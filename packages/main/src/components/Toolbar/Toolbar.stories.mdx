@@ -10,11 +10,11 @@ import { ToolbarDesign } from '@ui5/webcomponents-react/lib/ToolbarDesign';
 import { ToolbarSeparator } from '@ui5/webcomponents-react/lib/ToolbarSeparator';
 import { ToolbarStyle } from '@ui5/webcomponents-react/lib/ToolbarStyle';
 import '@ui5/webcomponents-icons/dist/icons/employee.js';
-import { CSSProperties } from 'react';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import '@ui5/webcomponents-icons/dist/icons/settings.js';
 import '@ui5/webcomponents-icons/dist/icons/download.js';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="Components / Toolbar"
@@ -22,19 +22,7 @@ import '@ui5/webcomponents-icons/dist/icons/download.js';
   argTypes={{
     ...createSelectArgTypes({ toolbarStyle: ToolbarStyle, design: ToolbarDesign }),
     children: { control: { disable: true } },
-    slot: { control: { disable: true } },
-    ref: { control: { disable: true } },
-    style: {
-      type: CSSProperties,
-      description:
-        'Element style which will be appended to the most outer element of a component. Use this prop carefully, some css properties might break the component.'
-    },
-    className: {
-      type: 'string',
-      description:
-        'CSS Class Name which will be appended to the most outer element of a component. Use this prop carefully, overwriting CSS rules might break the component.'
-    },
-    tooltip: { type: 'string', description: 'A tooltip which will be shown on hover' }
+    ...DocsCommonProps
   }}
   args={{
     design: ToolbarDesign.Auto,
@@ -110,11 +98,7 @@ If the horizontally available space isn't enough to fit all items in it, an over
       children: { table: { disable: true } },
       toolbarStyle: { table: { disable: true } },
       design: { table: { disable: true } },
-      slot: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } },
-      className: { table: { disable: true } },
-      tooltip: { table: { disable: true } },
+      ...DocsCommonProps,
       active: { table: { disable: true } },
       onToolbarClick: { table: { disable: true } }
     }}

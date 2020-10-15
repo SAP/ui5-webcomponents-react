@@ -5,9 +5,9 @@ import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { FlexBoxWrap } from '@ui5/webcomponents-react/lib/FlexBoxWrap';
 import { CSSProperties } from 'react';
-
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="UI5 Web Components / Badge"
@@ -16,19 +16,7 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
     ...createSelectArgTypes({}),
     children: { control: 'text' },
     icon: { control: { disable: true } },
-    slot: { control: { disable: true } },
-    ref: { control: { disable: true } },
-    style: {
-      type: CSSProperties,
-      description:
-        'Element style which will be appended to the most outer element of a component. Use this prop carefully, some css properties might break the component.'
-    },
-    className: {
-      type: 'string',
-      description:
-        'CSS Class Name which will be appended to the most outer element of a component. Use this prop carefully, overwriting CSS rules might break the component.'
-    },
-    tooltip: { type: 'string', description: 'A tooltip which will be shown on hover' }
+    ...DocsCommonProps
   }}
   args={{
     children: 'Badge Text',
