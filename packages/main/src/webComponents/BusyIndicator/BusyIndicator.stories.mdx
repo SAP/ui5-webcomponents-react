@@ -1,0 +1,95 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { BusyIndicator } from '@ui5/webcomponents-react/lib/BusyIndicator';
+import { BusyIndicatorSize } from '@ui5/webcomponents-react/lib/BusyIndicatorSize';
+import { Select } from '@ui5/webcomponents-react/lib/Select';
+import { Text } from '@ui5/webcomponents-react/lib/Text';
+import { CSSProperties } from 'react';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+
+<Meta
+  title="UI5 Web Components / BusyIndicator"
+  component={BusyIndicator}
+  argTypes={{
+    ...createSelectArgTypes({ size: BusyIndicatorSize }),
+    children: { control: { disable: true } },
+    slot: { control: { disable: true } },
+    ref: { control: { disable: true } },
+    style: {
+      type: CSSProperties,
+      description:
+        'Element style which will be appended to the most outer element of a component. Use this prop carefully, some css properties might break the component.'
+    },
+    className: {
+      type: 'string',
+      description:
+        'CSS Class Name which will be appended to the most outer element of a component. Use this prop carefully, overwriting CSS rules might break the component.'
+    },
+    tooltip: { type: 'string', description: 'A tooltip which will be shown on hover' }
+  }}
+  args={{
+    size: BusyIndicatorSize.Medium,
+    style: {},
+    className: '',
+    tooltip: '',
+    slot: '',
+    active: true,
+    ref: null
+  }}
+/>
+
+<DocsHeader />
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return <BusyIndicator {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="." />
+<div style={{ fontFamily: 'var(--sapFontFamily)', fontSize: 'var(--sapFontSize)', color: 'var(--sapTextColor)' }}>
+  <h3>Usage</h3>
+  For the <code>BusyIndicator</code> you can define the size of the indicator, as well as whether it is shown or hidden.
+  In order to hide it, use the html attribute <code>hidden</code> or <code>display: none;</code> <br />
+  <br />
+  In order to show busy state for an HTML element, simply nest the HTML element in a <code>BusyIndicator</code> instance.
+  <br />
+  <b>Note:</b> Since <code>BusyIndicator</code> has <code>display: inline-block;</code> by default and no width of its own,
+  whenever you need to wrap a block-level element, you should set <code>display: block</code> to the busy indicator as well.
+</div>
+
+<br />
+<br />
+
+# Stories
+
+<br />
+
+## BusyIndicator with children
+
+<Canvas>
+  <Story name="With children" args={{ active: true }}>
+    {(args) => {
+      return (
+        <BusyIndicator {...args}>
+          <Select />
+        </BusyIndicator>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <BusyIndicator active>
+    <Text>
+      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+      dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
+      kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
+      sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+      voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+      sanctus est Lorem ipsum dolor sit amet.
+    </Text>
+  </BusyIndicator>
+</Canvas>
