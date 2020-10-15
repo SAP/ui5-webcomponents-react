@@ -14,6 +14,7 @@ import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { BarChart } from '@ui5/webcomponents-react-charts/lib/BarChart';
 import { MicroBarChart } from '@ui5/webcomponents-react-charts/lib/MicroBarChart';
 import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 import '@ui5/webcomponents-icons/dist/icons/settings.js';
 
 <Meta
@@ -27,19 +28,7 @@ import '@ui5/webcomponents-icons/dist/icons/settings.js';
     }),
     footer: { control: { disable: true } },
     header: { control: { disable: true } },
-    slot: { control: { disable: true } },
-    ref: { control: { disable: true } },
-    style: {
-      type: CSSProperties,
-      description:
-        'Element style which will be appended to the most outer element of a component. Use this prop carefully, some css properties might break the component.'
-    },
-    className: {
-      type: 'string',
-      description:
-        'CSS Class Name which will be appended to the most outer element of a component. Use this prop carefully, overwriting CSS rules might break the component.'
-    },
-    tooltip: { type: 'string', description: 'A tooltip which will be shown on hover' }
+    ...DocsCommonProps
   }}
   args={{
     children: 'Press "Escape" or click outside to close the Popover.',

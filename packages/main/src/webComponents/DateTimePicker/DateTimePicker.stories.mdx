@@ -8,9 +8,9 @@ import '@ui5/webcomponents-localization/dist/features/calendar/Japanese.js';
 import '@ui5/webcomponents-localization/dist/features/calendar/Persian.js';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { CSSProperties, Ref } from 'react';
-
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="UI5 Web Components / DateTimePicker"
@@ -18,19 +18,7 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   argTypes={{
     ...createSelectArgTypes({ primaryCalendarType: CalendarType, valueState: ValueState }),
     valueStateMessage: { control: { disable: true } },
-    slot: { control: { disable: true } },
-    ref: { control: { disable: true } },
-    style: {
-      type: CSSProperties,
-      description:
-        'Element style which will be appended to the most outer element of a component. Use this prop carefully, some css properties might break the component.'
-    },
-    className: {
-      type: 'string',
-      description:
-        'CSS Class Name which will be appended to the most outer element of a component. Use this prop carefully, overwriting CSS rules might break the component.'
-    },
-    tooltip: { type: 'string', description: 'A tooltip which will be shown on hover' }
+    ...DocsCommonProps
   }}
   args={{
     primaryCalendarType: CalendarType.Gregorian,
@@ -54,17 +42,19 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
 </Canvas>
 
 <ArgsTable story="." />
-<div style={{fontFamily:'var(--sapFontFamily)', fontSize:'var(--sapFontSize)', color:'var(--sapTextColor)'}}>
-<h3>Usage</h3>
-Use the <code>DateTimePicker</code> if you need a combined date and time input component. Don't use it if you want to
-use either date, or time value. In this case, use the <code>DatePicker</code> or the <code>TimePicker</code> components
-instead. <br /><br />
-The user can set date/time by:
-<ul>
-  <li>using the calendar and the time selectors</li>
-  <li>typing in the input field</li>
-</ul>
-Programatically, to set date/time for the <code>DateTimePicker</code>, use the <code>value</code> property <br /><br />
-As most of the input based components, the <code>DateTimePicker</code> supports properties, such as:
-<code>disabled</code>, <code>readonly</code>, <code>valueState</code> and <code>placeholder</code>.
+<div style={{ fontFamily: 'var(--sapFontFamily)', fontSize: 'var(--sapFontSize)', color: 'var(--sapTextColor)' }}>
+  <h3>Usage</h3>
+  Use the <code>DateTimePicker</code> if you need a combined date and time input component. Don't use it if you want to use
+  either date, or time value. In this case, use the <code>DatePicker</code> or the <code>TimePicker</code> components instead.{' '}
+  <br />
+  <br />
+  The user can set date/time by:
+  <ul>
+    <li>using the calendar and the time selectors</li>
+    <li>typing in the input field</li>
+  </ul>
+  Programatically, to set date/time for the <code>DateTimePicker</code>, use the <code>value</code> property <br />
+  <br />
+  As most of the input based components, the <code>DateTimePicker</code> supports properties, such as:
+  <code>disabled</code>, <code>readonly</code>, <code>valueState</code> and <code>placeholder</code>.
 </div>
