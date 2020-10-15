@@ -16,21 +16,69 @@ import { CommonProps } from '../../interfaces/CommonProps';
 import styles from './AnalyticalCardHeader.jss';
 
 export interface AnalyticalCardHeaderPropTypes extends CommonProps {
+  /**
+   * Defines the title of the `AnalyticalCardHeader`.
+   */
   title?: string;
+  /**
+   * Defines the subtitle of the `AnalyticalCardHeader`.
+   */
   subTitle?: string;
+  /**
+   * Defines the orientation of the deviation indicator.
+   */
   arrowIndicator?: DeviationIndicator;
+  /**
+   * Defines whether the deviation indicator should be displayed.
+   */
   showIndicator?: boolean;
+  /**
+   * Defines the value state of the deviation indicator.
+   * Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>
+   */
   indicatorState?: ValueState;
+  /**
+   * Defines the value of the `AnalyticalCardHeader`.
+   */
   value?: string;
+  /**
+   * Defines the unit displayed next to the value of the `AnalyticalCardHeader`.
+   */
   unit?: string;
+  /**
+   * Defines the value state of the value.
+   * Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>
+   */
   valueState?: ValueState;
+  /**
+   * Defines the target value.
+   */
   target?: string;
+  /**
+   * Defines the deviation value.
+   */
   deviation?: string;
-  onHeaderPress?: (event: CustomEvent<{}>) => void;
+  /**
+   * Defines the description below the value of the `AnalyticalCardHeader`.
+   */
   description?: string;
+  /**
+   * Defines the counter in the upper right corner of the `AnalyticalCardHeader`.
+   */
   counter?: string;
+  /**
+   * Defines the value state of the counter.
+   * Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>
+   */
   counterState?: ValueState;
+  /**
+   * Defines the currency.
+   */
   currency?: string;
+  /**
+   * Fired when the `AnalyticalCardHeader` header is clicked.
+   */
+  onHeaderPress?: (event: CustomEvent<{}>) => void;
 }
 
 const useStyles = createComponentStyles(styles, {
