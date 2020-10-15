@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.11.0-rc.1...v0.11.0) (2020-10-15)
+
+
+### Features
+
+* **Toolbar:** accept react fragments as children ([#723](https://github.com/SAP/ui5-webcomponents-react/issues/723)) ([9697b43](https://github.com/SAP/ui5-webcomponents-react/commit/9697b432541c34d29fda35b7a225cd4ac9c431d0))
+
+
+
+
+
 # [0.11.0-rc.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.11.0-rc.0...v0.11.0-rc.1) (2020-10-13)
 
 
