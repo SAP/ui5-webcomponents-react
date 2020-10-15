@@ -1,0 +1,174 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Dialog } from '@ui5/webcomponents-react/lib/Dialog';
+import { Button } from '@ui5/webcomponents-react/lib/Button';
+import { Bar } from '@ui5/webcomponents-react/lib/Bar';
+import { Icon } from '@ui5/webcomponents-react/lib/Icon';
+import { List } from '@ui5/webcomponents-react/lib/List';
+import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
+import { Title } from '@ui5/webcomponents-react/lib/Title';
+import { CSSProperties, useRef } from 'react';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+import '@ui5/webcomponents-icons/dist/icons/settings.js';
+
+<Meta
+  title="UI5 Web Components / Dialog"
+  component={Dialog}
+  argTypes={{
+    ...createSelectArgTypes({}),
+    footer: { control: { disable: true } },
+    header: { control: { disable: true } },
+    slot: { control: { disable: true } },
+    ref: { control: { disable: true } },
+    style: {
+      type: CSSProperties,
+      description:
+        'Element style which will be appended to the most outer element of a component. Use this prop carefully, some css properties might break the component.'
+    },
+    className: {
+      type: 'string',
+      description:
+        'CSS Class Name which will be appended to the most outer element of a component. Use this prop carefully, overwriting CSS rules might break the component.'
+    },
+    tooltip: { type: 'string', description: 'A tooltip which will be shown on hover' }
+  }}
+  args={{
+    children: 'Press "Escape" to close the Dialog.',
+    headerText: 'Dialog Header',
+    style: {},
+    className: '',
+    tooltip: '',
+    slot: '',
+    ref: null
+  }}
+/>
+
+<DocsHeader />
+
+<br />
+
+### Opening Dialogs
+
+`Dialogs` can only be opened by attaching a `ref` to the component and then call the corresponding **`open`** method.
+
+```JSX
+  const DialogComponent = () => {
+    const dialogRef = useRef();
+    const onButtonClick = () => {
+        dialogRef.current.open();
+    };
+    return (
+      <>
+        <Button onClick={onButtonClick}>Open Dialog</Button>
+        <Dialog ref={dialogRef}>Some Content</Dialog>
+      </>
+    );
+  };
+```
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      const dialogRef = useRef(null);
+      const onButtonClick = () => {
+        dialogRef.current.open();
+      };
+      const handleClose = () => {
+        dialogRef.current.close();
+      };
+      return (
+        <>
+          <Button onClick={onButtonClick}>Open Dialog</Button>
+          <Dialog {...args} ref={dialogRef} footer={<Button onClick={handleClose}>Close</Button>} />
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="." />
+<div style={{ fontFamily: 'var(--sapFontFamily)', fontSize: 'var(--sapFontSize)', color: 'var(--sapTextColor)' }}>
+  <h3>Structure</h3>A <code>Dialog</code> consists of a header, content, and a footer for action buttons. The{' '}
+  <code>Dialog</code> is usually displayed at the center of the screen.
+</div>
+
+### Using Dialogs inside other components
+
+`Dialogs` are often used within other components, when opened this could sometimes have unwanted side effects.
+In this case, we recommend using [createPortal](https://reactjs.org/docs/portals.html) to mount the `Dialog` outside of the DOM hierarchy of the parent component.
+
+```JSX
+const DialogComponent = () => {
+  const dialogRef = useRef(null);
+  const onButtonClick = () => {
+    dialogRef.current.open();
+  };
+  return (
+    <>
+      <Button onClick={onButtonClick}>Open Dialog</Button>
+      {createPortal(<Dialog ref={dialogRef} />, document.body)}
+    </>
+  );
+};
+```
+
+### Closing Dialogs
+
+Closing `Dialogs` works in the same way as opening them. So again an attached `ref` is needed on which the corresponding `close` method is called.
+
+```JSX
+  const DialogComponent = () => {
+    const dialogRef = useRef();
+    const handleOpen = (e) => {
+        dialogRef.current.open();
+    };
+    const handleClose = () => {
+        dialogRef.current.close();
+    };
+    return (
+      <>
+        <Button onClick={handleOpen}>Open Dialog</Button>
+        <Dialog ref={dialogRef}>
+            <Button onClick={handleClose}>Close Dialog</Button>
+        </Dialog>
+      </>
+    );
+  };
+```
+
+# Stories
+
+## Dialog with content
+
+<Canvas>
+  <Story name="with content">
+    {(args) => {
+      const dialogRef = useRef(null);
+      const onButtonClick = () => {
+        dialogRef.current.open();
+      };
+      const handleClose = () => {
+        dialogRef.current.close();
+      };
+      return (
+        <>
+          <Button onClick={onButtonClick}>Open Dialog</Button>
+          <Dialog
+            {...args}
+            ref={dialogRef}
+            header={<Bar contentMiddle={<Title>Dialog</Title>} contentRight={<Icon name="settings" />} />}
+            footer={<Bar contentRight={<Button onClick={handleClose}>Close</Button>} />}
+          >
+            <List>
+              <StandardListItem info="3">List Item 1</StandardListItem>
+              <StandardListItem info="2">List Item 2</StandardListItem>
+              <StandardListItem info="1">List Item 3</StandardListItem>
+            </List>
+          </Dialog>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+

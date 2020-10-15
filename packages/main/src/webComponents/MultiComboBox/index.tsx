@@ -41,17 +41,27 @@ export interface MultiComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 
    */
   children?: ReactNode | ReactNode[];
   /**
+   * Defines the icon to be displayed in the <code>MultiComboBox</code>.
+   */
+  icon?: ReactNode | ReactNode[];
+  /**
+   * Defines the value state message that will be displayed as pop up under the <code>ui5-multicombobox</code>. <br><br><br/><br/>
+   *
+   * <b>Note:</b> If not specified, a default text (in the respective language) will be displayed. <br> <b>Note:</b> The <code>valueStateMessage</code> would be displayed, when the <code>ui5-select</code> is in <code>Information</code>, <code>Warning</code> or <code>Error</code> value state.
+   */
+  valueStateMessage?: ReactNode | ReactNode[];
+  /**
    * Fired when the input operation has finished by pressing Enter or on focusout.
    */
-  onChange?: (event: CustomEvent<{}>) => void;
+  onChange?: (event: CustomEvent) => void;
   /**
    * Fired when the value of the <code>MultiComboBox</code> changes at each keystroke.
    */
-  onInput?: (event: CustomEvent<{}>) => void;
+  onInput?: (event: CustomEvent) => void;
   /**
    * Fired when the dropdown is opened or closed.
    */
-  onOpenChange?: (event: CustomEvent<{}>) => void;
+  onOpenChange?: (event: CustomEvent) => void;
   /**
    * Fired when selection is changed by user interaction in <code>SingleSelect</code> and <code>MultiSelect</code> modes.
    */
@@ -71,7 +81,7 @@ const MultiComboBox: FC<MultiComboBoxPropTypes> = withWebComponent<MultiComboBox
   'ui5-multi-combobox',
   ['placeholder', 'value', 'valueState'],
   ['allowCustomValues', 'disabled', 'open', 'readonly', 'required'],
-  [],
+  ['icon', 'valueStateMessage'],
   ['change', 'input', 'open-change', 'selection-change']
 );
 

@@ -43,11 +43,11 @@ export interface NotificationListGroupItemPropTypes extends WithWebComponentProp
   /**
    * Fired when the <code>NotificationListGroupItem</code> is expanded/collapsed by user interaction.
    */
-  onToggle?: (event: CustomEvent<{}>) => void;
+  onToggle?: (event: CustomEvent) => void;
   /**
    * Fired when the <code>Close</code> button is pressed.
    */
-  onClose?: (event: CustomEvent<{}>) => void;
+  onClose?: (event: CustomEvent) => void;
 }
 
 /**

@@ -8,17 +8,19 @@ import styles from './AnalyticalCard.jss';
 
 export interface AnalyticalCardTypes extends CommonProps {
   /**
-   * The Card header Component, using the AnalyticalCardHeader is recommended.
+   * The Card header Component. Using the `AnalyticalCardHeader` is recommended.
    */
   header?: ReactNode;
   /**
-   * Expected one or more React Components
+   * The content of the `AnalyticalCard`.
    */
   children: ReactNode | ReactNodeArray;
 }
 
 const useStyles = createComponentStyles(styles, { name: 'AnalyticalCard' });
-
+/**
+ * The `AnalyticalCard` is mainly used for data visualization. It consists of two areas – a header area and a chart area with a visual representation of the data.<br />
+ */
 const AnalyticalCard: FC<AnalyticalCardTypes> = forwardRef((props: AnalyticalCardTypes, ref: Ref<HTMLDivElement>) => {
   const { children, style, className, tooltip, header } = props;
   const classes = useStyles();

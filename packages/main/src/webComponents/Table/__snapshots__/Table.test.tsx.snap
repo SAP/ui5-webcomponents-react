@@ -2,6 +2,8 @@
 
 exports[`Table Basic Test (generated) 1`] = `
 <DocumentFragment>
-  <ui5-table />
+  <ui5-table
+    ui5-table=""
+  />
 </DocumentFragment>
 `;

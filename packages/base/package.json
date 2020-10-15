@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react-base",
-  "version": "0.10.10",
+  "version": "0.11.0",
   "description": "Base for ui5-webcomponents-react",
   "main": "index.cjs.js",
   "module": "index.esm.js",
@@ -36,7 +36,7 @@
     "@sap-theming/theming-base-content": "11.1.18"
   },
   "peerDependencies": {
-    "@ui5/webcomponents-base": "0.22.0",
+    "@ui5/webcomponents-base": "1.0.0-rc.9",
     "react": "^16.8.0",
     "react-jss": "^10.0.4"
   },

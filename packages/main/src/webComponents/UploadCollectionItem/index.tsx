@@ -47,19 +47,19 @@ export interface UploadCollectionItemPropTypes extends WithWebComponentPropTypes
   /**
    * Fired when the file name is clicked. <br><br> <b>Note:</b> This event is only available when <code>fileNameClickable</code> property is <code>true</code>.
    */
-  onFileNameClick?: (event: CustomEvent<{}>) => void;
+  onFileNameClick?: (event: CustomEvent) => void;
   /**
    * Fired when the <code>fileName</code> property gets changed. <br><br> <b>Note:</b> An edit button is displayed on each item, when the <code>UploadCollectionItem</code> <code>type</code> property is set to <code>Detail</code>.
    */
-  onRename?: (event: CustomEvent<{}>) => void;
+  onRename?: (event: CustomEvent) => void;
   /**
    * Fired when the retry button is pressed. <br><br> <b>Note:</b> Retry button is displayed when <code>uploadState</code> property is set to <code>Error</code>.
    */
-  onRetry?: (event: CustomEvent<{}>) => void;
+  onRetry?: (event: CustomEvent) => void;
   /**
    * Fired when the terminate button is pressed. <br><br> <b>Note:</b> Terminate button is displayed when <code>uploadState</code> property is set to <code>Uploading</code>.
    */
-  onTerminate?: (event: CustomEvent<{}>) => void;
+  onTerminate?: (event: CustomEvent) => void;
 }
 
 /**

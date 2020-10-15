@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`withWebComponent scoping 1`] = `
+<DocumentFragment>
+  <ui5-button-ui5-wcr
+    design="Default"
+  >
+    Scoping Test
+  </ui5-button-ui5-wcr>
+</DocumentFragment>
+`;
+
+exports[`withWebComponent scoping 2`] = `
+<DocumentFragment>
+  <ui5-button
+    design="Default"
+    ui5-button=""
+  >
+    Scoping Test
+  </ui5-button>
+</DocumentFragment>
+`;

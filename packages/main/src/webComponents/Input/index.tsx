@@ -70,15 +70,15 @@ export interface InputPropTypes extends Omit<WithWebComponentPropTypes, 'onChang
   /**
    * Fired when the input operation has finished by pressing Enter or on focusout.
    */
-  onChange?: (event: CustomEvent<{}>) => void;
+  onChange?: (event: CustomEvent) => void;
   /**
    * Fired when the value of the <code>Input</code> changes at each keystroke, and when a suggestion item has been selected.
    */
-  onInput?: (event: CustomEvent<{}>) => void;
+  onInput?: (event: CustomEvent) => void;
   /**
    * Fired when user presses Enter key on the <code>Input</code>. <br><br> <b>Note:</b> The event is fired independent of whether there was a change before or not. If change was performed, the event is fired after the change event. The event is also fired when an item of the select list is selected by pressing Enter.
    */
-  onSubmit?: (event: CustomEvent<{}>) => void;
+  onSubmit?: (event: CustomEvent) => void;
   /**
    * Fired when the user navigates to a suggestion item via the ARROW keys, as a preview, before the final selection.
    */
@@ -97,8 +97,7 @@ export interface InputPropTypes extends Omit<WithWebComponentPropTypes, 'onChang
  * The <code>Input</code> component allows the user to enter and edit text or numeric values in one line. <br />
  Additionally, you can provide <code>suggestionItems</code>, that are displayed in a popover right under the input.
  <br /><br />
- The text field can be editable or read-only (<code>readonly</code> property), and it can be enabled or disabled (<code >enabled</code
- >
+ The text field can be editable or read-only (<code>readonly</code> property), and it can be enabled or disabled (<code>enabled</code>
  property). To visualize semantic states, such as "error" or "warning", the <code>valueState</code> property is provided.
  When the user makes changes to the text, the change event is fired, which enables you to react on any text change.
  <br /><br />

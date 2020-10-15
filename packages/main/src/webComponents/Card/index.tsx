@@ -34,7 +34,7 @@ export interface CardPropTypes extends WithWebComponentPropTypes {
   /**
    * Fired when the <code>Card</code> header is activated by mouse/tap or by using the Enter or Space key. <br><br> <b>Note:</b> The event would be fired only if the <code>headerInteractive</code> property is set to true.
    */
-  onHeaderClick?: (event: CustomEvent<{}>) => void;
+  onHeaderClick?: (event: CustomEvent) => void;
 }
 
 /**

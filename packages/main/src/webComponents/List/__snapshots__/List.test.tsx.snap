@@ -5,6 +5,24 @@ exports[`List Basic Test (generated) 1`] = `
   <ui5-list
     mode="None"
     separators="All"
-  />
+  >
+    <ui5-li
+      info-state="None"
+      type="Active"
+    >
+      Test 1
+    </ui5-li>
+    <ui5-li-custom
+      type="Active"
+    >
+      Test 2
+      <ui5-button
+        design="Default"
+        ui5-button=""
+      >
+        a Button
+      </ui5-button>
+    </ui5-li-custom>
+  </ui5-list>
 </DocumentFragment>
 `;
