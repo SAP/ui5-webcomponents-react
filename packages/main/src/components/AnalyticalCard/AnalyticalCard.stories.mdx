@@ -1,0 +1,202 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+import '@ui5/webcomponents-icons/dist/icons/person-placeholder.js';
+import { AnalyticalCard } from '@ui5/webcomponents-react/lib/AnalyticalCard';
+import { AnalyticalCardHeader } from '@ui5/webcomponents-react/lib/AnalyticalCardHeader';
+import { DeviationIndicator } from '@ui5/webcomponents-react/lib/DeviationIndicator';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import { LineChart } from '@ui5/webcomponents-react-charts/lib/LineChart';
+
+<Meta
+  title="Components / AnalyticalCard"
+  component={AnalyticalCard}
+  parameters={{
+    subcomponents: { AnalyticalCardHeader }
+  }}
+  argTypes={{
+    header: {
+      type: null
+    },
+    children: {
+      type: null
+    },
+    ref: {
+      type: null
+    }
+  }}
+/>
+
+<DocsHeader />
+
+**Note:** The `AnalyticalCard` was mainly made to display KPIs and complex data. If you want to implement a simple card, the `Card` component probably is more suitable.
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      const simpleDataSet = [
+        {
+          name: 'January',
+          users: 76
+        },
+        {
+          name: 'February',
+          users: 230
+        },
+        {
+          name: 'March',
+          users: 240
+        },
+        {
+          name: 'April',
+          users: 280
+        },
+        {
+          name: 'May',
+          users: 100
+        }
+      ];
+      return (
+        <AnalyticalCard
+          header={
+            <AnalyticalCardHeader
+              title="Title"
+              subTitle="Subtitle"
+              arrowIndicator={DeviationIndicator.Down}
+              indicatorState={ValueState.Success}
+              value="Value"
+              valueState={ValueState.Success}
+              unit="Unit"
+              target="Target"
+              deviation="Deviation"
+              showIndicator={true}
+              description="Description"
+              counter="Counter"
+              counterState={ValueState.Success}
+              currency="EUR"
+            />
+          }
+        >
+          <LineChart
+            noLegend
+            dimensions={[{ accessor: 'name' }]}
+            measures={[{ accessor: 'users', formatter: (val) => `${val}k` }]}
+            dataset={simpleDataSet}
+          />
+        </AnalyticalCard>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Default" />
+
+<br />
+<br />
+
+# Stories
+
+<br />
+
+## Customizable AnalyticalCardHeader
+
+<Canvas>
+  <Story
+    name="Customizable header"
+    args={{
+      title: 'Project Cost',
+      subTitle: 'All active Projects',
+      arrowIndicator: DeviationIndicator.Down,
+      indicatorState: ValueState.Success,
+      value: '100',
+      valueState: ValueState.Success,
+      unit: 'M',
+      target: '120M',
+      deviation: '-16.67%',
+      showIndicator: true,
+      description: 'Current Year',
+      counter: '+',
+      counterState: ValueState.Success,
+      currency: 'USD'
+    }}
+    argTypes={{
+      title: { description: 'Defines the title of the `AnalyticalCardHeader`.' },
+      subTitle: { description: 'Defines the subtitle of the `AnalyticalCardHeader`.' },
+      value: { description: 'Defines the value of the `AnalyticalCardHeader`.' },
+      ...createSelectArgTypes({
+        arrowIndicator: DeviationIndicator,
+        indicatorState: ValueState,
+        valueState: ValueState,
+        counterState: ValueState
+      }),
+      unit: { description: 'Defines the unit displayed next to the value of the `AnalyticalCardHeader`.' },
+      target: { description: 'Defines the target value.' },
+      deviation: { description: 'Defines the deviation value.' },
+      showIndicator: { description: 'Defines whether the deviation indicator should be displayed.' },
+      description: { description: 'Defines the description below the value of the `AnalyticalCardHeader`.' },
+      counter: { description: 'Defines the counter in the upper right corner of the `AnalyticalCardHeader`.' },
+      currency: { description: 'Defines the currency.' },
+      onHeaderPress: { description: 'Fired when the `AnalyticalCardHeader` header is clicked.' },
+      header: { table: { disable: true } },
+      children: { table: { disable: true } },
+      ref: { table: { disable: true } }
+    }}
+  >
+    {(args) => {
+      const simpleDataSet = [
+        {
+          name: 'January',
+          users: 76
+        },
+        {
+          name: 'February',
+          users: 130
+        },
+        {
+          name: 'March',
+          users: 140
+        },
+        {
+          name: 'April',
+          users: 180
+        },
+        {
+          name: 'May',
+          users: 100
+        }
+      ];
+      return (
+        <AnalyticalCard
+          header={
+            <AnalyticalCardHeader
+              title={args.title}
+              subTitle={args.subTitle}
+              arrowIndicator={args.arrowIndicator}
+              indicatorState={args.indicatorState}
+              value={args.value}
+              valueState={args.valueState}
+              unit={args.unit}
+              target={args.target}
+              deviation={args.deviation}
+              onHeaderPress={args.onHeaderPress}
+              showIndicator={args.showIndicator}
+              description={args.description}
+              counter={args.counter}
+              counterState={args.counterState}
+              currency={args.currency}
+            />
+          }
+        >
+          <LineChart
+            noLegend
+            dimensions={[{ accessor: 'name' }]}
+            measures={[{ accessor: 'users', formatter: (val) => `${val}m` }]}
+            dataset={simpleDataSet}
+          />
+        </AnalyticalCard>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Customizable header" />
