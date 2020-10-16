@@ -8,7 +8,6 @@ import { Title } from '@ui5/webcomponents-react/lib/Title';
 import React from 'react';
 import { DynamicPageTitle } from '@ui5/webcomponents-react/lib/DynamicPageTitle';
 import { DynamicPageHeader } from '@ui5/webcomponents-react/lib/DynamicPageHeader';
-import { DynamicPageContentArea } from '@ui5/webcomponents-react/lib/DynamicPageContentArea';
 import { DynamicPage } from '@ui5/webcomponents-react/lib/DynamicPage';
 import '@ui5/webcomponents-icons/dist/icons/action';
 import '@ui5/webcomponents-icons/dist/icons/full-screen';
@@ -73,140 +72,138 @@ const renderComponent = () => (
       />
     }
   >
-    <DynamicPageContentArea title={'Base data'}>
-      <Form style={{ paddingBottom: '2rem', zIndex: 0 }} columnsXL={4} columnsL={4}>
-        <FormGroup title="Phone Numbers">
-          <FormItem label="Home">
-            <Text>+1 234-567-8901</Text>
-          </FormItem>
-          <FormItem label="">
-            <Text>+1 234-567-5555</Text>
-          </FormItem>
-        </FormGroup>
-        <FormGroup title="Social Accounts">
-          <FormItem label="LinkedIn">
-            <Text>/DeniseSmith</Text>
-          </FormItem>
-          <FormItem label="Twitter">
-            <Text>@DeniseSmith</Text>
-          </FormItem>
-        </FormGroup>
-      </Form>
-      <Form style={{ paddingBottom: '2rem' }} columnsXL={4} columnsL={4}>
-        <FormGroup title="Addresses">
-          <FormItem label="Home Address">
-            <Text>2096 Mission Street</Text>
-          </FormItem>
-          <FormItem label="Mailing Address">
-            <Text>PO Box 32114</Text>
-          </FormItem>
-        </FormGroup>
-        <FormGroup title="Mailing Address">
-          <FormItem label="Work">
-            <Text>DeniseSmith@sap.com</Text>
-          </FormItem>
-        </FormGroup>
-      </Form>
-      <Form style={{ paddingBottom: '2rem' }} columnsXL={4} columnsL={4}>
-        <FormGroup title="Phone Numbers">
-          <FormItem label="Home">
-            <Text>+1 234-567-8901</Text>
-          </FormItem>
-          <FormItem label="">
-            <Text>+1 234-567-5555</Text>
-          </FormItem>
-        </FormGroup>
-        <FormGroup title="Social Accounts">
-          <FormItem label="LinkedIn">
-            <Text>/DeniseSmith</Text>
-          </FormItem>
-          <FormItem label="Twitter">
-            <Text>@DeniseSmith</Text>
-          </FormItem>
-        </FormGroup>
-      </Form>
-      <Form style={{ paddingBottom: '2rem' }} columnsXL={4} columnsL={4}>
-        <FormGroup title="Addresses">
-          <FormItem label="Home Address">
-            <Text>2096 Mission Street</Text>
-          </FormItem>
-          <FormItem label="Mailing Address">
-            <Text>PO Box 32114</Text>
-          </FormItem>
-        </FormGroup>
-        <FormGroup title="Mailing Address">
-          <FormItem label="Work">
-            <Text>DeniseSmith@sap.com</Text>
-          </FormItem>
-        </FormGroup>
-      </Form>
-      <Form style={{ paddingBottom: '2rem', zIndex: 0 }} columnsXL={4} columnsL={4}>
-        <FormGroup title="Phone Numbers">
-          <FormItem label="Home">
-            <Text>+1 234-567-8901</Text>
-          </FormItem>
-          <FormItem label="">
-            <Text>+1 234-567-5555</Text>
-          </FormItem>
-        </FormGroup>
-        <FormGroup title="Social Accounts">
-          <FormItem label="LinkedIn">
-            <Text>/DeniseSmith</Text>
-          </FormItem>
-          <FormItem label="Twitter">
-            <Text>@DeniseSmith</Text>
-          </FormItem>
-        </FormGroup>
-      </Form>
-      <Form style={{ paddingBottom: '2rem' }} columnsXL={4} columnsL={4}>
-        <FormGroup title="Addresses">
-          <FormItem label="Home Address">
-            <Text>2096 Mission Street</Text>
-          </FormItem>
-          <FormItem label="Mailing Address">
-            <Text>PO Box 32114</Text>
-          </FormItem>
-        </FormGroup>
-        <FormGroup title="Mailing Address">
-          <FormItem label="Work">
-            <Text>DeniseSmith@sap.com</Text>
-          </FormItem>
-        </FormGroup>
-      </Form>
-      <Form style={{ paddingBottom: '2rem' }} columnsXL={4} columnsL={4}>
-        <FormGroup title="Phone Numbers">
-          <FormItem label="Home">
-            <Text>+1 234-567-8901</Text>
-          </FormItem>
-          <FormItem label="">
-            <Text>+1 234-567-5555</Text>
-          </FormItem>
-        </FormGroup>
-        <FormGroup title="Social Accounts">
-          <FormItem label="LinkedIn">
-            <Text>/DeniseSmith</Text>
-          </FormItem>
-          <FormItem label="Twitter">
-            <Text>@DeniseSmith</Text>
-          </FormItem>
-        </FormGroup>
-      </Form>
-      <Form style={{ paddingBottom: '2rem' }} columnsXL={4} columnsL={4}>
-        <FormGroup title="Addresses">
-          <FormItem label="Home Address">
-            <Text>2096 Mission Street</Text>
-          </FormItem>
-          <FormItem label="Mailing Address">
-            <Text>PO Box 32114</Text>
-          </FormItem>
-        </FormGroup>
-        <FormGroup title="Mailing Address">
-          <FormItem label="Work">
-            <Text>DeniseSmith@sap.com</Text>
-          </FormItem>
-        </FormGroup>
-      </Form>
-    </DynamicPageContentArea>
+    <Form style={{ paddingBottom: '2rem', zIndex: 0 }} columnsXL={4} columnsL={4}>
+      <FormGroup title="Phone Numbers">
+        <FormItem label="Home">
+          <Text>+1 234-567-8901</Text>
+        </FormItem>
+        <FormItem label="">
+          <Text>+1 234-567-5555</Text>
+        </FormItem>
+      </FormGroup>
+      <FormGroup title="Social Accounts">
+        <FormItem label="LinkedIn">
+          <Text>/DeniseSmith</Text>
+        </FormItem>
+        <FormItem label="Twitter">
+          <Text>@DeniseSmith</Text>
+        </FormItem>
+      </FormGroup>
+    </Form>
+    <Form style={{ paddingBottom: '2rem' }} columnsXL={4} columnsL={4}>
+      <FormGroup title="Addresses">
+        <FormItem label="Home Address">
+          <Text>2096 Mission Street</Text>
+        </FormItem>
+        <FormItem label="Mailing Address">
+          <Text>PO Box 32114</Text>
+        </FormItem>
+      </FormGroup>
+      <FormGroup title="Mailing Address">
+        <FormItem label="Work">
+          <Text>DeniseSmith@sap.com</Text>
+        </FormItem>
+      </FormGroup>
+    </Form>
+    <Form style={{ paddingBottom: '2rem' }} columnsXL={4} columnsL={4}>
+      <FormGroup title="Phone Numbers">
+        <FormItem label="Home">
+          <Text>+1 234-567-8901</Text>
+        </FormItem>
+        <FormItem label="">
+          <Text>+1 234-567-5555</Text>
+        </FormItem>
+      </FormGroup>
+      <FormGroup title="Social Accounts">
+        <FormItem label="LinkedIn">
+          <Text>/DeniseSmith</Text>
+        </FormItem>
+        <FormItem label="Twitter">
+          <Text>@DeniseSmith</Text>
+        </FormItem>
+      </FormGroup>
+    </Form>
+    <Form style={{ paddingBottom: '2rem' }} columnsXL={4} columnsL={4}>
+      <FormGroup title="Addresses">
+        <FormItem label="Home Address">
+          <Text>2096 Mission Street</Text>
+        </FormItem>
+        <FormItem label="Mailing Address">
+          <Text>PO Box 32114</Text>
+        </FormItem>
+      </FormGroup>
+      <FormGroup title="Mailing Address">
+        <FormItem label="Work">
+          <Text>DeniseSmith@sap.com</Text>
+        </FormItem>
+      </FormGroup>
+    </Form>
+    <Form style={{ paddingBottom: '2rem', zIndex: 0 }} columnsXL={4} columnsL={4}>
+      <FormGroup title="Phone Numbers">
+        <FormItem label="Home">
+          <Text>+1 234-567-8901</Text>
+        </FormItem>
+        <FormItem label="">
+          <Text>+1 234-567-5555</Text>
+        </FormItem>
+      </FormGroup>
+      <FormGroup title="Social Accounts">
+        <FormItem label="LinkedIn">
+          <Text>/DeniseSmith</Text>
+        </FormItem>
+        <FormItem label="Twitter">
+          <Text>@DeniseSmith</Text>
+        </FormItem>
+      </FormGroup>
+    </Form>
+    <Form style={{ paddingBottom: '2rem' }} columnsXL={4} columnsL={4}>
+      <FormGroup title="Addresses">
+        <FormItem label="Home Address">
+          <Text>2096 Mission Street</Text>
+        </FormItem>
+        <FormItem label="Mailing Address">
+          <Text>PO Box 32114</Text>
+        </FormItem>
+      </FormGroup>
+      <FormGroup title="Mailing Address">
+        <FormItem label="Work">
+          <Text>DeniseSmith@sap.com</Text>
+        </FormItem>
+      </FormGroup>
+    </Form>
+    <Form style={{ paddingBottom: '2rem' }} columnsXL={4} columnsL={4}>
+      <FormGroup title="Phone Numbers">
+        <FormItem label="Home">
+          <Text>+1 234-567-8901</Text>
+        </FormItem>
+        <FormItem label="">
+          <Text>+1 234-567-5555</Text>
+        </FormItem>
+      </FormGroup>
+      <FormGroup title="Social Accounts">
+        <FormItem label="LinkedIn">
+          <Text>/DeniseSmith</Text>
+        </FormItem>
+        <FormItem label="Twitter">
+          <Text>@DeniseSmith</Text>
+        </FormItem>
+      </FormGroup>
+    </Form>
+    <Form style={{ paddingBottom: '2rem' }} columnsXL={4} columnsL={4}>
+      <FormGroup title="Addresses">
+        <FormItem label="Home Address">
+          <Text>2096 Mission Street</Text>
+        </FormItem>
+        <FormItem label="Mailing Address">
+          <Text>PO Box 32114</Text>
+        </FormItem>
+      </FormGroup>
+      <FormGroup title="Mailing Address">
+        <FormItem label="Work">
+          <Text>DeniseSmith@sap.com</Text>
+        </FormItem>
+      </FormGroup>
+    </Form>
   </DynamicPage>
 );
 

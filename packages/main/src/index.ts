@@ -38,7 +38,6 @@ import { DeviationIndicator } from './lib/DeviationIndicator';
 import { Dialog } from './lib/Dialog';
 import { DurationPicker } from './lib/DurationPicker';
 import { DynamicPage } from './lib/DynamicPage';
-import { DynamicPageContentArea } from './lib/DynamicPageContentArea';
 import { DynamicPageHeader } from './lib/DynamicPageHeader';
 import { DynamicPageTitle } from './lib/DynamicPageTitle';
 import { FCLLayout } from './lib/FCLLayout';
@@ -196,7 +195,6 @@ export {
   Dialog,
   DurationPicker,
   DynamicPage,
-  DynamicPageContentArea,
   DynamicPageHeader,
   DynamicPageTitle,
   FCLLayout,

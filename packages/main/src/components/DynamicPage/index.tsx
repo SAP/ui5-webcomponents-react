@@ -84,7 +84,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
   const dynamicPageRef: RefObject<HTMLDivElement> = useConsolidatedRef(ref);
   const topHeaderRef: RefObject<HTMLDivElement> = useRef();
   const headerContentRef: RefObject<HTMLDivElement> = useRef();
-  const childrenRef: RefObject<HTMLDivElement> = useRef();
+  const headerPinnedRef = useRef(alwaysShowContentHeader);
 
   const [headerPinned, setHeaderPinned] = useState(alwaysShowContentHeader);
   const [headerVisible, setHeaderVisible] = useState(true);
@@ -104,10 +104,11 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
       if (element) {
         srcElement = element;
       }
+      console.log(headerPinned);
       const shouldHideHeader = srcElement.icon === 'slim-arrow-up';
+      const pinnedHeader = headerPinned === true;
       if (shouldHideHeader) {
         dynamicPageRef.current.classList.add(classes.headerCollapsed);
-        setHeaderPinned(false);
         setHeaderVisible(false);
         anchorBarRef.current.style.top = '-0.025rem';
       } else {
@@ -115,6 +116,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
         setHeaderVisible(true);
         anchorBarRef.current.style.top = '0.025rem';
       }
+
       requestAnimationFrame(() => {
         if (dynamicPageRef.current.scrollTop > 0 && !shouldHideHeader) {
           anchorBarRef.current.style.top = `${headerContentRef.current.scrollHeight}px`;
@@ -124,7 +126,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
         dynamicPageRef.current.addEventListener(
           'scroll',
           () => {
-            if (dynamicPageRef.current.scrollTop > 0) {
+            if (dynamicPageRef.current.scrollTop > 0 && !headerPinnedRef.current) {
               headerContentRef.current.style.removeProperty('top');
               anchorBarRef.current.style.top = '-0.025rem';
             }
@@ -155,25 +157,28 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
   };
 
   let currentIcon = 'slim-arrow-up';
-  dynamicPageRef.current?.addEventListener('scroll', () => {
-    if (
-      anchorBarRef.current?.children?.[0].icon === 'slim-arrow-up' &&
-      anchorBarRef.current?.children?.[0].icon !== currentIcon
-    ) {
-      setHeaderVisible(true);
-      currentIcon = 'slim-arrow-up';
-      anchorBarRef.current.style.top = '0.025rem';
-    } else if (
-      anchorBarRef.current?.children?.[0].icon === 'slim-arrow-down' &&
-      anchorBarRef.current?.children?.[0].icon !== currentIcon
-    ) {
-      setHeaderVisible(false);
-      currentIcon = 'slim-arrow-down';
-      anchorBarRef.current.style.top = '-0.025rem';
-    }
-  });
+  useEffect(() => {
+    dynamicPageRef.current?.addEventListener('scroll', () => {
+      if (
+        anchorBarRef.current?.children?.[0].icon === 'slim-arrow-up' &&
+        anchorBarRef.current?.children?.[0].icon !== currentIcon
+      ) {
+        setHeaderVisible(true);
+        currentIcon = 'slim-arrow-up';
+        anchorBarRef.current.style.top = '0.025rem';
+      } else if (
+        anchorBarRef.current?.children?.[0].icon === 'slim-arrow-down' &&
+        anchorBarRef.current?.children?.[0].icon !== currentIcon
+      ) {
+        setHeaderVisible(false);
+        currentIcon = 'slim-arrow-down';
+        anchorBarRef.current.style.top = '-0.025rem';
+      }
+    });
+  }, []);
 
   useEffect(() => {
+    headerPinnedRef.current = headerPinned;
     if (headerPinned === true) {
       anchorBarRef.current.style.top = '0.025rem';
     }
@@ -219,7 +224,9 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
           onHoverToggleButton={onHoverToggleButton}
         />
       </FlexBox>
-      {children ? <div ref={childrenRef}>{children}</div> : null}
+      <div className={classes.contentContainer}>
+        <div className={classes.content}>{children}</div>
+      </div>
     </div>
   );
 });

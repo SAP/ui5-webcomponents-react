@@ -133,29 +133,20 @@ const styles = {
   headerCustomContentItem: {
     marginLeft: '1rem'
   },
-
-  headerImage: {
-    minWidth: '5rem',
-    maxWidth: '5rem',
-    maxHeight: '5rem',
-    display: 'inline-block',
-    marginRight: '2rem',
-    marginBottom: '1rem'
-  },
-  image: {
+  contentContainer: {
     width: '100%',
-    height: '100%'
+    height: '100%',
+    padding: '0 3rem 0 2.5rem',
+    fontFamily: ThemingParameters.sapFontFamily,
+    backgroundColor: ThemingParameters.sapBackgroundColor,
+    solid: ThemingParameters.sapBackgroundColor,
+    list: ThemingParameters.sapGroup_ContentBackground,
+    transparent: 'transparent',
+    zIndex: 0
   },
-  keyInfos: {
-    '& > *': {
-      marginLeft: '1rem'
-    },
-    display: 'flex',
-    flexDirection: 'row',
-    alignSelf: 'center'
-  },
-  avatar: {
-    margin: `var(${DynamicPageCssVariables.avatarMargin})`
+  content: {
+    padding: 0,
+    paddingTop: '1rem'
   }
 };
 
