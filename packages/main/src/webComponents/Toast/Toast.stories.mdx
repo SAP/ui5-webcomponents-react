@@ -5,6 +5,7 @@ import { ToastPlacement } from '@ui5/webcomponents-react/lib/ToastPlacement';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { useRef } from 'react';
 import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="UI5 Web Components / Toast"
@@ -12,7 +13,7 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   argTypes={{
     ...createSelectArgTypes({ placement: ToastPlacement }),
     children: { type: 'string' },
-    ref: { type: null }
+    ...DocsCommonProps
   }}
   args={{
     placement: ToastPlacement.BottomCenter,

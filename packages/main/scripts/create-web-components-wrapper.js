@@ -518,15 +518,6 @@ const createWebComponentDemo = (componentSpec, componentProps, description) => {
   args.push(`tooltip: ''`);
   args.push(`slot: ''`);
   args.push(`ref: null`);
-  customArgTypes.push(`slot: {control: {disable:true}}`);
-  customArgTypes.push(`ref: {control: {disable:true}}`);
-  customArgTypes.push(
-    `style: {type: CSSProperties, description: "Element style which will be appended to the most outer element of a component. Use this prop carefully, some css properties might break the component." }`
-  );
-  customArgTypes.push(
-    `className: {type: 'string', description: "CSS Class Name which will be appended to the most outer element of a component. Use this prop carefully, overwriting CSS rules might break the component."}`
-  );
-  customArgTypes.push(`tooltip: {type: 'string', description: "A tooltip which will be shown on hover"}`);
   enumImports.push(`import { CSSProperties, Ref } from 'react';`);
 
   let formattedDescription = description.replace(/<br>/g, `<br/>`).replace(/\s\s+/g, ' ');
@@ -559,13 +550,16 @@ const createWebComponentDemo = (componentSpec, componentProps, description) => {
     ${additionalComponentImports.join('\n')}
     import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
     import { DocsHeader } from '@shared/stories/DocsHeader';
+    import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
     <Meta
      title="UI5 Web Components / ${componentName}"
      component={${componentName}}
      ${additionalComponentDocs.length > 0 ? `subcomponents={{ ${additionalComponentDocs.join(', ')} }}` : ''}
      argTypes={{
-       ...createSelectArgTypes({${selectArgTypes.join(', ')}}),${customArgTypes.join(',\n')}
+       ...createSelectArgTypes({${selectArgTypes.join(', ')}}),
+       ...DocsCommonProps,
+       ${customArgTypes.join(',\n')}
      }}
      args={{
        ${args.join(',\n')}

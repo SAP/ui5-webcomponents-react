@@ -33,7 +33,7 @@ packages/main/webComponents
 
 scripts
 shared
-.eslintrc.js
+.eslintrc.cjs
 *.stories.tsx
 *.test.tsx
 *.test.ts
