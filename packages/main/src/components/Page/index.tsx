@@ -23,7 +23,7 @@ export interface PagePropTypes extends CommonProps {
    */
   backgroundDesign?: PageBackgroundDesign;
   /**
-   * The (optional) custom header of this page. Use this aggregation only when a custom header
+   * The (optional) custom header of this page. Use this prop only when a custom header
    * is constructed where the default header consisting of title text + nav button is not sufficient.
    */
   customHeader?: ReactNode;
@@ -48,7 +48,7 @@ export interface PagePropTypes extends CommonProps {
    */
   onNavButtonPress?: (e: CustomEvent<{}>) => void;
   /**
-   * The page has three distinct areas that can hold content - a header, content area and a footer.
+   * The content area of the page.
    */
   children: ReactElement<any> | ReactElement<any>[] | ReactNode;
 }
@@ -58,7 +58,7 @@ const useStyles = createComponentStyles(styles, {
 });
 
 /**
- * A container control that holds one whole screen of an application.
+ * A layout control that holds one whole screen of an application.
  */
 const Page: FC<PagePropTypes> = forwardRef((props: PagePropTypes, ref: Ref<HTMLDivElement>) => {
   const {
