@@ -32,9 +32,6 @@
     "resize-observer-polyfill": "1.5.1",
     "smoothscroll-polyfill": "0.4.4"
   },
-  "devDependencies": {
-    "@sap-theming/theming-base-content": "11.1.18"
-  },
   "peerDependencies": {
     "@ui5/webcomponents-base": "1.0.0-rc.9",
     "react": "^16.8.0",
