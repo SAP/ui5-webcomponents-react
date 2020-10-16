@@ -1,48 +1,36 @@
-import {ArgsTable, Canvas, Meta, Story} from '@storybook/addon-docs/blocks';
-import {Label} from '@ui5/webcomponents-react/lib/Label';
-import {CSSProperties} from 'react';
-
-import {createSelectArgTypes} from '@shared/stories/createSelectArgTypes';
-import {DocsHeader} from '@shared/stories/DocsHeader';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Label } from '@ui5/webcomponents-react/lib/Label';
+import { CSSProperties } from 'react';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
-    title="UI5 Web Components / Label"
-    component={Label}
-    argTypes={{
-        ...createSelectArgTypes({}),
-        children: {control: 'text'},
-        slot: {control: {disable: true}},
-        ref: {control: {disable: true}},
-        style: {
-            type: CSSProperties,
-            description:
-                'Element style which will be appended to the most outer element of a component. Use this prop carefully, some css properties might break the component.'
-        },
-        className: {
-            type: 'string',
-            description:
-                'CSS Class Name which will be appended to the most outer element of a component. Use this prop carefully, overwriting CSS rules might break the component.'
-        },
-        tooltip: {type: 'string', description: 'A tooltip which will be shown on hover'}
-    }}
-    args={{
-        children: 'Label Text',
-        style: {},
-        className: '',
-        tooltip: '',
-        slot: '',
-        ref: null
-    }}
+  title="UI5 Web Components / Label"
+  component={Label}
+  argTypes={{
+    ...createSelectArgTypes({}),
+    children: { control: 'text' },
+    ...DocsCommonProps
+  }}
+  args={{
+    children: 'Label Text',
+    style: {},
+    className: '',
+    tooltip: '',
+    slot: '',
+    ref: null
+  }}
 />
 
-<DocsHeader/>
+<DocsHeader />
 
 <Canvas>
-    <Story name="Default">
-        {(args) => {
-            return <Label {...args} />;
-        }}
-    </Story>
+  <Story name="Default">
+    {(args) => {
+      return <Label {...args} />;
+    }}
+  </Story>
 </Canvas>
 
-<ArgsTable story="."/>
+<ArgsTable story="." />

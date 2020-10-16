@@ -7,6 +7,7 @@ import { AnalyticalCardHeader } from '@ui5/webcomponents-react/lib/AnalyticalCar
 import { DeviationIndicator } from '@ui5/webcomponents-react/lib/DeviationIndicator';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { LineChart } from '@ui5/webcomponents-react-charts/lib/LineChart';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="Components / AnalyticalCard"
@@ -15,13 +16,11 @@ import { LineChart } from '@ui5/webcomponents-react-charts/lib/LineChart';
     subcomponents: { AnalyticalCardHeader }
   }}
   argTypes={{
+    ...DocsCommonProps,
     header: {
       type: null
     },
     children: {
-      type: null
-    },
-    ref: {
       type: null
     }
   }}
