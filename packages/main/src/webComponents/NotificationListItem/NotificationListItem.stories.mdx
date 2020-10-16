@@ -8,6 +8,7 @@ import { List } from '@ui5/webcomponents-react/lib/List';
 import { NotificationOverflowAction } from '@ui5/webcomponents-react/lib/NotificationOverflowAction';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="UI5 Web Components / NotificationListItem"
@@ -15,6 +16,7 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   subcomponents={{ NotificationOverflowAction }}
   argTypes={{
     ...createSelectArgTypes({ priority: Priority }),
+    ...DocsCommonProps,
     avatar: { type: null },
     footnotes: { type: null },
     actions: { type: null }
