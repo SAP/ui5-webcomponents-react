@@ -58,7 +58,7 @@ const useStyles = createComponentStyles(styles, {
 });
 
 /**
- * A layout control that holds one whole screen of an application.
+ * A layout component that holds one whole screen of an application.
  */
 const Page: FC<PagePropTypes> = forwardRef((props: PagePropTypes, ref: Ref<HTMLDivElement>) => {
   const {
