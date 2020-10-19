@@ -125,11 +125,14 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
     };
   }, [open, targetRef.current, ref.current]);
 
-  const onAfterClose = (e) => {
-    stopPropagation(e);
-    ref?.current?.close();
-    setPopoverOpen(false);
-  };
+  const onAfterClose = useCallback(
+    (e) => {
+      stopPropagation(e);
+      ref?.current?.close();
+      setPopoverOpen(false);
+    },
+    [setPopoverOpen]
+  );
 
   if (!open) return null;
   return createPortal(
