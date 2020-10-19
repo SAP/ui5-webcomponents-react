@@ -104,9 +104,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
       if (element) {
         srcElement = element;
       }
-      console.log(headerPinned);
       const shouldHideHeader = srcElement.icon === 'slim-arrow-up';
-      const pinnedHeader = headerPinned === true;
       if (shouldHideHeader) {
         dynamicPageRef.current.classList.add(classes.headerCollapsed);
         setHeaderVisible(false);
