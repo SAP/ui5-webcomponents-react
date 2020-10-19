@@ -55,21 +55,17 @@ const renderComponent = () => (
       </DynamicPageTitle>
     }
     header={
-      <DynamicPageHeader
-        headerContent={
-          <>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <Label>Location: Warehouse A</Label>
-              <Label>Halway: 23L</Label>
-              <Label>Rack: 34</Label>
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '2vw' }}>
-              <Label>Availability:</Label>
-              <ObjectStatus state={ValueState.Success}>In Stock</ObjectStatus>
-            </div>
-          </>
-        }
-      />
+      <DynamicPageHeader>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <Label>Location: Warehouse A</Label>
+          <Label>Halway: 23L</Label>
+          <Label>Rack: 34</Label>
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '2vw' }}>
+          <Label>Availability:</Label>
+          <ObjectStatus state={ValueState.Success}>In Stock</ObjectStatus>
+        </div>
+      </DynamicPageHeader>
     }
   >
     <Form style={{ paddingBottom: '2rem', zIndex: 0 }} columnsXL={4} columnsL={4}>
@@ -241,21 +237,17 @@ const renderComponentWithoutContent = () => (
       </DynamicPageTitle>
     }
     header={
-      <DynamicPageHeader
-        headerContent={
-          <>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <Label>Location: Warehouse A</Label>
-              <Label>Halway: 23L</Label>
-              <Label>Rack: 34</Label>
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '2vw' }}>
-              <Label>Availability:</Label>
-              <ObjectStatus state={ValueState.Success}>In Stock</ObjectStatus>
-            </div>
-          </>
-        }
-      />
+      <DynamicPageHeader>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <Label>Location: Warehouse A</Label>
+          <Label>Halway: 23L</Label>
+          <Label>Rack: 34</Label>
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '2vw' }}>
+          <Label>Availability:</Label>
+          <ObjectStatus state={ValueState.Success}>In Stock</ObjectStatus>
+        </div>
+      </DynamicPageHeader>
     }
   />
 );

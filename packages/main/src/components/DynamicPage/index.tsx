@@ -24,7 +24,7 @@ import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
 import { useObserveHeights } from '../ObjectPage/useObserveHeights';
 import styles from './DynamicPage.jss';
 
-export interface DynamicPageProps extends CommonProps {
+export interface DynamicPageProps extends Omit<CommonProps, 'title'> {
   /**
    * Determines the background color of DynamicPage.
    */
@@ -55,9 +55,9 @@ export interface DynamicPageProps extends CommonProps {
 
   header?: ReactElement;
 
-  anchorBar?: ReactElement;
+  // anchorBar?: ReactElement;
 
-  children?: ReactElement;
+  children?: ReactNode | ReactNodeArray;
 
   footer?: ReactElement;
 }

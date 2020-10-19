@@ -102,9 +102,6 @@ const styles = {
     '& $subTitle': {
       padding: '0.5rem 0'
     },
-    '& $keyInfos': {
-      alignSelf: 'unset'
-    },
     '& contentHeader': {
       paddingTop: 0,
       '& > *': {
