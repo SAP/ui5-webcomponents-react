@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import '@ui5/webcomponents-icons/dist/icons/action';
 import '@ui5/webcomponents-icons/dist/icons/full-screen';
@@ -6,7 +6,6 @@ import '@ui5/webcomponents-icons/dist/icons/exit-full-screen';
 import '@ui5/webcomponents-icons/dist/icons/decline';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
-import { Text } from '@ui5/webcomponents-react/lib/Text';
 import { Breadcrumbs } from '@ui5/webcomponents-react/lib/Breadcrumbs';
 import { Link } from '@ui5/webcomponents-react/lib/Link';
 import { DynamicPageTitle } from '@ui5/webcomponents-react/lib/DynamicPageTitle';
@@ -16,15 +15,13 @@ import { DynamicPageHeader } from '@ui5/webcomponents-react/lib/DynamicPageHeade
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { Badge } from '@ui5/webcomponents-react/lib/Badge';
-import { Form } from '@ui5/webcomponents-react/lib/Form';
-import { FormGroup } from '@ui5/webcomponents-react/lib/FormGroup';
-import { FormItem } from '@ui5/webcomponents-react/lib/FormItem';
 import { ObjectStatus } from '@ui5/webcomponents-react/lib/ObjectStatus';
+import { ProductsTable } from '@shared/stories/ProductsTable';
 
 <Meta
   title="Components / DynamicPage"
   component={DynamicPage}
-  subcomponents={{ DynamicPageTitle }}
+  subcomponents={{ DynamicPage, DynamicPageTitle, DynamicPageHeader }}
   argTypes={{
     anchorBar: {
       type: null
@@ -54,7 +51,7 @@ import { ObjectStatus } from '@ui5/webcomponents-react/lib/ObjectStatus';
     {(args) => (
       <DynamicPage
         {...args}
-        style={{ maxHeight: '100vh' }}
+        style={{ maxHeight: '700px' }}
         title={
           <DynamicPageTitle
             actions={[
@@ -111,138 +108,7 @@ import { ObjectStatus } from '@ui5/webcomponents-react/lib/ObjectStatus';
           />
         }
       >
-        <Form style={{ paddingBottom: '2rem', zIndex: 0 }} columnsXL={4} columnsL={4}>
-          <FormGroup title="Phone Numbers">
-            <FormItem label="Home">
-              <Text>+1 234-567-8901</Text>
-            </FormItem>
-            <FormItem label="">
-              <Text>+1 234-567-5555</Text>
-            </FormItem>
-          </FormGroup>
-          <FormGroup title="Social Accounts">
-            <FormItem label="LinkedIn">
-              <Text>/DeniseSmith</Text>
-            </FormItem>
-            <FormItem label="Twitter">
-              <Text>@DeniseSmith</Text>
-            </FormItem>
-          </FormGroup>
-        </Form>
-        <Form style={{ paddingBottom: '2rem' }} columnsXL={4} columnsL={4}>
-          <FormGroup title="Addresses">
-            <FormItem label="Home Address">
-              <Text>2096 Mission Street</Text>
-            </FormItem>
-            <FormItem label="Mailing Address">
-              <Text>PO Box 32114</Text>
-            </FormItem>
-          </FormGroup>
-          <FormGroup title="Mailing Address">
-            <FormItem label="Work">
-              <Text>DeniseSmith@sap.com</Text>
-            </FormItem>
-          </FormGroup>
-        </Form>
-        <Form style={{ paddingBottom: '2rem' }} columnsXL={4} columnsL={4}>
-          <FormGroup title="Phone Numbers">
-            <FormItem label="Home">
-              <Text>+1 234-567-8901</Text>
-            </FormItem>
-            <FormItem label="">
-              <Text>+1 234-567-5555</Text>
-            </FormItem>
-          </FormGroup>
-          <FormGroup title="Social Accounts">
-            <FormItem label="LinkedIn">
-              <Text>/DeniseSmith</Text>
-            </FormItem>
-            <FormItem label="Twitter">
-              <Text>@DeniseSmith</Text>
-            </FormItem>
-          </FormGroup>
-        </Form>
-        <Form style={{ paddingBottom: '2rem' }} columnsXL={4} columnsL={4}>
-          <FormGroup title="Addresses">
-            <FormItem label="Home Address">
-              <Text>2096 Mission Street</Text>
-            </FormItem>
-            <FormItem label="Mailing Address">
-              <Text>PO Box 32114</Text>
-            </FormItem>
-          </FormGroup>
-          <FormGroup title="Mailing Address">
-            <FormItem label="Work">
-              <Text>DeniseSmith@sap.com</Text>
-            </FormItem>
-          </FormGroup>
-        </Form>
-        <Form style={{ paddingBottom: '2rem', zIndex: 0 }} columnsXL={4} columnsL={4}>
-          <FormGroup title="Phone Numbers">
-            <FormItem label="Home">
-              <Text>+1 234-567-8901</Text>
-            </FormItem>
-            <FormItem label="">
-              <Text>+1 234-567-5555</Text>
-            </FormItem>
-          </FormGroup>
-          <FormGroup title="Social Accounts">
-            <FormItem label="LinkedIn">
-              <Text>/DeniseSmith</Text>
-            </FormItem>
-            <FormItem label="Twitter">
-              <Text>@DeniseSmith</Text>
-            </FormItem>
-          </FormGroup>
-        </Form>
-        <Form style={{ paddingBottom: '2rem' }} columnsXL={4} columnsL={4}>
-          <FormGroup title="Addresses">
-            <FormItem label="Home Address">
-              <Text>2096 Mission Street</Text>
-            </FormItem>
-            <FormItem label="Mailing Address">
-              <Text>PO Box 32114</Text>
-            </FormItem>
-          </FormGroup>
-          <FormGroup title="Mailing Address">
-            <FormItem label="Work">
-              <Text>DeniseSmith@sap.com</Text>
-            </FormItem>
-          </FormGroup>
-        </Form>
-        <Form style={{ paddingBottom: '2rem' }} columnsXL={4} columnsL={4}>
-          <FormGroup title="Phone Numbers">
-            <FormItem label="Home">
-              <Text>+1 234-567-8901</Text>
-            </FormItem>
-            <FormItem label="">
-              <Text>+1 234-567-5555</Text>
-            </FormItem>
-          </FormGroup>
-          <FormGroup title="Social Accounts">
-            <FormItem label="LinkedIn">
-              <Text>/DeniseSmith</Text>
-            </FormItem>
-            <FormItem label="Twitter">
-              <Text>@DeniseSmith</Text>
-            </FormItem>
-          </FormGroup>
-        </Form>
-        <Form style={{ paddingBottom: '2rem' }} columnsXL={4} columnsL={4}>
-          <FormGroup title="Addresses">
-            <FormItem label="Home Address">
-              <Text>2096 Mission Street</Text>
-            </FormItem>
-            <FormItem label="Mailing Address">
-              <Text>PO Box 32114</Text>
-            </FormItem>
-          </FormGroup>
-          <FormGroup title="Mailing Address">
-            <FormItem label="Work">
-              <Text>DeniseSmith@sap.com</Text>
-            </FormItem>
-          </FormGroup>
-        </Form>
+        <ProductsTable />
       </DynamicPage>
     )}
   </Story>
