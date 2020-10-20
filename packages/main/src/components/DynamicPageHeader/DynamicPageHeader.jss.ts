@@ -1,30 +1,25 @@
 import { sapUiResponsiveContentPadding } from '@ui5/webcomponents-react-base/lib/spacing';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
+import { DynamicPageCssVariables } from '../DynamicPage/DynamicPage.jss';
 
 export const DynamicPageHeaderStyles = {
-  container: {
+  header: {
     ...sapUiResponsiveContentPadding,
+    flexShrink: 0,
     backgroundColor: ThemingParameters.sapObjectHeader_Background,
-    solid: ThemingParameters.sapObjectHeader_Background,
+    position: 'sticky',
+    zIndex: 1,
     translucent: ThemingParameters.sapObjectHeader_Background,
     transparent: 'transparent',
     paddingTop: '1rem',
     paddingBottom: '1rem',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'start'
+    display: `var(${DynamicPageCssVariables.headerDisplay})`
   },
-  headerContent: {
+  contentHeader: {
     backgroundColor: ThemingParameters.sapObjectHeader_Background,
-    position: 'sticky',
-    paddingBottom: '0.25rem',
+    paddingTop: '0.5rem',
+    paddingBottom: '0.5rem',
     maxHeight: '500px',
-    overflow: 'hidden',
-    paddingLeft: '2rem'
-  },
-  headerCollapsed: {
-    '& $headerContent': {
-      display: 'none'
-    }
+    overflow: 'hidden'
   }
 };

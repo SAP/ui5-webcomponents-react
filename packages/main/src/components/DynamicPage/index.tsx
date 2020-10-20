@@ -199,8 +199,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
         ref: headerContentRef,
         style: { top: noHeader ? 0 : topHeaderHeight },
         headerPinned,
-        topHeaderHeight,
-        classes
+        topHeaderHeight
       })}
       <FlexBox
         className={classes.anchorBar}
@@ -212,7 +211,6 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
       >
         <DynamicPageAnchorBar
           ref={anchorBarRef}
-          style={{ top: '0.025rem' }}
           headerContentPinnable={headerContentPinnable}
           showHideHeaderButton={showHideHeaderButton && !noHeader}
           headerContentHeight={headerContentHeight}
@@ -222,9 +220,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
           onHoverToggleButton={onHoverToggleButton}
         />
       </FlexBox>
-      <div className={classes.contentContainer}>
-        <div className={classes.content}>{children}</div>
-      </div>
+      <div className={classes.contentContainer}>{children}</div>
     </div>
   );
 });

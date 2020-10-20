@@ -1,11 +1,11 @@
 import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming';
+import '@ui5/webcomponents-icons/dist/icons/slim-arrow-down.js';
+import '@ui5/webcomponents-icons/dist/icons/slim-arrow-up.js';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ToggleButton } from '@ui5/webcomponents-react/lib/ToggleButton';
-import React, { CSSProperties, forwardRef, ReactElement, RefObject, useCallback } from 'react';
+import React, { CSSProperties, forwardRef, RefObject, useCallback } from 'react';
 import { createUseStyles } from 'react-jss';
-import '@ui5/webcomponents-icons/dist/icons/slim-arrow-down.js';
-import '@ui5/webcomponents-icons/dist/icons/slim-arrow-up.js';
 
 addCustomCSS(
   'ui5-button',
@@ -67,9 +67,7 @@ const anchorBarStyles = {
 const useStyles = createUseStyles(anchorBarStyles, { name: 'DynamicPageAnchorBar' });
 
 interface Props {
-  className?: string;
   style?: CSSProperties;
-  sections?: ReactElement | ReactElement[];
   headerContentHeight: number;
   headerContentPinnable: boolean;
   showHideHeaderButton: boolean;

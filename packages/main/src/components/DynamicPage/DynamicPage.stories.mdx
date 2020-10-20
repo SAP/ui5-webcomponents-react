@@ -17,16 +17,15 @@ import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { Badge } from '@ui5/webcomponents-react/lib/Badge';
 import { ObjectStatus } from '@ui5/webcomponents-react/lib/ObjectStatus';
 import { ProductsTable } from '@shared/stories/ProductsTable';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="Components / DynamicPage"
   component={DynamicPage}
   subcomponents={{ DynamicPage, DynamicPageTitle, DynamicPageHeader }}
   argTypes={{
+    ...DocsCommonProps,
     anchorBar: {
-      type: null
-    },
-    ref: {
       type: null
     },
     title: {
