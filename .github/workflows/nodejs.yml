@@ -18,7 +18,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2.3.1
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2.1.0
+      uses: actions/setup-node@v2.1.2
       with:
         node-version: ${{ matrix.node-version }}
     - name: install dependencies
@@ -26,7 +26,7 @@ jobs:
     - name: run tests
       run: yarn test --runInBand
     - name: Coveralls
-      uses: coverallsapp/github-action@v1.1.1
+      uses: coverallsapp/github-action@v1.1.2
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
     - name: build project
