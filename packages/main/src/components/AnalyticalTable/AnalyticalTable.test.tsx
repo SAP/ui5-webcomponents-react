@@ -146,10 +146,10 @@ describe('AnalyticalTable', () => {
   beforeEach(() => {
     window = Object.assign(window, { innerWidth: 1440 });
   });
-
-  test('test Asc desc', async () => {
+  //todo when it's possible to open popovers on click, activate this test again
+  test.skip('test Asc desc', async () => {
     const { asFragment } = render(<AnalyticalTable data={data} title={'Test'} columns={columns} />);
-
+    
     expect(asFragment()).toMatchSnapshot();
 
     fireEvent.click(screen.getAllByText('Sort Ascending')[0], { bubbles: false });
