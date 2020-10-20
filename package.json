@@ -30,7 +30,7 @@
     "@ui5/webcomponents": "1.0.0-rc.9",
     "@ui5/webcomponents-fiori": "1.0.0-rc.9",
     "@ui5/webcomponents-icons": "1.0.0-rc.9",
-    "react": "16.8.0",
+    "react": "16.14.0",
     "react-dom": "16.8.0",
     "react-syntax-highlighter": "^13.5.1"
   },
@@ -98,7 +98,7 @@
   "resolutions": {
     "@types/react": "16.9.34",
     "@babel/runtime": "7.11.0",
-    "react": "16.8.0",
+    "react": "16.14.0",
     "react-dom": "16.8.0"
   },
   "husky": {
