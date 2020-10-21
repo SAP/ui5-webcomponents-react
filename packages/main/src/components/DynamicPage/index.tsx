@@ -64,6 +64,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
     header,
     tooltip,
     style,
+    backgroundDesign,
     showHideHeaderButton = true,
     headerContentPinnable = true,
     alwaysShowContentHeader = false,
@@ -74,6 +75,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
   const useStyles = createComponentStyles(styles, { name: 'DynamicPage' });
   const classes = useStyles();
   const dynamicPageClasses = StyleClassHelper.of(classes.dynamicPage, GlobalStyleClasses.sapScrollBar);
+  dynamicPageClasses.put(classes[`background${backgroundDesign}`]);
 
   const anchorBarRef: RefObject<HTMLDivElement> = useRef();
   const dynamicPageRef: RefObject<HTMLDivElement> = useConsolidatedRef(ref);
