@@ -25,7 +25,6 @@ const renderComponent = () => (
   <DynamicPage
     title={
       <DynamicPageTitle
-        headerVisible={true}
         actions={[
           <Button design={ButtonDesign.Emphasized}>Edit</Button>,
           <Button design={ButtonDesign.Transparent}>Delete</Button>,
@@ -207,7 +206,6 @@ const renderComponentWithoutContent = () => (
   <DynamicPage
     title={
       <DynamicPageTitle
-        headerVisible={true}
         actions={[
           <Button design={ButtonDesign.Emphasized}>Edit</Button>,
           <Button design={ButtonDesign.Transparent}>Delete</Button>,
@@ -254,11 +252,11 @@ const renderComponentWithoutContent = () => (
 
 describe('DynamicPage', () => {
   test('with content', () => {
-    const wrapper = render(renderComponent());
-    expect(wrapper.asFragment()).toMatchSnapshot();
+    const { asFragment } = render(renderComponent());
+    expect(asFragment()).toMatchSnapshot();
   });
   test('without content', () => {
-    const wrapper = render(renderComponentWithoutContent());
-    expect(wrapper.asFragment()).toMatchSnapshot();
+    const { asFragment } = render(renderComponentWithoutContent());
+    expect(asFragment()).toMatchSnapshot();
   });
 });
