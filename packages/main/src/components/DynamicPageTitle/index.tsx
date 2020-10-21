@@ -2,6 +2,7 @@ import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createC
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
+import { BreadcrumbsPropTypes } from '@ui5/webcomponents-react/lib/Breadcrumbs';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
 import { Toolbar } from '@ui5/webcomponents-react/lib/Toolbar';
@@ -9,9 +10,8 @@ import { ToolbarDesign } from '@ui5/webcomponents-react/lib/ToolbarDesign';
 import { ToolbarSeparator } from '@ui5/webcomponents-react/lib/ToolbarSeparator';
 import { ToolbarSpacer } from '@ui5/webcomponents-react/lib/ToolbarSpacer';
 import { ToolbarStyle } from '@ui5/webcomponents-react/lib/ToolbarStyle';
-import React, { FC, forwardRef, ReactElement, ReactNode, ReactNodeArray, Ref, useEffect } from 'react';
+import React, { FC, forwardRef, ReactElement, ReactNode, ReactNodeArray, Ref } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { BreadcrumbsPropTypes } from '../Breadcrumbs';
 import { DynamicPageTitleStyles } from './DynamicPageTitle.jss';
 
 export interface DynamicPageTitleProps extends CommonProps {
@@ -49,76 +49,73 @@ export interface DynamicPageTitleProps extends CommonProps {
    *
    */
   navigationActions?: ReactElement | ReactElement[];
+}
+
+interface InternalProps extends DynamicPageTitleProps {
+  headerVisible?: boolean;
   /**
    * The onToggleHeaderContentVisibility show or hide the header section
    */
   onToggleHeaderContentVisibility?: (e: any) => boolean;
-  headerVisible?: boolean;
 }
 
 const useStyles = createComponentStyles(DynamicPageTitleStyles, { name: 'DynamicPageTitle' });
 
-const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef(
-  (props: DynamicPageTitleProps, ref: Ref<HTMLDivElement>) => {
-    const {
-      actions,
-      onToggleHeaderContentVisibility,
-      breadcrumbs,
-      children,
-      heading,
-      subHeading,
-      navigationActions,
-      headerVisible,
-      className,
-      style
-    } = props;
+const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalProps, ref: Ref<HTMLDivElement>) => {
+  const {
+    actions,
+    onToggleHeaderContentVisibility,
+    breadcrumbs,
+    children,
+    heading,
+    subHeading,
+    navigationActions,
+    headerVisible,
+    className,
+    style,
+    tooltip
+  } = props;
 
-    const classes = useStyles();
+  const classes = useStyles();
+  const containerClasses = StyleClassHelper.of(classes.container).putIfPresent(className);
+  const passThroughProps = usePassThroughHtmlProps(props, ['onToggleHeaderContentVisibility']);
 
-    const containerClasses = StyleClassHelper.of(classes.container);
+  const appliedStyles = {
+    ...(headerVisible ? {} : { boxShadow: ThemingParameters.sapContent_HeaderShadow }),
+    ...style
+  };
 
-    containerClasses.putIfPresent(className);
-    const passThroughProps = usePassThroughHtmlProps(props, ['onToggleHeaderContentVisibility']);
-
-    useEffect(() => {
-      if (headerVisible) {
-        ref.current.style.boxShadow = null;
-      } else {
-        ref.current.style.boxShadow = ThemingParameters.sapContent_HeaderShadow;
-      }
-    }, [headerVisible]);
-
-    return (
-      <FlexBox
-        style={style}
-        className={classes.container}
-        ref={ref}
-        data-component-name="DynamicPageTitle"
-        {...passThroughProps}
-        onClick={onToggleHeaderContentVisibility}
-      >
-        <div className={classes.breadcrumbs}>{breadcrumbs}</div>
-        <FlexBox alignItems={FlexBoxAlignItems.Center} style={{ flexGrow: 1, width: '100%' }}>
-          <FlexBox className={classes.titleMainSection}>
-            <div className={classes.title}>{heading}</div>
-            <div className={classes.content}>
-              <Toolbar toolbarStyle={ToolbarStyle.Clear}>{children}</Toolbar>
-            </div>
-          </FlexBox>
-          <Toolbar design={ToolbarDesign.Auto} toolbarStyle={ToolbarStyle.Clear}>
-            <ToolbarSpacer />
-            {actions}
-            <ToolbarSeparator />
-            {navigationActions}
-          </Toolbar>
+  return (
+    <FlexBox
+      className={containerClasses.className}
+      style={appliedStyles}
+      ref={ref}
+      tooltip={tooltip}
+      data-component-name="DynamicPageTitle"
+      {...passThroughProps}
+      onClick={onToggleHeaderContentVisibility}
+    >
+      <div className={classes.breadcrumbs}>{breadcrumbs}</div>
+      <FlexBox alignItems={FlexBoxAlignItems.Center} style={{ flexGrow: 1, width: '100%' }}>
+        <FlexBox className={classes.titleMainSection}>
+          <div className={classes.title}>{heading}</div>
+          <div className={classes.content}>
+            <Toolbar toolbarStyle={ToolbarStyle.Clear}>{children}</Toolbar>
+          </div>
         </FlexBox>
-        <FlexBox>
-          <div className={classes.subTitle}>{subHeading}</div>
-        </FlexBox>
+        <Toolbar design={ToolbarDesign.Auto} toolbarStyle={ToolbarStyle.Clear}>
+          <ToolbarSpacer />
+          {actions}
+          <ToolbarSeparator />
+          {navigationActions}
+        </Toolbar>
       </FlexBox>
-    );
-  }
-);
+      <FlexBox>
+        <div className={classes.subTitle}>{subHeading}</div>
+      </FlexBox>
+    </FlexBox>
+  );
+});
 
 DynamicPageTitle.displayName = 'DynamicPageTitle';
 
