@@ -1,5 +1,3 @@
-const { MemoryRouter } = require('react-router-dom');
-
 module.exports = {
   data: {
     todos: {
