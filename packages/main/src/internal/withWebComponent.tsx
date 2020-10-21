@@ -1,10 +1,11 @@
+import { getEffectiveScopingSuffixForTag } from '@ui5/webcomponents-base/dist/CustomElementsScope';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import React, {
   Children,
   cloneElement,
+  ComponentType,
   forwardRef,
   ForwardRefRenderFunction,
-  HTMLAttributes,
   ReactElement,
   Ref,
   RefObject,
@@ -29,7 +30,7 @@ export interface WithWebComponentPropTypes extends CommonProps {
 }
 
 export const withWebComponent = <T extends Record<string, any>>(
-  TagName: string,
+  tagName: string,
   regularProperties: string[],
   booleanProperties: string[],
   slotProperties: string[],
@@ -104,10 +105,13 @@ export const withWebComponent = <T extends Record<string, any>>(
       .filter(([key]) => !eventProperties.map((eventName) => createEventPropName(eventName)).includes(key))
       .reduce((acc, [key, val]) => ({ ...acc, [key]: val }), {});
 
+    const tagNameSuffix: string = getEffectiveScopingSuffixForTag(tagName);
+    const Component = ((tagNameSuffix ? `${tagName}-${tagNameSuffix}` : tagName) as unknown) as ComponentType<
+      WithWebComponentPropTypes & { class: string }
+    >;
+
     return (
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      <TagName
+      <Component
         ref={ref}
         {...booleanProps}
         {...regularProps}
@@ -117,11 +121,11 @@ export const withWebComponent = <T extends Record<string, any>>(
       >
         {slots}
         {children}
-      </TagName>
+      </Component>
     );
   });
 
-  WithWebComponent.displayName = `WithWebComponent(${TagName})`;
+  WithWebComponent.displayName = `WithWebComponent(${tagName})`;
 
   return (WithWebComponent as unknown) as ForwardRefRenderFunction<Ui5DomRef, T & WithWebComponentPropTypes>;
 };

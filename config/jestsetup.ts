@@ -38,14 +38,19 @@ expect.addSnapshotSerializer(jssSerializer);
 expect.addSnapshotSerializer(contentLoaderSerializer);
 
 export const setupMatchMedia = () => {
-  // @ts-ignore
-  window.matchMedia = () => {
-    return {
-      matches: true,
-      addListener() {},
-      removeListener() {}
-    };
-  };
+  Object.defineProperty(window, 'matchMedia', {
+    writable: true,
+    value: jest.fn().mockImplementation((query) => ({
+      matches: false,
+      media: query,
+      onchange: null,
+      addListener: jest.fn(), // deprecated
+      removeListener: jest.fn(), // deprecated
+      addEventListener: jest.fn(),
+      removeEventListener: jest.fn(),
+      dispatchEvent: jest.fn()
+    }))
+  });
 };
 
 export const setupResizeObserver = () => {

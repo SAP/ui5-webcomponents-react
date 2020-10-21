@@ -26,13 +26,17 @@ export interface TabContainerPropTypes extends WithWebComponentPropTypes {
    */
   tabLayout?: TabLayout;
   /**
-   * Defines the placement of the tab strip (tab buttons area) relative to the actual tabs' content. <br><br> <b>Note:</b> By default the tab strip is displayed above the tabs' content area and this is the recommended layout for most scenarios. Set to <code>Bottom</code> only when the <code>ui5-tabcontainer</code> is at the bottom of the page and you want the tab strip to act as a menu.
+   * Defines the placement of the tab strip (tab buttons area) relative to the actual tabs' content. <br><br> <b>Note:</b> By default the tab strip is displayed above the tabs' content area and this is the recommended layout for most scenarios. Set to <code>Bottom</code> only when the <code>TabContainer</code> is at the bottom of the page and you want the tab strip to act as a menu.
    */
   tabsPlacement?: TabContainerTabsPlacement;
   /**
-   * Defines the tabs. <br><br> <b>Note:</b> Use <code>ui5-tab</code> and <code>ui5-tab-separator</code> for the intended design.
+   * Defines the tabs. <br><br> <b>Note:</b> Use <code>Tab</code> and <code>TabSeparator</code> for the intended design.
    */
   children?: ReactNode | ReactNode[];
+  /**
+   * Defines the button which will open the overflow menu. If nothing is provided to this slot, the default button will be used.
+   */
+  overflowButton?: ReactNode | ReactNode[];
   /**
    * Fired when a tab is selected.
    */
@@ -40,13 +44,17 @@ export interface TabContainerPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
+ * The <code>TabContainer</code> represents a collection of tabs with associated content. Navigation through the tabs
+ changes the content display of the currently active content area. A tab can be labeled with text only, or icons with
+ text.
+
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/TabContainer" target="_blank">UI5 Web Components Playground</a>
  */
 const TabContainer: FC<TabContainerPropTypes> = withWebComponent<TabContainerPropTypes>(
   'ui5-tabcontainer',
   ['tabLayout', 'tabsPlacement'],
   ['collapsed', 'fixed', 'showOverflow'],
-  [],
+  ['overflowButton'],
   ['tab-select']
 );
 

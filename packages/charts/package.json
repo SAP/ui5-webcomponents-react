@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react-charts",
-  "version": "0.10.10",
+  "version": "0.11.0",
   "description": "Charts for ui5-webcomponents-react",
   "main": "index.cjs.js",
   "module": "index.esm.js",
@@ -20,14 +20,14 @@
     "build:types": "tsc --declaration --emitDeclarationOnly --declarationDir . --removeComments false || exit 0"
   },
   "dependencies": {
-    "@babel/runtime": "7.11.0",
+    "@babel/runtime": "7.12.1",
     "lodash": "^4.17.20",
     "react-content-loader": "5.1.0",
     "recharts": "2.0.0-beta.6"
   },
   "peerDependencies": {
-    "@ui5/webcomponents-react": "^0.9.0",
-    "@ui5/webcomponents-react-base": "^0.9.0",
+    "@ui5/webcomponents-react": "^0.11.0",
+    "@ui5/webcomponents-react-base": "^0.11.0",
     "react": "^16.8.0",
     "react-jss": "^10.0.4"
   },

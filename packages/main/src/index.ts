@@ -41,8 +41,6 @@ import { FCLLayout } from './lib/FCLLayout';
 import { FileUploader } from './lib/FileUploader';
 import { FilterBar } from './lib/FilterBar';
 import { FilterGroupItem } from './lib/FilterGroupItem';
-import { FilterItem } from './lib/FilterItem';
-import { FilterType } from './lib/FilterType';
 import { FlexBox } from './lib/FlexBox';
 import { FlexBoxAlignItems } from './lib/FlexBoxAlignItems';
 import { FlexBoxDirection } from './lib/FlexBoxDirection';
@@ -75,6 +73,7 @@ import { MessageStrip } from './lib/MessageStrip';
 import { MessageStripType } from './lib/MessageStripType';
 import { MultiComboBox } from './lib/MultiComboBox';
 import { MultiComboBoxItem } from './lib/MultiComboBoxItem';
+import { MultiInput } from './lib/MultiInput';
 import { NotificationListGroupItem } from './lib/NotificationListGroupItem';
 import { NotificationListItem } from './lib/NotificationListItem';
 import { NotificationOverflowAction } from './lib/NotificationOverflowAction';
@@ -196,8 +195,6 @@ export {
   FileUploader,
   FilterBar,
   FilterGroupItem,
-  FilterItem,
-  FilterType,
   FlexBox,
   FlexBoxAlignItems,
   FlexBoxDirection,
@@ -230,6 +227,7 @@ export {
   MessageStripType,
   MultiComboBox,
   MultiComboBoxItem,
+  MultiInput,
   NotificationListGroupItem,
   NotificationListItem,
   NotificationOverflowAction,

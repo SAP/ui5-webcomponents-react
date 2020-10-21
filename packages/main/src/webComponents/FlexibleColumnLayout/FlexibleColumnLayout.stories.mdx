@@ -1,10 +1,10 @@
-import { Title, Subtitle, Description, Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { FlexibleColumnLayout } from '@ui5/webcomponents-react/lib/FlexibleColumnLayout';
 import { FCLLayout } from '@ui5/webcomponents-react/lib/FCLLayout';
-import { Label } from '@ui5/webcomponents-react/lib/Label';
 import { List } from '@ui5/webcomponents-react/lib/List';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
 import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
 <Meta
@@ -12,6 +12,7 @@ import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
   component={FlexibleColumnLayout}
   argTypes={{
     ...createSelectArgTypes({ layout: FCLLayout }),
+    ...DocsCommonProps,
     startColumn: { type: null },
     midColumn: { type: null },
     endColumn: { type: null }

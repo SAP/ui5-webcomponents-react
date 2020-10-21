@@ -1,0 +1,52 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { MultiInput } from '@ui5/webcomponents-react/lib/MultiInput';
+import { Token } from '@ui5/webcomponents-react/lib/Token';
+import { InputType } from '@ui5/webcomponents-react/lib/InputType';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
+
+<Meta
+  title="UI5 Web Components / MultiInput"
+  component={MultiInput}
+  subcomponents={{ MultiInput, Token }}
+  argTypes={{
+    ...createSelectArgTypes({ type: InputType, valueState: ValueState }),
+    tokens: null,
+    ...DocsCommonProps
+  }}
+/>
+
+<DocsHeader />
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return (
+        <MultiInput
+          {...args}
+          style={{ width: '100%' }}
+          tokens={
+            <>
+              <Token text="Argentina" />
+              <Token text="Bulgaria" />
+              <Token text="England" />
+              <Token text="Finland" />
+              <Token text="Germany" />
+              <Token text="Hungary" />
+              <Token text="Italy" />
+              <Token text="Luxembourg" />
+              <Token text="Mexico" />
+              <Token text="Philippines" />
+              <Token text="Sweden" />
+              <Token text="USA" />
+            </>
+          }
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="." />

@@ -1,10 +1,11 @@
-import { Title, Subtitle, Description, Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { Toast } from '@ui5/webcomponents-react/lib/Toast';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ToastPlacement } from '@ui5/webcomponents-react/lib/ToastPlacement';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { useRef } from 'react';
 import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="UI5 Web Components / Toast"
@@ -12,7 +13,7 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   argTypes={{
     ...createSelectArgTypes({ placement: ToastPlacement }),
     children: { type: 'string' },
-    ref: { type: null }
+    ...DocsCommonProps
   }}
   args={{
     placement: ToastPlacement.BottomCenter,

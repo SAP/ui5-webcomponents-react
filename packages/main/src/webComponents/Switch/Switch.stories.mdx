@@ -1,0 +1,38 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { Switch } from '@ui5/webcomponents-react/lib/Switch';
+import { CSSProperties, Ref } from 'react';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
+
+<Meta
+  title="UI5 Web Components / Switch"
+  component={Switch}
+  argTypes={{
+    ...createSelectArgTypes({}),
+    ...DocsCommonProps
+  }}
+  args={{
+    style: {},
+    className: '',
+    tooltip: '',
+    slot: '',
+    ref: null
+  }}
+/>
+
+<DocsHeader />
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return <Switch {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="." />
+<div style={{ fontFamily: 'var(--sapFontFamily)', fontSize: 'var(--sapFontSize)', color: 'var(--sapTextColor)' }}>
+  <h3>Keyboard Handling</h3>
+  The state can be changed by pressing the Space and Enter keys.
+</div>

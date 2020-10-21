@@ -1,4 +1,4 @@
-import { convertToPx, matchLegacyBySize } from './utils';
+import { changeRootCSSClass, convertToPx, matchLegacyBySize } from './utils';
 
 describe('Device - Utils', () => {
   test('convertToPx', () => {
@@ -18,5 +18,16 @@ describe('Device - Utils', () => {
     expect(matchLegacyBySize(-20, 40, 'rem', [5])).toBe(true);
     expect(matchLegacyBySize(20, -40, 'rem', [5])).toBe(false);
     expect(matchLegacyBySize(19, 20, 'rem', [319])).toBe(true);
+  });
+
+  test('change css root classes', () => {
+    changeRootCSSClass('sapUiMedia-Std', false);
+    expect(document.documentElement.className).toBe('sapUiMedia-Std');
+    changeRootCSSClass('sapUiMedia-StdExt-Phone', false);
+    expect(document.documentElement.className).toBe('sapUiMedia-Std sapUiMedia-StdExt-Phone');
+    changeRootCSSClass('sapUiMedia-StdExt-Desktop', false, 'sapUiMedia-StdExt-');
+    expect(document.documentElement.className).toBe('sapUiMedia-Std sapUiMedia-StdExt-Desktop');
+    changeRootCSSClass('sapUiMedia-StdExt-Desktop', true);
+    expect(document.documentElement.className).toBe('sapUiMedia-Std ');
   });
 });

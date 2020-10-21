@@ -1,0 +1,38 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { Title } from '@ui5/webcomponents-react/lib/Title';
+import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
+import { CSSProperties, Ref } from 'react';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
+
+<Meta
+  title="UI5 Web Components / Title"
+  component={Title}
+  argTypes={{
+    ...createSelectArgTypes({ level: TitleLevel }),
+    children: { control: 'text' },
+    ...DocsCommonProps
+  }}
+  args={{
+    level: TitleLevel.H2,
+    children: 'Title Text',
+    style: {},
+    className: '',
+    tooltip: '',
+    slot: '',
+    ref: null
+  }}
+/>
+
+<DocsHeader />
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return <Title {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="." />

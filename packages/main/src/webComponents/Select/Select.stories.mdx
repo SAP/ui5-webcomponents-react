@@ -1,9 +1,10 @@
-import { Meta, Story, ArgsTable, Title, Subtitle, Description, Canvas } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import { Option } from '@ui5/webcomponents-react/lib/Option';
 import { Select } from '@ui5/webcomponents-react/lib/Select';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="UI5 Web Components / Select"
@@ -11,10 +12,8 @@ import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
   subcomponents={{ Option }}
   argTypes={{
     ...createSelectArgTypes({ valueState: ValueState }),
+    ...DocsCommonProps,
     children: {
-      type: null
-    },
-    ref: {
       type: null
     }
   }}

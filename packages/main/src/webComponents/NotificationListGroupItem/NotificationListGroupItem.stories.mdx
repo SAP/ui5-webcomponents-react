@@ -1,4 +1,4 @@
-import { Title, Subtitle, Description, Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { NotificationListGroupItem } from '@ui5/webcomponents-react/lib/NotificationListGroupItem';
 import { Fragment } from 'react';
 import { NotificationListItem } from '@ui5/webcomponents-react/lib/NotificationListItem';
@@ -11,13 +11,15 @@ import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import '@ui5/webcomponents-icons/dist/icons/accept';
 import '@ui5/webcomponents-icons/dist/icons/message-error';
 import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="UI5 Web Components / NotificationListGroupItem"
   component={NotificationListGroupItem}
   subcomponents={{ NotificationOverflowAction }}
   argTypes={{
-    ...createSelectArgTypes({ priority: Priority })
+    ...createSelectArgTypes({ priority: Priority }),
+    ...DocsCommonProps
   }}
   args={{
     priority: Priority.High,

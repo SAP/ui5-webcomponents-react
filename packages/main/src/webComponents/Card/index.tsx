@@ -4,19 +4,19 @@ import { FC, ReactNode } from 'react';
 
 export interface CardPropTypes extends WithWebComponentPropTypes {
   /**
-   * Defines if the <code>ui5-card</code> header would be interactive, e.g gets hover effect, gets focused and <code>headerPress</code> event is fired, when it is pressed.
+   * Defines if the <code>Card</code> header would be interactive, e.g gets hover effect, gets focused and <code>headerPress</code> event is fired, when it is pressed.
    */
   headerInteractive?: boolean;
   /**
-   * Defines the title displayed in the <code>ui5-card</code> header.
+   * Defines the title displayed in the <code>Card</code> header.
    */
   heading?: string;
   /**
-   * Defines the status displayed in the <code>ui5-card</code> header. <br><br> <b>Note:</b> If the <code>action</code> slot is set, the <code>status</code> will not be displayed, you can either have <code>action</code>, or <code>status</code>.
+   * Defines the status displayed in the <code>Card</code> header. <br><br> <b>Note:</b> If the <code>action</code> slot is set, the <code>status</code> will not be displayed, you can either have <code>action</code>, or <code>status</code>.
    */
   status?: string;
   /**
-   * Defines the subheading displayed in the <code>ui5-card</code> header.
+   * Defines the subheading displayed in the <code>Card</code> header.
    */
   subheading?: string;
   /**
@@ -28,16 +28,21 @@ export interface CardPropTypes extends WithWebComponentPropTypes {
    */
   avatar?: ReactNode | ReactNode[];
   /**
-   * Defines the content of the <code>ui5-card</code>.
+   * Defines the content of the <code>Card</code>.
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Fired when the <code>ui5-card</code> header is activated by mouse/tap or by using the Enter or Space key. <br><br> <b>Note:</b> The event would be fired only if the <code>headerInteractive</code> property is set to true.
+   * Fired when the <code>Card</code> header is activated by mouse/tap or by using the Enter or Space key. <br><br> <b>Note:</b> The event would be fired only if the <code>headerInteractive</code> property is set to true.
    */
-  onHeaderClick?: (event: CustomEvent<{}>) => void;
+  onHeaderClick?: (event: CustomEvent) => void;
 }
 
 /**
+ * The <code>Card</code> is a component that represents information in the form of a tile with separate header and content
+ areas. The content area of a <code>Card</code> can be arbitrary HTML content. The header can be used through several
+ properties, such as: <code>heading</code>, <code>subheading</code>, <code>status</code> and two slots:
+ <code>avatar</code> and <code>action</code>.
+
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Card" target="_blank">UI5 Web Components Playground</a>
  */
 const Card: FC<CardPropTypes> = withWebComponent<CardPropTypes>(

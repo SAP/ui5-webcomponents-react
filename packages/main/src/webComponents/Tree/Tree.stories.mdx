@@ -1,12 +1,12 @@
-import { Title, Subtitle, Description, Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { Tree } from '@ui5/webcomponents-react/lib/Tree';
 import { ListMode } from '@ui5/webcomponents-react/lib/ListMode';
-import { ReactNode } from 'react';
 import { TreeItem } from '@ui5/webcomponents-react/lib/TreeItem';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import '@ui5/webcomponents-icons/dist/icons/copy';
 import '@ui5/webcomponents-icons/dist/icons/paste';
 import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="UI5 Web Components / Tree"
@@ -15,7 +15,8 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   argTypes={{
     ...createSelectArgTypes({ mode: ListMode }),
     children: { type: null },
-    header: { type: null }
+    header: { type: null },
+    ...DocsCommonProps
   }}
   args={{
     mode: ListMode.None,

@@ -5,6 +5,7 @@ exports[`Popover Basic Test (generated) 1`] = `
   <ui5-popover
     horizontal-align="Center"
     placement-type="Right"
+    ui5-popover=""
     vertical-align="Center"
   />
 </DocumentFragment>

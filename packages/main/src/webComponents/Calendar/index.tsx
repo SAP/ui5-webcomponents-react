@@ -19,7 +19,7 @@ export interface CalendarPropTypes extends WithWebComponentPropTypes {
    */
   minDate?: string;
   /**
-   * Defines the calendar type used for display. If not defined, the calendar type of the global configuration is used. Available options are: "Gregorian", "Islamic", "Japanese", "Buddhist" and "Persian".
+   * Defines the calendar type used for display. If not defined, the calendar type of the global configuration is used. Available options are: "Gregorian", "Islamic", "Japanese", "Buddhist" and "Persian".<br/><b>Note:</b> Calendar types other than Gregorian must be imported manually:<br /><code>import "@ui5/webcomponents-localization/dist/features/calendar/{primaryCalendarType}.js";</code>
    */
   primaryCalendarType?: CalendarType;
   /**
@@ -37,6 +37,9 @@ export interface CalendarPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
+ * The <code>Calendar</code> can be used standale to display the years, months, weeks and days, but the main purpose of the
+ <code>Calendar</code> is to be used within a <code>DatePicker</code>
+
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Calendar" target="_blank">UI5 Web Components Playground</a>
  */
 const Calendar: FC<CalendarPropTypes> = withWebComponent<CalendarPropTypes>(

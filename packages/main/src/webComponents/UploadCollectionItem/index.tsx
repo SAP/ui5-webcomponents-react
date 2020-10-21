@@ -17,7 +17,7 @@ export interface UploadCollectionItemPropTypes extends WithWebComponentPropTypes
    */
   fileNameClickable?: boolean;
   /**
-   * Removes delete option from <code>ui5-upload-collection</code> with <code>mode</code> <code>Delete</code> for this item.
+   * Removes delete option from <code>UploadCollection</code> with <code>mode</code> <code>Delete</code> for this item.
    */
   noDelete?: boolean;
   /**
@@ -37,32 +37,34 @@ export interface UploadCollectionItemPropTypes extends WithWebComponentPropTypes
    */
   uploadState?: UploadState;
   /**
-   * Hold the description of the <code>ui5-upload-collection-item</code>. Will be shown below the file name.
+   * Hold the description of the <code>UploadCollectionItem</code>. Will be shown below the file name.
    */
   children?: ReactNode | ReactNode[];
   /**
-   * A thumbnail, which will be shown in the beginning of the <code>ui5-upload-collection-item</code>. <br><br> <b>Note:</b> Use <code>ui5-icon</code> or <code>img</code> for the intended design.
+   * A thumbnail, which will be shown in the beginning of the <code>UploadCollectionItem</code>. <br><br> <b>Note:</b> Use <code>Icon</code> or <code>img</code> for the intended design.
    */
   thumbnail?: ReactNode;
   /**
    * Fired when the file name is clicked. <br><br> <b>Note:</b> This event is only available when <code>fileNameClickable</code> property is <code>true</code>.
    */
-  onFileNameClick?: (event: CustomEvent<{}>) => void;
+  onFileNameClick?: (event: CustomEvent) => void;
   /**
-   * Fired when the <code>fileName</code> property gets changed. <br><br> <b>Note:</b> An edit button is displayed on each item, when the <code>ui5-upload-collection-item</code> <code>type</code> property is set to <code>Detail</code>.
+   * Fired when the <code>fileName</code> property gets changed. <br><br> <b>Note:</b> An edit button is displayed on each item, when the <code>UploadCollectionItem</code> <code>type</code> property is set to <code>Detail</code>.
    */
-  onRename?: (event: CustomEvent<{}>) => void;
+  onRename?: (event: CustomEvent) => void;
   /**
    * Fired when the retry button is pressed. <br><br> <b>Note:</b> Retry button is displayed when <code>uploadState</code> property is set to <code>Error</code>.
    */
-  onRetry?: (event: CustomEvent<{}>) => void;
+  onRetry?: (event: CustomEvent) => void;
   /**
    * Fired when the terminate button is pressed. <br><br> <b>Note:</b> Terminate button is displayed when <code>uploadState</code> property is set to <code>Uploading</code>.
    */
-  onTerminate?: (event: CustomEvent<{}>) => void;
+  onTerminate?: (event: CustomEvent) => void;
 }
 
 /**
+ * A component to be used within the <code>UploadCollection</code>.
+
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/UploadCollectionItem" target="_blank">UI5 Web Components Playground</a>
  */
 const UploadCollectionItem: FC<UploadCollectionItemPropTypes> = withWebComponent<UploadCollectionItemPropTypes>(

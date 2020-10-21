@@ -1,8 +1,7 @@
-import { Title, Subtitle, Description, Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { SideNavigation } from '@ui5/webcomponents-react/lib/SideNavigation';
 import { SideNavigationItem } from '@ui5/webcomponents-react/lib/SideNavigationItem';
 import { SideNavigationSubItem } from '@ui5/webcomponents-react/lib/SideNavigationSubItem';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import '@ui5/webcomponents-icons/dist/icons/home';
 import '@ui5/webcomponents-icons/dist/icons/group';
 import '@ui5/webcomponents-icons/dist/icons/locate-me';
@@ -10,6 +9,7 @@ import '@ui5/webcomponents-icons/dist/icons/calendar';
 import '@ui5/webcomponents-icons/dist/icons/chain-link';
 import '@ui5/webcomponents-icons/dist/icons/history';
 import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="UI5 Web Components / SideNavigation"
@@ -18,7 +18,7 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   argTypes={{
     children: { type: null },
     fixedItems: { type: null },
-    ref: { type: null }
+    ...DocsCommonProps
   }}
 />
 
