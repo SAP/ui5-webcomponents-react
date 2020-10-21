@@ -1,115 +1,33 @@
 {
   "name": "@ui5/cra-template-webcomponents-react-seed",
-  "version": "1.5.1",
-  "license": "MIT",
-  "author": {
-    "name": "Luis Valgoi",
-    "email": "luisvalgoi@gmail.com"
-  },
-  "engines": {
-    "node": ">=10"
-  },
-  "main": "template.json",
-  "description": "A Seed of UI5 Web Components for React",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/LuisValgoi/ui5-webcomponents-react-seed"
-  },
-  "bugs": {
-    "url": "https://github.com/LuisValgoi/ui5-webcomponents-react-seed/issues"
-  },
+  "version": "0.11.0",
   "keywords": [
     "react",
     "create-react-app",
     "template",
-    "ui5-webcomponents-react",
-    "ui5-webcomponents-react-seed"
+    "ui5-webcomponents-react"
   ],
+  "description": "A Seed of UI5 Web Components for React",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SAP/ui5-webcomponents-react.git",
+    "directory": "packages/cra-template-seed"
+  },
+  "author": "SAP SE (https://www.sap.com)",
+  "license": "Apache-2.0",
+  "main": "template.json",
+  "engines": {
+    "node": ">=8"
+  },
+  "bugs": {
+    "url": "https://github.com/SAP/ui5-webcomponents-react/issues"
+  },
   "files": [
     "template",
-    "template.json"
+    "template.json",
+    "LICENSE"
   ],
   "publishConfig": {
-    "tag": "latest",
     "access": "public"
-  },
-  "dependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.10.4",
-    "@commitlint/cli": "^11.0.0",
-    "@commitlint/config-conventional": "^11.0.0",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^10.4.9",
-    "@testing-library/user-event": "^12.1.4",
-    "@types/jest": "^26.0.10",
-    "@ui5/webcomponents": "1.0.0-rc.8",
-    "@ui5/webcomponents-fiori": "1.0.0-rc.8",
-    "@ui5/webcomponents-icons": "1.0.0-rc.8",
-    "@ui5/webcomponents-react": "^0.10.0",
-    "axios": "^0.20.0",
-    "env-cmd": "^10.1.0",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "formik": "^2.1.7",
-    "husky": "^4.2.5",
-    "i18next": "^19.7.0",
-    "i18next-browser-languagedetector": "^6.0.1",
-    "jest-environment-jsdom-sixteen": "^1.0.3",
-    "json-server": "^0.16.1",
-    "msw": "^0.20.5",
-    "nodemon": "^2.0.4",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.1",
-    "react": "^16.13.1",
-    "react-app-polyfill": "^1.0.6",
-    "react-device-detect": "^1.13.1",
-    "react-dom": "^16.13.1",
-    "react-helmet": "^6.1.0",
-    "react-i18next": "^11.7.2",
-    "react-query": "^2.17.2",
-    "react-query-devtools": "^2.5.0",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3",
-    "yup": "^0.29.3"
-  },
-  "scripts": {
-    "build": "react-scripts build",
-    "mock": "env-cmd -f .env.development npm-run-all --parallel start:mock start:react",
-    "start": "env-cmd -f .env.production npm-run-all --parallel start:react",
-    "start:react": "react-scripts start",
-    "start:mock": "nodemon --watch server --exec npx json-server --p 3001 server/mockserver.js --routes server/routes.json",
-    "test": "react-scripts test --silent --env=jest-environment-jsdom-sixteen",
-    "test:ci": "npm run test -- --watchAll=false",
-    "test:coverage": "npm run test -- --watchAll=false --coverage",
-    "lint": "eslint --quiet .",
-    "lint:fix": "eslint . --fix",
-    "prettier": "./node_modules/.bin/prettier --config .prettierrc --check \"src/**/*.js\"",
-    "prettier:fix": "./node_modules/.bin/prettier --config .prettierrc --write \"src/**/*.js\"",
-    "eject": "react-scripts eject",
-    "push:pre": "npm-run-all --parallel test:ci lint prettier"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version",
-      "ie 11"
-    ]
-  },
-  "jest": {
-    "transformIgnorePatterns": [
-      "node_modules/(?!(@ui5|lit-html)).*\\.js$"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-push": "npm run push:pre",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "prepare-commit-msg": "exec < /dev/tty && true"
-    }
   }
 }
