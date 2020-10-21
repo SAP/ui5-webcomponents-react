@@ -19,7 +19,10 @@ const styles = {
     [DynamicPageCssVariables.headerDisplay]: 'block'
   },
   headerCollapsed: {
-    [DynamicPageCssVariables.headerDisplay]: 'none'
+    [DynamicPageCssVariables.headerDisplay]: 'none',
+    '& $anchorBar > section[role="navigation"]': {
+      top: '-0.025rem'
+    }
   },
   anchorBar: {
     position: 'sticky',
