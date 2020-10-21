@@ -29,8 +29,6 @@ This seed decrease’s the bootstrap time spent on new projects, POCs or MVPs wh
 
 - Internalization Up & Running;
 
-- PR Template;
-
 - IE Support;
 
 - Multiple Scripts.
