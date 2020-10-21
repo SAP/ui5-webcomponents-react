@@ -105,16 +105,20 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
       if (shouldHideHeader) {
         dynamicPageRef.current.classList.add(classes.headerCollapsed);
         setHeaderVisible(false);
-        anchorBarRef.current.style.top = '-0.025rem';
+        anchorBarRef.current.style.top = '-0.05rem';
       } else {
         dynamicPageRef.current.classList.remove(classes.headerCollapsed);
         setHeaderVisible(true);
-        anchorBarRef.current.style.top = '0.025rem';
+        anchorBarRef.current.style.top = headerPinned ? '-0.05rem' : '0';
       }
 
       requestAnimationFrame(() => {
         if (dynamicPageRef.current.scrollTop > 0 && !shouldHideHeader) {
-          anchorBarRef.current.style.top = `${headerContentRef.current.scrollHeight}px`;
+          if (headerPinnedRef.current) {
+            anchorBarRef.current.style.top = `0px`;
+          } else {
+            anchorBarRef.current.style.top = `${headerContentRef.current.scrollHeight}px`;
+          }
           headerContentRef.current.style.top = `${topHeaderHeight}px`;
           dynamicPageRef.current.classList.remove(classes.headerCollapsed);
         }
@@ -123,14 +127,14 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
           () => {
             if (dynamicPageRef.current.scrollTop > 0 && !headerPinnedRef.current) {
               headerContentRef.current.style.removeProperty('top');
-              anchorBarRef.current.style.top = '-0.025rem';
+              anchorBarRef.current.style.top = headerPinned ? '0.05rem' : '0';
             }
           },
           { once: true }
         );
       });
     },
-    [dynamicPageRef, classes.headerCollapsed, headerContentHeight, topHeaderHeight, headerPinned]
+    [dynamicPageRef, classes.headerCollapsed, headerContentHeight, topHeaderHeight, headerPinnedRef.current]
   );
 
   const onHoverToggleButton = useCallback(
@@ -151,32 +155,9 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
     }
   };
 
-  let currentIcon = 'slim-arrow-up';
-  useEffect(() => {
-    dynamicPageRef.current?.addEventListener('scroll', () => {
-      if (
-        anchorBarRef.current?.children?.[0].icon === 'slim-arrow-up' &&
-        anchorBarRef.current?.children?.[0].icon !== currentIcon
-      ) {
-        setHeaderVisible(true);
-        currentIcon = 'slim-arrow-up';
-        anchorBarRef.current.style.top = '0.025rem';
-      } else if (
-        anchorBarRef.current?.children?.[0].icon === 'slim-arrow-down' &&
-        anchorBarRef.current?.children?.[0].icon !== currentIcon
-      ) {
-        setHeaderVisible(false);
-        currentIcon = 'slim-arrow-down';
-        anchorBarRef.current.style.top = '-0.025rem';
-      }
-    });
-  }, []);
-
   useEffect(() => {
     headerPinnedRef.current = headerPinned;
-    if (headerPinned === true) {
-      anchorBarRef.current.style.top = '0.025rem';
-    }
+    anchorBarRef.current.style.top = headerPinned ? '-0.05rem' : '0';
   }, [headerPinned]);
 
   return (
@@ -200,7 +181,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
       <FlexBox
         className={classes.anchorBar}
         style={{
-          top: headerPinned ? topHeaderHeight + headerContentHeight : topHeaderHeight
+          top: headerPinned ? headerContentRef.current.offsetHeight + topHeaderRef.current.offsetHeight : topHeaderHeight
         }}
       >
         <DynamicPageAnchorBar

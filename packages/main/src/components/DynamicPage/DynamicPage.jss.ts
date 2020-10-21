@@ -28,7 +28,7 @@ const styles = {
     position: 'sticky',
     zIndex: 2,
     '& > section[role="navigation"]': {
-      top: '0.025rem'
+      top: 0
     }
   },
   contentContainer: {
