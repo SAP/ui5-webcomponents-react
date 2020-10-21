@@ -26,7 +26,7 @@ const ThemeSwitch = ({ dialogRef, storedTheme = localStorage.getItem(Constants.S
 
   useEffect(() => {
     setTheme(storedTheme ? storedTheme : themeOptions[0].value);
-  });
+  }, [storedTheme]);
 
   const onChange = (event) => {
     localStorage.setItem(Constants.SEED.SELECTED_THEME, event.detail.selectedOption.dataset.value);
