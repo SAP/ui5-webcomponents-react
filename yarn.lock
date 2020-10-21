@@ -16607,17 +16607,10 @@ pretty-ms@^7.0.0:
   dependencies:
     parse-ms "^2.1.0"
 
-prismjs@^1.21.0, prismjs@~1.21.0:
+prismjs@^1.21.0, prismjs@^1.8.4, prismjs@~1.21.0:
   version "1.21.0"
   resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.21.0.tgz#36c086ec36b45319ec4218ee164c110f9fc015a3"
   integrity sha512-uGdSIu1nk3kej2iZsLyDoJ7e9bnPzIgY0naW/HdknGj61zScaprVEVGHrPoXqI+M9sP0NDnTK2jpkvmldpuqDw==
-  optionalDependencies:
-    clipboard "^2.0.0"
-
-prismjs@^1.8.4:
-  version "1.20.0"
-  resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.20.0.tgz#9b685fc480a3514ee7198eac6a3bf5024319ff03"
-  integrity sha512-AEDjSrVNkynnw6A+B1DsFkd6AVdTnp+/WoUixFRULlCLZVRZlVQMVWio/16jv7G1FscUxQxOQhWwApgbnxr6kQ==
   optionalDependencies:
     clipboard "^2.0.0"
 
@@ -17290,10 +17283,10 @@ react-syntax-highlighter@^12.2.1:
     prismjs "^1.8.4"
     refractor "^2.4.1"
 
-react-syntax-highlighter@^13.5.1:
-  version "13.5.1"
-  resolved "https://registry.yarnpkg.com/react-syntax-highlighter/-/react-syntax-highlighter-13.5.1.tgz#f21737cf6d582474a0f18b06b52613f4349c0e64"
-  integrity sha512-VVYTnFXF55WMRGdr3QNEzAzcypFZqH45kS7rqh90+AFeNGtui8/gV5AIOIJjwTsuP2UxcO9qvEq94Jq9BYFUhw==
+react-syntax-highlighter@^15.2.1:
+  version "15.2.1"
+  resolved "https://registry.yarnpkg.com/react-syntax-highlighter/-/react-syntax-highlighter-15.2.1.tgz#63a42be96a645407a394cd7b93b99622f3ea179f"
+  integrity sha512-xrSfqX5Rztf9x4Fa6W+DbbKaJmi5zvh+tAvG2MnktZPDLeX/iMkumwxJdGYn5M1jM3d4+EJTloVAB8UvD7O0nA==
   dependencies:
     "@babel/runtime" "^7.3.1"
     highlight.js "^10.1.1"
