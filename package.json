@@ -32,7 +32,7 @@
     "@ui5/webcomponents-icons": "1.0.0-rc.9",
     "react": "16.8.0",
     "react-dom": "16.8.0",
-    "react-syntax-highlighter": "^13.5.1"
+    "react-syntax-highlighter": "^15.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
@@ -45,10 +45,10 @@
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.1",
     "@babel/preset-typescript": "^7.12.1",
-    "@rollup/plugin-babel": "^5.1.0",
-    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-babel": "^5.2.1",
+    "@rollup/plugin-commonjs": "^15.1.0",
     "@rollup/plugin-json": "^4.0.3",
-    "@rollup/plugin-node-resolve": "^8.4.0",
+    "@rollup/plugin-node-resolve": "^9.0.0",
     "@rollup/plugin-replace": "^2.3.2",
     "@storybook/storybook-deployer": "^2.8.6",
     "@testing-library/jest-dom": "^5.11.4",
@@ -91,7 +91,7 @@
     "react-app-polyfill": "^1.0.6",
     "rimraf": "^3.0.1",
     "rollup": "^2.23.0",
-    "rollup-plugin-terser": "^6.1.0",
+    "rollup-plugin-terser": "^7.0.2",
     "targz": "^1.0.1",
     "typescript": "^3.9.7"
   },
