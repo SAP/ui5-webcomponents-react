@@ -11906,10 +11906,10 @@ interpret@^2.0.0:
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-2.2.0.tgz#1a78a0b5965c40a5416d007ad6f50ad27c417df9"
   integrity sha512-Ju0Bz/cEia55xDwUWEa8+olFpCiQoypjnQySseKtmjNrnps3P+xfpUmGr90T7yjlVJmOtybRvPXhKMbHr+fWnw==
 
-intersection-observer@0.8.0:
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/intersection-observer/-/intersection-observer-0.8.0.tgz#e61274136f81dc114a7340a0b2e7a30b9787c438"
-  integrity sha512-o5nSHpitRPDRPe9NDBJNwKp24Wa11xQSDPOg/s6PsWIaGRoAOwBoMMY1R/UmlezBohjdFW6W4kJ9rkm3jCK+Hg==
+intersection-observer@0.11.0:
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/intersection-observer/-/intersection-observer-0.11.0.tgz#f4ea067070326f68393ee161cc0a2ca4c0040c6f"
+  integrity sha512-KZArj2QVnmdud9zTpKf279m2bbGfG+4/kn16UU0NL3pTVl52ZHiJ9IRNSsnn6jaHrL9EGLFM5eWjTx2fz/+zoQ==
 
 invariant@^2.2.2, invariant@^2.2.3, invariant@^2.2.4:
   version "2.2.4"
@@ -17011,10 +17011,10 @@ react-color@^2.17.0:
     reactcss "^1.2.0"
     tinycolor2 "^1.4.1"
 
-react-content-loader@5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/react-content-loader/-/react-content-loader-5.1.0.tgz#7da2b75aefcdb2571df88ddc61a6f76a413ff616"
-  integrity sha512-80t5SYxLCXDvpaRRH/p4tV8RGGPBM7YAWwA+mARCJWRj4IkcEnJxkPGboBENgkBmyG4xsMAsa/dgy93DXoQ1dA==
+react-content-loader@5.1.3:
+  version "5.1.3"
+  resolved "https://registry.yarnpkg.com/react-content-loader/-/react-content-loader-5.1.3.tgz#776c0fc56e9c2d5961d8b0fb8a8a1d7cc87f41c9"
+  integrity sha512-OZ95FmbcXx07avgPOf4A/S0/WFv3yWXR+u6wmD/0MQ39X2XKIpNYClnJD4OkSZTk0VfBawq2SR64B9GcqiRG0A==
 
 react-dev-utils@^10.0.0:
   version "10.2.1"
