@@ -5,7 +5,7 @@ import { MobileView, BrowserView, IEView, isMobile, isTablet, isDesktop, isIE, i
 
 import HyperLink from '../../../components/HyperLink/HyperLink';
 import BrowserProvider from '../../../util/browser/BrowserProvider';
-import ComponentValidator from '../../../auth/components/Validator';
+import ComponentValidator from '../../../auth/Components/Validator';
 import TodoListPaginatedItems from './TodoListPaginatedItems';
 import CenteredContent from '../../../components/Layout/CenteredContent';
 
