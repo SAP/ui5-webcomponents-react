@@ -34,10 +34,6 @@ export interface DynamicPageProps extends Omit<CommonProps, 'title'> {
    */
   showFooter?: boolean;
   /**
-   * Determines whether the header is shown.
-   */
-  noHeader?: boolean;
-  /**
    * Determines whether the content header is shown.
    */
   alwaysShowContentHeader?: boolean;
@@ -68,7 +64,6 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
     header,
     tooltip,
     style,
-    noHeader = false,
     showHideHeaderButton = true,
     headerContentPinnable = true,
     alwaysShowContentHeader = false,
@@ -95,7 +90,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
     topHeaderRef,
     headerContentRef,
     anchorBarRef,
-    { noHeader }
+    { noHeader: false }
   );
 
   const onToggleHeaderContentVisibility = useCallback(
@@ -203,15 +198,13 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
       <FlexBox
         className={classes.anchorBar}
         style={{
-          top: headerPinned
-            ? topHeaderRef.current?.scrollHeight + headerContentRef.current?.scrollHeight
-            : topHeaderRef.current?.scrollHeight
+          top: headerPinned ? topHeaderHeight + headerContentHeight : topHeaderHeight
         }}
       >
         <DynamicPageAnchorBar
           ref={anchorBarRef}
           headerContentPinnable={headerContentPinnable}
-          showHideHeaderButton={showHideHeaderButton && !noHeader}
+          showHideHeaderButton={showHideHeaderButton}
           headerContentHeight={headerContentHeight}
           onToggleHeaderContentVisibility={onToggleHeaderContentVisibility}
           setHeaderPinned={setHeaderPinned}
