@@ -1,0 +1,60 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { MultiComboBox } from '@ui5/webcomponents-react/lib/MultiComboBox';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import '@ui5/webcomponents-icons/dist/icons/employee.js';
+import { Icon } from '@ui5/webcomponents-react/lib/Icon';
+import { MultiComboBoxItem } from '@ui5/webcomponents-react/lib/MultiComboBoxItem';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
+
+<Meta
+  title="UI5 Web Components / MultiComboBox"
+  component={MultiComboBox}
+  subcomponents={{ MultiComboBoxItem }}
+  argTypes={{
+    ...createSelectArgTypes({ valueState: ValueState }),
+    ...DocsCommonProps,
+    children: { control: { disable: true } },
+    icon: { control: { disable: true } },
+    valueStateMessage: { control: { disable: true } }
+  }}
+  args={{
+    valueState: ValueState.None,
+    style: {},
+    className: '',
+    tooltip: '',
+    slot: '',
+    ref: null
+  }}
+/>
+
+<DocsHeader />
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return (
+        <MultiComboBox {...args}>
+          <MultiComboBoxItem text="Item 1" />
+          <MultiComboBoxItem text="Item 2" />
+          <MultiComboBoxItem text="Item 3" />
+          <MultiComboBoxItem text="Item 4" />
+          <MultiComboBoxItem text="Item 5" />
+        </MultiComboBox>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="." />
+<div style={{ fontFamily: 'var(--sapFontFamily)', fontSize: 'var(--sapFontSize)', color: 'var(--sapTextColor)' }}>
+  <h3>Structure</h3>
+  The <code>MultiComboBox</code> consists of the following elements:
+  <ul>
+    <li>Tokenizer - a list of tokens with selected options.</li>
+    <li>Input field - displays the selected option/s as token/s. Users can type to filter the list.</li>
+    <li>Drop-down arrow - expands\collapses the option list.</li>
+    <li>Option list - the list of available options.</li>
+  </ul>
+</div>
