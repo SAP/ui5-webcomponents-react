@@ -47,11 +47,11 @@ export interface RadioButtonPropTypes extends Omit<WithWebComponentPropTypes, 'o
   /**
    * Fired when the <code>RadioButton</code> selected state changes.
    */
-  onSelect?: (event: CustomEvent<{}>) => void;
+  onSelect?: (event: CustomEvent) => void;
 }
 
 /**
- * The <code>ui5-radibutton</code> component enables users to select a single option from a set of options. When a
+ * The <code>RadioButton</code> component enables users to select a single option from a set of options. When a
  <code>RadioButton</code> is selected by the user, the <code>select</code> event is fired. When a
  <code>RadioButton</code> that is within a group is selected, the one that was previously selected gets automatically
  deselected. You can group radio buttons by using the <code>name</code> property. <br />

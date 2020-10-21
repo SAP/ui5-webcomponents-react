@@ -3,6 +3,7 @@
 exports[`CheckBox Basic Test (generated) 1`] = `
 <DocumentFragment>
   <ui5-checkbox
+    ui5-checkbox=""
     value-state="None"
   />
 </DocumentFragment>

@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MultiInput Basic Test (generated) 1`] = `
+<DocumentFragment>
+  <ui5-multi-input
+    type="Text"
+    value-state="None"
+  />
+</DocumentFragment>
+`;

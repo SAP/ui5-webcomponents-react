@@ -1,11 +1,13 @@
-import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { Badge } from '@ui5/webcomponents-react/lib/Badge';
 import '@ui5/webcomponents-icons/dist/icons/employee.js';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
-import { CSSProperties, Ref } from 'react';
-
+import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
+import { FlexBoxWrap } from '@ui5/webcomponents-react/lib/FlexBoxWrap';
+import { CSSProperties } from 'react';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="UI5 Web Components / Badge"
@@ -14,19 +16,7 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
     ...createSelectArgTypes({}),
     children: { control: 'text' },
     icon: { control: { disable: true } },
-    slot: { control: { disable: true } },
-    ref: { control: { disable: true } },
-    style: {
-      type: CSSProperties,
-      description:
-        'Element style which will be appended to the most outer element of a component. Use this prop carefully, some css properties might break the component.'
-    },
-    className: {
-      type: 'string',
-      description:
-        'CSS Class Name which will be appended to the most outer element of a component. Use this prop carefully, overwriting CSS rules might break the component.'
-    },
-    tooltip: { type: 'string', description: 'A tooltip which will be shown on hover' }
+    ...DocsCommonProps
   }}
   args={{
     children: 'Badge Text',
@@ -50,14 +40,57 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
 </Canvas>
 
 <ArgsTable story="." />
-<div style={{fontFamily:'var(--sapFontFamily)', fontSize:'var(--sapFontSize)', color:'var(--sapTextColor)'}}>
-<h3>Usage Guidelines</h3>
-<ul>
-  <li>If the text is longer than the width of the component, it doesn’t wrap, it shows ellipsis.</li>
-  <li>
-    When truncated, the full text is not visible, therefore, it’s recommended to make more space for longer texts to be
-    fully displayed.
-  </li>
-  <li>Colors are not semantic and have no visual representation in High Contrast Black (sap_belize_hcb) theme.</li>
-</ul>
+<div style={{ fontFamily: 'var(--sapFontFamily)', fontSize: 'var(--sapFontSize)', color: 'var(--sapTextColor)' }}>
+  <h3>Usage Guidelines</h3>
+  <ul>
+    <li>If the text is longer than the width of the component, it doesn’t wrap, it shows ellipsis.</li>
+    <li>
+      When truncated, the full text is not visible, therefore, it’s recommended to make more space for longer texts to
+      be fully displayed.
+    </li>
+    <li>Colors are not semantic and have no visual representation in High Contrast Black (sap_belize_hcb) theme.</li>
+  </ul>
 </div>
+
+# Stories
+
+## All available Badge colors
+
+<Canvas>
+  <Story name="All colors">
+    {() => {
+      return (
+        <FlexBox wrap={FlexBoxWrap.Wrap}>
+          <Badge colorScheme="1" style={{ marginRight: '10px', marginBottom: '10px' }}>
+            colorScheme = "1"
+          </Badge>
+          <Badge colorScheme="2" style={{ marginRight: '10px', marginBottom: '10px' }}>
+            colorScheme = "2"
+          </Badge>
+          <Badge colorScheme="3" style={{ marginRight: '10px', marginBottom: '10px' }}>
+            colorScheme = "3"
+          </Badge>
+          <Badge colorScheme="4" style={{ marginRight: '10px', marginBottom: '10px' }}>
+            colorScheme = "4"
+          </Badge>
+          <Badge colorScheme="5" style={{ marginRight: '10px', marginBottom: '10px' }}>
+            colorScheme = "5"
+          </Badge>
+          <Badge colorScheme="6" style={{ marginRight: '10px', marginBottom: '10px' }}>
+            colorScheme = "6"
+          </Badge>
+          <Badge colorScheme="7" style={{ marginRight: '10px', marginBottom: '10px' }}>
+            colorScheme = "7"
+          </Badge>
+          <Badge colorScheme="8" style={{ marginRight: '10px', marginBottom: '10px' }}>
+            colorScheme = "8"
+          </Badge>
+          <Badge colorScheme="9" style={{ marginRight: '10px', marginBottom: '10px' }}>
+            colorScheme = "9"
+          </Badge>
+          <Badge colorScheme="10">colorScheme = "10"</Badge>
+        </FlexBox>
+      );
+    }}
+  </Story>
+</Canvas>

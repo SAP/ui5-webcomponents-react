@@ -1,0 +1,25 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Token } from '@ui5/webcomponents-react/lib/Token';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
+
+<Meta
+  title="UI5 Web Components / Token"
+  component={Token}
+  argTypes={{ ...DocsCommonProps }}
+  args={{
+    text: 'Token 1'
+  }}
+/>
+
+<DocsHeader />
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return <Token {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="." />

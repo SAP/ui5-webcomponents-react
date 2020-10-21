@@ -4,11 +4,15 @@ import { FC, ReactNode } from 'react';
 
 export interface DialogPropTypes extends WithWebComponentPropTypes {
   /**
+   * Determines whether the <code>Dialog</code> is draggable. If this property is set to true, the Dialog will be draggable by its header. <br><br> <b>Note:</b> The <code>Dialog</code> can be draggable only in desktop mode.
+   */
+  draggable?: boolean;
+  /**
    * Defines the header text. <br><br> <b>Note:</b> If <code>header</code> slot is provided, the <code>headerText</code> is ignored.
    */
   headerText?: string;
   /**
-   * Determines whether the <code>Dialog</code> should be stretched to fullscreen. <br><br> <b>Note:</b> The <code>Dialog</code> will be stretched to aproximetly 90% of the viewport.
+   * Determines whether the <code>Dialog</code> should be stretched to fullscreen. <br><br> <b>Note:</b> The <code>Dialog</code> will be stretched to approximately 90% of the viewport.
    */
   stretch?: boolean;
   /**
@@ -34,11 +38,11 @@ export interface DialogPropTypes extends WithWebComponentPropTypes {
   /**
    * Fired after the component is closed. This event does not bubble.
    */
-  onAfterClose?: (event: CustomEvent<{}>) => void;
+  onAfterClose?: (event: CustomEvent) => void;
   /**
    * Fired after the component is opened. This event does not bubble.
    */
-  onAfterOpen?: (event: CustomEvent<{}>) => void;
+  onAfterOpen?: (event: CustomEvent) => void;
   /**
    * Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing. This event does not bubble.
    */
@@ -46,7 +50,7 @@ export interface DialogPropTypes extends WithWebComponentPropTypes {
   /**
    * Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. This event does not bubble.
    */
-  onBeforeOpen?: (event: CustomEvent<{}>) => void;
+  onBeforeOpen?: (event: CustomEvent) => void;
 }
 
 /**
@@ -63,7 +67,7 @@ export interface DialogPropTypes extends WithWebComponentPropTypes {
 const Dialog: FC<DialogPropTypes> = withWebComponent<DialogPropTypes>(
   'ui5-dialog',
   ['headerText', 'initialFocus'],
-  ['stretch', 'preventFocusRestore'],
+  ['draggable', 'stretch', 'preventFocusRestore'],
   ['footer', 'header'],
   ['after-close', 'after-open', 'before-close', 'before-open']
 );
@@ -71,6 +75,7 @@ const Dialog: FC<DialogPropTypes> = withWebComponent<DialogPropTypes>(
 Dialog.displayName = 'Dialog';
 
 Dialog.defaultProps = {
+  draggable: false,
   stretch: false,
   preventFocusRestore: false
 };

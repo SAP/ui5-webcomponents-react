@@ -12,6 +12,7 @@ exports[`NotificationListItem Basic Test (generated) 1`] = `
       design="Transparent"
       slot="actions"
       text="My Action"
+      ui5-notification-overflow-action=""
     />
   </ui5-li-notification>
 </DocumentFragment>

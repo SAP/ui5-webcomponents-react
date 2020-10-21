@@ -24,7 +24,7 @@ export interface RatingIndicatorPropTypes extends Omit<WithWebComponentPropTypes
   /**
    * The event is fired when the value changes.
    */
-  onChange?: (event: CustomEvent<{}>) => void;
+  onChange?: (event: CustomEvent) => void;
 }
 
 /**

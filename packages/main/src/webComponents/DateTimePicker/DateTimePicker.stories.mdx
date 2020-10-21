@@ -1,0 +1,60 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { DateTimePicker } from '@ui5/webcomponents-react/lib/DateTimePicker';
+import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';
+import '@ui5/webcomponents-localization/dist/features/calendar/Gregorian.js';
+import '@ui5/webcomponents-localization/dist/features/calendar/Buddhist.js';
+import '@ui5/webcomponents-localization/dist/features/calendar/Islamic.js';
+import '@ui5/webcomponents-localization/dist/features/calendar/Japanese.js';
+import '@ui5/webcomponents-localization/dist/features/calendar/Persian.js';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import { CSSProperties, Ref } from 'react';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
+
+<Meta
+  title="UI5 Web Components / DateTimePicker"
+  component={DateTimePicker}
+  argTypes={{
+    ...createSelectArgTypes({ primaryCalendarType: CalendarType, valueState: ValueState }),
+    valueStateMessage: { control: { disable: true } },
+    ...DocsCommonProps
+  }}
+  args={{
+    primaryCalendarType: CalendarType.Gregorian,
+    valueState: ValueState.None,
+    style: {},
+    className: '',
+    tooltip: '',
+    slot: '',
+    ref: null
+  }}
+/>
+
+<DocsHeader />
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return <DateTimePicker {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="." />
+<div style={{ fontFamily: 'var(--sapFontFamily)', fontSize: 'var(--sapFontSize)', color: 'var(--sapTextColor)' }}>
+  <h3>Usage</h3>
+  Use the <code>DateTimePicker</code> if you need a combined date and time input component. Don't use it if you want to use
+  either date, or time value. In this case, use the <code>DatePicker</code> or the <code>TimePicker</code> components instead.{' '}
+  <br />
+  <br />
+  The user can set date/time by:
+  <ul>
+    <li>using the calendar and the time selectors</li>
+    <li>typing in the input field</li>
+  </ul>
+  Programatically, to set date/time for the <code>DateTimePicker</code>, use the <code>value</code> property <br />
+  <br />
+  As most of the input based components, the <code>DateTimePicker</code> supports properties, such as:
+  <code>disabled</code>, <code>readonly</code>, <code>valueState</code> and <code>placeholder</code>.
+</div>

@@ -15,10 +15,10 @@ import React, {
   ReactNodeArray,
   useCallback,
   useMemo,
-  useRef
+  useRef,
+  useState
 } from 'react';
 import { VirtualItem } from 'react-virtual';
-import { Ui5PopoverDomRef } from '../../../interfaces/Ui5PopoverDomRef';
 import { ColumnType } from '../types/ColumnType';
 import { ColumnHeaderModal } from './ColumnHeaderModal';
 
@@ -39,6 +39,7 @@ export interface ColumnHeaderProps {
   onDragEnd: DragEventHandler<HTMLDivElement>;
   dragOver: boolean;
   isResizing: boolean;
+  headerTooltip: string;
   isDraggable: boolean;
   role: string;
   isLastColumn: boolean;
@@ -88,7 +89,6 @@ const useStyles = createComponentStyles(styles, { name: 'TableColumnHeader' });
 
 export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) => {
   const classes = useStyles(props);
-
   const {
     id,
     children,
@@ -102,6 +102,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     onDragStart,
     onDrop,
     onDragEnd,
+    headerTooltip,
     isDraggable,
     dragOver,
     role,
@@ -109,6 +110,17 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
   } = props;
 
   const isFiltered = column.filterValue && column.filterValue.length > 0;
+  const [popoverOpen, setPopoverOpen] = useState(false);
+
+  const tooltip = useMemo(() => {
+    if (headerTooltip) {
+      return headerTooltip;
+    }
+    if (typeof children === 'string') {
+      return children;
+    }
+    return null;
+  }, [children, headerTooltip]);
 
   const textStyle = useMemo(() => {
     let margin = 0;
@@ -135,20 +147,17 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
 
   const hasPopover = column.canGroupBy || column.canSort || column.canFilter;
 
-  const popoverRef = useRef<Ui5PopoverDomRef>(null);
+  const onOpenPopover = useCallback(() => {
+    if (hasPopover) {
+      setPopoverOpen(true);
+    }
+  }, [hasPopover]);
 
-  const onOpenPopover = useCallback(
-    (e) => {
-      if (popoverRef.current && hasPopover) {
-        popoverRef.current.openBy(e.currentTarget);
-      }
-    },
-    [popoverRef, hasPopover]
-  );
-
+  const targetRef = useRef();
   if (!column) return null;
   return (
     <div
+      ref={targetRef}
       style={{
         position: 'absolute',
         top: 0,
@@ -176,12 +185,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
         onClick={onOpenPopover}
       >
         <div className={classes.header} data-h-align={column.hAlign}>
-          <Text
-            tooltip={typeof children === 'string' ? children : null}
-            wrapping={false}
-            style={textStyle}
-            className={classes.text}
-          >
+          <Text tooltip={tooltip} wrapping={false} style={textStyle} className={classes.text}>
             {children}
           </Text>
           <div className={classes.iconContainer}>
@@ -190,7 +194,16 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
             {column.isGrouped && <Icon name="group-2" />}
           </div>
         </div>
-        {hasPopover && <ColumnHeaderModal column={column} onSort={onSort} onGroupBy={onGroupBy} ref={popoverRef} />}
+        {hasPopover && targetRef.current && (
+          <ColumnHeaderModal
+            column={column}
+            onSort={onSort}
+            onGroupBy={onGroupBy}
+            targetRef={targetRef}
+            open={popoverOpen}
+            setPopoverOpen={setPopoverOpen}
+          />
+        )}
       </div>
     </div>
   );
