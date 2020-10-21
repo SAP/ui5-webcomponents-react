@@ -20,7 +20,7 @@ jobs:
           fetch-depth: 0
 
       - name: Setup Node.js environment
-        uses: actions/setup-node@v2.1.0
+        uses: actions/setup-node@v2.1.2
         with:
           node-version: 14.x
 
@@ -43,3 +43,8 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+
+      - name: deploy docs
+        run: yarn deploy:storybook
+        env:
+          GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
