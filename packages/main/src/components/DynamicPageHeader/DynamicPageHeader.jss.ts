@@ -11,14 +11,9 @@ export const DynamicPageHeaderStyles = {
     zIndex: 1,
     translucent: ThemingParameters.sapObjectHeader_Background,
     transparent: 'transparent',
-    paddingTop: '1rem',
-    paddingBottom: '1rem',
-    display: `var(${DynamicPageCssVariables.headerDisplay})`
-  },
-  contentHeader: {
-    backgroundColor: ThemingParameters.sapObjectHeader_Background,
-    paddingTop: '0.5rem',
-    paddingBottom: '0.5rem',
+    paddingTop: '1rem !important',
+    paddingBottom: '1rem !important',
+    display: `var(${DynamicPageCssVariables.headerDisplay})`,
     maxHeight: '500px',
     overflow: 'hidden'
   }

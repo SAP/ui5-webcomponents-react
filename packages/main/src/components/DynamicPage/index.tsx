@@ -197,7 +197,6 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
       })}
       {cloneElement(header, {
         ref: headerContentRef,
-        style: { top: noHeader ? 0 : topHeaderHeight },
         headerPinned,
         topHeaderHeight
       })}

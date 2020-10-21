@@ -1,8 +1,9 @@
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
-import React, { CSSProperties, FC, forwardRef, ReactNode, ReactNodeArray, Ref, useMemo } from 'react';
+import React, { FC, forwardRef, ReactNode, ReactNodeArray, Ref, useMemo } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { DynamicPageHeaderStyles } from './DynamicPageHeader.jss';
 
@@ -20,33 +21,34 @@ interface InternalProps extends DynamicPageHeaderProps {
 const useStyles = createComponentStyles(DynamicPageHeaderStyles, { name: 'DynamicPageHeader' });
 
 const DynamicPageHeader: FC<DynamicPageHeaderProps> = forwardRef((props: InternalProps, ref: Ref<HTMLDivElement>) => {
-  const { children, headerPinned, topHeaderHeight } = props;
+  const { children, headerPinned, topHeaderHeight, tooltip, className, style } = props;
 
   const passThroughProps = usePassThroughHtmlProps(props);
 
-  const headerStyles = useMemo<CSSProperties>(() => {
+  const headerStyles = useMemo(() => {
     if (headerPinned) {
       return {
+        ...style,
         top: `${topHeaderHeight}px`,
         zIndex: 1
       };
     }
-    return null;
-  }, [headerPinned, topHeaderHeight]);
+    return style;
+  }, [headerPinned, topHeaderHeight, style]);
 
   const classes = useStyles();
+  const classNames = StyleClassHelper.of(classes.header).putIfPresent(className);
 
   return (
     <div
+      title={tooltip}
       style={headerStyles}
       ref={ref}
-      className={classes.header}
-      data-component-name={'DynamicPageHeader'}
+      className={classNames.className}
+      data-component-name="DynamicPageHeader"
       {...passThroughProps}
     >
-      <FlexBox className={classes.contentHeader} alignItems={FlexBoxAlignItems.Start}>
-        {children}
-      </FlexBox>
+      <FlexBox alignItems={FlexBoxAlignItems.Start}>{children}</FlexBox>
     </div>
   );
 });
