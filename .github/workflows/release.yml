@@ -43,3 +43,8 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+
+      - name: deploy docs
+        run: yarn deploy:storybook
+        env:
+          GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
