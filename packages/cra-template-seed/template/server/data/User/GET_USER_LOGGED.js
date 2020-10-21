@@ -1,5 +1,5 @@
 module.exports = {
   id: 'UG9rZW1vbjowMDE=',
-  name: 'Luis Valgoi',
+  name: 'John Doe',
   permissions: ['canAccessTodoListPage', 'canAccessTodoEditPage', 'canAccessDropApplication'],
 };
