@@ -449,6 +449,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
             return (
               tableRef.current && (
                 <ColumnHeaderContainer
+                  key={headerProps.key}
                   reactWindowRef={reactWindowRef}
                   tableRef={tableRef}
                   resizeInfo={tableState.columnResizing}
