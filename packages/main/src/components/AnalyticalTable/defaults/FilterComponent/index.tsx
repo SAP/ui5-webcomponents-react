@@ -8,5 +8,5 @@ export const DefaultFilterComponent: FC<any> = ({ column }) => {
     },
     [column.setFilter]
   );
-  return <Input onInput={handleChange}>{column.filterValue}</Input>;
+  return <Input onInput={handleChange} value={column.filterValue} />;
 };

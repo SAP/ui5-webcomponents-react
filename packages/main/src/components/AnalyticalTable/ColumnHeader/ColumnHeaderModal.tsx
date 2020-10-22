@@ -120,9 +120,6 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
     if (open) {
       popoverInstance?.openBy(targetRef.current);
     }
-    return () => {
-      popoverInstance?.close();
-    };
   }, [open, targetRef.current, ref.current]);
 
   const onAfterClose = useCallback(
