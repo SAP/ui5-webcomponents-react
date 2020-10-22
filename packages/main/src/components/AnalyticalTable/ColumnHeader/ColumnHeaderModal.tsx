@@ -18,7 +18,7 @@ import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import { Popover } from '@ui5/webcomponents-react/lib/Popover';
 import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/lib/PopoverHorizontalAlign';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
-import React, { CSSProperties, forwardRef, RefObject, useCallback } from 'react';
+import React, { CSSProperties, RefObject, useCallback, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { Ui5PopoverDomRef } from '../../../interfaces/Ui5PopoverDomRef';
 import { stopPropagation } from '../../../internal/stopPropagation';
@@ -28,15 +28,20 @@ export interface ColumnHeaderModalProperties {
   column: ColumnType;
   onSort?: (e: CustomEvent<{ column: unknown; sortDirection: string }>) => void;
   onGroupBy?: (e: CustomEvent<{ column: unknown; isGrouped: boolean }>) => void;
+  open: boolean;
+  setPopoverOpen: (open: boolean) => void;
+  targetRef: RefObject<any>;
 }
 
 const staticStyle = { fontWeight: 'normal' };
 
-export const ColumnHeaderModal = forwardRef((props: ColumnHeaderModalProperties, ref: RefObject<Ui5PopoverDomRef>) => {
-  const { column, onSort, onGroupBy } = props;
+export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
+  const { column, onSort, onGroupBy, open, setPopoverOpen, targetRef } = props;
   const showFilter = column.canFilter;
   const showGroup = column.canGroupBy;
   const showSort = column.canSort;
+
+  const ref = useRef<Ui5PopoverDomRef>(null);
 
   const { Filter } = column;
 
@@ -110,6 +115,23 @@ export const ColumnHeaderModal = forwardRef((props: ColumnHeaderModalProperties,
   const isSortedAscending = column.isSorted && column.isSortedDesc === false;
   const isSortedDescending = column.isSorted && column.isSortedDesc === true;
 
+  useEffect(() => {
+    const popoverInstance = ref.current;
+    if (open) {
+      popoverInstance?.openBy(targetRef.current);
+    }
+  }, [open, targetRef.current, ref.current]);
+
+  const onAfterClose = useCallback(
+    (e) => {
+      stopPropagation(e);
+      ref?.current?.close();
+      setPopoverOpen(false);
+    },
+    [setPopoverOpen]
+  );
+
+  if (!open) return null;
   return createPortal(
     <Popover
       noArrow
@@ -117,7 +139,7 @@ export const ColumnHeaderModal = forwardRef((props: ColumnHeaderModalProperties,
       placementType={PlacementType.Bottom}
       ref={ref}
       style={staticStyle as CSSProperties}
-      onAfterClose={stopPropagation}
+      onAfterClose={onAfterClose}
     >
       <List onItemClick={handleSort}>
         {isSortedAscending && (
@@ -162,5 +184,5 @@ export const ColumnHeaderModal = forwardRef((props: ColumnHeaderModalProperties,
     </Popover>,
     document.body
   );
-});
+};
 ColumnHeaderModal.displayName = 'ColumnHeaderModal';

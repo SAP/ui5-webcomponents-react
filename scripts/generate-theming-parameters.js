@@ -1,6 +1,6 @@
 const { writeFileSync } = require('fs');
 const {
-  root: ThemingParameters,
+  root: ThemingParameters
 } = require('@sap-theming/theming-base-content/content/Base/baseLib/sap_fiori_3/variables.json');
 const PATHS = require('../config/paths');
 const path = require('path');

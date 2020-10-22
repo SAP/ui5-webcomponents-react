@@ -1,0 +1,128 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { ComboBox } from '@ui5/webcomponents-react/lib/ComboBox';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import '@ui5/webcomponents-icons/dist/icons/employee.js';
+import { Icon } from '@ui5/webcomponents-react/lib/Icon';
+import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
+import { Label } from '@ui5/webcomponents-react/lib/Label';
+import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
+import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJustifyContent';
+import { ComboBoxItem } from '@ui5/webcomponents-react/lib/ComboBoxItem';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
+
+<Meta
+  title="UI5 Web Components / ComboBox"
+  component={ComboBox}
+  subcomponents={{ ComboBoxItem }}
+  argTypes={{
+    ...createSelectArgTypes({ valueState: ValueState }),
+    ...DocsCommonProps,
+    children: { control: { disable: true } },
+    icon: { control: { disable: true } },
+    valueStateMessage: { control: { disable: true } }
+  }}
+  args={{
+    valueState: ValueState.None,
+    icon: <Icon name="employee" />,
+    style: {},
+    className: '',
+    tooltip: '',
+    slot: '',
+    ref: null
+  }}
+/>
+
+<DocsHeader />
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return (
+        <ComboBox {...args}>
+          <ComboBoxItem text="ComboBox Entry 1" />
+          <ComboBoxItem text="ComboBox Entry 2" />
+          <ComboBoxItem text="ComboBox Entry 3" />
+          <ComboBoxItem text="ComboBox Entry 4" />
+          <ComboBoxItem text="ComboBox Entry 5" />
+        </ComboBox>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="." />
+<div style={{ fontFamily: 'var(--sapFontFamily)', fontSize: 'var(--sapFontSize)', color: 'var(--sapTextColor)' }}>
+  <h3>Structure</h3>
+  The <code>ComboBox</code> consists of the following elements:
+  <ul>
+    <li>
+      Input field - displays the selected option or a custom user entry. Users can type to narrow down the list or enter
+      their own value.
+    </li>
+    <li>Drop-down arrow - expands\collapses the option list.</li>
+    <li>Option list - the list of available options.</li>
+  </ul>
+</div>
+
+<br />
+<br />
+
+# Stories
+
+<br />
+
+## Filter types
+
+All available filter types controlled by the `filter` prop.
+
+<Canvas>
+  <Story name="Filter types">
+    {() => {
+      return (
+        <FlexBox justifyContent={FlexBoxJustifyContent.SpaceBetween}>
+          <FlexBox direction={FlexBoxDirection.Column}>
+            <Label>StartsWithPerTerm (Default)</Label>
+            <ComboBox filter="StartsWithPerTerm">
+              <ComboBoxItem text="Austria" />
+              <ComboBoxItem text="United Arab Emirates" />
+              <ComboBoxItem text="Czech Republic" />
+              <ComboBoxItem text="United Kingdom" />
+              <ComboBoxItem text="China" />
+              <ComboBoxItem text="Ukraine" />
+              <ComboBoxItem text="Australia" />
+              <ComboBoxItem text="Russia" />
+            </ComboBox>
+          </FlexBox>
+          <FlexBox direction={FlexBoxDirection.Column}>
+            <Label>StartsWith</Label>
+            <ComboBox filter="StartsWith">
+              <ComboBoxItem text="Austria" />
+              <ComboBoxItem text="United Arab Emirates" />
+              <ComboBoxItem text="Czech Republic" />
+              <ComboBoxItem text="United Kingdom" />
+              <ComboBoxItem text="China" />
+              <ComboBoxItem text="Ukraine" />
+              <ComboBoxItem text="Australia" />
+              <ComboBoxItem text="Russia" />
+            </ComboBox>
+          </FlexBox>
+          <FlexBox direction={FlexBoxDirection.Column}>
+            <Label>Contains</Label>
+            <ComboBox filter="Contains">
+              <ComboBoxItem text="Austria" />
+              <ComboBoxItem text="United Arab Emirates" />
+              <ComboBoxItem text="Czech Republic" />
+              <ComboBoxItem text="United Kingdom" />
+              <ComboBoxItem text="China" />
+              <ComboBoxItem text="Ukraine" />
+              <ComboBoxItem text="Australia" />
+              <ComboBoxItem text="Russia" />
+            </ComboBox>
+          </FlexBox>
+        </FlexBox>
+      );
+    }}
+  </Story>
+</Canvas>

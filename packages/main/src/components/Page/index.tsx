@@ -14,14 +14,42 @@ import { CommonProps } from '../../interfaces/CommonProps';
 import styles from './Page.jss';
 
 export interface PagePropTypes extends CommonProps {
+  /**
+   * The title text appearing in the page header bar.
+   */
   title?: string;
+  /**
+   * It is used to set the background color of a page.
+   */
   backgroundDesign?: PageBackgroundDesign;
+  /**
+   * The (optional) custom header of this page. Use this prop only when a custom header
+   * is constructed where the default header consisting of title text + nav button is not sufficient.
+   */
   customHeader?: ReactNode;
+  /**
+   * The (optional) custom footer of this page.
+   */
   customFooter?: ReactNode;
+  /**
+   * A back button will be rendered on the left area of header bar if this property is set to true.
+   */
   showBackButton?: boolean;
+  /**
+   * Whether this page shall have a footer.
+   */
   showFooter?: boolean;
+  /**
+   * Whether this page shall have a header.
+   */
   showHeader?: boolean;
+  /**
+   * This event is fired when Nav Button is pressed.
+   */
   onNavButtonPress?: (e: CustomEvent<{}>) => void;
+  /**
+   * The content area of the page.
+   */
   children: ReactElement<any> | ReactElement<any>[] | ReactNode;
 }
 
@@ -29,6 +57,9 @@ const useStyles = createComponentStyles(styles, {
   name: 'Page'
 });
 
+/**
+ * A layout component that holds one whole screen of an application.
+ */
 const Page: FC<PagePropTypes> = forwardRef((props: PagePropTypes, ref: Ref<HTMLDivElement>) => {
   const {
     children,
