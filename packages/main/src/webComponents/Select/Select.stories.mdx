@@ -1,9 +1,9 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
-import { DocsHeader } from '@shared/stories/DocsHeader';
-import { Option } from '@ui5/webcomponents-react/lib/Option';
 import { Select } from '@ui5/webcomponents-react/lib/Select';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import { Option } from '@ui5/webcomponents-react/lib/Option';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
@@ -13,12 +13,16 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
   argTypes={{
     ...createSelectArgTypes({ valueState: ValueState }),
     ...DocsCommonProps,
-    children: {
-      type: null
-    }
+    children: { control: { disable: true } },
+    valueStateMessage: { control: { disable: true } }
   }}
   args={{
-    valueState: ValueState.None
+    valueState: ValueState.None,
+    style: {},
+    className: '',
+    tooltip: '',
+    slot: '',
+    ref: null
   }}
 />
 
@@ -26,19 +30,31 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Canvas>
   <Story name="Default">
-    {(props) => (
-      <Select disabled={props.disabled} name={props.name} valueState={props.valueState} onChange={props.onChange}>
-        <Option>Option 1</Option>
-        <Option>Option 2</Option>
-        <Option>Option 3</Option>
-        <Option>Option 4</Option>
-        <Option>Option 5</Option>
-      </Select>
-    )}
+    {(args) => {
+      return (
+        <Select {...args}>
+          <Option>Option 1</Option>
+          <Option>Option 2</Option>
+          <Option>Option 3</Option>
+          <Option>Option 4</Option>
+          <Option>Option 5</Option>
+        </Select>
+      );
+    }}
   </Story>
 </Canvas>
 
 <ArgsTable story="." />
+<div style={{ fontFamily: 'var(--sapFontFamily)', fontSize: 'var(--sapFontSize)', color: 'var(--sapTextColor)' }}>
+  <h3>Keyboard Handling</h3>
+  The <code>Select</code> provides advanced keyboard handling. If the <code>Select</code> is focused, you can open or close
+  the drop-down by pressing <code>F4</code>, <code>ALT+UP</code> or <code>ALT+DOWN</code> keys. Once the drop-down is opened,
+  you can use the <code>UP</code> and <code>DOWN</code> arrow keys to navigate through the available options and select one
+  by pressing the <code>Space</code> or <code>Enter</code> keys. <br />
+</div>
+
+<br />
+<br />
 
 ## Recipes
 
