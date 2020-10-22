@@ -7,6 +7,7 @@ import '@ui5/webcomponents-icons/dist/icons/decline';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
 import { Breadcrumbs } from '@ui5/webcomponents-react/lib/Breadcrumbs';
+import { PageBackgroundDesign } from '@ui5/webcomponents-react/lib/PageBackgroundDesign';
 import { Link } from '@ui5/webcomponents-react/lib/Link';
 import { DynamicPageTitle } from '@ui5/webcomponents-react/lib/DynamicPageTitle';
 import { DynamicPage } from '@ui5/webcomponents-react/lib/DynamicPage';
@@ -18,12 +19,14 @@ import { Badge } from '@ui5/webcomponents-react/lib/Badge';
 import { ObjectStatus } from '@ui5/webcomponents-react/lib/ObjectStatus';
 import { ProductsTable } from '@shared/stories/ProductsTable';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
 <Meta
   title="Components / DynamicPage"
   component={DynamicPage}
   subcomponents={{ DynamicPage, DynamicPageTitle, DynamicPageHeader }}
   argTypes={{
+    ...createSelectArgTypes({ backgroundDesign: PageBackgroundDesign }),
     ...DocsCommonProps,
     anchorBar: {
       type: null
@@ -40,6 +43,9 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
     children: {
       type: null
     }
+  }}
+  args={{
+    backgroundDesign: PageBackgroundDesign.Standard
   }}
 />
 

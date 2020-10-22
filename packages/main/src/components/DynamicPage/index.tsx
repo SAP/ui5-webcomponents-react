@@ -64,7 +64,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
     header,
     tooltip,
     style,
-    backgroundDesign,
+    backgroundDesign = PageBackgroundDesign.Standard,
     showHideHeaderButton = true,
     headerContentPinnable = true,
     alwaysShowContentHeader = false,
@@ -181,7 +181,9 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
       <FlexBox
         className={classes.anchorBar}
         style={{
-          top: headerPinned ? headerContentRef.current.offsetHeight + topHeaderRef.current.offsetHeight : topHeaderHeight
+          top: headerPinned
+            ? headerContentRef.current.offsetHeight + topHeaderRef.current.offsetHeight
+            : topHeaderHeight
         }}
       >
         <DynamicPageAnchorBar

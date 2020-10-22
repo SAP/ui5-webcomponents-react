@@ -38,8 +38,19 @@ const styles = {
     width: '100%',
     height: '100%',
     fontFamily: ThemingParameters.sapFontFamily,
-    backgroundColor: ThemingParameters.sapBackgroundColor,
     zIndex: 0
+  },
+  backgroundStandard: {
+    background: ThemingParameters.sapBackgroundColor
+  },
+  backgroundSolid: {
+    background: ThemingParameters.sapShell_Background
+  },
+  backgroundList: {
+    background: ThemingParameters.sapGroup_ContentBackground
+  },
+  backgroundTransparent: {
+    background: 'transparent'
   }
 };
 
