@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.11.0...v0.11.1) (2020-10-21)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** mount filters popover only when it's opened ([#738](https://github.com/SAP/ui5-webcomponents-react/issues/738)) ([1350790](https://github.com/SAP/ui5-webcomponents-react/commit/135079054c0e2c4bdff4a10271fb332518eb9d13))
+
+
+
+
+
 # [0.11.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.11.0-rc.1...v0.11.0) (2020-10-15)
 
 

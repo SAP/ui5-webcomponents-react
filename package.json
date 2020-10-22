@@ -93,7 +93,7 @@
     "rollup": "^2.23.0",
     "rollup-plugin-terser": "^7.0.2",
     "targz": "^1.0.1",
-    "typescript": "^3.9.7"
+    "typescript": "^4.0.3"
   },
   "resolutions": {
     "@types/react": "16.9.53",
