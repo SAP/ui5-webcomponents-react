@@ -24,8 +24,7 @@ const _fetchData = (operation, url, dataParam, config) => {
 };
 
 const _useOperation = (reactQueryKey, operation, url, dataParam, config) => {
-  const { data, status } = useQuery(reactQueryKey, _fetchData(operation, url, dataParam, config), STALE_TIME);
-  return { data, status };
+  return useQuery(reactQueryKey, _fetchData(operation, url, dataParam, config), STALE_TIME);
 };
 
 const _usePaginatedOperation = (reactQueryKey, pageDependency, operation, url, dataParam, config) => {
@@ -35,8 +34,7 @@ const _usePaginatedOperation = (reactQueryKey, pageDependency, operation, url, d
       page: pageDependency,
     },
   };
-  const { resolvedData, latestData, status } = usePaginatedQuery([reactQueryKey, pageDependency], _fetchData(operation, url, parameters, config), STALE_TIME);
-  return { resolvedData, latestData, status };
+  return usePaginatedQuery([reactQueryKey, pageDependency], _fetchData(operation, url, parameters, config), STALE_TIME);
 };
 
 export function useGet(reactQueryKey, url, config) {
