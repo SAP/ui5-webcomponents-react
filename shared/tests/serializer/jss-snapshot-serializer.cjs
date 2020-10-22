@@ -52,21 +52,23 @@ const replaceJssClassNames = (elements) => {
   });
 };
 
-export function test(value) {
-  // apply the serializer only to react elements that we haven't marked(processed) before
-  return value && !value[MARKER] && value.$$typeof === Symbol.for('react.test.json');
-}
+module.exports = {
+  test(value) {
+    // apply the serializer only to react elements that we haven't marked(processed) before
+    return value && !value[MARKER] && value.$$typeof === Symbol.for('react.test.json');
+  },
 
-export function print(value, serialize) {
-  // collect all react element nodes in the tree of the value
-  const elements = collectElements(value);
+  print(value, serialize) {
+    // collect all react element nodes in the tree of the value
+    const elements = collectElements(value);
 
-  // mark the collected element nodes to avoid processing them several times
-  markElements(elements);
+    // mark the collected element nodes to avoid processing them several times
+    markElements(elements);
 
-  // remove the non-deterministic part from the JSS class names
-  // to keep the snapshots repeatable
-  replaceJssClassNames(elements);
+    // remove the non-deterministic part from the JSS class names
+    // to keep the snapshots repeatable
+    replaceJssClassNames(elements);
 
-  return serialize(value);
-}
+    return serialize(value);
+  }
+};
