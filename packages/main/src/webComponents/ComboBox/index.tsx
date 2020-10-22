@@ -43,7 +43,7 @@ export interface ComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
    */
   valueState?: ValueState;
   /**
-   * Defines the <code>ComboBox</code> items. <br><br> Example: <br> &lt;ComboBox><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;ui5-li>Item #1&lt;/ui5-li><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;ui5-li>Item #2&lt;/ui5-li><br> &lt;/ComboBox> <br> <br>
+   * Defines the <code>ComboBox</code> items. <br><br> Example: <br> &lt;ComboBox><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;ComboBoxItem text="Item #1" /><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;ComboBoxItem text="Item #2" /><br> &lt;/ComboBox> <br> <br>
    */
   children?: ReactNode | ReactNode[];
   /**
