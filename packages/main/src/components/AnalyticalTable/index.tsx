@@ -441,7 +441,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
         >
           <div className={classes.tableHeaderBackgroundElement} />
           {headerGroups.map((headerGroup) => {
-            let headerProps = {};
+            let headerProps: Record<string, unknown> = {};
             if (headerGroup.getHeaderGroupProps) {
               headerProps = headerGroup.getHeaderGroupProps();
             }
