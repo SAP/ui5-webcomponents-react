@@ -14,7 +14,7 @@ import APIProvider from '../../../util/api/url/APIProvider';
 export default function TodoListPaginatedItems() {
   const history = useHistory();
   const [page, setPage] = useState(0);
-  const { resolvedData, status } = usePaginatedGet(Constants.REACT_QUERY.KEYS.RQ_GET_TODO_LIST, page, APIProvider.getUrl('GET_TODO_LIST'));
+  const { resolvedData, isLoading } = usePaginatedGet(Constants.REACT_QUERY.KEYS.RQ_GET_TODO_LIST, page, APIProvider.getUrl('GET_TODO_LIST'));
 
   const redirectToEditPage = (e) => {
     history.push(BrowserProvider.getUrl('TODO_EDIT', [{ value: e.detail.item.dataset.id }]));
@@ -22,7 +22,7 @@ export default function TodoListPaginatedItems() {
 
   return (
     <div>
-      {status === Constants.REACT_QUERY.CODES.LOADING ? (
+      {isLoading ? (
         <Spinner />
       ) : (
         <>

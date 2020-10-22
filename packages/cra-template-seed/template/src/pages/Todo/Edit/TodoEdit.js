@@ -17,15 +17,15 @@ const onSubmitEditForm = (values, actions) => {
 };
 
 export default function TodoEdit({ match }) {
-  const { data, status } = useGet(Constants.REACT_QUERY.KEYS.GET_TODO_BY_ID, APIProvider.getUrl('GET_TODO_BY_ID', [{ value: match.params.id }]));
+  const { data, isLoading, isSuccess } = useGet(Constants.REACT_QUERY.KEYS.GET_TODO_BY_ID, APIProvider.getUrl('GET_TODO_BY_ID', [{ value: match.params.id }]));
 
   return (
     <>
       <Helmet title="Edit - TodoList App" />
       <NavBack />
       <CenteredContent>
-        {status === Constants.REACT_QUERY.CODES.LOADING && <Spinner />}
-        {status === Constants.REACT_QUERY.CODES.SUCCESS && <TodoEditForm data={data.data.todos} onSubmitHandler={onSubmitEditForm} />}
+        {isLoading && <Spinner />}
+        {isSuccess && <TodoEditForm data={data.data.todos} onSubmitHandler={onSubmitEditForm} />}
       </CenteredContent>
     </>
   );
