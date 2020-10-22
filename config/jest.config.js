@@ -1,6 +1,6 @@
-const PATHS = require('./paths');
+import PATHS from './paths.js';
 
-module.exports = {
+export default {
   rootDir: PATHS.root,
   coverageDirectory: 'coverage',
   coverageReporters: ['lcov', 'text'],

@@ -16,7 +16,7 @@
   "sideEffects": false,
   "scripts": {
     "clean": "rimraf cjs components interfaces internal lib util index.esm.js index.d.ts config.d.ts hooks",
-    "build": "rollup -c rollup.config.js",
+    "build": "rollup -c rollup.config.mjs",
     "build:types": "tsc --declaration --emitDeclarationOnly --declarationDir . --removeComments false || exit 0"
   },
   "dependencies": {
