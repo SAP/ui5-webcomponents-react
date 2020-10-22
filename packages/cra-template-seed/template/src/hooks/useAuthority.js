@@ -5,7 +5,7 @@ import APIProvider from '../util/api/url/APIProvider';
 export function useHasAccess(allowedAuthorities, authorityKey) {
   const { data, isSuccess } = useGet(Constants.REACT_QUERY.KEYS.RQ_GET_USER_LOGGED, APIProvider.getUrl('GET_USER_LOGGED'), null);
 
-  if (isSuccess) {
+  if (!isSuccess) {
     return null;
   }
 
