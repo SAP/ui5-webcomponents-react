@@ -3,7 +3,7 @@
 exports[`DynamicPage with content 1`] = `
 <DocumentFragment>
   <div
-    class="DynamicPage-dynamicPage sapScrollBar "
+    class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundStandard"
   >
     <div
       class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container"
@@ -942,7 +942,7 @@ exports[`DynamicPage with content 1`] = `
 exports[`DynamicPage without content 1`] = `
 <DocumentFragment>
   <div
-    class="DynamicPage-dynamicPage sapScrollBar "
+    class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundStandard"
   >
     <div
       class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container"
