@@ -1,33 +1,35 @@
+import { render } from '@shared/tests';
 import { createPassThroughPropsTest } from '@shared/tests/utils';
-import { mount } from 'enzyme';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
 import React from 'react';
 
 describe('Text', () => {
   test('Render Basic Text', () => {
-    const wrapper = mount(<Text>FioriText</Text>);
-    expect(wrapper.render()).toMatchSnapshot();
+    const { asFragment } = render(<Text>FioriText</Text>);
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('No Wrap', () => {
-    const wrapper = mount(<Text wrapping={false}>Lorem Ipsum dolor sit amed</Text>);
-    expect(wrapper.render()).toMatchSnapshot();
+    const { asFragment } = render(<Text wrapping={false}>Lorem Ipsum dolor sit amed</Text>);
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('Render Whitespace', () => {
-    const wrapper = mount(<Text renderWhitespace>Lorem Ipsum dolor sit amed</Text>);
-    expect(wrapper.render()).toMatchSnapshot();
+    const { asFragment } = render(<Text renderWhitespace>Lorem Ipsum dolor sit amed</Text>);
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('Renders correct Text', () => {
     const el = 'My Text';
-    const wrapper = mount(<Text>{el}</Text>);
-    expect(wrapper.text()).toEqual(el);
+    const { container } = render(<Text>{el}</Text>);
+    expect(container).toHaveTextContent(el);
   });
 
   test('custom width', () => {
-    const wrapper = mount(<Text style={{ width: '300px' }}>Test</Text>);
-    expect(window.getComputedStyle(wrapper.getDOMNode()).width).toEqual('300px');
+    const { getByText } = render(<Text style={{ width: '300px' }}>Test</Text>);
+    expect(getByText('Test')).toHaveStyle({
+      width: '300px'
+    });
   });
 
   createPassThroughPropsTest(Text);
