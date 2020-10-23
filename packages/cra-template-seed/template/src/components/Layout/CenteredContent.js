@@ -9,9 +9,9 @@ const style = {
   },
 };
 
-export default function CenteredContent({ ...props }) {
+export default function CenteredContent(props) {
   return (
-    <div data-testid="centered-content" style={style.centered}>
+    <div data-testid="centered-content" style={style.centered} {...props}>
       {props.children}
     </div>
   );
