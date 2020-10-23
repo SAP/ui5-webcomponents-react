@@ -1,3 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Token Basic Test (generated) 1`] = `<ui5-token />`;
+exports[`Token Basic Test (generated) 1`] = `
+<DocumentFragment>
+  <ui5-token
+    ui5-token=""
+  />
+</DocumentFragment>
+`;

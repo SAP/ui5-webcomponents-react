@@ -1,7 +1,8 @@
 const path = require('path');
-const PATHS = require('../config/paths');
+
+const root = path.resolve(__dirname, '..');
 require('dotenv').config({
-  path: path.join(PATHS.root, '.env')
+  path: path.join(root, '.env')
 });
 
 const BUILD_FOR_IE11 = process.env.UI5_WEBCOMPONENTS_FOR_REACT_BUILD_IE11 === 'true';
@@ -77,12 +78,12 @@ module.exports = {
     }
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@shared': path.join(PATHS.root, 'shared'),
-      '@ui5/webcomponents-react/dist': path.join(PATHS.root, 'packages', 'main', 'dist'),
-      '@ui5/webcomponents-react': path.join(PATHS.root, 'packages', 'main', 'src'),
-      '@ui5/webcomponents-react-charts': path.join(PATHS.root, 'packages', 'charts', 'src'),
-      '@ui5/webcomponents-react-base/types': path.join(PATHS.root, 'packages', 'base', 'types'),
-      '@ui5/webcomponents-react-base': path.join(PATHS.root, 'packages', 'base', 'src')
+      '@shared': path.join(root, 'shared'),
+      '@ui5/webcomponents-react/dist': path.join(root, 'packages', 'main', 'dist'),
+      '@ui5/webcomponents-react': path.join(root, 'packages', 'main', 'src'),
+      '@ui5/webcomponents-react-charts': path.join(root, 'packages', 'charts', 'src'),
+      '@ui5/webcomponents-react-base/types': path.join(root, 'packages', 'base', 'types'),
+      '@ui5/webcomponents-react-base': path.join(root, 'packages', 'base', 'src')
     };
 
     return config;

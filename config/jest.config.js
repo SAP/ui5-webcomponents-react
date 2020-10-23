@@ -1,6 +1,6 @@
-const PATHS = require('./paths');
+import PATHS from './paths.js';
 
-module.exports = {
+export default {
   rootDir: PATHS.root,
   coverageDirectory: 'coverage',
   coverageReporters: ['lcov', 'text'],
@@ -21,8 +21,11 @@ module.exports = {
   setupFiles: ['jest-canvas-mock'],
   setupFilesAfterEnv: ['./config/jestsetup.ts'],
   testEnvironment: 'jsdom-sixteen',
-  testMatch: ['<rootDir>/packages/**/?(*.)(spec|test).{js,jsx,ts,tsx}'],
-  testPathIgnorePatterns: ['/node_modules/', '<rootDir>/packages/cra-template/'],
+  testPathIgnorePatterns: [
+    '/node_modules/',
+    '<rootDir>/packages/cra-template/',
+    '<rootDir>/packages/cra-template-seed/'
+  ],
   transformIgnorePatterns: ['node_modules/(?!(@ui5|lit-html))'],
   moduleNameMapper: {
     '^@shared/(.*)$': '<rootDir>/shared/$1',
