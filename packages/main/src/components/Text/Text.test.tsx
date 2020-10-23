@@ -21,8 +21,8 @@ describe('Text', () => {
 
   test('Renders correct Text', () => {
     const el = 'My Text';
-    const { asFragment } = render(<Text>{el}</Text>);
-    expect(asFragment());
+    const { container } = render(<Text>{el}</Text>);
+    expect(container).toHaveTextContent(el);
   });
 
   test('custom width', () => {
