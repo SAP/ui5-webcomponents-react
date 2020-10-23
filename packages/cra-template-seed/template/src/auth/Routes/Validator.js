@@ -4,7 +4,6 @@ import { useHasAccess } from '../../hooks/useAuthority';
 
 import NotFound from '../../pages/Fallback/NotFound';
 import Empty from '../../pages/Fallback/Empty';
-import Constants from '../../util/Constants';
 
 const RouteValidator = ({ allowedAuthorities, authorityKey, path, component, ...props }) => {
   const hasAccess = useHasAccess(allowedAuthorities, authorityKey);
