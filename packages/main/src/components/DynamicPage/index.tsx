@@ -153,6 +153,16 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
     }
   };
 
+  const handleHeaderPinnedChange = useCallback(
+    (headerWillPin) => {
+      if (headerWillPin) {
+        setHeaderState(HEADER_STATES.VISIBLE_PINNED);
+      } else {
+        setHeaderState(HEADER_STATES.AUTO);
+      }
+    },
+    [setHeaderState]
+  );
   return (
     <div
       ref={dynamicPageRef}
@@ -185,13 +195,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
           showHideHeaderButton={showHideHeaderButton}
           headerContentHeight={headerContentHeight}
           onToggleHeaderContentVisibility={onToggleHeaderContentVisibility}
-          setHeaderPinned={(bool) => {
-            if (bool) {
-              setHeaderState(HEADER_STATES.VISIBLE_PINNED);
-            } else {
-              setHeaderState(HEADER_STATES.AUTO);
-            }
-          }}
+          setHeaderPinned={handleHeaderPinnedChange}
           headerPinned={headerState === HEADER_STATES.VISIBLE_PINNED || headerState === HEADER_STATES.HIDDEN_PINNED}
           onHoverToggleButton={onHoverToggleButton}
         />
