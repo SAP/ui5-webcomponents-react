@@ -65,6 +65,7 @@ fs.readFile(PACKAGE_FILE, UTF_8, (err, data) => {
 
   console.log(`\nAdding husky and devDependencies to new ${PACKAGE_FILE}`);
   const newContent = { ...oldContent, husky, devDependencies };
+  delete newContent.scripts.postinstall;
   const newFileContent = JSON.stringify(newContent, null, 2);
 
   console.log(`\nWriting ${PACKAGE_FILE} to disk`);
