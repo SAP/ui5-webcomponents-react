@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useMemo, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 
@@ -26,18 +26,21 @@ const Shell = ({ title, ...props }) => {
   const history = useHistory();
   const popoverConfigItemsRef = useRef(null);
   const themeSwitchRef = useRef(null);
-  const popoverItems = [
-    {
-      children: t('shell.button.user.settings.item.languageSwitch'),
-      icon: 'user-settings',
-      onClick: () => alert('activate language switch dialog'),
-    },
-    {
-      children: t('shell.button.user.settings.item.themeSwitch'),
-      icon: 'customize',
-      onClick: () => themeSwitchRef.current.open(),
-    },
-  ];
+  const popoverItems = useMemo(
+    () => [
+      {
+        children: t('shell.button.user.settings.item.languageSwitch'),
+        icon: 'user-settings',
+        onClick: () => alert('activate language switch dialog'),
+      },
+      {
+        children: t('shell.button.user.settings.item.themeSwitch'),
+        icon: 'customize',
+        onClick: () => themeSwitchRef.current.open(),
+      },
+    ],
+    [],
+  );
 
   return (
     <>
