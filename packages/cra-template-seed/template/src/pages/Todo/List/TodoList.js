@@ -14,7 +14,10 @@ export default function TodoList() {
 
   return (
     <CenteredContent>
-      <Helmet title="List - TodoList App" />
+      <Helmet
+        title="List - TodoList
+       App"
+      />
       <h1>Routing</h1>
       <HyperLink onClick={() => history.push('/dontexist')} text="Test NotFound Page" />
       <br />
@@ -27,13 +30,13 @@ export default function TodoList() {
       </ComponentValidator>
 
       <h1>Device Detect</h1>
-      <p>{isMobile ? 'This text appears when is MOBILE' : 'This text appears when is not MOBILE'}</p>
-      <p>{isTablet ? 'This text appears when is TABLET' : 'This text appears when is not TABLET'}</p>
-      <p>{isDesktop ? 'This text appears when is DESKTOP' : 'This text appears when is not DESKTOP'}</p>
+      <p>{isMobile() ? 'This text appears when is MOBILE' : 'This text appears when is not MOBILE'}</p>
+      <p>{isTablet() ? 'This text appears when is TABLET' : 'This text appears when is not TABLET'}</p>
+      <p>{isDesktop() ? 'This text appears when is DESKTOP' : 'This text appears when is not DESKTOP'}</p>
 
       <h1>Browser Detect</h1>
-      <p>{isChrome ? 'This Text is rendered only for CHROME' : 'This Text is rendered only when is NOT CHROME'}</p>
-      <p>{isIE ? 'This Text is rendered only for IE' : 'This Text is rendered only when is NOT IE'}</p>
+      <p>{isChrome() ? 'This Text is rendered only for CHROME' : 'This Text is rendered only when is NOT CHROME'}</p>
+      <p>{isIE() ? 'This Text is rendered only for IE' : 'This Text is rendered only when is NOT IE'}</p>
 
       <h1>Pagination + Edition (Formik and Yup)</h1>
       <TodoListPaginatedItems history={history} />
