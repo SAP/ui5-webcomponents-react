@@ -25,10 +25,10 @@ jobs:
           cd seed-ci-test
           yarn test:coverage
         env:
-          - SKIP_PREFLIGHT_CHECK: true
+          SKIP_PREFLIGHT_CHECK: true
       - name: build project
         run: |
           cd seed-ci-test
           yarn build
         env:
-          - SKIP_PREFLIGHT_CHECK: true
+          SKIP_PREFLIGHT_CHECK: true
