@@ -16,7 +16,8 @@
     "prettier:all": "prettier --write --config ./prettier.config.cjs \"packages/**/*.{ts,tsx,mdx}\"",
     "lint": "eslint packages",
     "lerna:version-dryrun": "lerna version --conventional-graduate --no-git-tag-version --no-push",
-    "deploy:storybook": "lerna run build:i18n && storybook-to-ghpages --ci"
+    "deploy:storybook": "lerna run build:i18n && storybook-to-ghpages --ci",
+    "create-webcomponents-wrapper": "node --experimental-json-modules ./packages/main/scripts/create-web-components-wrapper.mjs"
   },
   "dependencies": {
     "@storybook/addon-actions": "6.0.26",
