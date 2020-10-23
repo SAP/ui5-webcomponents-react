@@ -7,9 +7,9 @@ import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { spacing } from '@ui5/webcomponents-react-base';
 
-export default function PopoverInfo({ popoverRef, placementType, title, ...props }) {
+export default function PopoverInfo({ popoverRef, placementType = PlacementType.Bottom, title, ...props }) {
   return (
-    <Popover data-testid="popoverInfo-wrapper" ref={popoverRef} placementType={placementType ? placementType : PlacementType.Bottom}>
+    <Popover data-testid="popoverInfo-wrapper" ref={popoverRef} placementType={placementType}>
       <FlexBox direction={FlexBoxDirection.Column}>
         <div className="popover-header">
           {title && (
