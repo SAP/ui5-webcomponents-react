@@ -5,7 +5,7 @@ import { render, screen } from '../../util/TestSetup';
 
 import CenteredContent from './CenteredContent';
 
-describe('Validator.js Test Suite', () => {
+describe('CenteredContent.js Test Suite', () => {
   beforeEach(() => {
     render(<CenteredContent />);
   });
