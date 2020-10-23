@@ -5,8 +5,11 @@ console.warn(
   'Currently there are two tag-names missing or faulty: "ui5-notification-overflow-action" and "ui5-timeline-item"\n These have to be adjusted manually!\n'
 );
 
-// To only create a single component, add the component (module) name here:
-const CREATE_SINGLE_COMPONENT = false;
+// To only create a single component, replace "false" with the component (module) name
+// or execute the following command: "yarn create-webcomponents-wrapper [name]"
+const CREATE_SINGLE_COMPONENT = process.argv[2] || false;
+
+console.log(CREATE_SINGLE_COMPONENT);
 
 import mainWebComponentsSpec from "@ui5/webcomponents/dist/api.json";
 import fioriWebComponentsSpec from "@ui5/webcomponents-fiori/dist/api.json";
