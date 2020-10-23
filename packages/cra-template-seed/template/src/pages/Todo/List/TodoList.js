@@ -5,7 +5,7 @@ import { isChrome, isMobile, isTablet, isDesktop, isIE } from '@ui5/webcomponent
 
 import HyperLink from '../../../components/HyperLink/HyperLink';
 import BrowserProvider from '../../../util/browser/BrowserProvider';
-import ComponentValidator from '../../../auth/Components/Validator';
+import ComponentWithAuthorizationRestriction from '../../../auth/ComponentWithAuthorizationRestriction';
 import TodoListPaginatedItems from './TodoListPaginatedItems';
 import CenteredContent from '../../../components/Layout/CenteredContent';
 
@@ -24,10 +24,10 @@ export default function TodoList() {
       <HyperLink onClick={() => history.push(BrowserProvider.getUrl('BUGGY'))} text="Test Error Page" />
       <br />
 
-      <ComponentValidator allowedAuthorities={['canAccessDropApplication']} authorityKey="permissions">
+      <ComponentWithAuthorizationRestriction allowedAuthorities={['canAccessDropApplication']} authorityKey="permissions">
         <h1>Component Validator</h1>
         <p>Drop Application (this is a restricted text and you should not see unless you have access)</p>
-      </ComponentValidator>
+      </ComponentWithAuthorizationRestriction>
 
       <h1>Device Detect</h1>
       <p>{isMobile() ? 'This text appears when is MOBILE' : 'This text appears when is not MOBILE'}</p>

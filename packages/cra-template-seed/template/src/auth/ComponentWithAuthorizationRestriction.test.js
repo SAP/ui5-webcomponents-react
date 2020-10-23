@@ -1,11 +1,11 @@
 import React from 'react';
 
 import '@testing-library/jest-dom/extend-expect';
-import { render, waitFor, screen, serverCustom } from '../../util/TestSetup';
-import ComponentValidator from './Validator';
-import APIProvider from '../../util/api/url/APIProvider';
+import { render, waitFor, screen, serverCustom } from '../util/TestSetup';
+import ComponentWithAuthorizationRestriction from './ComponentWithAuthorizationRestriction';
+import APIProvider from '../util/api/url/APIProvider';
 
-describe('Validator.js Test Suite', () => {
+describe('ComponentWithAuthorizationRestriction.js Test Suite', () => {
   const GET_USER_LOGGED_RESPONSE = {
     id: 'UG9rZW1vbjowMDE=',
     name: 'testeeeeeeeeeeeeeeeee',
@@ -22,9 +22,9 @@ describe('Validator.js Test Suite', () => {
     const childText = 'inner text';
 
     render(
-      <ComponentValidator allowedAuthorities={['canAccessDropApplication']} authorityKey="permissions">
+      <ComponentWithAuthorizationRestriction allowedAuthorities={['canAccessDropApplication']} authorityKey="permissions">
         <p>{childText}</p>
-      </ComponentValidator>,
+      </ComponentWithAuthorizationRestriction>,
       { route: '/todo/all' },
     );
     const child = await waitFor(() => screen.getByText(childText));
@@ -36,12 +36,11 @@ describe('Validator.js Test Suite', () => {
     const childText = 'inner text';
 
     render(
-      <ComponentValidator allowedAuthorities={['canAccessDropApplication']} authorityKey="permissions">
+      <ComponentWithAuthorizationRestriction allowedAuthorities={['canAccessDropApplication']} authorityKey="permissions">
         <p>{childText}</p>
-      </ComponentValidator>,
+      </ComponentWithAuthorizationRestriction>,
       { route: '/todo/all' },
     );
-    console.log('PATHHHHHH', window.location.pathname);
     const child = screen.queryByAltText(childText);
 
     expect(child).not.toBeInTheDocument();

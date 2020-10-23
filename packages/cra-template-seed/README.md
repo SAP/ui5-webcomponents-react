@@ -41,7 +41,7 @@ This seed decrease’s the bootstrap time spent on new projects, POCs or MVPs wh
 
 - API HTTP Request Engine (w/ `Request`, `APIProvider`, `BrowserProvider`);
 
-- Permission Engine (w/ `RouteValidator` and `ComponentValidator`).
+- Permission Engine (w/ `RouteWithAuthorizationRestriction` and `ComponentWithAuthorizationRestriction`).
 
 - Pagination Engine (w/ custom hook `usePaginatedGet`).
 

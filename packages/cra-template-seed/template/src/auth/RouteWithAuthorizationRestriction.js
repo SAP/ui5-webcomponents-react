@@ -1,11 +1,11 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import { useHasAccess } from '../../hooks/useAuthority';
+import { useHasAccess } from '../hooks/useAuthority';
 
-import NotFound from '../../pages/Fallback/NotFound';
-import Empty from '../../pages/Fallback/Empty';
+import NotFound from '../pages/Fallback/NotFound';
+import Empty from '../pages/Fallback/Empty';
 
-const RouteValidator = ({ allowedAuthorities, authorityKey, path, component, ...props }) => {
+const RouteWithAuthorizationRestriction = ({ allowedAuthorities, authorityKey, path, component, ...props }) => {
   const hasAccess = useHasAccess(allowedAuthorities, authorityKey);
   if (hasAccess === null) {
     return <Route path={path} {...props} component={Empty} />;
@@ -14,4 +14,4 @@ const RouteValidator = ({ allowedAuthorities, authorityKey, path, component, ...
   return <Route path={path} {...props} component={hasAccess ? component : NotFound} />;
 };
 
-export default RouteValidator;
+export default RouteWithAuthorizationRestriction;
