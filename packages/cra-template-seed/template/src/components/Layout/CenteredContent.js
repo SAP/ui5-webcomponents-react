@@ -3,7 +3,7 @@ import { isMobile } from '@ui5/webcomponents-base/dist/Device';
 
 const style = {
   centered: {
-    minWidth: isMobile ? '80%' : '50%',
+    minWidth: isMobile() ? '80%' : '50%',
     padding: '1rem',
     margin: '0 auto',
   },
