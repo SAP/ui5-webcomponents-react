@@ -8,10 +8,10 @@
     <img alt="code style: prettier" src="https://badgen.net/badge/code%20style/prettier?color=pink">
   </a>
   <a href="https://www.npmjs.com/package/cra-template-ui5-webcomponents-react-seed" target="_blank">
-    <img alt="npm version" src="https://badgen.net/npm/v/@ui5/webcomponents-react-cra-template-seed?icon=npm">
+    <img alt="npm version" src="https://badgen.net/npm/v/@ui5/cra-template-webcomponents-react-seed?icon=npm">
   </a>
   <a href="https://www.npmjs.com/package/cra-template-ui5-webcomponents-react-seed" target="\_parent">
-    <img alt="npm downloads" src="https://img.shields.io/npm/dm/@ui5/webcomponents-react-cra-template-seed.svg" />
+    <img alt="npm downloads" src="https://img.shields.io/npm/dm/@ui5/cra-template-webcomponents-react-seed-seed.svg" />
   </a>
 </p>
 
