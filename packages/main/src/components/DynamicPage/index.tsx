@@ -58,6 +58,14 @@ export interface DynamicPageProps extends Omit<CommonProps, 'title'> {
   footer?: ReactElement;
 }
 
+enum HEADER_STATES {
+  AUTO,
+  VISIBLE_PINNED,
+  HIDDEN_PINNED,
+  VISIBLE,
+  HIDDEN
+}
+
 const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, ref: Ref<HTMLDivElement>) => {
   const {
     title,
@@ -83,8 +91,10 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
   const headerContentRef: RefObject<HTMLDivElement> = useRef();
   const headerPinnedRef = useRef(alwaysShowContentHeader);
 
-  const [headerPinned, setHeaderPinned] = useState(alwaysShowContentHeader);
-  const [headerVisible, setHeaderVisible] = useState(true);
+  const [headerState, setHeaderState] = useState<HEADER_STATES>(HEADER_STATES.AUTO);
+
+  // const [headerPinned, setHeaderPinned] = useState(alwaysShowContentHeader);
+  // const [headerVisible, setHeaderVisible] = useState(true);
 
   // observe heights of header parts
   const { topHeaderHeight, headerContentHeight } = useObserveHeights(
@@ -95,6 +105,10 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
     { noHeader: false }
   );
 
+  if (headerState === HEADER_STATES.HIDDEN || headerState === HEADER_STATES.HIDDEN_PINNED) {
+    dynamicPageClasses.put(classes.headerCollapsed);
+  }
+
   const onToggleHeaderContentVisibility = useCallback(
     (e, element?) => {
       let srcElement = e.target;
@@ -102,49 +116,38 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
         srcElement = element;
       }
       const shouldHideHeader = srcElement.icon === 'slim-arrow-up';
-      if (shouldHideHeader) {
-        dynamicPageRef.current.classList.add(classes.headerCollapsed);
-        setHeaderVisible(false);
-        anchorBarRef.current.style.top = '-0.05rem';
-      } else {
-        dynamicPageRef.current.classList.remove(classes.headerCollapsed);
-        setHeaderVisible(true);
-        anchorBarRef.current.style.top = headerPinned ? '-0.05rem' : '0';
-      }
 
-      requestAnimationFrame(() => {
-        if (dynamicPageRef.current.scrollTop > 0 && !shouldHideHeader) {
-          if (headerPinnedRef.current) {
-            anchorBarRef.current.style.top = `0px`;
-          } else {
-            anchorBarRef.current.style.top = `${headerContentRef.current.scrollHeight}px`;
-          }
-          headerContentRef.current.style.top = `${topHeaderHeight}px`;
-          dynamicPageRef.current.classList.remove(classes.headerCollapsed);
+      let headerStateResetOnScroll = false;
+
+      setHeaderState((oldState) => {
+        if (oldState === HEADER_STATES.VISIBLE_PINNED || oldState === HEADER_STATES.HIDDEN_PINNED) {
+          return shouldHideHeader ? HEADER_STATES.HIDDEN_PINNED : HEADER_STATES.VISIBLE_PINNED;
         }
+        headerStateResetOnScroll = true;
+        return shouldHideHeader ? HEADER_STATES.HIDDEN : HEADER_STATES.VISIBLE;
+      });
+
+      if (headerStateResetOnScroll) {
         dynamicPageRef.current.addEventListener(
           'scroll',
           () => {
             if (dynamicPageRef.current.scrollTop > 0 && !headerPinnedRef.current) {
               headerContentRef.current.style.removeProperty('top');
-              anchorBarRef.current.style.top = headerPinned ? '0.05rem' : '0';
+              anchorBarRef.current.style.top = `${topHeaderHeight}px`;
             }
           },
           { once: true }
         );
-      });
+      }
     },
     [dynamicPageRef, classes.headerCollapsed, headerContentHeight, topHeaderHeight, headerPinnedRef.current]
   );
 
   const onHoverToggleButton = useCallback(
     (e) => {
-      if (e && e.type === 'mouseover') {
-        // TODO background color should be sapObjectHeader_Hover_Background (same color as sapTile_Active_Background)
-        topHeaderRef.current.style.backgroundColor = ThemingParameters.sapTile_Active_Background;
-      } else {
-        topHeaderRef.current.style.backgroundColor = null;
-      }
+      // TODO background color should be sapObjectHeader_Hover_Background (same color as sapTile_Active_Background)
+      topHeaderRef.current.style.backgroundColor =
+        e?.type === 'mouseover' ? ThemingParameters.sapTile_Active_Background : null;
     },
     [topHeaderRef]
   );
@@ -154,11 +157,6 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
       onToggleHeaderContentVisibility(e, anchorBarRef.current.children.item(0));
     }
   };
-
-  useEffect(() => {
-    headerPinnedRef.current = headerPinned;
-    anchorBarRef.current.style.top = headerPinned ? '-0.05rem' : '0';
-  }, [headerPinned]);
 
   return (
     <div
@@ -170,30 +168,36 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
     >
       {cloneElement(title, {
         ref: topHeaderRef,
-        headerVisible,
         onToggleHeaderContentVisibility: onToggleHeaderContent
       })}
       {cloneElement(header, {
         ref: headerContentRef,
-        headerPinned,
+        headerPinned: headerState === HEADER_STATES.VISIBLE_PINNED,
         topHeaderHeight
       })}
       <FlexBox
         className={classes.anchorBar}
+        ref={anchorBarRef}
         style={{
-          top: headerPinned
-            ? headerContentRef.current.offsetHeight + topHeaderRef.current.offsetHeight
-            : topHeaderHeight
+          top:
+            headerState === HEADER_STATES.VISIBLE_PINNED || headerState === HEADER_STATES.VISIBLE
+              ? headerContentRef.current?.offsetHeight + topHeaderHeight
+              : topHeaderHeight
         }}
       >
         <DynamicPageAnchorBar
-          ref={anchorBarRef}
           headerContentPinnable={headerContentPinnable}
           showHideHeaderButton={showHideHeaderButton}
           headerContentHeight={headerContentHeight}
           onToggleHeaderContentVisibility={onToggleHeaderContentVisibility}
-          setHeaderPinned={setHeaderPinned}
-          headerPinned={headerPinned}
+          setHeaderPinned={(bool) => {
+            if (bool) {
+              setHeaderState(HEADER_STATES.VISIBLE_PINNED);
+            } else {
+              setHeaderState(HEADER_STATES.AUTO);
+            }
+          }}
+          headerPinned={headerState === HEADER_STATES.VISIBLE_PINNED || headerState === HEADER_STATES.HIDDEN_PINNED}
           onHoverToggleButton={onHoverToggleButton}
         />
       </FlexBox>

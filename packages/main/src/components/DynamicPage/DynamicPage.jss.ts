@@ -26,6 +26,8 @@ const styles = {
   },
   anchorBar: {
     position: 'sticky',
+    boxShadow: ThemingParameters.sapContent_HeaderShadow,
+    height: '1px',
     zIndex: 2,
     '& > section[role="navigation"]': {
       top: 0

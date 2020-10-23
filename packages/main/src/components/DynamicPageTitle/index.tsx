@@ -52,7 +52,6 @@ export interface DynamicPageTitleProps extends CommonProps {
 }
 
 interface InternalProps extends DynamicPageTitleProps {
-  headerVisible?: boolean;
   /**
    * The onToggleHeaderContentVisibility show or hide the header section
    */
@@ -70,7 +69,6 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
     heading,
     subHeading,
     navigationActions,
-    headerVisible,
     className,
     style,
     tooltip
@@ -80,15 +78,10 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
   const containerClasses = StyleClassHelper.of(classes.container).putIfPresent(className);
   const passThroughProps = usePassThroughHtmlProps(props, ['onToggleHeaderContentVisibility']);
 
-  const appliedStyles = {
-    ...(headerVisible ? {} : { boxShadow: ThemingParameters.sapContent_HeaderShadow }),
-    ...style
-  };
-
   return (
     <FlexBox
       className={containerClasses.className}
-      style={appliedStyles}
+      style={style}
       ref={ref}
       tooltip={tooltip}
       data-component-name="DynamicPageTitle"
