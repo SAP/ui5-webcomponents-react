@@ -26,8 +26,10 @@ describe('Text', () => {
   });
 
   test('custom width', () => {
-    const { asFragment } = render(<Text style={{ width: '300px' }}>Test</Text>);
-    expect(asFragment());
+    const { getByText } = render(<Text style={{ width: '300px' }}>Test</Text>);
+    expect(getByText('Test')).toHaveStyle({
+      width: '300px'
+    });
   });
 
   createPassThroughPropsTest(Text);
