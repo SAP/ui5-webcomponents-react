@@ -12,8 +12,6 @@ export interface DynamicPageHeaderProps extends CommonProps {
 }
 
 interface InternalProps extends DynamicPageHeaderProps {
-  alwaysShowContentHeader?: boolean;
-  noHeader?: boolean;
   headerPinned?: boolean;
   topHeaderHeight?: number;
 }

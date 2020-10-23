@@ -89,12 +89,10 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
   const dynamicPageRef: RefObject<HTMLDivElement> = useConsolidatedRef(ref);
   const topHeaderRef: RefObject<HTMLDivElement> = useRef();
   const headerContentRef: RefObject<HTMLDivElement> = useRef();
-  const headerPinnedRef = useRef(alwaysShowContentHeader);
 
-  const [headerState, setHeaderState] = useState<HEADER_STATES>(HEADER_STATES.AUTO);
-
-  // const [headerPinned, setHeaderPinned] = useState(alwaysShowContentHeader);
-  // const [headerVisible, setHeaderVisible] = useState(true);
+  const [headerState, setHeaderState] = useState<HEADER_STATES>(
+    alwaysShowContentHeader ? HEADER_STATES.VISIBLE_PINNED : HEADER_STATES.AUTO
+  );
 
   // observe heights of header parts
   const { topHeaderHeight, headerContentHeight } = useObserveHeights(
@@ -131,16 +129,13 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
         dynamicPageRef.current.addEventListener(
           'scroll',
           () => {
-            if (dynamicPageRef.current.scrollTop > 0 && !headerPinnedRef.current) {
-              headerContentRef.current.style.removeProperty('top');
-              anchorBarRef.current.style.top = `${topHeaderHeight}px`;
-            }
+            setHeaderState(HEADER_STATES.AUTO);
           },
           { once: true }
         );
       }
     },
-    [dynamicPageRef, classes.headerCollapsed, headerContentHeight, topHeaderHeight, headerPinnedRef.current]
+    [dynamicPageRef, classes.headerCollapsed, headerContentHeight, topHeaderHeight]
   );
 
   const onHoverToggleButton = useCallback(
@@ -172,7 +167,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
       })}
       {cloneElement(header, {
         ref: headerContentRef,
-        headerPinned: headerState === HEADER_STATES.VISIBLE_PINNED,
+        headerPinned: headerState === HEADER_STATES.VISIBLE_PINNED || headerState === HEADER_STATES.VISIBLE,
         topHeaderHeight
       })}
       <FlexBox
