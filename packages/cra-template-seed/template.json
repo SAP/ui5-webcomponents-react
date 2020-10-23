@@ -49,6 +49,7 @@
       "test:coverage": "npm run test -- --watchAll=false --coverage",
       "lint": "eslint --quiet .",
       "lint:fix": "eslint . --fix",
+      "postinstall": "node post_create.js",
       "prettier": "prettier --config .prettierrc --check \"src/**/*.js\"",
       "prettier:fix": "prettier --config .prettierrc --write \"src/**/*.js\"",
       "eject": "react-scripts eject"
