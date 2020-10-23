@@ -52,7 +52,6 @@ export const VerticalScrollbar = forwardRef((props: VerticalScrollbarProps, ref:
         style={{
           flexGrow: 1,
           backgroundColor: ThemingParameters.sapList_HeaderBackground,
-          borderWidth: '1px',
           borderRight: hasHorizontalScrollbar ? `1px solid ${ThemingParameters.sapList_BorderColor}` : 'none',
           borderBottom: hasHorizontalScrollbar ? `1px solid ${ThemingParameters.sapList_BorderColor}` : 'none',
           boxSizing: 'border-box'
