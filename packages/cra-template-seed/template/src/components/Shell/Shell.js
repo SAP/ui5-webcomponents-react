@@ -39,7 +39,7 @@ const Shell = ({ title, ...props }) => {
         onClick: () => themeSwitchRef.current.open(),
       },
     ],
-    [],
+    [t],
   );
 
   return (
