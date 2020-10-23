@@ -1,219 +1,271 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Breadcrumbs separatorStyle: 'BackSlash' 1`] = `
-<div>
-  <ui5-link
-    design="Default"
-  >
-    Link 1
-  </ui5-link>
-  <ui5-label
-    style="margin: 0px 0.25rem;"
-  >
-    \\
-  </ui5-label>
-  <ui5-link
-    design="Default"
-  >
-    Link 2
-  </ui5-link>
-  <ui5-label
-    style="margin: 0px 0.25rem;"
-  >
-    \\
-  </ui5-label>
-  <ui5-link
-    design="Default"
-  >
-    Link 3
-  </ui5-link>
-</div>
+<DocumentFragment>
+  <div>
+    <ui5-link
+      design="Default"
+      ui5-link=""
+    >
+      Link 1
+    </ui5-link>
+    <ui5-label
+      style="margin: 0px 0.25rem;"
+      ui5-label=""
+    >
+      \\
+    </ui5-label>
+    <ui5-link
+      design="Default"
+      ui5-link=""
+    >
+      Link 2
+    </ui5-link>
+    <ui5-label
+      style="margin: 0px 0.25rem;"
+      ui5-label=""
+    >
+      \\
+    </ui5-label>
+    <ui5-link
+      design="Default"
+      ui5-link=""
+    >
+      Link 3
+    </ui5-link>
+  </div>
+</DocumentFragment>
 `;
 
 exports[`Breadcrumbs separatorStyle: 'DoubleBackSlash' 1`] = `
-<div>
-  <ui5-link
-    design="Default"
-  >
-    Link 1
-  </ui5-link>
-  <ui5-label
-    style="margin: 0px 0.25rem;"
-  >
-    \\\\
-  </ui5-label>
-  <ui5-link
-    design="Default"
-  >
-    Link 2
-  </ui5-link>
-  <ui5-label
-    style="margin: 0px 0.25rem;"
-  >
-    \\\\
-  </ui5-label>
-  <ui5-link
-    design="Default"
-  >
-    Link 3
-  </ui5-link>
-</div>
+<DocumentFragment>
+  <div>
+    <ui5-link
+      design="Default"
+      ui5-link=""
+    >
+      Link 1
+    </ui5-link>
+    <ui5-label
+      style="margin: 0px 0.25rem;"
+      ui5-label=""
+    >
+      \\\\
+    </ui5-label>
+    <ui5-link
+      design="Default"
+      ui5-link=""
+    >
+      Link 2
+    </ui5-link>
+    <ui5-label
+      style="margin: 0px 0.25rem;"
+      ui5-label=""
+    >
+      \\\\
+    </ui5-label>
+    <ui5-link
+      design="Default"
+      ui5-link=""
+    >
+      Link 3
+    </ui5-link>
+  </div>
+</DocumentFragment>
 `;
 
 exports[`Breadcrumbs separatorStyle: 'DoubleGreaterThan' 1`] = `
-<div>
-  <ui5-link
-    design="Default"
-  >
-    Link 1
-  </ui5-link>
-  <ui5-label
-    style="margin: 0px 0.25rem;"
-  >
-    &gt;&gt;
-  </ui5-label>
-  <ui5-link
-    design="Default"
-  >
-    Link 2
-  </ui5-link>
-  <ui5-label
-    style="margin: 0px 0.25rem;"
-  >
-    &gt;&gt;
-  </ui5-label>
-  <ui5-link
-    design="Default"
-  >
-    Link 3
-  </ui5-link>
-</div>
+<DocumentFragment>
+  <div>
+    <ui5-link
+      design="Default"
+      ui5-link=""
+    >
+      Link 1
+    </ui5-link>
+    <ui5-label
+      style="margin: 0px 0.25rem;"
+      ui5-label=""
+    >
+      &gt;&gt;
+    </ui5-label>
+    <ui5-link
+      design="Default"
+      ui5-link=""
+    >
+      Link 2
+    </ui5-link>
+    <ui5-label
+      style="margin: 0px 0.25rem;"
+      ui5-label=""
+    >
+      &gt;&gt;
+    </ui5-label>
+    <ui5-link
+      design="Default"
+      ui5-link=""
+    >
+      Link 3
+    </ui5-link>
+  </div>
+</DocumentFragment>
 `;
 
 exports[`Breadcrumbs separatorStyle: 'DoubleSlash' 1`] = `
-<div>
-  <ui5-link
-    design="Default"
-  >
-    Link 1
-  </ui5-link>
-  <ui5-label
-    style="margin: 0px 0.25rem;"
-  >
-    //
-  </ui5-label>
-  <ui5-link
-    design="Default"
-  >
-    Link 2
-  </ui5-link>
-  <ui5-label
-    style="margin: 0px 0.25rem;"
-  >
-    //
-  </ui5-label>
-  <ui5-link
-    design="Default"
-  >
-    Link 3
-  </ui5-link>
-</div>
+<DocumentFragment>
+  <div>
+    <ui5-link
+      design="Default"
+      ui5-link=""
+    >
+      Link 1
+    </ui5-link>
+    <ui5-label
+      style="margin: 0px 0.25rem;"
+      ui5-label=""
+    >
+      //
+    </ui5-label>
+    <ui5-link
+      design="Default"
+      ui5-link=""
+    >
+      Link 2
+    </ui5-link>
+    <ui5-label
+      style="margin: 0px 0.25rem;"
+      ui5-label=""
+    >
+      //
+    </ui5-label>
+    <ui5-link
+      design="Default"
+      ui5-link=""
+    >
+      Link 3
+    </ui5-link>
+  </div>
+</DocumentFragment>
 `;
 
 exports[`Breadcrumbs separatorStyle: 'GreaterThan' 1`] = `
-<div>
-  <ui5-link
-    design="Default"
-  >
-    Link 1
-  </ui5-link>
-  <ui5-label
-    style="margin: 0px 0.25rem;"
-  >
-    &gt;
-  </ui5-label>
-  <ui5-link
-    design="Default"
-  >
-    Link 2
-  </ui5-link>
-  <ui5-label
-    style="margin: 0px 0.25rem;"
-  >
-    &gt;
-  </ui5-label>
-  <ui5-link
-    design="Default"
-  >
-    Link 3
-  </ui5-link>
-</div>
+<DocumentFragment>
+  <div>
+    <ui5-link
+      design="Default"
+      ui5-link=""
+    >
+      Link 1
+    </ui5-link>
+    <ui5-label
+      style="margin: 0px 0.25rem;"
+      ui5-label=""
+    >
+      &gt;
+    </ui5-label>
+    <ui5-link
+      design="Default"
+      ui5-link=""
+    >
+      Link 2
+    </ui5-link>
+    <ui5-label
+      style="margin: 0px 0.25rem;"
+      ui5-label=""
+    >
+      &gt;
+    </ui5-label>
+    <ui5-link
+      design="Default"
+      ui5-link=""
+    >
+      Link 3
+    </ui5-link>
+  </div>
+</DocumentFragment>
 `;
 
 exports[`Breadcrumbs separatorStyle: 'Slash' 1`] = `
-<div>
-  <ui5-link
-    design="Default"
-  >
-    Link 1
-  </ui5-link>
-  <ui5-label
-    style="margin: 0px 0.25rem;"
-  >
-    /
-  </ui5-label>
-  <ui5-link
-    design="Default"
-  >
-    Link 2
-  </ui5-link>
-  <ui5-label
-    style="margin: 0px 0.25rem;"
-  >
-    /
-  </ui5-label>
-  <ui5-link
-    design="Default"
-  >
-    Link 3
-  </ui5-link>
-</div>
+<DocumentFragment>
+  <div>
+    <ui5-link
+      design="Default"
+      ui5-link=""
+    >
+      Link 1
+    </ui5-link>
+    <ui5-label
+      style="margin: 0px 0.25rem;"
+      ui5-label=""
+    >
+      /
+    </ui5-label>
+    <ui5-link
+      design="Default"
+      ui5-link=""
+    >
+      Link 2
+    </ui5-link>
+    <ui5-label
+      style="margin: 0px 0.25rem;"
+      ui5-label=""
+    >
+      /
+    </ui5-label>
+    <ui5-link
+      design="Default"
+      ui5-link=""
+    >
+      Link 3
+    </ui5-link>
+  </div>
+</DocumentFragment>
 `;
 
 exports[`Breadcrumbs with currentLocationText 1`] = `
-<div>
-  <ui5-link
-    design="Default"
-  >
-    Link 1
-  </ui5-link>
-  <ui5-label
-    style="margin: 0px 0.25rem;"
-  >
-    /
-  </ui5-label>
-  <ui5-link
-    design="Default"
-  >
-    Link 2
-  </ui5-link>
-  <ui5-label
-    style="margin: 0px 0.25rem;"
-  >
-    /
-  </ui5-label>
-  <ui5-link
-    design="Default"
-  >
-    Link 3
-  </ui5-link>
-  <ui5-label
-    style="margin: 0px 0.25rem;"
-  >
-    /
-  </ui5-label>
-  <ui5-label>
-    Current Location
-  </ui5-label>
-</div>
+<DocumentFragment>
+  <div>
+    <ui5-link
+      design="Default"
+      ui5-link=""
+    >
+      Link 1
+    </ui5-link>
+    <ui5-label
+      style="margin: 0px 0.25rem;"
+      ui5-label=""
+    >
+      /
+    </ui5-label>
+    <ui5-link
+      design="Default"
+      ui5-link=""
+    >
+      Link 2
+    </ui5-link>
+    <ui5-label
+      style="margin: 0px 0.25rem;"
+      ui5-label=""
+    >
+      /
+    </ui5-label>
+    <ui5-link
+      design="Default"
+      ui5-link=""
+    >
+      Link 3
+    </ui5-link>
+    <ui5-label
+      style="margin: 0px 0.25rem;"
+      ui5-label=""
+    >
+      /
+    </ui5-label>
+    <ui5-label
+      ui5-label=""
+    >
+      Current Location
+    </ui5-label>
+  </div>
+</DocumentFragment>
 `;

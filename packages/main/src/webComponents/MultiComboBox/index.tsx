@@ -37,7 +37,7 @@ export interface MultiComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 
    */
   valueState?: ValueState;
   /**
-   * Defines the <code>MultiComboBox</code> items. <br><br> Example: <br> &lt;MultiComboBox><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;ui5-li>Item #1&lt;/ui5-li><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;ui5-li>Item #2&lt;/ui5-li><br> &lt;/MultiComboBox> <br> <br>
+   * Defines the <code>MultiComboBox</code> items. <br><br> Example: <br> &lt;MultiComboBox><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;MultiComboBoxItem text="Item #1" /><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;MultiComboBoxItem text="Item #2" /><br> &lt;/MultiComboBox> <br> <br>
    */
   children?: ReactNode | ReactNode[];
   /**
