@@ -27,7 +27,7 @@
     "@storybook/addons": "6.0.27",
     "@storybook/cli": "6.0.27",
     "@storybook/react": "6.0.26",
-    "@storybook/theming": "6.0.26",
+    "@storybook/theming": "6.0.27",
     "@ui5/webcomponents": "1.0.0-rc.9",
     "@ui5/webcomponents-fiori": "1.0.0-rc.9",
     "@ui5/webcomponents-icons": "1.0.0-rc.9",
