@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { spacing } from '@ui5/webcomponents-react-base';
-import { Label as UI5Label } from '@ui5/webcomponents-react';
+import { Label as UI5Label } from '@ui5/webcomponents-react/lib/Label';
 
 const Label = ({ style, ...props }) => {
   const innerStyle = {

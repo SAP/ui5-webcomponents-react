@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Switch as UI5Switch } from '@ui5/webcomponents-react';
+import { Switch as UI5Switch } from '@ui5/webcomponents-react/lib/Switch';
 import FieldBase from '../FieldBase/FieldBase';
 
 const style = {

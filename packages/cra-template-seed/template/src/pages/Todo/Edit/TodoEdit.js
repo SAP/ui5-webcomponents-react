@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 
 import { useGet } from '../../../hooks/useRequest';
-import { Spinner } from '@ui5/webcomponents-react';
+import { Spinner } from '@ui5/webcomponents-react/lib/Spinner';
 import NavBack from '../../../components/NavBack/NavBack';
 import CenteredContent from '../../../components/Layout/CenteredContent';
 import TodoEditForm from './TodoEditForm';

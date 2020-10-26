@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { FlexBox, FlexBoxDirection } from '@ui5/webcomponents-react';
+import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
+import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
 import Label from '../Label/Label';
 
 const FieldBase = ({ labelText, ...props }) => {

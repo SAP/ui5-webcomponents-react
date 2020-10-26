@@ -4,7 +4,7 @@ import { usePaginatedGet } from '../../../hooks/useRequest';
 
 import { List } from '@ui5/webcomponents-react/lib/List';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
-import { Spinner } from '@ui5/webcomponents-react';
+import { Spinner } from '@ui5/webcomponents-react/lib/Spinner';
 import { Pagination } from '../../../components/Pagination/Pagination';
 
 import Constants from '../../../util/Constants';

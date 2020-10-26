@@ -1,4 +1,5 @@
-import { List, StandardListItem } from '@ui5/webcomponents-react';
+import { List } from '@ui5/webcomponents-react/lib/List';
+import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
 import React from 'react';
 import PopoverInfo from '../Info/PopoverInfo';
 
