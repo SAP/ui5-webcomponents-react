@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { isChrome, isMobile, isTablet, isDesktop, isIE } from '@ui5/webcomponents-base/dist/Device';
 
 import { Link } from '@ui5/webcomponents-react/lib/Link';
-import BrowserProvider from '../../../util/browser/BrowserProvider';
+import { getUrl } from '../../../util/browser/BrowserProvider';
 import ComponentWithAuthorizationRestriction from '../../../auth/ComponentWithAuthorizationRestriction';
 import TodoListPaginatedItems from './TodoListPaginatedItems';
 import CenteredContent from '../../../components/Layout/CenteredContent';
@@ -21,7 +21,7 @@ const TodoList = () => {
       <h1>Routing</h1>
       <Link onClick={() => history.push('/dontexist')}>Test NotFound Page</Link>
       <br />
-      <Link onClick={() => history.push(BrowserProvider.getUrl('BUGGY'))}>Test Error Page</Link>
+      <Link onClick={() => history.push(getUrl('BUGGY'))}>Test Error Page</Link>
       <br />
       <ComponentWithAuthorizationRestriction allowedAuthorities={['canAccessDropApplication']} authorityKey="permissions">
         <h1>Component Validator</h1>

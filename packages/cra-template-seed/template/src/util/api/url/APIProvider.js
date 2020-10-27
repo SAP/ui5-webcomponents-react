@@ -1,4 +1,4 @@
-import URLProvider from '../../URLProvider';
+import { getUrl as getUrlProvider } from '../../URLProvider';
 
 const URLs = {
   GET_USER_LOGGED: '/v1/user/logged',
@@ -6,10 +6,6 @@ const URLs = {
   GET_TODO_LIST: '/v1/todo/all',
 };
 
-const getUrl = (key, replaceOptions) => {
-  return URLProvider.getUrl(URLs, key, replaceOptions);
-};
-
-export default {
-  getUrl,
+export const getUrl = (key, replaceOptions) => {
+  return getUrlProvider(URLs, key, replaceOptions);
 };

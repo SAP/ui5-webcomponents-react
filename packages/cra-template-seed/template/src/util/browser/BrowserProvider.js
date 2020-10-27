@@ -1,4 +1,4 @@
-import URLProvider from '../URLProvider';
+import { getUrl as getUrlProvider } from '../URLProvider';
 
 const URLs = {
   HOME: '/',
@@ -10,10 +10,6 @@ const URLs = {
   ANY: '/*',
 };
 
-const getUrl = (key, replaceOptions) => {
-  return URLProvider.getUrl(URLs, key, replaceOptions);
-};
-
-export default {
-  getUrl,
+export const getUrl = (key, replaceOptions) => {
+  return getUrlProvider(URLs, key, replaceOptions);
 };

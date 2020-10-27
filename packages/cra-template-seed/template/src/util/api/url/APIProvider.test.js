@@ -1,12 +1,12 @@
 import '@testing-library/jest-dom/extend-expect';
 
-import APIProvider from './APIProvider';
+import { getUrl } from './APIProvider';
 
 describe('APIProvider.js Test Suite', () => {
   test('should return URL when passed correct key', () => {
     const key = 'GET_USER_LOGGED';
 
-    const output = APIProvider.getUrl(key);
+    const output = getUrl(key);
 
     expect(output).toEqual('/v1/user/logged');
   });
@@ -15,15 +15,15 @@ describe('APIProvider.js Test Suite', () => {
     const key = 'DOES_NOT_EXIST';
     const errorMessage = 'Url defined: ' + key + ' not found';
 
-    const getUrl = () => APIProvider.getUrl(key);
+    const urlGet = () => getUrl(key);
 
-    expect(getUrl).toThrowError(errorMessage);
+    expect(urlGet).toThrowError(errorMessage);
   });
 
   test('should correctly replace key when passed correct replaceValue', () => {
     const key = 'GET_TODO_BY_ID';
 
-    const output = APIProvider.getUrl(key, [{ value: 1 }]);
+    const output = getUrl(key, [{ value: 1 }]);
 
     expect(output).toEqual('/v1/todo/1');
   });
@@ -31,7 +31,7 @@ describe('APIProvider.js Test Suite', () => {
   test('should erroneously replace key when passed correct replaceValue', () => {
     const key = 'GET_TODO_BY_ID';
 
-    const replaceUrl = () => APIProvider.getUrl(key, [{ value: 1, search: ':not_id' }]);
+    const replaceUrl = () => getUrl(key, [{ value: 1, search: ':not_id' }]);
 
     expect(replaceUrl()).toEqual('/v1/todo/:id');
   });

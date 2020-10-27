@@ -7,7 +7,7 @@ import NavBack from '../../../components/NavBack/NavBack';
 import CenteredContent from '../../../components/Layout/CenteredContent';
 import TodoEditForm from './TodoEditForm';
 import Constants from '../../../util/Constants';
-import APIProvider from '../../../util/api/url/APIProvider';
+import { getUrl } from '../../../util/api/url/APIProvider';
 
 const onSubmitEditForm = (values, actions) => {
   actions.setSubmitting(true);
@@ -17,7 +17,7 @@ const onSubmitEditForm = (values, actions) => {
 };
 
 const TodoEdit = ({ match }) => {
-  const { data, isLoading, isSuccess } = useGet(Constants.REACT_QUERY.KEYS.GET_TODO_BY_ID, APIProvider.getUrl('GET_TODO_BY_ID', [{ value: match.params.id }]));
+  const { data, isLoading, isSuccess } = useGet(Constants.REACT_QUERY.KEYS.GET_TODO_BY_ID, getUrl('GET_TODO_BY_ID', [{ value: match.params.id }]));
 
   return (
     <>

@@ -1,4 +1,4 @@
-const getUrl = (urls, key, replaceOptions) => {
+export const getUrl = (urls, key, replaceOptions) => {
   let url = urls[key];
 
   if (!url) {
@@ -13,8 +13,4 @@ const getUrl = (urls, key, replaceOptions) => {
   }
 
   return url;
-};
-
-export default {
-  getUrl,
 };

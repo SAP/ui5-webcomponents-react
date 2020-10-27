@@ -8,16 +8,16 @@ import { Spinner } from '@ui5/webcomponents-react/lib/Spinner';
 import { Pagination } from '../../../components/Pagination/Pagination';
 
 import Constants from '../../../util/Constants';
-import BrowserProvider from '../../../util/browser/BrowserProvider';
-import APIProvider from '../../../util/api/url/APIProvider';
+import { getUrl as getUrlBrowser } from '../../../util/browser/BrowserProvider';
+import { getUrl as getUrlAPI } from '../../../util/api/url/APIProvider';
 
 const TodoListPaginatedItems = () => {
   const history = useHistory();
   const [page, setPage] = useState(0);
-  const { resolvedData, isLoading } = usePaginatedGet(Constants.REACT_QUERY.KEYS.RQ_GET_TODO_LIST, page, APIProvider.getUrl('GET_TODO_LIST'));
+  const { resolvedData, isLoading } = usePaginatedGet(Constants.REACT_QUERY.KEYS.RQ_GET_TODO_LIST, page, getUrlAPI('GET_TODO_LIST'));
 
   const redirectToEditPage = (e) => {
-    history.push(BrowserProvider.getUrl('TODO_EDIT', [{ value: e.detail.item.dataset.id }]));
+    history.push(getUrlBrowser('TODO_EDIT', [{ value: e.detail.item.dataset.id }]));
   };
 
   return (
