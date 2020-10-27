@@ -1,6 +1,3 @@
-import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
-import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
-import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJustifyContent';
 import { List } from '@ui5/webcomponents-react/lib/List';
 import { CustomListItem } from '@ui5/webcomponents-react/lib/CustomListItem';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
