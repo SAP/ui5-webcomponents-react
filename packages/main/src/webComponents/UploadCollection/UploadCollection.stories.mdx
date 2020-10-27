@@ -1,0 +1,379 @@
+import { ArgsTable, Canvas, Meta, Story } from "@storybook/addon-docs/blocks";
+import { UploadCollection } from "@ui5/webcomponents-react/lib/UploadCollection";
+import { ListMode } from "@ui5/webcomponents-react/lib/ListMode";
+import { useState } from "react";
+import { UploadCollectionItem } from "@ui5/webcomponents-react/lib/UploadCollectionItem";
+import { UploadState } from "@ui5/webcomponents-react/lib/UploadState";
+import { Icon } from "@ui5/webcomponents-react/lib/Icon";
+import { FlexBox } from "@ui5/webcomponents-react/lib/FlexBox";
+import { FlexBoxAlignItems } from "@ui5/webcomponents-react/lib/FlexBoxAlignItems";
+import { Title } from "@ui5/webcomponents-react/lib/Title";
+import { Button } from "@ui5/webcomponents-react/lib/Button";
+import { Text } from "@ui5/webcomponents-react/lib/Text";
+import { createSelectArgTypes } from "@shared/stories/createSelectArgTypes";
+import { DocsHeader } from "@shared/stories/DocsHeader";
+import { DocsCommonProps } from "@shared/stories/DocsCommonProps";
+import "@ui5/webcomponents-icons/dist/icons/document.js";
+
+<Meta
+  title="UI5 Web Components / UploadCollection"
+  component={UploadCollection}
+  subcomponents={{ UploadCollectionItem }}
+  argTypes={{
+    ...createSelectArgTypes({ mode: ListMode }),
+    ...DocsCommonProps,
+    children: { control: { disable: true } },
+    header: { control: { disable: true } },
+  }}
+  args={{
+    mode: ListMode.None,
+    style: {},
+    className: "",
+    tooltip: "",
+    slot: "",
+    ref: null,
+  }}
+/>
+
+<DocsHeader />
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      const [children, setChildren] = useState([]);
+      const handleDrop = (e) => {
+        e.preventDefault();
+        const files = e.dataTransfer.files;
+        files.forEach((file) => {
+          setChildren((prev) => [
+            ...prev,
+            <UploadCollectionItem
+              file={file}
+              fileName={file.name}
+              thumbnail={<Icon name="document" />}
+            >
+              <Text>{`Last modified: ${file.lastModifiedDate} · Size: ${(
+                file.size / 1000
+              ).toFixed(2)}KB`}</Text>
+            </UploadCollectionItem>,
+          ]);
+        });
+      };
+      return (
+        <UploadCollection {...args} onDrop={handleDrop}>
+          {children}
+        </UploadCollection>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Default" />
+
+## Handling drag and drop of files
+
+Per default, files can be added by dragging them into the `UploadCollection` component.
+To use this functionality the `onDrop` handler has to be manually adjusted.<br/>
+**Note:** Use `event.preventDefault()` in the `onDrop` handler, otherwise some browsers will open some files in a different tab.
+
+This example shows, how to dynamically render a `UploadCollectionItem` by dropping files into the `UploadCollection`:
+
+```jsx
+import React, { useState } from "react";
+import { UploadCollection } from "@ui5/webcomponents-react/lib/UploadCollection";
+import { UploadCollectionItem } from "@ui5/webcomponents-react/lib/UploadCollectionItem";
+import { Icon } from "@ui5/webcomponents-react/lib/Icon";
+import { Text } from "@ui5/webcomponents-react/lib/Text";
+
+export const UploadCollectionComponent = () => {
+  const [children, setChildren] = useState([]);
+  const handleDrop = (e) => {
+    e.preventDefault();
+    const files = e.dataTransfer.files;
+    files.forEach((file) => {
+      setChildren((prev) => [
+        ...prev,
+        <UploadCollectionItem
+          file={file}
+          fileName={file.name}
+          thumbnail={<Icon name="document" />}
+        >
+          <Text>Uploaded On: Right now</Text>
+        </UploadCollectionItem>,
+      ]);
+    });
+  };
+  return <UploadCollection onDrop={handleDrop}>{children}</UploadCollection>;
+};
+```
+
+<br />
+
+# Stories
+
+<br />
+
+## with customizable UploadCollectionItem
+
+<Canvas>
+  <Story
+    name="with UploadCollectionItem"
+    args={{
+      fileName: "file-name.txt",
+      file: null,
+      fileNameClickable: false,
+      noDelete: false,
+      noRetry: false,
+      noTerminate: false,
+      progress: 0,
+      uploadState: UploadState.Ready,
+      children: "UploadCollectionItem",
+      thumbnail: <Icon name="document" />,
+      onFileNameClick: () => {},
+      onRename: () => {},
+      onRetry: () => {},
+      onTerminate: () => {},
+    }}
+    argTypes={{
+      ...createSelectArgTypes({ uploadState: UploadState }),
+      mode: { table: { disable: true } },
+      noDataDescription: { table: { disable: true } },
+      noDataText: { table: { disable: true } },
+      noDnd: { table: { disable: true } },
+      header: { table: { disable: true } },
+      onFileDeleted: { table: { disable: true } },
+      onSelectionChange: { table: { disable: true } },
+      thumbnail: {
+        description: `A thumbnail, which will be shown in the beginning of the <code>UploadCollectionItem</code>. <br><br> <b>Note:</b> Use <code>Icon</code> or <code>img</code> for the intended design.`,
+        control: { disable: true },
+      },
+      children: {
+        description: `Hold the description of the <code>UploadCollectionItem</code>. Will be shown below the file name.`,
+        control: { disable: false },
+      },
+      fileName: { description: `The name of the file.` },
+      file: {
+        description: `Holds <code>File</code>, associated with this item.`,
+      },
+      fileNameClickable: {
+        description: `If set to <code>true</code> the file name will be clickable and it will fire <code>file-name-click</code> event upon click.`,
+      },
+      noDelete: {
+        description: `Removes delete option from <code>UploadCollection</code> with <code>mode</code> <code>Delete</code> for this item.`,
+      },
+      noRetry: {
+        description: `Hides the retry button when <code>uploadState</code> property is <code>Error</code>.`,
+      },
+      noTerminate: {
+        description: `Hides the terminate button when <code>uploadState</code> property is <code>Uploading</code>.`,
+      },
+      progress: {
+        description: `The upload progress in percentage. <br><br> <b>Note:</b> Expected values are in the interval [0, 100].`,
+      },
+      uploadState: {
+        control: {
+          options: ["Complete", "Error", "Ready", "Uploading"],
+          type: "radio",
+        },
+        description: `If set to <code>Uploading</code> or <code>Error</code>, a progress indicator showing the <code>progress</code> is displayed. Also if set to <code>Error</code>, a refresh button is shown. When this icon is pressed <code>retry</code> event is fired. If set to <code>Uploading</code>, a terminate button is shown. When this icon is pressed <code>terminate</code> event is fired.`,
+      },
+      onFileNameClick: {
+        control: { disable: true },
+        description: `Fired when the file name is clicked. <br><br> <b>Note:</b> This event is only available when <code>fileNameClickable</code> property is <code>true</code>.`,
+      },
+      onRename: {
+        control: { disable: true },
+        description: `Fired when the <code>fileName</code> property gets changed. <br><br> <b>Note:</b> An edit button is displayed on each item, when the <code>UploadCollectionItem</code> <code>type</code> property is set to <code>Detail</code>.`,
+      },
+      onRetry: {
+        control: { disable: true },
+        description: `Fired when the retry button is pressed. <br><br> <b>Note:</b> Retry button is displayed when <code>uploadState</code> property is set to <code>Error</code>.`,
+      },
+      onTerminate: {
+        control: { disable: true },
+        description: `Fired when the terminate button is pressed. <br><br> <b>Note:</b> Terminate button is displayed when <code>uploadState</code> property is set to <code>Uploading</code>.`,
+      },
+    }}
+  >
+    {(args) => {
+      return (
+        <UploadCollection>
+          <UploadCollectionItem {...args} />
+        </UploadCollection>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="with UploadCollectionItem" />
+
+<br />
+
+## Simulate Upload
+
+<Canvas>
+  <Story name="Simulated Upload">
+    {(args) => {
+      const [children, setChildren] = useState([
+        <UploadCollectionItem
+          file={null}
+          fileName={"file-name.txt"}
+          thumbnail={
+            <img src="https://sap.github.io/ui5-webcomponents/assets/images/logo.png" />
+          }
+        >
+          <Text>Uploaded by: Susanne Schmitt · Uploaded On: 2019-04-20</Text>
+        </UploadCollectionItem>,
+      ]);
+      const handleDrop = (e) => {
+        e.preventDefault();
+        const files = e.dataTransfer.files;
+        files.forEach((file) => {
+          setChildren((prev) => [
+            ...prev,
+            <UploadCollectionItem
+              file={file}
+              fileName={file.name}
+              thumbnail={<Icon name="document" />}
+            >
+              <Text>{`Last modified: ${file.lastModifiedDate} · Size: ${(
+                file.size / 1000
+              ).toFixed(2)}KB`}</Text>
+            </UploadCollectionItem>,
+          ]);
+        });
+      };
+      const simulateUpload = () => {
+        if (children.length > 0) {
+          React.Children.forEach(children, (child, index) => {
+            if (child.props.uploadState === UploadState.Ready) {
+              let progress = 0;
+              const recTimeout = () => {
+                setTimeout(() => {
+                  progress += Math.floor(Math.random() * 4) + 1;
+                  setChildren((prev) => {
+                    const updatedChildren = [...prev];
+                    updatedChildren[index] = React.cloneElement(prev[index], {
+                      uploadState: UploadState.Uploading,
+                      progress: Math.min(progress, 100),
+                    });
+                    return updatedChildren;
+                  });
+                  if (progress < 100) {
+                    recTimeout();
+                  } else {
+                    setChildren((prev) => {
+                      const updatedChildren = [...prev];
+                      updatedChildren[index] = React.cloneElement(prev[index], {
+                        uploadState: UploadState.Complete,
+                      });
+                      return updatedChildren;
+                    });
+                  }
+                }, Math.floor(Math.random() * (1000 - 100 + 1)) + 100);
+              };
+              recTimeout();
+            }
+          });
+        }
+      };
+      return (
+        <UploadCollection
+          onDrop={handleDrop}
+          header={
+            <FlexBox alignItems={FlexBoxAlignItems.Center}>
+              <Title>Start upload:</Title>
+              <Button onClick={simulateUpload}>Upload!</Button>
+            </FlexBox>
+          }
+        >
+          {children}
+        </UploadCollection>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Code
+
+```jsx
+const SimulateUploadComponent = () => {
+  const [children, setChildren] = useState([
+    <UploadCollectionItem
+      file={null}
+      fileName={"file-name.txt"}
+      thumbnail={
+        <img src="https://sap.github.io/ui5-webcomponents/assets/images/logo.png" />
+      }
+    >
+      <Text>Uploaded by: Susanne Schmitt · Uploaded On: 2019-04-20</Text>
+    </UploadCollectionItem>,
+  ]);
+  const handleDrop = (e) => {
+    e.preventDefault();
+    const files = e.dataTransfer.files;
+    files.forEach((file) => {
+      setChildren((prev) => [
+        ...prev,
+        <UploadCollectionItem
+          file={file}
+          fileName={file.name}
+          thumbnail={<Icon name="document" />}
+        >
+          <Text>{`
+Last
+modified: ${file.lastModifiedDate} ·
+Size: ${(file.size / 1000).toFixed(2)}KB`}</Text>
+        </UploadCollectionItem>,
+      ]);
+    });
+  };
+  const simulateUpload = () => {
+    if (children.length > 0) {
+      React.Children.forEach(children, (child, index) => {
+        if (child.props.uploadState === UploadState.Ready) {
+          let progress = 0;
+          const recTimeout = () => {
+            setTimeout(() => {
+              progress += Math.floor(Math.random() * 4) + 1;
+              setChildren((prev) => {
+                const updatedChildren = [...prev];
+                updatedChildren[index] = React.cloneElement(prev[index], {
+                  uploadState: UploadState.Uploading,
+                  progress: Math.min(progress, 100),
+                });
+                return updatedChildren;
+              });
+              if (progress < 100) {
+                recTimeout();
+              } else {
+                setChildren((prev) => {
+                  const updatedChildren = [...prev];
+                  updatedChildren[index] = React.cloneElement(prev[index], {
+                    uploadState: UploadState.Complete,
+                  });
+                  return updatedChildren;
+                });
+              }
+            }, Math.floor(Math.random() * (1000 - 100 + 1)) + 100);
+          };
+          recTimeout();
+        }
+      });
+    }
+  };
+  return (
+    <UploadCollection
+      onDrop={handleDrop}
+      header={
+        <FlexBox alignItems={FlexBoxAlignItems.Center}>
+          <Title>Start upload:</Title>
+          <Button onClick={simulateUpload}>Upload!</Button>
+        </FlexBox>
+      }
+    >
+      {children}
+    </UploadCollection>
+  );
+};
+```
