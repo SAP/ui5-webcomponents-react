@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { spacing } from '@ui5/webcomponents-react-base';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
@@ -36,30 +36,30 @@ const style = {
   },
 };
 
-const _getHeaderIcon = (type) => {
+const getHeaderIcon = (type) => {
   switch (type) {
     case Type.Warning:
-      return _getHeaderWarningIcon();
+      return getHeaderWarningIcon();
     case Type.Error:
-      return _getHeaderErrorIcon();
+      return getHeaderErrorIcon();
     default:
-      return _getHeaderInfoIcon();
+      return getHeaderInfoIcon();
   }
 };
 
-const _getHeaderWarningIcon = () => {
+const getHeaderWarningIcon = () => {
   return <Icon name="message-warning" style={style.warning} />;
 };
 
-const _getHeaderErrorIcon = () => {
+const getHeaderErrorIcon = () => {
   return <Icon name="message-error" style={style.error} />;
 };
 
-const _getHeaderInfoIcon = () => {
+const getHeaderInfoIcon = () => {
   return <Icon name="message-information" style={style.information} />;
 };
 
-const _handleAvoidEscapeClosing = (avoidEscapeClose) => {
+const handleAvoidEscapeClosing = (avoidEscapeClose) => {
   document.addEventListener(
     'keydown',
     (e) => {
@@ -75,39 +75,42 @@ const InformationDialog = ({ dialogRef, avoidEscapeClose, headerText, innerText,
   const { t } = useTranslation();
 
   useEffect(() => {
-    _handleAvoidEscapeClosing(avoidEscapeClose);
+    handleAvoidEscapeClosing(avoidEscapeClose);
   });
 
-  const _onClose = () => {
-    onClose && onClose();
+  const onCloseCustom = useCallback(() => {
+    if (onClose || typeof onClose === 'function') {
+      onClose();
+    }
+
     if (dialogRef.current) {
       dialogRef.current.close();
     }
-  };
+  }, [dialogRef, onClose]);
 
-  const _getFooter = () => {
+  const getFooter = useCallback(() => {
     return (
       <FlexBox alignItems={FlexBoxAlignItems.Center} direction={FlexBoxDirection.RowReverse} style={spacing.sapUiTinyMargin}>
-        <Button design={ButtonDesign.Transparent} onClick={_onClose}>
+        <Button design={ButtonDesign.Transparent} onClick={onCloseCustom}>
           {closeButtonText ? closeButtonText : t('app.generics.close')}
         </Button>
       </FlexBox>
     );
-  };
+  }, [onCloseCustom, closeButtonText, t]);
 
-  const _getHeader = () => {
+  const getHeader = useCallback(() => {
     return (
       <FlexBox alignItems={FlexBoxAlignItems.Center} justifyContent={FlexBoxJustifyContent.Center} style={spacing.sapUiContentPadding}>
-        {_getHeaderIcon(type)}
+        {getHeaderIcon(type)}
         <Text tooltip={headerText} wrapping style={{ ...spacing.sapUiTinyMarginBegin, ...style.text }}>
           {headerText}
         </Text>
       </FlexBox>
     );
-  };
+  }, [headerText, type]);
 
   return (
-    <Dialog ref={dialogRef} slot="header" header={_getHeader()} footer={_getFooter()} onAfterClose={_onClose} data-testid="information-dialog">
+    <Dialog ref={dialogRef} slot="header" header={getHeader()} footer={getFooter()} onAfterClose={onCloseCustom} data-testid="information-dialog">
       <div style={{ ...spacing.sapUiContentPadding }}>
         <FlexBox direction={FlexBoxDirection.Column}>
           {innerText ? (
