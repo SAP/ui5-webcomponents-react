@@ -15,7 +15,7 @@ describe('InformationDialog.js Test Suite', () => {
   test('should render child when not inner text is passed', () => {
     const dialog = (
       <InformationDialog avoidEscapeClose type={Type.Warning} headerText={'Header text'} closeButtonText={'Close'}>
-        <div data-testid="information-dialog-child"></div>
+        <div data-testid="information-dialog-child" />
       </InformationDialog>
     );
     render(dialog);

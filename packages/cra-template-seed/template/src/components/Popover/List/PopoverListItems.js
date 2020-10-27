@@ -3,7 +3,7 @@ import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem'
 import React from 'react';
 import PopoverInfo from '../Info/PopoverInfo';
 
-export default function PopoverListItems({ popoverRef, title, items }) {
+const PopoverListItems = ({ popoverRef, title, items }) => {
   return (
     <div data-testid="popoverListItems-wrapper">
       <PopoverInfo popoverRef={popoverRef} title={title}>
@@ -19,4 +19,6 @@ export default function PopoverListItems({ popoverRef, title, items }) {
       </PopoverInfo>
     </div>
   );
-}
+};
+
+export default PopoverListItems;

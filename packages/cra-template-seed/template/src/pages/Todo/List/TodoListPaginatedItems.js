@@ -11,7 +11,7 @@ import Constants from '../../../util/Constants';
 import BrowserProvider from '../../../util/browser/BrowserProvider';
 import APIProvider from '../../../util/api/url/APIProvider';
 
-export default function TodoListPaginatedItems() {
+const TodoListPaginatedItems = () => {
   const history = useHistory();
   const [page, setPage] = useState(0);
   const { resolvedData, isLoading } = usePaginatedGet(Constants.REACT_QUERY.KEYS.RQ_GET_TODO_LIST, page, APIProvider.getUrl('GET_TODO_LIST'));
@@ -39,4 +39,6 @@ export default function TodoListPaginatedItems() {
       )}
     </div>
   );
-}
+};
+
+export default TodoListPaginatedItems;

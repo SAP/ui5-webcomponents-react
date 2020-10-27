@@ -16,7 +16,7 @@ const onSubmitEditForm = (values, actions) => {
   actions.setSubmitting(false);
 };
 
-export default function TodoEdit({ match }) {
+const TodoEdit = ({ match }) => {
   const { data, isLoading, isSuccess } = useGet(Constants.REACT_QUERY.KEYS.GET_TODO_BY_ID, APIProvider.getUrl('GET_TODO_BY_ID', [{ value: match.params.id }]));
 
   return (
@@ -29,4 +29,6 @@ export default function TodoEdit({ match }) {
       </CenteredContent>
     </>
   );
-}
+};
+
+export default TodoEdit;

@@ -1,5 +1,5 @@
 export default {
-  getUrl(urls, key, replaceOptions) {
+  getUrl: (urls, key, replaceOptions) => {
     let url = urls[key];
 
     if (!url) {

@@ -16,47 +16,47 @@ const REQUEST = {
   DELETE: 'delete',
 };
 
-const _fetchData = (operation, url, dataParam, config) => {
+const fetchData = (operation, url, dataParam, config) => {
   return async () => {
     const res = await Request[operation](url, dataParam, config);
     return res.data;
   };
 };
 
-const _useOperation = (reactQueryKey, operation, url, dataParam, config) => {
-  return useQuery(reactQueryKey, _fetchData(operation, url, dataParam, config), STALE_TIME);
+const useOperation = (reactQueryKey, operation, url, dataParam, config) => {
+  return useQuery(reactQueryKey, fetchData(operation, url, dataParam, config), STALE_TIME);
 };
 
-const _usePaginatedOperation = (reactQueryKey, pageDependency, operation, url, dataParam, config) => {
+const usePaginatedOperation = (reactQueryKey, pageDependency, operation, url, dataParam, config) => {
   const parameters = {
     params: {
       ...dataParam,
       page: pageDependency,
     },
   };
-  return usePaginatedQuery([reactQueryKey, pageDependency], _fetchData(operation, url, parameters, config), STALE_TIME);
+  return usePaginatedQuery([reactQueryKey, pageDependency], fetchData(operation, url, parameters, config), STALE_TIME);
 };
 
-export function useGet(reactQueryKey, url, config) {
-  return _useOperation(reactQueryKey, REQUEST.GET, url, null, config ? config : null);
-}
+export const useGet = (reactQueryKey, url, config) => {
+  return useOperation(reactQueryKey, REQUEST.GET, url, null, config ? config : null);
+};
 
-export function usePaginatedGet(reactQueryKey, pageDependency, url, config) {
-  return _usePaginatedOperation(reactQueryKey, pageDependency, REQUEST.GET, url, null, config ? config : null);
-}
+export const usePaginatedGet = (reactQueryKey, pageDependency, url, config) => {
+  return usePaginatedOperation(reactQueryKey, pageDependency, REQUEST.GET, url, null, config ? config : null);
+};
 
-export function usePost(reactQueryKey, url, dataParam, config) {
-  return _useOperation(reactQueryKey, REQUEST.POST, url, dataParam ? dataParam : null, config ? config : null);
-}
+export const usePost = (reactQueryKey, url, dataParam, config) => {
+  return useOperation(reactQueryKey, REQUEST.POST, url, dataParam ? dataParam : null, config ? config : null);
+};
 
-export function usePut(reactQueryKey, url, dataParam, config) {
-  return _useOperation(reactQueryKey, REQUEST.PUT, url, dataParam ? dataParam : null, config ? config : null);
-}
+export const usePut = (reactQueryKey, url, dataParam, config) => {
+  return useOperation(reactQueryKey, REQUEST.PUT, url, dataParam ? dataParam : null, config ? config : null);
+};
 
-export function usePatch(reactQueryKey, url, dataParam, config) {
-  return _useOperation(reactQueryKey, REQUEST.PATCH, url, dataParam ? dataParam : null, config ? config : null);
-}
+export const usePatch = (reactQueryKey, url, dataParam, config) => {
+  return useOperation(reactQueryKey, REQUEST.PATCH, url, dataParam ? dataParam : null, config ? config : null);
+};
 
-export function useDelete(reactQueryKey, url, config) {
-  return _useOperation(reactQueryKey, REQUEST.DELETE, url, null, config ? config : null);
-}
+export const useDelete = (reactQueryKey, url, config) => {
+  return useOperation(reactQueryKey, REQUEST.DELETE, url, null, config ? config : null);
+};

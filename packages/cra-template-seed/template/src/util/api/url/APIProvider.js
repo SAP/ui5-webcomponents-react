@@ -7,7 +7,7 @@ const URLs = {
 };
 
 export default {
-  getUrl(key, replaceOptions) {
+  getUrl: (key, replaceOptions) => {
     return URLProvider.getUrl(URLs, key, replaceOptions);
   },
 };

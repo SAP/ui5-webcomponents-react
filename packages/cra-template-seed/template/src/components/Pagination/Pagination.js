@@ -28,13 +28,13 @@ export const Pagination = ({ shouldDisableAll, numberOfElements, totalPages, sel
   const hasNextPage = selectedPage < totalPages - 1;
   const hasMoreNextPages = selectedPage < totalPages - 2;
 
-  function setPreviousPage() {
+  const setPreviousPage = () => {
     if (!disablePrevious) setPage(selectedPage - 1);
-  }
+  };
 
-  function setNextPage() {
+  const setNextPage = () => {
     if (!disableNext) setPage(selectedPage + 1);
-  }
+  };
 
   return (
     <FlexBox data-testid="pagination-wrapper" alignItems={FlexBoxAlignItems.Start} style={style} justifyContent={FlexBoxJustifyContent.Center}>

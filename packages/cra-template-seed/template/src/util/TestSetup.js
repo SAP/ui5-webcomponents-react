@@ -1,8 +1,7 @@
 import React from 'react';
 
 import { render as rtlRender } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
-import { Router } from 'react-router-dom';
+import { BrowserRouter, Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';

@@ -10,7 +10,7 @@ import Routes from './routes/Routes';
 
 import './App.css';
 
-function App() {
+const App = () => {
   const { t } = useTranslation();
 
   return (
@@ -23,6 +23,6 @@ function App() {
       </ErrorBoundary>
     </BrowserRouter>
   );
-}
+};
 
 export default App;

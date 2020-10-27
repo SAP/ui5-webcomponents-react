@@ -8,7 +8,7 @@ import { spacing } from '@ui5/webcomponents-react-base';
 
 import i18n from '../../util/i18n';
 
-export default function NavBack({ text = i18n.t('components.navback.text'), icon = 'nav-back', design = ButtonDesign.Transparent, disabled = false }) {
+const NavBack = ({ text = i18n.t('components.navback.text'), icon = 'nav-back', design = ButtonDesign.Transparent, disabled = false }) => {
   const history = useHistory();
 
   return (
@@ -18,7 +18,9 @@ export default function NavBack({ text = i18n.t('components.navback.text'), icon
       </Button>
     </FlexBox>
   );
-}
+};
+
+export default NavBack;
 
 export const NavBackIcon = {
   NONE: '',

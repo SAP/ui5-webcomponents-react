@@ -9,7 +9,7 @@ import ComponentWithAuthorizationRestriction from '../../../auth/ComponentWithAu
 import TodoListPaginatedItems from './TodoListPaginatedItems';
 import CenteredContent from '../../../components/Layout/CenteredContent';
 
-export default function TodoList() {
+const TodoList = () => {
   const history = useHistory();
 
   return (
@@ -42,4 +42,6 @@ export default function TodoList() {
       <TodoListPaginatedItems history={history} />
     </CenteredContent>
   );
-}
+};
+
+export default TodoList;

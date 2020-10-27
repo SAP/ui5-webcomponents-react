@@ -58,7 +58,7 @@ describe('Pagination.js Test Suite', () => {
 
   test('should increment selected page when nextPage is selected', async () => {
     let selectedPageCount = 3;
-    let setSelectedPageCount = (params) => {
+    const setSelectedPageCount = (params) => {
       selectedPageCount = params;
     };
     render(
@@ -80,7 +80,7 @@ describe('Pagination.js Test Suite', () => {
 
   test('should decrease selected page when nextPage is selected', async () => {
     let selectedPageCount = 3;
-    let setSelectedPageCount = (params) => {
+    const setSelectedPageCount = (params) => {
       selectedPageCount = params;
     };
     render(
