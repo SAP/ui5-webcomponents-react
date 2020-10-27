@@ -3,8 +3,6 @@ module.exports = {
     browser: true
   },
   extends: [
-    'plugin:@typescript-eslint/recommended',
-    'plugin:@typescript-eslint/recommended-requiring-type-checking',
     'plugin:react/recommended',
     'plugin:import/errors',
     'plugin:import/warnings',
@@ -19,60 +17,13 @@ module.exports = {
     project: 'tsconfig.json',
     tsconfigRootDir: __dirname
   },
-  plugins: ['@typescript-eslint', 'prefer-arrow', 'react-hooks'],
+  plugins: ['prefer-arrow', 'react-hooks'],
   settings: {
     react: {
       version: 'detect'
     }
   },
   rules: {
-    '@typescript-eslint/adjacent-overload-signatures': 'error',
-    '@typescript-eslint/array-type': 'error',
-    '@typescript-eslint/ban-types': 'error',
-    '@typescript-eslint/ban-ts-comment': 'warn',
-    '@typescript-eslint/naming-convention': 'off',
-    '@typescript-eslint/consistent-type-assertions': 'error',
-    '@typescript-eslint/explicit-member-accessibility': [
-      'off',
-      {
-        accessibility: 'explicit'
-      }
-    ],
-    '@typescript-eslint/indent': 'off',
-    '@typescript-eslint/member-delimiter-style': [
-      'error',
-      {
-        multiline: {
-          delimiter: 'semi',
-          requireLast: true
-        },
-        singleline: {
-          delimiter: 'semi',
-          requireLast: false
-        }
-      }
-    ],
-    '@typescript-eslint/member-ordering': 'off',
-    '@typescript-eslint/no-empty-interface': 'error',
-    '@typescript-eslint/no-explicit-any': 'off',
-    '@typescript-eslint/no-misused-new': 'error',
-    '@typescript-eslint/no-namespace': 'error',
-    '@typescript-eslint/no-parameter-properties': 'off',
-    '@typescript-eslint/no-use-before-define': 'off',
-    '@typescript-eslint/no-var-requires': 'error',
-    '@typescript-eslint/no-unsafe-member-access': 'off',
-    '@typescript-eslint/no-unsafe-assignment': 'off',
-    '@typescript-eslint/no-unsafe-return': 'off',
-    '@typescript-eslint/no-unsafe-call': 'off',
-    '@typescript-eslint/prefer-for-of': 'error',
-    '@typescript-eslint/prefer-function-type': 'error',
-    '@typescript-eslint/prefer-namespace-keyword': 'error',
-    '@typescript-eslint/quotes': 'off',
-    '@typescript-eslint/semi': ['error', 'always'],
-    '@typescript-eslint/space-within-parens': ['off', 'never'],
-    '@typescript-eslint/triple-slash-reference': 'error',
-    '@typescript-eslint/type-annotation-spacing': 'off',
-    '@typescript-eslint/unified-signatures': 'error',
     'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
     'react-hooks/exhaustive-deps': 'warn', // Checks effect dependencies
     camelcase: [
@@ -136,5 +87,65 @@ module.exports = {
       }
     ],
     'import/no-duplicates': 2
-  }
+  },
+  overrides: [
+    {
+      files: ['*.ts', '*.tsx'],
+      plugins: ['@typescript-eslint'],
+      extends: [
+        'plugin:@typescript-eslint/eslint-recommended',
+        'plugin:@typescript-eslint/recommended',
+        'plugin:@typescript-eslint/recommended-requiring-type-checking'
+      ],
+      rules: {
+        '@typescript-eslint/adjacent-overload-signatures': 'error',
+        '@typescript-eslint/array-type': 'error',
+        '@typescript-eslint/ban-types': 'error',
+        '@typescript-eslint/ban-ts-comment': 'warn',
+        '@typescript-eslint/naming-convention': 'off',
+        '@typescript-eslint/consistent-type-assertions': 'error',
+        '@typescript-eslint/explicit-member-accessibility': [
+          'off',
+          {
+            accessibility: 'explicit'
+          }
+        ],
+        '@typescript-eslint/indent': 'off',
+        '@typescript-eslint/member-delimiter-style': [
+          'error',
+          {
+            multiline: {
+              delimiter: 'semi',
+              requireLast: true
+            },
+            singleline: {
+              delimiter: 'semi',
+              requireLast: false
+            }
+          }
+        ],
+        '@typescript-eslint/member-ordering': 'off',
+        '@typescript-eslint/no-empty-interface': 'error',
+        '@typescript-eslint/no-explicit-any': 'off',
+        '@typescript-eslint/no-misused-new': 'error',
+        '@typescript-eslint/no-namespace': 'error',
+        '@typescript-eslint/no-parameter-properties': 'off',
+        '@typescript-eslint/no-use-before-define': 'off',
+        '@typescript-eslint/no-var-requires': 'error',
+        '@typescript-eslint/no-unsafe-member-access': 'off',
+        '@typescript-eslint/no-unsafe-assignment': 'off',
+        '@typescript-eslint/no-unsafe-return': 'off',
+        '@typescript-eslint/no-unsafe-call': 'off',
+        '@typescript-eslint/prefer-for-of': 'error',
+        '@typescript-eslint/prefer-function-type': 'error',
+        '@typescript-eslint/prefer-namespace-keyword': 'error',
+        '@typescript-eslint/quotes': 'off',
+        '@typescript-eslint/semi': ['error', 'always'],
+        '@typescript-eslint/space-within-parens': ['off', 'never'],
+        '@typescript-eslint/triple-slash-reference': 'error',
+        '@typescript-eslint/type-annotation-spacing': 'off',
+        '@typescript-eslint/unified-signatures': 'error'
+      }
+    }
+  ]
 };
