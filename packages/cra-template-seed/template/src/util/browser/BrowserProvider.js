@@ -10,8 +10,10 @@ const URLs = {
   ANY: '/*',
 };
 
+const getUrl = (key, replaceOptions) => {
+  return URLProvider.getUrl(URLs, key, replaceOptions);
+};
+
 export default {
-  getUrl: (key, replaceOptions) => {
-    return URLProvider.getUrl(URLs, key, replaceOptions);
-  },
+  getUrl,
 };

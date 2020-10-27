@@ -6,8 +6,10 @@ const URLs = {
   GET_TODO_LIST: '/v1/todo/all',
 };
 
+const getUrl = (key, replaceOptions) => {
+  return URLProvider.getUrl(URLs, key, replaceOptions);
+};
+
 export default {
-  getUrl: (key, replaceOptions) => {
-    return URLProvider.getUrl(URLs, key, replaceOptions);
-  },
+  getUrl,
 };
