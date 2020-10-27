@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import { Option } from '@ui5/webcomponents-react/lib/Option';
 import { Select } from '@ui5/webcomponents-react/lib/Select';
 import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
-import InformationDialog from '../InformationDialog/InformationDialog';
 import Constants from '../../util/Constants';
 
 const style = {
@@ -21,7 +20,7 @@ const themeOptions = [
   { value: 'sap_fiori_3_hcw', title: 'shell.button.user.settings.item.themeSwitch.option.highContrastWhite' },
 ];
 
-const ThemeSwitch = ({ dialogRef, storedTheme = localStorage.getItem(Constants.SEED.SELECTED_THEME) }) => {
+const ThemeSwitch = ({ storedTheme = localStorage.getItem(Constants.SEED.SELECTED_THEME) }) => {
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -34,18 +33,16 @@ const ThemeSwitch = ({ dialogRef, storedTheme = localStorage.getItem(Constants.S
   };
 
   return (
-    <InformationDialog dialogRef={dialogRef} headerText={t('shell.button.user.settings.item.themeSwitch.title')}>
-      <Select onChange={onChange} style={style.select} data-testid="language-switch-wrapper">
-        {themeOptions &&
-          themeOptions.map((option) => {
-            return (
-              <Option key={option.value} data-value={option.value} selected={option.value === storedTheme}>
-                {t(option.title)}
-              </Option>
-            );
-          })}
-      </Select>
-    </InformationDialog>
+    <Select onChange={onChange} style={style.select} data-testid="language-switch-wrapper">
+      {themeOptions &&
+        themeOptions.map((option) => {
+          return (
+            <Option key={option.value} data-value={option.value} selected={option.value === storedTheme}>
+              {t(option.title)}
+            </Option>
+          );
+        })}
+    </Select>
   );
 };
 

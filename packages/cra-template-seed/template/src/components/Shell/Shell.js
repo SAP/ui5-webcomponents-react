@@ -25,18 +25,17 @@ const Shell = ({ title, ...props }) => {
   const { t } = useTranslation();
   const history = useHistory();
   const popoverConfigItemsRef = useRef(null);
-  const themeSwitchRef = useRef(null);
   const popoverItems = useMemo(
     () => [
       {
-        children: t('shell.button.user.settings.item.languageSwitch'),
+        description: t('shell.button.user.settings.item.languageSwitch'),
         icon: 'user-settings',
         onClick: () => alert('activate language switch dialog'),
       },
       {
-        children: t('shell.button.user.settings.item.themeSwitch'),
+        description: t('shell.button.user.settings.item.themeSwitch'),
         icon: 'customize',
-        onClick: () => themeSwitchRef.current.open(),
+        children: <ThemeSwitch />,
       },
     ],
     [t],
@@ -56,7 +55,6 @@ const Shell = ({ title, ...props }) => {
       />
       <div data-testid="emptySpace-wrapper" style={style.emptySpace} />
       <PopoverListItems popoverRef={popoverConfigItemsRef} title={t('shell.button.user.settings')} items={popoverItems} />
-      <ThemeSwitch dialogRef={themeSwitchRef} />
     </>
   );
 };

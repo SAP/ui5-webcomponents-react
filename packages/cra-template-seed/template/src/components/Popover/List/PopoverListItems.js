@@ -1,7 +1,13 @@
+import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
+import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
+import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJustifyContent';
 import { List } from '@ui5/webcomponents-react/lib/List';
-import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
+import { CustomListItem } from '@ui5/webcomponents-react/lib/CustomListItem';
+import { Text } from '@ui5/webcomponents-react/lib/Text';
+import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import React from 'react';
 import PopoverInfo from '../Info/PopoverInfo';
+import { spacing } from '@ui5/webcomponents-react-base';
 
 const PopoverListItems = ({ popoverRef, title, items }) => {
   return (
@@ -10,9 +16,11 @@ const PopoverListItems = ({ popoverRef, title, items }) => {
         <List data-testid="popoverListItems-listOfElements-wrapper">
           {items.map((item, index) => {
             return (
-              <StandardListItem key={index} selected={item.selected} info={item.info} icon={item.icon} description={item.description} onClick={item.onClick}>
-                {item.children}
-              </StandardListItem>
+              <CustomListItem key={index} onClick={item.onClick}>
+                <Icon style={spacing.sapUiTinyMarginBeginEnd} name={item.icon} />
+                <Text style={spacing.sapUiTinyMarginEnd}>{item.description}</Text>
+                <div>{item.children}</div>
+              </CustomListItem>
             );
           })}
         </List>
