@@ -22,7 +22,7 @@ const styles = {
   }
 };
 
-const useStyles = createUseStyles(styles);
+const useStyles = createUseStyles(styles, { name: 'Resizer' });
 
 export const ColumnHeaderContainer = (props) => {
   const {
