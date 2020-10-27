@@ -1,4 +1,4 @@
-export default {
+const CONSTANTS = {
   REACT_QUERY: {
     KEYS: {
       RQ_GET_USER_LOGGED: 'RQ_GET_USER_LOGGED',
@@ -10,3 +10,5 @@ export default {
     SELECTED_THEME: 'SELECTED_THEME',
   },
 };
+
+export default CONSTANTS;
