@@ -13,15 +13,12 @@
       "husky": "^4.2.5",
       "i18next": "^19.7.0",
       "i18next-browser-languagedetector": "^6.0.1",
-      "react": "^16.13.1",
       "react-app-polyfill": "^1.0.6",
-      "react-dom": "^16.13.1",
       "react-helmet": "^6.1.0",
       "react-i18next": "^11.7.2",
       "react-query": "^2.25.2",
       "react-router-dom": "^5.2.0",
       "react-query-devtools": "^2.6.0",
-      "react-scripts": "4.0.0",
       "formik": "^2.1.7",
       "yup": "^0.29.3"
     },
@@ -42,7 +39,6 @@
       "prettier": "^2.1.2"
     },
     "scripts": {
-      "build": "react-scripts build",
       "mock": "env-cmd -f .env.development npm-run-all --parallel start:mock start:react",
       "start": "env-cmd -f .env.production npm-run-all --parallel start:react",
       "start:react": "react-scripts start",
@@ -53,8 +49,7 @@
       "lint": "eslint --quiet .",
       "lint:fix": "eslint . --fix",
       "prettier": "prettier --config .prettierrc --check \"src/**/*.js\"",
-      "prettier:fix": "prettier --config .prettierrc --write \"src/**/*.js\"",
-      "eject": "react-scripts eject"
+      "prettier:fix": "prettier --config .prettierrc --write \"src/**/*.js\""
     },
     "browserslist": {
       "production": [

@@ -5,6 +5,9 @@ import { usePaginatedGet } from '../../../hooks/useRequest';
 import { List } from '@ui5/webcomponents-react/lib/List';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
 import { Spinner } from '@ui5/webcomponents-react/lib/Spinner';
+import { Title } from '@ui5/webcomponents-react/lib/Title';
+import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
+
 import { Pagination } from '../../../components/Pagination/Pagination';
 
 import Constants from '../../../util/Constants';
@@ -26,7 +29,7 @@ const TodoListPaginatedItems = () => {
         <Spinner />
       ) : (
         <>
-          <h3>{`Records (${resolvedData.numberOfElements} / ${resolvedData.totalElements})`}</h3>
+          <Title level={TitleLevel.H3}>{`Records (${resolvedData.numberOfElements} / ${resolvedData.totalElements})`}</Title>
           <List onItemClick={(e) => redirectToEditPage(e)}>
             {resolvedData.content.map((todo, index) => (
               <StandardListItem data-id={todo.id} key={index} iconEnd={false} info={todo.description} infoState="None" selected={false}>
