@@ -92,6 +92,11 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
   const [headerState, setHeaderState] = useState<HEADER_STATES>(
     alwaysShowContentHeader ? HEADER_STATES.VISIBLE_PINNED : HEADER_STATES.AUTO
   );
+  const headerStateRef = React.useRef(headerState);
+  const setHeaderStateRef = (data) => {
+    headerStateRef.current = data;
+    setHeaderState(data);
+  };
 
   // observe heights of header parts
   const { topHeaderHeight, headerContentHeight } = useObserveHeights(
@@ -114,25 +119,19 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
       }
       const shouldHideHeader = srcElement.icon === 'slim-arrow-up';
 
-      let headerStateResetOnScroll = false;
-
-      setHeaderState((oldState) => {
+      setHeaderStateRef((oldState) => {
         if (oldState === HEADER_STATES.VISIBLE_PINNED || oldState === HEADER_STATES.HIDDEN_PINNED) {
           return shouldHideHeader ? HEADER_STATES.HIDDEN_PINNED : HEADER_STATES.VISIBLE_PINNED;
         }
-        headerStateResetOnScroll = true;
         return shouldHideHeader ? HEADER_STATES.HIDDEN : HEADER_STATES.VISIBLE;
       });
-
-      if (headerStateResetOnScroll) {
-        dynamicPageRef.current.addEventListener(
-          'scroll',
-          () => {
-            setHeaderState(HEADER_STATES.AUTO);
-          },
-          { once: true }
-        );
-      }
+      dynamicPageRef.current.addEventListener(
+        'scroll',
+        () => {
+          if (headerStateRef.current !== HEADER_STATES.VISIBLE_PINNED) setHeaderStateRef(HEADER_STATES.AUTO);
+        },
+        { once: true }
+      );
     },
     [dynamicPageRef, classes.headerCollapsed, headerContentHeight, topHeaderHeight]
   );
@@ -154,12 +153,12 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
   const handleHeaderPinnedChange = useCallback(
     (headerWillPin) => {
       if (headerWillPin) {
-        setHeaderState(HEADER_STATES.VISIBLE_PINNED);
+        setHeaderStateRef(HEADER_STATES.VISIBLE_PINNED);
       } else {
-        setHeaderState(HEADER_STATES.AUTO);
+        setHeaderStateRef(HEADER_STATES.AUTO);
       }
     },
-    [setHeaderState]
+    [setHeaderStateRef]
   );
   return (
     <div
