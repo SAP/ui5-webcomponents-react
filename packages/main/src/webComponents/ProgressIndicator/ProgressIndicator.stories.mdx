@@ -1,8 +1,8 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { ProgressIndicator } from '@ui5/webcomponents-react/lib/ProgressIndicator';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
-import { DocsHeader } from '@shared/stories/DocsHeader';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
@@ -14,7 +14,12 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
   }}
   args={{
     valueState: ValueState.None,
-    value: 50
+    value: 50,
+    style: {},
+    className: '',
+    tooltip: '',
+    slot: '',
+    ref: null
   }}
 />
 
@@ -29,3 +34,12 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 </Canvas>
 
 <ArgsTable story="." />
+<div style={{ fontFamily: 'var(--sapFontFamily)', fontSize: 'var(--sapFontSize)', color: 'var(--sapTextColor)' }}>
+  <h3>Responsive Behavior</h3>
+  You can change the size of the Rating Indicator by changing its <code>width</code> or <code>height</code> CSS properties.{' '}
+  <br />
+  Example:
+  <code>&lt;ProgressIndicator style=&#123;&#123;height: '2rem', width: '6rem'&#125;&#125;>&lt;/ProgressIndicator></code>
+  For the
+  <code>ProgressIndicator</code>
+</div>

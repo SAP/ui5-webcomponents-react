@@ -13,7 +13,7 @@ const styles = {
   }
 };
 
-const useStyles = createUseStyles(styles);
+const useStyles = createUseStyles(styles, {name: "MyCustomElement"});
 
 export const MyCustomElement = () => {
   const classes = useStyles();

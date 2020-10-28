@@ -8,11 +8,11 @@ export interface SideNavigationPropTypes extends WithWebComponentPropTypes {
    */
   collapsed?: boolean;
   /**
-   * Defines the main items of the <code>SideNavigation</code>. Use the <code>SideNavigation-item</code> component for the top-level items, and the <code>SideNavigation-subitem</code> component for second-level items, nested inside the items.
+   * Defines the main items of the <code>SideNavigation</code>. Use the <code>SideNavigationItem</code> component for the top-level items, and the <code>SideNavigationSubItem</code> component for second-level items, nested inside the items.
    */
   children?: unknown;
   /**
-   * Defines the fixed items at the bottom of the <code>SideNavigation</code>. Use the <code>SideNavigation-item</code> component for the fixed items, and optionally the <code>SideNavigation-subitem</code> component to provide second-level items inside them.<br/><br/>
+   * Defines the fixed items at the bottom of the <code>SideNavigation</code>. Use the <code>SideNavigationItem</code> component for the fixed items, and optionally the <code>SideNavigationSubItem</code> component to provide second-level items inside them.<br/><br/>
    *
    * <b>Note:</b> In order to achieve the best user experience, it is recommended that you keep the fixed items "flat" (do not pass sub-items)
    */
