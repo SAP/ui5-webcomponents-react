@@ -1,17 +1,14 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { NotificationListGroupItem } from '@ui5/webcomponents-react/lib/NotificationListGroupItem';
+import { Priority } from '@ui5/webcomponents-react/lib/Priority';
+import { NotificationOverflowAction } from '@ui5/webcomponents-react/lib/NotificationOverflowAction';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 import { Fragment } from 'react';
 import { NotificationListItem } from '@ui5/webcomponents-react/lib/NotificationListItem';
 import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
-import { List } from '@ui5/webcomponents-react/lib/List';
-import { Priority } from '@ui5/webcomponents-react/lib/Priority';
-import { NotificationOverflowAction } from '@ui5/webcomponents-react/lib/NotificationOverflowAction';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
-import '@ui5/webcomponents-icons/dist/icons/accept';
-import '@ui5/webcomponents-icons/dist/icons/message-error';
-import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="UI5 Web Components / NotificationListGroupItem"
@@ -19,13 +16,20 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
   subcomponents={{ NotificationOverflowAction }}
   argTypes={{
     ...createSelectArgTypes({ priority: Priority }),
-    ...DocsCommonProps
+    ...DocsCommonProps,
+    children: { control: { disable: true } },
+    actions: { control: { disable: true } }
   }}
   args={{
-    priority: Priority.High,
     showClose: true,
     showCounter: true,
-    heading: 'Orders'
+    heading: 'Orders',
+    priority: Priority.None,
+    style: {},
+    className: '',
+    tooltip: '',
+    slot: '',
+    ref: null
   }}
 />
 
@@ -33,8 +37,8 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Canvas>
   <Story name="Default">
-    {(args) => (
-      <List>
+    {(args) => {
+      return (
         <NotificationListGroupItem
           {...args}
           actions={
@@ -99,9 +103,13 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
             nec elementum lectus turpis at nunc.
           </NotificationListItem>
         </NotificationListGroupItem>
-      </List>
-    )}
+      );
+    }}
   </Story>
 </Canvas>
 
 <ArgsTable story="." />
+<div style={{ fontFamily: 'var(--sapFontFamily)', fontSize: 'var(--sapFontSize)', color: 'var(--sapTextColor)' }}>
+  <h3>Usage</h3>
+  The component can be used in a standard <code>List</code>.
+</div>

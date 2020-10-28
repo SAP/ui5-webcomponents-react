@@ -6,7 +6,6 @@ exports[`NotificationListItem Basic Test (generated) 1`] = `
     heading="My Notification"
     priority="High"
     show-close="true"
-    wrap="false"
   >
     <ui5-notification-overflow-action
       design="Transparent"
