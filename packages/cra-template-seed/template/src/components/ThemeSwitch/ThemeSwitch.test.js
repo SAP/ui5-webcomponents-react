@@ -10,7 +10,7 @@ describe('ThemeSwitch.js Test Suite', () => {
   test('Should render', () => {
     const dialog = <ThemeSwitch />;
     render(dialog);
-    const infoDialog = screen.getByTestId('language-switch-wrapper');
+    const infoDialog = screen.getByTestId('theme-switch-wrapper');
     expect(infoDialog).toBeInTheDocument();
   });
 

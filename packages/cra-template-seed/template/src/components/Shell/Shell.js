@@ -9,6 +9,7 @@ import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
 import { getUrl } from '../../util/browser/BrowserProvider';
 import PopoverListItems from '../Popover/List/PopoverListItems';
 import ThemeSwitch from '../ThemeSwitch/ThemeSwitch';
+import LanguageSwitch from '../LanguageSwitch/LanguageSwitch';
 
 const style = {
   shell: {
@@ -30,7 +31,7 @@ const Shell = ({ title, ...props }) => {
       {
         description: t('shell.button.user.settings.item.languageSwitch'),
         icon: 'user-settings',
-        onClick: () => alert('activate language switch dialog'),
+        children: <LanguageSwitch />,
       },
       {
         description: t('shell.button.user.settings.item.themeSwitch'),

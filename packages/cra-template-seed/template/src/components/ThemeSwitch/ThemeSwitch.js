@@ -33,7 +33,7 @@ const ThemeSwitch = ({ storedTheme = localStorage.getItem(Constants.SEED.SELECTE
   };
 
   return (
-    <Select onChange={onChange} style={style.select} data-testid="language-switch-wrapper">
+    <Select onChange={onChange} style={style.select} data-testid="theme-switch-wrapper">
       {themeOptions &&
         themeOptions.map((option) => {
           return (
