@@ -118,17 +118,19 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
         srcElement = element;
       }
       const shouldHideHeader = srcElement.icon === 'slim-arrow-up';
-
+      let headerStateResetOnScroll = false;
       setHeaderStateRef((oldState) => {
         if (oldState === HEADER_STATES.VISIBLE_PINNED || oldState === HEADER_STATES.HIDDEN_PINNED) {
           return shouldHideHeader ? HEADER_STATES.HIDDEN_PINNED : HEADER_STATES.VISIBLE_PINNED;
         }
+        headerStateResetOnScroll = true;
         return shouldHideHeader ? HEADER_STATES.HIDDEN : HEADER_STATES.VISIBLE;
       });
       dynamicPageRef.current.addEventListener(
         'scroll',
         () => {
-          if (headerStateRef.current !== HEADER_STATES.VISIBLE_PINNED) setHeaderStateRef(HEADER_STATES.AUTO);
+          if (headerStateRef.current !== HEADER_STATES.VISIBLE_PINNED && headerStateResetOnScroll)
+            setHeaderStateRef(HEADER_STATES.AUTO);
         },
         { once: true }
       );
