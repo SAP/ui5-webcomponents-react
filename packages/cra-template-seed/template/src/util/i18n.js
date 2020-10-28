@@ -9,7 +9,7 @@ import translationPT from '../locales/pt/translation.json';
 const SUPPORTED_LANGUAGES = {
   en: {
     translation: translationEN,
-    code: 'en',
+    code: 'en-US',
     textKey: 'shell.button.user.settings.item.languageSwitch.en',
   },
   pt: {

@@ -22,8 +22,8 @@ const LanguageSwitch = () => {
     <Select onChange={onChange} style={style.select} data-testid="language-switch-wrapper">
       {getSupportedLanguageResources().map((option) => {
         return (
-          <Option key={option.code} data-code={option.code} selected={option.code === i18n.language}>
-            {t(option.textKey)}
+          <Option data-testid="language-switch-option-wrapper" key={option.code} data-code={option.code} selected={option.code === i18n.language}>
+            {`${t(option.textKey)} - ${option.code}`}
           </Option>
         );
       })}

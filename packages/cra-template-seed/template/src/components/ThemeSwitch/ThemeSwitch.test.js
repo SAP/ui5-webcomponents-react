@@ -8,10 +8,9 @@ import ThemeSwitch from './ThemeSwitch';
 
 describe('ThemeSwitch.js Test Suite', () => {
   test('Should render', () => {
-    const dialog = <ThemeSwitch />;
-    render(dialog);
-    const infoDialog = screen.getByTestId('theme-switch-wrapper');
-    expect(infoDialog).toBeInTheDocument();
+    render(<ThemeSwitch />);
+    const theme = screen.getByTestId('theme-switch-wrapper');
+    expect(theme).toBeInTheDocument();
   });
 
   test('Should load sap_fiori_3 as default theme', () => {
