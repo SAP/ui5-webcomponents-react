@@ -264,7 +264,6 @@ exports[`DynamicPage with content 1`] = `
       <section
         class="DynamicPageAnchorBar-anchorBarActionButton"
         role="navigation"
-        style="top: 0px;"
       >
         <ui5-button
           class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonExpandable "
@@ -1203,7 +1202,6 @@ exports[`DynamicPage without content 1`] = `
       <section
         class="DynamicPageAnchorBar-anchorBarActionButton"
         role="navigation"
-        style="top: 0px;"
       >
         <ui5-button
           class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonExpandable "
