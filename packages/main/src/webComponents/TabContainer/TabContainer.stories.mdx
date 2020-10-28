@@ -1,0 +1,175 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { TabContainer } from '@ui5/webcomponents-react/lib/TabContainer';
+import { TabLayout } from '@ui5/webcomponents-react/lib/TabLayout';
+import { TabContainerTabsPlacement } from '@ui5/webcomponents-react/lib/TabContainerTabsPlacement';
+import { Tab } from '@ui5/webcomponents-react/lib/Tab';
+import { SemanticColor } from '@ui5/webcomponents-react/lib/SemanticColor';
+import { TabSeparator } from '@ui5/webcomponents-react/lib/TabSeparator';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
+import '@ui5/webcomponents-icons/dist/icons/menu.js';
+import '@ui5/webcomponents-icons/dist/icons/activities.js';
+import '@ui5/webcomponents-icons/dist/icons/add.js';
+import '@ui5/webcomponents-icons/dist/icons/calendar.js';
+import '@ui5/webcomponents-icons/dist/icons/settings.js';
+import '@ui5/webcomponents-icons/dist/icons/sys-monitor.js';
+
+<Meta
+  title="UI5 Web Components / TabContainer"
+  component={TabContainer}
+  subcomponents={{ Tab, TabSeparator }}
+  argTypes={{
+    ...createSelectArgTypes({ tabLayout: TabLayout, tabsPlacement: TabContainerTabsPlacement }),
+    ...DocsCommonProps,
+    children: { control: { disable: true } },
+    overflowButton: { control: { disable: true } }
+  }}
+  args={{
+    tabLayout: TabLayout.Standard,
+    tabsPlacement: TabContainerTabsPlacement.Top,
+    style: {},
+    className: '',
+    tooltip: '',
+    slot: '',
+    ref: null
+  }}
+/>
+
+<DocsHeader />
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return (
+        <TabContainer {...args}>
+          <Tab text="Tab One" icon="menu" selected additionalText="5">
+            Content Tab 1
+          </Tab>
+          <Tab text="Tab Two" icon="activities" additionalText="20">
+            Content Tab 2
+          </Tab>
+          <Tab text="Tab Three" icon="add">
+            Content Tab 3
+          </Tab>
+          <Tab text="Tab Four" icon="employee">
+            Content Tab 4
+          </Tab>
+          <Tab text="Tab Five" icon="settings">
+            Content Tab 5
+          </Tab>
+        </TabContainer>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Default" />
+
+<div style={{ fontFamily: 'var(--sapFontFamily)', fontSize: 'var(--sapFontSize)', color: 'var(--sapTextColor)' }}>
+  <h3>Structure</h3>
+  The <code>TabContainer</code> can hold two types of entities:
+  <ul>
+    <li>
+      <code>Tab</code> - contains all the information on an item (text and icon)
+    </li>
+    <li>
+      <code>TabSeparator</code> - used to separate tabs with a vertical line
+    </li>
+  </ul>
+</div>
+
+<br />
+
+# Stories
+
+<br />
+
+## TabContainer with customizable Tab
+
+The <code>Tab</code> represents a selectable item inside a <code>TabContainer</code>. It defines both the item in the
+tab strip (top part of the <code>TabContainer</code>) and the content that is presented to the user once the tab is
+selected
+
+<Canvas>
+  <Story
+    name="with customizable Tab"
+    args={{
+      additionalText: '10',
+      disabled: false,
+      icon: 'sys-monitor',
+      selected: true,
+      semanticColor: SemanticColor.Positive,
+      text: 'Customizable Tab',
+      children: 'Tab Content'
+    }}
+    argTypes={{
+      additionalText: { description: `Represents the "additionalText" text, which is displayed in the tab filter.` },
+      disabled: { description: `Enabled items can be selected.` },
+      icon: {
+        description: `Defines the icon source URI to be displayed as graphical element within the <code>Tab</code>. The SAP-icons font provides numerous built-in icons. See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.`
+      },
+      selected: { description: `Specifies if the <code>Tab</code> is selected.` },
+      semanticColor: {
+        control: { type: 'radio', options: Object.values(SemanticColor) },
+        description: `Defines the <code>Tab</code> semantic color. <br><br> The color is applied to: <ul> <li>the <code>Tab</code> icon</li> <li>the <code>text</code> when <code>Tab</code> overflows</li> <li>the tab selection line</li> </ul><br/><br/>Available semantic colors are: <code>"Default"</code>, <code>"Neutral"</code>, <code>"Positive"</code>, <code>"Critical"</code> and <code>"Negative"</code>.<br/><br/><b>Note:</b> The color value depends on the current theme.`
+      },
+      stableDomRef: { description: `Defines the stable selector that you can use via getStableDomRef method.` },
+      text: { description: `The text to be displayed for the item.` },
+      children: { description: `Defines the tab content.`, control: { disable: false } },
+      collapsed: { table: { disable: true } },
+      fixed: { table: { disable: true } },
+      showOverflow: { table: { disable: true } },
+      tabLayout: { table: { disable: true } },
+      tabsPlacement: { table: { disable: true } },
+      overflowButton: { table: { disable: true } },
+      onTabSelect: { table: { disable: true } }
+    }}
+  >
+    {(args) => {
+      return (
+        <TabContainer {...args}>
+          <Tab {...args} />
+          <Tab text="Tab 2" icon="activities">
+            Content Tab 2
+          </Tab>
+          <Tab text="Tab 3" icon="add">
+            Content Tab 3
+          </Tab>
+          <Tab text="Tab 4" icon="employee">
+            Content Tab 4
+          </Tab>
+          <Tab text="Tab 5" icon="settings">
+            Content Tab 5
+          </Tab>
+        </TabContainer>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="with customizable Tab" />
+
+<br />
+
+## TabContainer with TabSeparator
+
+The <code>TabSeparator</code> represents a vertical line to separate tabs inside a <code>TabContainer</code>
+
+<Canvas>
+  <Story name="with TabSeparator">
+    {(args) => {
+      return (
+        <TabContainer {...args}>
+          <Tab text="Tab One" icon="menu" selected additionalText="5">
+            Content Tab 1
+          </Tab>
+          <TabSeparator />
+          <Tab text="Tab Two" icon="activities" additionalText="20">
+            Content Tab 2
+          </Tab>
+        </TabContainer>
+      );
+    }}
+  </Story>
+</Canvas>
