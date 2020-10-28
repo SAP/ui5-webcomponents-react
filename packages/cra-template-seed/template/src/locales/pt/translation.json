@@ -6,13 +6,13 @@
   "shell.title": "TodoList App",
   "shell.logo.alt": "SAP Logo",
   "shell.button.user.settings": "Configurações do Usuário",
-  "shell.button.user.settings.item.themeSwitch": "Escolher Tema",
+  "shell.button.user.settings.item.themeSwitch": "Tema",
   "shell.button.user.settings.item.themeSwitch.option.default": "Default",
   "shell.button.user.settings.item.themeSwitch.option.dark": "Dark",
   "shell.button.user.settings.item.themeSwitch.option.highContrastBlack": "High Contrast Black",
   "shell.button.user.settings.item.themeSwitch.option.highContrastWhite": "High Contrast White",
   "shell.button.user.settings.item.themeSwitch.option.belize": "Belize",
-  "shell.button.user.settings.item.languageSwitch": "Escolher Linguagem",
+  "shell.button.user.settings.item.languageSwitch": "Linguagem",
   "shell.button.user.settings.item.languageSwitch.en": "English - EN",
   "shell.button.user.settings.item.languageSwitch.pt": "Portugues - PT",
   "page.error.text": "Opa! Ocorreu um erro ao carregar esta página",
@@ -20,5 +20,5 @@
   "page.notfound.text": "Hmmm, não conseguimos encontrar este URL",
   "page.notfound.alt": "Não Encontrado",
   "page.fallback.reload.text": "Recarregar",
-  "components.navback.text": "Voltar"
+  "components.navback.text": "Voltar´"
 }

@@ -19,19 +19,10 @@ const SUPPORTED_LANGUAGES = {
   },
 };
 
-export const getResources = () => {
-  const languages = Object.assign({}, SUPPORTED_LANGUAGES);
-  for (const [key] of Object.entries(languages)) {
-    delete languages[key].textKey;
-    delete languages[key].code;
-  }
-  return languages;
-};
-
 export const getSupportedLanguageResources = () => {
   const languages = [];
-  for (const [key, value] of Object.entries(SUPPORTED_LANGUAGES)) {
-    languages.push({ [key]: value });
+  for (const [key] of Object.entries(SUPPORTED_LANGUAGES)) {
+    languages.push(SUPPORTED_LANGUAGES[key]);
   }
   return languages;
 };
