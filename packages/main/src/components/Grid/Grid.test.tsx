@@ -1,5 +1,5 @@
+import { render } from '@shared/tests';
 import { createPassThroughPropsTest } from '@shared/tests/utils';
-import { mount } from 'enzyme';
 import { Grid } from '@ui5/webcomponents-react/lib/Grid';
 import React from 'react';
 import { GridPosition } from '@ui5/webcomponents-react/lib/GridPosition';
@@ -39,25 +39,25 @@ const GridContent = () => (
 
 describe('Grid', () => {
   test('Renders Children', () => {
-    const wrapper = mount(
+    const { asFragment } = render(
       <Grid>
         <GridContent />
       </Grid>
     );
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('Custom Class Names and Styling', () => {
-    const wrapper = mount(
+    const { asFragment } = render(
       <Grid style={{ backgroundColor: 'purple' }} className="customClassName" hSpacing={0}>
         <GridContent />
       </Grid>
     );
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('Renders Children with custom layout data', () => {
-    const wrapper = mount(
+    const { asFragment } = render(
       <Grid>
         <div
           style={{
@@ -77,24 +77,24 @@ describe('Grid', () => {
         />
       </Grid>
     );
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('Grid Position Center', () => {
-    const wrapper = mount(
+    const { asFragment } = render(
       <Grid style={{ width: '60%' }} position={GridPosition.Center}>
         <GridContent />
       </Grid>
     );
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
   test('Grid Position Right', () => {
-    const wrapper = mount(
+    const { asFragment } = render(
       <Grid style={{ width: '60%' }} position={GridPosition.Right}>
         <GridContent />
       </Grid>
     );
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   createPassThroughPropsTest(Grid);

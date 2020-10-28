@@ -78,7 +78,9 @@ const getIndentFromString = (indent, currentRange) => {
 };
 
 const useStyles = createComponentStyles(styles, { name: 'Grid' });
-
+/**
+ * A layout container component used for aligning items with various sizes in a simple grid.
+ */
 const Grid: FC<GridPropTypes> = forwardRef((props: GridPropTypes, ref: Ref<HTMLDivElement>) => {
   const {
     position,

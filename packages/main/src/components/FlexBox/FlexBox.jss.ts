@@ -2,6 +2,7 @@ export const styles = {
   flexBox: {
     display: 'flex'
   },
+  fitContainer: { width: '100%', height: '100%' },
   flexBoxDisplayInline: {
     display: 'inline-flex'
   },

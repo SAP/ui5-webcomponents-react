@@ -23,8 +23,9 @@ export const VerticalScrollbar = forwardRef((props: VerticalScrollbarProps, ref:
         style={{
           height: `${internalRowHeight}px`,
           boxSizing: 'border-box',
-          borderLeft: 'none',
-          border: `1px solid ${ThemingParameters.sapList_BorderColor}`,
+          borderTop: `1px solid ${ThemingParameters.sapList_BorderColor}`,
+          borderRight: `1px solid ${ThemingParameters.sapList_BorderColor}`,
+          borderBottom: `1px solid ${ThemingParameters.sapList_BorderColor}`,
           backgroundColor: ThemingParameters.sapList_HeaderBackground
         }}
       />
@@ -33,26 +34,31 @@ export const VerticalScrollbar = forwardRef((props: VerticalScrollbarProps, ref:
         style={{
           overflowY: 'auto',
           height: tableRef.current ? `${tableRef.current.clientHeight - internalRowHeight}px` : '0',
-          border: `1px solid ${ThemingParameters.sapList_BorderColor}`,
-          borderTop: 'none',
-          borderLeft: 'none',
+          borderRight: `1px solid ${ThemingParameters.sapList_BorderColor}`,
+          borderBottom: `1px solid ${ThemingParameters.sapList_BorderColor}`,
           boxSizing: 'border-box'
         }}
         onScroll={handleVerticalScrollBarScroll}
         className={GlobalStyleClasses.sapScrollBar}
       >
-        <div style={{ height: `${Math.max(minRows, rows.length) * internalRowHeight}px`, width: '1px' }} />
+        <div
+          style={{
+            height: `${Math.max(minRows, rows.length) * internalRowHeight}px`,
+            width: '1px'
+          }}
+        />
       </div>
       <div
         style={{
           flexGrow: 1,
           backgroundColor: ThemingParameters.sapList_HeaderBackground,
-          border: hasHorizontalScrollbar ? `1px solid ${ThemingParameters.sapList_BorderColor}` : 'none',
-          borderTop: 'none',
-          borderLeft: 'none',
+          borderRight: hasHorizontalScrollbar ? `1px solid ${ThemingParameters.sapList_BorderColor}` : 'none',
+          borderBottom: hasHorizontalScrollbar ? `1px solid ${ThemingParameters.sapList_BorderColor}` : 'none',
           boxSizing: 'border-box'
         }}
       />
     </FlexBox>
   );
 });
+
+VerticalScrollbar.displayName = 'VerticalScrollbar';
