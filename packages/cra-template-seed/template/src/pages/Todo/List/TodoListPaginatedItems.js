@@ -29,7 +29,8 @@ const TodoListPaginatedItems = () => {
         <Spinner />
       ) : (
         <>
-          <Title level={TitleLevel.H3}>{`Records (${resolvedData.numberOfElements} / ${resolvedData.totalElements})`}</Title>
+          <Title level={TitleLevel.H4}>{`Records (${resolvedData.numberOfElements} / ${resolvedData.totalElements})`}</Title>
+          <br />
           <List onItemClick={(e) => redirectToEditPage(e)}>
             {resolvedData.content.map((todo, index) => (
               <StandardListItem data-id={todo.id} key={index} iconEnd={false} info={todo.description} infoState="None" selected={false}>
