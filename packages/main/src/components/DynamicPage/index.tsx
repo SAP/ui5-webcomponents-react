@@ -17,8 +17,7 @@ import React, {
   RefObject,
   useRef,
   useCallback,
-  useState,
-  useEffect
+  useState
 } from 'react';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
 import { useObserveHeights } from '../ObjectPage/useObserveHeights';
@@ -149,10 +148,9 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
 
   const onToggleHeaderContent = (e) => {
     if (e.target.tagName === 'DIV') {
-      onToggleHeaderContentVisibility(e, anchorBarRef.current.children.item(0));
+      onToggleHeaderContentVisibility(e, anchorBarRef.current.children.item(0).children.item(0));
     }
   };
-
   const handleHeaderPinnedChange = useCallback(
     (headerWillPin) => {
       if (headerWillPin) {
