@@ -33,6 +33,7 @@ import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { defaultFormatter } from '../../internal/defaults';
 import { tickLineConfig, tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 
 const dimensionDefaults = {
   formatter: defaultFormatter
@@ -211,6 +212,9 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
   const Placeholder = useCallback(() => {
     return <ComposedChartPlaceholder layout={layout} measures={measures} />;
   }, [layout, measures]);
+
+  const passThroughProps = usePassThroughHtmlProps(props);
+
   return (
     <ChartContainer
       ref={chartRef}
@@ -222,6 +226,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
       tooltip={tooltip}
       slot={slot}
       resizeDebounce={chartConfig.resizeDebounce}
+      {...passThroughProps}
     >
       <ComposedChartLib
         margin={marginChart}

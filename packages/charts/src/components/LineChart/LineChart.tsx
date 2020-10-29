@@ -1,5 +1,6 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/components/ChartContainer';
 import { ChartDataLabel } from '@ui5/webcomponents-react-charts/lib/components/ChartDataLabel';
@@ -156,6 +157,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
   const [yAxisWidth, legendPosition] = useLongestYAxisLabel(dataset, measures);
   const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
   const xAxisHeights = useObserveXAxisHeights(chartRef, props.dimensions.length);
+  const passThroughProps = usePassThroughHtmlProps(props);
 
   return (
     <ChartContainer
@@ -168,6 +170,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
       tooltip={tooltip}
       slot={slot}
       resizeDebounce={chartConfig.resizeDebounce}
+      {...passThroughProps}
     >
       <LineChartLib
         margin={marginChart}

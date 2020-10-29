@@ -1,5 +1,6 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/components/ChartContainer';
 import { XAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/XAxisTicks';
@@ -179,6 +180,8 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
   const xAxisHeights = useObserveXAxisHeights(chartRef, 1);
   const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
 
+  const passThroughProps = usePassThroughHtmlProps(props);
+
   return (
     <ChartContainer
       dataset={dataset}
@@ -190,6 +193,7 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
       tooltip={tooltip}
       slot={slot}
       resizeDebounce={chartConfig.resizeDebounce}
+      {...passThroughProps}
     >
       <ScatterChartLib
         margin={marginChart}

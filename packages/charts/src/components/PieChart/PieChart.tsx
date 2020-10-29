@@ -11,6 +11,7 @@ import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { IPolarChartConfig } from '../../interfaces/IPolarChartConfig';
 import { defaultFormatter } from '../../internal/defaults';
 import { tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 
 interface MeasureConfig extends Omit<IChartMeasure, 'accessor' | 'label' | 'color'> {
   /**
@@ -224,6 +225,8 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
     return null;
   }, [showActiveSegmentDataLabel, chartConfig.activeSegment, chartConfig.legendPosition]);
 
+  const passThroughProps = usePassThroughHtmlProps(props);
+
   return (
     <ChartContainer
       dataset={dataset}
@@ -235,6 +238,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
       tooltip={tooltip}
       slot={slot}
       resizeDebounce={chartConfig.resizeDebounce}
+      {...passThroughProps}
     >
       <PieChartLib
         margin={chartConfig.margin}
