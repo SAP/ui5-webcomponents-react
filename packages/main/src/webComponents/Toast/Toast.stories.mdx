@@ -3,21 +3,26 @@ import { Toast } from '@ui5/webcomponents-react/lib/Toast';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ToastPlacement } from '@ui5/webcomponents-react/lib/ToastPlacement';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
-import { useRef } from 'react';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
+import { useRef } from 'react';
 
 <Meta
   title="UI5 Web Components / Toast"
   component={Toast}
   argTypes={{
     ...createSelectArgTypes({ placement: ToastPlacement }),
-    children: { type: 'string' },
-    ...DocsCommonProps
+    ...DocsCommonProps,
+    children: { control: 'text' }
   }}
   args={{
     placement: ToastPlacement.BottomCenter,
-    children: 'My Toast Text!'
+    children: 'Toast Text',
+    style: {},
+    className: '',
+    tooltip: '',
+    slot: '',
+    ref: null
   }}
 />
 
@@ -68,3 +73,19 @@ export const MyComponentWithAToast() {
 </Canvas>
 
 <ArgsTable story="." />
+<div style={{ fontFamily: 'var(--sapFontFamily)', fontSize: 'var(--sapFontSize)', color: 'var(--sapTextColor)' }}>
+  <h3>Usage</h3>
+  <h4>When to use:</h4>
+  <ul>
+    <li>You want to display a short success or information message.</li>
+    <li>You do not want to interrupt users while they are performing an action.</li>
+    <li>You want to confirm a successful action.</li>
+  </ul>
+  <h4>When not to use:</h4>
+  <ul>
+    <li>You want to display error or warning message.</li>
+    <li>You want to interrupt users while they are performing an action.</li>
+    <li>You want to make sure that users read the message before they leave the page.</li>
+    <li>You want users to be able to copy some part of the message text.</li>
+  </ul>
+</div>
