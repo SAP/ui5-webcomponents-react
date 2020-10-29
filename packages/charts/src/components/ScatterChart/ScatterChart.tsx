@@ -1,5 +1,6 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
+import { useIsRTL } from '@ui5/webcomponents-react-base/lib/useIsRTL';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/components/ChartContainer';
@@ -215,6 +216,7 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
             tick={<XAxisTicks config={xMeasure} />}
             padding={xAxisPadding}
             height={xAxisHeights[0]}
+            reversed={useIsRTL()}
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             label={xMeasure?.label ? { value: xMeasure?.label, dy: 15, position: 'insideRight' } : 0}
@@ -223,7 +225,11 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
         <YAxis
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
-          label={yMeasure?.label ? { value: yMeasure?.label, angle: -90, position: 'insideLeft' } : false}
+          label={
+            yMeasure?.label
+              ? { value: yMeasure?.label, angle: -90, position: useIsRTL() ? 'insideRight' : 'insideLeft' }
+              : false
+          }
           type={'number'}
           name={yMeasure?.label}
           axisLine={chartConfig.yAxisVisible}
@@ -235,6 +241,7 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
           tick={<YAxisTicks config={yMeasure} />}
           width={yMeasure?.label ? yAxisWidth + 10 : yAxisWidth}
           margin={yMeasure?.label ? { left: 200 } : 0}
+          orientation={useIsRTL() === true ? 'right' : 'left'}
         />
         <ZAxis name={zMeasure?.label} dataKey={zMeasure?.accessor} range={[0, 5000]} key={zMeasure?.accessor} />
         {dataset?.map((dataSet, index) => {

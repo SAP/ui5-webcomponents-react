@@ -1,5 +1,6 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
+import { useIsRTL } from '@ui5/webcomponents-react-base/lib/useIsRTL';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/components/ChartContainer';
@@ -197,10 +198,12 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
                 height={xAxisHeights[index]}
                 padding={xAxisPadding}
                 allowDuplicatedCategory={index === 0}
+                reversed={useIsRTL()}
               />
             );
           })}
         <YAxis
+          orientation={useIsRTL() === true ? 'right' : 'left'}
           axisLine={chartConfig.yAxisVisible}
           tickLine={tickLineConfig}
           yAxisId="left"
@@ -222,7 +225,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             label={{ value: chartConfig.secondYAxis.name, offset: 2, angle: +90, position: 'center' }}
-            orientation="right"
+            orientation={useIsRTL() === true ? 'left' : 'right'}
             yAxisId="right"
             interval={0}
           />
