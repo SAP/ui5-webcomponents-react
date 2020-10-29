@@ -28,8 +28,6 @@ export interface TokenPropTypes extends Omit<WithWebComponentPropTypes, 'onSelec
 /**
  * Tokens are small items of information (similar to tags) that mainly serve to visualize previously selected items.<br />
  * __Note:__ Tokens shouldn't be implemented as a standalone component. Use the `Tokenizer` to achieve the intended functionality.
- *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Token" target="_blank">UI5 Web Components Playground</a>
  */
 const Token: FC<TokenPropTypes> = withWebComponent<TokenPropTypes>(
   'ui5-token',
