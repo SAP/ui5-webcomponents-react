@@ -13,6 +13,9 @@ import { ResponsivePopoverPropTypes } from '../../webComponents/ResponsivePopove
 import styles from './ActionSheet.jss';
 
 export interface ActionSheetPropTypes extends Omit<ResponsivePopoverPropTypes, 'children'> {
+  /**
+   * Defines the actions of the <code>ActionSheet</code>. <br><b>Note:</b> Although this slot accepts all HTML Elements, it is strongly recommended that you only use `Buttons` in order to preserve the intended design.
+   */
   children?: ReactElement<ButtonPropTypes> | ReactElement<ButtonPropTypes>[];
 }
 
@@ -26,7 +29,10 @@ addCustomCSS(
   }
   `
 );
-
+/**
+ * The `ActionSheet` holds a list of buttons from which the user can select to complete an action. <br />
+ * The children of the action sheet should be `Button` components. Elements in the `ActionSheet` are left-aligned. Actions should be arranged in order of importance, from top to bottom.
+ */
 const ActionSheet: FC<ActionSheetPropTypes> = forwardRef(
   (props: ActionSheetPropTypes, ref: RefObject<Ui5ResponsivePopoverDomRef>) => {
     const {
