@@ -1,5 +1,6 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
+import { useIsRTL } from '@ui5/webcomponents-react-base/lib/useIsRTL';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ColumnChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/ColumnChartPlaceholder';
@@ -215,10 +216,12 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
                 axisLine={index < 1}
                 height={xAxisHeights[index]}
                 allowDuplicatedCategory={index === 0}
+                reversed={useIsRTL()}
               />
             );
           })}
         <YAxis
+          orientation={useIsRTL() === true ? 'right' : 'left'}
           axisLine={chartConfig.yAxisVisible}
           tickLine={tickLineConfig}
           yAxisId="left"
@@ -239,7 +242,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             label={{ value: chartConfig.secondYAxis.name, offset: 2, angle: +90, position: 'center' }}
-            orientation="right"
+            orientation={useIsRTL() === true ? 'left' : 'right'}
             yAxisId="right"
             interval={0}
           />
