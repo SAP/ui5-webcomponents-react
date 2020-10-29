@@ -1,11 +1,12 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-
 import { useGet } from '../../../hooks/useRequest';
-import { Spinner } from '@ui5/webcomponents-react/lib/Spinner';
+
 import NavBack from '../../../components/NavBack/NavBack';
 import CenteredContent from '../../../components/Layout/CenteredContent';
 import TodoEditForm from './TodoEditForm';
+import { Spinner } from '@ui5/webcomponents-react/lib/Spinner';
+
 import Constants from '../../../util/Constants';
 import { getUrl } from '../../../util/api/url/APIProvider';
 
@@ -22,8 +23,10 @@ const TodoEdit = ({ match }) => {
   return (
     <>
       <Helmet title="Edit - TodoList App" />
+
       <NavBack />
       <CenteredContent>
+        <br />
         {isLoading && <Spinner />}
         {isSuccess && <TodoEditForm data={data.data.todos} onSubmitHandler={onSubmitEditForm} />}
       </CenteredContent>

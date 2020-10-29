@@ -18,8 +18,10 @@ const TodoList = () => {
   return (
     <CenteredContent>
       <Helmet title="List - TodoList App" />
+      <Title level={TitleLevel.H1}>Todo List</Title>
+      <br />
 
-      <Title level={TitleLevel.H1}>Routing</Title>
+      <Title level={TitleLevel.H3}>Routing</Title>
       <br />
       <Link onClick={() => history.push('/dontexist')}>Test NotFound Page</Link>
       <br />
@@ -27,13 +29,13 @@ const TodoList = () => {
       <br />
       <br />
       <ComponentWithAuthorizationRestriction allowedAuthorities={['canAccessDropApplication']} authorityKey="permissions">
-        <Title level={TitleLevel.H1}>Component Validator</Title>
+        <Title level={TitleLevel.H3}>Component Validator</Title>
         <p>
           <Text>Drop Application (this is a restricted text and you should not see unless you have access)</Text>
         </p>
       </ComponentWithAuthorizationRestriction>
 
-      <Title level={TitleLevel.H1}>Device Detect</Title>
+      <Title level={TitleLevel.H3}>Device Detect</Title>
       <p>
         <Text>{isMobile() ? 'This text appears when is MOBILE' : 'This text appears when is not MOBILE'}</Text>
       </p>
@@ -44,7 +46,7 @@ const TodoList = () => {
         <Text>{isDesktop() ? 'This text appears when is DESKTOP' : 'This text appears when is not DESKTOP'}</Text>
       </p>
 
-      <Title level={TitleLevel.H1}>Browser Detect</Title>
+      <Title level={TitleLevel.H3}>Browser Detect</Title>
       <p>
         <Text>{isChrome() ? 'This Text is rendered only for CHROME' : 'This Text is rendered only when is NOT CHROME'}</Text>
       </p>
@@ -52,7 +54,7 @@ const TodoList = () => {
         <Text>{isIE() ? 'This Text is rendered only for IE' : 'This Text is rendered only when is NOT IE'}</Text>
       </p>
 
-      <Title level={TitleLevel.H1}>Pagination + Edition (Formik and Yup)</Title>
+      <Title level={TitleLevel.H3}>Pagination + Edition (Formik and Yup)</Title>
       <br />
       <TodoListPaginatedItems />
     </CenteredContent>
