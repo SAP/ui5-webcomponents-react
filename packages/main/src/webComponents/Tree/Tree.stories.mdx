@@ -83,6 +83,9 @@ import { useState } from 'react';
 
 ## Tree with customizable TreeItem
 
+This is the item to use inside a <code>Tree</code>. You can represent an arbitrary tree structure by recursively nesting
+tree items.
+
 <Canvas>
   <Story
     name="with customizable TreeItem"
@@ -181,3 +184,42 @@ import { useState } from 'react';
     }}
   </Story>
 </Canvas>
+
+### Code
+
+```jsx
+const LazyLoadingTree = () => {
+  const [lazyChildren, setLazyChildren] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const handleItemToggle = (e) => {
+    if (e.detail.item.dataset.id === 'lazychildren' && !lazyChildren) {
+      e.preventDefault();
+      setLoading(true);
+      setTimeout(() => {
+        setLoading(false);
+        setLazyChildren(
+          <>
+            <TreeItem text="Tree 3.1" />
+            <TreeItem text="Tree 3.2" />
+          </>
+        );
+        e.detail.item.toggle();
+      }, 3000);
+    }
+  };
+  return (
+    <BusyIndicator active={loading} style={{ width: '100%' }}>
+      <Tree onItemToggle={handleItemToggle}>
+        <TreeItem text="Has pre-loaded children">
+          <TreeItem text="Tree 1.1" />
+          <TreeItem text="Tree 1.2" />
+        </TreeItem>
+        <TreeItem text="Has no children" />
+        <TreeItem text="Has children but not yet loaded" hasChildren icon="download-from-cloud" data-id="lazychildren">
+          {lazyChildren}
+        </TreeItem>
+      </Tree>
+    </BusyIndicator>
+  );
+};
+```
