@@ -1,0 +1,121 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { ShellBar } from '@ui5/webcomponents-react/lib/ShellBar';
+import { ShellBarItem } from '@ui5/webcomponents-react/lib/ShellBarItem';
+import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';
+import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
+import '@ui5/webcomponents-icons/dist/icons/add.js';
+import image from '../../components/ObjectPage/DemoImage.png';
+
+<Meta
+  title="UI5 Web Components / ShellBar"
+  component={ShellBar}
+  subcomponents={{ ShellBarItem }}
+  argTypes={{
+    ...createSelectArgTypes({}),
+    ...DocsCommonProps,
+    children: { control: { disable: true } },
+    logo: { control: { disable: true } },
+    menuItems: { control: { disable: true } },
+    profile: { control: { disable: true } },
+    searchField: { control: { disable: true } },
+    startButton: { control: { disable: true } }
+  }}
+  args={{
+    logo: <img src="https://sap.github.io/ui5-webcomponents/assets/images/sap-logo-svg.svg" alt="SAP Logo" />,
+    profile: <Avatar image={image} />,
+    notificationCount: 10,
+    primaryTitle: 'Shell Bar',
+    secondaryTitle: 'Fiori 3 Shell Bar',
+    showCoPilot: true,
+    showNotifications: true,
+    showProductSwitch: true,
+    style: {},
+    className: '',
+    tooltip: '',
+    slot: '',
+    ref: null
+  }}
+/>
+
+<DocsHeader />
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return (
+        <ShellBar
+          {...args}
+          menuItems={
+            <>
+              <StandardListItem data-key="1">Menu Item 1</StandardListItem>
+              <StandardListItem data-key="2">Menu Item 2</StandardListItem>
+              <StandardListItem data-key="3">Menu Item 3</StandardListItem>
+            </>
+          }
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Default" />
+
+<br />
+
+# Stories
+
+<br />
+
+## ShellBar with customizable ShellBarItem
+
+<Canvas>
+  <Story
+    name="with customizable ShellBarItem"
+    args={{
+      count: '2',
+      icon: 'add',
+      stableDomRef: undefined,
+      text: 'add'
+    }}
+    argTypes={{
+      count: { description: `Defines the count displayed in the top-right corner.` },
+      icon: { description: `Defines the name of the item's icon.` },
+      stableDomRef: { description: `Defines the stable selector that you can use via getStableDomRef method. <br />` },
+      text: {
+        description: `Defines the item text.<br />__Note:__ <code>text</code> will only be visible in mobile view.`
+      },
+      onItemClick: { description: 'Fired, when the item is pressed.' },
+      notificationCount: { table: { disable: true } },
+      primaryTitle: { table: { disable: true } },
+      secondaryTitle: { table: { disable: true } },
+      showCoPilot: { table: { disable: true } },
+      showNotifications: { table: { disable: true } },
+      showProductSwitch: { table: { disable: true } },
+      children: { table: { disable: true } },
+      logo: { table: { disable: true } },
+      menuItems: { table: { disable: true } },
+      profile: { table: { disable: true } },
+      searchField: { table: { disable: true } },
+      startButton: { table: { disable: true } },
+      onCoPilotClick: { table: { disable: true } },
+      onLogoClick: { table: { disable: true } },
+      onMenuItemClick: { table: { disable: true } },
+      onNotificationsClick: { table: { disable: true } },
+      onProductSwitchClick: { table: { disable: true } },
+      onProfileClick: { table: { disable: true } }
+    }}
+  >
+    {(args) => {
+      return (
+        <ShellBar>
+          <ShellBarItem {...args} />
+        </ShellBar>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="with customizable ShellBarItem" />
