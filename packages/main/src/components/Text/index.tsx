@@ -10,14 +10,21 @@ export interface TextProps extends CommonProps {
    * Pass the text as direct child of Text
    */
   children: string | JSX.Element | ReactNode;
-
+  /**
+   * Defines how white-space inside <code>Text</code> is handled. If set to true, sequences of white space are preserved.
+   */
   renderWhitespace?: boolean;
-
+  /**
+   * Defines whether the text wraps when there is not enough space.
+   */
   wrapping?: boolean;
 }
 
 const useStyles = createComponentStyles(TextStyles, { name: 'Text' });
-
+/**
+ * The `Text` component can be used for embedding text into your app. You can hyphenate the text with the use of the `wrapping` prop.
+ * <br />__Note:__ Line breaks will always be visualized except when the wrapping property is set to false. In addition, tabs and whitespace can be preserved by setting the renderWhitespace property to true.
+ */
 const Text: FC<TextProps> = forwardRef((props: TextProps, ref: Ref<HTMLSpanElement>) => {
   const { children, renderWhitespace, wrapping, className, style, tooltip, slot } = props;
   const classes = useStyles();
