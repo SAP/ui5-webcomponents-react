@@ -108,7 +108,7 @@ yarn create react-app my-app --template @ui5/webcomponents-react
 
 You can create a new react app by using [create-react-app](https://facebook.github.io/create-react-app/) based on our seed.
 This template delivers several out of the box components, scripts and configurations.
-For more info, check the [docs](https://github.com/SAP/ui5-webcomponents-react/tree/docs/removed-badges-seed/packages/cra-template-seed)
+For more info, check the [seed documentation](https://github.com/SAP/ui5-webcomponents-react/tree/docs/removed-badges-seed/packages/cra-template-seed).
 
 ```sh
 npx create-react-app my-app --template @ui5/webcomponents-react-seed
