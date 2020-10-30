@@ -10,6 +10,13 @@ export interface TokenizerPropTypes extends WithWebComponentPropTypes {
   children?: ReactNode[]; // @generated
 }
 
+// TODO When deleting this component, clean up withWebComponent as well.
+
+/**
+ * ### **DEPRECATION NOTICE**
+ * **This component is deprecated and will be removed with v0.12.0. Please use `MultiInput` instead.**
+ * You can check our [Migration Guide](https://sap.github.io/ui5-webcomponents-react/?path=/docs/migration-guide--page#migrating-from-011x-to-0120) for an example on how to migrate to MultiInput.
+ */
 const Tokenizer: FC<TokenizerPropTypes> = withWebComponent<TokenizerPropTypes>(
   'ui5-tokenizer',
   [],

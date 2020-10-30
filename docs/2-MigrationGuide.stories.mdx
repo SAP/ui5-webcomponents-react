@@ -14,9 +14,44 @@ or the [changelog](https://github.com/SAP/ui5-webcomponents-react/blob/master/CH
 
 ## Table of Contents
 
+- [0.11.x to 0.12.0](#migrating-from-011x-to-0120)
 - [0.10.x to 0.11.0](#migrating-from-010x-to-0110)
 - [0.9.x to 0.10.0](#migrating-from-09x-to-0100)
 - [0.8.x to 0.9.0](#migrating-from-08x-to-090)
+
+## Migrating from 0.11.x to 0.12.0
+
+<br />
+
+### Deleted Components
+
+The deprecated `Tokenizer` component has been removed in favor of the [MultiInput](https://sap.github.io/ui5-webcomponents-react/?path=/docs/ui5-web-components-multiinput) component.
+
+Migration Example:
+
+```jsx
+<Tokenizer onTokenDelete={myHandler} disabled={false}>
+  <Token text="Token 1" />
+  <Token text="Token 2" />
+  <Token text="Token 3" />
+</Tokenizer>
+```
+
+will become
+
+```jsx
+<MultiInput
+  disabled={false}
+  onTokenDelete={myHandler}
+  tokens={
+    <>
+      <Token text="Token 1" />
+      <Token text="Token 2" />
+      <Token text="Token 3" />
+    </>
+  }
+/>
+```
 
 ## Migrating from 0.10.x to 0.11.0
 
