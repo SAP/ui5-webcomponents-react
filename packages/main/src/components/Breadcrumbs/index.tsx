@@ -30,6 +30,9 @@ export interface BreadcrumbsPropTypes extends CommonProps {
   currentLocationText?: string;
 }
 
+/**
+ * Enables users to navigate between items by providing a list of links to previous steps in the user's navigation path.
+ */
 const Breadcrumbs: FC<BreadcrumbsPropTypes> = forwardRef((props: BreadcrumbsPropTypes, ref: Ref<HTMLDivElement>) => {
   const { children, separatorStyle, currentLocationText, tooltip, style, className, slot } = props;
   const childrenArray = Children.toArray(children).filter(Boolean);
