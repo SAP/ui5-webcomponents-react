@@ -27,7 +27,7 @@ export interface TokenPropTypes extends Omit<WithWebComponentPropTypes, 'onSelec
 
 /**
  * Tokens are small items of information (similar to tags) that mainly serve to visualize previously selected items.<br />
- * __Note:__ Tokens shouldn't be implemented as a standalone component. Use the `Tokenizer` to achieve the intended functionality.
+ * __Note:__ Tokens shouldn't be implemented as a standalone component. Use the `MultiInput` to achieve the intended functionality.
  */
 const Token: FC<TokenPropTypes> = withWebComponent<TokenPropTypes>(
   'ui5-token',
