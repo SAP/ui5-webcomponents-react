@@ -1,4 +1,4 @@
-import { Meta, Title, Description, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { ActionSheet } from '@ui5/webcomponents-react/lib/ActionSheet';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
@@ -39,6 +39,31 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
 
 <DocsHeader />
 
+<br />
+
+### Opening ActionSheets
+
+`ActionSheets` can only be opened by attaching a `ref` to the component and then call the corresponding **`open`** method. The method receives the target element - _on which the `ActionSheet` is to be opened_ - as parameter.
+
+```JSX
+const ActionSheetComponent = () => {
+  const actionSheetRef = useRef();
+  const onButtonClick = (e) => {
+    actionSheetRef.current.open(e.target);
+  };
+  return (
+    <>
+      <Button onClick={onButtonClick}>Open ActionSheet</Button>
+      <ActionSheet ref={actionSheetRef}>
+        <Button icon="add">Accept</Button>
+        <Button>Reject</Button>
+        <Button>This is my super long text!</Button>
+      </ActionSheet>
+    </>
+  );
+};
+```
+
 <Canvas>
   <Story name="Default">
     {(args) => {
@@ -64,3 +89,30 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
 </Canvas>
 
 <ArgsTable story="." />
+
+### Using ActionSheets inside other components
+
+`ActionSheets` are often used within other components, when opened this could sometimes have unwanted side effects.
+In this case, we recommend using [createPortal](https://reactjs.org/docs/portals.html) to mount the `ActionSheet` outside of the DOM hierarchy of the parent component.
+
+```JSX
+const ActionSheetComponent = () => {
+  const actionSheetRef = useRef();
+  const onButtonClick = (e) => {
+    actionSheetRef.current.open(e.target);
+  };
+  return (
+    <>
+      <Button onClick={onButtonClick}>Open ActionSheet</Button>
+      {createPortal(
+        <ActionSheet ref={actionSheetRef}>
+          <Button icon="add">Accept</Button>
+          <Button>Reject</Button>
+          <Button>This is my super long text!</Button>
+        </ActionSheet>,
+        document.body
+      )}
+    </>
+  );
+};
+```

@@ -16,11 +16,11 @@ export interface TablePropTypes extends WithWebComponentPropTypes {
    */
   stickyColumnHeader?: boolean;
   /**
-   * Defines the configuration for the columns of the <code>Table</code>. <br><br> <b>Note:</b> Use <code>Table-column</code> for the intended design.
+   * Defines the configuration for the columns of the <code>Table</code>. <br><br> <b>Note:</b> Use <code>TableColumn</code> for the intended design.
    */
   columns?: ReactNode | ReactNode[];
   /**
-   * Defines the <code>Table</code> rows. <br><br> <b>Note:</b> Use <code>Table-row</code> for the intended design.
+   * Defines the <code>Table</code> rows. <br><br> <b>Note:</b> Use <code>TableRow</code> for the intended design.
    */
   children?: ReactNode | ReactNode[];
   /**
