@@ -191,7 +191,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
         style={{
           top:
             headerState === HEADER_STATES.VISIBLE_PINNED || headerState === HEADER_STATES.VISIBLE
-              ? headerContentRef.current?.offsetHeight + topHeaderHeight
+              ? (headerContentRef?.current?.offsetHeight ?? 0) + topHeaderHeight
               : topHeaderHeight
         }}
       >
