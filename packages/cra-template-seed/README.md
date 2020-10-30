@@ -6,6 +6,15 @@
 
 This seed decrease’s the bootstrap time spent on new projects, POCs or MVPs which uses **React + UI5 WebComponents React** by leveraging several out-of-the-box components, scripts & configurations.
 
+# Usage
+```shell script
+npx create-react-app my-app --template @ui5/cra-template-webcomponents-react-seed
+
+# or if you prefer to use yarn
+
+yarn create react-app my-app --template @ui5/cra-template-webcomponents-react-seed
+```
+
 # Configuration Included
 
 - JEST Up & Runnning;
