@@ -25,6 +25,8 @@ export interface TokenizerPropTypes extends WithWebComponentPropTypes {
   children?: ReactNode | ReactNode[];
 }
 
+// TODO When deleting this component, clean up withWebComponent as well.
+
 /**
  * ### **DEPRECATION NOTICE**
  * **This component is deprecated and will be removed with v0.12.0. Please use `MultiInput` instead.**
