@@ -29,10 +29,6 @@ export interface DynamicPageProps extends Omit<CommonProps, 'title'> {
    */
   backgroundDesign?: PageBackgroundDesign;
   /**
-   * Determines whether the footer is visible.
-   */
-  showFooter?: boolean;
-  /**
    * Determines whether the content header is shown.
    */
   alwaysShowContentHeader?: boolean;
@@ -44,19 +40,23 @@ export interface DynamicPageProps extends Omit<CommonProps, 'title'> {
    * Determines whether the pin button is shown.
    */
   headerContentPinnable?: boolean;
-
-  // slots
+  /**
+   * React element which defines the title.
+   */
   title?: ReactElement;
-
+  /**
+   * React element which defines the header content.
+   */
   header?: ReactElement;
-
-  // anchorBar?: ReactElement;
-
+  /**
+   * React element or node array which defines the content.
+   */
   children?: ReactNode | ReactNodeArray;
-
-  footer?: ReactElement;
 }
 
+/**
+ * Defines the current state of the component.
+ */
 enum HEADER_STATES {
   AUTO,
   VISIBLE_PINNED,
@@ -64,7 +64,11 @@ enum HEADER_STATES {
   VISIBLE,
   HIDDEN
 }
-
+/**
+ * The dynamic page is a generic layout control designed to support various floorplans and use cases. The content of both the header and the page can differ from floorplan
+ * to floorplan. The header of the dynamic page is collapsible, which helps users to focus on the actual page content, but still ensures that important header information
+ * and actions are readily available. The dynamic page also includes an optional footer toolbar for closing or finalizing actions that impact the whole page.
+ */
 const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, ref: Ref<HTMLDivElement>) => {
   const {
     title,
@@ -72,9 +76,9 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
     tooltip,
     style,
     backgroundDesign = PageBackgroundDesign.Standard,
-    showHideHeaderButton = true,
-    headerContentPinnable = true,
-    alwaysShowContentHeader = false,
+    showHideHeaderButton,
+    headerContentPinnable,
+    alwaysShowContentHeader,
     children
   } = props;
   const passThroughProps = usePassThroughHtmlProps(props);
@@ -112,7 +116,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
   }
 
   const onToggleHeaderContentVisibility = useCallback(
-    (e, element?) => {
+    (e, element?: Element | HTMLElement) => {
       let srcElement = e.target;
       if (element) {
         srcElement = element;
@@ -135,7 +139,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
         { once: true }
       );
     },
-    [dynamicPageRef, classes.headerCollapsed, headerContentHeight, topHeaderHeight]
+    [dynamicPageRef.current, headerStateRef.current, classes.headerCollapsed]
   );
 
   const onHoverToggleButton = useCallback(
@@ -170,15 +174,17 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
       style={style}
       {...passThroughProps}
     >
-      {cloneElement(title, {
-        ref: topHeaderRef,
-        onToggleHeaderContentVisibility: onToggleHeaderContent
-      })}
-      {cloneElement(header, {
-        ref: headerContentRef,
-        headerPinned: headerState === HEADER_STATES.VISIBLE_PINNED || headerState === HEADER_STATES.VISIBLE,
-        topHeaderHeight
-      })}
+      {title &&
+        cloneElement(title, {
+          ref: topHeaderRef,
+          onToggleHeaderContentVisibility: onToggleHeaderContent
+        })}
+      {header &&
+        cloneElement(header, {
+          ref: headerContentRef,
+          headerPinned: headerState === HEADER_STATES.VISIBLE_PINNED || headerState === HEADER_STATES.VISIBLE,
+          topHeaderHeight
+        })}
       <FlexBox
         className={classes.anchorBar}
         ref={anchorBarRef}
@@ -205,5 +211,11 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
 });
 
 DynamicPage.displayName = 'DynamicPage';
+
+DynamicPage.defaultProps = {
+  showHideHeaderButton: true,
+  headerContentPinnable: true,
+  alwaysShowContentHeader: false
+};
 
 export { DynamicPage };

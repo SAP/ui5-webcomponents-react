@@ -51,7 +51,7 @@ const anchorBarStyles = {
   },
   anchorBarActionButtonExpandable: {},
   anchorBarActionButtonPinnable: {},
-  anchorBarActionPinnableAndExandable: {
+  anchorBarActionPinnableAndExpandable: {
     '&$anchorBarActionButtonPinnable': {
       marginLeft: '0.25rem',
       '&:before': {
@@ -67,16 +67,44 @@ const anchorBarStyles = {
 const useStyles = createUseStyles(anchorBarStyles, { name: 'DynamicPageAnchorBar' });
 
 interface Props {
+  /**
+   * Determines the style of the anchor bar.
+   */
   style?: CSSProperties;
+  /**
+   * Determines the height of the header content.
+   */
   headerContentHeight: number;
+  /**
+   * Determines if the header content is pinnable .
+   */
   headerContentPinnable: boolean;
+  /**
+   * Determines if the hide header button is shown .
+   */
   showHideHeaderButton: boolean;
+  /**
+   * Determines if the header is initially pinned .
+   */
   headerPinned?: boolean;
+  /**
+   * Set the header to the state pinned.
+   */
   setHeaderPinned?: (payload: any) => void;
+  /**
+   * Toggles the header content to be hidden or visible .
+   */
   onToggleHeaderContentVisibility: (e: any) => void;
+  /**
+   * Highlight title when hovered.
+   */
   onHoverToggleButton?: (e: any) => void;
 }
 
+/**
+ * The dynamic page anchor bar contains the expand/collapse (expands or collapses the header content)
+ * and pin button (pins the content header).
+ */
 const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElement>) => {
   const {
     showHideHeaderButton,
@@ -91,9 +119,8 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
 
   const classes = useStyles();
 
-  const shouldRenderHideHeaderButton = showHideHeaderButton;
   const shouldRenderHeaderPinnableButton = headerContentPinnable && headerContentHeight > 0;
-  const showBothActions = shouldRenderHeaderPinnableButton && shouldRenderHideHeaderButton;
+  const showBothActions = shouldRenderHeaderPinnableButton && showHideHeaderButton;
 
   const onPinHeader = useCallback(
     (e) => {
@@ -104,12 +131,12 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
 
   return (
     <section style={style} role="navigation" className={classes.anchorBarActionButton} ref={ref}>
-      {shouldRenderHideHeaderButton && (
+      {showHideHeaderButton && (
         <Button
           icon={headerContentHeight === 0 ? 'slim-arrow-down' : 'slim-arrow-up'}
           data-ui5wcr-dynamic-page-header-action=""
           className={`${classes.anchorBarActionButton} ${classes.anchorBarActionButtonExpandable} ${
-            showBothActions ? classes.anchorBarActionPinnableAndExandable : ''
+            showBothActions ? classes.anchorBarActionPinnableAndExpandable : ''
           }`}
           onClick={onToggleHeaderContentVisibility}
           onMouseOver={onHoverToggleButton}
@@ -121,7 +148,7 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
           icon="pushpin-off"
           data-ui5wcr-dynamic-page-header-action=""
           className={`${classes.anchorBarActionButton} ${classes.anchorBarActionButtonPinnable} ${
-            showBothActions ? classes.anchorBarActionPinnableAndExandable : ''
+            showBothActions ? classes.anchorBarActionPinnableAndExpandable : ''
           }`}
           pressed={headerPinned}
           onClick={onPinHeader}

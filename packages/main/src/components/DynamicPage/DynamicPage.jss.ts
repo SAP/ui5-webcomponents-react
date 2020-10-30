@@ -46,7 +46,7 @@ const styles = {
     background: ThemingParameters.sapBackgroundColor
   },
   backgroundSolid: {
-    background: ThemingParameters.sapShell_Background
+    background: ThemingParameters.sapBackgroundColor
   },
   backgroundList: {
     background: ThemingParameters.sapGroup_ContentBackground

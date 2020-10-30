@@ -1,6 +1,5 @@
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { BreadcrumbsPropTypes } from '@ui5/webcomponents-react/lib/Breadcrumbs';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
@@ -60,6 +59,10 @@ interface InternalProps extends DynamicPageTitleProps {
 
 const useStyles = createComponentStyles(DynamicPageTitleStyles, { name: 'DynamicPageTitle' });
 
+/**
+ * The dynamic page title defines the elements in the top header.
+ * It can contain Breadcrumbs, Title, Subtitle, Content, KPIs and Actions.
+ */
 const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalProps, ref: Ref<HTMLDivElement>) => {
   const {
     actions,
@@ -85,8 +88,8 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
       ref={ref}
       tooltip={tooltip}
       data-component-name="DynamicPageTitle"
-      {...passThroughProps}
       onClick={onToggleHeaderContentVisibility}
+      {...passThroughProps}
     >
       <div className={classes.breadcrumbs}>{breadcrumbs}</div>
       <FlexBox alignItems={FlexBoxAlignItems.Center} style={{ flexGrow: 1, width: '100%' }}>

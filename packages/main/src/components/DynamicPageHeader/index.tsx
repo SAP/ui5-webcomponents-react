@@ -12,12 +12,22 @@ export interface DynamicPageHeaderProps extends CommonProps {
 }
 
 interface InternalProps extends DynamicPageHeaderProps {
+  /**
+   * Determines if the header is pinned.
+   */
   headerPinned?: boolean;
+  /**
+   * Determines the height of the top header (dynamic page title).
+   */
   topHeaderHeight?: number;
 }
 
 const useStyles = createComponentStyles(DynamicPageHeaderStyles, { name: 'DynamicPageHeader' });
 
+/**
+ * The dynamic page header contains the header content of the dynamic page.
+ * This component can be collapsed and pinned by the anchorbar.
+ */
 const DynamicPageHeader: FC<DynamicPageHeaderProps> = forwardRef((props: InternalProps, ref: Ref<HTMLDivElement>) => {
   const { children, headerPinned, topHeaderHeight, tooltip, className, style } = props;
 

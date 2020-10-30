@@ -9,8 +9,6 @@ export const DynamicPageHeaderStyles = {
     backgroundColor: ThemingParameters.sapObjectHeader_Background,
     position: 'sticky',
     zIndex: 1,
-    translucent: ThemingParameters.sapObjectHeader_Background,
-    transparent: 'transparent',
     paddingTop: '1rem !important',
     paddingBottom: '1rem !important',
     display: `var(${DynamicPageCssVariables.headerDisplay})`,

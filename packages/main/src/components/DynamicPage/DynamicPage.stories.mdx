@@ -24,13 +24,10 @@ import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 <Meta
   title="Components / DynamicPage"
   component={DynamicPage}
-  subcomponents={{ DynamicPage, DynamicPageTitle, DynamicPageHeader }}
+  subcomponents={{ DynamicPageTitle, DynamicPageHeader }}
   argTypes={{
     ...createSelectArgTypes({ backgroundDesign: PageBackgroundDesign }),
     ...DocsCommonProps,
-    anchorBar: {
-      type: null
-    },
     title: {
       type: null
     },
@@ -45,7 +42,8 @@ import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
     }
   }}
   args={{
-    backgroundDesign: PageBackgroundDesign.Standard
+    backgroundDesign: PageBackgroundDesign.Standard,
+    style: { maxHeight: '700px' }
   }}
 />
 
@@ -56,7 +54,6 @@ import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
     {(args) => (
       <DynamicPage
         {...args}
-        style={{ maxHeight: '700px' }}
         title={
           <DynamicPageTitle
             actions={[
