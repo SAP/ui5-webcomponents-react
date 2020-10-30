@@ -17,7 +17,9 @@
     "lint": "eslint packages",
     "lerna:version-dryrun": "lerna version --conventional-graduate --no-git-tag-version --no-push",
     "deploy:storybook": "lerna run build:i18n && storybook-to-ghpages --ci",
-    "create-webcomponents-wrapper": "node --experimental-json-modules ./packages/main/scripts/create-web-components-wrapper.mjs"
+    "create-webcomponents-wrapper": "node --experimental-json-modules ./packages/main/scripts/create-web-components-wrapper.mjs",
+    "examples:recreate-seed": "rimraf examples/seed-test && yarn create react-app examples/seed-test --template file:./packages/cra-template-seed",
+    "examples:mock-seed": "cd examples/seed-test && SKIP_PREFLIGHT_CHECK=true yarn mock"
   },
   "dependencies": {
     "@storybook/addon-actions": "6.0.27",

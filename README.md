@@ -58,6 +58,9 @@ You can find our documentation under the following links:
 - [@ui5/cra-template-webcomponents-react](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/cra-template) - Template for `create-react-app` <br/>
   [![](https://badgen.net/npm/v/@ui5/cra-template-webcomponents-react?icon=npm)](https://www.npmjs.com/package/@ui5/cra-template-webcomponents-react)
 
+- [@ui5/cra-template-webcomponents-react-seed](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/cra-template-seed) - Seed for `create-react-app` <br/>
+  [![](https://badgen.net/npm/v/@ui5/cra-template-webcomponents-react-seed?icon=npm)](https://www.npmjs.com/package/@ui5/cra-template-webcomponents-react-seed)
+
 <!-- *********************************************************************** -->
 
 <a name="requirements"></a>

@@ -11,4 +11,4 @@ coverage
 lerna-debug.log
 packages/main/scripts/wrapperGeneration/json
 .awcache
-.DS_Store
+examples/seed-test
