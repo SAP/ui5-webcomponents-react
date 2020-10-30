@@ -1,25 +1,35 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
-import { Token } from '@ui5/webcomponents-react/lib/Token';
-import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
+import {ArgsTable, Canvas, Meta, Story} from '@storybook/addon-docs/blocks';
+import {Token} from '@ui5/webcomponents-react/lib/Token';
+import {createSelectArgTypes} from '@shared/stories/createSelectArgTypes';
+import {DocsHeader} from '@shared/stories/DocsHeader';
+import {DocsCommonProps} from '@shared/stories/DocsCommonProps';
 
 <Meta
-  title="UI5 Web Components / Token"
-  component={Token}
-  argTypes={{ ...DocsCommonProps }}
-  args={{
-    text: 'Token 1'
-  }}
+    title="UI5 Web Components / Token"
+    component={Token}
+    argTypes={{
+        ...createSelectArgTypes({}),
+        ...DocsCommonProps,
+        closeIcon: {control: {disable: true}}
+    }}
+    args={{
+        text: 'Token',
+        style: {},
+        className: '',
+        tooltip: '',
+        slot: '',
+        ref: null
+    }}
 />
 
-<DocsHeader />
+<DocsHeader/>
 
 <Canvas>
-  <Story name="Default">
-    {(args) => {
-      return <Token {...args} />;
-    }}
-  </Story>
+    <Story name="Default">
+        {(args) => {
+            return <Token {...args} />;
+        }}
+    </Story>
 </Canvas>
 
-<ArgsTable story="." />
+<ArgsTable story="."/>
