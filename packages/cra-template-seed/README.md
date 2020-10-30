@@ -8,11 +8,11 @@ This seed decrease’s the bootstrap time spent on new projects, POCs or MVPs wh
 
 # Usage
 ```shell script
-npx create-react-app my-app --template @ui5/cra-template-webcomponents-react-seed
+npx create-react-app my-app --template @ui5/webcomponents-react-seed
 
 # or if you prefer to use yarn
 
-yarn create react-app my-app --template @ui5/cra-template-webcomponents-react-seed
+yarn create react-app my-app --template @ui5/webcomponents-react-seed
 ```
 
 # Configuration Included
