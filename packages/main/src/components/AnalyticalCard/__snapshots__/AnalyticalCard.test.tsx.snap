@@ -65,26 +65,38 @@ exports[`Analytical Card Render without Crashing 1`] = `
           <div
             class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0 AnalyticalCardHeader-targetAndDeviationColumn-0"
           >
+          <DocumentFragment>
             <span>
               Target
             </span>
+          </DocumentFragment>
+          
+          <DocumentFragment>
             <span
               class="AnalyticalCardHeader-targetAndDeviationValue-0"
             >
               Target
             </span>
+          </DocumentFragment>  
           </div>
           <div
             class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0 AnalyticalCardHeader-targetAndDeviationColumn-0"
           >
+          
+          <DocumentFragment>
             <span>
               Deviation
             </span>
+          </DocumentFragment>
+          
+          <DocumentFragment>
             <span
               class="AnalyticalCardHeader-targetAndDeviationValue-0"
             >
               Deviation
             </span>
+          </DocumentFragment>
+          
           </div>
         </div>
       </div>
@@ -98,11 +110,14 @@ exports[`Analytical Card Render without Crashing 1`] = `
   <div
     class="AnalyticalCard-content-0"
   >
+    
+  <DocumentFragment>  
     <span
       class="Text-text-0"
     >
       I'm a content!
     </span>
+  </DocumentFragment>    
   </div>
 </div>
 `;
