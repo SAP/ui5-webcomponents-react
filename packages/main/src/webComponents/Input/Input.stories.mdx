@@ -1,14 +1,16 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { Input } from '@ui5/webcomponents-react/lib/Input';
+import { ListItemTypes } from '@ui5/webcomponents-react/lib/ListItemTypes';
 import { InputType } from '@ui5/webcomponents-react/lib/InputType';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import '@ui5/webcomponents-icons/dist/icons/employee.js';
+import '@ui5/webcomponents-icons/dist/icons/globe.js';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
-import { CSSProperties } from 'react';
 import { SuggestionItem } from '@ui5/webcomponents-react/lib/SuggestionItem';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
+import '@ui5/webcomponents/dist/features/InputSuggestions.js';
 
 <Meta
   title="UI5 Web Components / Input"
@@ -44,3 +46,89 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 </Canvas>
 
 <ArgsTable story="." />
+
+<br />
+
+# Stories
+
+<br />
+
+## Input with customizable SuggestionItem
+
+The `SuggestionItem` represents the suggestion item of the `Input`
+
+**Note:** `SuggestionItems` will only be displayed if the required module has been imported (`import '@ui5/webcomponents/dist/features/InputSuggestions.js';`)
+and the `showSuggestions` prop is set to `true`.
+
+<Canvas>
+  <Story
+    name="with SuggestionItem"
+    args={{
+      description: 'description',
+      group: false,
+      icon: 'globe',
+      iconEnd: false,
+      image: '',
+      info: 'info',
+      infoState: ValueState.None,
+      text: 'Customizable SuggestionItem',
+      type: ListItemTypes.Active
+    }}
+    argTypes={{
+      description: { description: `Defines the description displayed right under the item text, if such is present.` },
+      group: {
+        description: `Defines the item to be displayed as a group item. <br><br> <b>Note:</b> When set, the other properties, such as <code>image</code>, <code>icon</code>, <code>description</code>, etc. will be omitted and only the <code>text</code> will be displayed.`
+      },
+      icon: {
+        description: `Defines the <code>icon</code> source URI. <br><br> <b>Note:</b> SAP-icons font provides numerous buil-in icons. To find all the available icons, see the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.`
+      },
+      iconEnd: {
+        description: `Defines whether the <code>icon</code> should be displayed in the beginning of the item or in the end. <br><br> <b>Note:</b> If <code>image</code> is set, the <code>icon</code> would be displayed after the <code>image</code>.`
+      },
+      image: {
+        description: `Defines the <code>image</code> source URI. <br><br> <b>Note:</b> The <code>image</code> would be displayed in the beginning of the item.`
+      },
+      info: { description: `Defines the <code>info</code>, displayed in the end of the item.` },
+      infoState: {
+        description: `Defines the state of the <code>info</code>. <br><br> Available options are: <code>"None"</code> (by default), <code>"Success"</code>, <code>"Warning"</code> and <code>"Erorr"</code>.`
+      },
+      text: { description: `Defines the text of the <code>SuggestionItem</code>.` },
+      type: {
+        control: { options: ['Inactive', 'Active', 'Detail'] },
+        description: `Defines the visual indication and behavior of the item. Available options are <code>Active</code> (by default), <code>Inactive</code> and <code>Detail</code>. <br><br> <b>Note:</b> When set to <code>Active</code>, the item will provide visual response upon press and hover, while when <code>Inactive</code> or <code>Detail</code> - will not.`
+      },
+      disabled: { table: { disable: true } },
+      highlight: { table: { disable: true } },
+      maxlength: { table: { disable: true } },
+      name: { table: { disable: true } },
+      placeholder: { table: { disable: true } },
+      readonly: { table: { disable: true } },
+      required: { table: { disable: true } },
+      showSuggestions: { table: { disable: true } },
+      value: { table: { disable: true } },
+      valueState: { table: { disable: true } },
+      children: { table: { disable: true } },
+      valueStateMessage: { table: { disable: true } },
+      onChange: { table: { disable: true } },
+      onInput: { table: { disable: true } },
+      onSubmit: { table: { disable: true } },
+      onSuggestionItemPreview: { table: { disable: true } },
+      onSuggestionItemSelect: { table: { disable: true } },
+      onSuggestionScroll: { table: { disable: true } }
+    }}
+  >
+    {(args) => {
+      console.log(createSelectArgTypes({ type: ListItemTypes }));
+      return (
+        <Input showSuggestions placeholder="click here to show suggestions" style={{ width: '400px' }}>
+          <SuggestionItem {...args} />
+          <SuggestionItem icon="globe" text="Argentina" />
+          <SuggestionItem icon="globe" text="Iceland" />
+          <SuggestionItem icon="globe" text="Moldova" />
+        </Input>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="with SuggestionItem" />
