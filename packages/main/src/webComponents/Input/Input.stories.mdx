@@ -118,7 +118,6 @@ and the `showSuggestions` prop is set to `true`.
     }}
   >
     {(args) => {
-      console.log(createSelectArgTypes({ type: ListItemTypes }));
       return (
         <Input showSuggestions placeholder="click here to show suggestions" style={{ width: '400px' }}>
           <SuggestionItem {...args} />
