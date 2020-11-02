@@ -21,7 +21,11 @@ export default {
   setupFiles: ['jest-canvas-mock'],
   setupFilesAfterEnv: ['./config/jestsetup.ts'],
   testEnvironment: 'jsdom-sixteen',
-  testPathIgnorePatterns: ['/node_modules/', '<rootDir>/packages/cra-template/'],
+  testPathIgnorePatterns: [
+    '/node_modules/',
+    '<rootDir>/packages/cra-template/',
+    '<rootDir>/packages/cra-template-seed/'
+  ],
   transformIgnorePatterns: ['node_modules/(?!(@ui5|lit-html))'],
   moduleNameMapper: {
     '^@shared/(.*)$': '<rootDir>/shared/$1',
