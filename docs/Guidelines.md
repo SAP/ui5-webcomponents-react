@@ -7,17 +7,17 @@
 
 ## Setup your local development environment
 
-Please make sure you have installed `node` 14 or higher (you can check by running `node -v`) and yarn v1 (check by running `yarn -v`).
+Please make sure you have installed `node` 14 or higher (check by running `node -v`) and yarn v1 (check by running `yarn -v`).
 
 First, you need to clone the git repository by running
 ```sh
 # this git url points to the original repository, you can exchange it with the address of your fork
 git clone https://github.com/SAP/ui5-webcomponents-react.git
 ```
-Then, go into that cloned directory and run `yarn install`. At this point you are ready to start local development. You can now run:
+Then, go into that cloned directory and run `yarn install`. At this point, you are ready to start local development. You can now run:
 
 - `yarn start` <br />
-  This starts the local storybook, so you can check if your components are rendered correctly.
+  This starts the local storybook, so you can check if your components are rendered correctly. _If the storybook doesn't open automatically after executing the command, you can use this link: http://localhost:6006/_
 - `yarn test` <br />
   This command is running all tests in the project. You can pass additional parameters according to the [jest documentation](https://jestjs.io/docs/en/cli). Most probably you will only need the `--update` cli parameter when you have changed tests and want to update the snapshots.
 - `yarn build` <br />
@@ -30,7 +30,7 @@ Please use TypeScript to write your components. A good introduction to TypeScrip
 ## Naming Convention for Props
 - All Event handlers **must** start with `on`.<br />
    e.g. `onClick`, `onSelect`, `onSelectionChange`, .etc<br />
-   All Events must pass a instance of the `Event`-Class as single parameter.
+   All Events must pass an instance of the `Event`-Class as single parameter.
 - When passing additional elements into a component, a slot should be used. This prop should contain a `ReactNode` or an array of ReactNodes (`ReactNode[]` or `ReactNodeArray`)
 
 You must follow the coding style as best you can when submitting code. Take note of naming conventions, separation of concerns, and formatting rules. You can use the code formatter [Prettier](https://prettier.io/) to handle some of this for you automatically.
