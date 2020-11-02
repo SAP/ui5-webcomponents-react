@@ -1,4 +1,4 @@
-import { mount } from 'enzyme';
+import { render } from '@shared/tests';
 import { Breadcrumbs } from '@ui5/webcomponents-react/lib/Breadcrumbs';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
@@ -89,70 +89,70 @@ afterAll(() => {
 });
 describe('ObjectPage', () => {
   test('With Subsections', () => {
-    const wrapper = mount(renderComponent());
-    expect(wrapper.render()).toMatchSnapshot();
+    const { asFragment } = render(renderComponent());
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('Only Sections', () => {
-    const wrapper = mount(renderComponentWithSections());
-    expect(wrapper.render()).toMatchSnapshot();
+    const { asFragment } = render(renderComponentWithSections());
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('IconTabBar Mode', () => {
-    const wrapper = mount(renderComponent(ObjectPageMode.IconTabBar));
-    expect(wrapper.render()).toMatchSnapshot();
+    const { asFragment } = render(renderComponent(ObjectPageMode.IconTabBar));
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('Just Some Sections', () => {
-    const wrapper = mount(
+    const { asFragment } = render(
       <ObjectPage mode={ObjectPageMode.IconTabBar}>
         <ObjectPageSection id={'1'}>Test</ObjectPageSection>
         <ObjectPageSection id={'2'}>Test 2</ObjectPageSection>
       </ObjectPage>
     );
 
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('Not crashing with 1 section - Default Mode', () => {
-    const wrapper = mount(
+    const { asFragment } = render(
       <ObjectPage>
         <ObjectPageSection id={'1'}>Test</ObjectPageSection>
       </ObjectPage>
     );
 
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('Not crashing with 1 section - IconTabBar Mode', () => {
-    const wrapper = mount(
+    const { asFragment } = render(
       <ObjectPage mode={ObjectPageMode.IconTabBar}>
         <ObjectPageSection id={'1'}>Test</ObjectPageSection>
       </ObjectPage>
     );
 
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('Not crashing with 0 sections', () => {
-    const wrapper = mount(<ObjectPage mode={ObjectPageMode.IconTabBar} />);
+    const { asFragment } = render(<ObjectPage mode={ObjectPageMode.IconTabBar} />);
 
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('Set selected section id', () => {
-    const wrapper = mount(
+    const { asFragment } = render(
       <ObjectPage selectedSectionId={'2'} mode={ObjectPageMode.IconTabBar}>
         <ObjectPageSection id={'1'}>Test</ObjectPageSection>
         <ObjectPageSection id={'2'}>Test 2</ObjectPageSection>
       </ObjectPage>
     );
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test.skip('onSelectedSectionChangedHandler', () => {
     const callback = jest.fn();
-    const wrapper = mount(
+    const { asFragment } = render(
       <ObjectPage selectedSectionId={'2'} mode={ObjectPageMode.IconTabBar} onSelectedSectionChanged={callback}>
         <ObjectPageSection id={'1'}>Test</ObjectPageSection>
         <ObjectPageSection id={'2'}>Test 2</ObjectPageSection>
@@ -163,13 +163,13 @@ describe('ObjectPage', () => {
   });
 
   test('No Header', () => {
-    const wrapper = mount(
+    const { asFragment } = render(
       <ObjectPage selectedSectionId={'2'} noHeader>
         <ObjectPageSection id={'1'}>Test</ObjectPageSection>
         <ObjectPageSection id={'2'}>Test 2</ObjectPageSection>
       </ObjectPage>
     );
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   const keyInfos = (
@@ -198,13 +198,13 @@ describe('ObjectPage', () => {
   );
 
   test('Key Infos', () => {
-    const wrapper = mount(
+    const { asFragment } = render(
       <ObjectPage keyInfos={keyInfos} breadcrumbs={breadcrumbs}>
         <ObjectPageSection id={'1'}>Test</ObjectPageSection>
         <ObjectPageSection id={'2'}>Test 2</ObjectPageSection>
       </ObjectPage>
     );
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   // createPassThroughPropsTest(ObjectPage);
