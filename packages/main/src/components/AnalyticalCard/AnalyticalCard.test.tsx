@@ -1,5 +1,5 @@
 import { createPassThroughPropsTest } from '@shared/tests/utils';
-import { mount } from 'enzyme';
+import { render } from '@shared/tests';
 import { AnalyticalCard } from '@ui5/webcomponents-react/lib/AnalyticalCard';
 import { AnalyticalCardHeader } from '@ui5/webcomponents-react/lib/AnalyticalCardHeader';
 import { DeviationIndicator } from '@ui5/webcomponents-react/lib/DeviationIndicator';
@@ -26,12 +26,12 @@ const Header = (
 // TODO Add more tests
 describe('Analytical Card', () => {
   test('Render without Crashing', () => {
-    const wrapper = mount(
+    const { asFragment } = render(
       <AnalyticalCard header={Header}>
         <Text>I'm a content!</Text>
       </AnalyticalCard>
     );
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   createPassThroughPropsTest(AnalyticalCard);

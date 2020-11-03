@@ -17,17 +17,19 @@
     "lint": "eslint packages",
     "lerna:version-dryrun": "lerna version --conventional-graduate --no-git-tag-version --no-push",
     "deploy:storybook": "lerna run build:i18n && storybook-to-ghpages --ci",
-    "create-webcomponents-wrapper": "node --experimental-json-modules ./packages/main/scripts/create-web-components-wrapper.mjs"
+    "create-webcomponents-wrapper": "node --experimental-json-modules ./packages/main/scripts/create-web-components-wrapper.mjs",
+    "examples:recreate-seed": "rimraf examples/seed-test && yarn create react-app examples/seed-test --template file:./packages/cra-template-seed",
+    "examples:mock-seed": "cd examples/seed-test && SKIP_PREFLIGHT_CHECK=true yarn mock"
   },
   "dependencies": {
-    "@storybook/addon-actions": "6.0.27",
-    "@storybook/addon-controls": "6.0.27",
-    "@storybook/addon-docs": "6.0.27",
-    "@storybook/addon-toolbars": "6.0.27",
-    "@storybook/addons": "6.0.27",
-    "@storybook/cli": "6.0.27",
-    "@storybook/react": "6.0.27",
-    "@storybook/theming": "6.0.27",
+    "@storybook/addon-actions": "6.0.28",
+    "@storybook/addon-controls": "6.0.28",
+    "@storybook/addon-docs": "6.0.28",
+    "@storybook/addon-toolbars": "6.0.28",
+    "@storybook/addons": "6.0.28",
+    "@storybook/cli": "6.0.28",
+    "@storybook/react": "6.0.28",
+    "@storybook/theming": "6.0.28",
     "@ui5/webcomponents": "1.0.0-rc.9",
     "@ui5/webcomponents-fiori": "1.0.0-rc.9",
     "@ui5/webcomponents-icons": "1.0.0-rc.9",
@@ -97,7 +99,7 @@
     "typescript": "^4.0.3"
   },
   "resolutions": {
-    "@types/react": "16.9.53",
+    "@types/react": "16.9.54",
     "@babel/runtime": "7.12.1",
     "react": "16.8.0",
     "react-dom": "16.8.0"
