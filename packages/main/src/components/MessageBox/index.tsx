@@ -101,6 +101,7 @@ const useStyles = createComponentStyles(styles, { name: 'MessageBox' });
  */
 const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDomRef>) => {
   const { open, type, children, className, style, tooltip, slot, title, icon, actions, onClose } = props;
+  const dialogRef = useConsolidatedRef<Ui5DialogDomRef>(ref);
 
   const classes = useStyles();
 
@@ -190,13 +191,11 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
     (e) => {
       const { action } = e.target.dataset;
       stopPropagation(e);
-      dialogRef.current.close();
       onClose(enrichEventWithDetails(e, { action }));
+      dialogRef.current.close();
     },
-    [onClose]
+    [onClose, dialogRef.current]
   );
-
-  const dialogRef = useConsolidatedRef<Ui5DialogDomRef>(ref);
 
   useEffect(() => {
     if (dialogRef.current) {
