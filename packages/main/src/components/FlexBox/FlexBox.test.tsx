@@ -1,39 +1,37 @@
 import { createPassThroughPropsTest } from '@shared/tests/utils';
-import { render } from '@shared/tests';
+import { render, screen } from '@shared/tests';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJustifyContent';
 import * as React from 'react';
 
 describe('FlexBox', () => {
   test('JustifyContent: End', () => {
-    const { asFragment } = render(
-      <FlexBox justifyContent={FlexBoxJustifyContent.End}>
+    render(
+      <FlexBox justifyContent={FlexBoxJustifyContent.End} data-testid="flexbox">
         <span>Test 1</span>
       </FlexBox>
     );
-    const node = asFragment.getDOMNode();
-    expect(window.getComputedStyle(node).justifyContent).toEqual('flex-end');
+
+    expect(window.getComputedStyle(screen.getByTestId('flexbox')).justifyContent).toEqual('flex-end');
   });
 
   test('Height and Width', () => {
-    const { asFragment } = render(
-      <FlexBox style={{ height: '1337px', width: '42px' }}>
+    render(
+      <FlexBox style={{ height: '1337px', width: '42px' }} data-testid="flexbox">
         <span>Test 1</span>
       </FlexBox>
     );
-    const node = asFragment.getDOMNode();
-    expect(window.getComputedStyle(node).height).toEqual('1337px');
-    expect(window.getComputedStyle(node).width).toEqual('42px');
+    expect(window.getComputedStyle(screen.getByTestId('flexbox')).height).toEqual('1337px');
+    expect(window.getComputedStyle(screen.getByTestId('flexbox')).width).toEqual('42px');
   });
 
   test('Display: Inline', () => {
-    const { asFragment } = render(
-      <FlexBox displayInline>
+    render(
+      <FlexBox displayInline data-testid="flexbox">
         <span>Test 1</span>
       </FlexBox>
     );
-    const node = asFragment.getDOMNode();
-    expect(window.getComputedStyle(node).display).toEqual('inline-flex');
+    expect(window.getComputedStyle(screen.getByTestId('flexbox')).display).toEqual('inline-flex');
   });
 
   test('with Custom Class Names and Style', () => {
@@ -42,7 +40,7 @@ describe('FlexBox', () => {
         <span>Test 1</span>
       </FlexBox>
     );
-    expect(asFragment.render()).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   createPassThroughPropsTest(FlexBox);
