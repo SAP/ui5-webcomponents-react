@@ -14,40 +14,48 @@ import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
   args={{
     open: false,
     type: MessageBoxTypes.CONFIRM,
-    children: 'My Message Box Content'
+    children: 'Press "Escape" to close the MessageBox.'
   }}
 />
 
 <DocsHeader />
 
+<br />
+
+### Opening MessageBoxes
+
+`MessageBoxes` can only be opened by attaching a `ref` to the component and then call the corresponding **`open`** method.
+
+```JSX
+const MessageBoxComponent = () => {
+  const messageBoxRef = useRef();
+  const onButtonClick = () => {
+    messageBoxRef.current.open();
+  };
+  return (
+    <>
+      <Button onClick={onButtonClick}>Open MessageBox</Button>
+      <MessageBox ref={messageBoxRef}>Some Content</MessageBox>
+    </>
+  );
+};
+```
+
 <Canvas>
   <Story name="Default">
     {(args) => {
       const messageBoxRef = useRef();
-      const onButtonClick = useCallback(
-        (e) => {
-          messageBoxRef.current.open();
-        },
-        [messageBoxRef]
-      );
-      const onCloseMessageBox = useCallback(
-        (e) => {
-          messageBoxRef.current.close();
-        },
-        [messageBoxRef]
-      );
+      const onButtonClick = (e) => {
+        messageBoxRef.current.open();
+      };
+      const onCloseMessageBox = (e) => {
+        args.onClose(e);
+        messageBoxRef.current.close();
+      };
       return (
         <>
           <Button onClick={onButtonClick}>Open Messagebox</Button>
-          <MessageBox
-            ref={messageBoxRef}
-            type={args.type}
-            open={args.open}
-            onClose={onCloseMessageBox}
-            title={args.title}
-          >
-            {args.children}
-          </MessageBox>
+          <MessageBox {...args} ref={messageBoxRef} onClose={onCloseMessageBox} />
         </>
       );
     }}
@@ -56,24 +64,72 @@ import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
 <ArgsTable story="." />
 
-### with Custom Action
+### Using MessageBoxes inside other components
+
+`MessageBoxes` are often used within other components, when opened this could sometimes have unwanted side effects.
+In this case, we recommend using [createPortal](https://reactjs.org/docs/portals.html) to mount the `MessageBox` outside of the DOM hierarchy of the parent component.
+
+```JSX
+const MessageBoxComponent = () => {
+  const messageBoxRef = useRef();
+  const onButtonClick = () => {
+    messageBoxRef.current.open();
+  };
+  return (
+    <>
+      <Button onClick={onButtonClick}>Open MessageBox</Button>
+      {createPortal(
+        <MessageBox ref={messageBoxRef}>Some Content</MessageBox>,
+        document.body
+      )}
+    </>
+  );
+};
+```
+
+### Closing MessageBoxes
+
+Closing `MessageBoxes` works in the same way as opening them. So again an attached `ref` is needed on which the corresponding `close` method is called.
+You can use the `onClose` prop of the `MessageBox` to close it by clicking on an action button.
+
+```JSX
+const MessageBoxComponent = () => {
+  const messageBoxRef = useRef();
+  const handleOpen = (e) => {
+    messageBoxRef.current.open();
+  };
+  const handleClose = () => {
+    messageBoxRef.current.close();
+  };
+  return (
+    <>
+      <Button onClick={handleOpen}>Open MessageBox</Button>
+      <MessageBox ref={messageBoxRef} onClose={handleClose}>
+        Some Content
+      </MessageBox>
+    </>
+  );
+};
+```
+
+<br />
+
+# Stories
+
+<br />
+
+## MessageBox with custom actions
 
 <Canvas>
   <Story name="With Custom Action">
     {(args) => {
       const messageBoxRef = useRef();
-      const onButtonClick = useCallback(
-        (e) => {
-          messageBoxRef.current.open();
-        },
-        [messageBoxRef]
-      );
-      const onCloseMessageBox = useCallback(
-        (e) => {
-          messageBoxRef.current.close();
-        },
-        [messageBoxRef]
-      );
+      const onButtonClick = (e) => {
+        messageBoxRef.current.open();
+      };
+      const onCloseMessageBox = (e) => {
+        messageBoxRef.current.close();
+      };
       return (
         <>
           <Button onClick={onButtonClick}>Open Messagebox</Button>

@@ -73,7 +73,7 @@ export interface MessageBoxPropTypes extends CommonProps {
   /**
    * Defines the content of the `MessageBox`.
    *
-   * **Note: Although this prop accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.**
+   * **Note:** Although this prop accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
   children: ReactNode | ReactNodeArray;
   /**
@@ -96,6 +96,9 @@ export interface MessageBoxPropTypes extends CommonProps {
 
 const useStyles = createComponentStyles(styles, { name: 'MessageBox' });
 
+/**
+ * The `MessageBox` component provides easier methods to create a `Dialog`, such as standard alerts, confirmation dialogs, or arbitrary message dialogs.
+ */
 const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDomRef>) => {
   const { open, type, children, className, style, tooltip, slot, title, icon, actions, onClose } = props;
 
