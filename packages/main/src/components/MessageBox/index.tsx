@@ -190,6 +190,7 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
     (e) => {
       const { action } = e.target.dataset;
       stopPropagation(e);
+      dialogRef.current.close();
       onClose(enrichEventWithDetails(e, { action }));
     },
     [onClose]

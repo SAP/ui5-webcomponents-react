@@ -48,14 +48,10 @@ const MessageBoxComponent = () => {
       const onButtonClick = (e) => {
         messageBoxRef.current.open();
       };
-      const onCloseMessageBox = (e) => {
-        args.onClose(e);
-        messageBoxRef.current.close();
-      };
       return (
         <>
           <Button onClick={onButtonClick}>Open Messagebox</Button>
-          <MessageBox {...args} ref={messageBoxRef} onClose={onCloseMessageBox} />
+          <MessageBox {...args} ref={messageBoxRef} />
         </>
       );
     }}
@@ -87,33 +83,6 @@ const MessageBoxComponent = () => {
 };
 ```
 
-### Closing MessageBoxes
-
-Closing `MessageBoxes` works in the same way as opening them. So again an attached `ref` is needed on which the corresponding `close` method is called.
-You can use the `onClose` prop of the `MessageBox` to close it by clicking on an action button.
-
-```JSX
-const MessageBoxComponent = () => {
-  const messageBoxRef = useRef();
-  const handleOpen = (e) => {
-    messageBoxRef.current.open();
-  };
-  const handleClose = () => {
-    messageBoxRef.current.close();
-  };
-  return (
-    <>
-      <Button onClick={handleOpen}>Open MessageBox</Button>
-      <MessageBox ref={messageBoxRef} onClose={handleClose}>
-        Some Content
-      </MessageBox>
-    </>
-  );
-};
-```
-
-<br />
-
 # Stories
 
 <br />
@@ -127,22 +96,14 @@ const MessageBoxComponent = () => {
       const onButtonClick = (e) => {
         messageBoxRef.current.open();
       };
-      const onCloseMessageBox = (e) => {
-        messageBoxRef.current.close();
-      };
       return (
         <>
           <Button onClick={onButtonClick}>Open Messagebox</Button>
           <MessageBox
+            {...args}
             ref={messageBoxRef}
-            type={args.type}
-            open={args.open}
-            onClose={onCloseMessageBox}
-            title={args.title}
             actions={[MessageBoxActions.OK, 'A custom action', MessageBoxActions.CANCEL]}
-          >
-            {args.children}
-          </MessageBox>
+          />
         </>
       );
     }}
