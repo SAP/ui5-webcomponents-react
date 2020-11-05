@@ -4,7 +4,6 @@ import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
 import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
-import { mount } from 'enzyme';
 import React, { useRef } from 'react';
 
 const columns = [
@@ -149,7 +148,7 @@ describe('AnalyticalTable', () => {
   //todo when it's possible to open popovers on click, activate this test again
   test.skip('test Asc desc', async () => {
     const { asFragment } = render(<AnalyticalTable data={data} title={'Test'} columns={columns} />);
-    
+
     expect(asFragment()).toMatchSnapshot();
 
     fireEvent.click(screen.getAllByText('Sort Ascending')[0], { bubbles: false });
@@ -163,7 +162,7 @@ describe('AnalyticalTable', () => {
   });
 
   test('Tree Table', () => {
-    const wrapper = mount(
+    const utils = render(
       <AnalyticalTable
         title="Table Title"
         data={dataTree}
@@ -179,41 +178,41 @@ describe('AnalyticalTable', () => {
       />
     );
 
-    const colInst = wrapper.find('div[role="columnheader"]').at(0).instance();
+    const colInst = utils.container.querySelector<HTMLElement>('div[role="columnheader"]');
 
-    // @ts-ignore
     expect(colInst.draggable).toBeDefined();
-    // @ts-ignore
     expect(colInst.draggable).toBeFalsy();
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(utils.asFragment()).toMatchSnapshot();
   });
 
   test('Loading - Placeholder', () => {
-    const wrapper = mount(
+    const { asFragment } = render(
       <AnalyticalTable title="Table Title" data={[]} columns={columns} loading visibleRows={15} minRows={5} />
     );
 
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('Loading - Loader', () => {
-    const wrapper = mount(
+    const { asFragment } = render(
       <AnalyticalTable title="Table Title" data={data} columns={columns} loading visibleRows={15} minRows={5} />
     );
 
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('Alternate Row Color', () => {
-    const wrapper = mount(<AnalyticalTable title="Table Title" data={data} columns={columns} alternateRowColor />);
+    const { asFragment } = render(
+      <AnalyticalTable title="Table Title" data={data} columns={columns} alternateRowColor />
+    );
 
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('custom row height', () => {
-    const wrapper = mount(<AnalyticalTable title="Table Title" data={data} columns={columns} rowHeight={60} />);
+    const { asFragment } = render(<AnalyticalTable title="Table Title" data={data} columns={columns} rowHeight={60} />);
 
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('with initial column order', () => {
@@ -236,43 +235,39 @@ describe('AnalyticalTable', () => {
   });
 
   test('test drag and drop of a draggable column', () => {
-    const wrapper = mount(<AnalyticalTable data={data} title={'Test'} columns={columns} />);
+    const { asFragment, container } = render(<AnalyticalTable data={data} title={'Test'} columns={columns} />);
 
     // get first column of the table and simulate dragging of it
-    let componentDrag = wrapper.find('div[role="columnheader"][draggable]').at(0);
-    let inst = componentDrag.instance();
-    // @ts-ignore
-    let dragColumnId = inst.dataset.columnId;
+    let componentDrag = container.querySelector<HTMLElement>('div[role="columnheader"][draggable]');
+    let dragColumnId = componentDrag.dataset.columnId;
 
-    // @ts-ignore
-    expect(inst.draggable).toBeDefined();
-    // @ts-ignore
-    expect(inst.draggable).toBeTruthy();
-    // @ts-ignore
-    componentDrag.simulate('drag');
+    expect(componentDrag.draggable).toBeDefined();
+    expect(componentDrag.draggable).toBeTruthy();
+    fireEvent.drag(componentDrag);
 
     // get second column of the table and simulate dropping on it
-    let dataTransfer = {};
-    // @ts-ignore
-    dataTransfer.getData = () => {
-      return dragColumnId;
+    let dataTransfer = {
+      getData: () => {
+        return dragColumnId;
+      }
     };
-    let componentDrop = wrapper.find('div[role="columnheader"][draggable]').at(1);
-    // @ts-ignore
-    componentDrop.simulate('drop', { dataTransfer: dataTransfer });
+    let componentDrop = container.querySelectorAll('div[role="columnheader"][draggable]')[1];
+    fireEvent.drag(componentDrop, { dataTransfer });
 
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('render without data', () => {
     const data = [];
-    const wrapper = mount(<AnalyticalTable title="Table Title" data={data} columns={columns} alternateRowColor />);
+    const { asFragment } = render(
+      <AnalyticalTable title="Table Title" data={data} columns={columns} alternateRowColor />
+    );
 
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('without selection Column', () => {
-    const wrapper = mount(
+    const { asFragment } = render(
       <AnalyticalTable
         title="Table Title"
         data={data}
@@ -282,7 +277,7 @@ describe('AnalyticalTable', () => {
       />
     );
 
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('Check for scrollTo and scrollToItem functions', () => {
@@ -341,7 +336,7 @@ describe('AnalyticalTable', () => {
   });
 
   test('with highlight row', () => {
-    const wrapper = mount(
+    const { asFragment } = render(
       <AnalyticalTable
         title="Table Title"
         data={data}
@@ -351,7 +346,7 @@ describe('AnalyticalTable', () => {
       />
     );
 
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('highlight row with custom row key', () => {
