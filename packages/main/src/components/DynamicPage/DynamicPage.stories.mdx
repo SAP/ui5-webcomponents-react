@@ -20,6 +20,8 @@ import { ObjectStatus } from '@ui5/webcomponents-react/lib/ObjectStatus';
 import { ProductsTable } from '@shared/stories/ProductsTable';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { VariantManagement } from '@ui5/webcomponents-react/lib/VariantManagement';
+import { useState } from 'react';
 
 <Meta
   title="Components / DynamicPage"
@@ -175,6 +177,106 @@ import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
         <ProductsTable />
       </DynamicPage>
     )}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="With Variants">
+    {(args) => {
+      const [headerVariant, setHeaderVariant] = useState('1');
+      const [navigationItems, setNavigationItems] = useState([
+        <Button key={'decline'} icon="decline" design={ButtonDesign.Transparent} />
+      ]);
+      const [actionItems, setActionItems] = useState([
+        <Button key={'edit'} design={ButtonDesign.Emphasized}>
+          Edit
+        </Button>,
+        <Button key={'delete'} design={ButtonDesign.Transparent}>
+          Delete
+        </Button>
+      ]);
+      const selectVariant = (e) => {
+        setHeaderVariant(e.detail?.selectedItem?.key);
+        setNavigationItems(
+          e.detail?.selectedItem?.key === '2'
+            ? [
+                <Button key={'fullscreen'} icon="full-screen" design={ButtonDesign.Transparent} />,
+                <Button key={'exitFullscreen'} icon="exit-full-screen" design={ButtonDesign.Transparent} />,
+                <Button key={'decline'} icon="decline" design={ButtonDesign.Transparent} />
+              ]
+            : [<Button key={'decline'} icon="decline" design={ButtonDesign.Transparent} />]
+        );
+        setActionItems(
+          e.detail?.selectedItem?.key === '1'
+            ? [
+                <Button key={'edit'} design={ButtonDesign.Emphasized}>
+                  Edit
+                </Button>,
+                <Button key={'delete'} design={ButtonDesign.Transparent}>
+                  Delete
+                </Button>
+              ]
+            : [
+                <Button key={'copy'} design={ButtonDesign.Transparent}>
+                  Copy
+                </Button>,
+                <Button key={'toggleFoooter'} design={ButtonDesign.Transparent}>
+                  Toggle Footer
+                </Button>,
+                <Button key={'action'} icon="action" design={ButtonDesign.Transparent}></Button>
+              ]
+        );
+      };
+      return (
+        <DynamicPage
+          {...args}
+          title={
+            <DynamicPageTitle
+              actions={actionItems}
+              navigationActions={navigationItems}
+              breadcrumbs={
+                <Breadcrumbs>
+                  <Link>Home</Link>
+                  <Link>Page 1</Link>
+                  <Link>Page 2</Link>
+                  <Link>Page 3</Link>
+                  <Link>Page 4</Link>
+                  <Link>Page 5</Link>
+                </Breadcrumbs>
+              }
+              heading={
+                <VariantManagement
+                  onSelect={selectVariant}
+                  variantItems={[
+                    { label: 'Header Variant 1', key: '1' },
+                    { label: 'Header Variant 2', key: '2' }
+                  ]}
+                  selectedKey={headerVariant}
+                />
+              }
+              subHeading={<Label>This is a subheading</Label>}
+            >
+              <Badge>Status: OK</Badge>
+            </DynamicPageTitle>
+          }
+          header={
+            <DynamicPageHeader>
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
+                <Label>Location: Warehouse A</Label>
+                <Label>Halway: 23L</Label>
+                <Label>Rack: 34</Label>
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '2vw' }}>
+                <Label>Availability:</Label>
+                <ObjectStatus state={ValueState.Success}>In Stock</ObjectStatus>
+              </div>
+            </DynamicPageHeader>
+          }
+        >
+          <ProductsTable />
+        </DynamicPage>
+      );
+    }}
   </Story>
 </Canvas>
 
