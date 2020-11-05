@@ -1,5 +1,6 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
+import { useIsRTL } from '@ui5/webcomponents-react-base/lib/useIsRTL';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { BarChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/BarChartPlaceholder';
@@ -206,6 +207,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
             tickLine={tickLineConfig}
             tickFormatter={primaryMeasure?.formatter}
             height={xAxisHeight}
+            reversed={useIsRTL()}
           />
         )}
         {chartConfig.yAxisVisible &&
@@ -222,6 +224,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
                 yAxisId={index}
                 width={width[index]}
                 allowDuplicatedCategory={index === 0}
+                orientation={useIsRTL() ? 'right' : 'left'}
               />
             );
           })}
