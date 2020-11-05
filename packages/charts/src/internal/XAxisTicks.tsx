@@ -32,7 +32,7 @@ export const XAxisTicks: FC<XAxisTicksProps> = (props: XAxisTicksProps) => {
   }
 
   return (
-    <g transform={`translate(${x},${y + 10})`}>
+    <g style={{ direction: 'ltr' }} transform={`translate(${x},${y + 10})`}>
       <text
         fill={ThemingParameters.sapContent_LabelColor}
         transform={shouldRotate ? 'rotate(-35)' : undefined}
