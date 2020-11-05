@@ -263,6 +263,7 @@ exports[`BarRechart Renders with data 1`] = `
                   y2="350"
                 />
                 <g
+                  style="direction: ltr;"
                   transform="translate(19,368)"
                 >
                   <text
@@ -293,6 +294,7 @@ exports[`BarRechart Renders with data 1`] = `
                   y2="350"
                 />
                 <g
+                  style="direction: ltr;"
                   transform="translate(106.75,368)"
                 >
                   <text
@@ -323,6 +325,7 @@ exports[`BarRechart Renders with data 1`] = `
                   y2="350"
                 />
                 <g
+                  style="direction: ltr;"
                   transform="translate(194.5,368)"
                 >
                   <text
@@ -353,6 +356,7 @@ exports[`BarRechart Renders with data 1`] = `
                   y2="350"
                 />
                 <g
+                  style="direction: ltr;"
                   transform="translate(282.25,368)"
                 >
                   <text
@@ -383,6 +387,7 @@ exports[`BarRechart Renders with data 1`] = `
                   y2="350"
                 />
                 <g
+                  style="direction: ltr;"
                   transform="translate(370,368)"
                 >
                   <text
