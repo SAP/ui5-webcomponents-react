@@ -17,7 +17,8 @@ import React, {
   RefObject,
   useRef,
   useCallback,
-  useState
+  useState,
+  useEffect
 } from 'react';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
 import { useObserveHeights } from '../ObjectPage/useObserveHeights';
@@ -158,6 +159,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
       onToggleHeaderContentVisibility(e, anchorBarRef.current.children.item(0).children.item(0));
     }
   };
+
   const handleHeaderPinnedChange = useCallback(
     (headerWillPin) => {
       if (headerWillPin) {
@@ -168,6 +170,15 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
     },
     [setHeaderStateRef]
   );
+
+  useEffect(() => {
+    if (alwaysShowContentHeader) {
+      setHeaderState(HEADER_STATES.VISIBLE_PINNED);
+    } else {
+      setHeaderStateRef(HEADER_STATES.AUTO);
+    }
+  }, [alwaysShowContentHeader]);
+
   return (
     <div
       ref={dynamicPageRef}
