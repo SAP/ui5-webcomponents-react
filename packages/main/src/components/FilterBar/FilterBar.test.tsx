@@ -13,7 +13,7 @@ import { Switch } from '@ui5/webcomponents-react/lib/Switch';
 import { VariantManagement } from '@ui5/webcomponents-react/lib/VariantManagement';
 import { MultiComboBoxItem } from '@ui5/webcomponents-react/lib/MultiComboBoxItem';
 import { Toolbar } from '@ui5/webcomponents-react/lib/Toolbar';
-import { mount } from 'enzyme';
+import { render } from '@shared/tests';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 
@@ -27,7 +27,7 @@ const search = <Input placeholder={'Search'} />;
 
 describe('FilterBar', () => {
   it('Render without crashing - default props', () => {
-    const wrapper = mount(
+    const { asFragment } = render(
       <FilterBar>
         <FilterGroupItem label="Classification" key="classification">
           <Select>
@@ -39,11 +39,11 @@ describe('FilterBar', () => {
         </FilterGroupItem>
       </FilterBar>
     );
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('Render without crashing - w/ filter dialog', () => {
-    const wrapper = mount(
+    const { asFragment } = render(
       <FilterBar
         search={search}
         variants={variants}
@@ -108,11 +108,11 @@ describe('FilterBar', () => {
         </FilterGroupItem>
       </FilterBar>
     );
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('Hide FilterBar', () => {
-    const wrapper = mount(
+    const { asFragment } = render(
       <FilterBar>
         <FilterGroupItem label="Classification" key="classification">
           <Select>
@@ -124,17 +124,17 @@ describe('FilterBar', () => {
         </FilterGroupItem>
       </FilterBar>
     );
-    const toggleBtn = wrapper.find('Button');
+    const toggleBtn = asFragment.find('Button');
     const toggleBtnBefore = toggleBtn.render();
     act(() => {
       toggleBtn.getElement().props.onClick();
     });
     expect(toggleBtn.render()).not.toBe(toggleBtnBefore);
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it.skip('Toggle Filters Dialog', () => {
-    const wrapper = mount(
+    const { asFragment } = render(
       <FilterBar
         search={search}
         variants={variants}
@@ -200,48 +200,48 @@ describe('FilterBar', () => {
       </FilterBar>,
       { attachTo: document.body.appendChild(document.createElement('div')) }
     );
-    const openFiltersDialogBtn = wrapper.find(Toolbar).find(Button).at(5);
+    const openFiltersDialogBtn = asFragment.find(Toolbar).find(Button).at(5);
 
     act(() => {
       openFiltersDialogBtn.prop('onClick')();
     });
-    wrapper.update();
-    expect(wrapper.find('ui5-dialog').exists()).toBeTruthy();
-    expect(wrapper.render()).toMatchSnapshot();
-    const filtersDialogBtns = (index) => wrapper.find(Bar).find(Button).at(index);
+    asFragment.update();
+    expect(asFragment.find('ui5-dialog').exists()).toBeTruthy();
+    expect(asFragment()).toMatchSnapshot();
+    const filtersDialogBtns = (index) => asFragment.find(Bar).find(Button).at(index);
     act(() => {
       //@ts-ignore
       filtersDialogBtns(0).prop('onClick')();
     });
-    wrapper.update();
-    expect(wrapper.find('ui5-dialog').exists()).toBeFalsy();
-    expect(wrapper.render()).toMatchSnapshot();
+    asFragment.update();
+    expect(asFragment.find('ui5-dialog').exists()).toBeFalsy();
+    expect(asFragment.render()).toMatchSnapshot();
     act(() => {
       openFiltersDialogBtn.prop('onClick')();
     });
-    wrapper.update();
-    expect(wrapper.find('ui5-dialog').exists()).toBeTruthy();
+    asFragment.update();
+    expect(asFragment.find('ui5-dialog').exists()).toBeTruthy();
     act(() => {
       //@ts-ignore
       filtersDialogBtns(3).prop('onClick')();
     });
-    wrapper.update();
-    expect(wrapper.find('ui5-dialog').exists()).toBeFalsy();
+    asFragment.update();
+    expect(asFragment.find('ui5-dialog').exists()).toBeFalsy();
     act(() => {
       openFiltersDialogBtn.prop('onClick')();
     });
-    wrapper.update();
-    expect(wrapper.find('ui5-dialog').exists()).toBeTruthy();
+    asFragment.update();
+    expect(asFragment.find('ui5-dialog').exists()).toBeTruthy();
     act(() => {
       //@ts-ignore
       filtersDialogBtns(4).prop('onClick')();
     });
-    wrapper.update();
-    expect(wrapper.find('ui5-dialog').exists()).toBeFalsy();
+    asFragment.update();
+    expect(asFragment.find('ui5-dialog').exists()).toBeFalsy();
   });
 
   it('Group Filter Items mounted in Dialog', () => {
-    const wrapper = mount(
+    const { asFragment } = render(
       <FilterBar
         search={search}
         showClearOnFB={true}
@@ -269,14 +269,14 @@ describe('FilterBar', () => {
       { attachTo: document.body.appendChild(document.createElement('div')) }
     );
 
-    const filterItemsFB = wrapper.find(FilterGroupItem);
-    const openFiltersDialogBtn = wrapper.find(Toolbar).find(Button).at(3);
+    const filterItemsFB = asFragment.find(FilterGroupItem);
+    const openFiltersDialogBtn = asFragment.find(Toolbar).find(Button).at(3);
     act(() => {
       openFiltersDialogBtn.prop('onClick')();
     });
-    wrapper.update();
+    asFragment.update();
 
-    const filterItemsDialog = wrapper.find('ui5-dialog').find(FilterGroupItem);
+    const filterItemsDialog = asFragment.find('ui5-dialog').find(FilterGroupItem);
 
     const filterItemsDialogString = filterItemsDialog.debug({ ignoreProps: true });
     const filterItemsFBString = filterItemsFB.debug({ ignoreProps: true });

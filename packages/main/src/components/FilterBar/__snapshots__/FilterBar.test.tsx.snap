@@ -68,354 +68,404 @@ exports[`FilterBar Hide FilterBar 1`] = `
 `;
 
 exports[`FilterBar Render without crashing - default props 1`] = `
-<div
-  class="FilterBar-outerContainer-0"
->
+<DocumentFragment>
   <div
-    class="Toolbar-outerContainer-0 Toolbar-clear-0 FilterBar-filterBarHeader-0"
+    class="FilterBar-outerContainer"
   >
     <div
-      class="Toolbar-toolbar-0"
-    >
-      <span
-        class="spacer"
-        style="flex-grow: 1;"
-      />
-      <div>
-        <ui5-button
-          class="FilterBar-showFiltersBtn-0"
-          design="Transparent"
-        >
-          Hide Filter Bar
-        </ui5-button>
-      </div>
-    </div>
-  </div>
-  <div
-    class="FilterBar-filterArea-0 FilterBar-filterAreaOpen-0"
-  >
-    <div
-      class="FilterGroupItem-filterItem-0"
+      class="Toolbar-outerContainer Toolbar-clear FilterBar-filterBarHeader"
     >
       <div
-        class="FilterGroupItem-innerFilterItemContainer-0"
+        class="Toolbar-toolbar"
+      >
+        <span
+          class="spacer"
+          style="flex-grow: 1;"
+        />
+        <div>
+          <ui5-button
+            class="FilterBar-showFiltersBtn"
+            design="Transparent"
+            ui5-button=""
+          >
+            Hide Filter Bar
+          </ui5-button>
+        </div>
+      </div>
+    </div>
+    <div
+      class="FilterBar-filterArea FilterBar-filterAreaOpen"
+    >
+      <div
+        class="FilterGroupItem-filterItem"
       >
         <div
-          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
+          class="FilterGroupItem-innerFilterItemContainer"
         >
-          <ui5-label
-            title="Classification"
+          <div
+            class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
           >
-            
+            <ui5-label
+              title="Classification"
+              ui5-label=""
+            >
+              
           Classification
-          </ui5-label>
-        </div>
-        <ui5-select
-          value-state="None"
-        >
-          <ui5-option>
-            Option 1
-          </ui5-option>
-          <ui5-option
-            selected="true"
+            </ui5-label>
+          </div>
+          <ui5-select
+            value-state="None"
           >
-            Option 2
-          </ui5-option>
-          <ui5-option>
-            Option 3
-          </ui5-option>
-          <ui5-option>
-            Option 4
-          </ui5-option>
-        </ui5-select>
+            <ui5-option
+              ui5-option=""
+            >
+              Option 1
+            </ui5-option>
+            <ui5-option
+              selected="true"
+              ui5-option=""
+            >
+              Option 2
+            </ui5-option>
+            <ui5-option
+              ui5-option=""
+            >
+              Option 3
+            </ui5-option>
+            <ui5-option
+              ui5-option=""
+            >
+              Option 4
+            </ui5-option>
+          </ui5-select>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</DocumentFragment>
 `;
 
 exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
-<div
-  class="FilterBar-outerContainer-0 FilterBar-filterItemExpand-0"
->
+<DocumentFragment>
   <div
-    class="Toolbar-outerContainer-0 Toolbar-clear-0 FilterBar-filterBarHeader-0"
+    class="FilterBar-outerContainer FilterBar-filterItemExpand"
   >
     <div
-      class="Toolbar-toolbar-0"
+      class="Toolbar-outerContainer Toolbar-clear FilterBar-filterBarHeader"
     >
-      <div>
-        <div
-          class="VariantManagement-container-0"
-        >
-          <ui5-title
-            class="VariantManagement-title-0"
-            level="H4"
+      <div
+        class="Toolbar-toolbar"
+      >
+        <div>
+          <div
+            class="VariantManagement-container"
           >
-            Variant 1
-          </ui5-title>
-          <ui5-button
-            design="Transparent"
-            icon="navigation-down-arrow"
+            <ui5-title
+              class="VariantManagement-title"
+              level="H4"
+              ui5-title=""
+            >
+              Variant 1
+            </ui5-title>
+            <ui5-button
+              design="Transparent"
+              icon="navigation-down-arrow"
+              ui5-button=""
+            />
+          </div>
+        </div>
+        <div>
+          <div
+            class="ToolbarSeparator-separator"
           />
         </div>
-      </div>
-      <div>
-        <div
-          class="ToolbarSeparator-separator-0"
-        />
-      </div>
-      <div>
         <div>
+          <div>
+            <ui5-input
+              placeholder="Search"
+              type="Text"
+              ui5-input=""
+              value-state="None"
+            />
+          </div>
+        </div>
+        <span
+          class="spacer"
+          style="flex-grow: 1;"
+        />
+        <div>
+          <ui5-button
+            design="Transparent"
+            ui5-button=""
+          >
+            Clear
+          </ui5-button>
+        </div>
+        <div>
+          <ui5-button
+            design="Transparent"
+            ui5-button=""
+          >
+            Restore
+          </ui5-button>
+        </div>
+        <div>
+          <ui5-button
+            class="FilterBar-showFiltersBtn"
+            design="Transparent"
+            ui5-button=""
+          >
+            Hide Filter Bar
+          </ui5-button>
+        </div>
+        <div>
+          <ui5-button
+            design="Default"
+            ui5-button=""
+          >
+            Filters (1337)
+          </ui5-button>
+        </div>
+        <div>
+          <ui5-button
+            design="Emphasized"
+            ui5-button=""
+          >
+            Go
+          </ui5-button>
+        </div>
+      </div>
+    </div>
+    <div
+      class="FilterBar-filterArea FilterBar-filterAreaOpen"
+    >
+      <div
+        class="FilterGroupItem-filterItem"
+        style="width: 12rem;"
+      >
+        <div
+          class="FilterGroupItem-innerFilterItemContainer"
+        >
+          <div
+            class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+          >
+            <ui5-label
+              title="Input"
+              ui5-label=""
+            >
+              
+          Input
+            </ui5-label>
+          </div>
           <ui5-input
-            placeholder="Search"
+            placeholder="Placeholder"
             type="Text"
+            ui5-input=""
             value-state="None"
           />
         </div>
       </div>
-      <span
-        class="spacer"
-        style="flex-grow: 1;"
-      />
-      <div>
-        <ui5-button
-          design="Transparent"
-        >
-          Clear
-        </ui5-button>
-      </div>
-      <div>
-        <ui5-button
-          design="Transparent"
-        >
-          Restore
-        </ui5-button>
-      </div>
-      <div>
-        <ui5-button
-          class="FilterBar-showFiltersBtn-0"
-          design="Transparent"
-        >
-          Hide Filter Bar
-        </ui5-button>
-      </div>
-      <div>
-        <ui5-button
-          design="Default"
-        >
-          Filters (1337)
-        </ui5-button>
-      </div>
-      <div>
-        <ui5-button
-          design="Emphasized"
-        >
-          Go
-        </ui5-button>
-      </div>
-    </div>
-  </div>
-  <div
-    class="FilterBar-filterArea-0 FilterBar-filterAreaOpen-0"
-  >
-    <div
-      class="FilterGroupItem-filterItem-0"
-      style="width: 12rem;"
-    >
       <div
-        class="FilterGroupItem-innerFilterItemContainer-0"
+        class="FilterGroupItem-filterItem"
+        style="width: 12rem;"
       >
         <div
-          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
+          class="FilterGroupItem-innerFilterItemContainer"
         >
-          <ui5-label
-            title="Input"
+          <div
+            class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
           >
-            
-          Input
-          </ui5-label>
-        </div>
-        <ui5-input
-          placeholder="Placeholder"
-          type="Text"
-          value-state="None"
-        />
-      </div>
-    </div>
-    <div
-      class="FilterGroupItem-filterItem-0"
-      style="width: 12rem;"
-    >
-      <div
-        class="FilterGroupItem-innerFilterItemContainer-0"
-      >
-        <div
-          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
-        >
-          <ui5-label
-            title="Switch"
-          >
-            
+            <ui5-label
+              title="Switch"
+              ui5-label=""
+            >
+              
           Switch
-          </ui5-label>
+            </ui5-label>
+          </div>
+          <ui5-switch
+            ui5-switch=""
+          />
         </div>
-        <ui5-switch />
       </div>
-    </div>
-    <div
-      class="FilterGroupItem-filterItem-0"
-      style="width: 12rem;"
-    >
       <div
-        class="FilterGroupItem-innerFilterItemContainer-0"
+        class="FilterGroupItem-filterItem"
+        style="width: 12rem;"
       >
         <div
-          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
+          class="FilterGroupItem-innerFilterItemContainer"
         >
-          <ui5-label
-            title="SELECT w/ initial selected"
+          <div
+            class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
           >
-            
+            <ui5-label
+              title="SELECT w/ initial selected"
+              ui5-label=""
+            >
+              
           SELECT w/ initial selected
-          </ui5-label>
-        </div>
-        <ui5-select
-          value-state="None"
-        >
-          <ui5-option>
-            Option 1
-          </ui5-option>
-          <ui5-option
-            selected="true"
+            </ui5-label>
+          </div>
+          <ui5-select
+            ui5-select=""
+            value-state="None"
           >
-            Option 2
-          </ui5-option>
-          <ui5-option>
-            Option 3
-          </ui5-option>
-          <ui5-option>
-            Option 4
-          </ui5-option>
-        </ui5-select>
+            <ui5-option
+              ui5-option=""
+            >
+              Option 1
+            </ui5-option>
+            <ui5-option
+              selected="true"
+              ui5-option=""
+            >
+              Option 2
+            </ui5-option>
+            <ui5-option
+              ui5-option=""
+            >
+              Option 3
+            </ui5-option>
+            <ui5-option
+              ui5-option=""
+            >
+              Option 4
+            </ui5-option>
+          </ui5-select>
+        </div>
       </div>
-    </div>
-    <div
-      class="FilterGroupItem-filterItem-0"
-      style="width: 12rem;"
-    >
       <div
-        class="FilterGroupItem-innerFilterItemContainer-0"
+        class="FilterGroupItem-filterItem"
+        style="width: 12rem;"
       >
         <div
-          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
+          class="FilterGroupItem-innerFilterItemContainer"
         >
-          <ui5-label
-            title="SELECT w/o initial selected"
+          <div
+            class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
           >
-            
+            <ui5-label
+              title="SELECT w/o initial selected"
+              ui5-label=""
+            >
+              
           SELECT w/o initial selected
-          </ui5-label>
+            </ui5-label>
+          </div>
+          <ui5-select
+            ui5-select=""
+            value-state="None"
+          >
+            <ui5-option
+              data-key="Test 1"
+              icon="add"
+              selected="true"
+              ui5-option=""
+            >
+              Test 1
+            </ui5-option>
+            <ui5-option
+              data-key="Test 2"
+              icon="add"
+              ui5-option=""
+            >
+              Test 2
+            </ui5-option>
+            <ui5-option
+              data-key="Test 3"
+              icon="add"
+              ui5-option=""
+            >
+              Test 3
+            </ui5-option>
+            <ui5-option
+              data-key="Test 4"
+              icon="add"
+              ui5-option=""
+            >
+              Test 4
+            </ui5-option>
+            <ui5-option
+              data-key="Test 5"
+              icon="add"
+              ui5-option=""
+            >
+              Test 5
+            </ui5-option>
+          </ui5-select>
         </div>
-        <ui5-select
-          value-state="None"
-        >
-          <ui5-option
-            data-key="Test 1"
-            icon="add"
-            selected="true"
-          >
-            Test 1
-          </ui5-option>
-          <ui5-option
-            data-key="Test 2"
-            icon="add"
-          >
-            Test 2
-          </ui5-option>
-          <ui5-option
-            data-key="Test 3"
-            icon="add"
-          >
-            Test 3
-          </ui5-option>
-          <ui5-option
-            data-key="Test 4"
-            icon="add"
-          >
-            Test 4
-          </ui5-option>
-          <ui5-option
-            data-key="Test 5"
-            icon="add"
-          >
-            Test 5
-          </ui5-option>
-        </ui5-select>
       </div>
-    </div>
-    <div
-      class="FilterGroupItem-filterItem-0"
-      style="width: 12rem;"
-    >
       <div
-        class="FilterGroupItem-innerFilterItemContainer-0"
+        class="FilterGroupItem-filterItem"
+        style="width: 12rem;"
       >
         <div
-          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
+          class="FilterGroupItem-innerFilterItemContainer"
         >
-          <ui5-label
-            required="true"
-            title="MultBox"
+          <div
+            class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
           >
-            Group 2: 
+            <ui5-label
+              required="true"
+              title="MultBox"
+              ui5-label=""
+            >
+              Group 2: 
           MultBox
-          </ui5-label>
+            </ui5-label>
+          </div>
+          <ui5-multi-combobox
+            ui5-multi-combobox=""
+            value-state="None"
+          >
+            <ui5-mcb-item
+              text="MultiComboBoxItem 1"
+              ui5-mcb-item=""
+            />
+            <ui5-mcb-item
+              text="MultiComboBoxItem 2"
+              ui5-mcb-item=""
+            />
+            <ui5-mcb-item
+              text="MultiComboBoxItem 3"
+              ui5-mcb-item=""
+            />
+            <ui5-mcb-item
+              text="MultiComboBoxItem 4"
+              ui5-mcb-item=""
+            />
+          </ui5-multi-combobox>
         </div>
-        <ui5-multi-combobox
-          value-state="None"
-        >
-          <ui5-mcb-item
-            text="MultiComboBoxItem 1"
-          />
-          <ui5-mcb-item
-            text="MultiComboBoxItem 2"
-          />
-          <ui5-mcb-item
-            text="MultiComboBoxItem 3"
-          />
-          <ui5-mcb-item
-            text="MultiComboBoxItem 4"
-          />
-        </ui5-multi-combobox>
       </div>
-    </div>
-    <div
-      class="FilterGroupItem-filterItem-0"
-      style="width: 12rem;"
-    >
       <div
-        class="FilterGroupItem-innerFilterItemContainer-0"
+        class="FilterGroupItem-filterItem"
+        style="width: 12rem;"
       >
         <div
-          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
+          class="FilterGroupItem-innerFilterItemContainer"
         >
-          <ui5-label
-            required="true"
-            title="Date Picker"
+          <div
+            class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
           >
-            Group 2: 
+            <ui5-label
+              required="true"
+              title="Date Picker"
+              ui5-label=""
+            >
+              Group 2: 
           Date Picker
-          </ui5-label>
+            </ui5-label>
+          </div>
+          <ui5-date-picker
+            primary-calendar-type="Gregorian"
+            ui5-date-picker=""
+            value-state="None"
+          />
         </div>
-        <ui5-date-picker
-          primary-calendar-type="Gregorian"
-          value-state="None"
-        />
       </div>
     </div>
   </div>
-</div>
+</DocumentFragment>
 `;
 
 exports[`FilterBar Toggle Filters Dialog 1`] = `
