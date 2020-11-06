@@ -1,0 +1,1941 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DynamicPage always show content header 1`] = `
+<DocumentFragment>
+  <div
+    class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundStandard"
+  >
+    <div
+      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container"
+      data-component-name="DynamicPageTitle"
+    >
+      <div
+        class="DynamicPageTitle-breadcrumbs"
+      >
+        <div>
+          <ui5-link
+            design="Default"
+            ui5-link=""
+          >
+            Home
+          </ui5-link>
+          <ui5-label
+            style="margin: 0px 0.25rem;"
+            ui5-label=""
+          >
+            /
+          </ui5-label>
+          <ui5-link
+            design="Default"
+            ui5-link=""
+          >
+            Page 1
+          </ui5-link>
+          <ui5-label
+            style="margin: 0px 0.25rem;"
+            ui5-label=""
+          >
+            /
+          </ui5-label>
+          <ui5-link
+            design="Default"
+            ui5-link=""
+          >
+            Page 2
+          </ui5-link>
+          <ui5-label
+            style="margin: 0px 0.25rem;"
+            ui5-label=""
+          >
+            /
+          </ui5-label>
+          <ui5-link
+            design="Default"
+            ui5-link=""
+          >
+            Page 3
+          </ui5-link>
+          <ui5-label
+            style="margin: 0px 0.25rem;"
+            ui5-label=""
+          >
+            /
+          </ui5-label>
+          <ui5-link
+            design="Default"
+            ui5-link=""
+          >
+            Page 4
+          </ui5-link>
+          <ui5-label
+            style="margin: 0px 0.25rem;"
+            ui5-label=""
+          >
+            /
+          </ui5-label>
+          <ui5-link
+            design="Default"
+            ui5-link=""
+          >
+            Page 5
+          </ui5-link>
+        </div>
+      </div>
+      <div
+        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap"
+        style="flex-grow: 1; width: 100%;"
+      >
+        <div
+          class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-titleMainSection"
+        >
+          <div
+            class="DynamicPageTitle-title"
+          >
+            <ui5-title
+              level="H2"
+              ui5-title=""
+            >
+              Header Title
+            </ui5-title>
+          </div>
+          <div
+            class="DynamicPageTitle-content"
+          >
+            <div
+              class="Toolbar-outerContainer Toolbar-clear"
+            >
+              <div
+                class="Toolbar-toolbar"
+              >
+                <div>
+                  <ui5-badge
+                    color-scheme="1"
+                    ui5-badge=""
+                  >
+                    Status: OK
+                  </ui5-badge>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="Toolbar-outerContainer Toolbar-clear"
+        >
+          <div
+            class="Toolbar-toolbar"
+          >
+            <span
+              class="spacer"
+              style="flex-grow: 1;"
+            />
+            <div>
+              <ui5-button
+                design="Emphasized"
+                ui5-button=""
+              >
+                Edit
+              </ui5-button>
+            </div>
+            <div>
+              <ui5-button
+                design="Transparent"
+                ui5-button=""
+              >
+                Delete
+              </ui5-button>
+            </div>
+            <div>
+              <ui5-button
+                design="Transparent"
+                ui5-button=""
+              >
+                Copy
+              </ui5-button>
+            </div>
+            <div>
+              <ui5-button
+                design="Transparent"
+                ui5-button=""
+              >
+                Toggle Footer
+              </ui5-button>
+            </div>
+            <div>
+              <ui5-button
+                design="Transparent"
+                icon="action"
+                ui5-button=""
+              />
+            </div>
+            <div>
+              <div
+                class="ToolbarSeparator-separator"
+              />
+            </div>
+            <div>
+              <ui5-button
+                design="Transparent"
+                icon="full-screen"
+                ui5-button=""
+              />
+            </div>
+            <div>
+              <ui5-button
+                design="Transparent"
+                icon="exit-full-screen"
+                ui5-button=""
+              />
+            </div>
+            <div>
+              <ui5-button
+                design="Transparent"
+                icon="decline"
+                ui5-button=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+      >
+        <div
+          class="DynamicPageTitle-subTitle"
+        >
+          <ui5-label
+            ui5-label=""
+          >
+            This is a subheading
+          </ui5-label>
+        </div>
+      </div>
+    </div>
+    <div
+      class="DynamicPageHeader-header"
+      data-component-name="DynamicPageHeader"
+      style="top: 0px; z-index: 1;"
+    >
+      <div
+        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStart FlexBox-flexWrapNoWrap"
+      >
+        <div
+          style="display: flex; flex-direction: column;"
+        >
+          <ui5-label
+            ui5-label=""
+          >
+            Location: Warehouse A
+          </ui5-label>
+          <ui5-label
+            ui5-label=""
+          >
+            Halway: 23L
+          </ui5-label>
+          <ui5-label
+            ui5-label=""
+          >
+            Rack: 34
+          </ui5-label>
+        </div>
+        <div
+          style="display: flex; flex-direction: column; margin-left: 2vw;"
+        >
+          <ui5-label
+            ui5-label=""
+          >
+            Availability:
+          </ui5-label>
+          <div
+            class="ObjectStatus-objectStatus"
+          >
+            <span
+              class="ObjectStatus-textSuccess"
+            >
+              In Stock
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPage-anchorBar"
+      style="top: 0px;"
+    >
+      <section
+        class="DynamicPageAnchorBar-anchorBarActionButton"
+        role="navigation"
+      >
+        <ui5-button
+          class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonExpandable "
+          data-ui5wcr-dynamic-page-header-action=""
+          design="Default"
+          icon="slim-arrow-down"
+          ui5-button=""
+        />
+      </section>
+    </div>
+    <div
+      class="DynamicPage-contentContainer"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`DynamicPage hider header button 1`] = `
+<DocumentFragment>
+  <div
+    class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundStandard"
+  >
+    <div
+      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container"
+      data-component-name="DynamicPageTitle"
+    >
+      <div
+        class="DynamicPageTitle-breadcrumbs"
+      >
+        <div>
+          <ui5-link
+            design="Default"
+            ui5-link=""
+          >
+            Home
+          </ui5-link>
+          <ui5-label
+            style="margin: 0px 0.25rem;"
+            ui5-label=""
+          >
+            /
+          </ui5-label>
+          <ui5-link
+            design="Default"
+            ui5-link=""
+          >
+            Page 1
+          </ui5-link>
+          <ui5-label
+            style="margin: 0px 0.25rem;"
+            ui5-label=""
+          >
+            /
+          </ui5-label>
+          <ui5-link
+            design="Default"
+            ui5-link=""
+          >
+            Page 2
+          </ui5-link>
+          <ui5-label
+            style="margin: 0px 0.25rem;"
+            ui5-label=""
+          >
+            /
+          </ui5-label>
+          <ui5-link
+            design="Default"
+            ui5-link=""
+          >
+            Page 3
+          </ui5-link>
+          <ui5-label
+            style="margin: 0px 0.25rem;"
+            ui5-label=""
+          >
+            /
+          </ui5-label>
+          <ui5-link
+            design="Default"
+            ui5-link=""
+          >
+            Page 4
+          </ui5-link>
+          <ui5-label
+            style="margin: 0px 0.25rem;"
+            ui5-label=""
+          >
+            /
+          </ui5-label>
+          <ui5-link
+            design="Default"
+            ui5-link=""
+          >
+            Page 5
+          </ui5-link>
+        </div>
+      </div>
+      <div
+        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap"
+        style="flex-grow: 1; width: 100%;"
+      >
+        <div
+          class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-titleMainSection"
+        >
+          <div
+            class="DynamicPageTitle-title"
+          >
+            <ui5-title
+              level="H2"
+              ui5-title=""
+            >
+              Header Title
+            </ui5-title>
+          </div>
+          <div
+            class="DynamicPageTitle-content"
+          >
+            <div
+              class="Toolbar-outerContainer Toolbar-clear"
+            >
+              <div
+                class="Toolbar-toolbar"
+              >
+                <div>
+                  <ui5-badge
+                    color-scheme="1"
+                    ui5-badge=""
+                  >
+                    Status: OK
+                  </ui5-badge>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="Toolbar-outerContainer Toolbar-clear"
+        >
+          <div
+            class="Toolbar-toolbar"
+          >
+            <span
+              class="spacer"
+              style="flex-grow: 1;"
+            />
+            <div>
+              <ui5-button
+                design="Emphasized"
+                ui5-button=""
+              >
+                Edit
+              </ui5-button>
+            </div>
+            <div>
+              <ui5-button
+                design="Transparent"
+                ui5-button=""
+              >
+                Delete
+              </ui5-button>
+            </div>
+            <div>
+              <ui5-button
+                design="Transparent"
+                ui5-button=""
+              >
+                Copy
+              </ui5-button>
+            </div>
+            <div>
+              <ui5-button
+                design="Transparent"
+                ui5-button=""
+              >
+                Toggle Footer
+              </ui5-button>
+            </div>
+            <div>
+              <ui5-button
+                design="Transparent"
+                icon="action"
+                ui5-button=""
+              />
+            </div>
+            <div>
+              <div
+                class="ToolbarSeparator-separator"
+              />
+            </div>
+            <div>
+              <ui5-button
+                design="Transparent"
+                icon="full-screen"
+                ui5-button=""
+              />
+            </div>
+            <div>
+              <ui5-button
+                design="Transparent"
+                icon="exit-full-screen"
+                ui5-button=""
+              />
+            </div>
+            <div>
+              <ui5-button
+                design="Transparent"
+                icon="decline"
+                ui5-button=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+      >
+        <div
+          class="DynamicPageTitle-subTitle"
+        >
+          <ui5-label
+            ui5-label=""
+          >
+            This is a subheading
+          </ui5-label>
+        </div>
+      </div>
+    </div>
+    <div
+      class="DynamicPageHeader-header"
+      data-component-name="DynamicPageHeader"
+      style="top: 0px; z-index: 1;"
+    >
+      <div
+        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStart FlexBox-flexWrapNoWrap"
+      >
+        <div
+          style="display: flex; flex-direction: column;"
+        >
+          <ui5-label
+            ui5-label=""
+          >
+            Location: Warehouse A
+          </ui5-label>
+          <ui5-label
+            ui5-label=""
+          >
+            Halway: 23L
+          </ui5-label>
+          <ui5-label
+            ui5-label=""
+          >
+            Rack: 34
+          </ui5-label>
+        </div>
+        <div
+          style="display: flex; flex-direction: column; margin-left: 2vw;"
+        >
+          <ui5-label
+            ui5-label=""
+          >
+            Availability:
+          </ui5-label>
+          <div
+            class="ObjectStatus-objectStatus"
+          >
+            <span
+              class="ObjectStatus-textSuccess"
+            >
+              In Stock
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPage-anchorBar"
+      style="top: 0px;"
+    >
+      <section
+        class="DynamicPageAnchorBar-anchorBarActionButton"
+        role="navigation"
+      />
+    </div>
+    <div
+      class="DynamicPage-contentContainer"
+    >
+      <div
+        class="Form-form"
+        data-columns="4"
+        style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem;"
+      >
+        <ui5-title
+          level="H5"
+          style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
+          ui5-title=""
+        >
+          Phone Numbers
+        </ui5-title>
+        <ui5-label
+          class="FormItem-label"
+          style="grid-column-start: 1; grid-row-start: 3;"
+          ui5-label=""
+          wrap="true"
+        >
+          Home:
+        </ui5-label>
+        <div
+          class="FormItem-content"
+          style="grid-column-start: 5; grid-row-start: 3;"
+        >
+          <span
+            class="Text-text"
+          >
+            +1 234-567-8901
+          </span>
+        </div>
+        <ui5-label
+          class="FormItem-label"
+          style="grid-column-start: 1; grid-row-start: 4;"
+          ui5-label=""
+          wrap="true"
+        />
+        <div
+          class="FormItem-content"
+          style="grid-column-start: 5; grid-row-start: 4;"
+        >
+          <span
+            class="Text-text"
+          >
+            +1 234-567-5555
+          </span>
+        </div>
+        <ui5-title
+          level="H5"
+          style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
+          ui5-title=""
+        >
+          Social Accounts
+        </ui5-title>
+        <ui5-label
+          class="FormItem-label"
+          style="grid-column-start: 13; grid-row-start: 3;"
+          ui5-label=""
+          wrap="true"
+        >
+          LinkedIn:
+        </ui5-label>
+        <div
+          class="FormItem-content"
+          style="grid-column-start: 17; grid-row-start: 3;"
+        >
+          <span
+            class="Text-text"
+          >
+            /DeniseSmith
+          </span>
+        </div>
+        <ui5-label
+          class="FormItem-label"
+          style="grid-column-start: 13; grid-row-start: 4;"
+          ui5-label=""
+          wrap="true"
+        >
+          Twitter:
+        </ui5-label>
+        <div
+          class="FormItem-content"
+          style="grid-column-start: 17; grid-row-start: 4;"
+        >
+          <span
+            class="Text-text"
+          >
+            @DeniseSmith
+          </span>
+        </div>
+      </div>
+      <div
+        class="Form-form"
+        data-columns="4"
+        style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem;"
+      >
+        <ui5-title
+          level="H5"
+          style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
+          ui5-title=""
+        >
+          Addresses
+        </ui5-title>
+        <ui5-label
+          class="FormItem-label"
+          style="grid-column-start: 1; grid-row-start: 3;"
+          ui5-label=""
+          wrap="true"
+        >
+          Home Address:
+        </ui5-label>
+        <div
+          class="FormItem-content"
+          style="grid-column-start: 5; grid-row-start: 3;"
+        >
+          <span
+            class="Text-text"
+          >
+            2096 Mission Street
+          </span>
+        </div>
+        <ui5-label
+          class="FormItem-label"
+          style="grid-column-start: 1; grid-row-start: 4;"
+          ui5-label=""
+          wrap="true"
+        >
+          Mailing Address:
+        </ui5-label>
+        <div
+          class="FormItem-content"
+          style="grid-column-start: 5; grid-row-start: 4;"
+        >
+          <span
+            class="Text-text"
+          >
+            PO Box 32114
+          </span>
+        </div>
+        <ui5-title
+          level="H5"
+          style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
+          ui5-title=""
+        >
+          Mailing Address
+        </ui5-title>
+        <ui5-label
+          class="FormItem-label"
+          style="grid-column-start: 13; grid-row-start: 3;"
+          ui5-label=""
+          wrap="true"
+        >
+          Work:
+        </ui5-label>
+        <div
+          class="FormItem-content"
+          style="grid-column-start: 17; grid-row-start: 3;"
+        >
+          <span
+            class="Text-text"
+          >
+            DeniseSmith@sap.com
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`DynamicPage with content 1`] = `
+<DocumentFragment>
+  <div
+    class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundStandard"
+  >
+    <div
+      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container"
+      data-component-name="DynamicPageTitle"
+    >
+      <div
+        class="DynamicPageTitle-breadcrumbs"
+      >
+        <div>
+          <ui5-link
+            design="Default"
+            ui5-link=""
+          >
+            Home
+          </ui5-link>
+          <ui5-label
+            style="margin: 0px 0.25rem;"
+            ui5-label=""
+          >
+            /
+          </ui5-label>
+          <ui5-link
+            design="Default"
+            ui5-link=""
+          >
+            Page 1
+          </ui5-link>
+          <ui5-label
+            style="margin: 0px 0.25rem;"
+            ui5-label=""
+          >
+            /
+          </ui5-label>
+          <ui5-link
+            design="Default"
+            ui5-link=""
+          >
+            Page 2
+          </ui5-link>
+          <ui5-label
+            style="margin: 0px 0.25rem;"
+            ui5-label=""
+          >
+            /
+          </ui5-label>
+          <ui5-link
+            design="Default"
+            ui5-link=""
+          >
+            Page 3
+          </ui5-link>
+          <ui5-label
+            style="margin: 0px 0.25rem;"
+            ui5-label=""
+          >
+            /
+          </ui5-label>
+          <ui5-link
+            design="Default"
+            ui5-link=""
+          >
+            Page 4
+          </ui5-link>
+          <ui5-label
+            style="margin: 0px 0.25rem;"
+            ui5-label=""
+          >
+            /
+          </ui5-label>
+          <ui5-link
+            design="Default"
+            ui5-link=""
+          >
+            Page 5
+          </ui5-link>
+        </div>
+      </div>
+      <div
+        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap"
+        style="flex-grow: 1; width: 100%;"
+      >
+        <div
+          class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-titleMainSection"
+        >
+          <div
+            class="DynamicPageTitle-title"
+          >
+            <ui5-title
+              level="H2"
+              ui5-title=""
+            >
+              Header Title
+            </ui5-title>
+          </div>
+          <div
+            class="DynamicPageTitle-content"
+          >
+            <div
+              class="Toolbar-outerContainer Toolbar-clear"
+            >
+              <div
+                class="Toolbar-toolbar"
+              >
+                <div>
+                  <ui5-badge
+                    color-scheme="1"
+                    ui5-badge=""
+                  >
+                    Status: OK
+                  </ui5-badge>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="Toolbar-outerContainer Toolbar-clear"
+        >
+          <div
+            class="Toolbar-toolbar"
+          >
+            <span
+              class="spacer"
+              style="flex-grow: 1;"
+            />
+            <div>
+              <ui5-button
+                design="Emphasized"
+                ui5-button=""
+              >
+                Edit
+              </ui5-button>
+            </div>
+            <div>
+              <ui5-button
+                design="Transparent"
+                ui5-button=""
+              >
+                Delete
+              </ui5-button>
+            </div>
+            <div>
+              <ui5-button
+                design="Transparent"
+                ui5-button=""
+              >
+                Copy
+              </ui5-button>
+            </div>
+            <div>
+              <ui5-button
+                design="Transparent"
+                ui5-button=""
+              >
+                Toggle Footer
+              </ui5-button>
+            </div>
+            <div>
+              <ui5-button
+                design="Transparent"
+                icon="action"
+                ui5-button=""
+              />
+            </div>
+            <div>
+              <div
+                class="ToolbarSeparator-separator"
+              />
+            </div>
+            <div>
+              <ui5-button
+                design="Transparent"
+                icon="full-screen"
+                ui5-button=""
+              />
+            </div>
+            <div>
+              <ui5-button
+                design="Transparent"
+                icon="exit-full-screen"
+                ui5-button=""
+              />
+            </div>
+            <div>
+              <ui5-button
+                design="Transparent"
+                icon="decline"
+                ui5-button=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+      >
+        <div
+          class="DynamicPageTitle-subTitle"
+        >
+          <ui5-label
+            ui5-label=""
+          >
+            This is a subheading
+          </ui5-label>
+        </div>
+      </div>
+    </div>
+    <div
+      class="DynamicPageHeader-header"
+      data-component-name="DynamicPageHeader"
+    >
+      <div
+        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStart FlexBox-flexWrapNoWrap"
+      >
+        <div
+          style="display: flex; flex-direction: column;"
+        >
+          <ui5-label
+            ui5-label=""
+          >
+            Location: Warehouse A
+          </ui5-label>
+          <ui5-label
+            ui5-label=""
+          >
+            Halway: 23L
+          </ui5-label>
+          <ui5-label
+            ui5-label=""
+          >
+            Rack: 34
+          </ui5-label>
+        </div>
+        <div
+          style="display: flex; flex-direction: column; margin-left: 2vw;"
+        >
+          <ui5-label
+            ui5-label=""
+          >
+            Availability:
+          </ui5-label>
+          <div
+            class="ObjectStatus-objectStatus"
+          >
+            <span
+              class="ObjectStatus-textSuccess"
+            >
+              In Stock
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPage-anchorBar"
+      style="top: 0px;"
+    >
+      <section
+        class="DynamicPageAnchorBar-anchorBarActionButton"
+        role="navigation"
+      >
+        <ui5-button
+          class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonExpandable "
+          data-ui5wcr-dynamic-page-header-action=""
+          design="Default"
+          icon="slim-arrow-down"
+          ui5-button=""
+        />
+      </section>
+    </div>
+    <div
+      class="DynamicPage-contentContainer"
+    >
+      <div
+        class="Form-form"
+        data-columns="4"
+        style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem; z-index: 0;"
+      >
+        <ui5-title
+          level="H5"
+          style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
+          ui5-title=""
+        >
+          Phone Numbers
+        </ui5-title>
+        <ui5-label
+          class="FormItem-label"
+          style="grid-column-start: 1; grid-row-start: 3;"
+          ui5-label=""
+          wrap="true"
+        >
+          Home:
+        </ui5-label>
+        <div
+          class="FormItem-content"
+          style="grid-column-start: 5; grid-row-start: 3;"
+        >
+          <span
+            class="Text-text"
+          >
+            +1 234-567-8901
+          </span>
+        </div>
+        <ui5-label
+          class="FormItem-label"
+          style="grid-column-start: 1; grid-row-start: 4;"
+          ui5-label=""
+          wrap="true"
+        />
+        <div
+          class="FormItem-content"
+          style="grid-column-start: 5; grid-row-start: 4;"
+        >
+          <span
+            class="Text-text"
+          >
+            +1 234-567-5555
+          </span>
+        </div>
+        <ui5-title
+          level="H5"
+          style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
+          ui5-title=""
+        >
+          Social Accounts
+        </ui5-title>
+        <ui5-label
+          class="FormItem-label"
+          style="grid-column-start: 13; grid-row-start: 3;"
+          ui5-label=""
+          wrap="true"
+        >
+          LinkedIn:
+        </ui5-label>
+        <div
+          class="FormItem-content"
+          style="grid-column-start: 17; grid-row-start: 3;"
+        >
+          <span
+            class="Text-text"
+          >
+            /DeniseSmith
+          </span>
+        </div>
+        <ui5-label
+          class="FormItem-label"
+          style="grid-column-start: 13; grid-row-start: 4;"
+          ui5-label=""
+          wrap="true"
+        >
+          Twitter:
+        </ui5-label>
+        <div
+          class="FormItem-content"
+          style="grid-column-start: 17; grid-row-start: 4;"
+        >
+          <span
+            class="Text-text"
+          >
+            @DeniseSmith
+          </span>
+        </div>
+      </div>
+      <div
+        class="Form-form"
+        data-columns="4"
+        style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem;"
+      >
+        <ui5-title
+          level="H5"
+          style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
+          ui5-title=""
+        >
+          Addresses
+        </ui5-title>
+        <ui5-label
+          class="FormItem-label"
+          style="grid-column-start: 1; grid-row-start: 3;"
+          ui5-label=""
+          wrap="true"
+        >
+          Home Address:
+        </ui5-label>
+        <div
+          class="FormItem-content"
+          style="grid-column-start: 5; grid-row-start: 3;"
+        >
+          <span
+            class="Text-text"
+          >
+            2096 Mission Street
+          </span>
+        </div>
+        <ui5-label
+          class="FormItem-label"
+          style="grid-column-start: 1; grid-row-start: 4;"
+          ui5-label=""
+          wrap="true"
+        >
+          Mailing Address:
+        </ui5-label>
+        <div
+          class="FormItem-content"
+          style="grid-column-start: 5; grid-row-start: 4;"
+        >
+          <span
+            class="Text-text"
+          >
+            PO Box 32114
+          </span>
+        </div>
+        <ui5-title
+          level="H5"
+          style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
+          ui5-title=""
+        >
+          Mailing Address
+        </ui5-title>
+        <ui5-label
+          class="FormItem-label"
+          style="grid-column-start: 13; grid-row-start: 3;"
+          ui5-label=""
+          wrap="true"
+        >
+          Work:
+        </ui5-label>
+        <div
+          class="FormItem-content"
+          style="grid-column-start: 17; grid-row-start: 3;"
+        >
+          <span
+            class="Text-text"
+          >
+            DeniseSmith@sap.com
+          </span>
+        </div>
+      </div>
+      <div
+        class="Form-form"
+        data-columns="4"
+        style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem;"
+      >
+        <ui5-title
+          level="H5"
+          style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
+          ui5-title=""
+        >
+          Phone Numbers
+        </ui5-title>
+        <ui5-label
+          class="FormItem-label"
+          style="grid-column-start: 1; grid-row-start: 3;"
+          ui5-label=""
+          wrap="true"
+        >
+          Home:
+        </ui5-label>
+        <div
+          class="FormItem-content"
+          style="grid-column-start: 5; grid-row-start: 3;"
+        >
+          <span
+            class="Text-text"
+          >
+            +1 234-567-8901
+          </span>
+        </div>
+        <ui5-label
+          class="FormItem-label"
+          style="grid-column-start: 1; grid-row-start: 4;"
+          ui5-label=""
+          wrap="true"
+        />
+        <div
+          class="FormItem-content"
+          style="grid-column-start: 5; grid-row-start: 4;"
+        >
+          <span
+            class="Text-text"
+          >
+            +1 234-567-5555
+          </span>
+        </div>
+        <ui5-title
+          level="H5"
+          style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
+          ui5-title=""
+        >
+          Social Accounts
+        </ui5-title>
+        <ui5-label
+          class="FormItem-label"
+          style="grid-column-start: 13; grid-row-start: 3;"
+          ui5-label=""
+          wrap="true"
+        >
+          LinkedIn:
+        </ui5-label>
+        <div
+          class="FormItem-content"
+          style="grid-column-start: 17; grid-row-start: 3;"
+        >
+          <span
+            class="Text-text"
+          >
+            /DeniseSmith
+          </span>
+        </div>
+        <ui5-label
+          class="FormItem-label"
+          style="grid-column-start: 13; grid-row-start: 4;"
+          ui5-label=""
+          wrap="true"
+        >
+          Twitter:
+        </ui5-label>
+        <div
+          class="FormItem-content"
+          style="grid-column-start: 17; grid-row-start: 4;"
+        >
+          <span
+            class="Text-text"
+          >
+            @DeniseSmith
+          </span>
+        </div>
+      </div>
+      <div
+        class="Form-form"
+        data-columns="4"
+        style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem;"
+      >
+        <ui5-title
+          level="H5"
+          style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
+          ui5-title=""
+        >
+          Addresses
+        </ui5-title>
+        <ui5-label
+          class="FormItem-label"
+          style="grid-column-start: 1; grid-row-start: 3;"
+          ui5-label=""
+          wrap="true"
+        >
+          Home Address:
+        </ui5-label>
+        <div
+          class="FormItem-content"
+          style="grid-column-start: 5; grid-row-start: 3;"
+        >
+          <span
+            class="Text-text"
+          >
+            2096 Mission Street
+          </span>
+        </div>
+        <ui5-label
+          class="FormItem-label"
+          style="grid-column-start: 1; grid-row-start: 4;"
+          ui5-label=""
+          wrap="true"
+        >
+          Mailing Address:
+        </ui5-label>
+        <div
+          class="FormItem-content"
+          style="grid-column-start: 5; grid-row-start: 4;"
+        >
+          <span
+            class="Text-text"
+          >
+            PO Box 32114
+          </span>
+        </div>
+        <ui5-title
+          level="H5"
+          style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
+          ui5-title=""
+        >
+          Mailing Address
+        </ui5-title>
+        <ui5-label
+          class="FormItem-label"
+          style="grid-column-start: 13; grid-row-start: 3;"
+          ui5-label=""
+          wrap="true"
+        >
+          Work:
+        </ui5-label>
+        <div
+          class="FormItem-content"
+          style="grid-column-start: 17; grid-row-start: 3;"
+        >
+          <span
+            class="Text-text"
+          >
+            DeniseSmith@sap.com
+          </span>
+        </div>
+      </div>
+      <div
+        class="Form-form"
+        data-columns="4"
+        style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem; z-index: 0;"
+      >
+        <ui5-title
+          level="H5"
+          style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
+          ui5-title=""
+        >
+          Phone Numbers
+        </ui5-title>
+        <ui5-label
+          class="FormItem-label"
+          style="grid-column-start: 1; grid-row-start: 3;"
+          ui5-label=""
+          wrap="true"
+        >
+          Home:
+        </ui5-label>
+        <div
+          class="FormItem-content"
+          style="grid-column-start: 5; grid-row-start: 3;"
+        >
+          <span
+            class="Text-text"
+          >
+            +1 234-567-8901
+          </span>
+        </div>
+        <ui5-label
+          class="FormItem-label"
+          style="grid-column-start: 1; grid-row-start: 4;"
+          ui5-label=""
+          wrap="true"
+        />
+        <div
+          class="FormItem-content"
+          style="grid-column-start: 5; grid-row-start: 4;"
+        >
+          <span
+            class="Text-text"
+          >
+            +1 234-567-5555
+          </span>
+        </div>
+        <ui5-title
+          level="H5"
+          style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
+          ui5-title=""
+        >
+          Social Accounts
+        </ui5-title>
+        <ui5-label
+          class="FormItem-label"
+          style="grid-column-start: 13; grid-row-start: 3;"
+          ui5-label=""
+          wrap="true"
+        >
+          LinkedIn:
+        </ui5-label>
+        <div
+          class="FormItem-content"
+          style="grid-column-start: 17; grid-row-start: 3;"
+        >
+          <span
+            class="Text-text"
+          >
+            /DeniseSmith
+          </span>
+        </div>
+        <ui5-label
+          class="FormItem-label"
+          style="grid-column-start: 13; grid-row-start: 4;"
+          ui5-label=""
+          wrap="true"
+        >
+          Twitter:
+        </ui5-label>
+        <div
+          class="FormItem-content"
+          style="grid-column-start: 17; grid-row-start: 4;"
+        >
+          <span
+            class="Text-text"
+          >
+            @DeniseSmith
+          </span>
+        </div>
+      </div>
+      <div
+        class="Form-form"
+        data-columns="4"
+        style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem;"
+      >
+        <ui5-title
+          level="H5"
+          style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
+          ui5-title=""
+        >
+          Addresses
+        </ui5-title>
+        <ui5-label
+          class="FormItem-label"
+          style="grid-column-start: 1; grid-row-start: 3;"
+          ui5-label=""
+          wrap="true"
+        >
+          Home Address:
+        </ui5-label>
+        <div
+          class="FormItem-content"
+          style="grid-column-start: 5; grid-row-start: 3;"
+        >
+          <span
+            class="Text-text"
+          >
+            2096 Mission Street
+          </span>
+        </div>
+        <ui5-label
+          class="FormItem-label"
+          style="grid-column-start: 1; grid-row-start: 4;"
+          ui5-label=""
+          wrap="true"
+        >
+          Mailing Address:
+        </ui5-label>
+        <div
+          class="FormItem-content"
+          style="grid-column-start: 5; grid-row-start: 4;"
+        >
+          <span
+            class="Text-text"
+          >
+            PO Box 32114
+          </span>
+        </div>
+        <ui5-title
+          level="H5"
+          style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
+          ui5-title=""
+        >
+          Mailing Address
+        </ui5-title>
+        <ui5-label
+          class="FormItem-label"
+          style="grid-column-start: 13; grid-row-start: 3;"
+          ui5-label=""
+          wrap="true"
+        >
+          Work:
+        </ui5-label>
+        <div
+          class="FormItem-content"
+          style="grid-column-start: 17; grid-row-start: 3;"
+        >
+          <span
+            class="Text-text"
+          >
+            DeniseSmith@sap.com
+          </span>
+        </div>
+      </div>
+      <div
+        class="Form-form"
+        data-columns="4"
+        style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem;"
+      >
+        <ui5-title
+          level="H5"
+          style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
+          ui5-title=""
+        >
+          Phone Numbers
+        </ui5-title>
+        <ui5-label
+          class="FormItem-label"
+          style="grid-column-start: 1; grid-row-start: 3;"
+          ui5-label=""
+          wrap="true"
+        >
+          Home:
+        </ui5-label>
+        <div
+          class="FormItem-content"
+          style="grid-column-start: 5; grid-row-start: 3;"
+        >
+          <span
+            class="Text-text"
+          >
+            +1 234-567-8901
+          </span>
+        </div>
+        <ui5-label
+          class="FormItem-label"
+          style="grid-column-start: 1; grid-row-start: 4;"
+          ui5-label=""
+          wrap="true"
+        />
+        <div
+          class="FormItem-content"
+          style="grid-column-start: 5; grid-row-start: 4;"
+        >
+          <span
+            class="Text-text"
+          >
+            +1 234-567-5555
+          </span>
+        </div>
+        <ui5-title
+          level="H5"
+          style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
+          ui5-title=""
+        >
+          Social Accounts
+        </ui5-title>
+        <ui5-label
+          class="FormItem-label"
+          style="grid-column-start: 13; grid-row-start: 3;"
+          ui5-label=""
+          wrap="true"
+        >
+          LinkedIn:
+        </ui5-label>
+        <div
+          class="FormItem-content"
+          style="grid-column-start: 17; grid-row-start: 3;"
+        >
+          <span
+            class="Text-text"
+          >
+            /DeniseSmith
+          </span>
+        </div>
+        <ui5-label
+          class="FormItem-label"
+          style="grid-column-start: 13; grid-row-start: 4;"
+          ui5-label=""
+          wrap="true"
+        >
+          Twitter:
+        </ui5-label>
+        <div
+          class="FormItem-content"
+          style="grid-column-start: 17; grid-row-start: 4;"
+        >
+          <span
+            class="Text-text"
+          >
+            @DeniseSmith
+          </span>
+        </div>
+      </div>
+      <div
+        class="Form-form"
+        data-columns="4"
+        style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem;"
+      >
+        <ui5-title
+          level="H5"
+          style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
+          ui5-title=""
+        >
+          Addresses
+        </ui5-title>
+        <ui5-label
+          class="FormItem-label"
+          style="grid-column-start: 1; grid-row-start: 3;"
+          ui5-label=""
+          wrap="true"
+        >
+          Home Address:
+        </ui5-label>
+        <div
+          class="FormItem-content"
+          style="grid-column-start: 5; grid-row-start: 3;"
+        >
+          <span
+            class="Text-text"
+          >
+            2096 Mission Street
+          </span>
+        </div>
+        <ui5-label
+          class="FormItem-label"
+          style="grid-column-start: 1; grid-row-start: 4;"
+          ui5-label=""
+          wrap="true"
+        >
+          Mailing Address:
+        </ui5-label>
+        <div
+          class="FormItem-content"
+          style="grid-column-start: 5; grid-row-start: 4;"
+        >
+          <span
+            class="Text-text"
+          >
+            PO Box 32114
+          </span>
+        </div>
+        <ui5-title
+          level="H5"
+          style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
+          ui5-title=""
+        >
+          Mailing Address
+        </ui5-title>
+        <ui5-label
+          class="FormItem-label"
+          style="grid-column-start: 13; grid-row-start: 3;"
+          ui5-label=""
+          wrap="true"
+        >
+          Work:
+        </ui5-label>
+        <div
+          class="FormItem-content"
+          style="grid-column-start: 17; grid-row-start: 3;"
+        >
+          <span
+            class="Text-text"
+          >
+            DeniseSmith@sap.com
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`DynamicPage without content 1`] = `
+<DocumentFragment>
+  <div
+    class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundStandard"
+  >
+    <div
+      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container"
+      data-component-name="DynamicPageTitle"
+    >
+      <div
+        class="DynamicPageTitle-breadcrumbs"
+      >
+        <div>
+          <ui5-link
+            design="Default"
+            ui5-link=""
+          >
+            Home
+          </ui5-link>
+          <ui5-label
+            style="margin: 0px 0.25rem;"
+            ui5-label=""
+          >
+            /
+          </ui5-label>
+          <ui5-link
+            design="Default"
+            ui5-link=""
+          >
+            Page 1
+          </ui5-link>
+          <ui5-label
+            style="margin: 0px 0.25rem;"
+            ui5-label=""
+          >
+            /
+          </ui5-label>
+          <ui5-link
+            design="Default"
+            ui5-link=""
+          >
+            Page 2
+          </ui5-link>
+          <ui5-label
+            style="margin: 0px 0.25rem;"
+            ui5-label=""
+          >
+            /
+          </ui5-label>
+          <ui5-link
+            design="Default"
+            ui5-link=""
+          >
+            Page 3
+          </ui5-link>
+          <ui5-label
+            style="margin: 0px 0.25rem;"
+            ui5-label=""
+          >
+            /
+          </ui5-label>
+          <ui5-link
+            design="Default"
+            ui5-link=""
+          >
+            Page 4
+          </ui5-link>
+          <ui5-label
+            style="margin: 0px 0.25rem;"
+            ui5-label=""
+          >
+            /
+          </ui5-label>
+          <ui5-link
+            design="Default"
+            ui5-link=""
+          >
+            Page 5
+          </ui5-link>
+        </div>
+      </div>
+      <div
+        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap"
+        style="flex-grow: 1; width: 100%;"
+      >
+        <div
+          class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-titleMainSection"
+        >
+          <div
+            class="DynamicPageTitle-title"
+          >
+            <ui5-title
+              level="H2"
+              ui5-title=""
+            >
+              Header Title
+            </ui5-title>
+          </div>
+          <div
+            class="DynamicPageTitle-content"
+          >
+            <div
+              class="Toolbar-outerContainer Toolbar-clear"
+            >
+              <div
+                class="Toolbar-toolbar"
+              >
+                <div>
+                  <ui5-badge
+                    color-scheme="1"
+                    ui5-badge=""
+                  >
+                    Status: OK
+                  </ui5-badge>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="Toolbar-outerContainer Toolbar-clear"
+        >
+          <div
+            class="Toolbar-toolbar"
+          >
+            <span
+              class="spacer"
+              style="flex-grow: 1;"
+            />
+            <div>
+              <ui5-button
+                design="Emphasized"
+                ui5-button=""
+              >
+                Edit
+              </ui5-button>
+            </div>
+            <div>
+              <ui5-button
+                design="Transparent"
+                ui5-button=""
+              >
+                Delete
+              </ui5-button>
+            </div>
+            <div>
+              <ui5-button
+                design="Transparent"
+                ui5-button=""
+              >
+                Copy
+              </ui5-button>
+            </div>
+            <div>
+              <ui5-button
+                design="Transparent"
+                ui5-button=""
+              >
+                Toggle Footer
+              </ui5-button>
+            </div>
+            <div>
+              <ui5-button
+                design="Transparent"
+                icon="action"
+                ui5-button=""
+              />
+            </div>
+            <div>
+              <div
+                class="ToolbarSeparator-separator"
+              />
+            </div>
+            <div>
+              <ui5-button
+                design="Transparent"
+                icon="full-screen"
+                ui5-button=""
+              />
+            </div>
+            <div>
+              <ui5-button
+                design="Transparent"
+                icon="exit-full-screen"
+                ui5-button=""
+              />
+            </div>
+            <div>
+              <ui5-button
+                design="Transparent"
+                icon="decline"
+                ui5-button=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+      >
+        <div
+          class="DynamicPageTitle-subTitle"
+        >
+          <ui5-label
+            ui5-label=""
+          >
+            This is a subheading
+          </ui5-label>
+        </div>
+      </div>
+    </div>
+    <div
+      class="DynamicPageHeader-header"
+      data-component-name="DynamicPageHeader"
+    >
+      <div
+        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStart FlexBox-flexWrapNoWrap"
+      >
+        <div
+          style="display: flex; flex-direction: column;"
+        >
+          <ui5-label
+            ui5-label=""
+          >
+            Location: Warehouse A
+          </ui5-label>
+          <ui5-label
+            ui5-label=""
+          >
+            Halway: 23L
+          </ui5-label>
+          <ui5-label
+            ui5-label=""
+          >
+            Rack: 34
+          </ui5-label>
+        </div>
+        <div
+          style="display: flex; flex-direction: column; margin-left: 2vw;"
+        >
+          <ui5-label
+            ui5-label=""
+          >
+            Availability:
+          </ui5-label>
+          <div
+            class="ObjectStatus-objectStatus"
+          >
+            <span
+              class="ObjectStatus-textSuccess"
+            >
+              In Stock
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPage-anchorBar"
+      style="top: 0px;"
+    >
+      <section
+        class="DynamicPageAnchorBar-anchorBarActionButton"
+        role="navigation"
+      >
+        <ui5-button
+          class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonExpandable "
+          data-ui5wcr-dynamic-page-header-action=""
+          design="Default"
+          icon="slim-arrow-down"
+          ui5-button=""
+        />
+      </section>
+    </div>
+    <div
+      class="DynamicPage-contentContainer"
+    />
+  </div>
+</DocumentFragment>
+`;
