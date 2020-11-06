@@ -3,6 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.11.2...v0.11.3) (2020-11-04)
+
+
+### Bug Fixes
+
+* update peer dependencies to support react 17 ([#850](https://github.com/SAP/ui5-webcomponents-react/issues/850)) ([72c9d6f](https://github.com/SAP/ui5-webcomponents-react/commit/72c9d6f139af52944973da0f2cc9852c6102111a)), closes [#786](https://github.com/SAP/ui5-webcomponents-react/issues/786)
+
+
+### Features
+
+* **cra-template-seed:** add new cra template @ui5/webcomponents-react-seed ([#790](https://github.com/SAP/ui5-webcomponents-react/issues/790)) ([69713ca](https://github.com/SAP/ui5-webcomponents-react/commit/69713ca45fdcd7fccb87fff9d04f3a4054de48dc))
+
+
+
+
+
+## [0.11.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.11.1...v0.11.2) (2020-10-23)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** add missing keys ([#808](https://github.com/SAP/ui5-webcomponents-react/issues/808)) ([9bf94d6](https://github.com/SAP/ui5-webcomponents-react/commit/9bf94d68930e01cddbe1e43b6907ec41ea716041))
+* **AnalyticalTable:** persist values and don't close the popover when typing within the filters-popover input field ([#810](https://github.com/SAP/ui5-webcomponents-react/issues/810)) ([45a6d8f](https://github.com/SAP/ui5-webcomponents-react/commit/45a6d8f90308d8b19cca75cd702c77ea9b5d7c3a))
+* **AnalyticalTable:** prevent style warning when scrollbar is visible ([#813](https://github.com/SAP/ui5-webcomponents-react/issues/813)) ([e0106a7](https://github.com/SAP/ui5-webcomponents-react/commit/e0106a7a0ee6a19c1c67085b8e995740b1285c4a)), closes [#811](https://github.com/SAP/ui5-webcomponents-react/issues/811)
+
+
+
+
+
+## [0.11.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.11.0...v0.11.1) (2020-10-21)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** mount filters popover only when it's opened ([#738](https://github.com/SAP/ui5-webcomponents-react/issues/738)) ([1350790](https://github.com/SAP/ui5-webcomponents-react/commit/135079054c0e2c4bdff4a10271fb332518eb9d13))
+* ensure theming parameters are in sync with ui5/webcomponents-theme-base ([#737](https://github.com/SAP/ui5-webcomponents-react/issues/737)) ([880a8ab](https://github.com/SAP/ui5-webcomponents-react/commit/880a8ab3b099aedc25847f0cdf77fc7cfa20d881))
+
+
+
+
+
 # [0.11.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.11.0-rc.1...v0.11.0) (2020-10-15)
 
 _This release is a combining the changes of `0.11.0-rc.0` and `0.11.0-rc.1` in a stable release._

@@ -1,118 +1,127 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Page Basic Page 1`] = `
-<div
-  style="height: 100vh; width: 100vw;"
->
+<DocumentFragment>
   <div
-    class="Page-pageContainer-0 Page-pageWithHeader-0 Page-pageWithFooter-0 Page-backgroundStandard-0"
+    style="height: 100vh; width: 100vw;"
   >
-    <header
-      class="Page-pageHeader-0 Page-baseBar-0"
+    <div
+      class="Page-pageContainer Page-pageWithHeader Page-pageWithFooter Page-backgroundStandard"
     >
-      <div
-        class="Bar-bar-0 Bar-auto-0"
-        data-bar-part="Root"
+      <header
+        class="Page-pageHeader Page-baseBar"
       >
         <div
-          class="Bar-left-0"
-          data-bar-part="Left"
-        >
-          <ui5-button
-            design="Transparent"
-            icon="navigation-left-arrow"
-          />
-        </div>
-        <div
-          class="Bar-center-0"
-          data-bar-part="Center"
+          class="Bar-bar Bar-auto"
+          data-bar-part="Root"
         >
           <div
-            class="Bar-inner-0"
+            class="Bar-left"
+            data-bar-part="Left"
           >
-            <ui5-title
-              level="H5"
-            >
-              Page Demo
-            </ui5-title>
+            <ui5-button
+              design="Transparent"
+              icon="navigation-left-arrow"
+              ui5-button=""
+            />
           </div>
+          <div
+            class="Bar-center"
+            data-bar-part="Center"
+          >
+            <div
+              class="Bar-inner"
+            >
+              <ui5-title
+                level="H5"
+                ui5-title=""
+              >
+                Page Demo
+              </ui5-title>
+            </div>
+          </div>
+          <div
+            class="Bar-right"
+            data-bar-part="Right"
+          />
         </div>
-        <div
-          class="Bar-right-0"
-          data-bar-part="Right"
-        />
-      </div>
-    </header>
-    <section
-      class="Page-contentSection-0"
-    >
-      Page Content
-    </section>
-    <footer
-      class="Page-pageFooter-0 Page-baseBar-0"
-    />
+      </header>
+      <section
+        class="Page-contentSection"
+      >
+        Page Content
+      </section>
+      <footer
+        class="Page-pageFooter Page-baseBar"
+      />
+    </div>
   </div>
-</div>
+</DocumentFragment>
 `;
 
 exports[`Page Basic Page w/o back button 1`] = `
-<div
-  style="height: 100vh; width: 100vw;"
->
+<DocumentFragment>
   <div
-    class="Page-pageContainer-0 Page-pageWithHeader-0 Page-pageWithFooter-0 Page-backgroundStandard-0"
+    style="height: 100vh; width: 100vw;"
   >
-    <header
-      class="Page-pageHeader-0 Page-baseBar-0"
+    <div
+      class="Page-pageContainer Page-pageWithHeader Page-pageWithFooter Page-backgroundStandard"
     >
-      <div
-        class="Bar-bar-0 Bar-auto-0"
-        data-bar-part="Root"
+      <header
+        class="Page-pageHeader Page-baseBar"
       >
         <div
-          class="Bar-left-0"
-          data-bar-part="Left"
-        />
-        <div
-          class="Bar-center-0"
-          data-bar-part="Center"
+          class="Bar-bar Bar-auto"
+          data-bar-part="Root"
         >
           <div
-            class="Bar-inner-0"
+            class="Bar-left"
+            data-bar-part="Left"
+          />
+          <div
+            class="Bar-center"
+            data-bar-part="Center"
           >
-            <ui5-title
-              level="H5"
+            <div
+              class="Bar-inner"
             >
-              Page Demo
-            </ui5-title>
+              <ui5-title
+                level="H5"
+                ui5-title=""
+              >
+                Page Demo
+              </ui5-title>
+            </div>
           </div>
+          <div
+            class="Bar-right"
+            data-bar-part="Right"
+          />
         </div>
-        <div
-          class="Bar-right-0"
-          data-bar-part="Right"
-        />
-      </div>
-    </header>
-    <section
-      class="Page-contentSection-0"
-    >
-      Page Content
-    </section>
-    <footer
-      class="Page-pageFooter-0 Page-baseBar-0"
-    />
+      </header>
+      <section
+        class="Page-contentSection"
+      >
+        Page Content
+      </section>
+      <footer
+        class="Page-pageFooter Page-baseBar"
+      />
+    </div>
   </div>
-</div>
+</DocumentFragment>
 `;
 
 exports[`Page Without footer and Header 1`] = `
-<div
-  class="Page-pageContainer-0 Page-backgroundStandard-0"
->
-  <section
-    class="Page-contentSection-0"
+<DocumentFragment>
+  <div
+    class="Page-pageContainer Page-backgroundStandard"
   >
-    Page Content
-  </section>
-</div>
+    <section
+      class="Page-contentSection"
+    >
+      Page Content
+    </section>
+  </div>
+</DocumentFragment>
 `;

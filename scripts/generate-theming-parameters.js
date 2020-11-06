@@ -1,11 +1,9 @@
-const { writeFileSync } = require('fs');
-const {
-  root: ThemingParameters
-} = require('@sap-theming/theming-base-content/content/Base/baseLib/sap_fiori_3/variables.json');
-const PATHS = require('../config/paths');
-const path = require('path');
-const prettier = require('prettier');
-const prettierConfig = require('../prettier.config');
+import { writeFileSync } from 'fs';
+import ThemingParameters from '@sap-theming/theming-base-content/content/Base/baseLib/sap_fiori_3/variables.json';
+import PATHS from '../config/paths.js';
+import path from 'path';
+import prettier from 'prettier';
+import prettierConfig from '../prettier.config.cjs';
 
 let fileContent = `/* eslint-disable camelcase */
 
@@ -18,7 +16,7 @@ let fileContent = `/* eslint-disable camelcase */
 `;
 
 fileContent += 'export const ThemingParameters = {\n';
-for (const variable in ThemingParameters) {
+for (const variable in ThemingParameters.root) {
   fileContent += `  '${variable}': 'var(--${variable})',\n`;
 }
 fileContent += '}\n';

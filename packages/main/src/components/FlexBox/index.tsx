@@ -7,20 +7,48 @@ import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJusti
 import { FlexBoxWrap } from '@ui5/webcomponents-react/lib/FlexBoxWrap';
 import React, { FC, forwardRef, ReactNode, ReactNodeArray, Ref } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { styles } from './Flexbox.jss';
+import { styles } from './FlexBox.jss';
 
 const useStyles = createComponentStyles(styles, { name: 'FlexBox' });
 
 export interface FlexBoxPropTypes extends CommonProps {
+  /**
+   * Controls the alignment of items on the Cross Axis.<br />
+   * <b>Note:</b> Corresponds to `align-items`.
+   */
   alignItems?: FlexBoxAlignItems;
+  /**
+   * Controls how the items are placed in the `FlexBox`.<br />
+   * <b>Note:</b> Corresponds to `flex-direction`.
+   */
   direction?: FlexBoxDirection;
+  /**
+   * Determines whether the `FlexBox` is in `flex` or `inline-flex` mode.
+   */
   displayInline?: boolean;
+  /**
+   * Determines whether the `FlexBox` will be sized to completely fill its container.
+   */
   fitContainer?: boolean;
+  /**
+   * Defines how the browser distributes space between and around items along the main-axis.<br />
+   * <b>Note:</b> Corresponds to `justify-content`.
+   */
   justifyContent?: FlexBoxJustifyContent;
+  /**
+   * Determines whether the `FlexBox` should wrap, when there is not enough space to display all items in one line.<br />
+   * <b>Note:</b> Corresponds to `flex-wrap`.
+   */
   wrap?: FlexBoxWrap;
+  /**
+   * Content of the `FlexBox`.
+   */
   children: ReactNode | ReactNodeArray;
 }
 
+/**
+ * The `FlexBox` builds the container for a flexible box layout by leveraging the CSS flexbox layout.
+ */
 const FlexBox: FC<FlexBoxPropTypes> = forwardRef((props: FlexBoxPropTypes, ref: Ref<HTMLDivElement>) => {
   const {
     children,
@@ -32,6 +60,7 @@ const FlexBox: FC<FlexBoxPropTypes> = forwardRef((props: FlexBoxPropTypes, ref: 
     style,
     className,
     tooltip,
+    fitContainer,
     slot
   } = props;
 
@@ -48,6 +77,10 @@ const FlexBox: FC<FlexBoxPropTypes> = forwardRef((props: FlexBoxPropTypes, ref: 
 
   if (displayInline) {
     flexBoxClasses.put(classes.flexBoxDisplayInline);
+  }
+
+  if (fitContainer) {
+    flexBoxClasses.put(classes.fitContainer);
   }
 
   if (className) {
@@ -67,6 +100,7 @@ FlexBox.defaultProps = {
   alignItems: FlexBoxAlignItems.Stretch,
   direction: FlexBoxDirection.Row,
   displayInline: false,
+  fitContainer: false,
   justifyContent: FlexBoxJustifyContent.Start,
   wrap: FlexBoxWrap.NoWrap
 };

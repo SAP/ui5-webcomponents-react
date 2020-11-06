@@ -1,412 +1,471 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Create a Form should use a single FormGroup's title as a Form title if one is not set 1`] = `
-<div
-  class="Form-form-0"
-  data-columns="2"
-  style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4;"
->
-  <ui5-title
-    class="Form-formTitle-0"
-    level="H3"
-  >
-    To be Form title
-  </ui5-title>
-  <ui5-label
-    class="FormItem-label-0"
-    style="grid-column-start: 1; grid-row-start: 0;"
-    wrap="true"
-  >
-    item 1:
-  </ui5-label>
+<DocumentFragment>
   <div
-    class="FormItem-content-0"
-    style="grid-row-start: 0;"
+    class="Form-form"
+    data-columns="2"
+    style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4;"
   >
-    <ui5-input
-      type="Text"
-      value-state="None"
-    />
+    <ui5-title
+      class="Form-formTitle"
+      level="H3"
+      ui5-title=""
+    >
+      To be Form title
+    </ui5-title>
+    <ui5-label
+      class="FormItem-label"
+      style="grid-column-start: 1; grid-row-start: 0;"
+      ui5-label=""
+      wrap="true"
+    >
+      item 1:
+    </ui5-label>
+    <div
+      class="FormItem-content"
+      style="grid-row-start: 0;"
+    >
+      <ui5-input
+        type="Text"
+        ui5-input=""
+        value-state="None"
+      />
+    </div>
+    <ui5-label
+      class="FormItem-label"
+      style="grid-column-start: 1; grid-row-start: 0;"
+      ui5-label=""
+      wrap="true"
+    >
+      item 2:
+    </ui5-label>
+    <div
+      class="FormItem-content"
+      style="grid-row-start: 0;"
+    >
+      <ui5-input
+        type="Number"
+        ui5-input=""
+        value-state="None"
+      />
+    </div>
   </div>
-  <ui5-label
-    class="FormItem-label-0"
-    style="grid-column-start: 1; grid-row-start: 0;"
-    wrap="true"
-  >
-    item 2:
-  </ui5-label>
-  <div
-    class="FormItem-content-0"
-    style="grid-row-start: 0;"
-  >
-    <ui5-input
-      type="Number"
-      value-state="None"
-    />
-  </div>
-</div>
+</DocumentFragment>
 `;
 
 exports[`Create a Form size rate L; should create Label and Element with 33% and 66% width respectively and display: flex for top FormItem div 1`] = `
-<div
-  class="Form-form-0"
-  data-columns="1"
-  style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4;"
->
-  <ui5-title
-    class="Form-formTitle-0"
-    level="H3"
-  >
-    Test form
-  </ui5-title>
-  <ui5-title
-    class="FormGroup-title-0"
-    level="H5"
-  >
-    Group 1
-  </ui5-title>
-  <ui5-label
-    class="FormItem-label-0"
-    style="grid-column-start: 1; grid-row-start: 0;"
-    wrap="true"
-  >
-    item 1:
-  </ui5-label>
+<DocumentFragment>
   <div
-    class="FormItem-content-0"
-    style="grid-row-start: 0;"
+    class="Form-form"
+    data-columns="1"
+    style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4;"
   >
-    <ui5-input
-      type="Text"
-      value-state="None"
-    />
+    <ui5-title
+      class="Form-formTitle"
+      level="H3"
+      ui5-title=""
+    >
+      Test form
+    </ui5-title>
+    <ui5-title
+      class="FormGroup-title"
+      level="H5"
+      ui5-title=""
+    >
+      Group 1
+    </ui5-title>
+    <ui5-label
+      class="FormItem-label"
+      style="grid-column-start: 1; grid-row-start: 0;"
+      ui5-label=""
+      wrap="true"
+    >
+      item 1:
+    </ui5-label>
+    <div
+      class="FormItem-content"
+      style="grid-row-start: 0;"
+    >
+      <ui5-input
+        type="Text"
+        ui5-input=""
+        value-state="None"
+      />
+    </div>
+    <ui5-label
+      class="FormItem-label"
+      style="grid-column-start: 1; grid-row-start: 0;"
+      ui5-label=""
+      wrap="true"
+    >
+      item 2:
+    </ui5-label>
+    <div
+      class="FormItem-content"
+      style="grid-row-start: 0;"
+    >
+      <ui5-input
+        type="Number"
+        ui5-input=""
+        value-state="None"
+      />
+    </div>
+    <ui5-title
+      class="FormGroup-title"
+      level="H5"
+      ui5-title=""
+    >
+      Group 2
+    </ui5-title>
+    <ui5-label
+      class="FormItem-label"
+      style="grid-column-start: 1; grid-row-start: 0;"
+      ui5-label=""
+      wrap="true"
+    >
+      item 1:
+    </ui5-label>
+    <div
+      class="FormItem-content"
+      style="grid-row-start: 0;"
+    >
+      <ui5-input
+        type="Text"
+        ui5-input=""
+        value-state="None"
+      />
+    </div>
+    <ui5-label
+      class="FormItem-label"
+      style="grid-column-start: 1; grid-row-start: 0;"
+      ui5-label=""
+      wrap="true"
+    >
+      item 2:
+    </ui5-label>
+    <div
+      class="FormItem-content"
+      style="grid-row-start: 0;"
+    >
+      <ui5-input
+        type="Number"
+        ui5-input=""
+        value-state="None"
+      />
+    </div>
   </div>
-  <ui5-label
-    class="FormItem-label-0"
-    style="grid-column-start: 1; grid-row-start: 0;"
-    wrap="true"
-  >
-    item 2:
-  </ui5-label>
-  <div
-    class="FormItem-content-0"
-    style="grid-row-start: 0;"
-  >
-    <ui5-input
-      type="Number"
-      value-state="None"
-    />
-  </div>
-  <ui5-title
-    class="FormGroup-title-0"
-    level="H5"
-  >
-    Group 2
-  </ui5-title>
-  <ui5-label
-    class="FormItem-label-0"
-    style="grid-column-start: 1; grid-row-start: 0;"
-    wrap="true"
-  >
-    item 1:
-  </ui5-label>
-  <div
-    class="FormItem-content-0"
-    style="grid-row-start: 0;"
-  >
-    <ui5-input
-      type="Text"
-      value-state="None"
-    />
-  </div>
-  <ui5-label
-    class="FormItem-label-0"
-    style="grid-column-start: 1; grid-row-start: 0;"
-    wrap="true"
-  >
-    item 2:
-  </ui5-label>
-  <div
-    class="FormItem-content-0"
-    style="grid-row-start: 0;"
-  >
-    <ui5-input
-      type="Number"
-      value-state="None"
-    />
-  </div>
-</div>
+</DocumentFragment>
 `;
 
 exports[`Create a Form size rate M; should create Label and Element with 16% and 83% width respectively and display: flex for top FormItem div 1`] = `
-<div
-  class="Form-form-0"
-  data-columns="1"
-  style="--ui5wcr_form_content_span: 10; --ui5wcr_form_label_span: 2;"
->
-  <ui5-title
-    class="Form-formTitle-0"
-    level="H3"
-  >
-    Test form
-  </ui5-title>
-  <ui5-title
-    class="FormGroup-title-0"
-    level="H5"
-  >
-    Group 1
-  </ui5-title>
-  <ui5-label
-    class="FormItem-label-0"
-    style="grid-column-start: 1; grid-row-start: 0;"
-    wrap="true"
-  >
-    item 1:
-  </ui5-label>
+<DocumentFragment>
   <div
-    class="FormItem-content-0"
-    style="grid-row-start: 0;"
+    class="Form-form"
+    data-columns="1"
+    style="--ui5wcr_form_content_span: 10; --ui5wcr_form_label_span: 2;"
   >
-    <ui5-input
-      type="Text"
-      value-state="None"
-    />
+    <ui5-title
+      class="Form-formTitle"
+      level="H3"
+      ui5-title=""
+    >
+      Test form
+    </ui5-title>
+    <ui5-title
+      class="FormGroup-title"
+      level="H5"
+      ui5-title=""
+    >
+      Group 1
+    </ui5-title>
+    <ui5-label
+      class="FormItem-label"
+      style="grid-column-start: 1; grid-row-start: 0;"
+      ui5-label=""
+      wrap="true"
+    >
+      item 1:
+    </ui5-label>
+    <div
+      class="FormItem-content"
+      style="grid-row-start: 0;"
+    >
+      <ui5-input
+        type="Text"
+        ui5-input=""
+        value-state="None"
+      />
+    </div>
+    <ui5-label
+      class="FormItem-label"
+      style="grid-column-start: 1; grid-row-start: 0;"
+      ui5-label=""
+      wrap="true"
+    >
+      item 2:
+    </ui5-label>
+    <div
+      class="FormItem-content"
+      style="grid-row-start: 0;"
+    >
+      <ui5-input
+        type="Number"
+        ui5-input=""
+        value-state="None"
+      />
+    </div>
+    <ui5-title
+      class="FormGroup-title"
+      level="H5"
+      ui5-title=""
+    >
+      Group 2
+    </ui5-title>
+    <ui5-label
+      class="FormItem-label"
+      style="grid-column-start: 1; grid-row-start: 0;"
+      ui5-label=""
+      wrap="true"
+    >
+      item 1:
+    </ui5-label>
+    <div
+      class="FormItem-content"
+      style="grid-row-start: 0;"
+    >
+      <ui5-input
+        type="Text"
+        ui5-input=""
+        value-state="None"
+      />
+    </div>
+    <ui5-label
+      class="FormItem-label"
+      style="grid-column-start: 1; grid-row-start: 0;"
+      ui5-label=""
+      wrap="true"
+    >
+      item 2:
+    </ui5-label>
+    <div
+      class="FormItem-content"
+      style="grid-row-start: 0;"
+    >
+      <ui5-input
+        type="Number"
+        ui5-input=""
+        value-state="None"
+      />
+    </div>
   </div>
-  <ui5-label
-    class="FormItem-label-0"
-    style="grid-column-start: 1; grid-row-start: 0;"
-    wrap="true"
-  >
-    item 2:
-  </ui5-label>
-  <div
-    class="FormItem-content-0"
-    style="grid-row-start: 0;"
-  >
-    <ui5-input
-      type="Number"
-      value-state="None"
-    />
-  </div>
-  <ui5-title
-    class="FormGroup-title-0"
-    level="H5"
-  >
-    Group 2
-  </ui5-title>
-  <ui5-label
-    class="FormItem-label-0"
-    style="grid-column-start: 1; grid-row-start: 0;"
-    wrap="true"
-  >
-    item 1:
-  </ui5-label>
-  <div
-    class="FormItem-content-0"
-    style="grid-row-start: 0;"
-  >
-    <ui5-input
-      type="Text"
-      value-state="None"
-    />
-  </div>
-  <ui5-label
-    class="FormItem-label-0"
-    style="grid-column-start: 1; grid-row-start: 0;"
-    wrap="true"
-  >
-    item 2:
-  </ui5-label>
-  <div
-    class="FormItem-content-0"
-    style="grid-row-start: 0;"
-  >
-    <ui5-input
-      type="Number"
-      value-state="None"
-    />
-  </div>
-</div>
+</DocumentFragment>
 `;
 
 exports[`Create a Form size rate S; should create Label and Element with 100% width and display: block for top FormItem div 1`] = `
-<div
-  class="Form-form-0"
-  data-columns="1"
-  style="--ui5wcr_form_content_span: 12; --ui5wcr_form_label_span: 12; --ui5wcr_form_label_text_align: start;"
->
-  <ui5-title
-    class="Form-formTitle-0"
-    level="H3"
-  >
-    Test form
-  </ui5-title>
-  <ui5-title
-    class="FormGroup-title-0"
-    level="H5"
-  >
-    Group 1
-  </ui5-title>
-  <ui5-label
-    class="FormItem-label-0"
-    style="grid-column-start: 1; grid-row-start: 0;"
-    wrap="true"
-  >
-    item 1:
-  </ui5-label>
+<DocumentFragment>
   <div
-    class="FormItem-content-0"
-    style="grid-row-start: 0;"
+    class="Form-form"
+    data-columns="1"
+    style="--ui5wcr_form_content_span: 12; --ui5wcr_form_label_span: 12; --ui5wcr_form_label_text_align: start;"
   >
-    <ui5-input
-      type="Text"
-      value-state="None"
-    />
+    <ui5-title
+      class="Form-formTitle"
+      level="H3"
+      ui5-title=""
+    >
+      Test form
+    </ui5-title>
+    <ui5-title
+      class="FormGroup-title"
+      level="H5"
+      ui5-title=""
+    >
+      Group 1
+    </ui5-title>
+    <ui5-label
+      class="FormItem-label"
+      style="grid-column-start: 1; grid-row-start: 0;"
+      ui5-label=""
+      wrap="true"
+    >
+      item 1:
+    </ui5-label>
+    <div
+      class="FormItem-content"
+      style="grid-row-start: 0;"
+    >
+      <ui5-input
+        type="Text"
+        ui5-input=""
+        value-state="None"
+      />
+    </div>
+    <ui5-label
+      class="FormItem-label"
+      style="grid-column-start: 1; grid-row-start: 0;"
+      ui5-label=""
+      wrap="true"
+    >
+      item 2:
+    </ui5-label>
+    <div
+      class="FormItem-content"
+      style="grid-row-start: 0;"
+    >
+      <ui5-input
+        type="Number"
+        ui5-input=""
+        value-state="None"
+      />
+    </div>
+    <ui5-title
+      class="FormGroup-title"
+      level="H5"
+      ui5-title=""
+    >
+      Group 2
+    </ui5-title>
+    <ui5-label
+      class="FormItem-label"
+      style="grid-column-start: 1; grid-row-start: 0;"
+      ui5-label=""
+      wrap="true"
+    >
+      item 1:
+    </ui5-label>
+    <div
+      class="FormItem-content"
+      style="grid-row-start: 0;"
+    >
+      <ui5-input
+        type="Text"
+        ui5-input=""
+        value-state="None"
+      />
+    </div>
+    <ui5-label
+      class="FormItem-label"
+      style="grid-column-start: 1; grid-row-start: 0;"
+      ui5-label=""
+      wrap="true"
+    >
+      item 2:
+    </ui5-label>
+    <div
+      class="FormItem-content"
+      style="grid-row-start: 0;"
+    >
+      <ui5-input
+        type="Number"
+        ui5-input=""
+        value-state="None"
+      />
+    </div>
   </div>
-  <ui5-label
-    class="FormItem-label-0"
-    style="grid-column-start: 1; grid-row-start: 0;"
-    wrap="true"
-  >
-    item 2:
-  </ui5-label>
-  <div
-    class="FormItem-content-0"
-    style="grid-row-start: 0;"
-  >
-    <ui5-input
-      type="Number"
-      value-state="None"
-    />
-  </div>
-  <ui5-title
-    class="FormGroup-title-0"
-    level="H5"
-  >
-    Group 2
-  </ui5-title>
-  <ui5-label
-    class="FormItem-label-0"
-    style="grid-column-start: 1; grid-row-start: 0;"
-    wrap="true"
-  >
-    item 1:
-  </ui5-label>
-  <div
-    class="FormItem-content-0"
-    style="grid-row-start: 0;"
-  >
-    <ui5-input
-      type="Text"
-      value-state="None"
-    />
-  </div>
-  <ui5-label
-    class="FormItem-label-0"
-    style="grid-column-start: 1; grid-row-start: 0;"
-    wrap="true"
-  >
-    item 2:
-  </ui5-label>
-  <div
-    class="FormItem-content-0"
-    style="grid-row-start: 0;"
-  >
-    <ui5-input
-      type="Number"
-      value-state="None"
-    />
-  </div>
-</div>
+</DocumentFragment>
 `;
 
 exports[`Create a Form size rate XL; should create Label and Element with 33% and 66% width respectively and display: flex for top FormItem div 1`] = `
-<div
-  class="Form-form-0"
-  data-columns="2"
-  style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4;"
->
-  <ui5-title
-    class="Form-formTitle-0"
-    level="H3"
-  >
-    Test form
-  </ui5-title>
-  <ui5-title
-    level="H5"
-    style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
-  >
-    Group 1
-  </ui5-title>
-  <ui5-label
-    class="FormItem-label-0"
-    style="grid-column-start: 1; grid-row-start: 3;"
-    wrap="true"
-  >
-    item 1:
-  </ui5-label>
+<DocumentFragment>
   <div
-    class="FormItem-content-0"
-    style="grid-column-start: 5; grid-row-start: 3;"
+    class="Form-form"
+    data-columns="2"
+    style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4;"
   >
-    <ui5-input
-      type="Text"
-      value-state="None"
-    />
+    <ui5-title
+      class="Form-formTitle"
+      level="H3"
+      ui5-title=""
+    >
+      Test form
+    </ui5-title>
+    <ui5-title
+      level="H5"
+      style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
+      ui5-title=""
+    >
+      Group 1
+    </ui5-title>
+    <ui5-label
+      class="FormItem-label"
+      style="grid-column-start: 1; grid-row-start: 3;"
+      ui5-label=""
+      wrap="true"
+    >
+      item 1:
+    </ui5-label>
+    <div
+      class="FormItem-content"
+      style="grid-column-start: 5; grid-row-start: 3;"
+    >
+      <ui5-input
+        type="Text"
+        ui5-input=""
+        value-state="None"
+      />
+    </div>
+    <ui5-label
+      class="FormItem-label"
+      style="grid-column-start: 1; grid-row-start: 4;"
+      ui5-label=""
+      wrap="true"
+    >
+      item 2:
+    </ui5-label>
+    <div
+      class="FormItem-content"
+      style="grid-column-start: 5; grid-row-start: 4;"
+    >
+      <ui5-input
+        type="Number"
+        ui5-input=""
+        value-state="None"
+      />
+    </div>
+    <ui5-title
+      level="H5"
+      style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
+      ui5-title=""
+    >
+      Group 2
+    </ui5-title>
+    <ui5-label
+      class="FormItem-label"
+      style="grid-column-start: 13; grid-row-start: 3;"
+      ui5-label=""
+      wrap="true"
+    >
+      item 1:
+    </ui5-label>
+    <div
+      class="FormItem-content"
+      style="grid-column-start: 17; grid-row-start: 3;"
+    >
+      <ui5-input
+        type="Text"
+        ui5-input=""
+        value-state="None"
+      />
+    </div>
+    <ui5-label
+      class="FormItem-label"
+      style="grid-column-start: 13; grid-row-start: 4;"
+      ui5-label=""
+      wrap="true"
+    >
+      item 2:
+    </ui5-label>
+    <div
+      class="FormItem-content"
+      style="grid-column-start: 17; grid-row-start: 4;"
+    >
+      <ui5-input
+        type="Number"
+        ui5-input=""
+        value-state="None"
+      />
+    </div>
   </div>
-  <ui5-label
-    class="FormItem-label-0"
-    style="grid-column-start: 1; grid-row-start: 4;"
-    wrap="true"
-  >
-    item 2:
-  </ui5-label>
-  <div
-    class="FormItem-content-0"
-    style="grid-column-start: 5; grid-row-start: 4;"
-  >
-    <ui5-input
-      type="Number"
-      value-state="None"
-    />
-  </div>
-  <ui5-title
-    level="H5"
-    style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
-  >
-    Group 2
-  </ui5-title>
-  <ui5-label
-    class="FormItem-label-0"
-    style="grid-column-start: 13; grid-row-start: 3;"
-    wrap="true"
-  >
-    item 1:
-  </ui5-label>
-  <div
-    class="FormItem-content-0"
-    style="grid-column-start: 17; grid-row-start: 3;"
-  >
-    <ui5-input
-      type="Text"
-      value-state="None"
-    />
-  </div>
-  <ui5-label
-    class="FormItem-label-0"
-    style="grid-column-start: 13; grid-row-start: 4;"
-    wrap="true"
-  >
-    item 2:
-  </ui5-label>
-  <div
-    class="FormItem-content-0"
-    style="grid-column-start: 17; grid-row-start: 4;"
-  >
-    <ui5-input
-      type="Number"
-      value-state="None"
-    />
-  </div>
-</div>
+</DocumentFragment>
 `;

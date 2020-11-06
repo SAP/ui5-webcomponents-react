@@ -1,108 +1,110 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Analytical Card Render without Crashing 1`] = `
-<div
-  class="AnalyticalCard-card-0"
->
+<DocumentFragment>
   <div
-    class="AnalyticalCardHeader-cardHeader-0"
+    class="AnalyticalCard-card"
   >
     <div
-      class="AnalyticalCardHeader-headerContent-0"
+      class="AnalyticalCardHeader-cardHeader"
     >
       <div
-        class="AnalyticalCardHeader-headerTitles-0"
+        class="AnalyticalCardHeader-headerContent"
       >
         <div
-          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentSpaceBetween-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
+          class="AnalyticalCardHeader-headerTitles"
         >
           <div
-            class="AnalyticalCardHeader-headerText-0"
-          >
-            Title
-          </div>
-          <div
-            class="ObjectStatus-objectStatus-0 AnalyticalCardHeader-counter-0"
-          />
-        </div>
-        <div
-          class="AnalyticalCardHeader-subHeaderText-0"
-        >
-          Subtitle
-        </div>
-      </div>
-      <div
-        class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsEnd-0 FlexBox-flexWrapNoWrap-0 AnalyticalCardHeader-kpiContent-0"
-      >
-        <div
-          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
-        >
-          <div
-            class="AnalyticalCardHeader-valueAndUnit-0 AnalyticalCardHeader-good-0"
+            class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
           >
             <div
-              class="AnalyticalCardHeader-value-0"
+              class="AnalyticalCardHeader-headerText"
             >
-              Value
+              Title
             </div>
             <div
-              class="AnalyticalCardHeader-indicatorAndUnit-0"
+              class="ObjectStatus-objectStatus AnalyticalCardHeader-counter"
+            />
+          </div>
+          <div
+            class="AnalyticalCardHeader-subHeaderText"
+          >
+            Subtitle
+          </div>
+        </div>
+        <div
+          class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsEnd FlexBox-flexWrapNoWrap AnalyticalCardHeader-kpiContent"
+        >
+          <div
+            class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+          >
+            <div
+              class="AnalyticalCardHeader-valueAndUnit AnalyticalCardHeader-good"
             >
               <div
-                class="AnalyticalCardHeader-arrowIndicatorShape-0 AnalyticalCardHeader-arrowDown-0 AnalyticalCardHeader-good-0"
-              />
-              <div
-                class="AnalyticalCardHeader-unit-0"
+                class="AnalyticalCardHeader-value"
               >
-                Unit
+                Value
+              </div>
+              <div
+                class="AnalyticalCardHeader-indicatorAndUnit"
+              >
+                <div
+                  class="AnalyticalCardHeader-arrowIndicatorShape AnalyticalCardHeader-arrowDown AnalyticalCardHeader-good"
+                />
+                <div
+                  class="AnalyticalCardHeader-unit"
+                >
+                  Unit
+                </div>
               </div>
             </div>
           </div>
+          <div
+            class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap AnalyticalCardHeader-targetAndDeviation"
+          >
+            <div
+              class="FlexBox-flexBox FlexBox-flexBoxDirectionColumn FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap AnalyticalCardHeader-targetAndDeviationColumn"
+            >
+              <span>
+                Target
+              </span>
+              <span
+                class="AnalyticalCardHeader-targetAndDeviationValue"
+              >
+                Target
+              </span>
+            </div>
+            <div
+              class="FlexBox-flexBox FlexBox-flexBoxDirectionColumn FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap AnalyticalCardHeader-targetAndDeviationColumn"
+            >
+              <span>
+                Deviation
+              </span>
+              <span
+                class="AnalyticalCardHeader-targetAndDeviationValue"
+              >
+                Deviation
+              </span>
+            </div>
+          </div>
         </div>
         <div
-          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0 AnalyticalCardHeader-targetAndDeviation-0"
+          class="AnalyticalCardHeader-description"
         >
-          <div
-            class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0 AnalyticalCardHeader-targetAndDeviationColumn-0"
-          >
-            <span>
-              Target
-            </span>
-            <span
-              class="AnalyticalCardHeader-targetAndDeviationValue-0"
-            >
-              Target
-            </span>
-          </div>
-          <div
-            class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0 AnalyticalCardHeader-targetAndDeviationColumn-0"
-          >
-            <span>
-              Deviation
-            </span>
-            <span
-              class="AnalyticalCardHeader-targetAndDeviationValue-0"
-            >
-              Deviation
-            </span>
-          </div>
+          Description
         </div>
       </div>
-      <div
-        class="AnalyticalCardHeader-description-0"
+    </div>
+    <div
+      class="AnalyticalCard-content"
+    >
+      <span
+        class="Text-text"
       >
-        Description
-      </div>
+        I'm a content!
+      </span>
     </div>
   </div>
-  <div
-    class="AnalyticalCard-content-0"
-  >
-    <span
-      class="Text-text-0"
-    >
-      I'm a content!
-    </span>
-  </div>
-</div>
+</DocumentFragment>
 `;

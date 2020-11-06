@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react",
-  "version": "0.11.0",
+  "version": "0.11.3",
   "description": "React Wrapper for UI5 Web Components and additional components",
   "main": "index.cjs.js",
   "module": "index.esm.js",
@@ -23,7 +23,7 @@
   "scripts": {
     "clean": "rimraf cjs components enums interfaces internal lib webComponents index.esm.js index.d.ts dist",
     "build": "npm-run-all -s build:i18n build:rollup",
-    "build:rollup": "rollup -c rollup.config.js",
+    "build:rollup": "rollup -c rollup.config.mjs",
     "build:i18n": "npm-run-all -s build:i18n-bundles build:i18n-default build:i18n-imports build:assets",
     "build:i18n-bundles": "mkdirp dist/assets/i18n && node ../../node_modules/@ui5/webcomponents-tools/lib/i18n/toJSON.js src/i18n dist/assets/i18n",
     "build:i18n-default": "node ../../node_modules/@ui5/webcomponents-tools/lib/i18n/defaults.js src/i18n dist/assets/i18n && tsc dist/assets/i18n/i18n-defaults.js --allowJs --declaration --emitDeclarationOnly --declarationDir dist/assets/i18n",
@@ -33,20 +33,20 @@
   },
   "dependencies": {
     "@babel/runtime": "7.12.1",
-    "@ui5/webcomponents-react-base": "^0.11.0",
+    "@ui5/webcomponents-react-base": "^0.11.3",
     "lodash": "^4.17.20",
-    "react-content-loader": "5.1.0",
-    "react-jss": "10.1.1",
-    "react-table": "7.6.0",
-    "react-virtual": "2.2.7"
+    "react-content-loader": "5.1.4",
+    "react-jss": "10.4.0",
+    "react-table": "7.6.1",
+    "react-virtual": "2.3.1"
   },
   "peerDependencies": {
     "@ui5/webcomponents": "1.0.0-rc.9",
     "@ui5/webcomponents-base": "1.0.0-rc.9",
     "@ui5/webcomponents-fiori": "1.0.0-rc.9",
     "@ui5/webcomponents-icons": "1.0.0-rc.9",
-    "react": "^16.8.0",
-    "react-dom": "^16.8.0"
+    "react": "^16.8.0 || ^17.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0"
   },
   "peerDependenciesMeta": {
     "@ui5/webcomponents-base": {

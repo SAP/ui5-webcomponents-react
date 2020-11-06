@@ -1,0 +1,61 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { MessageStrip } from '@ui5/webcomponents-react/lib/MessageStrip';
+import { MessageStripType } from '@ui5/webcomponents-react/lib/MessageStripType';
+import '@ui5/webcomponents-icons/dist/icons/employee.js';
+import { Icon } from '@ui5/webcomponents-react/lib/Icon';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
+
+<Meta
+  title="UI5 Web Components / MessageStrip"
+  component={MessageStrip}
+  argTypes={{
+    ...createSelectArgTypes({ type: MessageStripType }),
+    ...DocsCommonProps,
+    children: { control: 'text' },
+    icon: { control: { disable: true } }
+  }}
+  args={{
+    type: MessageStripType.Information,
+    children: 'MessageStrip Text',
+    style: {},
+    className: '',
+    tooltip: '',
+    slot: '',
+    ref: null
+  }}
+/>
+
+<DocsHeader />
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return <MessageStrip {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="." />
+<div style={{ fontFamily: 'var(--sapFontFamily)', fontSize: 'var(--sapFontSize)', color: 'var(--sapTextColor)' }}>
+  <h3>Usage</h3>
+  For the <code>MessageStrip</code> component, you can define whether it displays an icon in the beginning and a close button.
+  Moreover, its size and background can be controlled with CSS.
+</div>
+
+<b />
+
+# Stories
+
+<b />
+
+## MessageStrip with Icon
+
+<Canvas>
+  <Story name="with Icon" args={{ icon: <Icon name="employee" /> }}>
+    {(args) => {
+      return <MessageStrip {...args} />;
+    }}
+  </Story>
+</Canvas>

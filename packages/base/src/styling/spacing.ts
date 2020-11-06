@@ -219,9 +219,9 @@ export const sapUiResponsiveContentPadding = {
     padding: '0 2rem'
   },
   '@media (min-width:1024px) and (max-width: 1439px)': {
-    padding: '0 2rem !important'
+    padding: '0 2rem'
   },
   '@media (min-width:1440px)': {
-    padding: '0 3rem !important'
+    padding: '0 3rem'
   }
 };

@@ -54,7 +54,7 @@ export interface InputPropTypes extends Omit<WithWebComponentPropTypes, 'onChang
    */
   valueState?: ValueState;
   /**
-   * Defines the <code>Input</code> suggestion items. <br><br> Example: <br><br> &lt;Input show-suggestions><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;ui5-suggestion-item text="Item #1">&lt;/ui5-suggestion-item><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;ui5-suggestion-item text="Item #2">&lt;/ui5-suggestion-item><br> &lt;/Input>  <br><br> <b>Note:</b> The suggestion would be displayed only if the <code>showSuggestions</code> property is set to <code>true</code>. <br><br> <b>Note:</b> The &lt;ui5-suggestion-item> is recommended to be used as a suggestion item. Importing the Input Suggestions Support feature: <br> <code>import "@ui5/webcomponents/dist/features/InputSuggestions.js";</code> <br> also automatically imports the &lt;ui5-suggestion-item> for your convenience.
+   * Defines the <code>Input</code> suggestion items. <br><br> Example: <br><br> &lt;Input showSuggestions><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;SuggestionItem text="Item #1">&lt;/SuggestionItem><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;SuggestionItem text="Item #2">&lt;/SuggestionItem><br> &lt;/Input>  <br><br> <b>Note:</b> The suggestion would be displayed only if the <code>showSuggestions</code> property is set to <code>true</code>. <br><br> <b>Note:</b> The &lt;SuggestionItem> is recommended to be used as a suggestion item. Importing the Input Suggestions Support feature: <br> <code>import "@ui5/webcomponents/dist/features/InputSuggestions.js";</code> <br> also automatically imports the &lt;SuggestionItem> for your convenience.
    */
   children?: ReactNode | ReactNode[];
   /**

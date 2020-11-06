@@ -1,25 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Text No Wrap 1`] = `
-<span
-  class="Text-text-0 Text-noWrap-0"
->
-  Lorem Ipsum dolor sit amed
-</span>
+<DocumentFragment>
+  <span
+    class="Text-text Text-noWrap"
+  >
+    Lorem Ipsum dolor sit amed
+  </span>
+</DocumentFragment>
 `;
 
 exports[`Text Render Basic Text 1`] = `
-<span
-  class="Text-text-0"
->
-  FioriText
-</span>
+<DocumentFragment>
+  <span
+    class="Text-text"
+  >
+    FioriText
+  </span>
+</DocumentFragment>
 `;
 
 exports[`Text Render Whitespace 1`] = `
-<span
-  class="Text-text-0 Text-renderWhitespace-0"
->
-  Lorem Ipsum dolor sit amed
-</span>
+<DocumentFragment>
+  <span
+    class="Text-text Text-renderWhitespace"
+  >
+    Lorem Ipsum dolor sit amed
+  </span>
+</DocumentFragment>
 `;

@@ -1,0 +1,99 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Timeline } from '@ui5/webcomponents-react/lib/Timeline';
+import { TimelineItem } from '@ui5/webcomponents-react/lib/TimelineItem';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
+import '@ui5/webcomponents-icons/dist/icons/calendar';
+import '@ui5/webcomponents-icons/dist/icons/phone';
+import '@ui5/webcomponents-icons/dist/icons/wrench';
+
+<Meta
+  title="UI5 Web Components / Timeline"
+  component={Timeline}
+  subcomponents={{ TimelineItem }}
+  argTypes={{
+    ...createSelectArgTypes({}),
+    ...DocsCommonProps,
+    children: { control: { disable: true } }
+  }}
+  args={{
+    style: {},
+    className: '',
+    tooltip: '',
+    slot: '',
+    ref: null
+  }}
+/>
+
+<DocsHeader />
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return (
+        <Timeline {...args}>
+          <TimelineItem subtitleText="2019/01/01" icon="phone" itemName={`John Smith `} />
+          <TimelineItem titleText="Weekly Sync - CP Design" subtitleText="2019/01/02" icon="calendar">
+            <div>MR SOF02 2.43</div>
+          </TimelineItem>
+        </Timeline>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Default" />
+
+<br />
+
+# Stories
+
+<br />
+
+## Timeline with customizable TimelineItem
+
+An entry posted on the timeline
+
+<Canvas>
+  <Story
+    name="with customizable TimelineItem"
+    argTypes={{
+      icon: {
+        description: `Defines the icon to be displayed as graphical element within the <code>TimelineItem</code>. SAP-icons font provides numerous options. <br><br><br/><br/>See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.`
+      },
+      itemName: { description: `Defines the name of the item.` },
+      itemNameClickable: { description: `Defines whether the <code>itemName</code> is clickable.` },
+      subtitleText: { description: `Defines the subtitle text of the component.` },
+      titleText: { description: `Defines the title text of the component.` },
+      children: {
+        control: { disable: false },
+        description: `Determines the description of the <code>TimelineItem</code>.`
+      },
+      onItemNameClick: {
+        description: `Fired when the item name is pressed either with a click/tap or by using the Enter or Space key. <br><br> <b>Note:</b> The event will not be fired if the <code>item-name-clickable</code> attribute is not set.`
+      }
+    }}
+    args={{
+      icon: 'wrench',
+      itemName: 'Customizable TimelineItem',
+      itemNameClickable: false,
+      subtitleText: 'subtitleText',
+      titleText: '',
+      children: 'TimelineItem content'
+    }}
+  >
+    {(args) => {
+      return (
+        <Timeline>
+          <TimelineItem {...args} />
+          <TimelineItem titleText="Weekly Sync - CP Design" subtitleText="2019/01/02" icon="calendar">
+            <div>MR SOF02 2.43</div>
+          </TimelineItem>
+        </Timeline>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="with customizable TimelineItem" />

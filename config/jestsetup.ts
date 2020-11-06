@@ -1,5 +1,5 @@
-import contentLoaderSerializer from '@shared/tests/serializer/content-loader-serializer.js';
-import jssSerializer from '@shared/tests/serializer/jss-snapshot-serializer';
+import contentLoaderSerializer from '@shared/tests/serializer/content-loader-serializer.cjs';
+import jssSerializer from '@shared/tests/serializer/jss-snapshot-serializer.cjs';
 import '@testing-library/jest-dom';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
@@ -27,11 +27,17 @@ expect.addSnapshotSerializer(
   createSerializer({
     map: (el) => {
       // @ts-ignore
-      el.node && el.node.attribs && el.node.attribs.theme && delete el.node.attribs.theme;
+      el.node &&
+        el.node.attribs &&
+        el.node.attribs.theme &&
+        delete el.node.attribs.theme;
       // @ts-ignore
-      el.node && el.node.attribs && el.node.attribs.classes && delete el.node.attribs.classes;
+      el.node &&
+        el.node.attribs &&
+        el.node.attribs.classes &&
+        delete el.node.attribs.classes;
       return el;
-    }
+    },
   })
 );
 expect.addSnapshotSerializer(jssSerializer);
@@ -48,8 +54,8 @@ export const setupMatchMedia = () => {
       removeListener: jest.fn(), // deprecated
       addEventListener: jest.fn(),
       removeEventListener: jest.fn(),
-      dispatchEvent: jest.fn()
-    }))
+      dispatchEvent: jest.fn(),
+    })),
   });
 };
 
