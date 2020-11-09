@@ -1,70 +1,82 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`FilterBar Hide FilterBar 1`] = `
-<div
-  class="FilterBar-outerContainer-0"
->
+<DocumentFragment>
   <div
-    class="Toolbar-outerContainer-0 Toolbar-clear-0 FilterBar-filterBarHeader-0"
+    class="FilterBar-outerContainer"
   >
     <div
-      class="Toolbar-toolbar-0"
-    >
-      <span
-        class="spacer"
-        style="flex-grow: 1;"
-      />
-      <div>
-        <ui5-button
-          class="FilterBar-showFiltersBtn-0"
-          design="Transparent"
-        >
-          Show Filter Bar
-        </ui5-button>
-      </div>
-    </div>
-  </div>
-  <div
-    class="FilterBar-filterArea-0 FilterBar-filterAreaClosed-0"
-  >
-    <div
-      class="FilterGroupItem-filterItem-0"
+      class="Toolbar-outerContainer Toolbar-clear FilterBar-filterBarHeader"
     >
       <div
-        class="FilterGroupItem-innerFilterItemContainer-0"
+        class="Toolbar-toolbar"
+      >
+        <span
+          class="spacer"
+          style="flex-grow: 1;"
+        />
+        <div>
+          <ui5-button
+            class="FilterBar-showFiltersBtn"
+            design="Transparent"
+            ui5-button=""
+          >
+            Show Filter Bar
+          </ui5-button>
+        </div>
+      </div>
+    </div>
+    <div
+      class="FilterBar-filterArea FilterBar-filterAreaClosed"
+    >
+      <div
+        class="FilterGroupItem-filterItem"
       >
         <div
-          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
+          class="FilterGroupItem-innerFilterItemContainer"
         >
-          <ui5-label
-            title="Classification"
+          <div
+            class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
           >
-            
+            <ui5-label
+              title="Classification"
+              ui5-label=""
+            >
+              
           Classification
-          </ui5-label>
-        </div>
-        <ui5-select
-          value-state="None"
-        >
-          <ui5-option>
-            Option 1
-          </ui5-option>
-          <ui5-option
-            selected="true"
+            </ui5-label>
+          </div>
+          <ui5-select
+            ui5-select=""
+            value-state="None"
           >
-            Option 2
-          </ui5-option>
-          <ui5-option>
-            Option 3
-          </ui5-option>
-          <ui5-option>
-            Option 4
-          </ui5-option>
-        </ui5-select>
+            <ui5-option
+              ui5-option=""
+            >
+              Option 1
+            </ui5-option>
+            <ui5-option
+              selected="true"
+              ui5-option=""
+            >
+              Option 2
+            </ui5-option>
+            <ui5-option
+              ui5-option=""
+            >
+              Option 3
+            </ui5-option>
+            <ui5-option
+              ui5-option=""
+            >
+              Option 4
+            </ui5-option>
+          </ui5-select>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</DocumentFragment>
 `;
 
 exports[`FilterBar Render without crashing - default props 1`] = `
