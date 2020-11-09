@@ -33,7 +33,7 @@ jobs:
       run: yarn test --runInBand
     - name: Coveralls
       # only collect coverage information on latest react version
-      if: matrix.react-version == ^17.0.0 
+      if: matrix.react-version == '^17.0.0'
       uses: coverallsapp/github-action@v1.1.2
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
