@@ -1,0 +1,72 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { ProductSwitch } from '@ui5/webcomponents-react/lib/ProductSwitch';
+import { ProductSwitchItem } from '@ui5/webcomponents-react/lib/ProductSwitchItem';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
+import '@ui5/webcomponents-icons/dist/icons/business-objects-experience';
+import '@ui5/webcomponents-icons/dist/icons/contacts';
+import '@ui5/webcomponents-icons/dist/icons/flight';
+import '@ui5/webcomponents-icons/dist/icons/home';
+import '@ui5/webcomponents-icons/dist/icons/wrench';
+
+<Meta
+  title="UI5 Web Components / ProductSwitch"
+  component={ProductSwitch}
+  subcomponents={{ ProductSwitchItem }}
+  argTypes={{
+    ...createSelectArgTypes({}),
+    ...DocsCommonProps,
+    children: { control: { disable: true } },
+    heading: { description: `Defines the title of the <code>ProductSwitchItem</code>.` },
+    icon: {
+      description: `Defines the icon to be displayed as a graphical element within the <code>ProductSwitchItem</code>. <br><br> Example: <br> <pre>ProductSwitchItem icon="palette"</pre><br/><br/>See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.`
+    },
+    subtitle: { description: `Defines the subtitle of the <code>ProductSwitchItem</code>.` },
+    target: {
+      description: `Defines a target where the <code>targetSrc</code> content must be open. <br><br> Available options are: <ul> <li><code>_self</code></li> <li><code>_top</code></li> <li><code>_blank</code></li> <li><code>_parent</code></li> <li><code>_search</code></li> </ul>`
+    },
+    targetSrc: {
+      description: `Defines the <code>ProductSwitchItem</code> target URI. Supports standard hyperlink behavior.`
+    },
+    onClick: {
+      description: `Fired when the <code>ProductSwitchItem</code> is activated either with a click/tap or by using the Enter or Space key.`
+    }
+  }}
+  args={{
+    heading: 'ProductSwitchItem',
+    subtitle: 'Customizable',
+    icon: 'wrench',
+    target: '_blank',
+    targetSrc: 'https://sap.github.io/ui5-webcomponents-react/',
+    style: {},
+    className: '',
+    tooltip: '',
+    slot: '',
+    ref: null
+  }}
+/>
+
+<DocsHeader />
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return (
+        <ProductSwitch>
+          <ProductSwitchItem {...args} />
+          <ProductSwitchItem heading="Home" subtitle="Central Home" icon="home" />
+          <ProductSwitchItem
+            heading="Analytical Cloud"
+            subtitle="Analytical Cloud"
+            icon="business-objects-experience"
+          />
+          <ProductSwitchItem heading="Catalog" subtitle="Ariba" icon="contacts" />
+          <ProductSwitchItem heading="Travel & Expense" subtitle="Concur" icon="flight" />
+        </ProductSwitch>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="." />

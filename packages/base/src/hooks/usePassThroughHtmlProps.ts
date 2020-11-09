@@ -1,4 +1,4 @@
-const PROP_INCLUDELIST = /^(aria-|data-|id$|on[A-Z])/;
+const PROP_INCLUDELIST = /^(aria-|data-|id$|on[A-Z]|slot$)/;
 
 export const usePassThroughHtmlProps = (props: Record<string, any>, propExcludeList: string[] = []) => {
   const componentPropExcludelist = new Set(propExcludeList);

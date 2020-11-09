@@ -13,20 +13,23 @@
     "pretest": "rimraf coverage && lerna run build:i18n",
     "test": "jest --config=config/jest.config.js --coverage",
     "clean": "lerna run clean --stream && rimraf coverage",
-    "prettier:all": "prettier --write --config ./prettier.config.js \"packages/**/*.{ts,tsx,mdx}\"",
+    "prettier:all": "prettier --write --config ./prettier.config.cjs \"packages/**/*.{ts,tsx,mdx}\"",
     "lint": "eslint packages",
     "lerna:version-dryrun": "lerna version --conventional-graduate --no-git-tag-version --no-push",
-    "deploy:storybook": "lerna run build:i18n && storybook-to-ghpages --ci"
+    "deploy:storybook": "lerna run build:i18n && storybook-to-ghpages --ci",
+    "create-webcomponents-wrapper": "node --experimental-json-modules ./packages/main/scripts/create-web-components-wrapper.mjs",
+    "examples:recreate-seed": "rimraf examples/seed-test && yarn create react-app examples/seed-test --template file:./packages/cra-template-seed",
+    "examples:mock-seed": "cd examples/seed-test && SKIP_PREFLIGHT_CHECK=true yarn mock"
   },
   "dependencies": {
-    "@storybook/addon-actions": "6.0.26",
-    "@storybook/addon-controls": "6.0.26",
-    "@storybook/addon-docs": "6.0.26",
-    "@storybook/addon-toolbars": "6.0.26",
-    "@storybook/addons": "6.0.26",
-    "@storybook/cli": "6.0.26",
-    "@storybook/react": "6.0.26",
-    "@storybook/theming": "6.0.26",
+    "@storybook/addon-actions": "6.0.28",
+    "@storybook/addon-controls": "6.0.28",
+    "@storybook/addon-docs": "6.0.28",
+    "@storybook/addon-toolbars": "6.0.28",
+    "@storybook/addons": "6.0.28",
+    "@storybook/cli": "6.0.28",
+    "@storybook/react": "6.0.28",
+    "@storybook/theming": "6.0.28",
     "@ui5/webcomponents": "1.0.0-rc.9",
     "@ui5/webcomponents-fiori": "1.0.0-rc.9",
     "@ui5/webcomponents-icons": "1.0.0-rc.9",
@@ -39,21 +42,20 @@
     "@babel/plugin-proposal-class-properties": "^7.12.1",
     "@babel/plugin-proposal-decorators": "^7.12.1",
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.12.1",
-    "@babel/plugin-proposal-numeric-separator": "^7.12.1",
+    "@babel/plugin-proposal-numeric-separator": "^7.12.5",
     "@babel/plugin-proposal-optional-chaining": "^7.12.1",
     "@babel/plugin-transform-runtime": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
-    "@babel/preset-react": "^7.12.1",
+    "@babel/preset-react": "^7.12.5",
     "@babel/preset-typescript": "^7.12.1",
     "@rollup/plugin-babel": "^5.2.1",
-    "@rollup/plugin-commonjs": "^15.1.0",
+    "@rollup/plugin-commonjs": "^16.0.0",
     "@rollup/plugin-json": "^4.0.3",
-    "@rollup/plugin-node-resolve": "^9.0.0",
+    "@rollup/plugin-node-resolve": "^10.0.0",
     "@rollup/plugin-replace": "^2.3.2",
     "@storybook/storybook-deployer": "^2.8.6",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.0.2",
-    "@types/enzyme": "^3.10.5",
     "@types/jest": "^26.0.8",
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.6",
@@ -64,9 +66,6 @@
     "chalk": "^4.0.0",
     "dedent": "^0.7.0",
     "dotenv": "^8.2.0",
-    "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.2",
-    "enzyme-to-json": "^3.4.4",
     "eslint": "^7.10.0",
     "eslint-config-prettier": "^6.12.0",
     "eslint-plugin-import": "^2.22.1",
@@ -79,7 +78,6 @@
     "jest": "^26.4.2",
     "jest-canvas-mock": "^2.2.0",
     "jest-environment-jsdom-sixteen": "^1.0.2",
-    "jest-enzyme": "^7.1.2",
     "lerna": "^3.20.2",
     "lint-staged": "^10.2.11",
     "micromatch": "^4.0.2",
@@ -88,7 +86,7 @@
     "ncp": "^2.0.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.0.4",
-    "react-app-polyfill": "^1.0.6",
+    "react-app-polyfill": "^2.0.0",
     "rimraf": "^3.0.1",
     "rollup": "^2.23.0",
     "rollup-plugin-terser": "^7.0.2",
@@ -96,8 +94,8 @@
     "typescript": "^4.0.3"
   },
   "resolutions": {
-    "@types/react": "16.9.53",
-    "@babel/runtime": "7.12.1",
+    "@types/react": "16.9.54",
+    "@babel/runtime": "7.12.5",
     "react": "16.8.0",
     "react-dom": "16.8.0"
   },
@@ -108,7 +106,8 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,mdx}": [
-      "prettier -config ./prettier.config.js --write"
+      "prettier -config ./prettier.config.cjs --write"
     ]
-  }
+  },
+  "type": "module"
 }

@@ -1,0 +1,106 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { FileUploader } from '@ui5/webcomponents-react/lib/FileUploader';
+import { Button } from '@ui5/webcomponents-react/lib/Button';
+import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
+import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
+import { Badge } from '@ui5/webcomponents-react/lib/Badge';
+import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
+import '@ui5/webcomponents-icons/dist/icons/upload.js';
+
+<Meta
+  title="UI5 Web Components / FileUploader"
+  component={FileUploader}
+  argTypes={{
+    ...createSelectArgTypes({ valueState: ValueState }),
+    ...DocsCommonProps,
+    children: { control: { disable: true } },
+    valueStateMessage: { control: { disable: true } }
+  }}
+  args={{
+    valueState: ValueState.None,
+    style: {},
+    className: '',
+    tooltip: '',
+    slot: '',
+    ref: null
+  }}
+/>
+
+<DocsHeader />
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return <FileUploader {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="." />
+
+<br />
+
+# Stories
+
+<br />
+
+## FileUploader with Buttons
+
+<br />
+
+### Upload single file
+
+<Canvas>
+  <Story name="With Buttons">
+    {(args) => {
+      return (
+        <FileUploader {...args}>
+          <Button>Upload single file</Button>
+        </FileUploader>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Upload multiple files
+
+<Canvas>
+  <FileUploader multiple>
+    <Button>Upload multiple files</Button>
+  </FileUploader>
+</Canvas>
+
+<br />
+
+## Custom FileUploader
+
+### FileUploader without input field
+
+<Canvas>
+  <Story name="Custom FileUploader">
+    {(args) => {
+      return (
+        <FileUploader hideInput>
+          <Button>Upload file</Button>
+        </FileUploader>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### FileUploader with custom elements
+
+<Canvas>
+  <FlexBox alignItems={FlexBoxAlignItems.Center}>
+    <FileUploader hideInput>
+      <Avatar icon="upload" />
+    </FileUploader>
+    <FileUploader hideInput>
+      <Badge>Upload file</Badge>
+    </FileUploader>
+  </FlexBox>
+</Canvas>

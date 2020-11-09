@@ -16,7 +16,8 @@ export interface ShellBarItemPropTypes extends WithWebComponentPropTypes {
    */
   stableDomRef?: unknown;
   /**
-   * Defines the item text.
+   * Defines the item text.<br />
+   * __Note:__ `text` will only be visible in mobile view.
    */
   text?: string;
   /**

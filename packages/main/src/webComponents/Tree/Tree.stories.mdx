@@ -1,12 +1,16 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { Tree } from '@ui5/webcomponents-react/lib/Tree';
 import { ListMode } from '@ui5/webcomponents-react/lib/ListMode';
+import { BusyIndicator } from '@ui5/webcomponents-react/lib/BusyIndicator';
 import { TreeItem } from '@ui5/webcomponents-react/lib/TreeItem';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
-import '@ui5/webcomponents-icons/dist/icons/copy';
-import '@ui5/webcomponents-icons/dist/icons/paste';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
+import '@ui5/webcomponents-icons/dist/icons/copy';
+import '@ui5/webcomponents-icons/dist/icons/paste';
+import '@ui5/webcomponents-icons/dist/icons/wrench';
+import '@ui5/webcomponents-icons/dist/icons/download-from-cloud';
+import { useState } from 'react';
 
 <Meta
   title="UI5 Web Components / Tree"
@@ -14,13 +18,17 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
   subcomponents={{ TreeItem }}
   argTypes={{
     ...createSelectArgTypes({ mode: ListMode }),
-    children: { type: null },
-    header: { type: null },
-    ...DocsCommonProps
+    ...DocsCommonProps,
+    children: { control: { disable: true } },
+    header: { control: { disable: true } }
   }}
   args={{
     mode: ListMode.None,
-    footerText: 'This is a footer text'
+    style: {},
+    className: '',
+    tooltip: '',
+    slot: '',
+    ref: null
   }}
 />
 
@@ -28,30 +36,190 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Canvas>
   <Story name="Default">
-    {(args) => (
-      <Tree {...args}>
-        <TreeItem expanded text="Tree 1" icon="paste" selected>
-          <TreeItem expanded text="Tree 1.1" selected>
-            <TreeItem text="Tree 1.1.1"></TreeItem>
-            <TreeItem text="Tree 1.1.2"></TreeItem>
-          </TreeItem>
-        </TreeItem>
-        <TreeItem text="Tree 2" icon="copy">
-          <TreeItem text="Tree 2.1">
-            <TreeItem text="Tree 2.1.1"></TreeItem>
-            <TreeItem text="Tree 2.1.2">
-              <TreeItem text="Tree 2.1.2.1"></TreeItem>
-              <TreeItem text="Tree 2.1.2.2"></TreeItem>
-              <TreeItem text="Tree 2.1.2.3"></TreeItem>
-              <TreeItem text="Tree 2.1.2.5"></TreeItem>
+    {(args) => {
+      return (
+        <Tree {...args}>
+          <TreeItem expanded text="Tree 1" icon="paste" selected>
+            <TreeItem expanded text="Tree 1.1" selected>
+              <TreeItem text="Tree 1.1.1" />
+              <TreeItem text="Tree 1.1.2" />
             </TreeItem>
           </TreeItem>
-          <TreeItem text="Tree 2.2"></TreeItem>
-        </TreeItem>
-        <TreeItem expanded text="Tree 3 (no icon)"></TreeItem>
-      </Tree>
-    )}
+          <TreeItem text="Tree 2" icon="copy">
+            <TreeItem text="Tree 2.1">
+              <TreeItem text="Tree 2.1.1" />
+              <TreeItem text="Tree 2.1.2">
+                <TreeItem text="Tree 2.1.2.1" />
+                <TreeItem text="Tree 2.1.2.2" />
+                <TreeItem text="Tree 2.1.2.3" />
+                <TreeItem text="Tree 2.1.2.5" />
+              </TreeItem>
+            </TreeItem>
+            <TreeItem text="Tree 2.2" />
+          </TreeItem>
+          <TreeItem text="Tree 3 (no icon)" />
+        </Tree>
+      );
+    }}
   </Story>
 </Canvas>
 
-<ArgsTable story="." />
+<ArgsTable story="Default" />
+
+<div style={{ fontFamily: 'var(--sapFontFamily)', fontSize: 'var(--sapFontSize)', color: 'var(--sapTextColor)' }}>
+  <h3>Keyboard Handling</h3>
+  <code>Tree</code> provides advanced keyboard handling. You can use the up/down arrow keys to navigate to the previous/next
+  item in the list, representing the tree, regardless of nesting, but also the left/right arrow keys to drill down and go
+  up the tree. If you press the right arrow on a tree node, it will expand, if not expanded. If you press the right arrow
+  key once more, the first child of this node will be selected. If you press the left arrow on a tree node, it will collapse,
+  if expanded. If you press the left arrow key once more, the parent node of this tree node will be selected.
+</div>
+
+<br />
+
+# Stories
+
+<br />
+
+## Tree with customizable TreeItem
+
+This is the item to use inside a <code>Tree</code>. You can represent an arbitrary tree structure by recursively nesting
+tree items.
+
+<Canvas>
+  <Story
+    name="with customizable TreeItem"
+    args={{
+      expanded: true,
+      hasChildren: true,
+      icon: 'wrench',
+      selected: false,
+      text: 'Customizable TreeItem'
+    }}
+    argTypes={{
+      expanded: {
+        description: `Defines whether the tree node is expanded or collapsed. Only has visual effect for tree nodes with children.`
+      },
+      hasChildren: {
+        description: `Defines whether the tree node has children, even if currently no other tree nodes are slotted inside. <br> <i>Note:</i> This property is useful for showing big tree structures where not all nodes are initially loaded due to performance reasons. Set this to <code>true</code> for nodes you intend to load lazily, when the user clicks the expand button. It is not necessary to set this property otherwise. If a tree item has children, the expand button will be displayed anyway.`
+      },
+      icon: { description: `If set, an icon will be displayed before the text, representing the tree item.` },
+      selected: {
+        description: `Defines whether the tree node is selected by the user. Only has effect if the <code>Tree</code> is in one of the following modes: in <code>SingleSelect</code>, <code>SingleSelectBegin</code>, <code>SingleSelectEnd</code> and <code>MultiSelect</code>.`
+      },
+      text: { description: `Defines the text of the tree item.` },
+      children: { description: `Defines the items of this <code>TreeItem</code>.` },
+      footerText: { table: { disable: true } },
+      headerText: { table: { disable: true } },
+      mode: { table: { disable: true } },
+      noDataText: { table: { disable: true } },
+      header: { table: { disable: true } },
+      onItemClick: { table: { disable: true } },
+      onItemDelete: { table: { disable: true } },
+      onItemToggle: { table: { disable: true } },
+      onSelectionChange: { table: { disable: true } }
+    }}
+  >
+    {(args) => {
+      return (
+        <Tree>
+          <TreeItem {...args}>
+            <TreeItem expanded text="Tree 1.1" selected>
+              <TreeItem text="Tree 1.1.1" />
+              <TreeItem text="Tree 1.1.2" />
+            </TreeItem>
+          </TreeItem>
+        </Tree>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="with customizable TreeItem" />
+
+<br />
+
+## Lazy Load TreeItems
+
+<Canvas>
+  <Story name="Lazy Loading">
+    {(args) => {
+      const [lazyChildren, setLazyChildren] = useState(null);
+      const [loading, setLoading] = useState(false);
+      const handleItemToggle = (e) => {
+        if (e.detail.item.dataset.id === 'lazychildren' && !lazyChildren) {
+          e.preventDefault();
+          setLoading(true);
+          setTimeout(() => {
+            setLoading(false);
+            setLazyChildren(
+              <>
+                <TreeItem text="Tree 3.1" />
+                <TreeItem text="Tree 3.2" />
+              </>
+            );
+            e.detail.item.toggle();
+          }, 3000);
+        }
+      };
+      return (
+        <BusyIndicator active={loading} style={{ width: '100%' }}>
+          <Tree {...args} onItemToggle={handleItemToggle}>
+            <TreeItem text="Has pre-loaded children">
+              <TreeItem text="Tree 1.1" />
+              <TreeItem text="Tree 1.2" />
+            </TreeItem>
+            <TreeItem text="Has no children" />
+            <TreeItem
+              text="Has children but not yet loaded"
+              hasChildren
+              icon="download-from-cloud"
+              data-id="lazychildren"
+            >
+              {lazyChildren}
+            </TreeItem>
+          </Tree>
+        </BusyIndicator>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Code
+
+```jsx
+const LazyLoadingTree = () => {
+  const [lazyChildren, setLazyChildren] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const handleItemToggle = (e) => {
+    if (e.detail.item.dataset.id === 'lazychildren' && !lazyChildren) {
+      e.preventDefault();
+      setLoading(true);
+      setTimeout(() => {
+        setLoading(false);
+        setLazyChildren(
+          <>
+            <TreeItem text="Tree 3.1" />
+            <TreeItem text="Tree 3.2" />
+          </>
+        );
+        e.detail.item.toggle();
+      }, 3000);
+    }
+  };
+  return (
+    <BusyIndicator active={loading} style={{ width: '100%' }}>
+      <Tree onItemToggle={handleItemToggle}>
+        <TreeItem text="Has pre-loaded children">
+          <TreeItem text="Tree 1.1" />
+          <TreeItem text="Tree 1.2" />
+        </TreeItem>
+        <TreeItem text="Has no children" />
+        <TreeItem text="Has children but not yet loaded" hasChildren icon="download-from-cloud" data-id="lazychildren">
+          {lazyChildren}
+        </TreeItem>
+      </Tree>
+    </BusyIndicator>
+  );
+};
+```

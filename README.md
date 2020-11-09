@@ -19,7 +19,7 @@
   <a href="https://github.com/prettier/prettier" target="_blank">
     <img alt="code style: prettier" src="https://badgen.net/badge/code%20style/prettier?color=pink"> 
   </a>
-  <a href="https://lernajs.io/" target="_blank">
+  <a href="https://lerna.js.org" target="_blank">
   <img alt="lerna" src="https://badgen.net/badge/maintained%20with/lerna?color=purple">
   </a>
   <a href="https://api.reuse.software/info/github.com/SAP/ui5-webcomponents-react" target="_blank">
@@ -57,6 +57,9 @@ You can find our documentation under the following links:
 
 - [@ui5/cra-template-webcomponents-react](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/cra-template) - Template for `create-react-app` <br/>
   [![](https://badgen.net/npm/v/@ui5/cra-template-webcomponents-react?icon=npm)](https://www.npmjs.com/package/@ui5/cra-template-webcomponents-react)
+
+- [@ui5/cra-template-webcomponents-react-seed](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/cra-template-seed) - Seed for `create-react-app` <br/>
+  [![](https://badgen.net/npm/v/@ui5/cra-template-webcomponents-react-seed?icon=npm)](https://www.npmjs.com/package/@ui5/cra-template-webcomponents-react-seed)
 
 <!-- *********************************************************************** -->
 
@@ -99,6 +102,18 @@ This template is installing all required dependencies for you and is setting up 
 npx create-react-app my-app --template @ui5/webcomponents-react
 # or if you want to use yarn
 yarn create react-app my-app --template @ui5/webcomponents-react
+```
+
+### Creating a new React app based on our Seed
+
+You can create a new react app by using [create-react-app](https://facebook.github.io/create-react-app/) based on our seed.
+This template delivers several out of the box components, scripts and configurations.
+For more info, check the [seed documentation](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/cra-template-seed).
+
+```sh
+npx create-react-app my-app --template @ui5/webcomponents-react-seed
+# or if you want to use yarn
+yarn create react-app my-app --template @ui5/webcomponents-react-seed
 ```
 
 ### Add `@ui5/webcomponents-react` to an existing app

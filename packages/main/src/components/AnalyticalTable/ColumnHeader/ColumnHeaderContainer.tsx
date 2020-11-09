@@ -1,5 +1,5 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
-import React, { useCallback } from 'react';
+import React, { Fragment, useCallback } from 'react';
 import { createUseStyles } from 'react-jss';
 import { useVirtual, VirtualItem } from 'react-virtual';
 import { ColumnHeader } from './index';
@@ -22,7 +22,7 @@ const styles = {
   }
 };
 
-const useStyles = createUseStyles(styles);
+const useStyles = createUseStyles(styles, { name: 'Resizer' });
 
 export const ColumnHeaderContainer = (props) => {
   const {
@@ -71,8 +71,10 @@ export const ColumnHeaderContainer = (props) => {
           return null;
         }
         const isLastColumn = !column.disableResizing && virtualColumn.index + 1 === headerGroup.headers.length;
+
+        const { key, ...rest } = column.getHeaderProps();
         return (
-          <>
+          <Fragment key={key}>
             {column.canResize && column.getResizerProps && (
               <div
                 {...column.getResizerProps()}
@@ -82,7 +84,7 @@ export const ColumnHeaderContainer = (props) => {
               />
             )}
             <ColumnHeader
-              {...column.getHeaderProps()}
+              {...rest}
               onSort={onSort}
               onGroupBy={onGroupByChanged}
               onDragStart={onDragStart}
@@ -97,7 +99,7 @@ export const ColumnHeaderContainer = (props) => {
             >
               {column.render('Header')}
             </ColumnHeader>
-          </>
+          </Fragment>
         );
       })}
     </div>

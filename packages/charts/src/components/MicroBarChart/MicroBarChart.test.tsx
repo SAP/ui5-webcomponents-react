@@ -1,4 +1,3 @@
-import { mount } from 'enzyme';
 import * as React from 'react';
 import { render, screen, fireEvent } from '@shared/tests/index';
 import { MicroBarChart } from '@ui5/webcomponents-react-charts/lib/MicroBarChart';
@@ -106,7 +105,7 @@ describe('Micro Bar Chart', () => {
   });
 
   test('loading placeholder', () => {
-    const wrapper = mount(<MicroBarChart style={{ width: '50%' }} dimension={null} measure={null} />);
-    expect(wrapper.render()).toMatchSnapshot();
+    const { asFragment } = render(<MicroBarChart style={{ width: '50%' }} dimension={null} measure={null} />);
+    expect(asFragment()).toMatchSnapshot();
   });
 });

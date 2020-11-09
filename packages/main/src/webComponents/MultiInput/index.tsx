@@ -58,11 +58,16 @@ export interface MultiInputPropTypes extends Omit<WithWebComponentPropTypes, 'on
    */
   valueState?: ValueState;
   /**
-   * Defines the <code>MultiInput</code> tokens. <br><br> Example: <br> &lt;MultiInput><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;ui5-token slot="tokens" text="Token 1">&lt;/ui5-token><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;ui5-token slot="tokens" text="Token 2">&lt;/ui5-token><br> &lt;/MultiInput> <br> <br>
+   * Defines the <code>MultiInput</code> tokens. <br><br> Example: <br />&lt;MultiInput tokens={
+<br />&nbsp;&nbsp;&lt;>
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;Token text="Token 1" />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;Token text="Token 2" />
+<br />&nbsp;&nbsp;</>}
+   <br />/>
    */
   tokens?: ReactNode | ReactNode[];
   /**
-   * Defines the <code>Input</code> suggestion items. <br><br> Example: <br><br> &lt;ui5-input show-suggestions><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;ui5-suggestion-item text="Item #1">&lt;/ui5-suggestion-item><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;ui5-suggestion-item text="Item #2">&lt;/ui5-suggestion-item><br> &lt;/ui5-input> <br> <ui5-input show-suggestions> <ui5-suggestion-item text="Item #1"></ui5-suggestion-item> <ui5-suggestion-item text="Item #2"></ui5-suggestion-item> </ui5-input> <br><br> <b>Note:</b> The suggestion would be displayed only if the <code>showSuggestions</code> property is set to <code>true</code>. <br><br> <b>Note:</b> The &lt;ui5-suggestion-item> is recommended to be used as a suggestion item. Importing the Input Suggestions Support feature: <br> <code>import "@ui5/webcomponents/dist/features/InputSuggestions.js";</code> <br> also automatically imports the &lt;ui5-suggestion-item> for your convenience.
+   * Defines the <code>Input</code> suggestion items. <br><b>Note:</b> The suggestion would be displayed only if the <code>showSuggestions</code> property is set to <code>true</code>. <br><br> <b>Note:</b> The &lt;ui5-suggestion-item> is recommended to be used as a suggestion item. Importing the Input Suggestions Support feature: <br> <code>import "@ui5/webcomponents/dist/features/InputSuggestions.js";</code> <br> also automatically imports the &lt;ui5-suggestion-item> for your convenience.
    */
   children?: ReactNode | ReactNode[];
   /**
@@ -70,8 +75,7 @@ export interface MultiInputPropTypes extends Omit<WithWebComponentPropTypes, 'on
    */
   icon?: ReactNode | ReactNode[];
   /**
-   * Defines the value state message that will be displayed as pop up under the <code>Input</code>. <br><br><br/><br/>
-   *
+   * Defines the value state message that will be displayed as pop up under the <code>Input</code>.<br/>
    * <b>Note:</b> If not specified, a default text (in the respective language) will be displayed. <br> <b>Note:</b> The <code>valueStateMessage</code> would be displayed, when the <code>Input</code> is in <code>Information</code>, <code>Warning</code> or <code>Error</code> value state. <br> <b>Note:</b> If the <code>Input</code> has <code>suggestionItems</code>, the <code>valueStateMessage</code> would be displayed as part of the same popover, if used on desktop, or dialog - on phone.
    */
   valueStateMessage?: ReactNode | ReactNode[];
@@ -82,19 +86,19 @@ export interface MultiInputPropTypes extends Omit<WithWebComponentPropTypes, 'on
   /**
    * Fired when the value help icon is pressed and F4 or ALT/OPTION + ARROW_UP/ARROW_DOWN keyboard keys are used.
    */
-  onValueHelpTrigger?: (event: CustomEvent<{}>) => void;
+  onValueHelpTrigger?: (event: CustomEvent) => void;
   /**
    * Fired when the input operation has finished by pressing Enter or on focusout.
    */
-  onChange?: (event: CustomEvent<{}>) => void;
+  onChange?: (event: CustomEvent) => void;
   /**
    * Fired when the value of the <code>Input</code> changes at each keystroke, and when a suggestion item has been selected.
    */
-  onInput?: (event: CustomEvent<{}>) => void;
+  onInput?: (event: CustomEvent) => void;
   /**
    * Fired when user presses Enter key on the <code>Input</code>. <br><br> <b>Note:</b> The event is fired independent of whether there was a change before or not. If change was performed, the event is fired after the change event. The event is also fired when an item of the select list is selected by pressing Enter.
    */
-  onSubmit?: (event: CustomEvent<{}>) => void;
+  onSubmit?: (event: CustomEvent) => void;
   /**
    * Fired when the user navigates to a suggestion item via the ARROW keys, as a preview, before the final selection.
    */
@@ -110,12 +114,10 @@ export interface MultiInputPropTypes extends Omit<WithWebComponentPropTypes, 'on
 }
 
 /**
- * <h3>Overview</h3>
- A <code>MultiInput</code> field allows the user to enter multiple values, which are displayed as <code>Token</code>.
+ *A <code>MultiInput</code> field allows the user to enter multiple values, which are displayed as <code>Token</code>.
  User can choose interaction for creating tokens. Fiori Guidelines say that user should create tokens when:
- <ul> <li>Type a value in the input and press enter or focus out the input field (<code>change</code> event is fired)</li> <li>Select a value from the suggestion list</li> (<code>suggestion-item-select</code> event is fired)
+ <ul> <li>Type a value in the input and press enter or focus out the input field (<code>onChange</code> event is fired)</li> <li>Select a value from the suggestion list (<code>onSuggestionItemSelect</code> event is fired)</li>
  </ul>
-
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/MultiInput" target="_blank">UI5 Web Components Playground</a>
  */
 const MultiInput: FC<MultiInputPropTypes> = withWebComponent<MultiInputPropTypes>(
