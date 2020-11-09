@@ -1,20 +1,33 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { MultiInput } from '@ui5/webcomponents-react/lib/MultiInput';
-import { Token } from '@ui5/webcomponents-react/lib/Token';
 import { InputType } from '@ui5/webcomponents-react/lib/InputType';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
-import { DocsHeader } from '@shared/stories/DocsHeader';
+import '@ui5/webcomponents-icons/dist/icons/employee.js';
+import { Token } from '@ui5/webcomponents-react/lib/Token';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="UI5 Web Components / MultiInput"
   component={MultiInput}
-  subcomponents={{ MultiInput, Token }}
+  subcomponents={{ Token }}
   argTypes={{
     ...createSelectArgTypes({ type: InputType, valueState: ValueState }),
-    tokens: null,
-    ...DocsCommonProps
+    ...DocsCommonProps,
+    tokens: { control: { disable: true } },
+    children: { control: { disable: true } },
+    icon: { control: { disable: true } },
+    valueStateMessage: { control: { disable: true } }
+  }}
+  args={{
+    type: InputType.Text,
+    valueState: ValueState.None,
+    style: { width: '400px' },
+    className: '',
+    tooltip: '',
+    slot: '',
+    ref: null
   }}
 />
 
@@ -26,7 +39,6 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
       return (
         <MultiInput
           {...args}
-          style={{ width: '100%' }}
           tokens={
             <>
               <Token text="Argentina" />
@@ -50,3 +62,7 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 </Canvas>
 
 <ArgsTable story="." />
+
+## Render SuggestionItems
+
+The `MultiInput` component supports rendering `SuggestionItems`. An example on how to use them can be found [here](?path=/docs/ui5-web-components-input--with-suggestion-item#input-with-customizable-suggestionitem).
