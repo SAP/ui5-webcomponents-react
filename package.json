@@ -34,7 +34,7 @@
     "@ui5/webcomponents-fiori": "1.0.0-rc.9",
     "@ui5/webcomponents-icons": "1.0.0-rc.9",
     "react": "16.8.0",
-    "react-dom": "16.8.0",
+    "react-dom": "16.13.0",
     "react-syntax-highlighter": "^15.2.1"
   },
   "devDependencies": {
@@ -97,7 +97,7 @@
     "@types/react": "16.9.54",
     "@babel/runtime": "7.12.5",
     "react": "16.8.0",
-    "react-dom": "16.8.0"
+    "react-dom": "16.13.0"
   },
   "husky": {
     "hooks": {
