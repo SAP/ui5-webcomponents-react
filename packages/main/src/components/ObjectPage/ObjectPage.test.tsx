@@ -1,4 +1,4 @@
-import { render } from '@shared/tests';
+import { fireEvent, render, screen } from '@shared/tests';
 import { Breadcrumbs } from '@ui5/webcomponents-react/lib/Breadcrumbs';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
@@ -152,13 +152,17 @@ describe('ObjectPage', () => {
 
   test.skip('onSelectedSectionChangedHandler', () => {
     const callback = jest.fn();
-    const { asFragment } = render(
+    render(
       <ObjectPage selectedSectionId={'2'} mode={ObjectPageMode.IconTabBar} onSelectedSectionChanged={callback}>
-        <ObjectPageSection id={'1'}>Test</ObjectPageSection>
-        <ObjectPageSection id={'2'}>Test 2</ObjectPageSection>
+        <ObjectPageSection id={'1'} title="Section1">
+          Test
+        </ObjectPageSection>
+        <ObjectPageSection id={'2'} title="Section2">
+          Test 2
+        </ObjectPageSection>
       </ObjectPage>
     );
-    wrapper.find('section[role="navigation"] ui5-button').first().simulate('click');
+    fireEvent.click(screen.getByText('Section1'));
     expect(callback.mock[0][0].detail.selectedSectionId).toEqual('1');
   });
 
