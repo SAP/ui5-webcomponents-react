@@ -37,6 +37,9 @@ import { DateTimePicker } from './lib/DateTimePicker';
 import { DeviationIndicator } from './lib/DeviationIndicator';
 import { Dialog } from './lib/Dialog';
 import { DurationPicker } from './lib/DurationPicker';
+import { DynamicPage } from './lib/DynamicPage';
+import { DynamicPageHeader } from './lib/DynamicPageHeader';
+import { DynamicPageTitle } from './lib/DynamicPageTitle';
 import { FCLLayout } from './lib/FCLLayout';
 import { FileUploader } from './lib/FileUploader';
 import { FilterBar } from './lib/FilterBar';
@@ -191,6 +194,9 @@ export {
   DeviationIndicator,
   Dialog,
   DurationPicker,
+  DynamicPage,
+  DynamicPageHeader,
+  DynamicPageTitle,
   FCLLayout,
   FileUploader,
   FilterBar,

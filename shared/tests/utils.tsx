@@ -8,15 +8,6 @@ export const modifyObjectProperty = (object: any, attr: string, value: any) => {
     writable: true
   });
 };
-export const getEventFromCallback = (callback, index = 0): CustomEvent<Record<string, unknown>> => {
-  return callback.args[index][0];
-};
-export const setUserAgentString = (userAgent) => {
-  Object.defineProperty(window.navigator, 'userAgent', {
-    value: userAgent,
-    configurable: true
-  });
-};
 
 export const createPassThroughPropsTest = (Component: ComponentType<any>, props = {}) => {
   test('Pass Through HTML Standard Props', () => {
