@@ -1,57 +1,61 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ObjectPageSection ObjectPage w/ lowercase title 1`] = `
-<section
-  data-component-name="ObjectPageSection"
-  id="ObjectPageSection-1"
-  role="region"
->
-  <div
-    class="ObjectPageSection-header-0"
-    role="heading"
+<DocumentFragment>
+  <section
+    data-component-name="ObjectPageSection"
+    id="ObjectPageSection-1"
+    role="region"
   >
     <div
-      class="ObjectPageSection-title-0"
+      class="ObjectPageSection-header"
+      role="heading"
     >
-      Test
+      <div
+        class="ObjectPageSection-title"
+      >
+        Test
+      </div>
     </div>
-  </div>
-  <div
-    class="ObjectPageSection-sectionContent-0"
-  >
     <div
-      class="ObjectPageSection-sectionContentInner-0"
+      class="ObjectPageSection-sectionContent"
     >
-      This is my Text
+      <div
+        class="ObjectPageSection-sectionContentInner"
+      >
+        This is my Text
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+</DocumentFragment>
 `;
 
 exports[`ObjectPageSection Renders with children 1`] = `
-<section
-  data-component-name="ObjectPageSection"
-  id="ObjectPageSection-1"
-  role="region"
->
-  <div
-    class="ObjectPageSection-header-0"
-    role="heading"
+<DocumentFragment>
+  <section
+    data-component-name="ObjectPageSection"
+    id="ObjectPageSection-1"
+    role="region"
   >
     <div
-      class="ObjectPageSection-title-0 ObjectPageSection-uppercase-0"
+      class="ObjectPageSection-header"
+      role="heading"
     >
-      Test
+      <div
+        class="ObjectPageSection-title ObjectPageSection-uppercase"
+      >
+        Test
+      </div>
     </div>
-  </div>
-  <div
-    class="ObjectPageSection-sectionContent-0"
-  >
     <div
-      class="ObjectPageSection-sectionContentInner-0"
+      class="ObjectPageSection-sectionContent"
     >
-      This is my Text
+      <div
+        class="ObjectPageSection-sectionContentInner"
+      >
+        This is my Text
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+</DocumentFragment>
 `;
