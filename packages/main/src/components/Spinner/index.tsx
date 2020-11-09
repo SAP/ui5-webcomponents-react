@@ -2,6 +2,7 @@ import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createC
 import { useI18nText } from '@ui5/webcomponents-react-base/lib/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
+import { deprecationNotice } from '@ui5/webcomponents-react-base/lib/Utils';
 import { PLEASE_WAIT } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { Size } from '@ui5/webcomponents-react/lib/Size';
 import React, { FC, forwardRef, RefObject, useEffect, useState } from 'react';
@@ -33,6 +34,10 @@ const Spinner: FC<SpinnerProps> = forwardRef((props: SpinnerProps, ref: RefObjec
   spinnerClasses.put(classes[`spinner${size}`]);
 
   useEffect(() => {
+    deprecationNotice(
+      'Spinner',
+      "'@ui5/webcomponents-react/lib/Spinner' is deprecated and will be removed in the next major release.\nPlease use '@ui5/webcomponents-react/lib/BusyIndicator' instead."
+    );
     let timeout;
     if (delay > 0) {
       timeout = setTimeout(() => {

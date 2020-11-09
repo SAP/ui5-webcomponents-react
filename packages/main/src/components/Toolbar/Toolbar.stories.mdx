@@ -25,6 +25,7 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
     ...DocsCommonProps
   }}
   args={{
+    onToolbarClick: null,
     design: ToolbarDesign.Auto,
     toolbarStyle: ToolbarStyle.Standard,
     active: false,
@@ -56,7 +57,7 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 ### Prevent event bubbling of Toolbar items
 
-Per default, if the `active` prop is "true" and an actionable element like a button is clicked, the `onToolbarClick` event is also fired.
+Per default, if the `active` prop is "true" and an actionable element like a button is clicked, the `onClick` event of the `Toolbar` is also fired.
 To prevent this you can add `e.stopPropagation()` to your event handler.
 
 ```jsx
@@ -100,7 +101,8 @@ If the horizontally available space isn't enough to fit all items in it, an over
       design: { table: { disable: true } },
       ...DocsCommonProps,
       active: { table: { disable: true } },
-      onToolbarClick: { table: { disable: true } }
+      onToolbarClick: { table: { disable: true } },
+      onClick: { table: { disable: true } }
     }}
   >
     {(args) => {
