@@ -13,7 +13,7 @@ import { Switch } from '@ui5/webcomponents-react/lib/Switch';
 import { VariantManagement } from '@ui5/webcomponents-react/lib/VariantManagement';
 import { MultiComboBoxItem } from '@ui5/webcomponents-react/lib/MultiComboBoxItem';
 import { Toolbar } from '@ui5/webcomponents-react/lib/Toolbar';
-import { render } from '@shared/tests';
+import { fireEvent, render, screen } from '@shared/tests';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 
@@ -124,12 +124,8 @@ describe('FilterBar', () => {
         </FilterGroupItem>
       </FilterBar>
     );
-    const toggleBtn = asFragment.find('Button');
-    const toggleBtnBefore = toggleBtn.render();
-    act(() => {
-      toggleBtn.getElement().props.onClick();
-    });
-    expect(toggleBtn.render()).not.toBe(toggleBtnBefore);
+    fireEvent.click(screen.getByText('Hide Filter Bar'));
+    expect(screen.getByText('Show Filter Bar')).toBeVisible();
     expect(asFragment()).toMatchSnapshot();
   });
 
