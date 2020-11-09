@@ -54,9 +54,12 @@ describe('MessageBox', () => {
     );
     expect(asFragment()).toMatchSnapshot();
 
+    fireEvent.click(screen.getByText('Yes'));
+    expect(callback.mock.calls[0][0].detail.action).toEqual(MessageBoxActions.YES);
+
     fireEvent.click(screen.getByText('No'));
     expect(callback.mock.calls).toHaveLength(2);
-    expect(callback.mock.calls[0][0].detail.action).toEqual(MessageBoxActions.NO);
+    expect(callback.mock.calls[1][0].detail.action).toEqual(MessageBoxActions.NO);
   });
 
   test('Success w/ custom title', () => {
