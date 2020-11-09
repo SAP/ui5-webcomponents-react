@@ -70,7 +70,7 @@ enum HEADER_STATES {
  * The content of both the header and the page can differ from floorplan to floorplan.
  *
  * The header of the dynamic page is collapsible, which helps users to focus on the actual page content, but still ensures that important header information
- * and actions are readily available. The dynamic page also includes an optional footer toolbar for closing or finalizing actions that impact the whole page.
+ * and actions are readily available.
  */
 const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, ref: Ref<HTMLDivElement>) => {
   const {
