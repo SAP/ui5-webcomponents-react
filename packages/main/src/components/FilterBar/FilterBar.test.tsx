@@ -265,23 +265,11 @@ describe('FilterBar', () => {
       { attachTo: document.body.appendChild(document.createElement('div')) }
     );
 
-    const filterItemsFB = asFragment.find(FilterGroupItem);
-    const openFiltersDialogBtn = asFragment.find(Toolbar).find(Button).at(3);
-    act(() => {
-      openFiltersDialogBtn.prop('onClick')();
-    });
-    asFragment.update();
+    fireEvent.click(screen.getByText('Filters'));
 
-    const filterItemsDialog = asFragment.find('ui5-dialog').find(FilterGroupItem);
-
-    const filterItemsDialogString = filterItemsDialog.debug({ ignoreProps: true });
-    const filterItemsFBString = filterItemsFB.debug({ ignoreProps: true });
-    // @ts-ignore
-    expect(filterItemsDialogString).toEqual(filterItemsFBString);
-    const filterItemMandatory = filterItemsDialog.at(2);
-    expect(filterItemMandatory.prop('required')).toBeTruthy();
-    const checkbox = filterItemMandatory.parents().find(CheckBox).at(0);
-    expect(checkbox.prop('disabled')).toBeTruthy();
+    const [selectFilterBar, selectFilterDialog] = screen.getAllByText('SELECT');
+    expect(selectFilterDialog).toHaveAttribute('required', 'true');
+    expect(selectFilterDialog.parentNode.parentNode.parentNode.parentNode.querySelector('ui5-checkbox')).toHaveAttribute('disabled', 'true');
   });
 
   createPassThroughPropsTest(FilterBar);
