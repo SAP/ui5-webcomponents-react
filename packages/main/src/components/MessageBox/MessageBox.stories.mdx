@@ -1,10 +1,10 @@
-import { Title, Subtitle, Description, Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { MessageBox } from '@ui5/webcomponents-react/lib/MessageBox';
 import { MessageBoxActions } from '@ui5/webcomponents-react/lib/MessageBoxActions';
 import { MessageBoxTypes } from '@ui5/webcomponents-react/lib/MessageBoxTypes';
-import { useRef, useCallback } from 'react';
+import { useEffect, useState } from 'react';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
 <Meta
@@ -22,36 +22,24 @@ import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
 <br />
 
-### Opening MessageBoxes
-
-`MessageBoxes` can only be opened by attaching a `ref` to the component and then call the corresponding **`open`** method.
-
-```JSX
-const MessageBoxComponent = () => {
-  const messageBoxRef = useRef();
-  const onButtonClick = () => {
-    messageBoxRef.current.open();
-  };
-  return (
-    <>
-      <Button onClick={onButtonClick}>Open MessageBox</Button>
-      <MessageBox ref={messageBoxRef}>Some Content</MessageBox>
-    </>
-  );
-};
-```
-
 <Canvas>
   <Story name="Default">
     {(args) => {
-      const messageBoxRef = useRef();
-      const onButtonClick = (e) => {
-        messageBoxRef.current.open();
+      const [open, setOpen] = useState(false);
+      const onButtonClick = () => {
+        setOpen(true);
       };
+      const handleClose = (e) => {
+        setOpen(false);
+        args.onClose(e);
+      };
+      useEffect(() => {
+        setOpen(args.open);
+      }, [args.open]);
       return (
         <>
           <Button onClick={onButtonClick}>Open Messagebox</Button>
-          <MessageBox {...args} ref={messageBoxRef} />
+          <MessageBox {...args} open={open} onClose={handleClose} />
         </>
       );
     }}
@@ -60,6 +48,32 @@ const MessageBoxComponent = () => {
 
 <ArgsTable story="." />
 
+### Opening and Closing MessageBoxes
+
+Unlike `Popovers` or `Dialogs`, `MessageBoxes` do not need to be provided with a `ref` to be opened or closed. Instead, the `open` prop can be used for this.
+
+**Note:** `onClose` is either called by clicking on one of the action buttons in the footer or by pressing the `ESC` key.
+
+```jsx
+const MessageBoxComponent = () => {
+  const [open, setOpen] = useState(false);
+  const onButtonClick = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+  return (
+    <>
+      <Button onClick={onButtonClick}>Open Messagebox</Button>
+      <MessageBox open={open} onClose={handleClose}>
+        Content
+      </MessageBox>
+    </>
+  );
+};
+```
+
 ### Using MessageBoxes inside other components
 
 `MessageBoxes` are often used within other components, when opened this could sometimes have unwanted side effects.
@@ -67,15 +81,20 @@ In this case, we recommend using [createPortal](https://reactjs.org/docs/portals
 
 ```JSX
 const MessageBoxComponent = () => {
-  const messageBoxRef = useRef();
+  const [open, setOpen] = useState(false);
   const onButtonClick = () => {
-    messageBoxRef.current.open();
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
   };
   return (
     <>
-      <Button onClick={onButtonClick}>Open MessageBox</Button>
+      <Button onClick={onButtonClick}>Open Messagebox</Button>
       {createPortal(
-        <MessageBox ref={messageBoxRef}>Some Content</MessageBox>,
+        <MessageBox open={open} onClose={handleClose}>
+          Content
+        </MessageBox>,
         document.body
       )}
     </>
@@ -92,16 +111,20 @@ const MessageBoxComponent = () => {
 <Canvas>
   <Story name="With Custom Action">
     {(args) => {
-      const messageBoxRef = useRef();
-      const onButtonClick = (e) => {
-        messageBoxRef.current.open();
+      const [open, setOpen] = useState(false);
+      const onButtonClick = () => {
+        setOpen(true);
+      };
+      const handleClose = () => {
+        setOpen(false);
       };
       return (
         <>
           <Button onClick={onButtonClick}>Open Messagebox</Button>
           <MessageBox
             {...args}
-            ref={messageBoxRef}
+            open={open}
+            onClose={handleClose}
             actions={[MessageBoxActions.OK, 'A custom action', MessageBoxActions.CANCEL]}
           />
         </>
