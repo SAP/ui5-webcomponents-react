@@ -20,6 +20,10 @@ export interface SpinnerProps extends CommonProps {
 const useStyles = createComponentStyles(styles, { name: 'Spinner' });
 
 /**
+ * ### Deprecation Notice
+ *
+ * The Fiori 3 specification dropped the `Spinner` concept, so this component is deprecated and will be removed in the next release.<br />
+ * Please use the [BusyIndicator](https://sap.github.io/ui5-webcomponents-react/?path=/docs/ui5-web-components-busyindicator) instead.
  */
 const Spinner: FC<SpinnerProps> = forwardRef((props: SpinnerProps, ref: RefObject<HTMLDivElement>) => {
   const { className, size, tooltip, slot, style, delay } = props;
