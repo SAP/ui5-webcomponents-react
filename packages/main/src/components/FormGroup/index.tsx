@@ -23,7 +23,10 @@ const useStyles = createComponentStyles(
   },
   { name: 'FormGroup' }
 );
-
+/**
+ * The `FormGroup` capsules `FormItems` into groups.
+ * __Note:__ `FormGroup` is only used for calculating the final layout of the `Form`, thus it doesn't accept any other props than `title` and `children`, especially no `className`, `style` or `ref`.
+ */
 const FormGroup: FC<FormGroupProps> = (props: FormGroupProps) => {
   const { title, children } = props;
 
