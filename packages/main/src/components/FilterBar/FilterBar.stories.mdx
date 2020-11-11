@@ -1,0 +1,218 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { FilterBar } from '@ui5/webcomponents-react/lib/FilterBar';
+import { FilterGroupItem } from '@ui5/webcomponents-react/lib/FilterGroupItem';
+import { Input } from '@ui5/webcomponents-react/lib/Input';
+import { MultiComboBox } from '@ui5/webcomponents-react/lib/MultiComboBox';
+import { MultiComboBoxItem } from '@ui5/webcomponents-react/lib/MultiComboBoxItem';
+import { Option } from '@ui5/webcomponents-react/lib/Option';
+import { Select } from '@ui5/webcomponents-react/lib/Select';
+import { Switch } from '@ui5/webcomponents-react/lib/Switch';
+import { DatePicker } from '@ui5/webcomponents-react/lib/DatePicker';
+import { VariantManagement } from '@ui5/webcomponents-react/lib/VariantManagement';
+import '@ui5/webcomponents-icons/dist/icons/nav-back.js';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
+
+<Meta
+  title="Components / FilterBar"
+  component={FilterBar}
+  subcomponents={{ FilterGroupItem }}
+  argTypes={{
+    activeFiltersCount: { control: 'number' },
+    search: { control: { disable: true } },
+    variants: { control: { disable: true } },
+    children: { control: { disable: true } },
+    filterContainerWidth: { control: 'text' },
+    ...DocsCommonProps
+  }}
+  args={{
+    search: <Input placeholder={'Search'} />,
+    variants: (
+      <VariantManagement
+        selectedKey="2"
+        variantItems={[
+          { label: 'Variant 1', key: '1' },
+          { label: 'Variant 2', key: '2' }
+        ]}
+      />
+    ),
+    filterContainerWidth: '13.125rem',
+    showFilterConfiguration: true,
+    style: {},
+    className: '',
+    tooltip: '',
+    slot: '',
+    ref: null
+  }}
+/>
+
+<DocsHeader />
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return (
+        <FilterBar {...args}>
+          <FilterGroupItem label="Input">
+            <Input placeholder="Placeholder" />
+          </FilterGroupItem>
+          <FilterGroupItem label="Switch">
+            <Switch />
+          </FilterGroupItem>
+          <FilterGroupItem label="SELECT w/ initial selected">
+            <Select>
+              <Option>Option 1</Option>
+              <Option selected>Option 2</Option>
+              <Option>Option 3</Option>
+              <Option>Option 4</Option>
+            </Select>
+          </FilterGroupItem>
+          <FilterGroupItem label="SELECT w/o initial selected">
+            <Select>
+              <Option data-key="Test 1" selected icon="add">
+                Test 1
+              </Option>
+              <Option data-key="Test 2" icon="add">
+                Test 2
+              </Option>
+              <Option data-key="Test 3" icon="add">
+                Test 3
+              </Option>
+              <Option data-key="Test 4" icon="add">
+                Test 4
+              </Option>
+              <Option data-key="Test 5" icon="add">
+                Test 5
+              </Option>
+            </Select>
+          </FilterGroupItem>
+          <FilterGroupItem label="MultBox w/ initial selected" groupName="Group 1">
+            <MultiComboBox>
+              <MultiComboBoxItem text="MultiComboBoxItem 1" />
+              <MultiComboBoxItem selected text="MultiComboBoxItem 2" />
+              <MultiComboBoxItem text="MultiComboBoxItem 3" />
+              <MultiComboBoxItem selected text="MultiComboBoxItem 4" />
+            </MultiComboBox>
+          </FilterGroupItem>
+          <FilterGroupItem label="MultBox w/o initial selected" groupName="Group 2">
+            <MultiComboBox>
+              <MultiComboBoxItem text="MultiComboBoxItem 1" />
+              <MultiComboBoxItem text="MultiComboBoxItem 2" />
+              <MultiComboBoxItem text="MultiComboBoxItem 3" />
+              <MultiComboBoxItem text="MultiComboBoxItem 4" />
+            </MultiComboBox>
+          </FilterGroupItem>
+          <FilterGroupItem label="Date Picker" groupName="Group 2">
+            <DatePicker />
+          </FilterGroupItem>
+        </FilterBar>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Default" />
+
+<br />
+
+# Stories
+
+<br />
+
+## FilterBar with customizable FilterGroupItem
+
+<Canvas>
+  <Story
+    name="with customizable FilterGroupItem"
+    argTypes={{
+      children: {
+        description: `Content of the <code>FilterGroupItems</code>.<br />__Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use form elements like \`Input\`, \`Select\` or \`Switch\` in order to preserve the intended design.`
+      },
+      label: {
+        description: `Defines the label of the \`FilterGroupItem\`.<br />__Note:__ This label is used for the search in the filter configuration dialog.`
+      },
+      groupName: {
+        description: `Defines the group name of the filter.<br />__Note:__ If no \`groupName\` is set, the name defaults to "Basic".`
+      },
+      labelTooltip: {
+        description: `Defines the tooltip of the label.<br />__Note:__ If no \`labelTooltip\` is set, it uses the \`label\` text as tooltip.`
+      },
+      required: {
+        description: `Defines whether the filter is required.<br />__Note:__ Required filters cannot be removed from the \`FilterBar\`.`
+      },
+      visible: { description: `Defines whether the filter is visible.` },
+      visibleInFilterBar: {
+        description: `Defines whether the filter is visible in the \`FilterBar\` or only in the filter configuration dialog.`
+      },
+      useToolbar: { table: { disable: true } },
+      loading: {
+        description: `Defines whether a loading indicator should be shown in the \`FilterGroupItem\`.`
+      },
+      filterBarExpanded: { table: { disable: true } },
+      considerGroupName: {
+        description: `Defines whether the \`groupName\` of the \`FilterGroupItems\` is displayed in the filter configuration dialog.`
+      },
+      activeFiltersCount: { table: { disable: true } },
+      filterContainerWidth: { table: { disable: true } },
+      showClearOnFB: { table: { disable: true } },
+      showGoOnFB: { table: { disable: true } },
+      showGo: { table: { disable: true } },
+      showFilterConfiguration: { table: { disable: true } },
+      showRestoreOnFB: { table: { disable: true } },
+      showClearButton: { table: { disable: true } },
+      showRestoreButton: { table: { disable: true } },
+      showSearchOnFiltersDialog: { table: { disable: true } },
+      search: { table: { disable: true } },
+      variants: { table: { disable: true } },
+      onToggleFilters: { table: { disable: true } },
+      onFiltersDialogOpen: { table: { disable: true } },
+      onFiltersDialogCancel: { table: { disable: true } },
+      onFiltersDialogClose: { table: { disable: true } },
+      onFiltersDialogSave: { table: { disable: true } },
+      onFiltersDialogClear: { table: { disable: true } },
+      onClear: { table: { disable: true } },
+      onFiltersDialogSelectionChange: { table: { disable: true } },
+      onFiltersDialogSearch: { table: { disable: true } },
+      onGo: { table: { disable: true } },
+      onRestore: { table: { disable: true } }
+    }}
+    args={{
+      label: 'FilterGroupItem',
+      groupName: 'Customizable',
+      labelTooltip: 'custom label tooltip',
+      loading: false,
+      required: false,
+      visible: true,
+      visibleInFilterBar: true,
+      considerGroupName: true
+    }}
+  >
+    {(args) => {
+      return (
+        <FilterBar showFilterConfiguration considerGroupName showSearchOnFiltersDialog>
+          <FilterGroupItem
+            label={args.label}
+            groupName={args.groupName}
+            labelTooltip={args.labelTooltip}
+            loading={args.loading}
+            required={args.required}
+            visible={args.visible}
+            visibleInFilterBar={args.visibleInFilterBar}
+            considerGroupName={args.considerGroupName}
+          >
+            <Input placeholder="Placeholder" />
+          </FilterGroupItem>
+          <FilterGroupItem label="Filter 1" groupName="Not customizable">
+            <Input placeholder="Placeholder" />
+          </FilterGroupItem>
+          <FilterGroupItem label="Filter 2" groupName="Not customizable">
+            <Input placeholder="Placeholder" />
+          </FilterGroupItem>
+        </FilterBar>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="with customizable FilterGroupItem" />
