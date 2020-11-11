@@ -66,13 +66,17 @@ interface DivWithCustomScrollProp extends HTMLDivElement {
 
 export interface TableProps extends Omit<CommonProps, 'title'> {
   /**
-   * Please look at the [AnalyticalTableColumnDefinition interface](#column-properties) for a full list of options.
+   * Defines the columns array where you can define the configuration for each column.<br />
+   * __Note:__ Please look at the [AnalyticalTableColumnDefinition interface](#column-properties) for a full list of options.
    */
   columns: AnalyticalTableColumnDefinition[];
-  data: Record<any, any>[];
-
   /**
-   * Component or text of title section of the Table (if not set it will be hidden)
+   * The data array that you want to display on the table.
+   */
+  data: Record<any, any>[];
+  /**
+   * Component or text rendered in the title section of the `AnalyticalTable`.
+   * __Note:__ If not set, it will be hidden.
    */
   title?: ReactText | ReactNode;
   /**
@@ -81,12 +85,32 @@ export interface TableProps extends Omit<CommonProps, 'title'> {
   extension?: ReactNode;
 
   // appearance
-
+  /**
+   * The minimum number of rows that are displayed. If the data contains less entries than `minRows`, it will be filled with empty rows.
+   */
   minRows?: number;
+  /**
+   * The number of rows visible without going into overflow.
+   * __Note:__ If the data contains more entries than the `visibleRow` count, a vertical scrollbar is rendered and the table goes into overflow.
+   */
   visibleRows?: number;
+  /**
+   * Indicates whether a loading indicator should be shown.
+   * __Note:__ If the data array is not empty and loading is set to `true` a `Loader` will be displayed underneath the header, otherwise a loading placeholder will be shown.
+   * You can use your own placeholder by passing it to the `LoadingComponent` prop.
+   */
   loading?: boolean;
+  /**
+   * Defines the text shown if the data array is empty. If not set "No data" will be displayed.
+   */
   noDataText?: string;
+  /**
+   * Defines the height of the rows and header.
+   */
   rowHeight?: number;
+  /**
+   * Defines whether the table should display rows with alternating row colors.
+   */
   alternateRowColor?: boolean;
   /**
    * Flag whether the table should add an extra column for displaying row highlights, based on the `highlightField` prop.
@@ -103,11 +127,35 @@ export interface TableProps extends Omit<CommonProps, 'title'> {
   highlightField?: string | ((row: Record<any, any>) => ValueState);
 
   // features
+  /**
+   * Defines whether columns are filterable.
+   */
   filterable?: boolean;
+  /**
+   * Defines whether columns are sortable.
+   */
   sortable?: boolean;
+  /**
+   * Defines whether columns are groupable.
+   */
   groupable?: boolean;
+  /**
+   * Group table rows by adding the column's `accessor` or `id` to the array.
+   */
   groupBy?: string[];
+  /**
+   * Defines the selection behavior of the table. <br />
+   *   __"Row":__ A selection column is rendered along with the normal columns. The whole row is selectable.
+   *   __"RowOnly":__ No selection column is rendered along with the normal columns. The whole row is selectable.
+   *   __"RowSelector":__ The row is only selectable by clicking on the corresponding field in the selection column.
+   */
   selectionBehavior?: TableSelectionBehavior;
+  /**
+   * Defines the `SelectionMode` of the table.<br />
+   *   __"None":__ The rows are not selectable.
+   *   __"SingleSelect":__ You can select only one row at once. Clicking on another row will unselect the previously selected row.
+   *   __"MultiSelect":__ You can select multiple rows.
+   */
   selectionMode?: TableSelectionMode;
   /**
    * Defines the column growing behaviour. Possible Values:
@@ -118,27 +166,64 @@ export interface TableProps extends Omit<CommonProps, 'title'> {
    *
    */
   scaleWidthMode?: TableScaleWidthMode;
+  /**
+   * Defines the columns order by their `accessor` or `id`.
+   */
   columnOrder?: string[];
+  /**
+   * Defines whether infinite scroll is active.
+   */
   infiniteScroll?: boolean;
+  /**
+   * Defines the infinite scroll threshold. When the threshold is reached, the `onLoadMore` event is fired.
+   */
   infiniteScrollThreshold?: number;
 
   // events
+  /**
+   * Fired when the sorting of the rows changes.
+   */
   onSort?: (e: CustomEvent<{ column: unknown; sortDirection: string }>) => void;
+  /**
+   * Fired when the grouping of the rows changes.
+   */
   onGroup?: (e: CustomEvent<{ column: unknown; groupedColumns: string[] }>) => void;
+  /**
+   * Fired when a row is selected or unselected.
+   */
   onRowSelected?: (e?: CustomEvent<{ allRowsSelected?: boolean; row?: unknown; isSelected?: boolean }>) => any;
+  /**
+   * Fired when a row is expanded or collapsed
+   */
   onRowExpandChange?: (e?: CustomEvent<{ row: unknown; column: unknown }>) => any;
+  /**
+   * Fired when the columns order is changed.
+   */
   onColumnsReordered?: (e?: CustomEvent<{ columnsNewOrder: string[]; column: unknown }>) => void;
+  /**
+   * Fired when the `infiniteScrollThreshold` is reached.
+   */
   onLoadMore?: (e?: { detail: { rowCount: number } }) => void;
   /**
    * Additional options which will be passed to [react-table´s useTable hook](https://react-table.tanstack.com/docs/api/useTable#table-options)
    */
   reactTableOptions?: Record<string, unknown>;
+  /**
+   * You can use this prob to add custom hooks to the table.
+   */
   tableHooks?: PluginHook<any>[];
+  /**
+   * Defines the key for nested rows. <br />
+   * Default: "children"
+   */
   subRowsKey?: string;
   /**
    * The key must consist of a valid `rowId` like `{ 2: true }` or `{ '0.2.0': true }` for nested rows.
    */
   selectedRowIds?: { [key: string]: boolean };
+  /**
+   * Defines whether the table should act as tree-table.
+   */
   isTreeTable?: boolean;
   /**
    * The amount of columns to load both behind and ahead of the current window range.
@@ -150,7 +235,13 @@ export interface TableProps extends Omit<CommonProps, 'title'> {
   overscanCount?: number;
 
   // default components
+  /**
+   * Component that will be rendered when the table is not loading and has no data.
+   */
   NoDataComponent?: ComponentType<any>;
+  /**
+   * Component that will be rendered when the table is loading and has no data.
+   */
   LoadingComponent?: ComponentType<any>;
 }
 
