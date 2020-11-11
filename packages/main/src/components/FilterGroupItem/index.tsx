@@ -14,17 +14,52 @@ const useStyles = createComponentStyles(styles, { name: 'FilterGroupItem' });
 const emptyObject = {};
 
 export interface FilterGroupItemPropTypes extends CommonProps {
+  /**
+   * Content of the `FilterGroupItem`.<br />
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use form elements like `Input`, `Select` or `Switch` in order to preserve the intended design.
+   */
   children: ReactElement;
+  /**
+   * Defines the label of the `FilterGroupItem`.<br />
+   * __Note:__ This label is used for the search in the filter configuration dialog.
+   */
   label?: string;
+  /**
+   * Defines the group name of the filter.<br />
+   * __Note:__ If no `groupName` is set, the name defaults to "Basic".
+   */
   groupName?: string;
+  /**
+   * Defines the tooltip of the label.<br />
+   * __Note:__ If no `labelTooltip` is set, it uses the `label` text as tooltip.
+   */
   labelTooltip?: string;
+  /**
+   * Defines whether a loading indicator should be shown in the `FilterGroupItem`.
+   */
   loading?: boolean;
+  /**
+   * Defines whether the filter is required.<br />
+   * __Note:__ Required filters cannot be removed from the `FilterBar`.
+   */
   required?: boolean;
+  /**
+   * Defines whether the filter is visible.
+   */
   visible?: boolean;
+  /**
+   * Defines whether the filter is visible in the `FilterBar` or only in the filter configuration dialog.
+   */
   visibleInFilterBar?: boolean;
+  /**
+   * Defines whether the `groupName` of the `FilterGroupItems` is displayed in the filter configuration dialog.
+   */
   considerGroupName?: boolean;
 }
 
+/**
+ * Represents a filter belonging to the `FilterBar`.
+ */
 export const FilterGroupItem: FC<FilterGroupItemPropTypes> = forwardRef(
   (props: FilterGroupItemPropTypes, ref: RefObject<HTMLDivElement>) => {
     const classes = useStyles();
