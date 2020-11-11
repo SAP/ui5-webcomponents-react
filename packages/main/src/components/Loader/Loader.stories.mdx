@@ -55,7 +55,7 @@ import { useEffect, useRef, useState } from 'react';
   <Story name="with Card">
     {(args) => {
       const initialText =
-        'This is a text that will be updated 10 seconds after the header is clicked. The text will be visible until the new text has been fetched. To let the user know that the text is updating, the Loader will be displayed.';
+        'This is a text that will be updated 5 seconds after the header is clicked. The text will be visible until the new text has been fetched. To let the user know that the text is updating, the Loader will be displayed.';
       const [text, setText] = useState(initialText);
       const [loading, setLoading] = useState(false);
       const counter = useRef(0);
@@ -72,7 +72,7 @@ import { useEffect, useRef, useState } from 'react';
             }
             counter.current++;
             setLoading(false);
-          }, 10000);
+          }, 5000);
         }
       }, [loading]);
       return (
@@ -96,7 +96,7 @@ import { useEffect, useRef, useState } from 'react';
 ```jsx
 const LoaderComponent = () => {
   const initialText =
-    'This is a text that will be updated 10 seconds after the header is clicked. The text will be visible until the new text has been fetched. To let the user know that the text is updating, the Loader will be displayed.';
+    'This is a text that will be updated 5 seconds after the header is clicked. The text will be visible until the new text has been fetched. To let the user know that the text is updating, the Loader will be displayed.';
   const [text, setText] = useState(initialText);
   const [loading, setLoading] = useState(false);
   const onHeaderClick = () => {
@@ -107,7 +107,7 @@ const LoaderComponent = () => {
       setTimeout(() => {
         setText((prev) => (prev === initialText ? 'Updated (⌐■_■)' : initialText));
         setLoading(false);
-      }, 10000);
+      }, 5000);
     }
   }, [loading]);
   return (
