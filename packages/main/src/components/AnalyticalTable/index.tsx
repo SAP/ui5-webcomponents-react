@@ -75,7 +75,7 @@ export interface TableProps extends Omit<CommonProps, 'title'> {
    */
   data: Record<any, any>[];
   /**
-   * Component or text rendered in the title section of the `AnalyticalTable`.
+   * Component or text rendered in the title section of the `AnalyticalTable`.<br />
    * __Note:__ If not set, it will be hidden.
    */
   title?: ReactText | ReactNode;
@@ -90,12 +90,12 @@ export interface TableProps extends Omit<CommonProps, 'title'> {
    */
   minRows?: number;
   /**
-   * The number of rows visible without going into overflow.
+   * The number of rows visible without going into overflow.<br />
    * __Note:__ If the data contains more entries than the `visibleRow` count, a vertical scrollbar is rendered and the table goes into overflow.
    */
   visibleRows?: number;
   /**
-   * Indicates whether a loading indicator should be shown.
+   * Indicates whether a loading indicator should be shown.<br />
    * __Note:__ If the data array is not empty and loading is set to `true` a `Loader` will be displayed underneath the header, otherwise a loading placeholder will be shown.
    * You can use your own placeholder by passing it to the `LoadingComponent` prop.
    */
@@ -144,17 +144,17 @@ export interface TableProps extends Omit<CommonProps, 'title'> {
    */
   groupBy?: string[];
   /**
-   * Defines the selection behavior of the table. <br />
-   *   __"Row":__ A selection column is rendered along with the normal columns. The whole row is selectable.
-   *   __"RowOnly":__ No selection column is rendered along with the normal columns. The whole row is selectable.
-   *   __"RowSelector":__ The row is only selectable by clicking on the corresponding field in the selection column.
+   * Defines the selection behavior of the table.<br />
+   * - __"Row":__ A selection column is rendered along with the normal columns. The whole row is selectable.
+   * - __"RowOnly":__ No selection column is rendered along with the normal columns. The whole row is selectable.
+   * - __"RowSelector":__ The row is only selectable by clicking on the corresponding field in the selection column.
    */
   selectionBehavior?: TableSelectionBehavior;
   /**
    * Defines the `SelectionMode` of the table.<br />
-   *   __"None":__ The rows are not selectable.
-   *   __"SingleSelect":__ You can select only one row at once. Clicking on another row will unselect the previously selected row.
-   *   __"MultiSelect":__ You can select multiple rows.
+   * - __"None":__ The rows are not selectable.
+   * - __"SingleSelect":__ You can select only one row at once. Clicking on another row will unselect the previously selected row.
+   * - __"MultiSelect":__ You can select multiple rows.
    */
   selectionMode?: TableSelectionMode;
   /**
@@ -175,7 +175,8 @@ export interface TableProps extends Omit<CommonProps, 'title'> {
    */
   infiniteScroll?: boolean;
   /**
-   * Defines the infinite scroll threshold. When the threshold is reached, the `onLoadMore` event is fired.
+   * The `infiniteScrollThreshold` defines at how many remaining rows the `onLoadMore` event should be fired.<br />
+   * Example: Your initial dataset consists of 50 entries and you want to load more data when the user scrolled to the 40th row. Then you should set the `infiniteScrollThreshold` to 10.
    */
   infiniteScrollThreshold?: number;
 
@@ -246,13 +247,9 @@ export interface TableProps extends Omit<CommonProps, 'title'> {
 }
 
 const useStyles = createComponentStyles(styles, { name: 'AnalyticalTable' });
-
 /**
- * ### Usage Notes
- * By default, the `AnalyticalTable` will not select any rows after clicking on active elements like a `Button`, `Link`,
- * etc. <br />
- * In case you want to select the row anyways, you can "mark" the event to allow such a behaviour. <br />
- * Example: `<Link onClick={(e) => {e.markerAllowTableRowSelection = true;}>My Link Text</Link>`
+ * The `AnalyticalTable` provides a set of convenient functions for responsive table design, including virtualization of rows and columns, infinite scrolling and customizable columns that will, unless otherwise defined, distribute the available space equally among themselves.
+ * It also provides several possibilities for working with the data, including sorting, filtering, grouping and aggregation.
  */
 const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<HTMLDivElement>) => {
   const {
@@ -587,6 +584,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
               internalRowHeight={internalRowHeight}
               rows={rows}
               handleExternalScroll={handleBodyScroll}
+              visibleRows={visibleRows}
             >
               <VirtualTableBody
                 classes={classes}

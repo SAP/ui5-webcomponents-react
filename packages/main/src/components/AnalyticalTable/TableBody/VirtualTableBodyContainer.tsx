@@ -13,7 +13,8 @@ export const VirtualTableBodyContainer = (props) => {
     onLoadMore,
     rows,
     internalRowHeight,
-    handleExternalScroll
+    handleExternalScroll,
+    visibleRows
   } = props;
   const [isMounted, setIsMounted] = useState(false);
 
@@ -35,8 +36,8 @@ export const VirtualTableBodyContainer = (props) => {
       const isScrollingDown = lastScrollTop.current < scrollOffset;
       if (isScrollingDown && infiniteScroll) {
         lastScrollTop.current = scrollOffset;
-        const currentTopRow = Math.floor(scrollOffset / internalRowHeight);
-        if (rows.length - currentTopRow < infiniteScrollThreshold) {
+        const currentLastRow = Math.floor(scrollOffset / internalRowHeight) + visibleRows;
+        if (rows.length - currentLastRow < infiniteScrollThreshold) {
           if (!firedInfiniteLoadEvents.current.has(rows.length)) {
             onLoadMore({
               detail: {
