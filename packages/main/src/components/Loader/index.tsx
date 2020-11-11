@@ -9,16 +9,27 @@ import { CommonProps } from '../../interfaces/CommonProps';
 import { styles } from './Loader.jss';
 
 export interface LoaderProps extends CommonProps {
-  /*
+  /**
    * Delay in ms until the Loader will be displayed
    */
   delay?: number;
+  /**
+   * Defines the type of the `Loader`.
+   * __Note:__ If the process completion rate can be detected the `Determinate` type should be used.
+   */
   type?: LoaderType;
+  /**
+   * Defines the progress of the Loader Bar. <br />
+   * __Note:__ This prop has no effect if used with type `Indeterminate`.
+   */
   progress?: CSSProperties['width'];
 }
 
 const useStyles = createComponentStyles(styles, { name: 'Loader' });
-
+/**
+ * The `Loader` signals that an operation is currently being executed. It uses as little space as possible to allow the user to interact with the UI.<br />
+ * It can be used to signal a data update on an already existing dataset, or where an expansion will happen.
+ */
 const Loader: FC<LoaderProps> = forwardRef((props: LoaderProps, ref: RefObject<HTMLDivElement>) => {
   const { className, type, progress, tooltip, slot, style, delay } = props;
   const classes = useStyles(props);
