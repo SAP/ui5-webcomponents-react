@@ -1,53 +1,48 @@
-import { Title, Subtitle, Description, Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
-import { DocsHeader } from '@shared/stories/DocsHeader';
-import { Button } from '@ui5/webcomponents-react/lib/Button';
-import { MessageBox } from '@ui5/webcomponents-react/lib/MessageBox';
-import { MessageBoxActions } from '@ui5/webcomponents-react/lib/MessageBoxActions';
-import { MessageBoxTypes } from '@ui5/webcomponents-react/lib/MessageBoxTypes';
-import { useRef, useCallback } from 'react';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { ArgsTable, Canvas, Meta, Story } from "@storybook/addon-docs/blocks";
+import { DocsHeader } from "@shared/stories/DocsHeader";
+import { Button } from "@ui5/webcomponents-react/lib/Button";
+import { MessageBox } from "@ui5/webcomponents-react/lib/MessageBox";
+import { MessageBoxActions } from "@ui5/webcomponents-react/lib/MessageBoxActions";
+import { MessageBoxTypes } from "@ui5/webcomponents-react/lib/MessageBoxTypes";
+import { useEffect, useState } from "react";
+import { createSelectArgTypes } from "@shared/stories/createSelectArgTypes";
 
 <Meta
   title="Components / MessageBox"
   component={MessageBox}
-  argTypes={{ ref: { type: null }, ...createSelectArgTypes({ type: MessageBoxTypes }) }}
+  argTypes={{
+    ref: { type: null },
+    ...createSelectArgTypes({ type: MessageBoxTypes }),
+  }}
   args={{
     open: false,
     type: MessageBoxTypes.CONFIRM,
-    children: 'My Message Box Content'
+    children: 'Press "Escape" to close the MessageBox.',
   }}
 />
 
 <DocsHeader />
 
+<br />
+
 <Canvas>
   <Story name="Default">
     {(args) => {
-      const messageBoxRef = useRef();
-      const onButtonClick = useCallback(
-        (e) => {
-          messageBoxRef.current.open();
-        },
-        [messageBoxRef]
-      );
-      const onCloseMessageBox = useCallback(
-        (e) => {
-          messageBoxRef.current.close();
-        },
-        [messageBoxRef]
-      );
+      const [open, setOpen] = useState(false);
+      const onButtonClick = () => {
+        setOpen(true);
+      };
+      const handleClose = (e) => {
+        setOpen(false);
+        args.onClose(e);
+      };
+      useEffect(() => {
+        setOpen(args.open);
+      }, [args.open]);
       return (
         <>
           <Button onClick={onButtonClick}>Open Messagebox</Button>
-          <MessageBox
-            ref={messageBoxRef}
-            type={args.type}
-            open={args.open}
-            onClose={onCloseMessageBox}
-            title={args.title}
-          >
-            {args.children}
-          </MessageBox>
+          <MessageBox {...args} open={open} onClose={handleClose} />
         </>
       );
     }}
@@ -56,37 +51,89 @@ import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
 <ArgsTable story="." />
 
-### with Custom Action
+### Opening and Closing MessageBoxes
+
+Unlike `Popovers` or `Dialogs`, `MessageBoxes` do not need to be provided with a `ref` to be opened or closed. Instead, the `open` prop can be used for this.
+
+**Note:** `onClose` is either called by clicking on one of the action buttons in the footer or by pressing the `ESC` key.
+
+```jsx
+const MessageBoxComponent = () => {
+  const [open, setOpen] = useState(false);
+  const onButtonClick = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+  return (
+    <>
+      <Button onClick={onButtonClick}>Open Messagebox</Button>
+      <MessageBox open={open} onClose={handleClose}>
+        Content
+      </MessageBox>
+    </>
+  );
+};
+```
+
+### Using MessageBoxes inside other components
+
+`MessageBoxes` are often used within other components, when opened this could sometimes have unwanted side effects.
+In this case, we recommend using [createPortal](https://reactjs.org/docs/portals.html) to mount the `MessageBox` outside of the DOM hierarchy of the parent component.
+
+```JSX
+const MessageBoxComponent = () => {
+  const [open, setOpen] = useState(false);
+  const onButtonClick = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+  return (
+    <>
+      <Button onClick={onButtonClick}>Open Messagebox</Button>
+      {createPortal(
+        <MessageBox open={open} onClose={handleClose}>
+          Content
+        </MessageBox>,
+        document.body
+      )}
+    </>
+  );
+};
+```
+
+# Stories
+
+<br />
+
+## MessageBox with custom actions
 
 <Canvas>
   <Story name="With Custom Action">
     {(args) => {
-      const messageBoxRef = useRef();
-      const onButtonClick = useCallback(
-        (e) => {
-          messageBoxRef.current.open();
-        },
-        [messageBoxRef]
-      );
-      const onCloseMessageBox = useCallback(
-        (e) => {
-          messageBoxRef.current.close();
-        },
-        [messageBoxRef]
-      );
+      const [open, setOpen] = useState(false);
+      const onButtonClick = () => {
+        setOpen(true);
+      };
+      const handleClose = () => {
+        setOpen(false);
+      };
       return (
         <>
           <Button onClick={onButtonClick}>Open Messagebox</Button>
           <MessageBox
-            ref={messageBoxRef}
-            type={args.type}
-            open={args.open}
-            onClose={onCloseMessageBox}
-            title={args.title}
-            actions={[MessageBoxActions.OK, 'A custom action', MessageBoxActions.CANCEL]}
-          >
-            {args.children}
-          </MessageBox>
+            {...args}
+            open={open}
+            onClose={handleClose}
+            actions={[
+              MessageBoxActions.OK,
+              "A custom action",
+              MessageBoxActions.CANCEL,
+            ]}
+          />
         </>
       );
     }}

@@ -1,7 +1,15 @@
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { BreadcrumbsSeparatorStyle } from '@ui5/webcomponents-react/lib/BreadcrumbsSeparatorStyle';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
-import React, { Children, FC, forwardRef, Fragment, ReactNode, ReactNodeArray, Ref } from 'react';
+import React, {
+  Children,
+  FC,
+  forwardRef,
+  Fragment,
+  ReactNode,
+  ReactNodeArray,
+  Ref,
+} from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 
 const SeparatorStyles = {
@@ -10,7 +18,7 @@ const SeparatorStyles = {
   DoubleGreaterThan: '>>',
   DoubleSlash: '//',
   GreaterThan: '>',
-  Slash: '/'
+  Slash: '/',
 };
 
 const separatorInlineStyles = { margin: '0 0.25rem' };
@@ -30,38 +38,63 @@ export interface BreadcrumbsPropTypes extends CommonProps {
   currentLocationText?: string;
 }
 
-const Breadcrumbs: FC<BreadcrumbsPropTypes> = forwardRef((props: BreadcrumbsPropTypes, ref: Ref<HTMLDivElement>) => {
-  const { children, separatorStyle, currentLocationText, tooltip, style, className, slot } = props;
-  const childrenArray = Children.toArray(children).filter(Boolean);
+/**
+ * Enables users to navigate between items by providing a list of links to previous steps in the user's navigation path.
+ */
+const Breadcrumbs: FC<BreadcrumbsPropTypes> = forwardRef(
+  (props: BreadcrumbsPropTypes, ref: Ref<HTMLDivElement>) => {
+    const {
+      children,
+      separatorStyle,
+      currentLocationText,
+      tooltip,
+      style,
+      className,
+      slot,
+    } = props;
+    const childrenArray = Children.toArray(children).filter(Boolean);
 
-  const passThroughProps = usePassThroughHtmlProps(props);
+    const passThroughProps = usePassThroughHtmlProps(props);
 
-  return (
-    <div ref={ref} title={tooltip} style={style} className={className} slot={slot} {...passThroughProps}>
-      {childrenArray.map((item, index) => {
-        if (index === childrenArray.length - 1) {
-          return item;
-        }
-        return (
-          <Fragment key={index}>
-            {item}
-            <Label style={separatorInlineStyles} children={SeparatorStyles[separatorStyle]} />
-          </Fragment>
-        );
-      })}
-      {currentLocationText && (
-        <>
-          <Label style={separatorInlineStyles}>{SeparatorStyles[separatorStyle]}</Label>
-          <Label>{currentLocationText}</Label>
-        </>
-      )}
-    </div>
-  );
-});
+    return (
+      <div
+        ref={ref}
+        title={tooltip}
+        style={style}
+        className={className}
+        slot={slot}
+        {...passThroughProps}
+      >
+        {childrenArray.map((item, index) => {
+          if (index === childrenArray.length - 1) {
+            return item;
+          }
+          return (
+            <Fragment key={index}>
+              {item}
+              <Label
+                style={separatorInlineStyles}
+                children={SeparatorStyles[separatorStyle]}
+              />
+            </Fragment>
+          );
+        })}
+        {currentLocationText && (
+          <>
+            <Label style={separatorInlineStyles}>
+              {SeparatorStyles[separatorStyle]}
+            </Label>
+            <Label>{currentLocationText}</Label>
+          </>
+        )}
+      </div>
+    );
+  }
+);
 
 Breadcrumbs.displayName = 'Breadcrumbs';
 Breadcrumbs.defaultProps = {
-  separatorStyle: BreadcrumbsSeparatorStyle.Slash
+  separatorStyle: BreadcrumbsSeparatorStyle.Slash,
 };
 
 export { Breadcrumbs };

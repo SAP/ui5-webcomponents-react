@@ -1,4 +1,3 @@
-import { mount } from 'enzyme';
 import * as React from 'react';
 import { render, screen, fireEvent } from '@shared/tests/index';
 import { MicroBarChart } from '@ui5/webcomponents-react-charts/lib/MicroBarChart';
@@ -10,7 +9,7 @@ const text3 = 'Bar Number Three';
 const dataset = [
   { value: 10, label: text1 },
   { value: 100, label: text2 },
-  { value: 70, label: text3 }
+  { value: 70, label: text3 },
 ];
 
 describe('Micro Bar Chart', () => {
@@ -18,10 +17,10 @@ describe('Micro Bar Chart', () => {
     const utils = render(
       <MicroBarChart
         dimension={{
-          accessor: 'label'
+          accessor: 'label',
         }}
         measure={{
-          accessor: 'value'
+          accessor: 'value',
         }}
         dataset={dataset}
       />
@@ -38,16 +37,20 @@ describe('Micro Bar Chart', () => {
       <MicroBarChart
         dimension={{
           accessor: 'label',
-          formatter: (label) => `${label} - formatted`
+          formatter: (label) => `${label} - formatted`,
         }}
         measure={{
-          accessor: 'value'
+          accessor: 'value',
         }}
         dataset={dataset}
       />
     );
-    expect(screen.getByText('Bar Number One - formatted').textContent).toEqual('Bar Number One - formatted');
-    expect(screen.getByText('Bar Number Two - formatted').textContent).toEqual('Bar Number Two - formatted');
+    expect(screen.getByText('Bar Number One - formatted').textContent).toEqual(
+      'Bar Number One - formatted'
+    );
+    expect(screen.getByText('Bar Number Two - formatted').textContent).toEqual(
+      'Bar Number Two - formatted'
+    );
   });
 
   test('With custom colors', () => {
@@ -56,11 +59,11 @@ describe('Micro Bar Chart', () => {
         <MicroBarChart
           dimension={{
             accessor: 'label',
-            formatter: (label) => `${label} - formatted`
+            formatter: (label) => `${label} - formatted`,
           }}
           measure={{
             accessor: 'value',
-            colors: ['black', 'yellow']
+            colors: ['black', 'yellow'],
           }}
           dataset={dataset}
         />
@@ -74,17 +77,17 @@ describe('Micro Bar Chart', () => {
     const { getByText, rerender } = render(
       <MicroBarChart
         dimension={{
-          accessor: 'label'
+          accessor: 'label',
         }}
         onDataPointClick={() =>
           (internalDataset = [
             { value: 10, label: 'Bar Number One' },
             { value: 100, label: 'Bar Number Two - clicked' },
-            { value: 70, label: 'Bar Number Three' }
+            { value: 70, label: 'Bar Number Three' },
           ])
         }
         measure={{
-          accessor: 'value'
+          accessor: 'value',
         }}
         dataset={internalDataset}
       />
@@ -94,19 +97,23 @@ describe('Micro Bar Chart', () => {
     rerender(
       <MicroBarChart
         dimension={{
-          accessor: 'label'
+          accessor: 'label',
         }}
         measure={{
-          accessor: 'value'
+          accessor: 'value',
         }}
         dataset={internalDataset}
       />
     );
-    expect(screen.getByText('Bar Number Two - clicked').textContent).toEqual('Bar Number Two - clicked');
+    expect(screen.getByText('Bar Number Two - clicked').textContent).toEqual(
+      'Bar Number Two - clicked'
+    );
   });
 
   test('loading placeholder', () => {
-    const wrapper = mount(<MicroBarChart style={{ width: '50%' }} dimension={null} measure={null} />);
-    expect(wrapper.render()).toMatchSnapshot();
+    const { asFragment } = render(
+      <MicroBarChart style={{ width: '50%' }} dimension={null} measure={null} />
+    );
+    expect(asFragment()).toMatchSnapshot();
   });
 });

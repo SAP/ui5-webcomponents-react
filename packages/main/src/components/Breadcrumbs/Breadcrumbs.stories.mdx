@@ -1,0 +1,45 @@
+import { ArgsTable, Canvas, Meta, Story } from "@storybook/addon-docs/blocks";
+import { Breadcrumbs } from "@ui5/webcomponents-react/lib/Breadcrumbs";
+import { BreadcrumbsSeparatorStyle } from "@ui5/webcomponents-react/lib/BreadcrumbsSeparatorStyle";
+import { Link } from "@ui5/webcomponents-react/lib/Link";
+import { createSelectArgTypes } from "@shared/stories/createSelectArgTypes";
+import { DocsHeader } from "@shared/stories/DocsHeader";
+import { DocsCommonProps } from "@shared/stories/DocsCommonProps";
+
+<Meta
+  title="Components / Breadcrumbs"
+  component={Breadcrumbs}
+  argTypes={{
+    ...createSelectArgTypes({ separatorStyle: BreadcrumbsSeparatorStyle }),
+    ...DocsCommonProps,
+    children: { control: { disable: true } },
+  }}
+  args={{
+    separatorStyle: BreadcrumbsSeparatorStyle.Slash,
+    currentLocationText: "Super Slim Notebook 13 inch",
+    style: {},
+    className: "",
+    tooltip: "",
+    slot: "",
+    ref: null,
+  }}
+/>
+
+<DocsHeader />
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return (
+        <Breadcrumbs {...args}>
+          <Link>Products</Link>
+          <Link>Hardware</Link>
+          <Link>Notebooks</Link>
+          <Link>13 inch</Link>
+        </Breadcrumbs>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="." />

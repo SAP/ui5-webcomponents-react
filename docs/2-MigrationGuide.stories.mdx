@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta } from "@storybook/addon-docs/blocks";
 
 <Meta title="Migration Guide" />
 
@@ -14,9 +14,77 @@ or the [changelog](https://github.com/SAP/ui5-webcomponents-react/blob/master/CH
 
 ## Table of Contents
 
+- [0.11.x to 0.12.0](#migrating-from-011x-to-0120)
 - [0.10.x to 0.11.0](#migrating-from-010x-to-0110)
 - [0.9.x to 0.10.0](#migrating-from-09x-to-0100)
 - [0.8.x to 0.9.0](#migrating-from-08x-to-090)
+
+## Migrating from 0.11.x to 0.12.0
+
+<br />
+
+### Updated import paths for `icons`
+
+All icons imports are changed. The individual icons modules are available in the icon package's `dist` folder.
+If you previously had `import "@ui5/webcomponents-icons/dist/icons/accept.js"`, now it becomes `import "@ui5/webcomponents-icons/dist/accept.js";`.
+
+<br />
+
+### API Updates
+
+The `Toolbar` was firing an event `onToolbarClick`. This event has been replaced with `onClick`.
+
+<br />
+
+### Deleted Components
+
+<br />
+
+#### Spinner
+
+The deprecated `Spinner` component has been removed in favor of the [BusyIndicator](https://sap.github.io/ui5-webcomponents-react/?path=/docs/ui5-web-components-busyindicator) component.
+
+Migration Example:
+
+```jsx
+<Spinner size={Size.Large} delay={1000} />
+```
+
+will become
+
+```jsx
+<BusyIndicator size={BusyIndicatorSize.Large} active />
+```
+
+#### Tokenizer
+
+The deprecated `Tokenizer` component has been removed in favor of the [MultiInput](https://sap.github.io/ui5-webcomponents-react/?path=/docs/ui5-web-components-multiinput) component.
+
+Migration Example:
+
+```jsx
+<Tokenizer onTokenDelete={myHandler} disabled={false}>
+  <Token text="Token 1" />
+  <Token text="Token 2" />
+  <Token text="Token 3" />
+</Tokenizer>
+```
+
+will become
+
+```jsx
+<MultiInput
+  disabled={false}
+  onTokenDelete={myHandler}
+  tokens={
+    <>
+      <Token text="Token 1" />
+      <Token text="Token 2" />
+      <Token text="Token 3" />
+    </>
+  }
+/>
+```
 
 ## Migrating from 0.10.x to 0.11.0
 
@@ -32,8 +100,8 @@ If you have the following `FilterItem` in your codebase
 ```jsx
 <FilterItem
   filterItems={[
-    { text: 'Text 1', key: '1' },
-    { text: 'Text 2', key: '2' }
+    { text: "Text 1", key: "1" },
+    { text: "Text 2", key: "2" },
   ]}
   label="My Filter Item"
   key="filter_item"
@@ -121,7 +189,9 @@ The [event-system](#event-system) that was deprecated in `0.9.0` is now removed.
 - **ShellBar**: the prop `logo` is now accepting a `ReactNode` instead of a `string` which is pointing to an image.
   Example:
   ```js
-  <ShellBar logo={<img slot="logo" src="../../../assets/images/sap-logo-svg.svg" />} />
+  <ShellBar
+    logo={<img slot="logo" src="../../../assets/images/sap-logo-svg.svg" />}
+  />
   ```
 
 ### Charts
@@ -141,23 +211,23 @@ To illustrate the required changes, you can find the migration of a bar chart wi
 Old Bar Chart:
 
 ```jsx
-import React from 'react';
-import { BarChart } from '@ui5/webcomponents-react-charts/lib/BarChart';
+import React from "react";
+import { BarChart } from "@ui5/webcomponents-react-charts/lib/BarChart";
 
 const MyComponent = () => {
   return (
     <BarChart
-      labels={['January', 'February', 'March']}
+      labels={["January", "February", "March"]}
       datasets={[
         {
-          label: 'Existing Customers',
-          data: [65, 59, 80]
+          label: "Existing Customers",
+          data: [65, 59, 80],
         },
 
         {
-          label: 'New Customers',
-          data: [5, 9, 8]
-        }
+          label: "New Customers",
+          data: [5, 9, 8],
+        },
       ]}
     />
   );
@@ -167,43 +237,43 @@ const MyComponent = () => {
 New Bar Chart:
 
 ```jsx
-import React from 'react';
-import { BarChart } from '@ui5/webcomponents-react-charts/lib/next/BarChart';
+import React from "react";
+import { BarChart } from "@ui5/webcomponents-react-charts/lib/next/BarChart";
 
 const MyComponent = () => {
   return (
     <BarChart
       dimensions={[
         {
-          accessor: 'month'
-        }
+          accessor: "month",
+        },
       ]}
       measures={[
         {
-          accessor: 'existingCustomers',
-          label: 'Existing Customers'
+          accessor: "existingCustomers",
+          label: "Existing Customers",
         },
         {
-          accessor: 'newCustomers',
-          label: 'New Customers'
-        }
+          accessor: "newCustomers",
+          label: "New Customers",
+        },
       ]}
       dataset={[
         {
-          month: 'January',
+          month: "January",
           existingCustomers: 65,
-          newCustomers: 5
+          newCustomers: 5,
         },
         {
-          month: 'February',
+          month: "February",
           existingCustomers: 59,
-          newCustomers: 9
+          newCustomers: 9,
         },
         {
-          month: 'March',
+          month: "March",
           existingCustomers: 80,
-          newCustomers: 8
-        }
+          newCustomers: 8,
+        },
       ]}
     />
   );
@@ -298,9 +368,9 @@ UI5 Web Components and UI5 Web Components for React are both coming with the `sa
 In case you want to change your applications' theme, you have to import a couple of modules:
 
 ```js
-import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme';
-import '@ui5/webcomponents/dist/Assets';
-import '@ui5/webcomponents-fiori/dist/Assets'; // only if you are using the ShellBar, Product Switch or UploadCollection
+import { setTheme } from "@ui5/webcomponents-base/dist/config/Theme";
+import "@ui5/webcomponents/dist/Assets";
+import "@ui5/webcomponents-fiori/dist/Assets"; // only if you are using the ShellBar, Product Switch or UploadCollection
 ```
 
 Now you can call `setTheme` with a string parameter of the new theme.  

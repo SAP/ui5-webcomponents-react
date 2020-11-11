@@ -1,38 +1,42 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
-import { Toolbar } from '@ui5/webcomponents-react/lib/Toolbar';
-import { Button } from '@ui5/webcomponents-react/lib/Button';
-import { ToolbarSpacer } from '@ui5/webcomponents-react/lib/ToolbarSpacer';
-import { Text } from '@ui5/webcomponents-react/lib/Text';
-import { Icon } from '@ui5/webcomponents-react/lib/Icon';
-import { Switch } from '@ui5/webcomponents-react/lib/Switch';
-import { Select } from '@ui5/webcomponents-react/lib/Select';
-import { ToolbarDesign } from '@ui5/webcomponents-react/lib/ToolbarDesign';
-import { ToolbarSeparator } from '@ui5/webcomponents-react/lib/ToolbarSeparator';
-import { ToolbarStyle } from '@ui5/webcomponents-react/lib/ToolbarStyle';
-import '@ui5/webcomponents-icons/dist/icons/employee.js';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
-import { DocsHeader } from '@shared/stories/DocsHeader';
-import '@ui5/webcomponents-icons/dist/icons/settings.js';
-import '@ui5/webcomponents-icons/dist/icons/download.js';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
+import { ArgsTable, Canvas, Meta, Story } from "@storybook/addon-docs/blocks";
+import { Toolbar } from "@ui5/webcomponents-react/lib/Toolbar";
+import { Button } from "@ui5/webcomponents-react/lib/Button";
+import { ToolbarSpacer } from "@ui5/webcomponents-react/lib/ToolbarSpacer";
+import { Text } from "@ui5/webcomponents-react/lib/Text";
+import { Icon } from "@ui5/webcomponents-react/lib/Icon";
+import { Switch } from "@ui5/webcomponents-react/lib/Switch";
+import { Select } from "@ui5/webcomponents-react/lib/Select";
+import { ToolbarDesign } from "@ui5/webcomponents-react/lib/ToolbarDesign";
+import { ToolbarSeparator } from "@ui5/webcomponents-react/lib/ToolbarSeparator";
+import { ToolbarStyle } from "@ui5/webcomponents-react/lib/ToolbarStyle";
+import "@ui5/webcomponents-icons/dist/icons/employee.js";
+import { createSelectArgTypes } from "@shared/stories/createSelectArgTypes";
+import { DocsHeader } from "@shared/stories/DocsHeader";
+import "@ui5/webcomponents-icons/dist/icons/settings.js";
+import "@ui5/webcomponents-icons/dist/icons/download.js";
+import { DocsCommonProps } from "@shared/stories/DocsCommonProps";
 
 <Meta
   title="Components / Toolbar"
   component={Toolbar}
   argTypes={{
-    ...createSelectArgTypes({ toolbarStyle: ToolbarStyle, design: ToolbarDesign }),
+    ...createSelectArgTypes({
+      toolbarStyle: ToolbarStyle,
+      design: ToolbarDesign,
+    }),
     children: { control: { disable: true } },
-    ...DocsCommonProps
+    ...DocsCommonProps,
   }}
   args={{
+    onToolbarClick: null,
     design: ToolbarDesign.Auto,
     toolbarStyle: ToolbarStyle.Standard,
     active: false,
     style: {},
-    className: '',
-    tooltip: '',
-    slot: '',
-    ref: null
+    className: "",
+    tooltip: "",
+    slot: "",
+    ref: null,
   }}
 />
 
@@ -56,7 +60,7 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 ### Prevent event bubbling of Toolbar items
 
-Per default, if the `active` prop is "true" and an actionable element like a button is clicked, the `onToolbarClick` event is also fired.
+Per default, if the `active` prop is "true" and an actionable element like a button is clicked, the `onClick` event of the `Toolbar` is also fired.
 To prevent this you can add `e.stopPropagation()` to your event handler.
 
 ```jsx
@@ -92,15 +96,16 @@ If the horizontally available space isn't enough to fit all items in it, an over
     args={{ width: 200 }}
     argTypes={{
       width: {
-        control: { type: 'range', min: 0, max: 1100, step: 10 },
-        description: 'Drag the slider to change the width of the toolbar.'
+        control: { type: "range", min: 0, max: 1100, step: 10 },
+        description: "Drag the slider to change the width of the toolbar.",
       },
       children: { table: { disable: true } },
       toolbarStyle: { table: { disable: true } },
       design: { table: { disable: true } },
       ...DocsCommonProps,
       active: { table: { disable: true } },
-      onToolbarClick: { table: { disable: true } }
+      onToolbarClick: { table: { disable: true } },
+      onClick: { table: { disable: true } },
     }}
   >
     {(args) => {

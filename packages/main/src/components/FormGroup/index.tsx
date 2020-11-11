@@ -18,12 +18,15 @@ const useStyles = createComponentStyles(
   {
     title: {
       paddingBottom: '0.75rem',
-      gridColumn: 'span 12'
-    }
+      gridColumn: 'span 12',
+    },
   },
   { name: 'FormGroup' }
 );
-
+/**
+ * The `FormGroup` encapsulates `FormItems` into groups.
+ * __Note:__ `FormGroup` is only used for calculating the final layout of the `Form`, thus it doesn't accept any other props than `title` and `children`, especially no `className`, `style` or `ref`.
+ */
 const FormGroup: FC<FormGroupProps> = (props: FormGroupProps) => {
   const { title, children } = props;
 

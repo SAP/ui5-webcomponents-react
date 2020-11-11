@@ -59,6 +59,25 @@ const CUSTOM_DESCRIPTION_REPLACE = {
         ''
       );
     }
+  },
+  MultiInput: {
+    children: (description) => {
+      return description.replace(
+        `<br> Example: <br><br> &lt;ui5-input show-suggestions><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;ui5-suggestion-item text="Item #1">&lt;/ui5-suggestion-item><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;ui5-suggestion-item text="Item #2">&lt;/ui5-suggestion-item><br> &lt;/ui5-input> <br> <ui5-input show-suggestions> <ui5-suggestion-item text="Item #1"></ui5-suggestion-item> <ui5-suggestion-item text="Item #2"></ui5-suggestion-item> </ui5-input> <br><br> `,
+        ''
+      );
+    },
+    tokens: (description) => {
+      return description.replace(
+        `<br> &lt;MultiInput><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;ui5-token slot="tokens" text="Token 1">&lt;/ui5-token><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;ui5-token slot="tokens" text="Token 2">&lt;/ui5-token><br> &lt;/MultiInput> <br> <br>`,
+        `<br />&lt;MultiInput tokens={
+    <br />&nbsp;&nbsp;&lt;>
+    <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;Token text="Token 1" />
+    <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;Token text="Token 2" />
+    <br />&nbsp;&nbsp;</>}
+    <br />/>`
+      );
+    }
   }
 };
 

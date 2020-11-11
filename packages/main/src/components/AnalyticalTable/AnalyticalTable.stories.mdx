@@ -1,20 +1,21 @@
-import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
-import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
-import { createSelectArgTypes } from '../../../../../shared/stories/createSelectArgTypes';
-import { TableScaleWidthMode } from '@ui5/webcomponents-react/lib/TableScaleWidthMode';
-import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
-import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
-import generateData from './demo/generateData';
-import { DocsHeader } from '@shared/stories/DocsHeader';
-import '@ui5/webcomponents-icons/dist/icons/delete';
-import '@ui5/webcomponents-icons/dist/icons/edit';
-import '@ui5/webcomponents-icons/dist/icons/settings';
-import { Button } from '@ui5/webcomponents-react/lib/Button';
-import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
-import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
-import { DefaultLoadingComponent } from './defaults/LoadingComponent';
-import { DefaultNoDataComponent } from './defaults/NoDataComponent';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
+import { ArgsTable, Canvas, Meta, Story } from "@storybook/addon-docs/blocks";
+import { AnalyticalTable } from "@ui5/webcomponents-react/lib/AnalyticalTable";
+import { createSelectArgTypes } from "../../../../../shared/stories/createSelectArgTypes";
+import { TableScaleWidthMode } from "@ui5/webcomponents-react/lib/TableScaleWidthMode";
+import { TableSelectionBehavior } from "@ui5/webcomponents-react/lib/TableSelectionBehavior";
+import { TableSelectionMode } from "@ui5/webcomponents-react/lib/TableSelectionMode";
+import generateData from "./demo/generateData";
+import { DocsHeader } from "@shared/stories/DocsHeader";
+import "@ui5/webcomponents-icons/dist/icons/delete";
+import "@ui5/webcomponents-icons/dist/icons/edit";
+import "@ui5/webcomponents-icons/dist/icons/settings";
+import { Button } from "@ui5/webcomponents-react/lib/Button";
+import { FlexBox } from "@ui5/webcomponents-react/lib/FlexBox";
+import { TextAlign } from "@ui5/webcomponents-react/lib/TextAlign";
+import { DefaultLoadingComponent } from "./defaults/LoadingComponent";
+import { DefaultNoDataComponent } from "./defaults/NoDataComponent";
+import { DocsCommonProps } from "@shared/stories/DocsCommonProps";
+import { useEffect, useRef, useState } from "react";
 
 <Meta
   title="Components / AnalyticalTable"
@@ -23,32 +24,32 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
     data: generateData(1000),
     columns: [
       {
-        Header: 'Name',
-        headerTooltip: 'Full Name', // A more extensive description!
-        accessor: 'name' // String-based value accessors!
+        Header: "Name",
+        headerTooltip: "Full Name", // A more extensive description!
+        accessor: "name", // String-based value accessors!
       },
       {
-        Header: 'Age',
-        accessor: 'age',
+        Header: "Age",
+        accessor: "age",
         hAlign: TextAlign.End,
         disableGroupBy: true,
         disableSortBy: false,
         disableFilters: false,
-        className: 'superCustomClass'
+        className: "superCustomClass",
       },
       {
-        Header: 'Friend Name',
-        accessor: 'friend.name'
+        Header: "Friend Name",
+        accessor: "friend.name",
       },
       {
         Header: () => <span>Friend Age</span>,
-        accessor: 'friend.age',
+        accessor: "friend.age",
         hAlign: TextAlign.End,
         filter: (rows, accessor, filterValue) => {
-          if (filterValue === 'all') {
+          if (filterValue === "all") {
             return rows;
           }
-          if (filterValue === 'true') {
+          if (filterValue === "true") {
             return rows.filter((row) => row.values[accessor] >= 21);
           }
           return rows.filter((row) => row.values[accessor] < 21);
@@ -57,20 +58,20 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
           return (
             <select
               onChange={(event) => column.setFilter(event.target.value)}
-              style={{ width: '100%' }}
-              value={column.filterValue ? column.filterValue : 'all'}
+              style={{ width: "100%" }}
+              value={column.filterValue ? column.filterValue : "all"}
             >
               <option value="all">Show All</option>
               <option value="true">Can Drink</option>
               <option value="false">Can't Drink</option>
             </select>
           );
-        }
+        },
       },
       {
-        id: 'actions',
-        Header: 'Actions',
-        accessor: '.',
+        id: "actions",
+        Header: "Actions",
+        accessor: ".",
         width: 100,
         canResize: false,
         Cell: ({ cell, row }) => {
@@ -81,10 +82,10 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
               <Button icon="delete" />
             </FlexBox>
           );
-        }
-      }
+        },
+      },
     ],
-    title: 'Table Title',
+    title: "Table Title",
     sortable: true,
     filterable: true,
     visibleRows: 15,
@@ -94,17 +95,17 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
     rowHeight: 44,
     selectedRowIds: { 3: true },
     withRowHighlight: true,
-    highlightField: 'status',
+    highlightField: "status",
     infiniteScroll: true,
     infiniteScrollThreshold: 20,
-    subRowsKey: 'subRows',
+    subRowsKey: "subRows",
     isTreeTable: false,
     NoDataComponent: DefaultNoDataComponent,
     LoadingComponent: DefaultLoadingComponent,
     scaleWidthMode: TableScaleWidthMode.Default,
     selectionMode: TableSelectionMode.SINGLE_SELECT,
     selectionBehavior: TableSelectionBehavior.ROW,
-    overscanCountHorizontal: 5
+    overscanCountHorizontal: 5,
   }}
   argTypes={{
     ...DocsCommonProps,
@@ -117,50 +118,15 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
     ...createSelectArgTypes({
       scaleWidthMode: TableScaleWidthMode,
       selectionMode: TableSelectionMode,
-      selectionBehavior: TableSelectionBehavior
-    })
+      selectionBehavior: TableSelectionBehavior,
+    }),
   }}
 />
 
 <DocsHeader />
 
 <Canvas>
-  <Story name="Default">
-    {(args) => (
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
-        <AnalyticalTable
-          {...args}
-          title={args.title}
-          data={args.data}
-          columns={args.columns}
-          loading={args.loading}
-          alternateRowColor={args.alternateRowColor}
-          sortable={args.sortable}
-          filterable={args.filterable}
-          visibleRows={args.visibleRows}
-          minRows={args.minRows}
-          groupable={args.groupable}
-          selectionMode={args.selectionMode}
-          scaleWidthMode={args.scaleWidthMode}
-          onRowSelected={args.onRowSelected}
-          onSort={args.onSort}
-          onGroup={args.onGroup}
-          onRowExpandChange={args.onRowExpandChange}
-          groupBy={args.groupBy}
-          rowHeight={args.rowHeight}
-          selectedRowIds={args.selectedRowIds}
-          onColumnsReordered={args.onColumnsReordered}
-          withRowHighlight={args.withRowHighlight}
-          highlightField={args.highlightField}
-          infiniteScroll={args.infiniteScroll}
-          infiniteScrollThreshold={args.infiniteScrollThreshold}
-          onLoadMore={args.onLoadMore}
-          selectionBehavior={args.selectionBehavior}
-          overscanCountHorizontal={args.overscanCountHorizontal}
-        />
-      </div>
-    )}
-  </Story>
+  <Story name="Default">{(args) => <AnalyticalTable {...args} />}</Story>
 </Canvas>
 
 <ArgsTable story="." />
@@ -194,12 +160,21 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 | `disableGroupBy`   | `boolean`                                                                | Disable groupBy for this column                                                                                                                                                                                                                                                                                                                                                                                 |
 | `defaultCanSort`   | `boolean`                                                                | If set to true, this column will be sortable, regardless if it has a valid `accessor`                                                                                                                                                                                                                                                                                                                           |
 | `disableSortBy`    | `boolean`                                                                | Disable sorting for this column                                                                                                                                                                                                                                                                                                                                                                                 |
+| `sortDescFirst`    | `boolean`                                                                | If set to `true`, the first sort direction for this column will be descending instead of ascending.                                                                                                                                                                                                                                                                                                             |
+| `sortInverted`     | `boolean`                                                                | If set to `true`, the underlying sorting direction will be inverted, but the UI will not.                                                                                                                                                                                                                                                                                                                       |
 | `sortType`         | `string OR ((rowA, rowB, columnId: string, descending: boolean) => any)` | String or custom sort function.<br />Supported String Values: <ul><li>`basic`</li><li>`datetime`</li><li>`alphanumeric`</li></ul>                                                                                                                                                                                                                                                                               |
 | `disableResizing`  | `boolean`                                                                | Disable resizing for this column                                                                                                                                                                                                                                                                                                                                                                                |
 | `hAlign`           | `TextAlign`                                                              | Horizontal align of the cell                                                                                                                                                                                                                                                                                                                                                                                    |
 | `vAlign`           | `VerticalAlign`                                                          | Vertical align of the cell                                                                                                                                                                                                                                                                                                                                                                                      |
 
 ## Recipes
+
+### How to select rows containing active elements?
+
+By default, the `AnalyticalTable` will not select any rows after clicking on active elements inside a table cell like a `Button`, `Link`,
+etc. <br />
+In case you want to select the row anyways, you can "mark" the event to allow such a behaviour. <br />
+Example: `<Link onClick={(e) => {e.markerAllowTableRowSelection = true;}>My Link Text</Link>`
 
 ### How do I stop my table state from automatically resetting when my data changes?
 
@@ -270,32 +245,124 @@ export const ResponsiveTable = () => {
 With the help of that effect, the table will now show either 2 columns on a mobile phone, 3 columns on a tablet device and all columns on Desktop devices.
 This even works if you resize the browser window!
 
+<br />
+
 # Stories
+
+<br />
 
 ## Tree Table
 
 <Canvas>
-  <Story name="Tree Table" args={{ data: generateData(20, true) }}>
-    {(args) => (
-      <AnalyticalTable
-        {...args}
-        title={args.title}
-        data={args.data}
-        columns={args.columns}
-        loading={args.loading}
-        sortable={args.sortable}
-        filterable={args.filterable}
-        visibleRows={args.visibleRows}
-        minRows={args.minRows}
-        selectionMode={args.selectionMode}
-        onRowSelected={args.onRowSelected}
-        onSort={args.onSort}
-        onRowExpandChange={args.onRowExpandChange}
-        subRowsKey={args.subRowsKey}
-        selectedRowIds={args.selectedRowIds}
-        selectionBehavior={args.selectionBehavior}
-        isTreeTable
-      />
-    )}
+  <Story
+    name="Tree Table"
+    args={{ data: generateData(20, true), isTreeTable: true }}
+  >
+    {(args) => <AnalyticalTable {...args} />}
   </Story>
 </Canvas>
+
+The `data` structure of the tree table is as follows:
+
+```js
+const data = {
+    name: "Greg Miller",
+    age: 35,
+    friend: {
+        name: "Rose Franco",
+        age: 32,
+    },
+    status: "None",
+    subRows: [
+        {
+            name: "Rick DeAngelo",
+            age: 25,
+            friend: {
+                name: "Susanne Franco",
+                age: 37,
+            },
+            status: "None",
+            subRows: [...],
+        },
+    ],
+    ...
+};
+```
+
+In this example the default key for sub row detection is used (`subRows`), you can use any key you like by setting the `subRowsKey` prop.
+
+<br />
+
+## Infinite Scrolling
+
+The table initially contains 50 rows, when the last 10 rows are reached the table will load more data.
+
+<Canvas>
+  <Story name="Infinite Scrolling">
+    {(args) => {
+      const [data, setData] = useState(args.data.slice(0, 50));
+      const [loading, setLoading] = useState(false);
+      const offset = useRef(50);
+      const onLoadMore = () => {
+        setLoading(true);
+      };
+      useEffect(() => {
+        if (loading) {
+          setTimeout(() => {
+            setData((prev) => [
+              ...prev,
+              ...args.data.slice(offset.current, offset.current + 50),
+            ]);
+            setLoading(false);
+            offset.current += 50;
+          }, 2000);
+        }
+      }, [loading, args.data, offset.current]);
+      return (
+        <AnalyticalTable
+          data={data}
+          columns={args.columns}
+          infiniteScroll={true}
+          infiniteScrollThreshold={10}
+          title="Scroll to load more data"
+          onLoadMore={onLoadMore}
+          loading={loading}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+```jsx
+const InfiniteScrollTable = (props) => {
+  const [data, setData] = useState(props.data.slice(0, 50));
+  const [loading, setLoading] = useState(false);
+  const offset = useRef(50);
+  const onLoadMore = () => {
+    setLoading(true);
+  };
+  useEffect(() => {
+    if (loading) {
+      setTimeout(() => {
+        setData((prev) => [
+          ...prev,
+          ...props.data.slice(offset.current, offset.current + 50),
+        ]);
+        setLoading(false);
+        offset.current += 50;
+      }, 2000);
+    }
+  }, [loading, props.data, offset.current]);
+  return (
+    <AnalyticalTable
+      data={data}
+      columns={props.columns}
+      infiniteScroll={true}
+      infiniteScrollThreshold={10}
+      title="Scroll to load more data"
+      onLoadMore={onLoadMore}
+      loading={loading}
+    />
+  );
+};
+```

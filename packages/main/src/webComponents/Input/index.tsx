@@ -1,10 +1,14 @@
 import { InputType } from '@ui5/webcomponents-react/lib/InputType';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
+import {
+  withWebComponent,
+  WithWebComponentPropTypes,
+} from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/Input';
 import { FC, ReactNode } from 'react';
 
-export interface InputPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput' | 'onSubmit'> {
+export interface InputPropTypes
+  extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput' | 'onSubmit'> {
   /**
    * Defines whether the <code>Input</code> is in disabled state. <br><br> <b>Note:</b> A disabled <code>Input</code> is completely noninteractive.
    */
@@ -54,7 +58,7 @@ export interface InputPropTypes extends Omit<WithWebComponentPropTypes, 'onChang
    */
   valueState?: ValueState;
   /**
-   * Defines the <code>Input</code> suggestion items. <br><br> Example: <br><br> &lt;Input show-suggestions><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;ui5-suggestion-item text="Item #1">&lt;/ui5-suggestion-item><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;ui5-suggestion-item text="Item #2">&lt;/ui5-suggestion-item><br> &lt;/Input>  <br><br> <b>Note:</b> The suggestion would be displayed only if the <code>showSuggestions</code> property is set to <code>true</code>. <br><br> <b>Note:</b> The &lt;ui5-suggestion-item> is recommended to be used as a suggestion item. Importing the Input Suggestions Support feature: <br> <code>import "@ui5/webcomponents/dist/features/InputSuggestions.js";</code> <br> also automatically imports the &lt;ui5-suggestion-item> for your convenience.
+   * Defines the <code>Input</code> suggestion items. <br><br> Example: <br><br> &lt;Input showSuggestions><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;SuggestionItem text="Item #1">&lt;/SuggestionItem><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;SuggestionItem text="Item #2">&lt;/SuggestionItem><br> &lt;/Input>  <br><br> <b>Note:</b> The suggestion would be displayed only if the <code>showSuggestions</code> property is set to <code>true</code>. <br><br> <b>Note:</b> The &lt;SuggestionItem> is recommended to be used as a suggestion item. Importing the Input Suggestions Support feature: <br> <code>import "@ui5/webcomponents/dist/features/InputSuggestions.js";</code> <br> also automatically imports the &lt;SuggestionItem> for your convenience.
    */
   children?: ReactNode | ReactNode[];
   /**
@@ -82,7 +86,9 @@ export interface InputPropTypes extends Omit<WithWebComponentPropTypes, 'onChang
   /**
    * Fired when the user navigates to a suggestion item via the ARROW keys, as a preview, before the final selection.
    */
-  onSuggestionItemPreview?: (event: CustomEvent<{ item: ReactNode; targetRef: ReactNode }>) => void;
+  onSuggestionItemPreview?: (
+    event: CustomEvent<{ item: ReactNode; targetRef: ReactNode }>
+  ) => void;
   /**
    * Fired when a suggestion item, that is displayed in the suggestion popup, is selected.
    */
@@ -90,7 +96,9 @@ export interface InputPropTypes extends Omit<WithWebComponentPropTypes, 'onChang
   /**
    * Fired when the user scrolls the suggestion popover.
    */
-  onSuggestionScroll?: (event: CustomEvent<{ scrollTop: number; scrollContainer: ReactNode }>) => void;
+  onSuggestionScroll?: (
+    event: CustomEvent<{ scrollTop: number; scrollContainer: ReactNode }>
+  ) => void;
 }
 
 /**
@@ -112,7 +120,14 @@ const Input: FC<InputPropTypes> = withWebComponent<InputPropTypes>(
   ['maxlength', 'name', 'placeholder', 'type', 'value', 'valueState'],
   ['disabled', 'highlight', 'readonly', 'required', 'showSuggestions'],
   ['icon', 'valueStateMessage'],
-  ['change', 'input', 'submit', 'suggestion-item-preview', 'suggestion-item-select', 'suggestion-scroll']
+  [
+    'change',
+    'input',
+    'submit',
+    'suggestion-item-preview',
+    'suggestion-item-select',
+    'suggestion-scroll',
+  ]
 );
 
 Input.displayName = 'Input';
@@ -124,7 +139,7 @@ Input.defaultProps = {
   required: false,
   showSuggestions: false,
   type: InputType.Text,
-  valueState: ValueState.None
+  valueState: ValueState.None,
 };
 
 export { Input };

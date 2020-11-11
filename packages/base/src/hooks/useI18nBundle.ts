@@ -1,4 +1,7 @@
-import { fetchI18nBundle, getI18nBundle } from '@ui5/webcomponents-base/dist/i18nBundle';
+import {
+  fetchI18nBundle,
+  getI18nBundle,
+} from '@ui5/webcomponents-base/dist/i18nBundle';
 import { useEffect, useState } from 'react';
 
 type TextWithDefault = { key: string; defaultText: string };
@@ -18,22 +21,36 @@ const resolveTranslations = (bundle, texts) => {
   });
 };
 
-export const useI18nText = (bundleName: string, ...texts: (TextWithDefault | TextWithPlaceholders)[]): string[] => {
+export const useI18nText = (
+  bundleName: string,
+  ...texts: (TextWithDefault | TextWithPlaceholders)[]
+): string[] => {
   const i18nBundle: I18nBundle = getI18nBundle(bundleName);
-  const [translations, setTranslations] = useState(resolveTranslations(i18nBundle, texts));
+  const [translations, setTranslations] = useState(
+    resolveTranslations(i18nBundle, texts)
+  );
 
   useEffect(() => {
+    let didCancel = false;
     const fetchAndLoadBundle = async () => {
       await fetchI18nBundle(bundleName);
-      setTranslations((prev) => {
-        const next = resolveTranslations(i18nBundle, texts);
-        if (prev.length === next.length && prev.every((translation, index) => next[index] === translation)) {
-          return prev;
-        }
-        return next;
-      });
+      if (!didCancel) {
+        setTranslations((prev) => {
+          const next = resolveTranslations(i18nBundle, texts);
+          if (
+            prev.length === next.length &&
+            prev.every((translation, index) => next[index] === translation)
+          ) {
+            return prev;
+          }
+          return next;
+        });
+      }
     };
     fetchAndLoadBundle();
+    return () => {
+      didCancel = true;
+    };
   }, [fetchI18nBundle, bundleName, texts]);
 
   return translations;

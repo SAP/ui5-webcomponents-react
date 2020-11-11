@@ -3,19 +3,18 @@
 <p align="center">
   <img src="https://user-images.githubusercontent.com/8363610/93131219-1e36c300-f6aa-11ea-90e6-581d3f8a4491.png" alt="UI5 Web Components for React Seed Logo" />
 </p>
-<p align="center">
-  <a href="https://github.com/prettier/prettier" target="_blank">
-    <img alt="code style: prettier" src="https://badgen.net/badge/code%20style/prettier?color=pink">
-  </a>
-  <a href="https://www.npmjs.com/package/cra-template-ui5-webcomponents-react-seed" target="_blank">
-    <img alt="npm version" src="https://badgen.net/npm/v/@ui5/cra-template-webcomponents-react-seed?icon=npm">
-  </a>
-  <a href="https://www.npmjs.com/package/cra-template-ui5-webcomponents-react-seed" target="\_parent">
-    <img alt="npm downloads" src="https://img.shields.io/npm/dm/@ui5/cra-template-webcomponents-react-seed-seed.svg" />
-  </a>
-</p>
 
 This seed decrease’s the bootstrap time spent on new projects, POCs or MVPs which uses **React + UI5 WebComponents React** by leveraging several out-of-the-box components, scripts & configurations.
+
+# Usage
+```shell script
+npx create-react-app my-app --template @ui5/webcomponents-react-seed
+npm run mock
+
+# or if you prefer to use yarn
+yarn create react-app my-app --template @ui5/webcomponents-react-seed
+yarn mock
+```
 
 # Configuration Included
 

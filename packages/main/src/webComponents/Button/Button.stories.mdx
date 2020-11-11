@@ -1,29 +1,28 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
-import { Button } from '@ui5/webcomponents-react/lib/Button';
-import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
-import '@ui5/webcomponents-icons/dist/icons/employee.js';
-import { CSSProperties } from 'react';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
-import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
+import { ArgsTable, Canvas, Meta, Story } from "@storybook/addon-docs/blocks";
+import { Button } from "@ui5/webcomponents-react/lib/Button";
+import { ButtonDesign } from "@ui5/webcomponents-react/lib/ButtonDesign";
+import "@ui5/webcomponents-icons/dist/icons/employee.js";
+import { createSelectArgTypes } from "@shared/stories/createSelectArgTypes";
+import { DocsHeader } from "@shared/stories/DocsHeader";
+import { DocsCommonProps } from "@shared/stories/DocsCommonProps";
 
 <Meta
   title="UI5 Web Components / Button"
   component={Button}
   argTypes={{
     ...createSelectArgTypes({ design: ButtonDesign }),
-    children: { control: 'text' },
-    ...DocsCommonProps
+    children: { control: "text" },
+    ...DocsCommonProps,
   }}
   args={{
     design: ButtonDesign.Default,
-    icon: 'employee',
-    children: 'Button Text',
+    icon: "employee",
+    children: "Button Text",
     style: {},
-    className: '',
-    tooltip: '',
-    slot: '',
-    ref: null
+    className: "",
+    tooltip: "",
+    slot: "",
+    ref: null,
   }}
 />
 
@@ -38,15 +37,24 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 </Canvas>
 
 <ArgsTable story="." />
-<div style={{ fontFamily: 'var(--sapFontFamily)', fontSize: 'var(--sapFontSize)', color: 'var(--sapTextColor)' }}>
+<div
+  style={{
+    fontFamily: "var(--sapFontFamily)",
+    fontSize: "var(--sapFontSize)",
+    color: "var(--sapTextColor)",
+  }}
+>
   <h3>Usage</h3>
-  For the <code>Button</code> UI, you can define text, icon, or both. You can also specify whether the text or the icon is
-  displayed first. <br />
+  For the <code>Button</code> UI, you can define text, icon, or both. You can also
+  specify whether the text or the icon is displayed first. <br />
   <br />
-  You can choose from a set of predefined types that offer different styling to correspond to the triggered action.
+  You can choose from a set of predefined types that offer different styling to correspond
+  to the triggered action.
   <br />
   <br />
-  You can set the <code>Button</code> as enabled or disabled. An enabled <code>Button</code> can be pressed by clicking
-  or tapping it. The button changes its style to provide visual feedback to the user that it is pressed or hovered over
-  with the mouse cursor. A disabled <code>Button</code> appears inactive and cannot be pressed.
+  You can set the <code>Button</code> as enabled or disabled. An enabled{" "}
+  <code>Button</code> can be pressed by clicking or tapping it. The button
+  changes its style to provide visual feedback to the user that it is pressed or
+  hovered over with the mouse cursor. A disabled <code>Button</code> appears
+  inactive and cannot be pressed.
 </div>

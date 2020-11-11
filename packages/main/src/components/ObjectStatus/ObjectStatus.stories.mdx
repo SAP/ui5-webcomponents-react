@@ -1,0 +1,128 @@
+import { ArgsTable, Canvas, Meta, Story } from "@storybook/addon-docs/blocks";
+import { ObjectStatus } from "@ui5/webcomponents-react/lib/ObjectStatus";
+import { createSelectArgTypes } from "@shared/stories/createSelectArgTypes";
+import { ValueState } from "@ui5/webcomponents-react/lib/ValueState";
+import { Icon } from "@ui5/webcomponents-react/lib/Icon";
+import { DocsHeader } from "@shared/stories/DocsHeader";
+import { DocsCommonProps } from "@shared/stories/DocsCommonProps";
+
+<Meta
+  title="Components / ObjectStatus"
+  component={ObjectStatus}
+  argTypes={{
+    ...createSelectArgTypes({ state: ValueState }),
+    children: { control: "text" },
+    ...DocsCommonProps,
+  }}
+  args={{
+    state: ValueState.None,
+    children: "ObjectStatus",
+    showDefaultIcon: true,
+    style: {},
+    className: "",
+    tooltip: "",
+    slot: "",
+    ref: null,
+  }}
+/>
+
+<DocsHeader />
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return <ObjectStatus {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Default" />
+
+<br />
+
+# Stories
+
+<br />
+
+## ObjectStatus with default icons
+
+<Canvas>
+  <Story
+    name="None"
+    args={{
+      state: ValueState.None,
+      children: `Value State: ${ValueState.None}`,
+    }}
+  >
+    {(args) => {
+      return <ObjectStatus {...args} />;
+    }}
+  </Story>
+  <Story
+    name="Information"
+    args={{
+      state: ValueState.Information,
+      children: `Value State: ${ValueState.Information}`,
+    }}
+  >
+    {(args) => {
+      return <ObjectStatus {...args} />;
+    }}
+  </Story>
+  <Story
+    name="Success"
+    args={{
+      state: ValueState.Success,
+      children: `Value State: ${ValueState.Success}`,
+    }}
+  >
+    {(args) => {
+      return <ObjectStatus {...args} />;
+    }}
+  </Story>
+  <Story
+    name="Warning"
+    args={{
+      state: ValueState.Warning,
+      children: `Value State: ${ValueState.Warning}`,
+    }}
+  >
+    {(args) => {
+      return <ObjectStatus {...args} />;
+    }}
+  </Story>
+  <Story
+    name="Error"
+    args={{
+      state: ValueState.Error,
+      children: `Value State: ${ValueState.Error}`,
+    }}
+  >
+    {(args) => {
+      return <ObjectStatus {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+## ObjectStatus with custom Icon
+
+<Canvas>
+  <Story name="with custom Icon" args={{ icon: <Icon name="sys-cancel" /> }}>
+    {(args) => {
+      return <ObjectStatus {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+## ObjectStatus with Icon only
+
+<Canvas>
+  <Story
+    name="with Icon only"
+    args={{ icon: <Icon name="sys-cancel" />, children: null }}
+  >
+    {(args) => {
+      return <ObjectStatus {...args} />;
+    }}
+  </Story>
+</Canvas>

@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react-base",
-  "version": "0.11.2",
+  "version": "0.11.3",
   "description": "Base for ui5-webcomponents-react",
   "main": "index.cjs.js",
   "module": "index.esm.js",
@@ -26,8 +26,8 @@
     "build:types": "tsc --declaration --emitDeclarationOnly --declarationDir . --removeComments false"
   },
   "dependencies": {
-    "@babel/runtime": "7.12.1",
-    "core-js": "3.6.5",
+    "@babel/runtime": "7.12.5",
+    "core-js": "3.7.0",
     "intersection-observer": "0.11.0",
     "resize-observer-polyfill": "1.5.1",
     "smoothscroll-polyfill": "0.4.4"

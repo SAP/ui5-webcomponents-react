@@ -13,14 +13,29 @@ import { CommonProps } from '../../interfaces/CommonProps';
 import styles from './ObjectStatus.jss';
 
 export interface ObjectStatusPropTypes extends CommonProps {
+  /**
+   * Defines the text of the `ObjectStatus`.<br />
+   * __Note:__ Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
+   */
   children?: string | number | ReactNode;
+  /**
+   * Defines the icon in front of the `ObjectStatus` text.<br />
+   * __Note:__ Although this slot accepts HTML Elements, it is strongly recommended that you only use `Icon` in order to preserve the intended design.
+   */
   icon?: ReactNode;
+  /**
+   * Defines the value state of the <code>ObjectStatus</code>. <br><br> Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>
+   */
   state?: ValueState;
+  /**
+   * Defines whether the default icon for each `ValueState` should be displayed.<br />
+   * __Note:__ If the `icon` prop was set, `showDefaultIcon` has no effect.
+   */
   showDefaultIcon?: boolean;
 }
 
 const defaultIconStyle = {
-  fontSize: '1rem'
+  fontSize: '1rem',
 };
 
 const getDefaultIcon = (state) => {
@@ -39,46 +54,63 @@ const getDefaultIcon = (state) => {
 };
 
 const useStyles = createComponentStyles(styles, { name: 'ObjectStatus' });
+/**
+ * Status information that can be either text with a value state, or an icon.
+ */
+const ObjectStatus: FC<ObjectStatusPropTypes> = forwardRef(
+  (props: ObjectStatusPropTypes, ref: Ref<HTMLDivElement>) => {
+    const {
+      state,
+      showDefaultIcon,
+      children,
+      icon,
+      className,
+      style,
+      tooltip,
+      slot,
+    } = props;
+    const iconToRender = useMemo(() => {
+      if (icon) {
+        return icon;
+      }
+      if (showDefaultIcon) {
+        return getDefaultIcon(state);
+      }
+      return null;
+    }, [icon, showDefaultIcon, state]);
 
-const ObjectStatus: FC<ObjectStatusPropTypes> = forwardRef((props: ObjectStatusPropTypes, ref: Ref<HTMLDivElement>) => {
-  const { state, showDefaultIcon, children, icon, className, style, tooltip, slot } = props;
-  const iconToRender = useMemo(() => {
-    if (icon) {
-      return icon;
+    const classes = useStyles();
+    const objStatusClasses = StyleClassHelper.of(classes.objectStatus);
+
+    if (className) {
+      objStatusClasses.put(className);
     }
-    if (showDefaultIcon) {
-      return getDefaultIcon(state);
-    }
-    return null;
-  }, [icon, showDefaultIcon, state]);
 
-  const classes = useStyles();
-  const objStatusClasses = StyleClassHelper.of(classes.objectStatus);
+    const iconClasses = StyleClassHelper.of(classes.icon);
+    iconClasses.put(classes[`icon${state}`]);
+    const textClass = classes[`text${state}`];
 
-  if (className) {
-    objStatusClasses.put(className);
+    const passThroughProps = usePassThroughHtmlProps(props);
+
+    return (
+      <div
+        ref={ref}
+        className={objStatusClasses.valueOf()}
+        style={style}
+        title={tooltip}
+        slot={slot}
+        {...passThroughProps}
+      >
+        {iconToRender && (
+          <div className={iconClasses.valueOf()}>{iconToRender}</div>
+        )}
+        {children !== null && children !== undefined && (
+          <span className={textClass}>{children}</span>
+        )}
+      </div>
+    );
   }
-
-  const iconClasses = StyleClassHelper.of(classes.icon);
-  iconClasses.put(classes[`icon${state}`]);
-  const textClass = classes[`text${state}`];
-
-  const passThroughProps = usePassThroughHtmlProps(props);
-
-  return (
-    <div
-      ref={ref}
-      className={objStatusClasses.valueOf()}
-      style={style}
-      title={tooltip}
-      slot={slot}
-      {...passThroughProps}
-    >
-      {iconToRender && <div className={iconClasses.valueOf()}>{iconToRender}</div>}
-      {children !== null && children !== undefined && <span className={textClass}>{children}</span>}
-    </div>
-  );
-});
+);
 
 ObjectStatus.displayName = 'ObjectStatus';
 
@@ -86,7 +118,7 @@ ObjectStatus.defaultProps = {
   state: ValueState.None,
   showDefaultIcon: false,
   icon: null,
-  children: null
+  children: null,
 };
 
 export { ObjectStatus };

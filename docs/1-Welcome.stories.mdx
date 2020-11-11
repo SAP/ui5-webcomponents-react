@@ -1,5 +1,5 @@
-import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
-import { Button } from '@ui5/webcomponents-react/lib/Button';
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+import { Button } from "@ui5/webcomponents-react/lib/Button";
 
 <Meta title="Getting Started" />
 
@@ -44,6 +44,21 @@ npx create-react-app my-app --template @ui5/webcomponents-react
 yarn create react-app my-app --template @ui5/webcomponents-react
 ```
 
+### Creating a new React app based on our Seed
+
+You can create a new react app by using [create-react-app](https://facebook.github.io/create-react-app/) based on our seed.
+This template delivers several out of the box components, scripts and configurations.
+For more info, check the [seed documentation](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/cra-template-seed).
+
+```sh
+npx create-react-app my-app --template @ui5/webcomponents-react-seed
+npm run mock
+
+# or if you want to use yarn
+yarn create react-app my-app --template @ui5/webcomponents-react-seed
+yarn mock
+```
+
 ### Add `@ui5/webcomponents-react` to an existing app
 
 First of all, you need to add the `@ui5/webcomponents-react` dependency to your project. Please also keep in mind installing the required peer dependencies:
@@ -75,13 +90,13 @@ Then you are ready to use `@ui5/webcomponents-react` and you can import the desi
 For example, to use the `Button` component you need to import it:
 
 ```jsx
-import { Button } from '@ui5/webcomponents-react/lib/Button'; // loads ui5-button wrapped in a ui5-webcomponents-react component
+import { Button } from "@ui5/webcomponents-react/lib/Button"; // loads ui5-button wrapped in a ui5-webcomponents-react component
 ```
 
 Then, you can use the Button in your app:
 
 ```jsx
-<Button onClick={() => alert('Hello World!')}>Hello world!</Button>
+<Button onClick={() => alert("Hello World!")}>Hello world!</Button>
 ```
 
 ### Theming
@@ -90,9 +105,9 @@ UI5 Web Components and UI5 Web Components for React are both coming with the `sa
 In case you want to change your applications' theme, you have to import a couple of modules:
 
 ```js
-import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme';
-import '@ui5/webcomponents/dist/Assets';
-import '@ui5/webcomponents-fiori/dist/Assets'; // only if you are using the ShellBar, Product Switch or the Upload Collection
+import { setTheme } from "@ui5/webcomponents-base/dist/config/Theme";
+import "@ui5/webcomponents/dist/Assets";
+import "@ui5/webcomponents-fiori/dist/Assets"; // only if you are using the ShellBar, Product Switch or the Upload Collection
 ```
 
 You can now change the Theme by calling `setTheme` with a string parameter of the new theme.<br />

@@ -5,20 +5,14 @@ export const modifyObjectProperty = (object: any, attr: string, value: any) => {
   Object.defineProperty(object, attr, {
     value,
     configurable: true,
-    writable: true
-  });
-};
-export const getEventFromCallback = (callback, index = 0): CustomEvent<Record<string, unknown>> => {
-  return callback.args[index][0];
-};
-export const setUserAgentString = (userAgent) => {
-  Object.defineProperty(window.navigator, 'userAgent', {
-    value: userAgent,
-    configurable: true
+    writable: true,
   });
 };
 
-export const createPassThroughPropsTest = (Component: ComponentType<any>, props = {}) => {
+export const createPassThroughPropsTest = (
+  Component: ComponentType<any>,
+  props = {}
+) => {
   test('Pass Through HTML Standard Props', () => {
     render(
       <Component
@@ -35,13 +29,18 @@ export const createPassThroughPropsTest = (Component: ComponentType<any>, props 
 
     const element = screen.getByTestId('component-to-be-tested');
 
-    expect(element.classList.contains('thisClassIsUsedForTestingPurposesOnly')).toBeTruthy();
+    expect(
+      element.classList.contains('thisClassIsUsedForTestingPurposesOnly')
+    ).toBeTruthy();
     expect(element.style.pointerEvents).toEqual('none');
 
     expect(element.dataset.specialTestProp).toEqual('data-prop');
     expect(element.getAttribute('aria-labelledby')).toEqual('aria-prop');
     // special handling for ObjectPage Sections because of own ID handling...
-    if (Component.displayName !== 'ObjectPageSection' && Component.displayName !== 'ObjectPageSubSection') {
+    if (
+      Component.displayName !== 'ObjectPageSection' &&
+      Component.displayName !== 'ObjectPageSubSection'
+    ) {
       expect(element.id).toBe('element-id');
     }
     expect(element.hasAttribute('disabled-custom-prop')).toBeFalsy();

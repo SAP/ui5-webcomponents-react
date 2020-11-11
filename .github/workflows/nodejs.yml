@@ -1,6 +1,10 @@
 name: build
 
-on: [push, pull_request]
+on:  
+  push:
+  pull_request:
+    branches:
+      - master
 
 jobs:
   build:
@@ -10,22 +14,26 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x]
+        react-version: [16.8.0, 16.14.0, ^17.0.0]
 
     env:
       CI: true
 
     steps:
     - uses: actions/checkout@v2.3.1
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Use Node.js
       uses: actions/setup-node@v2.1.2
       with:
-        node-version: ${{ matrix.node-version }}
-    - name: install dependencies
-      run: yarn install
+        node-version: 14
+    - name: install dependencies - React ${{ matrix.react-version }}
+      run: |
+        node --experimental-json-modules scripts/ci/set-react-resolution.mjs ${{ matrix.react-version }}
+        yarn install
     - name: run tests
       run: yarn test --runInBand
     - name: Coveralls
+      # only collect coverage information on latest react version
+      if: matrix.react-version == '^17.0.0'
       uses: coverallsapp/github-action@v1.1.2
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
