@@ -44,6 +44,39 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <br />
 
+## ObjectStatus with default icons
+
+<Canvas>
+  <Story name="None" args={{ state: ValueState.None, children: `Value State: ${ValueState.None}` }}>
+    {(args) => {
+      return <ObjectStatus {...args} />;
+    }}
+  </Story>
+  <Story
+    name="Information"
+    args={{ state: ValueState.Information, children: `Value State: ${ValueState.Information}` }}
+  >
+    {(args) => {
+      return <ObjectStatus {...args} />;
+    }}
+  </Story>
+  <Story name="Success" args={{ state: ValueState.Success, children: `Value State: ${ValueState.Success}` }}>
+    {(args) => {
+      return <ObjectStatus {...args} />;
+    }}
+  </Story>
+  <Story name="Warning" args={{ state: ValueState.Warning, children: `Value State: ${ValueState.Warning}` }}>
+    {(args) => {
+      return <ObjectStatus {...args} />;
+    }}
+  </Story>
+  <Story name="Error" args={{ state: ValueState.Error, children: `Value State: ${ValueState.Error}` }}>
+    {(args) => {
+      return <ObjectStatus {...args} />;
+    }}
+  </Story>
+</Canvas>
+
 ## ObjectStatus with custom Icon
 
 <Canvas>
