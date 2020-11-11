@@ -6,7 +6,7 @@ export interface AnalyticalTableColumnDefinition {
   // base properties
   /**
    * This `string`/`function` is used to build the data model for your column. <br />
-   * __Note__: You can also specify deeply nested values with accessors like `info.hobby` or even `address[0].street
+   * __Note__: You can also specify deeply nested values with accessors like `info.hobby` or even `address[0].street`
    */
   accessor: string | ((row: any, rowIndex: number) => any);
   /**
