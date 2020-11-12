@@ -8,8 +8,17 @@ import { CommonProps } from '../../interfaces/CommonProps';
 import { EmptyIdPropException } from '../ObjectPage/EmptyIdPropException';
 
 export interface ObjectPageSubSectionPropTypes extends CommonProps {
+  /**
+   * Defines the title of the `ObjectPageSubSection`.
+   */
   title?: string;
+  /**
+   * Defines the ID of the `ObjectPageSubSection`.
+   */
   id: string;
+  /**
+   * Defines the content of the `ObjectPageSubSection`.
+   */
   children: ReactNode | ReactNodeArray;
 }
 
@@ -32,7 +41,10 @@ const styles = {
 };
 
 const useStyles = createComponentStyles(styles, { name: 'ObjectPageSubSection' });
-
+/**
+ * Second-level information container of an `ObjectPage`.
+ * __Note:__ This component should only be used inside an `ObjectPageSection` component.
+ */
 const ObjectPageSubSection: FC<ObjectPageSubSectionPropTypes> = forwardRef(
   (props: ObjectPageSubSectionPropTypes, ref: RefObject<any>) => {
     const { children, id, title, className, style, tooltip } = props;
