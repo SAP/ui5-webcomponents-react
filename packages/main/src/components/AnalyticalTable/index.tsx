@@ -282,12 +282,12 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     overscanCountHorizontal,
     scaleWidthMode,
     withRowHighlight,
-    highlightField = 'status',
+    highlightField,
     groupable,
     sortable,
     filterable,
     infiniteScroll,
-    infiniteScrollThreshold = 20,
+    infiniteScrollThreshold,
     onLoadMore,
     extension,
     columnOrder
@@ -623,6 +623,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
 
 AnalyticalTable.displayName = 'AnalyticalTable';
 AnalyticalTable.defaultProps = {
+  infiniteScrollThreshold: 20,
   loading: false,
   sortable: true,
   filterable: false,

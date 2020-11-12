@@ -82,18 +82,7 @@ const useStyles = createComponentStyles(styles, { name: 'Grid' });
  * A layout container component used for aligning items with various sizes in a simple grid.
  */
 const Grid: FC<GridPropTypes> = forwardRef((props: GridPropTypes, ref: Ref<HTMLDivElement>) => {
-  const {
-    position,
-    children,
-    hSpacing = '1rem',
-    vSpacing = '1rem',
-    style,
-    className,
-    tooltip,
-    slot,
-    defaultIndent = 'XL0 L0 M0 S0',
-    defaultSpan = 'XL3 L3 M6 S12'
-  } = props;
+  const { position, children, hSpacing, vSpacing, style, className, tooltip, slot, defaultIndent, defaultSpan } = props;
   const classes = useStyles();
   const currentRange = useViewportRange('StdExt');
   const gridClasses = StyleClassHelper.of(classes.grid);
@@ -146,5 +135,12 @@ const Grid: FC<GridPropTypes> = forwardRef((props: GridPropTypes, ref: Ref<HTMLD
 });
 
 Grid.displayName = 'Grid';
+
+Grid.defaultProps = {
+  hSpacing: '1rem',
+  vSpacing: '1rem',
+  defaultIndent: 'XL0 L0 M0 S0',
+  defaultSpan: 'XL3 L3 M6 S12'
+};
 
 export { Grid };

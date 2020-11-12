@@ -30,7 +30,7 @@ const TableRow: FC<RowProps> = ({ columns, y, row }: RowProps) => {
 
 type Props = { columns: any[]; rows: number; style: CSSProperties; rowHeight: number; tableWidth: number };
 export const TablePlaceholder: FC<Props> = (props: Props) => {
-  const { columns, rows = 5, style, rowHeight, tableWidth } = props;
+  const { columns, rows, style, rowHeight, tableWidth } = props;
 
   const height = rows * rowHeight;
 
@@ -56,4 +56,10 @@ export const TablePlaceholder: FC<Props> = (props: Props) => {
       ))}
     </ContentLoader>
   );
+};
+
+TablePlaceholder.displayName = 'TablePlaceholder';
+
+TablePlaceholder.defaultProps = {
+  rows: 5
 };
