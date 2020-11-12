@@ -42,7 +42,7 @@ const styles = {
 
 const useStyles = createComponentStyles(styles, { name: 'ObjectPageSubSection' });
 /**
- * Second-level information container of an `ObjectPage`.
+ * Second-level information container of an `ObjectPage`.<br />
  * __Note:__ This component should only be used inside an `ObjectPageSection` component.
  */
 const ObjectPageSubSection: FC<ObjectPageSubSectionPropTypes> = forwardRef(

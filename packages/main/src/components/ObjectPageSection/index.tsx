@@ -13,7 +13,7 @@ export interface ObjectPageSectionPropTypes extends CommonProps {
    */
   title?: string;
   /**
-   * Defines the ID of the `ObjectPageSection`.
+   * Defines the ID of the `ObjectPageSection`.<br />
    * __Note:__ The `id` is taken into account when the section selection changes.
    */
   id: string;

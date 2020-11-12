@@ -91,7 +91,7 @@ export interface ObjectPagePropTypes extends CommonProps {
     event: CustomEvent<{ selectedSectionIndex: number; selectedSectionId: string; section: ComponentType }>
   ) => void;
   /**
-   * Defines the breadcrumbs above the `ObjectPage` heading.
+   * Defines the breadcrumbs above the `ObjectPage` heading.<br />
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `Breadcrumbs` in order to preserve the intended design.
    */
   breadcrumbs?: ReactNode;
@@ -110,12 +110,13 @@ export interface ObjectPagePropTypes extends CommonProps {
    */
   showTitleInHeaderContent?: boolean;
   /**
-   * Defines whether the image should be displayed in a circle or in a square.
+   * Defines whether the image should be displayed in a circle or in a square.<br />
    * __Note:__ If the `image` is not a `string`, this prop has no effect.
    */
   imageShapeCircle?: boolean;
   /**
-   * Defines the `ObjectPage` mode.<br />
+   * Defines the `ObjectPage` mode.
+   *
    * - "Default": All `ObjectPageSections` and `ObjectPageSubSections` are displayed on one page. Selecting tabs will scroll to the corresponding section.
    * - "IconTabBar": All `ObjectPageSections` are displayed on separate pages. Selecting tabs will lead to the corresponding page.
    */
@@ -142,23 +143,21 @@ const useStyles = createComponentStyles(styles, { name: 'ObjectPage' });
  */
 const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDivElement>) => {
   const {
-    title = '',
-    image = null,
-    subTitle = '',
-    headerActions = [],
-    mode = ObjectPageMode.Default,
-    imageShapeCircle = false,
+    title,
+    image,
+    subTitle,
+    headerActions,
+    mode,
+    imageShapeCircle,
     className,
     style,
     tooltip,
     slot,
-    showHideHeaderButton = false,
+    showHideHeaderButton,
     children,
-    onSelectedSectionChanged = () => {
-      /* noop */
-    },
+    onSelectedSectionChanged,
     selectedSectionId,
-    noHeader = false,
+    noHeader,
     alwaysShowContentHeader,
     showTitleInHeaderContent,
     headerContentPinnable,
@@ -546,5 +545,19 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
 });
 
 ObjectPage.displayName = 'ObjectPage';
+
+ObjectPage.defaultProps = {
+  title: '',
+  image: null,
+  subTitle: '',
+  headerActions: [],
+  mode: ObjectPageMode.Default,
+  imageShapeCircle: false,
+  showHideHeaderButton: false,
+  onSelectedSectionChanged: () => {
+    /* noop */
+  },
+  noHeader: false
+};
 
 export { ObjectPage };
