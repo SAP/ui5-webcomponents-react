@@ -82,7 +82,9 @@ export interface FormPropTypes extends CommonProps {
 }
 
 const useStyles = createComponentStyles(styles, { name: 'Form' });
-
+/**
+ * The `Form` component arranges labels and fields into groups and rows. There are different ways to visualize forms for different screen sizes.
+ */
 const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLDivElement>) => {
   const {
     title,

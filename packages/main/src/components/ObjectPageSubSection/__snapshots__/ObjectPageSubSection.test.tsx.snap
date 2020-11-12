@@ -1,17 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ObjectPageSubSection Render without Crashing 1`] = `
-<div
-  class="ObjectPageSubSection-objectPageSubSection-0"
-  data-component-name="ObjectPageSubSection"
-  id="ObjectPageSubSection-test"
-  role="region"
->
+<DocumentFragment>
   <div
-    class="ObjectPageSubSection-objectPageSubSectionHeaderTitle-0"
-  />
-  <div
-    class="ObjectPageSubSection-subSectionContent-0"
-  />
-</div>
+    class="ObjectPageSubSection-objectPageSubSection"
+    data-component-name="ObjectPageSubSection"
+    id="ObjectPageSubSection-test"
+    role="region"
+  >
+    <div
+      class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+    />
+    <div
+      class="ObjectPageSubSection-subSectionContent"
+    />
+  </div>
+</DocumentFragment>
 `;

@@ -2,6 +2,7 @@ import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createC
 import { useI18nText } from '@ui5/webcomponents-react-base/lib/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
+import { deprecationNotice } from '@ui5/webcomponents-react-base/lib/Utils';
 import { PLEASE_WAIT } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { Size } from '@ui5/webcomponents-react/lib/Size';
 import React, { FC, forwardRef, RefObject, useEffect, useState } from 'react';
@@ -19,6 +20,10 @@ export interface SpinnerProps extends CommonProps {
 const useStyles = createComponentStyles(styles, { name: 'Spinner' });
 
 /**
+ * ### Deprecation Notice
+ *
+ * The Fiori 3 specification dropped the `Spinner` concept, so this component is deprecated and will be removed in the next release.<br />
+ * Please use the [BusyIndicator](https://sap.github.io/ui5-webcomponents-react/?path=/docs/ui5-web-components-busyindicator) instead.
  */
 const Spinner: FC<SpinnerProps> = forwardRef((props: SpinnerProps, ref: RefObject<HTMLDivElement>) => {
   const { className, size, tooltip, slot, style, delay } = props;
@@ -33,6 +38,10 @@ const Spinner: FC<SpinnerProps> = forwardRef((props: SpinnerProps, ref: RefObjec
   spinnerClasses.put(classes[`spinner${size}`]);
 
   useEffect(() => {
+    deprecationNotice(
+      'Spinner',
+      "'@ui5/webcomponents-react/lib/Spinner' is deprecated and will be removed in the next major release.\nPlease use '@ui5/webcomponents-react/lib/BusyIndicator' instead."
+    );
     let timeout;
     if (delay > 0) {
       timeout = setTimeout(() => {

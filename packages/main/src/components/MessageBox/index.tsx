@@ -73,7 +73,7 @@ export interface MessageBoxPropTypes extends CommonProps {
   /**
    * Defines the content of the `MessageBox`.
    *
-   * **Note: Although this prop accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.**
+   * **Note:** Although this prop accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
   children: ReactNode | ReactNodeArray;
   /**
@@ -89,15 +89,20 @@ export interface MessageBoxPropTypes extends CommonProps {
    */
   type?: MessageBoxTypes;
   /**
-   * Callback to be executed when the `MessageBox` is closed. `event.detail.action` contains the pressed action button.
+   * Callback to be executed when the `MessageBox` is closed (either by pressing on one of the `actions` or by pressing the `ESC` key). `event.detail.action` contains the pressed action button.
    */
   onClose: (event: CustomEvent<{ action: MessageBoxActions }>) => void;
 }
 
 const useStyles = createComponentStyles(styles, { name: 'MessageBox' });
 
+/**
+ * The `MessageBox` component provides easier methods to create a `Dialog`, such as standard alerts, confirmation dialogs, or arbitrary message dialogs.
+ * For convenience, it also provides an `open` prop, so it is not necessary to attach a `ref` to open the `MessageBox`.
+ */
 const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDomRef>) => {
   const { open, type, children, className, style, tooltip, slot, title, icon, actions, onClose } = props;
+  const dialogRef = useConsolidatedRef<Ui5DialogDomRef>(ref);
 
   const classes = useStyles();
 
@@ -191,8 +196,6 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
     },
     [onClose]
   );
-
-  const dialogRef = useConsolidatedRef<Ui5DialogDomRef>(ref);
 
   useEffect(() => {
     if (dialogRef.current) {

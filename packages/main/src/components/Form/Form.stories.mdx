@@ -34,6 +34,9 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   <Story name="Default">
     {(args) => (
       <Form {...args} title={args.title}>
+        <FormItem label={'Sole Form Item'}>
+          <Input type={InputType.Text} />
+        </FormItem>
         <FormGroup title={'Personal Data'}>
           <FormItem label={'Name'}>
             <Input type={InputType.Text} />
@@ -52,9 +55,6 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
             <CheckBox checked />
           </FormItem>
         </FormGroup>
-        <FormItem label={'Sole Form Item'}>
-          <Input type={InputType.Text} />
-        </FormItem>
         <FormGroup title={'Company Data'}>
           <FormItem label={'Company Name'}>
             <Input type={InputType.Text} />
@@ -91,9 +91,9 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   </Story>
 </Canvas>
 
+<ArgsTable story="." />
+
 ### Usage Notes
 
 Please note that the `FormGroup` and `FormItem` components are only used for calculating the final layout of the `Form`,
-thus they don't accept any other props then the specified ones, especially no `className`, `style` or `ref`.
-
-<ArgsTable story="." />
+thus they don't accept any other props than the specified ones, especially no `className`, `style` or `ref`.

@@ -70,7 +70,9 @@ const renderLabel = (
 
   return null;
 };
-
+/**
+ * The `FormItem` is only used for calculating the final layout of the `Form`, thus it doesn't accept any other props than `label` and `children`, especially no `className`, `style` or `ref`.
+ */
 const FormItem: FC<FormItemProps> = (props: FormItemProps) => {
   const { label, children, columnIndex, rowIndex, labelSpan } = props as InternalProps;
 

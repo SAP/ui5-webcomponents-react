@@ -23,17 +23,23 @@ export const useI18nText = (bundleName: string, ...texts: (TextWithDefault | Tex
   const [translations, setTranslations] = useState(resolveTranslations(i18nBundle, texts));
 
   useEffect(() => {
+    let didCancel = false;
     const fetchAndLoadBundle = async () => {
       await fetchI18nBundle(bundleName);
-      setTranslations((prev) => {
-        const next = resolveTranslations(i18nBundle, texts);
-        if (prev.length === next.length && prev.every((translation, index) => next[index] === translation)) {
-          return prev;
-        }
-        return next;
-      });
+      if (!didCancel) {
+        setTranslations((prev) => {
+          const next = resolveTranslations(i18nBundle, texts);
+          if (prev.length === next.length && prev.every((translation, index) => next[index] === translation)) {
+            return prev;
+          }
+          return next;
+        });
+      }
     };
     fetchAndLoadBundle();
+    return () => {
+      didCancel = true;
+    };
   }, [fetchI18nBundle, bundleName, texts]);
 
   return translations;

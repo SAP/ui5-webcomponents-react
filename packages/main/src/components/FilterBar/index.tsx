@@ -41,38 +41,129 @@ import { FilterDialog } from './FilterDialog';
 import { filterValue, renderSearchWithValue } from './utils';
 
 export interface FilterBarPropTypes extends CommonProps {
+  /**
+   * Defines the filters of the `FilterBar`.<br />
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `FilterGroupItems` in order to preserve the intended design.
+   */
   children: ReactNode | ReactNodeArray;
+  /**
+   * Defines the search field next to the variants of the `FilterBar`.
+   */
   search?: ReactElement<InputPropTypes>;
+  /**
+   * Defines the variants of the `FilterBar`.<br />
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `VariantManagement` in order to preserve the intended design.
+   */
   variants?: ReactNode;
+  /**
+   * Defines whether the button toolbar is displayed.
+   */
   useToolbar?: boolean;
+  /**
+   * Defines whether the `FilterBar` is expanded.
+   */
   filterBarExpanded?: boolean;
+  /**
+   * Defines the width of the `FilterGroupItems`.
+   */
   filterContainerWidth?: CSSProperties['width'];
+  /**
+   * Defines whether the `groupName` of the `FilterGroupItems` is displayed.
+   */
   considerGroupName?: boolean;
+  /**
+   * Defines whether the "Clear" button is displayed in the `FilterBar`.
+   */
   showClearOnFB?: boolean;
+  /**
+   * Defines whether the "Go" button is displayed in the `FilterBar`.
+   */
   showGoOnFB?: boolean;
+  /**
+   * Defines whether the "Filter" button is displayed in the `FilterBar`.<br />
+   * __Note:__ Clicking on the button will open the filter configuration dialog, where you can add/remove filters to the `FilterBar`.
+   */
   showFilterConfiguration?: boolean;
+  /**
+   * Defines whether the "Clear" button is displayed in the filter configuration dialog.
+   */
   showClearButton?: boolean;
+  /**
+   * Defines whether the "Restore" button is displayed in the filter configuration dialog.
+   */
   showRestoreButton?: boolean;
+  /**
+   * Defines whether the "Go" button is displayed in the filter configuration dialog.
+   */
   showGo?: boolean;
+  /**
+   * Defines the number of active filters displayed in the "Filter" button.<br />
+   * __Note__: If `showFilterConfiguration` is `false` this prop has no effect.
+   */
   activeFiltersCount?: number | string;
+  /**
+   * Indicates whether a loading indicator should be shown in the `FilterBar`.
+   */
   loading?: boolean;
+  /**
+   * Defines whether a search field for filters is displayed in the filter configuration dialog.
+   */
   showSearchOnFiltersDialog?: boolean;
+  /**
+   * Defines whether the "Restore" button is displayed in the `FilterBar`.
+   */
   showRestoreOnFB?: boolean;
+  /**
+   * The event is fired when the `FilterBar` is collapsed/expanded.
+   */
   onToggleFilters?: (event: CustomEvent<{ visible?: boolean }>) => void;
+  /**
+   * The event is fired when the "Save" button of the filter configuration dialog is clicked.
+   */
   onFiltersDialogSave?: (event: CustomEvent<{ elements?: unknown; toggledElements?: unknown }>) => void;
+  /**
+   * The event is fired when the "Clear" button of the filter configuration dialog is clicked.
+   */
   onFiltersDialogClear?: (event: CustomEvent) => void;
+  /**
+   * The event is fired when the "Cancel" button of the filter configuration dialog is clicked.
+   */
   onFiltersDialogCancel?: (event: CustomEvent) => void;
+  /**
+   * The event is fired when the filter configuration dialog is opened.
+   */
   onFiltersDialogOpen?: (event: CustomEvent) => void;
+  /**
+   * The event is fired when the filter configuration dialog is closed.
+   */
   onFiltersDialogClose?: (event: CustomEvent) => void;
+  /**
+   * The event is fired when a filter is selected/unselected in the filter configuration dialog.
+   */
   onFiltersDialogSelectionChange?: (event: CustomEvent<{ element?: unknown; checked?: unknown }>) => void;
+  /**
+   * The event is fired on input in the filter configuration dialog search field.
+   */
   onFiltersDialogSearch?: (event: CustomEvent<{ value?: unknown }>) => void;
+  /**
+   * The event is fired when the "Clear" button is clicked.
+   */
   onClear?: (event: CustomEvent) => void;
+  /**
+   * The event is fired when the "Go" button is clicked.
+   */
   onGo?: (event: CustomEvent) => void;
+  /**
+   * The event is fired when the "Restore" button is clicked.
+   */
   onRestore?: (event: CustomEvent<{ source?: unknown }>) => void;
 }
 
 const useStyles = createComponentStyles(styles, { name: 'FilterBar' });
-
+/**
+ * The `FilterBar` displays filters in a user-friendly manner to populate values for a query. It consists of a row containing the `VariantManagement`, the related buttons, and an area underneath displaying the filters. The filters are arranged in a logical row that is divided depending on the space available and the width of the filters. The area containing the filters can be hidden or shown using the "Hide FilterBar / Show FilterBar" button, the "Filters" button shows the filter dialog.
+ In this dialog, the consumer has full control over the FilterBar. The filters in this dialog are displayed in one column and organized in groups. Each filter can be marked as visible in the FilterBar by selecting "Add to FilterBar".
+ */
 const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivElement>) => {
   const {
     children,

@@ -2,7 +2,7 @@ import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createC
 import { useConsolidatedRef, useI18nText } from '@ui5/webcomponents-react-base/lib/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
+import { deprecationNotice, enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { SHOW_MORE } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { ToolbarDesign } from '@ui5/webcomponents-react/lib/ToolbarDesign';
@@ -30,7 +30,7 @@ import { styles } from './Toolbar.jss';
 
 const useStyles = createComponentStyles(styles, { name: 'Toolbar' });
 
-export interface ToolbarProptypes extends CommonProps {
+export interface ToolbarProptypes extends Omit<CommonProps, 'onClick'> {
   /**
    * Defines the content of the `Toolbar`.
    */
@@ -50,9 +50,15 @@ export interface ToolbarProptypes extends CommonProps {
    */
   active?: boolean;
   /**
+   * __`onToolbarClick` is deprecated and will be removed in the next major release. Please use `onClick` instead.__
+   *
    * Fired when the user clicks on the `Toolbar`, if the `active` prop is set to "true".
    */
   onToolbarClick?: (event: CustomEvent) => void;
+  /**
+   * Fired when the user clicks on the `Toolbar`, if the `active` prop is set to "true".
+   */
+  onClick?: (event: CustomEvent) => void;
 }
 /**
  * Horizontal container most commonly used to display buttons, labels, selects and various other input controls.
@@ -61,13 +67,13 @@ export interface ToolbarProptypes extends CommonProps {
  * It can be accessed by the user through the overflow button that opens it in a popover.
  */
 const Toolbar: FC<ToolbarProptypes> = forwardRef((props: ToolbarProptypes, ref: Ref<HTMLDivElement>) => {
-  const { children, toolbarStyle, design, active, style, tooltip, className, onToolbarClick, slot } = props;
+  const { children, toolbarStyle, design, active, style, tooltip, className, onToolbarClick, onClick, slot } = props;
   const classes = useStyles(styles);
   const outerContainer: RefObject<HTMLDivElement> = useConsolidatedRef(ref);
   const controlMetaData = useRef([]);
   const [lastVisibleIndex, setLastVisibleIndex] = useState<number>(null);
 
-  const passThroughProps = usePassThroughHtmlProps(props, ['onToolbarClick']);
+  const passThroughProps = usePassThroughHtmlProps(props, ['onToolbarClick', 'onClick']);
 
   const [showMoreText] = useI18nText('@ui5/webcomponents-react', SHOW_MORE);
 
@@ -188,13 +194,25 @@ const Toolbar: FC<ToolbarProptypes> = forwardRef((props: ToolbarProptypes, ref: 
     calculateVisibleItems();
   }, [calculateVisibleItems]);
 
-  const onClick = useCallback(
+  useEffect(() => {
+    if (onToolbarClick) {
+      deprecationNotice(
+        'onToolbarClick',
+        "'onToolbarClick' is deprecated and will be removed in the next major release.\nPlease use 'onClick' instead."
+      );
+    }
+  }, [onToolbarClick]);
+
+  const handleToolbarClick = useCallback(
     (e) => {
       if (active && typeof onToolbarClick === 'function') {
         onToolbarClick(enrichEventWithDetails(e));
       }
+      if (active && typeof onClick === 'function') {
+        onClick(enrichEventWithDetails(e));
+      }
     },
-    [onToolbarClick, active]
+    [onToolbarClick, onClick, active]
   );
 
   return (
@@ -203,8 +221,8 @@ const Toolbar: FC<ToolbarProptypes> = forwardRef((props: ToolbarProptypes, ref: 
       style={style}
       className={toolbarClasses.className}
       ref={outerContainer}
-      onClick={onClick}
       slot={slot}
+      onClick={handleToolbarClick}
       {...passThroughProps}
     >
       <div className={classes.toolbar}>
