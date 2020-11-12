@@ -2,7 +2,7 @@ import { getRTL } from '@ui5/webcomponents-base/dist/config/RTL';
 import React, { useState } from 'react';
 
 const useIsRTL = (elementRef?: React.ElementRef<any>) => {
-  const [isRTL, setRTL] = useState(false);
+  const [isRTL, setRTL] = useState(getRTL());
   const targets = [document.documentElement, document.body];
   const config = { attributes: true, childList: true, characterData: true };
   const observer = new MutationObserver((mutations) => {

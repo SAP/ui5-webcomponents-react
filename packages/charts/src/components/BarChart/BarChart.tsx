@@ -172,6 +172,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
   const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
   const [xAxisHeight] = useObserveXAxisHeights(chartRef, 1);
   const passThroughProps = usePassThroughHtmlProps(props);
+  const isRTL = useIsRTL();
 
   return (
     <ChartContainer
@@ -207,7 +208,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
             tickLine={tickLineConfig}
             tickFormatter={primaryMeasure?.formatter}
             height={xAxisHeight}
-            reversed={useIsRTL()}
+            reversed={isRTL}
           />
         )}
         {chartConfig.yAxisVisible &&
@@ -224,7 +225,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
                 yAxisId={index}
                 width={width[index]}
                 allowDuplicatedCategory={index === 0}
-                orientation={useIsRTL() ? 'right' : 'left'}
+                orientation={isRTL ? 'right' : 'left'}
               />
             );
           })}

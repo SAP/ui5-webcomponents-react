@@ -215,6 +215,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
   }, [layout, measures]);
 
   const passThroughProps = usePassThroughHtmlProps(props);
+  const isRTL = useIsRTL();
 
   return (
     <ChartContainer
@@ -258,14 +259,14 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               axisProps.yAxisId = index;
               axisProps.width = yAxisWidth;
               AxisComponent = YAxis;
-              axisProps.orientation = useIsRTL() ? 'right' : 'left';
+              axisProps.orientation = isRTL ? 'right' : 'left';
             } else {
               axisProps.dataKey = dimension.accessor;
               axisProps.tick = <XAxisTicks config={dimension} />;
               axisProps.xAxisId = index;
               axisProps.height = xAxisHeights[index];
               AxisComponent = XAxis;
-              axisProps.reversed = useIsRTL();
+              axisProps.reversed = isRTL;
             }
 
             return <AxisComponent key={dimension.accessor} {...axisProps} />;
@@ -275,14 +276,14 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
             {...measureAxisProps}
             yAxisId="primary"
             width={yAxisWidth}
-            orientation={useIsRTL() ? 'right' : 'left'}
+            orientation={isRTL ? 'right' : 'left'}
             tick={<YAxisTicks config={primaryMeasure} />}
           />
         )}
         {layout === 'vertical' && (
           <XAxis
             {...measureAxisProps}
-            reversed={useIsRTL()}
+            reversed={isRTL}
             xAxisId="primary"
             type="number"
             tick={<XAxisTicks config={primaryMeasure} />}
@@ -310,7 +311,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               angle: +90,
               position: 'center'
             }}
-            orientation={useIsRTL() ? 'left' : 'right'}
+            orientation={isRTL ? 'left' : 'right'}
             interval={0}
             yAxisId="secondary"
           />

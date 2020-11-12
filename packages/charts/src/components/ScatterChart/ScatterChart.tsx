@@ -180,8 +180,8 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
   const [yAxisWidth, legendPosition] = useLongestYAxisLabel(dataset?.[0].data, [yMeasure]);
   const xAxisHeights = useObserveXAxisHeights(chartRef, 1);
   const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
-
   const passThroughProps = usePassThroughHtmlProps(props);
+  const isRTL = useIsRTL();
 
   return (
     <ChartContainer
@@ -227,7 +227,7 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
           // @ts-ignore
           label={
             yMeasure?.label
-              ? { value: yMeasure?.label, angle: -90, position: useIsRTL() ? 'insideRight' : 'insideLeft' }
+              ? { value: yMeasure?.label, angle: -90, position: isRTL ? 'insideRight' : 'insideLeft' }
               : false
           }
           type={'number'}
@@ -241,7 +241,7 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
           tick={<YAxisTicks config={yMeasure} />}
           width={yMeasure?.label ? yAxisWidth + 10 : yAxisWidth}
           margin={yMeasure?.label ? { left: 200 } : 0}
-          orientation={useIsRTL() === true ? 'right' : 'left'}
+          orientation={isRTL === true ? 'right' : 'left'}
         />
         <ZAxis name={zMeasure?.label} dataKey={zMeasure?.accessor} range={[0, 5000]} key={zMeasure?.accessor} />
         {dataset?.map((dataSet, index) => {

@@ -159,6 +159,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
   const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
   const xAxisHeights = useObserveXAxisHeights(chartRef, props.dimensions.length);
   const passThroughProps = usePassThroughHtmlProps(props);
+  const isRTL = useIsRTL();
 
   return (
     <ChartContainer
@@ -198,12 +199,12 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
                 height={xAxisHeights[index]}
                 padding={xAxisPadding}
                 allowDuplicatedCategory={index === 0}
-                reversed={useIsRTL()}
+                reversed={isRTL}
               />
             );
           })}
         <YAxis
-          orientation={useIsRTL() === true ? 'right' : 'left'}
+          orientation={isRTL === true ? 'right' : 'left'}
           axisLine={chartConfig.yAxisVisible}
           tickLine={tickLineConfig}
           yAxisId="left"
@@ -225,7 +226,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             label={{ value: chartConfig.secondYAxis.name, offset: 2, angle: +90, position: 'center' }}
-            orientation={useIsRTL() === true ? 'left' : 'right'}
+            orientation={isRTL === true ? 'left' : 'right'}
             yAxisId="right"
             interval={0}
           />
