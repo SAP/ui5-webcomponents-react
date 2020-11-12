@@ -1,14 +1,11 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { useGet } from '../../../hooks/useRequest';
+import { useTodo } from '../../../hooks/services/useTodos';
 
+import { Spinner } from '@ui5/webcomponents-react/lib/Spinner';
 import NavBack from '../../../components/NavBack/NavBack';
 import CenteredContent from '../../../components/Layout/CenteredContent';
 import TodoEditForm from './TodoEditForm';
-import { Spinner } from '@ui5/webcomponents-react/lib/Spinner';
-
-import Constants from '../../../util/Constants';
-import { getUrl } from '../../../util/api/url/APIProvider';
 
 const onSubmitEditForm = (values, actions) => {
   actions.setSubmitting(true);
@@ -18,7 +15,7 @@ const onSubmitEditForm = (values, actions) => {
 };
 
 const TodoEdit = ({ match }) => {
-  const { data, isLoading, isSuccess } = useGet(Constants.REACT_QUERY.KEYS.GET_TODO_BY_ID, getUrl('GET_TODO_BY_ID', [{ value: match.params.id }]));
+  const { data, isLoading, isSuccess } = useTodo(match);
 
   return (
     <>
