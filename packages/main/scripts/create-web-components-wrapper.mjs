@@ -413,7 +413,7 @@ const createWebComponentWrapper = (
   }
   let componentDescription;
   try {
-    componentDescription = turndownService.turndown(description)
+    componentDescription = turndownService.turndown(description).replace(/\n/g, '\n * ')
   } catch (e) {
     console.warn(
       `----------------------\nHeader description of ${name} couldn't be generated. \nThere is probably a syntax error in the associated description that can't be fixed automatically.\n----------------------`
@@ -706,10 +706,10 @@ resolvedWebComponents.forEach((componentSpec) => {
         if (!componentSpec.tagname) {
           return property.description || '';
         }
-        let formattedDescription = (property.description || '')
-          .replace(/\n\n<br><br> /g, '<br/><br/>\n  *\n  * ')
-          .replace(/\n\n/g, '<br/><br/>\n  *\n  * ')
-          .replace(new RegExp(componentSpec.tagname, 'g'), `${componentSpec.module}`);
+        let formattedDescription = turndownService.turndown((property.description || '').trim())
+          .replace(new RegExp(componentSpec.tagname, 'g'), `${componentSpec.module}`)
+            .replace(/\n/g, '\n   * ');
+
 
         const customDescriptionReplace = CUSTOM_DESCRIPTION_REPLACE[componentSpec.module];
         if (customDescriptionReplace && customDescriptionReplace[property.name]) {
