@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WizardStep Basic Test (generated) 1`] = `
+<DocumentFragment>
+  <ui5-wizard-step
+    ui5-wizard-step=""
+  />
+</DocumentFragment>
+`;
