@@ -13,7 +13,7 @@ export const DocsHeader = () => {
       contentSelector: '.sbdocs-wrapper',
       headingSelector: 'h1.sbdocs-title, h1.sbdocs-h1, h2.sbdocs-h2, h3.sbdocs-h3, h4.sbdocs-h4',
       orderedList: false,
-      collapseDepth: 5,
+      collapseDepth: 6,
       hasInnerContainers: true
     });
     document.querySelectorAll('.toc-link').forEach((x) => x.setAttribute('target', '_self'));

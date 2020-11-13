@@ -11,6 +11,15 @@ const styles = {
       display: 'none'
     }
   },
+  fixedContainer: {
+    '@media(min-width:1330px)': {
+      width: '200px',
+      position: 'fixed',
+      top: 75,
+      right: 6,
+      overflow: 'hidden'
+    }
+  },
   toc: {
     fontFamily: ThemingParameters.sapFontFamily,
     fontSize: ThemingParameters.sapFontSize,
@@ -42,11 +51,6 @@ const styles = {
       }
     },
     '@media(min-width:1330px)': {
-      overflow: 'hidden',
-      width: '200px',
-      position: 'fixed',
-      top: 75,
-      right: 6,
       '& > .toc-list': {
         paddingLeft: '10px'
       },
@@ -71,7 +75,9 @@ export const TableOfContent = () => {
   return (
     <>
       <h3 className={classes.header}>Contents</h3>
-      <div className={`js-toc ${classes.toc}`} />
+      <div className={classes.fixedContainer}>
+        <div className={`js-toc ${classes.toc}`} />
+      </div>
     </>
   );
 };
