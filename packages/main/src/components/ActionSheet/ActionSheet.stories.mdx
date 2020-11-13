@@ -7,6 +7,7 @@ import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/lib/PopoverHori
 import { PopoverVerticalAlign } from '@ui5/webcomponents-react/lib/PopoverVerticalAlign';
 import { useCallback, useRef } from 'react';
 import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="Components / ActionSheet"
@@ -26,9 +27,7 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
     header: {
       type: null
     },
-    ref: {
-      type: null
-    }
+    ...DocsCommonProps
   }}
   args={{
     horizontalAlign: PopoverHorizontalAlign.Center,
