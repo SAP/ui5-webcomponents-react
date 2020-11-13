@@ -49,7 +49,7 @@ export interface TimePickerPropTypes extends Omit<WithWebComponentPropTypes, 'on
 }
 
 /**
- *  The <code>TimePicker</code> component provides an input field with assigned sliders which opens on user action. The <code>TimePicker</code> allows users to select a localized time using touch, mouse, or keyboard input. It consists of two parts: the time input field and the sliders.
+ * The `TimePicker` component provides an input field with assigned sliders which opens on user action. The `TimePicker` allows users to select a localized time using touch, mouse, or keyboard input. It consists of two parts: the time input field and the sliders.
  *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/TimePicker" target="_blank">UI5 Web Components Playground</a>
  */

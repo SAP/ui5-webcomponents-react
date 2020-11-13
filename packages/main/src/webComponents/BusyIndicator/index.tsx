@@ -23,7 +23,7 @@ export interface BusyIndicatorPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- *  The <code>BusyIndicator</code> signals that some operation is going on and that the user must wait. It does not block the current UI screen so other operations could be triggered in parallel.
+ * The `BusyIndicator` signals that some operation is going on and that the user must wait. It does not block the current UI screen so other operations could be triggered in parallel.
  *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/BusyIndicator" target="_blank">UI5 Web Components Playground</a>
  */

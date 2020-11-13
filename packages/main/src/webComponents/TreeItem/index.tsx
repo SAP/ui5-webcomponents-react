@@ -30,7 +30,7 @@ export interface TreeItemPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- *  This is the item to use inside a <code>Tree</code>. You can represent an arbitrary tree structure by recursively nesting tree items.
+ * This is the item to use inside a `Tree`. You can represent an arbitrary tree structure by recursively nesting tree items.
  *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/TreeItem" target="_blank">UI5 Web Components Playground</a>
  */

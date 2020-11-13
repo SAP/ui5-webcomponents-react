@@ -73,7 +73,7 @@ export interface ResponsivePopoverPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- *  The <code>ResponsivePopover</code> acts as a Popover on desktop and tablet, while on phone it acts as a Dialog. The component improves tremendously the user experience on mobile.
+ * The `ResponsivePopover` acts as a Popover on desktop and tablet, while on phone it acts as a Dialog. The component improves tremendously the user experience on mobile.
  *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/ResponsivePopover" target="_blank">UI5 Web Components Playground</a>
  */

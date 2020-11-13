@@ -19,7 +19,7 @@ export interface ToastPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- *  The <code>Toast</code> is a small, non-disruptive popup for success or information messages that disappears automatically after a few seconds.
+ * The `Toast` is a small, non-disruptive popup for success or information messages that disappears automatically after a few seconds.
  *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Toast" target="_blank">UI5 Web Components Playground</a>
  */

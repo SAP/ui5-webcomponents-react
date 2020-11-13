@@ -43,7 +43,7 @@ export interface TabPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * The <code>Tab</code> represents a selectable item inside a <code>Tabcontainer</code>. It defines both the item in the tab strip (top part of the <code>Tabcontainer</code>) and the content that is presented to the user once the tab is selected
+ * The `Tab` represents a selectable item inside a `Tabcontainer`. It defines both the item in the tab strip (top part of the `Tabcontainer`) and the content that is presented to the user once the tab is selected
  *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Tab" target="_blank">UI5 Web Components Playground</a>
  */

@@ -23,7 +23,7 @@ export interface CustomListItemPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * A component to be used as custom list item within the <code>List</code> the same way as the standard <code>StandardListItem</code>. The <code>CustomListItem</code> accepts arbitrary HTML content to allow full customization
+ * A component to be used as custom list item within the `List` the same way as the standard `StandardListItem`. The `CustomListItem` accepts arbitrary HTML content to allow full customization
  *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/CustomListItem" target="_blank">UI5 Web Components Playground</a>
  */

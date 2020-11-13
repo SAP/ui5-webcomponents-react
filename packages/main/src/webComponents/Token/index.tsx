@@ -26,7 +26,7 @@ export interface TokenPropTypes extends Omit<WithWebComponentPropTypes, 'onSelec
 }
 
 /**
- *  Tokens are small items of information (similar to tags) that mainly serve to visualize previously selected items.
+ * Tokens are small items of information (similar to tags) that mainly serve to visualize previously selected items.
  *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Token" target="_blank">UI5 Web Components Playground</a>
  */

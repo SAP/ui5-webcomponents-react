@@ -78,7 +78,7 @@ export interface DateTimePickerPropTypes extends Omit<WithWebComponentPropTypes,
 }
 
 /**
- *  The <code>DateTimePicker</code> component alows users to select both date (day, month and year) and time (hours, minutes and seconds) and for the purpose it consists of input field and Date/Time picker.
+ * The `DateTimePicker` component alows users to select both date (day, month and year) and time (hours, minutes and seconds) and for the purpose it consists of input field and Date/Time picker.
  *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/DateTimePicker" target="_blank">UI5 Web Components Playground</a>
  */

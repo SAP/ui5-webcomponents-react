@@ -1,5 +1,5 @@
-import '@ui5/webcomponents-fiori/dist/ShellBar';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
+import '@ui5/webcomponents-fiori/dist/ShellBar';
 import { FC, ReactNode } from 'react';
 
 export interface ShellBarPropTypes extends WithWebComponentPropTypes {
@@ -78,7 +78,7 @@ export interface ShellBarPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- *  The <code>ShellBar</code> is meant to serve as an application header and includes numerous built-in features, such as: logo, profile image/icon, title, search field, notifications and so on. <br><br>
+ * The `ShellBar` is meant to serve as an application header and includes numerous built-in features, such as: logo, profile image/icon, title, search field, notifications and so on.
  *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/ShellBar" target="_blank">UI5 Web Components Playground</a>
  */

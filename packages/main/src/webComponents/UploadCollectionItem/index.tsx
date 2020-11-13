@@ -1,6 +1,6 @@
-import '@ui5/webcomponents-fiori/dist/UploadCollectionItem';
 import { UploadState } from '@ui5/webcomponents-react/lib/UploadState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
+import '@ui5/webcomponents-fiori/dist/UploadCollectionItem';
 import { FC, ReactNode } from 'react';
 
 export interface UploadCollectionItemPropTypes extends WithWebComponentPropTypes {
@@ -63,7 +63,7 @@ export interface UploadCollectionItemPropTypes extends WithWebComponentPropTypes
 }
 
 /**
- *  A component to be used within the <code>UploadCollection</code>.
+ * A component to be used within the `UploadCollection`.
  *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/UploadCollectionItem" target="_blank">UI5 Web Components Playground</a>
  */

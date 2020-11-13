@@ -58,7 +58,7 @@ export interface DurationPickerPropTypes extends Omit<WithWebComponentPropTypes,
 }
 
 /**
- *  The <code>DurationPicker</code> component provides an input field with assigned sliders which opens on user action. The <code>DurationPicker</code> allows users to select a time duration. It consists of two parts: the time input field and the sliders.
+ * The `DurationPicker` component provides an input field with assigned sliders which opens on user action. The `DurationPicker` allows users to select a time duration. It consists of two parts: the time input field and the sliders.
  *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/DurationPicker" target="_blank">UI5 Web Components Playground</a>
  */

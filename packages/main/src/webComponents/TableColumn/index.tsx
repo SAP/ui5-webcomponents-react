@@ -22,7 +22,7 @@ export interface TableColumnPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- *  The <code>TableColumn</code> component allows to define column specific properties that are applied when rendering the <code>Table</code> component
+ * The `TableColumn` component allows to define column specific properties that are applied when rendering the `Table` component
  *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/TableColumn" target="_blank">UI5 Web Components Playground</a>
  */

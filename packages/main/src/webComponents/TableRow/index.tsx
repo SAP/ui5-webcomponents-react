@@ -10,7 +10,7 @@ export interface TableRowPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- *  The <code>TableRow</code> component represents a row in the <code>Table</code>
+ * The `TableRow` component represents a row in the `Table`
  *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/TableRow" target="_blank">UI5 Web Components Playground</a>
  */

@@ -45,7 +45,7 @@ export interface SelectPropTypes extends Omit<WithWebComponentPropTypes, 'onChan
 }
 
 /**
- *  The <code>Select</code> component is used to create a drop-down list. The items inside the <code>Select</code> define the available options by using the <code>Option</code> component.
+ * The `Select` component is used to create a drop-down list. The items inside the `Select` define the available options by using the `Option` component.
  *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Select" target="_blank">UI5 Web Components Playground</a>
  */

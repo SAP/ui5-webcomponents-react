@@ -36,7 +36,7 @@ export interface TimelineItemPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- *  An entry posted on the timeline
+ * An entry posted on the timeline
  *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/TimelineItem" target="_blank">UI5 Web Components Playground</a>
  */

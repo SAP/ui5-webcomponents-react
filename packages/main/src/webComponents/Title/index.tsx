@@ -19,7 +19,7 @@ export interface TitlePropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- *  The <code>Title</code> component is used to display titles inside a page. It is a simple, large-sized text with explicit header/title semantics.
+ * The `Title` component is used to display titles inside a page. It is a simple, large-sized text with explicit header/title semantics.
  *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Title" target="_blank">UI5 Web Components Playground</a>
  */
