@@ -7,6 +7,12 @@ import prettierConfigRaw from '../../../prettier.config.cjs';
 import path from 'path';
 import PATHS from '../../../config/paths.js';
 import fs from 'fs';
+import TurndownService from 'turndown';
+
+const turndownService = new TurndownService({
+  headingStyle: 'atx',
+  codeBlockStyle: 'fenced'
+});
 
 //TODO:
 console.warn(
@@ -407,13 +413,7 @@ const createWebComponentWrapper = (
   }
   let componentDescription;
   try {
-    // componentDescription = prettier
-    //   .format(description, {
-    //     ...prettierConfigRaw,
-    //     parser: 'html'
-    //   })
-    //   .replace(/\s\s+/g, ' ');
-    componentDescription = description.replace(/\s\s+/g, ' ');
+    componentDescription = turndownService.turndown(description)
   } catch (e) {
     console.warn(
       `----------------------\nHeader description of ${name} couldn't be generated. \nThere is probably a syntax error in the associated description that can't be fixed automatically.\n----------------------`
@@ -421,14 +421,22 @@ const createWebComponentWrapper = (
     componentDescription = '';
   }
 
-  componentDescription = componentDescription.replace(/\n$/g, '<br />')
+  const regularImports = importStatements.filter((imp) => !imp.includes("from 'react'")).sort((a,b) => {
+    const importNameA = /import \{ (\w+) \}/.exec(a)[1];
+    const importNameB = /import \{ (\w+) \}/.exec(b)[1];
+    return importNameA.localeCompare(importNameB);
+  });
+  const reactImports = [ 'FC', ...importStatements.filter((imp) => imp.includes("from 'react'")).map(imp => {
+    const match = /import \{ (\w+) \}/.exec(imp);
+    return match[1]
+  })].sort((a,b) => a.localeCompare(b));
 
   return prettier.format(
     `
+    ${regularImports.join('\n')}
     import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
     import '@ui5/webcomponents${componentsFromFioriPackage.has(name) ? '-fiori' : ''}/dist/${name}';
-    import { FC } from 'react';
-    ${importStatements.join('\n')}
+    import { ${reactImports.join(', ')} } from 'react';
 
     export interface ${name}PropTypes extends ${tsExtendsStatement} {
       ${types.join('\n')}
