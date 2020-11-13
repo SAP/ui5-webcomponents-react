@@ -4260,52 +4260,52 @@
     "@typescript-eslint/types" "4.7.0"
     eslint-visitor-keys "^2.0.0"
 
-"@ui5/webcomponents-base@0.24.0":
-  version "0.24.0"
-  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-base/-/webcomponents-base-0.24.0.tgz#10694db7e8c4a74da9faec47b826e2e4dc29d076"
-  integrity sha512-UPDKaBjRAOt4yXzyvKien/gnfloL1W+CxNq+G++91dh8TdpTcBxxLPUL+T6WSUiOohLnsYa7SSsC6bS7bFbDYg==
+"@ui5/webcomponents-base@0.0.0-aeb93167c":
+  version "0.0.0-aeb93167c"
+  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-base/-/webcomponents-base-0.0.0-aeb93167c.tgz#a7975b9be1352387bbab03dcd617300048c29e11"
+  integrity sha512-ETL3GjKO4Y4qzLwSyYCxsBYIMMwrW2G0I18z4lpxzpOUdCcBYw7M0O+T+o539CkuSAxLegsKKO9CHE1400yYZw==
   dependencies:
     css-vars-ponyfill "^2.1.2"
     lit-html "^1.0.0"
     regenerator-runtime "0.12.1"
     url-search-params-polyfill "^5.0.0"
 
-"@ui5/webcomponents-fiori@1.0.0-rc.9":
-  version "1.0.0-rc.9"
-  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-fiori/-/webcomponents-fiori-1.0.0-rc.9.tgz#0388ea4f66fa4321aef0d3089c48f1825860a024"
-  integrity sha512-eAdTpP6tf+oWRNuoHiyMMKRs1M8MFY+1kDLaSC1GqCvh6kKhkOzIdVlsTuoB6LZuR2bsMvfduQ9T6sYY5KtCxg==
+"@ui5/webcomponents-fiori@0.0.0-aeb93167c":
+  version "0.0.0-aeb93167c"
+  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-fiori/-/webcomponents-fiori-0.0.0-aeb93167c.tgz#d36f393e1aa8a28179ab9504ffcac3d3d90a1233"
+  integrity sha512-L1JOTbZtSqls167Z/94ryaatcu1zBnU48/bzbZOhZ/J50fYu8ZytXYi9FJ8La1I4OhTL4TOY0mmY4bR23FsBAA==
   dependencies:
-    "@ui5/webcomponents" "1.0.0-rc.9"
-    "@ui5/webcomponents-base" "0.24.0"
-    "@ui5/webcomponents-icons" "1.0.0-rc.9"
-    "@ui5/webcomponents-theme-base" "1.0.0-rc.9"
+    "@ui5/webcomponents" "0.0.0-aeb93167c"
+    "@ui5/webcomponents-base" "0.0.0-aeb93167c"
+    "@ui5/webcomponents-icons" "0.0.0-aeb93167c"
+    "@ui5/webcomponents-theme-base" "0.0.0-aeb93167c"
 
-"@ui5/webcomponents-icons@1.0.0-rc.9":
-  version "1.0.0-rc.9"
-  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-icons/-/webcomponents-icons-1.0.0-rc.9.tgz#629de4b520a89f8a2839b8899f68081d3fdc276d"
-  integrity sha512-rIKsoipRcL4zsz7QrHGjVGX7B8p0Bx6v6C/1CLxSkkvRXsqLRLn/Woo9Lepe+g1CkjXe3hnjUMeleUya8EjKIQ==
+"@ui5/webcomponents-icons@0.0.0-aeb93167c":
+  version "0.0.0-aeb93167c"
+  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-icons/-/webcomponents-icons-0.0.0-aeb93167c.tgz#d99d5173d6cc08af7a932329640999d2d28d10b5"
+  integrity sha512-xMs08x68lyHwVK0SArfXfGeHhTqLVSQfx9w2MwnrN2ixI0nHJfGkwMZjp4j8slPsytRp6XgCoqC/KhTkAJqLxw==
   dependencies:
-    "@ui5/webcomponents-base" "0.24.0"
+    "@ui5/webcomponents-base" "0.0.0-aeb93167c"
 
-"@ui5/webcomponents-localization@0.24.0":
-  version "0.24.0"
-  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-localization/-/webcomponents-localization-0.24.0.tgz#96c3bf2596b60c2707e6c0939aed5aac8ff60398"
-  integrity sha512-jvw5LxsAKMmAZ6CMvIejJUaWyuCIR1CWqwaY+4klHkBJjuAjOIq3kyBZREi+MyUTv1LyfG8UMaoCLPSxgDnN9g==
+"@ui5/webcomponents-localization@0.0.0-aeb93167c":
+  version "0.0.0-aeb93167c"
+  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-localization/-/webcomponents-localization-0.0.0-aeb93167c.tgz#8b8a96b7ccd25b3b7294fe5ce0a3b0681f85e904"
+  integrity sha512-pgDXF5K+RM5WGpmR1I28IUTqaDogMUphix4/Pp3dbQ9hBPIfikqb4qsdnxIudP19OBs94QsHh7OQZM2ZyY8+ng==
   dependencies:
-    "@ui5/webcomponents-base" "0.24.0"
+    "@ui5/webcomponents-base" "0.0.0-aeb93167c"
 
-"@ui5/webcomponents-theme-base@1.0.0-rc.9":
-  version "1.0.0-rc.9"
-  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-theme-base/-/webcomponents-theme-base-1.0.0-rc.9.tgz#4a1cafd6ceae81b9aca1a6d1f4239da5209d1ba1"
-  integrity sha512-g1oqdm7zsp96G861EjfU4mIpKbcCk3mVb6Lp/Nz4FQJO8hzAGc+yCIfCC6ckwWNmumkLB6hJzSZtVBt7z0W/Rw==
+"@ui5/webcomponents-theme-base@0.0.0-aeb93167c":
+  version "0.0.0-aeb93167c"
+  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-theme-base/-/webcomponents-theme-base-0.0.0-aeb93167c.tgz#14d6f3ca629bdc95dfbd55df6b732d1fc579cf94"
+  integrity sha512-UUsrxaxFlbky27Xli0W5UplBZMVTcFuqrm7toGq0PUIlxerhlfP2sx05/7GwGBNcdVH+m97rU4UqlaIBgZGXpg==
   dependencies:
     "@sap-theming/theming-base-content" "11.1.19"
-    "@ui5/webcomponents-base" "0.24.0"
+    "@ui5/webcomponents-base" "0.0.0-aeb93167c"
 
-"@ui5/webcomponents-tools@^1.0.0-rc.9":
-  version "1.0.0-rc.9"
-  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-tools/-/webcomponents-tools-1.0.0-rc.9.tgz#c01a6f412de0b6ee2601149bd404f0b21ba2817c"
-  integrity sha512-VMAP6wZ0cvTjK8fFLJHine3XlPRG72RFCKokE/027ZrWWHwWtSjKq/DvdYF57nZgZXbRQejG0KZPqACBgnYDPQ==
+"@ui5/webcomponents-tools@0.0.0-aeb93167c":
+  version "0.0.0-aeb93167c"
+  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-tools/-/webcomponents-tools-0.0.0-aeb93167c.tgz#f6de32c856326dd1eb8063c0de46181cccc01937"
+  integrity sha512-R2nMa+MDaRcFl2eyfYD9OcS3I93xFC6MDM6GMUo9ucrBlptY112nl5VjaDeptt602cXZ2PyqeqGI83BM3qy2Cg==
   dependencies:
     "@babel/cli" "^7.1.2"
     "@babel/core" "^7.1.2"
@@ -4359,15 +4359,15 @@
     serve "^10.1.1"
     wdio-chromedriver-service "^6.0.2"
 
-"@ui5/webcomponents@1.0.0-rc.9":
-  version "1.0.0-rc.9"
-  resolved "https://registry.yarnpkg.com/@ui5/webcomponents/-/webcomponents-1.0.0-rc.9.tgz#9eb987c87af0d0d83a80985a0b960bd8c4cc4985"
-  integrity sha512-AItOkjFD4gN79THuHyZxfsmfMMj5D6UBf3KqT6GeB7kdtKwEIxMMrQL51aMG4JCG+fIwpBBRTmsS7Dqymqf0XQ==
+"@ui5/webcomponents@0.0.0-aeb93167c":
+  version "0.0.0-aeb93167c"
+  resolved "https://registry.yarnpkg.com/@ui5/webcomponents/-/webcomponents-0.0.0-aeb93167c.tgz#f889366829e23f6b5a056773025a26d2da59fffd"
+  integrity sha512-uPUibzszspvkfO3QIlm5/tMT5mNihwvEea9EMsLB/yMatkZ6NoUUycgqRWzcjjcwToIBFghUC8ByVhqfSqNKRQ==
   dependencies:
-    "@ui5/webcomponents-base" "0.24.0"
-    "@ui5/webcomponents-icons" "1.0.0-rc.9"
-    "@ui5/webcomponents-localization" "0.24.0"
-    "@ui5/webcomponents-theme-base" "1.0.0-rc.9"
+    "@ui5/webcomponents-base" "0.0.0-aeb93167c"
+    "@ui5/webcomponents-icons" "0.0.0-aeb93167c"
+    "@ui5/webcomponents-localization" "0.0.0-aeb93167c"
+    "@ui5/webcomponents-theme-base" "0.0.0-aeb93167c"
 
 "@wdio/cli@^6.1.3":
   version "6.1.17"
