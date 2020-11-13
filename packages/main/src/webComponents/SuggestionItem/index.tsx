@@ -18,7 +18,7 @@ export interface SuggestionItemPropTypes extends WithWebComponentPropTypes {
   /**
    * Defines the `icon` source URI.
    *
-   * **Note:** SAP-icons font provides numerous buil-in icons. To find all the available icons, see the Icon Explorer.
+   * **Note:** SAP-icons font provides numerous buil-in icons. To find all the available icons, see the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
    */
   icon?: string;
   /**

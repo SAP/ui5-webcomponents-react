@@ -13,6 +13,7 @@ const turndownService = new TurndownService({
   headingStyle: 'atx',
   codeBlockStyle: 'fenced'
 });
+turndownService.keep(['ui5-link'])
 
 //TODO:
 console.warn(

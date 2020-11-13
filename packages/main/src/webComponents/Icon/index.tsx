@@ -15,7 +15,7 @@ export interface IconPropTypes extends WithWebComponentPropTypes {
   interactive?: boolean;
   /**
    * Defines the unique identifier (icon name) of each `Icon`.
-   * To browse all available icons, see the Icon Explorer.
+   * To browse all available icons, see the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
    * Example:
    * `name='add'`, `name='delete'`, `name='employee'`.
    *

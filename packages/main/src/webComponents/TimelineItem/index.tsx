@@ -4,7 +4,7 @@ import { FC, ReactNode } from 'react';
 
 export interface TimelineItemPropTypes extends WithWebComponentPropTypes {
   /**
-   * Defines the icon to be displayed as graphical element within the <code>TimelineItem</code>. SAP-icons font provides numerous options. <br><br><br/><br/>
+   * Defines the icon to be displayed as graphical element within the `TimelineItem`. SAP-icons font provides numerous options.
    *
    * See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
    */
@@ -14,7 +14,7 @@ export interface TimelineItemPropTypes extends WithWebComponentPropTypes {
    */
   itemName?: string;
   /**
-   * Defines whether the <code>itemName</code> is clickable.
+   * Defines whether the `itemName` is clickable.
    */
   itemNameClickable?: boolean;
   /**
@@ -26,7 +26,7 @@ export interface TimelineItemPropTypes extends WithWebComponentPropTypes {
    */
   titleText?: string;
   /**
-   * Determines the description of the <code>TimelineItem</code>.
+   * Determines the description of the `TimelineItem`.
    */
   children?: ReactNode | ReactNode[];
   /**

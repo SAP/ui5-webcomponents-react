@@ -11,7 +11,7 @@ export interface SideNavigationItemPropTypes extends WithWebComponentPropTypes {
    * Defines the icon of the item.
    *
    * The SAP-icons font provides numerous options.
-   * See all the available icons in the Icon Explorer.
+   * See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
    */
   icon?: string;
   /**
