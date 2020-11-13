@@ -64,6 +64,10 @@ const ActionSheetComponent = () => {
 };
 ```
 
+<br />
+
+## Example
+
 <Canvas>
   <Story name="Default">
     {(args) => {
@@ -88,9 +92,11 @@ const ActionSheetComponent = () => {
   </Story>
 </Canvas>
 
+## Properties
+
 <ArgsTable story="." />
 
-### Using ActionSheets inside other components
+## Using ActionSheets inside other components
 
 `ActionSheets` are often used within other components, when opened this could sometimes have unwanted side effects.
 In this case, we recommend using [createPortal](https://reactjs.org/docs/portals.html) to mount the `ActionSheet` outside of the DOM hierarchy of the parent component.

@@ -1,6 +1,7 @@
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
-import React from 'react';
+import React, { useEffect } from 'react';
+import tocbot from 'tocbot';
 
 const styles = {
   header: {
@@ -55,7 +56,7 @@ const styles = {
         paddingLeft: '10px'
       },
       '& .toc-list-item': {
-        margin: '2px 0'
+        margin: '4px 0'
       },
       '& .toc-link::before': {
         width: '4px'
@@ -72,6 +73,22 @@ const useStyles = createComponentStyles(styles, { name: 'TableOfContent' });
 
 export const TableOfContent = () => {
   const classes = useStyles();
+
+  useEffect(() => {
+    tocbot.init({
+      tocSelector: '.js-toc',
+      contentSelector: '.sbdocs-wrapper',
+      headingSelector: 'h2.sbdocs-h2, h3.sbdocs-h3, h4.sbdocs-h4',
+      orderedList: false,
+      collapseDepth: 6,
+      hasInnerContainers: true
+    });
+    document.querySelectorAll('.toc-link').forEach((x) => x.setAttribute('target', '_self'));
+    return () => {
+      tocbot.destroy();
+    };
+  }, []);
+
   return (
     <>
       <h3 className={classes.header}>Contents</h3>
