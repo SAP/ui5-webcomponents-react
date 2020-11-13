@@ -12,6 +12,10 @@ export interface DialogPropTypes extends WithWebComponentPropTypes {
    */
   headerText?: string;
   /**
+   * Configures the <code>Dialog</code> to be resizable. If this property is set to true, the Dialog will have a resize handle in its bottom right corner in LTR languages. In RTL languages, the resize handle will be placed in the bottom left corner. <br><br> <b>Note:</b> The <code>Dialog</code> can be resizable only in desktop mode. <br> <b>Note:</b> Upon resizing, externally defined height and width styling will be ignored.
+   */
+  resizable?: boolean;
+  /**
    * Determines whether the <code>Dialog</code> should be stretched to fullscreen. <br><br> <b>Note:</b> The <code>Dialog</code> will be stretched to approximately 90% of the viewport.
    */
   stretch?: boolean;
@@ -54,20 +58,14 @@ export interface DialogPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * The <code>Dialog</code> component is used to temporarily display some information in a size-limited window in front of
- the regular app screen. It is used to prompt the user for an action or a confirmation. The
- <code>Dialog</code> interrupts the current app processing as it is the only focused UI element and the main screen is
- dimmed/blocked. The dialog combines concepts known from other technologies where the windows have names such as dialog
- box, dialog window, pop-up, pop-up window, alert box, or message box. <br /><br />
- The <code>Dialog</code> is modal, which means that user action is required before returning to the parent window is
- possible. The content of the <code>Dialog</code> is fully customizable.
-
+ *  The <code>Dialog</code> component is used to temporarily display some information in a size-limited window in front of the regular app screen. It is used to prompt the user for an action or a confirmation. The <code>Dialog</code> interrupts the current app processing as it is the only focused UI element and the main screen is dimmed/blocked. The dialog combines concepts known from other technologies where the windows have names such as dialog box, dialog window, pop-up, pop-up window, alert box, or message box. <br><br> The <code>Dialog</code> is modal, which means that user action is required before returning to the parent window is possible. The content of the <code>Dialog</code> is fully customizable.
+ *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Dialog" target="_blank">UI5 Web Components Playground</a>
  */
 const Dialog: FC<DialogPropTypes> = withWebComponent<DialogPropTypes>(
   'ui5-dialog',
   ['headerText', 'initialFocus'],
-  ['draggable', 'stretch', 'preventFocusRestore'],
+  ['draggable', 'resizable', 'stretch', 'preventFocusRestore'],
   ['footer', 'header'],
   ['after-close', 'after-open', 'before-close', 'before-open']
 );
@@ -76,6 +74,7 @@ Dialog.displayName = 'Dialog';
 
 Dialog.defaultProps = {
   draggable: false,
+  resizable: false,
   stretch: false,
   preventFocusRestore: false
 };

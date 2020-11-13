@@ -36,9 +36,8 @@ export interface PanelPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * The <code>Panel</code> component is a container which has a header and a content area and is used for grouping and
- displaying information. It can be collapsed to save space on the screen.
-
+ *  The <code>Panel</code> component is a container which has a header and a content area and is used for grouping and displaying information. It can be collapsed to save space on the screen.
+ *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Panel" target="_blank">UI5 Web Components Playground</a>
  */
 const Panel: FC<PanelPropTypes> = withWebComponent<PanelPropTypes>(

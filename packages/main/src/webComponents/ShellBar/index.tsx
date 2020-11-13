@@ -78,9 +78,8 @@ export interface ShellBarPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * The <code>ShellBar</code> is meant to serve as an application header and includes numerous built-in features, such as:
- logo, profile image/icon, title, search field, notifications and so on. <br /><br />
-
+ *  The <code>ShellBar</code> is meant to serve as an application header and includes numerous built-in features, such as: logo, profile image/icon, title, search field, notifications and so on. <br><br>
+ *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/ShellBar" target="_blank">UI5 Web Components Playground</a>
  */
 const ShellBar: FC<ShellBarPropTypes> = withWebComponent<ShellBarPropTypes>(

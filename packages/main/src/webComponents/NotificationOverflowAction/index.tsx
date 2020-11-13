@@ -23,9 +23,8 @@ export interface NotificationOverflowActionPropTypes extends WithWebComponentPro
 }
 
 /**
- * The <code>ui5-notification-overflow-action</code> represents an abstract action, used in the
- <code>ui5-li-notification</code> and the <code>ui5-li-notification-group</code> items
-
+ * The <code>NotificationOverflowAction</code> represents an abstract action, used in the <code>NotificationListItem</code> and the <code>NotificationListGroupItem</code> items
+ *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/NotificationOverflowAction" target="_blank">UI5 Web Components Playground</a>
  */
 const NotificationOverflowAction: FC<NotificationOverflowActionPropTypes> = withWebComponent<

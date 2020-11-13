@@ -34,13 +34,8 @@ export interface TablePropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * The <code>Table</code> component provides a set of sophisticated and convenient functions for responsive table design.
- It provides a comprehensive set of features for displaying and dealing with vast amounts of data. <br /><br />
- To render the <code>Table</code> properly, the order of the <code>columns</code> should match with the order of the item
- <code>cells</code> in the <code>rows</code>. <br /><br />
- Desktop and tablet devices are supported. On tablets, special consideration should be given to the number of visible
- columns and rows due to the limited performance of some devices.
-
+ *  The <code>Table</code> component provides a set of sophisticated and convenient functions for responsive table design. It provides a comprehensive set of features for displaying and dealing with vast amounts of data. <br><br> To render the <code>Table</code> properly, the order of the <code>columns</code> should match with the order of the item <code>cells</code> in the <code>rows</code>. <br><br> Desktop and tablet devices are supported. On tablets, special consideration should be given to the number of visible columns and rows due to the limited performance of some devices.
+ *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Table" target="_blank">UI5 Web Components Playground</a>
  */
 const Table: FC<TablePropTypes> = withWebComponent<TablePropTypes>(

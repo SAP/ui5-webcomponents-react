@@ -73,10 +73,8 @@ export interface PopoverPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * The <code>Popover</code> component displays additional information for an object in a compact way and without leaving
- the page. The Popover can contain various UI elements, such as fields, tables, images, and charts. It can also include
- actions in the footer.
-
+ *  The <code>Popover</code> component displays additional information for an object in a compact way and without leaving the page. The Popover can contain various UI elements, such as fields, tables, images, and charts. It can also include actions in the footer.
+ *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Popover" target="_blank">UI5 Web Components Playground</a>
  */
 const Popover: FC<PopoverPropTypes> = withWebComponent<PopoverPropTypes>(

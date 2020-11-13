@@ -18,8 +18,8 @@ export interface OptionPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * The <code>Option</code> component defines the content of an opton in the <code>Select</code>
-
+ *  The <code>Option</code> component defines the content of an opton in the <code>Select</code>
+ *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Option" target="_blank">UI5 Web Components Playground</a>
  */
 const Option: FC<OptionPropTypes> = withWebComponent<OptionPropTypes>(

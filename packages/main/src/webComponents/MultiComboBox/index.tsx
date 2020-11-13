@@ -69,12 +69,8 @@ export interface MultiComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 
 }
 
 /**
- * The <code>MultiComboBox</code> component provides a list box with items and a text field allowing the user to either
- type a value directly into the control, or choose from the list of existing items. It is a drop-down list for selecting
- and filtering values, commonly used to enable users to select one or more options from a predefined list. The control
- provides an editable input field to filter the list, and a dropdown arrow of available options. The select options in
- the list have checkboxes that permit multi-selection. Entered values are displayed as tokens.
-
+ *  The <code>MultiComboBox</code> component provides a list box with items and a text field allowing the user to either type a value directly into the control, or choose from the list of existing items. It is a drop-down list for selecting and filtering values, commonly used to enable users to select one or more options from a predefined list. The control provides an editable input field to filter the list, and a dropdown arrow of available options. The select options in the list have checkboxes that permit multi-selection. Entered values are displayed as tokens.
+ *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/MultiComboBox" target="_blank">UI5 Web Components Playground</a>
  */
 const MultiComboBox: FC<MultiComboBoxPropTypes> = withWebComponent<MultiComboBoxPropTypes>(

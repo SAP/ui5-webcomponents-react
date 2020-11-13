@@ -1,4 +1,12 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+import mainWebComponentsSpec from '@ui5/webcomponents/dist/api.json';
+import fioriWebComponentsSpec from '@ui5/webcomponents-fiori/dist/api.json';
+import dedent from 'dedent';
+import prettier from 'prettier';
+import prettierConfigRaw from '../../../prettier.config.cjs';
+import path from 'path';
+import PATHS from '../../../config/paths.js';
+import fs from 'fs';
 
 //TODO:
 console.warn(
@@ -10,15 +18,6 @@ console.warn(
 const CREATE_SINGLE_COMPONENT = process.argv[2] || false;
 
 const EXCLUDE_LIST = ['NotificationListItem'];
-
-import mainWebComponentsSpec from '@ui5/webcomponents/dist/api.json';
-import fioriWebComponentsSpec from '@ui5/webcomponents-fiori/dist/api.json';
-import dedent from 'dedent';
-import prettier from 'prettier';
-import prettierConfigRaw from '../../../prettier.config.cjs';
-import path from 'path';
-import PATHS from '../../../config/paths.js';
-import fs from 'fs';
 
 const prettierConfig = {
   ...prettierConfigRaw,
@@ -102,6 +101,7 @@ COMPONENTS_WITHOUT_DEMOS.add('SideNavigationSubItem');
 COMPONENTS_WITHOUT_DEMOS.add('SuggestionItem');
 COMPONENTS_WITHOUT_DEMOS.add('UploadCollectionItem');
 COMPONENTS_WITHOUT_DEMOS.add('NotificationOverflowAction');
+COMPONENTS_WITHOUT_DEMOS.add('WizardStep');
 
 const componentsFromFioriPackage = new Set(fioriWebComponentsSpec.symbols.map((componentSpec) => componentSpec.module));
 
@@ -407,18 +407,22 @@ const createWebComponentWrapper = (
   }
   let componentDescription;
   try {
-    componentDescription = prettier
-      .format(description, {
-        ...prettierConfigRaw,
-        parser: 'html'
-      })
-      .replace(/\s\s+/g, ' ');
+    // componentDescription = prettier
+    //   .format(description, {
+    //     ...prettierConfigRaw,
+    //     parser: 'html'
+    //   })
+    //   .replace(/\s\s+/g, ' ');
+    componentDescription = description.replace(/\s\s+/g, ' ');
   } catch (e) {
     console.warn(
       `----------------------\nHeader description of ${name} couldn't be generated. \nThere is probably a syntax error in the associated description that can't be fixed automatically.\n----------------------`
     );
     componentDescription = '';
   }
+
+  componentDescription = componentDescription.replace(/\n$/g, '<br />')
+
   return prettier.format(
     `
     import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
@@ -432,6 +436,7 @@ const createWebComponentWrapper = (
     
     /**
      * ${componentDescription}     
+     * 
      * <a href="https://sap.github.io/ui5-webcomponents/playground/components/${name}" target="_blank">UI5 Web Components Playground</a>
      */
     const ${name}: FC<${name}PropTypes> = withWebComponent<${name}PropTypes>(

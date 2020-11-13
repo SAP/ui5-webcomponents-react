@@ -48,9 +48,8 @@ export interface StandardListItemPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * The <code>StandardListItem</code> represents the simplest type of item for a <code>StandardListItemst</code>. This is a
- list item, providing the most common use cases such as <code>text</code>, <code>image</code> and <code>icon</code>
-
+ * The <code>StandardListItem</code> represents the simplest type of item for a <code>StandardListItemst</code>. This is a list item, providing the most common use cases such as <code>text</code>, <code>image</code> and <code>icon</code>
+ *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/StandardListItem" target="_blank">UI5 Web Components Playground</a>
  */
 const StandardListItem: FC<StandardListItemPropTypes> = withWebComponent<StandardListItemPropTypes>(

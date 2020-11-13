@@ -41,9 +41,8 @@ export interface ButtonPropTypes extends Omit<WithWebComponentPropTypes, 'onClic
 }
 
 /**
- * The <code>Button</code> component represents a simple push button. It enables users to trigger actions by clicking or
- tapping the <code>Button</code>, or by pressing certain keyboard keys, such as Enter.
-
+ *  The <code>Button</code> component represents a simple push button. It enables users to trigger actions by clicking or tapping the <code>Button</code>, or by pressing certain keyboard keys, such as Enter.
+ *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Button" target="_blank">UI5 Web Components Playground</a>
  */
 const Button: FC<ButtonPropTypes> = withWebComponent<ButtonPropTypes>(

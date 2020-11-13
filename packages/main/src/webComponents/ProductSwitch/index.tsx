@@ -10,9 +10,8 @@ export interface ProductSwitchPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * The <code>ProductSwitch</code> is an SAP Fiori specific web component that is used in <code>ShellBar</code> and allows
- the user to easily switch between products. <br /><br />
-
+ *  The <code>ProductSwitch</code> is an SAP Fiori specific web component that is used in <code>ShellBar</code> and allows the user to easily switch between products. <br><br>
+ *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/ProductSwitch" target="_blank">UI5 Web Components Playground</a>
  */
 const ProductSwitch: FC<ProductSwitchPropTypes> = withWebComponent<ProductSwitchPropTypes>(

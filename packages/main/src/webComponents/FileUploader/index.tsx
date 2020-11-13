@@ -5,7 +5,7 @@ import { FC, ReactNode } from 'react';
 
 export interface FileUploaderPropTypes extends Omit<WithWebComponentPropTypes, 'onChange'> {
   /**
-   * Comma-separated list of file types that the <code>FileUploader</code> should accept.
+   * Comma-separated list of file types that the <code>FileUploader</code> should accept. <br><br> <b>Note:</b> Please make sure you are adding the <code>.</code> in front on the file type, e.g. <code>.png</code> in case you want to accept png's only.
    */
   accept?: string;
   /**
@@ -57,14 +57,8 @@ export interface FileUploaderPropTypes extends Omit<WithWebComponentPropTypes, '
 }
 
 /**
- * The <code>FileUploader</code> opens a file explorer dialog and enables users to upload files. The component consists of
- input field, but you can provide an HTML element by your choice to trigger the file upload, by using the default slot.
- Furthermore, you can set the property "hideInput" to "true" to hide the input field. <br />
- To get all selected files, you can simply use the read-only "files" property. To restrict the types of files the user
- can select, you can use the "accept" property. <br />
- And, similar to all input based components, the FileUploader supports "valueState", "placeholder", "name", and
- "disabled" properties. For the <code>FileUploader</code>
-
+ *  The <code>FileUploader</code> opens a file explorer dialog and enables users to upload files. The component consists of input field, but you can provide an HTML element by your choice to trigger the file upload, by using the default slot. Furthermore, you can set the property "hideInput" to "true" to hide the input field. <br> To get all selected files, you can simply use the read-only "files" property. To restrict the types of files the user can select, you can use the "accept" property. <br> And, similar to all input based components, the FileUploader supports "valueState", "placeholder", "name", and "disabled" properties. For the <code>FileUploader</code>
+ *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/FileUploader" target="_blank">UI5 Web Components Playground</a>
  */
 const FileUploader: FC<FileUploaderPropTypes> = withWebComponent<FileUploaderPropTypes>(

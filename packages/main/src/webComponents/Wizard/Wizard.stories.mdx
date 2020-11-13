@@ -1,0 +1,55 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { Wizard } from '@ui5/webcomponents-react/lib/Wizard';
+import { CSSProperties, Ref } from 'react';
+import { WizardStep } from '@ui5/webcomponents-react/lib/WizardStep';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
+
+<Meta
+  title="UI5 Web Components / Wizard"
+  component={Wizard}
+  subcomponents={{ WizardStep }}
+  argTypes={{
+    ...createSelectArgTypes({}),
+    ...DocsCommonProps,
+    children: { control: { disable: true } }
+  }}
+  args={{
+    style: {},
+    className: '',
+    tooltip: '',
+    slot: '',
+    ref: null
+  }}
+/>
+
+<DocsHeader />
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return <Wizard {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="." />
+<div style={{ fontFamily: 'var(--sapFontFamily)', fontSize: 'var(--sapFontSize)', color: 'var(--sapTextColor)' }}>
+  <h3>Structure</h3>
+  <h4>Navigation area</h4>
+  The top most area of the <code>Wizard</code> is occupied by the navigation area. It shows the sequence of steps, where
+  the recommended number of steps is between 3 and 8 steps.
+  <ul>
+    <li>Steps can have different visual representations - numbers or icons.</li>
+    <li>Steps might have labels for better readability - heading and subheding.</li>
+    <li>
+      Steps are defined by using the <code>Wizard-step</code> as slotted element within the <code>Wizard</code>
+    </li>
+  </ul>
+  <b>Note:</b> If no selected step is defined, the first step will be auto selected. <br />
+  <b>Note:</b> If multiple selected steps are defined, the last step will be selected.
+  <h4>Content</h4>
+  The content occupies the main part of the page. It can hold any type of HTML elements. It's defined by using the
+  <code>Wizard-step</code> as slotted element within the <code>Wizard</code>.
+</div>

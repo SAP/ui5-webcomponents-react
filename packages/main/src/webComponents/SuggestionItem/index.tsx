@@ -45,7 +45,7 @@ export interface SuggestionItemPropTypes extends WithWebComponentPropTypes {
 
 /**
  * The <code>SuggestionItem</code> represents the suggestion item of the <code>Input</code>
-
+ *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/SuggestionItem" target="_blank">UI5 Web Components Playground</a>
  */
 const SuggestionItem: FC<SuggestionItemPropTypes> = withWebComponent<SuggestionItemPropTypes>(

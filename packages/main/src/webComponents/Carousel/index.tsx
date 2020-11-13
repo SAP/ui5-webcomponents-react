@@ -51,9 +51,8 @@ export interface CarouselPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * The carousel allows the user to browse through a set of items by swiping right or left. The component is mostly used for
- showing a gallery of images, but can hold any other HTML element.
-
+ *  The carousel allows the user to browse through a set of items by swiping right or left. The component is mostly used for showing a gallery of images, but can hold any other HTML element.
+ *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Carousel" target="_blank">UI5 Web Components Playground</a>
  */
 const Carousel: FC<CarouselPropTypes> = withWebComponent<CarouselPropTypes>(

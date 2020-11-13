@@ -51,13 +51,8 @@ export interface RadioButtonPropTypes extends Omit<WithWebComponentPropTypes, 'o
 }
 
 /**
- * The <code>RadioButton</code> component enables users to select a single option from a set of options. When a
- <code>RadioButton</code> is selected by the user, the <code>select</code> event is fired. When a
- <code>RadioButton</code> that is within a group is selected, the one that was previously selected gets automatically
- deselected. You can group radio buttons by using the <code>name</code> property. <br />
- <b>Note:</b> If <code>RadioButton</code> is not part of a group, it can be selected once, but can not be deselected
- back.
-
+ *  The <code>RadioButton</code> component enables users to select a single option from a set of options. When a <code>RadioButton</code> is selected by the user, the <code>select</code> event is fired. When a <code>RadioButton</code> that is within a group is selected, the one that was previously selected gets automatically deselected. You can group radio buttons by using the <code>name</code> property. <br> <b>Note:</b> If <code>RadioButton</code> is not part of a group, it can be selected once, but can not be deselected back.
+ *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/RadioButton" target="_blank">UI5 Web Components Playground</a>
  */
 const RadioButton: FC<RadioButtonPropTypes> = withWebComponent<RadioButtonPropTypes>(

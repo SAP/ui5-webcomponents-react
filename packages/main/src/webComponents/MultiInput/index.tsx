@@ -75,7 +75,8 @@ export interface MultiInputPropTypes extends Omit<WithWebComponentPropTypes, 'on
    */
   icon?: ReactNode | ReactNode[];
   /**
-   * Defines the value state message that will be displayed as pop up under the <code>Input</code>.<br/>
+   * Defines the value state message that will be displayed as pop up under the <code>Input</code>. <br><br><br/><br/>
+   *
    * <b>Note:</b> If not specified, a default text (in the respective language) will be displayed. <br> <b>Note:</b> The <code>valueStateMessage</code> would be displayed, when the <code>Input</code> is in <code>Information</code>, <code>Warning</code> or <code>Error</code> value state. <br> <b>Note:</b> If the <code>Input</code> has <code>suggestionItems</code>, the <code>valueStateMessage</code> would be displayed as part of the same popover, if used on desktop, or dialog - on phone.
    */
   valueStateMessage?: ReactNode | ReactNode[];
@@ -114,10 +115,8 @@ export interface MultiInputPropTypes extends Omit<WithWebComponentPropTypes, 'on
 }
 
 /**
- *A <code>MultiInput</code> field allows the user to enter multiple values, which are displayed as <code>Token</code>.
- User can choose interaction for creating tokens. Fiori Guidelines say that user should create tokens when:
- <ul> <li>Type a value in the input and press enter or focus out the input field (<code>onChange</code> event is fired)</li> <li>Select a value from the suggestion list (<code>onSuggestionItemSelect</code> event is fired)</li>
- </ul>
+ * <h3>Overview</h3> A <code>MultiInput</code> field allows the user to enter multiple values, which are displayed as <code>Token</code>. User can choose interaction for creating tokens. Fiori Guidelines say that user should create tokens when: <ul> <li>Type a value in the input and press enter or focus out the input field (<code>change</code> event is fired) <li>Select a value from the suggestion list</li> (<code>suggestion-item-select</code> event is fired) </ul>
+ *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/MultiInput" target="_blank">UI5 Web Components Playground</a>
  */
 const MultiInput: FC<MultiInputPropTypes> = withWebComponent<MultiInputPropTypes>(

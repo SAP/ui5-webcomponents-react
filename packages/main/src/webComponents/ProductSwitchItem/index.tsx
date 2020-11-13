@@ -32,11 +32,8 @@ export interface ProductSwitchItemPropTypes extends Omit<WithWebComponentPropTyp
 }
 
 /**
- * The <code>ProductSwitchItem</code> web component represents the items displayed in the <code>ProductSwitch</code> web
- component. <br /><br />
- <b>Note:</b> <code>ProductSwitchItem</code> is not supported when used outside of <code>ProductSwitch</code>.
- <br /><br />
-
+ *  The <code>ProductSwitchItem</code> web component represents the items displayed in the <code>ProductSwitch</code> web component. <br><br> <b>Note:</b> <code>ProductSwitchItem</code> is not supported when used outside of <code>ProductSwitch</code>. <br><br>
+ *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/ProductSwitchItem" target="_blank">UI5 Web Components Playground</a>
  */
 const ProductSwitchItem: FC<ProductSwitchItemPropTypes> = withWebComponent<ProductSwitchItemPropTypes>(

@@ -75,11 +75,8 @@ export interface TextAreaPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
 }
 
 /**
- * The <code>TextArea</code> component provides large spaces for text entries in the form of multiple rows. It has the
- functionality of the <code>TextField</code> with the additional functionality for multiline texts. <br /><br />
- When empty, it can hold a placeholder similar to a <code>Input</code>. You can define the rows of the
- <code>TextArea</code> and also determine specific behavior when handling long texts.
-
+ *  The <code>TextArea</code> component provides large spaces for text entries in the form of multiple rows. It has the functionality of the <code>TextField</code> with the additional functionality for multiline texts. <br><br> When empty, it can hold a placeholder similar to a <code>Input</code>. You can define the rows of the <code>TextArea</code> and also determine specific behavior when handling long texts.
+ *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/TextArea" target="_blank">UI5 Web Components Playground</a>
  */
 const TextArea: FC<TextAreaPropTypes> = withWebComponent<TextAreaPropTypes>(

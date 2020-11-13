@@ -26,13 +26,8 @@ export interface LabelPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * The <code>Label</code> is a component used to represent a label, providing valuable information to the user. Usually it
- is placed next to a value holder, such as a text field. It informs the user about what data is displayed or expected in
- the value holder. <br /><br />
- The <code>Label</code> appearance can be influenced by properties, such as <code>required</code> and <code>wrap</code>.
- The appearance of the Label can be configured in a limited way by using the design property. For a broader choice of
- designs, you can use custom styles.
-
+ *  The <code>Label</code> is a component used to represent a label, providing valuable information to the user. Usually it is placed next to a value holder, such as a text field. It informs the user about what data is displayed or expected in the value holder. <br><br> The <code>Label</code> appearance can be influenced by properties, such as <code>required</code> and <code>wrap</code>. The appearance of the Label can be configured in a limited way by using the design property. For a broader choice of designs, you can use custom styles.
+ *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Label" target="_blank">UI5 Web Components Playground</a>
  */
 const Label: FC<LabelPropTypes> = withWebComponent<LabelPropTypes>(
