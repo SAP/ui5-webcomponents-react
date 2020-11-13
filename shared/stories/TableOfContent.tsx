@@ -1,6 +1,5 @@
-import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
-import { createComponentStyles, ThemingParameters } from '@ui5/webcomponents-react-base';
-import { Title } from '@ui5/webcomponents-react/lib/Title';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import React from 'react';
 
 const styles = {
