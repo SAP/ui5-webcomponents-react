@@ -49,53 +49,115 @@ declare const ResizeObserver;
 const SCROLL_BAR_WIDTH = 12;
 
 export interface ObjectPagePropTypes extends CommonProps {
+  /**
+   * Defines the title of the `ObjectPage`.
+   */
   title?: string;
+  /**
+   * Defines the subheading of the `ObjectPage`.
+   */
   subTitle?: string;
+  /**
+   * Defines the image of the `ObjectPage`. You can pass a path to an image or an `Avatar` component.
+   */
   image?: string | ReactElement<unknown>;
+  /**
+   * Defines the actions in the header toolbar.
+   */
   headerActions?: ReactElement<unknown>[];
+  /**
+   * The header content displays app-specific contextual information. You build the content using containers.
+   The containers are arranged inline with a left float. If the containers do not all fit on one line, those on the right wrap to the line below.
+   The header content is hidden by scrolling down the page or clicking the collapse indicator.
+   */
   headerContent?: ReactNode;
+  /**
+   * Defines the content area of the `ObjectPage`. It consists of sections and subsections.<br />
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `ObjectPageSection` and `ObjectPageSubSection` in order to preserve the intended design.
+   */
   children?: ReactElement<ObjectPageSectionPropTypes> | ReactElement<ObjectPageSectionPropTypes>[];
-
+  /**
+   * Defines the ID of the currently `ObjectPageSection` section.
+   */
   selectedSectionId?: string;
+  /**
+   * Defines the ID of the currently `ObjectPageSubSection` section.
+   */
   selectedSubSectionId?: string;
+  /**
+   * Fired when the selected section changes.
+   */
   onSelectedSectionChanged?: (
     event: CustomEvent<{ selectedSectionIndex: number; selectedSectionId: string; section: ComponentType }>
   ) => void;
-
+  /**
+   * Defines the breadcrumbs above the `ObjectPage` heading.<br />
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `Breadcrumbs` in order to preserve the intended design.
+   */
   breadcrumbs?: ReactNode;
+  /**
+   * Defines the key information section in the header of the `ObjectPage`.
+   */
   keyInfos?: ReactNode;
 
   // appearance
+  /**
+   * Defines whether the header is hidden by scrolling down.
+   */
   alwaysShowContentHeader?: boolean;
+  /**
+   * Defines whether the title is displayed in the content section of the header or above the image.
+   */
   showTitleInHeaderContent?: boolean;
+  /**
+   * Defines whether the image should be displayed in a circle or in a square.<br />
+   * __Note:__ If the `image` is not a `string`, this prop has no effect.
+   */
   imageShapeCircle?: boolean;
+  /**
+   * Defines the `ObjectPage` mode.
+   *
+   * - "Default": All `ObjectPageSections` and `ObjectPageSubSections` are displayed on one page. Selecting tabs will scroll to the corresponding section.
+   * - "IconTabBar": All `ObjectPageSections` are displayed on separate pages. Selecting tabs will lead to the corresponding page.
+   */
   mode?: ObjectPageMode;
+  /**
+   * Defines whether the header is displayed.
+   */
   noHeader?: boolean;
+  /**
+   * Defines whether the pin button of the header is displayed.
+   */
   showHideHeaderButton?: boolean;
+  /**
+   * Defines whether the header content is pinnable.
+   */
   headerContentPinnable?: boolean;
 }
 
 const useStyles = createComponentStyles(styles, { name: 'ObjectPage' });
 
+/**
+ * A component that allows apps to easily display information related to a business object.<br />
+ * The `ObjectPage` is composed of a header (title and content) and block content wrapped in sections and subsections that structure the information.
+ */
 const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDivElement>) => {
   const {
-    title = '',
-    image = null,
-    subTitle = '',
-    headerActions = [],
-    mode = ObjectPageMode.Default,
-    imageShapeCircle = false,
+    title,
+    image,
+    subTitle,
+    headerActions,
+    mode,
+    imageShapeCircle,
     className,
     style,
     tooltip,
     slot,
-    showHideHeaderButton = false,
+    showHideHeaderButton,
     children,
-    onSelectedSectionChanged = () => {
-      /* noop */
-    },
+    onSelectedSectionChanged,
     selectedSectionId,
-    noHeader = false,
+    noHeader,
     alwaysShowContentHeader,
     showTitleInHeaderContent,
     headerContentPinnable,
@@ -483,5 +545,19 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
 });
 
 ObjectPage.displayName = 'ObjectPage';
+
+ObjectPage.defaultProps = {
+  title: '',
+  image: null,
+  subTitle: '',
+  headerActions: [],
+  mode: ObjectPageMode.Default,
+  imageShapeCircle: false,
+  showHideHeaderButton: false,
+  onSelectedSectionChanged: () => {
+    /* noop */
+  },
+  noHeader: false
+};
 
 export { ObjectPage };
