@@ -494,7 +494,7 @@ const createWebComponentDemo = (componentSpec, componentProps, description) => {
       enumImports.push(prop.importStatement);
     }
     if (componentSpec.module === 'Icon' && prop.name === 'name') {
-      enumImports.push(`import "@ui5/webcomponents-icons/dist/icons/employee.js";`);
+      enumImports.push(`import "@ui5/webcomponents-icons/dist/employee.js";`);
       args.push(`name: 'employee'`);
     }
     if (prop.name === 'primaryCalendarType') {
@@ -516,7 +516,7 @@ const createWebComponentDemo = (componentSpec, componentProps, description) => {
         customArgTypes.push(`children: {control: {disable:true}}`);
       }
     } else if (prop.name === 'icon') {
-      enumImports.push(`import "@ui5/webcomponents-icons/dist/icons/employee.js";`);
+      enumImports.push(`import "@ui5/webcomponents-icons/dist/employee.js";`);
       enumImports.push(`import { Icon } from '@ui5/webcomponents-react/lib/Icon';`);
       if (prop.tsType === 'string') {
         args.push(`icon: 'employee'`);

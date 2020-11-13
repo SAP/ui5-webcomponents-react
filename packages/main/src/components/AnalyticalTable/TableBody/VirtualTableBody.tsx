@@ -1,5 +1,5 @@
-import '@ui5/webcomponents-icons/dist/icons/navigation-down-arrow';
-import '@ui5/webcomponents-icons/dist/icons/navigation-right-arrow';
+import '@ui5/webcomponents-icons/dist/navigation-down-arrow';
+import '@ui5/webcomponents-icons/dist/navigation-right-arrow';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import React, { MutableRefObject, useCallback, useRef } from 'react';
 import { useVirtual } from 'react-virtual';

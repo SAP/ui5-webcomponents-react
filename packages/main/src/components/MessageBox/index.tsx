@@ -1,9 +1,9 @@
-import '@ui5/webcomponents-icons/dist/icons/hint';
-import '@ui5/webcomponents-icons/dist/icons/message-error';
-import '@ui5/webcomponents-icons/dist/icons/message-information';
-import '@ui5/webcomponents-icons/dist/icons/message-success';
-import '@ui5/webcomponents-icons/dist/icons/message-warning';
-import '@ui5/webcomponents-icons/dist/icons/question-mark';
+import '@ui5/webcomponents-icons/dist/hint';
+import '@ui5/webcomponents-icons/dist/message-error';
+import '@ui5/webcomponents-icons/dist/message-information';
+import '@ui5/webcomponents-icons/dist/message-success';
+import '@ui5/webcomponents-icons/dist/message-warning';
+import '@ui5/webcomponents-icons/dist/question-mark';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { useConsolidatedRef, useI18nText, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';

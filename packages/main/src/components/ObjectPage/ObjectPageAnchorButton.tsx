@@ -1,4 +1,4 @@
-import '@ui5/webcomponents-icons/dist/icons/slim-arrow-down';
+import '@ui5/webcomponents-icons/dist/slim-arrow-down';
 import { Tab } from '@ui5/webcomponents-react/lib/Tab';
 import React, { FC, useEffect, useRef } from 'react';
 

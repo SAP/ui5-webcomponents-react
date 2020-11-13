@@ -19,7 +19,7 @@ export interface ToggleButtonPropTypes extends Omit<WithWebComponentPropTypes, '
   /**
    * Defines the icon to be displayed as graphical element within the <code>Button</code>. The SAP-icons font provides numerous options.
    *
-   * <b>Note:</b> You should import the desired icon first, then use its name as "icon".<br><code>import "@ui5/webcomponents-icons/dist/icons/{icon_name}.js"</code>
+   * <b>Note:</b> You should import the desired icon first, then use its name as "icon".<br><code>import "@ui5/webcomponents-icons/dist/{icon_name}.js"</code>
    *
    * See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
    */

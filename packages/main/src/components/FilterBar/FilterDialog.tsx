@@ -1,4 +1,4 @@
-import '@ui5/webcomponents-icons/dist/icons/search';
+import '@ui5/webcomponents-icons/dist/search';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { useI18nText } from '@ui5/webcomponents-react-base/lib/hooks';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
