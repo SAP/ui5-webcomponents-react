@@ -93,14 +93,14 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
     slot,
     style,
     tooltip,
-    columnsS = 1,
-    columnsM = 1,
-    columnsL = 1,
-    columnsXL = 2,
-    labelSpanS = 12,
-    labelSpanM = 2,
-    labelSpanL = 4,
-    labelSpanXL = 4
+    columnsS,
+    columnsM,
+    columnsL,
+    columnsXL,
+    labelSpanS,
+    labelSpanM,
+    labelSpanL,
+    labelSpanXL
   } = props;
 
   const columnsMap = new Map();
@@ -261,5 +261,16 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
 });
 
 Form.displayName = 'Form';
+
+Form.defaultProps = {
+  columnsS: 1,
+  columnsM: 1,
+  columnsL: 1,
+  columnsXL: 2,
+  labelSpanS: 12,
+  labelSpanM: 2,
+  labelSpanL: 4,
+  labelSpanXL: 4
+};
 
 export { Form };
