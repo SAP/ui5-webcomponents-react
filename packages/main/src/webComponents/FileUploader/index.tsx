@@ -5,15 +5,19 @@ import { FC, ReactNode } from 'react';
 
 export interface FileUploaderPropTypes extends Omit<WithWebComponentPropTypes, 'onChange'> {
   /**
-   * Comma-separated list of file types that the <code>FileUploader</code> should accept. <br><br> <b>Note:</b> Please make sure you are adding the <code>.</code> in front on the file type, e.g. <code>.png</code> in case you want to accept png's only.
+   * Comma-separated list of file types that the `FileUploader` should accept.
+   *
+   * **Note:** Please make sure you are adding the `.` in front on the file type, e.g. `.png` in case you want to accept png's only.
    */
   accept?: string;
   /**
-   * Defines whether <code>FileUploader</code> is in disabled state. <br><br> <b>Note:</b> A disabled <code>FileUploader</code> is completely noninteractive.
+   * Defines whether `FileUploader` is in disabled state.
+   *
+   * **Note:** A disabled `FileUploader` is completely noninteractive.
    */
   disabled?: boolean;
   /**
-   * If set to "true", the input field of <code>FileUploader</code> will not be rendered. Only the default slot that is passed will be rendered.
+   * If set to "true", the input field of `FileUploader` will not be rendered. Only the default slot that is passed will be rendered.
    */
   hideInput?: boolean;
   /**
@@ -21,15 +25,15 @@ export interface FileUploaderPropTypes extends Omit<WithWebComponentPropTypes, '
    */
   multiple?: boolean;
   /**
-   * Determines the name with which the <code>FileUploader</code> will be submitted in an HTML form.<br/><br/>
+   * Determines the name with which the `FileUploader` will be submitted in an HTML form.
    *
-   * <b>Important:</b> For the <code>name</code> property to have effect, you must add the following import to your project: <code>import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";</code><br/><br/>
+   * **Important:** For the `name` property to have effect, you must add the following import to your project: `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
    *
-   * <b>Note:</b> When set, a native <code>input</code> HTML element will be created inside the <code>FileUploader</code> so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
+   * **Note:** When set, a native `input` HTML element will be created inside the `FileUploader` so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
    */
   name?: string;
   /**
-   * Defines a short hint intended to aid the user with data entry when the <code>FileUploader</code> has no value.
+   * Defines a short hint intended to aid the user with data entry when the `FileUploader` has no value.
    */
   placeholder?: string;
   /**
@@ -37,17 +41,26 @@ export interface FileUploaderPropTypes extends Omit<WithWebComponentPropTypes, '
    */
   value?: string;
   /**
-   * Defines the value state of the <code>FileUploader</code>. <br><br> Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>
+   * Defines the value state of the `FileUploader`.
+   *
+   * Available options are:
+   *
+   * *   `None`
+   * *   `Error`
+   * *   `Warning`
+   * *   `Success`
+   * *   `Information`
    */
   valueState?: ValueState;
   /**
-   * By default the <code>FileUploader</code> contains a single input field. With this slot you can pass any content that you wish to add. See the samples for more information.
+   * By default the `FileUploader` contains a single input field. With this slot you can pass any content that you wish to add. See the samples for more information.
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Defines the value state message that will be displayed as pop up under the <code>FileUploader</code>. <br><br><br/><br/>
+   * Defines the value state message that will be displayed as pop up under the `FileUploader`.
    *
-   * <b>Note:</b> If not specified, a default text (in the respective language) will be displayed. <br> <b>Note:</b> The <code>valueStateMessage</code> would be displayed, when the <code>ui5--file-uploader</code> is in <code>Information</code>, <code>Warning</code> or <code>Error</code> value state.
+   * **Note:** If not specified, a default text (in the respective language) will be displayed.
+   * **Note:** The `valueStateMessage` would be displayed, when the `ui5--file-uploader` is in `Information`, `Warning` or `Error` value state.
    */
   valueStateMessage?: ReactNode | ReactNode[];
   /**
@@ -57,7 +70,9 @@ export interface FileUploaderPropTypes extends Omit<WithWebComponentPropTypes, '
 }
 
 /**
- *  The <code>FileUploader</code> opens a file explorer dialog and enables users to upload files. The component consists of input field, but you can provide an HTML element by your choice to trigger the file upload, by using the default slot. Furthermore, you can set the property "hideInput" to "true" to hide the input field. <br> To get all selected files, you can simply use the read-only "files" property. To restrict the types of files the user can select, you can use the "accept" property. <br> And, similar to all input based components, the FileUploader supports "valueState", "placeholder", "name", and "disabled" properties. For the <code>FileUploader</code>
+ * The `FileUploader` opens a file explorer dialog and enables users to upload files. The component consists of input field, but you can provide an HTML element by your choice to trigger the file upload, by using the default slot. Furthermore, you can set the property "hideInput" to "true" to hide the input field.
+ * To get all selected files, you can simply use the read-only "files" property. To restrict the types of files the user can select, you can use the "accept" property.
+ * And, similar to all input based components, the FileUploader supports "valueState", "placeholder", "name", and "disabled" properties. For the `FileUploader`
  *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/FileUploader" target="_blank">UI5 Web Components Playground</a>
  */

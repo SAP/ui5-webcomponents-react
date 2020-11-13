@@ -6,7 +6,7 @@ import { FC, ReactNode } from 'react';
 
 export interface DatePickerPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput'> {
   /**
-   * Determines whether the <code>DatePicker</code> is displayed as disabled.
+   * Determines whether the `DatePicker` is displayed as disabled.
    */
   disabled?: boolean;
   /**
@@ -14,9 +14,9 @@ export interface DatePickerPropTypes extends Omit<WithWebComponentPropTypes, 'on
    */
   formatPattern?: string;
   /**
-   * Defines the visibility of the week numbers column. <br><br><br/><br/>
+   * Defines the visibility of the week numbers column.
    *
-   * <b>Note:<b> For calendars other than Gregorian, the week numbers are not displayed regardless of what is set.
+   * **Note: **For calendars other than Gregorian, the week numbers are not displayed regardless of what is set.****
    */
   hideWeekNumbers?: boolean;
   /**
@@ -28,29 +28,37 @@ export interface DatePickerPropTypes extends Omit<WithWebComponentPropTypes, 'on
    */
   minDate?: string;
   /**
-   * Determines the name with which the <code>DatePicker</code> will be submitted in an HTML form.<br/><br/>
+   * Determines the name with which the `DatePicker` will be submitted in an HTML form.
    *
-   * <b>Important:</b> For the <code>name</code> property to have effect, you must add the following import to your project: <code>import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";</code><br/><br/>
+   * **Important:** For the `name` property to have effect, you must add the following import to your project: `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
    *
-   * <b>Note:</b> When set, a native <code>input</code> HTML element will be created inside the <code>DatePicker</code> so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
+   * **Note:** When set, a native `input` HTML element will be created inside the `DatePicker` so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
    */
   name?: string;
   /**
-   * Defines a short hint, intended to aid the user with data entry when the <code>DatePicker</code> has no value.<br/><br/>
+   * Defines a short hint, intended to aid the user with data entry when the `DatePicker` has no value.
    *
-   * <b>Note:</b> When no placeholder is set, the format pattern is displayed as a placeholder. Passing an empty string as the value of this property will make the <code>DatePicker</code> appear empty - without placeholder or format pattern.
+   * **Note:** When no placeholder is set, the format pattern is displayed as a placeholder. Passing an empty string as the value of this property will make the `DatePicker` appear empty - without placeholder or format pattern.
    */
   placeholder?: string;
   /**
-   * Determines the calendar type. The input value is formated according to the calendar type and the picker shows the months and years from the specified calendar. <br><br> Available options are: <ul> <li><code>Gregorian</code></li> <li><code>Islamic</code></li> <li><code>Japanese</code></li> <li><code>Buddhist</code></li> <li><code>Persian</code></li> </ul><br/><b>Note:</b> Calendar types other than Gregorian must be imported manually:<br /><code>import "@ui5/webcomponents-localization/dist/features/calendar/{primaryCalendarType}.js";</code>
+   * Determines the calendar type. The input value is formated according to the calendar type and the picker shows the months and years from the specified calendar.
+   *
+   * Available options are:
+   *
+   * *   `Gregorian`
+   * *   `Islamic`
+   * *   `Japanese`
+   * *   `Buddhist`
+   * *   `Persian`<br/><b>Note:</b> Calendar types other than Gregorian must be imported manually:<br /><code>import "@ui5/webcomponents-localization/dist/features/calendar/{primaryCalendarType}.js";</code>
    */
   primaryCalendarType?: CalendarType;
   /**
-   * Determines whether the <code>DatePicker</code> is displayed as read-only.
+   * Determines whether the `DatePicker` is displayed as read-only.
    */
   readonly?: boolean;
   /**
-   * Defines whether the <code>ui5-datepicker</code> is required.
+   * Defines whether the `ui5-datepicker` is required.
    */
   required?: boolean;
   /**
@@ -58,13 +66,22 @@ export interface DatePickerPropTypes extends Omit<WithWebComponentPropTypes, 'on
    */
   value?: string;
   /**
-   * Defines the value state of the <code>DatePicker</code>. <br><br> Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>
+   * Defines the value state of the `DatePicker`.
+   *
+   * Available options are:
+   *
+   * *   `None`
+   * *   `Error`
+   * *   `Warning`
+   * *   `Success`
+   * *   `Information`
    */
   valueState?: ValueState;
   /**
-   * Defines the value state message that will be displayed as pop up under the <code>DatePicker</code>. <br><br><br/><br/>
+   * Defines the value state message that will be displayed as pop up under the `DatePicker`.
    *
-   * <b>Note:</b> If not specified, a default text (in the respective language) will be displayed. <br> <b>Note:</b> The <code>valueStateMessage</code> would be displayed, when the <code>DatePicker</code> is in <code>Information</code>, <code>Warning</code> or <code>Error</code> value state.
+   * **Note:** If not specified, a default text (in the respective language) will be displayed.
+   * **Note:** The `valueStateMessage` would be displayed, when the `DatePicker` is in `Information`, `Warning` or `Error` value state.
    */
   valueStateMessage?: ReactNode;
   /**

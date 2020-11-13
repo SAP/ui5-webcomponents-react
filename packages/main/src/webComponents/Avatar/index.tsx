@@ -8,17 +8,37 @@ import { FC } from 'react';
 
 export interface AvatarPropTypes extends WithWebComponentPropTypes {
   /**
-   * Defines the text alternative of the <code>Avatar</code>. If not provided a default text alternative will be set, if present.
+   * Defines the text alternative of the `Avatar`. If not provided a default text alternative will be set, if present.
    */
   accessibleName?: string;
   /**
-   * Defines the background color of the desired image. <br><br> Available options are: <ul> <li><code>Accent1</code></li> <li><code>Accent2</code></li> <li><code>Accent3</code></li> <li><code>Accent4</code></li> <li><code>Accent5</code></li> <li><code>Accent6</code></li> <li><code>Accent7</code></li> <li><code>Accent8</code></li> <li><code>Accent9</code></li> <li><code>Accent10</code></li> <li><code>Placeholder</code></li> <ul>
+   * Defines the background color of the desired image.
+   *
+   * Available options are:
+   *
+   * *   `Accent1`
+   * *   `Accent2`
+   * *   `Accent3`
+   * *   `Accent4`
+   * *   `Accent5`
+   * *   `Accent6`
+   * *   `Accent7`
+   * *   `Accent8`
+   * *   `Accent9`
+   * *   `Accent10`
+   * *   `Placeholder`
    */
   backgroundColor?: AvatarBackgroundColor;
   /**
-   * Defines the name of the UI5 Icon, that would be displayed. <br> <b>Note:</b> If <code>image</code> is set, the property would be ignored. <br> <b>Note:</b> You should import the desired icon first, then use its name as "icon". <br><br> import "@ui5/webcomponents-icons/dist/{icon_name}.js" <br> <pre>&lt;Avatar icon-src="employee"></pre><br/><br/>
+   * Defines the name of the UI5 Icon, that would be displayed.
+   * **Note:** If `image` is set, the property would be ignored.
+   * **Note:** You should import the desired icon first, then use its name as "icon".
    *
-   * See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
+   * import "@ui5/webcomponents-icons/dist/{icon\_name}.js"
+   *
+   * <Avatar icon-src="employee">
+   *
+   * See all the available icons in the Icon Explorer.
    */
   icon?: string;
   /**
@@ -26,19 +46,38 @@ export interface AvatarPropTypes extends WithWebComponentPropTypes {
    */
   image?: string;
   /**
-   * Defines the fit type of the desired image. <br><br> Available options are: <ul> <li><code>Cover</code></li> <li><code>Contain</code></li> <ul>
+   * Defines the fit type of the desired image.
+   *
+   * Available options are:
+   *
+   * *   `Cover`
+   * *   `Contain`
    */
   imageFitType?: AvatarFitType;
   /**
-   * Defines the displayed initials. <br> Up to two Latin letters can be displayed as initials in a <code>Avatar</code>.
+   * Defines the displayed initials.
+   * Up to two Latin letters can be displayed as initials in a `Avatar`.
    */
   initials?: string;
   /**
-   * Defines the shape of the <code>Avatar</code>. <br><br> Available options are: <ul> <li><code>Circle</code></li> <li><code>Square</code></li> <ul>
+   * Defines the shape of the `Avatar`.
+   *
+   * Available options are:
+   *
+   * *   `Circle`
+   * *   `Square`
    */
   shape?: AvatarShape;
   /**
-   * Defines predefined size of the <code>Avatar</code>. <br><br> Available options are: <ul> <li><code>XS</code></li> <li><code>S</code></li> <li><code>M</code></li> <li><code>L</code></li> <li><code>XL</code></li> <ul>
+   * Defines predefined size of the `Avatar`.
+   *
+   * Available options are:
+   *
+   * *   `XS`
+   * *   `S`
+   * *   `M`
+   * *   `L`
+   * *   `XL`
    */
   size?: AvatarSize;
 }

@@ -4,15 +4,18 @@ import { FC, ReactNode } from 'react';
 
 export interface BadgePropTypes extends WithWebComponentPropTypes {
   /**
-   * Defines the color scheme of the <code>Badge</code>. There are 10 predefined schemes. Each scheme applies different values for the <code>background-color</code> and <code>border-color</code>. To use one you can set a number from <code>"1"</code> to <code>"10"</code>. The <code>colorScheme</code> <code>"1"</code> will be set by default. <br><br> <b>Note:</b> Color schemes have no visual representation in High Contrast Black (sap_belize_hcb) theme.
+   * Defines the color scheme of the `Badge`. There are 10 predefined schemes. Each scheme applies different values for the `background-color` and `border-color`. To use one you can set a number from `"1"` to `"10"`. The `colorScheme` `"1"` will be set by default.
+   *
+   * **Note:** Color schemes have no visual representation in High Contrast Black (sap\_belize\_hcb) theme.
    */
   colorScheme?: string;
   /**
-   * Defines the text of the <code>Badge</code>. <br><b>Note:</b> Аlthough this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
+   * Defines the text of the `Badge`.
+   * **Note:** Аlthough this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Defines the <code>Icon</code> to be displayed in the <code>Badge</code>.
+   * Defines the `ui5-icon` to be displayed in the `Badge`.
    */
   icon?: ReactNode | ReactNode[];
 }

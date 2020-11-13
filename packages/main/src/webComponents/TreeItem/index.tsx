@@ -8,7 +8,8 @@ export interface TreeItemPropTypes extends WithWebComponentPropTypes {
    */
   expanded?: boolean;
   /**
-   * Defines whether the tree node has children, even if currently no other tree nodes are slotted inside. <br> <i>Note:</i> This property is useful for showing big tree structures where not all nodes are initially loaded due to performance reasons. Set this to <code>true</code> for nodes you intend to load lazily, when the user clicks the expand button. It is not necessary to set this property otherwise. If a tree item has children, the expand button will be displayed anyway.
+   * Defines whether the tree node has children, even if currently no other tree nodes are slotted inside.
+   * _Note:_ This property is useful for showing big tree structures where not all nodes are initially loaded due to performance reasons. Set this to `true` for nodes you intend to load lazily, when the user clicks the expand button. It is not necessary to set this property otherwise. If a tree item has children, the expand button will be displayed anyway.
    */
   hasChildren?: boolean;
   /**
@@ -16,7 +17,7 @@ export interface TreeItemPropTypes extends WithWebComponentPropTypes {
    */
   icon?: string;
   /**
-   * Defines whether the tree node is selected by the user. Only has effect if the <code>Tree</code> is in one of the following modes: in <code>SingleSelect</code>, <code>SingleSelectBegin</code>, <code>SingleSelectEnd</code> and <code>MultiSelect</code>.
+   * Defines whether the tree node is selected by the user. Only has effect if the `ui5-tree` is in one of the following modes: in `SingleSelect`, `SingleSelectBegin`, `SingleSelectEnd` and `MultiSelect`.
    */
   selected?: boolean;
   /**
@@ -24,7 +25,7 @@ export interface TreeItemPropTypes extends WithWebComponentPropTypes {
    */
   text?: string;
   /**
-   * Defines the items of this <code>TreeItem</code>.
+   * Defines the items of this `TreeItem`.
    */
   children?: ReactNode | ReactNode[];
 }

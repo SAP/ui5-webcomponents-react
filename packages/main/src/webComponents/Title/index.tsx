@@ -5,15 +5,17 @@ import { FC, ReactNode } from 'react';
 
 export interface TitlePropTypes extends WithWebComponentPropTypes {
   /**
-   * Defines the <code>Title</code> level. Available options are: <code>"H6"</code> to <code>"H1"</code>.
+   * Defines the `Title` level. Available options are: `"H6"` to `"H1"`.
    */
   level?: TitleLevel;
   /**
-   * Defines whether the <code>Title</code> would wrap.
+   * Defines whether the `Title` would wrap.
    */
   wrap?: boolean;
   /**
-   * Defines the text of the <code>Title</code>. <br><br> <b>Note:</b> Аlthough this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
+   * Defines the text of the `Title`.
+   *
+   * **Note:** Аlthough this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
   children?: ReactNode | ReactNode[];
 }

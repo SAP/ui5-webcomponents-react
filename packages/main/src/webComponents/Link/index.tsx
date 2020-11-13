@@ -5,27 +5,41 @@ import { FC, ReactNode } from 'react';
 
 export interface LinkPropTypes extends Omit<WithWebComponentPropTypes, 'onClick'> {
   /**
-   * Defines the <code>Link</code> design. <br><br> <b>Note:</b> Avaialble options are <code>Default</code>, <code>Subtle</code>, and <code>Emphasized</code>.
+   * Defines the `Link` design.
+   *
+   * **Note:** Avaialble options are `Default`, `Subtle`, and `Emphasized`.
    */
   design?: LinkDesign;
   /**
-   * Defines whether the <code>Link</code> is disabled. <br><br> <b>Note:</b> When disabled, the <code>Link</code> cannot be triggered by the user.
+   * Defines whether the `Link` is disabled.
+   *
+   * **Note:** When disabled, the `Link` cannot be triggered by the user.
    */
   disabled?: boolean;
   /**
-   * Defines the <code>Link</code> href. <br><br> <b>Note:</b> Standard hyperlink behavior is supported.
+   * Defines the `Link` href.
+   *
+   * **Note:** Standard hyperlink behavior is supported.
    */
   href?: string;
   /**
-   * Defines the <code>Link</code> target. <br><br> <b>Notes:</b> <ul> <li>Available options are the standard values: <code>_self</code>, <code>_top</code>, <code>_blank</code>, <code>_parent</code>, and <code>_search</code>.</li> <li>This property must only be used when the <code>href</code> property is set.</li> </ul>
+   * Defines the `Link` target.
+   *
+   * **Notes:**
+   *
+   * *   Available options are the standard values: `_self`, `_top`, `_blank`, `_parent`, and `_search`.
+   * *   This property must only be used when the `href` property is set.
    */
   target?: string;
   /**
-   * Defines whether the <code>Link</code> text should wrap when there is no sufficient space. <br><br> <b>Note:</b> The text is truncated by default.
+   * Defines whether the `Link` text should wrap when there is no sufficient space.
+   *
+   * **Note:** The text is truncated by default.
    */
   wrap?: boolean;
   /**
-   * Defines the text of the <code>Link</code>. <br><b>Note:</b> Аlthough this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
+   * Defines the text of the `Link`.
+   * **Note:** Аlthough this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
   children?: ReactNode | ReactNode[];
   /**

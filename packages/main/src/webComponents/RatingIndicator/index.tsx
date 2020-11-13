@@ -4,9 +4,9 @@ import { FC } from 'react';
 
 export interface RatingIndicatorPropTypes extends Omit<WithWebComponentPropTypes, 'onChange'> {
   /**
-   * Defines whether the <code>RatingIndicator</code> is disabled.<br/><br/>
+   * Defines whether the `RatingIndicator` is disabled.
    *
-   * <b>Note:</b> A disabled <code>RatingIndicator</code> is completely noninteractive.
+   * **Note:** A disabled `RatingIndicator` is completely noninteractive.
    */
   disabled?: boolean;
   /**
@@ -14,11 +14,19 @@ export interface RatingIndicatorPropTypes extends Omit<WithWebComponentPropTypes
    */
   maxValue?: number;
   /**
-   * Defines whether the <code>RatingIndicator</code> is read-only. <br><br> <b>Note:</b> A read-only <code>RatingIndicator</code> is not editable, but still provides visual feedback upon user interaction.
+   * Defines whether the `RatingIndicator` is read-only.
+   *
+   * **Note:** A read-only `RatingIndicator` is not editable, but still provides visual feedback upon user interaction.
    */
   readonly?: boolean;
   /**
-   * The indicated value of the rating <br><br> <b>Note:</b> If you set a number which is not round, it would be shown as follows: <ul><li>1.0 - 1.2 -> 1</li><li>1.3 - 1.7 -> 1.5</li><li>1.8 - 1.9 -> 2</li></ul>
+   * The indicated value of the rating
+   *
+   * **Note:** If you set a number which is not round, it would be shown as follows:
+   *
+   * *   1.0 - 1.2 -> 1
+   * *   1.3 - 1.7 -> 1.5
+   * *   1.8 - 1.9 -> 2
    */
   value?: number;
   /**
@@ -28,7 +36,7 @@ export interface RatingIndicatorPropTypes extends Omit<WithWebComponentPropTypes
 }
 
 /**
- *  The rating indicator is used to display a specific number of icons that are used to rate an item. Additionally, it is also used to display the average and overall ratings.
+ * The rating indicator is used to display a specific number of icons that are used to rate an item. Additionally, it is also used to display the average and overall ratings.
  *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/RatingIndicator" target="_blank">UI5 Web Components Playground</a>
  */

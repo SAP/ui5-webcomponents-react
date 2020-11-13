@@ -4,11 +4,16 @@ import { FC, ReactNode } from 'react';
 
 export interface TableColumnPropTypes extends WithWebComponentPropTypes {
   /**
-   * According to your <code>minWidth</code> settings, the <code>TableColumn</code> can be hidden in different screen sizes. <br><br> Setting this property to <code>true</code>, shows this column as pop-in instead of hiding it.
+   * According to your `minWidth` settings, the `TableColumn` can be hidden in different screen sizes.
+   *
+   * Setting this property to `true`, shows this column as pop-in instead of hiding it.
    */
   demandPopin?: boolean;
   /**
-   * Defines the minimum table width required to display this column. By default it is always displayed. <br><br> The responsive behavior of the <code>Table</code> is determined by this property. As an example, by setting <code>minWidth</code> property to <code>40em</code> shows this column on tablet (and desktop) but hides it on mobile. <br> For further responsive design options, see <code>demandPopin</code> property.
+   * Defines the minimum table width required to display this column. By default it is always displayed.
+   *
+   * The responsive behavior of the `ui5-table` is determined by this property. As an example, by setting `minWidth` property to `40em` shows this column on tablet (and desktop) but hides it on mobile.
+   * For further responsive design options, see `demandPopin` property.
    */
   minWidth?: number;
   /**

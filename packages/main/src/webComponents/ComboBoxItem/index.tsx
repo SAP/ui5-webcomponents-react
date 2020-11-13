@@ -4,7 +4,7 @@ import { FC } from 'react';
 
 export interface ComboBoxItemPropTypes extends WithWebComponentPropTypes {
   /**
-   * Defines the text of the <code>ComboBoxItem</code>.
+   * Defines the text of the `ComboBoxItem`.
    */
   text?: string;
 }

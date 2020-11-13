@@ -4,7 +4,9 @@ import { FC, ReactNode } from 'react';
 
 export interface TableRowPropTypes extends WithWebComponentPropTypes {
   /**
-   * Defines the cells of the <code>TableRow</code>. <br><br> <b>Note:</b> Use <code>TableCell</code> for the intended design.
+   * Defines the cells of the `TableRow`.
+   *
+   * **Note:** Use `ui5-table-cell` for the intended design.
    */
   children?: ReactNode | ReactNode[];
 }

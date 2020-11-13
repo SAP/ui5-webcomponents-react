@@ -4,19 +4,24 @@ import { FC, ReactNode } from 'react';
 
 export interface ShellBarPropTypes extends WithWebComponentPropTypes {
   /**
-   * Defines the <code>notificationCount</code>, displayed in the notification icon top-right corner.
+   * Defines the `notificationCount`, displayed in the notification icon top-right corner.
    */
   notificationCount?: string;
   /**
-   * Defines the <code>primaryTitle</code>. <br><br> <b>Note:</b> The <code>primaryTitle</code> would be hidden on S screen size (less than approx. 700px).
+   * Defines the `primaryTitle`.
+   *
+   * **Note:** The `primaryTitle` would be hidden on S screen size (less than approx. 700px).
    */
   primaryTitle?: string;
   /**
-   * Defines the <code>secondaryTitle</code>. <br><br> <b>Note:</b> The <code>secondaryTitle</code> would be hidden on S and M screen sizes (less than approx. 1300px).
+   * Defines the `secondaryTitle`.
+   *
+   * **Note:** The `secondaryTitle` would be hidden on S and M screen sizes (less than approx. 1300px).
    */
   secondaryTitle?: string;
   /**
-   * Defines, if the product CoPilot icon would be displayed. <br><b>Note:</b> By default the co-pilot is displayed as static SVG. If you need an animated co-pilot, you can import the <code>"@ui5/webcomponents-fiori/dist/features/CoPilotAnimation.js"</code> module as add-on feature.
+   * Defines, if the product CoPilot icon would be displayed.
+   * **Note:** By default the co-pilot is displayed as static SVG. If you need an animated co-pilot, you can import the `"@ui5/webcomponents-fiori/dist/features/CoPilotAnimation.js"` module as add-on feature.
    */
   showCoPilot?: boolean;
   /**
@@ -28,27 +33,31 @@ export interface ShellBarPropTypes extends WithWebComponentPropTypes {
    */
   showProductSwitch?: boolean;
   /**
-   * Defines the <code>ShellBar</code> aditional items. <br><br> <b>Note:</b> You can use the &nbsp;&lt;ShellBar-item>&lt;/ShellBar-item>.
+   * Defines the `ShellBar` aditional items.
+   *
+   * **Note:** You can use the  <ShellBar-item></ShellBar-item>.
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Defines the logo of the <code>ShellBar</code>. For example, you can use <code>Avatar</code> or <code>img</code> elements as logo.
+   * Defines the logo of the `ShellBar`. For example, you can use `ui5-avatar` or `img` elements as logo.
    */
   logo?: ReactNode;
   /**
-   * Defines the items displayed in menu after a click on the primary title. <br><br> <b>Note:</b> You can use the &nbsp;&lt;ui5-li>&lt;/ui5-li> and its ancestors.
+   * Defines the items displayed in menu after a click on the primary title.
+   *
+   * **Note:** You can use the  <ui5-li></ui5-li> and its ancestors.
    */
   menuItems?: ReactNode | ReactNode[];
   /**
-   * You can pass <code>Avatar</code> to set the profile image/icon. If no profile slot is set - profile will be excluded from actions.
+   * You can pass `ui5-avatar` to set the profile image/icon. If no profile slot is set - profile will be excluded from actions.
    */
   profile?: ReactNode;
   /**
-   * Defines the <code>Input</code>, that will be used as a search field.
+   * Defines the `ui5-input`, that will be used as a search field.
    */
   searchField?: ReactNode | ReactNode[];
   /**
-   * Defines a <code>Button</code> in the bar that will be placed in the beginning. We encourage this slot to be used for a back or home button. It gets overstyled to match ShellBar's styling.
+   * Defines a `ui5-button` in the bar that will be placed in the beginning. We encourage this slot to be used for a back or home button. It gets overstyled to match ShellBar's styling.
    */
   startButton?: ReactNode | ReactNode[];
   /**

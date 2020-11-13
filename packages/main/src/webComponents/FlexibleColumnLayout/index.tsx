@@ -5,7 +5,25 @@ import { FC, ReactNode } from 'react';
 
 export interface FlexibleColumnLayoutPropTypes extends WithWebComponentPropTypes {
   /**
-   * Defines the columns layout and their proportion. <br><br> <b>Note:</b> The layout also depends on the screen size - one column for screens smaller than 900px, two columns between 900px and 1280px and three columns for sizes bigger than 1280px. <br><br> Available options are: <ul> <li><code>OneColumn</code></li> <li><code>TwoColumnsStartExpanded</code></li> <li><code>TwoColumnsMidExpanded</code></li> <li><code>ThreeColumnsMidExpanded</code></li> <li><code>ThreeColumnsEndExpanded</code></li> <li><code>ThreeColumnsStartExpandedEndHidden</code></li> <li><code>ThreeColumnsMidExpandedEndHidden</code></li> <li><code>MidColumnFullScreen</code></li> <li><code>EndColumnFullScreen</code></li> </ul> <br><br> <b>For example:</b> layout=<code>TwoColumnsStartExpanded</code> means the layout will display up to two columns in 67%/33% proportion.
+   * Defines the columns layout and their proportion.
+   *
+   * **Note:** The layout also depends on the screen size - one column for screens smaller than 900px, two columns between 900px and 1280px and three columns for sizes bigger than 1280px.
+   *
+   * Available options are:
+   *
+   * *   `OneColumn`
+   * *   `TwoColumnsStartExpanded`
+   * *   `TwoColumnsMidExpanded`
+   * *   `ThreeColumnsMidExpanded`
+   * *   `ThreeColumnsEndExpanded`
+   * *   `ThreeColumnsStartExpandedEndHidden`
+   * *   `ThreeColumnsMidExpandedEndHidden`
+   * *   `MidColumnFullScreen`
+   * *   `EndColumnFullScreen`
+   *
+   *
+   *
+   * **For example:** layout=`TwoColumnsStartExpanded` means the layout will display up to two columns in 67%/33% proportion.
    */
   layout?: FCLLayout;
   /**

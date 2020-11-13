@@ -4,11 +4,11 @@ import { FC } from 'react';
 
 export interface MultiComboBoxItemPropTypes extends WithWebComponentPropTypes {
   /**
-   * Defines the selected state of the <code>MultiComboBoxItem</code>.
+   * Defines the selected state of the `MultiComboBoxItem`.
    */
   selected?: boolean;
   /**
-   * Defines the text of the <code>ComboBoxItem</code>.
+   * Defines the text of the `ui5-cb-item`.
    */
   text?: string;
 }

@@ -1,28 +1,40 @@
-import '@ui5/webcomponents-fiori/dist/ProductSwitchItem';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
+import '@ui5/webcomponents-fiori/dist/ProductSwitchItem';
 import { FC } from 'react';
 
 export interface ProductSwitchItemPropTypes extends Omit<WithWebComponentPropTypes, 'onClick'> {
   /**
-   * Defines the title of the <code>ProductSwitchItem</code>.
+   * Defines the title of the `ProductSwitchItem`.
    */
   heading?: string;
   /**
-   * Defines the icon to be displayed as a graphical element within the <code>ProductSwitchItem</code>. <br><br> Example: <br> <pre>ProductSwitchItem icon="palette"</pre><br/><br/>
+   * Defines the icon to be displayed as a graphical element within the `ProductSwitchItem`.
    *
-   * See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
+   * Example:
+   *
+   * ProductSwitchItem icon="palette"
+   *
+   * See all the available icons in the Icon Explorer.
    */
   icon?: string;
   /**
-   * Defines the subtitle of the <code>ProductSwitchItem</code>.
+   * Defines the subtitle of the `ProductSwitchItem`.
    */
   subtitle?: string;
   /**
-   * Defines a target where the <code>targetSrc</code> content must be open. <br><br> Available options are: <ul> <li><code>_self</code></li> <li><code>_top</code></li> <li><code>_blank</code></li> <li><code>_parent</code></li> <li><code>_search</code></li> </ul>
+   * Defines a target where the `targetSrc` content must be open.
+   *
+   * Available options are:
+   *
+   * *   `_self`
+   * *   `_top`
+   * *   `_blank`
+   * *   `_parent`
+   * *   `_search`
    */
   target?: string;
   /**
-   * Defines the <code>ProductSwitchItem</code> target URI. Supports standard hyperlink behavior.
+   * Defines the `ProductSwitchItem` target URI. Supports standard hyperlink behavior.
    */
   targetSrc?: string;
   /**
@@ -32,7 +44,9 @@ export interface ProductSwitchItemPropTypes extends Omit<WithWebComponentPropTyp
 }
 
 /**
- *  The <code>ProductSwitchItem</code> web component represents the items displayed in the <code>ProductSwitch</code> web component. <br><br> <b>Note:</b> <code>ProductSwitchItem</code> is not supported when used outside of <code>ProductSwitch</code>. <br><br>
+ * The `ProductSwitchItem` web component represents the items displayed in the `ProductSwitch` web component.
+ *
+ * **Note:** `ProductSwitchItem` is not supported when used outside of `ProductSwitch`.
  *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/ProductSwitchItem" target="_blank">UI5 Web Components Playground</a>
  */

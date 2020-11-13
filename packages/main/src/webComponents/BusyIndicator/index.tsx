@@ -9,7 +9,9 @@ export interface BusyIndicatorPropTypes extends WithWebComponentPropTypes {
    */
   active?: boolean;
   /**
-   * Defines the size of the <code>BusyIndicator</code>. <br><br> <b>Note:</b> Available options are "Small", "Medium", and "Large".
+   * Defines the size of the `BusyIndicator`.
+   *
+   * **Note:** Available options are "Small", "Medium", and "Large".
    */
   size?: BusyIndicatorSize;
   /**
@@ -17,7 +19,7 @@ export interface BusyIndicatorPropTypes extends WithWebComponentPropTypes {
    */
   text?: string;
   /**
-   * Determines the content over which the <code>BusyIndicator</code> will appear.
+   * Determines the content over which the `BusyIndicator` will appear.
    */
   children?: ReactNode | ReactNode[];
 }

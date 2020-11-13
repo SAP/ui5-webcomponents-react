@@ -5,9 +5,9 @@ import { FC } from 'react';
 
 export interface CalendarPropTypes extends WithWebComponentPropTypes {
   /**
-   * Defines the visibility of the week numbers column. <br><br><br/><br/>
+   * Defines the visibility of the week numbers column.
    *
-   * <b>Note:<b> For calendars other than Gregorian, the week numbers are not displayed regardless of what is set.
+   * **Note: **For calendars other than Gregorian, the week numbers are not displayed regardless of what is set.****
    */
   hideWeekNumbers?: boolean;
   /**

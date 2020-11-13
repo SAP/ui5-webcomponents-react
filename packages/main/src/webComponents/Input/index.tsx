@@ -6,11 +6,15 @@ import { FC, ReactNode } from 'react';
 
 export interface InputPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput' | 'onSubmit'> {
   /**
-   * Defines whether the <code>Input</code> is in disabled state. <br><br> <b>Note:</b> A disabled <code>Input</code> is completely noninteractive.
+   * Defines whether the `Input` is in disabled state.
+   *
+   * **Note:** A disabled `Input` is completely noninteractive.
    */
   disabled?: boolean;
   /**
-   * Defines if characters within the suggestions are to be highlighted in case the input value matches parts of the suggestions text. <br><br> <b>Note:</b> takes effect when <code>showSuggestions</code> is set to <code>true</code>
+   * Defines if characters within the suggestions are to be highlighted in case the input value matches parts of the suggestions text.
+   *
+   * **Note:** takes effect when `showSuggestions` is set to `true`
    */
   highlight?: boolean;
   /**
@@ -18,53 +22,88 @@ export interface InputPropTypes extends Omit<WithWebComponentPropTypes, 'onChang
    */
   maxlength?: number;
   /**
-   * Determines the name with which the <code>Input</code> will be submitted in an HTML form.<br/><br/>
+   * Determines the name with which the `Input` will be submitted in an HTML form.
    *
-   * <b>Important:</b> For the <code>name</code> property to have effect, you must add the following import to your project: <code>import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";</code><br/><br/>
+   * **Important:** For the `name` property to have effect, you must add the following import to your project: `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
    *
-   * <b>Note:</b> When set, a native <code>input</code> HTML element will be created inside the <code>Input</code> so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
+   * **Note:** When set, a native `input` HTML element will be created inside the `Input` so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
    */
   name?: string;
   /**
-   * Defines a short hint intended to aid the user with data entry when the <code>Input</code> has no value.
+   * Defines a short hint intended to aid the user with data entry when the `Input` has no value.
    */
   placeholder?: string;
   /**
-   * Defines whether the <code>Input</code> is read-only. <br><br> <b>Note:</b> A read-only <code>Input</code> is not editable, but still provides visual feedback upon user interaction.
+   * Defines whether the `Input` is read-only.
+   *
+   * **Note:** A read-only `Input` is not editable, but still provides visual feedback upon user interaction.
    */
   readonly?: boolean;
   /**
-   * Defines whether the <code>Input</code> is required.
+   * Defines whether the `Input` is required.
    */
   required?: boolean;
   /**
-   * Defines whether the <code>Input</code> should show suggestions, if such are present. <br><br> <b>Note:</b> Don`t forget to import the <code>InputSuggestions</code> module from <code>"@ui5/webcomponents/dist/features/InputSuggestions.js"</code> to enable this functionality.
+   * Defines whether the `Input` should show suggestions, if such are present.
+   *
+   * **Note:** Don\`t forget to import the `InputSuggestions` module from `"@ui5/webcomponents/dist/features/InputSuggestions.js"` to enable this functionality.
    */
   showSuggestions?: boolean;
   /**
-   * Defines the HTML type of the <code>Input</code>. Available options are: <code>Text</code>, <code>Email</code>, <code>Number</code>, <code>Password</code>, <code>Tel</code>, and <code>URL</code>. <br><br> <b>Notes:</b> <ul> <li>The particular effect of this property differs depending on the browser and the current language settings, especially for type <code>Number</code>.</li> <li>The property is mostly intended to be used with touch devices that use different soft keyboard layouts depending on the given input type.</li> </ul>
+   * Defines the HTML type of the `Input`. Available options are: `Text`, `Email`, `Number`, `Password`, `Tel`, and `URL`.
+   *
+   * **Notes:**
+   *
+   * *   The particular effect of this property differs depending on the browser and the current language settings, especially for type `Number`.
+   * *   The property is mostly intended to be used with touch devices that use different soft keyboard layouts depending on the given input type.
    */
   type?: InputType;
   /**
-   * Defines the value of the <code>Input</code>. <br><br> <b>Note:</b> The property is updated upon typing.
+   * Defines the value of the `Input`.
+   *
+   * **Note:** The property is updated upon typing.
    */
   value?: string;
   /**
-   * Defines the value state of the <code>Input</code>. <br><br> Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>
+   * Defines the value state of the `Input`.
+   *
+   * Available options are:
+   *
+   * *   `None`
+   * *   `Error`
+   * *   `Warning`
+   * *   `Success`
+   * *   `Information`
    */
   valueState?: ValueState;
   /**
-   * Defines the <code>Input</code> suggestion items. <br><br> Example: <br><br> &lt;Input showSuggestions><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;SuggestionItem text="Item #1">&lt;/SuggestionItem><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;SuggestionItem text="Item #2">&lt;/SuggestionItem><br> &lt;/Input>  <br><br> <b>Note:</b> The suggestion would be displayed only if the <code>showSuggestions</code> property is set to <code>true</code>. <br><br> <b>Note:</b> The &lt;SuggestionItem> is recommended to be used as a suggestion item. Importing the Input Suggestions Support feature: <br> <code>import "@ui5/webcomponents/dist/features/InputSuggestions.js";</code> <br> also automatically imports the &lt;SuggestionItem> for your convenience.
+   * Defines the `Input` suggestion items.
+   *
+   * Example:
+   *
+   * <Input show-suggestions>
+   *     <ui5-suggestion-item text="Item #1"></ui5-suggestion-item>
+   *     <ui5-suggestion-item text="Item #2"></ui5-suggestion-item>
+   * </Input>
+   *
+   *
+   * **Note:** The suggestion would be displayed only if the `showSuggestions` property is set to `true`.
+   *
+   * **Note:** The <ui5-suggestion-item> is recommended to be used as a suggestion item. Importing the Input Suggestions Support feature:
+   * `import "@ui5/webcomponents/dist/features/InputSuggestions.js";`
+   * also automatically imports the <ui5-suggestion-item> for your convenience.
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Defines the icon to be displayed in the <code>Input</code>.
+   * Defines the icon to be displayed in the `Input`.
    */
   icon?: ReactNode | ReactNode[];
   /**
-   * Defines the value state message that will be displayed as pop up under the <code>Input</code>. <br><br><br/><br/>
+   * Defines the value state message that will be displayed as pop up under the `Input`.
    *
-   * <b>Note:</b> If not specified, a default text (in the respective language) will be displayed. <br> <b>Note:</b> The <code>valueStateMessage</code> would be displayed, when the <code>Input</code> is in <code>Information</code>, <code>Warning</code> or <code>Error</code> value state. <br> <b>Note:</b> If the <code>Input</code> has <code>suggestionItems</code>, the <code>valueStateMessage</code> would be displayed as part of the same popover, if used on desktop, or dialog - on phone.
+   * **Note:** If not specified, a default text (in the respective language) will be displayed.
+   * **Note:** The `valueStateMessage` would be displayed, when the `Input` is in `Information`, `Warning` or `Error` value state.
+   * **Note:** If the `Input` has `suggestionItems`, the `valueStateMessage` would be displayed as part of the same popover, if used on desktop, or dialog - on phone.
    */
   valueStateMessage?: ReactNode | ReactNode[];
   /**
@@ -94,7 +133,12 @@ export interface InputPropTypes extends Omit<WithWebComponentPropTypes, 'onChang
 }
 
 /**
- *  The <code>Input</code> component allows the user to enter and edit text or numeric values in one line. <br> Additionally, you can provide <code>suggestionItems</code>, that are displayed in a popover right under the input. <br><br> The text field can be editable or read-only (<code>readonly</code> property), and it can be enabled or disabled (<code>enabled</code> property). To visualize semantic states, such as "error" or "warning", the <code>valueState</code> property is provided. When the user makes changes to the text, the change event is fired, which enables you to react on any text change. <br><br> <b>Note:</b> If you are using the <code>Input</code> as a single npm module, don't forget to import the <code>InputSuggestions</code> module from "@ui5/webcomponents/dist/features/InputSuggestions.js" to enable the suggestions functionality.
+ * The `Input` component allows the user to enter and edit text or numeric values in one line.
+ * Additionally, you can provide `suggestionItems`, that are displayed in a popover right under the input.
+ *
+ * The text field can be editable or read-only (`readonly` property), and it can be enabled or disabled (`enabled` property). To visualize semantic states, such as "error" or "warning", the `valueState` property is provided. When the user makes changes to the text, the change event is fired, which enables you to react on any text change.
+ *
+ * **Note:** If you are using the `Input` as a single npm module, don't forget to import the `InputSuggestions` module from "@ui5/webcomponents/dist/features/InputSuggestions.js" to enable the suggestions functionality.
  *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Input" target="_blank">UI5 Web Components Playground</a>
  */

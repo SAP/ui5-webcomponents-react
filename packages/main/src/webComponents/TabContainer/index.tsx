@@ -14,23 +14,32 @@ export interface TabContainerPropTypes extends WithWebComponentPropTypes {
    */
   fixed?: boolean;
   /**
-   * Defines whether the overflow select list is displayed. <br><br> The overflow select list represents a list, where all tab filters are displayed so that it's easier for the user to select a specific tab filter.
+   * Defines whether the overflow select list is displayed.
+   *
+   * The overflow select list represents a list, where all tab filters are displayed so that it's easier for the user to select a specific tab filter.
    */
   showOverflow?: boolean;
   /**
-   * Defines the alignment of the <code>main text</code> and the <code>additionalText</code> of a tab.<br/><br/>
+   * Defines the alignment of the `main text` and the `additionalText` of a tab.
    *
-   * <b>Note:</b> The <code>main text</code> and the <code>additionalText</code> would be displayed vertically by defualt, but when set to <code>Inline</code>, they would be displayed horizontally.<br/><br/>
+   * **Note:** The `main text` and the `additionalText` would be displayed vertically by defualt, but when set to `Inline`, they would be displayed horizontally.
    *
-   * Available options are: <ul> <li><code>Standard</code></li> <li><code>Inline</code></li> <ul>
+   * Available options are:
+   *
+   * *   `Standard`
+   * *   `Inline`
    */
   tabLayout?: TabLayout;
   /**
-   * Defines the placement of the tab strip (tab buttons area) relative to the actual tabs' content. <br><br> <b>Note:</b> By default the tab strip is displayed above the tabs' content area and this is the recommended layout for most scenarios. Set to <code>Bottom</code> only when the <code>TabContainer</code> is at the bottom of the page and you want the tab strip to act as a menu.
+   * Defines the placement of the tab strip (tab buttons area) relative to the actual tabs' content.
+   *
+   * **Note:** By default the tab strip is displayed above the tabs' content area and this is the recommended layout for most scenarios. Set to `Bottom` only when the `TabContainer` is at the bottom of the page and you want the tab strip to act as a menu.
    */
   tabsPlacement?: TabContainerTabsPlacement;
   /**
-   * Defines the tabs. <br><br> <b>Note:</b> Use <code>Tab</code> and <code>TabSeparator</code> for the intended design.
+   * Defines the tabs.
+   *
+   * **Note:** Use `ui5-tab` and `ui5-tab-separator` for the intended design.
    */
   children?: ReactNode | ReactNode[];
   /**

@@ -4,41 +4,43 @@ import { FC } from 'react';
 
 export interface WizardStepPropTypes extends WithWebComponentPropTypes {
   /**
-   * When <code>branching</code> is enabled a dashed line would be displayed after the step, meant to indicate that the next step is not yet known and depends on user choice in the current step. <br><br><br/><br/>
+   * When `branching` is enabled a dashed line would be displayed after the step, meant to indicate that the next step is not yet known and depends on user choice in the current step.
    *
-   * <b>Note:</b> It is recommended to use <code>branching</code> on the last known step and later add new steps when it becomes clear how the wizard flow should continue.
+   * **Note:** It is recommended to use `branching` on the last known step and later add new steps when it becomes clear how the wizard flow should continue.
    */
   branching?: boolean;
   /**
-   * Defines if the step is <code>disabled</code>. When disabled the step is displayed, but the user can't select the step by clicking or navigate to it with scrolling. <br><br><br/><br/>
+   * Defines if the step is `disabled`. When disabled the step is displayed, but the user can't select the step by clicking or navigate to it with scrolling.
    *
-   * <b>Note:</b> Step can't be <code>selected</code> and <code>disabled</code> at the same time. In this case the <code>selected</code> property would take precedence.
+   * **Note:** Step can't be `selected` and `disabled` at the same time. In this case the `selected` property would take precedence.
    */
   disabled?: boolean;
   /**
-   * Defines the <code>heading</code> of the step. <br><br><br/><br/>
+   * Defines the `heading` of the step.
    *
-   * <b>Note:</b> the text is displayed in the <code>Wizard</code> navigation header. <br> <b>Note:</b> the text will hide on small sizes (about 559 px).
+   * **Note:** the text is displayed in the `ui5-wizard` navigation header.
+   * **Note:** the text will hide on small sizes (about 559 px).
    */
   heading?: string;
   /**
-   * Defines the <code>icon</code> of the step. <br><br><br/><br/>
+   * Defines the `icon` of the step.
    *
-   * <b>Note:</b> the icon is displayed in the <code>Wizard</code> navigation header. <br><br><br/><br/>
+   * **Note:** the icon is displayed in the `ui5-wizard` navigation header.
    *
-   * The SAP-icons font provides numerous options. See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
+   * The SAP-icons font provides numerous options. See all the available icons in the Icon Explorer.
    */
   icon?: string;
   /**
-   * Defines the step's <code>selected</code> state - the step that is currently active. <br><br><br/><br/>
+   * Defines the step's `selected` state - the step that is currently active.
    *
-   * <b>Note:</b> Step can't be <code>selected</code> and <code>disabled</code> at the same time. In this case the <code>selected</code> property would take precedence.
+   * **Note:** Step can't be `selected` and `disabled` at the same time. In this case the `selected` property would take precedence.
    */
   selected?: boolean;
   /**
-   * Defines the <code>subheading</code> of the step. <br><br><br/><br/>
+   * Defines the `subheading` of the step.
    *
-   * <b>Note:</b> the text is displayed in the <code>Wizard</code> navigation header. <br> <b>Note:</b> the text will hide on small sizes (about 559 px).
+   * **Note:** the text is displayed in the `ui5-wizard` navigation header.
+   * **Note:** the text will hide on small sizes (about 559 px).
    */
   subheading?: string;
 }

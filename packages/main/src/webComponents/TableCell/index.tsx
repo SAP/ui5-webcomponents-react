@@ -4,7 +4,7 @@ import { FC, ReactNode } from 'react';
 
 export interface TableCellPropTypes extends WithWebComponentPropTypes {
   /**
-   * Specifies the content of the <code>TableCell</code>.
+   * Specifies the content of the `TableCell`.
    */
   children?: ReactNode | ReactNode[];
 }

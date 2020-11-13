@@ -5,35 +5,45 @@ import { FC } from 'react';
 
 export interface CheckBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onChange'> {
   /**
-   * Defines if the <code>CheckBox</code> is checked. <br><br> <b>Note:</b> The property can be changed with user interaction, either by cliking/tapping on the <code>CheckBox</code>, or by pressing the Enter or Space key.
+   * Defines if the `CheckBox` is checked.
+   *
+   * **Note:** The property can be changed with user interaction, either by cliking/tapping on the `CheckBox`, or by pressing the Enter or Space key.
    */
   checked?: boolean;
   /**
-   * Defines whether the <code>CheckBox</code> is disabled. <br><br> <b>Note:</b> A disabled <code>CheckBox</code> is completely noninteractive.
+   * Defines whether the `CheckBox` is disabled.
+   *
+   * **Note:** A disabled `CheckBox` is completely noninteractive.
    */
   disabled?: boolean;
   /**
-   * Determines the name with which the <code>CheckBox</code> will be submitted in an HTML form.<br/><br/>
+   * Determines the name with which the `CheckBox` will be submitted in an HTML form.
    *
-   * <b>Important:</b> For the <code>name</code> property to have effect, you must add the following import to your project: <code>import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";</code><br/><br/>
+   * **Important:** For the `name` property to have effect, you must add the following import to your project: `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
    *
-   * <b>Note:</b> When set, a native <code>input</code> HTML element will be created inside the <code>CheckBox</code> so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
+   * **Note:** When set, a native `input` HTML element will be created inside the `CheckBox` so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
    */
   name?: string;
   /**
-   * Defines whether the <code>CheckBox</code> is read-only. <br><br> <b>Note:</b> A red-only <code>CheckBox</code> is not editable, but still provides visual feedback upon user interaction.
+   * Defines whether the `CheckBox` is read-only.
+   *
+   * **Note:** A red-only `CheckBox` is not editable, but still provides visual feedback upon user interaction.
    */
   readonly?: boolean;
   /**
-   * Defines the text of the <code>CheckBox</code>.
+   * Defines the text of the `CheckBox`.
    */
   text?: string;
   /**
-   * Defines the value state of the <code>CheckBox</code>. <br><br> <b>Note:</b> Available options are <code>Warning</code>, <code>Error</code>, and <code>None</code> (default).
+   * Defines the value state of the `CheckBox`.
+   *
+   * **Note:** Available options are `Warning`, `Error`, and `None` (default).
    */
   valueState?: ValueState;
   /**
-   * Defines whether the <code>CheckBox</code> text wraps when there is not enough space. <br><br> <b>Note:</b> By default, the text truncates when there is not enough space.
+   * Defines whether the `CheckBox` text wraps when there is not enough space.
+   *
+   * **Note:** By default, the text truncates when there is not enough space.
    */
   wrap?: boolean;
   /**
@@ -43,7 +53,11 @@ export interface CheckBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
 }
 
 /**
- *  Allows the user to set a binary value, such as true/false or yes/no for an item. <br><br> The <code>CheckBox</code> component consists of a box and a label that describes its purpose. If it's checked, an indicator is displayed inside the box. To check/uncheck the <code>CheckBox</code>, the user has to click or tap the square box or its label. <br><br> The <code>CheckBox</code> component only has 2 states - checked and unchecked. Clicking or tapping toggles the <code>CheckBox</code> between checked and unchecked state.
+ * Allows the user to set a binary value, such as true/false or yes/no for an item.
+ *
+ * The `CheckBox` component consists of a box and a label that describes its purpose. If it's checked, an indicator is displayed inside the box. To check/uncheck the `CheckBox`, the user has to click or tap the square box or its label.
+ *
+ * The `CheckBox` component only has 2 states - checked and unchecked. Clicking or tapping toggles the `CheckBox` between checked and unchecked state.
  *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/CheckBox" target="_blank">UI5 Web Components Playground</a>
  */

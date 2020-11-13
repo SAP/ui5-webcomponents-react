@@ -4,15 +4,17 @@ import { FC } from 'react';
 
 export interface OptionPropTypes extends WithWebComponentPropTypes {
   /**
-   * Defines the <code>icon</code> source URI. <br><br> <b>Note:</b> SAP-icons font provides numerous buil-in icons. To find all the available icons, see the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
+   * Defines the `icon` source URI.
+   *
+   * **Note:** SAP-icons font provides numerous buil-in icons. To find all the available icons, see the Icon Explorer.
    */
   icon?: string;
   /**
-   * Defines the selected state of the <code>Option</code>.
+   * Defines the selected state of the `Option`.
    */
   selected?: boolean;
   /**
-   * Defines the value of the <code>Select</code> inside an HTML Form element when this <code>Option</code> is selected. For more information on HTML Form support, see the <code>name</code> property of <code>Select</code>.
+   * Defines the value of the `ui5-select` inside an HTML Form element when this `Option` is selected. For more information on HTML Form support, see the `name` property of `ui5-select`.
    */
   value?: string;
 }

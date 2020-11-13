@@ -9,21 +9,27 @@ export interface MessageStripPropTypes extends WithWebComponentPropTypes {
    */
   noCloseButton?: boolean;
   /**
-   * Defines whether the MessageStrip will show an icon in the beginning. You can directly provide an icon with the <code>icon</code> slot. Otherwise, the default icon for the type will be used.
+   * Defines whether the MessageStrip will show an icon in the beginning. You can directly provide an icon with the `icon` slot. Otherwise, the default icon for the type will be used.
    */
   noIcon?: boolean;
   /**
-   * Defines the <code>MessageStrip</code> type. <br><br> <b>Note:</b> Available options are <code>"Information"</code>, <code>"Positive"</code>, <code>"Negative"</code>, and <code>"Warning"</code>.
+   * Defines the `MessageStrip` type.
+   *
+   * **Note:** Available options are `"Information"`, `"Positive"`, `"Negative"`, and `"Warning"`.
    */
   type?: MessageStripType;
   /**
-   * Defines the text of the <code>MessageStrip</code>. <br><br> <b>Note:</b> Аlthough this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
+   * Defines the text of the `MessageStrip`.
+   *
+   * **Note:** Аlthough this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Defines the content to be displayed as graphical element within the <code>MessageStrip</code>. <br><br> <b>Note:</b> If no icon is given, the default icon for the <code>MessageStrip</code> type will be used. The SAP-icons font provides numerous options. <br><br><br/><br/>
+   * Defines the content to be displayed as graphical element within the `MessageStrip`.
    *
-   * See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
+   * **Note:** If no icon is given, the default icon for the `MessageStrip` type will be used. The SAP-icons font provides numerous options.
+   *
+   * See all the available icons in the Icon Explorer.
    */
   icon?: ReactNode;
   /**

@@ -5,7 +5,16 @@ import { FC, ReactNode } from 'react';
 
 export interface CarouselPropTypes extends WithWebComponentPropTypes {
   /**
-   * Defines the position of arrows. <br><br> Available options are: <ul> <li><code>Content</code></li> <li><code>Navigation</code></li> </ul> <br> When set to "Content", the arrows are placed on the sides of the current page. <br> When set to "Navigation", the arrows are placed on the sides of the page indicator.
+   * Defines the position of arrows.
+   *
+   * Available options are:
+   *
+   * *   `Content`
+   * *   `Navigation`
+   *
+   *
+   * When set to "Content", the arrows are placed on the sides of the current page.
+   * When set to "Navigation", the arrows are placed on the sides of the page indicator.
    */
   arrowsPlacement?: CarouselArrowsPlacement;
   /**
@@ -17,7 +26,7 @@ export interface CarouselPropTypes extends WithWebComponentPropTypes {
    */
   hideNavigation?: boolean;
   /**
-   * Defines when the <code>load-more</code> event is thrown. If not applied the event will not be thrown.
+   * Defines when the `load-more` event is thrown. If not applied the event will not be thrown.
    */
   infiniteScrollOffset?: number;
   /**
@@ -37,7 +46,7 @@ export interface CarouselPropTypes extends WithWebComponentPropTypes {
    */
   selectedIndex?: number;
   /**
-   * Defines the content of the <code>Carousel</code>.
+   * Defines the content of the `Carousel`.
    */
   children?: ReactNode | ReactNode[];
   /**

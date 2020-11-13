@@ -5,17 +5,21 @@ import { FC, ReactNode } from 'react';
 
 export interface ComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput'> {
   /**
-   * Defines whether <code>ComboBox</code> is in disabled state. <br><br> <b>Note:</b> A disabled <code>ComboBox</code> is completely uninteractive.
+   * Defines whether `ComboBox` is in disabled state.
+   *
+   * **Note:** A disabled `ComboBox` is completely uninteractive.
    */
   disabled?: boolean;
   /**
-   * Defines the filter type of the <code>ComboBox</code>. Available options are: <code>StartsWithPerTerm</code>, <code>StartsWith</code> and <code>Contains</code>.
+   * Defines the filter type of the `ComboBox`. Available options are: `StartsWithPerTerm`, `StartsWith` and `Contains`.
    */
   filter?: string;
   /**
-   * Defines the "live" value of the <code>ComboBox</code>. <br><br> <b>Note:</b> The property is updated upon typing.<br/><br/>
+   * Defines the "live" value of the `ComboBox`.
    *
-   * <b>Note:</b> Initially the filter value is synced with value.
+   * **Note:** The property is updated upon typing.
+   *
+   * **Note:** Initially the filter value is synced with value.
    */
   filterValue?: string;
   /**
@@ -23,27 +27,43 @@ export interface ComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
    */
   loading?: boolean;
   /**
-   * Defines a short hint intended to aid the user with data entry when the <code>ComboBox</code> has no value.
+   * Defines a short hint intended to aid the user with data entry when the `ComboBox` has no value.
    */
   placeholder?: string;
   /**
-   * Defines whether the <code>ComboBox</code> is readonly. <br><br> <b>Note:</b> A read-only <code>ComboBox</code> is not editable, but still provides visual feedback upon user interaction.
+   * Defines whether the `ComboBox` is readonly.
+   *
+   * **Note:** A read-only `ComboBox` is not editable, but still provides visual feedback upon user interaction.
    */
   readonly?: boolean;
   /**
-   * Defines whether the <code>ComboBox</code> is required.
+   * Defines whether the `ComboBox` is required.
    */
   required?: boolean;
   /**
-   * Defines the value of the <code>ComboBox</code>.
+   * Defines the value of the `ComboBox`.
    */
   value?: string;
   /**
-   * Defines the value state of the <code>ComboBox</code>. <br><br> Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>
+   * Defines the value state of the `ComboBox`.
+   *
+   * Available options are:
+   *
+   * *   `None`
+   * *   `Error`
+   * *   `Warning`
+   * *   `Success`
+   * *   `Information`
    */
   valueState?: ValueState;
   /**
-   * Defines the <code>ComboBox</code> items. <br><br> Example: <br> &lt;ComboBox><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;ComboBoxItem text="Item #1" /><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;ComboBoxItem text="Item #2" /><br> &lt;/ComboBox> <br> <br>
+   * Defines the `ComboBox` items.
+   *
+   * Example:
+   * <ComboBox>
+   *     <ui5-li>Item #1</ui5-li>
+   *     <ui5-li>Item #2</ui5-li>
+   * </ComboBox>
    */
   children?: ReactNode | ReactNode[];
   /**
@@ -51,9 +71,10 @@ export interface ComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
    */
   icon?: ReactNode | ReactNode[];
   /**
-   * Defines the value state message that will be displayed as pop up under the <code>ComboBox</code>. <br><br><br/><br/>
+   * Defines the value state message that will be displayed as pop up under the `ComboBox`.
    *
-   * <b>Note:</b> If not specified, a default text (in the respective language) will be displayed. <br> <b>Note:</b> The <code>valueStateMessage</code> would be displayed, when the <code>Select</code> is in <code>Information</code>, <code>Warning</code> or <code>Error</code> value state.
+   * **Note:** If not specified, a default text (in the respective language) will be displayed.
+   * **Note:** The `valueStateMessage` would be displayed, when the `ui5-select` is in `Information`, `Warning` or `Error` value state.
    */
   valueStateMessage?: ReactNode | ReactNode[];
   /**
@@ -67,7 +88,7 @@ export interface ComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
 }
 
 /**
- *  The <code>ComboBox</code> component represents a drop-down menu with a list of the available options and a text input field to narrow down the options. It is commonly used to enable users to select one or more options from a predefined list.
+ * The `ComboBox` component represents a drop-down menu with a list of the available options and a text input field to narrow down the options. It is commonly used to enable users to select one or more options from a predefined list.
  *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/ComboBox" target="_blank">UI5 Web Components Playground</a>
  */

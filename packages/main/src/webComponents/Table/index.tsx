@@ -4,23 +4,36 @@ import { FC, ReactNode } from 'react';
 
 export interface TablePropTypes extends WithWebComponentPropTypes {
   /**
-   * Defines the text that will be displayed when there is no data and <code>showNoData</code> is present.
+   * Defines the text that will be displayed when there is no data and `showNoData` is present.
    */
   noDataText?: string;
   /**
-   * Defines if the value of <code>noDataText</code> will be diplayed when there is no rows present in the table.
+   * Defines if the value of `noDataText` will be diplayed when there is no rows present in the table.
    */
   showNoData?: boolean;
   /**
-   * Determines whether the column headers remain fixed at the top of the page during vertical scrolling as long as the Web Component is in the viewport. <br><br> <b>Limitations:</b> <ul> <li>Browsers that do not support this feature: <ul> <li>Internet Explorer</li> <li>Microsoft Edge lower than version 41 (EdgeHTML 16)</li> <li>Mozilla Firefox lower than version 59</li> </ul> </li> <li>Scrolling behavior: <ul> <li>If the Web Component is placed in layout containers that have the <code>overflow: hidden</code> or <code>overflow: auto</code> style definition, this can prevent the sticky elements of the Web Component from becoming fixed at the top of the viewport.</li> </ul> </li> </ul>
+   * Determines whether the column headers remain fixed at the top of the page during vertical scrolling as long as the Web Component is in the viewport.
+   *
+   * **Limitations:**
+   *
+   * *   Browsers that do not support this feature:
+   *     *   Internet Explorer
+   *     *   Microsoft Edge lower than version 41 (EdgeHTML 16)
+   *     *   Mozilla Firefox lower than version 59
+   * *   Scrolling behavior:
+   *     *   If the Web Component is placed in layout containers that have the `overflow: hidden` or `overflow: auto` style definition, this can prevent the sticky elements of the Web Component from becoming fixed at the top of the viewport.
    */
   stickyColumnHeader?: boolean;
   /**
-   * Defines the configuration for the columns of the <code>Table</code>. <br><br> <b>Note:</b> Use <code>TableColumn</code> for the intended design.
+   * Defines the configuration for the columns of the `Table`.
+   *
+   * **Note:** Use `Table-column` for the intended design.
    */
   columns?: ReactNode | ReactNode[];
   /**
-   * Defines the <code>Table</code> rows. <br><br> <b>Note:</b> Use <code>TableRow</code> for the intended design.
+   * Defines the `Table` rows.
+   *
+   * **Note:** Use `Table-row` for the intended design.
    */
   children?: ReactNode | ReactNode[];
   /**
@@ -34,7 +47,11 @@ export interface TablePropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- *  The <code>Table</code> component provides a set of sophisticated and convenient functions for responsive table design. It provides a comprehensive set of features for displaying and dealing with vast amounts of data. <br><br> To render the <code>Table</code> properly, the order of the <code>columns</code> should match with the order of the item <code>cells</code> in the <code>rows</code>. <br><br> Desktop and tablet devices are supported. On tablets, special consideration should be given to the number of visible columns and rows due to the limited performance of some devices.
+ * The `Table` component provides a set of sophisticated and convenient functions for responsive table design. It provides a comprehensive set of features for displaying and dealing with vast amounts of data.
+ *
+ * To render the `Table` properly, the order of the `columns` should match with the order of the item `cells` in the `rows`.
+ *
+ * Desktop and tablet devices are supported. On tablets, special consideration should be given to the number of visible columns and rows due to the limited performance of some devices.
  *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Table" target="_blank">UI5 Web Components Playground</a>
  */

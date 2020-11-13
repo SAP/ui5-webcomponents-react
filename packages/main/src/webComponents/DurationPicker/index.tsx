@@ -4,7 +4,7 @@ import { FC, ReactNode } from 'react';
 
 export interface DurationPickerPropTypes extends Omit<WithWebComponentPropTypes, 'onChange'> {
   /**
-   * Determines whether the <code>DurationPicker</code> is displayed as disabled.
+   * Determines whether the `DurationPicker` is displayed as disabled.
    */
   disabled?: boolean;
   /**
@@ -28,7 +28,7 @@ export interface DurationPickerPropTypes extends Omit<WithWebComponentPropTypes,
    */
   minutesStep?: number;
   /**
-   * Determines whether the <code>DurationPicker</code> is displayed as readonly.
+   * Determines whether the `DurationPicker` is displayed as readonly.
    */
   readonly?: boolean;
   /**
@@ -40,15 +40,20 @@ export interface DurationPickerPropTypes extends Omit<WithWebComponentPropTypes,
    */
   value?: string;
   /**
-   * Visualizes the validation state of the Web Component, for example <code>Error</code>, <code>Warning</code> and <code>Success</code>.<br/><br/>
+   * Visualizes the validation state of the Web Component, for example `Error`, `Warning` and `Success`.
    *
-   * <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>
+   * *   `None`
+   * *   `Error`
+   * *   `Warning`
+   * *   `Success`
+   * *   `Information`
    */
   valueState?: string;
   /**
-   * Defines the value state message that will be displayed as pop up under the <code>DurationPicker</code>. <br><br><br/><br/>
+   * Defines the value state message that will be displayed as pop up under the `DurationPicker`.
    *
-   * <b>Note:</b> If not specified, a default text (in the respective language) will be displayed. <br> <b>Note:</b> The <code>valueStateMessage</code> would be displayed, when the <code>DurationPicker</code> is in <code>Information</code>, <code>Warning</code> or <code>Error</code> value state.
+   * **Note:** If not specified, a default text (in the respective language) will be displayed.
+   * **Note:** The `valueStateMessage` would be displayed, when the `DurationPicker` is in `Information`, `Warning` or `Error` value state.
    */
   valueStateMessage?: ReactNode;
   /**

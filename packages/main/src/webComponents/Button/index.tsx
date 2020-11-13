@@ -5,33 +5,43 @@ import { FC, ReactNode } from 'react';
 
 export interface ButtonPropTypes extends Omit<WithWebComponentPropTypes, 'onClick'> {
   /**
-   * Defines the <code>Button</code> design. <br><br> <b>Note:</b> Available options are "Default", "Emphasized", "Positive", "Negative", and "Transparent".
+   * Defines the `Button` design.
+   *
+   * **Note:** Available options are "Default", "Emphasized", "Positive", "Negative", and "Transparent".
    */
   design?: ButtonDesign;
   /**
-   * Defines whether the <code>Button</code> is disabled (default is set to <code>false</code>). A disabled <code>Button</code> can't be pressed or focused, and it is not in the tab chain.
+   * Defines whether the `Button` is disabled (default is set to `false`). A disabled `Button` can't be pressed or focused, and it is not in the tab chain.
    */
   disabled?: boolean;
   /**
-   * Defines the icon to be displayed as graphical element within the <code>Button</code>. The SAP-icons font provides numerous options. <br><br> Example: <br> <pre>Button icon="palette"</pre><br/><br/>
+   * Defines the icon to be displayed as graphical element within the `Button`. The SAP-icons font provides numerous options.
    *
-   * See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
+   * Example:
+   *
+   * Button icon="palette"
+   *
+   * See all the available icons in the Icon Explorer.
    */
   icon?: string;
   /**
-   * Defines whether the icon should be displayed after the <code>Button</code> text.
+   * Defines whether the icon should be displayed after the `Button` text.
    */
   iconEnd?: boolean;
   /**
-   * Defines the size of the icon inside the <code>Button</code>.
+   * Defines the size of the icon inside the `Button`.
    */
   iconSize?: string;
   /**
-   * When set to <code>true</code>, the <code>Button</code> will automatically submit the nearest form element upon <code>press</code>. <br><br> <b>Important:</b> For the <code>submits</code> property to have effect, you must add the following import to your project: <code>import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";</code>
+   * When set to `true`, the `Button` will automatically submit the nearest form element upon `press`.
+   *
+   * **Important:** For the `submits` property to have effect, you must add the following import to your project: `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
    */
   submits?: boolean;
   /**
-   * Defines the text of the <code>Button</code>. <br><br> <b>Note:</b> Аlthough this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
+   * Defines the text of the `Button`.
+   *
+   * **Note:** Аlthough this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
   children?: ReactNode | ReactNode[];
   /**

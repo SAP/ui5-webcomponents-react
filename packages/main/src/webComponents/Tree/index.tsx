@@ -5,27 +5,35 @@ import { FC, ReactNode } from 'react';
 
 export interface TreePropTypes extends WithWebComponentPropTypes {
   /**
-   * Defines the <code>Tree</code> footer text.
+   * Defines the `Tree` footer text.
    */
   footerText?: string;
   /**
-   * Defines the <code>Tree</code> header text. <br><br> <b>Note:</b> If the <code>header</code> slot is set, this property is ignored.
+   * Defines the `Tree` header text.
+   *
+   * **Note:** If the `header` slot is set, this property is ignored.
    */
   headerText?: string;
   /**
-   * Defines the mode of the <code>Tree</code>. Since the tree uses a <code>List</code> to display its structure, the tree modes are exactly the same as the list modes, and are all applicable. <br><br> <b>Note:</b> Available options are <code>None</code>, <code>SingleSelect</code>, <code>SingleSelectBegin</code>, <code>SingleSelectEnd</code>, <code>MultiSelect</code>, and <code>Delete</code>.
+   * Defines the mode of the `Tree`. Since the tree uses a `ui5-list` to display its structure, the tree modes are exactly the same as the list modes, and are all applicable.
+   *
+   * **Note:** Available options are `None`, `SingleSelect`, `SingleSelectBegin`, `SingleSelectEnd`, `MultiSelect`, and `Delete`.
    */
   mode?: ListMode;
   /**
-   * Defines the text that is displayed when the <code>Tree</code> contains no items.
+   * Defines the text that is displayed when the `Tree` contains no items.
    */
   noDataText?: string;
   /**
-   * Defines the items of the <code>Tree</code>. Tree items may have other tree items as children. <br><br> <b>Note:</b> Use <code>Tree-item</code> for the intended design.
+   * Defines the items of the `Tree`. Tree items may have other tree items as children.
+   *
+   * **Note:** Use `Tree-item` for the intended design.
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Defines the <code>Tree</code> header. <br><br> <b>Note:</b> When the <code>header</code> slot is set, the <code>headerText</code> property is ignored.
+   * Defines the `Tree` header.
+   *
+   * **Note:** When the `header` slot is set, the `headerText` property is ignored.
    */
   header?: ReactNode | ReactNode[];
   /**

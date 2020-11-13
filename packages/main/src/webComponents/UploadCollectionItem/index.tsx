@@ -5,7 +5,7 @@ import { FC, ReactNode } from 'react';
 
 export interface UploadCollectionItemPropTypes extends WithWebComponentPropTypes {
   /**
-   * Holds <code>File</code>, associated with this item.
+   * Holds `File`, associated with this item.
    */
   file?: File;
   /**
@@ -13,35 +13,39 @@ export interface UploadCollectionItemPropTypes extends WithWebComponentPropTypes
    */
   fileName?: string;
   /**
-   * If set to <code>true</code> the file name will be clickable and it will fire <code>file-name-click</code> event upon click.
+   * If set to `true` the file name will be clickable and it will fire `file-name-click` event upon click.
    */
   fileNameClickable?: boolean;
   /**
-   * Removes delete option from <code>UploadCollection</code> with <code>mode</code> <code>Delete</code> for this item.
+   * Removes delete option from `ui5-upload-collection` with `mode` `Delete` for this item.
    */
   noDelete?: boolean;
   /**
-   * Hides the retry button when <code>uploadState</code> property is <code>Error</code>.
+   * Hides the retry button when `uploadState` property is `Error`.
    */
   noRetry?: boolean;
   /**
-   * Hides the terminate button when <code>uploadState</code> property is <code>Uploading</code>.
+   * Hides the terminate button when `uploadState` property is `Uploading`.
    */
   noTerminate?: boolean;
   /**
-   * The upload progress in percentage. <br><br> <b>Note:</b> Expected values are in the interval [0, 100].
+   * The upload progress in percentage.
+   *
+   * **Note:** Expected values are in the interval \[0, 100\].
    */
   progress?: number;
   /**
-   * If set to <code>Uploading</code> or <code>Error</code>, a progress indicator showing the <code>progress</code> is displayed. Also if set to <code>Error</code>, a refresh button is shown. When this icon is pressed <code>retry</code> event is fired. If set to <code>Uploading</code>, a terminate button is shown. When this icon is pressed <code>terminate</code> event is fired.
+   * If set to `Uploading` or `Error`, a progress indicator showing the `progress` is displayed. Also if set to `Error`, a refresh button is shown. When this icon is pressed `retry` event is fired. If set to `Uploading`, a terminate button is shown. When this icon is pressed `terminate` event is fired.
    */
   uploadState?: UploadState;
   /**
-   * Hold the description of the <code>UploadCollectionItem</code>. Will be shown below the file name.
+   * Hold the description of the `UploadCollectionItem`. Will be shown below the file name.
    */
   children?: ReactNode | ReactNode[];
   /**
-   * A thumbnail, which will be shown in the beginning of the <code>UploadCollectionItem</code>. <br><br> <b>Note:</b> Use <code>Icon</code> or <code>img</code> for the intended design.
+   * A thumbnail, which will be shown in the beginning of the `UploadCollectionItem`.
+   *
+   * **Note:** Use `ui5-icon` or `img` for the intended design.
    */
   thumbnail?: ReactNode;
   /**

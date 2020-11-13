@@ -4,7 +4,7 @@ import { FC, ReactNode } from 'react';
 
 export interface TimelinePropTypes extends WithWebComponentPropTypes {
   /**
-   * Determines the content of the <code>Timeline</code>.
+   * Determines the content of the `Timeline`.
    */
   children?: ReactNode | ReactNode[];
 }

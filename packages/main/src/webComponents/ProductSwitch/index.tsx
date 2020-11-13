@@ -4,7 +4,7 @@ import { FC, ReactNode } from 'react';
 
 export interface ProductSwitchPropTypes extends WithWebComponentPropTypes {
   /**
-   * Defines the items of the <code>ProductSwitch</code>.
+   * Defines the items of the `ProductSwitch`.
    */
   children?: ReactNode | ReactNode[];
 }

@@ -9,7 +9,9 @@ export interface MultiComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 
    */
   allowCustomValues?: boolean;
   /**
-   * Defines whether <code>MultiComboBox</code> is in disabled state. <br><br> <b>Note:</b> A disabled <code>MultiComboBox</code> is completely noninteractive.
+   * Defines whether `MultiComboBox` is in disabled state.
+   *
+   * **Note:** A disabled `MultiComboBox` is completely noninteractive.
    */
   disabled?: boolean;
   /**
@@ -17,37 +19,56 @@ export interface MultiComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 
    */
   open?: boolean;
   /**
-   * Defines a short hint intended to aid the user with data entry when the <code>MultiComboBox</code> has no value.
+   * Defines a short hint intended to aid the user with data entry when the `MultiComboBox` has no value.
    */
   placeholder?: string;
   /**
-   * Defines whether the <code>MultiComboBox</code> is read-only. <br><br> <b>Note:</b> A read-only <code>MultiComboBox</code> is not editable, but still provides visual feedback upon user interaction.
+   * Defines whether the `MultiComboBox` is read-only.
+   *
+   * **Note:** A read-only `MultiComboBox` is not editable, but still provides visual feedback upon user interaction.
    */
   readonly?: boolean;
   /**
-   * Defines whether the <code>MultiComboBox</code> is required.
+   * Defines whether the `MultiComboBox` is required.
    */
   required?: boolean;
   /**
-   * Defines the value of the <code>MultiComboBox</code>. <br><br> <b>Note:</b> The property is updated upon typing.
+   * Defines the value of the `MultiComboBox`.
+   *
+   * **Note:** The property is updated upon typing.
    */
   value?: string;
   /**
-   * Defines the value state of the <code>MultiComboBox</code>. <br><br> Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>
+   * Defines the value state of the `MultiComboBox`.
+   *
+   * Available options are:
+   *
+   * *   `None`
+   * *   `Error`
+   * *   `Warning`
+   * *   `Success`
+   * *   `Information`
    */
   valueState?: ValueState;
   /**
-   * Defines the <code>MultiComboBox</code> items. <br><br> Example: <br> &lt;MultiComboBox><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;MultiComboBoxItem text="Item #1" /><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;MultiComboBoxItem text="Item #2" /><br> &lt;/MultiComboBox> <br> <br>
+   * Defines the `MultiComboBox` items.
+   *
+   * Example:
+   * <MultiComboBox>
+   *     <ui5-li>Item #1</ui5-li>
+   *     <ui5-li>Item #2</ui5-li>
+   * </MultiComboBox>
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Defines the icon to be displayed in the <code>MultiComboBox</code>.
+   * Defines the icon to be displayed in the `MultiComboBox`.
    */
   icon?: ReactNode | ReactNode[];
   /**
-   * Defines the value state message that will be displayed as pop up under the <code>ui5-multicombobox</code>. <br><br><br/><br/>
+   * Defines the value state message that will be displayed as pop up under the `ui5-multicombobox`.
    *
-   * <b>Note:</b> If not specified, a default text (in the respective language) will be displayed. <br> <b>Note:</b> The <code>valueStateMessage</code> would be displayed, when the <code>ui5-select</code> is in <code>Information</code>, <code>Warning</code> or <code>Error</code> value state.
+   * **Note:** If not specified, a default text (in the respective language) will be displayed.
+   * **Note:** The `valueStateMessage` would be displayed, when the `ui5-select` is in `Information`, `Warning` or `Error` value state.
    */
   valueStateMessage?: ReactNode | ReactNode[];
   /**
@@ -69,7 +90,7 @@ export interface MultiComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 
 }
 
 /**
- *  The <code>MultiComboBox</code> component provides a list box with items and a text field allowing the user to either type a value directly into the control, or choose from the list of existing items. It is a drop-down list for selecting and filtering values, commonly used to enable users to select one or more options from a predefined list. The control provides an editable input field to filter the list, and a dropdown arrow of available options. The select options in the list have checkboxes that permit multi-selection. Entered values are displayed as tokens.
+ * The `MultiComboBox` component provides a list box with items and a text field allowing the user to either type a value directly into the control, or choose from the list of existing items. It is a drop-down list for selecting and filtering values, commonly used to enable users to select one or more options from a predefined list. The control provides an editable input field to filter the list, and a dropdown arrow of available options. The select options in the list have checkboxes that permit multi-selection. Entered values are displayed as tokens.
  *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/MultiComboBox" target="_blank">UI5 Web Components Playground</a>
  */

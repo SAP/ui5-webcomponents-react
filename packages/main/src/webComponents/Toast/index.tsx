@@ -5,15 +5,31 @@ import { FC, ReactNode } from 'react';
 
 export interface ToastPropTypes extends WithWebComponentPropTypes {
   /**
-   * Defines the duration in milliseconds for which <code>Toast</code> remains on the screen before it's automatically closed. <br><br> <b>Note:</b> The minimum supported value is <code>500</code> ms and even if a lower value is set, the duration would remain <code>500</code> ms.
+   * Defines the duration in milliseconds for which `Toast` remains on the screen before it's automatically closed.
+   *
+   * **Note:** The minimum supported value is `500` ms and even if a lower value is set, the duration would remain `500` ms.
    */
   duration?: number;
   /**
-   * Defines the placement of the <code>Toast</code> web component. <br><br> Available options are: <ul> <li><code>TopStart</code></li> <li><code>TopCenter</code></li> <li><code>TopEnd</code></li> <li><code>MiddleStart</code></li> <li><code>MiddleCenter</code></li> <li><code>MiddleEnd</code></li> <li><code>BottomStart</code></li> <li><code>BottomCenter</code></li> <li><code>BottomEnd</code></li> </ul>
+   * Defines the placement of the `Toast` web component.
+   *
+   * Available options are:
+   *
+   * *   `TopStart`
+   * *   `TopCenter`
+   * *   `TopEnd`
+   * *   `MiddleStart`
+   * *   `MiddleCenter`
+   * *   `MiddleEnd`
+   * *   `BottomStart`
+   * *   `BottomCenter`
+   * *   `BottomEnd`
    */
   placement?: ToastPlacement;
   /**
-   * Defines the text of the <code>Toast</code> web component. <br><br> <b>Note:</b> Аlthough this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
+   * Defines the text of the `Toast` web component.
+   *
+   * **Note:** Аlthough this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
   children?: ReactNode | ReactNode[];
 }
