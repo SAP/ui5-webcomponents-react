@@ -67,7 +67,10 @@ import { useState } from 'react';
 <ArgsTable story="Default" />
 
 <div style={{ fontFamily: 'var(--sapFontFamily)', fontSize: 'var(--sapFontSize)', color: 'var(--sapTextColor)' }}>
-  <h3>Keyboard Handling</h3>
+  <h3 id="keyboard-handling" tabindex="-1">
+    <a aria-hidden="true" href="#keyboard-handling-behavior" tabindex="-1" target="_self" class="css-yi0p10" />
+    Keyboard Handling
+  </h3>
   <code>Tree</code> provides advanced keyboard handling. You can use the up/down arrow keys to navigate to the previous/next
   item in the list, representing the tree, regardless of nesting, but also the left/right arrow keys to drill down and go
   up the tree. If you press the right arrow on a tree node, it will expand, if not expanded. If you press the right arrow

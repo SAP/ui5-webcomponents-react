@@ -66,7 +66,10 @@ import '@ui5/webcomponents-icons/dist/icons/wrench';
 <ArgsTable story="Default" />
 
 <div style={{ fontFamily: 'var(--sapFontFamily)', fontSize: 'var(--sapFontSize)', color: 'var(--sapTextColor)' }}>
-  <h3>Usage</h3>
+  <h3 id="usage" tabindex="-1">
+    <a aria-hidden="true" href="#usage" tabindex="-1" target="_self" class="css-yi0p10" />
+    Usage
+  </h3>
   Use the available <code>SideNavigationItem</code> and <code>SideNavigationSubItem</code> components to build your menu.
   The items can consist of text only or an icon with text. The use or non-use of icons must be consistent for all items on
   one level. You must not combine entries with and without icons on the same level. We strongly recommend that you do not

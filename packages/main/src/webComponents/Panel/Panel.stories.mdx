@@ -60,7 +60,10 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 <ArgsTable story="." />
 
 <div style={{ fontFamily: 'var(--sapFontFamily)', fontSize: 'var(--sapFontSize)', color: 'var(--sapTextColor)' }}>
-  <h3>Guidelines:</h3>
+  <h3 id="guidelines" tabindex="-1">
+    <a aria-hidden="true" href="#guidelines" tabindex="-1" target="_self" class="css-yi0p10" />
+    Guidelines
+  </h3>
   <ul>
     <li>Nesting two or more panels is not recommended.</li>
     <li>Do not stack too many panels on one page.</li>

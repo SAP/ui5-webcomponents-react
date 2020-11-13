@@ -37,13 +37,14 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <ArgsTable story="." />
 <div style={{fontFamily:'var(--sapFontFamily)', fontSize:'var(--sapFontSize)', color:'var(--sapTextColor)'}}>
-<h3>Usage</h3>
-
+    <h3 id="usage" tabindex="-1">
+        <a aria-hidden="true" href="#usage" tabindex="-1" target="_self" class="css-yi0p10" />
+        Usage
+    </h3>
 You can set the <code>Link</code> to be enabled or disabled. <br /><br />
 To create a visual hierarchy in large lists of links, you can set the less important links as <code>Subtle</code> or the
 more important ones as <code>Emphasized</code>, by using the <code>design</code> property. <br /><br />
 If the <code>href</code> property is set, the link behaves as the basic HTML anchor tag and opens the specified URL in
 the given target frame (<code>target</code> property). To specify where the linked content is opened, you can use the
-
 <code>target</code> property.
 </div>

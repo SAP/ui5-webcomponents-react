@@ -47,7 +47,7 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <br />
 
-### Opening ResponsivePopovers
+## Opening ResponsivePopovers
 
 `ResponsivePopovers` can only be opened by attaching a `ref` to the component and then call the corresponding **`open`** method. The method receives the target element - _on which the `ResponsivePopover` is to be opened_ - as parameter.
 
@@ -85,11 +85,14 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <ArgsTable story="." />
 <div style={{ fontFamily: 'var(--sapFontFamily)', fontSize: 'var(--sapFontSize)', color: 'var(--sapTextColor)' }}>
-  <h3>Usage</h3>
+  <h2 id="usage" tabindex="-1">
+    <a aria-hidden="true" href="#usage" tabindex="-1" target="_self" class="css-yi0p10" />
+    Usage
+  </h2>
   Use it when you want to make sure that all the content is visible on any device
 </div>
 
-### Using ResponsivePopovers inside other components
+## Using ResponsivePopovers inside other components
 
 `ResponsivePopovers` are often used within other components, when opened this could sometimes have unwanted side effects.
 In this case, we recommend using [createPortal](https://reactjs.org/docs/portals.html) to mount the `ResponsivePopover` outside of the DOM hierarchy of the parent component.
@@ -109,7 +112,7 @@ const PopoverComponent = () => {
 };
 ```
 
-### Closing ResponsivePopovers
+## Closing ResponsivePopovers
 
 Closing `ResponsivePopovers` works in the same way as opening them. So again an attached `ref` is needed on which the corresponding `close` method is called.
 
