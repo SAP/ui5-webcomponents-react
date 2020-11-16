@@ -13,7 +13,7 @@ export interface UploadCollectionItemPropTypes extends WithWebComponentPropTypes
    */
   fileName?: string;
   /**
-   * If set to `true` the file name will be clickable and it will fire `file-name-click` event upon click.
+   * If set to `true` the file name will be clickable and it will fire `onFileNameClick` event upon click.
    */
   fileNameClickable?: boolean;
   /**
