@@ -1,9 +1,9 @@
-import { ArgsTable, Canvas, Meta, Story } from "@storybook/addon-docs/blocks";
-import { CheckBox } from "@ui5/webcomponents-react/lib/CheckBox";
-import { ValueState } from "@ui5/webcomponents-react/lib/ValueState";
-import { createSelectArgTypes } from "@shared/stories/createSelectArgTypes";
-import { DocsHeader } from "@shared/stories/DocsHeader";
-import { DocsCommonProps } from "@shared/stories/DocsCommonProps";
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { CheckBox } from '@ui5/webcomponents-react/lib/CheckBox';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="Inputs / CheckBox"
@@ -11,21 +11,21 @@ import { DocsCommonProps } from "@shared/stories/DocsCommonProps";
   argTypes={{
     ...createSelectArgTypes({
       valueState: {
-        Error: "Error",
-        None: "None",
-        Warning: "Warning",
-      },
+        Error: 'Error',
+        None: 'None',
+        Warning: 'Warning'
+      }
     }),
-    ...DocsCommonProps,
+    ...DocsCommonProps
   }}
   args={{
     valueState: ValueState.None,
-    text: "CheckBox",
+    text: 'CheckBox',
     style: {},
-    className: "",
-    tooltip: "",
-    slot: "",
-    ref: null,
+    className: '',
+    tooltip: '',
+    slot: '',
+    ref: null
   }}
 />
 
@@ -48,22 +48,18 @@ import { DocsCommonProps } from "@shared/stories/DocsCommonProps";
 <ArgsTable story="." />
 <div
   style={{
-    fontFamily: "var(--sapFontFamily)",
-    fontSize: "var(--sapFontSize)",
-    color: "var(--sapTextColor)",
+    fontFamily: 'var(--sapFontFamily)',
+    fontSize: 'var(--sapFontSize)',
+    color: 'var(--sapTextColor)'
   }}
 >
   <h3>Usage</h3>
-  You can manually set the width of the element containing the box and the label
-  using the <code>width</code> property. If the text exceeds the available width,
-  it is truncated. The touchable area for toggling the <code>CheckBox</code> ends
-  where the text ends. <br />
+  You can manually set the width of the element containing the box and the label using the <code>width</code> property. If
+  the text exceeds the available width, it is truncated. The touchable area for toggling the <code>CheckBox</code> ends where
+  the text ends. <br />
   <br />
-  You can disable the <code>CheckBox</code> by setting the <code>
-    disabled
-  </code> property to <code>true</code>, or use the
-  <code>CheckBox</code> in read-only mode by setting the <code>readonly</code>{" "}
-  property to <code>true</code>.
+  You can disable the <code>CheckBox</code> by setting the <code>disabled</code> property to <code>true</code>, or use the
+  <code>CheckBox</code> in read-only mode by setting the <code>readonly</code> property to <code>true</code>.
 </div>
 
 <br />
@@ -83,30 +79,10 @@ import { DocsCommonProps } from "@shared/stories/DocsCommonProps";
           <CheckBox text="Warning" value-state={ValueState.Warning} />
           <CheckBox text="Disabled" disabled checked />
           <CheckBox text="Readonly" readonly checked />
-          <CheckBox
-            text="Error disabled"
-            disabled
-            value-state={ValueState.Error}
-            checked
-          />
-          <CheckBox
-            text="Warning disabled "
-            disabled
-            value-state={ValueState.Warning}
-            checked
-          />
-          <CheckBox
-            text="Error readonly"
-            readonly
-            value-state={ValueState.Error}
-            checked
-          />
-          <CheckBox
-            text="Warning readonly"
-            readonly
-            value-state={ValueState.Warning}
-            checked
-          />
+          <CheckBox text="Error disabled" disabled value-state={ValueState.Error} checked />
+          <CheckBox text="Warning disabled " disabled value-state={ValueState.Warning} checked />
+          <CheckBox text="Error readonly" readonly value-state={ValueState.Error} checked />
+          <CheckBox text="Warning readonly" readonly value-state={ValueState.Warning} checked />
         </>
       );
     }}

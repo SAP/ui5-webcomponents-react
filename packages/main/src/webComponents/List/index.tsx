@@ -6,7 +6,7 @@ import { FC, ReactNode } from 'react';
 
 export interface ListPropTypes extends WithWebComponentPropTypes {
   /**
-   * Defines if the component would display a loading indicator at the bottom of the list. It's especially useful, when combined with <code>infiniteScroll</code>.
+   * Defines if the component would display a loading indicator at the bottom of the list. It's especially useful, when combined with `infiniteScroll`.
    */
   busy?: boolean;
   /**
@@ -14,11 +14,13 @@ export interface ListPropTypes extends WithWebComponentPropTypes {
    */
   footerText?: string;
   /**
-   * Defines the <code>List</code> header text. <br><br> <b>Note:</b> If <code>header</code> is set this property is ignored.
+   * Defines the `List` header text.
+   *
+   * **Note:** If `header` is set this property is ignored.
    */
   headerText?: string;
   /**
-   * Defines if the component would fire the <code>load-more</code> event when the user scrolls to the bottom of the list, and helps achieving an "infinite scroll" effect by adding new items each time.
+   * Defines if the component would fire the `onLoadMore` event when the user scrolls to the bottom of the list, and helps achieving an "infinite scroll" effect by adding new items each time.
    */
   infiniteScroll?: boolean;
   /**
@@ -26,62 +28,86 @@ export interface ListPropTypes extends WithWebComponentPropTypes {
    */
   inset?: boolean;
   /**
-   * Defines the mode of the <code>List</code>. <br><br> <b>Note:</b> Available options are <code>None</code>, <code>SingleSelect</code>, <code>SingleSelectBegin</code>, <code>SingleSelectEnd</code>, <code>MultiSelect</code>, and <code>Delete</code>.
+   * Defines the mode of the `List`.
+   *
+   * **Note:** Available options are `None`, `SingleSelect`, `SingleSelectBegin`, `SingleSelectEnd`, `MultiSelect`, and `Delete`.
    */
   mode?: ListMode;
   /**
-   * Defines the text that is displayed when the <code>List</code> contains no items.
+   * Defines the text that is displayed when the `List` contains no items.
    */
   noDataText?: string;
   /**
-   * Defines the item separator style that is used. <br><br> <b>Notes:</b> <ul> <li>Avalaible options are <code>All</code>, <code>Inner</code>, and <code>None</code>.</li> <li>When set to <code>None</code>, none of the items are separated by horizontal lines.</li> <li>When set to <code>Inner</code>, the first item doesn't have a top separator and the last item doesn't have a bottom separator.</li> </ul>
+   * Defines the item separator style that is used.
+   *
+   * **Notes:**
+   *
+   * *   Avalaible options are `All`, `Inner`, and `None`.
+   * *   When set to `None`, none of the items are separated by horizontal lines.
+   * *   When set to `Inner`, the first item doesn't have a top separator and the last item doesn't have a bottom separator.
    */
   separators?: ListSeparators;
   /**
-   * Defines the items of the <code>List</code>. <br><br> <b>Note:</b> Use <code>StandardListItem</code>, <code>CustomListItem</code>, and <code>GroupHeaderListItem</code> for the intended design.
+   * Defines the items of the `List`.
+   *
+   * **Note:** Use `StandardListItem`, `CustomListItem`, and `GroupHeaderListItem` for the intended design.
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Defines the <code>List</code> header. <br><br> <b>Note:</b> When <code>header</code> is set, the <code>headerText</code> property is ignored.
+   * Defines the `List` header.
+   *
+   * **Note:** When `header` is set, the `headerText` property is ignored.
    */
   header?: ReactNode | ReactNode[];
   /**
-   * Fired when an item is activated, unless the item's <code>type</code> property is set to <code>Inactive</code>.
+   * Fired when an item is activated, unless the item's `type` property is set to `Inactive`.
    */
   onItemClick?: (event: CustomEvent<{ item: ReactNode }>) => void;
   /**
-   * Fired when the <code>Close</code> button of any item is clicked <br><br> <b>Note:</b> This event is applicable to <code>NotificationListItem</code> items only, not to be confused with <code>item-delete</code>.
+   * Fired when the `Close` button of any item is clicked
+   *
+   * **Note:** This event is applicable to `NotificationListItem` items only, not to be confused with `item-delete`.
    */
   onItemClose?: (event: CustomEvent<{ item: ReactNode }>) => void;
   /**
-   * Fired when the Delete button of any item is pressed. <br><br> <b>Note:</b> A Delete button is displayed on each item, when the <code>List</code> <code>mode</code> property is set to <code>Delete</code>.
+   * Fired when the Delete button of any item is pressed.
+   *
+   * **Note:** A Delete button is displayed on each item, when the `List` `mode` property is set to `Delete`.
    */
   onItemDelete?: (event: CustomEvent<{ item: ReactNode }>) => void;
   /**
-   * Fired when the <code>Toggle</code> button of any item is clicked. <br><br> <b>Note:</b> This event is applicable to <code>NotificationListGroupItem</code> items only.
+   * Fired when the `Toggle` button of any item is clicked.
+   *
+   * **Note:** This event is applicable to `NotificationListItemBase` items only.
    */
   onItemToggle?: (event: CustomEvent<{ item: ReactNode }>) => void;
   /**
-   * Fired when the user scrolls to the bottom of the list. <br><br> <b>Note:</b> The event is fired when the <code>infiniteScroll</code> property is enabled.
+   * Fired when the user scrolls to the bottom of the list.
+   *
+   * **Note:** The event is fired when the `infiniteScroll` property is enabled.
    */
   onLoadMore?: (event: CustomEvent) => void;
   /**
-   * Fired when selection is changed by user interaction in <code>SingleSelect</code>, <code>SingleSelectBegin</code>, <code>SingleSelectEnd</code> and <code>MultiSelect</code> modes.
+   * Fired when selection is changed by user interaction in `SingleSelect`, `SingleSelectBegin`, `SingleSelectEnd` and `MultiSelect` modes.
    */
   onSelectionChange?: (event: CustomEvent<{ selectedItems: unknown[]; previouslySelectedItems: unknown[] }>) => void;
 }
 
 /**
- * The <code>List</code> component allows displaying a list of items, advanced keyboard handling support for navigating
- between items, and predefined modes to improve the development efficiency. <br /><br />
- The <code>List</code> is а container for the available list items:
- <ul> <li><code>StandardListItem</code></li> <li><code>CustomListItem</code></li> <li><code>GroupHeaderListItem</code></li>
- </ul>
- <br /><br />
- To benefit from the built-in selection mechanism, you can use the available selection modes, such as
- <code>SingleSelect</code>, <code>MultiSelect</code> and <code>Delete</code>. <br /><br />
- Additionally, the <code>List</code> provides header, footer, and customization for the list item separators.
-
+ * The `List` component allows displaying a list of items, advanced keyboard handling support for navigating between items, and predefined modes to improve the development efficiency.
+ *
+ * The `List` is а container for the available list items:
+ *
+ * *   `StandardListItem`
+ * *   `CustomListItem`
+ * *   `GroupHeaderListItem`
+ *
+ *
+ *
+ * To benefit from the built-in selection mechanism, you can use the available selection modes, such as `SingleSelect`, `MultiSelect` and `Delete`.
+ *
+ * Additionally, the `List` provides header, footer, and customization for the list item separators.
+ *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/List" target="_blank">UI5 Web Components Playground</a>
  */
 const List: FC<ListPropTypes> = withWebComponent<ListPropTypes>(

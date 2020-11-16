@@ -1,5 +1,5 @@
-import '@ui5/webcomponents-fiori/dist/SideNavigationItem';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
+import '@ui5/webcomponents-fiori/dist/SideNavigationItem';
 import { FC, ReactNode } from 'react';
 
 export interface SideNavigationItemPropTypes extends WithWebComponentPropTypes {
@@ -8,9 +8,10 @@ export interface SideNavigationItemPropTypes extends WithWebComponentPropTypes {
    */
   expanded?: boolean;
   /**
-   * Defines the icon of the item. <br><br><br/><br/>
+   * Defines the icon of the item.
    *
-   * The SAP-icons font provides numerous options. <br> See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
+   * The SAP-icons font provides numerous options.
+   * See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
    */
   icon?: string;
   /**
@@ -28,9 +29,8 @@ export interface SideNavigationItemPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * The <code>SideNavigationItem</code> is used within <code>SideNavigation</code> only. Via the
- <code>SideNavigationItem</code> you control the content of the <code>SideNavigation</code>.
-
+ * The `SideNavigationItem` is used within `SideNavigation` only. Via the `SideNavigationItem` you control the content of the `SideNavigation`.
+ *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/SideNavigationItem" target="_blank">UI5 Web Components Playground</a>
  */
 const SideNavigationItem: FC<SideNavigationItemPropTypes> = withWebComponent<SideNavigationItemPropTypes>(

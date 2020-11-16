@@ -156,6 +156,8 @@ import { UploadState } from './lib/UploadState';
 import { ValueState } from './lib/ValueState';
 import { VariantManagement } from './lib/VariantManagement';
 import { VerticalAlign } from './lib/VerticalAlign';
+import { Wizard } from './lib/Wizard';
+import { WizardStep } from './lib/WizardStep';
 import { withWebComponent } from './lib/withWebComponent';
 
 export {
@@ -313,5 +315,7 @@ export {
   ValueState,
   VariantManagement,
   VerticalAlign,
+  Wizard,
+  WizardStep,
   withWebComponent
 };

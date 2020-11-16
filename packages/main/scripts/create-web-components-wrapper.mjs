@@ -1,16 +1,4 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-
-//TODO:
-console.warn(
-  '----------------------\nCurrently there are two tag-names missing or faulty: "ui5-notification-overflow-action" and "ui5-timeline-item"\nThese have to be adjusted manually!\n----------------------'
-);
-
-// To only create a single component, replace "false" with the component (module) name
-// or execute the following command: "yarn create-webcomponents-wrapper [name]"
-const CREATE_SINGLE_COMPONENT = process.argv[2] || false;
-
-const EXCLUDE_LIST = ['NotificationListItem'];
-
 import mainWebComponentsSpec from '@ui5/webcomponents/dist/api.json';
 import fioriWebComponentsSpec from '@ui5/webcomponents-fiori/dist/api.json';
 import dedent from 'dedent';
@@ -19,6 +7,19 @@ import prettierConfigRaw from '../../../prettier.config.cjs';
 import path from 'path';
 import PATHS from '../../../config/paths.js';
 import fs from 'fs';
+import TurndownService from 'turndown';
+
+const turndownService = new TurndownService({
+  headingStyle: 'atx',
+  codeBlockStyle: 'fenced'
+});
+turndownService.keep(['ui5-link']);
+
+// To only create a single component, replace "false" with the component (module) name
+// or execute the following command: "yarn create-webcomponents-wrapper [name]"
+const CREATE_SINGLE_COMPONENT = process.argv[2] || false;
+
+const EXCLUDE_LIST = ['NotificationListItem'];
 
 const prettierConfig = {
   ...prettierConfigRaw,
@@ -102,8 +103,19 @@ COMPONENTS_WITHOUT_DEMOS.add('SideNavigationSubItem');
 COMPONENTS_WITHOUT_DEMOS.add('SuggestionItem');
 COMPONENTS_WITHOUT_DEMOS.add('UploadCollectionItem');
 COMPONENTS_WITHOUT_DEMOS.add('NotificationOverflowAction');
+COMPONENTS_WITHOUT_DEMOS.add('WizardStep');
 
 const componentsFromFioriPackage = new Set(fioriWebComponentsSpec.symbols.map((componentSpec) => componentSpec.module));
+
+const allWebComponents = [
+  ...mainWebComponentsSpec.symbols.filter((spec) => !spec.module.startsWith('types/')),
+  ...fioriWebComponentsSpec.symbols.filter((spec) => !spec.module.startsWith('types/'))
+];
+
+const htmlTagToModuleNameMap = new Map();
+for (const spec of allWebComponents) {
+  htmlTagToModuleNameMap.set(spec.tagname, spec.module);
+}
 
 const capitalizeFirstLetter = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 const snakeToCamel = (str) => str.replace(/([-_]\w)/g, (g) => g[1].toUpperCase());
@@ -111,17 +123,24 @@ const filterNonPublicAttributes = (prop) =>
   prop.visibility === 'public' && prop.readonly !== 'true' && prop.static !== true;
 
 const replaceTagNameWithModuleName = (description) => {
+  let parsedDescription = description.replace(/(ui5-[\w-]+)/g, (fullMatch, tag, ...args) => {
+    if (tag === 'ui5-link') return tag;
+    return htmlTagToModuleNameMap.get(tag);
+  });
+
+  parsedDescription = parsedDescription.replace(/`ui5-link/g, `\`${htmlTagToModuleNameMap.get('ui5-link')}`);
+
   // replace all tag occurrences in description with module name
-  [...description.matchAll(new RegExp(`<code>ui5-`, 'g'))].forEach(() => {
+  [...parsedDescription.matchAll(new RegExp(`<code>ui5-`, 'g'))].forEach(() => {
     const start = description.indexOf(`<code>ui5-`) + 6;
     const end = description.indexOf(`</code>`, start);
     const tagName = description.slice(start, end);
-    const webComponentWithTagName = allWebComponents.find((item) => item.tagname === tagName);
-    if (webComponentWithTagName) {
-      description = description.replace(webComponentWithTagName.tagname, webComponentWithTagName.module);
+    if (htmlTagToModuleNameMap.has(tagName)) {
+      description = description.replace(tagName, htmlTagToModuleNameMap.get(tagName));
     }
   });
-  return description;
+
+  return parsedDescription;
 };
 
 const getTypeScriptTypeForProperty = (property) => {
@@ -407,24 +426,37 @@ const createWebComponentWrapper = (
   }
   let componentDescription;
   try {
-    componentDescription = prettier
-      .format(description, {
-        ...prettierConfigRaw,
-        parser: 'html'
-      })
-      .replace(/\s\s+/g, ' ');
+    componentDescription = turndownService.turndown(description).replace(/\n/g, '\n * ');
   } catch (e) {
     console.warn(
       `----------------------\nHeader description of ${name} couldn't be generated. \nThere is probably a syntax error in the associated description that can't be fixed automatically.\n----------------------`
     );
     componentDescription = '';
   }
+
+  const regularImports = importStatements
+    .filter((imp) => !imp.includes("from 'react'"))
+    .sort((a, b) => {
+      const importNameA = /import \{ (\w+) \}/.exec(a)[1];
+      const importNameB = /import \{ (\w+) \}/.exec(b)[1];
+      return importNameA.localeCompare(importNameB);
+    });
+  const reactImports = [
+    'FC',
+    ...importStatements
+      .filter((imp) => imp.includes("from 'react'"))
+      .map((imp) => {
+        const match = /import \{ (\w+) \}/.exec(imp);
+        return match[1];
+      })
+  ].sort((a, b) => a.localeCompare(b));
+
   return prettier.format(
     `
+    ${regularImports.join('\n')}
     import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
     import '@ui5/webcomponents${componentsFromFioriPackage.has(name) ? '-fiori' : ''}/dist/${name}';
-    import { FC } from 'react';
-    ${importStatements.join('\n')}
+    import { ${reactImports.join(', ')} } from 'react';
 
     export interface ${name}PropTypes extends ${tsExtendsStatement} {
       ${types.join('\n')}
@@ -432,6 +464,7 @@ const createWebComponentWrapper = (
     
     /**
      * ${componentDescription}     
+     * 
      * <a href="https://sap.github.io/ui5-webcomponents/playground/components/${name}" target="_blank">UI5 Web Components Playground</a>
      */
     const ${name}: FC<${name}PropTypes> = withWebComponent<${name}PropTypes>(
@@ -494,7 +527,7 @@ const createWebComponentDemo = (componentSpec, componentProps, description) => {
       enumImports.push(prop.importStatement);
     }
     if (componentSpec.module === 'Icon' && prop.name === 'name') {
-      enumImports.push(`import "@ui5/webcomponents-icons/dist/icons/employee.js";`);
+      enumImports.push(`import "@ui5/webcomponents-icons/dist/employee.js";`);
       args.push(`name: 'employee'`);
     }
     if (prop.name === 'primaryCalendarType') {
@@ -516,7 +549,7 @@ const createWebComponentDemo = (componentSpec, componentProps, description) => {
         customArgTypes.push(`children: {control: {disable:true}}`);
       }
     } else if (prop.name === 'icon') {
-      enumImports.push(`import "@ui5/webcomponents-icons/dist/icons/employee.js";`);
+      enumImports.push(`import "@ui5/webcomponents-icons/dist/employee.js";`);
       enumImports.push(`import { Icon } from '@ui5/webcomponents-react/lib/Icon';`);
       if (prop.tsType === 'string') {
         args.push(`icon: 'employee'`);
@@ -613,11 +646,6 @@ const createWebComponentDemo = (componentSpec, componentProps, description) => {
   )}${formattedDescription}`;
 };
 
-const allWebComponents = [
-  ...mainWebComponentsSpec.symbols.filter((spec) => !spec.module.startsWith('types/')),
-  ...fioriWebComponentsSpec.symbols.filter((spec) => !spec.module.startsWith('types/'))
-];
-
 const assignComponentPropertiesToMaps = (componentSpec, { properties, slots, events }) => {
   (componentSpec.properties || []).forEach((prop) => {
     if (!properties.has(prop.name)) {
@@ -699,10 +727,9 @@ resolvedWebComponents.forEach((componentSpec) => {
         if (!componentSpec.tagname) {
           return property.description || '';
         }
-        let formattedDescription = (property.description || '')
-          .replace(/\n\n<br><br> /g, '<br/><br/>\n  *\n  * ')
-          .replace(/\n\n/g, '<br/><br/>\n  *\n  * ')
-          .replace(new RegExp(componentSpec.tagname, 'g'), `${componentSpec.module}`);
+        let formattedDescription = turndownService
+          .turndown((property.description || '').trim())
+          .replace(/\n/g, '\n   * ');
 
         const customDescriptionReplace = CUSTOM_DESCRIPTION_REPLACE[componentSpec.module];
         if (customDescriptionReplace && customDescriptionReplace[property.name]) {
@@ -746,7 +773,9 @@ resolvedWebComponents.forEach((componentSpec) => {
       importStatements.push(...eventParameters.importStatements);
       propTypes.push(dedent`
       /**
-       * ${replaceTagNameWithModuleName(eventSpec.description)}
+       * ${replaceTagNameWithModuleName(
+         turndownService.turndown((eventSpec.description || '').trim()).replace(/\n/g, '\n   * ')
+       )}
        */
        on${capitalizeFirstLetter(snakeToCamel(eventSpec.name))}?: ${eventParameters.tsType};
       `);

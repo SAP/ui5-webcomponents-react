@@ -5,9 +5,9 @@ import { FC } from 'react';
 
 export interface CalendarPropTypes extends WithWebComponentPropTypes {
   /**
-   * Defines the visibility of the week numbers column. <br><br><br/><br/>
+   * Defines the visibility of the week numbers column.
    *
-   * <b>Note:<b> For calendars other than Gregorian, the week numbers are not displayed regardless of what is set.
+   * **Note: **For calendars other than Gregorian, the week numbers are not displayed regardless of what is set.****
    */
   hideWeekNumbers?: boolean;
   /**
@@ -37,9 +37,8 @@ export interface CalendarPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * The <code>Calendar</code> can be used standale to display the years, months, weeks and days, but the main purpose of the
- <code>Calendar</code> is to be used within a <code>DatePicker</code>
-
+ * The `Calendar` can be used standale to display the years, months, weeks and days, but the main purpose of the `Calendar` is to be used within a `DatePicker`
+ *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Calendar" target="_blank">UI5 Web Components Playground</a>
  */
 const Calendar: FC<CalendarPropTypes> = withWebComponent<CalendarPropTypes>(
