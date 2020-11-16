@@ -5,7 +5,16 @@ import { FC, ReactNode } from 'react';
 
 export interface CarouselPropTypes extends WithWebComponentPropTypes {
   /**
-   * Defines the position of arrows. <br><br> Available options are: <ul> <li><code>Content</code></li> <li><code>Navigation</code></li> </ul> <br> When set to "Content", the arrows are placed on the sides of the current page. <br> When set to "Navigation", the arrows are placed on the sides of the page indicator.
+   * Defines the position of arrows.
+   *
+   * Available options are:
+   *
+   * *   `Content`
+   * *   `Navigation`
+   *
+   *
+   * When set to "Content", the arrows are placed on the sides of the current page.
+   * When set to "Navigation", the arrows are placed on the sides of the page indicator.
    */
   arrowsPlacement?: CarouselArrowsPlacement;
   /**
@@ -17,7 +26,7 @@ export interface CarouselPropTypes extends WithWebComponentPropTypes {
    */
   hideNavigation?: boolean;
   /**
-   * Defines when the <code>load-more</code> event is thrown. If not applied the event will not be thrown.
+   * Defines when the `load-more` event is thrown. If not applied the event will not be thrown.
    */
   infiniteScrollOffset?: number;
   /**
@@ -37,23 +46,22 @@ export interface CarouselPropTypes extends WithWebComponentPropTypes {
    */
   selectedIndex?: number;
   /**
-   * Defines the content of the <code>Carousel</code>.
+   * Defines the content of the `Carousel`.
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Fired for the last items of the <code>Carousel</code> if it is scrolled and the direction of scrolling is to the end. The number of items for which the event is thrown is controlled by the <code>infiniteScrollOffset</code> property.
+   * Fired for the last items of the `Carousel` if it is scrolled and the direction of scrolling is to the end. The number of items for which the event is thrown is controlled by the `infiniteScrollOffset` property.
    */
   onLoadMore?: (event: CustomEvent) => void;
   /**
-   * Fired whenever the <code>selectedIndex</code> changes due to user interaction, when the user clicks on the navigation arrows or while resizing, based on the <code>items-per-page-l</code>, <code>items-per-page-m</code> and <code>items-per-page-s</code> properties.
+   * Fired whenever the `selectedIndex` changes due to user interaction, when the user clicks on the navigation arrows or while resizing, based on the `items-per-page-l`, `items-per-page-m` and `items-per-page-s` properties.
    */
   onNavigate?: (event: CustomEvent<{ selectedIndex: number }>) => void;
 }
 
 /**
- * The carousel allows the user to browse through a set of items by swiping right or left. The component is mostly used for
- showing a gallery of images, but can hold any other HTML element.
-
+ * The carousel allows the user to browse through a set of items by swiping right or left. The component is mostly used for showing a gallery of images, but can hold any other HTML element.
+ *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Carousel" target="_blank">UI5 Web Components Playground</a>
  */
 const Carousel: FC<CarouselPropTypes> = withWebComponent<CarouselPropTypes>(

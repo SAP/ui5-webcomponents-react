@@ -6,39 +6,44 @@ import { FC, ReactNode } from 'react';
 
 export interface PanelPropTypes extends WithWebComponentPropTypes {
   /**
-   * Sets the accessible aria role of the <code>Panel</code>. Depending on the usage, you can change the role from the default <code>Form</code> to <code>Region</code> or <code>Complementary</code>.
+   * Sets the accessible aria role of the `Panel`. Depending on the usage, you can change the role from the default `Form` to `Region` or `Complementary`.
    */
   accessibleRole?: PanelAccessibleRoles;
   /**
-   * Indicates whether the <code>Panel</code> is collapsed and only the header is displayed.
+   * Indicates whether the `Panel` is collapsed and only the header is displayed.
    */
   collapsed?: boolean;
   /**
-   * Determines whether the <code>Panel</code> is in a fixed state that is not expandable/collapsible by user interaction.
+   * Determines whether the `Panel` is in a fixed state that is not expandable/collapsible by user interaction.
    */
   fixed?: boolean;
   /**
-   * Defines the "aria-level" of <code>Panel</code> heading, set by the <code>headerText</code>. <br><br> Available options are: <code>"H6"</code> to <code>"H1"</code>.
+   * Defines the "aria-level" of `Panel` heading, set by the `headerText`.
+   *
+   * Available options are: `"H6"` to `"H1"`.
    */
   headerLevel?: TitleLevel;
   /**
-   * This property is used to set the header text of the <code>Panel</code>. The text is visible in both expanded and collapsed states. <br><br> <b>Note:</b> This property is overridden by the <code>header</code> slot.
+   * This property is used to set the header text of the `Panel`. The text is visible in both expanded and collapsed states.
+   *
+   * **Note:** This property is overridden by the `header` slot.
    */
   headerText?: string;
   /**
-   * Determines the content of the <code>Panel</code>. The content is visible only when the <code>Panel</code> is expanded.
+   * Determines the content of the `Panel`. The content is visible only when the `Panel` is expanded.
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Defines the <code>Panel</code> header area. <br><br> <b>Note:</b> When a header is provided, the <code>headerText</code> property is ignored.
+   * Defines the `Panel` header area.
+   *
+   * **Note:** When a header is provided, the `headerText` property is ignored.
    */
   header?: ReactNode | ReactNode[];
 }
 
 /**
- * The <code>Panel</code> component is a container which has a header and a content area and is used for grouping and
- displaying information. It can be collapsed to save space on the screen.
-
+ * The `Panel` component is a container which has a header and a content area and is used for grouping and displaying information. It can be collapsed to save space on the screen.
+ *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Panel" target="_blank">UI5 Web Components Playground</a>
  */
 const Panel: FC<PanelPropTypes> = withWebComponent<PanelPropTypes>(

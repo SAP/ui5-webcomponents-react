@@ -1,4 +1,4 @@
-import '@ui5/webcomponents-icons/dist/icons/navigation-left-arrow';
+import '@ui5/webcomponents-icons/dist/navigation-left-arrow';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';

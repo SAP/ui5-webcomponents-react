@@ -4,11 +4,13 @@ import { FC, ReactNode } from 'react';
 
 export interface TokenPropTypes extends Omit<WithWebComponentPropTypes, 'onSelect'> {
   /**
-   * Defines whether the <code>Token</code> is read-only. <br><br> <b>Note:</b> A read-only <code>Token</code> can not be deleted or selected, but still provides visual feedback upon user interaction.
+   * Defines whether the `Token` is read-only.
+   *
+   * **Note:** A read-only `Token` can not be deleted or selected, but still provides visual feedback upon user interaction.
    */
   readonly?: boolean;
   /**
-   * Defines whether the <code>Token</code> is selected or not.
+   * Defines whether the `Token` is selected or not.
    */
   selected?: boolean;
   /**
@@ -16,18 +18,19 @@ export interface TokenPropTypes extends Omit<WithWebComponentPropTypes, 'onSelec
    */
   text?: string;
   /**
-   * Defines the close icon for the token. If nothing is provided to this slot, the default close icon will be used. Accepts <code>Icon</code>
+   * Defines the close icon for the token. If nothing is provided to this slot, the default close icon will be used. Accepts `Icon`
    */
   closeIcon?: ReactNode | ReactNode[];
   /**
-   * Fired when the a <code>Token</code> is selected by user interaction with mouse or clicking space.
+   * Fired when the a `Token` is selected by user interaction with mouse or clicking space.
    */
   onSelect?: (event: CustomEvent) => void;
 }
 
 /**
- * Tokens are small items of information (similar to tags) that mainly serve to visualize previously selected items.<br />
- * __Note:__ Tokens shouldn't be implemented as a standalone component. Use the `MultiInput` to achieve the intended functionality.
+ * Tokens are small items of information (similar to tags) that mainly serve to visualize previously selected items.
+ *
+ * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Token" target="_blank">UI5 Web Components Playground</a>
  */
 const Token: FC<TokenPropTypes> = withWebComponent<TokenPropTypes>(
   'ui5-token',

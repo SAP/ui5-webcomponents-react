@@ -269,7 +269,9 @@ describe('FilterBar', () => {
 
     const [selectFilterBar, selectFilterDialog] = screen.getAllByText('SELECT');
     expect(selectFilterDialog).toHaveAttribute('required', 'true');
-    expect(selectFilterDialog.parentNode.parentNode.parentNode.parentNode.querySelector('ui5-checkbox')).toHaveAttribute('disabled', 'true');
+    expect(
+      selectFilterDialog.parentNode.parentNode.parentNode.parentNode.querySelector('ui5-checkbox')
+    ).toHaveAttribute('disabled', 'true');
   });
 
   createPassThroughPropsTest(FilterBar);

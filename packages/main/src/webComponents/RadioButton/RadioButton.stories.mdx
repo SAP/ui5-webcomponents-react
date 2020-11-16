@@ -1,16 +1,12 @@
-import { ArgsTable, Canvas, Meta, Story } from "@storybook/addon-docs/blocks";
-import { RadioButton } from "@ui5/webcomponents-react/lib/RadioButton";
-import { Label } from "@ui5/webcomponents-react/lib/Label";
-import { FlexBox } from "@ui5/webcomponents-react/lib/FlexBox";
-import { ValueState } from "@ui5/webcomponents-react/lib/ValueState";
-import { createSelectArgTypes } from "@shared/stories/createSelectArgTypes";
-import { DocsHeader } from "@shared/stories/DocsHeader";
-import { DocsCommonProps } from "@shared/stories/DocsCommonProps";
-import {
-  FlexBoxAlignItems,
-  FlexBoxDirection,
-  FlexBoxJustifyContent,
-} from "../..";
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { RadioButton } from '@ui5/webcomponents-react/lib/RadioButton';
+import { Label } from '@ui5/webcomponents-react/lib/Label';
+import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
+import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent } from '../..';
 
 <Meta
   title="UI5 Web Components / RadioButton"
@@ -18,21 +14,21 @@ import {
   argTypes={{
     ...createSelectArgTypes({
       valueState: {
-        Error: "Error",
-        None: "None",
-        Warning: "Warning",
-      },
+        Error: 'Error',
+        None: 'None',
+        Warning: 'Warning'
+      }
     }),
-    ...DocsCommonProps,
+    ...DocsCommonProps
   }}
   args={{
     valueState: ValueState.None,
     style: {},
-    text: "RadioButton",
-    className: "",
-    tooltip: "",
-    slot: "",
-    ref: null,
+    text: 'RadioButton',
+    className: '',
+    tooltip: '',
+    slot: '',
+    ref: null
   }}
 />
 
@@ -55,19 +51,16 @@ import {
 <ArgsTable story="." />
 <div
   style={{
-    fontFamily: "var(--sapFontFamily)",
-    fontSize: "var(--sapFontSize)",
-    color: "var(--sapTextColor)",
+    fontFamily: 'var(--sapFontFamily)',
+    fontSize: 'var(--sapFontSize)',
+    color: 'var(--sapTextColor)'
   }}
 >
   <h3>Keyboard Handling</h3>
-  Once the <code>RadioButton</code> is on focus, it might be selected by pressing
-  the Space and Enter keys. <br />
-  The Arrow Down/Arrow Up and Arrow Left/Arrow Right keys can be used to change
-  selection between next/previous radio buttons in one group, while TAB and
-  SHIFT + TAB can be used to enter or leave the radio button group. <br />
-  <b>Note:</b> On entering radio button group, the focus goes to the currently selected
-  radio button.
+  Once the <code>RadioButton</code> is on focus, it might be selected by pressing the Space and Enter keys. <br />
+  The Arrow Down/Arrow Up and Arrow Left/Arrow Right keys can be used to change selection between next/previous radio
+  buttons in one group, while TAB and SHIFT + TAB can be used to enter or leave the radio button group. <br />
+  <b>Note:</b> On entering radio button group, the focus goes to the currently selected radio button.
 </div>
 
 <br />
@@ -84,10 +77,7 @@ Group radio buttons by using the `name` prop.
   <Story name="RadioButton groups">
     {() => {
       return (
-        <FlexBox
-          style={{ width: "600px" }}
-          justifyContent={FlexBoxJustifyContent.SpaceBetween}
-        >
+        <FlexBox style={{ width: '600px' }} justifyContent={FlexBoxJustifyContent.SpaceBetween}>
           <FlexBox alignItems={FlexBoxAlignItems.Center}>
             <Label>Horizontal Group: </Label>
             <RadioButton name="GroupA" text="Option A" />
@@ -96,21 +86,9 @@ Group radio buttons by using the `name` prop.
           </FlexBox>
           <FlexBox direction={FlexBoxDirection.Column}>
             <Label>Vertical Group: </Label>
-            <RadioButton
-              name="GroupB"
-              text="Neutral"
-              valueState={ValueState.None}
-            />
-            <RadioButton
-              name="GroupB"
-              text="Warning"
-              valueState={ValueState.Warning}
-            />
-            <RadioButton
-              name="GroupB"
-              text="Critical"
-              valueState={ValueState.Error}
-            />
+            <RadioButton name="GroupB" text="Neutral" valueState={ValueState.None} />
+            <RadioButton name="GroupB" text="Warning" valueState={ValueState.Warning} />
+            <RadioButton name="GroupB" text="Critical" valueState={ValueState.Error} />
           </FlexBox>
         </FlexBox>
       );
@@ -132,30 +110,10 @@ Group radio buttons by using the `name` prop.
           <RadioButton text="Warning" value-state={ValueState.Warning} />
           <RadioButton text="Disabled" disabled selected />
           <RadioButton text="Readonly" readonly selected />
-          <RadioButton
-            text="Error disabled"
-            disabled
-            value-state={ValueState.Error}
-            selected
-          />
-          <RadioButton
-            text="Warning disabled "
-            disabled
-            value-state={ValueState.Warning}
-            selected
-          />
-          <RadioButton
-            text="Error readonly"
-            readonly
-            value-state={ValueState.Error}
-            selected
-          />
-          <RadioButton
-            text="Warning readonly"
-            readonly
-            value-state={ValueState.Warning}
-            selected
-          />
+          <RadioButton text="Error disabled" disabled value-state={ValueState.Error} selected />
+          <RadioButton text="Warning disabled " disabled value-state={ValueState.Warning} selected />
+          <RadioButton text="Error readonly" readonly value-state={ValueState.Error} selected />
+          <RadioButton text="Warning readonly" readonly value-state={ValueState.Warning} selected />
         </>
       );
     }}

@@ -7,31 +7,54 @@ import { FC, ReactNode } from 'react';
 
 export interface PopoverPropTypes extends WithWebComponentPropTypes {
   /**
-   * Determines if there is no enough space, the <code>Popover</code> can be placed over the target.
+   * Determines if there is no enough space, the `Popover` can be placed over the target.
    */
   allowTargetOverlap?: boolean;
   /**
-   * Defines the header text. <br><br> <b>Note:</b> If <code>header</code> slot is provided, the <code>headerText</code> is ignored.
+   * Defines the header text.
+   *
+   * **Note:** If `header` prop is provided, the `headerText` is ignored.
    */
   headerText?: string;
   /**
-   * Determines the horizontal alignment of the <code>Popover</code>. <br><br> Available options are: <ul> <li><code>Center</code></li> <li><code>Left</code></li> <li><code>Right</code></li> <li><code>Stretch</code></li> </ul>
+   * Determines the horizontal alignment of the `Popover`.
+   *
+   * Available options are:
+   *
+   * *   `Center`
+   * *   `Left`
+   * *   `Right`
+   * *   `Stretch`
    */
   horizontalAlign?: PopoverHorizontalAlign;
   /**
-   * Defines whether the <code>Popover</code> should close when clicking/tapping outside of the popover. If enabled, it blocks any interaction with the background.
+   * Defines whether the `Popover` should close when clicking/tapping outside of the popover. If enabled, it blocks any interaction with the background.
    */
   modal?: boolean;
   /**
-   * Determines whether the <code>Popover</code> arrow is hidden.
+   * Determines whether the `Popover` arrow is hidden.
    */
   noArrow?: boolean;
   /**
-   * Determines on which side the <code>Popover</code> is placed at. <br><br> Available options are: <ul> <li><code>Left</code></li> <li><code>Right</code></li> <li><code>Top</code></li> <li><code>Bottom</code></li> </ul>
+   * Determines on which side the `Popover` is placed at.
+   *
+   * Available options are:
+   *
+   * *   `Left`
+   * *   `Right`
+   * *   `Top`
+   * *   `Bottom`
    */
   placementType?: PlacementType;
   /**
-   * Determines the vertical alignment of the <code>Popover</code>. <br><br> Available options are: <ul> <li><code>Center</code></li> <li><code>Top</code></li> <li><code>Bottom</code></li> <li><code>Stretch</code></li> </ul>
+   * Determines the vertical alignment of the `Popover`.
+   *
+   * Available options are:
+   *
+   * *   `Center`
+   * *   `Top`
+   * *   `Bottom`
+   * *   `Stretch`
    */
   verticalAlign?: PopoverVerticalAlign;
   /**
@@ -73,10 +96,8 @@ export interface PopoverPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * The <code>Popover</code> component displays additional information for an object in a compact way and without leaving
- the page. The Popover can contain various UI elements, such as fields, tables, images, and charts. It can also include
- actions in the footer.
-
+ * The `Popover` component displays additional information for an object in a compact way and without leaving the page. The Popover can contain various UI elements, such as fields, tables, images, and charts. It can also include actions in the footer.
+ *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Popover" target="_blank">UI5 Web Components Playground</a>
  */
 const Popover: FC<PopoverPropTypes> = withWebComponent<PopoverPropTypes>(
