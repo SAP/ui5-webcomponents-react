@@ -15,6 +15,5 @@ export interface CommonProps extends HTMLAttributes<HTMLElement> {
    * A tooltip which will be shown on hover
    */
   tooltip?: string;
-  slot?: string;
   ref?: Ref<any>;
 }
