@@ -112,12 +112,37 @@ COMPONENTS_WITHOUT_DEMOS.add('WizardStep');
 
 const componentsFromFioriPackage = new Set(fioriWebComponentsSpec.symbols.map((componentSpec) => componentSpec.module));
 
+const allWebComponents = [
+  ...mainWebComponentsSpec.symbols.filter((spec) => !spec.module.startsWith('types/')),
+  ...fioriWebComponentsSpec.symbols.filter((spec) => !spec.module.startsWith('types/'))
+];
+
+const htmlTagToModuleNameMap = new Map();
+for (const spec of allWebComponents) {
+  htmlTagToModuleNameMap.set(spec.tagname, spec.module)
+}
+
+
 const capitalizeFirstLetter = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 const snakeToCamel = (str) => str.replace(/([-_]\w)/g, (g) => g[1].toUpperCase());
 const filterNonPublicAttributes = (prop) =>
   prop.visibility === 'public' && prop.readonly !== 'true' && prop.static !== true;
 
 const replaceTagNameWithModuleName = (description) => {
+
+  let parsedDescription = description.replace(/`(ui5-[\w-]+)/g, (fullMatch, tag, ...args) => {
+    return "`" + htmlTagToModuleNameMap.get(tag);
+  })
+
+  // parsedDescription = parsedDescription.replace(/<code><(ui5-[\w-]+)/g, (fullMatch, tag, ...args) => {
+  //   return "<code><" + htmlTagToModuleNameMap.get(tag);
+  // })
+
+  return parsedDescription;
+
+
+
+  console.log(description);
   // replace all tag occurrences in description with module name
   [...description.matchAll(new RegExp(`<code>ui5-`, 'g'))].forEach(() => {
     const start = description.indexOf(`<code>ui5-`) + 6;
@@ -128,6 +153,7 @@ const replaceTagNameWithModuleName = (description) => {
       description = description.replace(webComponentWithTagName.tagname, webComponentWithTagName.module);
     }
   });
+
   return description;
 };
 
@@ -621,11 +647,6 @@ const createWebComponentDemo = (componentSpec, componentProps, description) => {
   )}${formattedDescription}`;
 };
 
-const allWebComponents = [
-  ...mainWebComponentsSpec.symbols.filter((spec) => !spec.module.startsWith('types/')),
-  ...fioriWebComponentsSpec.symbols.filter((spec) => !spec.module.startsWith('types/'))
-];
-
 const assignComponentPropertiesToMaps = (componentSpec, { properties, slots, events }) => {
   (componentSpec.properties || []).forEach((prop) => {
     if (!properties.has(prop.name)) {
@@ -708,7 +729,6 @@ resolvedWebComponents.forEach((componentSpec) => {
           return property.description || '';
         }
         let formattedDescription = turndownService.turndown((property.description || '').trim())
-          .replace(new RegExp(componentSpec.tagname, 'g'), `${componentSpec.module}`)
             .replace(/\n/g, '\n   * ');
 
 
@@ -754,7 +774,7 @@ resolvedWebComponents.forEach((componentSpec) => {
       importStatements.push(...eventParameters.importStatements);
       propTypes.push(dedent`
       /**
-       * ${replaceTagNameWithModuleName(eventSpec.description)}
+       * ${replaceTagNameWithModuleName(turndownService.turndown((eventSpec.description || '').trim()).replace(/\n/g, '\n   * '))}
        */
        on${capitalizeFirstLetter(snakeToCamel(eventSpec.name))}?: ${eventParameters.tsType};
       `);
