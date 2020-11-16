@@ -39,6 +39,10 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <DocsHeader />
 
+<br />
+
+## Example
+
 <Canvas>
   <Story name="Default">
     {(args) => {
@@ -53,9 +57,11 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
   </Story>
 </Canvas>
 
+## Properties
+
 <ArgsTable story="Default" />
 
-### Prevent event bubbling of Toolbar items
+## Prevent event bubbling of Toolbar items
 
 Per default, if the `active` prop is "true" and an actionable element like a button is clicked, the `onClick` event of the `Toolbar` is also fired.
 To prevent this you can add `e.stopPropagation()` to your event handler.

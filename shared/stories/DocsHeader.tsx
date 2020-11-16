@@ -3,6 +3,7 @@ import { Description, Subtitle, Title } from '@storybook/addon-docs/blocks';
 import React from 'react';
 
 import { Import } from './Import';
+import { TableOfContent } from './TableOfContent';
 
 export const DocsHeader = () => {
   return (
@@ -12,6 +13,7 @@ export const DocsHeader = () => {
       <Subtitle />
       <Import />
       <Description />
+      <TableOfContent />
     </>
   );
 };
