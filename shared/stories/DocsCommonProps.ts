@@ -15,5 +15,11 @@ export const DocsCommonProps = {
     table: { category: 'Common props' },
     type: 'string',
     description: 'A tooltip which will be shown on hover'
+  },
+  slot: {
+    table: { disable: true }
+  },
+  ref: {
+    table: { disable: true }
   }
 };
