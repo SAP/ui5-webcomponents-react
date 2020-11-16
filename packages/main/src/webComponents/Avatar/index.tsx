@@ -34,9 +34,9 @@ export interface AvatarPropTypes extends WithWebComponentPropTypes {
    * **Note:** If `image` is set, the property would be ignored.
    * **Note:** You should import the desired icon first, then use its name as "icon".
    *
-   * import "@ui5/webcomponents-icons/dist/{icon\_name}.js"
+   * `import "@ui5/webcomponents-icons/dist/{icon\_name}.js"`
    *
-   * <Avatar icon-src="employee">
+   * `<Avatar icon="employee">`
    *
    * See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
    */

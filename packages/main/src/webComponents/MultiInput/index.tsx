@@ -85,12 +85,19 @@ export interface MultiInputPropTypes extends Omit<WithWebComponentPropTypes, 'on
    *
    * Example:
    *
-   * ```jsx
-   * <MultiInput>
-   *   <Token slot="tokens" text="Token 1"></Token>
-   *   <Token slot="tokens" text="Token 2"></Token>
-   * </MultiInput>
-   * ```
+   * <pre>
+   *   <code>
+   *    &lt;MultiInput<br />
+   *    &nbsp;tokens={<br />
+   *    &nbsp;&nbsp;&lt;><br />
+   *    &nbsp;&nbsp;&nbsp;&lt;Token text="Token 1" /><br />
+   *    &nbsp;&nbsp;&nbsp;&lt;Token text="Token 1" /><br />
+   *    &nbsp;&nbsp;&lt;/><br />
+   *    &nbsp;}<br />
+   *    />
+   *  </code>
+   * </pre>
+   *
    */
   tokens?: ReactNode | ReactNode[];
   /**
@@ -98,12 +105,14 @@ export interface MultiInputPropTypes extends Omit<WithWebComponentPropTypes, 'on
    *
    * Example:
    *
-   * ```jsx
-   * <Input show-suggestions>
-   *   <SuggestionItem text="Item #1"></SuggestionItem>
-   *   <SuggestionItem text="Item #2"></SuggestionItem>
-   * </Input>
-   * ```
+   * <pre>
+   *   <code>
+   *    &lt;MultiInput showSuggestions><br />
+   *    &nbsp;&nbsp;&lt;SuggestionItem text="Item #1" /><br />
+   *    &nbsp;&nbsp;&lt;SuggestionItem text="Item #2" /><br />
+   *    &lt;/MultiInput>
+   *  </code>
+   * </pre>
    *
    * **Note:** The suggestion would be displayed only if the `showSuggestions` property is set to `true`.
    *

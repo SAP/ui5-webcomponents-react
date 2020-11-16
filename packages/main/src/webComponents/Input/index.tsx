@@ -81,12 +81,14 @@ export interface InputPropTypes extends Omit<WithWebComponentPropTypes, 'onChang
    *
    * Example:
    *
-   * ```jsx
-   * <Input show-suggestions>
-   *   <SuggestionItem text="Item #1"></SuggestionItem>
-   *   <SuggestionItem text="Item #2"></SuggestionItem>
-   * </Input>
-   * ```
+   * <pre>
+   *   <code>
+   *    &lt;Input showSuggestions><br />
+   *    &nbsp;&nbsp;&lt;SuggestionItem text="Item #1" /><br />
+   *    &nbsp;&nbsp;&lt;SuggestionItem text="Item #2" /><br />
+   *    &lt;/Input>
+   *  </code>
+   * </pre>
    *
    * **Note:** The suggestion would be displayed only if the `showSuggestions` property is set to `true`.
    *

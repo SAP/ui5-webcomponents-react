@@ -35,7 +35,7 @@ export interface ShellBarPropTypes extends WithWebComponentPropTypes {
   /**
    * Defines the `ShellBar` aditional items.
    *
-   * **Note:** You can use the  <ShellBarItem></ShellBarItem>.
+   * **Note:** You can use the  `ShellBarItem`.
    */
   children?: ReactNode | ReactNode[];
   /**
@@ -45,7 +45,7 @@ export interface ShellBarPropTypes extends WithWebComponentPropTypes {
   /**
    * Defines the items displayed in menu after a click on the primary title.
    *
-   * **Note:** You can use the  <StandardListItem></StandardListItem> and its ancestors.
+   * **Note:** You can use the  `StandardListItem` and its ancestors.
    */
   menuItems?: ReactNode | ReactNode[];
   /**
