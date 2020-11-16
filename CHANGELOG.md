@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.11.3...v0.11.4) (2020-11-16)
+
+
+### Bug Fixes
+
+* **charts:** allow negative measures in stacked charts, upgrade recharts ([#952](https://github.com/SAP/ui5-webcomponents-react/issues/952)) ([fb9b254](https://github.com/SAP/ui5-webcomponents-react/commit/fb9b254a5f16f79cb7a6d21a3cafca84fcf3e0c4)), closes [#773](https://github.com/SAP/ui5-webcomponents-react/issues/773)
+* **useI18nBundle:** prevent state transition if the component has been unmounted ([#922](https://github.com/SAP/ui5-webcomponents-react/issues/922)) ([9a4adf8](https://github.com/SAP/ui5-webcomponents-react/commit/9a4adf834fd357f8ca717848db2b659ff18bfce9))
+
+
+### Features
+
+* **cra-template-seed:** improve developer experience for data loading ([#938](https://github.com/SAP/ui5-webcomponents-react/issues/938)) ([4b09e9b](https://github.com/SAP/ui5-webcomponents-react/commit/4b09e9b55b45062f07dfaf4757a57cb3dcc5f506))
+* **DynamicPage:** initial component implementation ([#865](https://github.com/SAP/ui5-webcomponents-react/issues/865)) ([a85ab71](https://github.com/SAP/ui5-webcomponents-react/commit/a85ab71803e84fb9e4951a80fc0d75a7ba254b22)), closes [#544](https://github.com/SAP/ui5-webcomponents-react/issues/544)
+
+
+
+
+
 ## [0.11.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.11.2...v0.11.3) (2020-11-04)
 
 
