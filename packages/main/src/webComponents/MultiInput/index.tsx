@@ -6,7 +6,7 @@ import { FC, ReactNode } from 'react';
 
 export interface MultiInputPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput' | 'onSubmit'> {
   /**
-   * Determines whether a value help icon will be should in the end of the input. Pressing the icon will fire `value-help-trigger` event.
+   * Determines whether a value help icon will be should in the end of the input. Pressing the icon will fire `onValueHelpTrigger` event.
    */
   showValueHelpIcon?: boolean;
   /**
