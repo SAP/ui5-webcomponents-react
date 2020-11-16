@@ -20,7 +20,7 @@ export interface ListPropTypes extends WithWebComponentPropTypes {
    */
   headerText?: string;
   /**
-   * Defines if the component would fire the `load-more` event when the user scrolls to the bottom of the list, and helps achieving an "infinite scroll" effect by adding new items each time.
+   * Defines if the component would fire the `onLoadMore` event when the user scrolls to the bottom of the list, and helps achieving an "infinite scroll" effect by adding new items each time.
    */
   infiniteScroll?: boolean;
   /**
