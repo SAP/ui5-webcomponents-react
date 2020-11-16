@@ -8,7 +8,7 @@ export interface MultiComboBoxItemPropTypes extends WithWebComponentPropTypes {
    */
   selected?: boolean;
   /**
-   * Defines the text of the `ComboBoxItem`.
+   * Defines the text of the `MultiComboBoxItem`.
    */
   text?: string;
 }
