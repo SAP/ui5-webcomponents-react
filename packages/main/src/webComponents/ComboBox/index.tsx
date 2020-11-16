@@ -60,10 +60,13 @@ export interface ComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
    * Defines the `ComboBox` items.
    *
    * Example:
+   *
+   * ```jsx
    * <ComboBox>
-   *     <StandardListItem>Item #1</StandardListItem>
-   *     <StandardListItem>Item #2</StandardListItem>
+   *   <StandardListItem>Item #1</StandardListItem>
+   *   <StandardListItem>Item #2</StandardListItem>
    * </ComboBox>
+   * ```
    */
   children?: ReactNode | ReactNode[];
   /**

@@ -81,17 +81,18 @@ export interface InputPropTypes extends Omit<WithWebComponentPropTypes, 'onChang
    *
    * Example:
    *
+   * ```jsx
    * <Input show-suggestions>
-   *     <SuggestionItem text="Item #1"></SuggestionItem>
-   *     <SuggestionItem text="Item #2"></SuggestionItem>
+   *   <SuggestionItem text="Item #1"></SuggestionItem>
+   *   <SuggestionItem text="Item #2"></SuggestionItem>
    * </Input>
-   *
+   * ```
    *
    * **Note:** The suggestion would be displayed only if the `showSuggestions` property is set to `true`.
    *
-   * **Note:** The <SuggestionItem> is recommended to be used as a suggestion item. Importing the Input Suggestions Support feature:
+   * **Note:** The `<SuggestionItem>` is recommended to be used as a suggestion item. Importing the Input Suggestions Support feature:
    * `import "@ui5/webcomponents/dist/features/InputSuggestions.js";`
-   * also automatically imports the <SuggestionItem> for your convenience.
+   * also automatically imports the `<SuggestionItem>` for your convenience.
    */
   children?: ReactNode | ReactNode[];
   /**

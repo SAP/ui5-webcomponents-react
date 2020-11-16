@@ -54,10 +54,13 @@ export interface MultiComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 
    * Defines the `MultiComboBox` items.
    *
    * Example:
+   *
+   * ```jsx
    * <MultiComboBox>
-   *     <StandardListItem>Item #1</StandardListItem>
-   *     <StandardListItem>Item #2</StandardListItem>
+   *   <StandardListItem>Item #1</StandardListItem>
+   *   <StandardListItem>Item #2</StandardListItem>
    * </MultiComboBox>
+   * ```
    */
   children?: ReactNode | ReactNode[];
   /**

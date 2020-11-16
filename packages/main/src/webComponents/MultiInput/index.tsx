@@ -84,10 +84,13 @@ export interface MultiInputPropTypes extends Omit<WithWebComponentPropTypes, 'on
    * Defines the `MultiInput` tokens.
    *
    * Example:
+   *
+   * ```jsx
    * <MultiInput>
-   *     <Token slot="tokens" text="Token 1"></Token>
-   *     <Token slot="tokens" text="Token 2"></Token>
+   *   <Token slot="tokens" text="Token 1"></Token>
+   *   <Token slot="tokens" text="Token 2"></Token>
    * </MultiInput>
+   * ```
    */
   tokens?: ReactNode | ReactNode[];
   /**
@@ -95,17 +98,18 @@ export interface MultiInputPropTypes extends Omit<WithWebComponentPropTypes, 'on
    *
    * Example:
    *
+   * ```jsx
    * <Input show-suggestions>
-   *     <SuggestionItem text="Item #1"></SuggestionItem>
-   *     <SuggestionItem text="Item #2"></SuggestionItem>
+   *   <SuggestionItem text="Item #1"></SuggestionItem>
+   *   <SuggestionItem text="Item #2"></SuggestionItem>
    * </Input>
-   *
+   * ```
    *
    * **Note:** The suggestion would be displayed only if the `showSuggestions` property is set to `true`.
    *
-   * **Note:** The <SuggestionItem> is recommended to be used as a suggestion item. Importing the Input Suggestions Support feature:
+   * **Note:** The `<SuggestionItem>` is recommended to be used as a suggestion item. Importing the Input Suggestions Support feature:
    * `import "@ui5/webcomponents/dist/features/InputSuggestions.js";`
-   * also automatically imports the <SuggestionItem> for your convenience.
+   * also automatically imports the `<SuggestionItem>` for your convenience.
    */
   children?: ReactNode | ReactNode[];
   /**
