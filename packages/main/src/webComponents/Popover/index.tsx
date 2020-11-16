@@ -13,7 +13,7 @@ export interface PopoverPropTypes extends WithWebComponentPropTypes {
   /**
    * Defines the header text.
    *
-   * **Note:** If `header` slot is provided, the `headerText` is ignored.
+   * **Note:** If `header` prop is provided, the `headerText` is ignored.
    */
   headerText?: string;
   /**
