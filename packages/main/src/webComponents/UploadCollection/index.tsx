@@ -46,7 +46,7 @@ export interface UploadCollectionPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * This component allows you to represent files before uploading them to a server, with the help of `UploadCollection-item`. It also allows you to show already uploaded files.
+ * This component allows you to represent files before uploading them to a server, with the help of `UploadCollectionItem`. It also allows you to show already uploaded files.
  *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/UploadCollection" target="_blank">UI5 Web Components Playground</a>
  */
