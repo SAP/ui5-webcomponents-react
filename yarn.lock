@@ -7045,7 +7045,7 @@ core-js-pure@^3.0.0, core-js-pure@^3.0.1:
   resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.6.5.tgz#c79e75f5e38dbc85a662d91eea52b8256d53b813"
   integrity sha512-lacdXOimsiD0QyNf9BC/mxivNJ/ybBGJXQFKzRekp1WTHoVUWsUHEn+2T8GJAzzIhyOuXA+gOxCVN3l+5PLPUA==
 
-core-js@3.7.0, core-js@^3.0.1, core-js@^3.0.4, core-js@^3.4.2, core-js@^3.6.5:
+core-js@3.7.0, core-js@^3.0.1, core-js@^3.0.4, core-js@^3.6.5:
   version "3.7.0"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.7.0.tgz#b0a761a02488577afbf97179e4681bf49568520f"
   integrity sha512-NwS7fI5M5B85EwpWuIwJN4i/fbisQUwLwiSNUWeXlkAZ0sbBjLEvLvFLf1uzAUV66PcEPt4xCGCmOZSxVf3xzA==
@@ -15933,13 +15933,12 @@ recharts-scale@^0.4.2:
   dependencies:
     decimal.js-light "^2.4.1"
 
-recharts@2.0.0-beta.7:
-  version "2.0.0-beta.7"
-  resolved "https://registry.yarnpkg.com/recharts/-/recharts-2.0.0-beta.7.tgz#9d0f8259852e1c45c0bfdc8d638c793c4037bc10"
-  integrity sha512-dt4+KwBwRx4ed5mGg+rBMCBRxbQiMVGdyL9nhoaumB2StH/HCau8XRmOfgAI5ZmyBBW7NkiACZMPX5+X05pAsw==
+recharts@2.0.0-beta.8:
+  version "2.0.0-beta.8"
+  resolved "https://registry.yarnpkg.com/recharts/-/recharts-2.0.0-beta.8.tgz#5cde779cbd5e06b091f495e09b6a1d9a2237d82b"
+  integrity sha512-LfjJvTZ4P+lI0ezu2+TJ42Xkf63ma5e/JGA+I0dAiHOkBvP52vxBmMVHeGGWG0VQrT4/cR4J7qufTXmVwQgK/Q==
   dependencies:
     classnames "^2.2.5"
-    core-js "^3.4.2"
     d3-interpolate "^1.3.0"
     d3-scale "^3.1.0"
     d3-shape "^1.3.5"
