@@ -50,7 +50,7 @@ export interface ListPropTypes extends WithWebComponentPropTypes {
   /**
    * Defines the items of the `List`.
    *
-   * **Note:** Use `ui5-li`, `ui5-li-custom`, and `ui5-li-groupheader` for the intended design.
+   * **Note:** Use `StandardListItem`, `CustomListItem`, and `GroupHeaderListItem` for the intended design.
    */
   children?: ReactNode | ReactNode[];
   /**
@@ -60,27 +60,35 @@ export interface ListPropTypes extends WithWebComponentPropTypes {
    */
   header?: ReactNode | ReactNode[];
   /**
-   * Fired when an item is activated, unless the item's <code>type</code> property is set to <code>Inactive</code>.
+   * Fired when an item is activated, unless the item's `type` property is set to `Inactive`.
    */
   onItemClick?: (event: CustomEvent<{ item: ReactNode }>) => void;
   /**
-   * Fired when the <code>Close</code> button of any item is clicked <br><br> <b>Note:</b> This event is applicable to <code>NotificationListItem</code> items only, not to be confused with <code>item-delete</code>.
+   * Fired when the `Close` button of any item is clicked
+   *
+   * **Note:** This event is applicable to `NotificationListItem` items only, not to be confused with `item-delete`.
    */
   onItemClose?: (event: CustomEvent<{ item: ReactNode }>) => void;
   /**
-   * Fired when the Delete button of any item is pressed. <br><br> <b>Note:</b> A Delete button is displayed on each item, when the <code>List</code> <code>mode</code> property is set to <code>Delete</code>.
+   * Fired when the Delete button of any item is pressed.
+   *
+   * **Note:** A Delete button is displayed on each item, when the `List` `mode` property is set to `Delete`.
    */
   onItemDelete?: (event: CustomEvent<{ item: ReactNode }>) => void;
   /**
-   * Fired when the <code>Toggle</code> button of any item is clicked. <br><br> <b>Note:</b> This event is applicable to <code>NotificationListGroupItem</code> items only.
+   * Fired when the `Toggle` button of any item is clicked.
+   *
+   * **Note:** This event is applicable to `NotificationListItemBase` items only.
    */
   onItemToggle?: (event: CustomEvent<{ item: ReactNode }>) => void;
   /**
-   * Fired when the user scrolls to the bottom of the list. <br><br> <b>Note:</b> The event is fired when the <code>infiniteScroll</code> property is enabled.
+   * Fired when the user scrolls to the bottom of the list.
+   *
+   * **Note:** The event is fired when the `infiniteScroll` property is enabled.
    */
   onLoadMore?: (event: CustomEvent) => void;
   /**
-   * Fired when selection is changed by user interaction in <code>SingleSelect</code>, <code>SingleSelectBegin</code>, <code>SingleSelectEnd</code> and <code>MultiSelect</code> modes.
+   * Fired when selection is changed by user interaction in `SingleSelect`, `SingleSelectBegin`, `SingleSelectEnd` and `MultiSelect` modes.
    */
   onSelectionChange?: (event: CustomEvent<{ selectedItems: unknown[]; previouslySelectedItems: unknown[] }>) => void;
 }

@@ -10,9 +10,9 @@ export interface MultiInputPropTypes extends Omit<WithWebComponentPropTypes, 'on
    */
   showValueHelpIcon?: boolean;
   /**
-   * Defines whether the `ui5-input` is in disabled state.
+   * Defines whether the `Input` is in disabled state.
    *
-   * **Note:** A disabled `ui5-input` is completely noninteractive.
+   * **Note:** A disabled `Input` is completely noninteractive.
    */
   disabled?: boolean;
   /**
@@ -26,35 +26,35 @@ export interface MultiInputPropTypes extends Omit<WithWebComponentPropTypes, 'on
    */
   maxlength?: number;
   /**
-   * Determines the name with which the `ui5-input` will be submitted in an HTML form.
+   * Determines the name with which the `Input` will be submitted in an HTML form.
    *
    * **Important:** For the `name` property to have effect, you must add the following import to your project: `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
    *
-   * **Note:** When set, a native `input` HTML element will be created inside the `ui5-input` so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
+   * **Note:** When set, a native `input` HTML element will be created inside the `Input` so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
    */
   name?: string;
   /**
-   * Defines a short hint intended to aid the user with data entry when the `ui5-input` has no value.
+   * Defines a short hint intended to aid the user with data entry when the `Input` has no value.
    */
   placeholder?: string;
   /**
-   * Defines whether the `ui5-input` is read-only.
+   * Defines whether the `Input` is read-only.
    *
-   * **Note:** A read-only `ui5-input` is not editable, but still provides visual feedback upon user interaction.
+   * **Note:** A read-only `Input` is not editable, but still provides visual feedback upon user interaction.
    */
   readonly?: boolean;
   /**
-   * Defines whether the `ui5-input` is required.
+   * Defines whether the `Input` is required.
    */
   required?: boolean;
   /**
-   * Defines whether the `ui5-input` should show suggestions, if such are present.
+   * Defines whether the `Input` should show suggestions, if such are present.
    *
    * **Note:** Don\`t forget to import the `InputSuggestions` module from `"@ui5/webcomponents/dist/features/InputSuggestions.js"` to enable this functionality.
    */
   showSuggestions?: boolean;
   /**
-   * Defines the HTML type of the `ui5-input`. Available options are: `Text`, `Email`, `Number`, `Password`, `Tel`, and `URL`.
+   * Defines the HTML type of the `Input`. Available options are: `Text`, `Email`, `Number`, `Password`, `Tel`, and `URL`.
    *
    * **Notes:**
    *
@@ -63,13 +63,13 @@ export interface MultiInputPropTypes extends Omit<WithWebComponentPropTypes, 'on
    */
   type?: InputType;
   /**
-   * Defines the value of the `ui5-input`.
+   * Defines the value of the `Input`.
    *
    * **Note:** The property is updated upon typing.
    */
   value?: string;
   /**
-   * Defines the value state of the `ui5-input`.
+   * Defines the value state of the `Input`.
    *
    * Available options are:
    *
@@ -85,39 +85,39 @@ export interface MultiInputPropTypes extends Omit<WithWebComponentPropTypes, 'on
    *
    * Example:
    * <MultiInput>
-   *     <ui5-token slot="tokens" text="Token 1"></ui5-token>
-   *     <ui5-token slot="tokens" text="Token 2"></ui5-token>
+   *     <Token slot="tokens" text="Token 1"></Token>
+   *     <Token slot="tokens" text="Token 2"></Token>
    * </MultiInput>
    */
   tokens?: ReactNode | ReactNode[];
   /**
-   * Defines the `ui5-input` suggestion items.
+   * Defines the `Input` suggestion items.
    *
    * Example:
    *
-   * <ui5-input show-suggestions>
-   *     <ui5-suggestion-item text="Item #1"></ui5-suggestion-item>
-   *     <ui5-suggestion-item text="Item #2"></ui5-suggestion-item>
-   * </ui5-input>
+   * <Input show-suggestions>
+   *     <SuggestionItem text="Item #1"></SuggestionItem>
+   *     <SuggestionItem text="Item #2"></SuggestionItem>
+   * </Input>
    *
    *
    * **Note:** The suggestion would be displayed only if the `showSuggestions` property is set to `true`.
    *
-   * **Note:** The <ui5-suggestion-item> is recommended to be used as a suggestion item. Importing the Input Suggestions Support feature:
+   * **Note:** The <SuggestionItem> is recommended to be used as a suggestion item. Importing the Input Suggestions Support feature:
    * `import "@ui5/webcomponents/dist/features/InputSuggestions.js";`
-   * also automatically imports the <ui5-suggestion-item> for your convenience.
+   * also automatically imports the <SuggestionItem> for your convenience.
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Defines the icon to be displayed in the `ui5-input`.
+   * Defines the icon to be displayed in the `Input`.
    */
   icon?: ReactNode | ReactNode[];
   /**
-   * Defines the value state message that will be displayed as pop up under the `ui5-input`.
+   * Defines the value state message that will be displayed as pop up under the `Input`.
    *
    * **Note:** If not specified, a default text (in the respective language) will be displayed.
-   * **Note:** The `valueStateMessage` would be displayed, when the `ui5-input` is in `Information`, `Warning` or `Error` value state.
-   * **Note:** If the `ui5-input` has `suggestionItems`, the `valueStateMessage` would be displayed as part of the same popover, if used on desktop, or dialog - on phone.
+   * **Note:** The `valueStateMessage` would be displayed, when the `Input` is in `Information`, `Warning` or `Error` value state.
+   * **Note:** If the `Input` has `suggestionItems`, the `valueStateMessage` would be displayed as part of the same popover, if used on desktop, or dialog - on phone.
    */
   valueStateMessage?: ReactNode | ReactNode[];
   /**
@@ -125,7 +125,7 @@ export interface MultiInputPropTypes extends Omit<WithWebComponentPropTypes, 'on
    */
   onTokenDelete?: (event: CustomEvent<{ token: ReactNode }>) => void;
   /**
-   * Fired when the value help icon is pressed and F4 or ALT/OPTION + ARROW_UP/ARROW_DOWN keyboard keys are used.
+   * Fired when the value help icon is pressed and F4 or ALT/OPTION + ARROW\_UP/ARROW\_DOWN keyboard keys are used.
    */
   onValueHelpTrigger?: (event: CustomEvent) => void;
   /**
@@ -133,11 +133,13 @@ export interface MultiInputPropTypes extends Omit<WithWebComponentPropTypes, 'on
    */
   onChange?: (event: CustomEvent) => void;
   /**
-   * Fired when the value of the <code>Input</code> changes at each keystroke, and when a suggestion item has been selected.
+   * Fired when the value of the `Input` changes at each keystroke, and when a suggestion item has been selected.
    */
   onInput?: (event: CustomEvent) => void;
   /**
-   * Fired when user presses Enter key on the <code>Input</code>. <br><br> <b>Note:</b> The event is fired independent of whether there was a change before or not. If change was performed, the event is fired after the change event. The event is also fired when an item of the select list is selected by pressing Enter.
+   * Fired when user presses Enter key on the `Input`.
+   *
+   * **Note:** The event is fired independent of whether there was a change before or not. If change was performed, the event is fired after the change event. The event is also fired when an item of the select list is selected by pressing Enter.
    */
   onSubmit?: (event: CustomEvent) => void;
   /**

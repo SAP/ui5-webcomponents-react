@@ -38,7 +38,7 @@ export interface ProductSwitchItemPropTypes extends Omit<WithWebComponentPropTyp
    */
   targetSrc?: string;
   /**
-   * Fired when the <code>ProductSwitchItem</code> is activated either with a click/tap or by using the Enter or Space key.
+   * Fired when the `ProductSwitchItem` is activated either with a click/tap or by using the Enter or Space key.
    */
   onClick?: (event: CustomEvent) => void;
 }

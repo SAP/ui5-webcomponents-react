@@ -17,7 +17,7 @@ export interface TreeItemPropTypes extends WithWebComponentPropTypes {
    */
   icon?: string;
   /**
-   * Defines whether the tree node is selected by the user. Only has effect if the `ui5-tree` is in one of the following modes: in `SingleSelect`, `SingleSelectBegin`, `SingleSelectEnd` and `MultiSelect`.
+   * Defines whether the tree node is selected by the user. Only has effect if the `Tree` is in one of the following modes: in `SingleSelect`, `SingleSelectBegin`, `SingleSelectEnd` and `MultiSelect`.
    */
   selected?: boolean;
   /**

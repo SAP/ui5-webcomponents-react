@@ -55,8 +55,8 @@ export interface MultiComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 
    *
    * Example:
    * <MultiComboBox>
-   *     <ui5-li>Item #1</ui5-li>
-   *     <ui5-li>Item #2</ui5-li>
+   *     <StandardListItem>Item #1</StandardListItem>
+   *     <StandardListItem>Item #2</StandardListItem>
    * </MultiComboBox>
    */
   children?: ReactNode | ReactNode[];
@@ -65,10 +65,10 @@ export interface MultiComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 
    */
   icon?: ReactNode | ReactNode[];
   /**
-   * Defines the value state message that will be displayed as pop up under the `ui5-multicombobox`.
+   * Defines the value state message that will be displayed as pop up under the `undefined`.
    *
    * **Note:** If not specified, a default text (in the respective language) will be displayed.
-   * **Note:** The `valueStateMessage` would be displayed, when the `ui5-select` is in `Information`, `Warning` or `Error` value state.
+   * **Note:** The `valueStateMessage` would be displayed, when the `Select` is in `Information`, `Warning` or `Error` value state.
    */
   valueStateMessage?: ReactNode | ReactNode[];
   /**
@@ -76,7 +76,7 @@ export interface MultiComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 
    */
   onChange?: (event: CustomEvent) => void;
   /**
-   * Fired when the value of the <code>MultiComboBox</code> changes at each keystroke.
+   * Fired when the value of the `MultiComboBox` changes at each keystroke.
    */
   onInput?: (event: CustomEvent) => void;
   /**
@@ -84,7 +84,7 @@ export interface MultiComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 
    */
   onOpenChange?: (event: CustomEvent) => void;
   /**
-   * Fired when selection is changed by user interaction in <code>SingleSelect</code> and <code>MultiSelect</code> modes.
+   * Fired when selection is changed by user interaction in `SingleSelect` and `MultiSelect` modes.
    */
   onSelectionChange?: (event: CustomEvent<{ items: unknown[] }>) => void;
 }

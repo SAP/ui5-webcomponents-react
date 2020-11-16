@@ -17,7 +17,7 @@ export interface UploadCollectionItemPropTypes extends WithWebComponentPropTypes
    */
   fileNameClickable?: boolean;
   /**
-   * Removes delete option from `ui5-upload-collection` with `mode` `Delete` for this item.
+   * Removes delete option from `UploadCollection` with `mode` `Delete` for this item.
    */
   noDelete?: boolean;
   /**
@@ -45,23 +45,31 @@ export interface UploadCollectionItemPropTypes extends WithWebComponentPropTypes
   /**
    * A thumbnail, which will be shown in the beginning of the `UploadCollectionItem`.
    *
-   * **Note:** Use `ui5-icon` or `img` for the intended design.
+   * **Note:** Use `Icon` or `img` for the intended design.
    */
   thumbnail?: ReactNode;
   /**
-   * Fired when the file name is clicked. <br><br> <b>Note:</b> This event is only available when <code>fileNameClickable</code> property is <code>true</code>.
+   * Fired when the file name is clicked.
+   *
+   * **Note:** This event is only available when `fileNameClickable` property is `true`.
    */
   onFileNameClick?: (event: CustomEvent) => void;
   /**
-   * Fired when the <code>fileName</code> property gets changed. <br><br> <b>Note:</b> An edit button is displayed on each item, when the <code>UploadCollectionItem</code> <code>type</code> property is set to <code>Detail</code>.
+   * Fired when the `fileName` property gets changed.
+   *
+   * **Note:** An edit button is displayed on each item, when the `UploadCollectionItem` `type` property is set to `Detail`.
    */
   onRename?: (event: CustomEvent) => void;
   /**
-   * Fired when the retry button is pressed. <br><br> <b>Note:</b> Retry button is displayed when <code>uploadState</code> property is set to <code>Error</code>.
+   * Fired when the retry button is pressed.
+   *
+   * **Note:** Retry button is displayed when `uploadState` property is set to `Error`.
    */
   onRetry?: (event: CustomEvent) => void;
   /**
-   * Fired when the terminate button is pressed. <br><br> <b>Note:</b> Terminate button is displayed when <code>uploadState</code> property is set to <code>Uploading</code>.
+   * Fired when the terminate button is pressed.
+   *
+   * **Note:** Terminate button is displayed when `uploadState` property is set to `Uploading`.
    */
   onTerminate?: (event: CustomEvent) => void;
 }

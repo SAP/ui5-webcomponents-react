@@ -14,7 +14,7 @@ export interface OptionPropTypes extends WithWebComponentPropTypes {
    */
   selected?: boolean;
   /**
-   * Defines the value of the `ui5-select` inside an HTML Form element when this `Option` is selected. For more information on HTML Form support, see the `name` property of `ui5-select`.
+   * Defines the value of the `Select` inside an HTML Form element when this `Option` is selected. For more information on HTML Form support, see the `name` property of `Select`.
    */
   value?: string;
 }

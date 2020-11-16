@@ -45,7 +45,9 @@ export interface ButtonPropTypes extends Omit<WithWebComponentPropTypes, 'onClic
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Fired when the <code>Button</code> is activated either with a mouse/tap or by using the Enter or Space key. <br><br> <b>Note:</b> The event will not be fired if the <code>disabled</code> property is set to <code>true</code>.
+   * Fired when the `Button` is activated either with a mouse/tap or by using the Enter or Space key.
+   *
+   * **Note:** The event will not be fired if the `disabled` property is set to `true`.
    */
   onClick?: (event: CustomEvent) => void;
 }

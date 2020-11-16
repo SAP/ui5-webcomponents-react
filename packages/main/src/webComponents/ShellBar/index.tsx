@@ -35,29 +35,29 @@ export interface ShellBarPropTypes extends WithWebComponentPropTypes {
   /**
    * Defines the `ShellBar` aditional items.
    *
-   * **Note:** You can use the  <ShellBar-item></ShellBar-item>.
+   * **Note:** You can use the  <ShellBarItem></ShellBarItem>.
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Defines the logo of the `ShellBar`. For example, you can use `ui5-avatar` or `img` elements as logo.
+   * Defines the logo of the `ShellBar`. For example, you can use `Avatar` or `img` elements as logo.
    */
   logo?: ReactNode;
   /**
    * Defines the items displayed in menu after a click on the primary title.
    *
-   * **Note:** You can use the  <ui5-li></ui5-li> and its ancestors.
+   * **Note:** You can use the  <StandardListItem></StandardListItem> and its ancestors.
    */
   menuItems?: ReactNode | ReactNode[];
   /**
-   * You can pass `ui5-avatar` to set the profile image/icon. If no profile slot is set - profile will be excluded from actions.
+   * You can pass `Avatar` to set the profile image/icon. If no profile slot is set - profile will be excluded from actions.
    */
   profile?: ReactNode;
   /**
-   * Defines the `ui5-input`, that will be used as a search field.
+   * Defines the `Input`, that will be used as a search field.
    */
   searchField?: ReactNode | ReactNode[];
   /**
-   * Defines a `ui5-button` in the bar that will be placed in the beginning. We encourage this slot to be used for a back or home button. It gets overstyled to match ShellBar's styling.
+   * Defines a `Button` in the bar that will be placed in the beginning. We encourage this slot to be used for a back or home button. It gets overstyled to match ShellBar's styling.
    */
   startButton?: ReactNode | ReactNode[];
   /**
@@ -69,7 +69,7 @@ export interface ShellBarPropTypes extends WithWebComponentPropTypes {
    */
   onLogoClick?: (event: CustomEvent<{ targetRef: ReactNode }>) => void;
   /**
-   * Fired, when a menu item is activated <b>Note:</b> You can prevent closing of oveflow popover by calling <code>event.preventDefault()</code>.
+   * Fired, when a menu item is activated **Note:** You can prevent closing of oveflow popover by calling `event.preventDefault()`.
    */
   onMenuItemClick?: (event: CustomEvent<{ item: ReactNode }>) => void;
   /**
@@ -77,7 +77,7 @@ export interface ShellBarPropTypes extends WithWebComponentPropTypes {
    */
   onNotificationsClick?: (event: CustomEvent<{ targetRef: ReactNode }>) => void;
   /**
-   * Fired, when the product switch icon is activated. <b>Note:</b> You can prevent closing of oveflow popover by calling <code>event.preventDefault()</code>.
+   * Fired, when the product switch icon is activated. **Note:** You can prevent closing of oveflow popover by calling `event.preventDefault()`.
    */
   onProductSwitchClick?: (event: CustomEvent<{ targetRef: ReactNode }>) => void;
   /**

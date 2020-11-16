@@ -7,7 +7,7 @@ import { FC, ReactNode } from 'react';
 
 export interface ResponsivePopoverPropTypes extends WithWebComponentPropTypes {
   /**
-   * Determines if there is no enough space, the `ui5-popover` can be placed over the target.
+   * Determines if there is no enough space, the `Popover` can be placed over the target.
    */
   allowTargetOverlap?: boolean;
   /**
@@ -17,7 +17,7 @@ export interface ResponsivePopoverPropTypes extends WithWebComponentPropTypes {
    */
   headerText?: string;
   /**
-   * Determines the horizontal alignment of the `ui5-popover`.
+   * Determines the horizontal alignment of the `Popover`.
    *
    * Available options are:
    *
@@ -28,15 +28,15 @@ export interface ResponsivePopoverPropTypes extends WithWebComponentPropTypes {
    */
   horizontalAlign?: PopoverHorizontalAlign;
   /**
-   * Defines whether the `ui5-popover` should close when clicking/tapping outside of the popover. If enabled, it blocks any interaction with the background.
+   * Defines whether the `Popover` should close when clicking/tapping outside of the popover. If enabled, it blocks any interaction with the background.
    */
   modal?: boolean;
   /**
-   * Determines whether the `ui5-popover` arrow is hidden.
+   * Determines whether the `Popover` arrow is hidden.
    */
   noArrow?: boolean;
   /**
-   * Determines on which side the `ui5-popover` is placed at.
+   * Determines on which side the `Popover` is placed at.
    *
    * Available options are:
    *
@@ -47,7 +47,7 @@ export interface ResponsivePopoverPropTypes extends WithWebComponentPropTypes {
    */
   placementType?: PlacementType;
   /**
-   * Determines the vertical alignment of the `ui5-popover`.
+   * Determines the vertical alignment of the `Popover`.
    *
    * Available options are:
    *

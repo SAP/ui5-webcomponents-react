@@ -6,7 +6,7 @@ export interface TableRowPropTypes extends WithWebComponentPropTypes {
   /**
    * Defines the cells of the `TableRow`.
    *
-   * **Note:** Use `ui5-table-cell` for the intended design.
+   * **Note:** Use `TableCell` for the intended design.
    */
   children?: ReactNode | ReactNode[];
 }

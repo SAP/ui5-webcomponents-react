@@ -8,7 +8,7 @@ export interface MultiComboBoxItemPropTypes extends WithWebComponentPropTypes {
    */
   selected?: boolean;
   /**
-   * Defines the text of the `ui5-cb-item`.
+   * Defines the text of the `ComboBoxItem`.
    */
   text?: string;
 }

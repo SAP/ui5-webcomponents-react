@@ -6,7 +6,7 @@ import { FC, ReactNode } from 'react';
 
 export interface DateTimePickerPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput'> {
   /**
-   * Determines whether the `ui5-date-picker` is displayed as disabled.
+   * Determines whether the `DatePicker` is displayed as disabled.
    */
   disabled?: boolean;
   /**
@@ -28,17 +28,17 @@ export interface DateTimePickerPropTypes extends Omit<WithWebComponentPropTypes,
    */
   minDate?: string;
   /**
-   * Determines the name with which the `ui5-date-picker` will be submitted in an HTML form.
+   * Determines the name with which the `DatePicker` will be submitted in an HTML form.
    *
    * **Important:** For the `name` property to have effect, you must add the following import to your project: `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
    *
-   * **Note:** When set, a native `input` HTML element will be created inside the `ui5-date-picker` so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
+   * **Note:** When set, a native `input` HTML element will be created inside the `DatePicker` so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
    */
   name?: string;
   /**
-   * Defines a short hint, intended to aid the user with data entry when the `ui5-date-picker` has no value.
+   * Defines a short hint, intended to aid the user with data entry when the `DatePicker` has no value.
    *
-   * **Note:** When no placeholder is set, the format pattern is displayed as a placeholder. Passing an empty string as the value of this property will make the `ui5-date-picker` appear empty - without placeholder or format pattern.
+   * **Note:** When no placeholder is set, the format pattern is displayed as a placeholder. Passing an empty string as the value of this property will make the `DatePicker` appear empty - without placeholder or format pattern.
    */
   placeholder?: string;
   /**
@@ -54,11 +54,11 @@ export interface DateTimePickerPropTypes extends Omit<WithWebComponentPropTypes,
    */
   primaryCalendarType?: CalendarType;
   /**
-   * Determines whether the `ui5-date-picker` is displayed as read-only.
+   * Determines whether the `DatePicker` is displayed as read-only.
    */
   readonly?: boolean;
   /**
-   * Defines whether the `ui5-datepicker` is required.
+   * Defines whether the `undefined` is required.
    */
   required?: boolean;
   /**
@@ -66,7 +66,7 @@ export interface DateTimePickerPropTypes extends Omit<WithWebComponentPropTypes,
    */
   value?: string;
   /**
-   * Defines the value state of the `ui5-date-picker`.
+   * Defines the value state of the `DatePicker`.
    *
    * Available options are:
    *
@@ -78,10 +78,10 @@ export interface DateTimePickerPropTypes extends Omit<WithWebComponentPropTypes,
    */
   valueState?: ValueState;
   /**
-   * Defines the value state message that will be displayed as pop up under the `ui5-date-picker`.
+   * Defines the value state message that will be displayed as pop up under the `DatePicker`.
    *
    * **Note:** If not specified, a default text (in the respective language) will be displayed.
-   * **Note:** The `valueStateMessage` would be displayed, when the `ui5-date-picker` is in `Information`, `Warning` or `Error` value state.
+   * **Note:** The `valueStateMessage` would be displayed, when the `DatePicker` is in `Information`, `Warning` or `Error` value state.
    */
   valueStateMessage?: ReactNode;
   /**
@@ -89,7 +89,7 @@ export interface DateTimePickerPropTypes extends Omit<WithWebComponentPropTypes,
    */
   onChange?: (event: CustomEvent) => void;
   /**
-   * Fired when the value of the <code>DatePicker</code> is changed at each key stroke.
+   * Fired when the value of the `DatePicker` is changed at each key stroke.
    */
   onInput?: (event: CustomEvent) => void;
 }

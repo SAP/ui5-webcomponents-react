@@ -6,7 +6,7 @@ export interface LabelPropTypes extends WithWebComponentPropTypes {
   /**
    * Defines the labeled input by providing its ID.
    *
-   * **Note:** Can be used with both `ui5-input` and native input.
+   * **Note:** Can be used with both `Input` and native input.
    */
   for?: string;
   /**

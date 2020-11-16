@@ -26,7 +26,7 @@ export interface UploadCollectionPropTypes extends WithWebComponentPropTypes {
   noDnd?: boolean;
   /**
    * Defines the items of the `UploadCollection`.
-   * **Note:** Use `UploadCollection-item` for the intended design.
+   * **Note:** Use `UploadCollectionItem` for the intended design.
    */
   children?: ReactNode | ReactNode[];
   /**
@@ -34,11 +34,13 @@ export interface UploadCollectionPropTypes extends WithWebComponentPropTypes {
    */
   header?: ReactNode | ReactNode[];
   /**
-   * Fired when the Delete button of any item is pressed. <br><br> <b>Note:</b> A Delete button is displayed on each item, when the <code>UploadCollection</code> <code>mode</code> property is set to <code>Delete</code>.
+   * Fired when the Delete button of any item is pressed.
+   *
+   * **Note:** A Delete button is displayed on each item, when the `UploadCollection` `mode` property is set to `Delete`.
    */
   onFileDeleted?: (event: CustomEvent<{ item: ReactNode }>) => void;
   /**
-   * Fired when selection is changed by user interaction in <code>SingleSelect</code> and <code>MultiSelect</code> modes.
+   * Fired when selection is changed by user interaction in `SingleSelect` and `MultiSelect` modes.
    */
   onSelectionChange?: (event: CustomEvent<{ selectedItems: unknown[] }>) => void;
 }

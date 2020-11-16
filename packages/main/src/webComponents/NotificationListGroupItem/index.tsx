@@ -33,21 +33,21 @@ export interface NotificationListGroupItemPropTypes extends WithWebComponentProp
    */
   selected?: boolean;
   /**
-   * Defines the items of the `NotificationListGroupItem`, usually `ui5-li-notification` items.
+   * Defines the items of the `NotificationListItemBase`, usually `NotificationListItem` items.
    */
   children?: ReactNode | ReactNode[];
   /**
    * Defines the actions, displayed in the top-right area.
    *
-   * **Note:** use the `ui5-notification-overflow-action` component.
+   * **Note:** use the `undefined` component.
    */
   actions?: ReactNode;
   /**
-   * Fired when the <code>NotificationListGroupItem</code> is expanded/collapsed by user interaction.
+   * Fired when the `NotificationListItemBase` is expanded/collapsed by user interaction.
    */
   onToggle?: (event: CustomEvent) => void;
   /**
-   * Fired when the <code>Close</code> button is pressed.
+   * Fired when the `Close` button is pressed.
    */
   onClose?: (event: CustomEvent) => void;
 }
@@ -59,7 +59,7 @@ export interface NotificationListGroupItemPropTypes extends WithWebComponentProp
  * *   `Toggle` button to expand and collapse the group
  * *   `Priority` icon to display the priority of the group
  * *   `Heading` to entitle the group
- * *   Custom actions - with the use of `ui5-notification-overflow-action`
+ * *   Custom actions - with the use of `undefined`
  * *   Items of the group
  *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/NotificationListGroupItem" target="_blank">UI5 Web Components Playground</a>

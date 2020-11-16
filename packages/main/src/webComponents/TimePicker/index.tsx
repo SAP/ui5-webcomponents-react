@@ -50,7 +50,7 @@ export interface TimePickerPropTypes extends Omit<WithWebComponentPropTypes, 'on
    */
   onChange?: (event: CustomEvent) => void;
   /**
-   * Fired when the value of the <code>TimePicker</code> is changed at each key stroke.
+   * Fired when the value of the `TimePicker` is changed at each key stroke.
    */
   onInput?: (event: CustomEvent) => void;
 }

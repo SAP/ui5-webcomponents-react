@@ -8,7 +8,7 @@ export interface SegmentedButtonPropTypes extends WithWebComponentPropTypes {
    *
    * **Note:** Multiple buttons are allowed.
    *
-   * **Note:** Use the `ui5-togglebutton` for the intended design.
+   * **Note:** Use the `ToggleButton` for the intended design.
    */
   children?: ReactNode | ReactNode[];
   /**

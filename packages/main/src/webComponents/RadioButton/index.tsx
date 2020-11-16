@@ -60,7 +60,7 @@ export interface RadioButtonPropTypes extends Omit<WithWebComponentPropTypes, 'o
    */
   wrap?: boolean;
   /**
-   * Fired when the <code>RadioButton</code> selected state changes.
+   * Fired when the `RadioButton` selected state changes.
    */
   onSelect?: (event: CustomEvent) => void;
 }

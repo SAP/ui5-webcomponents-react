@@ -6,7 +6,7 @@ export interface WizardPropTypes extends WithWebComponentPropTypes {
   /**
    * Defines the steps.
    *
-   * **Note:** Use the available `Wizard-step` component.
+   * **Note:** Use the available `WizardStep` component.
    */
   children?: ReactNode | ReactNode[];
   /**

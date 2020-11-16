@@ -34,7 +34,7 @@ export interface SwitchPropTypes extends Omit<WithWebComponentPropTypes, 'onChan
    */
   textOn?: string;
   /**
-   * Fired when the <code>Switch</code> checked state changes.
+   * Fired when the `Switch` checked state changes.
    */
   onChange?: (event: CustomEvent) => void;
 }

@@ -27,17 +27,17 @@ export interface TablePropTypes extends WithWebComponentPropTypes {
   /**
    * Defines the configuration for the columns of the `Table`.
    *
-   * **Note:** Use `Table-column` for the intended design.
+   * **Note:** Use `TableColumn` for the intended design.
    */
   columns?: ReactNode | ReactNode[];
   /**
    * Defines the `Table` rows.
    *
-   * **Note:** Use `Table-row` for the intended design.
+   * **Note:** Use `TableRow` for the intended design.
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Fired when the <code>TableColumn</code> is shown as a pop-in instead of hiding it.
+   * Fired when the `TableColumn` is shown as a pop-in instead of hiding it.
    */
   onPopinChange?: (event: CustomEvent<{ poppedColumns: unknown[] }>) => void;
   /**

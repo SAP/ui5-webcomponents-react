@@ -12,7 +12,7 @@ export interface TableColumnPropTypes extends WithWebComponentPropTypes {
   /**
    * Defines the minimum table width required to display this column. By default it is always displayed.
    *
-   * The responsive behavior of the `ui5-table` is determined by this property. As an example, by setting `minWidth` property to `40em` shows this column on tablet (and desktop) but hides it on mobile.
+   * The responsive behavior of the `Table` is determined by this property. As an example, by setting `minWidth` property to `40em` shows this column on tablet (and desktop) but hides it on mobile.
    * For further responsive design options, see `demandPopin` property.
    */
   minWidth?: number;

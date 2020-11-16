@@ -13,7 +13,7 @@ const turndownService = new TurndownService({
   headingStyle: 'atx',
   codeBlockStyle: 'fenced'
 });
-turndownService.keep(['ui5-link'])
+turndownService.keep(['ui5-link']);
 
 //TODO:
 console.warn(
@@ -119,9 +119,8 @@ const allWebComponents = [
 
 const htmlTagToModuleNameMap = new Map();
 for (const spec of allWebComponents) {
-  htmlTagToModuleNameMap.set(spec.tagname, spec.module)
+  htmlTagToModuleNameMap.set(spec.tagname, spec.module);
 }
-
 
 const capitalizeFirstLetter = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 const snakeToCamel = (str) => str.replace(/([-_]\w)/g, (g) => g[1].toUpperCase());
@@ -129,32 +128,24 @@ const filterNonPublicAttributes = (prop) =>
   prop.visibility === 'public' && prop.readonly !== 'true' && prop.static !== true;
 
 const replaceTagNameWithModuleName = (description) => {
+  let parsedDescription = description.replace(/(ui5-[\w-]+)/g, (fullMatch, tag, ...args) => {
+    if (tag === 'ui5-link') return tag;
+    return htmlTagToModuleNameMap.get(tag);
+  });
 
-  let parsedDescription = description.replace(/`(ui5-[\w-]+)/g, (fullMatch, tag, ...args) => {
-    return "`" + htmlTagToModuleNameMap.get(tag);
-  })
+  parsedDescription = parsedDescription.replace(/`ui5-link/g, `\`${htmlTagToModuleNameMap.get('ui5-link')}`);
 
-  // parsedDescription = parsedDescription.replace(/<code><(ui5-[\w-]+)/g, (fullMatch, tag, ...args) => {
-  //   return "<code><" + htmlTagToModuleNameMap.get(tag);
-  // })
-
-  return parsedDescription;
-
-
-
-  console.log(description);
   // replace all tag occurrences in description with module name
-  [...description.matchAll(new RegExp(`<code>ui5-`, 'g'))].forEach(() => {
+  [...parsedDescription.matchAll(new RegExp(`<code>ui5-`, 'g'))].forEach(() => {
     const start = description.indexOf(`<code>ui5-`) + 6;
     const end = description.indexOf(`</code>`, start);
     const tagName = description.slice(start, end);
-    const webComponentWithTagName = allWebComponents.find((item) => item.tagname === tagName);
-    if (webComponentWithTagName) {
-      description = description.replace(webComponentWithTagName.tagname, webComponentWithTagName.module);
+    if (htmlTagToModuleNameMap.has(tagName)) {
+      description = description.replace(tagName, htmlTagToModuleNameMap.get(tagName));
     }
   });
 
-  return description;
+  return parsedDescription;
 };
 
 const getTypeScriptTypeForProperty = (property) => {
@@ -440,7 +431,7 @@ const createWebComponentWrapper = (
   }
   let componentDescription;
   try {
-    componentDescription = turndownService.turndown(description).replace(/\n/g, '\n * ')
+    componentDescription = turndownService.turndown(description).replace(/\n/g, '\n * ');
   } catch (e) {
     console.warn(
       `----------------------\nHeader description of ${name} couldn't be generated. \nThere is probably a syntax error in the associated description that can't be fixed automatically.\n----------------------`
@@ -448,15 +439,22 @@ const createWebComponentWrapper = (
     componentDescription = '';
   }
 
-  const regularImports = importStatements.filter((imp) => !imp.includes("from 'react'")).sort((a,b) => {
-    const importNameA = /import \{ (\w+) \}/.exec(a)[1];
-    const importNameB = /import \{ (\w+) \}/.exec(b)[1];
-    return importNameA.localeCompare(importNameB);
-  });
-  const reactImports = [ 'FC', ...importStatements.filter((imp) => imp.includes("from 'react'")).map(imp => {
-    const match = /import \{ (\w+) \}/.exec(imp);
-    return match[1]
-  })].sort((a,b) => a.localeCompare(b));
+  const regularImports = importStatements
+    .filter((imp) => !imp.includes("from 'react'"))
+    .sort((a, b) => {
+      const importNameA = /import \{ (\w+) \}/.exec(a)[1];
+      const importNameB = /import \{ (\w+) \}/.exec(b)[1];
+      return importNameA.localeCompare(importNameB);
+    });
+  const reactImports = [
+    'FC',
+    ...importStatements
+      .filter((imp) => imp.includes("from 'react'"))
+      .map((imp) => {
+        const match = /import \{ (\w+) \}/.exec(imp);
+        return match[1];
+      })
+  ].sort((a, b) => a.localeCompare(b));
 
   return prettier.format(
     `
@@ -734,9 +732,9 @@ resolvedWebComponents.forEach((componentSpec) => {
         if (!componentSpec.tagname) {
           return property.description || '';
         }
-        let formattedDescription = turndownService.turndown((property.description || '').trim())
-            .replace(/\n/g, '\n   * ');
-
+        let formattedDescription = turndownService
+          .turndown((property.description || '').trim())
+          .replace(/\n/g, '\n   * ');
 
         const customDescriptionReplace = CUSTOM_DESCRIPTION_REPLACE[componentSpec.module];
         if (customDescriptionReplace && customDescriptionReplace[property.name]) {
@@ -780,7 +778,9 @@ resolvedWebComponents.forEach((componentSpec) => {
       importStatements.push(...eventParameters.importStatements);
       propTypes.push(dedent`
       /**
-       * ${replaceTagNameWithModuleName(turndownService.turndown((eventSpec.description || '').trim()).replace(/\n/g, '\n   * '))}
+       * ${replaceTagNameWithModuleName(
+         turndownService.turndown((eventSpec.description || '').trim()).replace(/\n/g, '\n   * ')
+       )}
        */
        on${capitalizeFirstLetter(snakeToCamel(eventSpec.name))}?: ${eventParameters.tsType};
       `);

@@ -50,11 +50,11 @@ export interface CarouselPropTypes extends WithWebComponentPropTypes {
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Fired for the last items of the <code>Carousel</code> if it is scrolled and the direction of scrolling is to the end. The number of items for which the event is thrown is controlled by the <code>infiniteScrollOffset</code> property.
+   * Fired for the last items of the `Carousel` if it is scrolled and the direction of scrolling is to the end. The number of items for which the event is thrown is controlled by the `infiniteScrollOffset` property.
    */
   onLoadMore?: (event: CustomEvent) => void;
   /**
-   * Fired whenever the <code>selectedIndex</code> changes due to user interaction, when the user clicks on the navigation arrows or while resizing, based on the <code>items-per-page-l</code>, <code>items-per-page-m</code> and <code>items-per-page-s</code> properties.
+   * Fired whenever the `selectedIndex` changes due to user interaction, when the user clicks on the navigation arrows or while resizing, based on the `items-per-page-l`, `items-per-page-m` and `items-per-page-s` properties.
    */
   onNavigate?: (event: CustomEvent<{ selectedIndex: number }>) => void;
 }

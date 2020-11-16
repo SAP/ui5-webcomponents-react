@@ -58,7 +58,7 @@ export interface DatePickerPropTypes extends Omit<WithWebComponentPropTypes, 'on
    */
   readonly?: boolean;
   /**
-   * Defines whether the `ui5-datepicker` is required.
+   * Defines whether the `undefined` is required.
    */
   required?: boolean;
   /**
@@ -89,7 +89,7 @@ export interface DatePickerPropTypes extends Omit<WithWebComponentPropTypes, 'on
    */
   onChange?: (event: CustomEvent) => void;
   /**
-   * Fired when the value of the <code>DatePicker</code> is changed at each key stroke.
+   * Fired when the value of the `DatePicker` is changed at each key stroke.
    */
   onInput?: (event: CustomEvent) => void;
 }

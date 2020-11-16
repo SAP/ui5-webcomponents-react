@@ -15,7 +15,7 @@ export interface TreePropTypes extends WithWebComponentPropTypes {
    */
   headerText?: string;
   /**
-   * Defines the mode of the `Tree`. Since the tree uses a `ui5-list` to display its structure, the tree modes are exactly the same as the list modes, and are all applicable.
+   * Defines the mode of the `Tree`. Since the tree uses a `List` to display its structure, the tree modes are exactly the same as the list modes, and are all applicable.
    *
    * **Note:** Available options are `None`, `SingleSelect`, `SingleSelectBegin`, `SingleSelectEnd`, `MultiSelect`, and `Delete`.
    */
@@ -27,7 +27,7 @@ export interface TreePropTypes extends WithWebComponentPropTypes {
   /**
    * Defines the items of the `Tree`. Tree items may have other tree items as children.
    *
-   * **Note:** Use `Tree-item` for the intended design.
+   * **Note:** Use `TreeItem` for the intended design.
    */
   children?: ReactNode | ReactNode[];
   /**
@@ -41,15 +41,17 @@ export interface TreePropTypes extends WithWebComponentPropTypes {
    */
   onItemClick?: (event: CustomEvent<{ item: ReactNode }>) => void;
   /**
-   * Fired when the Delete button of any tree item is pressed. <br><br> <b>Note:</b> A Delete button is displayed on each item, when the <code>Tree</code> <code>mode</code> property is set to <code>Delete</code>.
+   * Fired when the Delete button of any tree item is pressed.
+   *
+   * **Note:** A Delete button is displayed on each item, when the `Tree` `mode` property is set to `Delete`.
    */
   onItemDelete?: (event: CustomEvent<{ item: ReactNode }>) => void;
   /**
-   * Fired when a tree item is expanded or collapsed. <i>Note:</i> You can call <code>preventDefault()</code> on the event object to suppress the event, if needed. This may be handy for example if you want to dynamically load tree items upon the user expanding a node. Even if you prevented the event's default behavior, you can always manually call <code>toggle()</code> on a tree item.
+   * Fired when a tree item is expanded or collapsed. _Note:_ You can call `preventDefault()` on the event object to suppress the event, if needed. This may be handy for example if you want to dynamically load tree items upon the user expanding a node. Even if you prevented the event's default behavior, you can always manually call `toggle()` on a tree item.
    */
   onItemToggle?: (event: CustomEvent<{ item: ReactNode }>) => void;
   /**
-   * Fired when selection is changed by user interaction in <code>SingleSelect</code>, <code>SingleSelectBegin</code>, <code>SingleSelectEnd</code> and <code>MultiSelect</code> modes.
+   * Fired when selection is changed by user interaction in `SingleSelect`, `SingleSelectBegin`, `SingleSelectEnd` and `MultiSelect` modes.
    */
   onSelectionChange?: (event: CustomEvent<{ selectedItems: unknown[]; previouslySelectedItems: unknown[] }>) => void;
 }

@@ -18,14 +18,14 @@ export interface WizardStepPropTypes extends WithWebComponentPropTypes {
   /**
    * Defines the `heading` of the step.
    *
-   * **Note:** the text is displayed in the `ui5-wizard` navigation header.
+   * **Note:** the text is displayed in the `Wizard` navigation header.
    * **Note:** the text will hide on small sizes (about 559 px).
    */
   heading?: string;
   /**
    * Defines the `icon` of the step.
    *
-   * **Note:** the icon is displayed in the `ui5-wizard` navigation header.
+   * **Note:** the icon is displayed in the `Wizard` navigation header.
    *
    * The SAP-icons font provides numerous options. See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
    */
@@ -39,7 +39,7 @@ export interface WizardStepPropTypes extends WithWebComponentPropTypes {
   /**
    * Defines the `subheading` of the step.
    *
-   * **Note:** the text is displayed in the `ui5-wizard` navigation header.
+   * **Note:** the text is displayed in the `Wizard` navigation header.
    * **Note:** the text will hide on small sizes (about 559 px).
    */
   subheading?: string;

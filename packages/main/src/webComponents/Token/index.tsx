@@ -18,11 +18,11 @@ export interface TokenPropTypes extends Omit<WithWebComponentPropTypes, 'onSelec
    */
   text?: string;
   /**
-   * Defines the close icon for the token. If nothing is provided to this slot, the default close icon will be used. Accepts `ui5-icon`
+   * Defines the close icon for the token. If nothing is provided to this slot, the default close icon will be used. Accepts `Icon`
    */
   closeIcon?: ReactNode | ReactNode[];
   /**
-   * Fired when the a <code>Token</code> is selected by user interaction with mouse or clicking space.
+   * Fired when the a `Token` is selected by user interaction with mouse or clicking space.
    */
   onSelect?: (event: CustomEvent) => void;
 }

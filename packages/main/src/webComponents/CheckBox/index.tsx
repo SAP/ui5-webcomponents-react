@@ -47,7 +47,7 @@ export interface CheckBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
    */
   wrap?: boolean;
   /**
-   * Fired when the <code>CheckBox</code> checked state changes.
+   * Fired when the `CheckBox` checked state changes.
    */
   onChange?: (event: CustomEvent) => void;
 }

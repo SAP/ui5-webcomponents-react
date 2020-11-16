@@ -43,7 +43,7 @@ export interface LinkPropTypes extends Omit<WithWebComponentPropTypes, 'onClick'
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Fired when the <code>Link</code> is triggered either with a mouse/tap or by using the Enter key.
+   * Fired when the `Link` is triggered either with a mouse/tap or by using the Enter key.
    */
   onClick?: (event: CustomEvent) => void;
 }

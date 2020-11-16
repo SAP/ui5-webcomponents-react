@@ -82,16 +82,16 @@ export interface InputPropTypes extends Omit<WithWebComponentPropTypes, 'onChang
    * Example:
    *
    * <Input show-suggestions>
-   *     <ui5-suggestion-item text="Item #1"></ui5-suggestion-item>
-   *     <ui5-suggestion-item text="Item #2"></ui5-suggestion-item>
+   *     <SuggestionItem text="Item #1"></SuggestionItem>
+   *     <SuggestionItem text="Item #2"></SuggestionItem>
    * </Input>
    *
    *
    * **Note:** The suggestion would be displayed only if the `showSuggestions` property is set to `true`.
    *
-   * **Note:** The <ui5-suggestion-item> is recommended to be used as a suggestion item. Importing the Input Suggestions Support feature:
+   * **Note:** The <SuggestionItem> is recommended to be used as a suggestion item. Importing the Input Suggestions Support feature:
    * `import "@ui5/webcomponents/dist/features/InputSuggestions.js";`
-   * also automatically imports the <ui5-suggestion-item> for your convenience.
+   * also automatically imports the <SuggestionItem> for your convenience.
    */
   children?: ReactNode | ReactNode[];
   /**
@@ -111,11 +111,13 @@ export interface InputPropTypes extends Omit<WithWebComponentPropTypes, 'onChang
    */
   onChange?: (event: CustomEvent) => void;
   /**
-   * Fired when the value of the <code>Input</code> changes at each keystroke, and when a suggestion item has been selected.
+   * Fired when the value of the `Input` changes at each keystroke, and when a suggestion item has been selected.
    */
   onInput?: (event: CustomEvent) => void;
   /**
-   * Fired when user presses Enter key on the <code>Input</code>. <br><br> <b>Note:</b> The event is fired independent of whether there was a change before or not. If change was performed, the event is fired after the change event. The event is also fired when an item of the select list is selected by pressing Enter.
+   * Fired when user presses Enter key on the `Input`.
+   *
+   * **Note:** The event is fired independent of whether there was a change before or not. If change was performed, the event is fired after the change event. The event is also fired when an item of the select list is selected by pressing Enter.
    */
   onSubmit?: (event: CustomEvent) => void;
   /**

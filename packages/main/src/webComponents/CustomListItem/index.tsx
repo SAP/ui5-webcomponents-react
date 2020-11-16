@@ -19,7 +19,7 @@ export interface CustomListItemPropTypes extends WithWebComponentPropTypes {
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Fired when the user clicks on the detail button when type is <code>Detail</code>.
+   * Fired when the user clicks on the detail button when type is `Detail`.
    */
   onDetailClick?: (event: CustomEvent) => void;
 }

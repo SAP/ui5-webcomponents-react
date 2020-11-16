@@ -11,7 +11,7 @@ export interface SelectPropTypes extends Omit<WithWebComponentPropTypes, 'onChan
    */
   disabled?: boolean;
   /**
-   * Determines the name with which the `Select` will be submitted in an HTML form. The value of the `Select` will be the value of the currently selected `ui5-option`.
+   * Determines the name with which the `Select` will be submitted in an HTML form. The value of the `Select` will be the value of the currently selected `Option`.
    *
    * **Important:** For the `name` property to have effect, you must add the following import to your project: `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
    *
@@ -39,7 +39,7 @@ export interface SelectPropTypes extends Omit<WithWebComponentPropTypes, 'onChan
    *
    * **Note:** Only one selected option is allowed. If more than one option is defined as selected, the last one would be considered as the selected one.
    *
-   * **Note:** Use the `ui5-option` component to define the desired options.
+   * **Note:** Use the `Option` component to define the desired options.
    */
   children?: ReactNode | ReactNode[];
   /**

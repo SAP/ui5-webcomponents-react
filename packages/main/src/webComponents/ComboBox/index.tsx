@@ -61,8 +61,8 @@ export interface ComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
    *
    * Example:
    * <ComboBox>
-   *     <ui5-li>Item #1</ui5-li>
-   *     <ui5-li>Item #2</ui5-li>
+   *     <StandardListItem>Item #1</StandardListItem>
+   *     <StandardListItem>Item #2</StandardListItem>
    * </ComboBox>
    */
   children?: ReactNode | ReactNode[];
@@ -74,7 +74,7 @@ export interface ComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
    * Defines the value state message that will be displayed as pop up under the `ComboBox`.
    *
    * **Note:** If not specified, a default text (in the respective language) will be displayed.
-   * **Note:** The `valueStateMessage` would be displayed, when the `ui5-select` is in `Information`, `Warning` or `Error` value state.
+   * **Note:** The `valueStateMessage` would be displayed, when the `Select` is in `Information`, `Warning` or `Error` value state.
    */
   valueStateMessage?: ReactNode | ReactNode[];
   /**
@@ -82,7 +82,9 @@ export interface ComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
    */
   onChange?: (event: CustomEvent) => void;
   /**
-   * Fired when typing in input. <br><br> <b>Note:</b> filterValue property is updated, input is changed.
+   * Fired when typing in input.
+   *
+   * **Note:** filterValue property is updated, input is changed.
    */
   onInput?: (event: CustomEvent) => void;
 }

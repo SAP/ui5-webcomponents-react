@@ -15,7 +15,7 @@ export interface BadgePropTypes extends WithWebComponentPropTypes {
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Defines the `ui5-icon` to be displayed in the `Badge`.
+   * Defines the `Icon` to be displayed in the `Badge`.
    */
   icon?: ReactNode | ReactNode[];
 }
