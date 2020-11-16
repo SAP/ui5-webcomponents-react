@@ -1,9 +1,9 @@
-import { ArgsTable, Canvas, Meta, Story } from "@storybook/addon-docs/blocks";
-import { Carousel } from "@ui5/webcomponents-react/lib/Carousel";
-import { CarouselArrowsPlacement } from "@ui5/webcomponents-react/lib/CarouselArrowsPlacement";
-import { createSelectArgTypes } from "@shared/stories/createSelectArgTypes";
-import { DocsHeader } from "@shared/stories/DocsHeader";
-import { DocsCommonProps } from "@shared/stories/DocsCommonProps";
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Carousel } from '@ui5/webcomponents-react/lib/Carousel';
+import { CarouselArrowsPlacement } from '@ui5/webcomponents-react/lib/CarouselArrowsPlacement';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="UI5 Web Components / Carousel"
@@ -11,57 +11,54 @@ import { DocsCommonProps } from "@shared/stories/DocsCommonProps";
   argTypes={{
     ...createSelectArgTypes({ arrowsPlacement: CarouselArrowsPlacement }),
     ...DocsCommonProps,
-    children: { control: { disable: true } },
+    children: { control: { disable: true } }
   }}
   args={{
     arrowsPlacement: CarouselArrowsPlacement.Content,
     style: {},
-    className: "",
-    tooltip: "",
-    slot: "",
-    ref: null,
+    className: '',
+    tooltip: '',
+    slot: '',
+    ref: null
   }}
 />
 
 <DocsHeader />
+
+<br />
+
+## Example
 
 <Canvas>
   <Story name="Default">
     {(args) => {
       return (
         <Carousel {...args}>
-          <img
-            src="https://sap.github.io/ui5-webcomponents/assets/images/sample1.jpg"
-            alt="img-sample 1"
-          />
-          <img
-            src="https://sap.github.io/ui5-webcomponents/assets/images/sample2.jpg"
-            alt="img-sample 2"
-          />
-          <img
-            src="https://sap.github.io/ui5-webcomponents/assets/images/sample3.jpg"
-            alt="img-sample 3"
-          />
+          <img src="https://sap.github.io/ui5-webcomponents/assets/images/sample1.jpg" alt="img-sample 1" />
+          <img src="https://sap.github.io/ui5-webcomponents/assets/images/sample2.jpg" alt="img-sample 2" />
+          <img src="https://sap.github.io/ui5-webcomponents/assets/images/sample3.jpg" alt="img-sample 3" />
         </Carousel>
       );
     }}
   </Story>
 </Canvas>
 
+## Properties
+
 <ArgsTable story="." />
 <div
   style={{
-    fontFamily: "var(--sapFontFamily)",
-    fontSize: "var(--sapFontSize)",
-    color: "var(--sapTextColor)",
+    fontFamily: 'var(--sapFontFamily)',
+    fontSize: 'var(--sapFontSize)',
+    color: 'var(--sapTextColor)'
   }}
 >
   <h3>Usage</h3>
   <b>When to use:</b> <br />
-  The items you want to display are very different from each other. - You want
-  to display the items one after the other. <br />
+  The items you want to display are very different from each other. - You want to display the items one after the other.{' '}
+  <br />
   <b>When not to use:</b>
   <br />
-  The items you want to display need to be visible at the same time. - The items
-  you want to display are uniform and very similar For the <code>Carousel</code>
+  The items you want to display need to be visible at the same time. - The items you want to display are uniform and very
+  similar For the <code>Carousel</code>
 </div>

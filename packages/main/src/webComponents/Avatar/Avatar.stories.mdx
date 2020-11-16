@@ -1,12 +1,10 @@
-import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';
 import { AvatarBackgroundColor } from '@ui5/webcomponents-react/lib/AvatarBackgroundColor';
 import '@ui5/webcomponents-icons/dist/employee.js';
-import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { AvatarFitType } from '@ui5/webcomponents-react/lib/AvatarFitType';
 import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
-import { CSSProperties, Ref } from 'react';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
@@ -39,6 +37,10 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <DocsHeader />
 
+<br />
+
+## Example
+
 <Canvas>
   <Story name="Default">
     {(args) => {
@@ -46,5 +48,7 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
     }}
   </Story>
 </Canvas>
+
+## Properties
 
 <ArgsTable story="." />

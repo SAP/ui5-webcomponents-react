@@ -629,6 +629,10 @@ const createWebComponentDemo = (componentSpec, componentProps, description) => {
     />
 
     <DocsHeader />
+    
+    <br />
+    
+    ## Example
 
     <Canvas>
       <Story name="Default">
@@ -639,7 +643,9 @@ const createWebComponentDemo = (componentSpec, componentProps, description) => {
         }}
       </Story>
     </Canvas>
-
+    
+    ## Properties
+    
     <ArgsTable story="." />
     
     `,

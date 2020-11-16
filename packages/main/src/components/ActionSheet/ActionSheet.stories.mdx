@@ -7,6 +7,7 @@ import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/lib/PopoverHori
 import { PopoverVerticalAlign } from '@ui5/webcomponents-react/lib/PopoverVerticalAlign';
 import { useCallback, useRef } from 'react';
 import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="Components / ActionSheet"
@@ -26,9 +27,7 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
     header: {
       type: null
     },
-    ref: {
-      type: null
-    }
+    ...DocsCommonProps
   }}
   args={{
     horizontalAlign: PopoverHorizontalAlign.Center,
@@ -64,6 +63,10 @@ const ActionSheetComponent = () => {
 };
 ```
 
+<br />
+
+## Example
+
 <Canvas>
   <Story name="Default">
     {(args) => {
@@ -88,9 +91,11 @@ const ActionSheetComponent = () => {
   </Story>
 </Canvas>
 
+## Properties
+
 <ArgsTable story="." />
 
-### Using ActionSheets inside other components
+## Using ActionSheets inside other components
 
 `ActionSheets` are often used within other components, when opened this could sometimes have unwanted side effects.
 In this case, we recommend using [createPortal](https://reactjs.org/docs/portals.html) to mount the `ActionSheet` outside of the DOM hierarchy of the parent component.

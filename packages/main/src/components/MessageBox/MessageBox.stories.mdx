@@ -22,6 +22,8 @@ import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
 <br />
 
+## Example
+
 <Canvas>
   <Story name="Default">
     {(args) => {
@@ -46,9 +48,11 @@ import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
   </Story>
 </Canvas>
 
+## Properties
+
 <ArgsTable story="." />
 
-### Opening and Closing MessageBoxes
+## Opening and Closing MessageBoxes
 
 Unlike `Popovers` or `Dialogs`, `MessageBoxes` do not need to be provided with a `ref` to be opened or closed. Instead, the `open` prop can be used for this.
 
@@ -74,7 +78,7 @@ const MessageBoxComponent = () => {
 };
 ```
 
-### Using MessageBoxes inside other components
+## Using MessageBoxes inside other components
 
 `MessageBoxes` are often used within other components, when opened this could sometimes have unwanted side effects.
 In this case, we recommend using [createPortal](https://reactjs.org/docs/portals.html) to mount the `MessageBox` outside of the DOM hierarchy of the parent component.

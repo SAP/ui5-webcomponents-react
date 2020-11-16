@@ -48,24 +48,7 @@ import '@ui5/webcomponents-icons/dist/settings.js';
 
 <br />
 
-### Opening Popovers
-
-`Popovers` can only be opened by attaching a `ref` to the component and then call the corresponding **`openBy`** method. The method receives the target element - _on which the `Popover` is to be opened_ - as parameter.
-
-```JSX
-  const PopoverComponent = () => {
-    const popoverRef = useRef();
-    const onButtonClick = (e) => {
-        popoverRef.current.openBy(e.target);
-    };
-    return (
-      <>
-        <Button onClick={onButtonClick}>Open Popover</Button>
-        <Popover ref={popoverRef}>Some Content</Popover>
-      </>
-    );
-  };
-```
+## Example
 
 <Canvas>
   <Story name="Default">
@@ -84,6 +67,8 @@ import '@ui5/webcomponents-icons/dist/settings.js';
   </Story>
 </Canvas>
 
+## Properties
+
 <ArgsTable story="Default" />
 
 <div style={{ fontFamily: 'var(--sapFontFamily)', fontSize: 'var(--sapFontSize)', color: 'var(--sapTextColor)' }}>
@@ -98,7 +83,28 @@ import '@ui5/webcomponents-icons/dist/settings.js';
   the popover. You can prevent this with the <code>modal</code> property.
 </div>
 
-### Using Popovers inside other components
+<br />
+
+## Opening Popovers
+
+`Popovers` can only be opened by attaching a `ref` to the component and then call the corresponding **`openBy`** method. The method receives the target element - _on which the `Popover` is to be opened_ - as parameter.
+
+```JSX
+  const PopoverComponent = () => {
+    const popoverRef = useRef();
+    const onButtonClick = (e) => {
+        popoverRef.current.openBy(e.target);
+    };
+    return (
+      <>
+        <Button onClick={onButtonClick}>Open Popover</Button>
+        <Popover ref={popoverRef}>Some Content</Popover>
+      </>
+    );
+  };
+```
+
+## Using Popovers inside other components
 
 `Popovers` are often used within other components, when opened this could sometimes have unwanted side effects.
 In this case, we recommend using [createPortal](https://reactjs.org/docs/portals.html) to mount the `Popover` outside of the DOM hierarchy of the parent component.
@@ -118,7 +124,7 @@ const PopoverComponent = () => {
 };
 ```
 
-### Closing Popovers
+## Closing Popovers
 
 Closing `Popovers` works in the same way as opening them. So again an attached `ref` is needed on which the corresponding `close` method is called.
 

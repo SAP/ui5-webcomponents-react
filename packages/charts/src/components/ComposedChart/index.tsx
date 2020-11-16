@@ -14,13 +14,13 @@ import {
   Brush,
   CartesianGrid,
   ComposedChart as ComposedChartLib,
+  Label,
   Legend,
   Line,
   ReferenceLine,
   Tooltip,
   XAxis,
-  YAxis,
-  Label
+  YAxis
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin';
 import { useLabelFormatter } from '../../hooks/useLabelFormatter';
@@ -224,6 +224,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
       resizeDebounce={chartConfig.resizeDebounce}
     >
       <ComposedChartLib
+        stackOffset="sign"
         margin={marginChart}
         data={dataset}
         layout={layout}

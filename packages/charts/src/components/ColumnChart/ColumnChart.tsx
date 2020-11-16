@@ -188,6 +188,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
       resizeDebounce={chartConfig.resizeDebounce}
     >
       <ColumnChartLib
+        stackOffset="sign"
         margin={marginChart}
         data={dataset}
         barGap={chartConfig.barGap}
