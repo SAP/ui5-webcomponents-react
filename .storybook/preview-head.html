@@ -1,24 +1,30 @@
 <style>
-    body {
-        font-family: var(--sapFontFamily);
-        background-color: var(--sapBackgroundColor);
-    }
+  body {
+    font-family: var(--sapFontFamily);
+    background-color: var(--sapBackgroundColor);
+  }
 
-    .pageWithPadding > section {
-        padding: 1rem;
-    }
+  .pageWithPadding > section {
+    padding: 1rem;
+  }
 
-    .sbdocs-title {
-        font-family: var(--sapFontFamily) !important;
+  @media (min-width: 1330px) and (max-width: 1520px) {
+    .sbdocs-wrapper {
+      justify-content: flex-start !important;
     }
+  }
 
-    .sbdocs-content {
-        max-width: 1400px !important;
-    }
+  .sbdocs-title {
+    font-family: var(--sapFontFamily) !important;
+  }
+
+  .sbdocs-content {
+    max-width: 1100px !important;
+  }
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.css" />
 <script data-ui5-config type="application/json">
-    {
-        "theme": "sap_fiori_3"
-    }
+  {
+    "theme": "sap_fiori_3"
+  }
 </script>
-
