@@ -58,7 +58,7 @@ export interface DateTimePickerPropTypes extends Omit<WithWebComponentPropTypes,
    */
   readonly?: boolean;
   /**
-   * Defines whether the `undefined` is required.
+   * Defines whether the `DatePicker` is required.
    */
   required?: boolean;
   /**

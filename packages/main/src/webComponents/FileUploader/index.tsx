@@ -60,7 +60,7 @@ export interface FileUploaderPropTypes extends Omit<WithWebComponentPropTypes, '
    * Defines the value state message that will be displayed as pop up under the `FileUploader`.
    *
    * **Note:** If not specified, a default text (in the respective language) will be displayed.
-   * **Note:** The `valueStateMessage` would be displayed, when the `undefined` is in `Information`, `Warning` or `Error` value state.
+   * **Note:** The `valueStateMessage` would be displayed, when the `FileUploader` is in `Information`, `Warning` or `Error` value state.
    */
   valueStateMessage?: ReactNode | ReactNode[];
   /**

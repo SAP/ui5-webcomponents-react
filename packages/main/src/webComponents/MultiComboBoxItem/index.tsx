@@ -14,7 +14,7 @@ export interface MultiComboBoxItemPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * The `ComboBoxItem` represents the item for a `MultiComboBox`
+ * The `MultiComboBoxItem` represents the item for a `MultiComboBox`
  *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/MultiComboBoxItem" target="_blank">UI5 Web Components Playground</a>
  */

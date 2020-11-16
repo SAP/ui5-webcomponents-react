@@ -15,11 +15,6 @@ const turndownService = new TurndownService({
 });
 turndownService.keep(['ui5-link']);
 
-//TODO:
-console.warn(
-  '----------------------\nCurrently there are two tag-names missing or faulty: "ui5-notification-overflow-action" and "ui5-timeline-item"\nThese have to be adjusted manually!\n----------------------'
-);
-
 // To only create a single component, replace "false" with the component (module) name
 // or execute the following command: "yarn create-webcomponents-wrapper [name]"
 const CREATE_SINGLE_COMPONENT = process.argv[2] || false;

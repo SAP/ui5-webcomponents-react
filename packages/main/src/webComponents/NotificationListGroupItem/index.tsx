@@ -39,7 +39,7 @@ export interface NotificationListGroupItemPropTypes extends WithWebComponentProp
   /**
    * Defines the actions, displayed in the top-right area.
    *
-   * **Note:** use the `undefined` component.
+   * **Note:** use the `NotificationOverflowAction` component.
    */
   actions?: ReactNode;
   /**
@@ -59,7 +59,7 @@ export interface NotificationListGroupItemPropTypes extends WithWebComponentProp
  * *   `Toggle` button to expand and collapse the group
  * *   `Priority` icon to display the priority of the group
  * *   `Heading` to entitle the group
- * *   Custom actions - with the use of `undefined`
+ * *   Custom actions - with the use of `NotificationOverflowAction`
  * *   Items of the group
  *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/NotificationListGroupItem" target="_blank">UI5 Web Components Playground</a>
