@@ -2,13 +2,13 @@
   "package": {
     "dependencies": {
       "@testing-library/jest-dom": "^5.11.4",
-      "@testing-library/react": "^10.4.9",
-      "@testing-library/user-event": "^12.1.4",
+      "@testing-library/react": "^11.1.0",
+      "@testing-library/user-event": "^12.1.10",
       "@ui5/webcomponents": "1.0.0-rc.10",
       "@ui5/webcomponents-fiori": "1.0.0-rc.10",
       "@ui5/webcomponents-icons": "1.0.0-rc.10",
-      "@ui5/webcomponents-react": "^0.11.0",
-      "@ui5/webcomponents-react-base": "^0.11.0",
+      "@ui5/webcomponents-react": "^0.12.0",
+      "@ui5/webcomponents-react-base": "^0.12.0",
       "axios": "^0.20.0",
       "husky": "^4.2.5",
       "i18next": "^19.7.0",
