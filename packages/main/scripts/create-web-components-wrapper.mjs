@@ -19,7 +19,7 @@ turndownService.keep(['ui5-link']);
 // or execute the following command: "yarn create-webcomponents-wrapper [name]"
 const CREATE_SINGLE_COMPONENT = process.argv[2] || false;
 
-const EXCLUDE_LIST = ['NotificationListItem'];
+const EXCLUDE_LIST = [];
 
 const prettierConfig = {
   ...prettierConfigRaw,
@@ -621,7 +621,7 @@ const createWebComponentDemo = (componentSpec, componentProps, description) => {
   const args = [];
   const customArgTypes = [];
 
-  console.warn(`Story created for ${componentName}!\nPlease remember to add the story to an existing group.`)
+  console.warn(`Story created for ${componentName}!\nPlease remember to add the story to an existing group.`);
 
   const additionalComponentDocs = componentSpec.hasOwnProperty('appenddocs') ? componentSpec.appenddocs.split(' ') : [];
   const additionalComponentImports = additionalComponentDocs.map(
@@ -681,20 +681,15 @@ const createWebComponentDemo = (componentSpec, componentProps, description) => {
   args.push(`ref: null`);
   enumImports.push(`import { CSSProperties, Ref } from 'react';`);
 
-  let formattedDescription = description.replace(/<br>/g, `<br/>`).replace(/\s\s+/g, ' ');
+  let formattedDescription = description
+    .replace(/<br>/g, `<br/>`)
+    .replace(/\s\s+/g, ' ')
+    .replace(/h3/g, 'h2')
+    .replace(/h4/g, 'h3');
 
   try {
-    if (componentSpec.module === 'Link') {
-      formattedDescription = description.replace(`(<code><a></code>)`, ``);
-    }
     if (formattedDescription) {
-      formattedDescription = `<div style={{fontFamily:'var(--sapFontFamily)', fontSize:'var(--sapFontSize)', color:'var(--sapTextColor)'}}>\n${prettier.format(
-        formattedDescription,
-        {
-          ...prettierConfigRaw,
-          parser: 'html'
-        }
-      )}</div>`;
+      formattedDescription = turndownService.turndown(formattedDescription);
     }
   } catch (e) {
     formattedDescription = '';
@@ -749,7 +744,7 @@ const createWebComponentDemo = (componentSpec, componentProps, description) => {
     
     `,
     { ...prettierConfigRaw, parser: 'mdx' }
-  )}${formattedDescription}`;
+  )}\n${formattedDescription}`;
 };
 
 const assignComponentPropertiesToMaps = (componentSpec, { properties, slots, events }) => {
@@ -902,8 +897,8 @@ resolvedWebComponents.forEach((componentSpec) => {
     description = description.replace(new RegExp(componentSpec.tagname, 'g'), `${componentSpec.module}`);
     //replace other ui5 tag-names
     description = replaceTagNameWithModuleName(description);
-    //split string by main description and rest
-    return description.split(/(?=<h3>)/, 2);
+    const [mainDescription, ...rest] = description.split(/(?=<h3>)/);
+    return [mainDescription, rest.join('<h3>')];
   };
 
   const [mainDescription, description = ''] = formatDescription();

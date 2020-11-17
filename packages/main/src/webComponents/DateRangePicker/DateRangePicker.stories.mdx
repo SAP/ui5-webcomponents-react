@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { DateRangePicker } from '@ui5/webcomponents-react/lib/DateRangePicker';
 import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';
 import '@ui5/webcomponents-localization/dist/features/calendar/Gregorian.js';
@@ -7,7 +7,6 @@ import '@ui5/webcomponents-localization/dist/features/calendar/Islamic.js';
 import '@ui5/webcomponents-localization/dist/features/calendar/Japanese.js';
 import '@ui5/webcomponents-localization/dist/features/calendar/Persian.js';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
-import { CSSProperties, Ref } from 'react';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
@@ -48,8 +47,7 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 ## Properties
 
 <ArgsTable story="." />
-<div style={{ fontFamily: 'var(--sapFontFamily)', fontSize: 'var(--sapFontSize)', color: 'var(--sapTextColor)' }}>
-  <h3>Usage</h3>
-  The user can enter a date by: Using the calendar that opens in a popup or typing it in directly in the input field (not
-  available for mobile devices).
-</div>
+
+## Usage
+
+The user can enter a date by: Using the calendar that opens in a popup or typing it in directly in the input field (not available for mobile devices).

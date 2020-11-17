@@ -42,16 +42,15 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 ## Properties
 
 <ArgsTable story="." />
-<div style={{fontFamily:'var(--sapFontFamily)', fontSize:'var(--sapFontSize)', color:'var(--sapTextColor)'}}>
-<h3>Usage</h3>
 
+## Usage
 
-You can set the <code>Link</code> to be enabled or disabled. <br /><br />
-To create a visual hierarchy in large lists of links, you can set the less important links as <code>Subtle</code> or the
-more important ones as <code>Emphasized</code>, by using the <code>design</code> property. <br /><br />
-If the <code>href</code> property is set, the link behaves as the basic HTML anchor tag and opens the specified URL in
-the given target frame (<code>target</code> property). To specify where the linked content is opened, you can use the
+You can set the `Link` to be enabled or disabled.
 
-<code>target</code> property.
-</div>
+To create a visual hierarchy in large lists of links, you can set the less important links as `Subtle` or the more important ones as `Emphasized`, by using the `design` property.
 
+If the `href` property is set, the link behaves as the basic HTML anchor tag () and opens the specified URL in the given target frame (`target` property). To specify where the linked content is opened, you can use the `target` property.
+
+## Responsive behavior
+
+If there is not enough space, the text of the `Link` becomes truncated. If the `wrap` property is set to `true`, the text is displayed on several lines instead of being truncated.
