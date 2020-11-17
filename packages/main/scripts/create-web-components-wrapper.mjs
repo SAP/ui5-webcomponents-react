@@ -621,6 +621,8 @@ const createWebComponentDemo = (componentSpec, componentProps, description) => {
   const args = [];
   const customArgTypes = [];
 
+  console.warn(`Story created for ${componentName}!\nPlease remember to add the story to an existing group.`)
+
   const additionalComponentDocs = componentSpec.hasOwnProperty('appenddocs') ? componentSpec.appenddocs.split(' ') : [];
   const additionalComponentImports = additionalComponentDocs.map(
     (component) => `import { ${component} } from '@ui5/webcomponents-react/lib/${component}';`
@@ -712,7 +714,7 @@ const createWebComponentDemo = (componentSpec, componentProps, description) => {
     import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
     <Meta
-     title="UI5 Web Components / ${componentName}"
+     title="Components / ${componentName}"
      component={${componentName}}
      ${additionalComponentDocs.length > 0 ? `subcomponents={{ ${additionalComponentDocs.join(', ')} }}` : ''}
      argTypes={{
