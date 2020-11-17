@@ -49,35 +49,139 @@ const PRIVATE_COMPONENTS = new Set([
 ]);
 
 const EXTENDED_PROP_DESCRIPTION = {
-  primaryCalendarType: `<br/><b>Note:</b> Calendar types other than Gregorian must be imported manually:<br /><code>import "@ui5/webcomponents-localization/dist/features/calendar/{primaryCalendarType}.js";</code>`
+  primaryCalendarType: `<br/>__Note:__ Calendar types other than Gregorian must be imported manually:<br />\`import "@ui5/webcomponents-localization/dist/features/calendar/{primaryCalendarType}.js";\``
 };
 
 const CUSTOM_DESCRIPTION_REPLACE = {
+  Avatar: {
+    icon: (desc) => {
+      return desc.replace(
+        `   * import "@ui5/webcomponents-icons/dist/{icon\\_name}.js"  
+   * 
+   * <ui5-avatar icon-src="employee">`,
+        `   * \`import "@ui5/webcomponents-icons/dist/{icon\\_name}.js"\`
+   *
+   * \`<Avatar icon="employee">\``
+      );
+    }
+  },
+  ComboBox: {
+    children: (desc) => {
+      return desc.replace(
+        `   * Example:  
+   * <ui5-combobox>  
+   *     <ui5-li>Item #1</ui5-li>  
+   *     <ui5-li>Item #2</ui5-li>  
+   * </ui5-combobox>`,
+        `   * Example:
+   *
+   * <pre>
+   *   <code>
+   *    &lt;ComboBox><br />
+   *    &nbsp;&nbsp;&lt;StandardListItem>Item #1&lt;/StandardListItem><br />
+   *    &nbsp;&nbsp;&lt;StandardListItem>Item #2&lt;/StandardListItem><br />
+   *    &lt;/ComboBox>
+   *  </code>
+   * </pre>`
+      );
+    }
+  },
   Input: {
     children: (description) => {
-      return description.replace(
-        `<br> <Input show-suggestions> <ui5-suggestion-item text="Item #1"></ui5-suggestion-item> <ui5-suggestion-item text="Item #2"></ui5-suggestion-item> </Input>`,
-        ''
+      const formatExample = description.replace(
+        `   * Example:  
+   *   
+   * <ui5-input show-suggestions>  
+   *     <ui5-suggestion-item text="Item #1"></ui5-suggestion-item>  
+   *     <ui5-suggestion-item text="Item #2"></ui5-suggestion-item>  
+   * </ui5-input>  `,
+        `   * Example:
+   *
+   * <pre>
+   *   <code>
+   *    &lt;Input showSuggestions><br />
+   *    &nbsp;&nbsp;&lt;SuggestionItem text="Item #1" /><br />
+   *    &nbsp;&nbsp;&lt;SuggestionItem text="Item #2" /><br />
+   *    &lt;/Input>
+   *  </code>
+   * </pre>`
+      );
+      return formatExample.replace(/<ui5-suggestion-item>/g, '`<SuggestionItem>`');
+    }
+  },
+  MultiComboBox: {
+    children: (desc) => {
+      return desc.replace(
+        `   * Example:  
+   * <ui5-multi-combobox>  
+   *     <ui5-li>Item #1</ui5-li>  
+   *     <ui5-li>Item #2</ui5-li>  
+   * </ui5-multi-combobox>`,
+        `   * Example:
+   *
+   * <pre>
+   *   <code>
+   *    &lt;MultiComboBox><br />
+   *    &nbsp;&nbsp;&lt;StandardListItem>Item #1&lt;/StandardListItem><br />
+   *    &nbsp;&nbsp;&lt;StandardListItem>Item #2&lt;/StandardListItem><br />
+   *    &lt;/MultiComboBox>
+   *  </code>
+   * </pre>`
       );
     }
   },
   MultiInput: {
     children: (description) => {
-      return description.replace(
-        `<br> Example: <br><br> &lt;ui5-input show-suggestions><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;ui5-suggestion-item text="Item #1">&lt;/ui5-suggestion-item><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;ui5-suggestion-item text="Item #2">&lt;/ui5-suggestion-item><br> &lt;/ui5-input> <br> <ui5-input show-suggestions> <ui5-suggestion-item text="Item #1"></ui5-suggestion-item> <ui5-suggestion-item text="Item #2"></ui5-suggestion-item> </ui5-input> <br><br> `,
-        ''
+      const formatExample = description.replace(
+        `   * Example:  
+   *   
+   * <ui5-input show-suggestions>  
+   *     <ui5-suggestion-item text="Item #1"></ui5-suggestion-item>  
+   *     <ui5-suggestion-item text="Item #2"></ui5-suggestion-item>  
+   * </ui5-input>  `,
+        `   * Example:
+   *
+   * <pre>
+   *   <code>
+   *    &lt;MultiInput showSuggestions><br />
+   *    &nbsp;&nbsp;&lt;SuggestionItem text="Item #1" /><br />
+   *    &nbsp;&nbsp;&lt;SuggestionItem text="Item #2" /><br />
+   *    &lt;/MultiInput>
+   *  </code>
+   * </pre>`
       );
+      return formatExample.replace(/<ui5-suggestion-item>/g, '`<SuggestionItem>`');
     },
     tokens: (description) => {
       return description.replace(
-        `<br> &lt;MultiInput><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;ui5-token slot="tokens" text="Token 1">&lt;/ui5-token><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;ui5-token slot="tokens" text="Token 2">&lt;/ui5-token><br> &lt;/MultiInput> <br> <br>`,
-        `<br />&lt;MultiInput tokens={
-    <br />&nbsp;&nbsp;&lt;>
-    <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;Token text="Token 1" />
-    <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;Token text="Token 2" />
-    <br />&nbsp;&nbsp;</>}
-    <br />/>`
+        `   * Example:  
+   * <ui5-multi-input>  
+   *     <ui5-token slot="tokens" text="Token 1"></ui5-token>  
+   *     <ui5-token slot="tokens" text="Token 2"></ui5-token>  
+   * </ui5-multi-input>`,
+        `   * Example:
+   *
+   * <pre>
+   *   <code>
+   *    &lt;MultiInput<br />
+   *    &nbsp;tokens={<br />
+   *    &nbsp;&nbsp;&lt;><br />
+   *    &nbsp;&nbsp;&nbsp;&lt;Token text="Token 1" /><br />
+   *    &nbsp;&nbsp;&nbsp;&lt;Token text="Token 1" /><br />
+   *    &nbsp;&nbsp;&lt;/><br />
+   *    &nbsp;}<br />
+   *    />
+   *  </code>
+   * </pre>`
       );
+    }
+  },
+  ShellBar: {
+    children: (desc) => {
+      return desc.replace('<ui5-shellbar-item></ui5-shellbar-item>', '`ShellBarItem`');
+    },
+    menuItems: (desc) => {
+      return desc.replace('<ui5-li></ui5-li>', '`StandardListItem`');
     }
   }
 };
