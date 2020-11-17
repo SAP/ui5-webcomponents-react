@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Helmet } from 'react-helmet';
 import { useHistory } from 'react-router-dom';
 import { isChrome, isMobile, isTablet, isDesktop, isIE } from '@ui5/webcomponents-base/dist/Device';
 
+import { Spinner } from '@ui5/webcomponents-react/lib/Spinner';
 import { Link } from '@ui5/webcomponents-react/lib/Link';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
 import { getUrl } from '../../../util/browser/BrowserProvider';
 import ComponentWithAuthorizationRestriction from '../../../auth/ComponentWithAuthorizationRestriction';
-import TodoListPaginatedItems from './TodoListPaginatedItems';
 import CenteredContent from '../../../components/Layout/CenteredContent';
+
+const TodoListPaginatedItems = lazy(() => import('./TodoListPaginatedItems'));
 
 const TodoList = () => {
   const history = useHistory();
@@ -54,9 +56,11 @@ const TodoList = () => {
         <Text>{isIE() ? 'This Text is rendered only for IE' : 'This Text is rendered only when is NOT IE'}</Text>
       </p>
 
-      <Title level={TitleLevel.H3}>Pagination + Edition (Formik and Yup)</Title>
+      <Title level={TitleLevel.H3}>Lazy Loading + Pagination + Edition (Formik and Yup)</Title>
       <br />
-      <TodoListPaginatedItems />
+      <Suspense fallback={<Spinner />}>
+        <TodoListPaginatedItems />
+      </Suspense>
     </CenteredContent>
   );
 };
