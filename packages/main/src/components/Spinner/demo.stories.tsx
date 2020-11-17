@@ -20,7 +20,7 @@ export const renderSpinner = (props) => <Demo delay={props.delay} />;
 renderSpinner.storyName = 'Default';
 
 export default {
-  title: 'Components / Spinner',
+  title: 'Loading Indicators / Spinner',
   component: Spinner,
   argTypes: {
     ...createSelectArgTypes({ size: Size }),
