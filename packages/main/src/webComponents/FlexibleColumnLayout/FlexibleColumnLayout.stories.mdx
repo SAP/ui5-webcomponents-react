@@ -90,12 +90,14 @@ import { sapUiContentPadding } from '@ui5/webcomponents-react-base/lib/spacing';
 ## Properties
 
 <ArgsTable story="." />
-<div style={{ fontFamily: 'var(--sapFontFamily)', fontSize: 'var(--sapFontSize)', color: 'var(--sapTextColor)' }}>
-  <h3>Usage</h3>
-  Use this component for applications that need to display several logical levels of related information side by side (e.g.
-  list of items, item, sub-item, etc.). The Component is flexible in a sense that the application can focus the user's attention
-  on one particular column.
-</div>
+
+## Usage
+
+Use this component for applications that need to display several logical levels of related information side by side (e.g. list of items, item, sub-item, etc.). The Component is flexible in a sense that the application can focus the user's attention on one particular column.
+
+## Responsive Behavior
+
+The `FlexibleColumnLayout` automatically displays the maximum possible number of columns based on `layout` property and the window size. The component would display 1 column for window size smaller than 900px, up to two columns between 900px and 1280px, and 3 columns for sizes bigger than 1280px.
 
 <br />
 
