@@ -19,7 +19,20 @@ addParameters({
   passArgsFirst: true,
   viewMode: 'docs',
   docs: { forceExtractedArgTypes: true, page: DocsPage },
-  actions: { argTypesRegex: '^on.*' }
+  actions: { argTypesRegex: '^on.*' },
+  options: {
+    storySort: {
+      method: 'alphabetical',
+      order: [
+        'Getting Started',
+        'Migration Guide',
+        'Style Web Components',
+        'Test Setup',
+        'Internationalization',
+        'Efficient Bundling'
+      ]
+    }
+  }
 });
 
 const ThemeContainer = ({ theme, contentDensity, children, direction }) => {

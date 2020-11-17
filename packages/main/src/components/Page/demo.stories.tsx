@@ -25,7 +25,7 @@ export const renderPage = (props) => (
 renderPage.storyName = 'Default';
 
 export default {
-  title: 'Layout / Page',
+  title: 'Layouts & Floorplans / Page',
   component: Page,
   argTypes: {
     ...createSelectArgTypes({ backgroundDesign: PageBackgroundDesign }),
