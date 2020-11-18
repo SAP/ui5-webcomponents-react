@@ -13,7 +13,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### BREAKING CHANGES
 
-* Icon import paths changed from e.g. `@ui5/webcomponents/dist/icons/add.js` to `@ui5/webcomponents-icons/dist/add.js`. (`icon` directory got removed)
+* Icon import paths changed from e.g. `@ui5/webcomponents-icons/dist/icons/add.js` to `@ui5/webcomponents-icons/dist/add.js`. (`icon` directory got removed)
 
 
 
