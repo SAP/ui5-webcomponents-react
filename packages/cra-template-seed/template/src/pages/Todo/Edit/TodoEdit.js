@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useTodo } from '../../../hooks/services/useTodos';
 
-import { Spinner } from '@ui5/webcomponents-react/lib/Spinner';
+import { BusyIndicator } from '@ui5/webcomponents-react/lib/BusyIndicator';
 import NavBack from '../../../components/NavBack/NavBack';
 import CenteredContent from '../../../components/Layout/CenteredContent';
 import TodoEditForm from './TodoEditForm';
@@ -24,7 +24,7 @@ const TodoEdit = ({ match }) => {
       <NavBack />
       <CenteredContent>
         <br />
-        {isLoading && <Spinner />}
+        {isLoading && <BusyIndicator active />}
         {isSuccess && <TodoEditForm data={data.data.todos} onSubmitHandler={onSubmitEditForm} />}
       </CenteredContent>
     </>

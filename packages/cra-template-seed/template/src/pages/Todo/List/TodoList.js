@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import { useHistory } from 'react-router-dom';
 import { isChrome, isMobile, isTablet, isDesktop, isIE } from '@ui5/webcomponents-base/dist/Device';
 
-import { Spinner } from '@ui5/webcomponents-react/lib/Spinner';
+import { BusyIndicator } from '@ui5/webcomponents-react/lib/BusyIndicator';
 import { Link } from '@ui5/webcomponents-react/lib/Link';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
@@ -58,7 +58,7 @@ const TodoList = () => {
 
       <Title level={TitleLevel.H3}>Lazy Loading + Pagination + Edition (Formik and Yup)</Title>
       <br />
-      <Suspense fallback={<Spinner />}>
+      <Suspense fallback={<BusyIndicator active />}>
         <TodoListPaginatedItems />
       </Suspense>
     </CenteredContent>
