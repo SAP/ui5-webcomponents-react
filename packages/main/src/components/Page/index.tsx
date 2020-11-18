@@ -44,6 +44,8 @@ export interface PagePropTypes extends CommonProps {
   customFooter?: ReactNode;
   /**
    * A back button will be rendered on the left area of header bar if this property is set to true.
+   *
+   * __Note__: If a custom header is used, `showBackButton` has no effect.
    */
   showBackButton?: boolean;
   /**
@@ -90,8 +92,8 @@ const Page: FC<PagePropTypes> = forwardRef((props: PagePropTypes, ref: Ref<HTMLD
     customHeader
   } = props;
 
-  const footerRef = useRef();
-  const headerRef = useRef();
+  const footerRef = useRef({ offsetHeight: 0 });
+  const headerRef = useRef({ offsetHeight: 0 });
   const [footerHeight, setFooterHeight] = useState(0);
   const [headerStyles, setHeaderStyles] = useState({});
 
@@ -132,12 +134,10 @@ const Page: FC<PagePropTypes> = forwardRef((props: PagePropTypes, ref: Ref<HTMLD
 
   useEffect(() => {
     if (customHeader && showHeader) {
-      setHeaderStyles((prev) => {
-        if (headerRef.current?.offsetHeight) {
-          return { top: headerRef.current.offsetHeight };
-        }
-        return prev;
-      });
+      setHeaderStyles({ top: headerRef.current.offsetHeight });
+    }
+    if (!showHeader) {
+      setHeaderStyles({});
     }
   }, [headerRef.current, customHeader, showHeader]);
 
@@ -147,7 +147,10 @@ const Page: FC<PagePropTypes> = forwardRef((props: PagePropTypes, ref: Ref<HTMLD
 
   useEffect(() => {
     if (customFooter && showFooter) {
-      setFooterHeight(footerRef.current?.offsetHeight);
+      setFooterHeight(footerRef.current.offsetHeight);
+    }
+    if (!showFooter) {
+      setFooterHeight(0);
     }
   }, [footerRef.current, customFooter, showFooter]);
 
