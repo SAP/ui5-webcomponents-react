@@ -9,7 +9,18 @@ import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { PageBackgroundDesign } from '@ui5/webcomponents-react/lib/PageBackgroundDesign';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
-import React, { FC, forwardRef, ReactElement, ReactNode, Ref, useCallback, useMemo } from 'react';
+import React, {
+  FC,
+  forwardRef,
+  ReactElement,
+  ReactNode,
+  Ref,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState
+} from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import styles from './Page.jss';
 
@@ -41,6 +52,8 @@ export interface PagePropTypes extends CommonProps {
   showFooter?: boolean;
   /**
    * Whether this page shall have a header.
+   *
+   * __Note:__ If the `customHeader` prop is not defined, `showHeader` has no effect.
    */
   showHeader?: boolean;
   /**
@@ -77,6 +90,11 @@ const Page: FC<PagePropTypes> = forwardRef((props: PagePropTypes, ref: Ref<HTMLD
     customHeader
   } = props;
 
+  const footerRef = useRef();
+  const headerRef = useRef();
+  const [footerHeight, setFooterHeight] = useState(0);
+  const [headerStyles, setHeaderStyles] = useState({});
+
   const classes = useStyles();
 
   const handleNavBackButtonPress = useCallback(
@@ -108,17 +126,30 @@ const Page: FC<PagePropTypes> = forwardRef((props: PagePropTypes, ref: Ref<HTMLD
   const headerClasses = StyleClassHelper.of(classes.pageHeader, classes.baseBar);
   const footerClasses = StyleClassHelper.of(classes.pageFooter, classes.baseBar);
 
-  if (showHeader) {
+  if (showHeader && !customHeader) {
     pageContainer.put(classes.pageWithHeader);
   }
 
-  if (showFooter) {
-    pageContainer.put(classes.pageWithFooter);
-  }
+  useEffect(() => {
+    if (customHeader && showHeader) {
+      setHeaderStyles((prev) => {
+        if (headerRef.current?.offsetHeight) {
+          return { top: headerRef.current.offsetHeight };
+        }
+        return prev;
+      });
+    }
+  }, [headerRef.current, customHeader, showHeader]);
 
   if (className) {
     pageContainer.put(className);
   }
+
+  useEffect(() => {
+    if (customFooter && showFooter) {
+      setFooterHeight(footerRef.current?.offsetHeight);
+    }
+  }, [footerRef.current, customFooter, showFooter]);
 
   pageContainer.put(classes[`background${backgroundDesign}`]);
 
@@ -126,9 +157,19 @@ const Page: FC<PagePropTypes> = forwardRef((props: PagePropTypes, ref: Ref<HTMLD
 
   return (
     <div ref={ref} className={pageContainer.valueOf()} style={style} title={tooltip} slot={slot} {...passThroughProps}>
-      {showHeader && <header className={headerClasses.valueOf()}>{header}</header>}
-      <section className={classes.contentSection}>{children}</section>
-      {showFooter && <footer className={footerClasses.valueOf()}>{customFooter}</footer>}
+      {showHeader && (
+        <header ref={headerRef} className={headerClasses.valueOf()}>
+          {header}
+        </header>
+      )}
+      <section className={classes.contentSection} style={{ bottom: footerHeight, ...headerStyles }}>
+        {children}
+      </section>
+      {showFooter && (
+        <footer ref={footerRef} className={footerClasses.valueOf()}>
+          {customFooter}
+        </footer>
+      )}
     </div>
   );
 });
