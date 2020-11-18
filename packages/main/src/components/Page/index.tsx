@@ -92,8 +92,8 @@ const Page: FC<PagePropTypes> = forwardRef((props: PagePropTypes, ref: Ref<HTMLD
     customHeader
   } = props;
 
-  const footerRef = useRef({ offsetHeight: 0 });
-  const headerRef = useRef({ offsetHeight: 0 });
+  const footerRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLElement>(null);
   const [footerHeight, setFooterHeight] = useState(0);
   const [headerStyles, setHeaderStyles] = useState({});
 
@@ -134,7 +134,7 @@ const Page: FC<PagePropTypes> = forwardRef((props: PagePropTypes, ref: Ref<HTMLD
 
   useEffect(() => {
     if (customHeader && showHeader) {
-      setHeaderStyles({ top: headerRef.current.offsetHeight });
+      setHeaderStyles(headerRef.current?.offsetHeight ? { top: headerRef.current.offsetHeight } : {});
     }
     if (!showHeader) {
       setHeaderStyles({});
@@ -147,7 +147,7 @@ const Page: FC<PagePropTypes> = forwardRef((props: PagePropTypes, ref: Ref<HTMLD
 
   useEffect(() => {
     if (customFooter && showFooter) {
-      setFooterHeight(footerRef.current.offsetHeight);
+      setFooterHeight(footerRef.current?.offsetHeight ?? 0);
     }
     if (!showFooter) {
       setFooterHeight(0);
