@@ -25,7 +25,7 @@
     "@storybook/addon-actions": "6.0.28",
     "@storybook/addon-controls": "6.0.28",
     "@storybook/addon-docs": "6.0.28",
-    "@storybook/addon-toolbars": "6.0.28",
+    "@storybook/addon-toolbars": "6.1.0",
     "@storybook/addons": "6.0.28",
     "@storybook/cli": "6.0.28",
     "@storybook/react": "6.0.28",
