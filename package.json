@@ -22,7 +22,7 @@
     "examples:mock-seed": "cd examples/seed-test && SKIP_PREFLIGHT_CHECK=true yarn mock"
   },
   "dependencies": {
-    "@storybook/addon-actions": "6.0.28",
+    "@storybook/addon-actions": "6.1.0",
     "@storybook/addon-controls": "6.0.28",
     "@storybook/addon-docs": "6.0.28",
     "@storybook/addon-toolbars": "6.0.28",
