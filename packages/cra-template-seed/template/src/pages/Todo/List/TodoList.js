@@ -9,8 +9,8 @@ import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
 import { getUrl } from '../../../util/browser/BrowserProvider';
 import ComponentWithAuthorizationRestriction from '../../../auth/ComponentWithAuthorizationRestriction';
-import TodoListPaginatedItems from './TodoListPaginatedItems';
 import CenteredContent from '../../../components/Layout/CenteredContent';
+import TodoListPaginatedItems from './TodoListPaginatedItems';
 
 const TodoList = () => {
   const history = useHistory();
@@ -54,7 +54,7 @@ const TodoList = () => {
         <Text>{isIE() ? 'This Text is rendered only for IE' : 'This Text is rendered only when is NOT IE'}</Text>
       </p>
 
-      <Title level={TitleLevel.H3}>Pagination + Edition (Formik and Yup)</Title>
+      <Title level={TitleLevel.H3}>Lazy Loading + Pagination + Edition (Formik and Yup)</Title>
       <br />
       <TodoListPaginatedItems />
     </CenteredContent>

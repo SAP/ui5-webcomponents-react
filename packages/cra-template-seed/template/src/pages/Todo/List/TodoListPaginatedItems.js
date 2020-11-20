@@ -4,7 +4,7 @@ import { useTodos } from '../../../hooks/services/useTodos';
 
 import { List } from '@ui5/webcomponents-react/lib/List';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
-import { Spinner } from '@ui5/webcomponents-react/lib/Spinner';
+import { BusyIndicator } from '@ui5/webcomponents-react/lib/BusyIndicator';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import { Pagination } from '../../../components/Pagination/Pagination';
@@ -23,7 +23,7 @@ const TodoListPaginatedItems = () => {
   return (
     <div>
       {isLoading ? (
-        <Spinner />
+        <BusyIndicator active />
       ) : (
         <>
           <Title level={TitleLevel.H5}>{`Records (${resolvedData.numberOfElements} / ${resolvedData.totalElements})`}</Title>
