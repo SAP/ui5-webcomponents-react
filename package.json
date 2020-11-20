@@ -27,7 +27,7 @@
     "@storybook/addon-docs": "6.1.0",
     "@storybook/addon-toolbars": "6.1.0",
     "@storybook/addons": "6.1.0",
-    "@storybook/cli": "6.1.0",
+    "@storybook/cli": "6.1.1",
     "@storybook/react": "6.1.0",
     "@storybook/theming": "6.1.0",
     "@ui5/webcomponents": "1.0.0-rc.10",
