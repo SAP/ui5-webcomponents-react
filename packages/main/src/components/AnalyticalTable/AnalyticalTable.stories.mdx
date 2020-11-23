@@ -10,7 +10,12 @@ import '@ui5/webcomponents-icons/dist/delete';
 import '@ui5/webcomponents-icons/dist/edit';
 import '@ui5/webcomponents-icons/dist/settings';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
+import { Badge } from '@ui5/webcomponents-react/lib/Badge';
+import { Text } from '@ui5/webcomponents-react/lib/Text';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
+import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
+import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
+import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJustifyContent';
 import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
 import { DefaultLoadingComponent } from './defaults/LoadingComponent';
 import { DefaultNoDataComponent } from './defaults/NoDataComponent';
@@ -261,7 +266,7 @@ This even works if you resize the browser window!
 
 <Canvas>
   <Story name="Tree Table" args={{ data: generateData(20, true), isTreeTable: true }}>
-    {(args) => <AnalyticalTable {...args} />}
+    {(args) => <AnalyticalTable {...args} groupable={true} />}
   </Story>
 </Canvas>
 
@@ -333,6 +338,8 @@ The table initially contains 50 rows, when the last 10 rows are reached the tabl
   </Story>
 </Canvas>
 
+### Code
+
 ```jsx
 const InfiniteScrollTable = (props) => {
   const [data, setData] = useState(props.data.slice(0, 50));
@@ -361,5 +368,112 @@ const InfiniteScrollTable = (props) => {
       loading={loading}
     />
   );
+};
+```
+
+## AnalyticalTable with subcomponents
+
+Adding custom subcomponents below table rows can be achieved by setting the `renderRowSubComponent` prop.
+The prop expects a function with an optional parameter containing the `row` instance, there you can control which row should display subcomponents.
+
+**Note:** When `renderRowSubComponent` is set, `grouping` is disabled.
+
+<Canvas>
+  <Story name="with subcomponents" args={{ data: generateData(100) }}>
+    {(args) => {
+      const renderRowSubComponent = (row) => {
+        if (row.id === '0') {
+          return (
+            <FlexBox
+              style={{ backgroundColor: 'lightblue', height: '300px' }}
+              justifyContent={FlexBoxJustifyContent.Center}
+              alignItems={FlexBoxAlignItems.Center}
+              direction={FlexBoxDirection.Column}
+            >
+              <Badge>height: 300px</Badge>
+              <Text>This subcomponent will only be displayed below the first row.</Text>
+            </FlexBox>
+          );
+        }
+        if (row.id === '1') {
+          return (
+            <FlexBox
+              style={{ backgroundColor: 'lightyellow', height: '100px' }}
+              justifyContent={FlexBoxJustifyContent.Center}
+              alignItems={FlexBoxAlignItems.Center}
+              direction={FlexBoxDirection.Column}
+            >
+              <Badge>height: 100px</Badge>
+              <Text>This subcomponent will only be displayed below the second row.</Text>
+            </FlexBox>
+          );
+        }
+        if (row.id === '2') {
+          return null;
+        }
+        return (
+          <FlexBox
+            style={{ backgroundColor: 'lightgrey', height: '50px' }}
+            justifyContent={FlexBoxJustifyContent.Center}
+            alignItems={FlexBoxAlignItems.Center}
+            direction={FlexBoxDirection.Column}
+          >
+            <Badge>height: 50px</Badge>
+            <Text>This subcomponent will be displayed below all rows except the first, second and third.</Text>
+          </FlexBox>
+        );
+      };
+      return <AnalyticalTable data={args.data} columns={args.columns} renderRowSubComponent={renderRowSubComponent} />;
+    }}
+  </Story>
+</Canvas>
+
+### Code
+
+```jsx
+const TableWithSubcomponents = (props) => {
+  const renderRowSubComponent = (row) => {
+    if (row.id === '0') {
+      return (
+        <FlexBox
+          style={{ backgroundColor: 'lightblue', height: '300px' }}
+          justifyContent={FlexBoxJustifyContent.Center}
+          alignItems={FlexBoxAlignItems.Center}
+          direction={FlexBoxDirection.Column}
+        >
+          <Badge>height: 300px</Badge>
+          <Text>This subcomponent will only be displayed below the first row.</Text>
+        </FlexBox>
+      );
+    }
+    if (row.id === '1') {
+      return (
+        <FlexBox
+          style={{ backgroundColor: 'lightyellow', height: '100px' }}
+          justifyContent={FlexBoxJustifyContent.Center}
+          alignItems={FlexBoxAlignItems.Center}
+          direction={FlexBoxDirection.Column}
+        >
+          <Badge>height: 100px</Badge>
+          <Text>This subcomponent will only be displayed below the second row.</Text>
+        </FlexBox>
+      );
+    }
+    if (row.id === '2') {
+      return null;
+    }
+    return (
+      <FlexBox
+        style={{ backgroundColor: 'lightgrey', height: '50px' }}
+        justifyContent={FlexBoxJustifyContent.Center}
+        alignItems={FlexBoxAlignItems.Center}
+        direction={FlexBoxDirection.Column}
+      >
+        <Badge>height: 50px</Badge>
+        <Text>This subcomponent will be displayed below all rows except the first, second and third.</Text>
+      </FlexBox>
+    );
+  };
+  return <AnalyticalTable data={props.data} columns={props.columns} renderRowSubComponent={renderRowSubComponent} />;
 };
 ```

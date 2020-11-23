@@ -141,6 +141,8 @@ export interface TableProps extends Omit<CommonProps, 'title'> {
   groupable?: boolean;
   /**
    * Group table rows by adding the column's `accessor` or `id` to the array.
+   *
+   * __Note:__ This prop has no effect when `isTreeTable` is true or `renderRowSubComponent` is set.
    */
   groupBy?: string[];
   /**
@@ -235,6 +237,11 @@ export interface TableProps extends Omit<CommonProps, 'title'> {
    */
   overscanCount?: number;
 
+  /**
+   * Defines the subcomponent that should be displayed below each row.
+   */
+  renderRowSubComponent?: (row?: any) => ReactNode;
+
   // default components
   /**
    * Component that will be rendered when the table is not loading and has no data.
@@ -290,7 +297,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     infiniteScrollThreshold,
     onLoadMore,
     extension,
-    columnOrder
+    columnOrder,
+    renderRowSubComponent
   } = props;
 
   const classes = useStyles();
@@ -333,7 +341,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       stateReducer,
       disableFilters: !filterable,
       disableSortBy: !sortable,
-      disableGroupBy: isTreeTable ? true : !groupable,
+      disableGroupBy: isTreeTable || renderRowSubComponent ? true : !groupable,
       selectSubRows: false,
       webComponentsReactProperties: {
         tableRef,
@@ -347,7 +355,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
         scaleWidthMode,
         loading,
         withRowHighlight,
-        highlightField
+        highlightField,
+        renderRowSubComponent
       },
       ...reactTableOptions
     },
@@ -602,6 +611,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
                 visibleColumns={visibleColumns}
                 visibleColumnsWidth={visibleColumnsWidth}
                 overscanCountHorizontal={overscanCountHorizontal}
+                renderRowSubComponent={renderRowSubComponent}
               />
             </VirtualTableBodyContainer>
           )}
