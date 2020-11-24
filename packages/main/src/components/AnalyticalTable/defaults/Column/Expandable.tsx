@@ -26,7 +26,7 @@ const getPadding = (level) => {
 };
 
 export const Expandable = (props) => {
-  const { cell, row, column, columns } = props;
+  const { cell, row, column, columns, webComponentsReactProperties } = props;
 
   const tableColumns = columns.filter(
     ({ id }) => id !== '__ui5wcr__internal_selection_column' && id !== '__ui5wcr__internal_highlight_column'
@@ -43,10 +43,9 @@ export const Expandable = (props) => {
   const style: CSSProperties = {
     paddingLeft
   };
-
   return (
     <>
-      {columnIndex === 0 && row.canExpand ? (
+      {columnIndex === 0 && (row.canExpand || !!webComponentsReactProperties.renderRowSubComponent) ? (
         <span {...row.getToggleRowExpandedProps({ style })}>
           <Icon
             name={`${row.isExpanded ? 'navigation-down-arrow' : 'navigation-right-arrow'}`}
