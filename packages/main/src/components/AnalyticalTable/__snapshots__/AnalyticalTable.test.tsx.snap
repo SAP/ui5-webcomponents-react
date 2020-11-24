@@ -2620,7 +2620,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
 </DocumentFragment>
 `;
 
-exports[`AnalyticalTable render subcomponets 1`] = `
+exports[`AnalyticalTable render subcomponents 1`] = `
 <DocumentFragment>
   <div
     style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column; visibility: hidden;"
