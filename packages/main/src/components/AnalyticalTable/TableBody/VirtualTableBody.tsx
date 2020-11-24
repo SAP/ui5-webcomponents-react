@@ -1,7 +1,7 @@
 import '@ui5/webcomponents-icons/dist/navigation-down-arrow';
 import '@ui5/webcomponents-icons/dist/navigation-right-arrow';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
-import React, { MutableRefObject, useCallback, useRef } from 'react';
+import React, { MutableRefObject, ReactNode, useCallback, useRef, useState } from 'react';
 import { useVirtual } from 'react-virtual';
 
 interface VirtualTableBodyProps {
@@ -20,6 +20,7 @@ interface VirtualTableBodyProps {
   visibleColumnsWidth: any[];
   parentRef: MutableRefObject<any>;
   overscanCountHorizontal: number;
+  renderRowSubComponent: (row?: any) => ReactNode;
 }
 
 export const VirtualTableBody = (props: VirtualTableBodyProps) => {
@@ -37,8 +38,11 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     tableRef,
     visibleColumnsWidth,
     parentRef,
-    overscanCountHorizontal
+    overscanCountHorizontal,
+    renderRowSubComponent
   } = props;
+
+  const rowSubComponentsHeight = useRef({});
 
   const itemCount = Math.max(minRows, rows.length);
   const overscan = overscanCount ? overscanCount : Math.floor(visibleRows / 2);
@@ -47,7 +51,15 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
   const rowVirtualizer = useVirtual({
     size: itemCount,
     parentRef: consolidatedParentRef,
-    estimateSize: React.useCallback(() => internalRowHeight, [internalRowHeight]),
+    estimateSize: React.useCallback(
+      (index) => {
+        if (renderRowSubComponent && rows[index].isExpanded && rowSubComponentsHeight.current.hasOwnProperty(index)) {
+          return internalRowHeight + (rowSubComponentsHeight.current?.[index] ?? 0);
+        }
+        return internalRowHeight;
+      },
+      [internalRowHeight, rows, renderRowSubComponent]
+    ),
     overscan
   });
 
@@ -154,6 +166,11 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     >
       {rowVirtualizer.virtualItems.map((virtualRow) => {
         const row = rows[virtualRow.index];
+        const setSubcomponentsRefs = (el) => {
+          if (el?.offsetHeight) {
+            rowSubComponentsHeight.current[virtualRow.index] = el.offsetHeight;
+          }
+        };
         if (!row) {
           return (
             <div
@@ -168,6 +185,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
         }
         prepareRow(row);
         const rowProps = row.getRowProps();
+        const RowSubComponent = typeof renderRowSubComponent === 'function' ? renderRowSubComponent(row) : null;
         return (
           <div
             {...rowProps}
@@ -177,6 +195,18 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
               position: 'absolute'
             }}
           >
+            {RowSubComponent && row.isExpanded && (
+              <div
+                ref={setSubcomponentsRefs}
+                style={{
+                  transform: `translateY(${internalRowHeight}px)`,
+                  position: 'absolute',
+                  width: '100%'
+                }}
+              >
+                {RowSubComponent}
+              </div>
+            )}
             {columnVirtualizer.virtualItems.map((virtualColumn) => {
               const cell = row.cells[virtualColumn.index];
               if (!cell) {
@@ -192,7 +222,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
                 cell.column.id === '__ui5wcr__internal_selection_column'
               ) {
                 contentToRender = 'Cell';
-              } else if (isTreeTable) {
+              } else if (isTreeTable || RowSubComponent) {
                 contentToRender = 'Expandable';
               } else if (cell.isGrouped) {
                 contentToRender = 'Grouped';
