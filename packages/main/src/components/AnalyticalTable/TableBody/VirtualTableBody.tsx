@@ -53,7 +53,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     parentRef: consolidatedParentRef,
     estimateSize: React.useCallback(
       (index) => {
-        if (renderRowSubComponent && rows[index].isExpanded && rowSubComponentsHeight.current?.[index]) {
+        if (renderRowSubComponent && rows[index].isExpanded && rowSubComponentsHeight.current.hasOwnProperty(index)) {
           return internalRowHeight + rowSubComponentsHeight.current?.[index] ?? 0;
         }
         return internalRowHeight;
