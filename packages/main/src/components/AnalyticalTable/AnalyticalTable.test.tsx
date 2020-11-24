@@ -372,7 +372,7 @@ describe('AnalyticalTable', () => {
     expect(row).toHaveAttribute('data-is-selected');
   });
 
-  test('render subcomponets', () => {
+  test('render subcomponents', () => {
     const renderRowSubComponent = () => {
       return <div title="subcomponent">Hi! I'm a subcomponent.</div>;
     };
