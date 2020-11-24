@@ -137,11 +137,6 @@ const styles = {
       top: CssSizeVariables.sapWcrBarHeight
     }
   },
-  pageWithFooter: {
-    '& $contentSection': {
-      bottom: CssSizeVariables.sapWcrBarHeight
-    }
-  },
   pageFooter: {
     position: 'absolute',
     bottom: '0',
