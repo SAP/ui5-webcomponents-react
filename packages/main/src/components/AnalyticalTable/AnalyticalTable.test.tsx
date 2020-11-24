@@ -372,5 +372,35 @@ describe('AnalyticalTable', () => {
     expect(row).toHaveAttribute('data-is-selected');
   });
 
+  test('render subcomponents', () => {
+    const renderRowSubComponent = () => {
+      return <div title="subcomponent">Hi! I'm a subcomponent.</div>;
+    };
+
+    const onlyFirstRowWithSubcomponent = (row) => {
+      if (row.id === '0') {
+        return <div title="subcomponent">Hi! I'm a subcomponent.</div>;
+      }
+    };
+    const { asFragment, rerender } = render(
+      <AnalyticalTable data={data} columns={columns} renderRowSubComponent={renderRowSubComponent} />
+    );
+    expect(screen.getAllByTitle('Toggle Row Expanded')).toHaveLength(2);
+
+    fireEvent.click(screen.getAllByTitle('Toggle Row Expanded')[0]);
+
+    expect(screen.getAllByTitle('subcomponent')).toHaveLength(1);
+
+    fireEvent.click(screen.getAllByTitle('Toggle Row Expanded')[1]);
+
+    expect(screen.getAllByTitle('subcomponent')).toHaveLength(2);
+
+    expect(asFragment()).toMatchSnapshot();
+
+    rerender(<AnalyticalTable data={data} columns={columns} renderRowSubComponent={onlyFirstRowWithSubcomponent} />);
+
+    expect(screen.getAllByTitle('Toggle Row Expanded')).toHaveLength(1);
+  });
+
   createPassThroughPropsTest(AnalyticalTable);
 });

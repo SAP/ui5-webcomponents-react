@@ -2,14 +2,14 @@ import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils'
 import { useCallback } from 'react';
 
 const getToggleRowExpandedProps = (rowProps, { row, instance }) => {
-  const { onRowExpandChange, isTreeTable } = instance.webComponentsReactProperties;
+  const { onRowExpandChange, isTreeTable, renderRowSubComponent } = instance.webComponentsReactProperties;
   const onClick = useCallback(
     (e) => {
       e.stopPropagation();
       e.persist();
       row.toggleRowExpanded();
       let column = null;
-      if (!isTreeTable) {
+      if (!isTreeTable && !renderRowSubComponent) {
         column = row.cells.find((cell) => cell.column.id === row.groupByID).column;
       }
 

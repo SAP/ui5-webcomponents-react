@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { Helmet } from 'react-helmet';
 import { useTodo } from '../../../hooks/services/useTodos';
 
-import { Spinner } from '@ui5/webcomponents-react/lib/Spinner';
+import { BusyIndicator } from '@ui5/webcomponents-react/lib/BusyIndicator';
 import NavBack from '../../../components/NavBack/NavBack';
 import CenteredContent from '../../../components/Layout/CenteredContent';
-import TodoEditForm from './TodoEditForm';
+
+const TodoEditForm = lazy(() => import('./TodoEditForm'));
 
 const onSubmitEditForm = (values, actions) => {
   actions.setSubmitting(true);
@@ -24,8 +25,13 @@ const TodoEdit = ({ match }) => {
       <NavBack />
       <CenteredContent>
         <br />
-        {isLoading && <Spinner />}
-        {isSuccess && <TodoEditForm data={data.data.todos} onSubmitHandler={onSubmitEditForm} />}
+        {isLoading && <BusyIndicator active />}
+
+        {isSuccess && (
+          <Suspense fallback={<BusyIndicator active />}>
+            <TodoEditForm data={data.data.todos} onSubmitHandler={onSubmitEditForm} />
+          </Suspense>
+        )}
       </CenteredContent>
     </>
   );
