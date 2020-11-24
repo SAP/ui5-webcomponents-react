@@ -54,11 +54,11 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     estimateSize: React.useCallback(
       (index) => {
         if (renderRowSubComponent && rows[index].isExpanded && rowSubComponentsHeight.current.hasOwnProperty(index)) {
-          return internalRowHeight + rowSubComponentsHeight.current?.[index] ?? 0;
+          return internalRowHeight + (rowSubComponentsHeight.current?.[index] ?? 0);
         }
         return internalRowHeight;
       },
-      [internalRowHeight, rows, renderRowSubComponent, rowSubComponentsHeight.current]
+      [internalRowHeight, rows, renderRowSubComponent]
     ),
     overscan
   });
