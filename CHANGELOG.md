@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.12.0...v0.12.1) (2020-11-24)
+
+
+### Bug Fixes
+
+* **Page:** content area adapts to height of header and footer ([#966](https://github.com/SAP/ui5-webcomponents-react/issues/966)) ([cb60b38](https://github.com/SAP/ui5-webcomponents-react/commit/cb60b386e8ff184752fbc3f1427446b1fd737a4d))
+
+
+### Features
+
+* **AnalyticalTable:** add support for subcomponents ([#997](https://github.com/SAP/ui5-webcomponents-react/issues/997)) ([15a1e99](https://github.com/SAP/ui5-webcomponents-react/commit/15a1e99e7f4892971d01c51841f67d57109b274f))
+* **cra-template-seed:** add route based code splitting and lazy loading of edit component ([#961](https://github.com/SAP/ui5-webcomponents-react/issues/961)) ([fffed60](https://github.com/SAP/ui5-webcomponents-react/commit/fffed600d11ca4ec4f595675ad6643c6badb94ed))
+
+
+
+
+
 # [0.12.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.11.4...v0.12.0) (2020-11-16)
 
 
