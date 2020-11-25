@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@storybook/addon-actions": "6.1.5",
-    "@storybook/addon-controls": "6.1.5",
+    "@storybook/addon-controls": "6.1.6",
     "@storybook/addon-docs": "6.1.5",
     "@storybook/addon-toolbars": "6.1.5",
     "@storybook/addons": "6.1.5",
