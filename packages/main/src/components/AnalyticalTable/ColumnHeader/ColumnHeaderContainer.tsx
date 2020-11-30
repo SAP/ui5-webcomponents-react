@@ -24,7 +24,7 @@ const styles = {
 
 interface ColumnHeaderContainerProps {
   headerProps: Record<string, unknown>;
-  headerGroup: Record<string, unknown>;
+  headerGroup: Record<string, any>;
   onSort: (e: CustomEvent<{ column: unknown; sortDirection: string }>) => void;
   onGroupByChanged: (e: CustomEvent<{ column?: any; isGrouped?: boolean }>) => void;
   onDragStart: any;
