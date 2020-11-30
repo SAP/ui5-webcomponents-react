@@ -14,3 +14,13 @@ updates:
     schedule:
       interval: "daily"
     open-pull-requests-limit: 10
+    ignore:
+      - dependency-name: '@storybook/addon-actions'
+      - dependency-name: '@storybook/addon-controls'
+      - dependency-name: '@storybook/addon-docs'
+      - dependency-name: '@storybook/addon-toolbars'
+      - dependency-name: '@storybook/addons'
+      - dependency-name: '@storybook/cli'
+      - dependency-name: '@storybook/react'
+      - dependency-name: '@storybook/theming'
+      
