@@ -28,7 +28,7 @@
     "@storybook/addon-toolbars": "6.1.6",
     "@storybook/addons": "6.1.6",
     "@storybook/cli": "6.1.6",
-    "@storybook/react": "6.1.6",
+    "@storybook/react": "6.1.9",
     "@storybook/theming": "6.1.6",
     "@ui5/webcomponents": "1.0.0-rc.10",
     "@ui5/webcomponents-fiori": "1.0.0-rc.10",
