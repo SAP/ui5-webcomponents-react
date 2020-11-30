@@ -1,5 +1,5 @@
 import { Title } from '@ui5/webcomponents-react/lib/Title';
-import React, { FC, isValidElement, ReactNode, ReactText } from 'react';
+import React, { forwardRef, isValidElement, ReactNode, ReactText, Ref } from 'react';
 
 const styles = {
   minHeight: '1.5rem',
@@ -11,12 +11,12 @@ export interface TitleBarProps {
   children: ReactText | ReactNode;
 }
 
-export const TitleBar: FC<TitleBarProps> = (props) => {
+export const TitleBar = forwardRef((props: TitleBarProps, ref: Ref<HTMLDivElement>) => {
   const { children } = props;
   return (
-    <div style={styles}>
+    <div style={styles} ref={ref}>
       {typeof children === 'string' && <Title>{children}</Title>}
       {isValidElement(children) && children}
     </div>
   );
-};
+});

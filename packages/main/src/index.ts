@@ -128,6 +128,7 @@ import { TableRow } from './lib/TableRow';
 import { TableScaleWidthMode } from './lib/TableScaleWidthMode';
 import { TableSelectionBehavior } from './lib/TableSelectionBehavior';
 import { TableSelectionMode } from './lib/TableSelectionMode';
+import { TableVisibleRowCountMode } from './lib/TableVisibleRowCountMode';
 import { Text } from './lib/Text';
 import { TextAlign } from './lib/TextAlign';
 import { TextArea } from './lib/TextArea';
@@ -287,6 +288,7 @@ export {
   TableScaleWidthMode,
   TableSelectionBehavior,
   TableSelectionMode,
+  TableVisibleRowCountMode,
   Text,
   TextAlign,
   TextArea,

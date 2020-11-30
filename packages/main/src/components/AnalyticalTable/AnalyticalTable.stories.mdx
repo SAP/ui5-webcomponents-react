@@ -4,6 +4,7 @@ import { createSelectArgTypes } from '../../../../../shared/stories/createSelect
 import { TableScaleWidthMode } from '@ui5/webcomponents-react/lib/TableScaleWidthMode';
 import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
+import { TableVisibleRowCountMode } from '@ui5/webcomponents-react/lib/TableVisibleRowCountMode';
 import generateData from './demo/generateData';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import '@ui5/webcomponents-icons/dist/delete';
@@ -110,7 +111,8 @@ import { useEffect, useRef, useState } from 'react';
     scaleWidthMode: TableScaleWidthMode.Default,
     selectionMode: TableSelectionMode.SINGLE_SELECT,
     selectionBehavior: TableSelectionBehavior.ROW,
-    overscanCountHorizontal: 5
+    overscanCountHorizontal: 5,
+    visibleRowCountMode: TableVisibleRowCountMode.FIXED
   }}
   argTypes={{
     ...DocsCommonProps,
@@ -120,6 +122,7 @@ import { useEffect, useRef, useState } from 'react';
     tableHooks: { type: null },
     NoDataComponent: { type: null },
     LoadingComponent: { type: null },
+    visibleRowCountMode: { control: { disable: true } },
     ...createSelectArgTypes({
       scaleWidthMode: TableScaleWidthMode,
       selectionMode: TableSelectionMode,
@@ -477,3 +480,78 @@ const TableWithSubcomponents = (props) => {
   return <AnalyticalTable data={props.data} columns={props.columns} renderRowSubComponent={renderRowSubComponent} />;
 };
 ```
+
+## Adjust the number of visible rows to the container height
+
+By adding the `visibleRowCountMode` prop and setting it to `TableVisibleRowCountMode.AUTO` the table automatically fills the surrounding container with rows.
+
+<ArgsTable story="Adjust number of rows to container height" />
+
+<Canvas>
+  <Story
+    name="Adjust number of rows to container height"
+    args={{ visibleRowCountMode: TableVisibleRowCountMode.AUTO, containerHeight: 240 }}
+    argTypes={{
+      columns: { table: { disable: true } },
+      data: { table: { disable: true } },
+      title: { table: { disable: true } },
+      extension: { table: { disable: true } },
+      minRows: { table: { disable: true } },
+      visibleRowCountMode: { table: { disable: true } },
+      visibleRows: { table: { disable: true } },
+      loading: { table: { disable: true } },
+      noDataText: { table: { disable: true } },
+      rowHeight: { table: { disable: true } },
+      alternateRowColor: { table: { disable: true } },
+      withRowHighlight: { table: { disable: true } },
+      highlightField: { table: { disable: true } },
+      filterable: { table: { disable: true } },
+      sortable: { table: { disable: true } },
+      groupable: { table: { disable: true } },
+      groupBy: { table: { disable: true } },
+      selectionBehavior: { table: { disable: true } },
+      selectionMode: { table: { disable: true } },
+      scaleWidthMode: { table: { disable: true } },
+      columnOrder: { table: { disable: true } },
+      infiniteScroll: { table: { disable: true } },
+      infiniteScrollThreshold: { table: { disable: true } },
+      onSort: { table: { disable: true } },
+      onGroup: { table: { disable: true } },
+      onRowSelected: { table: { disable: true } },
+      onRowExpandChange: { table: { disable: true } },
+      onColumnsReordered: { table: { disable: true } },
+      onLoadMore: { table: { disable: true } },
+      reactTableOptions: { table: { disable: true } },
+      tableHooks: { table: { disable: true } },
+      subRowsKey: { table: { disable: true } },
+      selectedRowIds: { table: { disable: true } },
+      isTreeTable: { table: { disable: true } },
+      overscanCountHorizontal: { table: { disable: true } },
+      overscanCount: { table: { disable: true } },
+      renderRowSubComponent: { table: { disable: true } },
+      NoDataComponent: { table: { disable: true } },
+      LoadingComponent: { table: { disable: true } },
+      style: { table: { disable: true } },
+      className: { table: { disable: true } },
+      tooltip: { table: { disable: true } },
+      containerHeight: {
+        control: { type: 'range', min: 0, max: 3000, step: 30 },
+        description:
+          'Drag the slider to change the height of the surrounding container of the table (in `px`). <br /> __Note__: This is not an actual prop of the table.'
+      }
+    }}
+  >
+    {(args) => {
+      return (
+        <div style={{ height: args.containerHeight ? `${args.containerHeight}px` : 0 }}>
+          <AnalyticalTable
+            data={args.data}
+            columns={args.columns}
+            visibleRowCountMode={args.visibleRowCountMode}
+            title={`Current height: ${args.containerHeight}px - Change the height by dragging the slider`}
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>

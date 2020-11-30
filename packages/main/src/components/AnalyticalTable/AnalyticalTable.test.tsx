@@ -1,8 +1,9 @@
+import { act, fireEvent, getByText, render, screen } from '@shared/tests';
 import { createPassThroughPropsTest } from '@shared/tests/utils';
-import { act, render, screen, fireEvent, getByText } from '@shared/tests';
 import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
 import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
+import { TableVisibleRowCountMode } from '@ui5/webcomponents-react/lib/TableVisibleRowCountMode';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React, { useRef } from 'react';
 
@@ -42,6 +43,60 @@ const data = [
     friend: {
       name: 'Nei',
       age: 50
+    }
+  }
+];
+
+const moreData = [
+  {
+    name: 'foo',
+    age: 18,
+    friend: {
+      name: 'meh',
+      age: 28
+    },
+    status: ValueState.Success
+  },
+  {
+    name: 'bar',
+    age: 77,
+    friend: {
+      name: 'la',
+      age: 66
+    }
+  },
+  {
+    name: 'lorem',
+    age: 18,
+    friend: {
+      name: 'ipsum',
+      age: 28
+    },
+    status: ValueState.Success
+  },
+  {
+    name: 'dolor',
+    age: 77,
+    friend: {
+      name: 'sit',
+      age: 66
+    }
+  },
+  {
+    name: 'amet',
+    age: 18,
+    friend: {
+      name: 'consetetur',
+      age: 28
+    },
+    status: ValueState.Success
+  },
+  {
+    name: 'sadipscing',
+    age: 77,
+    friend: {
+      name: 'elitr',
+      age: 66
     }
   }
 ];
@@ -400,6 +455,75 @@ describe('AnalyticalTable', () => {
     rerender(<AnalyticalTable data={data} columns={columns} renderRowSubComponent={onlyFirstRowWithSubcomponent} />);
 
     expect(screen.getAllByTitle('Toggle Row Expanded')).toHaveLength(1);
+  });
+
+  test('render rows', () => {
+    Object.defineProperties(window.HTMLElement.prototype, {
+      clientHeight: {
+        value: 100,
+        configurable: true
+      }
+    });
+    const { asFragment, rerender } = render(
+      <AnalyticalTable
+        data={[...data, ...moreData]}
+        columns={columns}
+        visibleRowCountMode={TableVisibleRowCountMode.AUTO}
+      />
+    );
+
+    const tableContainer = screen.getByRole('grid', { hidden: true });
+    expect(tableContainer.getAttribute('data-per-page')).toBe('1');
+    expect(asFragment()).toMatchSnapshot();
+
+    Object.defineProperties(window.HTMLElement.prototype, {
+      clientHeight: {
+        value: 1000,
+        configurable: true
+      }
+    });
+
+    rerender(
+      <AnalyticalTable
+        data={[...data, ...moreData]}
+        columns={columns}
+        visibleRowCountMode={TableVisibleRowCountMode.AUTO}
+      />
+    );
+    expect(tableContainer.getAttribute('data-per-page')).toBe('21');
+    expect(asFragment()).toMatchSnapshot();
+
+    //test if visibleRows prop is ignored when row-count-mode is "Auto"
+    rerender(
+      <AnalyticalTable
+        data={[...data, ...moreData]}
+        columns={columns}
+        visibleRowCountMode={TableVisibleRowCountMode.AUTO}
+        visibleRows={1337}
+      />
+    );
+    expect(tableContainer.getAttribute('data-per-page')).toBe('21');
+
+    //test default visibleRow count
+    rerender(
+      <AnalyticalTable
+        data={[...data, ...moreData]}
+        columns={columns}
+        visibleRowCountMode={TableVisibleRowCountMode.FIXED}
+      />
+    );
+    expect(tableContainer.getAttribute('data-per-page')).toBe('15');
+    expect(asFragment()).toMatchSnapshot();
+
+    rerender(
+      <AnalyticalTable
+        data={[...data, ...moreData]}
+        columns={columns}
+        visibleRowCountMode={TableVisibleRowCountMode.FIXED}
+        visibleRows={1337}
+      />
+    );
+    expect(tableContainer.getAttribute('data-per-page')).toBe('1337');
   });
 
   createPassThroughPropsTest(AnalyticalTable);
