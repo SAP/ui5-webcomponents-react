@@ -28,12 +28,12 @@
         background: transparent !important;
     }
 
-    .docblock-argstable-body label {
+    .docblock-argstable-body label[title] {
         background: #fff !important;
     }
 
-    input:checked ~ span:first-of-type,
-    input:not(:checked) ~ span:last-of-type {
+    input:checked ~ span:first-of-type:not(:only-of-type),
+    input:not(:checked) ~ span:last-of-type:not(:only-of-type) {
         background-color: rgba(0, 0, 0, 0.15) !important;
     }
 </style>
