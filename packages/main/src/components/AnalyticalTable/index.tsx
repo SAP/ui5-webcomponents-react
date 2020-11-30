@@ -97,6 +97,8 @@ export interface TableProps extends Omit<CommonProps, 'title'> {
    *
    * - __"Fixed":__ The table always has as many rows as defined in the `visibleRowCount` prop.
    * - __"Auto":__ The table automatically fills the height of the surrounding container.
+   *
+   * __Note:__ When `"Auto"` is enabled, we recommend to use a fixed height for the outer container.
    */
   visibleRowCountMode?: TableVisibleRowCountMode;
   /**
