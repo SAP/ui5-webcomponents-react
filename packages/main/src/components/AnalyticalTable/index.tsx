@@ -9,6 +9,7 @@ import { GlobalStyleClasses } from '@ui5/webcomponents-react/lib/GlobalStyleClas
 import { TableScaleWidthMode } from '@ui5/webcomponents-react/lib/TableScaleWidthMode';
 import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
+import { TableVisibleRowCountMode } from '@ui5/webcomponents-react/lib/TableVisibleRowCountMode';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import debounce from 'lodash/debounce';
 import React, {
@@ -66,7 +67,8 @@ interface DivWithCustomScrollProp extends HTMLDivElement {
 
 export interface TableProps extends Omit<CommonProps, 'title'> {
   /**
-   * Defines the columns array where you can define the configuration for each column.<br />
+   * Defines the columns array where you can define the configuration for each column.
+   *
    * __Note:__ Please look at the [AnalyticalTableColumnDefinition interface](#column-properties) for a full list of options.
    */
   columns: AnalyticalTableColumnDefinition[];
@@ -75,7 +77,8 @@ export interface TableProps extends Omit<CommonProps, 'title'> {
    */
   data: Record<any, any>[];
   /**
-   * Component or text rendered in the title section of the `AnalyticalTable`.<br />
+   * Component or text rendered in the title section of the `AnalyticalTable`.
+   *
    * __Note:__ If not set, it will be hidden.
    */
   title?: ReactText | ReactNode;
@@ -90,12 +93,23 @@ export interface TableProps extends Omit<CommonProps, 'title'> {
    */
   minRows?: number;
   /**
-   * The number of rows visible without going into overflow.<br />
+   * Defines how the table table will render visible rows.
+   *
+   * - __"Fixed":__ The table always has as many rows as defined in the `visibleRowCount` prop.
+   * - __"Auto":__ The table automatically fills the height of the surrounding container.
+   *
+   * __Note:__ When `"Auto"` is enabled, we recommend to use a fixed height for the outer container.
+   */
+  visibleRowCountMode?: TableVisibleRowCountMode;
+  /**
+   * The number of rows visible without going into overflow.
+   *
    * __Note:__ If the data contains more entries than the `visibleRow` count, a vertical scrollbar is rendered and the table goes into overflow.
    */
   visibleRows?: number;
   /**
-   * Indicates whether a loading indicator should be shown.<br />
+   * Indicates whether a loading indicator should be shown.
+   *
    * __Note:__ If the data array is not empty and loading is set to `true` a `Loader` will be displayed underneath the header, otherwise a loading placeholder will be shown.
    * You can use your own placeholder by passing it to the `LoadingComponent` prop.
    */
@@ -146,14 +160,16 @@ export interface TableProps extends Omit<CommonProps, 'title'> {
    */
   groupBy?: string[];
   /**
-   * Defines the selection behavior of the table.<br />
+   * Defines the selection behavior of the table.
+   *
    * - __"Row":__ A selection column is rendered along with the normal columns. The whole row is selectable.
    * - __"RowOnly":__ No selection column is rendered along with the normal columns. The whole row is selectable.
    * - __"RowSelector":__ The row is only selectable by clicking on the corresponding field in the selection column.
    */
   selectionBehavior?: TableSelectionBehavior;
   /**
-   * Defines the `SelectionMode` of the table.<br />
+   * Defines the `SelectionMode` of the table.
+   *
    * - __"None":__ The rows are not selectable.
    * - __"SingleSelect":__ You can select only one row at once. Clicking on another row will unselect the previously selected row.
    * - __"MultiSelect":__ You can select multiple rows.
@@ -177,7 +193,8 @@ export interface TableProps extends Omit<CommonProps, 'title'> {
    */
   infiniteScroll?: boolean;
   /**
-   * The `infiniteScrollThreshold` defines at how many remaining rows the `onLoadMore` event should be fired.<br />
+   * The `infiniteScrollThreshold` defines at how many remaining rows the `onLoadMore` event should be fired.
+   *
    * Example: Your initial dataset consists of 50 entries and you want to load more data when the user scrolled to the 40th row. Then you should set the `infiniteScrollThreshold` to 10.
    */
   infiniteScrollThreshold?: number;
@@ -216,7 +233,8 @@ export interface TableProps extends Omit<CommonProps, 'title'> {
    */
   tableHooks?: PluginHook<any>[];
   /**
-   * Defines the key for nested rows. <br />
+   * Defines the key for nested rows.
+   *
    * Default: "children"
    */
   subRowsKey?: string;
@@ -236,7 +254,6 @@ export interface TableProps extends Omit<CommonProps, 'title'> {
    * The amount of rows to load both behind and ahead of the current window range.
    */
   overscanCount?: number;
-
   /**
    * Defines the subcomponent that should be displayed below each row.
    */
@@ -282,6 +299,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     noDataText,
     NoDataComponent,
     visibleRows,
+    visibleRowCountMode,
     minRows,
     isTreeTable,
     alternateRowColor,
@@ -377,11 +395,22 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     ...tableHooks
   );
 
+  const titleBarRef = useRef(null);
+  const extensionRef = useRef(null);
+  const headerRef = useRef(null);
+
+  const calcRowHeight = parseInt(
+    getComputedStyle(tableRef.current ?? document.body).getPropertyValue('--sapWcrAnalyticalTableRowHeight') || '44'
+  );
+  const internalRowHeight = rowHeight ?? calcRowHeight;
+  const internalVisibleRowCount = tableState.visibleRows ?? visibleRows;
+
   // scroll bar detection
   useEffect(() => {
-    const visibleRowCount = rows.length < visibleRows ? Math.max(rows.length, minRows) : visibleRows;
+    const visibleRowCount =
+      rows.length < internalVisibleRowCount ? Math.max(rows.length, minRows) : internalVisibleRowCount;
     dispatch({ type: 'TABLE_SCROLLING_ENABLED', payload: { isScrollable: rows.length > visibleRowCount } });
-  }, [rows.length, minRows, visibleRows]);
+  }, [rows.length, minRows, internalVisibleRowCount]);
 
   const updateTableClientWidth = useCallback(() => {
     if (tableRef.current) {
@@ -389,18 +418,58 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     }
   }, [tableRef.current]);
 
+  const updateRowsCount = useCallback(() => {
+    if (visibleRowCountMode !== TableVisibleRowCountMode.FIXED && analyticalTableRef.current?.parentElement) {
+      const rowCount = Math.floor(
+        ((analyticalTableRef.current?.parentElement?.clientHeight ?? 0) -
+          (titleBarRef.current?.offsetHeight ?? 0) -
+          (extensionRef.current?.offsetHeight ?? 0) -
+          (headerRef.current?.offsetHeight ?? 0)) /
+          internalRowHeight -
+          1
+      );
+      dispatch({
+        type: 'VISIBLE_ROWS',
+        payload: { visibleRows: rowCount }
+      });
+    }
+  }, [
+    analyticalTableRef.current?.parentElement?.clientHeight,
+    titleBarRef.current?.offsetHeight,
+    extensionRef.current?.offsetHeight,
+    headerRef.current?.offsetHeight,
+    internalRowHeight,
+    visibleRowCountMode
+  ]);
+
   useEffect(() => {
-    // @ts-ignore
     const tableWidthObserver = new ResizeObserver(debounce(updateTableClientWidth, 500));
     tableWidthObserver.observe(tableRef.current);
+
+    const parentHeightObserver = new ResizeObserver(debounce(updateRowsCount, 500));
+    parentHeightObserver.observe(analyticalTableRef.current?.parentElement);
     return () => {
       tableWidthObserver.disconnect();
+      parentHeightObserver.disconnect();
     };
-  }, [updateTableClientWidth]);
+  }, [updateTableClientWidth, updateRowsCount]);
 
   useIsomorphicLayoutEffect(() => {
     updateTableClientWidth();
   }, [updateTableClientWidth]);
+
+  useIsomorphicLayoutEffect(() => {
+    updateRowsCount();
+  }, [updateRowsCount]);
+
+  useEffect(() => {
+    if (tableState.visibleRows !== undefined && visibleRowCountMode === TableVisibleRowCountMode.FIXED) {
+      dispatch({
+        type: 'VISIBLE_ROWS',
+        payload: { visibleRows: undefined }
+      });
+    }
+  }, [visibleRowCountMode, tableState.visibleRows]);
 
   useEffect(() => {
     setGroupBy(groupBy);
@@ -410,16 +479,10 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     dispatch({ type: 'SET_SELECTED_ROW_IDS', payload: { selectedRowIds } });
   }, [selectedRowIds]);
 
-  const calcRowHeight = parseInt(
-    getComputedStyle(tableRef.current ?? document.body).getPropertyValue('--sapWcrAnalyticalTableRowHeight') || '44'
-  );
-
-  const internalRowHeight = rowHeight ?? calcRowHeight;
-
   const tableBodyHeight = useMemo(() => {
-    const rowNum = rows.length < visibleRows ? Math.max(rows.length, minRows) : visibleRows;
+    const rowNum = rows.length < internalVisibleRowCount ? Math.max(rows.length, minRows) : internalVisibleRowCount;
     return internalRowHeight * rowNum;
-  }, [internalRowHeight, rows.length, visibleRows, minRows]);
+  }, [internalRowHeight, rows.length, internalVisibleRowCount, minRows]);
 
   const noDataStyles = useMemo(() => {
     return {
@@ -521,18 +584,17 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     }
     verticalScrollBarRef.current.isExternalVerticalScroll = false;
   };
-
   return (
     <div className={className} style={inlineStyle} title={tooltip} ref={analyticalTableRef} {...passThroughProps}>
-      {title && <TitleBar>{title}</TitleBar>}
-      {extension && <div>{extension}</div>}
+      {title && <TitleBar ref={titleBarRef}>{title}</TitleBar>}
+      {extension && <div ref={extensionRef}>{extension}</div>}
       <FlexBox>
         <div
           {...getTableProps()}
           role="grid"
           aria-rowcount={rows.length}
           aria-colcount={tableInternalColumns.length}
-          data-per-page={visibleRows}
+          data-per-page={internalVisibleRowCount}
           ref={tableRef}
           className={StyleClassHelper.of(classes.table, GlobalStyleClasses.sapScrollBar).className}
         >
@@ -546,7 +608,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
             return (
               tableRef.current && (
                 <ColumnHeaderContainer
-                  key={headerProps.key}
+                  ref={headerRef}
+                  key={headerProps.key as string}
                   reactWindowRef={reactWindowRef}
                   tableRef={tableRef}
                   resizeInfo={tableState.columnResizing}
@@ -555,7 +618,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
                   headerGroup={headerGroup}
                   overscanCountHorizontal={overscanCountHorizontal}
                   onSort={onSort}
-                  onGroupBy={onGroupByChanged}
+                  onGroupByChanged={onGroupByChanged}
                   onDragStart={handleDragStart}
                   onDragOver={handleDragOver}
                   onDrop={handleOnDrop}
@@ -593,7 +656,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
               internalRowHeight={internalRowHeight}
               rows={rows}
               handleExternalScroll={handleBodyScroll}
-              visibleRows={visibleRows}
+              visibleRows={internalVisibleRowCount}
             >
               <VirtualTableBody
                 classes={classes}
@@ -603,7 +666,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
                 reactWindowRef={reactWindowRef}
                 isTreeTable={isTreeTable}
                 internalRowHeight={internalRowHeight}
-                visibleRows={visibleRows}
+                visibleRows={internalVisibleRowCount}
                 alternateRowColor={alternateRowColor}
                 overscanCount={overscanCount}
                 tableRef={tableRef}
@@ -660,7 +723,8 @@ AnalyticalTable.defaultProps = {
   onColumnsReordered: () => {},
   isTreeTable: false,
   alternateRowColor: false,
-  overscanCountHorizontal: 5
+  overscanCountHorizontal: 5,
+  visibleRowCountMode: TableVisibleRowCountMode.FIXED
 };
 
 export { AnalyticalTable };
