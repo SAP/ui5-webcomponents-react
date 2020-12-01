@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@babel/runtime": "7.12.5",
-    "core-js": "3.7.0",
+    "core-js": "3.8.0",
     "intersection-observer": "0.11.0",
     "resize-observer-polyfill": "1.5.1",
     "smoothscroll-polyfill": "0.4.4"
