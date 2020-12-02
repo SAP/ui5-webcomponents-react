@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.12.1...v0.12.2) (2020-12-02)
+
+
+### Bug Fixes
+
+* **Bar:** add border-radius to floating-footer ([#1046](https://github.com/SAP/ui5-webcomponents-react/issues/1046)) ([d4fd8c9](https://github.com/SAP/ui5-webcomponents-react/commit/d4fd8c9bf9a889671880051cd2c571dfdfb0f3ef))
+
+
+### Features
+
+* **AnalyticalTable:** add visibleRowCountMode prop that controls how the table displays visible rows ([#1044](https://github.com/SAP/ui5-webcomponents-react/issues/1044)) ([e86460b](https://github.com/SAP/ui5-webcomponents-react/commit/e86460b6760715c63c2eb7219abec898a6c3c9f0))
+
+
+
+
+
 ## [0.12.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.12.0...v0.12.1) (2020-11-24)
 
 
