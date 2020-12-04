@@ -533,7 +533,7 @@ describe('AnalyticalTable', () => {
       }
     });
 
-    const { asFragment } = render(
+    render(
       <AnalyticalTable
         data={[...data, ...moreData]}
         columns={columns}
@@ -555,7 +555,7 @@ describe('AnalyticalTable', () => {
 
     fireEvent(document.body, mouseMove);
     expect(document.body.lastChild).toHaveClass('VerticalResizer-resizer');
-    expect(asFragment()).toMatchSnapshot();
+    expect(document.body).toMatchSnapshot();
 
     fireEvent(document.body, mouseUp);
     expect(document.body.lastChild).not.toHaveClass('VerticalResizer-resizer');
