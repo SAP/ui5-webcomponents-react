@@ -60,6 +60,7 @@ import { VirtualTableBodyContainer } from './TableBody/VirtualTableBodyContainer
 import { stateReducer } from './tableReducer/stateReducer';
 import { TitleBar } from './TitleBar';
 import { orderByFn } from './util';
+import { VerticalResizer } from './VerticalResizer';
 
 interface DivWithCustomScrollProp extends HTMLDivElement {
   isExternalVerticalScroll?: boolean;
@@ -97,6 +98,7 @@ export interface TableProps extends Omit<CommonProps, 'title'> {
    *
    * - __"Fixed":__ The table always has as many rows as defined in the `visibleRowCount` prop.
    * - __"Auto":__ The table automatically fills the height of the surrounding container.
+   * - __"Interactive":__ Adds a resizer to the bottom of the table to dynamically add or remove visible rows. The initial number of rows is defined by the `visibleRows` prop.
    *
    * __Note:__ When `"Auto"` is enabled, we recommend to use a fixed height for the outer container.
    */
@@ -399,6 +401,11 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   const extensionRef = useRef(null);
   const headerRef = useRef(null);
 
+  const extensionsHeight =
+    (titleBarRef.current?.offsetHeight ?? 0) +
+    (extensionRef.current?.offsetHeight ?? 0) +
+    (headerRef.current?.offsetHeight ?? 0);
+
   const calcRowHeight = parseInt(
     getComputedStyle(tableRef.current ?? document.body).getPropertyValue('--sapWcrAnalyticalTableRowHeight') || '44'
   );
@@ -419,14 +426,9 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   }, [tableRef.current]);
 
   const updateRowsCount = useCallback(() => {
-    if (visibleRowCountMode !== TableVisibleRowCountMode.FIXED && analyticalTableRef.current?.parentElement) {
+    if (visibleRowCountMode === TableVisibleRowCountMode.AUTO && analyticalTableRef.current?.parentElement) {
       const rowCount = Math.floor(
-        ((analyticalTableRef.current?.parentElement?.clientHeight ?? 0) -
-          (titleBarRef.current?.offsetHeight ?? 0) -
-          (extensionRef.current?.offsetHeight ?? 0) -
-          (headerRef.current?.offsetHeight ?? 0)) /
-          internalRowHeight -
-          1
+        ((analyticalTableRef.current?.parentElement?.clientHeight ?? 0) - extensionsHeight) / internalRowHeight - 1
       );
       dispatch({
         type: 'VISIBLE_ROWS',
@@ -435,9 +437,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     }
   }, [
     analyticalTableRef.current?.parentElement?.clientHeight,
-    titleBarRef.current?.offsetHeight,
-    extensionRef.current?.offsetHeight,
-    headerRef.current?.offsetHeight,
+    extensionsHeight,
     internalRowHeight,
     visibleRowCountMode
   ]);
@@ -584,6 +584,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     }
     verticalScrollBarRef.current.isExternalVerticalScroll = false;
   };
+
   return (
     <div className={className} style={inlineStyle} title={tooltip} ref={analyticalTableRef} {...passThroughProps}>
       {title && <TitleBar ref={titleBarRef}>{title}</TitleBar>}
@@ -690,6 +691,14 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
           />
         )}
       </FlexBox>
+      {visibleRowCountMode === TableVisibleRowCountMode.INTERACTIVE && (
+        <VerticalResizer
+          tableRef={tableRef}
+          dispatch={dispatch}
+          extensionsHeight={extensionsHeight}
+          internalRowHeight={internalRowHeight}
+        />
+      )}
     </div>
   );
 });
