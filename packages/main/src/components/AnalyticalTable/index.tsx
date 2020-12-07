@@ -428,7 +428,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   const updateRowsCount = useCallback(() => {
     if (visibleRowCountMode === TableVisibleRowCountMode.AUTO && analyticalTableRef.current?.parentElement) {
       const rowCount = Math.floor(
-        ((analyticalTableRef.current?.parentElement?.clientHeight ?? 0) - extensionsHeight) / internalRowHeight - 1
+        ((analyticalTableRef.current?.parentElement?.clientHeight ?? 0) - extensionsHeight) / internalRowHeight
       );
       dispatch({
         type: 'VISIBLE_ROWS',
