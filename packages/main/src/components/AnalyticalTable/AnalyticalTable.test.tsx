@@ -472,7 +472,7 @@ describe('AnalyticalTable', () => {
     );
 
     const tableContainer = screen.getByRole('grid', { hidden: true });
-    expect(tableContainer.getAttribute('data-per-page')).toBe('1');
+    expect(tableContainer.getAttribute('data-per-page')).toBe('2');
     expect(asFragment()).toMatchSnapshot();
 
     Object.defineProperties(window.HTMLElement.prototype, {
@@ -489,7 +489,7 @@ describe('AnalyticalTable', () => {
         visibleRowCountMode={TableVisibleRowCountMode.AUTO}
       />
     );
-    expect(tableContainer.getAttribute('data-per-page')).toBe('21');
+    expect(tableContainer.getAttribute('data-per-page')).toBe('22');
     expect(asFragment()).toMatchSnapshot();
 
     //test if visibleRows prop is ignored when row-count-mode is "Auto"
@@ -501,7 +501,7 @@ describe('AnalyticalTable', () => {
         visibleRows={1337}
       />
     );
-    expect(tableContainer.getAttribute('data-per-page')).toBe('21');
+    expect(tableContainer.getAttribute('data-per-page')).toBe('22');
 
     //test default visibleRow count
     rerender(

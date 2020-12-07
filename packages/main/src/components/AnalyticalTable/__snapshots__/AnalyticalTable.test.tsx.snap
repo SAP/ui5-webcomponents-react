@@ -2632,7 +2632,7 @@ exports[`AnalyticalTable render rows 1`] = `
         aria-colcount="4"
         aria-rowcount="8"
         class="AnalyticalTable-table sapScrollBar"
-        data-per-page="1"
+        data-per-page="2"
         role="grid"
       >
         <div
@@ -2779,7 +2779,7 @@ exports[`AnalyticalTable render rows 1`] = `
         </div>
         <div
           class="AnalyticalTable-tbody"
-          style="position: relative; overflow-y: auto; height: 44px; width: 600px;"
+          style="position: relative; overflow-y: auto; height: 88px; width: 600px;"
         >
           <div
             style="position: relative; height: 352px; width: 600px;"
@@ -2911,6 +2911,69 @@ exports[`AnalyticalTable render rows 1`] = `
                 </span>
               </div>
             </div>
+            <div
+              aria-rowindex="2"
+              class="AnalyticalTable-tr"
+              role="row"
+              style="height: 44px; transform: translateY(88px); position: absolute;"
+            >
+              <div
+                aria-colindex="1"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="align-items: center; width: 150px; position: absolute; transform: translateX(0px); top: 0px; left: 0px;"
+                tabindex="-1"
+              >
+                <span
+                  class="Text-text Text-noWrap"
+                  title="foo"
+                >
+                  foo
+                </span>
+              </div>
+              <div
+                aria-colindex="2"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="align-items: center; width: 150px; position: absolute; transform: translateX(150px); top: 0px; left: 0px;"
+                tabindex="-1"
+              >
+                <span
+                  class="Text-text Text-noWrap"
+                  title="18"
+                >
+                  18
+                </span>
+              </div>
+              <div
+                aria-colindex="3"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="align-items: center; width: 150px; position: absolute; transform: translateX(300px); top: 0px; left: 0px;"
+                tabindex="-1"
+              >
+                <span
+                  class="Text-text Text-noWrap"
+                  title="meh"
+                >
+                  meh
+                </span>
+              </div>
+              <div
+                aria-colindex="4"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="align-items: center; width: 150px; position: absolute; transform: translateX(450px); top: 0px; left: 0px;"
+                tabindex="-1"
+              >
+                <span
+                  class="Text-text Text-noWrap"
+                  title="28"
+                >
+                  28
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -2950,7 +3013,7 @@ exports[`AnalyticalTable render rows 2`] = `
         aria-colcount="4"
         aria-rowcount="8"
         class="AnalyticalTable-table sapScrollBar"
-        data-per-page="21"
+        data-per-page="22"
         role="grid"
       >
         <div
@@ -3226,6 +3289,69 @@ exports[`AnalyticalTable render rows 2`] = `
                   title="50"
                 >
                   50
+                </span>
+              </div>
+            </div>
+            <div
+              aria-rowindex="2"
+              class="AnalyticalTable-tr"
+              role="row"
+              style="height: 44px; transform: translateY(88px); position: absolute;"
+            >
+              <div
+                aria-colindex="1"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="align-items: center; width: 150px; position: absolute; transform: translateX(0px); top: 0px; left: 0px;"
+                tabindex="-1"
+              >
+                <span
+                  class="Text-text Text-noWrap"
+                  title="foo"
+                >
+                  foo
+                </span>
+              </div>
+              <div
+                aria-colindex="2"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="align-items: center; width: 150px; position: absolute; transform: translateX(150px); top: 0px; left: 0px;"
+                tabindex="-1"
+              >
+                <span
+                  class="Text-text Text-noWrap"
+                  title="18"
+                >
+                  18
+                </span>
+              </div>
+              <div
+                aria-colindex="3"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="align-items: center; width: 150px; position: absolute; transform: translateX(300px); top: 0px; left: 0px;"
+                tabindex="-1"
+              >
+                <span
+                  class="Text-text Text-noWrap"
+                  title="meh"
+                >
+                  meh
+                </span>
+              </div>
+              <div
+                aria-colindex="4"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="align-items: center; width: 150px; position: absolute; transform: translateX(450px); top: 0px; left: 0px;"
+                tabindex="-1"
+              >
+                <span
+                  class="Text-text Text-noWrap"
+                  title="28"
+                >
+                  28
                 </span>
               </div>
             </div>
@@ -3525,6 +3651,69 @@ exports[`AnalyticalTable render rows 3`] = `
                   title="50"
                 >
                   50
+                </span>
+              </div>
+            </div>
+            <div
+              aria-rowindex="2"
+              class="AnalyticalTable-tr"
+              role="row"
+              style="height: 44px; transform: translateY(88px); position: absolute;"
+            >
+              <div
+                aria-colindex="1"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="align-items: center; width: 150px; position: absolute; transform: translateX(0px); top: 0px; left: 0px;"
+                tabindex="-1"
+              >
+                <span
+                  class="Text-text Text-noWrap"
+                  title="foo"
+                >
+                  foo
+                </span>
+              </div>
+              <div
+                aria-colindex="2"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="align-items: center; width: 150px; position: absolute; transform: translateX(150px); top: 0px; left: 0px;"
+                tabindex="-1"
+              >
+                <span
+                  class="Text-text Text-noWrap"
+                  title="18"
+                >
+                  18
+                </span>
+              </div>
+              <div
+                aria-colindex="3"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="align-items: center; width: 150px; position: absolute; transform: translateX(300px); top: 0px; left: 0px;"
+                tabindex="-1"
+              >
+                <span
+                  class="Text-text Text-noWrap"
+                  title="meh"
+                >
+                  meh
+                </span>
+              </div>
+              <div
+                aria-colindex="4"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="align-items: center; width: 150px; position: absolute; transform: translateX(450px); top: 0px; left: 0px;"
+                tabindex="-1"
+              >
+                <span
+                  class="Text-text Text-noWrap"
+                  title="28"
+                >
+                  28
                 </span>
               </div>
             </div>
