@@ -34,7 +34,7 @@ export interface AnalyticalCardHeaderPropTypes extends CommonProps {
   showIndicator?: boolean;
   /**
    * Defines the value state of the deviation indicator.
-   * Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>
+   * Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li></ul>
    */
   indicatorState?: ValueState;
   /**
@@ -47,7 +47,7 @@ export interface AnalyticalCardHeaderPropTypes extends CommonProps {
   unit?: string;
   /**
    * Defines the value state of the value.
-   * Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>
+   * Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li></ul>
    */
   valueState?: ValueState;
   /**
