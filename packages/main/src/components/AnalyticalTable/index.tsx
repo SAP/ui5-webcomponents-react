@@ -693,7 +693,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       </FlexBox>
       {visibleRowCountMode === TableVisibleRowCountMode.INTERACTIVE && (
         <VerticalResizer
-          tableRef={tableRef}
+          analyticalTableRef={analyticalTableRef}
           dispatch={dispatch}
           extensionsHeight={extensionsHeight}
           internalRowHeight={internalRowHeight}

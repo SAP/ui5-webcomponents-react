@@ -7,10 +7,12 @@ import { DRAG_TO_RESIZE } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-d
 
 const verticalResizerStyles = {
   container: {
+    overflow: 'hidden',
     position: 'relative',
     height: '5px',
     textAlign: 'center',
     cursor: 'row-resize',
+    boxSizing: 'border-box',
     '&:hover': {
       backgroundColor: ThemingParameters.sapContent_DragAndDropActiveColor,
       color: ThemingParameters.sapHighlightTextColor
@@ -36,7 +38,7 @@ const verticalResizerStyles = {
 const useStyles = createUseStyles(verticalResizerStyles, { name: 'VerticalResizer' });
 
 interface VerticalResizerProps {
-  tableRef: MutableRefObject<any>;
+  analyticalTableRef: MutableRefObject<any>;
   dispatch: (e: { type: string; payload?: any }) => void;
   extensionsHeight: number;
   internalRowHeight: number;
@@ -50,7 +52,7 @@ const isTouchEvent = (e, touchEvent) => {
 };
 
 export const VerticalResizer = (props: VerticalResizerProps) => {
-  const { tableRef, dispatch, extensionsHeight, internalRowHeight } = props;
+  const { analyticalTableRef, dispatch, extensionsHeight, internalRowHeight } = props;
   const classes = useStyles();
   const startY = useRef(null);
   const verticalResizerRef = useRef(null);
@@ -62,6 +64,7 @@ export const VerticalResizer = (props: VerticalResizerProps) => {
 
   const handleResizeStart = useCallback(
     (e) => {
+      e.preventDefault();
       const touchEvent = isTouchEvent(e, 'touchstart');
       startY.current = touchEvent ? Math.round(e.touches[0].pageY) : e.pageY;
       setMountTouchEvents(touchEvent);
@@ -83,7 +86,7 @@ export const VerticalResizer = (props: VerticalResizerProps) => {
     (e) => {
       setIsDragging(false);
       const rowCount = Math.floor(
-        (tableRef.current.clientHeight +
+        (analyticalTableRef.current.clientHeight +
           (isTouchEvent(e, 'touchend') ? Math.round(e.changedTouches[0].pageY) : e.pageY) -
           startY.current -
           extensionsHeight -
@@ -95,7 +98,7 @@ export const VerticalResizer = (props: VerticalResizerProps) => {
         payload: { visibleRows: rowCount }
       });
     },
-    [tableRef.current?.clientHeight, startY.current, extensionsHeight, internalRowHeight, dispatch]
+    [analyticalTableRef.current?.clientHeight, startY.current, extensionsHeight, internalRowHeight, dispatch]
   );
   useEffect(() => {
     const removeEventListeners = () => {
