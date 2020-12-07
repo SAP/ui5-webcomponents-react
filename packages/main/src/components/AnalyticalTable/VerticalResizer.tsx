@@ -1,7 +1,9 @@
+import { useI18nText } from '@ui5/webcomponents-react-base/hooks/useI18nBundle';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import React, { MutableRefObject, useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
+import { DRAG_TO_RESIZE } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 
 const verticalResizerStyles = {
   container: {
@@ -19,7 +21,8 @@ const verticalResizerStyles = {
       top: 0,
       position: 'absolute',
       content: '"\u2981\u2981\u2981\u2981"',
-      lineHeight: '5px'
+      lineHeight: '5px',
+      pointerEvents: 'none'
     }
   },
   resizer: {
@@ -54,6 +57,8 @@ export const VerticalResizer = (props: VerticalResizerProps) => {
   const [resizerPosition, setResizerPosition] = useState(undefined);
   const [isDragging, setIsDragging] = useState(false);
   const [mountTouchEvents, setMountTouchEvents] = useState(false);
+
+  const [dragToResizeText] = useI18nText('@ui5/webcomponents-react', DRAG_TO_RESIZE);
 
   const handleResizeStart = useCallback(
     (e) => {
@@ -134,7 +139,7 @@ export const VerticalResizer = (props: VerticalResizerProps) => {
       onMouseDown={handleResizeStart}
       onTouchStart={handleResizeStart}
       role="separator"
-      title="Drag to resize"
+      title={dragToResizeText}
     >
       {resizerPosition &&
         isDragging &&
