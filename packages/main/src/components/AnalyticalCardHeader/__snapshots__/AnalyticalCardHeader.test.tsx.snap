@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AnalyticalCardHeader with all string props 1`] = `
+<DocumentFragment>
+  <div
+    class="AnalyticalCardHeader-cardHeader"
+  >
+    <div
+      class="AnalyticalCardHeader-headerContent"
+    >
+      <div
+        class="AnalyticalCardHeader-headerTitles"
+      >
+        <div
+          class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+        >
+          <div
+            class="AnalyticalCardHeader-headerText"
+          >
+            Title
+          </div>
+          <div
+            class="ObjectStatus-objectStatus AnalyticalCardHeader-counter"
+          />
+        </div>
+        <div
+          class="AnalyticalCardHeader-subHeaderText"
+        >
+          Subtitle
+        </div>
+      </div>
+      <div
+        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsEnd FlexBox-flexWrapNoWrap AnalyticalCardHeader-kpiContent"
+      >
+        <div
+          class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+        >
+          <div
+            class="AnalyticalCardHeader-valueAndUnit"
+          >
+            <div
+              class="AnalyticalCardHeader-value"
+            >
+              Value
+            </div>
+            <div
+              class="AnalyticalCardHeader-indicatorAndUnit"
+            >
+              <div
+                class="AnalyticalCardHeader-arrowIndicatorShape AnalyticalCardHeader-arrowRight AnalyticalCardHeader-none"
+              />
+              <div
+                class="AnalyticalCardHeader-unit"
+              >
+                Unit
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap AnalyticalCardHeader-targetAndDeviation"
+        >
+          <div
+            class="FlexBox-flexBox FlexBox-flexBoxDirectionColumn FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap AnalyticalCardHeader-targetAndDeviationColumn"
+          >
+            <span>
+              Target
+            </span>
+            <span
+              class="AnalyticalCardHeader-targetAndDeviationValue"
+            >
+              TargetDesc
+            </span>
+          </div>
+          <div
+            class="FlexBox-flexBox FlexBox-flexBoxDirectionColumn FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap AnalyticalCardHeader-targetAndDeviationColumn"
+          >
+            <span>
+              Deviation
+            </span>
+            <span
+              class="AnalyticalCardHeader-targetAndDeviationValue"
+            >
+              DeviationDesc
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="AnalyticalCardHeader-description"
+      >
+        Description
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
