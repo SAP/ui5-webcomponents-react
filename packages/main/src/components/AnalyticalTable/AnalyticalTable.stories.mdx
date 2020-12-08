@@ -122,11 +122,11 @@ import { useEffect, useRef, useState } from 'react';
     tableHooks: { type: null },
     NoDataComponent: { type: null },
     LoadingComponent: { type: null },
-    visibleRowCountMode: { control: { disable: true } },
     ...createSelectArgTypes({
       scaleWidthMode: TableScaleWidthMode,
       selectionMode: TableSelectionMode,
-      selectionBehavior: TableSelectionBehavior
+      selectionBehavior: TableSelectionBehavior,
+      visibleRowCountMode: TableVisibleRowCountMode
     })
   }}
 />
@@ -143,7 +143,7 @@ import { useEffect, useRef, useState } from 'react';
 
 ## Properties
 
-<ArgsTable story="." />
+<ArgsTable story="Default" />
 
 ## Column Properties
 
