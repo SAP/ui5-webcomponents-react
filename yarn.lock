@@ -3705,9 +3705,9 @@
     "@types/istanbul-lib-report" "*"
 
 "@types/jest@*", "@types/jest@^26.0.8":
-  version "26.0.16"
-  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-26.0.16.tgz#b47abd50f6ed0503f589db8e126fc8eb470cf87c"
-  integrity sha512-Gp12+7tmKCgv9JjtltxUXokohCAEZfpJaEW5tn871SGRp8I+bRWBonQO7vW5NHwnAHe5dd50+Q4zyKuN35i09g==
+  version "26.0.17"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-26.0.17.tgz#c63b44af7528bbc05974dfacc2c90fe13ed5534d"
+  integrity sha512-5sy3dHuiT/nJGM0XZ8ozFgdR4Y/gmi89n2OCDthTULSi8nG3YdcSDVuxYT3X7eN62NGXWJYz2oNOpDp/aIaynQ==
   dependencies:
     jest-diff "^26.0.0"
     pretty-format "^26.0.0"
@@ -3964,38 +3964,38 @@
     "@types/node" "*"
 
 "@typescript-eslint/eslint-plugin@^4.4.0":
-  version "4.9.0"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-4.9.0.tgz#8fde15743413661fdc086c9f1f5d74a80b856113"
-  integrity sha512-WrVzGMzzCrgrpnQMQm4Tnf+dk+wdl/YbgIgd5hKGa2P+lnJ2MON+nQnbwgbxtN9QDLi8HO+JAq0/krMnjQK6Cw==
+  version "4.9.1"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-4.9.1.tgz#66758cbe129b965fe9c63b04b405d0cf5280868b"
+  integrity sha512-QRLDSvIPeI1pz5tVuurD+cStNR4sle4avtHhxA+2uyixWGFjKzJ+EaFVRW6dA/jOgjV5DTAjOxboQkRDE8cRlQ==
   dependencies:
-    "@typescript-eslint/experimental-utils" "4.9.0"
-    "@typescript-eslint/scope-manager" "4.9.0"
+    "@typescript-eslint/experimental-utils" "4.9.1"
+    "@typescript-eslint/scope-manager" "4.9.1"
     debug "^4.1.1"
     functional-red-black-tree "^1.0.1"
     regexpp "^3.0.0"
     semver "^7.3.2"
     tsutils "^3.17.1"
 
-"@typescript-eslint/experimental-utils@4.9.0":
-  version "4.9.0"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/experimental-utils/-/experimental-utils-4.9.0.tgz#23a296b85d243afba24e75a43fd55aceda5141f0"
-  integrity sha512-0p8GnDWB3R2oGhmRXlEnCvYOtaBCijtA5uBfH5GxQKsukdSQyI4opC4NGTUb88CagsoNQ4rb/hId2JuMbzWKFQ==
+"@typescript-eslint/experimental-utils@4.9.1":
+  version "4.9.1"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/experimental-utils/-/experimental-utils-4.9.1.tgz#86633e8395191d65786a808dc3df030a55267ae2"
+  integrity sha512-c3k/xJqk0exLFs+cWSJxIjqLYwdHCuLWhnpnikmPQD2+NGAx9KjLYlBDcSI81EArh9FDYSL6dslAUSwILeWOxg==
   dependencies:
     "@types/json-schema" "^7.0.3"
-    "@typescript-eslint/scope-manager" "4.9.0"
-    "@typescript-eslint/types" "4.9.0"
-    "@typescript-eslint/typescript-estree" "4.9.0"
+    "@typescript-eslint/scope-manager" "4.9.1"
+    "@typescript-eslint/types" "4.9.1"
+    "@typescript-eslint/typescript-estree" "4.9.1"
     eslint-scope "^5.0.0"
     eslint-utils "^2.0.0"
 
 "@typescript-eslint/parser@^4.4.0":
-  version "4.9.0"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-4.9.0.tgz#bb65f1214b5e221604996db53ef77c9d62b09249"
-  integrity sha512-QRSDAV8tGZoQye/ogp28ypb8qpsZPV6FOLD+tbN4ohKUWHD2n/u0Q2tIBnCsGwQCiD94RdtLkcqpdK4vKcLCCw==
+  version "4.9.1"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-4.9.1.tgz#2d74c4db5dd5117379a9659081a4d1ec02629055"
+  integrity sha512-Gv2VpqiomvQ2v4UL+dXlQcZ8zCX4eTkoIW+1aGVWT6yTO+6jbxsw7yQl2z2pPl/4B9qa5JXeIbhJpONKjXIy3g==
   dependencies:
-    "@typescript-eslint/scope-manager" "4.9.0"
-    "@typescript-eslint/types" "4.9.0"
-    "@typescript-eslint/typescript-estree" "4.9.0"
+    "@typescript-eslint/scope-manager" "4.9.1"
+    "@typescript-eslint/types" "4.9.1"
+    "@typescript-eslint/typescript-estree" "4.9.1"
     debug "^4.1.1"
 
 "@typescript-eslint/scope-manager@4.9.0":
@@ -4006,10 +4006,23 @@
     "@typescript-eslint/types" "4.9.0"
     "@typescript-eslint/visitor-keys" "4.9.0"
 
+"@typescript-eslint/scope-manager@4.9.1":
+  version "4.9.1"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/scope-manager/-/scope-manager-4.9.1.tgz#cc2fde310b3f3deafe8436a924e784eaab265103"
+  integrity sha512-sa4L9yUfD/1sg9Kl8OxPxvpUcqxKXRjBeZxBuZSSV1v13hjfEJkn84n0An2hN8oLQ1PmEl2uA6FkI07idXeFgQ==
+  dependencies:
+    "@typescript-eslint/types" "4.9.1"
+    "@typescript-eslint/visitor-keys" "4.9.1"
+
 "@typescript-eslint/types@4.9.0":
   version "4.9.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/types/-/types-4.9.0.tgz#3fe8c3632abd07095c7458f7451bd14c85d0033c"
   integrity sha512-luzLKmowfiM/IoJL/rus1K9iZpSJK6GlOS/1ezKplb7MkORt2dDcfi8g9B0bsF6JoRGhqn0D3Va55b+vredFHA==
+
+"@typescript-eslint/types@4.9.1":
+  version "4.9.1"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/types/-/types-4.9.1.tgz#a1a7dd80e4e5ac2c593bc458d75dd1edaf77faa2"
+  integrity sha512-fjkT+tXR13ks6Le7JiEdagnwEFc49IkOyys7ueWQ4O8k4quKPwPJudrwlVOJCUQhXo45PrfIvIarcrEjFTNwUA==
 
 "@typescript-eslint/typescript-estree@4.9.0":
   version "4.9.0"
@@ -4025,12 +4038,34 @@
     semver "^7.3.2"
     tsutils "^3.17.1"
 
+"@typescript-eslint/typescript-estree@4.9.1":
+  version "4.9.1"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/typescript-estree/-/typescript-estree-4.9.1.tgz#6e5b86ff5a5f66809e1f347469fadeec69ac50bf"
+  integrity sha512-bzP8vqwX6Vgmvs81bPtCkLtM/Skh36NE6unu6tsDeU/ZFoYthlTXbBmpIrvosgiDKlWTfb2ZpPELHH89aQjeQw==
+  dependencies:
+    "@typescript-eslint/types" "4.9.1"
+    "@typescript-eslint/visitor-keys" "4.9.1"
+    debug "^4.1.1"
+    globby "^11.0.1"
+    is-glob "^4.0.1"
+    lodash "^4.17.15"
+    semver "^7.3.2"
+    tsutils "^3.17.1"
+
 "@typescript-eslint/visitor-keys@4.9.0":
   version "4.9.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/visitor-keys/-/visitor-keys-4.9.0.tgz#f284e9fac43f2d6d35094ce137473ee321f266c8"
   integrity sha512-sV45zfdRqQo1A97pOSx3fsjR+3blmwtdCt8LDrXgCX36v4Vmz4KHrhpV6Fo2cRdXmyumxx11AHw0pNJqCNpDyg==
   dependencies:
     "@typescript-eslint/types" "4.9.0"
+    eslint-visitor-keys "^2.0.0"
+
+"@typescript-eslint/visitor-keys@4.9.1":
+  version "4.9.1"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/visitor-keys/-/visitor-keys-4.9.1.tgz#d76374a58c4ead9e92b454d186fea63487b25ae1"
+  integrity sha512-9gspzc6UqLQHd7lXQS7oWs+hrYggspv/rk6zzEMhCbYwPE/sF7oxo7GAjkS35Tdlt7wguIG+ViWCPtVZHz/ybQ==
+  dependencies:
+    "@typescript-eslint/types" "4.9.1"
     eslint-visitor-keys "^2.0.0"
 
 "@ui5/webcomponents-base@0.26.0":
@@ -8255,12 +8290,10 @@ eslint-config-airbnb-base@^13.1.0:
     object.assign "^4.1.0"
     object.entries "^1.1.0"
 
-eslint-config-prettier@^6.12.0:
-  version "6.15.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-6.15.0.tgz#7f93f6cb7d45a92f1537a70ecc06366e1ac6fed9"
-  integrity sha512-a1+kOYLR8wMGustcgAjdydMsQ2A/2ipRPwRKUmfYaSxc9ZPcrku080Ctl6zrZzZNs/U82MjSv+qKREkoq3bJaw==
-  dependencies:
-    get-stdin "^6.0.0"
+eslint-config-prettier@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-7.0.0.tgz#c1ae4106f74e6c0357f44adb076771d032ac0e97"
+  integrity sha512-8Y8lGLVPPZdaNA7JXqnvETVC7IiVRgAP6afQu9gOQRn90YY3otMNh+x7Vr2vMePQntF+5erdSUBqSzCmU/AxaQ==
 
 eslint-import-resolver-node@^0.3.3:
   version "0.3.3"
@@ -10163,9 +10196,9 @@ humanize-ms@^1.2.1:
     ms "^2.0.0"
 
 husky@^4.2.5:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/husky/-/husky-4.3.0.tgz#0b2ec1d66424e9219d359e26a51c58ec5278f0de"
-  integrity sha512-tTMeLCLqSBqnflBZnlVDhpaIMucSGaYyX6855jM4AguGeWCeSzNdb1mfyWduTZ3pe3SJVvVWGL0jO1iKZVPfTA==
+  version "4.3.5"
+  resolved "https://registry.yarnpkg.com/husky/-/husky-4.3.5.tgz#ab8d2a0eb6b62fef2853ee3d442c927d89290902"
+  integrity sha512-E5S/1HMoDDaqsH8kDF5zeKEQbYqe3wL9zJDyqyYqc8I4vHBtAoxkDBGXox0lZ9RI+k5GyB728vZdmnM4bYap+g==
   dependencies:
     chalk "^4.0.0"
     ci-info "^2.0.0"
@@ -15491,9 +15524,9 @@ react-syntax-highlighter@^13.5.0:
     refractor "^3.1.0"
 
 react-syntax-highlighter@^15.2.1:
-  version "15.3.1"
-  resolved "https://registry.yarnpkg.com/react-syntax-highlighter/-/react-syntax-highlighter-15.3.1.tgz#ba16ae8705f191956b73d0e11ae938fd255f2579"
-  integrity sha512-XVQuug7kQ4/cWxiYE0XfGXvbDqLLqRsMK/GpmD3v1WOLzb6REcgkL59cJo0m3Y2LB0eoRCNhV62jqQe9/Z0p9w==
+  version "15.4.1"
+  resolved "https://registry.yarnpkg.com/react-syntax-highlighter/-/react-syntax-highlighter-15.4.1.tgz#33c9eb13992eaaf571670c9255df68b79b4257c1"
+  integrity sha512-9FxwY+DUbUtSfnnHpYFTgpWoySARiTXWUCtlSvJR0Y6KZ5TiQWhG6MlSIVyPOtHhwOZm9h0EH7wOsYmxhWo5sA==
   dependencies:
     "@babel/runtime" "^7.3.1"
     highlight.js "^10.1.1"
