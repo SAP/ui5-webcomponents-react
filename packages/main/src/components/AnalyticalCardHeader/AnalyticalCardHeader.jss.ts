@@ -12,8 +12,7 @@ const styles = {
     ...spacing.sapUiContentPadding,
     outlineOffset: '-0.125rem',
     boxShadow: ThemingParameters.sapContent_HeaderShadow,
-    //TODO use sapTile_SeparatorColor when available
-    borderBottom: `0.0625rem solid ${ThemingParameters.sapToolbar_SeparatorColor}`,
+    borderBottom: `0.0625rem solid ${ThemingParameters.sapTile_SeparatorColor}`,
     backgroundColor: ThemingParameters.sapTile_Background,
     fontFamily: ThemingParameters.sapFontHeaderFamily,
     '&:hover': {
