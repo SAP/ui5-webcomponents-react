@@ -19,13 +19,16 @@ import { GitHubLogo } from '../../../../../shared/stories/GitHub-Mark';
     ...createSelectArgTypes({
       design: BarDesign
     }),
-    ...DocsCommonProps
+    ...DocsCommonProps,
+    startContent: { control: { disable: true } },
+    middleContent: { control: { disable: true } },
+    endContent: { control: { disable: true } }
   }}
   args={{
     design: BarDesign.Header,
-    startContent: 'Content Left',
-    middleContent: 'Content Middle',
-    endContent: 'Content Right'
+    startContent: <span>Content Left</span>,
+    middleContent: <span>Content Middle</span>,
+    endContent: <span>Content Right</span>
   }}
 />
 

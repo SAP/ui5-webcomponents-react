@@ -1,9 +1,9 @@
 {
   "package": {
     "dependencies": {
-      "@ui5/webcomponents": "0.27.1",
-      "@ui5/webcomponents-fiori": "0.27.1",
-      "@ui5/webcomponents-icons": "0.27.1",
+      "@ui5/webcomponents": "0.27.2",
+      "@ui5/webcomponents-fiori": "0.27.2",
+      "@ui5/webcomponents-icons": "0.27.2",
       "@ui5/webcomponents-react": "^0.127.0",
       "@testing-library/jest-dom": "^5.11.4",
       "@testing-library/react": "^11.1.0",
