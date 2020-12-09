@@ -175,7 +175,7 @@ export const FilterDialog = (props) => {
   );
 
   const renderFooter = useCallback(() => {
-    return <Bar design={BarDesign.Footer} contentRight={footerContentRight} />;
+    return <Bar design={BarDesign.Footer} endContent={footerContentRight} />;
   }, [footerContentRight]);
 
   const renderHeader = useCallback(

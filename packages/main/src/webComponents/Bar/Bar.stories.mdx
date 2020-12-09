@@ -22,10 +22,10 @@ import { GitHubLogo } from '../../../../../shared/stories/GitHub-Mark';
     ...DocsCommonProps
   }}
   args={{
-    design: BarDesign.Auto,
-    contentLeft: 'Content Left',
-    contentMiddle: 'Content Middle',
-    contentRight: 'Content Right'
+    design: BarDesign.Header,
+    startContent: 'Content Left',
+    middleContent: 'Content Middle',
+    endContent: 'Content Right'
   }}
 />
 
@@ -61,7 +61,7 @@ import { GitHubLogo } from '../../../../../shared/stories/GitHub-Mark';
       return (
         <Bar
           {...args}
-          contentLeft={
+          startContent={
             <>
               <Button icon="nav-back" design={ButtonDesign.Transparent} />
               <img
@@ -71,8 +71,8 @@ import { GitHubLogo } from '../../../../../shared/stories/GitHub-Mark';
               />
             </>
           }
-          contentMiddle={<Title>Bar</Title>}
-          contentRight={
+          middleContent={<Title>Bar</Title>}
+          endContent={
             <>
               <Input placeholder="Search" />
               <Link style={{ marginLeft: '6px' }} href="https://github.com/SAP/ui5-webcomponents-react" target="_blank">

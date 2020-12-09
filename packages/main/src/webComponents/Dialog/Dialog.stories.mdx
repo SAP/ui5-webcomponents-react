@@ -155,8 +155,8 @@ Closing `Dialogs` works in the same way as opening them. So again an attached `r
           <Dialog
             {...args}
             ref={dialogRef}
-            header={<Bar contentMiddle={<Title>Dialog</Title>} contentRight={<Icon name="settings" />} />}
-            footer={<Bar contentRight={<Button onClick={handleClose}>Close</Button>} />}
+            header={<Bar middleContent={<Title>Dialog</Title>} endContent={<Icon name="settings" />} />}
+            footer={<Bar endContent={<Button onClick={handleClose}>Close</Button>} />}
           >
             <List>
               <StandardListItem info="3">List Item 1</StandardListItem>
