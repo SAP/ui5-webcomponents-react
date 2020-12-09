@@ -1,0 +1,69 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { AvatarGroup } from '@ui5/webcomponents-react/lib/AvatarGroup';
+import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
+import { AvatarGroupType } from '@ui5/webcomponents-react/lib/AvatarGroupType';
+import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
+
+<Meta
+  title="Data Display / AvatarGroup"
+  component={AvatarGroup}
+  argTypes={{
+    ...createSelectArgTypes({ avatarSize: AvatarSize, type: AvatarGroupType }),
+    ...DocsCommonProps,
+    children: { control: { disable: true } }
+  }}
+  args={{
+    avatarSize: AvatarSize.S,
+    type: AvatarGroupType.Group,
+    style: {},
+    className: '',
+    tooltip: '',
+    slot: '',
+    ref: null
+  }}
+/>
+
+<DocsHeader />
+
+<br />
+
+## Example
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return (
+        <AvatarGroup {...args}>
+          <Avatar icon="employee" />
+          <Avatar initials="JD" />
+          <Avatar image="https://sap.github.io/ui5-webcomponents/master/assets/images/avatars/woman_avatar_5.png" />
+          <Avatar image="https://sap.github.io/ui5-webcomponents/master/assets/images/avatars/man_avatar_3.png" />
+        </AvatarGroup>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Properties
+
+<ArgsTable story="." />
+
+## Responsive Behavior
+
+When the available space is less than the width required to display all avatars, an overflow visualization appears as a button placed at the end with the same shape and size as the avatars. The visualization displays the number of avatars that have overflowed and are not currently visible.
+
+## Usage
+
+Use the `AvatarGroup` if:
+
+- You want to display a group of avatars.
+- You want to display several avatars which have something in common.
+
+Do not use the `AvatarGroup` if:
+
+- You want to display a single avatar.
+- You want to display a gallery for simple images.
+- You want to use it for other visual content than avatars.
