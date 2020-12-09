@@ -5,6 +5,10 @@ import { FC, ReactNode } from 'react';
 
 export interface FlexibleColumnLayoutPropTypes extends WithWebComponentPropTypes {
   /**
+   * Defines the accessibility name for the `endColumn` region.
+   */
+  endColumnAccessibleName?: string;
+  /**
    * Defines the columns layout and their proportion.
    *
    * **Note:** The layout also depends on the screen size - one column for screens smaller than 900px, two columns between 900px and 1280px and three columns for sizes bigger than 1280px.
@@ -27,9 +31,17 @@ export interface FlexibleColumnLayoutPropTypes extends WithWebComponentPropTypes
    */
   layout?: FCLLayout;
   /**
+   * Defines the accessibility name for the `midColumn` region.
+   */
+  midColumnAccessibleName?: string;
+  /**
    * Defines the visibility of the arrows, used for expanding and shrinking the columns.
    */
   noArrows?: boolean;
+  /**
+   * Defines the accessibility name for the `startColumn` region.
+   */
+  startColumnAccessibleName?: string;
   /**
    * Defines the content in the end column.
    */
@@ -65,7 +77,7 @@ export interface FlexibleColumnLayoutPropTypes extends WithWebComponentPropTypes
  */
 const FlexibleColumnLayout: FC<FlexibleColumnLayoutPropTypes> = withWebComponent<FlexibleColumnLayoutPropTypes>(
   'ui5-flexible-column-layout',
-  ['layout'],
+  ['endColumnAccessibleName', 'layout', 'midColumnAccessibleName', 'startColumnAccessibleName'],
   ['noArrows'],
   ['endColumn', 'midColumn', 'startColumn'],
   ['layout-change']
