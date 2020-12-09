@@ -5,6 +5,22 @@ exports[`Bar Basic Test (generated) 1`] = `
   <ui5-bar
     design="Header"
     ui5-bar=""
-  />
+  >
+    <span
+      slot="endContent"
+    >
+      End Content
+    </span>
+    <span
+      slot="middleContent"
+    >
+      Middle Content
+    </span>
+    <span
+      slot="startContent"
+    >
+      Start Content
+    </span>
+  </ui5-bar>
 </DocumentFragment>
 `;

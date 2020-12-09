@@ -4,7 +4,13 @@ import React from 'react';
 
 describe('Bar', () => {
   test('Basic Test (generated)', () => {
-    const { asFragment } = render(<Bar />);
+    const { asFragment } = render(
+      <Bar
+        startContent={<span>Start Content</span>}
+        middleContent={<span>Middle Content</span>}
+        endContent={<span>End Content</span>}
+      />
+    );
     expect(asFragment()).toMatchSnapshot();
   });
 });
