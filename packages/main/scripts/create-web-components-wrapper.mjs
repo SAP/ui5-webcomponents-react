@@ -318,6 +318,12 @@ const getTypeScriptTypeForProperty = (property) => {
         tsType: 'AvatarFitType',
         isEnum: true
       };
+    case 'AvatarGroupType':
+      return {
+        importStatement: "import { AvatarGroupType } from '@ui5/webcomponents-react/lib/AvatarGroupType';",
+        tsType: 'AvatarGroupType',
+        isEnum: true
+      };
     case 'AvatarShape':
       return {
         importStatement: "import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';",
@@ -328,6 +334,12 @@ const getTypeScriptTypeForProperty = (property) => {
       return {
         importStatement: "import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';",
         tsType: 'AvatarSize',
+        isEnum: true
+      };
+    case 'BarDesign':
+      return {
+        importStatement: "import { BarDesign } from '@ui5/webcomponents-react/lib/BarDesign';",
+        tsType: 'BarDesign',
         isEnum: true
       };
     case 'BusyIndicatorSize':
