@@ -3,7 +3,7 @@ import { Bar } from '@ui5/webcomponents-react/lib/Bar';
 import React from 'react';
 
 describe('Bar', () => {
-  test('Basic Test (generated)', () => {
+  test.skip('Basic Test (generated)', () => {
     const { asFragment } = render(
       <Bar
         startContent={<span>Start Content</span>}
