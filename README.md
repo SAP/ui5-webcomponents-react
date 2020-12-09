@@ -5,7 +5,7 @@
     <source
       srcset="https://raw.githubusercontent.com/SAP/ui5-webcomponents-react/master/assets/Logo_Dark_Mode.png"
       media="(prefers-color-scheme: dark)">
-    <img src="https://raw.githubusercontent.com/SAP/ui5-webcomponents-react/master/assets/Logo.png" alt="UI5 Web Components for React Logo" />
+    <img src="https://raw.githubusercontent.com/SAP/ui5-webcomponents-react/master/assets/Logo.png" alt="UI5 Web Components for React Logo" >
   </picture>
 </p>
 <p align="center">
