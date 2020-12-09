@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Bar Basic Test (generated) 1`] = `
+<DocumentFragment>
+  <ui5-bar
+    design="Header"
+    ui5-bar=""
+  />
+</DocumentFragment>
+`;
