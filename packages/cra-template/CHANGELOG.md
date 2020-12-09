@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.127.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.12.2...v0.127.0) (2020-12-09)
+
+**Note:** Version bump only for package @ui5/cra-template-webcomponents-react
+
+
+
+
+
 # [0.12.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.11.4...v0.12.0) (2020-11-16)
 
 
