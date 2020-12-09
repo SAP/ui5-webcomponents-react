@@ -11942,7 +11942,7 @@ lowercase-keys@^2.0.0:
   resolved "https://registry.yarnpkg.com/lowercase-keys/-/lowercase-keys-2.0.0.tgz#2603e78b7b4b0006cbca2fbcc8a3202558ac9479"
   integrity sha512-tqNXrS78oMOE73NMxK4EMLQsQowWf8jKooH9g7xPavRT706R6bkQJ6DY2Te7QukaZsulxa30wQ7bk0pm4XiHmA==
 
-lowlight@^1.14.0:
+lowlight@^1.14.0, lowlight@^1.17.0:
   version "1.17.0"
   resolved "https://registry.yarnpkg.com/lowlight/-/lowlight-1.17.0.tgz#a1143b2fba8239df8cd5893f9fe97aaf8465af4a"
   integrity sha512-vmtBgYKD+QVNy7tIa7ulz5d//Il9R4MooOVh4nkOf9R9Cb/Dk5TXMSTieg/vDulkBkIWj59/BIlyFQxT9X1oAQ==
@@ -14887,13 +14887,13 @@ react-syntax-highlighter@^13.5.0:
     refractor "^3.1.0"
 
 react-syntax-highlighter@^15.2.1:
-  version "15.4.1"
-  resolved "https://registry.yarnpkg.com/react-syntax-highlighter/-/react-syntax-highlighter-15.4.1.tgz#33c9eb13992eaaf571670c9255df68b79b4257c1"
-  integrity sha512-9FxwY+DUbUtSfnnHpYFTgpWoySARiTXWUCtlSvJR0Y6KZ5TiQWhG6MlSIVyPOtHhwOZm9h0EH7wOsYmxhWo5sA==
+  version "15.4.2"
+  resolved "https://registry.yarnpkg.com/react-syntax-highlighter/-/react-syntax-highlighter-15.4.2.tgz#59c9bb513029228da389444669b19553eb51e705"
+  integrity sha512-7Ymlzv7bS/7gU11iEXTCrZfevhZvfQ1U67uPZDudOfNixkLrPMjqVnxSZ2dcKmnqlqBhsYm/kiPmOoVcvD//VA==
   dependencies:
     "@babel/runtime" "^7.3.1"
     highlight.js "^10.1.1"
-    lowlight "^1.14.0"
+    lowlight "^1.17.0"
     prismjs "^1.22.0"
     refractor "^3.2.0"
 
