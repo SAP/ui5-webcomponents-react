@@ -60,6 +60,10 @@ export interface AvatarPropTypes extends WithWebComponentPropTypes {
    */
   initials?: string;
   /**
+   * Defines if the avatar is interactive (focusable and pressable)
+   */
+  interactive?: boolean;
+  /**
    * Defines the shape of the `Avatar`.
    *
    * Available options are:
@@ -90,7 +94,7 @@ export interface AvatarPropTypes extends WithWebComponentPropTypes {
 const Avatar: FC<AvatarPropTypes> = withWebComponent<AvatarPropTypes>(
   'ui5-avatar',
   ['accessibleName', 'backgroundColor', 'icon', 'image', 'imageFitType', 'initials', 'shape', 'size'],
-  [],
+  ['interactive'],
   [],
   []
 );
@@ -100,6 +104,7 @@ Avatar.displayName = 'Avatar';
 Avatar.defaultProps = {
   backgroundColor: AvatarBackgroundColor.Accent6,
   imageFitType: AvatarFitType.Cover,
+  interactive: false,
   shape: AvatarShape.Circle,
   size: AvatarSize.S
 };
