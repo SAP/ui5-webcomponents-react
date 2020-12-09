@@ -1,6 +1,7 @@
 {
   "name": "@ui5/cra-template-webcomponents-react-seed",
   "version": "0.12.1",
+  "private": true,
   "keywords": [
     "react",
     "create-react-app",
