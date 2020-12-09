@@ -10,6 +10,8 @@ import { AnalyticalTableScrollMode } from './lib/AnalyticalTableScrollMode';
 import { Avatar } from './lib/Avatar';
 import { AvatarBackgroundColor } from './lib/AvatarBackgroundColor';
 import { AvatarFitType } from './lib/AvatarFitType';
+import { AvatarGroup } from './lib/AvatarGroup';
+import { AvatarGroupType } from './lib/AvatarGroupType';
 import { AvatarShape } from './lib/AvatarShape';
 import { AvatarSize } from './lib/AvatarSize';
 import { Badge } from './lib/Badge';
@@ -170,6 +172,8 @@ export {
   Avatar,
   AvatarBackgroundColor,
   AvatarFitType,
+  AvatarGroup,
+  AvatarGroupType,
   AvatarShape,
   AvatarSize,
   Badge,
