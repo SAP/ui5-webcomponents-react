@@ -72,10 +72,6 @@ export interface ComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Defines the icon to be displayed in the input field.
-   */
-  icon?: ReactNode | ReactNode[];
-  /**
    * Defines the value state message that will be displayed as pop up under the `ComboBox`.
    *
    * **Note:** If not specified, a default text (in the respective language) will be displayed.
@@ -103,7 +99,7 @@ const ComboBox: FC<ComboBoxPropTypes> = withWebComponent<ComboBoxPropTypes>(
   'ui5-combobox',
   ['filter', 'filterValue', 'placeholder', 'value', 'valueState'],
   ['disabled', 'loading', 'readonly', 'required'],
-  ['icon', 'valueStateMessage'],
+  ['valueStateMessage'],
   ['change', 'input']
 );
 

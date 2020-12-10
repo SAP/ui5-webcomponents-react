@@ -2,17 +2,13 @@ import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-
 import '@ui5/webcomponents/dist/Token';
 import { FC, ReactNode } from 'react';
 
-export interface TokenPropTypes extends Omit<WithWebComponentPropTypes, 'onSelect'> {
+export interface TokenPropTypes extends WithWebComponentPropTypes {
   /**
    * Defines whether the `Token` is read-only.
    *
    * **Note:** A read-only `Token` can not be deleted or selected, but still provides visual feedback upon user interaction.
    */
   readonly?: boolean;
-  /**
-   * Defines whether the `Token` is selected or not.
-   */
-  selected?: boolean;
   /**
    * Defines the text of the token.
    */
@@ -21,10 +17,6 @@ export interface TokenPropTypes extends Omit<WithWebComponentPropTypes, 'onSelec
    * Defines the close icon for the token. If nothing is provided to this slot, the default close icon will be used. Accepts `Icon`
    */
   closeIcon?: ReactNode | ReactNode[];
-  /**
-   * Fired when the a `Token` is selected by user interaction with mouse or clicking space.
-   */
-  onSelect?: (event: CustomEvent) => void;
 }
 
 /**
@@ -35,9 +27,9 @@ export interface TokenPropTypes extends Omit<WithWebComponentPropTypes, 'onSelec
 const Token: FC<TokenPropTypes> = withWebComponent<TokenPropTypes>(
   'ui5-token',
   ['text'],
-  ['readonly', 'selected'],
+  ['readonly'],
   ['closeIcon'],
-  ['select']
+  []
 );
 
 Token.displayName = 'Token';

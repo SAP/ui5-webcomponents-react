@@ -6,8 +6,6 @@ import { FC, ReactNode } from 'react';
 export interface FileUploaderPropTypes extends Omit<WithWebComponentPropTypes, 'onChange'> {
   /**
    * Comma-separated list of file types that the `FileUploader` should accept.
-   *
-   * **Note:** Please make sure you are adding the `.` in front on the file type, e.g. `.png` in case you want to accept png's only.
    */
   accept?: string;
   /**
@@ -57,13 +55,6 @@ export interface FileUploaderPropTypes extends Omit<WithWebComponentPropTypes, '
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Defines the value state message that will be displayed as pop up under the `FileUploader`.
-   *
-   * **Note:** If not specified, a default text (in the respective language) will be displayed.
-   * **Note:** The `valueStateMessage` would be displayed, when the `FileUploader` is in `Information`, `Warning` or `Error` value state.
-   */
-  valueStateMessage?: ReactNode | ReactNode[];
-  /**
    * Event is fired when the value of the file path has been changed. **Note:** Keep in mind that because of the HTML input element of type file, the event is also fired in Chrome browser when the Cancel button of the uploads window is pressed.
    */
   onChange?: (event: CustomEvent<{ files: FileList }>) => void;
@@ -80,7 +71,7 @@ const FileUploader: FC<FileUploaderPropTypes> = withWebComponent<FileUploaderPro
   'ui5-file-uploader',
   ['accept', 'name', 'placeholder', 'value', 'valueState'],
   ['disabled', 'hideInput', 'multiple'],
-  ['valueStateMessage'],
+  [],
   ['change']
 );
 

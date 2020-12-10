@@ -15,13 +15,11 @@ export interface IconPropTypes extends WithWebComponentPropTypes {
   interactive?: boolean;
   /**
    * Defines the unique identifier (icon name) of each `Icon`.
+   *
    * To browse all available icons, see the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
+   *
    * Example:
    * `name='add'`, `name='delete'`, `name='employee'`.
-   *
-   * **Note:** To use the SAP Fiori Tools icons, you need to set the `tnt` prefix in front of the icon's name.
-   * Example:
-   * `name='tnt/antenna'`, `name='tnt/actor'`, `name='tnt/api'`.
    */
   name?: string;
   /**
@@ -33,11 +31,7 @@ export interface IconPropTypes extends WithWebComponentPropTypes {
 /**
  * The `Icon` component represents an SVG icon. There are two main scenarios how the `Icon` component is used: as a purely decorative element; or as a visually appealing clickable area in the form of an icon button.
  *
- * A large set of built-in icons is available and they can be used by setting the `name` property on the `Icon`. But before using an icon, you need to import the desired icon.
- * For the standard icon collection, you have to import an icon from the `@ui5/webcomponents-icons` package:
- * `import "@ui5/webcomponents-icons/dist/employee.js";`
- * For the SAP Fiori Tools icon collection (supported since 1.0.0-rc.10), you have to import an icon from the `@ui5/webcomponents-icons-tnt` package:
- * `import "@ui5/webcomponents-icons-tnt/dist/antenna.js";`
+ * A large set of built-in icons is available and they can be used by setting the `name` property on the `Icon`.
  *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Icon" target="_blank">UI5 Web Components Playground</a>
  */

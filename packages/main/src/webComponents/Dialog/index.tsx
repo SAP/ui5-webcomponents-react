@@ -4,28 +4,15 @@ import { FC, ReactNode } from 'react';
 
 export interface DialogPropTypes extends WithWebComponentPropTypes {
   /**
-   * Determines whether the `Dialog` is draggable. If this property is set to true, the Dialog will be draggable by its header.
-   *
-   * **Note:** The `Dialog` can be draggable only in desktop mode.
-   */
-  draggable?: boolean;
-  /**
    * Defines the header text.
    *
    * **Note:** If `header` slot is provided, the `headerText` is ignored.
    */
   headerText?: string;
   /**
-   * Configures the `Dialog` to be resizable. If this property is set to true, the Dialog will have a resize handle in its bottom right corner in LTR languages. In RTL languages, the resize handle will be placed in the bottom left corner.
-   *
-   * **Note:** The `Dialog` can be resizable only in desktop mode.
-   * **Note:** Upon resizing, externally defined height and width styling will be ignored.
-   */
-  resizable?: boolean;
-  /**
    * Determines whether the `Dialog` should be stretched to fullscreen.
    *
-   * **Note:** The `Dialog` will be stretched to approximately 90% of the viewport.
+   * **Note:** The `Dialog` will be stretched to aproximetly 90% of the viewport.
    */
   stretch?: boolean;
   /**
@@ -76,7 +63,7 @@ export interface DialogPropTypes extends WithWebComponentPropTypes {
 const Dialog: FC<DialogPropTypes> = withWebComponent<DialogPropTypes>(
   'ui5-dialog',
   ['headerText', 'initialFocus'],
-  ['draggable', 'resizable', 'stretch', 'preventFocusRestore'],
+  ['stretch', 'preventFocusRestore'],
   ['footer', 'header'],
   ['after-close', 'after-open', 'before-close', 'before-open']
 );
@@ -84,8 +71,6 @@ const Dialog: FC<DialogPropTypes> = withWebComponent<DialogPropTypes>(
 Dialog.displayName = 'Dialog';
 
 Dialog.defaultProps = {
-  draggable: false,
-  resizable: false,
   stretch: false,
   preventFocusRestore: false
 };
