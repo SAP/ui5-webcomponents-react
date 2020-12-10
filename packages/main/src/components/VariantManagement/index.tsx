@@ -1,4 +1,4 @@
-import '@ui5/webcomponents-icons/dist/navigation-down-arrow';
+import '@ui5/webcomponents-icons/dist/icons/navigation-down-arrow';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { useI18nText } from '@ui5/webcomponents-react-base/lib/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
