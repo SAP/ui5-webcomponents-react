@@ -5,7 +5,7 @@ exports[`MessageBox Confirm - Cancel 1`] = `
   <ui5-dialog
     class="MessageBox-messageBox"
     opened=""
-    style="z-index: 114; display: flex; top: 384px; left: 512px;"
+    style="z-index: 114; display: block;"
     ui5-dialog=""
   >
     <footer
@@ -57,7 +57,7 @@ exports[`MessageBox Confirm 1`] = `
   <ui5-dialog
     class="MessageBox-messageBox"
     opened=""
-    style="z-index: 102; display: flex; top: 384px; left: 512px;"
+    style="z-index: 102; display: block;"
     ui5-dialog=""
   >
     <footer
@@ -159,7 +159,7 @@ exports[`MessageBox Don't crash on unknown type 1`] = `
   <ui5-dialog
     class="MessageBox-messageBox"
     opened=""
-    style="z-index: 122; display: flex; top: 384px; left: 512px;"
+    style="z-index: 122; display: block;"
     ui5-dialog=""
   >
     <footer
@@ -198,7 +198,7 @@ exports[`MessageBox Error 1`] = `
   <ui5-dialog
     class="MessageBox-messageBox"
     opened=""
-    style="z-index: 108; display: flex; top: 384px; left: 512px;"
+    style="z-index: 108; display: block;"
     ui5-dialog=""
   >
     <footer
@@ -243,7 +243,7 @@ exports[`MessageBox Highlight 1`] = `
   <ui5-dialog
     class="MessageBox-messageBox"
     opened=""
-    style="z-index: 112; display: flex; top: 384px; left: 512px;"
+    style="z-index: 112; display: block;"
     ui5-dialog=""
   >
     <footer
@@ -288,7 +288,7 @@ exports[`MessageBox Information 1`] = `
   <ui5-dialog
     class="MessageBox-messageBox"
     opened=""
-    style="z-index: 110; display: flex; top: 384px; left: 512px;"
+    style="z-index: 110; display: block;"
     ui5-dialog=""
   >
     <footer
@@ -333,7 +333,7 @@ exports[`MessageBox No Title 1`] = `
   <ui5-dialog
     class="MessageBox-messageBox"
     opened=""
-    style="z-index: 120; display: flex; top: 384px; left: 512px;"
+    style="z-index: 120; display: block;"
     ui5-dialog=""
   >
     <footer
@@ -428,7 +428,7 @@ exports[`MessageBox Show 1`] = `
   <ui5-dialog
     class="MessageBox-messageBox"
     opened=""
-    style="z-index: 116; display: flex; top: 384px; left: 512px;"
+    style="z-index: 116; display: block;"
     ui5-dialog=""
   >
     <footer
@@ -480,7 +480,7 @@ exports[`MessageBox Success 1`] = `
   <ui5-dialog
     class="MessageBox-messageBox"
     opened=""
-    style="z-index: 104; display: flex; top: 384px; left: 512px;"
+    style="z-index: 104; display: block;"
     ui5-dialog=""
   >
     <footer
@@ -525,7 +525,7 @@ exports[`MessageBox Success w/ custom title 1`] = `
   <ui5-dialog
     class="MessageBox-messageBox"
     opened=""
-    style="z-index: 118; display: flex; top: 384px; left: 512px;"
+    style="z-index: 118; display: block;"
     ui5-dialog=""
   >
     <footer
@@ -570,7 +570,7 @@ exports[`MessageBox Warning 1`] = `
   <ui5-dialog
     class="MessageBox-messageBox"
     opened=""
-    style="z-index: 106; display: flex; top: 384px; left: 512px;"
+    style="z-index: 106; display: block;"
     ui5-dialog=""
   >
     <footer
