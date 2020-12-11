@@ -6,7 +6,7 @@ import { FlexBox, FlexBoxAlignItems, FlexBoxDirection, FlexBoxWrap, Text } from 
 
 const PopInStyles = {
   container: {
-    maxWidth: '100%'
+    width: '100%'
   },
   defaultCell: {
     fontFamily: `${ThemingParameters.sapFontBoldFamily}`,
@@ -20,7 +20,7 @@ const PopInStyles = {
 };
 
 const useStyles = createUseStyles(PopInStyles, { name: 'PopIn' });
-//todo popintext
+//todo popintext, different contentToRender status (grouped, aggegeted, etc), hAlign
 export const PopIn = (instance) => {
   const { state, contentToRender, cell, row, internalRowHeight } = instance;
   const classes = useStyles();

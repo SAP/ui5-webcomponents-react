@@ -10,8 +10,6 @@ interface VerticalScrollbarProps {
   minRows: number;
   rows: any[];
   handleVerticalScrollBarScroll: any;
-
-  //todo
   popInRowHeight: number;
 }
 
