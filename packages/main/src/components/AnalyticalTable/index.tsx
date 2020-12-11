@@ -686,6 +686,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
               infiniteScrollThreshold={infiniteScrollThreshold}
               onLoadMore={onLoadMore}
               internalRowHeight={internalRowHeight}
+              popInRowHeight={popInRowHeight}
               rows={rows}
               handleExternalScroll={handleBodyScroll}
               visibleRows={internalVisibleRowCount}
