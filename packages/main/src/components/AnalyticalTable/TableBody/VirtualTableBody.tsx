@@ -23,7 +23,7 @@ interface VirtualTableBodyProps {
   renderRowSubComponent: (row?: any) => ReactNode;
 
   //todo
-  popInColumns: any;
+  popInRowHeight: any;
 }
 
 export const VirtualTableBody = (props: VirtualTableBodyProps) => {
@@ -43,7 +43,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     parentRef,
     overscanCountHorizontal,
     renderRowSubComponent,
-    popInColumns
+    popInRowHeight
   } = props;
 
   const rowSubComponentsHeight = useRef({});
@@ -61,12 +61,12 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
         if (renderRowSubComponent && rows[index].isExpanded && rowSubComponentsHeight.current.hasOwnProperty(index)) {
           return internalRowHeight + (rowSubComponentsHeight.current?.[index] ?? 0);
         }
-        if (popInColumns?.length > 0) {
-          return internalRowHeight + popInColumns.length * (internalRowHeight + 16);
+        if (popInRowHeight !== internalRowHeight) {
+          return popInRowHeight;
         }
         return internalRowHeight;
       },
-      [internalRowHeight, rows, renderRowSubComponent, popInColumns?.length]
+      [internalRowHeight, rows, renderRowSubComponent, popInRowHeight]
     ),
     overscan
   });
@@ -243,7 +243,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
               }
 
               //todo
-              hasPopIn.current = popInColumns?.length > 0 && index === 2;
+              hasPopIn.current = popInRowHeight !== internalRowHeight && index === 2;
               // console.log(hasPopIn);
               return (
                 <div

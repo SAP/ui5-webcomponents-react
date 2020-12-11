@@ -279,7 +279,7 @@ const useStyles = createComponentStyles(styles, { name: 'AnalyticalTable' });
  * It also provides several possibilities for working with the data, including sorting, filtering, grouping and aggregation.
  */
 const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<HTMLDivElement>) => {
-  //todo: scrollbar rowCountMode:Auto
+  //todo: rowCountMode: AUTO, INTERACTIVE
   const {
     columns,
     className,
@@ -417,6 +417,11 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     getComputedStyle(tableRef.current ?? document.body).getPropertyValue('--sapWcrAnalyticalTableRowHeight') || '44'
   );
   const internalRowHeight = rowHeight ?? calcRowHeight;
+  const popInRowHeight =
+    tableState?.popInColumns?.length > 0
+      ? internalRowHeight + tableState.popInColumns.length * (internalRowHeight + 16)
+      : internalRowHeight;
+
   const internalVisibleRowCount = tableState.visibleRows ?? visibleRows;
 
   // scroll bar detection
@@ -668,13 +673,13 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
             >
               <VirtualTableBody
                 classes={classes}
-                popInColumns={tableState?.popInColumns}
                 prepareRow={prepareRow}
                 rows={rows}
                 minRows={minRows}
                 reactWindowRef={reactWindowRef}
                 isTreeTable={isTreeTable}
                 internalRowHeight={internalRowHeight}
+                popInRowHeight={popInRowHeight}
                 visibleRows={internalVisibleRowCount}
                 alternateRowColor={alternateRowColor}
                 overscanCount={overscanCount}
@@ -691,6 +696,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
         {(tableState.isScrollable === undefined || tableState.isScrollable) && (
           <VerticalScrollbar
             internalRowHeight={internalRowHeight}
+            popInRowHeight={popInRowHeight}
             tableRef={tableRef}
             minRows={minRows}
             rows={rows}

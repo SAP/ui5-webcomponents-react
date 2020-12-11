@@ -10,10 +10,13 @@ interface VerticalScrollbarProps {
   minRows: number;
   rows: any[];
   handleVerticalScrollBarScroll: any;
+
+  //todo
+  popInRowHeight: number;
 }
 
 export const VerticalScrollbar = forwardRef((props: VerticalScrollbarProps, ref: Ref<HTMLDivElement>) => {
-  const { internalRowHeight, tableRef, minRows, rows, handleVerticalScrollBarScroll } = props;
+  const { internalRowHeight, tableRef, minRows, rows, handleVerticalScrollBarScroll, popInRowHeight } = props;
 
   const hasHorizontalScrollbar = tableRef?.current?.clientWidth !== tableRef?.current?.scrollWidth;
 
@@ -43,7 +46,7 @@ export const VerticalScrollbar = forwardRef((props: VerticalScrollbarProps, ref:
       >
         <div
           style={{
-            height: `${Math.max(minRows, rows.length) * internalRowHeight}px`,
+            height: `${Math.max(minRows, rows.length) * popInRowHeight}px`,
             width: '1px'
           }}
         />
