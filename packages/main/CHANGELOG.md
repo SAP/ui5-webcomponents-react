@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.127.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.127.0...v0.127.1) (2020-12-11)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** use correct import for useI18nText ([#1088](https://github.com/SAP/ui5-webcomponents-react/issues/1088)) ([c179e15](https://github.com/SAP/ui5-webcomponents-react/commit/c179e156d9c72796afcec8018f18e6d5bc5d5f7b))
+
+
+
+
+
 # [0.127.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.12.2...v0.127.0) (2020-12-09)
 
 
