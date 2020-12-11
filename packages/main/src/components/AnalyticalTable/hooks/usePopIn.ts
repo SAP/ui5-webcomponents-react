@@ -1,5 +1,3 @@
-import { useEffect } from 'react';
-
 const popInVisibleColumnsDeps = (deps, { instance: { state, webComponentsReactProperties } }) => {
   return [...deps, state.tableClientWidth];
 };
@@ -7,8 +5,12 @@ const popInVisibleColumnsDeps = (deps, { instance: { state, webComponentsReactPr
 const popInVisibleColumns = (cols, { instance }) => {
   const { state, dispatch } = instance;
 
+  const tableClientWidth = state.isScrollable
+    ? state?.tableClientWidth + 14 /*scrollbar width*/
+    : state?.tableClientWidth;
+
   const popInColumns = cols
-    .filter((item) => item.responsivePopIn && state?.tableClientWidth < item.responsiveMinWidth)
+    .filter((item) => item.responsivePopIn && tableClientWidth < item.responsiveMinWidth)
     .map((item) => ({ id: item.id ?? item.accessor, column: item }));
 
   dispatch({ type: 'SET_POPIN_COLUMNS', payload: popInColumns });
@@ -16,9 +18,8 @@ const popInVisibleColumns = (cols, { instance }) => {
   return cols.filter(
     (col) =>
       !popInColumns.some((item) => item.id === (col.id ?? col.accessor)) &&
-      (col.hasOwnProperty('responsiveMinWidth') ? state?.tableClientWidth >= col.responsiveMinWidth : true)
+      (col.hasOwnProperty('responsiveMinWidth') ? tableClientWidth >= col.responsiveMinWidth : true)
   );
-
 };
 
 export const usePopIn = (hooks) => {

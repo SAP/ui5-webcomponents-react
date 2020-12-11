@@ -47,7 +47,7 @@ import { TablePlaceholder } from './defaults/LoadingComponent/TablePlaceholder';
 import { DefaultNoDataComponent } from './defaults/NoDataComponent';
 import { useDragAndDrop } from './hooks/useDragAndDrop';
 import { useDynamicColumnWidths } from './hooks/useDynamicColumnWidths';
-import { usePopIn } from './hooks/usePopin';
+import { usePopIn } from './hooks/usePopIn';
 import { useRowHighlight } from './hooks/useRowHighlight';
 import { useRowSelectionColumn } from './hooks/useRowSelectionColumn';
 import { useSingleRowStateSelection } from './hooks/useSingleRowStateSelection';
