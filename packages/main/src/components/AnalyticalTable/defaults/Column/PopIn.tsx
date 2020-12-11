@@ -20,7 +20,7 @@ const PopInStyles = {
 };
 
 const useStyles = createUseStyles(PopInStyles, { name: 'PopIn' });
-
+//todo popintext
 export const PopIn = (instance) => {
   const { state, contentToRender, cell, row, internalRowHeight } = instance;
   const classes = useStyles();
@@ -43,7 +43,7 @@ export const PopIn = (instance) => {
             ? makeRenderer({ ...instance, ...popInInstanceProps }, item.column)(item.column.Header)
             : item.column.Header;
         return (
-          <FlexBox direction={FlexBoxDirection.Column}>
+          <FlexBox direction={FlexBoxDirection.Column} key={item.id}>
             {item.column?.Header && <div className={classes.header}>{Header}:</div>}
             <div style={{ height: internalRowHeight }}>
               {popInInstanceProps &&

@@ -423,14 +423,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
 
   const internalVisibleRowCount = tableState.visibleRows ?? visibleRows;
 
-  // scroll bar detection
-  useEffect(() => {
-    //todo show scrollbar in overflow also for popin
-    const visibleRowCount =
-      rows.length < internalVisibleRowCount ? Math.max(rows.length, minRows) : internalVisibleRowCount;
-    dispatch({ type: 'TABLE_SCROLLING_ENABLED', payload: { isScrollable: rows.length > visibleRowCount } });
-  }, [rows.length, minRows, internalVisibleRowCount]);
-
   const updateTableClientWidth = useCallback(() => {
     if (tableRef.current) {
       dispatch({ type: 'TABLE_RESIZE', payload: { tableClientWidth: tableRef.current.clientWidth } });
@@ -487,15 +479,15 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   }, [selectedRowIds]);
 
   useEffect(() => {
-    if (tableState?.withPopIn && (!tableState?.popInColumns || tableState?.popInColumns?.length === 0)) {
+    if (tableState?.interactiveRowsHavePopIn && (!tableState?.popInColumns || tableState?.popInColumns?.length === 0)) {
       dispatch({ type: 'WITH_POPIN', payload: false });
     }
-  }, [tableState?.withPopIn, tableState?.popInColumns?.length]);
+  }, [tableState?.interactiveRowsHavePopIn, tableState?.popInColumns?.length]);
 
   const tableBodyHeight = useMemo(() => {
     const rowNum = rows.length < internalVisibleRowCount ? Math.max(rows.length, minRows) : internalVisibleRowCount;
     const rowHeight =
-      visibleRowCountMode === TableVisibleRowCountMode.AUTO || tableState?.withPopIn
+      visibleRowCountMode === TableVisibleRowCountMode.AUTO || tableState?.interactiveRowsHavePopIn
         ? popInRowHeight
         : internalRowHeight;
     return rowHeight * rowNum;
@@ -506,8 +498,22 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     minRows,
     popInRowHeight,
     visibleRowCountMode,
-    tableState?.withPopIn
+    tableState?.interactiveRowsHavePopIn
   ]);
+
+  // scroll bar detection
+  useEffect(() => {
+    const visibleRowCount =
+      rows.length < internalVisibleRowCount ? Math.max(rows.length, minRows) : internalVisibleRowCount;
+    if (popInRowHeight !== internalRowHeight) {
+      dispatch({
+        type: 'TABLE_SCROLLING_ENABLED',
+        payload: { isScrollable: visibleRowCount * popInRowHeight > tableBodyHeight || rows.length > visibleRowCount }
+      });
+    } else {
+      dispatch({ type: 'TABLE_SCROLLING_ENABLED', payload: { isScrollable: rows.length > visibleRowCount } });
+    }
+  }, [rows.length, minRows, internalVisibleRowCount, popInRowHeight, tableBodyHeight]);
 
   const noDataStyles = useMemo(() => {
     return {

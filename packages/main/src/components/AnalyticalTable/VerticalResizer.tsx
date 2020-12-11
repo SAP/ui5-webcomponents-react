@@ -96,7 +96,7 @@ export const VerticalResizer = (props: VerticalResizerProps) => {
           popInRowHeight
       );
       if (hasPopInColumns) {
-        dispatch({ type: 'WITH_POPIN', payload: true });
+        dispatch({ type: 'INTERACTIVE_ROWS_HAVE_POPIN', payload: true });
       }
       dispatch({
         type: 'VISIBLE_ROWS',
