@@ -1,5 +1,6 @@
 export const stateReducer = (newState, action) => {
   const { payload } = action;
+
   switch (action.type) {
     case 'TABLE_RESIZE':
       return { ...newState, tableClientWidth: payload.tableClientWidth };
@@ -9,6 +10,8 @@ export const stateReducer = (newState, action) => {
       return { ...newState, isScrollable: payload.isScrollable };
     case 'SET_SELECTED_ROW_IDS':
       return { ...newState, selectedRowIds: payload.selectedRowIds };
+    case 'SET_POPIN_COLUMNS':
+      return { ...newState, popInColumns: payload };
     default:
       return newState;
   }

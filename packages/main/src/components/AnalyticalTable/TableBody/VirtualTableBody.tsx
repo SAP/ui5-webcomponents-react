@@ -21,6 +21,9 @@ interface VirtualTableBodyProps {
   parentRef: MutableRefObject<any>;
   overscanCountHorizontal: number;
   renderRowSubComponent: (row?: any) => ReactNode;
+
+  //todo
+  popInColumns: any;
 }
 
 export const VirtualTableBody = (props: VirtualTableBodyProps) => {
@@ -39,15 +42,17 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     visibleColumnsWidth,
     parentRef,
     overscanCountHorizontal,
-    renderRowSubComponent
+    renderRowSubComponent,
+    popInColumns
   } = props;
 
   const rowSubComponentsHeight = useRef({});
+  const hasPopIn = useRef(null);
 
   const itemCount = Math.max(minRows, rows.length);
   const overscan = overscanCount ? overscanCount : Math.floor(visibleRows / 2);
-
   const consolidatedParentRef = useConsolidatedRef(parentRef);
+  //todo sometimes doesn't rerenders rows
   const rowVirtualizer = useVirtual({
     size: itemCount,
     parentRef: consolidatedParentRef,
@@ -56,9 +61,12 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
         if (renderRowSubComponent && rows[index].isExpanded && rowSubComponentsHeight.current.hasOwnProperty(index)) {
           return internalRowHeight + (rowSubComponentsHeight.current?.[index] ?? 0);
         }
+        if (popInColumns?.length > 0) {
+          return internalRowHeight + popInColumns.length * (internalRowHeight + 16);
+        }
         return internalRowHeight;
       },
-      [internalRowHeight, rows, renderRowSubComponent]
+      [internalRowHeight, rows, renderRowSubComponent, popInColumns?.length]
     ),
     overscan
   });
@@ -207,7 +215,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
                 {RowSubComponent}
               </div>
             )}
-            {columnVirtualizer.virtualItems.map((virtualColumn) => {
+            {columnVirtualizer.virtualItems.map((virtualColumn, index) => {
               const cell = row.cells[virtualColumn.index];
               if (!cell) {
                 return null;
@@ -233,7 +241,10 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
               } else {
                 contentToRender = 'Cell';
               }
-              // eslint-disable-next-line react/jsx-key
+
+              //todo
+              hasPopIn.current = popInColumns?.length > 0 && index === 2;
+              // console.log(hasPopIn);
               return (
                 <div
                   {...cellProps}
@@ -246,7 +257,9 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
                     left: 0
                   }}
                 >
-                  {cell.render(contentToRender)}
+                  {hasPopIn.current
+                    ? cell.render('PopIn', { contentToRender, internalRowHeight, popIn: true })
+                    : cell.render(contentToRender)}
                 </div>
               );
             })}

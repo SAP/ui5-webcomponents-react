@@ -47,6 +47,7 @@ import { TablePlaceholder } from './defaults/LoadingComponent/TablePlaceholder';
 import { DefaultNoDataComponent } from './defaults/NoDataComponent';
 import { useDragAndDrop } from './hooks/useDragAndDrop';
 import { useDynamicColumnWidths } from './hooks/useDynamicColumnWidths';
+import { usePopIn } from './hooks/usePopin';
 import { useRowHighlight } from './hooks/useRowHighlight';
 import { useRowSelectionColumn } from './hooks/useRowSelectionColumn';
 import { useSingleRowStateSelection } from './hooks/useSingleRowStateSelection';
@@ -276,6 +277,7 @@ const useStyles = createComponentStyles(styles, { name: 'AnalyticalTable' });
  * It also provides several possibilities for working with the data, including sorting, filtering, grouping and aggregation.
  */
 const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<HTMLDivElement>) => {
+  //todo: scrollbar rowCountMode:Auto
   const {
     columns,
     className,
@@ -336,20 +338,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     return props.data;
   }, [props.data, minRows]);
 
-  const {
-    getTableProps,
-    headerGroups,
-    rows,
-    prepareRow,
-    state: tableState,
-    columns: tableInternalColumns,
-    setColumnOrder,
-    dispatch,
-    totalColumnsWidth,
-    visibleColumns,
-    visibleColumnsWidth,
-    setGroupBy
-  } = useTable(
+  const instance = useTable(
     {
       columns,
       data,
@@ -391,9 +380,27 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     useDynamicColumnWidths,
     useStyling,
     useToggleRowExpand,
+    usePopIn,
     useVisibleColumnsWidth,
     ...tableHooks
   );
+
+  const {
+    getTableProps,
+    headerGroups,
+    rows,
+    prepareRow,
+    state: tableState,
+    columns: tableInternalColumns,
+    setColumnOrder,
+    dispatch,
+    totalColumnsWidth,
+    visibleColumns,
+    visibleColumnsWidth,
+    setGroupBy
+  } = instance;
+
+  // console.log('index', tableState.hiddenColumns);
 
   const titleBarRef = useRef(null);
   const extensionRef = useRef(null);
@@ -660,6 +667,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
             >
               <VirtualTableBody
                 classes={classes}
+                popInColumns={tableState?.popInColumns}
                 prepareRow={prepareRow}
                 rows={rows}
                 minRows={minRows}

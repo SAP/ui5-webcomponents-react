@@ -27,14 +27,16 @@ import { useEffect, useRef, useState } from 'react';
   title="Data Display / AnalyticalTable"
   component={AnalyticalTable}
   args={{
-    data: generateData(1000),
+    data: generateData(100),
     columns: [
       {
         Header: 'Name',
         headerTooltip: 'Full Name', // A more extensive description!
-        accessor: 'name' // String-based value accessors!
+        accessor: 'name' // String-based value accessors!,
       },
+      { Header: 'Long', accessor: 'longColumn' },
       {
+        responsiveMinWidth: 200,
         Header: 'Age',
         accessor: 'age',
         hAlign: TextAlign.End,
@@ -43,14 +45,20 @@ import { useEffect, useRef, useState } from 'react';
         disableFilters: false,
         className: 'superCustomClass'
       },
+      { responsivePopIn: true, responsiveMinWidth: 400, Header: 'Friend Name', accessor: 'friend.name' },
       {
-        Header: 'Friend Name',
-        accessor: 'friend.name'
-      },
-      {
-        Header: () => <span>Friend Age</span>,
+        responsivePopIn: true,
+        responsiveMinWidth: 600,
+        Header: (instance) => {
+          //console.log('Header', instance);
+          return <span>Friend Age</span>;
+        },
         accessor: 'friend.age',
         hAlign: TextAlign.End,
+        Cell: (instance) => {
+          // console.log('renderer', instance);
+          return instance.value;
+        },
         filter: (rows, accessor, filterValue) => {
           if (filterValue === 'all') {
             return rows;
@@ -75,13 +83,14 @@ import { useEffect, useRef, useState } from 'react';
         }
       },
       {
+        //responsivePopIn: true,
+        responsiveMinWidth: 900,
         id: 'actions',
         Header: 'Actions',
         accessor: '.',
-        width: 100,
         canResize: false,
-        Cell: ({ cell, row }) => {
-          // console.log('This is your row data', row.original);
+        Cell: ({ cell, row, value }) => {
+          // console.log('This is your row data', row.original, cell, value);
           return (
             <FlexBox>
               <Button icon="edit" />
@@ -112,7 +121,7 @@ import { useEffect, useRef, useState } from 'react';
     selectionMode: TableSelectionMode.SINGLE_SELECT,
     selectionBehavior: TableSelectionBehavior.ROW,
     overscanCountHorizontal: 5,
-    visibleRowCountMode: TableVisibleRowCountMode.FIXED
+    visibleRowCountMode: TableVisibleRowCountMode.INTERACTIVE
   }}
   argTypes={{
     ...DocsCommonProps,
@@ -138,7 +147,13 @@ import { useEffect, useRef, useState } from 'react';
 ## Example
 
 <Canvas>
-  <Story name="Default">{(args) => <AnalyticalTable {...args} />}</Story>
+  <Story name="Default">
+    {(args) => (
+      <div style={{ height: '90vh' }}>
+        <AnalyticalTable {...args} reactTableOptions={{ initialState: { hiddenColumns: ['longColumn'] } }} />
+      </div>
+    )}
+  </Story>
 </Canvas>
 
 ## Properties

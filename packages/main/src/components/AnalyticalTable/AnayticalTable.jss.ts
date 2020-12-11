@@ -106,7 +106,9 @@ const styles = {
     }
   },
   tableCell: {
-    height: CssSizeVariables.sapWcrAnalyticalTableRowHeight,
+    //todo
+    // height: CssSizeVariables.sapWcrAnalyticalTableRowHeight,
+    height: '100%',
     boxSizing: 'border-box',
     borderRight: `1px solid ${ThemingParameters.sapList_BorderColor}`,
     display: 'inline-flex',

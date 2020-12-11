@@ -10,18 +10,22 @@ const approximateHeaderPxFromCharLength = (charLength) =>
   charLength < 15 ? Math.sqrt(charLength * 1500) : 8 * charLength;
 const approximateContentPxFromCharLength = (charLength) => 8 * charLength;
 
-const columnsDeps = (deps, { instance: { state, webComponentsReactProperties } }) => [
-  ...deps,
-  state.tableClientWidth,
-  webComponentsReactProperties.scaleWidthMode,
-  webComponentsReactProperties.loading
-];
+const columnsDeps = (deps, { instance: { state, webComponentsReactProperties, visibleColumns } }) => {
+  // console.log('deps', deps);
+  return [
+    ...deps,
+    state.tableClientWidth,
+    visibleColumns?.length,
+    webComponentsReactProperties.scaleWidthMode,
+    webComponentsReactProperties.loading
+  ];
+};
 
 const columns = (columns, { instance }) => {
   if (!instance.state || !instance.rows) {
     return columns;
   }
-
+  // console.log(instance, columns);
   const { rows, state } = instance;
 
   const { hiddenColumns, tableClientWidth: totalWidth } = state;
@@ -29,9 +33,48 @@ const columns = (columns, { instance }) => {
 
   if (columns.length === 0 || !totalWidth) return columns;
 
-  const visibleColumns = columns.filter(Boolean).filter((item) => {
-    return (item.isVisible ?? true) && !hiddenColumns.includes(item.accessor);
-  });
+  // const visCols = instance.visibleColumns;
+  // const visibleColumns = columns.filter(Boolean).filter((item) => {
+  //   return (item.isVisible ?? true) && !hiddenColumns.includes(item.accessor);
+  // });
+
+  //map columns to visibleColumns
+  const visibleColumns = instance.visibleColumns
+    .map((visCol) => {
+      const column = columns.find((col) => {
+        return (
+          col.id === visCol.id || (col.accessor !== undefined && visCol.id !== undefined && col.accessor === visCol.id)
+        );
+      });
+      if (column) {
+        return column;
+      }
+      return column ?? false;
+    })
+    .filter(Boolean);
+
+  // console.log(visibleColumns, instance.visibleColumns);
+
+  // const visibleColumns = instance.visibleColumns.map((item) => ({
+  //   ...item,
+  //   width: undefined,
+  //   minWidth: undefined,
+  //   maxWidth: undefined
+  // }));
+
+  // const visibleColumns = instance.visibleColumns.map((item) => {
+  //   console.log(item.id ?? item.accessor);
+  //   if (item.id !== '__ui5wcr__internal_highlight_column' && item.id !== '__ui5wcr__internal_selection_column') {
+  //     return {
+  //       ...item,
+  //       width: undefined,
+  //       minWidth: undefined,
+  //       maxWidth: undefined
+  //     };
+  //   }
+  //   return item;
+  // });
+  // console.log('----->', visibleColumns);
 
   const calculateDefaultTableWidth = () => {
     const columnsWithWidthProperties = visibleColumns
@@ -42,8 +85,10 @@ const columns = (columns, { instance }) => {
         width: column.width,
         maxWidth: column.maxWidth
       }));
+    // console.log('cols w/ width', columnsWithWidthProperties);
     let availableWidth = totalWidth;
     let defaultColumnsCount = visibleColumns.length;
+    // console.log('avail. width', availableWidth, 'col count', defaultColumnsCount);
     const columnsWithFixedWidth = columnsWithWidthProperties
       .map((column) => {
         const { width, minWidth, maxWidth, accessor } = column;
@@ -55,6 +100,7 @@ const columns = (columns, { instance }) => {
             width < 60
               ? 60
               : width;
+
           availableWidth -= acceptedWidth;
           defaultColumnsCount--;
           return acceptedWidth;
@@ -92,20 +138,31 @@ const columns = (columns, { instance }) => {
         return false;
       })
       .filter(Boolean);
+    // console.log('w/ fixed width', columnsWithFixedWidth);
 
     const fixedWidth = columnsWithFixedWidth.reduce((acc, val) => acc + val, 0);
 
     // check if columns are visible and table has width
     if (visibleColumns.length > 0 && totalWidth > 0) {
+      // console.log('cols visible && table has width');
       // set fixedWidth as defaultWidth if all visible columns have fixed value
       if (visibleColumns.length === columnsWithFixedWidth.length) {
+        // console.log('only fixed width');
         return fixedWidth / visibleColumns.length;
       }
       // spread default columns
       if (totalWidth >= fixedWidth + defaultColumnsCount * DEFAULT_COLUMN_WIDTH) {
+        // console.log(
+        //   'spread',
+        //   (totalWidth - fixedWidth) / defaultColumnsCount,
+        //   totalWidth,
+        //   fixedWidth,
+        //   defaultColumnsCount
+        // );
         return (totalWidth - fixedWidth) / defaultColumnsCount;
       }
     }
+    // console.log('default width');
     return DEFAULT_COLUMN_WIDTH;
   };
 
@@ -231,4 +288,7 @@ const columns = (columns, { instance }) => {
 export const useDynamicColumnWidths = (hooks) => {
   hooks.columns.push(columns);
   hooks.columnsDeps.push(columnsDeps);
+
+  // hooks.visibleColumns.push(columns);
+  // hooks.visibleColumnsDeps.push(columnsDeps);
 };
