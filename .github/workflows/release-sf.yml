@@ -1,10 +1,10 @@
-name: 'Release'
+name: 'Release - SuccessFactors'
 
 on:
   workflow_dispatch:
     inputs:
       release_type:
-        description: 'Release Type: patch | minor | major'
+        description: 'Release Type: major | minor | patch'
         required: true
         default: 'patch'
 
@@ -38,13 +38,8 @@ jobs:
           git config user.name ${{ secrets.BOT_GIT_USERNAME }}
 
           ${GITHUB_WORKSPACE}/node_modules/.bin/lerna publish ${{ github.event.inputs.release_type }} \
-            --conventional-graduate \
-            --create-release github
+            --dist-tag sf
         env:
           GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
-      - name: deploy docs
-        run: yarn deploy:storybook
-        env:
-          GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}

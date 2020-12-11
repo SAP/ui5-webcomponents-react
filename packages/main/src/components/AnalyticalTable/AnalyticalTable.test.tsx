@@ -1,4 +1,4 @@
-import { act, fireEvent, getByText, render, screen } from '@shared/tests';
+import { act, fireEvent, getByText, render, screen, getMouseEvent } from '@shared/tests';
 import { createPassThroughPropsTest } from '@shared/tests/utils';
 import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
 import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
@@ -376,7 +376,6 @@ describe('AnalyticalTable', () => {
 
     expect(tableBodyRef.scrollTop).toBe(2);
 
-    screen.debug(tableContainerRef, 9999999);
     act(() => {
       tableRef.current.horizontalScrollToItem(1, 'start');
     });
@@ -473,7 +472,7 @@ describe('AnalyticalTable', () => {
     );
 
     const tableContainer = screen.getByRole('grid', { hidden: true });
-    expect(tableContainer.getAttribute('data-per-page')).toBe('1');
+    expect(tableContainer.getAttribute('data-per-page')).toBe('2');
     expect(asFragment()).toMatchSnapshot();
 
     Object.defineProperties(window.HTMLElement.prototype, {
@@ -490,7 +489,7 @@ describe('AnalyticalTable', () => {
         visibleRowCountMode={TableVisibleRowCountMode.AUTO}
       />
     );
-    expect(tableContainer.getAttribute('data-per-page')).toBe('21');
+    expect(tableContainer.getAttribute('data-per-page')).toBe('22');
     expect(asFragment()).toMatchSnapshot();
 
     //test if visibleRows prop is ignored when row-count-mode is "Auto"
@@ -502,7 +501,7 @@ describe('AnalyticalTable', () => {
         visibleRows={1337}
       />
     );
-    expect(tableContainer.getAttribute('data-per-page')).toBe('21');
+    expect(tableContainer.getAttribute('data-per-page')).toBe('22');
 
     //test default visibleRow count
     rerender(
@@ -524,6 +523,48 @@ describe('AnalyticalTable', () => {
       />
     );
     expect(tableContainer.getAttribute('data-per-page')).toBe('1337');
+  });
+
+  test('resize vertically', () => {
+    Object.defineProperties(window.HTMLElement.prototype, {
+      clientHeight: {
+        value: 0,
+        configurable: true
+      }
+    });
+
+    render(
+      <AnalyticalTable
+        data={[...data, ...moreData]}
+        columns={columns}
+        visibleRowCountMode={TableVisibleRowCountMode.INTERACTIVE}
+      />
+    );
+    const tableContainer = screen.getByRole('grid', { hidden: true });
+    expect(tableContainer.getAttribute('data-per-page')).toBe('15');
+
+    const mouseDown = getMouseEvent('mousedown');
+    const mouseMove = getMouseEvent('mousemove');
+    const mouseUp = getMouseEvent('mouseup', {
+      pageY: 44
+    });
+    const mouseUp2 = getMouseEvent('mouseup', {
+      pageY: 500
+    });
+    fireEvent(screen.getByTitle('Drag to resize'), mouseDown);
+
+    fireEvent(document.body, mouseMove);
+    expect(document.body.lastChild).toHaveClass('VerticalResizer-resizer');
+    expect(document.body).toMatchSnapshot();
+
+    fireEvent(document.body, mouseUp);
+    expect(document.body.lastChild).not.toHaveClass('VerticalResizer-resizer');
+    expect(tableContainer.getAttribute('data-per-page')).toBe('0');
+
+    fireEvent(screen.getByTitle('Drag to resize'), mouseDown);
+    fireEvent(document.body, mouseMove);
+    fireEvent(document.body, mouseUp2);
+    expect(tableContainer.getAttribute('data-per-page')).toBe('11');
   });
 
   createPassThroughPropsTest(AnalyticalTable);
