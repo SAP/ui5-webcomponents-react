@@ -47,7 +47,6 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
   const rowSubComponentsHeight = useRef({});
 
   const itemCount = Math.max(minRows, rows.length);
-  //todo popin
   const overscan = overscanCount ? overscanCount : Math.floor(visibleRows / 2);
   const consolidatedParentRef = useConsolidatedRef(parentRef);
   //todo sometimes doesn't rerenders rows
@@ -261,8 +260,8 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
                     left: 0
                   }}
                 >
-                  { popInRowHeight !== internalRowHeight && popInColumn.id === cell.column.id
-                    ? cell.render('PopIn', { contentToRender, internalRowHeight, popIn: true })
+                  {popInRowHeight !== internalRowHeight && popInColumn.id === cell.column.id
+                    ? cell.render('PopIn', { contentToRender, internalRowHeight })
                     : cell.render(contentToRender)}
                 </div>
               );

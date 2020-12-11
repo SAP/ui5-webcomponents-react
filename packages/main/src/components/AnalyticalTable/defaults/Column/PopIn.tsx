@@ -20,7 +20,7 @@ const PopInStyles = {
 };
 
 const useStyles = createUseStyles(PopInStyles, { name: 'PopIn' });
-//todo popintext, different contentToRender status (grouped, aggegeted, etc), hAlign
+//todo different contentToRender status (grouped, aggegeted, etc), hAlign
 export const PopIn = (instance) => {
   const { state, contentToRender, cell, row, internalRowHeight } = instance;
   const classes = useStyles();
@@ -38,17 +38,23 @@ export const PopIn = (instance) => {
       </FlexBox>
       {state.popInColumns?.map((item) => {
         const popInInstanceProps = row.allCells.find((cell) => cell.column.id === item.id);
-        const Header =
-          typeof item.column.Header === 'function'
+        const renderHeader = () => {
+          if (item.column.PopInHeader) {
+            return typeof item.column.PopInHeader === 'function'
+              ? item.column.PopInHeader({ ...instance, ...popInInstanceProps })
+              : item.column.PopInHeader;
+          }
+          return typeof item.column.Header === 'function'
             ? makeRenderer({ ...instance, ...popInInstanceProps }, item.column)(item.column.Header)
             : item.column.Header;
+        };
         return (
           <FlexBox direction={FlexBoxDirection.Column} key={item.id}>
-            {item.column?.Header && <div className={classes.header}>{Header}:</div>}
+            {item.column?.Header && <div className={classes.header}>{renderHeader()}:</div>}
             <div style={{ height: internalRowHeight }}>
               {popInInstanceProps &&
                 (item.column?.Cell
-                  ? makeRenderer({ ...instance, ...popInInstanceProps }, item.column)(item.column.Cell)
+                  ? makeRenderer({ ...instance, ...popInInstanceProps, isPopIn: true }, item.column)(item.column.Cell)
                   : <Text wrapping={false}>{popInInstanceProps.value}</Text> ?? null)}
             </div>
           </FlexBox>
