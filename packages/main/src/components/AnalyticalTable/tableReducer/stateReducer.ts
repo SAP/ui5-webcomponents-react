@@ -12,6 +12,8 @@ export const stateReducer = (newState, action) => {
       return { ...newState, selectedRowIds: payload.selectedRowIds };
     case 'SET_POPIN_COLUMNS':
       return { ...newState, popInColumns: payload };
+    case 'WITH_POPIN':
+      return { ...newState, withPopIn: payload };
     default:
       return newState;
   }

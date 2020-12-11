@@ -279,7 +279,6 @@ const useStyles = createComponentStyles(styles, { name: 'AnalyticalTable' });
  * It also provides several possibilities for working with the data, including sorting, filtering, grouping and aggregation.
  */
 const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<HTMLDivElement>) => {
-  //todo: rowCountMode: AUTO, INTERACTIVE
   const {
     columns,
     className,
@@ -426,6 +425,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
 
   // scroll bar detection
   useEffect(() => {
+    //todo show scrollbar in overflow also for popin
     const visibleRowCount =
       rows.length < internalVisibleRowCount ? Math.max(rows.length, minRows) : internalVisibleRowCount;
     dispatch({ type: 'TABLE_SCROLLING_ENABLED', payload: { isScrollable: rows.length > visibleRowCount } });
@@ -440,19 +440,14 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   const updateRowsCount = useCallback(() => {
     if (visibleRowCountMode === TableVisibleRowCountMode.AUTO && analyticalTableRef.current?.parentElement) {
       const rowCount = Math.floor(
-        ((analyticalTableRef.current?.parentElement?.clientHeight ?? 0) - extensionsHeight) / internalRowHeight
+        ((analyticalTableRef.current?.parentElement?.clientHeight ?? 0) - extensionsHeight) / popInRowHeight
       );
       dispatch({
         type: 'VISIBLE_ROWS',
         payload: { visibleRows: rowCount }
       });
     }
-  }, [
-    analyticalTableRef.current?.parentElement?.clientHeight,
-    extensionsHeight,
-    internalRowHeight,
-    visibleRowCountMode
-  ]);
+  }, [analyticalTableRef.current?.parentElement?.clientHeight, extensionsHeight, popInRowHeight, visibleRowCountMode]);
 
   useEffect(() => {
     const tableWidthObserver = new ResizeObserver(debounce(updateTableClientWidth, 500));
@@ -491,10 +486,28 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     dispatch({ type: 'SET_SELECTED_ROW_IDS', payload: { selectedRowIds } });
   }, [selectedRowIds]);
 
+  useEffect(() => {
+    if (tableState?.withPopIn && (!tableState?.popInColumns || tableState?.popInColumns?.length === 0)) {
+      dispatch({ type: 'WITH_POPIN', payload: false });
+    }
+  }, [tableState?.withPopIn, tableState?.popInColumns?.length]);
+
   const tableBodyHeight = useMemo(() => {
     const rowNum = rows.length < internalVisibleRowCount ? Math.max(rows.length, minRows) : internalVisibleRowCount;
-    return internalRowHeight * rowNum;
-  }, [internalRowHeight, rows.length, internalVisibleRowCount, minRows]);
+    const rowHeight =
+      visibleRowCountMode === TableVisibleRowCountMode.AUTO || tableState?.withPopIn
+        ? popInRowHeight
+        : internalRowHeight;
+    return rowHeight * rowNum;
+  }, [
+    internalRowHeight,
+    rows.length,
+    internalVisibleRowCount,
+    minRows,
+    popInRowHeight,
+    visibleRowCountMode,
+    tableState?.withPopIn
+  ]);
 
   const noDataStyles = useMemo(() => {
     return {
@@ -707,6 +720,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       </FlexBox>
       {visibleRowCountMode === TableVisibleRowCountMode.INTERACTIVE && (
         <VerticalResizer
+          popInRowHeight={popInRowHeight}
+          hasPopInColumns={tableState?.popInColumns?.length > 0}
           analyticalTableRef={analyticalTableRef}
           dispatch={dispatch}
           extensionsHeight={extensionsHeight}

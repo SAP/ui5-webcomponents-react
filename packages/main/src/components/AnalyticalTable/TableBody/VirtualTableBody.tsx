@@ -50,6 +50,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
   const hasPopIn = useRef(null);
 
   const itemCount = Math.max(minRows, rows.length);
+  //todo popin
   const overscan = overscanCount ? overscanCount : Math.floor(visibleRows / 2);
   const consolidatedParentRef = useConsolidatedRef(parentRef);
   //todo sometimes doesn't rerenders rows
