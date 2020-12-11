@@ -49,7 +49,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
   const itemCount = Math.max(minRows, rows.length);
   const overscan = overscanCount ? overscanCount : Math.floor(visibleRows / 2);
   const consolidatedParentRef = useConsolidatedRef(parentRef);
-  //todo sometimes doesn't rerenders rows
+
   const rowVirtualizer = useVirtual({
     size: itemCount,
     parentRef: consolidatedParentRef,

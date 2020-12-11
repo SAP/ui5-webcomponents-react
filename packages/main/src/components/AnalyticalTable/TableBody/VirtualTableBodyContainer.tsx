@@ -29,7 +29,7 @@ export const VirtualTableBodyContainer = (props) => {
 
   const lastScrollTop = useRef(0);
   const firedInfiniteLoadEvents = useRef(new Set());
-  //todo infinite scrolling with popin
+
   const onScroll = useCallback(
     (event) => {
       handleExternalScroll();

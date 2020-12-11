@@ -339,7 +339,20 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     return props.data;
   }, [props.data, minRows]);
 
-  const instance = useTable(
+  const {
+    getTableProps,
+    headerGroups,
+    rows,
+    prepareRow,
+    state: tableState,
+    columns: tableInternalColumns,
+    setColumnOrder,
+    dispatch,
+    totalColumnsWidth,
+    visibleColumns,
+    visibleColumnsWidth,
+    setGroupBy
+  } = useTable(
     {
       columns,
       data,
@@ -385,23 +398,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     useVisibleColumnsWidth,
     ...tableHooks
   );
-
-  const {
-    getTableProps,
-    headerGroups,
-    rows,
-    prepareRow,
-    state: tableState,
-    columns: tableInternalColumns,
-    setColumnOrder,
-    dispatch,
-    totalColumnsWidth,
-    visibleColumns,
-    visibleColumnsWidth,
-    setGroupBy
-  } = instance;
-
-  // console.log('index', tableState.hiddenColumns);
 
   const titleBarRef = useRef(null);
   const extensionRef = useRef(null);
