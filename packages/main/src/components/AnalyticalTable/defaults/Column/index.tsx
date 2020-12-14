@@ -3,6 +3,7 @@ import { DefaultFilterComponent } from '../FilterComponent';
 import { Cell } from './Cell';
 import { Expandable } from './Expandable';
 import { Grouped } from './Grouped';
+import { PopIn } from './PopIn';
 import { RepeatedValue } from './RepeatedValue';
 
 export const DEFAULT_COLUMN_WIDTH = 60;
@@ -21,5 +22,6 @@ export const DefaultColumn = {
   Grouped: Grouped,
   Cell: Cell,
   Expandable: Expandable,
-  RepeatedValue: RepeatedValue
+  RepeatedValue: RepeatedValue,
+  PopIn: PopIn
 };

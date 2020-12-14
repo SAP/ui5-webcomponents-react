@@ -42,6 +42,8 @@ interface VerticalResizerProps {
   dispatch: (e: { type: string; payload?: any }) => void;
   extensionsHeight: number;
   internalRowHeight: number;
+  hasPopInColumns: boolean;
+  popInRowHeight: number;
 }
 
 const isTouchEvent = (e, touchEvent) => {
@@ -52,7 +54,7 @@ const isTouchEvent = (e, touchEvent) => {
 };
 
 export const VerticalResizer = (props: VerticalResizerProps) => {
-  const { analyticalTableRef, dispatch, extensionsHeight, internalRowHeight } = props;
+  const { analyticalTableRef, dispatch, extensionsHeight, internalRowHeight, hasPopInColumns, popInRowHeight } = props;
   const classes = useStyles();
   const startY = useRef(null);
   const verticalResizerRef = useRef(null);
@@ -91,8 +93,11 @@ export const VerticalResizer = (props: VerticalResizerProps) => {
           startY.current -
           extensionsHeight -
           5) /*resizer height*/ /
-          internalRowHeight
+          popInRowHeight
       );
+      if (hasPopInColumns) {
+        dispatch({ type: 'INTERACTIVE_ROWS_HAVE_POPIN', payload: true });
+      }
       dispatch({
         type: 'VISIBLE_ROWS',
         payload: { visibleRows: rowCount }
@@ -134,6 +139,12 @@ export const VerticalResizer = (props: VerticalResizerProps) => {
       setResizerPosition({ left: resizerPosLeft, top: resizerPosTop, width: resizerPosWidth });
     }
   }, [verticalResizerRef.current?.getBoundingClientRect()?.top, isDragging]);
+
+  useEffect(() => {
+    return () => {
+      dispatch({ type: 'WITH_POPIN', payload: false });
+    };
+  }, []);
 
   return (
     <div

@@ -47,6 +47,7 @@ import { TablePlaceholder } from './defaults/LoadingComponent/TablePlaceholder';
 import { DefaultNoDataComponent } from './defaults/NoDataComponent';
 import { useDragAndDrop } from './hooks/useDragAndDrop';
 import { useDynamicColumnWidths } from './hooks/useDynamicColumnWidths';
+import { usePopIn } from './hooks/usePopIn';
 import { useRowHighlight } from './hooks/useRowHighlight';
 import { useRowSelectionColumn } from './hooks/useRowSelectionColumn';
 import { useSingleRowStateSelection } from './hooks/useSingleRowStateSelection';
@@ -393,6 +394,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     useDynamicColumnWidths,
     useStyling,
     useToggleRowExpand,
+    usePopIn,
     useVisibleColumnsWidth,
     ...tableHooks
   );
@@ -410,14 +412,12 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     getComputedStyle(tableRef.current ?? document.body).getPropertyValue('--sapWcrAnalyticalTableRowHeight') || '44'
   );
   const internalRowHeight = rowHeight ?? calcRowHeight;
-  const internalVisibleRowCount = tableState.visibleRows ?? visibleRows;
+  const popInRowHeight =
+    tableState?.popInColumns?.length > 0
+      ? internalRowHeight + tableState.popInColumns.length * (internalRowHeight + 16)
+      : internalRowHeight;
 
-  // scroll bar detection
-  useEffect(() => {
-    const visibleRowCount =
-      rows.length < internalVisibleRowCount ? Math.max(rows.length, minRows) : internalVisibleRowCount;
-    dispatch({ type: 'TABLE_SCROLLING_ENABLED', payload: { isScrollable: rows.length > visibleRowCount } });
-  }, [rows.length, minRows, internalVisibleRowCount]);
+  const internalVisibleRowCount = tableState.visibleRows ?? visibleRows;
 
   const updateTableClientWidth = useCallback(() => {
     if (tableRef.current) {
@@ -428,19 +428,14 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   const updateRowsCount = useCallback(() => {
     if (visibleRowCountMode === TableVisibleRowCountMode.AUTO && analyticalTableRef.current?.parentElement) {
       const rowCount = Math.floor(
-        ((analyticalTableRef.current?.parentElement?.clientHeight ?? 0) - extensionsHeight) / internalRowHeight
+        ((analyticalTableRef.current?.parentElement?.clientHeight ?? 0) - extensionsHeight) / popInRowHeight
       );
       dispatch({
         type: 'VISIBLE_ROWS',
         payload: { visibleRows: rowCount }
       });
     }
-  }, [
-    analyticalTableRef.current?.parentElement?.clientHeight,
-    extensionsHeight,
-    internalRowHeight,
-    visibleRowCountMode
-  ]);
+  }, [analyticalTableRef.current?.parentElement?.clientHeight, extensionsHeight, popInRowHeight, visibleRowCountMode]);
 
   useEffect(() => {
     const tableWidthObserver = new ResizeObserver(debounce(updateTableClientWidth, 500));
@@ -479,10 +474,42 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     dispatch({ type: 'SET_SELECTED_ROW_IDS', payload: { selectedRowIds } });
   }, [selectedRowIds]);
 
+  useEffect(() => {
+    if (tableState?.interactiveRowsHavePopIn && (!tableState?.popInColumns || tableState?.popInColumns?.length === 0)) {
+      dispatch({ type: 'WITH_POPIN', payload: false });
+    }
+  }, [tableState?.interactiveRowsHavePopIn, tableState?.popInColumns?.length]);
+
   const tableBodyHeight = useMemo(() => {
     const rowNum = rows.length < internalVisibleRowCount ? Math.max(rows.length, minRows) : internalVisibleRowCount;
-    return internalRowHeight * rowNum;
-  }, [internalRowHeight, rows.length, internalVisibleRowCount, minRows]);
+    const rowHeight =
+      visibleRowCountMode === TableVisibleRowCountMode.AUTO || tableState?.interactiveRowsHavePopIn
+        ? popInRowHeight
+        : internalRowHeight;
+    return rowHeight * rowNum;
+  }, [
+    internalRowHeight,
+    rows.length,
+    internalVisibleRowCount,
+    minRows,
+    popInRowHeight,
+    visibleRowCountMode,
+    tableState?.interactiveRowsHavePopIn
+  ]);
+
+  // scroll bar detection
+  useEffect(() => {
+    const visibleRowCount =
+      rows.length < internalVisibleRowCount ? Math.max(rows.length, minRows) : internalVisibleRowCount;
+    if (popInRowHeight !== internalRowHeight) {
+      dispatch({
+        type: 'TABLE_SCROLLING_ENABLED',
+        payload: { isScrollable: visibleRowCount * popInRowHeight > tableBodyHeight || rows.length > visibleRowCount }
+      });
+    } else {
+      dispatch({ type: 'TABLE_SCROLLING_ENABLED', payload: { isScrollable: rows.length > visibleRowCount } });
+    }
+  }, [rows.length, minRows, internalVisibleRowCount, popInRowHeight, tableBodyHeight]);
 
   const noDataStyles = useMemo(() => {
     return {
@@ -655,6 +682,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
               infiniteScrollThreshold={infiniteScrollThreshold}
               onLoadMore={onLoadMore}
               internalRowHeight={internalRowHeight}
+              popInRowHeight={popInRowHeight}
               rows={rows}
               handleExternalScroll={handleBodyScroll}
               visibleRows={internalVisibleRowCount}
@@ -667,6 +695,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
                 reactWindowRef={reactWindowRef}
                 isTreeTable={isTreeTable}
                 internalRowHeight={internalRowHeight}
+                popInRowHeight={popInRowHeight}
                 visibleRows={internalVisibleRowCount}
                 alternateRowColor={alternateRowColor}
                 overscanCount={overscanCount}
@@ -683,6 +712,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
         {(tableState.isScrollable === undefined || tableState.isScrollable) && (
           <VerticalScrollbar
             internalRowHeight={internalRowHeight}
+            popInRowHeight={popInRowHeight}
             tableRef={tableRef}
             minRows={minRows}
             rows={rows}
@@ -693,6 +723,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       </FlexBox>
       {visibleRowCountMode === TableVisibleRowCountMode.INTERACTIVE && (
         <VerticalResizer
+          popInRowHeight={popInRowHeight}
+          hasPopInColumns={tableState?.popInColumns?.length > 0}
           analyticalTableRef={analyticalTableRef}
           dispatch={dispatch}
           extensionsHeight={extensionsHeight}

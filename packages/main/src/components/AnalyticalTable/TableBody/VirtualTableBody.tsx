@@ -1,7 +1,7 @@
 import '@ui5/webcomponents-icons/dist/navigation-down-arrow';
 import '@ui5/webcomponents-icons/dist/navigation-right-arrow';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
-import React, { MutableRefObject, ReactNode, useCallback, useRef, useState } from 'react';
+import React, { MutableRefObject, ReactNode, useCallback, useMemo, useRef } from 'react';
 import { useVirtual } from 'react-virtual';
 
 interface VirtualTableBodyProps {
@@ -21,6 +21,7 @@ interface VirtualTableBodyProps {
   parentRef: MutableRefObject<any>;
   overscanCountHorizontal: number;
   renderRowSubComponent: (row?: any) => ReactNode;
+  popInRowHeight: number;
 }
 
 export const VirtualTableBody = (props: VirtualTableBodyProps) => {
@@ -39,26 +40,28 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     visibleColumnsWidth,
     parentRef,
     overscanCountHorizontal,
-    renderRowSubComponent
+    renderRowSubComponent,
+    popInRowHeight
   } = props;
 
   const rowSubComponentsHeight = useRef({});
 
   const itemCount = Math.max(minRows, rows.length);
   const overscan = overscanCount ? overscanCount : Math.floor(visibleRows / 2);
-
   const consolidatedParentRef = useConsolidatedRef(parentRef);
+  const rowHeight = popInRowHeight !== internalRowHeight ? popInRowHeight : internalRowHeight;
+
   const rowVirtualizer = useVirtual({
     size: itemCount,
     parentRef: consolidatedParentRef,
     estimateSize: React.useCallback(
       (index) => {
         if (renderRowSubComponent && rows[index].isExpanded && rowSubComponentsHeight.current.hasOwnProperty(index)) {
-          return internalRowHeight + (rowSubComponentsHeight.current?.[index] ?? 0);
+          return rowHeight + (rowSubComponentsHeight.current?.[index] ?? 0);
         }
-        return internalRowHeight;
+        return rowHeight;
       },
-      [internalRowHeight, rows, renderRowSubComponent]
+      [rowHeight, rows, renderRowSubComponent]
     ),
     overscan
   });
@@ -153,6 +156,14 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     [currentlyFocusedCell]
   );
 
+  const popInColumn = useMemo(
+    () =>
+      visibleColumns.filter(
+        (item) => item.id !== '__ui5wcr__internal_highlight_column' && item.id !== '__ui5wcr__internal_selection_column'
+      )[0],
+    [visibleColumns]
+  );
+
   return (
     <div
       tabIndex={0}
@@ -190,7 +201,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
           <div
             {...rowProps}
             style={{
-              height: `${virtualRow.size}px`,
+              height: `${rowHeight}px`,
               transform: `translateY(${virtualRow.start}px)`,
               position: 'absolute'
             }}
@@ -199,7 +210,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
               <div
                 ref={setSubcomponentsRefs}
                 style={{
-                  transform: `translateY(${internalRowHeight}px)`,
+                  transform: `translateY(${rowHeight}px)`,
                   position: 'absolute',
                   width: '100%'
                 }}
@@ -207,8 +218,9 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
                 {RowSubComponent}
               </div>
             )}
-            {columnVirtualizer.virtualItems.map((virtualColumn) => {
+            {columnVirtualizer.virtualItems.map((virtualColumn, index) => {
               const cell = row.cells[virtualColumn.index];
+
               if (!cell) {
                 return null;
               }
@@ -233,7 +245,6 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
               } else {
                 contentToRender = 'Cell';
               }
-              // eslint-disable-next-line react/jsx-key
               return (
                 <div
                   {...cellProps}
@@ -246,7 +257,9 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
                     left: 0
                   }}
                 >
-                  {cell.render(contentToRender)}
+                  {popInRowHeight !== internalRowHeight && popInColumn.id === cell.column.id
+                    ? cell.render('PopIn', { contentToRender, internalRowHeight })
+                    : cell.render(contentToRender)}
                 </div>
               );
             })}
