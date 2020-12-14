@@ -27,6 +27,7 @@ const useStyles = createUseStyles(PopInStyles, { name: 'PopIn' });
 
 export const PopIn = (instance) => {
   const { state, contentToRender, cell, row, internalRowHeight } = instance;
+
   const classes = useStyles();
   return (
     <FlexBox direction={FlexBoxDirection.Column} className={classes.container}>

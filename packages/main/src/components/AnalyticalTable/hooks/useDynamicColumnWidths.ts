@@ -17,7 +17,7 @@ const columnsDeps = (deps, { instance: { state, webComponentsReactProperties, vi
   webComponentsReactProperties.scaleWidthMode,
   webComponentsReactProperties.loading
 ];
-//todo Smart, Grow
+
 const columns = (columns, { instance }) => {
   if (!instance.state || !instance.rows) {
     return columns;

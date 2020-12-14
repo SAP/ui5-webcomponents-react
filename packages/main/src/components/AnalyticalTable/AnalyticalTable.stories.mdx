@@ -563,7 +563,7 @@ In the example below you can have a look at this behavior:
           responsivePopIn: true,
           responsiveMinWidth: 401,
           Header: 'Friend Name',
-          PopInHeader: () => {
+          PopInHeader: (instance) => {
             return <div style={{ color: 'red' }}>Friend Name (custom)</div>;
           },
           accessor: 'friend.name'
@@ -581,7 +581,6 @@ In the example below you can have a look at this behavior:
           width: 100,
           canResize: false,
           Cell: (instance) => {
-            console.log(instance);
             return (
               <FlexBox>
                 <Button icon="edit" />
