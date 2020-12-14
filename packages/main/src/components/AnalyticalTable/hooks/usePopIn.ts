@@ -1,6 +1,4 @@
-const popInVisibleColumnsDeps = (deps, { instance: { state, webComponentsReactProperties } }) => {
-  return [...deps, state.tableClientWidth];
-};
+const popInVisibleColumnsDeps = (deps, { instance: { state } }) => [...deps, state.tableClientWidth];
 
 const popInVisibleColumns = (cols, { instance }) => {
   const { state, dispatch } = instance;

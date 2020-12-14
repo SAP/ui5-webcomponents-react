@@ -49,6 +49,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
   const itemCount = Math.max(minRows, rows.length);
   const overscan = overscanCount ? overscanCount : Math.floor(visibleRows / 2);
   const consolidatedParentRef = useConsolidatedRef(parentRef);
+  const rowHeight = popInRowHeight !== internalRowHeight ? popInRowHeight : internalRowHeight;
 
   const rowVirtualizer = useVirtual({
     size: itemCount,
@@ -56,14 +57,11 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     estimateSize: React.useCallback(
       (index) => {
         if (renderRowSubComponent && rows[index].isExpanded && rowSubComponentsHeight.current.hasOwnProperty(index)) {
-          return internalRowHeight + (rowSubComponentsHeight.current?.[index] ?? 0);
+          return rowHeight + (rowSubComponentsHeight.current?.[index] ?? 0);
         }
-        if (popInRowHeight !== internalRowHeight) {
-          return popInRowHeight;
-        }
-        return internalRowHeight;
+        return rowHeight;
       },
-      [internalRowHeight, rows, renderRowSubComponent, popInRowHeight]
+      [rowHeight, rows, renderRowSubComponent]
     ),
     overscan
   });
@@ -199,12 +197,11 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
         prepareRow(row);
         const rowProps = row.getRowProps();
         const RowSubComponent = typeof renderRowSubComponent === 'function' ? renderRowSubComponent(row) : null;
-
         return (
           <div
             {...rowProps}
             style={{
-              height: `${virtualRow.size}px`,
+              height: `${rowHeight}px`,
               transform: `translateY(${virtualRow.start}px)`,
               position: 'absolute'
             }}
@@ -213,7 +210,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
               <div
                 ref={setSubcomponentsRefs}
                 style={{
-                  transform: `translateY(${internalRowHeight}px)`,
+                  transform: `translateY(${rowHeight}px)`,
                   position: 'absolute',
                   width: '100%'
                 }}
