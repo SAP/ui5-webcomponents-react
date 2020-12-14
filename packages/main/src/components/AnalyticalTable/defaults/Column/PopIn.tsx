@@ -58,15 +58,28 @@ export const PopIn = (instance) => {
               ? makeRenderer({ ...instance, ...popInInstanceProps }, item.column)(item.column.Header)
               : item.column.Header;
           };
+          const renderCell = () => {
+            if (item.column?.Cell) {
+              const cell = item.column.Cell;
+              if (typeof cell === 'string') {
+                return (
+                  <Text wrapping={false} tooltip={cell}>
+                    {cell}
+                  </Text>
+                );
+              }
+              return makeRenderer({ ...instance, ...popInInstanceProps, isPopIn: true }, item.column)(item.column.Cell);
+            }
+            return popInInstanceProps?.value ? (
+              <Text wrapping={false} tooltip={popInInstanceProps.value}>
+                {popInInstanceProps.value}
+              </Text>
+            ) : null;
+          };
           return (
             <FlexBox direction={FlexBoxDirection.Column} key={item.id}>
               {item.column?.Header && <div className={classes.header}>{renderHeader()}:</div>}
-              <div style={{ height: internalRowHeight }}>
-                {popInInstanceProps &&
-                  (item.column?.Cell
-                    ? makeRenderer({ ...instance, ...popInInstanceProps, isPopIn: true }, item.column)(item.column.Cell)
-                    : <Text wrapping={false}>{popInInstanceProps.value}</Text> ?? null)}
-              </div>
+              <div style={{ height: internalRowHeight }}>{popInInstanceProps && renderCell()}</div>
             </FlexBox>
           );
         })}
