@@ -16,7 +16,9 @@ const popInVisibleColumns = (cols, { instance }) => {
   return cols.filter(
     (col) =>
       !popInColumns.some((item) => item.id === (col.id ?? col.accessor)) &&
-      (col.hasOwnProperty('responsiveMinWidth') ? tableClientWidth >= col.responsiveMinWidth : true)
+      (col.hasOwnProperty('responsiveMinWidth')
+        ? !tableClientWidth || tableClientWidth >= col.responsiveMinWidth
+        : true)
   );
 };
 

@@ -72,7 +72,6 @@ const columns = (columns, { instance }) => {
           defaultColumnsCount--;
           return acceptedWidth;
         }
-
         const columnsWithMaxWidth = columnsWithWidthProperties.filter((item) => item.maxWidth);
         const aggregatedColumnsMaxWidth = columnsWithMaxWidth.reduce((acc, cur) => acc + cur.maxWidth, 0);
         const aggregatedColumnsMinWidth = columnsWithWidthProperties
@@ -83,7 +82,7 @@ const columns = (columns, { instance }) => {
           // don't apply minWidth if enough space is available because of maxWidth properties
           if (
             availableWidth - aggregatedColumnsMaxWidth >
-            aggregatedColumnsMinWidth + (columns.length - columnsWithWidthProperties.length) * 60
+            aggregatedColumnsMinWidth + (visibleColumns.length - columnsWithWidthProperties.length) * 60
           ) {
             // apply minWidth only if it's larger than the calculated available width
             if (minWidth > (availableWidth - aggregatedColumnsMaxWidth) / columnsWithMaxWidth.length) {
@@ -132,7 +131,7 @@ const columns = (columns, { instance }) => {
 
   const columnMeta = visibleColumns.reduce((acc, column) => {
     if (column.id === '__ui5wcr__internal_selection_column' || column.id === '__ui5wcr__internal_highlight_column') {
-      acc[column.accessor] = {
+      acc[column.id ?? column.accessor] = {
         minHeaderWidth: column.width,
         fullWidth: column.width,
         contentCharAvg: 0
@@ -146,7 +145,7 @@ const columns = (columns, { instance }) => {
     const contentMaxCharLength = Math.max(
       headerLength,
       ...rowSample.map((row) => {
-        const dataPoint = row.values?.[column.accessor];
+        const dataPoint = row.values?.[column.id ?? column.accessor];
         if (dataPoint) {
           if (typeof dataPoint === 'string') return dataPoint.length;
           if (typeof dataPoint === 'number') return (dataPoint + '').length;
@@ -158,7 +157,7 @@ const columns = (columns, { instance }) => {
     // avg character length
     const contentCharAvg =
       rowSample.reduce((acc, item) => {
-        const dataPoint = item.values?.[column.accessor];
+        const dataPoint = item.values?.[column.id ?? column.accessor];
         let val = 0;
         if (dataPoint) {
           if (typeof dataPoint === 'string') val = dataPoint.length;
@@ -169,7 +168,7 @@ const columns = (columns, { instance }) => {
 
     const minHeaderWidth = approximateHeaderPxFromCharLength(headerLength);
 
-    acc[column.accessor] = {
+    acc[column.id ?? column.accessor] = {
       minHeaderWidth,
       fullWidth: Math.max(minHeaderWidth, approximateContentPxFromCharLength(contentMaxCharLength)),
       contentCharAvg
@@ -183,7 +182,7 @@ const columns = (columns, { instance }) => {
   ) as number;
 
   let reservedWidth = visibleColumns.reduce((acc, column) => {
-    const { minHeaderWidth, fullWidth } = columnMeta[column.accessor];
+    const { minHeaderWidth, fullWidth } = columnMeta[column.id ?? column.accessor];
     return (
       acc +
         Math.max(
@@ -200,16 +199,17 @@ const columns = (columns, { instance }) => {
   if (scaleWidthMode === TableScaleWidthMode.Smart || availableWidth > 0) {
     if (scaleWidthMode === TableScaleWidthMode.Grow) {
       reservedWidth = visibleColumns.reduce((acc, column) => {
-        const { minHeaderWidth } = columnMeta[column.accessor];
+        const { minHeaderWidth } = columnMeta[column.id ?? column.accessor];
         return acc + Math.max(column.minWidth || 0, column.width || 0, minHeaderWidth || 0) || 0;
       }, 0);
       availableWidth = totalWidth - reservedWidth;
     }
 
     return columns.map((column) => {
-      const isColumnVisible = (column.isVisible ?? true) && !hiddenColumns.includes(column.accessor);
-      if (isColumnVisible) {
-        const { minHeaderWidth, contentCharAvg } = columnMeta[column.accessor];
+      const isColumnVisible = (column.isVisible ?? true) && !hiddenColumns.includes(column.id ?? column.accessor);
+      const meta = columnMeta[column.id ?? column.accessor];
+      if (isColumnVisible && meta) {
+        const { minHeaderWidth, contentCharAvg } = meta;
         const additionalSpaceFactor = totalCharNum > 0 ? contentCharAvg / totalCharNum : 1 / visibleColumns.length;
 
         const targetWidth = additionalSpaceFactor * availableWidth + minHeaderWidth;
@@ -227,9 +227,10 @@ const columns = (columns, { instance }) => {
 
   // TableScaleWidthMode Grow
   return columns.map((column) => {
-    const isColumnVisible = (column.isVisible ?? true) && !hiddenColumns.includes(column.accessor);
-    if (isColumnVisible) {
-      const { fullWidth } = columnMeta[column.accessor];
+    const isColumnVisible = (column.isVisible ?? true) && !hiddenColumns.includes(column.id ?? column.accessor);
+    const meta = columnMeta[column.id ?? column.accessor];
+    if (isColumnVisible && meta) {
+      const { fullWidth } = meta;
       return {
         ...column,
         width: column.width ?? fullWidth,
