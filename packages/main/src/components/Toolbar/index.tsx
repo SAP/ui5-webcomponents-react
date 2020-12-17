@@ -50,12 +50,6 @@ export interface ToolbarProptypes extends Omit<CommonProps, 'onClick'> {
    */
   active?: boolean;
   /**
-   * __`onToolbarClick` is deprecated and will be removed in the next major release. Please use `onClick` instead.__
-   *
-   * Fired when the user clicks on the `Toolbar`, if the `active` prop is set to "true".
-   */
-  onToolbarClick?: (event: CustomEvent) => void;
-  /**
    * Fired when the user clicks on the `Toolbar`, if the `active` prop is set to "true".
    */
   onClick?: (event: CustomEvent) => void;
@@ -68,13 +62,13 @@ export interface ToolbarProptypes extends Omit<CommonProps, 'onClick'> {
  * It can be accessed by the user through the overflow button that opens it in a popover.
  */
 const Toolbar: FC<ToolbarProptypes> = forwardRef((props: ToolbarProptypes, ref: Ref<HTMLDivElement>) => {
-  const { children, toolbarStyle, design, active, style, tooltip, className, onToolbarClick, onClick, slot } = props;
+  const { children, toolbarStyle, design, active, style, tooltip, className, onClick, slot } = props;
   const classes = useStyles(styles);
   const outerContainer: RefObject<HTMLDivElement> = useConsolidatedRef(ref);
   const controlMetaData = useRef([]);
   const [lastVisibleIndex, setLastVisibleIndex] = useState<number>(null);
 
-  const passThroughProps = usePassThroughHtmlProps(props, ['onToolbarClick', 'onClick']);
+  const passThroughProps = usePassThroughHtmlProps(props, ['onClick']);
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
@@ -195,25 +189,13 @@ const Toolbar: FC<ToolbarProptypes> = forwardRef((props: ToolbarProptypes, ref: 
     calculateVisibleItems();
   }, [calculateVisibleItems]);
 
-  useEffect(() => {
-    if (onToolbarClick) {
-      deprecationNotice(
-        'onToolbarClick',
-        "'onToolbarClick' is deprecated and will be removed in the next major release.\nPlease use 'onClick' instead."
-      );
-    }
-  }, [onToolbarClick]);
-
   const handleToolbarClick = useCallback(
     (e) => {
-      if (active && typeof onToolbarClick === 'function') {
-        onToolbarClick(enrichEventWithDetails(e));
-      }
       if (active && typeof onClick === 'function') {
         onClick(enrichEventWithDetails(e));
       }
     },
-    [onToolbarClick, onClick, active]
+    [onClick, active]
   );
 
   return (
