@@ -1,5 +1,6 @@
 import { getRTL } from '@ui5/webcomponents-base/dist/config/RTL';
 import { getTheme } from '@ui5/webcomponents-base/dist/config/Theme';
+import { fetchI18nBundle } from '@ui5/webcomponents-base/dist/i18nBundle';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { cssVariablesStyles } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
 import { useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base/lib/hooks';
@@ -58,6 +59,7 @@ const ThemeProvider: FC<ThemeProviderProps> = (props: ThemeProviderProps) => {
   useIsomorphicLayoutEffect(() => {
     initRangeSet();
     initRangeSet(RANGESETS.SAP_STANDARD_EXTENDED);
+    fetchI18nBundle('@ui5/webcomponents-react');
   }, []);
 
   return <ReactJssThemeProvider theme={themeContext}>{children}</ReactJssThemeProvider>;

@@ -1,5 +1,5 @@
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
-import { useI18nText, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/hooks';
+import { useI18nBundle, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { DEVIATION, TARGET } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
@@ -171,7 +171,7 @@ export const AnalyticalCardHeader: FC<AnalyticalCardHeaderPropTypes> = forwardRe
 
     const passThroughProps = usePassThroughHtmlProps(props, ['onHeaderPress']);
 
-    const [targetText, deviationText] = useI18nText('@ui5/webcomponents-react', TARGET, DEVIATION);
+    const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
     return (
       <div
@@ -217,7 +217,7 @@ export const AnalyticalCardHeader: FC<AnalyticalCardHeaderPropTypes> = forwardRe
                     className={classes.targetAndDeviationColumn}
                     wrap={FlexBoxWrap.NoWrap}
                   >
-                    <span>{targetText}</span>
+                    <span>{i18nBundle.getText(TARGET)}</span>
                     <span className={classes.targetAndDeviationValue}>{target}</span>
                   </FlexBox>
                 )}
@@ -227,7 +227,7 @@ export const AnalyticalCardHeader: FC<AnalyticalCardHeaderPropTypes> = forwardRe
                     className={classes.targetAndDeviationColumn}
                     wrap={FlexBoxWrap.NoWrap}
                   >
-                    <span>{deviationText}</span>
+                    <span>{i18nBundle.getText(DEVIATION)}</span>
                     <span className={classes.targetAndDeviationValue}>{deviation}</span>
                   </FlexBox>
                 )}

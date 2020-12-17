@@ -1,7 +1,7 @@
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { useI18nBundle } from '@ui5/webcomponents-react-base/lib/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
-import { useI18nText } from '@ui5/webcomponents-react-base/lib/hooks';
 import { PLEASE_WAIT } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { LoaderType } from '@ui5/webcomponents-react/lib/LoaderType';
 import React, { CSSProperties, FC, forwardRef, RefObject, useEffect, useMemo, useState } from 'react';
@@ -63,7 +63,7 @@ const Loader: FC<LoaderProps> = forwardRef((props: LoaderProps, ref: RefObject<H
 
   const passThroughProps = usePassThroughHtmlProps(props);
 
-  const [pleaseWait] = useI18nText('@ui5/webcomponents-react', PLEASE_WAIT);
+  const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
   if (!isVisible) {
     return null;
@@ -76,7 +76,7 @@ const Loader: FC<LoaderProps> = forwardRef((props: LoaderProps, ref: RefObject<H
       data-component-name="Loader"
       aria-busy="true"
       role="progressbar"
-      title={tooltip || pleaseWait}
+      title={tooltip || i18nBundle.getText(PLEASE_WAIT)}
       slot={slot}
       style={inlineStyles}
       {...passThroughProps}
