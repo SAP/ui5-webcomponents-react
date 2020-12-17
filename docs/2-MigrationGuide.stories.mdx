@@ -14,11 +14,35 @@ or the [changelog](https://github.com/SAP/ui5-webcomponents-react/blob/master/CH
 
 ## Table of Contents
 
+- [0.13.x to 0.14.0](#migrating-from-013x-to-0140)
 - [0.12.x to 0.13.0](#migrating-from-012x-to-0130)
 - [0.11.x to 0.12.0](#migrating-from-011x-to-0120)
 - [0.10.x to 0.11.0](#migrating-from-010x-to-0110)
 - [0.9.x to 0.10.0](#migrating-from-09x-to-0100)
 - [0.8.x to 0.9.0](#migrating-from-08x-to-090)
+
+## Migrating from 0.13.x to 0.14.0
+
+<br />
+
+### Deleted Hooks
+
+The `useI18nText` hook has been removed and replaced by the `useI18nBundle` hook. <br />
+Migration Path:
+
+```js
+import { useI18nText } from '@ui5/webcomponents-react-base/lib/hooks';
+// ...
+const [pleaseWaitText, withParameters] = useI18nText('myApp', 'PLEASE_WAIT', ['CAROUSEL_DOT_TEXT', 5, 20]);
+
+// becomes
+
+import { useI18nBundle } from '@ui5/webcomponents-react-base/lib/hooks';
+// ...
+const i18nBundle = useI18nBundle('myApp');
+const pleaseWaitText = i18nBundle.getText('PLEASE_WAIT');
+const withParameters = i18nBundle.getText('CAROUSEL_DOT_TEXT', 5, 20);
+```
 
 ## Migrating from 0.12.x to 0.13.0
 

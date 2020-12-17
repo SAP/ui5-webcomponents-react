@@ -3,6 +3,7 @@ import { fetchI18nBundle, getI18nBundle } from '@ui5/webcomponents-base/dist/i18
 import { attachLanguageChange, detachLanguageChange } from '@ui5/webcomponents-base/dist/locale/languageChange';
 import { useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base/lib/hooks';
 import { useEffect, useState } from 'react';
+import { deprecationNotice } from '@ui5/webcomponents-react-base/lib/Utils';
 
 type TextWithDefault = { key: string; defaultText: string } | string;
 type TextWithPlaceholders = [TextWithDefault, ...string[]];
@@ -24,6 +25,14 @@ const resolveTranslations = (bundle, texts) => {
 export const useI18nText = (bundleName: string, ...texts: (TextWithDefault | TextWithPlaceholders)[]): string[] => {
   const i18nBundle: I18nBundle = getI18nBundle(bundleName);
   const [translations, setTranslations] = useState(resolveTranslations(i18nBundle, texts));
+
+  useEffect(() => {
+    deprecationNotice(
+      'useI18nText',
+      `'useI18nText' is deprecated and will be removed in the next release. Please use 'useI18nBundle' instead.
+A Migration Guide can be found here: https://sap.github.io/ui5-webcomponents-react/?path=/docs/migration-guide--page#migrating-from-013x-to-0140`
+    );
+  }, []);
 
   useEffect(() => {
     let didCancel = false;
