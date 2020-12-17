@@ -22,13 +22,13 @@ import { ToolbarSpacer } from '@ui5/webcomponents-react/lib/ToolbarSpacer';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
 import { useState } from 'react';
-import '@ui5/webcomponents-icons/dist/icons/decline.js';
-import '@ui5/webcomponents-icons/dist/icons/video.js';
-import '@ui5/webcomponents-icons/dist/icons/person-placeholder.js';
+import '@ui5/webcomponents-icons/dist/decline.js';
+import '@ui5/webcomponents-icons/dist/video.js';
+import '@ui5/webcomponents-icons/dist/person-placeholder.js';
 import { sapUiContentPadding } from '@ui5/webcomponents-react-base/lib/spacing';
 
 <Meta
-  title="UI5 Web Components / FlexibleColumnLayout"
+  title="Layouts & Floorplans / FlexibleColumnLayout"
   component={FlexibleColumnLayout}
   argTypes={{
     ...createSelectArgTypes({ layout: FCLLayout }),
@@ -48,6 +48,10 @@ import { sapUiContentPadding } from '@ui5/webcomponents-react-base/lib/spacing';
 />
 
 <DocsHeader />
+
+<br />
+
+## Example
 
 <Canvas>
   <Story name="Default">
@@ -83,17 +87,21 @@ import { sapUiContentPadding } from '@ui5/webcomponents-react-base/lib/spacing';
   </Story>
 </Canvas>
 
+## Properties
+
 <ArgsTable story="." />
-<div style={{ fontFamily: 'var(--sapFontFamily)', fontSize: 'var(--sapFontSize)', color: 'var(--sapTextColor)' }}>
-  <h3>Usage</h3>
-  Use this component for applications that need to display several logical levels of related information side by side (e.g.
-  list of items, item, sub-item, etc.). The Component is flexible in a sense that the application can focus the user's attention
-  on one particular column.
-</div>
+
+## Usage
+
+Use this component for applications that need to display several logical levels of related information side by side (e.g. list of items, item, sub-item, etc.). The Component is flexible in a sense that the application can focus the user's attention on one particular column.
+
+## Responsive Behavior
+
+The `FlexibleColumnLayout` automatically displays the maximum possible number of columns based on `layout` property and the window size. The component would display 1 column for window size smaller than 900px, up to two columns between 900px and 1280px, and 3 columns for sizes bigger than 1280px.
 
 <br />
 
-# Stories
+# More Examples
 
 <br />
 

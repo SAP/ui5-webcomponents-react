@@ -1,5 +1,5 @@
-import '@ui5/webcomponents-icons/dist/icons/decline';
-import { useI18nText } from '@ui5/webcomponents-react-base/lib/hooks';
+import '@ui5/webcomponents-icons/dist/decline';
+import { useI18nBundle } from '@ui5/webcomponents-react-base/lib/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import {
@@ -45,14 +45,13 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
 
   const { Filter } = column;
 
-  const [clearSortingText, sortAscendingText, sortDescendingText, groupText, ungroupText] = useI18nText(
-    '@ui5/webcomponents-react',
-    CLEAR_SORTING,
-    SORT_ASCENDING,
-    SORT_DESCENDING,
-    GROUP,
-    UNGROUP
-  );
+  const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
+
+  const clearSortingText = i18nBundle.getText(CLEAR_SORTING);
+  const sortAscendingText = i18nBundle.getText(SORT_ASCENDING);
+  const sortDescendingText = i18nBundle.getText(SORT_DESCENDING);
+  const groupText = i18nBundle.getText(GROUP);
+  const ungroupText = i18nBundle.getText(UNGROUP);
 
   const handleSort = useCallback(
     (e) => {

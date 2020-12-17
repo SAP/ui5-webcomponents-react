@@ -6,7 +6,7 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
-  title="UI5 Web Components / ProgressIndicator"
+  title="Data Display / ProgressIndicator"
   component={ProgressIndicator}
   argTypes={{
     ...createSelectArgTypes({ valueState: ValueState }),
@@ -25,6 +25,10 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <DocsHeader />
 
+<br />
+
+## Example
+
 <Canvas>
   <Story name="Default">
     {(args) => {
@@ -33,13 +37,11 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
   </Story>
 </Canvas>
 
+## Properties
+
 <ArgsTable story="." />
-<div style={{ fontFamily: 'var(--sapFontFamily)', fontSize: 'var(--sapFontSize)', color: 'var(--sapTextColor)' }}>
-  <h3>Responsive Behavior</h3>
-  You can change the size of the Rating Indicator by changing its <code>width</code> or <code>height</code> CSS properties.{' '}
-  <br />
-  Example:
-  <code>&lt;ProgressIndicator style=&#123;&#123;height: '2rem', width: '6rem'&#125;&#125;>&lt;/ProgressIndicator></code>
-  For the
-  <code>ProgressIndicator</code>
-</div>
+
+## Responsive Behavior
+
+You can change the size of the Rating Indicator by changing its `width` or `height` CSS properties.  
+Example: `<ProgressIndicator style={{height: "2rem", width: "6rem"}} />` For the `ProgressIndicator`

@@ -193,6 +193,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
       {...passThroughProps}
     >
       <ColumnChartLib
+        stackOffset="sign"
         margin={marginChart}
         data={dataset}
         barGap={chartConfig.barGap}
@@ -305,6 +306,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
             height={20}
           />
         )}
+        {props.children}
       </ColumnChartLib>
     </ChartContainer>
   );

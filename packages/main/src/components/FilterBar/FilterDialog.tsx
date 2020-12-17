@@ -1,6 +1,6 @@
-import '@ui5/webcomponents-icons/dist/icons/search';
+import '@ui5/webcomponents-icons/dist/search';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
-import { useI18nText } from '@ui5/webcomponents-react-base/lib/hooks';
+import { useI18nBundle } from '@ui5/webcomponents-react-base/lib/hooks';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import {
   BASIC,
@@ -62,24 +62,15 @@ export const FilterDialog = (props) => {
   const dialogRefs = useRef({});
   const dialogRef = useRef<Ui5DialogDomRef>();
 
-  const [
-    basicText,
-    cancelText,
-    clearText,
-    restoreText,
-    saveText,
-    searchForFiltersText,
-    showOnFilterBarText
-  ] = useI18nText(
-    '@ui5/webcomponents-react',
-    BASIC,
-    CANCEL,
-    CLEAR,
-    RESTORE,
-    SAVE,
-    SEARCH_FOR_FILTERS,
-    SHOW_ON_FILTER_BAR
-  );
+  const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
+
+  const basicText = i18nBundle.getText(BASIC);
+  const cancelText = i18nBundle.getText(CANCEL);
+  const clearText = i18nBundle.getText(CLEAR);
+  const restoreText = i18nBundle.getText(RESTORE);
+  const saveText = i18nBundle.getText(SAVE);
+  const searchForFiltersText = i18nBundle.getText(SEARCH_FOR_FILTERS);
+  const showOnFilterBarText = i18nBundle.getText(SHOW_ON_FILTER_BAR);
 
   useEffect(() => {
     if (open) {

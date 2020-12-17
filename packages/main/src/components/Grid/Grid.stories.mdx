@@ -1,11 +1,11 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { Grid } from '@ui5/webcomponents-react/lib/Grid';
-import '@ui5/webcomponents-icons/dist/icons/employee.js';
+import '@ui5/webcomponents-icons/dist/employee.js';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
-  title="Components / Grid"
+  title="Layouts & Floorplans / Grid"
   component={Grid}
   argTypes={DocsCommonProps}
   args={{
@@ -17,6 +17,10 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 />
 
 <DocsHeader />
+
+<br />
+
+## Example
 
 <Canvas>
   <Story name="Default">
@@ -40,5 +44,7 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
     }}
   </Story>
 </Canvas>
+
+## Properties
 
 <ArgsTable story="." />

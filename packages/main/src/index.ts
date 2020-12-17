@@ -128,6 +128,7 @@ import { TableRow } from './lib/TableRow';
 import { TableScaleWidthMode } from './lib/TableScaleWidthMode';
 import { TableSelectionBehavior } from './lib/TableSelectionBehavior';
 import { TableSelectionMode } from './lib/TableSelectionMode';
+import { TableVisibleRowCountMode } from './lib/TableVisibleRowCountMode';
 import { Text } from './lib/Text';
 import { TextAlign } from './lib/TextAlign';
 import { TextArea } from './lib/TextArea';
@@ -156,6 +157,8 @@ import { UploadState } from './lib/UploadState';
 import { ValueState } from './lib/ValueState';
 import { VariantManagement } from './lib/VariantManagement';
 import { VerticalAlign } from './lib/VerticalAlign';
+import { Wizard } from './lib/Wizard';
+import { WizardStep } from './lib/WizardStep';
 import { withWebComponent } from './lib/withWebComponent';
 
 export {
@@ -285,6 +288,7 @@ export {
   TableScaleWidthMode,
   TableSelectionBehavior,
   TableSelectionMode,
+  TableVisibleRowCountMode,
   Text,
   TextAlign,
   TextArea,
@@ -313,5 +317,7 @@ export {
   ValueState,
   VariantManagement,
   VerticalAlign,
+  Wizard,
+  WizardStep,
   withWebComponent
 };

@@ -1,5 +1,5 @@
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
-import { useI18nText } from '@ui5/webcomponents-react-base/lib/hooks';
+import { useI18nBundle } from '@ui5/webcomponents-react-base/lib/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
@@ -211,15 +211,14 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
   const prevVisibleInFilterBarProps = useRef({});
   const prevSearchInputPropsValueRef = useRef<string>();
 
-  const [clearText, restoreText, showFilterBarText, hideFilterBarText, goText, filtersText] = useI18nText(
-    '@ui5/webcomponents-react',
-    CLEAR,
-    RESTORE,
-    SHOW_FILTER_BAR,
-    HIDE_FILTER_BAR,
-    GO,
-    FILTERS
-  );
+  const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
+
+  const clearText = i18nBundle.getText(CLEAR);
+  const restoreText = i18nBundle.getText(RESTORE);
+  const showFilterBarText = i18nBundle.getText(SHOW_FILTER_BAR);
+  const hideFilterBarText = i18nBundle.getText(HIDE_FILTER_BAR);
+  const goText = i18nBundle.getText(GO);
+  const filtersText = i18nBundle.getText(FILTERS);
 
   useEffect(() => {
     Children.toArray(children).forEach((item: ReactElement<any>) => {

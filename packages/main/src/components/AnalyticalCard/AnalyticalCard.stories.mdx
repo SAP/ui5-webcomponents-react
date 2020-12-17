@@ -1,7 +1,7 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import '@ui5/webcomponents-icons/dist/icons/person-placeholder.js';
+import '@ui5/webcomponents-icons/dist/person-placeholder.js';
 import { AnalyticalCard } from '@ui5/webcomponents-react/lib/AnalyticalCard';
 import { AnalyticalCardHeader } from '@ui5/webcomponents-react/lib/AnalyticalCardHeader';
 import { DeviationIndicator } from '@ui5/webcomponents-react/lib/DeviationIndicator';
@@ -10,7 +10,7 @@ import { LineChart } from '@ui5/webcomponents-react-charts/lib/LineChart';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
-  title="Components / AnalyticalCard"
+  title="Data Display / AnalyticalCard"
   component={AnalyticalCard}
   parameters={{
     subcomponents: { AnalyticalCardHeader }
@@ -29,6 +29,10 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 <DocsHeader />
 
 **Note:** The `AnalyticalCard` was mainly made to display KPIs and complex data. If you want to implement a simple card, the `Card` component probably is more suitable.
+
+<br />
+
+## Example
 
 <Canvas>
   <Story name="Default">
@@ -88,12 +92,14 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
   </Story>
 </Canvas>
 
+## Properties
+
 <ArgsTable story="Default" />
 
 <br />
 <br />
 
-# Stories
+# More Examples
 
 <br />
 

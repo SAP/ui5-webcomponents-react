@@ -281,6 +281,7 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
           </ReferenceLine>
         )}
         <Tooltip cursor={tooltipFillOpacity} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle} />
+        {props.children}
       </ScatterChartLib>
     </ChartContainer>
   );

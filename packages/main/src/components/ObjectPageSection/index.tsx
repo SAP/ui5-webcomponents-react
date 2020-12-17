@@ -8,14 +8,29 @@ import { EmptyIdPropException } from '../ObjectPage/EmptyIdPropException';
 import styles from './ObjectPageSection.jss';
 
 export interface ObjectPageSectionPropTypes extends CommonProps {
+  /**
+   * Defines the title of the `ObjectPageSection`.
+   */
   title?: string;
+  /**
+   * Defines the ID of the `ObjectPageSection`.<br />
+   * __Note:__ The `id` is taken into account when the section selection changes.
+   */
   id: string;
+  /**
+   * Defines whether the title is always displayed in uppercase.
+   */
   titleUppercase?: boolean;
+  /**
+   * Defines the content of the `ObjectPageSection`.
+   */
   children: ReactNode | ReactNodeArray;
 }
 
 const useStyles = createComponentStyles(styles, { name: 'ObjectPageSection' });
-
+/**
+ * Top-level information container of an `ObjectPage`.
+ */
 const ObjectPageSection: FC<ObjectPageSectionPropTypes> = forwardRef(
   (props: ObjectPageSectionPropTypes, ref: RefObject<any>) => {
     const { title, id, children, titleUppercase, className, style, tooltip } = props;

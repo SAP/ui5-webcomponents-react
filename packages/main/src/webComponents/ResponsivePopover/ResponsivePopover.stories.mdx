@@ -10,13 +10,13 @@ import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/lib/PopoverHori
 import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import { PopoverVerticalAlign } from '@ui5/webcomponents-react/lib/PopoverVerticalAlign';
 import { CSSProperties, useRef } from 'react';
-import '@ui5/webcomponents-icons/dist/icons/settings.js';
+import '@ui5/webcomponents-icons/dist/settings.js';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
-  title="UI5 Web Components / ResponsivePopover"
+  title="Modals & Popovers / ResponsivePopover"
   component={ResponsivePopover}
   argTypes={{
     ...createSelectArgTypes({
@@ -24,6 +24,7 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
       placementType: PlacementType,
       verticalAlign: PopoverVerticalAlign
     }),
+    ...DocsCommonProps,
     footer: { control: { disable: true } },
     header: { control: { disable: true } },
     ...DocsCommonProps
@@ -47,24 +48,7 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <br />
 
-### Opening ResponsivePopovers
-
-`ResponsivePopovers` can only be opened by attaching a `ref` to the component and then call the corresponding **`open`** method. The method receives the target element - _on which the `ResponsivePopover` is to be opened_ - as parameter.
-
-```JSX
-  const PopoverComponent = () => {
-    const popoverRef = useRef();
-    const onButtonClick = (e) => {
-        popoverRef.current.open(e.target);
-    };
-    return (
-      <>
-        <Button onClick={onButtonClick}>Open Popover</Button>
-        <ResponsivePopovers ref={popoverRef}>Some Content</ResponsivePopovers>
-      </>
-    );
-  };
-```
+## Example
 
 <Canvas>
   <Story name="Default">
@@ -83,13 +67,36 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
   </Story>
 </Canvas>
 
-<ArgsTable story="." />
-<div style={{ fontFamily: 'var(--sapFontFamily)', fontSize: 'var(--sapFontSize)', color: 'var(--sapTextColor)' }}>
-  <h3>Usage</h3>
-  Use it when you want to make sure that all the content is visible on any device
-</div>
+## Properties
 
-### Using ResponsivePopovers inside other components
+<ArgsTable story="." />
+
+## Usage
+
+Use it when you want to make sure that all the content is visible on any device
+
+<br />
+
+## Opening ResponsivePopovers
+
+`ResponsivePopovers` can only be opened by attaching a `ref` to the component and then call the corresponding **`open`** method. The method receives the target element - _on which the `ResponsivePopover` is to be opened_ - as parameter.
+
+```JSX
+  const PopoverComponent = () => {
+    const popoverRef = useRef();
+    const onButtonClick = (e) => {
+        popoverRef.current.open(e.target);
+    };
+    return (
+      <>
+        <Button onClick={onButtonClick}>Open Popover</Button>
+        <ResponsivePopovers ref={popoverRef}>Some Content</ResponsivePopovers>
+      </>
+    );
+  };
+```
+
+## Using ResponsivePopovers inside other components
 
 `ResponsivePopovers` are often used within other components, when opened this could sometimes have unwanted side effects.
 In this case, we recommend using [createPortal](https://reactjs.org/docs/portals.html) to mount the `ResponsivePopover` outside of the DOM hierarchy of the parent component.
@@ -109,7 +116,7 @@ const PopoverComponent = () => {
 };
 ```
 
-### Closing ResponsivePopovers
+## Closing ResponsivePopovers
 
 Closing `ResponsivePopovers` works in the same way as opening them. So again an attached `ref` is needed on which the corresponding `close` method is called.
 
@@ -133,7 +140,7 @@ Closing `ResponsivePopovers` works in the same way as opening them. So again an 
   };
 ```
 
-# Stories
+# More Examples
 
 ## ResponsivePopover with content
 

@@ -3,6 +3,44 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.12.3...v0.12.4) (2020-12-17)
+
+
+### Features
+
+* **charts:** add support for children prop (enable linear gradients) ([#1105](https://github.com/SAP/ui5-webcomponents-react/issues/1105)) ([5841519](https://github.com/SAP/ui5-webcomponents-react/commit/5841519b6b613654b3f00f811d84cb5a2f8ee894))
+
+
+
+
+
+# [0.12.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.11.4...v0.12.0) (2020-11-16)
+
+
+### Features
+
+* update @ui5/webcomponents to 1.0.0-rc.10 ([#946](https://github.com/SAP/ui5-webcomponents-react/issues/946)) ([801e64a](https://github.com/SAP/ui5-webcomponents-react/commit/801e64a9979e7f5ba0c7a285485c8e8d753d416d))
+
+
+### BREAKING CHANGES
+
+* Icon import paths changed from e.g. `@ui5/webcomponents/dist/icons/add.js` to `@ui5/webcomponents-icons/dist/icons/add.js`. (`icon` directory got removed)
+
+
+
+
+
+## [0.11.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.11.3...v0.11.4) (2020-11-16)
+
+
+### Bug Fixes
+
+* **charts:** allow negative measures in stacked charts, upgrade recharts ([#952](https://github.com/SAP/ui5-webcomponents-react/issues/952)) ([fb9b254](https://github.com/SAP/ui5-webcomponents-react/commit/fb9b254a5f16f79cb7a6d21a3cafca84fcf3e0c4)), closes [#773](https://github.com/SAP/ui5-webcomponents-react/issues/773)
+
+
+
+
+
 ## [0.11.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.11.2...v0.11.3) (2020-11-04)
 
 

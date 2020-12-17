@@ -1,6 +1,6 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { Badge } from '@ui5/webcomponents-react/lib/Badge';
-import '@ui5/webcomponents-icons/dist/icons/employee.js';
+import '@ui5/webcomponents-icons/dist/employee.js';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { FlexBoxWrap } from '@ui5/webcomponents-react/lib/FlexBoxWrap';
@@ -10,7 +10,7 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
-  title="UI5 Web Components / Badge"
+  title="Data Display / Badge"
   component={Badge}
   argTypes={{
     ...createSelectArgTypes({}),
@@ -31,6 +31,10 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <DocsHeader />
 
+<br />
+
+## Example
+
 <Canvas>
   <Story name="Default">
     {(args) => {
@@ -39,20 +43,17 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
   </Story>
 </Canvas>
 
-<ArgsTable story="." />
-<div style={{ fontFamily: 'var(--sapFontFamily)', fontSize: 'var(--sapFontSize)', color: 'var(--sapTextColor)' }}>
-  <h3>Usage Guidelines</h3>
-  <ul>
-    <li>If the text is longer than the width of the component, it doesn’t wrap, it shows ellipsis.</li>
-    <li>
-      When truncated, the full text is not visible, therefore, it’s recommended to make more space for longer texts to
-      be fully displayed.
-    </li>
-    <li>Colors are not semantic and have no visual representation in High Contrast Black (sap_belize_hcb) theme.</li>
-  </ul>
-</div>
+## Properties
 
-# Stories
+<ArgsTable story="." />
+
+## Usage Guidelines
+
+- If the text is longer than the width of the component, it doesn’t wrap, it shows ellipsis.
+- When truncated, the full text is not visible, therefore, it’s recommended to make more space for longer texts to be fully displayed.
+- Colors are not semantic and have no visual representation in High Contrast Black (sap_belize_hcb) theme.
+
+# More Examples
 
 ## All available Badge colors
 

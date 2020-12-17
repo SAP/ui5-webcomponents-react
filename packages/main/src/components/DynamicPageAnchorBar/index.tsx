@@ -1,6 +1,6 @@
 import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming';
-import '@ui5/webcomponents-icons/dist/icons/slim-arrow-down.js';
-import '@ui5/webcomponents-icons/dist/icons/slim-arrow-up.js';
+import '@ui5/webcomponents-icons/dist/slim-arrow-down.js';
+import '@ui5/webcomponents-icons/dist/slim-arrow-up.js';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ToggleButton } from '@ui5/webcomponents-react/lib/ToggleButton';

@@ -10,11 +10,11 @@ import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 import { spacing } from '@ui5/webcomponents-react-base';
-import '@ui5/webcomponents-icons/dist/icons/activate.js';
+import '@ui5/webcomponents-icons/dist/activate.js';
 import { useEffect, useRef, useState } from 'react';
 
 <Meta
-  title="Components / Loader"
+  title="Loading Indicators / Loader"
   component={Loader}
   argTypes={{
     ...createSelectArgTypes({ type: LoaderType }),
@@ -33,6 +33,10 @@ import { useEffect, useRef, useState } from 'react';
 
 <DocsHeader />
 
+<br />
+
+## Example
+
 <Canvas>
   <Story name="Default">
     {(args) => {
@@ -41,11 +45,13 @@ import { useEffect, useRef, useState } from 'react';
   </Story>
 </Canvas>
 
+## Properties
+
 <ArgsTable story="." />
 
 <br />
 
-# Stories
+# More Examples
 
 <br />
 

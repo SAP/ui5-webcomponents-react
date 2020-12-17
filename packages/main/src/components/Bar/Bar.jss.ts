@@ -73,7 +73,7 @@ const styles = {
   floatingFooter: {
     height: CssSizeVariables.sapWcrBarHeight,
     background: ThemingParameters.sapPageFooter_Background,
-    // borderRadius: ThemingParameters.sapElement_BorderCornerRadius,
+    borderRadius: ThemingParameters.sapElement_BorderCornerRadius,
     boxShadow: ThemingParameters.sapContent_Shadow1,
     border: 'none',
     opacity: 1,

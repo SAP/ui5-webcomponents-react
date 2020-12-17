@@ -1,11 +1,11 @@
-import '@ui5/webcomponents-icons/dist/icons/hint';
-import '@ui5/webcomponents-icons/dist/icons/message-error';
-import '@ui5/webcomponents-icons/dist/icons/message-information';
-import '@ui5/webcomponents-icons/dist/icons/message-success';
-import '@ui5/webcomponents-icons/dist/icons/message-warning';
-import '@ui5/webcomponents-icons/dist/icons/question-mark';
+import '@ui5/webcomponents-icons/dist/hint';
+import '@ui5/webcomponents-icons/dist/message-error';
+import '@ui5/webcomponents-icons/dist/message-information';
+import '@ui5/webcomponents-icons/dist/message-success';
+import '@ui5/webcomponents-icons/dist/message-warning';
+import '@ui5/webcomponents-icons/dist/question-mark';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
-import { useConsolidatedRef, useI18nText, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/hooks';
+import { useConsolidatedRef, useI18nBundle, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import {
@@ -39,27 +39,16 @@ import React, {
   forwardRef,
   isValidElement,
   ReactNode,
+  ReactNodeArray,
   Ref,
   useCallback,
   useEffect,
-  useMemo,
-  ReactNodeArray
+  useMemo
 } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DialogDomRef } from '../../interfaces/Ui5DialogDomRef';
 import { stopPropagation } from '../../internal/stopPropagation';
 import styles from './MessageBox.jss';
-
-const actionTextMap = new Map();
-actionTextMap.set(MessageBoxActions.ABORT, 0);
-actionTextMap.set(MessageBoxActions.CANCEL, 1);
-actionTextMap.set(MessageBoxActions.CLOSE, 2);
-actionTextMap.set(MessageBoxActions.DELETE, 3);
-actionTextMap.set(MessageBoxActions.IGNORE, 4);
-actionTextMap.set(MessageBoxActions.NO, 5);
-actionTextMap.set(MessageBoxActions.OK, 6);
-actionTextMap.set(MessageBoxActions.RETRY, 7);
-actionTextMap.set(MessageBoxActions.YES, 8);
 
 export interface MessageBoxPropTypes extends CommonProps {
   /**
@@ -126,32 +115,19 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
     }
   }, [icon, type]);
 
-  const [
-    titleConfirmation,
-    titleError,
-    titleInformation,
-    titleSuccess,
-    titleWarning,
-    titleHighlight,
-    ...actionTranslations
-  ] = useI18nText(
-    '@ui5/webcomponents-react',
-    CONFIRMATION,
-    ERROR,
-    INFORMATION,
-    SUCCESS,
-    WARNING,
-    HIGHLIGHT,
-    ABORT,
-    CANCEL,
-    CLOSE,
-    DELETE,
-    IGNORE,
-    NO,
-    OK,
-    RETRY,
-    YES
-  );
+  const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
+
+  const actionTranslations = {
+    [MessageBoxActions.ABORT]: i18nBundle.getText(ABORT),
+    [MessageBoxActions.CANCEL]: i18nBundle.getText(CANCEL),
+    [MessageBoxActions.CLOSE]: i18nBundle.getText(CLOSE),
+    [MessageBoxActions.DELETE]: i18nBundle.getText(DELETE),
+    [MessageBoxActions.IGNORE]: i18nBundle.getText(IGNORE),
+    [MessageBoxActions.NO]: i18nBundle.getText(NO),
+    [MessageBoxActions.OK]: i18nBundle.getText(OK),
+    [MessageBoxActions.RETRY]: i18nBundle.getText(RETRY),
+    [MessageBoxActions.YES]: i18nBundle.getText(YES)
+  };
 
   const titleToRender = () => {
     if (title) {
@@ -159,17 +135,17 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
     }
     switch (type) {
       case MessageBoxTypes.CONFIRM:
-        return titleConfirmation;
+        return i18nBundle.getText(CONFIRMATION);
       case MessageBoxTypes.ERROR:
-        return titleError;
+        return i18nBundle.getText(ERROR);
       case MessageBoxTypes.INFORMATION:
-        return titleInformation;
+        return i18nBundle.getText(INFORMATION);
       case MessageBoxTypes.SUCCESS:
-        return titleSuccess;
+        return i18nBundle.getText(SUCCESS);
       case MessageBoxTypes.WARNING:
-        return titleWarning;
+        return i18nBundle.getText(WARNING);
       case MessageBoxTypes.HIGHLIGHT:
-        return titleHighlight;
+        return i18nBundle.getText(HIGHLIGHT);
       default:
         return null;
     }
@@ -234,7 +210,7 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
                 onClick={handleOnClose}
                 data-action={action}
               >
-                {actionTextMap.has(action) ? actionTranslations[actionTextMap.get(action)] : action}
+                {actionTranslations[action] ?? action}
               </Button>
             );
           })}

@@ -5,7 +5,7 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
-  title="UI5 Web Components / RatingIndicator"
+  title="Inputs / RatingIndicator"
   component={RatingIndicator}
   argTypes={{
     ...createSelectArgTypes({}),
@@ -22,6 +22,10 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <DocsHeader />
 
+<br />
+
+## Example
+
 <Canvas>
   <Story name="Default">
     {(args) => {
@@ -30,8 +34,19 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
   </Story>
 </Canvas>
 
+## Properties
+
 <ArgsTable story="." />
-<div style={{ fontFamily: 'var(--sapFontFamily)', fontSize: 'var(--sapFontSize)', color: 'var(--sapTextColor)' }}>
-  <h3>Usage</h3>
-  The reccomended number of icons is between 5 and 7.
-</div>
+
+## Usage
+
+The reccomended number of icons is between 5 and 7.
+
+## Responsive Behavior
+
+You can change the size of the Rating Indicator by changing its `font-size` CSS property.  
+Example: `<RatingIndicator style="font-size: 3rem;"></RatingIndicator>`
+
+## Usage
+
+For the `RatingIndicator`

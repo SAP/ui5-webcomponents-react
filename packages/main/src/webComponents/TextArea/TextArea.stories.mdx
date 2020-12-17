@@ -7,7 +7,7 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
-  title="UI5 Web Components / TextArea"
+  title="Inputs / TextArea"
   component={TextArea}
   argTypes={{
     ...createSelectArgTypes({ valueState: ValueState }),
@@ -26,6 +26,10 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <DocsHeader />
 
+<br />
+
+## Example
+
 <Canvas>
   <Story name="Default">
     {(args) => {
@@ -33,5 +37,7 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
     }}
   </Story>
 </Canvas>
+
+## Properties
 
 <ArgsTable story="." />

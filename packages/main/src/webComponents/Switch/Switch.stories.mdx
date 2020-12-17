@@ -6,7 +6,7 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
-  title="UI5 Web Components / Switch"
+  title="Inputs / Switch"
   component={Switch}
   argTypes={{
     ...createSelectArgTypes({}),
@@ -23,6 +23,10 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <DocsHeader />
 
+<br />
+
+## Example
+
 <Canvas>
   <Story name="Default">
     {(args) => {
@@ -31,8 +35,10 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
   </Story>
 </Canvas>
 
+## Properties
+
 <ArgsTable story="." />
-<div style={{ fontFamily: 'var(--sapFontFamily)', fontSize: 'var(--sapFontSize)', color: 'var(--sapTextColor)' }}>
-  <h3>Keyboard Handling</h3>
-  The state can be changed by pressing the Space and Enter keys.
-</div>
+
+## Keyboard Handling
+
+The state can be changed by pressing the Space and Enter keys.

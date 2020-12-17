@@ -7,7 +7,7 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
-  title="UI5 Web Components / Select"
+  title="Inputs / Select"
   component={Select}
   subcomponents={{ Option }}
   argTypes={{
@@ -28,6 +28,10 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <DocsHeader />
 
+<br />
+
+## Example
+
 <Canvas>
   <Story name="Default">
     {(args) => {
@@ -44,16 +48,14 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
   </Story>
 </Canvas>
 
-<ArgsTable story="." />
-<div style={{ fontFamily: 'var(--sapFontFamily)', fontSize: 'var(--sapFontSize)', color: 'var(--sapTextColor)' }}>
-  <h3>Keyboard Handling</h3>
-  The <code>Select</code> provides advanced keyboard handling. If the <code>Select</code> is focused, you can open or close
-  the drop-down by pressing <code>F4</code>, <code>ALT+UP</code> or <code>ALT+DOWN</code> keys. Once the drop-down is opened,
-  you can use the <code>UP</code> and <code>DOWN</code> arrow keys to navigate through the available options and select one
-  by pressing the <code>Space</code> or <code>Enter</code> keys. <br />
-</div>
+## Properties
 
-<br />
+<ArgsTable story="." />
+
+## Keyboard Handling
+
+The `Select` provides advanced keyboard handling. If the `Select` is focused, you can open or close the drop-down by pressing `F4`, `ALT+UP` or `ALT+DOWN` keys. Once the drop-down is opened, you can use the `UP` and `DOWN` arrow keys to navigate through the available options and select one by pressing the `Space` or `Enter` keys.
+
 <br />
 
 ## Recipes

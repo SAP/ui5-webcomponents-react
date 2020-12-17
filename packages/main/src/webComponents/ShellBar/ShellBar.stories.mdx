@@ -6,22 +6,22 @@ import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem'
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
-import '@ui5/webcomponents-icons/dist/icons/add.js';
+import '@ui5/webcomponents-icons/dist/add.js';
 import image from '../../components/ObjectPage/DemoImage.png';
 
 <Meta
-  title="UI5 Web Components / ShellBar"
+  title="Layouts & Floorplans / ShellBar"
   component={ShellBar}
   subcomponents={{ ShellBarItem }}
   argTypes={{
     ...createSelectArgTypes({}),
-    ...DocsCommonProps,
     children: { control: { disable: true } },
     logo: { control: { disable: true } },
     menuItems: { control: { disable: true } },
     profile: { control: { disable: true } },
     searchField: { control: { disable: true } },
-    startButton: { control: { disable: true } }
+    startButton: { control: { disable: true } },
+    ...DocsCommonProps
   }}
   args={{
     logo: <img src="https://sap.github.io/ui5-webcomponents/assets/images/sap-logo-svg.svg" alt="SAP Logo" />,
@@ -42,6 +42,10 @@ import image from '../../components/ObjectPage/DemoImage.png';
 
 <DocsHeader />
 
+<br />
+
+## Example
+
 <Canvas>
   <Story name="Default">
     {(args) => {
@@ -61,11 +65,13 @@ import image from '../../components/ObjectPage/DemoImage.png';
   </Story>
 </Canvas>
 
+## Properties
+
 <ArgsTable story="Default" />
 
 <br />
 
-# Stories
+# More Examples
 
 <br />
 

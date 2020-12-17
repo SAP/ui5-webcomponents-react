@@ -5,11 +5,11 @@ import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem'
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import '@ui5/webcomponents-icons/dist/icons/person-placeholder.js';
+import '@ui5/webcomponents-icons/dist/person-placeholder.js';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
-  title="UI5 Web Components / Card"
+  title="Data Display / Card"
   component={Card}
   argTypes={{
     ...createSelectArgTypes({}),
@@ -33,6 +33,10 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <DocsHeader />
 
+<br />
+
+## Example
+
 <Canvas>
   <Story name="Default">
     {(args) => {
@@ -49,10 +53,10 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
   </Story>
 </Canvas>
 
+## Properties
+
 <ArgsTable story="." />
 
-<div style={{ fontFamily: 'var(--sapFontFamily)', fontSize: 'var(--sapFontSize)', color: 'var(--sapTextColor)' }}>
-  <h3>Keyboard handling</h3>
-  In case you enable <code>headerInteractive</code> property, you can press the <code>Card</code> header by Space and Enter
-  keys.
-</div>
+## Keyboard handling
+
+In case you enable `headerInteractive` property, you can press the `Card` header by Space and Enter keys.

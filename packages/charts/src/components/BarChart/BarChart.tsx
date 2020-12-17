@@ -15,13 +15,13 @@ import {
   BarChart as BarChartLib,
   Brush,
   CartesianGrid,
+  Label,
   LabelList,
   Legend,
   ReferenceLine,
   Tooltip,
   XAxis,
-  YAxis,
-  Label
+  YAxis
 } from 'recharts';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { useChartMargin } from '../../hooks/useChartMargin';
@@ -188,6 +188,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
       {...passThroughProps}
     >
       <BarChartLib
+        stackOffset="sign"
         margin={marginChart}
         layout="vertical"
         data={dataset}
@@ -286,6 +287,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
             height={20}
           />
         )}
+        {props.children}
       </BarChartLib>
     </ChartContainer>
   );

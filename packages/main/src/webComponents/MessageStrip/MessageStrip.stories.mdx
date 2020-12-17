@@ -1,14 +1,14 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { MessageStrip } from '@ui5/webcomponents-react/lib/MessageStrip';
 import { MessageStripType } from '@ui5/webcomponents-react/lib/MessageStripType';
-import '@ui5/webcomponents-icons/dist/icons/employee.js';
+import '@ui5/webcomponents-icons/dist/employee.js';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
-  title="UI5 Web Components / MessageStrip"
+  title="Data Display / MessageStrip"
   component={MessageStrip}
   argTypes={{
     ...createSelectArgTypes({ type: MessageStripType }),
@@ -29,6 +29,10 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <DocsHeader />
 
+<br />
+
+## Example
+
 <Canvas>
   <Story name="Default">
     {(args) => {
@@ -37,16 +41,17 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
   </Story>
 </Canvas>
 
+## Properties
+
 <ArgsTable story="." />
-<div style={{ fontFamily: 'var(--sapFontFamily)', fontSize: 'var(--sapFontSize)', color: 'var(--sapTextColor)' }}>
-  <h3>Usage</h3>
-  For the <code>MessageStrip</code> component, you can define whether it displays an icon in the beginning and a close button.
-  Moreover, its size and background can be controlled with CSS.
-</div>
+
+## Usage
+
+For the `MessageStrip` component, you can define whether it displays an icon in the beginning and a close button. Moreover, its size and background can be controlled with CSS.
 
 <b />
 
-# Stories
+# More Examples
 
 <b />
 

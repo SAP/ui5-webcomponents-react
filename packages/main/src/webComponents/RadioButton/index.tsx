@@ -5,59 +5,70 @@ import { FC } from 'react';
 
 export interface RadioButtonPropTypes extends Omit<WithWebComponentPropTypes, 'onSelect'> {
   /**
-   * Determines whether the <code>RadioButton</code> is disabled. <br><br> <b>Note:</b> A disabled <code>RadioButton</code> is completely noninteractive.
+   * Determines whether the `RadioButton` is disabled.
+   *
+   * **Note:** A disabled `RadioButton` is completely noninteractive.
    */
   disabled?: boolean;
   /**
-   * Defines the name of the <code>RadioButton</code>. Radio buttons with the same <code>name</code> will form a radio button group.<br/><br/>
+   * Defines the name of the `RadioButton`. Radio buttons with the same `name` will form a radio button group.
    *
-   * <b>Note:</b> The selection can be changed with <code>ARROW_UP/DOWN</code> and <code>ARROW_LEFT/RIGHT</code> keys between radio buttons in same group.<br/><br/>
+   * **Note:** The selection can be changed with `ARROW_UP/DOWN` and `ARROW_LEFT/RIGHT` keys between radio buttons in same group.
    *
-   * <b>Note:</b> Only one radio button can be selected per group.<br/><br/>
+   * **Note:** Only one radio button can be selected per group.
    *
-   * <b>Important:</b> For the <code>name</code> property to have effect when submitting forms, you must add the following import to your project: <code>import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";</code><br/><br/>
+   * **Important:** For the `name` property to have effect when submitting forms, you must add the following import to your project: `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
    *
-   * <b>Note:</b> When set, a native <code>input</code> HTML element will be created inside the <code>RadioButton</code> so that it can be submitted as part of an HTML form.
+   * **Note:** When set, a native `input` HTML element will be created inside the `RadioButton` so that it can be submitted as part of an HTML form.
    */
   name?: string;
   /**
-   * Determines whether the <code>RadioButton</code> is read-only. <br><br> <b>Note:</b> A read-only <code>RadioButton</code> is not editable, but still provides visual feedback upon user interaction.
+   * Determines whether the `RadioButton` is read-only.
+   *
+   * **Note:** A read-only `RadioButton` is not editable, but still provides visual feedback upon user interaction.
    */
   readonly?: boolean;
   /**
-   * Determines whether the <code>RadioButton</code> is selected or not. <br><br> <b>Note:</b> The property value can be changed with user interaction, either by cliking/tapping on the <code>RadioButton</code>, or by using the Space or Enter key.
+   * Determines whether the `RadioButton` is selected or not.
+   *
+   * **Note:** The property value can be changed with user interaction, either by cliking/tapping on the `RadioButton`, or by using the Space or Enter key.
    */
   selected?: boolean;
   /**
-   * Defines the text of the <code>RadioButton</code>.
+   * Defines the text of the `RadioButton`.
    */
   text?: string;
   /**
-   * Defines the form value of the <code>RadioButton</code>. When a form with a radio button group is submitted, the group's value will be the value of the currently selected radio button. <br> <b>Important:</b> For the <code>value</code> property to have effect, you must add the following import to your project: <code>import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";</code>
+   * Defines the form value of the `RadioButton`. When a form with a radio button group is submitted, the group's value will be the value of the currently selected radio button.
+   * **Important:** For the `value` property to have effect, you must add the following import to your project: `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
    */
   value?: string;
   /**
-   * Defines the value state of the <code>RadioButton</code>. <br><br> Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> </ul>
+   * Defines the value state of the `RadioButton`.
+   *
+   * Available options are:
+   *
+   * *   `None`
+   * *   `Error`
+   * *   `Warning`
    */
   valueState?: ValueState;
   /**
-   * Defines whether the <code>RadioButton</code> text wraps when there is not enough space. <br><br> <b>Note:</b> By default, the text truncates when there is not enough space.
+   * Defines whether the `RadioButton` text wraps when there is not enough space.
+   *
+   * **Note:** By default, the text truncates when there is not enough space.
    */
   wrap?: boolean;
   /**
-   * Fired when the <code>RadioButton</code> selected state changes.
+   * Fired when the `RadioButton` selected state changes.
    */
   onSelect?: (event: CustomEvent) => void;
 }
 
 /**
- * The <code>RadioButton</code> component enables users to select a single option from a set of options. When a
- <code>RadioButton</code> is selected by the user, the <code>select</code> event is fired. When a
- <code>RadioButton</code> that is within a group is selected, the one that was previously selected gets automatically
- deselected. You can group radio buttons by using the <code>name</code> property. <br />
- <b>Note:</b> If <code>RadioButton</code> is not part of a group, it can be selected once, but can not be deselected
- back.
-
+ * The `RadioButton` component enables users to select a single option from a set of options. When a `RadioButton` is selected by the user, the `onSelect` event is fired. When a `RadioButton` that is within a group is selected, the one that was previously selected gets automatically deselected. You can group radio buttons by using the `name` property.
+ * **Note:** If `RadioButton` is not part of a group, it can be selected once, but can not be deselected back.
+ *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/RadioButton" target="_blank">UI5 Web Components Playground</a>
  */
 const RadioButton: FC<RadioButtonPropTypes> = withWebComponent<RadioButtonPropTypes>(

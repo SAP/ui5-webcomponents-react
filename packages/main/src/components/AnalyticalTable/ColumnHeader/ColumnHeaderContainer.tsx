@@ -1,5 +1,5 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
-import React, { Fragment, useCallback } from 'react';
+import React, { forwardRef, Fragment, MutableRefObject, Ref, useCallback } from 'react';
 import { createUseStyles } from 'react-jss';
 import { useVirtual, VirtualItem } from 'react-virtual';
 import { ColumnHeader } from './index';
@@ -22,9 +22,27 @@ const styles = {
   }
 };
 
+interface ColumnHeaderContainerProps {
+  headerProps: Record<string, unknown>;
+  headerGroup: Record<string, any>;
+  onSort: (e: CustomEvent<{ column: unknown; sortDirection: string }>) => void;
+  onGroupByChanged: (e: CustomEvent<{ column?: any; isGrouped?: boolean }>) => void;
+  onDragStart: any;
+  onDragOver: any;
+  onDrop: any;
+  onDragEnter: any;
+  onDragEnd: any;
+  dragOver: any;
+  tableRef: MutableRefObject<any>;
+  visibleColumnsWidth: any[];
+  overscanCountHorizontal: number;
+  resizeInfo: Record<string, unknown>;
+  reactWindowRef: MutableRefObject<any>;
+}
+
 const useStyles = createUseStyles(styles, { name: 'Resizer' });
 
-export const ColumnHeaderContainer = (props) => {
+export const ColumnHeaderContainer = forwardRef((props: ColumnHeaderContainerProps, ref: Ref<HTMLDivElement>) => {
   const {
     headerProps,
     headerGroup,
@@ -64,7 +82,7 @@ export const ColumnHeaderContainer = (props) => {
   const classes = useStyles();
 
   return (
-    <div {...headerProps} role="rowgroup" style={{ width: `${columnVirtualizer.totalSize}px` }}>
+    <div {...headerProps} role="rowgroup" style={{ width: `${columnVirtualizer.totalSize}px` }} ref={ref}>
       {columnVirtualizer.virtualItems.map((virtualColumn: VirtualItem) => {
         const column = headerGroup.headers[virtualColumn.index];
         if (!column) {
@@ -104,4 +122,4 @@ export const ColumnHeaderContainer = (props) => {
       })}
     </div>
   );
-};
+});

@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react",
-  "version": "0.11.3",
+  "version": "0.12.3",
   "description": "React Wrapper for UI5 Web Components and additional components",
   "main": "index.cjs.js",
   "module": "index.esm.js",
@@ -14,7 +14,7 @@
   "author": "SAP SE (https://www.sap.com)",
   "license": "Apache-2.0",
   "sideEffects": [
-    "@ui5/webcomponents-icons/dist/icons/*",
+    "@ui5/webcomponents-icons/dist/*",
     "@ui5/webcomponents/dist/*",
     "@ui5/webcomponents-fiori/dist/*",
     "./dist/Assets.js",
@@ -33,18 +33,18 @@
   },
   "dependencies": {
     "@babel/runtime": "7.12.5",
-    "@ui5/webcomponents-react-base": "^0.11.3",
+    "@ui5/webcomponents-react-base": "^0.12.3",
     "lodash": "^4.17.20",
     "react-content-loader": "5.1.4",
-    "react-jss": "10.4.0",
-    "react-table": "7.6.1",
-    "react-virtual": "2.3.1"
+    "react-jss": "10.5.0",
+    "react-table": "7.6.2",
+    "react-virtual": "2.3.2"
   },
   "peerDependencies": {
-    "@ui5/webcomponents": "1.0.0-rc.9",
-    "@ui5/webcomponents-base": "1.0.0-rc.9",
-    "@ui5/webcomponents-fiori": "1.0.0-rc.9",
-    "@ui5/webcomponents-icons": "1.0.0-rc.9",
+    "@ui5/webcomponents": "1.0.0-rc.10",
+    "@ui5/webcomponents-base": "0.26.0",
+    "@ui5/webcomponents-fiori": "1.0.0-rc.10",
+    "@ui5/webcomponents-icons": "1.0.0-rc.10",
     "react": "^16.8.0 || ^17.0.0",
     "react-dom": "^16.8.0 || ^17.0.0"
   },

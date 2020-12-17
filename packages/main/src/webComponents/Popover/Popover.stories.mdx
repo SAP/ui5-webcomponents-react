@@ -15,10 +15,10 @@ import { BarChart } from '@ui5/webcomponents-react-charts/lib/BarChart';
 import { MicroBarChart } from '@ui5/webcomponents-react-charts/lib/MicroBarChart';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
-import '@ui5/webcomponents-icons/dist/icons/settings.js';
+import '@ui5/webcomponents-icons/dist/settings.js';
 
 <Meta
-  title="UI5 Web Components / Popover"
+  title="Modals & Popovers / Popover"
   component={Popover}
   argTypes={{
     ...createSelectArgTypes({
@@ -48,24 +48,7 @@ import '@ui5/webcomponents-icons/dist/icons/settings.js';
 
 <br />
 
-### Opening Popovers
-
-`Popovers` can only be opened by attaching a `ref` to the component and then call the corresponding **`openBy`** method. The method receives the target element - _on which the `Popover` is to be opened_ - as parameter.
-
-```JSX
-  const PopoverComponent = () => {
-    const popoverRef = useRef();
-    const onButtonClick = (e) => {
-        popoverRef.current.openBy(e.target);
-    };
-    return (
-      <>
-        <Button onClick={onButtonClick}>Open Popover</Button>
-        <Popover ref={popoverRef}>Some Content</Popover>
-      </>
-    );
-  };
-```
+## Example
 
 <Canvas>
   <Story name="Default">
@@ -84,21 +67,42 @@ import '@ui5/webcomponents-icons/dist/icons/settings.js';
   </Story>
 </Canvas>
 
+## Properties
+
 <ArgsTable story="Default" />
 
-<div style={{ fontFamily: 'var(--sapFontFamily)', fontSize: 'var(--sapFontSize)', color: 'var(--sapTextColor)' }}>
-  <h3>Structure</h3>
-  The popover has three main areas:
-  <ul>
-    <li>Header (optional)</li>
-    <li>Content</li>
-    <li>Footer (optional)</li>
-  </ul>
-  <b>Note:</b> The <code>Popover</code> is closed when the user clicks or taps outside the popover or selects an action within
-  the popover. You can prevent this with the <code>modal</code> property.
-</div>
+## Structure
 
-### Using Popovers inside other components
+The popover has three main areas:
+
+- Header (optional)
+- Content
+- Footer (optional)
+
+**Note:** The `Popover` is closed when the user clicks or taps outside the popover or selects an action within the popover. You can prevent this with the `modal` property.
+
+<br />
+
+## Opening Popovers
+
+`Popovers` can only be opened by attaching a `ref` to the component and then call the corresponding **`openBy`** method. The method receives the target element - _on which the `Popover` is to be opened_ - as parameter.
+
+```JSX
+  const PopoverComponent = () => {
+    const popoverRef = useRef();
+    const onButtonClick = (e) => {
+        popoverRef.current.openBy(e.target);
+    };
+    return (
+      <>
+        <Button onClick={onButtonClick}>Open Popover</Button>
+        <Popover ref={popoverRef}>Some Content</Popover>
+      </>
+    );
+  };
+```
+
+## Using Popovers inside other components
 
 `Popovers` are often used within other components, when opened this could sometimes have unwanted side effects.
 In this case, we recommend using [createPortal](https://reactjs.org/docs/portals.html) to mount the `Popover` outside of the DOM hierarchy of the parent component.
@@ -118,7 +122,7 @@ const PopoverComponent = () => {
 };
 ```
 
-### Closing Popovers
+## Closing Popovers
 
 Closing `Popovers` works in the same way as opening them. So again an attached `ref` is needed on which the corresponding `close` method is called.
 
@@ -142,7 +146,7 @@ Closing `Popovers` works in the same way as opening them. So again an attached `
   };
 ```
 
-# Stories
+# More Examples
 
 ## Popover with content
 

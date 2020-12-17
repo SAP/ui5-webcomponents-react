@@ -4,8 +4,10 @@
         font-style: normal;
         font-weight: 400;
         src: local('72'),
-        url('https://sapui5.hana.ondemand.com/1.54.3/resources/sap/ui/core/themes/sap_belize/fonts/72-Regular.woff2') format('woff2'),
-        url('https://sapui5.hana.ondemand.com/1.54.3/resources/sap/ui/core/themes/sap_belize/fonts/72-Regular.woff') format('woff')
+        url('https://sapui5.hana.ondemand.com/1.54.3/resources/sap/ui/core/themes/sap_belize/fonts/72-Regular.woff2')
+        format('woff2'),
+        url('https://sapui5.hana.ondemand.com/1.54.3/resources/sap/ui/core/themes/sap_belize/fonts/72-Regular.woff')
+        format('woff');
     }
 
     @font-face {
@@ -13,12 +15,26 @@
         font-style: normal;
         font-weight: 700;
         src: local('72-Bold'),
-        url('https://sapui5.hana.ondemand.com/1.54.3/resources/sap/ui/core/themes/sap_belize/fonts/72-Bold.woff2') format('woff2'),
-        url('https://sapui5.hana.ondemand.com/1.54.3/resources/sap/ui/core/themes/sap_belize/fonts/72-Bold.woff') format('woff')
+        url('https://sapui5.hana.ondemand.com/1.54.3/resources/sap/ui/core/themes/sap_belize/fonts/72-Bold.woff2')
+        format('woff2'),
+        url('https://sapui5.hana.ondemand.com/1.54.3/resources/sap/ui/core/themes/sap_belize/fonts/72-Bold.woff')
+        format('woff');
     }
 
     body {
         font-family: '72', Arial, Helvetica, sans-serif;
+    }
+    #storybook-explorer-searchfield {
+        background: transparent !important;
+    }
+
+    .docblock-argstable-body label[title] {
+        background: #fff !important;
+    }
+
+    input:checked ~ span:first-of-type:not(:only-of-type),
+    input:not(:checked) ~ span:last-of-type:not(:only-of-type) {
+        background-color: rgba(0, 0, 0, 0.15) !important;
     }
 </style>
 

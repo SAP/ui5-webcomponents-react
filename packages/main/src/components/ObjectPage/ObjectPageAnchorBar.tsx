@@ -1,7 +1,7 @@
 import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming';
-import '@ui5/webcomponents-icons/dist/icons/pushpin-off';
-import '@ui5/webcomponents-icons/dist/icons/slim-arrow-down';
-import '@ui5/webcomponents-icons/dist/icons/slim-arrow-up';
+import '@ui5/webcomponents-icons/dist/pushpin-off';
+import '@ui5/webcomponents-icons/dist/slim-arrow-down';
+import '@ui5/webcomponents-icons/dist/slim-arrow-up';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { Button } from '@ui5/webcomponents-react/lib/Button';

@@ -1,5 +1,5 @@
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
-import { useConsolidatedRef, useI18nText } from '@ui5/webcomponents-react-base/lib/hooks';
+import { useConsolidatedRef, useI18nBundle } from '@ui5/webcomponents-react-base/lib/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { deprecationNotice, enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
@@ -60,6 +60,7 @@ export interface ToolbarProptypes extends Omit<CommonProps, 'onClick'> {
    */
   onClick?: (event: CustomEvent) => void;
 }
+
 /**
  * Horizontal container most commonly used to display buttons, labels, selects and various other input controls.
  *
@@ -75,7 +76,7 @@ const Toolbar: FC<ToolbarProptypes> = forwardRef((props: ToolbarProptypes, ref: 
 
   const passThroughProps = usePassThroughHtmlProps(props, ['onToolbarClick', 'onClick']);
 
-  const [showMoreText] = useI18nText('@ui5/webcomponents-react', SHOW_MORE);
+  const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
   const toolbarClasses = StyleClassHelper.of(classes.outerContainer);
   if (toolbarStyle === ToolbarStyle.Clear) {
@@ -152,7 +153,7 @@ const Toolbar: FC<ToolbarProptypes> = forwardRef((props: ToolbarProptypes, ref: 
           const currentMeta = controlMetaData.current[index] as { ref: RefObject<HTMLElement> };
           if (currentMeta && currentMeta.ref && currentMeta.ref.current) {
             let nextWidth = currentMeta.ref.current.getBoundingClientRect().width;
-            nextWidth += index === 0 || index === controlMetaData.current.length - 1 ? 4 : 8; //first & last element = padding: 4px
+            nextWidth += index === 0 || index === controlMetaData.current.length - 1 ? 4 : 8; // first & last element = padding: 4px
             if (index === controlMetaData.current.length - 1) {
               if (consumedWidth + nextWidth <= availableWidth - 8) {
                 lastIndex = index;
@@ -236,7 +237,7 @@ const Toolbar: FC<ToolbarProptypes> = forwardRef((props: ToolbarProptypes, ref: 
         {!overflowNeeded && childrenWithRef}
       </div>
       {overflowNeeded && (
-        <div className={classes.overflowButtonContainer} title={showMoreText}>
+        <div className={classes.overflowButtonContainer} title={i18nBundle.getText(SHOW_MORE)}>
           <OverflowPopover lastVisibleIndex={lastVisibleIndex} contentClass={classes.popoverContent}>
             {React.Children.toArray(children).map((child) => {
               if ((child as ReactElement).type === React.Fragment) {

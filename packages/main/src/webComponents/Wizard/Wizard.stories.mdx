@@ -1,0 +1,171 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Wizard } from '@ui5/webcomponents-react/lib/Wizard';
+import { WizardStep } from '@ui5/webcomponents-react/lib/WizardStep';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
+import '@ui5/webcomponents-icons/dist/product';
+import '@ui5/webcomponents-icons/dist/hint';
+import '@ui5/webcomponents-icons/dist/action-settings';
+import '@ui5/webcomponents-icons/dist/lead';
+import { Button, ButtonDesign, CheckBox, Input, Label, MessageStrip, MessageStripType } from '../..';
+import { Title } from '../Title';
+import { useRef } from 'react';
+
+<Meta
+  title="Layouts & Floorplans / Wizard"
+  component={Wizard}
+  subcomponents={{ WizardStep }}
+  argTypes={{
+    ...createSelectArgTypes({}),
+    ...DocsCommonProps,
+    children: { control: { disable: true } }
+  }}
+  args={{
+    style: {
+      height: '400px'
+    },
+    className: '',
+    tooltip: '',
+    slot: '',
+    ref: null
+  }}
+/>
+
+<DocsHeader />
+
+<br />
+
+## Example
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      const step2 = useRef();
+      const step3 = useRef();
+      const goToStep2 = () => {
+        step2.current.selected = true;
+        step2.current.disabled = false;
+      };
+      const goToStep3 = () => {
+        step3.current.selected = true;
+        step3.current.disabled = false;
+      };
+      const handleStep2Completed = () => {
+        document.querySelector('#goToStep3').removeAttribute('hidden');
+      };
+      const finalizeWizard = () => {
+        alert('Wizard is now completed!');
+      };
+      const handlePriceInput = () => {
+        document.querySelector('#finalizeBtn').removeAttribute('hidden');
+      };
+      return (
+        <Wizard {...args}>
+          <WizardStep icon="product" heading="Product Type" selected>
+            <Title>1. Product Type</Title>
+            <MessageStrip type={MessageStripType.Information}>
+              The Wizard control is supposed to break down large tasks, into smaller steps, easier for the user to work
+              with.
+            </MessageStrip>
+            <Label wrap>
+              Sed fermentum, mi et tristique ullamcorper, sapien sapien faucibus sem, quis pretium nibh lorem malesuada
+              diam. Nulla quis arcu aliquet, feugiat massa semper, volutpat diam. Nam vitae ante posuere, molestie neque
+              sit amet, dapibus velit. Maecenas eleifend tempor lorem. Mauris vitae elementum mi, sed eleifend ligula.
+              Nulla tempor vulputate dolor, nec dignissim quam convallis ut. Praesent vitae commodo felis, ut iaculis
+              felis. Fusce quis eleifend sapien, eget facilisis nibh. Suspendisse est velit, scelerisque ut commodo
+              eget, dignissim quis metus. Cras faucibus consequat gravida. Curabitur vitae quam felis. Phasellus ac leo
+              eleifend, commodo tortor et, varius quam. Aliquam erat volutpat
+            </Label>
+            <Button design={ButtonDesign.Emphasized} onClick={goToStep2}>
+              Step 2
+            </Button>
+          </WizardStep>
+          <WizardStep icon="hint" heading="Product Information" disabled ref={step2}>
+            <Title>2. Product Information</Title>
+            <Label wrap>
+              Integer pellentesque leo sit amet dui vehicula, quis ullamcorper est pulvinar. Nam in libero sem.
+              Suspendisse arcu metus, molestie a turpis a, molestie aliquet dui. Donec ppellentesque leo sit amet dui
+              vehicula, quis ullamcorper est pulvinar. Nam in libero sem. Suspendisse arcu metus, molestie a turpis a,
+              molestie aliquet dui. Donec pulvinar, sapien corper eu, posuere malesuada nisl. Integer pellentesque leo
+              sit amet dui vehicula, quis ullamcorper est pulvinar. Nam in libero sem. Suspendisse arcu metus, molestie
+              a turpis a, molestie aliquet dui. Donec pulvinar, sapien
+            </Label>
+            <CheckBox onChange={handleStep2Completed} text="Step Completed" />
+            <br />
+            <Button id="goToStep3" design={ButtonDesign.Emphasized} onClick={goToStep3} hidden>
+              Step 3
+            </Button>
+          </WizardStep>
+          <WizardStep icon="lead" heading="Pricing" disabled ref={step3}>
+            <Title>4. Pricing</Title>
+            <Label wrap>
+              Integer pellentesque leo sit amet dui vehicula, quis ullamcorper est pulvinar. Nam in libero sem.
+              Suspendisse arcu metus, molestie a turpis a, molestie aliquet dui. Donec ppellentesque leo sit amet dui
+              vehicula, quis ullamcorper est pulvinar. Nam in libero sem. Suspendisse arcu metus, molestie a turpis a,
+              molestie aliquet dui. Donec pulvinar, sapien corper eu, posuere malesuada nisl. Integer pellentesque leo
+              sit amet dui vehicula, quis ullamcorper est pulvinar. Nam in libero sem. Suspendisse arcu metus, molestie
+              a turpis a, molestie aliquet dui. Donec pulvinar, sapien
+            </Label>
+            <Input placeholder="Item Price" onInput={handlePriceInput} />
+            <br />
+            <Button design={ButtonDesign.Emphasized} onClick={finalizeWizard} hidden id="finalizeBtn">
+              Finalize
+            </Button>
+          </WizardStep>
+        </Wizard>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Properties
+
+<ArgsTable story="." />
+
+## Structure
+
+### Navigation area
+
+The top most area of the `Wizard` is occupied by the navigation area. It shows the sequence of steps, where the recommended number of steps is between 3 and 8 steps.
+
+- Steps can have different visual representations - numbers or icons.
+- Steps might have labels for better readability - heading and subheding.
+- Steps are defined by using the `Wizard-step` as slotted element within the `Wizard`
+
+**Note:** If no selected step is defined, the first step will be auto selected.  
+**Note:** If multiple selected steps are defined, the last step will be selected.
+
+### Content
+
+The content occupies the main part of the page. It can hold any type of HTML elements. It's defined by using the `Wizard-step` as slotted element within the `Wizard`.
+
+## Scrolling
+
+The component handles user scrolling by selecting the closest step, based on the current scroll position and scrolls to particular place, when the user clicks on the step within the navigation area.
+
+**Important:** In order the component's scrolling behaviour to work, it has to be limited from the outside parent element in terms of height. The component or its parent has to be given percentage or absolute height. Otherwise, the component will be scrolled out with the entire page.
+
+**For example:**
+
+` <Dialog style="height: 80%"> ``<Wizard></Wizard> ``</Dialog> `
+
+### Moving to next step
+
+The `Wizard-step` provides the necessary API and it's up to the user of the component to use it to move to the next step. You have to set its `selected` property (and remove the `disabled` one if set) to `true`. And, the `Wizard` will automatically scroll to the content of the newly selected step.
+
+The Fiori 3 guidelines recommends having a "nextStep" button in the content area. You can place a button, or any other type of element to trigger step change, inside the `Wizard-step`, and show/hide it when certain fields are filled or user defined criteria is met.
+
+## Usage
+
+### When to use:
+
+When the user has to accomplish a long set of tasks.
+
+### When not to use:
+
+When the task has less than 3 steps.
+
+## Responsive Behavior
+
+On small widths the step's heading, subheading and separators in the navigation area will start truncate and shrink and from particular point they will hide to free as much space as possible.

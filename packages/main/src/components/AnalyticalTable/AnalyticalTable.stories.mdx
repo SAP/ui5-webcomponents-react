@@ -4,13 +4,19 @@ import { createSelectArgTypes } from '../../../../../shared/stories/createSelect
 import { TableScaleWidthMode } from '@ui5/webcomponents-react/lib/TableScaleWidthMode';
 import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
+import { TableVisibleRowCountMode } from '@ui5/webcomponents-react/lib/TableVisibleRowCountMode';
 import generateData from './demo/generateData';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import '@ui5/webcomponents-icons/dist/icons/delete';
-import '@ui5/webcomponents-icons/dist/icons/edit';
-import '@ui5/webcomponents-icons/dist/icons/settings';
+import '@ui5/webcomponents-icons/dist/delete';
+import '@ui5/webcomponents-icons/dist/edit';
+import '@ui5/webcomponents-icons/dist/settings';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
+import { Badge } from '@ui5/webcomponents-react/lib/Badge';
+import { Text } from '@ui5/webcomponents-react/lib/Text';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
+import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
+import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
+import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJustifyContent';
 import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
 import { DefaultLoadingComponent } from './defaults/LoadingComponent';
 import { DefaultNoDataComponent } from './defaults/NoDataComponent';
@@ -18,7 +24,7 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 import { useEffect, useRef, useState } from 'react';
 
 <Meta
-  title="Components / AnalyticalTable"
+  title="Data Display / AnalyticalTable"
   component={AnalyticalTable}
   args={{
     data: generateData(1000),
@@ -105,7 +111,8 @@ import { useEffect, useRef, useState } from 'react';
     scaleWidthMode: TableScaleWidthMode.Default,
     selectionMode: TableSelectionMode.SINGLE_SELECT,
     selectionBehavior: TableSelectionBehavior.ROW,
-    overscanCountHorizontal: 5
+    overscanCountHorizontal: 5,
+    visibleRowCountMode: TableVisibleRowCountMode.FIXED
   }}
   argTypes={{
     ...DocsCommonProps,
@@ -118,18 +125,25 @@ import { useEffect, useRef, useState } from 'react';
     ...createSelectArgTypes({
       scaleWidthMode: TableScaleWidthMode,
       selectionMode: TableSelectionMode,
-      selectionBehavior: TableSelectionBehavior
+      selectionBehavior: TableSelectionBehavior,
+      visibleRowCountMode: TableVisibleRowCountMode
     })
   }}
 />
 
 <DocsHeader />
 
+<br />
+
+## Example
+
 <Canvas>
   <Story name="Default">{(args) => <AnalyticalTable {...args} />}</Story>
 </Canvas>
 
-<ArgsTable story="." />
+## Properties
+
+<ArgsTable story="Default" />
 
 ## Column Properties
 
@@ -142,30 +156,33 @@ import { useEffect, useRef, useState } from 'react';
 
 **Optional Properties**
 
-| Attribute          | Type                                                                     | Description                                                                                                                                                                                                                                                                                                                                                                                                     |
-| ------------------ | ------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Header`           | `string OR ComponentType`                                                | Can either be `string` or a React component that will be rendered as column header                                                                                                                                                                                                                                                                                                                              |
-| `headerTooltip`    | `string`                                                                 | Tooltip for the column header. If not set, the display text will be the same as the Header if it is a `string`                                                                                                                                                                                                                                                                                                  |
-| `Cell`             | `ComponentType`                                                          | Custom cell renderer. If set, the table will call that component for every cell and pass all required information as props, e.g. the cell value as `props.cell.value`                                                                                                                                                                                                                                           |
-| `width`            | `number`                                                                 | Cell width, if not set the table will distribute all columns without a width evenly                                                                                                                                                                                                                                                                                                                             |
-| `minWidth`         | `number`                                                                 | min width of the column, e.g. used for resizing                                                                                                                                                                                                                                                                                                                                                                 |
-| `maxWidth`         | `number`                                                                 | max with of the column, e.g. used for resizing                                                                                                                                                                                                                                                                                                                                                                  |
-| `Filter`           | `ComponentType`                                                          | Filter Component to be rendered in the Header                                                                                                                                                                                                                                                                                                                                                                   |
-| `disableFilters`   | `boolean`                                                                | Disable filters for this column                                                                                                                                                                                                                                                                                                                                                                                 |
-| `defaultCanFilter` | `boolean`                                                                | If set to true, this column will be filterable, regardless if it has a valid `accessor`                                                                                                                                                                                                                                                                                                                         |
-| `filter`           | `string OR Function`                                                     | Either a string or a filter function.<br />Supported String Values: <ul><li>`text`</li><li>`exactText`</li><li>`exactTextCase`</li><li>`equals`</li></ul>                                                                                                                                                                                                                                                       |
-| `Aggregated`       | `ComponentType`                                                          | Component to render for aggregated cells                                                                                                                                                                                                                                                                                                                                                                        |
-| `aggregate`        | `string OR ((leafValues, aggregatedValues) => any)`                      | Aggregation function or string.<br />Supported String Values: <ul><li>`min`</li><li>`max`</li><li>`median`</li><li>`count`</li></ul>                                                                                                                                                                                                                                                                            |
-| `aggregateValue`   | `string OR ((values, row, column) => any)`                               | When attempting to group/aggregate non primitive cell values (eg. arrays of items) you will likely need to resolve a stable primitive value like a number or string to use in normal row aggregations. This property can be used to aggregate or simply access the value to be used in aggregations eg. count-ing the unique number of items in a cell's array value before sum-ing that count across the table |
-| `disableGroupBy`   | `boolean`                                                                | Disable groupBy for this column                                                                                                                                                                                                                                                                                                                                                                                 |
-| `defaultCanSort`   | `boolean`                                                                | If set to true, this column will be sortable, regardless if it has a valid `accessor`                                                                                                                                                                                                                                                                                                                           |
-| `disableSortBy`    | `boolean`                                                                | Disable sorting for this column                                                                                                                                                                                                                                                                                                                                                                                 |
-| `sortDescFirst`    | `boolean`                                                                | If set to `true`, the first sort direction for this column will be descending instead of ascending.                                                                                                                                                                                                                                                                                                             |
-| `sortInverted`     | `boolean`                                                                | If set to `true`, the underlying sorting direction will be inverted, but the UI will not.                                                                                                                                                                                                                                                                                                                       |
-| `sortType`         | `string OR ((rowA, rowB, columnId: string, descending: boolean) => any)` | String or custom sort function.<br />Supported String Values: <ul><li>`basic`</li><li>`datetime`</li><li>`alphanumeric`</li></ul>                                                                                                                                                                                                                                                                               |
-| `disableResizing`  | `boolean`                                                                | Disable resizing for this column                                                                                                                                                                                                                                                                                                                                                                                |
-| `hAlign`           | `TextAlign`                                                              | Horizontal align of the cell                                                                                                                                                                                                                                                                                                                                                                                    |
-| `vAlign`           | `VerticalAlign`                                                          | Vertical align of the cell                                                                                                                                                                                                                                                                                                                                                                                      |
+| Attribute            | Type                                                                     | Description                                                                                                                                                                                                                                                                                                                                                                                                     |
+| -------------------- | ------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Header`             | `string OR ComponentType`                                                | Can either be `string` or a React component that will be rendered as column header                                                                                                                                                                                                                                                                                                                              |
+| `headerTooltip`      | `string`                                                                 | Tooltip for the column header. If not set, the display text will be the same as the Header if it is a `string`                                                                                                                                                                                                                                                                                                  |
+| `Cell`               | `ComponentType`                                                          | Custom cell renderer. If set, the table will call that component for every cell and pass all required information as props, e.g. the cell value as `props.cell.value`                                                                                                                                                                                                                                           |
+| `width`              | `number`                                                                 | Cell width, if not set the table will distribute all columns without a width evenly                                                                                                                                                                                                                                                                                                                             |
+| `minWidth`           | `number`                                                                 | min width of the column, e.g. used for resizing                                                                                                                                                                                                                                                                                                                                                                 |
+| `maxWidth`           | `number`                                                                 | max with of the column, e.g. used for resizing                                                                                                                                                                                                                                                                                                                                                                  |
+| `Filter`             | `ComponentType`                                                          | Filter Component to be rendered in the Header                                                                                                                                                                                                                                                                                                                                                                   |
+| `disableFilters`     | `boolean`                                                                | Disable filters for this column                                                                                                                                                                                                                                                                                                                                                                                 |
+| `defaultCanFilter`   | `boolean`                                                                | If set to true, this column will be filterable, regardless if it has a valid `accessor`                                                                                                                                                                                                                                                                                                                         |
+| `filter`             | `string OR Function`                                                     | Either a string or a filter function.<br />Supported String Values: <ul><li>`text`</li><li>`exactText`</li><li>`exactTextCase`</li><li>`equals`</li></ul>                                                                                                                                                                                                                                                       |
+| `Aggregated`         | `ComponentType`                                                          | Component to render for aggregated cells                                                                                                                                                                                                                                                                                                                                                                        |
+| `aggregate`          | `string OR ((leafValues, aggregatedValues) => any)`                      | Aggregation function or string.<br />Supported String Values: <ul><li>`min`</li><li>`max`</li><li>`median`</li><li>`count`</li></ul>                                                                                                                                                                                                                                                                            |
+| `aggregateValue`     | `string OR ((values, row, column) => any)`                               | When attempting to group/aggregate non primitive cell values (eg. arrays of items) you will likely need to resolve a stable primitive value like a number or string to use in normal row aggregations. This property can be used to aggregate or simply access the value to be used in aggregations eg. count-ing the unique number of items in a cell's array value before sum-ing that count across the table |
+| `disableGroupBy`     | `boolean`                                                                | Disable groupBy for this column                                                                                                                                                                                                                                                                                                                                                                                 |
+| `defaultCanSort`     | `boolean`                                                                | If set to true, this column will be sortable, regardless if it has a valid `accessor`                                                                                                                                                                                                                                                                                                                           |
+| `disableSortBy`      | `boolean`                                                                | Disable sorting for this column                                                                                                                                                                                                                                                                                                                                                                                 |
+| `sortDescFirst`      | `boolean`                                                                | If set to `true`, the first sort direction for this column will be descending instead of ascending.                                                                                                                                                                                                                                                                                                             |
+| `sortInverted`       | `boolean`                                                                | If set to `true`, the underlying sorting direction will be inverted, but the UI will not.                                                                                                                                                                                                                                                                                                                       |
+| `sortType`           | `string OR ((rowA, rowB, columnId: string, descending: boolean) => any)` | String or custom sort function.<br />Supported String Values: <ul><li>`basic`</li><li>`datetime`</li><li>`alphanumeric`</li></ul>                                                                                                                                                                                                                                                                               |
+| `disableResizing`    | `boolean`                                                                | Disable resizing for this column                                                                                                                                                                                                                                                                                                                                                                                |
+| `hAlign`             | `TextAlign`                                                              | Horizontal align of the cell                                                                                                                                                                                                                                                                                                                                                                                    |
+| `vAlign`             | `VerticalAlign`                                                          | Vertical align of the cell                                                                                                                                                                                                                                                                                                                                                                                      |
+| `responsivePopIn`    | `boolean`                                                                | Enables the pop-in behavior of the column. When the `responsiveMinWidth` is smaller then the width of the table, the content of each cell will move to the first cell in the row, improving usability on small or mobile devices.                                                                                                                                                                               |
+| `responsiveMinWidth` | `number`                                                                 | Defines how the table should react when its width falls below the `responsiveMinWidth`. <ul><li>If `responsivePopIn` is `true` the content of this column will be moved to the first column.</li><li>If `responsivePopIn` is not set or `false` the column will be hidden.</li></ul>                                                                                                                            |
+| `PopInHeader`        | `string OR ComponentType`                                                | Custom pop-in header renderer. If set, the table will call that component for every column that is "popped-in" and pass the table instance as prop.                                                                                                                                                                                                                                                             |
 
 ## Recipes
 
@@ -213,41 +230,7 @@ React.useEffect(() => {
 
 For more details on this behavior you can double check the [react-table docs](https://react-table.tanstack.com/docs/faq#how-do-i-stop-my-table-state-from-automatically-resetting-when-my-data-changes).
 
-### How can I show a subset of all columns on mobile devices?
-
-In case you want to use the `AnalyticalTable` on mobile devices as well, it might be helpful to reduce the amount of columns
-for the sake of better readability. You can achieve this by using the `useViewportRange` hook in combination with a local React state:
-
-```jsx
-import React, { useState, useEffect } from 'react';
-import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
-import { useViewportRange } from '@ui5/webcomponents-react-base/lib/hooks';
-
-const columns = [{}, {}, {}, {}, ...]; /* your full set of columns*/
-const data = []; /* your data array */
-
-export const ResponsiveTable = () => {
-  const [responsiveColumns, setResponsiveColumns] = useState(columns);
-  const currentRange = useViewportRange('StdExt');
-  useEffect(() => {
-    if (currentRange === 'Phone') {
-      setResponsiveColumns(columns.slice(0, 2));
-    } else if (currentRange === 'Tablet') {
-      setResponsiveColumns(columns.slice(0, 3));
-    } else {
-      setResponsiveColumns(columns);
-    }
-  }, [currentRange]);
-  return <AnalyticalTable columns={responsiveColumns} data={data} title="ResponsiveTable" />;
-};
-```
-
-With the help of that effect, the table will now show either 2 columns on a mobile phone, 3 columns on a tablet device and all columns on Desktop devices.
-This even works if you resize the browser window!
-
-<br />
-
-# Stories
+# More Examples
 
 <br />
 
@@ -327,6 +310,8 @@ The table initially contains 50 rows, when the last 10 rows are reached the tabl
   </Story>
 </Canvas>
 
+### Code
+
 ```jsx
 const InfiniteScrollTable = (props) => {
   const [data, setData] = useState(props.data.slice(0, 50));
@@ -356,4 +341,394 @@ const InfiniteScrollTable = (props) => {
     />
   );
 };
+```
+
+## AnalyticalTable with subcomponents
+
+Adding custom subcomponents below table rows can be achieved by setting the `renderRowSubComponent` prop.
+The prop expects a function with an optional parameter containing the `row` instance, there you can control which row should display subcomponents.
+
+**Note:** When `renderRowSubComponent` is set, `grouping` is disabled.
+
+<Canvas>
+  <Story name="with subcomponents" args={{ data: generateData(100) }}>
+    {(args) => {
+      const renderRowSubComponent = (row) => {
+        if (row.id === '0') {
+          return (
+            <FlexBox
+              style={{ backgroundColor: 'lightblue', height: '300px' }}
+              justifyContent={FlexBoxJustifyContent.Center}
+              alignItems={FlexBoxAlignItems.Center}
+              direction={FlexBoxDirection.Column}
+            >
+              <Badge>height: 300px</Badge>
+              <Text>This subcomponent will only be displayed below the first row.</Text>
+            </FlexBox>
+          );
+        }
+        if (row.id === '1') {
+          return (
+            <FlexBox
+              style={{ backgroundColor: 'lightyellow', height: '100px' }}
+              justifyContent={FlexBoxJustifyContent.Center}
+              alignItems={FlexBoxAlignItems.Center}
+              direction={FlexBoxDirection.Column}
+            >
+              <Badge>height: 100px</Badge>
+              <Text>This subcomponent will only be displayed below the second row.</Text>
+            </FlexBox>
+          );
+        }
+        if (row.id === '2') {
+          return null;
+        }
+        return (
+          <FlexBox
+            style={{ backgroundColor: 'lightgrey', height: '50px' }}
+            justifyContent={FlexBoxJustifyContent.Center}
+            alignItems={FlexBoxAlignItems.Center}
+            direction={FlexBoxDirection.Column}
+          >
+            <Badge>height: 50px</Badge>
+            <Text>This subcomponent will be displayed below all rows except the first, second and third.</Text>
+          </FlexBox>
+        );
+      };
+      return <AnalyticalTable data={args.data} columns={args.columns} renderRowSubComponent={renderRowSubComponent} />;
+    }}
+  </Story>
+</Canvas>
+
+### Code
+
+```jsx
+const TableWithSubcomponents = (props) => {
+  const renderRowSubComponent = (row) => {
+    if (row.id === '0') {
+      return (
+        <FlexBox
+          style={{ backgroundColor: 'lightblue', height: '300px' }}
+          justifyContent={FlexBoxJustifyContent.Center}
+          alignItems={FlexBoxAlignItems.Center}
+          direction={FlexBoxDirection.Column}
+        >
+          <Badge>height: 300px</Badge>
+          <Text>This subcomponent will only be displayed below the first row.</Text>
+        </FlexBox>
+      );
+    }
+    if (row.id === '1') {
+      return (
+        <FlexBox
+          style={{ backgroundColor: 'lightyellow', height: '100px' }}
+          justifyContent={FlexBoxJustifyContent.Center}
+          alignItems={FlexBoxAlignItems.Center}
+          direction={FlexBoxDirection.Column}
+        >
+          <Badge>height: 100px</Badge>
+          <Text>This subcomponent will only be displayed below the second row.</Text>
+        </FlexBox>
+      );
+    }
+    if (row.id === '2') {
+      return null;
+    }
+    return (
+      <FlexBox
+        style={{ backgroundColor: 'lightgrey', height: '50px' }}
+        justifyContent={FlexBoxJustifyContent.Center}
+        alignItems={FlexBoxAlignItems.Center}
+        direction={FlexBoxDirection.Column}
+      >
+        <Badge>height: 50px</Badge>
+        <Text>This subcomponent will be displayed below all rows except the first, second and third.</Text>
+      </FlexBox>
+    );
+  };
+  return <AnalyticalTable data={props.data} columns={props.columns} renderRowSubComponent={renderRowSubComponent} />;
+};
+```
+
+## Adjust the number of visible rows to the container height
+
+By adding the `visibleRowCountMode` prop and setting it to `TableVisibleRowCountMode.AUTO` the table automatically fills the surrounding container with rows.
+
+<ArgsTable story="Adjust number of rows to container height" />
+
+<Canvas>
+  <Story
+    name="Adjust number of rows to container height"
+    args={{ visibleRowCountMode: TableVisibleRowCountMode.AUTO, containerHeight: 240 }}
+    argTypes={{
+      columns: { table: { disable: true } },
+      data: { table: { disable: true } },
+      title: { table: { disable: true } },
+      extension: { table: { disable: true } },
+      minRows: { table: { disable: true } },
+      visibleRowCountMode: { table: { disable: true } },
+      visibleRows: { table: { disable: true } },
+      loading: { table: { disable: true } },
+      noDataText: { table: { disable: true } },
+      rowHeight: { table: { disable: true } },
+      alternateRowColor: { table: { disable: true } },
+      withRowHighlight: { table: { disable: true } },
+      highlightField: { table: { disable: true } },
+      filterable: { table: { disable: true } },
+      sortable: { table: { disable: true } },
+      groupable: { table: { disable: true } },
+      groupBy: { table: { disable: true } },
+      selectionBehavior: { table: { disable: true } },
+      selectionMode: { table: { disable: true } },
+      scaleWidthMode: { table: { disable: true } },
+      columnOrder: { table: { disable: true } },
+      infiniteScroll: { table: { disable: true } },
+      infiniteScrollThreshold: { table: { disable: true } },
+      onSort: { table: { disable: true } },
+      onGroup: { table: { disable: true } },
+      onRowSelected: { table: { disable: true } },
+      onRowExpandChange: { table: { disable: true } },
+      onColumnsReordered: { table: { disable: true } },
+      onLoadMore: { table: { disable: true } },
+      reactTableOptions: { table: { disable: true } },
+      tableHooks: { table: { disable: true } },
+      subRowsKey: { table: { disable: true } },
+      selectedRowIds: { table: { disable: true } },
+      isTreeTable: { table: { disable: true } },
+      overscanCountHorizontal: { table: { disable: true } },
+      overscanCount: { table: { disable: true } },
+      renderRowSubComponent: { table: { disable: true } },
+      NoDataComponent: { table: { disable: true } },
+      LoadingComponent: { table: { disable: true } },
+      style: { table: { disable: true } },
+      className: { table: { disable: true } },
+      tooltip: { table: { disable: true } },
+      containerHeight: {
+        control: { type: 'range', min: 0, max: 3000, step: 30 },
+        description:
+          'Drag the slider to change the height of the surrounding container of the table (in `px`). <br /> __Note__: This is not an actual prop of the table.'
+      }
+    }}
+  >
+    {(args) => {
+      return (
+        <div style={{ height: args.containerHeight ? `${args.containerHeight}px` : 0 }}>
+          <AnalyticalTable
+            data={args.data}
+            columns={args.columns}
+            visibleRowCountMode={args.visibleRowCountMode}
+            title={`Current height: ${args.containerHeight}px - Change the height by dragging the slider`}
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Responsively display columns on small devices (Pop-In)
+
+<ArgsTable story="Responsive columns" />
+
+To responsively hide columns or move content to the first column, you can add the `responsiveMinWidth` column option. If
+you want the column to "pop-in" the `responsivePopIn` has to be set to `true`, otherwise the column will be hidden when the
+`responsiveMinWidth` exceeds the table width. It's also possible to change the header of the pop-in column by setting the
+`PopInHeader` option.
+
+In the example below you can have a look at this behavior:
+
+- `800`: The content of the "Action" column is moved to the first column (`responsiveMinWidth: 801`)
+- `600`: The content of the "Age" column is moved to the first column (`responsiveMinWidth: 601`) and receives a custom header.
+- `400`: The content of the "Friend Name" column is moved to the first column and the "Friend Age" column is hidden (`responsiveMinWidth: 401`). The "Friend Name" column also receives a custom header.
+
+<Canvas>
+  <Story
+    name="Responsive columns"
+    args={{
+      visibleRowCountMode: TableVisibleRowCountMode.FIXED,
+      containerWidth: 'auto',
+      data: generateData(50),
+      columns: [
+        {
+          Header: 'Name',
+          accessor: 'name'
+        },
+        {
+          responsivePopIn: true,
+          responsiveMinWidth: 601,
+          PopInHeader: 'Custom Header Text (age)',
+          Header: 'Age',
+          accessor: 'age'
+        },
+        {
+          responsivePopIn: true,
+          responsiveMinWidth: 401,
+          Header: 'Friend Name',
+          PopInHeader: (instance) => {
+            return <div style={{ color: 'red' }}>Friend Name (custom)</div>;
+          },
+          accessor: 'friend.name'
+        },
+        {
+          responsiveMinWidth: 401,
+          Header: 'Friend Age',
+          accessor: 'friend.age'
+        },
+        {
+          responsivePopIn: true,
+          responsiveMinWidth: 801,
+          id: 'actions',
+          Header: 'Actions',
+          width: 100,
+          canResize: false,
+          Cell: (instance) => {
+            return (
+              <FlexBox>
+                <Button icon="edit" />
+                <Button icon="delete" />
+              </FlexBox>
+            );
+          }
+        }
+      ]
+    }}
+    argTypes={{
+      columns: { table: { disable: true } },
+      visibleRowCountMode: { table: { disable: true } },
+      data: { table: { disable: true } },
+      title: { table: { disable: true } },
+      extension: { table: { disable: true } },
+      minRows: { table: { disable: true } },
+      visibleRows: { table: { disable: true } },
+      loading: { table: { disable: true } },
+      noDataText: { table: { disable: true } },
+      rowHeight: { table: { disable: true } },
+      alternateRowColor: { table: { disable: true } },
+      withRowHighlight: { table: { disable: true } },
+      highlightField: { table: { disable: true } },
+      filterable: { table: { disable: true } },
+      sortable: { table: { disable: true } },
+      groupable: { table: { disable: true } },
+      groupBy: { table: { disable: true } },
+      selectionBehavior: { table: { disable: true } },
+      selectionMode: { table: { disable: true } },
+      scaleWidthMode: { table: { disable: true } },
+      columnOrder: { table: { disable: true } },
+      infiniteScroll: { table: { disable: true } },
+      infiniteScrollThreshold: { table: { disable: true } },
+      onSort: { table: { disable: true } },
+      onGroup: { table: { disable: true } },
+      onRowSelected: { table: { disable: true } },
+      onRowExpandChange: { table: { disable: true } },
+      onColumnsReordered: { table: { disable: true } },
+      onLoadMore: { table: { disable: true } },
+      reactTableOptions: { table: { disable: true } },
+      tableHooks: { table: { disable: true } },
+      subRowsKey: { table: { disable: true } },
+      selectedRowIds: { table: { disable: true } },
+      isTreeTable: { table: { disable: true } },
+      overscanCountHorizontal: { table: { disable: true } },
+      overscanCount: { table: { disable: true } },
+      renderRowSubComponent: { table: { disable: true } },
+      NoDataComponent: { table: { disable: true } },
+      LoadingComponent: { table: { disable: true } },
+      style: { table: { disable: true } },
+      className: { table: { disable: true } },
+      tooltip: { table: { disable: true } },
+      containerWidth: {
+        control: {
+          type: 'radio',
+          options: [400, 600, 800, 'auto']
+        },
+        description:
+          'Select an option to change the surrounding container of the table (in `px`). <br /> __Note__: This is not an actual prop of the table.'
+      }
+    }}
+  >
+    {(args) => {
+      return (
+        <div
+          style={{
+            width: args.containerWidth && typeof args.containerWidth === 'number' ? `${args.containerWidth}px` : 'auto'
+          }}
+        >
+          <AnalyticalTable
+            data={args.data}
+            columns={args.columns}
+            visibleRowCountMode={args.visibleRowCountMode}
+            title={`Current width: ${args.containerWidth}`}
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Columns Config
+
+```jsx
+const COLUMNS = [
+  {
+    Header: 'Name',
+    accessor: 'name'
+  },
+  {
+    responsivePopIn: true,
+    responsiveMinWidth: 601,
+    PopInHeader: 'Custom Header Text (age)',
+    Header: 'Age',
+    accessor: 'age'
+  },
+  {
+    responsivePopIn: true,
+    responsiveMinWidth: 401,
+    Header: 'Friend Name',
+    PopInHeader: (instance) => {
+      return <div style={{ color: 'red' }}>Friend Name (custom)</div>;
+    },
+    accessor: 'friend.name'
+  },
+  {
+    responsiveMinWidth: 401,
+    Header: 'Friend Age',
+    accessor: 'friend.age'
+  },
+  {
+    responsivePopIn: true,
+    responsiveMinWidth: 801,
+    id: 'actions',
+    Header: 'Actions',
+    width: 100,
+    canResize: false,
+    Cell: (instance) => {
+      return (
+        <FlexBox>
+          <Button icon="edit" />
+          <Button icon="delete" />
+        </FlexBox>
+      );
+    }
+  }
+];
+```
+
+### How to change the content of the pop-in cell?
+
+You can change the content of the pop-in cell without mutating the original cell by using the `isPopIn` prop of the table instance returned by the `Cell` column option:
+
+```js
+const COLUMNS = [
+  {
+    responsivePopIn: true,
+    responsiveMinWidth: 600,
+    id: 'col',
+    Header: 'Column',
+    Cell: ({ isPopIn }) => {
+      if (isPopIn) {
+        return 'pop-in content';
+      }
+      return 'original content';
+    }
+  },
+  ...
+];
 ```

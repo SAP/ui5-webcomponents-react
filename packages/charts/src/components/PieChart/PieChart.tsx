@@ -289,6 +289,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
             wrapperStyle={legendWrapperStyle}
           />
         )}
+        {props.children}
       </PieChartLib>
     </ChartContainer>
   );

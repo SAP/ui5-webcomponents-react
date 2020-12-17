@@ -9,10 +9,10 @@ import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
-import '@ui5/webcomponents-icons/dist/icons/upload.js';
+import '@ui5/webcomponents-icons/dist/upload.js';
 
 <Meta
-  title="UI5 Web Components / FileUploader"
+  title="Inputs / FileUploader"
   component={FileUploader}
   argTypes={{
     ...createSelectArgTypes({ valueState: ValueState }),
@@ -32,6 +32,10 @@ import '@ui5/webcomponents-icons/dist/icons/upload.js';
 
 <DocsHeader />
 
+<br />
+
+## Example
+
 <Canvas>
   <Story name="Default">
     {(args) => {
@@ -40,11 +44,13 @@ import '@ui5/webcomponents-icons/dist/icons/upload.js';
   </Story>
 </Canvas>
 
+## Properties
+
 <ArgsTable story="." />
 
 <br />
 
-# Stories
+# More Examples
 
 <br />
 

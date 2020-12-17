@@ -12,7 +12,7 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
-  title="UI5 Web Components / Calendar"
+  title="Inputs / Calendar"
   component={Calendar}
   argTypes={{
     ...createSelectArgTypes({ primaryCalendarType: CalendarType }),
@@ -30,6 +30,10 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <DocsHeader />
 
+<br />
+
+## Example
+
 <Canvas>
   <Story name="Default">
     {(args) => {
@@ -37,5 +41,7 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
     }}
   </Story>
 </Canvas>
+
+## Properties
 
 <ArgsTable story="." />

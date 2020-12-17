@@ -10,10 +10,10 @@ import { CSSProperties, useRef } from 'react';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
-import '@ui5/webcomponents-icons/dist/icons/settings.js';
+import '@ui5/webcomponents-icons/dist/settings.js';
 
 <Meta
-  title="UI5 Web Components / Dialog"
+  title="Modals & Popovers / Dialog"
   component={Dialog}
   argTypes={{
     ...createSelectArgTypes({}),
@@ -36,24 +36,7 @@ import '@ui5/webcomponents-icons/dist/icons/settings.js';
 
 <br />
 
-### Opening Dialogs
-
-`Dialogs` can only be opened by attaching a `ref` to the component and then call the corresponding **`open`** method.
-
-```JSX
-  const DialogComponent = () => {
-    const dialogRef = useRef();
-    const onButtonClick = () => {
-        dialogRef.current.open();
-    };
-    return (
-      <>
-        <Button onClick={onButtonClick}>Open Dialog</Button>
-        <Dialog ref={dialogRef}>Some Content</Dialog>
-      </>
-    );
-  };
-```
+## Example
 
 <Canvas>
   <Story name="Default">
@@ -75,13 +58,40 @@ import '@ui5/webcomponents-icons/dist/icons/settings.js';
   </Story>
 </Canvas>
 
-<ArgsTable story="." />
-<div style={{ fontFamily: 'var(--sapFontFamily)', fontSize: 'var(--sapFontSize)', color: 'var(--sapTextColor)' }}>
-  <h3>Structure</h3>A <code>Dialog</code> consists of a header, content, and a footer for action buttons. The{' '}
-  <code>Dialog</code> is usually displayed at the center of the screen.
-</div>
+## Properties
 
-### Using Dialogs inside other components
+<ArgsTable story="." />
+
+## Structure
+
+A `Dialog` consists of a header, content, and a footer for action buttons. The `Dialog` is usually displayed at the center of the screen. Its position can be changed by the user. To enable this, you need to set the property `draggable` accordingly.
+
+## Responsive Behavior
+
+The `stretch` property can be used to stretch the `Dialog` on full screen.
+
+<br />
+
+## Opening Dialogs
+
+`Dialogs` can only be opened by attaching a `ref` to the component and then call the corresponding **`open`** method.
+
+```JSX
+  const DialogComponent = () => {
+    const dialogRef = useRef();
+    const onButtonClick = () => {
+        dialogRef.current.open();
+    };
+    return (
+      <>
+        <Button onClick={onButtonClick}>Open Dialog</Button>
+        <Dialog ref={dialogRef}>Some Content</Dialog>
+      </>
+    );
+  };
+```
+
+## Using Dialogs inside other components
 
 `Dialogs` are often used within other components, when opened this could sometimes have unwanted side effects.
 In this case, we recommend using [createPortal](https://reactjs.org/docs/portals.html) to mount the `Dialog` outside of the DOM hierarchy of the parent component.
@@ -101,7 +111,7 @@ const DialogComponent = () => {
 };
 ```
 
-### Closing Dialogs
+## Closing Dialogs
 
 Closing `Dialogs` works in the same way as opening them. So again an attached `ref` is needed on which the corresponding `close` method is called.
 
@@ -125,7 +135,7 @@ Closing `Dialogs` works in the same way as opening them. So again an attached `r
   };
 ```
 
-# Stories
+# More Examples
 
 ## Dialog with content
 

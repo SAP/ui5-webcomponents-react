@@ -42,7 +42,7 @@ interface DimensionConfig {
 }
 
 export interface MicroBarChartProps
-  extends Omit<IChartBaseProps, 'noLegend' | 'onLegendClick' | 'noAnimation' | 'chartConfig'> {
+  extends Omit<IChartBaseProps, 'noLegend' | 'onLegendClick' | 'noAnimation' | 'chartConfig' | 'children'> {
   dimension: DimensionConfig;
   /**
    * An array of config objects. Each object is defining one bar in the chart.

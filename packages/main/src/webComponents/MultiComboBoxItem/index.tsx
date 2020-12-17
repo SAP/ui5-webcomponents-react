@@ -4,18 +4,18 @@ import { FC } from 'react';
 
 export interface MultiComboBoxItemPropTypes extends WithWebComponentPropTypes {
   /**
-   * Defines the selected state of the <code>MultiComboBoxItem</code>.
+   * Defines the selected state of the `MultiComboBoxItem`.
    */
   selected?: boolean;
   /**
-   * Defines the text of the <code>ComboBoxItem</code>.
+   * Defines the text of the `MultiComboBoxItem`.
    */
   text?: string;
 }
 
 /**
- * The <code>ComboBoxItem</code> represents the item for a <code>MultiComboBox</code>
-
+ * The `MultiComboBoxItem` represents the item for a `MultiComboBox`
+ *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/MultiComboBoxItem" target="_blank">UI5 Web Components Playground</a>
  */
 const MultiComboBoxItem: FC<MultiComboBoxItemPropTypes> = withWebComponent<MultiComboBoxItemPropTypes>(

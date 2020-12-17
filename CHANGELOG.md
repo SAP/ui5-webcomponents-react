@@ -3,6 +3,102 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.12.3...v0.12.4) (2020-12-17)
+
+
+### Features
+
+* **charts:** add support for children prop (enable linear gradients) ([#1105](https://github.com/SAP/ui5-webcomponents-react/issues/1105)) ([5841519](https://github.com/SAP/ui5-webcomponents-react/commit/5841519b6b613654b3f00f811d84cb5a2f8ee894))
+
+
+
+
+
+## [0.12.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.12.2...v0.12.3) (2020-12-17)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** use correct import for useI18nText ([#1088](https://github.com/SAP/ui5-webcomponents-react/issues/1088)) ([74b7f63](https://github.com/SAP/ui5-webcomponents-react/commit/74b7f63934b63748d61e11a9d95d2e8a0d4d0013))
+
+
+### Features
+
+* **AnalyticalTable:** add "Interactive" visibleRowCountMode to allow vertical resizing of the table ([#1056](https://github.com/SAP/ui5-webcomponents-react/issues/1056)) ([6295984](https://github.com/SAP/ui5-webcomponents-react/commit/629598469702d794d839a4bf0111645312895665))
+* **AnalyticalTable:** add responsive column options for pop-in or hiding columns ([#1093](https://github.com/SAP/ui5-webcomponents-react/issues/1093)) ([cebbf16](https://github.com/SAP/ui5-webcomponents-react/commit/cebbf16d8394718de404f4653924306f1abdd069))
+* **useI18nBundle:** add new hook to retrieve current i18n bundle ([#1104](https://github.com/SAP/ui5-webcomponents-react/issues/1104)) ([7b38975](https://github.com/SAP/ui5-webcomponents-react/commit/7b389751815409ed48435a853129c27d8da12df9))
+
+
+
+
+
+## [0.12.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.12.1...v0.12.2) (2020-12-02)
+
+
+### Bug Fixes
+
+* **Bar:** add border-radius to floating-footer ([#1046](https://github.com/SAP/ui5-webcomponents-react/issues/1046)) ([d4fd8c9](https://github.com/SAP/ui5-webcomponents-react/commit/d4fd8c9bf9a889671880051cd2c571dfdfb0f3ef))
+
+
+### Features
+
+* **AnalyticalTable:** add visibleRowCountMode prop that controls how the table displays visible rows ([#1044](https://github.com/SAP/ui5-webcomponents-react/issues/1044)) ([e86460b](https://github.com/SAP/ui5-webcomponents-react/commit/e86460b6760715c63c2eb7219abec898a6c3c9f0))
+
+
+
+
+
+## [0.12.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.12.0...v0.12.1) (2020-11-24)
+
+
+### Bug Fixes
+
+* **Page:** content area adapts to height of header and footer ([#966](https://github.com/SAP/ui5-webcomponents-react/issues/966)) ([cb60b38](https://github.com/SAP/ui5-webcomponents-react/commit/cb60b386e8ff184752fbc3f1427446b1fd737a4d))
+
+
+### Features
+
+* **AnalyticalTable:** add support for subcomponents ([#997](https://github.com/SAP/ui5-webcomponents-react/issues/997)) ([15a1e99](https://github.com/SAP/ui5-webcomponents-react/commit/15a1e99e7f4892971d01c51841f67d57109b274f))
+* **cra-template-seed:** add route based code splitting and lazy loading of edit component ([#961](https://github.com/SAP/ui5-webcomponents-react/issues/961)) ([fffed60](https://github.com/SAP/ui5-webcomponents-react/commit/fffed600d11ca4ec4f595675ad6643c6badb94ed))
+
+
+
+
+
+# [0.12.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.11.4...v0.12.0) (2020-11-16)
+
+
+### Features
+
+* update @ui5/webcomponents to 1.0.0-rc.10 ([#946](https://github.com/SAP/ui5-webcomponents-react/issues/946)) ([801e64a](https://github.com/SAP/ui5-webcomponents-react/commit/801e64a9979e7f5ba0c7a285485c8e8d753d416d))
+
+
+### BREAKING CHANGES
+
+* Icon import paths changed from e.g. `@ui5/webcomponents-icons/dist/icons/add.js` to `@ui5/webcomponents-icons/dist/add.js`. (`icon` directory got removed)
+
+
+
+
+
+## [0.11.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.11.3...v0.11.4) (2020-11-16)
+
+
+### Bug Fixes
+
+* **charts:** allow negative measures in stacked charts, upgrade recharts ([#952](https://github.com/SAP/ui5-webcomponents-react/issues/952)) ([fb9b254](https://github.com/SAP/ui5-webcomponents-react/commit/fb9b254a5f16f79cb7a6d21a3cafca84fcf3e0c4)), closes [#773](https://github.com/SAP/ui5-webcomponents-react/issues/773)
+* **useI18nBundle:** prevent state transition if the component has been unmounted ([#922](https://github.com/SAP/ui5-webcomponents-react/issues/922)) ([9a4adf8](https://github.com/SAP/ui5-webcomponents-react/commit/9a4adf834fd357f8ca717848db2b659ff18bfce9))
+
+
+### Features
+
+* **cra-template-seed:** improve developer experience for data loading ([#938](https://github.com/SAP/ui5-webcomponents-react/issues/938)) ([4b09e9b](https://github.com/SAP/ui5-webcomponents-react/commit/4b09e9b55b45062f07dfaf4757a57cb3dcc5f506))
+* **DynamicPage:** initial component implementation ([#865](https://github.com/SAP/ui5-webcomponents-react/issues/865)) ([a85ab71](https://github.com/SAP/ui5-webcomponents-react/commit/a85ab71803e84fb9e4951a80fc0d75a7ba254b22)), closes [#544](https://github.com/SAP/ui5-webcomponents-react/issues/544)
+
+
+
+
+
 ## [0.11.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.11.2...v0.11.3) (2020-11-04)
 
 

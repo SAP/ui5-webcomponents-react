@@ -1,0 +1,194 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Page } from '@ui5/webcomponents-react/lib/Page';
+import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
+import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
+import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJustifyContent';
+import { Text } from '@ui5/webcomponents-react/lib/Text';
+import { Button } from '@ui5/webcomponents-react/lib/Button';
+import { PageBackgroundDesign } from '@ui5/webcomponents-react/lib/PageBackgroundDesign';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
+import { sapUiContentPadding } from '@ui5/webcomponents-react-base/lib/spacing';
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
+import { useState } from 'react';
+
+<Meta
+  title="Layouts & Floorplans / Page"
+  component={Page}
+  argTypes={{
+    ...createSelectArgTypes({ backgroundDesign: PageBackgroundDesign }),
+    customFooter: { table: { disable: true } },
+    children: { table: { disable: true } },
+    customHeader: { table: { disable: true } },
+    ...DocsCommonProps
+  }}
+  args={{
+    title: 'Page Demo',
+    showFooter: true,
+    showHeader: true,
+    showBackButton: true,
+    backgroundDesign: PageBackgroundDesign.Standard,
+    style: { height: '400px' }
+  }}
+/>
+
+<DocsHeader />
+
+<br />
+
+## Example
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return <Page {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+## Properties
+
+<ArgsTable story="Default" />
+
+<br />
+
+# More Examples
+
+## Page with custom footer and header
+
+<Canvas>
+  <Story
+    name="with custom footer & header"
+    args={{
+      style: { height: '768px' }
+    }}
+  >
+    {(args) => {
+      const [footerHeight, setFooterHeight] = useState('200px');
+      const [headerHeight, setHeaderHeight] = useState('44px');
+      const handleFooterHeightToggle = () => {
+        setFooterHeight((prev) => {
+          if (prev === '200px') {
+            return '44px';
+          }
+          return '200px';
+        });
+      };
+      const handleHeaderHeightToggle = () => {
+        setHeaderHeight((prev) => {
+          if (prev === '200px') {
+            return '44px';
+          }
+          return '200px';
+        });
+      };
+      return (
+        <Page
+          {...args}
+          customFooter={
+            <div
+              style={{
+                height: footerHeight,
+                backgroundColor: ThemingParameters.sapInfobar_Background,
+                ...sapUiContentPadding
+              }}
+            >
+              <Text style={{ color: ThemingParameters.sapButton_Emphasized_TextColor }}>
+                The content of your custom footer.
+              </Text>
+            </div>
+          }
+          customHeader={
+            <FlexBox style={{ height: headerHeight, width: '100%' }} justifyContent={FlexBoxJustifyContent.Center}>
+              Custom Header Content
+            </FlexBox>
+          }
+        >
+          <FlexBox
+            style={{
+              height: '800px',
+              ...sapUiContentPadding
+            }}
+            direction={FlexBoxDirection.Column}
+            justifyContent={FlexBoxJustifyContent.SpaceBetween}
+          >
+            <FlexBox direction={FlexBoxDirection.Column}>
+              <Text>If the content area exceeds the Page's height, it becomes scrollable.</Text>
+              <br />
+              <Button onClick={handleHeaderHeightToggle}>Click to change header size</Button>
+              <br />
+              <Button onClick={handleFooterHeightToggle}>Click to change footer size</Button>
+            </FlexBox>
+            <Text>If the content area exceeds the Page's height, it becomes scrollable.</Text>
+          </FlexBox>
+        </Page>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Code
+
+```jsx
+const PageComponent = () => {
+  const [footerHeight, setFooterHeight] = useState('200px');
+  const [headerHeight, setHeaderHeight] = useState('44px');
+  const handleFooterHeightToggle = () => {
+    setFooterHeight((prev) => {
+      if (prev === '200px') {
+        return '44px';
+      }
+      return '200px';
+    });
+  };
+  const handleHeaderHeightToggle = () => {
+    setHeaderHeight((prev) => {
+      if (prev === '200px') {
+        return '44px';
+      }
+      return '200px';
+    });
+  };
+  return (
+    <Page
+      customFooter={
+        <div
+          style={{
+            height: footerHeight,
+            backgroundColor: ThemingParameters.sapInfobar_Background,
+            ...sapUiContentPadding
+          }}
+        >
+          <Text style={{ color: ThemingParameters.sapButton_Emphasized_TextColor }}>
+            The content of your custom footer.
+          </Text>
+        </div>
+      }
+      customHeader={
+        <FlexBox style={{ height: headerHeight, width: '100%' }} justifyContent={FlexBoxJustifyContent.Center}>
+          Custom Header Content
+        </FlexBox>
+      }
+    >
+      <FlexBox
+        style={{
+          height: '800px',
+          ...sapUiContentPadding
+        }}
+        direction={FlexBoxDirection.Column}
+        justifyContent={FlexBoxJustifyContent.SpaceBetween}
+      >
+        <FlexBox direction={FlexBoxDirection.Column}>
+          <Text>If the content area exceeds the Page's height, it becomes scrollable.</Text>
+          <br />
+          <Button onClick={handleHeaderHeightToggle}>Click to change header size</Button>
+          <br />
+          <Button onClick={handleFooterHeightToggle}>Click to change footer size</Button>
+        </FlexBox>
+        <Text>If the content area exceeds the Page's height, it becomes scrollable.</Text>
+      </FlexBox>
+    </Page>
+  );
+};
+```

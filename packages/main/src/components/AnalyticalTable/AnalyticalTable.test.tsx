@@ -1,8 +1,9 @@
+import { act, fireEvent, getByText, render, screen, getMouseEvent } from '@shared/tests';
 import { createPassThroughPropsTest } from '@shared/tests/utils';
-import { act, render, screen, fireEvent, getByText } from '@shared/tests';
 import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
 import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
+import { TableVisibleRowCountMode } from '@ui5/webcomponents-react/lib/TableVisibleRowCountMode';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React, { useRef } from 'react';
 
@@ -26,6 +27,54 @@ const columns = [
   }
 ];
 
+const columnsWithPopIn = [
+  {
+    Header: 'Name',
+    headerTooltip: 'Full Name',
+    accessor: 'name'
+  },
+  {
+    responsiveMinWidth: 601,
+    Header: 'Age',
+    accessor: 'age'
+  },
+  {
+    responsivePopIn: true,
+    responsiveMinWidth: 801,
+    Header: 'Friend Name',
+    accessor: 'friend.name'
+  },
+  {
+    responsivePopIn: true,
+    responsiveMinWidth: 801,
+    Header: () => <span>Custom original Header1</span>,
+    PopInHeader: 'Custom Header1',
+    accessor: 'friend.age'
+  },
+  {
+    responsivePopIn: true,
+    responsiveMinWidth: 801,
+    Header: () => <span>Custom original Header2</span>,
+    PopInHeader: (instance) => {
+      return 'Custom Header 2';
+    },
+    id: 'custom1',
+    Cell: 'custom header 2'
+  },
+  {
+    responsivePopIn: true,
+    responsiveMinWidth: 801,
+    Header: 'Custom Cell',
+    id: 'custom2',
+    Cell: ({ isPopIn }) => {
+      if (isPopIn) {
+        return 'pop-in content';
+      }
+      return 'original content';
+    }
+  }
+];
+
 const data = [
   {
     name: 'Fra',
@@ -42,6 +91,60 @@ const data = [
     friend: {
       name: 'Nei',
       age: 50
+    }
+  }
+];
+
+const moreData = [
+  {
+    name: 'foo',
+    age: 18,
+    friend: {
+      name: 'meh',
+      age: 28
+    },
+    status: ValueState.Success
+  },
+  {
+    name: 'bar',
+    age: 77,
+    friend: {
+      name: 'la',
+      age: 66
+    }
+  },
+  {
+    name: 'lorem',
+    age: 18,
+    friend: {
+      name: 'ipsum',
+      age: 28
+    },
+    status: ValueState.Success
+  },
+  {
+    name: 'dolor',
+    age: 77,
+    friend: {
+      name: 'sit',
+      age: 66
+    }
+  },
+  {
+    name: 'amet',
+    age: 18,
+    friend: {
+      name: 'consetetur',
+      age: 28
+    },
+    status: ValueState.Success
+  },
+  {
+    name: 'sadipscing',
+    age: 77,
+    friend: {
+      name: 'elitr',
+      age: 66
     }
   }
 ];
@@ -321,7 +424,6 @@ describe('AnalyticalTable', () => {
 
     expect(tableBodyRef.scrollTop).toBe(2);
 
-    screen.debug(tableContainerRef, 9999999);
     act(() => {
       tableRef.current.horizontalScrollToItem(1, 'start');
     });
@@ -370,6 +472,226 @@ describe('AnalyticalTable', () => {
 
     const row = screen.getByText('Fra').parentNode.parentNode;
     expect(row).toHaveAttribute('data-is-selected');
+  });
+
+  test('render subcomponents', () => {
+    const renderRowSubComponent = () => {
+      return <div title="subcomponent">Hi! I'm a subcomponent.</div>;
+    };
+
+    const onlyFirstRowWithSubcomponent = (row) => {
+      if (row.id === '0') {
+        return <div title="subcomponent">Hi! I'm a subcomponent.</div>;
+      }
+    };
+    const { asFragment, rerender } = render(
+      <AnalyticalTable data={data} columns={columns} renderRowSubComponent={renderRowSubComponent} />
+    );
+    expect(screen.getAllByTitle('Toggle Row Expanded')).toHaveLength(2);
+
+    fireEvent.click(screen.getAllByTitle('Toggle Row Expanded')[0]);
+
+    expect(screen.getAllByTitle('subcomponent')).toHaveLength(1);
+
+    fireEvent.click(screen.getAllByTitle('Toggle Row Expanded')[1]);
+
+    expect(screen.getAllByTitle('subcomponent')).toHaveLength(2);
+
+    expect(asFragment()).toMatchSnapshot();
+
+    rerender(<AnalyticalTable data={data} columns={columns} renderRowSubComponent={onlyFirstRowWithSubcomponent} />);
+
+    expect(screen.getAllByTitle('Toggle Row Expanded')).toHaveLength(1);
+  });
+
+  test('render rows', () => {
+    Object.defineProperties(window.HTMLElement.prototype, {
+      clientHeight: {
+        value: 100,
+        configurable: true
+      }
+    });
+    const { asFragment, rerender } = render(
+      <AnalyticalTable
+        data={[...data, ...moreData]}
+        columns={columns}
+        visibleRowCountMode={TableVisibleRowCountMode.AUTO}
+      />
+    );
+
+    const tableContainer = screen.getByRole('grid', { hidden: true });
+    expect(tableContainer.getAttribute('data-per-page')).toBe('2');
+    expect(asFragment()).toMatchSnapshot();
+
+    Object.defineProperties(window.HTMLElement.prototype, {
+      clientHeight: {
+        value: 1000,
+        configurable: true
+      }
+    });
+
+    rerender(
+      <AnalyticalTable
+        data={[...data, ...moreData]}
+        columns={columns}
+        visibleRowCountMode={TableVisibleRowCountMode.AUTO}
+      />
+    );
+    expect(tableContainer.getAttribute('data-per-page')).toBe('22');
+    expect(asFragment()).toMatchSnapshot();
+
+    //test if visibleRows prop is ignored when row-count-mode is "Auto"
+    rerender(
+      <AnalyticalTable
+        data={[...data, ...moreData]}
+        columns={columns}
+        visibleRowCountMode={TableVisibleRowCountMode.AUTO}
+        visibleRows={1337}
+      />
+    );
+    expect(tableContainer.getAttribute('data-per-page')).toBe('22');
+
+    //test default visibleRow count
+    rerender(
+      <AnalyticalTable
+        data={[...data, ...moreData]}
+        columns={columns}
+        visibleRowCountMode={TableVisibleRowCountMode.FIXED}
+      />
+    );
+    expect(tableContainer.getAttribute('data-per-page')).toBe('15');
+    expect(asFragment()).toMatchSnapshot();
+
+    rerender(
+      <AnalyticalTable
+        data={[...data, ...moreData]}
+        columns={columns}
+        visibleRowCountMode={TableVisibleRowCountMode.FIXED}
+        visibleRows={1337}
+      />
+    );
+    expect(tableContainer.getAttribute('data-per-page')).toBe('1337');
+  });
+
+  test('resize vertically', () => {
+    Object.defineProperties(window.HTMLElement.prototype, {
+      clientHeight: {
+        value: 0,
+        configurable: true
+      }
+    });
+
+    render(
+      <AnalyticalTable
+        data={[...data, ...moreData]}
+        columns={columns}
+        visibleRowCountMode={TableVisibleRowCountMode.INTERACTIVE}
+      />
+    );
+    const tableContainer = screen.getByRole('grid', { hidden: true });
+    expect(tableContainer.getAttribute('data-per-page')).toBe('15');
+
+    const mouseDown = getMouseEvent('mousedown');
+    const mouseMove = getMouseEvent('mousemove');
+    const mouseUp = getMouseEvent('mouseup', {
+      pageY: 44
+    });
+    const mouseUp2 = getMouseEvent('mouseup', {
+      pageY: 500
+    });
+    fireEvent(screen.getByTitle('Drag to resize'), mouseDown);
+
+    fireEvent(document.body, mouseMove);
+    expect(document.body.lastChild).toHaveClass('VerticalResizer-resizer');
+    expect(document.body).toMatchSnapshot();
+
+    fireEvent(document.body, mouseUp);
+    expect(document.body.lastChild).not.toHaveClass('VerticalResizer-resizer');
+    expect(tableContainer.getAttribute('data-per-page')).toBe('0');
+
+    fireEvent(screen.getByTitle('Drag to resize'), mouseDown);
+    fireEvent(document.body, mouseMove);
+    fireEvent(document.body, mouseUp2);
+    expect(tableContainer.getAttribute('data-per-page')).toBe('11');
+  });
+
+  test('pop-in columns: w/o pop-ins', () => {
+    Object.defineProperties(window.HTMLElement.prototype, {
+      clientWidth: {
+        value: 801,
+        configurable: true
+      }
+    });
+
+    render(<AnalyticalTable data={data} columns={columnsWithPopIn} />);
+
+    screen.getByText('Name');
+    screen.getByText('Age');
+    screen.getByText('Friend Name');
+    screen.getByText('Custom original Header1');
+    screen.getByText('Custom original Header2');
+    screen.getByText('Custom Cell');
+  });
+
+  test('pop-in columns: w/ pop-ins', () => {
+    Object.defineProperties(window.HTMLElement.prototype, {
+      clientWidth: {
+        value: 800,
+        configurable: true
+      }
+    });
+
+    const { asFragment } = render(<AnalyticalTable data={data} columns={columnsWithPopIn} />);
+
+    screen.getByText('Name');
+    screen.getByText('Age');
+
+    expect(screen.queryByText('Friend Name')).not.toBeInTheDocument();
+    expect(screen.queryByText('Custom original Header1')).not.toBeInTheDocument();
+    expect(screen.queryByText('Custom original Header2')).not.toBeInTheDocument();
+    expect(screen.queryByText('Custom Cell')).not.toBeInTheDocument();
+
+    const cells = screen.getAllByRole('cell', { hidden: true });
+
+    getByText(cells[0], 'Fra');
+    getByText(cells[0], 'Friend Name:');
+    getByText(cells[0], 'MAR');
+    getByText(cells[0], 'Custom Header1:');
+    getByText(cells[0], '28');
+    getByText(cells[0], 'Custom Header 2:');
+    getByText(cells[0], 'custom header 2');
+    getByText(cells[0], 'Custom Cell:');
+    getByText(cells[0], 'pop-in content');
+
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  test('pop-in columns: w/ pop-ins & hidden column', () => {
+    Object.defineProperties(window.HTMLElement.prototype, {
+      clientWidth: {
+        value: 600,
+        configurable: true
+      }
+    });
+
+    const { asFragment } = render(<AnalyticalTable data={data} columns={columnsWithPopIn} />);
+
+    screen.getByText('Name');
+    expect(screen.queryByText('Age')).not.toBeInTheDocument();
+
+    const cells = screen.getAllByRole('cell', { hidden: true });
+
+    getByText(cells[0], 'Fra');
+    getByText(cells[0], 'Friend Name:');
+    getByText(cells[0], 'MAR');
+    getByText(cells[0], 'Custom Header1:');
+    getByText(cells[0], '28');
+    getByText(cells[0], 'Custom Header 2:');
+    getByText(cells[0], 'custom header 2');
+    getByText(cells[0], 'Custom Cell:');
+    getByText(cells[0], 'pop-in content');
+
+    expect(asFragment()).toMatchSnapshot();
   });
 
   createPassThroughPropsTest(AnalyticalTable);

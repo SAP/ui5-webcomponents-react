@@ -6,7 +6,7 @@ import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 
 <Meta
-  title="Components / VariantManagement"
+  title="Inputs / VariantManagement"
   component={VariantManagement}
   argTypes={{
     ...createSelectArgTypes({ placement: PlacementType, level: TitleLevel }),
@@ -27,6 +27,10 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
 
 <DocsHeader />
 
+<br />
+
+## Example
+
 <Canvas>
   <Story name="Default">
     {(props) => (
@@ -42,5 +46,7 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
     )}
   </Story>
 </Canvas>
+
+## Properties
 
 <ArgsTable story="." />
