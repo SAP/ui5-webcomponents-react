@@ -82,9 +82,8 @@ const getRowProps = (rowProps, { instance, row }) => {
 
 const getCellProps = (cellProps, { cell: { column }, instance }) => {
   const columnIndex = instance.visibleColumns.findIndex(({ id }) => id === column.id);
-  const isLastColumn = instance.visibleColumns.length === columnIndex + 1;
   const { classes } = instance.webComponentsReactProperties;
-  const style: CSSProperties = {};
+  const style: CSSProperties = { width: `${column.totalWidth}px` };
 
   switch (column.hAlign) {
     case TextAlign.Begin:
@@ -127,12 +126,6 @@ const getCellProps = (cellProps, { cell: { column }, instance }) => {
 
   if (column.id === '__ui5wcr__internal_highlight_column' || column.id === '__ui5wcr__internal_selection_column') {
     style.padding = 0;
-  }
-
-  if (isLastColumn && instance.state.isScrollable) {
-    style.width = `calc(${column.totalWidth}px - ${ThemingParameters.sapScrollBar_Dimension})`;
-  } else {
-    style.width = `${column.totalWidth}px`;
   }
 
   return [

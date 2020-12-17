@@ -113,5 +113,22 @@ export interface AnalyticalTableColumnDefinition {
    */
   vAlign?: VerticalAlign;
 
+  //usePopIn
+  /**
+   * Enables the pop-in behavior of the column. When the `responsiveMinWidth` is smaller then the width of the table, the content of each cell will move to the first cell in the row, improving usability on small or mobile devices.
+   */
+  responsivePopIn?: boolean;
+  /**
+   * Defines how the table should react when its width falls below the `responsiveMinWidth`.
+   *
+   * - If `responsivePopIn` is `true` the content of this column will be moved to the first column.
+   * - If `responsivePopIn` is not set or `false` the column will be hidden.
+   */
+  responsiveMinWidth?: number;
+  /**
+   * Custom pop-in header renderer. If set, the table will call that component for every column that is "popped-in" and pass the table instance as prop.
+   */
+  PopInHeader?: string | ComponentType<any>;
+
   [key: string]: any;
 }

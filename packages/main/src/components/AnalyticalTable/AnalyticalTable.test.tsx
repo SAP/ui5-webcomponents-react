@@ -27,6 +27,54 @@ const columns = [
   }
 ];
 
+const columnsWithPopIn = [
+  {
+    Header: 'Name',
+    headerTooltip: 'Full Name',
+    accessor: 'name'
+  },
+  {
+    responsiveMinWidth: 601,
+    Header: 'Age',
+    accessor: 'age'
+  },
+  {
+    responsivePopIn: true,
+    responsiveMinWidth: 801,
+    Header: 'Friend Name',
+    accessor: 'friend.name'
+  },
+  {
+    responsivePopIn: true,
+    responsiveMinWidth: 801,
+    Header: () => <span>Custom original Header1</span>,
+    PopInHeader: 'Custom Header1',
+    accessor: 'friend.age'
+  },
+  {
+    responsivePopIn: true,
+    responsiveMinWidth: 801,
+    Header: () => <span>Custom original Header2</span>,
+    PopInHeader: (instance) => {
+      return 'Custom Header 2';
+    },
+    id: 'custom1',
+    Cell: 'custom header 2'
+  },
+  {
+    responsivePopIn: true,
+    responsiveMinWidth: 801,
+    Header: 'Custom Cell',
+    id: 'custom2',
+    Cell: ({ isPopIn }) => {
+      if (isPopIn) {
+        return 'pop-in content';
+      }
+      return 'original content';
+    }
+  }
+];
+
 const data = [
   {
     name: 'Fra',
@@ -565,6 +613,85 @@ describe('AnalyticalTable', () => {
     fireEvent(document.body, mouseMove);
     fireEvent(document.body, mouseUp2);
     expect(tableContainer.getAttribute('data-per-page')).toBe('11');
+  });
+
+  test('pop-in columns: w/o pop-ins', () => {
+    Object.defineProperties(window.HTMLElement.prototype, {
+      clientWidth: {
+        value: 801,
+        configurable: true
+      }
+    });
+
+    render(<AnalyticalTable data={data} columns={columnsWithPopIn} />);
+
+    screen.getByText('Name');
+    screen.getByText('Age');
+    screen.getByText('Friend Name');
+    screen.getByText('Custom original Header1');
+    screen.getByText('Custom original Header2');
+    screen.getByText('Custom Cell');
+  });
+
+  test('pop-in columns: w/ pop-ins', () => {
+    Object.defineProperties(window.HTMLElement.prototype, {
+      clientWidth: {
+        value: 800,
+        configurable: true
+      }
+    });
+
+    const { asFragment } = render(<AnalyticalTable data={data} columns={columnsWithPopIn} />);
+
+    screen.getByText('Name');
+    screen.getByText('Age');
+
+    expect(screen.queryByText('Friend Name')).not.toBeInTheDocument();
+    expect(screen.queryByText('Custom original Header1')).not.toBeInTheDocument();
+    expect(screen.queryByText('Custom original Header2')).not.toBeInTheDocument();
+    expect(screen.queryByText('Custom Cell')).not.toBeInTheDocument();
+
+    const cells = screen.getAllByRole('cell', { hidden: true });
+
+    getByText(cells[0], 'Fra');
+    getByText(cells[0], 'Friend Name:');
+    getByText(cells[0], 'MAR');
+    getByText(cells[0], 'Custom Header1:');
+    getByText(cells[0], '28');
+    getByText(cells[0], 'Custom Header 2:');
+    getByText(cells[0], 'custom header 2');
+    getByText(cells[0], 'Custom Cell:');
+    getByText(cells[0], 'pop-in content');
+
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  test('pop-in columns: w/ pop-ins & hidden column', () => {
+    Object.defineProperties(window.HTMLElement.prototype, {
+      clientWidth: {
+        value: 600,
+        configurable: true
+      }
+    });
+
+    const { asFragment } = render(<AnalyticalTable data={data} columns={columnsWithPopIn} />);
+
+    screen.getByText('Name');
+    expect(screen.queryByText('Age')).not.toBeInTheDocument();
+
+    const cells = screen.getAllByRole('cell', { hidden: true });
+
+    getByText(cells[0], 'Fra');
+    getByText(cells[0], 'Friend Name:');
+    getByText(cells[0], 'MAR');
+    getByText(cells[0], 'Custom Header1:');
+    getByText(cells[0], '28');
+    getByText(cells[0], 'Custom Header 2:');
+    getByText(cells[0], 'custom header 2');
+    getByText(cells[0], 'Custom Cell:');
+    getByText(cells[0], 'pop-in content');
+
+    expect(asFragment()).toMatchSnapshot();
   });
 
   createPassThroughPropsTest(AnalyticalTable);
