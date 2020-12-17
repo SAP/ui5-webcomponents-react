@@ -189,8 +189,6 @@ export const initRangeSet = (
   }
 
   if (hasRangeSet(oConfig.name)) {
-    // TODO v0.12.0 - Reactivate this line again once the Device Class is removed.
-    // Logger.info(`Range set ${oConfig.name} has already been initialized`, 'DEVICE.MEDIA');
     return;
   }
 
