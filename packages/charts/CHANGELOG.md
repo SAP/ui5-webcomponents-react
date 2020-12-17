@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.12.3...v0.12.4) (2020-12-17)
+
+
+### Features
+
+* **charts:** add support for children prop (enable linear gradients) ([#1105](https://github.com/SAP/ui5-webcomponents-react/issues/1105)) ([5841519](https://github.com/SAP/ui5-webcomponents-react/commit/5841519b6b613654b3f00f811d84cb5a2f8ee894))
+
+
+
+
+
 # [0.12.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.11.4...v0.12.0) (2020-11-16)
 
 
