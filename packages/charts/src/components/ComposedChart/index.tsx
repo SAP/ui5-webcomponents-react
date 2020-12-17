@@ -410,6 +410,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
             height={20}
           />
         )}
+        {props.children}
       </ComposedChartLib>
     </ChartContainer>
   );

@@ -43,6 +43,11 @@ interface MeasureConfig extends IChartMeasure {
    * @default 1
    */
   opacity?: number;
+
+  /**
+   * Flag whether the line dot should be displayed or not.
+   */
+  showDot?: boolean;
 }
 
 interface DimensionConfig extends IChartDimension {
@@ -67,6 +72,7 @@ export interface LineChartProps extends IChartBaseProps {
    * - `DataLabel`: a custom component to be used for the data label
    * - `width`: line width, defaults to `1`
    * - `opacity`: line opacity, defaults to `1`
+   * - `showDot`: Flag whether the line dot should be displayed or not.
    *
    */
   measures: MeasureConfig[];
@@ -227,7 +233,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
         {measures.map((element, index) => {
           return (
             <Line
-              dot={!isBigDataSet}
+              dot={element.showDot ?? !isBigDataSet}
               yAxisId={chartConfig.secondYAxis?.dataKey === element.accessor ? 'right' : 'left'}
               key={element.accessor}
               name={element.label ?? element.accessor}
@@ -275,6 +281,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
             height={20}
           />
         )}
+        {props.children}
       </LineChartLib>
     </ChartContainer>
   );

@@ -85,7 +85,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
       legendPosition: 'bottom',
       legendHorizontalAlign: 'center',
       dataLabel: true,
-      polarGridType: 'circle' as 'circle',
+      polarGridType: 'circle',
       resizeDebounce: 250,
       ...props.chartConfig
     };
@@ -183,6 +183,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
             onClick={onItemLegendClick}
           />
         )}
+        {props.children}
       </RadarChartLib>
     </ChartContainer>
   );
