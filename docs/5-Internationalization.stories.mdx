@@ -67,33 +67,30 @@ _Note:_ This is just asset registration, no data will be fetched at that point.
 Add the following import statement to the component where you want to use translated texts:
 
 ```js
-import { useI18nText } from '@ui5/webcomponents-react-base/lib/hooks';
+import { useI18nBundle } from '@ui5/webcomponents-react-base/lib/hooks';
 ```
 
-Now, you can use the `useI18nText` hook in your functional components in order to get your translated texts.
+Now, you can use the `useI18nBundle` hook in your functional components in order to access the i18nBundle and get your
+translated texts from there.
 
 The hook has the following signature:
 
-```js
-const translatedTextsArray = useI18nText((messageBundleId: string), (...textsToTranslate: (string | string[])[]));
+```ts
+const i18nBundle = useI18nBundle(messageBundleId: string): I18nBundle;
 ```
 
-In case you have texts without placeholder values you can use the simple `string` arguments, but if you have parameters
-in your message bundle you will have to use the `array` notation (_please see step 6_).
-You can mix `string` and `array` arguments in the same call.
-
-Each parameter will be translated one by one and returned in an array in the same order.
+The `i18nBundle` is offering one public method `getText` which accepts a string as first parameter, followed by optional replacement parameters for your translation.
 
 **Example:**
 
 ```jsx
 const MyTranslatedTextComponent = () => {
-  const [pleaseWaitText, anotherText] = useI18nText('myApp', 'PLEASE_WAIT', 'ANOTHER_TEXT_TO_TRANSLATE');
+  const i18nBundle = useI18nBundle('myApp');
 
   return (
     <div>
-      <span>{pleaseWaitText}</span>
-      <p>{anotherText}</p>
+      <span>{i18nBundle.getText('PLEASE_WAIT')}</span>
+      <p>{i18nBundle.getText('ANOTHER_TEXT_TO_TRANSLATE')}</p>
     </div>
   );
 };
@@ -101,9 +98,8 @@ const MyTranslatedTextComponent = () => {
 
 **5. Use texts with placeholder values**
 
-In case you have texts with placeholders in your message bundle, you can pass an array as text parameter to receive
-translated text with parameters. In this case, the first entry in the array is the translation key, followed by an
-arbitrary number of parameters which should be inserted into the translation.
+You can pass multiple additional values to `getText` for texts with placeholders.
+In this case, the first parameter is the translation key, followed by an arbitrary number of parameters which should be inserted into the translation.
 
 **Example:**
 
@@ -116,7 +112,8 @@ CAROUSEL_DOT_TEXT=Item {0} of {1} displayed
 Your hook call would now look like this:
 
 ```js
-const [carouselText, pleaseWaitText] = useI18nText('myApp', ['CAROUSEL_DOT_TEXT', 5, 20], 'PLEASE_WAIT');
+const i18nBundle = useI18nBundle('myApp');
+const carouselText = i18nBundle.getText('CAROUSEL_DOT_TEXT', 5, 20);
 ```
 
 This would resolve this text:<br />

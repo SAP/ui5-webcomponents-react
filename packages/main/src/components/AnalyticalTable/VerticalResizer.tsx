@@ -1,4 +1,4 @@
-import { useI18nText } from '@ui5/webcomponents-react-base/lib/hooks';
+import { useI18nBundle } from '@ui5/webcomponents-react-base/lib/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { DRAG_TO_RESIZE } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import React, { MutableRefObject, useCallback, useEffect, useRef, useState } from 'react';
@@ -62,7 +62,7 @@ export const VerticalResizer = (props: VerticalResizerProps) => {
   const [isDragging, setIsDragging] = useState(false);
   const [mountTouchEvents, setMountTouchEvents] = useState(false);
 
-  const [dragToResizeText] = useI18nText('@ui5/webcomponents-react', DRAG_TO_RESIZE);
+  const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
   const handleResizeStart = useCallback(
     (e) => {
@@ -153,7 +153,7 @@ export const VerticalResizer = (props: VerticalResizerProps) => {
       onMouseDown={handleResizeStart}
       onTouchStart={handleResizeStart}
       role="separator"
-      title={dragToResizeText}
+      title={i18nBundle.getText(DRAG_TO_RESIZE)}
     >
       {resizerPosition &&
         isDragging &&
