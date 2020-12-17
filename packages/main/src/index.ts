@@ -142,7 +142,6 @@ import { Toast } from './lib/Toast';
 import { ToastPlacement } from './lib/ToastPlacement';
 import { ToggleButton } from './lib/ToggleButton';
 import { Token } from './lib/Token';
-import { Tokenizer } from './lib/Tokenizer';
 import { Toolbar } from './lib/Toolbar';
 import { ToolbarDesign } from './lib/ToolbarDesign';
 import { ToolbarSeparator } from './lib/ToolbarSeparator';
@@ -301,7 +300,6 @@ export {
   ToastPlacement,
   ToggleButton,
   Token,
-  Tokenizer,
   Toolbar,
   ToolbarDesign,
   ToolbarSeparator,
