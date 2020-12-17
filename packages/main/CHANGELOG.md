@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.12.2...v0.12.3) (2020-12-17)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** use correct import for useI18nText ([#1088](https://github.com/SAP/ui5-webcomponents-react/issues/1088)) ([74b7f63](https://github.com/SAP/ui5-webcomponents-react/commit/74b7f63934b63748d61e11a9d95d2e8a0d4d0013))
+
+
+### Features
+
+* **AnalyticalTable:** add "Interactive" visibleRowCountMode to allow vertical resizing of the table ([#1056](https://github.com/SAP/ui5-webcomponents-react/issues/1056)) ([6295984](https://github.com/SAP/ui5-webcomponents-react/commit/629598469702d794d839a4bf0111645312895665))
+* **AnalyticalTable:** add responsive column options for pop-in or hiding columns ([#1093](https://github.com/SAP/ui5-webcomponents-react/issues/1093)) ([cebbf16](https://github.com/SAP/ui5-webcomponents-react/commit/cebbf16d8394718de404f4653924306f1abdd069))
+* **useI18nBundle:** add new hook to retrieve current i18n bundle ([#1104](https://github.com/SAP/ui5-webcomponents-react/issues/1104)) ([7b38975](https://github.com/SAP/ui5-webcomponents-react/commit/7b389751815409ed48435a853129c27d8da12df9))
+
+
+
+
+
 ## [0.12.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.12.1...v0.12.2) (2020-12-02)
 
 
