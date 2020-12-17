@@ -111,7 +111,6 @@ import { SideNavigation } from './lib/SideNavigation';
 import { SideNavigationItem } from './lib/SideNavigationItem';
 import { SideNavigationSubItem } from './lib/SideNavigationSubItem';
 import { Size } from './lib/Size';
-import { Spinner } from './lib/Spinner';
 import { StandardListItem } from './lib/StandardListItem';
 import { SuggestionItem } from './lib/SuggestionItem';
 import { Switch } from './lib/Switch';
@@ -271,7 +270,6 @@ export {
   SideNavigationItem,
   SideNavigationSubItem,
   Size,
-  Spinner,
   StandardListItem,
   SuggestionItem,
   Switch,
