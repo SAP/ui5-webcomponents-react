@@ -7,8 +7,8 @@ export interface IChartBaseProps<T = ICartesianChartConfig> extends CommonProps 
   dataset?: Record<string, any>[];
 
   /**
-   * With the help of the `children` prop you can add more svg elements to the chart, e.g. if you want to add
-   * a linear gradient to your chart.
+   * With the help of the `children` prop you can add more svg elements to the chart, e.g. if you want to display
+   * a linear gradient.
    */
   children?: ReactNode | ReactNodeArray;
 
