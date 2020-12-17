@@ -52,6 +52,41 @@ const withParameters = i18nBundle.getText('CAROUSEL_DOT_TEXT', 5, 20);
 
 The `Toolbar` was firing an event `onToolbarClick`. This event has been replaced with `onClick`.
 
+#### Device API
+
+The deprecated, class-based `Device` API is now removed. Please don't be shocked by this extensive list, most of the APIs
+were only used internally and are mentioned here for the sake of completeness.
+
+- `Device.os` is replaced by `getOS()` (`'import { getOS } from '@ui5/webcomponents-react-base/lib/Device';`)
+- `Device.browser` is replaced by `getBrowser()` (`'import { getBrowser } from '@ui5/webcomponents-react-base/lib/Device';`)
+- `Device.system` is replaced by `getSystem()` (`'import { getSystem } from '@ui5/webcomponents-react-base/lib/Device';`)
+
+- `Device.support.touch` is replaced by `supportTouch()` (`'import { supportTouch } from '@ui5/webcomponents-react-base/lib/Device';`)
+- `Device.support.pointer` is replaced by `supportPointerEvents()` (`'import { supportPointerEvents } from '@ui5/webcomponents-react-base/lib/Device';`)
+- `Device.support.matchmedia` is replaced by `supportMatchMedia()` (`'import { supportMatchMedia } from '@ui5/webcomponents-react-base/lib/Device';`)
+- `Device.support.matchmedialistener` is replaced by `supportMatchMediaListener()` (`'import { supportMatchMediaListener } from '@ui5/webcomponents-react-base/lib/Device';`)
+- `Device.support.orientation` is replaced by `supportOrientation()` (`'import { supportOrientation } from '@ui5/webcomponents-react-base/lib/Device';`)
+- `Device.support.retina` is replaced by `supportRetina()` (`'import { supportRetina } from '@ui5/webcomponents-react-base/lib/Device';`)
+- `Device.support.websocket` is replaced by `supportWebSocket()` (`'import { supportWebSocket } from '@ui5/webcomponents-react-base/lib/Device';`)
+- `Device.support.input.placeholder` is replaced by `supportInputPlaceholder()` (`'import { supportInputPlaceholder } from '@ui5/webcomponents-react-base/lib/Device';`)
+
+- `Device.orientation.landscape` is replaced by `getOrientation().landscape` (`'import { getOrientation } from '@ui5/webcomponents-react-base/lib/Device';`)
+- `Device.orientation.portrait` is replaced by `getOrientation().portrait` (`'import { getOrientation } from '@ui5/webcomponents-react-base/lib/Device';`)
+- `Device.orientation.attachHandler` is replaced by `attachOrientationChangeHandler` (`'import { attachOrientationChangeHandler } from '@ui5/webcomponents-react-base/lib/Device';`)
+- `Device.orientation.detachHandler` is replaced by `detachOrientationChangeHandler` (`'import { detachOrientationChangeHandler } from '@ui5/webcomponents-react-base/lib/Device';`)
+
+- `Device.resize.width` is replaced by `getWindowSize().width` (`'import { getWindowSize } from '@ui5/webcomponents-react-base/lib/Device';`)
+- `Device.resize.height` is replaced by `getWindowSize().height` (`'import { getWindowSize } from '@ui5/webcomponents-react-base/lib/Device';`)
+- `Device.resize.attachHandler` is replaced by `attachResizeHandler` (`'import { attachResizeHandler } from '@ui5/webcomponents-react-base/lib/Device';`)
+- `Device.resize.detachHandler` is replaced by `detachResizeHandler` (`'import { detachResizeHandler } from '@ui5/webcomponents-react-base/lib/Device';`)
+
+- `Device.media.getCurrentRange` is replaced by `getCurrentRange` (`'import { getCurrentRange } from '@ui5/webcomponents-react-base/lib/Media;'`)
+- `Device.media.hasRangeSet` is replaced by `hasRangeSet` (`'import { hasRangeSet } from '@ui5/webcomponents-react-base/lib/Media;'`)
+- `Device.media.initRangeSet` is replaced by `initRangeSet` (`'import { initRangeSet } from '@ui5/webcomponents-react-base/lib/Media;'`)
+- `Device.media.removeRangeSet` is replaced by `removeRangeSet` (`'import { removeRangeSet } from '@ui5/webcomponents-react-base/lib/Media;'`)
+- `Device.media.attachHandler` is replaced by `attachHandler` (`'import { attachHandler } from '@ui5/webcomponents-react-base/lib/Media;'`)
+- `Device.media.detachHandler` is replaced by `detachHandler` (`'import { detachHandler } from '@ui5/webcomponents-react-base/lib/Media;'`)
+
 <br />
 
 ### Deleted Components

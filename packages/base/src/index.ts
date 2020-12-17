@@ -3,7 +3,7 @@
  */
 import { createComponentStyles } from './lib/createComponentStyles';
 import { CssSizeVariables, CssSizeVariablesNames, cssVariablesStyles } from './lib/CssSizeVariables';
-import { Device } from './lib/Device';
+import * as Device from './lib/Device';
 import { LOG_LEVEL, Logger } from './lib/Logger';
 import * as spacing from './lib/spacing';
 import { StyleClassHelper } from './lib/StyleClassHelper';
