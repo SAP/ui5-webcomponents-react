@@ -299,6 +299,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
             height={20}
           />
         )}
+        {props.children}
       </ColumnChartLib>
     </ChartContainer>
   );

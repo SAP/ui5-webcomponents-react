@@ -275,6 +275,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
             height={20}
           />
         )}
+        {props.children}
       </LineChartLib>
     </ChartContainer>
   );

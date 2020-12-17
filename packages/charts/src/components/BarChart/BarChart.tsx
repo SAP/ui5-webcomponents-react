@@ -280,6 +280,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
             height={20}
           />
         )}
+        {props.children}
       </BarChartLib>
     </ChartContainer>
   );

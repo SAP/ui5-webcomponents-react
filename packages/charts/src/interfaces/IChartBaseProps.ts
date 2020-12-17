@@ -1,9 +1,16 @@
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { ReactNode, ReactNodeArray } from 'react';
 import { ICartesianChartConfig } from './ICartesianChartConfig';
 
 export interface IChartBaseProps<T = ICartesianChartConfig> extends CommonProps {
   loading?: boolean;
   dataset?: Record<string, any>[];
+
+  /**
+   * With the help of the `children` prop you can add more svg elements to the chart, e.g. if you want to add
+   * a linear gradient to your chart.
+   */
+  children?: ReactNode | ReactNodeArray;
 
   noLegend?: boolean;
   onDataPointClick?: (event: CustomEvent) => void;
