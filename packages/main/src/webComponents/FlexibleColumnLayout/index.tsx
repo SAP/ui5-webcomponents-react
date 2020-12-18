@@ -5,6 +5,10 @@ import { FC, ReactNode } from 'react';
 
 export interface FlexibleColumnLayoutPropTypes extends WithWebComponentPropTypes {
   /**
+   * On object of strings that defines several additional accessibility texts for even further customization. It supports the following fields: - `startColumnAccessibleName`: the accessibility name for the `startColumn` region - `midColumnAccessibleName`: the accessibility name for the `midColumn` region - `endColumnAccessibleName`: the accessibility name for the `endColumn` region - `startArrowLeftText`: the text that the first arrow (between the `begin` and `mid` columns) will have when pointing to the left - `startArrowRightText`: the text that the first arrow (between the `begin` and `mid` columns) will have when pointing to the right - `endArrowLeftText`: the text that the second arrow (between the `mid` and `end` columns) will have when pointing to the left - `endArrowRightText`: the text that the second arrow (between the `mid` and `end` columns) will have when pointing to the right
+   */
+  accessibilityTexts?: Record<string, unknown>;
+  /**
    * Defines the columns layout and their proportion.
    *
    * **Note:** The layout also depends on the screen size - one column for screens smaller than 900px, two columns between 900px and 1280px and three columns for sizes bigger than 1280px.
@@ -65,7 +69,7 @@ export interface FlexibleColumnLayoutPropTypes extends WithWebComponentPropTypes
  */
 const FlexibleColumnLayout: FC<FlexibleColumnLayoutPropTypes> = withWebComponent<FlexibleColumnLayoutPropTypes>(
   'ui5-flexible-column-layout',
-  ['layout'],
+  ['accessibilityTexts', 'layout'],
   ['noArrows'],
   ['endColumn', 'midColumn', 'startColumn'],
   ['layout-change']
