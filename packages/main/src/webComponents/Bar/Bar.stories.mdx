@@ -19,13 +19,16 @@ import { GitHubLogo } from '../../../../../shared/stories/GitHub-Mark';
     ...createSelectArgTypes({
       design: BarDesign
     }),
-    ...DocsCommonProps
+    ...DocsCommonProps,
+    startContent: { control: { disable: true } },
+    middleContent: { control: { disable: true } },
+    endContent: { control: { disable: true } }
   }}
   args={{
     design: BarDesign.Auto,
-    contentLeft: 'Content Left',
-    contentMiddle: 'Content Middle',
-    contentRight: 'Content Right'
+    startContent: <span>Start Content</span>,
+    middleContent: <span>Center Content</span>,
+    endContent: <span>End Content</span>
   }}
 />
 
@@ -61,7 +64,7 @@ import { GitHubLogo } from '../../../../../shared/stories/GitHub-Mark';
       return (
         <Bar
           {...args}
-          contentLeft={
+          startContent={
             <>
               <Button icon="nav-back" design={ButtonDesign.Transparent} />
               <img
@@ -71,8 +74,8 @@ import { GitHubLogo } from '../../../../../shared/stories/GitHub-Mark';
               />
             </>
           }
-          contentMiddle={<Title>Bar</Title>}
-          contentRight={
+          middleContent={<Title>Bar</Title>}
+          endContent={
             <>
               <Input placeholder="Search" />
               <Link style={{ marginLeft: '6px' }} href="https://github.com/SAP/ui5-webcomponents-react" target="_blank">

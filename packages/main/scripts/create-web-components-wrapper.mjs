@@ -294,6 +294,19 @@ const getTypeScriptTypeForProperty = (property) => {
         tsType: 'FileList'
       };
     }
+    case 'DataTransfer': {
+      return {
+        importStatement: null,
+        tsType: 'DataTransfer'
+      };
+    }
+    case 'object':
+    case 'Object': {
+      return {
+        importStatement: null,
+        tsType: 'Record<string, unknown>'
+      };
+    }
 
     // react ts types
     case 'Node[]':
@@ -336,6 +349,12 @@ const getTypeScriptTypeForProperty = (property) => {
       return {
         importStatement: "import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';",
         tsType: 'AvatarSize',
+        isEnum: true
+      };
+    case 'BarDesign':
+      return {
+        importStatement: "import { BarDesign } from '@ui5/webcomponents-react/lib/BarDesign';",
+        tsType: 'BarDesign',
         isEnum: true
       };
     case 'BusyIndicatorSize':
