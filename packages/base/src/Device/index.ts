@@ -178,6 +178,8 @@ const handleResizeEvent = () => {
 export * from '@ui5/webcomponents-base/dist/Device';
 // export all support methods
 export * from './Support';
+// export all media methods
+export * from './Media';
 // resize events
 export const getWindowSize = () => {
   return internalWindowSize;

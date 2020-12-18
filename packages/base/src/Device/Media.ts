@@ -253,10 +253,10 @@ export const removeRangeSet = (rangeSetName: string): void => {
   delete initializedQuerySets[rangeSetName];
 };
 
-export const attachHandler = (fnFunction, name: string = DEFAULT_RANGE_SET): void => {
+export const attachMediaHandler = (fnFunction, name: string = DEFAULT_RANGE_SET): void => {
   eventProvider.attachEvent(`media_${name}`, fnFunction);
 };
 
-export const detachHandler = (fnFunction, name: string = DEFAULT_RANGE_SET): void => {
+export const detachMediaHandler = (fnFunction, name: string = DEFAULT_RANGE_SET): void => {
   eventProvider.detachEvent(`media_${name}`, fnFunction);
 };

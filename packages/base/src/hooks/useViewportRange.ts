@@ -1,4 +1,4 @@
-import { getCurrentRange, attachHandler, detachHandler } from '@ui5/webcomponents-react-base/lib/Media';
+import { getCurrentRange, attachMediaHandler, detachMediaHandler } from '@ui5/webcomponents-react-base/lib/Device';
 import { useEffect, useState } from 'react';
 
 export const useViewportRange = (rangeSet: string) => {
@@ -11,10 +11,10 @@ export const useViewportRange = (rangeSet: string) => {
         setCurrentRange(range);
       }
     };
-    attachHandler(handler, rangeSet);
+    attachMediaHandler(handler, rangeSet);
     return () => {
       isMounted = false;
-      detachHandler(handler);
+      detachMediaHandler(handler);
     };
   }, [setCurrentRange]);
 

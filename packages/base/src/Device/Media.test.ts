@@ -1,8 +1,8 @@
 import {
   getCurrentRange,
   RANGESETS,
-  attachHandler,
-  detachHandler,
+  attachMediaHandler,
+  detachMediaHandler,
   initRangeSet,
   removeRangeSet,
   hasRangeSet
@@ -15,9 +15,9 @@ describe('Device - Media', () => {
 
   test('Attach, fire and Detach Event', () => {
     const callback = jest.fn();
-    attachHandler(callback);
+    attachMediaHandler(callback);
     // expect(callback).toBeCalled();
-    detachHandler(callback);
+    detachMediaHandler(callback);
   });
 
   test('Init Custom Range Set and remove it again', () => {
