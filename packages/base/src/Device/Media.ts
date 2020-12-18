@@ -1,5 +1,5 @@
+import EventProvider from '@ui5/webcomponents-base/dist/EventProvider';
 import { Logger } from '@ui5/webcomponents-react-base/lib/Logger';
-import { EventRegistry } from './EventRegistry';
 import { supportMatchMediaListener } from './Support';
 import { changeRootCSSClass, getQuery, matchLegacyBySize } from './utils';
 
@@ -29,6 +29,8 @@ interface RangeSet {
   currentquery?: Query;
   listener?: () => void;
 }
+
+const eventProvider = new EventProvider();
 
 // private helpers
 const initializedQuerySets: Record<string, RangeSet> = {};
@@ -92,7 +94,7 @@ const handleChange = (name: string): void => {
     () => {
       const mParams = checkQueries(name, false);
       if (mParams) {
-        EventRegistry.fireEvent(`media_${name}`, mParams);
+        eventProvider.fireEvent(`media_${name}`, mParams);
       }
     },
     supportMatchMediaListener() ? 0 : 100
@@ -246,14 +248,15 @@ export const removeRangeSet = (rangeSetName: string): void => {
   }
 
   refreshCSSClasses(rangeSetName, '', true);
-  delete EventRegistry.mEventRegistry[`media_${rangeSetName}`];
+  // eslint-disable-next-line no-underscore-dangle
+  delete eventProvider._eventRegistry[`media_${rangeSetName}`];
   delete initializedQuerySets[rangeSetName];
 };
 
-export const attachHandler = (fnFunction, oListener?, name: string = DEFAULT_RANGE_SET): void => {
-  EventRegistry.attachEvent(`media_${name}`, fnFunction, oListener);
+export const attachHandler = (fnFunction, name: string = DEFAULT_RANGE_SET): void => {
+  eventProvider.attachEvent(`media_${name}`, fnFunction);
 };
 
-export const detachHandler = (fnFunction, oListener?, name: string = DEFAULT_RANGE_SET): void => {
-  EventRegistry.detachEvent(`media_${name}`, fnFunction, oListener);
+export const detachHandler = (fnFunction, name: string = DEFAULT_RANGE_SET): void => {
+  eventProvider.detachEvent(`media_${name}`, fnFunction);
 };

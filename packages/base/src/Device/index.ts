@@ -1,8 +1,10 @@
 import '@ui5/webcomponents-react-base/types/UI5Device.d.ts';
 import { getOS, getSystem, supportTouch } from '@ui5/webcomponents-base/dist/Device';
-import { EventRegistry } from './EventRegistry';
+import EventProvider from '@ui5/webcomponents-base/dist/EventProvider';
 import { supportOrientation } from './Support';
 import * as Utils from './utils';
+
+const eventProvider = new EventProvider();
 
 let iResizeTimeout;
 let bOrientationChange = false;
@@ -71,7 +73,7 @@ const initEventListeners = () => {
 // orientation change
 const handleOrientationChange = () => {
   setOrientationInfo();
-  EventRegistry.fireEvent('orientation', { landscape: orientation.landscape, portrait: orientation.portrait });
+  eventProvider.fireEvent('orientation', { landscape: orientation.landscape, portrait: orientation.portrait });
 };
 
 const handleMobileTimeout = () => {
@@ -144,7 +146,7 @@ const handleMobileOrientationResizeChange = (evt) => {
 // RESIZE ONLY WITHOUT ORIENTATION CHANGE
 const handleResizeChange = () => {
   setResizeInfo();
-  EventRegistry.fireEvent('resize', {
+  eventProvider.fireEvent('resize', {
     height: windowSize.height,
     width: windowSize.width
   });
@@ -177,15 +179,15 @@ export * from './Support';
 export const getWindowSize = () => {
   return windowSize;
 };
-export const attachResizeHandler = (fnFunction: (windowSize: IWindowSize) => void, oListener?: unknown): void => {
+export const attachResizeHandler = (fnFunction: (windowSize: IWindowSize) => void): void => {
   if (!eventListenersInitialized) {
     initEventListeners();
   }
-  EventRegistry.attachEvent('resize', fnFunction, oListener);
+  eventProvider.attachEvent('resize', fnFunction);
 };
 
-export const detachResizeHandler = (fnFunction: (windowSize: IWindowSize) => void, oListener?: unknown) => {
-  EventRegistry.detachEvent('resize', fnFunction, oListener);
+export const detachResizeHandler = (fnFunction: (windowSize: IWindowSize) => void) => {
+  eventProvider.detachEvent('resize', fnFunction);
 };
 
 // orientation change events
@@ -193,19 +195,13 @@ export const getOrientation = () => {
   return orientation;
 };
 
-export const attachOrientationChangeHandler = (
-  fnFunction: (orientation: IOrientation) => void,
-  oListener?: unknown
-): void => {
+export const attachOrientationChangeHandler = (fnFunction: (orientation: IOrientation) => void): void => {
   if (!eventListenersInitialized) {
     initEventListeners();
   }
-  EventRegistry.attachEvent('orientation', fnFunction, oListener);
+  eventProvider.attachEvent('orientation', fnFunction);
 };
 
-export const detachOrientationChangeHandler = (
-  fnFunction: (orientation: IOrientation) => void,
-  oListener?: unknown
-) => {
-  EventRegistry.detachEvent('orientation', fnFunction, oListener);
+export const detachOrientationChangeHandler = (fnFunction: (orientation: IOrientation) => void) => {
+  eventProvider.detachEvent('orientation', fnFunction);
 };
