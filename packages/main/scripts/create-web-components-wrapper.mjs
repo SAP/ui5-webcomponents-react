@@ -41,6 +41,8 @@ const PRIVATE_COMPONENTS = new Set([
   'MonthPicker',
   'NotificationListItemBase',
   'Popup',
+  'PickerBase',
+  'SliderBase',
   'TabBase',
   'ThemePropertiesProvider',
   'TreeListItem',
@@ -318,6 +320,12 @@ const getTypeScriptTypeForProperty = (property) => {
         tsType: 'AvatarFitType',
         isEnum: true
       };
+    case 'AvatarGroupType':
+      return {
+        importStatement: "import { AvatarFitType } from '@ui5/webcomponents-react/lib/AvatarGroupType';",
+        tsType: 'AvatarGroupType',
+        isEnum: true
+      };
     case 'AvatarShape':
       return {
         importStatement: "import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';",
@@ -346,6 +354,12 @@ const getTypeScriptTypeForProperty = (property) => {
       return {
         importStatement: "import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';",
         tsType: 'CalendarType',
+        isEnum: true
+      };
+    case 'CalendarSelection':
+      return {
+        importStatement: "import { CalendarSelection } from '@ui5/webcomponents-react/lib/CalendarSelection';",
+        tsType: 'CalendarSelection',
         isEnum: true
       };
     case 'CarouselArrowsPlacement':
@@ -775,7 +789,13 @@ const recursivePropertyResolver = (componentSpec, { properties, slots, events })
     return { properties, slots, events };
   }
 
-  const parentComponent = allWebComponents.find((c) => c.module === componentSpec.extends);
+  console.log(componentSpec.extends);
+  const parentComponent = allWebComponents.find((c) => {
+    if (componentSpec.extends.includes('.')) {
+      return c.name === componentSpec.extends;
+    }
+    return c.module === componentSpec.extends;
+  });
   if (parentComponent) {
     return recursivePropertyResolver(parentComponent, {
       properties,
