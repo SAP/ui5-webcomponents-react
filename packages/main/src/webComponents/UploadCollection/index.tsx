@@ -3,7 +3,7 @@ import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-
 import '@ui5/webcomponents-fiori/dist/UploadCollection';
 import { FC, ReactNode } from 'react';
 
-export interface UploadCollectionPropTypes extends WithWebComponentPropTypes {
+export interface UploadCollectionPropTypes extends Omit<WithWebComponentPropTypes, 'onDrop'> {
   /**
    * Defines the mode of the `UploadCollection`.
    *

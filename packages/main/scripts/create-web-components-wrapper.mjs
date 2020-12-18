@@ -29,7 +29,7 @@ const prettierConfig = {
 const WEB_COMPONENTS_ROOT_DIR = path.join(PATHS.packages, 'main', 'src', 'webComponents');
 const LIB_DIR = path.join(PATHS.packages, 'main', 'src', 'lib');
 
-const KNOWN_EVENTS = new Set(['click', 'input', 'submit', 'change', 'select']);
+const KNOWN_EVENTS = new Set(['click', 'input', 'submit', 'change', 'select', 'drop']);
 
 const PRIVATE_COMPONENTS = new Set([
   'CalendarHeader',
