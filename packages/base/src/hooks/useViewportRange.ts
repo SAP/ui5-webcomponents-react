@@ -11,10 +11,10 @@ export const useViewportRange = (rangeSet: string) => {
         setCurrentRange(range);
       }
     };
-    attachHandler(handler, null, rangeSet);
+    attachHandler(handler, rangeSet);
     return () => {
       isMounted.current = false;
-      detachHandler(handler, null);
+      detachHandler(handler);
     };
   }, [setCurrentRange, isMounted]);
 

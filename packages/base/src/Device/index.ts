@@ -26,12 +26,12 @@ interface IWindowSize {
   width: number;
 }
 
-const windowSize: IWindowSize = {
+const internalWindowSize: IWindowSize = {
   height: 0,
   width: 0
 };
 
-const orientation: IOrientation = {
+const internalOrientation: IOrientation = {
   landscape: false,
   portrait: false
 };
@@ -39,13 +39,13 @@ const orientation: IOrientation = {
 // PRIVATE API
 
 const setResizeInfo = () => {
-  windowSize.width = Utils.getWindowSize()[0];
-  windowSize.height = Utils.getWindowSize()[1];
+  internalWindowSize.width = Utils.getWindowSize()[0];
+  internalWindowSize.height = Utils.getWindowSize()[1];
 };
 
 const setOrientationInfo = () => {
-  orientation.landscape = Utils.isLandscape(true, orientation, bKeyboardOpen);
-  orientation.portrait = !orientation.landscape;
+  internalOrientation.landscape = Utils.isLandscape(true, internalOrientation, bKeyboardOpen);
+  internalOrientation.portrait = !internalOrientation.landscape;
 };
 
 const clearFlags = () => {
@@ -73,7 +73,10 @@ const initEventListeners = () => {
 // orientation change
 const handleOrientationChange = () => {
   setOrientationInfo();
-  eventProvider.fireEvent('orientation', { landscape: orientation.landscape, portrait: orientation.portrait });
+  eventProvider.fireEvent('orientation', {
+    landscape: internalOrientation.landscape,
+    portrait: internalOrientation.portrait
+  });
 };
 
 const handleMobileTimeout = () => {
@@ -147,8 +150,8 @@ const handleMobileOrientationResizeChange = (evt) => {
 const handleResizeChange = () => {
   setResizeInfo();
   eventProvider.fireEvent('resize', {
-    height: windowSize.height,
-    width: windowSize.width
+    height: internalWindowSize.height,
+    width: internalWindowSize.width
   });
 };
 
@@ -158,8 +161,8 @@ const handleResizeTimeout = () => {
 };
 
 const handleResizeEvent = () => {
-  const wasL = orientation.landscape;
-  const isL = Utils.isLandscape(false, orientation, bKeyboardOpen);
+  const wasL = internalOrientation.landscape;
+  const isL = Utils.isLandscape(false, internalOrientation, bKeyboardOpen);
   if (wasL !== isL) {
     handleOrientationChange();
   }
@@ -177,7 +180,7 @@ export * from '@ui5/webcomponents-base/dist/Device';
 export * from './Support';
 // resize events
 export const getWindowSize = () => {
-  return windowSize;
+  return internalWindowSize;
 };
 export const attachResizeHandler = (fnFunction: (windowSize: IWindowSize) => void): void => {
   if (!eventListenersInitialized) {
@@ -192,7 +195,7 @@ export const detachResizeHandler = (fnFunction: (windowSize: IWindowSize) => voi
 
 // orientation change events
 export const getOrientation = () => {
-  return orientation;
+  return internalOrientation;
 };
 
 export const attachOrientationChangeHandler = (fnFunction: (orientation: IOrientation) => void): void => {
