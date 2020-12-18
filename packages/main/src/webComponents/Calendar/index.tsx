@@ -1,4 +1,4 @@
-import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';
+import { CalendarSelection } from '@ui5/webcomponents-react/lib/CalendarSelection';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/Calendar';
 import { FC } from 'react';
@@ -11,25 +11,13 @@ export interface CalendarPropTypes extends WithWebComponentPropTypes {
    */
   hideWeekNumbers?: boolean;
   /**
-   * Determines the maximum date available for selection.
+   * Defines the type of selection used in the calendar component. The property takes as value an object of type `CalendarSelection`. Accepted property values are:
+   *
+   * *   `CalendarSelection.Single` - enables a single date selection.(default value)
+   * *   `CalendarSelection.Range` - enables selection of a date range.
+   * *   `CalendarSelection.Multiple` - enables selection of multiple dates.
    */
-  maxDate?: string;
-  /**
-   * Determines the мinimum date available for selection.
-   */
-  minDate?: string;
-  /**
-   * Defines the calendar type used for display. If not defined, the calendar type of the global configuration is used. Available options are: "Gregorian", "Islamic", "Japanese", "Buddhist" and "Persian".<br/><b>Note:</b> Calendar types other than Gregorian must be imported manually:<br /><code>import "@ui5/webcomponents-localization/dist/features/calendar/{primaryCalendarType}.js";</code>
-   */
-  primaryCalendarType?: CalendarType;
-  /**
-   * Defines the selected dates as UTC timestamps.
-   */
-  selectedDates?: unknown[];
-  /**
-   * Defines the UNIX timestamp - seconds since 00:00:00 UTC on Jan 1, 1970.
-   */
-  timestamp?: number;
+  selection?: CalendarSelection;
   /**
    * Fired when the selected dates changed.
    */
@@ -37,13 +25,13 @@ export interface CalendarPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * The `Calendar` can be used standale to display the years, months, weeks and days, but the main purpose of the `Calendar` is to be used within a `DatePicker`
+ * The `Calendar` can be used stand alone to display the years, months, weeks and days
  *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Calendar" target="_blank">UI5 Web Components Playground</a>
  */
 const Calendar: FC<CalendarPropTypes> = withWebComponent<CalendarPropTypes>(
   'ui5-calendar',
-  ['maxDate', 'minDate', 'primaryCalendarType', 'selectedDates', 'timestamp'],
+  ['selection'],
   ['hideWeekNumbers'],
   [],
   ['selected-dates-change']
@@ -52,7 +40,8 @@ const Calendar: FC<CalendarPropTypes> = withWebComponent<CalendarPropTypes>(
 Calendar.displayName = 'Calendar';
 
 Calendar.defaultProps = {
-  hideWeekNumbers: false
+  hideWeekNumbers: false,
+  selection: CalendarSelection.Single
 };
 
 export { Calendar };
