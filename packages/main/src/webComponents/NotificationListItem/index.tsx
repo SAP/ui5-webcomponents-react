@@ -51,7 +51,7 @@ export interface NotificationListItemPropTypes extends WithWebComponentPropTypes
    */
   footnotes?: ReactNode | ReactNode[];
   /**
-   * Defines the actions, displayed in the top-right area. <br><br> <b>Note:</b> use the <code>NotificationOverflowAction</code> component.
+   * Defines the actions, displayed in the top-right area. <br><br> <b>Note:</b> use the <code>NotificationAction</code> component.
    */
   actions?: ReactNode;
   /**
@@ -63,7 +63,7 @@ export interface NotificationListItemPropTypes extends WithWebComponentPropTypes
 /**
  *<h3>Overview</h3> The <code>NotificationListItem</code> is a type of list item, meant to display notifications. <br>
  The component has a rich set of various properties that allows the user to set <code>avatar</code>, <code>heading</code>, descriptive <code>content</code> and <code>footnotes</code> to fully describe a notification. <br>
- The user can: <ul> <li>display a <code>close</code> button</li> <li>can control whether the <code>heading</code> and <code>description</code> should wrap or truncate and display a <code>ShowMore</code> button to switch between less and more information</li> <li>add custom actions by using the <code>NotificationOverflowAction</code> component</li> </ul>
+ The user can: <ul> <li>display a <code>close</code> button</li> <li>can control whether the <code>heading</code> and <code>description</code> should wrap or truncate and display a <code>ShowMore</code> button to switch between less and more information</li> <li>add custom actions by using the <code>NotificationAction</code> component</li> </ul>
  *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/NotificationListItem" target="_blank">UI5 Web Components Playground</a>
  */

@@ -79,7 +79,7 @@ import { MultiComboBoxItem } from './lib/MultiComboBoxItem';
 import { MultiInput } from './lib/MultiInput';
 import { NotificationListGroupItem } from './lib/NotificationListGroupItem';
 import { NotificationListItem } from './lib/NotificationListItem';
-import { NotificationOverflowAction } from './lib/NotificationOverflowAction';
+import { NotificationAction } from './lib/NotificationAction';
 import { ObjectPage } from './lib/ObjectPage';
 import { ObjectPageMode } from './lib/ObjectPageMode';
 import { ObjectPageSection } from './lib/ObjectPageSection';
@@ -239,7 +239,7 @@ export {
   MultiInput,
   NotificationListGroupItem,
   NotificationListItem,
-  NotificationOverflowAction,
+  NotificationAction,
   ObjectPage,
   ObjectPageMode,
   ObjectPageSection,

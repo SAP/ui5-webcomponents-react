@@ -208,7 +208,7 @@ COMPONENTS_WITHOUT_DEMOS.add('SideNavigationItem');
 COMPONENTS_WITHOUT_DEMOS.add('SideNavigationSubItem');
 COMPONENTS_WITHOUT_DEMOS.add('SuggestionItem');
 COMPONENTS_WITHOUT_DEMOS.add('UploadCollectionItem');
-COMPONENTS_WITHOUT_DEMOS.add('NotificationOverflowAction');
+COMPONENTS_WITHOUT_DEMOS.add('NotificationAction');
 COMPONENTS_WITHOUT_DEMOS.add('WizardStep');
 
 const componentsFromFioriPackage = new Set(fioriWebComponentsSpec.symbols.map((componentSpec) => componentSpec.module));

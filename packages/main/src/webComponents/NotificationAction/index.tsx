@@ -1,9 +1,9 @@
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents-fiori/dist/NotificationOverflowAction';
+import '@ui5/webcomponents-fiori/dist/NotificationAction';
 import { FC } from 'react';
 
-export interface NotificationOverflowActionPropTypes extends WithWebComponentPropTypes {
+export interface NotificationActionPropTypes extends WithWebComponentPropTypes {
   /**
    * Defines the action design.
    *
@@ -23,25 +23,29 @@ export interface NotificationOverflowActionPropTypes extends WithWebComponentPro
    */
   icon?: string;
   /**
-   * Defines the text of the `NotificationOverflowAction`.
+   * Defines the text of the `NotificationAction`.
    */
   text?: string;
 }
 
 /**
- * The `NotificationOverflowAction` represents an abstract action, used in the `NotificationListItem` and the `NotificationListItemBase` items
+ * The `NotificationAction` represents an abstract action, used in the `NotificationListItem` and the `NotificationListItemBase` items
  *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/NotificationOverflowAction" target="_blank">UI5 Web Components Playground</a>
+ * <a href="https://sap.github.io/ui5-webcomponents/playground/components/NotificationAction" target="_blank">UI5 Web Components Playground</a>
  */
-const NotificationOverflowAction: FC<NotificationOverflowActionPropTypes> = withWebComponent<
-  NotificationOverflowActionPropTypes
->('ui5-notification-overflow-action', ['design', 'icon', 'text'], ['disabled'], [], []);
+const NotificationAction: FC<NotificationActionPropTypes> = withWebComponent<NotificationActionPropTypes>(
+  'ui5-notification-action',
+  ['design', 'icon', 'text'],
+  ['disabled'],
+  [],
+  []
+);
 
-NotificationOverflowAction.displayName = 'NotificationOverflowAction';
+NotificationAction.displayName = 'NotificationAction';
 
-NotificationOverflowAction.defaultProps = {
+NotificationAction.defaultProps = {
   design: ButtonDesign.Transparent,
   disabled: false
 };
 
-export { NotificationOverflowAction };
+export { NotificationAction };
