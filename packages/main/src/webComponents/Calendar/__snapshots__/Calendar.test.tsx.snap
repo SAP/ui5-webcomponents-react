@@ -2,6 +2,8 @@
 
 exports[`Calendar Basic Test (generated) 1`] = `
 <DocumentFragment>
-  <ui5-calendar />
+  <ui5-calendar
+    selection="Single"
+  />
 </DocumentFragment>
 `;
