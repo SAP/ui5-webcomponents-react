@@ -322,7 +322,7 @@ const getTypeScriptTypeForProperty = (property) => {
       };
     case 'AvatarGroupType':
       return {
-        importStatement: "import { AvatarFitType } from '@ui5/webcomponents-react/lib/AvatarGroupType';",
+        importStatement: "import { AvatarGroupType } from '@ui5/webcomponents-react/lib/AvatarGroupType';",
         tsType: 'AvatarGroupType',
         isEnum: true
       };
