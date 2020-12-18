@@ -4,6 +4,10 @@ import { FC } from 'react';
 
 export interface ComboBoxItemPropTypes extends WithWebComponentPropTypes {
   /**
+   * Defines the additional text of the `ComboBoxItem`.
+   */
+  additionalText?: string;
+  /**
    * Defines the text of the `ComboBoxItem`.
    */
   text?: string;
@@ -16,7 +20,7 @@ export interface ComboBoxItemPropTypes extends WithWebComponentPropTypes {
  */
 const ComboBoxItem: FC<ComboBoxItemPropTypes> = withWebComponent<ComboBoxItemPropTypes>(
   'ui5-cb-item',
-  ['text'],
+  ['additionalText', 'text'],
   [],
   [],
   []
