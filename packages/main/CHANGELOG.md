@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.127.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.127.1...v0.127.2) (2020-12-21)
+
+
+### Features
+
+* add "object" type to wrapper script, update components ([63c6aa2](https://github.com/SAP/ui5-webcomponents-react/commit/63c6aa25f43be3d9f563756ca130caa68b18def2))
+
+
+
+
+
 ## [0.127.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.127.0...v0.127.1) (2020-12-11)
 
 
