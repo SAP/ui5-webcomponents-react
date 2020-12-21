@@ -261,6 +261,13 @@ const getTypeScriptTypeForProperty = (property) => {
         importStatement: null,
         tsType: 'unknown'
       };
+    case 'object':
+    case 'Object': {
+      return {
+        importStatement: null,
+        tsType: 'Record<string, unknown>'
+      };
+    }
     case 'number':
     case 'Number':
     case 'Integer':

@@ -19,7 +19,7 @@ export interface CalendarPropTypes extends WithWebComponentPropTypes {
    */
   minDate?: string;
   /**
-   * Defines the calendar type used for display. If not defined, the calendar type of the global configuration is used. Available options are: "Gregorian", "Islamic", "Japanese", "Buddhist" and "Persian".<br/><b>Note:</b> Calendar types other than Gregorian must be imported manually:<br /><code>import "@ui5/webcomponents-localization/dist/features/calendar/{primaryCalendarType}.js";</code>
+   * Defines the calendar type used for display. If not defined, the calendar type of the global configuration is used. Available options are: "Gregorian", "Islamic", "Japanese", "Buddhist" and "Persian".<br/>__Note:__ Calendar types other than Gregorian must be imported manually:<br />`import "@ui5/webcomponents-localization/dist/features/calendar/{primaryCalendarType}.js";`
    */
   primaryCalendarType?: CalendarType;
   /**

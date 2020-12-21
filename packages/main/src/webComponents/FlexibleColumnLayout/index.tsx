@@ -5,9 +5,9 @@ import { FC, ReactNode } from 'react';
 
 export interface FlexibleColumnLayoutPropTypes extends WithWebComponentPropTypes {
   /**
-   * Defines the accessibility name for the `endColumn` region.
+   * On object of strings that defines several additional accessibility texts for even further customization. It supports the following fields: - `startColumnAccessibleName`: the accessibility name for the `startColumn` region - `midColumnAccessibleName`: the accessibility name for the `midColumn` region - `endColumnAccessibleName`: the accessibility name for the `endColumn` region - `startArrowLeftText`: the text that the first arrow (between the `begin` and `mid` columns) will have when pointing to the left - `startArrowRightText`: the text that the first arrow (between the `begin` and `mid` columns) will have when pointing to the right - `endArrowLeftText`: the text that the second arrow (between the `mid` and `end` columns) will have when pointing to the left - `endArrowRightText`: the text that the second arrow (between the `mid` and `end` columns) will have when pointing to the right
    */
-  endColumnAccessibleName?: string;
+  accessibilityTexts?: Record<string, unknown>;
   /**
    * Defines the columns layout and their proportion.
    *
@@ -31,17 +31,9 @@ export interface FlexibleColumnLayoutPropTypes extends WithWebComponentPropTypes
    */
   layout?: FCLLayout;
   /**
-   * Defines the accessibility name for the `midColumn` region.
-   */
-  midColumnAccessibleName?: string;
-  /**
    * Defines the visibility of the arrows, used for expanding and shrinking the columns.
    */
   noArrows?: boolean;
-  /**
-   * Defines the accessibility name for the `startColumn` region.
-   */
-  startColumnAccessibleName?: string;
   /**
    * Defines the content in the end column.
    */
@@ -77,7 +69,7 @@ export interface FlexibleColumnLayoutPropTypes extends WithWebComponentPropTypes
  */
 const FlexibleColumnLayout: FC<FlexibleColumnLayoutPropTypes> = withWebComponent<FlexibleColumnLayoutPropTypes>(
   'ui5-flexible-column-layout',
-  ['endColumnAccessibleName', 'layout', 'midColumnAccessibleName', 'startColumnAccessibleName'],
+  ['accessibilityTexts', 'layout'],
   ['noArrows'],
   ['endColumn', 'midColumn', 'startColumn'],
   ['layout-change']

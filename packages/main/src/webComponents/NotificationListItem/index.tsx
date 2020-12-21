@@ -1,17 +1,19 @@
-import '@ui5/webcomponents-fiori/dist/NotificationListItem';
 import { Priority } from '@ui5/webcomponents-react/lib/Priority';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
+import '@ui5/webcomponents-fiori/dist/NotificationListItem';
 import { FC, ReactNode } from 'react';
 
 export interface NotificationListItemPropTypes extends WithWebComponentPropTypes {
   /**
-   * Defines if the <code>notification</code> is new or has been already read. <br><br> <b>Note:</b> if set to <code>false</code> the <code>heading</code> has bold font, if set to true - it has a normal font.
+   * Defines if the `notification` is new or has been already read.
+   *
+   * **Note:** if set to `false` the `heading` has bold font, if set to true - it has a normal font.
    */
   read?: boolean;
   /**
-   * Defines if the <code>heading</code> and <code>decription</code> should wrap, they truncate by default.<br/><br/>
+   * Defines if the `heading` and `description` should wrap, they truncate by default.
    *
-   * <b>Note:</b> by default the <code>heading</code> and <code>decription</code>, and a <code>ShowMore/Less</code> button would be displayed.
+   * **Note:** by default the `heading` and `decription`, and a `ShowMore/Less` button would be displayed.
    */
   wrap?: boolean;
   /**
@@ -19,58 +21,64 @@ export interface NotificationListItemPropTypes extends WithWebComponentPropTypes
    */
   busy?: boolean;
   /**
-   * Defines the <code>heading</code> of the item.
+   * Defines the `heading` of the item.
    */
   heading?: string;
   /**
-   * Defines the <code>priority</code> of the item.
+   * Defines the `priority` of the item.
    */
   priority?: Priority;
   /**
-   * Defines if the <code>close</code> button would be displayed.
+   * Defines if the `close` button would be displayed.
    */
   showClose?: boolean;
   /**
-   * Defines the selected state of the <code>ListItem</code>.
+   * Defines the selected state of the `ListItem`.
    */
   selected?: boolean;
   /**
-   * Defines the avatar, displayed in the <code>NotificationListItem</code>.<br/><br/>
+   * Defines the avatar, displayed in the `NotificationListItem`.
    *
-   * <b>Note:</b> Consider using the <code>Avatar</code> to display icons, initials or images.
+   * **Note:** Consider using the `Avatar` to display icons, initials or images.
    */
   avatar?: ReactNode;
   /**
-   * Defines the content of the <code>NotificationListItem</code>, usually a description of the notification.<br/><br/>
+   * Defines the content of the `NotificationListItem`, usually a description of the notification.
    *
-   * <b>Note:</b> Аlthough this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
+   * **Note:** Аlthough this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Defines the elements, dipalyed in the footer of the of the <code>NotificationListItem</code>.
+   * Defines the elements, dipalyed in the footer of the of the `NotificationListItem`.
    */
   footnotes?: ReactNode | ReactNode[];
   /**
-   * Defines the actions, displayed in the top-right area. <br><br> <b>Note:</b> use the <code>NotificationOverflowAction</code> component.
+   * Defines the actions, displayed in the top-right area.
+   *
+   * **Note:** use the `NotificationOverflowAction` component.
    */
   actions?: ReactNode;
   /**
-   * Fired when the <code>Close</code> button is pressed.
+   * Fired when the `Close` button is pressed.
    */
   onClose?: (event: CustomEvent) => void;
 }
 
 /**
- *<h3>Overview</h3> The <code>NotificationListItem</code> is a type of list item, meant to display notifications. <br>
- The component has a rich set of various properties that allows the user to set <code>avatar</code>, <code>heading</code>, descriptive <code>content</code> and <code>footnotes</code> to fully describe a notification. <br>
- The user can: <ul> <li>display a <code>close</code> button</li> <li>can control whether the <code>heading</code> and <code>description</code> should wrap or truncate and display a <code>ShowMore</code> button to switch between less and more information</li> <li>add custom actions by using the <code>NotificationOverflowAction</code> component</li> </ul>
+ * The `NotificationListItem` is a type of list item, meant to display notifications.
+ * The component has a rich set of various properties that allows the user to set `avatar`, `heading`, descriptive `content` and `footnotes` to fully describe a notification.
+ * The user can:
+ *
+ * *   display a `Close` button
+ * *   can control whether the `heading` and `description` should wrap or truncate and display a `ShowMore` button to switch between less and more information
+ * *   add custom actions by using the `NotificationOverflowAction` component
  *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/NotificationListItem" target="_blank">UI5 Web Components Playground</a>
  */
 const NotificationListItem: FC<NotificationListItemPropTypes> = withWebComponent<NotificationListItemPropTypes>(
   'ui5-li-notification',
   ['heading', 'priority'],
-  ['read', 'busy', 'showClose', 'selected', 'wrap'],
+  ['read', 'wrap', 'busy', 'showClose', 'selected'],
   ['avatar', 'footnotes', 'actions'],
   ['close']
 );
