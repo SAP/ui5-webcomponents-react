@@ -3778,6 +3778,16 @@
     regenerator-runtime "0.12.1"
     url-search-params-polyfill "^5.0.0"
 
+"@ui5/webcomponents-base@0.28.0":
+  version "0.28.0"
+  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-base/-/webcomponents-base-0.28.0.tgz#29f504d0409a26172937a298beb0e64b18c80e65"
+  integrity sha512-mB5M5fhVC2mX94USlTpK5ihtcfAR4KrMKY1q0VS6nfuMLoNGmi/5DfG84CH9q3pXBkJxVJ0oBxWuwxBVBnQ0zA==
+  dependencies:
+    css-vars-ponyfill "^2.1.2"
+    lit-html "^1.0.0"
+    regenerator-runtime "0.12.1"
+    url-search-params-polyfill "^5.0.0"
+
 "@ui5/webcomponents-fiori@1.0.0-rc.10":
   version "1.0.0-rc.10"
   resolved "https://registry.yarnpkg.com/@ui5/webcomponents-fiori/-/webcomponents-fiori-1.0.0-rc.10.tgz#9c1e24f685ba3087b498d9151e9d7a641b20dfa1"
@@ -3794,6 +3804,13 @@
   integrity sha512-jBelOrzupJLrCIWIleo49rwe5HGFP6uRybFTxNDU2QefWiVj4C7FfV2KRX04wjqxJHXLKna3fHneiGKsM4ASOw==
   dependencies:
     "@ui5/webcomponents-base" "0.26.0"
+
+"@ui5/webcomponents-icons@1.0.0-rc.11":
+  version "1.0.0-rc.11"
+  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-icons/-/webcomponents-icons-1.0.0-rc.11.tgz#a5d798ce7068728219beb9579b11321e7f65387a"
+  integrity sha512-Miw4V6c9aR/8Sifebnz2MMOub0TojiQamY4LA1CdIlODc8dfVXo0VAtk5wNGZbcP1oU7n4yAzkudVhlsuHk33A==
+  dependencies:
+    "@ui5/webcomponents-base" "0.28.0"
 
 "@ui5/webcomponents-localization@0.26.0":
   version "0.26.0"
