@@ -1,6 +1,6 @@
-import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import React from 'react';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import React from 'react';
 
 const baseStyles = {
   width: '100%',
