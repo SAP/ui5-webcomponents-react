@@ -159,7 +159,10 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
   const popInColumn = useMemo(
     () =>
       visibleColumns.filter(
-        (item) => item.id !== '__ui5wcr__internal_highlight_column' && item.id !== '__ui5wcr__internal_selection_column'
+        (item) =>
+          item.id !== '__ui5wcr__internal_highlight_column' &&
+          item.id !== '__ui5wcr__internal_selection_column' &&
+          item.id !== '__ui5wcr__internal_navigation_column'
       )[0],
     [visibleColumns]
   );
@@ -231,7 +234,8 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
               let contentToRender;
               if (
                 cell.column.id === '__ui5wcr__internal_highlight_column' ||
-                cell.column.id === '__ui5wcr__internal_selection_column'
+                cell.column.id === '__ui5wcr__internal_selection_column' ||
+                cell.column.id === '__ui5wcr__internal_navigation_column'
               ) {
                 contentToRender = 'Cell';
               } else if (isTreeTable || RowSubComponent) {
