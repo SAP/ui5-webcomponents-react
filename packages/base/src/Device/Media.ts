@@ -30,7 +30,7 @@ interface RangeSet {
   listener?: () => void;
 }
 
-const eventProvider = new EventProvider();
+export const eventProvider = new EventProvider();
 
 // private helpers
 const initializedQuerySets: Record<string, RangeSet> = {};
