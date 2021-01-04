@@ -457,7 +457,7 @@ describe('AnalyticalTable', () => {
 
     const cells = getAllByRole('cell', { hidden: true });
 
-    //highlight row + selection row + custom rows
+    //highlight cells + selection cells + custom cells
     expect(cells.length).toBe(12);
     expect(asFragment()).toMatchSnapshot();
 
@@ -473,7 +473,7 @@ describe('AnalyticalTable', () => {
 
     const cellsWithoutHighlightCol = getAllByRole('cell', { hidden: true });
 
-    //selection row + custom rows
+    //selection cells + custom cells
     expect(cellsWithoutHighlightCol.length).toBe(10);
   });
 
