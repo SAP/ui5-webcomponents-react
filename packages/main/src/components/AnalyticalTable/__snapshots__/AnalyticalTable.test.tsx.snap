@@ -2623,7 +2623,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
 exports[`AnalyticalTable navigation indicator column 1`] = `
 <DocumentFragment>
   <div
-    style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column; visibility: hidden;"
+    style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column;"
   >
     <div
       class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
@@ -2641,17 +2641,17 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
         <div
           class="AnalyticalTable-tableHeaderRow"
           role="rowgroup"
-          style="width: 606px;"
+          style="width: 600px;"
         >
           <div
             class="Resizer-resizer"
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 150px;"
+            style="left: 148.5px;"
           />
           <div
-            style="position: absolute; top: 0px; left: 0px; width: 150px; transform: translateX(0px);"
+            style="position: absolute; top: 0px; left: 0px; width: 148.5px; transform: translateX(0px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -2659,7 +2659,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
               draggable="true"
               id="name"
               role="columnheader"
-              style="position: relative; width: 150px; cursor: pointer;"
+              style="position: relative; width: 148.5px; cursor: pointer;"
             >
               <div
                 class="TableColumnHeader-header"
@@ -2681,10 +2681,10 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 300px;"
+            style="left: 297px;"
           />
           <div
-            style="position: absolute; top: 0px; left: 0px; width: 150px; transform: translateX(150px);"
+            style="position: absolute; top: 0px; left: 0px; width: 148.5px; transform: translateX(148.5px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -2692,7 +2692,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
               draggable="true"
               id="age"
               role="columnheader"
-              style="position: relative; width: 150px; cursor: pointer;"
+              style="position: relative; width: 148.5px; cursor: pointer;"
             >
               <div
                 class="TableColumnHeader-header"
@@ -2714,10 +2714,10 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 450px;"
+            style="left: 445.5px;"
           />
           <div
-            style="position: absolute; top: 0px; left: 0px; width: 150px; transform: translateX(300px);"
+            style="position: absolute; top: 0px; left: 0px; width: 148.5px; transform: translateX(297px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -2725,7 +2725,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
               draggable="true"
               id="friend.name"
               role="columnheader"
-              style="position: relative; width: 150px; cursor: pointer;"
+              style="position: relative; width: 148.5px; cursor: pointer;"
             >
               <div
                 class="TableColumnHeader-header"
@@ -2747,10 +2747,10 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 600px;"
+            style="left: 594px;"
           />
           <div
-            style="position: absolute; top: 0px; left: 0px; width: 150px; transform: translateX(450px);"
+            style="position: absolute; top: 0px; left: 0px; width: 148.5px; transform: translateX(445.5px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -2758,7 +2758,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
               draggable="true"
               id="friend.age"
               role="columnheader"
-              style="position: relative; width: 150px; cursor: pointer;"
+              style="position: relative; width: 148.5px; cursor: pointer;"
             >
               <div
                 class="TableColumnHeader-header"
@@ -2777,7 +2777,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
             </div>
           </div>
           <div
-            style="position: absolute; top: 0px; left: 0px; width: 6px; transform: translateX(600px);"
+            style="position: absolute; top: 0px; left: 0px; width: 6px; transform: translateX(594px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -2806,10 +2806,10 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
         </div>
         <div
           class="AnalyticalTable-tbody"
-          style="position: relative; overflow-y: auto; height: 88px; width: 606px;"
+          style="position: relative; overflow-y: auto; height: 88px; width: 600px;"
         >
           <div
-            style="position: relative; height: 88px; width: 606px;"
+            style="position: relative; height: 88px; width: 600px;"
             tabindex="0"
           >
             <div
@@ -2822,7 +2822,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
                 aria-colindex="1"
                 class="AnalyticalTable-tableCell"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; transform: translateX(0px); top: 0px; left: 0px;"
+                style="width: 148.5px; align-items: center; position: absolute; transform: translateX(0px); top: 0px; left: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -2836,7 +2836,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
                 aria-colindex="2"
                 class="AnalyticalTable-tableCell"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; transform: translateX(150px); top: 0px; left: 0px;"
+                style="width: 148.5px; align-items: center; position: absolute; transform: translateX(148.5px); top: 0px; left: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -2850,7 +2850,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
                 aria-colindex="3"
                 class="AnalyticalTable-tableCell"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; transform: translateX(300px); top: 0px; left: 0px;"
+                style="width: 148.5px; align-items: center; position: absolute; transform: translateX(297px); top: 0px; left: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -2864,7 +2864,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
                 aria-colindex="4"
                 class="AnalyticalTable-tableCell"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; transform: translateX(450px); top: 0px; left: 0px;"
+                style="width: 148.5px; align-items: center; position: absolute; transform: translateX(445.5px); top: 0px; left: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -2878,7 +2878,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
                 aria-colindex="5"
                 class="AnalyticalTable-tableCell"
                 role="cell"
-                style="width: 6px; align-items: center; padding: 0px; position: absolute; transform: translateX(600px); top: 0px; left: 0px;"
+                style="width: 6px; align-items: center; padding: 0px; position: absolute; transform: translateX(594px); top: 0px; left: 0px;"
                 tabindex="-1"
               >
                 <div
@@ -2896,7 +2896,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
                 aria-colindex="1"
                 class="AnalyticalTable-tableCell"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; transform: translateX(0px); top: 0px; left: 0px;"
+                style="width: 148.5px; align-items: center; position: absolute; transform: translateX(0px); top: 0px; left: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -2910,7 +2910,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
                 aria-colindex="2"
                 class="AnalyticalTable-tableCell"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; transform: translateX(150px); top: 0px; left: 0px;"
+                style="width: 148.5px; align-items: center; position: absolute; transform: translateX(148.5px); top: 0px; left: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -2924,7 +2924,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
                 aria-colindex="3"
                 class="AnalyticalTable-tableCell"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; transform: translateX(300px); top: 0px; left: 0px;"
+                style="width: 148.5px; align-items: center; position: absolute; transform: translateX(297px); top: 0px; left: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -2938,7 +2938,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
                 aria-colindex="4"
                 class="AnalyticalTable-tableCell"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; transform: translateX(450px); top: 0px; left: 0px;"
+                style="width: 148.5px; align-items: center; position: absolute; transform: translateX(445.5px); top: 0px; left: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -2952,7 +2952,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
                 aria-colindex="5"
                 class="AnalyticalTable-tableCell"
                 role="cell"
-                style="width: 6px; align-items: center; padding: 0px; position: absolute; transform: translateX(600px); top: 0px; left: 0px;"
+                style="width: 6px; align-items: center; padding: 0px; position: absolute; transform: translateX(594px); top: 0px; left: 0px;"
                 tabindex="-1"
               >
                 <div />
