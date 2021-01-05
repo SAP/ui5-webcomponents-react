@@ -6,6 +6,7 @@ import {
   BASIC,
   CANCEL,
   CLEAR,
+  FILTERS,
   RESTORE,
   SAVE,
   SEARCH_FOR_FILTERS,
@@ -71,6 +72,7 @@ export const FilterDialog = (props) => {
   const saveText = i18nBundle.getText(SAVE);
   const searchForFiltersText = i18nBundle.getText(SEARCH_FOR_FILTERS);
   const showOnFilterBarText = i18nBundle.getText(SHOW_ON_FILTER_BAR);
+  const filtersTitle = i18nBundle.getText(FILTERS);
 
   useEffect(() => {
     if (open) {
@@ -172,13 +174,15 @@ export const FilterDialog = (props) => {
   const renderHeader = useCallback(
     () => (
       <FlexBox direction={FlexBoxDirection.Column} alignItems={FlexBoxAlignItems.Center} className={classes.header}>
-        <Title level={TitleLevel.H4}>Filters</Title>
+        <Title level={TitleLevel.H4} tooltip={filtersTitle}>
+          {filtersTitle}
+        </Title>
         {showSearch && (
           <Input placeholder={searchForFiltersText} onInput={handleSearch} icon={<Icon name="search" />} />
         )}
       </FlexBox>
     ),
-    [classes.header, showSearch, handleSearch]
+    [classes.header, showSearch, handleSearch, filtersTitle]
   );
 
   const renderChildren = useCallback(() => {
@@ -249,7 +253,11 @@ export const FilterDialog = (props) => {
         return (
           <div className={classes.groupContainer} key={item}>
             <FlexBox justifyContent={FlexBoxJustifyContent.SpaceBetween} alignItems={FlexBoxAlignItems.Center}>
-              <Title level={TitleLevel.H5} className={index === 0 ? classes.groupTitle : ''}>
+              <Title
+                level={TitleLevel.H5}
+                className={index === 0 ? classes.groupTitle : ''}
+                tooltip={item === 'default' ? basicText : item}
+              >
                 {item === 'default' ? basicText : item}
               </Title>
               {index === 0 && <Text wrapping={false}>{showOnFilterBarText}</Text>}
@@ -262,7 +270,7 @@ export const FilterDialog = (props) => {
 
   return createPortal(
     <Dialog ref={dialogRef} header={renderHeader()} footer={renderFooter()} onAfterClose={handleClose}>
-      <div className={classes.dialog}>
+      <div className={classes.dialog} role="dialog">
         {renderFBSearch && (
           <div className={classes.fbSearch} ref={searchRef}>
             <span />

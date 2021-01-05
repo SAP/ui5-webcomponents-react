@@ -274,5 +274,63 @@ describe('FilterBar', () => {
     ).toHaveAttribute('disabled', 'true');
   });
 
+  it('Filter Dialog Search', () => {
+    render(
+      <FilterBar showFilterConfiguration showSearchOnFiltersDialog>
+        <FilterGroupItem label="Filter1" groupName="Group1">
+          <Input placeholder="Placeholder" />
+        </FilterGroupItem>
+        <FilterGroupItem label="Filter2" groupName="Group2">
+          <Input placeholder="Placeholder" />
+        </FilterGroupItem>
+        <FilterGroupItem label="Filter3">
+          <Input placeholder="Placeholder" />
+        </FilterGroupItem>
+      </FilterBar>
+    );
+    const filterButton = screen.getByText('Filters');
+    fireEvent.click(filterButton);
+    const searchField = screen.getByPlaceholderText('Search for Filters');
+
+    expect(screen.getAllByText('Filter1').length).toBe(2);
+    expect(screen.getAllByText('Filter2').length).toBe(2);
+    expect(screen.getAllByText('Filter3').length).toBe(2);
+    expect(screen.queryByText('Group1')).toBeInTheDocument();
+    expect(screen.queryByText('Group2')).toBeInTheDocument();
+    expect(screen.queryByText('Basic')).toBeInTheDocument();
+
+    fireEvent.input(searchField, { target: { value: 'Filter1' } });
+    expect(screen.getAllByText('Filter1').length).toBe(2);
+    expect(screen.getAllByText('Filter2').length).toBe(1);
+    expect(screen.getAllByText('Filter3').length).toBe(1);
+    expect(screen.queryByText('Group1')).toBeInTheDocument();
+    expect(screen.queryByText('Group2')).not.toBeInTheDocument();
+    expect(screen.queryByText('Basic')).not.toBeInTheDocument();
+
+    fireEvent.input(searchField, { target: { value: 'Nothing to be found' } });
+    expect(screen.getAllByText('Filter1').length).toBe(1);
+    expect(screen.getAllByText('Filter2').length).toBe(1);
+    expect(screen.getAllByText('Filter3').length).toBe(1);
+    expect(screen.queryByText('Group1')).not.toBeInTheDocument();
+    expect(screen.queryByText('Group2')).not.toBeInTheDocument();
+    expect(screen.queryByText('Basic')).not.toBeInTheDocument();
+
+    fireEvent.input(searchField, { target: { value: 'Filter2' } });
+    expect(screen.getAllByText('Filter1').length).toBe(1);
+    expect(screen.getAllByText('Filter2').length).toBe(2);
+    expect(screen.getAllByText('Filter3').length).toBe(1);
+    expect(screen.queryByText('Group1')).not.toBeInTheDocument();
+    expect(screen.queryByText('Group2')).toBeInTheDocument();
+    expect(screen.queryByText('Basic')).not.toBeInTheDocument();
+
+    fireEvent.input(searchField, { target: { value: '' } });
+    expect(screen.getAllByText('Filter1').length).toBe(2);
+    expect(screen.getAllByText('Filter2').length).toBe(2);
+    expect(screen.getAllByText('Filter3').length).toBe(2);
+    expect(screen.queryByText('Group1')).toBeInTheDocument();
+    expect(screen.queryByText('Group2')).toBeInTheDocument();
+    expect(screen.queryByText('Basic')).toBeInTheDocument();
+  });
+
   createPassThroughPropsTest(FilterBar);
 });
