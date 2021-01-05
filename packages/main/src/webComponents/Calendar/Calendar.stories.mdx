@@ -1,20 +1,26 @@
-import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { Calendar } from '@ui5/webcomponents-react/lib/Calendar';
+import { CalendarSelection } from '@ui5/webcomponents-react/lib/CalendarSelection';
+import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 import '@ui5/webcomponents-localization/dist/features/calendar/Gregorian.js';
 import '@ui5/webcomponents-localization/dist/features/calendar/Buddhist.js';
 import '@ui5/webcomponents-localization/dist/features/calendar/Islamic.js';
 import '@ui5/webcomponents-localization/dist/features/calendar/Japanese.js';
 import '@ui5/webcomponents-localization/dist/features/calendar/Persian.js';
-import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="Inputs / Calendar"
   component={Calendar}
   argTypes={{
+    ...createSelectArgTypes({ selection: CalendarSelection, primaryCalendarType: CalendarType }),
     ...DocsCommonProps
   }}
   args={{
+    primaryCalendarType: CalendarType.Gregorian,
+    selection: CalendarSelection.Single,
     style: {},
     className: '',
     tooltip: '',
@@ -40,3 +46,39 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 ## Properties
 
 <ArgsTable story="." />
+
+## Usage
+
+The user can navigate to a particular date by:
+
+- Pressing over a month inside the months view
+- Pressing over a year inside the years view
+
+The user can confirm a date selection by pressing over a date inside the days view.
+
+## Keyboard Handling
+
+The `Calendar` provides advanced keyboard handling. If the `Calendar` is focused the user can choose a picker by using the following shortcuts:
+
+- \[F4\] - Shows month picker
+- \[SHIFT\] + \[F4\] - Shows year picker
+
+When a picker is showed and focused the user can use the following keyboard shortcuts in order to perform a navigation:  
+\- Day picker:
+
+- \[PAGEUP\] - Navigate to the previous month
+- \[PAGEDOWN\] - Navigate to the next month
+- \[SHIFT\] + \[PAGEUP\] - Navigate to the previous year
+- \[SHIFT\] + \[PAGEDOWN\] - Navigate to the next year
+- \[CTRL\] + \[SHIFT\] + \[PAGEUP\] - Navigate ten years backwards
+- \[CTRL\] + \[SHIFT\] + \[PAGEDOWN\] - Navigate ten years forwards
+
+\- Month picker:
+
+- \[PAGEUP\] - Navigate to the previous month
+- \[PAGEDOWN\] - Navigate to the next month
+
+\- Year picker:
+
+- \[PAGEUP\] - Navigate to the previous year range
+- \[PAGEDOWN\] - Navigate the next year range
