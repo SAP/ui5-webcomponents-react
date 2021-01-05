@@ -332,5 +332,164 @@ describe('FilterBar', () => {
     expect(screen.queryByText('Basic')).toBeInTheDocument();
   });
 
+  it('fire events', () => {
+    const onToggleFilters = jest.fn();
+    const onFiltersDialogSave = jest.fn();
+    const onFiltersDialogClear = jest.fn();
+    const onFiltersDialogCancel = jest.fn();
+    const onFiltersDialogOpen = jest.fn();
+    const onFiltersDialogClose = jest.fn();
+    const onFiltersDialogSelectionChange = jest.fn();
+    const onFiltersDialogSearch = jest.fn();
+    const onClear = jest.fn();
+    const onGo = jest.fn();
+    const onRestore = jest.fn();
+    const { rerender } = render(
+      <FilterBar
+        tooltip="FilterBar-Test"
+        showFilterConfiguration
+        showSearchOnFiltersDialog
+        showClearOnFB
+        showGoOnFB
+        showClearButton
+        showRestoreButton
+        showGo
+        showRestoreOnFB
+        onToggleFilters={onToggleFilters}
+        onClear={onClear}
+        onGo={onGo}
+        onRestore={onRestore}
+        onFiltersDialogOpen={onFiltersDialogOpen}
+        onFiltersDialogClear={onFiltersDialogClear}
+        onFiltersDialogSelectionChange={onFiltersDialogSelectionChange}
+        onFiltersDialogSearch={onFiltersDialogSearch}
+        onFiltersDialogSave={onFiltersDialogSave}
+        onFiltersDialogCancel={onFiltersDialogCancel}
+        onFiltersDialogClose={onFiltersDialogClose}
+      >
+        <FilterGroupItem label="Filter1" groupName="Group1">
+          <Input placeholder="Placeholder" />
+        </FilterGroupItem>
+        <FilterGroupItem label="Filter2" groupName="Group2">
+          <Input placeholder="Placeholder" />
+        </FilterGroupItem>
+        <FilterGroupItem label="Filter3">
+          <Input placeholder="Placeholder" />
+        </FilterGroupItem>
+      </FilterBar>
+    );
+
+    const toggleButton = screen.getByText('Hide Filter Bar');
+    const filterArea = screen.getByTitle('FilterBar-Test').children[1];
+    expect(filterArea).toHaveClass('FilterBar-filterAreaOpen');
+    fireEvent.click(toggleButton);
+    expect(onToggleFilters).toHaveBeenCalledTimes(1);
+    expect(filterArea).toHaveClass('FilterBar-filterAreaClosed');
+    fireEvent.click(toggleButton);
+    expect(onToggleFilters).toHaveBeenCalledTimes(2);
+    expect(filterArea).toHaveClass('FilterBar-filterAreaOpen');
+
+    const clearButton = screen.getByText('Clear');
+    fireEvent.click(clearButton);
+    expect(onClear).toHaveBeenCalledTimes(1);
+
+    const goButton = screen.getByText('Go');
+    fireEvent.click(goButton);
+    expect(onGo).toHaveBeenCalledTimes(1);
+
+    const restoreButton = screen.getByText('Restore');
+    fireEvent.click(restoreButton);
+    expect(onRestore).toHaveBeenCalledTimes(1);
+
+    const filterButton = screen.getByText('Filters');
+    fireEvent.click(filterButton);
+    expect(onFiltersDialogOpen).toHaveBeenCalledTimes(1);
+
+    const dialogClearButton = screen.getAllByText('Clear')[1];
+    fireEvent.click(dialogClearButton);
+    expect(onFiltersDialogClear).toHaveBeenCalledTimes(1);
+
+    const searchField = screen.getByPlaceholderText('Search for Filters');
+    fireEvent.input(searchField, { target: { value: 'some input' } });
+    fireEvent.input(searchField, { target: { value: '' } });
+    expect(onFiltersDialogSearch).toHaveBeenCalledTimes(2);
+
+    expect(filterArea.children.length).toBe(3);
+    const dialogCheckbox1 = screen.getAllByRole('checkbox')[0];
+    const dialogCheckbox2 = screen.getAllByRole('checkbox')[1];
+    fireEvent.change(dialogCheckbox1, { target: { checked: false } });
+    fireEvent.change(dialogCheckbox2, { target: { checked: false } });
+    expect(onFiltersDialogSelectionChange).toHaveBeenCalledTimes(2);
+
+    const dialogSaveButton = screen.getByText('Save');
+    fireEvent.click(dialogSaveButton);
+    expect(onFiltersDialogSave).toHaveBeenCalledTimes(1);
+    expect(onFiltersDialogClose).toHaveBeenCalledTimes(1);
+    expect(filterArea.children.length).toBe(1);
+
+    fireEvent.click(filterButton);
+
+    const dialogCancelButton = screen.getByText('Cancel');
+    fireEvent.click(dialogCancelButton);
+    expect(onFiltersDialogCancel).toHaveBeenCalledTimes(1);
+    expect(onFiltersDialogSave).toHaveBeenCalledTimes(1);
+    expect(onFiltersDialogClose).toHaveBeenCalledTimes(2);
+
+    fireEvent.click(filterButton);
+
+    fireEvent.keyDown(document.getElementsByTagName('ui5-dialog')[0], { key: 'Escape', code: 'Escape' });
+    expect(onFiltersDialogSave).toHaveBeenCalledTimes(1);
+    expect(onFiltersDialogClose).toHaveBeenCalledTimes(3);
+
+    fireEvent.click(filterButton);
+
+    const dialogGoButton = screen.getAllByText('Go')[1];
+    fireEvent.click(dialogGoButton);
+    expect(onGo).toHaveBeenCalledTimes(2);
+    expect(onFiltersDialogSave).toHaveBeenCalledTimes(1);
+    expect(onFiltersDialogClose).toHaveBeenCalledTimes(4);
+
+    rerender(
+      <FilterBar
+        tooltip="FilterBar-Test"
+        showFilterConfiguration
+        showSearchOnFiltersDialog
+        showClearOnFB
+        showGoOnFB
+        showGo={false}
+        showClearButton
+        showRestoreButton
+        showRestoreOnFB
+        onToggleFilters={onToggleFilters}
+        onClear={onClear}
+        onGo={onGo}
+        onRestore={onRestore}
+        onFiltersDialogOpen={onFiltersDialogOpen}
+        onFiltersDialogClear={onFiltersDialogClear}
+        onFiltersDialogSelectionChange={onFiltersDialogSelectionChange}
+        onFiltersDialogSearch={onFiltersDialogSearch}
+        onFiltersDialogSave={onFiltersDialogSave}
+        onFiltersDialogCancel={onFiltersDialogCancel}
+        onFiltersDialogClose={onFiltersDialogClose}
+      >
+        <FilterGroupItem label="Filter1" groupName="Group1">
+          <Input placeholder="Placeholder" />
+        </FilterGroupItem>
+        <FilterGroupItem label="Filter2" groupName="Group2">
+          <Input placeholder="Placeholder" />
+        </FilterGroupItem>
+        <FilterGroupItem label="Filter3">
+          <Input placeholder="Placeholder" />
+        </FilterGroupItem>
+      </FilterBar>
+    );
+
+    fireEvent.click(filterButton);
+
+    fireEvent.keyDown(document.getElementsByTagName('ui5-dialog')[0], { key: 'Escape', code: 'Escape' });
+    expect(onFiltersDialogSave).toHaveBeenCalledTimes(2);
+    expect(onFiltersDialogClose).toHaveBeenCalledTimes(5);
+  });
+
   createPassThroughPropsTest(FilterBar);
 });

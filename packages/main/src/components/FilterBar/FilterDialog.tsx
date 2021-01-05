@@ -7,6 +7,7 @@ import {
   CANCEL,
   CLEAR,
   FILTERS,
+  GO,
   RESTORE,
   SAVE,
   SEARCH_FOR_FILTERS,
@@ -73,6 +74,7 @@ export const FilterDialog = (props) => {
   const searchForFiltersText = i18nBundle.getText(SEARCH_FOR_FILTERS);
   const showOnFilterBarText = i18nBundle.getText(SHOW_ON_FILTER_BAR);
   const filtersTitle = i18nBundle.getText(FILTERS);
+  const goText = i18nBundle.getText(GO);
 
   useEffect(() => {
     if (open) {
@@ -142,8 +144,8 @@ export const FilterDialog = (props) => {
     () => (
       <FlexBox justifyContent={FlexBoxJustifyContent.End} className={classes.footer}>
         {showGoButton && (
-          <Button onClick={handleDialogGo} design={ButtonDesign.Emphasized}>
-            Go
+          <Button onClick={handleDialogGo} design={ButtonDesign.Emphasized} title={goText}>
+            {goText}
           </Button>
         )}
         {showClearButton && <Button onClick={handleClearFilters}>{clearText}</Button>}
@@ -155,6 +157,7 @@ export const FilterDialog = (props) => {
       </FlexBox>
     ),
     [
+      goText,
       showGoButton,
       classes.footer,
       handleDialogGo,
@@ -243,6 +246,7 @@ export const FilterDialog = (props) => {
             <div className={classes.singleFilter} key={`${el.key}-container`}>
               {el}
               <CheckBox
+                role="checkbox"
                 checked={el.props.visibleInFilterBar || el.props.required || el.type.displayName !== 'FilterGroupItem'}
                 onChange={handleCheckBoxChange(el)}
                 disabled={el.props.required || el.type.displayName !== 'FilterGroupItem'}
