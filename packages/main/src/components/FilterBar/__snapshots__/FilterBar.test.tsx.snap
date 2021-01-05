@@ -311,6 +311,40 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
             class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
           >
             <ui5-label
+              title="ComboBox"
+              ui5-label=""
+            >
+              
+          ComboBox
+            </ui5-label>
+          </div>
+          <ui5-combobox
+            filter="StartsWithPerTerm"
+            ui5-combobox=""
+            value-state="None"
+          >
+            <ui5-cb-item
+              text="ComboBoxItem1"
+              ui5-cb-item=""
+            />
+            <ui5-cb-item
+              text="ComboBoxItem2"
+              ui5-cb-item=""
+            />
+          </ui5-combobox>
+        </div>
+      </div>
+      <div
+        class="FilterGroupItem-filterItem"
+        style="width: 12rem;"
+      >
+        <div
+          class="FilterGroupItem-innerFilterItemContainer"
+        >
+          <div
+            class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+          >
+            <ui5-label
               title="SELECT w/ initial selected"
               ui5-label=""
             >

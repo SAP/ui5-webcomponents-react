@@ -1,19 +1,20 @@
+import { fireEvent, render, screen } from '@shared/tests';
 import { createPassThroughPropsTest } from '@shared/tests/utils';
 import { Bar } from '@ui5/webcomponents-react/lib/Bar';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
-import { CheckBox } from '@ui5/webcomponents-react/lib/CheckBox';
 import { DatePicker } from '@ui5/webcomponents-react/lib/DatePicker';
 import { FilterBar } from '@ui5/webcomponents-react/lib/FilterBar';
 import { FilterGroupItem } from '@ui5/webcomponents-react/lib/FilterGroupItem';
 import { Input } from '@ui5/webcomponents-react/lib/Input';
 import { MultiComboBox } from '@ui5/webcomponents-react/lib/MultiComboBox';
+import { MultiComboBoxItem } from '@ui5/webcomponents-react/lib/MultiComboBoxItem';
+import { ComboBox } from '@ui5/webcomponents-react/lib/ComboBox';
+import { ComboBoxItem } from '@ui5/webcomponents-react/lib/ComboBoxItem';
 import { Option } from '@ui5/webcomponents-react/lib/Option';
 import { Select } from '@ui5/webcomponents-react/lib/Select';
 import { Switch } from '@ui5/webcomponents-react/lib/Switch';
-import { VariantManagement } from '@ui5/webcomponents-react/lib/VariantManagement';
-import { MultiComboBoxItem } from '@ui5/webcomponents-react/lib/MultiComboBoxItem';
 import { Toolbar } from '@ui5/webcomponents-react/lib/Toolbar';
-import { fireEvent, render, screen } from '@shared/tests';
+import { VariantManagement } from '@ui5/webcomponents-react/lib/VariantManagement';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 
@@ -67,6 +68,12 @@ describe('FilterBar', () => {
         </FilterGroupItem>
         <FilterGroupItem label="Switch">
           <Switch />
+        </FilterGroupItem>
+        <FilterGroupItem label="ComboBox">
+          <ComboBox>
+            <ComboBoxItem text="ComboBoxItem1" />
+            <ComboBoxItem text="ComboBoxItem2" />
+          </ComboBox>
         </FilterGroupItem>
         <FilterGroupItem label="SELECT w/ initial selected">
           <Select>
