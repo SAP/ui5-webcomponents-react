@@ -5,7 +5,15 @@ import { FC, ReactNode } from 'react';
 
 export interface FlexibleColumnLayoutPropTypes extends WithWebComponentPropTypes {
   /**
-   * On object of strings that defines several additional accessibility texts for even further customization. It supports the following fields: - `startColumnAccessibleName`: the accessibility name for the `startColumn` region - `midColumnAccessibleName`: the accessibility name for the `midColumn` region - `endColumnAccessibleName`: the accessibility name for the `endColumn` region - `startArrowLeftText`: the text that the first arrow (between the `begin` and `mid` columns) will have when pointing to the left - `startArrowRightText`: the text that the first arrow (between the `begin` and `mid` columns) will have when pointing to the right - `endArrowLeftText`: the text that the second arrow (between the `mid` and `end` columns) will have when pointing to the left - `endArrowRightText`: the text that the second arrow (between the `mid` and `end` columns) will have when pointing to the right
+   * On object of strings that defines several additional accessibility texts for even further customization. It supports the following fields:
+   *
+   * *   `startColumnAccessibleName`: the accessibility name for the `startColumn` region
+   * *   `midColumnAccessibleName`: the accessibility name for the `midColumn` region
+   * *   `endColumnAccessibleName`: the accessibility name for the `endColumn` region
+   * *   `startArrowLeftText`: the text that the first arrow (between the `begin` and `mid` columns) will have when pointing to the left
+   * *   `startArrowRightText`: the text that the first arrow (between the `begin` and `mid` columns) will have when pointing to the right
+   * *   `endArrowLeftText`: the text that the second arrow (between the `mid` and `end` columns) will have when pointing to the left
+   * *   `endArrowRightText`: the text that the second arrow (between the `mid` and `end` columns) will have when pointing to the right
    */
   accessibilityTexts?: Record<string, unknown>;
   /**
