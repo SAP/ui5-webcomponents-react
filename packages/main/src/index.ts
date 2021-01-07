@@ -10,6 +10,8 @@ import { AnalyticalTableScrollMode } from './lib/AnalyticalTableScrollMode';
 import { Avatar } from './lib/Avatar';
 import { AvatarBackgroundColor } from './lib/AvatarBackgroundColor';
 import { AvatarFitType } from './lib/AvatarFitType';
+import { AvatarGroup } from './lib/AvatarGroup';
+import { AvatarGroupType } from './lib/AvatarGroupType';
 import { AvatarShape } from './lib/AvatarShape';
 import { AvatarSize } from './lib/AvatarSize';
 import { Badge } from './lib/Badge';
@@ -22,6 +24,7 @@ import { BusyIndicatorSize } from './lib/BusyIndicatorSize';
 import { Button } from './lib/Button';
 import { ButtonDesign } from './lib/ButtonDesign';
 import { Calendar } from './lib/Calendar';
+import { CalendarSelection } from './lib/CalendarSelection';
 import { CalendarType } from './lib/CalendarType';
 import { Card } from './lib/Card';
 import { Carousel } from './lib/Carousel';
@@ -77,9 +80,9 @@ import { MessageStripType } from './lib/MessageStripType';
 import { MultiComboBox } from './lib/MultiComboBox';
 import { MultiComboBoxItem } from './lib/MultiComboBoxItem';
 import { MultiInput } from './lib/MultiInput';
+import { NotificationAction } from './lib/NotificationAction';
 import { NotificationListGroupItem } from './lib/NotificationListGroupItem';
 import { NotificationListItem } from './lib/NotificationListItem';
-import { NotificationAction } from './lib/NotificationAction';
 import { ObjectPage } from './lib/ObjectPage';
 import { ObjectPageMode } from './lib/ObjectPageMode';
 import { ObjectPageSection } from './lib/ObjectPageSection';
@@ -100,6 +103,7 @@ import { ProductSwitch } from './lib/ProductSwitch';
 import { ProductSwitchItem } from './lib/ProductSwitchItem';
 import { ProgressIndicator } from './lib/ProgressIndicator';
 import { RadioButton } from './lib/RadioButton';
+import { RangeSlider } from './lib/RangeSlider';
 import { RatingIndicator } from './lib/RatingIndicator';
 import { ResponsivePopover } from './lib/ResponsivePopover';
 import { SegmentedButton } from './lib/SegmentedButton';
@@ -111,6 +115,7 @@ import { SideNavigation } from './lib/SideNavigation';
 import { SideNavigationItem } from './lib/SideNavigationItem';
 import { SideNavigationSubItem } from './lib/SideNavigationSubItem';
 import { Size } from './lib/Size';
+import { Slider } from './lib/Slider';
 import { StandardListItem } from './lib/StandardListItem';
 import { SuggestionItem } from './lib/SuggestionItem';
 import { Switch } from './lib/Switch';
@@ -168,6 +173,8 @@ export {
   Avatar,
   AvatarBackgroundColor,
   AvatarFitType,
+  AvatarGroup,
+  AvatarGroupType,
   AvatarShape,
   AvatarSize,
   Badge,
@@ -180,6 +187,7 @@ export {
   Button,
   ButtonDesign,
   Calendar,
+  CalendarSelection,
   CalendarType,
   Card,
   Carousel,
@@ -235,9 +243,9 @@ export {
   MultiComboBox,
   MultiComboBoxItem,
   MultiInput,
+  NotificationAction,
   NotificationListGroupItem,
   NotificationListItem,
-  NotificationAction,
   ObjectPage,
   ObjectPageMode,
   ObjectPageSection,
@@ -258,6 +266,7 @@ export {
   ProductSwitchItem,
   ProgressIndicator,
   RadioButton,
+  RangeSlider,
   RatingIndicator,
   ResponsivePopover,
   SegmentedButton,
@@ -269,6 +278,7 @@ export {
   SideNavigationItem,
   SideNavigationSubItem,
   Size,
+  Slider,
   StandardListItem,
   SuggestionItem,
   Switch,
