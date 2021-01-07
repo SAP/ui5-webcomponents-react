@@ -214,7 +214,7 @@ export interface TableProps extends Omit<CommonProps, 'title'> {
    *
    * __Must be memoized!__
    */
-  markNavigatedRow?: (row: Record<any, any>) => boolean;
+  markNavigatedRow?: (row?: Record<any, any>) => boolean;
   /**
    * Fired when the sorting of the rows changes.
    */

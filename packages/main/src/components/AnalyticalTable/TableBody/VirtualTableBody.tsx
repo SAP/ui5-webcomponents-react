@@ -22,7 +22,7 @@ interface VirtualTableBodyProps {
   overscanCountHorizontal: number;
   renderRowSubComponent: (row?: any) => ReactNode;
   popInRowHeight: number;
-  markNavigatedRow?: (row: Record<any, any>) => boolean;
+  markNavigatedRow?: (row?: Record<any, any>) => boolean;
 }
 
 export const VirtualTableBody = (props: VirtualTableBodyProps) => {
