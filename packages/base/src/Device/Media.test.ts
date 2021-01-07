@@ -1,13 +1,13 @@
 import {
   attachMediaHandler,
   detachMediaHandler,
-  eventProvider,
   getCurrentRange,
   hasRangeSet,
   initRangeSet,
   RANGESETS,
   removeRangeSet
 } from './Media';
+import { MediaEventProvider } from './MediaEventProvider';
 
 describe('Device - Media', () => {
   test('getCurrentRangeSet with undefined Range Set', () => {
@@ -17,11 +17,9 @@ describe('Device - Media', () => {
   test('Attach, fire and Detach Event', () => {
     const callback = jest.fn();
     attachMediaHandler(callback);
-    //todo
-    expect(eventProvider.isHandlerAttached('media_Std', callback)).toBeTruthy();
+    expect(MediaEventProvider.isHandlerAttached('media_Std', callback)).toBeTruthy();
     detachMediaHandler(callback);
-    //todo
-    expect(eventProvider.isHandlerAttached('media_Std', callback)).toBeFalsy();
+    expect(MediaEventProvider.isHandlerAttached('media_Std', callback)).toBeFalsy();
   });
 
   test('Init Custom Range Set and remove it again', () => {

@@ -1,5 +1,5 @@
-import EventProvider from '@ui5/webcomponents-base/dist/EventProvider';
 import { Logger } from '@ui5/webcomponents-react-base/lib/Logger';
+import { MediaEventProvider } from './MediaEventProvider';
 import { supportMatchMediaListener } from './Support';
 import { changeRootCSSClass, getQuery, matchLegacyBySize } from './utils';
 
@@ -30,7 +30,7 @@ interface RangeSet {
   listener?: () => void;
 }
 
-export const eventProvider = new EventProvider();
+const eventProvider = MediaEventProvider;
 
 // private helpers
 const initializedQuerySets: Record<string, RangeSet> = {};
