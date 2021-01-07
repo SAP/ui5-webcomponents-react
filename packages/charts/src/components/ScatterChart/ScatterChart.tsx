@@ -216,7 +216,7 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
             tick={<XAxisTicks config={xMeasure} />}
             padding={xAxisPadding}
             height={xAxisHeights[0]}
-            reversed={useIsRTL()}
+            reversed={isRTL}
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             label={xMeasure?.label ? { value: xMeasure?.label, dy: 15, position: 'insideRight' } : 0}
