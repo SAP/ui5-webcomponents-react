@@ -2955,7 +2955,9 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
                 style="width: 6px; align-items: center; padding: 0px; position: absolute; transform: translateX(594px); top: 0px; left: 0px;"
                 tabindex="-1"
               >
-                <div />
+                <div
+                  style="width: 100%; height: 100%;"
+                />
               </div>
             </div>
           </div>

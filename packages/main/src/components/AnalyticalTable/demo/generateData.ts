@@ -67,9 +67,6 @@ const makeEntry = () => ({
   },
   status: [ValueState.None, ValueState.Information, ValueState.Success, ValueState.Warning, ValueState.Error][
     Math.floor(Math.random() * 4)
-  ],
-  navigation: [ValueState.None, ValueState.Information, ValueState.Success, ValueState.Warning, ValueState.Error][
-    Math.floor(Math.random() * 4)
   ]
 });
 

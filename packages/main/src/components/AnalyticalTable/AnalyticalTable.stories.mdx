@@ -21,7 +21,7 @@ import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
 import { DefaultLoadingComponent } from './defaults/LoadingComponent';
 import { DefaultNoDataComponent } from './defaults/NoDataComponent';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 
 <Meta
   title="Data Display / AnalyticalTable"
@@ -102,8 +102,6 @@ import { useEffect, useRef, useState } from 'react';
     selectedRowIds: { 3: true },
     withRowHighlight: true,
     highlightField: 'status',
-    withNavigationHighlight: true,
-    navigationHighlightField: 'navigation',
     infiniteScroll: true,
     infiniteScrollThreshold: 20,
     subRowsKey: 'subRows',
@@ -733,4 +731,68 @@ const COLUMNS = [
   },
   ...
 ];
+```
+
+## Display indicator for navigated rows
+
+To display show the navigation column you need to set `withNavigationHighlight` to `true` and to mark a row as "navigated" the `markNavigatedRow` prop is required.
+With the `markNavigatedRow` event it is possible to define when and how many navigation indicators should be shown.
+
+Click on any of the rows in the example below to display the "navigated" indicator in the navigation-column.
+
+<Canvas>
+  <Story
+    name="with navigation indicator"
+    args={{ withNavigationHighlight: true, selectionMode: TableSelectionMode.MULTI_SELECT, data: generateData(20) }}
+  >
+    {(args) => {
+      const [selectedRow, setSelectedRow] = useState();
+      const onRowSelected = (e) => {
+        setSelectedRow(e.detail.row);
+      };
+      const markNavigatedRow = useCallback(
+        (row) => {
+          return selectedRow?.id === row.id;
+        },
+        [selectedRow]
+      );
+      return (
+        <AnalyticalTable
+          data={args.data}
+          columns={args.columns}
+          withNavigationHighlight
+          selectionMode={args.selectionMode}
+          markNavigatedRow={markNavigatedRow}
+          onRowSelected={onRowSelected}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Code
+
+```jsx
+export const TableWithNavigationIndicators = () => {
+  const [selectedRow, setSelectedRow] = useState();
+  const onRowSelected = (e) => {
+    setSelectedRow(e.detail.row);
+  };
+  const markNavigatedRow = useCallback(
+    (row) => {
+      return selectedRow?.id === row.id;
+    },
+    [selectedRow]
+  );
+  return (
+    <AnalyticalTable
+      data={data}
+      columns={columns}
+      withNavigationHighlight
+      selectionMode={selectionMode}
+      markNavigatedRow={markNavigatedRow}
+      onRowSelected={onRowSelected}
+    />
+  );
+};
 ```

@@ -1,5 +1,4 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
-import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React from 'react';
 
 const baseStyles = {
@@ -7,20 +6,16 @@ const baseStyles = {
   height: '100%'
 };
 
-const StyleMap = new Map();
-StyleMap.set(ValueState.None, baseStyles);
-StyleMap.set(ValueState.Success, { ...baseStyles, backgroundColor: ThemingParameters.sapSuccessColor });
-StyleMap.set(ValueState.Warning, { ...baseStyles, backgroundColor: ThemingParameters.sapWarningColor });
-StyleMap.set(ValueState.Error, { ...baseStyles, backgroundColor: ThemingParameters.sapErrorColor });
-StyleMap.set(ValueState.Information, { ...baseStyles, backgroundColor: ThemingParameters.sapInformationColor });
-
 /*
  * COMPONENTS
  */
 const Header = () => <div style={{ width: '6px' }} />;
 
-const Cell = ({ cell: { value } }) => {
-  return <div style={StyleMap.get(value)} />;
+const Cell = ({ isNavigatedCell }) => {
+  if (isNavigatedCell) {
+    return <div style={{ ...baseStyles, backgroundColor: ThemingParameters.sapList_SelectionBorderColor }} />;
+  }
+  return <div style={baseStyles} />;
 };
 
 /*
@@ -29,8 +24,7 @@ const Cell = ({ cell: { value } }) => {
 const columnsDeps = (deps, { instance: { webComponentsReactProperties } }) => {
   return [
     ...deps,
-    webComponentsReactProperties.withNavigationHighlight,
-    webComponentsReactProperties.navigationHighlightField
+    webComponentsReactProperties.withNavigationHighlight
   ];
 };
 const visibleColumnsDeps = (deps, { instance }) => [
@@ -47,7 +41,7 @@ const visibleColumns = (currentVisibleColumns, { instance: { webComponentsReactP
 };
 
 const columns = (currentColumns, { instance }) => {
-  const { withNavigationHighlight, navigationHighlightField } = instance.webComponentsReactProperties;
+  const { withNavigationHighlight } = instance.webComponentsReactProperties;
 
   if (!withNavigationHighlight) {
     return currentColumns;
@@ -56,7 +50,6 @@ const columns = (currentColumns, { instance }) => {
     ...currentColumns,
     {
       id: '__ui5wcr__internal_navigation_column',
-      accessor: navigationHighlightField,
       disableFilters: true,
       disableSortBy: true,
       disableGroupBy: true,
