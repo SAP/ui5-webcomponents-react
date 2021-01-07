@@ -111,7 +111,6 @@ import { SideNavigation } from './lib/SideNavigation';
 import { SideNavigationItem } from './lib/SideNavigationItem';
 import { SideNavigationSubItem } from './lib/SideNavigationSubItem';
 import { Size } from './lib/Size';
-import { Spinner } from './lib/Spinner';
 import { StandardListItem } from './lib/StandardListItem';
 import { SuggestionItem } from './lib/SuggestionItem';
 import { Switch } from './lib/Switch';
@@ -143,7 +142,6 @@ import { Toast } from './lib/Toast';
 import { ToastPlacement } from './lib/ToastPlacement';
 import { ToggleButton } from './lib/ToggleButton';
 import { Token } from './lib/Token';
-import { Tokenizer } from './lib/Tokenizer';
 import { Toolbar } from './lib/Toolbar';
 import { ToolbarDesign } from './lib/ToolbarDesign';
 import { ToolbarSeparator } from './lib/ToolbarSeparator';
@@ -271,7 +269,6 @@ export {
   SideNavigationItem,
   SideNavigationSubItem,
   Size,
-  Spinner,
   StandardListItem,
   SuggestionItem,
   Switch,
@@ -303,7 +300,6 @@ export {
   ToastPlacement,
   ToggleButton,
   Token,
-  Tokenizer,
   Toolbar,
   ToolbarDesign,
   ToolbarSeparator,

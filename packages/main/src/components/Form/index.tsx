@@ -1,5 +1,5 @@
-import { getCurrentRange } from '@ui5/webcomponents-react-base/lib/Media';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { getCurrentRange } from '@ui5/webcomponents-react-base/lib/Device';
 import { useConsolidatedRef, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { Title } from '@ui5/webcomponents-react/lib/Title';

@@ -407,7 +407,6 @@ const getTypeScriptTypeForProperty = (property) => {
         isEnum: true
       };
     case 'ListItemType': {
-      // TODO Should we use the singular ListItemType here?
       return {
         importStatement: "import { ListItemTypes } from '@ui5/webcomponents-react/lib/ListItemTypes';",
         tsType: 'ListItemTypes',
