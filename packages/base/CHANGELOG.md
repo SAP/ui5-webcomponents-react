@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.13.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.12.4...v0.13.0) (2021-01-07)
+
+
+### chore
+
+* delete deprecated components for v0.13.0 ([#1106](https://github.com/SAP/ui5-webcomponents-react/issues/1106)) ([01814d1](https://github.com/SAP/ui5-webcomponents-react/commit/01814d1e680249653548a4edefecd65dab302981))
+
+
+### Features
+
+* update @ui5/webcomponents to 1.0.0-rc.11 ([#1108](https://github.com/SAP/ui5-webcomponents-react/issues/1108)) ([905dbca](https://github.com/SAP/ui5-webcomponents-react/commit/905dbca96911c1eefdcab212790c2961eda70d5f))
+
+
+### BREAKING CHANGES
+
+* `NotificationOverflowAction` got renamed to `NotificationAction`
+* **BarDesign**: removed BarDesign `Auto` 
+* **Bar**: prop `contentLeft` is now `startContent`
+* **Bar**: prop `contentMiddle` is now `middleContent`
+* **Bar**: prop `contentRight` is now `endContent`
+* removed deprecated `Spinner` component
+* removed deprecated `Tokenizer` component
+* **Toolbar**: removed deprecated `onToolbarClick` in favour of `onClick`
+* **Device**: removed deprecated, class-based API. Please use the [individual util functions](https://sap.github.io/ui5-webcomponents-react/?path=/docs/migration-guide--page#device-api) instead.
+* **Device**: removed the optional `oListener` parameter from all device attach/detach functions (mostly used internally)
+
+
+
+
+
 ## [0.12.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.12.2...v0.12.3) (2020-12-17)
 
 
