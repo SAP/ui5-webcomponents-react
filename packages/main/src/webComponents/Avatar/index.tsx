@@ -102,11 +102,11 @@ const Avatar: FC<AvatarPropTypes> = withWebComponent<AvatarPropTypes>(
 Avatar.displayName = 'Avatar';
 
 Avatar.defaultProps = {
-  backgroundColor: AvatarBackgroundColor.Accent6,
+  // backgroundColor: AvatarBackgroundColor.Accent6, // needs to be removed for avatar group
   imageFitType: AvatarFitType.Cover,
   interactive: false,
-  shape: AvatarShape.Circle,
-  size: AvatarSize.S
+  shape: AvatarShape.Circle
+  // size: AvatarSize.S // needs to be removed for avatar group
 };
 
 export { Avatar };
