@@ -3,7 +3,7 @@ import { NotificationListItem } from '@ui5/webcomponents-react/lib/NotificationL
 import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';
 import { AvatarBackgroundColor } from '@ui5/webcomponents-react/lib/AvatarBackgroundColor';
 import { List } from '@ui5/webcomponents-react/lib/List';
-import { NotificationOverflowAction } from '@ui5/webcomponents-react/lib/NotificationOverflowAction';
+import { NotificationAction } from '@ui5/webcomponents-react/lib/NotificationAction';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
 import { Priority } from '@ui5/webcomponents-react/lib/Priority';
@@ -16,7 +16,7 @@ import '@ui5/webcomponents-icons/dist/employee.js';
 <Meta
   title="Data Display / NotificationListItem"
   component={NotificationListItem}
-  subcomponents={{ NotificationOverflowAction }}
+  subcomponents={{ NotificationAction }}
   argTypes={{
     ...createSelectArgTypes({ priority: Priority }),
     ...DocsCommonProps,
@@ -94,11 +94,11 @@ The component can be used in a standard `List`.
             showClose
             avatar={<Avatar size={AvatarSize.XS} icon="employee" />}
             footnotes={<Label>3 Days</Label>}
-            heading="New order (#2526) with multiple NotificationOverflowAction buttons and close button"
+            heading="New order (#2526) with multiple NotificationAction buttons and close button"
             actions={
               <>
-                <NotificationOverflowAction design={ButtonDesign.Transparent} text="Accept All Requested Information" />
-                <NotificationOverflowAction design={ButtonDesign.Transparent} text="Reject All Requested Information" />
+                <NotificationAction design={ButtonDesign.Transparent} text="Accept All Requested Information" />
+                <NotificationAction design={ButtonDesign.Transparent} text="Reject All Requested Information" />
               </>
             }
           >
@@ -107,11 +107,9 @@ The component can be used in a standard `List`.
           <NotificationListItem
             avatar={<Avatar size={AvatarSize.XS} icon="employee" backgroundColor={AvatarBackgroundColor.Accent1} />}
             footnotes={<Label>3 Days</Label>}
-            heading="New order (#2527) with single NotificationOverflowAction and close button"
+            heading="New order (#2527) with single NotificationAction and close button"
             showClose
-            actions={
-              <NotificationOverflowAction design={ButtonDesign.Transparent} text="Accept All Requested Information" />
-            }
+            actions={<NotificationAction design={ButtonDesign.Transparent} text="Accept All Requested Information" />}
           >
             Short description
           </NotificationListItem>
