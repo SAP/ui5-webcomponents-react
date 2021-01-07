@@ -1,6 +1,5 @@
 import { getEffectiveScopingSuffixForTag } from '@ui5/webcomponents-base/dist/CustomElementsScope';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
-import { deprecationNotice } from '@ui5/webcomponents-react-base/lib/Utils';
 import React, {
   Children,
   cloneElement,
@@ -39,16 +38,6 @@ export const withWebComponent = <T extends Record<string, any>>(
 ) => {
   const WithWebComponent = forwardRef((props: T & WithWebComponentPropTypes, wcRef: RefObject<Ui5DomRef>) => {
     const { className, tooltip, children, ...rest } = props;
-
-    // TODO remove on tokenizer deletion
-    useEffect(() => {
-      if (tagName === 'ui5-tokenizer') {
-        deprecationNotice(
-          'Tokenizer',
-          `The Tokenizer component is deprecated and will be removed in the next release. Please use 'MultiInput' instead.`
-        );
-      }
-    }, []);
 
     const ref = useConsolidatedRef<HTMLElement>(wcRef);
     const eventRegistry = useRef<Record<string, EventHandler>>({});

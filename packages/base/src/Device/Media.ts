@@ -1,6 +1,5 @@
 import { Logger } from '@ui5/webcomponents-react-base/lib/Logger';
-import { deprecationNotice } from '@ui5/webcomponents-react-base/lib/Utils';
-import { EventRegistry } from './EventRegistry';
+import { MediaEventProvider } from './MediaEventProvider';
 import { supportMatchMediaListener } from './Support';
 import { changeRootCSSClass, getQuery, matchLegacyBySize } from './utils';
 
@@ -30,6 +29,8 @@ interface RangeSet {
   currentquery?: Query;
   listener?: () => void;
 }
+
+const eventProvider = MediaEventProvider;
 
 // private helpers
 const initializedQuerySets: Record<string, RangeSet> = {};
@@ -93,7 +94,7 @@ const handleChange = (name: string): void => {
     () => {
       const mParams = checkQueries(name, false);
       if (mParams) {
-        EventRegistry.fireEvent(`media_${name}`, mParams);
+        eventProvider.fireEvent(`media_${name}`, mParams);
       }
     },
     supportMatchMediaListener() ? 0 : 100
@@ -190,8 +191,6 @@ export const initRangeSet = (
   }
 
   if (hasRangeSet(oConfig.name)) {
-    // TODO v0.12.0 - Reactivate this line again once the Device Class is removed.
-    // Logger.info(`Range set ${oConfig.name} has already been initialized`, 'DEVICE.MEDIA');
     return;
   }
 
@@ -249,95 +248,15 @@ export const removeRangeSet = (rangeSetName: string): void => {
   }
 
   refreshCSSClasses(rangeSetName, '', true);
-  delete EventRegistry.mEventRegistry[`media_${rangeSetName}`];
+  // eslint-disable-next-line no-underscore-dangle
+  delete eventProvider._eventRegistry[`media_${rangeSetName}`];
   delete initializedQuerySets[rangeSetName];
 };
 
-export const attachHandler = (fnFunction, oListener?, name: string = DEFAULT_RANGE_SET): void => {
-  EventRegistry.attachEvent(`media_${name}`, fnFunction, oListener);
+export const attachMediaHandler = (fnFunction, name: string = DEFAULT_RANGE_SET): void => {
+  eventProvider.attachEvent(`media_${name}`, fnFunction);
 };
 
-export const detachHandler = (fnFunction, oListener?, name: string = DEFAULT_RANGE_SET): void => {
-  EventRegistry.detachEvent(`media_${name}`, fnFunction, oListener);
+export const detachMediaHandler = (fnFunction, name: string = DEFAULT_RANGE_SET): void => {
+  eventProvider.detachEvent(`media_${name}`, fnFunction);
 };
-
-export class MediaLegacy {
-  constructor() {
-    if (!initializedQuerySets[DEFAULT_RANGE_SET]) {
-      initRangeSet();
-    }
-    if (!initializedQuerySets[RANGESETS.SAP_STANDARD_EXTENDED]) {
-      initRangeSet(RANGESETS.SAP_STANDARD_EXTENDED);
-    }
-  }
-
-  // Public API
-  public RANGESETS = RANGESETS;
-  public predefinedRangeSets = DEFAULT_RANGESETS;
-
-  public getCurrentRange(rangeSetName: string, width: number) {
-    deprecationNotice(
-      'Device.media.getCurrentRange',
-      `Accessing 'Device.media.getCurrentRange' is deprecated and will be removed in the next major version. 
-    Please use 'getCurrentRange' ('import { getCurrentRange } from '@ui5/webcomponents-react-base/lib/Media') instead.`
-    );
-    return getCurrentRange(rangeSetName, width);
-  }
-
-  public hasRangeSet(name) {
-    deprecationNotice(
-      'Device.media.hasRangeSet',
-      `Accessing 'Device.media.hasRangeSet' is deprecated and will be removed in the next major version. 
-    Please use 'hasRangeSet' ('import { hasRangeSet } from '@ui5/webcomponents-react-base/lib/Media') instead.`
-    );
-    return hasRangeSet(name);
-  }
-
-  public initRangeSet(
-    sName?: string,
-    aRangeBorders?: number[],
-    sUnit?: string,
-    aRangeNames?: string[],
-    bSuppressClasses?: boolean
-  ) {
-    deprecationNotice(
-      'Device.media.initRangeSet',
-      `Accessing 'Device.media.initRangeSet' is deprecated and will be removed in the next major version. 
-    Please use 'initRangeSet' ('import { initRangeSet } from '@ui5/webcomponents-react-base/lib/Media') instead.`
-    );
-    return initRangeSet(sName, aRangeBorders, sUnit, aRangeNames, bSuppressClasses);
-  }
-
-  public removeRangeSet(name) {
-    deprecationNotice(
-      'Device.media.removeRangeSet',
-      `Accessing 'Device.media.removeRangeSet' is deprecated and will be removed in the next major version. 
-    Please use 'removeRangeSet' ('import { removeRangeSet } from '@ui5/webcomponents-react-base/lib/Media') instead.`
-    );
-    return removeRangeSet(name);
-  }
-
-  public attachHandler(fnFunction, oListener?, name: string = DEFAULT_RANGE_SET) {
-    deprecationNotice(
-      'Device.media.attachHandler',
-      `Accessing 'Device.media.attachHandler' is deprecated and will be removed in the next major version. 
-    Please use 'attachHandler' ('import { attachHandler } from '@ui5/webcomponents-react-base/lib/Media') instead.`
-    );
-    return attachHandler(fnFunction, oListener, name);
-  }
-
-  public detachHandler(fnFunction, oListener?, name: string = DEFAULT_RANGE_SET) {
-    deprecationNotice(
-      'Device.media.detachHandler',
-      `Accessing 'Device.media.detachHandler' is deprecated and will be removed in the next major version. 
-    Please use 'detachHandler' ('import { detachHandler } from '@ui5/webcomponents-react-base/lib/Media') instead.`
-    );
-    return detachHandler(fnFunction, oListener, name);
-  }
-
-  // Private API
-  private static getRangeInfo = getRangeInfo;
-  private checkQueries = checkQueries;
-  private handleChange = handleChange;
-  matches = matches;
-}

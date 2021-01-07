@@ -62,7 +62,7 @@ describe('Toolbar', () => {
   test('active', () => {
     const onClick = jest.fn();
     const { rerender } = render(
-      <Toolbar data-testid="toolbar" onToolbarClick={onClick}>
+      <Toolbar data-testid="toolbar" onClick={onClick}>
         <Text>Item1</Text>
         <Text>Item2</Text>
         <Text>Item3</Text>
@@ -74,7 +74,7 @@ describe('Toolbar', () => {
     expect(onClick).not.toHaveBeenCalled();
 
     rerender(
-      <Toolbar data-testid="toolbar" onToolbarClick={onClick} active>
+      <Toolbar data-testid="toolbar" onClick={onClick} active>
         <Text>Item1</Text>
         <Text>Item2</Text>
         <Text>Item3</Text>
