@@ -427,6 +427,7 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
             </ui5-label>
           </div>
           <ui5-multi-combobox
+            filter="StartsWithPerTerm"
             ui5-multi-combobox=""
             value-state="None"
           >

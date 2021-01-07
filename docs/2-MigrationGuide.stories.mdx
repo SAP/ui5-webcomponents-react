@@ -50,7 +50,29 @@ const withParameters = i18nBundle.getText('CAROUSEL_DOT_TEXT', 5, 20);
 
 ### API Updates
 
+#### Bar
+
+The `Bar` component has been replaced by the corresponding UI5 Web Component.
+
+Migration Example:
+
+```jsx
+<Bar contentLeft={<span>Left</span>} contentMiddle={<span>Middle</span>} contentRight={<span>Right</span>} />
+```
+
+will become
+
+```jsx
+<Bar startContent={<span>Left</span>} middleContent={<span>Middle</span>} endContent={<span>Right</span>} />
+```
+
+#### Toolbar
+
 The `Toolbar` was firing an event `onToolbarClick`. This event has been replaced with `onClick`.
+
+#### NotificationOverflowAction
+
+`NotificationOverflowAction` has been renamed to `NotificationAction`.
 
 #### Device API
 
