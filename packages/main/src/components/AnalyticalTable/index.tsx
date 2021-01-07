@@ -776,7 +776,7 @@ AnalyticalTable.defaultProps = {
   visibleRows: 15,
   subRowsKey: 'subRows',
   highlightField: 'status',
-  markNavigatedRow: () => {},
+  markNavigatedRow: () => false,
   selectedRowIds: {},
   onGroup: () => {},
   onRowExpandChange: () => {},
