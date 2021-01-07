@@ -1,0 +1,98 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Bar } from '@ui5/webcomponents-react/lib/Bar';
+import { BarDesign } from '@ui5/webcomponents-react/lib/BarDesign';
+import { Button } from '@ui5/webcomponents-react/lib/Button';
+import { Input } from '@ui5/webcomponents-react/lib/Input';
+import { Link } from '@ui5/webcomponents-react/lib/Link';
+import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
+import { Title } from '@ui5/webcomponents-react/lib/Title';
+import '@ui5/webcomponents-icons/dist/nav-back.js';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
+import { GitHubLogo } from '../../../../../shared/stories/GitHub-Mark';
+
+<Meta
+  title="Layouts & Floorplans / Bar"
+  component={Bar}
+  argTypes={{
+    ...createSelectArgTypes({
+      design: BarDesign
+    }),
+    ...DocsCommonProps,
+    startContent: { control: { disable: true } },
+    middleContent: { control: { disable: true } },
+    endContent: { control: { disable: true } }
+  }}
+  args={{
+    design: BarDesign.Auto,
+    startContent: <span>Start Content</span>,
+    middleContent: <span>Center Content</span>,
+    endContent: <span>End Content</span>
+  }}
+/>
+
+<DocsHeader />
+
+<br />
+
+## Example
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return <Bar {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+## Properties
+
+<ArgsTable story="." />
+
+<br />
+
+## Usage
+
+With the use of the design property, you can set the style of the Bar to appear designed like a Header, Subheader, Footer and FloatingFooter.
+
+__Note:__ Do not place a Bar inside another Bar or inside any bar-like component, as this leads to unpredictable behavior.
+
+<br />
+
+# More Examples
+
+<br />
+
+## Bar with custom elements
+
+<Canvas>
+  <Story name="with custom elements">
+    {(args) => {
+      return (
+        <Bar
+          {...args}
+          startContent={
+            <>
+              <Button icon="nav-back" design={ButtonDesign.Transparent} />
+              <img
+                src="https://raw.githubusercontent.com/SAP/ui5-webcomponents-react/master/assets/Logo.png"
+                alt="logo"
+                style={{ marginLeft: '6px', width: '120px' }}
+              />
+            </>
+          }
+          middleContent={<Title>Bar</Title>}
+          endContent={
+            <>
+              <Input placeholder="Search" />
+              <Link style={{ marginLeft: '6px' }} href="https://github.com/SAP/ui5-webcomponents-react" target="_blank">
+                <GitHubLogo />
+              </Link>
+            </>
+          }
+        />
+      );
+    }}
+  </Story>
+</Canvas>

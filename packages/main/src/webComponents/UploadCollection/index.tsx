@@ -3,7 +3,7 @@ import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-
 import '@ui5/webcomponents-fiori/dist/UploadCollection';
 import { FC, ReactNode } from 'react';
 
-export interface UploadCollectionPropTypes extends WithWebComponentPropTypes {
+export interface UploadCollectionPropTypes extends Omit<WithWebComponentPropTypes, 'onDrop'> {
   /**
    * Defines the mode of the `UploadCollection`.
    *
@@ -34,6 +34,12 @@ export interface UploadCollectionPropTypes extends WithWebComponentPropTypes {
    */
   header?: ReactNode | ReactNode[];
   /**
+   * Fired when an element is dropped inside the drag and drop overlay.
+   *
+   * **Note:** The `drop` event is fired only when elements are dropped within the drag and drop overlay and ignored for the other parts of the `UploadCollection`.
+   */
+  onDrop?: (event: CustomEvent<{ dataTransfer: DataTransfer }>) => void;
+  /**
    * Fired when the Delete button of any item is pressed.
    *
    * **Note:** A Delete button is displayed on each item, when the `UploadCollection` `mode` property is set to `Delete`.
@@ -55,7 +61,7 @@ const UploadCollection: FC<UploadCollectionPropTypes> = withWebComponent<UploadC
   ['mode', 'noDataDescription', 'noDataText'],
   ['noDnd'],
   ['header'],
-  ['file-deleted', 'selection-change']
+  ['drop', 'file-deleted', 'selection-change']
 );
 
 UploadCollection.displayName = 'UploadCollection';

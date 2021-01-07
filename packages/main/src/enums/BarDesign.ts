@@ -1,22 +1,29 @@
 export enum BarDesign {
   /**
-   * Base styling.
-   */
-  Auto = 'Auto',
-  /**
-   * The bar will be styled like a footer of the page.
-   */
-  Footer = 'Footer',
-  /**
-   * The bar will be styled like a header of the page.
+   * Default type
+   * @public
+   * @type {Header}
    */
   Header = 'Header',
+
   /**
-   * The bar will be styled like a subheader of the page.
+   * Subheader type
+   * @public
+   * @type {Subheader}
    */
-  SubHeader = 'SubHeader',
+  Subheader = 'Subheader',
+
   /**
-   * The bar will be styled like a floating footer of the page.
+   * Footer type
+   * @public
+   * @type {Footer}
+   */
+  Footer = 'Footer',
+
+  /**
+   * Floating Footer type - there is visible border on all sides
+   * @public
+   * @type {FloatingFooter}
    */
   FloatingFooter = 'FloatingFooter'
 }
