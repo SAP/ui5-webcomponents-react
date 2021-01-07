@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotificationAction Basic Test (generated) 1`] = `
+<DocumentFragment>
+  <ui5-notification-action
+    design="Transparent"
+    ui5-notification-action=""
+  />
+</DocumentFragment>
+`;

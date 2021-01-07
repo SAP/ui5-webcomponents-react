@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AvatarGroup Basic Test (generated) 1`] = `
+<DocumentFragment>
+  <ui5-avatar-group
+    avatar-size="S"
+    type="Group"
+    ui5-avatar-group=""
+  />
+</DocumentFragment>
+`;

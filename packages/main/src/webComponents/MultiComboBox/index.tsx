@@ -15,6 +15,10 @@ export interface MultiComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 
    */
   disabled?: boolean;
   /**
+   * Defines the filter type of the `MultiComboBox`. Available options are: `StartsWithPerTerm`, `None`.
+   */
+  filter?: string;
+  /**
    * Indicates whether the dropdown is open. True if the dropdown is open, false otherwise.
    */
   open?: boolean;
@@ -101,7 +105,7 @@ export interface MultiComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 
  */
 const MultiComboBox: FC<MultiComboBoxPropTypes> = withWebComponent<MultiComboBoxPropTypes>(
   'ui5-multi-combobox',
-  ['placeholder', 'value', 'valueState'],
+  ['filter', 'placeholder', 'value', 'valueState'],
   ['allowCustomValues', 'disabled', 'open', 'readonly', 'required'],
   ['icon', 'valueStateMessage'],
   ['change', 'input', 'open-change', 'selection-change']
@@ -112,6 +116,7 @@ MultiComboBox.displayName = 'MultiComboBox';
 MultiComboBox.defaultProps = {
   allowCustomValues: false,
   disabled: false,
+  filter: 'StartsWithPerTerm',
   open: false,
   readonly: false,
   required: false,

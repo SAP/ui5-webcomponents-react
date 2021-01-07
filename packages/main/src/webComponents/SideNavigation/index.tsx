@@ -16,13 +16,23 @@ export interface SideNavigationPropTypes extends WithWebComponentPropTypes {
    */
   fixedItems?: unknown;
   /**
+   * Defines the header of the `SideNavigation`.
+   *
+   * **Note:** The header is displayed when the component is expanded - the property `collapsed` is false;
+   */
+  header?: unknown;
+  /**
    * Fired when the selection has changed via user interaction
    */
   onSelectionChange?: (event: CustomEvent<{ item: ReactNode }>) => void;
 }
 
 /**
- * The `SideNavigation` is used as a standard menu in applications. It consists of two containers: the main navigation section (top-aligned) and the secondary section (bottom-aligned). Usually the main navigation section is related to the user’s current work context, whereas the secondary section is mostly used to link additional information that may be of interest (legal information, developer communities, external help, contact information and so on).
+ * The `SideNavigation` is used as a standard menu in applications. It consists of three containers: header (top-aligned), main navigation section (top-aligned) and the secondary section (bottom-aligned).
+ *
+ * *   The header is meant for displaying user related information - profile data, avatar, etc.
+ * *   The main navigation section is related to the user’s current work context
+ * *   The secondary section is mostly used to link additional information that may be of interest (legal information, developer communities, external help, contact information and so on).
  *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/SideNavigation" target="_blank">UI5 Web Components Playground</a>
  */
@@ -30,7 +40,7 @@ const SideNavigation: FC<SideNavigationPropTypes> = withWebComponent<SideNavigat
   'ui5-side-navigation',
   [],
   ['collapsed'],
-  ['fixedItems'],
+  ['fixedItems', 'header'],
   ['selection-change']
 );
 
