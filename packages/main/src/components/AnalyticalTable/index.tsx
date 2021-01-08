@@ -210,7 +210,7 @@ export interface TableProps extends Omit<CommonProps, 'title'> {
   // events
 
   /**
-   * This event can be used to programmatically show an indicator for navigated rows. It has no effect if `withNavigationHighlight` is not set.
+   * This callback can be used to programmatically show an indicator for navigated rows. It has no effect if `withNavigationHighlight` is not set.
    *
    * __Must be memoized!__
    */
