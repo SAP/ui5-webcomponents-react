@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.13.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.12.4...v0.13.0) (2021-01-07)
+
+
+### Features
+
+* update @ui5/webcomponents to 1.0.0-rc.11 ([#1108](https://github.com/SAP/ui5-webcomponents-react/issues/1108)) ([905dbca](https://github.com/SAP/ui5-webcomponents-react/commit/905dbca96911c1eefdcab212790c2961eda70d5f))
+
+
+### BREAKING CHANGES
+
+* `NotificationOverflowAction` got renamed to `NotificationAction`
+* **BarDesign**: removed BarDesign `Auto` 
+* **Bar**: prop `contentLeft` is now `startContent`
+* **Bar**: prop `contentMiddle` is now `middleContent`
+* **Bar**: prop `contentRight` is now `endContent`
+
+
+
+
+
 ## [0.12.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.12.3...v0.12.4) (2020-12-17)
 
 

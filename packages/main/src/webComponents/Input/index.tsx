@@ -90,6 +90,7 @@ export interface InputPropTypes extends Omit<WithWebComponentPropTypes, 'onChang
    *  </code>
    * </pre>
    *
+   *
    * **Note:** The suggestion would be displayed only if the `showSuggestions` property is set to `true`.
    *
    * **Note:** The `<SuggestionItem>` is recommended to be used as a suggestion item. Importing the Input Suggestions Support feature:

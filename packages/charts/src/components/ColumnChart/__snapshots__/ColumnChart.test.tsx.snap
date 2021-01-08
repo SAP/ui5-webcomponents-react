@@ -146,6 +146,7 @@ exports[`ColumnChart Renders with data 1`] = `
                   y2="350"
                 />
                 <g
+                  style="direction: ltr;"
                   transform="translate(35.541666666666664,368)"
                 >
                   <text
@@ -176,6 +177,7 @@ exports[`ColumnChart Renders with data 1`] = `
                   y2="350"
                 />
                 <g
+                  style="direction: ltr;"
                   transform="translate(64.625,368)"
                 >
                   <text
@@ -206,6 +208,7 @@ exports[`ColumnChart Renders with data 1`] = `
                   y2="350"
                 />
                 <g
+                  style="direction: ltr;"
                   transform="translate(93.70833333333333,368)"
                 >
                   <text
@@ -236,6 +239,7 @@ exports[`ColumnChart Renders with data 1`] = `
                   y2="350"
                 />
                 <g
+                  style="direction: ltr;"
                   transform="translate(122.79166666666667,368)"
                 >
                   <text
@@ -266,6 +270,7 @@ exports[`ColumnChart Renders with data 1`] = `
                   y2="350"
                 />
                 <g
+                  style="direction: ltr;"
                   transform="translate(151.87499999999997,368)"
                 >
                   <text
@@ -296,6 +301,7 @@ exports[`ColumnChart Renders with data 1`] = `
                   y2="350"
                 />
                 <g
+                  style="direction: ltr;"
                   transform="translate(180.95833333333331,368)"
                 >
                   <text
@@ -326,6 +332,7 @@ exports[`ColumnChart Renders with data 1`] = `
                   y2="350"
                 />
                 <g
+                  style="direction: ltr;"
                   transform="translate(210.04166666666666,368)"
                 >
                   <text
@@ -356,6 +363,7 @@ exports[`ColumnChart Renders with data 1`] = `
                   y2="350"
                 />
                 <g
+                  style="direction: ltr;"
                   transform="translate(239.12499999999997,368)"
                 >
                   <text
@@ -386,6 +394,7 @@ exports[`ColumnChart Renders with data 1`] = `
                   y2="350"
                 />
                 <g
+                  style="direction: ltr;"
                   transform="translate(268.2083333333333,368)"
                 >
                   <text
@@ -416,6 +425,7 @@ exports[`ColumnChart Renders with data 1`] = `
                   y2="350"
                 />
                 <g
+                  style="direction: ltr;"
                   transform="translate(297.2916666666667,368)"
                 >
                   <text
@@ -446,6 +456,7 @@ exports[`ColumnChart Renders with data 1`] = `
                   y2="350"
                 />
                 <g
+                  style="direction: ltr;"
                   transform="translate(326.375,368)"
                 >
                   <text
@@ -476,6 +487,7 @@ exports[`ColumnChart Renders with data 1`] = `
                   y2="350"
                 />
                 <g
+                  style="direction: ltr;"
                   transform="translate(355.4583333333333,368)"
                 >
                   <text

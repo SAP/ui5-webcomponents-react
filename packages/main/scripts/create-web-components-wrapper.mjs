@@ -29,7 +29,7 @@ const prettierConfig = {
 const WEB_COMPONENTS_ROOT_DIR = path.join(PATHS.packages, 'main', 'src', 'webComponents');
 const LIB_DIR = path.join(PATHS.packages, 'main', 'src', 'lib');
 
-const KNOWN_EVENTS = new Set(['click', 'input', 'submit', 'change', 'select']);
+const KNOWN_EVENTS = new Set(['click', 'input', 'submit', 'change', 'select', 'drop']);
 
 const PRIVATE_COMPONENTS = new Set([
   'CalendarHeader',
@@ -41,6 +41,8 @@ const PRIVATE_COMPONENTS = new Set([
   'MonthPicker',
   'NotificationListItemBase',
   'Popup',
+  'PickerBase',
+  'SliderBase',
   'TabBase',
   'ThemePropertiesProvider',
   'TreeListItem',
@@ -206,7 +208,7 @@ COMPONENTS_WITHOUT_DEMOS.add('SideNavigationItem');
 COMPONENTS_WITHOUT_DEMOS.add('SideNavigationSubItem');
 COMPONENTS_WITHOUT_DEMOS.add('SuggestionItem');
 COMPONENTS_WITHOUT_DEMOS.add('UploadCollectionItem');
-COMPONENTS_WITHOUT_DEMOS.add('NotificationOverflowAction');
+COMPONENTS_WITHOUT_DEMOS.add('NotificationAction');
 COMPONENTS_WITHOUT_DEMOS.add('WizardStep');
 
 const componentsFromFioriPackage = new Set(fioriWebComponentsSpec.symbols.map((componentSpec) => componentSpec.module));
@@ -292,6 +294,19 @@ const getTypeScriptTypeForProperty = (property) => {
         tsType: 'FileList'
       };
     }
+    case 'DataTransfer': {
+      return {
+        importStatement: null,
+        tsType: 'DataTransfer'
+      };
+    }
+    case 'object':
+    case 'Object': {
+      return {
+        importStatement: null,
+        tsType: 'Record<string, unknown>'
+      };
+    }
 
     // react ts types
     case 'Node[]':
@@ -318,6 +333,12 @@ const getTypeScriptTypeForProperty = (property) => {
         tsType: 'AvatarFitType',
         isEnum: true
       };
+    case 'AvatarGroupType':
+      return {
+        importStatement: "import { AvatarGroupType } from '@ui5/webcomponents-react/lib/AvatarGroupType';",
+        tsType: 'AvatarGroupType',
+        isEnum: true
+      };
     case 'AvatarShape':
       return {
         importStatement: "import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';",
@@ -328,6 +349,12 @@ const getTypeScriptTypeForProperty = (property) => {
       return {
         importStatement: "import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';",
         tsType: 'AvatarSize',
+        isEnum: true
+      };
+    case 'BarDesign':
+      return {
+        importStatement: "import { BarDesign } from '@ui5/webcomponents-react/lib/BarDesign';",
+        tsType: 'BarDesign',
         isEnum: true
       };
     case 'BusyIndicatorSize':
@@ -346,6 +373,12 @@ const getTypeScriptTypeForProperty = (property) => {
       return {
         importStatement: "import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';",
         tsType: 'CalendarType',
+        isEnum: true
+      };
+    case 'CalendarSelection':
+      return {
+        importStatement: "import { CalendarSelection } from '@ui5/webcomponents-react/lib/CalendarSelection';",
+        tsType: 'CalendarSelection',
         isEnum: true
       };
     case 'CarouselArrowsPlacement':
@@ -374,7 +407,6 @@ const getTypeScriptTypeForProperty = (property) => {
         isEnum: true
       };
     case 'ListItemType': {
-      // TODO Should we use the singular ListItemType here?
       return {
         importStatement: "import { ListItemTypes } from '@ui5/webcomponents-react/lib/ListItemTypes';",
         tsType: 'ListItemTypes',
@@ -775,7 +807,13 @@ const recursivePropertyResolver = (componentSpec, { properties, slots, events })
     return { properties, slots, events };
   }
 
-  const parentComponent = allWebComponents.find((c) => c.module === componentSpec.extends);
+  console.log(componentSpec.extends);
+  const parentComponent = allWebComponents.find((c) => {
+    if (componentSpec.extends.includes('.')) {
+      return c.name === componentSpec.extends;
+    }
+    return c.module === componentSpec.extends;
+  });
   if (parentComponent) {
     return recursivePropertyResolver(parentComponent, {
       properties,

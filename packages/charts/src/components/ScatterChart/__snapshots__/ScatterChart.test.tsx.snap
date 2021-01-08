@@ -148,6 +148,7 @@ exports[`Scatter Chart Renders with data 1`] = `
                   y2="350"
                 />
                 <g
+                  style="direction: ltr;"
                   transform="translate(56,368)"
                 >
                   <text
@@ -179,6 +180,7 @@ exports[`Scatter Chart Renders with data 1`] = `
                   y2="350"
                 />
                 <g
+                  style="direction: ltr;"
                   transform="translate(128.25,368)"
                 >
                   <text
@@ -210,6 +212,7 @@ exports[`Scatter Chart Renders with data 1`] = `
                   y2="350"
                 />
                 <g
+                  style="direction: ltr;"
                   transform="translate(200.5,368)"
                 >
                   <text
@@ -241,6 +244,7 @@ exports[`Scatter Chart Renders with data 1`] = `
                   y2="350"
                 />
                 <g
+                  style="direction: ltr;"
                   transform="translate(272.75,368)"
                 >
                   <text
@@ -272,6 +276,7 @@ exports[`Scatter Chart Renders with data 1`] = `
                   y2="350"
                 />
                 <g
+                  style="direction: ltr;"
                   transform="translate(345,368)"
                 >
                   <text

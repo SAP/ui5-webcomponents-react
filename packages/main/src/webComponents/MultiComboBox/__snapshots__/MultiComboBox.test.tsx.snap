@@ -3,6 +3,7 @@
 exports[`MultiComboBox Basic Test (generated) 1`] = `
 <DocumentFragment>
   <ui5-multi-combobox
+    filter="StartsWithPerTerm"
     value-state="None"
   />
 </DocumentFragment>

@@ -1,4 +1,5 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/components/ChartContainer';
 import { PieChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/PieChartPlaceholder';
@@ -42,6 +43,8 @@ const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, r
     [onDataPointClick]
   );
 
+  const passThroughProps = usePassThroughHtmlProps(props);
+
   return (
     <ChartContainer
       dataset={dataset}
@@ -52,6 +55,7 @@ const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, r
       tooltip={tooltip}
       slot={slot}
       resizeDebounce={250}
+      {...passThroughProps}
     >
       <RadialBarChart
         margin={radialChartMargin}

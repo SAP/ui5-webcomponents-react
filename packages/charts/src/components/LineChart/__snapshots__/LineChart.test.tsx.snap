@@ -146,6 +146,7 @@ exports[`LineChart Renders with data 1`] = `
                   y2="350"
                 />
                 <g
+                  style="direction: ltr;"
                   transform="translate(46,368)"
                 >
                   <text
@@ -176,6 +177,7 @@ exports[`LineChart Renders with data 1`] = `
                   y2="350"
                 />
                 <g
+                  style="direction: ltr;"
                   transform="translate(73.18181818181819,368)"
                 >
                   <text
@@ -206,6 +208,7 @@ exports[`LineChart Renders with data 1`] = `
                   y2="350"
                 />
                 <g
+                  style="direction: ltr;"
                   transform="translate(100.36363636363637,368)"
                 >
                   <text
@@ -236,6 +239,7 @@ exports[`LineChart Renders with data 1`] = `
                   y2="350"
                 />
                 <g
+                  style="direction: ltr;"
                   transform="translate(127.54545454545455,368)"
                 >
                   <text
@@ -266,6 +270,7 @@ exports[`LineChart Renders with data 1`] = `
                   y2="350"
                 />
                 <g
+                  style="direction: ltr;"
                   transform="translate(154.72727272727275,368)"
                 >
                   <text
@@ -296,6 +301,7 @@ exports[`LineChart Renders with data 1`] = `
                   y2="350"
                 />
                 <g
+                  style="direction: ltr;"
                   transform="translate(181.9090909090909,368)"
                 >
                   <text
@@ -326,6 +332,7 @@ exports[`LineChart Renders with data 1`] = `
                   y2="350"
                 />
                 <g
+                  style="direction: ltr;"
                   transform="translate(209.0909090909091,368)"
                 >
                   <text
@@ -356,6 +363,7 @@ exports[`LineChart Renders with data 1`] = `
                   y2="350"
                 />
                 <g
+                  style="direction: ltr;"
                   transform="translate(236.27272727272728,368)"
                 >
                   <text
@@ -386,6 +394,7 @@ exports[`LineChart Renders with data 1`] = `
                   y2="350"
                 />
                 <g
+                  style="direction: ltr;"
                   transform="translate(263.4545454545455,368)"
                 >
                   <text
@@ -416,6 +425,7 @@ exports[`LineChart Renders with data 1`] = `
                   y2="350"
                 />
                 <g
+                  style="direction: ltr;"
                   transform="translate(290.6363636363636,368)"
                 >
                   <text
@@ -446,6 +456,7 @@ exports[`LineChart Renders with data 1`] = `
                   y2="350"
                 />
                 <g
+                  style="direction: ltr;"
                   transform="translate(317.8181818181818,368)"
                 >
                   <text
@@ -476,6 +487,7 @@ exports[`LineChart Renders with data 1`] = `
                   y2="350"
                 />
                 <g
+                  style="direction: ltr;"
                   transform="translate(345,368)"
                 >
                   <text

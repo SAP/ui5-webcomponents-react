@@ -1,5 +1,5 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
+import { useIsRTL, usePassThroughHtmlProps, useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/hooks';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/components/ChartContainer';
 import { ChartDataLabel } from '@ui5/webcomponents-react-charts/lib/components/ChartDataLabel';
@@ -162,6 +162,8 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
   const [yAxisWidth, legendPosition] = useLongestYAxisLabel(dataset, measures);
   const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
   const xAxisHeights = useObserveXAxisHeights(chartRef, props.dimensions.length);
+  const passThroughProps = usePassThroughHtmlProps(props);
+  const isRTL = useIsRTL(chartRef);
 
   return (
     <ChartContainer
@@ -174,6 +176,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
       tooltip={tooltip}
       slot={slot}
       resizeDebounce={chartConfig.resizeDebounce}
+      {...passThroughProps}
     >
       <LineChartLib
         margin={marginChart}
@@ -200,10 +203,12 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
                 height={xAxisHeights[index]}
                 padding={xAxisPadding}
                 allowDuplicatedCategory={index === 0}
+                reversed={isRTL}
               />
             );
           })}
         <YAxis
+          orientation={isRTL === true ? 'right' : 'left'}
           axisLine={chartConfig.yAxisVisible}
           tickLine={tickLineConfig}
           yAxisId="left"
@@ -225,7 +230,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             label={{ value: chartConfig.secondYAxis.name, offset: 2, angle: +90, position: 'center' }}
-            orientation="right"
+            orientation={isRTL === true ? 'left' : 'right'}
             yAxisId="right"
             interval={0}
           />
