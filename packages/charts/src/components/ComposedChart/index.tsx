@@ -1,5 +1,5 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
+import { useConsolidatedRef, useIsRTL, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/hooks';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/components/ChartContainer';
 import { ChartDataLabel } from '@ui5/webcomponents-react-charts/lib/components/ChartDataLabel';
@@ -211,6 +211,10 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
   const Placeholder = useCallback(() => {
     return <ComposedChartPlaceholder layout={layout} measures={measures} />;
   }, [layout, measures]);
+
+  const passThroughProps = usePassThroughHtmlProps(props);
+  const isRTL = useIsRTL(chartRef);
+
   return (
     <ChartContainer
       ref={chartRef}
@@ -222,6 +226,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
       tooltip={tooltip}
       slot={slot}
       resizeDebounce={chartConfig.resizeDebounce}
+      {...passThroughProps}
     >
       <ComposedChartLib
         stackOffset="sign"
@@ -253,12 +258,14 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               axisProps.yAxisId = index;
               axisProps.width = yAxisWidth;
               AxisComponent = YAxis;
+              axisProps.orientation = isRTL ? 'right' : 'left';
             } else {
               axisProps.dataKey = dimension.accessor;
               axisProps.tick = <XAxisTicks config={dimension} />;
               axisProps.xAxisId = index;
               axisProps.height = xAxisHeights[index];
               AxisComponent = XAxis;
+              axisProps.reversed = isRTL;
             }
 
             return <AxisComponent key={dimension.accessor} {...axisProps} />;
@@ -268,11 +275,18 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
             {...measureAxisProps}
             yAxisId="primary"
             width={yAxisWidth}
+            orientation={isRTL ? 'right' : 'left'}
             tick={<YAxisTicks config={primaryMeasure} />}
           />
         )}
         {layout === 'vertical' && (
-          <XAxis {...measureAxisProps} xAxisId="primary" type="number" tick={<XAxisTicks config={primaryMeasure} />} />
+          <XAxis
+            {...measureAxisProps}
+            reversed={isRTL}
+            xAxisId="primary"
+            type="number"
+            tick={<XAxisTicks config={primaryMeasure} />}
+          />
         )}
 
         {chartConfig.secondYAxis?.dataKey && layout === 'horizontal' && (
@@ -281,14 +295,22 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
             axisLine={{
               stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
             }}
-            tick={{ fill: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})` }}
+            tick={{
+              direction: 'ltr',
+              fill: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
+            }}
             tickLine={{
               stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
             }}
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
-            label={{ value: chartConfig.secondYAxis.name, offset: 2, angle: +90, position: 'center' }}
-            orientation="right"
+            label={{
+              value: chartConfig.secondYAxis.name,
+              offset: 2,
+              angle: +90,
+              position: 'center'
+            }}
+            orientation={isRTL ? 'left' : 'right'}
             interval={0}
             yAxisId="secondary"
           />

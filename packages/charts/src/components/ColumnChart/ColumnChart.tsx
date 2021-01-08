@@ -1,5 +1,5 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
+import { useIsRTL, usePassThroughHtmlProps, useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/hooks';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ColumnChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/ColumnChartPlaceholder';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/components/ChartContainer';
@@ -174,6 +174,8 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
 
   const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
   const xAxisHeights = useObserveXAxisHeights(chartRef, props.dimensions.length);
+  const passThroughProps = usePassThroughHtmlProps(props);
+  const isRTL = useIsRTL(chartRef);
 
   return (
     <ChartContainer
@@ -186,6 +188,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
       tooltip={tooltip}
       slot={slot}
       resizeDebounce={chartConfig.resizeDebounce}
+      {...passThroughProps}
     >
       <ColumnChartLib
         stackOffset="sign"
@@ -212,10 +215,12 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
                 axisLine={index < 1}
                 height={xAxisHeights[index]}
                 allowDuplicatedCategory={index === 0}
+                reversed={isRTL}
               />
             );
           })}
         <YAxis
+          orientation={isRTL === true ? 'right' : 'left'}
           axisLine={chartConfig.yAxisVisible}
           tickLine={tickLineConfig}
           yAxisId="left"
@@ -236,7 +241,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             label={{ value: chartConfig.secondYAxis.name, offset: 2, angle: +90, position: 'center' }}
-            orientation="right"
+            orientation={isRTL === true ? 'left' : 'right'}
             yAxisId="right"
             interval={0}
           />
