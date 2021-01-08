@@ -201,7 +201,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
         }
         prepareRow(row);
         const rowProps = row.getRowProps();
-        markNavigatedRow(row);
+        const isNavigatedCell = markNavigatedRow(row);
         const RowSubComponent = typeof renderRowSubComponent === 'function' ? renderRowSubComponent(row) : null;
         return (
           <div
@@ -235,14 +235,12 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
                 return <div {...cellProps} />;
               }
               let contentToRender;
-              let isNavigatedCell = false;
               if (
                 cell.column.id === '__ui5wcr__internal_highlight_column' ||
                 cell.column.id === '__ui5wcr__internal_selection_column' ||
                 cell.column.id === '__ui5wcr__internal_navigation_column'
               ) {
                 contentToRender = 'Cell';
-                isNavigatedCell = typeof markNavigatedRow(row) === 'boolean' && markNavigatedRow(row);
               } else if (isTreeTable || RowSubComponent) {
                 contentToRender = 'Expandable';
               } else if (cell.isGrouped) {
@@ -268,7 +266,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
                 >
                   {popInRowHeight !== internalRowHeight && popInColumn.id === cell.column.id
                     ? cell.render('PopIn', { contentToRender, internalRowHeight })
-                    : cell.render(contentToRender, isNavigatedCell ? { isNavigatedCell } : {})}
+                    : cell.render(contentToRender, isNavigatedCell === true ? { isNavigatedCell } : {})}
                 </div>
               );
             })}
