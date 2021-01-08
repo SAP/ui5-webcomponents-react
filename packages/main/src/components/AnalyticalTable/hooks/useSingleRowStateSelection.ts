@@ -50,7 +50,11 @@ const getRowProps = (rowProps, { row, instance }) => {
           return;
         }
 
-        const { selectionBehavior, selectionMode, onRowSelected } = webComponentsReactProperties;
+        const { selectionBehavior, selectionMode, onRowSelected, onRowClick } = webComponentsReactProperties;
+
+        if (typeof onRowClick === 'function' && e.target?.dataset?.name !== 'internal_selection_column') {
+          onRowClick(enrichEventWithDetails(e, { row }));
+        }
 
         // dont continue if the row was clicked and selection mode is row selector only
         if (selectionBehavior === TableSelectionBehavior.ROW_SELECTOR && !selectionCellClick) {
