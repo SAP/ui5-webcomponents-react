@@ -12,7 +12,8 @@ const styles = {
     position: 'absolute',
     bottom: 0,
     top: 0,
-    transform: 'translateX(-50%)',
+    //todo w/o rtp: transform: 'translateX(-50%)',
+    transform: 'translateX(50%)',
     zIndex: 1,
     cursor: 'col-resize',
     willChange: 'transform',
@@ -98,7 +99,8 @@ export const ColumnHeaderContainer = forwardRef((props: ColumnHeaderContainerPro
                 {...column.getResizerProps()}
                 data-resizer
                 className={classes.resizer}
-                style={{ left: `${column.totalFlexWidth + column.totalLeft - (isLastColumn ? 3 : 0)}px` }}
+                //todo w/o rtp: style={{ left: `${column.totalFlexWidth + column.totalLeft - (isLastColumn ? 3 : 0)}px` }}
+                style={{ right: `${column.totalFlexWidth + column.totalLeft - (isLastColumn ? 3 : 0)}px` }}
               />
             )}
             <ColumnHeader

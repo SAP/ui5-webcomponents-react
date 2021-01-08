@@ -43,7 +43,8 @@ export const useDragAndDrop = (props, setColumnOrder, columnOrder, resizeInfo, c
 
       const tempCols = [...internalColumnOrder];
 
-      const targetIndex = droppedColIdx > draggedColIdx ? droppedColIdx - 1 : droppedColIdx;
+      //todo w/o rtl       const targetIndex = droppedColIdx > draggedColIdx ? droppedColIdx - 1 : droppedColIdx;
+      const targetIndex = droppedColIdx > draggedColIdx ? droppedColIdx : droppedColIdx;
 
       tempCols.splice(targetIndex, 0, tempCols.splice(draggedColIdx, 1)[0]);
       setColumnOrder(tempCols);

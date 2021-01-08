@@ -161,9 +161,11 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
       style={{
         position: 'absolute',
         top: 0,
-        left: 0,
+        //todo w/o rtl  left: 0,
+        right: 0,
         width: `${virtualColumn.size}px`,
-        transform: `translateX(${virtualColumn.start}px)`
+        //todo w/o rtl   transform: `translateX(${virtualColumn.start}px)`
+        transform: `translateX(-${virtualColumn.start}px)`
       }}
     >
       <div

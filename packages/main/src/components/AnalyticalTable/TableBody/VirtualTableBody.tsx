@@ -252,9 +252,11 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
                     ...cellProps.style,
                     position: 'absolute',
                     width: `${virtualColumn.size}px`,
-                    transform: `translateX(${virtualColumn.start}px)`,
+                    //todo w/o rtl transform: `translateX(${virtualColumn.start}px)`,
+                    transform: `translateX(-${virtualColumn.start}px)`,
                     top: 0,
-                    left: 0
+                    //todo w/o rtl   left: 0
+                    right: 0
                   }}
                 >
                   {popInRowHeight !== internalRowHeight && popInColumn.id === cell.column.id
