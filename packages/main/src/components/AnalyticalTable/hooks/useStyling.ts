@@ -29,7 +29,7 @@ const getHeaderProps = (columnProps, { instance, column }) => {
     style[isRTL ? 'paddingLeft' : 'paddingRight'] = ThemingParameters.sapScrollBar_Dimension;
   }
 
-  if (column.id === '__ui5wcr__internal_highlight_column' || column.id === '__ui5wcr__internal_selection_column') {
+  if (column.id === '__ui5wcr__internal_highlight_column' || column.id === '__ui5wcr__internal_selection_column' || column.id === '__ui5wcr__internal_navigation_column') {
     style.padding = 0;
   }
 
@@ -124,7 +124,7 @@ const getCellProps = (cellProps, { cell: { column }, instance }) => {
     className += ` ${column.className}`;
   }
 
-  if (column.id === '__ui5wcr__internal_highlight_column' || column.id === '__ui5wcr__internal_selection_column') {
+  if (column.id === '__ui5wcr__internal_highlight_column' || column.id === '__ui5wcr__internal_selection_column' || column.id === '__ui5wcr__internal_navigation_column') {
     style.padding = 0;
   }
 
