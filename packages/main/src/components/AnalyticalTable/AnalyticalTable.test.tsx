@@ -851,7 +851,6 @@ describe('AnalyticalTable', () => {
 
     expect(asFragment()).toMatchSnapshot();
   });
-
   test('onRowClick', () => {
     Object.defineProperties(window.HTMLElement.prototype, {
       clientWidth: {
