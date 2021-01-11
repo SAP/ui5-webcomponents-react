@@ -1,3 +1,4 @@
+import { getRTL } from '@ui5/webcomponents-base/dist/config/RTL';
 import { getTheme } from '@ui5/webcomponents-base/dist/config/Theme';
 import { fetchI18nBundle } from '@ui5/webcomponents-base/dist/i18nBundle';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
@@ -38,7 +39,8 @@ const ThemeProvider: FC<ThemeProviderProps> = (props: ThemeProviderProps) => {
     return {
       theme,
       contentDensity: isCompactSize ? ContentDensity.Compact : ContentDensity.Cozy,
-      parameters: ThemingParameters
+      parameters: ThemingParameters,
+      rtl: getRTL()
     };
   }, [theme, isCompactSize]);
 
