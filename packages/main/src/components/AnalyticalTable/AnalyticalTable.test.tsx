@@ -1,4 +1,4 @@
-import { act, fireEvent, getByText, render, screen, getMouseEvent } from '@shared/tests';
+import { act, fireEvent, getByText, render, screen, getMouseEvent, renderRtl } from '@shared/tests';
 import { createPassThroughPropsTest } from '@shared/tests/utils';
 import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
 import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
@@ -338,8 +338,50 @@ describe('AnalyticalTable', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
+  test('RTL: with initial column order', () => {
+    const { getAllByRole, asFragment } = renderRtl(
+      <AnalyticalTable
+        data={data}
+        columns={columns}
+        groupable={false}
+        filterable={false}
+        sortable={false}
+        columnOrder={['age', 'friend.age', 'friend.name', 'name']}
+      />
+    );
+    const columnHeaders = getAllByRole('columnheader', { hidden: true });
+
+    ['Age', 'Friend Age', 'Friend Name', 'Name'].forEach((item, index) => {
+      getByText(columnHeaders[index], item);
+    });
+    expect(asFragment()).toMatchSnapshot();
+  });
+
   test('test drag and drop of a draggable column', () => {
     const { asFragment, container } = render(<AnalyticalTable data={data} title={'Test'} columns={columns} />);
+
+    // get first column of the table and simulate dragging of it
+    let componentDrag = container.querySelector<HTMLElement>('div[role="columnheader"][draggable]');
+    let dragColumnId = componentDrag.dataset.columnId;
+
+    expect(componentDrag.draggable).toBeDefined();
+    expect(componentDrag.draggable).toBeTruthy();
+    fireEvent.drag(componentDrag);
+
+    // get second column of the table and simulate dropping on it
+    let dataTransfer = {
+      getData: () => {
+        return dragColumnId;
+      }
+    };
+    let componentDrop = container.querySelectorAll('div[role="columnheader"][draggable]')[1];
+    fireEvent.drag(componentDrop, { dataTransfer });
+
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  test('RTL: test drag and drop of a draggable column', () => {
+    const { asFragment, container } = renderRtl(<AnalyticalTable data={data} title={'Test'} columns={columns} />);
 
     // get first column of the table and simulate dragging of it
     let componentDrag = container.querySelector<HTMLElement>('div[role="columnheader"][draggable]');
@@ -440,6 +482,45 @@ describe('AnalyticalTable', () => {
 
   test('with highlight row', () => {
     const { asFragment, getAllByRole, rerender } = render(
+      <AnalyticalTable
+        title="Table Title"
+        data={data}
+        columns={columns}
+        selectionMode={TableSelectionMode.SINGLE_SELECT}
+        withRowHighlight
+        minRows={1}
+      />
+    );
+    const columnHeaders = getAllByRole('columnheader', { hidden: true });
+    const highlightColumnHeader = columnHeaders[0];
+
+    expect(highlightColumnHeader).toHaveStyle(`width: 6px; padding: 0px;`);
+    expect(highlightColumnHeader.id).toBe('__ui5wcr__internal_highlight_column');
+
+    const cells = getAllByRole('cell', { hidden: true });
+
+    //highlight cells + selection cells + custom cells
+    expect(cells.length).toBe(12);
+    expect(asFragment()).toMatchSnapshot();
+
+    rerender(
+      <AnalyticalTable
+        title="Table Title"
+        data={data}
+        columns={columns}
+        selectionMode={TableSelectionMode.SINGLE_SELECT}
+        minRows={1}
+      />
+    );
+
+    const cellsWithoutHighlightCol = getAllByRole('cell', { hidden: true });
+
+    //selection cells + custom cells
+    expect(cellsWithoutHighlightCol.length).toBe(10);
+  });
+
+  test('RTL: with highlight row', () => {
+    const { asFragment, getAllByRole, rerender } = renderRtl(
       <AnalyticalTable
         title="Table Title"
         data={data}
@@ -659,6 +740,24 @@ describe('AnalyticalTable', () => {
     screen.getByText('Custom Cell');
   });
 
+  test('RTL: pop-in columns: w/o pop-ins', () => {
+    Object.defineProperties(window.HTMLElement.prototype, {
+      clientWidth: {
+        value: 801,
+        configurable: true
+      }
+    });
+
+    renderRtl(<AnalyticalTable data={data} columns={columnsWithPopIn} />);
+
+    screen.getByText('Name');
+    screen.getByText('Age');
+    screen.getByText('Friend Name');
+    screen.getByText('Custom original Header1');
+    screen.getByText('Custom original Header2');
+    screen.getByText('Custom Cell');
+  });
+
   test('pop-in columns: w/ pop-ins', () => {
     Object.defineProperties(window.HTMLElement.prototype, {
       clientWidth: {
@@ -668,6 +767,39 @@ describe('AnalyticalTable', () => {
     });
 
     const { asFragment } = render(<AnalyticalTable data={data} columns={columnsWithPopIn} />);
+
+    screen.getByText('Name');
+    screen.getByText('Age');
+
+    expect(screen.queryByText('Friend Name')).not.toBeInTheDocument();
+    expect(screen.queryByText('Custom original Header1')).not.toBeInTheDocument();
+    expect(screen.queryByText('Custom original Header2')).not.toBeInTheDocument();
+    expect(screen.queryByText('Custom Cell')).not.toBeInTheDocument();
+
+    const cells = screen.getAllByRole('cell', { hidden: true });
+
+    getByText(cells[0], 'Fra');
+    getByText(cells[0], 'Friend Name:');
+    getByText(cells[0], 'MAR');
+    getByText(cells[0], 'Custom Header1:');
+    getByText(cells[0], '28');
+    getByText(cells[0], 'Custom Header 2:');
+    getByText(cells[0], 'custom header 2');
+    getByText(cells[0], 'Custom Cell:');
+    getByText(cells[0], 'pop-in content');
+
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  test('RTL: pop-in columns: w/ pop-ins', () => {
+    Object.defineProperties(window.HTMLElement.prototype, {
+      clientWidth: {
+        value: 800,
+        configurable: true
+      }
+    });
+
+    const { asFragment } = renderRtl(<AnalyticalTable data={data} columns={columnsWithPopIn} />);
 
     screen.getByText('Name');
     screen.getByText('Age');
@@ -720,8 +852,59 @@ describe('AnalyticalTable', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
+  test('RTL: pop-in columns: w/ pop-ins & hidden column', () => {
+    Object.defineProperties(window.HTMLElement.prototype, {
+      clientWidth: {
+        value: 600,
+        configurable: true
+      }
+    });
+
+    const { asFragment } = renderRtl(<AnalyticalTable data={data} columns={columnsWithPopIn} />);
+
+    screen.getByText('Name');
+    expect(screen.queryByText('Age')).not.toBeInTheDocument();
+
+    const cells = screen.getAllByRole('cell', { hidden: true });
+
+    getByText(cells[0], 'Fra');
+    getByText(cells[0], 'Friend Name:');
+    getByText(cells[0], 'MAR');
+    getByText(cells[0], 'Custom Header1:');
+    getByText(cells[0], '28');
+    getByText(cells[0], 'Custom Header 2:');
+    getByText(cells[0], 'custom header 2');
+    getByText(cells[0], 'Custom Cell:');
+    getByText(cells[0], 'pop-in content');
+
+    expect(asFragment()).toMatchSnapshot();
+  });
+
   test('navigation indicator column', () => {
     const { asFragment, getAllByRole, rerender } = render(
+      <AnalyticalTable data={data} columns={columns} withNavigationHighlight minRows={1} />
+    );
+    const columnHeaders = getAllByRole('columnheader', { hidden: true });
+    const navigationColumnHeader = columnHeaders[columnHeaders.length - 1];
+
+    expect(navigationColumnHeader).toHaveStyle(`width: 6px; padding: 0px;`);
+    expect(navigationColumnHeader.id).toBe('__ui5wcr__internal_navigation_column');
+
+    const cells = getAllByRole('cell', { hidden: true });
+    const navigationCells = cells.filter((item) => item.getAttribute('aria-colindex') === '5');
+
+    expect(navigationCells).toHaveLength(2);
+
+    expect(asFragment()).toMatchSnapshot();
+
+    rerender(<AnalyticalTable data={data} columns={columns} minRows={1} />);
+    const cellsWithoutNavCol = getAllByRole('cell', { hidden: true });
+
+    expect(cellsWithoutNavCol.filter((item) => item.getAttribute('aria-colindex') === '5')).toHaveLength(0);
+  });
+
+  test('RTL: navigation indicator column', () => {
+    const { asFragment, getAllByRole, rerender } = renderRtl(
       <AnalyticalTable data={data} columns={columns} withNavigationHighlight minRows={1} />
     );
     const columnHeaders = getAllByRole('columnheader', { hidden: true });

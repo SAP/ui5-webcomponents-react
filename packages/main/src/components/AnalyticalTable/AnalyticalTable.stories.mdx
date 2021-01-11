@@ -138,7 +138,7 @@ import { useEffect, useRef, useState, useCallback } from 'react';
 ## Example
 
 <Canvas>
-  <Story name="Default">{(args) => <AnalyticalTable {...args} />}</Story>
+  <Story name="Default">{(args) => <AnalyticalTable {...args}         columnOrder={['age', 'friend.age', 'friend.name', 'name']}/>}</Story>
 </Canvas>
 
 ## Properties
