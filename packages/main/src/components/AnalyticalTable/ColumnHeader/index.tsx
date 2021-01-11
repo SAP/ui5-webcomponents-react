@@ -1,4 +1,3 @@
-import { getRTL } from '@ui5/webcomponents-base/dist/config/RTL';
 import '@ui5/webcomponents-icons/dist/filter';
 import '@ui5/webcomponents-icons/dist/group-2';
 import '@ui5/webcomponents-icons/dist/sort-ascending';
@@ -44,6 +43,7 @@ export interface ColumnHeaderProps {
   role: string;
   isLastColumn: boolean;
   virtualColumn: VirtualItem;
+  isRtl: boolean;
 }
 
 const styles = {
@@ -79,9 +79,7 @@ const styles = {
   iconContainer: {
     display: 'inline-block',
     position: 'absolute',
-    color: ThemingParameters.sapContent_IconColor,
-    right: getRTL() === false ? '0.5rem' : undefined,
-    left: getRTL() === true ? '0.5rem' : undefined
+    color: ThemingParameters.sapContent_IconColor
   }
 };
 
@@ -106,7 +104,8 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     isDraggable,
     dragOver,
     role,
-    virtualColumn
+    virtualColumn,
+    isRtl
   } = props;
 
   const isFiltered = column.filterValue && column.filterValue.length > 0;
@@ -135,7 +134,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
 
     if (margin > 0) margin += 0.5;
 
-    if (getRTL()) {
+    if (isRtl) {
       return {
         marginLeft: `${margin}rem`
       };
@@ -143,7 +142,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     return {
       marginRight: `${margin}rem`
     };
-  }, [column.isSorted, column.isGrouped, isFiltered]);
+  }, [column.isSorted, column.isGrouped, isFiltered, isRtl]);
 
   const hasPopover = column.canGroupBy || column.canSort || column.canFilter;
 
@@ -152,6 +151,11 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
       setPopoverOpen(true);
     }
   }, [hasPopover]);
+  const directionStyles = isRtl
+    ? { right: 0, transform: `translateX(-${virtualColumn.start}px)` }
+    : { left: 0, transform: `translateX(${virtualColumn.start}px)` };
+
+  const iconContainerDirectionStyles = isRtl ? { right: '0.5rem' } : { left: '0.5rem' };
 
   const targetRef = useRef();
   if (!column) return null;
@@ -161,9 +165,8 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
       style={{
         position: 'absolute',
         top: 0,
-        left: 0,
         width: `${virtualColumn.size}px`,
-        transform: `translateX(${virtualColumn.start}px)`
+        ...directionStyles
       }}
     >
       <div
@@ -188,7 +191,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
           <Text tooltip={tooltip} wrapping={false} style={textStyle} className={classes.text}>
             {children}
           </Text>
-          <div className={classes.iconContainer}>
+          <div className={classes.iconContainer} style={iconContainerDirectionStyles}>
             {isFiltered && <Icon name="filter" />}
             {column.isSorted && <Icon name={column.isSortedDesc ? 'sort-descending' : 'sort-ascending'} />}
             {column.isGrouped && <Icon name="group-2" />}

@@ -22,6 +22,7 @@ interface VirtualTableBodyProps {
   overscanCountHorizontal: number;
   renderRowSubComponent: (row?: any) => ReactNode;
   popInRowHeight: number;
+  isRtl: boolean;
   markNavigatedRow?: (row?: Record<any, any>) => boolean;
 }
 
@@ -43,7 +44,8 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     overscanCountHorizontal,
     renderRowSubComponent,
     popInRowHeight,
-    markNavigatedRow
+    markNavigatedRow,
+    isRtl
   } = props;
 
   const rowSubComponentsHeight = useRef({});
@@ -226,6 +228,12 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
             )}
             {columnVirtualizer.virtualItems.map((virtualColumn, index) => {
               const cell = row.cells[virtualColumn.index];
+              const directionStyles = isRtl
+                ? {
+                    transform: `translateX(-${virtualColumn.start}px)`,
+                    right: 0
+                  }
+                : { transform: `translateX(${virtualColumn.start}px)`, left: 0 };
 
               if (!cell) {
                 return null;
@@ -259,9 +267,8 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
                     ...cellProps.style,
                     position: 'absolute',
                     width: `${virtualColumn.size}px`,
-                    transform: `translateX(${virtualColumn.start}px)`,
                     top: 0,
-                    left: 0
+                    ...directionStyles
                   }}
                 >
                   {popInRowHeight !== internalRowHeight && popInColumn.id === cell.column.id
