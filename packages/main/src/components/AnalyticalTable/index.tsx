@@ -226,11 +226,15 @@ export interface TableProps extends Omit<CommonProps, 'title'> {
   /**
    * Fired when a row is selected or unselected.
    */
-  onRowSelected?: (e?: CustomEvent<{ allRowsSelected?: boolean; row?: unknown; isSelected?: boolean }>) => any;
+  onRowSelected?: (e?: CustomEvent<{ allRowsSelected?: boolean; row?: unknown; isSelected?: boolean }>) => void;
+  /**
+   * Fired when a row is clicked
+   */
+  onRowClick?: (e?: CustomEvent<{ row?: unknown }>) => void;
   /**
    * Fired when a row is expanded or collapsed
    */
-  onRowExpandChange?: (e?: CustomEvent<{ row: unknown; column: unknown }>) => any;
+  onRowExpandChange?: (e?: CustomEvent<{ row: unknown; column: unknown }>) => void;
   /**
    * Fired when the columns order is changed.
    */
@@ -302,6 +306,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     selectionMode,
     selectionBehavior,
     onRowSelected,
+    onRowClick,
     onSort,
     reactTableOptions,
     tableHooks,
@@ -386,6 +391,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
         selectionBehavior,
         classes,
         onRowSelected,
+        onRowClick,
         onRowExpandChange,
         isTreeTable,
         alternateRowColor,
@@ -573,13 +579,14 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     setColumnOrder,
     tableState.columnOrder,
     tableState.columnResizing,
-    tableInternalColumns,
+    tableInternalColumns
   );
 
   const passThroughProps = usePassThroughHtmlProps(props, [
     'onSort',
     'onGroup',
     'onRowSelected',
+    'onRowClick',
     'onRowExpandChange',
     'onColumnsReordered',
     'onLoadMore'

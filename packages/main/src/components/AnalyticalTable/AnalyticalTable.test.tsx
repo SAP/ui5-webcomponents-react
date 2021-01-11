@@ -851,6 +851,38 @@ describe('AnalyticalTable', () => {
 
     expect(asFragment()).toMatchSnapshot();
   });
+  test('onRowClick', () => {
+    Object.defineProperties(window.HTMLElement.prototype, {
+      clientWidth: {
+        value: 600,
+        configurable: true
+      }
+    });
+
+    const callback = jest.fn();
+    const { getByText, getAllByRole } = render(
+      <AnalyticalTable
+        title="Table Title"
+        data={data}
+        columns={columns}
+        selectionBehavior={TableSelectionBehavior.ROW}
+        selectionMode={TableSelectionMode.SINGLE_SELECT}
+        onRowClick={callback}
+      />
+    );
+
+    const firstRow = getAllByRole('row')[0];
+    fireEvent.click(firstRow);
+
+    expect(callback).toBeCalled();
+
+    const selectionColumn = firstRow.querySelector('[data-name="internal_selection_column"]');
+    fireEvent.click(selectionColumn);
+    expect(callback).toBeCalledTimes(1);
+
+    fireEvent.click(getByText('Fra'));
+    expect(callback).toBeCalledTimes(2);
+  });
 
   test('RTL: pop-in columns: w/ pop-ins & hidden column', () => {
     Object.defineProperties(window.HTMLElement.prototype, {

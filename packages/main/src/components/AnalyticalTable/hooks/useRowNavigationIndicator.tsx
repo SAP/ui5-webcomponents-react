@@ -22,10 +22,7 @@ const Cell = ({ isNavigatedCell }) => {
  * TABLE HOOKS
  */
 const columnsDeps = (deps, { instance: { webComponentsReactProperties } }) => {
-  return [
-    ...deps,
-    webComponentsReactProperties.withNavigationHighlight
-  ];
+  return [...deps, webComponentsReactProperties.withNavigationHighlight];
 };
 const visibleColumnsDeps = (deps, { instance }) => [
   ...deps,

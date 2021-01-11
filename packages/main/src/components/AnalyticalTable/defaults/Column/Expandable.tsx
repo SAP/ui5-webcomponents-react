@@ -29,7 +29,10 @@ export const Expandable = (props) => {
   const { cell, row, column, columns, webComponentsReactProperties } = props;
 
   const tableColumns = columns.filter(
-    ({ id }) => id !== '__ui5wcr__internal_selection_column' && id !== '__ui5wcr__internal_highlight_column' && id !== '__ui5wcr__internal_navigation_column'
+    ({ id }) =>
+      id !== '__ui5wcr__internal_selection_column' &&
+      id !== '__ui5wcr__internal_highlight_column' &&
+      id !== '__ui5wcr__internal_navigation_column'
   );
 
   const columnIndex = tableColumns.findIndex((col) => col.id === column.id);

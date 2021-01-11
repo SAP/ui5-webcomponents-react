@@ -54,7 +54,7 @@ const Cell = ({ row, webComponentsReactProperties: { selectionBehavior, selectio
     return null;
   }
   if (selectionMode === TableSelectionMode.SINGLE_SELECT) {
-    return <div style={divStyle} onClick={handleCellClick} />;
+    return <div style={divStyle} onClick={handleCellClick} data-name="internal_selection_column" />;
   }
   return (
     <CheckBox
