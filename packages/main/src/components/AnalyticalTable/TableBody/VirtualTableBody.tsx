@@ -22,6 +22,7 @@ interface VirtualTableBodyProps {
   overscanCountHorizontal: number;
   renderRowSubComponent: (row?: any) => ReactNode;
   popInRowHeight: number;
+  markNavigatedRow?: (row?: Record<any, any>) => boolean;
 }
 
 export const VirtualTableBody = (props: VirtualTableBodyProps) => {
@@ -41,7 +42,8 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     parentRef,
     overscanCountHorizontal,
     renderRowSubComponent,
-    popInRowHeight
+    popInRowHeight,
+    markNavigatedRow
   } = props;
 
   const rowSubComponentsHeight = useRef({});
@@ -159,7 +161,10 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
   const popInColumn = useMemo(
     () =>
       visibleColumns.filter(
-        (item) => item.id !== '__ui5wcr__internal_highlight_column' && item.id !== '__ui5wcr__internal_selection_column'
+        (item) =>
+          item.id !== '__ui5wcr__internal_highlight_column' &&
+          item.id !== '__ui5wcr__internal_selection_column' &&
+          item.id !== '__ui5wcr__internal_navigation_column'
       )[0],
     [visibleColumns]
   );
@@ -196,6 +201,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
         }
         prepareRow(row);
         const rowProps = row.getRowProps();
+        const isNavigatedCell = markNavigatedRow(row);
         const RowSubComponent = typeof renderRowSubComponent === 'function' ? renderRowSubComponent(row) : null;
         return (
           <div
@@ -231,7 +237,8 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
               let contentToRender;
               if (
                 cell.column.id === '__ui5wcr__internal_highlight_column' ||
-                cell.column.id === '__ui5wcr__internal_selection_column'
+                cell.column.id === '__ui5wcr__internal_selection_column' ||
+                cell.column.id === '__ui5wcr__internal_navigation_column'
               ) {
                 contentToRender = 'Cell';
               } else if (isTreeTable || RowSubComponent) {
@@ -261,7 +268,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
                 >
                   {popInRowHeight !== internalRowHeight && popInColumn.id === cell.column.id
                     ? cell.render('PopIn', { contentToRender, internalRowHeight })
-                    : cell.render(contentToRender)}
+                    : cell.render(contentToRender, isNavigatedCell === true ? { isNavigatedCell } : {})}
                 </div>
               );
             })}

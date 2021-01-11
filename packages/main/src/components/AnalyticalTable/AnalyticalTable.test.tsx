@@ -83,7 +83,8 @@ const data = [
       name: 'MAR',
       age: 28
     },
-    status: ValueState.Success
+    status: ValueState.Success,
+    navigation: ValueState.Error
   },
   {
     name: 'bla',
@@ -438,17 +439,42 @@ describe('AnalyticalTable', () => {
   });
 
   test('with highlight row', () => {
-    const { asFragment } = render(
+    const { asFragment, getAllByRole, rerender } = render(
       <AnalyticalTable
         title="Table Title"
         data={data}
         columns={columns}
         selectionMode={TableSelectionMode.SINGLE_SELECT}
         withRowHighlight
+        minRows={1}
+      />
+    );
+    const columnHeaders = getAllByRole('columnheader', { hidden: true });
+    const highlightColumnHeader = columnHeaders[0];
+
+    expect(highlightColumnHeader).toHaveStyle(`width: 6px; padding: 0px;`);
+    expect(highlightColumnHeader.id).toBe('__ui5wcr__internal_highlight_column');
+
+    const cells = getAllByRole('cell', { hidden: true });
+
+    //highlight cells + selection cells + custom cells
+    expect(cells.length).toBe(12);
+    expect(asFragment()).toMatchSnapshot();
+
+    rerender(
+      <AnalyticalTable
+        title="Table Title"
+        data={data}
+        columns={columns}
+        selectionMode={TableSelectionMode.SINGLE_SELECT}
+        minRows={1}
       />
     );
 
-    expect(asFragment()).toMatchSnapshot();
+    const cellsWithoutHighlightCol = getAllByRole('cell', { hidden: true });
+
+    //selection cells + custom cells
+    expect(cellsWithoutHighlightCol.length).toBe(10);
   });
 
   test('highlight row with custom row key', () => {
@@ -692,6 +718,29 @@ describe('AnalyticalTable', () => {
     getByText(cells[0], 'pop-in content');
 
     expect(asFragment()).toMatchSnapshot();
+  });
+
+  test('navigation indicator column', () => {
+    const { asFragment, getAllByRole, rerender } = render(
+      <AnalyticalTable data={data} columns={columns} withNavigationHighlight minRows={1} />
+    );
+    const columnHeaders = getAllByRole('columnheader', { hidden: true });
+    const navigationColumnHeader = columnHeaders[columnHeaders.length - 1];
+
+    expect(navigationColumnHeader).toHaveStyle(`width: 6px; padding: 0px;`);
+    expect(navigationColumnHeader.id).toBe('__ui5wcr__internal_navigation_column');
+
+    const cells = getAllByRole('cell', { hidden: true });
+    const navigationCells = cells.filter((item) => item.getAttribute('aria-colindex') === '5');
+
+    expect(navigationCells).toHaveLength(2);
+
+    expect(asFragment()).toMatchSnapshot();
+
+    rerender(<AnalyticalTable data={data} columns={columns} minRows={1} />);
+    const cellsWithoutNavCol = getAllByRole('cell', { hidden: true });
+
+    expect(cellsWithoutNavCol.filter((item) => item.getAttribute('aria-colindex') === '5')).toHaveLength(0);
   });
 
   createPassThroughPropsTest(AnalyticalTable);
