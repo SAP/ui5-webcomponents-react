@@ -1,5 +1,3 @@
-import { getRTL } from '@ui5/webcomponents-base/dist/config/RTL';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
@@ -18,18 +16,15 @@ const getHeaderGroupProps = (headerGroupProps, { instance }) => {
 
 const getHeaderProps = (columnProps, { instance, column }) => {
   const { classes } = instance.webComponentsReactProperties;
-  const isRTL = getRTL();
-  const lastColumnId = instance.visibleColumns[instance.visibleColumns.length - 1].id;
-  const isLastColumn = column.id === lastColumnId;
   const style: CSSProperties = {
     width: column.totalWidth
   };
 
-  if (instance.state.isScrollable && isLastColumn) {
-    style[isRTL ? 'paddingLeft' : 'paddingRight'] = ThemingParameters.sapScrollBar_Dimension;
-  }
-
-  if (column.id === '__ui5wcr__internal_highlight_column' || column.id === '__ui5wcr__internal_selection_column') {
+  if (
+    column.id === '__ui5wcr__internal_highlight_column' ||
+    column.id === '__ui5wcr__internal_selection_column' ||
+    column.id === '__ui5wcr__internal_navigation_column'
+  ) {
     style.padding = 0;
   }
 
@@ -124,7 +119,11 @@ const getCellProps = (cellProps, { cell: { column }, instance }) => {
     className += ` ${column.className}`;
   }
 
-  if (column.id === '__ui5wcr__internal_highlight_column' || column.id === '__ui5wcr__internal_selection_column') {
+  if (
+    column.id === '__ui5wcr__internal_highlight_column' ||
+    column.id === '__ui5wcr__internal_selection_column' ||
+    column.id === '__ui5wcr__internal_navigation_column'
+  ) {
     style.padding = 0;
   }
 

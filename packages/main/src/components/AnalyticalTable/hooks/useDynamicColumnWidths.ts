@@ -64,6 +64,7 @@ const columns = (columns, { instance }) => {
           const acceptedWidth =
             accessor !== '__ui5wcr__internal_highlight_column' &&
             accessor !== '__ui5wcr__internal_selection_column' &&
+            accessor !== '__ui5wcr__internal_navigation_column' &&
             width < 60
               ? 60
               : width;
@@ -130,7 +131,11 @@ const columns = (columns, { instance }) => {
   const rowSample = rows.slice(0, ROW_SAMPLE_SIZE);
 
   const columnMeta = visibleColumns.reduce((acc, column) => {
-    if (column.id === '__ui5wcr__internal_selection_column' || column.id === '__ui5wcr__internal_highlight_column') {
+    if (
+      column.id === '__ui5wcr__internal_selection_column' ||
+      column.id === '__ui5wcr__internal_highlight_column' ||
+      column.id === '__ui5wcr__internal_navigation_column'
+    ) {
       acc[column.id ?? column.accessor] = {
         minHeaderWidth: column.width,
         fullWidth: column.width,
