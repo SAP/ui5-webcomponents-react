@@ -142,7 +142,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     return {
       marginRight: `${margin}rem`
     };
-  }, [column.isSorted, column.isGrouped, isFiltered]);
+  }, [column.isSorted, column.isGrouped, isFiltered, isRtl]);
 
   const hasPopover = column.canGroupBy || column.canSort || column.canFilter;
 
