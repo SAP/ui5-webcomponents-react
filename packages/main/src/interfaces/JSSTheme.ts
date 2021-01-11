@@ -4,6 +4,5 @@ import { Themes } from '../enums/Themes';
 
 export interface JSSTheme {
   theme: Themes;
-  contentDensity: ContentDensity;
   parameters: typeof ThemingParameters;
 }

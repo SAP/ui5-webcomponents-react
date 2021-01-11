@@ -9,7 +9,6 @@ describe('ThemeProvider', () => {
     const InnerComponent = () => {
       const theme = useTheme() as JSSTheme;
       expect(theme.theme).toEqual('sap_fiori_3');
-      expect(theme.contentDensity).toEqual('Cozy');
       done();
       return null;
     };
