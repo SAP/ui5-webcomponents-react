@@ -151,7 +151,7 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
     }
   };
 
-  const actionsToRender = useMemo(() => {
+  const getActions = () => {
     if (actions && actions.length > 0) {
       return actions;
     }
@@ -162,7 +162,7 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
       return [MessageBoxActions.CLOSE];
     }
     return [MessageBoxActions.OK];
-  }, [actions, type]);
+  };
 
   const handleOnClose = useCallback(
     (e) => {
@@ -176,12 +176,12 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
   useEffect(() => {
     if (dialogRef.current) {
       if (open) {
-        dialogRef.current.open();
+        dialogRef.current.open?.();
       } else {
-        dialogRef.current.close();
+        dialogRef.current.close?.();
       }
     }
-  }, [open, dialogRef]);
+  }, [dialogRef, open]);
 
   const passThroughProps = usePassThroughHtmlProps(props, ['onClose']);
 
@@ -202,7 +202,7 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
       }
       footer={
         <footer className={classes.footer}>
-          {actionsToRender.map((action, index) => {
+          {getActions().map((action, index) => {
             return (
               <Button
                 key={action}
