@@ -49,6 +49,7 @@ import { useDragAndDrop } from './hooks/useDragAndDrop';
 import { useDynamicColumnWidths } from './hooks/useDynamicColumnWidths';
 import { usePopIn } from './hooks/usePopIn';
 import { useRowHighlight } from './hooks/useRowHighlight';
+import { useRowNavigationIndicators } from './hooks/useRowNavigationIndicator';
 import { useRowSelectionColumn } from './hooks/useRowSelectionColumn';
 import { useSingleRowStateSelection } from './hooks/useSingleRowStateSelection';
 import { useStyling } from './hooks/useStyling';
@@ -130,7 +131,11 @@ export interface TableProps extends Omit<CommonProps, 'title'> {
    */
   alternateRowColor?: boolean;
   /**
-   * Flag whether the table should add an extra column for displaying row highlights, based on the `highlightField` prop.
+   * Flag whether the table should add an extra column at the end of the rows for displaying a navigation highlight.
+   */
+  withNavigationHighlight?: boolean;
+  /**
+   * Flag whether the table should add an extra column at the start of the rows for displaying row highlights, based on the `highlightField` prop.
    */
   withRowHighlight?: boolean;
   /**
@@ -203,6 +208,13 @@ export interface TableProps extends Omit<CommonProps, 'title'> {
   infiniteScrollThreshold?: number;
 
   // events
+
+  /**
+   * This callback can be used to programmatically show an indicator for navigated rows. It has no effect if `withNavigationHighlight` is not set.
+   *
+   * __Must be memoized!__
+   */
+  markNavigatedRow?: (row?: Record<any, any>) => boolean;
   /**
    * Fired when the sorting of the rows changes.
    */
@@ -316,6 +328,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     scaleWidthMode,
     withRowHighlight,
     highlightField,
+    withNavigationHighlight,
+    markNavigatedRow,
     groupable,
     sortable,
     filterable,
@@ -383,6 +397,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
         loading,
         withRowHighlight,
         highlightField,
+        withNavigationHighlight,
+        markNavigatedRow,
         renderRowSubComponent
       },
       ...reactTableOptions
@@ -397,6 +413,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     useRowSelectionColumn,
     useSingleRowStateSelection,
     useRowHighlight,
+    useRowNavigationIndicators,
     useDynamicColumnWidths,
     useStyling,
     useToggleRowExpand,
@@ -712,6 +729,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
                 visibleColumnsWidth={visibleColumnsWidth}
                 overscanCountHorizontal={overscanCountHorizontal}
                 renderRowSubComponent={renderRowSubComponent}
+                markNavigatedRow={markNavigatedRow}
               />
             </VirtualTableBodyContainer>
           )}
@@ -765,6 +783,7 @@ AnalyticalTable.defaultProps = {
   visibleRows: 15,
   subRowsKey: 'subRows',
   highlightField: 'status',
+  markNavigatedRow: () => false,
   selectedRowIds: {},
   onGroup: () => {},
   onRowExpandChange: () => {},
