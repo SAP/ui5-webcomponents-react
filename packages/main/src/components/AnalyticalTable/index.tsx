@@ -1,5 +1,5 @@
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
-import { useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base/lib/hooks';
+import { useIsomorphicLayoutEffect, useIsRTL } from '@ui5/webcomponents-react-base/lib/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
@@ -341,6 +341,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   const [analyticalTableRef, reactWindowRef] = useTableScrollHandles(ref);
   const tableRef: RefObject<DivWithCustomScrollProp> = useRef();
 
+  const isRtl = useIsRTL(analyticalTableRef);
+
   const getSubRows = useCallback((row) => row[subRowsKey] || [], [subRowsKey]);
 
   const data = useMemo(() => {
@@ -467,6 +469,10 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   }, [updateTableClientWidth, updateRowsCount]);
 
   useIsomorphicLayoutEffect(() => {
+    dispatch({ type: 'IS_RTL', payload: { isRtl } });
+  }, [isRtl]);
+
+  useIsomorphicLayoutEffect(() => {
     updateTableClientWidth();
   }, [updateTableClientWidth]);
 
@@ -563,10 +569,11 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
 
   const [dragOver, handleDragEnter, handleDragStart, handleDragOver, handleOnDrop, handleOnDragEnd] = useDragAndDrop(
     props,
+    isRtl,
     setColumnOrder,
     tableState.columnOrder,
     tableState.columnResizing,
-    tableInternalColumns
+    tableInternalColumns,
   );
 
   const passThroughProps = usePassThroughHtmlProps(props, [
@@ -670,6 +677,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
                   onDragEnter={handleDragEnter}
                   onDragEnd={handleOnDragEnd}
                   dragOver={dragOver}
+                  isRtl={isRtl}
                 />
               )
             );
@@ -723,6 +731,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
                 overscanCountHorizontal={overscanCountHorizontal}
                 renderRowSubComponent={renderRowSubComponent}
                 markNavigatedRow={markNavigatedRow}
+                isRtl={isRtl}
               />
             </VirtualTableBodyContainer>
           )}

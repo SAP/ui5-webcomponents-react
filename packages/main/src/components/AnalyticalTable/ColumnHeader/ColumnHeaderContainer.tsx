@@ -12,8 +12,6 @@ const styles = {
     position: 'absolute',
     bottom: 0,
     top: 0,
-    //todo w/o rtp: transform: 'translateX(-50%)',
-    transform: 'translateX(50%)',
     zIndex: 1,
     cursor: 'col-resize',
     willChange: 'transform',
@@ -39,6 +37,7 @@ interface ColumnHeaderContainerProps {
   overscanCountHorizontal: number;
   resizeInfo: Record<string, unknown>;
   reactWindowRef: MutableRefObject<any>;
+  isRtl: boolean;
 }
 
 const useStyles = createUseStyles(styles, { name: 'Resizer' });
@@ -59,7 +58,8 @@ export const ColumnHeaderContainer = forwardRef((props: ColumnHeaderContainerPro
     visibleColumnsWidth,
     overscanCountHorizontal,
     resizeInfo,
-    reactWindowRef
+    reactWindowRef,
+    isRtl
   } = props;
   const columnVirtualizer = useVirtual({
     size: visibleColumnsWidth.length,
@@ -90,6 +90,15 @@ export const ColumnHeaderContainer = forwardRef((props: ColumnHeaderContainerPro
           return null;
         }
         const isLastColumn = !column.disableResizing && virtualColumn.index + 1 === headerGroup.headers.length;
+        const resizerDirectionStyle = isRtl
+          ? {
+              right: `${column.totalFlexWidth + column.totalLeft - (isLastColumn ? 3 : 0)}px`,
+              transform: 'translateX(50%)'
+            }
+          : {
+              left: `${column.totalFlexWidth + column.totalLeft - (isLastColumn ? 3 : 0)}px`,
+              transform: 'translateX(-50%)'
+            };
 
         const { key, ...rest } = column.getHeaderProps();
         return (
@@ -99,8 +108,7 @@ export const ColumnHeaderContainer = forwardRef((props: ColumnHeaderContainerPro
                 {...column.getResizerProps()}
                 data-resizer
                 className={classes.resizer}
-                //todo w/o rtp: style={{ left: `${column.totalFlexWidth + column.totalLeft - (isLastColumn ? 3 : 0)}px` }}
-                style={{ right: `${column.totalFlexWidth + column.totalLeft - (isLastColumn ? 3 : 0)}px` }}
+                style={resizerDirectionStyle}
               />
             )}
             <ColumnHeader
@@ -116,6 +124,7 @@ export const ColumnHeaderContainer = forwardRef((props: ColumnHeaderContainerPro
               headerTooltip={column.headerTooltip}
               isDraggable={column.canReorder && !resizeInfo.isResizingColumn}
               virtualColumn={virtualColumn}
+              isRtl={isRtl}
             >
               {column.render('Header')}
             </ColumnHeader>

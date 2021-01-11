@@ -5,7 +5,7 @@ const getColumnId = (column) => {
   return typeof column.accessor === 'string' ? column.accessor : column.id;
 };
 
-export const useDragAndDrop = (props, setColumnOrder, columnOrder, resizeInfo, columns: any[]) => {
+export const useDragAndDrop = (props, isRtl, setColumnOrder, columnOrder, resizeInfo, columns: any[]) => {
   const { onColumnsReordered } = props;
 
   const [dragOver, setDragOver] = useState('');
@@ -42,9 +42,7 @@ export const useDragAndDrop = (props, setColumnOrder, columnOrder, resizeInfo, c
       const draggedColIdx = internalColumnOrder.findIndex((col) => col === draggedColId);
 
       const tempCols = [...internalColumnOrder];
-
-      //todo w/o rtl       const targetIndex = droppedColIdx > draggedColIdx ? droppedColIdx - 1 : droppedColIdx;
-      const targetIndex = droppedColIdx > draggedColIdx ? droppedColIdx : droppedColIdx;
+      const targetIndex = droppedColIdx > draggedColIdx ? (isRtl ? droppedColIdx : droppedColIdx - 1) : droppedColIdx;
 
       tempCols.splice(targetIndex, 0, tempCols.splice(draggedColIdx, 1)[0]);
       setColumnOrder(tempCols);

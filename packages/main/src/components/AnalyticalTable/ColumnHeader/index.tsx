@@ -44,6 +44,7 @@ export interface ColumnHeaderProps {
   role: string;
   isLastColumn: boolean;
   virtualColumn: VirtualItem;
+  isRtl: boolean;
 }
 
 const styles = {
@@ -106,7 +107,8 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     isDraggable,
     dragOver,
     role,
-    virtualColumn
+    virtualColumn,
+    isRtl
   } = props;
 
   const isFiltered = column.filterValue && column.filterValue.length > 0;
@@ -152,6 +154,9 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
       setPopoverOpen(true);
     }
   }, [hasPopover]);
+  const directionStyles = isRtl
+    ? { right: 0, transform: `translateX(-${virtualColumn.start}px)` }
+    : { left: 0, transform: `translateX(${virtualColumn.start}px)` };
 
   const targetRef = useRef();
   if (!column) return null;
@@ -161,11 +166,8 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
       style={{
         position: 'absolute',
         top: 0,
-        //todo w/o rtl  left: 0,
-        right: 0,
         width: `${virtualColumn.size}px`,
-        //todo w/o rtl   transform: `translateX(${virtualColumn.start}px)`
-        transform: `translateX(-${virtualColumn.start}px)`
+        ...directionStyles
       }}
     >
       <div

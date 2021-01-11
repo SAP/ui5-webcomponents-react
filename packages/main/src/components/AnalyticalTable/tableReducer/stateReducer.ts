@@ -3,8 +3,7 @@ import { actions } from 'react-table';
 export const stateReducer = (newState, action) => {
   const { payload } = action;
 
-  //todo check if rtl
-  if (action.type === actions.columnResizing) {
+  if (newState.isRtl && action.type === actions.columnResizing) {
     const { clientX } = action;
     const { startX, columnWidth, headerIdWidths } = newState.columnResizing;
 
@@ -42,6 +41,8 @@ export const stateReducer = (newState, action) => {
       return { ...newState, popInColumns: payload };
     case 'INTERACTIVE_ROWS_HAVE_POPIN':
       return { ...newState, interactiveRowsHavePopIn: payload };
+    case 'IS_RTL':
+      return { ...newState, isRtl: payload.isRtl };
     default:
       return newState;
   }
