@@ -97,7 +97,6 @@ export interface MultiInputPropTypes extends Omit<WithWebComponentPropTypes, 'on
    *    />
    *  </code>
    * </pre>
-   *
    */
   tokens?: ReactNode | ReactNode[];
   /**
@@ -113,6 +112,7 @@ export interface MultiInputPropTypes extends Omit<WithWebComponentPropTypes, 'on
    *    &lt;/MultiInput>
    *  </code>
    * </pre>
+   *
    *
    * **Note:** The suggestion would be displayed only if the `showSuggestions` property is set to `true`.
    *
@@ -170,9 +170,11 @@ export interface MultiInputPropTypes extends Omit<WithWebComponentPropTypes, 'on
 }
 
 /**
+ * ### Overview
+ *
  * A `MultiInput` field allows the user to enter multiple values, which are displayed as `Token`. User can choose interaction for creating tokens. Fiori Guidelines say that user should create tokens when:
  *
- * *   Type a value in the input and press enter or focus out the input field (`onChange` event is fired)
+ * *   Type a value in the input and press enter or focus out the input field (`change` event is fired)
  * *   Select a value from the suggestion list
  * (`onSuggestionItemSelect` event is fired)
  *

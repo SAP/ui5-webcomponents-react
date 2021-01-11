@@ -14,6 +14,10 @@ export interface OptionPropTypes extends WithWebComponentPropTypes {
    */
   selected?: boolean;
   /**
+   * Defines the stable selector that you can use via getStableDomRef method.
+   */
+  stableDomRef?: unknown;
+  /**
    * Defines the value of the `Select` inside an HTML Form element when this `Option` is selected. For more information on HTML Form support, see the `name` property of `Select`.
    */
   value?: string;
@@ -26,7 +30,7 @@ export interface OptionPropTypes extends WithWebComponentPropTypes {
  */
 const Option: FC<OptionPropTypes> = withWebComponent<OptionPropTypes>(
   'ui5-option',
-  ['icon', 'value'],
+  ['icon', 'stableDomRef', 'value'],
   ['selected'],
   [],
   []

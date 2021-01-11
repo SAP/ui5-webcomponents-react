@@ -15,7 +15,7 @@ export interface MultiComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 
    */
   disabled?: boolean;
   /**
-   * Defines the filter type of the `MultiComboBox`. Available options are: `StartsWithPerTerm`, `None`.
+   * Defines the filter type of the `MultiComboBox`. Available options are: `StartsWithPerTerm`, `StartsWith`, `Contains` and `None`.
    */
   filter?: string;
   /**

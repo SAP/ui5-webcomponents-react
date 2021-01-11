@@ -1,6 +1,6 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/Slider';
-import { FC, ReactNode } from 'react';
+import { FC } from 'react';
 
 export interface SliderPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput'> {
   /**
@@ -41,11 +41,6 @@ export interface SliderPropTypes extends Omit<WithWebComponentPropTypes, 'onChan
    * **Note:** If set to 0 the slider handle movement is disabled. When negative number or value other than a number, the component fallbacks to its default value.
    */
   step?: number;
-  /**
-   * Defines the text of the `slider`.
-   * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
-   */
-  children?: ReactNode | ReactNode[];
   /**
    * Fired when the value changes and the user has finished interacting with the slider.
    */
