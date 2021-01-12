@@ -289,7 +289,7 @@ export interface TableProps extends Omit<CommonProps, 'title'> {
   LoadingComponent?: ComponentType<any>;
 }
 
-const useStyles = createComponentStyles(styles, { name: 'AnalyticalTable' });
+export const useStyles = createComponentStyles(styles, { name: 'AnalyticalTable' });
 /**
  * The `AnalyticalTable` provides a set of convenient functions for responsive table design, including virtualization of rows and columns, infinite scrolling and customizable columns that will, unless otherwise defined, distribute the available space equally among themselves.
  * It also provides several possibilities for working with the data, including sorting, filtering, grouping and aggregation.
