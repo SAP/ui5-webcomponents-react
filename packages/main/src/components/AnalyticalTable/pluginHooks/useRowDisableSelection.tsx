@@ -68,3 +68,5 @@ export const useRowDisableSelection = (disableRowSelection: DisableRowSelectionT
 
   return useDisableSelectionRow;
 };
+
+useRowDisableSelection.pluginName = 'useRowDisableSelection';

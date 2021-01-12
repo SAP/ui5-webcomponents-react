@@ -5,6 +5,8 @@ import { TableScaleWidthMode } from '@ui5/webcomponents-react/lib/TableScaleWidt
 import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 import { TableVisibleRowCountMode } from '@ui5/webcomponents-react/lib/TableVisibleRowCountMode';
+import { SegmentedButton } from '@ui5/webcomponents-react/lib/SegmentedButton';
+import { ToggleButton } from '@ui5/webcomponents-react/lib/ToggleButton';
 import generateData from './demo/generateData';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import '@ui5/webcomponents-icons/dist/delete';
@@ -21,7 +23,8 @@ import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
 import { DefaultLoadingComponent } from './defaults/LoadingComponent';
 import { DefaultNoDataComponent } from './defaults/NoDataComponent';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
-import { useEffect, useRef, useState, useCallback } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { useRowDisableSelection } from '@ui5/webcomponents-react/lib/AnalyticalTableHooks';
 
 <Meta
   title="Data Display / AnalyticalTable"
@@ -183,6 +186,123 @@ import { useEffect, useRef, useState, useCallback } from 'react';
 | `responsivePopIn`    | `boolean`                                                                | Enables the pop-in behavior of the column. When the `responsiveMinWidth` is smaller then the width of the table, the content of each cell will move to the first cell in the row, improving usability on small or mobile devices.                                                                                                                                                                               |
 | `responsiveMinWidth` | `number`                                                                 | Defines how the table should react when its width falls below the `responsiveMinWidth`. <ul><li>If `responsivePopIn` is `true` the content of this column will be moved to the first column.</li><li>If `responsivePopIn` is not set or `false` the column will be hidden.</li></ul>                                                                                                                            |
 | `PopInHeader`        | `string OR ComponentType`                                                | Custom pop-in header renderer. If set, the table will call that component for every column that is "popped-in" and pass the table instance as prop.                                                                                                                                                                                                                                                             |
+
+<br />
+
+## Plugin Hooks
+
+Plugin hooks add features to the `Analytical Table` that are meant for special use-cases and are therefore not available per default.
+To add a plugin hook you first need to `import` the corresponding hook and then add it to the `tableHooks` array.
+
+```js
+import { useRowDisableSelection } from '@ui5/webcomponents-react/lib/AnalyticalTableHooks';
+```
+
+```jsx
+<AnalyticalTable data={data} columns={columns} tableHooks={useRowDisableSelection} />
+```
+
+### Disable the Selection of single rows
+
+With the `useRowDisableSelection` it's possible to disable the selection of specific rows. It can receive two types of parameters:
+
+- `string`: Defines the key in the dataset for disabling rows. If the value of the key is `true`, then the row will not be selectable.
+- `Function(row) => boolean`: Programmatically disable rows for selection. The function receives the current row as parameter.
+
+**Note:** The "Select All" checkbox is not available with this hook.
+
+<Canvas>
+  <Story
+    name="Plugin: useRowDisableSelection"
+    args={{
+      data: generateData(20).map((item) => ({ ...item, disableSelection: Math.random() < 0.5 })),
+      selectionMode: TableSelectionMode.MULTI_SELECT
+    }}
+  >
+    {(args) => {
+      const disableRowFunc = (row) => row.original.age < 40;
+      const [isFunc, setIsFunc] = useState(true);
+      return (
+        <>
+          <SegmentedButton>
+            <ToggleButton
+              onClick={() => {
+                setIsFunc(true);
+              }}
+              pressed
+            >
+              with function parameter
+            </ToggleButton>
+            <ToggleButton
+              onClick={() => {
+                setIsFunc(false);
+              }}
+            >
+              with string parameter
+            </ToggleButton>
+          </SegmentedButton>
+          {isFunc ? (
+            <AnalyticalTable
+              data={args.data}
+              columns={args.columns}
+              selectionMode={args.selectionMode}
+              tableHooks={[useRowDisableSelection(disableRowFunc)]}
+              visibleRows={10}
+              title="All under 40 are not selectable"
+            />
+          ) : (
+            <AnalyticalTable
+              data={args.data}
+              columns={args.columns}
+              selectionMode={args.selectionMode}
+              tableHooks={[useRowDisableSelection('disableSelection')]}
+              visibleRows={10}
+              title={`All with "disableSelection: true" are not selectable`}
+            />
+          )}
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+#### Code
+
+```jsx
+const WithFunctionParameter = () => {
+  const disableRowFunc = (row) => row.original.age < 40;
+  return (
+    <AnalyticalTable
+      data={data}
+      columns={columns}
+      selectionMode={TableSelectionMode.MULTI_SELECT}
+      tableHooks={[useRowDisableSelection(disableRowFunc)]}
+    />
+  );
+};
+
+const WithStringParameter = () => {
+const data = [
+    {
+        "name": "Peter Franco",
+        "age": 22,
+         ...
+        "disableSelection": Math.random() < 0.5
+    },
+    ...
+]
+  return (
+    <AnalyticalTable
+      data={data}
+      columns={columns}
+      selectionMode={TableSelectionMode.MULTI_SELECT}
+      tableHooks={[useRowDisableSelection('disableSelection')]}
+    />
+  );
+};
+```
+
+<br />
 
 ## Recipes
 
