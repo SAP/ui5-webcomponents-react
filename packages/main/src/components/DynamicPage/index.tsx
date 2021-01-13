@@ -82,7 +82,8 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
     showHideHeaderButton,
     headerContentPinnable,
     alwaysShowContentHeader,
-    children
+    children,
+    className
   } = props;
   const passThroughProps = usePassThroughHtmlProps(props);
 
@@ -90,6 +91,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
   const classes = useStyles();
   const dynamicPageClasses = StyleClassHelper.of(classes.dynamicPage, GlobalStyleClasses.sapScrollBar);
   dynamicPageClasses.put(classes[`background${backgroundDesign}`]);
+  dynamicPageClasses.putIfPresent(className);
 
   const anchorBarRef: RefObject<HTMLDivElement> = useRef();
   const dynamicPageRef: RefObject<HTMLDivElement> = useConsolidatedRef(ref);
@@ -100,10 +102,13 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
     alwaysShowContentHeader ? HEADER_STATES.VISIBLE_PINNED : HEADER_STATES.AUTO
   );
   const headerStateRef = React.useRef(headerState);
-  const setHeaderStateRef = (data) => {
-    headerStateRef.current = data;
-    setHeaderState(data);
-  };
+  const setHeaderStateRef = useCallback(
+    (data) => {
+      headerStateRef.current = data;
+      setHeaderState(data);
+    },
+    [headerStateRef, setHeaderState]
+  );
 
   // observe heights of header parts
   const { topHeaderHeight, headerContentHeight } = useObserveHeights(
@@ -142,7 +147,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
         { once: true }
       );
     },
-    [dynamicPageRef.current, headerStateRef.current, classes.headerCollapsed]
+    [dynamicPageRef.current, headerStateRef.current, classes.headerCollapsed, setHeaderStateRef]
   );
 
   const onHoverToggleButton = useCallback(
@@ -177,7 +182,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
     } else {
       setHeaderStateRef(HEADER_STATES.AUTO);
     }
-  }, [alwaysShowContentHeader]);
+  }, [alwaysShowContentHeader, setHeaderStateRef]);
 
   return (
     <div
