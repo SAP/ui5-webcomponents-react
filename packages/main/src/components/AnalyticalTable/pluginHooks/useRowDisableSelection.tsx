@@ -1,7 +1,7 @@
 import { CheckBox } from '@ui5/webcomponents-react/lib/CheckBox';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 import React from 'react';
-import { useStyles } from '../index';
+import { getBy } from '../util';
 
 type DisableRowSelectionType = string | ((row: Record<any, any>) => boolean);
 
@@ -12,16 +12,15 @@ type DisableRowSelectionType = string | ((row: Record<any, any>) => boolean);
  * @param disableRowSelection - Can be either a `string` or a `function`. `string:` Defines the key in the dataset for disabling rows. If the value of the key is `true`, then the row will not be selectable. `function:` Programmatically disable rows for selection. The function receives the current row as parameter.
  */
 export const useRowDisableSelection = (disableRowSelection: DisableRowSelectionType) => {
-  const classes = useStyles();
-  const getRowProps = (rowProps, instance) => {
-    const { row } = instance;
+  const getRowProps = (rowProps, { row, instance }) => {
+    const { webComponentsReactProperties } = instance;
     if (typeof disableRowSelection === 'function' && disableRowSelection?.(row) === true) {
       row.disableSelect = true;
-      return { ...rowProps, onClick: undefined, className: classes.tr };
+      return { ...rowProps, onClick: undefined, className: webComponentsReactProperties.classes.tr };
     }
-    if (typeof disableRowSelection === 'string' && row.original[disableRowSelection] === true) {
+    if (typeof disableRowSelection === 'string' && getBy(row.original, disableRowSelection, undefined) === true) {
       row.disableSelect = true;
-      return { ...rowProps, onClick: undefined, className: classes.tr };
+      return { ...rowProps, onClick: undefined, className: webComponentsReactProperties.classes.tr };
     }
     return rowProps;
   };
