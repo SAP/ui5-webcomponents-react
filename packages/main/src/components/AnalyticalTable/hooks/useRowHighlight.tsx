@@ -7,20 +7,24 @@ const baseStyles = {
   height: '100%'
 };
 
-const StyleMap = new Map();
-StyleMap.set(ValueState.None, baseStyles);
-StyleMap.set(ValueState.Success, { ...baseStyles, backgroundColor: ThemingParameters.sapSuccessColor });
-StyleMap.set(ValueState.Warning, { ...baseStyles, backgroundColor: ThemingParameters.sapWarningColor });
-StyleMap.set(ValueState.Error, { ...baseStyles, backgroundColor: ThemingParameters.sapErrorColor });
-StyleMap.set(ValueState.Information, { ...baseStyles, backgroundColor: ThemingParameters.sapInformationColor });
+const StyleClassMap = new Map();
+StyleClassMap.set(ValueState.None, undefined);
+StyleClassMap.set(ValueState.Success, 'valueStateSuccess');
+StyleClassMap.set(ValueState.Warning, 'valueStateWarning');
+StyleClassMap.set(ValueState.Error, 'valueStateError');
+StyleClassMap.set(ValueState.Information, 'valueStateInformation');
 
 /*
  * COMPONENTS
  */
 const Header = () => <div style={{ width: '6px' }} />;
 
-const Cell = ({ cell: { value } }) => {
-  return <div style={StyleMap.get(value)} />;
+const Cell = (instance) => {
+  const { cell, webComponentsReactProperties } = instance;
+  const styleClass = StyleClassMap.get(cell.value)
+    ? webComponentsReactProperties.classes[StyleClassMap.get(cell.value)]
+    : undefined;
+  return <div style={baseStyles} className={styleClass} />;
 };
 
 /*
