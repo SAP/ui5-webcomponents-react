@@ -14773,10 +14773,10 @@ react-color@^2.17.0:
     reactcss "^1.2.0"
     tinycolor2 "^1.4.1"
 
-react-content-loader@5.1.4:
-  version "5.1.4"
-  resolved "https://registry.yarnpkg.com/react-content-loader/-/react-content-loader-5.1.4.tgz#854bafe4415dd9de07174621375bc308edd0ebb5"
-  integrity sha512-hTq7pZi2GKCK6a9d3u6XStozm0QGCEjw8cSqQReiWnh2up6IwCha5R5TF0o6SY5qUDpByloEZEZtnFxpJyENFw==
+react-content-loader@6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/react-content-loader/-/react-content-loader-6.0.0.tgz#65300eaf0e6705dac66ecfee4b87fe00109aca47"
+  integrity sha512-+v3GxZvHALPn5853cCqpQx8FkaSP6lBXdh1XPdqGCzlZTvP0+FcPTGbsfpZOPnaRSiourcGaW0TFTysHDN/elA==
 
 react-dev-utils@^10.0.0:
   version "10.2.1"
