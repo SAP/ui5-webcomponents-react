@@ -120,10 +120,10 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
       setHeaderState(HEADER_STATES.AUTO);
     };
     if (headerState === HEADER_STATES.VISIBLE || headerState === HEADER_STATES.HIDDEN) {
-      dynamicPageRef.current.addEventListener('scroll', oneTimeScrollHandler, { once: true });
+      dynamicPageRef.current?.addEventListener('scroll', oneTimeScrollHandler, { once: true });
     }
     return () => {
-      dynamicPageRef.current.removeEventListener('scroll', oneTimeScrollHandler);
+      dynamicPageRef.current?.removeEventListener('scroll', oneTimeScrollHandler);
     };
   }, [dynamicPageRef, headerState]);
 
