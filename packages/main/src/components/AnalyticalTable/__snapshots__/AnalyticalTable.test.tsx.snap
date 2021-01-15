@@ -5404,10 +5404,10 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
         <div
           class="AnalyticalTable-tableHeaderRow"
           role="rowgroup"
-          style="width: 0px;"
+          style="width: 600px;"
         >
           <div
-            style="position: absolute; top: 0px; left: 0px; transform: translateX(0px);"
+            style="position: absolute; top: 0px; width: 47px; left: 0px; transform: translateX(0px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -5415,7 +5415,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
               draggable="false"
               id="__ui5wcr__internal_selection_column"
               role="columnheader"
-              style="position: relative; padding: 0px; cursor: auto;"
+              style="position: relative; width: 47px; padding: 0px; cursor: auto;"
             >
               <div
                 class="TableColumnHeader-header"
@@ -5435,10 +5435,10 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="transform: translateX(-50%);"
+            style="left: 185.25px; transform: translateX(-50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 120px; left: 0px; transform: translateX(NaNpx);"
+            style="position: absolute; top: 0px; width: 138.25px; left: 0px; transform: translateX(47px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -5446,7 +5446,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
               draggable="true"
               id="name"
               role="columnheader"
-              style="position: relative; width: 120px; cursor: pointer;"
+              style="position: relative; width: 138.25px; cursor: pointer;"
             >
               <div
                 class="TableColumnHeader-header"
@@ -5469,10 +5469,10 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="transform: translateX(-50%);"
+            style="left: 323.5px; transform: translateX(-50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 120px; left: 0px; transform: translateX(NaNpx);"
+            style="position: absolute; top: 0px; width: 138.25px; left: 0px; transform: translateX(185.25px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -5480,7 +5480,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
               draggable="true"
               id="age"
               role="columnheader"
-              style="position: relative; width: 120px; cursor: pointer;"
+              style="position: relative; width: 138.25px; cursor: pointer;"
             >
               <div
                 class="TableColumnHeader-header"
@@ -5503,10 +5503,10 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="transform: translateX(-50%);"
+            style="left: 461.75px; transform: translateX(-50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 120px; left: 0px; transform: translateX(NaNpx);"
+            style="position: absolute; top: 0px; width: 138.25px; left: 0px; transform: translateX(323.5px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -5514,7 +5514,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
               draggable="true"
               id="friend.name"
               role="columnheader"
-              style="position: relative; width: 120px; cursor: pointer;"
+              style="position: relative; width: 138.25px; cursor: pointer;"
             >
               <div
                 class="TableColumnHeader-header"
@@ -5537,10 +5537,10 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="transform: translateX(-50%);"
+            style="left: 597px; transform: translateX(-50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 120px; left: 0px; transform: translateX(NaNpx);"
+            style="position: absolute; top: 0px; width: 138.25px; left: 0px; transform: translateX(461.75px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -5548,7 +5548,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
               draggable="true"
               id="friend.age"
               role="columnheader"
-              style="position: relative; width: 120px; cursor: pointer;"
+              style="position: relative; width: 138.25px; cursor: pointer;"
             >
               <div
                 class="TableColumnHeader-header"
@@ -5570,10 +5570,10 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
         </div>
         <div
           class="AnalyticalTable-tbody"
-          style="position: relative; overflow-y: auto; height: 88px;"
+          style="position: relative; overflow-y: auto; height: 88px; width: 600px;"
         >
           <div
-            style="position: relative; height: 88px; width: 0px;"
+            style="position: relative; height: 88px; width: 600px;"
             tabindex="0"
           >
             <div
@@ -5586,7 +5586,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
                 aria-colindex="1"
                 class="AnalyticalTable-tableCell"
                 role="cell"
-                style="align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                style="width: 47px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
                 tabindex="-1"
               >
                 <ui5-checkbox
@@ -5602,7 +5602,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
                 aria-colindex="2"
                 class="AnalyticalTable-tableCell"
                 role="cell"
-                style="width: 120px; align-items: center; position: absolute; top: 0px; transform: translateX(NaNpx); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(47px); left: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -5616,7 +5616,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
                 aria-colindex="3"
                 class="AnalyticalTable-tableCell"
                 role="cell"
-                style="width: 120px; align-items: center; position: absolute; top: 0px; transform: translateX(NaNpx); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(185.25px); left: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -5630,7 +5630,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
                 aria-colindex="4"
                 class="AnalyticalTable-tableCell"
                 role="cell"
-                style="width: 120px; align-items: center; position: absolute; top: 0px; transform: translateX(NaNpx); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(323.5px); left: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -5644,7 +5644,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
                 aria-colindex="5"
                 class="AnalyticalTable-tableCell"
                 role="cell"
-                style="width: 120px; align-items: center; position: absolute; top: 0px; transform: translateX(NaNpx); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(461.75px); left: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -5665,7 +5665,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
                 aria-colindex="1"
                 class="AnalyticalTable-tableCell"
                 role="cell"
-                style="align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                style="width: 47px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
                 tabindex="-1"
               >
                 <ui5-checkbox
@@ -5680,7 +5680,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
                 aria-colindex="2"
                 class="AnalyticalTable-tableCell"
                 role="cell"
-                style="width: 120px; align-items: center; position: absolute; top: 0px; transform: translateX(NaNpx); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(47px); left: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -5694,7 +5694,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
                 aria-colindex="3"
                 class="AnalyticalTable-tableCell"
                 role="cell"
-                style="width: 120px; align-items: center; position: absolute; top: 0px; transform: translateX(NaNpx); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(185.25px); left: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -5708,7 +5708,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
                 aria-colindex="4"
                 class="AnalyticalTable-tableCell"
                 role="cell"
-                style="width: 120px; align-items: center; position: absolute; top: 0px; transform: translateX(NaNpx); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(323.5px); left: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -5722,7 +5722,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
                 aria-colindex="5"
                 class="AnalyticalTable-tableCell"
                 role="cell"
-                style="width: 120px; align-items: center; position: absolute; top: 0px; transform: translateX(NaNpx); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(461.75px); left: 0px;"
                 tabindex="-1"
               >
                 <span
