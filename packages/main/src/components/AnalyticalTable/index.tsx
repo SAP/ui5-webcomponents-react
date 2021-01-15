@@ -1,5 +1,5 @@
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
-import { useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base/lib/hooks';
+import { useIsomorphicLayoutEffect, useIsRTL } from '@ui5/webcomponents-react-base/lib/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
@@ -226,11 +226,15 @@ export interface TableProps extends Omit<CommonProps, 'title'> {
   /**
    * Fired when a row is selected or unselected.
    */
-  onRowSelected?: (e?: CustomEvent<{ allRowsSelected?: boolean; row?: unknown; isSelected?: boolean }>) => any;
+  onRowSelected?: (e?: CustomEvent<{ allRowsSelected?: boolean; row?: unknown; isSelected?: boolean }>) => void;
+  /**
+   * Fired when a row is clicked
+   */
+  onRowClick?: (e?: CustomEvent<{ row?: unknown }>) => void;
   /**
    * Fired when a row is expanded or collapsed
    */
-  onRowExpandChange?: (e?: CustomEvent<{ row: unknown; column: unknown }>) => any;
+  onRowExpandChange?: (e?: CustomEvent<{ row: unknown; column: unknown }>) => void;
   /**
    * Fired when the columns order is changed.
    */
@@ -302,6 +306,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     selectionMode,
     selectionBehavior,
     onRowSelected,
+    onRowClick,
     onSort,
     reactTableOptions,
     tableHooks,
@@ -340,6 +345,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
 
   const [analyticalTableRef, reactWindowRef] = useTableScrollHandles(ref);
   const tableRef: RefObject<DivWithCustomScrollProp> = useRef();
+
+  const isRtl = useIsRTL(analyticalTableRef);
 
   const getSubRows = useCallback((row) => row[subRowsKey] || [], [subRowsKey]);
 
@@ -384,6 +391,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
         selectionBehavior,
         classes,
         onRowSelected,
+        onRowClick,
         onRowExpandChange,
         isTreeTable,
         alternateRowColor,
@@ -465,6 +473,10 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       parentHeightObserver.disconnect();
     };
   }, [updateTableClientWidth, updateRowsCount]);
+
+  useIsomorphicLayoutEffect(() => {
+    dispatch({ type: 'IS_RTL', payload: { isRtl } });
+  }, [isRtl]);
 
   useIsomorphicLayoutEffect(() => {
     updateTableClientWidth();
@@ -563,6 +575,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
 
   const [dragOver, handleDragEnter, handleDragStart, handleDragOver, handleOnDrop, handleOnDragEnd] = useDragAndDrop(
     props,
+    isRtl,
     setColumnOrder,
     tableState.columnOrder,
     tableState.columnResizing,
@@ -573,6 +586,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     'onSort',
     'onGroup',
     'onRowSelected',
+    'onRowClick',
     'onRowExpandChange',
     'onColumnsReordered',
     'onLoadMore'
@@ -670,6 +684,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
                   onDragEnter={handleDragEnter}
                   onDragEnd={handleOnDragEnd}
                   dragOver={dragOver}
+                  isRtl={isRtl}
                 />
               )
             );
@@ -723,6 +738,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
                 overscanCountHorizontal={overscanCountHorizontal}
                 renderRowSubComponent={renderRowSubComponent}
                 markNavigatedRow={markNavigatedRow}
+                isRtl={isRtl}
               />
             </VirtualTableBodyContainer>
           )}

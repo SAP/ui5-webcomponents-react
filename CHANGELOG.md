@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.13.0...v0.13.1) (2021-01-11)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** support rtl ([#1146](https://github.com/SAP/ui5-webcomponents-react/issues/1146)) ([ed4aee1](https://github.com/SAP/ui5-webcomponents-react/commit/ed4aee186f42ee9230b31aeb182abe29479d38e7))
+* **DynamicPage:** don't render unnecessary scrollbar & only show actions separator when needed ([#1137](https://github.com/SAP/ui5-webcomponents-react/issues/1137)) ([70d0453](https://github.com/SAP/ui5-webcomponents-react/commit/70d045377e1caff7922f33d8b39d5635d05dedac)), closes [#1074](https://github.com/SAP/ui5-webcomponents-react/issues/1074)
+
+
+### Features
+
+* **AnalyticalTable:** add navigation indicator ([#1127](https://github.com/SAP/ui5-webcomponents-react/issues/1127)) ([c5f0003](https://github.com/SAP/ui5-webcomponents-react/commit/c5f00033558deeddec07105f810cf0b9e7d54a54)), closes [#1083](https://github.com/SAP/ui5-webcomponents-react/issues/1083)
+* **AnalyticalTable:** add onRowClickEvent ([#1143](https://github.com/SAP/ui5-webcomponents-react/issues/1143)) ([2a4c29f](https://github.com/SAP/ui5-webcomponents-react/commit/2a4c29f5f2cec38b76674c73c002c39246c9ac02)), closes [#1138](https://github.com/SAP/ui5-webcomponents-react/issues/1138)
+* **Charts:** add RTL support ([#915](https://github.com/SAP/ui5-webcomponents-react/issues/915)) ([f453b8a](https://github.com/SAP/ui5-webcomponents-react/commit/f453b8a653e4f95e43a4cbf2724f9bbbe17af82c))
+
+
+
+
+
 # [0.13.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.12.4...v0.13.0) (2021-01-07)
 
 
