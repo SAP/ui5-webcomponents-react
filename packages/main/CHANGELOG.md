@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.129.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.129.0...v0.129.1) (2021-01-15)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** prevent crashes and unintended behavior in IE11 ([#1168](https://github.com/SAP/ui5-webcomponents-react/issues/1168)) ([18d9446](https://github.com/SAP/ui5-webcomponents-react/commit/18d9446afa1fba210e5bc58a59232ac4a9272dec))
+* **DynamicPage:** add className prop to dynamic page classes ([#1159](https://github.com/SAP/ui5-webcomponents-react/issues/1159)) ([bf98a32](https://github.com/SAP/ui5-webcomponents-react/commit/bf98a321411357d466586163d9ccd1df9bfb4b83))
+* **MessageBox:** don't crash when Dialog Web Component is not ready yet ([#1148](https://github.com/SAP/ui5-webcomponents-react/issues/1148)) ([a23cab2](https://github.com/SAP/ui5-webcomponents-react/commit/a23cab2b63291a25ba9f151ed9c321e724c98413))
+
+
+### Features
+
+* **AnalyticalTable:** add plugin hook to enable disabling selection of rows ([#1156](https://github.com/SAP/ui5-webcomponents-react/issues/1156)) ([354a5f5](https://github.com/SAP/ui5-webcomponents-react/commit/354a5f585eabc373063826bda0f0a287fd99c3a4))
+
+
+
+
+
 # [0.129.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.13.1...v0.129.0) (2021-01-11)
 
 **Note:** Version bump only for package @ui5/webcomponents-react
