@@ -59,11 +59,11 @@ export interface DynamicPageProps extends Omit<CommonProps, 'title'> {
  * Defines the current state of the component.
  */
 enum HEADER_STATES {
-  AUTO,
-  VISIBLE_PINNED,
-  HIDDEN_PINNED,
-  VISIBLE,
-  HIDDEN
+  AUTO = 'AUTO',
+  VISIBLE_PINNED = 'VISIBLE_PINNED',
+  HIDDEN_PINNED = 'HIDDEN_PINNED',
+  VISIBLE = 'VISIBLE',
+  HIDDEN = 'HIDDEN'
 }
 /**
  * The dynamic page is a generic layout control designed to support various floorplans and use cases.
@@ -101,14 +101,6 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
   const [headerState, setHeaderState] = useState<HEADER_STATES>(
     alwaysShowContentHeader ? HEADER_STATES.VISIBLE_PINNED : HEADER_STATES.AUTO
   );
-  const headerStateRef = React.useRef(headerState);
-  const setHeaderStateRef = useCallback(
-    (data) => {
-      headerStateRef.current = data;
-      setHeaderState(data);
-    },
-    [headerStateRef, setHeaderState]
-  );
 
   // observe heights of header parts
   const { topHeaderHeight, headerContentHeight } = useObserveHeights(
@@ -123,31 +115,30 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
     dynamicPageClasses.put(classes.headerCollapsed);
   }
 
+  useEffect(() => {
+    const oneTimeScrollHandler = () => {
+      setHeaderState(HEADER_STATES.AUTO);
+    };
+    if (headerState === HEADER_STATES.VISIBLE || headerState === HEADER_STATES.HIDDEN) {
+      dynamicPageRef.current.addEventListener('scroll', oneTimeScrollHandler, { once: true });
+    }
+    return () => {
+      dynamicPageRef.current.removeEventListener('scroll', oneTimeScrollHandler);
+    };
+  }, [dynamicPageRef, headerState]);
+
   const onToggleHeaderContentVisibility = useCallback(
     (e, element?: Element | HTMLElement) => {
-      let srcElement = e.target;
-      if (element) {
-        srcElement = element;
-      }
+      const srcElement = element ?? e.target;
       const shouldHideHeader = srcElement.icon === 'slim-arrow-up';
-      let headerStateResetOnScroll = false;
-      setHeaderStateRef((oldState) => {
+      setHeaderState((oldState) => {
         if (oldState === HEADER_STATES.VISIBLE_PINNED || oldState === HEADER_STATES.HIDDEN_PINNED) {
           return shouldHideHeader ? HEADER_STATES.HIDDEN_PINNED : HEADER_STATES.VISIBLE_PINNED;
         }
-        headerStateResetOnScroll = true;
         return shouldHideHeader ? HEADER_STATES.HIDDEN : HEADER_STATES.VISIBLE;
       });
-      dynamicPageRef.current.addEventListener(
-        'scroll',
-        () => {
-          if (headerStateRef.current !== HEADER_STATES.VISIBLE_PINNED && headerStateResetOnScroll)
-            setHeaderStateRef(HEADER_STATES.AUTO);
-        },
-        { once: true }
-      );
     },
-    [dynamicPageRef.current, headerStateRef.current, classes.headerCollapsed, setHeaderStateRef]
+    [setHeaderState]
   );
 
   const onHoverToggleButton = useCallback(
@@ -168,21 +159,21 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
   const handleHeaderPinnedChange = useCallback(
     (headerWillPin) => {
       if (headerWillPin) {
-        setHeaderStateRef(HEADER_STATES.VISIBLE_PINNED);
+        setHeaderState(HEADER_STATES.VISIBLE_PINNED);
       } else {
-        setHeaderStateRef(HEADER_STATES.AUTO);
+        setHeaderState(HEADER_STATES.VISIBLE);
       }
     },
-    [setHeaderStateRef]
+    [setHeaderState]
   );
 
   useEffect(() => {
     if (alwaysShowContentHeader) {
       setHeaderState(HEADER_STATES.VISIBLE_PINNED);
     } else {
-      setHeaderStateRef(HEADER_STATES.AUTO);
+      setHeaderState(HEADER_STATES.AUTO);
     }
-  }, [alwaysShowContentHeader, setHeaderStateRef]);
+  }, [alwaysShowContentHeader, setHeaderState]);
 
   return (
     <div
