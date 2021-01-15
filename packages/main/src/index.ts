@@ -164,6 +164,8 @@ import { Wizard } from './lib/Wizard';
 import { WizardStep } from './lib/WizardStep';
 import { withWebComponent } from './lib/withWebComponent';
 
+export * as AnalyticalTableHooks from './lib/AnalyticalTableHooks';
+
 export {
   ActionSheet,
   AnalyticalCard,
