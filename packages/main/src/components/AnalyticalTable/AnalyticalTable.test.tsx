@@ -1,6 +1,7 @@
-import { act, fireEvent, getByText, render, screen, getMouseEvent, renderRtl } from '@shared/tests';
+import { act, fireEvent, getByText, getMouseEvent, render, renderRtl, screen } from '@shared/tests';
 import { createPassThroughPropsTest } from '@shared/tests/utils';
 import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
+import { useRowDisableSelection } from '@ui5/webcomponents-react/lib/AnalyticalTableHooks';
 import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 import { TableVisibleRowCountMode } from '@ui5/webcomponents-react/lib/TableVisibleRowCountMode';
@@ -956,6 +957,60 @@ describe('AnalyticalTable', () => {
     const cellsWithoutNavCol = getAllByRole('cell', { hidden: true });
 
     expect(cellsWithoutNavCol.filter((item) => item.getAttribute('aria-colindex') === '5')).toHaveLength(0);
+  });
+
+  test('plugin hook: useRowDisableSelection', () => {
+    const cb = jest.fn();
+    const TestComponent = (props) => {
+      const { cb } = props;
+      const dataWithDisableSelectProp = data.map((item, index) => ({ ...item, disableSelection: index === 0 }));
+      return (
+        <AnalyticalTable
+          data={dataWithDisableSelectProp}
+          columns={columns}
+          onRowSelected={cb}
+          selectionMode={TableSelectionMode.MULTI_SELECT}
+          tableHooks={[useRowDisableSelection('disableSelection')]}
+          minRows={1}
+        />
+      );
+    };
+
+    const { getAllByRole, asFragment } = render(<TestComponent cb={cb} />);
+
+    //first row is disabled, so all selection cells, and "normal" cells should not fire the event there
+    const cells = getAllByRole('cell', { hidden: true });
+    const selectionCells = cells.filter((item) => item.getAttribute('aria-colindex') === '1');
+    expect(selectionCells).toHaveLength(2);
+    fireEvent.click(selectionCells[0]);
+    expect(cb).toBeCalledTimes(0);
+    fireEvent.click(selectionCells[0].children[0]);
+    expect(selectionCells[0].children[0].getAttribute('disabled')).toEqual('true');
+    expect(cb).toBeCalledTimes(0);
+    fireEvent.click(selectionCells[1]);
+    expect(cb).toBeCalledTimes(1);
+    fireEvent.click(selectionCells[1].children[0]);
+    expect(cb).toBeCalledTimes(2);
+
+    const extCells = cells.filter(
+      (item) => item.getAttribute('aria-colindex') && item.getAttribute('aria-colindex') !== '1'
+    );
+    let counter = 2;
+    extCells.forEach((item, index) => {
+      fireEvent.click(item);
+      if (index <= 3) {
+        expect(cb).toBeCalledTimes(2);
+      } else {
+        counter++;
+        expect(cb).toBeCalledTimes(counter);
+      }
+    });
+
+    // test if "select-all" checkbox is not rendered
+    const headers = getAllByRole('columnheader', { hidden: true });
+    expect(headers[0].getElementsByTagName('ui5-checkbox')[0]).toBeFalsy();
+
+    expect(asFragment()).toMatchSnapshot();
   });
 
   createPassThroughPropsTest(AnalyticalTable);
