@@ -11,9 +11,10 @@ const baseStyles = {
  */
 const Header = () => <div style={{ width: '6px' }} />;
 
-const Cell = ({ isNavigatedCell }) => {
+const Cell = (instance) => {
+  const { isNavigatedCell, webComponentsReactProperties } = instance;
   if (isNavigatedCell) {
-    return <div style={{ ...baseStyles, backgroundColor: ThemingParameters.sapList_SelectionBorderColor }} />;
+    return <div style={baseStyles} className={webComponentsReactProperties.classes.valueStateInformation} />;
   }
   return <div style={baseStyles} />;
 };
