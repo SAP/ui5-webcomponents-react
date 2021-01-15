@@ -199,7 +199,11 @@ import { useRowDisableSelection } from '@ui5/webcomponents-react/lib/AnalyticalT
 ```
 
 ```jsx
-<AnalyticalTable data={data} columns={columns} tableHooks={[useRowDisableSelection('myAccessorToDisableRowSelection')]} />
+<AnalyticalTable
+  data={data}
+  columns={columns}
+  tableHooks={[useRowDisableSelection('myAccessorToDisableRowSelection')]}
+/>
 ```
 
 ### Disable the selection of single rows
@@ -246,6 +250,7 @@ With the `useRowDisableSelection` it's possible to disable the selection of spec
               data={args.data}
               columns={args.columns}
               selectionMode={args.selectionMode}
+              selectedRowIds={[]}
               tableHooks={[useRowDisableSelection(disableRowFunc)]}
               visibleRows={10}
               title="All under 40 are not selectable"
