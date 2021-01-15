@@ -53,6 +53,7 @@ const styles = {
     overflowX: 'hidden',
     overflowY: 'auto',
     scrollBarWidth: 'none !important',
+    '-ms-overflow-style': 'none',
     '&::-webkit-scrollbar': {
       width: 0,
       height: 0
@@ -137,6 +138,18 @@ const styles = {
     fontSize: ThemingParameters.sapFontSize,
     fontWeight: 'normal',
     borderBottom: `1px solid ${ThemingParameters.sapList_BorderColor}`
+  },
+  valueStateSuccess: {
+    backgroundColor: ThemingParameters.sapSuccessColor
+  },
+  valueStateError: {
+    backgroundColor: ThemingParameters.sapErrorColor
+  },
+  valueStateWarning: {
+    backgroundColor: ThemingParameters.sapWarningColor
+  },
+  valueStateInformation: {
+    backgroundColor: ThemingParameters.sapInformationColor
   }
 };
 
