@@ -16,7 +16,7 @@ export const useDragAndDrop = (props, isRtl, setColumnOrder, columnOrder, resize
         e.preventDefault();
         return;
       }
-      e.dataTransfer.setData('colId', e.currentTarget.dataset.columnId);
+      e.dataTransfer.setData('text', e.currentTarget.dataset.columnId);
     },
     [resizeInfo.isResizingColumn]
   );
@@ -34,7 +34,7 @@ export const useDragAndDrop = (props, isRtl, setColumnOrder, columnOrder, resize
       setDragOver('');
 
       const droppedColId = e.currentTarget.dataset.columnId;
-      const draggedColId = e.dataTransfer.getData('colId');
+      const draggedColId = e.dataTransfer.getData('text');
       if (droppedColId === draggedColId) return;
 
       const internalColumnOrder = columnOrder.length > 0 ? columnOrder : columns.map((col) => getColumnId(col));
