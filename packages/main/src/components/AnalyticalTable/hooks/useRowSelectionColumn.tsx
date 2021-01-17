@@ -98,15 +98,16 @@ const columns = (currentColumns, { instance }) => {
   if (selectionMode === TableSelectionMode.NONE || selectionBehavior === TableSelectionBehavior.ROW_ONLY) {
     return currentColumns;
   }
+  const tableSelectionColumnWidth =
+    tableRef.current &&
+    parseInt(
+      getComputedStyle(tableRef.current).getPropertyValue(
+        `--${CssSizeVariablesNames.sapWcrAnalyticalTableSelectionColumnWidth}`
+      ),
+      10
+    );
+  const selectionColumnWidth = !isNaN(tableSelectionColumnWidth) ? tableSelectionColumnWidth : 47;
 
-  const selectionColumnWidth = tableRef.current
-    ? parseInt(
-        getComputedStyle(tableRef.current).getPropertyValue(
-          `--${CssSizeVariablesNames.sapWcrAnalyticalTableSelectionColumnWidth}`
-        ),
-        10
-      )
-    : 47;
   return [
     {
       id: '__ui5wcr__internal_selection_column',
