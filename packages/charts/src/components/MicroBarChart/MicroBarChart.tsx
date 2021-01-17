@@ -165,7 +165,7 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
   if (onDataPointClick) {
     barContainerClasses.put(classes.barContainerActive);
   }
-  const passThroughProps = usePassThroughHtmlProps(props);
+  const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick']);
 
   return (
     <ChartContainer

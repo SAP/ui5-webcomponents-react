@@ -178,7 +178,7 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
   const [yAxisWidth, legendPosition] = useLongestYAxisLabel(dataset?.[0].data, [yMeasure]);
   const xAxisHeights = useObserveXAxisHeights(chartRef, 1);
   const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
-  const passThroughProps = usePassThroughHtmlProps(props);
+  const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick']);
   const isRTL = useIsRTL(chartRef);
 
   return (

@@ -43,7 +43,7 @@ const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, r
     [onDataPointClick]
   );
 
-  const passThroughProps = usePassThroughHtmlProps(props);
+  const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick']);
 
   return (
     <ChartContainer
