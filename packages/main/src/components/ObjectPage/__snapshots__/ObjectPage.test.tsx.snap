@@ -150,10 +150,12 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
         />
       </ui5-tabcontainer>
       <ui5-button
+        aria-label="Expand Header"
         class="ObjectPageAnchorBar-anchorBarActionButton ObjectPageAnchorBar-anchorBarActionButtonExpandable "
         data-ui5wcr-object-page-header-action=""
         design="Default"
         icon="slim-arrow-down"
+        title="Expand Header"
         ui5-button=""
       />
     </section>
@@ -163,6 +165,7 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
       role="region"
     >
       <div
+        aria-level="3"
         class="ObjectPageSection-header"
         role="heading"
       >
@@ -282,6 +285,7 @@ exports[`ObjectPage Just Some Sections 1`] = `
       role="region"
     >
       <div
+        aria-level="3"
         class="ObjectPageSection-header"
         role="heading"
       >
@@ -468,6 +472,7 @@ exports[`ObjectPage Key Infos 1`] = `
       role="region"
     >
       <div
+        aria-level="3"
         class="ObjectPageSection-header"
         role="heading"
       >
@@ -491,6 +496,7 @@ exports[`ObjectPage Key Infos 1`] = `
       role="region"
     >
       <div
+        aria-level="3"
         class="ObjectPageSection-header"
         role="heading"
       >
@@ -604,6 +610,7 @@ exports[`ObjectPage No Header 1`] = `
       role="region"
     >
       <div
+        aria-level="3"
         class="ObjectPageSection-header"
         role="heading"
       >
@@ -627,6 +634,7 @@ exports[`ObjectPage No Header 1`] = `
       role="region"
     >
       <div
+        aria-level="3"
         class="ObjectPageSection-header"
         role="heading"
       >
@@ -807,6 +815,7 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
       role="region"
     >
       <div
+        aria-level="3"
         class="ObjectPageSection-header"
         role="heading"
       >
@@ -913,6 +922,7 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
       role="region"
     >
       <div
+        aria-level="3"
         class="ObjectPageSection-header"
         role="heading"
       >
@@ -1076,6 +1086,7 @@ exports[`ObjectPage Only Sections 1`] = `
       role="region"
     >
       <div
+        aria-level="3"
         class="ObjectPageSection-header"
         role="heading"
       >
@@ -1105,6 +1116,7 @@ exports[`ObjectPage Only Sections 1`] = `
       role="region"
     >
       <div
+        aria-level="3"
         class="ObjectPageSection-header"
         role="heading"
       >
@@ -1134,6 +1146,7 @@ exports[`ObjectPage Only Sections 1`] = `
       role="region"
     >
       <div
+        aria-level="3"
         class="ObjectPageSection-header"
         role="heading"
       >
@@ -1253,6 +1266,7 @@ exports[`ObjectPage Set selected section id 1`] = `
       role="region"
     >
       <div
+        aria-level="3"
         class="ObjectPageSection-header"
         role="heading"
       >
@@ -1418,10 +1432,12 @@ exports[`ObjectPage With Subsections 1`] = `
         />
       </ui5-tabcontainer>
       <ui5-button
+        aria-label="Expand Header"
         class="ObjectPageAnchorBar-anchorBarActionButton ObjectPageAnchorBar-anchorBarActionButtonExpandable "
         data-ui5wcr-object-page-header-action=""
         design="Default"
         icon="slim-arrow-down"
+        title="Expand Header"
         ui5-button=""
       />
     </section>
@@ -1431,6 +1447,7 @@ exports[`ObjectPage With Subsections 1`] = `
       role="region"
     >
       <div
+        aria-level="3"
         class="ObjectPageSection-header"
         role="heading"
       >
@@ -1460,6 +1477,7 @@ exports[`ObjectPage With Subsections 1`] = `
       role="region"
     >
       <div
+        aria-level="3"
         class="ObjectPageSection-header"
         role="heading"
       >
@@ -1489,6 +1507,7 @@ exports[`ObjectPage With Subsections 1`] = `
       role="region"
     >
       <div
+        aria-level="3"
         class="ObjectPageSection-header"
         role="heading"
       >
@@ -1514,6 +1533,7 @@ exports[`ObjectPage With Subsections 1`] = `
       role="region"
     >
       <div
+        aria-level="3"
         class="ObjectPageSection-header"
         role="heading"
       >
@@ -1539,7 +1559,9 @@ exports[`ObjectPage With Subsections 1`] = `
             role="region"
           >
             <div
+              aria-level="4"
               class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+              role="heading"
             >
               SubSection 4.1
             </div>
@@ -1556,7 +1578,9 @@ exports[`ObjectPage With Subsections 1`] = `
             role="region"
           >
             <div
+              aria-level="4"
               class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+              role="heading"
             >
               SubSection 4.2
             </div>
@@ -1575,6 +1599,7 @@ exports[`ObjectPage With Subsections 1`] = `
       role="region"
     >
       <div
+        aria-level="3"
         class="ObjectPageSection-header"
         role="heading"
       >
@@ -1597,7 +1622,9 @@ exports[`ObjectPage With Subsections 1`] = `
             role="region"
           >
             <div
+              aria-level="4"
               class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+              role="heading"
             >
               SubSection 5.1
             </div>
@@ -1614,7 +1641,9 @@ exports[`ObjectPage With Subsections 1`] = `
             role="region"
           >
             <div
+              aria-level="4"
               class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+              role="heading"
             >
               SubSection 5.2
             </div>
