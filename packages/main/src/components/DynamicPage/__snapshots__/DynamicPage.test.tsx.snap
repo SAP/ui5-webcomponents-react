@@ -267,10 +267,12 @@ exports[`DynamicPage always show content header 1`] = `
         role="navigation"
       >
         <ui5-button
+          aria-label="Expand Header"
           class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonExpandable "
           data-ui5wcr-dynamic-page-header-action=""
           design="Default"
           icon="slim-arrow-down"
+          title="Expand Header"
           ui5-button=""
         />
       </section>
@@ -995,10 +997,12 @@ exports[`DynamicPage with content 1`] = `
         role="navigation"
       >
         <ui5-button
+          aria-label="Expand Header"
           class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonExpandable "
           data-ui5wcr-dynamic-page-header-action=""
           design="Default"
           icon="slim-arrow-down"
+          title="Expand Header"
           ui5-button=""
         />
       </section>
@@ -1965,10 +1969,12 @@ exports[`DynamicPage without content 1`] = `
         role="navigation"
       >
         <ui5-button
+          aria-label="Expand Header"
           class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonExpandable "
           data-ui5wcr-dynamic-page-header-action=""
           design="Default"
           icon="slim-arrow-down"
+          title="Expand Header"
           ui5-button=""
         />
       </section>
