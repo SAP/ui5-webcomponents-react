@@ -6,6 +6,13 @@ import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ToggleButton } from '@ui5/webcomponents-react/lib/ToggleButton';
 import React, { CSSProperties, forwardRef, RefObject, useCallback } from 'react';
 import { createUseStyles } from 'react-jss';
+import { useI18nBundle } from '@ui5/webcomponents-react-base/hooks/useI18nBundle';
+import {
+  COLLAPSE_HEADER,
+  EXPAND_HEADER,
+  PIN_HEADER,
+  UNPIN_HEADER
+} from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 
 addCustomCSS(
   'ui5-button',
@@ -129,6 +136,8 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
     [setHeaderPinned]
   );
 
+  const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
+
   return (
     <section
       style={style}
@@ -146,6 +155,8 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
           onClick={onToggleHeaderContentVisibility}
           onMouseOver={onHoverToggleButton}
           onMouseLeave={onHoverToggleButton}
+          tooltip={i18nBundle.getText(headerContentHeight === 0 ? EXPAND_HEADER : COLLAPSE_HEADER)}
+          aria-label={i18nBundle.getText(headerContentHeight === 0 ? EXPAND_HEADER : COLLAPSE_HEADER)}
         />
       )}
       {shouldRenderHeaderPinnableButton && (
@@ -157,6 +168,8 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
           }`}
           pressed={headerPinned}
           onClick={onPinHeader}
+          tooltip={i18nBundle.getText(headerPinned ? UNPIN_HEADER : PIN_HEADER)}
+          aria-label={i18nBundle.getText(headerPinned ? UNPIN_HEADER : PIN_HEADER)}
         />
       )}
     </section>

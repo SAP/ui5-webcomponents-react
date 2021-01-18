@@ -267,10 +267,12 @@ exports[`DynamicPage always show content header 1`] = `
         role="navigation"
       >
         <ui5-button
+          aria-label="Expand Header"
           class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonExpandable "
           data-ui5wcr-dynamic-page-header-action=""
           design="Default"
           icon="slim-arrow-down"
+          title="Expand Header"
           ui5-button=""
         />
       </section>
@@ -558,8 +560,10 @@ exports[`DynamicPage hider header button 1`] = `
         style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem;"
       >
         <ui5-title
+          aria-label="Phone Numbers"
           level="H5"
           style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
+          title="Phone Numbers"
           ui5-title=""
         >
           Phone Numbers
@@ -599,8 +603,10 @@ exports[`DynamicPage hider header button 1`] = `
           </span>
         </div>
         <ui5-title
+          aria-label="Social Accounts"
           level="H5"
           style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
+          title="Social Accounts"
           ui5-title=""
         >
           Social Accounts
@@ -648,8 +654,10 @@ exports[`DynamicPage hider header button 1`] = `
         style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem;"
       >
         <ui5-title
+          aria-label="Addresses"
           level="H5"
           style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
+          title="Addresses"
           ui5-title=""
         >
           Addresses
@@ -691,8 +699,10 @@ exports[`DynamicPage hider header button 1`] = `
           </span>
         </div>
         <ui5-title
+          aria-label="Mailing Address"
           level="H5"
           style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
+          title="Mailing Address"
           ui5-title=""
         >
           Mailing Address
@@ -987,10 +997,12 @@ exports[`DynamicPage with content 1`] = `
         role="navigation"
       >
         <ui5-button
+          aria-label="Expand Header"
           class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonExpandable "
           data-ui5wcr-dynamic-page-header-action=""
           design="Default"
           icon="slim-arrow-down"
+          title="Expand Header"
           ui5-button=""
         />
       </section>
@@ -1004,8 +1016,10 @@ exports[`DynamicPage with content 1`] = `
         style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem; z-index: 0;"
       >
         <ui5-title
+          aria-label="Phone Numbers"
           level="H5"
           style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
+          title="Phone Numbers"
           ui5-title=""
         >
           Phone Numbers
@@ -1045,8 +1059,10 @@ exports[`DynamicPage with content 1`] = `
           </span>
         </div>
         <ui5-title
+          aria-label="Social Accounts"
           level="H5"
           style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
+          title="Social Accounts"
           ui5-title=""
         >
           Social Accounts
@@ -1094,8 +1110,10 @@ exports[`DynamicPage with content 1`] = `
         style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem;"
       >
         <ui5-title
+          aria-label="Addresses"
           level="H5"
           style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
+          title="Addresses"
           ui5-title=""
         >
           Addresses
@@ -1137,8 +1155,10 @@ exports[`DynamicPage with content 1`] = `
           </span>
         </div>
         <ui5-title
+          aria-label="Mailing Address"
           level="H5"
           style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
+          title="Mailing Address"
           ui5-title=""
         >
           Mailing Address
@@ -1168,8 +1188,10 @@ exports[`DynamicPage with content 1`] = `
         style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem;"
       >
         <ui5-title
+          aria-label="Phone Numbers"
           level="H5"
           style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
+          title="Phone Numbers"
           ui5-title=""
         >
           Phone Numbers
@@ -1209,8 +1231,10 @@ exports[`DynamicPage with content 1`] = `
           </span>
         </div>
         <ui5-title
+          aria-label="Social Accounts"
           level="H5"
           style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
+          title="Social Accounts"
           ui5-title=""
         >
           Social Accounts
@@ -1258,8 +1282,10 @@ exports[`DynamicPage with content 1`] = `
         style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem;"
       >
         <ui5-title
+          aria-label="Addresses"
           level="H5"
           style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
+          title="Addresses"
           ui5-title=""
         >
           Addresses
@@ -1301,8 +1327,10 @@ exports[`DynamicPage with content 1`] = `
           </span>
         </div>
         <ui5-title
+          aria-label="Mailing Address"
           level="H5"
           style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
+          title="Mailing Address"
           ui5-title=""
         >
           Mailing Address
@@ -1332,8 +1360,10 @@ exports[`DynamicPage with content 1`] = `
         style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem; z-index: 0;"
       >
         <ui5-title
+          aria-label="Phone Numbers"
           level="H5"
           style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
+          title="Phone Numbers"
           ui5-title=""
         >
           Phone Numbers
@@ -1373,8 +1403,10 @@ exports[`DynamicPage with content 1`] = `
           </span>
         </div>
         <ui5-title
+          aria-label="Social Accounts"
           level="H5"
           style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
+          title="Social Accounts"
           ui5-title=""
         >
           Social Accounts
@@ -1422,8 +1454,10 @@ exports[`DynamicPage with content 1`] = `
         style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem;"
       >
         <ui5-title
+          aria-label="Addresses"
           level="H5"
           style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
+          title="Addresses"
           ui5-title=""
         >
           Addresses
@@ -1465,8 +1499,10 @@ exports[`DynamicPage with content 1`] = `
           </span>
         </div>
         <ui5-title
+          aria-label="Mailing Address"
           level="H5"
           style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
+          title="Mailing Address"
           ui5-title=""
         >
           Mailing Address
@@ -1496,8 +1532,10 @@ exports[`DynamicPage with content 1`] = `
         style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem;"
       >
         <ui5-title
+          aria-label="Phone Numbers"
           level="H5"
           style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
+          title="Phone Numbers"
           ui5-title=""
         >
           Phone Numbers
@@ -1537,8 +1575,10 @@ exports[`DynamicPage with content 1`] = `
           </span>
         </div>
         <ui5-title
+          aria-label="Social Accounts"
           level="H5"
           style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
+          title="Social Accounts"
           ui5-title=""
         >
           Social Accounts
@@ -1586,8 +1626,10 @@ exports[`DynamicPage with content 1`] = `
         style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem;"
       >
         <ui5-title
+          aria-label="Addresses"
           level="H5"
           style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
+          title="Addresses"
           ui5-title=""
         >
           Addresses
@@ -1629,8 +1671,10 @@ exports[`DynamicPage with content 1`] = `
           </span>
         </div>
         <ui5-title
+          aria-label="Mailing Address"
           level="H5"
           style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
+          title="Mailing Address"
           ui5-title=""
         >
           Mailing Address
@@ -1925,10 +1969,12 @@ exports[`DynamicPage without content 1`] = `
         role="navigation"
       >
         <ui5-button
+          aria-label="Expand Header"
           class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonExpandable "
           data-ui5wcr-dynamic-page-header-action=""
           design="Default"
           icon="slim-arrow-down"
+          title="Expand Header"
           ui5-button=""
         />
       </section>
