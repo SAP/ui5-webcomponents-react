@@ -12,7 +12,7 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
       role="banner"
       style="padding-right: 12px;"
     >
-      <header
+      <div
         class="ObjectPage-titleBar"
       >
         <div
@@ -63,7 +63,7 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
             </div>
           </div>
         </div>
-      </header>
+      </div>
     </header>
     <div
       class="ObjectPage-contentHeader"
@@ -163,6 +163,7 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
       role="region"
     >
       <div
+        aria-level="1"
         class="ObjectPageSection-header"
         role="heading"
       >
@@ -202,7 +203,7 @@ exports[`ObjectPage Just Some Sections 1`] = `
       role="banner"
       style="padding-right: 12px;"
     >
-      <header
+      <div
         class="ObjectPage-titleBar"
       >
         <div
@@ -241,7 +242,7 @@ exports[`ObjectPage Just Some Sections 1`] = `
             </div>
           </div>
         </div>
-      </header>
+      </div>
     </header>
     <div
       class="ObjectPage-contentHeader"
@@ -282,6 +283,7 @@ exports[`ObjectPage Just Some Sections 1`] = `
       role="region"
     >
       <div
+        aria-level="1"
         class="ObjectPageSection-header"
         role="heading"
       >
@@ -315,7 +317,7 @@ exports[`ObjectPage Key Infos 1`] = `
       role="banner"
       style="padding-right: 12px;"
     >
-      <header
+      <div
         class="ObjectPage-titleBar"
       >
         <div
@@ -427,7 +429,7 @@ exports[`ObjectPage Key Infos 1`] = `
             </div>
           </div>
         </div>
-      </header>
+      </div>
     </header>
     <div
       class="ObjectPage-contentHeader"
@@ -468,6 +470,7 @@ exports[`ObjectPage Key Infos 1`] = `
       role="region"
     >
       <div
+        aria-level="1"
         class="ObjectPageSection-header"
         role="heading"
       >
@@ -491,6 +494,7 @@ exports[`ObjectPage Key Infos 1`] = `
       role="region"
     >
       <div
+        aria-level="1"
         class="ObjectPageSection-header"
         role="heading"
       >
@@ -524,7 +528,7 @@ exports[`ObjectPage No Header 1`] = `
       role="banner"
       style="padding-right: 12px;"
     >
-      <header
+      <div
         class="ObjectPage-titleBar"
       >
         <div
@@ -563,7 +567,7 @@ exports[`ObjectPage No Header 1`] = `
             </div>
           </div>
         </div>
-      </header>
+      </div>
     </header>
     <div
       class="ObjectPage-contentHeader"
@@ -604,6 +608,7 @@ exports[`ObjectPage No Header 1`] = `
       role="region"
     >
       <div
+        aria-level="1"
         class="ObjectPageSection-header"
         role="heading"
       >
@@ -627,6 +632,7 @@ exports[`ObjectPage No Header 1`] = `
       role="region"
     >
       <div
+        aria-level="1"
         class="ObjectPageSection-header"
         role="heading"
       >
@@ -660,7 +666,7 @@ exports[`ObjectPage Not crashing with 0 sections 1`] = `
       role="banner"
       style="padding-right: 12px;"
     >
-      <header
+      <div
         class="ObjectPage-titleBar"
       >
         <div
@@ -699,7 +705,7 @@ exports[`ObjectPage Not crashing with 0 sections 1`] = `
             </div>
           </div>
         </div>
-      </header>
+      </div>
     </header>
     <div
       class="ObjectPage-contentHeader"
@@ -734,7 +740,7 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
       role="banner"
       style="padding-right: 12px;"
     >
-      <header
+      <div
         class="ObjectPage-titleBar"
       >
         <div
@@ -773,7 +779,7 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
             </div>
           </div>
         </div>
-      </header>
+      </div>
     </header>
     <div
       class="ObjectPage-contentHeader"
@@ -807,6 +813,7 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
       role="region"
     >
       <div
+        aria-level="1"
         class="ObjectPageSection-header"
         role="heading"
       >
@@ -840,7 +847,7 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
       role="banner"
       style="padding-right: 12px;"
     >
-      <header
+      <div
         class="ObjectPage-titleBar"
       >
         <div
@@ -879,7 +886,7 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
             </div>
           </div>
         </div>
-      </header>
+      </div>
     </header>
     <div
       class="ObjectPage-contentHeader"
@@ -913,6 +920,7 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
       role="region"
     >
       <div
+        aria-level="1"
         class="ObjectPageSection-header"
         role="heading"
       >
@@ -946,7 +954,7 @@ exports[`ObjectPage Only Sections 1`] = `
       role="banner"
       style="padding-right: 12px;"
     >
-      <header
+      <div
         class="ObjectPage-titleBar"
       >
         <div
@@ -997,7 +1005,7 @@ exports[`ObjectPage Only Sections 1`] = `
             </div>
           </div>
         </div>
-      </header>
+      </div>
     </header>
     <div
       class="ObjectPage-contentHeader"
@@ -1076,6 +1084,7 @@ exports[`ObjectPage Only Sections 1`] = `
       role="region"
     >
       <div
+        aria-level="1"
         class="ObjectPageSection-header"
         role="heading"
       >
@@ -1105,6 +1114,7 @@ exports[`ObjectPage Only Sections 1`] = `
       role="region"
     >
       <div
+        aria-level="1"
         class="ObjectPageSection-header"
         role="heading"
       >
@@ -1134,6 +1144,7 @@ exports[`ObjectPage Only Sections 1`] = `
       role="region"
     >
       <div
+        aria-level="1"
         class="ObjectPageSection-header"
         role="heading"
       >
@@ -1173,7 +1184,7 @@ exports[`ObjectPage Set selected section id 1`] = `
       role="banner"
       style="padding-right: 12px;"
     >
-      <header
+      <div
         class="ObjectPage-titleBar"
       >
         <div
@@ -1212,7 +1223,7 @@ exports[`ObjectPage Set selected section id 1`] = `
             </div>
           </div>
         </div>
-      </header>
+      </div>
     </header>
     <div
       class="ObjectPage-contentHeader"
@@ -1253,6 +1264,7 @@ exports[`ObjectPage Set selected section id 1`] = `
       role="region"
     >
       <div
+        aria-level="1"
         class="ObjectPageSection-header"
         role="heading"
       >
@@ -1286,7 +1298,7 @@ exports[`ObjectPage With Subsections 1`] = `
       role="banner"
       style="padding-right: 12px;"
     >
-      <header
+      <div
         class="ObjectPage-titleBar"
       >
         <div
@@ -1337,7 +1349,7 @@ exports[`ObjectPage With Subsections 1`] = `
             </div>
           </div>
         </div>
-      </header>
+      </div>
     </header>
     <div
       class="ObjectPage-contentHeader"
@@ -1431,6 +1443,7 @@ exports[`ObjectPage With Subsections 1`] = `
       role="region"
     >
       <div
+        aria-level="1"
         class="ObjectPageSection-header"
         role="heading"
       >
@@ -1460,6 +1473,7 @@ exports[`ObjectPage With Subsections 1`] = `
       role="region"
     >
       <div
+        aria-level="1"
         class="ObjectPageSection-header"
         role="heading"
       >
@@ -1489,6 +1503,7 @@ exports[`ObjectPage With Subsections 1`] = `
       role="region"
     >
       <div
+        aria-level="1"
         class="ObjectPageSection-header"
         role="heading"
       >
@@ -1514,6 +1529,7 @@ exports[`ObjectPage With Subsections 1`] = `
       role="region"
     >
       <div
+        aria-level="1"
         class="ObjectPageSection-header"
         role="heading"
       >
@@ -1575,6 +1591,7 @@ exports[`ObjectPage With Subsections 1`] = `
       role="region"
     >
       <div
+        aria-level="1"
         class="ObjectPageSection-header"
         role="heading"
       >

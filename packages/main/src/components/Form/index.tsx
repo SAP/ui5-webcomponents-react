@@ -243,7 +243,7 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
     gridStyles['--ui5wcr_form_content_span'] = 12;
     gridStyles['--ui5wcr_form_label_text_align'] = 'start';
   }
-  
+
   return (
     <div
       ref={formRef}
