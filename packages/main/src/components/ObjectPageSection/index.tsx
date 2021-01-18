@@ -61,7 +61,7 @@ const ObjectPageSection: FC<ObjectPageSectionPropTypes> = forwardRef(
         id={htmlId}
         data-component-name="ObjectPageSection"
       >
-        <div role="heading" className={classes.header} aria-level={1}>
+        <div role="heading" aria-level={3} className={classes.header}>
           <div className={titleClasses.valueOf()}>{title}</div>
         </div>
         {/* TODO Check for subsections as they should win over the children */}
