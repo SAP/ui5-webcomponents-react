@@ -2,19 +2,19 @@
   "packages": [
     "packages/*"
   ],
-  "version": "0.13.1",
+  "version": "0.13.2",
   "npmClient": "yarn",
   "useWorkspaces": true,
   "command": {
     "version": {
-      "allowBranch": "master",
+      "allowBranch": "main",
       "conventionalCommits": true,
       "yes": true,
       "preid": "rc",
       "message": "chore(release): publish %s [ci skip]"
     },
     "publish": {
-      "allowBranch": "master",
+      "allowBranch": "main",
       "conventionalCommits": true,
       "yes": true,
       "preid": "rc",
