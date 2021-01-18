@@ -692,6 +692,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
           {loading && props.data?.length > 0 && <LoadingComponent style={{ width: `${totalColumnsWidth}px` }} />}
           {loading && props.data?.length === 0 && (
             <TablePlaceholder
+              isRtl={isRtl}
               columns={tableInternalColumns.filter(
                 (col) => (col.isVisible ?? true) && !tableState.hiddenColumns.includes(col.accessor)
               )}
