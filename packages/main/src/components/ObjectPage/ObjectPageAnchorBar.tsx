@@ -18,6 +18,13 @@ import { StandardListItem } from '../../webComponents/StandardListItem';
 import { ObjectPageAnchorButton } from './ObjectPageAnchorButton';
 import { safeGetChildrenArray } from './ObjectPageUtils';
 import { createPortal } from 'react-dom';
+import { useI18nBundle } from '@ui5/webcomponents-react-base/lib/hooks';
+import {
+  COLLAPSE_HEADER,
+  EXPAND_HEADER,
+  PIN_HEADER,
+  UNPIN_HEADER
+} from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 
 addCustomCSS(
   'ui5-button',
@@ -160,6 +167,8 @@ const ObjectPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElement
     [handleOnSubSectionSelected, popoverRef, popoverContent]
   );
 
+  const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
+
   return (
     <section className={className} role="navigation" style={style} ref={ref}>
       <TabContainer collapsed fixed onTabSelect={onTabItemSelect} showOverflow>
@@ -183,6 +192,8 @@ const ObjectPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElement
             showBothActions ? classes.anchorBarActionPinnableAndExandable : ''
           }`}
           data-ui5wcr-object-page-header-action=""
+          tooltip={i18nBundle.getText(headerContentHeight === 0 ? EXPAND_HEADER : COLLAPSE_HEADER)}
+          aria-label={i18nBundle.getText(headerContentHeight === 0 ? EXPAND_HEADER : COLLAPSE_HEADER)}
         />
       )}
       {shouldRenderHeaderPinnableButton && (
@@ -194,6 +205,8 @@ const ObjectPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElement
             showBothActions ? classes.anchorBarActionPinnableAndExandable : ''
           }`}
           data-ui5wcr-object-page-header-action=""
+          tooltip={i18nBundle.getText(headerPinned ? UNPIN_HEADER : PIN_HEADER)}
+          aria-label={i18nBundle.getText(headerPinned ? UNPIN_HEADER : PIN_HEADER)}
         />
       )}
       {createPortal(

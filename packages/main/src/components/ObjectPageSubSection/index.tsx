@@ -75,7 +75,9 @@ const ObjectPageSubSection: FC<ObjectPageSubSectionPropTypes> = forwardRef(
         id={htmlId}
         data-component-name="ObjectPageSubSection"
       >
-        <div className={classes.objectPageSubSectionHeaderTitle}>{title}</div>
+        <div role="heading" aria-level={4} className={classes.objectPageSubSectionHeaderTitle}>
+          {title}
+        </div>
         <div className={classes.subSectionContent}>{children}</div>
       </div>
     );
