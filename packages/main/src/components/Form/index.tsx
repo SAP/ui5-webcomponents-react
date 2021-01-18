@@ -179,20 +179,27 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
     rows.forEach((column: ReactElement[], rowIndex) => {
       const rowsForThisRow = maxRowsPerRow[rowIndex];
       column.forEach((cell, columnIndex) => {
-        computedFormGroups.push(
-          <Title
-            level={TitleLevel.H5}
-            style={{
-              paddingBottom: '0.75rem',
-              gridColumnEnd: 'span 12',
-              gridColumnStart: columnIndex * 12 + 1,
-              gridRowStart: totalRowCount
-            }}
-            key={`title-col-${columnIndex}-row-${totalRowCount}`}
-          >
-            {cell?.props?.title ?? ''}
-          </Title>
-        );
+        const titleStyles = {
+          paddingBottom: '0.75rem',
+          gridColumnEnd: 'span 12',
+          gridColumnStart: columnIndex * 12 + 1,
+          gridRowStart: totalRowCount
+        };
+        if (cell?.props?.title) {
+          computedFormGroups.push(
+            <Title
+              level={TitleLevel.H5}
+              style={titleStyles}
+              tooltip={cell.props.title}
+              aria-label={cell.props.title}
+              key={`title-col-${columnIndex}-row-${totalRowCount}`}
+            >
+              {cell.props.title}
+            </Title>
+          );
+        } else {
+          computedFormGroups.push(<div style={titleStyles} key={`title-col-${columnIndex}-row-${totalRowCount}`} />);
+        }
 
         for (let i = 0; i < rowsForThisRow; i++) {
           const itemToRender =
@@ -236,7 +243,7 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
     gridStyles['--ui5wcr_form_content_span'] = 12;
     gridStyles['--ui5wcr_form_label_text_align'] = 'start';
   }
-
+  
   return (
     <div
       ref={formRef}
