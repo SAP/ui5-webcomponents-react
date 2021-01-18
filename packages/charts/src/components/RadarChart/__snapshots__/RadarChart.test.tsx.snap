@@ -25,7 +25,7 @@ exports[`RadarChart Renders with data 1`] = `
         >
           <defs>
             <clippath
-              id="recharts4-clip"
+              id="recharts1-clip"
             >
               <rect
                 height="390"
@@ -198,13 +198,13 @@ exports[`RadarChart Renders with data 1`] = `
           <g
             class="recharts-layer recharts-polar-angle-axis"
           >
-            <polygon
+            <path
               class="recharts-polygon angleAxis"
               cx="200"
               cy="200"
+              d="M200,44L278,64.90003700962757L335.09996299037243,122.00000000000001L356,200L335.09996299037243,278L278,335.09996299037243L200,356L122.00000000000003,335.09996299037243L64.90003700962757,278L44,200.00000000000003L64.90003700962757,121.99999999999999L121.99999999999993,64.9000370096276L200,44Z"
               fill="none"
               orientation="outer"
-              points="200,44 278,64.90003700962757 335.09996299037243,122.00000000000001 356,200 335.09996299037243,278 278,335.09996299037243 200,356 122.00000000000003,335.09996299037243 64.90003700962757,278 44,200.00000000000003 64.90003700962757,121.99999999999999 121.99999999999993,64.9000370096276"
               radius="156"
               type="category"
             />
@@ -808,12 +808,12 @@ exports[`RadarChart Renders with data 1`] = `
             <g
               class="recharts-layer recharts-radar-polygon"
             >
-              <polygon
+              <path
                 class="recharts-polygon"
+                d="M200,200L200,200L200,200L200,200L200,200L200,200L200,200L200,200L200,200L200,200L200,200L200,200L200,200Z"
                 fill="var(--sapChart_OrderedColor_1)"
                 fill-opacity="0.5"
                 name="Users"
-                points="200,200 200,200 200,200 200,200 200,200 200,200 200,200 200,200 200,200 200,200 200,200 200,200"
                 stroke="var(--sapChart_OrderedColor_1)"
               />
             </g>
@@ -824,12 +824,12 @@ exports[`RadarChart Renders with data 1`] = `
             <g
               class="recharts-layer recharts-radar-polygon"
             >
-              <polygon
+              <path
                 class="recharts-polygon"
+                d="M200,200L200,200L200,200L200,200L200,200L200,200L200,200L200,200L200,200L200,200L200,200L200,200L200,200Z"
                 fill="var(--sapChart_OrderedColor_2)"
                 fill-opacity="0.5"
                 name="Active Sessions"
-                points="200,200 200,200 200,200 200,200 200,200 200,200 200,200 200,200 200,200 200,200 200,200 200,200"
                 stroke="var(--sapChart_OrderedColor_2)"
               />
             </g>
@@ -840,12 +840,12 @@ exports[`RadarChart Renders with data 1`] = `
             <g
               class="recharts-layer recharts-radar-polygon"
             >
-              <polygon
+              <path
                 class="recharts-polygon"
+                d="M200,200L200,200L200,200L200,200L200,200L200,200L200,200L200,200L200,200L200,200L200,200L200,200L200,200Z"
                 fill="var(--sapChart_OrderedColor_3)"
                 fill-opacity="0.5"
                 name="Vol."
-                points="200,200 200,200 200,200 200,200 200,200 200,200 200,200 200,200 200,200 200,200 200,200 200,200"
                 stroke="var(--sapChart_OrderedColor_3)"
               />
             </g>
