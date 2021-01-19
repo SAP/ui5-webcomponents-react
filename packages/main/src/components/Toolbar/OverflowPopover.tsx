@@ -1,5 +1,4 @@
 import '@ui5/webcomponents-icons/dist/overflow';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import { Popover } from '@ui5/webcomponents-react/lib/Popover';
@@ -57,8 +56,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
             style: {
               height: '0.0625rem',
               margin: '0.375rem 0.1875rem',
-              width: '100%',
-              background: ThemingParameters.sapToolbar_SeparatorColor
+              width: '100%'
             }
           });
         }
