@@ -5,7 +5,6 @@ import { useHistory } from 'react-router-dom';
 import { ShellBar } from '@ui5/webcomponents-react/lib/ShellBar';
 import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';
 import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';
-import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
 import { getUrl } from '../../util/browser/BrowserProvider';
 import PopoverListItems from '../Popover/List/PopoverListItems';
 import ThemeSwitch from '../ThemeSwitch/ThemeSwitch';
