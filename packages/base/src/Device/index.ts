@@ -1,20 +1,5 @@
 import '@ui5/webcomponents-react-base/types/UI5Device.d.ts';
-import {
-  isIE,
-  isEdge,
-  isChrome,
-  isFF,
-  isSafari,
-  isMobile,
-  isDesktop,
-  isTablet,
-  isPhone,
-  isAndroid,
-  getOS,
-  getSystem,
-  getBrowser,
-  supportTouch
-} from '@ui5/webcomponents-base/dist/Device';
+import { getOS, getSystem, supportTouch } from '@ui5/webcomponents-base/dist/Device';
 import EventProvider from '@ui5/webcomponents-base/dist/EventProvider';
 import { supportOrientation } from './Support';
 import * as Utils from './utils';
@@ -190,22 +175,7 @@ const handleResizeEvent = () => {
 };
 
 // re-export everything from the web components device
-export {
-  isIE,
-  isEdge,
-  isChrome,
-  isFF,
-  isSafari,
-  isMobile,
-  isDesktop,
-  isTablet,
-  isPhone,
-  isAndroid,
-  getOS,
-  getSystem,
-  getBrowser,
-  supportTouch
-};
+export * from '@ui5/webcomponents-base/dist/Device';
 // export all support methods
 export * from './Support';
 // export all media methods
