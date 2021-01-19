@@ -1,5 +1,16 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 
+const labelSpanClasses = () => {
+  let styleClasses = {};
+  for (let i = 1; i <= 11; i++) {
+    styleClasses[`labelSpan${i}`] = {
+      '--ui5wcr_form_content_span': 12 - i,
+      '--ui5wcr_form_label_span': i
+    };
+  }
+  return styleClasses;
+};
+
 const styles = {
   form: {
     display: 'grid',
@@ -59,6 +70,11 @@ const styles = {
     borderBottom: `1px solid ${ThemingParameters.sapGroup_TitleBorderColor}`,
     marginBottom: '1.75rem',
     gridColumn: 'var(--ui5wcr_form_full_span)'
+  },
+  ...labelSpanClasses(),
+  labelSpan12: {
+    '--ui5wcr_form_content_span': 12,
+    '--ui5wcr_form_label_text_align': 'start'
   }
 };
 

@@ -28,9 +28,16 @@ const TableRow: FC<RowProps> = ({ columns, y, row }: RowProps) => {
   );
 };
 
-type Props = { columns: any[]; rows: number; style: CSSProperties; rowHeight: number; tableWidth: number };
+type Props = {
+  columns: any[];
+  rows: number;
+  style: CSSProperties;
+  rowHeight: number;
+  tableWidth: number;
+  isRtl: boolean;
+};
 export const TablePlaceholder: FC<Props> = (props: Props) => {
-  const { columns, rows, style, rowHeight, tableWidth } = props;
+  const { columns, rows, style, rowHeight, tableWidth, isRtl } = props;
 
   const height = rows * rowHeight;
 
@@ -46,6 +53,7 @@ export const TablePlaceholder: FC<Props> = (props: Props) => {
       style={innerStyles}
       height={height}
       width={tableWidth}
+      rtl={isRtl}
       speed={2}
       backgroundColor={ThemingParameters.sapContent_ImagePlaceholderBackground}
       foregroundColor={ThemingParameters.sapContent_ImagePlaceholderForegroundColor}
