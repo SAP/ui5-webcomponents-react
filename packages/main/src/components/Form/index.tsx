@@ -7,7 +7,6 @@ import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import React, {
   Children,
   cloneElement,
-  CSSProperties,
   FC,
   forwardRef,
   ReactElement,
@@ -232,17 +231,9 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
 
   const passThroughProps = usePassThroughHtmlProps(props);
 
-  const formClassNames = StyleClassHelper.of(classes.form).putIfPresent(className);
-
-  const gridStyles: CSSProperties = {};
-  gridStyles['--ui5wcr_form_content_span'] = 12 - currentLabelSpan;
-  gridStyles['--ui5wcr_form_label_span'] = currentLabelSpan;
-
-  // special case for phones or label span 12
-  if (gridStyles['--ui5wcr_form_content_span'] <= 0) {
-    gridStyles['--ui5wcr_form_content_span'] = 12;
-    gridStyles['--ui5wcr_form_label_text_align'] = 'start';
-  }
+  const formClassNames = StyleClassHelper.of(classes.form)
+    .put(classes[`labelSpan${((currentLabelSpan - 1) % 12) + 1}`])
+    .putIfPresent(className);
 
   return (
     <div
@@ -250,10 +241,7 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
       slot={slot}
       className={formClassNames.valueOf()}
       title={tooltip}
-      style={{
-        ...gridStyles,
-        ...(style || {})
-      }}
+      style={style}
       data-columns={currentNumberOfColumns}
       {...passThroughProps}
     >

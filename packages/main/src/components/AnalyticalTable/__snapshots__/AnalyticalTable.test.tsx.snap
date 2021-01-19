@@ -1273,7 +1273,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
             style="width: 600px;"
           >
             <div
-              class="Resizer-resizer-0-2-36"
+              class="Resizer-resizer-0-2-40"
               data-resizer="true"
               draggable="false"
               role="separator"
@@ -1291,23 +1291,23 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                 style="position: relative; width: 148.5px; cursor: pointer;"
               >
                 <div
-                  class="TableColumnHeader-header-0-2-37"
+                  class="TableColumnHeader-header-0-2-41"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42 TableColumnHeader-text-0-2-38"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46 TableColumnHeader-text-0-2-42"
                     title="Full Name"
                   >
                     Name
                   </span>
                   <div
-                    class="TableColumnHeader-iconContainer-0-2-39"
+                    class="TableColumnHeader-iconContainer-0-2-43"
                     style="left: 0.5rem;"
                   />
                 </div>
               </div>
             </div>
             <div
-              class="Resizer-resizer-0-2-36"
+              class="Resizer-resizer-0-2-40"
               data-resizer="true"
               draggable="false"
               role="separator"
@@ -1325,23 +1325,23 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                 style="position: relative; width: 148.5px; cursor: pointer;"
               >
                 <div
-                  class="TableColumnHeader-header-0-2-37"
+                  class="TableColumnHeader-header-0-2-41"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42 TableColumnHeader-text-0-2-38"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46 TableColumnHeader-text-0-2-42"
                     title="Age"
                   >
                     Age
                   </span>
                   <div
-                    class="TableColumnHeader-iconContainer-0-2-39"
+                    class="TableColumnHeader-iconContainer-0-2-43"
                     style="left: 0.5rem;"
                   />
                 </div>
               </div>
             </div>
             <div
-              class="Resizer-resizer-0-2-36"
+              class="Resizer-resizer-0-2-40"
               data-resizer="true"
               draggable="false"
               role="separator"
@@ -1359,23 +1359,23 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                 style="position: relative; width: 148.5px; cursor: pointer;"
               >
                 <div
-                  class="TableColumnHeader-header-0-2-37"
+                  class="TableColumnHeader-header-0-2-41"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42 TableColumnHeader-text-0-2-38"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46 TableColumnHeader-text-0-2-42"
                     title="Friend Name"
                   >
                     Friend Name
                   </span>
                   <div
-                    class="TableColumnHeader-iconContainer-0-2-39"
+                    class="TableColumnHeader-iconContainer-0-2-43"
                     style="left: 0.5rem;"
                   />
                 </div>
               </div>
             </div>
             <div
-              class="Resizer-resizer-0-2-36"
+              class="Resizer-resizer-0-2-40"
               data-resizer="true"
               draggable="false"
               role="separator"
@@ -1393,17 +1393,17 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                 style="position: relative; width: 148.5px; cursor: pointer;"
               >
                 <div
-                  class="TableColumnHeader-header-0-2-37"
+                  class="TableColumnHeader-header-0-2-41"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42 TableColumnHeader-text-0-2-38"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46 TableColumnHeader-text-0-2-42"
                   >
                     <span>
                       Friend Age
                     </span>
                   </span>
                   <div
-                    class="TableColumnHeader-iconContainer-0-2-39"
+                    class="TableColumnHeader-iconContainer-0-2-43"
                     style="left: 0.5rem;"
                   />
                 </div>
@@ -1421,17 +1421,17 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                 style="position: relative; width: 6px; padding: 0px; cursor: auto;"
               >
                 <div
-                  class="TableColumnHeader-header-0-2-37"
+                  class="TableColumnHeader-header-0-2-41"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42 TableColumnHeader-text-0-2-38"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46 TableColumnHeader-text-0-2-42"
                   >
                     <div
                       style="width: 6px;"
                     />
                   </span>
                   <div
-                    class="TableColumnHeader-iconContainer-0-2-39"
+                    class="TableColumnHeader-iconContainer-0-2-43"
                     style="left: 0.5rem;"
                   />
                 </div>
@@ -1460,7 +1460,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46"
                     title="Fra"
                   >
                     Fra
@@ -1474,7 +1474,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46"
                     title="40"
                   >
                     40
@@ -1488,7 +1488,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46"
                     title="MAR"
                   >
                     MAR
@@ -1502,7 +1502,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46"
                     title="28"
                   >
                     28
@@ -1534,7 +1534,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46"
                     title="bla"
                   >
                     bla
@@ -1548,7 +1548,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46"
                     title="20"
                   >
                     20
@@ -1562,7 +1562,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46"
                     title="Nei"
                   >
                     Nei
@@ -1576,7 +1576,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46"
                     title="50"
                   >
                     50
@@ -1630,7 +1630,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
             style="width: 600px;"
           >
             <div
-              class="Resizer-resizer-0-2-36"
+              class="Resizer-resizer-0-2-40"
               data-resizer="true"
               draggable="false"
               role="separator"
@@ -1648,16 +1648,16 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
                 style="position: relative; width: 600px; cursor: pointer;"
               >
                 <div
-                  class="TableColumnHeader-header-0-2-37"
+                  class="TableColumnHeader-header-0-2-41"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42 TableColumnHeader-text-0-2-38"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46 TableColumnHeader-text-0-2-42"
                     title="Full Name"
                   >
                     Name
                   </span>
                   <div
-                    class="TableColumnHeader-iconContainer-0-2-39"
+                    class="TableColumnHeader-iconContainer-0-2-43"
                     style="left: 0.5rem;"
                   />
                 </div>
@@ -1686,14 +1686,14 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
                   tabindex="-1"
                 >
                   <div
-                    class="FlexBox-flexBox-0-2-16 FlexBox-flexBoxDirectionColumn-0-2-24 FlexBox-justifyContentStart-0-2-19 FlexBox-alignItemsStretch-0-2-31 FlexBox-flexWrapNoWrap-0-2-33 PopIn-container-0-2-43"
+                    class="FlexBox-flexBox-0-2-16 FlexBox-flexBoxDirectionColumn-0-2-24 FlexBox-justifyContentStart-0-2-19 FlexBox-alignItemsStretch-0-2-31 FlexBox-flexWrapNoWrap-0-2-33 PopIn-container-0-2-50"
                   >
                     <div
-                      class="FlexBox-flexBox-0-2-16 FlexBox-flexBoxDirectionRow-0-2-26 FlexBox-justifyContentStart-0-2-19 FlexBox-alignItemsStart-0-2-28 FlexBox-flexWrapNoWrap-0-2-33 PopIn-defaultCell-0-2-44"
+                      class="FlexBox-flexBox-0-2-16 FlexBox-flexBoxDirectionRow-0-2-26 FlexBox-justifyContentStart-0-2-19 FlexBox-alignItemsStart-0-2-28 FlexBox-flexWrapNoWrap-0-2-33 PopIn-defaultCell-0-2-51"
                       style="height: 44px;"
                     >
                       <span
-                        class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                        class="Text-text-0-2-44 Text-noWrap-0-2-46"
                         title="Fra"
                       >
                         Fra
@@ -1703,7 +1703,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
                       class="FlexBox-flexBox-0-2-16 FlexBox-flexBoxDirectionColumn-0-2-24 FlexBox-justifyContentStart-0-2-19 FlexBox-alignItemsStretch-0-2-31 FlexBox-flexWrapNoWrap-0-2-33"
                     >
                       <div
-                        class="PopIn-header-0-2-45"
+                        class="PopIn-header-0-2-52"
                       >
                         Friend Name:
                       </div>
@@ -1711,7 +1711,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
                         style="height: 44px;"
                       >
                         <span
-                          class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                          class="Text-text-0-2-44 Text-noWrap-0-2-46"
                           title="MAR"
                         >
                           MAR
@@ -1722,7 +1722,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
                       class="FlexBox-flexBox-0-2-16 FlexBox-flexBoxDirectionColumn-0-2-24 FlexBox-justifyContentStart-0-2-19 FlexBox-alignItemsStretch-0-2-31 FlexBox-flexWrapNoWrap-0-2-33"
                     >
                       <div
-                        class="PopIn-header-0-2-45"
+                        class="PopIn-header-0-2-52"
                       >
                         Custom Header1:
                       </div>
@@ -1730,7 +1730,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
                         style="height: 44px;"
                       >
                         <span
-                          class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                          class="Text-text-0-2-44 Text-noWrap-0-2-46"
                           title="28"
                         >
                           28
@@ -1741,7 +1741,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
                       class="FlexBox-flexBox-0-2-16 FlexBox-flexBoxDirectionColumn-0-2-24 FlexBox-justifyContentStart-0-2-19 FlexBox-alignItemsStretch-0-2-31 FlexBox-flexWrapNoWrap-0-2-33"
                     >
                       <div
-                        class="PopIn-header-0-2-45"
+                        class="PopIn-header-0-2-52"
                       >
                         Custom Header 2:
                       </div>
@@ -1749,7 +1749,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
                         style="height: 44px;"
                       >
                         <span
-                          class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                          class="Text-text-0-2-44 Text-noWrap-0-2-46"
                           title="custom header 2"
                         >
                           custom header 2
@@ -1760,7 +1760,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
                       class="FlexBox-flexBox-0-2-16 FlexBox-flexBoxDirectionColumn-0-2-24 FlexBox-justifyContentStart-0-2-19 FlexBox-alignItemsStretch-0-2-31 FlexBox-flexWrapNoWrap-0-2-33"
                     >
                       <div
-                        class="PopIn-header-0-2-45"
+                        class="PopIn-header-0-2-52"
                       >
                         Custom Cell:
                       </div>
@@ -1787,14 +1787,14 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
                   tabindex="-1"
                 >
                   <div
-                    class="FlexBox-flexBox-0-2-16 FlexBox-flexBoxDirectionColumn-0-2-24 FlexBox-justifyContentStart-0-2-19 FlexBox-alignItemsStretch-0-2-31 FlexBox-flexWrapNoWrap-0-2-33 PopIn-container-0-2-43"
+                    class="FlexBox-flexBox-0-2-16 FlexBox-flexBoxDirectionColumn-0-2-24 FlexBox-justifyContentStart-0-2-19 FlexBox-alignItemsStretch-0-2-31 FlexBox-flexWrapNoWrap-0-2-33 PopIn-container-0-2-50"
                   >
                     <div
-                      class="FlexBox-flexBox-0-2-16 FlexBox-flexBoxDirectionRow-0-2-26 FlexBox-justifyContentStart-0-2-19 FlexBox-alignItemsStart-0-2-28 FlexBox-flexWrapNoWrap-0-2-33 PopIn-defaultCell-0-2-44"
+                      class="FlexBox-flexBox-0-2-16 FlexBox-flexBoxDirectionRow-0-2-26 FlexBox-justifyContentStart-0-2-19 FlexBox-alignItemsStart-0-2-28 FlexBox-flexWrapNoWrap-0-2-33 PopIn-defaultCell-0-2-51"
                       style="height: 44px;"
                     >
                       <span
-                        class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                        class="Text-text-0-2-44 Text-noWrap-0-2-46"
                         title="bla"
                       >
                         bla
@@ -1804,7 +1804,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
                       class="FlexBox-flexBox-0-2-16 FlexBox-flexBoxDirectionColumn-0-2-24 FlexBox-justifyContentStart-0-2-19 FlexBox-alignItemsStretch-0-2-31 FlexBox-flexWrapNoWrap-0-2-33"
                     >
                       <div
-                        class="PopIn-header-0-2-45"
+                        class="PopIn-header-0-2-52"
                       >
                         Friend Name:
                       </div>
@@ -1812,7 +1812,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
                         style="height: 44px;"
                       >
                         <span
-                          class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                          class="Text-text-0-2-44 Text-noWrap-0-2-46"
                           title="Nei"
                         >
                           Nei
@@ -1823,7 +1823,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
                       class="FlexBox-flexBox-0-2-16 FlexBox-flexBoxDirectionColumn-0-2-24 FlexBox-justifyContentStart-0-2-19 FlexBox-alignItemsStretch-0-2-31 FlexBox-flexWrapNoWrap-0-2-33"
                     >
                       <div
-                        class="PopIn-header-0-2-45"
+                        class="PopIn-header-0-2-52"
                       >
                         Custom Header1:
                       </div>
@@ -1831,7 +1831,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
                         style="height: 44px;"
                       >
                         <span
-                          class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                          class="Text-text-0-2-44 Text-noWrap-0-2-46"
                           title="50"
                         >
                           50
@@ -1842,7 +1842,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
                       class="FlexBox-flexBox-0-2-16 FlexBox-flexBoxDirectionColumn-0-2-24 FlexBox-justifyContentStart-0-2-19 FlexBox-alignItemsStretch-0-2-31 FlexBox-flexWrapNoWrap-0-2-33"
                     >
                       <div
-                        class="PopIn-header-0-2-45"
+                        class="PopIn-header-0-2-52"
                       >
                         Custom Header 2:
                       </div>
@@ -1850,7 +1850,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
                         style="height: 44px;"
                       >
                         <span
-                          class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                          class="Text-text-0-2-44 Text-noWrap-0-2-46"
                           title="custom header 2"
                         >
                           custom header 2
@@ -1861,7 +1861,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
                       class="FlexBox-flexBox-0-2-16 FlexBox-flexBoxDirectionColumn-0-2-24 FlexBox-justifyContentStart-0-2-19 FlexBox-alignItemsStretch-0-2-31 FlexBox-flexWrapNoWrap-0-2-33"
                     >
                       <div
-                        class="PopIn-header-0-2-45"
+                        class="PopIn-header-0-2-52"
                       >
                         Custom Cell:
                       </div>
@@ -1924,18 +1924,19 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
           style="position: relative;"
         >
           <div
-            style="height: 44px; box-sizing: border-box;"
+            class="VerticalScrollbar-headerSection-0-2-36"
+            style="height: 44px;"
           />
           <div
-            class="sapScrollBar"
-            style="overflow-y: auto; height: -44px; box-sizing: border-box;"
+            class="sapScrollBar VerticalScrollbar-scrollbar-0-2-37"
+            style="height: -44px;"
           >
             <div
               style="height: 1420px; width: 1px;"
             />
           </div>
           <div
-            style="flex-grow: 1; box-sizing: border-box;"
+            class="VerticalScrollbar-bottomSection-0-2-38 VerticalScrollbar-bottomSectionWithScrollbar-0-2-39"
           />
         </div>
       </div>
@@ -1971,7 +1972,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
             style="width: 800px;"
           >
             <div
-              class="Resizer-resizer-0-2-36"
+              class="Resizer-resizer-0-2-40"
               data-resizer="true"
               draggable="false"
               role="separator"
@@ -1989,23 +1990,23 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
                 style="position: relative; width: 400px; cursor: pointer;"
               >
                 <div
-                  class="TableColumnHeader-header-0-2-37"
+                  class="TableColumnHeader-header-0-2-41"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42 TableColumnHeader-text-0-2-38"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46 TableColumnHeader-text-0-2-42"
                     title="Full Name"
                   >
                     Name
                   </span>
                   <div
-                    class="TableColumnHeader-iconContainer-0-2-39"
+                    class="TableColumnHeader-iconContainer-0-2-43"
                     style="left: 0.5rem;"
                   />
                 </div>
               </div>
             </div>
             <div
-              class="Resizer-resizer-0-2-36"
+              class="Resizer-resizer-0-2-40"
               data-resizer="true"
               draggable="false"
               role="separator"
@@ -2023,16 +2024,16 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
                 style="position: relative; width: 400px; cursor: pointer;"
               >
                 <div
-                  class="TableColumnHeader-header-0-2-37"
+                  class="TableColumnHeader-header-0-2-41"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42 TableColumnHeader-text-0-2-38"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46 TableColumnHeader-text-0-2-42"
                     title="Age"
                   >
                     Age
                   </span>
                   <div
-                    class="TableColumnHeader-iconContainer-0-2-39"
+                    class="TableColumnHeader-iconContainer-0-2-43"
                     style="left: 0.5rem;"
                   />
                 </div>
@@ -2061,14 +2062,14 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
                   tabindex="-1"
                 >
                   <div
-                    class="FlexBox-flexBox-0-2-16 FlexBox-flexBoxDirectionColumn-0-2-24 FlexBox-justifyContentStart-0-2-19 FlexBox-alignItemsStretch-0-2-31 FlexBox-flexWrapNoWrap-0-2-33 PopIn-container-0-2-43"
+                    class="FlexBox-flexBox-0-2-16 FlexBox-flexBoxDirectionColumn-0-2-24 FlexBox-justifyContentStart-0-2-19 FlexBox-alignItemsStretch-0-2-31 FlexBox-flexWrapNoWrap-0-2-33 PopIn-container-0-2-50"
                   >
                     <div
-                      class="FlexBox-flexBox-0-2-16 FlexBox-flexBoxDirectionRow-0-2-26 FlexBox-justifyContentStart-0-2-19 FlexBox-alignItemsStart-0-2-28 FlexBox-flexWrapNoWrap-0-2-33 PopIn-defaultCell-0-2-44"
+                      class="FlexBox-flexBox-0-2-16 FlexBox-flexBoxDirectionRow-0-2-26 FlexBox-justifyContentStart-0-2-19 FlexBox-alignItemsStart-0-2-28 FlexBox-flexWrapNoWrap-0-2-33 PopIn-defaultCell-0-2-51"
                       style="height: 44px;"
                     >
                       <span
-                        class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                        class="Text-text-0-2-44 Text-noWrap-0-2-46"
                         title="Fra"
                       >
                         Fra
@@ -2078,7 +2079,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
                       class="FlexBox-flexBox-0-2-16 FlexBox-flexBoxDirectionColumn-0-2-24 FlexBox-justifyContentStart-0-2-19 FlexBox-alignItemsStretch-0-2-31 FlexBox-flexWrapNoWrap-0-2-33"
                     >
                       <div
-                        class="PopIn-header-0-2-45"
+                        class="PopIn-header-0-2-52"
                       >
                         Friend Name:
                       </div>
@@ -2086,7 +2087,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
                         style="height: 44px;"
                       >
                         <span
-                          class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                          class="Text-text-0-2-44 Text-noWrap-0-2-46"
                           title="MAR"
                         >
                           MAR
@@ -2097,7 +2098,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
                       class="FlexBox-flexBox-0-2-16 FlexBox-flexBoxDirectionColumn-0-2-24 FlexBox-justifyContentStart-0-2-19 FlexBox-alignItemsStretch-0-2-31 FlexBox-flexWrapNoWrap-0-2-33"
                     >
                       <div
-                        class="PopIn-header-0-2-45"
+                        class="PopIn-header-0-2-52"
                       >
                         Custom Header1:
                       </div>
@@ -2105,7 +2106,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
                         style="height: 44px;"
                       >
                         <span
-                          class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                          class="Text-text-0-2-44 Text-noWrap-0-2-46"
                           title="28"
                         >
                           28
@@ -2116,7 +2117,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
                       class="FlexBox-flexBox-0-2-16 FlexBox-flexBoxDirectionColumn-0-2-24 FlexBox-justifyContentStart-0-2-19 FlexBox-alignItemsStretch-0-2-31 FlexBox-flexWrapNoWrap-0-2-33"
                     >
                       <div
-                        class="PopIn-header-0-2-45"
+                        class="PopIn-header-0-2-52"
                       >
                         Custom Header 2:
                       </div>
@@ -2124,7 +2125,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
                         style="height: 44px;"
                       >
                         <span
-                          class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                          class="Text-text-0-2-44 Text-noWrap-0-2-46"
                           title="custom header 2"
                         >
                           custom header 2
@@ -2135,7 +2136,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
                       class="FlexBox-flexBox-0-2-16 FlexBox-flexBoxDirectionColumn-0-2-24 FlexBox-justifyContentStart-0-2-19 FlexBox-alignItemsStretch-0-2-31 FlexBox-flexWrapNoWrap-0-2-33"
                     >
                       <div
-                        class="PopIn-header-0-2-45"
+                        class="PopIn-header-0-2-52"
                       >
                         Custom Cell:
                       </div>
@@ -2155,7 +2156,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46"
                     title="40"
                   >
                     40
@@ -2176,14 +2177,14 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
                   tabindex="-1"
                 >
                   <div
-                    class="FlexBox-flexBox-0-2-16 FlexBox-flexBoxDirectionColumn-0-2-24 FlexBox-justifyContentStart-0-2-19 FlexBox-alignItemsStretch-0-2-31 FlexBox-flexWrapNoWrap-0-2-33 PopIn-container-0-2-43"
+                    class="FlexBox-flexBox-0-2-16 FlexBox-flexBoxDirectionColumn-0-2-24 FlexBox-justifyContentStart-0-2-19 FlexBox-alignItemsStretch-0-2-31 FlexBox-flexWrapNoWrap-0-2-33 PopIn-container-0-2-50"
                   >
                     <div
-                      class="FlexBox-flexBox-0-2-16 FlexBox-flexBoxDirectionRow-0-2-26 FlexBox-justifyContentStart-0-2-19 FlexBox-alignItemsStart-0-2-28 FlexBox-flexWrapNoWrap-0-2-33 PopIn-defaultCell-0-2-44"
+                      class="FlexBox-flexBox-0-2-16 FlexBox-flexBoxDirectionRow-0-2-26 FlexBox-justifyContentStart-0-2-19 FlexBox-alignItemsStart-0-2-28 FlexBox-flexWrapNoWrap-0-2-33 PopIn-defaultCell-0-2-51"
                       style="height: 44px;"
                     >
                       <span
-                        class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                        class="Text-text-0-2-44 Text-noWrap-0-2-46"
                         title="bla"
                       >
                         bla
@@ -2193,7 +2194,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
                       class="FlexBox-flexBox-0-2-16 FlexBox-flexBoxDirectionColumn-0-2-24 FlexBox-justifyContentStart-0-2-19 FlexBox-alignItemsStretch-0-2-31 FlexBox-flexWrapNoWrap-0-2-33"
                     >
                       <div
-                        class="PopIn-header-0-2-45"
+                        class="PopIn-header-0-2-52"
                       >
                         Friend Name:
                       </div>
@@ -2201,7 +2202,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
                         style="height: 44px;"
                       >
                         <span
-                          class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                          class="Text-text-0-2-44 Text-noWrap-0-2-46"
                           title="Nei"
                         >
                           Nei
@@ -2212,7 +2213,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
                       class="FlexBox-flexBox-0-2-16 FlexBox-flexBoxDirectionColumn-0-2-24 FlexBox-justifyContentStart-0-2-19 FlexBox-alignItemsStretch-0-2-31 FlexBox-flexWrapNoWrap-0-2-33"
                     >
                       <div
-                        class="PopIn-header-0-2-45"
+                        class="PopIn-header-0-2-52"
                       >
                         Custom Header1:
                       </div>
@@ -2220,7 +2221,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
                         style="height: 44px;"
                       >
                         <span
-                          class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                          class="Text-text-0-2-44 Text-noWrap-0-2-46"
                           title="50"
                         >
                           50
@@ -2231,7 +2232,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
                       class="FlexBox-flexBox-0-2-16 FlexBox-flexBoxDirectionColumn-0-2-24 FlexBox-justifyContentStart-0-2-19 FlexBox-alignItemsStretch-0-2-31 FlexBox-flexWrapNoWrap-0-2-33"
                     >
                       <div
-                        class="PopIn-header-0-2-45"
+                        class="PopIn-header-0-2-52"
                       >
                         Custom Header 2:
                       </div>
@@ -2239,7 +2240,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
                         style="height: 44px;"
                       >
                         <span
-                          class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                          class="Text-text-0-2-44 Text-noWrap-0-2-46"
                           title="custom header 2"
                         >
                           custom header 2
@@ -2250,7 +2251,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
                       class="FlexBox-flexBox-0-2-16 FlexBox-flexBoxDirectionColumn-0-2-24 FlexBox-justifyContentStart-0-2-19 FlexBox-alignItemsStretch-0-2-31 FlexBox-flexWrapNoWrap-0-2-33"
                     >
                       <div
-                        class="PopIn-header-0-2-45"
+                        class="PopIn-header-0-2-52"
                       >
                         Custom Cell:
                       </div>
@@ -2270,7 +2271,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46"
                     title="20"
                   >
                     20
@@ -2348,18 +2349,19 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
           style="position: relative;"
         >
           <div
-            style="height: 44px; box-sizing: border-box;"
+            class="VerticalScrollbar-headerSection-0-2-36"
+            style="height: 44px;"
           />
           <div
-            class="sapScrollBar"
-            style="overflow-y: auto; height: -44px; box-sizing: border-box;"
+            class="sapScrollBar VerticalScrollbar-scrollbar-0-2-37"
+            style="height: -44px;"
           >
             <div
               style="height: 1420px; width: 1px;"
             />
           </div>
           <div
-            style="flex-grow: 1; box-sizing: border-box;"
+            class="VerticalScrollbar-bottomSection-0-2-38 VerticalScrollbar-bottomSectionWithScrollbar-0-2-39"
           />
         </div>
       </div>
@@ -2405,7 +2407,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
             style="width: 600px;"
           >
             <div
-              class="Resizer-resizer-0-2-36"
+              class="Resizer-resizer-0-2-40"
               data-resizer="true"
               draggable="false"
               role="separator"
@@ -2423,23 +2425,23 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                 style="position: relative; width: 150px; cursor: pointer;"
               >
                 <div
-                  class="TableColumnHeader-header-0-2-37"
+                  class="TableColumnHeader-header-0-2-41"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42 TableColumnHeader-text-0-2-38"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46 TableColumnHeader-text-0-2-42"
                     title="Full Name"
                   >
                     Name
                   </span>
                   <div
-                    class="TableColumnHeader-iconContainer-0-2-39"
+                    class="TableColumnHeader-iconContainer-0-2-43"
                     style="left: 0.5rem;"
                   />
                 </div>
               </div>
             </div>
             <div
-              class="Resizer-resizer-0-2-36"
+              class="Resizer-resizer-0-2-40"
               data-resizer="true"
               draggable="false"
               role="separator"
@@ -2457,23 +2459,23 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                 style="position: relative; width: 150px; cursor: pointer;"
               >
                 <div
-                  class="TableColumnHeader-header-0-2-37"
+                  class="TableColumnHeader-header-0-2-41"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42 TableColumnHeader-text-0-2-38"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46 TableColumnHeader-text-0-2-42"
                     title="Age"
                   >
                     Age
                   </span>
                   <div
-                    class="TableColumnHeader-iconContainer-0-2-39"
+                    class="TableColumnHeader-iconContainer-0-2-43"
                     style="left: 0.5rem;"
                   />
                 </div>
               </div>
             </div>
             <div
-              class="Resizer-resizer-0-2-36"
+              class="Resizer-resizer-0-2-40"
               data-resizer="true"
               draggable="false"
               role="separator"
@@ -2491,23 +2493,23 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                 style="position: relative; width: 150px; cursor: pointer;"
               >
                 <div
-                  class="TableColumnHeader-header-0-2-37"
+                  class="TableColumnHeader-header-0-2-41"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42 TableColumnHeader-text-0-2-38"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46 TableColumnHeader-text-0-2-42"
                     title="Friend Name"
                   >
                     Friend Name
                   </span>
                   <div
-                    class="TableColumnHeader-iconContainer-0-2-39"
+                    class="TableColumnHeader-iconContainer-0-2-43"
                     style="left: 0.5rem;"
                   />
                 </div>
               </div>
             </div>
             <div
-              class="Resizer-resizer-0-2-36"
+              class="Resizer-resizer-0-2-40"
               data-resizer="true"
               draggable="false"
               role="separator"
@@ -2525,17 +2527,17 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                 style="position: relative; width: 150px; cursor: pointer;"
               >
                 <div
-                  class="TableColumnHeader-header-0-2-37"
+                  class="TableColumnHeader-header-0-2-41"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42 TableColumnHeader-text-0-2-38"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46 TableColumnHeader-text-0-2-42"
                   >
                     <span>
                       Friend Age
                     </span>
                   </span>
                   <div
-                    class="TableColumnHeader-iconContainer-0-2-39"
+                    class="TableColumnHeader-iconContainer-0-2-43"
                     style="left: 0.5rem;"
                   />
                 </div>
@@ -2564,7 +2566,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46"
                     title="Fra"
                   >
                     Fra
@@ -2578,7 +2580,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46"
                     title="40"
                   >
                     40
@@ -2592,7 +2594,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46"
                     title="MAR"
                   >
                     MAR
@@ -2606,7 +2608,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46"
                     title="28"
                   >
                     28
@@ -2627,7 +2629,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46"
                     title="bla"
                   >
                     bla
@@ -2641,7 +2643,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46"
                     title="20"
                   >
                     20
@@ -2655,7 +2657,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46"
                     title="Nei"
                   >
                     Nei
@@ -2669,7 +2671,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46"
                     title="50"
                   >
                     50
@@ -2838,17 +2840,17 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                 style="position: relative; width: 6px; padding: 0px; cursor: auto;"
               >
                 <div
-                  class="TableColumnHeader-header-0-2-37"
+                  class="TableColumnHeader-header-0-2-41"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42 TableColumnHeader-text-0-2-38"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46 TableColumnHeader-text-0-2-42"
                   >
                     <div
                       style="width: 6px;"
                     />
                   </span>
                   <div
-                    class="TableColumnHeader-iconContainer-0-2-39"
+                    class="TableColumnHeader-iconContainer-0-2-43"
                     style="left: 0.5rem;"
                   />
                 </div>
@@ -2866,20 +2868,20 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                 style="position: relative; width: 47px; padding: 0px; cursor: auto;"
               >
                 <div
-                  class="TableColumnHeader-header-0-2-37"
+                  class="TableColumnHeader-header-0-2-41"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42 TableColumnHeader-text-0-2-38"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46 TableColumnHeader-text-0-2-42"
                   />
                   <div
-                    class="TableColumnHeader-iconContainer-0-2-39"
+                    class="TableColumnHeader-iconContainer-0-2-43"
                     style="left: 0.5rem;"
                   />
                 </div>
               </div>
             </div>
             <div
-              class="Resizer-resizer-0-2-36"
+              class="Resizer-resizer-0-2-40"
               data-resizer="true"
               draggable="false"
               role="separator"
@@ -2897,23 +2899,23 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                 style="position: relative; width: 150px; cursor: pointer;"
               >
                 <div
-                  class="TableColumnHeader-header-0-2-37"
+                  class="TableColumnHeader-header-0-2-41"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42 TableColumnHeader-text-0-2-38"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46 TableColumnHeader-text-0-2-42"
                     title="Full Name"
                   >
                     Name
                   </span>
                   <div
-                    class="TableColumnHeader-iconContainer-0-2-39"
+                    class="TableColumnHeader-iconContainer-0-2-43"
                     style="left: 0.5rem;"
                   />
                 </div>
               </div>
             </div>
             <div
-              class="Resizer-resizer-0-2-36"
+              class="Resizer-resizer-0-2-40"
               data-resizer="true"
               draggable="false"
               role="separator"
@@ -2931,23 +2933,23 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                 style="position: relative; width: 150px; cursor: pointer;"
               >
                 <div
-                  class="TableColumnHeader-header-0-2-37"
+                  class="TableColumnHeader-header-0-2-41"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42 TableColumnHeader-text-0-2-38"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46 TableColumnHeader-text-0-2-42"
                     title="Age"
                   >
                     Age
                   </span>
                   <div
-                    class="TableColumnHeader-iconContainer-0-2-39"
+                    class="TableColumnHeader-iconContainer-0-2-43"
                     style="left: 0.5rem;"
                   />
                 </div>
               </div>
             </div>
             <div
-              class="Resizer-resizer-0-2-36"
+              class="Resizer-resizer-0-2-40"
               data-resizer="true"
               draggable="false"
               role="separator"
@@ -2965,23 +2967,23 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                 style="position: relative; width: 150px; cursor: pointer;"
               >
                 <div
-                  class="TableColumnHeader-header-0-2-37"
+                  class="TableColumnHeader-header-0-2-41"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42 TableColumnHeader-text-0-2-38"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46 TableColumnHeader-text-0-2-42"
                     title="Friend Name"
                   >
                     Friend Name
                   </span>
                   <div
-                    class="TableColumnHeader-iconContainer-0-2-39"
+                    class="TableColumnHeader-iconContainer-0-2-43"
                     style="left: 0.5rem;"
                   />
                 </div>
               </div>
             </div>
             <div
-              class="Resizer-resizer-0-2-36"
+              class="Resizer-resizer-0-2-40"
               data-resizer="true"
               draggable="false"
               role="separator"
@@ -2999,17 +3001,17 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                 style="position: relative; width: 150px; cursor: pointer;"
               >
                 <div
-                  class="TableColumnHeader-header-0-2-37"
+                  class="TableColumnHeader-header-0-2-41"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42 TableColumnHeader-text-0-2-38"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46 TableColumnHeader-text-0-2-42"
                   >
                     <span>
                       Friend Age
                     </span>
                   </span>
                   <div
-                    class="TableColumnHeader-iconContainer-0-2-39"
+                    class="TableColumnHeader-iconContainer-0-2-43"
                     style="left: 0.5rem;"
                   />
                 </div>
@@ -3062,7 +3064,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46"
                     title="Fra"
                   >
                     Fra
@@ -3076,7 +3078,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46"
                     title="40"
                   >
                     40
@@ -3090,7 +3092,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46"
                     title="MAR"
                   >
                     MAR
@@ -3104,7 +3106,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46"
                     title="28"
                   >
                     28
@@ -3148,7 +3150,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46"
                     title="bla"
                   >
                     bla
@@ -3162,7 +3164,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46"
                     title="20"
                   >
                     20
@@ -3176,7 +3178,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46"
                     title="Nei"
                   >
                     Nei
@@ -3190,7 +3192,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46"
                     title="50"
                   >
                     50
@@ -3233,7 +3235,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
             style="width: 600px;"
           >
             <div
-              class="Resizer-resizer-0-2-36"
+              class="Resizer-resizer-0-2-40"
               data-resizer="true"
               draggable="false"
               role="separator"
@@ -3251,23 +3253,23 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                 style="position: relative; width: 150px; cursor: auto;"
               >
                 <div
-                  class="TableColumnHeader-header-0-2-37"
+                  class="TableColumnHeader-header-0-2-41"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42 TableColumnHeader-text-0-2-38"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46 TableColumnHeader-text-0-2-42"
                     title="Age"
                   >
                     Age
                   </span>
                   <div
-                    class="TableColumnHeader-iconContainer-0-2-39"
+                    class="TableColumnHeader-iconContainer-0-2-43"
                     style="left: 0.5rem;"
                   />
                 </div>
               </div>
             </div>
             <div
-              class="Resizer-resizer-0-2-36"
+              class="Resizer-resizer-0-2-40"
               data-resizer="true"
               draggable="false"
               role="separator"
@@ -3285,24 +3287,24 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                 style="position: relative; width: 150px; cursor: auto;"
               >
                 <div
-                  class="TableColumnHeader-header-0-2-37"
+                  class="TableColumnHeader-header-0-2-41"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42 TableColumnHeader-text-0-2-38"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46 TableColumnHeader-text-0-2-42"
                   >
                     <span>
                       Friend Age
                     </span>
                   </span>
                   <div
-                    class="TableColumnHeader-iconContainer-0-2-39"
+                    class="TableColumnHeader-iconContainer-0-2-43"
                     style="left: 0.5rem;"
                   />
                 </div>
               </div>
             </div>
             <div
-              class="Resizer-resizer-0-2-36"
+              class="Resizer-resizer-0-2-40"
               data-resizer="true"
               draggable="false"
               role="separator"
@@ -3320,23 +3322,23 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                 style="position: relative; width: 150px; cursor: auto;"
               >
                 <div
-                  class="TableColumnHeader-header-0-2-37"
+                  class="TableColumnHeader-header-0-2-41"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42 TableColumnHeader-text-0-2-38"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46 TableColumnHeader-text-0-2-42"
                     title="Friend Name"
                   >
                     Friend Name
                   </span>
                   <div
-                    class="TableColumnHeader-iconContainer-0-2-39"
+                    class="TableColumnHeader-iconContainer-0-2-43"
                     style="left: 0.5rem;"
                   />
                 </div>
               </div>
             </div>
             <div
-              class="Resizer-resizer-0-2-36"
+              class="Resizer-resizer-0-2-40"
               data-resizer="true"
               draggable="false"
               role="separator"
@@ -3354,16 +3356,16 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                 style="position: relative; width: 150px; cursor: auto;"
               >
                 <div
-                  class="TableColumnHeader-header-0-2-37"
+                  class="TableColumnHeader-header-0-2-41"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42 TableColumnHeader-text-0-2-38"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46 TableColumnHeader-text-0-2-42"
                     title="Full Name"
                   >
                     Name
                   </span>
                   <div
-                    class="TableColumnHeader-iconContainer-0-2-39"
+                    class="TableColumnHeader-iconContainer-0-2-43"
                     style="left: 0.5rem;"
                   />
                 </div>
@@ -3392,7 +3394,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46"
                     title="40"
                   >
                     40
@@ -3406,7 +3408,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46"
                     title="28"
                   >
                     28
@@ -3420,7 +3422,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46"
                     title="MAR"
                   >
                     MAR
@@ -3434,7 +3436,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46"
                     title="Fra"
                   >
                     Fra
@@ -3455,7 +3457,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46"
                     title="20"
                   >
                     20
@@ -3469,7 +3471,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46"
                     title="50"
                   >
                     50
@@ -3483,7 +3485,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46"
                     title="Nei"
                   >
                     Nei
@@ -3497,7 +3499,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text-0-2-40 Text-noWrap-0-2-42"
+                    class="Text-text-0-2-44 Text-noWrap-0-2-46"
                     title="bla"
                   >
                     bla
@@ -6059,18 +6061,19 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins & hidden column 1`] = `
         style="position: relative;"
       >
         <div
-          style="height: 44px; box-sizing: border-box;"
+          class="VerticalScrollbar-headerSection"
+          style="height: 44px;"
         />
         <div
-          class="sapScrollBar"
-          style="overflow-y: auto; height: -44px; box-sizing: border-box;"
+          class="sapScrollBar VerticalScrollbar-scrollbar"
+          style="height: -44px;"
         >
           <div
             style="height: 1420px; width: 1px;"
           />
         </div>
         <div
-          style="flex-grow: 1; box-sizing: border-box;"
+          class="VerticalScrollbar-bottomSection VerticalScrollbar-bottomSectionWithScrollbar"
         />
       </div>
     </div>
@@ -6479,18 +6482,19 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 1`] = `
         style="position: relative;"
       >
         <div
-          style="height: 44px; box-sizing: border-box;"
+          class="VerticalScrollbar-headerSection"
+          style="height: 44px;"
         />
         <div
-          class="sapScrollBar"
-          style="overflow-y: auto; height: -44px; box-sizing: border-box;"
+          class="sapScrollBar VerticalScrollbar-scrollbar"
+          style="height: -44px;"
         >
           <div
             style="height: 1420px; width: 1px;"
           />
         </div>
         <div
-          style="flex-grow: 1; box-sizing: border-box;"
+          class="VerticalScrollbar-bottomSection VerticalScrollbar-bottomSectionWithScrollbar"
         />
       </div>
     </div>
@@ -6864,18 +6868,19 @@ exports[`AnalyticalTable render rows 1`] = `
         style="position: relative;"
       >
         <div
-          style="height: 44px; box-sizing: border-box;"
+          class="VerticalScrollbar-headerSection"
+          style="height: 44px;"
         />
         <div
-          class="sapScrollBar"
-          style="overflow-y: auto; height: 56px; box-sizing: border-box;"
+          class="sapScrollBar VerticalScrollbar-scrollbar"
+          style="height: 56px;"
         >
           <div
             style="height: 352px; width: 1px;"
           />
         </div>
         <div
-          style="flex-grow: 1; box-sizing: border-box;"
+          class="VerticalScrollbar-bottomSection"
         />
       </div>
     </div>
