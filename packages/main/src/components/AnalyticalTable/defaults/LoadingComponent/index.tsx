@@ -17,7 +17,7 @@ const useStyles = createUseStyles(styles, { name: 'LoadingComponent' });
 
 const DefaultLoadingComponent = ({ style }) => {
   const classes = useStyles();
-  return <Loader delay={500} style={{ ...style }} className={classes.loader} />;
+  return <Loader delay={500} style={style} className={classes.loader} />;
 };
 
 DefaultLoadingComponent.displayName = 'DefaultLoadingComponent';
