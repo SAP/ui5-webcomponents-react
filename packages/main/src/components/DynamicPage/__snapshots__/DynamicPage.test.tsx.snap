@@ -555,9 +555,9 @@ exports[`DynamicPage hider header button 1`] = `
       class="DynamicPage-contentContainer"
     >
       <div
-        class="Form-form"
+        class="Form-form Form-labelSpan4"
         data-columns="4"
-        style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem;"
+        style="padding-bottom: 2rem;"
       >
         <ui5-title
           aria-label="Phone Numbers"
@@ -649,9 +649,9 @@ exports[`DynamicPage hider header button 1`] = `
         </div>
       </div>
       <div
-        class="Form-form"
+        class="Form-form Form-labelSpan4"
         data-columns="4"
-        style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem;"
+        style="padding-bottom: 2rem;"
       >
         <ui5-title
           aria-label="Addresses"
@@ -1011,9 +1011,9 @@ exports[`DynamicPage with content 1`] = `
       class="DynamicPage-contentContainer"
     >
       <div
-        class="Form-form"
+        class="Form-form Form-labelSpan4"
         data-columns="4"
-        style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem; z-index: 0;"
+        style="padding-bottom: 2rem; z-index: 0;"
       >
         <ui5-title
           aria-label="Phone Numbers"
@@ -1105,9 +1105,9 @@ exports[`DynamicPage with content 1`] = `
         </div>
       </div>
       <div
-        class="Form-form"
+        class="Form-form Form-labelSpan4"
         data-columns="4"
-        style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem;"
+        style="padding-bottom: 2rem;"
       >
         <ui5-title
           aria-label="Addresses"
@@ -1183,9 +1183,9 @@ exports[`DynamicPage with content 1`] = `
         </div>
       </div>
       <div
-        class="Form-form"
+        class="Form-form Form-labelSpan4"
         data-columns="4"
-        style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem;"
+        style="padding-bottom: 2rem;"
       >
         <ui5-title
           aria-label="Phone Numbers"
@@ -1277,9 +1277,9 @@ exports[`DynamicPage with content 1`] = `
         </div>
       </div>
       <div
-        class="Form-form"
+        class="Form-form Form-labelSpan4"
         data-columns="4"
-        style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem;"
+        style="padding-bottom: 2rem;"
       >
         <ui5-title
           aria-label="Addresses"
@@ -1355,9 +1355,9 @@ exports[`DynamicPage with content 1`] = `
         </div>
       </div>
       <div
-        class="Form-form"
+        class="Form-form Form-labelSpan4"
         data-columns="4"
-        style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem; z-index: 0;"
+        style="padding-bottom: 2rem; z-index: 0;"
       >
         <ui5-title
           aria-label="Phone Numbers"
@@ -1449,9 +1449,9 @@ exports[`DynamicPage with content 1`] = `
         </div>
       </div>
       <div
-        class="Form-form"
+        class="Form-form Form-labelSpan4"
         data-columns="4"
-        style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem;"
+        style="padding-bottom: 2rem;"
       >
         <ui5-title
           aria-label="Addresses"
@@ -1527,9 +1527,9 @@ exports[`DynamicPage with content 1`] = `
         </div>
       </div>
       <div
-        class="Form-form"
+        class="Form-form Form-labelSpan4"
         data-columns="4"
-        style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem;"
+        style="padding-bottom: 2rem;"
       >
         <ui5-title
           aria-label="Phone Numbers"
@@ -1621,9 +1621,9 @@ exports[`DynamicPage with content 1`] = `
         </div>
       </div>
       <div
-        class="Form-form"
+        class="Form-form Form-labelSpan4"
         data-columns="4"
-        style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; padding-bottom: 2rem;"
+        style="padding-bottom: 2rem;"
       >
         <ui5-title
           aria-label="Addresses"
