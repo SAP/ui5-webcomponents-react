@@ -50,7 +50,7 @@ const Shell = ({ title, ...props }) => {
         style={style.shell}
         logo={<img alt={t('shell.logo.alt')} src="https://sap.github.io/ui5-webcomponents/assets/images/sap-logo-svg.svg" />}
         onLogoClick={() => history.push(getUrl('HOME'))}
-        profile={<Avatar icon="customer" shape={AvatarShape.Circle} size={AvatarSize.S} />}
+        profile={<Avatar icon="customer" shape={AvatarShape.Circle} />}
         onProfileClick={(e) => popoverConfigItemsRef.current.openBy(e.detail.targetRef)}
         {...props}
       />
