@@ -212,7 +212,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     return <ComposedChartPlaceholder layout={layout} measures={measures} />;
   }, [layout, measures]);
 
-  const passThroughProps = usePassThroughHtmlProps(props);
+  const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick']);
   const isRTL = useIsRTL(chartRef);
 
   return (

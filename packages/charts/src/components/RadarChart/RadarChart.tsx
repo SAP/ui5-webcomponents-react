@@ -86,7 +86,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
       legendPosition: 'bottom',
       legendHorizontalAlign: 'center',
       dataLabel: true,
-      polarGridType: 'circle',
+      polarGridType: 'circle' as 'circle',
       resizeDebounce: 250,
       ...props.chartConfig
     };
@@ -128,7 +128,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
     [onDataPointClick]
   );
 
-  const passThroughProps = usePassThroughHtmlProps(props);
+  const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick']);
 
   return (
     <ChartContainer
@@ -161,7 +161,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
           return (
             <Radar
               key={element.accessor}
-              activeDot={{ onClick: onDataPointClickInternal }}
+              activeDot={{ onClick: onDataPointClickInternal } as any}
               name={element.label ?? element.accessor}
               dataKey={element.accessor}
               stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}

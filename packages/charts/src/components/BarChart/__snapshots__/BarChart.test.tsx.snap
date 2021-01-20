@@ -23,7 +23,7 @@ exports[`BarRechart Renders with data 1`] = `
         >
           <defs>
             <clippath
-              id="recharts4-clip"
+              id="recharts1-clip"
             >
               <rect
                 height="330"

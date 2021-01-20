@@ -18,8 +18,9 @@ import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import { Popover } from '@ui5/webcomponents-react/lib/Popover';
 import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/lib/PopoverHorizontalAlign';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
-import React, { CSSProperties, RefObject, useCallback, useEffect, useRef } from 'react';
+import React, { RefObject, useCallback, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
+import { createUseStyles } from 'react-jss';
 import { Ui5PopoverDomRef } from '../../../interfaces/Ui5PopoverDomRef';
 import { stopPropagation } from '../../../internal/stopPropagation';
 import { ColumnType } from '../types/ColumnType';
@@ -33,10 +34,22 @@ export interface ColumnHeaderModalProperties {
   targetRef: RefObject<any>;
 }
 
-const staticStyle = { fontWeight: 'normal' };
+const styles = {
+  popover: {
+    fontWeight: 'normal'
+  },
+  filter: {
+    padding: '0px 1rem',
+    height: 'var(--_ui5_custom_list_item_height)',
+    borderBottom: `1px solid ${ThemingParameters.sapList_BorderColor}`
+  },
+  filterIcon: { paddingRight: '0.5rem', minWidth: '1rem', minHeight: '1rem' }
+};
+const useStyles = createUseStyles(styles, { name: 'ColumnHeaderModal' });
 
 export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
   const { column, onSort, onGroupBy, open, setPopoverOpen, targetRef } = props;
+  const classes = useStyles();
   const showFilter = column.canFilter;
   const showGroup = column.canGroupBy;
   const showSort = column.canSort;
@@ -137,7 +150,7 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
       horizontalAlign={PopoverHorizontalAlign.Left}
       placementType={PlacementType.Bottom}
       ref={ref}
-      style={staticStyle as CSSProperties}
+      className={classes.popover}
       onAfterClose={onAfterClose}
     >
       <List onItemClick={handleSort}>
@@ -162,15 +175,8 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
           </StandardListItem>
         )}
         {showFilter && !column.isGrouped && (
-          <FlexBox
-            alignItems={FlexBoxAlignItems.Center}
-            style={{
-              padding: '0px 1rem',
-              height: 'var(--_ui5_custom_list_item_height)',
-              borderBottom: `1px solid ${ThemingParameters.sapList_BorderColor}`
-            }}
-          >
-            <Icon name="filter" style={{ paddingRight: '0.5rem', minWidth: '1rem', minHeight: '1rem' }} />
+          <FlexBox alignItems={FlexBoxAlignItems.Center} className={classes.filter}>
+            <Icon name="filter" className={classes.filterIcon} />
             <Filter column={column} popoverRef={ref} />
           </FlexBox>
         )}

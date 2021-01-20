@@ -225,7 +225,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
     return null;
   }, [showActiveSegmentDataLabel, chartConfig.activeSegment, chartConfig.legendPosition]);
 
-  const passThroughProps = usePassThroughHtmlProps(props);
+  const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick']);
 
   return (
     <ChartContainer

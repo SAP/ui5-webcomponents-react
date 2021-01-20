@@ -3,6 +3,78 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.13.3...v0.13.4) (2021-01-20)
+
+
+### Bug Fixes
+
+* **Charts:** use ErrorBoundary to prevent errors when components are re-mounted ([#1190](https://github.com/SAP/ui5-webcomponents-react/issues/1190)) ([77427eb](https://github.com/SAP/ui5-webcomponents-react/commit/77427ebb0cb213158484248d952f5101ac577ea4)), closes [#1145](https://github.com/SAP/ui5-webcomponents-react/issues/1145)
+
+
+### Features
+
+* **AnalyticalTable:** improve accessibility ([#1189](https://github.com/SAP/ui5-webcomponents-react/issues/1189)) ([754050a](https://github.com/SAP/ui5-webcomponents-react/commit/754050a61f40e086c01eb96e2225d73dbb6ecdcb))
+
+
+
+
+
+## [0.13.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.13.2...v0.13.3) (2021-01-19)
+
+
+### Bug Fixes
+
+* **seed:** wrap application with ThemeProvider ([#1185](https://github.com/SAP/ui5-webcomponents-react/issues/1185)) ([842ff20](https://github.com/SAP/ui5-webcomponents-react/commit/842ff200772121e3e134a9582ea2f7f946ef7ab4))
+* remove 'export * as' syntax for compatibility with react-scripts 3 ([#1184](https://github.com/SAP/ui5-webcomponents-react/issues/1184)) ([b4fe896](https://github.com/SAP/ui5-webcomponents-react/commit/b4fe896d40876649072a35ff50e8abc473a10915))
+* resolve CSS variables correctly in IE11 ([#1183](https://github.com/SAP/ui5-webcomponents-react/issues/1183)) ([a5ac248](https://github.com/SAP/ui5-webcomponents-react/commit/a5ac24858af45433a5384fb82e8249c54a8952a5))
+* **ObjectPage:** add accessibility labels to header buttons and title levels ([#1176](https://github.com/SAP/ui5-webcomponents-react/issues/1176)) ([80f3057](https://github.com/SAP/ui5-webcomponents-react/commit/80f3057b38cb9af52bafb78ce0bf1536467c1284)), closes [#1166](https://github.com/SAP/ui5-webcomponents-react/issues/1166) [#1165](https://github.com/SAP/ui5-webcomponents-react/issues/1165)
+
+
+### Features
+
+* add accessibility storybook addon (addon-a11y) in dev ([#1169](https://github.com/SAP/ui5-webcomponents-react/issues/1169)) ([1ff79e2](https://github.com/SAP/ui5-webcomponents-react/commit/1ff79e2b6c6b5b7fb691c0c035291d8326fe7f60))
+
+
+
+
+
+## [0.13.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.13.1...v0.13.2) (2021-01-15)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** prevent crashes and unintended behavior in IE11 ([#1168](https://github.com/SAP/ui5-webcomponents-react/issues/1168)) ([4d328a8](https://github.com/SAP/ui5-webcomponents-react/commit/4d328a82d6d8dc86022a212556bb786c35f2f64a))
+* **DynamicPage:** add className prop to dynamic page classes ([#1159](https://github.com/SAP/ui5-webcomponents-react/issues/1159)) ([1c73396](https://github.com/SAP/ui5-webcomponents-react/commit/1c73396f00f60e085769c772100a51ba2a1b4450))
+* **MessageBox:** don't crash when Dialog Web Component is not ready yet ([#1148](https://github.com/SAP/ui5-webcomponents-react/issues/1148)) ([cadab16](https://github.com/SAP/ui5-webcomponents-react/commit/cadab16b76f1546a6349ee3a124e4243252241d8))
+
+
+### Features
+
+* **AnalyticalTable:** add plugin hook to enable disabling selection of rows ([#1156](https://github.com/SAP/ui5-webcomponents-react/issues/1156)) ([4da2848](https://github.com/SAP/ui5-webcomponents-react/commit/4da28487152630ceda02747974c94c84a986843e))
+
+
+
+
+
+## [0.13.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.13.0...v0.13.1) (2021-01-11)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** support rtl ([#1146](https://github.com/SAP/ui5-webcomponents-react/issues/1146)) ([ed4aee1](https://github.com/SAP/ui5-webcomponents-react/commit/ed4aee186f42ee9230b31aeb182abe29479d38e7))
+* **DynamicPage:** don't render unnecessary scrollbar & only show actions separator when needed ([#1137](https://github.com/SAP/ui5-webcomponents-react/issues/1137)) ([70d0453](https://github.com/SAP/ui5-webcomponents-react/commit/70d045377e1caff7922f33d8b39d5635d05dedac)), closes [#1074](https://github.com/SAP/ui5-webcomponents-react/issues/1074)
+
+
+### Features
+
+* **AnalyticalTable:** add navigation indicator ([#1127](https://github.com/SAP/ui5-webcomponents-react/issues/1127)) ([c5f0003](https://github.com/SAP/ui5-webcomponents-react/commit/c5f00033558deeddec07105f810cf0b9e7d54a54)), closes [#1083](https://github.com/SAP/ui5-webcomponents-react/issues/1083)
+* **AnalyticalTable:** add onRowClickEvent ([#1143](https://github.com/SAP/ui5-webcomponents-react/issues/1143)) ([2a4c29f](https://github.com/SAP/ui5-webcomponents-react/commit/2a4c29f5f2cec38b76674c73c002c39246c9ac02)), closes [#1138](https://github.com/SAP/ui5-webcomponents-react/issues/1138)
+* **Charts:** add RTL support ([#915](https://github.com/SAP/ui5-webcomponents-react/issues/915)) ([f453b8a](https://github.com/SAP/ui5-webcomponents-react/commit/f453b8a653e4f95e43a4cbf2724f9bbbe17af82c))
+
+
+
+
+
 # [0.13.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.12.4...v0.13.0) (2021-01-07)
 
 

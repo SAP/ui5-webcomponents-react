@@ -24,9 +24,6 @@ const tagNamesWhichShouldNotSelectARow = new Set([
 
 const getRowProps = (rowProps, { row, instance }) => {
   const { webComponentsReactProperties, toggleRowSelected, selectedFlatRows } = instance;
-  if (webComponentsReactProperties.selectionMode === TableSelectionMode.NONE) {
-    return rowProps;
-  }
   return [
     rowProps,
     {
@@ -50,7 +47,15 @@ const getRowProps = (rowProps, { row, instance }) => {
           return;
         }
 
-        const { selectionBehavior, selectionMode, onRowSelected } = webComponentsReactProperties;
+        const { selectionBehavior, selectionMode, onRowSelected, onRowClick } = webComponentsReactProperties;
+
+        if (typeof onRowClick === 'function' && e.target?.dataset?.name !== 'internal_selection_column') {
+          onRowClick(enrichEventWithDetails(e, { row }));
+        }
+
+        if (webComponentsReactProperties.selectionMode === TableSelectionMode.NONE) {
+          return;
+        }
 
         // dont continue if the row was clicked and selection mode is row selector only
         if (selectionBehavior === TableSelectionBehavior.ROW_SELECTOR && !selectionCellClick) {
