@@ -26,7 +26,7 @@ export interface CarouselPropTypes extends WithWebComponentPropTypes {
    */
   hideNavigation?: boolean;
   /**
-   * Defines when the `load-more` event is thrown. If not applied the event will not be thrown.
+   * Defines when the `load-more` event is fired. If not applied the event will not be fired.
    */
   infiniteScrollOffset?: number;
   /**
@@ -50,7 +50,7 @@ export interface CarouselPropTypes extends WithWebComponentPropTypes {
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Fired for the last items of the `Carousel` if it is scrolled and the direction of scrolling is to the end. The number of items for which the event is thrown is controlled by the `infiniteScrollOffset` property.
+   * Fired for the last items of the `Carousel` if it is scrolled and the direction of scrolling is to the end. The number of items for which the event is fired is controlled by the `infiniteScrollOffset` property.
    */
   onLoadMore?: (event: CustomEvent) => void;
   /**

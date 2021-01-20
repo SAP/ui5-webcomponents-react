@@ -8,7 +8,15 @@ export interface MultiComboBoxItemPropTypes extends WithWebComponentPropTypes {
    */
   selected?: boolean;
   /**
-   * Defines the text of the `MultiComboBoxItem`.
+   * Defines the stable selector that you can use via getStableDomRef method.
+   */
+  stableDomRef?: unknown;
+  /**
+   * Defines the additional text of the `ComboBoxItem`.
+   */
+  additionalText?: string;
+  /**
+   * Defines the text of the `ComboBoxItem`.
    */
   text?: string;
 }
@@ -20,7 +28,7 @@ export interface MultiComboBoxItemPropTypes extends WithWebComponentPropTypes {
  */
 const MultiComboBoxItem: FC<MultiComboBoxItemPropTypes> = withWebComponent<MultiComboBoxItemPropTypes>(
   'ui5-mcb-item',
-  ['text'],
+  ['stableDomRef', 'additionalText', 'text'],
   ['selected'],
   [],
   []

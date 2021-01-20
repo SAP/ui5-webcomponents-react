@@ -11,40 +11,24 @@ exports[`Page Basic Page 1`] = `
       <header
         class="Page-pageHeader Page-baseBar"
       >
-        <div
-          class="Bar-bar Bar-auto"
-          data-bar-part="Root"
+        <ui5-bar
+          design="Header"
+          ui5-bar=""
         >
-          <div
-            class="Bar-left"
-            data-bar-part="Left"
+          <ui5-title
+            level="H5"
+            slot="middleContent"
+            ui5-title=""
           >
-            <ui5-button
-              design="Transparent"
-              icon="navigation-left-arrow"
-              ui5-button=""
-            />
-          </div>
-          <div
-            class="Bar-center"
-            data-bar-part="Center"
-          >
-            <div
-              class="Bar-inner"
-            >
-              <ui5-title
-                level="H5"
-                ui5-title=""
-              >
-                Page Demo
-              </ui5-title>
-            </div>
-          </div>
-          <div
-            class="Bar-right"
-            data-bar-part="Right"
+            Page Demo
+          </ui5-title>
+          <ui5-button
+            design="Transparent"
+            icon="navigation-left-arrow"
+            slot="startContent"
+            ui5-button=""
           />
-        </div>
+        </ui5-bar>
       </header>
       <section
         class="Page-contentSection"
@@ -71,34 +55,18 @@ exports[`Page Basic Page w/o back button 1`] = `
       <header
         class="Page-pageHeader Page-baseBar"
       >
-        <div
-          class="Bar-bar Bar-auto"
-          data-bar-part="Root"
+        <ui5-bar
+          design="Header"
+          ui5-bar=""
         >
-          <div
-            class="Bar-left"
-            data-bar-part="Left"
-          />
-          <div
-            class="Bar-center"
-            data-bar-part="Center"
+          <ui5-title
+            level="H5"
+            slot="middleContent"
+            ui5-title=""
           >
-            <div
-              class="Bar-inner"
-            >
-              <ui5-title
-                level="H5"
-                ui5-title=""
-              >
-                Page Demo
-              </ui5-title>
-            </div>
-          </div>
-          <div
-            class="Bar-right"
-            data-bar-part="Right"
-          />
-        </div>
+            Page Demo
+          </ui5-title>
+        </ui5-bar>
       </header>
       <section
         class="Page-contentSection"

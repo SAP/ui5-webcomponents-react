@@ -1,7 +1,7 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { NotificationListGroupItem } from '@ui5/webcomponents-react/lib/NotificationListGroupItem';
 import { Priority } from '@ui5/webcomponents-react/lib/Priority';
-import { NotificationOverflowAction } from '@ui5/webcomponents-react/lib/NotificationOverflowAction';
+import { NotificationAction } from '@ui5/webcomponents-react/lib/NotificationAction';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
@@ -13,7 +13,7 @@ import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
 <Meta
   title="Data Display / NotificationListGroupItem"
   component={NotificationListGroupItem}
-  subcomponents={{ NotificationOverflowAction }}
+  subcomponents={{ NotificationAction }}
   argTypes={{
     ...createSelectArgTypes({ priority: Priority }),
     ...DocsCommonProps,
@@ -47,8 +47,8 @@ import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
           {...args}
           actions={
             <>
-              <NotificationOverflowAction icon="accept" text="Accept all" />
-              <NotificationOverflowAction icon="message-error" text="Reject all" />
+              <NotificationAction icon="accept" text="Accept all" />
+              <NotificationAction icon="message-error" text="Reject all" />
             </>
           }
         >
@@ -74,8 +74,8 @@ import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
             }
             actions={
               <>
-                <NotificationOverflowAction icon="accept" text="Accept" />
-                <NotificationOverflowAction icon="message-error" text="Reject" />
+                <NotificationAction icon="accept" text="Accept" />
+                <NotificationAction icon="message-error" text="Reject" />
               </>
             }
           />
@@ -97,8 +97,8 @@ import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
             }
             actions={
               <>
-                <NotificationOverflowAction icon="accept" text="Accept" />
-                <NotificationOverflowAction icon="message-error" text="Reject" />
+                <NotificationAction icon="accept" text="Accept" />
+                <NotificationAction icon="message-error" text="Reject" />
               </>
             }
           >

@@ -33,7 +33,7 @@ describe('MessageBox', () => {
 
   test('Confirm - Cancel', () => {
     const callback = jest.fn();
-    const { asFragment } = render(
+    const { asFragment, unmount } = render(
       <MessageBox type={MessageBoxTypes.CONFIRM} open onClose={callback}>
         Confirm
       </MessageBox>
@@ -43,11 +43,12 @@ describe('MessageBox', () => {
     fireEvent.click(screen.getByText('Cancel'));
 
     expect(callback.mock.calls[0][0].detail.action).toEqual(MessageBoxActions.CANCEL);
+    unmount();
   });
 
   test('Show', () => {
     const callback = jest.fn();
-    const { asFragment } = render(
+    const { asFragment, unmount } = render(
       <MessageBox open onClose={callback} title="Custom" actions={[MessageBoxActions.YES, MessageBoxActions.NO]}>
         Custom
       </MessageBox>
@@ -60,11 +61,12 @@ describe('MessageBox', () => {
     fireEvent.click(screen.getByText('No'));
     expect(callback.mock.calls).toHaveLength(2);
     expect(callback.mock.calls[1][0].detail.action).toEqual(MessageBoxActions.NO);
+    unmount();
   });
 
   test('Success w/ custom title', () => {
     const callback = jest.fn();
-    const { asFragment } = render(
+    const { asFragment, unmount } = render(
       <MessageBox
         type={MessageBoxTypes.SUCCESS}
         open
@@ -79,21 +81,23 @@ describe('MessageBox', () => {
 
     fireEvent.click(screen.getByText('OK'));
     expect(callback.mock.calls[0][0].detail.action).toEqual(MessageBoxActions.OK);
+    unmount();
   });
 
   test('Not open', () => {
     const callback = jest.fn();
-    const { asFragment } = render(
+    const { asFragment, unmount } = render(
       <MessageBox type={MessageBoxTypes.SUCCESS} open={false} onClose={callback} title="Custom Success">
         Custom Success
       </MessageBox>
     );
     expect(asFragment()).toMatchSnapshot();
+    unmount();
   });
 
   test('No Title', () => {
     const callback = jest.fn();
-    const { asFragment } = render(
+    const { asFragment, unmount } = render(
       <MessageBox open onClose={callback}>
         No Title
       </MessageBox>
@@ -102,11 +106,12 @@ describe('MessageBox', () => {
     expect(asFragment()).toMatchSnapshot();
 
     expect(screen.getByText('Confirmation')).toBeInTheDocument();
+    unmount();
   });
 
   test('Custom Action Text', async () => {
     const onClose = jest.fn();
-    const { asFragment } = render(
+    const { asFragment, unmount } = render(
       <MessageBox type={MessageBoxTypes.CONFIRM} actions={[MessageBoxActions.OK, 'My Custom Action']} onClose={onClose}>
         My Message Box Content
       </MessageBox>
@@ -124,17 +129,19 @@ describe('MessageBox', () => {
 
     expect(onClose.mock.calls[0][0].detail.action).toEqual(MessageBoxActions.OK);
     expect(onClose.mock.calls[1][0].detail.action).toEqual('My Custom Action');
+    unmount();
   });
 
   test("Don't crash on unknown type", () => {
     const callback = jest.fn();
-    const { asFragment } = render(
+    const { asFragment, unmount } = render(
       <MessageBox open onClose={callback} type="FOO_BAR">
         Unknown Type!
       </MessageBox>
     );
 
     expect(asFragment()).toMatchSnapshot();
+    unmount();
   });
 
   createPassThroughPropsTest(MessageBox);

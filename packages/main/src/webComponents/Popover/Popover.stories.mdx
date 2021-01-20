@@ -166,8 +166,8 @@ Closing `Popovers` works in the same way as opening them. So again an attached `
           <Popover
             {...args}
             ref={popoverRef}
-            header={<Bar contentMiddle={<Title>Popover</Title>} contentRight={<Icon name="settings" />} />}
-            footer={<Bar contentRight={<Button onClick={handleClose}>Close</Button>} />}
+            header={<Bar middleContent={<Title>Popover</Title>} endContent={<Icon name="settings" />} />}
+            footer={<Bar endContent={<Button onClick={handleClose}>Close</Button>} />}
           >
             <List style={{ width: '200px' }}>
               <StandardListItem info="3">List Item 1</StandardListItem>

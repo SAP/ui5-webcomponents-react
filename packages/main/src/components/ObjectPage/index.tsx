@@ -483,7 +483,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         style={scrollBarWidthPadding}
         className={classes.header}
       >
-        <header className={classes.titleBar}>
+        <div className={classes.titleBar}>
           {(!showTitleInHeaderContent || headerContentHeight === 0) && (
             <FlexBox alignItems={FlexBoxAlignItems.Center}>
               {image && headerContentHeight === 0 && (
@@ -507,7 +507,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
               </Toolbar>
             </FlexBox>
           )}
-        </header>
+        </div>
       </header>
       <ObjectPageHeader
         headerActions={headerActions}

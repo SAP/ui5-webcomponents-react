@@ -9,7 +9,7 @@ import { ToolbarDesign } from '@ui5/webcomponents-react/lib/ToolbarDesign';
 import { ToolbarSeparator } from '@ui5/webcomponents-react/lib/ToolbarSeparator';
 import { ToolbarSpacer } from '@ui5/webcomponents-react/lib/ToolbarSpacer';
 import { ToolbarStyle } from '@ui5/webcomponents-react/lib/ToolbarStyle';
-import React, { FC, forwardRef, ReactElement, ReactNode, ReactNodeArray, Ref } from 'react';
+import React, { Children, FC, forwardRef, ReactElement, ReactNode, ReactNodeArray, Ref } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { DynamicPageTitleStyles } from './DynamicPageTitle.jss';
 
@@ -102,7 +102,7 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
         <Toolbar design={ToolbarDesign.Auto} toolbarStyle={ToolbarStyle.Clear}>
           <ToolbarSpacer />
           {actions}
-          <ToolbarSeparator />
+          {Children.count(actions) > 0 && Children.count(navigationActions) > 0 && <ToolbarSeparator />}
           {navigationActions}
         </Toolbar>
       </FlexBox>

@@ -20,6 +20,7 @@ import { FormGroup } from '@ui5/webcomponents-react/lib/FormGroup';
 import { FormItem } from '@ui5/webcomponents-react/lib/FormItem';
 import { ObjectStatus } from '@ui5/webcomponents-react/lib/ObjectStatus';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import { createPassThroughPropsTest } from '@shared/tests/utils';
 
 const renderComponent = () => (
   <DynamicPage
@@ -400,4 +401,6 @@ describe('DynamicPage', () => {
     const { asFragment } = render(renderComponentHideHeaderButton());
     expect(asFragment()).toMatchSnapshot();
   });
+
+  createPassThroughPropsTest(DynamicPage);
 });

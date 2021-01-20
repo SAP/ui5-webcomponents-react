@@ -50,7 +50,7 @@ export interface DatePickerPropTypes extends Omit<WithWebComponentPropTypes, 'on
    * *   `Islamic`
    * *   `Japanese`
    * *   `Buddhist`
-   * *   `Persian`<br/><b>Note:</b> Calendar types other than Gregorian must be imported manually:<br /><code>import "@ui5/webcomponents-localization/dist/features/calendar/{primaryCalendarType}.js";</code>
+   * *   `Persian`<br/>__Note:__ Calendar types other than Gregorian must be imported manually:<br />`import "@ui5/webcomponents-localization/dist/features/calendar/{primaryCalendarType}.js";`
    */
   primaryCalendarType?: CalendarType;
   /**

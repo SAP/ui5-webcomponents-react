@@ -1,5 +1,6 @@
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Loader } from '@ui5/webcomponents-react/lib/Loader';
 import React, { ComponentType, CSSProperties, FC, forwardRef, ReactElement, Ref, useMemo } from 'react';
@@ -56,8 +57,10 @@ const ChartContainer: FC<ContainerProps> = forwardRef((props: ContainerProps, re
     };
   }, [style]);
 
+  const passThroughProps = usePassThroughHtmlProps(props);
+
   return (
-    <div ref={ref} style={internalStyles} className={className} title={tooltip} slot={slot}>
+    <div ref={ref} style={internalStyles} className={className} title={tooltip} slot={slot} {...passThroughProps}>
       {dataset?.length > 0 ? (
         <>
           {loading && <Loader style={loaderStyles} />}

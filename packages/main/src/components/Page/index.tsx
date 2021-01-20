@@ -118,11 +118,10 @@ const Page: FC<PagePropTypes> = forwardRef((props: PagePropTypes, ref: Ref<HTMLD
   }, [showBackButton]);
 
   const renderTitle = useCallback(() => <Title level={TitleLevel.H5}>{title}</Title>, [title]);
-  const header = useMemo(() => customHeader ?? <Bar contentLeft={renderBackButton()} contentMiddle={renderTitle()} />, [
-    customHeader,
-    renderTitle,
-    renderBackButton
-  ]);
+  const header = useMemo(
+    () => customHeader ?? <Bar startContent={renderBackButton()} middleContent={renderTitle()} />,
+    [customHeader, renderTitle, renderBackButton]
+  );
 
   const pageContainer = StyleClassHelper.of(classes.pageContainer);
   const headerClasses = StyleClassHelper.of(classes.pageHeader, classes.baseBar);

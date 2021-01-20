@@ -6,11 +6,11 @@ import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { List } from '@ui5/webcomponents-react/lib/List';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
-import { CSSProperties, useRef } from 'react';
+import { useRef } from 'react';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
-import '@ui5/webcomponents-icons/dist/settings.js';
+import '@ui5/webcomponents-icons/dist/settings';
 
 <Meta
   title="Modals & Popovers / Dialog"
@@ -155,8 +155,8 @@ Closing `Dialogs` works in the same way as opening them. So again an attached `r
           <Dialog
             {...args}
             ref={dialogRef}
-            header={<Bar contentMiddle={<Title>Dialog</Title>} contentRight={<Icon name="settings" />} />}
-            footer={<Bar contentRight={<Button onClick={handleClose}>Close</Button>} />}
+            header={<Bar middleContent={<Title>Dialog</Title>} endContent={<Icon name="settings" />} />}
+            footer={<Bar endContent={<Button onClick={handleClose}>Close</Button>} />}
           >
             <List>
               <StandardListItem info="3">List Item 1</StandardListItem>

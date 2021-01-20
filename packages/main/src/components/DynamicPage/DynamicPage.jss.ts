@@ -38,7 +38,7 @@ const styles = {
     paddingTop: '1rem !important',
     boxSizing: 'border-box',
     width: '100%',
-    height: '100%',
+    height: 'auto',
     fontFamily: ThemingParameters.sapFontFamily,
     zIndex: 0
   },

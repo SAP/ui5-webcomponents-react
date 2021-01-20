@@ -4,6 +4,23 @@ import { FC, ReactNode } from 'react';
 
 export interface TablePropTypes extends WithWebComponentPropTypes {
   /**
+   * Defines if additonal row will be displayed at the bottom of the table. Pressing on the row will fire the `load-more` event.
+   */
+  hasMore?: boolean;
+  /**
+   * Defines the subtext that will be displayed under the `loadMoreText`.
+   *
+   * **Note:** This property takes effect if `hasMore` is set.
+   */
+  loadMoreSubtext?: string;
+  /**
+   * Defines the text that will be displayed inside the additional row at the bottom of the table, meant for loading more rows upon press.
+   *
+   * **Note:** If not specified a built-in text will be displayed.
+   * **Note:** This property takes effect if `hasMore` is set.
+   */
+  loadMoreText?: string;
+  /**
    * Defines the text that will be displayed when there is no data and `showNoData` is present.
    */
   noDataText?: string;
@@ -37,6 +54,10 @@ export interface TablePropTypes extends WithWebComponentPropTypes {
    */
   children?: ReactNode | ReactNode[];
   /**
+   * Fired when the user presses the `showMore` row of the table.
+   */
+  onLoadMore?: (event: CustomEvent) => void;
+  /**
    * Fired when the `TableColumn` is shown as a pop-in instead of hiding it.
    */
   onPopinChange?: (event: CustomEvent<{ poppedColumns: unknown[] }>) => void;
@@ -57,15 +78,16 @@ export interface TablePropTypes extends WithWebComponentPropTypes {
  */
 const Table: FC<TablePropTypes> = withWebComponent<TablePropTypes>(
   'ui5-table',
-  ['noDataText'],
-  ['showNoData', 'stickyColumnHeader'],
+  ['loadMoreSubtext', 'loadMoreText', 'noDataText'],
+  ['hasMore', 'showNoData', 'stickyColumnHeader'],
   ['columns'],
-  ['popin-change', 'row-click']
+  ['load-more', 'popin-change', 'row-click']
 );
 
 Table.displayName = 'Table';
 
 Table.defaultProps = {
+  hasMore: false,
   showNoData: false,
   stickyColumnHeader: false
 };

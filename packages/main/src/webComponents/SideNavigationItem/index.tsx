@@ -23,6 +23,10 @@ export interface SideNavigationItemPropTypes extends WithWebComponentPropTypes {
    */
   text?: string;
   /**
+   * Defines whether pressing the whole item or only pressing the icon will show/hide the items's sub items(if present). If set to true, pressing the whole item will toggle the sub items, and it won't fire the `click` event. By default, only pressing the arrow icon will toggle the sub items & the click event will be fired if the item is pressed outside of the icon.
+   */
+  wholeItemToggleable?: boolean;
+  /**
    * If you wish to nest menus, you can pass inner menu items to the default slot.
    */
   children?: ReactNode | ReactNode[];
@@ -36,7 +40,7 @@ export interface SideNavigationItemPropTypes extends WithWebComponentPropTypes {
 const SideNavigationItem: FC<SideNavigationItemPropTypes> = withWebComponent<SideNavigationItemPropTypes>(
   'ui5-side-navigation-item',
   ['icon', 'text'],
-  ['expanded', 'selected'],
+  ['expanded', 'selected', 'wholeItemToggleable'],
   [],
   []
 );
@@ -45,7 +49,8 @@ SideNavigationItem.displayName = 'SideNavigationItem';
 
 SideNavigationItem.defaultProps = {
   expanded: false,
-  selected: false
+  selected: false,
+  wholeItemToggleable: false
 };
 
 export { SideNavigationItem };

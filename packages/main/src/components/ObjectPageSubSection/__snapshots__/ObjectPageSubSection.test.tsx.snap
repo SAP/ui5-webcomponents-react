@@ -9,7 +9,9 @@ exports[`ObjectPageSubSection Render without Crashing 1`] = `
     role="region"
   >
     <div
+      aria-level="4"
       class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+      role="heading"
     />
     <div
       class="ObjectPageSubSection-subSectionContent"

@@ -13,9 +13,13 @@ export interface PopoverPropTypes extends WithWebComponentPropTypes {
   /**
    * Defines the header text.
    *
-   * **Note:** If `header` prop is provided, the `headerText` is ignored.
+   * **Note:** If `header` slot is provided, the `headerText` is ignored.
    */
   headerText?: string;
+  /**
+   * Defines whether the block layer will be shown if modal property is set to true.
+   */
+  hideBackdrop?: boolean;
   /**
    * Determines the horizontal alignment of the `Popover`.
    *
@@ -103,7 +107,7 @@ export interface PopoverPropTypes extends WithWebComponentPropTypes {
 const Popover: FC<PopoverPropTypes> = withWebComponent<PopoverPropTypes>(
   'ui5-popover',
   ['headerText', 'horizontalAlign', 'placementType', 'verticalAlign', 'initialFocus'],
-  ['allowTargetOverlap', 'modal', 'noArrow', 'preventFocusRestore'],
+  ['allowTargetOverlap', 'hideBackdrop', 'modal', 'noArrow', 'preventFocusRestore'],
   ['footer', 'header'],
   ['after-close', 'after-open', 'before-close', 'before-open']
 );
@@ -112,6 +116,7 @@ Popover.displayName = 'Popover';
 
 Popover.defaultProps = {
   allowTargetOverlap: false,
+  hideBackdrop: false,
   horizontalAlign: PopoverHorizontalAlign.Center,
   modal: false,
   noArrow: false,

@@ -17,6 +17,10 @@ export interface ResponsivePopoverPropTypes extends WithWebComponentPropTypes {
    */
   headerText?: string;
   /**
+   * Defines whether the block layer will be shown if modal property is set to true.
+   */
+  hideBackdrop?: boolean;
+  /**
    * Determines the horizontal alignment of the `Popover`.
    *
    * Available options are:
@@ -103,7 +107,7 @@ export interface ResponsivePopoverPropTypes extends WithWebComponentPropTypes {
 const ResponsivePopover: FC<ResponsivePopoverPropTypes> = withWebComponent<ResponsivePopoverPropTypes>(
   'ui5-responsive-popover',
   ['headerText', 'horizontalAlign', 'placementType', 'verticalAlign', 'initialFocus'],
-  ['allowTargetOverlap', 'modal', 'noArrow', 'preventFocusRestore'],
+  ['allowTargetOverlap', 'hideBackdrop', 'modal', 'noArrow', 'preventFocusRestore'],
   ['footer', 'header'],
   ['after-close', 'after-open', 'before-close', 'before-open']
 );
@@ -112,6 +116,7 @@ ResponsivePopover.displayName = 'ResponsivePopover';
 
 ResponsivePopover.defaultProps = {
   allowTargetOverlap: false,
+  hideBackdrop: false,
   horizontalAlign: PopoverHorizontalAlign.Center,
   modal: false,
   noArrow: false,

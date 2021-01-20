@@ -11,14 +11,20 @@ const DEPENDENCY_REGEX = BUILD_FOR_IE11
   ? /node_modules/
   : /node_modules\/(@ui5\/webcomponents(-(base|core|fiori|icons|theme-base))?|lit-html)\//;
 
+let addons = [
+  '@storybook/addon-toolbars',
+  '@storybook/addon-docs',
+  '@storybook/addon-controls',
+  '@storybook/addon-actions'
+];
+
+if (process.env.NODE_ENV === 'development') {
+  addons.push('@storybook/addon-a11y');
+}
+
 module.exports = {
   stories: ['../docs/**/*.stories.mdx', '../packages/**/*.stories.@(tsx|jsx|mdx)'],
-  addons: [
-    '@storybook/addon-toolbars',
-    '@storybook/addon-docs',
-    '@storybook/addon-controls',
-    '@storybook/addon-actions'
-  ],
+  addons: addons,
   webpack: async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
     // You can change the configuration based on that.

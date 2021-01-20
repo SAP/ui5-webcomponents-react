@@ -13,11 +13,17 @@ const WithJSSProvider = ({ children }) => {
 const customRender = (ui: ReactElement, options?: Omit<RenderOptions, 'queries'>): RenderResult =>
   render(ui, { wrapper: WithJSSProvider, ...options });
 
+const RtlWrapper = ({ children }) => <div dir="rtl">{children}</div>;
+const customRtlRender = (ui: ReactElement, options?: Omit<RenderOptions, 'queries'>): RenderResult =>
+  customRender(ui, { wrapper: RtlWrapper, ...options });
+
 // re-export everything
 export * from '@testing-library/react';
 
 // override render method
 export { customRender as render };
+
+export { customRtlRender as renderRtl };
 
 //copied from https://github.com/testing-library/react-testing-library/issues/268#issuecomment-454872934 on 4.Dec 2020
 class FakeMouseEvent extends MouseEvent {
