@@ -30,8 +30,8 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
-          role="rowgroup"
-          style="width: 600px;"
+          role="row"
+          style="width: 600px; background-color: red;"
         >
           <div
             class="Resizer-resizer"
@@ -448,8 +448,8 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
-          role="rowgroup"
-          style="width: 600px;"
+          role="row"
+          style="width: 600px; background-color: red;"
         >
           <div
             class="Resizer-resizer"
@@ -866,8 +866,8 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
-          role="rowgroup"
-          style="width: 600px;"
+          role="row"
+          style="width: 600px; background-color: red;"
         >
           <div
             class="Resizer-resizer"
@@ -1269,8 +1269,8 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
           />
           <div
             class="AnalyticalTable-tableHeaderRow-0-2-2"
-            role="rowgroup"
-            style="width: 600px;"
+            role="row"
+            style="width: 600px; background-color: red;"
           >
             <div
               class="Resizer-resizer-0-2-40"
@@ -1626,8 +1626,8 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
           />
           <div
             class="AnalyticalTable-tableHeaderRow-0-2-2"
-            role="rowgroup"
-            style="width: 600px;"
+            role="row"
+            style="width: 600px; background-color: red;"
           >
             <div
               class="Resizer-resizer-0-2-40"
@@ -1968,8 +1968,8 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
           />
           <div
             class="AnalyticalTable-tableHeaderRow-0-2-2"
-            role="rowgroup"
-            style="width: 800px;"
+            role="row"
+            style="width: 800px; background-color: red;"
           >
             <div
               class="Resizer-resizer-0-2-40"
@@ -2403,8 +2403,8 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
           />
           <div
             class="AnalyticalTable-tableHeaderRow-0-2-2"
-            role="rowgroup"
-            style="width: 600px;"
+            role="row"
+            style="width: 600px; background-color: red;"
           >
             <div
               class="Resizer-resizer-0-2-40"
@@ -2825,8 +2825,8 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
           />
           <div
             class="AnalyticalTable-tableHeaderRow-0-2-2"
-            role="rowgroup"
-            style="width: 653px;"
+            role="row"
+            style="width: 653px; background-color: red;"
           >
             <div
               style="position: absolute; top: 0px; width: 6px; left: 0px; transform: translateX(0px);"
@@ -3231,8 +3231,8 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
           />
           <div
             class="AnalyticalTable-tableHeaderRow-0-2-2"
-            role="rowgroup"
-            style="width: 600px;"
+            role="row"
+            style="width: 600px; background-color: red;"
           >
             <div
               class="Resizer-resizer-0-2-40"
@@ -3650,8 +3650,8 @@ exports[`AnalyticalTable Tree Table 1`] = `
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
-          role="rowgroup"
-          style="width: 647px;"
+          role="row"
+          style="width: 647px; background-color: red;"
         >
           <div
             style="position: absolute; top: 0px; width: 47px; left: 0px; transform: translateX(0px);"
@@ -4166,8 +4166,8 @@ exports[`AnalyticalTable custom row height 1`] = `
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
-          role="rowgroup"
-          style="width: 600px;"
+          role="row"
+          style="width: 600px; background-color: red;"
         >
           <div
             class="Resizer-resizer"
@@ -4574,8 +4574,8 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
-          role="rowgroup"
-          style="width: 647px;"
+          role="row"
+          style="width: 647px; background-color: red;"
         >
           <div
             style="position: absolute; top: 0px; width: 47px; left: 0px; transform: translateX(0px);"
@@ -5052,8 +5052,8 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
-          role="rowgroup"
-          style="width: 600px;"
+          role="row"
+          style="width: 600px; background-color: red;"
         >
           <div
             class="Resizer-resizer"
@@ -5405,8 +5405,8 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
-          role="rowgroup"
-          style="width: 600px;"
+          role="row"
+          style="width: 600px; background-color: red;"
         >
           <div
             style="position: absolute; top: 0px; width: 47px; left: 0px; transform: translateX(0px);"
@@ -5763,8 +5763,8 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins & hidden column 1`] = `
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
-          role="rowgroup"
-          style="width: 600px;"
+          role="row"
+          style="width: 600px; background-color: red;"
         >
           <div
             class="Resizer-resizer"
@@ -6101,8 +6101,8 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 1`] = `
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
-          role="rowgroup"
-          style="width: 800px;"
+          role="row"
+          style="width: 800px; background-color: red;"
         >
           <div
             class="Resizer-resizer"
@@ -6522,8 +6522,8 @@ exports[`AnalyticalTable render rows 1`] = `
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
-          role="rowgroup"
-          style="width: 600px;"
+          role="row"
+          style="width: 600px; background-color: red;"
         >
           <div
             class="Resizer-resizer"
@@ -6908,8 +6908,8 @@ exports[`AnalyticalTable render rows 2`] = `
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
-          role="rowgroup"
-          style="width: 600px;"
+          role="row"
+          style="width: 600px; background-color: red;"
         >
           <div
             class="Resizer-resizer"
@@ -7274,8 +7274,8 @@ exports[`AnalyticalTable render rows 3`] = `
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
-          role="rowgroup"
-          style="width: 600px;"
+          role="row"
+          style="width: 600px; background-color: red;"
         >
           <div
             class="Resizer-resizer"
@@ -7640,8 +7640,8 @@ exports[`AnalyticalTable render subcomponents 1`] = `
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
-          role="rowgroup"
-          style="width: 600px;"
+          role="row"
+          style="width: 600px; background-color: red;"
         >
           <div
             class="Resizer-resizer"
@@ -8114,8 +8114,8 @@ exports[`AnalyticalTable render without data 1`] = `
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
-          role="rowgroup"
-          style="width: 600px;"
+          role="row"
+          style="width: 600px; background-color: red;"
         >
           <div
             class="Resizer-resizer"
@@ -8288,8 +8288,8 @@ exports[`AnalyticalTable resize vertically 1`] = `
           />
           <div
             class="AnalyticalTable-tableHeaderRow"
-            role="rowgroup"
-            style="width: 600px;"
+            role="row"
+            style="width: 600px; background-color: red;"
           >
             <div
               class="Resizer-resizer"
@@ -10231,8 +10231,8 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
-          role="rowgroup"
-          style="width: 600px;"
+          role="row"
+          style="width: 600px; background-color: red;"
         >
           <div
             class="Resizer-resizer"
@@ -10649,8 +10649,8 @@ exports[`AnalyticalTable with highlight row 1`] = `
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
-          role="rowgroup"
-          style="width: 653px;"
+          role="row"
+          style="width: 653px; background-color: red;"
         >
           <div
             style="position: absolute; top: 0px; width: 6px; left: 0px; transform: translateX(0px);"
@@ -11051,8 +11051,8 @@ exports[`AnalyticalTable with initial column order 1`] = `
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
-          role="rowgroup"
-          style="width: 600px;"
+          role="row"
+          style="width: 600px; background-color: red;"
         >
           <div
             class="Resizer-resizer"
@@ -11469,8 +11469,8 @@ exports[`AnalyticalTable without selection Column 1`] = `
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
-          role="rowgroup"
-          style="width: 600px;"
+          role="row"
+          style="width: 600px; background-color: red;"
         >
           <div
             class="Resizer-resizer"
