@@ -1,13 +1,13 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import '@ui5/webcomponents-icons/dist/person-placeholder.js';
-import { BarChart } from '@ui5/webcomponents-react-charts/lib/BarChart';
+import { ColumnChart } from '@ui5/webcomponents-react-charts/lib/ColumnChart';
 import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
-  title="Charts /  BarChart"
-  component={BarChart}
+  title="Charts /  ColumnChart"
+  component={ColumnChart}
   argTypes={{
     ...DocsCommonProps,
     dataset: {
@@ -26,10 +26,11 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 ## Example
 
-<Canvas withToolbar>
+<Canvas>
   <Story name="Default">
     {(props) => (
-      <BarChart
+      <ColumnChart
+        chartConfig={props.chartConfig}
         loading={props.loading}
         noLegend={props.noLegend}
         noAnimation={props.noAnimation}
@@ -37,18 +38,17 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
         onLegendClick={props.onLegendClick}
         dataset={complexDataSet}
         style={{ height: '60vh' }}
-        chartConfig={props.chartConfig}
         dimensions={[
           {
-            accessor: 'name'
+            accessor: 'name',
+            formatter: (d) => `${d} 2019`
           }
         ]}
         measures={[
           {
             accessor: 'users',
             label: 'Users',
-            formatter: (val) => val.toLocaleString(),
-            opacity: 0.6
+            formatter: (val) => val.toLocaleString()
           },
           {
             accessor: 'sessions',
@@ -75,32 +75,33 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 ## More Examples
 
-### with custom color
+### With custom color
 
 <Canvas>
-  <Story name="with custom color">
+  <Story name="With Custom Color">
     {(props) => (
-      <BarChart
+      <ColumnChart
+        chartConfig={props.chartConfig}
         loading={props.loading}
         noLegend={props.noLegend}
         noAnimation={props.noAnimation}
         onDataPointClick={props.onDataPointClick}
+        onLegendClick={props.onLegendClick}
         dimensions={[{ accessor: 'name' }]}
         measures={[{ accessor: 'users', color: 'red' }]}
         dataset={simpleDataSet}
-        chartConfig={props.chartConfig}
         style={{ width: '95%', height: '40vh' }}
       />
     )}
   </Story>
 </Canvas>
 
-### with secondary dimension
+### With Secondary Dimension
 
 <Canvas>
-  <Story name="With secondary dimension">
+  <Story name="With Secondary Dimension">
     {(props) => (
-      <BarChart
+      <ColumnChart
         chartConfig={props.chartConfig}
         loading={props.loading}
         noLegend={props.noLegend}
@@ -115,12 +116,13 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
   </Story>
 </Canvas>
 
-### with data labels
+### With Data Labels
 
 <Canvas>
-  <Story name="with data labels">
+  <Story name="With Data Labels">
     {(props) => (
-      <BarChart
+      <ColumnChart
+        chartConfig={props.chartConfig}
         loading={props.loading}
         noLegend={props.noLegend}
         noAnimation={props.noAnimation}
@@ -129,10 +131,12 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
         dimensions={[{ accessor: 'name' }]}
         measures={[
           {
-            accessor: 'users'
+            accessor: 'users',
+            stackId: 'A'
           },
           {
-            accessor: 'sessions'
+            accessor: 'sessions',
+            stackId: 'A'
           },
           {
             accessor: 'volume'
@@ -140,18 +144,18 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
         ]}
         dataset={complexDataSet}
         style={{ width: '95%', height: '40vh' }}
-        chartConfig={props.chartConfig}
       />
     )}
   </Story>
 </Canvas>
 
-### with formatter
+### With Formatter
 
 <Canvas>
-  <Story name="with formatter">
+  <Story name="With Formatter">
     {(props) => (
-      <BarChart
+      <ColumnChart
+        chartConfig={props.chartConfig}
         loading={props.loading}
         noLegend={props.noLegend}
         noAnimation={props.noAnimation}
@@ -172,10 +176,7 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
             accessor: 'volume'
           }
         ]}
-        style={{ width: '95%', height: '100vh' }}
-        chartConfig={{
-          zoomingTool: true
-        }}
+        style={{ width: '95%', height: '40vh' }}
       />
     )}
   </Story>
@@ -185,17 +186,16 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Canvas>
   <Story name="Loading Placeholder">
-    <BarChart style={{ width: '30%' }} dimensions={[]} measures={[]} />
+    <ColumnChart style={{ width: '30%' }} dimensions={[]} measures={[]} />
   </Story>
 </Canvas>
 
-### with reference line
+### With Reference Line
 
 <Canvas>
-  <Story name="with reference line">
+  <Story name="With Reference Line">
     {(props) => (
-      <BarChart
-        loading={props.loading}
+      <ColumnChart
         noLegend={props.noLegend}
         noAnimation={props.noAnimation}
         onDataPointClick={props.onDataPointClick}
@@ -204,32 +204,17 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
         dimensions={[{ accessor: 'name' }]}
         measures={[
           {
-            accessor: 'users',
-            stackId: 'A'
+            accessor: 'users'
           },
           {
-            accessor: 'sessions',
-            stackId: 'A'
+            accessor: 'sessions'
           },
           {
             accessor: 'volume'
           }
         ]}
-        style={{
-          width: '95%',
-          height: '70vh',
-          '--sapChart_OrderedColor_1': '#0f828f',
-          '--sapChart_OrderedColor_2': '#5ac2ce',
-          '--sapChart_OrderedColor_3': '#03734d',
-          '--sapChart_OrderedColor_4': '#66c2a3',
-          '--sapChart_OrderedColor_5': '#3c6372',
-          '--sapChart_OrderedColor_6': '#adbcc3',
-          '--sapChart_OrderedColor_7': '#144b7f',
-          '--sapChart_OrderedColor_8': '#698caf',
-          '--sapChart_OrderedColor_9': '#d62f2f',
-          '--sapChart_OrderedColor_10': '#f8a6a6',
-          '--sapChart_OrderedColor_11': '#921473'
-        }}
+        style={{ width: '95%', height: '40vh' }}
+        loading
         chartConfig={{
           referenceLine: {
             color: 'red',
