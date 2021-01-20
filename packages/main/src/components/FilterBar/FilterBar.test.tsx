@@ -118,8 +118,8 @@ describe('FilterBar', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('Hide FilterBar', () => {
-    const { asFragment } = render(
+  it('Toggle FilterBar filters', () => {
+    const { asFragment, rerender } = render(
       <FilterBar>
         <FilterGroupItem label="Classification" key="classification">
           <Select>
@@ -131,9 +131,34 @@ describe('FilterBar', () => {
         </FilterGroupItem>
       </FilterBar>
     );
+    expect(screen.getByText('Classification')).toBeVisible();
     fireEvent.click(screen.getByText('Hide Filter Bar'));
     expect(screen.getByText('Show Filter Bar')).toBeVisible();
+    expect(screen.getByText('Classification')).not.toBeVisible();
+
     expect(asFragment()).toMatchSnapshot();
+
+    fireEvent.click(screen.getByText('Show Filter Bar'));
+    expect(screen.getByText('Hide Filter Bar')).toBeVisible();
+    expect(screen.getByText('Classification')).toBeVisible();
+
+    fireEvent.click(screen.getByText('Hide Filter Bar'));
+
+    rerender(
+      <FilterBar useToolbar={false}>
+        <FilterGroupItem label="Classification" key="classification">
+          <Select>
+            <Option>Option 1</Option>
+            <Option selected>Option 2</Option>
+            <Option>Option 3</Option>
+            <Option>Option 4</Option>
+          </Select>
+        </FilterGroupItem>
+      </FilterBar>
+    );
+    expect(screen.getByText('Classification')).toBeVisible();
+    expect(screen.queryByText('Show Filter Bar')).toBeFalsy();
+    expect(screen.queryByText('Hide Filter Bar')).toBeFalsy();
   });
 
   it.skip('Toggle Filters Dialog', () => {
