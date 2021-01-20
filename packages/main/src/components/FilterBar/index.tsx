@@ -468,7 +468,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
               {variants}
               {search && <ToolbarSeparator />}
               {search && <div ref={searchRef}>{renderSearchWithValue(search, searchValue)}</div>}
-              <ToolbarSpacer />
+              {useToolbar && <ToolbarSpacer />}
               {useToolbar && showClearOnFB && (
                 <Button onClick={onClear} design={ButtonDesign.Transparent}>
                   {clearText}
