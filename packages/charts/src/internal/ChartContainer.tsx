@@ -2,8 +2,9 @@ import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createC
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { Label } from '@ui5/webcomponents-react/lib/Label';
 import { Loader } from '@ui5/webcomponents-react/lib/Loader';
-import React, { ComponentType, CSSProperties, FC, forwardRef, ReactElement, Ref, useMemo } from 'react';
+import React, { ComponentType, CSSProperties, FC, forwardRef, ReactElement, ReactNode, Ref, useMemo } from 'react';
 import { ResponsiveContainer } from 'recharts';
 
 export interface ContainerProps extends CommonProps {
@@ -41,6 +42,25 @@ const chartContainerStyles = {
 
 const useStyles = createComponentStyles(chartContainerStyles, { name: 'ChartContainer' });
 
+class ErrorBoundary extends React.Component<{ children: ReactNode }, { errorCount: number }> {
+  state = {
+    errorCount: 0
+  };
+
+  componentDidCatch() {
+    if (this.state.errorCount < 3) {
+      this.setState((old) => ({ ...old, errorCount: old.errorCount + 1 }));
+    }
+  }
+
+  render() {
+    if (this.state.errorCount >= 3) {
+      return <Label>Sorry, something went wrong while rendering this chart!</Label>;
+    }
+    return this.props.children;
+  }
+}
+
 const ChartContainer: FC<ContainerProps> = forwardRef((props: ContainerProps, ref: Ref<any>) => {
   const { Placeholder, loading = false, dataset, style, className, tooltip, slot, children, resizeDebounce } = props;
   useStyles();
@@ -65,9 +85,11 @@ const ChartContainer: FC<ContainerProps> = forwardRef((props: ContainerProps, re
         <>
           {loading && <Loader style={loaderStyles} />}
           {
-            <ResponsiveContainer debounce={resizeDebounce} {...__testingProps__}>
-              {children}
-            </ResponsiveContainer>
+            <ErrorBoundary>
+              <ResponsiveContainer debounce={resizeDebounce} {...__testingProps__}>
+                {children}
+              </ResponsiveContainer>
+            </ErrorBoundary>
           }
         </>
       ) : (
