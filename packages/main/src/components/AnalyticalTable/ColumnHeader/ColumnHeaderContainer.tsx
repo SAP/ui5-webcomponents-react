@@ -83,7 +83,7 @@ export const ColumnHeaderContainer = forwardRef((props: ColumnHeaderContainerPro
   const classes = useStyles();
 
   return (
-    <div {...headerProps} role="rowgroup" style={{ width: `${columnVirtualizer.totalSize}px` }} ref={ref}>
+    <div {...headerProps} style={{ width: `${columnVirtualizer.totalSize}px` }} ref={ref}>
       {columnVirtualizer.virtualItems.map((virtualColumn: VirtualItem) => {
         const column = headerGroup.headers[virtualColumn.index];
         if (!column) {

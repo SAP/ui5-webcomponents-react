@@ -30,7 +30,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
-          role="rowgroup"
+          role="row"
           style="width: 600px;"
         >
           <div
@@ -448,7 +448,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
-          role="rowgroup"
+          role="row"
           style="width: 600px;"
         >
           <div
@@ -866,7 +866,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
-          role="rowgroup"
+          role="row"
           style="width: 600px;"
         >
           <div
@@ -1269,7 +1269,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
           />
           <div
             class="AnalyticalTable-tableHeaderRow-0-2-2"
-            role="rowgroup"
+            role="row"
             style="width: 600px;"
           >
             <div
@@ -1626,7 +1626,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
           />
           <div
             class="AnalyticalTable-tableHeaderRow-0-2-2"
-            role="rowgroup"
+            role="row"
             style="width: 600px;"
           >
             <div
@@ -1968,7 +1968,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
           />
           <div
             class="AnalyticalTable-tableHeaderRow-0-2-2"
-            role="rowgroup"
+            role="row"
             style="width: 800px;"
           >
             <div
@@ -2403,7 +2403,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
           />
           <div
             class="AnalyticalTable-tableHeaderRow-0-2-2"
-            role="rowgroup"
+            role="row"
             style="width: 600px;"
           >
             <div
@@ -2825,7 +2825,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
           />
           <div
             class="AnalyticalTable-tableHeaderRow-0-2-2"
-            role="rowgroup"
+            role="row"
             style="width: 653px;"
           >
             <div
@@ -3231,7 +3231,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
           />
           <div
             class="AnalyticalTable-tableHeaderRow-0-2-2"
-            role="rowgroup"
+            role="row"
             style="width: 600px;"
           >
             <div
@@ -3650,7 +3650,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
-          role="rowgroup"
+          role="row"
           style="width: 647px;"
         >
           <div
@@ -4166,7 +4166,7 @@ exports[`AnalyticalTable custom row height 1`] = `
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
-          role="rowgroup"
+          role="row"
           style="width: 600px;"
         >
           <div
@@ -4574,7 +4574,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
-          role="rowgroup"
+          role="row"
           style="width: 647px;"
         >
           <div
@@ -5052,7 +5052,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
-          role="rowgroup"
+          role="row"
           style="width: 600px;"
         >
           <div
@@ -5405,7 +5405,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
-          role="rowgroup"
+          role="row"
           style="width: 600px;"
         >
           <div
@@ -5763,7 +5763,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins & hidden column 1`] = `
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
-          role="rowgroup"
+          role="row"
           style="width: 600px;"
         >
           <div
@@ -6101,7 +6101,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 1`] = `
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
-          role="rowgroup"
+          role="row"
           style="width: 800px;"
         >
           <div
@@ -6522,7 +6522,7 @@ exports[`AnalyticalTable render rows 1`] = `
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
-          role="rowgroup"
+          role="row"
           style="width: 600px;"
         >
           <div
@@ -6908,7 +6908,7 @@ exports[`AnalyticalTable render rows 2`] = `
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
-          role="rowgroup"
+          role="row"
           style="width: 600px;"
         >
           <div
@@ -7274,7 +7274,7 @@ exports[`AnalyticalTable render rows 3`] = `
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
-          role="rowgroup"
+          role="row"
           style="width: 600px;"
         >
           <div
@@ -7640,7 +7640,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
-          role="rowgroup"
+          role="row"
           style="width: 600px;"
         >
           <div
@@ -8114,7 +8114,7 @@ exports[`AnalyticalTable render without data 1`] = `
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
-          role="rowgroup"
+          role="row"
           style="width: 600px;"
         >
           <div
@@ -8288,7 +8288,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
           />
           <div
             class="AnalyticalTable-tableHeaderRow"
-            role="rowgroup"
+            role="row"
             style="width: 600px;"
           >
             <div
@@ -10231,7 +10231,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
-          role="rowgroup"
+          role="row"
           style="width: 600px;"
         >
           <div
@@ -10649,7 +10649,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
-          role="rowgroup"
+          role="row"
           style="width: 653px;"
         >
           <div
@@ -11051,7 +11051,7 @@ exports[`AnalyticalTable with initial column order 1`] = `
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
-          role="rowgroup"
+          role="row"
           style="width: 600px;"
         >
           <div
@@ -11469,7 +11469,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
-          role="rowgroup"
+          role="row"
           style="width: 600px;"
         >
           <div
