@@ -6,6 +6,8 @@ import {
   BASIC,
   CANCEL,
   CLEAR,
+  FILTERS,
+  GO,
   RESTORE,
   SAVE,
   SEARCH_FOR_FILTERS,
@@ -71,6 +73,8 @@ export const FilterDialog = (props) => {
   const saveText = i18nBundle.getText(SAVE);
   const searchForFiltersText = i18nBundle.getText(SEARCH_FOR_FILTERS);
   const showOnFilterBarText = i18nBundle.getText(SHOW_ON_FILTER_BAR);
+  const filtersTitle = i18nBundle.getText(FILTERS);
+  const goText = i18nBundle.getText(GO);
 
   useEffect(() => {
     if (open) {
@@ -140,8 +144,8 @@ export const FilterDialog = (props) => {
     () => (
       <FlexBox justifyContent={FlexBoxJustifyContent.End} className={classes.footer}>
         {showGoButton && (
-          <Button onClick={handleDialogGo} design={ButtonDesign.Emphasized}>
-            Go
+          <Button onClick={handleDialogGo} design={ButtonDesign.Emphasized} title={goText}>
+            {goText}
           </Button>
         )}
         {showClearButton && <Button onClick={handleClearFilters}>{clearText}</Button>}
@@ -153,6 +157,7 @@ export const FilterDialog = (props) => {
       </FlexBox>
     ),
     [
+      goText,
       showGoButton,
       classes.footer,
       handleDialogGo,
@@ -172,13 +177,15 @@ export const FilterDialog = (props) => {
   const renderHeader = useCallback(
     () => (
       <FlexBox direction={FlexBoxDirection.Column} alignItems={FlexBoxAlignItems.Center} className={classes.header}>
-        <Title level={TitleLevel.H4}>Filters</Title>
+        <Title level={TitleLevel.H4} tooltip={filtersTitle}>
+          {filtersTitle}
+        </Title>
         {showSearch && (
           <Input placeholder={searchForFiltersText} onInput={handleSearch} icon={<Icon name="search" />} />
         )}
       </FlexBox>
     ),
-    [classes.header, showSearch, handleSearch]
+    [classes.header, showSearch, handleSearch, filtersTitle]
   );
 
   const renderChildren = useCallback(() => {
@@ -239,6 +246,7 @@ export const FilterDialog = (props) => {
             <div className={classes.singleFilter} key={`${el.key}-container`}>
               {el}
               <CheckBox
+                role="checkbox"
                 checked={el.props.visibleInFilterBar || el.props.required || el.type.displayName !== 'FilterGroupItem'}
                 onChange={handleCheckBoxChange(el)}
                 disabled={el.props.required || el.type.displayName !== 'FilterGroupItem'}
@@ -249,7 +257,11 @@ export const FilterDialog = (props) => {
         return (
           <div className={classes.groupContainer} key={item}>
             <FlexBox justifyContent={FlexBoxJustifyContent.SpaceBetween} alignItems={FlexBoxAlignItems.Center}>
-              <Title level={TitleLevel.H5} className={index === 0 ? classes.groupTitle : ''}>
+              <Title
+                level={TitleLevel.H5}
+                className={index === 0 ? classes.groupTitle : ''}
+                tooltip={item === 'default' ? basicText : item}
+              >
                 {item === 'default' ? basicText : item}
               </Title>
               {index === 0 && <Text wrapping={false}>{showOnFilterBarText}</Text>}
@@ -262,7 +274,7 @@ export const FilterDialog = (props) => {
 
   return createPortal(
     <Dialog ref={dialogRef} header={renderHeader()} footer={renderFooter()} onAfterClose={handleClose}>
-      <div className={classes.dialog}>
+      <div className={classes.dialog} role="dialog">
         {renderFBSearch && (
           <div className={classes.fbSearch} ref={searchRef}>
             <span />

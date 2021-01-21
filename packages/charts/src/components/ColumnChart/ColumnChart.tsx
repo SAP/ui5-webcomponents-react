@@ -1,5 +1,5 @@
-import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { useIsRTL, usePassThroughHtmlProps, useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/hooks';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ColumnChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/ColumnChartPlaceholder';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/components/ChartContainer';
@@ -60,16 +60,16 @@ interface DimensionConfig extends IChartDimension {
 
 export interface ColumnChartProps extends IChartBaseProps {
   /**
-   * An array of config objects. Each object is defining one dimension of the chart.
+   * An array of config objects. Each object will define one dimension of the chart.
    *
-   * <h4>Required properties</h4>
-   * - `accessor`: string containing the path to the dataset key this bar should display. Supports object structures by using <code>'parent.child'</code>.
+   * #### Required Properties
+   * - `accessor`: string containing the path to the dataset key the dimension should display. Supports object structures by using <code>'parent.child'</code>.
    *   Can also be a getter.
    *
-   * <h4>Optional properties</h4>
+   * #### Optional Properties
+   * - `formatter`: function will be called for each data label and allows you to format it according to your needs
+   * - `interval`: number that controls how many ticks are rendered on the x axis
    *
-   * - `formatter`: The callback will be called for each data label and allows you to format it according to your needs
-   * - `interval`: Interval of dimension axis labels. Defaults to `0`.
    */
   dimensions: DimensionConfig[];
   /**
@@ -107,6 +107,9 @@ const valueAccessor = (attribute) => ({ payload }) => {
   return getValueByDataKey(payload, attribute);
 };
 
+/**
+ * A `ColumnChart` is a data visualization where each category is represented by a rectangle, with the height of the rectangle being proportional to the values being plotted.
+ */
 const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, ref: Ref<HTMLDivElement>) => {
   const {
     loading,

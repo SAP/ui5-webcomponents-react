@@ -7,10 +7,7 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
   title="Charts /  RadialChart"
   component={RadialChart}
   argTypes={{
-    ...DocsCommonProps,
-    dataset: {
-      control: { disable: true }
-    }
+    ...DocsCommonProps
   }}
   args={{
     displayValue: '50%',
@@ -39,14 +36,5 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 ### With Custom Color
 
 <Canvas>
-  <Story name="With Custom Color" args={{ color: '#f0ab00' }}>
-    {(props) => (
-      <RadialChart
-        value={props.value}
-        displayValue={props.displayValue}
-        maxValue={props.maxValue}
-        color={props.color}
-      />
-    )}
-  </Story>
+  <Story name="With Custom Color" args={{ color: '#f0ab00' }}>{(props) => <RadialChart {...props} />}</Story>
 </Canvas>

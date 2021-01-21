@@ -18,13 +18,13 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
     },
     dimension: {
       control: { disable: true }
-    }
-  }}
-  args={{
-    innerRadius: '20%',
-    outerRadius: '90%',
-    activeSegment: 9,
-    showActiveSegmentDataLabel: true
+    },
+      chartConfig: {
+          control: { disable: true }
+      },
+      children: {
+          control: { disable: true }
+      }
   }}
 />
 
@@ -43,10 +43,6 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
         onLegendClick={props.onLegendClick}
         style={{ width: '50%' }}
         dataset={simpleDataSet}
-        chartConfig={{
-          activeSegment: props.activeSegment,
-          showActiveSegmentDataLabel: props.showActiveSegmentDataLabel
-        }}
         dimension={{
           accessor: 'name'
         }}
@@ -131,8 +127,8 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
         style={{ width: '50%' }}
         dataset={simpleDataSet}
         chartConfig={{
-          innerRadius: props.innerRadius,
-          outerRadius: props.outerRadius
+          innerRadius: '20%',
+          outerRadius: '90%'
         }}
         dimension={{
           accessor: 'name'
@@ -173,6 +169,34 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
         measure={{
           accessor: 'users',
           formatter: (el) => el / 10
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
+
+### Highlight active segment
+
+<Canvas>
+  <Story
+    name="Highlight Active Segment"
+    args={{
+      chartConfig: {
+        activeSegment: 9,
+        showActiveSegmentDataLabel: true
+      }
+    }}
+  >
+    {(props) => (
+      <DonutChart
+        {...props}
+        style={{ width: '50%' }}
+        dataset={simpleDataSet}
+        dimension={{
+          accessor: 'name'
+        }}
+        measure={{
+          accessor: 'users'
         }}
       />
     )}

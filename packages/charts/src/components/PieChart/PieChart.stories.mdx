@@ -19,10 +19,6 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
       control: { disable: true }
     }
   }}
-  args={{
-    innerRadius: '0%',
-    outerRadius: '80%'
-  }}
 />
 
 <DocsHeader />
@@ -33,17 +29,9 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
   <Story name="Default">
     {(props) => (
       <PieChart
-        loading={props.loading}
-        noLegend={props.noLegend}
-        noAnimation={props.noAnimation}
-        onDataPointClick={props.onDataPointClick}
-        onLegendClick={props.onLegendClick}
+        {...props}
         style={{ width: '50%' }}
         dataset={simpleDataSet}
-        chartConfig={{
-          innerRadius: props.innerRadius,
-          outerRadius: props.outerRadius
-        }}
         dimension={{
           accessor: 'name'
         }}

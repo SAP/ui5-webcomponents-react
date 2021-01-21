@@ -6,30 +6,30 @@ import { PieChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/PieChar
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import { PolarAngleAxis, RadialBar, RadialBarChart } from 'recharts';
+import { AxisDomain } from 'recharts/types/util/types';
 
 export interface RadialChartProps extends CommonProps {
   /**
-   * Defines the value of the chart.
+   * The actual value which defines how much the ring is filled.
    */
   value?: number;
   /**
-   * Defines the maxValue of the chart.
+   * The maximum value of the ring. If `value` >= `maxValue`, the ring will be filled to 100%.
    *
-   * __Note:__ If `value` is greater than `maxValue` the chart is always 100% filled.
+   * Defaults to `100`.
    */
   maxValue?: number;
   /**
-   * Defines the label inside the `RadialChart`.
+   * The value that should be displayed in the center of the `RadialChart`.
    */
   displayValue?: number | string;
   /**
-   * Defines the color of the completed section.
+   * A custom color you want to apply to the ring fill. This props accepts any valid CSS color or CSS variable.
    */
   color?: CSSProperties['color'];
   /**
-   * The `onDataPointClick` event fires whenever the user clicks on e.g. a  bar in `BarChart` or a point the `LineChart`.
-   *
-   * You can use this event to trigger e.g. navigations or set filters based on the last clicked data point.
+   * `onDataPointClick` fires when the user clicks on the filled part of the ring.
+   * @param event
    */
   onDataPointClick?: (event: CustomEvent<{ value: unknown; payload: unknown; dataIndex: number }>) => void;
 }
@@ -38,10 +38,14 @@ const radialChartMargin = { right: 30, left: 30, top: 30, bottom: 30 };
 const radialBarBackground = { fill: ThemingParameters.sapContent_ImagePlaceholderBackground };
 const radialBarLabelStyle = { fontSize: ThemingParameters.sapFontHeader3Size, fill: ThemingParameters.sapTextColor };
 
+/**
+ * Displays a ring chart highlighting a current status.
+ * The status can be emphasized by using the `color` prop.
+ */
 const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, ref: Ref<HTMLDivElement>) => {
   const { maxValue, value, displayValue, onDataPointClick, color, style, className, tooltip, slot } = props;
 
-  const range = useMemo(() => {
+  const range = useMemo<AxisDomain>(() => {
     return [0, maxValue];
   }, [maxValue]);
 
@@ -63,6 +67,7 @@ const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, r
   );
 
   const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick']);
+
   return (
     <ChartContainer
       dataset={dataset}
@@ -86,7 +91,7 @@ const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, r
         startAngle={90}
         endAngle={-270}
       >
-        <PolarAngleAxis type="number" domain={range as any} tick={false} />
+        <PolarAngleAxis type="number" domain={range} tick={false} />
         <RadialBar
           background={radialBarBackground}
           dataKey="value"
