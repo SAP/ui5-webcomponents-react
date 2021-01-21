@@ -122,6 +122,13 @@ const measureDefaults = {
   formatter: defaultFormatter
 };
 
+/**
+ *
+ * A `ScatterChart` is a data visualization that displays multiple circles (bubbles) in a two-dimensional plot.
+ *
+ * Most commonly, a scatter chart displays the values of three numeric variables,where each observation's data is
+ * shown by a circle, while the horizontal and vertical positions of the bubble show the values of two other variables.
+ */
 const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps, ref: Ref<HTMLDivElement>) => {
   const {
     dataset,
