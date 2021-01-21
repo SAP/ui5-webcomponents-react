@@ -1,5 +1,5 @@
-import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { useIsRTL, usePassThroughHtmlProps, useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/hooks';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/components/ChartContainer';
 import { XAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/XAxisTicks';
@@ -45,7 +45,7 @@ interface ScatterDataObject {
   /**
    * Contains the data of the chart
    */
-  data?: any[];
+  data?: Record<string, unknown>[];
   /**
    * Any valid CSS Color or CSS Variable. Defaults to the `sapChart_Ordinal` colors
    */
@@ -65,39 +65,42 @@ interface IScatterChartConfig extends ICartesianChartConfig {
   };
 }
 
-export interface ScatterChartProps extends IChartBaseProps<IScatterChartConfig> {
+export interface ScatterChartProps extends Omit<IChartBaseProps<IScatterChartConfig>, 'dataset'> {
   /**
    * An array of dataset objects. Each object defines a dataset which is displayed.
    *
-   * <h4>Required properties</h4>
+   * #### Required properties
    *  - `data`: array of objects which contains the data.
    *
-   * <h4>Optional properties</h4>
+   * #### Optional properties
    *  - `label`: string containing the label of the dataset which is also displayed in the legend.
    *  - `color`: any valid CSS color or CSS variable. Defaults to the `sapChart_Ordinal` colors.
-   *  - ´opacity´: number contains value of opacity of dataset
+   *  - `opacity`: number contains value of opacity of dataset
    *
-   *  Example of dataset:
-   *    <code>
-   *      [
-   *        {
-   *         label: 'America',
-   *         opacity: 0.7,
-   *         data: [
-   *           {
-   *             users: 120,
-   *             sessions: 200,
-   *             volume: 302
-   *           },
-   *           {
-   *             users: 20,
-   *             sessions: 230,
-   *             volume: 392
-   *           }
-   *         ]
-   *        }
-   *      ]
-   *    </code>
+   * #### Example of dataset:
+   *
+   * <code>
+   *   <pre>
+   *    [
+   *      {
+   *       label: 'America',
+   *       opacity: 0.7,
+   *       data: [
+   *         {
+   *           users: 120,
+   *           sessions: 200,
+   *           volume: 302
+   *         },
+   *         {
+   *           users: 20,
+   *           sessions: 230,
+   *           volume: 392
+   *         }
+   *       ]
+   *      }
+   *    ]
+   *   </pre>
+   * </code>
    */
   dataset?: ScatterDataObject[];
   /**
