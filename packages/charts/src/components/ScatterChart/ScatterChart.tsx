@@ -1,5 +1,5 @@
-import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { useIsRTL, usePassThroughHtmlProps, useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/hooks';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/components/ChartContainer';
 import { XAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/XAxisTicks';
@@ -45,7 +45,7 @@ interface ScatterDataObject {
   /**
    * Contains the data of the chart
    */
-  data?: any[];
+  data?: Record<string, unknown>[];
   /**
    * Any valid CSS Color or CSS Variable. Defaults to the `sapChart_Ordinal` colors
    */
@@ -65,50 +65,53 @@ interface IScatterChartConfig extends ICartesianChartConfig {
   };
 }
 
-export interface ScatterChartProps extends IChartBaseProps<IScatterChartConfig> {
+export interface ScatterChartProps extends Omit<IChartBaseProps<IScatterChartConfig>, 'dataset'> {
   /**
    * An array of dataset objects. Each object defines a dataset which is displayed.
    *
-   * <h4>Required properties</h4>
+   * #### Required properties
    *  - `data`: array of objects which contains the data.
    *
-   * <h4>Optional properties</h4>
+   * #### Optional properties
    *  - `label`: string containing the label of the dataset which is also displayed in the legend.
    *  - `color`: any valid CSS color or CSS variable. Defaults to the `sapChart_Ordinal` colors.
-   *  - ´opacity´: number contains value of opacity of dataset
+   *  - `opacity`: number contains value of opacity of dataset
    *
-   *  Example of dataset:
-   *    <code>
-   *      [
-   *        {
-   *         label: 'America',
-   *         opacity: 0.7,
-   *         data: [
-   *           {
-   *             users: 120,
-   *             sessions: 200,
-   *             volume: 302
-   *           },
-   *           {
-   *             users: 20,
-   *             sessions: 230,
-   *             volume: 392
-   *           }
-   *         ]
-   *        }
-   *      ]
-   *    </code>
+   * #### Example of dataset:
+   *
+   * <code>
+   *   <pre>
+   *    [
+   *      {
+   *       label: 'America',
+   *       opacity: 0.7,
+   *       data: [
+   *         {
+   *           users: 120,
+   *           sessions: 200,
+   *           volume: 302
+   *         },
+   *         {
+   *           users: 20,
+   *           sessions: 230,
+   *           volume: 392
+   *         }
+   *       ]
+   *      }
+   *    ]
+   *   </pre>
+   * </code>
    */
   dataset?: ScatterDataObject[];
   /**
    * An array of config objects. Each object is defining one axis in the chart.
    *
-   * <h4>Required properties</h4>
+   * #### Required properties
    *  - `accessor`: string containing the path to the dataset key this line should display. Supports object structures by using <code>'parent.child'</code>.
    *     Can also be a getter.
    *  - `axis`: string containing definition of axis. Must be x, y or z data to the axis.
    *
-   * <h4>Optional properties</h4>
+   * #### Optional properties
    *  - `label`: Label to display in tooltips. Falls back to the <code>accessor</code> if not present.
    *  - `formatter`: function will be called for each data label and allows you to format it according to your needs. Also addresses labels of axis.
    */
@@ -119,12 +122,19 @@ const measureDefaults = {
   formatter: defaultFormatter
 };
 
+/**
+ *
+ * A `ScatterChart` is a data visualization that displays multiple circles (bubbles) in a two-dimensional plot.
+ *
+ * Most commonly, a scatter chart displays the values of three numeric variables,where each observation's data is
+ * shown by a circle, while the horizontal and vertical positions of the bubble show the values of two other variables.
+ */
 const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps, ref: Ref<HTMLDivElement>) => {
   const {
     dataset,
     loading,
-    noLegend = false,
-    noAnimation = false,
+    noLegend,
+    noAnimation,
     onDataPointClick,
     onLegendClick,
     style,
@@ -284,6 +294,11 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
     </ChartContainer>
   );
 });
+
+ScatterChart.defaultProps = {
+  noLegend: false,
+  noAnimation: false
+};
 
 ScatterChart.displayName = 'ScatterChart';
 
