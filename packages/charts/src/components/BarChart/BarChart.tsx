@@ -74,6 +74,18 @@ interface DimensionConfig extends IChartDimension {
 }
 
 export interface BarChartProps extends IChartBaseProps {
+  /**
+   * An array of config objects. Each object will define one dimension of the chart.
+   *
+   * #### Required Properties
+   * - `accessor`: string containing the path to the dataset key the dimension should display. Supports object structures by using <code>'parent.child'</code>.
+   *   Can also be a getter.
+   *
+   * #### Optional Properties
+   * - `formatter`: function will be called for each data label and allows you to format it according to your needs
+   * - `interval`: number that controls how many ticks are rendered on the x axis
+   *
+   */
   dimensions: DimensionConfig[];
   /**
    * An array of config objects. Each object is defining one bar in the chart.
@@ -97,6 +109,9 @@ export interface BarChartProps extends IChartBaseProps {
   measures: MeasureConfig[];
 }
 
+/**
+ * A `BarChart` is a data visualization where each category is represented by a rectangle, with the width of the rectangle being proportional to the values being plotted.
+ */
 const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<HTMLDivElement>) => {
   const {
     loading,
