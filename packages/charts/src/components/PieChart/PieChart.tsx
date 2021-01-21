@@ -1,4 +1,5 @@
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/components/ChartContainer';
 import { PieChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/PieChartPlaceholder';
@@ -7,11 +8,11 @@ import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo, isVali
 import { Cell, Label, Legend, Pie, PieChart as PieChartLib, Tooltip, Text, Sector } from 'recharts';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
+import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { IPolarChartConfig } from '../../interfaces/IPolarChartConfig';
 import { defaultFormatter } from '../../internal/defaults';
 import { tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 
 interface MeasureConfig extends Omit<IChartMeasure, 'accessor' | 'label' | 'color'> {
   /**
@@ -25,21 +26,25 @@ interface MeasureConfig extends Omit<IChartMeasure, 'accessor' | 'label' | 'colo
   colors?: CSSProperties['color'][];
 }
 
-interface DimensionConfig {
-  /**
-   * A string containing the path to the dataset key this pie should display.
-   * Supports object structures by using `'parent.child'`. Can also be a getter.
-   */
-  accessor: string;
-  /**
-   * function will be called for each data label and allows you to format it according to your needs
-   */
-  formatter?: (value: any) => string;
-}
-
 export interface PieChartProps extends IChartBaseProps<IPolarChartConfig> {
+  /**
+   * A label to display in the center of the `PieChart`.
+   * If you use this prop to display a text, we recommend to increase `chartConfig.innerRadius` to have some free
+   * space for the text.
+   */
   centerLabel?: string;
-  dimension: DimensionConfig;
+  /**
+   * A object which contains the configuration of the dimension.
+   *
+   * #### Required Properties
+   * - `accessor`: string containing the path to the dataset key the dimension should display. Supports object structures by using <code>'parent.child'</code>.
+   *   Can also be a getter.
+   *
+   * #### Optional Properties
+   * - `formatter`: function will be called for each data label and allows you to format it according to your needs
+   *
+   */
+  dimension: IChartDimension;
   /**
    * A object which contains the configuration of the measure. The object is defining one pie in the chart.
    *
@@ -58,6 +63,13 @@ export interface PieChartProps extends IChartBaseProps<IPolarChartConfig> {
 
 const tooltipItemDefaultStyle = { color: 'var (--sapTextColor)' };
 
+/**
+ * A Pie Chart is a type of graph that displays data in a circular graph.
+ * The pieces of the graph are proportional to the fraction of the whole in each category.
+ *
+ * In other words, each slice of the pie is relative to the size of that category in the group as a whole.
+ * The entire “pie” represents 100 percent of a whole, while the pie “slices” represent portions of the whole.
+ */
 const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<HTMLDivElement>) => {
   const {
     loading,
@@ -88,7 +100,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
 
   const showActiveSegmentDataLabel = chartConfig.showActiveSegmentDataLabel ?? true;
 
-  const dimension: DimensionConfig = useMemo(
+  const dimension: IChartDimension = useMemo(
     () => ({
       formatter: defaultFormatter,
       ...props.dimension
