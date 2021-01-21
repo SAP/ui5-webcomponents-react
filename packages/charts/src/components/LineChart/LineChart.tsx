@@ -55,15 +55,27 @@ interface DimensionConfig extends IChartDimension {
 }
 
 export interface LineChartProps extends IChartBaseProps {
+  /**
+   * An array of config objects. Each object will define one dimension of the chart.
+   *
+   * #### Required Properties
+   * - `accessor`: string containing the path to the dataset key the dimension should display. Supports object structures by using <code>'parent.child'</code>.
+   *   Can also be a getter.
+   *
+   * #### Optional Properties
+   * - `formatter`: function will be called for each data label and allows you to format it according to your needs
+   * - `interval`: number that controls how many ticks are rendered on the x axis
+   *
+   */
   dimensions: DimensionConfig[];
   /**
    * An array of config objects. Each object is defining one line in the chart.
    *
-   * <h4>Required properties</h4>
+   * #### Required properties
    * - `accessor`: string containing the path to the dataset key this line should display. Supports object structures by using <code>'parent.child'</code>.
    *   Can also be a getter.
    *
-   * <h4>Optional properties</h4>
+   * #### Optional properties
    *
    * - `label`: Label to display in legends or tooltips. Falls back to the <code>accessor</code> if not present.
    * - `color`: any valid CSS Color or CSS Variable. Defaults to the `sapChart_Ordinal` colors
@@ -88,6 +100,9 @@ const measureDefaults = {
   opacity: 1
 };
 
+/**
+ * A `LineChart` is a type of chart used to show information that changes over time - it connects multiple dots.
+ */
 const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Ref<HTMLDivElement>) => {
   const {
     dataset,
@@ -227,8 +242,6 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
             tickLine={{
               stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
             }}
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
             label={{ value: chartConfig.secondYAxis.name, offset: 2, angle: +90, position: 'center' }}
             orientation={isRTL === true ? 'left' : 'right'}
             yAxisId="right"
