@@ -47,11 +47,11 @@ export interface MicroBarChartProps
   /**
    * An array of config objects. Each object is defining one bar in the chart.
    *
-   * <h4>Required properties</h4>
+   * #### Required properties
    * - `accessor`: string containing the path to the dataset key this bar should display. Supports object structures by using <code>'parent.child'</code>.
    * Can also be a getter.
    *
-   * <h4>Optional properties</h4>
+   * #### Optional properties
    *
    * - `formatter`: function will be called for each data label and allows you to format it according to your needs
    * - `colors`: array of any valid CSS Color or CSS Variable. Defaults to the `sapChart_OrderedColor_` colors

@@ -106,12 +106,12 @@ export interface ScatterChartProps extends Omit<IChartBaseProps<IScatterChartCon
   /**
    * An array of config objects. Each object is defining one axis in the chart.
    *
-   * <h4>Required properties</h4>
+   * #### Required properties
    *  - `accessor`: string containing the path to the dataset key this line should display. Supports object structures by using <code>'parent.child'</code>.
    *     Can also be a getter.
    *  - `axis`: string containing definition of axis. Must be x, y or z data to the axis.
    *
-   * <h4>Optional properties</h4>
+   * #### Optional properties
    *  - `label`: Label to display in tooltips. Falls back to the <code>accessor</code> if not present.
    *  - `formatter`: function will be called for each data label and allows you to format it according to your needs. Also addresses labels of axis.
    */

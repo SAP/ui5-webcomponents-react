@@ -48,10 +48,10 @@ export interface PieChartProps extends IChartBaseProps<IPolarChartConfig> {
   /**
    * A object which contains the configuration of the measure. The object is defining one pie in the chart.
    *
-   * <h4>Required properties</h4>
+   * #### Required properties
    * - `accessor`: string containing the path to the dataset key this pie should display. Supports object structures by using <code>'parent.child'</code>.
    *
-   * <h4>Optional properties</h4>
+   * #### Optional properties
    *
    * - `formatter`: function will be called for each data label and allows you to format it according to your needs
    * - `hideDataLabel`: flag whether the data labels should be hidden in the chart for this pie.

@@ -48,11 +48,11 @@ export interface RadarChartProps extends IChartBaseProps {
   /**
    * An array of config objects. Each object is defining one radar in the chart.
    *
-   * <h4>Required properties</h4>
+   * #### Required properties
    * - `accessor`: string containing the path to the dataset key this radar should display. Supports object structures by using <code>'parent.child'</code>.
    *   Can also be a getter.
    *
-   * <h4>Optional properties</h4>
+   * #### Optional properties
    *
    * - `label`: Label to display in legends or tooltips. Falls back to the <code>accessor</code> if not present.
    * - `color`: any valid CSS Color or CSS Variable. Defaults to the `sapChart_Ordinal` colors
