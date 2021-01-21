@@ -55,6 +55,18 @@ interface DimensionConfig extends IChartDimension {
 }
 
 export interface LineChartProps extends IChartBaseProps {
+  /**
+   * An array of config objects. Each object is defining one dimension of the chart.
+   *
+   * <h4>Required properties</h4>
+   * - `accessor`: string containing the path to the dataset key this bar should display. Supports object structures by using <code>'parent.child'</code>.
+   *   Can also be a getter.
+   *
+   * <h4>Optional properties</h4>
+   *
+   * - `formatter`: The callback will be called for each data label and allows you to format it according to your needs
+   * - `interval`: Interval of dimension axis labels. Defaults to `0`.
+   */
   dimensions: DimensionConfig[];
   /**
    * An array of config objects. Each object is defining one line in the chart.
@@ -92,8 +104,8 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
   const {
     dataset,
     loading,
-    noLegend = false,
-    noAnimation = false,
+    noLegend,
+    noAnimation,
     onDataPointClick,
     onLegendClick,
     style,
@@ -291,6 +303,11 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     </ChartContainer>
   );
 });
+
+LineChart.defaultProps = {
+  noLegend: false,
+  noAnimation: false
+};
 
 LineChart.displayName = 'LineChart';
 

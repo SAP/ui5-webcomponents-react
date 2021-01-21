@@ -13,10 +13,9 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
     }
   }}
   args={{
-    displayValue: '67%',
-    value: 67,
-    maxValue: 250,
-    color: '#f0ab00'
+    displayValue: '50%',
+    value: 50,
+    maxValue: 100
   }}
 />
 
@@ -25,11 +24,7 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 ## Example
 
 <Canvas>
-  <Story name="Default">
-    {(props) => (
-      <RadialChart value={props.value} displayValue={props.displayValue} onDataPointClick={props.onDataPointClick} />
-    )}
-  </Story>
+  <Story name="Default">{(props) => <RadialChart {...props} />}</Story>
 </Canvas>
 
 ## Properties
@@ -44,7 +39,7 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 ### With Custom Color
 
 <Canvas>
-  <Story name="With Custom Color">
+  <Story name="With Custom Color" args={{ color: '#f0ab00' }}>
     {(props) => (
       <RadialChart
         value={props.value}

@@ -1,5 +1,5 @@
+import { useConsolidatedRef, useIsRTL, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
-import { useIsRTL, usePassThroughHtmlProps, useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/hooks';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { BarChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/BarChartPlaceholder';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/components/ChartContainer';
@@ -74,6 +74,18 @@ interface DimensionConfig extends IChartDimension {
 }
 
 export interface BarChartProps extends IChartBaseProps {
+  /**
+   * An array of config objects. Each object is defining one dimension of the chart.
+   *
+   * <h4>Required properties</h4>
+   * - `accessor`: string containing the path to the dataset key this bar should display. Supports object structures by using <code>'parent.child'</code>.
+   *   Can also be a getter.
+   *
+   * <h4>Optional properties</h4>
+   *
+   * - `formatter`: The callback will be called for each data label and allows you to format it according to your needs
+   * - `interval`: Interval of dimension axis labels. Defaults to `0`.
+   */
   dimensions: DimensionConfig[];
   /**
    * An array of config objects. Each object is defining one bar in the chart.
@@ -101,8 +113,8 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
   const {
     loading,
     dataset,
-    noLegend = false,
-    noAnimation = false,
+    noLegend,
+    noAnimation,
     onDataPointClick,
     onLegendClick,
     style,
@@ -290,6 +302,11 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
     </ChartContainer>
   );
 });
+
+BarChart.defaultProps = {
+  noLegend: false,
+  noAnimation: false
+};
 
 BarChart.displayName = 'BarChart';
 

@@ -8,10 +8,29 @@ import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 
 import { PolarAngleAxis, RadialBar, RadialBarChart } from 'recharts';
 
 export interface RadialChartProps extends CommonProps {
+  /**
+   * Defines the value of the chart.
+   */
   value?: number;
+  /**
+   * Defines the maxValue of the chart.
+   *
+   * __Note:__ If `value` is greater than `maxValue` the chart is always 100% filled.
+   */
   maxValue?: number;
+  /**
+   * Defines the label inside the `RadialChart`.
+   */
   displayValue?: number | string;
+  /**
+   * Defines the color of the completed section.
+   */
   color?: CSSProperties['color'];
+  /**
+   * The `onDataPointClick` event fires whenever the user clicks on e.g. a  bar in `BarChart` or a point the `LineChart`.
+   *
+   * You can use this event to trigger e.g. navigations or set filters based on the last clicked data point.
+   */
   onDataPointClick?: (event: CustomEvent<{ value: unknown; payload: unknown; dataIndex: number }>) => void;
 }
 
@@ -20,7 +39,7 @@ const radialBarBackground = { fill: ThemingParameters.sapContent_ImagePlaceholde
 const radialBarLabelStyle = { fontSize: ThemingParameters.sapFontHeader3Size, fill: ThemingParameters.sapTextColor };
 
 const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, ref: Ref<HTMLDivElement>) => {
-  const { maxValue = 100, value, displayValue, onDataPointClick, color, style, className, tooltip, slot } = props;
+  const { maxValue, value, displayValue, onDataPointClick, color, style, className, tooltip, slot } = props;
 
   const range = useMemo(() => {
     return [0, maxValue];
@@ -44,7 +63,6 @@ const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, r
   );
 
   const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick']);
-
   return (
     <ChartContainer
       dataset={dataset}
@@ -92,6 +110,10 @@ const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, r
     </ChartContainer>
   );
 });
+
+RadialChart.defaultProps = {
+  maxValue: 100
+};
 
 RadialChart.displayName = 'RadialChart';
 

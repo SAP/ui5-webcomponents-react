@@ -39,6 +39,18 @@ interface DimensionConfig {
 
 export interface PieChartProps extends IChartBaseProps<IPolarChartConfig> {
   centerLabel?: string;
+  /**
+   * An object that defines the dimension of the chart.
+   *
+   * <h4>Required properties</h4>
+   * - `accessor`: string containing the path to the dataset key this bar should display. Supports object structures by using <code>'parent.child'</code>.
+   *   Can also be a getter.
+   *
+   * <h4>Optional properties</h4>
+   *
+   * - `formatter`: The callback will be called for each data label and allows you to format it according to your needs
+   * - `interval`: Interval of dimension axis labels. Defaults to `0`.
+   */
   dimension: DimensionConfig;
   /**
    * A object which contains the configuration of the measure. The object is defining one pie in the chart.
@@ -62,8 +74,8 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
   const {
     loading,
     dataset,
-    noLegend = false,
-    noAnimation = false,
+    noLegend,
+    noAnimation,
     onDataPointClick,
     onLegendClick,
     centerLabel,
@@ -262,7 +274,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
           activeIndex={chartConfig.activeSegment}
           activeShape={chartConfig.activeSegment != null && renderActiveShape}
         >
-          {centerLabel && <Label position={'center'}>{centerLabel}</Label>}
+          {centerLabel && <Label position="center">{centerLabel}</Label>}
           {dataset &&
             dataset.map((data, index) => (
               <Cell
@@ -294,6 +306,11 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
     </ChartContainer>
   );
 });
+
+PieChart.defaultProps = {
+  noLegend: false,
+  noAnimation: false
+};
 
 PieChart.displayName = 'PieChart';
 

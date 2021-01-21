@@ -126,8 +126,8 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
   const {
     dataset,
     loading,
-    noLegend = false,
-    noAnimation = false,
+    noLegend,
+    noAnimation,
     onDataPointClick,
     onLegendClick,
     style,
@@ -287,6 +287,11 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
     </ChartContainer>
   );
 });
+
+ScatterChart.defaultProps = {
+  noLegend: false,
+  noAnimation: false
+};
 
 ScatterChart.displayName = 'ScatterChart';
 

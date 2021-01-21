@@ -69,6 +69,18 @@ interface DimensionConfig extends IChartDimension {
 }
 
 export interface ComposedChartProps extends IChartBaseProps {
+  /**
+   * An array of config objects. Each object is defining one dimension of the chart.
+   *
+   * <h4>Required properties</h4>
+   * - `accessor`: string containing the path to the dataset key this bar should display. Supports object structures by using <code>'parent.child'</code>.
+   *   Can also be a getter.
+   *
+   * <h4>Optional properties</h4>
+   *
+   * - `formatter`: The callback will be called for each data label and allows you to format it according to your needs
+   * - `interval`: Interval of dimension axis labels. Defaults to `0`.
+   */
   dimensions: DimensionConfig[];
   /**
    * An array of config objects. Each object is defining one element in the chart.
@@ -111,10 +123,10 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     loading,
     dataset,
     onDataPointClick,
-    noLegend = false,
-    noAnimation = false,
+    noLegend,
+    noAnimation,
     onLegendClick,
-    layout = 'horizontal',
+    layout,
     style,
     className,
     tooltip,
@@ -437,6 +449,12 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     </ChartContainer>
   );
 });
+
+ComposedChart.defaultProps = {
+  noLegend: false,
+  noAnimation: false,
+  layout: 'horizontal'
+};
 
 ComposedChart.displayName = 'ComposedChart';
 

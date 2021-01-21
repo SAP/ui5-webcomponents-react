@@ -43,6 +43,17 @@ interface DimensionConfig {
 
 export interface MicroBarChartProps
   extends Omit<IChartBaseProps, 'noLegend' | 'onLegendClick' | 'noAnimation' | 'chartConfig' | 'children'> {
+  /**
+   * An array of config objects. Each object is defining one dimension of the chart.
+   *
+   * <h4>Required properties</h4>
+   * - `accessor`: string containing the path to the dataset key this bar should display. Supports object structures by using <code>'parent.child'</code>.
+   *   Can also be a getter.
+   *
+   * <h4>Optional properties</h4>
+   *
+   * - `formatter`: The callback will be called for each data label and allows you to format it according to your needs
+   */
   dimension: DimensionConfig;
   /**
    * An array of config objects. Each object is defining one bar in the chart.
