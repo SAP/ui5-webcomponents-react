@@ -69,6 +69,18 @@ interface DimensionConfig extends IChartDimension {
 }
 
 export interface ComposedChartProps extends IChartBaseProps {
+  /**
+   * An array of config objects. Each object will define one dimension of the chart.
+   *
+   * #### Required Properties
+   * - `accessor`: string containing the path to the dataset key the dimension should display. Supports object structures by using <code>'parent.child'</code>.
+   *   Can also be a getter.
+   *
+   * #### Optional Properties
+   * - `formatter`: function will be called for each data label and allows you to format it according to your needs
+   * - `interval`: number that controls how many ticks are rendered on the x axis
+   *
+   */
   dimensions: DimensionConfig[];
   /**
    * An array of config objects. Each object is defining one element in the chart.
@@ -106,6 +118,9 @@ const ChartTypes = {
 
 type AvailableChartTypes = 'line' | 'bar' | 'area' | string;
 
+/**
+ * The `ComposedChart` enables you to combine different chart types in one chart, e.g. showing bars together with lines.
+ */
 const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartProps, ref: Ref<HTMLDivElement>) => {
   const {
     loading,
@@ -114,7 +129,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     noLegend = false,
     noAnimation = false,
     onLegendClick,
-    layout = 'horizontal',
+    layout,
     style,
     className,
     tooltip,
@@ -439,5 +454,9 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
 });
 
 ComposedChart.displayName = 'ComposedChart';
+
+ComposedChart.defaultProps = {
+  layout: 'horizontal'
+};
 
 export { ComposedChart };
