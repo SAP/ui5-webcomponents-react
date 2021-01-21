@@ -1,19 +1,20 @@
+import { fireEvent, render, screen } from '@shared/tests';
 import { createPassThroughPropsTest } from '@shared/tests/utils';
 import { Bar } from '@ui5/webcomponents-react/lib/Bar';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
-import { CheckBox } from '@ui5/webcomponents-react/lib/CheckBox';
 import { DatePicker } from '@ui5/webcomponents-react/lib/DatePicker';
 import { FilterBar } from '@ui5/webcomponents-react/lib/FilterBar';
 import { FilterGroupItem } from '@ui5/webcomponents-react/lib/FilterGroupItem';
 import { Input } from '@ui5/webcomponents-react/lib/Input';
 import { MultiComboBox } from '@ui5/webcomponents-react/lib/MultiComboBox';
+import { MultiComboBoxItem } from '@ui5/webcomponents-react/lib/MultiComboBoxItem';
+import { ComboBox } from '@ui5/webcomponents-react/lib/ComboBox';
+import { ComboBoxItem } from '@ui5/webcomponents-react/lib/ComboBoxItem';
 import { Option } from '@ui5/webcomponents-react/lib/Option';
 import { Select } from '@ui5/webcomponents-react/lib/Select';
 import { Switch } from '@ui5/webcomponents-react/lib/Switch';
-import { VariantManagement } from '@ui5/webcomponents-react/lib/VariantManagement';
-import { MultiComboBoxItem } from '@ui5/webcomponents-react/lib/MultiComboBoxItem';
 import { Toolbar } from '@ui5/webcomponents-react/lib/Toolbar';
-import { fireEvent, render, screen } from '@shared/tests';
+import { VariantManagement } from '@ui5/webcomponents-react/lib/VariantManagement';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 
@@ -68,6 +69,12 @@ describe('FilterBar', () => {
         <FilterGroupItem label="Switch">
           <Switch />
         </FilterGroupItem>
+        <FilterGroupItem label="ComboBox">
+          <ComboBox>
+            <ComboBoxItem text="ComboBoxItem1" />
+            <ComboBoxItem text="ComboBoxItem2" />
+          </ComboBox>
+        </FilterGroupItem>
         <FilterGroupItem label="SELECT w/ initial selected">
           <Select>
             <Option>Option 1</Option>
@@ -111,8 +118,8 @@ describe('FilterBar', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('Hide FilterBar', () => {
-    const { asFragment } = render(
+  it('Toggle FilterBar filters', () => {
+    const { asFragment, rerender } = render(
       <FilterBar>
         <FilterGroupItem label="Classification" key="classification">
           <Select>
@@ -124,9 +131,34 @@ describe('FilterBar', () => {
         </FilterGroupItem>
       </FilterBar>
     );
+    expect(screen.getByText('Classification')).toBeVisible();
     fireEvent.click(screen.getByText('Hide Filter Bar'));
     expect(screen.getByText('Show Filter Bar')).toBeVisible();
+    expect(screen.getByText('Classification')).not.toBeVisible();
+
     expect(asFragment()).toMatchSnapshot();
+
+    fireEvent.click(screen.getByText('Show Filter Bar'));
+    expect(screen.getByText('Hide Filter Bar')).toBeVisible();
+    expect(screen.getByText('Classification')).toBeVisible();
+
+    fireEvent.click(screen.getByText('Hide Filter Bar'));
+
+    rerender(
+      <FilterBar useToolbar={false}>
+        <FilterGroupItem label="Classification" key="classification">
+          <Select>
+            <Option>Option 1</Option>
+            <Option selected>Option 2</Option>
+            <Option>Option 3</Option>
+            <Option>Option 4</Option>
+          </Select>
+        </FilterGroupItem>
+      </FilterBar>
+    );
+    expect(screen.getByText('Classification')).toBeVisible();
+    expect(screen.queryByText('Show Filter Bar')).toBeFalsy();
+    expect(screen.queryByText('Hide Filter Bar')).toBeFalsy();
   });
 
   it.skip('Toggle Filters Dialog', () => {
@@ -272,6 +304,223 @@ describe('FilterBar', () => {
     expect(
       selectFilterDialog.parentNode.parentNode.parentNode.parentNode.querySelector('ui5-checkbox')
     ).toHaveAttribute('disabled', 'true');
+  });
+
+  it('Filter Dialog Search', () => {
+    render(
+      <FilterBar showFilterConfiguration showSearchOnFiltersDialog>
+        <FilterGroupItem label="Filter1" groupName="Group1">
+          <Input placeholder="Placeholder" />
+        </FilterGroupItem>
+        <FilterGroupItem label="Filter2" groupName="Group2">
+          <Input placeholder="Placeholder" />
+        </FilterGroupItem>
+        <FilterGroupItem label="Filter3">
+          <Input placeholder="Placeholder" />
+        </FilterGroupItem>
+      </FilterBar>
+    );
+    const filterButton = screen.getByText('Filters');
+    fireEvent.click(filterButton);
+    const searchField = screen.getByPlaceholderText('Search for Filters');
+
+    expect(screen.getAllByText('Filter1').length).toBe(2);
+    expect(screen.getAllByText('Filter2').length).toBe(2);
+    expect(screen.getAllByText('Filter3').length).toBe(2);
+    expect(screen.queryByText('Group1')).toBeInTheDocument();
+    expect(screen.queryByText('Group2')).toBeInTheDocument();
+    expect(screen.queryByText('Basic')).toBeInTheDocument();
+
+    fireEvent.input(searchField, { target: { value: 'Filter1' } });
+    expect(screen.getAllByText('Filter1').length).toBe(2);
+    expect(screen.getAllByText('Filter2').length).toBe(1);
+    expect(screen.getAllByText('Filter3').length).toBe(1);
+    expect(screen.queryByText('Group1')).toBeInTheDocument();
+    expect(screen.queryByText('Group2')).not.toBeInTheDocument();
+    expect(screen.queryByText('Basic')).not.toBeInTheDocument();
+
+    fireEvent.input(searchField, { target: { value: 'Nothing to be found' } });
+    expect(screen.getAllByText('Filter1').length).toBe(1);
+    expect(screen.getAllByText('Filter2').length).toBe(1);
+    expect(screen.getAllByText('Filter3').length).toBe(1);
+    expect(screen.queryByText('Group1')).not.toBeInTheDocument();
+    expect(screen.queryByText('Group2')).not.toBeInTheDocument();
+    expect(screen.queryByText('Basic')).not.toBeInTheDocument();
+
+    fireEvent.input(searchField, { target: { value: 'Filter2' } });
+    expect(screen.getAllByText('Filter1').length).toBe(1);
+    expect(screen.getAllByText('Filter2').length).toBe(2);
+    expect(screen.getAllByText('Filter3').length).toBe(1);
+    expect(screen.queryByText('Group1')).not.toBeInTheDocument();
+    expect(screen.queryByText('Group2')).toBeInTheDocument();
+    expect(screen.queryByText('Basic')).not.toBeInTheDocument();
+
+    fireEvent.input(searchField, { target: { value: '' } });
+    expect(screen.getAllByText('Filter1').length).toBe(2);
+    expect(screen.getAllByText('Filter2').length).toBe(2);
+    expect(screen.getAllByText('Filter3').length).toBe(2);
+    expect(screen.queryByText('Group1')).toBeInTheDocument();
+    expect(screen.queryByText('Group2')).toBeInTheDocument();
+    expect(screen.queryByText('Basic')).toBeInTheDocument();
+  });
+
+  it('fire events', () => {
+    const onToggleFilters = jest.fn();
+    const onFiltersDialogSave = jest.fn();
+    const onFiltersDialogClear = jest.fn();
+    const onFiltersDialogCancel = jest.fn();
+    const onFiltersDialogOpen = jest.fn();
+    const onFiltersDialogClose = jest.fn();
+    const onFiltersDialogSelectionChange = jest.fn();
+    const onFiltersDialogSearch = jest.fn();
+    const onClear = jest.fn();
+    const onGo = jest.fn();
+    const onRestore = jest.fn();
+    const { rerender } = render(
+      <FilterBar
+        tooltip="FilterBar-Test"
+        showFilterConfiguration
+        showSearchOnFiltersDialog
+        showClearOnFB
+        showGoOnFB
+        showClearButton
+        showRestoreButton
+        showGo
+        showRestoreOnFB
+        onToggleFilters={onToggleFilters}
+        onClear={onClear}
+        onGo={onGo}
+        onRestore={onRestore}
+        onFiltersDialogOpen={onFiltersDialogOpen}
+        onFiltersDialogClear={onFiltersDialogClear}
+        onFiltersDialogSelectionChange={onFiltersDialogSelectionChange}
+        onFiltersDialogSearch={onFiltersDialogSearch}
+        onFiltersDialogSave={onFiltersDialogSave}
+        onFiltersDialogCancel={onFiltersDialogCancel}
+        onFiltersDialogClose={onFiltersDialogClose}
+      >
+        <FilterGroupItem label="Filter1" groupName="Group1">
+          <Input placeholder="Placeholder" />
+        </FilterGroupItem>
+        <FilterGroupItem label="Filter2" groupName="Group2">
+          <Input placeholder="Placeholder" />
+        </FilterGroupItem>
+        <FilterGroupItem label="Filter3">
+          <Input placeholder="Placeholder" />
+        </FilterGroupItem>
+      </FilterBar>
+    );
+
+    const toggleButton = screen.getByText('Hide Filter Bar');
+    const filterArea = screen.getByTitle('FilterBar-Test').children[1];
+    expect(filterArea).toHaveClass('FilterBar-filterAreaOpen');
+    fireEvent.click(toggleButton);
+    expect(onToggleFilters).toHaveBeenCalledTimes(1);
+    expect(filterArea).toHaveClass('FilterBar-filterAreaClosed');
+    fireEvent.click(toggleButton);
+    expect(onToggleFilters).toHaveBeenCalledTimes(2);
+    expect(filterArea).toHaveClass('FilterBar-filterAreaOpen');
+
+    const clearButton = screen.getByText('Clear');
+    fireEvent.click(clearButton);
+    expect(onClear).toHaveBeenCalledTimes(1);
+
+    const goButton = screen.getByText('Go');
+    fireEvent.click(goButton);
+    expect(onGo).toHaveBeenCalledTimes(1);
+
+    const restoreButton = screen.getByText('Restore');
+    fireEvent.click(restoreButton);
+    expect(onRestore).toHaveBeenCalledTimes(1);
+
+    const filterButton = screen.getByText('Filters');
+    fireEvent.click(filterButton);
+    expect(onFiltersDialogOpen).toHaveBeenCalledTimes(1);
+
+    const dialogClearButton = screen.getAllByText('Clear')[1];
+    fireEvent.click(dialogClearButton);
+    expect(onFiltersDialogClear).toHaveBeenCalledTimes(1);
+
+    const searchField = screen.getByPlaceholderText('Search for Filters');
+    fireEvent.input(searchField, { target: { value: 'some input' } });
+    fireEvent.input(searchField, { target: { value: '' } });
+    expect(onFiltersDialogSearch).toHaveBeenCalledTimes(2);
+
+    expect(filterArea.children.length).toBe(3);
+    const dialogCheckbox1 = screen.getAllByRole('checkbox')[0];
+    const dialogCheckbox2 = screen.getAllByRole('checkbox')[1];
+    fireEvent.change(dialogCheckbox1, { target: { checked: false } });
+    fireEvent.change(dialogCheckbox2, { target: { checked: false } });
+    expect(onFiltersDialogSelectionChange).toHaveBeenCalledTimes(2);
+
+    const dialogSaveButton = screen.getByText('Save');
+    fireEvent.click(dialogSaveButton);
+    expect(onFiltersDialogSave).toHaveBeenCalledTimes(1);
+    expect(onFiltersDialogClose).toHaveBeenCalledTimes(1);
+    expect(filterArea.children.length).toBe(1);
+
+    fireEvent.click(filterButton);
+
+    const dialogCancelButton = screen.getByText('Cancel');
+    fireEvent.click(dialogCancelButton);
+    expect(onFiltersDialogCancel).toHaveBeenCalledTimes(1);
+    expect(onFiltersDialogSave).toHaveBeenCalledTimes(1);
+    expect(onFiltersDialogClose).toHaveBeenCalledTimes(2);
+
+    fireEvent.click(filterButton);
+
+    fireEvent.keyDown(document.getElementsByTagName('ui5-dialog')[0], { key: 'Escape', code: 'Escape' });
+    expect(onFiltersDialogSave).toHaveBeenCalledTimes(1);
+    expect(onFiltersDialogClose).toHaveBeenCalledTimes(3);
+
+    fireEvent.click(filterButton);
+
+    const dialogGoButton = screen.getAllByText('Go')[1];
+    fireEvent.click(dialogGoButton);
+    expect(onGo).toHaveBeenCalledTimes(2);
+    expect(onFiltersDialogSave).toHaveBeenCalledTimes(1);
+    expect(onFiltersDialogClose).toHaveBeenCalledTimes(4);
+
+    rerender(
+      <FilterBar
+        tooltip="FilterBar-Test"
+        showFilterConfiguration
+        showSearchOnFiltersDialog
+        showClearOnFB
+        showGoOnFB
+        showGo={false}
+        showClearButton
+        showRestoreButton
+        showRestoreOnFB
+        onToggleFilters={onToggleFilters}
+        onClear={onClear}
+        onGo={onGo}
+        onRestore={onRestore}
+        onFiltersDialogOpen={onFiltersDialogOpen}
+        onFiltersDialogClear={onFiltersDialogClear}
+        onFiltersDialogSelectionChange={onFiltersDialogSelectionChange}
+        onFiltersDialogSearch={onFiltersDialogSearch}
+        onFiltersDialogSave={onFiltersDialogSave}
+        onFiltersDialogCancel={onFiltersDialogCancel}
+        onFiltersDialogClose={onFiltersDialogClose}
+      >
+        <FilterGroupItem label="Filter1" groupName="Group1">
+          <Input placeholder="Placeholder" />
+        </FilterGroupItem>
+        <FilterGroupItem label="Filter2" groupName="Group2">
+          <Input placeholder="Placeholder" />
+        </FilterGroupItem>
+        <FilterGroupItem label="Filter3">
+          <Input placeholder="Placeholder" />
+        </FilterGroupItem>
+      </FilterBar>
+    );
+
+    fireEvent.click(filterButton);
+
+    fireEvent.keyDown(document.getElementsByTagName('ui5-dialog')[0], { key: 'Escape', code: 'Escape' });
+    expect(onFiltersDialogSave).toHaveBeenCalledTimes(2);
+    expect(onFiltersDialogClose).toHaveBeenCalledTimes(5);
   });
 
   createPassThroughPropsTest(FilterBar);
