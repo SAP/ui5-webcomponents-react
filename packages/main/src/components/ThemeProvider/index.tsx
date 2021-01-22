@@ -7,6 +7,7 @@ import { initRangeSet, RANGESETS } from '@ui5/webcomponents-react-base/lib/Devic
 import { useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base/lib/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
+import { ThemeProviderContext } from '@ui5/webcomponents-react/lib/ThemeProviderContext';
 import React, { FC, ReactNode, useEffect, useMemo } from 'react';
 import { ThemeProvider as ReactJssThemeProvider } from 'react-jss';
 import { JSSTheme } from '../../interfaces/JSSTheme';
@@ -14,9 +15,12 @@ import { GlobalStyleClassesStyles } from './GlobalStyleClasses.jss';
 
 const useStyles = createComponentStyles(GlobalStyleClassesStyles);
 
+fetchI18nBundle('@ui5/webcomponents-react');
+
 const cssVarsPonyfillNeeded = () => !!window.CSSVarsPonyfill;
 
 export interface ThemeProviderProps {
+  webComponentsProvided?: boolean;
   children: ReactNode;
 }
 
@@ -29,7 +33,7 @@ if (!document.querySelector('style[data-ui5-webcomponents-react-sizes]')) {
 }
 
 const ThemeProvider: FC<ThemeProviderProps> = (props: ThemeProviderProps) => {
-  const { children } = props;
+  const { children, webComponentsProvided } = props;
   const isCompactSize = document.body.classList.contains('ui5-content-density-compact');
   useStyles();
 
@@ -59,10 +63,13 @@ const ThemeProvider: FC<ThemeProviderProps> = (props: ThemeProviderProps) => {
   useIsomorphicLayoutEffect(() => {
     initRangeSet();
     initRangeSet(RANGESETS.SAP_STANDARD_EXTENDED);
-    fetchI18nBundle('@ui5/webcomponents-react');
   }, []);
 
-  return <ReactJssThemeProvider theme={themeContext}>{children}</ReactJssThemeProvider>;
+  return (
+    <ThemeProviderContext.Provider value={{ webComponentsProvided }}>
+      <ReactJssThemeProvider theme={themeContext}>{children}</ReactJssThemeProvider>
+    </ThemeProviderContext.Provider>
+  );
 };
 
 ThemeProvider.displayName = 'ThemeProvider';

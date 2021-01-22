@@ -1,5 +1,7 @@
 import { getEffectiveScopingSuffixForTag } from '@ui5/webcomponents-base/dist/CustomElementsScope';
+import { useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base/lib/hooks';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
+import { ThemeProviderContext } from '@ui5/webcomponents-react/lib/ThemeProviderContext';
 import React, {
   Children,
   cloneElement,
@@ -9,12 +11,12 @@ import React, {
   ReactElement,
   Ref,
   RefObject,
+  useContext,
   useEffect,
   useRef
 } from 'react';
 import { CommonProps } from '../interfaces/CommonProps';
 import { Ui5DomRef } from '../interfaces/Ui5DomRef';
-import { useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base/lib/hooks';
 
 const capitalizeFirstLetter = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
@@ -42,11 +44,13 @@ export const withWebComponent = <T extends Record<string, any>>(
     const tagNameSuffix: string = getEffectiveScopingSuffixForTag(tagName);
     const effectiveTagName = tagNameSuffix ? `${tagName}-${tagNameSuffix}` : tagName;
 
+    const themeProviderContext = useContext(ThemeProviderContext);
+
     useIsomorphicLayoutEffect(() => {
-      if (!customElements.get(effectiveTagName)) {
-        lazyImport();
+      if (!customElements.get(effectiveTagName) && !themeProviderContext.webComponentsProvided) {
+        void lazyImport();
       }
-    }, []);
+    }, [themeProviderContext.webComponentsProvided]);
 
     const { className, tooltip, children, ...rest } = props;
 
