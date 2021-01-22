@@ -1,4 +1,4 @@
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { createUseStyles } from 'react-jss';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
@@ -40,7 +40,7 @@ const chartContainerStyles = {
   }
 };
 
-const useStyles = createComponentStyles(chartContainerStyles, { name: 'ChartContainer' });
+const useStyles = createUseStyles(chartContainerStyles, { name: 'ChartContainer' });
 
 class ErrorBoundary extends React.Component<{ children: ReactNode }, { errorCount: number }> {
   state = {

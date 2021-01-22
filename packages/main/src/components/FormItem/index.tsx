@@ -1,4 +1,4 @@
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { createUseStyles } from 'react-jss';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
@@ -22,7 +22,7 @@ interface InternalProps extends FormItemProps {
   rowIndex?: number;
 }
 
-const useStyles = createComponentStyles(
+const useStyles = createUseStyles(
   {
     label: {
       gridColumnEnd: 'span var(--ui5wcr_form_label_span)',

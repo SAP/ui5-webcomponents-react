@@ -1,4 +1,4 @@
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { createUseStyles } from 'react-jss';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { BreadcrumbsPropTypes } from '@ui5/webcomponents-react/lib/Breadcrumbs';
@@ -57,7 +57,7 @@ interface InternalProps extends DynamicPageTitleProps {
   onToggleHeaderContentVisibility?: (e: any) => boolean;
 }
 
-const useStyles = createComponentStyles(DynamicPageTitleStyles, { name: 'DynamicPageTitle' });
+const useStyles = createUseStyles(DynamicPageTitleStyles, { name: 'DynamicPageTitle' });
 
 /**
  * The dynamic page title defines the elements in the top header.

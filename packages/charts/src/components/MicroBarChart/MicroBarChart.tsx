@@ -1,4 +1,4 @@
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { createUseStyles } from 'react-jss';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
@@ -120,7 +120,7 @@ const MicroBarChartStyles = {
   }
 };
 
-const useStyles = createComponentStyles(MicroBarChartStyles, { name: 'MicroBarChart' });
+const useStyles = createUseStyles(MicroBarChartStyles, { name: 'MicroBarChart' });
 
 /**
  * The `MicroBarChart` compares different values of the same category to each other by displaying them in a compact way.

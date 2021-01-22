@@ -1,7 +1,6 @@
-import { createComponentStyles } from '@ui5/webcomponents-react-base';
 import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
 import { Loader } from '@ui5/webcomponents-react/lib/Loader';
-import React, { CSSProperties } from 'react';
+import React from 'react';
 import { createUseStyles } from 'react-jss';
 
 const styles = {

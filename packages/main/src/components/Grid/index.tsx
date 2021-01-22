@@ -1,4 +1,4 @@
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { createUseStyles } from 'react-jss';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { useViewportRange } from '@ui5/webcomponents-react-base/lib/useViewportRange';
 import { GridPosition } from '@ui5/webcomponents-react/lib/GridPosition';
@@ -77,7 +77,7 @@ const getIndentFromString = (indent, currentRange) => {
   return indentConfig?.groups[currentRange] ?? DefaultIndentMap.get(currentRange);
 };
 
-const useStyles = createComponentStyles(styles, { name: 'Grid' });
+const useStyles = createUseStyles(styles, { name: 'Grid' });
 /**
  * A layout container component used for aligning items with various sizes in a simple grid.
  */

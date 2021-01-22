@@ -1,4 +1,4 @@
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { createUseStyles } from 'react-jss';
 import { getCurrentRange } from '@ui5/webcomponents-react-base/lib/Device';
 import { useConsolidatedRef, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
@@ -80,7 +80,7 @@ export interface FormPropTypes extends CommonProps {
   labelSpanXL?: number;
 }
 
-const useStyles = createComponentStyles(styles, { name: 'Form' });
+const useStyles = createUseStyles(styles, { name: 'Form' });
 /**
  * The `Form` component arranges labels and fields into groups and rows. There are different ways to visualize forms for different screen sizes.
  */

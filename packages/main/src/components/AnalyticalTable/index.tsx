@@ -1,4 +1,4 @@
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { createUseStyles } from 'react-jss';
 import { useIsomorphicLayoutEffect, useIsRTL } from '@ui5/webcomponents-react-base/lib/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
@@ -289,7 +289,7 @@ export interface TableProps extends Omit<CommonProps, 'title'> {
   LoadingComponent?: ComponentType<any>;
 }
 
-const useStyles = createComponentStyles(styles, { name: 'AnalyticalTable' });
+const useStyles = createUseStyles(styles, { name: 'AnalyticalTable' });
 /**
  * The `AnalyticalTable` provides a set of convenient functions for responsive table design, including virtualization of rows and columns, infinite scrolling and customizable columns that will, unless otherwise defined, distribute the available space equally among themselves.
  * It also provides several possibilities for working with the data, including sorting, filtering, grouping and aggregation.
