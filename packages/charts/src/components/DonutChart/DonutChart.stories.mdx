@@ -8,6 +8,16 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 <Meta
   title="Charts /  DonutChart"
   component={DonutChart}
+  args={{
+    dataset: simpleDataSet,
+    style: { width: '50%' },
+    dimension: {
+      accessor: 'name'
+    },
+    measure: {
+      accessor: 'users'
+    }
+  }}
   argTypes={{
     ...DocsCommonProps,
     dataset: {
@@ -19,12 +29,12 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
     dimension: {
       control: { disable: true }
     },
-      chartConfig: {
-          control: { disable: true }
-      },
-      children: {
-          control: { disable: true }
-      }
+    chartConfig: {
+      control: { disable: true }
+    },
+    children: {
+      control: { disable: true }
+    }
   }}
 />
 
@@ -33,25 +43,7 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 ## Example
 
 <Canvas>
-  <Story name="Default">
-    {(props) => (
-      <DonutChart
-        loading={props.loading}
-        noLegend={props.noLegend}
-        noAnimation={props.noAnimation}
-        onDataPointClick={props.onDataPointClick}
-        onLegendClick={props.onLegendClick}
-        style={{ width: '50%' }}
-        dataset={simpleDataSet}
-        dimension={{
-          accessor: 'name'
-        }}
-        measure={{
-          accessor: 'users'
-        }}
-      />
-    )}
-  </Story>
+  <Story name="Default">{(props) => <DonutChart {...props} />}</Story>
 </Canvas>
 
 ## Properties
@@ -69,19 +61,10 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
   <Story name="With Custom Color">
     {(props) => (
       <DonutChart
-        loading={props.loading}
-        noLegend={props.noLegend}
-        noAnimation={props.noAnimation}
-        onDataPointClick={props.onDataPointClick}
-        onLegendClick={props.onLegendClick}
-        style={{ width: '50%' }}
-        dataset={simpleDataSet}
-        dimension={{
-          accessor: 'name'
-        }}
+        {...props}
         measure={{
           accessor: 'users',
-          colors: ['#f00', 'green', 'var(--sapNegativeColor)']
+          colors: ['#f00', 'green', 'var(--sapNegativeColor)', 'black', 'yellow', 'pink']
         }}
       />
     )}
@@ -91,26 +74,7 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 ### With Padding Angle
 
 <Canvas>
-  <Story name="With Padding Angle">
-    {(props) => (
-      <DonutChart
-        loading={props.loading}
-        noLegend={props.noLegend}
-        noAnimation={props.noAnimation}
-        onDataPointClick={props.onDataPointClick}
-        onLegendClick={props.onLegendClick}
-        style={{ width: '50%' }}
-        dataset={simpleDataSet}
-        dimension={{
-          accessor: 'name'
-        }}
-        measure={{
-          accessor: 'users'
-        }}
-        chartConfig={{ paddingAngle: 5 }}
-      />
-    )}
-  </Story>
+  <Story name="With Padding Angle">{(props) => <DonutChart {...props} chartConfig={{ paddingAngle: 5 }} />}</Story>
 </Canvas>
 
 ### With Custom Radius
@@ -119,22 +83,10 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
   <Story name="With Custom Radius">
     {(props) => (
       <DonutChart
-        loading={props.loading}
-        noLegend={props.noLegend}
-        noAnimation={props.noAnimation}
-        onDataPointClick={props.onDataPointClick}
-        onLegendClick={props.onLegendClick}
-        style={{ width: '50%' }}
-        dataset={simpleDataSet}
+        {...props}
         chartConfig={{
           innerRadius: '20%',
           outerRadius: '90%'
-        }}
-        dimension={{
-          accessor: 'name'
-        }}
-        measure={{
-          accessor: 'users'
         }}
       />
     )}
@@ -155,13 +107,7 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
   <Story name="With Formatter">
     {(props) => (
       <DonutChart
-        loading={props.loading}
-        noLegend={props.noLegend}
-        noAnimation={props.noAnimation}
-        onDataPointClick={props.onDataPointClick}
-        onLegendClick={props.onLegendClick}
-        style={{ width: '50%' }}
-        dataset={simpleDataSet}
+        {...props}
         dimension={{
           accessor: 'name',
           formatter: (el) => el.slice(0, 3)
@@ -187,18 +133,6 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
       }
     }}
   >
-    {(props) => (
-      <DonutChart
-        {...props}
-        style={{ width: '50%' }}
-        dataset={simpleDataSet}
-        dimension={{
-          accessor: 'name'
-        }}
-        measure={{
-          accessor: 'users'
-        }}
-      />
-    )}
+    {(props) => <DonutChart {...props} />}
   </Story>
 </Canvas>
