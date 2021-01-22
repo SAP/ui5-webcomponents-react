@@ -39,7 +39,9 @@ describe('BarChart', () => {
   });
 
   test('onLegendClick', () => {
-    const cb = jest.fn();
+    const cb = jest.fn((e) => {
+      e.persist();
+    });
     render(<BarChart dataset={complexDataSet} dimensions={dimensions} measures={measures} onLegendClick={cb} />);
     fireEvent.click(screen.getByText('Users'));
     expect(cb).toBeCalled();
