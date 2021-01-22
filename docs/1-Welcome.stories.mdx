@@ -99,6 +99,22 @@ Then, you can use the Button in your app:
 <Button onClick={() => alert('Hello World!')}>Hello world!</Button>
 ```
 
+<Button onClick={() => alert('Hello World!')}>Hello world!</Button>
+
+### ThemeProvider
+
+The `ThemeProvider` is required as root node for all UI5 Web Components React Components, so we strongly recommend
+wrapping your complete App in the `ThemeProvider` component.
+
+> #### Advanced Usage
+>
+> The `ThemeProvider` is offering a prop called `webComponentsProvided`. In case you set this prop to `true`,
+> UI5 Web Components for React **will not** load any of the UI5 Web Components by itself but expects that
+> you are providing the respective UI5 Web Components you need. This might be useful for building micro-frontend
+> where your host application is already providing the required UI5 Web Components.
+>
+> _Please use this property with care, if you miss importing one UI5 Web Component it might lead to unexpected rendering results_
+
 ### Theming
 
 UI5 Web Components and UI5 Web Components for React are both coming with the `sap_fiori_3` a.k.a. `Quartz` Theme built in.
