@@ -1,5 +1,4 @@
 let canvas;
-let textHeight;
 
 export const getTextWidth = (text) => {
   const font = `normal 12pt "72","72full",Arial,Helvetica,sans-serif`;
