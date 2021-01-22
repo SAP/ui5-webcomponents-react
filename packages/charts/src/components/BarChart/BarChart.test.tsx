@@ -45,4 +45,14 @@ describe('BarChart', () => {
     expect(cb).toBeCalled();
     expect(cb.mock.calls[0][0].detail.dataKey).toEqual('users');
   });
+
+  test('onLegendClick should not crash when invalid handler is provided', () => {
+    render(
+      <BarChart dataset={complexDataSet} dimensions={dimensions} measures={measures} onLegendClick={'123' as any} />
+    );
+
+    expect(() => {
+      fireEvent.click(screen.getByText('Users'));
+    }).not.toThrow();
+  });
 });
