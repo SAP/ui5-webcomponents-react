@@ -1,3 +1,3 @@
-import { getTextHeight, getTextWidth, truncateLongLabel } from '../util/Utils';
+import { getTextWidth, truncateLongLabel } from '../util/Utils';
 
-export { truncateLongLabel, getTextHeight, getTextWidth };
+export { truncateLongLabel, getTextWidth };
