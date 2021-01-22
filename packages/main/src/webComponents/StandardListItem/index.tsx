@@ -1,7 +1,6 @@
 import { ListItemTypes } from '@ui5/webcomponents-react/lib/ListItemTypes';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/StandardListItem';
 import { FC, ReactNode } from 'react';
 
 export interface StandardListItemPropTypes extends WithWebComponentPropTypes {
@@ -65,6 +64,7 @@ export interface StandardListItemPropTypes extends WithWebComponentPropTypes {
  */
 const StandardListItem: FC<StandardListItemPropTypes> = withWebComponent<StandardListItemPropTypes>(
   'ui5-li',
+  () => import('@ui5/webcomponents/dist/StandardListItem'),
   ['description', 'icon', 'image', 'info', 'infoState', 'type'],
   ['iconEnd', 'selected'],
   [],

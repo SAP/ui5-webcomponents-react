@@ -1,5 +1,4 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents-fiori/dist/Wizard';
 import { FC, ReactNode } from 'react';
 
 export interface WizardPropTypes extends WithWebComponentPropTypes {
@@ -20,7 +19,14 @@ export interface WizardPropTypes extends WithWebComponentPropTypes {
  *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Wizard" target="_blank">UI5 Web Components Playground</a>
  */
-const Wizard: FC<WizardPropTypes> = withWebComponent<WizardPropTypes>('ui5-wizard', [], [], [], ['selection-change']);
+const Wizard: FC<WizardPropTypes> = withWebComponent<WizardPropTypes>(
+  'ui5-wizard',
+  () => import('@ui5/webcomponents-fiori/dist/Wizard'),
+  [],
+  [],
+  [],
+  ['selection-change']
+);
 
 Wizard.displayName = 'Wizard';
 

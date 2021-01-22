@@ -1,5 +1,4 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/TreeItem';
 import { FC, ReactNode } from 'react';
 
 export interface TreeItemPropTypes extends WithWebComponentPropTypes {
@@ -37,6 +36,7 @@ export interface TreeItemPropTypes extends WithWebComponentPropTypes {
  */
 const TreeItem: FC<TreeItemPropTypes> = withWebComponent<TreeItemPropTypes>(
   'ui5-tree-item',
+  () => import('@ui5/webcomponents/dist/TreeItem'),
   ['icon', 'text'],
   ['expanded', 'hasChildren', 'selected'],
   [],

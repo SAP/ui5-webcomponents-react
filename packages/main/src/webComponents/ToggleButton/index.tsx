@@ -1,6 +1,5 @@
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/ToggleButton';
 import { FC, ReactNode } from 'react';
 
 export interface ToggleButtonPropTypes extends Omit<WithWebComponentPropTypes, 'onClick'> {
@@ -65,6 +64,7 @@ export interface ToggleButtonPropTypes extends Omit<WithWebComponentPropTypes, '
  */
 const ToggleButton: FC<ToggleButtonPropTypes> = withWebComponent<ToggleButtonPropTypes>(
   'ui5-togglebutton',
+  () => import('@ui5/webcomponents/dist/ToggleButton'),
   ['design', 'icon', 'iconSize'],
   ['pressed', 'disabled', 'iconEnd', 'submits'],
   [],

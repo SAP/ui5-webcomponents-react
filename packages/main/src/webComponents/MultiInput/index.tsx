@@ -1,7 +1,6 @@
 import { InputType } from '@ui5/webcomponents-react/lib/InputType';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/MultiInput';
 import { FC, ReactNode } from 'react';
 
 export interface MultiInputPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput' | 'onSubmit'> {
@@ -97,7 +96,6 @@ export interface MultiInputPropTypes extends Omit<WithWebComponentPropTypes, 'on
    *    />
    *  </code>
    * </pre>
-   *
    */
   tokens?: ReactNode | ReactNode[];
   /**
@@ -113,6 +111,7 @@ export interface MultiInputPropTypes extends Omit<WithWebComponentPropTypes, 'on
    *    &lt;/MultiInput>
    *  </code>
    * </pre>
+   *
    *
    * **Note:** The suggestion would be displayed only if the `showSuggestions` property is set to `true`.
    *
@@ -170,6 +169,8 @@ export interface MultiInputPropTypes extends Omit<WithWebComponentPropTypes, 'on
 }
 
 /**
+ * ### Overview
+ *
  * A `MultiInput` field allows the user to enter multiple values, which are displayed as `Token`. User can choose interaction for creating tokens. Fiori Guidelines say that user should create tokens when:
  *
  * *   Type a value in the input and press enter or focus out the input field (`onChange` event is fired)
@@ -180,6 +181,7 @@ export interface MultiInputPropTypes extends Omit<WithWebComponentPropTypes, 'on
  */
 const MultiInput: FC<MultiInputPropTypes> = withWebComponent<MultiInputPropTypes>(
   'ui5-multi-input',
+  () => import('@ui5/webcomponents/dist/MultiInput'),
   ['maxlength', 'name', 'placeholder', 'type', 'value', 'valueState'],
   ['showValueHelpIcon', 'disabled', 'highlight', 'readonly', 'required', 'showSuggestions'],
   ['tokens', 'icon', 'valueStateMessage'],

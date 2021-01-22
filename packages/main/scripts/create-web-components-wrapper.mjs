@@ -591,7 +591,6 @@ const createWebComponentWrapper = (
     `
     ${regularImports.join('\n')}
     import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-    import '@ui5/webcomponents${componentsFromFioriPackage.has(name) ? '-fiori' : ''}/dist/${name}';
     import { ${reactImports.join(', ')} } from 'react';
 
     export interface ${name}PropTypes extends ${tsExtendsStatement} {
@@ -605,6 +604,7 @@ const createWebComponentWrapper = (
      */
     const ${name}: FC<${name}PropTypes> = withWebComponent<${name}PropTypes>(
       '${tag}',
+      () => import('@ui5/webcomponents${componentsFromFioriPackage.has(name) ? '-fiori' : ''}/dist/${name}'),
       [${regularProps.map((v) => `'${v}'`).join(', ')}],
       [${booleanProps.map((v) => `'${v}'`).join(', ')}],
       [${slotProps

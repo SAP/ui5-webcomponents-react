@@ -1,7 +1,6 @@
 import { CalendarSelection } from '@ui5/webcomponents-react/lib/CalendarSelection';
 import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/Calendar';
 import { FC } from 'react';
 
 export interface CalendarPropTypes extends WithWebComponentPropTypes {
@@ -64,6 +63,7 @@ export interface CalendarPropTypes extends WithWebComponentPropTypes {
  */
 const Calendar: FC<CalendarPropTypes> = withWebComponent<CalendarPropTypes>(
   'ui5-calendar',
+  () => import('@ui5/webcomponents/dist/Calendar'),
   ['primaryCalendarType', 'formatPattern', 'maxDate', 'minDate', 'selection', 'selectedDates', 'timestamp'],
   ['hideWeekNumbers'],
   [],

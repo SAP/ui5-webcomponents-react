@@ -1,5 +1,4 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents-fiori/dist/SideNavigationItem';
 import { FC, ReactNode } from 'react';
 
 export interface SideNavigationItemPropTypes extends WithWebComponentPropTypes {
@@ -39,6 +38,7 @@ export interface SideNavigationItemPropTypes extends WithWebComponentPropTypes {
  */
 const SideNavigationItem: FC<SideNavigationItemPropTypes> = withWebComponent<SideNavigationItemPropTypes>(
   'ui5-side-navigation-item',
+  () => import('@ui5/webcomponents-fiori/dist/SideNavigationItem'),
   ['icon', 'text'],
   ['expanded', 'selected', 'wholeItemToggleable'],
   [],

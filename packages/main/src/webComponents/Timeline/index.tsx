@@ -1,5 +1,4 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents-fiori/dist/Timeline';
 import { FC, ReactNode } from 'react';
 
 export interface TimelinePropTypes extends WithWebComponentPropTypes {
@@ -14,7 +13,14 @@ export interface TimelinePropTypes extends WithWebComponentPropTypes {
  *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Timeline" target="_blank">UI5 Web Components Playground</a>
  */
-const Timeline: FC<TimelinePropTypes> = withWebComponent<TimelinePropTypes>('ui5-timeline', [], [], [], []);
+const Timeline: FC<TimelinePropTypes> = withWebComponent<TimelinePropTypes>(
+  'ui5-timeline',
+  () => import('@ui5/webcomponents-fiori/dist/Timeline'),
+  [],
+  [],
+  [],
+  []
+);
 
 Timeline.displayName = 'Timeline';
 

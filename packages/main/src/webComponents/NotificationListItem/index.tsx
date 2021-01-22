@@ -1,6 +1,5 @@
 import { Priority } from '@ui5/webcomponents-react/lib/Priority';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents-fiori/dist/NotificationListItem';
 import { FC, ReactNode } from 'react';
 
 export interface NotificationListItemPropTypes extends WithWebComponentPropTypes {
@@ -77,6 +76,7 @@ export interface NotificationListItemPropTypes extends WithWebComponentPropTypes
  */
 const NotificationListItem: FC<NotificationListItemPropTypes> = withWebComponent<NotificationListItemPropTypes>(
   'ui5-li-notification',
+  () => import('@ui5/webcomponents-fiori/dist/NotificationListItem'),
   ['heading', 'priority'],
   ['read', 'wrap', 'busy', 'showClose', 'selected'],
   ['avatar', 'footnotes', 'actions'],

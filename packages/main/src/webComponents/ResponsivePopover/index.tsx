@@ -2,7 +2,6 @@ import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/lib/PopoverHorizontalAlign';
 import { PopoverVerticalAlign } from '@ui5/webcomponents-react/lib/PopoverVerticalAlign';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/ResponsivePopover';
 import { FC, ReactNode } from 'react';
 
 export interface ResponsivePopoverPropTypes extends WithWebComponentPropTypes {
@@ -106,6 +105,7 @@ export interface ResponsivePopoverPropTypes extends WithWebComponentPropTypes {
  */
 const ResponsivePopover: FC<ResponsivePopoverPropTypes> = withWebComponent<ResponsivePopoverPropTypes>(
   'ui5-responsive-popover',
+  () => import('@ui5/webcomponents/dist/ResponsivePopover'),
   ['headerText', 'horizontalAlign', 'placementType', 'verticalAlign', 'initialFocus'],
   ['allowTargetOverlap', 'hideBackdrop', 'modal', 'noArrow', 'preventFocusRestore'],
   ['footer', 'header'],

@@ -14,6 +14,7 @@ import React, {
 } from 'react';
 import { CommonProps } from '../interfaces/CommonProps';
 import { Ui5DomRef } from '../interfaces/Ui5DomRef';
+import { useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base/lib/hooks';
 
 const capitalizeFirstLetter = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
@@ -31,12 +32,22 @@ export interface WithWebComponentPropTypes extends CommonProps {
 
 export const withWebComponent = <T extends Record<string, any>>(
   tagName: string,
+  lazyImport: () => Promise<void>,
   regularProperties: string[],
   booleanProperties: string[],
   slotProperties: string[],
   eventProperties: string[]
 ) => {
   const WithWebComponent = forwardRef((props: T & WithWebComponentPropTypes, wcRef: RefObject<Ui5DomRef>) => {
+    const tagNameSuffix: string = getEffectiveScopingSuffixForTag(tagName);
+    const effectiveTagName = tagNameSuffix ? `${tagName}-${tagNameSuffix}` : tagName;
+
+    useIsomorphicLayoutEffect(() => {
+      if (!customElements.get(effectiveTagName)) {
+        lazyImport();
+      }
+    }, []);
+
     const { className, tooltip, children, ...rest } = props;
 
     const ref = useConsolidatedRef<HTMLElement>(wcRef);
@@ -105,10 +116,7 @@ export const withWebComponent = <T extends Record<string, any>>(
       .filter(([key]) => !eventProperties.map((eventName) => createEventPropName(eventName)).includes(key))
       .reduce((acc, [key, val]) => ({ ...acc, [key]: val }), {});
 
-    const tagNameSuffix: string = getEffectiveScopingSuffixForTag(tagName);
-    const Component = ((tagNameSuffix ? `${tagName}-${tagNameSuffix}` : tagName) as unknown) as ComponentType<
-      WithWebComponentPropTypes & { class: string }
-    >;
+    const Component = (effectiveTagName as unknown) as ComponentType<WithWebComponentPropTypes & { class: string }>;
 
     return (
       <Component

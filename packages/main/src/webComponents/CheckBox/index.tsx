@@ -1,6 +1,5 @@
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/CheckBox';
 import { FC } from 'react';
 
 export interface CheckBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onChange'> {
@@ -63,6 +62,7 @@ export interface CheckBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
  */
 const CheckBox: FC<CheckBoxPropTypes> = withWebComponent<CheckBoxPropTypes>(
   'ui5-checkbox',
+  () => import('@ui5/webcomponents/dist/CheckBox'),
   ['name', 'text', 'valueState'],
   ['checked', 'disabled', 'readonly', 'wrap'],
   [],

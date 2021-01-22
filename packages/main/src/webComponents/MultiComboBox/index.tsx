@@ -1,6 +1,5 @@
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/MultiComboBox';
 import { FC, ReactNode } from 'react';
 
 export interface MultiComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput'> {
@@ -15,7 +14,7 @@ export interface MultiComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 
    */
   disabled?: boolean;
   /**
-   * Defines the filter type of the `MultiComboBox`. Available options are: `StartsWithPerTerm`, `None`.
+   * Defines the filter type of the `MultiComboBox`. Available options are: `StartsWithPerTerm`, `StartsWith`, `Contains` and `None`.
    */
   filter?: string;
   /**
@@ -105,6 +104,7 @@ export interface MultiComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 
  */
 const MultiComboBox: FC<MultiComboBoxPropTypes> = withWebComponent<MultiComboBoxPropTypes>(
   'ui5-multi-combobox',
+  () => import('@ui5/webcomponents/dist/MultiComboBox'),
   ['filter', 'placeholder', 'value', 'valueState'],
   ['allowCustomValues', 'disabled', 'open', 'readonly', 'required'],
   ['icon', 'valueStateMessage'],

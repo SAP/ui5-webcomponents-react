@@ -1,5 +1,4 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/MultiComboBoxItem';
 import { FC } from 'react';
 
 export interface MultiComboBoxItemPropTypes extends WithWebComponentPropTypes {
@@ -28,6 +27,7 @@ export interface MultiComboBoxItemPropTypes extends WithWebComponentPropTypes {
  */
 const MultiComboBoxItem: FC<MultiComboBoxItemPropTypes> = withWebComponent<MultiComboBoxItemPropTypes>(
   'ui5-mcb-item',
+  () => import('@ui5/webcomponents/dist/MultiComboBoxItem'),
   ['stableDomRef', 'additionalText', 'text'],
   ['selected'],
   [],

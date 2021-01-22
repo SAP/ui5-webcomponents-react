@@ -1,5 +1,4 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/Card';
 import { FC, ReactNode } from 'react';
 
 export interface CardPropTypes extends WithWebComponentPropTypes {
@@ -52,6 +51,7 @@ export interface CardPropTypes extends WithWebComponentPropTypes {
  */
 const Card: FC<CardPropTypes> = withWebComponent<CardPropTypes>(
   'ui5-card',
+  () => import('@ui5/webcomponents/dist/Card'),
   ['heading', 'status', 'subheading'],
   ['headerInteractive'],
   ['action', 'avatar'],

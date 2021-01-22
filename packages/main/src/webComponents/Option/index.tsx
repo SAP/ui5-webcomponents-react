@@ -1,5 +1,4 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/Option';
 import { FC } from 'react';
 
 export interface OptionPropTypes extends WithWebComponentPropTypes {
@@ -14,6 +13,10 @@ export interface OptionPropTypes extends WithWebComponentPropTypes {
    */
   selected?: boolean;
   /**
+   * Defines the stable selector that you can use via getStableDomRef method.
+   */
+  stableDomRef?: unknown;
+  /**
    * Defines the value of the `Select` inside an HTML Form element when this `Option` is selected. For more information on HTML Form support, see the `name` property of `Select`.
    */
   value?: string;
@@ -26,7 +29,8 @@ export interface OptionPropTypes extends WithWebComponentPropTypes {
  */
 const Option: FC<OptionPropTypes> = withWebComponent<OptionPropTypes>(
   'ui5-option',
-  ['icon', 'value'],
+  () => import('@ui5/webcomponents/dist/Option'),
+  ['icon', 'stableDomRef', 'value'],
   ['selected'],
   [],
   []

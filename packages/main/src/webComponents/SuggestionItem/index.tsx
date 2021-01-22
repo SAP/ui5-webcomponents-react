@@ -1,7 +1,6 @@
 import { ListItemTypes } from '@ui5/webcomponents-react/lib/ListItemTypes';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/SuggestionItem';
 import { FC } from 'react';
 
 export interface SuggestionItemPropTypes extends WithWebComponentPropTypes {
@@ -62,6 +61,7 @@ export interface SuggestionItemPropTypes extends WithWebComponentPropTypes {
  */
 const SuggestionItem: FC<SuggestionItemPropTypes> = withWebComponent<SuggestionItemPropTypes>(
   'ui5-suggestion-item',
+  () => import('@ui5/webcomponents/dist/SuggestionItem'),
   ['description', 'icon', 'image', 'info', 'infoState', 'text', 'type'],
   ['group', 'iconEnd'],
   [],

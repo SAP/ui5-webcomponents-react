@@ -1,5 +1,4 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents-fiori/dist/WizardStep';
 import { FC } from 'react';
 
 export interface WizardStepPropTypes extends WithWebComponentPropTypes {
@@ -52,6 +51,7 @@ export interface WizardStepPropTypes extends WithWebComponentPropTypes {
  */
 const WizardStep: FC<WizardStepPropTypes> = withWebComponent<WizardStepPropTypes>(
   'ui5-wizard-step',
+  () => import('@ui5/webcomponents-fiori/dist/WizardStep'),
   ['heading', 'icon', 'subheading'],
   ['branching', 'disabled', 'selected'],
   [],
