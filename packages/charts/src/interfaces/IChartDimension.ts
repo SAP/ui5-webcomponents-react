@@ -7,5 +7,5 @@ export interface IChartDimension {
   /**
    * function will be called for each data label and allows you to format it according to your needs
    */
-  formatter?: (value: unknown) => string;
+  formatter?: (value: any) => string;
 }
