@@ -1,4 +1,4 @@
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { createUseStyles } from 'react-jss';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import React, { useEffect } from 'react';
 import tocbot from 'tocbot';
@@ -69,7 +69,7 @@ const styles = {
     }
   }
 };
-const useStyles = createComponentStyles(styles, { name: 'TableOfContent' });
+const useStyles = createUseStyles(styles, { name: 'TableOfContent' });
 
 export const TableOfContent = () => {
   const classes = useStyles();

@@ -1,5 +1,5 @@
 import '@ui5/webcomponents-icons/dist/navigation-down-arrow';
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { createUseStyles } from 'react-jss';
 import { useI18nBundle } from '@ui5/webcomponents-react-base/lib/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
@@ -90,7 +90,7 @@ const styles = {
   }
 };
 
-const useStyles = createComponentStyles(styles, { name: 'VariantManagement' });
+const useStyles = createUseStyles(styles, { name: 'VariantManagement' });
 
 /**
  * The `VariantManagement` component can be used to manage variants, such as FilterBar variants or AnalyticalTable variants.

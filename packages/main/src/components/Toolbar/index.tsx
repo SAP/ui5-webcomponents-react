@@ -1,4 +1,4 @@
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { createUseStyles } from 'react-jss';
 import { useConsolidatedRef, useI18nBundle } from '@ui5/webcomponents-react-base/lib/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
@@ -28,7 +28,7 @@ import React, {
 import { OverflowPopover } from './OverflowPopover';
 import { styles } from './Toolbar.jss';
 
-const useStyles = createComponentStyles(styles, { name: 'Toolbar' });
+const useStyles = createUseStyles(styles, { name: 'Toolbar' });
 
 export interface ToolbarProptypes extends Omit<CommonProps, 'onClick'> {
   /**

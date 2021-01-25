@@ -1,4 +1,4 @@
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { createUseStyles } from 'react-jss';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
@@ -22,7 +22,7 @@ interface InternalProps extends DynamicPageHeaderProps {
   topHeaderHeight?: number;
 }
 
-const useStyles = createComponentStyles(DynamicPageHeaderStyles, { name: 'DynamicPageHeader' });
+const useStyles = createUseStyles(DynamicPageHeaderStyles, { name: 'DynamicPageHeader' });
 
 /**
  * The dynamic page header contains the header content of the dynamic page.

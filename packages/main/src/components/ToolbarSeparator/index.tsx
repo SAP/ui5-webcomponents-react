@@ -1,4 +1,4 @@
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { createUseStyles } from 'react-jss';
 import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
@@ -12,7 +12,7 @@ const styles = {
   }
 };
 
-const useStyles = createComponentStyles(styles, { name: 'ToolbarSeparator' });
+const useStyles = createUseStyles(styles, { name: 'ToolbarSeparator' });
 
 const ToolbarSeparator = (props) => {
   const { style, className } = props;

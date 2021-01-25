@@ -4,7 +4,7 @@ import '@ui5/webcomponents-icons/dist/message-information';
 import '@ui5/webcomponents-icons/dist/message-success';
 import '@ui5/webcomponents-icons/dist/message-warning';
 import '@ui5/webcomponents-icons/dist/question-mark';
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { createUseStyles } from 'react-jss';
 import { useConsolidatedRef, useI18nBundle, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
@@ -83,7 +83,7 @@ export interface MessageBoxPropTypes extends CommonProps {
   onClose: (event: CustomEvent<{ action: MessageBoxActions }>) => void;
 }
 
-const useStyles = createComponentStyles(styles, { name: 'MessageBox' });
+const useStyles = createUseStyles(styles, { name: 'MessageBox' });
 
 /**
  * The `MessageBox` component provides easier methods to create a `Dialog`, such as standard alerts, confirmation dialogs, or arbitrary message dialogs.

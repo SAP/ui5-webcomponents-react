@@ -1,4 +1,4 @@
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { createUseStyles } from 'react-jss';
 import { useI18nBundle, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
@@ -81,7 +81,7 @@ export interface AnalyticalCardHeaderPropTypes extends CommonProps {
   onHeaderPress?: (event: CustomEvent<{}>) => void;
 }
 
-const useStyles = createComponentStyles(styles, {
+const useStyles = createUseStyles(styles, {
   name: 'AnalyticalCardHeader'
 });
 

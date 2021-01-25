@@ -1,4 +1,4 @@
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { createUseStyles } from 'react-jss';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import React, { FC, ReactNode, ReactNodeArray } from 'react';
@@ -14,7 +14,7 @@ export interface FormGroupProps {
   children: ReactNode | ReactNodeArray;
 }
 
-const useStyles = createComponentStyles(
+const useStyles = createUseStyles(
   {
     title: {
       paddingBottom: '0.75rem',

@@ -1,5 +1,5 @@
 import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming';
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { createUseStyles } from 'react-jss';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
@@ -19,7 +19,7 @@ export interface ActionSheetPropTypes extends Omit<ResponsivePopoverPropTypes, '
   children?: ReactElement<ButtonPropTypes> | ReactElement<ButtonPropTypes>[];
 }
 
-const useStyles = createComponentStyles(styles, { name: 'ActionSheet' });
+const useStyles = createUseStyles(styles, { name: 'ActionSheet' });
 
 addCustomCSS(
   'ui5-button',
