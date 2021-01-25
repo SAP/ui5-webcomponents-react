@@ -1,5 +1,5 @@
 import '@ui5/webcomponents-icons/dist/navigation-left-arrow';
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { createUseStyles } from 'react-jss';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
@@ -68,7 +68,7 @@ export interface PagePropTypes extends CommonProps {
   children: ReactElement<any> | ReactElement<any>[] | ReactNode;
 }
 
-const useStyles = createComponentStyles(styles, {
+const useStyles = createUseStyles(styles, {
   name: 'Page'
 });
 

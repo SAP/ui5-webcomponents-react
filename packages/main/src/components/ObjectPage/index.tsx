@@ -1,4 +1,4 @@
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { createUseStyles } from 'react-jss';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
@@ -135,7 +135,7 @@ export interface ObjectPagePropTypes extends CommonProps {
   headerContentPinnable?: boolean;
 }
 
-const useStyles = createComponentStyles(styles, { name: 'ObjectPage' });
+const useStyles = createUseStyles(styles, { name: 'ObjectPage' });
 
 /**
  * A component that allows apps to easily display information related to a business object.<br />

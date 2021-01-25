@@ -1,4 +1,4 @@
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { createUseStyles } from 'react-jss';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
@@ -120,7 +120,7 @@ const MicroBarChartStyles = {
   }
 };
 
-const useStyles = createComponentStyles(MicroBarChartStyles, { name: 'MicroBarChart' });
+const useStyles = createUseStyles(MicroBarChartStyles, { name: 'MicroBarChart' });
 
 const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartProps, ref: Ref<HTMLDivElement>) => {
   const { loading, dataset, onDataPointClick, style, className, tooltip, slot } = props;

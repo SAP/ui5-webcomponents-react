@@ -1,5 +1,5 @@
 import '@ui5/webcomponents-icons/dist/search';
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { createUseStyles } from 'react-jss';
 import { useI18nBundle } from '@ui5/webcomponents-react-base/lib/hooks';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import {
@@ -33,7 +33,7 @@ import styles from './FilterBarDialog.jss';
 import { filterValue, renderSearchWithValue } from './utils';
 import { createPortal } from 'react-dom';
 
-const useStyles = createComponentStyles(styles, { name: 'FilterBarDialog' });
+const useStyles = createUseStyles(styles, { name: 'FilterBarDialog' });
 export const FilterDialog = (props) => {
   const {
     filterBarRefs,

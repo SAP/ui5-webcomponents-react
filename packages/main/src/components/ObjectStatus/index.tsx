@@ -8,7 +8,7 @@ import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePa
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React, { FC, forwardRef, ReactNode, Ref, useMemo } from 'react';
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import styles from './ObjectStatus.jss';
 
@@ -53,7 +53,7 @@ const getDefaultIcon = (state) => {
   }
 };
 
-const useStyles = createComponentStyles(styles, { name: 'ObjectStatus' });
+const useStyles = createUseStyles(styles, { name: 'ObjectStatus' });
 /**
  * Status information that can be either text with a value state, or an icon.
  */

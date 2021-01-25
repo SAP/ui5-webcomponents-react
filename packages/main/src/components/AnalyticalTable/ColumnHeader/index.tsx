@@ -2,7 +2,7 @@ import '@ui5/webcomponents-icons/dist/filter';
 import '@ui5/webcomponents-icons/dist/group-2';
 import '@ui5/webcomponents-icons/dist/sort-ascending';
 import '@ui5/webcomponents-icons/dist/sort-descending';
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { createUseStyles } from 'react-jss';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
@@ -83,7 +83,7 @@ const styles = {
   }
 };
 
-const useStyles = createComponentStyles(styles, { name: 'TableColumnHeader' });
+const useStyles = createUseStyles(styles, { name: 'TableColumnHeader' });
 
 export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) => {
   const classes = useStyles(props);
