@@ -5,6 +5,7 @@ exports[`DateRangePicker Basic Test (generated) 1`] = `
   <ui5-daterange-picker
     delimiter="-"
     primary-calendar-type="Gregorian"
+    ui5-daterange-picker=""
     value-state="None"
   />
 </DocumentFragment>

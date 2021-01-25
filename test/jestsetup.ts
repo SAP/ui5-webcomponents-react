@@ -2,17 +2,18 @@ import contentLoaderSerializer from '@shared/tests/serializer/content-loader-ser
 import '@testing-library/jest-dom';
 import 'intersection-observer';
 import ResizeObserver from 'resize-observer-polyfill';
+import filesToImport from '../test/WebComponentsImports.json';
+
+// jest.spyOn(global.console, 'warn').mockImplementation((message, ...rest) => {
+//   if (!message.startsWith('Inefficient bundling detected')) {
+//     console.error(message, ...rest);
+//   }
+// });
 
 beforeAll(async () => {
-  await import('@ui5/webcomponents/dist/Assets');
-  await import('@ui5/webcomponents-fiori/dist/Assets');
-  await import('@ui5/webcomponents-react/dist/Assets');
-});
-
-jest.spyOn(global.console, 'warn').mockImplementation((message, ...rest) => {
-  if (!message.startsWith('Inefficient bundling detected')) {
-    console.error(message, ...rest);
-  }
+  const elements = await Promise.all(filesToImport.map((p) => import(p)));
+  const tagNames = elements.map((i) => i.default?.metadata?.tag).filter(Boolean);
+  await Promise.all(tagNames.map((tag) => customElements.whenDefined(tag)));
 });
 
 expect.addSnapshotSerializer(contentLoaderSerializer);

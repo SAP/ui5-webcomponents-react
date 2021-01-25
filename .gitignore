@@ -12,3 +12,4 @@ lerna-debug.log
 packages/main/scripts/wrapperGeneration/json
 .awcache
 examples/seed-test
+test/WebComponentsImports.json

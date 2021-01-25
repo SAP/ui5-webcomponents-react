@@ -18,8 +18,9 @@ export default {
     '!packages/base/src/polyfill/*', // no polyfills
     '!packages/main/src/components/AnalyticalTable/types/*' // no table enums
   ],
+  globalSetup: './test/createWebComponentsBundle.cjs',
   setupFiles: ['jest-canvas-mock'],
-  setupFilesAfterEnv: ['./config/jestsetup.ts'],
+  setupFilesAfterEnv: ['./test/jestsetup.ts'],
   testEnvironment: 'jsdom-sixteen',
   testPathIgnorePatterns: [
     '/node_modules/',

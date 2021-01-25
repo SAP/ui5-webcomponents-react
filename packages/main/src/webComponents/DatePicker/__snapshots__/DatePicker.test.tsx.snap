@@ -4,6 +4,7 @@ exports[`DatePicker Basic Test (generated) 1`] = `
 <DocumentFragment>
   <ui5-date-picker
     primary-calendar-type="Gregorian"
+    ui5-date-picker=""
     value-state="None"
   />
 </DocumentFragment>

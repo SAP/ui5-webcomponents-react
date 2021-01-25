@@ -5,15 +5,21 @@ exports[`List Basic Test (generated) 1`] = `
   <ui5-list
     mode="None"
     separators="All"
+    ui5-list=""
   >
     <ui5-li
+      actionable=""
+      has-title=""
       info-state="None"
       type="Active"
+      ui5-li=""
     >
       Test 1
     </ui5-li>
     <ui5-li-custom
+      actionable=""
       type="Active"
+      ui5-li-custom=""
     >
       Test 2
       <ui5-button
