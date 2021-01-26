@@ -63,14 +63,14 @@ export const withWebComponent = <T extends Record<string, any>>(
       if (slotValue) {
         return [
           ...acc,
-          ...Children.map(
-            slotValue?.type === React.Fragment ? slotValue.props?.children : slotValue,
-            (item: ReactElement, index) =>
+          ...Children.toArray(slotValue?.type === React.Fragment ? slotValue.props?.children : slotValue)
+            .filter(Boolean)
+            .map((item: ReactElement, index) =>
               cloneElement(item, {
                 key: `${name}-${index}`,
                 slot: name
               })
-          )
+            )
         ];
       }
       return acc;
