@@ -643,6 +643,10 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     verticalScrollBarRef.current.isExternalVerticalScroll = false;
   };
 
+  const tableClasses = StyleClassHelper.of(classes.table, GlobalStyleClasses.sapScrollBar);
+  if (withNavigationHighlight) {
+    tableClasses.put(classes.hasNavigationIndicator);
+  }
   return (
     <div className={className} style={inlineStyle} title={tooltip} ref={analyticalTableRef} {...passThroughProps}>
       {title && <TitleBar ref={titleBarRef}>{title}</TitleBar>}
@@ -655,7 +659,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
           aria-colcount={tableInternalColumns.length}
           data-per-page={internalVisibleRowCount}
           ref={tableRef}
-          className={StyleClassHelper.of(classes.table, GlobalStyleClasses.sapScrollBar).className}
+          className={tableClasses.className}
         >
           <div className={classes.tableHeaderBackgroundElement} />
           {headerGroups.map((headerGroup) => {
