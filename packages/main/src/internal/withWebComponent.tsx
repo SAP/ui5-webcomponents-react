@@ -1,4 +1,5 @@
 import { getEffectiveScopingSuffixForTag } from '@ui5/webcomponents-base/dist/CustomElementsScope';
+import { isIE } from '@ui5/webcomponents-react-base/lib/Device';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import React, {
   Children,
@@ -58,23 +59,35 @@ export const withWebComponent = <T extends Record<string, any>>(
       return acc;
     }, {});
 
-    const slots = slotProperties.reduce((acc, name) => {
-      const slotValue = rest[name] as ReactElement;
-      if (slotValue) {
-        return [
-          ...acc,
-          ...Children.toArray(slotValue?.type === React.Fragment ? slotValue.props?.children : slotValue)
-            .filter(Boolean)
-            .map((item: ReactElement, index) =>
-              cloneElement(item, {
-                key: `${name}-${index}`,
-                slot: name
-              })
-            )
-        ];
-      }
-      return acc;
-    }, []);
+    const slots = isIE()
+      ? slotProperties.reduce((acc, name) => {
+          const slotValue = rest[name] as ReactElement;
+          if (slotValue) {
+            return [
+              ...acc,
+              ...Children.toArray(slotValue?.type === React.Fragment ? slotValue.props?.children : slotValue)
+                .filter(Boolean)
+                .map((item: ReactElement, index) =>
+                  cloneElement(item, {
+                    key: `${name}-${index}`,
+                    slot: name
+                  })
+                )
+            ];
+          }
+          return acc;
+        }, [])
+      : slotProperties
+          .map((item) => {
+            const slotValue = rest[item] as ReactElement;
+            if (!slotValue) return false;
+            return (
+              <div slot={item} style={{ display: 'contents' }} key={item}>
+                {slotValue}
+              </div>
+            );
+          })
+          .filter(Boolean);
 
     // event binding
     useEffect(

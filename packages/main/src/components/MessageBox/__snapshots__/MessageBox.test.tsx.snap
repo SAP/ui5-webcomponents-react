@@ -8,41 +8,49 @@ exports[`MessageBox Confirm - Cancel 1`] = `
     style="z-index: 114; display: flex; top: 384px; left: 512px;"
     ui5-dialog=""
   >
-    <footer
-      class="MessageBox-footer"
+    <div
       slot="footer"
+      style="display: contents;"
     >
-      <ui5-button
-        data-action="OK"
-        design="Emphasized"
-        ui5-button=""
+      <footer
+        class="MessageBox-footer"
       >
-        OK
-      </ui5-button>
-      <ui5-button
-        data-action="Cancel"
-        design="Transparent"
-        ui5-button=""
-      >
-        Cancel
-      </ui5-button>
-    </footer>
-    <header
-      class="MessageBox-header"
-      data-type="Confirm"
+        <ui5-button
+          data-action="OK"
+          design="Emphasized"
+          ui5-button=""
+        >
+          OK
+        </ui5-button>
+        <ui5-button
+          data-action="Cancel"
+          design="Transparent"
+          ui5-button=""
+        >
+          Cancel
+        </ui5-button>
+      </footer>
+    </div>
+    <div
       slot="header"
+      style="display: contents;"
     >
-      <ui5-icon
-        name="question-mark"
-        ui5-icon=""
-      />
-      <ui5-title
-        level="H5"
-        ui5-title=""
+      <header
+        class="MessageBox-header"
+        data-type="Confirm"
       >
-        Confirmation
-      </ui5-title>
-    </header>
+        <ui5-icon
+          name="question-mark"
+          ui5-icon=""
+        />
+        <ui5-title
+          level="H5"
+          ui5-title=""
+        >
+          Confirmation
+        </ui5-title>
+      </header>
+    </div>
     <span
       class="Text-text MessageBox-content"
     >
@@ -60,41 +68,49 @@ exports[`MessageBox Confirm 1`] = `
     style="z-index: 102; display: flex; top: 384px; left: 512px;"
     ui5-dialog=""
   >
-    <footer
-      class="MessageBox-footer"
+    <div
       slot="footer"
+      style="display: contents;"
     >
-      <ui5-button
-        data-action="OK"
-        design="Emphasized"
-        ui5-button=""
+      <footer
+        class="MessageBox-footer"
       >
-        OK
-      </ui5-button>
-      <ui5-button
-        data-action="Cancel"
-        design="Transparent"
-        ui5-button=""
-      >
-        Cancel
-      </ui5-button>
-    </footer>
-    <header
-      class="MessageBox-header"
-      data-type="Confirm"
+        <ui5-button
+          data-action="OK"
+          design="Emphasized"
+          ui5-button=""
+        >
+          OK
+        </ui5-button>
+        <ui5-button
+          data-action="Cancel"
+          design="Transparent"
+          ui5-button=""
+        >
+          Cancel
+        </ui5-button>
+      </footer>
+    </div>
+    <div
       slot="header"
+      style="display: contents;"
     >
-      <ui5-icon
-        name="question-mark"
-        ui5-icon=""
-      />
-      <ui5-title
-        level="H5"
-        ui5-title=""
+      <header
+        class="MessageBox-header"
+        data-type="Confirm"
       >
-        Confirmation
-      </ui5-title>
-    </header>
+        <ui5-icon
+          name="question-mark"
+          ui5-icon=""
+        />
+        <ui5-title
+          level="H5"
+          ui5-title=""
+        >
+          Confirmation
+        </ui5-title>
+      </header>
+    </div>
     <span
       class="Text-text MessageBox-content"
     >
@@ -110,41 +126,49 @@ exports[`MessageBox Custom Action Text 1`] = `
     class="MessageBox-messageBox"
     ui5-dialog=""
   >
-    <footer
-      class="MessageBox-footer"
+    <div
       slot="footer"
+      style="display: contents;"
     >
-      <ui5-button
-        data-action="OK"
-        design="Emphasized"
-        ui5-button=""
+      <footer
+        class="MessageBox-footer"
       >
-        OK
-      </ui5-button>
-      <ui5-button
-        data-action="My Custom Action"
-        design="Transparent"
-        ui5-button=""
-      >
-        My Custom Action
-      </ui5-button>
-    </footer>
-    <header
-      class="MessageBox-header"
-      data-type="Confirm"
+        <ui5-button
+          data-action="OK"
+          design="Emphasized"
+          ui5-button=""
+        >
+          OK
+        </ui5-button>
+        <ui5-button
+          data-action="My Custom Action"
+          design="Transparent"
+          ui5-button=""
+        >
+          My Custom Action
+        </ui5-button>
+      </footer>
+    </div>
+    <div
       slot="header"
+      style="display: contents;"
     >
-      <ui5-icon
-        name="question-mark"
-        ui5-icon=""
-      />
-      <ui5-title
-        level="H5"
-        ui5-title=""
+      <header
+        class="MessageBox-header"
+        data-type="Confirm"
       >
-        Confirmation
-      </ui5-title>
-    </header>
+        <ui5-icon
+          name="question-mark"
+          ui5-icon=""
+        />
+        <ui5-title
+          level="H5"
+          ui5-title=""
+        >
+          Confirmation
+        </ui5-title>
+      </header>
+    </div>
     <span
       class="Text-text MessageBox-content"
     >
@@ -162,28 +186,36 @@ exports[`MessageBox Don't crash on unknown type 1`] = `
     style="z-index: 122; display: flex; top: 384px; left: 512px;"
     ui5-dialog=""
   >
-    <footer
-      class="MessageBox-footer"
+    <div
       slot="footer"
+      style="display: contents;"
     >
-      <ui5-button
-        data-action="OK"
-        design="Emphasized"
-        ui5-button=""
+      <footer
+        class="MessageBox-footer"
       >
-        OK
-      </ui5-button>
-    </footer>
-    <header
-      class="MessageBox-header"
-      data-type="FOO_BAR"
+        <ui5-button
+          data-action="OK"
+          design="Emphasized"
+          ui5-button=""
+        >
+          OK
+        </ui5-button>
+      </footer>
+    </div>
+    <div
       slot="header"
+      style="display: contents;"
     >
-      <ui5-title
-        level="H5"
-        ui5-title=""
-      />
-    </header>
+      <header
+        class="MessageBox-header"
+        data-type="FOO_BAR"
+      >
+        <ui5-title
+          level="H5"
+          ui5-title=""
+        />
+      </header>
+    </div>
     <span
       class="Text-text MessageBox-content"
     >
@@ -201,34 +233,42 @@ exports[`MessageBox Error 1`] = `
     style="z-index: 108; display: flex; top: 384px; left: 512px;"
     ui5-dialog=""
   >
-    <footer
-      class="MessageBox-footer"
+    <div
       slot="footer"
+      style="display: contents;"
     >
-      <ui5-button
-        data-action="Close"
-        design="Emphasized"
-        ui5-button=""
+      <footer
+        class="MessageBox-footer"
       >
-        Close
-      </ui5-button>
-    </footer>
-    <header
-      class="MessageBox-header"
-      data-type="Error"
+        <ui5-button
+          data-action="Close"
+          design="Emphasized"
+          ui5-button=""
+        >
+          Close
+        </ui5-button>
+      </footer>
+    </div>
+    <div
       slot="header"
+      style="display: contents;"
     >
-      <ui5-icon
-        name="message-error"
-        ui5-icon=""
-      />
-      <ui5-title
-        level="H5"
-        ui5-title=""
+      <header
+        class="MessageBox-header"
+        data-type="Error"
       >
-        Error
-      </ui5-title>
-    </header>
+        <ui5-icon
+          name="message-error"
+          ui5-icon=""
+        />
+        <ui5-title
+          level="H5"
+          ui5-title=""
+        >
+          Error
+        </ui5-title>
+      </header>
+    </div>
     <span
       class="Text-text MessageBox-content"
     >
@@ -246,34 +286,42 @@ exports[`MessageBox Highlight 1`] = `
     style="z-index: 112; display: flex; top: 384px; left: 512px;"
     ui5-dialog=""
   >
-    <footer
-      class="MessageBox-footer"
+    <div
       slot="footer"
+      style="display: contents;"
     >
-      <ui5-button
-        data-action="OK"
-        design="Emphasized"
-        ui5-button=""
+      <footer
+        class="MessageBox-footer"
       >
-        OK
-      </ui5-button>
-    </footer>
-    <header
-      class="MessageBox-header"
-      data-type="Highlight"
+        <ui5-button
+          data-action="OK"
+          design="Emphasized"
+          ui5-button=""
+        >
+          OK
+        </ui5-button>
+      </footer>
+    </div>
+    <div
       slot="header"
+      style="display: contents;"
     >
-      <ui5-icon
-        name="hint"
-        ui5-icon=""
-      />
-      <ui5-title
-        level="H5"
-        ui5-title=""
+      <header
+        class="MessageBox-header"
+        data-type="Highlight"
       >
-        Highlight
-      </ui5-title>
-    </header>
+        <ui5-icon
+          name="hint"
+          ui5-icon=""
+        />
+        <ui5-title
+          level="H5"
+          ui5-title=""
+        >
+          Highlight
+        </ui5-title>
+      </header>
+    </div>
     <span
       class="Text-text MessageBox-content"
     >
@@ -291,34 +339,42 @@ exports[`MessageBox Information 1`] = `
     style="z-index: 110; display: flex; top: 384px; left: 512px;"
     ui5-dialog=""
   >
-    <footer
-      class="MessageBox-footer"
+    <div
       slot="footer"
+      style="display: contents;"
     >
-      <ui5-button
-        data-action="OK"
-        design="Emphasized"
-        ui5-button=""
+      <footer
+        class="MessageBox-footer"
       >
-        OK
-      </ui5-button>
-    </footer>
-    <header
-      class="MessageBox-header"
-      data-type="Information"
+        <ui5-button
+          data-action="OK"
+          design="Emphasized"
+          ui5-button=""
+        >
+          OK
+        </ui5-button>
+      </footer>
+    </div>
+    <div
       slot="header"
+      style="display: contents;"
     >
-      <ui5-icon
-        name="message-information"
-        ui5-icon=""
-      />
-      <ui5-title
-        level="H5"
-        ui5-title=""
+      <header
+        class="MessageBox-header"
+        data-type="Information"
       >
-        Information
-      </ui5-title>
-    </header>
+        <ui5-icon
+          name="message-information"
+          ui5-icon=""
+        />
+        <ui5-title
+          level="H5"
+          ui5-title=""
+        >
+          Information
+        </ui5-title>
+      </header>
+    </div>
     <span
       class="Text-text MessageBox-content"
     >
@@ -336,41 +392,49 @@ exports[`MessageBox No Title 1`] = `
     style="z-index: 120; display: flex; top: 384px; left: 512px;"
     ui5-dialog=""
   >
-    <footer
-      class="MessageBox-footer"
+    <div
       slot="footer"
+      style="display: contents;"
     >
-      <ui5-button
-        data-action="OK"
-        design="Emphasized"
-        ui5-button=""
+      <footer
+        class="MessageBox-footer"
       >
-        OK
-      </ui5-button>
-      <ui5-button
-        data-action="Cancel"
-        design="Transparent"
-        ui5-button=""
-      >
-        Cancel
-      </ui5-button>
-    </footer>
-    <header
-      class="MessageBox-header"
-      data-type="Confirm"
+        <ui5-button
+          data-action="OK"
+          design="Emphasized"
+          ui5-button=""
+        >
+          OK
+        </ui5-button>
+        <ui5-button
+          data-action="Cancel"
+          design="Transparent"
+          ui5-button=""
+        >
+          Cancel
+        </ui5-button>
+      </footer>
+    </div>
+    <div
       slot="header"
+      style="display: contents;"
     >
-      <ui5-icon
-        name="question-mark"
-        ui5-icon=""
-      />
-      <ui5-title
-        level="H5"
-        ui5-title=""
+      <header
+        class="MessageBox-header"
+        data-type="Confirm"
       >
-        Confirmation
-      </ui5-title>
-    </header>
+        <ui5-icon
+          name="question-mark"
+          ui5-icon=""
+        />
+        <ui5-title
+          level="H5"
+          ui5-title=""
+        >
+          Confirmation
+        </ui5-title>
+      </header>
+    </div>
     <span
       class="Text-text MessageBox-content"
     >
@@ -386,34 +450,42 @@ exports[`MessageBox Not open 1`] = `
     class="MessageBox-messageBox"
     ui5-dialog=""
   >
-    <footer
-      class="MessageBox-footer"
+    <div
       slot="footer"
+      style="display: contents;"
     >
-      <ui5-button
-        data-action="OK"
-        design="Emphasized"
-        ui5-button=""
+      <footer
+        class="MessageBox-footer"
       >
-        OK
-      </ui5-button>
-    </footer>
-    <header
-      class="MessageBox-header"
-      data-type="Success"
+        <ui5-button
+          data-action="OK"
+          design="Emphasized"
+          ui5-button=""
+        >
+          OK
+        </ui5-button>
+      </footer>
+    </div>
+    <div
       slot="header"
+      style="display: contents;"
     >
-      <ui5-icon
-        name="message-success"
-        ui5-icon=""
-      />
-      <ui5-title
-        level="H5"
-        ui5-title=""
+      <header
+        class="MessageBox-header"
+        data-type="Success"
       >
-        Custom Success
-      </ui5-title>
-    </header>
+        <ui5-icon
+          name="message-success"
+          ui5-icon=""
+        />
+        <ui5-title
+          level="H5"
+          ui5-title=""
+        >
+          Custom Success
+        </ui5-title>
+      </header>
+    </div>
     <span
       class="Text-text MessageBox-content"
     >
@@ -431,41 +503,49 @@ exports[`MessageBox Show 1`] = `
     style="z-index: 116; display: flex; top: 384px; left: 512px;"
     ui5-dialog=""
   >
-    <footer
-      class="MessageBox-footer"
+    <div
       slot="footer"
+      style="display: contents;"
     >
-      <ui5-button
-        data-action="Yes"
-        design="Emphasized"
-        ui5-button=""
+      <footer
+        class="MessageBox-footer"
       >
-        Yes
-      </ui5-button>
-      <ui5-button
-        data-action="No"
-        design="Transparent"
-        ui5-button=""
-      >
-        No
-      </ui5-button>
-    </footer>
-    <header
-      class="MessageBox-header"
-      data-type="Confirm"
+        <ui5-button
+          data-action="Yes"
+          design="Emphasized"
+          ui5-button=""
+        >
+          Yes
+        </ui5-button>
+        <ui5-button
+          data-action="No"
+          design="Transparent"
+          ui5-button=""
+        >
+          No
+        </ui5-button>
+      </footer>
+    </div>
+    <div
       slot="header"
+      style="display: contents;"
     >
-      <ui5-icon
-        name="question-mark"
-        ui5-icon=""
-      />
-      <ui5-title
-        level="H5"
-        ui5-title=""
+      <header
+        class="MessageBox-header"
+        data-type="Confirm"
       >
-        Custom
-      </ui5-title>
-    </header>
+        <ui5-icon
+          name="question-mark"
+          ui5-icon=""
+        />
+        <ui5-title
+          level="H5"
+          ui5-title=""
+        >
+          Custom
+        </ui5-title>
+      </header>
+    </div>
     <span
       class="Text-text MessageBox-content"
     >
@@ -483,34 +563,42 @@ exports[`MessageBox Success 1`] = `
     style="z-index: 104; display: flex; top: 384px; left: 512px;"
     ui5-dialog=""
   >
-    <footer
-      class="MessageBox-footer"
+    <div
       slot="footer"
+      style="display: contents;"
     >
-      <ui5-button
-        data-action="OK"
-        design="Emphasized"
-        ui5-button=""
+      <footer
+        class="MessageBox-footer"
       >
-        OK
-      </ui5-button>
-    </footer>
-    <header
-      class="MessageBox-header"
-      data-type="Success"
+        <ui5-button
+          data-action="OK"
+          design="Emphasized"
+          ui5-button=""
+        >
+          OK
+        </ui5-button>
+      </footer>
+    </div>
+    <div
       slot="header"
+      style="display: contents;"
     >
-      <ui5-icon
-        name="message-success"
-        ui5-icon=""
-      />
-      <ui5-title
-        level="H5"
-        ui5-title=""
+      <header
+        class="MessageBox-header"
+        data-type="Success"
       >
-        Success
-      </ui5-title>
-    </header>
+        <ui5-icon
+          name="message-success"
+          ui5-icon=""
+        />
+        <ui5-title
+          level="H5"
+          ui5-title=""
+        >
+          Success
+        </ui5-title>
+      </header>
+    </div>
     <span
       class="Text-text MessageBox-content"
     >
@@ -528,34 +616,42 @@ exports[`MessageBox Success w/ custom title 1`] = `
     style="z-index: 118; display: flex; top: 384px; left: 512px;"
     ui5-dialog=""
   >
-    <footer
-      class="MessageBox-footer"
+    <div
       slot="footer"
+      style="display: contents;"
     >
-      <ui5-button
-        data-action="OK"
-        design="Emphasized"
-        ui5-button=""
+      <footer
+        class="MessageBox-footer"
       >
-        OK
-      </ui5-button>
-    </footer>
-    <header
-      class="MessageBox-header"
-      data-type="Success"
+        <ui5-button
+          data-action="OK"
+          design="Emphasized"
+          ui5-button=""
+        >
+          OK
+        </ui5-button>
+      </footer>
+    </div>
+    <div
       slot="header"
+      style="display: contents;"
     >
-      <ui5-icon
-        name="add"
-        ui5-icon=""
-      />
-      <ui5-title
-        level="H5"
-        ui5-title=""
+      <header
+        class="MessageBox-header"
+        data-type="Success"
       >
-        Custom Success
-      </ui5-title>
-    </header>
+        <ui5-icon
+          name="add"
+          ui5-icon=""
+        />
+        <ui5-title
+          level="H5"
+          ui5-title=""
+        >
+          Custom Success
+        </ui5-title>
+      </header>
+    </div>
     <span
       class="Text-text MessageBox-content"
     >
@@ -573,34 +669,42 @@ exports[`MessageBox Warning 1`] = `
     style="z-index: 106; display: flex; top: 384px; left: 512px;"
     ui5-dialog=""
   >
-    <footer
-      class="MessageBox-footer"
+    <div
       slot="footer"
+      style="display: contents;"
     >
-      <ui5-button
-        data-action="OK"
-        design="Emphasized"
-        ui5-button=""
+      <footer
+        class="MessageBox-footer"
       >
-        OK
-      </ui5-button>
-    </footer>
-    <header
-      class="MessageBox-header"
-      data-type="Warning"
+        <ui5-button
+          data-action="OK"
+          design="Emphasized"
+          ui5-button=""
+        >
+          OK
+        </ui5-button>
+      </footer>
+    </div>
+    <div
       slot="header"
+      style="display: contents;"
     >
-      <ui5-icon
-        name="message-warning"
-        ui5-icon=""
-      />
-      <ui5-title
-        level="H5"
-        ui5-title=""
+      <header
+        class="MessageBox-header"
+        data-type="Warning"
       >
-        Warning
-      </ui5-title>
-    </header>
+        <ui5-icon
+          name="message-warning"
+          ui5-icon=""
+        />
+        <ui5-title
+          level="H5"
+          ui5-title=""
+        >
+          Warning
+        </ui5-title>
+      </header>
+    </div>
     <span
       class="Text-text MessageBox-content"
     >

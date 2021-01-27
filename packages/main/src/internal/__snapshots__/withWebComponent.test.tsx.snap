@@ -6,11 +6,14 @@ exports[`withWebComponent conditional rendering 1`] = `
     design="Header"
     ui5-bar=""
   >
-    <span
+    <div
       slot="startContent"
+      style="display: contents;"
     >
-      I'm here!
-    </span>
+      <span>
+        I'm here!
+      </span>
+    </div>
   </ui5-bar>
 </DocumentFragment>
 `;
