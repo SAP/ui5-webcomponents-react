@@ -84,13 +84,11 @@ const ChartContainer: FC<ContainerProps> = forwardRef((props: ContainerProps, re
       {dataset?.length > 0 ? (
         <>
           {loading && <Loader style={loaderStyles} />}
-          {
-            <ErrorBoundary>
-              <ResponsiveContainer debounce={resizeDebounce} {...__testingProps__}>
-                {children}
-              </ResponsiveContainer>
-            </ErrorBoundary>
-          }
+          <ErrorBoundary>
+            <ResponsiveContainer debounce={resizeDebounce} {...__testingProps__}>
+              {children}
+            </ResponsiveContainer>
+          </ErrorBoundary>
         </>
       ) : (
         <Placeholder />
