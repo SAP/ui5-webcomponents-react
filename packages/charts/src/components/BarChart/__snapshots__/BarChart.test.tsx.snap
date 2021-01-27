@@ -1017,7 +1017,6 @@ exports[`BarChart Renders with data 1`] = `
           </div>
         </div>
       </div>
-      <div />
     </div>
   </div>
 </DocumentFragment>
