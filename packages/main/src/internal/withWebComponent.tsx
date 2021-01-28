@@ -25,6 +25,8 @@ const createEventPropName = (eventName) => `on${capitalizeFirstLetter(kebabToCam
 
 type EventHandler = (event: CustomEvent<unknown>) => void;
 
+const staticSlotStyle = { display: 'contents' };
+
 export interface WithWebComponentPropTypes extends CommonProps {
   ref?: Ref<any>;
   children?: any | void;
@@ -82,7 +84,7 @@ export const withWebComponent = <T extends Record<string, any>>(
             const slotValue = rest[item] as ReactElement;
             if (!slotValue) return false;
             return (
-              <div slot={item} style={{ display: 'contents' }} key={item}>
+              <div slot={item} style={staticSlotStyle} key={item}>
                 {slotValue}
               </div>
             );
