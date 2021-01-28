@@ -3,18 +3,21 @@
 exports[`SideNavigation Basic Test (generated) 1`] = `
 <DocumentFragment>
   <ui5-side-navigation>
-    <ui5-side-navigation-item
-      icon="chain-link"
+    <div
       slot="fixedItems"
-      text="Useful Links"
-      ui5-side-navigation-item=""
-    />
-    <ui5-side-navigation-item
-      icon="history"
-      slot="fixedItems"
-      text="History"
-      ui5-side-navigation-item=""
-    />
+      style="display: contents;"
+    >
+      <ui5-side-navigation-item
+        icon="chain-link"
+        text="Useful Links"
+        ui5-side-navigation-item=""
+      />
+      <ui5-side-navigation-item
+        icon="history"
+        text="History"
+        ui5-side-navigation-item=""
+      />
+    </div>
     <ui5-side-navigation-item
       icon="home"
       text="Home"
