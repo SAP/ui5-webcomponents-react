@@ -1,4 +1,4 @@
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { createUseStyles } from 'react-jss';
 import { useI18nBundle } from '@ui5/webcomponents-react-base/lib/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
@@ -159,7 +159,7 @@ export interface FilterBarPropTypes extends CommonProps {
   onRestore?: (event: CustomEvent<{ source?: unknown }>) => void;
 }
 
-const useStyles = createComponentStyles(styles, { name: 'FilterBar' });
+const useStyles = createUseStyles(styles, { name: 'FilterBar' });
 /**
  * The `FilterBar` displays filters in a user-friendly manner to populate values for a query. It consists of a row containing the `VariantManagement`, the related buttons, and an area underneath displaying the filters. The filters are arranged in a logical row that is divided depending on the space available and the width of the filters. The area containing the filters can be hidden or shown using the "Hide FilterBar / Show FilterBar" button, the "Filters" button shows the filter dialog.
  In this dialog, the consumer has full control over the FilterBar. The filters in this dialog are displayed in one column and organized in groups. Each filter can be marked as visible in the FilterBar by selecting "Add to FilterBar".
@@ -468,7 +468,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
               {variants}
               {search && <ToolbarSeparator />}
               {search && <div ref={searchRef}>{renderSearchWithValue(search, searchValue)}</div>}
-              <ToolbarSpacer />
+              {useToolbar && <ToolbarSpacer />}
               {useToolbar && showClearOnFB && (
                 <Button onClick={onClear} design={ButtonDesign.Transparent}>
                   {clearText}

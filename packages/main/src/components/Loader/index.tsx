@@ -1,4 +1,4 @@
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { createUseStyles } from 'react-jss';
 import { useI18nBundle } from '@ui5/webcomponents-react-base/lib/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
@@ -25,7 +25,7 @@ export interface LoaderProps extends CommonProps {
   progress?: CSSProperties['width'];
 }
 
-const useStyles = createComponentStyles(styles, { name: 'Loader' });
+const useStyles = createUseStyles(styles, { name: 'Loader' });
 /**
  * The `Loader` signals that an operation is currently being executed. It uses as little space as possible to allow the user to interact with the UI.<br />
  * It can be used to signal a data update on an already existing dataset, or where an expansion will happen.

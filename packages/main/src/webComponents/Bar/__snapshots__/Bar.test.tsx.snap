@@ -6,21 +6,30 @@ exports[`Bar Basic Test (generated) 1`] = `
     design="Header"
     ui5-bar=""
   >
-    <span
+    <div
       slot="endContent"
+      style="display: contents;"
     >
-      End
-    </span>
-    <span
+      <span>
+        End
+      </span>
+    </div>
+    <div
       slot="middleContent"
+      style="display: contents;"
     >
-      Middle
-    </span>
-    <span
+      <span>
+        Middle
+      </span>
+    </div>
+    <div
       slot="startContent"
+      style="display: contents;"
     >
-      Start
-    </span>
+      <span>
+        Start
+      </span>
+    </div>
   </ui5-bar>
 </DocumentFragment>
 `;

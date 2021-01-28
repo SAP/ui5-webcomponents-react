@@ -1,4 +1,4 @@
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { createUseStyles } from 'react-jss';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
@@ -9,7 +9,7 @@ import React, { FC, forwardRef, ReactNode, ReactNodeArray, Ref } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { styles } from './FlexBox.jss';
 
-const useStyles = createComponentStyles(styles, { name: 'FlexBox' });
+const useStyles = createUseStyles(styles, { name: 'FlexBox' });
 
 export interface FlexBoxPropTypes extends CommonProps {
   /**

@@ -1,0 +1,113 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+import { PieChart } from '@ui5/webcomponents-react-charts/lib/PieChart';
+import { simpleDataSet } from '../../resources/DemoProps';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
+
+<Meta
+  title="Charts /  PieChart"
+  component={PieChart}
+  argTypes={{
+    ...DocsCommonProps,
+    dataset: {
+      control: { disable: true }
+    },
+    measure: {
+      control: { disable: true }
+    },
+    dimension: {
+      control: { disable: true }
+    }
+  }}
+/>
+
+<DocsHeader />
+
+## Example
+
+<Canvas>
+  <Story name="Default">
+    {(props) => (
+      <PieChart
+        {...props}
+        style={{ width: '50%' }}
+        dataset={simpleDataSet}
+        dimension={{
+          accessor: 'name'
+        }}
+        measure={{
+          accessor: 'users'
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
+
+## Properties
+
+<ArgsTable story="Default" />
+
+<br />
+<br />
+
+## More Examples
+
+### With Custom Color
+
+<Canvas>
+  <Story name="With Custom Color">
+    {(props) => (
+      <PieChart
+        loading={props.loading}
+        noLegend={props.noLegend}
+        noAnimation={props.noAnimation}
+        onDataPointClick={props.onDataPointClick}
+        onLegendClick={props.onLegendClick}
+        style={{ width: '50%' }}
+        dataset={simpleDataSet}
+        dimension={{
+          accessor: 'name'
+        }}
+        measure={{
+          accessor: 'users',
+          colors: ['#f00', 'green', 'var(--sapNegativeColor)']
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
+
+### Loading Placeholder
+
+<Canvas>
+  <Story name="Loading Placeholder">{(props) => <PieChart style={{ width: '50%' }} />}</Story>
+</Canvas>
+
+### With Formatter
+
+<Canvas>
+  <Story name="With Formatter">
+    {(props) => (
+      <PieChart
+        loading={props.loading}
+        noLegend={props.noLegend}
+        noAnimation={props.noAnimation}
+        onDataPointClick={props.onDataPointClick}
+        onLegendClick={props.onLegendClick}
+        style={{ width: '50%' }}
+        dataset={simpleDataSet}
+        dimension={{
+          accessor: 'name'
+        }}
+        measure={{
+          accessor: 'users',
+          formatter: (d) => (d > 200 ? 'over 200' : 'lower')
+        }}
+        chartConfig={{
+          activeSegment: 1,
+          showActiveSegmentDataLabel: true
+        }}
+      />
+    )}
+  </Story>
+</Canvas>

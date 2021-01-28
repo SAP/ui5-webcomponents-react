@@ -1,5 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`withWebComponent conditional rendering 1`] = `
+<DocumentFragment>
+  <ui5-bar
+    design="Header"
+    ui5-bar=""
+  >
+    <div
+      slot="startContent"
+      style="display: contents;"
+    >
+      <span>
+        I'm here!
+      </span>
+    </div>
+  </ui5-bar>
+</DocumentFragment>
+`;
+
 exports[`withWebComponent scoping 1`] = `
 <DocumentFragment>
   <ui5-button-ui5-wcr

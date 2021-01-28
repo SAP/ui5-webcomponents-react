@@ -281,7 +281,6 @@ exports[`RadialChart Renders with data 1`] = `
           </text>
         </svg>
       </div>
-      <div />
     </div>
   </div>
 </DocumentFragment>
@@ -581,7 +580,6 @@ exports[`RadialChart loading placeholder 1`] = `
           />
         </svg>
       </div>
-      <div />
     </div>
   </div>
 </DocumentFragment>

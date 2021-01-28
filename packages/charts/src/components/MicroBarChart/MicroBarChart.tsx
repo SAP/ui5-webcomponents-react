@@ -1,4 +1,4 @@
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { createUseStyles } from 'react-jss';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
@@ -9,6 +9,7 @@ import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/components/C
 import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
+import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { defaultFormatter } from '../../internal/defaults';
 
@@ -29,29 +30,28 @@ interface MeasureConfig extends Omit<IChartMeasure, 'color'> {
   width?: number;
 }
 
-interface DimensionConfig {
-  /**
-   * A string containing the path to the dataset key this bar should display.
-   * Supports object structures by using `'parent.child'`. Can also be a getter.
-   */
-  accessor: string | Function;
-  /**
-   * function will be called for each data label and allows you to format it according to your needs
-   */
-  formatter?: (value: any) => string;
-}
-
 export interface MicroBarChartProps
   extends Omit<IChartBaseProps, 'noLegend' | 'onLegendClick' | 'noAnimation' | 'chartConfig' | 'children'> {
-  dimension: DimensionConfig;
+  /**
+   * A object which contains the configuration of the dimension.
+   *
+   * #### Required Properties
+   * - `accessor`: string containing the path to the dataset key the dimension should display. Supports object structures by using <code>'parent.child'</code>.
+   *   Can also be a getter.
+   *
+   * #### Optional Properties
+   * - `formatter`: function will be called for each data label and allows you to format it according to your needs
+   *
+   */
+  dimension: IChartDimension;
   /**
    * An array of config objects. Each object is defining one bar in the chart.
    *
-   * <h4>Required properties</h4>
+   * #### Required properties
    * - `accessor`: string containing the path to the dataset key this bar should display. Supports object structures by using <code>'parent.child'</code>.
    * Can also be a getter.
    *
-   * <h4>Optional properties</h4>
+   * #### Optional properties
    *
    * - `formatter`: function will be called for each data label and allows you to format it according to your needs
    * - `colors`: array of any valid CSS Color or CSS Variable. Defaults to the `sapChart_OrderedColor_` colors
@@ -63,7 +63,7 @@ export interface MicroBarChartProps
   measure: MeasureConfig;
 }
 
-const resolveColor = (index, color = null) => {
+const resolveColor = (index: number, color = null) => {
   if (color) {
     return ThemingParameters[color] ?? color;
   }
@@ -120,13 +120,16 @@ const MicroBarChartStyles = {
   }
 };
 
-const useStyles = createComponentStyles(MicroBarChartStyles, { name: 'MicroBarChart' });
+const useStyles = createUseStyles(MicroBarChartStyles, { name: 'MicroBarChart' });
 
+/**
+ * The `MicroBarChart` compares different values of the same category to each other by displaying them in a compact way.
+ */
 const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartProps, ref: Ref<HTMLDivElement>) => {
   const { loading, dataset, onDataPointClick, style, className, tooltip, slot } = props;
   const classes = useStyles();
 
-  const dimension: DimensionConfig = useMemo(
+  const dimension = useMemo<IChartDimension>(
     () => ({
       formatter: defaultFormatter,
       ...props.dimension
