@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.129.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.129.1...v0.129.2) (2021-01-30)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** remove unnecessary borders in column headers ([#1218](https://github.com/SAP/ui5-webcomponents-react/issues/1218)) ([e0ac7bc](https://github.com/SAP/ui5-webcomponents-react/commit/e0ac7bca45420e4cc37dcb44cf7e6ceb4bbff2c8)), closes [#1197](https://github.com/SAP/ui5-webcomponents-react/issues/1197)
+* **Web Components:** allow conditional rendering in slots ([#1217](https://github.com/SAP/ui5-webcomponents-react/issues/1217)) ([de126d1](https://github.com/SAP/ui5-webcomponents-react/commit/de126d1e02c481aecf222297886d84e2f51fcf2a)), closes [#1213](https://github.com/SAP/ui5-webcomponents-react/issues/1213)
+* remove 'export * as' syntax for compatibility with react-scripts 3 ([e542e74](https://github.com/SAP/ui5-webcomponents-react/commit/e542e749f9b85df9cf100c4d8809f36661d93afb))
+* resolve CSS variables correctly in IE11 ([#1183](https://github.com/SAP/ui5-webcomponents-react/issues/1183)) ([17bbcb6](https://github.com/SAP/ui5-webcomponents-react/commit/17bbcb6f1816ec51fc3bc10ad09249fe1f293729))
+* **ObjectPage:** add accessibility labels to header buttons and title levels ([#1176](https://github.com/SAP/ui5-webcomponents-react/issues/1176)) ([70aac9e](https://github.com/SAP/ui5-webcomponents-react/commit/70aac9e5c4a4d21ca62895afd9bdde5e1d9c3520)), closes [#1166](https://github.com/SAP/ui5-webcomponents-react/issues/1166) [#1165](https://github.com/SAP/ui5-webcomponents-react/issues/1165)
+
+
+### Features
+
+* update wrappers to support @ui5/webcomponents 0.29.1 ([0ea69bc](https://github.com/SAP/ui5-webcomponents-react/commit/0ea69bcab1028028d4c8bc987b082f01fbdae15a))
+* **AnalyticalTable:** improve accessibility ([#1189](https://github.com/SAP/ui5-webcomponents-react/issues/1189)) ([ecbaa23](https://github.com/SAP/ui5-webcomponents-react/commit/ecbaa23b087f39b4d8c03b5d54040a0fef8d8ac6))
+* **Web Components:** allow nested fragments in slots (not available for IE11) ([#1221](https://github.com/SAP/ui5-webcomponents-react/issues/1221)) ([9dbb200](https://github.com/SAP/ui5-webcomponents-react/commit/9dbb2002ada01cce8617ff63b835adf24f60599c)), closes [#1219](https://github.com/SAP/ui5-webcomponents-react/issues/1219)
+
+
+
+
+
 ## [0.129.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.129.0...v0.129.1) (2021-01-15)
 
 

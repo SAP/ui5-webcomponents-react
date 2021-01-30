@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.129.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.129.1...v0.129.2) (2021-01-30)
+
+
+### Bug Fixes
+
+* **Device:** use named export to prevent typescript error ([#1200](https://github.com/SAP/ui5-webcomponents-react/issues/1200)) ([3cf5ecf](https://github.com/SAP/ui5-webcomponents-react/commit/3cf5ecfa49b14bf51b90b9c97cafab49eda974cc))
+* remove 'export * as' syntax for compatibility with react-scripts 3 ([e542e74](https://github.com/SAP/ui5-webcomponents-react/commit/e542e749f9b85df9cf100c4d8809f36661d93afb))
+
+
+
+
+
 # [0.129.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.13.1...v0.129.0) (2021-01-11)
 
 **Note:** Version bump only for package @ui5/webcomponents-react-base

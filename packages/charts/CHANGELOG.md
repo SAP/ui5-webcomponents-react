@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.129.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.129.1...v0.129.2) (2021-01-30)
+
+
+### Bug Fixes
+
+* **Charts:** use ErrorBoundary to prevent errors when components are re-mounted ([#1190](https://github.com/SAP/ui5-webcomponents-react/issues/1190)) ([93e104a](https://github.com/SAP/ui5-webcomponents-react/commit/93e104a99de7c249098cc1d4002d598ce474b12d)), closes [#1145](https://github.com/SAP/ui5-webcomponents-react/issues/1145)
+* remove 'export * as' syntax for compatibility with react-scripts 3 ([e542e74](https://github.com/SAP/ui5-webcomponents-react/commit/e542e749f9b85df9cf100c4d8809f36661d93afb))
+
+
+
+
+
 ## [0.129.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.129.0...v0.129.1) (2021-01-15)
 
 **Note:** Version bump only for package @ui5/webcomponents-react-charts
