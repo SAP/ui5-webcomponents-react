@@ -1,3 +1,4 @@
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/TreeItem';
 import { FC, ReactNode } from 'react';
@@ -16,6 +17,15 @@ export interface TreeItemPropTypes extends WithWebComponentPropTypes {
    * If set, an icon will be displayed before the text, representing the tree item.
    */
   icon?: string;
+  /**
+   * Defines the `info`, displayed in the end of the tree item.
+   */
+  info?: string;
+  /**
+   * Defines the state of the `info`.
+   * Available options are: `"None"` (by default), `"Success"`, `"Warning"`, `"Information"` and `"Erorr"`.
+   */
+  infoState?: ValueState;
   /**
    * Defines whether the tree node is selected by the user. Only has effect if the `Tree` is in one of the following modes: in `SingleSelect`, `SingleSelectBegin`, `SingleSelectEnd` and `MultiSelect`.
    */
@@ -37,7 +47,7 @@ export interface TreeItemPropTypes extends WithWebComponentPropTypes {
  */
 const TreeItem: FC<TreeItemPropTypes> = withWebComponent<TreeItemPropTypes>(
   'ui5-tree-item',
-  ['icon', 'text'],
+  ['icon', 'info', 'infoState', 'text'],
   ['expanded', 'hasChildren', 'selected'],
   [],
   []
@@ -48,6 +58,7 @@ TreeItem.displayName = 'TreeItem';
 TreeItem.defaultProps = {
   expanded: false,
   hasChildren: false,
+  infoState: ValueState.None,
   selected: false
 };
 
