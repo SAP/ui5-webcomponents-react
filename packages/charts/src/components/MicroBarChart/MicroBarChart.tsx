@@ -67,7 +67,7 @@ const resolveColor = (index: number, color = null) => {
   if (color) {
     return ThemingParameters[color] ?? color;
   }
-  return ThemingParameters[`sapChart_Sequence_${(index + 1) % 11}`];
+  return ThemingParameters[`sapChart_Sequence_${(index % 11) + 1}`];
 };
 
 const MicroBarChartStyles = {
