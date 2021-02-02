@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.13.5...v0.13.6) (2021-02-02)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** show column header icons in correct place ([#1232](https://github.com/SAP/ui5-webcomponents-react/issues/1232)) ([bb13cf5](https://github.com/SAP/ui5-webcomponents-react/commit/bb13cf508eb268444194068ad338048a49e5aaf8))
+
+
+### Features
+
+* **Web Components:** allow nested fragments in slots (not available for IE11) ([#1221](https://github.com/SAP/ui5-webcomponents-react/issues/1221)) ([578ae6c](https://github.com/SAP/ui5-webcomponents-react/commit/578ae6c15ea7324ce4f8f108267f8841762e074e)), closes [#1219](https://github.com/SAP/ui5-webcomponents-react/issues/1219)
+
+
+
+
+
 ## [0.13.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.13.4...v0.13.5) (2021-01-26)
 
 
