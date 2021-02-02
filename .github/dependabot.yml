@@ -23,4 +23,4 @@ updates:
       - dependency-name: '@storybook/cli'
       - dependency-name: '@storybook/react'
       - dependency-name: '@storybook/theming'
-      
+      - dependency-name: '@storybook/addon-a11y'
