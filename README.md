@@ -173,16 +173,7 @@ For Browser Support and the configuration of the UI5 Web Components, please take
 
 ### Browser Support
 
-#### Internet Explorer 11
-
-UI5 Web Components are supported by all major modern browsers.
-
-Browser | Supported versions
---------|---------------------
-Chrome  | Latest
-Firefox | Latest
-Safari  | Latest
-Edge    | Latest
+UI5 Web Components are supported by all major modern browsers, including their mobile versions.
 
 <!-- *********************************************************************** -->
 
