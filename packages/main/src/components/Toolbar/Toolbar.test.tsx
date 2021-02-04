@@ -69,7 +69,7 @@ describe('Toolbar', () => {
       </Toolbar>
     );
 
-    expect(getByLabelText("Separator")).toHaveClass('ToolbarSeparator-separator');
+    expect(getByLabelText('Separator')).toHaveClass('ToolbarSeparator-separator');
 
     expect(asFragment()).toMatchSnapshot();
   });
@@ -88,7 +88,7 @@ describe('Toolbar', () => {
       };
     });
 
-    const { getByTitle, getAllByTestId, getAllByText, rerender, queryByTitle, getByText, asFragment } = render(
+    const { getByTitle, getAllByTestId, getAllByText, rerender, queryByTitle, getByText, getAllByLabelText } = render(
       <Toolbar data-testid="toolbar" style={{ width: '300px' }}>
         <Text data-testid="toolbar-item" style={{ width: '200px' }}>
           Item1
@@ -212,10 +212,10 @@ describe('Toolbar', () => {
       </Toolbar>
     );
 
-    const toolbarSeparator = getAllByText('Item2')[1].parentElement.children[0];
+    const popoverSeparator = getAllByLabelText('Separator')[1];
 
-    expect(toolbarSeparator).toHaveClass('ToolbarSeparator-separator');
-    expect(toolbarSeparator).toHaveStyle('height: 0.0625rem; margin: 0.375rem 0.1875rem; width: 100%;');
+    expect(popoverSeparator).toHaveClass('ToolbarSeparator-separator');
+    expect(popoverSeparator).toHaveStyle('height: 0.0625rem; margin: 0.375rem 0.1875rem; width: 100%;');
 
     expect(document.body).toMatchSnapshot();
   });
