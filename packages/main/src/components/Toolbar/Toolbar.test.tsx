@@ -44,7 +44,7 @@ describe('Toolbar', () => {
   });
 
   test('ToolbarSpacer', () => {
-    const { getByLabelText, asFragment } = render(
+    const { getByTestId, asFragment } = render(
       <Toolbar data-testid="toolbar">
         <Text>Item1</Text>
         <ToolbarSpacer />
@@ -52,7 +52,7 @@ describe('Toolbar', () => {
         <Text>Item3</Text>
       </Toolbar>
     );
-    const toolbarSpacer = getByLabelText('Separator');
+    const toolbarSpacer = getByTestId('toolbar').children[0].children[1];
     expect(toolbarSpacer).toHaveClass('spacer');
     expect(toolbarSpacer).toHaveStyle('flex-grow: 1');
 
