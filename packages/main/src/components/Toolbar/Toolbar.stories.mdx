@@ -25,7 +25,6 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
     ...DocsCommonProps
   }}
   args={{
-    onToolbarClick: null,
     design: ToolbarDesign.Auto,
     toolbarStyle: ToolbarStyle.Standard,
     active: false,
@@ -107,7 +106,6 @@ If the horizontally available space isn't enough to fit all items in it, an over
       design: { table: { disable: true } },
       ...DocsCommonProps,
       active: { table: { disable: true } },
-      onToolbarClick: { table: { disable: true } },
       onClick: { table: { disable: true } }
     }}
   >
