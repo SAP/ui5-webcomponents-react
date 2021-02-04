@@ -44,7 +44,7 @@ describe('Toolbar', () => {
   });
 
   test('ToolbarSpacer', () => {
-    const { getByTestId, asFragment } = render(
+    const { getByLabelText, asFragment } = render(
       <Toolbar data-testid="toolbar">
         <Text>Item1</Text>
         <ToolbarSpacer />
@@ -52,7 +52,7 @@ describe('Toolbar', () => {
         <Text>Item3</Text>
       </Toolbar>
     );
-    const toolbarSpacer = getByTestId('toolbar').children[0].children[1];
+    const toolbarSpacer = getByLabelText('Separator');
     expect(toolbarSpacer).toHaveClass('spacer');
     expect(toolbarSpacer).toHaveStyle('flex-grow: 1');
 
@@ -60,7 +60,7 @@ describe('Toolbar', () => {
   });
 
   test('ToolbarSeparator', () => {
-    const { getByTestId, asFragment } = render(
+    const { getByLabelText, asFragment } = render(
       <Toolbar data-testid="toolbar">
         <Text>Item1</Text>
         <ToolbarSeparator />
@@ -68,8 +68,8 @@ describe('Toolbar', () => {
         <Text>Item3</Text>
       </Toolbar>
     );
-    const toolbarSeparator = getByTestId('toolbar').children[0].children[1].children[0];
-    expect(toolbarSeparator).toHaveClass('ToolbarSeparator-separator');
+
+    expect(getByLabelText("Separator")).toHaveClass('ToolbarSeparator-separator');
 
     expect(asFragment()).toMatchSnapshot();
   });
@@ -114,7 +114,7 @@ describe('Toolbar', () => {
     expect(item2[0]).toHaveStyle(`visibility: hidden`);
     expect(item3[0]).toHaveStyle(`visibility: hidden`);
 
-    expect(asFragment()).toMatchSnapshot();
+    expect(document.body).toMatchSnapshot();
 
     rerender(
       <Toolbar data-testid="toolbar" style={{ width: '1000px' }}>
@@ -167,7 +167,7 @@ describe('Toolbar', () => {
     expect(item2frag[0]).toHaveStyle(`visibility: hidden`);
     expect(item3frag[0]).toHaveStyle(`visibility: hidden`);
 
-    expect(asFragment()).toMatchSnapshot();
+    expect(document.body).toMatchSnapshot();
 
     rerender(
       <Toolbar data-testid="toolbar" style={{ width: '1000px' }}>
@@ -213,11 +213,11 @@ describe('Toolbar', () => {
     );
 
     const toolbarSeparator = getAllByText('Item2')[1].parentElement.children[0];
-    screen.debug(null, 1231231232);
+
     expect(toolbarSeparator).toHaveClass('ToolbarSeparator-separator');
     expect(toolbarSeparator).toHaveStyle('height: 0.0625rem; margin: 0.375rem 0.1875rem; width: 100%;');
 
-    expect(asFragment()).toMatchSnapshot();
+    expect(document.body).toMatchSnapshot();
   });
 
   test('active', () => {
