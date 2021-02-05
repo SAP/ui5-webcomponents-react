@@ -61,36 +61,39 @@ export const withWebComponent = <T extends Record<string, any>>(
       return acc;
     }, {});
 
-    const slots = isIE()
-      ? slotProperties.reduce((acc, name) => {
-          const slotValue = rest[name] as ReactElement;
-          if (slotValue) {
-            return [
-              ...acc,
-              ...Children.toArray(slotValue?.type === React.Fragment ? slotValue.props?.children : slotValue)
-                .filter(Boolean)
-                .map((item: ReactElement, index) =>
-                  cloneElement(item, {
-                    key: `${name}-${index}`,
-                    slot: name
-                  })
-                )
-            ];
-          }
-          return acc;
-        }, [])
-      : slotProperties
-          .map((item) => {
-            const slotValue = rest[item] as ReactElement;
-            if (!slotValue) return false;
-            return (
-              <div slot={item} style={staticSlotStyle} key={item}>
-                {slotValue}
-              </div>
-            );
-          })
-          .filter(Boolean);
+    const slots = slotProperties.reduce((acc, name) => {
+      const slotValue = rest[name] as ReactElement;
 
+      if (!slotValue) return acc;
+
+      let children = [];
+      let index = 0;
+      const removeFragments = (element) => {
+        if (!element) return;
+        if (element?.type === React.Fragment) {
+          element.props?.children?.forEach((item) => {
+            removeFragments(item);
+          });
+        } else {
+          children.push(
+            cloneElement(element, {
+              key: `${name}-${index}`,
+              slot: name
+            })
+          );
+          index++;
+        }
+      };
+
+      if (Array.isArray(slotValue)) {
+        slotValue.forEach((item) => {
+          removeFragments(item);
+        });
+      } else {
+        removeFragments(slotValue);
+      }
+      return [...acc, ...children];
+    }, []);
     // event binding
     useEffect(
       () => {

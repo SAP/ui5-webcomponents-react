@@ -15,27 +15,19 @@ exports[`Page Basic Page 1`] = `
           design="Header"
           ui5-bar=""
         >
-          <div
+          <ui5-title
+            level="H5"
             slot="middleContent"
-            style="display: contents;"
+            ui5-title=""
           >
-            <ui5-title
-              level="H5"
-              ui5-title=""
-            >
-              Page Demo
-            </ui5-title>
-          </div>
-          <div
+            Page Demo
+          </ui5-title>
+          <ui5-button
+            design="Transparent"
+            icon="navigation-left-arrow"
             slot="startContent"
-            style="display: contents;"
-          >
-            <ui5-button
-              design="Transparent"
-              icon="navigation-left-arrow"
-              ui5-button=""
-            />
-          </div>
+            ui5-button=""
+          />
         </ui5-bar>
       </header>
       <section
@@ -67,17 +59,13 @@ exports[`Page Basic Page w/o back button 1`] = `
           design="Header"
           ui5-bar=""
         >
-          <div
+          <ui5-title
+            level="H5"
             slot="middleContent"
-            style="display: contents;"
+            ui5-title=""
           >
-            <ui5-title
-              level="H5"
-              ui5-title=""
-            >
-              Page Demo
-            </ui5-title>
-          </div>
+            Page Demo
+          </ui5-title>
         </ui5-bar>
       </header>
       <section
