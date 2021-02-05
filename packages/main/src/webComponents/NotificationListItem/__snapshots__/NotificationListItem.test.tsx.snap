@@ -7,16 +7,12 @@ exports[`NotificationListItem Basic Test (generated) 1`] = `
     priority="High"
     show-close="true"
   >
-    <div
+    <ui5-notification-action
+      design="Transparent"
       slot="actions"
-      style="display: contents;"
-    >
-      <ui5-notification-action
-        design="Transparent"
-        text="My Action"
-        ui5-notification-action=""
-      />
-    </div>
+      text="My Action"
+      ui5-notification-action=""
+    />
   </ui5-li-notification>
 </DocumentFragment>
 `;
