@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.7](https://github.com/SAP/ui5-webcomponents-react/compare/v0.13.6...v0.13.7) (2021-02-05)
+
+
+### Bug Fixes
+
+* **webcomponents:** fix crash, allow nested fragments in all supported browsers ([#1259](https://github.com/SAP/ui5-webcomponents-react/issues/1259)) ([d0be87c](https://github.com/SAP/ui5-webcomponents-react/commit/d0be87c02a1f37003b43b43580e8792be174b01c))
+
+
+
+
+
 ## [0.13.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.13.5...v0.13.6) (2021-02-02)
 
 
