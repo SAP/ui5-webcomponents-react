@@ -1,4 +1,4 @@
-import { useI18nBundle } from '@ui5/webcomponents-react-base/hooks/useI18nBundle';
+import { useI18nBundle } from '@ui5/webcomponents-react-base/lib/hooks';
 import { createUseStyles } from 'react-jss';
 import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
