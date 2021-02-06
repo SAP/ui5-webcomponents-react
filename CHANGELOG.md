@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.8](https://github.com/SAP/ui5-webcomponents-react/compare/v0.13.7...v0.13.8) (2021-02-06)
+
+
+### Bug Fixes
+
+* **ToolbarSeparator:** use correct import path for useI18nBundle ([520f1da](https://github.com/SAP/ui5-webcomponents-react/commit/520f1daa8546cd1b684b95943a670429e930d27b)), closes [#1260](https://github.com/SAP/ui5-webcomponents-react/issues/1260)
+
+
+
+
+
 ## [0.13.7](https://github.com/SAP/ui5-webcomponents-react/compare/v0.13.6...v0.13.7) (2021-02-05)
 
 
