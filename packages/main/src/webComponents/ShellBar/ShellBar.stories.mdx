@@ -89,11 +89,13 @@ import image from '../../components/ObjectPage/DemoImage.png';
     argTypes={{
       count: { description: `Defines the count displayed in the top-right corner.` },
       icon: { description: `Defines the name of the item's icon.` },
-      stableDomRef: { description: `Defines the stable selector that you can use via getStableDomRef method. <br />` },
+      stableDomRef: { description: `Defines the stable selector that you can use via getStableDomRef method.` },
       text: {
-        description: `Defines the item text.<br />__Note:__ <code>text</code> will only be visible in mobile view.`
+        description: `Defines the item text.<br /><br />__Note:__ <code>text</code> will only be visible in mobile view.`
       },
-      onItemClick: { description: 'Fired, when the item is pressed.' },
+      onItemClick: {
+        description: `Fired, when the item is pressed.<br /><br />__Note:__ To get the DOM reference of the clicked \`ShellBarItem\`, use \`event.detail.targetRef\`.`
+      },
       notificationCount: { table: { disable: true } },
       primaryTitle: { table: { disable: true } },
       secondaryTitle: { table: { disable: true } },
@@ -114,14 +116,33 @@ import image from '../../components/ObjectPage/DemoImage.png';
       onProfileClick: { table: { disable: true } }
     }}
   >
-    {(args) => {
-      return (
-        <ShellBar>
-          <ShellBarItem {...args} />
-        </ShellBar>
-      );
-    }}
+    {(args) => (
+      <ShellBar>
+        <ShellBarItem {...args} />
+      </ShellBar>
+    )}
   </Story>
 </Canvas>
 
 <ArgsTable story="with customizable ShellBarItem" />
+
+### Recipe: How to open a popover on ShellBarItem click?
+
+To open a popover with the `ShellBarItem` you can use the `targetRef` property of the `onItemClick` event.
+
+```jsx
+const ShellBarComponent = () => {
+  const popoverRef = useRef(null);
+  const handleShellBarItemClick = (e) => {
+    popoverRef.current.openBy(e.detail.targetRef);
+  };
+  return (
+    <>
+      <ShellBar>
+        <ShellBarItem onItemClick={handleShellBarItemClick} icon="add" text="add" />
+      </ShellBar>
+      <Popover ref={popoverRef}>Hello there!</Popover>
+    </>
+  );
+};
+```
