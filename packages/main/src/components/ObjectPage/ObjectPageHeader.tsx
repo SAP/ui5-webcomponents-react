@@ -1,3 +1,5 @@
+import { StyleClassHelper } from '@ui5/webcomponents-react-base';
+import { isIE } from '@ui5/webcomponents-react-base/lib/Device';
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
@@ -65,7 +67,7 @@ export const ObjectPageHeader = forwardRef((props: Props, ref: RefObject<HTMLDiv
   }, [image, classes.headerImage, classes.image, imageShapeCircle]);
 
   const headerStyles = useMemo<CSSProperties>(() => {
-    if (headerPinned) {
+    if (headerPinned || isIE()) {
       return {
         top: `${topHeaderHeight}px`,
         zIndex: 1
@@ -124,8 +126,13 @@ export const ObjectPageHeader = forwardRef((props: Props, ref: RefObject<HTMLDiv
     );
   }
 
+  const headerClasses = StyleClassHelper.of(classes.contentHeader);
+  if (isIE()) {
+    headerClasses.put(classes.iEClass);
+  }
+
   return (
-    <div style={headerStyles} className={classes.contentHeader} ref={ref}>
+    <div style={headerStyles} className={headerClasses.className} ref={ref}>
       {renderedHeaderContent}
     </div>
   );

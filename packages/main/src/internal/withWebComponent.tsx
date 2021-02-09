@@ -1,8 +1,6 @@
 import { getEffectiveScopingSuffixForTag } from '@ui5/webcomponents-base/dist/CustomElementsScope';
-import { isIE } from '@ui5/webcomponents-react-base/lib/Device';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import React, {
-  Children,
   cloneElement,
   ComponentType,
   forwardRef,
