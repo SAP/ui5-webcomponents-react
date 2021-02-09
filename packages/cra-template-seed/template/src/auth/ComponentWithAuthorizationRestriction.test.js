@@ -1,9 +1,7 @@
 import React from 'react';
 
-import '@testing-library/jest-dom/extend-expect';
 import { render, waitFor, screen, serverCustom } from '../util/TestSetup';
 import ComponentWithAuthorizationRestriction from './ComponentWithAuthorizationRestriction';
-import { getUrl } from '../util/api/url/APIProvider';
 
 describe('ComponentWithAuthorizationRestriction.js Test Suite', () => {
   const GET_USER_LOGGED_RESPONSE = {
@@ -12,7 +10,7 @@ describe('ComponentWithAuthorizationRestriction.js Test Suite', () => {
     permissions: ['canAccessTodoListPage', 'canAccessTodoEditPage', 'canAccessDropApplication'],
   };
 
-  const server = serverCustom(getUrl('GET_USER_LOGGED'), GET_USER_LOGGED_RESPONSE);
+  const server = serverCustom('/v1/user/logged', GET_USER_LOGGED_RESPONSE);
 
   beforeAll(() => server.listen());
   afterEach(() => server.resetHandlers());

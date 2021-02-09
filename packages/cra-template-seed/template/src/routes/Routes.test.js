@@ -1,12 +1,8 @@
-import '@testing-library/jest-dom/extend-expect';
+import { ROUTES, getRoute } from './Routes';
 
-import { getUrl } from './BrowserProvider';
-
-describe('BrowserProvider.js Test Suite', () => {
+describe('Routes.js Test Suite', () => {
   test('should return URL when passed correct key', () => {
-    const key = 'HOME';
-
-    const output = getUrl(key);
+    const output = getRoute(ROUTES.HOME);
 
     expect(output).toEqual('/');
   });
@@ -15,7 +11,7 @@ describe('BrowserProvider.js Test Suite', () => {
     const key = 'DOES_NOT_EXIST';
     const errorMessage = 'Url defined: ' + key + ' not found';
 
-    const urlGet = () => getUrl(key);
+    const urlGet = () => getRoute(key);
 
     expect(urlGet).toThrowError(errorMessage);
   });
@@ -23,7 +19,7 @@ describe('BrowserProvider.js Test Suite', () => {
   test('should correctly replace key when passed correct replaceValue', () => {
     const key = 'TODO_DETAIL';
 
-    const output = getUrl(key, [{ value: 1 }]);
+    const output = getRoute(key, [{ value: 1 }]);
 
     expect(output).toEqual('/todo/detail/1');
   });
@@ -31,7 +27,7 @@ describe('BrowserProvider.js Test Suite', () => {
   test('should erroneously replace key when passed correct replaceValue', () => {
     const key = 'TODO_DETAIL';
 
-    const replaceUrl = () => getUrl(key, [{ value: 1, search: ':not_id' }]);
+    const replaceUrl = () => getRoute(key, [{ value: 1, search: ':not_id' }]);
 
     expect(replaceUrl()).toEqual('/todo/detail/:id');
   });

@@ -6,9 +6,9 @@ import { createMemoryHistory } from 'history';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 
-import { getUrl } from './browser/BrowserProvider';
+import { ROUTES } from '../routes/Routes';
 
-const render = (ui, { route = getUrl('HOME'), ...renderOptions } = {}) => {
+const render = (ui, { route = ROUTES.HOME, ...renderOptions } = {}) => {
   const WrapperProvider = (props) => {
     const history = createMemoryHistory({ initialEntries: [route] });
     return (
