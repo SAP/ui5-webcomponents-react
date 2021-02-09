@@ -18,7 +18,8 @@ export enum CssSizeVariablesNames {
   sapWcrAnalyticalTableSelectionColumnWidth = 'sapWcrAnalyticalTableSelectionColumnWidth',
   sapWcrToolbarHeight = 'sapWcrToolbarHeight',
   sapWcrToolbarPopoverContentPadding = 'sapWcrToolbarPopoverContentPadding',
-  sapWcrToolbarSeparatorHeight = 'sapWcrToolbarSeparatorHeight'
+  sapWcrToolbarSeparatorHeight = 'sapWcrToolbarSeparatorHeight',
+  sapWcrFormLabelPaddingTop = 'sapWcrFormLabelPaddingTop'
 }
 
 export const CssSizeVariables: Record<CssSizeVariablesNames, string> = Object.values(CssSizeVariablesNames).reduce(
@@ -51,6 +52,7 @@ export const cssVariablesStyles = `
   --${CssSizeVariablesNames.sapWcrToolbarHeight}:2.75rem;
   --${CssSizeVariablesNames.sapWcrToolbarPopoverContentPadding}:0.25rem 0.5rem;
   --${CssSizeVariablesNames.sapWcrToolbarSeparatorHeight}: 2rem;
+  --${CssSizeVariablesNames.sapWcrFormLabelPaddingTop}: 0.5rem;
 }
 
 [data-ui5-compact-size],
@@ -75,5 +77,6 @@ export const cssVariablesStyles = `
   --${CssSizeVariablesNames.sapWcrToolbarHeight}:2rem;
   --${CssSizeVariablesNames.sapWcrToolbarPopoverContentPadding}:0.1875rem 0.375rem;
   --${CssSizeVariablesNames.sapWcrToolbarSeparatorHeight}: 1.5rem;
+  --${CssSizeVariablesNames.sapWcrFormLabelPaddingTop}: 0.25rem;
 }
 `;
