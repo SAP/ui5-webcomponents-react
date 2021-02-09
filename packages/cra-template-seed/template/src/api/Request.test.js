@@ -1,4 +1,4 @@
-import { serverCustom } from '../../TestSetup';
+import { serverCustom } from '../util/TestSetup';
 import Request from './Request';
 
 jest.mock('./Request');

@@ -1,4 +1,4 @@
-import { ROUTES, getRoute } from './Routes';
+import { getRoute, ROUTES } from './Routes';
 
 describe('Routes.js Test Suite', () => {
   test('should return URL when passed correct key', () => {
@@ -7,28 +7,15 @@ describe('Routes.js Test Suite', () => {
     expect(output).toEqual('/');
   });
 
-  test('should throw error when passed wrong key', () => {
-    const key = 'DOES_NOT_EXIST';
-    const errorMessage = 'Url defined: ' + key + ' not found';
-
-    const urlGet = () => getRoute(key);
-
-    expect(urlGet).toThrowError(errorMessage);
-  });
-
   test('should correctly replace key when passed correct replaceValue', () => {
-    const key = 'TODO_DETAIL';
-
-    const output = getRoute(key, [{ value: 1 }]);
+    const output = getRoute(ROUTES.TODO_DETAIL, { id: 1 });
 
     expect(output).toEqual('/todo/detail/1');
   });
 
-  test('should erroneously replace key when passed correct replaceValue', () => {
-    const key = 'TODO_DETAIL';
+  test("should throw an error in case parameters and path doesn't match", () => {
+    const replaceUrl = () => getRoute(ROUTES.TODO_DETAIL, { incorrectId: 1 });
 
-    const replaceUrl = () => getRoute(key, [{ value: 1, search: ':not_id' }]);
-
-    expect(replaceUrl()).toEqual('/todo/detail/:id');
+    expect(replaceUrl).toThrow('Expected "id" to be defined');
   });
 });
