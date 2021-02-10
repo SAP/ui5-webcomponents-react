@@ -5,20 +5,22 @@ require('dotenv').config({
   path: path.join(root, '.env')
 });
 
-const BUILD_FOR_IE11 = process.env.UI5_WEBCOMPONENTS_FOR_REACT_BUILD_IE11 === 'true';
+const DEPENDENCY_REGEX = /node_modules\/(@ui5\/webcomponents(-(base|core|fiori|icons|theme-base))?|lit-html)\//;
 
-const DEPENDENCY_REGEX = BUILD_FOR_IE11
-  ? /node_modules/
-  : /node_modules\/(@ui5\/webcomponents(-(base|core|fiori|icons|theme-base))?|lit-html)\//;
+let addons = [
+  '@storybook/addon-toolbars',
+  '@storybook/addon-docs',
+  '@storybook/addon-controls',
+  '@storybook/addon-actions'
+];
+
+if (process.env.NODE_ENV === 'development') {
+  addons.push('@storybook/addon-a11y');
+}
 
 module.exports = {
   stories: ['../docs/**/*.stories.mdx', '../packages/**/*.stories.@(tsx|jsx|mdx)'],
-  addons: [
-    '@storybook/addon-toolbars',
-    '@storybook/addon-docs',
-    '@storybook/addon-controls',
-    '@storybook/addon-actions'
-  ],
+  addons: addons,
   webpack: async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
     // You can change the configuration based on that.
@@ -30,7 +32,7 @@ module.exports = {
       type: 'javascript/auto'
     });
 
-    if (configType === 'PRODUCTION' || BUILD_FOR_IE11) {
+    if (configType === 'PRODUCTION') {
       config.module.rules.push({
         test: /\.(js|mjs)$/,
         include: DEPENDENCY_REGEX,

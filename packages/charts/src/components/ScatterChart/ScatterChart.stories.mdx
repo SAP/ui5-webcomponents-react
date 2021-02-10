@@ -1,0 +1,115 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
+import { ScatterChart } from '@ui5/webcomponents-react-charts/lib/ScatterChart';
+import { scatterColorDataSet, scatterComplexDataSet } from '../../resources/DemoProps';
+
+<Meta
+  title="Charts /  ScatterChart"
+  component={ScatterChart}
+  argTypes={{
+    ...DocsCommonProps,
+    dataset: {
+      control: { disable: true }
+    },
+    measures: {
+      control: { disable: true }
+    },
+    children: {
+      control: { disable: true }
+    },
+    chartConfig: {
+      control: { disable: true }
+    }
+  }}
+/>
+
+<DocsHeader />
+
+## Example
+
+<Canvas>
+  <Story name="Default">
+    {(props) => (
+      <ScatterChart
+        chartConfig={props.chartConfig}
+        loading={props.loading}
+        noLegend={props.noLegend}
+        noAnimation={props.noAnimation}
+        onDataPointClick={props.onDataPointClick}
+        onLegendClick={props.onLegendClick}
+        dataset={scatterComplexDataSet}
+        style={{ width: '100%' }}
+        measures={[
+          {
+            accessor: 'users',
+            label: 'Users',
+            axis: 'x'
+          },
+          {
+            accessor: 'sessions',
+            label: 'Sessions',
+            formatter: (val) => `${val}k`,
+            axis: 'y'
+          },
+          {
+            accessor: 'volume',
+            axis: 'z'
+          }
+        ]}
+      />
+    )}
+  </Story>
+</Canvas>
+
+## Properties
+
+<ArgsTable story="Default" />
+
+<br />
+<br />
+
+## More Examples
+
+### With Custom Color
+
+<Canvas>
+  <Story name="With Custom Color">
+    {(props) => (
+      <ScatterChart
+        chartConfig={props.chartConfig}
+        loading={props.loading}
+        noLegend={props.noLegend}
+        noAnimation={props.noAnimation}
+        onDataPointClick={props.onDataPointClick}
+        onLegendClick={props.onLegendClick}
+        dataset={scatterColorDataSet}
+        style={{ width: '100%' }}
+        measures={[
+          {
+            accessor: 'users',
+            label: 'Users',
+            axis: 'x'
+          },
+          {
+            accessor: 'sessions',
+            label: 'Sessions',
+            axis: 'y'
+          },
+          {
+            accessor: 'volume',
+            axis: 'z'
+          }
+        ]}
+      />
+    )}
+  </Story>
+</Canvas>
+
+### Loading Placeholder
+
+<Canvas>
+  <Story name="Loading Placeholder">
+    <ScatterChart style={{ width: '100%' }} measures={[]} />
+  </Story>
+</Canvas>

@@ -1,4 +1,4 @@
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { createUseStyles } from 'react-jss';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import React, { FC, forwardRef, ReactNode, ReactNodeArray, Ref } from 'react';
@@ -17,7 +17,7 @@ export interface AnalyticalCardTypes extends CommonProps {
   children: ReactNode | ReactNodeArray;
 }
 
-const useStyles = createComponentStyles(styles, { name: 'AnalyticalCard' });
+const useStyles = createUseStyles(styles, { name: 'AnalyticalCard' });
 /**
  * The `AnalyticalCard` is mainly used for data visualization. It consists of two areas – a header area and a chart area with a visual representation of the data.<br />
  */

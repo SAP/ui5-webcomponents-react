@@ -872,12 +872,12 @@ describe('AnalyticalTable', () => {
       />
     );
 
-    const firstRow = getAllByRole('row')[0];
-    fireEvent.click(firstRow);
+    const firstBodyRow = getAllByRole('row')[1];
+    fireEvent.click(firstBodyRow);
 
     expect(callback).toBeCalled();
 
-    const selectionColumn = firstRow.querySelector('[data-name="internal_selection_column"]');
+    const selectionColumn = firstBodyRow.querySelector('[data-name="internal_selection_column"]');
     fireEvent.click(selectionColumn);
     expect(callback).toBeCalledTimes(1);
 

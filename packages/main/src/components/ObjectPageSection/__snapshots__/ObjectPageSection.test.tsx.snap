@@ -8,6 +8,7 @@ exports[`ObjectPageSection ObjectPage w/ lowercase title 1`] = `
     role="region"
   >
     <div
+      aria-level="3"
       class="ObjectPageSection-header"
       role="heading"
     >
@@ -38,6 +39,7 @@ exports[`ObjectPageSection Renders with children 1`] = `
     role="region"
   >
     <div
+      aria-level="3"
       class="ObjectPageSection-header"
       role="heading"
     >

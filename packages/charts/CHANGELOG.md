@@ -3,6 +3,71 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.9](https://github.com/SAP/ui5-webcomponents-react/compare/v0.13.8...v0.13.9) (2021-02-10)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-charts
+
+
+
+
+
+## [0.13.7](https://github.com/SAP/ui5-webcomponents-react/compare/v0.13.6...v0.13.7) (2021-02-05)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-charts
+
+
+
+
+
+## [0.13.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.13.5...v0.13.6) (2021-02-02)
+
+
+### Bug Fixes
+
+* **MicroBarChart:** fix default color calculation ([#1233](https://github.com/SAP/ui5-webcomponents-react/issues/1233)) ([9139707](https://github.com/SAP/ui5-webcomponents-react/commit/91397076803e4d4d4c1f5f4b589999af79fe3f05))
+
+
+
+
+
+## [0.13.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.13.4...v0.13.5) (2021-01-26)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-charts
+
+
+
+
+
+## [0.13.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.13.3...v0.13.4) (2021-01-20)
+
+
+### Bug Fixes
+
+* **Charts:** use ErrorBoundary to prevent errors when components are re-mounted ([#1190](https://github.com/SAP/ui5-webcomponents-react/issues/1190)) ([77427eb](https://github.com/SAP/ui5-webcomponents-react/commit/77427ebb0cb213158484248d952f5101ac577ea4)), closes [#1145](https://github.com/SAP/ui5-webcomponents-react/issues/1145)
+
+
+
+
+
+## [0.13.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.13.2...v0.13.3) (2021-01-19)
+
+
+### Bug Fixes
+
+* remove 'export * as' syntax for compatibility with react-scripts 3 ([#1184](https://github.com/SAP/ui5-webcomponents-react/issues/1184)) ([b4fe896](https://github.com/SAP/ui5-webcomponents-react/commit/b4fe896d40876649072a35ff50e8abc473a10915))
+
+
+
+
+
+## [0.13.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.13.1...v0.13.2) (2021-01-15)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-charts
+
+
+
+
+
 ## [0.13.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.13.0...v0.13.1) (2021-01-11)
 
 

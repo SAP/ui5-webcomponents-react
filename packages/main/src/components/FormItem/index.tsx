@@ -1,9 +1,10 @@
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
 import { Label, LabelPropTypes } from '@ui5/webcomponents-react/lib/Label';
 import React, { cloneElement, CSSProperties, FC, isValidElement, ReactElement, ReactNode, ReactNodeArray } from 'react';
+import { createUseStyles } from 'react-jss';
 
 export interface FormItemProps {
   /**
@@ -22,15 +23,18 @@ interface InternalProps extends FormItemProps {
   rowIndex?: number;
 }
 
-const useStyles = createComponentStyles(
+const useStyles = createUseStyles(
   {
     label: {
       gridColumnEnd: 'span var(--ui5wcr_form_label_span)',
       justifySelf: 'var(--ui5wcr_form_label_text_align)',
-      textAlign: 'var(--ui5wcr_form_label_text_align)'
+      textAlign: 'var(--ui5wcr_form_label_text_align)',
+      alignSelf: 'start',
+      paddingTop: CssSizeVariables.sapWcrFormLabelPaddingTop
     },
     content: {
-      gridColumnEnd: 'span var(--ui5wcr_form_content_span)'
+      gridColumnEnd: 'span var(--ui5wcr_form_content_span)',
+      alignSelf: 'start'
     }
   },
   { name: 'FormItem' }

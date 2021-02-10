@@ -1,5 +1,5 @@
 import { fetchI18nBundle } from '@ui5/webcomponents-base/dist/i18nBundle';
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { createUseStyles } from 'react-jss';
 import { cssVariablesStyles } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
 import { initRangeSet, RANGESETS } from '@ui5/webcomponents-react-base/lib/Device';
 import { useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base/lib/hooks';
@@ -8,7 +8,7 @@ import React, { FC, ReactNode, useEffect } from 'react';
 import { ThemeProvider as ReactJssThemeProvider } from 'react-jss';
 import { GlobalStyleClassesStyles } from './GlobalStyleClasses.jss';
 
-const useStyles = createComponentStyles(GlobalStyleClassesStyles);
+const useStyles = createUseStyles(GlobalStyleClassesStyles);
 
 const cssVarsPonyfillNeeded = () => !!window.CSSVarsPonyfill;
 

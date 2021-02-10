@@ -1,4 +1,3 @@
-import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import React from 'react';
 
 const baseStyles = {

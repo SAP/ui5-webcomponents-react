@@ -1,4 +1,4 @@
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { createUseStyles } from 'react-jss';
 import { useIsomorphicLayoutEffect, useIsRTL } from '@ui5/webcomponents-react-base/lib/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
@@ -289,7 +289,7 @@ export interface TableProps extends Omit<CommonProps, 'title'> {
   LoadingComponent?: ComponentType<any>;
 }
 
-const useStyles = createComponentStyles(styles, { name: 'AnalyticalTable' });
+const useStyles = createUseStyles(styles, { name: 'AnalyticalTable' });
 /**
  * The `AnalyticalTable` provides a set of convenient functions for responsive table design, including virtualization of rows and columns, infinite scrolling and customizable columns that will, unless otherwise defined, distribute the available space equally among themselves.
  * It also provides several possibilities for working with the data, including sorting, filtering, grouping and aggregation.
@@ -643,6 +643,10 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     verticalScrollBarRef.current.isExternalVerticalScroll = false;
   };
 
+  const tableClasses = StyleClassHelper.of(classes.table, GlobalStyleClasses.sapScrollBar);
+  if (withNavigationHighlight) {
+    tableClasses.put(classes.hasNavigationIndicator);
+  }
   return (
     <div className={className} style={inlineStyle} title={tooltip} ref={analyticalTableRef} {...passThroughProps}>
       {title && <TitleBar ref={titleBarRef}>{title}</TitleBar>}
@@ -655,7 +659,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
           aria-colcount={tableInternalColumns.length}
           data-per-page={internalVisibleRowCount}
           ref={tableRef}
-          className={StyleClassHelper.of(classes.table, GlobalStyleClasses.sapScrollBar).className}
+          className={tableClasses.className}
         >
           <div className={classes.tableHeaderBackgroundElement} />
           {headerGroups.map((headerGroup) => {
@@ -692,6 +696,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
           {loading && props.data?.length > 0 && <LoadingComponent style={{ width: `${totalColumnsWidth}px` }} />}
           {loading && props.data?.length === 0 && (
             <TablePlaceholder
+              isRtl={isRtl}
               columns={tableInternalColumns.filter(
                 (col) => (col.isVisible ?? true) && !tableState.hiddenColumns.includes(col.accessor)
               )}

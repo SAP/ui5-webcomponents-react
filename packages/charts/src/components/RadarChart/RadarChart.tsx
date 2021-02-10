@@ -32,20 +32,27 @@ interface MeasureConfig extends IChartMeasure {
   opacity?: number;
 }
 
-interface DimensionConfig extends IChartDimension {
-  interval?: number;
-}
-
 export interface RadarChartProps extends IChartBaseProps {
-  dimensions: DimensionConfig[];
+  /**
+   * An array of config objects. Each object will define one dimension of the chart.
+   *
+   * #### Required Properties
+   * - `accessor`: string containing the path to the dataset key the dimension should display. Supports object structures by using <code>'parent.child'</code>.
+   *   Can also be a getter.
+   *
+   * #### Optional Properties
+   * - `formatter`: function will be called for each data label and allows you to format it according to your needs
+   *
+   */
+  dimensions: IChartDimension[];
   /**
    * An array of config objects. Each object is defining one radar in the chart.
    *
-   * <h4>Required properties</h4>
+   * #### Required properties
    * - `accessor`: string containing the path to the dataset key this radar should display. Supports object structures by using <code>'parent.child'</code>.
    *   Can also be a getter.
    *
-   * <h4>Optional properties</h4>
+   * #### Optional properties
    *
    * - `label`: Label to display in legends or tooltips. Falls back to the <code>accessor</code> if not present.
    * - `color`: any valid CSS Color or CSS Variable. Defaults to the `sapChart_Ordinal` colors
@@ -67,12 +74,15 @@ const measureDefaults = {
   opacity: 0.5
 };
 
+/**
+ * A radar or spider or web chart is a two-dimensional chart type designed to plot one or more series of values over multiple quantitative variables.
+ */
 const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref: Ref<HTMLDivElement>) => {
   const {
     loading,
     dataset,
-    noLegend = false,
-    noAnimation = false,
+    noLegend,
+    noAnimation,
     onDataPointClick,
     onLegendClick,
     style,
@@ -86,7 +96,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
       legendPosition: 'bottom',
       legendHorizontalAlign: 'center',
       dataLabel: true,
-      polarGridType: 'circle',
+      polarGridType: 'circle' as 'circle',
       resizeDebounce: 250,
       ...props.chartConfig
     };
@@ -128,7 +138,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
     [onDataPointClick]
   );
 
-  const passThroughProps = usePassThroughHtmlProps(props);
+  const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick']);
 
   return (
     <ChartContainer
@@ -161,7 +171,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
           return (
             <Radar
               key={element.accessor}
-              activeDot={{ onClick: onDataPointClickInternal }}
+              activeDot={{ onClick: onDataPointClickInternal } as any}
               name={element.label ?? element.accessor}
               dataKey={element.accessor}
               stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
@@ -192,6 +202,11 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
     </ChartContainer>
   );
 });
+
+RadarChart.defaultProps = {
+  noLegend: false,
+  noAnimation: false
+};
 
 RadarChart.displayName = 'RadarChart';
 

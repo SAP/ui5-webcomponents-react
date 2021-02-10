@@ -1,6 +1,7 @@
 import { render, fireEvent, screen } from '@shared/tests';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { Dialog } from '@ui5/webcomponents-react/lib/Dialog';
+import { Bar } from '@ui5/webcomponents-react/lib/Bar';
 import {
   setCustomElementsScopingSuffix,
   setCustomElementsScopingRules
@@ -70,6 +71,20 @@ describe('withWebComponent', () => {
 
     rerender(<Button>Click Me</Button>);
     expect(screen.getByText('Click Me')).not.toHaveAttribute('disabled');
+  });
+
+  test('conditional rendering', () => {
+    const { asFragment } = render(
+      <Bar
+        startContent={
+          <>
+            {false && <span>I'm not here</span>}
+            <span>I'm here!</span>
+          </>
+        }
+      />
+    );
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('scoping', () => {

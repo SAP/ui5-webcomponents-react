@@ -17,7 +17,18 @@ const styles = {
   },
   tableHeaderRow: {
     height: CssSizeVariables.sapWcrAnalyticalTableRowHeight,
-    display: 'inline-flex'
+    display: 'inline-flex',
+    '& div:first-child $th': {
+      borderLeft: `1px solid ${ThemingParameters.sapList_BorderColor}`
+    }
+  },
+  hasNavigationIndicator: {
+    '& $tableHeaderRow :nth-last-child(2) $th': {
+      borderRight: 'none'
+    },
+    '& $tr :nth-last-child(2)': {
+      borderRight: 'none'
+    }
   },
   tableHeaderBackgroundElement: {
     boxSizing: 'border-box',
@@ -39,8 +50,8 @@ const styles = {
     padding: `0 0.5rem`,
     textAlign: 'start',
     boxSizing: 'border-box',
-    '&:first-child': {
-      borderLeft: `1px solid ${ThemingParameters.sapList_BorderColor}`
+    '&[data-column-id="__ui5wcr__internal_highlight_column"]': {
+      borderRight: 'none'
     },
     '&:last-child': {
       '& [data-resizer]': {

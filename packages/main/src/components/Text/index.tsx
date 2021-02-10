@@ -1,4 +1,4 @@
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { createUseStyles } from 'react-jss';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import React, { FC, forwardRef, ReactNode, Ref } from 'react';
@@ -20,7 +20,7 @@ export interface TextProps extends CommonProps {
   wrapping?: boolean;
 }
 
-const useStyles = createComponentStyles(TextStyles, { name: 'Text' });
+const useStyles = createUseStyles(TextStyles, { name: 'Text' });
 /**
  * The `Text` component can be used for embedding text into your app. You can hyphenate the text with the use of the `wrapping` prop.
  * <br />__Note:__ Line breaks will always be visualized except when the wrapping property is set to false. In addition, tabs and whitespace can be preserved by setting the renderWhitespace property to true.

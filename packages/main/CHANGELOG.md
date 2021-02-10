@@ -3,6 +3,110 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.9](https://github.com/SAP/ui5-webcomponents-react/compare/v0.13.8...v0.13.9) (2021-02-10)
+
+
+### Bug Fixes
+
+* **Form:** position all labels with the same spacing ([#1267](https://github.com/SAP/ui5-webcomponents-react/issues/1267)) ([4988241](https://github.com/SAP/ui5-webcomponents-react/commit/498824107792a2b1bfb3d950faa4d5efa4672372))
+
+
+
+
+
+## [0.13.8](https://github.com/SAP/ui5-webcomponents-react/compare/v0.13.7...v0.13.8) (2021-02-06)
+
+
+### Bug Fixes
+
+* **ToolbarSeparator:** use correct import path for useI18nBundle ([520f1da](https://github.com/SAP/ui5-webcomponents-react/commit/520f1daa8546cd1b684b95943a670429e930d27b)), closes [#1260](https://github.com/SAP/ui5-webcomponents-react/issues/1260)
+
+
+
+
+
+## [0.13.7](https://github.com/SAP/ui5-webcomponents-react/compare/v0.13.6...v0.13.7) (2021-02-05)
+
+
+### Bug Fixes
+
+* **webcomponents:** fix crash, allow nested fragments in all supported browsers ([#1259](https://github.com/SAP/ui5-webcomponents-react/issues/1259)) ([d0be87c](https://github.com/SAP/ui5-webcomponents-react/commit/d0be87c02a1f37003b43b43580e8792be174b01c))
+
+
+
+
+
+## [0.13.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.13.5...v0.13.6) (2021-02-02)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** show column header icons in correct place ([#1232](https://github.com/SAP/ui5-webcomponents-react/issues/1232)) ([bb13cf5](https://github.com/SAP/ui5-webcomponents-react/commit/bb13cf508eb268444194068ad338048a49e5aaf8))
+
+
+### Features
+
+* **Web Components:** allow nested fragments in slots (not available for IE11) ([#1221](https://github.com/SAP/ui5-webcomponents-react/issues/1221)) ([578ae6c](https://github.com/SAP/ui5-webcomponents-react/commit/578ae6c15ea7324ce4f8f108267f8841762e074e)), closes [#1219](https://github.com/SAP/ui5-webcomponents-react/issues/1219)
+
+
+
+
+
+## [0.13.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.13.4...v0.13.5) (2021-01-26)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** remove unnecessary borders in column headers ([#1218](https://github.com/SAP/ui5-webcomponents-react/issues/1218)) ([9da2247](https://github.com/SAP/ui5-webcomponents-react/commit/9da22477e5113a27743bcec5e62fda5170659b66)), closes [#1197](https://github.com/SAP/ui5-webcomponents-react/issues/1197)
+* **Web Components:** allow conditional rendering in slots ([#1217](https://github.com/SAP/ui5-webcomponents-react/issues/1217)) ([b9f50fe](https://github.com/SAP/ui5-webcomponents-react/commit/b9f50fed266bb30341865a2d719822173f76fc47)), closes [#1213](https://github.com/SAP/ui5-webcomponents-react/issues/1213)
+* use correct peer dependency version of @ui5/webcomponents-base ([63816fe](https://github.com/SAP/ui5-webcomponents-react/commit/63816fe772558a597bfa40eb09c07aaca9e822b6))
+
+
+
+
+
+## [0.13.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.13.3...v0.13.4) (2021-01-20)
+
+
+### Features
+
+* **AnalyticalTable:** improve accessibility ([#1189](https://github.com/SAP/ui5-webcomponents-react/issues/1189)) ([754050a](https://github.com/SAP/ui5-webcomponents-react/commit/754050a61f40e086c01eb96e2225d73dbb6ecdcb))
+
+
+
+
+
+## [0.13.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.13.2...v0.13.3) (2021-01-19)
+
+
+### Bug Fixes
+
+* remove 'export * as' syntax for compatibility with react-scripts 3 ([#1184](https://github.com/SAP/ui5-webcomponents-react/issues/1184)) ([b4fe896](https://github.com/SAP/ui5-webcomponents-react/commit/b4fe896d40876649072a35ff50e8abc473a10915))
+* resolve CSS variables correctly in IE11 ([#1183](https://github.com/SAP/ui5-webcomponents-react/issues/1183)) ([a5ac248](https://github.com/SAP/ui5-webcomponents-react/commit/a5ac24858af45433a5384fb82e8249c54a8952a5))
+* **ObjectPage:** add accessibility labels to header buttons and title levels ([#1176](https://github.com/SAP/ui5-webcomponents-react/issues/1176)) ([80f3057](https://github.com/SAP/ui5-webcomponents-react/commit/80f3057b38cb9af52bafb78ce0bf1536467c1284)), closes [#1166](https://github.com/SAP/ui5-webcomponents-react/issues/1166) [#1165](https://github.com/SAP/ui5-webcomponents-react/issues/1165)
+
+
+
+
+
+## [0.13.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.13.1...v0.13.2) (2021-01-15)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** prevent crashes and unintended behavior in IE11 ([#1168](https://github.com/SAP/ui5-webcomponents-react/issues/1168)) ([4d328a8](https://github.com/SAP/ui5-webcomponents-react/commit/4d328a82d6d8dc86022a212556bb786c35f2f64a))
+* **DynamicPage:** add className prop to dynamic page classes ([#1159](https://github.com/SAP/ui5-webcomponents-react/issues/1159)) ([1c73396](https://github.com/SAP/ui5-webcomponents-react/commit/1c73396f00f60e085769c772100a51ba2a1b4450))
+* **MessageBox:** don't crash when Dialog Web Component is not ready yet ([#1148](https://github.com/SAP/ui5-webcomponents-react/issues/1148)) ([cadab16](https://github.com/SAP/ui5-webcomponents-react/commit/cadab16b76f1546a6349ee3a124e4243252241d8))
+
+
+### Features
+
+* **AnalyticalTable:** add plugin hook to enable disabling selection of rows ([#1156](https://github.com/SAP/ui5-webcomponents-react/issues/1156)) ([4da2848](https://github.com/SAP/ui5-webcomponents-react/commit/4da28487152630ceda02747974c94c84a986843e))
+
+
+
+
+
 ## [0.13.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.13.0...v0.13.1) (2021-01-11)
 
 

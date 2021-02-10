@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Option } from '@ui5/webcomponents-react/lib/Option';
-import { Select } from '@ui5/webcomponents-react/lib/Select';
+import { Option, Select } from '@ui5/webcomponents-react';
 import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
-import Constants from '../../util/Constants';
+import { useLocalStorageState } from '../../hooks/useLocalStorageState';
 
 const style = {
   select: {
@@ -20,15 +19,17 @@ const themeOptions = [
   { value: 'sap_fiori_3_hcw', title: 'shell.button.user.settings.item.themeSwitch.option.highContrastWhite' },
 ];
 
-const ThemeSwitch = ({ storedTheme = localStorage.getItem(Constants.SEED.SELECTED_THEME) }) => {
+const ThemeSwitch = () => {
   const { t } = useTranslation();
 
+  const [themeInLocalStorage, setThemeLocalStorage] = useLocalStorageState('selected_theme', themeOptions[0].value);
+
   useEffect(() => {
-    setTheme(storedTheme ? storedTheme : themeOptions[0].value);
-  }, [storedTheme]);
+    setTheme(themeInLocalStorage);
+  }, [themeInLocalStorage]);
 
   const onChange = (event) => {
-    localStorage.setItem(Constants.SEED.SELECTED_THEME, event.detail.selectedOption.dataset.value);
+    setThemeLocalStorage(event.detail.selectedOption.dataset.value);
     setTheme(event.detail.selectedOption.dataset.value);
   };
 
@@ -37,7 +38,7 @@ const ThemeSwitch = ({ storedTheme = localStorage.getItem(Constants.SEED.SELECTE
       {themeOptions &&
         themeOptions.map((option) => {
           return (
-            <Option key={option.value} data-value={option.value} selected={option.value === storedTheme}>
+            <Option key={option.value} data-value={option.value} selected={option.value === themeInLocalStorage}>
               {t(option.title)}
             </Option>
           );

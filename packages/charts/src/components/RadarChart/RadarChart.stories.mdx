@@ -1,0 +1,166 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+import { RadarChart } from '@ui5/webcomponents-react-charts/lib/RadarChart';
+import { complexDataSet, simpleDataSet } from '../../resources/DemoProps';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
+
+<Meta
+  title="Charts /  RadarChart"
+  component={RadarChart}
+  argTypes={{
+    ...DocsCommonProps,
+    dataset: {
+      control: { disable: true }
+    },
+    measures: {
+      control: { disable: true }
+    },
+    dimensions: {
+      control: { disable: true }
+    }
+  }}
+/>
+
+<DocsHeader />
+
+## Example
+
+<Canvas>
+  <Story name="Default">
+    {(props) => (
+      <RadarChart
+        loading={props.loading}
+        noLegend={props.noLegend}
+        noAnimation={props.noAnimation}
+        onDataPointClick={props.onDataPointClick}
+        onLegendClick={props.onLegendClick}
+        dataset={complexDataSet}
+        style={{ width: '100%' }}
+        dimensions={[
+          {
+            accessor: 'name',
+            formatter: (d) => `${d} 2019`,
+            interval: 0
+          }
+        ]}
+        measures={[
+          {
+            accessor: 'users',
+            label: 'Users',
+            formatter: (val) => val.toLocaleString()
+          },
+          {
+            accessor: 'sessions',
+            label: 'Active Sessions',
+            formatter: (val) => `${val} sessions`,
+            hideDataLabel: true
+          },
+          {
+            accessor: 'volume',
+            label: 'Vol.'
+          }
+        ]}
+      />
+    )}
+  </Story>
+</Canvas>
+
+## Properties
+
+<ArgsTable story="Default" />
+
+<br />
+<br />
+
+## More Examples
+
+### With Custom Color
+
+<Canvas>
+  <Story name="With Custom Color">
+    {(props) => (
+      <RadarChart
+        loading={props.loading}
+        noLegend={props.noLegend}
+        noAnimation={props.noAnimation}
+        onDataPointClick={props.onDataPointClick}
+        onLegendClick={props.onLegendClick}
+        dimensions={[{ accessor: 'name' }]}
+        measures={[{ accessor: 'users', color: 'red' }]}
+        dataset={simpleDataSet}
+        style={{ width: '100%' }}
+      />
+    )}
+  </Story>
+</Canvas>
+
+### With Data Labels
+
+<Canvas>
+  <Story name="With Data Labels">
+    {(props) => (
+      <RadarChart
+        loading={props.loading}
+        noLegend={props.noLegend}
+        noAnimation={props.noAnimation}
+        onDataPointClick={props.onDataPointClick}
+        onLegendClick={props.onLegendClick}
+        dimensions={[{ accessor: 'name' }]}
+        measures={[
+          {
+            accessor: 'users'
+          },
+          {
+            accessor: 'sessions'
+          },
+          {
+            accessor: 'volume'
+          }
+        ]}
+        dataset={complexDataSet}
+        style={{ width: '100%' }}
+      />
+    )}
+  </Story>
+</Canvas>
+
+### Polygon
+
+<Canvas>
+  <Story name="Polygon">
+    {(props) => (
+      <RadarChart
+        loading={props.loading}
+        noLegend={props.noLegend}
+        noAnimation={props.noAnimation}
+        onDataPointClick={props.onDataPointClick}
+        onLegendClick={props.onLegendClick}
+        dataset={complexDataSet}
+        dimensions={[{ accessor: 'name', formatter: (element) => element.slice(0, 3) }]}
+        chartConfig={{ polarGridType: 'polygon' }}
+        measures={[
+          {
+            accessor: 'users',
+            formatter: (element) => `${element / 10}`,
+            label: 'number of users'
+          },
+          {
+            accessor: 'sessions'
+          },
+          {
+            accessor: 'volume'
+          }
+        ]}
+        style={{ width: '100%' }}
+      />
+    )}
+  </Story>
+</Canvas>
+
+### Loading Placeholder
+
+<Canvas>
+  <Story name="Loading Placeholder">
+    <RadarChart style={{ width: '100%' }} dimensions={[]} measures={[]} />
+  </Story>
+</Canvas>

@@ -1,15 +1,9 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Title } from '@ui5/webcomponents-react/lib/Title';
-import { Link } from '@ui5/webcomponents-react/lib/Link';
-import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
-import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
-import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
-import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
-import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJustifyContent';
+import { FlexBox, FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent, Link, Title, TitleLevel } from '@ui5/webcomponents-react';
 
-import { getUrl } from '../../util/browser/BrowserProvider';
+import { ROUTES } from '../../routes/Routes';
 
 const style = {
   wrapper: {
@@ -33,7 +27,7 @@ const Fallback = ({ image, altImage, text, reload }) => {
         {text}
       </Title>
       {reload && (
-        <Link style={style.reloadButton} href={getUrl('HOME')} target="_self">
+        <Link style={style.reloadButton} href={ROUTES.HOME} target="_self">
           {t('page.fallback.reload.text')}
         </Link>
       )}

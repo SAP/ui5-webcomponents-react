@@ -1,4 +1,4 @@
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { createUseStyles } from 'react-jss';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { BusyIndicator } from '@ui5/webcomponents-react/lib/BusyIndicator';
@@ -9,7 +9,7 @@ import React, { FC, forwardRef, ReactElement, RefObject } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import styles from './FilterGroupItem.jss';
 
-const useStyles = createComponentStyles(styles, { name: 'FilterGroupItem' });
+const useStyles = createUseStyles(styles, { name: 'FilterGroupItem' });
 
 const emptyObject = {};
 

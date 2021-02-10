@@ -3,7 +3,7 @@ import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHe
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import React, { FC, forwardRef, ReactNode, ReactNodeArray, RefObject } from 'react';
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { EmptyIdPropException } from '../ObjectPage/EmptyIdPropException';
 
@@ -40,7 +40,7 @@ const styles = {
   }
 };
 
-const useStyles = createComponentStyles(styles, { name: 'ObjectPageSubSection' });
+const useStyles = createUseStyles(styles, { name: 'ObjectPageSubSection' });
 /**
  * Second-level information container of an `ObjectPage`.<br />
  * __Note:__ This component should only be used inside an `ObjectPageSection` component.
@@ -75,7 +75,9 @@ const ObjectPageSubSection: FC<ObjectPageSubSectionPropTypes> = forwardRef(
         id={htmlId}
         data-component-name="ObjectPageSubSection"
       >
-        <div className={classes.objectPageSubSectionHeaderTitle}>{title}</div>
+        <div role="heading" aria-level={4} className={classes.objectPageSubSectionHeaderTitle}>
+          {title}
+        </div>
         <div className={classes.subSectionContent}>{children}</div>
       </div>
     );
