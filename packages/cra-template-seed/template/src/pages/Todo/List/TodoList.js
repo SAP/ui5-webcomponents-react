@@ -1,16 +1,13 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useHistory } from 'react-router-dom';
-import { isChrome, isMobile, isTablet, isDesktop, isIE } from '@ui5/webcomponents-base/dist/Device';
+import { isChrome, isDesktop, isIE, isMobile, isTablet } from '@ui5/webcomponents-base/dist/Device';
 
-import { Link } from '@ui5/webcomponents-react/lib/Link';
-import { Title } from '@ui5/webcomponents-react/lib/Title';
-import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
-import { Text } from '@ui5/webcomponents-react/lib/Text';
-import { getUrl } from '../../../util/browser/BrowserProvider';
+import { Link, Text, Title, TitleLevel } from '@ui5/webcomponents-react';
 import ComponentWithAuthorizationRestriction from '../../../auth/ComponentWithAuthorizationRestriction';
 import CenteredContent from '../../../components/Layout/CenteredContent';
 import TodoListPaginatedItems from './TodoListPaginatedItems';
+import { ROUTES } from '../../../routes/Routes';
 
 const TodoList = () => {
   const history = useHistory();
@@ -25,7 +22,7 @@ const TodoList = () => {
       <br />
       <Link onClick={() => history.push('/dontexist')}>Test NotFound Page</Link>
       <br />
-      <Link onClick={() => history.push(getUrl('BUGGY'))}>Test Error Page</Link>
+      <Link onClick={() => history.push(ROUTES.BUGGY)}>Test Error Page</Link>
       <br />
       <br />
       <ComponentWithAuthorizationRestriction allowedAuthorities={['canAccessDropApplication']} authorityKey="permissions">

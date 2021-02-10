@@ -2,8 +2,7 @@ import React from 'react';
 
 import { spacing } from '@ui5/webcomponents-react-base';
 
-import { Input as UI5Input } from '@ui5/webcomponents-react/lib/Input';
-import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import { Input as UI5Input, ValueState } from '@ui5/webcomponents-react';
 import FieldBase from '../FieldBase/FieldBase';
 
 const Input = ({ field, form: { touched, errors }, labelText, style, ...props }) => {
