@@ -4,7 +4,7 @@
   <img src="https://user-images.githubusercontent.com/8363610/93131219-1e36c300-f6aa-11ea-90e6-581d3f8a4491.png" alt="UI5 Web Components for React Seed Logo" />
 </p>
 
-This seed decreases the bootstrap time spent on new projects, POCs or MVPs using [**UI5 WebComponents for React**](https://github.com/SAP/ui5-webcomponents-react) by leveraging several out-of-the-box components, scripts & configurations.
+This seed decreases the bootstrap time spent on new projects, POCs or MVPs using [**UI5 Web Components for React**](https://github.com/SAP/ui5-webcomponents-react) by leveraging several out-of-the-box components, scripts & configurations.
 
 # Usage
 ```shell script
