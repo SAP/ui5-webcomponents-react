@@ -29,8 +29,7 @@ or the [changelog](https://github.com/SAP/ui5-webcomponents-react/blob/master/CH
 
 #### ThemeProvider Context Changes
 
-The `ThemeProvider` was provided a nested styles object with the properties `theme`, `contentDensity`, `parameters` and `rtl`.
-This object might have been used by you in case you where creating dynamic styles using `react-jss`. It has now been
+The `ThemeProvider` was provided with a nested styles object including the properties `theme`, `contentDensity`, `parameters` and `rtl`. It has now been
 flattened to provide only the `ThemingParameters`.
 
 The old API had several issues, including outdated values (the properties were not updated after they changed) and
@@ -93,7 +92,7 @@ const MyComponent = () => {
   const ref = useRef();
 
   useEffect(() => {
-    getComputedStyle(ref.current).getPropertyValue('--_ui5_content_density'); // this return either cozy or compact
+    getComputedStyle(ref.current).getPropertyValue('--_ui5_content_density'); // this will return either cozy or compact
   }, []);
 
   return <div ref={ref}>My Div</div>;
