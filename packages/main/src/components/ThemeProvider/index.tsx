@@ -1,15 +1,10 @@
-import { getRTL } from '@ui5/webcomponents-base/dist/config/RTL';
-import { getTheme } from '@ui5/webcomponents-base/dist/config/Theme';
 import { fetchI18nBundle } from '@ui5/webcomponents-base/dist/i18nBundle';
-import { createUseStyles } from 'react-jss';
 import { cssVariablesStyles } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
 import { initRangeSet, RANGESETS } from '@ui5/webcomponents-react-base/lib/Device';
 import { useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base/lib/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
-import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
-import React, { FC, ReactNode, useEffect, useMemo } from 'react';
-import { ThemeProvider as ReactJssThemeProvider } from 'react-jss';
-import { JSSTheme } from '../../interfaces/JSSTheme';
+import React, { FC, ReactNode, useEffect } from 'react';
+import { createUseStyles, ThemeProvider as ReactJssThemeProvider } from 'react-jss';
 import { GlobalStyleClassesStyles } from './GlobalStyleClasses.jss';
 
 const useStyles = createUseStyles(GlobalStyleClassesStyles);
@@ -30,19 +25,7 @@ if (!document.querySelector('style[data-ui5-webcomponents-react-sizes]')) {
 
 const ThemeProvider: FC<ThemeProviderProps> = (props: ThemeProviderProps) => {
   const { children } = props;
-  const isCompactSize = document.body.classList.contains('ui5-content-density-compact');
   useStyles();
-
-  const theme = getTheme();
-
-  const themeContext: JSSTheme = useMemo(() => {
-    return {
-      theme,
-      contentDensity: isCompactSize ? ContentDensity.Compact : ContentDensity.Cozy,
-      parameters: ThemingParameters,
-      rtl: getRTL()
-    };
-  }, [theme, isCompactSize]);
 
   useEffect(() => {
     if (cssVarsPonyfillNeeded()) {
@@ -62,7 +45,7 @@ const ThemeProvider: FC<ThemeProviderProps> = (props: ThemeProviderProps) => {
     fetchI18nBundle('@ui5/webcomponents-react');
   }, []);
 
-  return <ReactJssThemeProvider theme={themeContext}>{children}</ReactJssThemeProvider>;
+  return <ReactJssThemeProvider theme={ThemingParameters}>{children}</ReactJssThemeProvider>;
 };
 
 ThemeProvider.displayName = 'ThemeProvider';
