@@ -55,11 +55,12 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingPara
 
 const useStyles = createUseStyles((context) => ({
   myClass: {
-    color: ThemingParameters.sapContent_LabelColor
+    color: context.sapContent_LabelColor
   }
 }));
 
-// as now everything is static you can also omit the function completely:
+// as the `context` is now static and will always have the values from `ThemingParameters`,
+// you can also omit the function completely and use the `ThemingParameters` directly:
 const useStyles = createUseStyles({
   myClass: {
     color: ThemingParameters.sapContent_LabelColor
