@@ -2,7 +2,7 @@ import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHe
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import React, { FC, forwardRef, ReactNode, ReactNodeArray, RefObject } from 'react';
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { EmptyIdPropException } from '../ObjectPage/EmptyIdPropException';
 import styles from './ObjectPageSection.jss';
@@ -27,7 +27,7 @@ export interface ObjectPageSectionPropTypes extends CommonProps {
   children: ReactNode | ReactNodeArray;
 }
 
-const useStyles = createComponentStyles(styles, { name: 'ObjectPageSection' });
+const useStyles = createUseStyles(styles, { name: 'ObjectPageSection' });
 /**
  * Top-level information container of an `ObjectPage`.
  */

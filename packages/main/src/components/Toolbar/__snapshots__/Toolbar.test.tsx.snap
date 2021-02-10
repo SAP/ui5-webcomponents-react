@@ -81,3 +81,345 @@ exports[`Toolbar Renders with default Props 1`] = `
   </div>
 </DocumentFragment>
 `;
+
+exports[`Toolbar ToolbarSeparator 1`] = `
+<DocumentFragment>
+  <div
+    class="Toolbar-outerContainer"
+    data-testid="toolbar"
+  >
+    <div
+      class="Toolbar-toolbar"
+    >
+      <div>
+        <span
+          class="Text-text"
+        >
+          Item1
+        </span>
+      </div>
+      <div>
+        <div
+          aria-label="Separator"
+          class="ToolbarSeparator-separator"
+        />
+      </div>
+      <div>
+        <span
+          class="Text-text"
+        >
+          Item2
+        </span>
+      </div>
+      <div>
+        <span
+          class="Text-text"
+        >
+          Item3
+        </span>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Toolbar ToolbarSpacer 1`] = `
+<DocumentFragment>
+  <div
+    class="Toolbar-outerContainer"
+    data-testid="toolbar"
+  >
+    <div
+      class="Toolbar-toolbar"
+    >
+      <div>
+        <span
+          class="Text-text"
+        >
+          Item1
+        </span>
+      </div>
+      <span
+        class="spacer"
+        style="flex-grow: 1;"
+      />
+      <div>
+        <span
+          class="Text-text"
+        >
+          Item2
+        </span>
+      </div>
+      <div>
+        <span
+          class="Text-text"
+        >
+          Item3
+        </span>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Toolbar overflow menu 1`] = `
+<body>
+  <div>
+    <div
+      class="Toolbar-outerContainer Toolbar-hasOverflow"
+      data-testid="toolbar"
+      style="width: 300px;"
+    >
+      <div
+        class="Toolbar-toolbar"
+      >
+        <div>
+          <span
+            class="Text-text"
+            data-testid="toolbar-item"
+            style="width: 200px;"
+          >
+            Item1
+          </span>
+        </div>
+        <div
+          style="visibility: hidden;"
+        >
+          <span
+            class="Text-text"
+            data-testid="toolbar-item"
+            style="width: 200px;"
+          >
+            Item2
+          </span>
+        </div>
+        <div
+          style="visibility: hidden;"
+        >
+          <span
+            class="Text-text"
+            data-testid="toolbar-item"
+            style="width: 200px;"
+          >
+            Item3
+          </span>
+        </div>
+      </div>
+      <div
+        class="Toolbar-overflowButtonContainer"
+        title="Show More"
+      >
+        <ui5-togglebutton
+          design="Transparent"
+          icon="overflow"
+          ui5-togglebutton=""
+        />
+      </div>
+    </div>
+  </div>
+  <ui5-popover
+    horizontal-align="Center"
+    placement-type="Bottom"
+    ui5-popover=""
+    vertical-align="Center"
+  >
+    <div
+      class="Toolbar-popoverContent"
+    >
+      <span
+        class="Text-text"
+        data-testid="toolbar-item"
+        style="width: 200px;"
+      >
+        Item2
+      </span>
+      <span
+        class="Text-text"
+        data-testid="toolbar-item"
+        style="width: 200px;"
+      >
+        Item3
+      </span>
+    </div>
+  </ui5-popover>
+</body>
+`;
+
+exports[`Toolbar overflow menu 2`] = `
+<body>
+  <div>
+    <div
+      class="Toolbar-outerContainer Toolbar-hasOverflow"
+      data-testid="toolbar"
+      style="width: 300px;"
+    >
+      <div
+        class="Toolbar-toolbar"
+      >
+        <div>
+          <span
+            class="Text-text"
+            data-testid="toolbar-item"
+            style="width: 200px;"
+          >
+            Item1
+          </span>
+        </div>
+        <div
+          style="visibility: hidden;"
+        >
+          <span
+            class="Text-text"
+            data-testid="toolbar-item"
+            style="width: 200px;"
+          >
+            Item2
+          </span>
+        </div>
+        <div
+          style="visibility: hidden;"
+        >
+          <span
+            class="Text-text"
+            data-testid="toolbar-item"
+            style="width: 200px;"
+          >
+            Item3
+          </span>
+        </div>
+      </div>
+      <div
+        class="Toolbar-overflowButtonContainer"
+        title="Show More"
+      >
+        <ui5-togglebutton
+          design="Transparent"
+          icon="overflow"
+          ui5-togglebutton=""
+        />
+      </div>
+    </div>
+  </div>
+  <ui5-popover
+    horizontal-align="Center"
+    placement-type="Bottom"
+    ui5-popover=""
+    vertical-align="Center"
+  >
+    <div
+      class="Toolbar-popoverContent"
+    >
+      <span
+        class="Text-text"
+        data-testid="toolbar-item"
+        style="width: 200px;"
+      >
+        Item2
+      </span>
+      <span
+        class="Text-text"
+        data-testid="toolbar-item"
+        style="width: 200px;"
+      >
+        Item3
+      </span>
+    </div>
+  </ui5-popover>
+</body>
+`;
+
+exports[`Toolbar overflow menu 3`] = `
+<body>
+  <div>
+    <div
+      class="Toolbar-outerContainer Toolbar-hasOverflow"
+      data-testid="toolbar"
+      style="width: 300px;"
+    >
+      <div
+        class="Toolbar-toolbar"
+      >
+        <div>
+          <span
+            class="Text-text"
+            data-testid="toolbar-item"
+            style="width: 200px;"
+          >
+            Item1
+          </span>
+        </div>
+        <div
+          style="visibility: hidden;"
+        >
+          <div
+            aria-label="Separator"
+            class="ToolbarSeparator-separator"
+          />
+        </div>
+        <div
+          style="visibility: hidden;"
+        >
+          <span
+            class="Text-text"
+            data-testid="toolbar-item"
+            style="width: 200px;"
+          >
+            Item2
+          </span>
+        </div>
+        <div
+          style="visibility: hidden;"
+        >
+          <span
+            class="Text-text"
+            data-testid="toolbar-item"
+            style="width: 200px;"
+          >
+            Item3
+          </span>
+        </div>
+      </div>
+      <div
+        class="Toolbar-overflowButtonContainer"
+        title="Show More"
+      >
+        <ui5-togglebutton
+          design="Transparent"
+          icon="overflow"
+          ui5-togglebutton=""
+        />
+      </div>
+    </div>
+  </div>
+  <ui5-popover
+    horizontal-align="Center"
+    placement-type="Bottom"
+    ui5-popover=""
+    vertical-align="Center"
+  >
+    <div
+      class="Toolbar-popoverContent"
+    >
+      <div
+        aria-label="Separator"
+        class="ToolbarSeparator-separator"
+        style="height: 0.0625rem; margin: 0.375rem 0.1875rem; width: 100%;"
+      />
+      <span
+        class="Text-text"
+        data-testid="toolbar-item"
+        style="width: 200px;"
+      >
+        Item2
+      </span>
+      <span
+        class="Text-text"
+        data-testid="toolbar-item"
+        style="width: 200px;"
+      >
+        Item3
+      </span>
+    </div>
+  </ui5-popover>
+</body>
+`;

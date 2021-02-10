@@ -69,16 +69,28 @@ interface DimensionConfig extends IChartDimension {
 }
 
 export interface ComposedChartProps extends IChartBaseProps {
+  /**
+   * An array of config objects. Each object will define one dimension of the chart.
+   *
+   * #### Required Properties
+   * - `accessor`: string containing the path to the dataset key the dimension should display. Supports object structures by using <code>'parent.child'</code>.
+   *   Can also be a getter.
+   *
+   * #### Optional Properties
+   * - `formatter`: function will be called for each data label and allows you to format it according to your needs
+   * - `interval`: number that controls how many ticks are rendered on the x axis
+   *
+   */
   dimensions: DimensionConfig[];
   /**
    * An array of config objects. Each object is defining one element in the chart.
    *
-   * <h4>Required properties</h4>
+   * #### Required properties
    * - `accessor`: string containing the path to the dataset key this element should display. Supports object structures by using <code>'parent.child'</code>.
    *   Can also be a getter.
    * - `type`: string which chart element to show. Possible values: `line`, `bar`, `area`.
    *
-   * <h4>Optional properties</h4>
+   * #### Optional properties
    *
    * - `label`: Label to display in legends or tooltips. Falls back to the <code>accessor</code> if not present.
    * - `color`: any valid CSS Color or CSS Variable. Defaults to the `sapChart_Ordinal` colors
@@ -106,15 +118,18 @@ const ChartTypes = {
 
 type AvailableChartTypes = 'line' | 'bar' | 'area' | string;
 
+/**
+ * The `ComposedChart` enables you to combine different chart types in one chart, e.g. showing bars together with lines.
+ */
 const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartProps, ref: Ref<HTMLDivElement>) => {
   const {
     loading,
     dataset,
     onDataPointClick,
-    noLegend = false,
-    noAnimation = false,
+    noLegend,
+    noAnimation,
     onLegendClick,
-    layout = 'horizontal',
+    layout,
     style,
     className,
     tooltip,
@@ -437,6 +452,12 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     </ChartContainer>
   );
 });
+
+ComposedChart.defaultProps = {
+  noLegend: false,
+  noAnimation: false,
+  layout: 'horizontal'
+};
 
 ComposedChart.displayName = 'ComposedChart';
 

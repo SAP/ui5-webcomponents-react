@@ -103,7 +103,6 @@ exports[`Micro Bar Chart Render with default Props 1`] = `
           </div>
         </div>
       </div>
-      <div />
     </div>
   </div>
 </DocumentFragment>
@@ -212,7 +211,6 @@ exports[`Micro Bar Chart With custom colors 1`] = `
           </div>
         </div>
       </div>
-      <div />
     </div>
   </div>
 </DocumentFragment>

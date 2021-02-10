@@ -175,7 +175,22 @@ const handleResizeEvent = () => {
 };
 
 // re-export everything from the web components device
-export * from '@ui5/webcomponents-base/dist/Device';
+export {
+  isIE,
+  isEdge,
+  isChrome,
+  isFF,
+  isSafari,
+  isMobile,
+  isDesktop,
+  isTablet,
+  isPhone,
+  isAndroid,
+  getOS,
+  getSystem,
+  getBrowser,
+  supportTouch
+} from '@ui5/webcomponents-base/dist/Device';
 // export all support methods
 export * from './Support';
 // export all media methods

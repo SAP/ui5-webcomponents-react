@@ -109,6 +109,7 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
         </div>
         <div>
           <div
+            aria-label="Separator"
             class="ToolbarSeparator-separator"
           />
         </div>
