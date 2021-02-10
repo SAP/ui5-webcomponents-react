@@ -123,7 +123,7 @@ This will help you to use the defined coding style at the `.eslintrc` file durin
 
 ### [Jest](https://marketplace.visualstudio.com/items?itemName=Orta.vscode-jest) & [Jest Runner](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 
-This will help you run and debug your `*.test.js`  file during test-development.
+This will help you run and debug your `*.test.js` file during test-development.
 
 ### [vscode-icons](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
 
