@@ -61,6 +61,10 @@ export interface MicroBarChartProps
    * - `DataLabel`: a custom component to be used for the data label
    */
   measure: MeasureConfig;
+  /**
+   * An optional number for the maxValue of the valueBar
+  */
+  customMaxValue?: number;
 }
 
 const resolveColor = (index: number, color = null) => {
@@ -126,7 +130,7 @@ const useStyles = createUseStyles(MicroBarChartStyles, { name: 'MicroBarChart' }
  * The `MicroBarChart` compares different values of the same category to each other by displaying them in a compact way.
  */
 const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartProps, ref: Ref<HTMLDivElement>) => {
-  const { loading, dataset, onDataPointClick, style, className, tooltip, slot } = props;
+  const { loading, dataset, onDataPointClick, style, className, tooltip, slot, customMaxValue } = props;
   const classes = useStyles();
 
   const dimension = useMemo<IChartDimension>(
@@ -144,7 +148,13 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
     [props.measure]
   );
 
-  const maxValue = dataset ? Math.max(...dataset?.map((item) => getValueByDataKey(item, measure.accessor))) : 0;
+  const maxValue = useMemo(() => {
+    if (dataset) {
+      const maxDatasetValue = Math.max(...dataset?.map((item) => getValueByDataKey(item, measure.accessor)));
+      return customMaxValue && customMaxValue > maxDatasetValue ? customMaxValue : maxDatasetValue;
+    }
+    return 0;
+  }, [dataset, measure, customMaxValue]);
   const chartRef = useConsolidatedRef<any>(ref);
 
   const barHeight = measure?.width ? `${measure.width}px` : '4px';
