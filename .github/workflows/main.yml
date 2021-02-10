@@ -4,7 +4,7 @@ name: Deploy Docs
 on: [push, pull_request]
 jobs:
   check-bundle-size:
-    if: ${{ github.event_name === 'pull_request' }}
+    if: ${{ github.event_name == 'pull_request' }}
     runs-on: ubuntu-latest
 
     steps:
@@ -25,7 +25,7 @@ jobs:
           compression: 'gzip'
 
   deploy-master-docs:
-    if: ${{ github.repository === 'SAP/ui5-webcomponents-react' && github.ref == 'refs/heads/main' }}
+    if: ${{ github.repository == 'SAP/ui5-webcomponents-react' && github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
@@ -54,7 +54,7 @@ jobs:
         clean: true
 
   test-and-build:
-    if: ${{ !contains(github.event.head_commit.message, '[ci skip]') && (github.event_name === 'push' || github.base_ref === 'main') }}
+    if: ${{ !contains(github.event.head_commit.message, '[ci skip]') && (github.event_name == 'push' || github.base_ref == 'main') }}
     name: 'Install, Test & Build'
     runs-on: ubuntu-latest
 
