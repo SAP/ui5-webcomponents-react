@@ -28,7 +28,7 @@ jobs:
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@4.0.0
       with:
-        # token: ${{ secrets.ACCESS_TOKEN }} # maybe the default github access token is now sufficient?
+        token: ${{ secrets.ACCESS_TOKEN }} # maybe the default github access token is now sufficient?
         branch: gh-pages # The branch the action should deploy to.
         folder: .out # The folder the action should deploy.
         target-folder: master
