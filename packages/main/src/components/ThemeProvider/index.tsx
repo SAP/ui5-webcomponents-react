@@ -1,11 +1,10 @@
 import { fetchI18nBundle } from '@ui5/webcomponents-base/dist/i18nBundle';
-import { createUseStyles } from 'react-jss';
 import { cssVariablesStyles } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
 import { initRangeSet, RANGESETS } from '@ui5/webcomponents-react-base/lib/Device';
 import { useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base/lib/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import React, { FC, ReactNode, useEffect } from 'react';
-import { ThemeProvider as ReactJssThemeProvider } from 'react-jss';
+import { createUseStyles, ThemeProvider as ReactJssThemeProvider } from 'react-jss';
 import { GlobalStyleClassesStyles } from './GlobalStyleClasses.jss';
 
 const useStyles = createUseStyles(GlobalStyleClassesStyles);
