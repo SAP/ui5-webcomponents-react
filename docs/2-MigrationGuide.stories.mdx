@@ -25,6 +25,81 @@ or the [changelog](https://github.com/SAP/ui5-webcomponents-react/blob/master/CH
 
 <br />
 
+### API Updates
+
+#### ThemeProvider Context Changes
+
+The `ThemeProvider` was provided with a nested styles object including the properties `theme`, `contentDensity`, `parameters` and `rtl`. It has now been
+flattened to provide only the `ThemingParameters`.
+
+The old API had several issues, including outdated values (the properties were not updated after they changed) and
+e.g. `contentDensity` would have led to wrong results in case only a small part of your application was running on e.g. `compact` mode.
+
+Migration Path:
+
+```js
+import { createUseStyles } from 'react-jss';
+
+const useStyles = createUseStyles((context) => ({
+  myClass: {
+    color: context.parameters.sapContent_LabelColor
+  }
+}));
+```
+
+becomes
+
+```js
+import { createUseStyles } from 'react-jss';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
+
+const useStyles = createUseStyles((context) => ({
+  myClass: {
+    color: context.sapContent_LabelColor
+  }
+}));
+
+// as the `context` is now static and will always have the values from `ThemingParameters`,
+// you can also omit the function completely and use the `ThemingParameters` directly:
+const useStyles = createUseStyles({
+  myClass: {
+    color: ThemingParameters.sapContent_LabelColor
+  }
+});
+```
+
+Replacements for the other properties
+
+```js
+// theme
+import { getTheme } from '@ui5/webcomponents-base/dist/config/Theme';
+
+getTheme(); // will return e.g. sap_fiori_3
+
+// rtl
+import { useRef } from 'react';
+import { useIsRTL } from '@ui5/webcomponents-react-base/lib/hooks';
+
+const MyComponent = () => {
+  const ref = useRef();
+
+  useIsRTL(ref); // return true when current element is rendered right to left - otherwise false
+
+  return <div ref={ref}>My Div</div>;
+};
+
+// contentDensity
+const MyComponent = () => {
+  const ref = useRef();
+
+  useEffect(() => {
+    getComputedStyle(ref.current).getPropertyValue('--_ui5_content_density'); // this will return either cozy or compact
+  }, []);
+
+  return <div ref={ref}>My Div</div>;
+};
+```
+
 ### Deleted Hooks
 
 The `useI18nText` hook has been removed and replaced by the `useI18nBundle` hook. <br />
