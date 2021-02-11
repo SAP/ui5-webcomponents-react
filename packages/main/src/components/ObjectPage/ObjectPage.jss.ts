@@ -70,12 +70,13 @@ const styles = {
     top: 0,
     zIndex: 2
   },
-  iEClass:{
-    position:'fixed',
-    width:'100%'
+  iEClass: {
+    position: 'fixed',
+    width: '100%'
   },
   contentHeader: {
     backgroundColor: ThemingParameters.sapObjectHeader_Background,
+    position: 'sticky',
     paddingBottom: '0.25rem',
     maxHeight: '500px',
     overflow: 'hidden',
