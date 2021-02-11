@@ -1,9 +1,12 @@
 import { sapUiResponsiveContentPadding, sapUiTinyMarginBeginEnd } from '@ui5/webcomponents-react-base/lib/spacing';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
+import { isIE } from '@ui5/webcomponents-react-base/lib/Device';
+
+const padding = isIE() ? { padding: '0 2rem' } : { ...sapUiResponsiveContentPadding };
 
 export const DynamicPageTitleStyles = {
   container: {
-    ...sapUiResponsiveContentPadding,
+    ...padding,
     backgroundColor: ThemingParameters.sapObjectHeader_Background,
     minHeight: '3rem',
     wordWrap: 'break-word',
@@ -19,6 +22,11 @@ export const DynamicPageTitleStyles = {
       // TODO background color should be sapObjectHeader_Hover_Background (same color as sapTile_Active_Background)
       backgroundColor: ThemingParameters.sapTile_Active_Background
     }
+  },
+  iEClass: {
+    position: 'fixed',
+    // page width - padding - scrollbar
+    width: 'calc(100% - 18px - 4rem)'
   },
   breadcrumbs: {
     padding: '0.5rem 0 0.25rem 0'

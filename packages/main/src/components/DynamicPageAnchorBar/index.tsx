@@ -17,16 +17,26 @@ import { createUseStyles } from 'react-jss';
 addCustomCSS(
   'ui5-button',
   `
-:host([data-ui5wcr-dynamic-page-header-action]) .ui5-button-root {
- padding: 0;
-}`
+  :host([data-ui5wcr-dynamic-page-header-action]){
+    width: 1.375rem;
+    height: 1.375rem;
+    min-width: 1.375rem;
+  }
+  :host([data-ui5wcr-dynamic-page-header-action]) .ui5-button-root {
+    padding: 0;
+  }`
 );
 addCustomCSS(
   'ui5-togglebutton',
   `
-:host([data-ui5wcr-dynamic-page-header-action]) .ui5-button-root {
- padding: 0;
-}`
+    :host([data-ui5wcr-dynamic-page-header-action]){
+    width: 1.375rem;
+    height: 1.375rem;
+    min-width: 1.375rem;
+  }
+  :host([data-ui5wcr-dynamic-page-header-action]) .ui5-button-root {
+    padding: 0;
+  }`
 );
 
 const anchorBarStyles = {

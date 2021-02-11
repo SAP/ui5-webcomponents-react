@@ -33,6 +33,15 @@ const styles = {
       top: 0
     }
   },
+  iEClass: {
+    position: 'fixed',
+    //page width - scrollbar
+    width: 'calc(100% - 18px)'
+  },
+  iEBackgroundElement: {
+    position: 'fixed',
+    backgroundColor: ThemingParameters.sapObjectHeader_Background
+  },
   contentContainer: {
     ...sapUiResponsiveContentPadding,
     paddingTop: '1rem !important',
