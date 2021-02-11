@@ -1,13 +1,7 @@
 import React from 'react';
-import { List } from '@ui5/webcomponents-react/lib/List';
-import { CustomListItem } from '@ui5/webcomponents-react/lib/CustomListItem';
-import { Text } from '@ui5/webcomponents-react/lib/Text';
-import { Icon } from '@ui5/webcomponents-react/lib/Icon';
+import { CustomListItem, FlexBox, FlexBoxAlignItems, FlexBoxJustifyContent, Icon, List, Text } from '@ui5/webcomponents-react';
 import { spacing } from '@ui5/webcomponents-react-base';
-import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
-import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJustifyContent';
 import PopoverInfo from '../Info/PopoverInfo';
-import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
 
 const style = {
   flexbox: {

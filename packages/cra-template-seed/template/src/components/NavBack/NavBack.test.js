@@ -1,6 +1,5 @@
 import React from 'react';
 
-import '@testing-library/jest-dom/extend-expect';
 import { fireEvent, render, screen } from '../../util/TestSetup';
 
 import NavBack from './NavBack';

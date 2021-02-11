@@ -1,8 +1,7 @@
 import React from 'react';
 
 import { spacing } from '@ui5/webcomponents-react-base';
-import { TextArea as UI5TextArea } from '@ui5/webcomponents-react/lib/TextArea';
-import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import { TextArea as UI5TextArea, ValueState } from '@ui5/webcomponents-react';
 
 import FieldBase from '../FieldBase/FieldBase';
 

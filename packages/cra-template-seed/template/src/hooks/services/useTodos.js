@@ -1,12 +1,27 @@
-import Constants from '../../util/Constants';
+import { useQuery } from 'react-query';
 
-import { usePaginatedGet, useGet } from '../../hooks/useRequest';
-import { getUrl } from '../../util/api/url/APIProvider';
+import Request from '../../api/Request';
 
 export const useTodos = (page) => {
-  return usePaginatedGet(Constants.REACT_QUERY.KEYS.RQ_GET_TODO_LIST, page, getUrl('GET_TODO_LIST'));
+  return useQuery(
+    ['all-todos', page],
+    async () => {
+      const { data } = await Request.get('/v1/todo/all', {
+        params: {
+          page,
+        },
+      });
+      return data;
+    },
+    {
+      keepPreviousData: true,
+    },
+  );
 };
 
-export const useTodo = (match) => {
-  return useGet(Constants.REACT_QUERY.KEYS.GET_TODO_BY_ID, getUrl('GET_TODO_BY_ID', [{ value: match.params.id }]));
+export const useTodo = (id) => {
+  return useQuery(['todos', id], async () => {
+    const { data } = await Request.get(`/v1/todo/${id}`);
+    return data;
+  });
 };

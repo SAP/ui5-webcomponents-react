@@ -2,28 +2,38 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { BrowserRouter } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import { ReactQueryDevtools } from 'react-query-devtools';
-import { ThemeProvider } from '@ui5/webcomponents-react/lib/ThemeProvider';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
+import { ThemeProvider } from '@ui5/webcomponents-react';
 
 import ErrorBoundary from './pages/Fallback/ErrorBoundary';
 import Shell from './components/Shell/Shell';
-import Routes from './routes/Routes';
+import Router from './routes/Router';
 
-import './App.css';
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 5 * 1000 * 60, // 5 minutes
+      cacheTime: Infinity, // do not delete stale data
+    },
+  },
+});
 
 const App = () => {
   const { t } = useTranslation();
 
   return (
     <ThemeProvider>
-      <BrowserRouter>
+      <QueryClientProvider client={queryClient}>
         <ReactQueryDevtools initialIsOpen={false} />
-        <Helmet title={t('helmet.title.app')} />
-        <Shell title={t('shell.title')} />
-        <ErrorBoundary>
-          <Routes />
-        </ErrorBoundary>
-      </BrowserRouter>
+        <BrowserRouter>
+          <Helmet title={t('helmet.title.app')} />
+          <Shell title={t('shell.title')} />
+          <ErrorBoundary>
+            <Router />
+          </ErrorBoundary>
+        </BrowserRouter>
+      </QueryClientProvider>
     </ThemeProvider>
   );
 };

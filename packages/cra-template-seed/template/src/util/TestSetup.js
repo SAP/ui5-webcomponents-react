@@ -5,16 +5,28 @@ import { BrowserRouter, Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
-import { getUrl } from './browser/BrowserProvider';
+import { ROUTES } from '../routes/Routes';
 
-const render = (ui, { route = getUrl('HOME'), ...renderOptions } = {}) => {
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 5 * 1000 * 60, // 5 minutes
+      cacheTime: Infinity, // do not delete stale data
+    },
+  },
+});
+
+const render = (ui, { route = ROUTES.HOME, ...renderOptions } = {}) => {
   const WrapperProvider = (props) => {
     const history = createMemoryHistory({ initialEntries: [route] });
     return (
-      <BrowserRouter>
-        <Router history={history}>{props.children}</Router>
-      </BrowserRouter>
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <Router history={history}>{props.children}</Router>
+        </BrowserRouter>
+      </QueryClientProvider>
     );
   };
 
