@@ -129,6 +129,7 @@ export const ObjectPageHeader = forwardRef((props: Props, ref: RefObject<HTMLDiv
   const headerClasses = StyleClassHelper.of(classes.contentHeader);
   if (isIE()) {
     headerClasses.put(classes.iEClass);
+    headerClasses.put(classes.iEClassHeader);
   }
 
   return (

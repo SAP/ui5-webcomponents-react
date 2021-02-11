@@ -433,7 +433,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
 
   const scrollBarWidthPadding = useMemo(() => {
     return {
-      paddingRight: `${scrollbarWidth}px`
+      paddingRight: isIE() ? 0 : `${scrollbarWidth}px`
     };
   }, [scrollbarWidth]);
 
@@ -553,6 +553,17 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         ref={anchorBarRef}
         className={anchorBarClasses.className}
       />
+      {isIE() && (
+        <div
+          className={classes.iEBackgroundElement}
+          style={{
+            height: `${anchorBarPositionTop + anchorBarRef.current?.offsetHeight ?? 0}px`,
+            width: `calc(100% - ${
+              objectPageRef?.current?.clientHeight < objectPageRef?.current?.scrollHeight ? '18px' : '0px'
+            })`
+          }}
+        />
+      )}
       {isIE() ? (
         <div style={{ marginTop: `${anchorBarPositionTop + anchorBarRef.current?.offsetHeight ?? 0}px` }}>
           {mode === ObjectPageMode.IconTabBar ? getSectionById(children, internalSelectedSectionId) : children}

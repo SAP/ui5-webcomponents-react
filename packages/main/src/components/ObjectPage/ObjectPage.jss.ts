@@ -72,7 +72,14 @@ const styles = {
   },
   iEClass: {
     position: 'fixed',
-    width: '100%'
+    width: 'calc(100% - 18px)'
+  },
+  iEClassHeader: {
+    width: 'calc(100% - 18px - 2rem)'
+  },
+  iEBackgroundElement: {
+    position: 'fixed',
+    backgroundColor: ThemingParameters.sapObjectHeader_Background
   },
   contentHeader: {
     backgroundColor: ThemingParameters.sapObjectHeader_Background,
