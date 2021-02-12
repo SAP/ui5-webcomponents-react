@@ -1,5 +1,9 @@
 import { createUseStyles } from 'react-jss';
-import { useConsolidatedRef, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/hooks';
+import {
+  useConsolidatedRef,
+  useIsomorphicLayoutEffect,
+  usePassThroughHtmlProps
+} from '@ui5/webcomponents-react-base/lib/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
@@ -23,6 +27,7 @@ import React, {
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
 import { useObserveHeights } from '../ObjectPage/useObserveHeights';
 import styles from './DynamicPage.jss';
+import { isIE } from '@ui5/webcomponents-react-base/lib/Device';
 
 export interface DynamicPageProps extends Omit<CommonProps, 'title'> {
   /**
@@ -65,6 +70,7 @@ enum HEADER_STATES {
   VISIBLE = 'VISIBLE',
   HIDDEN = 'HIDDEN'
 }
+const useStyles = createUseStyles(styles, { name: 'DynamicPage' });
 /**
  * The dynamic page is a generic layout control designed to support various floorplans and use cases.
  * The content of both the header and the page can differ from floorplan to floorplan.
@@ -87,7 +93,6 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
   } = props;
   const passThroughProps = usePassThroughHtmlProps(props);
 
-  const useStyles = createUseStyles(styles, { name: 'DynamicPage' });
   const classes = useStyles();
   const dynamicPageClasses = StyleClassHelper.of(classes.dynamicPage, GlobalStyleClasses.sapScrollBar);
   dynamicPageClasses.put(classes[`background${backgroundDesign}`]);
@@ -99,7 +104,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
   const headerContentRef: RefObject<HTMLDivElement> = useRef();
 
   const [headerState, setHeaderState] = useState<HEADER_STATES>(
-    alwaysShowContentHeader ? HEADER_STATES.VISIBLE_PINNED : HEADER_STATES.AUTO
+    alwaysShowContentHeader ? HEADER_STATES.VISIBLE_PINNED : isIE() ? HEADER_STATES.VISIBLE : HEADER_STATES.AUTO
   );
 
   // observe heights of header parts
@@ -117,7 +122,9 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
 
   useEffect(() => {
     const oneTimeScrollHandler = () => {
-      setHeaderState(HEADER_STATES.AUTO);
+      if (!isIE()) {
+        setHeaderState(HEADER_STATES.AUTO);
+      }
     };
     if (headerState === HEADER_STATES.VISIBLE || headerState === HEADER_STATES.HIDDEN) {
       dynamicPageRef.current?.addEventListener('scroll', oneTimeScrollHandler, { once: true });
@@ -170,11 +177,15 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
   useEffect(() => {
     if (alwaysShowContentHeader) {
       setHeaderState(HEADER_STATES.VISIBLE_PINNED);
-    } else {
+    } else if (!isIE()) {
       setHeaderState(HEADER_STATES.AUTO);
     }
   }, [alwaysShowContentHeader, setHeaderState]);
 
+  const anchorBarClasses = StyleClassHelper.of(classes.anchorBar);
+  if (isIE()) {
+    anchorBarClasses.put(classes.iEClass);
+  }
   return (
     <div
       ref={dynamicPageRef}
@@ -195,7 +206,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
           topHeaderHeight
         })}
       <FlexBox
-        className={classes.anchorBar}
+        className={anchorBarClasses.className}
         ref={anchorBarRef}
         style={{
           top:
@@ -214,7 +225,23 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
           onHoverToggleButton={onHoverToggleButton}
         />
       </FlexBox>
-      <div className={classes.contentContainer}>{children}</div>
+      {isIE() && (
+        <div
+          className={classes.iEBackgroundElement}
+          style={{
+            height: `${headerContentHeight + topHeaderHeight}px`,
+            width: `calc(100% - ${
+              dynamicPageRef?.current?.clientHeight < dynamicPageRef?.current?.scrollHeight ? '18px' : '0px'
+            })`
+          }}
+        />
+      )}
+      <div
+        className={classes.contentContainer}
+        style={{ marginTop: isIE() ? `${headerContentHeight + topHeaderHeight + 34}px` : 0 }}
+      >
+        {children}
+      </div>
     </div>
   );
 });

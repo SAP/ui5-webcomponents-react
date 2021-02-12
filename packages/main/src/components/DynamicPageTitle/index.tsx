@@ -12,6 +12,7 @@ import { ToolbarStyle } from '@ui5/webcomponents-react/lib/ToolbarStyle';
 import React, { Children, FC, forwardRef, ReactElement, ReactNode, ReactNodeArray, Ref } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { DynamicPageTitleStyles } from './DynamicPageTitle.jss';
+import { isIE } from '@ui5/webcomponents-react-base/lib/Device';
 
 export interface DynamicPageTitleProps extends CommonProps {
   /**
@@ -78,7 +79,11 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
   } = props;
 
   const classes = useStyles();
-  const containerClasses = StyleClassHelper.of(classes.container).putIfPresent(className);
+  const containerClasses = StyleClassHelper.of(classes.container);
+  if (isIE()) {
+    containerClasses.put(classes.iEClass);
+  }
+  containerClasses.putIfPresent(className);
   const passThroughProps = usePassThroughHtmlProps(props, ['onToggleHeaderContentVisibility']);
 
   return (
