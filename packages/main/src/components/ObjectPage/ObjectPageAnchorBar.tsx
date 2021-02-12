@@ -29,25 +29,31 @@ import {
 addCustomCSS(
   'ui5-button',
   `
-:host([data-ui5wcr-object-page-header-action]) .ui5-button-root {
- padding: 0;
-}`
+  :host([data-ui5wcr-object-page-header-action]){
+    width: 1.375rem;
+    height: 1.375rem;
+    min-width: 1.375rem;
+  }
+  :host([data-ui5wcr-object-page-header-action]) .ui5-button-root {
+    padding: 0;
+  }`
 );
 addCustomCSS(
   'ui5-togglebutton',
   `
-:host([data-ui5wcr-object-page-header-action]) .ui5-button-root {
- padding: 0;
-}`
+  :host([data-ui5wcr-object-page-header-action]){
+    width: 1.375rem;
+    height: 1.375rem;
+    min-width: 1.375rem;
+  }
+  :host([data-ui5wcr-object-page-header-action]) .ui5-button-root {
+    padding: 0;
+  }`
 );
 
 const anchorBarStyles = {
   anchorBarActionButton: {
     position: 'absolute',
-    '--_ui5_button_compact_height': '1.375rem',
-    '--_ui5_button_base_height': '1.375rem',
-    '--_ui5_button_base_min_width': '1.375rem',
-    '--_ui5_button_base_min_compact_width': '1.375rem',
     top: `-0.6875rem`,
     marginLeft: `-0.6875rem`,
     left: '50%',

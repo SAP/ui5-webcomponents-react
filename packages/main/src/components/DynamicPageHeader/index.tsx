@@ -6,6 +6,7 @@ import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItem
 import React, { FC, forwardRef, ReactNode, ReactNodeArray, Ref, useMemo } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { DynamicPageHeaderStyles } from './DynamicPageHeader.jss';
+import { isIE } from '@ui5/webcomponents-react-base/lib/Device';
 
 export interface DynamicPageHeaderProps extends CommonProps {
   children?: ReactNode | ReactNodeArray;
@@ -45,7 +46,11 @@ const DynamicPageHeader: FC<DynamicPageHeaderProps> = forwardRef((props: Interna
   }, [headerPinned, topHeaderHeight, style]);
 
   const classes = useStyles();
-  const classNames = StyleClassHelper.of(classes.header).putIfPresent(className);
+  const classNames = StyleClassHelper.of(classes.header);
+  if (isIE()) {
+    classNames.put(classes.iEClass);
+  }
+  classNames.putIfPresent(className);
 
   return (
     <div
