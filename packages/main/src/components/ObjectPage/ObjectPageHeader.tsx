@@ -1,4 +1,4 @@
-import { StyleClassHelper } from '@ui5/webcomponents-react-base';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { isIE } from '@ui5/webcomponents-react-base/lib/Device';
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
