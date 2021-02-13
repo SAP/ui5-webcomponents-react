@@ -1,0 +1,61 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { ColorPalette } from '@ui5/webcomponents-react/lib/ColorPalette';
+import { ColorPaletteItem } from '@ui5/webcomponents-react/lib/ColorPaletteItem';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
+
+<Meta
+  title="Data Display / ColorPalette"
+  component={ColorPalette}
+  subcomponents={{ ColorPaletteItem }}
+  argTypes={{
+    ...createSelectArgTypes({}),
+    ...DocsCommonProps,
+    children: { control: { disable: true } }
+  }}
+  args={{
+    style: {},
+    className: '',
+    tooltip: '',
+    slot: '',
+    ref: null
+  }}
+/>
+
+<DocsHeader />
+
+<br />
+
+## Example
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return (
+        <ColorPalette {...args}>
+          <ColorPaletteItem value="darkblue" />
+          <ColorPaletteItem value="pink" />
+          <ColorPaletteItem value="#444444" />
+          <ColorPaletteItem value="rgb(0,200,0)" />
+          <ColorPaletteItem value="green" />
+          <ColorPaletteItem value="darkred" />
+          <ColorPaletteItem value="yellow" />
+          <ColorPaletteItem value="blue" />
+          <ColorPaletteItem value="cyan" />
+          <ColorPaletteItem value="orange" />
+          <ColorPaletteItem value="#5480e7" />
+          <ColorPaletteItem value="#ff6699" />
+        </ColorPalette>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Properties
+
+<ArgsTable story="." />
+
+## Usage
+
+The palette is intended for users, who don't want to check and remember the different values of the colors.
