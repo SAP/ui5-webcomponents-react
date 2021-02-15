@@ -1,6 +1,6 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents-fiori/dist/WizardStep';
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 
 export interface WizardStepPropTypes extends WithWebComponentPropTypes {
   /**
@@ -43,6 +43,10 @@ export interface WizardStepPropTypes extends WithWebComponentPropTypes {
    * **Note:** the text will hide on small sizes (about 559 px).
    */
   subheading?: string;
+  /**
+   * Defines the step content.
+   */
+  children?: ReactNode | ReactNode[];
 }
 
 /**
