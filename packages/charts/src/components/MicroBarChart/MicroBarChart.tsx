@@ -61,6 +61,11 @@ export interface MicroBarChartProps
    * - `DataLabel`: a custom component to be used for the data label
    */
   measure: MeasureConfig;
+  /**
+   * An optional number for the maxValue of the valueBar.
+   * Default is the highest number of the corresponding accessor in the dataset.
+  */
+  maxValue?: number;
 }
 
 const resolveColor = (index, color = null) => {
@@ -141,7 +146,13 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
     [props.measure]
   );
 
-  const maxValue = dataset ? Math.max(...dataset?.map((item) => getValueByDataKey(item, measure.accessor))) : 0;
+  const maxValue = useMemo(() => {
+    if (dataset) {
+      const maxDatasetValue = Math.max(...dataset?.map((item) => getValueByDataKey(item, measure.accessor)));
+      return props.maxValue ?? maxDatasetValue;
+    }
+    return 0;
+  }, [dataset, measure, props.maxValue]);
   const chartRef = useConsolidatedRef<any>(ref);
 
   const barHeight = measure?.width ? `${measure.width}px` : '4px';
