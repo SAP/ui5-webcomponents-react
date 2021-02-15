@@ -1,12 +1,9 @@
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/DurationPicker';
 import { FC, ReactNode } from 'react';
 
-export interface DurationPickerPropTypes extends Omit<WithWebComponentPropTypes, 'onChange'> {
-  /**
-   * Determines whether the `DurationPicker` is displayed as disabled.
-   */
-  disabled?: boolean;
+export interface DurationPickerPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput'> {
   /**
    * Defines whether the slider for hours will be available. By default there are sliders for hours, minutes and seconds.
    */
@@ -28,10 +25,6 @@ export interface DurationPickerPropTypes extends Omit<WithWebComponentPropTypes,
    */
   minutesStep?: number;
   /**
-   * Determines whether the `DurationPicker` is displayed as readonly.
-   */
-  readonly?: boolean;
-  /**
    * Defines the selection step for the seconds
    */
   secondsStep?: number;
@@ -40,7 +33,27 @@ export interface DurationPickerPropTypes extends Omit<WithWebComponentPropTypes,
    */
   value?: string;
   /**
-   * Visualizes the validation state of the Web Component, for example `Error`, `Warning` and `Success`.
+   * Determines whether the `DurationPicker` is displayed as disabled.
+   */
+  disabled?: boolean;
+  /**
+   * Determines the format, displayed in the input field. Example: HH:mm:ss -> 11:42:35 hh:mm:ss a -> 2:23:15 PM mm:ss -> 12:04 (only minutes and seconds)
+   */
+  formatPattern?: string;
+  /**
+   * Defines a short hint, intended to aid the user with data entry when the `DurationPicker` has no value.
+   *
+   * **Note:** When no placeholder is set, the format pattern is displayed as a placeholder. Passing an empty string as the value of this property will make the `DurationPicker` appear empty - without placeholder or format pattern.
+   */
+  placeholder?: string;
+  /**
+   * Determines whether the `DurationPicker` is displayed as readonly.
+   */
+  readonly?: boolean;
+  /**
+   * Defines the value state of the `DurationPicker`.
+   *
+   * Available options are:
    *
    * *   `None`
    * *   `Error`
@@ -48,7 +61,7 @@ export interface DurationPickerPropTypes extends Omit<WithWebComponentPropTypes,
    * *   `Success`
    * *   `Information`
    */
-  valueState?: string;
+  valueState?: ValueState;
   /**
    * Defines the value state message that will be displayed as pop up under the `DurationPicker`.
    *
@@ -57,9 +70,13 @@ export interface DurationPickerPropTypes extends Omit<WithWebComponentPropTypes,
    */
   valueStateMessage?: ReactNode;
   /**
-   * Fired when the input operation has finished by pressing Enter or on focusout.
+   * Fired when the input operation has finished by clicking the "OK" button or when the text in the input field has changed and the focus leaves the input field.
    */
   onChange?: (event: CustomEvent) => void;
+  /**
+   * Fired when the value of the `DurationPicker` is changed at each key stroke.
+   */
+  onInput?: (event: CustomEvent) => void;
 }
 
 /**
@@ -69,25 +86,26 @@ export interface DurationPickerPropTypes extends Omit<WithWebComponentPropTypes,
  */
 const DurationPicker: FC<DurationPickerPropTypes> = withWebComponent<DurationPickerPropTypes>(
   'ui5-duration-picker',
-  ['maxValue', 'minutesStep', 'secondsStep', 'value', 'valueState'],
-  ['disabled', 'hideHours', 'hideMinutes', 'hideSeconds', 'readonly'],
+  ['maxValue', 'minutesStep', 'secondsStep', 'value', 'formatPattern', 'placeholder', 'valueState'],
+  ['hideHours', 'hideMinutes', 'hideSeconds', 'disabled', 'readonly'],
   ['valueStateMessage'],
-  ['change']
+  ['change', 'input']
 );
 
 DurationPicker.displayName = 'DurationPicker';
 
 DurationPicker.defaultProps = {
-  disabled: false,
   hideHours: false,
   hideMinutes: false,
   hideSeconds: false,
   maxValue: '23:59:59',
   minutesStep: 1,
-  readonly: false,
   secondsStep: 1,
   value: '00:00:00',
-  valueState: 'None'
+  disabled: false,
+  placeholder: undefined,
+  readonly: false,
+  valueState: ValueState.None
 };
 
 export { DurationPicker };
