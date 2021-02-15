@@ -25,13 +25,6 @@ module.exports = {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
     // You can change the configuration based on that.
     // 'PRODUCTION' is used when building the static version of storybook.
-
-    config.module.rules.push({
-      test: /assets\/.*\.json$/,
-      use: 'file-loader',
-      type: 'javascript/auto'
-    });
-
     if (configType === 'PRODUCTION') {
       config.module.rules.push({
         test: /\.(js|mjs)$/,
