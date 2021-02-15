@@ -1,10 +1,12 @@
-import { createUseStyles } from 'react-jss';
+import { isIE } from '@ui5/webcomponents-react-base/lib/Device';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { useViewportRange } from '@ui5/webcomponents-react-base/lib/useViewportRange';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { GridPosition } from '@ui5/webcomponents-react/lib/GridPosition';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import React, {
   Children,
+  cloneElement,
   CSSProperties,
   FC,
   forwardRef,
@@ -14,7 +16,7 @@ import React, {
   Ref,
   useCallback
 } from 'react';
-import { CommonProps } from '../../interfaces/CommonProps';
+import { createUseStyles } from 'react-jss';
 import { styles } from './Grid.jss';
 
 export interface GridPropTypes extends CommonProps {
@@ -77,6 +79,21 @@ const getIndentFromString = (indent, currentRange) => {
   return indentConfig?.groups[currentRange] ?? DefaultIndentMap.get(currentRange);
 };
 
+const getIECellPlacement = (col, row, span) => {
+  let colStart;
+  let safeSpan = parseInt(span);
+  const added = col + safeSpan;
+  if (added <= 12) {
+    colStart = col + 1;
+    col = added;
+  } else {
+    colStart = 1;
+    col = safeSpan;
+    row++;
+  }
+  return [col, row, colStart];
+};
+
 const useStyles = createUseStyles(styles, { name: 'Grid' });
 /**
  * A layout container component used for aligning items with various sizes in a simple grid.
@@ -99,6 +116,8 @@ const Grid: FC<GridPropTypes> = forwardRef((props: GridPropTypes, ref: Ref<HTMLD
     gridClasses.put(className);
   }
 
+  let column = 0;
+  let row = 1;
   const renderGridElements = useCallback(
     (child: ReactElement<any>) => {
       if (!child) return null;
@@ -112,10 +131,24 @@ const Grid: FC<GridPropTypes> = forwardRef((props: GridPropTypes, ref: Ref<HTMLD
       if (indentSpan && indentSpan > 0) {
         childrenWithGridLayout.unshift(<span className={classes[`gridSpan${indentSpan}`]} />);
       }
-
+      if (isIE()) {
+        return childrenWithGridLayout.map((item, index) => {
+          let colStart;
+          if (childrenWithGridLayout.length === 2 && index === 0) {
+            [column, row, colStart] = getIECellPlacement(column, row, indentSpan);
+            return cloneElement(item, {
+              style: { marginRight: vSpacing, marginBottom: hSpacing, msGridRow: row, msGridColumn: colStart }
+            });
+          }
+          [column, row, colStart] = getIECellPlacement(column, row, childSpan);
+          return cloneElement(item, {
+            style: { marginRight: vSpacing, marginBottom: hSpacing, msGridRow: row, msGridColumn: colStart }
+          });
+        });
+      }
       return childrenWithGridLayout;
     },
-    [currentRange, defaultSpan, defaultIndent, classes]
+    [currentRange, defaultSpan, defaultIndent, classes, vSpacing, hSpacing]
   );
 
   const passThroughProps = usePassThroughHtmlProps(props);

@@ -280,6 +280,7 @@ exports[`DynamicPage always show content header 1`] = `
     </div>
     <div
       class="DynamicPage-contentContainer"
+      style="margin-top: 0px;"
     />
   </div>
 </DocumentFragment>
@@ -555,6 +556,7 @@ exports[`DynamicPage hider header button 1`] = `
     </div>
     <div
       class="DynamicPage-contentContainer"
+      style="margin-top: 0px;"
     >
       <div
         class="Form-form Form-labelSpan4"
@@ -1012,6 +1014,7 @@ exports[`DynamicPage with content 1`] = `
     </div>
     <div
       class="DynamicPage-contentContainer"
+      style="margin-top: 0px;"
     >
       <div
         class="Form-form Form-labelSpan4"
@@ -1985,6 +1988,7 @@ exports[`DynamicPage without content 1`] = `
     </div>
     <div
       class="DynamicPage-contentContainer"
+      style="margin-top: 0px;"
     />
   </div>
 </DocumentFragment>

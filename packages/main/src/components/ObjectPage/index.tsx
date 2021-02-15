@@ -1,3 +1,4 @@
+import { isIE } from '@ui5/webcomponents-react-base/lib/Device';
 import { createUseStyles } from 'react-jss';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
@@ -432,7 +433,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
 
   const scrollBarWidthPadding = useMemo(() => {
     return {
-      paddingRight: `${scrollbarWidth}px`
+      paddingRight: isIE() ? 0 : `${scrollbarWidth}px`
     };
   }, [scrollbarWidth]);
 
@@ -466,6 +467,19 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     };
   }, [objectPageRef, children, totalHeaderHeight, setInternalSelectedSectionId, isProgrammaticallyScrolled]);
 
+  const headerClasses = StyleClassHelper.of(classes.header);
+  const anchorBarClasses = StyleClassHelper.of(classes.anchorBar);
+  if (isIE()) {
+    headerClasses.put(classes.iEClass);
+    anchorBarClasses.put(classes.iEClass);
+  }
+
+  const anchorBarPositionTop = noHeader
+    ? 0
+    : headerPinned || isIE()
+    ? topHeaderHeight + headerContentHeight
+    : topHeaderHeight;
+
   return (
     <div
       data-component-name="ObjectPage"
@@ -481,7 +495,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         role="banner"
         aria-roledescription="Object Page header"
         style={scrollBarWidthPadding}
-        className={classes.header}
+        className={headerClasses.className}
       >
         <div className={classes.titleBar}>
           {(!showTitleInHeaderContent || headerContentHeight === 0) && (
@@ -534,12 +548,31 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         headerPinned={headerPinned}
         setHeaderPinned={setHeaderPinned}
         headerContentHeight={headerContentHeight}
-        style={{ top: noHeader ? 0 : headerPinned ? topHeaderHeight + headerContentHeight : topHeaderHeight }}
+        style={{ top: anchorBarPositionTop }}
         onToggleHeaderContentVisibility={onToggleHeaderContentVisibility}
         ref={anchorBarRef}
-        className={classes.anchorBar}
+        className={anchorBarClasses.className}
       />
-      {mode === ObjectPageMode.IconTabBar ? getSectionById(children, internalSelectedSectionId) : children}
+      {isIE() && (
+        <div
+          className={classes.iEBackgroundElement}
+          style={{
+            height: `${anchorBarPositionTop + anchorBarRef.current?.offsetHeight ?? 0}px`,
+            width: `calc(100% - ${
+              objectPageRef?.current?.clientHeight < objectPageRef?.current?.scrollHeight ? '18px' : '0px'
+            })`
+          }}
+        />
+      )}
+      {isIE() ? (
+        <div style={{ marginTop: `${anchorBarPositionTop + anchorBarRef.current?.offsetHeight ?? 0}px` }}>
+          {mode === ObjectPageMode.IconTabBar ? getSectionById(children, internalSelectedSectionId) : children}
+        </div>
+      ) : mode === ObjectPageMode.IconTabBar ? (
+        getSectionById(children, internalSelectedSectionId)
+      ) : (
+        children
+      )}
     </div>
   );
 });
