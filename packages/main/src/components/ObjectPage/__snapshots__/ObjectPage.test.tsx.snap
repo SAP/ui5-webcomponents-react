@@ -1398,6 +1398,7 @@ exports[`ObjectPage With Subsections 1`] = `
         show-overflow="true"
         tab-layout="Standard"
         tabs-placement="Top"
+        ui5-tabcontainer=""
       >
         <ui5-tab
           data-index="0"
@@ -1405,30 +1406,35 @@ exports[`ObjectPage With Subsections 1`] = `
           selected="true"
           semantic-color="Default"
           text="Test 1"
+          ui5-tab=""
         />
         <ui5-tab
           data-index="1"
           data-section-id="2"
           semantic-color="Default"
           text="Test 2"
+          ui5-tab=""
         />
         <ui5-tab
           data-index="2"
           data-section-id="3"
           semantic-color="Default"
           text="Test 3"
+          ui5-tab=""
         />
         <ui5-tab
           data-index="3"
           data-section-id="4"
           semantic-color="Default"
           text="Test 4"
+          ui5-tab=""
         />
         <ui5-tab
           data-index="4"
           data-section-id="5"
           semantic-color="Default"
           text="Test 5"
+          ui5-tab=""
         />
       </ui5-tabcontainer>
       <ui5-button

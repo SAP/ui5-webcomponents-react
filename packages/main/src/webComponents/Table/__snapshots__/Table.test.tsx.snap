@@ -3,6 +3,7 @@
 exports[`Table Basic Test (generated) 1`] = `
 <DocumentFragment>
   <ui5-table
+    growing="None"
     ui5-table=""
   />
 </DocumentFragment>
