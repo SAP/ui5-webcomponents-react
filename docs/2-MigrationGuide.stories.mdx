@@ -25,6 +25,51 @@ or the [changelog](https://github.com/SAP/ui5-webcomponents-react/blob/master/CH
 
 <br />
 
+### Replaced Component: Page
+
+We replaced our custom `Page` component with the official `ui5-page` web component, thus the props of that component have changed.
+As the new `Page` component does not offer a header by default, the convenience props `title`, `showBackButton`,
+`showHeader` and `onNavButtonPress` have been removed without replacement.
+You must now always deliver your own header, we would recommend using a `Bar` component for that.<br />
+
+The props `customHeader` and `customFooter` have been renamed to `header` and `footer`.
+
+Migration Example:
+
+```jsx
+import { Page } from '@ui5/webcomponents-react';
+
+function MyOldComponent() {
+  return (
+    <Page title="Title" showBackButton onNavButtonPress={() => alert('click!')}>
+      Any children go here.
+    </Page>
+  );
+}
+
+// becomes
+
+import { Bar, ButtonDesign, Label, Page } from '@ui5/webcomponents-react';
+import '@ui5/webcomponents-icons/dist/navigation-left-arrow';
+
+function MyNewComponent() {
+  return (
+    <Page
+      header={
+        <Bar
+          startContent={
+            <Button icon="navigation-left-arrow" design={ButtonDesign.Transparent} onClick={() => alert('click!')} />
+          }
+          middleContent={<Label>Title</Label>}
+        />
+      }
+    >
+      Any children go here.
+    </Page>
+  );
+}
+```
+
 ### API Updates
 
 #### ThemeProvider Context Changes
