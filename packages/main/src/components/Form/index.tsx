@@ -191,7 +191,7 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
           height: CssSizeVariables.sapWcrFormGroupTitleHeight,
           lineHeight: CssSizeVariables.sapWcrFormGroupTitleHeight,
           color: ThemingParameters.sapTextColor,
-          fontSize: '0.875rem',
+          fontSize: ThemingParameters.sapFontSize,
           fontWeight: 'bold',
           backgroundColor: ThemingParameters.sapGroup_TitleBackground,
           margin: 0,

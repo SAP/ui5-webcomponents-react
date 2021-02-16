@@ -1,7 +1,7 @@
 import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
-import { createUseStyles } from 'react-jss';
 import React, { FC, ReactNode, ReactNodeArray } from 'react';
+import { createUseStyles } from 'react-jss';
 
 export interface FormGroupProps {
   /**
@@ -24,7 +24,7 @@ const useStyles = createUseStyles(
       lineHeight: CssSizeVariables.sapWcrFormGroupTitleHeight,
       fontFamily: ThemingParameters.sapFontFamily,
       color: ThemingParameters.sapTextColor,
-      fontSize: '0.875rem',
+      fontSize: ThemingParameters.sapFontSize,
       fontWeight: 'bold',
       backgroundColor: ThemingParameters.sapGroup_TitleBackground,
       margin: 0,

@@ -401,7 +401,7 @@ exports[`Create a Form size rate XL; should create Label and Element with 33% an
     </ui5-title>
     <h6
       aria-label="Group 1"
-      style="grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2; display: flex; align-items: center; font-family: var(--sapFontFamily); line-height: var(--sapWcrFormGroupTitleHeight); font-size: 0.875rem; font-weight: bold; margin: 0px; padding-top: 1rem;"
+      style="grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2; display: flex; align-items: center; font-family: var(--sapFontFamily); line-height: var(--sapWcrFormGroupTitleHeight); font-weight: bold; margin: 0px; padding-top: 1rem;"
       title="Group 1"
     >
       Group 1
@@ -444,7 +444,7 @@ exports[`Create a Form size rate XL; should create Label and Element with 33% an
     </div>
     <h6
       aria-label="Group 2"
-      style="grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2; display: flex; align-items: center; font-family: var(--sapFontFamily); line-height: var(--sapWcrFormGroupTitleHeight); font-size: 0.875rem; font-weight: bold; margin: 0px; padding-top: 1rem;"
+      style="grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2; display: flex; align-items: center; font-family: var(--sapFontFamily); line-height: var(--sapWcrFormGroupTitleHeight); font-weight: bold; margin: 0px; padding-top: 1rem;"
       title="Group 2"
     >
       Group 2
