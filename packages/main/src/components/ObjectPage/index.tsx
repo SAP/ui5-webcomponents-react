@@ -200,12 +200,12 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         return;
       }
       if (firstSectionId === sectionId) {
-        objectPageRef.current.scrollTo({ top: 0, behavior: 'smooth' });
+        objectPageRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
-        const childOffset = objectPageRef.current.querySelector<HTMLElement>(`#ObjectPageSection-${sectionId}`)
+        const childOffset = objectPageRef.current?.querySelector<HTMLElement>(`#ObjectPageSection-${sectionId}`)
           ?.offsetTop;
         if (!isNaN(childOffset)) {
-          objectPageRef.current.scrollTo({
+          objectPageRef.current?.scrollTo({
             top: childOffset - topHeaderHeight - anchorBarHeight - (headerPinned ? headerContentHeight : 0) + 45,
             behavior: 'smooth'
           });
@@ -250,11 +250,11 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   // Scrolling for Sub Section Selection
   useEffect(() => {
     if (selectedSubSectionId && isProgrammaticallyScrolled.current === true) {
-      const childOffset = objectPageRef.current.querySelector<HTMLElement>(
+      const childOffset = objectPageRef.current?.querySelector<HTMLElement>(
         `div[id="ObjectPageSubSection-${selectedSubSectionId}"]`
       )?.offsetTop;
       if (!isNaN(childOffset)) {
-        objectPageRef.current.scrollTo({
+        objectPageRef.current?.scrollTo({
           top: childOffset - topHeaderHeight - anchorBarHeight - (headerPinned ? headerContentHeight : 0) + 45,
           behavior: 'smooth'
         });
@@ -315,7 +315,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
 
   useEffect(() => {
     const fillerDivObserver = new ResizeObserver(() => {
-      const maxHeight = Math.min(objectPageRef.current.clientHeight, window.innerHeight);
+      const maxHeight = Math.min(objectPageRef.current?.clientHeight, window.innerHeight);
       const availableScrollHeight = maxHeight - totalHeaderHeight;
       const lastSectionDomRef = getLastObjectPageSection(objectPageRef);
       const subSections = lastSectionDomRef.querySelectorAll('[id^="ObjectPageSubSection"]');
@@ -332,7 +332,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       let heightDiff = availableScrollHeight - lastSubSectionHeight;
 
       heightDiff = heightDiff > 0 ? heightDiff : 0;
-      objectPageRef.current.style.setProperty(ObjectPageCssVariables.lastSectionMargin, `${heightDiff}px`);
+      objectPageRef.current?.style.setProperty(ObjectPageCssVariables.lastSectionMargin, `${heightDiff}px`);
     });
 
     fillerDivObserver.observe(objectPageRef.current);
@@ -370,18 +370,18 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       const srcElement = e.target;
       const shouldHideHeader = srcElement.icon === 'slim-arrow-up';
       if (shouldHideHeader) {
-        objectPageRef.current.classList.add(classes.headerCollapsed);
+        objectPageRef.current?.classList.add(classes.headerCollapsed);
       } else {
-        objectPageRef.current.classList.remove(classes.headerCollapsed);
+        objectPageRef.current?.classList.remove(classes.headerCollapsed);
       }
 
       requestAnimationFrame(() => {
-        if (objectPageRef.current.scrollTop > 0 && !shouldHideHeader) {
+        if (objectPageRef.current?.scrollTop > 0 && !shouldHideHeader) {
           const prevHeaderTop = headerContentRef.current.style.top;
           headerContentRef.current.style.top = `${topHeaderHeight}px`;
           const prevAnchorTop = anchorBarRef.current.style.top;
           anchorBarRef.current.style.top = `${headerContentRef.current.offsetHeight + topHeaderHeight}px`;
-          objectPageRef.current.addEventListener(
+          objectPageRef.current?.addEventListener(
             'scroll',
             (e) => {
               if (prevHeaderTop ?? true) {
@@ -457,7 +457,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       }
     );
 
-    objectPageRef.current.querySelectorAll('section[data-component-name="ObjectPageSection"]').forEach((el) => {
+    objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]').forEach((el) => {
       observer.observe(el);
     });
 
