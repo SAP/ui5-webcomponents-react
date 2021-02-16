@@ -563,15 +563,13 @@ exports[`DynamicPage hider header button 1`] = `
         data-columns="4"
         style="padding-bottom: 2rem;"
       >
-        <ui5-title
+        <h6
           aria-label="Phone Numbers"
-          level="H5"
-          style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
+          style="grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2; display: flex; align-items: center; font-family: var(--sapFontFamily); line-height: var(--sapWcrFormGroupTitleHeight); font-weight: bold; margin: 0px; padding-top: 1rem;"
           title="Phone Numbers"
-          ui5-title=""
         >
           Phone Numbers
-        </ui5-title>
+        </h6>
         <ui5-label
           class="FormItem-label"
           style="grid-column-start: 1; grid-row-start: 3;"
@@ -582,7 +580,7 @@ exports[`DynamicPage hider header button 1`] = `
         </ui5-label>
         <div
           class="FormItem-content"
-          style="grid-column-start: 5; grid-row-start: 3;"
+          style="grid-column-start: 5; grid-row-start: 3; padding-bottom: 0px;"
         >
           <span
             class="Text-text"
@@ -598,7 +596,7 @@ exports[`DynamicPage hider header button 1`] = `
         />
         <div
           class="FormItem-content"
-          style="grid-column-start: 5; grid-row-start: 4;"
+          style="grid-column-start: 5; grid-row-start: 4; padding-bottom: 1rem;"
         >
           <span
             class="Text-text"
@@ -606,15 +604,13 @@ exports[`DynamicPage hider header button 1`] = `
             +1 234-567-5555
           </span>
         </div>
-        <ui5-title
+        <h6
           aria-label="Social Accounts"
-          level="H5"
-          style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
+          style="grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2; display: flex; align-items: center; font-family: var(--sapFontFamily); line-height: var(--sapWcrFormGroupTitleHeight); font-weight: bold; margin: 0px; padding-top: 1rem;"
           title="Social Accounts"
-          ui5-title=""
         >
           Social Accounts
-        </ui5-title>
+        </h6>
         <ui5-label
           class="FormItem-label"
           style="grid-column-start: 13; grid-row-start: 3;"
@@ -625,7 +621,7 @@ exports[`DynamicPage hider header button 1`] = `
         </ui5-label>
         <div
           class="FormItem-content"
-          style="grid-column-start: 17; grid-row-start: 3;"
+          style="grid-column-start: 17; grid-row-start: 3; padding-bottom: 0px;"
         >
           <span
             class="Text-text"
@@ -643,7 +639,7 @@ exports[`DynamicPage hider header button 1`] = `
         </ui5-label>
         <div
           class="FormItem-content"
-          style="grid-column-start: 17; grid-row-start: 4;"
+          style="grid-column-start: 17; grid-row-start: 4; padding-bottom: 1rem;"
         >
           <span
             class="Text-text"
@@ -657,15 +653,13 @@ exports[`DynamicPage hider header button 1`] = `
         data-columns="4"
         style="padding-bottom: 2rem;"
       >
-        <ui5-title
+        <h6
           aria-label="Addresses"
-          level="H5"
-          style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
+          style="grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2; display: flex; align-items: center; font-family: var(--sapFontFamily); line-height: var(--sapWcrFormGroupTitleHeight); font-weight: bold; margin: 0px; padding-top: 1rem;"
           title="Addresses"
-          ui5-title=""
         >
           Addresses
-        </ui5-title>
+        </h6>
         <ui5-label
           class="FormItem-label"
           style="grid-column-start: 1; grid-row-start: 3;"
@@ -676,7 +670,7 @@ exports[`DynamicPage hider header button 1`] = `
         </ui5-label>
         <div
           class="FormItem-content"
-          style="grid-column-start: 5; grid-row-start: 3;"
+          style="grid-column-start: 5; grid-row-start: 3; padding-bottom: 0px;"
         >
           <span
             class="Text-text"
@@ -694,7 +688,7 @@ exports[`DynamicPage hider header button 1`] = `
         </ui5-label>
         <div
           class="FormItem-content"
-          style="grid-column-start: 5; grid-row-start: 4;"
+          style="grid-column-start: 5; grid-row-start: 4; padding-bottom: 1rem;"
         >
           <span
             class="Text-text"
@@ -702,15 +696,13 @@ exports[`DynamicPage hider header button 1`] = `
             PO Box 32114
           </span>
         </div>
-        <ui5-title
+        <h6
           aria-label="Mailing Address"
-          level="H5"
-          style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
+          style="grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2; display: flex; align-items: center; font-family: var(--sapFontFamily); line-height: var(--sapWcrFormGroupTitleHeight); font-weight: bold; margin: 0px; padding-top: 1rem;"
           title="Mailing Address"
-          ui5-title=""
         >
           Mailing Address
-        </ui5-title>
+        </h6>
         <ui5-label
           class="FormItem-label"
           style="grid-column-start: 13; grid-row-start: 3;"
@@ -721,7 +713,7 @@ exports[`DynamicPage hider header button 1`] = `
         </ui5-label>
         <div
           class="FormItem-content"
-          style="grid-column-start: 17; grid-row-start: 3;"
+          style="grid-column-start: 17; grid-row-start: 3; padding-bottom: 0px;"
         >
           <span
             class="Text-text"
@@ -1021,15 +1013,13 @@ exports[`DynamicPage with content 1`] = `
         data-columns="4"
         style="padding-bottom: 2rem; z-index: 0;"
       >
-        <ui5-title
+        <h6
           aria-label="Phone Numbers"
-          level="H5"
-          style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
+          style="grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2; display: flex; align-items: center; font-family: var(--sapFontFamily); line-height: var(--sapWcrFormGroupTitleHeight); font-weight: bold; margin: 0px; padding-top: 1rem;"
           title="Phone Numbers"
-          ui5-title=""
         >
           Phone Numbers
-        </ui5-title>
+        </h6>
         <ui5-label
           class="FormItem-label"
           style="grid-column-start: 1; grid-row-start: 3;"
@@ -1040,7 +1030,7 @@ exports[`DynamicPage with content 1`] = `
         </ui5-label>
         <div
           class="FormItem-content"
-          style="grid-column-start: 5; grid-row-start: 3;"
+          style="grid-column-start: 5; grid-row-start: 3; padding-bottom: 0px;"
         >
           <span
             class="Text-text"
@@ -1056,7 +1046,7 @@ exports[`DynamicPage with content 1`] = `
         />
         <div
           class="FormItem-content"
-          style="grid-column-start: 5; grid-row-start: 4;"
+          style="grid-column-start: 5; grid-row-start: 4; padding-bottom: 1rem;"
         >
           <span
             class="Text-text"
@@ -1064,15 +1054,13 @@ exports[`DynamicPage with content 1`] = `
             +1 234-567-5555
           </span>
         </div>
-        <ui5-title
+        <h6
           aria-label="Social Accounts"
-          level="H5"
-          style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
+          style="grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2; display: flex; align-items: center; font-family: var(--sapFontFamily); line-height: var(--sapWcrFormGroupTitleHeight); font-weight: bold; margin: 0px; padding-top: 1rem;"
           title="Social Accounts"
-          ui5-title=""
         >
           Social Accounts
-        </ui5-title>
+        </h6>
         <ui5-label
           class="FormItem-label"
           style="grid-column-start: 13; grid-row-start: 3;"
@@ -1083,7 +1071,7 @@ exports[`DynamicPage with content 1`] = `
         </ui5-label>
         <div
           class="FormItem-content"
-          style="grid-column-start: 17; grid-row-start: 3;"
+          style="grid-column-start: 17; grid-row-start: 3; padding-bottom: 0px;"
         >
           <span
             class="Text-text"
@@ -1101,7 +1089,7 @@ exports[`DynamicPage with content 1`] = `
         </ui5-label>
         <div
           class="FormItem-content"
-          style="grid-column-start: 17; grid-row-start: 4;"
+          style="grid-column-start: 17; grid-row-start: 4; padding-bottom: 1rem;"
         >
           <span
             class="Text-text"
@@ -1115,15 +1103,13 @@ exports[`DynamicPage with content 1`] = `
         data-columns="4"
         style="padding-bottom: 2rem;"
       >
-        <ui5-title
+        <h6
           aria-label="Addresses"
-          level="H5"
-          style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
+          style="grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2; display: flex; align-items: center; font-family: var(--sapFontFamily); line-height: var(--sapWcrFormGroupTitleHeight); font-weight: bold; margin: 0px; padding-top: 1rem;"
           title="Addresses"
-          ui5-title=""
         >
           Addresses
-        </ui5-title>
+        </h6>
         <ui5-label
           class="FormItem-label"
           style="grid-column-start: 1; grid-row-start: 3;"
@@ -1134,7 +1120,7 @@ exports[`DynamicPage with content 1`] = `
         </ui5-label>
         <div
           class="FormItem-content"
-          style="grid-column-start: 5; grid-row-start: 3;"
+          style="grid-column-start: 5; grid-row-start: 3; padding-bottom: 0px;"
         >
           <span
             class="Text-text"
@@ -1152,7 +1138,7 @@ exports[`DynamicPage with content 1`] = `
         </ui5-label>
         <div
           class="FormItem-content"
-          style="grid-column-start: 5; grid-row-start: 4;"
+          style="grid-column-start: 5; grid-row-start: 4; padding-bottom: 1rem;"
         >
           <span
             class="Text-text"
@@ -1160,15 +1146,13 @@ exports[`DynamicPage with content 1`] = `
             PO Box 32114
           </span>
         </div>
-        <ui5-title
+        <h6
           aria-label="Mailing Address"
-          level="H5"
-          style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
+          style="grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2; display: flex; align-items: center; font-family: var(--sapFontFamily); line-height: var(--sapWcrFormGroupTitleHeight); font-weight: bold; margin: 0px; padding-top: 1rem;"
           title="Mailing Address"
-          ui5-title=""
         >
           Mailing Address
-        </ui5-title>
+        </h6>
         <ui5-label
           class="FormItem-label"
           style="grid-column-start: 13; grid-row-start: 3;"
@@ -1179,7 +1163,7 @@ exports[`DynamicPage with content 1`] = `
         </ui5-label>
         <div
           class="FormItem-content"
-          style="grid-column-start: 17; grid-row-start: 3;"
+          style="grid-column-start: 17; grid-row-start: 3; padding-bottom: 0px;"
         >
           <span
             class="Text-text"
@@ -1193,15 +1177,13 @@ exports[`DynamicPage with content 1`] = `
         data-columns="4"
         style="padding-bottom: 2rem;"
       >
-        <ui5-title
+        <h6
           aria-label="Phone Numbers"
-          level="H5"
-          style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
+          style="grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2; display: flex; align-items: center; font-family: var(--sapFontFamily); line-height: var(--sapWcrFormGroupTitleHeight); font-weight: bold; margin: 0px; padding-top: 1rem;"
           title="Phone Numbers"
-          ui5-title=""
         >
           Phone Numbers
-        </ui5-title>
+        </h6>
         <ui5-label
           class="FormItem-label"
           style="grid-column-start: 1; grid-row-start: 3;"
@@ -1212,7 +1194,7 @@ exports[`DynamicPage with content 1`] = `
         </ui5-label>
         <div
           class="FormItem-content"
-          style="grid-column-start: 5; grid-row-start: 3;"
+          style="grid-column-start: 5; grid-row-start: 3; padding-bottom: 0px;"
         >
           <span
             class="Text-text"
@@ -1228,7 +1210,7 @@ exports[`DynamicPage with content 1`] = `
         />
         <div
           class="FormItem-content"
-          style="grid-column-start: 5; grid-row-start: 4;"
+          style="grid-column-start: 5; grid-row-start: 4; padding-bottom: 1rem;"
         >
           <span
             class="Text-text"
@@ -1236,15 +1218,13 @@ exports[`DynamicPage with content 1`] = `
             +1 234-567-5555
           </span>
         </div>
-        <ui5-title
+        <h6
           aria-label="Social Accounts"
-          level="H5"
-          style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
+          style="grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2; display: flex; align-items: center; font-family: var(--sapFontFamily); line-height: var(--sapWcrFormGroupTitleHeight); font-weight: bold; margin: 0px; padding-top: 1rem;"
           title="Social Accounts"
-          ui5-title=""
         >
           Social Accounts
-        </ui5-title>
+        </h6>
         <ui5-label
           class="FormItem-label"
           style="grid-column-start: 13; grid-row-start: 3;"
@@ -1255,7 +1235,7 @@ exports[`DynamicPage with content 1`] = `
         </ui5-label>
         <div
           class="FormItem-content"
-          style="grid-column-start: 17; grid-row-start: 3;"
+          style="grid-column-start: 17; grid-row-start: 3; padding-bottom: 0px;"
         >
           <span
             class="Text-text"
@@ -1273,7 +1253,7 @@ exports[`DynamicPage with content 1`] = `
         </ui5-label>
         <div
           class="FormItem-content"
-          style="grid-column-start: 17; grid-row-start: 4;"
+          style="grid-column-start: 17; grid-row-start: 4; padding-bottom: 1rem;"
         >
           <span
             class="Text-text"
@@ -1287,15 +1267,13 @@ exports[`DynamicPage with content 1`] = `
         data-columns="4"
         style="padding-bottom: 2rem;"
       >
-        <ui5-title
+        <h6
           aria-label="Addresses"
-          level="H5"
-          style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
+          style="grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2; display: flex; align-items: center; font-family: var(--sapFontFamily); line-height: var(--sapWcrFormGroupTitleHeight); font-weight: bold; margin: 0px; padding-top: 1rem;"
           title="Addresses"
-          ui5-title=""
         >
           Addresses
-        </ui5-title>
+        </h6>
         <ui5-label
           class="FormItem-label"
           style="grid-column-start: 1; grid-row-start: 3;"
@@ -1306,7 +1284,7 @@ exports[`DynamicPage with content 1`] = `
         </ui5-label>
         <div
           class="FormItem-content"
-          style="grid-column-start: 5; grid-row-start: 3;"
+          style="grid-column-start: 5; grid-row-start: 3; padding-bottom: 0px;"
         >
           <span
             class="Text-text"
@@ -1324,7 +1302,7 @@ exports[`DynamicPage with content 1`] = `
         </ui5-label>
         <div
           class="FormItem-content"
-          style="grid-column-start: 5; grid-row-start: 4;"
+          style="grid-column-start: 5; grid-row-start: 4; padding-bottom: 1rem;"
         >
           <span
             class="Text-text"
@@ -1332,15 +1310,13 @@ exports[`DynamicPage with content 1`] = `
             PO Box 32114
           </span>
         </div>
-        <ui5-title
+        <h6
           aria-label="Mailing Address"
-          level="H5"
-          style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
+          style="grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2; display: flex; align-items: center; font-family: var(--sapFontFamily); line-height: var(--sapWcrFormGroupTitleHeight); font-weight: bold; margin: 0px; padding-top: 1rem;"
           title="Mailing Address"
-          ui5-title=""
         >
           Mailing Address
-        </ui5-title>
+        </h6>
         <ui5-label
           class="FormItem-label"
           style="grid-column-start: 13; grid-row-start: 3;"
@@ -1351,7 +1327,7 @@ exports[`DynamicPage with content 1`] = `
         </ui5-label>
         <div
           class="FormItem-content"
-          style="grid-column-start: 17; grid-row-start: 3;"
+          style="grid-column-start: 17; grid-row-start: 3; padding-bottom: 0px;"
         >
           <span
             class="Text-text"
@@ -1365,15 +1341,13 @@ exports[`DynamicPage with content 1`] = `
         data-columns="4"
         style="padding-bottom: 2rem; z-index: 0;"
       >
-        <ui5-title
+        <h6
           aria-label="Phone Numbers"
-          level="H5"
-          style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
+          style="grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2; display: flex; align-items: center; font-family: var(--sapFontFamily); line-height: var(--sapWcrFormGroupTitleHeight); font-weight: bold; margin: 0px; padding-top: 1rem;"
           title="Phone Numbers"
-          ui5-title=""
         >
           Phone Numbers
-        </ui5-title>
+        </h6>
         <ui5-label
           class="FormItem-label"
           style="grid-column-start: 1; grid-row-start: 3;"
@@ -1384,7 +1358,7 @@ exports[`DynamicPage with content 1`] = `
         </ui5-label>
         <div
           class="FormItem-content"
-          style="grid-column-start: 5; grid-row-start: 3;"
+          style="grid-column-start: 5; grid-row-start: 3; padding-bottom: 0px;"
         >
           <span
             class="Text-text"
@@ -1400,7 +1374,7 @@ exports[`DynamicPage with content 1`] = `
         />
         <div
           class="FormItem-content"
-          style="grid-column-start: 5; grid-row-start: 4;"
+          style="grid-column-start: 5; grid-row-start: 4; padding-bottom: 1rem;"
         >
           <span
             class="Text-text"
@@ -1408,15 +1382,13 @@ exports[`DynamicPage with content 1`] = `
             +1 234-567-5555
           </span>
         </div>
-        <ui5-title
+        <h6
           aria-label="Social Accounts"
-          level="H5"
-          style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
+          style="grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2; display: flex; align-items: center; font-family: var(--sapFontFamily); line-height: var(--sapWcrFormGroupTitleHeight); font-weight: bold; margin: 0px; padding-top: 1rem;"
           title="Social Accounts"
-          ui5-title=""
         >
           Social Accounts
-        </ui5-title>
+        </h6>
         <ui5-label
           class="FormItem-label"
           style="grid-column-start: 13; grid-row-start: 3;"
@@ -1427,7 +1399,7 @@ exports[`DynamicPage with content 1`] = `
         </ui5-label>
         <div
           class="FormItem-content"
-          style="grid-column-start: 17; grid-row-start: 3;"
+          style="grid-column-start: 17; grid-row-start: 3; padding-bottom: 0px;"
         >
           <span
             class="Text-text"
@@ -1445,7 +1417,7 @@ exports[`DynamicPage with content 1`] = `
         </ui5-label>
         <div
           class="FormItem-content"
-          style="grid-column-start: 17; grid-row-start: 4;"
+          style="grid-column-start: 17; grid-row-start: 4; padding-bottom: 1rem;"
         >
           <span
             class="Text-text"
@@ -1459,15 +1431,13 @@ exports[`DynamicPage with content 1`] = `
         data-columns="4"
         style="padding-bottom: 2rem;"
       >
-        <ui5-title
+        <h6
           aria-label="Addresses"
-          level="H5"
-          style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
+          style="grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2; display: flex; align-items: center; font-family: var(--sapFontFamily); line-height: var(--sapWcrFormGroupTitleHeight); font-weight: bold; margin: 0px; padding-top: 1rem;"
           title="Addresses"
-          ui5-title=""
         >
           Addresses
-        </ui5-title>
+        </h6>
         <ui5-label
           class="FormItem-label"
           style="grid-column-start: 1; grid-row-start: 3;"
@@ -1478,7 +1448,7 @@ exports[`DynamicPage with content 1`] = `
         </ui5-label>
         <div
           class="FormItem-content"
-          style="grid-column-start: 5; grid-row-start: 3;"
+          style="grid-column-start: 5; grid-row-start: 3; padding-bottom: 0px;"
         >
           <span
             class="Text-text"
@@ -1496,7 +1466,7 @@ exports[`DynamicPage with content 1`] = `
         </ui5-label>
         <div
           class="FormItem-content"
-          style="grid-column-start: 5; grid-row-start: 4;"
+          style="grid-column-start: 5; grid-row-start: 4; padding-bottom: 1rem;"
         >
           <span
             class="Text-text"
@@ -1504,15 +1474,13 @@ exports[`DynamicPage with content 1`] = `
             PO Box 32114
           </span>
         </div>
-        <ui5-title
+        <h6
           aria-label="Mailing Address"
-          level="H5"
-          style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
+          style="grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2; display: flex; align-items: center; font-family: var(--sapFontFamily); line-height: var(--sapWcrFormGroupTitleHeight); font-weight: bold; margin: 0px; padding-top: 1rem;"
           title="Mailing Address"
-          ui5-title=""
         >
           Mailing Address
-        </ui5-title>
+        </h6>
         <ui5-label
           class="FormItem-label"
           style="grid-column-start: 13; grid-row-start: 3;"
@@ -1523,7 +1491,7 @@ exports[`DynamicPage with content 1`] = `
         </ui5-label>
         <div
           class="FormItem-content"
-          style="grid-column-start: 17; grid-row-start: 3;"
+          style="grid-column-start: 17; grid-row-start: 3; padding-bottom: 0px;"
         >
           <span
             class="Text-text"
@@ -1537,15 +1505,13 @@ exports[`DynamicPage with content 1`] = `
         data-columns="4"
         style="padding-bottom: 2rem;"
       >
-        <ui5-title
+        <h6
           aria-label="Phone Numbers"
-          level="H5"
-          style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
+          style="grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2; display: flex; align-items: center; font-family: var(--sapFontFamily); line-height: var(--sapWcrFormGroupTitleHeight); font-weight: bold; margin: 0px; padding-top: 1rem;"
           title="Phone Numbers"
-          ui5-title=""
         >
           Phone Numbers
-        </ui5-title>
+        </h6>
         <ui5-label
           class="FormItem-label"
           style="grid-column-start: 1; grid-row-start: 3;"
@@ -1556,7 +1522,7 @@ exports[`DynamicPage with content 1`] = `
         </ui5-label>
         <div
           class="FormItem-content"
-          style="grid-column-start: 5; grid-row-start: 3;"
+          style="grid-column-start: 5; grid-row-start: 3; padding-bottom: 0px;"
         >
           <span
             class="Text-text"
@@ -1572,7 +1538,7 @@ exports[`DynamicPage with content 1`] = `
         />
         <div
           class="FormItem-content"
-          style="grid-column-start: 5; grid-row-start: 4;"
+          style="grid-column-start: 5; grid-row-start: 4; padding-bottom: 1rem;"
         >
           <span
             class="Text-text"
@@ -1580,15 +1546,13 @@ exports[`DynamicPage with content 1`] = `
             +1 234-567-5555
           </span>
         </div>
-        <ui5-title
+        <h6
           aria-label="Social Accounts"
-          level="H5"
-          style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
+          style="grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2; display: flex; align-items: center; font-family: var(--sapFontFamily); line-height: var(--sapWcrFormGroupTitleHeight); font-weight: bold; margin: 0px; padding-top: 1rem;"
           title="Social Accounts"
-          ui5-title=""
         >
           Social Accounts
-        </ui5-title>
+        </h6>
         <ui5-label
           class="FormItem-label"
           style="grid-column-start: 13; grid-row-start: 3;"
@@ -1599,7 +1563,7 @@ exports[`DynamicPage with content 1`] = `
         </ui5-label>
         <div
           class="FormItem-content"
-          style="grid-column-start: 17; grid-row-start: 3;"
+          style="grid-column-start: 17; grid-row-start: 3; padding-bottom: 0px;"
         >
           <span
             class="Text-text"
@@ -1617,7 +1581,7 @@ exports[`DynamicPage with content 1`] = `
         </ui5-label>
         <div
           class="FormItem-content"
-          style="grid-column-start: 17; grid-row-start: 4;"
+          style="grid-column-start: 17; grid-row-start: 4; padding-bottom: 1rem;"
         >
           <span
             class="Text-text"
@@ -1631,15 +1595,13 @@ exports[`DynamicPage with content 1`] = `
         data-columns="4"
         style="padding-bottom: 2rem;"
       >
-        <ui5-title
+        <h6
           aria-label="Addresses"
-          level="H5"
-          style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2;"
+          style="grid-column-end: span 12; grid-column-start: 1; grid-row-start: 2; display: flex; align-items: center; font-family: var(--sapFontFamily); line-height: var(--sapWcrFormGroupTitleHeight); font-weight: bold; margin: 0px; padding-top: 1rem;"
           title="Addresses"
-          ui5-title=""
         >
           Addresses
-        </ui5-title>
+        </h6>
         <ui5-label
           class="FormItem-label"
           style="grid-column-start: 1; grid-row-start: 3;"
@@ -1650,7 +1612,7 @@ exports[`DynamicPage with content 1`] = `
         </ui5-label>
         <div
           class="FormItem-content"
-          style="grid-column-start: 5; grid-row-start: 3;"
+          style="grid-column-start: 5; grid-row-start: 3; padding-bottom: 0px;"
         >
           <span
             class="Text-text"
@@ -1668,7 +1630,7 @@ exports[`DynamicPage with content 1`] = `
         </ui5-label>
         <div
           class="FormItem-content"
-          style="grid-column-start: 5; grid-row-start: 4;"
+          style="grid-column-start: 5; grid-row-start: 4; padding-bottom: 1rem;"
         >
           <span
             class="Text-text"
@@ -1676,15 +1638,13 @@ exports[`DynamicPage with content 1`] = `
             PO Box 32114
           </span>
         </div>
-        <ui5-title
+        <h6
           aria-label="Mailing Address"
-          level="H5"
-          style="padding-bottom: 0.75rem; grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2;"
+          style="grid-column-end: span 12; grid-column-start: 13; grid-row-start: 2; display: flex; align-items: center; font-family: var(--sapFontFamily); line-height: var(--sapWcrFormGroupTitleHeight); font-weight: bold; margin: 0px; padding-top: 1rem;"
           title="Mailing Address"
-          ui5-title=""
         >
           Mailing Address
-        </ui5-title>
+        </h6>
         <ui5-label
           class="FormItem-label"
           style="grid-column-start: 13; grid-row-start: 3;"
@@ -1695,7 +1655,7 @@ exports[`DynamicPage with content 1`] = `
         </ui5-label>
         <div
           class="FormItem-content"
-          style="grid-column-start: 17; grid-row-start: 3;"
+          style="grid-column-start: 17; grid-row-start: 3; padding-bottom: 0px;"
         >
           <span
             class="Text-text"
