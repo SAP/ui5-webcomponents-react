@@ -482,6 +482,12 @@ const getTypeScriptTypeForProperty = (property) => {
         tsType: 'TabContainerTabsPlacement',
         isEnum: true
       };
+    case 'TableGrowingMode':
+      return {
+        importStatement: "import { TableGrowingMode } from '@ui5/webcomponents-react/lib/TableGrowingMode';",
+        tsType: 'TableGrowingMode',
+        isEnum: true
+      };
     case 'TitleLevel':
       return {
         importStatement: "import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';",

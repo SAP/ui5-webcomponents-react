@@ -128,6 +128,7 @@ import { TabSeparator } from './lib/TabSeparator';
 import { Table } from './lib/Table';
 import { TableCell } from './lib/TableCell';
 import { TableColumn } from './lib/TableColumn';
+import { TableGrowingMode } from './lib/TableGrowingMode';
 import { TablePlaceholder } from './lib/TablePlaceholder';
 import { TableRow } from './lib/TableRow';
 import { TableScaleWidthMode } from './lib/TableScaleWidthMode';
@@ -292,6 +293,7 @@ export {
   Table,
   TableCell,
   TableColumn,
+  TableGrowingMode,
   TablePlaceholder,
   TableRow,
   TableScaleWidthMode,

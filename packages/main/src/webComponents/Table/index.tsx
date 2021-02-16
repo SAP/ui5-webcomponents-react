@@ -1,25 +1,38 @@
+import { TableGrowingMode } from '@ui5/webcomponents-react/lib/TableGrowingMode';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/Table';
 import { FC, ReactNode } from 'react';
 
 export interface TablePropTypes extends WithWebComponentPropTypes {
   /**
-   * Defines if additonal row will be displayed at the bottom of the table. Pressing on the row will fire the `load-more` event.
+   * Defines if the table is in busy state. **In this state the component's opacity is reduced and busy indicator is displayed at the bottom of the table.**
    */
-  hasMore?: boolean;
+  busy?: boolean;
   /**
-   * Defines the subtext that will be displayed under the `loadMoreText`.
+   * Defines whether the table will have growing capability either by pressing a `More` button, or via user scroll. In both cases `load-more` event is fired.
    *
-   * **Note:** This property takes effect if `hasMore` is set.
+   * Available options:
+   *
+   * `Button` - Shows a `More` button at the bottom of the table, pressing of which triggers the `load-more` event.
+   * `Scroll` - The `load-more` event is triggered when the user scrolls to the bottom of the table;
+   * `None` (default) - The growing is off.
+   *
+   * **Limitations:** `growing="Scroll"` is not supported for Internet Explorer, and the component will fallback to `growing="Button"`.
    */
-  loadMoreSubtext?: string;
+  growing?: TableGrowingMode;
   /**
-   * Defines the text that will be displayed inside the additional row at the bottom of the table, meant for loading more rows upon press.
+   * Defines the subtext that will be displayed under the `moreText`.
+   *
+   * **Note:** This property takes effect if `growing` is set to `Button`.
+   */
+  moreSubtext?: string;
+  /**
+   * Defines the text that will be displayed inside the `More` button at the bottom of the table, meant for loading more rows upon press.
    *
    * **Note:** If not specified a built-in text will be displayed.
-   * **Note:** This property takes effect if `hasMore` is set.
+   * **Note:** This property takes effect if `growing` is set to `Button`.
    */
-  loadMoreText?: string;
+  moreText?: string;
   /**
    * Defines the text that will be displayed when there is no data and `showNoData` is present.
    */
@@ -54,7 +67,9 @@ export interface TablePropTypes extends WithWebComponentPropTypes {
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Fired when the user presses the `showMore` row of the table.
+   * Fired when the user presses the `More` button or scrolls to the table's end.
+   *
+   * **Note:** The event will be fired if `growing` is set to `Button` or `Scroll`.
    */
   onLoadMore?: (event: CustomEvent) => void;
   /**
@@ -78,8 +93,8 @@ export interface TablePropTypes extends WithWebComponentPropTypes {
  */
 const Table: FC<TablePropTypes> = withWebComponent<TablePropTypes>(
   'ui5-table',
-  ['loadMoreSubtext', 'loadMoreText', 'noDataText'],
-  ['hasMore', 'showNoData', 'stickyColumnHeader'],
+  ['growing', 'moreSubtext', 'moreText', 'noDataText'],
+  ['busy', 'showNoData', 'stickyColumnHeader'],
   ['columns'],
   ['load-more', 'popin-change', 'row-click']
 );
@@ -87,7 +102,8 @@ const Table: FC<TablePropTypes> = withWebComponent<TablePropTypes>(
 Table.displayName = 'Table';
 
 Table.defaultProps = {
-  hasMore: false,
+  busy: false,
+  growing: TableGrowingMode.None,
   showNoData: false,
   stickyColumnHeader: false
 };
