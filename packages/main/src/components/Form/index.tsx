@@ -1,3 +1,5 @@
+import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { createUseStyles } from 'react-jss';
 import { getCurrentRange } from '@ui5/webcomponents-react-base/lib/Device';
 import { useConsolidatedRef, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/hooks';
@@ -7,6 +9,7 @@ import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import React, {
   Children,
   cloneElement,
+  CSSProperties,
   FC,
   forwardRef,
   ReactElement,
@@ -167,7 +170,7 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
         if ((row.type as any).displayName === 'FormItem') {
           return 1;
         }
-        return Children.count(row.props.children) + (row.props?.title?.length > 0 ? 1 : 0);
+        return Children.count(row.props.children) + 1;
       });
 
       maxRowsPerRow[rowIndex] = Math.max(...numberOfRowsOfEachForm);
@@ -178,26 +181,34 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
     rows.forEach((column: ReactElement[], rowIndex) => {
       const rowsForThisRow = maxRowsPerRow[rowIndex];
       column.forEach((cell, columnIndex) => {
-        const titleStyles = {
-          paddingBottom: '0.75rem',
+        const titleStyles: CSSProperties = {
           gridColumnEnd: 'span 12',
           gridColumnStart: columnIndex * 12 + 1,
-          gridRowStart: totalRowCount
+          gridRowStart: totalRowCount,
+          display: 'flex',
+          alignItems: 'center',
+          fontFamily: ThemingParameters.sapFontFamily,
+          height: CssSizeVariables.sapWcrFormGroupTitleHeight,
+          lineHeight: CssSizeVariables.sapWcrFormGroupTitleHeight,
+          color: ThemingParameters.sapTextColor,
+          fontSize: ThemingParameters.sapFontSize,
+          fontWeight: 'bold',
+          backgroundColor: ThemingParameters.sapGroup_TitleBackground,
+          margin: 0,
+          paddingTop: '1rem'
         };
+
         if (cell?.props?.title) {
           computedFormGroups.push(
-            <Title
-              level={TitleLevel.H5}
+            <h6
               style={titleStyles}
-              tooltip={cell.props.title}
+              title={cell.props.title}
               aria-label={cell.props.title}
               key={`title-col-${columnIndex}-row-${totalRowCount}`}
             >
               {cell.props.title}
-            </Title>
+            </h6>
           );
-        } else {
-          computedFormGroups.push(<div style={titleStyles} key={`title-col-${columnIndex}-row-${totalRowCount}`} />);
         }
 
         for (let i = 0; i < rowsForThisRow; i++) {
@@ -213,6 +224,7 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
               cloneElement(itemToRender as ReactElement, {
                 key: `col-${columnIndex}-row-${totalRowCount + i}`,
                 columnIndex,
+                lastGroupItem: (cell.type as any).displayName === 'FormGroup' && rowsForThisRow - 2 === i,
                 rowIndex: totalRowCount + i + 1,
                 labelSpan: currentLabelSpan
               })
@@ -228,7 +240,6 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
 
     return [computedFormGroups, title];
   }, [children, currentRange, title, currentNumberOfColumns, currentLabelSpan]);
-
   const passThroughProps = usePassThroughHtmlProps(props);
 
   const formClassNames = StyleClassHelper.of(classes.form)
