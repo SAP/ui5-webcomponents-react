@@ -29,14 +29,11 @@ const useStyles = createUseStyles(
     label: {
       gridColumnEnd: 'span var(--ui5wcr_form_label_span)',
       justifySelf: 'var(--ui5wcr_form_label_text_align)',
-      textAlign: 'var(--ui5wcr_form_label_text_align)',
-      alignSelf: 'start',
-      paddingTop: CssSizeVariables.sapWcrFormLabelPaddingTop,
-      paddingBottom: '0.075rem'
+      textAlign: 'var(--ui5wcr_form_label_text_align)'
     },
     content: {
-      gridColumnEnd: 'span var(--ui5wcr_form_content_span)',
-      alignSelf: 'end'
+      display: 'flex',
+      gridColumnEnd: 'span var(--ui5wcr_form_content_span)'
     }
   },
   { name: 'FormItem' }
