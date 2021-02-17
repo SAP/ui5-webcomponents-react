@@ -1,3 +1,4 @@
+import { isIE } from '@ui5/webcomponents-react-base/lib/Device';
 import { createUseStyles } from 'react-jss';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
@@ -200,12 +201,12 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         return;
       }
       if (firstSectionId === sectionId) {
-        objectPageRef.current.scrollTo({ top: 0, behavior: 'smooth' });
+        objectPageRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
-        const childOffset = objectPageRef.current.querySelector<HTMLElement>(`#ObjectPageSection-${sectionId}`)
+        const childOffset = objectPageRef.current?.querySelector<HTMLElement>(`#ObjectPageSection-${sectionId}`)
           ?.offsetTop;
         if (!isNaN(childOffset)) {
-          objectPageRef.current.scrollTo({
+          objectPageRef.current?.scrollTo({
             top: childOffset - topHeaderHeight - anchorBarHeight - (headerPinned ? headerContentHeight : 0) + 45,
             behavior: 'smooth'
           });
@@ -250,11 +251,11 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   // Scrolling for Sub Section Selection
   useEffect(() => {
     if (selectedSubSectionId && isProgrammaticallyScrolled.current === true) {
-      const childOffset = objectPageRef.current.querySelector<HTMLElement>(
+      const childOffset = objectPageRef.current?.querySelector<HTMLElement>(
         `div[id="ObjectPageSubSection-${selectedSubSectionId}"]`
       )?.offsetTop;
       if (!isNaN(childOffset)) {
-        objectPageRef.current.scrollTo({
+        objectPageRef.current?.scrollTo({
           top: childOffset - topHeaderHeight - anchorBarHeight - (headerPinned ? headerContentHeight : 0) + 45,
           behavior: 'smooth'
         });
@@ -315,7 +316,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
 
   useEffect(() => {
     const fillerDivObserver = new ResizeObserver(() => {
-      const maxHeight = Math.min(objectPageRef.current.clientHeight, window.innerHeight);
+      const maxHeight = Math.min(objectPageRef.current?.clientHeight, window.innerHeight);
       const availableScrollHeight = maxHeight - totalHeaderHeight;
       const lastSectionDomRef = getLastObjectPageSection(objectPageRef);
       const subSections = lastSectionDomRef.querySelectorAll('[id^="ObjectPageSubSection"]');
@@ -332,7 +333,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       let heightDiff = availableScrollHeight - lastSubSectionHeight;
 
       heightDiff = heightDiff > 0 ? heightDiff : 0;
-      objectPageRef.current.style.setProperty(ObjectPageCssVariables.lastSectionMargin, `${heightDiff}px`);
+      objectPageRef.current?.style.setProperty(ObjectPageCssVariables.lastSectionMargin, `${heightDiff}px`);
     });
 
     fillerDivObserver.observe(objectPageRef.current);
@@ -370,18 +371,18 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       const srcElement = e.target;
       const shouldHideHeader = srcElement.icon === 'slim-arrow-up';
       if (shouldHideHeader) {
-        objectPageRef.current.classList.add(classes.headerCollapsed);
+        objectPageRef.current?.classList.add(classes.headerCollapsed);
       } else {
-        objectPageRef.current.classList.remove(classes.headerCollapsed);
+        objectPageRef.current?.classList.remove(classes.headerCollapsed);
       }
 
       requestAnimationFrame(() => {
-        if (objectPageRef.current.scrollTop > 0 && !shouldHideHeader) {
+        if (objectPageRef.current?.scrollTop > 0 && !shouldHideHeader) {
           const prevHeaderTop = headerContentRef.current.style.top;
           headerContentRef.current.style.top = `${topHeaderHeight}px`;
           const prevAnchorTop = anchorBarRef.current.style.top;
           anchorBarRef.current.style.top = `${headerContentRef.current.offsetHeight + topHeaderHeight}px`;
-          objectPageRef.current.addEventListener(
+          objectPageRef.current?.addEventListener(
             'scroll',
             (e) => {
               if (prevHeaderTop ?? true) {
@@ -432,7 +433,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
 
   const scrollBarWidthPadding = useMemo(() => {
     return {
-      paddingRight: `${scrollbarWidth}px`
+      paddingRight: isIE() ? 0 : `${scrollbarWidth}px`
     };
   }, [scrollbarWidth]);
 
@@ -457,7 +458,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       }
     );
 
-    objectPageRef.current.querySelectorAll('section[data-component-name="ObjectPageSection"]').forEach((el) => {
+    objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]').forEach((el) => {
       observer.observe(el);
     });
 
@@ -465,6 +466,19 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       observer.disconnect();
     };
   }, [objectPageRef, children, totalHeaderHeight, setInternalSelectedSectionId, isProgrammaticallyScrolled]);
+
+  const headerClasses = StyleClassHelper.of(classes.header);
+  const anchorBarClasses = StyleClassHelper.of(classes.anchorBar);
+  if (isIE()) {
+    headerClasses.put(classes.iEClass);
+    anchorBarClasses.put(classes.iEClass);
+  }
+
+  const anchorBarPositionTop = noHeader
+    ? 0
+    : headerPinned || isIE()
+    ? topHeaderHeight + headerContentHeight
+    : topHeaderHeight;
 
   return (
     <div
@@ -481,7 +495,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         role="banner"
         aria-roledescription="Object Page header"
         style={scrollBarWidthPadding}
-        className={classes.header}
+        className={headerClasses.className}
       >
         <div className={classes.titleBar}>
           {(!showTitleInHeaderContent || headerContentHeight === 0) && (
@@ -534,12 +548,31 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         headerPinned={headerPinned}
         setHeaderPinned={setHeaderPinned}
         headerContentHeight={headerContentHeight}
-        style={{ top: noHeader ? 0 : headerPinned ? topHeaderHeight + headerContentHeight : topHeaderHeight }}
+        style={{ top: anchorBarPositionTop }}
         onToggleHeaderContentVisibility={onToggleHeaderContentVisibility}
         ref={anchorBarRef}
-        className={classes.anchorBar}
+        className={anchorBarClasses.className}
       />
-      {mode === ObjectPageMode.IconTabBar ? getSectionById(children, internalSelectedSectionId) : children}
+      {isIE() && (
+        <div
+          className={classes.iEBackgroundElement}
+          style={{
+            height: `${anchorBarPositionTop + anchorBarRef.current?.offsetHeight ?? 0}px`,
+            width: `calc(100% - ${
+              objectPageRef?.current?.clientHeight < objectPageRef?.current?.scrollHeight ? '18px' : '0px'
+            })`
+          }}
+        />
+      )}
+      {isIE() ? (
+        <div style={{ marginTop: `${anchorBarPositionTop + anchorBarRef.current?.offsetHeight ?? 0}px` }}>
+          {mode === ObjectPageMode.IconTabBar ? getSectionById(children, internalSelectedSectionId) : children}
+        </div>
+      ) : mode === ObjectPageMode.IconTabBar ? (
+        getSectionById(children, internalSelectedSectionId)
+      ) : (
+        children
+      )}
     </div>
   );
 });

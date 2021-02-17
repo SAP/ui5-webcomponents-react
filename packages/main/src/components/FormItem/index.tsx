@@ -1,9 +1,10 @@
-import { createUseStyles } from 'react-jss';
+import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
 import { Label, LabelPropTypes } from '@ui5/webcomponents-react/lib/Label';
 import React, { cloneElement, CSSProperties, FC, isValidElement, ReactElement, ReactNode, ReactNodeArray } from 'react';
+import { createUseStyles } from 'react-jss';
 
 export interface FormItemProps {
   /**
@@ -20,6 +21,7 @@ interface InternalProps extends FormItemProps {
   columnIndex?: number;
   labelSpan?: number;
   rowIndex?: number;
+  lastGroupItem?: boolean;
 }
 
 const useStyles = createUseStyles(
@@ -30,6 +32,7 @@ const useStyles = createUseStyles(
       textAlign: 'var(--ui5wcr_form_label_text_align)'
     },
     content: {
+      display: 'flex',
       gridColumnEnd: 'span var(--ui5wcr_form_content_span)'
     }
   },
@@ -74,7 +77,7 @@ const renderLabel = (
  * The `FormItem` is only used for calculating the final layout of the `Form`, thus it doesn't accept any other props than `label` and `children`, especially no `className`, `style` or `ref`.
  */
 const FormItem: FC<FormItemProps> = (props: FormItemProps) => {
-  const { label, children, columnIndex, rowIndex, labelSpan } = props as InternalProps;
+  const { label, children, columnIndex, rowIndex, labelSpan, lastGroupItem } = props as InternalProps;
 
   const classes = useStyles();
 
@@ -104,7 +107,8 @@ const FormItem: FC<FormItemProps> = (props: FormItemProps) => {
         className={classes.content}
         style={{
           gridColumnStart: contentGridColumnStart,
-          gridRowStart: labelSpan === 12 ? gridRowStart + 1 : gridRowStart
+          gridRowStart: labelSpan === 12 ? gridRowStart + 1 : gridRowStart,
+          paddingBottom: lastGroupItem ? '1rem' : 0
         }}
       >
         {children}

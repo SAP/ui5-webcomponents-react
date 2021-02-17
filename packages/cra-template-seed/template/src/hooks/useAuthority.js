@@ -1,9 +1,16 @@
-import { useGet } from './useRequest';
-import Constants from '../util/Constants';
-import { getUrl } from '../util/api/url/APIProvider';
+import { useQuery } from 'react-query';
+
+import Request from '../api/Request';
 
 export const useHasAccess = (allowedAuthorities, authorityKey) => {
-  const { data, isError, isLoading } = useGet(Constants.REACT_QUERY.KEYS.RQ_GET_USER_LOGGED, getUrl('GET_USER_LOGGED'), null);
+  const { data, isError, isLoading } = useQuery(
+    'current-user',
+    async () => {
+      const result = await Request.get('/v1/user/logged');
+      return result.data;
+    },
+    null,
+  );
 
   if (isLoading) {
     return null;

@@ -1,13 +1,13 @@
-import { createUseStyles } from 'react-jss';
-import { Title } from '@ui5/webcomponents-react/lib/Title';
-import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
+import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import React, { FC, ReactNode, ReactNodeArray } from 'react';
+import { createUseStyles } from 'react-jss';
 
 export interface FormGroupProps {
   /**
-   * Title of the FormGroup
+   * Title of the FormGroup.
    */
-  title?: string;
+  title: string;
   /**
    * Contents of the FormGroup. Please use only `FormItem` to keep the intended design.
    */
@@ -17,9 +17,20 @@ export interface FormGroupProps {
 const useStyles = createUseStyles(
   {
     title: {
-      paddingBottom: '0.75rem',
-      gridColumn: 'span 12'
-    }
+      gridColumn: 'span 12',
+      display: 'flex',
+      alignItems: 'center',
+      height: CssSizeVariables.sapWcrFormGroupTitleHeight,
+      lineHeight: CssSizeVariables.sapWcrFormGroupTitleHeight,
+      fontFamily: ThemingParameters.sapFontFamily,
+      color: ThemingParameters.sapTextColor,
+      fontSize: ThemingParameters.sapFontSize,
+      fontWeight: 'bold',
+      backgroundColor: ThemingParameters.sapGroup_TitleBackground,
+      margin: 0,
+      paddingTop: '1rem'
+    },
+    spacer: { height: '1rem', gridColumn: 'span 12' }
   },
   { name: 'FormGroup' }
 );
@@ -34,12 +45,11 @@ const FormGroup: FC<FormGroupProps> = (props: FormGroupProps) => {
 
   return (
     <>
-      {title && (
-        <Title level={TitleLevel.H5} className={classes.title}>
-          {title}
-        </Title>
-      )}
+      <h6 className={classes.title} title={title} aria-label={title}>
+        {title}
+      </h6>
       {children}
+      <span className={classes.spacer} />
     </>
   );
 };

@@ -1,28 +1,25 @@
-import React, { lazy, Suspense } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
-import { getUrl } from '../util/browser/BrowserProvider';
+import { generatePath } from 'react-router';
 
-import { BusyIndicator } from '@ui5/webcomponents-react/lib/BusyIndicator';
-import RouteWithAuthorizationRestriction from '../auth/RouteWithAuthorizationRestriction';
-
-const TodoList = lazy(() => import('../pages/Todo/List/TodoList'));
-const TodoEdit = lazy(() => import('../pages/Todo/Edit/TodoEdit'));
-const NotFound = lazy(() => import('../pages/Fallback/NotFound'));
-const Buggy = lazy(() => import('../pages/Fallback/Buggy'));
-
-const Routes = () => {
-  return (
-    <Suspense fallback={<BusyIndicator active />}>
-      <Switch>
-        <Redirect path={getUrl('HOME')} exact to={getUrl('TODO_LIST')} />
-        <RouteWithAuthorizationRestriction allowedAuthorities={['canAccessTodoListPage']} authorityKey="permissions" path={getUrl('TODO_LIST')} component={TodoList} />
-        <RouteWithAuthorizationRestriction allowedAuthorities={['canAccessTodoEditPage']} authorityKey="permissions" path={getUrl('TODO_EDIT')} component={TodoEdit} />
-        <Route path={getUrl('BUGGY')} exact component={Buggy} />
-        <Route path={getUrl('NOT_FOUND')} exact component={NotFound} />
-        <Route path={getUrl('ANY')} component={NotFound} />
-      </Switch>
-    </Suspense>
-  );
+export const ROUTES = {
+  HOME: '/',
+  TODO_DETAIL: '/todo/detail/:id',
+  TODO_EDIT: '/todo/edit/:id',
+  TODO_LIST: '/todo/all',
+  NOT_FOUND: '/notFound',
+  BUGGY: '/buggy',
+  ANY: '/*',
 };
 
-export default Routes;
+/**
+ * A helper method to replace parameter placeholders in a string.
+ *
+ * @example getRoute('/todo/detail/:id', { id: 1 }) will return '/todo/detail/1'
+ *
+ * @param {string} route The route with optional parameter placeholders, e.g. '/todo/detail/:id'
+ * @param {Object} [params] Optional object with key value pairs to replace parameter placeholders from the `route`.
+ * @returns {string} resolved route with parameters
+ * @throws Will throw a TypeError if provided params and path don’t match
+ */
+export const getRoute = (route, params) => {
+  return generatePath(route, params);
+};

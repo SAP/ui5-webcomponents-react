@@ -1,12 +1,32 @@
 # This is a basic workflow to help you get started with Actions
-name: Deploy Docs
+name: CI
 
-on:
-  push:
-    branches: [ master ]
+on: [push, pull_request]
 
 jobs:
-  build-and-deploy:
+  check-bundle-size:
+    if: ${{ github.base_ref == 'main' }} # only for PRs targeting main branch
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2.3.1
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.1.4
+        with:
+          node-version: 14.x
+
+      - uses: preactjs/compressed-size-action@v2
+        with:
+          repo-token: '${{ secrets.GITHUB_TOKEN }}'
+          pattern: 'packages/**/lib/**/*.js'
+          exclude: 'packages/**/src/lib/**'
+          compression: 'gzip'
+
+  deploy-master-docs:
+    if: ${{ github.repository == 'SAP/ui5-webcomponents-react' && github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
@@ -26,10 +46,50 @@ jobs:
         yarn build:storybook
 
     - name: Deploy 🚀
-      uses: JamesIves/github-pages-deploy-action@3.7.1
+      uses: JamesIves/github-pages-deploy-action@4.0.0
       with:
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        BRANCH: gh-pages # The branch the action should deploy to.
-        FOLDER: .out # The folder the action should deploy.
-        TARGET_FOLDER: master
-        CLEAN: true
+        # token: ${{ secrets.ACCESS_TOKEN }} # maybe the default github access token is now sufficient?
+        branch: gh-pages # The branch the action should deploy to.
+        folder: .out # The folder the action should deploy.
+        target-folder: master
+        clean: true
+
+  test-and-build:
+    if: ${{ !contains(github.event.head_commit.message, '[ci skip]') && (github.event_name == 'push' || github.base_ref == 'main') }}
+    name: 'Install, Test & Build'
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        react-version: [16.8.0, 16.14.0, ^17.0.0]
+
+    env:
+      CI: true
+
+    steps:
+      - uses: actions/checkout@v2.3.1
+      - name: Use Node.js
+        uses: actions/setup-node@v2.1.4
+        with:
+          node-version: 14
+      - name: install dependencies - React ${{ matrix.react-version }}
+        run: |
+          node --experimental-json-modules scripts/ci/set-react-resolution.mjs ${{ matrix.react-version }}
+          yarn install
+      - name: run tests
+        run: yarn test --runInBand
+      - name: Coveralls
+        # only collect coverage information on latest react version
+        if: matrix.react-version == '^17.0.0'
+        uses: coverallsapp/github-action@v1.1.2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: build project
+        run: yarn build
+
+  reuse-compliance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: REUSE Compliance Check
+        uses: fsfe/reuse-action@v1.1

@@ -4,7 +4,7 @@
   <img src="https://user-images.githubusercontent.com/8363610/93131219-1e36c300-f6aa-11ea-90e6-581d3f8a4491.png" alt="UI5 Web Components for React Seed Logo" />
 </p>
 
-This seed decrease’s the bootstrap time spent on new projects, POCs or MVPs which uses **React + UI5 WebComponents React** by leveraging several out-of-the-box components, scripts & configurations.
+This seed decreases the bootstrap time spent on new projects, POCs or MVPs using [**UI5 Web Components for React**](https://github.com/SAP/ui5-webcomponents-react) by leveraging several out-of-the-box components, scripts & configurations.
 
 # Usage
 ```shell script
@@ -18,19 +18,15 @@ yarn mock
 
 # Configuration Included
 
-- JEST Up & Runnning;
+- JEST Up & Running;
 
 - ESLint & EditorConfig Up & Running;
 
 - CommitLint Up & Running;
 
-- Enviroment Variables Up & Running;
+- Environment Variables Up & Running;
 
 - Internalization Up & Running;
-
-- IE Support;
-
-- Multiple Scripts.
 
 # Engine & Samples Included
 
@@ -38,19 +34,17 @@ yarn mock
 
 - MockServer Engine (w/ `json-server`);
 
-- API HTTP Request Engine (w/ `Request`, `APIProvider`, `BrowserProvider`);
+- API HTTP Request Engine (w/ `Request`);
 
 - Permission Engine (w/ `RouteWithAuthorizationRestriction` and `ComponentWithAuthorizationRestriction`).
-
-- Pagination Engine (w/ custom hook `usePaginatedGet`).
 
 - ToDo Form Edition w/ `yup` and `formik`.
 
 # Hooks Included
 
-- `useRequest`: Which includes `get`, `post`, `patch`, `delete`, `put` HTTP helpers;
-
 - `useAuthority`: Which includes `hasAccess` helpers.
+
+- `useLocalStorageState`: Helps you to sync your component state with the `localStorage`.
 
 # Project Structure
 
@@ -64,51 +58,52 @@ In the project directory, you can run:
 
 ## Up & Running
 
-### `yarn start`
+### `npm run start`
 
-Runs the app in the development mode @ [http://localhost:3000](http://localhost:3000).
+Runs the app in the development mode @ [http://localhost:3000](http://localhost:3000) with mock data.
 
-⚠️ It requires an AppRouter or a BackEnd up & running @ `<domain>:<port>/api`.
+In case you have a local approuter or backend running, you can create a `.env.development.local` file and copy the
+contents of `.env.production` into that file. This will then skip the start of the mockserver and connect to your
+"real" backend.
 
-### `yarn mock`
-
-Runs the app in the development mode @ [http://localhost:3001](http://localhost:3000) w/ json-server.
+More Information about creating local environment overrides can be found in the 
+[create-react-app documentation](https://create-react-app.dev/docs/adding-custom-environment-variables).
 
 ## Testing
 
-### `yarn test`
+### `npm run test`
 
 Launches the test runner in the interactive watch mode.
 
-### `yarn test:ci`
+### `npm run test:ci`
 
 Executes the test runner without the interactive watch mode.
 
-### `yarn test:coverage`
+### `npm run test:coverage`
 
 Executes the test runner and generates the report.
 
 ## Checks
 
-### `yarn lint`
+### `npm run lint`
 
-Checks all the files of the project according to the `.eslintrc.js` pre stablished configuration.
+Checks all the files of the project according to the `eslint` config.
 
-### `yarn lint:fix`
+### `npm run lint:fix`
 
-Fixes all the files of the project according to the `.eslintrc.js` pre stablished configuration.
+Fixes all the files of the project according to the `eslint` config.
 
-### `yarn prettier`
+### `npm run prettier`
 
-Checks all the files of the project according to the `.prettierrc` pre stablished configuration.
+Checks all the files of the project according to the `.prettierrc` configuration.
 
-### `yarn prettier:fix`
+### `npm run prettier:fix`
 
-Fixes all the files of the project according to the `.prettierrc` pre stablished configuration.
+Fixes all the files of the project according to the `.prettierrc` configuration.
 
 ## Deploy
 
-### `yarn build`
+### `npm run build`
 
 Builds the app for production to the `build` folder.
 
@@ -128,7 +123,7 @@ This will help you to use the defined coding style at the `.eslintrc` file durin
 
 ### [Jest](https://marketplace.visualstudio.com/items?itemName=Orta.vscode-jest) & [Jest Runner](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 
-This will help you run and debug your `*.test.js` file during file during test-development.
+This will help you run and debug your `*.test.js` file during test-development.
 
 ### [vscode-icons](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
 
@@ -142,17 +137,17 @@ This will enforces a consistent style by parsing your code and re-printing it wi
 
 ### `types/jest`
 
-Autocomplete/Intelissense your testing methods from the JEST lib.
+Autocomplete/Intellisense your testing methods from the JEST lib.
 
 ### `react-query`
 
-Used to manipulate async request, data fetching, cache and more (no redux / saga anymore).
+Used to manipulate async request, data fetching, cache and more.
 
 [Tutorial Link](https://www.youtube.com/watch?v=yccbCol546c), [Random Post](https://blog.bitsrc.io/how-to-start-using-react-query-4869e3d5680d) and [Creator Official Video](https://www.youtube.com/watch?v=seU46c6Jz7E).
 
 ### `react-helmet`
 
-Used to manpilate DOM attributes through JSX such as `<head>`.
+Used to manipulate DOM attributes through JSX such as `<head>`.
 
 ### `react-i18next`
 
@@ -162,17 +157,9 @@ Used to translate strings and text in the application following the Internationa
 
 Used to identify the browsers culture and change the applications text accordingly.
 
-### `react-query-devtools`
-
-Used to help developers during the React Query information flow.
-
 ### `commitlint`
 
 Used to check the commits before actually commits.
-
-### `env-cmd`
-
-Used for embed the enviroment variables during the API URL build.
 
 ### `husky`
 
@@ -185,10 +172,6 @@ Used to update the files without restarting the server.
 ### `npm-run-all`
 
 Used to run multiple commands without worrying about OS syntax.
-
-### `react-app-polyfill`
-
-Used to support old browsers.
 
 ### `jest & jest-enviroment-jsom-sixteen`
 

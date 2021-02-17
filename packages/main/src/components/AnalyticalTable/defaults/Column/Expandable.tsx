@@ -1,5 +1,5 @@
-import { isIE } from '@ui5/webcomponents-react-base/lib/Device';
 import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
+import { isIE } from '@ui5/webcomponents-react-base/lib/Device';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import React, { CSSProperties } from 'react';
 

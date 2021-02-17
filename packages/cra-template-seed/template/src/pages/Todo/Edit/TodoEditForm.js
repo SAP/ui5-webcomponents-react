@@ -1,14 +1,8 @@
 import React from 'react';
 
 import { Field, Form, Formik } from 'formik';
-import { Button } from '@ui5/webcomponents-react/lib/Button';
-import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
-import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
-import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
-import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
-import { InputType } from '@ui5/webcomponents-react/lib/InputType';
-import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
-import { Title } from '@ui5/webcomponents-react/lib/Title';
+import { Button, ButtonDesign, FlexBox, FlexBoxAlignItems, FlexBoxDirection, InputType, Title, TitleLevel } from '@ui5/webcomponents-react';
+import '@ui5/webcomponents-icons/dist/paper-plane';
 
 import Input from '../../../components/Form/Input/Input';
 import Switch from '../../../components/Form/Switch/Switch';

@@ -1,6 +1,5 @@
 import { nodeResolve } from '@rollup/plugin-node-resolve';
-import commonjs from '@rollup/plugin-commonjs';
-import Babel from '@rollup/plugin-babel';
+import { babel } from '@rollup/plugin-babel';
 import path from 'path';
 import fs from 'fs';
 import json from '@rollup/plugin-json';
@@ -10,8 +9,6 @@ import { asyncCopyTo, highlightLog } from '../utils.js';
 import replace from '@rollup/plugin-replace';
 import glob from 'glob';
 import { terser } from 'rollup-plugin-terser';
-
-const { babel } = Babel;
 
 process.env.BABEL_ENV = 'production';
 process.env.NODE_ENV = 'production';
@@ -27,7 +24,6 @@ const rollupConfigFactory = (pkgName, externals = []) => {
     nodeResolve({
       extensions: ['.mjs', '.js', '.json', '.node', '.jsx', '.ts', '.tsx']
     }),
-    commonjs(),
     json(),
     babel({
       extensions: ['.js', '.jsx', '.ts', '.tsx'],

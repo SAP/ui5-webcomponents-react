@@ -14,7 +14,7 @@ const labelSpanClasses = () => {
 const styles = {
   form: {
     display: 'grid',
-    alignItems: 'center',
+    alignItems: 'baseline',
     rowGap: '0.25rem',
     columnGap: '0.5rem',
     gridTemplateColumns: `repeat(12, 1fr)`,
