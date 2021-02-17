@@ -69,6 +69,34 @@ const rollupConfigFactory = (pkgName, externals = []) => {
     moduleSideEffects:
       packageJson.sideEffects === false ? false : (id) => micromatch.isMatch(id, packageJson.sideEffects)
   };
+  const wrapperFiles = allLibFiles.map((file) => ({
+    input: file,
+    external,
+    treeshake: {
+      moduleSideEffects:
+        packageJson.sideEffects === false
+          ? false
+          : (id) =>
+              micromatch.isMatch(
+                id,
+                packageJson.sideEffects.filter(
+                  (effect) => effect !== '@ui5/webcomponents/dist/*' && effect !== '@ui5/webcomponents-fiori/dist/*'
+                )
+              )
+    },
+    output: [
+      {
+        file: path.resolve(
+          PKG_BASE_PATH,
+          'wrappers',
+          file.replace(`${LIB_BASE_PATH}${path.sep}`, '').replace(/\.ts$/, '.js')
+        ),
+        format: 'es',
+        sourcemap: true
+      }
+    ],
+    plugins
+  }));
   return [
     ...allLibFiles.map((file) => ({
       input: file,
@@ -87,6 +115,7 @@ const rollupConfigFactory = (pkgName, externals = []) => {
       ],
       plugins
     })),
+    ...(pkgName === 'main' ? wrapperFiles : []),
     {
       input: path.resolve(PKG_BASE_PATH, 'src', 'index.ts'),
       external,
