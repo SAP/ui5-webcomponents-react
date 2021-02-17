@@ -22,7 +22,7 @@
       "@commitlint/cli": "^11.0.0",
       "@commitlint/config-conventional": "^11.0.0",
       "@types/jest": "^26.0.15",
-      "husky": "^5.0.9",
+      "husky": "^4.3.8",
       "jest-environment-jsdom-sixteen": "^1.0.3",
       "json-server": "^0.16.2",
       "msw": "^0.26.2",
