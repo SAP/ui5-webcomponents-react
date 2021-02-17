@@ -3,6 +3,7 @@ import { CheckBox } from '@ui5/webcomponents-react/lib/CheckBox';
 import { Form } from '@ui5/webcomponents-react/lib/Form';
 import { FormGroup } from '@ui5/webcomponents-react/lib/FormGroup';
 import { FormItem } from '@ui5/webcomponents-react/lib/FormItem';
+import { TextArea } from '@ui5/webcomponents-react/lib/TextArea';
 import { Input } from '@ui5/webcomponents-react/lib/Input';
 import { InputType } from '@ui5/webcomponents-react/lib/InputType';
 import { Option } from '@ui5/webcomponents-react/lib/Option';
@@ -54,6 +55,9 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
               <Option>France</Option>
               <Option>Italy</Option>
             </Select>
+          </FormItem>
+          <FormItem label="Additional Comment">
+            <TextArea rows={5} style={{ width: '210px' }} />
           </FormItem>
           <FormItem label={'Home address'}>
             <CheckBox checked />

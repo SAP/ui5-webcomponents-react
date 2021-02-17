@@ -21,6 +21,7 @@ interface InternalProps extends FormItemProps {
   columnIndex?: number;
   labelSpan?: number;
   rowIndex?: number;
+  lastGroupItem?: boolean;
 }
 
 const useStyles = createUseStyles(
@@ -28,13 +29,11 @@ const useStyles = createUseStyles(
     label: {
       gridColumnEnd: 'span var(--ui5wcr_form_label_span)',
       justifySelf: 'var(--ui5wcr_form_label_text_align)',
-      textAlign: 'var(--ui5wcr_form_label_text_align)',
-      alignSelf: 'start',
-      paddingTop: CssSizeVariables.sapWcrFormLabelPaddingTop
+      textAlign: 'var(--ui5wcr_form_label_text_align)'
     },
     content: {
-      gridColumnEnd: 'span var(--ui5wcr_form_content_span)',
-      alignSelf: 'start'
+      display: 'flex',
+      gridColumnEnd: 'span var(--ui5wcr_form_content_span)'
     }
   },
   { name: 'FormItem' }
@@ -78,7 +77,7 @@ const renderLabel = (
  * The `FormItem` is only used for calculating the final layout of the `Form`, thus it doesn't accept any other props than `label` and `children`, especially no `className`, `style` or `ref`.
  */
 const FormItem: FC<FormItemProps> = (props: FormItemProps) => {
-  const { label, children, columnIndex, rowIndex, labelSpan } = props as InternalProps;
+  const { label, children, columnIndex, rowIndex, labelSpan, lastGroupItem } = props as InternalProps;
 
   const classes = useStyles();
 
@@ -108,7 +107,8 @@ const FormItem: FC<FormItemProps> = (props: FormItemProps) => {
         className={classes.content}
         style={{
           gridColumnStart: contentGridColumnStart,
-          gridRowStart: labelSpan === 12 ? gridRowStart + 1 : gridRowStart
+          gridRowStart: labelSpan === 12 ? gridRowStart + 1 : gridRowStart,
+          paddingBottom: lastGroupItem ? '1rem' : 0
         }}
       >
         {children}

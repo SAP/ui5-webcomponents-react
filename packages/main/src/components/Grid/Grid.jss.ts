@@ -1,20 +1,18 @@
+const generateGridSpans = () => {
+  let gridSpan = {};
+  for (let i = 1; i <= 12; i++) {
+    gridSpan[`gridSpan${i}`] = { gridColumn: `span ${i}`, ['-ms-grid-column-span']: i };
+  }
+  return gridSpan;
+};
+
 export const styles = {
   grid: {
     display: 'grid',
-    gridTemplateColumns: `repeat(12, 1fr)`
+    gridTemplateColumns: `repeat(12, 1fr)`,
+    '-ms-grid-columns': '(1fr)[12]'
   },
-  gridSpan1: { gridColumn: 'span 1' },
-  gridSpan2: { gridColumn: 'span 2' },
-  gridSpan3: { gridColumn: 'span 3' },
-  gridSpan4: { gridColumn: 'span 4' },
-  gridSpan5: { gridColumn: 'span 5' },
-  gridSpan6: { gridColumn: 'span 6' },
-  gridSpan7: { gridColumn: 'span 7' },
-  gridSpan8: { gridColumn: 'span 8' },
-  gridSpan9: { gridColumn: 'span 9' },
-  gridSpan10: { gridColumn: 'span 10' },
-  gridSpan11: { gridColumn: 'span 11' },
-  gridSpan12: { gridColumn: 'span 12' },
+  ...generateGridSpans(),
   positionCenter: {
     marginLeft: 'auto',
     marginRight: 'auto'
