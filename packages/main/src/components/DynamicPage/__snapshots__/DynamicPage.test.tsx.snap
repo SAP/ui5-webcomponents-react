@@ -170,6 +170,7 @@ exports[`DynamicPage always show content header 1`] = `
             </div>
             <div>
               <div
+                aria-label="Separator"
                 class="ToolbarSeparator-separator"
               />
             </div>
@@ -455,6 +456,7 @@ exports[`DynamicPage hider header button 1`] = `
             </div>
             <div>
               <div
+                aria-label="Separator"
                 class="ToolbarSeparator-separator"
               />
             </div>
@@ -903,6 +905,7 @@ exports[`DynamicPage with content 1`] = `
             </div>
             <div>
               <div
+                aria-label="Separator"
                 class="ToolbarSeparator-separator"
               />
             </div>
@@ -1876,6 +1879,7 @@ exports[`DynamicPage without content 1`] = `
             </div>
             <div>
               <div
+                aria-label="Separator"
                 class="ToolbarSeparator-separator"
               />
             </div>
