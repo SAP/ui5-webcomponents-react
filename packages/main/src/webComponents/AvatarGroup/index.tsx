@@ -27,7 +27,9 @@ export interface AvatarGroupPropTypes extends Omit<WithWebComponentPropTypes, 'o
    */
   type?: AvatarGroupType;
   /**
-   * Defines the items of the `AvatarGroup`.
+   * Defines the items of the `AvatarGroup`. Use the `Avatar` component as an item.
+   *
+   * **Note:** The UX guidelines recommends using avatars with "Circle" shape. Moreover, if you use avatars with "Square" shape, there will be visual inconsistency as the built-in overflow action has "Circle" shape.
    */
   children?: ReactNode | ReactNode[];
   /**

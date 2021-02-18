@@ -2,6 +2,7 @@ import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { Calendar } from '@ui5/webcomponents-react/lib/Calendar';
 import { CalendarSelection } from '@ui5/webcomponents-react/lib/CalendarSelection';
 import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';
+import { CalendarDate } from '@ui5/webcomponents-react/lib/CalendarDate';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
@@ -14,18 +15,21 @@ import '@ui5/webcomponents-localization/dist/features/calendar/Persian.js';
 <Meta
   title="Inputs / Calendar"
   component={Calendar}
+  subcomponents={{ CalendarDate }}
   argTypes={{
-    ...createSelectArgTypes({ selection: CalendarSelection, primaryCalendarType: CalendarType }),
-    ...DocsCommonProps
+    ...createSelectArgTypes({ selectionMode: CalendarSelection, primaryCalendarType: CalendarType }),
+    ...DocsCommonProps,
+    children: { control: { disable: true } }
   }}
   args={{
     primaryCalendarType: CalendarType.Gregorian,
-    selection: CalendarSelection.Single,
+    selectionMode: CalendarSelection.Single,
     style: {},
     className: '',
     tooltip: '',
     slot: '',
-    ref: null
+    ref: null,
+    selectedDate: new Date(new Date().getTime() - 24 * 60 * 60 * 1000 * 5).toISOString().split('T')[0] // 5 days before today
   }}
 />
 
@@ -37,8 +41,12 @@ import '@ui5/webcomponents-localization/dist/features/calendar/Persian.js';
 
 <Canvas>
   <Story name="Default">
-    {(args) => {
-      return <Calendar {...args} />;
+    {({ selectedDate, ...props }) => {
+      return (
+        <Calendar {...props}>
+          <CalendarDate value={selectedDate} />
+        </Calendar>
+      );
     }}
   </Story>
 </Canvas>

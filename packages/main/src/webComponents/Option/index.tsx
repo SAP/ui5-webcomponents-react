@@ -4,6 +4,12 @@ import { FC } from 'react';
 
 export interface OptionPropTypes extends WithWebComponentPropTypes {
   /**
+   * Defines whether `Option` is in disabled state.
+   *
+   * **Note:** A disabled `Option` is noninteractive.
+   */
+  disabled?: boolean;
+  /**
    * Defines the `icon` source URI.
    *
    * **Note:** SAP-icons font provides numerous buil-in icons. To find all the available icons, see the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
@@ -13,6 +19,10 @@ export interface OptionPropTypes extends WithWebComponentPropTypes {
    * Defines the selected state of the `Option`.
    */
   selected?: boolean;
+  /**
+   * Defines the stable selector that you can use via getStableDomRef method.
+   */
+  stableDomRef?: unknown;
   /**
    * Defines the value of the `Select` inside an HTML Form element when this `Option` is selected. For more information on HTML Form support, see the `name` property of `Select`.
    */
@@ -26,8 +36,8 @@ export interface OptionPropTypes extends WithWebComponentPropTypes {
  */
 const Option: FC<OptionPropTypes> = withWebComponent<OptionPropTypes>(
   'ui5-option',
-  ['icon', 'value'],
-  ['selected'],
+  ['icon', 'stableDomRef', 'value'],
+  ['disabled', 'selected'],
   [],
   []
 );
@@ -35,6 +45,7 @@ const Option: FC<OptionPropTypes> = withWebComponent<OptionPropTypes>(
 Option.displayName = 'Option';
 
 Option.defaultProps = {
+  disabled: false,
   selected: false
 };
 

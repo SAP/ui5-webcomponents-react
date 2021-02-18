@@ -33,8 +33,10 @@ const KNOWN_EVENTS = new Set(['click', 'input', 'submit', 'change', 'select', 'd
 
 const PRIVATE_COMPONENTS = new Set([
   'CalendarHeader',
+  'CalendarPart',
   'DefaultTheme',
   'DayPicker',
+  'DateComponentBase',
   'ListItem',
   'ListItemBase',
   'MessageBundleAssets',
@@ -45,6 +47,7 @@ const PRIVATE_COMPONENTS = new Set([
   'SliderBase',
   'TabBase',
   'ThemePropertiesProvider',
+  'TimePickerBase',
   'TreeListItem',
   'YearPicker',
   'WheelSlider'
@@ -190,6 +193,8 @@ const CUSTOM_DESCRIPTION_REPLACE = {
 
 const COMPONENTS_WITHOUT_DEMOS = new Set(PRIVATE_COMPONENTS);
 COMPONENTS_WITHOUT_DEMOS.add('CustomListItem');
+COMPONENTS_WITHOUT_DEMOS.add('CalendarDate');
+COMPONENTS_WITHOUT_DEMOS.add('ColorPaletteItem');
 COMPONENTS_WITHOUT_DEMOS.add('GroupHeaderListItem');
 COMPONENTS_WITHOUT_DEMOS.add('Option');
 COMPONENTS_WITHOUT_DEMOS.add('ShellBarItem');
@@ -320,6 +325,11 @@ const getTypeScriptTypeForProperty = (property) => {
         tsType: 'ReactNode',
         importStatement: "import { ReactNode } from 'react';"
       };
+    case 'CSSColor':
+      return {
+        tsType: "CSSProperties['color']",
+        importStatement: "import { CSSProperties } from 'react';"
+      };
     // UI5 Web Component Enums
     case 'AvatarBackgroundColor':
       return {
@@ -381,6 +391,12 @@ const getTypeScriptTypeForProperty = (property) => {
         tsType: 'CalendarSelection',
         isEnum: true
       };
+    case 'CalendarSelectionMode':
+      return {
+        importStatement: "import { CalendarSelectionMode } from '@ui5/webcomponents-react/lib/CalendarSelectionMode';",
+        tsType: 'CalendarSelectionMode',
+        isEnum: true
+      };
     case 'CarouselArrowsPlacement':
       return {
         importStatement:
@@ -432,7 +448,13 @@ const getTypeScriptTypeForProperty = (property) => {
         tsType: 'MessageStripType',
         isEnum: true
       };
-    case 'PanelAccessibleRole':
+    case 'PageBackgroundDesign':
+      return {
+        importStatement: "import { PageBackgroundDesign } from '@ui5/webcomponents-react/lib/PageBackgroundDesign';",
+        tsType: 'PageBackgroundDesign',
+        isEnum: true
+      };
+      case 'PanelAccessibleRole':
       return {
         importStatement: "import { PanelAccessibleRoles } from '@ui5/webcomponents-react/lib/PanelAccessibleRoles';",
         tsType: 'PanelAccessibleRoles',
@@ -480,6 +502,13 @@ const getTypeScriptTypeForProperty = (property) => {
         importStatement:
           "import { TabContainerTabsPlacement } from '@ui5/webcomponents-react/lib/TabContainerTabsPlacement';",
         tsType: 'TabContainerTabsPlacement',
+        isEnum: true
+      };
+      case 'TableGrowingMode':
+      return {
+        importStatement:
+          "import { TableGrowingMode } from '@ui5/webcomponents-react/lib/TableGrowingMode';",
+        tsType: 'TableGrowingMode',
         isEnum: true
       };
     case 'TitleLevel':
@@ -924,6 +953,9 @@ resolvedWebComponents.forEach((componentSpec) => {
 
   const formatDescription = () => {
     let description = componentSpec.description;
+    if (!description) {
+      return ['', ''];
+    }
     //strip overview heading
     description = description.replace(`<h3 class="comment-api-title">Overview</h3>`, '');
     //strip ES6 Module import

@@ -6,7 +6,7 @@ import { FC, ReactNode } from 'react';
 
 export interface DateRangePickerPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput'> {
   /**
-   * Determines the symbol which separates the dates.
+   * Determines the symbol which separates the dates. If not supplied, the default time interval delimiter for the current locale will be used.
    */
   delimiter?: string;
   /**
@@ -14,23 +14,11 @@ export interface DateRangePickerPropTypes extends Omit<WithWebComponentPropTypes
    */
   disabled?: boolean;
   /**
-   * Determines the format, displayed in the input field.
-   */
-  formatPattern?: string;
-  /**
    * Defines the visibility of the week numbers column.
    *
    * **Note: **For calendars other than Gregorian, the week numbers are not displayed regardless of what is set.****
    */
   hideWeekNumbers?: boolean;
-  /**
-   * Determines the maximum date available for selection.
-   */
-  maxDate?: string;
-  /**
-   * Determines the minimum date available for selection.
-   */
-  minDate?: string;
   /**
    * Determines the name with which the `DatePicker` will be submitted in an HTML form.
    *
@@ -45,18 +33,6 @@ export interface DateRangePickerPropTypes extends Omit<WithWebComponentPropTypes
    * **Note:** When no placeholder is set, the format pattern is displayed as a placeholder. Passing an empty string as the value of this property will make the `DatePicker` appear empty - without placeholder or format pattern.
    */
   placeholder?: string;
-  /**
-   * Determines the calendar type. The input value is formated according to the calendar type and the picker shows the months and years from the specified calendar.
-   *
-   * Available options are:
-   *
-   * *   `Gregorian`
-   * *   `Islamic`
-   * *   `Japanese`
-   * *   `Buddhist`
-   * *   `Persian`<br/>__Note:__ Calendar types other than Gregorian must be imported manually:<br />`import "@ui5/webcomponents-localization/dist/features/calendar/{primaryCalendarType}.js";`
-   */
-  primaryCalendarType?: CalendarType;
   /**
    * Determines whether the `DatePicker` is displayed as read-only.
    */
@@ -81,6 +57,22 @@ export interface DateRangePickerPropTypes extends Omit<WithWebComponentPropTypes
    * *   `Information`
    */
   valueState?: ValueState;
+  /**
+   * Determines the format, displayed in the input field.
+   */
+  formatPattern?: string;
+  /**
+   * Determines the maximum date available for selection.
+   */
+  maxDate?: string;
+  /**
+   * Determines the мinimum date available for selection.
+   */
+  minDate?: string;
+  /**
+   * Sets a calendar type used for display. If not set, the calendar type of the global configuration is used.<br/>__Note:__ Calendar types other than Gregorian must be imported manually:<br />`import "@ui5/webcomponents-localization/dist/features/calendar/{primaryCalendarType}.js";`
+   */
+  primaryCalendarType?: CalendarType;
   /**
    * Defines the value state message that will be displayed as pop up under the `DatePicker`.
    *
@@ -107,14 +99,14 @@ const DateRangePicker: FC<DateRangePickerPropTypes> = withWebComponent<DateRange
   'ui5-daterange-picker',
   [
     'delimiter',
+    'name',
+    'placeholder',
+    'value',
+    'valueState',
     'formatPattern',
     'maxDate',
     'minDate',
-    'name',
-    'placeholder',
-    'primaryCalendarType',
-    'value',
-    'valueState'
+    'primaryCalendarType'
   ],
   ['disabled', 'hideWeekNumbers', 'readonly', 'required'],
   ['valueStateMessage'],
@@ -124,11 +116,9 @@ const DateRangePicker: FC<DateRangePickerPropTypes> = withWebComponent<DateRange
 DateRangePicker.displayName = 'DateRangePicker';
 
 DateRangePicker.defaultProps = {
-  delimiter: '-',
   disabled: false,
   hideWeekNumbers: false,
   placeholder: undefined,
-  primaryCalendarType: CalendarType.Gregorian,
   readonly: false,
   required: false,
   valueState: ValueState.None

@@ -64,7 +64,7 @@ export interface MicroBarChartProps
   /**
    * An optional number for the maxValue of the valueBar.
    * Default is the highest number of the corresponding accessor in the dataset.
-  */
+   */
   maxValue?: number;
 }
 

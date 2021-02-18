@@ -2,7 +2,6 @@ import { nodeResolve } from '@rollup/plugin-node-resolve';
 import { babel } from '@rollup/plugin-babel';
 import path from 'path';
 import fs from 'fs';
-import json from '@rollup/plugin-json';
 import micromatch from 'micromatch';
 import PATHS from '../../config/paths.js';
 import { asyncCopyTo, highlightLog } from '../utils.js';
@@ -24,7 +23,6 @@ const rollupConfigFactory = (pkgName, externals = []) => {
     nodeResolve({
       extensions: ['.mjs', '.js', '.json', '.node', '.jsx', '.ts', '.tsx']
     }),
-    json(),
     babel({
       extensions: ['.js', '.jsx', '.ts', '.tsx'],
       babelHelpers: 'runtime',

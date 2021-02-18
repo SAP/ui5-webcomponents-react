@@ -5,12 +5,6 @@ import { FC, ReactNode } from 'react';
 
 export interface NotificationListItemPropTypes extends WithWebComponentPropTypes {
   /**
-   * Defines if the `notification` is new or has been already read.
-   *
-   * **Note:** if set to `false` the `heading` has bold font, if set to true - it has a normal font.
-   */
-  read?: boolean;
-  /**
    * Defines if the `heading` and `description` should wrap, they truncate by default.
    *
    * **Note:** by default the `heading` and `decription`, and a `ShowMore/Less` button would be displayed.
@@ -29,6 +23,12 @@ export interface NotificationListItemPropTypes extends WithWebComponentPropTypes
    */
   priority?: Priority;
   /**
+   * Defines if the `notification` is new or has been already read.
+   *
+   * **Note:** if set to `false` the `heading` has bold font, if set to true - it has a normal font.
+   */
+  read?: boolean;
+  /**
    * Defines if the `close` button would be displayed.
    */
   showClose?: boolean;
@@ -40,6 +40,7 @@ export interface NotificationListItemPropTypes extends WithWebComponentPropTypes
    * Defines the avatar, displayed in the `NotificationListItem`.
    *
    * **Note:** Consider using the `Avatar` to display icons, initials or images.
+   * **Note:**In order to be complaint with the UX guidlines and for best experience, we recommend using avatars with 2rem X 2rem in size (32px X 32px). In case you are using the `Avatar` you can set its `size` ``property to `XS` to get the required size - .``
    */
   avatar?: ReactNode;
   /**
@@ -78,7 +79,7 @@ export interface NotificationListItemPropTypes extends WithWebComponentPropTypes
 const NotificationListItem: FC<NotificationListItemPropTypes> = withWebComponent<NotificationListItemPropTypes>(
   'ui5-li-notification',
   ['heading', 'priority'],
-  ['read', 'wrap', 'busy', 'showClose', 'selected'],
+  ['wrap', 'busy', 'read', 'showClose', 'selected'],
   ['avatar', 'footnotes', 'actions'],
   ['close']
 );
@@ -86,10 +87,10 @@ const NotificationListItem: FC<NotificationListItemPropTypes> = withWebComponent
 NotificationListItem.displayName = 'NotificationListItem';
 
 NotificationListItem.defaultProps = {
-  read: false,
   wrap: false,
   busy: false,
   priority: Priority.None,
+  read: false,
   showClose: false,
   selected: false
 };

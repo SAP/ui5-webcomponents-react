@@ -3,21 +3,7 @@ import '@testing-library/jest-dom';
 import 'intersection-observer';
 import ResizeObserver from 'resize-observer-polyfill';
 
-beforeAll(async () => {
-  await import('@ui5/webcomponents/dist/Assets');
-  await import('@ui5/webcomponents-fiori/dist/Assets');
-  await import('@ui5/webcomponents-react/dist/Assets');
-});
-
-jest.spyOn(global.console, 'warn').mockImplementation((message, ...rest) => {
-  if (!message.startsWith('Inefficient bundling detected')) {
-    console.error(message, ...rest);
-  }
-});
-
-expect.addSnapshotSerializer(contentLoaderSerializer);
-
-export const setupMatchMedia = () => {
+const setupMatchMedia = () => {
   Object.defineProperty(window, 'matchMedia', {
     writable: true,
     value: jest.fn().mockImplementation((query) => ({
@@ -33,11 +19,15 @@ export const setupMatchMedia = () => {
   });
 };
 
-export const setupResizeObserver = () => {
-  // @ts-ignore
-  window.ResizeObserver = ResizeObserver;
-};
+beforeEach(async () => {
+  (window as any).ResizeObserver = ResizeObserver;
+  window.scrollTo = jest.fn();
+  setupMatchMedia();
 
-setupMatchMedia();
-setupResizeObserver();
-window.scrollTo = jest.fn();
+  await import('@ui5/webcomponents/dist/Assets');
+  await import('@ui5/webcomponents-fiori/dist/Assets');
+  await import('@ui5/webcomponents-icons/dist/Assets');
+  await import('@ui5/webcomponents-react/dist/Assets');
+});
+
+expect.addSnapshotSerializer(contentLoaderSerializer);

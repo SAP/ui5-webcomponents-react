@@ -25,6 +25,12 @@ export interface NotificationListGroupItemPropTypes extends WithWebComponentProp
    */
   priority?: Priority;
   /**
+   * Defines if the `notification` is new or has been already read.
+   *
+   * **Note:** if set to `false` the `heading` has bold font, if set to true - it has a normal font.
+   */
+  read?: boolean;
+  /**
    * Defines if the `close` button would be displayed.
    */
   showClose?: boolean;
@@ -67,7 +73,7 @@ export interface NotificationListGroupItemPropTypes extends WithWebComponentProp
 const NotificationListGroupItem: FC<NotificationListGroupItemPropTypes> = withWebComponent<NotificationListGroupItemPropTypes>(
   'ui5-li-notification-group',
   ['heading', 'priority'],
-  ['collapsed', 'showCounter', 'busy', 'showClose', 'selected'],
+  ['collapsed', 'showCounter', 'busy', 'read', 'showClose', 'selected'],
   ['actions'],
   ['toggle', 'close']
 );
@@ -79,6 +85,7 @@ NotificationListGroupItem.defaultProps = {
   showCounter: false,
   busy: false,
   priority: Priority.None,
+  read: false,
   showClose: false,
   selected: false
 };

@@ -49,7 +49,7 @@ export interface ShellBarPropTypes extends WithWebComponentPropTypes {
    */
   menuItems?: ReactNode | ReactNode[];
   /**
-   * You can pass `Avatar` to set the profile image/icon. If no profile slot is set - profile will be excluded from actions.
+   * You can pass `Avatar` to set the profile image/icon. If no profile slot is set - profile will be excluded from actions. Note: We recommend not using the `size` attribute of `Avatar` because it should have specific size by design in the context of `ShellBar` profile.
    */
   profile?: ReactNode;
   /**

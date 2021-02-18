@@ -3,6 +3,7 @@
 exports[`FileUploader Basic Test (generated) 1`] = `
 <DocumentFragment>
   <ui5-file-uploader
+    ui5-file-uploader=""
     value-state="None"
   />
 </DocumentFragment>

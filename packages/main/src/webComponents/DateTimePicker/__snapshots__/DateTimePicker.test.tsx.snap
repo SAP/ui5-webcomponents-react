@@ -3,7 +3,6 @@
 exports[`DateTimePicker Basic Test (generated) 1`] = `
 <DocumentFragment>
   <ui5-datetime-picker
-    primary-calendar-type="Gregorian"
     value-state="None"
   />
 </DocumentFragment>
