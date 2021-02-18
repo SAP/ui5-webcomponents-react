@@ -15,7 +15,7 @@ export const useI18nBundle = (bundleName: string): I18nBundle => {
 
   useIsomorphicLayoutEffect(() => {
     let isMounted = true;
-    const i18nBundleData = getI18nBundleData('@ui5/webcomponents-react');
+    const i18nBundleData = getI18nBundleData(bundleName);
     if (!i18nBundleData) {
       fetchI18nBundle(`${bundleName}`).then(() => {
         if (isMounted) {
