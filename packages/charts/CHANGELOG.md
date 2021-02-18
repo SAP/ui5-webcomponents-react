@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.129.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.129.3...v0.129.4) (2021-02-18)
+
+
+### Bug Fixes
+
+* **MicroBarChart:** fix default color calculation ([#1233](https://github.com/SAP/ui5-webcomponents-react/issues/1233)) ([4f4ac73](https://github.com/SAP/ui5-webcomponents-react/commit/4f4ac7336b7f8fcf4addf58d6bffc0af4f66e45e))
+
+
+
+
+
 ## [0.129.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.129.1...v0.129.2) (2021-01-30)
 
 

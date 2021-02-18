@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.129.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.129.3...v0.129.4) (2021-02-18)
+
+
+### Bug Fixes
+
+* improve IE11 support for ObjectPage, DynamicPage and Grid ([#1285](https://github.com/SAP/ui5-webcomponents-react/issues/1285)) ([313363f](https://github.com/SAP/ui5-webcomponents-react/commit/313363f0810ec941e104979da5e298f7e96fcd5c))
+* **AnalyticalTable:** show column header icons in correct place ([#1232](https://github.com/SAP/ui5-webcomponents-react/issues/1232)) ([fec4bc8](https://github.com/SAP/ui5-webcomponents-react/commit/fec4bc8a97630a16c8d34f8c2f64285f9657e477))
+* **MicroBarChart:** fix default color calculation ([#1233](https://github.com/SAP/ui5-webcomponents-react/issues/1233)) ([4f4ac73](https://github.com/SAP/ui5-webcomponents-react/commit/4f4ac7336b7f8fcf4addf58d6bffc0af4f66e45e))
+* **webcomponents:** fix crash, allow nested fragments in all supported browsers ([#1259](https://github.com/SAP/ui5-webcomponents-react/issues/1259)) ([c61b312](https://github.com/SAP/ui5-webcomponents-react/commit/c61b31266a93ee63fdf56036c11764c34fc30509))
+
+
+### Features
+
+* publish wrapper only components ([#1250](https://github.com/SAP/ui5-webcomponents-react/issues/1250)) ([8d2bfe1](https://github.com/SAP/ui5-webcomponents-react/commit/8d2bfe1e94a84c8b11f836a342c731a79d8b5839))
+* update peer deps to @ui5/webcomponents 0.29.4 ([7e50a2a](https://github.com/SAP/ui5-webcomponents-react/commit/7e50a2a3fc0d0aeff60f38d9b362d9c5654e2da5))
+
+
+
+
+
 ## [0.129.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.129.2...v0.129.3) (2021-02-16)
 
 
