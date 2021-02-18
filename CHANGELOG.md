@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.10](https://github.com/SAP/ui5-webcomponents-react/compare/v0.13.9...v0.13.10) (2021-02-18)
+
+
+### Bug Fixes
+
+* **Form:** Adjust spacing and alignment to comply with fiori guidelines ([#1299](https://github.com/SAP/ui5-webcomponents-react/issues/1299)) ([ce805c8](https://github.com/SAP/ui5-webcomponents-react/commit/ce805c87cd2dfb2d9acb67b0972da8ae45acdc66))
+* **Form:** correct alignment of FormItems ([#1305](https://github.com/SAP/ui5-webcomponents-react/issues/1305)) ([08c640d](https://github.com/SAP/ui5-webcomponents-react/commit/08c640d755be9eaf13f80901c3f15bf7c812aa89))
+* improve IE11 support for ObjectPage, DynamicPage and Grid ([#1285](https://github.com/SAP/ui5-webcomponents-react/issues/1285)) ([756e999](https://github.com/SAP/ui5-webcomponents-react/commit/756e9998eb89c36975d072399a8927f5dbbd49a9))
+* **ObjectPage:** prevent crash on re-mounting the component ([#1304](https://github.com/SAP/ui5-webcomponents-react/issues/1304)) ([412bfe9](https://github.com/SAP/ui5-webcomponents-react/commit/412bfe93aa3b6b94852e1e8e9faeec86b717e0c7)), closes [#1300](https://github.com/SAP/ui5-webcomponents-react/issues/1300)
+
+
+
+
+
 ## [0.13.9](https://github.com/SAP/ui5-webcomponents-react/compare/v0.13.8...v0.13.9) (2021-02-10)
 
 

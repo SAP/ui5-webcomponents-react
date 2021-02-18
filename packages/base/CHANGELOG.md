@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.10](https://github.com/SAP/ui5-webcomponents-react/compare/v0.13.9...v0.13.10) (2021-02-18)
+
+
+### Bug Fixes
+
+* **Form:** Adjust spacing and alignment to comply with fiori guidelines ([#1299](https://github.com/SAP/ui5-webcomponents-react/issues/1299)) ([ce805c8](https://github.com/SAP/ui5-webcomponents-react/commit/ce805c87cd2dfb2d9acb67b0972da8ae45acdc66))
+
+
+
+
+
 ## [0.13.9](https://github.com/SAP/ui5-webcomponents-react/compare/v0.13.8...v0.13.9) (2021-02-10)
 
 
