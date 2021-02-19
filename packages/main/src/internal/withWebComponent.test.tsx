@@ -87,17 +87,6 @@ describe('withWebComponent', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  test('scoping', () => {
-    setCustomElementsScopingSuffix('ui5-wcr');
-    const { asFragment, rerender } = render(<Button>Scoping Test</Button>);
-    expect(asFragment()).toMatchSnapshot();
-
-    // now exclude the button
-    setCustomElementsScopingRules({ include: [/^ui5-/], exclude: [/^ui5-button/] });
-    rerender(<Button>Scoping Test</Button>);
-    expect(asFragment()).toMatchSnapshot();
-  });
-
   test('destruct fragments in slots', () => {
     const { asFragment } = render(
       <Bar
@@ -128,6 +117,17 @@ describe('withWebComponent', () => {
         }
       />
     );
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  test('scoping', () => {
+    setCustomElementsScopingSuffix('ui5-wcr');
+    const { asFragment, rerender } = render(<Button>Scoping Test</Button>);
+    expect(asFragment()).toMatchSnapshot();
+
+    // now exclude the button
+    setCustomElementsScopingRules({ include: [/^ui5-/], exclude: [/^ui5-button/] });
+    rerender(<Button>Scoping Test</Button>);
     expect(asFragment()).toMatchSnapshot();
   });
 });
