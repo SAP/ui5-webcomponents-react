@@ -61,7 +61,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### BREAKING CHANGES
 
 * All UI5 Web Components Wrappers have been updated to `@ui5/webcomponents@1.0.0-rc.12`, please check the [release notes](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.0.0-rc.12) as well.
-* **Page**: Replaced custom component with `ui5-page` web component. Please check our [migration guide](https://sap.github.io/ui5-webcomponents-react/master/?path=/docs/migration-guide--page#replaced-component-page) for more details.
+* **Page**: Replaced custom component with `ui5-page` web component. Please check our [migration guide](https://sap.github.io/ui5-webcomponents-react/?path=/docs/migration-guide--page#replaced-component-page) for more details.
 * **Table**: prop `hasMore` has been removed, use `growing` instead
 * **Table**: prop `loadMoreText` has been renamed to `moreText `
 * **Table**: prop `loadMoreSubtext` has been renamed to `moreSubtext`
@@ -71,7 +71,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **Slider**: unused prop `children` has been removed
 * `useI18nText` is replaced by `useI18nBundle`. For more details please consult our [migration guide](https://sap.github.io/ui5-webcomponents-react/?path=/docs/migration-guide--page#deleted-hooks).
 * As `@ui5/webcomponents-react` has now dropped support for IE11 and Edge Legacy, we are releasing our `lib` files as ES6 code. If you need to run `@ui5/webcomponents-react` in a browser that does not support ES6, please transpile your dependencies using e.g. babel.
-* **ThemeProvider:** The `ThemeProvider` context is now simplified to provide only an object with `ThemingParameters`, all other properties have been removed. For details on the migration check out our [migration guide](https://sap.github.io/ui5-webcomponents-react/master/?path=/docs/migration-guide--page#themeprovider-context-changes).
+* **ThemeProvider:** The `ThemeProvider` context is now simplified to provide only an object with `ThemingParameters`, all other properties have been removed. For details on the migration check out our [migration guide](https://sap.github.io/ui5-webcomponents-react/?path=/docs/migration-guide--page#themeprovider-context-changes).
 * Internet Explorer 11 is now deprecated
 * **cra-template-seed:** this template is not longer providing out-of-the-box support for IE11 and Edge (legacy)
 * The Legacy Edge browser is no longer supported, therefore the following import has been removed: `import '@ui5/webcomponents-react-base/polyfill/Edge';`
