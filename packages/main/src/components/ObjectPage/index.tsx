@@ -334,9 +334,8 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
             lastSectionDomRef.querySelector<HTMLElement>("[role='heading']").offsetHeight;
         }
 
-        heightDiff = availableScrollHeight - lastSubSectionHeight;
+        heightDiff = Math.max(0, availableScrollHeight - lastSubSectionHeight);
 
-        heightDiff = heightDiff > 0 ? heightDiff : 0;
         if (isNaN(heightDiff)) {
           heightDiff = 0;
         }
