@@ -26,7 +26,7 @@
     "build:types": "tsc --declaration --emitDeclarationOnly --declarationDir . --removeComments false"
   },
   "dependencies": {
-    "@babel/runtime": "7.12.13",
+    "@babel/runtime": "7.12.18",
     "core-js": "3.8.3",
     "intersection-observer": "0.12.0",
     "resize-observer-polyfill": "1.5.1",
