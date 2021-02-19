@@ -87,6 +87,39 @@ describe('withWebComponent', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
+  test('destruct fragments in slots', () => {
+    const { asFragment } = render(
+      <Bar
+        startContent={
+          <>
+            {false && <span>I'm not here</span>}
+            <span>I'm here!</span>
+            <>
+              {false && <span>I'm not here</span>}
+              <span>I'm here nested level 1!</span>
+              <>
+                {false && <span>I'm not here</span>}
+                <span>I'm here nested level 2!</span>
+                <>
+                  <span>I'm the only child of a fragment in level 3!</span>
+                </>
+              </>
+            </>
+            <>
+              <span>I'm the only child of a fragment in level 1!</span>
+            </>
+            <>{false && <span>I'm an empty fragment</span>}</>
+            <>
+              <span>I'm the only child of a fragment in level 1!</span>
+              {[<span>I'm in an array inside of a fragment!</span>, <span>Me too!</span>]}
+            </>
+          </>
+        }
+      />
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+
   test('scoping', () => {
     setCustomElementsScopingSuffix('ui5-wcr');
     const { asFragment, rerender } = render(<Button>Scoping Test</Button>);

@@ -1,6 +1,7 @@
 import { getEffectiveScopingSuffixForTag } from '@ui5/webcomponents-base/dist/CustomElementsScope';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import React, {
+  Children,
   cloneElement,
   ComponentType,
   forwardRef,
@@ -22,8 +23,6 @@ const kebabToCamelCase = (str: string) => str.replace(/([-_]\w)/g, (g) => g[1].t
 const createEventPropName = (eventName) => `on${capitalizeFirstLetter(kebabToCamelCase(eventName))}`;
 
 type EventHandler = (event: CustomEvent<unknown>) => void;
-
-const staticSlotStyle = { display: 'contents' };
 
 export interface WithWebComponentPropTypes extends CommonProps {
   ref?: Ref<any>;
@@ -64,16 +63,18 @@ export const withWebComponent = <T extends Record<string, any>>(
 
       if (!slotValue) return acc;
 
-      let children = [];
+      const slottedChildren = [];
       let index = 0;
       const removeFragments = (element) => {
         if (!element) return;
-        if (element?.type === React.Fragment) {
-          element.props?.children?.forEach((item) => {
-            removeFragments(item);
-          });
+        if (element.type === React.Fragment) {
+          Children.toArray(element.props?.children)
+            .filter(Boolean)
+            .forEach((item) => {
+              removeFragments(item);
+            });
         } else {
-          children.push(
+          slottedChildren.push(
             cloneElement(element, {
               key: `${name}-${index}`,
               slot: name
@@ -90,7 +91,7 @@ export const withWebComponent = <T extends Record<string, any>>(
       } else {
         removeFragments(slotValue);
       }
-      return [...acc, ...children];
+      return [...acc, ...slottedChildren];
     }, []);
     // event binding
     useEffect(
