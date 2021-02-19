@@ -97,4 +97,33 @@ describe('withWebComponent', () => {
     rerender(<Button>Scoping Test</Button>);
     expect(asFragment()).toMatchSnapshot();
   });
+
+  test('destruct fragments in slots', () => {
+    const { asFragment } = render(
+      <Bar
+        startContent={
+          <>
+            {false && <span>I'm not here</span>}
+            <span>I'm here!</span>
+            <>
+              {false && <span>I'm not here</span>}
+              <span>I'm here nested level 1!</span>
+              <>
+                {false && <span>I'm not here</span>}
+                <span>I'm here nested level 2!</span>
+                <>
+                  <span>I'm the only child of a fragment in level 3!</span>
+                </>
+              </>
+            </>
+            <>
+              <span>I'm the only child of a fragment in level 1!</span>
+            </>
+            <>{false && <span>I'm an empty fragment</span>}</>
+          </>
+        }
+      />
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
 });
