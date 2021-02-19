@@ -120,6 +120,10 @@ describe('withWebComponent', () => {
               <span>I'm the only child of a fragment in level 1!</span>
             </>
             <>{false && <span>I'm an empty fragment</span>}</>
+            <>
+              <span>I'm the only child of a fragment in level 1!</span>
+              {[<span>I'm in an array inside of a fragment!</span>, <span>Me too!</span>]}
+            </>
           </>
         }
       />

@@ -46,6 +46,21 @@ exports[`withWebComponent destruct fragments in slots 1`] = `
     >
       I'm the only child of a fragment in level 1!
     </span>
+    <span
+      slot="startContent"
+    >
+      I'm the only child of a fragment in level 1!
+    </span>
+    <span
+      slot="startContent"
+    >
+      I'm in an array inside of a fragment!
+    </span>
+    <span
+      slot="startContent"
+    >
+      Me too!
+    </span>
   </ui5-bar>
 </DocumentFragment>
 `;
