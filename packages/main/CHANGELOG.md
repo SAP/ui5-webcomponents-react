@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.14.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.14.0...v0.14.1) (2021-02-19)
+
+
+### Bug Fixes
+
+* **ObjectPage:** prevent crash on re-mount ([#1317](https://github.com/SAP/ui5-webcomponents-react/issues/1317)) ([e0dfc5b](https://github.com/SAP/ui5-webcomponents-react/commit/e0dfc5b28a70df47ccbe9e288626c294bad19385))
+* **Web Components:** don't crash when single react element is used inside a slot fragment ([#1316](https://github.com/SAP/ui5-webcomponents-react/issues/1316)) ([693b1b3](https://github.com/SAP/ui5-webcomponents-react/commit/693b1b30dbdf40dc72b1cd9e148eac5c8ab1d734))
+
+
+
+
+
 # [0.14.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.14.0-rc.0...v0.14.0) (2021-02-18)
 
 **Note:** Version bump only for package @ui5/webcomponents-react
