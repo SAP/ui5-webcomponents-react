@@ -1,0 +1,68 @@
+name: cra-templates
+
+on:
+  push:
+    paths:
+      - packages/cra-template/**/*
+      - packages/cra-template-seed/**/*
+  pull_request:
+    paths:
+      - packages/cra-template/**/*
+      - packages/cra-template-seed/**/*
+
+jobs:
+  cra-template:
+    runs-on: ubuntu-latest
+
+    env:
+      CI: true
+
+    steps:
+      - uses: actions/checkout@v2.3.1
+      - name: Use Node.js
+        uses: actions/setup-node@v2.1.4
+        with:
+          node-version: 14
+      - name: create new project
+        run: |
+          yarn create react-app cra-template --template file:./packages/cra-template
+      - name: run tests
+        run: |
+          cd cra-template
+          yarn test
+        env:
+          SKIP_PREFLIGHT_CHECK: true
+      - name: build project
+        run: |
+          cd cra-template
+          yarn build
+        env:
+          SKIP_PREFLIGHT_CHECK: true
+
+  cra-template-seed:
+    runs-on: ubuntu-latest
+
+    env:
+      CI: true
+
+    steps:
+      - uses: actions/checkout@v2.3.1
+      - name: Use Node.js
+        uses: actions/setup-node@v2.1.4
+        with:
+          node-version: 14
+      - name: create new project
+        run: |
+          yarn create react-app cra-template-seed --template file:./packages/cra-template-seed
+      - name: run tests
+        run: |
+          cd cra-template-seed
+          yarn test:coverage
+        env:
+          SKIP_PREFLIGHT_CHECK: true
+      - name: build project
+        run: |
+          cd cra-template-seed
+          yarn build
+        env:
+          SKIP_PREFLIGHT_CHECK: true
