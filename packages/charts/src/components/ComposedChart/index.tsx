@@ -263,8 +263,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               interval: dimension?.interval ?? (isBigDataSet ? 'preserveStart' : 0),
               tickLine: index < 1,
               axisLine: index < 1,
-              allowDuplicatedCategory: index === 0,
-              scale: dimensions.length === 1 ? 'band' : 'auto'
+              allowDuplicatedCategory: index === 0
             };
 
             if (layout === 'vertical') {
