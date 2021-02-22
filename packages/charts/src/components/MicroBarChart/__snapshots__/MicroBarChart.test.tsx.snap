@@ -7,7 +7,6 @@ exports[`Micro Bar Chart Render with default Props 1`] = `
   >
     <div
       class="recharts-responsive-container"
-      id="undefined"
       style="width: 400px; height: 400px;"
     >
       <div
@@ -115,7 +114,6 @@ exports[`Micro Bar Chart With custom colors 1`] = `
   >
     <div
       class="recharts-responsive-container"
-      id="undefined"
       style="width: 400px; height: 400px;"
     >
       <div
