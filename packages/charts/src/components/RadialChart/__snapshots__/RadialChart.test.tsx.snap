@@ -7,7 +7,6 @@ exports[`RadialChart Renders with data 1`] = `
   >
     <div
       class="recharts-responsive-container"
-      id="undefined"
       style="width: 400px; height: 400px;"
     >
       <div
@@ -293,7 +292,6 @@ exports[`RadialChart loading placeholder 1`] = `
   >
     <div
       class="recharts-responsive-container"
-      id="undefined"
       style="width: 400px; height: 400px;"
     >
       <div
