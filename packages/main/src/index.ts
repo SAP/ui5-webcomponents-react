@@ -25,12 +25,17 @@ import { BusyIndicatorSize } from './lib/BusyIndicatorSize';
 import { Button } from './lib/Button';
 import { ButtonDesign } from './lib/ButtonDesign';
 import { Calendar } from './lib/Calendar';
+import { CalendarDate } from './lib/CalendarDate';
 import { CalendarSelection } from './lib/CalendarSelection';
+import { CalendarSelectionMode } from './lib/CalendarSelectionMode';
 import { CalendarType } from './lib/CalendarType';
 import { Card } from './lib/Card';
 import { Carousel } from './lib/Carousel';
 import { CarouselArrowsPlacement } from './lib/CarouselArrowsPlacement';
 import { CheckBox } from './lib/CheckBox';
+import { ColorPalette } from './lib/ColorPalette';
+import { ColorPaletteItem } from './lib/ColorPaletteItem';
+import { ColorPicker } from './lib/ColorPicker';
 import { ComboBox } from './lib/ComboBox';
 import { ComboBoxItem } from './lib/ComboBoxItem';
 import { ContentDensity } from './lib/ContentDensity';
@@ -128,6 +133,7 @@ import { TabSeparator } from './lib/TabSeparator';
 import { Table } from './lib/Table';
 import { TableCell } from './lib/TableCell';
 import { TableColumn } from './lib/TableColumn';
+import { TableGrowingMode } from './lib/TableGrowingMode';
 import { TablePlaceholder } from './lib/TablePlaceholder';
 import { TableRow } from './lib/TableRow';
 import { TableScaleWidthMode } from './lib/TableScaleWidthMode';
@@ -189,12 +195,17 @@ export {
   Button,
   ButtonDesign,
   Calendar,
+  CalendarDate,
   CalendarSelection,
+  CalendarSelectionMode,
   CalendarType,
   Card,
   Carousel,
   CarouselArrowsPlacement,
   CheckBox,
+  ColorPalette,
+  ColorPaletteItem,
+  ColorPicker,
   ComboBox,
   ComboBoxItem,
   ContentDensity,
@@ -292,6 +303,7 @@ export {
   Table,
   TableCell,
   TableColumn,
+  TableGrowingMode,
   TablePlaceholder,
   TableRow,
   TableScaleWidthMode,
