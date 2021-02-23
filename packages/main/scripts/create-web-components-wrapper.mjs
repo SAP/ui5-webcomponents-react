@@ -236,6 +236,7 @@ const filterNonPublicAttributes = (prop) =>
 const replaceTagNameWithModuleName = (description) => {
   let parsedDescription = description.replace(/(ui5-[\w-]+)/g, (fullMatch, tag, ...args) => {
     if (tag === 'ui5-link') return tag;
+    if (tag === 'ui5-webcomponents-react') return tag;
     return htmlTagToModuleNameMap.get(tag);
   });
 
@@ -454,7 +455,7 @@ const getTypeScriptTypeForProperty = (property) => {
         tsType: 'PageBackgroundDesign',
         isEnum: true
       };
-      case 'PanelAccessibleRole':
+    case 'PanelAccessibleRole':
       return {
         importStatement: "import { PanelAccessibleRoles } from '@ui5/webcomponents-react/lib/PanelAccessibleRoles';",
         tsType: 'PanelAccessibleRoles',
@@ -504,10 +505,9 @@ const getTypeScriptTypeForProperty = (property) => {
         tsType: 'TabContainerTabsPlacement',
         isEnum: true
       };
-      case 'TableGrowingMode':
+    case 'TableGrowingMode':
       return {
-        importStatement:
-          "import { TableGrowingMode } from '@ui5/webcomponents-react/lib/TableGrowingMode';",
+        importStatement: "import { TableGrowingMode } from '@ui5/webcomponents-react/lib/TableGrowingMode';",
         tsType: 'TableGrowingMode',
         isEnum: true
       };
@@ -905,6 +905,14 @@ resolvedWebComponents.forEach((componentSpec) => {
         }
 
         const extendedDescription = EXTENDED_PROP_DESCRIPTION[property.name];
+
+        if (property.name !== 'children' && componentSpec?.slots?.some((item) => item.name === property.name)) {
+          formattedDescription += `
+          *
+          * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the \`slot\` prop and appends it to the most outer element of your component.
+          * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).`;
+        }
+
         if (extendedDescription) {
           return replaceTagNameWithModuleName(`${formattedDescription}${extendedDescription}`);
         }

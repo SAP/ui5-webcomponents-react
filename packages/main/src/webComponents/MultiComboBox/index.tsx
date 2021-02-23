@@ -71,6 +71,9 @@ export interface MultiComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 
   children?: ReactNode | ReactNode[];
   /**
    * Defines the icon to be displayed in the `MultiComboBox`.
+   *
+   * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
    */
   icon?: ReactNode | ReactNode[];
   /**
@@ -78,6 +81,9 @@ export interface MultiComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 
    *
    * **Note:** If not specified, a default text (in the respective language) will be displayed.
    * **Note:** The `valueStateMessage` would be displayed, when the `MultiComboBox` is in `Information`, `Warning` or `Error` value state.
+   *
+   * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
    */
   valueStateMessage?: ReactNode | ReactNode[];
   /**
