@@ -98,6 +98,8 @@ export interface MultiInputPropTypes extends Omit<WithWebComponentPropTypes, 'on
    *  </code>
    * </pre>
    *
+   * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
    */
   tokens?: ReactNode | ReactNode[];
   /**
@@ -123,6 +125,9 @@ export interface MultiInputPropTypes extends Omit<WithWebComponentPropTypes, 'on
   children?: ReactNode | ReactNode[];
   /**
    * Defines the icon to be displayed in the `Input`.
+   *
+   * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
    */
   icon?: ReactNode | ReactNode[];
   /**
@@ -131,6 +136,9 @@ export interface MultiInputPropTypes extends Omit<WithWebComponentPropTypes, 'on
    * **Note:** If not specified, a default text (in the respective language) will be displayed.
    * **Note:** The `valueStateMessage` would be displayed, when the `Input` is in `Information`, `Warning` or `Error` value state.
    * **Note:** If the `Input` has `suggestionItems`, the `valueStateMessage` would be displayed as part of the same popover, if used on desktop, or dialog - on phone.
+   *
+   * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
    */
   valueStateMessage?: ReactNode | ReactNode[];
   /**

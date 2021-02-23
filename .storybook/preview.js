@@ -27,7 +27,8 @@ addParameters({
         'Style Web Components',
         'Test Setup',
         'Internationalization',
-        'Efficient Bundling'
+        'Efficient Bundling',
+        'Knowledge Base'
       ]
     }
   }

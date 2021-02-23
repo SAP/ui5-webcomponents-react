@@ -41,6 +41,9 @@ export interface NotificationListItemPropTypes extends WithWebComponentPropTypes
    *
    * **Note:** Consider using the `Avatar` to display icons, initials or images.
    * **Note:**In order to be complaint with the UX guidlines and for best experience, we recommend using avatars with 2rem X 2rem in size (32px X 32px). In case you are using the `Avatar` you can set its `size` ``property to `XS` to get the required size - .``
+   *
+   * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
    */
   avatar?: ReactNode;
   /**
@@ -51,12 +54,18 @@ export interface NotificationListItemPropTypes extends WithWebComponentPropTypes
   children?: ReactNode | ReactNode[];
   /**
    * Defines the elements, dipalyed in the footer of the of the `NotificationListItem`.
+   *
+   * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
    */
   footnotes?: ReactNode | ReactNode[];
   /**
    * Defines the actions, displayed in the top-right area.
    *
    * **Note:** use the `NotificationAction` component.
+   *
+   * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
    */
   actions?: ReactNode;
   /**

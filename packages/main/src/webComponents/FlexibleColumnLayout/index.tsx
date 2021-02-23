@@ -5,7 +5,7 @@ import { FC, ReactNode } from 'react';
 
 export interface FlexibleColumnLayoutPropTypes extends WithWebComponentPropTypes {
   /**
-   * On object of strings that defines several additional accessibility texts for even further customization. It supports the following fields:
+   * An object of strings that defines several additional accessibility texts for even further customization. It supports the following fields:
    *
    * *   `startColumnAccessibleName`: the accessibility name for the `startColumn` region
    * *   `midColumnAccessibleName`: the accessibility name for the `midColumn` region
@@ -44,14 +44,23 @@ export interface FlexibleColumnLayoutPropTypes extends WithWebComponentPropTypes
   noArrows?: boolean;
   /**
    * Defines the content in the end column.
+   *
+   * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
    */
   endColumn?: ReactNode;
   /**
    * Defines the content in the middle column.
+   *
+   * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
    */
   midColumn?: ReactNode;
   /**
    * Defines the content in the start column.
+   *
+   * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
    */
   startColumn?: ReactNode;
   /**
