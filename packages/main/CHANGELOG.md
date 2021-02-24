@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.14.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.14.1...v0.14.2) (2021-02-24)
+
+
+### Features
+
+* **AnalyticalTable:** select rows by pressing the "Enter" key ([#1321](https://github.com/SAP/ui5-webcomponents-react/issues/1321)) ([b150663](https://github.com/SAP/ui5-webcomponents-react/commit/b1506630c8acc1498bc5a7702e364f0865083ae1)), closes [#1306](https://github.com/SAP/ui5-webcomponents-react/issues/1306)
+* **ColorPicker:** add ColorPicker component ([#1343](https://github.com/SAP/ui5-webcomponents-react/issues/1343)) ([fce270d](https://github.com/SAP/ui5-webcomponents-react/commit/fce270dcbf04712860ab54d8cdb68b1b76be4212))
+
+
+
+
+
 ## [0.14.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.14.0...v0.14.1) (2021-02-19)
 
 

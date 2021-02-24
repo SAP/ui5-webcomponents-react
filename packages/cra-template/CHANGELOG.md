@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.14.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.14.1...v0.14.2) (2021-02-24)
+
+
+### Bug Fixes
+
+* **cra-template:** add asset imports ([#1322](https://github.com/SAP/ui5-webcomponents-react/issues/1322)) ([0dc453f](https://github.com/SAP/ui5-webcomponents-react/commit/0dc453f12d6df0f2c39f77bffea1838f69cfb59c))
+
+
+
+
+
 # [0.14.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.14.0-rc.0...v0.14.0) (2021-02-18)
 
 
