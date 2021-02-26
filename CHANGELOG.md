@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.129.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.129.4...v0.129.5) (2021-02-26)
+
+
+### Bug Fixes
+
+* bump lodash to 4.17.21 (CVE-2021-23337) ([a5d225b](https://github.com/SAP/ui5-webcomponents-react/commit/a5d225bb4bcf3c397d3ded869ca8e002b1dbde12))
+
+
+
+
+
 ## [0.129.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.129.3...v0.129.4) (2021-02-18)
 
 
