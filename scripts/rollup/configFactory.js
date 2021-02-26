@@ -34,7 +34,8 @@ const rollupConfigFactory = (pkgName, externals = []) => {
       values: {
         __DEV__: 'false',
         'process.env.NODE_ENV': "'production'"
-      }
+      },
+      preventAssignment: true
     })
   ];
 
@@ -105,6 +106,15 @@ const rollupConfigFactory = (pkgName, externals = []) => {
           file: path.resolve(
             PKG_BASE_PATH,
             'lib',
+            file.replace(`${LIB_BASE_PATH}${path.sep}`, '').replace(/\.ts$/, '.js')
+          ),
+          format: 'es',
+          sourcemap: true
+        },
+        {
+          file: path.resolve(
+            PKG_BASE_PATH,
+            'dist',
             file.replace(`${LIB_BASE_PATH}${path.sep}`, '').replace(/\.ts$/, '.js')
           ),
           format: 'es',
