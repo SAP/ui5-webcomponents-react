@@ -41,10 +41,10 @@
     "react-virtual": "2.4.0"
   },
   "peerDependencies": {
-    "@ui5/webcomponents": "1.0.0-rc.12",
-    "@ui5/webcomponents-base": "0.30.0",
-    "@ui5/webcomponents-fiori": "1.0.0-rc.12",
-    "@ui5/webcomponents-icons": "1.0.0-rc.12",
+    "@ui5/webcomponents": "^0.31.0",
+    "@ui5/webcomponents-base": "^0.31.0",
+    "@ui5/webcomponents-fiori": "^0.31.0",
+    "@ui5/webcomponents-icons": "^0.31.0",
     "react": "^16.8.0 || ^17.0.0",
     "react-dom": "^16.8.0 || ^17.0.0"
   },
