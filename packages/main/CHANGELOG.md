@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.131.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.14.2...v0.131.0) (2021-02-26)
+
+
+### Features
+
+* update webcomponents version to ^0.31.0 ([edf45ad](https://github.com/SAP/ui5-webcomponents-react/commit/edf45ad57ede07ebdd363a5f4fd75c83370ab19e))
+
+
+
+
+
 ## [0.14.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.14.1...v0.14.2) (2021-02-24)
 
 
