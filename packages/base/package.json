@@ -43,5 +43,23 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "files": [
+    "cjs",
+    "Device",
+    "dist",
+    "hooks",
+    "lib",
+    "polyfill",
+    "styling",
+    "types",
+    "utils",
+    "CHANGELOG.md",
+    "index.cjs.js",
+    "index.d.ts",
+    "index.esm.js",
+    "LICENSE",
+    "NOTICE.txt",
+    "README.md"
+  ]
 }

@@ -58,5 +58,23 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "files": [
+    "cjs",
+    "components",
+    "dist",
+    "enums",
+    "interfaces",
+    "internal",
+    "lib",
+    "webComponents",
+    "wrappers",
+    "CHANGELOG.md",
+    "index.cjs.js",
+    "index.d.ts",
+    "index.esm.js",
+    "LICENSE",
+    "NOTICE.txt",
+    "README.md"
+  ]
 }

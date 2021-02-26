@@ -33,5 +33,21 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "files": [
+    "cjs",
+    "components",
+    "dist",
+    "hooks",
+    "interfaces",
+    "internal",
+    "lib",
+    "CHANGELOG.md",
+    "index.cjs.js",
+    "index.d.ts",
+    "index.esm.js",
+    "LICENSE",
+    "NOTICE.txt",
+    "README.md"
+  ]
 }
