@@ -46,6 +46,7 @@
   },
   "files": [
     "cjs",
+    "codemods",
     "Device",
     "dist",
     "hooks",
