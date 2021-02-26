@@ -1,9 +1,9 @@
-import { isIE } from '@ui5/webcomponents-react-base/lib/Device';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
-import { useViewportRange } from '@ui5/webcomponents-react-base/lib/useViewportRange';
+import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
+import { useViewportRange } from '@ui5/webcomponents-react-base/dist/useViewportRange';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { GridPosition } from '@ui5/webcomponents-react/lib/GridPosition';
+import { GridPosition } from '@ui5/webcomponents-react/dist/GridPosition';
 import React, {
   Children,
   cloneElement,

@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { Panel } from '@ui5/webcomponents-react/lib/Panel';
+import { Panel } from '@ui5/webcomponents-react/dist/Panel';
 import React from 'react';
 
 describe('Panel', () => {

@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { DatePicker } from '@ui5/webcomponents-react/lib/DatePicker';
+import { DatePicker } from '@ui5/webcomponents-react/dist/DatePicker';
 import React from 'react';
 
 describe('DatePicker', () => {

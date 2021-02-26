@@ -1,5 +1,5 @@
 import '@ui5/webcomponents-icons/dist/slim-arrow-down';
-import { Tab } from '@ui5/webcomponents-react/lib/Tab';
+import { Tab } from '@ui5/webcomponents-react/dist/Tab';
 import React, { FC, useEffect, useRef } from 'react';
 
 interface ObjectPageAnchorPropTypes {

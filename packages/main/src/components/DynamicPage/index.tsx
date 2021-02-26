@@ -3,13 +3,13 @@ import {
   useConsolidatedRef,
   useIsomorphicLayoutEffect,
   usePassThroughHtmlProps
-} from '@ui5/webcomponents-react-base/lib/hooks';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
+} from '@ui5/webcomponents-react-base/dist/hooks';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
-import { GlobalStyleClasses } from '@ui5/webcomponents-react/lib/GlobalStyleClasses';
-import { PageBackgroundDesign } from '@ui5/webcomponents-react/lib/PageBackgroundDesign';
+import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
+import { GlobalStyleClasses } from '@ui5/webcomponents-react/dist/GlobalStyleClasses';
+import { PageBackgroundDesign } from '@ui5/webcomponents-react/dist/PageBackgroundDesign';
 import React, {
   forwardRef,
   ReactElement,
@@ -27,7 +27,7 @@ import React, {
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
 import { useObserveHeights } from '../ObjectPage/useObserveHeights';
 import styles from './DynamicPage.jss';
-import { isIE } from '@ui5/webcomponents-react-base/lib/Device';
+import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
 
 export interface DynamicPageProps extends Omit<CommonProps, 'title'> {
   /**

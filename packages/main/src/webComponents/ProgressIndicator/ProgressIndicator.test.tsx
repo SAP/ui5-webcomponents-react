@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { ProgressIndicator } from '@ui5/webcomponents-react/lib/ProgressIndicator';
+import { ProgressIndicator } from '@ui5/webcomponents-react/dist/ProgressIndicator';
 import React from 'react';
 
 describe('ProgressIndicator', () => {

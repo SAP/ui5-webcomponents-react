@@ -1,4 +1,4 @@
-import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import React, { CSSProperties, FC, useMemo } from 'react';
 import ContentLoader from 'react-content-loader';
 

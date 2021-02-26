@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { ShellBarItem } from '@ui5/webcomponents-react/lib/ShellBarItem';
+import { ShellBarItem } from '@ui5/webcomponents-react/dist/ShellBarItem';
 import React from 'react';
 
 describe('ShellBarItem', () => {

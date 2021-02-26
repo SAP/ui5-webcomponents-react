@@ -1,6 +1,6 @@
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
-import { BreadcrumbsSeparatorStyle } from '@ui5/webcomponents-react/lib/BreadcrumbsSeparatorStyle';
-import { Label } from '@ui5/webcomponents-react/lib/Label';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
+import { BreadcrumbsSeparatorStyle } from '@ui5/webcomponents-react/dist/BreadcrumbsSeparatorStyle';
+import { Label } from '@ui5/webcomponents-react/dist/Label';
 import React, { Children, FC, forwardRef, Fragment, ReactNode, ReactNodeArray, Ref } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 

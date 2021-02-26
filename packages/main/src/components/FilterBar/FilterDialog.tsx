@@ -1,7 +1,7 @@
 import '@ui5/webcomponents-icons/dist/search';
 import { createUseStyles } from 'react-jss';
-import { useI18nBundle } from '@ui5/webcomponents-react-base/lib/hooks';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
+import { useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import {
   BASIC,
   CANCEL,
@@ -13,21 +13,21 @@ import {
   SEARCH_FOR_FILTERS,
   SHOW_ON_FILTER_BAR
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
-import { Bar } from '@ui5/webcomponents-react/lib/Bar';
-import { BarDesign } from '@ui5/webcomponents-react/lib/BarDesign';
-import { Button } from '@ui5/webcomponents-react/lib/Button';
-import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
-import { CheckBox } from '@ui5/webcomponents-react/lib/CheckBox';
-import { Dialog } from '@ui5/webcomponents-react/lib/Dialog';
-import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
-import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
-import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
-import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJustifyContent';
-import { Icon } from '@ui5/webcomponents-react/lib/Icon';
-import { Input } from '@ui5/webcomponents-react/lib/Input';
-import { Text } from '@ui5/webcomponents-react/lib/Text';
-import { Title } from '@ui5/webcomponents-react/lib/Title';
-import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
+import { Bar } from '@ui5/webcomponents-react/dist/Bar';
+import { BarDesign } from '@ui5/webcomponents-react/dist/BarDesign';
+import { Button } from '@ui5/webcomponents-react/dist/Button';
+import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
+import { CheckBox } from '@ui5/webcomponents-react/dist/CheckBox';
+import { Dialog } from '@ui5/webcomponents-react/dist/Dialog';
+import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
+import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
+import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
+import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';
+import { Icon } from '@ui5/webcomponents-react/dist/Icon';
+import { Input } from '@ui5/webcomponents-react/dist/Input';
+import { Text } from '@ui5/webcomponents-react/dist/Text';
+import { Title } from '@ui5/webcomponents-react/dist/Title';
+import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
 import React, { Children, cloneElement, ReactElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Ui5DialogDomRef } from '../../interfaces/Ui5DialogDomRef';
 import { stopPropagation } from '../../internal/stopPropagation';

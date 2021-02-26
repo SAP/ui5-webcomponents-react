@@ -1,9 +1,9 @@
-import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
-import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
-import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
-import { FlexBoxWrap } from '@ui5/webcomponents-react/lib/FlexBoxWrap';
-import { Text } from '@ui5/webcomponents-react/lib/Text';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
+import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
+import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
+import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
+import { FlexBoxWrap } from '@ui5/webcomponents-react/dist/FlexBoxWrap';
+import { Text } from '@ui5/webcomponents-react/dist/Text';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import React from 'react';
 import { createUseStyles } from 'react-jss';
 import { makeRenderer } from 'react-table';

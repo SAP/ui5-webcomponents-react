@@ -1,6 +1,6 @@
-import { AvatarGroupType } from '@ui5/webcomponents-react/lib/AvatarGroupType';
-import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { AvatarGroupType } from '@ui5/webcomponents-react/dist/AvatarGroupType';
+import { AvatarSize } from '@ui5/webcomponents-react/dist/AvatarSize';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
 import '@ui5/webcomponents/dist/AvatarGroup';
 import { FC, ReactNode } from 'react';
 

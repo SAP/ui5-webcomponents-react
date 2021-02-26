@@ -5,9 +5,9 @@ import '@ui5/webcomponents-icons/dist/message-success';
 import '@ui5/webcomponents-icons/dist/message-warning';
 import '@ui5/webcomponents-icons/dist/question-mark';
 import { createUseStyles } from 'react-jss';
-import { useConsolidatedRef, useI18nBundle, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/hooks';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
+import { useConsolidatedRef, useI18nBundle, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import {
   ABORT,
   CANCEL,
@@ -25,15 +25,15 @@ import {
   WARNING,
   YES
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
-import { Button } from '@ui5/webcomponents-react/lib/Button';
-import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
-import { Dialog } from '@ui5/webcomponents-react/lib/Dialog';
-import { Icon } from '@ui5/webcomponents-react/lib/Icon';
-import { MessageBoxActions } from '@ui5/webcomponents-react/lib/MessageBoxActions';
-import { MessageBoxTypes } from '@ui5/webcomponents-react/lib/MessageBoxTypes';
-import { Text } from '@ui5/webcomponents-react/lib/Text';
-import { Title } from '@ui5/webcomponents-react/lib/Title';
-import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
+import { Button } from '@ui5/webcomponents-react/dist/Button';
+import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
+import { Dialog } from '@ui5/webcomponents-react/dist/Dialog';
+import { Icon } from '@ui5/webcomponents-react/dist/Icon';
+import { MessageBoxActions } from '@ui5/webcomponents-react/dist/MessageBoxActions';
+import { MessageBoxTypes } from '@ui5/webcomponents-react/dist/MessageBoxTypes';
+import { Text } from '@ui5/webcomponents-react/dist/Text';
+import { Title } from '@ui5/webcomponents-react/dist/Title';
+import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
 import React, {
   FC,
   forwardRef,

@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { Popover } from '@ui5/webcomponents-react/lib/Popover';
+import { Popover } from '@ui5/webcomponents-react/dist/Popover';
 import React from 'react';
 
 describe('Popover', () => {

@@ -1,8 +1,8 @@
-import { AvatarBackgroundColor } from '@ui5/webcomponents-react/lib/AvatarBackgroundColor';
-import { AvatarFitType } from '@ui5/webcomponents-react/lib/AvatarFitType';
-import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';
-import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { AvatarBackgroundColor } from '@ui5/webcomponents-react/dist/AvatarBackgroundColor';
+import { AvatarFitType } from '@ui5/webcomponents-react/dist/AvatarFitType';
+import { AvatarShape } from '@ui5/webcomponents-react/dist/AvatarShape';
+import { AvatarSize } from '@ui5/webcomponents-react/dist/AvatarSize';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
 import '@ui5/webcomponents/dist/Avatar';
 import { FC } from 'react';
 

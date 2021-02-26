@@ -1,5 +1,5 @@
-import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
 import '@ui5/webcomponents/dist/CheckBox';
 import { FC } from 'react';
 

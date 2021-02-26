@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { MessageStrip } from '@ui5/webcomponents-react/lib/MessageStrip';
+import { MessageStrip } from '@ui5/webcomponents-react/dist/MessageStrip';
 import React from 'react';
 
 describe('MessageStrip', () => {

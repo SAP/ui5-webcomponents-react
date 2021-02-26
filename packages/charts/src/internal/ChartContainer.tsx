@@ -1,9 +1,9 @@
 import { createUseStyles } from 'react-jss';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { Label } from '@ui5/webcomponents-react/lib/Label';
-import { Loader } from '@ui5/webcomponents-react/lib/Loader';
+import { Label } from '@ui5/webcomponents-react/dist/Label';
+import { Loader } from '@ui5/webcomponents-react/dist/Loader';
 import React, { ComponentType, CSSProperties, FC, forwardRef, ReactElement, ReactNode, Ref, useMemo } from 'react';
 import { ResponsiveContainer } from 'recharts';
 

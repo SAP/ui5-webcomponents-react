@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { MultiComboBoxItem } from '@ui5/webcomponents-react/lib/MultiComboBoxItem';
+import { MultiComboBoxItem } from '@ui5/webcomponents-react/dist/MultiComboBoxItem';
 import React from 'react';
 
 describe('MultiComboBoxItem', () => {

@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { Tab } from '@ui5/webcomponents-react/lib/Tab';
+import { Tab } from '@ui5/webcomponents-react/dist/Tab';
 import React from 'react';
 
 describe('Tab', () => {

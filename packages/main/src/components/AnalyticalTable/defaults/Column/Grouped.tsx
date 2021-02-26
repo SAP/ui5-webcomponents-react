@@ -1,5 +1,5 @@
-import { Icon } from '@ui5/webcomponents-react/lib/Icon';
-import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
+import { Icon } from '@ui5/webcomponents-react/dist/Icon';
+import { TextAlign } from '@ui5/webcomponents-react/dist/TextAlign';
 import React, { CSSProperties } from 'react';
 
 const tableGroupExpandCollapseIcon = {

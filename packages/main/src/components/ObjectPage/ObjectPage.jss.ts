@@ -1,4 +1,4 @@
-import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 
 export const ObjectPageCssVariables = {
   anchorFloat: '--_ui5wcr_ObjectPage_actions_float',

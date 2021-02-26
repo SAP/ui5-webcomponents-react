@@ -1,4 +1,4 @@
-import { Logger } from '@ui5/webcomponents-react-base/lib/Logger';
+import { Logger } from '@ui5/webcomponents-react-base/dist/Logger';
 import { MediaEventProvider } from './MediaEventProvider';
 import { supportMatchMediaListener } from './Support';
 import { changeRootCSSClass, getQuery, matchLegacyBySize } from './utils';

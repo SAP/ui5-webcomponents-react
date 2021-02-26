@@ -1,11 +1,11 @@
-import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
+import { CssSizeVariables } from '@ui5/webcomponents-react-base/dist/CssSizeVariables';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { createUseStyles } from 'react-jss';
-import { getCurrentRange } from '@ui5/webcomponents-react-base/lib/Device';
-import { useConsolidatedRef, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/hooks';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
-import { Title } from '@ui5/webcomponents-react/lib/Title';
-import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
+import { getCurrentRange } from '@ui5/webcomponents-react-base/dist/Device';
+import { useConsolidatedRef, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
+import { Title } from '@ui5/webcomponents-react/dist/Title';
+import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
 import React, {
   Children,
   cloneElement,

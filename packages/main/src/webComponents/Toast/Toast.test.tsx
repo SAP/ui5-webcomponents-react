@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { Toast } from '@ui5/webcomponents-react/lib/Toast';
+import { Toast } from '@ui5/webcomponents-react/dist/Toast';
 import React from 'react';
 
 describe('Toast', () => {

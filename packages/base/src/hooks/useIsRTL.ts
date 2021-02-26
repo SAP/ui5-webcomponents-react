@@ -1,5 +1,5 @@
 import { getRTL } from '@ui5/webcomponents-base/dist/config/RTL';
-import { useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base/lib/hooks';
+import { useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base/dist/hooks';
 import { RefObject, useState } from 'react';
 
 const GLOBAL_DIR_CSS_VAR = '--_ui5_dir';

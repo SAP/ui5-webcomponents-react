@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { TableRow } from '@ui5/webcomponents-react/lib/TableRow';
+import { TableRow } from '@ui5/webcomponents-react/dist/TableRow';
 import React from 'react';
 
 describe('TableRow', () => {

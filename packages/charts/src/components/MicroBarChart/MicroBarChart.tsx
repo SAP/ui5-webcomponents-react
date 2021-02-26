@@ -1,11 +1,11 @@
 import { createUseStyles } from 'react-jss';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
-import { BarChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/BarChartPlaceholder';
-import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/components/ChartContainer';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
+import { BarChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/BarChartPlaceholder';
+import { ChartContainer } from '@ui5/webcomponents-react-charts/dist/components/ChartContainer';
 import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { IChartBaseProps } from '../../interfaces/IChartBaseProps';

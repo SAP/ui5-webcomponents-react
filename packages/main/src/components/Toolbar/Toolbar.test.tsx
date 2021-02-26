@@ -1,11 +1,11 @@
 import { render, screen, fireEvent } from '@shared/tests';
 import { createPassThroughPropsTest } from '@shared/tests/utils';
-import { Text } from '@ui5/webcomponents-react/lib/Text';
-import { Toolbar } from '@ui5/webcomponents-react/lib/Toolbar';
-import { ToolbarDesign } from '@ui5/webcomponents-react/lib/ToolbarDesign';
-import { ToolbarStyle } from '@ui5/webcomponents-react/lib/ToolbarStyle';
-import { ToolbarSeparator } from '@ui5/webcomponents-react/lib/ToolbarSeparator';
-import { ToolbarSpacer } from '@ui5/webcomponents-react/lib/ToolbarSpacer';
+import { Text } from '@ui5/webcomponents-react/dist/Text';
+import { Toolbar } from '@ui5/webcomponents-react/dist/Toolbar';
+import { ToolbarDesign } from '@ui5/webcomponents-react/dist/ToolbarDesign';
+import { ToolbarStyle } from '@ui5/webcomponents-react/dist/ToolbarStyle';
+import { ToolbarSeparator } from '@ui5/webcomponents-react/dist/ToolbarSeparator';
+import { ToolbarSpacer } from '@ui5/webcomponents-react/dist/ToolbarSpacer';
 import React from 'react';
 
 describe('Toolbar', () => {

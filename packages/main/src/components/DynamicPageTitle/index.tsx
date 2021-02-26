@@ -1,18 +1,18 @@
 import { createUseStyles } from 'react-jss';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
-import { BreadcrumbsPropTypes } from '@ui5/webcomponents-react/lib/Breadcrumbs';
-import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
-import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
-import { Toolbar } from '@ui5/webcomponents-react/lib/Toolbar';
-import { ToolbarDesign } from '@ui5/webcomponents-react/lib/ToolbarDesign';
-import { ToolbarSeparator } from '@ui5/webcomponents-react/lib/ToolbarSeparator';
-import { ToolbarSpacer } from '@ui5/webcomponents-react/lib/ToolbarSpacer';
-import { ToolbarStyle } from '@ui5/webcomponents-react/lib/ToolbarStyle';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
+import { BreadcrumbsPropTypes } from '@ui5/webcomponents-react/dist/Breadcrumbs';
+import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
+import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
+import { Toolbar } from '@ui5/webcomponents-react/dist/Toolbar';
+import { ToolbarDesign } from '@ui5/webcomponents-react/dist/ToolbarDesign';
+import { ToolbarSeparator } from '@ui5/webcomponents-react/dist/ToolbarSeparator';
+import { ToolbarSpacer } from '@ui5/webcomponents-react/dist/ToolbarSpacer';
+import { ToolbarStyle } from '@ui5/webcomponents-react/dist/ToolbarStyle';
 import React, { Children, FC, forwardRef, ReactElement, ReactNode, ReactNodeArray, Ref } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { DynamicPageTitleStyles } from './DynamicPageTitle.jss';
-import { isIE } from '@ui5/webcomponents-react-base/lib/Device';
+import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
 
 export interface DynamicPageTitleProps extends CommonProps {
   /**

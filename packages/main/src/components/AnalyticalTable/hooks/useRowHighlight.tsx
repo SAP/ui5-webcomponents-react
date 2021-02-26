@@ -1,4 +1,4 @@
-import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import React from 'react';
 
 const baseStyles = {

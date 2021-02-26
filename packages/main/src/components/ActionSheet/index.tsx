@@ -1,10 +1,10 @@
 import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming';
 import { createUseStyles } from 'react-jss';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
-import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
-import { ResponsivePopover } from '@ui5/webcomponents-react/lib/ResponsivePopover';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
+import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
+import { ResponsivePopover } from '@ui5/webcomponents-react/dist/ResponsivePopover';
 import React, { Children, cloneElement, FC, forwardRef, ReactElement, RefObject } from 'react';
 import { createPortal } from 'react-dom';
 import { Ui5ResponsivePopoverDomRef } from '../../interfaces/Ui5ResponsivePopoverDomRef';

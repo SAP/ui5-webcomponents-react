@@ -5,9 +5,9 @@ import '@ui5/webcomponents-icons/dist/group';
 import '@ui5/webcomponents-icons/dist/history';
 import '@ui5/webcomponents-icons/dist/home';
 import '@ui5/webcomponents-icons/dist/locate-me';
-import { SideNavigation } from '@ui5/webcomponents-react/lib/SideNavigation';
-import { SideNavigationItem } from '@ui5/webcomponents-react/lib/SideNavigationItem';
-import { SideNavigationSubItem } from '@ui5/webcomponents-react/lib/SideNavigationSubItem';
+import { SideNavigation } from '@ui5/webcomponents-react/dist/SideNavigation';
+import { SideNavigationItem } from '@ui5/webcomponents-react/dist/SideNavigationItem';
+import { SideNavigationSubItem } from '@ui5/webcomponents-react/dist/SideNavigationSubItem';
 import React from 'react';
 
 describe('SideNavigation', () => {

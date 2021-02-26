@@ -1,8 +1,8 @@
 import '@ui5/webcomponents-icons/dist/overflow';
-import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
-import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
-import { Popover } from '@ui5/webcomponents-react/lib/Popover';
-import { ToggleButton } from '@ui5/webcomponents-react/lib/ToggleButton';
+import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
+import { PlacementType } from '@ui5/webcomponents-react/dist/PlacementType';
+import { Popover } from '@ui5/webcomponents-react/dist/Popover';
+import { ToggleButton } from '@ui5/webcomponents-react/dist/ToggleButton';
 import React, { FC, ReactElement, ReactNode, useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';

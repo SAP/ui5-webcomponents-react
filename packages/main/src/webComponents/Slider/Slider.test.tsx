@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { Slider } from '@ui5/webcomponents-react/lib/Slider';
+import { Slider } from '@ui5/webcomponents-react/dist/Slider';
 import React from 'react';
 
 describe('Slider', () => {

@@ -1,7 +1,7 @@
-import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
-import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
-import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
-import { VerticalAlign } from '@ui5/webcomponents-react/lib/VerticalAlign';
+import { TableSelectionBehavior } from '@ui5/webcomponents-react/dist/TableSelectionBehavior';
+import { TableSelectionMode } from '@ui5/webcomponents-react/dist/TableSelectionMode';
+import { TextAlign } from '@ui5/webcomponents-react/dist/TextAlign';
+import { VerticalAlign } from '@ui5/webcomponents-react/dist/VerticalAlign';
 import { CSSProperties } from 'react';
 
 const getHeaderGroupProps = (headerGroupProps, { instance }) => {

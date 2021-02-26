@@ -1,5 +1,5 @@
-import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
-import { Loader } from '@ui5/webcomponents-react/lib/Loader';
+import { CssSizeVariables } from '@ui5/webcomponents-react-base/dist/CssSizeVariables';
+import { Loader } from '@ui5/webcomponents-react/dist/Loader';
 import React from 'react';
 import { createUseStyles } from 'react-jss';
 

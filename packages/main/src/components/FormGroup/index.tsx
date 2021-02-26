@@ -1,5 +1,5 @@
-import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
+import { CssSizeVariables } from '@ui5/webcomponents-react-base/dist/CssSizeVariables';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import React, { FC, ReactNode, ReactNodeArray } from 'react';
 import { createUseStyles } from 'react-jss';
 

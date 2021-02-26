@@ -1,4 +1,4 @@
-import { AnalyticalTableScrollMode } from '@ui5/webcomponents-react/lib/AnalyticalTableScrollMode';
+import { AnalyticalTableScrollMode } from '@ui5/webcomponents-react/dist/AnalyticalTableScrollMode';
 
 export interface AnalyticalTableDomRef extends Omit<HTMLDivElement, 'scrollTo'> {
   scrollToItem: (index: number, align?: AnalyticalTableScrollMode) => void;

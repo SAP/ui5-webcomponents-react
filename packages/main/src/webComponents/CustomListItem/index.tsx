@@ -1,5 +1,5 @@
-import { ListItemTypes } from '@ui5/webcomponents-react/lib/ListItemTypes';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { ListItemTypes } from '@ui5/webcomponents-react/dist/ListItemTypes';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
 import '@ui5/webcomponents/dist/CustomListItem';
 import { FC, ReactNode } from 'react';
 

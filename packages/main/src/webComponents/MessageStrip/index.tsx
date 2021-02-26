@@ -1,5 +1,5 @@
-import { MessageStripType } from '@ui5/webcomponents-react/lib/MessageStripType';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { MessageStripType } from '@ui5/webcomponents-react/dist/MessageStripType';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
 import '@ui5/webcomponents/dist/MessageStrip';
 import { FC, ReactNode } from 'react';
 

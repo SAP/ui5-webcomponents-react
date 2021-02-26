@@ -1,11 +1,11 @@
 import { act, fireEvent, getByText, getMouseEvent, render, renderRtl, screen } from '@shared/tests';
 import { createPassThroughPropsTest } from '@shared/tests/utils';
-import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
-import { useRowDisableSelection } from '@ui5/webcomponents-react/lib/AnalyticalTableHooks';
-import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
-import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
-import { TableVisibleRowCountMode } from '@ui5/webcomponents-react/lib/TableVisibleRowCountMode';
-import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import { AnalyticalTable } from '@ui5/webcomponents-react/dist/AnalyticalTable';
+import { useRowDisableSelection } from '@ui5/webcomponents-react/dist/AnalyticalTableHooks';
+import { TableSelectionBehavior } from '@ui5/webcomponents-react/dist/TableSelectionBehavior';
+import { TableSelectionMode } from '@ui5/webcomponents-react/dist/TableSelectionMode';
+import { TableVisibleRowCountMode } from '@ui5/webcomponents-react/dist/TableVisibleRowCountMode';
+import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import React, { useRef } from 'react';
 
 const columns = [

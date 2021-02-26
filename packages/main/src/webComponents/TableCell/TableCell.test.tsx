@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { TableCell } from '@ui5/webcomponents-react/lib/TableCell';
+import { TableCell } from '@ui5/webcomponents-react/dist/TableCell';
 import React from 'react';
 
 describe('TableCell', () => {

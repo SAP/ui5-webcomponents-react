@@ -1,5 +1,5 @@
-import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
-import { sapUiContentPadding } from '@ui5/webcomponents-react-base/lib/spacing';
+import { CssSizeVariables } from '@ui5/webcomponents-react-base/dist/CssSizeVariables';
+import { sapUiContentPadding } from '@ui5/webcomponents-react-base/dist/spacing';
 
 const styles = {
   dialog: {

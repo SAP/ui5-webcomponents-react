@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { TextArea } from '@ui5/webcomponents-react/lib/TextArea';
+import { TextArea } from '@ui5/webcomponents-react/dist/TextArea';
 import React from 'react';
 
 describe('TextArea', () => {

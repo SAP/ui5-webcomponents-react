@@ -1,6 +1,6 @@
 import { render } from '@shared/tests';
 import { createPassThroughPropsTest } from '@shared/tests/utils';
-import { ObjectPageSubSection } from '@ui5/webcomponents-react/lib/ObjectPageSubSection';
+import { ObjectPageSubSection } from '@ui5/webcomponents-react/dist/ObjectPageSubSection';
 import React from 'react';
 
 describe('ObjectPageSubSection', () => {

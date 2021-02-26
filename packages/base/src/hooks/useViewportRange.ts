@@ -1,4 +1,4 @@
-import { getCurrentRange, attachMediaHandler, detachMediaHandler } from '@ui5/webcomponents-react-base/lib/Device';
+import { getCurrentRange, attachMediaHandler, detachMediaHandler } from '@ui5/webcomponents-react-base/dist/Device';
 import { useEffect, useState } from 'react';
 
 export const useViewportRange = (rangeSet: string) => {

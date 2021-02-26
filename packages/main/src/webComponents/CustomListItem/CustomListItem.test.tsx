@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { CustomListItem } from '@ui5/webcomponents-react/lib/CustomListItem';
+import { CustomListItem } from '@ui5/webcomponents-react/dist/CustomListItem';
 import React from 'react';
 
 describe('CustomListItem', () => {

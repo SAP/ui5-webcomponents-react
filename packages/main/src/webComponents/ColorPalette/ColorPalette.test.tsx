@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { ColorPalette } from '@ui5/webcomponents-react/lib/ColorPalette';
+import { ColorPalette } from '@ui5/webcomponents-react/dist/ColorPalette';
 import React from 'react';
 
 describe('ColorPalette', () => {

@@ -1,5 +1,5 @@
-import { UploadState } from '@ui5/webcomponents-react/lib/UploadState';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { UploadState } from '@ui5/webcomponents-react/dist/UploadState';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
 import '@ui5/webcomponents-fiori/dist/UploadCollectionItem';
 import { FC, ReactNode } from 'react';
 

@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { Switch } from '@ui5/webcomponents-react/lib/Switch';
+import { Switch } from '@ui5/webcomponents-react/dist/Switch';
 import React from 'react';
 
 describe('Switch', () => {
