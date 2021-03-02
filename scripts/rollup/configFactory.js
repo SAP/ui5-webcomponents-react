@@ -15,7 +15,7 @@ process.env.NODE_ENV = 'production';
 
 const rollupConfigFactory = (pkgName, externals = []) => {
   const PKG_BASE_PATH = path.resolve(PATHS.packages, pkgName);
-  const LIB_BASE_PATH = path.resolve(PKG_BASE_PATH, 'src', 'lib');
+  const LIB_BASE_PATH = path.resolve(PKG_BASE_PATH, 'src', 'dist');
 
   const allFilesAndFolders = glob.sync(`${LIB_BASE_PATH}/**/*`);
 
