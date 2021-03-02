@@ -1,4 +1,5 @@
 import { Meta } from '@storybook/addon-docs/blocks';
+import { MessageStrip, MessageStripType } from '@ui5/webcomponents-react';
 
 <Meta title="Migration Guide" />
 
@@ -14,12 +15,55 @@ or the [changelog](https://github.com/SAP/ui5-webcomponents-react/blob/master/CH
 
 ## Table of Contents
 
+- [0.14.x to 0.15.0](#migrating-from-014x-to-0150)
 - [0.13.x to 0.14.0](#migrating-from-013x-to-0140)
 - [0.12.x to 0.13.0](#migrating-from-012x-to-0130)
 - [0.11.x to 0.12.0](#migrating-from-011x-to-0120)
 - [0.10.x to 0.11.0](#migrating-from-010x-to-0110)
 - [0.9.x to 0.10.0](#migrating-from-09x-to-0100)
 - [0.8.x to 0.9.0](#migrating-from-08x-to-090)
+
+## Migrating from 0.14.x to 0.15.0
+
+<br />
+
+### Replaced `lib` folder with `dist` folder
+
+UI5 Web Components for React was publishing the individual components in a `lib` folder, while our Assets were published
+in `dist`. As UI5 Web Components is also publishing all files in the `dist` directory, we have now dropped our `lib` folder and publish everything to `dist`.
+
+In case you are importing directly from `@ui5/webcomponents-react`, `@ui5/webcomponents-react-charts` or `@ui5/webcomponents-react-base`
+(e.g. `import { Button } from '@ui5/webcomponents-react';`) no action is required.
+
+If you are importing from the `lib` folders, e.g. `import { Button } from '@ui5/webcomponents-react/lib/Button';` you will have to modify your codebase:
+
+You can either change all imports manually:
+
+- replace `@ui5/webcomponents-react/lib/` with `@ui5/webcomponents-react/dist/`
+- replace `@ui5/webcomponents-react-base/lib/` with `@ui5/webcomponents-react-base/dist/`
+- replace `@ui5/webcomponents-react-charts/lib/` with `@ui5/webcomponents-react-charts/dist/`
+
+or use [jscodeshift](https://github.com/facebook/jscodeshift) with our codemod by running this command in your project
+
+```bash
+# replace 'src' with the directory where your src files are located
+npx jscodeshift --transform node_modules/@ui5/webcomponents-react-base/codemods/transformLibToDist.js --extensions js,jsx src
+
+# in case you are using typescript
+npx jscodeshift --transform node_modules/@ui5/webcomponents-react-base/codemods/transformLibToDist.js --extensions js,jsx,ts,tsx --parser tsx src
+```
+
+<MessageStrip type={MessageStripType.Warning} noCloseButton>
+  Please make sure that you have committed all changes before running this codemod.
+  <br />
+  <br />
+  Keep in mind that the codemod output will not always match your project’s coding style, so you might want to run <a
+    href="https://prettier.io"
+    target="_blank"
+  >
+    Prettier
+  </a> after the codemod finishes for consistent formatting.
+</MessageStrip>
 
 ## Migrating from 0.13.x to 0.14.0
 
