@@ -21,8 +21,8 @@ jobs:
       - uses: preactjs/compressed-size-action@v2
         with:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
-          pattern: 'packages/**/lib/**/*.js'
-          exclude: 'packages/**/src/lib/**'
+          pattern: 'packages/**/dist/**/*.js'
+          exclude: 'packages/**/src/dist/**'
           compression: 'gzip'
 
   deploy-master-docs:

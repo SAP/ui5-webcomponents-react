@@ -2,7 +2,7 @@ import path from 'path';
 import fs from 'fs';
 import PATHS from '../../../config/paths.js';
 
-const LIB_BASE_PATH = path.resolve(PATHS.packages, 'main', 'src', 'lib');
+const LIB_BASE_PATH = path.resolve(PATHS.packages, 'main', 'src', 'dist');
 const INTERNAL_COMPONENTS = ['ScrollContext'];
 
 const allLibFiles = fs
@@ -21,7 +21,7 @@ console.log(allLibFiles);
 
 allLibFiles.forEach((file) => {
   fileContent += `
-import { ${file} } from './lib/${file}';`;
+import { ${file} } from './dist/${file}';`;
 });
 
 fileContent += `
