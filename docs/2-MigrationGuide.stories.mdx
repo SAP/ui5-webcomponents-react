@@ -96,7 +96,7 @@ becomes
 
 ```js
 import { createUseStyles } from 'react-jss';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
 
 const useStyles = createUseStyles((context) => ({
   myClass: {
@@ -123,7 +123,7 @@ getTheme(); // will return e.g. sap_fiori_3
 
 // rtl
 import { useRef } from 'react';
-import { useIsRTL } from '@ui5/webcomponents-react-base/lib/hooks';
+import { useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
 
 const MyComponent = () => {
   const ref = useRef();
@@ -151,13 +151,13 @@ The deprecated `useI18nText` hook has been removed and replaced by the `useI18nB
 Migration Path:
 
 ```js
-import { useI18nText } from '@ui5/webcomponents-react-base/lib/hooks';
+import { useI18nText } from '@ui5/webcomponents-react-base/dist/hooks';
 // ...
 const [pleaseWaitText, withParameters] = useI18nText('myApp', 'PLEASE_WAIT', ['CAROUSEL_DOT_TEXT', 5, 20]);
 
 // becomes
 
-import { useI18nBundle } from '@ui5/webcomponents-react-base/lib/hooks';
+import { useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
 // ...
 const i18nBundle = useI18nBundle('myApp');
 const pleaseWaitText = i18nBundle.getText('PLEASE_WAIT');
@@ -622,7 +622,7 @@ With these parameters you get all available CSS Variables as a static import. As
 ```JSX
 import React from 'react';
 import { createUseStyles } from 'react-jss';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 
 const styles = {
   container: {
