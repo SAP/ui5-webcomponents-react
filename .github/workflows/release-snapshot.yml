@@ -38,7 +38,7 @@ jobs:
             --no-push \
             --no-git-tag-version \
             --dist-tag dev \
-            --allow-branch *
+            --allow-branch ${{ github.ref }}
 
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
