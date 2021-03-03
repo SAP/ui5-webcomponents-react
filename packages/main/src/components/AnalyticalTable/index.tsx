@@ -277,6 +277,10 @@ export interface TableProps extends Omit<CommonProps, 'title'> {
    * Defines the subcomponent that should be displayed below each row.
    */
   renderRowSubComponent?: (row?: any) => ReactNode;
+  /**
+   * Defines whether a subcomponent should be rendered as expandable container or directly at the bottom of the row.
+   */
+  alwaysShowSubComponent?: boolean;
 
   // default components
   /**
@@ -338,7 +342,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     onLoadMore,
     extension,
     columnOrder,
-    renderRowSubComponent
+    renderRowSubComponent,
+    alwaysShowSubComponent
   } = props;
 
   const classes = useStyles();
@@ -401,7 +406,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
         highlightField,
         withNavigationHighlight,
         markNavigatedRow,
-        renderRowSubComponent
+        renderRowSubComponent,
+        alwaysShowSubComponent
       },
       ...reactTableOptions
     },
@@ -742,8 +748,11 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
                 visibleColumnsWidth={visibleColumnsWidth}
                 overscanCountHorizontal={overscanCountHorizontal}
                 renderRowSubComponent={renderRowSubComponent}
+                alwaysShowSubComponent={alwaysShowSubComponent}
                 markNavigatedRow={markNavigatedRow}
                 isRtl={isRtl}
+                subComponentsHeight={tableState.subComponentsHeight}
+                dispatch={dispatch}
               />
             </VirtualTableBodyContainer>
           )}
@@ -805,7 +814,8 @@ AnalyticalTable.defaultProps = {
   isTreeTable: false,
   alternateRowColor: false,
   overscanCountHorizontal: 5,
-  visibleRowCountMode: TableVisibleRowCountMode.FIXED
+  visibleRowCountMode: TableVisibleRowCountMode.FIXED,
+  alwaysShowSubComponent: false
 };
 
 export { AnalyticalTable };
