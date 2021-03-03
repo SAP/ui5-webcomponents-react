@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.14.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.14.2...v0.14.3) (2021-03-03)
+
+
+### Features
+
+* **AnalyticalTable:** add option to always show subcomponents below a row, fix race condition in subcomponent renderer ([#1377](https://github.com/SAP/ui5-webcomponents-react/issues/1377)) ([07a9ace](https://github.com/SAP/ui5-webcomponents-react/commit/07a9aceb8b44ded8dcf53b4a6fca8524cc7100a1))
+
+
+
+
+
 ## [0.14.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.14.1...v0.14.2) (2021-02-24)
 
 
