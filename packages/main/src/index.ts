@@ -118,6 +118,7 @@ import { SideNavigationSubItem } from './lib/SideNavigationSubItem';
 import { Size } from './lib/Size';
 import { Slider } from './lib/Slider';
 import { StandardListItem } from './lib/StandardListItem';
+import { StepInput } from './lib/StepInput';
 import { SuggestionItem } from './lib/SuggestionItem';
 import { Switch } from './lib/Switch';
 import { Tab } from './lib/Tab';
@@ -283,6 +284,7 @@ export {
   Size,
   Slider,
   StandardListItem,
+  StepInput,
   SuggestionItem,
   Switch,
   Tab,
