@@ -78,6 +78,41 @@ const MessageBoxComponent = () => {
 };
 ```
 
+## Accessing actions in the onClose callback
+
+To add some logic to the respective actions you can use `event.detail.action` inside `onClose` which contains the name of the clicked action.
+
+```jsx
+const MessageBoxComponent = () => {
+  const [open, setOpen] = useState(false);
+  const onButtonClick = () => {
+    setOpen(true);
+  };
+  const handleClose = (event) => {
+    if (event.detail.action === MessageBoxActions.OK) {
+      // do something on "Ok" button click
+    } else if (event.detail.action === 'Custom Action') {
+      // do something on "Custom Action" click
+    } else {
+      // do something on "Cancel" or "Abort" button click
+    }
+    setOpen(false);
+  };
+  return (
+    <>
+      <Button onClick={onButtonClick}>Open Messagebox</Button>
+      <MessageBox
+        open={open}
+        onClose={handleClose}
+        actions={[MessageBoxActions.OK, 'Custom Action', MessageBoxActions.CANCEL, MessageBoxActions.ABORT]}
+      >
+        Content
+      </MessageBox>
+    </>
+  );
+};
+```
+
 ## Using MessageBoxes inside other components
 
 `MessageBoxes` are often used within other components, when opened this could sometimes have unwanted side effects.
@@ -119,7 +154,10 @@ const MessageBoxComponent = () => {
       const onButtonClick = () => {
         setOpen(true);
       };
-      const handleClose = () => {
+      const handleClose = (e) => {
+        if (e.detail.action === 'Custom Action') {
+          // do something on "Custom Action" button click
+        }
         setOpen(false);
       };
       return (
@@ -129,7 +167,7 @@ const MessageBoxComponent = () => {
             {...args}
             open={open}
             onClose={handleClose}
-            actions={[MessageBoxActions.OK, 'A custom action', MessageBoxActions.CANCEL]}
+            actions={[MessageBoxActions.OK, 'Custom Action', MessageBoxActions.CANCEL]}
           />
         </>
       );

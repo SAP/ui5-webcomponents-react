@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.14.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.14.2...v0.14.3) (2021-03-03)
+
+
+### Bug Fixes
+
+* **cra-template-seed:** add InputElementsFormSupport import ([#1382](https://github.com/SAP/ui5-webcomponents-react/issues/1382)) ([a7b82c4](https://github.com/SAP/ui5-webcomponents-react/commit/a7b82c4ca7d04fe0b557dac9a7bfa4f41bcb7f75))
+
+
+
+
+
 # [0.14.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.14.0-rc.0...v0.14.0) (2021-02-18)
 
 

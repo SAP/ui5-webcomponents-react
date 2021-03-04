@@ -30,7 +30,7 @@ import { useRowDisableSelection } from '@ui5/webcomponents-react/dist/Analytical
   title="Data Display / AnalyticalTable"
   component={AnalyticalTable}
   args={{
-    data: generateData(1000),
+    data: generateData(500),
     columns: [
       {
         Header: 'Name',
@@ -362,7 +362,7 @@ For more details on this behavior you can double check the [react-table docs](ht
 ## Tree Table
 
 <Canvas>
-  <Story name="Tree Table" args={{ data: generateData(20, true), isTreeTable: true }}>
+  <Story name="Tree Table" args={{ data: generateData(15, true), isTreeTable: true }}>
     {(args) => <AnalyticalTable {...args} />}
   </Story>
 </Canvas>
@@ -471,12 +471,63 @@ const InfiniteScrollTable = (props) => {
 ## AnalyticalTable with subcomponents
 
 Adding custom subcomponents below table rows can be achieved by setting the `renderRowSubComponent` prop.
-The prop expects a function with an optional parameter containing the `row` instance, there you can control which row should display subcomponents.
+The prop expects a function with an optional parameter containing the `row` instance, there you can control which row should display subcomponents. If you want to display the subcomponent at the bottom of the row without an expandable container, you can set the `alwaysShowSubComponent` prop to `true`.
 
 **Note:** When `renderRowSubComponent` is set, `grouping` is disabled.
 
+<ArgsTable story="with subcomponents" />
+
 <Canvas>
-  <Story name="with subcomponents" args={{ data: generateData(100) }}>
+  <Story
+    name="with subcomponents"
+    args={{ data: generateData(50) }}
+    argTypes={{
+      columns: { table: { disable: true } },
+      data: { table: { disable: true } },
+      title: { table: { disable: true } },
+      extension: { table: { disable: true } },
+      minRows: { table: { disable: true } },
+      visibleRowCountMode: { table: { disable: true } },
+      visibleRows: { table: { disable: true } },
+      loading: { table: { disable: true } },
+      noDataText: { table: { disable: true } },
+      rowHeight: { table: { disable: true } },
+      alternateRowColor: { table: { disable: true } },
+      withRowHighlight: { table: { disable: true } },
+      highlightField: { table: { disable: true } },
+      filterable: { table: { disable: true } },
+      sortable: { table: { disable: true } },
+      groupable: { table: { disable: true } },
+      groupBy: { table: { disable: true } },
+      selectionBehavior: { table: { disable: true } },
+      selectionMode: { table: { disable: true } },
+      scaleWidthMode: { table: { disable: true } },
+      columnOrder: { table: { disable: true } },
+      infiniteScroll: { table: { disable: true } },
+      infiniteScrollThreshold: { table: { disable: true } },
+      onSort: { table: { disable: true } },
+      onGroup: { table: { disable: true } },
+      onRowSelected: { table: { disable: true } },
+      onRowExpandChange: { table: { disable: true } },
+      onColumnsReordered: { table: { disable: true } },
+      onLoadMore: { table: { disable: true } },
+      reactTableOptions: { table: { disable: true } },
+      tableHooks: { table: { disable: true } },
+      subRowsKey: { table: { disable: true } },
+      selectedRowIds: { table: { disable: true } },
+      isTreeTable: { table: { disable: true } },
+      overscanCountHorizontal: { table: { disable: true } },
+      overscanCount: { table: { disable: true } },
+      NoDataComponent: { table: { disable: true } },
+      LoadingComponent: { table: { disable: true } },
+      style: { table: { disable: true } },
+      className: { table: { disable: true } },
+      tooltip: { table: { disable: true } },
+      onRowClick: { table: { disable: true } },
+      withNavigationHighlight: { table: { disable: true } },
+      markNavigatedRow: { table: { disable: true } }
+    }}
+  >
     {(args) => {
       const renderRowSubComponent = (row) => {
         if (row.id === '0') {
@@ -520,7 +571,14 @@ The prop expects a function with an optional parameter containing the `row` inst
           </FlexBox>
         );
       };
-      return <AnalyticalTable data={args.data} columns={args.columns} renderRowSubComponent={renderRowSubComponent} />;
+      return (
+        <AnalyticalTable
+          data={args.data}
+          columns={args.columns}
+          renderRowSubComponent={renderRowSubComponent}
+          alwaysShowSubComponent={args.alwaysShowSubComponent}
+        />
+      );
     }}
   </Story>
 </Canvas>
@@ -571,7 +629,14 @@ const TableWithSubcomponents = (props) => {
       </FlexBox>
     );
   };
-  return <AnalyticalTable data={props.data} columns={props.columns} renderRowSubComponent={renderRowSubComponent} />;
+  return (
+    <AnalyticalTable
+      data={props.data}
+      columns={props.columns}
+      renderRowSubComponent={renderRowSubComponent}
+      alwaysShowSubComponent={false} //default value
+    />
+  );
 };
 ```
 
@@ -623,6 +688,7 @@ By adding the `visibleRowCountMode` prop and setting it to `TableVisibleRowCount
       overscanCountHorizontal: { table: { disable: true } },
       overscanCount: { table: { disable: true } },
       renderRowSubComponent: { table: { disable: true } },
+      alwaysShowSubComponent: { table: { disable: true } },
       NoDataComponent: { table: { disable: true } },
       LoadingComponent: { table: { disable: true } },
       style: { table: { disable: true } },
@@ -755,6 +821,7 @@ In the example below you can have a look at this behavior:
       overscanCountHorizontal: { table: { disable: true } },
       overscanCount: { table: { disable: true } },
       renderRowSubComponent: { table: { disable: true } },
+      alwaysShowSubComponent: { table: { disable: true } },
       NoDataComponent: { table: { disable: true } },
       LoadingComponent: { table: { disable: true } },
       style: { table: { disable: true } },
