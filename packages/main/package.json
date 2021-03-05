@@ -35,7 +35,7 @@
     "@babel/runtime": "7.13.9",
     "@ui5/webcomponents-react-base": "^0.14.3",
     "lodash": "^4.17.20",
-    "react-content-loader": "6.0.1",
+    "react-content-loader": "6.0.2",
     "react-jss": "10.5.1",
     "react-table": "7.6.3",
     "react-virtual": "2.4.0"
