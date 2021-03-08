@@ -38,7 +38,7 @@
     "react-content-loader": "6.0.2",
     "react-jss": "10.5.1",
     "react-table": "7.6.3",
-    "react-virtual": "2.4.0"
+    "react-virtual": "2.5.0"
   },
   "peerDependencies": {
     "@ui5/webcomponents": "1.0.0-rc.12",
