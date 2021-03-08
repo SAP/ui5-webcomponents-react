@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { Select } from '@ui5/webcomponents-react/lib/Select';
+import { Select } from '@ui5/webcomponents-react/dist/Select';
 import React from 'react';
 
 describe('Select', () => {

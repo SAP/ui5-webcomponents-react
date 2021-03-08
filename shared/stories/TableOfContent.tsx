@@ -1,5 +1,5 @@
 import { createUseStyles } from 'react-jss';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import React, { useEffect } from 'react';
 import tocbot from 'tocbot';
 

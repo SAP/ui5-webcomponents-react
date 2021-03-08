@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { Button } from '@ui5/webcomponents-react/lib/Button';
+import { Button } from '@ui5/webcomponents-react/dist/Button';
 import React from 'react';
 
 describe('Button', () => {

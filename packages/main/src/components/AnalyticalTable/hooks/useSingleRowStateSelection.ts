@@ -1,6 +1,6 @@
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
-import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
-import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
+import { TableSelectionBehavior } from '@ui5/webcomponents-react/dist/TableSelectionBehavior';
+import { TableSelectionMode } from '@ui5/webcomponents-react/dist/TableSelectionMode';
 
 const tagNamesWhichShouldNotSelectARow = new Set([
   'UI5-INPUT',

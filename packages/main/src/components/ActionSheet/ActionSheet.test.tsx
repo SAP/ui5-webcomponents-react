@@ -1,8 +1,8 @@
 import { fireEvent, render, screen } from '@shared/tests';
 import { createPassThroughPropsTest } from '@shared/tests/utils';
-import { ActionSheet } from '@ui5/webcomponents-react/lib/ActionSheet';
-import { Button } from '@ui5/webcomponents-react/lib/Button';
-import { Label } from '@ui5/webcomponents-react/lib/Label';
+import { ActionSheet } from '@ui5/webcomponents-react/dist/ActionSheet';
+import { Button } from '@ui5/webcomponents-react/dist/Button';
+import { Label } from '@ui5/webcomponents-react/dist/Label';
 import React, { createRef, RefObject } from 'react';
 import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
 

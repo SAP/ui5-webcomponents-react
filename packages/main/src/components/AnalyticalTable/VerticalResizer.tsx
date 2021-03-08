@@ -1,5 +1,5 @@
-import { useI18nBundle } from '@ui5/webcomponents-react-base/lib/hooks';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
+import { useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { DRAG_TO_RESIZE } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import React, { MutableRefObject, useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';

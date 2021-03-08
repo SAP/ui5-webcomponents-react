@@ -1,4 +1,4 @@
-import { TableScaleWidthMode } from '@ui5/webcomponents-react/lib/TableScaleWidthMode';
+import { TableScaleWidthMode } from '@ui5/webcomponents-react/dist/TableScaleWidthMode';
 import { DEFAULT_COLUMN_WIDTH } from '../defaults/Column';
 
 const ROW_SAMPLE_SIZE = 20;

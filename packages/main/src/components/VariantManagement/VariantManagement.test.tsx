@@ -1,6 +1,6 @@
 import { fireEvent, render, screen, waitFor, getByText } from '@shared/tests';
 import { createPassThroughPropsTest } from '@shared/tests/utils';
-import { VariantManagement } from '@ui5/webcomponents-react/lib/VariantManagement';
+import { VariantManagement } from '@ui5/webcomponents-react/dist/VariantManagement';
 import React from 'react';
 
 const variantItems = [

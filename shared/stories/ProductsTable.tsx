@@ -1,11 +1,11 @@
-import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
-import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
-import { Table } from '@ui5/webcomponents-react/lib/Table';
-import { Label } from '@ui5/webcomponents-react/lib/Label';
-import { TableCell } from '@ui5/webcomponents-react/lib/TableCell';
-import { TableColumn } from '@ui5/webcomponents-react/lib/TableColumn';
-import { TableRow } from '@ui5/webcomponents-react/lib/TableRow';
-import { Text } from '@ui5/webcomponents-react/lib/Text';
+import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
+import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
+import { Table } from '@ui5/webcomponents-react/dist/Table';
+import { Label } from '@ui5/webcomponents-react/dist/Label';
+import { TableCell } from '@ui5/webcomponents-react/dist/TableCell';
+import { TableColumn } from '@ui5/webcomponents-react/dist/TableColumn';
+import { TableRow } from '@ui5/webcomponents-react/dist/TableRow';
+import { Text } from '@ui5/webcomponents-react/dist/Text';
 import React from 'react';
 import { ProductCollection } from './products.json';
 

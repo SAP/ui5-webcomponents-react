@@ -1,7 +1,7 @@
-import { sapUiResponsiveContentPadding } from '@ui5/webcomponents-react-base/lib/spacing';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
+import { sapUiResponsiveContentPadding } from '@ui5/webcomponents-react-base/dist/spacing';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { DynamicPageCssVariables } from '../DynamicPage/DynamicPage.jss';
-import { isIE } from '@ui5/webcomponents-react-base/lib/Device';
+import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
 
 const padding = isIE() ? { padding: '0 2rem' } : { ...sapUiResponsiveContentPadding };
 

@@ -1,12 +1,12 @@
 import { createUseStyles } from 'react-jss';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
-import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
-import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
+import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
+import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
 import React, { FC, forwardRef, ReactNode, ReactNodeArray, Ref, useMemo } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { DynamicPageHeaderStyles } from './DynamicPageHeader.jss';
-import { isIE } from '@ui5/webcomponents-react-base/lib/Device';
+import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
 
 export interface DynamicPageHeaderProps extends CommonProps {
   children?: ReactNode | ReactNodeArray;

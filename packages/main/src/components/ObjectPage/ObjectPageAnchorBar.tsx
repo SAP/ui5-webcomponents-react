@@ -2,14 +2,14 @@ import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming';
 import '@ui5/webcomponents-icons/dist/pushpin-off';
 import '@ui5/webcomponents-icons/dist/slim-arrow-down';
 import '@ui5/webcomponents-icons/dist/slim-arrow-up';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
-import { Button } from '@ui5/webcomponents-react/lib/Button';
-import { List } from '@ui5/webcomponents-react/lib/List';
-import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
-import { Popover } from '@ui5/webcomponents-react/lib/Popover';
-import { TabContainer } from '@ui5/webcomponents-react/lib/TabContainer';
-import { ToggleButton } from '@ui5/webcomponents-react/lib/ToggleButton';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
+import { Button } from '@ui5/webcomponents-react/dist/Button';
+import { List } from '@ui5/webcomponents-react/dist/List';
+import { PlacementType } from '@ui5/webcomponents-react/dist/PlacementType';
+import { Popover } from '@ui5/webcomponents-react/dist/Popover';
+import { TabContainer } from '@ui5/webcomponents-react/dist/TabContainer';
+import { ToggleButton } from '@ui5/webcomponents-react/dist/ToggleButton';
 import React, { CSSProperties, forwardRef, ReactElement, RefObject, useCallback, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
@@ -18,7 +18,7 @@ import { StandardListItem } from '../../webComponents/StandardListItem';
 import { ObjectPageAnchorButton } from './ObjectPageAnchorButton';
 import { safeGetChildrenArray } from './ObjectPageUtils';
 import { createPortal } from 'react-dom';
-import { useI18nBundle } from '@ui5/webcomponents-react-base/lib/hooks';
+import { useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
 import {
   COLLAPSE_HEADER,
   EXPAND_HEADER,

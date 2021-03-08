@@ -14,7 +14,7 @@ npm install @ui5/webcomponents-react-base --save
 Concat multiple CSS Module into an instance of this class helper and place them into a react component.<br>
 Example:
 ```javascript
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import style from 'YOUR_STYLESHEET';
 
 const classes = new StyleClassHelper.of(style.text);

@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { Dialog } from '@ui5/webcomponents-react/lib/Dialog';
+import { Dialog } from '@ui5/webcomponents-react/dist/Dialog';
 import React from 'react';
 
 describe('Dialog', () => {

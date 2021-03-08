@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { TimelineItem } from '@ui5/webcomponents-react/lib/TimelineItem';
+import { TimelineItem } from '@ui5/webcomponents-react/dist/TimelineItem';
 import React from 'react';
 
 describe('TimelineItem', () => {

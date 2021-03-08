@@ -1,7 +1,7 @@
 import { render } from '@shared/tests';
 import { createPassThroughPropsTest } from '@shared/tests/utils';
-import { Loader } from '@ui5/webcomponents-react/lib/Loader';
-import { LoaderType } from '@ui5/webcomponents-react/lib/LoaderType';
+import { Loader } from '@ui5/webcomponents-react/dist/Loader';
+import { LoaderType } from '@ui5/webcomponents-react/dist/LoaderType';
 import React from 'react';
 
 describe('Loader', () => {

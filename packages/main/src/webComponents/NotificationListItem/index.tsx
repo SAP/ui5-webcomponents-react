@@ -1,5 +1,5 @@
-import { Priority } from '@ui5/webcomponents-react/lib/Priority';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { Priority } from '@ui5/webcomponents-react/dist/Priority';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
 import '@ui5/webcomponents-fiori/dist/NotificationListItem';
 import { FC, ReactNode } from 'react';
 

@@ -15,7 +15,7 @@ export const Import = () => {
       language="javascript"
       style={googlecode}
     >
-      {`import { ${moduleName} } from '@ui5/webcomponents-react${isChart ? '-charts' : ''}/lib/${moduleName}';`}
+      {`import { ${moduleName} } from '@ui5/webcomponents-react${isChart ? '-charts' : ''}';`}
     </SyntaxHighlighter>
   );
 };

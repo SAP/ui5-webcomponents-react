@@ -1,4 +1,4 @@
-packages/*/src/lib/
+packages/*/src/dist/
 
 # build results for base package
 packages/base/cjs

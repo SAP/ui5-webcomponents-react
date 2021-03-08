@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { Input } from '@ui5/webcomponents-react/lib/Input';
+import { Input } from '@ui5/webcomponents-react/dist/Input';
 import React from 'react';
 
 describe('Input', () => {

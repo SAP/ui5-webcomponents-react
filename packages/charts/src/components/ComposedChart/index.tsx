@@ -1,12 +1,12 @@
-import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
-import { useConsolidatedRef, useIsRTL, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/hooks';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
-import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/components/ChartContainer';
-import { ChartDataLabel } from '@ui5/webcomponents-react-charts/lib/components/ChartDataLabel';
-import { ComposedChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/components/ComposedChartPlaceholder';
-import { XAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/XAxisTicks';
-import { YAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/YAxisTicks';
-import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
+import { useConsolidatedRef, useIsRTL, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
+import { ChartContainer } from '@ui5/webcomponents-react-charts/dist/components/ChartContainer';
+import { ChartDataLabel } from '@ui5/webcomponents-react-charts/dist/components/ChartDataLabel';
+import { ComposedChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/components/ComposedChartPlaceholder';
+import { XAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/XAxisTicks';
+import { YAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/YAxisTicks';
+import { useLegendItemClick } from '@ui5/webcomponents-react-charts/dist/useLegendItemClick';
 import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import {
   Area,

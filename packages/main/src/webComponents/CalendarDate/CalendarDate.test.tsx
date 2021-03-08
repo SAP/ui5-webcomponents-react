@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { CalendarDate } from '@ui5/webcomponents-react/lib/CalendarDate';
+import { CalendarDate } from '@ui5/webcomponents-react/dist/CalendarDate';
 import React from 'react';
 
 describe('CalendarDate', () => {

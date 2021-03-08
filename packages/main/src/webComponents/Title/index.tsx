@@ -1,5 +1,5 @@
-import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
 import '@ui5/webcomponents/dist/Title';
 import { FC, ReactNode } from 'react';
 

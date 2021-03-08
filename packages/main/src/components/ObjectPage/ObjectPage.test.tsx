@@ -1,15 +1,15 @@
 import { fireEvent, render, screen } from '@shared/tests';
-import { Breadcrumbs } from '@ui5/webcomponents-react/lib/Breadcrumbs';
-import { Button } from '@ui5/webcomponents-react/lib/Button';
-import { Label } from '@ui5/webcomponents-react/lib/Label';
-import { Link } from '@ui5/webcomponents-react/lib/Link';
-import { ObjectPage } from '@ui5/webcomponents-react/lib/ObjectPage';
-import { ObjectPageMode } from '@ui5/webcomponents-react/lib/ObjectPageMode';
-import { ObjectPageSection } from '@ui5/webcomponents-react/lib/ObjectPageSection';
-import { ObjectPageSubSection } from '@ui5/webcomponents-react/lib/ObjectPageSubSection';
-import { Text } from '@ui5/webcomponents-react/lib/Text';
-import { Title } from '@ui5/webcomponents-react/lib/Title';
-import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
+import { Breadcrumbs } from '@ui5/webcomponents-react/dist/Breadcrumbs';
+import { Button } from '@ui5/webcomponents-react/dist/Button';
+import { Label } from '@ui5/webcomponents-react/dist/Label';
+import { Link } from '@ui5/webcomponents-react/dist/Link';
+import { ObjectPage } from '@ui5/webcomponents-react/dist/ObjectPage';
+import { ObjectPageMode } from '@ui5/webcomponents-react/dist/ObjectPageMode';
+import { ObjectPageSection } from '@ui5/webcomponents-react/dist/ObjectPageSection';
+import { ObjectPageSubSection } from '@ui5/webcomponents-react/dist/ObjectPageSubSection';
+import { Text } from '@ui5/webcomponents-react/dist/Text';
+import { Title } from '@ui5/webcomponents-react/dist/Title';
+import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
 import React from 'react';
 
 const headerContent = (

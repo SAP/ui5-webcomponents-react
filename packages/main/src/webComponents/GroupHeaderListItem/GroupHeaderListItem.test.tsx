@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { GroupHeaderListItem } from '@ui5/webcomponents-react/lib/GroupHeaderListItem';
+import { GroupHeaderListItem } from '@ui5/webcomponents-react/dist/GroupHeaderListItem';
 import React from 'react';
 
 describe('GroupHeaderListItem', () => {

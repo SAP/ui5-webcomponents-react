@@ -1,6 +1,6 @@
 import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 import { MyCustomElement } from './styling/MyCustomElement';
-import { ThemeProvider } from '@ui5/webcomponents-react/lib/ThemeProvider';
+import { ThemeProvider } from '@ui5/webcomponents-react/dist/ThemeProvider';
 
 <Meta title="Style Web Components" />
 
@@ -29,7 +29,7 @@ or in the [SAPUI5 Theming Parameters Toolbox](https://sapui5.hana.ondemand.com/t
 ## Reuse global style classes
 
 The `ThemeProvider` component is offering global css classes that can be reused in your applications code to help you to achieve a Fiori look-and-feel.
-All globally available style classes are tracked in the `GlobalStyleClasses` enum which can be imported from `import { GlobalStyleClasses } from "@ui5/webcomponents-react/lib/GlobalStyleClasses";`.
+All globally available style classes are tracked in the `GlobalStyleClasses` enum which can be imported from `import { GlobalStyleClasses } from "@ui5/webcomponents-react/dist/GlobalStyleClasses";`.
 
 | CSS Class      | Description                                                                                                       |
 | -------------- | ----------------------------------------------------------------------------------------------------------------- |
@@ -49,7 +49,7 @@ You can then create a custom component by following this recipe:
 ```jsx
 import React from 'react';
 import { createUseStyles } from 'react-jss';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 
 const styles = {
   container: {
@@ -62,7 +62,7 @@ const styles = {
   }
 };
 
-const useStyles = createUseStyles(styles, {name: "MyCustomElement"});
+const useStyles = createUseStyles(styles, { name: 'MyCustomElement' });
 
 const MyCustomElement = () => {
   const classes = useStyles();

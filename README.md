@@ -138,7 +138,7 @@ In order to use `@ui5/webcomponents-react` you have to wrap your application's r
 You will find this component most likely in `src/App.js`:
 
 ```jsx
-import { ThemeProvider } from '@ui5/webcomponents-react/lib/ThemeProvider';
+import { ThemeProvider } from '@ui5/webcomponents-react';
 ...
 render() {
   return (
@@ -155,7 +155,7 @@ Then you are ready to use `@ui5/webcomponents-react` and you can import the desi
 For example, to use the `Button` component you need to import it:
 
 ```jsx
-import { Button } from '@ui5/webcomponents-react/lib/Button'; // loads ui5-button wrapped in a ui5-webcomponents-react component
+import { Button } from '@ui5/webcomponents-react'; // loads ui5-button wrapped in a ui5-webcomponents-react component
 ```
 
 Then, you can use the Button in your app:

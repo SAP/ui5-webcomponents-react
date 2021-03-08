@@ -15,7 +15,7 @@
   "license": "Apache-2.0",
   "sideEffects": false,
   "scripts": {
-    "clean": "rimraf cjs components interfaces internal lib util index.esm.js index.d.ts config.d.ts hooks",
+    "clean": "rimraf cjs components interfaces internal lib util index.esm.js index.d.ts config.d.ts hooks dist",
     "build": "rollup -c rollup.config.mjs",
     "build:types": "tsc --declaration --emitDeclarationOnly --declarationDir . --removeComments false"
   },
@@ -33,5 +33,21 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "files": [
+    "cjs",
+    "components",
+    "dist",
+    "hooks",
+    "interfaces",
+    "internal",
+    "lib",
+    "CHANGELOG.md",
+    "index.cjs.js",
+    "index.d.ts",
+    "index.esm.js",
+    "LICENSE",
+    "NOTICE.txt",
+    "README.md"
+  ]
 }

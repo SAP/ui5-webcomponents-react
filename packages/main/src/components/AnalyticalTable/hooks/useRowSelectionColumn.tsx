@@ -1,8 +1,8 @@
-import { CssSizeVariablesNames } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
-import { CheckBox } from '@ui5/webcomponents-react/lib/CheckBox';
-import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
-import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
+import { CssSizeVariablesNames } from '@ui5/webcomponents-react-base/dist/CssSizeVariables';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
+import { CheckBox } from '@ui5/webcomponents-react/dist/CheckBox';
+import { TableSelectionBehavior } from '@ui5/webcomponents-react/dist/TableSelectionBehavior';
+import { TableSelectionMode } from '@ui5/webcomponents-react/dist/TableSelectionMode';
 import React, { useCallback } from 'react';
 
 const divStyle = { width: '100%', height: '100%', cursor: 'pointer' };

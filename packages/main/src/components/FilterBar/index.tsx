@@ -1,8 +1,8 @@
 import { createUseStyles } from 'react-jss';
-import { useI18nBundle } from '@ui5/webcomponents-react-base/lib/hooks';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
+import { useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import {
   CLEAR,
   FILTERS,
@@ -12,15 +12,15 @@ import {
   SHOW_FILTER_BAR
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { BusyIndicator } from '@ui5/webcomponents-react/lib/BusyIndicator';
-import { BusyIndicatorSize } from '@ui5/webcomponents-react/lib/BusyIndicatorSize';
-import { Button } from '@ui5/webcomponents-react/lib/Button';
-import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
-import { InputPropTypes } from '@ui5/webcomponents-react/lib/Input';
-import { Toolbar } from '@ui5/webcomponents-react/lib/Toolbar';
-import { ToolbarSeparator } from '@ui5/webcomponents-react/lib/ToolbarSeparator';
-import { ToolbarSpacer } from '@ui5/webcomponents-react/lib/ToolbarSpacer';
-import { ToolbarStyle } from '@ui5/webcomponents-react/lib/ToolbarStyle';
+import { BusyIndicator } from '@ui5/webcomponents-react/dist/BusyIndicator';
+import { BusyIndicatorSize } from '@ui5/webcomponents-react/dist/BusyIndicatorSize';
+import { Button } from '@ui5/webcomponents-react/dist/Button';
+import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
+import { InputPropTypes } from '@ui5/webcomponents-react/dist/Input';
+import { Toolbar } from '@ui5/webcomponents-react/dist/Toolbar';
+import { ToolbarSeparator } from '@ui5/webcomponents-react/dist/ToolbarSeparator';
+import { ToolbarSpacer } from '@ui5/webcomponents-react/dist/ToolbarSpacer';
+import { ToolbarStyle } from '@ui5/webcomponents-react/dist/ToolbarStyle';
 import React, {
   Children,
   cloneElement,

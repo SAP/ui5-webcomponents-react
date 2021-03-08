@@ -1,5 +1,5 @@
-import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
-import { VerticalAlign } from '@ui5/webcomponents-react/lib/VerticalAlign';
+import { TextAlign } from '@ui5/webcomponents-react/dist/TextAlign';
+import { VerticalAlign } from '@ui5/webcomponents-react/dist/VerticalAlign';
 import { ComponentType } from 'react';
 
 export interface AnalyticalTableColumnDefinition {

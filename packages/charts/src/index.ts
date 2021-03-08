@@ -1,18 +1,18 @@
 // Library Export
-import { BarChart } from './lib/BarChart';
-import { BarChartPlaceholder } from './lib/BarChartPlaceholder';
-import { ColumnChart } from './lib/ColumnChart';
-import { ColumnChartPlaceholder } from './lib/ColumnChartPlaceholder';
-import { DonutChart } from './lib/DonutChart';
-import { LineChart } from './lib/LineChart';
-import { LineChartPlaceholder } from './lib/LineChartPlaceholder';
-import { MicroBarChart } from './lib/MicroBarChart';
-import { PieChart } from './lib/PieChart';
-import { PieChartPlaceholder } from './lib/PieChartPlaceholder';
-import { RadarChart } from './lib/RadarChart';
-import { RadialChart } from './lib/RadialChart';
-import { ScatterChart } from './lib/ScatterChart';
-import { ScatterChartPlaceholder } from './lib/ScatterChartPlaceholder';
+import { BarChart } from './dist/BarChart';
+import { BarChartPlaceholder } from './dist/BarChartPlaceholder';
+import { ColumnChart } from './dist/ColumnChart';
+import { ColumnChartPlaceholder } from './dist/ColumnChartPlaceholder';
+import { DonutChart } from './dist/DonutChart';
+import { LineChart } from './dist/LineChart';
+import { LineChartPlaceholder } from './dist/LineChartPlaceholder';
+import { MicroBarChart } from './dist/MicroBarChart';
+import { PieChart } from './dist/PieChart';
+import { PieChartPlaceholder } from './dist/PieChartPlaceholder';
+import { RadarChart } from './dist/RadarChart';
+import { RadialChart } from './dist/RadialChart';
+import { ScatterChart } from './dist/ScatterChart';
+import { ScatterChartPlaceholder } from './dist/ScatterChartPlaceholder';
 
 export {
   ColumnChart,

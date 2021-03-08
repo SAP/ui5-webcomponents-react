@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { Carousel } from '@ui5/webcomponents-react/lib/Carousel';
+import { Carousel } from '@ui5/webcomponents-react/dist/Carousel';
 import React from 'react';
 
 describe('Carousel', () => {

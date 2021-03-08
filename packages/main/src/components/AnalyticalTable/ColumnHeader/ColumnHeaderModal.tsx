@@ -1,7 +1,7 @@
 import '@ui5/webcomponents-icons/dist/decline';
-import { useI18nBundle } from '@ui5/webcomponents-react-base/lib/hooks';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
+import { useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import {
   CLEAR_SORTING,
   GROUP,
@@ -9,15 +9,15 @@ import {
   SORT_DESCENDING,
   UNGROUP
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
-import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
-import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
-import { Icon } from '@ui5/webcomponents-react/lib/Icon';
-import { List } from '@ui5/webcomponents-react/lib/List';
-import { ListItemTypes } from '@ui5/webcomponents-react/lib/ListItemTypes';
-import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
-import { Popover } from '@ui5/webcomponents-react/lib/Popover';
-import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/lib/PopoverHorizontalAlign';
-import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
+import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
+import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
+import { Icon } from '@ui5/webcomponents-react/dist/Icon';
+import { List } from '@ui5/webcomponents-react/dist/List';
+import { ListItemTypes } from '@ui5/webcomponents-react/dist/ListItemTypes';
+import { PlacementType } from '@ui5/webcomponents-react/dist/PlacementType';
+import { Popover } from '@ui5/webcomponents-react/dist/Popover';
+import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/dist/PopoverHorizontalAlign';
+import { StandardListItem } from '@ui5/webcomponents-react/dist/StandardListItem';
 import React, { RefObject, useCallback, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';

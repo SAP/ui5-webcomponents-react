@@ -1,16 +1,16 @@
 import { createUseStyles } from 'react-jss';
-import { useIsomorphicLayoutEffect, useIsRTL } from '@ui5/webcomponents-react-base/lib/hooks';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
-import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
-import { GlobalStyleClasses } from '@ui5/webcomponents-react/lib/GlobalStyleClasses';
-import { TableScaleWidthMode } from '@ui5/webcomponents-react/lib/TableScaleWidthMode';
-import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
-import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
-import { TableVisibleRowCountMode } from '@ui5/webcomponents-react/lib/TableVisibleRowCountMode';
-import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import { useIsomorphicLayoutEffect, useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
+import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
+import { GlobalStyleClasses } from '@ui5/webcomponents-react/dist/GlobalStyleClasses';
+import { TableScaleWidthMode } from '@ui5/webcomponents-react/dist/TableScaleWidthMode';
+import { TableSelectionBehavior } from '@ui5/webcomponents-react/dist/TableSelectionBehavior';
+import { TableSelectionMode } from '@ui5/webcomponents-react/dist/TableSelectionMode';
+import { TableVisibleRowCountMode } from '@ui5/webcomponents-react/dist/TableVisibleRowCountMode';
+import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import debounce from 'lodash/debounce';
 import React, {
   ComponentType,

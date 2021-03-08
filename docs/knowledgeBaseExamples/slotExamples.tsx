@@ -1,5 +1,5 @@
-import { Bar } from '@ui5/webcomponents-react/lib/Bar';
-import { Button } from '@ui5/webcomponents-react/lib/Button';
+import { Bar } from '@ui5/webcomponents-react/dist/Bar';
+import { Button } from '@ui5/webcomponents-react/dist/Button';
 import React from 'react';
 
 const FaultyBarStart = () => {

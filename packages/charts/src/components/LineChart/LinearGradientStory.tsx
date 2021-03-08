@@ -1,4 +1,4 @@
-import { LineChart } from '@ui5/webcomponents-react-charts/lib/LineChart';
+import { LineChart } from '@ui5/webcomponents-react-charts/dist/LineChart';
 import React from 'react';
 import { bigDataSet } from '../../resources/DemoProps';
 

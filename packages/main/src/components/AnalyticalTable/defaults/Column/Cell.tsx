@@ -1,4 +1,4 @@
-import { Text } from '@ui5/webcomponents-react/lib/Text';
+import { Text } from '@ui5/webcomponents-react/dist/Text';
 import React from 'react';
 
 export const Cell = ({ cell: { value = '', isGrouped }, row }) => {

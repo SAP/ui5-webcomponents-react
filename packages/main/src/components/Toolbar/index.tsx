@@ -1,12 +1,12 @@
 import { createUseStyles } from 'react-jss';
-import { useConsolidatedRef, useI18nBundle } from '@ui5/webcomponents-react-base/lib/hooks';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
+import { useConsolidatedRef, useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { SHOW_MORE } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { ToolbarDesign } from '@ui5/webcomponents-react/lib/ToolbarDesign';
-import { ToolbarStyle } from '@ui5/webcomponents-react/lib/ToolbarStyle';
+import { ToolbarDesign } from '@ui5/webcomponents-react/dist/ToolbarDesign';
+import { ToolbarStyle } from '@ui5/webcomponents-react/dist/ToolbarStyle';
 import React, {
   cloneElement,
   createRef,

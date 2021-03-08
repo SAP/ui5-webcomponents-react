@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { Bar } from '@ui5/webcomponents-react/lib/Bar';
+import { Bar } from '@ui5/webcomponents-react/dist/Bar';
 import React from 'react';
 
 describe('Bar', () => {

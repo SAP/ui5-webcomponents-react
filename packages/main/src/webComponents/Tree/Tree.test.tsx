@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { Tree } from '@ui5/webcomponents-react/lib/Tree';
+import { Tree } from '@ui5/webcomponents-react/dist/Tree';
 import React from 'react';
 
 describe('Tree', () => {

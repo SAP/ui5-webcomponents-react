@@ -1,4 +1,4 @@
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
 import { RefObject, useEffect, useRef } from 'react';
 import { AnalyticalTableDomRef } from '../../../interfaces/AnalyticalTableDomRef';
 

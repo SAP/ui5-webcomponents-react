@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { MultiInput } from '@ui5/webcomponents-react/lib/MultiInput';
+import { MultiInput } from '@ui5/webcomponents-react/dist/MultiInput';
 import React from 'react';
 
 describe('MultiInput', () => {

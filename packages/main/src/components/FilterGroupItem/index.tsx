@@ -1,10 +1,10 @@
 import { createUseStyles } from 'react-jss';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
-import { BusyIndicator } from '@ui5/webcomponents-react/lib/BusyIndicator';
-import { BusyIndicatorSize } from '@ui5/webcomponents-react/lib/BusyIndicatorSize';
-import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
-import { Label } from '@ui5/webcomponents-react/lib/Label';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
+import { BusyIndicator } from '@ui5/webcomponents-react/dist/BusyIndicator';
+import { BusyIndicatorSize } from '@ui5/webcomponents-react/dist/BusyIndicatorSize';
+import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
+import { Label } from '@ui5/webcomponents-react/dist/Label';
 import React, { FC, forwardRef, ReactElement, RefObject } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import styles from './FilterGroupItem.jss';

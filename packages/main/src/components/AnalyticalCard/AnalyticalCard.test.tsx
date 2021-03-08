@@ -1,8 +1,8 @@
 import { render, screen } from '@shared/tests';
 import { createPassThroughPropsTest } from '@shared/tests/utils';
-import { AnalyticalCard } from '@ui5/webcomponents-react/lib/AnalyticalCard';
-import { AnalyticalCardHeader } from '@ui5/webcomponents-react/lib/AnalyticalCardHeader';
-import { Text } from '@ui5/webcomponents-react/lib/Text';
+import { AnalyticalCard } from '@ui5/webcomponents-react/dist/AnalyticalCard';
+import { AnalyticalCardHeader } from '@ui5/webcomponents-react/dist/AnalyticalCardHeader';
+import { Text } from '@ui5/webcomponents-react/dist/Text';
 import React from 'react';
 
 const Header = <AnalyticalCardHeader title="Header Title" />;

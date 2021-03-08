@@ -1,6 +1,6 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { RadialChart } from '@ui5/webcomponents-react-charts/lib/RadialChart';
+import { RadialChart } from '@ui5/webcomponents-react-charts/dist/RadialChart';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
@@ -36,5 +36,7 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 ### With Custom Color
 
 <Canvas>
-  <Story name="With Custom Color" args={{ color: '#f0ab00' }}>{(props) => <RadialChart {...props} />}</Story>
+  <Story name="With Custom Color" args={{ color: '#f0ab00' }}>
+    {(props) => <RadialChart {...props} />}
+  </Story>
 </Canvas>

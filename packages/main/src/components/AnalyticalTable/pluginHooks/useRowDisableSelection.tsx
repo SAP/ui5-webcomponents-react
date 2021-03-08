@@ -1,5 +1,5 @@
-import { CheckBox } from '@ui5/webcomponents-react/lib/CheckBox';
-import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
+import { CheckBox } from '@ui5/webcomponents-react/dist/CheckBox';
+import { TableSelectionMode } from '@ui5/webcomponents-react/dist/TableSelectionMode';
 import React from 'react';
 import { getBy } from '../util';
 

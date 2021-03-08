@@ -1,8 +1,8 @@
 import { fetchI18nBundle } from '@ui5/webcomponents-base/dist/i18nBundle';
-import { cssVariablesStyles } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
-import { initRangeSet, RANGESETS } from '@ui5/webcomponents-react-base/lib/Device';
-import { useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base/lib/hooks';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
+import { cssVariablesStyles } from '@ui5/webcomponents-react-base/dist/CssSizeVariables';
+import { initRangeSet, RANGESETS } from '@ui5/webcomponents-react-base/dist/Device';
+import { useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base/dist/hooks';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import React, { FC, ReactNode, useEffect } from 'react';
 import { createUseStyles, ThemeProvider as ReactJssThemeProvider } from 'react-jss';
 import { GlobalStyleClassesStyles } from './GlobalStyleClasses.jss';

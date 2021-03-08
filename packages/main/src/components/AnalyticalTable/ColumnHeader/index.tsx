@@ -3,9 +3,9 @@ import '@ui5/webcomponents-icons/dist/group-2';
 import '@ui5/webcomponents-icons/dist/sort-ascending';
 import '@ui5/webcomponents-icons/dist/sort-descending';
 import { createUseStyles } from 'react-jss';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
-import { Icon } from '@ui5/webcomponents-react/lib/Icon';
-import { Text } from '@ui5/webcomponents-react/lib/Text';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
+import { Icon } from '@ui5/webcomponents-react/dist/Icon';
+import { Text } from '@ui5/webcomponents-react/dist/Text';
 import React, {
   CSSProperties,
   DragEventHandler,

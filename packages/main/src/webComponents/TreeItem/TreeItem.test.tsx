@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { TreeItem } from '@ui5/webcomponents-react/lib/TreeItem';
+import { TreeItem } from '@ui5/webcomponents-react/dist/TreeItem';
 import React from 'react';
 
 describe('TreeItem', () => {

@@ -1,6 +1,6 @@
 import { render } from '@shared/tests';
 import { createPassThroughPropsTest } from '@shared/tests/utils';
-import { Text } from '@ui5/webcomponents-react/lib/Text';
+import { Text } from '@ui5/webcomponents-react/dist/Text';
 import React from 'react';
 
 describe('Text', () => {
