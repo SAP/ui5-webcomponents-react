@@ -74,7 +74,8 @@ const styles = {
   ...labelSpanClasses(),
   labelSpan12: {
     '--ui5wcr_form_content_span': 12,
-    '--ui5wcr_form_label_text_align': 'start'
+    '--ui5wcr_form_label_text_align': 'start',
+    '--ui5wcr_form_label_span': 12
   }
 };
 
