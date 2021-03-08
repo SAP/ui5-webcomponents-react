@@ -1,5 +1,5 @@
-import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
 import '@ui5/webcomponents-fiori/dist/NotificationAction';
 import { FC } from 'react';
 

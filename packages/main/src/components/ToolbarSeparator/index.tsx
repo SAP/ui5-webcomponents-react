@@ -1,8 +1,8 @@
-import { useI18nBundle } from '@ui5/webcomponents-react-base/lib/hooks';
+import { useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
 import { createUseStyles } from 'react-jss';
-import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
+import { CssSizeVariables } from '@ui5/webcomponents-react-base/dist/CssSizeVariables';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import React from 'react';
 import { SEPARATOR } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 

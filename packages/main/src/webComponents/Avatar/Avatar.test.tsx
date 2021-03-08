@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';
+import { Avatar } from '@ui5/webcomponents-react/dist/Avatar';
 import React from 'react';
 
 describe('Avatar', () => {

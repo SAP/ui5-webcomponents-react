@@ -1,5 +1,5 @@
-import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
-import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
+import { CssSizeVariables } from '@ui5/webcomponents-react-base/dist/CssSizeVariables';
 
 export const styles = {
   outerContainer: {

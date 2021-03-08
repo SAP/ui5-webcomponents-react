@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
+import { StandardListItem } from '@ui5/webcomponents-react/dist/StandardListItem';
 import React from 'react';
 
 describe('StandardListItem', () => {

@@ -1,11 +1,11 @@
-import { useIsRTL, usePassThroughHtmlProps, useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/hooks';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
-import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/components/ChartContainer';
-import { XAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/XAxisTicks';
-import { YAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/YAxisTicks';
-import { ScatterChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/ScatterChartPlaceholder';
-import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
+import { useIsRTL, usePassThroughHtmlProps, useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/hooks';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
+import { ChartContainer } from '@ui5/webcomponents-react-charts/dist/components/ChartContainer';
+import { XAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/XAxisTicks';
+import { YAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/YAxisTicks';
+import { ScatterChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/ScatterChartPlaceholder';
+import { useLegendItemClick } from '@ui5/webcomponents-react-charts/dist/useLegendItemClick';
 import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import {
   CartesianGrid,

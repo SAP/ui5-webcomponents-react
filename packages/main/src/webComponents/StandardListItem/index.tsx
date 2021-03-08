@@ -1,6 +1,6 @@
-import { ListItemTypes } from '@ui5/webcomponents-react/lib/ListItemTypes';
-import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { ListItemTypes } from '@ui5/webcomponents-react/dist/ListItemTypes';
+import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
 import '@ui5/webcomponents/dist/StandardListItem';
 import { FC, ReactNode } from 'react';
 

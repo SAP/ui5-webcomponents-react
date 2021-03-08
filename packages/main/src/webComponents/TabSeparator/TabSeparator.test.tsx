@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { TabSeparator } from '@ui5/webcomponents-react/lib/TabSeparator';
+import { TabSeparator } from '@ui5/webcomponents-react/dist/TabSeparator';
 import React from 'react';
 
 describe('TabSeparator', () => {

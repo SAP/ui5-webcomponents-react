@@ -1,5 +1,5 @@
-import { LinkDesign } from '@ui5/webcomponents-react/lib/LinkDesign';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { LinkDesign } from '@ui5/webcomponents-react/dist/LinkDesign';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
 import '@ui5/webcomponents/dist/Link';
 import { FC, ReactNode } from 'react';
 

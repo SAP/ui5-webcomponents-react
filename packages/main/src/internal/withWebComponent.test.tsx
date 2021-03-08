@@ -1,7 +1,7 @@
 import { render, fireEvent, screen } from '@shared/tests';
-import { Button } from '@ui5/webcomponents-react/lib/Button';
-import { Dialog } from '@ui5/webcomponents-react/lib/Dialog';
-import { Bar } from '@ui5/webcomponents-react/lib/Bar';
+import { Button } from '@ui5/webcomponents-react/dist/Button';
+import { Dialog } from '@ui5/webcomponents-react/dist/Dialog';
+import { Bar } from '@ui5/webcomponents-react/dist/Bar';
 import {
   setCustomElementsScopingSuffix,
   setCustomElementsScopingRules

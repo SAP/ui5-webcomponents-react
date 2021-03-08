@@ -1,4 +1,4 @@
-import { VerticalAlign } from '@ui5/webcomponents-react/lib/VerticalAlign';
+import { VerticalAlign } from '@ui5/webcomponents-react/dist/VerticalAlign';
 import { DefaultFilterComponent } from '../FilterComponent';
 import { Cell } from './Cell';
 import { Expandable } from './Expandable';

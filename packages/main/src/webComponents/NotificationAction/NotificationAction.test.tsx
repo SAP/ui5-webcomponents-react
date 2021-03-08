@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { NotificationAction } from '@ui5/webcomponents-react/lib/NotificationAction';
+import { NotificationAction } from '@ui5/webcomponents-react/dist/NotificationAction';
 import React from 'react';
 
 describe('NotificationAction', () => {

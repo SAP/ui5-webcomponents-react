@@ -1,11 +1,11 @@
-import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
-import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/components/ChartContainer';
-import { ChartDataLabel } from '@ui5/webcomponents-react-charts/lib/components/ChartDataLabel';
-import { PieChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/PieChartPlaceholder';
-import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
+import { ChartContainer } from '@ui5/webcomponents-react-charts/dist/components/ChartContainer';
+import { ChartDataLabel } from '@ui5/webcomponents-react-charts/dist/components/ChartDataLabel';
+import { PieChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/PieChartPlaceholder';
+import { useLegendItemClick } from '@ui5/webcomponents-react-charts/dist/useLegendItemClick';
 import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import {
   Legend,

@@ -1,5 +1,5 @@
-import { BarDesign } from '@ui5/webcomponents-react/lib/BarDesign';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { BarDesign } from '@ui5/webcomponents-react/dist/BarDesign';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
 import '@ui5/webcomponents-fiori/dist/Bar';
 import { FC, ReactNode } from 'react';
 

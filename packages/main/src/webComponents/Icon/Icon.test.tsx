@@ -1,6 +1,6 @@
 import { render } from '@shared/tests';
 import '@ui5/webcomponents-icons/dist/add';
-import { Icon } from '@ui5/webcomponents-react/lib/Icon';
+import { Icon } from '@ui5/webcomponents-react/dist/Icon';
 import React from 'react';
 
 describe('Icon', () => {

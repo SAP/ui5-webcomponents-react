@@ -1,6 +1,6 @@
 import { render } from '@shared/tests';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
-import { ThemeProvider } from '@ui5/webcomponents-react/lib/ThemeProvider';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
+import { ThemeProvider } from '@ui5/webcomponents-react/dist/ThemeProvider';
 import React from 'react';
 import { useTheme } from 'react-jss';
 

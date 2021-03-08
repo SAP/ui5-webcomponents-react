@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { UploadCollection } from '@ui5/webcomponents-react/lib/UploadCollection';
+import { UploadCollection } from '@ui5/webcomponents-react/dist/UploadCollection';
 import React from 'react';
 
 describe('UploadCollection', () => {

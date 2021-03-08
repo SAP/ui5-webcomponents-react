@@ -1,4 +1,4 @@
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 export const VirtualTableBodyContainer = (props) => {

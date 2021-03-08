@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { ResponsivePopover } from '@ui5/webcomponents-react/lib/ResponsivePopover';
+import { ResponsivePopover } from '@ui5/webcomponents-react/dist/ResponsivePopover';
 import React from 'react';
 
 describe('ResponsivePopover', () => {

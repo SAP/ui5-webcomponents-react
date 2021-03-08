@@ -1,6 +1,6 @@
 import { render } from '@shared/tests';
-import { ProductSwitch } from '@ui5/webcomponents-react/lib/ProductSwitch';
-import { ProductSwitchItem } from '@ui5/webcomponents-react/lib/ProductSwitchItem';
+import { ProductSwitch } from '@ui5/webcomponents-react/dist/ProductSwitch';
+import { ProductSwitchItem } from '@ui5/webcomponents-react/dist/ProductSwitchItem';
 import React from 'react';
 
 describe('ProductSwitch', () => {

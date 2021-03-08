@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { ScatterChart } from '@ui5/webcomponents-react-charts/lib/ScatterChart';
+import { ScatterChart } from '@ui5/webcomponents-react-charts/dist/ScatterChart';
 import * as React from 'react';
 import { scatterComplexDataSet } from '../../resources/DemoProps';
 

@@ -8,13 +8,14 @@ import { asyncCopyTo, highlightLog } from '../utils.js';
 import replace from '@rollup/plugin-replace';
 import glob from 'glob';
 import { terser } from 'rollup-plugin-terser';
+import dedent from 'dedent';
 
 process.env.BABEL_ENV = 'production';
 process.env.NODE_ENV = 'production';
 
 const rollupConfigFactory = (pkgName, externals = []) => {
   const PKG_BASE_PATH = path.resolve(PATHS.packages, pkgName);
-  const LIB_BASE_PATH = path.resolve(PKG_BASE_PATH, 'src', 'lib');
+  const LIB_BASE_PATH = path.resolve(PKG_BASE_PATH, 'src', 'dist');
 
   const allFilesAndFolders = glob.sync(`${LIB_BASE_PATH}/**/*`);
 
@@ -32,9 +33,9 @@ const rollupConfigFactory = (pkgName, externals = []) => {
     replace({
       exclude: 'node_modules/**',
       values: {
-        __DEV__: 'false',
-        'process.env.NODE_ENV': "'production'"
-      }
+        __DEV__: 'false'
+      },
+      preventAssignment: true
     })
   ];
 
@@ -105,6 +106,27 @@ const rollupConfigFactory = (pkgName, externals = []) => {
           file: path.resolve(
             PKG_BASE_PATH,
             'lib',
+            file.replace(`${LIB_BASE_PATH}${path.sep}`, '').replace(/\.ts$/, '.js')
+          ),
+          format: 'es',
+          sourcemap: true,
+          footer: () => {
+            const componentName = file.replace(`${LIB_BASE_PATH}${path.sep}`, '').replace(/\.ts$/, '');
+            return dedent`
+              if ( console && console.warn && ( process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test' ) ) {
+                console.warn(
+                  "Deprecation Notice - '${packageJson.name}': " +
+                  "Using \"import { ${componentName} } from '${packageJson.name}/lib/${componentName}';\" is deprecated and will be removed with version 0.15.0. " +
+                  "Please use \"import { ${componentName} } from '${packageJson.name}';\" instead. You can find more details in our Migration Guide: https://bit.ly/2MV7KWw "
+                );
+              }
+              `;
+          }
+        },
+        {
+          file: path.resolve(
+            PKG_BASE_PATH,
+            'dist',
             file.replace(`${LIB_BASE_PATH}${path.sep}`, '').replace(/\.ts$/, '.js')
           ),
           format: 'es',

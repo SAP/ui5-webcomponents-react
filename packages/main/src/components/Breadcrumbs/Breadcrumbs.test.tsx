@@ -1,8 +1,8 @@
 import { createPassThroughPropsTest } from '@shared/tests/utils';
 import { render } from '@shared/tests';
-import { Breadcrumbs } from '@ui5/webcomponents-react/lib/Breadcrumbs';
-import { BreadcrumbsSeparatorStyle } from '@ui5/webcomponents-react/lib/BreadcrumbsSeparatorStyle';
-import { Link } from '@ui5/webcomponents-react/lib/Link';
+import { Breadcrumbs } from '@ui5/webcomponents-react/dist/Breadcrumbs';
+import { BreadcrumbsSeparatorStyle } from '@ui5/webcomponents-react/dist/BreadcrumbsSeparatorStyle';
+import { Link } from '@ui5/webcomponents-react/dist/Link';
 import React from 'react';
 
 describe('Breadcrumbs', () => {

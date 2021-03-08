@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { DurationPicker } from '@ui5/webcomponents-react/lib/DurationPicker';
+import { DurationPicker } from '@ui5/webcomponents-react/dist/DurationPicker';
 import React from 'react';
 
 describe('DurationPicker', () => {

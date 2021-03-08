@@ -1,16 +1,16 @@
 import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming';
 import '@ui5/webcomponents-icons/dist/slim-arrow-down.js';
 import '@ui5/webcomponents-icons/dist/slim-arrow-up.js';
-import { useI18nBundle } from '@ui5/webcomponents-react-base/lib/hooks';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
+import { useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import {
   COLLAPSE_HEADER,
   EXPAND_HEADER,
   PIN_HEADER,
   UNPIN_HEADER
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
-import { Button } from '@ui5/webcomponents-react/lib/Button';
-import { ToggleButton } from '@ui5/webcomponents-react/lib/ToggleButton';
+import { Button } from '@ui5/webcomponents-react/dist/Button';
+import { ToggleButton } from '@ui5/webcomponents-react/dist/ToggleButton';
 import React, { CSSProperties, forwardRef, RefObject, useCallback } from 'react';
 import { createUseStyles } from 'react-jss';
 

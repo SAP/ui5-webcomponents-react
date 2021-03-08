@@ -1,4 +1,4 @@
-import { Title } from '@ui5/webcomponents-react/lib/Title';
+import { Title } from '@ui5/webcomponents-react/dist/Title';
 import React, { forwardRef, isValidElement, ReactNode, ReactText, Ref } from 'react';
 
 const styles = {

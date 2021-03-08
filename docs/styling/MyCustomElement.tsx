@@ -1,6 +1,6 @@
 import React from 'react';
 import { createUseStyles } from 'react-jss';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 
 const styles = {
   container: {
@@ -13,7 +13,7 @@ const styles = {
   }
 };
 
-const useStyles = createUseStyles(styles, {name: "MyCustomElement"});
+const useStyles = createUseStyles(styles, { name: 'MyCustomElement' });
 
 export const MyCustomElement = () => {
   const classes = useStyles();

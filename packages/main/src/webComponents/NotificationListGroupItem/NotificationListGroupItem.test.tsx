@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { NotificationListGroupItem } from '@ui5/webcomponents-react/lib/NotificationListGroupItem';
+import { NotificationListGroupItem } from '@ui5/webcomponents-react/dist/NotificationListGroupItem';
 import React from 'react';
 
 describe('NotificationListGroupItem', () => {

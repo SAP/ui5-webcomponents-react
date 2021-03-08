@@ -1,6 +1,6 @@
-import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';
-import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { CalendarType } from '@ui5/webcomponents-react/dist/CalendarType';
+import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
 import '@ui5/webcomponents/dist/DateRangePicker';
 import { FC, ReactNode } from 'react';
 

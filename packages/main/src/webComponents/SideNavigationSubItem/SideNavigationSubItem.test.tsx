@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { SideNavigationSubItem } from '@ui5/webcomponents-react/lib/SideNavigationSubItem';
+import { SideNavigationSubItem } from '@ui5/webcomponents-react/dist/SideNavigationSubItem';
 import React from 'react';
 
 describe('SideNavigationSubItem', () => {

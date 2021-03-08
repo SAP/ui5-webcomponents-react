@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { Wizard } from '@ui5/webcomponents-react/lib/Wizard';
+import { Wizard } from '@ui5/webcomponents-react/dist/Wizard';
 import React from 'react';
 
 describe('Wizard', () => {

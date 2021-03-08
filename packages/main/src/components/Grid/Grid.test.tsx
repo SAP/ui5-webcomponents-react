@@ -1,8 +1,8 @@
 import { render } from '@shared/tests';
 import { createPassThroughPropsTest } from '@shared/tests/utils';
-import { Grid } from '@ui5/webcomponents-react/lib/Grid';
+import { Grid } from '@ui5/webcomponents-react/dist/Grid';
 import React from 'react';
-import { GridPosition } from '@ui5/webcomponents-react/lib/GridPosition';
+import { GridPosition } from '@ui5/webcomponents-react/dist/GridPosition';
 
 const GridContent = () => (
   <>

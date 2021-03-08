@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { Card } from '@ui5/webcomponents-react/lib/Card';
+import { Card } from '@ui5/webcomponents-react/dist/Card';
 import React from 'react';
 
 describe('Card', () => {

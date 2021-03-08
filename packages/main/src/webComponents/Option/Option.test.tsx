@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { Option } from '@ui5/webcomponents-react/lib/Option';
+import { Option } from '@ui5/webcomponents-react/dist/Option';
 import React from 'react';
 
 describe('Option', () => {

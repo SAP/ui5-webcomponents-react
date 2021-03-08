@@ -1,7 +1,7 @@
 import { render } from '@shared/tests';
-import { NotificationListItem } from '@ui5/webcomponents-react/lib/NotificationListItem';
-import { NotificationAction } from '@ui5/webcomponents-react/lib/NotificationAction';
-import { Priority } from '@ui5/webcomponents-react/lib/Priority';
+import { NotificationListItem } from '@ui5/webcomponents-react/dist/NotificationListItem';
+import { NotificationAction } from '@ui5/webcomponents-react/dist/NotificationAction';
+import { Priority } from '@ui5/webcomponents-react/dist/Priority';
 import React from 'react';
 
 describe('NotificationListItem', () => {

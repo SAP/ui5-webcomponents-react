@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { ComboBoxItem } from '@ui5/webcomponents-react/lib/ComboBoxItem';
+import { ComboBoxItem } from '@ui5/webcomponents-react/dist/ComboBoxItem';
 import React from 'react';
 
 describe('ComboBoxItem', () => {

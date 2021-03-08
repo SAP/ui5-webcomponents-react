@@ -1,5 +1,5 @@
-import { PageBackgroundDesign } from '@ui5/webcomponents-react/lib/PageBackgroundDesign';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { PageBackgroundDesign } from '@ui5/webcomponents-react/dist/PageBackgroundDesign';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
 import '@ui5/webcomponents-fiori/dist/Page';
 import { FC, ReactNode } from 'react';
 

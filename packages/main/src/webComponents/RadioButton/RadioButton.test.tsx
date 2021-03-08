@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { RadioButton } from '@ui5/webcomponents-react/lib/RadioButton';
+import { RadioButton } from '@ui5/webcomponents-react/dist/RadioButton';
 import React from 'react';
 
 describe('RadioButton', () => {

@@ -1,6 +1,6 @@
-import { sapUiResponsiveContentPadding, sapUiTinyMarginBeginEnd } from '@ui5/webcomponents-react-base/lib/spacing';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
-import { isIE } from '@ui5/webcomponents-react-base/lib/Device';
+import { sapUiResponsiveContentPadding, sapUiTinyMarginBeginEnd } from '@ui5/webcomponents-react-base/dist/spacing';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
+import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
 
 const padding = isIE() ? { padding: '0 2rem' } : { ...sapUiResponsiveContentPadding };
 

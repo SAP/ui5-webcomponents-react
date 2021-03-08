@@ -1,4 +1,4 @@
-import { Input } from '@ui5/webcomponents-react/lib/Input';
+import { Input } from '@ui5/webcomponents-react/dist/Input';
 import React, { FC, useCallback } from 'react';
 
 export const DefaultFilterComponent: FC<any> = ({ column }) => {

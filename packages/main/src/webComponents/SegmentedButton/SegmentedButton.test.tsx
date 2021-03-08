@@ -1,6 +1,6 @@
 import { render } from '@shared/tests';
-import { Button } from '@ui5/webcomponents-react/lib/Button';
-import { SegmentedButton } from '@ui5/webcomponents-react/lib/SegmentedButton';
+import { Button } from '@ui5/webcomponents-react/dist/Button';
+import { SegmentedButton } from '@ui5/webcomponents-react/dist/SegmentedButton';
 import React from 'react';
 
 describe('SegmentedButton', () => {

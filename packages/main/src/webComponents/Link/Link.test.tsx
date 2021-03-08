@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { Link } from '@ui5/webcomponents-react/lib/Link';
+import { Link } from '@ui5/webcomponents-react/dist/Link';
 import React from 'react';
 
 describe('Link', () => {

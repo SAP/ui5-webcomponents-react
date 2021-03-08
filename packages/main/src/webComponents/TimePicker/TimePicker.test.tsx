@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { TimePicker } from '@ui5/webcomponents-react/lib/TimePicker';
+import { TimePicker } from '@ui5/webcomponents-react/dist/TimePicker';
 import React from 'react';
 
 describe('TimePicker', () => {

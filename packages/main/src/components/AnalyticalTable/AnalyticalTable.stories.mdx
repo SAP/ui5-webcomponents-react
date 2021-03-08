@@ -1,30 +1,30 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
-import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
+import { AnalyticalTable } from '@ui5/webcomponents-react/dist/AnalyticalTable';
 import { createSelectArgTypes } from '../../../../../shared/stories/createSelectArgTypes';
-import { TableScaleWidthMode } from '@ui5/webcomponents-react/lib/TableScaleWidthMode';
-import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
-import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
-import { TableVisibleRowCountMode } from '@ui5/webcomponents-react/lib/TableVisibleRowCountMode';
-import { SegmentedButton } from '@ui5/webcomponents-react/lib/SegmentedButton';
-import { ToggleButton } from '@ui5/webcomponents-react/lib/ToggleButton';
+import { TableScaleWidthMode } from '@ui5/webcomponents-react/dist/TableScaleWidthMode';
+import { TableSelectionBehavior } from '@ui5/webcomponents-react/dist/TableSelectionBehavior';
+import { TableSelectionMode } from '@ui5/webcomponents-react/dist/TableSelectionMode';
+import { TableVisibleRowCountMode } from '@ui5/webcomponents-react/dist/TableVisibleRowCountMode';
+import { SegmentedButton } from '@ui5/webcomponents-react/dist/SegmentedButton';
+import { ToggleButton } from '@ui5/webcomponents-react/dist/ToggleButton';
 import generateData from './demo/generateData';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import '@ui5/webcomponents-icons/dist/delete';
 import '@ui5/webcomponents-icons/dist/edit';
 import '@ui5/webcomponents-icons/dist/settings';
-import { Button } from '@ui5/webcomponents-react/lib/Button';
-import { Badge } from '@ui5/webcomponents-react/lib/Badge';
-import { Text } from '@ui5/webcomponents-react/lib/Text';
-import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
-import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
-import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
-import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJustifyContent';
-import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
+import { Button } from '@ui5/webcomponents-react/dist/Button';
+import { Badge } from '@ui5/webcomponents-react/dist/Badge';
+import { Text } from '@ui5/webcomponents-react/dist/Text';
+import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
+import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
+import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
+import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';
+import { TextAlign } from '@ui5/webcomponents-react/dist/TextAlign';
 import { DefaultLoadingComponent } from './defaults/LoadingComponent';
 import { DefaultNoDataComponent } from './defaults/NoDataComponent';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { useRowDisableSelection } from '@ui5/webcomponents-react/lib/AnalyticalTableHooks';
+import { useRowDisableSelection } from '@ui5/webcomponents-react/dist/AnalyticalTableHooks';
 
 <Meta
   title="Data Display / AnalyticalTable"
@@ -195,7 +195,7 @@ Plugin hooks are adding features to the `AnalyticalTable` that are meant for spe
 To add a plugin hook you first need to `import` the corresponding hook and then add it to the `tableHooks` array.
 
 ```js
-import { useRowDisableSelection } from '@ui5/webcomponents-react/lib/AnalyticalTableHooks';
+import { useRowDisableSelection } from '@ui5/webcomponents-react/dist/AnalyticalTableHooks';
 ```
 
 ```jsx

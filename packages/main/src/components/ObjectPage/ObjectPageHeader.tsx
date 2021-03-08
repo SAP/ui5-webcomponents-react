@@ -1,15 +1,15 @@
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
-import { isIE } from '@ui5/webcomponents-react-base/lib/Device';
-import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
-import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
-import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
-import { Label } from '@ui5/webcomponents-react/lib/Label';
-import { Title } from '@ui5/webcomponents-react/lib/Title';
-import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
-import { Toolbar } from '@ui5/webcomponents-react/lib/Toolbar';
-import { ToolbarDesign } from '@ui5/webcomponents-react/lib/ToolbarDesign';
-import { ToolbarSpacer } from '@ui5/webcomponents-react/lib/ToolbarSpacer';
-import { ToolbarStyle } from '@ui5/webcomponents-react/lib/ToolbarStyle';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
+import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
+import { AvatarSize } from '@ui5/webcomponents-react/dist/AvatarSize';
+import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
+import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
+import { Label } from '@ui5/webcomponents-react/dist/Label';
+import { Title } from '@ui5/webcomponents-react/dist/Title';
+import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
+import { Toolbar } from '@ui5/webcomponents-react/dist/Toolbar';
+import { ToolbarDesign } from '@ui5/webcomponents-react/dist/ToolbarDesign';
+import { ToolbarSpacer } from '@ui5/webcomponents-react/dist/ToolbarSpacer';
+import { ToolbarStyle } from '@ui5/webcomponents-react/dist/ToolbarStyle';
 import React, { CSSProperties, forwardRef, ReactElement, ReactNode, RefObject, useMemo } from 'react';
 import { safeGetChildrenArray } from './ObjectPageUtils';
 
