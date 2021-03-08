@@ -117,7 +117,7 @@ const rollupConfigFactory = (pkgName, externals = []) => {
                 console.warn(
                   "Deprecation Notice - '${packageJson.name}': " +
                   "Using \"import { ${componentName} } from '${packageJson.name}/lib/${componentName}';\" is deprecated and will be removed with version 0.15.0. " +
-                  "Please use \"import { ${componentName} } from '${packageJson.name}';\" instead."
+                  "Please use \"import { ${componentName} } from '${packageJson.name}';\" instead. You can find more details in our Migration Guide: https://bit.ly/2MV7KWw "
                 );
               }
               `;
