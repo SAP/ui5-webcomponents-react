@@ -20,7 +20,7 @@
     "build:types": "tsc --declaration --emitDeclarationOnly --declarationDir . --removeComments false"
   },
   "dependencies": {
-    "@babel/runtime": "7.13.9",
+    "@babel/runtime": "7.13.10",
     "lodash": "^4.17.20",
     "react-content-loader": "6.0.2",
     "recharts": "2.0.8"
