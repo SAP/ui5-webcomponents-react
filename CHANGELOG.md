@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.14.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.14.3...v0.14.4) (2021-03-09)
+
+
+### Bug Fixes
+
+* **ComboBox:** Add missing onSelectionChange event prop ([#1399](https://github.com/SAP/ui5-webcomponents-react/issues/1399)) ([23da8ac](https://github.com/SAP/ui5-webcomponents-react/commit/23da8ac3607206f2a391c780e134dc79861182ed))
+* **Form:** prevent flickering when used within dialog ([#1390](https://github.com/SAP/ui5-webcomponents-react/issues/1390)) ([4501b89](https://github.com/SAP/ui5-webcomponents-react/commit/4501b89fb17432cc50186165b3341853e6ce9790))
+
+
+
+
+
 ## [0.14.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.14.2...v0.14.3) (2021-03-03)
 
 
