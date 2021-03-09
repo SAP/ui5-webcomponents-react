@@ -98,6 +98,10 @@ export interface ComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
    * **Note:** filterValue property is updated, input is changed.
    */
   onInput?: (event: CustomEvent) => void;
+  /**
+   * Fired when the selection has changed via user interaction
+   */
+  onSelectionChange?: (event: CustomEvent<{ item: ReactNode }>) => void;
 }
 
 /**
@@ -110,7 +114,7 @@ const ComboBox: FC<ComboBoxPropTypes> = withWebComponent<ComboBoxPropTypes>(
   ['filter', 'filterValue', 'placeholder', 'value', 'valueState'],
   ['disabled', 'loading', 'readonly', 'required'],
   ['icon', 'valueStateMessage'],
-  ['change', 'input']
+  ['change', 'input', 'selection-change']
 );
 
 ComboBox.displayName = 'ComboBox';

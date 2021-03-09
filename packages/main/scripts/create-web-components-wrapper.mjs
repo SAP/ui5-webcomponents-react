@@ -27,7 +27,7 @@ const prettierConfig = {
 };
 
 const WEB_COMPONENTS_ROOT_DIR = path.join(PATHS.packages, 'main', 'src', 'webComponents');
-const LIB_DIR = path.join(PATHS.packages, 'main', 'src', 'lib');
+const DIST_DIR = path.join(PATHS.packages, 'main', 'src', 'dist');
 
 const KNOWN_EVENTS = new Set(['click', 'input', 'submit', 'change', 'select', 'drop']);
 
@@ -1028,7 +1028,7 @@ resolvedWebComponents.forEach((componentSpec) => {
     export type { ${componentSpec.module}PropTypes };`,
       prettierConfig
     );
-    fs.writeFileSync(path.join(LIB_DIR, `${componentSpec.module}.ts`), libContent);
+    fs.writeFileSync(path.join(DIST_DIR, `${componentSpec.module}.ts`), libContent);
 
     // create test
     if (!fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.test.tsx`))) {
