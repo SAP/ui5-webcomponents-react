@@ -181,7 +181,7 @@ UI5 Web Components are supported by all major modern browsers, including their m
 
 ## Known Issues
 
-Please look at our [GitHub Issues](https://github.com/SAP/ui5-webcomponents-react/issues) .
+Please look at our [GitHub Issues](https://github.com/SAP/ui5-webcomponents-react/issues).
 
 <!-- *********************************************************************** -->
 
