@@ -458,9 +458,9 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
 
   const updateRowsCount = useCallback(() => {
     if (visibleRowCountMode === TableVisibleRowCountMode.AUTO && analyticalTableRef.current?.parentElement) {
-      const tableYPosition = analyticalTableRef.current?.offsetTop;
+      const tableYPosition = analyticalTableRef.current?.offsetTop ?? 0;
       const parentHeight = analyticalTableRef.current?.parentElement?.getBoundingClientRect().height;
-      const tableHeight = tableYPosition && parentHeight ? parentHeight - tableYPosition : 0;
+      const tableHeight = parentHeight ? parentHeight - tableYPosition : 0;
       const rowCount = Math.floor((tableHeight - extensionsHeight) / popInRowHeight);
       dispatch({
         type: 'VISIBLE_ROWS',
