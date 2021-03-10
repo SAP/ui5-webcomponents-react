@@ -649,7 +649,7 @@ By adding the `visibleRowCountMode` prop and setting it to `TableVisibleRowCount
 <Canvas>
   <Story
     name="Adjust number of rows to container height"
-    args={{ visibleRowCountMode: TableVisibleRowCountMode.AUTO, containerHeight: 240 }}
+    args={{ visibleRowCountMode: TableVisibleRowCountMode.AUTO, containerHeight: 250 }}
     argTypes={{
       columns: { table: { disable: true } },
       data: { table: { disable: true } },
@@ -695,21 +695,26 @@ By adding the `visibleRowCountMode` prop and setting it to `TableVisibleRowCount
       className: { table: { disable: true } },
       tooltip: { table: { disable: true } },
       onRowClick: { table: { disable: true } },
+      withNavigationHighlight: { table: { disable: true } },
+      markNavigatedRow: { table: { disable: true } },
       containerHeight: {
-        control: { type: 'range', min: 0, max: 3000, step: 30 },
+        control: {
+          type: 'radio',
+          options: [250, 500, 750, 1000]
+        },
         description:
-          'Drag the slider to change the height of the surrounding container of the table (in `px`). <br /> __Note__: This is not an actual prop of the table.'
+          'Select an option to change the height of the surrounding container of the table (in `px`). <br /> __Note__: This is not an actual prop of the table.'
       }
     }}
   >
     {(args) => {
       return (
-        <div style={{ height: args.containerHeight ? `${args.containerHeight}px` : 0 }}>
+        <div style={{ height: `${args.containerHeight}px` }}>
           <AnalyticalTable
             data={args.data}
             columns={args.columns}
             visibleRowCountMode={args.visibleRowCountMode}
-            title={`Current height: ${args.containerHeight}px - Change the height by dragging the slider`}
+            title={`Current height: ${args.containerHeight}px - Change the height in the table above`}
           />
         </div>
       );
@@ -836,7 +841,7 @@ In the example below you can have a look at this behavior:
           options: [400, 600, 800, 'auto']
         },
         description:
-          'Select an option to change the surrounding container of the table (in `px`). <br /> __Note__: This is not an actual prop of the table.'
+          'Select an option to change the width of the surrounding container of the table (in `px`). <br /> __Note__: This is not an actual prop of the table.'
       }
     }}
   >

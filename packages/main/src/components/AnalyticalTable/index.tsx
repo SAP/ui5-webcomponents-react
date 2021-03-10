@@ -458,15 +458,22 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
 
   const updateRowsCount = useCallback(() => {
     if (visibleRowCountMode === TableVisibleRowCountMode.AUTO && analyticalTableRef.current?.parentElement) {
-      const rowCount = Math.floor(
-        ((analyticalTableRef.current?.parentElement?.clientHeight ?? 0) - extensionsHeight) / popInRowHeight
-      );
+      const tableYPosition = analyticalTableRef.current?.offsetTop;
+      const parentHeight = analyticalTableRef.current?.parentElement?.getBoundingClientRect().height;
+      const tableHeight = tableYPosition && parentHeight ? parentHeight - tableYPosition : 0;
+      const rowCount = Math.floor((tableHeight - extensionsHeight) / popInRowHeight);
       dispatch({
         type: 'VISIBLE_ROWS',
         payload: { visibleRows: rowCount }
       });
     }
-  }, [analyticalTableRef.current?.parentElement?.clientHeight, extensionsHeight, popInRowHeight, visibleRowCountMode]);
+  }, [
+    analyticalTableRef.current?.parentElement?.getBoundingClientRect().height,
+    analyticalTableRef.current?.getBoundingClientRect().y,
+    extensionsHeight,
+    popInRowHeight,
+    visibleRowCountMode
+  ]);
 
   useEffect(() => {
     const tableWidthObserver = new ResizeObserver(debounce(updateTableClientWidth, 500));
