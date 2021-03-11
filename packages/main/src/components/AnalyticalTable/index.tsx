@@ -241,8 +241,11 @@ export interface TableProps extends Omit<CommonProps, 'title'> {
   onColumnsReordered?: (e?: CustomEvent<{ columnsNewOrder: string[]; column: unknown }>) => void;
   /**
    * Fired when the `infiniteScrollThreshold` is reached.
+   *
+   * @param {number} e.detail.rowCount - The number of rows
+   * @param {number} e.detail.totalRowCount - The total number of rows, including sub-rows
    */
-  onLoadMore?: (e?: { detail: { rowCount: number } }) => void;
+  onLoadMore?: (e?: { detail: { rowCount: number; totalRowCount: number } }) => void;
   /**
    * Additional options which will be passed to [react-table´s useTable hook](https://react-table.tanstack.com/docs/api/useTable#table-options)
    */
