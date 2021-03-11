@@ -619,6 +619,11 @@ describe('AnalyticalTable', () => {
         configurable: true
       }
     });
+    window.HTMLElement.prototype.getBoundingClientRect = function () {
+      return {
+        height: 100
+      };
+    };
     const { asFragment, rerender } = render(
       <AnalyticalTable
         data={[...data, ...moreData]}
@@ -637,6 +642,11 @@ describe('AnalyticalTable', () => {
         configurable: true
       }
     });
+    window.HTMLElement.prototype.getBoundingClientRect = function () {
+      return {
+        height: 1000
+      };
+    };
 
     rerender(
       <AnalyticalTable
