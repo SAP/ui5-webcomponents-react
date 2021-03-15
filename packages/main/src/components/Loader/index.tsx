@@ -32,7 +32,7 @@ const useStyles = createUseStyles(styles, { name: 'Loader' });
  */
 const Loader: FC<LoaderProps> = forwardRef((props: LoaderProps, ref: RefObject<HTMLDivElement>) => {
   const { className, type, progress, tooltip, slot, style, delay } = props;
-  const classes = useStyles(props);
+  const classes = useStyles();
   const [isVisible, setIsVisible] = useState(delay === 0);
 
   const loaderClasses = StyleClassHelper.of(classes.loader);
