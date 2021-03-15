@@ -63,7 +63,7 @@ export interface ToolbarProptypes extends Omit<CommonProps, 'onClick'> {
  */
 const Toolbar: FC<ToolbarProptypes> = forwardRef((props: ToolbarProptypes, ref: Ref<HTMLDivElement>) => {
   const { children, toolbarStyle, design, active, style, tooltip, className, onClick, slot } = props;
-  const classes = useStyles(styles);
+  const classes = useStyles();
   const outerContainer: RefObject<HTMLDivElement> = useConsolidatedRef(ref);
   const controlMetaData = useRef([]);
   const [lastVisibleIndex, setLastVisibleIndex] = useState<number>(null);

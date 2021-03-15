@@ -18,7 +18,7 @@ const useStyles = createUseStyles(styles, { name: 'ToolbarSeparator' });
 
 const ToolbarSeparator = (props) => {
   const { style, className } = props;
-  const classes = useStyles(styles);
+  const classes = useStyles();
   const separatorClasses = StyleClassHelper.of(classes.separator);
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   if (className) {
