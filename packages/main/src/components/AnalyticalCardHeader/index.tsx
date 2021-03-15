@@ -107,7 +107,7 @@ export const AnalyticalCardHeader: FC<AnalyticalCardHeaderPropTypes> = forwardRe
       arrowIndicator,
       style
     } = props;
-    const classes = useStyles(props);
+    const classes = useStyles();
     const onClick = useCallback(
       (e) => {
         if (onHeaderPress) {

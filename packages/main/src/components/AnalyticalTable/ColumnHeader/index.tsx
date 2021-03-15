@@ -86,7 +86,7 @@ const styles = {
 const useStyles = createUseStyles(styles, { name: 'TableColumnHeader' });
 
 export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) => {
-  const classes = useStyles(props);
+  const classes = useStyles();
   const {
     id,
     children,
