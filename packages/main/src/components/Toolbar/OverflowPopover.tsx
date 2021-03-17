@@ -21,6 +21,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
 
   const handleToggleButtonClick = useCallback(
     (e) => {
+      e.stopPropagation();
       if (popoverRef.current) {
         if (!pressed) {
           popoverRef.current.openBy(e.target);
