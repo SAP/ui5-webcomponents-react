@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.14.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.14.4...v0.14.5) (2021-03-17)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** add totalRowCount to event.detail param of onLoadMore event, fix rowCount number for expandable rows ([#1405](https://github.com/SAP/ui5-webcomponents-react/issues/1405)) ([2dc3c76](https://github.com/SAP/ui5-webcomponents-react/commit/2dc3c76780fb3f601cd564ff4c7a723b5bd5564e))
+* **MessageBox:** allow duplicate action names ([#1415](https://github.com/SAP/ui5-webcomponents-react/issues/1415)) ([03bcc06](https://github.com/SAP/ui5-webcomponents-react/commit/03bcc06084c9286cf45ac78f2d0bd42744504a7c))
+* **Toolbar:** prevent event propagation of the overflow button ([#1416](https://github.com/SAP/ui5-webcomponents-react/issues/1416)) ([f421e5b](https://github.com/SAP/ui5-webcomponents-react/commit/f421e5b8f19f5468cc8303057f7b6508ed335b37))
+
+
+### Features
+
+* **AnalyticalTable:** add offset-top support to visibleRowCountMode "Auto" ([#1402](https://github.com/SAP/ui5-webcomponents-react/issues/1402)) ([30bfa7f](https://github.com/SAP/ui5-webcomponents-react/commit/30bfa7fcfe08ebcf134cd92abfeb52468de038bd))
+
+
+
+
+
 ## [0.14.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.14.3...v0.14.4) (2021-03-09)
 
 
