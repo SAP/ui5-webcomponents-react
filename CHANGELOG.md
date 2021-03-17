@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.129.7](https://github.com/SAP/ui5-webcomponents-react/compare/v0.129.6...v0.129.7) (2021-03-17)
+
+
+### Bug Fixes
+
+* **MessageBox:** allow duplicate action names ([#1415](https://github.com/SAP/ui5-webcomponents-react/issues/1415)) ([7b29602](https://github.com/SAP/ui5-webcomponents-react/commit/7b296025844be844bcf687965e1a67851faaecda))
+* **Toolbar:** prevent event propagation of the overflow button ([#1416](https://github.com/SAP/ui5-webcomponents-react/issues/1416)) ([81cd24f](https://github.com/SAP/ui5-webcomponents-react/commit/81cd24f9a93c06573e04caf57078993d4d32c0e8))
+
+
+
+
+
 ## [0.129.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.129.5...v0.129.6) (2021-03-04)
 
 
