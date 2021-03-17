@@ -5,6 +5,7 @@ import { useRowDisableSelection } from '@ui5/webcomponents-react/dist/Analytical
 import { TableSelectionBehavior } from '@ui5/webcomponents-react/dist/TableSelectionBehavior';
 import { TableSelectionMode } from '@ui5/webcomponents-react/dist/TableSelectionMode';
 import { TableVisibleRowCountMode } from '@ui5/webcomponents-react/dist/TableVisibleRowCountMode';
+import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import React, { useRef } from 'react';
 
@@ -262,6 +263,38 @@ describe('AnalyticalTable', () => {
 
     // test desc function inside the popover element
     fireEvent.click(screen.getAllByText('Sort Descending')[0], { bubbles: false });
+
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  test('render custom Cell & Header', () => {
+    const callbackCellBtn = jest.fn();
+    const callbackHeaderBtn = jest.fn();
+    const columns = [
+      {
+        Header: 'Name',
+        accessor: 'name'
+      },
+      {
+        Header: 'Age',
+        accessor: 'age',
+        Cell: () => <Button onClick={callbackCellBtn}>Custom Cell Button</Button>
+      },
+      {
+        Header: () => <Button onClick={callbackHeaderBtn}>Custom Header Button</Button>,
+        accessor: 'friend.name'
+      }
+    ];
+    const { getAllByText, getByText, asFragment } = render(<AnalyticalTable data={data} columns={columns} />);
+
+    const allCellButtons = getAllByText('Custom Cell Button');
+
+    expect(allCellButtons).toHaveLength(2); // one button for each row
+
+    fireEvent.click(allCellButtons[0]);
+    fireEvent.click(getByText('Custom Header Button'));
+    expect(callbackCellBtn).toBeCalledTimes(1);
+    expect(callbackHeaderBtn).toBeCalledTimes(1);
 
     expect(asFragment()).toMatchSnapshot();
   });
