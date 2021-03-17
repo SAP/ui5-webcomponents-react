@@ -205,7 +205,7 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
           {getActions().map((action, index) => {
             return (
               <Button
-                key={action}
+                key={`${action}-${index}`}
                 design={index === 0 ? ButtonDesign.Emphasized : ButtonDesign.Transparent}
                 onClick={handleOnClose}
                 data-action={action}
