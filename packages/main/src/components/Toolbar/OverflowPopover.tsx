@@ -19,16 +19,20 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
   const popoverRef = useRef<Ui5PopoverDomRef>();
   const [pressed, setPressed] = useState(false);
 
-  const handleToggleButtonClick = useCallback((e) => {
-    if (popoverRef.current) {
-      if (!pressed) {
-        popoverRef.current.openBy(e.target);
-        setPressed(true);
-      } else {
-        popoverRef.current.close();
+  const handleToggleButtonClick = useCallback(
+    (e) => {
+      e.stopPropagation();
+      if (popoverRef.current) {
+        if (!pressed) {
+          popoverRef.current.openBy(e.target);
+          setPressed(true);
+        } else {
+          popoverRef.current.close();
+        }
       }
-    }
-  }, []);
+    },
+    [pressed]
+  );
 
   useEffect(() => {
     return () => {
