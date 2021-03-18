@@ -68,6 +68,7 @@ import { Label } from './lib/Label';
 import { Link } from './lib/Link';
 import { LinkDesign } from './lib/LinkDesign';
 import { List } from './lib/List';
+import { ListGrowingMode } from './lib/ListGrowingMode';
 import { ListItemTypes } from './lib/ListItemTypes';
 import { ListMode } from './lib/ListMode';
 import { ListSeparators } from './lib/ListSeparators';
@@ -234,6 +235,7 @@ export {
   Link,
   LinkDesign,
   List,
+  ListGrowingMode,
   ListItemTypes,
   ListMode,
   ListSeparators,

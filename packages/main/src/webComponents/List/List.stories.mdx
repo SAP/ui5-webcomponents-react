@@ -3,6 +3,7 @@ import { List } from '@ui5/webcomponents-react/lib/List';
 import { ProgressIndicator } from '@ui5/webcomponents-react/lib/ProgressIndicator';
 import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJustifyContent';
 import { ListItemTypes } from '@ui5/webcomponents-react/lib/ListItemTypes';
+import { ListGrowingMode } from '@ui5/webcomponents-react/lib/ListGrowingMode';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
@@ -22,7 +23,7 @@ import '@ui5/webcomponents-icons/dist/employee.js';
   component={List}
   subcomponents={{ StandardListItem, CustomListItem, GroupHeaderListItem }}
   argTypes={{
-    ...createSelectArgTypes({ mode: ListMode, separators: ListSeparators }),
+    ...createSelectArgTypes({ mode: ListMode, separators: ListSeparators, growing: ListGrowingMode }),
     ...DocsCommonProps,
     children: { control: { disable: true } },
     header: { control: { disable: true } }
@@ -31,6 +32,7 @@ import '@ui5/webcomponents-icons/dist/employee.js';
     headerText: 'List with StandardListItems',
     mode: ListMode.None,
     separators: ListSeparators.All,
+    growing: ListGrowingMode.None,
     style: {},
     className: '',
     tooltip: '',
@@ -115,7 +117,7 @@ list item, providing the most common use cases such as <code>text</code>, <code>
       busy: { table: { disable: true } },
       footerText: { table: { disable: true } },
       headerText: { table: { disable: true } },
-      infiniteScroll: { table: { disable: true } },
+      growing: { table: { disable: true } },
       inset: { table: { disable: true } },
       mode: { table: { disable: true } },
       noDataText: { table: { disable: true } },
