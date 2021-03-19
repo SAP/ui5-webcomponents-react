@@ -675,12 +675,52 @@ const createWebComponentTest = (name) => {
   );
 };
 
-const createWebComponentDemo = (componentSpec, componentProps, description) => {
+const createWebComponentDemo = (componentSpec, componentProps, description, methods) => {
   const componentName = componentSpec.module;
   const enumImports = [];
   const selectArgTypes = [];
   const args = [];
   const customArgTypes = [];
+  const generateMethodsTable = (methods) => {
+    if (methods.length === 0) {
+      return '';
+    }
+    let methodsTable = dedent`
+  ## Methods
+  This component exposes public methods. You can invoke them directly on the instance of the component. E.g. by using React Refs.
+  
+  |Name|Parameters|Description|
+  |---|---|---|`;
+
+    methods.forEach((item) => {
+      const generateParameterString = (params) => {
+        if (!params) {
+          return '';
+        }
+        let paramsString = '';
+        params.forEach((param) => {
+          let paramString = paramsString.length > 0 ? `<br/> __${param.name}__` : `__${param.name}__`;
+          if (param.type || param.description) {
+            let typeDescriptionWrapper = '<ul>';
+            if (param.type) {
+              typeDescriptionWrapper = typeDescriptionWrapper.concat(`<li>type: ${param.type}</li>`);
+            }
+            if (param.description) {
+              typeDescriptionWrapper = typeDescriptionWrapper.concat(`<li>description: ${param.description}</li>`);
+            }
+            typeDescriptionWrapper = typeDescriptionWrapper.concat('</ul>');
+            paramString = paramString.concat(typeDescriptionWrapper);
+          }
+          paramsString = paramsString.concat(paramString);
+        });
+        return paramsString;
+      };
+      methodsTable = methodsTable.concat(
+        `\n|__${item.name}__|${generateParameterString(item.parameters)}|${item.description}|`
+      );
+    });
+    return methodsTable;
+  };
 
   console.warn(`Story created for ${componentName}!\nPlease remember to add the story to an existing group.`);
 
@@ -768,7 +808,7 @@ const createWebComponentDemo = (componentSpec, componentProps, description) => {
     import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
     import { DocsHeader } from '@shared/stories/DocsHeader';
     import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
-
+    
     <Meta
      title="Components / ${componentName}"
      component={${componentName}}
@@ -803,6 +843,8 @@ const createWebComponentDemo = (componentSpec, componentProps, description) => {
     
     <ArgsTable story="." />
     
+    ${generateMethodsTable(methods)}
+    
     `,
     { ...prettierConfigRaw, parser: 'mdx' }
   )}\n${formattedDescription}`;
@@ -836,7 +878,6 @@ const recursivePropertyResolver = (componentSpec, { properties, slots, events })
     return { properties, slots, events };
   }
 
-  console.log(componentSpec.extends);
   const parentComponent = allWebComponents.find((c) => {
     if (componentSpec.extends.includes('.')) {
       return c.name === componentSpec.extends;
@@ -986,6 +1027,22 @@ resolvedWebComponents.forEach((componentSpec) => {
       `----------------------\n${componentSpec.module} has been excluded from component generation. To include it again remove the component name from the "EXCLUDE_LIST".\n----------------------`
     );
   }
+  const mergeMethods = () => {
+    if (componentSpec.extends) {
+      let publicMethodsNames = [];
+      const publicMethods =
+        componentSpec?.methods.filter((item) => {
+          publicMethodsNames.push(item.name);
+          return item.visibility === 'public';
+        }) ?? [];
+      const parentMethods =
+        allWebComponents
+          .find((item) => item.module === componentSpec.extends)
+          ?.methods.filter((item) => item.visibility === 'public') ?? [];
+      const parentMethodsMerged = parentMethods.filter((item) => !publicMethodsNames.includes(item.name));
+      return [...parentMethodsMerged, ...publicMethods];
+    }
+  };
 
   if (
     (CREATE_SINGLE_COMPONENT === componentSpec.module || !CREATE_SINGLE_COMPONENT) &&
@@ -1039,11 +1096,15 @@ resolvedWebComponents.forEach((componentSpec) => {
     // create demo
     if (
       CREATE_SINGLE_COMPONENT === componentSpec.module ||
-      (!fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.tsx`)) &&
-        !fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`)) &&
+      (!fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`)) &&
         !COMPONENTS_WITHOUT_DEMOS.has(componentSpec.module))
     ) {
-      const webComponentDemo = createWebComponentDemo(componentSpec, allComponentProperties, description);
+      const webComponentDemo = createWebComponentDemo(
+        componentSpec,
+        allComponentProperties,
+        description,
+        mergeMethods()
+      );
       fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`), webComponentDemo);
     }
   }

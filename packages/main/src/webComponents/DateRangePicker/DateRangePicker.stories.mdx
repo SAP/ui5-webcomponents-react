@@ -48,6 +48,18 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <ArgsTable story="." />
 
+## Methods
+This component exposes public methods. You can invoke them directly on the instance of the component. E.g. by using React Refs.
+
+|Name|Parameters|Description|
+|---|---|---|
+|__closePicker__||Closes the picker.|
+|__formatValue__|__oDate__<ul><li>type: object</li><li>description: A Java Script date object to be formatted as string</li></ul>|Formats a Java Script date object into a string representing a locale date according to the <code>formatPattern</code> property of the DatePicker instance|
+|__isInValidRange__|__value__<ul><li>type: object</li></ul>|Checks if a date is in range between minimum and maximum date.|
+|__isOpen__||Checks if the picker is open.|
+|__isValid__|__value__<ul><li>type: string</li><li>description: A value to be tested against the current date format</li></ul>|Checks if a value is valid against the current date format of the DatePicker.|
+|__openPicker__||Opens the picker.|
+
 ## Usage
 
 The user can enter a date by: Using the calendar that opens in a popup or typing it in directly in the input field (not available for mobile devices).
