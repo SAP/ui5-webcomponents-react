@@ -11,8 +11,6 @@ export interface CalendarDatePropTypes extends WithWebComponentPropTypes {
 
 /**
  * The `CalendarDate` component defines a calendar date to be used inside `Calendar`
- *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/CalendarDate" target="_blank">UI5 Web Components Playground</a>
  */
 const CalendarDate: FC<CalendarDatePropTypes> = withWebComponent<CalendarDatePropTypes>(
   'ui5-date',
