@@ -76,6 +76,7 @@
     "eslint-plugin-react": "^7.21.3",
     "eslint-plugin-react-hooks": "^4.1.2",
     "glob": "^7.1.6",
+    "handlebars": "^4.7.7",
     "husky": "^4.2.5",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.4.2",

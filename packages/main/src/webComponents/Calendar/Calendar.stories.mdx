@@ -28,8 +28,7 @@ import '@ui5/webcomponents-localization/dist/features/calendar/Persian.js';
     className: '',
     tooltip: '',
     slot: '',
-    ref: null,
-    selectedDate: new Date(new Date().getTime() - 24 * 60 * 60 * 1000 * 5).toISOString().split('T')[0] // 5 days before today
+    ref: null
   }}
 />
 
@@ -41,12 +40,8 @@ import '@ui5/webcomponents-localization/dist/features/calendar/Persian.js';
 
 <Canvas>
   <Story name="Default">
-    {({ selectedDate, ...props }) => {
-      return (
-        <Calendar {...props}>
-          <CalendarDate value={selectedDate} />
-        </Calendar>
-      );
+    {({ ...props }) => {
+      return <Calendar {...props} />;
     }}
   </Story>
 </Canvas>
@@ -90,3 +85,40 @@ When a picker is showed and focused the user can use the following keyboard shor
 
 - \[PAGEUP\] - Navigate to the previous year range
 - \[PAGEDOWN\] - Navigate the next year range
+
+# More Examples
+
+## Calendar with CalendarDate component
+
+<Canvas>
+  <Story
+    name="with CalendarDate"
+    args={{ value: new Date(new Date().getTime() - 24 * 60 * 60 * 1000 * 5).toISOString().split('T')[0] }}
+    argTypes={{
+      hideWeekNumbers: { table: { disable: true } },
+      selectionMode: { table: { disable: true } },
+      formatPattern: { table: { disable: true } },
+      maxDate: { table: { disable: true } },
+      minDate: { table: { disable: true } },
+      primaryCalendarType: { table: { disable: true } },
+      children: { table: { disable: true } },
+      onSelectedDatesChange: { table: { disable: true } },
+      style: { table: { disable: true } },
+      className: { table: { disable: true } },
+      tooltip: { table: { disable: true } },
+      value: {
+        description: `The date formatted according to the \`formatPattern\` property of the \`Calendar\` that hosts the \`CalendarDate\``
+      }
+    }}
+  >
+    {({ ...props }) => {
+      return (
+        <Calendar>
+          <CalendarDate value={props.value} />
+        </Calendar>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<ArgsTable story="with CalendarDate" />

@@ -8,6 +8,16 @@ import path from 'path';
 import PATHS from '../../../config/paths.js';
 import fs from 'fs';
 import TurndownService from 'turndown';
+import Handlebars from 'handlebars';
+
+Handlebars.registerPartial(
+  'methodParameters',
+  fs.readFileSync(path.join(PATHS.root, 'scripts', 'web-component-wrappers', 'MethodParameters.hbs')).toString()
+);
+
+const methodsTemplate = Handlebars.compile(
+  fs.readFileSync(path.join(PATHS.root, 'scripts', 'web-component-wrappers', 'Methods.hbs')).toString()
+);
 
 const turndownService = new TurndownService({
   headingStyle: 'atx',
@@ -768,7 +778,7 @@ const createWebComponentDemo = (componentSpec, componentProps, description) => {
     import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
     import { DocsHeader } from '@shared/stories/DocsHeader';
     import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
-
+    
     <Meta
      title="Components / ${componentName}"
      component={${componentName}}
@@ -803,12 +813,14 @@ const createWebComponentDemo = (componentSpec, componentProps, description) => {
     
     <ArgsTable story="." />
     
+    ${methodsTemplate({ methods: componentSpec.methods?.filter((item) => item.visibility === 'public') ?? [] })}
+    
     `,
     { ...prettierConfigRaw, parser: 'mdx' }
   )}\n${formattedDescription}`;
 };
 
-const assignComponentPropertiesToMaps = (componentSpec, { properties, slots, events }) => {
+const assignComponentPropertiesToMaps = (componentSpec, { properties, slots, events, methods }) => {
   (componentSpec.properties || []).forEach((prop) => {
     if (!properties.has(prop.name)) {
       properties.set(prop.name, prop);
@@ -824,19 +836,23 @@ const assignComponentPropertiesToMaps = (componentSpec, { properties, slots, eve
       events.set(event.name, event);
     }
   });
+  (componentSpec.methods || []).forEach((method) => {
+    if (!methods.has(method.name)) {
+      methods.set(method.name, method);
+    }
+  });
 };
 
-const recursivePropertyResolver = (componentSpec, { properties, slots, events }) => {
-  assignComponentPropertiesToMaps(componentSpec, { properties, slots, events });
+const recursivePropertyResolver = (componentSpec, { properties, slots, events, methods }) => {
+  assignComponentPropertiesToMaps(componentSpec, { properties, slots, events, methods });
   if (
     componentSpec.extends === 'UI5Element' ||
     componentSpec.extends === 'sap.ui.webcomponents.base.UI5Element' ||
     componentSpec.extends === 'TabBase' // not longer existing but wrong docs, treat as UI5 Element
   ) {
-    return { properties, slots, events };
+    return { properties, slots, events, methods };
   }
 
-  console.log(componentSpec.extends);
   const parentComponent = allWebComponents.find((c) => {
     if (componentSpec.extends.includes('.')) {
       return c.name === componentSpec.extends;
@@ -847,7 +863,8 @@ const recursivePropertyResolver = (componentSpec, { properties, slots, events })
     return recursivePropertyResolver(parentComponent, {
       properties,
       slots,
-      events
+      events,
+      methods
     });
   }
   throw new Error('Unknown Parent Component!');
@@ -862,11 +879,13 @@ const resolveInheritedAttributes = (componentSpec) => {
   const properties = new Map();
   const slots = new Map();
   const events = new Map();
-  recursivePropertyResolver(componentSpec, { properties, slots, events });
+  const methods = new Map();
+  recursivePropertyResolver(componentSpec, { properties, slots, events, methods });
 
   componentSpec.properties = Array.from(properties.values());
   componentSpec.slots = Array.from(slots.values());
   componentSpec.events = Array.from(events.values());
+  componentSpec.methods = Array.from(methods.values());
 
   return componentSpec;
 };
@@ -1039,8 +1058,7 @@ resolvedWebComponents.forEach((componentSpec) => {
     // create demo
     if (
       CREATE_SINGLE_COMPONENT === componentSpec.module ||
-      (!fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.tsx`)) &&
-        !fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`)) &&
+      (!fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`)) &&
         !COMPONENTS_WITHOUT_DEMOS.has(componentSpec.module))
     ) {
       const webComponentDemo = createWebComponentDemo(componentSpec, allComponentProperties, description);
