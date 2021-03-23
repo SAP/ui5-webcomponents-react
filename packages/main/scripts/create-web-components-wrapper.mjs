@@ -8,6 +8,16 @@ import path from 'path';
 import PATHS from '../../../config/paths.js';
 import fs from 'fs';
 import TurndownService from 'turndown';
+import Handlebars from 'handlebars';
+
+Handlebars.registerPartial(
+  'methodParameters',
+  fs.readFileSync(path.join(PATHS.root, 'scripts', 'web-component-wrappers', 'MethodParameters.hbs')).toString()
+);
+
+const methodsTemplate = Handlebars.compile(
+  fs.readFileSync(path.join(PATHS.root, 'scripts', 'web-component-wrappers', 'Methods.hbs')).toString()
+);
 
 const turndownService = new TurndownService({
   headingStyle: 'atx',
@@ -675,52 +685,12 @@ const createWebComponentTest = (name) => {
   );
 };
 
-const createWebComponentDemo = (componentSpec, componentProps, description, methods) => {
+const createWebComponentDemo = (componentSpec, componentProps, description) => {
   const componentName = componentSpec.module;
   const enumImports = [];
   const selectArgTypes = [];
   const args = [];
   const customArgTypes = [];
-  const generateMethodsTable = (methods) => {
-    if (methods.length === 0) {
-      return '';
-    }
-    let methodsTable = dedent`
-  ## Methods
-  This component exposes public methods. You can invoke them directly on the instance of the component. E.g. by using React Refs.
-  
-  |Name|Parameters|Description|
-  |---|---|---|`;
-
-    methods.forEach((item) => {
-      const generateParameterString = (params) => {
-        if (!params) {
-          return '';
-        }
-        let paramsString = '';
-        params.forEach((param) => {
-          let paramString = paramsString.length > 0 ? `<br/> __${param.name}__` : `__${param.name}__`;
-          if (param.type || param.description) {
-            let typeDescriptionWrapper = '<ul>';
-            if (param.type) {
-              typeDescriptionWrapper = typeDescriptionWrapper.concat(`<li>type: ${param.type}</li>`);
-            }
-            if (param.description) {
-              typeDescriptionWrapper = typeDescriptionWrapper.concat(`<li>description: ${param.description}</li>`);
-            }
-            typeDescriptionWrapper = typeDescriptionWrapper.concat('</ul>');
-            paramString = paramString.concat(typeDescriptionWrapper);
-          }
-          paramsString = paramsString.concat(paramString);
-        });
-        return paramsString;
-      };
-      methodsTable = methodsTable.concat(
-        `\n|__${item.name}__|${generateParameterString(item.parameters)}|${item.description}|`
-      );
-    });
-    return methodsTable;
-  };
 
   console.warn(`Story created for ${componentName}!\nPlease remember to add the story to an existing group.`);
 
@@ -843,14 +813,14 @@ const createWebComponentDemo = (componentSpec, componentProps, description, meth
     
     <ArgsTable story="." />
     
-    ${generateMethodsTable(methods)}
+    ${methodsTemplate({ methods: componentSpec.methods?.filter((item) => item.visibility === 'public') ?? [] })}
     
     `,
     { ...prettierConfigRaw, parser: 'mdx' }
   )}\n${formattedDescription}`;
 };
 
-const assignComponentPropertiesToMaps = (componentSpec, { properties, slots, events }) => {
+const assignComponentPropertiesToMaps = (componentSpec, { properties, slots, events, methods }) => {
   (componentSpec.properties || []).forEach((prop) => {
     if (!properties.has(prop.name)) {
       properties.set(prop.name, prop);
@@ -866,16 +836,21 @@ const assignComponentPropertiesToMaps = (componentSpec, { properties, slots, eve
       events.set(event.name, event);
     }
   });
+  (componentSpec.methods || []).forEach((method) => {
+    if (!methods.has(method.name)) {
+      methods.set(method.name, method);
+    }
+  });
 };
 
-const recursivePropertyResolver = (componentSpec, { properties, slots, events }) => {
-  assignComponentPropertiesToMaps(componentSpec, { properties, slots, events });
+const recursivePropertyResolver = (componentSpec, { properties, slots, events, methods }) => {
+  assignComponentPropertiesToMaps(componentSpec, { properties, slots, events, methods });
   if (
     componentSpec.extends === 'UI5Element' ||
     componentSpec.extends === 'sap.ui.webcomponents.base.UI5Element' ||
     componentSpec.extends === 'TabBase' // not longer existing but wrong docs, treat as UI5 Element
   ) {
-    return { properties, slots, events };
+    return { properties, slots, events, methods };
   }
 
   const parentComponent = allWebComponents.find((c) => {
@@ -888,7 +863,8 @@ const recursivePropertyResolver = (componentSpec, { properties, slots, events })
     return recursivePropertyResolver(parentComponent, {
       properties,
       slots,
-      events
+      events,
+      methods
     });
   }
   throw new Error('Unknown Parent Component!');
@@ -903,11 +879,13 @@ const resolveInheritedAttributes = (componentSpec) => {
   const properties = new Map();
   const slots = new Map();
   const events = new Map();
-  recursivePropertyResolver(componentSpec, { properties, slots, events });
+  const methods = new Map();
+  recursivePropertyResolver(componentSpec, { properties, slots, events, methods });
 
   componentSpec.properties = Array.from(properties.values());
   componentSpec.slots = Array.from(slots.values());
   componentSpec.events = Array.from(events.values());
+  componentSpec.methods = Array.from(methods.values());
 
   return componentSpec;
 };
@@ -1027,22 +1005,6 @@ resolvedWebComponents.forEach((componentSpec) => {
       `----------------------\n${componentSpec.module} has been excluded from component generation. To include it again remove the component name from the "EXCLUDE_LIST".\n----------------------`
     );
   }
-  const mergeMethods = () => {
-    if (componentSpec.extends) {
-      let publicMethodsNames = [];
-      const publicMethods =
-        componentSpec?.methods.filter((item) => {
-          publicMethodsNames.push(item.name);
-          return item.visibility === 'public';
-        }) ?? [];
-      const parentMethods =
-        allWebComponents
-          .find((item) => item.module === componentSpec.extends)
-          ?.methods.filter((item) => item.visibility === 'public') ?? [];
-      const parentMethodsMerged = parentMethods.filter((item) => !publicMethodsNames.includes(item.name));
-      return [...parentMethodsMerged, ...publicMethods];
-    }
-  };
 
   if (
     (CREATE_SINGLE_COMPONENT === componentSpec.module || !CREATE_SINGLE_COMPONENT) &&
@@ -1099,12 +1061,7 @@ resolvedWebComponents.forEach((componentSpec) => {
       (!fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`)) &&
         !COMPONENTS_WITHOUT_DEMOS.has(componentSpec.module))
     ) {
-      const webComponentDemo = createWebComponentDemo(
-        componentSpec,
-        allComponentProperties,
-        description,
-        mergeMethods()
-      );
+      const webComponentDemo = createWebComponentDemo(componentSpec, allComponentProperties, description);
       fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`), webComponentDemo);
     }
   }
