@@ -9,11 +9,11 @@ This seed decreases the bootstrap time spent on new projects, POCs or MVPs using
 # Usage
 ```shell script
 npx create-react-app my-app --template @ui5/webcomponents-react-seed
-npm run mock
+npm run start
 
 # or if you prefer to use yarn
 yarn create react-app my-app --template @ui5/webcomponents-react-seed
-yarn mock
+yarn start
 ```
 
 # Configuration Included
