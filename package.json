@@ -33,8 +33,8 @@
     "@ui5/webcomponents": "1.0.0-rc.12",
     "@ui5/webcomponents-fiori": "1.0.0-rc.12",
     "@ui5/webcomponents-icons": "1.0.0-rc.12",
-    "react": "17.0.1",
-    "react-dom": "17.0.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
     "react-syntax-highlighter": "^15.2.1",
     "tocbot": "^4.12.0"
   },
@@ -100,8 +100,8 @@
   },
   "resolutions": {
     "@types/react": "17.0.3",
-    "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
   },
   "husky": {
     "hooks": {
