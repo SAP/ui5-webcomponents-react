@@ -437,6 +437,13 @@ const getTypeScriptTypeForProperty = (property) => {
         isEnum: true
       };
     }
+    case 'ListGrowingMode': {
+      return {
+        importStatement: "import { ListGrowingMode } from '@ui5/webcomponents-react/lib/ListGrowingMode';",
+        tsType: 'ListGrowingMode',
+        isEnum: true
+      };
+    }
     case 'ListSeparators':
       return {
         importStatement: "import { ListSeparators } from '@ui5/webcomponents-react/lib/ListSeparators';",
