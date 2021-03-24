@@ -6,6 +6,10 @@ import { FC, ReactNode } from 'react';
 
 export interface PanelPropTypes extends WithWebComponentPropTypes {
   /**
+   * Sets the accessible aria name of the `Panel`.
+   */
+  accessibleName?: string;
+  /**
    * Sets the accessible aria role of the `Panel`. Depending on the usage, you can change the role from the default `Form` to `Region` or `Complementary`.
    */
   accessibleRole?: PanelAccessibleRoles;
@@ -51,7 +55,7 @@ export interface PanelPropTypes extends WithWebComponentPropTypes {
  */
 const Panel: FC<PanelPropTypes> = withWebComponent<PanelPropTypes>(
   'ui5-panel',
-  ['accessibleRole', 'headerLevel', 'headerText'],
+  ['accessibleName', 'accessibleRole', 'headerLevel', 'headerText'],
   ['collapsed', 'fixed'],
   ['header'],
   []
