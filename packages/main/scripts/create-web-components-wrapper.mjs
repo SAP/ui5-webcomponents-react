@@ -10,6 +10,7 @@ import fs from 'fs';
 import TurndownService from 'turndown';
 import Handlebars from 'handlebars';
 import * as Utils from '../../../scripts/web-component-wrappers/utils.js';
+import { COMPONENTS_WITHOUT_DEMOS, PRIVATE_COMPONENTS, KNOWN_EVENTS } from '../../../scripts/web-component-wrappers/config.js';
 
 Handlebars.registerPartial(
   'methodParameters',
@@ -22,9 +23,16 @@ Handlebars.registerHelper('convertToStringArray', function (array) {
   return `[${array.map((v) => `'${v}'`).join(', ')}]`;
 });
 
-const methodsTemplate = Handlebars.compile(
-  fs.readFileSync(path.join(PATHS.root, 'scripts', 'web-component-wrappers', 'Methods.hbs')).toString()
-);
+Handlebars.registerHelper('join', function (array, separator) {
+  if (typeof array === 'string') return array;
+  if (!Array.isArray(array)) return '';
+  separator = typeof separator === 'string' ? separator : ', ';
+  return array.join(separator);
+});
+
+Handlebars.registerHelper('storySubComponents', function (subcomponents) {
+  return `{{ ${subcomponents.join(', ')} }}`
+});
 
 const testTemplate = Handlebars.compile(
   fs.readFileSync(path.join(PATHS.root, 'scripts', 'web-component-wrappers', 'TestTemplate.hbs')).toString()
@@ -36,6 +44,10 @@ const componentTemplate = Handlebars.compile(
 
 const libraryExportTemplate = Handlebars.compile(
   fs.readFileSync(path.join(PATHS.root, 'scripts', 'web-component-wrappers', 'LibraryExportTemplate.hbs')).toString()
+);
+
+const storyTemplate = Handlebars.compile(
+  fs.readFileSync(path.join(PATHS.root, 'scripts', 'web-component-wrappers', 'StoryTemplate.hbs')).toString()
 );
 
 const turndownService = new TurndownService({
@@ -57,30 +69,6 @@ const prettierConfig = {
 
 const WEB_COMPONENTS_ROOT_DIR = path.join(PATHS.packages, 'main', 'src', 'webComponents');
 const DIST_DIR = path.join(PATHS.packages, 'main', 'src', 'dist');
-
-const KNOWN_EVENTS = new Set(['click', 'input', 'submit', 'change', 'select', 'drop']);
-
-const PRIVATE_COMPONENTS = new Set([
-  'CalendarHeader',
-  'CalendarPart',
-  'DefaultTheme',
-  'DayPicker',
-  'DateComponentBase',
-  'ListItem',
-  'ListItemBase',
-  'MessageBundleAssets',
-  'MonthPicker',
-  'NotificationListItemBase',
-  'Popup',
-  'PickerBase',
-  'SliderBase',
-  'TabBase',
-  'ThemePropertiesProvider',
-  'TimePickerBase',
-  'TreeListItem',
-  'YearPicker',
-  'WheelSlider'
-]);
 
 const EXTENDED_PROP_DESCRIPTION = {
   primaryCalendarType: `<br/>__Note:__ Calendar types other than Gregorian must be imported manually:<br />\`import "@ui5/webcomponents-localization/dist/features/calendar/{primaryCalendarType}.js";\``
@@ -219,31 +207,6 @@ const CUSTOM_DESCRIPTION_REPLACE = {
     }
   }
 };
-
-const COMPONENTS_WITHOUT_DEMOS = new Set(PRIVATE_COMPONENTS);
-COMPONENTS_WITHOUT_DEMOS.add('CustomListItem');
-COMPONENTS_WITHOUT_DEMOS.add('CalendarDate');
-COMPONENTS_WITHOUT_DEMOS.add('ColorPaletteItem');
-COMPONENTS_WITHOUT_DEMOS.add('GroupHeaderListItem');
-COMPONENTS_WITHOUT_DEMOS.add('Option');
-COMPONENTS_WITHOUT_DEMOS.add('ShellBarItem');
-COMPONENTS_WITHOUT_DEMOS.add('StandardListItem');
-COMPONENTS_WITHOUT_DEMOS.add('Tab');
-COMPONENTS_WITHOUT_DEMOS.add('TableCell');
-COMPONENTS_WITHOUT_DEMOS.add('TableColumn');
-COMPONENTS_WITHOUT_DEMOS.add('TableRow');
-COMPONENTS_WITHOUT_DEMOS.add('TabSeparator');
-COMPONENTS_WITHOUT_DEMOS.add('TimelineItem');
-COMPONENTS_WITHOUT_DEMOS.add('TreeItem');
-COMPONENTS_WITHOUT_DEMOS.add('ProductSwitchItem');
-COMPONENTS_WITHOUT_DEMOS.add('ComboBoxItem');
-COMPONENTS_WITHOUT_DEMOS.add('MultiComboBoxItem');
-COMPONENTS_WITHOUT_DEMOS.add('SideNavigationItem');
-COMPONENTS_WITHOUT_DEMOS.add('SideNavigationSubItem');
-COMPONENTS_WITHOUT_DEMOS.add('SuggestionItem');
-COMPONENTS_WITHOUT_DEMOS.add('UploadCollectionItem');
-COMPONENTS_WITHOUT_DEMOS.add('NotificationAction');
-COMPONENTS_WITHOUT_DEMOS.add('WizardStep');
 
 const componentsFromFioriPackage = new Set(fioriWebComponentsSpec.symbols.map((componentSpec) => componentSpec.module));
 
@@ -455,52 +418,18 @@ const createWebComponentDemo = (componentSpec, componentProps, description) => {
   }
 
   return `${prettier.format(
-    dedent`
-    import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
-    import { ${componentName} } from '@ui5/webcomponents-react/dist/${componentName}';
-    ${enumImports.join('\n')}
-    ${additionalComponentImports.join('\n')}
-    import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
-    import { DocsHeader } from '@shared/stories/DocsHeader';
-    import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
-    
-    <Meta
-     title="Components / ${componentName}"
-     component={${componentName}}
-     ${additionalComponentDocs.length > 0 ? `subcomponents={{ ${additionalComponentDocs.join(', ')} }}` : ''}
-     argTypes={{
-       ...createSelectArgTypes({${selectArgTypes.join(', ')}}),
-       ...DocsCommonProps,
-       ${customArgTypes.join(',\n')}
-     }}
-     args={{
-       ${args.join(',\n')}
-     }}
-    />
-
-    <DocsHeader />
-    
-    <br />
-    
-    ## Example
-
-    <Canvas>
-      <Story name="Default">
-        {(args) => {
-          return (
-            <${componentName} {...args} />
-          );
-        }}
-      </Story>
-    </Canvas>
-    
-    ## Properties
-    
-    <ArgsTable story="." />
-    
-    ${methodsTemplate({ methods: componentSpec.methods?.filter((item) => item.visibility === 'public') ?? [] })}
-    
-    `,
+    storyTemplate({
+      name: componentName,
+      imports: [
+          ...enumImports,
+          ...additionalComponentImports
+      ],
+      additionalComponentDocs,
+      selectArgTypes,
+      customArgTypes,
+      args,
+      methods: componentSpec.methods?.filter((item) => item.visibility === 'public') ?? []
+    }),
     { ...prettierConfigRaw, parser: 'mdx' }
   )}\n${formattedDescription}`;
 };
