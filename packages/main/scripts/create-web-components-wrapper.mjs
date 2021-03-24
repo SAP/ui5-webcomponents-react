@@ -9,6 +9,7 @@ import PATHS from '../../../config/paths.js';
 import fs from 'fs';
 import TurndownService from 'turndown';
 import Handlebars from 'handlebars';
+import * as Utils from '../../../scripts/web-component-wrappers/utils.js';
 
 Handlebars.registerPartial(
   'methodParameters',
@@ -17,6 +18,10 @@ Handlebars.registerPartial(
 
 const methodsTemplate = Handlebars.compile(
   fs.readFileSync(path.join(PATHS.root, 'scripts', 'web-component-wrappers', 'Methods.hbs')).toString()
+);
+
+const testTemplate = Handlebars.compile(
+    fs.readFileSync(path.join(PATHS.root, 'scripts', 'web-component-wrappers', 'TestTemplate.hbs')).toString()
 );
 
 const turndownService = new TurndownService({
@@ -265,296 +270,11 @@ const replaceTagNameWithModuleName = (description) => {
   return parsedDescription;
 };
 
-const getTypeScriptTypeForProperty = (property) => {
-  switch (property.type) {
-    // native ts types
-    case 'string':
-    case 'String':
-      return {
-        importStatement: null,
-        tsType: 'string'
-      };
-    case 'undefined':
-      return {
-        importStatement: null,
-        tsType: 'unknown'
-      };
-    case 'number':
-    case 'Number':
-    case 'Integer':
-    case 'Float':
-      return {
-        importStatement: null,
-        tsType: 'number'
-      };
-    case 'boolean':
-    case 'Boolean':
-      return {
-        importStatement: null,
-        tsType: 'boolean'
-      };
-    case 'Array':
-      return {
-        importStatement: null,
-        tsType: 'unknown[]'
-      };
-    case 'File': {
-      return {
-        importStatement: null,
-        tsType: 'File'
-      };
-    }
-    case 'FileList': {
-      return {
-        importStatement: null,
-        tsType: 'FileList'
-      };
-    }
-    case 'DataTransfer': {
-      return {
-        importStatement: null,
-        tsType: 'DataTransfer'
-      };
-    }
-    case 'object':
-    case 'Object': {
-      return {
-        importStatement: null,
-        tsType: 'Record<string, unknown>'
-      };
-    }
-
-    // react ts types
-    case 'Node[]':
-    case 'HTMLElement[]':
-      return {
-        tsType: 'ReactNode | ReactNode[]',
-        importStatement: "import { ReactNode } from 'react';"
-      };
-    case 'HTMLElement':
-      return {
-        tsType: 'ReactNode',
-        importStatement: "import { ReactNode } from 'react';"
-      };
-    case 'CSSColor':
-      return {
-        tsType: "CSSProperties['color']",
-        importStatement: "import { CSSProperties } from 'react';"
-      };
-    // UI5 Web Component Enums
-    case 'AvatarBackgroundColor':
-      return {
-        importStatement: "import { AvatarBackgroundColor } from '@ui5/webcomponents-react/dist/AvatarBackgroundColor';",
-        tsType: 'AvatarBackgroundColor',
-        isEnum: true
-      };
-    case 'AvatarFitType':
-      return {
-        importStatement: "import { AvatarFitType } from '@ui5/webcomponents-react/dist/AvatarFitType';",
-        tsType: 'AvatarFitType',
-        isEnum: true
-      };
-    case 'AvatarGroupType':
-      return {
-        importStatement: "import { AvatarGroupType } from '@ui5/webcomponents-react/dist/AvatarGroupType';",
-        tsType: 'AvatarGroupType',
-        isEnum: true
-      };
-    case 'AvatarShape':
-      return {
-        importStatement: "import { AvatarShape } from '@ui5/webcomponents-react/dist/AvatarShape';",
-        tsType: 'AvatarShape',
-        isEnum: true
-      };
-    case 'AvatarSize':
-      return {
-        importStatement: "import { AvatarSize } from '@ui5/webcomponents-react/dist/AvatarSize';",
-        tsType: 'AvatarSize',
-        isEnum: true
-      };
-    case 'BarDesign':
-      return {
-        importStatement: "import { BarDesign } from '@ui5/webcomponents-react/dist/BarDesign';",
-        tsType: 'BarDesign',
-        isEnum: true
-      };
-    case 'BusyIndicatorSize':
-      return {
-        importStatement: "import { BusyIndicatorSize } from '@ui5/webcomponents-react/dist/BusyIndicatorSize';",
-        tsType: 'BusyIndicatorSize',
-        isEnum: true
-      };
-    case 'ButtonDesign':
-      return {
-        importStatement: "import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';",
-        tsType: 'ButtonDesign',
-        isEnum: true
-      };
-    case 'CalendarType':
-      return {
-        importStatement: "import { CalendarType } from '@ui5/webcomponents-react/dist/CalendarType';",
-        tsType: 'CalendarType',
-        isEnum: true
-      };
-    case 'CalendarSelection':
-      return {
-        importStatement: "import { CalendarSelection } from '@ui5/webcomponents-react/dist/CalendarSelection';",
-        tsType: 'CalendarSelection',
-        isEnum: true
-      };
-    case 'CalendarSelectionMode':
-      return {
-        importStatement: "import { CalendarSelectionMode } from '@ui5/webcomponents-react/dist/CalendarSelectionMode';",
-        tsType: 'CalendarSelectionMode',
-        isEnum: true
-      };
-    case 'CarouselArrowsPlacement':
-      return {
-        importStatement:
-          "import { CarouselArrowsPlacement } from '@ui5/webcomponents-react/dist/CarouselArrowsPlacement';",
-        tsType: 'CarouselArrowsPlacement',
-        isEnum: true
-      };
-    case 'FCLLayout':
-      return {
-        importStatement: "import { FCLLayout } from '@ui5/webcomponents-react/dist/FCLLayout';",
-        tsType: 'FCLLayout',
-        isEnum: true
-      };
-    case 'InputType':
-      return {
-        importStatement: "import { InputType } from '@ui5/webcomponents-react/dist/InputType';",
-        tsType: 'InputType',
-        isEnum: true
-      };
-    case 'LinkDesign':
-      return {
-        importStatement: "import { LinkDesign } from '@ui5/webcomponents-react/dist/LinkDesign';",
-        tsType: 'LinkDesign',
-        isEnum: true
-      };
-    case 'ListItemType': {
-      return {
-        importStatement: "import { ListItemTypes } from '@ui5/webcomponents-react/dist/ListItemTypes';",
-        tsType: 'ListItemTypes',
-        isEnum: true
-      };
-    }
-    case 'ListMode': {
-      return {
-        importStatement: "import { ListMode } from '@ui5/webcomponents-react/dist/ListMode';",
-        tsType: 'ListMode',
-        isEnum: true
-      };
-    }
-    case 'ListSeparators':
-      return {
-        importStatement: "import { ListSeparators } from '@ui5/webcomponents-react/dist/ListSeparators';",
-        tsType: 'ListSeparators',
-        isEnum: true
-      };
-    case 'MessageStripType':
-      return {
-        importStatement: "import { MessageStripType } from '@ui5/webcomponents-react/dist/MessageStripType';",
-        tsType: 'MessageStripType',
-        isEnum: true
-      };
-    case 'PageBackgroundDesign':
-      return {
-        importStatement: "import { PageBackgroundDesign } from '@ui5/webcomponents-react/dist/PageBackgroundDesign';",
-        tsType: 'PageBackgroundDesign',
-        isEnum: true
-      };
-    case 'PanelAccessibleRole':
-      return {
-        importStatement: "import { PanelAccessibleRoles } from '@ui5/webcomponents-react/dist/PanelAccessibleRoles';",
-        tsType: 'PanelAccessibleRoles',
-        isEnum: true
-      };
-    case 'PopoverHorizontalAlign':
-      return {
-        importStatement:
-          "import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/dist/PopoverHorizontalAlign';",
-        tsType: 'PopoverHorizontalAlign',
-        isEnum: true
-      };
-    case 'PopoverPlacementType':
-      return {
-        importStatement: "import { PlacementType } from '@ui5/webcomponents-react/dist/PlacementType';",
-        tsType: 'PlacementType',
-        isEnum: true
-      };
-    case 'PopoverVerticalAlign':
-      return {
-        importStatement: "import { PopoverVerticalAlign } from '@ui5/webcomponents-react/dist/PopoverVerticalAlign';",
-        tsType: 'PopoverVerticalAlign',
-        isEnum: true
-      };
-    case 'Priority':
-      return {
-        importStatement: "import { Priority } from '@ui5/webcomponents-react/dist/Priority';",
-        tsType: 'Priority',
-        isEnum: true
-      };
-    case 'SemanticColor':
-      return {
-        importStatement: "import { SemanticColor } from '@ui5/webcomponents-react/dist/SemanticColor';",
-        tsType: 'SemanticColor',
-        isEnum: true
-      };
-    case 'TabLayout':
-      return {
-        importStatement: "import { TabLayout } from '@ui5/webcomponents-react/dist/TabLayout';",
-        tsType: 'TabLayout',
-        isEnum: true
-      };
-    case 'TabContainerTabsPlacement':
-      return {
-        importStatement:
-          "import { TabContainerTabsPlacement } from '@ui5/webcomponents-react/dist/TabContainerTabsPlacement';",
-        tsType: 'TabContainerTabsPlacement',
-        isEnum: true
-      };
-    case 'TableGrowingMode':
-      return {
-        importStatement: "import { TableGrowingMode } from '@ui5/webcomponents-react/dist/TableGrowingMode';",
-        tsType: 'TableGrowingMode',
-        isEnum: true
-      };
-    case 'TitleLevel':
-      return {
-        importStatement: "import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';",
-        tsType: 'TitleLevel',
-        isEnum: true
-      };
-    case 'ToastPlacement':
-      return {
-        importStatement: "import { ToastPlacement } from '@ui5/webcomponents-react/dist/ToastPlacement';",
-        tsType: 'ToastPlacement',
-        isEnum: true
-      };
-    case 'UploadState':
-      return {
-        importStatement: "import { UploadState } from '@ui5/webcomponents-react/dist/UploadState';",
-        tsType: 'UploadState',
-        isEnum: true
-      };
-    case 'ValueState':
-      return {
-        importStatement: "import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';",
-        tsType: 'ValueState',
-        isEnum: true
-      };
-    default:
-      throw new Error(`Unknown type ${JSON.stringify(property)}`);
-  }
-};
-
 const getEventParameters = (parameters) => {
   const resolvedEventParameters = parameters.map((property) => {
     return {
       ...property,
-      ...getTypeScriptTypeForProperty(property)
+      ...Utils.getTypeDefinitionForProperty(property)
     };
   });
 
@@ -660,25 +380,6 @@ const createWebComponentWrapper = (
     };
 
     export { ${name} };
-
-    `,
-    prettierConfig
-  );
-};
-
-const createWebComponentTest = (name) => {
-  return prettier.format(
-    `
-    import { render } from '@shared/tests';
-    import { ${name} } from '@ui5/webcomponents-react/dist/${name}';
-    import React from 'react';
-
-    describe('${name}', () => {
-      test('Basic Test (generated)', () => {
-        const { asFragment } = render(<${name} />);
-        expect(asFragment()).toMatchSnapshot();
-      });
-    });
 
     `,
     prettierConfig
@@ -902,7 +603,7 @@ resolvedWebComponents.forEach((componentSpec) => {
   const allComponentProperties = [...(componentSpec.properties || []), ...(componentSpec.slots || [])]
     .filter((prop) => prop.visibility === 'public' && prop.readonly !== 'true' && prop.static !== true)
     .map((property) => {
-      const tsType = getTypeScriptTypeForProperty(property);
+      const tsType = Utils.getTypeDefinitionForProperty(property);
       if (tsType.importStatement) {
         importStatements.push(tsType.importStatement);
       }
@@ -1051,7 +752,7 @@ resolvedWebComponents.forEach((componentSpec) => {
 
     // create test
     if (!fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.test.tsx`))) {
-      const webComponentTest = createWebComponentTest(componentSpec.module);
+      const webComponentTest = prettier.format(testTemplate({ name: componentSpec.module}), prettierConfig);
       fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.test.tsx`), webComponentTest);
     }
 
