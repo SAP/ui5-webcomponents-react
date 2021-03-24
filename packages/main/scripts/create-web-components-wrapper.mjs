@@ -34,6 +34,10 @@ const componentTemplate = Handlebars.compile(
   fs.readFileSync(path.join(PATHS.root, 'scripts', 'web-component-wrappers', 'ComponentTemplate.hbs')).toString()
 );
 
+const libraryExportTemplate = Handlebars.compile(
+  fs.readFileSync(path.join(PATHS.root, 'scripts', 'web-component-wrappers', 'LibraryExportTemplate.hbs')).toString()
+);
+
 const turndownService = new TurndownService({
   headingStyle: 'atx',
   codeBlockStyle: 'fenced'
@@ -571,83 +575,82 @@ const resolveInheritedAttributes = (componentSpec) => {
   return componentSpec;
 };
 
-const resolvedWebComponents = allWebComponents
+allWebComponents
   .filter((spec) => spec.visibility === 'public')
   .filter((spec) => !PRIVATE_COMPONENTS.has(spec.module))
-  .map(resolveInheritedAttributes);
-
-resolvedWebComponents.forEach(async (componentSpec) => {
-  const propTypes = [];
-  const importStatements = [];
-  const defaultProps = [];
-  const allComponentProperties = [...(componentSpec.properties || []), ...(componentSpec.slots || [])]
-    .filter((prop) => prop.visibility === 'public' && prop.readonly !== 'true' && prop.static !== true)
-    .map((property) => {
-      const tsType = Utils.getTypeDefinitionForProperty(property);
-      if (tsType.importStatement) {
-        importStatements.push(tsType.importStatement);
-      }
-
-      if (property.name === 'default') {
-        property.name = 'children';
-      }
-      const propDescription = () => {
-        if (!componentSpec.tagname) {
-          return property.description || '';
-        }
-        let formattedDescription = turndownService
-          .turndown((property.description || '').trim())
-          .replace(/\n/g, '\n   * ');
-
-        const customDescriptionReplace = CUSTOM_DESCRIPTION_REPLACE[componentSpec.module];
-        if (customDescriptionReplace && customDescriptionReplace[property.name]) {
-          formattedDescription = customDescriptionReplace[property.name](formattedDescription);
+  .map(resolveInheritedAttributes)
+  .forEach(async (componentSpec) => {
+    const propTypes = [];
+    const importStatements = [];
+    const defaultProps = [];
+    const allComponentProperties = [...(componentSpec.properties || []), ...(componentSpec.slots || [])]
+      .filter((prop) => prop.visibility === 'public' && prop.readonly !== 'true' && prop.static !== true)
+      .map((property) => {
+        const tsType = Utils.getTypeDefinitionForProperty(property);
+        if (tsType.importStatement) {
+          importStatements.push(tsType.importStatement);
         }
 
-        const extendedDescription = EXTENDED_PROP_DESCRIPTION[property.name];
+        if (property.name === 'default') {
+          property.name = 'children';
+        }
+        const propDescription = () => {
+          if (!componentSpec.tagname) {
+            return property.description || '';
+          }
+          let formattedDescription = turndownService
+            .turndown((property.description || '').trim())
+            .replace(/\n/g, '\n   * ');
 
-        if (property.name !== 'children' && componentSpec?.slots?.some((item) => item.name === property.name)) {
-          formattedDescription += `
+          const customDescriptionReplace = CUSTOM_DESCRIPTION_REPLACE[componentSpec.module];
+          if (customDescriptionReplace && customDescriptionReplace[property.name]) {
+            formattedDescription = customDescriptionReplace[property.name](formattedDescription);
+          }
+
+          const extendedDescription = EXTENDED_PROP_DESCRIPTION[property.name];
+
+          if (property.name !== 'children' && componentSpec?.slots?.some((item) => item.name === property.name)) {
+            formattedDescription += `
           *
           * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the \`slot\` prop and appends it to the most outer element of your component.
           * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).`;
-        }
+          }
 
-        if (extendedDescription) {
-          return replaceTagNameWithModuleName(`${formattedDescription}${extendedDescription}`);
-        }
-        return replaceTagNameWithModuleName(formattedDescription);
-      };
+          if (extendedDescription) {
+            return replaceTagNameWithModuleName(`${formattedDescription}${extendedDescription}`);
+          }
+          return replaceTagNameWithModuleName(formattedDescription);
+        };
 
-      propTypes.push(dedent`
+        propTypes.push(dedent`
     /**
      * ${propDescription()}
      */
      ${property.name}?: ${tsType.tsType};
     `);
 
-      if (property.hasOwnProperty('defaultValue')) {
-        if (tsType.tsType === 'boolean') {
-          defaultProps.push(`${property.name}: ${property.defaultValue === 'true'}`);
-        } else if (tsType.isEnum === true) {
-          defaultProps.push(`${property.name}: ${tsType.tsType}.${property.defaultValue.replace(/['"]/g, '')}`);
-        } else if (tsType.tsType !== 'string' || (tsType.tsType === 'string' && property.defaultValue !== '""')) {
-          defaultProps.push(`${property.name}: ${property.defaultValue}`);
+        if (property.hasOwnProperty('defaultValue')) {
+          if (tsType.tsType === 'boolean') {
+            defaultProps.push(`${property.name}: ${property.defaultValue === 'true'}`);
+          } else if (tsType.isEnum === true) {
+            defaultProps.push(`${property.name}: ${tsType.tsType}.${property.defaultValue.replace(/['"]/g, '')}`);
+          } else if (tsType.tsType !== 'string' || (tsType.tsType === 'string' && property.defaultValue !== '""')) {
+            defaultProps.push(`${property.name}: ${property.defaultValue}`);
+          }
         }
-      }
 
-      return {
-        ...property,
-        ...tsType
-      };
-    });
+        return {
+          ...property,
+          ...tsType
+        };
+      });
 
-  (componentSpec.events || [])
-    .filter((eventSpec) => eventSpec.visibility === 'public')
-    .forEach((eventSpec) => {
-      const eventParameters = getEventParameters(eventSpec.parameters || []);
-      importStatements.push(...eventParameters.importStatements);
-      propTypes.push(dedent`
+    (componentSpec.events || [])
+      .filter((eventSpec) => eventSpec.visibility === 'public')
+      .forEach((eventSpec) => {
+        const eventParameters = getEventParameters(eventSpec.parameters || []);
+        importStatements.push(...eventParameters.importStatements);
+        propTypes.push(dedent`
       /**
        * ${replaceTagNameWithModuleName(
          turndownService.turndown((eventSpec.description || '').trim()).replace(/\n/g, '\n   * ')
@@ -655,94 +658,86 @@ resolvedWebComponents.forEach(async (componentSpec) => {
        */
        on${capitalizeFirstLetter(snakeToCamel(eventSpec.name))}?: ${eventParameters.tsType};
       `);
-    });
+      });
 
-  const uniqueAdditionalImports = [...new Set(importStatements)];
+    const uniqueAdditionalImports = [...new Set(importStatements)];
 
-  const formatDescription = () => {
-    let description = componentSpec.description;
-    if (!description) {
-      return ['', ''];
-    }
-    //strip overview heading
-    description = description.replace(`<h3 class="comment-api-title">Overview</h3>`, '');
-    //strip ES6 Module import
-    description = description.slice(0, description.indexOf(`<h3>ES6 Module Import</h3>`));
-    if (!componentSpec.tagname) {
-      return description.split(/(?=<h3>)/, 2);
-    }
-    //replace tag-name with module-name
-    description = description.replace(new RegExp(componentSpec.tagname, 'g'), `${componentSpec.module}`);
-    //replace other ui5 tag-names
-    description = replaceTagNameWithModuleName(description);
-    const [mainDescription, ...rest] = description.split(/(?=<h3>)/);
-    return [mainDescription, rest.join('<h3>')];
-  };
+    const formatDescription = () => {
+      let description = componentSpec.description;
+      if (!description) {
+        return ['', ''];
+      }
+      //strip overview heading
+      description = description.replace(`<h3 class="comment-api-title">Overview</h3>`, '');
+      //strip ES6 Module import
+      description = description.slice(0, description.indexOf(`<h3>ES6 Module Import</h3>`));
+      if (!componentSpec.tagname) {
+        return description.split(/(?=<h3>)/, 2);
+      }
+      //replace tag-name with module-name
+      description = description.replace(new RegExp(componentSpec.tagname, 'g'), `${componentSpec.module}`);
+      //replace other ui5 tag-names
+      description = replaceTagNameWithModuleName(description);
+      const [mainDescription, ...rest] = description.split(/(?=<h3>)/);
+      return [mainDescription, rest.join('<h3>')];
+    };
 
-  const [mainDescription, description = ''] = formatDescription();
+    const [mainDescription, description = ''] = formatDescription();
 
-  if (EXCLUDE_LIST.includes(componentSpec.module)) {
-    console.warn(
-      `----------------------\n${componentSpec.module} has been excluded from component generation. To include it again remove the component name from the "EXCLUDE_LIST".\n----------------------`
-    );
-  }
-
-  // check if folder exists and create it if necessary
-  const webComponentFolderPath = path.join(WEB_COMPONENTS_ROOT_DIR, componentSpec.module);
-  if (!fs.existsSync(webComponentFolderPath)) {
-    fs.mkdirSync(webComponentFolderPath);
-  }
-
-  if (
-    (CREATE_SINGLE_COMPONENT === componentSpec.module || !CREATE_SINGLE_COMPONENT) &&
-    !EXCLUDE_LIST.includes(componentSpec.module)
-  ) {
-    const webComponentWrapper = await createWebComponentWrapper(
-      componentSpec.module,
-      componentSpec.tagname,
-      mainDescription,
-      propTypes,
-      uniqueAdditionalImports,
-      defaultProps,
-      (componentSpec.properties || [])
-        .filter(filterNonPublicAttributes)
-        .filter(({ type }) => type !== 'boolean' && type !== 'Boolean')
-        .map(({ name }) => name),
-      (componentSpec.properties || [])
-        .filter(filterNonPublicAttributes)
-        .filter(({ type }) => type === 'boolean' || type === 'Boolean')
-        .map(({ name }) => name),
-      (componentSpec.slots || []).filter(filterNonPublicAttributes).map(({ name }) => name),
-      (componentSpec.events || []).filter(filterNonPublicAttributes).map(({ name }) => name)
-    );
-    fs.writeFileSync(path.join(webComponentFolderPath, 'index.tsx'), webComponentWrapper);
-
-    // create lib export
-    const libContent = prettier.format(
-      `
-    import { ${componentSpec.module} } from '../webComponents/${componentSpec.module}';
-    import type { ${componentSpec.module}PropTypes } from '../webComponents/${componentSpec.module}';
-
-    export { ${componentSpec.module} };
-    export type { ${componentSpec.module}PropTypes };`,
-      prettierConfig
-    );
-    fs.writeFileSync(path.join(DIST_DIR, `${componentSpec.module}.ts`), libContent);
-
-    // create test
-    if (!fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.test.tsx`))) {
-      const webComponentTest = prettier.format(testTemplate({ name: componentSpec.module }), prettierConfig);
-      fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.test.tsx`), webComponentTest);
+    if (EXCLUDE_LIST.includes(componentSpec.module)) {
+      console.warn(
+        `----------------------\n${componentSpec.module} has been excluded from component generation. To include it again remove the component name from the "EXCLUDE_LIST".\n----------------------`
+      );
     }
 
-    // create demo
+    // check if folder exists and create it if necessary
+    const webComponentFolderPath = path.join(WEB_COMPONENTS_ROOT_DIR, componentSpec.module);
+    if (!fs.existsSync(webComponentFolderPath)) {
+      fs.mkdirSync(webComponentFolderPath);
+    }
+
     if (
-      CREATE_SINGLE_COMPONENT === componentSpec.module ||
-      (!fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`)) &&
-        !COMPONENTS_WITHOUT_DEMOS.has(componentSpec.module))
+      (CREATE_SINGLE_COMPONENT === componentSpec.module || !CREATE_SINGLE_COMPONENT) &&
+      !EXCLUDE_LIST.includes(componentSpec.module)
     ) {
-      const webComponentDemo = createWebComponentDemo(componentSpec, allComponentProperties, description);
-      fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`), webComponentDemo);
+      const webComponentWrapper = await createWebComponentWrapper(
+        componentSpec.module,
+        componentSpec.tagname,
+        mainDescription,
+        propTypes,
+        uniqueAdditionalImports,
+        defaultProps,
+        (componentSpec.properties || [])
+          .filter(filterNonPublicAttributes)
+          .filter(({ type }) => type !== 'boolean' && type !== 'Boolean')
+          .map(({ name }) => name),
+        (componentSpec.properties || [])
+          .filter(filterNonPublicAttributes)
+          .filter(({ type }) => type === 'boolean' || type === 'Boolean')
+          .map(({ name }) => name),
+        (componentSpec.slots || []).filter(filterNonPublicAttributes).map(({ name }) => name),
+        (componentSpec.events || []).filter(filterNonPublicAttributes).map(({ name }) => name)
+      );
+      fs.writeFileSync(path.join(webComponentFolderPath, 'index.tsx'), webComponentWrapper);
+
+      // create lib export
+      const libContent = prettier.format(libraryExportTemplate({ name: componentSpec.module }), prettierConfig);
+      fs.writeFileSync(path.join(DIST_DIR, `${componentSpec.module}.ts`), libContent);
+
+      // create test
+      if (!fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.test.tsx`))) {
+        const webComponentTest = prettier.format(testTemplate({ name: componentSpec.module }), prettierConfig);
+        fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.test.tsx`), webComponentTest);
+      }
+
+      // create demo
+      if (
+        CREATE_SINGLE_COMPONENT === componentSpec.module ||
+        (!fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`)) &&
+          !COMPONENTS_WITHOUT_DEMOS.has(componentSpec.module))
+      ) {
+        const webComponentDemo = createWebComponentDemo(componentSpec, allComponentProperties, description);
+        fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`), webComponentDemo);
+      }
     }
-  }
-});
+  });
