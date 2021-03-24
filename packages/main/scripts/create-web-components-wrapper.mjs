@@ -16,12 +16,22 @@ Handlebars.registerPartial(
   fs.readFileSync(path.join(PATHS.root, 'scripts', 'web-component-wrappers', 'MethodParameters.hbs')).toString()
 );
 
+Handlebars.registerHelper('convertToStringArray', function (array) {
+  if (typeof array === 'string') return array;
+  if (!Array.isArray(array)) return '';
+  return `[${array.map((v) => `'${v}'`).join(', ')}]`;
+});
+
 const methodsTemplate = Handlebars.compile(
   fs.readFileSync(path.join(PATHS.root, 'scripts', 'web-component-wrappers', 'Methods.hbs')).toString()
 );
 
 const testTemplate = Handlebars.compile(
-    fs.readFileSync(path.join(PATHS.root, 'scripts', 'web-component-wrappers', 'TestTemplate.hbs')).toString()
+  fs.readFileSync(path.join(PATHS.root, 'scripts', 'web-component-wrappers', 'TestTemplate.hbs')).toString()
+);
+
+const componentTemplate = Handlebars.compile(
+  fs.readFileSync(path.join(PATHS.root, 'scripts', 'web-component-wrappers', 'ComponentTemplate.hbs')).toString()
 );
 
 const turndownService = new TurndownService({
@@ -300,7 +310,7 @@ const getEventParameters = (parameters) => {
   };
 };
 
-const createWebComponentWrapper = (
+const createWebComponentWrapper = async (
   name,
   tag,
   description,
@@ -329,59 +339,29 @@ const createWebComponentWrapper = (
     componentDescription = '';
   }
 
-  const regularImports = importStatements
-    .filter((imp) => !imp.includes("from 'react'"))
-    .sort((a, b) => {
-      const importNameA = /import \{ (\w+) \}/.exec(a)[1];
-      const importNameB = /import \{ (\w+) \}/.exec(b)[1];
-      return importNameA.localeCompare(importNameB);
-    });
-  const reactImports = [
-    'FC',
-    ...importStatements
-      .filter((imp) => imp.includes("from 'react'"))
-      .map((imp) => {
-        const match = /import \{ (\w+) \}/.exec(imp);
-        return match[1];
-      })
-  ].sort((a, b) => a.localeCompare(b));
+  const imports = [
+    ...importStatements,
+    '', // do not remove this empty line - otherwise the eslint/import-order plugin won't work as expected
+    `import '@ui5/webcomponents${componentsFromFioriPackage.has(name) ? '-fiori' : ''}/dist/${name}';`
+  ];
 
   return prettier.format(
-    `
-    ${regularImports.join('\n')}
-    import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-    import '@ui5/webcomponents${componentsFromFioriPackage.has(name) ? '-fiori' : ''}/dist/${name}';
-    import { ${reactImports.join(', ')} } from 'react';
-
-    export interface ${name}PropTypes extends ${tsExtendsStatement} {
-      ${types.join('\n')}
-    }
-    
-    /**
-     * ${componentDescription}     
-     * 
-     * <a href="https://sap.github.io/ui5-webcomponents/playground/components/${name}" target="_blank">UI5 Web Components Playground</a>
-     */
-    const ${name}: FC<${name}PropTypes> = withWebComponent<${name}PropTypes>(
-      '${tag}',
-      [${regularProps.map((v) => `'${v}'`).join(', ')}],
-      [${booleanProps.map((v) => `'${v}'`).join(', ')}],
-      [${slotProps
-        .filter((name) => name !== 'children')
-        .map((v) => `'${v}'`)
-        .join(', ')}],
-      [${eventProps.map((v) => `'${v}'`).join(', ')}]
-    );
-
-    ${name}.displayName = '${name}';
-
-    ${name}.defaultProps = {
-      ${defaultProps.join(',\n')}
-    };
-
-    export { ${name} };
-
-    `,
+    await Utils.runEsLint(
+      componentTemplate({
+        name,
+        imports,
+        propTypesExtends: tsExtendsStatement,
+        types,
+        description: componentDescription,
+        tagName: tag,
+        regularProps,
+        booleanProps,
+        slotProps: slotProps.filter((name) => name !== 'children'),
+        eventProps,
+        defaultProps
+      }),
+      name
+    ),
     prettierConfig
   );
 };
@@ -596,7 +576,7 @@ const resolvedWebComponents = allWebComponents
   .filter((spec) => !PRIVATE_COMPONENTS.has(spec.module))
   .map(resolveInheritedAttributes);
 
-resolvedWebComponents.forEach((componentSpec) => {
+resolvedWebComponents.forEach(async (componentSpec) => {
   const propTypes = [];
   const importStatements = [];
   const defaultProps = [];
@@ -707,11 +687,17 @@ resolvedWebComponents.forEach((componentSpec) => {
     );
   }
 
+  // check if folder exists and create it if necessary
+  const webComponentFolderPath = path.join(WEB_COMPONENTS_ROOT_DIR, componentSpec.module);
+  if (!fs.existsSync(webComponentFolderPath)) {
+    fs.mkdirSync(webComponentFolderPath);
+  }
+
   if (
     (CREATE_SINGLE_COMPONENT === componentSpec.module || !CREATE_SINGLE_COMPONENT) &&
     !EXCLUDE_LIST.includes(componentSpec.module)
   ) {
-    const webComponentWrapper = createWebComponentWrapper(
+    const webComponentWrapper = await createWebComponentWrapper(
       componentSpec.module,
       componentSpec.tagname,
       mainDescription,
@@ -729,13 +715,6 @@ resolvedWebComponents.forEach((componentSpec) => {
       (componentSpec.slots || []).filter(filterNonPublicAttributes).map(({ name }) => name),
       (componentSpec.events || []).filter(filterNonPublicAttributes).map(({ name }) => name)
     );
-
-    // check if folder exists and create it if necessary
-    const webComponentFolderPath = path.join(WEB_COMPONENTS_ROOT_DIR, componentSpec.module);
-    if (!fs.existsSync(webComponentFolderPath)) {
-      fs.mkdirSync(webComponentFolderPath);
-    }
-
     fs.writeFileSync(path.join(webComponentFolderPath, 'index.tsx'), webComponentWrapper);
 
     // create lib export
@@ -752,7 +731,7 @@ resolvedWebComponents.forEach((componentSpec) => {
 
     // create test
     if (!fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.test.tsx`))) {
-      const webComponentTest = prettier.format(testTemplate({ name: componentSpec.module}), prettierConfig);
+      const webComponentTest = prettier.format(testTemplate({ name: componentSpec.module }), prettierConfig);
       fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.test.tsx`), webComponentTest);
     }
 

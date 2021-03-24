@@ -1,3 +1,19 @@
+import { ESLint } from 'eslint';
+import PATHS from '../../config/paths.js';
+import path from 'path';
+
+const eslint = new ESLint({
+  overrideConfig: {
+    parserOptions: {
+      project: path.join(PATHS.packages, 'main', 'tsconfig.json')
+    },
+    rules: {
+      'import/no-unresolved': 'off'
+    }
+  },
+  fix: true
+});
+
 export const getTypeDefinitionForProperty = (property) => {
   switch (property.type) {
     // native ts types
@@ -132,4 +148,11 @@ export const getTypeDefinitionForProperty = (property) => {
     default:
       throw new Error(`Unknown type ${JSON.stringify(property)}`);
   }
+};
+
+export const runEsLint = async (text, name) => {
+  const [result] = await eslint.lintText(text, {
+    filePath: `packages/main/src/webComponents/${name}/index.tsx`
+  });
+  return result.output;
 };
