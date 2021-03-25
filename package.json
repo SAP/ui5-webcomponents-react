@@ -93,7 +93,6 @@
     "react-test-renderer": "17.0.2",
     "rimraf": "^3.0.1",
     "rollup": "^2.23.0",
-    "rollup-plugin-terser": "^7.0.2",
     "targz": "^1.0.1",
     "turndown": "^7.0.0",
     "typescript": "^4.0.3"
