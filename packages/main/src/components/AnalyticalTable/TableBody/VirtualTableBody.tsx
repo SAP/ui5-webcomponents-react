@@ -192,7 +192,10 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
       {rowVirtualizer.virtualItems.map((virtualRow) => {
         const row = rows[virtualRow.index];
         const setSubcomponentsRefs = (el) => {
-          if (el?.offsetHeight && subComponentsHeight?.[virtualRow.index]?.subComponentHeight !== el?.offsetHeight) {
+          if (
+            typeof el?.offsetHeight === 'number' &&
+            subComponentsHeight?.[virtualRow.index]?.subComponentHeight !== el?.offsetHeight
+          ) {
             dispatch({
               type: 'SUB_COMPONENTS_HEIGHT',
               payload: {
@@ -217,7 +220,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
         prepareRow(row);
         const rowProps = row.getRowProps();
         const isNavigatedCell = markNavigatedRow(row);
-        const RowSubComponent = typeof renderRowSubComponent === 'function' ? renderRowSubComponent(row) : null;
+        const RowSubComponent = typeof renderRowSubComponent === 'function' ? renderRowSubComponent(row) : undefined;
         return (
           <div
             {...rowProps}
@@ -227,7 +230,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
               position: 'absolute'
             }}
           >
-            {RowSubComponent && (row.isExpanded || alwaysShowSubComponent) && (
+            {RowSubComponent !== undefined && (row.isExpanded || alwaysShowSubComponent) && (
               <div
                 ref={setSubcomponentsRefs}
                 style={{
