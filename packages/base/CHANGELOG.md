@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.131.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.1...v0.131.2) (2021-03-25)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-base
+
+
+
+
+
 # [0.131.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.14.2...v0.131.0) (2021-02-26)
 
 
