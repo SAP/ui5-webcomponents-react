@@ -27,7 +27,7 @@ const {{name}}: FC<{{name}}PropTypes> = withWebComponent<{{name}}PropTypes>(
 
 {{name}}.defaultProps = {
 {{#each defaultProps}}
-{{this}}{{#unless @last}},{{/unless}}
+{{{this}}}{{#unless @last}},{{/unless}}
 {{/each}}
 };
 
