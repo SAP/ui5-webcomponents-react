@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.129.9](https://github.com/SAP/ui5-webcomponents-react/compare/v0.129.8...v0.129.9) (2021-03-25)
+
+
+### Features
+
+* update to wrapper 0.29.11 ([7b38796](https://github.com/SAP/ui5-webcomponents-react/commit/7b38796521605f028bb6fef4795ee50edac45dc3))
+
+
+
+
+
 ## [0.129.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.129.5...v0.129.6) (2021-03-04)
 
 
