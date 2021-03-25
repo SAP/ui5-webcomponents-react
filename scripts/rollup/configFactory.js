@@ -5,7 +5,6 @@ import fs from 'fs';
 import micromatch from 'micromatch';
 import PATHS from '../../config/paths.js';
 import { asyncCopyTo, highlightLog } from '../utils.js';
-import replace from '@rollup/plugin-replace';
 import glob from 'glob';
 import dedent from 'dedent';
 
@@ -27,14 +26,6 @@ const rollupConfigFactory = (pkgName, externals = []) => {
       extensions: ['.js', '.jsx', '.ts', '.tsx'],
       babelHelpers: 'runtime',
       configFile: path.resolve(PATHS.root, 'babel.config.cjs')
-    }),
-    // Turn __DEV__ and process.env checks into constants.
-    replace({
-      exclude: 'node_modules/**',
-      values: {
-        __DEV__: 'false'
-      },
-      preventAssignment: true
     })
   ];
 
