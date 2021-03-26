@@ -625,6 +625,12 @@ allWebComponents
       fs.mkdirSync(webComponentFolderPath);
     }
 
+    // create empty index file for eslint
+    const webComponentWrapperPath = path.join(webComponentFolderPath, 'index.tsx');
+    if (!fs.existsSync(webComponentWrapperPath)) {
+      fs.writeFileSync(webComponentWrapperPath, '');
+    }
+
     if (
       (CREATE_SINGLE_COMPONENT === componentSpec.module || !CREATE_SINGLE_COMPONENT) &&
       !EXCLUDE_LIST.includes(componentSpec.module)
@@ -647,7 +653,7 @@ allWebComponents
         (componentSpec.slots || []).filter(filterNonPublicAttributes).map(({ name }) => name),
         (componentSpec.events || []).filter(filterNonPublicAttributes).map(({ name }) => name)
       );
-      fs.writeFileSync(path.join(webComponentFolderPath, 'index.tsx'), webComponentWrapper);
+      fs.writeFileSync(webComponentWrapperPath, webComponentWrapper);
 
       // create lib export
       const libContent = prettier.format(libraryExportTemplate({ name: componentSpec.module }), prettierConfig);
