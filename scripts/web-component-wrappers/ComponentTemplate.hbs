@@ -1,0 +1,34 @@
+import { FC } from 'react';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+{{#each imports}}
+{{{this}}}
+{{/each}}
+
+export interface {{name}}PropTypes extends {{{propTypesExtends}}} {
+{{#each types}}
+  {{{this}}}
+{{/each}}
+}
+
+/**
+* {{{description}}}
+*
+* <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/{{name}}" target="_blank">UI5 Web Components Playground</ui5-link>
+*/
+const {{name}}: FC<{{name}}PropTypes> = withWebComponent<{{name}}PropTypes>(
+  '{{tagName}}',
+  {{{convertToStringArray regularProps }}},
+  {{{convertToStringArray booleanProps }}},
+  {{{convertToStringArray slotProps }}},
+  {{{convertToStringArray eventProps }}}
+);
+
+{{name}}.displayName = '{{name}}';
+
+{{name}}.defaultProps = {
+{{#each defaultProps}}
+{{{this}}}{{#unless @last}},{{/unless}}
+{{/each}}
+};
+
+export { {{name}} };
