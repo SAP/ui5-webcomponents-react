@@ -1,10 +1,9 @@
+import '@ui5/webcomponents-icons/dist/sys-help-2';
+import '@ui5/webcomponents-icons/dist/error';
+import '@ui5/webcomponents-icons/dist/information';
+import '@ui5/webcomponents-icons/dist/sys-enter-2';
+import '@ui5/webcomponents-icons/dist/alert';
 import '@ui5/webcomponents-icons/dist/hint';
-import '@ui5/webcomponents-icons/dist/message-error';
-import '@ui5/webcomponents-icons/dist/message-information';
-import '@ui5/webcomponents-icons/dist/message-success';
-import '@ui5/webcomponents-icons/dist/message-warning';
-import '@ui5/webcomponents-icons/dist/question-mark';
-import { createUseStyles } from 'react-jss';
 import { useConsolidatedRef, useI18nBundle, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
@@ -45,6 +44,7 @@ import React, {
   useEffect,
   useMemo
 } from 'react';
+import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DialogDomRef } from '../../interfaces/Ui5DialogDomRef';
 import { stopPropagation } from '../../internal/stopPropagation';
@@ -99,15 +99,15 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
     if (isValidElement(icon)) return icon;
     switch (type) {
       case MessageBoxTypes.CONFIRM:
-        return <Icon name="question-mark" />;
+        return <Icon name="sys-help-2" />;
       case MessageBoxTypes.ERROR:
-        return <Icon name="message-error" />;
+        return <Icon name="error" />;
       case MessageBoxTypes.INFORMATION:
-        return <Icon name="message-information" />;
+        return <Icon name="information" />;
       case MessageBoxTypes.SUCCESS:
-        return <Icon name="message-success" />;
+        return <Icon name="sys-enter-2" />;
       case MessageBoxTypes.WARNING:
-        return <Icon name="message-warning" />;
+        return <Icon name="alert" />;
       case MessageBoxTypes.HIGHLIGHT:
         return <Icon name="hint" />;
       default:
@@ -197,7 +197,7 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
       header={
         <header className={classes.header} data-type={type}>
           {iconToRender}
-          <Title level={TitleLevel.H5}>{titleToRender()}</Title>
+          <Title level={TitleLevel.H2}>{titleToRender()}</Title>
         </header>
       }
       footer={
