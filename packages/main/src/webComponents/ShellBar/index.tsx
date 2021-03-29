@@ -1,6 +1,7 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import '@ui5/webcomponents-fiori/dist/ShellBar';
 import { FC, ReactNode } from 'react';
+
+import '@ui5/webcomponents-fiori/dist/ShellBar';
 
 export interface ShellBarPropTypes extends WithWebComponentPropTypes {
   /**
@@ -67,14 +68,14 @@ export interface ShellBarPropTypes extends WithWebComponentPropTypes {
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
    */
-  searchField?: ReactNode | ReactNode[];
+  searchField?: ReactNode;
   /**
    * Defines a `Button` in the bar that will be placed in the beginning. We encourage this slot to be used for a back or home button. It gets overstyled to match ShellBar's styling.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
    */
-  startButton?: ReactNode | ReactNode[];
+  startButton?: ReactNode;
   /**
    * Fired, when the co pilot is activated.
    */
@@ -104,7 +105,7 @@ export interface ShellBarPropTypes extends WithWebComponentPropTypes {
 /**
  * The `ShellBar` is meant to serve as an application header and includes numerous built-in features, such as: logo, profile image/icon, title, search field, notifications and so on.
  *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/ShellBar" target="_blank">UI5 Web Components Playground</a>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/ShellBar" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const ShellBar: FC<ShellBarPropTypes> = withWebComponent<ShellBarPropTypes>(
   'ui5-shellbar',

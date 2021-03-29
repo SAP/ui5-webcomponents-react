@@ -1,6 +1,7 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import '@ui5/webcomponents/dist/Switch';
 import { FC } from 'react';
+
+import '@ui5/webcomponents/dist/Switch';
 
 export interface SwitchPropTypes extends Omit<WithWebComponentPropTypes, 'onChange'> {
   /**
@@ -45,7 +46,7 @@ export interface SwitchPropTypes extends Omit<WithWebComponentPropTypes, 'onChan
  * However, users are able to customize the width of `Switch` with pure CSS (`<Switch style={{width: "200px"}} />`), and set widths, depending on the texts they would use.
  * Note: the component would not automatically stretch to fit the whole text width.
  *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Switch" target="_blank">UI5 Web Components Playground</a>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Switch" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const Switch: FC<SwitchPropTypes> = withWebComponent<SwitchPropTypes>(
   'ui5-switch',

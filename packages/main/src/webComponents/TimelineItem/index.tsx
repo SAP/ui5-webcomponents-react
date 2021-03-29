@@ -1,6 +1,7 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import '@ui5/webcomponents-fiori/dist/TimelineItem';
 import { FC, ReactNode } from 'react';
+
+import '@ui5/webcomponents-fiori/dist/TimelineItem';
 
 export interface TimelineItemPropTypes extends WithWebComponentPropTypes {
   /**
@@ -40,7 +41,7 @@ export interface TimelineItemPropTypes extends WithWebComponentPropTypes {
 /**
  * An entry posted on the timeline
  *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/TimelineItem" target="_blank">UI5 Web Components Playground</a>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/TimelineItem" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const TimelineItem: FC<TimelineItemPropTypes> = withWebComponent<TimelineItemPropTypes>(
   'ui5-timeline-item',
