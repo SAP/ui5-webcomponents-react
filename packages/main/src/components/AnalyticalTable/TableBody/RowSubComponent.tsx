@@ -1,6 +1,18 @@
 import React, { useEffect, useRef } from 'react';
+import { VirtualItem } from 'react-virtual';
 
-export const RowSubComponent = (props) => {
+interface RowSubComponent {
+  subComponentsHeight: Record<string, { rowId: string; subComponentHeight?: number }>;
+  virtualRow: VirtualItem;
+  dispatch: (e: { type: string; payload?: any }) => void;
+  row: any;
+  rowHeight: number;
+  children: any;
+  rows: any[];
+  alwaysShowSubComponent: boolean;
+}
+
+export const RowSubComponent = (props: RowSubComponent) => {
   const { subComponentsHeight, virtualRow, dispatch, row, rowHeight, children, rows, alwaysShowSubComponent } = props;
   const subComponentRef = useRef(null);
 
