@@ -208,6 +208,17 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
         const rowProps = row.getRowProps();
         const isNavigatedCell = markNavigatedRow(row);
         const RowSubComponent = typeof renderRowSubComponent === 'function' ? renderRowSubComponent(row) : undefined;
+
+        if (!RowSubComponent && subComponentsHeight && subComponentsHeight?.[virtualRow.index]?.subComponentHeight) {
+          dispatch({
+            type: 'SUB_COMPONENTS_HEIGHT',
+            payload: {
+              ...subComponentsHeight,
+              [virtualRow.index]: { subComponentHeight: 0, rowId: row.id }
+            }
+          });
+        }
+
         return (
           <div
             {...rowProps}
@@ -217,7 +228,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
               position: 'absolute'
             }}
           >
-            {RowSubComponent !== undefined && (row.isExpanded || alwaysShowSubComponent) && (
+            {RowSubComponent && (row.isExpanded || alwaysShowSubComponent) && (
               <SubComponent
                 subComponentsHeight={subComponentsHeight}
                 virtualRow={virtualRow}
@@ -225,6 +236,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
                 row={row}
                 rowHeight={rowHeight}
                 rows={rows}
+                alwaysShowSubComponent={alwaysShowSubComponent}
               >
                 {RowSubComponent}
               </SubComponent>
