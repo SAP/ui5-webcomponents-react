@@ -1,6 +1,7 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import '@ui5/webcomponents-fiori/dist/WizardStep';
 import { FC, ReactNode } from 'react';
+
+import '@ui5/webcomponents-fiori/dist/WizardStep';
 
 export interface WizardStepPropTypes extends WithWebComponentPropTypes {
   /**
@@ -52,7 +53,7 @@ export interface WizardStepPropTypes extends WithWebComponentPropTypes {
 /**
  * A component that represents a logical step as part of the `Wizard`. It is meant to aggregate arbitrary HTML elements that forms the content of a single step.
  *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/WizardStep" target="_blank">UI5 Web Components Playground</a>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/WizardStep" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const WizardStep: FC<WizardStepPropTypes> = withWebComponent<WizardStepPropTypes>(
   'ui5-wizard-step',
