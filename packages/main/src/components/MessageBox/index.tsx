@@ -1,8 +1,8 @@
-import '@ui5/webcomponents-icons/dist/sys-help-2';
-import '@ui5/webcomponents-icons/dist/error';
-import '@ui5/webcomponents-icons/dist/information';
-import '@ui5/webcomponents-icons/dist/sys-enter-2';
-import '@ui5/webcomponents-icons/dist/alert';
+import '@ui5/webcomponents-icons/dist/message-error';
+import '@ui5/webcomponents-icons/dist/message-information';
+import '@ui5/webcomponents-icons/dist/message-success';
+import '@ui5/webcomponents-icons/dist/message-warning';
+import '@ui5/webcomponents-icons/dist/question-mark';
 import '@ui5/webcomponents-icons/dist/hint';
 import { useConsolidatedRef, useI18nBundle, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
@@ -99,15 +99,15 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
     if (isValidElement(icon)) return icon;
     switch (type) {
       case MessageBoxTypes.CONFIRM:
-        return <Icon name="sys-help-2" />;
+        return <Icon name="question-mark" />;
       case MessageBoxTypes.ERROR:
-        return <Icon name="error" />;
+        return <Icon name="message-error" />;
       case MessageBoxTypes.INFORMATION:
-        return <Icon name="information" />;
+        return <Icon name="message-information" />;
       case MessageBoxTypes.SUCCESS:
-        return <Icon name="sys-enter-2" />;
+        return <Icon name="message-success" />;
       case MessageBoxTypes.WARNING:
-        return <Icon name="alert" />;
+        return <Icon name="message-warning" />;
       case MessageBoxTypes.HIGHLIGHT:
         return <Icon name="hint" />;
       default:

@@ -33,7 +33,7 @@ exports[`MessageBox Confirm - Cancel 1`] = `
       slot="header"
     >
       <ui5-icon
-        name="sys-help-2"
+        name="question-mark"
         ui5-icon=""
       />
       <ui5-title
@@ -85,7 +85,7 @@ exports[`MessageBox Confirm 1`] = `
       slot="header"
     >
       <ui5-icon
-        name="sys-help-2"
+        name="question-mark"
         ui5-icon=""
       />
       <ui5-title
@@ -135,7 +135,7 @@ exports[`MessageBox Custom Action Text 1`] = `
       slot="header"
     >
       <ui5-icon
-        name="sys-help-2"
+        name="question-mark"
         ui5-icon=""
       />
       <ui5-title
@@ -219,7 +219,7 @@ exports[`MessageBox Error 1`] = `
       slot="header"
     >
       <ui5-icon
-        name="error"
+        name="message-error"
         ui5-icon=""
       />
       <ui5-title
@@ -309,7 +309,7 @@ exports[`MessageBox Information 1`] = `
       slot="header"
     >
       <ui5-icon
-        name="information"
+        name="message-information"
         ui5-icon=""
       />
       <ui5-title
@@ -361,7 +361,7 @@ exports[`MessageBox No Title 1`] = `
       slot="header"
     >
       <ui5-icon
-        name="sys-help-2"
+        name="question-mark"
         ui5-icon=""
       />
       <ui5-title
@@ -404,7 +404,7 @@ exports[`MessageBox Not open 1`] = `
       slot="header"
     >
       <ui5-icon
-        name="sys-enter-2"
+        name="message-success"
         ui5-icon=""
       />
       <ui5-title
@@ -456,7 +456,7 @@ exports[`MessageBox Show 1`] = `
       slot="header"
     >
       <ui5-icon
-        name="sys-help-2"
+        name="question-mark"
         ui5-icon=""
       />
       <ui5-title
@@ -501,7 +501,7 @@ exports[`MessageBox Success 1`] = `
       slot="header"
     >
       <ui5-icon
-        name="sys-enter-2"
+        name="message-success"
         ui5-icon=""
       />
       <ui5-title
@@ -591,7 +591,7 @@ exports[`MessageBox Warning 1`] = `
       slot="header"
     >
       <ui5-icon
-        name="alert"
+        name="message-warning"
         ui5-icon=""
       />
       <ui5-title
