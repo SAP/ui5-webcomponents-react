@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.131.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.2...v0.131.3) (2021-03-29)
+
+
+### Bug Fixes
+
+* **MessageBox:** a11y - use correct title level ([#1454](https://github.com/SAP/ui5-webcomponents-react/issues/1454)) ([75901fc](https://github.com/SAP/ui5-webcomponents-react/commit/75901fc8557b620c96c53bf3286a2f94e9887c5d))
+
+
+
+
+
 ## [0.131.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.1...v0.131.2) (2021-03-25)
 
 
