@@ -33,7 +33,7 @@
     "smoothscroll-polyfill": "0.4.4"
   },
   "peerDependencies": {
-    "@ui5/webcomponents-base": "0.30.0",
+    "@ui5/webcomponents-base": "0.32.0",
     "react": "^16.8.0 || ^17.0.0"
   },
   "peerDependenciesMeta": {
