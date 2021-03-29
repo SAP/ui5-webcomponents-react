@@ -14,7 +14,20 @@ const eslint = new ESLint({
   fix: true
 });
 
-export const getTypeDefinitionForProperty = (property) => {
+export const getTypeDefinitionForProperty = (property, interfaces) => {
+  if (interfaces.has(property.type.replace(/\[]$/, ''))) {
+    if (/\[]$/.test(property.type)) {
+      return {
+        tsType: 'ReactNode | ReactNode[]',
+        importStatement: "import { ReactNode } from 'react';"
+      };
+    }
+    return {
+      tsType: 'ReactNode',
+      importStatement: "import { ReactNode } from 'react';"
+    };
+  }
+
   switch (property.type) {
     // native ts types
     case 'string':
@@ -107,6 +120,7 @@ export const getTypeDefinitionForProperty = (property) => {
     case 'InputType':
     case 'LinkDesign':
     case 'ListMode':
+    case 'ListGrowingMode':
     case 'ListSeparators':
     case 'MessageStripType':
     case 'PageBackgroundDesign':
@@ -154,5 +168,9 @@ export const runEsLint = async (text, name) => {
   const [result] = await eslint.lintText(text, {
     filePath: `packages/main/src/webComponents/${name}/index.tsx`
   });
+  if (result.messages.length) {
+    console.warn(`Failed to run ESLint for '${name}! Please check the file manually.'`);
+    return text;
+  }
   return result.output;
 };
