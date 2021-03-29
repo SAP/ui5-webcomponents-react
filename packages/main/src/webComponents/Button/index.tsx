@@ -42,7 +42,7 @@ export interface ButtonPropTypes extends Omit<WithWebComponentPropTypes, 'onClic
   /**
    * Defines the text of the `Button`.
    *
-   * **Note:** Аlthough this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
+   * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
   children?: ReactNode | ReactNode[];
   /**
