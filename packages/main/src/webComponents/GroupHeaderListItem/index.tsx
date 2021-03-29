@@ -1,6 +1,7 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import '@ui5/webcomponents/dist/GroupHeaderListItem';
 import { FC, ReactNode } from 'react';
+
+import '@ui5/webcomponents/dist/GroupHeaderListItem';
 
 export interface GroupHeaderListItemPropTypes extends WithWebComponentPropTypes {
   /**
@@ -9,7 +10,7 @@ export interface GroupHeaderListItemPropTypes extends WithWebComponentPropTypes 
   selected?: boolean;
   /**
    * Defines the text of the `GroupHeaderListItem`.
-   * **Note:** Аlthough this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
+   * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
   children?: ReactNode | ReactNode[];
 }
@@ -17,7 +18,7 @@ export interface GroupHeaderListItemPropTypes extends WithWebComponentPropTypes 
 /**
  * The `GroupHeaderListItem` is a special list item, used only to separate other list items into logical groups
  *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/GroupHeaderListItem" target="_blank">UI5 Web Components Playground</a>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/GroupHeaderListItem" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const GroupHeaderListItem: FC<GroupHeaderListItemPropTypes> = withWebComponent<GroupHeaderListItemPropTypes>(
   'ui5-li-groupheader',

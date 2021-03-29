@@ -1,7 +1,8 @@
 import { Priority } from '@ui5/webcomponents-react/dist/Priority';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import '@ui5/webcomponents-fiori/dist/NotificationListItem';
 import { FC, ReactNode } from 'react';
+
+import '@ui5/webcomponents-fiori/dist/NotificationListItem';
 
 export interface NotificationListItemPropTypes extends WithWebComponentPropTypes {
   /**
@@ -49,7 +50,7 @@ export interface NotificationListItemPropTypes extends WithWebComponentPropTypes
   /**
    * Defines the content of the `NotificationListItem`, usually a description of the notification.
    *
-   * **Note:** Аlthough this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
+   * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
   children?: ReactNode | ReactNode[];
   /**
@@ -67,7 +68,7 @@ export interface NotificationListItemPropTypes extends WithWebComponentPropTypes
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
    */
-  actions?: ReactNode;
+  actions?: ReactNode | ReactNode[];
   /**
    * Fired when the `Close` button is pressed.
    */
@@ -83,7 +84,7 @@ export interface NotificationListItemPropTypes extends WithWebComponentPropTypes
  * *   can control whether the `heading` and `description` should wrap or truncate and display a `ShowMore` button to switch between less and more information
  * *   add custom actions by using the `NotificationAction` component
  *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/NotificationListItem" target="_blank">UI5 Web Components Playground</a>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/NotificationListItem" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const NotificationListItem: FC<NotificationListItemPropTypes> = withWebComponent<NotificationListItemPropTypes>(
   'ui5-li-notification',

@@ -1,7 +1,8 @@
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import '@ui5/webcomponents/dist/FileUploader';
 import { FC, ReactNode } from 'react';
+
+import '@ui5/webcomponents/dist/FileUploader';
 
 export interface FileUploaderPropTypes extends Omit<WithWebComponentPropTypes, 'onChange'> {
   /**
@@ -77,7 +78,7 @@ export interface FileUploaderPropTypes extends Omit<WithWebComponentPropTypes, '
  * To get all selected files, you can simply use the read-only "files" property. To restrict the types of files the user can select, you can use the "accept" property.
  * And, similar to all input based components, the FileUploader supports "valueState", "placeholder", "name", and "disabled" properties. For the `FileUploader`
  *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/FileUploader" target="_blank">UI5 Web Components Playground</a>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/FileUploader" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const FileUploader: FC<FileUploaderPropTypes> = withWebComponent<FileUploaderPropTypes>(
   'ui5-file-uploader',

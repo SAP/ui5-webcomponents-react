@@ -1,7 +1,8 @@
 import { LinkDesign } from '@ui5/webcomponents-react/dist/LinkDesign';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import '@ui5/webcomponents/dist/Link';
 import { FC, ReactNode } from 'react';
+
+import '@ui5/webcomponents/dist/Link';
 
 export interface LinkPropTypes extends Omit<WithWebComponentPropTypes, 'onClick'> {
   /**
@@ -39,7 +40,7 @@ export interface LinkPropTypes extends Omit<WithWebComponentPropTypes, 'onClick'
   wrap?: boolean;
   /**
    * Defines the text of the `Link`.
-   * **Note:** Аlthough this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
+   * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
   children?: ReactNode | ReactNode[];
   /**
@@ -51,7 +52,7 @@ export interface LinkPropTypes extends Omit<WithWebComponentPropTypes, 'onClick'
 /**
  * The `Link` is a hyperlink component that is used to navigate to other apps and web pages, or to trigger actions. It is a clickable text element, visualized in such a way that it stands out from the standard text. On hover, it changes its style to an underlined text to provide additional feedback to the user.
  *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Link" target="_blank">UI5 Web Components Playground</a>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Link" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const Link: FC<LinkPropTypes> = withWebComponent<LinkPropTypes>(
   'ui5-link',
