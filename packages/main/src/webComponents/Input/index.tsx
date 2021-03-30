@@ -1,10 +1,11 @@
 import { InputType } from '@ui5/webcomponents-react/dist/InputType';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import '@ui5/webcomponents/dist/Input';
 import { FC, ReactNode } from 'react';
 
-export interface InputPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput' | 'onSubmit'> {
+import '@ui5/webcomponents/dist/Input';
+
+export interface InputPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput'> {
   /**
    * Defines whether the `Input` is in disabled state.
    *
@@ -104,7 +105,7 @@ export interface InputPropTypes extends Omit<WithWebComponentPropTypes, 'onChang
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
    */
-  icon?: ReactNode | ReactNode[];
+  icon?: ReactNode;
   /**
    * Defines the value state message that will be displayed as pop up under the `Input`.
    *
@@ -124,12 +125,6 @@ export interface InputPropTypes extends Omit<WithWebComponentPropTypes, 'onChang
    * Fired when the value of the `Input` changes at each keystroke, and when a suggestion item has been selected.
    */
   onInput?: (event: CustomEvent) => void;
-  /**
-   * Fired when user presses Enter key on the `Input`.
-   *
-   * **Note:** The event is fired independent of whether there was a change before or not. If change was performed, the event is fired after the change event. The event is also fired when an item of the select list is selected by pressing Enter.
-   */
-  onSubmit?: (event: CustomEvent) => void;
   /**
    * Fired when the user navigates to a suggestion item via the ARROW keys, as a preview, before the final selection.
    */
@@ -152,14 +147,14 @@ export interface InputPropTypes extends Omit<WithWebComponentPropTypes, 'onChang
  *
  * **Note:** If you are using the `Input` as a single npm module, don't forget to import the `InputSuggestions` module from "@ui5/webcomponents/dist/features/InputSuggestions.js" to enable the suggestions functionality.
  *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Input" target="_blank">UI5 Web Components Playground</a>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Input" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const Input: FC<InputPropTypes> = withWebComponent<InputPropTypes>(
   'ui5-input',
   ['maxlength', 'name', 'placeholder', 'type', 'value', 'valueState'],
   ['disabled', 'highlight', 'readonly', 'required', 'showSuggestions'],
   ['icon', 'valueStateMessage'],
-  ['change', 'input', 'submit', 'suggestion-item-preview', 'suggestion-item-select', 'suggestion-scroll']
+  ['change', 'input', 'suggestion-item-preview', 'suggestion-item-select', 'suggestion-scroll']
 );
 
 Input.displayName = 'Input';

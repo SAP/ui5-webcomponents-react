@@ -1,6 +1,7 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import '@ui5/webcomponents/dist/Badge';
 import { FC, ReactNode } from 'react';
+
+import '@ui5/webcomponents/dist/Badge';
 
 export interface BadgePropTypes extends WithWebComponentPropTypes {
   /**
@@ -11,7 +12,7 @@ export interface BadgePropTypes extends WithWebComponentPropTypes {
   colorScheme?: string;
   /**
    * Defines the text of the `Badge`.
-   * **Note:** Аlthough this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
+   * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
   children?: ReactNode | ReactNode[];
   /**
@@ -20,13 +21,13 @@ export interface BadgePropTypes extends WithWebComponentPropTypes {
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
    */
-  icon?: ReactNode | ReactNode[];
+  icon?: ReactNode;
 }
 
 /**
  * The `Badge` is a small non-interactive component which contains text information and color chosen from a list of predefined color schemes. It serves the purpose to attract the user attention to some piece of information (state, quantity, condition, etc.).
  *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Badge" target="_blank">UI5 Web Components Playground</a>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Badge" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const Badge: FC<BadgePropTypes> = withWebComponent<BadgePropTypes>('ui5-badge', ['colorScheme'], [], ['icon'], []);
 

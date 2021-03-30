@@ -1,10 +1,15 @@
 import { PanelAccessibleRoles } from '@ui5/webcomponents-react/dist/PanelAccessibleRoles';
 import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import '@ui5/webcomponents/dist/Panel';
 import { FC, ReactNode } from 'react';
 
+import '@ui5/webcomponents/dist/Panel';
+
 export interface PanelPropTypes extends WithWebComponentPropTypes {
+  /**
+   * Sets the accessible aria name of the `Panel`.
+   */
+  accessibleName?: string;
   /**
    * Sets the accessible aria role of the `Panel`. Depending on the usage, you can change the role from the default `Form` to `Region` or `Complementary`.
    */
@@ -42,19 +47,23 @@ export interface PanelPropTypes extends WithWebComponentPropTypes {
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
    */
   header?: ReactNode | ReactNode[];
+  /**
+   * Fired when the Panel is expanded/collapsed by user interaction.
+   */
+  onToggle?: (event: CustomEvent) => void;
 }
 
 /**
  * The `Panel` component is a container which has a header and a content area and is used for grouping and displaying information. It can be collapsed to save space on the screen.
  *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Panel" target="_blank">UI5 Web Components Playground</a>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Panel" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const Panel: FC<PanelPropTypes> = withWebComponent<PanelPropTypes>(
   'ui5-panel',
-  ['accessibleRole', 'headerLevel', 'headerText'],
+  ['accessibleName', 'accessibleRole', 'headerLevel', 'headerText'],
   ['collapsed', 'fixed'],
   ['header'],
-  []
+  ['toggle']
 );
 
 Panel.displayName = 'Panel';

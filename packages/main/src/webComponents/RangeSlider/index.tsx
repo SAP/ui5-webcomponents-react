@@ -1,6 +1,7 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import '@ui5/webcomponents/dist/RangeSlider';
 import { FC } from 'react';
+
+import '@ui5/webcomponents/dist/RangeSlider';
 
 export interface RangeSliderPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput'> {
   /**
@@ -58,7 +59,7 @@ export interface RangeSliderPropTypes extends Omit<WithWebComponentPropTypes, 'o
 /**
  * Represents a numerical interval and two handles (grips) to select a sub-range within it. The purpose of the component to enable visual selection of sub-ranges within a given interval.
  *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/RangeSlider" target="_blank">UI5 Web Components Playground</a>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/RangeSlider" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const RangeSlider: FC<RangeSliderPropTypes> = withWebComponent<RangeSliderPropTypes>(
   'ui5-range-slider',

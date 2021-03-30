@@ -1,12 +1,14 @@
+import { ListGrowingMode } from '@ui5/webcomponents-react/dist/ListGrowingMode';
 import { ListMode } from '@ui5/webcomponents-react/dist/ListMode';
 import { ListSeparators } from '@ui5/webcomponents-react/dist/ListSeparators';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import '@ui5/webcomponents/dist/List';
 import { FC, ReactNode } from 'react';
+
+import '@ui5/webcomponents/dist/List';
 
 export interface ListPropTypes extends WithWebComponentPropTypes {
   /**
-   * Defines if the component would display a loading indicator at the bottom of the list. It's especially useful, when combined with `infiniteScroll`.
+   * Defines if the component would display a loading indicator over the list.
    */
   busy?: boolean;
   /**
@@ -14,15 +16,23 @@ export interface ListPropTypes extends WithWebComponentPropTypes {
    */
   footerText?: string;
   /**
+   * Defines whether the `List` will have growing capability either by pressing a `More` button, or via user scroll. In both cases `onLoadMore` event is fired.
+   *
+   * Available options:
+   *
+   * - `Button` - Shows a `More` button at the bottom of the list, pressing of which triggers the `onLoadMore` event.
+   * - `Scroll` - The `onLoadMore` event is triggered when the user scrolls to the bottom of the list;
+   * - `None` (default) - The growing is off.
+   *
+   * **Limitations:** `growing="Scroll"` is not supported for Internet Explorer, on IE the component will fallback to `growing="Button"`.
+   */
+  growing?: ListGrowingMode;
+  /**
    * Defines the `List` header text.
    *
    * **Note:** If `header` is set this property is ignored.
    */
   headerText?: string;
-  /**
-   * Defines if the component would fire the `onLoadMore` event when the user scrolls to the bottom of the list, and helps achieving an "infinite scroll" effect by adding new items each time.
-   */
-  infiniteScroll?: boolean;
   /**
    * Determines whether the list items are indented.
    */
@@ -87,7 +97,7 @@ export interface ListPropTypes extends WithWebComponentPropTypes {
   /**
    * Fired when the user scrolls to the bottom of the list.
    *
-   * **Note:** The event is fired when the `infiniteScroll` property is enabled.
+   * **Note:** The event is fired when the `growing='Scroll'` property is enabled.
    */
   onLoadMore?: (event: CustomEvent) => void;
   /**
@@ -111,12 +121,12 @@ export interface ListPropTypes extends WithWebComponentPropTypes {
  *
  * Additionally, the `List` provides header, footer, and customization for the list item separators.
  *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/List" target="_blank">UI5 Web Components Playground</a>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/List" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const List: FC<ListPropTypes> = withWebComponent<ListPropTypes>(
   'ui5-list',
-  ['footerText', 'headerText', 'mode', 'noDataText', 'separators'],
-  ['busy', 'infiniteScroll', 'inset'],
+  ['footerText', 'growing', 'headerText', 'mode', 'noDataText', 'separators'],
+  ['busy', 'inset'],
   ['header'],
   ['item-click', 'item-close', 'item-delete', 'item-toggle', 'load-more', 'selection-change']
 );
@@ -125,7 +135,7 @@ List.displayName = 'List';
 
 List.defaultProps = {
   busy: false,
-  infiniteScroll: false,
+  growing: ListGrowingMode.None,
   inset: false,
   mode: ListMode.None,
   separators: ListSeparators.All

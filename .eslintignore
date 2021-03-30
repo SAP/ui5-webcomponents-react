@@ -38,7 +38,6 @@ shared
 *.test.tsx
 *.test.ts
 rollup.config.js
-index.cjs.js
 index.esm.js
 packages/cra-template
 

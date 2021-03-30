@@ -37,7 +37,7 @@ exports[`MessageBox Confirm - Cancel 1`] = `
         ui5-icon=""
       />
       <ui5-title
-        level="H5"
+        level="H2"
         ui5-title=""
       >
         Confirmation
@@ -89,7 +89,7 @@ exports[`MessageBox Confirm 1`] = `
         ui5-icon=""
       />
       <ui5-title
-        level="H5"
+        level="H2"
         ui5-title=""
       >
         Confirmation
@@ -139,7 +139,7 @@ exports[`MessageBox Custom Action Text 1`] = `
         ui5-icon=""
       />
       <ui5-title
-        level="H5"
+        level="H2"
         ui5-title=""
       >
         Confirmation
@@ -180,7 +180,7 @@ exports[`MessageBox Don't crash on unknown type 1`] = `
       slot="header"
     >
       <ui5-title
-        level="H5"
+        level="H2"
         ui5-title=""
       />
     </header>
@@ -223,7 +223,7 @@ exports[`MessageBox Error 1`] = `
         ui5-icon=""
       />
       <ui5-title
-        level="H5"
+        level="H2"
         ui5-title=""
       >
         Error
@@ -268,7 +268,7 @@ exports[`MessageBox Highlight 1`] = `
         ui5-icon=""
       />
       <ui5-title
-        level="H5"
+        level="H2"
         ui5-title=""
       >
         Highlight
@@ -313,7 +313,7 @@ exports[`MessageBox Information 1`] = `
         ui5-icon=""
       />
       <ui5-title
-        level="H5"
+        level="H2"
         ui5-title=""
       >
         Information
@@ -365,7 +365,7 @@ exports[`MessageBox No Title 1`] = `
         ui5-icon=""
       />
       <ui5-title
-        level="H5"
+        level="H2"
         ui5-title=""
       >
         Confirmation
@@ -408,7 +408,7 @@ exports[`MessageBox Not open 1`] = `
         ui5-icon=""
       />
       <ui5-title
-        level="H5"
+        level="H2"
         ui5-title=""
       >
         Custom Success
@@ -460,7 +460,7 @@ exports[`MessageBox Show 1`] = `
         ui5-icon=""
       />
       <ui5-title
-        level="H5"
+        level="H2"
         ui5-title=""
       >
         Custom
@@ -505,7 +505,7 @@ exports[`MessageBox Success 1`] = `
         ui5-icon=""
       />
       <ui5-title
-        level="H5"
+        level="H2"
         ui5-title=""
       >
         Success
@@ -550,7 +550,7 @@ exports[`MessageBox Success w/ custom title 1`] = `
         ui5-icon=""
       />
       <ui5-title
-        level="H5"
+        level="H2"
         ui5-title=""
       >
         Custom Success
@@ -595,7 +595,7 @@ exports[`MessageBox Warning 1`] = `
         ui5-icon=""
       />
       <ui5-title
-        level="H5"
+        level="H2"
         ui5-title=""
       >
         Warning

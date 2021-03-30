@@ -1,5 +1,5 @@
 import '@ui5/webcomponents-react-base/types/UI5Device.d.ts';
-import { getOS, getSystem, supportTouch } from '@ui5/webcomponents-base/dist/Device';
+import { supportsTouch } from '@ui5/webcomponents-base/dist/Device';
 import EventProvider from '@ui5/webcomponents-base/dist/EventProvider';
 import { supportOrientation } from './Support';
 import * as Utils from './utils';
@@ -44,7 +44,7 @@ const setResizeInfo = () => {
 };
 
 const setOrientationInfo = () => {
-  internalOrientation.landscape = Utils.isLandscape(true, internalOrientation, bKeyboardOpen);
+  internalOrientation.landscape = Utils.isLandscape();
   internalOrientation.portrait = !internalOrientation.landscape;
 };
 
@@ -57,7 +57,7 @@ const clearFlags = () => {
 let eventListenersInitialized = false;
 const initEventListeners = () => {
   // Add handler for orientationchange and resize after initialization of Device API
-  if (supportTouch() && supportOrientation()) {
+  if (supportsTouch() && supportOrientation()) {
     // logic for mobile devices which support orientationchange (like ios, android)
     window.addEventListener('resize', handleMobileOrientationResizeChange, false);
     window.addEventListener('orientationchange', handleMobileOrientationResizeChange, false);
@@ -84,7 +84,7 @@ const handleMobileTimeout = () => {
   // when changing the size of a split view
   // therefore the following if needs to be adapted with additional check of iPad with version greater or equal 9
   // (splitview was introduced with iOS 9)
-  if (bResize && (bOrientationChange || (getSystem().tablet && getOS().ios && getOS().version >= 9))) {
+  if (bResize && bOrientationChange) {
     handleOrientationChange();
     handleResizeChange();
     bOrientationChange = false;
@@ -162,7 +162,7 @@ const handleResizeTimeout = () => {
 
 const handleResizeEvent = () => {
   const wasL = internalOrientation.landscape;
-  const isL = Utils.isLandscape(false, internalOrientation, bKeyboardOpen);
+  const isL = Utils.isLandscape();
   if (wasL !== isL) {
     handleOrientationChange();
   }
@@ -175,22 +175,7 @@ const handleResizeEvent = () => {
 };
 
 // re-export everything from the web components device
-export {
-  isIE,
-  isEdge,
-  isChrome,
-  isFF,
-  isSafari,
-  isMobile,
-  isDesktop,
-  isTablet,
-  isPhone,
-  isAndroid,
-  getOS,
-  getSystem,
-  getBrowser,
-  supportTouch
-} from '@ui5/webcomponents-base/dist/Device';
+export { isIE, isSafari, isDesktop, isTablet, isPhone, supportsTouch } from '@ui5/webcomponents-base/dist/Device';
 // export all support methods
 export * from './Support';
 // export all media methods

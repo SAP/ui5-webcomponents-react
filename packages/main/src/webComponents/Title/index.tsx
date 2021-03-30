@@ -1,7 +1,8 @@
 import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import '@ui5/webcomponents/dist/Title';
 import { FC, ReactNode } from 'react';
+
+import '@ui5/webcomponents/dist/Title';
 
 export interface TitlePropTypes extends WithWebComponentPropTypes {
   /**
@@ -15,7 +16,7 @@ export interface TitlePropTypes extends WithWebComponentPropTypes {
   /**
    * Defines the text of the `Title`.
    *
-   * **Note:** Аlthough this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
+   * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
   children?: ReactNode | ReactNode[];
 }
@@ -23,7 +24,7 @@ export interface TitlePropTypes extends WithWebComponentPropTypes {
 /**
  * The `Title` component is used to display titles inside a page. It is a simple, large-sized text with explicit header/title semantics.
  *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Title" target="_blank">UI5 Web Components Playground</a>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Title" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const Title: FC<TitlePropTypes> = withWebComponent<TitlePropTypes>('ui5-title', ['level'], ['wrap'], [], []);
 

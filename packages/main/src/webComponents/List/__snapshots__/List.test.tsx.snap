@@ -3,6 +3,7 @@
 exports[`List Basic Test (generated) 1`] = `
 <DocumentFragment>
   <ui5-list
+    growing="None"
     mode="None"
     separators="All"
     ui5-list=""

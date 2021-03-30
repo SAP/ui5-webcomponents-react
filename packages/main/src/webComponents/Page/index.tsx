@@ -1,7 +1,8 @@
 import { PageBackgroundDesign } from '@ui5/webcomponents-react/dist/PageBackgroundDesign';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import '@ui5/webcomponents-fiori/dist/Page';
 import { FC, ReactNode } from 'react';
+
+import '@ui5/webcomponents-fiori/dist/Page';
 
 export interface PagePropTypes extends WithWebComponentPropTypes {
   /**
@@ -11,10 +12,9 @@ export interface PagePropTypes extends WithWebComponentPropTypes {
    *
    * Available options are:
    *
+   * *   `Solid` (default)
+   * *   `Transparent`
    * *   `List`
-   * *   `Solid`
-   * *   `Standard`
-   * (default)*   `Transparent`
    */
   backgroundDesign?: PageBackgroundDesign;
   /**
@@ -54,7 +54,7 @@ export interface PagePropTypes extends WithWebComponentPropTypes {
 /**
  * The `Page` is a container control that holds one whole screen of an application. The page has three distinct areas that can hold content - a header, content area and a footer.
  *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Page" target="_blank">UI5 Web Components Playground</a>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Page" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const Page: FC<PagePropTypes> = withWebComponent<PagePropTypes>(
   'ui5-page',
@@ -67,7 +67,7 @@ const Page: FC<PagePropTypes> = withWebComponent<PagePropTypes>(
 Page.displayName = 'Page';
 
 Page.defaultProps = {
-  backgroundDesign: PageBackgroundDesign.Standard,
+  backgroundDesign: PageBackgroundDesign.Solid,
   disableScrolling: false,
   floatingFooter: true,
   hideFooter: false
