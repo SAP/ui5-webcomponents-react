@@ -1,6 +1,7 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import '@ui5/webcomponents/dist/Label';
 import { FC, ReactNode } from 'react';
+
+import '@ui5/webcomponents/dist/Label';
 
 export interface LabelPropTypes extends WithWebComponentPropTypes {
   /**
@@ -29,7 +30,7 @@ export interface LabelPropTypes extends WithWebComponentPropTypes {
   wrap?: boolean;
   /**
    * Defines the text of the `Label`.
-   * **Note:** Аlthough this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
+   * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
   children?: ReactNode | ReactNode[];
 }
@@ -39,7 +40,7 @@ export interface LabelPropTypes extends WithWebComponentPropTypes {
  *
  * The `Label` appearance can be influenced by properties, such as `required` and `wrap`. The appearance of the Label can be configured in a limited way by using the design property. For a broader choice of designs, you can use custom styles.
  *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Label" target="_blank">UI5 Web Components Playground</a>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Label" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const Label: FC<LabelPropTypes> = withWebComponent<LabelPropTypes>(
   'ui5-label',

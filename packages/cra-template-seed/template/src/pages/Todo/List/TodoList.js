@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useHistory } from 'react-router-dom';
-import { isChrome, isDesktop, isIE, isMobile, isTablet } from '@ui5/webcomponents-base/dist/Device';
+import { isDesktop, isTablet, isPhone } from '@ui5/webcomponents-base/dist/Device';
 
 import { Link, Text, Title, TitleLevel } from '@ui5/webcomponents-react';
 import ComponentWithAuthorizationRestriction from '../../../auth/ComponentWithAuthorizationRestriction';
@@ -34,21 +34,13 @@ const TodoList = () => {
 
       <Title level={TitleLevel.H3}>Device Detect</Title>
       <p>
-        <Text>{isMobile() ? 'This text appears when is MOBILE' : 'This text appears when is not MOBILE'}</Text>
+        <Text>{isPhone() ? 'This text appears when is PHONE' : 'This text appears when is not PHONE'}</Text>
       </p>
       <p>
         <Text>{isTablet() ? 'This text appears when is TABLET' : 'This text appears when is not TABLET'}</Text>
       </p>
       <p>
         <Text>{isDesktop() ? 'This text appears when is DESKTOP' : 'This text appears when is not DESKTOP'}</Text>
-      </p>
-
-      <Title level={TitleLevel.H3}>Browser Detect</Title>
-      <p>
-        <Text>{isChrome() ? 'This Text is rendered only for CHROME' : 'This Text is rendered only when is NOT CHROME'}</Text>
-      </p>
-      <p>
-        <Text>{isIE() ? 'This Text is rendered only for IE' : 'This Text is rendered only when is NOT IE'}</Text>
       </p>
 
       <Title level={TitleLevel.H3}>Lazy Loading + Pagination + Edition (Formik and Yup)</Title>

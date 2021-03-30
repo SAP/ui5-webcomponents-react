@@ -1,10 +1,11 @@
 import { InputType } from '@ui5/webcomponents-react/dist/InputType';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import '@ui5/webcomponents/dist/MultiInput';
 import { FC, ReactNode } from 'react';
 
-export interface MultiInputPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput' | 'onSubmit'> {
+import '@ui5/webcomponents/dist/MultiInput';
+
+export interface MultiInputPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput'> {
   /**
    * Determines whether a value help icon will be should in the end of the input. Pressing the icon will fire `onValueHelpTrigger` event.
    */
@@ -116,6 +117,7 @@ export interface MultiInputPropTypes extends Omit<WithWebComponentPropTypes, 'on
    *  </code>
    * </pre>
    *
+   *
    * **Note:** The suggestion would be displayed only if the `showSuggestions` property is set to `true`.
    *
    * **Note:** The `<SuggestionItem>` is recommended to be used as a suggestion item. Importing the Input Suggestions Support feature:
@@ -129,7 +131,7 @@ export interface MultiInputPropTypes extends Omit<WithWebComponentPropTypes, 'on
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
    */
-  icon?: ReactNode | ReactNode[];
+  icon?: ReactNode;
   /**
    * Defines the value state message that will be displayed as pop up under the `Input`.
    *
@@ -158,12 +160,6 @@ export interface MultiInputPropTypes extends Omit<WithWebComponentPropTypes, 'on
    */
   onInput?: (event: CustomEvent) => void;
   /**
-   * Fired when user presses Enter key on the `Input`.
-   *
-   * **Note:** The event is fired independent of whether there was a change before or not. If change was performed, the event is fired after the change event. The event is also fired when an item of the select list is selected by pressing Enter.
-   */
-  onSubmit?: (event: CustomEvent) => void;
-  /**
    * Fired when the user navigates to a suggestion item via the ARROW keys, as a preview, before the final selection.
    */
   onSuggestionItemPreview?: (event: CustomEvent<{ item: ReactNode; targetRef: ReactNode }>) => void;
@@ -181,10 +177,9 @@ export interface MultiInputPropTypes extends Omit<WithWebComponentPropTypes, 'on
  * A `MultiInput` field allows the user to enter multiple values, which are displayed as `Token`. User can choose interaction for creating tokens. Fiori Guidelines say that user should create tokens when:
  *
  * *   Type a value in the input and press enter or focus out the input field (`onChange` event is fired)
- * *   Select a value from the suggestion list
- * (`onSuggestionItemSelect` event is fired)
+ * *   Select a value from the suggestion list (`onSuggestionItemSelect` event is fired)
  *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/MultiInput" target="_blank">UI5 Web Components Playground</a>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/MultiInput" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const MultiInput: FC<MultiInputPropTypes> = withWebComponent<MultiInputPropTypes>(
   'ui5-multi-input',
@@ -196,7 +191,6 @@ const MultiInput: FC<MultiInputPropTypes> = withWebComponent<MultiInputPropTypes
     'value-help-trigger',
     'change',
     'input',
-    'submit',
     'suggestion-item-preview',
     'suggestion-item-select',
     'suggestion-scroll'

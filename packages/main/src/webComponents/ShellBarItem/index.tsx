@@ -1,6 +1,7 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import '@ui5/webcomponents-fiori/dist/ShellBarItem';
 import { FC, ReactNode } from 'react';
+
+import '@ui5/webcomponents-fiori/dist/ShellBarItem';
 
 export interface ShellBarItemPropTypes extends WithWebComponentPropTypes {
   /**
@@ -14,7 +15,7 @@ export interface ShellBarItemPropTypes extends WithWebComponentPropTypes {
   /**
    * Defines the stable selector that you can use via getStableDomRef method.
    */
-  stableDomRef?: unknown;
+  stableDomRef?: string;
   /**
    * Defines the item text.
    */
@@ -30,7 +31,7 @@ export interface ShellBarItemPropTypes extends WithWebComponentPropTypes {
 /**
  * The `ShellBarItem` represents a custom item, that might be added to the `ShellBar`.
  *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/ShellBarItem" target="_blank">UI5 Web Components Playground</a>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/ShellBarItem" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const ShellBarItem: FC<ShellBarItemPropTypes> = withWebComponent<ShellBarItemPropTypes>(
   'ui5-shellbar-item',

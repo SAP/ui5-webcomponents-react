@@ -1,6 +1,7 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import '@ui5/webcomponents-fiori/dist/Wizard';
 import { FC, ReactNode } from 'react';
+
+import '@ui5/webcomponents-fiori/dist/Wizard';
 
 export interface WizardPropTypes extends WithWebComponentPropTypes {
   /**
@@ -18,7 +19,7 @@ export interface WizardPropTypes extends WithWebComponentPropTypes {
 /**
  * The `Wizard` helps users complete a complex task by dividing it into sections and guiding the user through it. It has two main areas - a navigation area at the top showing the step sequence and a content area below it.
  *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Wizard" target="_blank">UI5 Web Components Playground</a>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Wizard" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const Wizard: FC<WizardPropTypes> = withWebComponent<WizardPropTypes>('ui5-wizard', [], [], [], ['selection-change']);
 

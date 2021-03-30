@@ -1,8 +1,9 @@
 import { AvatarGroupType } from '@ui5/webcomponents-react/dist/AvatarGroupType';
 import { AvatarSize } from '@ui5/webcomponents-react/dist/AvatarSize';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import '@ui5/webcomponents/dist/AvatarGroup';
 import { FC, ReactNode } from 'react';
+
+import '@ui5/webcomponents/dist/AvatarGroup';
 
 export interface AvatarGroupPropTypes extends Omit<WithWebComponentPropTypes, 'onClick'> {
   /**
@@ -44,7 +45,7 @@ export interface AvatarGroupPropTypes extends Omit<WithWebComponentPropTypes, 'o
  * *   `Group` type: The avatars are displayed as partially overlapped on top of each other and the entire group has one click/tap area.
  * *   `Individual` type: The avatars are displayed side-by-side and each avatar has its own click/tap area.
  *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/AvatarGroup" target="_blank">UI5 Web Components Playground</a>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/AvatarGroup" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const AvatarGroup: FC<AvatarGroupPropTypes> = withWebComponent<AvatarGroupPropTypes>(
   'ui5-avatar-group',

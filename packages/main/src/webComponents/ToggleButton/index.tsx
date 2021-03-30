@@ -1,7 +1,8 @@
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import '@ui5/webcomponents/dist/ToggleButton';
 import { FC, ReactNode } from 'react';
+
+import '@ui5/webcomponents/dist/ToggleButton';
 
 export interface ToggleButtonPropTypes extends Omit<WithWebComponentPropTypes, 'onClick'> {
   /**
@@ -45,7 +46,7 @@ export interface ToggleButtonPropTypes extends Omit<WithWebComponentPropTypes, '
   /**
    * Defines the text of the `Button`.
    *
-   * **Note:** Аlthough this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
+   * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
   children?: ReactNode | ReactNode[];
   /**
@@ -61,7 +62,7 @@ export interface ToggleButtonPropTypes extends Omit<WithWebComponentPropTypes, '
  *
  * Clicking or tapping on a `ToggleButton` changes its state to `pressed`. The button returns to its initial state when the user clicks or taps on it again. By applying additional custom CSS-styling classes, apps can give a different style to any `ToggleButton`.
  *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/ToggleButton" target="_blank">UI5 Web Components Playground</a>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/ToggleButton" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const ToggleButton: FC<ToggleButtonPropTypes> = withWebComponent<ToggleButtonPropTypes>(
   'ui5-togglebutton',

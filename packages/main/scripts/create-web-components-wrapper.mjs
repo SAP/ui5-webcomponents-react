@@ -10,7 +10,11 @@ import fs from 'fs';
 import TurndownService from 'turndown';
 import Handlebars from 'handlebars';
 import * as Utils from '../../../scripts/web-component-wrappers/utils.js';
-import { COMPONENTS_WITHOUT_DEMOS, PRIVATE_COMPONENTS, KNOWN_EVENTS } from '../../../scripts/web-component-wrappers/config.js';
+import {
+  COMPONENTS_WITHOUT_DEMOS,
+  KNOWN_EVENTS,
+  PRIVATE_COMPONENTS
+} from '../../../scripts/web-component-wrappers/config.js';
 
 Handlebars.registerPartial(
   'methodParameters',
@@ -31,7 +35,7 @@ Handlebars.registerHelper('join', function (array, separator) {
 });
 
 Handlebars.registerHelper('storySubComponents', function (subcomponents) {
-  return `{{ ${subcomponents.join(', ')} }}`
+  return `{{ ${subcomponents.join(', ')} }}`;
 });
 
 const testTemplate = Handlebars.compile(
@@ -210,10 +214,17 @@ const CUSTOM_DESCRIPTION_REPLACE = {
 
 const componentsFromFioriPackage = new Set(fioriWebComponentsSpec.symbols.map((componentSpec) => componentSpec.module));
 
+const interfaces = new Set();
 const allWebComponents = [
   ...mainWebComponentsSpec.symbols.filter((spec) => !spec.module.startsWith('types/')),
   ...fioriWebComponentsSpec.symbols.filter((spec) => !spec.module.startsWith('types/'))
-];
+].filter((item) => {
+  if (item.kind === 'interface') {
+    interfaces.add(item.name);
+    return false;
+  }
+  return true;
+});
 
 const htmlTagToModuleNameMap = new Map();
 for (const spec of allWebComponents) {
@@ -251,7 +262,7 @@ const getEventParameters = (parameters) => {
   const resolvedEventParameters = parameters.map((property) => {
     return {
       ...property,
-      ...Utils.getTypeDefinitionForProperty(property)
+      ...Utils.getTypeDefinitionForProperty(property, interfaces)
     };
   });
 
@@ -362,6 +373,9 @@ const createWebComponentDemo = (componentSpec, componentProps, description) => {
       enumImports.push(`import "@ui5/webcomponents-localization/dist/features/calendar/Japanese.js";`);
       enumImports.push(`import "@ui5/webcomponents-localization/dist/features/calendar/Persian.js";`);
     }
+    if (prop.name === 'moreColors') {
+      enumImports.push(`import '@ui5/webcomponents/dist/features/ColorPaletteMoreColors.js';`);
+    }
     if (prop.name === 'children') {
       if (
         prop.description.includes(
@@ -420,10 +434,7 @@ const createWebComponentDemo = (componentSpec, componentProps, description) => {
   return `${prettier.format(
     storyTemplate({
       name: componentName,
-      imports: [
-          ...enumImports,
-          ...additionalComponentImports
-      ],
+      imports: [...enumImports, ...additionalComponentImports],
       additionalComponentDocs,
       selectArgTypes,
       customArgTypes,
@@ -468,6 +479,9 @@ const recursivePropertyResolver = (componentSpec, { properties, slots, events, m
   }
 
   const parentComponent = allWebComponents.find((c) => {
+    if (!componentSpec.extends) {
+      debugger;
+    }
     if (componentSpec.extends.includes('.')) {
       return c.name === componentSpec.extends;
     }
@@ -515,7 +529,7 @@ allWebComponents
     const allComponentProperties = [...(componentSpec.properties || []), ...(componentSpec.slots || [])]
       .filter((prop) => prop.visibility === 'public' && prop.readonly !== 'true' && prop.static !== true)
       .map((property) => {
-        const tsType = Utils.getTypeDefinitionForProperty(property);
+        const tsType = Utils.getTypeDefinitionForProperty(property, interfaces);
         if (tsType.importStatement) {
           importStatements.push(tsType.importStatement);
         }
