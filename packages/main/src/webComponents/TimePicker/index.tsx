@@ -1,7 +1,8 @@
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import '@ui5/webcomponents/dist/TimePicker';
 import { FC, ReactNode } from 'react';
+
+import '@ui5/webcomponents/dist/TimePicker';
 
 export interface TimePickerPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput'> {
   /**
@@ -61,7 +62,7 @@ export interface TimePickerPropTypes extends Omit<WithWebComponentPropTypes, 'on
 /**
  * The `TimePicker` component provides an input field with assigned sliders which opens on user action. The `TimePicker` allows users to select a localized time using touch, mouse, or keyboard input. It consists of two parts: the time input field and the sliders.
  *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/TimePicker" target="_blank">UI5 Web Components Playground</a>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/TimePicker" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const TimePicker: FC<TimePickerPropTypes> = withWebComponent<TimePickerPropTypes>(
   'ui5-time-picker',

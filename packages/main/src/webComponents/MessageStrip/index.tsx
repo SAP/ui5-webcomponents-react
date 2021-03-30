@@ -1,7 +1,8 @@
 import { MessageStripType } from '@ui5/webcomponents-react/dist/MessageStripType';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import '@ui5/webcomponents/dist/MessageStrip';
 import { FC, ReactNode } from 'react';
+
+import '@ui5/webcomponents/dist/MessageStrip';
 
 export interface MessageStripPropTypes extends WithWebComponentPropTypes {
   /**
@@ -21,7 +22,7 @@ export interface MessageStripPropTypes extends WithWebComponentPropTypes {
   /**
    * Defines the text of the `MessageStrip`.
    *
-   * **Note:** Аlthough this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
+   * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
   children?: ReactNode | ReactNode[];
   /**
@@ -44,7 +45,7 @@ export interface MessageStripPropTypes extends WithWebComponentPropTypes {
 /**
  * The `MessageStrip` component enables the embedding of app-related messages. It displays 4 types of messages, each with corresponding semantic color and icon: Information, Positive, Warning and Negative. Each message can have a Close button, so that it can be removed from the UI, if needed.
  *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/MessageStrip" target="_blank">UI5 Web Components Playground</a>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/MessageStrip" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const MessageStrip: FC<MessageStripPropTypes> = withWebComponent<MessageStripPropTypes>(
   'ui5-messagestrip',

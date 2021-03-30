@@ -1,7 +1,8 @@
 import { BusyIndicatorSize } from '@ui5/webcomponents-react/dist/BusyIndicatorSize';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import '@ui5/webcomponents/dist/BusyIndicator';
 import { FC, ReactNode } from 'react';
+
+import '@ui5/webcomponents/dist/BusyIndicator';
 
 export interface BusyIndicatorPropTypes extends WithWebComponentPropTypes {
   /**
@@ -27,7 +28,7 @@ export interface BusyIndicatorPropTypes extends WithWebComponentPropTypes {
 /**
  * The `BusyIndicator` signals that some operation is going on and that the user must wait. It does not block the current UI screen so other operations could be triggered in parallel.
  *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/BusyIndicator" target="_blank">UI5 Web Components Playground</a>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/BusyIndicator" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const BusyIndicator: FC<BusyIndicatorPropTypes> = withWebComponent<BusyIndicatorPropTypes>(
   'ui5-busyindicator',

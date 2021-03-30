@@ -1,7 +1,8 @@
 import { ListMode } from '@ui5/webcomponents-react/dist/ListMode';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import '@ui5/webcomponents-fiori/dist/UploadCollection';
 import { FC, ReactNode } from 'react';
+
+import '@ui5/webcomponents-fiori/dist/UploadCollection';
 
 export interface UploadCollectionPropTypes extends Omit<WithWebComponentPropTypes, 'onDrop'> {
   /**
@@ -57,7 +58,7 @@ export interface UploadCollectionPropTypes extends Omit<WithWebComponentPropType
 /**
  * This component allows you to represent files before uploading them to a server, with the help of `UploadCollectionItem`. It also allows you to show already uploaded files.
  *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/UploadCollection" target="_blank">UI5 Web Components Playground</a>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/UploadCollection" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const UploadCollection: FC<UploadCollectionPropTypes> = withWebComponent<UploadCollectionPropTypes>(
   'ui5-upload-collection',

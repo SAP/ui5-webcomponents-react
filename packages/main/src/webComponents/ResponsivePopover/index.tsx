@@ -2,8 +2,9 @@ import { PlacementType } from '@ui5/webcomponents-react/dist/PlacementType';
 import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/dist/PopoverHorizontalAlign';
 import { PopoverVerticalAlign } from '@ui5/webcomponents-react/dist/PopoverVerticalAlign';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import '@ui5/webcomponents/dist/ResponsivePopover';
 import { FC, ReactNode } from 'react';
+
+import '@ui5/webcomponents/dist/ResponsivePopover';
 
 export interface ResponsivePopoverPropTypes extends WithWebComponentPropTypes {
   /**
@@ -108,7 +109,7 @@ export interface ResponsivePopoverPropTypes extends WithWebComponentPropTypes {
 /**
  * The `ResponsivePopover` acts as a Popover on desktop and tablet, while on phone it acts as a Dialog. The component improves tremendously the user experience on mobile.
  *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/ResponsivePopover" target="_blank">UI5 Web Components Playground</a>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/ResponsivePopover" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const ResponsivePopover: FC<ResponsivePopoverPropTypes> = withWebComponent<ResponsivePopoverPropTypes>(
   'ui5-responsive-popover',

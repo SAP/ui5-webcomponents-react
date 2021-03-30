@@ -1,6 +1,7 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { FC, ReactNode } from 'react';
+
 import '@ui5/webcomponents/dist/Option';
-import { FC } from 'react';
 
 export interface OptionPropTypes extends WithWebComponentPropTypes {
   /**
@@ -22,17 +23,23 @@ export interface OptionPropTypes extends WithWebComponentPropTypes {
   /**
    * Defines the stable selector that you can use via getStableDomRef method.
    */
-  stableDomRef?: unknown;
+  stableDomRef?: string;
   /**
    * Defines the value of the `Select` inside an HTML Form element when this `Option` is selected. For more information on HTML Form support, see the `name` property of `Select`.
    */
   value?: string;
+  /**
+   * Defines the text of the `Option`.
+   *
+   * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
+   */
+  children?: ReactNode | ReactNode[];
 }
 
 /**
  * The `Option` component defines the content of an option in the `Select`
  *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Option" target="_blank">UI5 Web Components Playground</a>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Option" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const Option: FC<OptionPropTypes> = withWebComponent<OptionPropTypes>(
   'ui5-option',

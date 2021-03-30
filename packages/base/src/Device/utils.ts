@@ -1,4 +1,3 @@
-import { getOS, supportTouch } from '@ui5/webcomponents-base/dist/Device';
 import { supportMatchMedia, supportOrientation } from './Support';
 
 export const getWindowSize = () => {
@@ -58,19 +57,8 @@ export const matchLegacyBySize = (from, to, unit, size) => {
   return a && b;
 };
 
-export const isLandscape = (bFromOrientationChange: boolean, orientation, bKeyboardOpen: boolean) => {
-  if (supportTouch() && supportOrientation() && getOS().android) {
-    // if on screen keyboard is open and the call of this method is from orientation change listener,
-    // reverse the last value. this is because when keyboard opens on android device, the height can be less
-    // than the width even in portrait mode.
-    if (bKeyboardOpen && bFromOrientationChange) {
-      return !orientation.landscape;
-    }
-    if (bKeyboardOpen) {
-      // when keyboard opens, the last orientation change value will be returned.
-      return orientation.landscape;
-    }
-  } else if (supportMatchMedia() && supportOrientation()) {
+export const isLandscape = () => {
+  if (supportMatchMedia() && supportOrientation()) {
     // most desktop browsers and windows phone/tablet which not support orientationchange
     return !!window.matchMedia('(orientation: landscape)').matches;
   }

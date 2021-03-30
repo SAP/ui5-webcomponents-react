@@ -1,7 +1,8 @@
 import { CarouselArrowsPlacement } from '@ui5/webcomponents-react/dist/CarouselArrowsPlacement';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import '@ui5/webcomponents/dist/Carousel';
 import { FC, ReactNode } from 'react';
+
+import '@ui5/webcomponents/dist/Carousel';
 
 export interface CarouselPropTypes extends WithWebComponentPropTypes {
   /**
@@ -62,7 +63,7 @@ export interface CarouselPropTypes extends WithWebComponentPropTypes {
 /**
  * The carousel allows the user to browse through a set of items by swiping right or left. The component is mostly used for showing a gallery of images, but can hold any other HTML element.
  *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Carousel" target="_blank">UI5 Web Components Playground</a>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Carousel" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const Carousel: FC<CarouselPropTypes> = withWebComponent<CarouselPropTypes>(
   'ui5-carousel',

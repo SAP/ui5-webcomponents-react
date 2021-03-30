@@ -3,8 +3,9 @@ import { AvatarFitType } from '@ui5/webcomponents-react/dist/AvatarFitType';
 import { AvatarShape } from '@ui5/webcomponents-react/dist/AvatarShape';
 import { AvatarSize } from '@ui5/webcomponents-react/dist/AvatarSize';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import '@ui5/webcomponents/dist/Avatar';
 import { FC } from 'react';
+
+import '@ui5/webcomponents/dist/Avatar';
 
 export interface AvatarPropTypes extends WithWebComponentPropTypes {
   /**
@@ -89,7 +90,7 @@ export interface AvatarPropTypes extends WithWebComponentPropTypes {
 /**
  * An image-like control that has different display options for representing images and icons in different shapes and sizes, depending on the use case. The shape can be circular or square. There are several predefined sizes, as well as an option to set a custom size.
  *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Avatar" target="_blank">UI5 Web Components Playground</a>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Avatar" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const Avatar: FC<AvatarPropTypes> = withWebComponent<AvatarPropTypes>(
   'ui5-avatar',

@@ -1,8 +1,9 @@
 import { TabContainerTabsPlacement } from '@ui5/webcomponents-react/dist/TabContainerTabsPlacement';
 import { TabLayout } from '@ui5/webcomponents-react/dist/TabLayout';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import '@ui5/webcomponents/dist/TabContainer';
 import { FC, ReactNode } from 'react';
+
+import '@ui5/webcomponents/dist/TabContainer';
 
 export interface TabContainerPropTypes extends WithWebComponentPropTypes {
   /**
@@ -48,7 +49,7 @@ export interface TabContainerPropTypes extends WithWebComponentPropTypes {
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
    */
-  overflowButton?: ReactNode | ReactNode[];
+  overflowButton?: ReactNode;
   /**
    * Fired when a tab is selected.
    */
@@ -58,7 +59,7 @@ export interface TabContainerPropTypes extends WithWebComponentPropTypes {
 /**
  * The `TabContainer` represents a collection of tabs with associated content. Navigation through the tabs changes the content display of the currently active content area. A tab can be labeled with text only, or icons with text.
  *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/TabContainer" target="_blank">UI5 Web Components Playground</a>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/TabContainer" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const TabContainer: FC<TabContainerPropTypes> = withWebComponent<TabContainerPropTypes>(
   'ui5-tabcontainer',
