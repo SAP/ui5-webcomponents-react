@@ -100,7 +100,7 @@ export interface ComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
    */
   onInput?: (event: CustomEvent) => void;
   /**
-   * Fired when the selection has changed via user interaction
+   * Fired when selection is changed by user interaction
    */
   onSelectionChange?: (event: CustomEvent<{ item: ReactNode }>) => void;
 }
