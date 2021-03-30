@@ -373,6 +373,9 @@ const createWebComponentDemo = (componentSpec, componentProps, description) => {
       enumImports.push(`import "@ui5/webcomponents-localization/dist/features/calendar/Japanese.js";`);
       enumImports.push(`import "@ui5/webcomponents-localization/dist/features/calendar/Persian.js";`);
     }
+    if (prop.name === 'moreColors') {
+      enumImports.push(`import '@ui5/webcomponents/dist/features/ColorPaletteMoreColors.js';`);
+    }
     if (prop.name === 'children') {
       if (
         prop.description.includes(
