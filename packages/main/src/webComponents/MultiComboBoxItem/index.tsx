@@ -1,6 +1,7 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import '@ui5/webcomponents/dist/MultiComboBoxItem';
 import { FC } from 'react';
+
+import '@ui5/webcomponents/dist/MultiComboBoxItem';
 
 export interface MultiComboBoxItemPropTypes extends WithWebComponentPropTypes {
   /**
@@ -10,7 +11,7 @@ export interface MultiComboBoxItemPropTypes extends WithWebComponentPropTypes {
   /**
    * Defines the stable selector that you can use via getStableDomRef method.
    */
-  stableDomRef?: unknown;
+  stableDomRef?: string;
   /**
    * Defines the additional text of the `ComboBoxItem`.
    */
@@ -24,7 +25,7 @@ export interface MultiComboBoxItemPropTypes extends WithWebComponentPropTypes {
 /**
  * The `MultiComboBoxItem` represents the item for a `MultiComboBox`
  *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/MultiComboBoxItem" target="_blank">UI5 Web Components Playground</a>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/MultiComboBoxItem" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const MultiComboBoxItem: FC<MultiComboBoxItemPropTypes> = withWebComponent<MultiComboBoxItemPropTypes>(
   'ui5-mcb-item',

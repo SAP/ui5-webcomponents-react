@@ -1,7 +1,8 @@
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import '@ui5/webcomponents/dist/CheckBox';
 import { FC } from 'react';
+
+import '@ui5/webcomponents/dist/CheckBox';
 
 export interface CheckBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onChange'> {
   /**
@@ -59,7 +60,7 @@ export interface CheckBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
  *
  * The `CheckBox` component only has 2 states - checked and unchecked. Clicking or tapping toggles the `CheckBox` between checked and unchecked state.
  *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/CheckBox" target="_blank">UI5 Web Components Playground</a>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/CheckBox" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const CheckBox: FC<CheckBoxPropTypes> = withWebComponent<CheckBoxPropTypes>(
   'ui5-checkbox',

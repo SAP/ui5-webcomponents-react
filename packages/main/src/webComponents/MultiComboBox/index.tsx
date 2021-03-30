@@ -1,7 +1,8 @@
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import '@ui5/webcomponents/dist/MultiComboBox';
 import { FC, ReactNode } from 'react';
+
+import '@ui5/webcomponents/dist/MultiComboBox';
 
 export interface MultiComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput'> {
   /**
@@ -75,7 +76,7 @@ export interface MultiComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
    */
-  icon?: ReactNode | ReactNode[];
+  icon?: ReactNode;
   /**
    * Defines the value state message that will be displayed as pop up under the `MultiComboBox`.
    *
@@ -107,7 +108,7 @@ export interface MultiComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 
 /**
  * The `MultiComboBox` component provides a list box with items and a text field allowing the user to either type a value directly into the control, or choose from the list of existing items. It is a drop-down list for selecting and filtering values, commonly used to enable users to select one or more options from a predefined list. The control provides an editable input field to filter the list, and a dropdown arrow of available options. The select options in the list have checkboxes that permit multi-selection. Entered values are displayed as tokens.
  *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/MultiComboBox" target="_blank">UI5 Web Components Playground</a>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/MultiComboBox" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const MultiComboBox: FC<MultiComboBoxPropTypes> = withWebComponent<MultiComboBoxPropTypes>(
   'ui5-multi-combobox',

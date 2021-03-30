@@ -1,6 +1,7 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import '@ui5/webcomponents/dist/Dialog';
 import { FC, ReactNode } from 'react';
+
+import '@ui5/webcomponents/dist/Dialog';
 
 export interface DialogPropTypes extends WithWebComponentPropTypes {
   /**
@@ -37,10 +38,6 @@ export interface DialogPropTypes extends WithWebComponentPropTypes {
    */
   preventFocusRestore?: boolean;
   /**
-   * Defines the content of the Popup.
-   */
-  children?: ReactNode | ReactNode[];
-  /**
    * Defines the footer HTML Element.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
@@ -54,6 +51,10 @@ export interface DialogPropTypes extends WithWebComponentPropTypes {
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
    */
   header?: ReactNode | ReactNode[];
+  /**
+   * Defines the content of the Popup.
+   */
+  children?: ReactNode | ReactNode[];
   /**
    * Fired after the component is closed. This event does not bubble.
    */
@@ -77,7 +78,7 @@ export interface DialogPropTypes extends WithWebComponentPropTypes {
  *
  * The `Dialog` is modal, which means that user action is required before returning to the parent window is possible. The content of the `Dialog` is fully customizable.
  *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Dialog" target="_blank">UI5 Web Components Playground</a>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Dialog" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const Dialog: FC<DialogPropTypes> = withWebComponent<DialogPropTypes>(
   'ui5-dialog',

@@ -2,8 +2,9 @@ import { PlacementType } from '@ui5/webcomponents-react/dist/PlacementType';
 import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/dist/PopoverHorizontalAlign';
 import { PopoverVerticalAlign } from '@ui5/webcomponents-react/dist/PopoverVerticalAlign';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import '@ui5/webcomponents/dist/Popover';
 import { FC, ReactNode } from 'react';
+
+import '@ui5/webcomponents/dist/Popover';
 
 export interface PopoverPropTypes extends WithWebComponentPropTypes {
   /**
@@ -108,7 +109,7 @@ export interface PopoverPropTypes extends WithWebComponentPropTypes {
 /**
  * The `Popover` component displays additional information for an object in a compact way and without leaving the page. The Popover can contain various UI elements, such as fields, tables, images, and charts. It can also include actions in the footer.
  *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Popover" target="_blank">UI5 Web Components Playground</a>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Popover" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const Popover: FC<PopoverPropTypes> = withWebComponent<PopoverPropTypes>(
   'ui5-popover',

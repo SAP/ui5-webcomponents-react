@@ -1,7 +1,8 @@
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import '@ui5/webcomponents-fiori/dist/NotificationAction';
 import { FC } from 'react';
+
+import '@ui5/webcomponents-fiori/dist/NotificationAction';
 
 export interface NotificationActionPropTypes extends WithWebComponentPropTypes {
   /**
@@ -31,7 +32,7 @@ export interface NotificationActionPropTypes extends WithWebComponentPropTypes {
 /**
  * The `NotificationAction` represents an abstract action, used in the `NotificationListItem` and the `NotificationListItemBase` items
  *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/NotificationAction" target="_blank">UI5 Web Components Playground</a>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/NotificationAction" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const NotificationAction: FC<NotificationActionPropTypes> = withWebComponent<NotificationActionPropTypes>(
   'ui5-notification-action',

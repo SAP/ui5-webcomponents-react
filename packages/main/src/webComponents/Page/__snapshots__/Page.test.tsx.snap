@@ -3,7 +3,7 @@
 exports[`Page Basic Test (generated) 1`] = `
 <DocumentFragment>
   <ui5-page
-    background-design="Standard"
+    background-design="Solid"
     floating-footer="true"
     ui5-page=""
   />

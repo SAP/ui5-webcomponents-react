@@ -1,8 +1,7 @@
 {
   "name": "@ui5/webcomponents-react-base",
-  "version": "0.14.4",
+  "version": "0.15.0",
   "description": "Base for ui5-webcomponents-react",
-  "main": "index.cjs.js",
   "module": "index.esm.js",
   "types": "index.d.ts",
   "homepage": "https://sap.github.io/ui5-webcomponents-react",
@@ -19,7 +18,7 @@
     "intersection-observer"
   ],
   "scripts": {
-    "clean": "rimraf cjs Device hooks lib polyfill styling utils index.esm.js index.d.ts dist",
+    "clean": "rimraf Device hooks polyfill styling utils index.esm.js index.d.ts dist",
     "build:rollup": "rollup -c rollup.config.mjs",
     "build:polyfills": "tsc ./src/polyfill/*.ts --outDir ./polyfill --skipLibCheck",
     "build": "npm-run-all -s build:rollup build:polyfills",
@@ -33,7 +32,7 @@
     "smoothscroll-polyfill": "0.4.4"
   },
   "peerDependencies": {
-    "@ui5/webcomponents-base": "0.30.0",
+    "@ui5/webcomponents-base": "0.32.0",
     "react": "^16.8.0 || ^17.0.0"
   },
   "peerDependenciesMeta": {
@@ -45,18 +44,15 @@
     "access": "public"
   },
   "files": [
-    "cjs",
     "codemods",
     "Device",
     "dist",
     "hooks",
-    "lib",
     "polyfill",
     "styling",
     "types",
     "utils",
     "CHANGELOG.md",
-    "index.cjs.js",
     "index.d.ts",
     "index.esm.js",
     "LICENSE",

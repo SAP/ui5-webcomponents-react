@@ -1,6 +1,7 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import '@ui5/webcomponents/dist/Slider';
 import { FC } from 'react';
+
+import '@ui5/webcomponents/dist/Slider';
 
 export interface SliderPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput'> {
   /**
@@ -54,7 +55,7 @@ export interface SliderPropTypes extends Omit<WithWebComponentPropTypes, 'onChan
 /**
  * The Slider component represents a numerical range and a handle (grip). The purpose of the component is to enable visual selection of a value in a continuous numerical range by moving an adjustable handle.
  *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Slider" target="_blank">UI5 Web Components Playground</a>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Slider" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const Slider: FC<SliderPropTypes> = withWebComponent<SliderPropTypes>(
   'ui5-slider',
