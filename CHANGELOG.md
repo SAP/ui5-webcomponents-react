@@ -5,6 +5,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [0.15.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.14.5...v0.15.0) (2021-03-30)
 
+Please also check the [release notes of UI5 Web Components](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.0.0-rc.13).
 
 ### Bug Fixes
 
