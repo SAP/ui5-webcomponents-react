@@ -39,7 +39,6 @@ export const RowSubComponent = (props: RowSubComponent) => {
               const mostUsedHeight = Object.keys(objGroupedByHeight).reduce((a, b) =>
                 objGroupedByHeight[a] > objGroupedByHeight[b] ? a : b
               );
-              //take subComponentHeight of first row and use it as initial height for all other rows
               const estimatedHeights = rows.reduce((acc, cur, index) => {
                 acc[index] = { subComponentHeight: parseInt(mostUsedHeight), rowId: cur.id };
                 return acc;
