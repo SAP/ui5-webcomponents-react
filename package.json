@@ -19,7 +19,8 @@
     "deploy:storybook": "storybook-to-ghpages --script=build:storybook --ci",
     "create-webcomponents-wrapper": "node --experimental-json-modules ./packages/main/scripts/create-web-components-wrapper.mjs",
     "examples:recreate-seed": "rimraf examples/seed-test && yarn create react-app examples/seed-test --template file:./packages/cra-template-seed",
-    "examples:start-seed": "cd examples/seed-test && SKIP_PREFLIGHT_CHECK=true yarn start"
+    "examples:start-seed": "cd examples/seed-test && SKIP_PREFLIGHT_CHECK=true yarn start",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@storybook/addon-actions": "6.1.20",
@@ -102,11 +103,6 @@
     "@types/react": "17.0.3",
     "react": "17.0.2",
     "react-dom": "17.0.2"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,mdx}": [
