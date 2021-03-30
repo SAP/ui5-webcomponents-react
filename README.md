@@ -200,4 +200,3 @@ Please note that you have to join this Slack workspace via [this link](https://u
 ## Contributing
 
 Please check our [Contribution Guidelines](/CONTRIBUTING.md).
-
