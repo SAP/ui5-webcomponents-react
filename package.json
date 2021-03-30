@@ -104,7 +104,7 @@
     "react-dom": "17.0.2"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,md,mdx,json}": [
+    "*.{js,jsx,ts,tsx,mdx,json}": [
       "prettier -config ./prettier.config.cjs --write"
     ]
   },
