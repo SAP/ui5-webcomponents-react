@@ -18,7 +18,7 @@
     "intersection-observer"
   ],
   "scripts": {
-    "clean": "rimraf Device hooks lib polyfill styling utils index.esm.js index.d.ts dist",
+    "clean": "rimraf Device hooks polyfill styling utils index.esm.js index.d.ts dist",
     "build:rollup": "rollup -c rollup.config.mjs",
     "build:polyfills": "tsc ./src/polyfill/*.ts --outDir ./polyfill --skipLibCheck",
     "build": "npm-run-all -s build:rollup build:polyfills",
@@ -48,7 +48,6 @@
     "Device",
     "dist",
     "hooks",
-    "lib",
     "polyfill",
     "styling",
     "types",

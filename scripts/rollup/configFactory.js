@@ -6,7 +6,6 @@ import micromatch from 'micromatch';
 import PATHS from '../../config/paths.js';
 import { asyncCopyTo, highlightLog } from '../utils.js';
 import glob from 'glob';
-import dedent from 'dedent';
 
 process.env.BABEL_ENV = 'production';
 process.env.NODE_ENV = 'production';
@@ -92,27 +91,6 @@ const rollupConfigFactory = (pkgName, externals = []) => {
       external,
       treeshake,
       output: [
-        {
-          file: path.resolve(
-            PKG_BASE_PATH,
-            'lib',
-            file.replace(`${LIB_BASE_PATH}${path.sep}`, '').replace(/\.ts$/, '.js')
-          ),
-          format: 'es',
-          sourcemap: true,
-          footer: () => {
-            const componentName = file.replace(`${LIB_BASE_PATH}${path.sep}`, '').replace(/\.ts$/, '');
-            return dedent`
-              if ( console && console.warn && ( process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test' ) ) {
-                console.warn(
-                  "Deprecation Notice - '${packageJson.name}': " +
-                  "Using \"import { ${componentName} } from '${packageJson.name}/lib/${componentName}';\" is deprecated and will be removed with version 0.15.0. " +
-                  "Please use \"import { ${componentName} } from '${packageJson.name}';\" instead. You can find more details in our Migration Guide: https://bit.ly/2MV7KWw "
-                );
-              }
-              `;
-          }
-        },
         {
           file: path.resolve(
             PKG_BASE_PATH,
