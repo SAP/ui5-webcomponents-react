@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react-base",
-  "version": "0.14.4",
+  "version": "0.15.0",
   "description": "Base for ui5-webcomponents-react",
   "module": "index.esm.js",
   "types": "index.d.ts",

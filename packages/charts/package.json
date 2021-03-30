@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react-charts",
-  "version": "0.14.4",
+  "version": "0.15.0",
   "description": "Charts for ui5-webcomponents-react",
   "module": "index.esm.js",
   "types": "index.d.ts",
