@@ -17,9 +17,12 @@ const style = {
     color: ThemingParameters.sapContent_LabelColor,
     fontSize: '1rem',
     '& ui5-icon:first-child': {
-      padding: '0 0.25rem',
+      marginRight: '0.5rem',
       width: '1rem',
       height: '1rem'
+    },
+    '& [ui5-title]': {
+      fontSize: '1rem'
     },
     '&[data-type="Error"]': {
       '--sapPageFooter_BorderColor': ThemingParameters.sapErrorBorderColor,
@@ -42,9 +45,9 @@ const style = {
       '--sapContent_NonInteractiveIconColor': ThemingParameters.sapNeutralElementColor
     },
     '&[data-type="Information"]': {
-      '--sapPageFooter_BorderColor': ThemingParameters.sapNeutralBorderColor,
-      '--messageBoxBorderColor': ThemingParameters.sapNeutralBorderColor,
-      '--sapContent_NonInteractiveIconColor': ThemingParameters.sapNeutralElementColor
+      '--sapPageFooter_BorderColor': ThemingParameters.sapInformationBorderColor,
+      '--messageBoxBorderColor': ThemingParameters.sapInformationBorderColor,
+      '--sapContent_NonInteractiveIconColor': ThemingParameters.sapInformativeElementColor
     },
     '&[data-type="Highlight"]': {
       '--sapPageFooter_BorderColor': ThemingParameters.sapInformationBorderColor,
