@@ -3,6 +3,7 @@ import '@ui5/webcomponents-icons/dist/navigation-right-arrow';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
 import React, { MutableRefObject, ReactNode, useCallback, useMemo, useRef } from 'react';
 import { useVirtual } from 'react-virtual';
+import { RowSubComponent as SubComponent } from './RowSubComponent';
 
 interface VirtualTableBodyProps {
   classes: Record<string, string>;
@@ -191,17 +192,6 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     >
       {rowVirtualizer.virtualItems.map((virtualRow) => {
         const row = rows[virtualRow.index];
-        const setSubcomponentsRefs = (el) => {
-          if (el?.offsetHeight && subComponentsHeight?.[virtualRow.index]?.subComponentHeight !== el?.offsetHeight) {
-            dispatch({
-              type: 'SUB_COMPONENTS_HEIGHT',
-              payload: {
-                ...subComponentsHeight,
-                [virtualRow.index]: { subComponentHeight: el?.offsetHeight, rowId: row.id }
-              }
-            });
-          }
-        };
         if (!row) {
           return (
             <div
@@ -217,7 +207,18 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
         prepareRow(row);
         const rowProps = row.getRowProps();
         const isNavigatedCell = markNavigatedRow(row);
-        const RowSubComponent = typeof renderRowSubComponent === 'function' ? renderRowSubComponent(row) : null;
+        const RowSubComponent = typeof renderRowSubComponent === 'function' ? renderRowSubComponent(row) : undefined;
+
+        if (!RowSubComponent && subComponentsHeight && subComponentsHeight?.[virtualRow.index]?.subComponentHeight) {
+          dispatch({
+            type: 'SUB_COMPONENTS_HEIGHT',
+            payload: {
+              ...subComponentsHeight,
+              [virtualRow.index]: { subComponentHeight: 0, rowId: row.id }
+            }
+          });
+        }
+
         return (
           <div
             {...rowProps}
@@ -228,16 +229,17 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
             }}
           >
             {RowSubComponent && (row.isExpanded || alwaysShowSubComponent) && (
-              <div
-                ref={setSubcomponentsRefs}
-                style={{
-                  transform: `translateY(${rowHeight}px)`,
-                  position: 'absolute',
-                  width: '100%'
-                }}
+              <SubComponent
+                subComponentsHeight={subComponentsHeight}
+                virtualRow={virtualRow}
+                dispatch={dispatch}
+                row={row}
+                rowHeight={rowHeight}
+                rows={rows}
+                alwaysShowSubComponent={alwaysShowSubComponent}
               >
                 {RowSubComponent}
-              </div>
+              </SubComponent>
             )}
             {columnVirtualizer.virtualItems.map((virtualColumn, index) => {
               const cell = row.cells[virtualColumn.index];
