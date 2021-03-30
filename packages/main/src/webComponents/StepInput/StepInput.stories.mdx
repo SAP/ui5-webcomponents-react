@@ -1,0 +1,57 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { StepInput } from '@ui5/webcomponents-react/dist/StepInput';
+import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
+
+<Meta
+  title="Inputs / StepInput"
+  component={StepInput}
+  argTypes={{
+    ...createSelectArgTypes({ valueState: ValueState }),
+    ...DocsCommonProps,
+    valueStateMessage: { control: { disable: true } }
+  }}
+  args={{
+    valueState: ValueState.None,
+    style: {},
+    className: '',
+    tooltip: '',
+    slot: '',
+    ref: null
+  }}
+/>
+
+<DocsHeader />
+
+<br />
+
+## Example
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return <StepInput {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+## Properties
+
+<ArgsTable story="." />
+
+## Usage
+
+The default step is 1 but the app developer can set a different one. App developers can set a maximum and minimum value for the `StepInput`. The increase/decrease button and the up/down keyboard navigation become disabled when the value reaches the max/min or a new value is entered from the input which is greater/less than the max/min.
+
+_When to use_
+
+- To adjust amounts, quantities, or other values quickly.
+- To adjust values for a specific step.
+
+_When not to use_
+
+- To enter a static number (for example, postal code, phone number, or ID). In this case, use the regular `Input` instead.
+- To display a value that rarely needs to be adjusted and does not pertain to a particular step. In this case, use the regular `Input` instead.
+- To enter dates and times. In this case, use date/time related components instead.

@@ -1,7 +1,8 @@
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import '@ui5/webcomponents/dist/Button';
 import { FC, ReactNode } from 'react';
+
+import '@ui5/webcomponents/dist/Button';
 
 export interface ButtonPropTypes extends Omit<WithWebComponentPropTypes, 'onClick'> {
   /**
@@ -41,7 +42,7 @@ export interface ButtonPropTypes extends Omit<WithWebComponentPropTypes, 'onClic
   /**
    * Defines the text of the `Button`.
    *
-   * **Note:** Аlthough this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
+   * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
   children?: ReactNode | ReactNode[];
   /**
@@ -55,7 +56,7 @@ export interface ButtonPropTypes extends Omit<WithWebComponentPropTypes, 'onClic
 /**
  * The `Button` component represents a simple push button. It enables users to trigger actions by clicking or tapping the `Button`, or by pressing certain keyboard keys, such as Enter.
  *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Button" target="_blank">UI5 Web Components Playground</a>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Button" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const Button: FC<ButtonPropTypes> = withWebComponent<ButtonPropTypes>(
   'ui5-button',

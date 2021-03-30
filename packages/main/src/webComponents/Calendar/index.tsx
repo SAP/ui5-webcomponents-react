@@ -1,8 +1,9 @@
 import { CalendarSelectionMode } from '@ui5/webcomponents-react/dist/CalendarSelectionMode';
 import { CalendarType } from '@ui5/webcomponents-react/dist/CalendarType';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import '@ui5/webcomponents/dist/Calendar';
 import { FC, ReactNode } from 'react';
+
+import '@ui5/webcomponents/dist/Calendar';
 
 export interface CalendarPropTypes extends WithWebComponentPropTypes {
   /**
@@ -50,7 +51,7 @@ export interface CalendarPropTypes extends WithWebComponentPropTypes {
  *
  * Currently selected dates are represented with instances of `CalendarDate` as children of the `Calendar`. The value property of each `CalendarDate` must be a date string, correctly formatted according to the `Calendar`'s `formatPattern` property. Whenever the user changes the date selection, `Calendar` will automatically create/remove instances of `CalendarDate` in itself, unless you prevent this behavior by calling `preventDefault()` for the `selected-dates-change` event. This is useful if you want to control the selected dates externally.
  *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Calendar" target="_blank">UI5 Web Components Playground</a>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Calendar" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const Calendar: FC<CalendarPropTypes> = withWebComponent<CalendarPropTypes>(
   'ui5-calendar',

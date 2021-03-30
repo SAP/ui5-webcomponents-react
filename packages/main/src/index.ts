@@ -73,6 +73,7 @@ import { Label } from './dist/Label';
 import { Link } from './dist/Link';
 import { LinkDesign } from './dist/LinkDesign';
 import { List } from './dist/List';
+import { ListGrowingMode } from './dist/ListGrowingMode';
 import { ListItemTypes } from './dist/ListItemTypes';
 import { ListMode } from './dist/ListMode';
 import { ListSeparators } from './dist/ListSeparators';
@@ -123,6 +124,7 @@ import { SideNavigationSubItem } from './dist/SideNavigationSubItem';
 import { Size } from './dist/Size';
 import { Slider } from './dist/Slider';
 import { StandardListItem } from './dist/StandardListItem';
+import { StepInput } from './dist/StepInput';
 import { SuggestionItem } from './dist/SuggestionItem';
 import { Switch } from './dist/Switch';
 import { Tab } from './dist/Tab';
@@ -243,6 +245,7 @@ export {
   Link,
   LinkDesign,
   List,
+  ListGrowingMode,
   ListItemTypes,
   ListMode,
   ListSeparators,
@@ -293,6 +296,7 @@ export {
   Size,
   Slider,
   StandardListItem,
+  StepInput,
   SuggestionItem,
   Switch,
   Tab,

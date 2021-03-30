@@ -1,7 +1,8 @@
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import '@ui5/webcomponents/dist/DurationPicker';
 import { FC, ReactNode } from 'react';
+
+import '@ui5/webcomponents/dist/DurationPicker';
 
 export interface DurationPickerPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput'> {
   /**
@@ -84,7 +85,7 @@ export interface DurationPickerPropTypes extends Omit<WithWebComponentPropTypes,
 /**
  * The `DurationPicker` component provides an input field with assigned sliders which opens on user action. The `DurationPicker` allows users to select a time duration. It consists of two parts: the time input field and the sliders.
  *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/DurationPicker" target="_blank">UI5 Web Components Playground</a>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/DurationPicker" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const DurationPicker: FC<DurationPickerPropTypes> = withWebComponent<DurationPickerPropTypes>(
   'ui5-duration-picker',

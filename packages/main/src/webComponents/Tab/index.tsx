@@ -1,7 +1,8 @@
 import { SemanticColor } from '@ui5/webcomponents-react/dist/SemanticColor';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import '@ui5/webcomponents/dist/Tab';
 import { FC, ReactNode } from 'react';
+
+import '@ui5/webcomponents/dist/Tab';
 
 export interface TabPropTypes extends WithWebComponentPropTypes {
   /**
@@ -39,7 +40,7 @@ export interface TabPropTypes extends WithWebComponentPropTypes {
   /**
    * Defines the stable selector that you can use via getStableDomRef method.
    */
-  stableDomRef?: unknown;
+  stableDomRef?: string;
   /**
    * The text to be displayed for the item.
    */
@@ -53,7 +54,7 @@ export interface TabPropTypes extends WithWebComponentPropTypes {
 /**
  * The `Tab` represents a selectable item inside a `Tabcontainer`. It defines both the item in the tab strip (top part of the `Tabcontainer`) and the content that is presented to the user once the tab is selected
  *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Tab" target="_blank">UI5 Web Components Playground</a>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Tab" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const Tab: FC<TabPropTypes> = withWebComponent<TabPropTypes>(
   'ui5-tab',

@@ -9,14 +9,49 @@ import PATHS from '../../../config/paths.js';
 import fs from 'fs';
 import TurndownService from 'turndown';
 import Handlebars from 'handlebars';
+import * as Utils from '../../../scripts/web-component-wrappers/utils.js';
+import {
+  COMPONENTS_WITHOUT_DEMOS,
+  KNOWN_EVENTS,
+  PRIVATE_COMPONENTS
+} from '../../../scripts/web-component-wrappers/config.js';
 
 Handlebars.registerPartial(
   'methodParameters',
   fs.readFileSync(path.join(PATHS.root, 'scripts', 'web-component-wrappers', 'MethodParameters.hbs')).toString()
 );
 
-const methodsTemplate = Handlebars.compile(
-  fs.readFileSync(path.join(PATHS.root, 'scripts', 'web-component-wrappers', 'Methods.hbs')).toString()
+Handlebars.registerHelper('convertToStringArray', function (array) {
+  if (typeof array === 'string') return array;
+  if (!Array.isArray(array)) return '';
+  return `[${array.map((v) => `'${v}'`).join(', ')}]`;
+});
+
+Handlebars.registerHelper('join', function (array, separator) {
+  if (typeof array === 'string') return array;
+  if (!Array.isArray(array)) return '';
+  separator = typeof separator === 'string' ? separator : ', ';
+  return array.join(separator);
+});
+
+Handlebars.registerHelper('storySubComponents', function (subcomponents) {
+  return `{{ ${subcomponents.join(', ')} }}`;
+});
+
+const testTemplate = Handlebars.compile(
+  fs.readFileSync(path.join(PATHS.root, 'scripts', 'web-component-wrappers', 'TestTemplate.hbs')).toString()
+);
+
+const componentTemplate = Handlebars.compile(
+  fs.readFileSync(path.join(PATHS.root, 'scripts', 'web-component-wrappers', 'ComponentTemplate.hbs')).toString()
+);
+
+const libraryExportTemplate = Handlebars.compile(
+  fs.readFileSync(path.join(PATHS.root, 'scripts', 'web-component-wrappers', 'LibraryExportTemplate.hbs')).toString()
+);
+
+const storyTemplate = Handlebars.compile(
+  fs.readFileSync(path.join(PATHS.root, 'scripts', 'web-component-wrappers', 'StoryTemplate.hbs')).toString()
 );
 
 const turndownService = new TurndownService({
@@ -38,30 +73,6 @@ const prettierConfig = {
 
 const WEB_COMPONENTS_ROOT_DIR = path.join(PATHS.packages, 'main', 'src', 'webComponents');
 const DIST_DIR = path.join(PATHS.packages, 'main', 'src', 'dist');
-
-const KNOWN_EVENTS = new Set(['click', 'input', 'submit', 'change', 'select', 'drop']);
-
-const PRIVATE_COMPONENTS = new Set([
-  'CalendarHeader',
-  'CalendarPart',
-  'DefaultTheme',
-  'DayPicker',
-  'DateComponentBase',
-  'ListItem',
-  'ListItemBase',
-  'MessageBundleAssets',
-  'MonthPicker',
-  'NotificationListItemBase',
-  'Popup',
-  'PickerBase',
-  'SliderBase',
-  'TabBase',
-  'ThemePropertiesProvider',
-  'TimePickerBase',
-  'TreeListItem',
-  'YearPicker',
-  'WheelSlider'
-]);
 
 const EXTENDED_PROP_DESCRIPTION = {
   primaryCalendarType: `<br/>__Note:__ Calendar types other than Gregorian must be imported manually:<br />\`import "@ui5/webcomponents-localization/dist/features/calendar/{primaryCalendarType}.js";\``
@@ -201,37 +212,19 @@ const CUSTOM_DESCRIPTION_REPLACE = {
   }
 };
 
-const COMPONENTS_WITHOUT_DEMOS = new Set(PRIVATE_COMPONENTS);
-COMPONENTS_WITHOUT_DEMOS.add('CustomListItem');
-COMPONENTS_WITHOUT_DEMOS.add('CalendarDate');
-COMPONENTS_WITHOUT_DEMOS.add('ColorPaletteItem');
-COMPONENTS_WITHOUT_DEMOS.add('GroupHeaderListItem');
-COMPONENTS_WITHOUT_DEMOS.add('Option');
-COMPONENTS_WITHOUT_DEMOS.add('ShellBarItem');
-COMPONENTS_WITHOUT_DEMOS.add('StandardListItem');
-COMPONENTS_WITHOUT_DEMOS.add('Tab');
-COMPONENTS_WITHOUT_DEMOS.add('TableCell');
-COMPONENTS_WITHOUT_DEMOS.add('TableColumn');
-COMPONENTS_WITHOUT_DEMOS.add('TableRow');
-COMPONENTS_WITHOUT_DEMOS.add('TabSeparator');
-COMPONENTS_WITHOUT_DEMOS.add('TimelineItem');
-COMPONENTS_WITHOUT_DEMOS.add('TreeItem');
-COMPONENTS_WITHOUT_DEMOS.add('ProductSwitchItem');
-COMPONENTS_WITHOUT_DEMOS.add('ComboBoxItem');
-COMPONENTS_WITHOUT_DEMOS.add('MultiComboBoxItem');
-COMPONENTS_WITHOUT_DEMOS.add('SideNavigationItem');
-COMPONENTS_WITHOUT_DEMOS.add('SideNavigationSubItem');
-COMPONENTS_WITHOUT_DEMOS.add('SuggestionItem');
-COMPONENTS_WITHOUT_DEMOS.add('UploadCollectionItem');
-COMPONENTS_WITHOUT_DEMOS.add('NotificationAction');
-COMPONENTS_WITHOUT_DEMOS.add('WizardStep');
-
 const componentsFromFioriPackage = new Set(fioriWebComponentsSpec.symbols.map((componentSpec) => componentSpec.module));
 
+const interfaces = new Set();
 const allWebComponents = [
   ...mainWebComponentsSpec.symbols.filter((spec) => !spec.module.startsWith('types/')),
   ...fioriWebComponentsSpec.symbols.filter((spec) => !spec.module.startsWith('types/'))
-];
+].filter((item) => {
+  if (item.kind === 'interface') {
+    interfaces.add(item.name);
+    return false;
+  }
+  return true;
+});
 
 const htmlTagToModuleNameMap = new Map();
 for (const spec of allWebComponents) {
@@ -265,296 +258,11 @@ const replaceTagNameWithModuleName = (description) => {
   return parsedDescription;
 };
 
-const getTypeScriptTypeForProperty = (property) => {
-  switch (property.type) {
-    // native ts types
-    case 'string':
-    case 'String':
-      return {
-        importStatement: null,
-        tsType: 'string'
-      };
-    case 'undefined':
-      return {
-        importStatement: null,
-        tsType: 'unknown'
-      };
-    case 'number':
-    case 'Number':
-    case 'Integer':
-    case 'Float':
-      return {
-        importStatement: null,
-        tsType: 'number'
-      };
-    case 'boolean':
-    case 'Boolean':
-      return {
-        importStatement: null,
-        tsType: 'boolean'
-      };
-    case 'Array':
-      return {
-        importStatement: null,
-        tsType: 'unknown[]'
-      };
-    case 'File': {
-      return {
-        importStatement: null,
-        tsType: 'File'
-      };
-    }
-    case 'FileList': {
-      return {
-        importStatement: null,
-        tsType: 'FileList'
-      };
-    }
-    case 'DataTransfer': {
-      return {
-        importStatement: null,
-        tsType: 'DataTransfer'
-      };
-    }
-    case 'object':
-    case 'Object': {
-      return {
-        importStatement: null,
-        tsType: 'Record<string, unknown>'
-      };
-    }
-
-    // react ts types
-    case 'Node[]':
-    case 'HTMLElement[]':
-      return {
-        tsType: 'ReactNode | ReactNode[]',
-        importStatement: "import { ReactNode } from 'react';"
-      };
-    case 'HTMLElement':
-      return {
-        tsType: 'ReactNode',
-        importStatement: "import { ReactNode } from 'react';"
-      };
-    case 'CSSColor':
-      return {
-        tsType: "CSSProperties['color']",
-        importStatement: "import { CSSProperties } from 'react';"
-      };
-    // UI5 Web Component Enums
-    case 'AvatarBackgroundColor':
-      return {
-        importStatement: "import { AvatarBackgroundColor } from '@ui5/webcomponents-react/dist/AvatarBackgroundColor';",
-        tsType: 'AvatarBackgroundColor',
-        isEnum: true
-      };
-    case 'AvatarFitType':
-      return {
-        importStatement: "import { AvatarFitType } from '@ui5/webcomponents-react/dist/AvatarFitType';",
-        tsType: 'AvatarFitType',
-        isEnum: true
-      };
-    case 'AvatarGroupType':
-      return {
-        importStatement: "import { AvatarGroupType } from '@ui5/webcomponents-react/dist/AvatarGroupType';",
-        tsType: 'AvatarGroupType',
-        isEnum: true
-      };
-    case 'AvatarShape':
-      return {
-        importStatement: "import { AvatarShape } from '@ui5/webcomponents-react/dist/AvatarShape';",
-        tsType: 'AvatarShape',
-        isEnum: true
-      };
-    case 'AvatarSize':
-      return {
-        importStatement: "import { AvatarSize } from '@ui5/webcomponents-react/dist/AvatarSize';",
-        tsType: 'AvatarSize',
-        isEnum: true
-      };
-    case 'BarDesign':
-      return {
-        importStatement: "import { BarDesign } from '@ui5/webcomponents-react/dist/BarDesign';",
-        tsType: 'BarDesign',
-        isEnum: true
-      };
-    case 'BusyIndicatorSize':
-      return {
-        importStatement: "import { BusyIndicatorSize } from '@ui5/webcomponents-react/dist/BusyIndicatorSize';",
-        tsType: 'BusyIndicatorSize',
-        isEnum: true
-      };
-    case 'ButtonDesign':
-      return {
-        importStatement: "import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';",
-        tsType: 'ButtonDesign',
-        isEnum: true
-      };
-    case 'CalendarType':
-      return {
-        importStatement: "import { CalendarType } from '@ui5/webcomponents-react/dist/CalendarType';",
-        tsType: 'CalendarType',
-        isEnum: true
-      };
-    case 'CalendarSelection':
-      return {
-        importStatement: "import { CalendarSelection } from '@ui5/webcomponents-react/dist/CalendarSelection';",
-        tsType: 'CalendarSelection',
-        isEnum: true
-      };
-    case 'CalendarSelectionMode':
-      return {
-        importStatement: "import { CalendarSelectionMode } from '@ui5/webcomponents-react/dist/CalendarSelectionMode';",
-        tsType: 'CalendarSelectionMode',
-        isEnum: true
-      };
-    case 'CarouselArrowsPlacement':
-      return {
-        importStatement:
-          "import { CarouselArrowsPlacement } from '@ui5/webcomponents-react/dist/CarouselArrowsPlacement';",
-        tsType: 'CarouselArrowsPlacement',
-        isEnum: true
-      };
-    case 'FCLLayout':
-      return {
-        importStatement: "import { FCLLayout } from '@ui5/webcomponents-react/dist/FCLLayout';",
-        tsType: 'FCLLayout',
-        isEnum: true
-      };
-    case 'InputType':
-      return {
-        importStatement: "import { InputType } from '@ui5/webcomponents-react/dist/InputType';",
-        tsType: 'InputType',
-        isEnum: true
-      };
-    case 'LinkDesign':
-      return {
-        importStatement: "import { LinkDesign } from '@ui5/webcomponents-react/dist/LinkDesign';",
-        tsType: 'LinkDesign',
-        isEnum: true
-      };
-    case 'ListItemType': {
-      return {
-        importStatement: "import { ListItemTypes } from '@ui5/webcomponents-react/dist/ListItemTypes';",
-        tsType: 'ListItemTypes',
-        isEnum: true
-      };
-    }
-    case 'ListMode': {
-      return {
-        importStatement: "import { ListMode } from '@ui5/webcomponents-react/dist/ListMode';",
-        tsType: 'ListMode',
-        isEnum: true
-      };
-    }
-    case 'ListSeparators':
-      return {
-        importStatement: "import { ListSeparators } from '@ui5/webcomponents-react/dist/ListSeparators';",
-        tsType: 'ListSeparators',
-        isEnum: true
-      };
-    case 'MessageStripType':
-      return {
-        importStatement: "import { MessageStripType } from '@ui5/webcomponents-react/dist/MessageStripType';",
-        tsType: 'MessageStripType',
-        isEnum: true
-      };
-    case 'PageBackgroundDesign':
-      return {
-        importStatement: "import { PageBackgroundDesign } from '@ui5/webcomponents-react/dist/PageBackgroundDesign';",
-        tsType: 'PageBackgroundDesign',
-        isEnum: true
-      };
-    case 'PanelAccessibleRole':
-      return {
-        importStatement: "import { PanelAccessibleRoles } from '@ui5/webcomponents-react/dist/PanelAccessibleRoles';",
-        tsType: 'PanelAccessibleRoles',
-        isEnum: true
-      };
-    case 'PopoverHorizontalAlign':
-      return {
-        importStatement:
-          "import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/dist/PopoverHorizontalAlign';",
-        tsType: 'PopoverHorizontalAlign',
-        isEnum: true
-      };
-    case 'PopoverPlacementType':
-      return {
-        importStatement: "import { PlacementType } from '@ui5/webcomponents-react/dist/PlacementType';",
-        tsType: 'PlacementType',
-        isEnum: true
-      };
-    case 'PopoverVerticalAlign':
-      return {
-        importStatement: "import { PopoverVerticalAlign } from '@ui5/webcomponents-react/dist/PopoverVerticalAlign';",
-        tsType: 'PopoverVerticalAlign',
-        isEnum: true
-      };
-    case 'Priority':
-      return {
-        importStatement: "import { Priority } from '@ui5/webcomponents-react/dist/Priority';",
-        tsType: 'Priority',
-        isEnum: true
-      };
-    case 'SemanticColor':
-      return {
-        importStatement: "import { SemanticColor } from '@ui5/webcomponents-react/dist/SemanticColor';",
-        tsType: 'SemanticColor',
-        isEnum: true
-      };
-    case 'TabLayout':
-      return {
-        importStatement: "import { TabLayout } from '@ui5/webcomponents-react/dist/TabLayout';",
-        tsType: 'TabLayout',
-        isEnum: true
-      };
-    case 'TabContainerTabsPlacement':
-      return {
-        importStatement:
-          "import { TabContainerTabsPlacement } from '@ui5/webcomponents-react/dist/TabContainerTabsPlacement';",
-        tsType: 'TabContainerTabsPlacement',
-        isEnum: true
-      };
-    case 'TableGrowingMode':
-      return {
-        importStatement: "import { TableGrowingMode } from '@ui5/webcomponents-react/dist/TableGrowingMode';",
-        tsType: 'TableGrowingMode',
-        isEnum: true
-      };
-    case 'TitleLevel':
-      return {
-        importStatement: "import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';",
-        tsType: 'TitleLevel',
-        isEnum: true
-      };
-    case 'ToastPlacement':
-      return {
-        importStatement: "import { ToastPlacement } from '@ui5/webcomponents-react/dist/ToastPlacement';",
-        tsType: 'ToastPlacement',
-        isEnum: true
-      };
-    case 'UploadState':
-      return {
-        importStatement: "import { UploadState } from '@ui5/webcomponents-react/dist/UploadState';",
-        tsType: 'UploadState',
-        isEnum: true
-      };
-    case 'ValueState':
-      return {
-        importStatement: "import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';",
-        tsType: 'ValueState',
-        isEnum: true
-      };
-    default:
-      throw new Error(`Unknown type ${JSON.stringify(property)}`);
-  }
-};
-
 const getEventParameters = (parameters) => {
   const resolvedEventParameters = parameters.map((property) => {
     return {
       ...property,
-      ...getTypeScriptTypeForProperty(property)
+      ...Utils.getTypeDefinitionForProperty(property, interfaces)
     };
   });
 
@@ -580,7 +288,7 @@ const getEventParameters = (parameters) => {
   };
 };
 
-const createWebComponentWrapper = (
+const createWebComponentWrapper = async (
   name,
   tag,
   description,
@@ -609,78 +317,29 @@ const createWebComponentWrapper = (
     componentDescription = '';
   }
 
-  const regularImports = importStatements
-    .filter((imp) => !imp.includes("from 'react'"))
-    .sort((a, b) => {
-      const importNameA = /import \{ (\w+) \}/.exec(a)[1];
-      const importNameB = /import \{ (\w+) \}/.exec(b)[1];
-      return importNameA.localeCompare(importNameB);
-    });
-  const reactImports = [
-    'FC',
-    ...importStatements
-      .filter((imp) => imp.includes("from 'react'"))
-      .map((imp) => {
-        const match = /import \{ (\w+) \}/.exec(imp);
-        return match[1];
-      })
-  ].sort((a, b) => a.localeCompare(b));
+  const imports = [
+    ...importStatements,
+    '', // do not remove this empty line - otherwise the eslint/import-order plugin won't work as expected
+    `import '@ui5/webcomponents${componentsFromFioriPackage.has(name) ? '-fiori' : ''}/dist/${name}';`
+  ];
 
   return prettier.format(
-    `
-    ${regularImports.join('\n')}
-    import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-    import '@ui5/webcomponents${componentsFromFioriPackage.has(name) ? '-fiori' : ''}/dist/${name}';
-    import { ${reactImports.join(', ')} } from 'react';
-
-    export interface ${name}PropTypes extends ${tsExtendsStatement} {
-      ${types.join('\n')}
-    }
-    
-    /**
-     * ${componentDescription}     
-     * 
-     * <a href="https://sap.github.io/ui5-webcomponents/playground/components/${name}" target="_blank">UI5 Web Components Playground</a>
-     */
-    const ${name}: FC<${name}PropTypes> = withWebComponent<${name}PropTypes>(
-      '${tag}',
-      [${regularProps.map((v) => `'${v}'`).join(', ')}],
-      [${booleanProps.map((v) => `'${v}'`).join(', ')}],
-      [${slotProps
-        .filter((name) => name !== 'children')
-        .map((v) => `'${v}'`)
-        .join(', ')}],
-      [${eventProps.map((v) => `'${v}'`).join(', ')}]
-    );
-
-    ${name}.displayName = '${name}';
-
-    ${name}.defaultProps = {
-      ${defaultProps.join(',\n')}
-    };
-
-    export { ${name} };
-
-    `,
-    prettierConfig
-  );
-};
-
-const createWebComponentTest = (name) => {
-  return prettier.format(
-    `
-    import { render } from '@shared/tests';
-    import { ${name} } from '@ui5/webcomponents-react/dist/${name}';
-    import React from 'react';
-
-    describe('${name}', () => {
-      test('Basic Test (generated)', () => {
-        const { asFragment } = render(<${name} />);
-        expect(asFragment()).toMatchSnapshot();
-      });
-    });
-
-    `,
+    await Utils.runEsLint(
+      componentTemplate({
+        name,
+        imports,
+        propTypesExtends: tsExtendsStatement,
+        types,
+        description: componentDescription,
+        tagName: tag,
+        regularProps,
+        booleanProps,
+        slotProps: slotProps.filter((name) => name !== 'children'),
+        eventProps,
+        defaultProps
+      }),
+      name
+    ),
     prettierConfig
   );
 };
@@ -713,6 +372,9 @@ const createWebComponentDemo = (componentSpec, componentProps, description) => {
       enumImports.push(`import "@ui5/webcomponents-localization/dist/features/calendar/Islamic.js";`);
       enumImports.push(`import "@ui5/webcomponents-localization/dist/features/calendar/Japanese.js";`);
       enumImports.push(`import "@ui5/webcomponents-localization/dist/features/calendar/Persian.js";`);
+    }
+    if (prop.name === 'moreColors') {
+      enumImports.push(`import '@ui5/webcomponents/dist/features/ColorPaletteMoreColors.js';`);
     }
     if (prop.name === 'children') {
       if (
@@ -770,52 +432,15 @@ const createWebComponentDemo = (componentSpec, componentProps, description) => {
   }
 
   return `${prettier.format(
-    dedent`
-    import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
-    import { ${componentName} } from '@ui5/webcomponents-react/dist/${componentName}';
-    ${enumImports.join('\n')}
-    ${additionalComponentImports.join('\n')}
-    import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
-    import { DocsHeader } from '@shared/stories/DocsHeader';
-    import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
-    
-    <Meta
-     title="Components / ${componentName}"
-     component={${componentName}}
-     ${additionalComponentDocs.length > 0 ? `subcomponents={{ ${additionalComponentDocs.join(', ')} }}` : ''}
-     argTypes={{
-       ...createSelectArgTypes({${selectArgTypes.join(', ')}}),
-       ...DocsCommonProps,
-       ${customArgTypes.join(',\n')}
-     }}
-     args={{
-       ${args.join(',\n')}
-     }}
-    />
-
-    <DocsHeader />
-    
-    <br />
-    
-    ## Example
-
-    <Canvas>
-      <Story name="Default">
-        {(args) => {
-          return (
-            <${componentName} {...args} />
-          );
-        }}
-      </Story>
-    </Canvas>
-    
-    ## Properties
-    
-    <ArgsTable story="." />
-    
-    ${methodsTemplate({ methods: componentSpec.methods?.filter((item) => item.visibility === 'public') ?? [] })}
-    
-    `,
+    storyTemplate({
+      name: componentName,
+      imports: [...enumImports, ...additionalComponentImports],
+      additionalComponentDocs,
+      selectArgTypes,
+      customArgTypes,
+      args,
+      methods: componentSpec.methods?.filter((item) => item.visibility === 'public') ?? []
+    }),
     { ...prettierConfigRaw, parser: 'mdx' }
   )}\n${formattedDescription}`;
 };
@@ -854,6 +479,9 @@ const recursivePropertyResolver = (componentSpec, { properties, slots, events, m
   }
 
   const parentComponent = allWebComponents.find((c) => {
+    if (!componentSpec.extends) {
+      debugger;
+    }
     if (componentSpec.extends.includes('.')) {
       return c.name === componentSpec.extends;
     }
@@ -890,83 +518,82 @@ const resolveInheritedAttributes = (componentSpec) => {
   return componentSpec;
 };
 
-const resolvedWebComponents = allWebComponents
+allWebComponents
   .filter((spec) => spec.visibility === 'public')
   .filter((spec) => !PRIVATE_COMPONENTS.has(spec.module))
-  .map(resolveInheritedAttributes);
-
-resolvedWebComponents.forEach((componentSpec) => {
-  const propTypes = [];
-  const importStatements = [];
-  const defaultProps = [];
-  const allComponentProperties = [...(componentSpec.properties || []), ...(componentSpec.slots || [])]
-    .filter((prop) => prop.visibility === 'public' && prop.readonly !== 'true' && prop.static !== true)
-    .map((property) => {
-      const tsType = getTypeScriptTypeForProperty(property);
-      if (tsType.importStatement) {
-        importStatements.push(tsType.importStatement);
-      }
-
-      if (property.name === 'default') {
-        property.name = 'children';
-      }
-      const propDescription = () => {
-        if (!componentSpec.tagname) {
-          return property.description || '';
-        }
-        let formattedDescription = turndownService
-          .turndown((property.description || '').trim())
-          .replace(/\n/g, '\n   * ');
-
-        const customDescriptionReplace = CUSTOM_DESCRIPTION_REPLACE[componentSpec.module];
-        if (customDescriptionReplace && customDescriptionReplace[property.name]) {
-          formattedDescription = customDescriptionReplace[property.name](formattedDescription);
+  .map(resolveInheritedAttributes)
+  .forEach(async (componentSpec) => {
+    const propTypes = [];
+    const importStatements = [];
+    const defaultProps = [];
+    const allComponentProperties = [...(componentSpec.properties || []), ...(componentSpec.slots || [])]
+      .filter((prop) => prop.visibility === 'public' && prop.readonly !== 'true' && prop.static !== true)
+      .map((property) => {
+        const tsType = Utils.getTypeDefinitionForProperty(property, interfaces);
+        if (tsType.importStatement) {
+          importStatements.push(tsType.importStatement);
         }
 
-        const extendedDescription = EXTENDED_PROP_DESCRIPTION[property.name];
+        if (property.name === 'default') {
+          property.name = 'children';
+        }
+        const propDescription = () => {
+          if (!componentSpec.tagname) {
+            return property.description || '';
+          }
+          let formattedDescription = turndownService
+            .turndown((property.description || '').trim())
+            .replace(/\n/g, '\n   * ');
 
-        if (property.name !== 'children' && componentSpec?.slots?.some((item) => item.name === property.name)) {
-          formattedDescription += `
+          const customDescriptionReplace = CUSTOM_DESCRIPTION_REPLACE[componentSpec.module];
+          if (customDescriptionReplace && customDescriptionReplace[property.name]) {
+            formattedDescription = customDescriptionReplace[property.name](formattedDescription);
+          }
+
+          const extendedDescription = EXTENDED_PROP_DESCRIPTION[property.name];
+
+          if (property.name !== 'children' && componentSpec?.slots?.some((item) => item.name === property.name)) {
+            formattedDescription += `
           *
           * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the \`slot\` prop and appends it to the most outer element of your component.
           * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).`;
-        }
+          }
 
-        if (extendedDescription) {
-          return replaceTagNameWithModuleName(`${formattedDescription}${extendedDescription}`);
-        }
-        return replaceTagNameWithModuleName(formattedDescription);
-      };
+          if (extendedDescription) {
+            return replaceTagNameWithModuleName(`${formattedDescription}${extendedDescription}`);
+          }
+          return replaceTagNameWithModuleName(formattedDescription);
+        };
 
-      propTypes.push(dedent`
+        propTypes.push(dedent`
     /**
      * ${propDescription()}
      */
      ${property.name}?: ${tsType.tsType};
     `);
 
-      if (property.hasOwnProperty('defaultValue')) {
-        if (tsType.tsType === 'boolean') {
-          defaultProps.push(`${property.name}: ${property.defaultValue === 'true'}`);
-        } else if (tsType.isEnum === true) {
-          defaultProps.push(`${property.name}: ${tsType.tsType}.${property.defaultValue.replace(/['"]/g, '')}`);
-        } else if (tsType.tsType !== 'string' || (tsType.tsType === 'string' && property.defaultValue !== '""')) {
-          defaultProps.push(`${property.name}: ${property.defaultValue}`);
+        if (property.hasOwnProperty('defaultValue')) {
+          if (tsType.tsType === 'boolean') {
+            defaultProps.push(`${property.name}: ${property.defaultValue === 'true'}`);
+          } else if (tsType.isEnum === true) {
+            defaultProps.push(`${property.name}: ${tsType.tsType}.${property.defaultValue.replace(/['"]/g, '')}`);
+          } else if (tsType.tsType !== 'string' || (tsType.tsType === 'string' && property.defaultValue !== '""')) {
+            defaultProps.push(`${property.name}: ${property.defaultValue}`);
+          }
         }
-      }
 
-      return {
-        ...property,
-        ...tsType
-      };
-    });
+        return {
+          ...property,
+          ...tsType
+        };
+      });
 
-  (componentSpec.events || [])
-    .filter((eventSpec) => eventSpec.visibility === 'public')
-    .forEach((eventSpec) => {
-      const eventParameters = getEventParameters(eventSpec.parameters || []);
-      importStatements.push(...eventParameters.importStatements);
-      propTypes.push(dedent`
+    (componentSpec.events || [])
+      .filter((eventSpec) => eventSpec.visibility === 'public')
+      .forEach((eventSpec) => {
+        const eventParameters = getEventParameters(eventSpec.parameters || []);
+        importStatements.push(...eventParameters.importStatements);
+        propTypes.push(dedent`
       /**
        * ${replaceTagNameWithModuleName(
          turndownService.turndown((eventSpec.description || '').trim()).replace(/\n/g, '\n   * ')
@@ -974,60 +601,37 @@ resolvedWebComponents.forEach((componentSpec) => {
        */
        on${capitalizeFirstLetter(snakeToCamel(eventSpec.name))}?: ${eventParameters.tsType};
       `);
-    });
+      });
 
-  const uniqueAdditionalImports = [...new Set(importStatements)];
+    const uniqueAdditionalImports = [...new Set(importStatements)];
 
-  const formatDescription = () => {
-    let description = componentSpec.description;
-    if (!description) {
-      return ['', ''];
+    const formatDescription = () => {
+      let description = componentSpec.description;
+      if (!description) {
+        return ['', ''];
+      }
+      //strip overview heading
+      description = description.replace(`<h3 class="comment-api-title">Overview</h3>`, '');
+      //strip ES6 Module import
+      description = description.slice(0, description.indexOf(`<h3>ES6 Module Import</h3>`));
+      if (!componentSpec.tagname) {
+        return description.split(/(?=<h3>)/, 2);
+      }
+      //replace tag-name with module-name
+      description = description.replace(new RegExp(componentSpec.tagname, 'g'), `${componentSpec.module}`);
+      //replace other ui5 tag-names
+      description = replaceTagNameWithModuleName(description);
+      const [mainDescription, ...rest] = description.split(/(?=<h3>)/);
+      return [mainDescription, rest.join('<h3>')];
+    };
+
+    const [mainDescription, description = ''] = formatDescription();
+
+    if (EXCLUDE_LIST.includes(componentSpec.module)) {
+      console.warn(
+        `----------------------\n${componentSpec.module} has been excluded from component generation. To include it again remove the component name from the "EXCLUDE_LIST".\n----------------------`
+      );
     }
-    //strip overview heading
-    description = description.replace(`<h3 class="comment-api-title">Overview</h3>`, '');
-    //strip ES6 Module import
-    description = description.slice(0, description.indexOf(`<h3>ES6 Module Import</h3>`));
-    if (!componentSpec.tagname) {
-      return description.split(/(?=<h3>)/, 2);
-    }
-    //replace tag-name with module-name
-    description = description.replace(new RegExp(componentSpec.tagname, 'g'), `${componentSpec.module}`);
-    //replace other ui5 tag-names
-    description = replaceTagNameWithModuleName(description);
-    const [mainDescription, ...rest] = description.split(/(?=<h3>)/);
-    return [mainDescription, rest.join('<h3>')];
-  };
-
-  const [mainDescription, description = ''] = formatDescription();
-
-  if (EXCLUDE_LIST.includes(componentSpec.module)) {
-    console.warn(
-      `----------------------\n${componentSpec.module} has been excluded from component generation. To include it again remove the component name from the "EXCLUDE_LIST".\n----------------------`
-    );
-  }
-
-  if (
-    (CREATE_SINGLE_COMPONENT === componentSpec.module || !CREATE_SINGLE_COMPONENT) &&
-    !EXCLUDE_LIST.includes(componentSpec.module)
-  ) {
-    const webComponentWrapper = createWebComponentWrapper(
-      componentSpec.module,
-      componentSpec.tagname,
-      mainDescription,
-      propTypes,
-      uniqueAdditionalImports,
-      defaultProps,
-      (componentSpec.properties || [])
-        .filter(filterNonPublicAttributes)
-        .filter(({ type }) => type !== 'boolean' && type !== 'Boolean')
-        .map(({ name }) => name),
-      (componentSpec.properties || [])
-        .filter(filterNonPublicAttributes)
-        .filter(({ type }) => type === 'boolean' || type === 'Boolean')
-        .map(({ name }) => name),
-      (componentSpec.slots || []).filter(filterNonPublicAttributes).map(({ name }) => name),
-      (componentSpec.events || []).filter(filterNonPublicAttributes).map(({ name }) => name)
-    );
 
     // check if folder exists and create it if necessary
     const webComponentFolderPath = path.join(WEB_COMPONENTS_ROOT_DIR, componentSpec.module);
@@ -1035,34 +639,54 @@ resolvedWebComponents.forEach((componentSpec) => {
       fs.mkdirSync(webComponentFolderPath);
     }
 
-    fs.writeFileSync(path.join(webComponentFolderPath, 'index.tsx'), webComponentWrapper);
-
-    // create lib export
-    const libContent = prettier.format(
-      `
-    import { ${componentSpec.module} } from '../webComponents/${componentSpec.module}';
-    import type { ${componentSpec.module}PropTypes } from '../webComponents/${componentSpec.module}';
-
-    export { ${componentSpec.module} };
-    export type { ${componentSpec.module}PropTypes };`,
-      prettierConfig
-    );
-    fs.writeFileSync(path.join(DIST_DIR, `${componentSpec.module}.ts`), libContent);
-
-    // create test
-    if (!fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.test.tsx`))) {
-      const webComponentTest = createWebComponentTest(componentSpec.module);
-      fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.test.tsx`), webComponentTest);
+    // create empty index file for eslint
+    const webComponentWrapperPath = path.join(webComponentFolderPath, 'index.tsx');
+    if (!fs.existsSync(webComponentWrapperPath)) {
+      fs.writeFileSync(webComponentWrapperPath, '');
     }
 
-    // create demo
     if (
-      CREATE_SINGLE_COMPONENT === componentSpec.module ||
-      (!fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`)) &&
-        !COMPONENTS_WITHOUT_DEMOS.has(componentSpec.module))
+      (CREATE_SINGLE_COMPONENT === componentSpec.module || !CREATE_SINGLE_COMPONENT) &&
+      !EXCLUDE_LIST.includes(componentSpec.module)
     ) {
-      const webComponentDemo = createWebComponentDemo(componentSpec, allComponentProperties, description);
-      fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`), webComponentDemo);
+      const webComponentWrapper = await createWebComponentWrapper(
+        componentSpec.module,
+        componentSpec.tagname,
+        mainDescription,
+        propTypes,
+        uniqueAdditionalImports,
+        defaultProps,
+        (componentSpec.properties || [])
+          .filter(filterNonPublicAttributes)
+          .filter(({ type }) => type !== 'boolean' && type !== 'Boolean')
+          .map(({ name }) => name),
+        (componentSpec.properties || [])
+          .filter(filterNonPublicAttributes)
+          .filter(({ type }) => type === 'boolean' || type === 'Boolean')
+          .map(({ name }) => name),
+        (componentSpec.slots || []).filter(filterNonPublicAttributes).map(({ name }) => name),
+        (componentSpec.events || []).filter(filterNonPublicAttributes).map(({ name }) => name)
+      );
+      fs.writeFileSync(webComponentWrapperPath, webComponentWrapper);
+
+      // create lib export
+      const libContent = prettier.format(libraryExportTemplate({ name: componentSpec.module }), prettierConfig);
+      fs.writeFileSync(path.join(DIST_DIR, `${componentSpec.module}.ts`), libContent);
+
+      // create test
+      if (!fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.test.tsx`))) {
+        const webComponentTest = prettier.format(testTemplate({ name: componentSpec.module }), prettierConfig);
+        fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.test.tsx`), webComponentTest);
+      }
+
+      // create demo
+      if (
+        CREATE_SINGLE_COMPONENT === componentSpec.module ||
+        (!fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`)) &&
+          !COMPONENTS_WITHOUT_DEMOS.has(componentSpec.module))
+      ) {
+        const webComponentDemo = createWebComponentDemo(componentSpec, allComponentProperties, description);
+        fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`), webComponentDemo);
+      }
     }
-  }
-});
+  });

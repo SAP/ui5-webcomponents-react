@@ -1,7 +1,8 @@
 import { ListItemTypes } from '@ui5/webcomponents-react/dist/ListItemTypes';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import '@ui5/webcomponents/dist/CustomListItem';
 import { FC, ReactNode } from 'react';
+
+import '@ui5/webcomponents/dist/CustomListItem';
 
 export interface CustomListItemPropTypes extends WithWebComponentPropTypes {
   /**
@@ -27,7 +28,7 @@ export interface CustomListItemPropTypes extends WithWebComponentPropTypes {
 /**
  * A component to be used as custom list item within the `List` the same way as the standard `StandardListItem`. The `CustomListItem` accepts arbitrary HTML content to allow full customization
  *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/CustomListItem" target="_blank">UI5 Web Components Playground</a>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/CustomListItem" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const CustomListItem: FC<CustomListItemPropTypes> = withWebComponent<CustomListItemPropTypes>(
   'ui5-li-custom',

@@ -1,7 +1,8 @@
 import { FCLLayout } from '@ui5/webcomponents-react/dist/FCLLayout';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import '@ui5/webcomponents-fiori/dist/FlexibleColumnLayout';
 import { FC, ReactNode } from 'react';
+
+import '@ui5/webcomponents-fiori/dist/FlexibleColumnLayout';
 
 export interface FlexibleColumnLayoutPropTypes extends WithWebComponentPropTypes {
   /**
@@ -19,7 +20,7 @@ export interface FlexibleColumnLayoutPropTypes extends WithWebComponentPropTypes
   /**
    * Defines the columns layout and their proportion.
    *
-   * **Note:** The layout also depends on the screen size - one column for screens smaller than 900px, two columns between 900px and 1280px and three columns for sizes bigger than 1280px.
+   * **Note:** The layout also depends on the screen size - one column for screens smaller than 599px, two columns between 599px and 1023px and three columns for sizes bigger than 1023px.
    *
    * Available options are:
    *
@@ -82,7 +83,7 @@ export interface FlexibleColumnLayoutPropTypes extends WithWebComponentPropTypes
 /**
  * The `FlexibleColumnLayout` implements the master-detail-detail paradigm by displaying up to three pages in separate columns. There are several possible layouts that can be changed either with the component API, or by pressing the arrows, displayed between the columns.
  *
- * <a href="https://sap.github.io/ui5-webcomponents/playground/components/FlexibleColumnLayout" target="_blank">UI5 Web Components Playground</a>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/FlexibleColumnLayout" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const FlexibleColumnLayout: FC<FlexibleColumnLayoutPropTypes> = withWebComponent<FlexibleColumnLayoutPropTypes>(
   'ui5-flexible-column-layout',
