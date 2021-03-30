@@ -53,7 +53,6 @@
     "@babel/runtime": "7.13.10",
     "@rollup/plugin-babel": "^5.2.1",
     "@rollup/plugin-node-resolve": "^11.0.0",
-    "@rollup/plugin-replace": "^2.3.2",
     "@storybook/addon-a11y": "^6.1.20",
     "@storybook/storybook-deployer": "^2.8.6",
     "@testing-library/jest-dom": "^5.11.4",
@@ -94,7 +93,6 @@
     "react-test-renderer": "17.0.2",
     "rimraf": "^3.0.1",
     "rollup": "^2.23.0",
-    "rollup-plugin-terser": "^7.0.2",
     "targz": "^1.0.1",
     "turndown": "^7.0.0",
     "typescript": "^4.0.3"

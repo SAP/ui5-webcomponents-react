@@ -2,7 +2,6 @@
   "name": "@ui5/webcomponents-react",
   "version": "0.14.5",
   "description": "React Wrapper for UI5 Web Components and additional components",
-  "main": "index.cjs.js",
   "module": "index.esm.js",
   "types": "index.d.ts",
   "homepage": "https://sap.github.io/ui5-webcomponents-react",
@@ -21,7 +20,7 @@
     "./dist/json-imports/*"
   ],
   "scripts": {
-    "clean": "rimraf cjs components enums interfaces internal lib webComponents index.esm.js index.d.ts dist wrappers dist",
+    "clean": "rimraf components enums interfaces internal lib webComponents index.esm.js index.d.ts dist wrappers dist",
     "build": "npm-run-all -s build:i18n build:rollup",
     "build:rollup": "rollup -c rollup.config.mjs",
     "build:i18n": "npm-run-all -s build:i18n-bundles build:i18n-default build:i18n-imports build:assets",
@@ -60,7 +59,6 @@
     "access": "public"
   },
   "files": [
-    "cjs",
     "components",
     "dist",
     "enums",
@@ -70,7 +68,6 @@
     "webComponents",
     "wrappers",
     "CHANGELOG.md",
-    "index.cjs.js",
     "index.d.ts",
     "index.esm.js",
     "LICENSE",
