@@ -2,6 +2,7 @@
   "name": "@ui5/webcomponents-react",
   "version": "0.15.0",
   "description": "React Wrapper for UI5 Web Components and additional components",
+  "main": "index.esm.js",
   "module": "index.esm.js",
   "types": "index.d.ts",
   "homepage": "https://sap.github.io/ui5-webcomponents-react",
