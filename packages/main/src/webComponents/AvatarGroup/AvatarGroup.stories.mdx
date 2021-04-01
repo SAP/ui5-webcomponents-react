@@ -13,7 +13,8 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
   argTypes={{
     ...createSelectArgTypes({ avatarSize: AvatarSize, type: AvatarGroupType }),
     ...DocsCommonProps,
-    children: { control: { disable: true } }
+    children: { control: { disable: true } },
+    overflowButton: { control: { disable: true } }
   }}
   args={{
     avatarSize: AvatarSize.S,
