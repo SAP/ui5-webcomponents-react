@@ -4,6 +4,7 @@ exports[`UploadCollectionItem Basic Test (generated) 1`] = `
 <DocumentFragment>
   <ui5-upload-collection-item
     progress="0"
+    type="Active"
     upload-state="Ready"
   />
 </DocumentFragment>
