@@ -87,6 +87,13 @@ To consume `ui5-webcomponents-react`, first you need to install the npm module:
 npm install @ui5/webcomponents-react --save
 ```
 
+Required peer dependencies:
+```sh 
+npm install @ui5/webcomponents-react --save
+# For components like the ShellBar or the ProductSwitch:
+npm install @ui5/webcomponents-fiori --save
+```
+
 <!-- *********************************************************************** -->
 
 ## Getting Started
