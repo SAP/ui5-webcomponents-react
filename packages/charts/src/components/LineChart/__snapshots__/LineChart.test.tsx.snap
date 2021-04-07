@@ -852,9 +852,7 @@ exports[`LineChart loading placeholder 1`] = `
         x="0"
         y="0"
       />
-      <defs
-        role="presentation"
-      >
+      <defs>
         <clippath
           id="DIFF_ID"
         >
