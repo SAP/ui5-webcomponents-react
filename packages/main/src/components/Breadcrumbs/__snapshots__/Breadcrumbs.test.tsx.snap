@@ -2,270 +2,402 @@
 
 exports[`Breadcrumbs separatorStyle: 'BackSlash' 1`] = `
 <DocumentFragment>
-  <div>
-    <ui5-link
-      design="Default"
-      ui5-link=""
+  <nav
+    aria-label="Breadcrumb Trail"
+  >
+    <ol
+      style="list-style-type: none; display: flex; align-items: center; margin-block: 0; padding-inline: 0; flex-wrap: wrap;"
     >
-      Link 1
-    </ui5-link>
-    <ui5-label
-      style="margin: 0px 0.25rem;"
-      ui5-label=""
-    >
-      \\
-    </ui5-label>
-    <ui5-link
-      design="Default"
-      ui5-link=""
-    >
-      Link 2
-    </ui5-link>
-    <ui5-label
-      style="margin: 0px 0.25rem;"
-      ui5-label=""
-    >
-      \\
-    </ui5-label>
-    <ui5-link
-      design="Default"
-      ui5-link=""
-    >
-      Link 3
-    </ui5-link>
-  </div>
+      <li
+        style="display: flex;"
+      >
+        <ui5-link
+          design="Default"
+          ui5-link=""
+        >
+          Link 1
+        </ui5-link>
+        <ui5-label
+          aria-hidden="true"
+          style="margin: 0px 0.25rem;"
+          ui5-label=""
+        >
+          \\
+        </ui5-label>
+      </li>
+      <li
+        style="display: flex;"
+      >
+        <ui5-link
+          design="Default"
+          ui5-link=""
+        >
+          Link 2
+        </ui5-link>
+        <ui5-label
+          aria-hidden="true"
+          style="margin: 0px 0.25rem;"
+          ui5-label=""
+        >
+          \\
+        </ui5-label>
+      </li>
+      <li>
+        <ui5-link
+          design="Default"
+          ui5-link=""
+        >
+          Link 3
+        </ui5-link>
+      </li>
+    </ol>
+  </nav>
 </DocumentFragment>
 `;
 
 exports[`Breadcrumbs separatorStyle: 'DoubleBackSlash' 1`] = `
 <DocumentFragment>
-  <div>
-    <ui5-link
-      design="Default"
-      ui5-link=""
+  <nav
+    aria-label="Breadcrumb Trail"
+  >
+    <ol
+      style="list-style-type: none; display: flex; align-items: center; margin-block: 0; padding-inline: 0; flex-wrap: wrap;"
     >
-      Link 1
-    </ui5-link>
-    <ui5-label
-      style="margin: 0px 0.25rem;"
-      ui5-label=""
-    >
-      \\\\
-    </ui5-label>
-    <ui5-link
-      design="Default"
-      ui5-link=""
-    >
-      Link 2
-    </ui5-link>
-    <ui5-label
-      style="margin: 0px 0.25rem;"
-      ui5-label=""
-    >
-      \\\\
-    </ui5-label>
-    <ui5-link
-      design="Default"
-      ui5-link=""
-    >
-      Link 3
-    </ui5-link>
-  </div>
+      <li
+        style="display: flex;"
+      >
+        <ui5-link
+          design="Default"
+          ui5-link=""
+        >
+          Link 1
+        </ui5-link>
+        <ui5-label
+          aria-hidden="true"
+          style="margin: 0px 0.25rem;"
+          ui5-label=""
+        >
+          \\\\
+        </ui5-label>
+      </li>
+      <li
+        style="display: flex;"
+      >
+        <ui5-link
+          design="Default"
+          ui5-link=""
+        >
+          Link 2
+        </ui5-link>
+        <ui5-label
+          aria-hidden="true"
+          style="margin: 0px 0.25rem;"
+          ui5-label=""
+        >
+          \\\\
+        </ui5-label>
+      </li>
+      <li>
+        <ui5-link
+          design="Default"
+          ui5-link=""
+        >
+          Link 3
+        </ui5-link>
+      </li>
+    </ol>
+  </nav>
 </DocumentFragment>
 `;
 
 exports[`Breadcrumbs separatorStyle: 'DoubleGreaterThan' 1`] = `
 <DocumentFragment>
-  <div>
-    <ui5-link
-      design="Default"
-      ui5-link=""
+  <nav
+    aria-label="Breadcrumb Trail"
+  >
+    <ol
+      style="list-style-type: none; display: flex; align-items: center; margin-block: 0; padding-inline: 0; flex-wrap: wrap;"
     >
-      Link 1
-    </ui5-link>
-    <ui5-label
-      style="margin: 0px 0.25rem;"
-      ui5-label=""
-    >
-      &gt;&gt;
-    </ui5-label>
-    <ui5-link
-      design="Default"
-      ui5-link=""
-    >
-      Link 2
-    </ui5-link>
-    <ui5-label
-      style="margin: 0px 0.25rem;"
-      ui5-label=""
-    >
-      &gt;&gt;
-    </ui5-label>
-    <ui5-link
-      design="Default"
-      ui5-link=""
-    >
-      Link 3
-    </ui5-link>
-  </div>
+      <li
+        style="display: flex;"
+      >
+        <ui5-link
+          design="Default"
+          ui5-link=""
+        >
+          Link 1
+        </ui5-link>
+        <ui5-label
+          aria-hidden="true"
+          style="margin: 0px 0.25rem;"
+          ui5-label=""
+        >
+          &gt;&gt;
+        </ui5-label>
+      </li>
+      <li
+        style="display: flex;"
+      >
+        <ui5-link
+          design="Default"
+          ui5-link=""
+        >
+          Link 2
+        </ui5-link>
+        <ui5-label
+          aria-hidden="true"
+          style="margin: 0px 0.25rem;"
+          ui5-label=""
+        >
+          &gt;&gt;
+        </ui5-label>
+      </li>
+      <li>
+        <ui5-link
+          design="Default"
+          ui5-link=""
+        >
+          Link 3
+        </ui5-link>
+      </li>
+    </ol>
+  </nav>
 </DocumentFragment>
 `;
 
 exports[`Breadcrumbs separatorStyle: 'DoubleSlash' 1`] = `
 <DocumentFragment>
-  <div>
-    <ui5-link
-      design="Default"
-      ui5-link=""
+  <nav
+    aria-label="Breadcrumb Trail"
+  >
+    <ol
+      style="list-style-type: none; display: flex; align-items: center; margin-block: 0; padding-inline: 0; flex-wrap: wrap;"
     >
-      Link 1
-    </ui5-link>
-    <ui5-label
-      style="margin: 0px 0.25rem;"
-      ui5-label=""
-    >
-      //
-    </ui5-label>
-    <ui5-link
-      design="Default"
-      ui5-link=""
-    >
-      Link 2
-    </ui5-link>
-    <ui5-label
-      style="margin: 0px 0.25rem;"
-      ui5-label=""
-    >
-      //
-    </ui5-label>
-    <ui5-link
-      design="Default"
-      ui5-link=""
-    >
-      Link 3
-    </ui5-link>
-  </div>
+      <li
+        style="display: flex;"
+      >
+        <ui5-link
+          design="Default"
+          ui5-link=""
+        >
+          Link 1
+        </ui5-link>
+        <ui5-label
+          aria-hidden="true"
+          style="margin: 0px 0.25rem;"
+          ui5-label=""
+        >
+          //
+        </ui5-label>
+      </li>
+      <li
+        style="display: flex;"
+      >
+        <ui5-link
+          design="Default"
+          ui5-link=""
+        >
+          Link 2
+        </ui5-link>
+        <ui5-label
+          aria-hidden="true"
+          style="margin: 0px 0.25rem;"
+          ui5-label=""
+        >
+          //
+        </ui5-label>
+      </li>
+      <li>
+        <ui5-link
+          design="Default"
+          ui5-link=""
+        >
+          Link 3
+        </ui5-link>
+      </li>
+    </ol>
+  </nav>
 </DocumentFragment>
 `;
 
 exports[`Breadcrumbs separatorStyle: 'GreaterThan' 1`] = `
 <DocumentFragment>
-  <div>
-    <ui5-link
-      design="Default"
-      ui5-link=""
+  <nav
+    aria-label="Breadcrumb Trail"
+  >
+    <ol
+      style="list-style-type: none; display: flex; align-items: center; margin-block: 0; padding-inline: 0; flex-wrap: wrap;"
     >
-      Link 1
-    </ui5-link>
-    <ui5-label
-      style="margin: 0px 0.25rem;"
-      ui5-label=""
-    >
-      &gt;
-    </ui5-label>
-    <ui5-link
-      design="Default"
-      ui5-link=""
-    >
-      Link 2
-    </ui5-link>
-    <ui5-label
-      style="margin: 0px 0.25rem;"
-      ui5-label=""
-    >
-      &gt;
-    </ui5-label>
-    <ui5-link
-      design="Default"
-      ui5-link=""
-    >
-      Link 3
-    </ui5-link>
-  </div>
+      <li
+        style="display: flex;"
+      >
+        <ui5-link
+          design="Default"
+          ui5-link=""
+        >
+          Link 1
+        </ui5-link>
+        <ui5-label
+          aria-hidden="true"
+          style="margin: 0px 0.25rem;"
+          ui5-label=""
+        >
+          &gt;
+        </ui5-label>
+      </li>
+      <li
+        style="display: flex;"
+      >
+        <ui5-link
+          design="Default"
+          ui5-link=""
+        >
+          Link 2
+        </ui5-link>
+        <ui5-label
+          aria-hidden="true"
+          style="margin: 0px 0.25rem;"
+          ui5-label=""
+        >
+          &gt;
+        </ui5-label>
+      </li>
+      <li>
+        <ui5-link
+          design="Default"
+          ui5-link=""
+        >
+          Link 3
+        </ui5-link>
+      </li>
+    </ol>
+  </nav>
 </DocumentFragment>
 `;
 
 exports[`Breadcrumbs separatorStyle: 'Slash' 1`] = `
 <DocumentFragment>
-  <div>
-    <ui5-link
-      design="Default"
-      ui5-link=""
+  <nav
+    aria-label="Breadcrumb Trail"
+  >
+    <ol
+      style="list-style-type: none; display: flex; align-items: center; margin-block: 0; padding-inline: 0; flex-wrap: wrap;"
     >
-      Link 1
-    </ui5-link>
-    <ui5-label
-      style="margin: 0px 0.25rem;"
-      ui5-label=""
-    >
-      /
-    </ui5-label>
-    <ui5-link
-      design="Default"
-      ui5-link=""
-    >
-      Link 2
-    </ui5-link>
-    <ui5-label
-      style="margin: 0px 0.25rem;"
-      ui5-label=""
-    >
-      /
-    </ui5-label>
-    <ui5-link
-      design="Default"
-      ui5-link=""
-    >
-      Link 3
-    </ui5-link>
-  </div>
+      <li
+        style="display: flex;"
+      >
+        <ui5-link
+          design="Default"
+          ui5-link=""
+        >
+          Link 1
+        </ui5-link>
+        <ui5-label
+          aria-hidden="true"
+          style="margin: 0px 0.25rem;"
+          ui5-label=""
+        >
+          /
+        </ui5-label>
+      </li>
+      <li
+        style="display: flex;"
+      >
+        <ui5-link
+          design="Default"
+          ui5-link=""
+        >
+          Link 2
+        </ui5-link>
+        <ui5-label
+          aria-hidden="true"
+          style="margin: 0px 0.25rem;"
+          ui5-label=""
+        >
+          /
+        </ui5-label>
+      </li>
+      <li>
+        <ui5-link
+          design="Default"
+          ui5-link=""
+        >
+          Link 3
+        </ui5-link>
+      </li>
+    </ol>
+  </nav>
 </DocumentFragment>
 `;
 
 exports[`Breadcrumbs with currentLocationText 1`] = `
 <DocumentFragment>
-  <div>
-    <ui5-link
-      design="Default"
-      ui5-link=""
+  <nav
+    aria-label="Breadcrumb Trail"
+  >
+    <ol
+      style="list-style-type: none; display: flex; align-items: center; margin-block: 0; padding-inline: 0; flex-wrap: wrap;"
     >
-      Link 1
-    </ui5-link>
-    <ui5-label
-      style="margin: 0px 0.25rem;"
-      ui5-label=""
-    >
-      /
-    </ui5-label>
-    <ui5-link
-      design="Default"
-      ui5-link=""
-    >
-      Link 2
-    </ui5-link>
-    <ui5-label
-      style="margin: 0px 0.25rem;"
-      ui5-label=""
-    >
-      /
-    </ui5-label>
-    <ui5-link
-      design="Default"
-      ui5-link=""
-    >
-      Link 3
-    </ui5-link>
-    <ui5-label
-      style="margin: 0px 0.25rem;"
-      ui5-label=""
-    >
-      /
-    </ui5-label>
-    <ui5-label
-      ui5-label=""
-    >
-      Current Location
-    </ui5-label>
-  </div>
+      <li
+        style="display: flex;"
+      >
+        <ui5-link
+          design="Default"
+          ui5-link=""
+        >
+          Link 1
+        </ui5-link>
+        <ui5-label
+          aria-hidden="true"
+          style="margin: 0px 0.25rem;"
+          ui5-label=""
+        >
+          /
+        </ui5-label>
+      </li>
+      <li
+        style="display: flex;"
+      >
+        <ui5-link
+          design="Default"
+          ui5-link=""
+        >
+          Link 2
+        </ui5-link>
+        <ui5-label
+          aria-hidden="true"
+          style="margin: 0px 0.25rem;"
+          ui5-label=""
+        >
+          /
+        </ui5-label>
+      </li>
+      <li>
+        <ui5-link
+          design="Default"
+          ui5-link=""
+        >
+          Link 3
+        </ui5-link>
+      </li>
+      <li
+        style="display: flex;"
+      >
+        <ui5-label
+          aria-hidden="true"
+          style="margin: 0px 0.25rem;"
+          ui5-label=""
+        >
+          /
+        </ui5-label>
+        <ui5-label
+          aria-current="page"
+          ui5-label=""
+        >
+          Current Location
+        </ui5-label>
+      </li>
+    </ol>
+  </nav>
 </DocumentFragment>
 `;
