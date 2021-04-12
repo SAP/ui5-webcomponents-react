@@ -40,25 +40,48 @@ const Breadcrumbs: FC<BreadcrumbsPropTypes> = forwardRef((props: BreadcrumbsProp
   const passThroughProps = usePassThroughHtmlProps(props);
 
   return (
-    <div ref={ref} title={tooltip} style={style} className={className} slot={slot} {...passThroughProps}>
-      {childrenArray.map((item, index) => {
-        if (index === childrenArray.length - 1) {
-          return item;
-        }
-        return (
-          <Fragment key={index}>
-            {item}
-            <Label style={separatorInlineStyles} children={SeparatorStyles[separatorStyle]} />
-          </Fragment>
-        );
-      })}
-      {currentLocationText && (
-        <>
-          <Label style={separatorInlineStyles}>{SeparatorStyles[separatorStyle]}</Label>
-          <Label>{currentLocationText}</Label>
-        </>
-      )}
-    </div>
+    <nav
+      ref={ref}
+      title={tooltip}
+      style={style}
+      className={className}
+      slot={slot}
+      aria-label="Breadcrumb Trail"
+      {...passThroughProps}
+    >
+      <ol
+        style={{
+          listStyleType: 'none',
+          display: 'flex',
+          alignItems: 'center',
+          marginBlock: 0,
+          paddingInline: 0,
+          flexWrap: 'wrap'
+        }}
+      >
+        {childrenArray.map((item, index) => {
+          if (index === childrenArray.length - 1) {
+            return <li key={`bc-${index}`}>{item}</li>;
+          }
+          return (
+            <li key={`bc-${index}`} style={{ display: 'flex' }}>
+              {item}
+              <Label style={separatorInlineStyles} aria-hidden="true">
+                {SeparatorStyles[separatorStyle]}
+              </Label>
+            </li>
+          );
+        })}
+        {currentLocationText && (
+          <li key={`bc-${currentLocationText}`} style={{ display: 'flex' }}>
+            <Label style={separatorInlineStyles} aria-hidden="true">
+              {SeparatorStyles[separatorStyle]}
+            </Label>
+            <Label aria-current="page">{currentLocationText}</Label>
+          </li>
+        )}
+      </ol>
+    </nav>
   );
 });
 
