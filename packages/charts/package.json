@@ -17,7 +17,7 @@
   "scripts": {
     "clean": "rimraf components interfaces internal util index.esm.js index.d.ts config.d.ts hooks dist",
     "build": "rollup -c rollup.config.mjs",
-    "build:types": "tsc --declaration --emitDeclarationOnly --declarationDir . --removeComments false"
+    "build:types": "tsc --declaration --emitDeclarationOnly --declarationDir . --removeComments false --skipLibCheck"
   },
   "dependencies": {
     "@babel/runtime": "7.13.10",
