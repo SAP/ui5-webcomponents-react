@@ -40,5 +40,7 @@ addons.setConfig({
    */
   enableShortcuts: false,
 
-  showRoots: true
+  sidebar: {
+    showRoots: true
+  }
 });
