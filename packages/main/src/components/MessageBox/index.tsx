@@ -176,7 +176,8 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
   useEffect(() => {
     if (dialogRef.current) {
       if (open) {
-        dialogRef.current.open?.();
+        dialogRef.current.open?.(true);
+        dialogRef.current.focus();
       } else {
         dialogRef.current.close?.();
       }
@@ -194,32 +195,28 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
       style={style}
       tooltip={tooltip}
       className={messageBoxClassNames}
-      header={
-        <header className={classes.header} data-type={type}>
-          {iconToRender}
-          <Title level={TitleLevel.H2}>{titleToRender()}</Title>
-        </header>
-      }
-      footer={
-        <footer className={classes.footer}>
-          {getActions().map((action, index) => {
-            return (
-              <Button
-                key={`${action}-${index}`}
-                design={index === 0 ? ButtonDesign.Emphasized : ButtonDesign.Transparent}
-                onClick={handleOnClose}
-                data-action={action}
-              >
-                {actionTranslations[action] ?? action}
-              </Button>
-            );
-          })}
-        </footer>
-      }
       onAfterClose={open ? handleOnClose : stopPropagation}
       {...passThroughProps}
     >
+      <header slot="header" className={classes.header} data-type={type}>
+        {iconToRender}
+        <Title level={TitleLevel.H2}>{titleToRender()}</Title>
+      </header>
       <Text className={classes.content}>{children}</Text>
+      <footer slot="footer" className={classes.footer}>
+        {getActions().map((action, index) => {
+          return (
+            <Button
+              key={`${action}-${index}`}
+              design={index === 0 ? ButtonDesign.Emphasized : ButtonDesign.Transparent}
+              onClick={handleOnClose}
+              data-action={action}
+            >
+              {actionTranslations[action] ?? action}
+            </Button>
+          );
+        })}
+      </footer>
     </Dialog>
   );
 });
