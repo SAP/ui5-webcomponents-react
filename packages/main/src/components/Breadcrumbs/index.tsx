@@ -11,6 +11,7 @@ import React, {
   ReactNode,
   ReactNodeArray,
   Ref,
+  useCallback,
   useRef,
   useState
 } from 'react';
@@ -82,26 +83,29 @@ const Breadcrumbs: FC<BreadcrumbsPropTypes> = forwardRef((props: BreadcrumbsProp
   const classes = useStyles();
   const childrenArray = Children.toArray(children).filter(Boolean);
   const [focusedItem, setFocusedItem] = useState(0);
+  const breadcrumbsRef = useRef(null);
 
   const handleItemFocus = (e) => {
     const currentId = parseInt(e.target.dataset.id);
     setFocusedItem(currentId);
   };
 
-  const handleKeyDownInList = (e) => {
-    const target = e.target as HTMLElement;
-    const currentId = parseInt(target.parentElement.id);
-    if (e.key === 'ArrowRight' && currentId + 1 <= childrenArray.length) {
-      breadcrumbsRef.current.children[currentId + 1].children[0].focus();
-    }
-    if (e.key === 'ArrowLeft' && currentId > 0) {
-      breadcrumbsRef.current.children[currentId - 1].children[0].focus();
-    }
-  };
+  const handleKeyDownInList = useCallback(
+    (e) => {
+      const target = e.target as HTMLElement;
+      const currentId = parseInt(target.parentElement.id);
+      const childrenLength = currentLocationText ? childrenArray.length : childrenArray.length - 1;
+      if (e.key === 'ArrowRight' && currentId + 1 <= childrenLength) {
+        breadcrumbsRef.current.children[currentId + 1].children[0].focus();
+      }
+      if (e.key === 'ArrowLeft' && currentId > 0) {
+        breadcrumbsRef.current.children[currentId - 1].children[0].focus();
+      }
+    },
+    [currentLocationText, childrenArray.length, breadcrumbsRef.current]
+  );
 
   const passThroughProps = usePassThroughHtmlProps(props);
-
-  const breadcrumbsRef = useRef(null);
 
   return (
     <nav
