@@ -44,7 +44,18 @@ jobs:
           GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
-      - name: deploy docs
+      - name: Deploy Release Docs
         run: yarn deploy:storybook
         env:
           GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+
+      - name: Build Next Docs
+        run: yarn build:storybook
+
+      - name: Deploy Next Docs
+        uses: JamesIves/github-pages-deploy-action@4.1.1
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: .out # The folder the action should deploy.
+          target-folder: master
+          clean: true
