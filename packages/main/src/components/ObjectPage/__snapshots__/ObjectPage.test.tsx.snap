@@ -336,7 +336,7 @@ exports[`ObjectPage Key Infos 1`] = `
               >
                 <li>
                   <ui5-link
-                    data-id="0"
+                    data-breadcrumb-index="0"
                     design="Default"
                     href="PathSegment1"
                     tabindex="0"
@@ -354,7 +354,7 @@ exports[`ObjectPage Key Infos 1`] = `
                 </li>
                 <li>
                   <ui5-link
-                    data-id="1"
+                    data-breadcrumb-index="1"
                     design="Default"
                     href="PathSegment2"
                     tabindex="-1"
@@ -372,7 +372,7 @@ exports[`ObjectPage Key Infos 1`] = `
                 </li>
                 <li>
                   <ui5-link
-                    data-id="2"
+                    data-breadcrumb-index="2"
                     design="Default"
                     href="PathSegment3"
                     tabindex="-1"

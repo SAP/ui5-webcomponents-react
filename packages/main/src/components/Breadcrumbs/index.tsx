@@ -13,7 +13,7 @@ import React, {
   Ref,
   useCallback,
   useRef,
-  useState
+  useReducer
 } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -68,7 +68,7 @@ const useStyles = createUseStyles(
       textOverflow: 'ellipsis',
       '&:focus': {
         outline: `${ThemingParameters.sapContent_FocusWidth} ${ThemingParameters.sapContent_FocusStyle} ${ThemingParameters.sapContent_FocusColor}`,
-        outlineOffset: '-0.0625rem'
+        outlineOffset: `calc(${ThemingParameters.sapContent_FocusWidth} * -1 )`
       }
     }
   },
@@ -82,23 +82,20 @@ const Breadcrumbs: FC<BreadcrumbsPropTypes> = forwardRef((props: BreadcrumbsProp
   const { children, separatorStyle, currentLocationText, tooltip, style, className, slot } = props;
   const classes = useStyles();
   const childrenArray = Children.toArray(children).filter(Boolean);
-  const [focusedItem, setFocusedItem] = useState(0);
+  const [focusedItem, setFocusedItem] = useReducer((_, action) => {
+    return parseInt(action.target.dataset.breadcrumbIndex);
+  }, 0);
   const breadcrumbsRef = useRef(null);
-
-  const handleItemFocus = (e) => {
-    const currentId = parseInt(e.target.dataset.id);
-    setFocusedItem(currentId);
-  };
 
   const handleKeyDownInList = useCallback(
     (e) => {
-      const currentId = parseInt(e.target.dataset.id);
+      const currentId = parseInt(e.target.dataset.breadcrumbIndex);
       const childrenLength = currentLocationText ? childrenArray.length : childrenArray.length - 1;
       if (e.key === 'ArrowRight' && currentId + 1 <= childrenLength) {
-        breadcrumbsRef.current.children[currentId + 1].children[0].focus();
+        breadcrumbsRef.current.querySelector(`[data-breadcrumb-index="${currentId + 1}"]`)?.focus();
       }
       if (e.key === 'ArrowLeft' && currentId > 0) {
-        breadcrumbsRef.current.children[currentId - 1].children[0].focus();
+        breadcrumbsRef.current.querySelector(`[data-breadcrumb-index="${currentId - 1}"]`)?.focus();
       }
     },
     [currentLocationText, childrenArray.length, breadcrumbsRef.current]
@@ -118,43 +115,32 @@ const Breadcrumbs: FC<BreadcrumbsPropTypes> = forwardRef((props: BreadcrumbsProp
     >
       <ol className={classes.list} ref={breadcrumbsRef} onKeyDown={handleKeyDownInList}>
         {childrenArray.map((item, index) => {
-          if (index === childrenArray.length - 1) {
-            return (
-              <li key={`bc-${index}`}>
-                {cloneElement(item as ReactElement, {
-                  tabIndex: focusedItem === index ? 0 : -1,
-                  onFocus: handleItemFocus,
-                  'data-id': index
-                })}
-                {currentLocationText && (
-                  <Label className={classes.separatorInline} aria-hidden="true">
-                    {SeparatorStyles[separatorStyle]}
-                  </Label>
-                )}
-              </li>
-            );
-          }
           return (
             <li key={`bc-${index}`}>
               {cloneElement(item as ReactElement, {
                 tabIndex: focusedItem === index ? 0 : -1,
-                onFocus: handleItemFocus,
-                'data-id': index
+                onFocus: setFocusedItem,
+                'data-breadcrumb-index': index
               })}
-              <Label className={classes.separatorInline} aria-hidden="true">
-                {SeparatorStyles[separatorStyle]}
-              </Label>
+              {index < childrenArray.length - 1 && (
+                <Label className={classes.separatorInline} aria-hidden="true">
+                  {SeparatorStyles[separatorStyle]}
+                </Label>
+              )}
             </li>
           );
         })}
         {currentLocationText && (
-          <li key={`bc-${currentLocationText}`}>
+          <li>
+            <Label className={classes.separatorInline} aria-hidden="true">
+              {SeparatorStyles[separatorStyle]}
+            </Label>
             <div
               aria-current="page"
               tabIndex={focusedItem === childrenArray.length ? 0 : -1}
               className={classes.currentLocation}
-              onFocus={handleItemFocus}
-              data-id={childrenArray.length}
+              onFocus={setFocusedItem}
+              data-breadcrumb-index={childrenArray.length}
             >
               {currentLocationText}
             </div>

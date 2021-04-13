@@ -20,7 +20,7 @@ exports[`DynamicPage always show content header 1`] = `
           >
             <li>
               <ui5-link
-                data-id="0"
+                data-breadcrumb-index="0"
                 design="Default"
                 tabindex="0"
                 ui5-link=""
@@ -37,7 +37,7 @@ exports[`DynamicPage always show content header 1`] = `
             </li>
             <li>
               <ui5-link
-                data-id="1"
+                data-breadcrumb-index="1"
                 design="Default"
                 tabindex="-1"
                 ui5-link=""
@@ -54,7 +54,7 @@ exports[`DynamicPage always show content header 1`] = `
             </li>
             <li>
               <ui5-link
-                data-id="2"
+                data-breadcrumb-index="2"
                 design="Default"
                 tabindex="-1"
                 ui5-link=""
@@ -71,7 +71,7 @@ exports[`DynamicPage always show content header 1`] = `
             </li>
             <li>
               <ui5-link
-                data-id="3"
+                data-breadcrumb-index="3"
                 design="Default"
                 tabindex="-1"
                 ui5-link=""
@@ -88,7 +88,7 @@ exports[`DynamicPage always show content header 1`] = `
             </li>
             <li>
               <ui5-link
-                data-id="4"
+                data-breadcrumb-index="4"
                 design="Default"
                 tabindex="-1"
                 ui5-link=""
@@ -105,7 +105,7 @@ exports[`DynamicPage always show content header 1`] = `
             </li>
             <li>
               <ui5-link
-                data-id="5"
+                data-breadcrumb-index="5"
                 design="Default"
                 tabindex="-1"
                 ui5-link=""
@@ -341,7 +341,7 @@ exports[`DynamicPage hider header button 1`] = `
           >
             <li>
               <ui5-link
-                data-id="0"
+                data-breadcrumb-index="0"
                 design="Default"
                 tabindex="0"
                 ui5-link=""
@@ -358,7 +358,7 @@ exports[`DynamicPage hider header button 1`] = `
             </li>
             <li>
               <ui5-link
-                data-id="1"
+                data-breadcrumb-index="1"
                 design="Default"
                 tabindex="-1"
                 ui5-link=""
@@ -375,7 +375,7 @@ exports[`DynamicPage hider header button 1`] = `
             </li>
             <li>
               <ui5-link
-                data-id="2"
+                data-breadcrumb-index="2"
                 design="Default"
                 tabindex="-1"
                 ui5-link=""
@@ -392,7 +392,7 @@ exports[`DynamicPage hider header button 1`] = `
             </li>
             <li>
               <ui5-link
-                data-id="3"
+                data-breadcrumb-index="3"
                 design="Default"
                 tabindex="-1"
                 ui5-link=""
@@ -409,7 +409,7 @@ exports[`DynamicPage hider header button 1`] = `
             </li>
             <li>
               <ui5-link
-                data-id="4"
+                data-breadcrumb-index="4"
                 design="Default"
                 tabindex="-1"
                 ui5-link=""
@@ -426,7 +426,7 @@ exports[`DynamicPage hider header button 1`] = `
             </li>
             <li>
               <ui5-link
-                data-id="5"
+                data-breadcrumb-index="5"
                 design="Default"
                 tabindex="-1"
                 ui5-link=""
@@ -817,7 +817,7 @@ exports[`DynamicPage with content 1`] = `
           >
             <li>
               <ui5-link
-                data-id="0"
+                data-breadcrumb-index="0"
                 design="Default"
                 tabindex="0"
                 ui5-link=""
@@ -834,7 +834,7 @@ exports[`DynamicPage with content 1`] = `
             </li>
             <li>
               <ui5-link
-                data-id="1"
+                data-breadcrumb-index="1"
                 design="Default"
                 tabindex="-1"
                 ui5-link=""
@@ -851,7 +851,7 @@ exports[`DynamicPage with content 1`] = `
             </li>
             <li>
               <ui5-link
-                data-id="2"
+                data-breadcrumb-index="2"
                 design="Default"
                 tabindex="-1"
                 ui5-link=""
@@ -868,7 +868,7 @@ exports[`DynamicPage with content 1`] = `
             </li>
             <li>
               <ui5-link
-                data-id="3"
+                data-breadcrumb-index="3"
                 design="Default"
                 tabindex="-1"
                 ui5-link=""
@@ -885,7 +885,7 @@ exports[`DynamicPage with content 1`] = `
             </li>
             <li>
               <ui5-link
-                data-id="4"
+                data-breadcrumb-index="4"
                 design="Default"
                 tabindex="-1"
                 ui5-link=""
@@ -902,7 +902,7 @@ exports[`DynamicPage with content 1`] = `
             </li>
             <li>
               <ui5-link
-                data-id="5"
+                data-breadcrumb-index="5"
                 design="Default"
                 tabindex="-1"
                 ui5-link=""
@@ -1794,7 +1794,7 @@ exports[`DynamicPage without content 1`] = `
           >
             <li>
               <ui5-link
-                data-id="0"
+                data-breadcrumb-index="0"
                 design="Default"
                 tabindex="0"
                 ui5-link=""
@@ -1811,7 +1811,7 @@ exports[`DynamicPage without content 1`] = `
             </li>
             <li>
               <ui5-link
-                data-id="1"
+                data-breadcrumb-index="1"
                 design="Default"
                 tabindex="-1"
                 ui5-link=""
@@ -1828,7 +1828,7 @@ exports[`DynamicPage without content 1`] = `
             </li>
             <li>
               <ui5-link
-                data-id="2"
+                data-breadcrumb-index="2"
                 design="Default"
                 tabindex="-1"
                 ui5-link=""
@@ -1845,7 +1845,7 @@ exports[`DynamicPage without content 1`] = `
             </li>
             <li>
               <ui5-link
-                data-id="3"
+                data-breadcrumb-index="3"
                 design="Default"
                 tabindex="-1"
                 ui5-link=""
@@ -1862,7 +1862,7 @@ exports[`DynamicPage without content 1`] = `
             </li>
             <li>
               <ui5-link
-                data-id="4"
+                data-breadcrumb-index="4"
                 design="Default"
                 tabindex="-1"
                 ui5-link=""
@@ -1879,7 +1879,7 @@ exports[`DynamicPage without content 1`] = `
             </li>
             <li>
               <ui5-link
-                data-id="5"
+                data-breadcrumb-index="5"
                 design="Default"
                 tabindex="-1"
                 ui5-link=""

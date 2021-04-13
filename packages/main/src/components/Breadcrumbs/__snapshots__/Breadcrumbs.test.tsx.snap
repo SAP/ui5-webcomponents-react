@@ -10,7 +10,7 @@ exports[`Breadcrumbs separatorStyle: 'BackSlash' 1`] = `
     >
       <li>
         <ui5-link
-          data-id="0"
+          data-breadcrumb-index="0"
           design="Default"
           tabindex="0"
           ui5-link=""
@@ -27,7 +27,7 @@ exports[`Breadcrumbs separatorStyle: 'BackSlash' 1`] = `
       </li>
       <li>
         <ui5-link
-          data-id="1"
+          data-breadcrumb-index="1"
           design="Default"
           tabindex="-1"
           ui5-link=""
@@ -44,7 +44,7 @@ exports[`Breadcrumbs separatorStyle: 'BackSlash' 1`] = `
       </li>
       <li>
         <ui5-link
-          data-id="2"
+          data-breadcrumb-index="2"
           design="Default"
           tabindex="-1"
           ui5-link=""
@@ -67,7 +67,7 @@ exports[`Breadcrumbs separatorStyle: 'DoubleBackSlash' 1`] = `
     >
       <li>
         <ui5-link
-          data-id="0"
+          data-breadcrumb-index="0"
           design="Default"
           tabindex="0"
           ui5-link=""
@@ -84,7 +84,7 @@ exports[`Breadcrumbs separatorStyle: 'DoubleBackSlash' 1`] = `
       </li>
       <li>
         <ui5-link
-          data-id="1"
+          data-breadcrumb-index="1"
           design="Default"
           tabindex="-1"
           ui5-link=""
@@ -101,7 +101,7 @@ exports[`Breadcrumbs separatorStyle: 'DoubleBackSlash' 1`] = `
       </li>
       <li>
         <ui5-link
-          data-id="2"
+          data-breadcrumb-index="2"
           design="Default"
           tabindex="-1"
           ui5-link=""
@@ -124,7 +124,7 @@ exports[`Breadcrumbs separatorStyle: 'DoubleGreaterThan' 1`] = `
     >
       <li>
         <ui5-link
-          data-id="0"
+          data-breadcrumb-index="0"
           design="Default"
           tabindex="0"
           ui5-link=""
@@ -141,7 +141,7 @@ exports[`Breadcrumbs separatorStyle: 'DoubleGreaterThan' 1`] = `
       </li>
       <li>
         <ui5-link
-          data-id="1"
+          data-breadcrumb-index="1"
           design="Default"
           tabindex="-1"
           ui5-link=""
@@ -158,7 +158,7 @@ exports[`Breadcrumbs separatorStyle: 'DoubleGreaterThan' 1`] = `
       </li>
       <li>
         <ui5-link
-          data-id="2"
+          data-breadcrumb-index="2"
           design="Default"
           tabindex="-1"
           ui5-link=""
@@ -181,7 +181,7 @@ exports[`Breadcrumbs separatorStyle: 'DoubleSlash' 1`] = `
     >
       <li>
         <ui5-link
-          data-id="0"
+          data-breadcrumb-index="0"
           design="Default"
           tabindex="0"
           ui5-link=""
@@ -198,7 +198,7 @@ exports[`Breadcrumbs separatorStyle: 'DoubleSlash' 1`] = `
       </li>
       <li>
         <ui5-link
-          data-id="1"
+          data-breadcrumb-index="1"
           design="Default"
           tabindex="-1"
           ui5-link=""
@@ -215,7 +215,7 @@ exports[`Breadcrumbs separatorStyle: 'DoubleSlash' 1`] = `
       </li>
       <li>
         <ui5-link
-          data-id="2"
+          data-breadcrumb-index="2"
           design="Default"
           tabindex="-1"
           ui5-link=""
@@ -238,7 +238,7 @@ exports[`Breadcrumbs separatorStyle: 'GreaterThan' 1`] = `
     >
       <li>
         <ui5-link
-          data-id="0"
+          data-breadcrumb-index="0"
           design="Default"
           tabindex="0"
           ui5-link=""
@@ -255,7 +255,7 @@ exports[`Breadcrumbs separatorStyle: 'GreaterThan' 1`] = `
       </li>
       <li>
         <ui5-link
-          data-id="1"
+          data-breadcrumb-index="1"
           design="Default"
           tabindex="-1"
           ui5-link=""
@@ -272,7 +272,7 @@ exports[`Breadcrumbs separatorStyle: 'GreaterThan' 1`] = `
       </li>
       <li>
         <ui5-link
-          data-id="2"
+          data-breadcrumb-index="2"
           design="Default"
           tabindex="-1"
           ui5-link=""
@@ -295,7 +295,7 @@ exports[`Breadcrumbs separatorStyle: 'Slash' 1`] = `
     >
       <li>
         <ui5-link
-          data-id="0"
+          data-breadcrumb-index="0"
           design="Default"
           tabindex="0"
           ui5-link=""
@@ -312,7 +312,7 @@ exports[`Breadcrumbs separatorStyle: 'Slash' 1`] = `
       </li>
       <li>
         <ui5-link
-          data-id="1"
+          data-breadcrumb-index="1"
           design="Default"
           tabindex="-1"
           ui5-link=""
@@ -329,7 +329,7 @@ exports[`Breadcrumbs separatorStyle: 'Slash' 1`] = `
       </li>
       <li>
         <ui5-link
-          data-id="2"
+          data-breadcrumb-index="2"
           design="Default"
           tabindex="-1"
           ui5-link=""
@@ -352,7 +352,7 @@ exports[`Breadcrumbs with currentLocationText 1`] = `
     >
       <li>
         <ui5-link
-          data-id="0"
+          data-breadcrumb-index="0"
           design="Default"
           tabindex="0"
           ui5-link=""
@@ -369,7 +369,7 @@ exports[`Breadcrumbs with currentLocationText 1`] = `
       </li>
       <li>
         <ui5-link
-          data-id="1"
+          data-breadcrumb-index="1"
           design="Default"
           tabindex="-1"
           ui5-link=""
@@ -386,13 +386,15 @@ exports[`Breadcrumbs with currentLocationText 1`] = `
       </li>
       <li>
         <ui5-link
-          data-id="2"
+          data-breadcrumb-index="2"
           design="Default"
           tabindex="-1"
           ui5-link=""
         >
           Link 3
         </ui5-link>
+      </li>
+      <li>
         <ui5-label
           aria-hidden="true"
           class="Breadcrumbs-separatorInline"
@@ -400,12 +402,10 @@ exports[`Breadcrumbs with currentLocationText 1`] = `
         >
           /
         </ui5-label>
-      </li>
-      <li>
         <div
           aria-current="page"
           class="Breadcrumbs-currentLocation"
-          data-id="3"
+          data-breadcrumb-index="3"
           tabindex="-1"
         >
           Current Location
