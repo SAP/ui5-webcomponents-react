@@ -328,39 +328,59 @@ exports[`ObjectPage Key Infos 1`] = `
           <div
             class="FlexBox-flexBox FlexBox-flexBoxDirectionColumn FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap ObjectPage-container"
           >
-            <div>
-              <ui5-link
-                design="Default"
-                href="PathSegment1"
-                ui5-link=""
+            <nav
+              aria-label="Breadcrumb Trail"
+            >
+              <ol
+                class="Breadcrumbs-list"
               >
-                Path1
-              </ui5-link>
-              <ui5-label
-                style="margin: 0px 0.25rem;"
-                ui5-label=""
-              >
-                /
-              </ui5-label>
-              <ui5-link
-                design="Default"
-                href="PathSegment2"
-                ui5-link=""
-              >
-                Path2
-              </ui5-link>
-              <ui5-label
-                style="margin: 0px 0.25rem;"
-                ui5-label=""
-              >
-                /
-              </ui5-label>
-              <ui5-link
-                design="Default"
-                href="PathSegment3"
-                ui5-link=""
-              />
-            </div>
+                <li>
+                  <ui5-link
+                    data-breadcrumb-index="0"
+                    design="Default"
+                    href="PathSegment1"
+                    tabindex="0"
+                    ui5-link=""
+                  >
+                    Path1
+                  </ui5-link>
+                  <ui5-label
+                    aria-hidden="true"
+                    class="Breadcrumbs-separatorInline"
+                    ui5-label=""
+                  >
+                    /
+                  </ui5-label>
+                </li>
+                <li>
+                  <ui5-link
+                    data-breadcrumb-index="1"
+                    design="Default"
+                    href="PathSegment2"
+                    tabindex="-1"
+                    ui5-link=""
+                  >
+                    Path2
+                  </ui5-link>
+                  <ui5-label
+                    aria-hidden="true"
+                    class="Breadcrumbs-separatorInline"
+                    ui5-label=""
+                  >
+                    /
+                  </ui5-label>
+                </li>
+                <li>
+                  <ui5-link
+                    data-breadcrumb-index="2"
+                    design="Default"
+                    href="PathSegment3"
+                    tabindex="-1"
+                    ui5-link=""
+                  />
+                </li>
+              </ol>
+            </nav>
             <div
               class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsBaseline FlexBox-flexWrapNoWrap"
             >
