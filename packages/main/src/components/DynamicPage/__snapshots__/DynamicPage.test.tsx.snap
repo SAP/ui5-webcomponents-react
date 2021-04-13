@@ -16,96 +16,110 @@ exports[`DynamicPage always show content header 1`] = `
           aria-label="Breadcrumb Trail"
         >
           <ol
-            style="list-style-type: none; display: flex; align-items: center; margin-block: 0; padding-inline: 0; flex-wrap: wrap;"
+            class="Breadcrumbs-list"
           >
             <li
-              style="display: flex;"
+              id="0"
             >
               <ui5-link
+                data-id="0"
                 design="Default"
+                tabindex="0"
                 ui5-link=""
               >
                 Home
               </ui5-link>
               <ui5-label
                 aria-hidden="true"
-                style="margin: 0px 0.25rem;"
+                class="Breadcrumbs-separatorInline"
                 ui5-label=""
               >
                 /
               </ui5-label>
             </li>
             <li
-              style="display: flex;"
+              id="1"
             >
               <ui5-link
+                data-id="1"
                 design="Default"
+                tabindex="-1"
                 ui5-link=""
               >
                 Page 1
               </ui5-link>
               <ui5-label
                 aria-hidden="true"
-                style="margin: 0px 0.25rem;"
+                class="Breadcrumbs-separatorInline"
                 ui5-label=""
               >
                 /
               </ui5-label>
             </li>
             <li
-              style="display: flex;"
+              id="2"
             >
               <ui5-link
+                data-id="2"
                 design="Default"
+                tabindex="-1"
                 ui5-link=""
               >
                 Page 2
               </ui5-link>
               <ui5-label
                 aria-hidden="true"
-                style="margin: 0px 0.25rem;"
+                class="Breadcrumbs-separatorInline"
                 ui5-label=""
               >
                 /
               </ui5-label>
             </li>
             <li
-              style="display: flex;"
+              id="3"
             >
               <ui5-link
+                data-id="3"
                 design="Default"
+                tabindex="-1"
                 ui5-link=""
               >
                 Page 3
               </ui5-link>
               <ui5-label
                 aria-hidden="true"
-                style="margin: 0px 0.25rem;"
+                class="Breadcrumbs-separatorInline"
                 ui5-label=""
               >
                 /
               </ui5-label>
             </li>
             <li
-              style="display: flex;"
+              id="4"
             >
               <ui5-link
+                data-id="4"
                 design="Default"
+                tabindex="-1"
                 ui5-link=""
               >
                 Page 4
               </ui5-link>
               <ui5-label
                 aria-hidden="true"
-                style="margin: 0px 0.25rem;"
+                class="Breadcrumbs-separatorInline"
                 ui5-label=""
               >
                 /
               </ui5-label>
             </li>
-            <li>
+            <li
+              id="5"
+            >
               <ui5-link
+                data-id="5"
                 design="Default"
+                tabindex="-1"
                 ui5-link=""
               >
                 Page 5
@@ -335,96 +349,110 @@ exports[`DynamicPage hider header button 1`] = `
           aria-label="Breadcrumb Trail"
         >
           <ol
-            style="list-style-type: none; display: flex; align-items: center; margin-block: 0; padding-inline: 0; flex-wrap: wrap;"
+            class="Breadcrumbs-list"
           >
             <li
-              style="display: flex;"
+              id="0"
             >
               <ui5-link
+                data-id="0"
                 design="Default"
+                tabindex="0"
                 ui5-link=""
               >
                 Home
               </ui5-link>
               <ui5-label
                 aria-hidden="true"
-                style="margin: 0px 0.25rem;"
+                class="Breadcrumbs-separatorInline"
                 ui5-label=""
               >
                 /
               </ui5-label>
             </li>
             <li
-              style="display: flex;"
+              id="1"
             >
               <ui5-link
+                data-id="1"
                 design="Default"
+                tabindex="-1"
                 ui5-link=""
               >
                 Page 1
               </ui5-link>
               <ui5-label
                 aria-hidden="true"
-                style="margin: 0px 0.25rem;"
+                class="Breadcrumbs-separatorInline"
                 ui5-label=""
               >
                 /
               </ui5-label>
             </li>
             <li
-              style="display: flex;"
+              id="2"
             >
               <ui5-link
+                data-id="2"
                 design="Default"
+                tabindex="-1"
                 ui5-link=""
               >
                 Page 2
               </ui5-link>
               <ui5-label
                 aria-hidden="true"
-                style="margin: 0px 0.25rem;"
+                class="Breadcrumbs-separatorInline"
                 ui5-label=""
               >
                 /
               </ui5-label>
             </li>
             <li
-              style="display: flex;"
+              id="3"
             >
               <ui5-link
+                data-id="3"
                 design="Default"
+                tabindex="-1"
                 ui5-link=""
               >
                 Page 3
               </ui5-link>
               <ui5-label
                 aria-hidden="true"
-                style="margin: 0px 0.25rem;"
+                class="Breadcrumbs-separatorInline"
                 ui5-label=""
               >
                 /
               </ui5-label>
             </li>
             <li
-              style="display: flex;"
+              id="4"
             >
               <ui5-link
+                data-id="4"
                 design="Default"
+                tabindex="-1"
                 ui5-link=""
               >
                 Page 4
               </ui5-link>
               <ui5-label
                 aria-hidden="true"
-                style="margin: 0px 0.25rem;"
+                class="Breadcrumbs-separatorInline"
                 ui5-label=""
               >
                 /
               </ui5-label>
             </li>
-            <li>
+            <li
+              id="5"
+            >
               <ui5-link
+                data-id="5"
                 design="Default"
+                tabindex="-1"
                 ui5-link=""
               >
                 Page 5
@@ -809,96 +837,110 @@ exports[`DynamicPage with content 1`] = `
           aria-label="Breadcrumb Trail"
         >
           <ol
-            style="list-style-type: none; display: flex; align-items: center; margin-block: 0; padding-inline: 0; flex-wrap: wrap;"
+            class="Breadcrumbs-list"
           >
             <li
-              style="display: flex;"
+              id="0"
             >
               <ui5-link
+                data-id="0"
                 design="Default"
+                tabindex="0"
                 ui5-link=""
               >
                 Home
               </ui5-link>
               <ui5-label
                 aria-hidden="true"
-                style="margin: 0px 0.25rem;"
+                class="Breadcrumbs-separatorInline"
                 ui5-label=""
               >
                 /
               </ui5-label>
             </li>
             <li
-              style="display: flex;"
+              id="1"
             >
               <ui5-link
+                data-id="1"
                 design="Default"
+                tabindex="-1"
                 ui5-link=""
               >
                 Page 1
               </ui5-link>
               <ui5-label
                 aria-hidden="true"
-                style="margin: 0px 0.25rem;"
+                class="Breadcrumbs-separatorInline"
                 ui5-label=""
               >
                 /
               </ui5-label>
             </li>
             <li
-              style="display: flex;"
+              id="2"
             >
               <ui5-link
+                data-id="2"
                 design="Default"
+                tabindex="-1"
                 ui5-link=""
               >
                 Page 2
               </ui5-link>
               <ui5-label
                 aria-hidden="true"
-                style="margin: 0px 0.25rem;"
+                class="Breadcrumbs-separatorInline"
                 ui5-label=""
               >
                 /
               </ui5-label>
             </li>
             <li
-              style="display: flex;"
+              id="3"
             >
               <ui5-link
+                data-id="3"
                 design="Default"
+                tabindex="-1"
                 ui5-link=""
               >
                 Page 3
               </ui5-link>
               <ui5-label
                 aria-hidden="true"
-                style="margin: 0px 0.25rem;"
+                class="Breadcrumbs-separatorInline"
                 ui5-label=""
               >
                 /
               </ui5-label>
             </li>
             <li
-              style="display: flex;"
+              id="4"
             >
               <ui5-link
+                data-id="4"
                 design="Default"
+                tabindex="-1"
                 ui5-link=""
               >
                 Page 4
               </ui5-link>
               <ui5-label
                 aria-hidden="true"
-                style="margin: 0px 0.25rem;"
+                class="Breadcrumbs-separatorInline"
                 ui5-label=""
               >
                 /
               </ui5-label>
             </li>
-            <li>
+            <li
+              id="5"
+            >
               <ui5-link
+                data-id="5"
                 design="Default"
+                tabindex="-1"
                 ui5-link=""
               >
                 Page 5
@@ -1784,96 +1826,110 @@ exports[`DynamicPage without content 1`] = `
           aria-label="Breadcrumb Trail"
         >
           <ol
-            style="list-style-type: none; display: flex; align-items: center; margin-block: 0; padding-inline: 0; flex-wrap: wrap;"
+            class="Breadcrumbs-list"
           >
             <li
-              style="display: flex;"
+              id="0"
             >
               <ui5-link
+                data-id="0"
                 design="Default"
+                tabindex="0"
                 ui5-link=""
               >
                 Home
               </ui5-link>
               <ui5-label
                 aria-hidden="true"
-                style="margin: 0px 0.25rem;"
+                class="Breadcrumbs-separatorInline"
                 ui5-label=""
               >
                 /
               </ui5-label>
             </li>
             <li
-              style="display: flex;"
+              id="1"
             >
               <ui5-link
+                data-id="1"
                 design="Default"
+                tabindex="-1"
                 ui5-link=""
               >
                 Page 1
               </ui5-link>
               <ui5-label
                 aria-hidden="true"
-                style="margin: 0px 0.25rem;"
+                class="Breadcrumbs-separatorInline"
                 ui5-label=""
               >
                 /
               </ui5-label>
             </li>
             <li
-              style="display: flex;"
+              id="2"
             >
               <ui5-link
+                data-id="2"
                 design="Default"
+                tabindex="-1"
                 ui5-link=""
               >
                 Page 2
               </ui5-link>
               <ui5-label
                 aria-hidden="true"
-                style="margin: 0px 0.25rem;"
+                class="Breadcrumbs-separatorInline"
                 ui5-label=""
               >
                 /
               </ui5-label>
             </li>
             <li
-              style="display: flex;"
+              id="3"
             >
               <ui5-link
+                data-id="3"
                 design="Default"
+                tabindex="-1"
                 ui5-link=""
               >
                 Page 3
               </ui5-link>
               <ui5-label
                 aria-hidden="true"
-                style="margin: 0px 0.25rem;"
+                class="Breadcrumbs-separatorInline"
                 ui5-label=""
               >
                 /
               </ui5-label>
             </li>
             <li
-              style="display: flex;"
+              id="4"
             >
               <ui5-link
+                data-id="4"
                 design="Default"
+                tabindex="-1"
                 ui5-link=""
               >
                 Page 4
               </ui5-link>
               <ui5-label
                 aria-hidden="true"
-                style="margin: 0px 0.25rem;"
+                class="Breadcrumbs-separatorInline"
                 ui5-label=""
               >
                 /
               </ui5-label>
             </li>
-            <li>
+            <li
+              id="5"
+            >
               <ui5-link
+                data-id="5"
                 design="Default"
+                tabindex="-1"
                 ui5-link=""
               >
                 Page 5

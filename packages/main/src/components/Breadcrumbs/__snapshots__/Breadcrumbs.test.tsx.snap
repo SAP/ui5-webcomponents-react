@@ -6,45 +6,53 @@ exports[`Breadcrumbs separatorStyle: 'BackSlash' 1`] = `
     aria-label="Breadcrumb Trail"
   >
     <ol
-      style="list-style-type: none; display: flex; align-items: center; margin-block: 0; padding-inline: 0; flex-wrap: wrap;"
+      class="Breadcrumbs-list"
     >
       <li
-        style="display: flex;"
+        id="0"
       >
         <ui5-link
+          data-id="0"
           design="Default"
+          tabindex="0"
           ui5-link=""
         >
           Link 1
         </ui5-link>
         <ui5-label
           aria-hidden="true"
-          style="margin: 0px 0.25rem;"
+          class="Breadcrumbs-separatorInline"
           ui5-label=""
         >
           \\
         </ui5-label>
       </li>
       <li
-        style="display: flex;"
+        id="1"
       >
         <ui5-link
+          data-id="1"
           design="Default"
+          tabindex="-1"
           ui5-link=""
         >
           Link 2
         </ui5-link>
         <ui5-label
           aria-hidden="true"
-          style="margin: 0px 0.25rem;"
+          class="Breadcrumbs-separatorInline"
           ui5-label=""
         >
           \\
         </ui5-label>
       </li>
-      <li>
+      <li
+        id="2"
+      >
         <ui5-link
+          data-id="2"
           design="Default"
+          tabindex="-1"
           ui5-link=""
         >
           Link 3
@@ -61,45 +69,53 @@ exports[`Breadcrumbs separatorStyle: 'DoubleBackSlash' 1`] = `
     aria-label="Breadcrumb Trail"
   >
     <ol
-      style="list-style-type: none; display: flex; align-items: center; margin-block: 0; padding-inline: 0; flex-wrap: wrap;"
+      class="Breadcrumbs-list"
     >
       <li
-        style="display: flex;"
+        id="0"
       >
         <ui5-link
+          data-id="0"
           design="Default"
+          tabindex="0"
           ui5-link=""
         >
           Link 1
         </ui5-link>
         <ui5-label
           aria-hidden="true"
-          style="margin: 0px 0.25rem;"
+          class="Breadcrumbs-separatorInline"
           ui5-label=""
         >
           \\\\
         </ui5-label>
       </li>
       <li
-        style="display: flex;"
+        id="1"
       >
         <ui5-link
+          data-id="1"
           design="Default"
+          tabindex="-1"
           ui5-link=""
         >
           Link 2
         </ui5-link>
         <ui5-label
           aria-hidden="true"
-          style="margin: 0px 0.25rem;"
+          class="Breadcrumbs-separatorInline"
           ui5-label=""
         >
           \\\\
         </ui5-label>
       </li>
-      <li>
+      <li
+        id="2"
+      >
         <ui5-link
+          data-id="2"
           design="Default"
+          tabindex="-1"
           ui5-link=""
         >
           Link 3
@@ -116,45 +132,53 @@ exports[`Breadcrumbs separatorStyle: 'DoubleGreaterThan' 1`] = `
     aria-label="Breadcrumb Trail"
   >
     <ol
-      style="list-style-type: none; display: flex; align-items: center; margin-block: 0; padding-inline: 0; flex-wrap: wrap;"
+      class="Breadcrumbs-list"
     >
       <li
-        style="display: flex;"
+        id="0"
       >
         <ui5-link
+          data-id="0"
           design="Default"
+          tabindex="0"
           ui5-link=""
         >
           Link 1
         </ui5-link>
         <ui5-label
           aria-hidden="true"
-          style="margin: 0px 0.25rem;"
+          class="Breadcrumbs-separatorInline"
           ui5-label=""
         >
           &gt;&gt;
         </ui5-label>
       </li>
       <li
-        style="display: flex;"
+        id="1"
       >
         <ui5-link
+          data-id="1"
           design="Default"
+          tabindex="-1"
           ui5-link=""
         >
           Link 2
         </ui5-link>
         <ui5-label
           aria-hidden="true"
-          style="margin: 0px 0.25rem;"
+          class="Breadcrumbs-separatorInline"
           ui5-label=""
         >
           &gt;&gt;
         </ui5-label>
       </li>
-      <li>
+      <li
+        id="2"
+      >
         <ui5-link
+          data-id="2"
           design="Default"
+          tabindex="-1"
           ui5-link=""
         >
           Link 3
@@ -171,45 +195,53 @@ exports[`Breadcrumbs separatorStyle: 'DoubleSlash' 1`] = `
     aria-label="Breadcrumb Trail"
   >
     <ol
-      style="list-style-type: none; display: flex; align-items: center; margin-block: 0; padding-inline: 0; flex-wrap: wrap;"
+      class="Breadcrumbs-list"
     >
       <li
-        style="display: flex;"
+        id="0"
       >
         <ui5-link
+          data-id="0"
           design="Default"
+          tabindex="0"
           ui5-link=""
         >
           Link 1
         </ui5-link>
         <ui5-label
           aria-hidden="true"
-          style="margin: 0px 0.25rem;"
+          class="Breadcrumbs-separatorInline"
           ui5-label=""
         >
           //
         </ui5-label>
       </li>
       <li
-        style="display: flex;"
+        id="1"
       >
         <ui5-link
+          data-id="1"
           design="Default"
+          tabindex="-1"
           ui5-link=""
         >
           Link 2
         </ui5-link>
         <ui5-label
           aria-hidden="true"
-          style="margin: 0px 0.25rem;"
+          class="Breadcrumbs-separatorInline"
           ui5-label=""
         >
           //
         </ui5-label>
       </li>
-      <li>
+      <li
+        id="2"
+      >
         <ui5-link
+          data-id="2"
           design="Default"
+          tabindex="-1"
           ui5-link=""
         >
           Link 3
@@ -226,45 +258,53 @@ exports[`Breadcrumbs separatorStyle: 'GreaterThan' 1`] = `
     aria-label="Breadcrumb Trail"
   >
     <ol
-      style="list-style-type: none; display: flex; align-items: center; margin-block: 0; padding-inline: 0; flex-wrap: wrap;"
+      class="Breadcrumbs-list"
     >
       <li
-        style="display: flex;"
+        id="0"
       >
         <ui5-link
+          data-id="0"
           design="Default"
+          tabindex="0"
           ui5-link=""
         >
           Link 1
         </ui5-link>
         <ui5-label
           aria-hidden="true"
-          style="margin: 0px 0.25rem;"
+          class="Breadcrumbs-separatorInline"
           ui5-label=""
         >
           &gt;
         </ui5-label>
       </li>
       <li
-        style="display: flex;"
+        id="1"
       >
         <ui5-link
+          data-id="1"
           design="Default"
+          tabindex="-1"
           ui5-link=""
         >
           Link 2
         </ui5-link>
         <ui5-label
           aria-hidden="true"
-          style="margin: 0px 0.25rem;"
+          class="Breadcrumbs-separatorInline"
           ui5-label=""
         >
           &gt;
         </ui5-label>
       </li>
-      <li>
+      <li
+        id="2"
+      >
         <ui5-link
+          data-id="2"
           design="Default"
+          tabindex="-1"
           ui5-link=""
         >
           Link 3
@@ -281,45 +321,53 @@ exports[`Breadcrumbs separatorStyle: 'Slash' 1`] = `
     aria-label="Breadcrumb Trail"
   >
     <ol
-      style="list-style-type: none; display: flex; align-items: center; margin-block: 0; padding-inline: 0; flex-wrap: wrap;"
+      class="Breadcrumbs-list"
     >
       <li
-        style="display: flex;"
+        id="0"
       >
         <ui5-link
+          data-id="0"
           design="Default"
+          tabindex="0"
           ui5-link=""
         >
           Link 1
         </ui5-link>
         <ui5-label
           aria-hidden="true"
-          style="margin: 0px 0.25rem;"
+          class="Breadcrumbs-separatorInline"
           ui5-label=""
         >
           /
         </ui5-label>
       </li>
       <li
-        style="display: flex;"
+        id="1"
       >
         <ui5-link
+          data-id="1"
           design="Default"
+          tabindex="-1"
           ui5-link=""
         >
           Link 2
         </ui5-link>
         <ui5-label
           aria-hidden="true"
-          style="margin: 0px 0.25rem;"
+          class="Breadcrumbs-separatorInline"
           ui5-label=""
         >
           /
         </ui5-label>
       </li>
-      <li>
+      <li
+        id="2"
+      >
         <ui5-link
+          data-id="2"
           design="Default"
+          tabindex="-1"
           ui5-link=""
         >
           Link 3
@@ -336,66 +384,76 @@ exports[`Breadcrumbs with currentLocationText 1`] = `
     aria-label="Breadcrumb Trail"
   >
     <ol
-      style="list-style-type: none; display: flex; align-items: center; margin-block: 0; padding-inline: 0; flex-wrap: wrap;"
+      class="Breadcrumbs-list"
     >
       <li
-        style="display: flex;"
+        id="0"
       >
         <ui5-link
+          data-id="0"
           design="Default"
+          tabindex="0"
           ui5-link=""
         >
           Link 1
         </ui5-link>
         <ui5-label
           aria-hidden="true"
-          style="margin: 0px 0.25rem;"
+          class="Breadcrumbs-separatorInline"
           ui5-label=""
         >
           /
         </ui5-label>
       </li>
       <li
-        style="display: flex;"
+        id="1"
       >
         <ui5-link
+          data-id="1"
           design="Default"
+          tabindex="-1"
           ui5-link=""
         >
           Link 2
         </ui5-link>
         <ui5-label
           aria-hidden="true"
-          style="margin: 0px 0.25rem;"
+          class="Breadcrumbs-separatorInline"
           ui5-label=""
         >
           /
         </ui5-label>
       </li>
-      <li>
+      <li
+        id="2"
+      >
         <ui5-link
+          data-id="2"
           design="Default"
+          tabindex="-1"
           ui5-link=""
         >
           Link 3
         </ui5-link>
-      </li>
-      <li
-        style="display: flex;"
-      >
         <ui5-label
           aria-hidden="true"
-          style="margin: 0px 0.25rem;"
+          class="Breadcrumbs-separatorInline"
           ui5-label=""
         >
           /
         </ui5-label>
-        <ui5-label
+      </li>
+      <li
+        id="3"
+      >
+        <div
           aria-current="page"
-          ui5-label=""
+          class="Breadcrumbs-currentLocation"
+          data-id="3"
+          tabindex="-1"
         >
           Current Location
-        </ui5-label>
+        </div>
       </li>
     </ol>
   </nav>
