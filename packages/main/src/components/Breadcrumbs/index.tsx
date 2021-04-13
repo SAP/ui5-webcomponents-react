@@ -92,8 +92,7 @@ const Breadcrumbs: FC<BreadcrumbsPropTypes> = forwardRef((props: BreadcrumbsProp
 
   const handleKeyDownInList = useCallback(
     (e) => {
-      const target = e.target as HTMLElement;
-      const currentId = parseInt(target.parentElement.id);
+      const currentId = parseInt(e.target.dataset.id);
       const childrenLength = currentLocationText ? childrenArray.length : childrenArray.length - 1;
       if (e.key === 'ArrowRight' && currentId + 1 <= childrenLength) {
         breadcrumbsRef.current.children[currentId + 1].children[0].focus();
@@ -121,7 +120,7 @@ const Breadcrumbs: FC<BreadcrumbsPropTypes> = forwardRef((props: BreadcrumbsProp
         {childrenArray.map((item, index) => {
           if (index === childrenArray.length - 1) {
             return (
-              <li key={`bc-${index}`} id={`${index}`}>
+              <li key={`bc-${index}`}>
                 {cloneElement(item as ReactElement, {
                   tabIndex: focusedItem === index ? 0 : -1,
                   onFocus: handleItemFocus,
@@ -136,7 +135,7 @@ const Breadcrumbs: FC<BreadcrumbsPropTypes> = forwardRef((props: BreadcrumbsProp
             );
           }
           return (
-            <li key={`bc-${index}`} id={`${index}`}>
+            <li key={`bc-${index}`}>
               {cloneElement(item as ReactElement, {
                 tabIndex: focusedItem === index ? 0 : -1,
                 onFocus: handleItemFocus,
@@ -149,7 +148,7 @@ const Breadcrumbs: FC<BreadcrumbsPropTypes> = forwardRef((props: BreadcrumbsProp
           );
         })}
         {currentLocationText && (
-          <li key={`bc-${currentLocationText}`} id={`${childrenArray.length}`}>
+          <li key={`bc-${currentLocationText}`}>
             <div
               aria-current="page"
               tabIndex={focusedItem === childrenArray.length ? 0 : -1}

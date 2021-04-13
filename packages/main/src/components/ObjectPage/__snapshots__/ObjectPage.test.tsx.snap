@@ -334,9 +334,7 @@ exports[`ObjectPage Key Infos 1`] = `
               <ol
                 class="Breadcrumbs-list"
               >
-                <li
-                  id="0"
-                >
+                <li>
                   <ui5-link
                     data-id="0"
                     design="Default"
@@ -354,9 +352,7 @@ exports[`ObjectPage Key Infos 1`] = `
                     /
                   </ui5-label>
                 </li>
-                <li
-                  id="1"
-                >
+                <li>
                   <ui5-link
                     data-id="1"
                     design="Default"
@@ -374,9 +370,7 @@ exports[`ObjectPage Key Infos 1`] = `
                     /
                   </ui5-label>
                 </li>
-                <li
-                  id="2"
-                >
+                <li>
                   <ui5-link
                     data-id="2"
                     design="Default"
