@@ -167,8 +167,8 @@ export const UploadCollectionComponent = () => {
         description: `The upload progress in percentage. <br><br> <b>Note:</b> Expected values are in the interval [0, 100].`
       },
       uploadState: {
+        options: ['Complete', 'Error', 'Ready', 'Uploading'],
         control: {
-          options: ['Complete', 'Error', 'Ready', 'Uploading'],
           type: 'radio'
         },
         description: `If set to <code>Uploading</code> or <code>Error</code>, a progress indicator showing the <code>progress</code> is displayed. Also if set to <code>Error</code>, a refresh button is shown. When this icon is pressed <code>retry</code> event is fired. If set to <code>Uploading</code>, a terminate button is shown. When this icon is pressed <code>terminate</code> event is fired.`
