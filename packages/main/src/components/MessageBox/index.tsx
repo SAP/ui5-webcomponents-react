@@ -176,7 +176,6 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
   useEffect(() => {
     if (dialogRef.current) {
       if (open) {
-        //@ts-ignore
         dialogRef.current.open?.(true);
         dialogRef.current.focus();
       } else {
