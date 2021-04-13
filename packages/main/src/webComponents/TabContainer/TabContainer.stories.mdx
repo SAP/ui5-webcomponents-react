@@ -111,7 +111,8 @@ selected
       },
       selected: { description: `Specifies if the <code>Tab</code> is selected.` },
       semanticColor: {
-        control: { type: 'radio', options: Object.values(SemanticColor) },
+        options: Object.values(SemanticColor),
+        control: { type: 'radio' },
         description: `Defines the <code>Tab</code> semantic color. <br><br> The color is applied to: <ul> <li>the <code>Tab</code> icon</li> <li>the <code>text</code> when <code>Tab</code> overflows</li> <li>the tab selection line</li> </ul><br/><br/>Available semantic colors are: <code>"Default"</code>, <code>"Neutral"</code>, <code>"Positive"</code>, <code>"Critical"</code> and <code>"Negative"</code>.<br/><br/><b>Note:</b> The color value depends on the current theme.`
       },
       stableDomRef: { description: `Defines the stable selector that you can use via getStableDomRef method.` },
