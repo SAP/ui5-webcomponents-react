@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.15.2...v0.15.3) (2021-04-14)
+
+
+### Bug Fixes
+
+* **Breadcrumbs:** add missing aria labels & allow navigation with arrow keys ([#1503](https://github.com/SAP/ui5-webcomponents-react/issues/1503)) ([65c3bbd](https://github.com/SAP/ui5-webcomponents-react/commit/65c3bbd58d0bd017156ee74ccc8b001b0ad5fae5))
+* **MessageBox:** screen reader reads out whole content of MessageBox when opened ([#1504](https://github.com/SAP/ui5-webcomponents-react/issues/1504)) ([0145978](https://github.com/SAP/ui5-webcomponents-react/commit/0145978b1914afd2291dff7eeb7f804cd967a70e))
+
+
+
+
+
 ## [0.15.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.15.1...v0.15.2) (2021-04-01)
 
 
