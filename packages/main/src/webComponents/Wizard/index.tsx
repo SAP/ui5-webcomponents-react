@@ -12,7 +12,9 @@ export interface WizardPropTypes extends WithWebComponentPropTypes {
   /**
    * Fired when the step selection is changed by user interaction - either with scrolling, or by clicking on the steps within the component header.
    */
-  onSelectionChange?: (event: CustomEvent<{ selectedStep: ReactNode; previouslySelectedStep: ReactNode }>) => void;
+  onSelectionChange?: (
+    event: CustomEvent<{ selectedStep: ReactNode; previouslySelectedStep: ReactNode; changeWithClick: boolean }>
+  ) => void;
 }
 
 /**

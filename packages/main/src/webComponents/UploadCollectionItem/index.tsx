@@ -1,3 +1,4 @@
+import { ListItemTypes } from '@ui5/webcomponents-react/lib/ListItemTypes';
 import { UploadState } from '@ui5/webcomponents-react/lib/UploadState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents-fiori/dist/UploadCollectionItem';
@@ -39,6 +40,16 @@ export interface UploadCollectionItemPropTypes extends WithWebComponentPropTypes
    */
   uploadState?: UploadState;
   /**
+   * Defines the visual indication and behavior of the list items. Available options are `Active` (by default), `Inactive` and `Detail`.
+   *
+   * **Note:** When set to `Active`, the item will provide visual response upon press and hover, while with type `Inactive` and `Detail` - will not.
+   */
+  type?: ListItemTypes;
+  /**
+   * Defines the selected state of the `ListItem`.
+   */
+  selected?: boolean;
+  /**
    * Hold the description of the `UploadCollectionItem`. Will be shown below the file name.
    */
   children?: ReactNode | ReactNode[];
@@ -75,6 +86,10 @@ export interface UploadCollectionItemPropTypes extends WithWebComponentPropTypes
    * **Note:** Terminate button is displayed when `uploadState` property is set to `Uploading`.
    */
   onTerminate?: (event: CustomEvent) => void;
+  /**
+   * Fired when the user clicks on the detail button when type is `Detail`.
+   */
+  onDetailClick?: (event: CustomEvent) => void;
 }
 
 /**
@@ -84,10 +99,10 @@ export interface UploadCollectionItemPropTypes extends WithWebComponentPropTypes
  */
 const UploadCollectionItem: FC<UploadCollectionItemPropTypes> = withWebComponent<UploadCollectionItemPropTypes>(
   'ui5-upload-collection-item',
-  ['file', 'fileName', 'progress', 'uploadState'],
-  ['fileNameClickable', 'noDelete', 'noRetry', 'noTerminate'],
+  ['file', 'fileName', 'progress', 'uploadState', 'type'],
+  ['fileNameClickable', 'noDelete', 'noRetry', 'noTerminate', 'selected'],
   ['thumbnail'],
-  ['file-name-click', 'rename', 'retry', 'terminate']
+  ['file-name-click', 'rename', 'retry', 'terminate', 'detail-click']
 );
 
 UploadCollectionItem.displayName = 'UploadCollectionItem';
@@ -99,7 +114,9 @@ UploadCollectionItem.defaultProps = {
   noRetry: false,
   noTerminate: false,
   progress: 0,
-  uploadState: UploadState.Ready
+  uploadState: UploadState.Ready,
+  type: ListItemTypes.Active,
+  selected: false
 };
 
 export { UploadCollectionItem };

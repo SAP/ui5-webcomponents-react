@@ -33,9 +33,22 @@ export interface AvatarGroupPropTypes extends Omit<WithWebComponentPropTypes, 'o
    */
   children?: ReactNode | ReactNode[];
   /**
+   * Defines the overflow button of `AvatarGroup`. **Note:** We recommend using the `Button` component.
+   *
+   * **Note:** If this slot is not used, the `AvatarGroup` will display the built-in overflow button.
+   *
+   * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
+   */
+  overflowButton?: ReactNode;
+  /**
    * Fired when the `AvatarGroup` is activated either with a click/tap or by using the Enter or Space key.
    */
   onClick?: (event: CustomEvent<{ targetRef: ReactNode; overflowButtonClicked: boolean }>) => void;
+  /**
+   * Fired when the count of visible `Avatar` elements in the `AvatarGroup` has changed
+   */
+  onOverflow?: (event: CustomEvent) => void;
 }
 
 /**
@@ -50,8 +63,8 @@ const AvatarGroup: FC<AvatarGroupPropTypes> = withWebComponent<AvatarGroupPropTy
   'ui5-avatar-group',
   ['avatarSize', 'type'],
   [],
-  [],
-  ['click']
+  ['overflowButton'],
+  ['click', 'overflow']
 );
 
 AvatarGroup.displayName = 'AvatarGroup';

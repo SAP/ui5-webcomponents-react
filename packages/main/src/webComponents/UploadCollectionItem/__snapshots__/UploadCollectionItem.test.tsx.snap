@@ -5,6 +5,7 @@ exports[`UploadCollectionItem Basic Test (generated) 1`] = `
   <ui5-upload-collection-item
     actionable=""
     progress="0"
+    type="Active"
     ui5-upload-collection-item=""
     upload-state="Ready"
   />
