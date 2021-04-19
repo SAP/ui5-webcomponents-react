@@ -369,6 +369,47 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     return props.data;
   }, [props.data, minRows]);
 
+  const webComponentsReactProperties = useMemo(
+    () => ({
+      tableRef,
+      selectionMode,
+      selectionBehavior,
+      classes,
+      onRowSelected,
+      onRowClick,
+      onRowExpandChange,
+      isTreeTable,
+      alternateRowColor,
+      scaleWidthMode,
+      loading,
+      withRowHighlight,
+      highlightField,
+      withNavigationHighlight,
+      markNavigatedRow,
+      renderRowSubComponent,
+      alwaysShowSubComponent
+    }),
+    [
+      tableRef.current,
+      selectionMode,
+      selectionBehavior,
+      classes,
+      onRowSelected,
+      onRowClick,
+      onRowExpandChange,
+      isTreeTable,
+      alternateRowColor,
+      scaleWidthMode,
+      loading,
+      withRowHighlight,
+      highlightField,
+      withNavigationHighlight,
+      markNavigatedRow,
+      renderRowSubComponent,
+      alwaysShowSubComponent
+    ]
+  );
+
   const {
     getTableProps,
     headerGroups,
@@ -395,25 +436,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       disableSortBy: !sortable,
       disableGroupBy: isTreeTable || renderRowSubComponent ? true : !groupable,
       selectSubRows: false,
-      webComponentsReactProperties: {
-        tableRef,
-        selectionMode,
-        selectionBehavior,
-        classes,
-        onRowSelected,
-        onRowClick,
-        onRowExpandChange,
-        isTreeTable,
-        alternateRowColor,
-        scaleWidthMode,
-        loading,
-        withRowHighlight,
-        highlightField,
-        withNavigationHighlight,
-        markNavigatedRow,
-        renderRowSubComponent,
-        alwaysShowSubComponent
-      },
+      webComponentsReactProperties,
       ...reactTableOptions
     },
     useFilters,
