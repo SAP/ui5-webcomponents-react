@@ -15,18 +15,19 @@ import '@ui5/webcomponents-icons/dist/settings';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { Badge } from '@ui5/webcomponents-react/dist/Badge';
 import { Text } from '@ui5/webcomponents-react/dist/Text';
+import { BusyIndicator } from '@ui5/webcomponents-react/dist/BusyIndicator';
 import { Panel } from '@ui5/webcomponents-react/dist/Panel';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
 import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';
+import { MessageStrip } from '@ui5/webcomponents-react/dist/MessageStrip';
 import { TextAlign } from '@ui5/webcomponents-react/dist/TextAlign';
 import { DefaultLoadingComponent } from './defaults/LoadingComponent';
 import { DefaultNoDataComponent } from './defaults/NoDataComponent';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
-import { useCallback, useEffect, useRef, useState, useReducer } from 'react';
+import { useCallback, useEffect, useReducer, useRef, useState } from 'react';
 import { useRowDisableSelection } from '@ui5/webcomponents-react/dist/AnalyticalTableHooks';
-import { BusyIndicator } from '../..';
 
 <Meta
   title="Data Display / AnalyticalTable"
@@ -323,14 +324,41 @@ const data = [
 
 ## Recipes
 
-### How to select rows containing active elements?
+### How to add your own plugin hooks
+
+The `AnalyticalTable` internally uses all plugin hooks of the [react-table](https://github.com/tannerlinsley/react-table) except for `usePagination` and hooks that change the layout.
+If you pass a `react-table` hook to the `tableHooks` prop of the `AnalyticalTable` you will most likely experience some side effects or even break the table completely. We therefore strongly recommend to just not do it ;).
+If you encounter a functionality that should be available with `react-table` hooks, but isn't in the `AnalyticalTable` please open an issue in github or write us in Slack.
+
+<MessageStrip type="Warning" noCloseButton>
+  Plugin hooks can manipulate the internal table instance. Please use with caution!
+</MessageStrip>
+
+For adding custom plugin hooks you can use the following code snippet.
+
+```jsx
+export const TableWithCustomHook = (props) => {
+  const { data, columns } = props;
+  const customHook = (hooks) => {
+    hooks.useInstance.push((instance) => {
+      console.log(instance);
+    });
+  };
+  return <AnalyticalTable data={data} columns={columns} tableHooks={[customHook]} />;
+};
+```
+
+With the `customHook` callback you can plugin in all available hooks. Please note that some hooks need a return value (e.g. `columns`) which is then always the first parameter of the function, and others are not allowed to return a value (e.g. `useTable`).
+For further details please refer to the [`react-table` documentation](https://react-table.tanstack.com/docs/api/overview).
+
+### How to select rows containing active elements
 
 By default, the `AnalyticalTable` will not select any rows after clicking on active elements inside a table cell like a `Button`, `Link`,
 etc. <br />
 In case you want to select the row anyways, you can "mark" the event to allow such a behaviour. <br />
 Example: `<Link onClick={(e) => {e.markerAllowTableRowSelection = true;}>My Link Text</Link>`
 
-### How do I stop my table state from automatically resetting when my data changes?
+### How to stop the table state from automatically resetting when the data changes
 
 By default, the `AnalyticalTable` will reset the sorters, filters, grouping, selected rows, etc. when the table data changes.
 In case you want to keep the current state of the Table, you can disable this behavior by using the `reactTableOptions` prop:
