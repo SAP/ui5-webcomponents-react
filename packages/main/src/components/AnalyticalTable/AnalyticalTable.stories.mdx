@@ -15,6 +15,7 @@ import '@ui5/webcomponents-icons/dist/settings';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { Badge } from '@ui5/webcomponents-react/dist/Badge';
 import { Text } from '@ui5/webcomponents-react/dist/Text';
+import { Panel } from '@ui5/webcomponents-react/dist/Panel';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
@@ -23,8 +24,9 @@ import { TextAlign } from '@ui5/webcomponents-react/dist/TextAlign';
 import { DefaultLoadingComponent } from './defaults/LoadingComponent';
 import { DefaultNoDataComponent } from './defaults/NoDataComponent';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState, useReducer } from 'react';
 import { useRowDisableSelection } from '@ui5/webcomponents-react/dist/AnalyticalTableHooks';
+import { BusyIndicator } from '../..';
 
 <Meta
   title="Data Display / AnalyticalTable"
@@ -227,46 +229,55 @@ With the `useRowDisableSelection` it's possible to disable the selection of spec
     {(args) => {
       const disableRowFunc = (row) => row.original.age < 40;
       const [isFunc, setIsFunc] = useState(true);
+      const [collapsed, setCollapsed] = useReducer((coll) => !coll, true);
       return (
-        <>
-          <SegmentedButton>
-            <ToggleButton
-              onClick={() => {
-                setIsFunc(true);
-              }}
-              pressed
-            >
-              with function parameter
-            </ToggleButton>
-            <ToggleButton
-              onClick={() => {
-                setIsFunc(false);
-              }}
-            >
-              with string parameter
-            </ToggleButton>
-          </SegmentedButton>
-          {isFunc ? (
-            <AnalyticalTable
-              data={args.data}
-              columns={args.columns}
-              selectionMode={args.selectionMode}
-              selectedRowIds={[]}
-              tableHooks={[useRowDisableSelection(disableRowFunc)]}
-              visibleRows={10}
-              title="All under 40 are not selectable"
-            />
+        <Panel collapsed={collapsed} onToggle={setCollapsed} headerText="Show useRowDisableSelection example">
+          {collapsed ? (
+            <BusyIndicator active style={{ width: '100%' }}>
+              <span style={{ height: '580px' }} />
+            </BusyIndicator>
           ) : (
-            <AnalyticalTable
-              data={args.data}
-              columns={args.columns}
-              selectionMode={args.selectionMode}
-              tableHooks={[useRowDisableSelection('disableSelection')]}
-              visibleRows={10}
-              title={`All with "disableSelection: true" are not selectable`}
-            />
+            <>
+              <SegmentedButton>
+                <ToggleButton
+                  onClick={() => {
+                    setIsFunc(true);
+                  }}
+                  pressed
+                >
+                  with function parameter
+                </ToggleButton>
+                <ToggleButton
+                  onClick={() => {
+                    setIsFunc(false);
+                  }}
+                >
+                  with string parameter
+                </ToggleButton>
+              </SegmentedButton>
+              {isFunc ? (
+                <AnalyticalTable
+                  data={args.data}
+                  columns={args.columns}
+                  selectionMode={args.selectionMode}
+                  selectedRowIds={[]}
+                  tableHooks={[useRowDisableSelection(disableRowFunc)]}
+                  visibleRows={10}
+                  title="All under 40 are not selectable"
+                />
+              ) : (
+                <AnalyticalTable
+                  data={args.data}
+                  columns={args.columns}
+                  selectionMode={args.selectionMode}
+                  tableHooks={[useRowDisableSelection('disableSelection')]}
+                  visibleRows={10}
+                  title={`All with "disableSelection: true" are not selectable`}
+                />
+              )}
+            </>
           )}
-        </>
+        </Panel>
       );
     }}
   </Story>
@@ -364,7 +375,20 @@ For more details on this behavior you can double check the [react-table docs](ht
 
 <Canvas>
   <Story name="Tree Table" args={{ data: generateData(15, true), isTreeTable: true }}>
-    {(args) => <AnalyticalTable {...args} />}
+    {(args) => {
+      const [collapsed, setCollapsed] = useReducer((coll) => !coll, true);
+      return (
+        <Panel collapsed={collapsed} onToggle={setCollapsed} headerText="Show Tree Table">
+          {collapsed ? (
+            <BusyIndicator active style={{ width: '100%' }}>
+              <span style={{ height: '800px' }} />
+            </BusyIndicator>
+          ) : (
+            <AnalyticalTable {...args} />
+          )}
+        </Panel>
+      );
+    }}
   </Story>
 </Canvas>
 
@@ -421,16 +445,25 @@ The table initially contains 50 rows, when the last 10 rows are reached the tabl
           }, 2000);
         }
       }, [loading, args.data, offset.current]);
+      const [collapsed, setCollapsed] = useReducer((coll) => !coll, true);
       return (
-        <AnalyticalTable
-          data={data}
-          columns={args.columns}
-          infiniteScroll={true}
-          infiniteScrollThreshold={10}
-          title="Scroll to load more data"
-          onLoadMore={onLoadMore}
-          loading={loading}
-        />
+        <Panel collapsed={collapsed} onToggle={setCollapsed} headerText="Show infinite scroll table">
+          {collapsed ? (
+            <BusyIndicator active style={{ width: '100%' }}>
+              <span style={{ height: '750px' }} />
+            </BusyIndicator>
+          ) : (
+            <AnalyticalTable
+              data={data}
+              columns={args.columns}
+              infiniteScroll={true}
+              infiniteScrollThreshold={10}
+              title="Scroll to load more data"
+              onLoadMore={onLoadMore}
+              loading={loading}
+            />
+          )}
+        </Panel>
       );
     }}
   </Story>
@@ -526,7 +559,8 @@ The prop expects a function with an optional parameter containing the `row` inst
       tooltip: { table: { disable: true } },
       onRowClick: { table: { disable: true } },
       withNavigationHighlight: { table: { disable: true } },
-      markNavigatedRow: { table: { disable: true } }
+      markNavigatedRow: { table: { disable: true } },
+      globalFilterValue: { table: { disable: true } }
     }}
   >
     {(args) => {
@@ -698,6 +732,7 @@ By adding the `visibleRowCountMode` prop and setting it to `TableVisibleRowCount
       onRowClick: { table: { disable: true } },
       withNavigationHighlight: { table: { disable: true } },
       markNavigatedRow: { table: { disable: true } },
+      globalFilterValue: { table: { disable: true } },
       containerHeight: {
         options: [250, 500, 750, 1000],
         control: {
@@ -836,6 +871,7 @@ In the example below you can have a look at this behavior:
       onRowClick: { table: { disable: true } },
       withNavigationHighlight: { table: { disable: true } },
       markNavigatedRow: { table: { disable: true } },
+      globalFilterValue: { table: { disable: true } },
       containerWidth: {
         options: [400, 600, 800, 'auto'],
         control: {
@@ -958,15 +994,24 @@ Click on any of the rows in the example below to display the "navigated" indicat
         },
         [selectedRow]
       );
+      const [collapsed, setCollapsed] = useReducer((coll) => !coll, true);
       return (
-        <AnalyticalTable
-          data={args.data}
-          columns={args.columns}
-          withNavigationHighlight
-          selectionMode={args.selectionMode}
-          markNavigatedRow={markNavigatedRow}
-          onRowSelected={onRowSelected}
-        />
+        <Panel collapsed={collapsed} onToggle={setCollapsed} headerText="Show table with navigation indicator">
+          {collapsed ? (
+            <BusyIndicator active style={{ width: '100%' }}>
+              <span style={{ height: '580px' }} />
+            </BusyIndicator>
+          ) : (
+            <AnalyticalTable
+              data={args.data}
+              columns={args.columns}
+              withNavigationHighlight
+              selectionMode={args.selectionMode}
+              markNavigatedRow={markNavigatedRow}
+              onRowSelected={onRowSelected}
+            />
+          )}
+        </Panel>
       );
     }}
   </Story>
