@@ -57,6 +57,12 @@ export interface AnalyticalTableColumnDefinition {
    */
   filter?: string | Function;
 
+  //useGlobalFilter
+  /**
+   * Disables global filtering for this column
+   */
+  disableGlobalFilter?: boolean;
+
   // useGroupBy
   /**
    * Component to render for aggregated cells.
