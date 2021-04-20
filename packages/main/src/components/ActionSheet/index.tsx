@@ -1,12 +1,24 @@
 import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming';
-import { createUseStyles } from 'react-jss';
+import { useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
+import { AVAILABLE_ACTIONS, X_OF_Y } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
 import { ResponsivePopover } from '@ui5/webcomponents-react/dist/ResponsivePopover';
-import React, { Children, cloneElement, FC, forwardRef, ReactElement, RefObject } from 'react';
+import React, {
+  Children,
+  cloneElement,
+  FC,
+  forwardRef,
+  ReactElement,
+  RefObject,
+  useCallback,
+  useReducer,
+  useRef
+} from 'react';
 import { createPortal } from 'react-dom';
+import { createUseStyles } from 'react-jss';
 import { Ui5ResponsivePopoverDomRef } from '../../interfaces/Ui5ResponsivePopoverDomRef';
 import { ButtonPropTypes } from '../../webComponents/Button';
 import { ResponsivePopoverPropTypes } from '../../webComponents/ResponsivePopover';
@@ -24,7 +36,7 @@ const useStyles = createUseStyles(styles, { name: 'ActionSheet' });
 addCustomCSS(
   'ui5-button',
   `
-  :host([data-is-action-sheet-button]) .ui5-button-root {
+  :host([data-action-btn-index]) .ui5-button-root {
     justify-content: flex-start;
   }
   `
@@ -35,32 +47,16 @@ addCustomCSS(
  */
 const ActionSheet: FC<ActionSheetPropTypes> = forwardRef(
   (props: ActionSheetPropTypes, ref: RefObject<Ui5ResponsivePopoverDomRef>) => {
-    const {
-      children,
-      style,
-      slot,
-      className,
-      allowTargetOverlap,
-      headerText,
-      horizontalAlign,
-      initialFocus,
-      modal,
-      noArrow,
-      placementType,
-      verticalAlign,
-      footer,
-      header,
-      onAfterClose,
-      onAfterOpen,
-      onBeforeClose,
-      onBeforeOpen
-    } = props;
-
+    const { children, className } = props;
+    const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
     const classes = useStyles();
-
     const actionSheetClasses = StyleClassHelper.of(classes.actionSheet).putIfPresent(className);
-
     const popoverRef: RefObject<Ui5ResponsivePopoverDomRef> = useConsolidatedRef(ref);
+    const actionBtnsRef = useRef(null);
+    const [focusedItem, setFocusedItem] = useReducer((_, action) => {
+      return parseInt(action.target.dataset.actionBtnIndex);
+    }, 0);
+    const childrenLength = Children.toArray(children).length;
 
     const onActionButtonClicked = (handler) => (e) => {
       popoverRef.current.close();
@@ -69,12 +65,29 @@ const ActionSheet: FC<ActionSheetPropTypes> = forwardRef(
       }
     };
 
+    const handleKeyDown = useCallback(
+      (e) => {
+        const currentId = parseInt(e.target.dataset.actionBtnIndex);
+        if (e.key === 'ArrowDown' && currentId + 1 <= childrenLength) {
+          actionBtnsRef.current.querySelector(`[data-action-btn-index="${currentId + 1}"]`).focus();
+        }
+        if (e.key === 'ArrowUp' && currentId > 0) {
+          actionBtnsRef.current.querySelector(`[data-action-btn-index="${currentId - 1}"]`).focus();
+        }
+      },
+      [childrenLength, actionBtnsRef.current]
+    );
+
     const renderActionSheetButton = (element, index) => {
       return cloneElement(element, {
+        role: 'button',
         key: index,
         design: ButtonDesign.Transparent,
         onClick: onActionButtonClicked(element.props.onClick),
-        'data-is-action-sheet-button': ''
+        'data-action-btn-index': index,
+        'aria-label': `${i18nBundle.getText(X_OF_Y, index + 1, childrenLength)} ${element.props.children}`,
+        tabIndex: focusedItem === index ? 0 : -1,
+        onFocus: setFocusedItem
       });
     };
 
@@ -87,27 +100,22 @@ const ActionSheet: FC<ActionSheetPropTypes> = forwardRef(
 
     return createPortal(
       <ResponsivePopover
-        ref={popoverRef}
-        style={style}
-        slot={slot}
-        className={actionSheetClasses.className}
-        allowTargetOverlap={allowTargetOverlap}
-        headerText={headerText}
-        horizontalAlign={horizontalAlign}
-        initialFocus={initialFocus}
-        modal={modal}
-        noArrow={noArrow}
-        placementType={placementType}
-        verticalAlign={verticalAlign}
-        footer={footer}
-        header={header}
-        onAfterClose={onAfterClose}
-        onAfterOpen={onAfterOpen}
-        onBeforeClose={onBeforeClose}
-        onBeforeOpen={onBeforeOpen}
+        aria-modal
+        role="dialog"
+        {...props}
         {...passThroughProps}
+        ref={popoverRef}
+        className={actionSheetClasses.className}
       >
-        {Children.map(children, renderActionSheetButton)}
+        <div
+          role="presentation"
+          aria-label={i18nBundle.getText(AVAILABLE_ACTIONS)}
+          onKeyDown={handleKeyDown}
+          ref={actionBtnsRef}
+          tabIndex={-1}
+        >
+          {Children.map(children, renderActionSheetButton)}
+        </div>
       </ResponsivePopover>,
       document.body
     );
