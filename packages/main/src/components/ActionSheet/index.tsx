@@ -47,7 +47,26 @@ addCustomCSS(
  */
 const ActionSheet: FC<ActionSheetPropTypes> = forwardRef(
   (props: ActionSheetPropTypes, ref: RefObject<Ui5ResponsivePopoverDomRef>) => {
-    const { children, className } = props;
+    const {
+      children,
+      style,
+      slot,
+      className,
+      allowTargetOverlap,
+      headerText,
+      horizontalAlign,
+      initialFocus,
+      modal,
+      noArrow,
+      placementType,
+      verticalAlign,
+      footer,
+      header,
+      onAfterClose,
+      onAfterOpen,
+      onBeforeClose,
+      onBeforeOpen
+    } = props;
     const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
     const classes = useStyles();
     const actionSheetClasses = StyleClassHelper.of(classes.actionSheet).putIfPresent(className);
@@ -102,7 +121,22 @@ const ActionSheet: FC<ActionSheetPropTypes> = forwardRef(
       <ResponsivePopover
         aria-modal
         role="dialog"
-        {...props}
+        style={style}
+        slot={slot}
+        allowTargetOverlap={allowTargetOverlap}
+        headerText={headerText}
+        horizontalAlign={horizontalAlign}
+        initialFocus={initialFocus}
+        modal={modal}
+        noArrow={noArrow}
+        placementType={placementType}
+        verticalAlign={verticalAlign}
+        footer={footer}
+        header={header}
+        onAfterClose={onAfterClose}
+        onAfterOpen={onAfterOpen}
+        onBeforeClose={onBeforeClose}
+        onBeforeOpen={onBeforeOpen}
         {...passThroughProps}
         ref={popoverRef}
         className={actionSheetClasses.className}
@@ -112,7 +146,6 @@ const ActionSheet: FC<ActionSheetPropTypes> = forwardRef(
           aria-label={i18nBundle.getText(AVAILABLE_ACTIONS)}
           onKeyDown={handleKeyDown}
           ref={actionBtnsRef}
-          tabIndex={-1}
         >
           {Children.map(children, renderActionSheetButton)}
         </div>

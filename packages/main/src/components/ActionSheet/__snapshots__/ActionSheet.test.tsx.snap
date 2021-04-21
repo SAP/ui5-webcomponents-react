@@ -15,7 +15,6 @@ exports[`ActionSheet Render without Crashing 1`] = `
     <div
       aria-label="Available Actions"
       role="presentation"
-      tabindex="-1"
     >
       <ui5-button
         aria-label="1 of 3 Accept"
@@ -67,7 +66,6 @@ exports[`ActionSheet does not crash with other component 1`] = `
     <div
       aria-label="Available Actions"
       role="presentation"
-      tabindex="-1"
     >
       <ui5-label
         aria-label="1 of 1 I should not crash"
