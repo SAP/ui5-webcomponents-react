@@ -20,17 +20,17 @@
     "deploy:storybook": "storybook-to-ghpages --script=build:storybook --ci",
     "create-webcomponents-wrapper": "node --experimental-json-modules ./packages/main/scripts/create-web-components-wrapper.mjs",
     "examples:recreate-seed": "rimraf examples/seed-test && yarn create react-app examples/seed-test --template file:./packages/cra-template-seed",
-    "examples:start-seed": "cd examples/seed-test && SKIP_PREFLIGHT_CHECK=true yarn start"
+    "examples:start-seed": "cd examples/seed-test && SKIP_PREFLIGHT_CHECK=true yarn start",
+    "prepare": "husky install"
   },
   "dependencies": {
-    "@storybook/addon-actions": "6.2.7",
-    "@storybook/addon-controls": "6.2.7",
-    "@storybook/addon-docs": "6.2.7",
-    "@storybook/addon-toolbars": "6.2.7",
-    "@storybook/addons": "6.2.7",
-    "@storybook/cli": "6.2.7",
-    "@storybook/react": "6.2.7",
-    "@storybook/theming": "6.2.7",
+    "@storybook/addon-actions": "6.2.8",
+    "@storybook/addon-controls": "6.2.8",
+    "@storybook/addon-docs": "6.2.8",
+    "@storybook/addon-toolbars": "6.2.8",
+    "@storybook/addons": "6.2.8",
+    "@storybook/react": "6.2.8",
+    "@storybook/theming": "6.2.8",
     "@ui5/webcomponents": "1.0.0-rc.14",
     "@ui5/webcomponents-fiori": "1.0.0-rc.14",
     "@ui5/webcomponents-icons": "1.0.0-rc.14",
@@ -50,10 +50,10 @@
     "@babel/preset-env": "^7.12.13",
     "@babel/preset-react": "^7.12.13",
     "@babel/preset-typescript": "^7.12.13",
-    "@babel/runtime": "7.13.10",
+    "@babel/runtime": "7.13.17",
     "@rollup/plugin-babel": "^5.2.1",
     "@rollup/plugin-node-resolve": "^11.0.0",
-    "@storybook/addon-a11y": "^6.2.7",
+    "@storybook/addon-a11y": "^6.2.8",
     "@storybook/storybook-deployer": "^2.8.7",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.0.2",
@@ -77,7 +77,7 @@
     "eslint-plugin-react-hooks": "^4.1.2",
     "glob": "^7.1.6",
     "handlebars": "^4.7.7",
-    "husky": "^4.2.5",
+    "husky": "^6.0.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.4.2",
     "jest-canvas-mock": "^2.2.0",
@@ -101,11 +101,6 @@
     "@types/react": "17.0.3",
     "react": "17.0.2",
     "react-dom": "17.0.2"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,mdx}": [
