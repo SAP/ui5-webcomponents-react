@@ -115,7 +115,8 @@ const ActionSheet: FC<ActionSheetPropTypes> = forwardRef(
     const [focusedItem, setFocusedItem] = useReducer((_, action) => {
       return parseInt(action.target.dataset.actionBtnIndex);
     }, 0);
-    const childrenArrayLength = Children.toArray(children).length;
+    const childrenToRender = Children.toArray(children).filter(Boolean);
+    const childrenArrayLength = childrenToRender.length;
     const childrenLength = isPhone() && showCancelButton ? childrenArrayLength + 1 : childrenArrayLength;
 
     const handleCancelBtnClick = () => {
@@ -206,7 +207,7 @@ const ActionSheet: FC<ActionSheetPropTypes> = forwardRef(
           onKeyDown={handleKeyDown}
           ref={actionBtnsRef}
         >
-          {Children.map(children, renderActionSheetButton)}
+          {childrenToRender.map(renderActionSheetButton)}
           {isPhone() && showCancelButton && (
             <Button
               design={ButtonDesign.Negative}
