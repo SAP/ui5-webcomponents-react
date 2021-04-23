@@ -75,9 +75,6 @@ if (isPhone()) {
     text-align: start !important;
     padding-left:1rem !important;
   }
-  :host([data-actionsheet]) .ui5-popup-root {
-      background: red !important;
-  }
   `
   );
 }
