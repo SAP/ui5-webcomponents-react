@@ -2,7 +2,7 @@ import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { ReactNode, ReactNodeArray } from 'react';
 import { ICartesianChartConfig } from './ICartesianChartConfig';
 
-export interface IChartBaseProps<T = ICartesianChartConfig> extends Omit<CommonProps, 'onClick'> {
+export interface IChartBaseProps<T = ICartesianChartConfig> extends CommonProps {
   /**
    * Flag whether the chart should display a loading indicator.
    *
@@ -78,9 +78,5 @@ export interface IChartBaseProps<T = ICartesianChartConfig> extends Omit<CommonP
      * Number that sets the amount of delay time the chart waits when resizing.
      */
     resizeDebounce?: number;
-    /**
-     * Fired when clicked anywhere in the chart.
-     */
-    onClick?: (event: CustomEvent<{ payload: unknown; activePayloads: Record<string, unknown>[] }>) => void;
   };
 }
