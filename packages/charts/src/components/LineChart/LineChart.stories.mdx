@@ -13,12 +13,7 @@ import { LinearGradientExample } from './LinearGradientStory';
     dataset: {
       control: { disable: true }
     },
-    measures: {
-      control: { disable: true }
-    },
-    dimensions: {
-      control: { disable: true }
-    }
+    onClick: { action: { action: 'clicked' }, description: 'Fired when clicked anywhere in the chart.' }
   }}
 />
 
@@ -27,43 +22,38 @@ import { LinearGradientExample } from './LinearGradientStory';
 ## Example
 
 <Canvas>
-  <Story name="Default">
-    {(props) => (
-      <LineChart
-        loading={props.loading}
-        noLegend={props.noLegend}
-        noAnimation={props.noAnimation}
-        onDataPointClick={props.onDataPointClick}
-        onLegendClick={props.onLegendClick}
-        dataset={complexDataSet}
-        style={{ width: '100%' }}
-        chartConfig={props.chartConfig}
-        dimensions={[
-          {
-            accessor: 'name',
-            formatter: (d) => `${d} 2019`,
-            interval: 0
-          }
-        ]}
-        measures={[
-          {
-            accessor: 'users',
-            label: 'Users',
-            formatter: (val) => val.toLocaleString()
-          },
-          {
-            accessor: 'sessions',
-            label: 'Active Sessions',
-            formatter: (val) => `${val} sessions`,
-            hideDataLabel: true
-          },
-          {
-            accessor: 'volume',
-            label: 'Vol.'
-          }
-        ]}
-      />
-    )}
+  <Story
+    name="Default"
+    args={{
+      dimensions: [
+        {
+          accessor: 'name',
+          formatter: (d) => `${d} 2019`,
+          interval: 0
+        }
+      ],
+      measures: [
+        {
+          accessor: 'users',
+          label: 'Users',
+          formatter: (val) => val.toLocaleString()
+        },
+        {
+          accessor: 'sessions',
+          label: 'Active Sessions',
+          formatter: (val) => `${val} sessions`,
+          hideDataLabel: true
+        },
+        {
+          accessor: 'volume',
+          label: 'Vol.'
+        }
+      ],
+      dataset: complexDataSet,
+      style: { width: '100%' }
+    }}
+  >
+    {(props) => <LineChart {...props} />}
   </Story>
 </Canvas>
 
@@ -79,106 +69,86 @@ import { LinearGradientExample } from './LinearGradientStory';
 ### With Custom Color
 
 <Canvas>
-  <Story name="With Custom Color">
-    {(props) => (
-      <LineChart
-        loading={props.loading}
-        noLegend={props.noLegend}
-        noAnimation={props.noAnimation}
-        onDataPointClick={props.onDataPointClick}
-        onLegendClick={props.onLegendClick}
-        dimensions={[{ accessor: 'name' }]}
-        measures={[{ accessor: 'users', color: 'red' }]}
-        dataset={simpleDataSet}
-        chartConfig={props.chartConfig}
-        style={{ width: '95%', height: '40vh' }}
-      />
-    )}
+  <Story
+    name="With Custom Color"
+    args={{
+      dimensions: [{ accessor: 'name' }],
+      measures: [{ accessor: 'users', color: 'red' }],
+      dataset: simpleDataSet,
+      style: { width: '95%', height: '40vh' }
+    }}
+  >
+    {(props) => <LineChart {...props} />}
   </Story>
 </Canvas>
 
 ### With Secondary Dimension
 
 <Canvas>
-  <Story name="With Secondary Dimension">
-    {(props) => (
-      <LineChart
-        loading={props.loading}
-        chartConfig={props.chartConfig}
-        noLegend={props.noLegend}
-        noAnimation={props.noAnimation}
-        onDataPointClick={props.onDataPointClick}
-        onLegendClick={props.onLegendClick}
-        dimensions={[{ accessor: 'name' }, { accessor: 'dimension' }]}
-        measures={[{ accessor: 'users', color: 'red' }]}
-        dataset={secondaryDimensionDataSet}
-        style={{ width: '95%', height: '60vh' }}
-      />
-    )}
+  <Story
+    name="With Secondary Dimension"
+    args={{
+      dimensions: [{ accessor: 'name' }, { accessor: 'dimension' }],
+      measures: [{ accessor: 'users', color: 'red' }],
+      dataset: secondaryDimensionDataSet,
+      style: { width: '95%', height: '60vh' }
+    }}
+  >
+    {(props) => <LineChart {...props} />}
   </Story>
 </Canvas>
 
 ### With Data Labels
 
 <Canvas>
-  <Story name="With Data Labels">
-    {(props) => (
-      <LineChart
-        loading={props.loading}
-        chartConfig={props.chartConfig}
-        noLegend={props.noLegend}
-        noAnimation={props.noAnimation}
-        onDataPointClick={props.onDataPointClick}
-        onLegendClick={props.onLegendClick}
-        dimensions={[{ accessor: 'name' }]}
-        measures={[
-          {
-            accessor: 'users'
-          },
-          {
-            accessor: 'sessions'
-          },
-          {
-            accessor: 'volume'
-          }
-        ]}
-        dataset={complexDataSet}
-        style={{ width: '95%', height: '40vh' }}
-      />
-    )}
+  <Story
+    name="With Data Labels"
+    args={{
+      dimensions: [{ accessor: 'name' }],
+      measures: [
+        {
+          accessor: 'users'
+        },
+        {
+          accessor: 'sessions'
+        },
+        {
+          accessor: 'volume'
+        }
+      ],
+      dataset: complexDataSet,
+      style: { width: '95%', height: '40vh' }
+    }}
+  >
+    {(props) => <LineChart {...props} />}
   </Story>
 </Canvas>
 
 ### With Formatter
 
 <Canvas>
-  <Story name="With Formatter">
-    {(props) => (
-      <LineChart
-        loading={props.loading}
-        noLegend={props.noLegend}
-        noAnimation={props.noAnimation}
-        onDataPointClick={props.onDataPointClick}
-        onLegendClick={props.onLegendClick}
-        dataset={complexDataSet}
-        dimensions={[{ accessor: 'name', formatter: (element) => element.slice(0, 3) }]}
-        measures={[
-          {
-            accessor: 'users',
-            formatter: (element) => `${element / 10}`,
-            label: 'number of users'
-          },
-          {
-            accessor: 'sessions'
-          },
-          {
-            accessor: 'volume'
-          }
-        ]}
-        style={{ width: '95%', height: '40vh' }}
-        chartConfig={props.chartConfig}
-      />
-    )}
+  <Story
+    name="With Formatter"
+    args={{
+      dimensions: [{ accessor: 'name', formatter: (element) => element.slice(0, 3) }],
+      measures: [
+        {
+          accessor: 'users',
+          formatter: (element) => `${element / 10}`,
+          label: 'number of users'
+        },
+        {
+          accessor: 'sessions'
+        },
+        {
+          accessor: 'volume'
+        }
+      ],
+      dataset: complexDataSet,
+      style: { width: '95%', height: '40vh' }
+    }}
+  >
+    {(props) => <LineChart {...props} />}
   </Story>
 </Canvas>
 
@@ -186,44 +156,40 @@ import { LinearGradientExample } from './LinearGradientStory';
 
 <Canvas>
   <Story name="Loading Placeholder">
-    {(props) => <LineChart style={{ width: '100%' }} dimensions={[]} measures={[]} />}
+    {() => <LineChart style={{ width: '100%' }} dimensions={[]} measures={[]} />}
   </Story>
 </Canvas>
 
 ### With Reference Line
 
 <Canvas>
-  <Story name="With Reference Line">
-    {(props) => (
-      <LineChart
-        loading={props.loading}
-        noLegend={props.noLegend}
-        noAnimation={props.noAnimation}
-        onDataPointClick={props.onDataPointClick}
-        onLegendClick={props.onLegendClick}
-        dataset={bigDataSet}
-        dimensions={[{ accessor: 'name' }]}
-        measures={[
-          {
-            accessor: 'users'
-          },
-          {
-            accessor: 'sessions'
-          },
-          {
-            accessor: 'volume'
-          }
-        ]}
-        style={{ width: '95%', height: '40vh' }}
-        chartConfig={{
-          referenceLine: {
-            color: 'red',
-            label: 'MAX',
-            value: 650
-          }
-        }}
-      />
-    )}
+  <Story
+    name="With Reference Line"
+    args={{
+      dimensions: [{ accessor: 'name' }],
+      chartConfig: {
+        referenceLine: {
+          color: 'red',
+          label: 'MAX',
+          value: 650
+        }
+      },
+      measures: [
+        {
+          accessor: 'users'
+        },
+        {
+          accessor: 'sessions'
+        },
+        {
+          accessor: 'volume'
+        }
+      ],
+      dataset: bigDataSet,
+      style: { width: '95%', height: '40vh' }
+    }}
+  >
+    {(props) => <LineChart {...props} />}
   </Story>
 </Canvas>
 

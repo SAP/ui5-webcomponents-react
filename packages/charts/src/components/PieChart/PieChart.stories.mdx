@@ -12,12 +12,7 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
     dataset: {
       control: { disable: true }
     },
-    measure: {
-      control: { disable: true }
-    },
-    dimension: {
-      control: { disable: true }
-    }
+    onClick: { action: { action: 'clicked' }, description: 'Fired when clicked anywhere in the chart.' }
   }}
 />
 
@@ -26,20 +21,20 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 ## Example
 
 <Canvas>
-  <Story name="Default">
-    {(props) => (
-      <PieChart
-        {...props}
-        style={{ width: '50%' }}
-        dataset={simpleDataSet}
-        dimension={{
-          accessor: 'name'
-        }}
-        measure={{
-          accessor: 'users'
-        }}
-      />
-    )}
+  <Story
+    name="Default"
+    args={{
+      dimension: {
+        accessor: 'name'
+      },
+      measure: {
+        accessor: 'users'
+      },
+      dataset: simpleDataSet,
+      style: { width: '50%' }
+    }}
+  >
+    {(props) => <PieChart {...props} />}
   </Story>
 </Canvas>
 
@@ -55,25 +50,21 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 ### With Custom Color
 
 <Canvas>
-  <Story name="With Custom Color">
-    {(props) => (
-      <PieChart
-        loading={props.loading}
-        noLegend={props.noLegend}
-        noAnimation={props.noAnimation}
-        onDataPointClick={props.onDataPointClick}
-        onLegendClick={props.onLegendClick}
-        style={{ width: '50%' }}
-        dataset={simpleDataSet}
-        dimension={{
-          accessor: 'name'
-        }}
-        measure={{
-          accessor: 'users',
-          colors: ['#f00', 'green', 'var(--sapNegativeColor)']
-        }}
-      />
-    )}
+  <Story
+    name="With Custom Color"
+    args={{
+      dimension: {
+        accessor: 'name'
+      },
+      measure: {
+        accessor: 'users',
+        colors: ['#f00', 'green', 'var(--sapNegativeColor)']
+      },
+      dataset: simpleDataSet,
+      style: { width: '50%' }
+    }}
+  >
+    {(props) => <PieChart {...props} />}
   </Story>
 </Canvas>
 
@@ -86,28 +77,24 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 ### With Formatter
 
 <Canvas>
-  <Story name="With Formatter">
-    {(props) => (
-      <PieChart
-        loading={props.loading}
-        noLegend={props.noLegend}
-        noAnimation={props.noAnimation}
-        onDataPointClick={props.onDataPointClick}
-        onLegendClick={props.onLegendClick}
-        style={{ width: '50%' }}
-        dataset={simpleDataSet}
-        dimension={{
-          accessor: 'name'
-        }}
-        measure={{
-          accessor: 'users',
-          formatter: (d) => (d > 200 ? 'over 200' : 'lower')
-        }}
-        chartConfig={{
-          activeSegment: 1,
-          showActiveSegmentDataLabel: true
-        }}
-      />
-    )}
+  <Story
+    name="With Formatter"
+    args={{
+      dimension: {
+        accessor: 'name'
+      },
+      measure: {
+        accessor: 'users',
+        formatter: (d) => (d > 200 ? 'over 200' : 'lower')
+      },
+      dataset: simpleDataSet,
+      style: { width: '50%' },
+      chartConfig: {
+        activeSegment: 1,
+        showActiveSegmentDataLabel: true
+      }
+    }}
+  >
+    {(props) => <PieChart {...props} />}
   </Story>
 </Canvas>

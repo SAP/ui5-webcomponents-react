@@ -7,7 +7,7 @@ import { XAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/XAxi
 import { YAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/YAxisTicks';
 import { LineChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/LineChartPlaceholder';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/dist/useLegendItemClick';
-import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
+import React, { FC, forwardRef, Ref, useCallback, useMemo, useRef } from 'react';
 import {
   Brush,
   CartesianGrid,
@@ -24,6 +24,7 @@ import { useChartMargin } from '../../hooks/useChartMargin';
 import { useLabelFormatter } from '../../hooks/useLabelFormatter';
 import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
 import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights';
+import { useOnClickInternal } from '../../hooks/useOnClickInternal';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
@@ -111,6 +112,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     noAnimation,
     onDataPointClick,
     onLegendClick,
+    onClick,
     style,
     className,
     tooltip,
@@ -154,10 +156,11 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     : 0;
 
   const onItemLegendClick = useLegendItemClick(onLegendClick);
-
+  const preventOnClickCall = useRef(0);
   const onDataPointClickInternal = useCallback(
     (payload, eventOrIndex) => {
-      if (eventOrIndex.dataKey && onDataPointClick) {
+      if (eventOrIndex.dataKey && typeof onDataPointClick === 'function') {
+        preventOnClickCall.current = 2;
         onDataPointClick(
           enrichEventWithDetails({} as any, {
             value: eventOrIndex.value,
@@ -166,9 +169,19 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
             payload: eventOrIndex.payload
           })
         );
+      } else if (typeof onClick === 'function' && preventOnClickCall.current === 0) {
+        onClick(
+          enrichEventWithDetails(eventOrIndex, {
+            payload: payload?.activePayload?.[0]?.payload,
+            activePayloads: payload?.activePayload
+          })
+        );
+      }
+      if (preventOnClickCall.current > 0) {
+        preventOnClickCall.current -= 1;
       }
     },
-    [onDataPointClick]
+    [onDataPointClick, preventOnClickCall.current]
   );
 
   const isBigDataSet = dataset?.length > 30 ?? false;
@@ -177,7 +190,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
   const [yAxisWidth, legendPosition] = useLongestYAxisLabel(dataset, measures);
   const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
   const xAxisHeights = useObserveXAxisHeights(chartRef, props.dimensions.length);
-  const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick']);
+  const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick', 'onClick']);
   const isRTL = useIsRTL(chartRef);
 
   return (

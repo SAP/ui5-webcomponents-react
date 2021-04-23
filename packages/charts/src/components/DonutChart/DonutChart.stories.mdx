@@ -23,18 +23,10 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
     dataset: {
       control: { disable: true }
     },
-    measure: {
-      control: { disable: true }
-    },
-    dimension: {
-      control: { disable: true }
-    },
-    chartConfig: {
-      control: { disable: true }
-    },
     children: {
       control: { disable: true }
-    }
+    },
+    onClick: { action: { action: 'clicked' }, description: 'Fired when clicked anywhere in the chart.' }
   }}
 />
 
@@ -58,16 +50,16 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 ### With Custom Color
 
 <Canvas>
-  <Story name="With Custom Color">
-    {(props) => (
-      <DonutChart
-        {...props}
-        measure={{
-          accessor: 'users',
-          colors: ['#f00', 'green', 'var(--sapNegativeColor)', 'black', 'yellow', 'pink']
-        }}
-      />
-    )}
+  <Story
+    name="With Custom Color"
+    args={{
+      measure: {
+        accessor: 'users',
+        colors: ['#f00', 'green', 'var(--sapNegativeColor)', 'black', 'yellow', 'pink']
+      }
+    }}
+  >
+    {(props) => <DonutChart {...props} />}
   </Story>
 </Canvas>
 
@@ -80,16 +72,16 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 ### With Custom Radius
 
 <Canvas>
-  <Story name="With Custom Radius">
-    {(props) => (
-      <DonutChart
-        {...props}
-        chartConfig={{
-          innerRadius: '20%',
-          outerRadius: '90%'
-        }}
-      />
-    )}
+  <Story
+    name="With Custom Radius"
+    args={{
+      chartConfig: {
+        innerRadius: '20%',
+        outerRadius: '90%'
+      }
+    }}
+  >
+    {(props) => <DonutChart {...props} />}
   </Story>
 </Canvas>
 
@@ -104,20 +96,20 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 ### With Formatter
 
 <Canvas>
-  <Story name="With Formatter">
-    {(props) => (
-      <DonutChart
-        {...props}
-        dimension={{
-          accessor: 'name',
-          formatter: (el) => el.slice(0, 3)
-        }}
-        measure={{
-          accessor: 'users',
-          formatter: (el) => el / 10
-        }}
-      />
-    )}
+  <Story
+    name="With Formatter"
+    args={{
+      dimension: {
+        accessor: 'name',
+        formatter: (el) => el.slice(0, 3)
+      },
+      measure: {
+        accessor: 'users',
+        formatter: (el) => el / 10
+      }
+    }}
+  >
+    {(props) => <DonutChart {...props} />}
   </Story>
 </Canvas>
 

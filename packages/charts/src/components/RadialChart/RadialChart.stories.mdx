@@ -7,7 +7,8 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
   title="Charts /  RadialChart"
   component={RadialChart}
   argTypes={{
-    ...DocsCommonProps
+    ...DocsCommonProps,
+    onClick: { action: { action: 'clicked' }, description: 'Fired when clicked anywhere in the chart.' }
   }}
   args={{
     displayValue: '50%',

@@ -26,6 +26,7 @@ import { useChartMargin } from '../../hooks/useChartMargin';
 import { useLabelFormatter } from '../../hooks/useLabelFormatter';
 import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
 import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights';
+import { useOnClickInternal } from '../../hooks/useOnClickInternal';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
@@ -129,6 +130,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     noLegend,
     noAnimation,
     onLegendClick,
+    onClick,
     layout,
     style,
     className,
@@ -176,11 +178,12 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     (payload, eventOrIndex, event) => {
       if (typeof onDataPointClick === 'function') {
         if (payload.name) {
+          const payloadValueLength = payload?.value?.length;
           onDataPointClick(
             enrichEventWithDetails(event ?? eventOrIndex, {
-              value: payload.value.length ? payload.value[1] - payload.value[0] : payload.value,
+              value: payloadValueLength ? payload.value[1] - payload.value[0] : payload.value,
               dataIndex: payload.index ?? eventOrIndex,
-              dataKey: payload.value.length
+              dataKey: payloadValueLength
                 ? Object.keys(payload).filter((key) =>
                     payload.value.length
                       ? payload[key] === payload.value[1] - payload.value[0]
@@ -207,6 +210,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
   );
 
   const onItemLegendClick = useLegendItemClick(onLegendClick);
+  const onClickInternal = useOnClickInternal(onClick);
 
   const isBigDataSet = dataset?.length > 30 ?? false;
   const primaryDimensionAccessor = primaryDimension?.accessor;
@@ -227,7 +231,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     return <ComposedChartPlaceholder layout={layout} measures={measures} />;
   }, [layout, measures]);
 
-  const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick']);
+  const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick', 'onClick']);
   const isRTL = useIsRTL(chartRef);
 
   return (
@@ -244,11 +248,14 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
       {...passThroughProps}
     >
       <ComposedChartLib
+        onClick={onClickInternal}
         stackOffset="sign"
         margin={marginChart}
         data={dataset}
         layout={layout}
-        className={typeof onDataPointClick === 'function' ? 'has-click-handler' : undefined}
+        className={
+          typeof onDataPointClick === 'function' || typeof onClick === 'function' ? 'has-click-handler' : undefined
+        }
       >
         <CartesianGrid
           vertical={chartConfig.gridVertical}

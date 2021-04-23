@@ -7,6 +7,8 @@ import { useLegendItemClick } from '@ui5/webcomponents-react-charts/dist/useLege
 import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo, isValidElement, cloneElement } from 'react';
 import { Cell, Label, Legend, Pie, PieChart as PieChartLib, Tooltip, Text, Sector } from 'recharts';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
+import { ComposedChart as ComposedChartLib } from 'recharts/types/chart/ComposedChart';
+import { useOnClickInternal } from '../../hooks/useOnClickInternal';
 import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
@@ -78,6 +80,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
     noAnimation,
     onDataPointClick,
     onLegendClick,
+    onClick,
     centerLabel,
     style,
     className,
@@ -140,6 +143,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
   const chartRef = useConsolidatedRef<any>(ref);
 
   const onItemLegendClick = useLegendItemClick(onLegendClick, () => measure.accessor);
+  const onClickInternal = useOnClickInternal(onClick);
 
   const onDataPointClickInternal = useCallback(
     (payload, dataIndex, event) => {
@@ -237,7 +241,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
     return null;
   }, [showActiveSegmentDataLabel, chartConfig.activeSegment, chartConfig.legendPosition]);
 
-  const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick']);
+  const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick', 'onClick']);
 
   return (
     <ChartContainer
@@ -253,8 +257,11 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
       {...passThroughProps}
     >
       <PieChartLib
+        onClick={onClickInternal}
         margin={chartConfig.margin}
-        className={typeof onDataPointClick === 'function' ? 'has-click-handler' : undefined}
+        className={
+          typeof onDataPointClick === 'function' || typeof onClick === 'function' ? 'has-click-handler' : undefined
+        }
       >
         {/*
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment

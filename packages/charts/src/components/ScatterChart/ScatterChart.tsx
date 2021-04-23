@@ -6,7 +6,7 @@ import { XAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/XAxi
 import { YAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/YAxisTicks';
 import { ScatterChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/ScatterChartPlaceholder';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/dist/useLegendItemClick';
-import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
+import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo, useRef } from 'react';
 import {
   CartesianGrid,
   Legend,
@@ -22,6 +22,7 @@ import {
 import { useChartMargin } from '../../hooks/useChartMargin';
 import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
 import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights';
+import { useOnClickInternal } from '../../hooks/useOnClickInternal';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { ICartesianChartConfig } from '../../interfaces/ICartesianChartConfig';
@@ -137,6 +138,7 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
     noAnimation,
     onDataPointClick,
     onLegendClick,
+    onClick,
     style,
     className,
     tooltip,
@@ -162,7 +164,24 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
 
   const tooltipValueFormatter = useTooltipFormatter(measures);
   const chartRef = useConsolidatedRef<any>(ref);
+  const preventOnClickCall = useRef(false);
   const onItemLegendClick = useLegendItemClick(onLegendClick);
+  const onClickInternal = useCallback(
+    (payload, event) => {
+      if (typeof onClick === 'function' && !preventOnClickCall.current) {
+        onClick(
+          enrichEventWithDetails(event, {
+            payload: payload?.activePayload?.[0]?.payload,
+            activePayloads: payload?.activePayload
+          })
+        );
+      }
+      if (preventOnClickCall.current) {
+        preventOnClickCall.current = false;
+      }
+    },
+    [onClick, preventOnClickCall.current]
+  );
 
   const onDataPointClickInternal = useCallback(
     (payload, eventOrIndex, event) => {
@@ -175,9 +194,10 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
             payload: payload.payload
           })
         );
+        preventOnClickCall.current = true;
       }
     },
-    [onDataPointClick]
+    [onDataPointClick, preventOnClickCall.current]
   );
   const isBigDataSet = dataset?.length > 30 ?? false;
 
@@ -188,7 +208,7 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
   const [yAxisWidth, legendPosition] = useLongestYAxisLabel(dataset?.[0].data, [yMeasure]);
   const xAxisHeights = useObserveXAxisHeights(chartRef, 1);
   const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
-  const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick']);
+  const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick', 'onClick']);
   const isRTL = useIsRTL(chartRef);
 
   return (
@@ -205,6 +225,7 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
       {...passThroughProps}
     >
       <ScatterChartLib
+        onClick={onClickInternal}
         margin={marginChart}
         className={typeof onDataPointClick === 'function' ? 'has-click-handler' : undefined}
       >

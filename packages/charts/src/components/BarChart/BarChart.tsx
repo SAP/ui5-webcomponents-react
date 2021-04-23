@@ -26,6 +26,7 @@ import { useChartMargin } from '../../hooks/useChartMargin';
 import { useLabelFormatter } from '../../hooks/useLabelFormatter';
 import { useLongestYAxisLabelBar } from '../../hooks/useLongestYAxisLabelBar';
 import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights';
+import { useOnClickInternal } from '../../hooks/useOnClickInternal';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
@@ -120,6 +121,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
     noAnimation,
     onDataPointClick,
     onLegendClick,
+    onClick,
     style,
     className,
     tooltip,
@@ -178,13 +180,15 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
     [onDataPointClick]
   );
 
+  const onClickInternal = useOnClickInternal(onClick);
+
   const isBigDataSet = dataset?.length > 30;
   const primaryDimensionAccessor = primaryDimension?.accessor;
 
   const [width, legendPosition] = useLongestYAxisLabelBar(dataset, dimensions);
   const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
   const [xAxisHeight] = useObserveXAxisHeights(chartRef, 1);
-  const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick']);
+  const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick', 'onClick']);
   const isRTL = useIsRTL(chartRef);
 
   return (
@@ -201,12 +205,15 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
       {...passThroughProps}
     >
       <BarChartLib
+        onClick={onClickInternal}
         stackOffset="sign"
         margin={marginChart}
         layout="vertical"
         data={dataset}
         barGap={chartConfig.barGap}
-        className={typeof onDataPointClick === 'function' ? 'has-click-handler' : undefined}
+        className={
+          typeof onDataPointClick === 'function' || typeof onClick === 'function' ? 'has-click-handler' : undefined
+        }
       >
         <CartesianGrid
           vertical={chartConfig.gridVertical}
