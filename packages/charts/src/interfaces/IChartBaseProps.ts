@@ -2,7 +2,7 @@ import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { ReactNode, ReactNodeArray } from 'react';
 import { ICartesianChartConfig } from './ICartesianChartConfig';
 
-export interface IChartBaseProps<T = ICartesianChartConfig> extends CommonProps {
+export interface IChartBaseProps<T = ICartesianChartConfig> extends Omit<CommonProps, 'onClick'> {
   /**
    * Flag whether the chart should display a loading indicator.
    *
