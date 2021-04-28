@@ -24,7 +24,6 @@ import { useChartMargin } from '../../hooks/useChartMargin';
 import { useLabelFormatter } from '../../hooks/useLabelFormatter';
 import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
 import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights';
-import { useOnClickInternal } from '../../hooks/useOnClickInternal';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
