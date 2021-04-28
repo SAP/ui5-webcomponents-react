@@ -2,7 +2,7 @@ import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { ReactNode, ReactNodeArray } from 'react';
 import { ICartesianChartConfig } from './ICartesianChartConfig';
 
-export interface IChartBaseProps<T = ICartesianChartConfig> extends CommonProps {
+export interface IChartBaseProps<T = ICartesianChartConfig> extends Omit<CommonProps, 'onClick'> {
   /**
    * Flag whether the chart should display a loading indicator.
    *
@@ -25,6 +25,11 @@ export interface IChartBaseProps<T = ICartesianChartConfig> extends CommonProps 
    * `noLegend` toggles the visibility of the legend below the chart. If this prop is `true`, no legend will be rendered.
    */
   noLegend?: boolean;
+
+  /**
+   * Fired when clicked anywhere in the chart.
+   */
+  onClick?: (event: CustomEvent<{ payload: unknown; activePayloads: Record<string, unknown>[] }>) => void;
 
   /**
    * The `onDataPointClick` event fires whenever the user clicks on e.g. a  bar in `BarChart` or a point the `LineChart`.

@@ -6,7 +6,7 @@ import { ChartContainer } from '@ui5/webcomponents-react-charts/dist/components/
 import { ChartDataLabel } from '@ui5/webcomponents-react-charts/dist/components/ChartDataLabel';
 import { PieChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/PieChartPlaceholder';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/dist/useLegendItemClick';
-import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
+import React, { FC, forwardRef, Ref, useCallback, useMemo, useRef } from 'react';
 import {
   Legend,
   PolarAngleAxis,
@@ -85,6 +85,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
     noAnimation,
     onDataPointClick,
     onLegendClick,
+    onClick,
     style,
     className,
     tooltip,
@@ -120,6 +121,23 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
   const primaryDimensionAccessor = primaryDimension?.accessor;
 
   const onItemLegendClick = useLegendItemClick(onLegendClick);
+  const preventOnClickCall = useRef(false);
+  const onClickInternal = useCallback(
+    (payload, event) => {
+      if (typeof onClick === 'function' && !preventOnClickCall.current) {
+        onClick(
+          enrichEventWithDetails(event, {
+            payload: payload?.activePayload?.[0]?.payload,
+            activePayloads: payload?.activePayload
+          })
+        );
+      }
+      if (preventOnClickCall.current) {
+        preventOnClickCall.current = false;
+      }
+    },
+    [onClick, preventOnClickCall.current]
+  );
 
   const onDataPointClickInternal = useCallback(
     (payload, eventOrIndex) => {
@@ -133,12 +151,13 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
             payload: eventOrIndex.payload
           })
         );
+        preventOnClickCall.current = true;
       }
     },
-    [onDataPointClick]
+    [onDataPointClick, preventOnClickCall.current]
   );
 
-  const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick']);
+  const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick', 'onClick']);
 
   return (
     <ChartContainer
@@ -154,6 +173,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
       {...passThroughProps}
     >
       <RadarChartLib
+        onClick={onClickInternal}
         data={dataset}
         margin={chartConfig.margin}
         className={typeof onDataPointClick === 'function' ? 'has-click-handler' : undefined}

@@ -7,8 +7,9 @@ import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import { PolarAngleAxis, RadialBar, RadialBarChart } from 'recharts';
 import { AxisDomain } from 'recharts/types/util/types';
+import { useOnClickInternal } from '../../hooks/useOnClickInternal';
 
-export interface RadialChartProps extends CommonProps {
+export interface RadialChartProps extends Omit<CommonProps, 'onClick'> {
   /**
    * The actual value which defines how much the ring is filled.
    */
@@ -32,6 +33,10 @@ export interface RadialChartProps extends CommonProps {
    * @param event
    */
   onDataPointClick?: (event: CustomEvent<{ value: unknown; payload: unknown; dataIndex: number }>) => void;
+  /**
+   * Fired when clicked anywhere in the chart.
+   */
+  onClick?: (event: CustomEvent<{ payload: unknown; activePayloads: Record<string, unknown>[] }>) => void;
 }
 
 const radialChartMargin = { right: 30, left: 30, top: 30, bottom: 30 };
@@ -43,7 +48,7 @@ const radialBarLabelStyle = { fontSize: ThemingParameters.sapFontHeader3Size, fi
  * The status can be emphasized by using the `color` prop.
  */
 const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, ref: Ref<HTMLDivElement>) => {
-  const { maxValue, value, displayValue, onDataPointClick, color, style, className, tooltip, slot } = props;
+  const { maxValue, value, displayValue, onDataPointClick, onClick, color, style, className, tooltip, slot } = props;
 
   const range = useMemo<AxisDomain>(() => {
     return [0, maxValue];
@@ -66,7 +71,9 @@ const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, r
     [onDataPointClick]
   );
 
-  const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick']);
+  const onClickInternal = useOnClickInternal(onClick);
+
+  const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick', 'onClick']);
 
   return (
     <ChartContainer
@@ -81,6 +88,7 @@ const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, r
       {...passThroughProps}
     >
       <RadialBarChart
+        onClick={onClickInternal}
         margin={radialChartMargin}
         innerRadius="90%"
         outerRadius="100%"
