@@ -23,7 +23,6 @@
       "@commitlint/config-conventional": "^11.0.0",
       "@types/jest": "^26.0.15",
       "husky": "^4.3.8",
-      "jest-environment-jsdom-sixteen": "^1.0.3",
       "json-server": "^0.16.2",
       "msw": "^0.26.2",
       "nodemon": "^2.0.6",
@@ -31,7 +30,7 @@
     },
     "scripts": {
       "start:mock-server": "nodemon --watch server --exec npx json-server --p 3001 server/mockserver.js --routes server/routes.json",
-      "test": "react-scripts test --silent --env=jest-environment-jsdom-sixteen",
+      "test": "react-scripts test --silent",
       "test:ci": "npm run test -- --watchAll=false",
       "test:coverage": "npm run test -- --watchAll=false --coverage",
       "lint": "eslint --quiet .",
