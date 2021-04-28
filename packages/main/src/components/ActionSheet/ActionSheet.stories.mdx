@@ -55,7 +55,7 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
       return (
         <>
           <Button onClick={onButtonClick}>Open ActionSheet</Button>
-          <ActionSheet ref={actionSheetRef} {...args}>
+          <ActionSheet {...args} ref={actionSheetRef}>
             <Button icon="add">Accept</Button>
             <Button>Reject</Button>
             <Button>This is my super long text!</Button>
