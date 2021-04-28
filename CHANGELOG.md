@@ -10,7 +10,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * **ActionSheet:** improve a11y support & refactor implementation to comply to UX guidelines ([#1519](https://github.com/SAP/ui5-webcomponents-react/issues/1519)) ([2178b79](https://github.com/SAP/ui5-webcomponents-react/commit/2178b79095da4e4f9344809647693eb0262a1bb4))
 * **AnalyticalTable:** add `globalFilterValue` prop to allow searching all columns ([#1512](https://github.com/SAP/ui5-webcomponents-react/issues/1512)) ([e0aea00](https://github.com/SAP/ui5-webcomponents-react/commit/e0aea00add72984c09cd68438372b61521f58cc3))
-* **Charts:** Add onClick event which is fired when clicked anywhere inside the chart container ([#1526](https://github.com/SAP/ui5-webcomponents-react/issues/1526)) ([17a1e17](https://github.com/SAP/ui5-webcomponents-react/commit/17a1e1797daf217b33f99937fcf7e383f07eb31c))
+* **Charts:**  Replaced the plain HTML onClick mouse event with an onClick event that returns the internal target of the charts svg container, including values and payload when available ([#1526](https://github.com/SAP/ui5-webcomponents-react/issues/1526)) ([17a1e17](https://github.com/SAP/ui5-webcomponents-react/commit/17a1e1797daf217b33f99937fcf7e383f07eb31c))
 
 
 
