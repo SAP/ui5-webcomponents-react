@@ -20,7 +20,7 @@ export default {
   ],
   setupFiles: ['jest-canvas-mock'],
   setupFilesAfterEnv: ['./config/jestsetup.ts'],
-  testEnvironment: 'jsdom-sixteen',
+  testEnvironment: 'jsdom',
   testPathIgnorePatterns: [
     '/node_modules/',
     '<rootDir>/packages/cra-template/',

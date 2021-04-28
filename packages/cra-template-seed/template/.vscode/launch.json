@@ -10,7 +10,6 @@
                   "request": "launch",
                   "args": [
                         "test",
-                        "--env=jest-environment-jsdom-sixteen",
                         "--runInBand"
                   ],
                   "cwd": "${workspaceFolder}",
