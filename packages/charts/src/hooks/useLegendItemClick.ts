@@ -1,7 +1,7 @@
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { useCallback } from 'react';
 
-export const useLegendItemClick = (handler, dataKeyExtractor) => {
+export const useLegendItemClick = (handler, dataKeyExtractor?) => {
   return useCallback(
     (payload, index, event) => {
       if (typeof handler === 'function') {
