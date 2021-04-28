@@ -7,11 +7,7 @@
       "@ui5/webcomponents-react": "^0.15.2",
       "@testing-library/jest-dom": "^5.11.4",
       "@testing-library/react": "^11.1.0",
-      "@testing-library/user-event": "^12.1.10",
-      "jest-environment-jsdom-sixteen": "^1.0.3"
-    },
-    "scripts": {
-      "test": "react-scripts test --env jest-environment-jsdom-sixteen"
+      "@testing-library/user-event": "^12.1.10"
     },
     "jest": {
       "transformIgnorePatterns": [
