@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.15.3...v0.15.4) (2021-04-28)
+
+
+### Features
+
+* **Charts:** Add onClick event which is fired when clicked anywhere inside the chart container ([#1526](https://github.com/SAP/ui5-webcomponents-react/issues/1526)) ([17a1e17](https://github.com/SAP/ui5-webcomponents-react/commit/17a1e1797daf217b33f99937fcf7e383f07eb31c))
+
+
+
+
+
 ## [0.15.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.15.2...v0.15.3) (2021-04-14)
 
 **Note:** Version bump only for package @ui5/webcomponents-react-charts

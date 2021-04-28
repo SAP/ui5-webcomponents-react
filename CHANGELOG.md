@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.15.3...v0.15.4) (2021-04-28)
+
+
+### Features
+
+* **ActionSheet:** improve a11y support & refactor implementation to comply to UX guidelines ([#1519](https://github.com/SAP/ui5-webcomponents-react/issues/1519)) ([2178b79](https://github.com/SAP/ui5-webcomponents-react/commit/2178b79095da4e4f9344809647693eb0262a1bb4))
+* **AnalyticalTable:** add `globalFilterValue` prop to allow searching all columns ([#1512](https://github.com/SAP/ui5-webcomponents-react/issues/1512)) ([e0aea00](https://github.com/SAP/ui5-webcomponents-react/commit/e0aea00add72984c09cd68438372b61521f58cc3))
+* **Charts:** Add onClick event which is fired when clicked anywhere inside the chart container ([#1526](https://github.com/SAP/ui5-webcomponents-react/issues/1526)) ([17a1e17](https://github.com/SAP/ui5-webcomponents-react/commit/17a1e1797daf217b33f99937fcf7e383f07eb31c))
+
+
+
+
+
 ## [0.15.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.15.2...v0.15.3) (2021-04-14)
 
 
