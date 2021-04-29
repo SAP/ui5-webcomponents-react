@@ -35,6 +35,7 @@ import React, {
   RefObject,
   useCallback,
   useEffect,
+  useMemo,
   useRef,
   useState
 } from 'react';
@@ -453,36 +454,59 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
     }
   }, [prevSearchInputPropsValue, search?.props?.value]);
 
-  const ToolbarButtons = (
-    <>
-      {showClearOnFB && (
-        <Button onClick={onClear} design={ButtonDesign.Transparent}>
-          {clearText}
-        </Button>
-      )}
-      {showRestoreOnFB && (
-        <Button onClick={handleFBRestore} design={ButtonDesign.Transparent}>
-          {restoreText}
-        </Button>
-      )}
-      {!hideToggleFiltersButton && useToolbar && (
-        <Button onClick={handleToggle} design={ButtonDesign.Transparent} className={classes.showFiltersBtn}>
-          {showFilters ? hideFilterBarText : showFilterBarText}
-        </Button>
-      )}
-      {showFilterConfiguration && (
-        <Button onClick={handleDialogOpen} aria-haspopup="dialog">
-          {`${filtersText}${
-            activeFiltersCount && parseInt(activeFiltersCount as string) > 0 ? ` (${activeFiltersCount})` : ''
-          }`}
-        </Button>
-      )}
-      {showGoOnFB && (
-        <Button onClick={onGo} design={ButtonDesign.Emphasized}>
-          {goText}
-        </Button>
-      )}
-    </>
+  const ToolbarButtons = useMemo(
+    () => (
+      <>
+        {showClearOnFB && (
+          <Button onClick={onClear} design={ButtonDesign.Transparent}>
+            {clearText}
+          </Button>
+        )}
+        {showRestoreOnFB && (
+          <Button onClick={handleFBRestore} design={ButtonDesign.Transparent}>
+            {restoreText}
+          </Button>
+        )}
+        {!hideToggleFiltersButton && useToolbar && (
+          <Button onClick={handleToggle} design={ButtonDesign.Transparent} className={classes.showFiltersBtn}>
+            {showFilters ? hideFilterBarText : showFilterBarText}
+          </Button>
+        )}
+        {showFilterConfiguration && (
+          <Button onClick={handleDialogOpen} aria-haspopup="dialog">
+            {`${filtersText}${
+              activeFiltersCount && parseInt(activeFiltersCount as string) > 0 ? ` (${activeFiltersCount})` : ''
+            }`}
+          </Button>
+        )}
+        {showGoOnFB && (
+          <Button onClick={onGo} design={ButtonDesign.Emphasized}>
+            {goText}
+          </Button>
+        )}
+      </>
+    ),
+    [
+      showClearOnFB,
+      onClear,
+      clearText,
+      showRestoreOnFB,
+      handleFBRestore,
+      restoreText,
+      hideToggleFiltersButton,
+      useToolbar,
+      handleToggle,
+      classes.showFiltersBtn,
+      showFilters,
+      hideFilterBarText,
+      showFilterBarText,
+      handleDialogOpen,
+      filtersText,
+      activeFiltersCount,
+      showGoOnFB,
+      onGo,
+      goText
+    ]
   );
 
   return (
