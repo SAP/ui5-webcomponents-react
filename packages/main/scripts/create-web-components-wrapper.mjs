@@ -591,7 +591,22 @@ allWebComponents
     (componentSpec.events || [])
       .filter((eventSpec) => eventSpec.visibility === 'public')
       .forEach((eventSpec) => {
-        const eventParameters = getEventParameters(eventSpec.parameters || []);
+        let eventParameters;
+        if (eventSpec.native === 'true') {
+          if (eventSpec.name === 'click') {
+            eventParameters = {
+              tsType: 'MouseEventHandler<HTMLElement>',
+              importStatements: ["import { MouseEventHandler } from 'react';"]
+            };
+          } else if (eventSpec.name === 'drop') {
+            eventParameters = {
+              tsType: 'DragEventHandler<HTMLElement>',
+              importStatements: ["import { DragEventHandler } from 'react';"]
+            };
+          }
+        } else {
+          eventParameters = getEventParameters(eventSpec.parameters || []);
+        }
         importStatements.push(...eventParameters.importStatements);
         propTypes.push(dedent`
       /**

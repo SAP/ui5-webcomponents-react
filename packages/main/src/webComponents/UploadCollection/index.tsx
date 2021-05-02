@@ -1,6 +1,6 @@
 import { ListMode } from '@ui5/webcomponents-react/dist/ListMode';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import { FC, ReactNode } from 'react';
+import { FC, ReactNode, DragEventHandler } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/UploadCollection';
 
@@ -42,7 +42,7 @@ export interface UploadCollectionPropTypes extends Omit<WithWebComponentPropType
    *
    * **Note:** The `drop` event is fired only when elements are dropped within the drag and drop overlay and ignored for the other parts of the `UploadCollection`.
    */
-  onDrop?: (event: CustomEvent<{ dataTransfer: DataTransfer }>) => void;
+  onDrop?: DragEventHandler<HTMLElement>;
   /**
    * Fired when the Delete button of any item is pressed.
    *
