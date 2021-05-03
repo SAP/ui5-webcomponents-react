@@ -24,27 +24,12 @@ module.exports = function (api) {
     ].filter(Boolean),
     plugins: [
       [
-        '@babel/plugin-proposal-decorators',
-        {
-          legacy: true
-        }
-      ],
-      [
-        '@babel/plugin-proposal-class-properties',
-        {
-          loose: true
-        }
-      ],
-      '@babel/plugin-proposal-numeric-separator',
-      [
         '@babel/plugin-transform-runtime',
         {
           version: require('@babel/runtime/package.json').version,
           useESModules: api.env('esm')
         }
-      ],
-      '@babel/plugin-proposal-optional-chaining',
-      '@babel/plugin-proposal-nullish-coalescing-operator'
+      ]
     ]
   };
 };

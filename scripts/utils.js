@@ -5,7 +5,6 @@ import path from 'path';
 import mkdirp from 'mkdirp';
 import rimraf from 'rimraf';
 import { exec } from 'child_process';
-import targz from 'targz';
 
 export function asyncCopyTo(from, to) {
   return asyncMkDirP(path.dirname(to)).then(
@@ -31,18 +30,6 @@ export function asyncExecuteCommand(command) {
         return;
       }
       resolve(stdout);
-    })
-  );
-}
-
-export function asyncExtractTar(options) {
-  return new Promise((resolve, reject) =>
-    targz.decompress(options, (error) => {
-      if (error) {
-        reject(error);
-        return;
-      }
-      resolve();
     })
   );
 }
