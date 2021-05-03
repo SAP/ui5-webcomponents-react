@@ -23,6 +23,8 @@ export interface ShellBarItemPropTypes extends WithWebComponentPropTypes {
   text?: string;
   /**
    * Fired, when the item is pressed.
+   * 
+   * __Note:__ To get the DOM reference of the clicked `ShellBarItem`, use `event.detail.targetRef`.
    */
   onItemClick?: (event: Ui5CustomEvent<HTMLElement, { targetRef: ReactNode }>) => void;
 }
