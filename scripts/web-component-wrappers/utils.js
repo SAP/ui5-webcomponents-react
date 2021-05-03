@@ -164,6 +164,18 @@ export const getTypeDefinitionForProperty = (property, interfaces) => {
   }
 };
 
+export const getEventTargetForComponent = (componentName) => {
+  switch (componentName) {
+    case 'Input':
+    case 'MultiInput':
+      return 'HTMLInputElement';
+    case 'Option':
+      return 'HTMLOptionElement';
+    default:
+      return 'HTMLElement';
+  }
+};
+
 export const runEsLint = async (text, name) => {
   const [result] = await eslint.lintText(text, {
     filePath: `packages/main/src/webComponents/${name}/index.tsx`

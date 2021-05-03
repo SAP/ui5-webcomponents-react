@@ -258,7 +258,7 @@ const replaceTagNameWithModuleName = (description) => {
   return parsedDescription;
 };
 
-const getEventParameters = (parameters) => {
+const getEventParameters = (name, parameters) => {
   const resolvedEventParameters = parameters.map((property) => {
     return {
       ...property,
@@ -266,11 +266,13 @@ const getEventParameters = (parameters) => {
     };
   });
 
-  const importStatements = [];
+  const importStatements = [`import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';`];
+
+  const eventTarget = Utils.getEventTargetForComponent(name);
 
   if (resolvedEventParameters.length === 0) {
     return {
-      tsType: `(event: CustomEvent) => void`,
+      tsType: `(event: Ui5CustomEvent<${eventTarget}>) => void`,
       importStatements
     };
   }
@@ -283,7 +285,7 @@ const getEventParameters = (parameters) => {
   });
 
   return {
-    tsType: `(event: CustomEvent<{${detailPayload.join('; ')}}>) => void`,
+    tsType: `(event: Ui5CustomEvent<${eventTarget}, {${detailPayload.join('; ')}}>) => void`,
     importStatements
   };
 };
@@ -605,7 +607,7 @@ allWebComponents
             };
           }
         } else {
-          eventParameters = getEventParameters(eventSpec.parameters || []);
+          eventParameters = getEventParameters(componentSpec.module, eventSpec.parameters || []);
         }
         importStatements.push(...eventParameters.importStatements);
         propTypes.push(dedent`
