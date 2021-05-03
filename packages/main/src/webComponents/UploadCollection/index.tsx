@@ -1,5 +1,6 @@
 import { ListMode } from '@ui5/webcomponents-react/dist/ListMode';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, ReactNode, DragEventHandler } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/UploadCollection';
@@ -48,11 +49,11 @@ export interface UploadCollectionPropTypes extends Omit<WithWebComponentPropType
    *
    * **Note:** A Delete button is displayed on each item, when the `UploadCollection` `mode` property is set to `Delete`.
    */
-  onFileDeleted?: (event: CustomEvent<{ item: ReactNode }>) => void;
+  onFileDeleted?: (event: Ui5CustomEvent<HTMLElement, { item: ReactNode }>) => void;
   /**
    * Fired when selection is changed by user interaction in `SingleSelect` and `MultiSelect` modes.
    */
-  onSelectionChange?: (event: CustomEvent<{ selectedItems: unknown[] }>) => void;
+  onSelectionChange?: (event: Ui5CustomEvent<HTMLElement, { selectedItems: unknown[] }>) => void;
 }
 
 /**

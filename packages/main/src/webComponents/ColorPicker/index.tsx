@@ -1,4 +1,5 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC } from 'react';
 
 import '@ui5/webcomponents/dist/ColorPicker';
@@ -11,7 +12,7 @@ export interface ColorPickerPropTypes extends Omit<WithWebComponentPropTypes, 'o
   /**
    * Fired when the the selected color is changed
    */
-  onChange?: (event: CustomEvent) => void;
+  onChange?: (event: Ui5CustomEvent<HTMLElement>) => void;
 }
 
 /**

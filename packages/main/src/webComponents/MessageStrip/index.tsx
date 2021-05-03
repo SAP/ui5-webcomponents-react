@@ -1,5 +1,6 @@
 import { MessageStripType } from '@ui5/webcomponents-react/dist/MessageStripType';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/MessageStrip';
@@ -39,7 +40,7 @@ export interface MessageStripPropTypes extends WithWebComponentPropTypes {
   /**
    * Fired when the close button is pressed either with a click/tap or by using the Enter or Space key.
    */
-  onClose?: (event: CustomEvent) => void;
+  onClose?: (event: Ui5CustomEvent<HTMLElement>) => void;
 }
 
 /**

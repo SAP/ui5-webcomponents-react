@@ -1,5 +1,6 @@
 import { CarouselArrowsPlacement } from '@ui5/webcomponents-react/dist/CarouselArrowsPlacement';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Carousel';
@@ -53,11 +54,11 @@ export interface CarouselPropTypes extends WithWebComponentPropTypes {
   /**
    * Fired for the last items of the `Carousel` if it is scrolled and the direction of scrolling is to the end. The number of items for which the event is fired is controlled by the `infiniteScrollOffset` property.
    */
-  onLoadMore?: (event: CustomEvent) => void;
+  onLoadMore?: (event: Ui5CustomEvent<HTMLElement>) => void;
   /**
    * Fired whenever the `selectedIndex` changes due to user interaction, when the user clicks on the navigation arrows or while resizing, based on the `items-per-page-l`, `items-per-page-m` and `items-per-page-s` properties.
    */
-  onNavigate?: (event: CustomEvent<{ selectedIndex: number }>) => void;
+  onNavigate?: (event: Ui5CustomEvent<HTMLElement, { selectedIndex: number }>) => void;
 }
 
 /**

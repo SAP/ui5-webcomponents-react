@@ -1,5 +1,6 @@
 import { FCLLayout } from '@ui5/webcomponents-react/dist/FCLLayout';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/FlexibleColumnLayout';
@@ -68,15 +69,18 @@ export interface FlexibleColumnLayoutPropTypes extends WithWebComponentPropTypes
    * Fired when the layout changes via user interaction by clicking the arrows or by changing the component size due to resizing.
    */
   onLayoutChange?: (
-    event: CustomEvent<{
-      layout: FCLLayout;
-      columnLayout: unknown[];
-      startColumnVisible: boolean;
-      midColumnVisible: boolean;
-      endColumnVisible: boolean;
-      arrowsUsed: boolean;
-      resize: boolean;
-    }>
+    event: Ui5CustomEvent<
+      HTMLElement,
+      {
+        layout: FCLLayout;
+        columnLayout: unknown[];
+        startColumnVisible: boolean;
+        midColumnVisible: boolean;
+        endColumnVisible: boolean;
+        arrowsUsed: boolean;
+        resize: boolean;
+      }
+    >
   ) => void;
 }
 

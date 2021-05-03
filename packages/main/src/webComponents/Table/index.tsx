@@ -1,5 +1,6 @@
 import { TableGrowingMode } from '@ui5/webcomponents-react/dist/TableGrowingMode';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Table';
@@ -39,7 +40,7 @@ export interface TablePropTypes extends WithWebComponentPropTypes {
    */
   noDataText?: string;
   /**
-   * Defines if the value of `noDataText` will be displayed when there is no rows present in the table.
+   * Defines if the value of `noDataText` will be diplayed when there is no rows present in the table.
    */
   showNoData?: boolean;
   /**
@@ -75,15 +76,15 @@ export interface TablePropTypes extends WithWebComponentPropTypes {
    *
    * **Note:** The event will be fired if `growing` is set to `Button` or `Scroll`.
    */
-  onLoadMore?: (event: CustomEvent) => void;
+  onLoadMore?: (event: Ui5CustomEvent<HTMLElement>) => void;
   /**
    * Fired when the `TableColumn` is shown as a pop-in instead of hiding it.
    */
-  onPopinChange?: (event: CustomEvent<{ poppedColumns: unknown[] }>) => void;
+  onPopinChange?: (event: Ui5CustomEvent<HTMLElement, { poppedColumns: unknown[] }>) => void;
   /**
    * Fired when a row is clicked.
    */
-  onRowClick?: (event: CustomEvent<{ row: ReactNode }>) => void;
+  onRowClick?: (event: Ui5CustomEvent<HTMLElement, { row: ReactNode }>) => void;
 }
 
 /**
