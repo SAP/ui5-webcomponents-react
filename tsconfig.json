@@ -18,7 +18,7 @@
     },
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,
-    "strict": true,
+    "strict": false,
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "removeComments": true,
@@ -33,7 +33,6 @@
     "node_modules"
   ],
   "files": [
-    "./docs/typings.d.ts",
     "types.d.ts"
   ]
 }
