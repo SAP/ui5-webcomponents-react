@@ -24,12 +24,6 @@ module.exports = function (api) {
     ].filter(Boolean),
     plugins: [
       [
-        '@babel/plugin-proposal-decorators',
-        {
-          legacy: true
-        }
-      ],
-      [
         '@babel/plugin-transform-runtime',
         {
           version: require('@babel/runtime/package.json').version,
