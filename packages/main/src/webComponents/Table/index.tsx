@@ -40,7 +40,7 @@ export interface TablePropTypes extends WithWebComponentPropTypes {
    */
   noDataText?: string;
   /**
-   * Defines if the value of `noDataText` will be diplayed when there is no rows present in the table.
+   * Defines if the value of `noDataText` will be displayed when there is no rows present in the table.
    */
   showNoData?: boolean;
   /**

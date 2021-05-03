@@ -8,7 +8,7 @@ import '@ui5/webcomponents/dist/MultiInput';
 
 export interface MultiInputPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput'> {
   /**
-   * Determines whether a value help icon will be should in the end of the input. Pressing the icon will fire `value-help-trigger` event.
+   * Determines whether a value help icon will be should in the end of the input. Pressing the icon will fire `onValueHelpTrigger` event.
    */
   showValueHelpIcon?: boolean;
   /**
@@ -183,9 +183,8 @@ export interface MultiInputPropTypes extends Omit<WithWebComponentPropTypes, 'on
  *
  * A `MultiInput` field allows the user to enter multiple values, which are displayed as `Token`. User can choose interaction for creating tokens. Fiori Guidelines say that user should create tokens when:
  *
- * *   Type a value in the input and press enter or focus out the input field (`change` event is fired)
- * *   Select a value from the suggestion list
- * (`suggestion-item-select` event is fired)
+ * *   Type a value in the input and press enter or focus out the input field (`onChange` event is fired)
+ * *   Select a value from the suggestion list (`onSuggestionItemSelect` event is fired)
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/MultiInput" target="_blank">UI5 Web Components Playground</ui5-link>
  */
