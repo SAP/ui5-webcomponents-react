@@ -1,6 +1,6 @@
 import { LinkDesign } from '@ui5/webcomponents-react/dist/LinkDesign';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import { FC, ReactNode } from 'react';
+import { FC, ReactNode, MouseEventHandler } from 'react';
 
 import '@ui5/webcomponents/dist/Link';
 
@@ -46,7 +46,7 @@ export interface LinkPropTypes extends Omit<WithWebComponentPropTypes, 'onClick'
   /**
    * Fired when the `Link` is triggered either with a mouse/tap or by using the Enter key.
    */
-  onClick?: (event: CustomEvent) => void;
+  onClick?: MouseEventHandler<HTMLElement>;
 }
 
 /**

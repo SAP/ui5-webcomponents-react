@@ -1,5 +1,6 @@
 import { Priority } from '@ui5/webcomponents-react/dist/Priority';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/NotificationListGroupItem';
@@ -55,11 +56,11 @@ export interface NotificationListGroupItemPropTypes extends WithWebComponentProp
   /**
    * Fired when the `NotificationListItemBase` is expanded/collapsed by user interaction.
    */
-  onToggle?: (event: CustomEvent) => void;
+  onToggle?: (event: Ui5CustomEvent<HTMLElement>) => void;
   /**
    * Fired when the `Close` button is pressed.
    */
-  onClose?: (event: CustomEvent) => void;
+  onClose?: (event: Ui5CustomEvent<HTMLElement>) => void;
 }
 
 /**

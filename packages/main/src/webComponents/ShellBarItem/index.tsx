@@ -1,4 +1,5 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/ShellBarItem';
@@ -22,10 +23,10 @@ export interface ShellBarItemPropTypes extends WithWebComponentPropTypes {
   text?: string;
   /**
    * Fired, when the item is pressed.
-   *
+   * 
    * __Note:__ To get the DOM reference of the clicked `ShellBarItem`, use `event.detail.targetRef`.
    */
-  onItemClick?: (event: CustomEvent<{ targetRef: ReactNode }>) => void;
+  onItemClick?: (event: Ui5CustomEvent<HTMLElement, { targetRef: ReactNode }>) => void;
 }
 
 /**

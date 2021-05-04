@@ -1,4 +1,5 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/ShellBar';
@@ -79,27 +80,27 @@ export interface ShellBarPropTypes extends WithWebComponentPropTypes {
   /**
    * Fired, when the co pilot is activated.
    */
-  onCoPilotClick?: (event: CustomEvent<{ targetRef: ReactNode }>) => void;
+  onCoPilotClick?: (event: Ui5CustomEvent<HTMLElement, { targetRef: ReactNode }>) => void;
   /**
    * Fired, when the logo is activated.
    */
-  onLogoClick?: (event: CustomEvent<{ targetRef: ReactNode }>) => void;
+  onLogoClick?: (event: Ui5CustomEvent<HTMLElement, { targetRef: ReactNode }>) => void;
   /**
    * Fired, when a menu item is activated **Note:** You can prevent closing of oveflow popover by calling `event.preventDefault()`.
    */
-  onMenuItemClick?: (event: CustomEvent<{ item: ReactNode }>) => void;
+  onMenuItemClick?: (event: Ui5CustomEvent<HTMLElement, { item: ReactNode }>) => void;
   /**
    * Fired, when the notification icon is activated.
    */
-  onNotificationsClick?: (event: CustomEvent<{ targetRef: ReactNode }>) => void;
+  onNotificationsClick?: (event: Ui5CustomEvent<HTMLElement, { targetRef: ReactNode }>) => void;
   /**
    * Fired, when the product switch icon is activated. **Note:** You can prevent closing of oveflow popover by calling `event.preventDefault()`.
    */
-  onProductSwitchClick?: (event: CustomEvent<{ targetRef: ReactNode }>) => void;
+  onProductSwitchClick?: (event: Ui5CustomEvent<HTMLElement, { targetRef: ReactNode }>) => void;
   /**
    * Fired, when the profile slot is present.
    */
-  onProfileClick?: (event: CustomEvent<{ targetRef: ReactNode }>) => void;
+  onProfileClick?: (event: Ui5CustomEvent<HTMLElement, { targetRef: ReactNode }>) => void;
 }
 
 /**

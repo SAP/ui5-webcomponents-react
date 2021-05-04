@@ -1,6 +1,7 @@
 import { CalendarSelectionMode } from '@ui5/webcomponents-react/dist/CalendarSelectionMode';
 import { CalendarType } from '@ui5/webcomponents-react/dist/CalendarType';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Calendar';
@@ -43,7 +44,7 @@ export interface CalendarPropTypes extends WithWebComponentPropTypes {
   /**
    * Fired when the selected dates change. **Note:** If you call `preventDefault()` for this event, `Calendar` will not create instances of `CalendarDate` for the newly selected dates. In that case you should do this manually.
    */
-  onSelectedDatesChange?: (event: CustomEvent<{ values: unknown[]; dates: unknown[] }>) => void;
+  onSelectedDatesChange?: (event: Ui5CustomEvent<HTMLElement, { values: unknown[]; dates: unknown[] }>) => void;
 }
 
 /**

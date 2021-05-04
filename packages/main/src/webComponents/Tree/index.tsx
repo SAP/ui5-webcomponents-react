@@ -1,5 +1,6 @@
 import { ListMode } from '@ui5/webcomponents-react/dist/ListMode';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Tree';
@@ -43,21 +44,23 @@ export interface TreePropTypes extends WithWebComponentPropTypes {
   /**
    * Fired when a tree item is activated.
    */
-  onItemClick?: (event: CustomEvent<{ item: ReactNode }>) => void;
+  onItemClick?: (event: Ui5CustomEvent<HTMLElement, { item: ReactNode }>) => void;
   /**
    * Fired when the Delete button of any tree item is pressed.
    *
    * **Note:** A Delete button is displayed on each item, when the `Tree` `mode` property is set to `Delete`.
    */
-  onItemDelete?: (event: CustomEvent<{ item: ReactNode }>) => void;
+  onItemDelete?: (event: Ui5CustomEvent<HTMLElement, { item: ReactNode }>) => void;
   /**
    * Fired when a tree item is expanded or collapsed. _Note:_ You can call `preventDefault()` on the event object to suppress the event, if needed. This may be handy for example if you want to dynamically load tree items upon the user expanding a node. Even if you prevented the event's default behavior, you can always manually call `toggle()` on a tree item.
    */
-  onItemToggle?: (event: CustomEvent<{ item: ReactNode }>) => void;
+  onItemToggle?: (event: Ui5CustomEvent<HTMLElement, { item: ReactNode }>) => void;
   /**
    * Fired when selection is changed by user interaction in `SingleSelect`, `SingleSelectBegin`, `SingleSelectEnd` and `MultiSelect` modes.
    */
-  onSelectionChange?: (event: CustomEvent<{ selectedItems: unknown[]; previouslySelectedItems: unknown[] }>) => void;
+  onSelectionChange?: (
+    event: Ui5CustomEvent<HTMLElement, { selectedItems: unknown[]; previouslySelectedItems: unknown[] }>
+  ) => void;
 }
 
 /**

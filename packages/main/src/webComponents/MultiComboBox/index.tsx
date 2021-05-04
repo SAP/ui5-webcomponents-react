@@ -1,5 +1,6 @@
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/MultiComboBox';
@@ -90,19 +91,19 @@ export interface MultiComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 
   /**
    * Fired when the input operation has finished by pressing Enter or on focusout.
    */
-  onChange?: (event: CustomEvent) => void;
+  onChange?: (event: Ui5CustomEvent<HTMLInputElement>) => void;
   /**
    * Fired when the value of the `MultiComboBox` changes at each keystroke.
    */
-  onInput?: (event: CustomEvent) => void;
+  onInput?: (event: Ui5CustomEvent<HTMLInputElement>) => void;
   /**
    * Fired when the dropdown is opened or closed.
    */
-  onOpenChange?: (event: CustomEvent) => void;
+  onOpenChange?: (event: Ui5CustomEvent<HTMLInputElement>) => void;
   /**
    * Fired when selection is changed by user interaction in `SingleSelect` and `MultiSelect` modes.
    */
-  onSelectionChange?: (event: CustomEvent<{ items: unknown[] }>) => void;
+  onSelectionChange?: (event: Ui5CustomEvent<HTMLInputElement, { items: unknown[] }>) => void;
 }
 
 /**

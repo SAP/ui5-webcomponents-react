@@ -1,6 +1,7 @@
 import { InputType } from '@ui5/webcomponents-react/dist/InputType';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Input';
@@ -120,23 +121,27 @@ export interface InputPropTypes extends Omit<WithWebComponentPropTypes, 'onChang
   /**
    * Fired when the input operation has finished by pressing Enter or on focusout.
    */
-  onChange?: (event: CustomEvent) => void;
+  onChange?: (event: Ui5CustomEvent<HTMLInputElement>) => void;
   /**
    * Fired when the value of the `Input` changes at each keystroke, and when a suggestion item has been selected.
    */
-  onInput?: (event: CustomEvent) => void;
+  onInput?: (event: Ui5CustomEvent<HTMLInputElement>) => void;
   /**
    * Fired when the user navigates to a suggestion item via the ARROW keys, as a preview, before the final selection.
    */
-  onSuggestionItemPreview?: (event: CustomEvent<{ item: ReactNode; targetRef: ReactNode }>) => void;
+  onSuggestionItemPreview?: (
+    event: Ui5CustomEvent<HTMLInputElement, { item: ReactNode; targetRef: ReactNode }>
+  ) => void;
   /**
    * Fired when a suggestion item, that is displayed in the suggestion popup, is selected.
    */
-  onSuggestionItemSelect?: (event: CustomEvent<{ item: ReactNode }>) => void;
+  onSuggestionItemSelect?: (event: Ui5CustomEvent<HTMLInputElement, { item: ReactNode }>) => void;
   /**
    * Fired when the user scrolls the suggestion popover.
    */
-  onSuggestionScroll?: (event: CustomEvent<{ scrollTop: number; scrollContainer: ReactNode }>) => void;
+  onSuggestionScroll?: (
+    event: Ui5CustomEvent<HTMLInputElement, { scrollTop: number; scrollContainer: ReactNode }>
+  ) => void;
 }
 
 /**

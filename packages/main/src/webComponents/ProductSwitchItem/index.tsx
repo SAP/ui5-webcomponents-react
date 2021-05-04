@@ -1,4 +1,5 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/ProductSwitchItem';
@@ -41,7 +42,7 @@ export interface ProductSwitchItemPropTypes extends Omit<WithWebComponentPropTyp
   /**
    * Fired when the `ProductSwitchItem` is activated either with a click/tap or by using the Enter or Space key.
    */
-  onClick?: (event: CustomEvent) => void;
+  onClick?: (event: Ui5CustomEvent<HTMLElement>) => void;
 }
 
 /**

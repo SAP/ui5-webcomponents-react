@@ -1,6 +1,6 @@
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import { FC, ReactNode } from 'react';
+import { FC, ReactNode, MouseEventHandler } from 'react';
 
 import '@ui5/webcomponents/dist/Button';
 
@@ -50,7 +50,7 @@ export interface ButtonPropTypes extends Omit<WithWebComponentPropTypes, 'onClic
    *
    * **Note:** The event will not be fired if the `disabled` property is set to `true`.
    */
-  onClick?: (event: CustomEvent) => void;
+  onClick?: MouseEventHandler<HTMLElement>;
 }
 
 /**

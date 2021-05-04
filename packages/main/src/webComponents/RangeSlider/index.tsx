@@ -1,4 +1,5 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC } from 'react';
 
 import '@ui5/webcomponents/dist/RangeSlider';
@@ -49,11 +50,11 @@ export interface RangeSliderPropTypes extends Omit<WithWebComponentPropTypes, 'o
   /**
    * Fired when the value changes and the user has finished interacting with the slider.
    */
-  onChange?: (event: CustomEvent) => void;
+  onChange?: (event: Ui5CustomEvent<HTMLInputElement>) => void;
   /**
    * Fired when the value changes due to user interaction that is not yet finished - during mouse/touch dragging.
    */
-  onInput?: (event: CustomEvent) => void;
+  onInput?: (event: Ui5CustomEvent<HTMLInputElement>) => void;
 }
 
 /**

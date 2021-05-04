@@ -1,4 +1,5 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC } from 'react';
 
 import '@ui5/webcomponents/dist/RatingIndicator';
@@ -33,7 +34,7 @@ export interface RatingIndicatorPropTypes extends Omit<WithWebComponentPropTypes
   /**
    * The event is fired when the value changes.
    */
-  onChange?: (event: CustomEvent) => void;
+  onChange?: (event: Ui5CustomEvent<HTMLInputElement>) => void;
 }
 
 /**

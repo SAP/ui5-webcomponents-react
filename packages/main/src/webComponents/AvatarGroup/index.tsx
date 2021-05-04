@@ -1,6 +1,7 @@
 import { AvatarGroupType } from '@ui5/webcomponents-react/dist/AvatarGroupType';
 import { AvatarSize } from '@ui5/webcomponents-react/dist/AvatarSize';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/AvatarGroup';
@@ -45,11 +46,11 @@ export interface AvatarGroupPropTypes extends Omit<WithWebComponentPropTypes, 'o
   /**
    * Fired when the `AvatarGroup` is activated either with a click/tap or by using the Enter or Space key.
    */
-  onClick?: (event: CustomEvent<{ targetRef: ReactNode; overflowButtonClicked: boolean }>) => void;
+  onClick?: (event: Ui5CustomEvent<HTMLElement, { targetRef: ReactNode; overflowButtonClicked: boolean }>) => void;
   /**
    * Fired when the count of visible `Avatar` elements in the `AvatarGroup` has changed
    */
-  onOverflow?: (event: CustomEvent) => void;
+  onOverflow?: (event: Ui5CustomEvent<HTMLElement>) => void;
 }
 
 /**

@@ -1,4 +1,5 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/SegmentedButton';
@@ -15,7 +16,7 @@ export interface SegmentedButtonPropTypes extends WithWebComponentPropTypes {
   /**
    * Fired when the selected button changes.
    */
-  onSelectionChange?: (event: CustomEvent<{ selectedButton: ReactNode }>) => void;
+  onSelectionChange?: (event: Ui5CustomEvent<HTMLButtonElement, { selectedButton: ReactNode }>) => void;
 }
 
 /**
