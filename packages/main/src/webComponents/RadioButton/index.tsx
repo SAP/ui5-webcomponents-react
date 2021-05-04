@@ -1,5 +1,6 @@
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC } from 'react';
 
 import '@ui5/webcomponents/dist/RadioButton';
@@ -63,7 +64,7 @@ export interface RadioButtonPropTypes extends Omit<WithWebComponentPropTypes, 'o
   /**
    * Fired when the `RadioButton` selected state changes.
    */
-  onSelect?: (event: CustomEvent) => void;
+  onSelect?: (event: Ui5CustomEvent<HTMLInputElement>) => void;
 }
 
 /**

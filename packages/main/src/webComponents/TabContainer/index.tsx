@@ -1,6 +1,7 @@
 import { TabContainerTabsPlacement } from '@ui5/webcomponents-react/dist/TabContainerTabsPlacement';
 import { TabLayout } from '@ui5/webcomponents-react/dist/TabLayout';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/TabContainer';
@@ -53,7 +54,7 @@ export interface TabContainerPropTypes extends WithWebComponentPropTypes {
   /**
    * Fired when a tab is selected.
    */
-  onTabSelect?: (event: CustomEvent<{ tab: ReactNode; tabIndex: number }>) => void;
+  onTabSelect?: (event: Ui5CustomEvent<HTMLElement, { tab: ReactNode; tabIndex: number }>) => void;
 }
 
 /**

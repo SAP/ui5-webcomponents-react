@@ -1,5 +1,6 @@
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Select';
@@ -56,7 +57,7 @@ export interface SelectPropTypes extends Omit<WithWebComponentPropTypes, 'onChan
   /**
    * Fired when the selected option changes.
    */
-  onChange?: (event: CustomEvent<{ selectedOption: ReactNode }>) => void;
+  onChange?: (event: Ui5CustomEvent<HTMLSelectElement, { selectedOption: ReactNode }>) => void;
 }
 
 /**

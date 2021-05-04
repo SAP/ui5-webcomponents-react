@@ -2,6 +2,7 @@ import { ListGrowingMode } from '@ui5/webcomponents-react/dist/ListGrowingMode';
 import { ListMode } from '@ui5/webcomponents-react/dist/ListMode';
 import { ListSeparators } from '@ui5/webcomponents-react/dist/ListSeparators';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/List';
@@ -75,35 +76,37 @@ export interface ListPropTypes extends WithWebComponentPropTypes {
   /**
    * Fired when an item is activated, unless the item's `type` property is set to `Inactive`.
    */
-  onItemClick?: (event: CustomEvent<{ item: ReactNode }>) => void;
+  onItemClick?: (event: Ui5CustomEvent<HTMLElement, { item: ReactNode }>) => void;
   /**
    * Fired when the `Close` button of any item is clicked
    *
    * **Note:** This event is applicable to `NotificationListItem` items only, not to be confused with `item-delete`.
    */
-  onItemClose?: (event: CustomEvent<{ item: ReactNode }>) => void;
+  onItemClose?: (event: Ui5CustomEvent<HTMLElement, { item: ReactNode }>) => void;
   /**
    * Fired when the Delete button of any item is pressed.
    *
    * **Note:** A Delete button is displayed on each item, when the `List` `mode` property is set to `Delete`.
    */
-  onItemDelete?: (event: CustomEvent<{ item: ReactNode }>) => void;
+  onItemDelete?: (event: Ui5CustomEvent<HTMLElement, { item: ReactNode }>) => void;
   /**
    * Fired when the `Toggle` button of any item is clicked.
    *
    * **Note:** This event is applicable to `NotificationListItemBase` items only.
    */
-  onItemToggle?: (event: CustomEvent<{ item: ReactNode }>) => void;
+  onItemToggle?: (event: Ui5CustomEvent<HTMLElement, { item: ReactNode }>) => void;
   /**
    * Fired when the user scrolls to the bottom of the list.
    *
    * **Note:** The event is fired when the `growing='Scroll'` property is enabled.
    */
-  onLoadMore?: (event: CustomEvent) => void;
+  onLoadMore?: (event: Ui5CustomEvent<HTMLElement>) => void;
   /**
    * Fired when selection is changed by user interaction in `SingleSelect`, `SingleSelectBegin`, `SingleSelectEnd` and `MultiSelect` modes.
    */
-  onSelectionChange?: (event: CustomEvent<{ selectedItems: unknown[]; previouslySelectedItems: unknown[] }>) => void;
+  onSelectionChange?: (
+    event: Ui5CustomEvent<HTMLElement, { selectedItems: unknown[]; previouslySelectedItems: unknown[] }>
+  ) => void;
 }
 
 /**

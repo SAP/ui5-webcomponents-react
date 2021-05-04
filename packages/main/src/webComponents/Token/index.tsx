@@ -1,4 +1,5 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Token';
@@ -28,7 +29,7 @@ export interface TokenPropTypes extends Omit<WithWebComponentPropTypes, 'onSelec
   /**
    * Fired when the a `Token` is selected by user interaction with mouse or clicking space.
    */
-  onSelect?: (event: CustomEvent) => void;
+  onSelect?: (event: Ui5CustomEvent<HTMLElement>) => void;
 }
 
 /**

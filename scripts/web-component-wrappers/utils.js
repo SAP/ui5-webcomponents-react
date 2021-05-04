@@ -164,6 +164,42 @@ export const getTypeDefinitionForProperty = (property, interfaces) => {
   }
 };
 
+export const getEventTargetForComponent = (componentName) => {
+  switch (componentName) {
+    case 'CheckBox':
+    case 'ComboBox':
+    case 'DatePicker':
+    case 'DateRangePicker':
+    case 'DateTimePicker':
+    case 'DurationPicker':
+    case 'Input':
+    case 'MultiComboBox':
+    case 'MultiInput':
+    case 'RangeSlider':
+    case 'RatingIndicator':
+    case 'Slider':
+    case 'StepInput':
+    case 'Switch':
+    case 'TimePicker':
+      return 'HTMLInputElement';
+    case 'Option':
+    case 'RadioButton':
+      return 'HTMLOptionElement';
+    case 'Button':
+    case 'SegmentedButton':
+      return 'HTMLButtonElement';
+    case 'Select':
+      return 'HTMLSelectElement';
+    case 'StandardListItem':
+      return 'HTMLLIElement';
+    case 'TextArea':
+      return 'HTMLTextAreaElement';
+
+    default:
+      return 'HTMLElement';
+  }
+};
+
 export const runEsLint = async (text, name) => {
   const [result] = await eslint.lintText(text, {
     filePath: `packages/main/src/webComponents/${name}/index.tsx`

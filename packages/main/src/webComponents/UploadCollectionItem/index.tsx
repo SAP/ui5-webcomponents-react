@@ -1,6 +1,7 @@
 import { ListItemTypes } from '@ui5/webcomponents-react/dist/ListItemTypes';
 import { UploadState } from '@ui5/webcomponents-react/dist/UploadState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/UploadCollectionItem';
@@ -68,29 +69,29 @@ export interface UploadCollectionItemPropTypes extends WithWebComponentPropTypes
    *
    * **Note:** This event is only available when `fileNameClickable` property is `true`.
    */
-  onFileNameClick?: (event: CustomEvent) => void;
+  onFileNameClick?: (event: Ui5CustomEvent<HTMLElement>) => void;
   /**
    * Fired when the `fileName` property gets changed.
    *
    * **Note:** An edit button is displayed on each item, when the `UploadCollectionItem` `type` property is set to `Detail`.
    */
-  onRename?: (event: CustomEvent) => void;
+  onRename?: (event: Ui5CustomEvent<HTMLElement>) => void;
   /**
    * Fired when the retry button is pressed.
    *
    * **Note:** Retry button is displayed when `uploadState` property is set to `Error`.
    */
-  onRetry?: (event: CustomEvent) => void;
+  onRetry?: (event: Ui5CustomEvent<HTMLElement>) => void;
   /**
    * Fired when the terminate button is pressed.
    *
    * **Note:** Terminate button is displayed when `uploadState` property is set to `Uploading`.
    */
-  onTerminate?: (event: CustomEvent) => void;
+  onTerminate?: (event: Ui5CustomEvent<HTMLElement>) => void;
   /**
    * Fired when the user clicks on the detail button when type is `Detail`.
    */
-  onDetailClick?: (event: CustomEvent) => void;
+  onDetailClick?: (event: Ui5CustomEvent<HTMLElement>) => void;
 }
 
 /**
