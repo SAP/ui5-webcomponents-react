@@ -1,4 +1,5 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Card';
@@ -49,7 +50,7 @@ export interface CardPropTypes extends WithWebComponentPropTypes {
    *
    * **Note:** The event would be fired only if the `headerInteractive` property is set to true.
    */
-  onHeaderClick?: (event: CustomEvent) => void;
+  onHeaderClick?: (event: Ui5CustomEvent<HTMLElement>) => void;
 }
 
 /**

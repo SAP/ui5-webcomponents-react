@@ -1,4 +1,5 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, CSSProperties, ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/ColorPalette';
@@ -19,7 +20,7 @@ export interface ColorPalettePropTypes extends Omit<WithWebComponentPropTypes, '
   /**
    * Fired when the user selects a color.
    */
-  onChange?: (event: CustomEvent<{ color: string }>) => void;
+  onChange?: (event: Ui5CustomEvent<HTMLElement, { color: string }>) => void;
 }
 
 /**

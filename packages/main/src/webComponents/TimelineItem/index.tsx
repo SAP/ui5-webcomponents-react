@@ -1,4 +1,5 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/TimelineItem';
@@ -35,7 +36,7 @@ export interface TimelineItemPropTypes extends WithWebComponentPropTypes {
    *
    * **Note:** The event will not be fired if the `item-name-clickable` attribute is not set.
    */
-  onItemNameClick?: (event: CustomEvent) => void;
+  onItemNameClick?: (event: Ui5CustomEvent<HTMLElement>) => void;
 }
 
 /**
