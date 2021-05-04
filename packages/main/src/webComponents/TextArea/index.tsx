@@ -1,5 +1,6 @@
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/TextArea';
@@ -96,11 +97,11 @@ export interface TextAreaPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
   /**
    * Fired when the text has changed and the focus leaves the `TextArea`.
    */
-  onChange?: (event: CustomEvent) => void;
+  onChange?: (event: Ui5CustomEvent<HTMLTextAreaElement>) => void;
   /**
    * Fired when the value of the `TextArea` changes at each keystroke or when something is pasted.
    */
-  onInput?: (event: CustomEvent) => void;
+  onInput?: (event: Ui5CustomEvent<HTMLTextAreaElement>) => void;
 }
 
 /**

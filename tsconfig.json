@@ -2,13 +2,8 @@
   "compilerOptions": {
     "outDir": "build",
     "module": "esnext",
-    "target": "es5",
+    "target": "ES2015",
     "lib": [
-      "es5",
-      "es6",
-      "es7",
-      "es2017",
-      "es2018",
       "es2019",
       "dom"
     ],
@@ -23,11 +18,7 @@
     },
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "noImplicitAny": false,
-    "strictNullChecks": false,
-    "noUnusedLocals": false,
+    "strict": false,
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "removeComments": true,
@@ -42,7 +33,6 @@
     "node_modules"
   ],
   "files": [
-    "./docs/typings.d.ts",
     "types.d.ts"
   ]
 }

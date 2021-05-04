@@ -1,4 +1,5 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/Wizard';
@@ -14,7 +15,10 @@ export interface WizardPropTypes extends WithWebComponentPropTypes {
    * Fired when the step selection is changed by user interaction - either with scrolling, or by clicking on the steps within the component header.
    */
   onSelectionChange?: (
-    event: CustomEvent<{ selectedStep: ReactNode; previouslySelectedStep: ReactNode; changeWithClick: boolean }>
+    event: Ui5CustomEvent<
+      HTMLElement,
+      { selectedStep: ReactNode; previouslySelectedStep: ReactNode; changeWithClick: boolean }
+    >
   ) => void;
 }
 

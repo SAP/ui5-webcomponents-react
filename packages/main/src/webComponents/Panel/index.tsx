@@ -1,6 +1,7 @@
 import { PanelAccessibleRoles } from '@ui5/webcomponents-react/dist/PanelAccessibleRoles';
 import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Panel';
@@ -50,7 +51,7 @@ export interface PanelPropTypes extends WithWebComponentPropTypes {
   /**
    * Fired when the Panel is expanded/collapsed by user interaction.
    */
-  onToggle?: (event: CustomEvent) => void;
+  onToggle?: (event: Ui5CustomEvent<HTMLElement>) => void;
 }
 
 /**

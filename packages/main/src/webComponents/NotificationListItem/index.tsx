@@ -1,5 +1,6 @@
 import { Priority } from '@ui5/webcomponents-react/dist/Priority';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/NotificationListItem';
@@ -72,7 +73,7 @@ export interface NotificationListItemPropTypes extends WithWebComponentPropTypes
   /**
    * Fired when the `Close` button is pressed.
    */
-  onClose?: (event: CustomEvent) => void;
+  onClose?: (event: Ui5CustomEvent<HTMLElement>) => void;
 }
 
 /**
