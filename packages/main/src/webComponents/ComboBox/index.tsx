@@ -1,5 +1,6 @@
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/ComboBox';
@@ -92,17 +93,17 @@ export interface ComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
   /**
    * Fired when the input operation has finished by pressing Enter, focusout or an item is selected.
    */
-  onChange?: (event: CustomEvent) => void;
+  onChange?: (event: Ui5CustomEvent<HTMLInputElement>) => void;
   /**
    * Fired when typing in input.
    *
    * **Note:** filterValue property is updated, input is changed.
    */
-  onInput?: (event: CustomEvent) => void;
+  onInput?: (event: Ui5CustomEvent<HTMLInputElement>) => void;
   /**
    * Fired when selection is changed by user interaction
    */
-  onSelectionChange?: (event: CustomEvent<{ item: ReactNode }>) => void;
+  onSelectionChange?: (event: Ui5CustomEvent<HTMLInputElement, { item: ReactNode }>) => void;
 }
 
 /**

@@ -29,6 +29,7 @@ import React, {
   CSSProperties,
   FC,
   forwardRef,
+  MouseEventHandler,
   ReactElement,
   ReactNode,
   ReactNodeArray,
@@ -167,11 +168,11 @@ export interface FilterBarPropTypes extends CommonProps {
   /**
    * The event is fired when the "Clear" button is clicked.
    */
-  onClear?: (event: CustomEvent) => void;
+  onClear?: MouseEventHandler<HTMLButtonElement>;
   /**
    * The event is fired when the "Go" button is clicked.
    */
-  onGo?: (event: CustomEvent) => void;
+  onGo?: MouseEventHandler<HTMLButtonElement>;
   /**
    * The event is fired when the "Restore" button is clicked.
    */
