@@ -3,6 +3,8 @@ import { BarChart } from './dist/BarChart';
 import { BarChartPlaceholder } from './dist/BarChartPlaceholder';
 import { ColumnChart } from './dist/ColumnChart';
 import { ColumnChartPlaceholder } from './dist/ColumnChartPlaceholder';
+import { ComposedChart } from './dist/ComposedChart';
+import { ComposedChartPlaceholder } from './dist/ComposedChartPlaceholder';
 import { DonutChart } from './dist/DonutChart';
 import { LineChart } from './dist/LineChart';
 import { LineChartPlaceholder } from './dist/LineChartPlaceholder';
@@ -15,17 +17,19 @@ import { ScatterChart } from './dist/ScatterChart';
 import { ScatterChartPlaceholder } from './dist/ScatterChartPlaceholder';
 
 export {
-  ColumnChart,
-  DonutChart,
   BarChart,
+  ColumnChart,
+  ComposedChart,
+  DonutChart,
   LineChart,
+  MicroBarChart,
   PieChart,
   RadarChart,
   RadialChart,
-  MicroBarChart,
   ScatterChart,
   BarChartPlaceholder,
   ColumnChartPlaceholder,
+  ComposedChartPlaceholder,
   LineChartPlaceholder,
   PieChartPlaceholder,
   ScatterChartPlaceholder
