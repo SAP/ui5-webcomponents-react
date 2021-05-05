@@ -1,10 +1,10 @@
 // Library Export
-import { ComposedChartPlaceholder } from './components/ComposedChart/Placeholder';
 import { BarChart } from './dist/BarChart';
 import { BarChartPlaceholder } from './dist/BarChartPlaceholder';
 import { ColumnChart } from './dist/ColumnChart';
 import { ColumnChartPlaceholder } from './dist/ColumnChartPlaceholder';
 import { ComposedChart } from './dist/ComposedChart';
+import { ComposedChartPlaceholder } from './dist/ComposedChartPlaceholder';
 import { DonutChart } from './dist/DonutChart';
 import { LineChart } from './dist/LineChart';
 import { LineChartPlaceholder } from './dist/LineChartPlaceholder';
