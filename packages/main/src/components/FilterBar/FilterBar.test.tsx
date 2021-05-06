@@ -157,8 +157,24 @@ describe('FilterBar', () => {
       </FilterBar>
     );
     expect(screen.getByText('Classification')).toBeVisible();
-    expect(screen.queryByText('Show Filter Bar')).toBeFalsy();
-    expect(screen.queryByText('Hide Filter Bar')).toBeFalsy();
+    expect(screen.queryByText('Hide Filter Bar')).toBeNull();
+    expect(screen.queryByText('Show Filter Bar')).toBeNull();
+
+    rerender(
+      <FilterBar hideToggleFiltersButton>
+        <FilterGroupItem label="Classification" key="classification">
+          <Select>
+            <Option>Option 1</Option>
+            <Option selected>Option 2</Option>
+            <Option>Option 3</Option>
+            <Option>Option 4</Option>
+          </Select>
+        </FilterGroupItem>
+      </FilterBar>
+    );
+    expect(screen.getByText('Classification')).toBeVisible();
+    expect(screen.queryByText('Hide Filter Bar')).toBeNull();
+    expect(screen.queryByText('Show Filter Bar')).toBeNull();
   });
 
   it.skip('Toggle Filters Dialog', () => {
@@ -521,6 +537,42 @@ describe('FilterBar', () => {
     fireEvent.keyDown(document.getElementsByTagName('ui5-dialog')[0], { key: 'Escape', code: 'Escape' });
     expect(onFiltersDialogSave).toHaveBeenCalledTimes(2);
     expect(onFiltersDialogClose).toHaveBeenCalledTimes(5);
+  });
+
+  it('useToolbar', () => {
+    const { getByTestId, rerender, asFragment, queryByText, getByText } = render(
+      <FilterBar search={search} variants={variants} useToolbar={true} showGoOnFB>
+        <FilterGroupItem label="Classification" key="classification" data-testid="filter-item">
+          <Select>
+            <Option>Option 1</Option>
+            <Option selected>Option 2</Option>
+            <Option>Option 3</Option>
+            <Option>Option 4</Option>
+          </Select>
+        </FilterGroupItem>
+      </FilterBar>
+    );
+    const filterArea = getByTestId('filter-item').parentElement;
+    expect(filterArea.children.length).toBe(1);
+    getByText('Hide Filter Bar');
+    getByText('Go');
+
+    rerender(
+      <FilterBar search={search} variants={variants} useToolbar={false} showGoOnFB>
+        <FilterGroupItem label="Classification" key="classification" data-testid="filter-item">
+          <Select>
+            <Option>Option 1</Option>
+            <Option selected>Option 2</Option>
+            <Option>Option 3</Option>
+            <Option>Option 4</Option>
+          </Select>
+        </FilterGroupItem>
+      </FilterBar>
+    );
+    expect(filterArea.children.length).toBe(2);
+    expect(queryByText('Hide Filter Bar')).toBeNull();
+    getByText('Go');
+    expect(asFragment()).toMatchSnapshot();
   });
 
   createPassThroughPropsTest(FilterBar);

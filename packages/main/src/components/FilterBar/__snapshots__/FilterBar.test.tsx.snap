@@ -154,6 +154,7 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
         </div>
         <div>
           <ui5-button
+            aria-haspopup="dialog"
             design="Default"
             ui5-button=""
           >
@@ -1536,4 +1537,74 @@ exports[`FilterBar Toggle Filters Dialog 2`] = `
     </div>
   </div>
 </div>
+`;
+
+exports[`FilterBar useToolbar 1`] = `
+<DocumentFragment>
+  <div
+    class="FilterBar-outerContainer"
+  >
+    <div
+      class="FilterBar-filterArea FilterBar-filterAreaOpen"
+    >
+      <div
+        class="FilterGroupItem-filterItem"
+        data-testid="filter-item"
+      >
+        <div
+          class="FilterGroupItem-innerFilterItemContainer"
+        >
+          <div
+            class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+          >
+            <ui5-label
+              title="Classification"
+              ui5-label=""
+            >
+              
+          Classification
+            </ui5-label>
+          </div>
+          <ui5-select
+            ui5-select=""
+            value-state="None"
+          >
+            <ui5-option
+              ui5-option=""
+            >
+              Option 1
+            </ui5-option>
+            <ui5-option
+              selected="true"
+              ui5-option=""
+            >
+              Option 2
+            </ui5-option>
+            <ui5-option
+              ui5-option=""
+            >
+              Option 3
+            </ui5-option>
+            <ui5-option
+              ui5-option=""
+            >
+              Option 4
+            </ui5-option>
+          </ui5-select>
+        </div>
+      </div>
+      <div
+        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentEnd FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap"
+        style="flex-grow: 1;"
+      >
+        <ui5-button
+          design="Emphasized"
+          ui5-button=""
+        >
+          Go
+        </ui5-button>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
 `;

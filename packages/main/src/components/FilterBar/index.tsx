@@ -1,4 +1,3 @@
-import { createUseStyles } from 'react-jss';
 import { useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
@@ -11,16 +10,19 @@ import {
   RESTORE,
   SHOW_FILTER_BAR
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { BusyIndicator } from '@ui5/webcomponents-react/dist/BusyIndicator';
 import { BusyIndicatorSize } from '@ui5/webcomponents-react/dist/BusyIndicatorSize';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
+import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
+import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
+import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';
 import { InputPropTypes } from '@ui5/webcomponents-react/dist/Input';
 import { Toolbar } from '@ui5/webcomponents-react/dist/Toolbar';
 import { ToolbarSeparator } from '@ui5/webcomponents-react/dist/ToolbarSeparator';
 import { ToolbarSpacer } from '@ui5/webcomponents-react/dist/ToolbarSpacer';
 import { ToolbarStyle } from '@ui5/webcomponents-react/dist/ToolbarStyle';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import React, {
   Children,
   cloneElement,
@@ -34,30 +36,39 @@ import React, {
   RefObject,
   useCallback,
   useEffect,
+  useMemo,
   useRef,
   useState
 } from 'react';
+import { createUseStyles } from 'react-jss';
 import styles from './FilterBar.jss';
 import { FilterDialog } from './FilterDialog';
 import { filterValue, renderSearchWithValue } from './utils';
 
 export interface FilterBarPropTypes extends CommonProps {
   /**
-   * Defines the filters of the `FilterBar`.<br />
+   * Defines the filters of the `FilterBar`.
+   *
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `FilterGroupItems` in order to preserve the intended design.
    */
   children: ReactNode | ReactNodeArray;
   /**
    * Defines the search field next to the variants of the `FilterBar`.
+   *
+   * __Note:__ If `useToolbar` is `false` this prop has no effect.
    */
   search?: ReactElement<InputPropTypes>;
   /**
-   * Defines the variants of the `FilterBar`.<br />
+   * Defines the variants of the `FilterBar`.
+   *
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `VariantManagement` in order to preserve the intended design.
+   * __Note:__ If `useToolbar` is `false` this prop has no effect.
    */
   variants?: ReactNode;
   /**
-   * Defines whether the button toolbar is displayed.
+   * Defines whether the toolbar on top of the filter items is displayed.
+   *
+   * __Note__: If set to `false`, `variants`, `search` and the "Hide/Show FilterBar" button are not available and the rest of the buttons are moved to the bottom right side of the filter area.
    */
   useToolbar?: boolean;
   /**
@@ -81,7 +92,8 @@ export interface FilterBarPropTypes extends CommonProps {
    */
   showGoOnFB?: boolean;
   /**
-   * Defines whether the "Filter" button is displayed in the `FilterBar`.<br />
+   * Defines whether the "Filter" button is displayed in the `FilterBar`.
+   *
    * __Note:__ Clicking on the button will open the filter configuration dialog, where you can add/remove filters to the `FilterBar`.
    */
   showFilterConfiguration?: boolean;
@@ -98,7 +110,14 @@ export interface FilterBarPropTypes extends CommonProps {
    */
   showGo?: boolean;
   /**
-   * Defines the number of active filters displayed in the "Filter" button.<br />
+   * Defines whether the "Hide/Show Filters" button is displayed in the `FilterBar`.
+   *
+   * __Note:__ If `useToolbar` is `false` this prop has no effect.
+   */
+  hideToggleFiltersButton?: boolean;
+  /**
+   * Defines the number of active filters displayed in the "Filter" button.
+   *
    * __Note__: If `showFilterConfiguration` is `false` this prop has no effect.
    */
   activeFiltersCount?: number | string;
@@ -182,6 +201,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
     showClearButton,
     showRestoreButton,
     showSearchOnFiltersDialog,
+    hideToggleFiltersButton,
     style,
     className,
     tooltip,
@@ -435,6 +455,38 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
     }
   }, [prevSearchInputPropsValue, search?.props?.value]);
 
+  const ToolbarButtons = (
+    <>
+      {showClearOnFB && (
+        <Button onClick={onClear} design={ButtonDesign.Transparent}>
+          {clearText}
+        </Button>
+      )}
+      {showRestoreOnFB && (
+        <Button onClick={handleFBRestore} design={ButtonDesign.Transparent}>
+          {restoreText}
+        </Button>
+      )}
+      {!hideToggleFiltersButton && useToolbar && (
+        <Button onClick={handleToggle} design={ButtonDesign.Transparent} className={classes.showFiltersBtn}>
+          {showFilters ? hideFilterBarText : showFilterBarText}
+        </Button>
+      )}
+      {showFilterConfiguration && (
+        <Button onClick={handleDialogOpen} aria-haspopup="dialog">
+          {`${filtersText}${
+            activeFiltersCount && parseInt(activeFiltersCount as string) > 0 ? ` (${activeFiltersCount})` : ''
+          }`}
+        </Button>
+      )}
+      {showGoOnFB && (
+        <Button onClick={onGo} design={ButtonDesign.Emphasized}>
+          {goText}
+        </Button>
+      )}
+    </>
+  );
+
   return (
     <>
       {dialogOpen && showFilterConfiguration && (
@@ -465,40 +517,29 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
           <BusyIndicator active className={classes.loadingContainer} size={BusyIndicatorSize.Large} />
         ) : (
           <>
-            <Toolbar className={classes.filterBarHeader} toolbarStyle={ToolbarStyle.Clear}>
-              {variants}
-              {search && <ToolbarSeparator />}
-              {search && <div ref={searchRef}>{renderSearchWithValue(search, searchValue)}</div>}
-              {useToolbar && <ToolbarSpacer />}
-              {useToolbar && showClearOnFB && (
-                <Button onClick={onClear} design={ButtonDesign.Transparent}>
-                  {clearText}
-                </Button>
-              )}
-              {useToolbar && showRestoreOnFB && (
-                <Button onClick={handleFBRestore} design={ButtonDesign.Transparent}>
-                  {restoreText}
-                </Button>
-              )}
-              {useToolbar && (
-                <Button onClick={handleToggle} design={ButtonDesign.Transparent} className={classes.showFiltersBtn}>
-                  {showFilters ? hideFilterBarText : showFilterBarText}
-                </Button>
-              )}
-              {useToolbar && showFilterConfiguration && (
-                <Button onClick={handleDialogOpen}>
-                  {`${filtersText}${
-                    activeFiltersCount && parseInt(activeFiltersCount as string) > 0 ? ` (${activeFiltersCount})` : ''
-                  }`}
-                </Button>
-              )}
-              {useToolbar && showGoOnFB && (
-                <Button onClick={onGo} design={ButtonDesign.Emphasized}>
-                  {goText}
-                </Button>
-              )}
-            </Toolbar>
-            {mountFilters && <div className={filterAreaClasses.valueOf()}>{renderChildren()}</div>}
+            {useToolbar && (
+              <Toolbar className={classes.filterBarHeader} toolbarStyle={ToolbarStyle.Clear}>
+                {variants}
+                {search && <ToolbarSeparator />}
+                {search && <div ref={searchRef}>{renderSearchWithValue(search, searchValue)}</div>}
+                <ToolbarSpacer />
+                {ToolbarButtons}
+              </Toolbar>
+            )}
+            {mountFilters && (
+              <div className={filterAreaClasses.className}>
+                {renderChildren()}
+                {!useToolbar && (
+                  <FlexBox
+                    alignItems={FlexBoxAlignItems.Center}
+                    justifyContent={FlexBoxJustifyContent.End}
+                    style={{ flexGrow: 1 }}
+                  >
+                    {ToolbarButtons}
+                  </FlexBox>
+                )}
+              </div>
+            )}
           </>
         )}
       </div>
@@ -517,6 +558,7 @@ FilterBar.defaultProps = {
   showClearButton: false,
   showRestoreButton: false,
   showSearchOnFiltersDialog: false,
+  hideToggleFiltersButton: false,
   considerGroupName: false,
   loading: false,
   onToggleFilters: null,
