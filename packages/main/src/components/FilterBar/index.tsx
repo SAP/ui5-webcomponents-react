@@ -486,7 +486,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
       )}
     </>
   );
-
+  const hasButtons = ToolbarButtons.props.children.find(Boolean);
   return (
     <>
       {dialogOpen && showFilterConfiguration && (
@@ -520,9 +520,9 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
             {useToolbar && (
               <Toolbar className={classes.filterBarHeader} toolbarStyle={ToolbarStyle.Clear}>
                 {variants}
-                {search && <ToolbarSeparator />}
+                {variants && search && <ToolbarSeparator />}
                 {search && <div ref={searchRef}>{renderSearchWithValue(search, searchValue)}</div>}
-                <ToolbarSpacer />
+                {hasButtons && <ToolbarSpacer />}
                 {ToolbarButtons}
               </Toolbar>
             )}
