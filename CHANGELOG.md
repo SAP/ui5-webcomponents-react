@@ -17,7 +17,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### BREAKING CHANGES
 
 * **Charts:** `ComposedChartPlaceholder`: The import path has changed. You can now import the placeholder from `@ui5/webcomponents-react-charts/dist/ComposedChartPlaceholder` or directly from `@ui5/webcomponents-react-charts`.
+* **FilterBar:** If useToolbar is set to false, now the entire toolbar above the filter items is hidden. The search input, variants, and the "Show/Hide FilterBar" button is not available in this mode. The rest of the buttons are displayed next to the filter items.
 
+The __Migration Guide__ can be found [here](https://sap.github.io/ui5-webcomponents-react/?path=/story/migration-guide--page#migrating-from-015x-to-0160).
 
 
 
