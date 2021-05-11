@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.16.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.15.4...v0.16.0) (2021-05-11)
+
+
+### Bug Fixes
+
+* **Charts:** export `ComposedChart` and `ComposedChartPlaceholder` in main entry point ([#1556](https://github.com/SAP/ui5-webcomponents-react/issues/1556)) ([2ab8e4c](https://github.com/SAP/ui5-webcomponents-react/commit/2ab8e4c03b992c36b295c2ec32a3110983c8216b))
+
+
+### BREAKING CHANGES
+
+* **Charts:** `ComposedChartPlaceholder`: The import path has changed. You can now import the placeholder from `@ui5/webcomponents-react-charts/dist/ComposedChartPlaceholder` or directly from `@ui5/webcomponents-react-charts`.
+
+
+
+
+
 ## [0.15.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.15.3...v0.15.4) (2021-04-28)
 
 

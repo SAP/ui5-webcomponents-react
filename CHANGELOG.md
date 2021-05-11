@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.16.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.15.4...v0.16.0) (2021-05-11)
+
+
+### Bug Fixes
+
+* **Charts:** export `ComposedChart` and `ComposedChartPlaceholder` in main entry point ([#1556](https://github.com/SAP/ui5-webcomponents-react/issues/1556)) ([2ab8e4c](https://github.com/SAP/ui5-webcomponents-react/commit/2ab8e4c03b992c36b295c2ec32a3110983c8216b))
+* **FilterBar:** if `useToolbar` is set to `false`, hide the entire toolbar and display buttons next to the filter items ([#1540](https://github.com/SAP/ui5-webcomponents-react/issues/1540)) ([c3e96ff](https://github.com/SAP/ui5-webcomponents-react/commit/c3e96ff54b2ffc1d28ecf7c50a1f398ae77ab318))
+* **FilterBar:** only display toolbar separator & overflow button when necessary ([#1570](https://github.com/SAP/ui5-webcomponents-react/issues/1570)) ([518d4c4](https://github.com/SAP/ui5-webcomponents-react/commit/518d4c46897df1f295be5f6a6bbe8b146610fc0f))
+* improve typings for event handlers ([#1545](https://github.com/SAP/ui5-webcomponents-react/issues/1545)) ([52e5e7a](https://github.com/SAP/ui5-webcomponents-react/commit/52e5e7a1d84f56517578369cf01fe5c4663a0fe6))
+
+
+### BREAKING CHANGES
+
+* **Charts:** `ComposedChartPlaceholder`: The import path has changed. You can now import the placeholder from `@ui5/webcomponents-react-charts/dist/ComposedChartPlaceholder` or directly from `@ui5/webcomponents-react-charts`.
+
+
+
+
+
 ## [0.15.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.15.3...v0.15.4) (2021-04-28)
 
 
