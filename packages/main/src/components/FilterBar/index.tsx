@@ -486,7 +486,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
       )}
     </>
   );
-  const hasButtons = ToolbarButtons.props.children.find(Boolean);
+  const hasButtons = ToolbarButtons.props.children.some(Boolean);
   return (
     <>
       {dialogOpen && showFilterConfiguration && (
