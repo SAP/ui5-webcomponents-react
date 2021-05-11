@@ -53,7 +53,7 @@ jobs:
         run: yarn build:storybook
 
       - name: Deploy Next Docs
-        uses: JamesIves/github-pages-deploy-action@4.1.1
+        uses: JamesIves/github-pages-deploy-action@4.1.2
         with:
           branch: gh-pages # The branch the action should deploy to.
           folder: .out # The folder the action should deploy.
