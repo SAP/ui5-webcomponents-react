@@ -15,6 +15,7 @@ or the [changelog](https://github.com/SAP/ui5-webcomponents-react/blob/master/CH
 
 ## Table of Contents
 
+- [0.15.x to 0.16.0](#migrating-from-015x-to-0160)
 - [0.14.x to 0.15.0](#migrating-from-014x-to-0150)
 - [0.13.x to 0.14.0](#migrating-from-013x-to-0140)
 - [0.12.x to 0.13.0](#migrating-from-012x-to-0130)
@@ -22,6 +23,44 @@ or the [changelog](https://github.com/SAP/ui5-webcomponents-react/blob/master/CH
 - [0.10.x to 0.11.0](#migrating-from-010x-to-0110)
 - [0.9.x to 0.10.0](#migrating-from-09x-to-0100)
 - [0.8.x to 0.9.0](#migrating-from-08x-to-090)
+
+## Migrating from 0.15.x to 0.16.0
+
+<br />
+
+### Changed import path for `ComposedChartPlaceholder`
+
+The import path of the `ComposedChartPlaceholder` has changed. You can now import the placeholder from `@ui5/webcomponents-react-charts/dist/ComposedChartPlaceholder` or directly from `@ui5/webcomponents-react-charts`.
+
+```jsx
+import { ComposedChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/ComposedChartPlaceholder';
+//or
+import { ComposedChartPlaceholder } from '@ui5/webcomponents-react-charts';
+```
+
+### API Updates
+
+#### FilterBar
+
+If `useToolbar` is set to false, the entire toolbar above the filter items is hidden. The search input, variants, and the "Show/Hide FilterBar" button is not available with this mode. The rest of the buttons are displayed next to the filter items.
+
+If you have used the `useToolbar` prop to hide the "Show/Hide Filters" button, but still want to display the search or variants, you can now use the `hideToggleFiltersButton`.
+
+Before:
+
+```jsx
+<FilterBar search={<Input placeholder={'Search'} />} useToolbar={false}>
+  ...
+</FilterBar>
+```
+
+Now:
+
+```jsx
+<FilterBar search={<Input placeholder={'Search'} />} hideToggleFiltersButton>
+  ...
+</FilterBar>
+```
 
 ## Migrating from 0.14.x to 0.15.0
 
