@@ -12,7 +12,7 @@ import { FlexBoxWrap } from '@ui5/webcomponents-react/dist/FlexBoxWrap';
 import { ObjectStatus } from '@ui5/webcomponents-react/dist/ObjectStatus';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
-import { CommonProps } from '../../interfaces/CommonProps';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import styles from './AnalyticalCardHeader.jss';
 
 export interface AnalyticalCardHeaderPropTypes extends CommonProps {

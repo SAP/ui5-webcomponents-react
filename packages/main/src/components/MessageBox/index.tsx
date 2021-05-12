@@ -45,8 +45,8 @@ import React, {
   useMemo
 } from 'react';
 import { createUseStyles } from 'react-jss';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5DialogDomRef } from '../../interfaces/Ui5DialogDomRef';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { Ui5DialogDomRef } from '@ui5/webcomponents-react/interfaces/Ui5DialogDomRef';
 import { stopPropagation } from '../../internal/stopPropagation';
 import styles from './MessageBox.jss';
 

@@ -10,7 +10,7 @@ import { ToolbarSeparator } from '@ui5/webcomponents-react/dist/ToolbarSeparator
 import { ToolbarSpacer } from '@ui5/webcomponents-react/dist/ToolbarSpacer';
 import { ToolbarStyle } from '@ui5/webcomponents-react/dist/ToolbarStyle';
 import React, { Children, FC, forwardRef, ReactElement, ReactNode, ReactNodeArray, Ref } from 'react';
-import { CommonProps } from '../../interfaces/CommonProps';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { DynamicPageTitleStyles } from './DynamicPageTitle.jss';
 import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
 

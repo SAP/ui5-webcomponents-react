@@ -6,7 +6,7 @@ import { BusyIndicatorSize } from '@ui5/webcomponents-react/dist/BusyIndicatorSi
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { Label } from '@ui5/webcomponents-react/dist/Label';
 import React, { FC, forwardRef, ReactElement, RefObject } from 'react';
-import { CommonProps } from '../../interfaces/CommonProps';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import styles from './FilterGroupItem.jss';
 
 const useStyles = createUseStyles(styles, { name: 'FilterGroupItem' });

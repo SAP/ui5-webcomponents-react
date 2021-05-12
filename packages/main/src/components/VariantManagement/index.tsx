@@ -18,8 +18,8 @@ import { Title } from '@ui5/webcomponents-react/dist/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
 import React, { FC, forwardRef, Ref, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5ResponsivePopoverDomRef } from '../../interfaces/Ui5ResponsivePopoverDomRef';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { Ui5ResponsivePopoverDomRef } from '@ui5/webcomponents-react/interfaces/Ui5ResponsivePopoverDomRef';
 import { stopPropagation } from '../../internal/stopPropagation';
 
 export interface VariantItem {

@@ -6,7 +6,7 @@ export interface Ui5PopoverDomRef extends Ui5DomRef {
    * @param opener - The element that the popover is opened by.
    * @param preventInitialFocus - Prevents applying the focus inside the popover.
    */
-  openBy: (opener: HTMLElement, preventInitialFocus?: boolean) => void;
+  openBy: (opener: HTMLElement | EventTarget, preventInitialFocus?: boolean) => void;
   /**
    * Closes the popover/dialog.
    */

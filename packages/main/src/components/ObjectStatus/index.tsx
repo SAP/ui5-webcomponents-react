@@ -9,7 +9,7 @@ import { Icon } from '@ui5/webcomponents-react/dist/Icon';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import React, { FC, forwardRef, ReactNode, Ref, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
-import { CommonProps } from '../../interfaces/CommonProps';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import styles from './ObjectStatus.jss';
 
 export interface ObjectStatusPropTypes extends CommonProps {

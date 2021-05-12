@@ -19,7 +19,7 @@ import React, {
   useRef,
   useState
 } from 'react';
-import { CommonProps } from '../../interfaces/CommonProps';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { styles } from './Form.jss';
 
 export interface FormPropTypes extends CommonProps {

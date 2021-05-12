@@ -21,7 +21,7 @@ import { StandardListItem } from '@ui5/webcomponents-react/dist/StandardListItem
 import React, { RefObject, useCallback, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
-import { Ui5PopoverDomRef } from '../../../interfaces/Ui5PopoverDomRef';
+import { Ui5PopoverDomRef } from '@ui5/webcomponents-react/interfaces/Ui5PopoverDomRef';
 import { stopPropagation } from '../../../internal/stopPropagation';
 import { ColumnType } from '../types/ColumnType';
 

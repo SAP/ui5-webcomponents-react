@@ -22,7 +22,7 @@ import React, {
 } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
-import { Ui5ResponsivePopoverDomRef } from '../../interfaces/Ui5ResponsivePopoverDomRef';
+import { Ui5ResponsivePopoverDomRef } from '@ui5/webcomponents-react/interfaces/Ui5ResponsivePopoverDomRef';
 import { ButtonPropTypes } from '../../webComponents/Button';
 import { ResponsivePopoverPropTypes } from '../../webComponents/ResponsivePopover';
 import styles from './ActionSheet.jss';

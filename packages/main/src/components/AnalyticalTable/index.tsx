@@ -38,8 +38,8 @@ import {
   useTable,
   useGlobalFilter
 } from 'react-table';
-import { AnalyticalTableColumnDefinition } from '../../interfaces/AnalyticalTableColumnDefinition';
-import { CommonProps } from '../../interfaces/CommonProps';
+import { AnalyticalTableColumnDefinition } from '@ui5/webcomponents-react/interfaces/AnalyticalTableColumnDefinition';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import styles from './AnayticalTable.jss';
 import { ColumnHeaderContainer } from './ColumnHeader/ColumnHeaderContainer';
 import { DefaultColumn } from './defaults/Column';

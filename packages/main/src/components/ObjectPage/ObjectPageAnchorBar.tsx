@@ -12,7 +12,7 @@ import { TabContainer } from '@ui5/webcomponents-react/dist/TabContainer';
 import { ToggleButton } from '@ui5/webcomponents-react/dist/ToggleButton';
 import React, { CSSProperties, forwardRef, ReactElement, RefObject, useCallback, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
-import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
+import { Ui5PopoverDomRef } from '@ui5/webcomponents-react/interfaces/Ui5PopoverDomRef';
 import { stopPropagation } from '../../internal/stopPropagation';
 import { StandardListItem } from '../../webComponents/StandardListItem';
 import { ObjectPageAnchorButton } from './ObjectPageAnchorButton';

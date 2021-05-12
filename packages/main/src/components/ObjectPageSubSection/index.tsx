@@ -4,7 +4,7 @@ import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsol
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import React, { FC, forwardRef, ReactNode, ReactNodeArray, RefObject } from 'react';
 import { createUseStyles } from 'react-jss';
-import { CommonProps } from '../../interfaces/CommonProps';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { EmptyIdPropException } from '../ObjectPage/EmptyIdPropException';
 
 export interface ObjectPageSubSectionPropTypes extends CommonProps {
