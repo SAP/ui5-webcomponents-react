@@ -5,7 +5,7 @@ import { Popover } from '@ui5/webcomponents-react/dist/Popover';
 import { ToggleButton } from '@ui5/webcomponents-react/dist/ToggleButton';
 import React, { FC, ReactElement, ReactNode, useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
+import { Ui5PopoverDomRef } from '@ui5/webcomponents-react/interfaces/Ui5PopoverDomRef';
 import { stopPropagation } from '../../internal/stopPropagation';
 
 interface OverflowPopoverProps {

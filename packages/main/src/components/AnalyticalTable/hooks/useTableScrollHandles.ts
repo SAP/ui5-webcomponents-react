@@ -1,6 +1,6 @@
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
 import { RefObject, useEffect, useRef } from 'react';
-import { AnalyticalTableDomRef } from '../../../interfaces/AnalyticalTableDomRef';
+import { AnalyticalTableDomRef } from '@ui5/webcomponents-react/interfaces/AnalyticalTableDomRef';
 
 export const useTableScrollHandles = (ref) => {
   const analyticalTableRef: RefObject<AnalyticalTableDomRef> = useConsolidatedRef(ref);

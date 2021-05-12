@@ -12,8 +12,8 @@ import React, {
   useEffect,
   useRef
 } from 'react';
-import { CommonProps } from '../interfaces/CommonProps';
-import { Ui5DomRef } from '../interfaces/Ui5DomRef';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 
 const capitalizeFirstLetter = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
@@ -123,7 +123,7 @@ export const withWebComponent = <T extends Record<string, any>>(
       .reduce((acc, [key, val]) => ({ ...acc, [key]: val }), {});
 
     const tagNameSuffix: string = getEffectiveScopingSuffixForTag(tagName);
-    const Component = ((tagNameSuffix ? `${tagName}-${tagNameSuffix}` : tagName) as unknown) as ComponentType<
+    const Component = (tagNameSuffix ? `${tagName}-${tagNameSuffix}` : tagName) as unknown as ComponentType<
       WithWebComponentPropTypes & { class: string }
     >;
 
@@ -144,5 +144,5 @@ export const withWebComponent = <T extends Record<string, any>>(
 
   WithWebComponent.displayName = `WithWebComponent(${tagName})`;
 
-  return (WithWebComponent as unknown) as ForwardRefRenderFunction<Ui5DomRef, T & WithWebComponentPropTypes>;
+  return WithWebComponent as unknown as ForwardRefRenderFunction<Ui5DomRef, T & WithWebComponentPropTypes>;
 };

@@ -4,7 +4,7 @@ import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/useP
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
 import React, { FC, forwardRef, ReactNode, ReactNodeArray, Ref, useMemo } from 'react';
-import { CommonProps } from '../../interfaces/CommonProps';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { DynamicPageHeaderStyles } from './DynamicPageHeader.jss';
 import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
 

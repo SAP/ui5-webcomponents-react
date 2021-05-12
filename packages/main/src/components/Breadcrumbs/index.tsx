@@ -16,7 +16,7 @@ import React, {
   useReducer
 } from 'react';
 import { createUseStyles } from 'react-jss';
-import { CommonProps } from '../../interfaces/CommonProps';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 
 const SeparatorStyles = {
   BackSlash: '\\',
