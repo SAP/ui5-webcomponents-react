@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.16.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.16.0...v0.16.1) (2021-05-12)
+
+
+### Bug Fixes
+
+* add and export all available interfaces for public methods ([#1577](https://github.com/SAP/ui5-webcomponents-react/issues/1577)) ([2c866c7](https://github.com/SAP/ui5-webcomponents-react/commit/2c866c7e0fe9dc4e5bd4ce5a0e3d7eaccef857e7))
+
+
+
+
+
 # [0.16.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.15.4...v0.16.0) (2021-05-11)
 
 
