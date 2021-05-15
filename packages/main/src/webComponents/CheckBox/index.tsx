@@ -1,11 +1,12 @@
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC } from 'react';
 
 import '@ui5/webcomponents/dist/CheckBox';
 
-export interface CheckBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onChange'> {
+export interface CheckBoxPropTypes extends Omit<CommonProps, 'onChange'> {
   /**
    * Defines if the `CheckBox` is checked.
    *

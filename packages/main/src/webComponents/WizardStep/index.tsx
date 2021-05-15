@@ -1,9 +1,10 @@
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/WizardStep';
 
-export interface WizardStepPropTypes extends WithWebComponentPropTypes {
+export interface WizardStepPropTypes extends CommonProps {
   /**
    * When `branching` is enabled a dashed line would be displayed after the step, meant to indicate that the next step is not yet known and depends on user choice in the current step.
    *

@@ -1,12 +1,13 @@
 import { ListItemTypes } from '@ui5/webcomponents-react/dist/ListItemTypes';
 import { UploadState } from '@ui5/webcomponents-react/dist/UploadState';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/UploadCollectionItem';
 
-export interface UploadCollectionItemPropTypes extends WithWebComponentPropTypes {
+export interface UploadCollectionItemPropTypes extends CommonProps {
   /**
    * Holds `File`, associated with this item.
    */

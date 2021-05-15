@@ -1,13 +1,14 @@
 import { ListGrowingMode } from '@ui5/webcomponents-react/dist/ListGrowingMode';
 import { ListMode } from '@ui5/webcomponents-react/dist/ListMode';
 import { ListSeparators } from '@ui5/webcomponents-react/dist/ListSeparators';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/List';
 
-export interface ListPropTypes extends WithWebComponentPropTypes {
+export interface ListPropTypes extends CommonProps {
   /**
    * Defines if the component would display a loading indicator over the list.
    */

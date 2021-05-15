@@ -1,9 +1,10 @@
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { FC } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/SideNavigationSubItem';
 
-export interface SideNavigationSubItemPropTypes extends WithWebComponentPropTypes {
+export interface SideNavigationSubItemPropTypes extends CommonProps {
   /**
    * Defines the icon of the item.
    *

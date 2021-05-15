@@ -1,10 +1,11 @@
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Dialog';
 
-export interface DialogPropTypes extends WithWebComponentPropTypes {
+export interface DialogPropTypes extends CommonProps {
   /**
    * Determines whether the `Dialog` is draggable. If this property is set to true, the Dialog will be draggable by its header.
    *

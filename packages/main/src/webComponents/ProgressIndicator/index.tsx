@@ -1,10 +1,11 @@
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { FC } from 'react';
 
 import '@ui5/webcomponents/dist/ProgressIndicator';
 
-export interface ProgressIndicatorPropTypes extends WithWebComponentPropTypes {
+export interface ProgressIndicatorPropTypes extends CommonProps {
   /**
    * Defines whether `ProgressIndicator` is in disabled state.
    */

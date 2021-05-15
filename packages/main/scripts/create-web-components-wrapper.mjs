@@ -303,9 +303,9 @@ const createWebComponentWrapper = async (
   eventProps
 ) => {
   const eventsToBeOmitted = eventProps.filter((eventName) => KNOWN_EVENTS.has(eventName));
-  let tsExtendsStatement = 'WithWebComponentPropTypes';
+  let tsExtendsStatement = 'CommonProps';
   if (eventsToBeOmitted.length > 0) {
-    tsExtendsStatement = `Omit<WithWebComponentPropTypes, ${eventsToBeOmitted
+    tsExtendsStatement = `Omit<CommonProps, ${eventsToBeOmitted
       .map((eventName) => `'on${capitalizeFirstLetter(snakeToCamel(eventName))}'`)
       .join(' | ')}>`;
   }

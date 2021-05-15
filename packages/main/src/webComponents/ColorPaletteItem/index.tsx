@@ -1,9 +1,10 @@
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { FC, CSSProperties } from 'react';
 
 import '@ui5/webcomponents/dist/ColorPaletteItem';
 
-export interface ColorPaletteItemPropTypes extends WithWebComponentPropTypes {
+export interface ColorPaletteItemPropTypes extends CommonProps {
   /**
    * Defines the stable selector that you can use via getStableDomRef method.
    */

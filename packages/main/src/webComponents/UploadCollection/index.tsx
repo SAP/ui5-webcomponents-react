@@ -1,11 +1,12 @@
 import { ListMode } from '@ui5/webcomponents-react/dist/ListMode';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, ReactNode, DragEventHandler } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/UploadCollection';
 
-export interface UploadCollectionPropTypes extends Omit<WithWebComponentPropTypes, 'onDrop'> {
+export interface UploadCollectionPropTypes extends Omit<CommonProps, 'onDrop'> {
   /**
    * Defines the mode of the `UploadCollection`.
    *

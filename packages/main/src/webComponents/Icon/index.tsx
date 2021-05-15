@@ -1,9 +1,10 @@
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { FC } from 'react';
 
 import '@ui5/webcomponents/dist/Icon';
 
-export interface IconPropTypes extends WithWebComponentPropTypes {
+export interface IconPropTypes extends CommonProps {
   /**
    * Defines the text alternative of the `Icon`. If not provided a default text alternative will be set, if present.
    *

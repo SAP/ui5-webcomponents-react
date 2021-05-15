@@ -1,12 +1,13 @@
 import { PanelAccessibleRoles } from '@ui5/webcomponents-react/dist/PanelAccessibleRoles';
 import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Panel';
 
-export interface PanelPropTypes extends WithWebComponentPropTypes {
+export interface PanelPropTypes extends CommonProps {
   /**
    * Sets the accessible aria name of the `Panel`.
    */

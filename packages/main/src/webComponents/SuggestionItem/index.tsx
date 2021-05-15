@@ -1,11 +1,12 @@
 import { ListItemTypes } from '@ui5/webcomponents-react/dist/ListItemTypes';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { FC } from 'react';
 
 import '@ui5/webcomponents/dist/SuggestionItem';
 
-export interface SuggestionItemPropTypes extends WithWebComponentPropTypes {
+export interface SuggestionItemPropTypes extends CommonProps {
   /**
    * Defines the description displayed right under the item text, if such is present.
    */

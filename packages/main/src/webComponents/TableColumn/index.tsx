@@ -1,9 +1,10 @@
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/TableColumn';
 
-export interface TableColumnPropTypes extends WithWebComponentPropTypes {
+export interface TableColumnPropTypes extends CommonProps {
   /**
    * According to your `minWidth` settings, the `TableColumn` can be hidden in different screen sizes.
    *

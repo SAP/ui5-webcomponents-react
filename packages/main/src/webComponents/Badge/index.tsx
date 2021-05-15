@@ -1,9 +1,10 @@
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Badge';
 
-export interface BadgePropTypes extends WithWebComponentPropTypes {
+export interface BadgePropTypes extends CommonProps {
   /**
    * Defines the color scheme of the `Badge`. There are 10 predefined schemes. Each scheme applies different values for the `background-color` and `border-color`. To use one you can set a number from `"1"` to `"10"`. The `colorScheme` `"1"` will be set by default.
    *

@@ -1,11 +1,12 @@
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/TextArea';
 
-export interface TextAreaPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput'> {
+export interface TextAreaPropTypes extends Omit<CommonProps, 'onChange' | 'onInput'> {
   /**
    * Indicates whether the user can interact with the component or not.
    *

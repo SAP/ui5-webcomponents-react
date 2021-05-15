@@ -1,10 +1,11 @@
 import { ToastPlacement } from '@ui5/webcomponents-react/dist/ToastPlacement';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Toast';
 
-export interface ToastPropTypes extends WithWebComponentPropTypes {
+export interface ToastPropTypes extends CommonProps {
   /**
    * Defines the duration in milliseconds for which `Toast` remains on the screen before it's automatically closed.
    *

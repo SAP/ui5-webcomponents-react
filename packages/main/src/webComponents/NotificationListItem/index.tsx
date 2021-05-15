@@ -1,11 +1,12 @@
 import { Priority } from '@ui5/webcomponents-react/dist/Priority';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/NotificationListItem';
 
-export interface NotificationListItemPropTypes extends WithWebComponentPropTypes {
+export interface NotificationListItemPropTypes extends CommonProps {
   /**
    * Defines if the `heading` and `description` should wrap, they truncate by default.
    *

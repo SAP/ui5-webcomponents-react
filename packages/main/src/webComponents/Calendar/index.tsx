@@ -1,12 +1,13 @@
 import { CalendarSelectionMode } from '@ui5/webcomponents-react/dist/CalendarSelectionMode';
 import { CalendarType } from '@ui5/webcomponents-react/dist/CalendarType';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Calendar';
 
-export interface CalendarPropTypes extends WithWebComponentPropTypes {
+export interface CalendarPropTypes extends CommonProps {
   /**
    * Defines the visibility of the week numbers column.
    *

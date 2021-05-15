@@ -1,9 +1,10 @@
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Option';
 
-export interface OptionPropTypes extends WithWebComponentPropTypes {
+export interface OptionPropTypes extends CommonProps {
   /**
    * Defines whether `Option` is in disabled state.
    *

@@ -1,9 +1,10 @@
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/SideNavigationItem';
 
-export interface SideNavigationItemPropTypes extends WithWebComponentPropTypes {
+export interface SideNavigationItemPropTypes extends CommonProps {
   /**
    * Defines if the item is expanded
    */

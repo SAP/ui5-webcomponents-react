@@ -1,13 +1,14 @@
 import { PlacementType } from '@ui5/webcomponents-react/dist/PlacementType';
 import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/dist/PopoverHorizontalAlign';
 import { PopoverVerticalAlign } from '@ui5/webcomponents-react/dist/PopoverVerticalAlign';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { ReactNode, FC } from 'react';
 
 import '@ui5/webcomponents/dist/ResponsivePopover';
 
-export interface ResponsivePopoverPropTypes extends WithWebComponentPropTypes {
+export interface ResponsivePopoverPropTypes extends CommonProps {
   /**
    * Determines if there is no enough space, the `Popover` can be placed over the target.
    */

@@ -1,9 +1,10 @@
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/Timeline';
 
-export interface TimelinePropTypes extends WithWebComponentPropTypes {
+export interface TimelinePropTypes extends CommonProps {
   /**
    * Determines the content of the `Timeline`.
    */

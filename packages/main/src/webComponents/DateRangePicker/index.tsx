@@ -1,12 +1,13 @@
 import { CalendarType } from '@ui5/webcomponents-react/dist/CalendarType';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/DateRangePicker';
 
-export interface DateRangePickerPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput'> {
+export interface DateRangePickerPropTypes extends Omit<CommonProps, 'onChange' | 'onInput'> {
   /**
    * Determines the symbol which separates the dates. If not supplied, the default time interval delimiter for the current locale will be used.
    */

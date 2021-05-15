@@ -1,10 +1,11 @@
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Token';
 
-export interface TokenPropTypes extends Omit<WithWebComponentPropTypes, 'onSelect'> {
+export interface TokenPropTypes extends Omit<CommonProps, 'onSelect'> {
   /**
    * Defines whether the `Token` is read-only.
    *

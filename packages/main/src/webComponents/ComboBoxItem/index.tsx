@@ -1,9 +1,10 @@
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { FC } from 'react';
 
 import '@ui5/webcomponents/dist/ComboBoxItem';
 
-export interface ComboBoxItemPropTypes extends WithWebComponentPropTypes {
+export interface ComboBoxItemPropTypes extends CommonProps {
   /**
    * Defines the additional text of the `ComboBoxItem`.
    */

@@ -1,10 +1,11 @@
 import { LinkDesign } from '@ui5/webcomponents-react/dist/LinkDesign';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { FC, ReactNode, MouseEventHandler } from 'react';
 
 import '@ui5/webcomponents/dist/Link';
 
-export interface LinkPropTypes extends Omit<WithWebComponentPropTypes, 'onClick'> {
+export interface LinkPropTypes extends Omit<CommonProps, 'onClick'> {
   /**
    * Defines the `Link` design.
    *

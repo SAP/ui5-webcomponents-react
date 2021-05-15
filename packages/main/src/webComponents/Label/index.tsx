@@ -1,9 +1,10 @@
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Label';
 
-export interface LabelPropTypes extends WithWebComponentPropTypes {
+export interface LabelPropTypes extends CommonProps {
   /**
    * Defines the labeled input by providing its ID.
    *

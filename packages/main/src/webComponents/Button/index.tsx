@@ -1,10 +1,11 @@
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { FC, ReactNode, MouseEventHandler } from 'react';
 
 import '@ui5/webcomponents/dist/Button';
 
-export interface ButtonPropTypes extends Omit<WithWebComponentPropTypes, 'onClick'> {
+export interface ButtonPropTypes extends Omit<CommonProps, 'onClick'> {
   /**
    * Defines the `Button` design.
    *

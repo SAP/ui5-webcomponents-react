@@ -1,11 +1,12 @@
 import { MessageStripType } from '@ui5/webcomponents-react/dist/MessageStripType';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/MessageStrip';
 
-export interface MessageStripPropTypes extends WithWebComponentPropTypes {
+export interface MessageStripPropTypes extends CommonProps {
   /**
    * Defines whether the MessageStrip renders close icon.
    */

@@ -1,10 +1,11 @@
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, CSSProperties, ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/ColorPalette';
 
-export interface ColorPalettePropTypes extends Omit<WithWebComponentPropTypes, 'onChange'> {
+export interface ColorPalettePropTypes extends Omit<CommonProps, 'onChange'> {
   /**
    * Defines whether the user can choose a custom color from a color picker **Note:** In order to use this property you need to import the following module: `"@ui5/webcomponents/dist/features/ColorPaletteMoreColors.js"`
    */

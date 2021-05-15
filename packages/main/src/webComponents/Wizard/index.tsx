@@ -1,10 +1,11 @@
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/Wizard';
 
-export interface WizardPropTypes extends WithWebComponentPropTypes {
+export interface WizardPropTypes extends CommonProps {
   /**
    * Defines the steps.
    *

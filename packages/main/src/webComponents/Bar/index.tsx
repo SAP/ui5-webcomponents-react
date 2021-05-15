@@ -1,10 +1,11 @@
 import { BarDesign } from '@ui5/webcomponents-react/dist/BarDesign';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/Bar';
 
-export interface BarPropTypes extends WithWebComponentPropTypes {
+export interface BarPropTypes extends CommonProps {
   /**
    * Defines the `Bar` design.
    *

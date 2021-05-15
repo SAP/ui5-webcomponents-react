@@ -1,10 +1,11 @@
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/TreeItem';
 
-export interface TreeItemPropTypes extends WithWebComponentPropTypes {
+export interface TreeItemPropTypes extends CommonProps {
   /**
    * Defines whether the tree node is expanded or collapsed. Only has visual effect for tree nodes with children.
    */

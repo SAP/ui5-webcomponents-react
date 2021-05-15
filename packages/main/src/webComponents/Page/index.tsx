@@ -1,10 +1,11 @@
 import { PageBackgroundDesign } from '@ui5/webcomponents-react/dist/PageBackgroundDesign';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/Page';
 
-export interface PagePropTypes extends WithWebComponentPropTypes {
+export interface PagePropTypes extends CommonProps {
   /**
    * Defines the background color of the `Page`.
    *

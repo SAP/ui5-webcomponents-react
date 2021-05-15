@@ -1,10 +1,11 @@
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/TimelineItem';
 
-export interface TimelineItemPropTypes extends WithWebComponentPropTypes {
+export interface TimelineItemPropTypes extends CommonProps {
   /**
    * Defines the icon to be displayed as graphical element within the `TimelineItem`. SAP-icons font provides numerous options.
    *

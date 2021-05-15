@@ -1,10 +1,11 @@
 import { SemanticColor } from '@ui5/webcomponents-react/dist/SemanticColor';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Tab';
 
-export interface TabPropTypes extends WithWebComponentPropTypes {
+export interface TabPropTypes extends CommonProps {
   /**
    * Represents the "additionalText" text, which is displayed in the tab filter.
    */

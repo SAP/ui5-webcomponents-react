@@ -1,10 +1,11 @@
 import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Title';
 
-export interface TitlePropTypes extends WithWebComponentPropTypes {
+export interface TitlePropTypes extends CommonProps {
   /**
    * Defines the `Title` level. Available options are: `"H6"` to `"H1"`.
    */
