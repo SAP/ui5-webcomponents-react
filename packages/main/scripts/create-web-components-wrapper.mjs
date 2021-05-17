@@ -296,6 +296,7 @@ const createWebComponentWrapper = async (
   description,
   types,
   importStatements,
+  ref,
   defaultProps,
   regularProps,
   booleanProps,
@@ -338,7 +339,8 @@ const createWebComponentWrapper = async (
         booleanProps,
         slotProps: slotProps.filter((name) => name !== 'children'),
         eventProps,
-        defaultProps
+        defaultProps,
+        ref: ref?.tsType
       }),
       name
     ),
@@ -620,6 +622,11 @@ allWebComponents
       `);
       });
 
+    const domRef = Utils.getDomRefTypingForComponent(componentSpec.module);
+    if (domRef) {
+      importStatements.push(domRef.importStatement);
+    }
+
     const uniqueAdditionalImports = [...new Set(importStatements)];
 
     const formatDescription = () => {
@@ -672,6 +679,7 @@ allWebComponents
         mainDescription,
         propTypes,
         uniqueAdditionalImports,
+        domRef,
         defaultProps,
         (componentSpec.properties || [])
           .filter(filterNonPublicAttributes)

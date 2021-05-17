@@ -4,6 +4,7 @@ import { PopoverVerticalAlign } from '@ui5/webcomponents-react/dist/PopoverVerti
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { Ui5ResponsivePopoverDomRef } from '@ui5/webcomponents-react/interfaces/Ui5ResponsivePopoverDomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/ResponsivePopover';
@@ -113,7 +114,7 @@ export interface ResponsivePopoverPropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/ResponsivePopover" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const ResponsivePopover = withWebComponent<ResponsivePopoverPropTypes>(
+const ResponsivePopover = withWebComponent<ResponsivePopoverPropTypes, Ui5ResponsivePopoverDomRef>(
   'ui5-responsive-popover',
   ['headerText', 'horizontalAlign', 'placementType', 'verticalAlign', 'initialFocus'],
   ['allowTargetOverlap', 'hideBackdrop', 'modal', 'noArrow', 'preventFocusRestore'],

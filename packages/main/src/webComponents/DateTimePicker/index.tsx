@@ -3,6 +3,7 @@ import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { Ui5DatePickerDomRef } from '@ui5/webcomponents-react/interfaces/Ui5DatePickerDomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/DateTimePicker';
@@ -97,7 +98,7 @@ export interface DateTimePickerPropTypes extends Omit<CommonProps, 'onChange' | 
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/DateTimePicker" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const DateTimePicker = withWebComponent<DateTimePickerPropTypes>(
+const DateTimePicker = withWebComponent<DateTimePickerPropTypes, Ui5DatePickerDomRef>(
   'ui5-datetime-picker',
   ['name', 'placeholder', 'value', 'valueState', 'formatPattern', 'maxDate', 'minDate', 'primaryCalendarType'],
   ['disabled', 'hideWeekNumbers', 'readonly', 'required'],

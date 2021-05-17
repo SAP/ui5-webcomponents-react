@@ -2,6 +2,7 @@ import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { Ui5PickerDomRef } from '@ui5/webcomponents-react/interfaces/Ui5PickerDomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/DurationPicker';
@@ -89,7 +90,7 @@ export interface DurationPickerPropTypes extends Omit<CommonProps, 'onChange' | 
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/DurationPicker" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const DurationPicker = withWebComponent<DurationPickerPropTypes>(
+const DurationPicker = withWebComponent<DurationPickerPropTypes, Ui5PickerDomRef>(
   'ui5-duration-picker',
   ['maxValue', 'minutesStep', 'secondsStep', 'value', 'formatPattern', 'placeholder', 'valueState'],
   ['hideHours', 'hideMinutes', 'hideSeconds', 'disabled', 'readonly'],
