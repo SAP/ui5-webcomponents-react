@@ -103,15 +103,14 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
       const firstCell: HTMLDivElement = e.target.querySelector(
         'div[role="row"]:first-child div[role="cell"]:first-child'
       );
+      const isCellOrSubComp = e.target.getAttribute('role') === 'cell' || e.target?.dataset.subcomponent;
       if (firstCell) {
         firstCell.tabIndex = 0;
         firstCell.focus();
         currentlyFocusedCell.current = firstCell;
-      } else {
-        if (e.target.tabIndex !== undefined) {
-          currentlyFocusedCell.current = e.target;
-          e.target.tabIndex = 0;
-        }
+      } else if (isCellOrSubComp) {
+        currentlyFocusedCell.current = e.target;
+        e.target.tabIndex = 0;
       }
     },
     [currentlyFocusedCell]
