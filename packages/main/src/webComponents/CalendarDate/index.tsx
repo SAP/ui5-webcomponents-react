@@ -1,6 +1,5 @@
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { FC } from 'react';
 
 import '@ui5/webcomponents/dist/CalendarDate';
 
@@ -14,13 +13,7 @@ export interface CalendarDatePropTypes extends CommonProps {
 /**
  * The `CalendarDate` component defines a calendar date to be used inside `Calendar`
  */
-const CalendarDate: FC<CalendarDatePropTypes> = withWebComponent<CalendarDatePropTypes>(
-  'ui5-date',
-  ['value'],
-  [],
-  [],
-  []
-);
+const CalendarDate = withWebComponent<CalendarDatePropTypes>('ui5-date', ['value'], [], [], []);
 
 CalendarDate.displayName = 'CalendarDate';
 

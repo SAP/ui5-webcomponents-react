@@ -2,7 +2,7 @@ import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/FileUploader';
 
@@ -82,7 +82,7 @@ export interface FileUploaderPropTypes extends Omit<CommonProps, 'onChange'> {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/FileUploader" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const FileUploader: FC<FileUploaderPropTypes> = withWebComponent<FileUploaderPropTypes>(
+const FileUploader = withWebComponent<FileUploaderPropTypes>(
   'ui5-file-uploader',
   ['accept', 'name', 'placeholder', 'value', 'valueState'],
   ['disabled', 'hideInput', 'multiple'],

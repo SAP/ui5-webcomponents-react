@@ -1,7 +1,6 @@
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { FC } from 'react';
 
 import '@ui5/webcomponents/dist/RatingIndicator';
 
@@ -43,7 +42,7 @@ export interface RatingIndicatorPropTypes extends Omit<CommonProps, 'onChange'> 
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/RatingIndicator" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const RatingIndicator: FC<RatingIndicatorPropTypes> = withWebComponent<RatingIndicatorPropTypes>(
+const RatingIndicator = withWebComponent<RatingIndicatorPropTypes>(
   'ui5-rating-indicator',
   ['maxValue', 'value'],
   ['disabled', 'readonly'],

@@ -2,7 +2,7 @@ import { ListItemTypes } from '@ui5/webcomponents-react/dist/ListItemTypes';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/CustomListItem';
 
@@ -32,7 +32,7 @@ export interface CustomListItemPropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/CustomListItem" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const CustomListItem: FC<CustomListItemPropTypes> = withWebComponent<CustomListItemPropTypes>(
+const CustomListItem = withWebComponent<CustomListItemPropTypes>(
   'ui5-li-custom',
   ['type'],
   ['selected'],

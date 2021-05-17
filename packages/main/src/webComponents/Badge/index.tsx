@@ -1,6 +1,6 @@
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Badge';
 
@@ -30,7 +30,7 @@ export interface BadgePropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Badge" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Badge: FC<BadgePropTypes> = withWebComponent<BadgePropTypes>('ui5-badge', ['colorScheme'], [], ['icon'], []);
+const Badge = withWebComponent<BadgePropTypes>('ui5-badge', ['colorScheme'], [], ['icon'], []);
 
 Badge.displayName = 'Badge';
 

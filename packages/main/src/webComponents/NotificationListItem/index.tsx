@@ -2,7 +2,7 @@ import { Priority } from '@ui5/webcomponents-react/dist/Priority';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/NotificationListItem';
 
@@ -88,7 +88,7 @@ export interface NotificationListItemPropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/NotificationListItem" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const NotificationListItem: FC<NotificationListItemPropTypes> = withWebComponent<NotificationListItemPropTypes>(
+const NotificationListItem = withWebComponent<NotificationListItemPropTypes>(
   'ui5-li-notification',
   ['heading', 'priority'],
   ['wrap', 'busy', 'read', 'showClose', 'selected'],

@@ -4,7 +4,7 @@ import { ListSeparators } from '@ui5/webcomponents-react/dist/ListSeparators';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/List';
 
@@ -127,7 +127,7 @@ export interface ListPropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/List" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const List: FC<ListPropTypes> = withWebComponent<ListPropTypes>(
+const List = withWebComponent<ListPropTypes>(
   'ui5-list',
   ['footerText', 'growing', 'headerText', 'mode', 'noDataText', 'separators'],
   ['busy', 'inset'],

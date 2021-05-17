@@ -1,7 +1,6 @@
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { FC } from 'react';
 
 import '@ui5/webcomponents/dist/RangeSlider';
 
@@ -63,7 +62,7 @@ export interface RangeSliderPropTypes extends Omit<CommonProps, 'onChange' | 'on
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/RangeSlider" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const RangeSlider: FC<RangeSliderPropTypes> = withWebComponent<RangeSliderPropTypes>(
+const RangeSlider = withWebComponent<RangeSliderPropTypes>(
   'ui5-range-slider',
   ['endValue', 'startValue', 'labelInterval', 'max', 'min', 'step'],
   ['disabled', 'showTickmarks', 'showTooltip'],

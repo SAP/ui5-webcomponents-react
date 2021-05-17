@@ -1,7 +1,6 @@
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { FC } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/ProductSwitchItem';
 
@@ -53,7 +52,7 @@ export interface ProductSwitchItemPropTypes extends Omit<CommonProps, 'onClick'>
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/ProductSwitchItem" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const ProductSwitchItem: FC<ProductSwitchItemPropTypes> = withWebComponent<ProductSwitchItemPropTypes>(
+const ProductSwitchItem = withWebComponent<ProductSwitchItemPropTypes>(
   'ui5-product-switch-item',
   ['heading', 'icon', 'subtitle', 'target', 'targetSrc'],
   [],

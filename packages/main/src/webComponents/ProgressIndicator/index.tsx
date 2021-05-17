@@ -1,7 +1,6 @@
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { FC } from 'react';
 
 import '@ui5/webcomponents/dist/ProgressIndicator';
 
@@ -37,7 +36,7 @@ export interface ProgressIndicatorPropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/ProgressIndicator" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const ProgressIndicator: FC<ProgressIndicatorPropTypes> = withWebComponent<ProgressIndicatorPropTypes>(
+const ProgressIndicator = withWebComponent<ProgressIndicatorPropTypes>(
   'ui5-progress-indicator',
   ['value', 'valueState'],
   ['disabled', 'hideValue'],

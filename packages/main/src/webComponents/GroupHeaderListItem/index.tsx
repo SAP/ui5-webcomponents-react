@@ -1,6 +1,6 @@
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/GroupHeaderListItem';
 
@@ -21,7 +21,7 @@ export interface GroupHeaderListItemPropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/GroupHeaderListItem" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const GroupHeaderListItem: FC<GroupHeaderListItemPropTypes> = withWebComponent<GroupHeaderListItemPropTypes>(
+const GroupHeaderListItem = withWebComponent<GroupHeaderListItemPropTypes>(
   'ui5-li-groupheader',
   [],
   ['selected'],

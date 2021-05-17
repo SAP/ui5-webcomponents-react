@@ -2,7 +2,7 @@ import { ListMode } from '@ui5/webcomponents-react/dist/ListMode';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { FC, ReactNode, DragEventHandler } from 'react';
+import { ReactNode, DragEventHandler } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/UploadCollection';
 
@@ -62,7 +62,7 @@ export interface UploadCollectionPropTypes extends Omit<CommonProps, 'onDrop'> {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/UploadCollection" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const UploadCollection: FC<UploadCollectionPropTypes> = withWebComponent<UploadCollectionPropTypes>(
+const UploadCollection = withWebComponent<UploadCollectionPropTypes>(
   'ui5-upload-collection',
   ['mode', 'noDataDescription', 'noDataText'],
   ['noDnd'],

@@ -2,7 +2,7 @@ import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/StepInput';
 
@@ -88,7 +88,7 @@ export interface StepInputPropTypes extends Omit<CommonProps, 'onChange'> {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/StepInput" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const StepInput: FC<StepInputPropTypes> = withWebComponent<StepInputPropTypes>(
+const StepInput = withWebComponent<StepInputPropTypes>(
   'ui5-step-input',
   ['max', 'min', 'name', 'placeholder', 'step', 'value', 'valuePrecision', 'valueState'],
   ['disabled', 'readonly', 'required'],
