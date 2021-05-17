@@ -90,9 +90,7 @@ npm install @ui5/webcomponents-react --save
 Required peer dependencies:
 
 ```sh
-npm install @ui5/webcomponents --save
-# For components like the ShellBar or the ProductSwitch:
-npm install @ui5/webcomponents-fiori --save
+npm install @ui5/webcomponents @ui5/webcomponents-fiori --save
 ```
 
 <!-- *********************************************************************** -->
@@ -137,7 +135,7 @@ yarn start
 First of all, you need to add the `@ui5/webcomponents-react` dependency to your project. Please also keep in mind installing the required peer dependencies:
 
 ```sh
-npm install @ui5/webcomponents @ui5/webcomponents-react @ui5/webcomponents-fiori --save``
+npm install @ui5/webcomponents @ui5/webcomponents-react @ui5/webcomponents-fiori --save
 ```
 
 In order to use `@ui5/webcomponents-react` you have to wrap your application's root component into the `ThemeProvider`.<br/>
