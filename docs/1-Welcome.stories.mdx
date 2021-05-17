@@ -64,9 +64,7 @@ yarn start
 First of all, you need to add the `@ui5/webcomponents-react` dependency to your project. Please also keep in mind installing the required peer dependencies:
 
 ```sh
-npm install @ui5/webcomponents @ui5/webcomponents-react --save
-# if you want to use the ShellBar or the ProductSwitcher component, you also need to install this package as well
-npm install @ui5/webcomponents-fiori
+npm install @ui5/webcomponents @ui5/webcomponents-react @ui5/webcomponents-fiori --save
 ```
 
 In order to use `@ui5/webcomponents-react` you have to wrap your application's root component into the `ThemeProvider`.<br/>
@@ -127,6 +125,36 @@ UI5 Web Components supports `Compact` and `Cozy` mode. It is set to `Cozy` by de
 <body class="ui5-content-density-compact">
   ...
 </body>
+```
+
+### Typescript
+
+UI5 Web Components for React supports typescript, therefore we also provide type interfaces for event parameters, public methods of ui5-webcomponents, and more.
+
+You can find all available interfaces of the main package [here](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/main/src/interfaces) and for charts [here](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/charts/src/interfaces).
+
+<br />
+
+Example - `Popover` with `Ref` type declaration:
+
+```tsx
+import React, { useRef } from 'react';
+import { ThemeProvider, Button, Popover } from '@ui5/webcomponents-react';
+import { Ui5PopoverDomRef } from '@ui5/webcomponents-react/interfaces/Ui5PopoverDomRef';
+
+export default function App() {
+  const popoverRef = useRef<Ui5PopoverDomRef>(null);
+  const onClick = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+    popoverRef.current?.openBy(e.target);
+  };
+
+  return (
+    <ThemeProvider>
+      <Button onClick={onClick}>Open Popover</Button>
+      <Popover ref={popoverRef}>Content</Popover>
+    </ThemeProvider>
+  );
+}
 ```
 
 ### Support
