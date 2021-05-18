@@ -4,6 +4,12 @@ import { FC, ReactNode } from 'react';
 
 export interface DialogPropTypes extends WithWebComponentPropTypes {
   /**
+   * Defines the accessible name of the dialog when `header` slot is provided.
+   *
+   * **Note:** If `aria-label` is provided, `accessibleName` will be ignored.
+   */
+  accessibleName?: string;
+  /**
    * Determines whether the `Dialog` is draggable. If this property is set to true, the Dialog will be draggable by its header.
    *
    * **Note:** The `Dialog` can be draggable only in desktop mode.
@@ -46,6 +52,8 @@ export interface DialogPropTypes extends WithWebComponentPropTypes {
   footer?: ReactNode | ReactNode[];
   /**
    * Defines the header HTML Element.
+   *
+   * **Note:** If `header` slot is provided, the labelling of the dialog is a responsibility of the application developer. `accessibleName` should be used.
    */
   header?: ReactNode | ReactNode[];
   /**
@@ -75,7 +83,7 @@ export interface DialogPropTypes extends WithWebComponentPropTypes {
  */
 const Dialog: FC<DialogPropTypes> = withWebComponent<DialogPropTypes>(
   'ui5-dialog',
-  ['headerText', 'initialFocus'],
+  ['accessibleName', 'headerText', 'initialFocus'],
   ['draggable', 'resizable', 'stretch', 'preventFocusRestore'],
   ['footer', 'header'],
   ['after-close', 'after-open', 'before-close', 'before-open']
