@@ -132,8 +132,8 @@ const styles = {
     alignItems: 'center',
     position: 'relative',
     '&:focus': {
-      outlineOffset: '-2px',
-      outline: `1px dotted ${ThemingParameters.sapContent_FocusColor}`
+      outlineOffset: `calc(-1 * ${ThemingParameters.sapContent_FocusWidth})`,
+      outline: `${ThemingParameters.sapContent_FocusWidth} ${ThemingParameters.sapContent_FocusStyle} ${ThemingParameters.sapContent_FocusColor}`
     }
   },
   noDataContainer: {
