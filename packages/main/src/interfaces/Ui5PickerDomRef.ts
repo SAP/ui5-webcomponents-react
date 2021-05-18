@@ -1,5 +1,8 @@
 import { Ui5DomRef } from './Ui5DomRef';
 
+/**
+ * DOM ref types for `TimePicker` and `DurationPicker`.
+ */
 export interface Ui5PickerDomRef extends Ui5DomRef {
   /**
    * Closes the picker
