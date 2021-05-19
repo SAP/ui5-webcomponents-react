@@ -49,6 +49,52 @@ exports[`Analytical Card with AnalyticalCardHeader 1`] = `
           />
         </div>
         <div
+          class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsEnd FlexBox-flexWrapNoWrap AnalyticalCardHeader-kpiContent"
+        >
+          <div
+            class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+          >
+            <div
+              class="AnalyticalCardHeader-valueAndUnit"
+            >
+              <div
+                class="AnalyticalCardHeader-value"
+              />
+              <div
+                class="AnalyticalCardHeader-indicatorAndUnit"
+              >
+                <div
+                  class="AnalyticalCardHeader-unit"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap AnalyticalCardHeader-targetAndDeviation"
+          >
+            <div
+              class="FlexBox-flexBox FlexBox-flexBoxDirectionColumn FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap AnalyticalCardHeader-targetAndDeviationColumn"
+            >
+              <span>
+                Target
+              </span>
+              <span
+                class="AnalyticalCardHeader-targetAndDeviationValue"
+              />
+            </div>
+            <div
+              class="FlexBox-flexBox FlexBox-flexBoxDirectionColumn FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap AnalyticalCardHeader-targetAndDeviationColumn"
+            >
+              <span>
+                Deviation
+              </span>
+              <span
+                class="AnalyticalCardHeader-targetAndDeviationValue"
+              />
+            </div>
+          </div>
+        </div>
+        <div
           class="AnalyticalCardHeader-description"
         />
       </div>

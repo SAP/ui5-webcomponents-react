@@ -47,9 +47,6 @@ exports[`AnalyticalCardHeader with all string props 1`] = `
               class="AnalyticalCardHeader-indicatorAndUnit"
             >
               <div
-                class="AnalyticalCardHeader-arrowIndicatorShape AnalyticalCardHeader-arrowRight AnalyticalCardHeader-none"
-              />
-              <div
                 class="AnalyticalCardHeader-unit"
               >
                 Unit
