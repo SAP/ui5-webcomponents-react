@@ -81,11 +81,11 @@ export interface TableProps extends Omit<CommonProps, 'title'> {
    */
   data: Record<any, any>[];
   /**
-   * Component or text rendered in the title section of the `AnalyticalTable`.
+   * Component or text rendered in the header section of the `AnalyticalTable`.
    *
    * __Note:__ If not set, it will be hidden.
    */
-  title?: ReactText | ReactNode;
+  header?: ReactText | ReactNode;
   /**
    * Extension section of the Table. If not set, no extension area will be rendered
    */
@@ -307,7 +307,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     className,
     style,
     tooltip,
-    title,
+    header,
     loading,
     groupBy,
     selectionMode,
@@ -695,7 +695,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   }
   return (
     <div className={className} style={inlineStyle} title={tooltip} ref={analyticalTableRef} {...passThroughProps}>
-      {title && <TitleBar ref={titleBarRef}>{title}</TitleBar>}
+      {header && <TitleBar ref={titleBarRef}>{header}</TitleBar>}
       {extension && <div ref={extensionRef}>{extension}</div>}
       <FlexBox>
         <div
@@ -835,7 +835,6 @@ AnalyticalTable.defaultProps = {
   scaleWidthMode: TableScaleWidthMode.Default,
   data: [],
   columns: [],
-  title: null,
   minRows: 5,
   groupBy: [],
   NoDataComponent: DefaultNoDataComponent,
