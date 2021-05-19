@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.131.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.4...v0.131.5) (2021-05-19)
+
+
+### Features
+
+* lower required babel/runtime version to ^7.8.4 ([96e7b91](https://github.com/SAP/ui5-webcomponents-react/commit/96e7b913d69e2c159197c5fb367a8cc8a5110473))
+* update to @ui5/webcomponents ^0.31.7 ([7279807](https://github.com/SAP/ui5-webcomponents-react/commit/7279807c549abe4422b078b3757361035ae457e6))
+
+
+
+
+
 ## [0.131.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.3...v0.131.4) (2021-04-16)
 
 
