@@ -33,9 +33,11 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
    */
   placement?: PlacementType;
   /**
-   * Describes the title of the VariantManagement popover.
+   * Describes the heading of the VariantManagement popover.
+   *
+   * * __Note:__ If not set, the default heading is used.
    */
-  popupTitle?: string;
+  heading?: string;
   /**
    * Selects the <code>variantItem</code> by its key.
    */
@@ -99,7 +101,7 @@ const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
   (props: VariantManagementPropTypes, ref: Ref<HTMLDivElement>) => {
     const {
       variantItems,
-      popupTitle,
+      heading,
       className,
       style,
       tooltip,
@@ -197,7 +199,7 @@ const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
         {createPortal(
           <ResponsivePopover
             ref={popoverRef}
-            headerText={popupTitle}
+            headerText={heading}
             placementType={placement}
             footer={footerButtons}
             onAfterClose={stopPropagation}
@@ -224,7 +226,7 @@ const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
 );
 
 VariantManagement.defaultProps = {
-  popupTitle: 'Variants',
+  heading: 'Variants',
   selectedKey: null,
   onSelect: () => {},
   closeOnItemSelect: true,
