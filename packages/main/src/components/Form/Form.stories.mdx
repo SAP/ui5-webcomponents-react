@@ -17,7 +17,7 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   subcomponents={{ FormGroup, FormItem }}
   argTypes={{ children: { type: null }, ref: { type: null } }}
   args={{
-    title: 'Test Form',
+    heading: 'Test Form',
     labelSpanS: 12,
     labelSpanM: 2,
     labelSpanL: 4,
@@ -38,11 +38,11 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
 <Canvas>
   <Story name="Default">
     {(args) => (
-      <Form {...args} title={args.title}>
+      <Form {...args}>
         <FormItem label={'Sole Form Item'}>
           <Input type={InputType.Text} />
         </FormItem>
-        <FormGroup title={'Personal Data'}>
+        <FormGroup heading={'Personal Data'}>
           <FormItem label={'Name'}>
             <Input type={InputType.Text} />
           </FormItem>
@@ -63,7 +63,7 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
             <CheckBox checked />
           </FormItem>
         </FormGroup>
-        <FormGroup title={'Company Data'}>
+        <FormGroup heading={'Company Data'}>
           <FormItem label={'Company Name'}>
             <Input type={InputType.Text} />
           </FormItem>
@@ -83,7 +83,7 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
             <CheckBox checked />
           </FormItem>
         </FormGroup>
-        <FormGroup title={'Marketing Data'}>
+        <FormGroup heading={'Marketing Data'}>
           <FormItem label={'Email'}>
             <Input type={InputType.Email} />
           </FormItem>
