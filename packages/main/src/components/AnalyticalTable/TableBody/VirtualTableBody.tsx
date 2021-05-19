@@ -103,10 +103,14 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
       const firstCell: HTMLDivElement = e.target.querySelector(
         'div[role="row"]:first-child div[role="cell"]:first-child'
       );
+      const isCellOrSubComp = e.target.getAttribute('role') === 'cell' || e.target?.dataset.subcomponent;
       if (firstCell) {
         firstCell.tabIndex = 0;
         firstCell.focus();
         currentlyFocusedCell.current = firstCell;
+      } else if (isCellOrSubComp) {
+        currentlyFocusedCell.current = e.target;
+        e.target.tabIndex = 0;
       }
     },
     [currentlyFocusedCell]
@@ -137,10 +141,18 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
             break;
           }
           case 'ArrowDown': {
-            const nextRow = currentlyFocusedCell.current.parentElement.nextElementSibling as HTMLDivElement;
-            if (nextRow) {
+            const parent = currentlyFocusedCell.current.parentElement as HTMLDivElement;
+            const firstChildOfParent = parent.children[0] as HTMLDivElement;
+            const hasSubcomponent = firstChildOfParent?.dataset?.subcomponent;
+            const nextRow = parent.nextElementSibling;
+            if (hasSubcomponent && !currentlyFocusedCell.current?.dataset?.subcomponent) {
               currentlyFocusedCell.current.tabIndex = -1;
-              const currentColumnIndex = currentlyFocusedCell.current.getAttribute('aria-colindex');
+              firstChildOfParent.tabIndex = 0;
+              firstChildOfParent.focus();
+              currentlyFocusedCell.current = firstChildOfParent;
+            } else if (nextRow) {
+              currentlyFocusedCell.current.tabIndex = -1;
+              const currentColumnIndex = currentlyFocusedCell.current.getAttribute('aria-colindex') || '1';
               const newElement: HTMLDivElement = nextRow.querySelector(`div[aria-colindex="${currentColumnIndex}"]`);
               newElement.tabIndex = 0;
               newElement.focus();
@@ -150,15 +162,32 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
           }
           case 'ArrowUp': {
             const previousRow = currentlyFocusedCell.current.parentElement.previousElementSibling as HTMLDivElement;
-            if (previousRow) {
+            const firstChildPrevRow = previousRow?.children[0] as HTMLDivElement;
+            const hasSubcomponent = firstChildPrevRow?.dataset?.subcomponent;
+
+            if (currentlyFocusedCell.current?.dataset?.subcomponent) {
               currentlyFocusedCell.current.tabIndex = -1;
-              const currentColumnIndex = currentlyFocusedCell.current.getAttribute('aria-colindex');
-              const newElement: HTMLDivElement = previousRow.querySelector(
-                `div[aria-colindex="${currentColumnIndex}"]`
-              );
+              const newElement: HTMLDivElement =
+                currentlyFocusedCell.current.parentElement.querySelector(`div[aria-colindex="1"]`);
               newElement.tabIndex = 0;
               newElement.focus();
               currentlyFocusedCell.current = newElement;
+            } else if (hasSubcomponent) {
+              currentlyFocusedCell.current.tabIndex = -1;
+              firstChildPrevRow.tabIndex = 0;
+              firstChildPrevRow.focus();
+              currentlyFocusedCell.current = firstChildPrevRow;
+            } else if (previousRow) {
+              currentlyFocusedCell.current.tabIndex = -1;
+              const currentColumnIndex = currentlyFocusedCell.current.getAttribute('aria-colindex') || '1';
+              const newElement: HTMLDivElement = previousRow.querySelector(
+                `div[aria-colindex="${currentColumnIndex}"]`
+              );
+              if (newElement) {
+                newElement.tabIndex = 0;
+                newElement.focus();
+                currentlyFocusedCell.current = newElement;
+              }
             }
             break;
           }
@@ -218,7 +247,6 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
             }
           });
         }
-
         return (
           <div
             {...rowProps}

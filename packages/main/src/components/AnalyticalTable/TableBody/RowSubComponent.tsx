@@ -1,5 +1,19 @@
+import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import React, { useEffect, useRef } from 'react';
+import { createUseStyles } from 'react-jss';
 import { VirtualItem } from 'react-virtual';
+
+const styles = {
+  subcomponent: {
+    position: 'absolute',
+    width: '100%',
+    '&:focus': {
+      outlineOffset: `calc(-1 * ${ThemingParameters.sapContent_FocusWidth})`,
+      outline: `${ThemingParameters.sapContent_FocusWidth} ${ThemingParameters.sapContent_FocusStyle} ${ThemingParameters.sapContent_FocusColor}`
+    }
+  }
+};
+const useStyles = createUseStyles(styles, { name: 'RowSubComponent' });
 
 interface RowSubComponent {
   subComponentsHeight: Record<string, { rowId: string; subComponentHeight?: number }>;
@@ -15,6 +29,7 @@ interface RowSubComponent {
 export const RowSubComponent = (props: RowSubComponent) => {
   const { subComponentsHeight, virtualRow, dispatch, row, rowHeight, children, rows, alwaysShowSubComponent } = props;
   const subComponentRef = useRef(null);
+  const classes = useStyles();
 
   useEffect(() => {
     const subComponentHeightObserver = new ResizeObserver((entries) => {
@@ -77,11 +92,12 @@ export const RowSubComponent = (props: RowSubComponent) => {
   return (
     <div
       ref={subComponentRef}
+      data-subcomponent
+      tabIndex={-1}
       style={{
-        transform: `translateY(${rowHeight}px)`,
-        position: 'absolute',
-        width: '100%'
+        transform: `translateY(${rowHeight}px)`
       }}
+      className={classes.subcomponent}
     >
       {children}
     </div>
