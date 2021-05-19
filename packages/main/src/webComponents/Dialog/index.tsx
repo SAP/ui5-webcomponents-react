@@ -4,6 +4,12 @@ import { FC, ReactNode } from 'react';
 
 export interface DialogPropTypes extends WithWebComponentPropTypes {
   /**
+   * Defines the accessible name of the dialog when `header` slot is provided.
+   *
+   * **Note:** If `aria-label` is provided, `accessibleName` will be ignored.
+   */
+  accessibleName?: string;
+  /**
    * Determines whether the `Dialog` is draggable. If this property is set to true, the Dialog will be draggable by its header.
    *
    * **Note:** The `Dialog` can be draggable only in desktop mode.
@@ -50,6 +56,8 @@ export interface DialogPropTypes extends WithWebComponentPropTypes {
   /**
    * Defines the header HTML Element.
    *
+   * **Note:** If `header` slot is provided, the labelling of the dialog is a responsibility of the application developer. `accessibleName` should be used.
+   *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
    */
@@ -81,7 +89,7 @@ export interface DialogPropTypes extends WithWebComponentPropTypes {
  */
 const Dialog: FC<DialogPropTypes> = withWebComponent<DialogPropTypes>(
   'ui5-dialog',
-  ['headerText', 'initialFocus'],
+  ['accessibleName', 'headerText', 'initialFocus'],
   ['draggable', 'resizable', 'stretch', 'preventFocusRestore'],
   ['footer', 'header'],
   ['after-close', 'after-open', 'before-close', 'before-open']
