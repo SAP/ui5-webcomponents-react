@@ -35,7 +35,7 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
   /**
    * Describes the heading of the VariantManagement popover.
    *
-   * * __Note:__ If not set, the default heading is used.
+   * __Note:__ If not set, the default heading is used.
    */
   heading?: string;
   /**
@@ -51,7 +51,7 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
    */
   variantItems: VariantItem[];
   /**
-   * Describes the <code>heading</code> level of the variants.
+   * Describes the `HTML Headings` level of the variants.
    */
   level?: TitleLevel;
   /**
