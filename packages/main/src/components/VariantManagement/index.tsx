@@ -5,7 +5,7 @@ import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassH
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
-import { CANCEL } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
+import { CANCEL, VARIANTS } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
 import { List } from '@ui5/webcomponents-react/dist/List';
@@ -99,9 +99,10 @@ const useStyles = createUseStyles(styles, { name: 'VariantManagement' });
  */
 const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
   (props: VariantManagementPropTypes, ref: Ref<HTMLDivElement>) => {
+    const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
     const {
       variantItems,
-      heading,
+      heading = i18nBundle.getText(VARIANTS),
       className,
       style,
       tooltip,
@@ -133,8 +134,6 @@ const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
       },
       [popoverRef]
     );
-
-    const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
     const text = i18nBundle.getText(CANCEL);
 
@@ -226,8 +225,6 @@ const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
 );
 
 VariantManagement.defaultProps = {
-  heading: 'Variants',
-  selectedKey: null,
   onSelect: () => {},
   closeOnItemSelect: true,
   placement: PlacementType.Bottom,
