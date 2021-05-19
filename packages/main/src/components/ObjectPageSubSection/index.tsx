@@ -26,8 +26,8 @@ const styles = {
   objectPageSubSection: {
     padding: '1rem 0',
     '&:focus': {
-      outline: `1px dotted ${ThemingParameters.sapContent_FocusColor}`,
-      outlineOffset: '-1px'
+      outline: `${ThemingParameters.sapContent_FocusWidth} ${ThemingParameters.sapContent_FocusStyle} ${ThemingParameters.sapContent_FocusColor}`,
+      outlineOffset: `calc(-1 * ${ThemingParameters.sapContent_FocusWidth})`
     }
   },
   objectPageSubSectionHeaderTitle: {
