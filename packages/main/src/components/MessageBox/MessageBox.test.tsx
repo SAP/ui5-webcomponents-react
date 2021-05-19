@@ -78,7 +78,7 @@ describe('MessageBox', () => {
       </MessageBox>
     );
     expect(asFragment()).toMatchSnapshot();
-    screen.getByText('Custom Success');
+    expect(screen.getAllByText('Custom Success')).toHaveLength(2);
 
     fireEvent.click(screen.getByText('OK'));
     expect(callback.mock.calls[0][0].detail.action).toEqual(MessageBoxActions.OK);
