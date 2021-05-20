@@ -33,7 +33,7 @@ export interface FormPropTypes extends CommonProps {
    */
   title?: string;
   /**
-   * Form columns for small size (smaller than `600px`).
+   * Form columns for small size (`< 600px`).
    * Must be a number between 1 and 12.
    *
    * Default Value: 1
@@ -56,7 +56,7 @@ export interface FormPropTypes extends CommonProps {
    */
   columnsL?: number;
   /**
-   * Form columns for extra large size (greater than `1439px`).
+   * Form columns for extra large size (`>= 1440px`).
    * Must be a number between 1 and 12.
    *
    * Default Value: 2
@@ -65,7 +65,7 @@ export interface FormPropTypes extends CommonProps {
   columnsXL?: number;
 
   /**
-   * Default span for labels in small size (smaller than `600px`).
+   * Default span for labels in small size (`< 600px`).
    * Must be a number between 1 and 12.
    *
    * Default Value: 12
@@ -86,7 +86,7 @@ export interface FormPropTypes extends CommonProps {
    */
   labelSpanL?: number;
   /**
-   * Default span for labels in extra large size (greater than `1439px`).
+   * Default span for labels in extra large size (`>= 1440px`).
    * Must be a number between 1 and 12.
    *
    * Default Value: 4
