@@ -44,6 +44,7 @@ export interface FormPropTypes extends CommonProps {
    * Must be a number between 1 and 12.
    *
    * Default Value: 1
+   *
    * __Note__: The number of columns for medium size must not be smaller than the number of columns for small size.
    */
   columnsM?: number;
@@ -52,6 +53,7 @@ export interface FormPropTypes extends CommonProps {
    * Must be a number between 1 and 12.
    *
    * Default Value: 1
+   *
    * __Note:__ The number of columns for large size must not be smaller than the number of columns for medium size.
    */
   columnsL?: number;
@@ -60,6 +62,7 @@ export interface FormPropTypes extends CommonProps {
    * Must be a number between 1 and 12.
    *
    * Default Value: 2
+   *
    * __Note:__ The number of columns for extra large size must not be smaller than the number of columns for large size.
    */
   columnsXL?: number;
