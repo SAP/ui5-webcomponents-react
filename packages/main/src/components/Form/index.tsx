@@ -33,51 +33,65 @@ export interface FormPropTypes extends CommonProps {
    */
   title?: string;
   /**
-   * Form columns for small size.
-   * Must be a number between 1 and 12.<br />
+   * Form columns for small size (`< 600px`).
+   * Must be a number between 1 and 12.
+   *
    * Default Value: 1
    */
   columnsS?: number;
   /**
-   * Form columns for medium size. The number of columns for medium size must not be smaller than the number of columns for small size.
-   * Must be a number between 1 and 12.<br />
+   * Form columns for medium size (`600px` - `1023px`).
+   * Must be a number between 1 and 12.
+   *
    * Default Value: 1
+   *
+   * __Note__: The number of columns for medium size must not be smaller than the number of columns for small size.
    */
   columnsM?: number;
   /**
-   * Form columns for large size. The number of columns for large size must not be smaller than the number of columns for medium size.
-   * Must be a number between 1 and 12.<br />
+   * Form columns for large size (`1024px` - `1439px`).
+   * Must be a number between 1 and 12.
+   *
    * Default Value: 1
+   *
+   * __Note:__ The number of columns for large size must not be smaller than the number of columns for medium size.
    */
   columnsL?: number;
   /**
-   * Form columns for extra large size. The number of columns for extra large size must not be smaller than the number of columns for large size.
-   * Must be a number between 1 and 12.<br />
+   * Form columns for extra large size (`>= 1440px`).
+   * Must be a number between 1 and 12.
+   *
    * Default Value: 2
+   *
+   * __Note:__ The number of columns for extra large size must not be smaller than the number of columns for large size.
    */
   columnsXL?: number;
 
   /**
-   * Default span for labels in small size.
-   * Must be a number between 1 and 12.<br />
+   * Default span for labels in small size (`< 600px`).
+   * Must be a number between 1 and 12.
+   *
    * Default Value: 12
    */
   labelSpanS?: number;
   /**
-   * Default span for labels in medium size.
-   * Must be a number between 1 and 12.<br />
+   * Default span for labels in medium size (`600px` - `1023px`).
+   * Must be a number between 1 and 12.
+   *
    * Default Value: 2
    */
   labelSpanM?: number;
   /**
-   * Default span for labels in large size.
-   * Must be a number between 1 and 12.<br />
+   * Default span for labels in large size (`1024px` - `1439px`).
+   * Must be a number between 1 and 12.
+   *
    * Default Value: 4
    */
   labelSpanL?: number;
   /**
-   * Default span for labels in extra large size.
-   * Must be a number between 1 and 12.<br />
+   * Default span for labels in extra large size (`>= 1440px`).
+   * Must be a number between 1 and 12.
+   *
    * Default Value: 4
    */
   labelSpanXL?: number;
