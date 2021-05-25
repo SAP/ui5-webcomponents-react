@@ -15,6 +15,7 @@ import { createUseStyles } from 'react-jss';
 import { Ui5PopoverDomRef } from '@ui5/webcomponents-react/interfaces/Ui5PopoverDomRef';
 import { stopPropagation } from '../../internal/stopPropagation';
 import { StandardListItem } from '../../webComponents/StandardListItem';
+import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
 import { ObjectPageAnchorButton } from './ObjectPageAnchorButton';
 import { safeGetChildrenArray } from './ObjectPageUtils';
 import { createPortal } from 'react-dom';
@@ -215,6 +216,7 @@ const ObjectPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElement
           aria-label={i18nBundle.getText(headerPinned ? UNPIN_HEADER : PIN_HEADER)}
         />
       )}
+      {/*<DynamicPageAnchorBar setHeaderPinned={onPinHeader} headerPinned={headerPinned} headerContentHeight={104} headerContentPinnable={shouldRenderHeaderPinnableButton} showHideHeaderButton={shouldRenderHideHeaderButton} onToggleHeaderContentVisibility={onToggleHeaderContentVisibility} />*/}
       {createPortal(
         <Popover placementType={PlacementType.Bottom} noArrow ref={popoverRef} onAfterClose={stopPropagation}>
           <List onItemClick={onSubSectionClick}>

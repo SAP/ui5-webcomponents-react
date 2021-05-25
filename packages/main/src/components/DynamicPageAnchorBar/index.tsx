@@ -13,6 +13,7 @@ import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { ToggleButton } from '@ui5/webcomponents-react/dist/ToggleButton';
 import React, { CSSProperties, forwardRef, RefObject, useCallback } from 'react';
 import { createUseStyles } from 'react-jss';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 
 addCustomCSS(
   'ui5-button',
@@ -79,7 +80,8 @@ const anchorBarStyles = {
 
 const useStyles = createUseStyles(anchorBarStyles, { name: 'DynamicPageAnchorBar' });
 
-interface Props {
+//todo why no common props?
+interface Props extends CommonProps {
   /**
    * Determines the style of the anchor bar.
    */
@@ -143,7 +145,7 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
   );
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
-
+  //todo maybe add children here where the tab container or other things can be mounted
   return (
     <section
       style={style}

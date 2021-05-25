@@ -31,6 +31,7 @@ import React, {
   useRef,
   useState
 } from 'react';
+import { DynamicPageTitle } from '../..';
 import { ObjectPageSectionPropTypes } from '../ObjectPageSection';
 import { ObjectPageSubSectionPropTypes } from '../ObjectPageSubSection';
 import { CollapsedAvatar } from './CollapsedAvatar';
@@ -48,7 +49,6 @@ import { useObserveHeights } from './useObserveHeights';
 declare const ResizeObserver;
 
 const SCROLL_BAR_WIDTH = 12;
-
 export interface ObjectPagePropTypes extends CommonProps {
   /**
    * Defines the title of the `ObjectPage`.
@@ -203,8 +203,9 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       if (firstSectionId === sectionId) {
         objectPageRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
-        const childOffset = objectPageRef.current?.querySelector<HTMLElement>(`#ObjectPageSection-${sectionId}`)
-          ?.offsetTop;
+        const childOffset = objectPageRef.current?.querySelector<HTMLElement>(
+          `#ObjectPageSection-${sectionId}`
+        )?.offsetTop;
         if (!isNaN(childOffset)) {
           objectPageRef.current?.scrollTo({
             top: childOffset - topHeaderHeight - anchorBarHeight - (headerPinned ? headerContentHeight : 0) + 45,
@@ -505,31 +506,18 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         style={scrollBarWidthPadding}
         className={headerClasses.className}
       >
-        <div className={classes.titleBar}>
-          {(!showTitleInHeaderContent || headerContentHeight === 0) && (
-            <FlexBox alignItems={FlexBoxAlignItems.Center}>
-              {image && headerContentHeight === 0 && (
-                <div className={classes.avatar}>
-                  <CollapsedAvatar image={image} imageShapeCircle={imageShapeCircle} />
-                </div>
-              )}
-              <FlexBox direction={FlexBoxDirection.Column} className={classes.container}>
-                {breadcrumbs}
-                <FlexBox alignItems={FlexBoxAlignItems.Baseline}>
-                  <Title level={TitleLevel.H3} className={classes.title}>
-                    {title}
-                  </Title>
-                  <Label className={classes.subTitle}>{subTitle}</Label>
-                  <div className={classes.keyInfos}>{keyInfos}</div>
-                </FlexBox>
-              </FlexBox>
-              <Toolbar toolbarStyle={ToolbarStyle.Clear} design={ToolbarDesign.Transparent}>
-                <ToolbarSpacer />
-                {headerActions}
-              </Toolbar>
-            </FlexBox>
-          )}
-        </div>
+        {/*todo: use default values of object page if props not defined: showSubheadingRight: true, imageShapeCircle: inherit from ObjectPage*/}
+        <DynamicPageTitle
+          image={headerContentHeight === 0 && image}
+          imageShapeCircle
+          heading={title}
+          subHeading={subTitle}
+          actions={headerActions}
+          showSubheadingRight={true}
+          breadcrumbs={breadcrumbs}
+        >
+          <div className={classes.keyInfos}>{keyInfos}</div>
+        </DynamicPageTitle>
       </header>
       <ObjectPageHeader
         headerActions={headerActions}
