@@ -161,8 +161,7 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
 
   const [formGroups, updatedTitle] = useMemo(() => {
     const computedFormGroups: any[] = [];
-
-    if (Children.count(children) === 1 && !title && (children as ReactElement).props.title?.length > 0) {
+    if (Children.count(children) === 1 && !title && (children as ReactElement).props?.title?.length > 0) {
       return [cloneElement(children as ReactElement, { title: null }), (children as ReactElement).props.title];
     }
 
