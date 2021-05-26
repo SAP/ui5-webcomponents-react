@@ -161,9 +161,11 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
 
   const [formGroups, updatedTitle] = useMemo(() => {
     const computedFormGroups: any[] = [];
-
-    if (Children.count(children) === 1 && !title && (children as ReactElement).props.title?.length > 0) {
-      return [cloneElement(children as ReactElement, { title: null }), (children as ReactElement).props.title];
+    if (Children.count(children) === 1 && !title) {
+      const singleChild = Array.isArray(children) ? children[0] : children;
+      if (singleChild?.props?.title?.length > 0) {
+        return [cloneElement(singleChild, { title: null }), singleChild.props.title];
+      }
     }
 
     const currentColumnCount = currentNumberOfColumns;
