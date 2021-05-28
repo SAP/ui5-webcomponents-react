@@ -36,7 +36,10 @@ export const getScrollBarWidth = () => {
   return w1 - w2;
 };
 
-export const enrichEventWithDetails = <T extends Record<string, unknown>>(event: UIEvent, payload: T = null) => {
+export const enrichEventWithDetails = <T extends Record<string, unknown>, ReturnType = CustomEvent<T>>(
+  event: UIEvent,
+  payload: T = null
+) => {
   if (event.hasOwnProperty('persist')) {
     // if there is a persist method, it's an SyntheticEvent so we need to persist it
     event.persist();
@@ -50,5 +53,5 @@ export const enrichEventWithDetails = <T extends Record<string, unknown>>(event:
     configurable: true
   });
   Object.assign(event.detail, payload);
-  return (event as unknown) as CustomEvent<T>;
+  return event as unknown as ReturnType;
 };
