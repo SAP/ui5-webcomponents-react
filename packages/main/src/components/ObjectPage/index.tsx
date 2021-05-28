@@ -203,8 +203,9 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       if (firstSectionId === sectionId) {
         objectPageRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
-        const childOffset = objectPageRef.current?.querySelector<HTMLElement>(`#ObjectPageSection-${sectionId}`)
-          ?.offsetTop;
+        const childOffset = objectPageRef.current?.querySelector<HTMLElement>(
+          `#ObjectPageSection-${sectionId}`
+        )?.offsetTop;
         if (!isNaN(childOffset)) {
           objectPageRef.current?.scrollTo({
             top: childOffset - topHeaderHeight - anchorBarHeight - (headerPinned ? headerContentHeight : 0) + 45,
