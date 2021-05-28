@@ -26,7 +26,7 @@ jobs:
           compression: 'gzip'
 
   deploy-master-docs:
-    if: ${{ github.repository == 'SAP/ui5-webcomponents-react' && github.ref == 'refs/heads/main' }}
+    if: ${{ github.repository == 'SAP/ui5-webcomponents-react' }}
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
@@ -46,6 +46,7 @@ jobs:
         yarn build:storybook
 
     - name: Deploy 🚀
+        if: ${{ github.ref == 'refs/heads/main' }}
       uses: JamesIves/github-pages-deploy-action@4.1.3
       with:
         # token: ${{ secrets.ACCESS_TOKEN }} # maybe the default github access token is now sufficient?
