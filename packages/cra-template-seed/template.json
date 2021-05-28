@@ -16,8 +16,7 @@
       "react-i18next": "^11.7.2",
       "react-query": "^3.8.2",
       "react-router-dom": "^5.2.0",
-      "yup": "^0.32.8",
-      "pre:push": "npm-run-all --parallel lint prettier test:ci"
+      "yup": "^0.32.8"
     },
     "devDependencies": {
       "@commitlint/cli": "^11.0.0",
@@ -38,7 +37,8 @@
       "lint": "eslint --quiet .",
       "lint:fix": "eslint . --fix",
       "prettier": "prettier --config .prettierrc --check \"src/**/*.js\"",
-      "prettier:fix": "prettier --config .prettierrc --write \"src/**/*.js\""
+      "prettier:fix": "prettier --config .prettierrc --write \"src/**/*.js\"",
+      "pre:push": "npm-run-all --parallel lint prettier test:ci"
     },
     "browserslist": {
       "production": [
