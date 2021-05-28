@@ -5,7 +5,7 @@ import React, { ReactElement, useEffect, useMemo, useRef, useState } from 'react
 
 const styles = {
   base: {
-    margin: 'var(--_ui5wcr_ObjectPage_avatar_margin)', // defined in ObjectPage JSS
+    alignSelf: 'center',
     opacity: 0
   },
   hidden: {
@@ -36,7 +36,7 @@ export interface CollapsedAvatarPropTypes {
   image?: string | ReactElement;
   imageShapeCircle?: boolean;
 }
-//todo delete
+
 export const CollapsedAvatar = (props: CollapsedAvatarPropTypes) => {
   const { image, imageShapeCircle } = props;
   const classes = useStyles();

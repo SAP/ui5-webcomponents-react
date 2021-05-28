@@ -14,6 +14,7 @@ import { Form } from '@ui5/webcomponents-react/dist/Form';
 import { FormItem } from '@ui5/webcomponents-react/dist/FormItem';
 import { FormGroup } from '@ui5/webcomponents-react/dist/FormGroup';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
+import { DynamicPageTitle } from '@ui5/webcomponents-react/dist/DynamicPageTitle';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { ObjectStatus } from '@ui5/webcomponents-react/dist/ObjectStatus';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
@@ -96,7 +97,19 @@ import '@ui5/webcomponents-icons/dist/wrench.js';
   <Story name="Default">
     {(args) => {
       return (
-        <ObjectPage {...args}>
+        <ObjectPage
+          {...args}
+          title={
+            <DynamicPageTitle
+              heading={args.title}
+              subHeading={args.subTitle}
+              actions={args.headerActions}
+              breadcrumbs={args.breadcrumbs}
+            >
+              <div>{args.keyInfos}</div>
+            </DynamicPageTitle>
+          }
+        >
           <ObjectPageSection title="Goals" id="goals" aria-label="Goals">
             <Form columnsL={3} columnsXL={3} labelSpanXL={6} labelSpanL={6} columnsM={2} labelSpanM={6}>
               <FormItem label="Evangelize the UI framework across the company">

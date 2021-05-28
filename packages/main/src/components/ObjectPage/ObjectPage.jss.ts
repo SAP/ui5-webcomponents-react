@@ -4,7 +4,6 @@ export const ObjectPageCssVariables = {
   anchorFloat: '--_ui5wcr_ObjectPage_actions_float',
   anchorLeft: '--_ui5wcr_ObjectPage_actions_left',
   anchorRight: '--_ui5wcr_ObjectPage_actions_right',
-  avatarMargin: '--_ui5wcr_ObjectPage_avatar_margin',
   lastSectionMargin: '--_ui5wcr_ObjectPage_last_section_margin_bottom'
 };
 
@@ -35,14 +34,12 @@ const styles = {
   '@global html': {
     [ObjectPageCssVariables.anchorFloat]: 'right',
     [ObjectPageCssVariables.anchorRight]: '1.25rem',
-    [ObjectPageCssVariables.anchorLeft]: 'unset',
-    [ObjectPageCssVariables.avatarMargin]: '0 1rem 0 0'
+    [ObjectPageCssVariables.anchorLeft]: 'unset'
   },
   '@global [dir="rtl"]': {
     [ObjectPageCssVariables.anchorFloat]: 'left',
     [ObjectPageCssVariables.anchorRight]: 'unset',
-    [ObjectPageCssVariables.anchorLeft]: '1.25rem',
-    [ObjectPageCssVariables.avatarMargin]: '0 0 0 1rem'
+    [ObjectPageCssVariables.anchorLeft]: '1.25rem'
   },
   iconTabBarMode: {
     '& section[data-component-name="ObjectPageSection"] > div[role="heading"]': {
@@ -62,13 +59,19 @@ const styles = {
       display: 'none'
     }
   },
-  // header
   header: {
     flexShrink: 0,
     backgroundColor: ThemingParameters.sapObjectHeader_Background,
     position: 'sticky',
     top: 0,
-    zIndex: 2
+    zIndex: 2,
+    padding: '0 2rem 0 2rem',
+    display: 'flex',
+    '& [data-component-name="DynamicPageTitle"]': {
+      width: '100%',
+      paddingLeft: 0,
+      paddingRight: 0
+    }
   },
   iEClass: {
     position: 'fixed',
@@ -125,6 +128,7 @@ const styles = {
       padding: 0
     }
   },
+  //todo delete uneccessary
   titleInHeaderContent: {
     '& $subTitle': {
       padding: '0.5rem 0'
@@ -180,9 +184,6 @@ const styles = {
     display: 'flex',
     flexDirection: 'row',
     alignSelf: 'center'
-  },
-  avatar: {
-    margin: `var(${ObjectPageCssVariables.avatarMargin})`
   }
 };
 

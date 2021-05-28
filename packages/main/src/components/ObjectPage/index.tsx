@@ -4,18 +4,9 @@ import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassH
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { enrichEventWithDetails, getScrollBarWidth } from '@ui5/webcomponents-react-base/dist/Utils';
-import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
-import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
-import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
+import { DynamicPageTitle } from '@ui5/webcomponents-react/dist/DynamicPageTitle';
 import { GlobalStyleClasses } from '@ui5/webcomponents-react/dist/GlobalStyleClasses';
-import { Label } from '@ui5/webcomponents-react/dist/Label';
 import { ObjectPageMode } from '@ui5/webcomponents-react/dist/ObjectPageMode';
-import { Title } from '@ui5/webcomponents-react/dist/Title';
-import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
-import { Toolbar } from '@ui5/webcomponents-react/dist/Toolbar';
-import { ToolbarDesign } from '@ui5/webcomponents-react/dist/ToolbarDesign';
-import { ToolbarSpacer } from '@ui5/webcomponents-react/dist/ToolbarSpacer';
-import { ToolbarStyle } from '@ui5/webcomponents-react/dist/ToolbarStyle';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import debounce from 'lodash/debounce';
 import React, {
@@ -31,7 +22,6 @@ import React, {
   useRef,
   useState
 } from 'react';
-import { DynamicPageTitle } from '../..';
 import { ObjectPageSectionPropTypes } from '../ObjectPageSection';
 import { ObjectPageSubSectionPropTypes } from '../ObjectPageSubSection';
 import { CollapsedAvatar } from './CollapsedAvatar';
@@ -51,21 +41,16 @@ declare const ResizeObserver;
 const SCROLL_BAR_WIDTH = 12;
 export interface ObjectPagePropTypes extends CommonProps {
   /**
-   * Defines the title of the `ObjectPage`.
+   * Defines the title section of the `ObjectPage`.
+   *
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `DynamicPageTitle` in order to preserve the intended design.
+   * __Note:__ If not defined otherwise the prop `showSubheadingRight` of the `DynamicPageTitle` is set to `true` by default.
    */
-  title?: string;
-  /**
-   * Defines the subheading of the `ObjectPage`.
-   */
-  subTitle?: string;
+  title?: ReactElement;
   /**
    * Defines the image of the `ObjectPage`. You can pass a path to an image or an `Avatar` component.
    */
   image?: string | ReactElement<unknown>;
-  /**
-   * Defines the actions in the header toolbar.
-   */
-  headerActions?: ReactElement<unknown>[];
   /**
    * The header content displays app-specific contextual information. You build the content using containers.
    The containers are arranged inline with a left float. If the containers do not all fit on one line, those on the right wrap to the line below.
@@ -91,15 +76,6 @@ export interface ObjectPagePropTypes extends CommonProps {
   onSelectedSectionChanged?: (
     event: CustomEvent<{ selectedSectionIndex: number; selectedSectionId: string; section: ComponentType }>
   ) => void;
-  /**
-   * Defines the breadcrumbs above the `ObjectPage` heading.<br />
-   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `Breadcrumbs` in order to preserve the intended design.
-   */
-  breadcrumbs?: ReactNode;
-  /**
-   * Defines the key information section in the header of the `ObjectPage`.
-   */
-  keyInfos?: ReactNode;
 
   // appearance
   /**
@@ -146,8 +122,6 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   const {
     title,
     image,
-    subTitle,
-    headerActions,
     mode,
     imageShapeCircle,
     className,
@@ -162,9 +136,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     alwaysShowContentHeader,
     showTitleInHeaderContent,
     headerContentPinnable,
-    headerContent,
-    breadcrumbs,
-    keyInfos
+    headerContent
   } = props;
 
   const firstSectionId = safeGetChildrenArray<ReactElement>(children)[0]?.props?.id;
@@ -489,6 +461,13 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     ? topHeaderHeight + headerContentHeight
     : topHeaderHeight;
 
+  const renderTitleSection = useCallback(() => {
+    if (title?.props && title.props?.showSubheadingRight === undefined) {
+      return React.cloneElement(title, { showSubheadingRight: true });
+    }
+    return title;
+  }, [title]);
+
   return (
     <div
       data-component-name="ObjectPage"
@@ -506,30 +485,26 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         style={scrollBarWidthPadding}
         className={headerClasses.className}
       >
-        {/*todo: use default values of object page if props not defined: showSubheadingRight: true, imageShapeCircle: inherit from ObjectPage*/}
-        <DynamicPageTitle
-          image={headerContentHeight === 0 && image}
-          imageShapeCircle
-          heading={title}
-          subHeading={subTitle}
-          actions={headerActions}
-          showSubheadingRight={true}
-          breadcrumbs={breadcrumbs}
-        >
-          <div className={classes.keyInfos}>{keyInfos}</div>
-        </DynamicPageTitle>
+        {image && headerContentHeight === 0 && (
+          <>
+            <CollapsedAvatar image={image} imageShapeCircle={imageShapeCircle} />
+            <span style={{ width: '1rem' }} />
+          </>
+        )}
+        {renderTitleSection()}
       </header>
+      {/*todo check header for props from title comp*/}
       <ObjectPageHeader
-        headerActions={headerActions}
+        headerActions={[]}
         image={image}
         classes={classes}
         imageShapeCircle={imageShapeCircle}
         showTitleInHeaderContent={showTitleInHeaderContent}
         headerContentProp={headerContent as ReactElement}
-        breadcrumbs={breadcrumbs}
-        keyInfos={keyInfos}
-        title={title}
-        subTitle={subTitle}
+        breadcrumbs={[]}
+        keyInfos={[]}
+        title={'TITLE'}
+        subTitle={'SUBTITLE'}
         headerPinned={headerPinned}
         topHeaderHeight={topHeaderHeight}
         ref={headerContentRef}
@@ -576,16 +551,10 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
 ObjectPage.displayName = 'ObjectPage';
 
 ObjectPage.defaultProps = {
-  title: '',
   image: null,
-  subTitle: '',
-  headerActions: [],
   mode: ObjectPageMode.Default,
   imageShapeCircle: false,
   showHideHeaderButton: false,
-  onSelectedSectionChanged: () => {
-    /* noop */
-  },
   noHeader: false
 };
 

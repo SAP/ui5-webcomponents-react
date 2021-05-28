@@ -12,8 +12,6 @@ import { ToolbarStyle } from '@ui5/webcomponents-react/dist/ToolbarStyle';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import React, { Children, FC, forwardRef, ReactElement, ReactNode, ReactNodeArray, Ref } from 'react';
 import { createUseStyles } from 'react-jss';
-import { FlexBoxDirection, FlexBoxJustifyContent } from '../..';
-import { CollapsedAvatar } from './CollapsedAvatar';
 import { DynamicPageTitleStyles } from './DynamicPageTitle.jss';
 
 export interface DynamicPageTitleProps extends CommonProps {
@@ -57,15 +55,6 @@ export interface DynamicPageTitleProps extends CommonProps {
    * Display the subheading on the right instead of below the heading.
    */
   showSubheadingRight?: boolean;
-  /**
-   * Defines the image displayed in front of the heading. You can pass a path to an image or an `Avatar` component.
-   */
-  image?: string | ReactElement<unknown>;
-  /**
-   * Defines whether the image should be displayed in a circle or in a square.<br />
-   * __Note:__ If the `image` is not a `string`, this prop has no effect.
-   */
-  imageShapeCircle?: boolean;
 }
 
 interface InternalProps extends DynamicPageTitleProps {
@@ -93,9 +82,7 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
     navigationActions,
     className,
     style,
-    tooltip,
-    image,
-    imageShapeCircle
+    tooltip
   } = props;
 
   const classes = useStyles();
@@ -116,51 +103,37 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
       onClick={onToggleHeaderContentVisibility}
       {...passThroughProps}
     >
-      {/*<div className={classes.avatar}>*/}
-      {image && <CollapsedAvatar image={image} imageShapeCircle={imageShapeCircle} />}
-      {/*</div>*/}
-      <FlexBox
-        direction={FlexBoxDirection.Column}
-        justifyContent={FlexBoxJustifyContent.SpaceBetween}
-        style={{ width: '100%' }}
-      >
-        <div className={classes.breadcrumbs}>{breadcrumbs}</div>
-        <FlexBox alignItems={FlexBoxAlignItems.Center} style={{ flexGrow: 1, width: '100%' }}>
-          <FlexBox className={classes.titleMainSection}>
-            <div className={classes.title}>{heading}</div>
-            {showSubheadingRight && (
-              //todo why flexboxes here
-              <FlexBox>
-                <div className={classes.subTitleRight}>{subHeading}</div>{' '}
-              </FlexBox>
-            )}
-            <div className={classes.content}>
-              {/*todo why toolbar here*/}
-              <Toolbar toolbarStyle={ToolbarStyle.Clear}>{children}</Toolbar>
-            </div>
-          </FlexBox>
-          <Toolbar design={ToolbarDesign.Auto} toolbarStyle={ToolbarStyle.Clear}>
-            <ToolbarSpacer />
-            {actions}
-            {Children.count(actions) > 0 && Children.count(navigationActions) > 0 && <ToolbarSeparator />}
-            {navigationActions}
-          </Toolbar>
+      <div className={classes.breadcrumbs}>{breadcrumbs}</div>
+      <FlexBox alignItems={FlexBoxAlignItems.Center} style={{ flexGrow: 1, width: '100%' }}>
+        <FlexBox className={classes.titleMainSection}>
+          <div className={classes.title}>{heading}</div>
+          {showSubheadingRight && (
+            //todo why flexboxes here
+            <FlexBox>
+              <div className={classes.subTitleRight}>{subHeading}</div>
+            </FlexBox>
+          )}
+          <div className={classes.content}>
+            {/*todo why toolbar here*/}
+            <Toolbar toolbarStyle={ToolbarStyle.Clear}>{children}</Toolbar>
+          </div>
         </FlexBox>
-        {!showSubheadingRight && (
-          <FlexBox>
-            <div className={classes.subTitleBottom}>{subHeading}</div>
-          </FlexBox>
-        )}
+        <Toolbar design={ToolbarDesign.Auto} toolbarStyle={ToolbarStyle.Clear}>
+          <ToolbarSpacer />
+          {actions}
+          {Children.count(actions) > 0 && Children.count(navigationActions) > 0 && <ToolbarSeparator />}
+          {navigationActions}
+        </Toolbar>
       </FlexBox>
+      {!showSubheadingRight && (
+        <FlexBox>
+          <div className={classes.subTitleBottom}>{subHeading}</div>
+        </FlexBox>
+      )}
     </FlexBox>
   );
 });
 
 DynamicPageTitle.displayName = 'DynamicPageTitle';
-
-DynamicPageTitle.defaultProps = {
-  showSubheadingRight: false,
-  imageShapeCircle: false
-};
 
 export { DynamicPageTitle };
