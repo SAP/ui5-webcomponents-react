@@ -3,7 +3,7 @@ import { useIsomorphicLayoutEffect, useIsRTL } from '@ui5/webcomponents-react-ba
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
+import { enrichEventWithDetails, debounce } from '@ui5/webcomponents-react-base/dist/Utils';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { GlobalStyleClasses } from '@ui5/webcomponents-react/dist/GlobalStyleClasses';
 import { TableScaleWidthMode } from '@ui5/webcomponents-react/dist/TableScaleWidthMode';
@@ -11,7 +11,6 @@ import { TableSelectionBehavior } from '@ui5/webcomponents-react/dist/TableSelec
 import { TableSelectionMode } from '@ui5/webcomponents-react/dist/TableSelectionMode';
 import { TableVisibleRowCountMode } from '@ui5/webcomponents-react/dist/TableVisibleRowCountMode';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
-import debounce from 'lodash/debounce';
 import React, {
   ComponentType,
   CSSProperties,
