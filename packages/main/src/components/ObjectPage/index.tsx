@@ -3,7 +3,7 @@ import { createUseStyles } from 'react-jss';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
-import { enrichEventWithDetails, getScrollBarWidth } from '@ui5/webcomponents-react-base/dist/Utils';
+import { enrichEventWithDetails, getScrollBarWidth, debounce } from '@ui5/webcomponents-react-base/dist/Utils';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
@@ -17,7 +17,6 @@ import { ToolbarDesign } from '@ui5/webcomponents-react/dist/ToolbarDesign';
 import { ToolbarSpacer } from '@ui5/webcomponents-react/dist/ToolbarSpacer';
 import { ToolbarStyle } from '@ui5/webcomponents-react/dist/ToolbarStyle';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import debounce from 'lodash/debounce';
 import React, {
   ComponentType,
   FC,
@@ -203,8 +202,9 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       if (firstSectionId === sectionId) {
         objectPageRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
-        const childOffset = objectPageRef.current?.querySelector<HTMLElement>(`#ObjectPageSection-${sectionId}`)
-          ?.offsetTop;
+        const childOffset = objectPageRef.current?.querySelector<HTMLElement>(
+          `#ObjectPageSection-${sectionId}`
+        )?.offsetTop;
         if (!isNaN(childOffset)) {
           objectPageRef.current?.scrollTo({
             top: childOffset - topHeaderHeight - anchorBarHeight - (headerPinned ? headerContentHeight : 0) + 45,
