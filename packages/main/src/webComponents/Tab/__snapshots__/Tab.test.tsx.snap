@@ -4,6 +4,7 @@ exports[`Tab Basic Test (generated) 1`] = `
 <DocumentFragment>
   <ui5-tab
     semantic-color="Default"
+    ui5-tab=""
   />
 </DocumentFragment>
 `;
