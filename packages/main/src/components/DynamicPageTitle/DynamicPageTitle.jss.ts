@@ -47,7 +47,6 @@ export const DynamicPageTitleStyles = {
   subTitleRight: {
     color: ThemingParameters.sapContent_LabelColor,
     fontSize: ThemingParameters.sapFontSize,
-    paddingLeft: '0.5rem',
     whiteSpace: 'nowrap'
   },
   subTitleBottom: {
@@ -57,23 +56,6 @@ export const DynamicPageTitleStyles = {
   },
   content: {
     display: 'flex',
-    flexShrink: 1.6,
-    paddingLeft: '1rem'
-  },
-  actions: {
-    flexShrink: 1.6,
-    paddingLeft: '0.5rem',
-    marginLeft: 'auto'
-  },
-  navigationActions: {
-    flexShrink: 1.6,
-    paddingLeft: '0.5rem',
-    marginLeft: 'auto'
-  },
-  navigationActionsSeparator: {
-    background: ThemingParameters.sapBackgroundColor,
-    width: '0.0625rem',
-    height: '2rem',
-    ...sapUiTinyMarginBeginEnd
+    flexShrink: 1.6
   }
 };

@@ -25,6 +25,7 @@ import React, {
 } from 'react';
 import { createUseStyles } from 'react-jss';
 import { DynamicPageTitleStyles } from './DynamicPageTitle.jss';
+import { useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
 
 export interface DynamicPageTitleProps extends CommonProps {
   /**
@@ -101,6 +102,7 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
   const containerClasses = StyleClassHelper.of(classes.container);
   const dynamicPageTitleRef = useConsolidatedRef<HTMLDivElement>(ref);
   const [showNavigationInTopArea, setShowNavigationInTopArea] = useState(undefined);
+  const isRtl = useIsRTL(dynamicPageTitleRef);
 
   if (isIE()) {
     containerClasses.put(classes.iEClass);
@@ -132,6 +134,8 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
     };
   }, [dynamicPageTitleRef.current, showNavigationInTopArea]);
 
+  const paddingLeftRtl = isRtl ? 'paddingRight' : 'paddingLeft';
+
   return (
     <FlexBox
       className={containerClasses.className}
@@ -149,8 +153,14 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
       <FlexBox alignItems={FlexBoxAlignItems.Center} style={{ flexGrow: 1, width: '100%' }}>
         <FlexBox className={classes.titleMainSection}>
           <div className={classes.title}>{heading}</div>
-          {showSubheadingRight && <div className={classes.subTitleRight}>{subHeading}</div>}
-          <div className={classes.content}>{children}</div>
+          {showSubheadingRight && (
+            <div className={classes.subTitleRight} style={{ [paddingLeftRtl]: '0.5rem' }}>
+              {subHeading}
+            </div>
+          )}
+          <div className={classes.content} style={{ [paddingLeftRtl]: '0.5rem' }}>
+            {children}
+          </div>
         </FlexBox>
         <Toolbar design={ToolbarDesign.Auto} toolbarStyle={ToolbarStyle.Clear}>
           <ToolbarSpacer />
