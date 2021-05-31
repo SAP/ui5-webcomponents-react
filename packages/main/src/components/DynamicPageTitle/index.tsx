@@ -20,11 +20,12 @@ export interface DynamicPageTitleProps extends CommonProps {
    */
   actions?: ReactElement | ReactElement[];
 
-  //todo should we really restrict this to only use the `Breadcrumbs` comp?
   /**
    * The `breadcrumbs` displayed in the `DynamicPageTitle` top-left area.
+   *
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `Breadcrumbs` in order to preserve the intended design.
    */
-  breadcrumbs?: ReactElement<BreadcrumbsPropTypes>;
+  breadcrumbs?: ReactNode | ReactNodeArray;
 
   /**
    * The content is positioned in the `DynamicPageTitle` middle area
