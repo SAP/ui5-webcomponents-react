@@ -1,10 +1,9 @@
 import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
-import { createUseStyles } from 'react-jss';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { enrichEventWithDetails, getScrollBarWidth } from '@ui5/webcomponents-react-base/dist/Utils';
-import { DynamicPageTitle } from '@ui5/webcomponents-react/dist/DynamicPageTitle';
+import { useIsRTL } from '@ui5/webcomponents-react-base/hooks/useIsRTL';
 import { GlobalStyleClasses } from '@ui5/webcomponents-react/dist/GlobalStyleClasses';
 import { ObjectPageMode } from '@ui5/webcomponents-react/dist/ObjectPageMode';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
@@ -22,6 +21,7 @@ import React, {
   useRef,
   useState
 } from 'react';
+import { createUseStyles } from 'react-jss';
 import { ObjectPageSectionPropTypes } from '../ObjectPageSection';
 import { ObjectPageSubSectionPropTypes } from '../ObjectPageSubSection';
 import { CollapsedAvatar } from './CollapsedAvatar';
@@ -39,7 +39,8 @@ import { useObserveHeights } from './useObserveHeights';
 declare const ResizeObserver;
 
 const SCROLL_BAR_WIDTH = 12;
-export interface ObjectPagePropTypes extends CommonProps {
+
+export interface ObjectPagePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * Defines the title section of the `ObjectPage`.
    *
@@ -150,6 +151,8 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   const topHeaderRef: RefObject<HTMLDivElement> = useRef();
   const headerContentRef: RefObject<HTMLDivElement> = useRef();
   const anchorBarRef: RefObject<HTMLDivElement> = useRef();
+
+  const isRTL = useIsRTL(objectPageRef);
 
   const [scrollbarWidth, setScrollbarWidth] = useState(SCROLL_BAR_WIDTH);
   const isMounted = useRef(false);
@@ -412,12 +415,6 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     objectPageClasses.put(classes.noHeader);
   }
 
-  const scrollBarWidthPadding = useMemo(() => {
-    return {
-      paddingRight: isIE() ? 0 : `${scrollbarWidth}px`
-    };
-  }, [scrollbarWidth]);
-
   const passThroughProps = usePassThroughHtmlProps(props, ['onSelectedSectionChanged']);
 
   useEffect(() => {
@@ -467,6 +464,28 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     }
     return title;
   }, [title]);
+  const scrollBarWidthPadding = useMemo(() => {
+    const padding = isIE() ? 0 : `calc(${scrollbarWidth}px + 1rem)`;
+    if (isRTL) {
+      return {
+        paddingRight: '1rem',
+        paddingLeft: padding
+      };
+    }
+    return {
+      paddingLeft: '1rem',
+      paddingRight: padding
+    };
+  }, [scrollbarWidth, isRTL]);
+
+  const paddingLeftRtl = isRTL ? 'paddingRight' : 'paddingLeft';
+
+  const headerInlineStyles = useMemo(() => {
+    return {
+      ...scrollBarWidthPadding,
+      gridAutoColumns: image && headerContentHeight === 0 ? 'auto calc(100% - 3rem)' : 'auto 100%'
+    };
+  }, [image, headerContentHeight, scrollBarWidthPadding]);
 
   return (
     <div
@@ -482,14 +501,11 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         ref={topHeaderRef}
         role="banner"
         aria-roledescription="Object Page header"
-        style={scrollBarWidthPadding}
+        style={headerInlineStyles}
         className={headerClasses.className}
       >
         {image && headerContentHeight === 0 && (
-          <>
-            <CollapsedAvatar image={image} imageShapeCircle={imageShapeCircle} />
-            <span style={{ width: '1rem' }} />
-          </>
+          <CollapsedAvatar image={image} imageShapeCircle={imageShapeCircle} style={{ [paddingLeftRtl]: '1rem' }} />
         )}
         {renderTitleSection()}
       </header>

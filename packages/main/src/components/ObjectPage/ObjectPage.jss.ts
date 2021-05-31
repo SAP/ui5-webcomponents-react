@@ -9,6 +9,7 @@ export const ObjectPageCssVariables = {
 
 const styles = {
   objectPage: {
+    boxSizing: 'border-box',
     width: '100%',
     height: '100%',
     maxHeight: '100vh',
@@ -60,17 +61,22 @@ const styles = {
     }
   },
   header: {
-    flexShrink: 0,
+    boxSizing: 'border-box',
     backgroundColor: ThemingParameters.sapObjectHeader_Background,
     position: 'sticky',
     top: 0,
     zIndex: 2,
-    padding: '0 2rem 0 2rem',
-    display: 'flex',
+    display: 'grid',
+    gridGap: '1rem',
     '& [data-component-name="DynamicPageTitle"]': {
+      gridColumn: 2,
       width: '100%',
       paddingLeft: 0,
       paddingRight: 0
+    },
+    '&:hover': {
+      // TODO background color should be sapObjectHeader_Hover_Background (same color as sapTile_Active_Background)
+      backgroundColor: ThemingParameters.sapTile_Active_Background
     }
   },
   iEClass: {
@@ -97,11 +103,6 @@ const styles = {
     zIndex: 2,
     '--_ui5_tc_header_box_shadow': 'inset 0px -1px 0 0px rgba(0,0,0,0.15)'
   },
-  titleBar: {
-    padding: '0.5rem 2rem',
-    display: 'block',
-    position: 'relative'
-  },
   container: {
     flex: '1 1 70%',
     boxSizing: 'border-box'
@@ -112,21 +113,6 @@ const styles = {
   subTitle: {
     verticalAlign: 'baseline',
     padding: '0 0 0.5rem 0.5rem'
-  },
-  actions: {
-    position: 'absolute',
-    top: '0',
-    paddingTop: '0.75rem',
-    zIndex: 1,
-    right: `var(${ObjectPageCssVariables.anchorRight})`,
-    left: `var(${ObjectPageCssVariables.anchorLeft})`,
-    display: 'inline-block',
-    float: `var(${ObjectPageCssVariables.anchorFloat})`,
-    verticalAlign: 'top',
-    '& > *': {
-      marginLeft: '0.5rem',
-      padding: 0
-    }
   },
   //todo delete uneccessary
   titleInHeaderContent: {
