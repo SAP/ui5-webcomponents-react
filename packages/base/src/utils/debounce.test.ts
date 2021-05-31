@@ -1,5 +1,10 @@
 import { debounce } from './debounce';
-import { setTimeout } from 'timers/promises';
+
+const setTimeout = (timeout: number) => {
+  return new Promise((resolve) => {
+    globalThis.setTimeout(resolve, timeout);
+  });
+};
 
 describe('debounce', function () {
   it('will be called debounced', async () => {

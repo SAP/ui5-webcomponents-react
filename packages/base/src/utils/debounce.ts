@@ -1,4 +1,4 @@
-//Copied from https://github.com/jashkenas/underscore/blob/master/modules/debounce.js (31th May 2021)
+// Copied from https://github.com/jashkenas/underscore/blob/master/modules/debounce.js (31th May 2021)
 
 const now = Date.now || (() => new Date().getTime());
 
