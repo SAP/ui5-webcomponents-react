@@ -56,6 +56,7 @@ export const DynamicPageTitleStyles = {
     marginTop: '0.25rem'
   },
   content: {
+    display: 'flex',
     flexShrink: 1.6,
     paddingLeft: '1rem'
   },

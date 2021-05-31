@@ -3,7 +3,7 @@ import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassH
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { enrichEventWithDetails, getScrollBarWidth } from '@ui5/webcomponents-react-base/dist/Utils';
-import { useIsRTL } from '@ui5/webcomponents-react-base/hooks/useIsRTL';
+import { useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
 import { GlobalStyleClasses } from '@ui5/webcomponents-react/dist/GlobalStyleClasses';
 import { ObjectPageMode } from '@ui5/webcomponents-react/dist/ObjectPageMode';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';

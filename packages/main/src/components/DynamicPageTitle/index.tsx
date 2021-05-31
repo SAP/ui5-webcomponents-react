@@ -1,16 +1,28 @@
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
 import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
-import { BreadcrumbsPropTypes } from '@ui5/webcomponents-react/dist/Breadcrumbs';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
 import { Toolbar } from '@ui5/webcomponents-react/dist/Toolbar';
 import { ToolbarDesign } from '@ui5/webcomponents-react/dist/ToolbarDesign';
 import { ToolbarSeparator } from '@ui5/webcomponents-react/dist/ToolbarSeparator';
 import { ToolbarSpacer } from '@ui5/webcomponents-react/dist/ToolbarSpacer';
+import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';
 import { ToolbarStyle } from '@ui5/webcomponents-react/dist/ToolbarStyle';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import React, { Children, FC, forwardRef, ReactElement, ReactNode, ReactNodeArray, Ref } from 'react';
+import debounce from 'lodash/debounce';
+import React, {
+  Children,
+  FC,
+  forwardRef,
+  ReactElement,
+  ReactNode,
+  ReactNodeArray,
+  Ref,
+  useEffect,
+  useState
+} from 'react';
 import { createUseStyles } from 'react-jss';
 import { DynamicPageTitleStyles } from './DynamicPageTitle.jss';
 
@@ -42,7 +54,6 @@ export interface DynamicPageTitleProps extends CommonProps {
    * Use this aggregation to display a `Title` (or any other component that serves as a heading)
    */
   subHeading?: ReactNode;
-  //todo description is wrong
   /**
    * The `DynamicPageTitle` navigation actions.<br />
    * *Note*: The `navigationActions` position depends on the control size.
@@ -88,11 +99,38 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
 
   const classes = useStyles();
   const containerClasses = StyleClassHelper.of(classes.container);
+  const dynamicPageTitleRef = useConsolidatedRef<HTMLDivElement>(ref);
+  const [showNavigationInTopArea, setShowNavigationInTopArea] = useState(undefined);
+
   if (isIE()) {
     containerClasses.put(classes.iEClass);
   }
   containerClasses.putIfPresent(className);
   const passThroughProps = usePassThroughHtmlProps(props, ['onToggleHeaderContentVisibility']);
+
+  useEffect(() => {
+    const observer = new ResizeObserver(
+      debounce(([titleContainer]) => {
+        // Firefox implements `borderBoxSize` as a single content rect, rather than an array
+        const borderBoxSize = Array.isArray(titleContainer.borderBoxSize)
+          ? titleContainer.borderBoxSize[0]
+          : titleContainer.borderBoxSize;
+        if (borderBoxSize.inlineSize < 1280 && !showNavigationInTopArea === false) {
+          setShowNavigationInTopArea(false);
+        } else if (borderBoxSize.inlineSize >= 1280 && !showNavigationInTopArea === true) {
+          setShowNavigationInTopArea(true);
+        }
+      }, 300)
+    );
+
+    if (dynamicPageTitleRef.current) {
+      observer.observe(dynamicPageTitleRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [dynamicPageTitleRef.current, showNavigationInTopArea]);
 
   return (
     <FlexBox
@@ -104,26 +142,23 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
       onClick={onToggleHeaderContentVisibility}
       {...passThroughProps}
     >
-      <div className={classes.breadcrumbs}>{breadcrumbs}</div>
+      <FlexBox justifyContent={FlexBoxJustifyContent.SpaceBetween}>
+        <div className={classes.breadcrumbs}>{breadcrumbs}</div>
+        {showNavigationInTopArea && <FlexBox alignItems={FlexBoxAlignItems.End}>{navigationActions}</FlexBox>}
+      </FlexBox>
       <FlexBox alignItems={FlexBoxAlignItems.Center} style={{ flexGrow: 1, width: '100%' }}>
         <FlexBox className={classes.titleMainSection}>
           <div className={classes.title}>{heading}</div>
-          {showSubheadingRight && (
-            //todo why flexboxes here
-            <FlexBox>
-              <div className={classes.subTitleRight}>{subHeading}</div>
-            </FlexBox>
-          )}
-          <div className={classes.content}>
-            {/*todo why toolbar here*/}
-            <Toolbar toolbarStyle={ToolbarStyle.Clear}>{children}</Toolbar>
-          </div>
+          {showSubheadingRight && <div className={classes.subTitleRight}>{subHeading}</div>}
+          <div className={classes.content}>{children}</div>
         </FlexBox>
         <Toolbar design={ToolbarDesign.Auto} toolbarStyle={ToolbarStyle.Clear}>
           <ToolbarSpacer />
           {actions}
-          {Children.count(actions) > 0 && Children.count(navigationActions) > 0 && <ToolbarSeparator />}
-          {navigationActions}
+          {!showNavigationInTopArea && Children.count(actions) > 0 && Children.count(navigationActions) > 0 && (
+            <ToolbarSeparator />
+          )}
+          {!showNavigationInTopArea && navigationActions}
         </Toolbar>
       </FlexBox>
       {!showSubheadingRight && (
