@@ -1,4 +1,5 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
+import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
 
 export const ObjectPageCssVariables = {
   anchorFloat: '--_ui5wcr_ObjectPage_actions_float',
@@ -66,7 +67,7 @@ const styles = {
     position: 'sticky',
     top: 0,
     zIndex: 2,
-    display: 'grid',
+    display: isIE() ? 'flex' : 'grid',
     gridGap: '1rem',
     '& [data-component-name="DynamicPageTitle"]': {
       gridColumn: 2,
