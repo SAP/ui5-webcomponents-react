@@ -47,6 +47,7 @@ exports[`FilterBar Render without crashing - default props 1`] = `
             </ui5-label>
           </div>
           <ui5-select
+            ui5-select=""
             value-state="None"
           >
             <ui5-option

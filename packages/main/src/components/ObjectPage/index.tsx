@@ -2,12 +2,11 @@ import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
-import { enrichEventWithDetails, getScrollBarWidth } from '@ui5/webcomponents-react-base/dist/Utils';
+import { enrichEventWithDetails, getScrollBarWidth, debounce } from '@ui5/webcomponents-react-base/dist/Utils';
 import { useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
 import { GlobalStyleClasses } from '@ui5/webcomponents-react/dist/GlobalStyleClasses';
 import { ObjectPageMode } from '@ui5/webcomponents-react/dist/ObjectPageMode';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import debounce from 'lodash/debounce';
 import React, {
   ComponentType,
   FC,

@@ -3,6 +3,7 @@
 exports[`Select Basic Test (generated) 1`] = `
 <DocumentFragment>
   <ui5-select
+    ui5-select=""
     value-state="None"
   />
 </DocumentFragment>

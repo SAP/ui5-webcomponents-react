@@ -4,6 +4,7 @@ exports[`UploadCollection Basic Test (generated) 1`] = `
 <DocumentFragment>
   <ui5-upload-collection
     mode="None"
+    ui5-upload-collection=""
   />
 </DocumentFragment>
 `;

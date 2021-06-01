@@ -10,11 +10,12 @@ import { StyleClassHelper } from './dist/StyleClassHelper';
 import { ThemingParameters } from './dist/ThemingParameters';
 import { useConsolidatedRef } from './dist/useConsolidatedRef';
 import { usePassThroughHtmlProps } from './dist/usePassThroughHtmlProps';
-import { deprecationNotice, enrichEventWithDetails, getScrollBarWidth } from './dist/Utils';
+import { deprecationNotice, enrichEventWithDetails, getScrollBarWidth, debounce } from './dist/Utils';
 
 export {
   StyleClassHelper,
   deprecationNotice,
+  debounce,
   getScrollBarWidth,
   Logger,
   LOG_LEVEL,
