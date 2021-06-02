@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.16.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.16.1...v0.16.2) (2021-06-02)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** fix focus and keyboard navigation for cells and subcomponents ([#1591](https://github.com/SAP/ui5-webcomponents-react/issues/1591)) ([11e1497](https://github.com/SAP/ui5-webcomponents-react/commit/11e14972f7e23d1482301ba1e87da49247d1bc40))
+* **cra-template-seed:** fix husky pre push hook ([#1635](https://github.com/SAP/ui5-webcomponents-react/issues/1635)) ([b8af6ea](https://github.com/SAP/ui5-webcomponents-react/commit/b8af6eabb21c131966118f258b66a74b20f013fd))
+* **cra-templates:** use latest UI5 Web Components for React version ([#1666](https://github.com/SAP/ui5-webcomponents-react/issues/1666)) ([d0dc44e](https://github.com/SAP/ui5-webcomponents-react/commit/d0dc44e52cf4bb394e2d95992f8d86503b922d12))
+* **enrichEventWithDetails:** add generic return type ([#1637](https://github.com/SAP/ui5-webcomponents-react/issues/1637)) ([48b4f64](https://github.com/SAP/ui5-webcomponents-react/commit/48b4f644aa2621c8c13a97a0de4106cf6d54effb))
+* **Form:** prevent crash when a single item within an array is passed as child ([#1624](https://github.com/SAP/ui5-webcomponents-react/issues/1624)) ([874d3a8](https://github.com/SAP/ui5-webcomponents-react/commit/874d3a8e48f59440a86c798fc36d73ac0e2bad32))
+
+
+### Features
+
+* **AnalyticalTable:** allow inline styles for rows in custom hooks ([#1664](https://github.com/SAP/ui5-webcomponents-react/issues/1664)) ([1c45689](https://github.com/SAP/ui5-webcomponents-react/commit/1c45689d59901bfc302930cf1c1d946d6cff7514))
+* **FilterBar:** FilterBar without Toolbar spreads filters to available width ([#1660](https://github.com/SAP/ui5-webcomponents-react/issues/1660)) ([bdb6173](https://github.com/SAP/ui5-webcomponents-react/commit/bdb617316465855a3ae2626ddd64b624b601b2b9))
+* **MessageBox:** add `initialFocus`, `onBeforeOpen` and `onAfterOpen` props ([#1661](https://github.com/SAP/ui5-webcomponents-react/issues/1661)) ([a4f974f](https://github.com/SAP/ui5-webcomponents-react/commit/a4f974fef78aff494a71c373f9b72440b6ee7568))
+
+
+
+
+
 ## [0.16.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.16.0...v0.16.1) (2021-05-12)
 
 
