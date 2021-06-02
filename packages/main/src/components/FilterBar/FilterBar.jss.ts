@@ -1,3 +1,4 @@
+import { isIE } from '@ui5/webcomponents-base/dist/Device';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 
 const styles = {
@@ -7,9 +8,7 @@ const styles = {
     paddingRight: '2rem',
     paddingBottom: '1px',
     background: ThemingParameters.sapObjectHeader_Background,
-    boxShadow: ThemingParameters.sapContent_HeaderShadow
-  },
-  filterItemExpand: {
+    boxShadow: ThemingParameters.sapContent_HeaderShadow,
     '--_ui5_input_width': '100%'
   },
   filterBarHeader: {
@@ -23,9 +22,10 @@ const styles = {
   },
   filterArea: {
     display: 'flex',
+    alignItems: 'center',
     flexWrap: 'wrap',
-    paddingTop: '1rem',
-    paddingBottom: '1rem',
+    marginTop: '1rem',
+    marginBottom: '1rem',
     background: ThemingParameters.sapObjectHeader_Background,
     transition: 'max-height 0.2s ease-out, opacity 0.2s ease-in'
   },
@@ -33,12 +33,11 @@ const styles = {
     maxHeight: '0',
     opacity: 0,
     padding: 0,
+    margin: 0,
     overflowY: 'auto'
   },
   filterAreaOpen: {
-    maxHeight: '500px',
-    opacity: 1,
-    overflowY: 'auto'
+    opacity: 1
   },
   headerRowRight: {
     display: 'flex',
@@ -54,6 +53,17 @@ const styles = {
     display: 'flex',
     width: '100%',
     justifyContent: 'center'
+  },
+  filterBarButtons: {
+    display: 'flex',
+    alignItems: 'center',
+    position: 'absolute',
+    right: 0,
+    marginRight: '1rem',
+    marginBottom: '1rem',
+    '& ui5-button': {
+      margin: '0 0.25rem 0 0.25rem'
+    }
   }
 };
 

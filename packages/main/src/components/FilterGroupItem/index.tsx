@@ -76,12 +76,10 @@ export const FilterGroupItem: FC<FilterGroupItemPropTypes> = forwardRef(
       loading,
       className,
       tooltip,
-      slot,
-      // @ts-ignore
-      inFB
+      slot
     } = props;
-
     const passThroughProps = usePassThroughHtmlProps(props);
+    const inFB = props['data-in-fb'];
 
     const styleClasses = StyleClassHelper.of(inFB ? classes.filterItem : classes.filterItemDialog);
     if (className) {

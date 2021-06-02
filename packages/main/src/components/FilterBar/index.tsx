@@ -1,7 +1,8 @@
+import { isIE } from '@ui5/webcomponents-base/dist/Device';
 import { useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
+import { debounce, enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import {
   CLEAR,
   FILTERS,
@@ -36,7 +37,6 @@ import React, {
   RefObject,
   useCallback,
   useEffect,
-  useMemo,
   useRef,
   useState
 } from 'react';
@@ -231,6 +231,8 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
   const [toggledFilters, setToggledFilters] = useState({});
   const prevVisibleInFilterBarProps = useRef({});
   const prevSearchInputPropsValueRef = useRef<string>();
+  const filterBarButtonsRef = useRef(null);
+  const filterAreaRef = useRef(null);
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
@@ -346,12 +348,13 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
   const prevChildren = useRef({});
 
   const renderChildren = useCallback(() => {
-    const childProps = { considerGroupName, inFB: true } as any;
+    const childProps = { considerGroupName, ['data-in-fb']: true, ['data-with-toolbar']: useToolbar } as any;
     return safeChildren()
       .filter((item: ReactElement<any, any>) => {
         return item?.props?.visible && item.props?.visibleInFilterBar;
       })
       .map((child: ReactElement<any, any>) => {
+        // necessary because of varying widths of input elements
         if (filterContainerWidth) {
           childProps.style = { width: filterContainerWidth, ...child.props.style };
         }
@@ -403,7 +406,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
           }
         });
       });
-  }, [filterContainerWidth, considerGroupName, dialogRefs, safeChildren, showFilterConfiguration]);
+  }, [filterContainerWidth, considerGroupName, dialogRefs, safeChildren, showFilterConfiguration, useToolbar]);
 
   const handleSearchValueChange = useCallback(
     (newVal) => {
@@ -438,9 +441,6 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
   const cssClasses = StyleClassHelper.of(classes.outerContainer);
   if (className) {
     cssClasses.put(className);
-  }
-  if (filterContainerWidth) {
-    cssClasses.put(classes.filterItemExpand);
   }
 
   useEffect(() => {
@@ -487,6 +487,101 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
     </>
   );
   const hasButtons = ToolbarButtons.props.children.some(Boolean);
+
+  const [filterBarButtonsWidth, setFilterBarButtonsWidth] = useState(undefined);
+  const [filterAreaWidth, setFilterAreaWidth] = useState(undefined);
+  const [firstChildWidth, setFirstChildWidth] = useState(undefined);
+
+  useEffect(() => {
+    const filterAreaObserver = new ResizeObserver(
+      debounce(([area]) => {
+        const firstChild = area.target?.children?.[0];
+        if (firstChild && firstChild.offsetWidth !== firstChildWidth) {
+          setFirstChildWidth(firstChild.offsetWidth + 16 /*margin*/);
+        }
+      }, 100)
+    );
+    if (!useToolbar && filterAreaRef.current) {
+      filterAreaObserver.observe(filterAreaRef.current);
+    }
+    return () => {
+      filterAreaObserver.disconnect();
+    };
+  }, [filterAreaRef.current]);
+
+  useEffect(() => {
+    const filterAreaObserver = new ResizeObserver(
+      debounce(([area]) => {
+        // Firefox implements `borderBoxSize` as a single content rect, rather than an array
+        const borderBoxSize = Array.isArray(area.borderBoxSize) ? area.borderBoxSize[0] : area.borderBoxSize;
+        if (borderBoxSize.inlineSize !== filterBarButtonsWidth) {
+          setFilterAreaWidth(borderBoxSize.inlineSize);
+        }
+      }, 100)
+    );
+    if (!useToolbar && filterAreaRef.current) {
+      filterAreaObserver.observe(filterAreaRef.current);
+    }
+    return () => {
+      filterAreaObserver.disconnect();
+    };
+  }, [filterAreaWidth, filterAreaRef.current]);
+
+  useEffect(() => {
+    const filterBarButtonsObserver = new ResizeObserver(
+      debounce(([buttons]) => {
+        const borderBoxSize = Array.isArray(buttons.borderBoxSize) ? buttons.borderBoxSize[0] : buttons.borderBoxSize;
+        if (borderBoxSize.inlineSize !== filterBarButtonsWidth) {
+          setFilterBarButtonsWidth(borderBoxSize.inlineSize);
+        }
+      }, 100)
+    );
+    if (!useToolbar && filterBarButtonsRef.current) {
+      filterBarButtonsObserver.observe(filterBarButtonsRef.current);
+    }
+    return () => {
+      filterBarButtonsObserver.disconnect();
+    };
+  }, [filterBarButtonsRef.current, useToolbar, filterBarButtonsWidth]);
+
+  const calculatedChildren = renderChildren();
+  // calculates the number of spacers depending on the available width inside the row
+  const renderSpacers = () => {
+    if (firstChildWidth && filterAreaWidth && filterBarButtonsWidth) {
+      let spacers = [];
+      const filterItemsWidth = calculatedChildren.length * firstChildWidth;
+      //early return if enough space is available
+      if (filterAreaWidth - filterBarButtonsWidth > filterItemsWidth) {
+        return null;
+      }
+      const usedSpaceLastRow = filterItemsWidth % filterAreaWidth;
+      // console.log(usedSpaceLastRow);
+      const emptySpaceLastRow = filterAreaWidth - usedSpaceLastRow;
+      // console.log(emptySpaceLastRow);
+      // deduct width of buttons container of the empty space in the last row to calculate number of spacers
+      const numberOfSpacers = Math.floor((emptySpaceLastRow - filterBarButtonsWidth) / firstChildWidth);
+      // console.log(numberOfSpacers);
+      for (let i = 0; i < numberOfSpacers; i++) {
+        spacers.push(
+          <div
+            key={`filter-spacer-${i}`}
+            style={{
+              height: 0,
+              marginTop: 0,
+              flexGrow: 1,
+              flexShrink: 0,
+              marginRight: '1rem',
+              maxWidth: isIE() ? '26.25rem' : 'calc(var(--_ui5wcr_filter_group_item_flex_basis) * 2)',
+              flexBasis: isIE() ? '13.125rem' : 'calc(var(--_ui5wcr_filter_group_item_flex_basis))'
+            }}
+          />
+        );
+      }
+      return spacers;
+    }
+    return null;
+  };
+
   return (
     <>
       {dialogOpen && showFilterConfiguration && (
@@ -512,7 +607,14 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
           {safeChildren()}
         </FilterDialog>
       )}
-      <div ref={ref} className={cssClasses.toString()} style={style} title={tooltip} slot={slot} {...passThroughProps}>
+      <div
+        ref={ref}
+        className={cssClasses.toString()}
+        style={{ ['--_ui5wcr_filter_group_item_flex_basis']: filterContainerWidth, ...style } as CSSProperties}
+        title={tooltip}
+        slot={slot}
+        {...passThroughProps}
+      >
         {loading ? (
           <BusyIndicator active className={classes.loadingContainer} size={BusyIndicatorSize.Large} />
         ) : (
@@ -527,16 +629,28 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
               </Toolbar>
             )}
             {mountFilters && (
-              <div className={filterAreaClasses.className}>
-                {renderChildren()}
+              <div className={filterAreaClasses.className} style={{ position: 'relative' }} ref={filterAreaRef}>
+                {calculatedChildren}
                 {!useToolbar && (
-                  <FlexBox
-                    alignItems={FlexBoxAlignItems.Center}
-                    justifyContent={FlexBoxJustifyContent.End}
-                    style={{ flexGrow: 1 }}
-                  >
-                    {ToolbarButtons}
-                  </FlexBox>
+                  <>
+                    {renderSpacers()}
+                    <div
+                      style={{
+                        width: filterBarButtonsWidth ? `${filterBarButtonsWidth}px` : '120px',
+                        minWidth: filterBarButtonsWidth ? `${filterBarButtonsWidth}px` : '120px',
+                        height: 'var(--_ui5_input_height)',
+                        flexGrow: 1,
+                        flexShrink: 0,
+                        marginRight: '0.75rem',
+                        maxWidth: isIE() ? '26.25rem' : 'calc(var(--_ui5wcr_filter_group_item_flex_basis) * 2)',
+                        flexBasis: isIE() ? '13.125rem' : 'calc(var(--_ui5wcr_filter_group_item_flex_basis))'
+                      }}
+                    >
+                      <div className={classes.filterBarButtons} ref={filterBarButtonsRef}>
+                        {ToolbarButtons}
+                      </div>
+                    </div>
+                  </>
                 )}
               </div>
             )}
@@ -548,6 +662,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
 });
 
 FilterBar.defaultProps = {
+  filterContainerWidth: '13.125rem',
   useToolbar: true,
   filterBarExpanded: true,
   showClearOnFB: false,
