@@ -26,7 +26,7 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     flexWrap: 'wrap',
-    marginTop: '1rem',
+    paddingTop: '1rem',
     marginBottom: '1rem',
     background: ThemingParameters.sapObjectHeader_Background,
     transition: 'max-height 0.2s ease-out, opacity 0.2s ease-in'

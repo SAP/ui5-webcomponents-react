@@ -3,7 +3,7 @@
 exports[`FilterBar Render without crashing - default props 1`] = `
 <DocumentFragment>
   <div
-    class="FilterBar-outerContainer"
+    class="FilterBar-outerContainer FilterBar-outerContainerWithToolbar"
     style="--_ui5wcr_filter_group_item_flex_basis: 13.125rem;"
   >
     <div
@@ -87,7 +87,7 @@ exports[`FilterBar Render without crashing - default props 1`] = `
 exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
 <DocumentFragment>
   <div
-    class="FilterBar-outerContainer"
+    class="FilterBar-outerContainer FilterBar-outerContainerWithToolbar"
     style="--_ui5wcr_filter_group_item_flex_basis: 12rem;"
   >
     <div
@@ -462,7 +462,7 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
 exports[`FilterBar Toggle FilterBar filters 1`] = `
 <DocumentFragment>
   <div
-    class="FilterBar-outerContainer"
+    class="FilterBar-outerContainer FilterBar-outerContainerWithToolbar"
     style="--_ui5wcr_filter_group_item_flex_basis: 13.125rem;"
   >
     <div
