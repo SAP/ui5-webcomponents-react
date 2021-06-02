@@ -54,10 +54,10 @@ const styles = {
     position: 'absolute',
     right: 0,
     marginBottom: '1rem',
-    '&:not(:first-child)': {
+    '& > *:not(:first-child)': {
       marginLeft: '0.25rem'
     },
-    '&:not(:last-child)': {
+    '& > *:not(:last-child)': {
       marginRight: '0.25rem'
     }
   },
