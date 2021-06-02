@@ -1,5 +1,4 @@
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
-import { useIsRTL } from '@ui5/webcomponents-react-base/hooks/useIsRTL';
+import { useConsolidatedRef, useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
 import { createUseStyles } from 'react-jss';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
