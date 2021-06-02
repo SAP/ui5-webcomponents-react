@@ -443,6 +443,9 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
   if (className) {
     cssClasses.put(className);
   }
+  if (useToolbar) {
+    cssClasses.put(classes.outerContainerWithToolbar);
+  }
 
   useEffect(() => {
     prevSearchInputPropsValueRef.current = search?.props?.value;

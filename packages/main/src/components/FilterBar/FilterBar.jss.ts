@@ -3,13 +3,15 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingPar
 
 const styles = {
   outerContainer: {
+    background: ThemingParameters.sapObjectHeader_Background,
+    '--_ui5_input_width': '100%'
+  },
+  outerContainerWithToolbar: {
     paddingTop: '0.5rem',
     paddingLeft: '2rem',
     paddingRight: '2rem',
     paddingBottom: '1px',
-    background: ThemingParameters.sapObjectHeader_Background,
-    boxShadow: ThemingParameters.sapContent_HeaderShadow,
-    '--_ui5_input_width': '100%'
+    boxShadow: ThemingParameters.sapContent_HeaderShadow
   },
   filterBarHeader: {
     alignItems: 'center',
