@@ -45,8 +45,9 @@ import React, {
   useMemo
 } from 'react';
 import { createUseStyles } from 'react-jss';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5DialogDomRef } from '../../interfaces/Ui5DialogDomRef';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { Ui5DialogDomRef } from '@ui5/webcomponents-react/interfaces/Ui5DialogDomRef';
+import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { stopPropagation } from '../../internal/stopPropagation';
 import styles from './MessageBox.jss';
 
@@ -78,9 +79,21 @@ export interface MessageBoxPropTypes extends CommonProps {
    */
   type?: MessageBoxTypes;
   /**
+   * Defines the ID of the HTML Element or the `MessageBoxAction`, which will get the initial focus.
+   */
+  initialFocus?: string | MessageBoxActions;
+  /**
    * Callback to be executed when the `MessageBox` is closed (either by pressing on one of the `actions` or by pressing the `ESC` key). `event.detail.action` contains the pressed action button.
    */
   onClose: (event: CustomEvent<{ action: MessageBoxActions }>) => void;
+  /**
+   * Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. This event does not bubble.
+   */
+  onBeforeOpen?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  /**
+   * Fired after the component is opened. This event does not bubble.
+   */
+  onAfterOpen?: (event: Ui5CustomEvent<HTMLElement>) => void;
 }
 
 const useStyles = createUseStyles(styles, { name: 'MessageBox' });
@@ -90,7 +103,22 @@ const useStyles = createUseStyles(styles, { name: 'MessageBox' });
  * For convenience, it also provides an `open` prop, so it is not necessary to attach a `ref` to open the `MessageBox`.
  */
 const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDomRef>) => {
-  const { open, type, children, className, style, tooltip, slot, title, icon, actions, onClose } = props;
+  const {
+    open,
+    type,
+    children,
+    className,
+    style,
+    tooltip,
+    slot,
+    title,
+    icon,
+    actions,
+    onClose,
+    initialFocus,
+    onBeforeOpen,
+    onAfterOpen
+  } = props;
   const dialogRef = useConsolidatedRef<Ui5DialogDomRef>(ref);
 
   const classes = useStyles();
@@ -176,8 +204,7 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
   useEffect(() => {
     if (dialogRef.current) {
       if (open) {
-        dialogRef.current.open?.(true);
-        dialogRef.current.focus();
+        dialogRef.current.open?.();
       } else {
         dialogRef.current.close?.();
       }
@@ -195,7 +222,10 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
       style={style}
       tooltip={tooltip}
       className={messageBoxClassNames}
+      onAfterOpen={onAfterOpen}
+      onBeforeOpen={onBeforeOpen}
       onAfterClose={open ? handleOnClose : stopPropagation}
+      initialFocus={initialFocus}
       {...passThroughProps}
     >
       <header slot="header" className={classes.header} data-type={type}>
@@ -207,6 +237,7 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
         {getActions().map((action, index) => {
           return (
             <Button
+              id={action}
               key={`${action}-${index}`}
               design={index === 0 ? ButtonDesign.Emphasized : ButtonDesign.Transparent}
               onClick={handleOnClose}
