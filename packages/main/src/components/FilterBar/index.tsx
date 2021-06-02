@@ -1,5 +1,4 @@
-import { isIE } from '@ui5/webcomponents-base/dist/Device';
-import { useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useConsolidatedRef, useI18nBundle, useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { debounce, enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
@@ -15,9 +14,6 @@ import { BusyIndicator } from '@ui5/webcomponents-react/dist/BusyIndicator';
 import { BusyIndicatorSize } from '@ui5/webcomponents-react/dist/BusyIndicatorSize';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
-import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
-import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
-import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';
 import { InputPropTypes } from '@ui5/webcomponents-react/dist/Input';
 import { Toolbar } from '@ui5/webcomponents-react/dist/Toolbar';
 import { ToolbarSeparator } from '@ui5/webcomponents-react/dist/ToolbarSeparator';
@@ -233,6 +229,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
   const prevSearchInputPropsValueRef = useRef<string>();
   const filterBarButtonsRef = useRef(null);
   const filterAreaRef = useRef(null);
+  const filterBarRef = useConsolidatedRef<HTMLDivElement>(ref);
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
@@ -242,6 +239,9 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
   const hideFilterBarText = i18nBundle.getText(HIDE_FILTER_BAR);
   const goText = i18nBundle.getText(GO);
   const filtersText = i18nBundle.getText(FILTERS);
+
+  const isRtl = useIsRTL(filterBarRef);
+  const transformRightRTL = isRtl ? 'Left' : 'Right';
 
   useEffect(() => {
     Children.toArray(children).forEach((item: ReactElement<any>) => {
@@ -507,7 +507,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
     return () => {
       filterAreaObserver.disconnect();
     };
-  }, [filterAreaRef.current]);
+  }, [filterAreaRef.current, useToolbar]);
 
   useEffect(() => {
     const filterAreaObserver = new ResizeObserver(
@@ -525,7 +525,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
     return () => {
       filterAreaObserver.disconnect();
     };
-  }, [filterAreaWidth, filterAreaRef.current]);
+  }, [filterAreaWidth, filterAreaRef.current, useToolbar]);
 
   useEffect(() => {
     const filterBarButtonsObserver = new ResizeObserver(
@@ -555,24 +555,16 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
         return null;
       }
       const usedSpaceLastRow = filterItemsWidth % filterAreaWidth;
-      // console.log(usedSpaceLastRow);
       const emptySpaceLastRow = filterAreaWidth - usedSpaceLastRow;
-      // console.log(emptySpaceLastRow);
       // deduct width of buttons container of the empty space in the last row to calculate number of spacers
       const numberOfSpacers = Math.floor((emptySpaceLastRow - filterBarButtonsWidth) / firstChildWidth);
-      // console.log(numberOfSpacers);
       for (let i = 0; i < numberOfSpacers; i++) {
         spacers.push(
           <div
             key={`filter-spacer-${i}`}
+            className={classes.spacer}
             style={{
-              height: 0,
-              marginTop: 0,
-              flexGrow: 1,
-              flexShrink: 0,
-              marginRight: '1rem',
-              maxWidth: isIE() ? '26.25rem' : 'calc(var(--_ui5wcr_filter_group_item_flex_basis) * 2)',
-              flexBasis: isIE() ? '13.125rem' : 'calc(var(--_ui5wcr_filter_group_item_flex_basis))'
+              [`margin${transformRightRTL}`]: '1rem'
             }}
           />
         );
@@ -608,7 +600,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
         </FilterDialog>
       )}
       <div
-        ref={ref}
+        ref={filterBarRef}
         className={cssClasses.toString()}
         style={{ ['--_ui5wcr_filter_group_item_flex_basis']: filterContainerWidth, ...style } as CSSProperties}
         title={tooltip}
@@ -638,15 +630,19 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
                       style={{
                         width: filterBarButtonsWidth ? `${filterBarButtonsWidth}px` : '120px',
                         minWidth: filterBarButtonsWidth ? `${filterBarButtonsWidth}px` : '120px',
-                        height: 'var(--_ui5_input_height)',
-                        flexGrow: 1,
-                        flexShrink: 0,
-                        marginRight: '0.75rem',
-                        maxWidth: isIE() ? '26.25rem' : 'calc(var(--_ui5wcr_filter_group_item_flex_basis) * 2)',
-                        flexBasis: isIE() ? '13.125rem' : 'calc(var(--_ui5wcr_filter_group_item_flex_basis))'
+                        [`margin${transformRightRTL}`]: '1rem'
                       }}
+                      className={classes.lastSpacer}
                     >
-                      <div className={classes.filterBarButtons} ref={filterBarButtonsRef}>
+                      <div
+                        className={classes.filterBarButtons}
+                        ref={filterBarButtonsRef}
+                        style={{
+                          [`margin${transformRightRTL}`]: '1rem',
+                          left: isRtl ? 0 : 'auto',
+                          right: isRtl ? 'auto' : 0
+                        }}
+                      >
                         {ToolbarButtons}
                       </div>
                     </div>

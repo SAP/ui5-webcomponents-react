@@ -2,7 +2,6 @@ import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
 
 const styles = {
   filterItem: {
-    marginRight: '1rem',
     marginBottom: '1rem',
     flexBasis: isIE() ? '13.125rem' : 'var(--_ui5wcr_filter_group_item_flex_basis)',
     maxWidth: isIE() ? '13.125rem' : 'calc(var(--_ui5wcr_filter_group_item_flex_basis))',

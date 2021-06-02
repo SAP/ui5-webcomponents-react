@@ -39,14 +39,6 @@ const styles = {
   filterAreaOpen: {
     opacity: 1
   },
-  headerRowRight: {
-    display: 'flex',
-    justifyContent: 'flex-end',
-    flexGrow: 1,
-    '& ui5-button': {
-      marginLeft: '0.5rem'
-    }
-  },
   showFiltersBtn: { minWidth: '108px' },
   loadingContainer: {
     marginBottom: '0.5rem',
@@ -59,11 +51,28 @@ const styles = {
     alignItems: 'center',
     position: 'absolute',
     right: 0,
-    marginRight: '1rem',
     marginBottom: '1rem',
-    '& ui5-button': {
-      margin: '0 0.25rem 0 0.25rem'
+    '&:not(:first-child)': {
+      marginLeft: '0.25rem'
+    },
+    '&:not(:last-child)': {
+      marginRight: '0.25rem'
     }
+  },
+  spacer: {
+    height: 0,
+    marginTop: 0,
+    flexGrow: 1,
+    flexShrink: 0,
+    maxWidth: isIE() ? '26.25rem' : 'calc(var(--_ui5wcr_filter_group_item_flex_basis) * 2)',
+    flexBasis: isIE() ? '13.125rem' : 'calc(var(--_ui5wcr_filter_group_item_flex_basis))'
+  },
+  lastSpacer: {
+    height: 'var(--_ui5_input_height)',
+    flexGrow: 1,
+    flexShrink: 0,
+    maxWidth: isIE() ? '26.25rem' : 'calc(var(--_ui5wcr_filter_group_item_flex_basis) * 2)',
+    flexBasis: isIE() ? '13.125rem' : 'calc(var(--_ui5wcr_filter_group_item_flex_basis))'
   }
 };
 
