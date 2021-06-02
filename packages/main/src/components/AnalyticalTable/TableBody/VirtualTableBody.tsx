@@ -251,6 +251,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
           <div
             {...rowProps}
             style={{
+              ...(rowProps.style ?? {}),
               height: `${rowHeight}px`,
               transform: `translateY(${virtualRow.start}px)`,
               position: 'absolute'
