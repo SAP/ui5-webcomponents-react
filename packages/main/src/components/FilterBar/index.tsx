@@ -5,6 +5,7 @@ import { debounce, enrichEventWithDetails } from '@ui5/webcomponents-react-base/
 import {
   CLEAR,
   FILTERS,
+  ADAPT_FILTERS,
   GO,
   HIDE_FILTER_BAR,
   RESTORE,
@@ -238,7 +239,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
   const showFilterBarText = i18nBundle.getText(SHOW_FILTER_BAR);
   const hideFilterBarText = i18nBundle.getText(HIDE_FILTER_BAR);
   const goText = i18nBundle.getText(GO);
-  const filtersText = i18nBundle.getText(FILTERS);
+  const filtersText = useToolbar ? i18nBundle.getText(FILTERS) : i18nBundle.getText(ADAPT_FILTERS);
 
   const isRtl = useIsRTL(filterBarRef);
   const transformRightRTL = isRtl ? 'Left' : 'Right';
