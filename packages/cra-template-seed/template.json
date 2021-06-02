@@ -7,7 +7,7 @@
       "@ui5/webcomponents": "1.0.0-rc.14",
       "@ui5/webcomponents-fiori": "1.0.0-rc.14",
       "@ui5/webcomponents-icons": "1.0.0-rc.14",
-      "@ui5/webcomponents-react": "^0.15.2",
+      "@ui5/webcomponents-react": "^0.16.2",
       "axios": "^0.21.1",
       "formik": "^2.1.7",
       "i18next": "^19.7.0",
