@@ -1,0 +1,43 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Card, ResponsiveGridLayout } from '@ui5/webcomponents-react';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
+
+<Meta title="Layouts & Floorplans / ResponsiveGridLayout" component={ResponsiveGridLayout} argTypes={DocsCommonProps} />
+
+<DocsHeader />
+
+<br />
+
+## Example
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return (
+        <ResponsiveGridLayout {...args}>
+          <Card style={{ gridColumn: 'span 2' }} heading={'Card 1'}></Card>
+          <Card style={{ gridColumn: 'span 2' }} heading={'Card 2'}></Card>
+          <Card style={{ gridColumn: 'span 4' }} heading={'Card 3'}></Card>
+          <Card style={{ gridColumn: 'span 4' }} heading={'Card 4'}></Card>
+          <Card heading={'Card 5'}></Card>
+          <Card heading={'Card 6'}></Card>
+          <Card heading={'Card 7'}></Card>
+          <Card heading={'Card 8'}></Card>
+          <Card heading={'Card 9'}></Card>
+          <Card heading={'Card 10'}></Card>
+          <Card heading={'Card 11'}></Card>
+          <Card heading={'Card 12'}></Card>
+          <Card heading={'Card 13'}></Card>
+          <Card heading={'Card 14'}></Card>
+          <Card heading={'Card 15'}></Card>
+          <Card heading={'Card 16'}></Card>
+        </ResponsiveGridLayout>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Properties
+
+<ArgsTable story="." />
