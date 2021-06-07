@@ -121,7 +121,7 @@ const FormItem: FC<FormItemProps> = (props: FormItemProps) => {
     );
   }
 
-  const inlineLabelStyles = useMemo(() => {
+  const inlineLabelStyles = () => {
     const styles = { gridColumnStart, gridRowStart };
     if (CENTER_ALIGNED_CHILDREN.has((children as any)?.type?.displayName)) {
       return {
@@ -131,11 +131,11 @@ const FormItem: FC<FormItemProps> = (props: FormItemProps) => {
       };
     }
     return styles;
-  }, [children, lastGroupItem]);
+  };
 
   return (
     <>
-      {renderLabel(label, classes, inlineLabelStyles)}
+      {renderLabel(label, classes, inlineLabelStyles())}
       <div
         className={classes.content}
         style={{
