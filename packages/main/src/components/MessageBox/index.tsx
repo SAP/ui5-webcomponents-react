@@ -72,12 +72,12 @@ export interface MessageBoxPropTypes extends CommonProps {
   actions?: (MessageBoxActions | string)[];
   /**
    * Specifies which action of the created dialog will be emphasized.
+   *
+   * @since 0.16.3
    */
   emphasizedAction?: MessageBoxActions | string;
   /**
    * A custom icon. If not present, it will be derived from the `MessageBox` type.
-   *
-   * @since 0.16.3
    */
   icon?: ReactNode;
   /**
