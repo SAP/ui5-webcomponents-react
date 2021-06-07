@@ -1,9 +1,9 @@
+import '@ui5/webcomponents-icons/dist/hint';
 import '@ui5/webcomponents-icons/dist/message-error';
 import '@ui5/webcomponents-icons/dist/message-information';
 import '@ui5/webcomponents-icons/dist/message-success';
 import '@ui5/webcomponents-icons/dist/message-warning';
 import '@ui5/webcomponents-icons/dist/question-mark';
-import '@ui5/webcomponents-icons/dist/hint';
 import { useConsolidatedRef, useI18nBundle, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
@@ -33,6 +33,9 @@ import { MessageBoxTypes } from '@ui5/webcomponents-react/dist/MessageBoxTypes';
 import { Text } from '@ui5/webcomponents-react/dist/Text';
 import { Title } from '@ui5/webcomponents-react/dist/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { Ui5DialogDomRef } from '@ui5/webcomponents-react/interfaces/Ui5DialogDomRef';
 import React, {
   FC,
   forwardRef,
@@ -45,9 +48,6 @@ import React, {
   useMemo
 } from 'react';
 import { createUseStyles } from 'react-jss';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { Ui5DialogDomRef } from '@ui5/webcomponents-react/interfaces/Ui5DialogDomRef';
-import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { stopPropagation } from '../../internal/stopPropagation';
 import styles from './MessageBox.jss';
 
@@ -70,6 +70,10 @@ export interface MessageBoxPropTypes extends CommonProps {
    * Array of actions of the MessageBox. Those actions will be transformed into buttons in the `MessageBox` footer.
    */
   actions?: (MessageBoxActions | string)[];
+  /**
+   * Specifies which action of the created dialog will be emphasized.
+   */
+  emphasizedAction?: MessageBoxActions | string;
   /**
    * A custom icon. If not present, it will be derived from the `MessageBox` type.
    */
@@ -114,6 +118,7 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
     title,
     icon,
     actions,
+    emphasizedAction,
     onClose,
     initialFocus,
     onBeforeOpen,
@@ -239,7 +244,7 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
             <Button
               id={action}
               key={`${action}-${index}`}
-              design={index === 0 ? ButtonDesign.Emphasized : ButtonDesign.Transparent}
+              design={emphasizedAction === action ? ButtonDesign.Emphasized : ButtonDesign.Transparent}
               onClick={handleOnClose}
               data-action={action}
             >
@@ -259,6 +264,7 @@ MessageBox.defaultProps = {
   title: null,
   icon: null,
   type: MessageBoxTypes.CONFIRM,
+  emphasizedAction: MessageBoxActions.OK,
   actions: []
 };
 
