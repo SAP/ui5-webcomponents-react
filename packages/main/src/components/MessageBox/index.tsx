@@ -76,6 +76,8 @@ export interface MessageBoxPropTypes extends CommonProps {
   emphasizedAction?: MessageBoxActions | string;
   /**
    * A custom icon. If not present, it will be derived from the `MessageBox` type.
+   *
+   * @since 0.16.3
    */
   icon?: ReactNode;
   /**
