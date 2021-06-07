@@ -235,7 +235,7 @@ exports[`MessageBox Error 1`] = `
     >
       <ui5-button
         data-action="Close"
-        design="Emphasized"
+        design="Transparent"
         id="Close"
         ui5-button=""
       >
@@ -471,7 +471,7 @@ exports[`MessageBox Show 1`] = `
     >
       <ui5-button
         data-action="Yes"
-        design="Emphasized"
+        design="Transparent"
         id="Yes"
         ui5-button=""
       >
