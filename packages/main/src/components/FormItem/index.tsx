@@ -2,8 +2,18 @@ import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
 import { Label, LabelPropTypes } from '@ui5/webcomponents-react/dist/Label';
-import React, { cloneElement, CSSProperties, FC, isValidElement, ReactElement, ReactNode, ReactNodeArray } from 'react';
+import React, {
+  cloneElement,
+  CSSProperties,
+  FC,
+  isValidElement,
+  ReactElement,
+  ReactNode,
+  ReactNodeArray,
+  useMemo
+} from 'react';
 import { createUseStyles } from 'react-jss';
+import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming';
 
 export interface FormItemProps {
   /**
@@ -16,12 +26,24 @@ export interface FormItemProps {
   children: ReactNode | ReactNodeArray;
 }
 
+//TODO: remove this when ui5-webcomponents adjusted this in their repo
+addCustomCSS(
+  'ui5-checkbox',
+  `
+:host .ui5-checkbox-icon {
+ position:absolute;
+}
+ `
+);
+
 interface InternalProps extends FormItemProps {
   columnIndex?: number;
   labelSpan?: number;
   rowIndex?: number;
   lastGroupItem?: boolean;
 }
+
+const CENTER_ALIGNED_CHILDREN = new Set(['CheckBox', 'RadioButton', 'Switch', 'RangeSlider', 'Slider']);
 
 const useStyles = createUseStyles(
   {
@@ -99,9 +121,21 @@ const FormItem: FC<FormItemProps> = (props: FormItemProps) => {
     );
   }
 
+  const inlineLabelStyles = useMemo(() => {
+    const styles = { gridColumnStart, gridRowStart };
+    if (CENTER_ALIGNED_CHILDREN.has((children as any)?.type?.displayName)) {
+      return {
+        ...styles,
+        alignSelf: 'center',
+        paddingBottom: lastGroupItem ? '1rem' : 0
+      };
+    }
+    return styles;
+  }, [children, lastGroupItem]);
+
   return (
     <>
-      {renderLabel(label, classes, { gridColumnStart, gridRowStart })}
+      {renderLabel(label, classes, inlineLabelStyles)}
       <div
         className={classes.content}
         style={{
