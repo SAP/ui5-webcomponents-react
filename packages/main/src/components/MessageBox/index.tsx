@@ -1,9 +1,9 @@
+import '@ui5/webcomponents-icons/dist/hint';
 import '@ui5/webcomponents-icons/dist/message-error';
 import '@ui5/webcomponents-icons/dist/message-information';
 import '@ui5/webcomponents-icons/dist/message-success';
 import '@ui5/webcomponents-icons/dist/message-warning';
 import '@ui5/webcomponents-icons/dist/question-mark';
-import '@ui5/webcomponents-icons/dist/hint';
 import { useConsolidatedRef, useI18nBundle, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
@@ -33,6 +33,9 @@ import { MessageBoxTypes } from '@ui5/webcomponents-react/lib/MessageBoxTypes';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { Ui5DialogDomRef } from '@ui5/webcomponents-react/interfaces/Ui5DialogDomRef';
 import React, {
   FC,
   forwardRef,
@@ -45,8 +48,6 @@ import React, {
   useMemo
 } from 'react';
 import { createUseStyles } from 'react-jss';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { Ui5DialogDomRef } from '@ui5/webcomponents-react/interfaces/Ui5DialogDomRef';
 import { stopPropagation } from '../../internal/stopPropagation';
 import styles from './MessageBox.jss';
 
@@ -70,6 +71,12 @@ export interface MessageBoxPropTypes extends CommonProps {
    */
   actions?: (MessageBoxActions | string)[];
   /**
+   * Specifies which action of the created dialog will be emphasized.
+   *
+   * @since 0.16.3
+   */
+  emphasizedAction?: MessageBoxActions | string;
+  /**
    * A custom icon. If not present, it will be derived from the `MessageBox` type.
    */
   icon?: ReactNode;
@@ -88,11 +95,11 @@ export interface MessageBoxPropTypes extends CommonProps {
   /**
    * Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. This event does not bubble.
    */
-  onBeforeOpen?: (event: CustomEvent) => void;
+  onBeforeOpen?: (event: Ui5CustomEvent<HTMLElement>) => void;
   /**
    * Fired after the component is opened. This event does not bubble.
    */
-  onAfterOpen?: (event: CustomEvent) => void;
+  onAfterOpen?: (event: Ui5CustomEvent<HTMLElement>) => void;
 }
 
 const useStyles = createUseStyles(styles, { name: 'MessageBox' });
@@ -113,6 +120,7 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
     title,
     icon,
     actions,
+    emphasizedAction,
     onClose,
     initialFocus,
     onBeforeOpen,
@@ -238,7 +246,7 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
             <Button
               id={action}
               key={`${action}-${index}`}
-              design={index === 0 ? ButtonDesign.Emphasized : ButtonDesign.Transparent}
+              design={emphasizedAction === action ? ButtonDesign.Emphasized : ButtonDesign.Transparent}
               onClick={handleOnClose}
               data-action={action}
             >
@@ -258,6 +266,7 @@ MessageBox.defaultProps = {
   title: null,
   icon: null,
   type: MessageBoxTypes.CONFIRM,
+  emphasizedAction: MessageBoxActions.OK,
   actions: []
 };
 
