@@ -59,3 +59,12 @@ jobs:
           folder: .out # The folder the action should deploy.
           target-folder: master
           clean: true
+
+      - uses: actions/github-script@v4
+        env:
+          GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        with:
+          script: |
+            const script = require('./.github/createIssueCommentsForRelease.js')
+            const { version } = require('./lerna.json')
+            await script({github, context, core, version})
