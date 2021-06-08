@@ -1,3 +1,4 @@
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import React, { CSSProperties, forwardRef, ReactNode, ReactNodeArray, Ref } from 'react';
@@ -8,55 +9,67 @@ export interface ResponsiveGridLayoutPropTypes extends CommonProps {
   /**
    * Number of columns to show on small screens (`max-width: 599px`)
    */
-  columnsS: number;
+  columnsS?: number;
 
   /**
    * Number of columns to show on medium screens (`width >= 600px and width <=1023px`)
    */
-  columnsM: number;
+  columnsM?: number;
 
   /**
    * Number of columns to show on large screens (`width >= 1024px and width <=1439px`)
    */
-  columnsL: number;
+  columnsL?: number;
 
   /**
    * Number of columns to show on extra large screens (`min-width: 1440px`)
    */
-  columnsXL: number;
+  columnsXL?: number;
 
   /**
    * Defines how many columns a single child should cover on small screens.
    */
-  columnSpanS: number;
+  columnSpanS?: number;
   /**
    * Defines how many columns a single child should cover on medium screens.
    */
-  columnSpanM: number;
+  columnSpanM?: number;
   /**
    * Defines how many columns a single child should cover on large screens.
    */
-  columnSpanL: number;
+  columnSpanL?: number;
   /**
    * Defines how many columns a single child should cover on extra large.
    */
-  columnSpanXL: number;
+  columnSpanXL?: number;
   /**
    * Gap between two columns of the grid
    */
-  columnGap: '0.5rem' | '1rem';
+  columnGap?: '0.5rem' | '1rem';
 
   /**
    * Gap between two rows of the grid
    */
-  rowGap: '0.5rem' | '1rem';
+  rowGap?: '0.5rem' | '1rem';
 
+  /**
+   * Child elements to be placed inside of the grid. In case you want to control the column span of each child independently,
+   * you can add an element style using the [gridColumn shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column).
+   *
+   * Example: If you want one child to span across 4 columns, you can add this element style to the child element:
+   * `style={{ gridColumn: 'span 4 }}`
+   */
   children: ReactNode | ReactNodeArray;
 }
 
 const useStyles = createUseStyles(ResponsiveGridLayoutStyles, { name: 'ResponsiveGridLayout' });
 
 /**
+ * The Responsive Grid Layout positions UI elements in a multi column flow layout.
+ * They can be configured to display a variable number of columns depending on available screen size.
+ * With these controls, it is possible to achieve flexible layouts and line breaks for large, medium,
+ * and small-sized screens, such as desktop, tablet, and mobile.
+ *
  * @since 0.16.4
  */
 const ResponsiveGridLayout = forwardRef((props: ResponsiveGridLayoutPropTypes, ref: Ref<HTMLDivElement>) => {
@@ -64,7 +77,6 @@ const ResponsiveGridLayout = forwardRef((props: ResponsiveGridLayoutPropTypes, r
     children,
     columnGap,
     rowGap,
-    style,
     columnsS,
     columnsM,
     columnsL,
@@ -72,14 +84,22 @@ const ResponsiveGridLayout = forwardRef((props: ResponsiveGridLayoutPropTypes, r
     columnSpanS,
     columnSpanM,
     columnSpanL,
-    columnSpanXL
+    columnSpanXL,
+    style,
+    className,
+    tooltip,
+    title
   } = props;
   const classes = useStyles();
-  const className = StyleClassHelper.of(classes.container).putIfPresent(props.className);
+  const finalClassNames = StyleClassHelper.of(classes.container).putIfPresent(className);
+
+  const passThroughProps = usePassThroughHtmlProps(props);
+
   return (
     <div
       ref={ref}
-      className={className.className}
+      className={finalClassNames.className}
+      title={tooltip ?? title}
       style={
         {
           gridRowGap: rowGap,
@@ -95,6 +115,7 @@ const ResponsiveGridLayout = forwardRef((props: ResponsiveGridLayoutPropTypes, r
           ...style
         } as CSSProperties
       }
+      {...passThroughProps}
     >
       {children}
     </div>
