@@ -4,6 +4,10 @@ import { FC, ReactNode } from 'react';
 
 export interface GroupHeaderListItemPropTypes extends WithWebComponentPropTypes {
   /**
+   * Defines the text alternative of the component. Note: If not provided a default text alternative will be set, if present.
+   */
+  accessibleName?: string;
+  /**
    * Defines the selected state of the `ListItem`.
    */
   selected?: boolean;
@@ -21,7 +25,7 @@ export interface GroupHeaderListItemPropTypes extends WithWebComponentPropTypes 
  */
 const GroupHeaderListItem: FC<GroupHeaderListItemPropTypes> = withWebComponent<GroupHeaderListItemPropTypes>(
   'ui5-li-groupheader',
-  [],
+  ['accessibleName'],
   ['selected'],
   [],
   []
