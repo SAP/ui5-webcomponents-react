@@ -57,7 +57,7 @@ export interface ResponsiveGridLayoutPropTypes extends CommonProps {
    * you can add an element style using the [gridColumn shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column).
    *
    * Example: If you want one child to span across 4 columns, you can add this element style to the child element:
-   * `style={{ gridColumn: 'span 4 }}`
+   * `style={{ gridColumn: 'span 4' }}`
    */
   children: ReactNode | ReactNodeArray;
 }
