@@ -5,6 +5,7 @@
   "private": true,
   "license": "Apache-2.0",
   "scripts": {
+    "postinstall": "rimraf node_modules/@types/mocha",
     "start": "lerna run build:i18n && start-storybook --no-manager-cache -p 6006 -c .storybook",
     "build": "npm-run-all -s clean build:bundle build:types",
     "build:bundle": "lerna run build --stream",
