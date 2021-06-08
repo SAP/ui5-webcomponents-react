@@ -112,6 +112,7 @@ import { ProgressIndicator } from './lib/ProgressIndicator';
 import { RadioButton } from './lib/RadioButton';
 import { RangeSlider } from './lib/RangeSlider';
 import { RatingIndicator } from './lib/RatingIndicator';
+import { ResponsiveGridLayout } from './lib/ResponsiveGridLayout';
 import { ResponsivePopover } from './lib/ResponsivePopover';
 import { SegmentedButton } from './lib/SegmentedButton';
 import { Select } from './lib/Select';
@@ -284,6 +285,7 @@ export {
   RadioButton,
   RangeSlider,
   RatingIndicator,
+  ResponsiveGridLayout,
   ResponsivePopover,
   SegmentedButton,
   Select,
