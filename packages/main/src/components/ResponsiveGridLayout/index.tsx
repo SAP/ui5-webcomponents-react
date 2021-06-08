@@ -5,17 +5,41 @@ import { createUseStyles } from 'react-jss';
 import { ResponsiveGridLayoutStyles } from './ResponsiveGridLayout.jss';
 
 export interface ResponsiveGridLayoutPropTypes extends CommonProps {
+  /**
+   * Number of columns to show on small screens (`max-width: 599px`)
+   */
   columnsS: number;
 
+  /**
+   * Number of columns to show on medium screens (`width >= 600px and width <=1023px`)
+   */
   columnsM: number;
 
+  /**
+   * Number of columns to show on large screens (`width >= 1024px and width <=1439px`)
+   */
   columnsL: number;
 
+  /**
+   * Number of columns to show on extra large screens (`min-width: 1440px`)
+   */
   columnsXL: number;
 
+  /**
+   * Defines how many columns a single child should cover on small screens.
+   */
   columnSpanS: number;
+  /**
+   * Defines how many columns a single child should cover on medium screens.
+   */
   columnSpanM: number;
+  /**
+   * Defines how many columns a single child should cover on large screens.
+   */
   columnSpanL: number;
+  /**
+   * Defines how many columns a single child should cover on extra large.
+   */
   columnSpanXL: number;
   /**
    * Gap between two columns of the grid
@@ -32,6 +56,9 @@ export interface ResponsiveGridLayoutPropTypes extends CommonProps {
 
 const useStyles = createUseStyles(ResponsiveGridLayoutStyles, { name: 'ResponsiveGridLayout' });
 
+/**
+ * @since 0.16.4
+ */
 const ResponsiveGridLayout = forwardRef((props: ResponsiveGridLayoutPropTypes, ref: Ref<HTMLDivElement>) => {
   const {
     children,
