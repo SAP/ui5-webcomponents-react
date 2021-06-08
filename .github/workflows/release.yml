@@ -53,9 +53,18 @@ jobs:
         run: yarn build:storybook
 
       - name: Deploy Next Docs
-        uses: JamesIves/github-pages-deploy-action@4.1.3
+        uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           branch: gh-pages # The branch the action should deploy to.
           folder: .out # The folder the action should deploy.
           target-folder: master
           clean: true
+
+      - uses: actions/github-script@v4
+        env:
+          GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        with:
+          script: |
+            const script = require('./.github/createIssueCommentsForRelease.js')
+            const { version } = require('./lerna.json')
+            await script({github, context, core, version})

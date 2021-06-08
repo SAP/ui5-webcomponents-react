@@ -1,9 +1,8 @@
 import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
-import { createUseStyles } from 'react-jss';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
-import { enrichEventWithDetails, getScrollBarWidth, debounce } from '@ui5/webcomponents-react-base/dist/Utils';
+import { debounce, enrichEventWithDetails, getScrollBarWidth } from '@ui5/webcomponents-react-base/dist/Utils';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
@@ -26,14 +25,14 @@ import React, {
   RefObject,
   useCallback,
   useEffect,
-  useMemo,
   useRef,
   useState
 } from 'react';
+import { createUseStyles } from 'react-jss';
 import { ObjectPageSectionPropTypes } from '../ObjectPageSection';
 import { ObjectPageSubSectionPropTypes } from '../ObjectPageSubSection';
 import { CollapsedAvatar } from './CollapsedAvatar';
-import styles, { ObjectPageCssVariables } from './ObjectPage.jss';
+import { ObjectPageCssVariables, styles } from './ObjectPage.jss';
 import { ObjectPageAnchorBar } from './ObjectPageAnchorBar';
 import { ObjectPageHeader } from './ObjectPageHeader';
 import {
@@ -439,12 +438,6 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     objectPageClasses.put(classes.noHeader);
   }
 
-  const scrollBarWidthPadding = useMemo(() => {
-    return {
-      paddingRight: isIE() ? 0 : `${scrollbarWidth}px`
-    };
-  }, [scrollbarWidth]);
-
   const passThroughProps = usePassThroughHtmlProps(props, ['onSelectedSectionChanged']);
 
   useEffect(() => {
@@ -502,7 +495,6 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         ref={topHeaderRef}
         role="banner"
         aria-roledescription="Object Page header"
-        style={scrollBarWidthPadding}
         className={headerClasses.className}
       >
         <div className={classes.titleBar}>
