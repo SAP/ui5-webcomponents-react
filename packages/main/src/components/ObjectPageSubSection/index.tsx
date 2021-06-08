@@ -36,7 +36,7 @@ const styles = {
     marginBottom: '0.5rem'
   },
   subSectionContent: {
-    padding: '1rem 2rem 3rem 0'
+    padding: '1rem 0 3rem 0'
   }
 };
 

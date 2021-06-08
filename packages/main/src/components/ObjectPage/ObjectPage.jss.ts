@@ -1,3 +1,4 @@
+import { sapUiResponsiveContentPadding } from '@ui5/webcomponents-react-base/lib/spacing';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 
 export const ObjectPageCssVariables = {
@@ -8,7 +9,7 @@ export const ObjectPageCssVariables = {
   lastSectionMargin: '--_ui5wcr_ObjectPage_last_section_margin_bottom'
 };
 
-const styles = {
+export const styles = {
   objectPage: {
     width: '100%',
     height: '100%',
@@ -64,6 +65,7 @@ const styles = {
   },
   // header
   header: {
+    ...sapUiResponsiveContentPadding,
     flexShrink: 0,
     backgroundColor: ThemingParameters.sapObjectHeader_Background,
     position: 'sticky',
@@ -82,12 +84,12 @@ const styles = {
     backgroundColor: ThemingParameters.sapObjectHeader_Background
   },
   contentHeader: {
+    ...sapUiResponsiveContentPadding,
     backgroundColor: ThemingParameters.sapObjectHeader_Background,
     position: 'sticky',
     paddingBottom: '0.25rem',
     maxHeight: '500px',
-    overflow: 'hidden',
-    paddingLeft: '2rem'
+    overflow: 'hidden'
   },
   anchorBar: {
     position: 'sticky',
@@ -95,7 +97,6 @@ const styles = {
     '--_ui5_tc_header_box_shadow': 'inset 0px -1px 0 0px rgba(0,0,0,0.15)'
   },
   titleBar: {
-    padding: '0.5rem 2rem',
     display: 'block',
     position: 'relative'
   },
@@ -185,5 +186,3 @@ const styles = {
     margin: `var(${ObjectPageCssVariables.avatarMargin})`
   }
 };
-
-export default styles;
