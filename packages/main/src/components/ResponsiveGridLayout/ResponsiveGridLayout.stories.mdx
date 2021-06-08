@@ -1,9 +1,14 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
-import { Card, ResponsiveGridLayout } from '@ui5/webcomponents-react';
+import { ResponsiveGridLayout, Text } from '@ui5/webcomponents-react';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
 
-<Meta title="Layouts & Floorplans / ResponsiveGridLayout" component={ResponsiveGridLayout} argTypes={DocsCommonProps} />
+<Meta
+  title="Layouts & Floorplans / ResponsiveGridLayout"
+  component={ResponsiveGridLayout}
+  argTypes={{ ...DocsCommonProps, children: { control: { disable: true } } }}
+/>
 
 <DocsHeader />
 
@@ -16,22 +21,79 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
     {(args) => {
       return (
         <ResponsiveGridLayout {...args}>
-          <Card style={{ gridColumn: 'span 2' }} heading={'Card 1'}></Card>
-          <Card style={{ gridColumn: 'span 2' }} heading={'Card 2'}></Card>
-          <Card style={{ gridColumn: 'span 4' }} heading={'Card 3'}></Card>
-          <Card style={{ gridColumn: 'span 4' }} heading={'Card 4'}></Card>
-          <Card heading={'Card 5'}></Card>
-          <Card heading={'Card 6'}></Card>
-          <Card heading={'Card 7'}></Card>
-          <Card heading={'Card 8'}></Card>
-          <Card heading={'Card 9'}></Card>
-          <Card heading={'Card 10'}></Card>
-          <Card heading={'Card 11'}></Card>
-          <Card heading={'Card 12'}></Card>
-          <Card heading={'Card 13'}></Card>
-          <Card heading={'Card 14'}></Card>
-          <Card heading={'Card 15'}></Card>
-          <Card heading={'Card 16'}></Card>
+          <div
+            style={{ gridColumn: 'span 2', background: ThemingParameters.sapAccentColor1 }}
+            className="responsiveGridLayoutItem"
+          >
+            <Text>Item 1</Text>
+            <br />
+            <code>{`style={{ gridColumn: 'span 2' }}`}</code>
+          </div>
+          <div
+            style={{ gridColumn: 'span 3', background: ThemingParameters.sapAccentColor2 }}
+            className="responsiveGridLayoutItem"
+          >
+            <Text>Item 2</Text>
+            <br />
+            <code>{`style={{ gridColumn: 'span 3' }}`}</code>
+          </div>
+          <div
+            style={{ gridColumn: 'span 4', background: ThemingParameters.sapAccentColor3 }}
+            className="responsiveGridLayoutItem"
+          >
+            <Text>Item 3</Text>
+            <br />
+            <code>{`style={{ gridColumn: 'span 4' }}`}</code>
+          </div>
+          <div
+            style={{ gridColumn: 'span 5', background: ThemingParameters.sapAccentColor4 }}
+            className="responsiveGridLayoutItem"
+          >
+            <Text>Item 4</Text>
+            <br />
+            <code>{`style={{ gridColumn: 'span 5' }}`}</code>
+          </div>
+          <div style={{ background: ThemingParameters.sapAccentColor5 }} className="responsiveGridLayoutItem">
+            <Text>Item 5</Text>
+          </div>
+          <div style={{ background: ThemingParameters.sapAccentColor6 }} className="responsiveGridLayoutItem">
+            <Text>Item 6</Text>
+          </div>
+          <div style={{ background: ThemingParameters.sapAccentColor7 }} className="responsiveGridLayoutItem">
+            <Text>Item 7</Text>
+          </div>
+          <div
+            style={{ gridColumn: 'span 4', background: ThemingParameters.sapAccentColor8 }}
+            className="responsiveGridLayoutItem"
+          >
+            <Text>Item 8</Text>
+            <br />
+            <code>{`style={{ gridColumn: 'span 4' }}`}</code>
+          </div>
+          <div style={{ background: ThemingParameters.sapAccentColor9 }} className="responsiveGridLayoutItem">
+            <Text>Item 9</Text>
+          </div>
+          <div style={{ background: ThemingParameters.sapAccentColor10 }} className="responsiveGridLayoutItem">
+            <Text>Item 10</Text>
+          </div>
+          <div style={{ background: ThemingParameters.sapAccentColor1 }} className="responsiveGridLayoutItem">
+            <Text>Item 11</Text>
+          </div>
+          <div style={{ background: ThemingParameters.sapAccentColor2 }} className="responsiveGridLayoutItem">
+            <Text>Item 12</Text>
+          </div>
+          <div style={{ background: ThemingParameters.sapAccentColor3 }} className="responsiveGridLayoutItem">
+            <Text>Item 13</Text>
+          </div>
+          <div style={{ background: ThemingParameters.sapAccentColor4 }} className="responsiveGridLayoutItem">
+            <Text>Item 14</Text>
+          </div>
+          <div style={{ background: ThemingParameters.sapAccentColor5 }} className="responsiveGridLayoutItem">
+            <Text>Item 15</Text>
+          </div>
+          <div style={{ background: ThemingParameters.sapAccentColor6 }} className="responsiveGridLayoutItem">
+            <Text>Item 16</Text>
+          </div>
         </ResponsiveGridLayout>
       );
     }}
