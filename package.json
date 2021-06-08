@@ -99,7 +99,7 @@
   },
   "resolutions": {
     "@types/react": "17.0.0",
-    "@babel/runtime": "7.12.5",
+    "@babel/runtime": "7.8.4",
     "react": "17.0.1",
     "react-dom": "17.0.1"
   },
