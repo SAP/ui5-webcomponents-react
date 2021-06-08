@@ -6,6 +6,10 @@ import { FC, ReactNode } from 'react';
 
 export interface StandardListItemPropTypes extends WithWebComponentPropTypes {
   /**
+   * Defines the text alternative of the component. Note: If not provided a default text alternative will be set, if present.
+   */
+  accessibleName?: string;
+  /**
    * Defines the description displayed right under the item text, if such is present.
    */
   description?: string;
@@ -65,7 +69,7 @@ export interface StandardListItemPropTypes extends WithWebComponentPropTypes {
  */
 const StandardListItem: FC<StandardListItemPropTypes> = withWebComponent<StandardListItemPropTypes>(
   'ui5-li',
-  ['description', 'icon', 'image', 'info', 'infoState', 'type'],
+  ['accessibleName', 'description', 'icon', 'image', 'info', 'infoState', 'type'],
   ['iconEnd', 'selected'],
   [],
   ['detail-click']
