@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.131.7](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.6...v0.131.7) (2021-06-08)
+
+
+### Bug Fixes
+
+* refactor `sapUiResponsiveContentPadding` and add respective padding to ObjectPage content ([#1699](https://github.com/SAP/ui5-webcomponents-react/issues/1699)) ([7386a8b](https://github.com/SAP/ui5-webcomponents-react/commit/7386a8bba899fe7ca1ab9e4fc7f4d62780f357b6))
+
+
+### Features
+
+* update ui5 web components to v0.31.9 ([508768a](https://github.com/SAP/ui5-webcomponents-react/commit/508768ab33105c06c44db42e9b9c3d2240242532))
+
+
+
+
+
 ## [0.131.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.5...v0.131.6) (2021-06-04)
 
 
