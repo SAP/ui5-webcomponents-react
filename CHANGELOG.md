@@ -5,8 +5,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [0.131.8](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.7...v0.131.8) (2021-06-09)
 
-**Note:** Version bump only for package ui5-webcomponents-react
 
+### Features
+
+* **ActionSheet:** Downport [2178b79](https://github.com/SAP/ui5-webcomponents-react/commit/2178b79095da4e4f9344809647693eb0262a1bb4)
 
 
 
