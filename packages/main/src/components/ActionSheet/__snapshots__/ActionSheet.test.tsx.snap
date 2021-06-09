@@ -4,33 +4,50 @@ exports[`ActionSheet Render without Crashing 1`] = `
 <body>
   <div />
   <ui5-responsive-popover
+    aria-modal="true"
     class="ActionSheet-actionSheet myCustomClass"
+    data-actionsheet="true"
     horizontal-align="Center"
     placement-type="Right"
+    role="dialog"
     ui5-responsive-popover=""
     vertical-align="Center"
   >
-    <ui5-button
-      data-is-action-sheet-button=""
-      design="Transparent"
-      ui5-button=""
+    <div
+      aria-label="Available Actions"
+      role="presentation"
     >
-      Accept
-    </ui5-button>
-    <ui5-button
-      data-is-action-sheet-button=""
-      design="Transparent"
-      ui5-button=""
-    >
-      Reject
-    </ui5-button>
-    <ui5-button
-      data-is-action-sheet-button=""
-      design="Transparent"
-      ui5-button=""
-    >
-      This is my super long text!
-    </ui5-button>
+      <ui5-button
+        aria-label="1 of 3 Accept"
+        data-action-btn-index="0"
+        design="Transparent"
+        role="button"
+        tabindex="0"
+        ui5-button=""
+      >
+        Accept
+      </ui5-button>
+      <ui5-button
+        aria-label="2 of 3 Reject"
+        data-action-btn-index="1"
+        design="Transparent"
+        role="button"
+        tabindex="-1"
+        ui5-button=""
+      >
+        Reject
+      </ui5-button>
+      <ui5-button
+        aria-label="3 of 3 This is my super long text!"
+        data-action-btn-index="2"
+        design="Transparent"
+        role="button"
+        tabindex="-1"
+        ui5-button=""
+      >
+        This is my super long text!
+      </ui5-button>
+    </div>
   </ui5-responsive-popover>
 </body>
 `;
@@ -39,19 +56,30 @@ exports[`ActionSheet does not crash with other component 1`] = `
 <body>
   <div />
   <ui5-responsive-popover
+    aria-modal="true"
     class="ActionSheet-actionSheet"
+    data-actionsheet="true"
     horizontal-align="Center"
     placement-type="Right"
+    role="dialog"
     ui5-responsive-popover=""
     vertical-align="Center"
   >
-    <ui5-label
-      data-is-action-sheet-button=""
-      design="Transparent"
-      ui5-label=""
+    <div
+      aria-label="Available Actions"
+      role="presentation"
     >
-      I should not crash
-    </ui5-label>
+      <ui5-label
+        aria-label="1 of 1 I should not crash"
+        data-action-btn-index="0"
+        design="Transparent"
+        role="button"
+        tabindex="0"
+        ui5-label=""
+      >
+        I should not crash
+      </ui5-label>
+    </div>
   </ui5-responsive-popover>
 </body>
 `;
