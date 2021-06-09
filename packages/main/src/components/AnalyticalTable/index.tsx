@@ -570,16 +570,15 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       visibleRowCountMode === TableVisibleRowCountMode.AUTO || tableState?.interactiveRowsHavePopIn
         ? popInRowHeight
         : internalRowHeight;
-    const heightRows = rowHeight * rowNum;
-    const additionalHeight =
-      visibleRowCountMode === TableVisibleRowCountMode.AUTO && tableState.subComponentsHeight
-        ? Object.keys(tableState.subComponentsHeight).reduce(
-            (acc, curr) => acc + tableState.subComponentsHeight[curr].subComponentHeight,
-            0
-          )
-        : 0;
+    const additionalHeight = tableState.subComponentsHeight
+      ? Object.keys(tableState.subComponentsHeight).reduce(
+          (acc, curr) => acc + tableState.subComponentsHeight[curr].subComponentHeight,
+          0
+        )
+      : 0;
+    const totalHeight = rowHeight * rowNum + additionalHeight;
 
-    return additionalHeight ? Math.min(maxHeight, heightRows + additionalHeight) : heightRows;
+    return visibleRowCountMode === TableVisibleRowCountMode.AUTO ? Math.min(maxHeight, totalHeight) : totalHeight;
   }, [
     internalRowHeight,
     rows.length,
