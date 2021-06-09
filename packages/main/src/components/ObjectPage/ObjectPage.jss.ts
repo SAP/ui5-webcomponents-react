@@ -1,5 +1,6 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
+import { DynamicPageCssVariables } from '../DynamicPage/DynamicPage.jss';
 
 export const ObjectPageCssVariables = {
   anchorFloat: '--_ui5wcr_ObjectPage_actions_float',
@@ -57,11 +58,15 @@ const styles = {
     }
   },
   headerCollapsed: {
+    //todo
+    [DynamicPageCssVariables.headerDisplay]: 'none',
     '& $contentHeader': {
       display: 'none'
     }
   },
   header: {
+    //todo
+    [DynamicPageCssVariables.headerDisplay]: 'block',
     boxSizing: 'border-box',
     backgroundColor: ThemingParameters.sapObjectHeader_Background,
     position: 'sticky',
@@ -92,7 +97,8 @@ const styles = {
     backgroundColor: ThemingParameters.sapObjectHeader_Background
   },
   contentHeader: {
-    backgroundColor: ThemingParameters.sapObjectHeader_Background,
+    // backgroundColor: ThemingParameters.sapObjectHeader_Background,
+    background: 'red',
     position: 'sticky',
     paddingBottom: '0.25rem',
     maxHeight: '500px',

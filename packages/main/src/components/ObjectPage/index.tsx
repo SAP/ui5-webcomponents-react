@@ -21,6 +21,8 @@ import React, {
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
+import { FlexBox, FlexBoxDirection, Label, Link, ProgressIndicator, ValueState } from '../..';
+import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
 import { ObjectPageSectionPropTypes } from '../ObjectPageSection';
 import { ObjectPageSubSectionPropTypes } from '../ObjectPageSubSection';
 import { CollapsedAvatar } from './CollapsedAvatar';
@@ -34,6 +36,7 @@ import {
   safeGetChildrenArray
 } from './ObjectPageUtils';
 import { useObserveHeights } from './useObserveHeights';
+import { DynamicPageHeader } from '@ui5/webcomponents-react/dist/DynamicPageHeader';
 
 declare const ResizeObserver;
 
@@ -348,11 +351,20 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     },
     [mode, setInternalSelectedSectionId, setSelectedSubSectionId, isProgrammaticallyScrolled]
   );
-
+  //todo maybe use internal expanded of event
+  const [expanded, setExpanded] = useState(true);
+  const toggleHeader = (expanded) => {
+    if (expanded) {
+      setExpanded(true);
+    } else {
+      setExpanded(false);
+    }
+  };
   const onToggleHeaderContentVisibility = useCallback(
     (e) => {
       const srcElement = e.target;
       const shouldHideHeader = srcElement.icon === 'slim-arrow-up';
+      toggleHeader(!shouldHideHeader);
       if (shouldHideHeader) {
         objectPageRef.current?.classList.add(classes.headerCollapsed);
       } else {
@@ -463,6 +475,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     }
     return title;
   }, [title]);
+  //todo replace this with responsive padding, or better set resp. padding to whole container
   const scrollBarWidthPadding = useMemo(() => {
     const padding = isIE() ? 0 : `calc(${scrollbarWidth}px + 1rem)`;
     if (isRTL) {
@@ -485,7 +498,6 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       gridAutoColumns: image && headerContentHeight === 0 ? 'auto calc(100% - 3rem)' : 'auto 100%'
     };
   }, [image, headerContentHeight, scrollBarWidthPadding]);
-
   return (
     <div
       data-component-name="ObjectPage"
@@ -508,37 +520,64 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         )}
         {renderTitleSection()}
       </header>
-      {/*todo check header for props from title comp*/}
-      <ObjectPageHeader
-        headerActions={[]}
-        image={image}
-        classes={classes}
-        imageShapeCircle={imageShapeCircle}
-        showTitleInHeaderContent={showTitleInHeaderContent}
-        headerContentProp={headerContent as ReactElement}
-        breadcrumbs={[]}
-        keyInfos={[]}
-        title={'TITLE'}
-        subTitle={'SUBTITLE'}
-        headerPinned={headerPinned}
-        topHeaderHeight={topHeaderHeight}
-        ref={headerContentRef}
-      />
-      <ObjectPageAnchorBar
-        sections={children}
-        selectedSectionId={internalSelectedSectionId}
-        handleOnSectionSelected={handleOnSectionSelected}
-        handleOnSubSectionSelected={handleOnSubSectionSelected}
-        headerContentPinnable={headerContentPinnable}
-        showHideHeaderButton={showHideHeaderButton && !noHeader}
-        headerPinned={headerPinned}
-        setHeaderPinned={setHeaderPinned}
-        headerContentHeight={headerContentHeight}
-        style={{ top: anchorBarPositionTop }}
+      {/**/}
+      <DynamicPageHeader>
+        <FlexBox direction={FlexBoxDirection.Column}>
+          <Link>+33 6 4512 5158</Link>
+          <Link href="mailto:ui5-webcomponents-react@sap.com">DeniseSmith@sap.com</Link>
+          <Link href="https://github.com/SAP/ui5-webcomponents-react">
+            https://github.com/SAP/ui5-webcomponents-react
+          </Link>
+        </FlexBox>
+        <FlexBox direction={FlexBoxDirection.Column} style={{ width: '200px' }}>
+          <Label>Achieved Goals</Label>
+          <ProgressIndicator value={80} valueState={ValueState.Success} />
+        </FlexBox>
+        <FlexBox direction={FlexBoxDirection.Column}>
+          <Label>San Jose</Label>
+          <Label>California, USA</Label>
+        </FlexBox>
+      </DynamicPageHeader>
+      {/*todo check header for props from title comp --> showTitleInHeaderContent */}
+      {/*<ObjectPageHeader*/}
+      {/*  headerActions={[]}*/}
+      {/*  image={image}*/}
+      {/*  classes={classes}*/}
+      {/*  imageShapeCircle={imageShapeCircle}*/}
+      {/*  showTitleInHeaderContent={showTitleInHeaderContent}*/}
+      {/*  headerContentProp={headerContent as ReactElement}*/}
+      {/*  breadcrumbs={[]}*/}
+      {/*  keyInfos={[]}*/}
+      {/*  title={'TITLE'}*/}
+      {/*  subTitle={'SUBTITLE'}*/}
+      {/*  headerPinned={headerPinned}*/}
+      {/*  topHeaderHeight={topHeaderHeight}*/}
+      {/*  ref={headerContentRef}*/}
+      {/*/>*/}
+      {/*todo ?should be rendered inside ObjectPageAnchorBar?*/}
+      <DynamicPageAnchorBar
+        style={{ top: expanded ? `${topHeaderHeight + 48}px` : `${topHeaderHeight}px` }}
+        headerContentHeight={!expanded ? 0 : topHeaderHeight + 48}
+        headerContentPinnable={true}
+        showHideHeaderButton={true}
         onToggleHeaderContentVisibility={onToggleHeaderContentVisibility}
-        ref={anchorBarRef}
-        className={anchorBarClasses.className}
+        setHeaderPinned={setHeaderPinned}
       />
+      {/*<ObjectPageAnchorBar*/}
+      {/*  sections={children}*/}
+      {/*  selectedSectionId={internalSelectedSectionId}*/}
+      {/*  handleOnSectionSelected={handleOnSectionSelected}*/}
+      {/*  handleOnSubSectionSelected={handleOnSubSectionSelected}*/}
+      {/*  headerContentPinnable={headerContentPinnable}*/}
+      {/*  showHideHeaderButton={showHideHeaderButton && !noHeader}*/}
+      {/*  headerPinned={headerPinned}*/}
+      {/*  setHeaderPinned={setHeaderPinned}*/}
+      {/*  headerContentHeight={headerContentHeight}*/}
+      {/*  style={{ top: anchorBarPositionTop }}*/}
+      {/*  onToggleHeaderContentVisibility={onToggleHeaderContentVisibility}*/}
+      {/*  ref={anchorBarRef}*/}
+      {/*  className={anchorBarClasses.className}*/}
+      {/*/>*/}
       {isIE() && (
         <div
           className={classes.iEBackgroundElement}

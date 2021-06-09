@@ -82,10 +82,7 @@ const useStyles = createUseStyles(anchorBarStyles, { name: 'DynamicPageAnchorBar
 
 //todo why no common props?
 interface Props extends CommonProps {
-  /**
-   * Determines the style of the anchor bar.
-   */
-  style?: CSSProperties;
+  //todo this only checks for 0, no interal positioning is happening here --> boolean
   /**
    * Determines the height of the header content.
    */
@@ -129,7 +126,9 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
     setHeaderPinned,
     onToggleHeaderContentVisibility,
     onHoverToggleButton,
-    style
+    style,
+    className,
+    tooltip
   } = props;
 
   const classes = useStyles();
@@ -160,6 +159,7 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
           className={`${classes.anchorBarActionButton} ${classes.anchorBarActionButtonExpandable} ${
             showBothActions ? classes.anchorBarActionPinnableAndExpandable : ''
           }`}
+          //todo event should contain the expand/collapse state
           onClick={onToggleHeaderContentVisibility}
           onMouseOver={onHoverToggleButton}
           onMouseLeave={onHoverToggleButton}

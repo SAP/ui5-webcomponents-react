@@ -61,7 +61,8 @@ const DynamicPageHeader: FC<DynamicPageHeaderProps> = forwardRef((props: Interna
       data-component-name="DynamicPageHeader"
       {...passThroughProps}
     >
-      <FlexBox alignItems={FlexBoxAlignItems.Start}>{children}</FlexBox>
+      {/*todo check DynamicPage implementation */}
+      {children}
     </div>
   );
 });

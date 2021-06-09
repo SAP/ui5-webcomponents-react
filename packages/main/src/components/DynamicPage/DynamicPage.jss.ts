@@ -16,7 +16,8 @@ const styles = {
     backgroundColor: ThemingParameters.sapBackgroundColor,
     overflowX: 'hidden',
     overflowY: 'auto',
-    [DynamicPageCssVariables.headerDisplay]: 'block'
+    //todo check if block is necessary here --> flex
+    [DynamicPageCssVariables.headerDisplay]: 'flex'
   },
   headerCollapsed: {
     [DynamicPageCssVariables.headerDisplay]: 'none',

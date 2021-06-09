@@ -216,6 +216,7 @@ const ObjectPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElement
           aria-label={i18nBundle.getText(headerPinned ? UNPIN_HEADER : PIN_HEADER)}
         />
       )}
+      {/*todo*/}
       {/*<DynamicPageAnchorBar setHeaderPinned={onPinHeader} headerPinned={headerPinned} headerContentHeight={104} headerContentPinnable={shouldRenderHeaderPinnableButton} showHideHeaderButton={shouldRenderHideHeaderButton} onToggleHeaderContentVisibility={onToggleHeaderContentVisibility} />*/}
       {createPortal(
         <Popover placementType={PlacementType.Bottom} noArrow ref={popoverRef} onAfterClose={stopPropagation}>

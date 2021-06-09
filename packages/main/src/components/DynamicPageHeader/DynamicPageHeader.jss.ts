@@ -7,8 +7,10 @@ const padding = isIE() ? { padding: '0 2rem' } : { ...sapUiResponsiveContentPadd
 
 export const DynamicPageHeaderStyles = {
   header: {
-    ...padding,
-    flexShrink: 0,
+    //todo check dynamicPage
+    // ...padding,
+    // flexShrink: 0,
+    //todo
     backgroundColor: ThemingParameters.sapObjectHeader_Background,
     position: 'sticky',
     zIndex: 1,
