@@ -6,6 +6,8 @@ import '@ui5/webcomponents-icons/dist/exit-full-screen';
 import '@ui5/webcomponents-icons/dist/decline';
 import { Title } from '@ui5/webcomponents-react/dist/Title';
 import { Label } from '@ui5/webcomponents-react/dist/Label';
+import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
+import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
 import { Breadcrumbs } from '@ui5/webcomponents-react/dist/Breadcrumbs';
 import { PageBackgroundDesign } from '@ui5/webcomponents-react/dist/PageBackgroundDesign';
 import { Link } from '@ui5/webcomponents-react/dist/Link';
@@ -94,15 +96,17 @@ import { useState } from 'react';
         }
         header={
           <DynamicPageHeader>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <Label>Location: Warehouse A</Label>
-              <Label>Halway: 23L</Label>
-              <Label>Rack: 34</Label>
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '2vw' }}>
-              <Label>Availability:</Label>
-              <ObjectStatus state={ValueState.Success}>In Stock</ObjectStatus>
-            </div>
+            <FlexBox>
+              <FlexBox direction={FlexBoxDirection.Column}>
+                <Label>Location: Warehouse A</Label>
+                <Label>Halway: 23L</Label>
+                <Label>Rack: 34</Label>
+              </FlexBox>
+              <FlexBox direction={FlexBoxDirection.Column}>
+                <Label>Availability:</Label>
+                <ObjectStatus state={ValueState.Success}>In Stock</ObjectStatus>
+              </FlexBox>
+            </FlexBox>
           </DynamicPageHeader>
         }
       >
