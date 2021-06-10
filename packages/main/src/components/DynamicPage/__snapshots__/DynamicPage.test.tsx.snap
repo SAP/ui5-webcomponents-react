@@ -253,44 +253,40 @@ exports[`DynamicPage always show content header 1`] = `
       style="top: 0px; z-index: 1;"
     >
       <div
-        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStart FlexBox-flexWrapNoWrap"
+        style="display: flex; flex-direction: column;"
       >
-        <div
-          style="display: flex; flex-direction: column;"
+        <ui5-label
+          ui5-label=""
         >
-          <ui5-label
-            ui5-label=""
-          >
-            Location: Warehouse A
-          </ui5-label>
-          <ui5-label
-            ui5-label=""
-          >
-            Halway: 23L
-          </ui5-label>
-          <ui5-label
-            ui5-label=""
-          >
-            Rack: 34
-          </ui5-label>
-        </div>
-        <div
-          style="display: flex; flex-direction: column; margin-left: 2vw;"
+          Location: Warehouse A
+        </ui5-label>
+        <ui5-label
+          ui5-label=""
         >
-          <ui5-label
-            ui5-label=""
+          Halway: 23L
+        </ui5-label>
+        <ui5-label
+          ui5-label=""
+        >
+          Rack: 34
+        </ui5-label>
+      </div>
+      <div
+        style="display: flex; flex-direction: column; margin-left: 2vw;"
+      >
+        <ui5-label
+          ui5-label=""
+        >
+          Availability:
+        </ui5-label>
+        <div
+          class="ObjectStatus-objectStatus"
+        >
+          <span
+            class="ObjectStatus-textSuccess"
           >
-            Availability:
-          </ui5-label>
-          <div
-            class="ObjectStatus-objectStatus"
-          >
-            <span
-              class="ObjectStatus-textSuccess"
-            >
-              In Stock
-            </span>
-          </div>
+            In Stock
+          </span>
         </div>
       </div>
     </div>
@@ -574,44 +570,40 @@ exports[`DynamicPage hider header button 1`] = `
       style="top: 0px; z-index: 1;"
     >
       <div
-        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStart FlexBox-flexWrapNoWrap"
+        style="display: flex; flex-direction: column;"
       >
-        <div
-          style="display: flex; flex-direction: column;"
+        <ui5-label
+          ui5-label=""
         >
-          <ui5-label
-            ui5-label=""
-          >
-            Location: Warehouse A
-          </ui5-label>
-          <ui5-label
-            ui5-label=""
-          >
-            Halway: 23L
-          </ui5-label>
-          <ui5-label
-            ui5-label=""
-          >
-            Rack: 34
-          </ui5-label>
-        </div>
-        <div
-          style="display: flex; flex-direction: column; margin-left: 2vw;"
+          Location: Warehouse A
+        </ui5-label>
+        <ui5-label
+          ui5-label=""
         >
-          <ui5-label
-            ui5-label=""
+          Halway: 23L
+        </ui5-label>
+        <ui5-label
+          ui5-label=""
+        >
+          Rack: 34
+        </ui5-label>
+      </div>
+      <div
+        style="display: flex; flex-direction: column; margin-left: 2vw;"
+      >
+        <ui5-label
+          ui5-label=""
+        >
+          Availability:
+        </ui5-label>
+        <div
+          class="ObjectStatus-objectStatus"
+        >
+          <span
+            class="ObjectStatus-textSuccess"
           >
-            Availability:
-          </ui5-label>
-          <div
-            class="ObjectStatus-objectStatus"
-          >
-            <span
-              class="ObjectStatus-textSuccess"
-            >
-              In Stock
-            </span>
-          </div>
+            In Stock
+          </span>
         </div>
       </div>
     </div>
@@ -1049,44 +1041,40 @@ exports[`DynamicPage with content 1`] = `
       data-component-name="DynamicPageHeader"
     >
       <div
-        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStart FlexBox-flexWrapNoWrap"
+        style="display: flex; flex-direction: column;"
       >
-        <div
-          style="display: flex; flex-direction: column;"
+        <ui5-label
+          ui5-label=""
         >
-          <ui5-label
-            ui5-label=""
-          >
-            Location: Warehouse A
-          </ui5-label>
-          <ui5-label
-            ui5-label=""
-          >
-            Halway: 23L
-          </ui5-label>
-          <ui5-label
-            ui5-label=""
-          >
-            Rack: 34
-          </ui5-label>
-        </div>
-        <div
-          style="display: flex; flex-direction: column; margin-left: 2vw;"
+          Location: Warehouse A
+        </ui5-label>
+        <ui5-label
+          ui5-label=""
         >
-          <ui5-label
-            ui5-label=""
+          Halway: 23L
+        </ui5-label>
+        <ui5-label
+          ui5-label=""
+        >
+          Rack: 34
+        </ui5-label>
+      </div>
+      <div
+        style="display: flex; flex-direction: column; margin-left: 2vw;"
+      >
+        <ui5-label
+          ui5-label=""
+        >
+          Availability:
+        </ui5-label>
+        <div
+          class="ObjectStatus-objectStatus"
+        >
+          <span
+            class="ObjectStatus-textSuccess"
           >
-            Availability:
-          </ui5-label>
-          <div
-            class="ObjectStatus-objectStatus"
-          >
-            <span
-              class="ObjectStatus-textSuccess"
-            >
-              In Stock
-            </span>
-          </div>
+            In Stock
+          </span>
         </div>
       </div>
     </div>
@@ -2026,44 +2014,40 @@ exports[`DynamicPage without content 1`] = `
       data-component-name="DynamicPageHeader"
     >
       <div
-        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStart FlexBox-flexWrapNoWrap"
+        style="display: flex; flex-direction: column;"
       >
-        <div
-          style="display: flex; flex-direction: column;"
+        <ui5-label
+          ui5-label=""
         >
-          <ui5-label
-            ui5-label=""
-          >
-            Location: Warehouse A
-          </ui5-label>
-          <ui5-label
-            ui5-label=""
-          >
-            Halway: 23L
-          </ui5-label>
-          <ui5-label
-            ui5-label=""
-          >
-            Rack: 34
-          </ui5-label>
-        </div>
-        <div
-          style="display: flex; flex-direction: column; margin-left: 2vw;"
+          Location: Warehouse A
+        </ui5-label>
+        <ui5-label
+          ui5-label=""
         >
-          <ui5-label
-            ui5-label=""
+          Halway: 23L
+        </ui5-label>
+        <ui5-label
+          ui5-label=""
+        >
+          Rack: 34
+        </ui5-label>
+      </div>
+      <div
+        style="display: flex; flex-direction: column; margin-left: 2vw;"
+      >
+        <ui5-label
+          ui5-label=""
+        >
+          Availability:
+        </ui5-label>
+        <div
+          class="ObjectStatus-objectStatus"
+        >
+          <span
+            class="ObjectStatus-textSuccess"
           >
-            Availability:
-          </ui5-label>
-          <div
-            class="ObjectStatus-objectStatus"
-          >
-            <span
-              class="ObjectStatus-textSuccess"
-            >
-              In Stock
-            </span>
-          </div>
+            In Stock
+          </span>
         </div>
       </div>
     </div>
