@@ -147,6 +147,57 @@ export const simpleDataSet = [
   }
 ];
 
+export const simpleDataSetWithSmallValues = [
+  {
+    name: 'January / Month',
+    users: 100
+  },
+  {
+    name: 'February / Month',
+    users: 10
+  },
+  {
+    name: 'March / Month',
+    users: 240
+  },
+  {
+    name: 'April / Month',
+    users: 5
+  },
+  {
+    name: 'May / Month',
+    users: 34
+  },
+  {
+    name: 'June / Month',
+    users: 230
+  },
+  {
+    name: 'July / Month',
+    users: 20
+  },
+  {
+    name: 'August / Month',
+    users: 220
+  },
+  {
+    name: 'September / Month',
+    users: 27
+  },
+  {
+    name: 'October / Month',
+    users: 250
+  },
+  {
+    name: 'November / Month',
+    users: 240
+  },
+  {
+    name: 'December / Month',
+    users: 280
+  }
+];
+
 export const secondaryDimensionDataSet = [
   {
     name: 'January / Month',
