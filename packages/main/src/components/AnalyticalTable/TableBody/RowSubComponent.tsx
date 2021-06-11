@@ -34,13 +34,13 @@ export const RowSubComponent = (props: RowSubComponent) => {
   useEffect(() => {
     const subComponentHeightObserver = new ResizeObserver((entries) => {
       entries.forEach((entry) => {
-        if (entry.borderBoxSize) {
+        const target = entry?.target.getBoundingClientRect();
+        if (target) {
           // Firefox implements `borderBoxSize` as a single content rect, rather than an array
           const borderBoxSize = Array.isArray(entry.borderBoxSize) ? entry.borderBoxSize[0] : entry.borderBoxSize;
-          if (
-            subComponentsHeight?.[virtualRow.index]?.subComponentHeight !== borderBoxSize.blockSize &&
-            borderBoxSize.blockSize !== 0
-          ) {
+          // Safari doesn't implement `borderBoxSize`
+          const subCompHeight = borderBoxSize?.blockSize ?? target.height;
+          if (subComponentsHeight?.[virtualRow.index]?.subComponentHeight !== subCompHeight && subCompHeight !== 0) {
             // use most common sub-component height of first 10 sub-components as default height
             if (alwaysShowSubComponent && subComponentsHeight && Object.keys(subComponentsHeight).length === 10) {
               const objGroupedByHeight = Object.values(subComponentsHeight).reduce((acc, cur) => {
@@ -67,7 +67,7 @@ export const RowSubComponent = (props: RowSubComponent) => {
                 type: 'SUB_COMPONENTS_HEIGHT',
                 payload: {
                   ...subComponentsHeight,
-                  [virtualRow.index]: { subComponentHeight: borderBoxSize.blockSize, rowId: row.id }
+                  [virtualRow.index]: { subComponentHeight: subCompHeight, rowId: row.id }
                 }
               });
             }
@@ -95,6 +95,7 @@ export const RowSubComponent = (props: RowSubComponent) => {
       data-subcomponent
       tabIndex={-1}
       style={{
+        boxSizing: 'border-box',
         transform: `translateY(${rowHeight}px)`
       }}
       className={classes.subcomponent}
