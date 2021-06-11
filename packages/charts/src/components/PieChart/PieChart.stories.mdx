@@ -1,12 +1,22 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import { PieChart } from '@ui5/webcomponents-react-charts/dist/PieChart';
-import { simpleDataSet } from '../../resources/DemoProps';
+import { simpleDataSet, simpleDataSetWithSmallValues } from '../../resources/DemoProps';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="Charts /  PieChart"
   component={PieChart}
+  args={{
+    dimension: {
+      accessor: 'name'
+    },
+    measure: {
+      accessor: 'users'
+    },
+    dataset: simpleDataSet,
+    style: { width: '50%' }
+  }}
   argTypes={{
     ...DocsCommonProps,
     dataset: {
@@ -20,21 +30,7 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 ## Example
 
 <Canvas>
-  <Story
-    name="Default"
-    args={{
-      dimension: {
-        accessor: 'name'
-      },
-      measure: {
-        accessor: 'users'
-      },
-      dataset: simpleDataSet,
-      style: { width: '50%' }
-    }}
-  >
-    {(props) => <PieChart {...props} />}
-  </Story>
+  <Story name="Default">{(props) => <PieChart {...props} />}</Story>
 </Canvas>
 
 ## Properties
@@ -52,15 +48,10 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
   <Story
     name="With Custom Color"
     args={{
-      dimension: {
-        accessor: 'name'
-      },
       measure: {
         accessor: 'users',
         colors: ['#f00', 'green', 'var(--sapNegativeColor)']
-      },
-      dataset: simpleDataSet,
-      style: { width: '50%' }
+      }
     }}
   >
     {(props) => <PieChart {...props} />}
@@ -79,19 +70,35 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
   <Story
     name="With Formatter"
     args={{
-      dimension: {
-        accessor: 'name'
-      },
       measure: {
         accessor: 'users',
         formatter: (d) => (d > 200 ? 'over 200' : 'lower')
       },
-      dataset: simpleDataSet,
-      style: { width: '50%' },
       chartConfig: {
         activeSegment: 1,
         showActiveSegmentDataLabel: true
       }
+    }}
+  >
+    {(props) => <PieChart {...props} />}
+  </Story>
+</Canvas>
+
+### Hide labels
+
+<Canvas>
+  <Story
+    name="Hide Labels"
+    args={{
+      measure: {
+        accessor: 'users',
+        hideDataLabel: (chartConfig) => {
+          if (chartConfig.percent < 0.01) {
+            return true;
+          }
+        }
+      },
+      dataset: simpleDataSetWithSmallValues
     }}
   >
     {(props) => <PieChart {...props} />}

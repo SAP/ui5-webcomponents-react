@@ -2,7 +2,7 @@ import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import '@ui5/webcomponents-icons/dist/person-placeholder.js';
 import { DonutChart } from '@ui5/webcomponents-react-charts/dist/DonutChart';
-import { simpleDataSet } from '../../resources/DemoProps';
+import { simpleDataSet, simpleDataSetWithSmallValues } from '../../resources/DemoProps';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
@@ -122,6 +122,27 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
         activeSegment: 9,
         showActiveSegmentDataLabel: true
       }
+    }}
+  >
+    {(props) => <DonutChart {...props} />}
+  </Story>
+</Canvas>
+
+### Hide labels
+
+<Canvas>
+  <Story
+    name="Hide Labels"
+    args={{
+      measure: {
+        accessor: 'users',
+        hideDataLabel: (chartConfig) => {
+          if (chartConfig.percent < 0.01) {
+            return true;
+          }
+        }
+      },
+      dataset: simpleDataSetWithSmallValues
     }}
   >
     {(props) => <DonutChart {...props} />}
