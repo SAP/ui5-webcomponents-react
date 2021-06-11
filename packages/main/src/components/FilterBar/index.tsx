@@ -185,7 +185,7 @@ const resizeObserverEntryWidth = (entry) => {
     return Array.isArray(entry.borderBoxSize) ? entry.borderBoxSize[0]?.inlineSize : entry.borderBoxSize?.inlineSize;
   }
   // Safari doesn't implement `borderBoxSize`
-  return entry?.target.getBoundingClientRect().width;
+  return entry.target.getBoundingClientRect().width;
 };
 
 const useStyles = createUseStyles(styles, { name: 'FilterBar' });

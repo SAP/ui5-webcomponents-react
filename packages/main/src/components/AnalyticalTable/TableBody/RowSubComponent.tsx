@@ -34,7 +34,7 @@ export const RowSubComponent = (props: RowSubComponent) => {
   useEffect(() => {
     const subComponentHeightObserver = new ResizeObserver((entries) => {
       entries.forEach((entry) => {
-        const target = entry?.target.getBoundingClientRect();
+        const target = entry.target.getBoundingClientRect();
         if (target) {
           // Firefox implements `borderBoxSize` as a single content rect, rather than an array
           const borderBoxSize = Array.isArray(entry.borderBoxSize) ? entry.borderBoxSize[0] : entry.borderBoxSize;
