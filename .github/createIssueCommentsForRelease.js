@@ -8,6 +8,7 @@ export default async function run({ github, context, version }) {
     repo: context.repo.repo,
     tag: `v${version}`
   });
+  release.url = release.html_url;
 
   // find commits of this release
   const commits = [];
