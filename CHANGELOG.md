@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.131.9](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.8...v0.131.9) (2021-06-14)
+
+
+### Bug Fixes
+
+* **DynamicPage:** only render necessary elements (cherry pick 6c2863e) ([be3627c](https://github.com/SAP/ui5-webcomponents-react/commit/be3627c61653aa3980dfcc4b354de03bac21b7dd))
+
+
+
+
+
 ## [0.131.8](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.7...v0.131.8) (2021-06-09)
 
 
