@@ -1,4 +1,4 @@
-import { createUseStyles } from 'react-jss';
+import { isIE } from '@ui5/webcomponents-react-base/lib/Device';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { BreadcrumbsPropTypes } from '@ui5/webcomponents-react/lib/Breadcrumbs';
@@ -10,9 +10,9 @@ import { ToolbarSeparator } from '@ui5/webcomponents-react/lib/ToolbarSeparator'
 import { ToolbarSpacer } from '@ui5/webcomponents-react/lib/ToolbarSpacer';
 import { ToolbarStyle } from '@ui5/webcomponents-react/lib/ToolbarStyle';
 import React, { Children, FC, forwardRef, ReactElement, ReactNode, ReactNodeArray, Ref } from 'react';
+import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { DynamicPageTitleStyles } from './DynamicPageTitle.jss';
-import { isIE } from '@ui5/webcomponents-react-base/lib/Device';
 
 export interface DynamicPageTitleProps extends CommonProps {
   /**
@@ -96,13 +96,15 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
       onClick={onToggleHeaderContentVisibility}
       {...passThroughProps}
     >
-      <div className={classes.breadcrumbs}>{breadcrumbs}</div>
+      {breadcrumbs && <div className={classes.breadcrumbs}>{breadcrumbs}</div>}
       <FlexBox alignItems={FlexBoxAlignItems.Center} style={{ flexGrow: 1, width: '100%' }}>
         <FlexBox className={classes.titleMainSection}>
-          <div className={classes.title}>{heading}</div>
-          <div className={classes.content}>
-            <Toolbar toolbarStyle={ToolbarStyle.Clear}>{children}</Toolbar>
-          </div>
+          {heading && <div className={classes.title}>{heading}</div>}
+          {children && (
+            <div className={classes.content}>
+              <Toolbar toolbarStyle={ToolbarStyle.Clear}>{children}</Toolbar>
+            </div>
+          )}
         </FlexBox>
         <Toolbar design={ToolbarDesign.Auto} toolbarStyle={ToolbarStyle.Clear}>
           <ToolbarSpacer />
@@ -111,9 +113,11 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
           {navigationActions}
         </Toolbar>
       </FlexBox>
-      <FlexBox>
-        <div className={classes.subTitle}>{subHeading}</div>
-      </FlexBox>
+      {subHeading && (
+        <FlexBox>
+          <div className={classes.subTitle}>{subHeading}</div>
+        </FlexBox>
+      )}
     </FlexBox>
   );
 });

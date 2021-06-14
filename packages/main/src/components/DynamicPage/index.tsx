@@ -1,7 +1,6 @@
 import { createUseStyles } from 'react-jss';
 import {
   useConsolidatedRef,
-  useIsomorphicLayoutEffect,
   usePassThroughHtmlProps
 } from '@ui5/webcomponents-react-base/lib/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
