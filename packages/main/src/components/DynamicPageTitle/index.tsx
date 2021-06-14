@@ -96,7 +96,7 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
       onClick={onToggleHeaderContentVisibility}
       {...passThroughProps}
     >
-      <div className={classes.breadcrumbs}>{breadcrumbs}</div>
+      {breadcrumbs && <div className={classes.breadcrumbs}>{breadcrumbs}</div>}
       <FlexBox alignItems={FlexBoxAlignItems.Center} style={{ flexGrow: 1, width: '100%' }}>
         <FlexBox className={classes.titleMainSection}>
           <div className={classes.title}>{heading}</div>
@@ -111,9 +111,11 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
           {navigationActions}
         </Toolbar>
       </FlexBox>
-      <FlexBox>
-        <div className={classes.subTitle}>{subHeading}</div>
-      </FlexBox>
+      {subHeading && (
+        <FlexBox>
+          <div className={classes.subTitle}>{subHeading}</div>
+        </FlexBox>
+      )}
     </FlexBox>
   );
 });
