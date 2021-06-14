@@ -99,10 +99,12 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
       {breadcrumbs && <div className={classes.breadcrumbs}>{breadcrumbs}</div>}
       <FlexBox alignItems={FlexBoxAlignItems.Center} style={{ flexGrow: 1, width: '100%' }}>
         <FlexBox className={classes.titleMainSection}>
-          <div className={classes.title}>{heading}</div>
-          <div className={classes.content}>
-            <Toolbar toolbarStyle={ToolbarStyle.Clear}>{children}</Toolbar>
-          </div>
+          {heading && <div className={classes.title}>{heading}</div>}
+          {children && (
+            <div className={classes.content}>
+              <Toolbar toolbarStyle={ToolbarStyle.Clear}>{children}</Toolbar>
+            </div>
+          )}
         </FlexBox>
         <Toolbar design={ToolbarDesign.Auto} toolbarStyle={ToolbarStyle.Clear}>
           <ToolbarSpacer />
