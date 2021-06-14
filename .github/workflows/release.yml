@@ -65,6 +65,10 @@ jobs:
           GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         with:
           script: |
-            const script = require('./.github/createIssueCommentsForRelease.js')
-            const { version } = require('./lerna.json')
+            import fs from 'fs';
+            import { fileURLToPath, URL } from 'url';
+            import script from './.github/createIssueCommentsForRelease.js';
+
+            const { version } = JSON.parse(fs.readFileSync(new URL('./lerna.json', import.meta.url)).toString());
+            console.log('Create issue comments for lerna version: ', version);
             await script({github, context, core, version})
