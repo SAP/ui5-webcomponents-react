@@ -8,7 +8,7 @@ import { XAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/XAxi
 import { YAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/YAxisTicks';
 import { ComposedChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/ComposedChartPlaceholder';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/dist/useLegendItemClick';
-import React, { FC, forwardRef, Ref, useCallback, useMemo, useState } from 'react';
+import React, { FC, forwardRef, Ref, useCallback, useEffect, useMemo, useState } from 'react';
 import {
   Area,
   Bar,
@@ -110,6 +110,12 @@ export interface ComposedChartProps extends IChartBaseProps {
    * Default Value: `horizontal`
    */
   layout?: 'horizontal' | 'vertical';
+  /**
+   * lineChartPlacement for defining the position of the line chart. `inside` the line chart ist rendered in the grid with the other defined charts,
+   * `outside` the line chart will be rendered above the the other charts separately.
+   * Default Value: `inside`
+   */
+  lineChartPlacement?: 'inside' | 'outside';
 }
 
 const ChartTypes = {
@@ -133,6 +139,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     onLegendClick,
     onClick,
     layout,
+    lineChartPlacement = 'inside',
     style,
     className,
     tooltip,
@@ -236,36 +243,40 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
   const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick', 'onClick']);
   const isRTL = useIsRTL(chartRef);
 
-  const handleStyleChange = () => {
-    const newSurface =
-      Number(document.querySelector('g.recharts-line').getBBox().height) +
-      Number(document.querySelector('svg.recharts-surface').getAttribute('height')) +
-      20;
-    document.querySelector('svg.recharts-surface').setAttribute('height', newSurface.toString());
-    document.querySelector('svg.recharts-surface').childNodes.forEach((child) => {
-      if (child.childNodes[0].id !== 'secondaryYAxis') {
-        child.style.transform = `translate(0, ${
-          Number(document.querySelector('g.recharts-line').getBBox().height) / 2 + 20
-        }px)`;
-      } else {
-        const direction =
-          measures.find((measure) => measure.type === 'line').accessor === chartConfig.secondYAxis.dataKey ? '-' : '+';
-        if (direction === '-') {
-          setSecondAxisAbove(true);
+  useEffect(() => {
+    if (lineChartPlacement === 'outside') {
+      const newSurface =
+        Number(document.querySelector('g.recharts-line')?.getBBox().height) +
+        Number(document.querySelector('svg.recharts-surface')?.getAttribute('height')) +
+        20;
+      document.querySelector('svg.recharts-surface')?.setAttribute('height', newSurface.toString());
+      document.querySelector('svg.recharts-surface')?.childNodes.forEach((child) => {
+        if (child.childNodes[0].id !== 'secondaryYAxis') {
+          child.style.transform = `translate(0, ${
+            Number(document.querySelector('g.recharts-line')?.getBBox().height) / 2 + 20
+          }px)`;
+        } else {
+          const direction =
+            measures?.find((measure) => measure.type === 'line').accessor === chartConfig.secondYAxis.dataKey
+              ? '-'
+              : '+';
+          if (direction === '-') {
+            setSecondAxisAbove(true);
+          }
+          child.style.transform = `translate(0, ${direction}${
+            Number(document.querySelector('g.recharts-line')?.getBBox().height) / 2 + 20
+          }px)`;
         }
-        child.style.transform = `translate(0, ${direction}${
-          Number(document.querySelector('g.recharts-line').getBBox().height) / 2 + 20
-        }px)`;
-      }
-    });
-    document.querySelector('g.recharts-line').style.transform = `translate(0, -${
-      Number(document.querySelector('g.recharts-line').getBBox().height) / 2 +
-      Number(document.querySelector('g.recharts-cartesian-axis-ticks').getBBox().height) / 2
-    }px`;
-    document.querySelector('ul.recharts-default-legend').style.transform = `translate(0, ${
-      Number(document.querySelector('g.recharts-line').getBBox().height) + 30
-    }px)`;
-  };
+      });
+      document.querySelector('g.recharts-line').style.transform = `translate(0, -${
+        Number(document.querySelector('g.recharts-line')?.getBBox().height) / 2 +
+        Number(document.querySelector('g.recharts-cartesian-axis-ticks')?.getBBox().height) / 2
+      }px`;
+      document.querySelector('ul.recharts-default-legend').style.transform = `translate(0, ${
+        Number(document.querySelector('g.recharts-line')?.getBBox().height) + 30
+      }px)`;
+    }
+  }, [lineChartPlacement]);
 
   return (
     <ChartContainer
@@ -412,7 +423,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
           <Legend
             verticalAlign={chartConfig.legendPosition}
             align={chartConfig.legendHorizontalAlign}
-            onClick={handleStyleChange}
+            onClick={onItemLegendClick}
             wrapperStyle={legendPosition}
           />
         )}
