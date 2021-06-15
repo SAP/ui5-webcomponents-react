@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.16.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.16.3...v0.16.4) (2021-06-14)
+
+
+### Bug Fixes
+
+* **DynamicPage:** only render necessary elements ([#1726](https://github.com/SAP/ui5-webcomponents-react/issues/1726)) ([6c2863e](https://github.com/SAP/ui5-webcomponents-react/commit/6c2863ec7f65eb0c98c1c284680c31fcf1518490))
+* **FilterBar & AnalyticalTable:** display subcomponents and filter items correctly in Safari ([#1723](https://github.com/SAP/ui5-webcomponents-react/issues/1723)) ([929833d](https://github.com/SAP/ui5-webcomponents-react/commit/929833df5ad86404a481418ab74e3c9c0ca9eaa2))
+* refactor `sapUiResponsiveContentPadding` and add respective padding to ObjectPage content ([#1699](https://github.com/SAP/ui5-webcomponents-react/issues/1699)) ([5fe3c18](https://github.com/SAP/ui5-webcomponents-react/commit/5fe3c1819f230512c43d91c7876ed82b592b705f))
+* **AnalyticalTable:** Prevent crash when filtering with subcomponents and no row is returned ([#1697](https://github.com/SAP/ui5-webcomponents-react/issues/1697)) ([a8989d5](https://github.com/SAP/ui5-webcomponents-react/commit/a8989d50948aec73df230ba0d16cac184f177d3c))
+
+
+### Features
+
+* **ResponsiveGridLayout:** initial component implementation ([#1698](https://github.com/SAP/ui5-webcomponents-react/issues/1698)) ([866290b](https://github.com/SAP/ui5-webcomponents-react/commit/866290bb75847625559a485051fda64e7ad676a5))
+
+
+
+
+
 ## [0.16.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.16.2...v0.16.3) (2021-06-07)
 
 

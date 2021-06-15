@@ -1,33 +1,29 @@
-import { createUseStyles } from 'react-jss';
-import {
-  useConsolidatedRef,
-  useIsomorphicLayoutEffect,
-  usePassThroughHtmlProps
-} from '@ui5/webcomponents-react-base/dist/hooks';
+import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
+import { useConsolidatedRef, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { GlobalStyleClasses } from '@ui5/webcomponents-react/dist/GlobalStyleClasses';
 import { PageBackgroundDesign } from '@ui5/webcomponents-react/dist/PageBackgroundDesign';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import React, {
+  cloneElement,
+  FC,
   forwardRef,
   ReactElement,
   ReactNode,
   ReactNodeArray,
   Ref,
-  FC,
-  cloneElement,
   RefObject,
-  useRef,
   useCallback,
-  useState,
-  useEffect
+  useEffect,
+  useRef,
+  useState
 } from 'react';
+import { createUseStyles } from 'react-jss';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
 import { useObserveHeights } from '../ObjectPage/useObserveHeights';
 import styles from './DynamicPage.jss';
-import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
 
 export interface DynamicPageProps extends Omit<CommonProps, 'title'> {
   /**
@@ -70,6 +66,7 @@ enum HEADER_STATES {
   VISIBLE = 'VISIBLE',
   HIDDEN = 'HIDDEN'
 }
+
 const useStyles = createUseStyles(styles, { name: 'DynamicPage' });
 /**
  * The dynamic page is a generic layout control designed to support various floorplans and use cases.
