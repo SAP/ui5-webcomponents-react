@@ -1,11 +1,12 @@
-import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
+import { Button } from '@storybook/react/demo';
 import { useConsolidatedRef, useIsRTL, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/dist/components/ChartContainer';
 import { ChartDataLabel } from '@ui5/webcomponents-react-charts/dist/components/ChartDataLabel';
-import { ComposedChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/ComposedChartPlaceholder';
 import { XAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/XAxisTicks';
 import { YAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/YAxisTicks';
+import { ComposedChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/ComposedChartPlaceholder';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/dist/useLegendItemClick';
 import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import {
@@ -234,6 +235,21 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
   const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick', 'onClick']);
   const isRTL = useIsRTL(chartRef);
 
+  const handleStyleChange = () => {
+    // const newSurfaceHeight = document.querySelector('svg.recharts-surface').height.baseVal.value * 2;
+    const newSurfaceHeight =
+      (document.querySelector('g.recharts-yAxis').getBBox().height +
+        document.querySelector('g.recharts-cartesian-axis-ticks').getBBox().height) *
+      2;
+    console.log(document.querySelector('g.recharts-cartesian-axis-ticks').getBBox().height);
+    document.querySelector('svg.recharts-surface').setAttribute('height', newSurfaceHeight.toString());
+    document.querySelector('svg.recharts-surface').childNodes.forEach((child) => {
+      child.style.transform = `translate(0, ${newSurfaceHeight / 4}px)`;
+    });
+    document.querySelector('div.recharts-legend-wrapper').style.transform = `translate(0, ${newSurfaceHeight / 2}px`;
+    document.querySelector('g.recharts-line').style.transform = `translate(0, -${newSurfaceHeight / 4}px`;
+  };
+
   return (
     <ChartContainer
       ref={chartRef}
@@ -378,12 +394,12 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
           <Legend
             verticalAlign={chartConfig.legendPosition}
             align={chartConfig.legendHorizontalAlign}
-            onClick={onItemLegendClick}
+            onClick={handleStyleChange}
             wrapperStyle={legendPosition}
           />
         )}
         {measures?.map((element, index) => {
-          const ChartElement = (ChartTypes[element.type] as any) as FC<any>;
+          const ChartElement = ChartTypes[element.type] as any as FC<any>;
 
           const chartElementProps: any = {
             isAnimationActive: noAnimation === false
