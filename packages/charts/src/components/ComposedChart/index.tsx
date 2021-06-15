@@ -236,18 +236,24 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
   const isRTL = useIsRTL(chartRef);
 
   const handleStyleChange = () => {
-    // const newSurfaceHeight = document.querySelector('svg.recharts-surface').height.baseVal.value * 2;
-    const newSurfaceHeight =
-      (document.querySelector('g.recharts-yAxis').getBBox().height +
-        document.querySelector('g.recharts-cartesian-axis-ticks').getBBox().height) *
-      2;
-    console.log(document.querySelector('g.recharts-cartesian-axis-ticks').getBBox().height);
-    document.querySelector('svg.recharts-surface').setAttribute('height', newSurfaceHeight.toString());
+    const newSurface =
+      Number(document.querySelector('g.recharts-line').getBBox().height) +
+      Number(document.querySelector('svg.recharts-surface').getAttribute('height')) +
+      20;
+    document.querySelector('svg.recharts-surface').setAttribute('height', newSurface.toString());
     document.querySelector('svg.recharts-surface').childNodes.forEach((child) => {
-      child.style.transform = `translate(0, ${newSurfaceHeight / 4}px)`;
+      child.style.transform = `translate(0, ${
+        Number(document.querySelector('g.recharts-line').getBBox().height) / 2 + 20
+      }px)`;
     });
-    document.querySelector('div.recharts-legend-wrapper').style.transform = `translate(0, ${newSurfaceHeight / 2}px`;
-    document.querySelector('g.recharts-line').style.transform = `translate(0, -${newSurfaceHeight / 4}px`;
+    document.querySelector('g.recharts-line').style.transform = `translate(0, -${
+      Number(document.querySelector('g.recharts-line').getBBox().height) / 2 +
+      Number(document.querySelector('g.recharts-cartesian-axis-ticks').getBBox().height) / 2
+    }px`;
+    console.log(document.querySelector('g.recharts-cartesian-axis').getBBox().height);
+    document.querySelector('ul.recharts-default-legend').style.transform = `translate(0, ${
+      Number(document.querySelector('g.recharts-line').getBBox().height) + 30
+    }px)`;
   };
 
   return (
