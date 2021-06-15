@@ -253,7 +253,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
       >
         {children}
       </div>
-      <div className={classes.footer}>{footer}</div>
+      {footer && <footer className={classes.footer}>{footer}</footer>}
     </div>
   );
 });
