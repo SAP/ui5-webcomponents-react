@@ -8,7 +8,7 @@ import { XAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/XAxi
 import { YAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/YAxisTicks';
 import { ComposedChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/ComposedChartPlaceholder';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/dist/useLegendItemClick';
-import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
+import React, { FC, forwardRef, Ref, useCallback, useMemo, useState } from 'react';
 import {
   Area,
   Bar,
@@ -140,6 +140,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
   } = props;
 
   const chartRef = useConsolidatedRef<any>(ref);
+  const [secondAxisAbove, setSecondAxisAbove] = useState(false);
 
   const chartConfig = useMemo(() => {
     return {
@@ -242,15 +243,25 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
       20;
     document.querySelector('svg.recharts-surface').setAttribute('height', newSurface.toString());
     document.querySelector('svg.recharts-surface').childNodes.forEach((child) => {
-      child.style.transform = `translate(0, ${
-        Number(document.querySelector('g.recharts-line').getBBox().height) / 2 + 20
-      }px)`;
+      if (child.childNodes[0].id !== 'secondaryYAxis') {
+        child.style.transform = `translate(0, ${
+          Number(document.querySelector('g.recharts-line').getBBox().height) / 2 + 20
+        }px)`;
+      } else {
+        const direction =
+          measures.find((measure) => measure.type === 'line').accessor === chartConfig.secondYAxis.dataKey ? '-' : '+';
+        if (direction === '-') {
+          setSecondAxisAbove(true);
+        }
+        child.style.transform = `translate(0, ${direction}${
+          Number(document.querySelector('g.recharts-line').getBBox().height) / 2 + 20
+        }px)`;
+      }
     });
     document.querySelector('g.recharts-line').style.transform = `translate(0, -${
       Number(document.querySelector('g.recharts-line').getBBox().height) / 2 +
       Number(document.querySelector('g.recharts-cartesian-axis-ticks').getBBox().height) / 2
     }px`;
-    console.log(document.querySelector('g.recharts-cartesian-axis').getBBox().height);
     document.querySelector('ul.recharts-default-legend').style.transform = `translate(0, ${
       Number(document.querySelector('g.recharts-line').getBBox().height) + 30
     }px)`;
@@ -334,6 +345,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
 
         {chartConfig.secondYAxis?.dataKey && layout === 'horizontal' && (
           <YAxis
+            id={'secondaryYAxis'}
             dataKey={chartConfig.secondYAxis.dataKey}
             axisLine={{
               stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
@@ -353,7 +365,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               angle: +90,
               position: 'center'
             }}
-            orientation={isRTL ? 'left' : 'right'}
+            orientation={!isRTL ? (secondAxisAbove ? 'left' : 'right') : secondAxisAbove ? 'right' : 'left'}
             interval={0}
             yAxisId="secondary"
           />
