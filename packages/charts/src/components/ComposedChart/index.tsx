@@ -244,14 +244,18 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
 
   useEffect(() => {
     if (lineChartPlacement === 'outside') {
-      const newSurface =
+      const newRechartsSurface =
+        // @ts-ignore
         Number(document.querySelector('g.recharts-line')?.getBBox().height) +
         Number(document.querySelector('svg.recharts-surface')?.getAttribute('height')) +
         20;
-      document.querySelector('svg.recharts-surface')?.setAttribute('height', newSurface.toString());
+      document.querySelector('svg.recharts-surface')?.setAttribute('height', newRechartsSurface.toString());
       document.querySelector('svg.recharts-surface')?.childNodes.forEach((child) => {
+        // @ts-ignore
         if (child.childNodes[0].id !== 'secondaryYAxis') {
+          // @ts-ignore
           child.style.transform = `translate(0, ${
+            // @ts-ignore
             Number(document.querySelector('g.recharts-line')?.getBBox().height) / 2 + 20
           }px)`;
         } else {
@@ -262,16 +266,23 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
           if (direction === '-') {
             setSecondAxisAbove(true);
           }
+          // @ts-ignore
           child.style.transform = `translate(0, ${direction}${
+            // @ts-ignore
             Number(document.querySelector('g.recharts-line')?.getBBox().height) / 2 + 20
           }px)`;
         }
       });
+      // @ts-ignore
       document.querySelector('g.recharts-line').style.transform = `translate(0, -${
+        // @ts-ignore
         Number(document.querySelector('g.recharts-line')?.getBBox().height) / 2 +
+        // @ts-ignore
         Number(document.querySelector('g.recharts-cartesian-axis-ticks')?.getBBox().height) / 2
       }px`;
+      // @ts-ignore
       document.querySelector('ul.recharts-default-legend').style.transform = `translate(0, ${
+        // @ts-ignore
         Number(document.querySelector('g.recharts-line')?.getBBox().height) + 30
       }px)`;
     }
