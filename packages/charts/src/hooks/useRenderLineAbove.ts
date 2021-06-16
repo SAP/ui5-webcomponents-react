@@ -34,6 +34,8 @@ export const useRenderLineAbove = (
             }px)`;
           } else {
             const direction =
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
               measures?.find((measure) => measure.type === 'line').accessor === chartConfig.secondYAxis.dataKey
                 ? '-'
                 : '+';
