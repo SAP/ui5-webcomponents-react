@@ -146,21 +146,25 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
       onClick={onToggleHeaderContentVisibility}
       {...passThroughProps}
     >
-      <FlexBox justifyContent={FlexBoxJustifyContent.SpaceBetween}>
-        <div className={classes.breadcrumbs}>{breadcrumbs}</div>
-        {showNavigationInTopArea && <FlexBox alignItems={FlexBoxAlignItems.End}>{navigationActions}</FlexBox>}
-      </FlexBox>
+      {(breadcrumbs || (navigationActions && showNavigationInTopArea)) && (
+        <FlexBox justifyContent={FlexBoxJustifyContent.SpaceBetween}>
+          <div className={classes.breadcrumbs}>{breadcrumbs}</div>
+          {showNavigationInTopArea && <FlexBox alignItems={FlexBoxAlignItems.End}>{navigationActions}</FlexBox>}
+        </FlexBox>
+      )}
       <FlexBox alignItems={FlexBoxAlignItems.Center} style={{ flexGrow: 1, width: '100%' }}>
         <FlexBox className={classes.titleMainSection}>
-          <div className={classes.title}>{heading}</div>
-          {showSubheadingRight && (
+          {heading && <div className={classes.title}>{heading}</div>}
+          {subHeading && showSubheadingRight && (
             <div className={classes.subTitleRight} style={{ [paddingLeftRtl]: '0.5rem' }}>
               {subHeading}
             </div>
           )}
-          <div className={classes.content} style={{ [paddingLeftRtl]: '0.5rem' }}>
-            {children}
-          </div>
+          {children && (
+            <div className={classes.content} style={{ [paddingLeftRtl]: '0.5rem' }}>
+              {children}
+            </div>
+          )}
         </FlexBox>
         <Toolbar design={ToolbarDesign.Auto} toolbarStyle={ToolbarStyle.Clear}>
           <ToolbarSpacer />
@@ -171,7 +175,7 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
           {!showNavigationInTopArea && navigationActions}
         </Toolbar>
       </FlexBox>
-      {!showSubheadingRight && (
+      {subHeading && !showSubheadingRight && (
         <FlexBox>
           <div className={classes.subTitleBottom}>{subHeading}</div>
         </FlexBox>

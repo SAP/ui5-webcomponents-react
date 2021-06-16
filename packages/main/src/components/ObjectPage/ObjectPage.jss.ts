@@ -1,3 +1,4 @@
+import { sapUiResponsiveContentPadding } from '@ui5/webcomponents-react-base/dist/spacing';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
 import { DynamicPageCssVariables } from '../DynamicPage/DynamicPage.jss';
@@ -9,7 +10,7 @@ export const ObjectPageCssVariables = {
   lastSectionMargin: '--_ui5wcr_ObjectPage_last_section_margin_bottom'
 };
 
-const styles = {
+export const styles = {
   objectPage: {
     boxSizing: 'border-box',
     width: '100%',
@@ -65,6 +66,7 @@ const styles = {
     }
   },
   header: {
+    ...sapUiResponsiveContentPadding,
     //todo
     [DynamicPageCssVariables.headerDisplay]: 'block',
     boxSizing: 'border-box',
@@ -97,13 +99,12 @@ const styles = {
     backgroundColor: ThemingParameters.sapObjectHeader_Background
   },
   contentHeader: {
-    // backgroundColor: ThemingParameters.sapObjectHeader_Background,
-    background: 'red',
+    ...sapUiResponsiveContentPadding,
+    backgroundColor: ThemingParameters.sapObjectHeader_Background,
     position: 'sticky',
     paddingBottom: '0.25rem',
     maxHeight: '500px',
-    overflow: 'hidden',
-    paddingLeft: '2rem'
+    overflow: 'hidden'
   },
   anchorBar: {
     position: 'sticky',
@@ -179,5 +180,3 @@ const styles = {
     alignSelf: 'center'
   }
 };
-
-export default styles;

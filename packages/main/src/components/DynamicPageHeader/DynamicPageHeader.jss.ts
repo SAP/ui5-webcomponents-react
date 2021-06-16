@@ -14,8 +14,8 @@ export const DynamicPageHeaderStyles = {
     backgroundColor: ThemingParameters.sapObjectHeader_Background,
     position: 'sticky',
     zIndex: 1,
-    paddingTop: '1rem !important',
-    paddingBottom: '1rem !important',
+    paddingTop: '1rem',
+    paddingBottom: '1rem',
     display: `var(${DynamicPageCssVariables.headerDisplay})`,
     maxHeight: '500px',
     overflow: isIE() ? 'visible' : 'hidden'

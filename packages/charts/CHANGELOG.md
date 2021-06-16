@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.16.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.16.3...v0.16.4) (2021-06-14)
+
+
+### Features
+
+* **PieChart & DonutChart:** add callback to `hideDataLabel` measure prop ([#1722](https://github.com/SAP/ui5-webcomponents-react/issues/1722)) ([a4f2dec](https://github.com/SAP/ui5-webcomponents-react/commit/a4f2dec35e8365be9b82d082ac7b7647f4a08c74))
+
+
+
+
+
+## [0.16.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.16.1...v0.16.2) (2021-06-02)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-charts
+
+
+
+
+
 ## [0.16.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.16.0...v0.16.1) (2021-05-12)
 
 

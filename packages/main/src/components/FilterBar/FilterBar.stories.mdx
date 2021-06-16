@@ -7,10 +7,9 @@ import { MultiComboBoxItem } from '@ui5/webcomponents-react/dist/MultiComboBoxIt
 import { Option } from '@ui5/webcomponents-react/dist/Option';
 import { Select } from '@ui5/webcomponents-react/dist/Select';
 import { Switch } from '@ui5/webcomponents-react/dist/Switch';
-import { DatePicker } from '@ui5/webcomponents-react/dist/DatePicker';
+import { DateRangePicker } from '@ui5/webcomponents-react/dist/DateRangePicker';
 import { VariantManagement } from '@ui5/webcomponents-react/dist/VariantManagement';
 import '@ui5/webcomponents-icons/dist/nav-back.js';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
@@ -108,7 +107,7 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
             </MultiComboBox>
           </FilterGroupItem>
           <FilterGroupItem label="Date Picker" groupName="Group 2">
-            <DatePicker />
+            <DateRangePicker style={{ minWidth: 'auto' }} />
           </FilterGroupItem>
         </FilterBar>
       );

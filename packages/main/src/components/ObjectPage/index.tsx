@@ -26,7 +26,7 @@ import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
 import { ObjectPageSectionPropTypes } from '../ObjectPageSection';
 import { ObjectPageSubSectionPropTypes } from '../ObjectPageSubSection';
 import { CollapsedAvatar } from './CollapsedAvatar';
-import styles, { ObjectPageCssVariables } from './ObjectPage.jss';
+import { ObjectPageCssVariables, styles } from './ObjectPage.jss';
 import { ObjectPageAnchorBar } from './ObjectPageAnchorBar';
 import { ObjectPageHeader } from './ObjectPageHeader';
 import {
@@ -492,6 +492,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
 
   const paddingLeftRtl = isRTL ? 'paddingRight' : 'paddingLeft';
 
+  //todo check remove scrollbarWidthPadding
   const headerInlineStyles = useMemo(() => {
     return {
       ...scrollBarWidthPadding,
