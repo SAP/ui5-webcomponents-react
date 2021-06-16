@@ -28,6 +28,7 @@ import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
 import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights';
 import { useOnClickInternal } from '../../hooks/useOnClickInternal';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
+import { useRenderLineAbove } from '../../hooks/useRenderLineAbove';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
 import { IChartDimension } from '../../interfaces/IChartDimension';
@@ -114,7 +115,7 @@ export interface ComposedChartProps extends IChartBaseProps {
    * `outside` the line chart will be rendered above the the other charts separately.
    * Default Value: `inside`
    */
-  lineChartPlacement?: 'inside' | 'outside';
+  lineChartPlacement?: LinePlacement;
 }
 
 const ChartTypes = {
@@ -124,6 +125,8 @@ const ChartTypes = {
 };
 
 type AvailableChartTypes = 'line' | 'bar' | 'area' | string;
+
+type LinePlacement = 'inside' | 'outside';
 
 /**
  * The `ComposedChart` enables you to combine different chart types in one chart, e.g. showing bars together with lines.
@@ -146,7 +149,6 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
   } = props;
 
   const chartRef = useConsolidatedRef<any>(ref);
-  const [secondAxisAbove, setSecondAxisAbove] = useState(false);
 
   const chartConfig = useMemo(() => {
     return {
@@ -176,6 +178,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
   const primaryMeasure = measures[0];
 
   const labelFormatter = useLabelFormatter(primaryDimension);
+  const [secondAxisAbove, setSecondAxisAbove] = useState(false);
 
   const dataKeys = measures.map(({ accessor }) => accessor);
   const colorSecondY = chartConfig.secondYAxis
@@ -242,62 +245,16 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
   const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick', 'onClick']);
   const isRTL = useIsRTL(chartRef);
 
+  const renderLineAbove = useRenderLineAbove(
+    lineChartPlacement,
+    measures,
+    chartConfig,
+    document.querySelector('g.recharts-line')
+  );
+
   useEffect(() => {
-    if (lineChartPlacement === 'outside') {
-      const newRechartsSurface =
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        Number(document.querySelector('g.recharts-line')?.getBBox().height) +
-        Number(document.querySelector('svg.recharts-surface')?.getAttribute('height')) +
-        20;
-      document.querySelector('svg.recharts-surface')?.setAttribute('height', newRechartsSurface.toString());
-      document.querySelector('svg.recharts-surface')?.childNodes.forEach((child) => {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        if (child.childNodes[0].id !== 'secondaryYAxis') {
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
-          child.style.transform = `translate(0, ${
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            Number(document.querySelector('g.recharts-line')?.getBBox().height) / 2 + 20
-          }px)`;
-        } else {
-          const direction =
-            measures?.find((measure) => measure.type === 'line').accessor === chartConfig.secondYAxis.dataKey
-              ? '-'
-              : '+';
-          if (direction === '-') {
-            setSecondAxisAbove(true);
-          }
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
-          child.style.transform = `translate(0, ${direction}${
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            Number(document.querySelector('g.recharts-line')?.getBBox().height) / 2 + 20
-          }px)`;
-        }
-      });
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      document.querySelector('g.recharts-line').style.transform = `translate(0, -${
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        Number(document.querySelector('g.recharts-line')?.getBBox().height) / 2 +
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        Number(document.querySelector('g.recharts-cartesian-axis-ticks')?.getBBox().height) / 2
-      }px`;
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      document.querySelector('ul.recharts-default-legend').style.transform = `translate(0, ${
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        Number(document.querySelector('g.recharts-line')?.getBBox().height) + 30
-      }px)`;
-    }
-  }, [lineChartPlacement]);
+    setSecondAxisAbove(renderLineAbove);
+  }, [renderLineAbove]);
 
   return (
     <ChartContainer
