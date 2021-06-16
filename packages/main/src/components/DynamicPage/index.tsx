@@ -23,7 +23,7 @@ import React, {
 import { createUseStyles } from 'react-jss';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
 import { useObserveHeights } from '../ObjectPage/useObserveHeights';
-import styles from './DynamicPage.jss';
+import { styles } from './DynamicPage.jss';
 
 export interface DynamicPageProps extends Omit<CommonProps, 'title'> {
   /**
@@ -44,12 +44,22 @@ export interface DynamicPageProps extends Omit<CommonProps, 'title'> {
   headerContentPinnable?: boolean;
   /**
    * React element which defines the title.
+   *
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `DynamicPageTitle` in order to preserve the intended design.
    */
   title?: ReactElement;
   /**
    * React element which defines the header content.
+   *
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `DynamicPageHeader` in order to preserve the intended design.
    */
   header?: ReactElement;
+  /**
+   * React element which defines the footer content.
+   *
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `Bar` with `design={BarDesign.FloatingFooter}` in order to preserve the intended design.
+   */
+  footer?: ReactElement;
   /**
    * React element or node array which defines the content.
    */
@@ -86,7 +96,8 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
     headerContentPinnable,
     alwaysShowContentHeader,
     children,
-    className
+    className,
+    footer
   } = props;
   const passThroughProps = usePassThroughHtmlProps(props);
 
@@ -235,10 +246,14 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
       )}
       <div
         className={classes.contentContainer}
-        style={{ marginTop: isIE() ? `${headerContentHeight + topHeaderHeight + 34}px` : 0 }}
+        style={{
+          marginTop: isIE() ? `${headerContentHeight + topHeaderHeight + 34}px` : 0,
+          paddingBottom: footer ? '1rem' : 0
+        }}
       >
         {children}
       </div>
+      {footer && <footer className={classes.footer}>{footer}</footer>}
     </div>
   );
 });
