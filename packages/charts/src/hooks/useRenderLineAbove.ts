@@ -14,6 +14,12 @@ export const useRenderLineAbove = (
     if (lineChartPlacement === 'outside') {
       try {
         let secondAxisAbove = false;
+
+        const direction =
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          measures?.find((measure) => measure.type === 'line').accessor === chartConfig.secondYAxis.dataKey ? '-' : '+';
+
         const newRechartsSurface =
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
@@ -27,21 +33,22 @@ export const useRenderLineAbove = (
           if (child.childNodes[0].id !== 'secondaryYAxis') {
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
-            child.style.transform = `translate(0, ${
+            child.style.transform = `translate(${
+              direction === '-'
+                ? // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                  // @ts-ignore
+                  document.querySelector('g.recharts-cartesian-axis-ticks').getBBox().height / -2
+                : 0
+            }px, ${
               // eslint-disable-next-line @typescript-eslint/ban-ts-comment
               // @ts-ignore
               Number(document.querySelector('g.recharts-line')?.getBBox().height) / 2 + 20
             }px)`;
           } else {
-            const direction =
-              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-              // @ts-ignore
-              measures?.find((measure) => measure.type === 'line').accessor === chartConfig.secondYAxis.dataKey
-                ? '-'
-                : '+';
             if (direction === '-') {
               secondAxisAbove = true;
             }
+
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             child.style.transform = `translate(0, ${direction}${

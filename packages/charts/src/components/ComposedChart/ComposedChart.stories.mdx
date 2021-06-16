@@ -114,7 +114,6 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
       dataset: complexDataSet,
       style: { width: '95%', height: '40vh' },
       dimensions: [{ accessor: 'name' }],
-      lineChartPlacement: 'outside',
       measures: [
         {
           accessor: 'users',
@@ -250,6 +249,42 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
           type: 'line'
         }
       ]
+    }}
+  >
+    {(props) => <ComposedChart {...props} />}
+  </Story>
+</Canvas>
+
+### With Line Chart Above
+
+<Canvas>
+  <Story
+    name="With Line Chart Above Main Chart"
+    args={{
+      dataset: complexDataSet,
+      style: { width: '95%', height: '40vh' },
+      dimensions: [{ accessor: 'name' }],
+      lineChartPlacement: 'outside',
+      measures: [
+        {
+          accessor: 'users',
+          type: 'area'
+        },
+        {
+          accessor: 'sessions',
+          type: 'bar',
+          opacity: 0.6
+        },
+        {
+          accessor: 'volume',
+          type: 'line'
+        }
+      ],
+      chartConfig: {
+        secondYAxis: {
+          dataKey: 'sessions'
+        }
+      }
     }}
   >
     {(props) => <ComposedChart {...props} />}
