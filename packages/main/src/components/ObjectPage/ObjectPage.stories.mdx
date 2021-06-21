@@ -15,6 +15,7 @@ import { FormItem } from '@ui5/webcomponents-react/dist/FormItem';
 import { FormGroup } from '@ui5/webcomponents-react/dist/FormGroup';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { DynamicPageTitle } from '@ui5/webcomponents-react/dist/DynamicPageTitle';
+import { DynamicPageHeader } from '@ui5/webcomponents-react/dist/DynamicPageHeader';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { ObjectStatus } from '@ui5/webcomponents-react/dist/ObjectStatus';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
@@ -24,6 +25,8 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 import '@ui5/webcomponents-icons/dist/activate.js';
 import SampleImage from './DemoImage.png';
 import '@ui5/webcomponents-icons/dist/wrench.js';
+import { useRef } from 'react';
+import { FlexBoxAlignItems, FlexBoxWrap } from '../..';
 
 <Meta
   title="Layouts & Floorplans / ObjectPage"
@@ -96,6 +99,7 @@ import '@ui5/webcomponents-icons/dist/wrench.js';
 <Canvas>
   <Story name="Default">
     {(args) => {
+      const headerRef = useRef(null);
       return (
         <ObjectPage
           {...args}
@@ -108,6 +112,23 @@ import '@ui5/webcomponents-icons/dist/wrench.js';
             >
               <div>{args.keyInfos}</div>
             </DynamicPageTitle>
+          }
+          header={
+            <DynamicPageHeader ref={headerRef}>
+              <FlexBox wrap={FlexBoxWrap.Wrap} alignItems={FlexBoxAlignItems.Center}>
+                <FlexBox direction={FlexBoxDirection.Column}>
+                  <Link>+33 6 4512 5158</Link>
+                  <Link href="mailto:ui5-webcomponents-react@sap.com">DeniseSmith@sap.com</Link>
+                  <Link href="https://github.com/SAP/ui5-webcomponents-react">
+                    https://github.com/SAP/ui5-webcomponents-react
+                  </Link>
+                </FlexBox>
+                <FlexBox direction={FlexBoxDirection.Column} style={{ padding: '10px' }}>
+                  <Label>San Jose</Label>
+                  <Label>California, USA</Label>
+                </FlexBox>
+              </FlexBox>
+            </DynamicPageHeader>
           }
         >
           <ObjectPageSection title="Goals" id="goals" aria-label="Goals">

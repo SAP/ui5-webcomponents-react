@@ -1,9 +1,12 @@
+import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
+import { useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
-import { enrichEventWithDetails, getScrollBarWidth, debounce } from '@ui5/webcomponents-react-base/dist/Utils';
-import { useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
+import { debounce, enrichEventWithDetails, getScrollBarWidth } from '@ui5/webcomponents-react-base/dist/Utils';
+import { sapUiResponsiveContentPadding } from '@ui5/webcomponents-react-base/styling/spacing';
+import { DynamicPageHeader } from '@ui5/webcomponents-react/dist/DynamicPageHeader';
 import { GlobalStyleClasses } from '@ui5/webcomponents-react/dist/GlobalStyleClasses';
 import { ObjectPageMode } from '@ui5/webcomponents-react/dist/ObjectPageMode';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
@@ -20,15 +23,31 @@ import React, {
   useRef,
   useState
 } from 'react';
+import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
-import { FlexBox, FlexBoxDirection, Label, Link, ProgressIndicator, ValueState } from '../..';
+import {
+  AvatarSize,
+  FlexBox,
+  FlexBoxDirection,
+  FlexBoxWrap,
+  Label,
+  Link,
+  List,
+  PlacementType,
+  Popover,
+  ProgressIndicator,
+  StandardListItem,
+  TabContainer,
+  ValueState
+} from '../..';
+import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
+import { stopPropagation } from '../../internal/stopPropagation';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
 import { ObjectPageSectionPropTypes } from '../ObjectPageSection';
 import { ObjectPageSubSectionPropTypes } from '../ObjectPageSubSection';
 import { CollapsedAvatar } from './CollapsedAvatar';
 import { ObjectPageCssVariables, styles } from './ObjectPage.jss';
-import { ObjectPageAnchorBar } from './ObjectPageAnchorBar';
-import { ObjectPageHeader } from './ObjectPageHeader';
+import { ObjectPageAnchorButton } from './ObjectPageAnchorButton';
 import {
   extractSectionIdFromHtmlId,
   getLastObjectPageSection,
@@ -36,11 +55,20 @@ import {
   safeGetChildrenArray
 } from './ObjectPageUtils';
 import { useObserveHeights } from './useObserveHeights';
-import { DynamicPageHeader } from '@ui5/webcomponents-react/dist/DynamicPageHeader';
+import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming';
 
 declare const ResizeObserver;
 
 const SCROLL_BAR_WIDTH = 12;
+
+addCustomCSS(
+  'ui5-tabcontainer',
+  `
+  :host([data-component-name="ObjectPage-TabContainer"]) .ui5-tc__header {
+    box-shadow: inset 0 -0.0625rem ${ThemingParameters.sapPageHeader_BorderColor}, 0 0.125rem 0.25rem 0 rgb(0 0 0 / 8%);
+  }
+  `
+);
 
 export interface ObjectPagePropTypes extends Omit<CommonProps, 'title'> {
   /**
@@ -50,6 +78,10 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'title'> {
    * __Note:__ If not defined otherwise the prop `showSubheadingRight` of the `DynamicPageTitle` is set to `true` by default.
    */
   title?: ReactElement;
+  /**
+   * todo
+   */
+  header?: ReactElement;
   /**
    * Defines the image of the `ObjectPage`. You can pass a path to an image or an `Avatar` component.
    */
@@ -101,10 +133,11 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'title'> {
    * - "IconTabBar": All `ObjectPageSections` are displayed on separate pages. Selecting tabs will lead to the corresponding page.
    */
   mode?: ObjectPageMode;
-  /**
-   * Defines whether the header is displayed.
-   */
-  noHeader?: boolean;
+  // todo delete
+  // /**
+  //  * Defines whether the header is displayed.
+  //  */
+  // noHeader?: boolean;
   /**
    * Defines whether the pin button of the header is displayed.
    */
@@ -135,15 +168,16 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     children,
     onSelectedSectionChanged,
     selectedSectionId,
-    noHeader,
     alwaysShowContentHeader,
     showTitleInHeaderContent,
+    header,
     headerContentPinnable,
     headerContent
   } = props;
 
-  const firstSectionId = safeGetChildrenArray<ReactElement>(children)[0]?.props?.id;
+  const classes = useStyles();
 
+  const firstSectionId = safeGetChildrenArray<ReactElement>(children)[0]?.props?.id;
   const [internalSelectedSectionId, setInternalSelectedSectionId] = useState(selectedSectionId ?? firstSectionId);
   const [selectedSubSectionId, setSelectedSubSectionId] = useState(props.selectedSubSectionId);
   const [headerPinned, setHeaderPinned] = useState(alwaysShowContentHeader);
@@ -151,26 +185,48 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
 
   const objectPageRef: RefObject<HTMLDivElement> = useConsolidatedRef(ref);
   const topHeaderRef: RefObject<HTMLDivElement> = useRef();
-  const headerContentRef: RefObject<HTMLDivElement> = useRef();
+  const headerContentRef: RefObject<HTMLDivElement> = useConsolidatedRef(header?.ref);
   const anchorBarRef: RefObject<HTMLDivElement> = useRef();
 
   const isRTL = useIsRTL(objectPageRef);
-
-  const [scrollbarWidth, setScrollbarWidth] = useState(SCROLL_BAR_WIDTH);
-  const isMounted = useRef(false);
+  //todo pinned is not working
 
   // observe heights of header parts
+  //todo objectPageRef needed
+  //todo anchorBarRef needed
   const { topHeaderHeight, headerContentHeight, anchorBarHeight, totalHeaderHeight } = useObserveHeights(
     objectPageRef,
     topHeaderRef,
     headerContentRef,
     anchorBarRef,
-    { noHeader }
+    //todo
+    { noHeader: false }
   );
 
   // *****
   // SECTION SELECTION
   // ****
+  const avatar = useMemo(() => {
+    if (!image) {
+      return null;
+    }
+
+    if (typeof image === 'string') {
+      return (
+        <span
+          className={classes.headerImage}
+          style={{ borderRadius: imageShapeCircle ? '50%' : 0, overflow: 'hidden' }}
+        >
+          <img src={image} className={classes.image} alt="Company Logo" />
+        </span>
+      );
+    } else {
+      return React.cloneElement(image, {
+        size: AvatarSize.L,
+        className: image.props?.className ? `${classes.headerImage} ${image.props?.className}` : classes.headerImage
+      } as unknown);
+    }
+  }, [image, classes.headerImage, classes.image, imageShapeCircle]);
 
   const scrollToSection = useCallback(
     (sectionId) => {
@@ -185,7 +241,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         )?.offsetTop;
         if (!isNaN(childOffset)) {
           objectPageRef.current?.scrollTo({
-            top: childOffset - topHeaderHeight - anchorBarHeight - (headerPinned ? headerContentHeight : 0) + 45,
+            top: childOffset - topHeaderHeight - anchorBarHeight - (headerPinned ? headerContentHeight : 0) - 16,
             behavior: 'smooth'
           });
         }
@@ -219,12 +275,10 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
 
   // do internal scrolling
   useEffect(() => {
-    if (!isMounted.current) return;
-
     if (mode === ObjectPageMode.Default && isProgrammaticallyScrolled.current === true) {
       scrollToSection(internalSelectedSectionId);
     }
-  }, [internalSelectedSectionId, isMounted, mode, isProgrammaticallyScrolled, scrollToSection]);
+  }, [internalSelectedSectionId, mode, isProgrammaticallyScrolled, scrollToSection]);
 
   // Scrolling for Sub Section Selection
   useEffect(() => {
@@ -234,7 +288,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       )?.offsetTop;
       if (!isNaN(childOffset)) {
         objectPageRef.current?.scrollTo({
-          top: childOffset - topHeaderHeight - anchorBarHeight - (headerPinned ? headerContentHeight : 0) + 45,
+          top: childOffset - topHeaderHeight - anchorBarHeight - (headerPinned ? headerContentHeight : 0) - 16,
           behavior: 'smooth'
         });
       }
@@ -253,8 +307,6 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   useEffect(() => {
     setHeaderPinned(alwaysShowContentHeader);
   }, [setHeaderPinned, alwaysShowContentHeader]);
-
-  const classes = useStyles();
 
   useEffect(() => {
     setSelectedSubSectionId(props.selectedSubSectionId);
@@ -351,63 +403,46 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     },
     [mode, setInternalSelectedSectionId, setSelectedSubSectionId, isProgrammaticallyScrolled]
   );
-  //todo maybe use internal expanded of event
-  const [expanded, setExpanded] = useState(true);
-  const toggleHeader = (expanded) => {
-    if (expanded) {
-      setExpanded(true);
-    } else {
-      setExpanded(false);
-    }
-  };
+
   const onToggleHeaderContentVisibility = useCallback(
     (e) => {
-      const srcElement = e.target;
-      const shouldHideHeader = srcElement.icon === 'slim-arrow-up';
-      toggleHeader(!shouldHideHeader);
-      if (shouldHideHeader) {
+      // const srcElement = e.target;
+      // const shouldHideHeader = srcElement.icon === 'slim-arrow-up';
+      // toggleHeader(!shouldHideHeader);
+      if (!e.detail.visible) {
         objectPageRef.current?.classList.add(classes.headerCollapsed);
       } else {
         objectPageRef.current?.classList.remove(classes.headerCollapsed);
       }
 
-      requestAnimationFrame(() => {
-        if (objectPageRef.current?.scrollTop > 0 && !shouldHideHeader) {
-          const prevHeaderTop = headerContentRef.current.style.top;
-          headerContentRef.current.style.top = `${topHeaderHeight}px`;
-          const prevAnchorTop = anchorBarRef.current.style.top;
-          anchorBarRef.current.style.top = `${headerContentRef.current.offsetHeight + topHeaderHeight}px`;
-          objectPageRef.current?.addEventListener(
-            'scroll',
-            (e) => {
-              if (prevHeaderTop ?? true) {
-                headerContentRef.current.style.top = prevHeaderTop;
-              } else {
-                headerContentRef.current.style.removeProperty('top');
-              }
-              if (prevAnchorTop ?? true) {
-                anchorBarRef.current.style.top = prevAnchorTop;
-              } else {
-                anchorBarRef.current.style.removeProperty('top');
-              }
-            },
-            { once: true }
-          );
-        }
-      });
+      //todo still necessary?
+      // requestAnimationFrame(() => {
+      //   if (objectPageRef.current?.scrollTop > 0 && !shouldHideHeader) {
+      //     const prevHeaderTop = headerContentRef.current.style.top;
+      //     headerContentRef.current.style.top = `${topHeaderHeight}px`;
+      //     const prevAnchorTop = anchorBarRef.current.style.top;
+      //     anchorBarRef.current.style.top = `${headerContentRef.current.offsetHeight + topHeaderHeight}px`;
+      //     objectPageRef.current?.addEventListener(
+      //       'scroll',
+      //       (e) => {
+      //         if (prevHeaderTop ?? true) {
+      //           headerContentRef.current.style.top = prevHeaderTop;
+      //         } else {
+      //           headerContentRef.current.style.removeProperty('top');
+      //         }
+      //         if (prevAnchorTop ?? true) {
+      //           anchorBarRef.current.style.top = prevAnchorTop;
+      //         } else {
+      //           anchorBarRef.current.style.removeProperty('top');
+      //         }
+      //       },
+      //       { once: true }
+      //     );
+      //   }
+      // });
     },
     [objectPageRef, classes.headerCollapsed, headerContentHeight, topHeaderHeight]
   );
-
-  useEffect(() => {
-    requestAnimationFrame(() => {
-      const calculatedScrollBarWidth = getScrollBarWidth();
-      if (calculatedScrollBarWidth && calculatedScrollBarWidth !== 0 && calculatedScrollBarWidth !== SCROLL_BAR_WIDTH) {
-        setScrollbarWidth(calculatedScrollBarWidth);
-      }
-    });
-    isMounted.current = true;
-  }, [isMounted, setScrollbarWidth]);
 
   const objectPageClasses = StyleClassHelper.of(classes.objectPage, GlobalStyleClasses.sapScrollBar);
   if (className) {
@@ -422,13 +457,10 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     objectPageClasses.put(classes.iconTabBarMode);
   }
 
-  if (noHeader) {
-    objectPageClasses.put(classes.noHeader);
-  }
-
   const passThroughProps = usePassThroughHtmlProps(props, ['onSelectedSectionChanged']);
 
   useEffect(() => {
+    //todo check this whole behavior and what of it is still needed
     const objectPageHeight = objectPageRef.current?.clientHeight ?? 1000;
     const marginBottom = objectPageHeight - totalHeaderHeight;
     const rootMargin = `-${totalHeaderHeight}px 0px -${marginBottom < 0 ? 0 : marginBottom}px 0px`;
@@ -456,18 +488,17 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     };
   }, [objectPageRef, children, totalHeaderHeight, setInternalSelectedSectionId, isProgrammaticallyScrolled]);
 
+  //todo check if all header styles are still needed
   const headerClasses = StyleClassHelper.of(classes.header);
-  const anchorBarClasses = StyleClassHelper.of(classes.anchorBar);
   if (isIE()) {
     headerClasses.put(classes.iEClass);
-    anchorBarClasses.put(classes.iEClass);
   }
 
-  const anchorBarPositionTop = noHeader
+  //todo check if needed
+  const anchorBarPositionTop =
+    /*noHeader
     ? 0
-    : headerPinned || isIE()
-    ? topHeaderHeight + headerContentHeight
-    : topHeaderHeight;
+    :*/ headerPinned || isIE() ? topHeaderHeight + headerContentHeight : topHeaderHeight;
 
   const renderTitleSection = useCallback(() => {
     if (title?.props && title.props?.showSubheadingRight === undefined) {
@@ -475,30 +506,62 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     }
     return title;
   }, [title]);
-  //todo replace this with responsive padding, or better set resp. padding to whole container
-  const scrollBarWidthPadding = useMemo(() => {
-    const padding = isIE() ? 0 : `calc(${scrollbarWidth}px + 1rem)`;
-    if (isRTL) {
-      return {
-        paddingRight: '1rem',
-        paddingLeft: padding
-      };
+
+  const renderHeaderContentSection = useCallback(() => {
+    if (header?.props) {
+      return React.cloneElement(header, {
+        topHeaderHeight,
+        headerPinned,
+        children: (
+          //todo maybe use resp grid here and set img always as first item
+          <div className={classes.headerContainer} ref={headerContentRef}>
+            {!showTitleInHeaderContent && avatar}
+            {header.props.children && <div data-component-name="ObjectPage-HeaderContent">{header.props.children}</div>}
+          </div>
+        )
+      });
     }
-    return {
-      paddingLeft: '1rem',
-      paddingRight: padding
-    };
-  }, [scrollbarWidth, isRTL]);
+  }, [header, topHeaderHeight, headerPinned, showTitleInHeaderContent, avatar, headerContentRef]);
 
-  const paddingLeftRtl = isRTL ? 'paddingRight' : 'paddingLeft';
+  const paddingLeftRtl = isRTL ? 'paddingLeft' : 'paddingRight';
 
-  //todo check remove scrollbarWidthPadding
-  const headerInlineStyles = useMemo(() => {
-    return {
-      ...scrollBarWidthPadding,
-      gridAutoColumns: image && headerContentHeight === 0 ? 'auto calc(100% - 3rem)' : 'auto 100%'
-    };
-  }, [image, headerContentHeight, scrollBarWidthPadding]);
+  const onTabItemSelect = useCallback(
+    (event) => {
+      const { sectionId, index } = event.detail.tab.dataset;
+      const section = safeGetChildrenArray<ReactElement>(children).find((el) => el.props.id == sectionId);
+      handleOnSectionSelected(
+        enrichEventWithDetails({} as any, {
+          ...section,
+          index
+        })
+      );
+    },
+    [children]
+  );
+  const [popoverContent, setPopoverContent] = useState<ReactElement>(null);
+  const popoverRef = useRef<Ui5PopoverDomRef>(null);
+  const onShowSubSectionPopover = useCallback(
+    (e, section) => {
+      setPopoverContent(section);
+      popoverRef.current.openBy(e.target.parentElement);
+    },
+    [setPopoverContent, popoverRef]
+  );
+
+  const onSubSectionClick = useCallback(
+    (e) => {
+      const selectedId = e.detail.item.dataset.key;
+      const subSection = popoverContent.props.children
+        .filter((item) => item.props && item.props.isSubSection)
+        .find((item) => item.props.id === selectedId);
+      if (subSection) {
+        handleOnSubSectionSelected(enrichEventWithDetails(e, { section: popoverContent, subSection }));
+      }
+      popoverRef.current.close();
+    },
+    [handleOnSubSectionSelected, popoverRef, popoverContent]
+  );
+
   return (
     <div
       data-component-name="ObjectPage"
@@ -513,7 +576,6 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         ref={topHeaderRef}
         role="banner"
         aria-roledescription="Object Page header"
-        style={headerInlineStyles}
         className={headerClasses.className}
       >
         {image && headerContentHeight === 0 && (
@@ -521,64 +583,67 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         )}
         {renderTitleSection()}
       </header>
-      {/**/}
-      <DynamicPageHeader>
-        <FlexBox direction={FlexBoxDirection.Column}>
-          <Link>+33 6 4512 5158</Link>
-          <Link href="mailto:ui5-webcomponents-react@sap.com">DeniseSmith@sap.com</Link>
-          <Link href="https://github.com/SAP/ui5-webcomponents-react">
-            https://github.com/SAP/ui5-webcomponents-react
-          </Link>
-        </FlexBox>
-        <FlexBox direction={FlexBoxDirection.Column} style={{ width: '200px' }}>
-          <Label>Achieved Goals</Label>
-          <ProgressIndicator value={80} valueState={ValueState.Success} />
-        </FlexBox>
-        <FlexBox direction={FlexBoxDirection.Column}>
-          <Label>San Jose</Label>
-          <Label>California, USA</Label>
-        </FlexBox>
-      </DynamicPageHeader>
+      {/*todo header in title*/}
+      {renderHeaderContentSection()}
       {/*todo check header for props from title comp --> showTitleInHeaderContent */}
-      {/*<ObjectPageHeader*/}
-      {/*  headerActions={[]}*/}
-      {/*  image={image}*/}
-      {/*  classes={classes}*/}
-      {/*  imageShapeCircle={imageShapeCircle}*/}
-      {/*  showTitleInHeaderContent={showTitleInHeaderContent}*/}
-      {/*  headerContentProp={headerContent as ReactElement}*/}
-      {/*  breadcrumbs={[]}*/}
-      {/*  keyInfos={[]}*/}
-      {/*  title={'TITLE'}*/}
-      {/*  subTitle={'SUBTITLE'}*/}
-      {/*  headerPinned={headerPinned}*/}
-      {/*  topHeaderHeight={topHeaderHeight}*/}
-      {/*  ref={headerContentRef}*/}
-      {/*/>*/}
-      {/*todo ?should be rendered inside ObjectPageAnchorBar?*/}
-      <DynamicPageAnchorBar
-        style={{ top: expanded ? `${topHeaderHeight + 48}px` : `${topHeaderHeight}px` }}
-        headerContentHeight={!expanded ? 0 : topHeaderHeight + 48}
-        headerContentPinnable={true}
-        showHideHeaderButton={true}
-        onToggleHeaderContentVisibility={onToggleHeaderContentVisibility}
-        setHeaderPinned={setHeaderPinned}
-      />
-      {/*<ObjectPageAnchorBar*/}
-      {/*  sections={children}*/}
-      {/*  selectedSectionId={internalSelectedSectionId}*/}
-      {/*  handleOnSectionSelected={handleOnSectionSelected}*/}
-      {/*  handleOnSubSectionSelected={handleOnSubSectionSelected}*/}
-      {/*  headerContentPinnable={headerContentPinnable}*/}
-      {/*  showHideHeaderButton={showHideHeaderButton && !noHeader}*/}
-      {/*  headerPinned={headerPinned}*/}
-      {/*  setHeaderPinned={setHeaderPinned}*/}
-      {/*  headerContentHeight={headerContentHeight}*/}
-      {/*  style={{ top: anchorBarPositionTop }}*/}
-      {/*  onToggleHeaderContentVisibility={onToggleHeaderContentVisibility}*/}
-      {/*  ref={anchorBarRef}*/}
-      {/*  className={anchorBarClasses.className}*/}
-      {/*/>*/}
+      <div
+        className={classes.anchorBar}
+        style={{ top: headerPinned ? `${topHeaderHeight + headerContentHeight}px` : `${topHeaderHeight}px` }}
+      >
+        {/*todo all props, ?div necessary*/}
+        <DynamicPageAnchorBar
+          headerContentHeight={/*!expanded ? 0 : 1*/ headerContentHeight}
+          headerContentPinnable={true}
+          showHideHeaderButton={true}
+          onToggleHeaderContentVisibility={onToggleHeaderContentVisibility}
+          setHeaderPinned={setHeaderPinned}
+          headerPinned={headerPinned}
+          onHoverToggleButton={() => {}}
+        />
+      </div>
+      <div
+        ref={anchorBarRef}
+        style={{
+          //todo scrolling issue
+          position: 'sticky',
+          top: headerPinned ? `${topHeaderHeight + headerContentHeight}px` : `${topHeaderHeight}px`
+        }}
+      >
+        <TabContainer
+          collapsed
+          fixed
+          onTabSelect={onTabItemSelect}
+          showOverflow
+          data-component-name="ObjectPage-TabContainer"
+        >
+          {safeGetChildrenArray(children).map((section: ReactElement, index) => {
+            return (
+              <ObjectPageAnchorButton
+                key={`Anchor-${section.props?.id}`}
+                section={section}
+                index={index}
+                selected={selectedSectionId === section.props?.id}
+                onShowSubSectionPopover={onShowSubSectionPopover}
+              />
+            );
+          })}
+        </TabContainer>
+        {createPortal(
+          <Popover placementType={PlacementType.Bottom} noArrow ref={popoverRef} onAfterClose={stopPropagation}>
+            <List onItemClick={onSubSectionClick}>
+              {popoverContent?.props?.children
+                .filter((item) => item.props && item.props.isSubSection)
+                .map((item) => (
+                  <StandardListItem key={item.props.id} data-key={item.props.id}>
+                    {item.props.title}
+                  </StandardListItem>
+                ))}
+            </List>
+          </Popover>,
+          document.body
+        )}
+      </div>
+      {/*todo still needed?*/}
       {isIE() && (
         <div
           className={classes.iEBackgroundElement}
@@ -609,8 +674,7 @@ ObjectPage.defaultProps = {
   image: null,
   mode: ObjectPageMode.Default,
   imageShapeCircle: false,
-  showHideHeaderButton: false,
-  noHeader: false
+  showHideHeaderButton: false
 };
 
 export { ObjectPage };

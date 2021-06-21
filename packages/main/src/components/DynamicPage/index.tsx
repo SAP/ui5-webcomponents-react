@@ -159,6 +159,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
   const onHoverToggleButton = useCallback(
     (e) => {
       // TODO background color should be sapObjectHeader_Hover_Background (same color as sapTile_Active_Background)
+      //todo apply className not style directly on ref
       topHeaderRef.current.style.backgroundColor =
         e?.type === 'mouseover' ? ThemingParameters.sapTile_Active_Background : null;
     },
@@ -166,6 +167,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
   );
 
   const onToggleHeaderContent = (e) => {
+    //todo refactor
     if (e.target.tagName === 'DIV') {
       onToggleHeaderContentVisibility(e, anchorBarRef.current.children.item(0).children.item(0));
     }
@@ -215,6 +217,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
         })}
       <FlexBox
         className={anchorBarClasses.className}
+        //todo why do we need to observe anchorbar height?
         ref={anchorBarRef}
         style={{
           top:

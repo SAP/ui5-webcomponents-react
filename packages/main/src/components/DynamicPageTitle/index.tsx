@@ -1,4 +1,4 @@
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
 import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
@@ -117,18 +117,18 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
         const borderBoxSize = Array.isArray(titleContainer.borderBoxSize)
           ? titleContainer.borderBoxSize[0]
           : titleContainer.borderBoxSize;
-        if (borderBoxSize.inlineSize < 1280 && !showNavigationInTopArea === false) {
+        // Safari doesn't implement `borderBoxSize`
+        const titleContainerWidth = borderBoxSize?.inlineSize ?? titleContainer.target.getBoundingClientRect().width;
+        if (titleContainerWidth < 1280 && !showNavigationInTopArea === false) {
           setShowNavigationInTopArea(false);
-        } else if (borderBoxSize.inlineSize >= 1280 && !showNavigationInTopArea === true) {
+        } else if (titleContainerWidth >= 1280 && !showNavigationInTopArea === true) {
           setShowNavigationInTopArea(true);
         }
       }, 300)
     );
-
     if (dynamicPageTitleRef.current) {
       observer.observe(dynamicPageTitleRef.current);
     }
-
     return () => {
       observer.disconnect();
     };

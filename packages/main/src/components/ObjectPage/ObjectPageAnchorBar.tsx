@@ -106,6 +106,7 @@ interface Props {
   className: string;
 }
 
+//todo delete
 const ObjectPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElement>) => {
   const {
     sections,
@@ -174,8 +175,6 @@ const ObjectPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElement
     [handleOnSubSectionSelected, popoverRef, popoverContent]
   );
 
-  const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
-
   return (
     <section className={className} role="navigation" style={style} ref={ref}>
       <TabContainer collapsed fixed onTabSelect={onTabItemSelect} showOverflow>
@@ -191,31 +190,31 @@ const ObjectPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElement
           );
         })}
       </TabContainer>
-      {shouldRenderHideHeaderButton && (
-        <Button
-          icon={headerContentHeight === 0 ? 'slim-arrow-down' : 'slim-arrow-up'}
-          onClick={onToggleHeaderContentVisibility}
-          className={`${classes.anchorBarActionButton} ${classes.anchorBarActionButtonExpandable} ${
-            showBothActions ? classes.anchorBarActionPinnableAndExandable : ''
-          }`}
-          data-ui5wcr-object-page-header-action=""
-          tooltip={i18nBundle.getText(headerContentHeight === 0 ? EXPAND_HEADER : COLLAPSE_HEADER)}
-          aria-label={i18nBundle.getText(headerContentHeight === 0 ? EXPAND_HEADER : COLLAPSE_HEADER)}
-        />
-      )}
-      {shouldRenderHeaderPinnableButton && (
-        <ToggleButton
-          icon="pushpin-off"
-          pressed={headerPinned}
-          onClick={onPinHeader}
-          className={`${classes.anchorBarActionButton} ${classes.anchorBarActionButtonPinnable} ${
-            showBothActions ? classes.anchorBarActionPinnableAndExandable : ''
-          }`}
-          data-ui5wcr-object-page-header-action=""
-          tooltip={i18nBundle.getText(headerPinned ? UNPIN_HEADER : PIN_HEADER)}
-          aria-label={i18nBundle.getText(headerPinned ? UNPIN_HEADER : PIN_HEADER)}
-        />
-      )}
+      {/*{shouldRenderHideHeaderButton && (*/}
+      {/*  <Button*/}
+      {/*    icon={headerContentHeight === 0 ? 'slim-arrow-down' : 'slim-arrow-up'}*/}
+      {/*    onClick={onToggleHeaderContentVisibility}*/}
+      {/*    className={`${classes.anchorBarActionButton} ${classes.anchorBarActionButtonExpandable} ${*/}
+      {/*      showBothActions ? classes.anchorBarActionPinnableAndExandable : ''*/}
+      {/*    }`}*/}
+      {/*    data-ui5wcr-object-page-header-action=""*/}
+      {/*    tooltip={i18nBundle.getText(headerContentHeight === 0 ? EXPAND_HEADER : COLLAPSE_HEADER)}*/}
+      {/*    aria-label={i18nBundle.getText(headerContentHeight === 0 ? EXPAND_HEADER : COLLAPSE_HEADER)}*/}
+      {/*  />*/}
+      {/*)}*/}
+      {/*{shouldRenderHeaderPinnableButton && (*/}
+      {/*  <ToggleButton*/}
+      {/*    icon="pushpin-off"*/}
+      {/*    pressed={headerPinned}*/}
+      {/*    onClick={onPinHeader}*/}
+      {/*    className={`${classes.anchorBarActionButton} ${classes.anchorBarActionButtonPinnable} ${*/}
+      {/*      showBothActions ? classes.anchorBarActionPinnableAndExandable : ''*/}
+      {/*    }`}*/}
+      {/*    data-ui5wcr-object-page-header-action=""*/}
+      {/*    tooltip={i18nBundle.getText(headerPinned ? UNPIN_HEADER : PIN_HEADER)}*/}
+      {/*    aria-label={i18nBundle.getText(headerPinned ? UNPIN_HEADER : PIN_HEADER)}*/}
+      {/*  />*/}
+      {/*)}*/}
       {/*todo*/}
       {/*<DynamicPageAnchorBar setHeaderPinned={onPinHeader} headerPinned={headerPinned} headerContentHeight={104} headerContentPinnable={shouldRenderHeaderPinnableButton} showHideHeaderButton={shouldRenderHideHeaderButton} onToggleHeaderContentVisibility={onToggleHeaderContentVisibility} />*/}
       {createPortal(

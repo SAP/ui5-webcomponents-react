@@ -1,6 +1,7 @@
 import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming';
 import '@ui5/webcomponents-icons/dist/slim-arrow-down.js';
 import '@ui5/webcomponents-icons/dist/slim-arrow-up.js';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
 import { useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import {
@@ -80,7 +81,6 @@ const anchorBarStyles = {
 
 const useStyles = createUseStyles(anchorBarStyles, { name: 'DynamicPageAnchorBar' });
 
-//todo why no common props?
 interface Props extends CommonProps {
   //todo this only checks for 0, no interal positioning is happening here --> boolean
   /**
@@ -120,6 +120,7 @@ interface Props extends CommonProps {
 const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElement>) => {
   const {
     showHideHeaderButton,
+    //todo make boolean
     headerContentHeight,
     headerContentPinnable,
     headerPinned,
@@ -143,6 +144,10 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
     [setHeaderPinned]
   );
 
+  //todo check dynamicPage
+  const onToggleHeaderButtonClick = (e) => {
+    onToggleHeaderContentVisibility(enrichEventWithDetails(e, { visible: headerContentHeight === 0 }));
+  };
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   //todo maybe add children here where the tab container or other things can be mounted
   return (
@@ -159,8 +164,8 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
           className={`${classes.anchorBarActionButton} ${classes.anchorBarActionButtonExpandable} ${
             showBothActions ? classes.anchorBarActionPinnableAndExpandable : ''
           }`}
-          //todo event should contain the expand/collapse state
-          onClick={onToggleHeaderContentVisibility}
+          onClick={onToggleHeaderButtonClick}
+          //todo should probably be split in two internal functions
           onMouseOver={onHoverToggleButton}
           onMouseLeave={onHoverToggleButton}
           tooltip={i18nBundle.getText(headerContentHeight === 0 ? EXPAND_HEADER : COLLAPSE_HEADER)}

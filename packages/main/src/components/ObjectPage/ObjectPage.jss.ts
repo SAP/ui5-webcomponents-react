@@ -10,8 +10,11 @@ export const ObjectPageCssVariables = {
   lastSectionMargin: '--_ui5wcr_ObjectPage_last_section_margin_bottom'
 };
 
+const padding = isIE() ? { padding: '0 2rem' } : { ...sapUiResponsiveContentPadding };
+
 export const styles = {
   objectPage: {
+    [DynamicPageCssVariables.headerDisplay]: 'block',
     boxSizing: 'border-box',
     width: '100%',
     height: '100%',
@@ -50,19 +53,31 @@ export const styles = {
       display: 'none'
     }
   },
-  noHeader: {
-    '& $header': {
-      display: 'none'
-    },
-    '& $contentHeader': {
-      display: 'none'
-    }
-  },
+  // noHeader: {
+  //   '& $header': {
+  //     display: 'none'
+  //   },
+  //   '& $contentHeader': {
+  //     display: 'none'
+  //   }
+  // },
   headerCollapsed: {
     //todo
     [DynamicPageCssVariables.headerDisplay]: 'none',
     '& $contentHeader': {
       display: 'none'
+    }
+  },
+  //todo
+  headerContainer: {
+    // ...padding,
+    // backgroundColor: ThemingParameters.sapObjectHeader_Background,
+    display: isIE() ? 'flex' : 'grid',
+    gridAutoColumns: 'auto 1fr',
+    '& [data-component-name="ObjectPage-HeaderContent"]': {
+      gridColumn: 2,
+      width: '100%',
+      height: '100%'
     }
   },
   header: {
@@ -75,7 +90,8 @@ export const styles = {
     top: 0,
     zIndex: 2,
     display: isIE() ? 'flex' : 'grid',
-    gridGap: '1rem',
+    gridAutoColumns: 'auto 1fr',
+    // gridGap: '1rem',
     '& [data-component-name="DynamicPageTitle"]': {
       gridColumn: 2,
       width: '100%',
@@ -178,5 +194,10 @@ export const styles = {
     display: 'flex',
     flexDirection: 'row',
     alignSelf: 'center'
+  },
+  //todo
+  anchorBar: {
+    position: 'sticky',
+    zIndex: 2
   }
 };
