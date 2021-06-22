@@ -8,12 +8,10 @@ export const useObserveHeights = (objectPage, topHeader, headerContentRef, ancho
   const [headerContentHeight, setHeaderContentHeight] = useState(0);
   const [isIntersecting, setIsIntersecting] = useState(true);
   useEffect(() => {
-    //todo still necessary?
     const headerIntersectionObserver = new IntersectionObserver(
       ([header]) => {
         if (header.isIntersecting) {
           setIsIntersecting(true);
-          setHeaderContentHeight((header.target as HTMLElement).offsetHeight);
         } else {
           setIsIntersecting(false);
           setHeaderContentHeight(0);
@@ -29,7 +27,7 @@ export const useObserveHeights = (objectPage, topHeader, headerContentRef, ancho
     return () => {
       headerIntersectionObserver.disconnect();
     };
-  }, [topHeaderHeight, setHeaderContentHeight, headerContentRef, setIsIntersecting]);
+  }, [topHeaderHeight, setHeaderContentHeight, headerContentRef.current, setIsIntersecting]);
 
   // top header
   useEffect(() => {

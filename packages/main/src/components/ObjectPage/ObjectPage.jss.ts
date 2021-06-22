@@ -53,14 +53,6 @@ export const styles = {
       display: 'none'
     }
   },
-  // noHeader: {
-  //   '& $header': {
-  //     display: 'none'
-  //   },
-  //   '& $contentHeader': {
-  //     display: 'none'
-  //   }
-  // },
   headerCollapsed: {
     //todo
     [DynamicPageCssVariables.headerDisplay]: 'none',
@@ -89,7 +81,7 @@ export const styles = {
     position: 'sticky',
     top: 0,
     zIndex: 2,
-    display: isIE() ? 'flex' : 'grid',
+    // display: isIE() ? 'flex' : 'grid',
     gridAutoColumns: 'auto 1fr',
     // gridGap: '1rem',
     '& [data-component-name="DynamicPageTitle"]': {
@@ -121,11 +113,6 @@ export const styles = {
     paddingBottom: '0.25rem',
     maxHeight: '500px',
     overflow: 'hidden'
-  },
-  anchorBar: {
-    position: 'sticky',
-    zIndex: 2,
-    '--_ui5_tc_header_box_shadow': 'inset 0px -1px 0 0px rgba(0,0,0,0.15)'
   },
   container: {
     flex: '1 1 70%',

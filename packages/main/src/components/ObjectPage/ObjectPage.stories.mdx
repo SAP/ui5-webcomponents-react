@@ -99,10 +99,12 @@ import { FlexBoxAlignItems, FlexBoxWrap } from '../..';
 <Canvas>
   <Story name="Default">
     {(args) => {
-      const headerRef = useRef(null);
+      const testRef = useRef();
+      console.log(testRef);
       return (
         <ObjectPage
-          {...args}
+          image={SampleImage}
+          showTitleInHeaderContent={args.showTitleInHeaderContent}
           title={
             <DynamicPageTitle
               heading={args.title}
@@ -114,7 +116,7 @@ import { FlexBoxAlignItems, FlexBoxWrap } from '../..';
             </DynamicPageTitle>
           }
           header={
-            <DynamicPageHeader ref={headerRef}>
+            <DynamicPageHeader>
               <FlexBox wrap={FlexBoxWrap.Wrap} alignItems={FlexBoxAlignItems.Center}>
                 <FlexBox direction={FlexBoxDirection.Column}>
                   <Link>+33 6 4512 5158</Link>

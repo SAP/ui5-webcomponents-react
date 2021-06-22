@@ -112,7 +112,6 @@ interface Props extends CommonProps {
    */
   onHoverToggleButton?: (e: any) => void;
 }
-
 /**
  * The dynamic page anchor bar contains the expand/collapse (expands or collapses the header content)
  * and pin button (pins the content header).

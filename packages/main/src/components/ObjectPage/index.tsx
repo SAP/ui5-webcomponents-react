@@ -133,11 +133,6 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'title'> {
    * - "IconTabBar": All `ObjectPageSections` are displayed on separate pages. Selecting tabs will lead to the corresponding page.
    */
   mode?: ObjectPageMode;
-  // todo delete
-  // /**
-  //  * Defines whether the header is displayed.
-  //  */
-  // noHeader?: boolean;
   /**
    * Defines whether the pin button of the header is displayed.
    */
@@ -189,7 +184,6 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   const anchorBarRef: RefObject<HTMLDivElement> = useRef();
 
   const isRTL = useIsRTL(objectPageRef);
-  //todo pinned is not working
 
   // observe heights of header parts
   //todo objectPageRef needed
@@ -382,13 +376,15 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   }, [totalHeaderHeight, objectPageRef, children]);
 
   const fireOnSelectedChangedEvent = debounce((e) => {
-    onSelectedSectionChanged(
-      enrichEventWithDetails(e, {
-        selectedSectionIndex: e.detail.index,
-        selectedSectionId: e.detail.props.id,
-        section: e.detail
-      })
-    );
+    if (typeof onSelectedSectionChanged === 'function') {
+      onSelectedSectionChanged(
+        enrichEventWithDetails(e, {
+          selectedSectionIndex: e.detail.index,
+          selectedSectionId: e.detail.props.id,
+          section: e.detail
+        })
+      );
+    }
   }, 500);
 
   const handleOnSubSectionSelected = useCallback(
@@ -510,18 +506,25 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   const renderHeaderContentSection = useCallback(() => {
     if (header?.props) {
       return React.cloneElement(header, {
+        ...header.props,
         topHeaderHeight,
         headerPinned,
+        ref: headerContentRef,
         children: (
-          //todo maybe use resp grid here and set img always as first item
-          <div className={classes.headerContainer} ref={headerContentRef}>
-            {!showTitleInHeaderContent && avatar}
-            {header.props.children && <div data-component-name="ObjectPage-HeaderContent">{header.props.children}</div>}
+          <div className={classes.headerContainer}>
+            {avatar}
+            {header.props.children && (
+              <div data-component-name="ObjectPage-HeaderContent">
+                {/*todo remove padding, dep array*/}
+                {showTitleInHeaderContent && renderTitleSection()}
+                {header.props.children}
+              </div>
+            )}
           </div>
         )
       });
     }
-  }, [header, topHeaderHeight, headerPinned, showTitleInHeaderContent, avatar, headerContentRef]);
+  }, [header, topHeaderHeight, headerPinned, showTitleInHeaderContent, avatar, headerContentRef, renderTitleSection]);
 
   const paddingLeftRtl = isRTL ? 'paddingLeft' : 'paddingRight';
 
@@ -561,7 +564,6 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     },
     [handleOnSubSectionSelected, popoverRef, popoverContent]
   );
-
   return (
     <div
       data-component-name="ObjectPage"
@@ -577,34 +579,37 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         role="banner"
         aria-roledescription="Object Page header"
         className={headerClasses.className}
+        style={{
+          display: !showTitleInHeaderContent || headerContentHeight === 0 ? (isIE() ? 'flex' : 'grid') : 'none'
+        }}
       >
-        {image && headerContentHeight === 0 && (
+        {title && image && headerContentHeight === 0 && (
           <CollapsedAvatar image={image} imageShapeCircle={imageShapeCircle} style={{ [paddingLeftRtl]: '1rem' }} />
         )}
         {renderTitleSection()}
       </header>
-      {/*todo header in title*/}
       {renderHeaderContentSection()}
       {/*todo check header for props from title comp --> showTitleInHeaderContent */}
-      <div
-        className={classes.anchorBar}
-        style={{ top: headerPinned ? `${topHeaderHeight + headerContentHeight}px` : `${topHeaderHeight}px` }}
-      >
-        {/*todo all props, ?div necessary*/}
-        <DynamicPageAnchorBar
-          headerContentHeight={/*!expanded ? 0 : 1*/ headerContentHeight}
-          headerContentPinnable={true}
-          showHideHeaderButton={true}
-          onToggleHeaderContentVisibility={onToggleHeaderContentVisibility}
-          setHeaderPinned={setHeaderPinned}
-          headerPinned={headerPinned}
-          onHoverToggleButton={() => {}}
-        />
-      </div>
+      {header && title && (
+        <div
+          className={classes.anchorBar}
+          style={{ top: headerPinned ? `${topHeaderHeight + headerContentHeight}px` : `${topHeaderHeight}px` }}
+        >
+          {/*todo all props, ?div necessary*/}
+          <DynamicPageAnchorBar
+            headerContentHeight={/*!expanded ? 0 : 1*/ headerContentHeight}
+            headerContentPinnable={true}
+            showHideHeaderButton={true}
+            onToggleHeaderContentVisibility={onToggleHeaderContentVisibility}
+            setHeaderPinned={setHeaderPinned}
+            headerPinned={headerPinned}
+            onHoverToggleButton={() => {}}
+          />
+        </div>
+      )}
       <div
         ref={anchorBarRef}
         style={{
-          //todo scrolling issue
           position: 'sticky',
           top: headerPinned ? `${topHeaderHeight + headerContentHeight}px` : `${topHeaderHeight}px`
         }}
