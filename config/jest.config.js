@@ -36,6 +36,5 @@ export default {
     '^@ui5/webcomponents-react-charts/(.*)$': '<rootDir>/packages/charts/src/$1',
     '\\.(css|less)$': 'identity-obj-proxy'
   },
-  moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],
-  timers: 'modern'
+  moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx']
 };
