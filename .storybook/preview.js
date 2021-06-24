@@ -14,7 +14,6 @@ import { DocsPage } from '../shared/stories/DocsPage';
 import applyDirection from '@ui5/webcomponents-base/dist/locale/applyDirection';
 
 addParameters({
-  passArgsFirst: true,
   viewMode: 'docs',
   docs: { forceExtractedArgTypes: true, page: DocsPage },
   actions: { argTypesRegex: '^on.*' },
