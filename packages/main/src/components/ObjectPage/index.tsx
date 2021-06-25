@@ -1,21 +1,25 @@
-import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
+import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming';
 import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
 import { useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
-import { debounce, enrichEventWithDetails, getScrollBarWidth } from '@ui5/webcomponents-react-base/dist/Utils';
-import { sapUiResponsiveContentPadding } from '@ui5/webcomponents-react-base/styling/spacing';
-import { DynamicPageHeader } from '@ui5/webcomponents-react/dist/DynamicPageHeader';
+import { debounce, enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
+import { AvatarSize } from '@ui5/webcomponents-react/dist/AvatarSize';
 import { GlobalStyleClasses } from '@ui5/webcomponents-react/dist/GlobalStyleClasses';
+import { List } from '@ui5/webcomponents-react/dist/List';
 import { ObjectPageMode } from '@ui5/webcomponents-react/dist/ObjectPageMode';
+import { PlacementType } from '@ui5/webcomponents-react/dist/PlacementType';
+import { Popover } from '@ui5/webcomponents-react/dist/Popover';
+import { StandardListItem } from '@ui5/webcomponents-react/dist/StandardListItem';
+import { TabContainer } from '@ui5/webcomponents-react/dist/TabContainer';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import React, {
   ComponentType,
   FC,
   forwardRef,
   ReactElement,
-  ReactNode,
   RefObject,
   useCallback,
   useEffect,
@@ -25,21 +29,6 @@ import React, {
 } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
-import {
-  AvatarSize,
-  FlexBox,
-  FlexBoxDirection,
-  FlexBoxWrap,
-  Label,
-  Link,
-  List,
-  PlacementType,
-  Popover,
-  ProgressIndicator,
-  StandardListItem,
-  TabContainer,
-  ValueState
-} from '../..';
 import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
 import { stopPropagation } from '../../internal/stopPropagation';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
@@ -55,11 +44,6 @@ import {
   safeGetChildrenArray
 } from './ObjectPageUtils';
 import { useObserveHeights } from './useObserveHeights';
-import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming';
-
-declare const ResizeObserver;
-
-const SCROLL_BAR_WIDTH = 12;
 
 addCustomCSS(
   'ui5-tabcontainer',
@@ -86,12 +70,6 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'title'> {
    * Defines the image of the `ObjectPage`. You can pass a path to an image or an `Avatar` component.
    */
   image?: string | ReactElement<unknown>;
-  /**
-   * The header content displays app-specific contextual information. You build the content using containers.
-   The containers are arranged inline with a left float. If the containers do not all fit on one line, those on the right wrap to the line below.
-   The header content is hidden by scrolling down the page or clicking the collapse indicator.
-   */
-  headerContent?: ReactNode;
   /**
    * Defines the content area of the `ObjectPage`. It consists of sections and subsections.<br />
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `ObjectPageSection` and `ObjectPageSubSection` in order to preserve the intended design.
@@ -166,8 +144,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     alwaysShowContentHeader,
     showTitleInHeaderContent,
     header,
-    headerContentPinnable,
-    headerContent
+    headerContentPinnable
   } = props;
 
   const classes = useStyles();
@@ -193,8 +170,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     topHeaderRef,
     headerContentRef,
     anchorBarRef,
-    //todo
-    { noHeader: false }
+    { noHeader: !title && !header }
   );
 
   // *****
@@ -399,54 +375,22 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     },
     [mode, setInternalSelectedSectionId, setSelectedSubSectionId, isProgrammaticallyScrolled]
   );
-
+  const [scrolledHeaderExpanded, setScrolledHeaderExpanded] = useState(false);
   const onToggleHeaderContentVisibility = useCallback(
     (e) => {
-      // const srcElement = e.target;
-      // const shouldHideHeader = srcElement.icon === 'slim-arrow-up';
-      // toggleHeader(!shouldHideHeader);
       if (!e.detail.visible) {
         objectPageRef.current?.classList.add(classes.headerCollapsed);
       } else {
+        setScrolledHeaderExpanded(true);
         objectPageRef.current?.classList.remove(classes.headerCollapsed);
       }
-
-      //todo still necessary?
-      // requestAnimationFrame(() => {
-      //   if (objectPageRef.current?.scrollTop > 0 && !shouldHideHeader) {
-      //     const prevHeaderTop = headerContentRef.current.style.top;
-      //     headerContentRef.current.style.top = `${topHeaderHeight}px`;
-      //     const prevAnchorTop = anchorBarRef.current.style.top;
-      //     anchorBarRef.current.style.top = `${headerContentRef.current.offsetHeight + topHeaderHeight}px`;
-      //     objectPageRef.current?.addEventListener(
-      //       'scroll',
-      //       (e) => {
-      //         if (prevHeaderTop ?? true) {
-      //           headerContentRef.current.style.top = prevHeaderTop;
-      //         } else {
-      //           headerContentRef.current.style.removeProperty('top');
-      //         }
-      //         if (prevAnchorTop ?? true) {
-      //           anchorBarRef.current.style.top = prevAnchorTop;
-      //         } else {
-      //           anchorBarRef.current.style.removeProperty('top');
-      //         }
-      //       },
-      //       { once: true }
-      //     );
-      //   }
-      // });
     },
-    [objectPageRef, classes.headerCollapsed, headerContentHeight, topHeaderHeight]
+    [objectPageRef.current, classes.headerCollapsed]
   );
 
   const objectPageClasses = StyleClassHelper.of(classes.objectPage, GlobalStyleClasses.sapScrollBar);
   if (className) {
     objectPageClasses.put(className);
-  }
-
-  if (showTitleInHeaderContent) {
-    objectPageClasses.put(classes.titleInHeaderContent);
   }
 
   if (mode === ObjectPageMode.IconTabBar) {
@@ -508,7 +452,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       return React.cloneElement(header, {
         ...header.props,
         topHeaderHeight,
-        headerPinned,
+        headerPinned: headerPinned || scrolledHeaderExpanded,
         ref: headerContentRef,
         children: (
           <div className={classes.headerContainer}>
@@ -524,7 +468,16 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         )
       });
     }
-  }, [header, topHeaderHeight, headerPinned, showTitleInHeaderContent, avatar, headerContentRef, renderTitleSection]);
+  }, [
+    header,
+    topHeaderHeight,
+    headerPinned,
+    scrolledHeaderExpanded,
+    showTitleInHeaderContent,
+    avatar,
+    headerContentRef,
+    renderTitleSection
+  ]);
 
   const paddingLeftRtl = isRTL ? 'paddingLeft' : 'paddingRight';
 
@@ -564,6 +517,23 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     },
     [handleOnSubSectionSelected, popoverRef, popoverContent]
   );
+  const prevScrollTop = useRef();
+  const onObjectPageScroll = useCallback(
+    (e) => {
+      if (typeof props.onScroll === 'function') {
+        props.onScroll(e);
+      }
+      objectPageRef.current?.classList.remove(classes.headerCollapsed);
+      if (scrolledHeaderExpanded && e.target.scrollTop !== prevScrollTop.current) {
+        if (e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight) {
+          return;
+        }
+        prevScrollTop.current = e.target.scrollTop;
+        setScrolledHeaderExpanded(false);
+      }
+    },
+    [props.onScroll, objectPageRef.current, scrolledHeaderExpanded, prevScrollTop.current]
+  );
   return (
     <div
       data-component-name="ObjectPage"
@@ -573,6 +543,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       ref={objectPageRef}
       title={tooltip}
       {...passThroughProps}
+      onScroll={onObjectPageScroll}
     >
       <header
         ref={topHeaderRef}
@@ -592,17 +563,24 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       {/*todo check header for props from title comp --> showTitleInHeaderContent */}
       {header && title && (
         <div
+          ref={anchorBarRef}
           className={classes.anchorBar}
-          style={{ top: headerPinned ? `${topHeaderHeight + headerContentHeight}px` : `${topHeaderHeight}px` }}
+          style={{
+            top:
+              scrolledHeaderExpanded || headerPinned
+                ? `${topHeaderHeight + headerContentHeight}px`
+                : `${topHeaderHeight}px`
+          }}
         >
           {/*todo all props, ?div necessary*/}
           <DynamicPageAnchorBar
             headerContentHeight={/*!expanded ? 0 : 1*/ headerContentHeight}
-            headerContentPinnable={true}
-            showHideHeaderButton={true}
+            headerContentPinnable={headerContentPinnable}
+            showHideHeaderButton={showHideHeaderButton}
             onToggleHeaderContentVisibility={onToggleHeaderContentVisibility}
             setHeaderPinned={setHeaderPinned}
             headerPinned={headerPinned}
+            //todo
             onHoverToggleButton={() => {}}
           />
         </div>
@@ -611,7 +589,10 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         ref={anchorBarRef}
         style={{
           position: 'sticky',
-          top: headerPinned ? `${topHeaderHeight + headerContentHeight}px` : `${topHeaderHeight}px`
+          top:
+            headerPinned || scrolledHeaderExpanded
+              ? `${topHeaderHeight + headerContentHeight}px`
+              : `${topHeaderHeight}px`
         }}
       >
         <TabContainer
@@ -649,17 +630,17 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         )}
       </div>
       {/*todo still needed?*/}
-      {isIE() && (
-        <div
-          className={classes.iEBackgroundElement}
-          style={{
-            height: `${anchorBarPositionTop + anchorBarRef.current?.offsetHeight ?? 0}px`,
-            width: `calc(100% - ${
-              objectPageRef?.current?.clientHeight < objectPageRef?.current?.scrollHeight ? '18px' : '0px'
-            })`
-          }}
-        />
-      )}
+      {/*{isIE() && (*/}
+      {/*  <div*/}
+      {/*    className={classes.iEBackgroundElement}*/}
+      {/*    style={{*/}
+      {/*      height: `${anchorBarPositionTop + anchorBarRef.current?.offsetHeight ?? 0}px`,*/}
+      {/*      width: `calc(100% - ${*/}
+      {/*        objectPageRef?.current?.clientHeight < objectPageRef?.current?.scrollHeight ? '18px' : '0px'*/}
+      {/*      })`*/}
+      {/*    }}*/}
+      {/*  />*/}
+      {/*)}*/}
       {isIE() ? (
         <div style={{ marginTop: `${anchorBarPositionTop + anchorBarRef.current?.offsetHeight ?? 0}px` }}>
           {mode === ObjectPageMode.IconTabBar ? getSectionById(children, internalSelectedSectionId) : children}

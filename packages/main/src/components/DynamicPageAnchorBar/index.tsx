@@ -148,7 +148,6 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
     onToggleHeaderContentVisibility(enrichEventWithDetails(e, { visible: headerContentHeight === 0 }));
   };
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
-  //todo maybe add children here where the tab container or other things can be mounted
   return (
     <section
       style={style}

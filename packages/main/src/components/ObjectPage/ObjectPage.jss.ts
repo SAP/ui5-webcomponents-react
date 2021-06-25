@@ -54,11 +54,7 @@ export const styles = {
     }
   },
   headerCollapsed: {
-    //todo
-    [DynamicPageCssVariables.headerDisplay]: 'none',
-    '& $contentHeader': {
-      display: 'none'
-    }
+    [DynamicPageCssVariables.headerDisplay]: 'none'
   },
   //todo
   headerContainer: {
@@ -111,7 +107,7 @@ export const styles = {
     backgroundColor: ThemingParameters.sapObjectHeader_Background,
     position: 'sticky',
     paddingBottom: '0.25rem',
-    maxHeight: '500px',
+    maxHeight: 'fit-content',
     overflow: 'hidden'
   },
   container: {
@@ -125,62 +121,19 @@ export const styles = {
     verticalAlign: 'baseline',
     padding: '0 0 0.5rem 0.5rem'
   },
-  //todo delete uneccessary
-  titleInHeaderContent: {
-    '& $subTitle': {
-      padding: '0.5rem 0'
-    },
-    '& $keyInfos': {
-      alignSelf: 'unset'
-    },
-    '& contentHeader': {
-      paddingTop: 0,
-      '& > *': {
-        display: 'flex',
-        verticalAlign: 'top',
-        '&:not(:first-child)': {
-          marginRight: '2rem',
-          marginBottom: '1rem'
-        }
-      }
-    }
-  },
-  headerCustomContent: {
-    display: 'inline-block',
-    verticalAlign: 'top',
-    '& > *': {
-      float: 'left',
-      marginRight: '2rem',
-      marginBottom: '1rem',
-      lineHeight: '1.5rem'
-    },
-    '&:after': {
-      clear: 'both'
-    }
-  },
-  headerCustomContentItem: {
-    marginLeft: '1rem'
-  },
-
   headerImage: {
     minWidth: '5rem',
     maxWidth: '5rem',
     maxHeight: '5rem',
     display: 'inline-block',
-    marginRight: '2rem',
-    marginBottom: '1rem'
+    //todo rtl
+    marginRight: '2rem'
+    //todo
+    // marginBottom: '1rem'
   },
   image: {
     width: '100%',
     height: '100%'
-  },
-  keyInfos: {
-    '& > *': {
-      marginLeft: '1rem'
-    },
-    display: 'flex',
-    flexDirection: 'row',
-    alignSelf: 'center'
   },
   //todo
   anchorBar: {

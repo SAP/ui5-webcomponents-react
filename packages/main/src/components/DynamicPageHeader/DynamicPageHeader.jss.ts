@@ -14,10 +14,10 @@ export const DynamicPageHeaderStyles = {
     backgroundColor: ThemingParameters.sapObjectHeader_Background,
     position: 'sticky',
     zIndex: 1,
+    //todo
     paddingTop: '1rem',
     paddingBottom: '1rem',
     display: `var(${DynamicPageCssVariables.headerDisplay})`,
-    // maxHeight: '500px',
     overflow: isIE() ? 'visible' : 'hidden'
   },
   iEClass: {
