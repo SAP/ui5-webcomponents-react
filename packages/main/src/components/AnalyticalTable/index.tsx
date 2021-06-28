@@ -488,7 +488,9 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     if (visibleRowCountMode === TableVisibleRowCountMode.AUTO && analyticalTableRef.current?.parentElement) {
       const parentElement = analyticalTableRef.current?.parentElement;
       const tableYPosition =
-        parentElement?.style.position === 'relative' && analyticalTableRef.current?.offsetTop
+        parentElement &&
+        getComputedStyle(parentElement).position === 'relative' &&
+        analyticalTableRef.current?.offsetTop
           ? analyticalTableRef.current?.offsetTop
           : 0;
       const parentHeight = parentElement?.getBoundingClientRect().height;
