@@ -486,8 +486,12 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
 
   const updateRowsCount = useCallback(() => {
     if (visibleRowCountMode === TableVisibleRowCountMode.AUTO && analyticalTableRef.current?.parentElement) {
-      const tableYPosition = analyticalTableRef.current?.offsetTop ?? 0;
-      const parentHeight = analyticalTableRef.current?.parentElement?.getBoundingClientRect().height;
+      const parentElement = analyticalTableRef.current?.parentElement;
+      const tableYPosition =
+        parentElement?.style.position === 'relative' && analyticalTableRef.current?.offsetTop
+          ? analyticalTableRef.current?.offsetTop
+          : 0;
+      const parentHeight = parentElement?.getBoundingClientRect().height;
       const tableHeight = parentHeight ? parentHeight - tableYPosition : 0;
       const rowCount = Math.floor((tableHeight - extensionsHeight) / popInRowHeight);
       dispatch({
