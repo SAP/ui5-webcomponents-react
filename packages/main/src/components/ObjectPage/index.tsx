@@ -43,7 +43,7 @@ import {
   getSectionById,
   safeGetChildrenArray
 } from './ObjectPageUtils';
-import { useObserveHeights } from './useObserveHeights';
+import { useObserveHeights } from '../../internal/useObserveHeights';
 
 addCustomCSS(
   'ui5-tabcontainer',
@@ -54,6 +54,9 @@ addCustomCSS(
   `
 );
 
+//todo rtl?
+//todo IE11?
+//todo remove padding from single components
 export interface ObjectPagePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * Defines the title section of the `ObjectPage`.
@@ -63,7 +66,9 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'title'> {
    */
   title?: ReactElement;
   /**
-   * todo
+   * Defines the header section of the `ObjectPage`.
+   *
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `DynamicPageHeader` in order to preserve the intended design.
    */
   header?: ReactElement;
   /**
@@ -163,8 +168,6 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   const isRTL = useIsRTL(objectPageRef);
 
   // observe heights of header parts
-  //todo objectPageRef needed
-  //todo anchorBarRef needed
   const { topHeaderHeight, headerContentHeight, anchorBarHeight, totalHeaderHeight } = useObserveHeights(
     objectPageRef,
     topHeaderRef,
@@ -400,7 +403,6 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   const passThroughProps = usePassThroughHtmlProps(props, ['onSelectedSectionChanged']);
 
   useEffect(() => {
-    //todo check this whole behavior and what of it is still needed
     const objectPageHeight = objectPageRef.current?.clientHeight ?? 1000;
     const marginBottom = objectPageHeight - totalHeaderHeight;
     const rootMargin = `-${totalHeaderHeight}px 0px -${marginBottom < 0 ? 0 : marginBottom}px 0px`;
@@ -534,6 +536,23 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     },
     [props.onScroll, objectPageRef.current, scrolledHeaderExpanded, prevScrollTop.current]
   );
+
+  const onHoverToggleButton = useCallback(
+    (e) => {
+      if (e?.type === 'mouseover') {
+        topHeaderRef.current?.classList.add(classes.headerHoverStyles);
+      } else {
+        topHeaderRef.current?.classList.remove(classes.headerHoverStyles);
+      }
+    },
+    [classes.headerHoverStyles]
+  );
+  const onTitleClick = useCallback(
+    (e) => {
+      onToggleHeaderContentVisibility(enrichEventWithDetails(e, { visible: !headerContentHeight }));
+    },
+    [onToggleHeaderContentVisibility, headerContentHeight]
+  );
   return (
     <div
       data-component-name="ObjectPage"
@@ -550,6 +569,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         role="banner"
         aria-roledescription="Object Page header"
         className={headerClasses.className}
+        onClick={onTitleClick}
         style={{
           display: !showTitleInHeaderContent || headerContentHeight === 0 ? (isIE() ? 'flex' : 'grid') : 'none'
         }}
@@ -560,7 +580,6 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         {renderTitleSection()}
       </header>
       {renderHeaderContentSection()}
-      {/*todo check header for props from title comp --> showTitleInHeaderContent */}
       {header && title && (
         <div
           ref={anchorBarRef}
@@ -569,24 +588,24 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
             top:
               scrolledHeaderExpanded || headerPinned
                 ? `${topHeaderHeight + headerContentHeight}px`
-                : `${topHeaderHeight}px`
+                : `${topHeaderHeight + 5}px`
           }}
         >
-          {/*todo all props, ?div necessary*/}
           <DynamicPageAnchorBar
-            headerContentHeight={/*!expanded ? 0 : 1*/ headerContentHeight}
+            headerContentHeight={headerContentHeight}
             headerContentPinnable={headerContentPinnable}
             showHideHeaderButton={showHideHeaderButton}
             onToggleHeaderContentVisibility={onToggleHeaderContentVisibility}
             setHeaderPinned={setHeaderPinned}
             headerPinned={headerPinned}
             //todo
-            onHoverToggleButton={() => {}}
+            onHoverToggleButton={onHoverToggleButton}
           />
         </div>
       )}
       <div
-        ref={anchorBarRef}
+        //todo still needed?
+        // ref={anchorBarRef}
         style={{
           position: 'sticky',
           top:

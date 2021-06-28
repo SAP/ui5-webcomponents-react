@@ -58,6 +58,7 @@ export const styles = {
   },
   //todo
   headerContainer: {
+    marginBottom: '0.25rem',
     // ...padding,
     // backgroundColor: ThemingParameters.sapObjectHeader_Background,
     display: isIE() ? 'flex' : 'grid',
@@ -68,9 +69,15 @@ export const styles = {
       height: '100%'
     }
   },
+  headerHoverStyles: {
+    backgroundColor: `${ThemingParameters.sapTile_Active_Background} !important`,
+    '& [data-component-name="DynamicPageTitle"]': {
+      backgroundColor: ThemingParameters.sapTile_Active_Background
+    }
+  },
   header: {
+    //todo remove here
     ...sapUiResponsiveContentPadding,
-    //todo
     [DynamicPageCssVariables.headerDisplay]: 'block',
     boxSizing: 'border-box',
     backgroundColor: ThemingParameters.sapObjectHeader_Background,
@@ -79,7 +86,6 @@ export const styles = {
     zIndex: 2,
     // display: isIE() ? 'flex' : 'grid',
     gridAutoColumns: 'auto 1fr',
-    // gridGap: '1rem',
     '& [data-component-name="DynamicPageTitle"]': {
       gridColumn: 2,
       width: '100%',
@@ -101,14 +107,6 @@ export const styles = {
   iEBackgroundElement: {
     position: 'fixed',
     backgroundColor: ThemingParameters.sapObjectHeader_Background
-  },
-  contentHeader: {
-    ...sapUiResponsiveContentPadding,
-    backgroundColor: ThemingParameters.sapObjectHeader_Background,
-    position: 'sticky',
-    paddingBottom: '0.25rem',
-    maxHeight: 'fit-content',
-    overflow: 'hidden'
   },
   container: {
     flex: '1 1 70%',

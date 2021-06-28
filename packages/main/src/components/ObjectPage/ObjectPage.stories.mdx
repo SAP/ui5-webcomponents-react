@@ -43,31 +43,12 @@ import { FlexBoxAlignItems, FlexBoxWrap } from '../..';
   }}
   args={{
     mode: ObjectPageMode.Default,
-    title: 'Denise Smith',
-    subTitle: 'Senior UI Developer',
+    heading: 'Denise Smith',
+    subHeading: 'Senior UI Developer',
     showHideHeaderButton: true,
     selectedSectionId: 'goals',
     headerContentPinnable: true,
     imageShapeCircle: true,
-    headerContent: (
-      <>
-        <FlexBox direction={FlexBoxDirection.Column}>
-          <Link>+33 6 4512 5158</Link>
-          <Link href="mailto:ui5-webcomponents-react@sap.com">DeniseSmith@sap.com</Link>
-          <Link href="https://github.com/SAP/ui5-webcomponents-react">
-            https://github.com/SAP/ui5-webcomponents-react
-          </Link>
-        </FlexBox>
-        <FlexBox direction={FlexBoxDirection.Column} style={{ width: '200px' }}>
-          <Label>Achieved Goals</Label>
-          <ProgressIndicator value={80} valueState={ValueState.Success} />
-        </FlexBox>
-        <FlexBox direction={FlexBoxDirection.Column}>
-          <Label>San Jose</Label>
-          <Label>California, USA</Label>
-        </FlexBox>
-      </>
-    ),
     breadcrumbs: (
       <Breadcrumbs currentLocationText="Employee Details">
         <Link>Manager Cockpit</Link>
@@ -83,10 +64,7 @@ import { FlexBoxAlignItems, FlexBoxWrap } from '../..';
     keyInfos: <ObjectStatus state={ValueState.Success}>employed</ObjectStatus>,
     image: SampleImage,
     style: { height: '700px' },
-    className: '',
-    tooltip: '',
-    slot: '',
-    ref: null
+    showSubheadingRight: true
   }}
 />
 
@@ -101,19 +79,13 @@ import { FlexBoxAlignItems, FlexBoxWrap } from '../..';
     {(args) => {
       return (
         <FlexBox direction="Column">
-          <div style={{ height: '0px' }}></div>
           <ObjectPage
-            style={{ height: '900px' }}
-            mode={args.mode}
-            image={SampleImage}
-            showTitleInHeaderContent={args.showTitleInHeaderContent}
-            showHideHeaderButton
-            headerContentPinnable
+            {...args}
             title={
               <DynamicPageTitle
-                //showSubheadingRight={false}
-                heading={args.title}
-                subHeading={args.subTitle}
+                showSubheadingRight={args.showSubheadingRight}
+                heading={args.heading}
+                subHeading={args.subHeading}
                 actions={args.headerActions}
                 breadcrumbs={args.breadcrumbs}
               >

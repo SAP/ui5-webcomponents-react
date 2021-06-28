@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 
 declare const ResizeObserver;
 
-//todo move to external folder
 export const useObserveHeights = (objectPage, topHeader, headerContentRef, anchorBarRef, { noHeader }) => {
   const [topHeaderHeight, setTopHeaderHeight] = useState(0);
   const [headerContentHeight, setHeaderContentHeight] = useState(0);

@@ -22,7 +22,7 @@ import React, {
 } from 'react';
 import { createUseStyles } from 'react-jss';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
-import { useObserveHeights } from '../ObjectPage/useObserveHeights';
+import { useObserveHeights } from '../../internal/useObserveHeights';
 import { styles } from './DynamicPage.jss';
 
 export interface DynamicPageProps extends Omit<CommonProps, 'title'> {
