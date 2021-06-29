@@ -137,5 +137,10 @@ export const styles = {
   anchorBar: {
     position: 'sticky',
     zIndex: 2
+  },
+  footer: {
+    position: 'sticky',
+    bottom: '0.5rem',
+    margin: '0 0.5rem'
   }
 };

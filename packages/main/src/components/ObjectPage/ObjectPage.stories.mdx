@@ -8,6 +8,8 @@ import { Link } from '@ui5/webcomponents-react/dist/Link';
 import { ProgressIndicator } from '@ui5/webcomponents-react/dist/ProgressIndicator';
 import { Breadcrumbs } from '@ui5/webcomponents-react/dist/Breadcrumbs';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
+import { Bar } from '@ui5/webcomponents-react/dist/Bar';
+import { BarDesign } from '@ui5/webcomponents-react/dist/BarDesign';
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
 import { Label } from '@ui5/webcomponents-react/dist/Label';
 import { Form } from '@ui5/webcomponents-react/dist/Form';
@@ -64,6 +66,17 @@ import { FlexBoxAlignItems, FlexBoxWrap } from '../..';
     keyInfos: <ObjectStatus state={ValueState.Success}>employed</ObjectStatus>,
     image: SampleImage,
     style: { height: '700px' },
+    footer: (
+      <Bar
+        design={BarDesign.FloatingFooter}
+        endContent={
+          <>
+            <Button design={ButtonDesign.Positive}>Accept</Button>
+            <Button design={ButtonDesign.Negative}>Reject</Button>
+          </>
+        }
+      />
+    ),
     showSubheadingRight: true
   }}
 />

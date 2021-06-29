@@ -54,6 +54,7 @@ addCustomCSS(
   `
 );
 
+//todo flexibleColumnsLayout
 //todo rtl?
 //todo IE11?
 //todo remove padding from single components
@@ -71,6 +72,12 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'title'> {
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `DynamicPageHeader` in order to preserve the intended design.
    */
   header?: ReactElement;
+  /**
+   * React element which defines the footer content.
+   *
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `Bar` with `design={BarDesign.FloatingFooter}` in order to preserve the intended design.
+   */
+  footer?: ReactElement;
   /**
    * Defines the image of the `ObjectPage`. You can pass a path to an image or an `Avatar` component.
    */
@@ -136,6 +143,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   const {
     title,
     image,
+    footer,
     mode,
     imageShapeCircle,
     className,
@@ -176,9 +184,6 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     { noHeader: !title && !header }
   );
 
-  // *****
-  // SECTION SELECTION
-  // ****
   const avatar = useMemo(() => {
     if (!image) {
       return null;
@@ -201,6 +206,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     }
   }, [image, classes.headerImage, classes.image, imageShapeCircle]);
 
+  const prevTopHeaderHeight = useRef(0);
   const scrollToSection = useCallback(
     (sectionId) => {
       if (!sectionId) {
@@ -213,15 +219,27 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
           `#ObjectPageSection-${sectionId}`
         )?.offsetTop;
         if (!isNaN(childOffset)) {
+          let safeTopHeaderHeight = topHeaderHeight || prevTopHeaderHeight.current;
+          if (topHeaderHeight) {
+            prevTopHeaderHeight.current = topHeaderHeight;
+          }
           objectPageRef.current?.scrollTo({
-            top: childOffset - topHeaderHeight - anchorBarHeight - (headerPinned ? headerContentHeight : 0) - 16,
+            top: childOffset - safeTopHeaderHeight - anchorBarHeight - (headerPinned ? headerContentHeight : 0) - 16,
             behavior: 'smooth'
           });
         }
       }
       isProgrammaticallyScrolled.current = false;
     },
-    [firstSectionId, objectPageRef, topHeaderHeight, anchorBarHeight, headerPinned, headerContentHeight]
+    [
+      firstSectionId,
+      objectPageRef,
+      topHeaderHeight,
+      anchorBarHeight,
+      headerPinned,
+      headerContentHeight,
+      prevTopHeaderHeight.current
+    ]
   );
 
   // change selected section when prop is changed (external change)
@@ -605,7 +623,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       )}
       <div
         //todo still needed?
-        // ref={anchorBarRef}
+        ref={anchorBarRef}
         style={{
           position: 'sticky',
           top:
@@ -669,6 +687,8 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       ) : (
         children
       )}
+      {footer && <div style={{ height: '1rem' }} />}
+      {footer && <footer className={classes.footer}>{footer}</footer>}
     </div>
   );
 });
