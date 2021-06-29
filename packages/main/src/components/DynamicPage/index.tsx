@@ -229,7 +229,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
         <DynamicPageAnchorBar
           headerContentPinnable={headerContentPinnable}
           showHideHeaderButton={showHideHeaderButton}
-          headerContentHeight={headerContentHeight}
+          headerContentVisible={!!headerContentHeight}
           onToggleHeaderContentVisibility={onToggleHeaderContentVisibility}
           setHeaderPinned={handleHeaderPinnedChange}
           headerPinned={headerState === HEADER_STATES.VISIBLE_PINNED || headerState === HEADER_STATES.HIDDEN_PINNED}

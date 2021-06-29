@@ -12,9 +12,9 @@ import {
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { ToggleButton } from '@ui5/webcomponents-react/dist/ToggleButton';
-import React, { CSSProperties, forwardRef, RefObject, useCallback } from 'react';
-import { createUseStyles } from 'react-jss';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import React, { forwardRef, RefObject, useCallback } from 'react';
+import { createUseStyles } from 'react-jss';
 
 addCustomCSS(
   'ui5-button',
@@ -82,11 +82,10 @@ const anchorBarStyles = {
 const useStyles = createUseStyles(anchorBarStyles, { name: 'DynamicPageAnchorBar' });
 
 interface Props extends CommonProps {
-  //todo this only checks for 0, no interal positioning is happening here --> boolean
   /**
-   * Determines the height of the header content.
+   * Determines if the header content is visible.
    */
-  headerContentHeight: number;
+  headerContentVisible: boolean;
   /**
    * Determines if the header content is pinnable .
    */
@@ -112,6 +111,7 @@ interface Props extends CommonProps {
    */
   onHoverToggleButton?: (e: any) => void;
 }
+
 /**
  * The dynamic page anchor bar contains the expand/collapse (expands or collapses the header content)
  * and pin button (pins the content header).
@@ -119,21 +119,18 @@ interface Props extends CommonProps {
 const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElement>) => {
   const {
     showHideHeaderButton,
-    //todo make boolean
-    headerContentHeight,
+    headerContentVisible,
     headerContentPinnable,
     headerPinned,
     setHeaderPinned,
     onToggleHeaderContentVisibility,
     onHoverToggleButton,
-    style,
-    className,
-    tooltip
+    style
   } = props;
 
   const classes = useStyles();
 
-  const shouldRenderHeaderPinnableButton = headerContentPinnable && headerContentHeight > 0;
+  const shouldRenderHeaderPinnableButton = headerContentPinnable && headerContentVisible;
   const showBothActions = shouldRenderHeaderPinnableButton && showHideHeaderButton;
 
   const onPinHeader = useCallback(
@@ -145,7 +142,7 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
 
   //todo check dynamicPage
   const onToggleHeaderButtonClick = (e) => {
-    onToggleHeaderContentVisibility(enrichEventWithDetails(e, { visible: headerContentHeight === 0 }));
+    onToggleHeaderContentVisibility(enrichEventWithDetails(e, { visible: !headerContentVisible }));
   };
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   return (
@@ -157,7 +154,7 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
     >
       {showHideHeaderButton && (
         <Button
-          icon={headerContentHeight === 0 ? 'slim-arrow-down' : 'slim-arrow-up'}
+          icon={!headerContentVisible ? 'slim-arrow-down' : 'slim-arrow-up'}
           data-ui5wcr-dynamic-page-header-action=""
           className={`${classes.anchorBarActionButton} ${classes.anchorBarActionButtonExpandable} ${
             showBothActions ? classes.anchorBarActionPinnableAndExpandable : ''
@@ -166,8 +163,8 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
           //todo should probably be split in two internal functions
           onMouseOver={onHoverToggleButton}
           onMouseLeave={onHoverToggleButton}
-          tooltip={i18nBundle.getText(headerContentHeight === 0 ? EXPAND_HEADER : COLLAPSE_HEADER)}
-          aria-label={i18nBundle.getText(headerContentHeight === 0 ? EXPAND_HEADER : COLLAPSE_HEADER)}
+          tooltip={i18nBundle.getText(!headerContentVisible ? EXPAND_HEADER : COLLAPSE_HEADER)}
+          aria-label={i18nBundle.getText(!headerContentVisible ? EXPAND_HEADER : COLLAPSE_HEADER)}
         />
       )}
       {shouldRenderHeaderPinnableButton && (

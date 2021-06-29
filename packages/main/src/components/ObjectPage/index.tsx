@@ -617,7 +617,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
           }}
         >
           <DynamicPageAnchorBar
-            headerContentHeight={headerContentHeight}
+            headerContentVisible={!!headerContentHeight}
             headerContentPinnable={headerContentPinnable}
             showHideHeaderButton={showHideHeaderButton}
             onToggleHeaderContentVisibility={onToggleHeaderContentVisibility}
