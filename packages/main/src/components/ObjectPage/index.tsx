@@ -57,7 +57,6 @@ addCustomCSS(
 //todo flexibleColumnsLayout
 //todo rtl?
 //todo IE11?
-//todo remove padding from single components - really possible? - hover effect etc
 export interface ObjectPagePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * Defines the title section of the `ObjectPage`.
@@ -467,12 +466,16 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     ? 0
     :*/ headerPinned || isIE() ? topHeaderHeight + headerContentHeight : topHeaderHeight;
 
-  const renderTitleSection = useCallback(() => {
-    if (title?.props && title.props?.showSubheadingRight === undefined) {
-      return React.cloneElement(title, { showSubheadingRight: true });
-    }
-    return title;
-  }, [title]);
+  const renderTitleSection = useCallback(
+    (inHeader = false) => {
+      const titleStyles = { ...(inHeader ? { padding: 0 } : {}), ...(title?.props?.style ?? {}) };
+      if (title?.props && title.props?.showSubheadingRight === undefined) {
+        return React.cloneElement(title, { showSubheadingRight: true, style: titleStyles });
+      }
+      return React.cloneElement(title, { style: titleStyles });
+    },
+    [title]
+  );
 
   const renderHeaderContentSection = useCallback(() => {
     if (header?.props) {
@@ -486,8 +489,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
             {avatar}
             {header.props.children && (
               <div data-component-name="ObjectPage-HeaderContent">
-                {/*todo remove padding, dep array*/}
-                {showTitleInHeaderContent && renderTitleSection()}
+                {showTitleInHeaderContent && renderTitleSection(true)}
                 {header.props.children}
               </div>
             )}
