@@ -24,7 +24,6 @@ export interface ObjectPageSubSectionPropTypes extends CommonProps {
 
 const styles = {
   objectPageSubSection: {
-    padding: '1rem 0',
     '&:focus': {
       outline: `${ThemingParameters.sapContent_FocusWidth} ${ThemingParameters.sapContent_FocusStyle} ${ThemingParameters.sapContent_FocusColor}`,
       outlineOffset: `calc(-1 * ${ThemingParameters.sapContent_FocusWidth})`
@@ -67,11 +66,12 @@ const ObjectPageSubSection: FC<ObjectPageSubSectionPropTypes> = forwardRef(
     return (
       <div
         ref={htmlRef}
-        className={subSectionClassName.toString()}
         role="region"
         style={style}
         title={tooltip}
+        tabIndex={-1}
         {...passThroughProps}
+        className={subSectionClassName.toString()}
         id={htmlId}
         data-component-name="ObjectPageSubSection"
       >

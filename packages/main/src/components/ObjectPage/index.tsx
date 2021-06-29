@@ -224,7 +224,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
             prevTopHeaderHeight.current = topHeaderHeight;
           }
           objectPageRef.current?.scrollTo({
-            top: childOffset - safeTopHeaderHeight - anchorBarHeight - (headerPinned ? headerContentHeight : 0) - 16,
+            top: childOffset - safeTopHeaderHeight - anchorBarHeight - (headerPinned ? headerContentHeight : 0),
             behavior: 'smooth'
           });
         }
@@ -274,16 +274,23 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   // Scrolling for Sub Section Selection
   useEffect(() => {
     if (selectedSubSectionId && isProgrammaticallyScrolled.current === true) {
-      const childOffset = objectPageRef.current?.querySelector<HTMLElement>(
+      const currentSubSection = objectPageRef.current?.querySelector<HTMLElement>(
         `div[id="ObjectPageSubSection-${selectedSubSectionId}"]`
-      )?.offsetTop;
+      );
+      const childOffset = currentSubSection?.offsetTop;
       if (!isNaN(childOffset)) {
+        currentSubSection.focus();
         objectPageRef.current?.scrollTo({
-          top: childOffset - topHeaderHeight - anchorBarHeight - (headerPinned ? headerContentHeight : 0) - 16,
+          top:
+            childOffset -
+            topHeaderHeight -
+            anchorBarHeight -
+            48 /*tabBar*/ -
+            (headerPinned ? headerContentHeight : 0) -
+            16,
           behavior: 'smooth'
         });
       }
-
       isProgrammaticallyScrolled.current = false;
     }
   }, [
@@ -616,14 +623,11 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
             onToggleHeaderContentVisibility={onToggleHeaderContentVisibility}
             setHeaderPinned={setHeaderPinned}
             headerPinned={headerPinned}
-            //todo
             onHoverToggleButton={onHoverToggleButton}
           />
         </div>
       )}
       <div
-        //todo still needed?
-        ref={anchorBarRef}
         style={{
           position: 'sticky',
           top:
