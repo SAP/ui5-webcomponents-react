@@ -57,7 +57,7 @@ addCustomCSS(
 //todo flexibleColumnsLayout
 //todo rtl?
 //todo IE11?
-//todo remove padding from single components
+//todo remove padding from single components - really possible? - hover effect etc
 export interface ObjectPagePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * Defines the title section of the `ObjectPage`.

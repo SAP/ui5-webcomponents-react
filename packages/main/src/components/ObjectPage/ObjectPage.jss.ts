@@ -59,8 +59,7 @@ export const styles = {
   //todo
   headerContainer: {
     marginBottom: '0.25rem',
-    // ...padding,
-    // backgroundColor: ThemingParameters.sapObjectHeader_Background,
+    backgroundColor: ThemingParameters.sapObjectHeader_Background,
     display: isIE() ? 'flex' : 'grid',
     gridAutoColumns: 'auto 1fr',
     '& [data-component-name="ObjectPage-HeaderContent"]': {
@@ -126,14 +125,11 @@ export const styles = {
     display: 'inline-block',
     //todo rtl
     marginRight: '2rem'
-    //todo
-    // marginBottom: '1rem'
   },
   image: {
     width: '100%',
     height: '100%'
   },
-  //todo
   anchorBar: {
     position: 'sticky',
     zIndex: 2

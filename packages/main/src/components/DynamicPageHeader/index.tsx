@@ -62,7 +62,6 @@ const DynamicPageHeader: FC<DynamicPageHeaderProps> = forwardRef((props: Interna
       data-component-name="DynamicPageHeader"
       {...passThroughProps}
     >
-      {/*todo check DynamicPage implementation */}
       {children}
     </div>
   );

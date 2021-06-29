@@ -1,3 +1,4 @@
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
 import { useConsolidatedRef, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
@@ -143,9 +144,8 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
   }, [dynamicPageRef, headerState]);
 
   const onToggleHeaderContentVisibility = useCallback(
-    (e, element?: Element | HTMLElement) => {
-      const srcElement = element ?? e.target;
-      const shouldHideHeader = srcElement.icon === 'slim-arrow-up';
+    (e) => {
+      const shouldHideHeader = !e.detail.visible;
       setHeaderState((oldState) => {
         if (oldState === HEADER_STATES.VISIBLE_PINNED || oldState === HEADER_STATES.HIDDEN_PINNED) {
           return shouldHideHeader ? HEADER_STATES.HIDDEN_PINNED : HEADER_STATES.VISIBLE_PINNED;
@@ -159,19 +159,18 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
   const onHoverToggleButton = useCallback(
     (e) => {
       // TODO background color should be sapObjectHeader_Hover_Background (same color as sapTile_Active_Background)
-      //todo apply className not style directly on ref
       topHeaderRef.current.style.backgroundColor =
         e?.type === 'mouseover' ? ThemingParameters.sapTile_Active_Background : null;
     },
     [topHeaderRef]
   );
 
-  const onToggleHeaderContent = (e) => {
-    //todo refactor
-    if (e.target.tagName === 'DIV') {
-      onToggleHeaderContentVisibility(e, anchorBarRef.current.children.item(0).children.item(0));
-    }
-  };
+  const onToggleHeaderContent = useCallback(
+    (e) => {
+      onToggleHeaderContentVisibility(enrichEventWithDetails(e, { visible: !headerContentHeight }));
+    },
+    [headerContentHeight]
+  );
 
   const handleHeaderPinnedChange = useCallback(
     (headerWillPin) => {
@@ -217,7 +216,6 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
         })}
       <FlexBox
         className={anchorBarClasses.className}
-        //todo why do we need to observe anchorbar height?
         ref={anchorBarRef}
         style={{
           top:

@@ -9,7 +9,6 @@ export const DynamicPageHeaderStyles = {
   header: {
     //todo padding not only on this component, but whole page
     ...padding,
-    // flexShrink: 0,
     //todo
     backgroundColor: ThemingParameters.sapObjectHeader_Background,
     position: 'sticky',

@@ -140,7 +140,6 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
     [setHeaderPinned]
   );
 
-  //todo check dynamicPage
   const onToggleHeaderButtonClick = (e) => {
     onToggleHeaderContentVisibility(enrichEventWithDetails(e, { visible: !headerContentVisible }));
   };
@@ -160,7 +159,6 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
             showBothActions ? classes.anchorBarActionPinnableAndExpandable : ''
           }`}
           onClick={onToggleHeaderButtonClick}
-          //todo should probably be split in two internal functions
           onMouseOver={onHoverToggleButton}
           onMouseLeave={onHoverToggleButton}
           tooltip={i18nBundle.getText(!headerContentVisible ? EXPAND_HEADER : COLLAPSE_HEADER)}
