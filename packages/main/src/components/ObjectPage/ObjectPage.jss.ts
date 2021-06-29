@@ -75,7 +75,6 @@ export const styles = {
     }
   },
   header: {
-    //todo remove here
     ...sapUiResponsiveContentPadding,
     [DynamicPageCssVariables.headerDisplay]: 'block',
     boxSizing: 'border-box',
@@ -83,7 +82,6 @@ export const styles = {
     position: 'sticky',
     top: 0,
     zIndex: 2,
-    // display: isIE() ? 'flex' : 'grid',
     gridAutoColumns: 'auto 1fr',
     '& [data-component-name="DynamicPageTitle"]': {
       gridColumn: 2,
