@@ -7,6 +7,7 @@ import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsol
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { debounce, enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { AvatarSize } from '@ui5/webcomponents-react/dist/AvatarSize';
+import { AvatarPropTypes } from '@ui5/webcomponents-react/dist/Avatar';
 import { GlobalStyleClasses } from '@ui5/webcomponents-react/dist/GlobalStyleClasses';
 import { List } from '@ui5/webcomponents-react/dist/List';
 import { ObjectPageMode } from '@ui5/webcomponents-react/dist/ObjectPageMode';
@@ -78,7 +79,7 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * Defines the image of the `ObjectPage`. You can pass a path to an image or an `Avatar` component.
    */
-  image?: string | ReactElement<unknown>;
+  image?: string | ReactElement;
   /**
    * Defines the content area of the `ObjectPage`. It consists of sections and subsections.<br />
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `ObjectPageSection` and `ObjectPageSubSection` in order to preserve the intended design.
@@ -167,7 +168,8 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
 
   const objectPageRef: RefObject<HTMLDivElement> = useConsolidatedRef(ref);
   const topHeaderRef: RefObject<HTMLDivElement> = useRef();
-  const headerContentRef: RefObject<HTMLDivElement> = useConsolidatedRef(header?.ref);
+  //@ts-ignore
+  const headerContentRef: RefObject<HTMLDivElement> = useConsolidatedRef(header.ref);
   const anchorBarRef: RefObject<HTMLDivElement> = useRef();
 
   const isRTL = useIsRTL(objectPageRef);
@@ -205,7 +207,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       return React.cloneElement(image, {
         size: AvatarSize.L,
         className: headerImageClasses.className
-      } as unknown);
+      } as AvatarPropTypes);
     }
   }, [image, classes.headerImage, classes.headerImageRtl, classes.image, imageShapeCircle, isRTL]);
 

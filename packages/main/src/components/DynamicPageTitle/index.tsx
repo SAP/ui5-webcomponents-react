@@ -1,3 +1,4 @@
+import { debounce } from '@ui5/webcomponents-react-base/dist/Utils';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
 import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
@@ -11,7 +12,6 @@ import { ToolbarSpacer } from '@ui5/webcomponents-react/dist/ToolbarSpacer';
 import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';
 import { ToolbarStyle } from '@ui5/webcomponents-react/dist/ToolbarStyle';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import debounce from 'lodash/debounce';
 import React, {
   Children,
   FC,
