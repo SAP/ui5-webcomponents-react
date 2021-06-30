@@ -140,7 +140,7 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
     <FlexBox
       className={containerClasses.className}
       style={style}
-      ref={ref}
+      ref={dynamicPageTitleRef}
       tooltip={tooltip}
       data-component-name="DynamicPageTitle"
       onClick={onToggleHeaderContentVisibility}

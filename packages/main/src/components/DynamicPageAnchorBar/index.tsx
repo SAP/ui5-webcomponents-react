@@ -1,8 +1,9 @@
 import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming';
 import '@ui5/webcomponents-icons/dist/slim-arrow-down.js';
 import '@ui5/webcomponents-icons/dist/slim-arrow-up.js';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
-import { useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
+import { useConsolidatedRef, useI18nBundle, useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import {
   COLLAPSE_HEADER,
@@ -64,6 +65,10 @@ const anchorBarStyles = {
       left: '100%'
     }
   },
+  anchorBarActionButtonRtl: {
+    marginRight: `-0.6875rem`,
+    marginLeft: 0
+  },
   anchorBarActionButtonExpandable: {},
   anchorBarActionButtonPinnable: {},
   anchorBarActionPinnableAndExpandable: {
@@ -75,6 +80,17 @@ const anchorBarStyles = {
     },
     '&$anchorBarActionButtonExpandable': {
       marginLeft: '-1.75rem'
+    }
+  },
+  anchorBarActionPinnableAndExpandableRtl: {
+    '&$anchorBarActionButtonPinnable': {
+      marginRight: '0.25rem',
+      '&:before': {
+        backgroundColor: 'white'
+      }
+    },
+    '&$anchorBarActionButtonExpandable': {
+      marginRight: '-1.75rem'
     }
   }
 };
@@ -129,6 +145,8 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
   } = props;
 
   const classes = useStyles();
+  const anchorBarRef = useConsolidatedRef<HTMLDivElement>(ref);
+  const isRTL = useIsRTL(anchorBarRef);
 
   const shouldRenderHeaderPinnableButton = headerContentPinnable && headerContentVisible;
   const showBothActions = shouldRenderHeaderPinnableButton && showHideHeaderButton;
@@ -140,6 +158,16 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
     [setHeaderPinned]
   );
 
+  const anchorBarActionButtonClasses = StyleClassHelper.of(classes.anchorBarActionButton);
+  if (isRTL) {
+    anchorBarActionButtonClasses.put(classes.anchorBarActionButtonRtl);
+  }
+
+  const bothActionClasses = StyleClassHelper.of(classes.anchorBarActionPinnableAndExpandable);
+  if (isRTL) {
+    bothActionClasses.put(classes.anchorBarActionPinnableAndExpandableRtl);
+  }
+
   const onToggleHeaderButtonClick = (e) => {
     onToggleHeaderContentVisibility(enrichEventWithDetails(e, { visible: !headerContentVisible }));
   };
@@ -149,14 +177,14 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
       style={style}
       role="navigation"
       className={showHideHeaderButton || headerContentPinnable ? classes.anchorBarActionButton : null}
-      ref={ref}
+      ref={anchorBarRef}
     >
       {showHideHeaderButton && (
         <Button
           icon={!headerContentVisible ? 'slim-arrow-down' : 'slim-arrow-up'}
           data-ui5wcr-dynamic-page-header-action=""
-          className={`${classes.anchorBarActionButton} ${classes.anchorBarActionButtonExpandable} ${
-            showBothActions ? classes.anchorBarActionPinnableAndExpandable : ''
+          className={`${anchorBarActionButtonClasses.className} ${classes.anchorBarActionButtonExpandable} ${
+            showBothActions ? bothActionClasses.className : ''
           }`}
           onClick={onToggleHeaderButtonClick}
           onMouseOver={onHoverToggleButton}
@@ -169,8 +197,8 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
         <ToggleButton
           icon="pushpin-off"
           data-ui5wcr-dynamic-page-header-action=""
-          className={`${classes.anchorBarActionButton} ${classes.anchorBarActionButtonPinnable} ${
-            showBothActions ? classes.anchorBarActionPinnableAndExpandable : ''
+          className={`${anchorBarActionButtonClasses.className} ${classes.anchorBarActionButtonPinnable} ${
+            showBothActions ? bothActionClasses.className : ''
           }`}
           pressed={headerPinned}
           onClick={onPinHeader}

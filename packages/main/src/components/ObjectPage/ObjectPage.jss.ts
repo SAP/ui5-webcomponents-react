@@ -10,8 +10,6 @@ export const ObjectPageCssVariables = {
   lastSectionMargin: '--_ui5wcr_ObjectPage_last_section_margin_bottom'
 };
 
-const padding = isIE() ? { padding: '0 2rem' } : { ...sapUiResponsiveContentPadding };
-
 export const styles = {
   objectPage: {
     [DynamicPageCssVariables.headerDisplay]: 'block',
@@ -98,6 +96,7 @@ export const styles = {
     position: 'fixed',
     width: 'calc(100% - 18px)'
   },
+  //todo ie11
   iEClassHeader: {
     width: 'calc(100% - 18px - 2rem)'
   },
@@ -105,24 +104,16 @@ export const styles = {
     position: 'fixed',
     backgroundColor: ThemingParameters.sapObjectHeader_Background
   },
-  container: {
-    flex: '1 1 70%',
-    boxSizing: 'border-box'
-  },
-  title: {
-    padding: '0.3125rem 0 0 0'
-  },
-  subTitle: {
-    verticalAlign: 'baseline',
-    padding: '0 0 0.5rem 0.5rem'
-  },
   headerImage: {
     minWidth: '5rem',
     maxWidth: '5rem',
     maxHeight: '5rem',
     display: 'inline-block',
-    //todo rtl
     marginRight: '2rem'
+  },
+  headerImageRtl: {
+    marginRight: 0,
+    marginLeft: '2rem'
   },
   image: {
     width: '100%',

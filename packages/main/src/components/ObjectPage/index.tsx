@@ -54,8 +54,6 @@ addCustomCSS(
   `
 );
 
-//todo flexibleColumnsLayout
-//todo rtl?
 //todo IE11?
 export interface ObjectPagePropTypes extends Omit<CommonProps, 'title'> {
   /**
@@ -187,23 +185,29 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     if (!image) {
       return null;
     }
-
+    const headerImageClasses = StyleClassHelper.of(classes.headerImage);
+    if (isRTL) {
+      headerImageClasses.put(classes.headerImageRtl);
+    }
     if (typeof image === 'string') {
       return (
         <span
-          className={classes.headerImage}
+          className={headerImageClasses.className}
           style={{ borderRadius: imageShapeCircle ? '50%' : 0, overflow: 'hidden' }}
         >
           <img src={image} className={classes.image} alt="Company Logo" />
         </span>
       );
     } else {
+      if (image.props?.className) {
+        headerImageClasses.put(image.props?.className);
+      }
       return React.cloneElement(image, {
         size: AvatarSize.L,
-        className: image.props?.className ? `${classes.headerImage} ${image.props?.className}` : classes.headerImage
+        className: headerImageClasses.className
       } as unknown);
     }
-  }, [image, classes.headerImage, classes.image, imageShapeCircle]);
+  }, [image, classes.headerImage, classes.headerImageRtl, classes.image, imageShapeCircle, isRTL]);
 
   const prevTopHeaderHeight = useRef(0);
   const scrollToSection = useCallback(
