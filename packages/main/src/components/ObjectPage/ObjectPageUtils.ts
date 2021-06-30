@@ -13,8 +13,14 @@ export const extractSectionIdFromHtmlId = (id: string) => {
 
 export const getLastObjectPageSection = (ref: RefObject<HTMLDivElement>): HTMLElement => {
   const sections = ref.current?.querySelectorAll<HTMLElement>('[id^="ObjectPageSection"]');
+
   if (!sections || sections.length < 1) {
     return null;
+  }
+  if (sections.length === 1) {
+    if (sections[0].querySelectorAll('[id^="ObjectPageSubSection"]').length === 0) {
+      return null;
+    }
   }
 
   return sections[sections.length - 1];

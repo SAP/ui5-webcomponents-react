@@ -344,14 +344,12 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   useEffect(() => {
     const fillerDivObserver = new ResizeObserver(() => {
       let heightDiff = 0;
-
       const maxHeight = Math.min(objectPageRef.current?.clientHeight, window.innerHeight);
       const availableScrollHeight = maxHeight - totalHeaderHeight;
       const lastSectionDomRef = getLastObjectPageSection(objectPageRef);
 
       if (lastSectionDomRef) {
         const subSections = lastSectionDomRef.querySelectorAll('[id^="ObjectPageSubSection"]');
-
         let lastSubSectionHeight;
         if (subSections.length > 0) {
           lastSubSectionHeight = (subSections[subSections.length - 1] as HTMLElement).offsetHeight;
@@ -367,7 +365,6 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
           heightDiff = 0;
         }
       }
-
       objectPageRef.current?.style.setProperty(ObjectPageCssVariables.lastSectionMargin, `${heightDiff}px`);
     });
 

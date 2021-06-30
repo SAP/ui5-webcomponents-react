@@ -34,7 +34,7 @@ export const styles = {
     '& section[id*="ObjectPageSection-"] ~ section[id*="ObjectPageSection-"] > div[role="heading"]': {
       display: 'block'
     },
-    '& section[data-component-name="ObjectPageSection"]:last-child': {
+    '& section[data-component-name="ObjectPageSection"]:last-of-type': {
       marginBottom: `var(${ObjectPageCssVariables.lastSectionMargin})`
     }
   },
