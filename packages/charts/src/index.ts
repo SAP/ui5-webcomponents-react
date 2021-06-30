@@ -3,6 +3,8 @@ import { BarChart } from './dist/BarChart';
 import { BarChartPlaceholder } from './dist/BarChartPlaceholder';
 import { ColumnChart } from './dist/ColumnChart';
 import { ColumnChartPlaceholder } from './dist/ColumnChartPlaceholder';
+import { ColumnChartWithTrend } from './dist/ColumnChartWithTrend/ColumnChartWithTrend';
+import { ColumnChartWithTrendPlaceholder } from './dist/ColumnChartWithTrendPlaceholder';
 import { ComposedChart } from './dist/ComposedChart';
 import { ComposedChartPlaceholder } from './dist/ComposedChartPlaceholder';
 import { DonutChart } from './dist/DonutChart';
@@ -19,6 +21,7 @@ import { ScatterChartPlaceholder } from './dist/ScatterChartPlaceholder';
 export {
   BarChart,
   ColumnChart,
+  ColumnChartWithTrend,
   ComposedChart,
   DonutChart,
   LineChart,
@@ -29,6 +32,7 @@ export {
   ScatterChart,
   BarChartPlaceholder,
   ColumnChartPlaceholder,
+  ColumnChartWithTrendPlaceholder,
   ComposedChartPlaceholder,
   LineChartPlaceholder,
   PieChartPlaceholder,
