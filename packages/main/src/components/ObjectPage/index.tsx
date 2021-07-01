@@ -54,7 +54,6 @@ addCustomCSS(
   `
 );
 
-//todo IE11?
 export interface ObjectPagePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * Defines the title section of the `ObjectPage`.
