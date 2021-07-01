@@ -1,6 +1,5 @@
 import { sapUiResponsiveContentPadding } from '@ui5/webcomponents-react-base/dist/spacing';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
-import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
 import { DynamicPageCssVariables } from '../DynamicPage/DynamicPage.jss';
 
 export const ObjectPageCssVariables = {
@@ -54,11 +53,10 @@ export const styles = {
   headerCollapsed: {
     [DynamicPageCssVariables.headerDisplay]: 'none'
   },
-  //todo
   headerContainer: {
     marginBottom: '0.25rem',
     backgroundColor: ThemingParameters.sapObjectHeader_Background,
-    display: isIE() ? 'flex' : 'grid',
+    display: 'grid',
     gridAutoColumns: 'auto 1fr',
     '& [data-component-name="ObjectPage-HeaderContent"]': {
       gridColumn: 2,
@@ -95,14 +93,6 @@ export const styles = {
   iEClass: {
     position: 'fixed',
     width: 'calc(100% - 18px)'
-  },
-  //todo ie11
-  iEClassHeader: {
-    width: 'calc(100% - 18px - 2rem)'
-  },
-  iEBackgroundElement: {
-    position: 'fixed',
-    backgroundColor: ThemingParameters.sapObjectHeader_Background
   },
   headerImage: {
     minWidth: '5rem',

@@ -1,5 +1,4 @@
 import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming';
-import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
 import { useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
@@ -457,18 +456,6 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     };
   }, [objectPageRef, children, totalHeaderHeight, setInternalSelectedSectionId, isProgrammaticallyScrolled]);
 
-  //todo check if all header styles are still needed
-  const headerClasses = StyleClassHelper.of(classes.header);
-  if (isIE()) {
-    headerClasses.put(classes.iEClass);
-  }
-
-  //todo check if needed
-  const anchorBarPositionTop =
-    /*noHeader
-    ? 0
-    :*/ headerPinned || isIE() ? topHeaderHeight + headerContentHeight : topHeaderHeight;
-
   const renderTitleSection = useCallback(
     (inHeader = false) => {
       const titleStyles = { ...(inHeader ? { padding: 0 } : {}), ...(title?.props?.style ?? {}) };
@@ -598,10 +585,10 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         ref={topHeaderRef}
         role="banner"
         aria-roledescription="Object Page header"
-        className={headerClasses.className}
+        className={classes.header}
         onClick={onTitleClick}
         style={{
-          display: !showTitleInHeaderContent || headerContentHeight === 0 ? (isIE() ? 'flex' : 'grid') : 'none'
+          display: !showTitleInHeaderContent || headerContentHeight === 0 ? 'grid' : 'none'
         }}
       >
         {title && image && headerContentHeight === 0 && (
@@ -675,27 +662,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
           document.body
         )}
       </div>
-      {/*todo still needed?*/}
-      {/*{isIE() && (*/}
-      {/*  <div*/}
-      {/*    className={classes.iEBackgroundElement}*/}
-      {/*    style={{*/}
-      {/*      height: `${anchorBarPositionTop + anchorBarRef.current?.offsetHeight ?? 0}px`,*/}
-      {/*      width: `calc(100% - ${*/}
-      {/*        objectPageRef?.current?.clientHeight < objectPageRef?.current?.scrollHeight ? '18px' : '0px'*/}
-      {/*      })`*/}
-      {/*    }}*/}
-      {/*  />*/}
-      {/*)}*/}
-      {isIE() ? (
-        <div style={{ marginTop: `${anchorBarPositionTop + anchorBarRef.current?.offsetHeight ?? 0}px` }}>
-          {mode === ObjectPageMode.IconTabBar ? getSectionById(children, internalSelectedSectionId) : children}
-        </div>
-      ) : mode === ObjectPageMode.IconTabBar ? (
-        getSectionById(children, internalSelectedSectionId)
-      ) : (
-        children
-      )}
+      {mode === ObjectPageMode.IconTabBar ? getSectionById(children, internalSelectedSectionId) : children}
       {footer && <div style={{ height: '1rem' }} />}
       {footer && <footer className={classes.footer}>{footer}</footer>}
     </div>
