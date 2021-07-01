@@ -13,10 +13,14 @@ import React, { useEffect } from 'react';
 import { DocsPage } from '../shared/stories/DocsPage';
 import applyDirection from '@ui5/webcomponents-base/dist/locale/applyDirection';
 
-addParameters({
+export const parameters = {
   viewMode: 'docs',
-  docs: { forceExtractedArgTypes: true, page: DocsPage },
+  docs: { page: DocsPage },
   actions: { argTypesRegex: '^on.*' },
+  controls: {
+    sort: 'requiredFirst'
+    // exclude: /^on.*/
+  },
   options: {
     storySort: {
       method: 'alphabetical',
@@ -31,7 +35,7 @@ addParameters({
       ]
     }
   }
-});
+};
 
 const ThemeContainer = ({ theme, contentDensity, children, direction }) => {
   useEffect(() => {
@@ -74,10 +78,11 @@ addDecorator(withQuery);
 
 export const globalTypes = {
   theme: {
-    name: 'Theme',
+    title: 'Theme',
     description: 'Fiori Theme',
     defaultValue: Themes.sap_fiori_3,
     toolbar: {
+      title: 'Theme',
       items: Object.keys(Themes).map((themeKey) => ({
         value: themeKey,
         title: themeKey
@@ -85,10 +90,11 @@ export const globalTypes = {
     }
   },
   contentDensity: {
-    name: 'Content Density',
+    title: 'Content Density',
     description: 'Content Density',
     defaultValue: ContentDensity.Cozy,
     toolbar: {
+      title: 'Content Density',
       items: [
         {
           value: ContentDensity.Cozy,
@@ -102,10 +108,12 @@ export const globalTypes = {
     }
   },
   direction: {
-    name: 'Direction',
+    title: 'Direction',
     description: 'Text Direction',
     defaultValue: 'ltr',
     toolbar: {
+      // title: 'Direction',
+      icon: 'transfer',
       items: [
         {
           value: 'ltr',

@@ -10,7 +10,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 module.exports = {
-    stories: ['../docs/**/*.stories.mdx', '../packages/**/*.stories.@(tsx|jsx|mdx)'],
+    stories: ['../docs/**/*.stories.mdx', '../packages/main/**/Button.stories.@(tsx|jsx|mdx)'],
     addons: addons,
     webpack: async (config) => {
         config.resolve.alias = {
