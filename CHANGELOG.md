@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.16.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.16.4...v0.16.5) (2021-06-30)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** Only use `offsetTop` if parent is relative positioned ([#1768](https://github.com/SAP/ui5-webcomponents-react/issues/1768)) ([2042831](https://github.com/SAP/ui5-webcomponents-react/commit/2042831de9d89d258d1372970433ba5bb3646eda))
+
+
+### Features
+
+* **DynamicPage:** add `footer` prop ([#1737](https://github.com/SAP/ui5-webcomponents-react/issues/1737)) ([5e2ba47](https://github.com/SAP/ui5-webcomponents-react/commit/5e2ba473cca146e0cfc9f63a0f82bfdbc620db6d))
+
+
+
+
+
 ## [0.16.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.16.3...v0.16.4) (2021-06-14)
 
 
