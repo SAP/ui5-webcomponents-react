@@ -44,7 +44,7 @@ export const styles = {
   },
   contentContainer: {
     ...sapUiResponsiveContentPadding,
-    paddingTop: '1rem !important',
+    paddingTop: '1rem',
     boxSizing: 'border-box',
     width: '100%',
     height: 'auto',

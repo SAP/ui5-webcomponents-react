@@ -58,7 +58,7 @@ export const styles = {
     backgroundColor: ThemingParameters.sapObjectHeader_Background,
     display: 'grid',
     gridAutoColumns: 'auto 1fr',
-    '& [data-component-name="ObjectPage-HeaderContent"]': {
+    '& [data-component-name="ObjectPageHeaderContent"]': {
       gridColumn: 2,
       width: '100%',
       height: '100%'

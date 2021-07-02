@@ -215,6 +215,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
           topHeaderHeight
         })}
       <FlexBox
+        data-component-name="DynamicPageAnchorBar"
         className={anchorBarClasses.className}
         ref={anchorBarRef}
         style={{
@@ -246,6 +247,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
         />
       )}
       <div
+        data-component-name="DynamicPageContent"
         className={classes.contentContainer}
         style={{
           marginTop: isIE() ? `${headerContentHeight + topHeaderHeight + 34}px` : 0,
@@ -254,7 +256,11 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
       >
         {children}
       </div>
-      {footer && <footer className={classes.footer}>{footer}</footer>}
+      {footer && (
+        <footer className={classes.footer} data-component-name="DynamicPageFooter">
+          {footer}
+        </footer>
+      )}
     </div>
   );
 });

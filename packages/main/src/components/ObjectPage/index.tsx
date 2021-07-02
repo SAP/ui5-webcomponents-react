@@ -48,7 +48,7 @@ import { useObserveHeights } from '../../internal/useObserveHeights';
 addCustomCSS(
   'ui5-tabcontainer',
   `
-  :host([data-component-name="ObjectPage-TabContainer"]) .ui5-tc__header {
+  :host([data-component-name="ObjectPageTabContainer"]) .ui5-tc__header {
     box-shadow: inset 0 -0.0625rem ${ThemingParameters.sapPageHeader_BorderColor}, 0 0.125rem 0.25rem 0 rgb(0 0 0 / 8%);
   }
   `
@@ -474,10 +474,10 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         headerPinned: headerPinned || scrolledHeaderExpanded,
         ref: headerContentRef,
         children: (
-          <div className={classes.headerContainer}>
+          <div className={classes.headerContainer} data-component-name="ObjectPageHeaderContainer">
             {avatar}
             {header.props.children && (
-              <div data-component-name="ObjectPage-HeaderContent">
+              <div data-component-name="ObjectPageHeaderContent">
                 {showTitleInHeaderContent && renderTitleSection(true)}
                 {header.props.children}
               </div>
@@ -581,6 +581,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       onScroll={onObjectPageScroll}
     >
       <header
+        data-component-name="ObjectPageTopHeader"
         ref={topHeaderRef}
         role="banner"
         aria-roledescription="Object Page header"
@@ -598,6 +599,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       {renderHeaderContentSection()}
       {header && title && (
         <div
+          data-component-name="ObjectPageAnchorBar"
           ref={anchorBarRef}
           className={classes.anchorBar}
           style={{
@@ -619,6 +621,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         </div>
       )}
       <div
+        data-component-name="ObjectPageTabContainer"
         style={{
           position: 'sticky',
           top:
@@ -632,7 +635,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
           fixed
           onTabSelect={onTabItemSelect}
           showOverflow
-          data-component-name="ObjectPage-TabContainer"
+          data-component-name="ObjectPageTabContainer"
         >
           {safeGetChildrenArray(children).map((section: ReactElement, index) => {
             return (
@@ -662,8 +665,12 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         )}
       </div>
       {mode === ObjectPageMode.IconTabBar ? getSectionById(children, internalSelectedSectionId) : children}
-      {footer && <div style={{ height: '1rem' }} />}
-      {footer && <footer className={classes.footer}>{footer}</footer>}
+      {footer && <div style={{ height: '1rem' }} data-component-name="ObjectPageFooterSpacer" />}
+      {footer && (
+        <footer className={classes.footer} data-component-name="ObjectPageFooter">
+          {footer}
+        </footer>
+      )}
     </div>
   );
 });
