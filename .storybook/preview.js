@@ -1,5 +1,5 @@
 import { makeDecorator } from '@storybook/addons';
-import { addDecorator, addParameters } from '@storybook/react';
+import { addDecorator } from '@storybook/react';
 import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme';
 import '@ui5/webcomponents/dist/Assets';
 import '@ui5/webcomponents-fiori/dist/Assets';
@@ -12,6 +12,10 @@ import '@ui5/webcomponents/dist/features/InputElementsFormSupport';
 import React, { useEffect } from 'react';
 import { DocsPage } from '../shared/stories/DocsPage';
 import applyDirection from '@ui5/webcomponents-base/dist/locale/applyDirection';
+
+const argTypesCategoryCommonProps = {
+  table: { category: 'Common props' }
+};
 
 export const parameters = {
   viewMode: 'docs',
@@ -33,6 +37,17 @@ export const parameters = {
         'Efficient Bundling',
         'Knowledge Base'
       ]
+    }
+  },
+  argTypes: {
+    style: argTypesCategoryCommonProps,
+    className: argTypesCategoryCommonProps,
+    tooltip: argTypesCategoryCommonProps,
+    slot: {
+      table: { disable: true }
+    },
+    ref: {
+      table: { disable: true }
     }
   }
 };
