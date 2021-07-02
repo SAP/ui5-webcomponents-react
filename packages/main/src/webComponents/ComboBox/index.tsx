@@ -15,14 +15,6 @@ export interface ComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
    */
   filter?: string;
   /**
-   * Defines the "live" value of the `ComboBox`.
-   *
-   * **Note:** The property is updated upon typing.
-   *
-   * **Note:** Initially the filter value is synced with value.
-   */
-  filterValue?: string;
-  /**
    * Indicates whether a loading indicator should be shown in the picker.
    */
   loading?: boolean;
@@ -107,7 +99,7 @@ export interface ComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
  */
 const ComboBox: FC<ComboBoxPropTypes> = withWebComponent<ComboBoxPropTypes>(
   'ui5-combobox',
-  ['filter', 'filterValue', 'placeholder', 'value', 'valueState'],
+  ['filter', 'placeholder', 'value', 'valueState'],
   ['disabled', 'loading', 'readonly', 'required'],
   ['icon', 'valueStateMessage'],
   ['change', 'input']

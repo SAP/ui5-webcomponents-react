@@ -37,6 +37,7 @@ import { ColorPalette } from './lib/ColorPalette';
 import { ColorPaletteItem } from './lib/ColorPaletteItem';
 import { ColorPicker } from './lib/ColorPicker';
 import { ComboBox } from './lib/ComboBox';
+import { ComboBoxGroupItem } from './lib/ComboBoxGroupItem';
 import { ComboBoxItem } from './lib/ComboBoxItem';
 import { ContentDensity } from './lib/ContentDensity';
 import { CustomListItem } from './lib/CustomListItem';
@@ -210,6 +211,7 @@ export {
   ColorPaletteItem,
   ColorPicker,
   ComboBox,
+  ComboBoxGroupItem,
   ComboBoxItem,
   ContentDensity,
   CustomListItem,
