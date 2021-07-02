@@ -4,7 +4,9 @@ import { TableColumn } from '@ui5/webcomponents-react/dist/TableColumn';
 import { TableRow } from '@ui5/webcomponents-react/dist/TableRow';
 import { Label } from '@ui5/webcomponents-react/dist/Label';
 import { TableCell } from '@ui5/webcomponents-react/dist/TableCell';
+import { TableGrowingMode } from '@ui5/webcomponents-react/dist/TableGrowingMode';
 import { DocsHeader } from '@shared/stories/DocsHeader';
+import { useState } from 'react';
 
 <Meta
   title="Data Display / Table"
@@ -206,3 +208,94 @@ The `TableColumn` component allows defining column specific properties that are 
 </Canvas>
 
 <ArgsTable story="with customizable TableColumn" />
+
+## Growing Table
+
+`Table` with `growing={TableGrowingMode.Scroll}`.
+
+<Canvas>
+  <Story name="growing Table">
+    {() => {
+      const createRows = (indexOffset) => {
+        return new Array(25).fill('').map((_, index) => (
+          <TableRow key={`${index + indexOffset}-row`}>
+            <TableCell>
+              <Label>{index + indexOffset}</Label>
+            </TableCell>
+            <TableCell>
+              <Label>Placeholder</Label>
+            </TableCell>
+          </TableRow>
+        ));
+      };
+      const [rows, setRows] = useState(createRows(1));
+      const onLoadMore = () => {
+        setRows((prev) => [...prev, ...createRows(prev.length + 1)]);
+      };
+      return (
+        <div style={{ height: '250px', overflow: 'auto' }}>
+          <Table
+            onLoadMore={onLoadMore}
+            growing={TableGrowingMode.Scroll}
+            columns={
+              <>
+                <TableColumn>
+                  <Label>Column 1</Label>
+                </TableColumn>
+                <TableColumn>
+                  <Label>Column 2</Label>
+                </TableColumn>
+              </>
+            }
+          >
+            {rows}
+          </Table>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Code
+
+```jsx
+const createRows = (indexOffset) => {
+  return new Array(25).fill('').map((_, index) => (
+    <TableRow key={`${index + indexOffset}-row`}>
+      <TableCell>
+        <Label>{index + indexOffset}</Label>
+      </TableCell>
+      <TableCell>
+        <Label>Placeholder</Label>
+      </TableCell>
+    </TableRow>
+  ));
+};
+
+const GrowingTable = () => {
+  const [rows, setRows] = useState(createRows(1));
+  const onLoadMore = () => {
+    setRows((prev) => [...prev, ...createRows(prev.length + 1)]);
+  };
+  return (
+    <div style={{ height: '250px', overflow: 'auto' }}>
+      <Table
+        onLoadMore={onLoadMore}
+        growing={TableGrowingMode.Scroll}
+        columns={
+          <>
+            <TableColumn>
+              <Label>Column 1</Label>
+            </TableColumn>
+            <TableColumn>
+              <Label>Column 2</Label>
+            </TableColumn>
+          </>
+        }
+      >
+        {rows}
+      </Table>
+    </div>
+  );
+};
+```
