@@ -4,15 +4,13 @@ import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
 import '@ui5/webcomponents-icons/dist/employee.js';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="Inputs / ToggleButton"
   component={ToggleButton}
   argTypes={{
     ...createSelectArgTypes({ design: ButtonDesign }),
-    children: { control: 'text' },
-    ...DocsCommonProps
+    children: { control: 'text' }
   }}
   args={{
     design: ButtonDesign.Default,

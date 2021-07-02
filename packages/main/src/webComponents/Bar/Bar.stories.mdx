@@ -9,7 +9,6 @@ import { Title } from '@ui5/webcomponents-react/dist/Title';
 import '@ui5/webcomponents-icons/dist/nav-back.js';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 import { GitHubLogo } from '../../../../../shared/stories/GitHub-Mark';
 
 <Meta
@@ -19,7 +18,6 @@ import { GitHubLogo } from '../../../../../shared/stories/GitHub-Mark';
     ...createSelectArgTypes({
       design: BarDesign
     }),
-    ...DocsCommonProps,
     startContent: { control: { disable: true } },
     middleContent: { control: { disable: true } },
     endContent: { control: { disable: true } }

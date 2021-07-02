@@ -19,7 +19,6 @@ import { ObjectStatus } from '@ui5/webcomponents-react/dist/ObjectStatus';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 import '@ui5/webcomponents-icons/dist/activate.js';
 import SampleImage from './DemoImage.png';
 import '@ui5/webcomponents-icons/dist/wrench.js';
@@ -34,8 +33,7 @@ import '@ui5/webcomponents-icons/dist/wrench.js';
     breadcrumbs: { control: { disable: true } },
     headerActions: { control: { disable: true } },
     children: { control: { disable: true } },
-    keyInfos: { control: { disable: true } },
-    ...DocsCommonProps
+    keyInfos: { control: { disable: true } }
   }}
   args={{
     mode: ObjectPageMode.Default,

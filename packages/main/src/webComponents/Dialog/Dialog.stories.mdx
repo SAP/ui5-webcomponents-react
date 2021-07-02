@@ -9,7 +9,6 @@ import { Title } from '@ui5/webcomponents-react/dist/Title';
 import { useRef } from 'react';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 import '@ui5/webcomponents-icons/dist/settings';
 
 <Meta
@@ -18,8 +17,7 @@ import '@ui5/webcomponents-icons/dist/settings';
   argTypes={{
     ...createSelectArgTypes({}),
     footer: { control: { disable: true } },
-    header: { control: { disable: true } },
-    ...DocsCommonProps
+    header: { control: { disable: true } }
   }}
   args={{
     children: 'Press "Escape" to close the Dialog.',

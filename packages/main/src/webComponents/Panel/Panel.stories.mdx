@@ -12,14 +12,12 @@ import { StandardListItem } from '@ui5/webcomponents-react/dist/StandardListItem
 import { List } from '@ui5/webcomponents-react/dist/List';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="Layouts & Floorplans / Panel"
   component={Panel}
   argTypes={{
     ...createSelectArgTypes({ accessibleRole: PanelAccessibleRoles, headerLevel: TitleLevel }),
-    ...DocsCommonProps,
     children: { control: { disable: true } },
     header: { control: { disable: true } }
   }}

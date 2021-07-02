@@ -5,14 +5,12 @@ import { AvatarGroupType } from '@ui5/webcomponents-react/dist/AvatarGroupType';
 import { Avatar } from '@ui5/webcomponents-react/dist/Avatar';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="Data Display / AvatarGroup"
   component={AvatarGroup}
   argTypes={{
     ...createSelectArgTypes({ avatarSize: AvatarSize, type: AvatarGroupType }),
-    ...DocsCommonProps,
     children: { control: { disable: true } },
     overflowButton: { control: { disable: true } }
   }}

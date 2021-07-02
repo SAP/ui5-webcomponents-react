@@ -3,7 +3,6 @@ import { Wizard } from '@ui5/webcomponents-react/dist/Wizard';
 import { WizardStep } from '@ui5/webcomponents-react/dist/WizardStep';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 import '@ui5/webcomponents-icons/dist/product';
 import '@ui5/webcomponents-icons/dist/hint';
 import '@ui5/webcomponents-icons/dist/action-settings';
@@ -18,7 +17,6 @@ import { useRef } from 'react';
   subcomponents={{ WizardStep }}
   argTypes={{
     ...createSelectArgTypes({}),
-    ...DocsCommonProps,
     children: { control: { disable: true } }
   }}
   args={{

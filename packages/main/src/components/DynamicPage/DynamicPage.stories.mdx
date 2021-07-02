@@ -19,7 +19,6 @@ import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
 import { Badge } from '@ui5/webcomponents-react/dist/Badge';
 import { ObjectStatus } from '@ui5/webcomponents-react/dist/ObjectStatus';
 import { ProductsTable } from '@shared/stories/ProductsTable';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { VariantManagement } from '@ui5/webcomponents-react/dist/VariantManagement';
 import { BarDesign } from '@ui5/webcomponents-react/dist/BarDesign';
@@ -33,7 +32,6 @@ import { useReducer, useState } from 'react';
   subcomponents={{ DynamicPageTitle, DynamicPageHeader }}
   argTypes={{
     ...createSelectArgTypes({ backgroundDesign: PageBackgroundDesign }),
-    ...DocsCommonProps,
     title: {
       type: null
     },

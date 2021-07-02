@@ -6,7 +6,6 @@ import '@ui5/webcomponents-icons/dist/employee.js';
 import { Token } from '@ui5/webcomponents-react/dist/Token';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="Inputs / MultiInput"
@@ -14,7 +13,6 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
   subcomponents={{ Token }}
   argTypes={{
     ...createSelectArgTypes({ type: InputType, valueState: ValueState }),
-    ...DocsCommonProps,
     tokens: { control: { disable: true } },
     children: { control: { disable: true } },
     icon: { control: { disable: true } },

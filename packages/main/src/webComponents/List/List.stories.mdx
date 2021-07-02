@@ -15,7 +15,6 @@ import { CustomListItem } from '@ui5/webcomponents-react/dist/CustomListItem';
 import { GroupHeaderListItem } from '@ui5/webcomponents-react/dist/GroupHeaderListItem';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 import '@ui5/webcomponents-icons/dist/employee.js';
 
 <Meta
@@ -24,7 +23,6 @@ import '@ui5/webcomponents-icons/dist/employee.js';
   subcomponents={{ StandardListItem, CustomListItem, GroupHeaderListItem }}
   argTypes={{
     ...createSelectArgTypes({ mode: ListMode, separators: ListSeparators, growing: ListGrowingMode }),
-    ...DocsCommonProps,
     children: { control: { disable: true } },
     header: { control: { disable: true } }
   }}

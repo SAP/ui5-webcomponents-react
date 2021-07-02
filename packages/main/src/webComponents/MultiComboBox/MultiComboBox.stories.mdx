@@ -5,7 +5,6 @@ import '@ui5/webcomponents-icons/dist/employee.js';
 import { MultiComboBoxItem } from '@ui5/webcomponents-react/dist/MultiComboBoxItem';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="Inputs / MultiComboBox"
@@ -13,7 +12,6 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
   subcomponents={{ MultiComboBoxItem }}
   argTypes={{
     ...createSelectArgTypes({ valueState: ValueState }),
-    ...DocsCommonProps,
     children: { control: { disable: true } },
     icon: { control: { disable: true } },
     valueStateMessage: { control: { disable: true } }

@@ -3,15 +3,10 @@ import { ProgressIndicator } from '@ui5/webcomponents-react/dist/ProgressIndicat
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="Data Display / ProgressIndicator"
   component={ProgressIndicator}
-  argTypes={{
-    ...createSelectArgTypes({ valueState: ValueState }),
-    ...DocsCommonProps
-  }}
   args={{
     valueState: ValueState.None,
     value: 50,

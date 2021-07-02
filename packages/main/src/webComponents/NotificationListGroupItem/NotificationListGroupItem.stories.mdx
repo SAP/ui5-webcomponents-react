@@ -4,7 +4,6 @@ import { Priority } from '@ui5/webcomponents-react/dist/Priority';
 import { NotificationAction } from '@ui5/webcomponents-react/dist/NotificationAction';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 import { Fragment } from 'react';
 import { NotificationListItem } from '@ui5/webcomponents-react/dist/NotificationListItem';
 import { Avatar } from '@ui5/webcomponents-react/dist/Avatar';
@@ -16,7 +15,6 @@ import { AvatarSize } from '@ui5/webcomponents-react/dist/AvatarSize';
   subcomponents={{ NotificationAction }}
   argTypes={{
     ...createSelectArgTypes({ priority: Priority }),
-    ...DocsCommonProps,
     children: { control: { disable: true } },
     actions: { control: { disable: true } }
   }}

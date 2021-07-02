@@ -4,15 +4,13 @@ import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { CSSProperties, Ref } from 'react';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="Inputs / TextArea"
   component={TextArea}
   argTypes={{
     ...createSelectArgTypes({ valueState: ValueState }),
-    valueStateMessage: { control: { disable: true } },
-    ...DocsCommonProps
+    valueStateMessage: { control: { disable: true } }
   }}
   args={{
     valueState: ValueState.None,

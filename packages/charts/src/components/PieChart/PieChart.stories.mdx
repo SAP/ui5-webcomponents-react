@@ -2,7 +2,6 @@ import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import { PieChart } from '@ui5/webcomponents-react-charts/dist/PieChart';
 import { simpleDataSet, simpleDataSetWithSmallValues } from '../../resources/DemoProps';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="Charts /  PieChart"
@@ -18,7 +17,6 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
     style: { width: '50%' }
   }}
   argTypes={{
-    ...DocsCommonProps,
     dataset: {
       control: { disable: true }
     }

@@ -8,7 +8,6 @@ import { Avatar } from '@ui5/webcomponents-react/dist/Avatar';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 import '@ui5/webcomponents-icons/dist/upload.js';
 
 <Meta
@@ -16,7 +15,6 @@ import '@ui5/webcomponents-icons/dist/upload.js';
   component={FileUploader}
   argTypes={{
     ...createSelectArgTypes({ valueState: ValueState }),
-    ...DocsCommonProps,
     children: { control: { disable: true } },
     valueStateMessage: { control: { disable: true } }
   }}

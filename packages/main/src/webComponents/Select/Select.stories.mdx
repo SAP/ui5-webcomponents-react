@@ -4,7 +4,6 @@ import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { Option } from '@ui5/webcomponents-react/dist/Option';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="Inputs / Select"
@@ -12,7 +11,6 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
   subcomponents={{ Option }}
   argTypes={{
     ...createSelectArgTypes({ valueState: ValueState }),
-    ...DocsCommonProps,
     children: { control: { disable: true } },
     valueStateMessage: { control: { disable: true } }
   }}

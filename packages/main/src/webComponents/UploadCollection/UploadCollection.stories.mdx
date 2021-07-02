@@ -12,7 +12,6 @@ import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { Text } from '@ui5/webcomponents-react/dist/Text';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 import '@ui5/webcomponents-icons/dist/document.js';
 
 <Meta
@@ -21,7 +20,6 @@ import '@ui5/webcomponents-icons/dist/document.js';
   subcomponents={{ UploadCollectionItem }}
   argTypes={{
     ...createSelectArgTypes({ mode: ListMode }),
-    ...DocsCommonProps,
     children: { control: { disable: true } },
     header: { control: { disable: true } }
   }}

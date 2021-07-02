@@ -7,7 +7,6 @@ import { AvatarShape } from '@ui5/webcomponents-react/dist/AvatarShape';
 import { AvatarSize } from '@ui5/webcomponents-react/dist/AvatarSize';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="Data Display / Avatar"
@@ -18,8 +17,7 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
       imageFitType: AvatarFitType,
       shape: AvatarShape,
       size: AvatarSize
-    }),
-    ...DocsCommonProps
+    })
   }}
   args={{
     backgroundColor: AvatarBackgroundColor.Accent6,

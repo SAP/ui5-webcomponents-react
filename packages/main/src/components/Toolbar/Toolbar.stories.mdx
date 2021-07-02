@@ -14,15 +14,13 @@ import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import '@ui5/webcomponents-icons/dist/settings.js';
 import '@ui5/webcomponents-icons/dist/download.js';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="Layouts & Floorplans / Toolbar"
   component={Toolbar}
   argTypes={{
     ...createSelectArgTypes({ toolbarStyle: ToolbarStyle, design: ToolbarDesign }),
-    children: { control: { disable: true } },
-    ...DocsCommonProps
+    children: { control: { disable: true } }
   }}
   args={{
     design: ToolbarDesign.Auto,
@@ -104,7 +102,6 @@ If the horizontally available space isn't enough to fit all items in it, an over
       children: { table: { disable: true } },
       toolbarStyle: { table: { disable: true } },
       design: { table: { disable: true } },
-      ...DocsCommonProps,
       active: { table: { disable: true } },
       onClick: { table: { disable: true } }
     }}

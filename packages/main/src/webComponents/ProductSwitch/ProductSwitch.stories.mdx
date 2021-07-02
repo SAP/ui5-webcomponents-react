@@ -3,7 +3,6 @@ import { ProductSwitch } from '@ui5/webcomponents-react/dist/ProductSwitch';
 import { ProductSwitchItem } from '@ui5/webcomponents-react/dist/ProductSwitchItem';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 import '@ui5/webcomponents-icons/dist/business-objects-experience';
 import '@ui5/webcomponents-icons/dist/contacts';
 import '@ui5/webcomponents-icons/dist/flight';
@@ -16,7 +15,6 @@ import '@ui5/webcomponents-icons/dist/wrench';
   subcomponents={{ ProductSwitchItem }}
   argTypes={{
     ...createSelectArgTypes({}),
-    ...DocsCommonProps,
     children: { control: { disable: true } },
     heading: { description: `Defines the title of the <code>ProductSwitchItem</code>.` },
     icon: {

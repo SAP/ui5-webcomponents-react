@@ -3,14 +3,12 @@ import { StepInput } from '@ui5/webcomponents-react/dist/StepInput';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="Inputs / StepInput"
   component={StepInput}
   argTypes={{
     ...createSelectArgTypes({ valueState: ValueState }),
-    ...DocsCommonProps,
     valueStateMessage: { control: { disable: true } }
   }}
   args={{

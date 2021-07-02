@@ -11,7 +11,6 @@ import { FlexBoxWrap } from '@ui5/webcomponents-react/dist/FlexBoxWrap';
 import '@ui5/webcomponents-icons/dist/employee.js';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 import '@ui5/webcomponents-icons/dist/employee.js';
 
 <Meta
@@ -23,8 +22,7 @@ import '@ui5/webcomponents-icons/dist/employee.js';
       alignItems: FlexBoxAlignItems,
       direction: FlexBoxDirection,
       wrap: FlexBoxWrap
-    }),
-    ...DocsCommonProps
+    })
   }}
   args={{
     justifyContent: FlexBoxJustifyContent.Start,

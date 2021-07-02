@@ -5,7 +5,6 @@ import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent } from '../..';
 
 <Meta
@@ -18,8 +17,7 @@ import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent } from '../.
         None: 'None',
         Warning: 'Warning'
       }
-    }),
-    ...DocsCommonProps
+    })
   }}
   args={{
     valueState: ValueState.None,

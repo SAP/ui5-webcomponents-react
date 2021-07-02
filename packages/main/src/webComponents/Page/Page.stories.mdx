@@ -7,7 +7,6 @@ import { Bar } from '@ui5/webcomponents-react/dist/Bar';
 import { PageBackgroundDesign } from '@ui5/webcomponents-react/dist/PageBackgroundDesign';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 import { ButtonDesign } from '../../dist/ButtonDesign';
 
 <Meta
@@ -15,7 +14,6 @@ import { ButtonDesign } from '../../dist/ButtonDesign';
   component={Page}
   argTypes={{
     ...createSelectArgTypes({ backgroundDesign: PageBackgroundDesign }),
-    ...DocsCommonProps,
     children: { control: { disable: true } },
     footer: { control: { disable: true } },
     header: { control: { disable: true } }

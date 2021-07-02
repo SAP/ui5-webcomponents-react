@@ -10,7 +10,6 @@ import { Option } from '@ui5/webcomponents-react/dist/Option';
 import { Select } from '@ui5/webcomponents-react/dist/Select';
 import { Label } from '@ui5/webcomponents-react/dist/Label';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="Layouts & Floorplans / Form"
@@ -25,8 +24,7 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
     columnsS: { control: { type: 'number', min: 1, max: 12 } },
     columnsM: { control: { type: 'number', min: 1, max: 12 } },
     columnsL: { control: { type: 'number', min: 1, max: 12 } },
-    columnsXL: { control: { type: 'number', min: 1, max: 12 } },
-    ...DocsCommonProps
+    columnsXL: { control: { type: 'number', min: 1, max: 12 } }
   }}
   args={{
     title: 'Test Form',

@@ -4,14 +4,12 @@ import { BreadcrumbsSeparatorStyle } from '@ui5/webcomponents-react/dist/Breadcr
 import { Link } from '@ui5/webcomponents-react/dist/Link';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="Layouts & Floorplans / Breadcrumbs"
   component={Breadcrumbs}
   argTypes={{
     ...createSelectArgTypes({ separatorStyle: BreadcrumbsSeparatorStyle }),
-    ...DocsCommonProps,
     children: { control: { disable: true } }
   }}
   args={{

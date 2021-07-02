@@ -6,7 +6,6 @@ import { Icon } from '@ui5/webcomponents-react/dist/Icon';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import '@ui5/webcomponents-icons/dist/person-placeholder.js';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="Data Display / Card"
@@ -15,8 +14,7 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
     ...createSelectArgTypes({}),
     action: { control: { disable: true } },
     avatar: { control: { disable: true } },
-    children: { control: { disable: true } },
-    ...DocsCommonProps
+    children: { control: { disable: true } }
   }}
   args={{
     style: { width: '300px' },

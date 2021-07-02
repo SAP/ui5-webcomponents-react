@@ -14,7 +14,6 @@ import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { BarChart } from '@ui5/webcomponents-react-charts/dist/BarChart';
 import { MicroBarChart } from '@ui5/webcomponents-react-charts/dist/MicroBarChart';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 import '@ui5/webcomponents-icons/dist/settings.js';
 
 <Meta
@@ -27,8 +26,7 @@ import '@ui5/webcomponents-icons/dist/settings.js';
       verticalAlign: PopoverVerticalAlign
     }),
     footer: { control: { disable: true } },
-    header: { control: { disable: true } },
-    ...DocsCommonProps
+    header: { control: { disable: true } }
   }}
   args={{
     children: 'Press "Escape" or click outside to close the Popover.',

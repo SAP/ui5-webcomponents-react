@@ -1,6 +1,5 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 import { ScatterChart } from '@ui5/webcomponents-react-charts/dist/ScatterChart';
 import { scatterColorDataSet, scatterComplexDataSet } from '../../resources/DemoProps';
 
@@ -8,7 +7,6 @@ import { scatterColorDataSet, scatterComplexDataSet } from '../../resources/Demo
   title="Charts /  ScatterChart"
   component={ScatterChart}
   argTypes={{
-    ...DocsCommonProps,
     children: {
       control: { disable: true }
     }

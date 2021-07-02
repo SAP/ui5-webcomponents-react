@@ -10,7 +10,6 @@ import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJust
 import { ComboBoxItem } from '@ui5/webcomponents-react/dist/ComboBoxItem';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="Inputs / ComboBox"
@@ -18,7 +17,6 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
   subcomponents={{ ComboBoxItem }}
   argTypes={{
     ...createSelectArgTypes({ valueState: ValueState }),
-    ...DocsCommonProps,
     children: { control: { disable: true } },
     icon: { control: { disable: true } },
     valueStateMessage: { control: { disable: true } }

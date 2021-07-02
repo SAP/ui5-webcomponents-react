@@ -7,7 +7,6 @@ import { SemanticColor } from '@ui5/webcomponents-react/dist/SemanticColor';
 import { TabSeparator } from '@ui5/webcomponents-react/dist/TabSeparator';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 import '@ui5/webcomponents-icons/dist/menu.js';
 import '@ui5/webcomponents-icons/dist/activities.js';
 import '@ui5/webcomponents-icons/dist/add.js';
@@ -21,7 +20,6 @@ import '@ui5/webcomponents-icons/dist/sys-monitor.js';
   subcomponents={{ Tab, TabSeparator }}
   argTypes={{
     ...createSelectArgTypes({ tabLayout: TabLayout, tabsPlacement: TabContainerTabsPlacement }),
-    ...DocsCommonProps,
     children: { control: { disable: true } },
     overflowButton: { control: { disable: true } }
   }}

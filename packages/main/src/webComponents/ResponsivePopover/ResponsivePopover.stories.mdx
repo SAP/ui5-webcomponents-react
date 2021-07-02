@@ -13,7 +13,6 @@ import { CSSProperties, useRef } from 'react';
 import '@ui5/webcomponents-icons/dist/settings.js';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="Modals & Popovers / ResponsivePopover"
@@ -24,10 +23,8 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
       placementType: PlacementType,
       verticalAlign: PopoverVerticalAlign
     }),
-    ...DocsCommonProps,
     footer: { control: { disable: true } },
-    header: { control: { disable: true } },
-    ...DocsCommonProps
+    header: { control: { disable: true } }
   }}
   args={{
     children:
