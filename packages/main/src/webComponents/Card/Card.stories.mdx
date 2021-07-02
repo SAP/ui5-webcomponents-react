@@ -3,7 +3,6 @@ import { Card } from '@ui5/webcomponents-react/dist/Card';
 import { List } from '@ui5/webcomponents-react/dist/List';
 import { StandardListItem } from '@ui5/webcomponents-react/dist/StandardListItem';
 import { Icon } from '@ui5/webcomponents-react/dist/Icon';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import '@ui5/webcomponents-icons/dist/person-placeholder.js';
 
@@ -11,7 +10,6 @@ import '@ui5/webcomponents-icons/dist/person-placeholder.js';
   title="Data Display / Card"
   component={Card}
   argTypes={{
-    ...createSelectArgTypes({}),
     action: { control: { disable: true } },
     avatar: { control: { disable: true } },
     children: { control: { disable: true } }

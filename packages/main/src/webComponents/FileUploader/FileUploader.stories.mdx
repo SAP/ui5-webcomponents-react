@@ -6,7 +6,6 @@ import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignIte
 import { Badge } from '@ui5/webcomponents-react/dist/Badge';
 import { Avatar } from '@ui5/webcomponents-react/dist/Avatar';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import '@ui5/webcomponents-icons/dist/upload.js';
 
@@ -14,7 +13,6 @@ import '@ui5/webcomponents-icons/dist/upload.js';
   title="Inputs / FileUploader"
   component={FileUploader}
   argTypes={{
-    ...createSelectArgTypes({ valueState: ValueState }),
     children: { control: { disable: true } },
     valueStateMessage: { control: { disable: true } }
   }}

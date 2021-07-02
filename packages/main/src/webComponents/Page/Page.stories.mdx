@@ -5,7 +5,6 @@ import { Label } from '@ui5/webcomponents-react/dist/Label';
 import { BarDesign } from '@ui5/webcomponents-react/dist/BarDesign';
 import { Bar } from '@ui5/webcomponents-react/dist/Bar';
 import { PageBackgroundDesign } from '@ui5/webcomponents-react/dist/PageBackgroundDesign';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import { ButtonDesign } from '../../dist/ButtonDesign';
 
@@ -13,7 +12,6 @@ import { ButtonDesign } from '../../dist/ButtonDesign';
   title="Layouts & Floorplans / Page"
   component={Page}
   argTypes={{
-    ...createSelectArgTypes({ backgroundDesign: PageBackgroundDesign }),
     children: { control: { disable: true } },
     footer: { control: { disable: true } },
     header: { control: { disable: true } }

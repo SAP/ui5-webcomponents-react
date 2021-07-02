@@ -3,7 +3,6 @@ import { ShellBar } from '@ui5/webcomponents-react/dist/ShellBar';
 import { ShellBarItem } from '@ui5/webcomponents-react/dist/ShellBarItem';
 import { Avatar } from '@ui5/webcomponents-react/dist/Avatar';
 import { StandardListItem } from '@ui5/webcomponents-react/dist/StandardListItem';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import '@ui5/webcomponents-icons/dist/add.js';
 import image from '../../components/ObjectPage/DemoImage.png';
@@ -13,7 +12,6 @@ import image from '../../components/ObjectPage/DemoImage.png';
   component={ShellBar}
   subcomponents={{ ShellBarItem }}
   argTypes={{
-    ...createSelectArgTypes({}),
     children: { control: { disable: true } },
     logo: { control: { disable: true } },
     menuItems: { control: { disable: true } },

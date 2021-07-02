@@ -4,7 +4,6 @@ import { InputType } from '@ui5/webcomponents-react/dist/InputType';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import '@ui5/webcomponents-icons/dist/employee.js';
 import { Token } from '@ui5/webcomponents-react/dist/Token';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 
 <Meta
@@ -12,7 +11,6 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   component={MultiInput}
   subcomponents={{ Token }}
   argTypes={{
-    ...createSelectArgTypes({ type: InputType, valueState: ValueState }),
     tokens: { control: { disable: true } },
     children: { control: { disable: true } },
     icon: { control: { disable: true } },

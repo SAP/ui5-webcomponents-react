@@ -3,7 +3,6 @@ import { MultiComboBox } from '@ui5/webcomponents-react/dist/MultiComboBox';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import '@ui5/webcomponents-icons/dist/employee.js';
 import { MultiComboBoxItem } from '@ui5/webcomponents-react/dist/MultiComboBoxItem';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 
 <Meta
@@ -11,7 +10,6 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   component={MultiComboBox}
   subcomponents={{ MultiComboBoxItem }}
   argTypes={{
-    ...createSelectArgTypes({ valueState: ValueState }),
     children: { control: { disable: true } },
     icon: { control: { disable: true } },
     valueStateMessage: { control: { disable: true } }

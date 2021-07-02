@@ -4,7 +4,6 @@ import { TableColumn } from '@ui5/webcomponents-react/dist/TableColumn';
 import { TableRow } from '@ui5/webcomponents-react/dist/TableRow';
 import { Label } from '@ui5/webcomponents-react/dist/Label';
 import { TableCell } from '@ui5/webcomponents-react/dist/TableCell';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 
 <Meta
@@ -12,7 +11,6 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   component={Table}
   subcomponents={{ TableColumn, TableRow, TableCell }}
   argTypes={{
-    ...createSelectArgTypes({}),
     columns: { control: { disable: true } },
     children: { control: { disable: true } }
   }}

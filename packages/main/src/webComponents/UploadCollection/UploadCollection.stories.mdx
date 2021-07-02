@@ -10,7 +10,6 @@ import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignIte
 import { Title } from '@ui5/webcomponents-react/dist/Title';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { Text } from '@ui5/webcomponents-react/dist/Text';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import '@ui5/webcomponents-icons/dist/document.js';
 
@@ -19,7 +18,6 @@ import '@ui5/webcomponents-icons/dist/document.js';
   component={UploadCollection}
   subcomponents={{ UploadCollectionItem }}
   argTypes={{
-    ...createSelectArgTypes({ mode: ListMode }),
     children: { control: { disable: true } },
     header: { control: { disable: true } }
   }}
@@ -129,7 +127,6 @@ export const UploadCollectionComponent = () => {
       onTerminate: () => {}
     }}
     argTypes={{
-      ...createSelectArgTypes({ uploadState: UploadState }),
       mode: { table: { disable: true } },
       noDataDescription: { table: { disable: true } },
       noDataText: { table: { disable: true } },

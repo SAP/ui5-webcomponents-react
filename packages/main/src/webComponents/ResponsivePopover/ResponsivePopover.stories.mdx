@@ -11,18 +11,12 @@ import { PlacementType } from '@ui5/webcomponents-react/dist/PlacementType';
 import { PopoverVerticalAlign } from '@ui5/webcomponents-react/dist/PopoverVerticalAlign';
 import { CSSProperties, useRef } from 'react';
 import '@ui5/webcomponents-icons/dist/settings.js';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 
 <Meta
   title="Modals & Popovers / ResponsivePopover"
   component={ResponsivePopover}
   argTypes={{
-    ...createSelectArgTypes({
-      horizontalAlign: PopoverHorizontalAlign,
-      placementType: PlacementType,
-      verticalAlign: PopoverVerticalAlign
-    }),
     footer: { control: { disable: true } },
     header: { control: { disable: true } }
   }}

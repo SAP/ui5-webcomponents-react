@@ -7,14 +7,12 @@ import '@ui5/webcomponents-localization/dist/features/calendar/Islamic.js';
 import '@ui5/webcomponents-localization/dist/features/calendar/Japanese.js';
 import '@ui5/webcomponents-localization/dist/features/calendar/Persian.js';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 
 <Meta
   title="Inputs / DateRangePicker"
   component={DateRangePicker}
   argTypes={{
-    ...createSelectArgTypes({ primaryCalendarType: CalendarType, valueState: ValueState }),
     valueStateMessage: { control: { disable: true } }
   }}
   args={{

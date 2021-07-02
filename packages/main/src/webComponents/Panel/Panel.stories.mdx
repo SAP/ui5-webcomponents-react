@@ -10,14 +10,12 @@ import { ToolbarSpacer } from '@ui5/webcomponents-react/dist/ToolbarSpacer';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { StandardListItem } from '@ui5/webcomponents-react/dist/StandardListItem';
 import { List } from '@ui5/webcomponents-react/dist/List';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 
 <Meta
   title="Layouts & Floorplans / Panel"
   component={Panel}
   argTypes={{
-    ...createSelectArgTypes({ accessibleRole: PanelAccessibleRoles, headerLevel: TitleLevel }),
     children: { control: { disable: true } },
     header: { control: { disable: true } }
   }}

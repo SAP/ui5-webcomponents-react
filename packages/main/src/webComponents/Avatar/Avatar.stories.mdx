@@ -5,20 +5,11 @@ import '@ui5/webcomponents-icons/dist/employee.js';
 import { AvatarFitType } from '@ui5/webcomponents-react/dist/AvatarFitType';
 import { AvatarShape } from '@ui5/webcomponents-react/dist/AvatarShape';
 import { AvatarSize } from '@ui5/webcomponents-react/dist/AvatarSize';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 
 <Meta
   title="Data Display / Avatar"
   component={Avatar}
-  argTypes={{
-    ...createSelectArgTypes({
-      backgroundColor: AvatarBackgroundColor,
-      imageFitType: AvatarFitType,
-      shape: AvatarShape,
-      size: AvatarSize
-    })
-  }}
   args={{
     backgroundColor: AvatarBackgroundColor.Accent6,
     icon: 'employee',

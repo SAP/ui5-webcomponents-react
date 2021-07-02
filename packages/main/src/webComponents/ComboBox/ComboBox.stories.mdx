@@ -8,7 +8,6 @@ import { Label } from '@ui5/webcomponents-react/dist/Label';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
 import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';
 import { ComboBoxItem } from '@ui5/webcomponents-react/dist/ComboBoxItem';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 
 <Meta
@@ -16,7 +15,6 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   component={ComboBox}
   subcomponents={{ ComboBoxItem }}
   argTypes={{
-    ...createSelectArgTypes({ valueState: ValueState }),
     children: { control: { disable: true } },
     icon: { control: { disable: true } },
     valueStateMessage: { control: { disable: true } }

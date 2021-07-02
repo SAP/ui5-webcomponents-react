@@ -1,6 +1,5 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { AnalyticalTable } from '@ui5/webcomponents-react/dist/AnalyticalTable';
-import { createSelectArgTypes } from '../../../../../shared/stories/createSelectArgTypes';
 import { TableScaleWidthMode } from '@ui5/webcomponents-react/dist/TableScaleWidthMode';
 import { TableSelectionBehavior } from '@ui5/webcomponents-react/dist/TableSelectionBehavior';
 import { TableSelectionMode } from '@ui5/webcomponents-react/dist/TableSelectionMode';
@@ -126,13 +125,7 @@ import { useRowDisableSelection } from '@ui5/webcomponents-react/dist/Analytical
     reactTableOptions: { type: null },
     tableHooks: { type: null },
     NoDataComponent: { type: null },
-    LoadingComponent: { type: null },
-    ...createSelectArgTypes({
-      scaleWidthMode: TableScaleWidthMode,
-      selectionMode: TableSelectionMode,
-      selectionBehavior: TableSelectionBehavior,
-      visibleRowCountMode: TableVisibleRowCountMode
-    })
+    LoadingComponent: { type: null }
   }}
 />
 

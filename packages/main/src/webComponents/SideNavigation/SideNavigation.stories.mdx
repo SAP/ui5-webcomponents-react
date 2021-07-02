@@ -2,7 +2,6 @@ import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { SideNavigation } from '@ui5/webcomponents-react/dist/SideNavigation';
 import { SideNavigationItem } from '@ui5/webcomponents-react/dist/SideNavigationItem';
 import { SideNavigationSubItem } from '@ui5/webcomponents-react/dist/SideNavigationSubItem';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import '@ui5/webcomponents-icons/dist/home';
 import '@ui5/webcomponents-icons/dist/group';
@@ -17,7 +16,6 @@ import '@ui5/webcomponents-icons/dist/wrench';
   component={SideNavigation}
   subcomponents={{ SideNavigationItem, SideNavigationSubItem }}
   argTypes={{
-    ...createSelectArgTypes({}),
     children: { control: { disable: true } },
     fixedItems: { control: { disable: true } }
   }}

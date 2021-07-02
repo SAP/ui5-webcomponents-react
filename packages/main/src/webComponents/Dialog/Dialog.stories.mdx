@@ -7,7 +7,6 @@ import { List } from '@ui5/webcomponents-react/dist/List';
 import { StandardListItem } from '@ui5/webcomponents-react/dist/StandardListItem';
 import { Title } from '@ui5/webcomponents-react/dist/Title';
 import { useRef } from 'react';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import '@ui5/webcomponents-icons/dist/settings';
 
@@ -15,7 +14,6 @@ import '@ui5/webcomponents-icons/dist/settings';
   title="Modals & Popovers / Dialog"
   component={Dialog}
   argTypes={{
-    ...createSelectArgTypes({}),
     footer: { control: { disable: true } },
     header: { control: { disable: true } }
   }}

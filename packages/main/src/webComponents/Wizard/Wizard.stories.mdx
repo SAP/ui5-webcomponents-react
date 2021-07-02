@@ -1,7 +1,6 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { Wizard } from '@ui5/webcomponents-react/dist/Wizard';
 import { WizardStep } from '@ui5/webcomponents-react/dist/WizardStep';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import '@ui5/webcomponents-icons/dist/product';
 import '@ui5/webcomponents-icons/dist/hint';
@@ -16,7 +15,6 @@ import { useRef } from 'react';
   component={Wizard}
   subcomponents={{ WizardStep }}
   argTypes={{
-    ...createSelectArgTypes({}),
     children: { control: { disable: true } }
   }}
   args={{

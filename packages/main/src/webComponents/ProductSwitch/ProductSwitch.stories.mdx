@@ -1,7 +1,6 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { ProductSwitch } from '@ui5/webcomponents-react/dist/ProductSwitch';
 import { ProductSwitchItem } from '@ui5/webcomponents-react/dist/ProductSwitchItem';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import '@ui5/webcomponents-icons/dist/business-objects-experience';
 import '@ui5/webcomponents-icons/dist/contacts';
@@ -14,7 +13,6 @@ import '@ui5/webcomponents-icons/dist/wrench';
   component={ProductSwitch}
   subcomponents={{ ProductSwitchItem }}
   argTypes={{
-    ...createSelectArgTypes({}),
     children: { control: { disable: true } },
     heading: { description: `Defines the title of the <code>ProductSwitchItem</code>.` },
     icon: {

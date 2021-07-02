@@ -1,7 +1,6 @@
 import { PlacementType } from '@ui5/webcomponents-react/dist/PlacementType';
 import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
 import { VariantManagement } from '@ui5/webcomponents-react/dist/VariantManagement';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 
@@ -9,7 +8,6 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   title="Inputs / VariantManagement"
   component={VariantManagement}
   argTypes={{
-    ...createSelectArgTypes({ placement: PlacementType, level: TitleLevel }),
     ref: {
       type: null
     }

@@ -3,7 +3,6 @@ import { Tree } from '@ui5/webcomponents-react/dist/Tree';
 import { ListMode } from '@ui5/webcomponents-react/dist/ListMode';
 import { BusyIndicator } from '@ui5/webcomponents-react/dist/BusyIndicator';
 import { TreeItem } from '@ui5/webcomponents-react/dist/TreeItem';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import '@ui5/webcomponents-icons/dist/copy';
 import '@ui5/webcomponents-icons/dist/paste';
@@ -16,7 +15,6 @@ import { useState } from 'react';
   component={Tree}
   subcomponents={{ TreeItem }}
   argTypes={{
-    ...createSelectArgTypes({ mode: ListMode }),
     children: { control: { disable: true } },
     header: { control: { disable: true } }
   }}

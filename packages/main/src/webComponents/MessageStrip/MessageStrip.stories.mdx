@@ -3,14 +3,12 @@ import { MessageStrip } from '@ui5/webcomponents-react/dist/MessageStrip';
 import { MessageStripType } from '@ui5/webcomponents-react/dist/MessageStripType';
 import '@ui5/webcomponents-icons/dist/employee.js';
 import { Icon } from '@ui5/webcomponents-react/dist/Icon';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 
 <Meta
   title="Data Display / MessageStrip"
   component={MessageStrip}
   argTypes={{
-    ...createSelectArgTypes({ type: MessageStripType }),
     children: { control: 'text' },
     icon: { control: { disable: true } }
   }}

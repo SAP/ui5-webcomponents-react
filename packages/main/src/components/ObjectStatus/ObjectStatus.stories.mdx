@@ -1,6 +1,5 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { ObjectStatus } from '@ui5/webcomponents-react/dist/ObjectStatus';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { Icon } from '@ui5/webcomponents-react/dist/Icon';
 import { DocsHeader } from '@shared/stories/DocsHeader';
@@ -9,7 +8,6 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   title="Data Display / ObjectStatus"
   component={ObjectStatus}
   argTypes={{
-    ...createSelectArgTypes({ state: ValueState }),
     children: { control: 'text' }
   }}
   args={{

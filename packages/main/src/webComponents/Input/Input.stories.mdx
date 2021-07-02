@@ -7,7 +7,6 @@ import '@ui5/webcomponents-icons/dist/employee.js';
 import '@ui5/webcomponents-icons/dist/globe.js';
 import { Icon } from '@ui5/webcomponents-react/dist/Icon';
 import { SuggestionItem } from '@ui5/webcomponents-react/dist/SuggestionItem';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import '@ui5/webcomponents/dist/features/InputSuggestions.js';
 
@@ -16,7 +15,6 @@ import '@ui5/webcomponents/dist/features/InputSuggestions.js';
   component={Input}
   subcomponents={{ SuggestionItem }}
   argTypes={{
-    ...createSelectArgTypes({ type: InputType, valueState: ValueState }),
     children: { control: { disable: true } },
     icon: { control: { disable: true } },
     valueStateMessage: { control: { disable: true } }

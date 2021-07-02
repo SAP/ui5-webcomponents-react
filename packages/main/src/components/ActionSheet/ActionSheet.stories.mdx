@@ -1,5 +1,4 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { ActionSheet } from '@ui5/webcomponents-react/dist/ActionSheet';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { PlacementType } from '@ui5/webcomponents-react/dist/PlacementType';
@@ -12,11 +11,6 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   title="Modals & Popovers / ActionSheet"
   component={ActionSheet}
   argTypes={{
-    ...createSelectArgTypes({
-      placementType: PlacementType,
-      horizontalAlign: PopoverHorizontalAlign,
-      verticalAlign: PopoverVerticalAlign
-    }),
     children: {
       type: null
     },

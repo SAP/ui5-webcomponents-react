@@ -3,7 +3,6 @@ import { Calendar } from '@ui5/webcomponents-react/dist/Calendar';
 import { CalendarSelection } from '@ui5/webcomponents-react/dist/CalendarSelection';
 import { CalendarType } from '@ui5/webcomponents-react/dist/CalendarType';
 import { CalendarDate } from '@ui5/webcomponents-react/dist/CalendarDate';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import '@ui5/webcomponents-localization/dist/features/calendar/Gregorian.js';
 import '@ui5/webcomponents-localization/dist/features/calendar/Buddhist.js';
@@ -16,7 +15,6 @@ import '@ui5/webcomponents-localization/dist/features/calendar/Persian.js';
   component={Calendar}
   subcomponents={{ CalendarDate }}
   argTypes={{
-    ...createSelectArgTypes({ selectionMode: CalendarSelection, primaryCalendarType: CalendarType }),
     children: { control: { disable: true } }
   }}
   args={{

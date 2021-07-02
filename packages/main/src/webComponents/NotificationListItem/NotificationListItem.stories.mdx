@@ -8,7 +8,6 @@ import { Label } from '@ui5/webcomponents-react/dist/Label';
 import { AvatarSize } from '@ui5/webcomponents-react/dist/AvatarSize';
 import { Priority } from '@ui5/webcomponents-react/dist/Priority';
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import '@ui5/webcomponents-icons/dist/employee.js';
 
@@ -17,7 +16,6 @@ import '@ui5/webcomponents-icons/dist/employee.js';
   component={NotificationListItem}
   subcomponents={{ NotificationAction }}
   argTypes={{
-    ...createSelectArgTypes({ priority: Priority }),
     avatar: { control: { disable: true } },
     children: { control: 'text' },
     footnotes: { control: { disable: true } },

@@ -1,21 +1,11 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { CheckBox } from '@ui5/webcomponents-react/dist/CheckBox';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 
 <Meta
   title="Inputs / CheckBox"
   component={CheckBox}
-  argTypes={{
-    ...createSelectArgTypes({
-      valueState: {
-        Error: 'Error',
-        None: 'None',
-        Warning: 'Warning'
-      }
-    })
-  }}
   args={{
     valueState: ValueState.None,
     text: 'CheckBox',

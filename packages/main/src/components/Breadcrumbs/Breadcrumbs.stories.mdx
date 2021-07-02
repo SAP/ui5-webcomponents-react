@@ -2,14 +2,12 @@ import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { Breadcrumbs } from '@ui5/webcomponents-react/dist/Breadcrumbs';
 import { BreadcrumbsSeparatorStyle } from '@ui5/webcomponents-react/dist/BreadcrumbsSeparatorStyle';
 import { Link } from '@ui5/webcomponents-react/dist/Link';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 
 <Meta
   title="Layouts & Floorplans / Breadcrumbs"
   component={Breadcrumbs}
   argTypes={{
-    ...createSelectArgTypes({ separatorStyle: BreadcrumbsSeparatorStyle }),
     children: { control: { disable: true } }
   }}
   args={{

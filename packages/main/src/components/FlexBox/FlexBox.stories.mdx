@@ -9,21 +9,12 @@ import { Title } from '@ui5/webcomponents-react/dist/Title';
 import { Input } from '@ui5/webcomponents-react/dist/Input';
 import { FlexBoxWrap } from '@ui5/webcomponents-react/dist/FlexBoxWrap';
 import '@ui5/webcomponents-icons/dist/employee.js';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import '@ui5/webcomponents-icons/dist/employee.js';
 
 <Meta
   title="Layouts & Floorplans / FlexBox"
   component={FlexBox}
-  argTypes={{
-    ...createSelectArgTypes({
-      justifyContent: FlexBoxJustifyContent,
-      alignItems: FlexBoxAlignItems,
-      direction: FlexBoxDirection,
-      wrap: FlexBoxWrap
-    })
-  }}
   args={{
     justifyContent: FlexBoxJustifyContent.Start,
     alignItems: FlexBoxAlignItems.Stretch,

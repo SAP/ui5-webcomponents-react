@@ -2,7 +2,6 @@ import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { Toast } from '@ui5/webcomponents-react/dist/Toast';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { ToastPlacement } from '@ui5/webcomponents-react/dist/ToastPlacement';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import { useRef } from 'react';
 
@@ -10,7 +9,6 @@ import { useRef } from 'react';
   title="Modals & Popovers / Toast"
   component={Toast}
   argTypes={{
-    ...createSelectArgTypes({ placement: ToastPlacement }),
     children: { control: 'text' }
   }}
   args={{

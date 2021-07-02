@@ -3,7 +3,6 @@ import { {{name}} } from '@ui5/webcomponents-react/dist/{{name}}';
 {{#each imports}}
 {{{this}}}
 {{/each}}
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 
 <Meta
@@ -13,7 +12,6 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   subcomponents={{storySubComponents additionalComponentDocs}}
   {{/if}}
   argTypes=\{{
-    ...createSelectArgTypes({ {{{join selectArgTypes}}} }),
     {{#each customArgTypes}}
     {{{this}}}{{#unless @last}},{{/unless}}
     {{/each}}

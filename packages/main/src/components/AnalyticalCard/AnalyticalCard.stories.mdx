@@ -1,5 +1,4 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import '@ui5/webcomponents-icons/dist/person-placeholder.js';
 import { AnalyticalCard } from '@ui5/webcomponents-react/dist/AnalyticalCard';
@@ -126,12 +125,6 @@ import { LineChart } from '@ui5/webcomponents-react-charts/dist/LineChart';
       title: { description: 'Defines the title of the `AnalyticalCardHeader`.' },
       subTitle: { description: 'Defines the subtitle of the `AnalyticalCardHeader`.' },
       value: { description: 'Defines the value of the `AnalyticalCardHeader`.' },
-      ...createSelectArgTypes({
-        arrowIndicator: DeviationIndicator,
-        indicatorState: ValueState,
-        valueState: ValueState,
-        counterState: ValueState
-      }),
       unit: { description: 'Defines the unit displayed next to the value of the `AnalyticalCardHeader`.' },
       target: { description: 'Defines the target value.' },
       deviation: { description: 'Defines the deviation value.' },
