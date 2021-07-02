@@ -5,8 +5,8 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingPar
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { debounce, enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
-import { AvatarSize } from '@ui5/webcomponents-react/dist/AvatarSize';
 import { AvatarPropTypes } from '@ui5/webcomponents-react/dist/Avatar';
+import { AvatarSize } from '@ui5/webcomponents-react/dist/AvatarSize';
 import { GlobalStyleClasses } from '@ui5/webcomponents-react/dist/GlobalStyleClasses';
 import { List } from '@ui5/webcomponents-react/dist/List';
 import { ObjectPageMode } from '@ui5/webcomponents-react/dist/ObjectPageMode';
@@ -31,6 +31,7 @@ import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
 import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
 import { stopPropagation } from '../../internal/stopPropagation';
+import { useObserveHeights } from '../../internal/useObserveHeights';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
 import { ObjectPageSectionPropTypes } from '../ObjectPageSection';
 import { ObjectPageSubSectionPropTypes } from '../ObjectPageSubSection';
@@ -43,7 +44,6 @@ import {
   getSectionById,
   safeGetChildrenArray
 } from './ObjectPageUtils';
-import { useObserveHeights } from '../../internal/useObserveHeights';
 
 addCustomCSS(
   'ui5-tabcontainer',
@@ -350,7 +350,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       let heightDiff = 0;
       const maxHeight = Math.min(objectPageRef.current?.clientHeight, window.innerHeight);
       const availableScrollHeight = maxHeight - totalHeaderHeight;
-      const lastSectionDomRef = getLastObjectPageSection(objectPageRef);
+      const lastSectionDomRef = getLastObjectPageSection(objectPageRef, !!footer && mode === ObjectPageMode.IconTabBar);
 
       if (lastSectionDomRef) {
         const subSections = lastSectionDomRef.querySelectorAll('[id^="ObjectPageSubSection"]');
@@ -369,7 +369,8 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
           heightDiff = 0;
         }
       }
-      objectPageRef.current?.style.setProperty(ObjectPageCssVariables.lastSectionMargin, `${heightDiff}px`);
+      const lastSectionMargin = footer ? `calc(${heightDiff}px + 1rem)` : `${heightDiff}px`;
+      objectPageRef.current?.style.setProperty(ObjectPageCssVariables.lastSectionMargin, lastSectionMargin);
     });
 
     fillerDivObserver.observe(objectPageRef.current);
@@ -377,7 +378,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     return () => {
       fillerDivObserver.disconnect();
     };
-  }, [totalHeaderHeight, objectPageRef, children]);
+  }, [totalHeaderHeight, objectPageRef, children, mode, footer]);
 
   const fireOnSelectedChangedEvent = debounce((e) => {
     if (typeof onSelectedSectionChanged === 'function') {
