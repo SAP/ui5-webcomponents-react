@@ -43,7 +43,8 @@ const styles = {
     fontWeight: 'normal',
     position: 'relative',
     display: 'inline-block',
-    verticalAlign: 'top'
+    verticalAlign: 'top',
+    width: 'fit-content'
   },
 
   icon: {
@@ -158,7 +159,6 @@ const styles = {
   inverted: {
     height: 'auto',
     minHeight: '1rem',
-    width: 'auto',
     minWidth: '1.25rem',
     padding: '0.0625rem 0.25rem',
     borderRadius: ThemingParameters.sapElement_BorderCornerRadius,
