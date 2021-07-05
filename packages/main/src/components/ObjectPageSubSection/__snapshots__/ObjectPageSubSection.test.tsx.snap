@@ -7,6 +7,7 @@ exports[`ObjectPageSubSection Render without Crashing 1`] = `
     data-component-name="ObjectPageSubSection"
     id="ObjectPageSubSection-test"
     role="region"
+    tabindex="-1"
   >
     <div
       aria-level="4"

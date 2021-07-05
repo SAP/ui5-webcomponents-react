@@ -167,7 +167,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   const objectPageRef: RefObject<HTMLDivElement> = useConsolidatedRef(ref);
   const topHeaderRef: RefObject<HTMLDivElement> = useRef();
   //@ts-ignore
-  const headerContentRef: RefObject<HTMLDivElement> = useConsolidatedRef(header.ref);
+  const headerContentRef: RefObject<HTMLDivElement> = useConsolidatedRef(header?.ref);
   const anchorBarRef: RefObject<HTMLDivElement> = useRef();
 
   const isRTL = useIsRTL(objectPageRef);
@@ -479,7 +479,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
             {avatar}
             {header.props.children && (
               <div data-component-name="ObjectPageHeaderContent">
-                {showTitleInHeaderContent && renderTitleSection(true)}
+                {title && showTitleInHeaderContent && renderTitleSection(true)}
                 {header.props.children}
               </div>
             )}
@@ -595,7 +595,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         {title && image && headerContentHeight === 0 && (
           <CollapsedAvatar image={image} imageShapeCircle={imageShapeCircle} style={{ [paddingLeftRtl]: '1rem' }} />
         )}
-        {renderTitleSection()}
+        {title && renderTitleSection()}
       </header>
       {renderHeaderContentSection()}
       {header && title && (

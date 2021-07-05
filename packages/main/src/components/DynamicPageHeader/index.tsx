@@ -56,11 +56,11 @@ const DynamicPageHeader: FC<DynamicPageHeaderProps> = forwardRef((props: Interna
   return (
     <div
       title={tooltip}
-      style={headerStyles}
       ref={ref}
+      {...passThroughProps}
       className={classNames.className}
       data-component-name="DynamicPageHeader"
-      {...passThroughProps}
+      style={headerStyles}
     >
       {children}
     </div>
