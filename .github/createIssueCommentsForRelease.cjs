@@ -1,8 +1,8 @@
-import issueCommenter from '@semantic-release/github/lib/success.js';
+const issueCommenter = require('@semantic-release/github/lib/success.js');
 
 const commitShaRegExp = /commit\/(?<sha>\w{40})/gm;
 
-export default async function run({ github, context, version }) {
+module.exports = async function run({ github, context, version }) {
   const { data: release } = await github.repos.getReleaseByTag({
     owner: context.repo.owner,
     repo: context.repo.repo,
