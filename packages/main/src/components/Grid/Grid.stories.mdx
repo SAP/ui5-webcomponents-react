@@ -1,19 +1,18 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { Grid } from '@ui5/webcomponents-react/dist/Grid';
 import '@ui5/webcomponents-icons/dist/employee.js';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="Layouts & Floorplans / Grid"
   component={Grid}
-  argTypes={DocsCommonProps}
   args={{
     defaultSpan: 'XL3 L3 M6 S12',
     defaultIndent: 'XL0 L0 M0 S0',
     vSpacing: '1rem',
     hSpacing: '1rem'
   }}
+  argTypes={{ children: { control: { disable: true } } }}
 />
 
 <DocsHeader />
