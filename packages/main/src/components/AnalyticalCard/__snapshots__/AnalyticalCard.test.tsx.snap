@@ -41,7 +41,7 @@ exports[`Analytical Card with AnalyticalCardHeader 1`] = `
               Header Title
             </div>
             <div
-              class="ObjectStatus-objectStatus AnalyticalCardHeader-counter"
+              class="ObjectStatus-objectStatus ObjectStatus-none AnalyticalCardHeader-counter"
             />
           </div>
           <div
