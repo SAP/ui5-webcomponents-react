@@ -1,9 +1,8 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import '@ui5/webcomponents-icons/dist/person-placeholder.js';
 import { DonutChart } from '@ui5/webcomponents-react-charts/dist/DonutChart';
 import { simpleDataSet, simpleDataSetWithSmallValues } from '../../resources/DemoProps';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="Charts /  DonutChart"
@@ -19,7 +18,6 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
     }
   }}
   argTypes={{
-    ...DocsCommonProps,
     dataset: {
       control: { disable: true }
     },

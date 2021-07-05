@@ -1,11 +1,10 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { ObjectPage } from '@ui5/webcomponents-react/dist/ObjectPage';
 import { ObjectPageSection } from '@ui5/webcomponents-react/dist/ObjectPageSection';
 import { ObjectPageSubSection } from '@ui5/webcomponents-react/dist/ObjectPageSubSection';
 import { ObjectPageMode } from '@ui5/webcomponents-react/dist/ObjectPageMode';
 import { Text } from '@ui5/webcomponents-react/dist/Text';
 import { Link } from '@ui5/webcomponents-react/dist/Link';
-import { ProgressIndicator } from '@ui5/webcomponents-react/dist/ProgressIndicator';
 import { Breadcrumbs } from '@ui5/webcomponents-react/dist/Breadcrumbs';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { Bar } from '@ui5/webcomponents-react/dist/Bar';
@@ -21,26 +20,22 @@ import { DynamicPageHeader } from '@ui5/webcomponents-react/dist/DynamicPageHead
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { ObjectStatus } from '@ui5/webcomponents-react/dist/ObjectStatus';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
+import { FlexBoxWrap } from '@ui5/webcomponents-react/dist/FlexBoxWrap';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 import '@ui5/webcomponents-icons/dist/activate.js';
 import SampleImage from './DemoImage.png';
 import '@ui5/webcomponents-icons/dist/wrench.js';
-import { useRef } from 'react';
-import { FlexBoxAlignItems, FlexBoxWrap } from '../..';
 
 <Meta
   title="Layouts & Floorplans / ObjectPage"
   component={ObjectPage}
   subcomponents={{ ObjectPageSection, ObjectPageSubSection }}
   argTypes={{
-    ...createSelectArgTypes({ mode: ObjectPageMode }),
     title: { control: { disable: true } },
     header: { control: { disable: true } },
     footer: { control: { disable: true } },
-    children: { control: { disable: true } },
-    ...DocsCommonProps
+    children: { control: { disable: true } }
   }}
   args={{
     mode: ObjectPageMode.Default,
