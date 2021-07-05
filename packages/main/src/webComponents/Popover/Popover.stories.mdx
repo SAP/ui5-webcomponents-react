@@ -1,4 +1,4 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { Popover } from '@ui5/webcomponents-react/dist/Popover';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/dist/PopoverHorizontalAlign';
@@ -10,25 +10,17 @@ import { Bar } from '@ui5/webcomponents-react/dist/Bar';
 import { List } from '@ui5/webcomponents-react/dist/List';
 import { StandardListItem } from '@ui5/webcomponents-react/dist/StandardListItem';
 import { useRef } from 'react';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { BarChart } from '@ui5/webcomponents-react-charts/dist/BarChart';
 import { MicroBarChart } from '@ui5/webcomponents-react-charts/dist/MicroBarChart';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 import '@ui5/webcomponents-icons/dist/settings.js';
 
 <Meta
   title="Modals & Popovers / Popover"
   component={Popover}
   argTypes={{
-    ...createSelectArgTypes({
-      horizontalAlign: PopoverHorizontalAlign,
-      placementType: PlacementType,
-      verticalAlign: PopoverVerticalAlign
-    }),
     footer: { control: { disable: true } },
-    header: { control: { disable: true } },
-    ...DocsCommonProps
+    header: { control: { disable: true } }
   }}
   args={{
     children: 'Press "Escape" or click outside to close the Popover.',

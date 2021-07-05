@@ -1,5 +1,5 @@
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { ArgsTable, Primary, Stories } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Primary, Stories } from '@storybook/addon-docs';
 import React from 'react';
 
 export const DocsPage = () => {

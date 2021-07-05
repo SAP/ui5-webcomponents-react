@@ -1,13 +1,11 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { Table } from '@ui5/webcomponents-react/dist/Table';
 import { TableColumn } from '@ui5/webcomponents-react/dist/TableColumn';
 import { TableRow } from '@ui5/webcomponents-react/dist/TableRow';
 import { Label } from '@ui5/webcomponents-react/dist/Label';
 import { TableCell } from '@ui5/webcomponents-react/dist/TableCell';
 import { TableGrowingMode } from '@ui5/webcomponents-react/dist/TableGrowingMode';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 import { useState } from 'react';
 
 <Meta
@@ -15,8 +13,6 @@ import { useState } from 'react';
   component={Table}
   subcomponents={{ TableColumn, TableRow, TableCell }}
   argTypes={{
-    ...createSelectArgTypes({}),
-    ...DocsCommonProps,
     columns: { control: { disable: true } },
     children: { control: { disable: true } }
   }}
