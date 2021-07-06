@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.131.11](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.10...v0.131.11) (2021-07-06)
+
+
+### Bug Fixes
+
+* **ActionSheet:**  consistent button padding and placement on phones ([#1794](https://github.com/SAP/ui5-webcomponents-react/issues/1794)) ([e217032](https://github.com/SAP/ui5-webcomponents-react/commit/e217032040547ac133ac8cb844b800ea63a7d7bf)), closes [#1748](https://github.com/SAP/ui5-webcomponents-react/issues/1748)
+
+
+
+
+
 ## [0.131.10](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.9...v0.131.10) (2021-07-02)
 
 
