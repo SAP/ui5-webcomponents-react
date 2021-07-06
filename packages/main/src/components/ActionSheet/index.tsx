@@ -47,7 +47,7 @@ const useStyles = createUseStyles(styles, { name: 'ActionSheet' });
 addCustomCSS(
   'ui5-button',
   `
-  :host([data-action-btn-index]) .ui5-button-root {
+  :host([data-action-btn-index]:not([design="Negative"])) .ui5-button-root {
     justify-content: flex-start;
   }
   `
@@ -68,6 +68,7 @@ if (isPhone()) {
     background-color: transparent;
     box-shadow: none;
     box-sizing: border-box;
+    min-height: unset;
   }
   :host([data-actionsheet]) ui5-title {
     color: ${ThemingParameters.sapContent_ContrastTextColor} !important;
@@ -143,14 +144,14 @@ const ActionSheet: FC<ActionSheetPropTypes> = forwardRef(
       [childrenLength, actionBtnsRef.current]
     );
 
-    const renderActionSheetButton = (element, index) => {
+    const renderActionSheetButton = (element, index: number, childrenArray) => {
       return cloneElement(element, {
         role: 'button',
         key: index,
         design: ButtonDesign.Transparent,
         onClick: onActionButtonClicked(element.props?.onClick),
         'data-action-btn-index': index,
-        'aria-label': `${i18nBundle.getText(X_OF_Y, index + 1, childrenLength)} ${element.props?.children}`,
+        'aria-label': `${i18nBundle.getText(X_OF_Y, index + 1, childrenArray.length)} ${element.props?.children}`,
         tabIndex: focusedItem === index ? 0 : -1,
         onFocus: setFocusedItem
       });
@@ -211,7 +212,6 @@ const ActionSheet: FC<ActionSheetPropTypes> = forwardRef(
           {isPhone() && showCancelButton && (
             <Button
               design={ButtonDesign.Negative}
-              className={classes.closeBtn}
               onClick={handleCancelBtnClick}
               tabIndex={focusedItem === childrenLength - 1 ? 0 : -1}
               data-action-btn-index={childrenLength - 1}

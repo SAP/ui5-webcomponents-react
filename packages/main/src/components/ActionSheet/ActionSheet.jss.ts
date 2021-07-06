@@ -13,16 +13,16 @@ const styles = {
   },
   contentMobile: {
     backgroundColor: ThemingParameters.sapGroup_ContentBackground,
-    padding: '0.25rem 0',
+    padding: '0.25rem 0.5rem',
     boxSizing: 'border-box',
     overflow: 'auto',
     maxHeight: '82vh',
     borderTopLeftRadius: ThemingParameters.sapElement_BorderCornerRadius,
     borderTopRightRadius: ThemingParameters.sapElement_BorderCornerRadius,
-    boxShadow: ThemingParameters.sapContent_Shadow2
-  },
-  closeBtn: {
-    margin: `0 var(--_ui5_button_base_padding)`
+    boxShadow: ThemingParameters.sapContent_Shadow2,
+    '& > *': {
+      margin: '0.25rem 0'
+    }
   }
 };
 
