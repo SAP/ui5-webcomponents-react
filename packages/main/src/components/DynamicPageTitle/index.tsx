@@ -51,10 +51,10 @@ export interface DynamicPageTitleProps extends CommonProps {
    */
   heading?: ReactNode;
   /**
-   * The `heading` is positioned in the `DynamicPageTitle` left area.
-   * Use this aggregation to display a `Title` (or any other component that serves as a heading)
+   * The `subheading` is positioned in the `DynamicPageTitle` left area below the `heading`.
+   * Use this aggregation to display a component like `Label` or any other component that serves as subheading.
    */
-  subHeading?: ReactNode;
+  subheading?: ReactNode;
   /**
    * The `DynamicPageTitle` navigation actions.<br />
    * *Note*: The `navigationActions` position depends on the control size.
@@ -90,7 +90,7 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
     breadcrumbs,
     children,
     heading,
-    subHeading,
+    subheading,
     showSubheadingRight,
     navigationActions,
     className,
@@ -155,9 +155,9 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
       <FlexBox alignItems={FlexBoxAlignItems.Center} style={{ flexGrow: 1, width: '100%' }}>
         <FlexBox className={classes.titleMainSection}>
           {heading && <div className={classes.title}>{heading}</div>}
-          {subHeading && showSubheadingRight && (
+          {subheading && showSubheadingRight && (
             <div className={classes.subTitleRight} style={{ [paddingLeftRtl]: '0.5rem' }}>
-              {subHeading}
+              {subheading}
             </div>
           )}
           {children && (
@@ -175,9 +175,9 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
           {!showNavigationInTopArea && navigationActions}
         </Toolbar>
       </FlexBox>
-      {subHeading && !showSubheadingRight && (
+      {subheading && !showSubheadingRight && (
         <FlexBox>
-          <div className={classes.subTitleBottom}>{subHeading}</div>
+          <div className={classes.subTitleBottom}>{subheading}</div>
         </FlexBox>
       )}
     </FlexBox>
