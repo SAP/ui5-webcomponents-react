@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.16.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.16.5...v0.16.6) (2021-07-06)
+
+
+### Bug Fixes
+
+* **charts:** use correct peer dependencies for 0.16.x ([#1795](https://github.com/SAP/ui5-webcomponents-react/issues/1795)) ([d40ebab](https://github.com/SAP/ui5-webcomponents-react/commit/d40ebaba0306b75f24ecdeb59e730d8447ce5653))
+
+
+
+
+
 ## [0.16.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.16.3...v0.16.4) (2021-06-14)
 
 
