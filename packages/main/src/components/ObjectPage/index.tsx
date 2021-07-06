@@ -56,14 +56,14 @@ addCustomCSS(
 
 export interface ObjectPagePropTypes extends Omit<CommonProps, 'title'> {
   /**
-   * Defines the title section of the `ObjectPage`.
+   * Defines the the upper, always static, title section of the `ObjectPage`.
    *
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `DynamicPageTitle` in order to preserve the intended design.
    * __Note:__ If not defined otherwise the prop `showSubheadingRight` of the `DynamicPageTitle` is set to `true` by default.
    */
-  title?: ReactElement;
+  headerTitle?: ReactElement;
   /**
-   * Defines the header section of the `ObjectPage`.
+   * Defines the dynamic header section of the `ObjectPage`.
    *
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `DynamicPageHeader` in order to preserve the intended design.
    */
@@ -137,7 +137,7 @@ const useStyles = createUseStyles(styles, { name: 'ObjectPage' });
  */
 const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDivElement>) => {
   const {
-    title,
+    headerTitle,
     image,
     footer,
     mode,
@@ -178,7 +178,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     topHeaderRef,
     headerContentRef,
     anchorBarRef,
-    { noHeader: !title && !header }
+    { noHeader: !headerTitle && !header }
   );
 
   const avatar = useMemo(() => {
@@ -458,13 +458,13 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
 
   const renderTitleSection = useCallback(
     (inHeader = false) => {
-      const titleStyles = { ...(inHeader ? { padding: 0 } : {}), ...(title?.props?.style ?? {}) };
-      if (title?.props && title.props?.showSubheadingRight === undefined) {
-        return React.cloneElement(title, { showSubheadingRight: true, style: titleStyles });
+      const titleStyles = { ...(inHeader ? { padding: 0 } : {}), ...(headerTitle?.props?.style ?? {}) };
+      if (headerTitle?.props && headerTitle.props?.showSubheadingRight === undefined) {
+        return React.cloneElement(headerTitle, { showSubheadingRight: true, style: titleStyles });
       }
-      return React.cloneElement(title, { style: titleStyles });
+      return React.cloneElement(headerTitle, { style: titleStyles });
     },
-    [title]
+    [headerTitle]
   );
 
   const renderHeaderContentSection = useCallback(() => {
@@ -479,7 +479,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
             {avatar}
             {header.props.children && (
               <div data-component-name="ObjectPageHeaderContent">
-                {title && showTitleInHeaderContent && renderTitleSection(true)}
+                {headerTitle && showTitleInHeaderContent && renderTitleSection(true)}
                 {header.props.children}
               </div>
             )}
@@ -592,13 +592,13 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
           display: !showTitleInHeaderContent || headerContentHeight === 0 ? 'grid' : 'none'
         }}
       >
-        {title && image && headerContentHeight === 0 && (
+        {headerTitle && image && headerContentHeight === 0 && (
           <CollapsedAvatar image={image} imageShapeCircle={imageShapeCircle} style={{ [paddingLeftRtl]: '1rem' }} />
         )}
-        {title && renderTitleSection()}
+        {headerTitle && renderTitleSection()}
       </header>
       {renderHeaderContentSection()}
-      {header && title && (
+      {header && headerTitle && (
         <div
           data-component-name="ObjectPageAnchorBar"
           ref={anchorBarRef}

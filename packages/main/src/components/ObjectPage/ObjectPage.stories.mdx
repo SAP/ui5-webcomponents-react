@@ -32,7 +32,7 @@ import '@ui5/webcomponents-icons/dist/wrench.js';
   component={ObjectPage}
   subcomponents={{ ObjectPageSection, ObjectPageSubSection }}
   argTypes={{
-    title: { control: { disable: true } },
+    headerTitle: { control: { disable: true } },
     header: { control: { disable: true } },
     footer: { control: { disable: true } },
     children: { control: { disable: true } }
@@ -56,7 +56,7 @@ import '@ui5/webcomponents-icons/dist/wrench.js';
         }
       />
     ),
-    title: (
+    headerTitle: (
       <DynamicPageTitle
         showSubheadingRight
         heading="Denise Smith"
