@@ -3,6 +3,77 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.16.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.16.4...v0.16.5) (2021-06-30)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** Only use `offsetTop` if parent is relative positioned ([#1768](https://github.com/SAP/ui5-webcomponents-react/issues/1768)) ([2042831](https://github.com/SAP/ui5-webcomponents-react/commit/2042831de9d89d258d1372970433ba5bb3646eda))
+
+
+### Features
+
+* **DynamicPage:** add `footer` prop ([#1737](https://github.com/SAP/ui5-webcomponents-react/issues/1737)) ([5e2ba47](https://github.com/SAP/ui5-webcomponents-react/commit/5e2ba473cca146e0cfc9f63a0f82bfdbc620db6d))
+
+
+
+
+
+## [0.16.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.16.3...v0.16.4) (2021-06-14)
+
+
+### Bug Fixes
+
+* **DynamicPage:** only render necessary elements ([#1726](https://github.com/SAP/ui5-webcomponents-react/issues/1726)) ([6c2863e](https://github.com/SAP/ui5-webcomponents-react/commit/6c2863ec7f65eb0c98c1c284680c31fcf1518490))
+* **FilterBar & AnalyticalTable:** display subcomponents and filter items correctly in Safari ([#1723](https://github.com/SAP/ui5-webcomponents-react/issues/1723)) ([929833d](https://github.com/SAP/ui5-webcomponents-react/commit/929833df5ad86404a481418ab74e3c9c0ca9eaa2))
+* refactor `sapUiResponsiveContentPadding` and add respective padding to ObjectPage content ([#1699](https://github.com/SAP/ui5-webcomponents-react/issues/1699)) ([5fe3c18](https://github.com/SAP/ui5-webcomponents-react/commit/5fe3c1819f230512c43d91c7876ed82b592b705f))
+* **AnalyticalTable:** Prevent crash when filtering with subcomponents and no row is returned ([#1697](https://github.com/SAP/ui5-webcomponents-react/issues/1697)) ([a8989d5](https://github.com/SAP/ui5-webcomponents-react/commit/a8989d50948aec73df230ba0d16cac184f177d3c))
+
+
+### Features
+
+* **ResponsiveGridLayout:** initial component implementation ([#1698](https://github.com/SAP/ui5-webcomponents-react/issues/1698)) ([866290b](https://github.com/SAP/ui5-webcomponents-react/commit/866290bb75847625559a485051fda64e7ad676a5))
+
+
+
+
+
+## [0.16.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.16.2...v0.16.3) (2021-06-07)
+
+
+### Bug Fixes
+
+* **FilterBar:** add spacing between buttons when no toolbar is displayed ([#1668](https://github.com/SAP/ui5-webcomponents-react/issues/1668)) ([eaf7e5f](https://github.com/SAP/ui5-webcomponents-react/commit/eaf7e5f80f46016bf9347059c2b2840bd07cdf70))
+* **Form:** align CheckBox, RadioButton and Switch correctly ([#1689](https://github.com/SAP/ui5-webcomponents-react/issues/1689)) ([573afca](https://github.com/SAP/ui5-webcomponents-react/commit/573afcaa1d77d836847a507145bc7d5cfe50a40d))
+
+
+### Features
+
+* **MessageBox:** add `emphasizedAction` prop ([#1690](https://github.com/SAP/ui5-webcomponents-react/issues/1690)) ([40bd570](https://github.com/SAP/ui5-webcomponents-react/commit/40bd570d309bfb40438f5997378df67e90a00910))
+
+
+
+
+
+## [0.16.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.16.1...v0.16.2) (2021-06-02)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** fix focus and keyboard navigation for cells and subcomponents ([#1591](https://github.com/SAP/ui5-webcomponents-react/issues/1591)) ([11e1497](https://github.com/SAP/ui5-webcomponents-react/commit/11e14972f7e23d1482301ba1e87da49247d1bc40))
+* **Form:** prevent crash when a single item within an array is passed as child ([#1624](https://github.com/SAP/ui5-webcomponents-react/issues/1624)) ([874d3a8](https://github.com/SAP/ui5-webcomponents-react/commit/874d3a8e48f59440a86c798fc36d73ac0e2bad32))
+
+
+### Features
+
+* **AnalyticalTable:** allow inline styles for rows in custom hooks ([#1664](https://github.com/SAP/ui5-webcomponents-react/issues/1664)) ([1c45689](https://github.com/SAP/ui5-webcomponents-react/commit/1c45689d59901bfc302930cf1c1d946d6cff7514))
+* **FilterBar:** FilterBar without Toolbar spreads filters to available width ([#1660](https://github.com/SAP/ui5-webcomponents-react/issues/1660)) ([bdb6173](https://github.com/SAP/ui5-webcomponents-react/commit/bdb617316465855a3ae2626ddd64b624b601b2b9))
+* **MessageBox:** add `initialFocus`, `onBeforeOpen` and `onAfterOpen` props ([#1661](https://github.com/SAP/ui5-webcomponents-react/issues/1661)) ([a4f974f](https://github.com/SAP/ui5-webcomponents-react/commit/a4f974fef78aff494a71c373f9b72440b6ee7568))
+
+
+
+
+
 ## [0.16.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.16.0...v0.16.1) (2021-05-12)
 
 

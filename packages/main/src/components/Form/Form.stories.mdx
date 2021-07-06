@@ -1,4 +1,4 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { CheckBox } from '@ui5/webcomponents-react/dist/CheckBox';
 import { Form } from '@ui5/webcomponents-react/dist/Form';
 import { FormGroup } from '@ui5/webcomponents-react/dist/FormGroup';
@@ -15,7 +15,17 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   title="Layouts & Floorplans / Form"
   component={Form}
   subcomponents={{ FormGroup, FormItem }}
-  argTypes={{ children: { type: null }, ref: { type: null } }}
+  argTypes={{
+    children: { type: null },
+    labelSpanS: { control: { type: 'number', min: 1, max: 12 } },
+    labelSpanM: { control: { type: 'number', min: 1, max: 12 } },
+    labelSpanL: { control: { type: 'number', min: 1, max: 12 } },
+    labelSpanXL: { control: { type: 'number', min: 1, max: 12 } },
+    columnsS: { control: { type: 'number', min: 1, max: 12 } },
+    columnsM: { control: { type: 'number', min: 1, max: 12 } },
+    columnsL: { control: { type: 'number', min: 1, max: 12 } },
+    columnsXL: { control: { type: 'number', min: 1, max: 12 } }
+  }}
   args={{
     title: 'Test Form',
     labelSpanS: 12,

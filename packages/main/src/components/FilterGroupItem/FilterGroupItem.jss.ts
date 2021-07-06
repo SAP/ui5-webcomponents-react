@@ -1,8 +1,15 @@
+import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
+
 const styles = {
   filterItem: {
-    width: 'var(--_ui5_input_width)',
-    marginRight: '1rem',
-    marginBottom: '1rem'
+    marginBottom: '1rem',
+    flexBasis: isIE() ? '13.125rem' : 'var(--_ui5wcr_filter_group_item_flex_basis)',
+    maxWidth: isIE() ? '13.125rem' : 'calc(var(--_ui5wcr_filter_group_item_flex_basis))',
+    flexGrow: 1,
+    flexShrink: 0,
+    '&[data-with-toolbar=false]': {
+      maxWidth: isIE() ? '26.25rem' : 'calc(var(--_ui5wcr_filter_group_item_flex_basis) * 2)'
+    }
   },
   filterItemDialog: {
     flexGrow: 1,

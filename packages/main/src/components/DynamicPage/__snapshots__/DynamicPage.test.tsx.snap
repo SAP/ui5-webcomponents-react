@@ -283,10 +283,10 @@ exports[`DynamicPage always show content header 1`] = `
             Availability:
           </ui5-label>
           <div
-            class="ObjectStatus-objectStatus"
+            class="ObjectStatus-objectStatus ObjectStatus-success"
           >
             <span
-              class="ObjectStatus-textSuccess"
+              class="ObjectStatus-text"
             >
               In Stock
             </span>
@@ -315,7 +315,7 @@ exports[`DynamicPage always show content header 1`] = `
     </div>
     <div
       class="DynamicPage-contentContainer"
-      style="margin-top: 0px;"
+      style="margin-top: 0px; padding-bottom: 0px;"
     />
   </div>
 </DocumentFragment>
@@ -330,113 +330,6 @@ exports[`DynamicPage hider header button 1`] = `
       class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container"
       data-component-name="DynamicPageTitle"
     >
-      <div
-        class="DynamicPageTitle-breadcrumbs"
-      >
-        <nav
-          aria-label="Breadcrumb Trail"
-        >
-          <ol
-            class="Breadcrumbs-list"
-          >
-            <li>
-              <ui5-link
-                data-breadcrumb-index="0"
-                design="Default"
-                tabindex="0"
-                ui5-link=""
-              >
-                Home
-              </ui5-link>
-              <ui5-label
-                aria-hidden="true"
-                class="Breadcrumbs-separatorInline"
-                ui5-label=""
-              >
-                /
-              </ui5-label>
-            </li>
-            <li>
-              <ui5-link
-                data-breadcrumb-index="1"
-                design="Default"
-                tabindex="-1"
-                ui5-link=""
-              >
-                Page 1
-              </ui5-link>
-              <ui5-label
-                aria-hidden="true"
-                class="Breadcrumbs-separatorInline"
-                ui5-label=""
-              >
-                /
-              </ui5-label>
-            </li>
-            <li>
-              <ui5-link
-                data-breadcrumb-index="2"
-                design="Default"
-                tabindex="-1"
-                ui5-link=""
-              >
-                Page 2
-              </ui5-link>
-              <ui5-label
-                aria-hidden="true"
-                class="Breadcrumbs-separatorInline"
-                ui5-label=""
-              >
-                /
-              </ui5-label>
-            </li>
-            <li>
-              <ui5-link
-                data-breadcrumb-index="3"
-                design="Default"
-                tabindex="-1"
-                ui5-link=""
-              >
-                Page 3
-              </ui5-link>
-              <ui5-label
-                aria-hidden="true"
-                class="Breadcrumbs-separatorInline"
-                ui5-label=""
-              >
-                /
-              </ui5-label>
-            </li>
-            <li>
-              <ui5-link
-                data-breadcrumb-index="4"
-                design="Default"
-                tabindex="-1"
-                ui5-link=""
-              >
-                Page 4
-              </ui5-link>
-              <ui5-label
-                aria-hidden="true"
-                class="Breadcrumbs-separatorInline"
-                ui5-label=""
-              >
-                /
-              </ui5-label>
-            </li>
-            <li>
-              <ui5-link
-                data-breadcrumb-index="5"
-                design="Default"
-                tabindex="-1"
-                ui5-link=""
-              >
-                Page 5
-              </ui5-link>
-            </li>
-          </ol>
-        </nav>
-      </div>
       <div
         class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap"
         style="flex-grow: 1; width: 100%;"
@@ -453,26 +346,6 @@ exports[`DynamicPage hider header button 1`] = `
             >
               Header Title
             </ui5-title>
-          </div>
-          <div
-            class="DynamicPageTitle-content"
-          >
-            <div
-              class="Toolbar-outerContainer Toolbar-clear"
-            >
-              <div
-                class="Toolbar-toolbar"
-              >
-                <div>
-                  <ui5-badge
-                    color-scheme="1"
-                    ui5-badge=""
-                  >
-                    Status: OK
-                  </ui5-badge>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
         <div
@@ -521,33 +394,6 @@ exports[`DynamicPage hider header button 1`] = `
               <ui5-button
                 design="Transparent"
                 icon="action"
-                ui5-button=""
-              />
-            </div>
-            <div>
-              <div
-                aria-label="Separator"
-                class="ToolbarSeparator-separator"
-              />
-            </div>
-            <div>
-              <ui5-button
-                design="Transparent"
-                icon="full-screen"
-                ui5-button=""
-              />
-            </div>
-            <div>
-              <ui5-button
-                design="Transparent"
-                icon="exit-full-screen"
-                ui5-button=""
-              />
-            </div>
-            <div>
-              <ui5-button
-                design="Transparent"
-                icon="decline"
                 ui5-button=""
               />
             </div>
@@ -604,10 +450,10 @@ exports[`DynamicPage hider header button 1`] = `
             Availability:
           </ui5-label>
           <div
-            class="ObjectStatus-objectStatus"
+            class="ObjectStatus-objectStatus ObjectStatus-success"
           >
             <span
-              class="ObjectStatus-textSuccess"
+              class="ObjectStatus-text"
             >
               In Stock
             </span>
@@ -626,7 +472,7 @@ exports[`DynamicPage hider header button 1`] = `
     </div>
     <div
       class="DynamicPage-contentContainer"
-      style="margin-top: 0px;"
+      style="margin-top: 0px; padding-bottom: 0px;"
     >
       <div
         class="Form-form Form-labelSpan4"
@@ -793,6 +639,53 @@ exports[`DynamicPage hider header button 1`] = `
         </div>
       </div>
     </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`DynamicPage render footer 1`] = `
+<DocumentFragment>
+  <div
+    class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundStandard"
+  >
+    <div
+      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPage-anchorBar"
+      style="top: 0px;"
+    >
+      <section
+        class="DynamicPageAnchorBar-anchorBarActionButton"
+        role="navigation"
+      >
+        <ui5-button
+          aria-label="Expand Header"
+          class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonExpandable "
+          data-ui5wcr-dynamic-page-header-action=""
+          design="Default"
+          icon="slim-arrow-down"
+          title="Expand Header"
+          ui5-button=""
+        />
+      </section>
+    </div>
+    <div
+      class="DynamicPage-contentContainer"
+      style="margin-top: 0px; padding-bottom: 1rem;"
+    />
+    <footer
+      class="DynamicPage-footer"
+    >
+      <ui5-bar
+        design="FloatingFooter"
+        ui5-bar=""
+      >
+        <span
+          class="Text-text"
+          slot="endContent"
+        >
+          Footer
+        </span>
+      </ui5-bar>
+    </footer>
   </div>
 </DocumentFragment>
 `;
@@ -1079,10 +972,10 @@ exports[`DynamicPage with content 1`] = `
             Availability:
           </ui5-label>
           <div
-            class="ObjectStatus-objectStatus"
+            class="ObjectStatus-objectStatus ObjectStatus-success"
           >
             <span
-              class="ObjectStatus-textSuccess"
+              class="ObjectStatus-text"
             >
               In Stock
             </span>
@@ -1111,7 +1004,7 @@ exports[`DynamicPage with content 1`] = `
     </div>
     <div
       class="DynamicPage-contentContainer"
-      style="margin-top: 0px;"
+      style="margin-top: 0px; padding-bottom: 0px;"
     >
       <div
         class="Form-form Form-labelSpan4"
@@ -2056,10 +1949,10 @@ exports[`DynamicPage without content 1`] = `
             Availability:
           </ui5-label>
           <div
-            class="ObjectStatus-objectStatus"
+            class="ObjectStatus-objectStatus ObjectStatus-success"
           >
             <span
-              class="ObjectStatus-textSuccess"
+              class="ObjectStatus-text"
             >
               In Stock
             </span>
@@ -2088,7 +1981,7 @@ exports[`DynamicPage without content 1`] = `
     </div>
     <div
       class="DynamicPage-contentContainer"
-      style="margin-top: 0px;"
+      style="margin-top: 0px; padding-bottom: 0px;"
     />
   </div>
 </DocumentFragment>

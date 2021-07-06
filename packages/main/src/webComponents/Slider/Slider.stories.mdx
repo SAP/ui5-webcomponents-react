@@ -1,15 +1,11 @@
-import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
 import { Slider } from '@ui5/webcomponents-react/dist/Slider';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="Inputs / Slider"
   component={Slider}
   argTypes={{
-    ...createSelectArgTypes({}),
-    ...DocsCommonProps,
     children: { control: { disable: true } }
   }}
   args={{

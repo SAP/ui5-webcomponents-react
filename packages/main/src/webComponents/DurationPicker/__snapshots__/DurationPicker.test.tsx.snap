@@ -6,6 +6,7 @@ exports[`DurationPicker Basic Test (generated) 1`] = `
     max-value="23:59:59"
     minutes-step="1"
     seconds-step="1"
+    ui5-duration-picker=""
     value="00:00:00"
     value-state="None"
   />

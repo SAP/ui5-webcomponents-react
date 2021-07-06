@@ -7006,7 +7006,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
               <div
                 class="RowSubComponent-subcomponent"
                 data-subcomponent="true"
-                style="transform: translateY(44px);"
+                style="box-sizing: border-box; transform: translateY(44px);"
                 tabindex="-1"
               >
                 <div
@@ -7100,7 +7100,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
               <div
                 class="RowSubComponent-subcomponent"
                 data-subcomponent="true"
-                style="transform: translateY(44px);"
+                style="box-sizing: border-box; transform: translateY(44px);"
                 tabindex="-1"
               >
                 <div

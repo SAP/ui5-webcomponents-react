@@ -1,9 +1,8 @@
 import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
-import { createUseStyles } from 'react-jss';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
-import { enrichEventWithDetails, getScrollBarWidth } from '@ui5/webcomponents-react-base/dist/Utils';
+import { debounce, enrichEventWithDetails, getScrollBarWidth } from '@ui5/webcomponents-react-base/dist/Utils';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
@@ -17,7 +16,6 @@ import { ToolbarDesign } from '@ui5/webcomponents-react/dist/ToolbarDesign';
 import { ToolbarSpacer } from '@ui5/webcomponents-react/dist/ToolbarSpacer';
 import { ToolbarStyle } from '@ui5/webcomponents-react/dist/ToolbarStyle';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import debounce from 'lodash/debounce';
 import React, {
   ComponentType,
   FC,
@@ -27,14 +25,14 @@ import React, {
   RefObject,
   useCallback,
   useEffect,
-  useMemo,
   useRef,
   useState
 } from 'react';
+import { createUseStyles } from 'react-jss';
 import { ObjectPageSectionPropTypes } from '../ObjectPageSection';
 import { ObjectPageSubSectionPropTypes } from '../ObjectPageSubSection';
 import { CollapsedAvatar } from './CollapsedAvatar';
-import styles, { ObjectPageCssVariables } from './ObjectPage.jss';
+import { ObjectPageCssVariables, styles } from './ObjectPage.jss';
 import { ObjectPageAnchorBar } from './ObjectPageAnchorBar';
 import { ObjectPageHeader } from './ObjectPageHeader';
 import {
@@ -203,8 +201,9 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       if (firstSectionId === sectionId) {
         objectPageRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
-        const childOffset = objectPageRef.current?.querySelector<HTMLElement>(`#ObjectPageSection-${sectionId}`)
-          ?.offsetTop;
+        const childOffset = objectPageRef.current?.querySelector<HTMLElement>(
+          `#ObjectPageSection-${sectionId}`
+        )?.offsetTop;
         if (!isNaN(childOffset)) {
           objectPageRef.current?.scrollTo({
             top: childOffset - topHeaderHeight - anchorBarHeight - (headerPinned ? headerContentHeight : 0) + 45,
@@ -439,12 +438,6 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     objectPageClasses.put(classes.noHeader);
   }
 
-  const scrollBarWidthPadding = useMemo(() => {
-    return {
-      paddingRight: isIE() ? 0 : `${scrollbarWidth}px`
-    };
-  }, [scrollbarWidth]);
-
   const passThroughProps = usePassThroughHtmlProps(props, ['onSelectedSectionChanged']);
 
   useEffect(() => {
@@ -502,7 +495,6 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         ref={topHeaderRef}
         role="banner"
         aria-roledescription="Object Page header"
-        style={scrollBarWidthPadding}
         className={headerClasses.className}
       >
         <div className={classes.titleBar}>

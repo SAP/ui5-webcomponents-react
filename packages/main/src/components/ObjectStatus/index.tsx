@@ -1,65 +1,89 @@
 import '@ui5/webcomponents-icons/dist/hint';
 import '@ui5/webcomponents-icons/dist/status-critical';
-import '@ui5/webcomponents-icons/dist/status-inactive';
 import '@ui5/webcomponents-icons/dist/status-negative';
 import '@ui5/webcomponents-icons/dist/status-positive';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { Icon } from '@ui5/webcomponents-react/dist/Icon';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
-import React, { FC, forwardRef, ReactNode, Ref, useMemo } from 'react';
+import { IndicationColor } from '@ui5/webcomponents-react/dist/IndicationColor';
+import React, { FC, forwardRef, MouseEventHandler, ReactNode, Ref } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import styles from './ObjectStatus.jss';
 
 export interface ObjectStatusPropTypes extends CommonProps {
   /**
-   * Defines the text of the `ObjectStatus`.<br />
-   * __Note:__ Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
+   * Indicates if the ObjectStatus text and icon can be clicked/tapped by the user.
+   *
+   * **Note:** If you set this property to true, you have to also set the `children` or `icon` prop.
+   *
+   * @since 0.17.0
    */
-  children?: string | number | ReactNode;
+  active?: boolean;
+
   /**
    * Defines the icon in front of the `ObjectStatus` text.<br />
    * __Note:__ Although this slot accepts HTML Elements, it is strongly recommended that you only use `Icon` in order to preserve the intended design.
    */
   icon?: ReactNode;
+
+  /**
+   * Determines whether the background color reflects the set state instead of the text
+   *
+   * @since 0.17.0
+   */
+  inverted?: boolean;
+
+  /**
+   * Defines the text of the `ObjectStatus`.<br />
+   * __Note:__ Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
+   */
+  children?: string | number | ReactNode;
+
   /**
    * Defines the value state of the <code>ObjectStatus</code>. <br><br> Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>
+   *
+   * Since version 0.17.0 the state property also accepts values from enum `IndicationColor`.
    */
-  state?: ValueState;
+  state?: ValueState | IndicationColor;
+
   /**
    * Defines whether the default icon for each `ValueState` should be displayed.<br />
    * __Note:__ If the `icon` prop was set, `showDefaultIcon` has no effect.
    */
   showDefaultIcon?: boolean;
-}
 
-const defaultIconStyle = {
-  fontSize: '1rem'
-};
+  /**
+   * Fires when the user clicks/taps on active text.
+   */
+  onClick?: MouseEventHandler<HTMLDivElement>;
+}
 
 const getDefaultIcon = (state) => {
   switch (state) {
     case ValueState.Error:
-      return <Icon name="status-negative" style={defaultIconStyle} />;
+      return <Icon name="status-negative" />;
     case ValueState.Success:
-      return <Icon name="status-positive" style={defaultIconStyle} />;
+      return <Icon name="status-positive" />;
     case ValueState.Warning:
-      return <Icon name="status-critical" style={defaultIconStyle} />;
+      return <Icon name="status-critical" />;
     case ValueState.Information:
-      return <Icon name="hint" style={defaultIconStyle} />;
+      return <Icon name="hint" />;
     default:
-      return <Icon name="status-inactive" style={defaultIconStyle} />;
+      return null;
   }
 };
 
 const useStyles = createUseStyles(styles, { name: 'ObjectStatus' });
+
 /**
  * Status information that can be either text with a value state, or an icon.
  */
 const ObjectStatus: FC<ObjectStatusPropTypes> = forwardRef((props: ObjectStatusPropTypes, ref: Ref<HTMLDivElement>) => {
-  const { state, showDefaultIcon, children, icon, className, style, tooltip, slot } = props;
-  const iconToRender = useMemo(() => {
+  const { state, showDefaultIcon, children, icon, className, style, tooltip, active, inverted, onClick } = props;
+
+  const iconToRender = (() => {
     if (icon) {
       return icon;
     }
@@ -67,18 +91,22 @@ const ObjectStatus: FC<ObjectStatusPropTypes> = forwardRef((props: ObjectStatusP
       return getDefaultIcon(state);
     }
     return null;
-  }, [icon, showDefaultIcon, state]);
+  })();
 
   const classes = useStyles();
-  const objStatusClasses = StyleClassHelper.of(classes.objectStatus);
+  const objStatusClasses = StyleClassHelper.of(classes.objectStatus, classes[`${state as string}`.toLowerCase()]);
+
+  if (active) {
+    objStatusClasses.put(classes.active);
+  }
+
+  if (inverted) {
+    objStatusClasses.put(classes.inverted);
+  }
 
   if (className) {
     objStatusClasses.put(className);
   }
-
-  const iconClasses = StyleClassHelper.of(classes.icon);
-  iconClasses.put(classes[`icon${state}`]);
-  const textClass = classes[`text${state}`];
 
   const passThroughProps = usePassThroughHtmlProps(props);
 
@@ -88,11 +116,11 @@ const ObjectStatus: FC<ObjectStatusPropTypes> = forwardRef((props: ObjectStatusP
       className={objStatusClasses.valueOf()}
       style={style}
       title={tooltip}
-      slot={slot}
+      onClick={active ? onClick : undefined}
       {...passThroughProps}
     >
-      {iconToRender && <div className={iconClasses.valueOf()}>{iconToRender}</div>}
-      {children !== null && children !== undefined && <span className={textClass}>{children}</span>}
+      {iconToRender && <span className={classes.icon}>{iconToRender}</span>}
+      {children && <span className={classes.text}>{children}</span>}
     </div>
   );
 });
@@ -100,10 +128,7 @@ const ObjectStatus: FC<ObjectStatusPropTypes> = forwardRef((props: ObjectStatusP
 ObjectStatus.displayName = 'ObjectStatus';
 
 ObjectStatus.defaultProps = {
-  state: ValueState.None,
-  showDefaultIcon: false,
-  icon: null,
-  children: null
+  state: ValueState.None
 };
 
 export { ObjectStatus };

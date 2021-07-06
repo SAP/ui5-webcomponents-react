@@ -1,33 +1,29 @@
-import { createUseStyles } from 'react-jss';
-import {
-  useConsolidatedRef,
-  useIsomorphicLayoutEffect,
-  usePassThroughHtmlProps
-} from '@ui5/webcomponents-react-base/dist/hooks';
+import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
+import { useConsolidatedRef, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { GlobalStyleClasses } from '@ui5/webcomponents-react/dist/GlobalStyleClasses';
 import { PageBackgroundDesign } from '@ui5/webcomponents-react/dist/PageBackgroundDesign';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import React, {
+  cloneElement,
+  FC,
   forwardRef,
   ReactElement,
   ReactNode,
   ReactNodeArray,
   Ref,
-  FC,
-  cloneElement,
   RefObject,
-  useRef,
   useCallback,
-  useState,
-  useEffect
+  useEffect,
+  useRef,
+  useState
 } from 'react';
+import { createUseStyles } from 'react-jss';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
 import { useObserveHeights } from '../ObjectPage/useObserveHeights';
-import styles from './DynamicPage.jss';
-import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
+import { styles } from './DynamicPage.jss';
 
 export interface DynamicPageProps extends Omit<CommonProps, 'title'> {
   /**
@@ -48,12 +44,22 @@ export interface DynamicPageProps extends Omit<CommonProps, 'title'> {
   headerContentPinnable?: boolean;
   /**
    * React element which defines the title.
+   *
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `DynamicPageTitle` in order to preserve the intended design.
    */
   title?: ReactElement;
   /**
    * React element which defines the header content.
+   *
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `DynamicPageHeader` in order to preserve the intended design.
    */
   header?: ReactElement;
+  /**
+   * React element which defines the footer content.
+   *
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `Bar` with `design={BarDesign.FloatingFooter}` in order to preserve the intended design.
+   */
+  footer?: ReactElement;
   /**
    * React element or node array which defines the content.
    */
@@ -70,6 +76,7 @@ enum HEADER_STATES {
   VISIBLE = 'VISIBLE',
   HIDDEN = 'HIDDEN'
 }
+
 const useStyles = createUseStyles(styles, { name: 'DynamicPage' });
 /**
  * The dynamic page is a generic layout control designed to support various floorplans and use cases.
@@ -89,7 +96,8 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
     headerContentPinnable,
     alwaysShowContentHeader,
     children,
-    className
+    className,
+    footer
   } = props;
   const passThroughProps = usePassThroughHtmlProps(props);
 
@@ -238,10 +246,14 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
       )}
       <div
         className={classes.contentContainer}
-        style={{ marginTop: isIE() ? `${headerContentHeight + topHeaderHeight + 34}px` : 0 }}
+        style={{
+          marginTop: isIE() ? `${headerContentHeight + topHeaderHeight + 34}px` : 0,
+          paddingBottom: footer ? '1rem' : 0
+        }}
       >
         {children}
       </div>
+      {footer && <footer className={classes.footer}>{footer}</footer>}
     </div>
   );
 });

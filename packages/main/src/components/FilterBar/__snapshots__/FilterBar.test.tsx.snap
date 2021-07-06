@@ -3,7 +3,8 @@
 exports[`FilterBar Render without crashing - default props 1`] = `
 <DocumentFragment>
   <div
-    class="FilterBar-outerContainer"
+    class="FilterBar-outerContainer FilterBar-outerContainerWithToolbar"
+    style="--_ui5wcr_filter_group_item_flex_basis: 13.125rem;"
   >
     <div
       class="Toolbar-outerContainer Toolbar-clear FilterBar-filterBarHeader"
@@ -28,9 +29,13 @@ exports[`FilterBar Render without crashing - default props 1`] = `
     </div>
     <div
       class="FilterBar-filterArea FilterBar-filterAreaOpen"
+      style="position: relative;"
     >
       <div
         class="FilterGroupItem-filterItem"
+        data-in-fb="true"
+        data-with-toolbar="true"
+        style="margin-right: 1rem; width: 13.125rem;"
       >
         <div
           class="FilterGroupItem-innerFilterItemContainer"
@@ -47,6 +52,7 @@ exports[`FilterBar Render without crashing - default props 1`] = `
             </ui5-label>
           </div>
           <ui5-select
+            ui5-select=""
             value-state="None"
           >
             <ui5-option
@@ -81,7 +87,8 @@ exports[`FilterBar Render without crashing - default props 1`] = `
 exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
 <DocumentFragment>
   <div
-    class="FilterBar-outerContainer FilterBar-filterItemExpand"
+    class="FilterBar-outerContainer FilterBar-outerContainerWithToolbar"
+    style="--_ui5wcr_filter_group_item_flex_basis: 12rem;"
   >
     <div
       class="Toolbar-outerContainer Toolbar-clear FilterBar-filterBarHeader"
@@ -173,10 +180,13 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
     </div>
     <div
       class="FilterBar-filterArea FilterBar-filterAreaOpen"
+      style="position: relative;"
     >
       <div
         class="FilterGroupItem-filterItem"
-        style="width: 12rem;"
+        data-in-fb="true"
+        data-with-toolbar="true"
+        style="margin-right: 1rem; width: 12rem;"
       >
         <div
           class="FilterGroupItem-innerFilterItemContainer"
@@ -202,7 +212,9 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
       </div>
       <div
         class="FilterGroupItem-filterItem"
-        style="width: 12rem;"
+        data-in-fb="true"
+        data-with-toolbar="true"
+        style="margin-right: 1rem; width: 12rem;"
       >
         <div
           class="FilterGroupItem-innerFilterItemContainer"
@@ -225,7 +237,9 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
       </div>
       <div
         class="FilterGroupItem-filterItem"
-        style="width: 12rem;"
+        data-in-fb="true"
+        data-with-toolbar="true"
+        style="margin-right: 1rem; width: 12rem;"
       >
         <div
           class="FilterGroupItem-innerFilterItemContainer"
@@ -259,7 +273,9 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
       </div>
       <div
         class="FilterGroupItem-filterItem"
-        style="width: 12rem;"
+        data-in-fb="true"
+        data-with-toolbar="true"
+        style="margin-right: 1rem; width: 12rem;"
       >
         <div
           class="FilterGroupItem-innerFilterItemContainer"
@@ -305,7 +321,9 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
       </div>
       <div
         class="FilterGroupItem-filterItem"
-        style="width: 12rem;"
+        data-in-fb="true"
+        data-with-toolbar="true"
+        style="margin-right: 1rem; width: 12rem;"
       >
         <div
           class="FilterGroupItem-innerFilterItemContainer"
@@ -366,7 +384,9 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
       </div>
       <div
         class="FilterGroupItem-filterItem"
-        style="width: 12rem;"
+        data-in-fb="true"
+        data-with-toolbar="true"
+        style="margin-right: 1rem; width: 12rem;"
       >
         <div
           class="FilterGroupItem-innerFilterItemContainer"
@@ -409,7 +429,9 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
       </div>
       <div
         class="FilterGroupItem-filterItem"
-        style="width: 12rem;"
+        data-in-fb="true"
+        data-with-toolbar="true"
+        style="margin-right: 1rem; width: 12rem;"
       >
         <div
           class="FilterGroupItem-innerFilterItemContainer"
@@ -440,7 +462,8 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
 exports[`FilterBar Toggle FilterBar filters 1`] = `
 <DocumentFragment>
   <div
-    class="FilterBar-outerContainer"
+    class="FilterBar-outerContainer FilterBar-outerContainerWithToolbar"
+    style="--_ui5wcr_filter_group_item_flex_basis: 13.125rem;"
   >
     <div
       class="Toolbar-outerContainer Toolbar-clear FilterBar-filterBarHeader"
@@ -465,9 +488,13 @@ exports[`FilterBar Toggle FilterBar filters 1`] = `
     </div>
     <div
       class="FilterBar-filterArea FilterBar-filterAreaClosed"
+      style="position: relative;"
     >
       <div
         class="FilterGroupItem-filterItem"
+        data-in-fb="true"
+        data-with-toolbar="true"
+        style="margin-right: 1rem; width: 13.125rem;"
       >
         <div
           class="FilterGroupItem-innerFilterItemContainer"
@@ -1543,13 +1570,18 @@ exports[`FilterBar useToolbar 1`] = `
 <DocumentFragment>
   <div
     class="FilterBar-outerContainer"
+    style="--_ui5wcr_filter_group_item_flex_basis: 13.125rem;"
   >
     <div
       class="FilterBar-filterArea FilterBar-filterAreaOpen"
+      style="position: relative;"
     >
       <div
         class="FilterGroupItem-filterItem"
+        data-in-fb="true"
         data-testid="filter-item"
+        data-with-toolbar="false"
+        style="margin-right: 1rem; width: 13.125rem;"
       >
         <div
           class="FilterGroupItem-innerFilterItemContainer"
@@ -1594,15 +1626,20 @@ exports[`FilterBar useToolbar 1`] = `
         </div>
       </div>
       <div
-        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentEnd FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap"
-        style="flex-grow: 1;"
+        class="FilterBar-lastSpacer"
+        style="width: 120px; min-width: 120px; margin-right: 1rem;"
       >
-        <ui5-button
-          design="Emphasized"
-          ui5-button=""
+        <div
+          class="FilterBar-filterBarButtons"
+          style="margin-right: 1rem; right: 0px;"
         >
-          Go
-        </ui5-button>
+          <ui5-button
+            design="Emphasized"
+            ui5-button=""
+          >
+            Go
+          </ui5-button>
+        </div>
       </div>
     </div>
   </div>
