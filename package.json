@@ -88,8 +88,7 @@
   "resolutions": {
     "@types/react": "17.0.13",
     "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "prismjs": "1.24.1"
+    "react-dom": "17.0.2"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,mdx}": [
