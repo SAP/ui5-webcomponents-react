@@ -44,13 +44,13 @@ export interface DynamicPageProps extends Omit<CommonProps, 'title'> {
    */
   headerContentPinnable?: boolean;
   /**
-   * React element which defines the title.
+   * Defines the the upper, always static, title section of the `DynamicPage`.
    *
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `DynamicPageTitle` in order to preserve the intended design.
    */
-  title?: ReactElement;
+  headerTitle?: ReactElement;
   /**
-   * React element which defines the header content.
+   * Defines the dynamic header section of the `DynamicPage`.
    *
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `DynamicPageHeader` in order to preserve the intended design.
    */
@@ -88,7 +88,7 @@ const useStyles = createUseStyles(styles, { name: 'DynamicPage' });
  */
 const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, ref: Ref<HTMLDivElement>) => {
   const {
-    title,
+    headerTitle,
     header,
     tooltip,
     style,
@@ -203,8 +203,8 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
       style={style}
       {...passThroughProps}
     >
-      {title &&
-        cloneElement(title, {
+      {headerTitle &&
+        cloneElement(headerTitle, {
           ref: topHeaderRef,
           onToggleHeaderContentVisibility: onToggleHeaderContent
         })}

@@ -49,7 +49,7 @@ import { useReducer, useState } from 'react';
   args={{
     backgroundDesign: PageBackgroundDesign.Standard,
     style: { maxHeight: '700px' },
-    title: (
+    headerTitle: (
       <DynamicPageTitle
         actions={[
           <Button key={'edit'} design={ButtonDesign.Emphasized}>
@@ -207,7 +207,7 @@ import { useReducer, useState } from 'react';
           ) : (
             <DynamicPage
               {...args}
-              title={
+              headerTitle={
                 <DynamicPageTitle
                   actions={actionItems}
                   navigationActions={navigationItems}

@@ -26,7 +26,7 @@ import React from 'react';
 
 const renderComponent = () => (
   <DynamicPage
-    title={
+    headerTitle={
       <DynamicPageTitle
         actions={[
           <Button design={ButtonDesign.Emphasized}>Edit</Button>,
@@ -207,7 +207,7 @@ const renderComponent = () => (
 
 const renderComponentWithoutContent = () => (
   <DynamicPage
-    title={
+    headerTitle={
       <DynamicPageTitle
         actions={[
           <Button design={ButtonDesign.Emphasized}>Edit</Button>,
@@ -256,7 +256,7 @@ const renderComponentWithoutContent = () => (
 const renderComponentWithAlwaysShowContentHeader = () => (
   <DynamicPage
     alwaysShowContentHeader={true}
-    title={
+    headerTitle={
       <DynamicPageTitle
         actions={[
           <Button design={ButtonDesign.Emphasized}>Edit</Button>,
@@ -306,7 +306,7 @@ const renderComponentHideHeaderButton = () => (
   <DynamicPage
     showHideHeaderButton={false}
     alwaysShowContentHeader={true}
-    title={
+    headerTitle={
       <DynamicPageTitle
         actions={[
           <Button design={ButtonDesign.Emphasized}>Edit</Button>,
