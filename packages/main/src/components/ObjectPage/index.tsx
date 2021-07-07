@@ -79,7 +79,8 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'title'> {
    */
   image?: string | ReactElement;
   /**
-   * Defines the content area of the `ObjectPage`. It consists of sections and subsections.<br />
+   * Defines the content area of the `ObjectPage`. It consists of sections and subsections.
+   *
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `ObjectPageSection` and `ObjectPageSubSection` in order to preserve the intended design.
    */
   children?: ReactElement<ObjectPageSectionPropTypes> | ReactElement<ObjectPageSectionPropTypes>[];
@@ -580,7 +581,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       }
       scrollTimeout.current = setTimeout(() => {
         setIsAfterScroll(true);
-      }, 60);
+      }, 100);
       objectPageRef.current?.classList.remove(classes.headerCollapsed);
       if (scrolledHeaderExpanded && e.target.scrollTop !== prevScrollTop.current) {
         if (e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight) {
@@ -684,15 +685,18 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
           showOverflow
           data-component-name="ObjectPageTabContainer"
         >
-          {safeGetChildrenArray(children).map((section: ReactElement, index) => (
-            <ObjectPageAnchorButton
-              key={`Anchor-${section.props?.id}`}
-              section={section}
-              index={index}
-              selected={internalSelectedSectionId === section.props?.id}
-              onShowSubSectionPopover={onShowSubSectionPopover}
-            />
-          ))}
+          {safeGetChildrenArray(children).map((section: ReactElement, index) => {
+            if (!section.props) return null;
+            return (
+              <ObjectPageAnchorButton
+                key={`Anchor-${section.props?.id}`}
+                section={section}
+                index={index}
+                selected={internalSelectedSectionId === section.props?.id}
+                onShowSubSectionPopover={onShowSubSectionPopover}
+              />
+            );
+          })}
         </TabContainer>
         {createPortal(
           <Popover placementType={PlacementType.Bottom} noArrow ref={popoverRef} onAfterClose={stopPropagation}>
