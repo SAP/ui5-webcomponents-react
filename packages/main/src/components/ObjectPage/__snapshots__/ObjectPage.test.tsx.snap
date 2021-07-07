@@ -29,6 +29,7 @@ exports[`ObjectPage Default with Sections 1`] = `
         <ui5-tab
           data-index="0"
           data-section-id="1"
+          selected="true"
           semantic-color="Default"
           text="Title 1"
           ui5-tab=""
@@ -168,6 +169,7 @@ exports[`ObjectPage Default with SubSections 1`] = `
         <ui5-tab
           data-index="0"
           data-section-id="1"
+          selected="true"
           semantic-color="Default"
           text="Title Section 1"
           ui5-tab=""
@@ -633,6 +635,7 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
         <ui5-tab
           data-index="0"
           data-section-id="1"
+          selected="true"
           semantic-color="Default"
           text=""
           ui5-tab=""
@@ -696,6 +699,7 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
         <ui5-tab
           data-index="0"
           data-section-id="1"
+          selected="true"
           semantic-color="Default"
           text=""
           ui5-tab=""
@@ -827,6 +831,7 @@ exports[`ObjectPage with anchor-bar 1`] = `
         <ui5-tab
           data-index="0"
           data-section-id="1"
+          selected="true"
           semantic-color="Default"
           text="Title Section 1"
           ui5-tab=""
@@ -1134,6 +1139,7 @@ exports[`ObjectPage with footer 1`] = `
         <ui5-tab
           data-index="0"
           data-section-id="1"
+          selected="true"
           semantic-color="Default"
           text="Title Section 1"
           ui5-tab=""
@@ -1456,6 +1462,7 @@ exports[`ObjectPage with header 1`] = `
         <ui5-tab
           data-index="0"
           data-section-id="1"
+          selected="true"
           semantic-color="Default"
           text="Title Section 1"
           ui5-tab=""
@@ -1826,6 +1833,7 @@ exports[`ObjectPage with img 1`] = `
         <ui5-tab
           data-index="0"
           data-section-id="1"
+          selected="true"
           semantic-color="Default"
           text="Title Section 1"
           ui5-tab=""
@@ -2209,6 +2217,7 @@ exports[`ObjectPage with img 2`] = `
         <ui5-tab
           data-index="0"
           data-section-id="1"
+          selected="true"
           semantic-color="Default"
           text="Title Section 1"
           ui5-tab=""
@@ -2549,6 +2558,7 @@ exports[`ObjectPage with title 1`] = `
         <ui5-tab
           data-index="0"
           data-section-id="1"
+          selected="true"
           semantic-color="Default"
           text="Title Section 1"
           ui5-tab=""
@@ -2894,6 +2904,7 @@ exports[`ObjectPage with title, header & footer 1`] = `
         <ui5-tab
           data-index="0"
           data-section-id="1"
+          selected="true"
           semantic-color="Default"
           text="Title Section 1"
           ui5-tab=""
