@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.16.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.16.5...v0.16.6) (2021-07-06)
+
+
+### Bug Fixes
+
+* **ActionSheet:**  consistent button padding and placement on phones ([#1794](https://github.com/SAP/ui5-webcomponents-react/issues/1794)) ([8a008c3](https://github.com/SAP/ui5-webcomponents-react/commit/8a008c3fac295f6d636a79dc9881fdcb6ca2050a)), closes [#1748](https://github.com/SAP/ui5-webcomponents-react/issues/1748)
+
+
+### Features
+
+* **ObjectStatus:** support IndicationColor, active and inverted state ([#1790](https://github.com/SAP/ui5-webcomponents-react/issues/1790)) ([9ca075a](https://github.com/SAP/ui5-webcomponents-react/commit/9ca075a46c3174dac292cee60db3b3d015f019be))
+
+
+
+
+
 ## [0.16.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.16.4...v0.16.5) (2021-06-30)
 
 

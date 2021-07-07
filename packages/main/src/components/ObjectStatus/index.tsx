@@ -18,7 +18,7 @@ export interface ObjectStatusPropTypes extends CommonProps {
    *
    * **Note:** If you set this property to true, you have to also set the `children` or `icon` prop.
    *
-   * @since 0.17.0
+   * @since 0.16.6
    */
   active?: boolean;
 
@@ -31,7 +31,7 @@ export interface ObjectStatusPropTypes extends CommonProps {
   /**
    * Determines whether the background color reflects the set state instead of the text
    *
-   * @since 0.17.0
+   * @since 0.16.6
    */
   inverted?: boolean;
 
@@ -56,6 +56,8 @@ export interface ObjectStatusPropTypes extends CommonProps {
 
   /**
    * Fires when the user clicks/taps on active text.
+   *
+   * @since 0.16.6
    */
   onClick?: MouseEventHandler<HTMLDivElement>;
 }
