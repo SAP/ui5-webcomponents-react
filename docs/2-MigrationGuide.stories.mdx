@@ -61,7 +61,7 @@ We streamlined those APIs by adding components used by the `DynamicPage` to the 
 
 - `title` has been renamed to `headerTitle` and is now defining the upper, static, title section of the `ObjectPage`. It expects to receive the `DynamicPageTitle` component.
 - `headerContent` has been renamed to `header` and expects now the `DynamicPageHeader` component to be passed.
-- `noHeader` has been removed. It is now sufficient to net set `headerTitle` and `header` to achieve the same behavior.
+- `noHeader` has been removed. It is now sufficient not to set `headerTitle` and `header` to achieve the same behavior.
 - `title`, `subTitle`, `headerActions`, `breadcrumbs` and `keyInfos` should now be passed to the corresponding `DynamicPageTitle` props.
 
 Setting the title section of the `ObjectPage`:
