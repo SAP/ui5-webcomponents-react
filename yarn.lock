@@ -14910,10 +14910,10 @@ react-transition-group@2.9.0:
     prop-types "^15.6.2"
     react-lifecycles-compat "^3.0.4"
 
-react-virtual@2.7.1:
-  version "2.7.1"
-  resolved "https://registry.yarnpkg.com/react-virtual/-/react-virtual-2.7.1.tgz#8bf977e780df80af692f440d627ba7a5776f0de5"
-  integrity sha512-UziFNaew48GIoTPB4svPT7NNEpKRvEXv0LIJ2FBdmRdGKspFvtxzmPfyUdH/+3yp8LqgTLayItpsilZ9FO2VAw==
+react-virtual@2.7.2:
+  version "2.7.2"
+  resolved "https://registry.yarnpkg.com/react-virtual/-/react-virtual-2.7.2.tgz#a60c83d3519c0acd82eaf98cc06c4f8c86cae5e4"
+  integrity sha512-vPMxa6nwmttDcsP24PnhlHVeVmVWs2UQIpJyOwfMiihoSj0yNfKxZMS9jTqeck89C282i5T4Jq26yHCNz18a6w==
   dependencies:
     "@reach/observe-rect" "^1.1.0"
 
