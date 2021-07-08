@@ -44,6 +44,7 @@ import {
   getSectionById,
   safeGetChildrenArray
 } from './ObjectPageUtils';
+import { PopoverHorizontalAlign } from '../../enums/PopoverHorizontalAlign';
 
 addCustomCSS(
   'ui5-tabcontainer',
@@ -549,7 +550,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   const onShowSubSectionPopover = useCallback(
     (e, section) => {
       setPopoverContent(section);
-      popoverRef.current.openBy(e.target.parentElement);
+      popoverRef.current.openBy(e.detail.targetRef);
     },
     [setPopoverContent, popoverRef]
   );
@@ -699,7 +700,13 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
           })}
         </TabContainer>
         {createPortal(
-          <Popover placementType={PlacementType.Bottom} noArrow ref={popoverRef} onAfterClose={stopPropagation}>
+          <Popover
+            placementType={PlacementType.Bottom}
+            horizontalAlign={PopoverHorizontalAlign.Left}
+            noArrow
+            ref={popoverRef}
+            onAfterClose={stopPropagation}
+          >
             <List onItemClick={onSubSectionClick}>
               {popoverContent?.props?.children
                 .filter((item) => item.props && item.props.isSubSection)

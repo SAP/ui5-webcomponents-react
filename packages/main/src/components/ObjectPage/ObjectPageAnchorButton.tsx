@@ -1,6 +1,10 @@
+import ObjectPageAnchorTab from './ObjectPageAnchorTab';
 import '@ui5/webcomponents-icons/dist/slim-arrow-down';
-import { Tab } from '@ui5/webcomponents-react/dist/Tab';
 import React, { FC, useEffect, useRef } from 'react';
+
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+ObjectPageAnchorTab.define();
 
 interface ObjectPageAnchorPropTypes {
   section: any;
@@ -20,38 +24,24 @@ export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props: Obj
   }
 
   useEffect(() => {
-    if (subSectionsAvailable) {
-      try {
-        const element = ref.current?.parentElement?.shadowRoot?.querySelector(
-          `.ui5-tc__headerList li[aria-posinset="${index + 1}"] .ui5-tab-strip-itemContent`
-        );
-
-        if (element && !element.querySelector('ui5-icon')) {
-          const icon = document.createElement('ui5-icon');
-          (icon as any).name = 'slim-arrow-down';
-          icon.style.verticalAlign = 'text-bottom';
-          icon.style.pointerEvents = 'all';
-          icon.addEventListener('click', (e) => {
-            e.stopImmediatePropagation();
-            e.preventDefault();
-            e.stopPropagation();
-            onShowSubSectionPopover(e, section);
-          });
-          element.appendChild(icon);
-        }
-      } catch (e) {
-        // empty catch block, mainly required for tests
-      }
-    }
-  }, [subSectionsAvailable, ref, onShowSubSectionPopover, section]);
+    const listener = (e) => {
+      onShowSubSectionPopover(e, section);
+    };
+    const el = ref.current;
+    el.addEventListener('show-sub-sections', listener);
+    return () => {
+      el?.removeEventListener('show-sub-sections', listener);
+    };
+  }, [onShowSubSectionPopover]);
 
   return (
-    <Tab
+    <ui5-object-page-anchor-tab
       ref={ref}
       data-index={index}
       data-section-id={section.props.id}
       text={section.props.title}
-      selected={selected}
+      selected={selected || undefined}
+      with-sub-sections={subSectionsAvailable || undefined}
     />
   );
 };
