@@ -8,6 +8,7 @@ exports[`DynamicPage always show content header 1`] = `
     <div
       class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container"
       data-component-name="DynamicPageTitle"
+      data-not-clickable="false"
     >
       <div
         class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
@@ -322,6 +323,7 @@ exports[`DynamicPage hider header button 1`] = `
     <div
       class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container"
       data-component-name="DynamicPageTitle"
+      data-not-clickable="false"
     >
       <div
         class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap"
@@ -692,6 +694,7 @@ exports[`DynamicPage with content 1`] = `
     <div
       class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container"
       data-component-name="DynamicPageTitle"
+      data-not-clickable="false"
     >
       <div
         class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
@@ -1662,6 +1665,7 @@ exports[`DynamicPage without content 1`] = `
     <div
       class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container"
       data-component-name="DynamicPageTitle"
+      data-not-clickable="false"
     >
       <div
         class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"

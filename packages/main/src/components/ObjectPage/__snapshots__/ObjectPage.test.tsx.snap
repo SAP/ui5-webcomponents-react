@@ -10,6 +10,7 @@ exports[`ObjectPage Default with Sections 1`] = `
       aria-roledescription="Object Page header"
       class="ObjectPage-header"
       data-component-name="ObjectPageTopHeader"
+      data-not-clickable="true"
       role="banner"
       style="display: grid;"
     />
@@ -150,6 +151,7 @@ exports[`ObjectPage Default with SubSections 1`] = `
       aria-roledescription="Object Page header"
       class="ObjectPage-header"
       data-component-name="ObjectPageTopHeader"
+      data-not-clickable="true"
       role="banner"
       style="display: grid;"
     />
@@ -439,6 +441,7 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
       aria-roledescription="Object Page header"
       class="ObjectPage-header"
       data-component-name="ObjectPageTopHeader"
+      data-not-clickable="true"
       role="banner"
       style="display: grid;"
     />
@@ -585,6 +588,7 @@ exports[`ObjectPage Not crashing with 0 sections 1`] = `
       aria-roledescription="Object Page header"
       class="ObjectPage-header"
       data-component-name="ObjectPageTopHeader"
+      data-not-clickable="true"
       role="banner"
       style="display: grid;"
     />
@@ -616,6 +620,7 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
       aria-roledescription="Object Page header"
       class="ObjectPage-header"
       data-component-name="ObjectPageTopHeader"
+      data-not-clickable="true"
       role="banner"
       style="display: grid;"
     />
@@ -680,6 +685,7 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
       aria-roledescription="Object Page header"
       class="ObjectPage-header"
       data-component-name="ObjectPageTopHeader"
+      data-not-clickable="true"
       role="banner"
       style="display: grid;"
     />
@@ -744,12 +750,14 @@ exports[`ObjectPage with anchor-bar 1`] = `
       aria-roledescription="Object Page header"
       class="ObjectPage-header"
       data-component-name="ObjectPageTopHeader"
+      data-not-clickable="false"
       role="banner"
       style="display: grid;"
     >
       <div
         class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container"
         data-component-name="DynamicPageTitle"
+        data-not-clickable="false"
       >
         <div
           class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap"
@@ -1120,6 +1128,7 @@ exports[`ObjectPage with footer 1`] = `
       aria-roledescription="Object Page header"
       class="ObjectPage-header"
       data-component-name="ObjectPageTopHeader"
+      data-not-clickable="true"
       role="banner"
       style="display: grid;"
     />
@@ -1428,6 +1437,7 @@ exports[`ObjectPage with header 1`] = `
       aria-roledescription="Object Page header"
       class="ObjectPage-header"
       data-component-name="ObjectPageTopHeader"
+      data-not-clickable="true"
       role="banner"
       style="display: grid;"
     />
@@ -1732,6 +1742,7 @@ exports[`ObjectPage with img 1`] = `
       aria-roledescription="Object Page header"
       class="ObjectPage-header"
       data-component-name="ObjectPageTopHeader"
+      data-not-clickable="true"
       role="banner"
       style="display: grid;"
     >
@@ -1753,6 +1764,7 @@ exports[`ObjectPage with img 1`] = `
       <div
         class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container"
         data-component-name="DynamicPageTitle"
+        data-not-clickable="true"
       >
         <div
           class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap"
@@ -2122,6 +2134,7 @@ exports[`ObjectPage with img 2`] = `
       aria-roledescription="Object Page header"
       class="ObjectPage-header"
       data-component-name="ObjectPageTopHeader"
+      data-not-clickable="true"
       role="banner"
       style="display: grid;"
     >
@@ -2140,6 +2153,7 @@ exports[`ObjectPage with img 2`] = `
       <div
         class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container"
         data-component-name="DynamicPageTitle"
+        data-not-clickable="true"
       >
         <div
           class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap"
@@ -2506,12 +2520,14 @@ exports[`ObjectPage with title 1`] = `
       aria-roledescription="Object Page header"
       class="ObjectPage-header"
       data-component-name="ObjectPageTopHeader"
+      data-not-clickable="true"
       role="banner"
       style="display: grid;"
     >
       <div
         class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container"
         data-component-name="DynamicPageTitle"
+        data-not-clickable="true"
       >
         <div
           class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap"
@@ -2828,12 +2844,14 @@ exports[`ObjectPage with title, header & footer 1`] = `
       aria-roledescription="Object Page header"
       class="ObjectPage-header"
       data-component-name="ObjectPageTopHeader"
+      data-not-clickable="true"
       role="banner"
       style="display: grid;"
     >
       <div
         class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container"
         data-component-name="DynamicPageTitle"
+        data-not-clickable="true"
       >
         <div
           class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap"
