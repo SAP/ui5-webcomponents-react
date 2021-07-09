@@ -19,6 +19,12 @@ export const DynamicPageTitleStyles = {
     top: 0,
     zIndex: 2,
     cursor: 'pointer',
+    '&[data-not-clickable="true"]': {
+      cursor: 'unset',
+      '&:hover': {
+        backgroundColor: ThemingParameters.sapObjectHeader_Background
+      }
+    },
     '&:hover': {
       // TODO background color should be sapObjectHeader_Hover_Background (same color as sapTile_Active_Background)
       backgroundColor: ThemingParameters.sapTile_Active_Background

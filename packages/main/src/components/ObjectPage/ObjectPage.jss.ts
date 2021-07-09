@@ -88,6 +88,13 @@ export const styles = {
     '&:hover': {
       // TODO background color should be sapObjectHeader_Hover_Background (same color as sapTile_Active_Background)
       backgroundColor: ThemingParameters.sapTile_Active_Background
+    },
+    cursor: 'pointer',
+    '&[data-not-clickable="true"]': {
+      cursor: 'unset',
+      '&:hover': {
+        backgroundColor: ThemingParameters.sapObjectHeader_Background
+      }
     }
   },
   iEClass: {

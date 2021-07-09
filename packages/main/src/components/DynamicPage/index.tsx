@@ -205,6 +205,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
     >
       {headerTitle &&
         cloneElement(headerTitle, {
+          'data-not-clickable': !header || (!showHideHeaderButton && !headerContentPinnable),
           ref: topHeaderRef,
           onToggleHeaderContentVisibility: onToggleHeaderContent
         })}
