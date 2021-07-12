@@ -23,6 +23,7 @@ import {
   XAxis,
   YAxis
 } from 'recharts';
+import { LineChart as LineChartLib } from 'recharts';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { useChartMargin } from '../../hooks/useChartMargin';
 import { useLabelFormatter } from '../../hooks/useLabelFormatter';
@@ -36,7 +37,6 @@ import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { defaultFormatter } from '../../internal/defaults';
 import { tickLineConfig, tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
-import { LineChart as LineChartLib } from 'recharts';
 
 interface MeasureConfig extends IChartMeasure {
   /**
@@ -100,14 +100,6 @@ export interface ColumnChartWithTrendProps extends IChartBaseProps {
    *
    */
   measures: MeasureConfig[];
-  /**
-   * RATIO HEIGHT TREND LINE
-   */
-  trendLineHeight?: number;
-  /**
-   * RATIO HEIGHT COLUMN CHART
-   */
-  columnChartHeight?: number;
 }
 
 const dimensionDefaults = {
@@ -143,9 +135,7 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
       style,
       className,
       tooltip,
-      slot,
-      trendLineHeight = 0.2,
-      columnChartHeight = 0.8
+      slot
     } = props;
 
     const chartConfig = useMemo(() => {
@@ -220,7 +210,7 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
           loading={loading}
           Placeholder={TrendLinePlaceholder}
           ref={chartRef}
-          style={{ ...style, height: `calc(${style.height} * ${trendLineHeight})` }}
+          style={{ ...style, height: `calc(${style.height} * 0.2)` }}
           className={className}
           tooltip={tooltip}
           slot={slot}
@@ -286,7 +276,7 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
           Placeholder={ColumnChartPlaceholder}
           dataset={dataset}
           ref={chartRef}
-          style={{ ...style, height: `calc(${style.height} * ${columnChartHeight})` }}
+          style={{ ...style, height: `calc(${style.height} * 0.8)` }}
           className={className}
           tooltip={tooltip}
           slot={slot}

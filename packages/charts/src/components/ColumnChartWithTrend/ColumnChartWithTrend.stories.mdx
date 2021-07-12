@@ -27,8 +27,6 @@ import { complexDataSet } from '../../resources/DemoProps';
     args={{
       dataset: complexDataSet,
       style: { height: '60vh' },
-      trendLineHeight: 0.2,
-      columnChartHeight: 0.8,
       dimensions: [
         {
           accessor: 'name',
@@ -47,11 +45,14 @@ import { complexDataSet } from '../../resources/DemoProps';
           label: 'Active Sessions',
           formatter: (val) => `${val} sessions`,
           hideDataLabel: true,
-          type: 'column'
+          type: 'column',
+          stackId: 'A'
         },
         {
           accessor: 'volume',
-          label: 'Vol.'
+          label: 'Vol.',
+          type: 'column',
+          stackId: 'A'
         }
       ]
     }}
