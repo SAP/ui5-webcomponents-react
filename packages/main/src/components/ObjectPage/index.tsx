@@ -494,12 +494,14 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         return React.cloneElement(headerTitle, {
           showSubheadingRight: true,
           style: titleStyles,
-          'data-not-clickable': !headerContent || (!showHideHeaderButton && !headerContentPinnable)
+          'data-not-clickable':
+            alwaysShowContentHeader || !headerContent || (!showHideHeaderButton && !headerContentPinnable)
         });
       }
       return React.cloneElement(headerTitle, {
         style: titleStyles,
-        'data-not-clickable': !headerContent || (!showHideHeaderButton && !headerContentPinnable)
+        'data-not-clickable':
+          alwaysShowContentHeader || !headerContent || (!showHideHeaderButton && !headerContentPinnable)
       });
     },
     [headerTitle, showHideHeaderButton, headerContentPinnable, headerContent]
@@ -639,7 +641,9 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         data-component-name="ObjectPageTopHeader"
         ref={topHeaderRef}
         role="banner"
-        data-not-clickable={!headerContent || (!showHideHeaderButton && !headerContentPinnable)}
+        data-not-clickable={
+          alwaysShowContentHeader || !headerContent || (!showHideHeaderButton && !headerContentPinnable)
+        }
         aria-roledescription="Object Page header"
         className={classes.header}
         onClick={onTitleClick}

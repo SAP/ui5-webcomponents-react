@@ -20,6 +20,7 @@ export const DynamicPageTitleStyles = {
     zIndex: 2,
     cursor: 'pointer',
     '&[data-not-clickable="true"]': {
+      pointerEvents: 'none',
       cursor: 'unset',
       '&:hover': {
         backgroundColor: ThemingParameters.sapObjectHeader_Background
