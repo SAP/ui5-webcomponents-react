@@ -109,6 +109,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     loading,
     noLegend,
     noAnimation,
+    tooltipConfig,
     onDataPointClick,
     onLegendClick,
     onClick,
@@ -300,6 +301,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
           formatter={tooltipValueFormatter}
           contentStyle={tooltipContentStyle}
           labelFormatter={labelFormatter}
+          {...tooltipConfig}
         />
         {chartConfig.zoomingTool && (
           <Brush

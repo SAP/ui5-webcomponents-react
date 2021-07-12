@@ -82,6 +82,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
     dataset,
     noLegend,
     noAnimation,
+    tooltipConfig,
     onDataPointClick,
     onLegendClick,
     onClick,
@@ -305,6 +306,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
           contentStyle={tooltipContentStyle}
           itemStyle={chartConfig.tooltipItemStyle}
           labelStyle={chartConfig.tooltipLabelStyle}
+          {...tooltipConfig}
         />
         {!noLegend && (
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment

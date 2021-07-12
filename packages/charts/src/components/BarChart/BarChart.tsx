@@ -44,9 +44,11 @@ const measureDefaults = {
   opacity: 1
 };
 
-const valueAccessor = (attribute) => ({ payload }) => {
-  return getValueByDataKey(payload, attribute);
-};
+const valueAccessor =
+  (attribute) =>
+  ({ payload }) => {
+    return getValueByDataKey(payload, attribute);
+  };
 
 interface MeasureConfig extends IChartMeasure {
   /**
@@ -119,6 +121,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
     dataset,
     noLegend,
     noAnimation,
+    tooltipConfig,
     onDataPointClick,
     onLegendClick,
     onClick,
@@ -296,6 +299,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
           formatter={tooltipValueFormatter}
           contentStyle={tooltipContentStyle}
           labelFormatter={labelFormatter}
+          {...tooltipConfig}
         />
         {chartConfig.zoomingTool && (
           <Brush

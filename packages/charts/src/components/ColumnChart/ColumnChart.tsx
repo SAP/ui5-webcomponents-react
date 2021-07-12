@@ -104,9 +104,11 @@ const measureDefaults = {
   opacity: 1
 };
 
-const valueAccessor = (attribute) => ({ payload }) => {
-  return getValueByDataKey(payload, attribute);
-};
+const valueAccessor =
+  (attribute) =>
+  ({ payload }) => {
+    return getValueByDataKey(payload, attribute);
+  };
 
 /**
  * A `ColumnChart` is a data visualization where each category is represented by a rectangle, with the height of the rectangle being proportional to the values being plotted.
@@ -117,6 +119,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
     dataset,
     noLegend,
     noAnimation,
+    tooltipConfig,
     onDataPointClick,
     onLegendClick,
     onClick,
@@ -315,6 +318,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
           formatter={tooltipValueFormatter}
           labelFormatter={labelFormatter}
           contentStyle={tooltipContentStyle}
+          {...tooltipConfig}
         />
         {chartConfig.zoomingTool && (
           <Brush
