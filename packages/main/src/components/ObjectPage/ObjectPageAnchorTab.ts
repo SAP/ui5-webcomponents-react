@@ -39,8 +39,8 @@ class ObjectPageAnchorTab extends Tab {
     return metadata;
   }
 
-  static async onDefine() {
-    await Icon.define();
+  static get dependencies() {
+    return [Icon];
   }
 
   static get stripTemplate() {
@@ -73,7 +73,7 @@ class ObjectPageAnchorTab extends Tab {
               </span>`
             : undefined}
           ${context.withSubSections
-            ? html` <ui5-icon
+            ? html`<ui5-icon
                 name="slim-arrow-down"
                 class="objectPageSubSectionsIcon"
                 interactive
