@@ -1,6 +1,6 @@
-import ObjectPageAnchorTab from './ObjectPageAnchorTab';
 import '@ui5/webcomponents-icons/dist/slim-arrow-down';
 import React, { FC, useEffect, useRef } from 'react';
+import { ObjectPageAnchorTab } from './ObjectPageAnchorTab';
 import { safeGetChildrenArray } from './ObjectPageUtils';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
