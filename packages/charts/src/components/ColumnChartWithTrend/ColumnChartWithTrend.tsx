@@ -1,7 +1,8 @@
 import { useIsRTL, usePassThroughHtmlProps, useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
-import { ColumnChartWithTrendPlaceholder } from '@ui5/webcomponents-react-charts/dist/ColumnChartWithTrendPlaceholder';
+import { TrendLinePlaceholder } from '@ui5/webcomponents-react-charts/dist/TrendLinePlaceholder';
+import { ColumnChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/ColumnChartPlaceholder';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/dist/components/ChartContainer';
 import { ChartDataLabel } from '@ui5/webcomponents-react-charts/dist/components/ChartDataLabel';
 import { XAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/XAxisTicks';
@@ -36,7 +37,6 @@ import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { defaultFormatter } from '../../internal/defaults';
 import { tickLineConfig, tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
 import { LineChart as LineChartLib } from 'recharts';
-import { complexDataSet, simpleDataSet } from '../../resources/DemoProps';
 
 interface MeasureConfig extends IChartMeasure {
   /**
@@ -212,7 +212,7 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
         <ChartContainer
           dataset={dataset}
           loading={loading}
-          Placeholder={ColumnChartWithTrendPlaceholder}
+          Placeholder={TrendLinePlaceholder}
           ref={chartRef}
           style={{ ...style, height: `calc(${style.height} * ${trendLineHeight})` }}
           className={className}
@@ -224,7 +224,7 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
           <LineChartLib
             margin={marginChart}
             syncId="anyId"
-            data={complexDataSet}
+            data={dataset}
             onClick={onDataPointClickInternal}
             className={typeof onDataPointClick === 'function' ? 'has-click-handler' : undefined}
           >
@@ -237,6 +237,7 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
               width={yAxisWidth}
             />
             {measures.map((element, index) => {
+              console.log(element);
               return (
                 <Line
                   dot={element.showDot ?? !isBigDataSet}
@@ -275,7 +276,7 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
           </LineChartLib>
         </ChartContainer>
         <ChartContainer
-          Placeholder={ColumnChartWithTrendPlaceholder}
+          Placeholder={ColumnChartPlaceholder}
           dataset={dataset}
           ref={chartRef}
           style={{ ...style, height: `calc(${style.height} * ${columnChartHeight})` }}

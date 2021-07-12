@@ -3,8 +3,7 @@ import { BarChart } from './dist/BarChart';
 import { BarChartPlaceholder } from './dist/BarChartPlaceholder';
 import { ColumnChart } from './dist/ColumnChart';
 import { ColumnChartPlaceholder } from './dist/ColumnChartPlaceholder';
-import { ColumnChartWithTrend } from './dist/ColumnChartWithTrend/ColumnChartWithTrend';
-import { ColumnChartWithTrendPlaceholder } from './dist/ColumnChartWithTrendPlaceholder';
+import { ColumnChartWithTrend } from './dist/ColumnChartWithTrend';
 import { ComposedChart } from './dist/ComposedChart';
 import { ComposedChartPlaceholder } from './dist/ComposedChartPlaceholder';
 import { DonutChart } from './dist/DonutChart';
@@ -17,6 +16,7 @@ import { RadarChart } from './dist/RadarChart';
 import { RadialChart } from './dist/RadialChart';
 import { ScatterChart } from './dist/ScatterChart';
 import { ScatterChartPlaceholder } from './dist/ScatterChartPlaceholder';
+import { TrendLinePlaceholder } from './dist/TrendLinePlaceholder';
 
 export {
   BarChart,
@@ -32,9 +32,9 @@ export {
   ScatterChart,
   BarChartPlaceholder,
   ColumnChartPlaceholder,
-  ColumnChartWithTrendPlaceholder,
   ComposedChartPlaceholder,
   LineChartPlaceholder,
   PieChartPlaceholder,
-  ScatterChartPlaceholder
+  ScatterChartPlaceholder,
+  TrendLinePlaceholder
 };
