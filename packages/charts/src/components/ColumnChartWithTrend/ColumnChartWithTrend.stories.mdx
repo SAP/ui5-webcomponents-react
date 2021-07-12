@@ -39,13 +39,15 @@ import { complexDataSet } from '../../resources/DemoProps';
         {
           accessor: 'users',
           label: 'Users',
-          formatter: (val) => val.toLocaleString()
+          formatter: (val) => val.toLocaleString(),
+          type: 'line'
         },
         {
           accessor: 'sessions',
           label: 'Active Sessions',
           formatter: (val) => `${val} sessions`,
-          hideDataLabel: true
+          hideDataLabel: true,
+          type: 'column'
         },
         {
           accessor: 'volume',

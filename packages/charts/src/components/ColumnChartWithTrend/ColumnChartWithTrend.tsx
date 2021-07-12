@@ -48,6 +48,10 @@ interface MeasureConfig extends IChartMeasure {
    */
   opacity?: number;
   /**
+   * Chart type
+   */
+  type: AvailableChartTypes;
+  /**
    * column Stack ID
    * @default undefined
    */
@@ -121,8 +125,10 @@ const valueAccessor =
     return getValueByDataKey(payload, attribute);
   };
 
+type AvailableChartTypes = 'line' | 'column' | string;
+
 /**
- * A `ColumnChart` is a data visualization where each category is represented by a rectangle, with the height of the rectangle being proportional to the values being plotted.
+ * A `ColumnChartWithTrend` is a data visualization where each category is represented by a rectangle, with the height of the rectangle being proportional to the values being plotted amd a trend line which is displayed above the column chart.
  */
 const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
   (props: ColumnChartWithTrendProps, ref: Ref<HTMLDivElement>) => {
@@ -237,25 +243,26 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
               width={yAxisWidth}
             />
             {measures.map((element, index) => {
-              console.log(element);
-              return (
-                <Line
-                  dot={element.showDot ?? !isBigDataSet}
-                  yAxisId={chartConfig.secondYAxis?.dataKey === element.accessor ? 'right' : 'left'}
-                  key={element.accessor}
-                  name={element.label ?? element.accessor}
-                  strokeOpacity={element.opacity}
-                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                  // @ts-ignore
-                  label={isBigDataSet ? false : <ChartDataLabel config={element} chartType="line" position="top" />}
-                  type="monotone"
-                  dataKey={element.accessor}
-                  stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
-                  strokeWidth={element.width}
-                  activeDot={{ onClick: onDataPointClickInternal } as any}
-                  isAnimationActive={noAnimation === false}
-                />
-              );
+              if (element.type === 'line') {
+                return (
+                  <Line
+                    dot={element.showDot ?? !isBigDataSet}
+                    yAxisId={chartConfig.secondYAxis?.dataKey === element.accessor ? 'right' : 'left'}
+                    key={element.accessor}
+                    name={element.label ?? element.accessor}
+                    strokeOpacity={element.opacity}
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                    // @ts-ignore
+                    label={isBigDataSet ? false : <ChartDataLabel config={element} chartType="line" position="top" />}
+                    type="monotone"
+                    dataKey={element.accessor}
+                    stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
+                    strokeWidth={element.width}
+                    activeDot={{ onClick: onDataPointClickInternal } as any}
+                    isAnimationActive={noAnimation === false}
+                  />
+                );
+              }
             })}
             {chartConfig.referenceLine && (
               <ReferenceLine
@@ -329,31 +336,33 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
               width={yAxisWidth}
             />
             {measures.map((element, index) => {
-              return (
-                <Column
-                  yAxisId={chartConfig.secondYAxis?.dataKey === element.accessor ? 'right' : 'left'}
-                  stackId={element.stackId}
-                  fillOpacity={element.opacity}
-                  key={element.accessor}
-                  name={element.label ?? element.accessor}
-                  strokeOpacity={element.opacity}
-                  type="monotone"
-                  dataKey={element.accessor}
-                  fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
-                  stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
-                  barSize={element.width}
-                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                  // @ts-ignore
-                  onClick={onDataPointClickInternal}
-                  isAnimationActive={noAnimation === false}
-                >
-                  <LabelList
-                    data={dataset}
-                    valueAccessor={valueAccessor(element.accessor)}
-                    content={<ChartDataLabel config={element} chartType="column" position={'insideTop'} />}
-                  />
-                </Column>
-              );
+              if (element.type === 'column') {
+                return (
+                  <Column
+                    yAxisId={chartConfig.secondYAxis?.dataKey === element.accessor ? 'right' : 'left'}
+                    stackId={element.stackId}
+                    fillOpacity={element.opacity}
+                    key={element.accessor}
+                    name={element.label ?? element.accessor}
+                    strokeOpacity={element.opacity}
+                    type="monotone"
+                    dataKey={element.accessor}
+                    fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
+                    stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
+                    barSize={element.width}
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                    // @ts-ignore
+                    onClick={onDataPointClickInternal}
+                    isAnimationActive={noAnimation === false}
+                  >
+                    <LabelList
+                      data={dataset}
+                      valueAccessor={valueAccessor(element.accessor)}
+                      content={<ChartDataLabel config={element} chartType="column" position={'insideTop'} />}
+                    />
+                  </Column>
+                );
+              }
             })}
             {!noLegend && (
               // eslint-disable-next-line @typescript-eslint/ban-ts-comment
