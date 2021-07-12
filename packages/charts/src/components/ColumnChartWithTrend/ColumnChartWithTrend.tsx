@@ -275,9 +275,8 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
           </LineChartLib>
         </ChartContainer>
         <ChartContainer
-          dataset={dataset}
-          loading={loading}
           Placeholder={ColumnChartWithTrendPlaceholder}
+          dataset={dataset}
           ref={chartRef}
           style={{ ...style, height: `calc(${style.height} * ${columnChartHeight})` }}
           className={className}

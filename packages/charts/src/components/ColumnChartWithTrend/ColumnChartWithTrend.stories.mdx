@@ -57,3 +57,25 @@ import { complexDataSet } from '../../resources/DemoProps';
     {(props) => <ColumnChartWithTrend {...props} />}
   </Story>
 </Canvas>
+
+### Loading Placeholder
+
+<Canvas>
+  <Story
+    name="Loading Placeholder"
+    args={{
+      dataset: [],
+      style: { height: '60vh' },
+      dimensions: [
+        {
+          accessor: 'name',
+          formatter: (d) => `${d} 2019`,
+          interval: 0
+        }
+      ],
+      measures: []
+    }}
+  >
+    {(props) => <ColumnChartWithTrend {...props} />}
+  </Story>
+</Canvas>
