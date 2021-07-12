@@ -1,6 +1,7 @@
 import ObjectPageAnchorTab from './ObjectPageAnchorTab';
 import '@ui5/webcomponents-icons/dist/slim-arrow-down';
 import React, { FC, useEffect, useRef } from 'react';
+import { safeGetChildrenArray } from './ObjectPageUtils';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -17,11 +18,9 @@ export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props: Obj
   const ref = useRef<HTMLElement>();
   const { section, index, selected, onShowSubSectionPopover } = props;
 
-  let subSectionsAvailable = false;
-  if (section.props.children && section.props.children.filter) {
-    const subSections = section.props.children.filter((item) => item.props && item.props.isSubSection);
-    subSectionsAvailable = subSections.length > 0;
-  }
+  const hasSubSections = safeGetChildrenArray<any>(section.props.children).some(
+    (subSection) => subSection.props?.isSubSection
+  );
 
   useEffect(() => {
     const listener = (e) => {
@@ -41,7 +40,7 @@ export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props: Obj
       data-section-id={section.props.id}
       text={section.props.title}
       selected={selected || undefined}
-      with-sub-sections={subSectionsAvailable || undefined}
+      with-sub-sections={hasSubSections || undefined}
     />
   );
 };

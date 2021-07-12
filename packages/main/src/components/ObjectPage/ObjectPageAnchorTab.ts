@@ -95,24 +95,25 @@ class ObjectPageAnchorTab extends Tab {
     });
   };
 
-  static get overflowTemplate() {
-    return (context, tags, suffix) => {
-      setTags(tags);
-      setSuffix(suffix);
-      return html` <ui5-li-custom
-        id="${ifDefined(context._id)}"
-        class="${ifDefined(context.overflowClasses)}"
-        type="${ifDefined(context.overflowState)}"
-        ?selected="${context.effectiveSelected}"
-        ?disabled="${context.effectiveDisabled}"
-        aria-disabled="${ifDefined(context.effectiveDisabled)}"
-        aria-selected="${ifDefined(context.effectiveSelected)}"
-        aria-labelledby="${ifDefined(context.ariaLabelledBy)}"
-      >
-        <div class="ui5-tab-overflow-itemContent">${ifDefined(context.text)}</div>
-      </ui5-li-custom>`;
-    };
-  }
+  // maybe we can look into a custom overflow template as well
+  // static get overflowTemplate() {
+  //   return (context, tags, suffix) => {
+  //     setTags(tags);
+  //     setSuffix(suffix);
+  //     return html`<ui5-li-custom
+  //       id="${ifDefined(context._id)}"
+  //       class="${ifDefined(context.overflowClasses)}"
+  //       type="${ifDefined(context.overflowState)}"
+  //       ?selected="${context.effectiveSelected}"
+  //       ?disabled="${context.effectiveDisabled}"
+  //       aria-disabled="${ifDefined(context.effectiveDisabled)}"
+  //       aria-selected="${ifDefined(context.effectiveSelected)}"
+  //       aria-labelledby="${ifDefined(context.ariaLabelledBy)}"
+  //     >
+  //       <div class="ui5-tab-overflow-itemContent">${ifDefined(context.text)}</div>
+  //     </ui5-li-custom>`;
+  //   };
+  // }
 }
 
 TabContainer.registerTabStyles(`
