@@ -1,15 +1,13 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import '@ui5/webcomponents-icons/dist/person-placeholder.js';
 import { ColumnChartWithTrend } from '@ui5/webcomponents-react-charts/dist/ColumnChartWithTrend';
-import { complexDataSet, simpleDataSet } from '../../resources/DemoProps';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
+import { complexDataSet } from '../../resources/DemoProps';
 
 <Meta
   title="Charts /  ColumnChart with Trend"
   component={ColumnChartWithTrend}
   argTypes={{
-    ...DocsCommonProps,
     dataset: {
       control: { disable: true }
     },
