@@ -33,7 +33,7 @@ import '@ui5/webcomponents-icons/dist/wrench.js';
   subcomponents={{ ObjectPageSection, ObjectPageSubSection }}
   argTypes={{
     headerTitle: { control: { disable: true } },
-    header: { control: { disable: true } },
+    headerContent: { control: { disable: true } },
     footer: { control: { disable: true } },
     children: { control: { disable: true } }
   }}
@@ -79,7 +79,7 @@ import '@ui5/webcomponents-icons/dist/wrench.js';
         <ObjectStatus state={ValueState.Success}>employed</ObjectStatus>
       </DynamicPageTitle>
     ),
-    header: (
+    headerContent: (
       <DynamicPageHeader>
         <FlexBox wrap={FlexBoxWrap.Wrap} alignItems={FlexBoxAlignItems.Center}>
           <FlexBox direction={FlexBoxDirection.Column}>

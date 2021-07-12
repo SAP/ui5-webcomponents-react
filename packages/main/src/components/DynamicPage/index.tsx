@@ -32,11 +32,11 @@ export interface DynamicPageProps extends Omit<CommonProps, 'title'> {
    */
   backgroundDesign?: PageBackgroundDesign;
   /**
-   * Determines whether the content header is shown.
+   * Determines whether the `headerContent` is shown.
    */
   alwaysShowContentHeader?: boolean;
   /**
-   * Determines whether the header button is shown.
+   * Determines whether the expand/collapse `headerContent` button is shown.
    */
   showHideHeaderButton?: boolean;
   /**
@@ -54,7 +54,7 @@ export interface DynamicPageProps extends Omit<CommonProps, 'title'> {
    *
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `DynamicPageHeader` in order to preserve the intended design.
    */
-  header?: ReactElement;
+  headerContent?: ReactElement;
   /**
    * React element which defines the footer content.
    *
@@ -89,7 +89,7 @@ const useStyles = createUseStyles(styles, { name: 'DynamicPage' });
 const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, ref: Ref<HTMLDivElement>) => {
   const {
     headerTitle,
-    header,
+    headerContent,
     tooltip,
     style,
     backgroundDesign,
@@ -205,12 +205,12 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
     >
       {headerTitle &&
         cloneElement(headerTitle, {
-          'data-not-clickable': !header || (!showHideHeaderButton && !headerContentPinnable),
+          'data-not-clickable': !headerContent || (!showHideHeaderButton && !headerContentPinnable),
           ref: topHeaderRef,
           onToggleHeaderContentVisibility: onToggleHeaderContent
         })}
-      {header &&
-        cloneElement(header, {
+      {headerContent &&
+        cloneElement(headerContent, {
           ref: headerContentRef,
           headerPinned: headerState === HEADER_STATES.VISIBLE_PINNED || headerState === HEADER_STATES.VISIBLE,
           topHeaderHeight

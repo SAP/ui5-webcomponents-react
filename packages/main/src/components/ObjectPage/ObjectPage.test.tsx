@@ -13,7 +13,7 @@ import { ObjectPageSubSection } from '@ui5/webcomponents-react/dist/ObjectPageSu
 import { Text } from '@ui5/webcomponents-react/dist/Text';
 import React from 'react';
 
-const header = <DynamicPageHeader>HeaderContent</DynamicPageHeader>;
+const headerContent = <DynamicPageHeader>HeaderContent</DynamicPageHeader>;
 const headerTitle = <DynamicPageTitle>HeaderTitle</DynamicPageTitle>;
 const footer = <Bar design={BarDesign.FloatingFooter} endContent={<div>Footer</div>} />;
 
@@ -147,7 +147,7 @@ describe('ObjectPage', () => {
   });
 
   test('with header', () => {
-    const { asFragment, getByText, queryByRole } = render(renderComponent({ header }));
+    const { asFragment, getByText, queryByRole } = render(renderComponent({ headerContent }));
     expect(getByText('HeaderContent')).toBeVisible();
     expect(queryByRole('navigation')).toBeNull();
 
@@ -168,7 +168,7 @@ describe('ObjectPage', () => {
   });
 
   test('with title, header & footer', () => {
-    const { asFragment, getByText } = render(renderComponent({ headerTitle, header, footer }));
+    const { asFragment, getByText } = render(renderComponent({ headerTitle, headerContent, footer }));
     expect(getByText('HeaderTitle')).toBeVisible();
     expect(getByText('HeaderContent')).toBeVisible();
     expect(getByText('Footer')).toBeVisible();
@@ -176,35 +176,39 @@ describe('ObjectPage', () => {
   });
 
   test('with anchor-bar', () => {
-    const { asFragment, queryByTitle, rerender, container } = render(renderComponent({ headerTitle, header, footer }));
+    const { asFragment, queryByTitle, rerender, container } = render(
+      renderComponent({ headerTitle, headerContent, footer })
+    );
     expect(queryByTitle('Expand Header')).toBeNull();
     expect(queryByTitle('Pin Header')).toBeNull();
-    rerender(renderComponent({ headerTitle, header, footer, showHideHeaderButton: true }));
+    rerender(renderComponent({ headerTitle, headerContent, footer, showHideHeaderButton: true }));
     expect(queryByTitle('Expand Header')).toBeVisible();
     expect(queryByTitle('Pin Header')).toBeNull();
 
     //needs mocking, otherwise won't work
-    /* rerender(renderComponent({ headerTitle, header, footer, showHideHeaderButton: true, headerContentPinnable: true }));
+    /* rerender(renderComponent({ headerTitle, headerContent, footer, showHideHeaderButton: true, headerContentPinnable: true }));
     expect(queryByTitle('Expand Header')).toBeVisible();
     expect(queryByTitle('Pin Header')).toBeVisible();
-    rerender(renderComponent({ headerTitle, header, footer, headerContentPinnable: true }));
+    rerender(renderComponent({ headerTitle, headerContent, footer, headerContentPinnable: true }));
     expect(queryByTitle('Expand Header')).toBeNull();
     expect(queryByTitle('Pin Header')).toBeVisible(); */
     expect(asFragment()).toMatchSnapshot();
   });
 
   test('with img', () => {
-    const { asFragment, container, rerender } = render(renderComponent({ headerTitle, header, footer }));
+    const { asFragment, container, rerender } = render(renderComponent({ headerTitle, headerContent, footer }));
     const headerContainerChildren = container.querySelector(
       'div[data-component-name="ObjectPageHeaderContainer"]'
     ).children;
     expect(headerContainerChildren.length).toBe(1);
-    rerender(renderComponent({ headerTitle, header, footer, image: 'not_a_real_path.orly' }));
+    rerender(renderComponent({ headerTitle, headerContent, footer, image: 'not_a_real_path.orly' }));
     expect(headerContainerChildren.length).toBe(2);
-    rerender(renderComponent({ headerTitle, header, footer, image: 'not_a_real_path.orly', imageShapeCircle: true }));
+    rerender(
+      renderComponent({ headerTitle, headerContent, footer, image: 'not_a_real_path.orly', imageShapeCircle: true })
+    );
     expect(headerContainerChildren[0]).toHaveStyle(`border-radius: 50%; overflow: hidden;`);
     expect(asFragment()).toMatchSnapshot();
-    rerender(renderComponent({ headerTitle, header, footer, image: <Avatar /> }));
+    rerender(renderComponent({ headerTitle, headerContent, footer, image: <Avatar /> }));
     expect(headerContainerChildren.length).toBe(2);
     expect(headerContainerChildren[0]).toHaveAttribute('size', 'L');
     expect(asFragment()).toMatchSnapshot();
@@ -213,7 +217,7 @@ describe('ObjectPage', () => {
   //todo: needs mocking
   test.skip('title in header', () => {
     const { container } = render(
-      renderComponent({ headerTitle, header, footer, image: <Avatar />, showTitleInHeaderContent: true })
+      renderComponent({ headerTitle, headerContent, footer, image: <Avatar />, showTitleInHeaderContent: true })
     );
   });
 

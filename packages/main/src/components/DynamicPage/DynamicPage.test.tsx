@@ -56,7 +56,7 @@ const renderComponent = () => (
         <Badge>Status: OK</Badge>
       </DynamicPageTitle>
     }
-    header={
+    headerContent={
       <DynamicPageHeader>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <Label>Location: Warehouse A</Label>
@@ -237,7 +237,7 @@ const renderComponentWithoutContent = () => (
         <Badge>Status: OK</Badge>
       </DynamicPageTitle>
     }
-    header={
+    headerContent={
       <DynamicPageHeader>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <Label>Location: Warehouse A</Label>
@@ -286,7 +286,7 @@ const renderComponentWithAlwaysShowContentHeader = () => (
         <Badge>Status: OK</Badge>
       </DynamicPageTitle>
     }
-    header={
+    headerContent={
       <DynamicPageHeader>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <Label>Location: Warehouse A</Label>
@@ -319,7 +319,7 @@ const renderComponentHideHeaderButton = () => (
         subheading={<Label>This is a subheading</Label>}
       />
     }
-    header={
+    headerContent={
       <DynamicPageHeader>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <Label>Location: Warehouse A</Label>

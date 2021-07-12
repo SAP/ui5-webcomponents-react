@@ -67,7 +67,7 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'title'> {
    *
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `DynamicPageHeader` in order to preserve the intended design.
    */
-  header?: ReactElement;
+  headerContent?: ReactElement;
   /**
    * React element which defines the footer content.
    *
@@ -101,7 +101,7 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'title'> {
 
   // appearance
   /**
-   * Defines whether the header is hidden by scrolling down.
+   * Defines whether the `headerContent` is hidden by scrolling down.
    */
   alwaysShowContentHeader?: boolean;
   /**
@@ -125,7 +125,7 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'title'> {
    */
   showHideHeaderButton?: boolean;
   /**
-   * Defines whether the header content is pinnable.
+   * Defines whether the `headerContent` is pinnable.
    */
   headerContentPinnable?: boolean;
 }
@@ -153,7 +153,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     selectedSectionId,
     alwaysShowContentHeader,
     showTitleInHeaderContent,
-    header,
+    headerContent,
     headerContentPinnable
   } = props;
 
@@ -168,7 +168,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   const objectPageRef: RefObject<HTMLDivElement> = useConsolidatedRef(ref);
   const topHeaderRef: RefObject<HTMLDivElement> = useRef();
   //@ts-ignore
-  const headerContentRef: RefObject<HTMLDivElement> = useConsolidatedRef(header?.ref);
+  const headerContentRef: RefObject<HTMLDivElement> = useConsolidatedRef(headerContent?.ref);
   const anchorBarRef: RefObject<HTMLDivElement> = useRef();
   const scrollTimeout = useRef(null);
   const [isAfterScroll, setIsAfterScroll] = useState(false);
@@ -181,7 +181,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     topHeaderRef,
     headerContentRef,
     anchorBarRef,
-    { noHeader: !headerTitle && !header }
+    { noHeader: !headerTitle && !headerContent }
   );
 
   const avatar = useMemo(() => {
@@ -494,31 +494,31 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         return React.cloneElement(headerTitle, {
           showSubheadingRight: true,
           style: titleStyles,
-          'data-not-clickable': !header || (!showHideHeaderButton && !headerContentPinnable)
+          'data-not-clickable': !headerContent || (!showHideHeaderButton && !headerContentPinnable)
         });
       }
       return React.cloneElement(headerTitle, {
         style: titleStyles,
-        'data-not-clickable': !header || (!showHideHeaderButton && !headerContentPinnable)
+        'data-not-clickable': !headerContent || (!showHideHeaderButton && !headerContentPinnable)
       });
     },
-    [headerTitle, showHideHeaderButton, headerContentPinnable, header]
+    [headerTitle, showHideHeaderButton, headerContentPinnable, headerContent]
   );
 
   const renderHeaderContentSection = useCallback(() => {
-    if (header?.props) {
-      return React.cloneElement(header, {
-        ...header.props,
+    if (headerContent?.props) {
+      return React.cloneElement(headerContent, {
+        ...headerContent.props,
         topHeaderHeight,
         headerPinned: headerPinned || scrolledHeaderExpanded,
         ref: headerContentRef,
         children: (
           <div className={classes.headerContainer} data-component-name="ObjectPageHeaderContainer">
             {avatar}
-            {header.props.children && (
+            {headerContent.props.children && (
               <div data-component-name="ObjectPageHeaderContent">
                 {headerTitle && showTitleInHeaderContent && renderTitleSection(true)}
-                {header.props.children}
+                {headerContent.props.children}
               </div>
             )}
           </div>
@@ -526,7 +526,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       });
     }
   }, [
-    header,
+    headerContent,
     topHeaderHeight,
     headerPinned,
     scrolledHeaderExpanded,
@@ -639,7 +639,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         data-component-name="ObjectPageTopHeader"
         ref={topHeaderRef}
         role="banner"
-        data-not-clickable={!header || (!showHideHeaderButton && !headerContentPinnable)}
+        data-not-clickable={!headerContent || (!showHideHeaderButton && !headerContentPinnable)}
         aria-roledescription="Object Page header"
         className={classes.header}
         onClick={onTitleClick}
@@ -653,7 +653,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         {headerTitle && renderTitleSection()}
       </header>
       {renderHeaderContentSection()}
-      {header && headerTitle && (
+      {headerContent && headerTitle && (
         <div
           data-component-name="ObjectPageAnchorBar"
           ref={anchorBarRef}
