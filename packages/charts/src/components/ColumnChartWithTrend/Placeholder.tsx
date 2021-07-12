@@ -5,8 +5,8 @@ import ContentLoader from 'react-content-loader';
 export const TrendLinePlaceholder = (props) => {
   return (
     <ContentLoader
-      viewBox="0 0 165 145"
-      preserveAspectRatio="xMidYMid meet"
+      viewBox="0 0 600 115"
+      preserveAspectRatio="xMidYMax meet"
       width="100%"
       height="100%"
       speed={2}
@@ -15,9 +15,8 @@ export const TrendLinePlaceholder = (props) => {
       backgroundOpacity={ThemingParameters.sapContent_DisabledOpacity as any}
       {...props}
     >
-      <rect x="10" y="135" width="135" height="1" />
       <path
-        d="M20 135 L40 80 L60 70 L80 30 L100 50 L120 65 L 135 100 L120 67 L100 52 L80 32 L60 72 L40 82 L20 137 Z"
+        d="M 66 71 L 117 28 L 154 68 L 211 81 L 289 36 L 390 13 L 499 73 L 496 73 L 389 19 L 291 41 L 212 85 L 152 71 L 117 34 Z"
         fill="none"
         strokeWidth="2"
       />
