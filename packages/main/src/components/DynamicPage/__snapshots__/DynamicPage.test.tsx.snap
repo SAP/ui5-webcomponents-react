@@ -6,7 +6,7 @@ exports[`DynamicPage always show content header 1`] = `
     class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundStandard"
   >
     <div
-      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container"
+      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container StdExtPadding-Desktop"
       data-component-name="DynamicPageTitle"
       data-not-clickable="true"
     >
@@ -244,7 +244,7 @@ exports[`DynamicPage always show content header 1`] = `
       </div>
     </div>
     <div
-      class="DynamicPageHeader-header"
+      class="DynamicPageHeader-header StdExtPadding-Desktop"
       data-component-name="DynamicPageHeader"
       style="top: 0px; z-index: 1;"
     >
@@ -307,7 +307,7 @@ exports[`DynamicPage always show content header 1`] = `
       </section>
     </div>
     <div
-      class="DynamicPage-contentContainer"
+      class="DynamicPage-contentContainer StdExtPadding-Desktop"
       data-component-name="DynamicPageContent"
       style="margin-top: 0px; padding-bottom: 0px;"
     />
@@ -321,7 +321,7 @@ exports[`DynamicPage hider header button 1`] = `
     class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundStandard"
   >
     <div
-      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container"
+      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container StdExtPadding-Desktop"
       data-component-name="DynamicPageTitle"
       data-not-clickable="true"
     >
@@ -410,7 +410,7 @@ exports[`DynamicPage hider header button 1`] = `
       </div>
     </div>
     <div
-      class="DynamicPageHeader-header"
+      class="DynamicPageHeader-header StdExtPadding-Desktop"
       data-component-name="DynamicPageHeader"
       style="top: 0px; z-index: 1;"
     >
@@ -463,7 +463,7 @@ exports[`DynamicPage hider header button 1`] = `
       />
     </div>
     <div
-      class="DynamicPage-contentContainer"
+      class="DynamicPage-contentContainer StdExtPadding-Desktop"
       data-component-name="DynamicPageContent"
       style="margin-top: 0px; padding-bottom: 0px;"
     >
@@ -662,7 +662,7 @@ exports[`DynamicPage render footer 1`] = `
       </section>
     </div>
     <div
-      class="DynamicPage-contentContainer"
+      class="DynamicPage-contentContainer StdExtPadding-Desktop"
       data-component-name="DynamicPageContent"
       style="margin-top: 0px; padding-bottom: 1rem;"
     />
@@ -692,7 +692,7 @@ exports[`DynamicPage with content 1`] = `
     class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundStandard"
   >
     <div
-      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container"
+      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container StdExtPadding-Desktop"
       data-component-name="DynamicPageTitle"
       data-not-clickable="false"
     >
@@ -930,7 +930,7 @@ exports[`DynamicPage with content 1`] = `
       </div>
     </div>
     <div
-      class="DynamicPageHeader-header"
+      class="DynamicPageHeader-header StdExtPadding-Desktop"
       data-component-name="DynamicPageHeader"
     >
       <div
@@ -992,7 +992,7 @@ exports[`DynamicPage with content 1`] = `
       </section>
     </div>
     <div
-      class="DynamicPage-contentContainer"
+      class="DynamicPage-contentContainer StdExtPadding-Desktop"
       data-component-name="DynamicPageContent"
       style="margin-top: 0px; padding-bottom: 0px;"
     >
@@ -1663,7 +1663,7 @@ exports[`DynamicPage without content 1`] = `
     class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundStandard"
   >
     <div
-      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container"
+      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container StdExtPadding-Desktop"
       data-component-name="DynamicPageTitle"
       data-not-clickable="false"
     >
@@ -1901,7 +1901,7 @@ exports[`DynamicPage without content 1`] = `
       </div>
     </div>
     <div
-      class="DynamicPageHeader-header"
+      class="DynamicPageHeader-header StdExtPadding-Desktop"
       data-component-name="DynamicPageHeader"
     >
       <div
@@ -1963,7 +1963,7 @@ exports[`DynamicPage without content 1`] = `
       </section>
     </div>
     <div
-      class="DynamicPage-contentContainer"
+      class="DynamicPage-contentContainer StdExtPadding-Desktop"
       data-component-name="DynamicPageContent"
       style="margin-top: 0px; padding-bottom: 0px;"
     />

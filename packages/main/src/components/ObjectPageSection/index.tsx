@@ -4,6 +4,7 @@ import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/useP
 import React, { FC, forwardRef, ReactNode, ReactNodeArray, RefObject } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { useResponsiveContentPadding } from '../../internal/useResponsiveContentPadding';
 import { EmptyIdPropException } from '../ObjectPage/EmptyIdPropException';
 import styles from './ObjectPageSection.jss';
 
@@ -47,26 +48,32 @@ const ObjectPageSection: FC<ObjectPageSectionPropTypes> = forwardRef(
     if (titleUppercase) {
       titleClasses.put(classes.uppercase);
     }
+    const responsivePaddingClass = useResponsiveContentPadding(sectionRef.current);
+    const sectionClasses = StyleClassHelper.of(responsivePaddingClass);
+    if (className) {
+      sectionClasses.put(className);
+    }
 
     const passThroughProps = usePassThroughHtmlProps(props, ['id']);
-
     return (
       <section
         ref={sectionRef}
         role="region"
-        className={className}
+        className={sectionClasses.className}
         style={style}
         title={tooltip}
         {...passThroughProps}
         id={htmlId}
         data-component-name="ObjectPageSection"
       >
-        <div role="heading" aria-level={3} className={classes.header}>
-          <div className={titleClasses.valueOf()}>{title}</div>
+        <div role="heading" aria-level={3} className={classes.header} data-component-name="ObjectPageSectionHeading">
+          <div className={titleClasses.className}>{title}</div>
         </div>
         {/* TODO Check for subsections as they should win over the children */}
         <div className={classes.sectionContent}>
-          <div className={classes.sectionContentInner}>{children}</div>
+          <div className={classes.sectionContentInner} data-component-name="ObjectPageSectionContent">
+            {children}
+          </div>
         </div>
       </section>
     );

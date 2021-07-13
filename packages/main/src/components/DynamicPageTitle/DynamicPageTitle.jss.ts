@@ -1,12 +1,7 @@
-import { sapUiResponsiveContentPadding, sapUiTinyMarginBeginEnd } from '@ui5/webcomponents-react-base/dist/spacing';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
-import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
-
-const padding = isIE() ? { padding: '0 2rem' } : { ...sapUiResponsiveContentPadding };
 
 export const DynamicPageTitleStyles = {
   container: {
-    ...padding,
     backgroundColor: ThemingParameters.sapObjectHeader_Background,
     minHeight: '3rem',
     wordWrap: 'break-word',

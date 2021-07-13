@@ -32,6 +32,7 @@ import { createUseStyles } from 'react-jss';
 import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
 import { stopPropagation } from '../../internal/stopPropagation';
 import { useObserveHeights } from '../../internal/useObserveHeights';
+import { useResponsiveContentPadding } from '../../internal/useResponsiveContentPadding';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
 import { ObjectPageSectionPropTypes } from '../ObjectPageSection';
 import { ObjectPageSubSectionPropTypes } from '../ObjectPageSubSection';
@@ -174,6 +175,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   const [isAfterScroll, setIsAfterScroll] = useState(false);
 
   const isRTL = useIsRTL(objectPageRef);
+  const responsivePaddingClass = useResponsiveContentPadding(objectPageRef.current);
 
   // observe heights of header parts
   const { topHeaderHeight, headerContentHeight, anchorBarHeight, totalHeaderHeight } = useObserveHeights(
@@ -515,7 +517,10 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         headerPinned: headerPinned || scrolledHeaderExpanded,
         ref: headerContentRef,
         children: (
-          <div className={classes.headerContainer} data-component-name="ObjectPageHeaderContainer">
+          <div
+            className={`${classes.headerContainer} ${responsivePaddingClass}`}
+            data-component-name="ObjectPageHeaderContainer"
+          >
             {avatar}
             {headerContent.props.children && (
               <div data-component-name="ObjectPageHeaderContent">
@@ -626,6 +631,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     },
     [onToggleHeaderContentVisibility, headerContentHeight]
   );
+
   return (
     <div
       data-component-name="ObjectPage"
@@ -638,6 +644,8 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       onScroll={onObjectPageScroll}
     >
       <header
+        onMouseOver={onHoverToggleButton}
+        onMouseLeave={onHoverToggleButton}
         data-component-name="ObjectPageTopHeader"
         ref={topHeaderRef}
         role="banner"
@@ -645,7 +653,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
           alwaysShowContentHeader || !headerContent || (!showHideHeaderButton && !headerContentPinnable)
         }
         aria-roledescription="Object Page header"
-        className={classes.header}
+        className={`${classes.header} ${responsivePaddingClass}`}
         onClick={onTitleClick}
         style={{
           display: !showTitleInHeaderContent || headerContentHeight === 0 ? 'grid' : 'none'

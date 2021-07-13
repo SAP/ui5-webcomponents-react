@@ -1,13 +1,9 @@
-import { sapUiResponsiveContentPadding } from '@ui5/webcomponents-react-base/dist/spacing';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { DynamicPageCssVariables } from '../DynamicPage/DynamicPage.jss';
 import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
 
-const padding = isIE() ? { padding: '0 2rem' } : { ...sapUiResponsiveContentPadding };
-
 export const DynamicPageHeaderStyles = {
   header: {
-    ...padding,
     backgroundColor: ThemingParameters.sapObjectHeader_Background,
     position: 'sticky',
     zIndex: 1,

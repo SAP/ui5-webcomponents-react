@@ -22,6 +22,7 @@ import React, {
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
+import { useResponsiveContentPadding } from '../../internal/useResponsiveContentPadding';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
 import { useObserveHeights } from '../../internal/useObserveHeights';
 import { styles } from './DynamicPage.jss';
@@ -109,8 +110,10 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
 
   const anchorBarRef: RefObject<HTMLDivElement> = useRef();
   const dynamicPageRef: RefObject<HTMLDivElement> = useConsolidatedRef(ref);
-  const topHeaderRef: RefObject<HTMLDivElement> = useRef();
-  const headerContentRef: RefObject<HTMLDivElement> = useRef();
+  //@ts-ignore
+  const topHeaderRef: RefObject<HTMLDivElement> = useConsolidatedRef(headerTitle?.ref);
+  //@ts-ignore
+  const headerContentRef: RefObject<HTMLDivElement> = useConsolidatedRef(headerContent?.ref);
 
   const [headerState, setHeaderState] = useState<HEADER_STATES>(
     alwaysShowContentHeader ? HEADER_STATES.VISIBLE_PINNED : isIE() ? HEADER_STATES.VISIBLE : HEADER_STATES.AUTO
@@ -195,6 +198,8 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
   if (isIE()) {
     anchorBarClasses.put(classes.iEClass);
   }
+  const responsivePaddingClass = useResponsiveContentPadding(dynamicPageRef.current);
+
   return (
     <div
       ref={dynamicPageRef}
@@ -208,11 +213,17 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
           'data-not-clickable':
             alwaysShowContentHeader || !headerContent || (!showHideHeaderButton && !headerContentPinnable),
           ref: topHeaderRef,
+          className: headerTitle?.props?.className
+            ? `${responsivePaddingClass} ${headerTitle.props.className}`
+            : responsivePaddingClass,
           onToggleHeaderContentVisibility: onToggleHeaderContent
         })}
       {headerContent &&
         cloneElement(headerContent, {
           ref: headerContentRef,
+          className: headerContent.props.className
+            ? `${responsivePaddingClass} ${headerContent.props.className}`
+            : responsivePaddingClass,
           headerPinned: headerState === HEADER_STATES.VISIBLE_PINNED || headerState === HEADER_STATES.VISIBLE,
           topHeaderHeight
         })}
@@ -250,7 +261,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
       )}
       <div
         data-component-name="DynamicPageContent"
-        className={classes.contentContainer}
+        className={`${classes.contentContainer} ${responsivePaddingClass}`}
         style={{
           marginTop: isIE() ? `${headerContentHeight + topHeaderHeight + 34}px` : 0,
           paddingBottom: footer ? '1rem' : 0
