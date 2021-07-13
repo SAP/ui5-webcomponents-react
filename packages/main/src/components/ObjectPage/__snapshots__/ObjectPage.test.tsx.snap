@@ -51,101 +51,103 @@ exports[`ObjectPage Default with Sections 1`] = `
         />
       </ui5-tabcontainer>
     </div>
-    <section
+    <div
       class="StdExtPadding-Desktop"
-      data-component-name="ObjectPageSection"
-      id="ObjectPageSection-1"
-      role="region"
+      data-component-name="ObjectPageContent"
     >
-      <div
-        aria-level="3"
-        class="ObjectPageSection-header"
-        data-component-name="ObjectPageSectionHeading"
-        role="heading"
+      <section
+        data-component-name="ObjectPageSection"
+        id="ObjectPageSection-1"
+        role="region"
       >
         <div
-          class="ObjectPageSection-title ObjectPageSection-uppercase"
+          aria-level="3"
+          class="ObjectPageSection-header"
+          data-component-name="ObjectPageSectionHeading"
+          role="heading"
         >
-          Title 1
-        </div>
-      </div>
-      <div
-        class="ObjectPageSection-sectionContent"
-      >
-        <div
-          class="ObjectPageSection-sectionContentInner"
-          data-component-name="ObjectPageSectionContent"
-        >
-          Content 1
-        </div>
-      </div>
-    </section>
-    <section
-      class="StdExtPadding-Desktop"
-      data-component-name="ObjectPageSection"
-      id="ObjectPageSection-2"
-      role="region"
-    >
-      <div
-        aria-level="3"
-        class="ObjectPageSection-header"
-        data-component-name="ObjectPageSectionHeading"
-        role="heading"
-      >
-        <div
-          class="ObjectPageSection-title ObjectPageSection-uppercase"
-        >
-          Title 2
-        </div>
-      </div>
-      <div
-        class="ObjectPageSection-sectionContent"
-      >
-        <div
-          class="ObjectPageSection-sectionContentInner"
-          data-component-name="ObjectPageSectionContent"
-        >
-          <ui5-label
-            ui5-label=""
+          <div
+            class="ObjectPageSection-title ObjectPageSection-uppercase"
           >
-            Content 2
-          </ui5-label>
+            Title 1
+          </div>
         </div>
-      </div>
-    </section>
-    <section
-      class="StdExtPadding-Desktop"
-      data-component-name="ObjectPageSection"
-      id="ObjectPageSection-3"
-      role="region"
-    >
-      <div
-        aria-level="3"
-        class="ObjectPageSection-header"
-        data-component-name="ObjectPageSectionHeading"
-        role="heading"
-      >
         <div
-          class="ObjectPageSection-title ObjectPageSection-uppercase"
+          class="ObjectPageSection-sectionContent"
         >
-          Title 3
-        </div>
-      </div>
-      <div
-        class="ObjectPageSection-sectionContent"
-      >
-        <div
-          class="ObjectPageSection-sectionContentInner"
-          data-component-name="ObjectPageSectionContent"
-        >
-          <span
-            class="Text-text"
+          <div
+            class="ObjectPageSection-sectionContentInner"
+            data-component-name="ObjectPageSectionContent"
           >
-            Content 3
-          </span>
+            Content 1
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <section
+        data-component-name="ObjectPageSection"
+        id="ObjectPageSection-2"
+        role="region"
+      >
+        <div
+          aria-level="3"
+          class="ObjectPageSection-header"
+          data-component-name="ObjectPageSectionHeading"
+          role="heading"
+        >
+          <div
+            class="ObjectPageSection-title ObjectPageSection-uppercase"
+          >
+            Title 2
+          </div>
+        </div>
+        <div
+          class="ObjectPageSection-sectionContent"
+        >
+          <div
+            class="ObjectPageSection-sectionContentInner"
+            data-component-name="ObjectPageSectionContent"
+          >
+            <ui5-label
+              ui5-label=""
+            >
+              Content 2
+            </ui5-label>
+          </div>
+        </div>
+      </section>
+      <section
+        data-component-name="ObjectPageSection"
+        id="ObjectPageSection-3"
+        role="region"
+      >
+        <div
+          aria-level="3"
+          class="ObjectPageSection-header"
+          data-component-name="ObjectPageSectionHeading"
+          role="heading"
+        >
+          <div
+            class="ObjectPageSection-title ObjectPageSection-uppercase"
+          >
+            Title 3
+          </div>
+        </div>
+        <div
+          class="ObjectPageSection-sectionContent"
+        >
+          <div
+            class="ObjectPageSection-sectionContentInner"
+            data-component-name="ObjectPageSectionContent"
+          >
+            <span
+              class="Text-text"
+            >
+              Content 3
+            </span>
+          </div>
+        </div>
+      </section>
+    </div>
   </div>
 </DocumentFragment>
 `;
@@ -208,252 +210,253 @@ exports[`ObjectPage Default with SubSections 1`] = `
         />
       </ui5-tabcontainer>
     </div>
-    <section
+    <div
       class="StdExtPadding-Desktop"
-      data-component-name="ObjectPageSection"
-      id="ObjectPageSection-1"
-      role="region"
+      data-component-name="ObjectPageContent"
     >
-      <div
-        aria-level="3"
-        class="ObjectPageSection-header"
-        data-component-name="ObjectPageSectionHeading"
-        role="heading"
+      <section
+        data-component-name="ObjectPageSection"
+        id="ObjectPageSection-1"
+        role="region"
       >
         <div
-          class="ObjectPageSection-title ObjectPageSection-uppercase"
-        >
-          Title Section 1
-        </div>
-      </div>
-      <div
-        class="ObjectPageSection-sectionContent"
-      >
-        <div
-          class="ObjectPageSection-sectionContentInner"
-          data-component-name="ObjectPageSectionContent"
-        >
-          <ui5-label
-            ui5-label=""
-          >
-            Content Section 1
-          </ui5-label>
-        </div>
-      </div>
-    </section>
-    <section
-      class="StdExtPadding-Desktop"
-      data-component-name="ObjectPageSection"
-      id="ObjectPageSection-2"
-      role="region"
-    >
-      <div
-        aria-level="3"
-        class="ObjectPageSection-header"
-        data-component-name="ObjectPageSectionHeading"
-        role="heading"
-      >
-        <div
-          class="ObjectPageSection-title ObjectPageSection-uppercase"
-        >
-          Title Section 2
-        </div>
-      </div>
-      <div
-        class="ObjectPageSection-sectionContent"
-      >
-        <div
-          class="ObjectPageSection-sectionContentInner"
-          data-component-name="ObjectPageSectionContent"
-        >
-          <div>
-            Content Section 2
-          </div>
-        </div>
-      </div>
-    </section>
-    <section
-      class="StdExtPadding-Desktop"
-      data-component-name="ObjectPageSection"
-      id="ObjectPageSection-3"
-      role="region"
-    >
-      <div
-        aria-level="3"
-        class="ObjectPageSection-header"
-        data-component-name="ObjectPageSectionHeading"
-        role="heading"
-      >
-        <div
-          class="ObjectPageSection-title ObjectPageSection-uppercase"
-        >
-          Title Section 3
-        </div>
-      </div>
-      <div
-        class="ObjectPageSection-sectionContent"
-      >
-        <div
-          class="ObjectPageSection-sectionContentInner"
-          data-component-name="ObjectPageSectionContent"
+          aria-level="3"
+          class="ObjectPageSection-header"
+          data-component-name="ObjectPageSectionHeading"
+          role="heading"
         >
           <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-3.1"
-            role="region"
-            tabindex="-1"
+            class="ObjectPageSection-title ObjectPageSection-uppercase"
           >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
-            >
-              Title SubSection 3.1
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 3.1
-            </div>
-          </div>
-          <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-3.2"
-            role="region"
-            tabindex="-1"
-          >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
-            >
-              Title SubSection 3.2
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 3.2
-            </div>
-          </div>
-          <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-3.3"
-            role="region"
-            tabindex="-1"
-          >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
-            >
-              Title SubSection 3.3
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 3.3
-            </div>
+            Title Section 1
           </div>
         </div>
-      </div>
-    </section>
-    <section
-      class="StdExtPadding-Desktop"
-      data-component-name="ObjectPageSection"
-      id="ObjectPageSection-4"
-      role="region"
-    >
-      <div
-        aria-level="3"
-        class="ObjectPageSection-header"
-        data-component-name="ObjectPageSectionHeading"
-        role="heading"
-      >
         <div
-          class="ObjectPageSection-title ObjectPageSection-uppercase"
-        >
-          Title Section 4
-        </div>
-      </div>
-      <div
-        class="ObjectPageSection-sectionContent"
-      >
-        <div
-          class="ObjectPageSection-sectionContentInner"
-          data-component-name="ObjectPageSectionContent"
+          class="ObjectPageSection-sectionContent"
         >
           <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-4.1"
-            role="region"
-            tabindex="-1"
+            class="ObjectPageSection-sectionContentInner"
+            data-component-name="ObjectPageSectionContent"
           >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
+            <ui5-label
+              ui5-label=""
             >
-              Title SubSection 4.1
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 4.1
-            </div>
+              Content Section 1
+            </ui5-label>
           </div>
+        </div>
+      </section>
+      <section
+        data-component-name="ObjectPageSection"
+        id="ObjectPageSection-2"
+        role="region"
+      >
+        <div
+          aria-level="3"
+          class="ObjectPageSection-header"
+          data-component-name="ObjectPageSectionHeading"
+          role="heading"
+        >
           <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-4.2"
-            role="region"
-            tabindex="-1"
+            class="ObjectPageSection-title ObjectPageSection-uppercase"
           >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
-            >
-              Title SubSection 4.2
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 4.2
-            </div>
+            Title Section 2
           </div>
+        </div>
+        <div
+          class="ObjectPageSection-sectionContent"
+        >
           <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-4.3"
-            role="region"
-            tabindex="-1"
+            class="ObjectPageSection-sectionContentInner"
+            data-component-name="ObjectPageSectionContent"
           >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
-            >
-              Title SubSection 4.3
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 4.3
+            <div>
+              Content Section 2
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <section
+        data-component-name="ObjectPageSection"
+        id="ObjectPageSection-3"
+        role="region"
+      >
+        <div
+          aria-level="3"
+          class="ObjectPageSection-header"
+          data-component-name="ObjectPageSectionHeading"
+          role="heading"
+        >
+          <div
+            class="ObjectPageSection-title ObjectPageSection-uppercase"
+          >
+            Title Section 3
+          </div>
+        </div>
+        <div
+          class="ObjectPageSection-sectionContent"
+        >
+          <div
+            class="ObjectPageSection-sectionContentInner"
+            data-component-name="ObjectPageSectionContent"
+          >
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-3.1"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 3.1
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 3.1
+              </div>
+            </div>
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-3.2"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 3.2
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 3.2
+              </div>
+            </div>
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-3.3"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 3.3
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 3.3
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section
+        data-component-name="ObjectPageSection"
+        id="ObjectPageSection-4"
+        role="region"
+      >
+        <div
+          aria-level="3"
+          class="ObjectPageSection-header"
+          data-component-name="ObjectPageSectionHeading"
+          role="heading"
+        >
+          <div
+            class="ObjectPageSection-title ObjectPageSection-uppercase"
+          >
+            Title Section 4
+          </div>
+        </div>
+        <div
+          class="ObjectPageSection-sectionContent"
+        >
+          <div
+            class="ObjectPageSection-sectionContentInner"
+            data-component-name="ObjectPageSectionContent"
+          >
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-4.1"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 4.1
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 4.1
+              </div>
+            </div>
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-4.2"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 4.2
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 4.2
+              </div>
+            </div>
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-4.3"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 4.3
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 4.3
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   </div>
 </DocumentFragment>
 `;
@@ -516,97 +519,101 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
         />
       </ui5-tabcontainer>
     </div>
-    <section
+    <div
       class="StdExtPadding-Desktop"
-      data-component-name="ObjectPageSection"
-      id="ObjectPageSection-3"
-      role="region"
+      data-component-name="ObjectPageContent"
     >
-      <div
-        aria-level="3"
-        class="ObjectPageSection-header"
-        data-component-name="ObjectPageSectionHeading"
-        role="heading"
+      <section
+        data-component-name="ObjectPageSection"
+        id="ObjectPageSection-3"
+        role="region"
       >
         <div
-          class="ObjectPageSection-title ObjectPageSection-uppercase"
+          aria-level="3"
+          class="ObjectPageSection-header"
+          data-component-name="ObjectPageSectionHeading"
+          role="heading"
         >
-          Title Section 3
+          <div
+            class="ObjectPageSection-title ObjectPageSection-uppercase"
+          >
+            Title Section 3
+          </div>
         </div>
-      </div>
-      <div
-        class="ObjectPageSection-sectionContent"
-      >
         <div
-          class="ObjectPageSection-sectionContentInner"
-          data-component-name="ObjectPageSectionContent"
+          class="ObjectPageSection-sectionContent"
         >
           <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-3.1"
-            role="region"
-            tabindex="-1"
+            class="ObjectPageSection-sectionContentInner"
+            data-component-name="ObjectPageSectionContent"
           >
             <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-3.1"
+              role="region"
+              tabindex="-1"
             >
-              Title SubSection 3.1
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 3.1
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 3.1
+              </div>
             </div>
             <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-3.2"
+              role="region"
+              tabindex="-1"
             >
-              Content Section 3.1
-            </div>
-          </div>
-          <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-3.2"
-            role="region"
-            tabindex="-1"
-          >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
-            >
-              Title SubSection 3.2
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 3.2
-            </div>
-          </div>
-          <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-3.3"
-            role="region"
-            tabindex="-1"
-          >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
-            >
-              Title SubSection 3.3
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 3.2
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 3.2
+              </div>
             </div>
             <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-3.3"
+              role="region"
+              tabindex="-1"
             >
-              Content Section 3.3
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 3.3
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 3.3
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   </div>
 </DocumentFragment>
 `;
@@ -639,6 +646,10 @@ exports[`ObjectPage Not crashing with 0 sections 1`] = `
         ui5-tabcontainer=""
       />
     </div>
+    <div
+      class="StdExtPadding-Desktop"
+      data-component-name="ObjectPageContent"
+    />
   </div>
 </DocumentFragment>
 `;
@@ -680,33 +691,37 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
         />
       </ui5-tabcontainer>
     </div>
-    <section
+    <div
       class="StdExtPadding-Desktop"
-      data-component-name="ObjectPageSection"
-      id="ObjectPageSection-1"
-      role="region"
+      data-component-name="ObjectPageContent"
     >
-      <div
-        aria-level="3"
-        class="ObjectPageSection-header"
-        data-component-name="ObjectPageSectionHeading"
-        role="heading"
+      <section
+        data-component-name="ObjectPageSection"
+        id="ObjectPageSection-1"
+        role="region"
       >
         <div
-          class="ObjectPageSection-title ObjectPageSection-uppercase"
-        />
-      </div>
-      <div
-        class="ObjectPageSection-sectionContent"
-      >
-        <div
-          class="ObjectPageSection-sectionContentInner"
-          data-component-name="ObjectPageSectionContent"
+          aria-level="3"
+          class="ObjectPageSection-header"
+          data-component-name="ObjectPageSectionHeading"
+          role="heading"
         >
-          Test
+          <div
+            class="ObjectPageSection-title ObjectPageSection-uppercase"
+          />
         </div>
-      </div>
-    </section>
+        <div
+          class="ObjectPageSection-sectionContent"
+        >
+          <div
+            class="ObjectPageSection-sectionContentInner"
+            data-component-name="ObjectPageSectionContent"
+          >
+            Test
+          </div>
+        </div>
+      </section>
+    </div>
   </div>
 </DocumentFragment>
 `;
@@ -748,33 +763,37 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
         />
       </ui5-tabcontainer>
     </div>
-    <section
+    <div
       class="StdExtPadding-Desktop"
-      data-component-name="ObjectPageSection"
-      id="ObjectPageSection-1"
-      role="region"
+      data-component-name="ObjectPageContent"
     >
-      <div
-        aria-level="3"
-        class="ObjectPageSection-header"
-        data-component-name="ObjectPageSectionHeading"
-        role="heading"
+      <section
+        data-component-name="ObjectPageSection"
+        id="ObjectPageSection-1"
+        role="region"
       >
         <div
-          class="ObjectPageSection-title ObjectPageSection-uppercase"
-        />
-      </div>
-      <div
-        class="ObjectPageSection-sectionContent"
-      >
-        <div
-          class="ObjectPageSection-sectionContentInner"
-          data-component-name="ObjectPageSectionContent"
+          aria-level="3"
+          class="ObjectPageSection-header"
+          data-component-name="ObjectPageSectionHeading"
+          role="heading"
         >
-          Test
+          <div
+            class="ObjectPageSection-title ObjectPageSection-uppercase"
+          />
         </div>
-      </div>
-    </section>
+        <div
+          class="ObjectPageSection-sectionContent"
+        >
+          <div
+            class="ObjectPageSection-sectionContentInner"
+            data-component-name="ObjectPageSectionContent"
+          >
+            Test
+          </div>
+        </div>
+      </section>
+    </div>
   </div>
 </DocumentFragment>
 `;
@@ -906,252 +925,253 @@ exports[`ObjectPage with anchor-bar 1`] = `
         />
       </ui5-tabcontainer>
     </div>
-    <section
+    <div
       class="StdExtPadding-Desktop"
-      data-component-name="ObjectPageSection"
-      id="ObjectPageSection-1"
-      role="region"
+      data-component-name="ObjectPageContent"
     >
-      <div
-        aria-level="3"
-        class="ObjectPageSection-header"
-        data-component-name="ObjectPageSectionHeading"
-        role="heading"
+      <section
+        data-component-name="ObjectPageSection"
+        id="ObjectPageSection-1"
+        role="region"
       >
         <div
-          class="ObjectPageSection-title ObjectPageSection-uppercase"
-        >
-          Title Section 1
-        </div>
-      </div>
-      <div
-        class="ObjectPageSection-sectionContent"
-      >
-        <div
-          class="ObjectPageSection-sectionContentInner"
-          data-component-name="ObjectPageSectionContent"
-        >
-          <ui5-label
-            ui5-label=""
-          >
-            Content Section 1
-          </ui5-label>
-        </div>
-      </div>
-    </section>
-    <section
-      class="StdExtPadding-Desktop"
-      data-component-name="ObjectPageSection"
-      id="ObjectPageSection-2"
-      role="region"
-    >
-      <div
-        aria-level="3"
-        class="ObjectPageSection-header"
-        data-component-name="ObjectPageSectionHeading"
-        role="heading"
-      >
-        <div
-          class="ObjectPageSection-title ObjectPageSection-uppercase"
-        >
-          Title Section 2
-        </div>
-      </div>
-      <div
-        class="ObjectPageSection-sectionContent"
-      >
-        <div
-          class="ObjectPageSection-sectionContentInner"
-          data-component-name="ObjectPageSectionContent"
-        >
-          <div>
-            Content Section 2
-          </div>
-        </div>
-      </div>
-    </section>
-    <section
-      class="StdExtPadding-Desktop"
-      data-component-name="ObjectPageSection"
-      id="ObjectPageSection-3"
-      role="region"
-    >
-      <div
-        aria-level="3"
-        class="ObjectPageSection-header"
-        data-component-name="ObjectPageSectionHeading"
-        role="heading"
-      >
-        <div
-          class="ObjectPageSection-title ObjectPageSection-uppercase"
-        >
-          Title Section 3
-        </div>
-      </div>
-      <div
-        class="ObjectPageSection-sectionContent"
-      >
-        <div
-          class="ObjectPageSection-sectionContentInner"
-          data-component-name="ObjectPageSectionContent"
+          aria-level="3"
+          class="ObjectPageSection-header"
+          data-component-name="ObjectPageSectionHeading"
+          role="heading"
         >
           <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-3.1"
-            role="region"
-            tabindex="-1"
+            class="ObjectPageSection-title ObjectPageSection-uppercase"
           >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
-            >
-              Title SubSection 3.1
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 3.1
-            </div>
-          </div>
-          <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-3.2"
-            role="region"
-            tabindex="-1"
-          >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
-            >
-              Title SubSection 3.2
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 3.2
-            </div>
-          </div>
-          <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-3.3"
-            role="region"
-            tabindex="-1"
-          >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
-            >
-              Title SubSection 3.3
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 3.3
-            </div>
+            Title Section 1
           </div>
         </div>
-      </div>
-    </section>
-    <section
-      class="StdExtPadding-Desktop"
-      data-component-name="ObjectPageSection"
-      id="ObjectPageSection-4"
-      role="region"
-    >
-      <div
-        aria-level="3"
-        class="ObjectPageSection-header"
-        data-component-name="ObjectPageSectionHeading"
-        role="heading"
-      >
         <div
-          class="ObjectPageSection-title ObjectPageSection-uppercase"
-        >
-          Title Section 4
-        </div>
-      </div>
-      <div
-        class="ObjectPageSection-sectionContent"
-      >
-        <div
-          class="ObjectPageSection-sectionContentInner"
-          data-component-name="ObjectPageSectionContent"
+          class="ObjectPageSection-sectionContent"
         >
           <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-4.1"
-            role="region"
-            tabindex="-1"
+            class="ObjectPageSection-sectionContentInner"
+            data-component-name="ObjectPageSectionContent"
           >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
+            <ui5-label
+              ui5-label=""
             >
-              Title SubSection 4.1
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 4.1
-            </div>
+              Content Section 1
+            </ui5-label>
           </div>
+        </div>
+      </section>
+      <section
+        data-component-name="ObjectPageSection"
+        id="ObjectPageSection-2"
+        role="region"
+      >
+        <div
+          aria-level="3"
+          class="ObjectPageSection-header"
+          data-component-name="ObjectPageSectionHeading"
+          role="heading"
+        >
           <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-4.2"
-            role="region"
-            tabindex="-1"
+            class="ObjectPageSection-title ObjectPageSection-uppercase"
           >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
-            >
-              Title SubSection 4.2
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 4.2
-            </div>
+            Title Section 2
           </div>
+        </div>
+        <div
+          class="ObjectPageSection-sectionContent"
+        >
           <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-4.3"
-            role="region"
-            tabindex="-1"
+            class="ObjectPageSection-sectionContentInner"
+            data-component-name="ObjectPageSectionContent"
           >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
-            >
-              Title SubSection 4.3
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 4.3
+            <div>
+              Content Section 2
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <section
+        data-component-name="ObjectPageSection"
+        id="ObjectPageSection-3"
+        role="region"
+      >
+        <div
+          aria-level="3"
+          class="ObjectPageSection-header"
+          data-component-name="ObjectPageSectionHeading"
+          role="heading"
+        >
+          <div
+            class="ObjectPageSection-title ObjectPageSection-uppercase"
+          >
+            Title Section 3
+          </div>
+        </div>
+        <div
+          class="ObjectPageSection-sectionContent"
+        >
+          <div
+            class="ObjectPageSection-sectionContentInner"
+            data-component-name="ObjectPageSectionContent"
+          >
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-3.1"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 3.1
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 3.1
+              </div>
+            </div>
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-3.2"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 3.2
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 3.2
+              </div>
+            </div>
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-3.3"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 3.3
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 3.3
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section
+        data-component-name="ObjectPageSection"
+        id="ObjectPageSection-4"
+        role="region"
+      >
+        <div
+          aria-level="3"
+          class="ObjectPageSection-header"
+          data-component-name="ObjectPageSectionHeading"
+          role="heading"
+        >
+          <div
+            class="ObjectPageSection-title ObjectPageSection-uppercase"
+          >
+            Title Section 4
+          </div>
+        </div>
+        <div
+          class="ObjectPageSection-sectionContent"
+        >
+          <div
+            class="ObjectPageSection-sectionContentInner"
+            data-component-name="ObjectPageSectionContent"
+          >
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-4.1"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 4.1
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 4.1
+              </div>
+            </div>
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-4.2"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 4.2
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 4.2
+              </div>
+            </div>
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-4.3"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 4.3
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 4.3
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
     <div
       data-component-name="ObjectPageFooterSpacer"
       style="height: 1rem;"
@@ -1233,252 +1253,253 @@ exports[`ObjectPage with footer 1`] = `
         />
       </ui5-tabcontainer>
     </div>
-    <section
+    <div
       class="StdExtPadding-Desktop"
-      data-component-name="ObjectPageSection"
-      id="ObjectPageSection-1"
-      role="region"
+      data-component-name="ObjectPageContent"
     >
-      <div
-        aria-level="3"
-        class="ObjectPageSection-header"
-        data-component-name="ObjectPageSectionHeading"
-        role="heading"
+      <section
+        data-component-name="ObjectPageSection"
+        id="ObjectPageSection-1"
+        role="region"
       >
         <div
-          class="ObjectPageSection-title ObjectPageSection-uppercase"
-        >
-          Title Section 1
-        </div>
-      </div>
-      <div
-        class="ObjectPageSection-sectionContent"
-      >
-        <div
-          class="ObjectPageSection-sectionContentInner"
-          data-component-name="ObjectPageSectionContent"
-        >
-          <ui5-label
-            ui5-label=""
-          >
-            Content Section 1
-          </ui5-label>
-        </div>
-      </div>
-    </section>
-    <section
-      class="StdExtPadding-Desktop"
-      data-component-name="ObjectPageSection"
-      id="ObjectPageSection-2"
-      role="region"
-    >
-      <div
-        aria-level="3"
-        class="ObjectPageSection-header"
-        data-component-name="ObjectPageSectionHeading"
-        role="heading"
-      >
-        <div
-          class="ObjectPageSection-title ObjectPageSection-uppercase"
-        >
-          Title Section 2
-        </div>
-      </div>
-      <div
-        class="ObjectPageSection-sectionContent"
-      >
-        <div
-          class="ObjectPageSection-sectionContentInner"
-          data-component-name="ObjectPageSectionContent"
-        >
-          <div>
-            Content Section 2
-          </div>
-        </div>
-      </div>
-    </section>
-    <section
-      class="StdExtPadding-Desktop"
-      data-component-name="ObjectPageSection"
-      id="ObjectPageSection-3"
-      role="region"
-    >
-      <div
-        aria-level="3"
-        class="ObjectPageSection-header"
-        data-component-name="ObjectPageSectionHeading"
-        role="heading"
-      >
-        <div
-          class="ObjectPageSection-title ObjectPageSection-uppercase"
-        >
-          Title Section 3
-        </div>
-      </div>
-      <div
-        class="ObjectPageSection-sectionContent"
-      >
-        <div
-          class="ObjectPageSection-sectionContentInner"
-          data-component-name="ObjectPageSectionContent"
+          aria-level="3"
+          class="ObjectPageSection-header"
+          data-component-name="ObjectPageSectionHeading"
+          role="heading"
         >
           <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-3.1"
-            role="region"
-            tabindex="-1"
+            class="ObjectPageSection-title ObjectPageSection-uppercase"
           >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
-            >
-              Title SubSection 3.1
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 3.1
-            </div>
-          </div>
-          <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-3.2"
-            role="region"
-            tabindex="-1"
-          >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
-            >
-              Title SubSection 3.2
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 3.2
-            </div>
-          </div>
-          <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-3.3"
-            role="region"
-            tabindex="-1"
-          >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
-            >
-              Title SubSection 3.3
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 3.3
-            </div>
+            Title Section 1
           </div>
         </div>
-      </div>
-    </section>
-    <section
-      class="StdExtPadding-Desktop"
-      data-component-name="ObjectPageSection"
-      id="ObjectPageSection-4"
-      role="region"
-    >
-      <div
-        aria-level="3"
-        class="ObjectPageSection-header"
-        data-component-name="ObjectPageSectionHeading"
-        role="heading"
-      >
         <div
-          class="ObjectPageSection-title ObjectPageSection-uppercase"
-        >
-          Title Section 4
-        </div>
-      </div>
-      <div
-        class="ObjectPageSection-sectionContent"
-      >
-        <div
-          class="ObjectPageSection-sectionContentInner"
-          data-component-name="ObjectPageSectionContent"
+          class="ObjectPageSection-sectionContent"
         >
           <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-4.1"
-            role="region"
-            tabindex="-1"
+            class="ObjectPageSection-sectionContentInner"
+            data-component-name="ObjectPageSectionContent"
           >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
+            <ui5-label
+              ui5-label=""
             >
-              Title SubSection 4.1
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 4.1
-            </div>
+              Content Section 1
+            </ui5-label>
           </div>
+        </div>
+      </section>
+      <section
+        data-component-name="ObjectPageSection"
+        id="ObjectPageSection-2"
+        role="region"
+      >
+        <div
+          aria-level="3"
+          class="ObjectPageSection-header"
+          data-component-name="ObjectPageSectionHeading"
+          role="heading"
+        >
           <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-4.2"
-            role="region"
-            tabindex="-1"
+            class="ObjectPageSection-title ObjectPageSection-uppercase"
           >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
-            >
-              Title SubSection 4.2
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 4.2
-            </div>
+            Title Section 2
           </div>
+        </div>
+        <div
+          class="ObjectPageSection-sectionContent"
+        >
           <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-4.3"
-            role="region"
-            tabindex="-1"
+            class="ObjectPageSection-sectionContentInner"
+            data-component-name="ObjectPageSectionContent"
           >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
-            >
-              Title SubSection 4.3
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 4.3
+            <div>
+              Content Section 2
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <section
+        data-component-name="ObjectPageSection"
+        id="ObjectPageSection-3"
+        role="region"
+      >
+        <div
+          aria-level="3"
+          class="ObjectPageSection-header"
+          data-component-name="ObjectPageSectionHeading"
+          role="heading"
+        >
+          <div
+            class="ObjectPageSection-title ObjectPageSection-uppercase"
+          >
+            Title Section 3
+          </div>
+        </div>
+        <div
+          class="ObjectPageSection-sectionContent"
+        >
+          <div
+            class="ObjectPageSection-sectionContentInner"
+            data-component-name="ObjectPageSectionContent"
+          >
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-3.1"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 3.1
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 3.1
+              </div>
+            </div>
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-3.2"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 3.2
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 3.2
+              </div>
+            </div>
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-3.3"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 3.3
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 3.3
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section
+        data-component-name="ObjectPageSection"
+        id="ObjectPageSection-4"
+        role="region"
+      >
+        <div
+          aria-level="3"
+          class="ObjectPageSection-header"
+          data-component-name="ObjectPageSectionHeading"
+          role="heading"
+        >
+          <div
+            class="ObjectPageSection-title ObjectPageSection-uppercase"
+          >
+            Title Section 4
+          </div>
+        </div>
+        <div
+          class="ObjectPageSection-sectionContent"
+        >
+          <div
+            class="ObjectPageSection-sectionContentInner"
+            data-component-name="ObjectPageSectionContent"
+          >
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-4.1"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 4.1
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 4.1
+              </div>
+            </div>
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-4.2"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 4.2
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 4.2
+              </div>
+            </div>
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-4.3"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 4.3
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 4.3
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
     <div
       data-component-name="ObjectPageFooterSpacer"
       style="height: 1rem;"
@@ -1575,252 +1596,253 @@ exports[`ObjectPage with header 1`] = `
         />
       </ui5-tabcontainer>
     </div>
-    <section
+    <div
       class="StdExtPadding-Desktop"
-      data-component-name="ObjectPageSection"
-      id="ObjectPageSection-1"
-      role="region"
+      data-component-name="ObjectPageContent"
     >
-      <div
-        aria-level="3"
-        class="ObjectPageSection-header"
-        data-component-name="ObjectPageSectionHeading"
-        role="heading"
+      <section
+        data-component-name="ObjectPageSection"
+        id="ObjectPageSection-1"
+        role="region"
       >
         <div
-          class="ObjectPageSection-title ObjectPageSection-uppercase"
-        >
-          Title Section 1
-        </div>
-      </div>
-      <div
-        class="ObjectPageSection-sectionContent"
-      >
-        <div
-          class="ObjectPageSection-sectionContentInner"
-          data-component-name="ObjectPageSectionContent"
-        >
-          <ui5-label
-            ui5-label=""
-          >
-            Content Section 1
-          </ui5-label>
-        </div>
-      </div>
-    </section>
-    <section
-      class="StdExtPadding-Desktop"
-      data-component-name="ObjectPageSection"
-      id="ObjectPageSection-2"
-      role="region"
-    >
-      <div
-        aria-level="3"
-        class="ObjectPageSection-header"
-        data-component-name="ObjectPageSectionHeading"
-        role="heading"
-      >
-        <div
-          class="ObjectPageSection-title ObjectPageSection-uppercase"
-        >
-          Title Section 2
-        </div>
-      </div>
-      <div
-        class="ObjectPageSection-sectionContent"
-      >
-        <div
-          class="ObjectPageSection-sectionContentInner"
-          data-component-name="ObjectPageSectionContent"
-        >
-          <div>
-            Content Section 2
-          </div>
-        </div>
-      </div>
-    </section>
-    <section
-      class="StdExtPadding-Desktop"
-      data-component-name="ObjectPageSection"
-      id="ObjectPageSection-3"
-      role="region"
-    >
-      <div
-        aria-level="3"
-        class="ObjectPageSection-header"
-        data-component-name="ObjectPageSectionHeading"
-        role="heading"
-      >
-        <div
-          class="ObjectPageSection-title ObjectPageSection-uppercase"
-        >
-          Title Section 3
-        </div>
-      </div>
-      <div
-        class="ObjectPageSection-sectionContent"
-      >
-        <div
-          class="ObjectPageSection-sectionContentInner"
-          data-component-name="ObjectPageSectionContent"
+          aria-level="3"
+          class="ObjectPageSection-header"
+          data-component-name="ObjectPageSectionHeading"
+          role="heading"
         >
           <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-3.1"
-            role="region"
-            tabindex="-1"
+            class="ObjectPageSection-title ObjectPageSection-uppercase"
           >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
-            >
-              Title SubSection 3.1
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 3.1
-            </div>
-          </div>
-          <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-3.2"
-            role="region"
-            tabindex="-1"
-          >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
-            >
-              Title SubSection 3.2
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 3.2
-            </div>
-          </div>
-          <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-3.3"
-            role="region"
-            tabindex="-1"
-          >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
-            >
-              Title SubSection 3.3
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 3.3
-            </div>
+            Title Section 1
           </div>
         </div>
-      </div>
-    </section>
-    <section
-      class="StdExtPadding-Desktop"
-      data-component-name="ObjectPageSection"
-      id="ObjectPageSection-4"
-      role="region"
-    >
-      <div
-        aria-level="3"
-        class="ObjectPageSection-header"
-        data-component-name="ObjectPageSectionHeading"
-        role="heading"
-      >
         <div
-          class="ObjectPageSection-title ObjectPageSection-uppercase"
-        >
-          Title Section 4
-        </div>
-      </div>
-      <div
-        class="ObjectPageSection-sectionContent"
-      >
-        <div
-          class="ObjectPageSection-sectionContentInner"
-          data-component-name="ObjectPageSectionContent"
+          class="ObjectPageSection-sectionContent"
         >
           <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-4.1"
-            role="region"
-            tabindex="-1"
+            class="ObjectPageSection-sectionContentInner"
+            data-component-name="ObjectPageSectionContent"
           >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
+            <ui5-label
+              ui5-label=""
             >
-              Title SubSection 4.1
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 4.1
-            </div>
+              Content Section 1
+            </ui5-label>
           </div>
+        </div>
+      </section>
+      <section
+        data-component-name="ObjectPageSection"
+        id="ObjectPageSection-2"
+        role="region"
+      >
+        <div
+          aria-level="3"
+          class="ObjectPageSection-header"
+          data-component-name="ObjectPageSectionHeading"
+          role="heading"
+        >
           <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-4.2"
-            role="region"
-            tabindex="-1"
+            class="ObjectPageSection-title ObjectPageSection-uppercase"
           >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
-            >
-              Title SubSection 4.2
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 4.2
-            </div>
+            Title Section 2
           </div>
+        </div>
+        <div
+          class="ObjectPageSection-sectionContent"
+        >
           <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-4.3"
-            role="region"
-            tabindex="-1"
+            class="ObjectPageSection-sectionContentInner"
+            data-component-name="ObjectPageSectionContent"
           >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
-            >
-              Title SubSection 4.3
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 4.3
+            <div>
+              Content Section 2
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <section
+        data-component-name="ObjectPageSection"
+        id="ObjectPageSection-3"
+        role="region"
+      >
+        <div
+          aria-level="3"
+          class="ObjectPageSection-header"
+          data-component-name="ObjectPageSectionHeading"
+          role="heading"
+        >
+          <div
+            class="ObjectPageSection-title ObjectPageSection-uppercase"
+          >
+            Title Section 3
+          </div>
+        </div>
+        <div
+          class="ObjectPageSection-sectionContent"
+        >
+          <div
+            class="ObjectPageSection-sectionContentInner"
+            data-component-name="ObjectPageSectionContent"
+          >
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-3.1"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 3.1
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 3.1
+              </div>
+            </div>
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-3.2"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 3.2
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 3.2
+              </div>
+            </div>
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-3.3"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 3.3
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 3.3
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section
+        data-component-name="ObjectPageSection"
+        id="ObjectPageSection-4"
+        role="region"
+      >
+        <div
+          aria-level="3"
+          class="ObjectPageSection-header"
+          data-component-name="ObjectPageSectionHeading"
+          role="heading"
+        >
+          <div
+            class="ObjectPageSection-title ObjectPageSection-uppercase"
+          >
+            Title Section 4
+          </div>
+        </div>
+        <div
+          class="ObjectPageSection-sectionContent"
+        >
+          <div
+            class="ObjectPageSection-sectionContentInner"
+            data-component-name="ObjectPageSectionContent"
+          >
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-4.1"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 4.1
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 4.1
+              </div>
+            </div>
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-4.2"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 4.2
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 4.2
+              </div>
+            </div>
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-4.3"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 4.3
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 4.3
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   </div>
 </DocumentFragment>
 `;
@@ -1966,252 +1988,253 @@ exports[`ObjectPage with img 1`] = `
         />
       </ui5-tabcontainer>
     </div>
-    <section
+    <div
       class="StdExtPadding-Desktop"
-      data-component-name="ObjectPageSection"
-      id="ObjectPageSection-1"
-      role="region"
+      data-component-name="ObjectPageContent"
     >
-      <div
-        aria-level="3"
-        class="ObjectPageSection-header"
-        data-component-name="ObjectPageSectionHeading"
-        role="heading"
+      <section
+        data-component-name="ObjectPageSection"
+        id="ObjectPageSection-1"
+        role="region"
       >
         <div
-          class="ObjectPageSection-title ObjectPageSection-uppercase"
-        >
-          Title Section 1
-        </div>
-      </div>
-      <div
-        class="ObjectPageSection-sectionContent"
-      >
-        <div
-          class="ObjectPageSection-sectionContentInner"
-          data-component-name="ObjectPageSectionContent"
-        >
-          <ui5-label
-            ui5-label=""
-          >
-            Content Section 1
-          </ui5-label>
-        </div>
-      </div>
-    </section>
-    <section
-      class="StdExtPadding-Desktop"
-      data-component-name="ObjectPageSection"
-      id="ObjectPageSection-2"
-      role="region"
-    >
-      <div
-        aria-level="3"
-        class="ObjectPageSection-header"
-        data-component-name="ObjectPageSectionHeading"
-        role="heading"
-      >
-        <div
-          class="ObjectPageSection-title ObjectPageSection-uppercase"
-        >
-          Title Section 2
-        </div>
-      </div>
-      <div
-        class="ObjectPageSection-sectionContent"
-      >
-        <div
-          class="ObjectPageSection-sectionContentInner"
-          data-component-name="ObjectPageSectionContent"
-        >
-          <div>
-            Content Section 2
-          </div>
-        </div>
-      </div>
-    </section>
-    <section
-      class="StdExtPadding-Desktop"
-      data-component-name="ObjectPageSection"
-      id="ObjectPageSection-3"
-      role="region"
-    >
-      <div
-        aria-level="3"
-        class="ObjectPageSection-header"
-        data-component-name="ObjectPageSectionHeading"
-        role="heading"
-      >
-        <div
-          class="ObjectPageSection-title ObjectPageSection-uppercase"
-        >
-          Title Section 3
-        </div>
-      </div>
-      <div
-        class="ObjectPageSection-sectionContent"
-      >
-        <div
-          class="ObjectPageSection-sectionContentInner"
-          data-component-name="ObjectPageSectionContent"
+          aria-level="3"
+          class="ObjectPageSection-header"
+          data-component-name="ObjectPageSectionHeading"
+          role="heading"
         >
           <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-3.1"
-            role="region"
-            tabindex="-1"
+            class="ObjectPageSection-title ObjectPageSection-uppercase"
           >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
-            >
-              Title SubSection 3.1
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 3.1
-            </div>
-          </div>
-          <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-3.2"
-            role="region"
-            tabindex="-1"
-          >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
-            >
-              Title SubSection 3.2
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 3.2
-            </div>
-          </div>
-          <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-3.3"
-            role="region"
-            tabindex="-1"
-          >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
-            >
-              Title SubSection 3.3
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 3.3
-            </div>
+            Title Section 1
           </div>
         </div>
-      </div>
-    </section>
-    <section
-      class="StdExtPadding-Desktop"
-      data-component-name="ObjectPageSection"
-      id="ObjectPageSection-4"
-      role="region"
-    >
-      <div
-        aria-level="3"
-        class="ObjectPageSection-header"
-        data-component-name="ObjectPageSectionHeading"
-        role="heading"
-      >
         <div
-          class="ObjectPageSection-title ObjectPageSection-uppercase"
-        >
-          Title Section 4
-        </div>
-      </div>
-      <div
-        class="ObjectPageSection-sectionContent"
-      >
-        <div
-          class="ObjectPageSection-sectionContentInner"
-          data-component-name="ObjectPageSectionContent"
+          class="ObjectPageSection-sectionContent"
         >
           <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-4.1"
-            role="region"
-            tabindex="-1"
+            class="ObjectPageSection-sectionContentInner"
+            data-component-name="ObjectPageSectionContent"
           >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
+            <ui5-label
+              ui5-label=""
             >
-              Title SubSection 4.1
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 4.1
-            </div>
+              Content Section 1
+            </ui5-label>
           </div>
+        </div>
+      </section>
+      <section
+        data-component-name="ObjectPageSection"
+        id="ObjectPageSection-2"
+        role="region"
+      >
+        <div
+          aria-level="3"
+          class="ObjectPageSection-header"
+          data-component-name="ObjectPageSectionHeading"
+          role="heading"
+        >
           <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-4.2"
-            role="region"
-            tabindex="-1"
+            class="ObjectPageSection-title ObjectPageSection-uppercase"
           >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
-            >
-              Title SubSection 4.2
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 4.2
-            </div>
+            Title Section 2
           </div>
+        </div>
+        <div
+          class="ObjectPageSection-sectionContent"
+        >
           <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-4.3"
-            role="region"
-            tabindex="-1"
+            class="ObjectPageSection-sectionContentInner"
+            data-component-name="ObjectPageSectionContent"
           >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
-            >
-              Title SubSection 4.3
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 4.3
+            <div>
+              Content Section 2
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <section
+        data-component-name="ObjectPageSection"
+        id="ObjectPageSection-3"
+        role="region"
+      >
+        <div
+          aria-level="3"
+          class="ObjectPageSection-header"
+          data-component-name="ObjectPageSectionHeading"
+          role="heading"
+        >
+          <div
+            class="ObjectPageSection-title ObjectPageSection-uppercase"
+          >
+            Title Section 3
+          </div>
+        </div>
+        <div
+          class="ObjectPageSection-sectionContent"
+        >
+          <div
+            class="ObjectPageSection-sectionContentInner"
+            data-component-name="ObjectPageSectionContent"
+          >
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-3.1"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 3.1
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 3.1
+              </div>
+            </div>
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-3.2"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 3.2
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 3.2
+              </div>
+            </div>
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-3.3"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 3.3
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 3.3
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section
+        data-component-name="ObjectPageSection"
+        id="ObjectPageSection-4"
+        role="region"
+      >
+        <div
+          aria-level="3"
+          class="ObjectPageSection-header"
+          data-component-name="ObjectPageSectionHeading"
+          role="heading"
+        >
+          <div
+            class="ObjectPageSection-title ObjectPageSection-uppercase"
+          >
+            Title Section 4
+          </div>
+        </div>
+        <div
+          class="ObjectPageSection-sectionContent"
+        >
+          <div
+            class="ObjectPageSection-sectionContentInner"
+            data-component-name="ObjectPageSectionContent"
+          >
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-4.1"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 4.1
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 4.1
+              </div>
+            </div>
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-4.2"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 4.2
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 4.2
+              </div>
+            </div>
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-4.3"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 4.3
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 4.3
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
     <div
       data-component-name="ObjectPageFooterSpacer"
       style="height: 1rem;"
@@ -2370,252 +2393,253 @@ exports[`ObjectPage with img 2`] = `
         />
       </ui5-tabcontainer>
     </div>
-    <section
+    <div
       class="StdExtPadding-Desktop"
-      data-component-name="ObjectPageSection"
-      id="ObjectPageSection-1"
-      role="region"
+      data-component-name="ObjectPageContent"
     >
-      <div
-        aria-level="3"
-        class="ObjectPageSection-header"
-        data-component-name="ObjectPageSectionHeading"
-        role="heading"
+      <section
+        data-component-name="ObjectPageSection"
+        id="ObjectPageSection-1"
+        role="region"
       >
         <div
-          class="ObjectPageSection-title ObjectPageSection-uppercase"
-        >
-          Title Section 1
-        </div>
-      </div>
-      <div
-        class="ObjectPageSection-sectionContent"
-      >
-        <div
-          class="ObjectPageSection-sectionContentInner"
-          data-component-name="ObjectPageSectionContent"
-        >
-          <ui5-label
-            ui5-label=""
-          >
-            Content Section 1
-          </ui5-label>
-        </div>
-      </div>
-    </section>
-    <section
-      class="StdExtPadding-Desktop"
-      data-component-name="ObjectPageSection"
-      id="ObjectPageSection-2"
-      role="region"
-    >
-      <div
-        aria-level="3"
-        class="ObjectPageSection-header"
-        data-component-name="ObjectPageSectionHeading"
-        role="heading"
-      >
-        <div
-          class="ObjectPageSection-title ObjectPageSection-uppercase"
-        >
-          Title Section 2
-        </div>
-      </div>
-      <div
-        class="ObjectPageSection-sectionContent"
-      >
-        <div
-          class="ObjectPageSection-sectionContentInner"
-          data-component-name="ObjectPageSectionContent"
-        >
-          <div>
-            Content Section 2
-          </div>
-        </div>
-      </div>
-    </section>
-    <section
-      class="StdExtPadding-Desktop"
-      data-component-name="ObjectPageSection"
-      id="ObjectPageSection-3"
-      role="region"
-    >
-      <div
-        aria-level="3"
-        class="ObjectPageSection-header"
-        data-component-name="ObjectPageSectionHeading"
-        role="heading"
-      >
-        <div
-          class="ObjectPageSection-title ObjectPageSection-uppercase"
-        >
-          Title Section 3
-        </div>
-      </div>
-      <div
-        class="ObjectPageSection-sectionContent"
-      >
-        <div
-          class="ObjectPageSection-sectionContentInner"
-          data-component-name="ObjectPageSectionContent"
+          aria-level="3"
+          class="ObjectPageSection-header"
+          data-component-name="ObjectPageSectionHeading"
+          role="heading"
         >
           <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-3.1"
-            role="region"
-            tabindex="-1"
+            class="ObjectPageSection-title ObjectPageSection-uppercase"
           >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
-            >
-              Title SubSection 3.1
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 3.1
-            </div>
-          </div>
-          <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-3.2"
-            role="region"
-            tabindex="-1"
-          >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
-            >
-              Title SubSection 3.2
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 3.2
-            </div>
-          </div>
-          <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-3.3"
-            role="region"
-            tabindex="-1"
-          >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
-            >
-              Title SubSection 3.3
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 3.3
-            </div>
+            Title Section 1
           </div>
         </div>
-      </div>
-    </section>
-    <section
-      class="StdExtPadding-Desktop"
-      data-component-name="ObjectPageSection"
-      id="ObjectPageSection-4"
-      role="region"
-    >
-      <div
-        aria-level="3"
-        class="ObjectPageSection-header"
-        data-component-name="ObjectPageSectionHeading"
-        role="heading"
-      >
         <div
-          class="ObjectPageSection-title ObjectPageSection-uppercase"
-        >
-          Title Section 4
-        </div>
-      </div>
-      <div
-        class="ObjectPageSection-sectionContent"
-      >
-        <div
-          class="ObjectPageSection-sectionContentInner"
-          data-component-name="ObjectPageSectionContent"
+          class="ObjectPageSection-sectionContent"
         >
           <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-4.1"
-            role="region"
-            tabindex="-1"
+            class="ObjectPageSection-sectionContentInner"
+            data-component-name="ObjectPageSectionContent"
           >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
+            <ui5-label
+              ui5-label=""
             >
-              Title SubSection 4.1
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 4.1
-            </div>
+              Content Section 1
+            </ui5-label>
           </div>
+        </div>
+      </section>
+      <section
+        data-component-name="ObjectPageSection"
+        id="ObjectPageSection-2"
+        role="region"
+      >
+        <div
+          aria-level="3"
+          class="ObjectPageSection-header"
+          data-component-name="ObjectPageSectionHeading"
+          role="heading"
+        >
           <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-4.2"
-            role="region"
-            tabindex="-1"
+            class="ObjectPageSection-title ObjectPageSection-uppercase"
           >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
-            >
-              Title SubSection 4.2
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 4.2
-            </div>
+            Title Section 2
           </div>
+        </div>
+        <div
+          class="ObjectPageSection-sectionContent"
+        >
           <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-4.3"
-            role="region"
-            tabindex="-1"
+            class="ObjectPageSection-sectionContentInner"
+            data-component-name="ObjectPageSectionContent"
           >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
-            >
-              Title SubSection 4.3
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 4.3
+            <div>
+              Content Section 2
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <section
+        data-component-name="ObjectPageSection"
+        id="ObjectPageSection-3"
+        role="region"
+      >
+        <div
+          aria-level="3"
+          class="ObjectPageSection-header"
+          data-component-name="ObjectPageSectionHeading"
+          role="heading"
+        >
+          <div
+            class="ObjectPageSection-title ObjectPageSection-uppercase"
+          >
+            Title Section 3
+          </div>
+        </div>
+        <div
+          class="ObjectPageSection-sectionContent"
+        >
+          <div
+            class="ObjectPageSection-sectionContentInner"
+            data-component-name="ObjectPageSectionContent"
+          >
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-3.1"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 3.1
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 3.1
+              </div>
+            </div>
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-3.2"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 3.2
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 3.2
+              </div>
+            </div>
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-3.3"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 3.3
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 3.3
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section
+        data-component-name="ObjectPageSection"
+        id="ObjectPageSection-4"
+        role="region"
+      >
+        <div
+          aria-level="3"
+          class="ObjectPageSection-header"
+          data-component-name="ObjectPageSectionHeading"
+          role="heading"
+        >
+          <div
+            class="ObjectPageSection-title ObjectPageSection-uppercase"
+          >
+            Title Section 4
+          </div>
+        </div>
+        <div
+          class="ObjectPageSection-sectionContent"
+        >
+          <div
+            class="ObjectPageSection-sectionContentInner"
+            data-component-name="ObjectPageSectionContent"
+          >
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-4.1"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 4.1
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 4.1
+              </div>
+            </div>
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-4.2"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 4.2
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 4.2
+              </div>
+            </div>
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-4.3"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 4.3
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 4.3
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
     <div
       data-component-name="ObjectPageFooterSpacer"
       style="height: 1rem;"
@@ -2731,252 +2755,253 @@ exports[`ObjectPage with title 1`] = `
         />
       </ui5-tabcontainer>
     </div>
-    <section
+    <div
       class="StdExtPadding-Desktop"
-      data-component-name="ObjectPageSection"
-      id="ObjectPageSection-1"
-      role="region"
+      data-component-name="ObjectPageContent"
     >
-      <div
-        aria-level="3"
-        class="ObjectPageSection-header"
-        data-component-name="ObjectPageSectionHeading"
-        role="heading"
+      <section
+        data-component-name="ObjectPageSection"
+        id="ObjectPageSection-1"
+        role="region"
       >
         <div
-          class="ObjectPageSection-title ObjectPageSection-uppercase"
-        >
-          Title Section 1
-        </div>
-      </div>
-      <div
-        class="ObjectPageSection-sectionContent"
-      >
-        <div
-          class="ObjectPageSection-sectionContentInner"
-          data-component-name="ObjectPageSectionContent"
-        >
-          <ui5-label
-            ui5-label=""
-          >
-            Content Section 1
-          </ui5-label>
-        </div>
-      </div>
-    </section>
-    <section
-      class="StdExtPadding-Desktop"
-      data-component-name="ObjectPageSection"
-      id="ObjectPageSection-2"
-      role="region"
-    >
-      <div
-        aria-level="3"
-        class="ObjectPageSection-header"
-        data-component-name="ObjectPageSectionHeading"
-        role="heading"
-      >
-        <div
-          class="ObjectPageSection-title ObjectPageSection-uppercase"
-        >
-          Title Section 2
-        </div>
-      </div>
-      <div
-        class="ObjectPageSection-sectionContent"
-      >
-        <div
-          class="ObjectPageSection-sectionContentInner"
-          data-component-name="ObjectPageSectionContent"
-        >
-          <div>
-            Content Section 2
-          </div>
-        </div>
-      </div>
-    </section>
-    <section
-      class="StdExtPadding-Desktop"
-      data-component-name="ObjectPageSection"
-      id="ObjectPageSection-3"
-      role="region"
-    >
-      <div
-        aria-level="3"
-        class="ObjectPageSection-header"
-        data-component-name="ObjectPageSectionHeading"
-        role="heading"
-      >
-        <div
-          class="ObjectPageSection-title ObjectPageSection-uppercase"
-        >
-          Title Section 3
-        </div>
-      </div>
-      <div
-        class="ObjectPageSection-sectionContent"
-      >
-        <div
-          class="ObjectPageSection-sectionContentInner"
-          data-component-name="ObjectPageSectionContent"
+          aria-level="3"
+          class="ObjectPageSection-header"
+          data-component-name="ObjectPageSectionHeading"
+          role="heading"
         >
           <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-3.1"
-            role="region"
-            tabindex="-1"
+            class="ObjectPageSection-title ObjectPageSection-uppercase"
           >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
-            >
-              Title SubSection 3.1
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 3.1
-            </div>
-          </div>
-          <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-3.2"
-            role="region"
-            tabindex="-1"
-          >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
-            >
-              Title SubSection 3.2
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 3.2
-            </div>
-          </div>
-          <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-3.3"
-            role="region"
-            tabindex="-1"
-          >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
-            >
-              Title SubSection 3.3
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 3.3
-            </div>
+            Title Section 1
           </div>
         </div>
-      </div>
-    </section>
-    <section
-      class="StdExtPadding-Desktop"
-      data-component-name="ObjectPageSection"
-      id="ObjectPageSection-4"
-      role="region"
-    >
-      <div
-        aria-level="3"
-        class="ObjectPageSection-header"
-        data-component-name="ObjectPageSectionHeading"
-        role="heading"
-      >
         <div
-          class="ObjectPageSection-title ObjectPageSection-uppercase"
-        >
-          Title Section 4
-        </div>
-      </div>
-      <div
-        class="ObjectPageSection-sectionContent"
-      >
-        <div
-          class="ObjectPageSection-sectionContentInner"
-          data-component-name="ObjectPageSectionContent"
+          class="ObjectPageSection-sectionContent"
         >
           <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-4.1"
-            role="region"
-            tabindex="-1"
+            class="ObjectPageSection-sectionContentInner"
+            data-component-name="ObjectPageSectionContent"
           >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
+            <ui5-label
+              ui5-label=""
             >
-              Title SubSection 4.1
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 4.1
-            </div>
+              Content Section 1
+            </ui5-label>
           </div>
+        </div>
+      </section>
+      <section
+        data-component-name="ObjectPageSection"
+        id="ObjectPageSection-2"
+        role="region"
+      >
+        <div
+          aria-level="3"
+          class="ObjectPageSection-header"
+          data-component-name="ObjectPageSectionHeading"
+          role="heading"
+        >
           <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-4.2"
-            role="region"
-            tabindex="-1"
+            class="ObjectPageSection-title ObjectPageSection-uppercase"
           >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
-            >
-              Title SubSection 4.2
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 4.2
-            </div>
+            Title Section 2
           </div>
+        </div>
+        <div
+          class="ObjectPageSection-sectionContent"
+        >
           <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-4.3"
-            role="region"
-            tabindex="-1"
+            class="ObjectPageSection-sectionContentInner"
+            data-component-name="ObjectPageSectionContent"
           >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
-            >
-              Title SubSection 4.3
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 4.3
+            <div>
+              Content Section 2
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <section
+        data-component-name="ObjectPageSection"
+        id="ObjectPageSection-3"
+        role="region"
+      >
+        <div
+          aria-level="3"
+          class="ObjectPageSection-header"
+          data-component-name="ObjectPageSectionHeading"
+          role="heading"
+        >
+          <div
+            class="ObjectPageSection-title ObjectPageSection-uppercase"
+          >
+            Title Section 3
+          </div>
+        </div>
+        <div
+          class="ObjectPageSection-sectionContent"
+        >
+          <div
+            class="ObjectPageSection-sectionContentInner"
+            data-component-name="ObjectPageSectionContent"
+          >
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-3.1"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 3.1
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 3.1
+              </div>
+            </div>
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-3.2"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 3.2
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 3.2
+              </div>
+            </div>
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-3.3"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 3.3
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 3.3
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section
+        data-component-name="ObjectPageSection"
+        id="ObjectPageSection-4"
+        role="region"
+      >
+        <div
+          aria-level="3"
+          class="ObjectPageSection-header"
+          data-component-name="ObjectPageSectionHeading"
+          role="heading"
+        >
+          <div
+            class="ObjectPageSection-title ObjectPageSection-uppercase"
+          >
+            Title Section 4
+          </div>
+        </div>
+        <div
+          class="ObjectPageSection-sectionContent"
+        >
+          <div
+            class="ObjectPageSection-sectionContentInner"
+            data-component-name="ObjectPageSectionContent"
+          >
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-4.1"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 4.1
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 4.1
+              </div>
+            </div>
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-4.2"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 4.2
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 4.2
+              </div>
+            </div>
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-4.3"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 4.3
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 4.3
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   </div>
 </DocumentFragment>
 `;
@@ -3097,252 +3122,253 @@ exports[`ObjectPage with title, header & footer 1`] = `
         />
       </ui5-tabcontainer>
     </div>
-    <section
+    <div
       class="StdExtPadding-Desktop"
-      data-component-name="ObjectPageSection"
-      id="ObjectPageSection-1"
-      role="region"
+      data-component-name="ObjectPageContent"
     >
-      <div
-        aria-level="3"
-        class="ObjectPageSection-header"
-        data-component-name="ObjectPageSectionHeading"
-        role="heading"
+      <section
+        data-component-name="ObjectPageSection"
+        id="ObjectPageSection-1"
+        role="region"
       >
         <div
-          class="ObjectPageSection-title ObjectPageSection-uppercase"
-        >
-          Title Section 1
-        </div>
-      </div>
-      <div
-        class="ObjectPageSection-sectionContent"
-      >
-        <div
-          class="ObjectPageSection-sectionContentInner"
-          data-component-name="ObjectPageSectionContent"
-        >
-          <ui5-label
-            ui5-label=""
-          >
-            Content Section 1
-          </ui5-label>
-        </div>
-      </div>
-    </section>
-    <section
-      class="StdExtPadding-Desktop"
-      data-component-name="ObjectPageSection"
-      id="ObjectPageSection-2"
-      role="region"
-    >
-      <div
-        aria-level="3"
-        class="ObjectPageSection-header"
-        data-component-name="ObjectPageSectionHeading"
-        role="heading"
-      >
-        <div
-          class="ObjectPageSection-title ObjectPageSection-uppercase"
-        >
-          Title Section 2
-        </div>
-      </div>
-      <div
-        class="ObjectPageSection-sectionContent"
-      >
-        <div
-          class="ObjectPageSection-sectionContentInner"
-          data-component-name="ObjectPageSectionContent"
-        >
-          <div>
-            Content Section 2
-          </div>
-        </div>
-      </div>
-    </section>
-    <section
-      class="StdExtPadding-Desktop"
-      data-component-name="ObjectPageSection"
-      id="ObjectPageSection-3"
-      role="region"
-    >
-      <div
-        aria-level="3"
-        class="ObjectPageSection-header"
-        data-component-name="ObjectPageSectionHeading"
-        role="heading"
-      >
-        <div
-          class="ObjectPageSection-title ObjectPageSection-uppercase"
-        >
-          Title Section 3
-        </div>
-      </div>
-      <div
-        class="ObjectPageSection-sectionContent"
-      >
-        <div
-          class="ObjectPageSection-sectionContentInner"
-          data-component-name="ObjectPageSectionContent"
+          aria-level="3"
+          class="ObjectPageSection-header"
+          data-component-name="ObjectPageSectionHeading"
+          role="heading"
         >
           <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-3.1"
-            role="region"
-            tabindex="-1"
+            class="ObjectPageSection-title ObjectPageSection-uppercase"
           >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
-            >
-              Title SubSection 3.1
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 3.1
-            </div>
-          </div>
-          <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-3.2"
-            role="region"
-            tabindex="-1"
-          >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
-            >
-              Title SubSection 3.2
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 3.2
-            </div>
-          </div>
-          <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-3.3"
-            role="region"
-            tabindex="-1"
-          >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
-            >
-              Title SubSection 3.3
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 3.3
-            </div>
+            Title Section 1
           </div>
         </div>
-      </div>
-    </section>
-    <section
-      class="StdExtPadding-Desktop"
-      data-component-name="ObjectPageSection"
-      id="ObjectPageSection-4"
-      role="region"
-    >
-      <div
-        aria-level="3"
-        class="ObjectPageSection-header"
-        data-component-name="ObjectPageSectionHeading"
-        role="heading"
-      >
         <div
-          class="ObjectPageSection-title ObjectPageSection-uppercase"
-        >
-          Title Section 4
-        </div>
-      </div>
-      <div
-        class="ObjectPageSection-sectionContent"
-      >
-        <div
-          class="ObjectPageSection-sectionContentInner"
-          data-component-name="ObjectPageSectionContent"
+          class="ObjectPageSection-sectionContent"
         >
           <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-4.1"
-            role="region"
-            tabindex="-1"
+            class="ObjectPageSection-sectionContentInner"
+            data-component-name="ObjectPageSectionContent"
           >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
+            <ui5-label
+              ui5-label=""
             >
-              Title SubSection 4.1
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 4.1
-            </div>
+              Content Section 1
+            </ui5-label>
           </div>
+        </div>
+      </section>
+      <section
+        data-component-name="ObjectPageSection"
+        id="ObjectPageSection-2"
+        role="region"
+      >
+        <div
+          aria-level="3"
+          class="ObjectPageSection-header"
+          data-component-name="ObjectPageSectionHeading"
+          role="heading"
+        >
           <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-4.2"
-            role="region"
-            tabindex="-1"
+            class="ObjectPageSection-title ObjectPageSection-uppercase"
           >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
-            >
-              Title SubSection 4.2
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 4.2
-            </div>
+            Title Section 2
           </div>
+        </div>
+        <div
+          class="ObjectPageSection-sectionContent"
+        >
           <div
-            class="ObjectPageSubSection-objectPageSubSection"
-            id="ObjectPageSubSection-4.3"
-            role="region"
-            tabindex="-1"
+            class="ObjectPageSection-sectionContentInner"
+            data-component-name="ObjectPageSectionContent"
           >
-            <div
-              aria-level="4"
-              class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
-              data-component-name="ObjectPageSubSectionHeading"
-              role="heading"
-            >
-              Title SubSection 4.3
-            </div>
-            <div
-              class="ObjectPageSubSection-subSectionContent"
-              data-component-name="ObjectPageSubSectionContent"
-            >
-              Content Section 4.3
+            <div>
+              Content Section 2
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <section
+        data-component-name="ObjectPageSection"
+        id="ObjectPageSection-3"
+        role="region"
+      >
+        <div
+          aria-level="3"
+          class="ObjectPageSection-header"
+          data-component-name="ObjectPageSectionHeading"
+          role="heading"
+        >
+          <div
+            class="ObjectPageSection-title ObjectPageSection-uppercase"
+          >
+            Title Section 3
+          </div>
+        </div>
+        <div
+          class="ObjectPageSection-sectionContent"
+        >
+          <div
+            class="ObjectPageSection-sectionContentInner"
+            data-component-name="ObjectPageSectionContent"
+          >
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-3.1"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 3.1
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 3.1
+              </div>
+            </div>
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-3.2"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 3.2
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 3.2
+              </div>
+            </div>
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-3.3"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 3.3
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 3.3
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section
+        data-component-name="ObjectPageSection"
+        id="ObjectPageSection-4"
+        role="region"
+      >
+        <div
+          aria-level="3"
+          class="ObjectPageSection-header"
+          data-component-name="ObjectPageSectionHeading"
+          role="heading"
+        >
+          <div
+            class="ObjectPageSection-title ObjectPageSection-uppercase"
+          >
+            Title Section 4
+          </div>
+        </div>
+        <div
+          class="ObjectPageSection-sectionContent"
+        >
+          <div
+            class="ObjectPageSection-sectionContentInner"
+            data-component-name="ObjectPageSectionContent"
+          >
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-4.1"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 4.1
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 4.1
+              </div>
+            </div>
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-4.2"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 4.2
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 4.2
+              </div>
+            </div>
+            <div
+              class="ObjectPageSubSection-objectPageSubSection"
+              id="ObjectPageSubSection-4.3"
+              role="region"
+              tabindex="-1"
+            >
+              <div
+                aria-level="4"
+                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                data-component-name="ObjectPageSubSectionHeading"
+                role="heading"
+              >
+                Title SubSection 4.3
+              </div>
+              <div
+                class="ObjectPageSubSection-subSectionContent"
+                data-component-name="ObjectPageSubSectionContent"
+              >
+                Content Section 4.3
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
     <div
       data-component-name="ObjectPageFooterSpacer"
       style="height: 1rem;"
