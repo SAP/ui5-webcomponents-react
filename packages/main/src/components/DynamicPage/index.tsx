@@ -101,7 +101,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
     className,
     footer
   } = props;
-  const passThroughProps = usePassThroughHtmlProps(props);
+  const passThroughProps = usePassThroughHtmlProps(props, ['onScroll']);
 
   const classes = useStyles();
   const dynamicPageClasses = StyleClassHelper.of(classes.dynamicPage, GlobalStyleClasses.sapScrollBar);
@@ -200,12 +200,25 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
   }
   const responsivePaddingClass = useResponsiveContentPadding(dynamicPageRef.current);
 
+  const onDynamicPageScroll = useCallback(
+    (e) => {
+      if (typeof props?.onScroll === 'function') {
+        props.onScroll(e);
+      }
+      if (headerState === HEADER_STATES.HIDDEN_PINNED && e.target.scrollTop === 0) {
+        setHeaderState(HEADER_STATES.VISIBLE_PINNED);
+      }
+    },
+    [props?.onScroll, headerState]
+  );
+
   return (
     <div
       ref={dynamicPageRef}
       title={tooltip}
       className={dynamicPageClasses.toString()}
       style={style}
+      onScroll={onDynamicPageScroll}
       {...passThroughProps}
     >
       {headerTitle &&

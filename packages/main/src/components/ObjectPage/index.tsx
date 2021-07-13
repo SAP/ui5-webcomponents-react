@@ -598,7 +598,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       scrollTimeout.current = setTimeout(() => {
         setIsAfterScroll(true);
       }, 100);
-      if (!headerPinned) {
+      if (!headerPinned || e.target.scrollTop === 0) {
         objectPageRef.current?.classList.remove(classes.headerCollapsed);
       }
       if (scrolledHeaderExpanded && e.target.scrollTop !== prevScrollTop.current) {
@@ -610,6 +610,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       }
     },
     [
+      topHeaderHeight,
       headerPinned,
       props.onScroll,
       objectPageRef.current,
