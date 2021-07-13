@@ -238,6 +238,21 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
               onClick={onDataPointClickInternal}
               className={typeof onDataPointClick === 'function' ? 'has-click-handler' : undefined}
             >
+              {dimensions.map((dimension, index) => {
+                return (
+                  <XAxis
+                    key={dimension.accessor}
+                    dataKey={dimension.accessor}
+                    xAxisId={index}
+                    tick={false}
+                    tickLine={false}
+                    axisLine={false}
+                    height={0}
+                    allowDuplicatedCategory={index === 0}
+                    reversed={isRTL}
+                  />
+                );
+              })}
               <YAxis
                 orientation={isRTL === true ? 'right' : 'left'}
                 axisLine={false}
