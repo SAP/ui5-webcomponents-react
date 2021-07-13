@@ -130,6 +130,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
       legendHorizontalAlign: 'left',
       zoomingTool: false,
       resizeDebounce: 250,
+      yAxisTicksVisible: true,
       ...props.chartConfig
     };
   }, [props.chartConfig]);
@@ -242,7 +243,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
           yAxisId="left"
           tickFormatter={primaryMeasure?.formatter}
           interval={0}
-          tick={<YAxisTicks config={primaryMeasure} />}
+          tick={chartConfig.yAxisTicksVisible && <YAxisTicks config={primaryMeasure} />}
           width={yAxisWidth}
         />
         {chartConfig.secondYAxis?.dataKey && (

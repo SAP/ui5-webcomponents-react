@@ -7,7 +7,7 @@ import { ChartDataLabel } from '@ui5/webcomponents-react-charts/dist/components/
 import { XAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/XAxisTicks';
 import { YAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/YAxisTicks';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/dist/useLegendItemClick';
-import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
+import React, { ComponentType, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import {
   Bar as Column,
   BarChart as ColumnChartLib,
@@ -93,6 +93,10 @@ export interface ColumnChartProps extends IChartBaseProps {
    *
    */
   measures: MeasureConfig[];
+  /**
+   *
+   */
+  trendPlaceholder: ComponentType<unknown>;
 }
 
 const dimensionDefaults = {
@@ -126,7 +130,8 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
     style,
     className,
     tooltip,
-    slot
+    slot,
+    trendPlaceholder
   } = props;
 
   const chartConfig = useMemo(() => {
@@ -203,7 +208,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
     <ChartContainer
       dataset={dataset}
       loading={loading}
-      Placeholder={ColumnChartPlaceholder}
+      Placeholder={trendPlaceholder ?? ColumnChartPlaceholder}
       ref={chartRef}
       style={style}
       className={className}

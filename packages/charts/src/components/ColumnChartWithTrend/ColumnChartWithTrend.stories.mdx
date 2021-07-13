@@ -1,12 +1,12 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import '@ui5/webcomponents-icons/dist/person-placeholder.js';
-import { ColumnChartWithTrend } from '@ui5/webcomponents-react-charts/dist/ColumnChartWithTrend';
+import { ColumnWithTrendChart } from '@ui5/webcomponents-react-charts/dist/ColumnWithTrendChart';
 import { complexDataSet } from '../../resources/DemoProps';
 
 <Meta
   title="Charts /  ColumnChart with Trend"
-  component={ColumnChartWithTrend}
+  component={ColumnWithTrendChart}
   argTypes={{
     dataset: {
       control: { disable: true }
@@ -43,21 +43,12 @@ import { complexDataSet } from '../../resources/DemoProps';
         {
           accessor: 'sessions',
           label: 'Active Sessions',
-          formatter: (val) => `${val} sessions`,
-          hideDataLabel: true,
-          type: 'column',
-          stackId: 'A'
-        },
-        {
-          accessor: 'volume',
-          label: 'Vol.',
-          type: 'column',
-          stackId: 'A'
+          type: 'column'
         }
       ]
     }}
   >
-    {(props) => <ColumnChartWithTrend {...props} />}
+    {(props) => <ColumnWithTrendChart {...props} />}
   </Story>
 </Canvas>
 
@@ -79,6 +70,6 @@ import { complexDataSet } from '../../resources/DemoProps';
       measures: []
     }}
   >
-    {(props) => <ColumnChartWithTrend {...props} />}
+    {(props) => <ColumnWithTrendChart {...props} />}
   </Story>
 </Canvas>
