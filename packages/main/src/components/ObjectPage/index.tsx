@@ -540,7 +540,8 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     showTitleInHeaderContent,
     avatar,
     headerContentRef,
-    renderTitleSection
+    renderTitleSection,
+    responsivePaddingClass
   ]);
 
   const paddingLeftRtl = isRTL ? 'paddingLeft' : 'paddingRight';
@@ -733,7 +734,9 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
           document.body
         )}
       </div>
-      {mode === ObjectPageMode.IconTabBar ? getSectionById(children, internalSelectedSectionId) : children}
+      <div data-component-name="ObjectPageContent" className={responsivePaddingClass}>
+        {mode === ObjectPageMode.IconTabBar ? getSectionById(children, internalSelectedSectionId) : children}
+      </div>
       {footer && <div style={{ height: '1rem' }} data-component-name="ObjectPageFooterSpacer" />}
       {footer && (
         <footer className={classes.footer} data-component-name="ObjectPageFooter">

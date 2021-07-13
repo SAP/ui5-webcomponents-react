@@ -4,7 +4,6 @@ import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/useP
 import React, { FC, forwardRef, ReactNode, ReactNodeArray, RefObject } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { useResponsiveContentPadding } from '../../internal/useResponsiveContentPadding';
 import { EmptyIdPropException } from '../ObjectPage/EmptyIdPropException';
 import styles from './ObjectPageSection.jss';
 
@@ -48,18 +47,13 @@ const ObjectPageSection: FC<ObjectPageSectionPropTypes> = forwardRef(
     if (titleUppercase) {
       titleClasses.put(classes.uppercase);
     }
-    const responsivePaddingClass = useResponsiveContentPadding(sectionRef.current);
-    const sectionClasses = StyleClassHelper.of(responsivePaddingClass);
-    if (className) {
-      sectionClasses.put(className);
-    }
 
     const passThroughProps = usePassThroughHtmlProps(props, ['id']);
     return (
       <section
         ref={sectionRef}
         role="region"
-        className={sectionClasses.className}
+        className={className}
         style={style}
         title={tooltip}
         {...passThroughProps}
@@ -82,8 +76,6 @@ const ObjectPageSection: FC<ObjectPageSectionPropTypes> = forwardRef(
 
 ObjectPageSection.defaultProps = {
   title: '',
-  // @ts-ignore
-  isSection: true,
   titleUppercase: true
 };
 
