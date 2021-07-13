@@ -161,7 +161,6 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
     );
 
     const tooltipValueFormatter = useTooltipFormatter(measures);
-
     const [yAxisWidth, legendPosition] = useLongestYAxisLabel(dataset, measures);
 
     const primaryDimension = dimensions[0];
@@ -174,19 +173,34 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
 
     const onDataPointClickInternal = useCallback(
       (payload, eventOrIndex, event) => {
-        if (payload && onDataPointClick) {
-          onDataPointClick(
-            enrichEventWithDetails(event, {
-              dataKey: Object.keys(payload).filter((key) =>
-                payload.value.length
-                  ? payload[key] === payload.value[1] - payload.value[0]
-                  : payload[key] === payload.value && key !== 'value'
-              )[0],
-              value: payload.value.length ? payload.value[1] - payload.value[0] : payload.value,
-              dataIndex: eventOrIndex,
-              payload: payload.payload
-            })
-          );
+        if (typeof onDataPointClick === 'function') {
+          if (payload.name) {
+            const payloadValueLength = payload?.value?.length;
+            onDataPointClick(
+              enrichEventWithDetails(event ?? eventOrIndex, {
+                value: payloadValueLength ? payload.value[1] - payload.value[0] : payload.value,
+                dataIndex: payload.index ?? eventOrIndex,
+                dataKey: payloadValueLength
+                  ? Object.keys(payload).filter((key) =>
+                      payload.value.length
+                        ? payload[key] === payload.value[1] - payload.value[0]
+                        : payload[key] === payload.value && key !== 'value'
+                    )[0]
+                  : payload.dataKey ??
+                    Object.keys(payload).find((key) => payload[key] === payload.value && key !== 'value'),
+                payload: payload.payload
+              })
+            );
+          } else {
+            onDataPointClick(
+              enrichEventWithDetails({} as any, {
+                value: eventOrIndex.value,
+                dataKey: eventOrIndex.dataKey,
+                dataIndex: eventOrIndex.index,
+                payload: eventOrIndex.payload
+              })
+            );
+          }
         }
       },
       [onDataPointClick]
