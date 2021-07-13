@@ -24,6 +24,38 @@ or the [changelog](https://github.com/SAP/ui5-webcomponents-react/blob/master/CH
 - [0.9.x to 0.10.0](#migrating-from-09x-to-0100)
 - [0.8.x to 0.9.0](#migrating-from-08x-to-090)
 
+## Migrating from 0.16.x to 0.17.0
+
+### Device Cleanup
+
+The `@ui5/webcomponents-react-base Device` was initially copied from the OpenUI5 project, but most of the methods were unused. In this release, we are cleaning up unused methods:
+
+#### Support Checks
+
+All the following checks are always returning `true` in our supported browser, so we have removed:
+
+- `supportPointerEvents`<br />
+  [CanIUse](https://caniuse.com/?search=pointer%20events)<br />
+  Replacement: `'onpointerdown' in window`
+- `supportInputPlaceholder`<br />
+  [CanIUse Input](https://caniuse.com/?search=input%20placeholder), [CanIUse TextArea](https://caniuse.com/?search=text%20area%20placeholder)<br />
+  Replacement: `'placeholder' in document.createElement('input') && 'placeholder' in document.createElement('textarea')`
+- `supportWebSocket`<br />
+  [CanIUse](https://caniuse.com/?search=web%20socket)<br />
+  Replacement: `'WebSocket' in window && window.WebSocket.CLOSING === 2`
+- `supportMatchMedia`<br />
+  [CanIUse](https://caniuse.com/?search=matchMedia)<br />
+  Replacement: `'matchMedia' in window`
+- `supportMatchMediaListener`<br />
+  [CanIUse](https://caniuse.com/mdn-api_mediaquerylistevent_matches)<br />
+  Replacement: `'matchMedia' in window && window.matchMedia('all and (max-width:0px)'))`
+- `supportOrientation`<br />
+  [CanIUse](https://caniuse.com/mdn-api_window_deviceorientation_event)<br />
+  Replacement: `'DeviceOrientationEvent' in window`
+
+In addition to that, we removed the `supportRetina` check as it was never used in our codebase.
+If you need this check, you'll need to replace it with `window.retina || window.devicePixelRatio >= 2`.
+
 ## Migrating from 0.15.x to 0.16.0
 
 <br />

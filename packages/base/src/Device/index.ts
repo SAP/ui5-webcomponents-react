@@ -1,7 +1,6 @@
 import '@ui5/webcomponents-react-base/types/UI5Device.d.ts';
 import { supportsTouch } from '@ui5/webcomponents-base/dist/Device';
 import EventProvider from '@ui5/webcomponents-base/dist/EventProvider';
-import { supportOrientation } from './Support';
 import * as Utils from './utils';
 
 const eventProvider = new EventProvider();
@@ -57,7 +56,7 @@ const clearFlags = () => {
 let eventListenersInitialized = false;
 const initEventListeners = () => {
   // Add handler for orientationchange and resize after initialization of Device API
-  if (supportsTouch() && supportOrientation()) {
+  if (supportsTouch()) {
     // logic for mobile devices which support orientationchange (like ios, android)
     window.addEventListener('resize', handleMobileOrientationResizeChange, false);
     window.addEventListener('orientationchange', handleMobileOrientationResizeChange, false);
@@ -176,8 +175,6 @@ const handleResizeEvent = () => {
 
 // re-export everything from the web components device
 export { isIE, isSafari, isDesktop, isTablet, isPhone, supportsTouch } from '@ui5/webcomponents-base/dist/Device';
-// export all support methods
-export * from './Support';
 // export all media methods
 export * from './Media';
 // resize events

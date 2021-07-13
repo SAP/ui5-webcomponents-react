@@ -1,5 +1,3 @@
-import { supportMatchMedia, supportOrientation } from './Support';
-
 export const getWindowSize = () => {
   return [window.innerWidth, window.innerHeight];
 };
@@ -58,11 +56,5 @@ export const matchLegacyBySize = (from, to, unit, size) => {
 };
 
 export const isLandscape = () => {
-  if (supportMatchMedia() && supportOrientation()) {
-    // most desktop browsers and windows phone/tablet which not support orientationchange
-    return !!window.matchMedia('(orientation: landscape)').matches;
-  }
-  // otherwise compare the width and height of window
-  const size = getWindowSize();
-  return size[0] > size[1];
+  return !!window.matchMedia('(orientation: landscape)').matches;
 };

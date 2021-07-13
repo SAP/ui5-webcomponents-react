@@ -1,6 +1,5 @@
 import { Logger } from '@ui5/webcomponents-react-base/dist/Logger';
 import { MediaEventProvider } from './MediaEventProvider';
-import { supportMatchMediaListener } from './Support';
 import { changeRootCSSClass, getQuery, matchLegacyBySize } from './utils';
 
 interface Query {
@@ -90,15 +89,12 @@ const handleChange = (name: string): void => {
     initializedQuerySets[name].timer = null;
   }
 
-  initializedQuerySets[name].timer = (setTimeout(
-    () => {
-      const mParams = checkQueries(name, false);
-      if (mParams) {
-        eventProvider.fireEvent(`media_${name}`, mParams);
-      }
-    },
-    supportMatchMediaListener() ? 0 : 100
-  ) as unknown) as number;
+  initializedQuerySets[name].timer = setTimeout(() => {
+    const mParams = checkQueries(name, false);
+    if (mParams) {
+      eventProvider.fireEvent(`media_${name}`, mParams);
+    }
+  }, 0) as unknown as number;
 };
 
 // public API
