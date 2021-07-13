@@ -1,8 +1,6 @@
 import { useIsRTL, usePassThroughHtmlProps, useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
-import { ColumnWithTrendChartPlaceholder } from '../../dist/ColumnWithTrendChartPlaceholder';
-import { ColumnChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/ColumnChartPlaceholder';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/dist/components/ChartContainer';
 import { ChartDataLabel } from '@ui5/webcomponents-react-charts/dist/components/ChartDataLabel';
 import { XAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/XAxisTicks';
@@ -21,10 +19,11 @@ import {
   ReferenceLine,
   Tooltip,
   XAxis,
-  YAxis
+  YAxis,
+  LineChart as LineChartLib
 } from 'recharts';
-import { LineChart as LineChartLib } from 'recharts';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
+import { ColumnWithTrendChartPlaceholder } from '../../dist/ColumnWithTrendChartPlaceholder';
 import { useChartMargin } from '../../hooks/useChartMargin';
 import { useLabelFormatter } from '../../hooks/useLabelFormatter';
 import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
@@ -209,7 +208,7 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
           <ChartContainer
             dataset={dataset}
             loading={loading}
-            Placeholder={ColumnWithTrendChartPlaceholder}
+            Placeholder={null}
             ref={chartRef}
             style={{ ...style, height: `calc(${style.height} * 0.2)` }}
             className={className}
@@ -275,7 +274,7 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
           </ChartContainer>
         )}
         <ChartContainer
-          Placeholder={ColumnChartPlaceholder}
+          Placeholder={ColumnWithTrendChartPlaceholder}
           dataset={dataset}
           ref={chartRef}
           style={{ ...style, height: `calc(${style.height} * ${dataset.length !== 0 ? 0.8 : 1})` }}
