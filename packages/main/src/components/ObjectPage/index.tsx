@@ -431,7 +431,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     objectPageClasses.put(classes.iconTabBarMode);
   }
 
-  const passThroughProps = usePassThroughHtmlProps(props, ['onSelectedSectionChanged']);
+  const passThroughProps = usePassThroughHtmlProps(props, ['onSelectedSectionChanged', 'onScroll']);
 
   useEffect(() => {
     const sections = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
@@ -598,7 +598,9 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       scrollTimeout.current = setTimeout(() => {
         setIsAfterScroll(true);
       }, 100);
-      objectPageRef.current?.classList.remove(classes.headerCollapsed);
+      if (!headerPinned) {
+        objectPageRef.current?.classList.remove(classes.headerCollapsed);
+      }
       if (scrolledHeaderExpanded && e.target.scrollTop !== prevScrollTop.current) {
         if (e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight) {
           return;
@@ -608,6 +610,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       }
     },
     [
+      headerPinned,
       props.onScroll,
       objectPageRef.current,
       scrolledHeaderExpanded,
@@ -642,8 +645,8 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       style={style}
       ref={objectPageRef}
       title={tooltip}
-      {...passThroughProps}
       onScroll={onObjectPageScroll}
+      {...passThroughProps}
     >
       <header
         onMouseOver={onHoverToggleButton}
