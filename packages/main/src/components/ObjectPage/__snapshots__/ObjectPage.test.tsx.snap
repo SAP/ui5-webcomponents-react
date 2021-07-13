@@ -27,27 +27,24 @@ exports[`ObjectPage Default with Sections 1`] = `
         tabs-placement="Top"
         ui5-tabcontainer=""
       >
-        <ui5-tab
+        <ui5-object-page-anchor-tab
           data-index="0"
           data-section-id="1"
           selected="true"
-          semantic-color="Default"
           text="Title 1"
-          ui5-tab=""
+          ui5-object-page-anchor-tab=""
         />
-        <ui5-tab
+        <ui5-object-page-anchor-tab
           data-index="1"
           data-section-id="2"
-          semantic-color="Default"
           text="Title 2"
-          ui5-tab=""
+          ui5-object-page-anchor-tab=""
         />
-        <ui5-tab
+        <ui5-object-page-anchor-tab
           data-index="2"
           data-section-id="3"
-          semantic-color="Default"
           text="Title 3"
-          ui5-tab=""
+          ui5-object-page-anchor-tab=""
         />
       </ui5-tabcontainer>
     </div>
@@ -179,34 +176,32 @@ exports[`ObjectPage Default with SubSections 1`] = `
         tabs-placement="Top"
         ui5-tabcontainer=""
       >
-        <ui5-tab
+        <ui5-object-page-anchor-tab
           data-index="0"
           data-section-id="1"
           selected="true"
-          semantic-color="Default"
           text="Title Section 1"
-          ui5-tab=""
+          ui5-object-page-anchor-tab=""
         />
-        <ui5-tab
+        <ui5-object-page-anchor-tab
           data-index="1"
           data-section-id="2"
-          semantic-color="Default"
           text="Title Section 2"
-          ui5-tab=""
+          ui5-object-page-anchor-tab=""
         />
-        <ui5-tab
+        <ui5-object-page-anchor-tab
           data-index="2"
           data-section-id="3"
-          semantic-color="Default"
           text="Title Section 3"
-          ui5-tab=""
+          ui5-object-page-anchor-tab=""
+          with-sub-sections="true"
         />
-        <ui5-tab
+        <ui5-object-page-anchor-tab
           data-index="3"
           data-section-id="4"
-          semantic-color="Default"
           text="Title Section 4"
-          ui5-tab=""
+          ui5-object-page-anchor-tab=""
+          with-sub-sections="true"
         />
       </ui5-tabcontainer>
     </div>
@@ -488,34 +483,32 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
         tabs-placement="Top"
         ui5-tabcontainer=""
       >
-        <ui5-tab
+        <ui5-object-page-anchor-tab
           data-index="0"
           data-section-id="1"
-          semantic-color="Default"
           text="Title Section 1"
-          ui5-tab=""
+          ui5-object-page-anchor-tab=""
         />
-        <ui5-tab
+        <ui5-object-page-anchor-tab
           data-index="1"
           data-section-id="2"
-          semantic-color="Default"
           text="Title Section 2"
-          ui5-tab=""
+          ui5-object-page-anchor-tab=""
         />
-        <ui5-tab
+        <ui5-object-page-anchor-tab
           data-index="2"
           data-section-id="3"
           selected="true"
-          semantic-color="Default"
           text="Title Section 3"
-          ui5-tab=""
+          ui5-object-page-anchor-tab=""
+          with-sub-sections="true"
         />
-        <ui5-tab
+        <ui5-object-page-anchor-tab
           data-index="3"
           data-section-id="4"
-          semantic-color="Default"
           text="Title Section 4"
-          ui5-tab=""
+          ui5-object-page-anchor-tab=""
+          with-sub-sections="true"
         />
       </ui5-tabcontainer>
     </div>
@@ -681,13 +674,12 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
         tabs-placement="Top"
         ui5-tabcontainer=""
       >
-        <ui5-tab
+        <ui5-object-page-anchor-tab
           data-index="0"
           data-section-id="1"
           selected="true"
-          semantic-color="Default"
           text=""
-          ui5-tab=""
+          ui5-object-page-anchor-tab=""
         />
       </ui5-tabcontainer>
     </div>
@@ -753,13 +745,12 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
         tabs-placement="Top"
         ui5-tabcontainer=""
       >
-        <ui5-tab
+        <ui5-object-page-anchor-tab
           data-index="0"
           data-section-id="1"
           selected="true"
-          semantic-color="Default"
           text=""
-          ui5-tab=""
+          ui5-object-page-anchor-tab=""
         />
       </ui5-tabcontainer>
     </div>
@@ -894,34 +885,32 @@ exports[`ObjectPage with anchor-bar 1`] = `
         tabs-placement="Top"
         ui5-tabcontainer=""
       >
-        <ui5-tab
+        <ui5-object-page-anchor-tab
           data-index="0"
           data-section-id="1"
           selected="true"
-          semantic-color="Default"
           text="Title Section 1"
-          ui5-tab=""
+          ui5-object-page-anchor-tab=""
         />
-        <ui5-tab
+        <ui5-object-page-anchor-tab
           data-index="1"
           data-section-id="2"
-          semantic-color="Default"
           text="Title Section 2"
-          ui5-tab=""
+          ui5-object-page-anchor-tab=""
         />
-        <ui5-tab
+        <ui5-object-page-anchor-tab
           data-index="2"
           data-section-id="3"
-          semantic-color="Default"
           text="Title Section 3"
-          ui5-tab=""
+          ui5-object-page-anchor-tab=""
+          with-sub-sections="true"
         />
-        <ui5-tab
+        <ui5-object-page-anchor-tab
           data-index="3"
           data-section-id="4"
-          semantic-color="Default"
           text="Title Section 4"
-          ui5-tab=""
+          ui5-object-page-anchor-tab=""
+          with-sub-sections="true"
         />
       </ui5-tabcontainer>
     </div>
@@ -1222,34 +1211,32 @@ exports[`ObjectPage with footer 1`] = `
         tabs-placement="Top"
         ui5-tabcontainer=""
       >
-        <ui5-tab
+        <ui5-object-page-anchor-tab
           data-index="0"
           data-section-id="1"
           selected="true"
-          semantic-color="Default"
           text="Title Section 1"
-          ui5-tab=""
+          ui5-object-page-anchor-tab=""
         />
-        <ui5-tab
+        <ui5-object-page-anchor-tab
           data-index="1"
           data-section-id="2"
-          semantic-color="Default"
           text="Title Section 2"
-          ui5-tab=""
+          ui5-object-page-anchor-tab=""
         />
-        <ui5-tab
+        <ui5-object-page-anchor-tab
           data-index="2"
           data-section-id="3"
-          semantic-color="Default"
           text="Title Section 3"
-          ui5-tab=""
+          ui5-object-page-anchor-tab=""
+          with-sub-sections="true"
         />
-        <ui5-tab
+        <ui5-object-page-anchor-tab
           data-index="3"
           data-section-id="4"
-          semantic-color="Default"
           text="Title Section 4"
-          ui5-tab=""
+          ui5-object-page-anchor-tab=""
+          with-sub-sections="true"
         />
       </ui5-tabcontainer>
     </div>
@@ -1565,34 +1552,32 @@ exports[`ObjectPage with header 1`] = `
         tabs-placement="Top"
         ui5-tabcontainer=""
       >
-        <ui5-tab
+        <ui5-object-page-anchor-tab
           data-index="0"
           data-section-id="1"
           selected="true"
-          semantic-color="Default"
           text="Title Section 1"
-          ui5-tab=""
+          ui5-object-page-anchor-tab=""
         />
-        <ui5-tab
+        <ui5-object-page-anchor-tab
           data-index="1"
           data-section-id="2"
-          semantic-color="Default"
           text="Title Section 2"
-          ui5-tab=""
+          ui5-object-page-anchor-tab=""
         />
-        <ui5-tab
+        <ui5-object-page-anchor-tab
           data-index="2"
           data-section-id="3"
-          semantic-color="Default"
           text="Title Section 3"
-          ui5-tab=""
+          ui5-object-page-anchor-tab=""
+          with-sub-sections="true"
         />
-        <ui5-tab
+        <ui5-object-page-anchor-tab
           data-index="3"
           data-section-id="4"
-          semantic-color="Default"
           text="Title Section 4"
-          ui5-tab=""
+          ui5-object-page-anchor-tab=""
+          with-sub-sections="true"
         />
       </ui5-tabcontainer>
     </div>
@@ -1957,34 +1942,32 @@ exports[`ObjectPage with img 1`] = `
         tabs-placement="Top"
         ui5-tabcontainer=""
       >
-        <ui5-tab
+        <ui5-object-page-anchor-tab
           data-index="0"
           data-section-id="1"
           selected="true"
-          semantic-color="Default"
           text="Title Section 1"
-          ui5-tab=""
+          ui5-object-page-anchor-tab=""
         />
-        <ui5-tab
+        <ui5-object-page-anchor-tab
           data-index="1"
           data-section-id="2"
-          semantic-color="Default"
           text="Title Section 2"
-          ui5-tab=""
+          ui5-object-page-anchor-tab=""
         />
-        <ui5-tab
+        <ui5-object-page-anchor-tab
           data-index="2"
           data-section-id="3"
-          semantic-color="Default"
           text="Title Section 3"
-          ui5-tab=""
+          ui5-object-page-anchor-tab=""
+          with-sub-sections="true"
         />
-        <ui5-tab
+        <ui5-object-page-anchor-tab
           data-index="3"
           data-section-id="4"
-          semantic-color="Default"
           text="Title Section 4"
-          ui5-tab=""
+          ui5-object-page-anchor-tab=""
+          with-sub-sections="true"
         />
       </ui5-tabcontainer>
     </div>
@@ -2362,34 +2345,32 @@ exports[`ObjectPage with img 2`] = `
         tabs-placement="Top"
         ui5-tabcontainer=""
       >
-        <ui5-tab
+        <ui5-object-page-anchor-tab
           data-index="0"
           data-section-id="1"
           selected="true"
-          semantic-color="Default"
           text="Title Section 1"
-          ui5-tab=""
+          ui5-object-page-anchor-tab=""
         />
-        <ui5-tab
+        <ui5-object-page-anchor-tab
           data-index="1"
           data-section-id="2"
-          semantic-color="Default"
           text="Title Section 2"
-          ui5-tab=""
+          ui5-object-page-anchor-tab=""
         />
-        <ui5-tab
+        <ui5-object-page-anchor-tab
           data-index="2"
           data-section-id="3"
-          semantic-color="Default"
           text="Title Section 3"
-          ui5-tab=""
+          ui5-object-page-anchor-tab=""
+          with-sub-sections="true"
         />
-        <ui5-tab
+        <ui5-object-page-anchor-tab
           data-index="3"
           data-section-id="4"
-          semantic-color="Default"
           text="Title Section 4"
-          ui5-tab=""
+          ui5-object-page-anchor-tab=""
+          with-sub-sections="true"
         />
       </ui5-tabcontainer>
     </div>
@@ -2724,34 +2705,32 @@ exports[`ObjectPage with title 1`] = `
         tabs-placement="Top"
         ui5-tabcontainer=""
       >
-        <ui5-tab
+        <ui5-object-page-anchor-tab
           data-index="0"
           data-section-id="1"
           selected="true"
-          semantic-color="Default"
           text="Title Section 1"
-          ui5-tab=""
+          ui5-object-page-anchor-tab=""
         />
-        <ui5-tab
+        <ui5-object-page-anchor-tab
           data-index="1"
           data-section-id="2"
-          semantic-color="Default"
           text="Title Section 2"
-          ui5-tab=""
+          ui5-object-page-anchor-tab=""
         />
-        <ui5-tab
+        <ui5-object-page-anchor-tab
           data-index="2"
           data-section-id="3"
-          semantic-color="Default"
           text="Title Section 3"
-          ui5-tab=""
+          ui5-object-page-anchor-tab=""
+          with-sub-sections="true"
         />
-        <ui5-tab
+        <ui5-object-page-anchor-tab
           data-index="3"
           data-section-id="4"
-          semantic-color="Default"
           text="Title Section 4"
-          ui5-tab=""
+          ui5-object-page-anchor-tab=""
+          with-sub-sections="true"
         />
       </ui5-tabcontainer>
     </div>
@@ -3091,34 +3070,32 @@ exports[`ObjectPage with title, header & footer 1`] = `
         tabs-placement="Top"
         ui5-tabcontainer=""
       >
-        <ui5-tab
+        <ui5-object-page-anchor-tab
           data-index="0"
           data-section-id="1"
           selected="true"
-          semantic-color="Default"
           text="Title Section 1"
-          ui5-tab=""
+          ui5-object-page-anchor-tab=""
         />
-        <ui5-tab
+        <ui5-object-page-anchor-tab
           data-index="1"
           data-section-id="2"
-          semantic-color="Default"
           text="Title Section 2"
-          ui5-tab=""
+          ui5-object-page-anchor-tab=""
         />
-        <ui5-tab
+        <ui5-object-page-anchor-tab
           data-index="2"
           data-section-id="3"
-          semantic-color="Default"
           text="Title Section 3"
-          ui5-tab=""
+          ui5-object-page-anchor-tab=""
+          with-sub-sections="true"
         />
-        <ui5-tab
+        <ui5-object-page-anchor-tab
           data-index="3"
           data-section-id="4"
-          semantic-color="Default"
           text="Title Section 4"
-          ui5-tab=""
+          ui5-object-page-anchor-tab=""
+          with-sub-sections="true"
         />
       </ui5-tabcontainer>
     </div>
