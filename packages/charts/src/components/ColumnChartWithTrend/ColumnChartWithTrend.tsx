@@ -1,7 +1,7 @@
 import { useIsRTL, usePassThroughHtmlProps, useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
-import { TrendLinePlaceholder } from '@ui5/webcomponents-react-charts/dist/TrendLinePlaceholder';
+import { ColumnWithTrendChartPlaceholder } from '../../dist/ColumnWithTrendChartPlaceholder';
 import { ColumnChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/ColumnChartPlaceholder';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/dist/components/ChartContainer';
 import { ChartDataLabel } from '@ui5/webcomponents-react-charts/dist/components/ChartDataLabel';
@@ -205,78 +205,80 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
 
     return (
       <div style={{ display: 'flex', flexDirection: 'column' }}>
-        <ChartContainer
-          dataset={dataset}
-          loading={loading}
-          Placeholder={TrendLinePlaceholder}
-          ref={chartRef}
-          style={{ ...style, height: `calc(${style.height} * 0.2)` }}
-          className={className}
-          tooltip={tooltip}
-          slot={slot}
-          resizeDebounce={chartConfig.resizeDebounce}
-          {...passThroughProps}
-        >
-          <LineChartLib
-            margin={marginChart}
-            syncId="anyId"
-            data={dataset}
-            onClick={onDataPointClickInternal}
-            className={typeof onDataPointClick === 'function' ? 'has-click-handler' : undefined}
+        {dataset.length !== 0 && (
+          <ChartContainer
+            dataset={dataset}
+            loading={loading}
+            Placeholder={ColumnWithTrendChartPlaceholder}
+            ref={chartRef}
+            style={{ ...style, height: `calc(${style.height} * 0.2)` }}
+            className={className}
+            tooltip={tooltip}
+            slot={slot}
+            resizeDebounce={chartConfig.resizeDebounce}
+            {...passThroughProps}
           >
-            <YAxis
-              orientation={isRTL === true ? 'right' : 'left'}
-              axisLine={false}
-              tickLine={false}
-              tick={false}
-              yAxisId="left"
-              width={yAxisWidth}
-            />
-            {measures.map((element, index) => {
-              if (element.type === 'line') {
-                return (
-                  <Line
-                    dot={element.showDot ?? !isBigDataSet}
-                    yAxisId={chartConfig.secondYAxis?.dataKey === element.accessor ? 'right' : 'left'}
-                    key={element.accessor}
-                    name={element.label ?? element.accessor}
-                    strokeOpacity={element.opacity}
-                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                    // @ts-ignore
-                    label={isBigDataSet ? false : <ChartDataLabel config={element} chartType="line" position="top" />}
-                    type="monotone"
-                    dataKey={element.accessor}
-                    stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
-                    strokeWidth={element.width}
-                    activeDot={{ onClick: onDataPointClickInternal } as any}
-                    isAnimationActive={noAnimation === false}
-                  />
-                );
-              }
-            })}
-            {chartConfig.referenceLine && (
-              <ReferenceLine
-                stroke={chartConfig.referenceLine.color}
-                y={chartConfig.referenceLine.value}
-                yAxisId={'left'}
-              >
-                <Label>{chartConfig.referenceLine.label}</Label>
-              </ReferenceLine>
-            )}
-            <Tooltip
-              cursor={tooltipFillOpacity}
-              formatter={tooltipValueFormatter}
-              contentStyle={tooltipContentStyle}
-              labelFormatter={labelFormatter}
-            />
-            {props.children}
-          </LineChartLib>
-        </ChartContainer>
+            <LineChartLib
+              margin={marginChart}
+              syncId="anyId"
+              data={dataset}
+              onClick={onDataPointClickInternal}
+              className={typeof onDataPointClick === 'function' ? 'has-click-handler' : undefined}
+            >
+              <YAxis
+                orientation={isRTL === true ? 'right' : 'left'}
+                axisLine={false}
+                tickLine={false}
+                tick={false}
+                yAxisId="left"
+                width={yAxisWidth}
+              />
+              {measures.map((element, index) => {
+                if (element.type === 'line') {
+                  return (
+                    <Line
+                      dot={element.showDot ?? !isBigDataSet}
+                      yAxisId={chartConfig.secondYAxis?.dataKey === element.accessor ? 'right' : 'left'}
+                      key={element.accessor}
+                      name={element.label ?? element.accessor}
+                      strokeOpacity={element.opacity}
+                      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                      // @ts-ignore
+                      label={isBigDataSet ? false : <ChartDataLabel config={element} chartType="line" position="top" />}
+                      type="monotone"
+                      dataKey={element.accessor}
+                      stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
+                      strokeWidth={element.width}
+                      activeDot={{ onClick: onDataPointClickInternal } as any}
+                      isAnimationActive={noAnimation === false}
+                    />
+                  );
+                }
+              })}
+              {chartConfig.referenceLine && (
+                <ReferenceLine
+                  stroke={chartConfig.referenceLine.color}
+                  y={chartConfig.referenceLine.value}
+                  yAxisId={'left'}
+                >
+                  <Label>{chartConfig.referenceLine.label}</Label>
+                </ReferenceLine>
+              )}
+              <Tooltip
+                cursor={tooltipFillOpacity}
+                formatter={tooltipValueFormatter}
+                contentStyle={tooltipContentStyle}
+                labelFormatter={labelFormatter}
+              />
+              {props.children}
+            </LineChartLib>
+          </ChartContainer>
+        )}
         <ChartContainer
           Placeholder={ColumnChartPlaceholder}
           dataset={dataset}
           ref={chartRef}
-          style={{ ...style, height: `calc(${style.height} * 0.8)` }}
+          style={{ ...style, height: `calc(${style.height} * ${dataset.length !== 0 ? 0.8 : 1})` }}
           className={className}
           tooltip={tooltip}
           slot={slot}

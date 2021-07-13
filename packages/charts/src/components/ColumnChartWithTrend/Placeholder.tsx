@@ -2,10 +2,10 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingPar
 import React from 'react';
 import ContentLoader from 'react-content-loader';
 
-export const TrendLinePlaceholder = (props) => {
+export const ColumnWithTrendChartPlaceholder = (props) => {
   return (
     <ContentLoader
-      viewBox="0 0 600 115"
+      viewBox="0 0 165 145"
       preserveAspectRatio="xMidYMax meet"
       width="100%"
       height="100%"
@@ -16,7 +16,7 @@ export const TrendLinePlaceholder = (props) => {
       {...props}
     >
       <path
-        d="M 66 71 L 117 28 L 154 68 L 211 81 L 289 36 L 390 13 L 499 73 L 496 73 L 389 19 L 291 41 L 212 85 L 152 71 L 117 34 Z"
+        d="M 0 58 L 46 67 L 65 65 L 76 49 L 95 42 L 113 42 L 137 56 L 137 56 L 114 44 L 96 44 L 78 51 L 65 67 L 45 70 Z"
         fill="none"
         strokeWidth="2"
       />
