@@ -9,7 +9,7 @@ interface Query {
 
 interface RangeInfo {
   from: number;
-  to: number;
+  to?: number;
   name: 'Phone' | 'Tablet' | 'Desktop' | 'LargeDesktop';
   unit: string;
 }
@@ -29,19 +29,7 @@ interface RangeSet {
 // private helpers
 let activeRangeSet: RangeSet;
 
-const convertToPx = (val, unit?) => {
-  if (unit === 'em' || unit === 'rem') {
-    const x = window.getComputedStyle(document.documentElement).fontSize;
-    const f = x && x.indexOf('px') >= 0 ? parseFloat(x) : 16;
-    return val * f;
-  }
-  return val;
-};
-
 const matchLegacyBySize = (from, to, unit, width) => {
-  from = convertToPx(from, unit);
-  to = convertToPx(to, unit);
-
   const a = from < 0 || from <= width;
   const b = to < 0 || width <= to;
   return a && b;
@@ -60,7 +48,7 @@ const getQuery = (from: number, to: number, unit = 'px') => {
 
 const getRangeInfo = (iRangeIdx: number): RangeInfo => {
   const q = activeRangeSet.queries[iRangeIdx];
-  const info = { from: q.from, unit: activeRangeSet.unit, name: activeRangeSet.names[iRangeIdx] } as RangeInfo;
+  const info: RangeInfo = { from: q.from, unit: activeRangeSet.unit, name: activeRangeSet.names[iRangeIdx] };
   if (q.to >= 0) {
     info.to = q.to;
   }
@@ -74,24 +62,19 @@ const matches = (from: number, to: number, unit: string) => {
 };
 
 const checkQueries = (infoOnly, matcher = matches): RangeInfo => {
-  if (activeRangeSet) {
-    const aQueries = activeRangeSet.queries;
-    let info = null;
-    for (let i = 0, len = aQueries.length; i < len; i++) {
-      const q = aQueries[i];
-      if ((q !== activeRangeSet.currentquery || infoOnly) && matcher(q.from, q.to, activeRangeSet.unit)) {
-        if (!infoOnly) {
-          activeRangeSet.currentquery = q;
-        }
-        info = getRangeInfo(i);
+  const aQueries = activeRangeSet.queries;
+  let info = null;
+  for (let i = 0, len = aQueries.length; i < len; i++) {
+    const q = aQueries[i];
+    if ((q !== activeRangeSet.currentquery || infoOnly) && matcher(q.from, q.to, activeRangeSet.unit)) {
+      if (!infoOnly) {
+        activeRangeSet.currentquery = q;
       }
+      info = getRangeInfo(i);
     }
-
-    return info;
   }
-  // eslint-disable-next-line no-console
-  console.warn(`RangeSet is not initialized`);
-  return null;
+
+  return info;
 };
 
 const handleChange = (): void => {
