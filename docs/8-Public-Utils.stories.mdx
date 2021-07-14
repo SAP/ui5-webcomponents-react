@@ -1,5 +1,7 @@
-import { Meta, Story, Canvas } from '@storybook/addon-docs';
-import { MessageStrip, MessageStripType } from '@ui5/webcomponents-react';
+import { Meta } from '@storybook/addon-docs';
+import LinkTo from '@storybook/addon-links/react';
+import { Label, MessageStrip, MessageStripType } from '@ui5/webcomponents-react';
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { ImportStatement } from '../shared/stories/Import';
 import { TableOfContent } from '../shared/stories/TableOfContent';
 
@@ -55,15 +57,15 @@ The `Device` allows you to detect information about the environment where your a
   Attach an event handler whenever the window size is matching another media query. <br />
   The current window size will be matched against the standard SAP Responsive Breakpoints:
 
-  | Media Query                                 | Name           |
-  | ------------------------------------------- | -------------- |
-  | `(max-width:599px)`                         | `Phone`        |
-  | `(min-width:600px) and (max-width:1023px)`  | `Tablet`       |
-  | `(min-width:1024px) and (max-width:1439px)` | `Desktop`      |
-  | `(min-width:1440px)`                        | `LargeDesktop` |
+| Media Query                                 | Name           |
+| ------------------------------------------- | -------------- |
+| `(max-width:599px)`                         | `Phone`        |
+| `(min-width:600px) and (max-width:1023px)`  | `Tablet`       |
+| `(min-width:1024px) and (max-width:1439px)` | `Desktop`      |
+| `(min-width:1440px)`                        | `LargeDesktop` |
 
-  `callback` is a function which will be called with
-  `{ from: number, to?: number, name: 'Phone' | 'Tablet' | 'Desktop' | 'LargeDesktop', unit: string }`.
+`callback` is a function which will be called with
+`{ from: number, to?: number, name: 'Phone' | 'Tablet' | 'Desktop' | 'LargeDesktop', unit: string }`.
 
 - `Device.detachMediaHandler(callback)` <br />
   Detach a previously attached media handler
@@ -72,6 +74,53 @@ The `Device` allows you to detect information about the environment where your a
 
 <ImportStatement>{`import { ThemingParameters } from '@ui5/webcomponents-react-base';`}</ImportStatement>
 
+By using our `ThemingParameters`, you can define the look and feel of your application without the need to hard-code any
+colors. You can e.g. set `ThemingParameters.sapBackgroundColor` as a `background-color` and you'll always get the correct
+background color for your current theme.
+
+Available Colors:
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', rowGap: '1rem', columnGap: '1rem' }}>
+  {Object.entries(ThemingParameters).map(([key, value]) => {
+    if (key.startsWith('sapFont')) return null;
+    return (
+      <div key={key} style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Label>{key}</Label>
+        <div
+          style={{
+            backgroundColor: value,
+            borderRadius: '50%',
+            width: '2rem',
+            height: '2rem',
+            minWidth: '2rem',
+            border: `1px solid ${ThemingParameters.sapField_BorderColor}`
+          }}
+        />
+      </div>
+    );
+  })}
+</div>
+
 ## Spacing
 
 <ImportStatement>{`import { spacing } from '@ui5/webcomponents-react-base';`}</ImportStatement>
+
+The `spacing` file is containing all standard margins and paddings that are used in SAP Applications.
+You can explore them via the [UI5 Standard Margins Demo Kit](https://ui5.sap.com/#/entity/sap.ui.core.StandardMargins)
+and the [UI5 Standard Paddings Demo Kit](https://ui5.sap.com/#/entity/sap.ui.core.ContainerPadding).
+
+## Hooks
+
+### `useI18nBundle`
+
+<ImportStatement>{`import { useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';`}</ImportStatement>
+
+The `useI18nBundle` hook can be used for adding internationalization to your application. Learn more about it in our
+[Internationalization Guide](?path=/docs/internationalization--page).
+
+### `useViewportRange`
+
+<ImportStatement>{`import { useViewportRange } from '@ui5/webcomponents-react-base/dist/hooks';`}</ImportStatement>
+
+The `useViewportRange` hook is a utility hook based on the `Device.getCurrentRange()` and `Device.attachMediaHandler` API.
+It will always return a string with the name of the currently active range.
