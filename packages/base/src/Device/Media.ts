@@ -60,12 +60,9 @@ const getQuery = (from: number, to: number, unit = 'px') => {
 
 const getRangeInfo = (iRangeIdx: number): RangeInfo => {
   const q = activeRangeSet.queries[iRangeIdx];
-  const info = { from: q.from, unit: activeRangeSet.unit } as RangeInfo;
+  const info = { from: q.from, unit: activeRangeSet.unit, name: activeRangeSet.names[iRangeIdx] } as RangeInfo;
   if (q.to >= 0) {
     info.to = q.to;
-  }
-  if (activeRangeSet.names) {
-    info.name = activeRangeSet.names[iRangeIdx];
   }
   return info;
 };
@@ -161,6 +158,9 @@ export const getCurrentRange = (width?: number): RangeInfo => {
 };
 
 export const attachMediaHandler = (func: (rangeInfo: RangeInfo) => void): void => {
+  if (!activeRangeSet) {
+    initRangeSet();
+  }
   EventProvider.attachEvent(`media`, func);
 };
 
