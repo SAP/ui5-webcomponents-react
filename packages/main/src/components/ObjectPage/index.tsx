@@ -662,6 +662,9 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         className={`${classes.header} ${responsivePaddingClass}`}
         onClick={onTitleClick}
         style={{
+          gridAutoColumns: `min-content ${
+            headerTitle && image && headerContentHeight === 0 ? `calc(100% - 3rem - 1rem)` : '100%'
+          }`,
           display: !showTitleInHeaderContent || headerContentHeight === 0 ? 'grid' : 'none'
         }}
       >

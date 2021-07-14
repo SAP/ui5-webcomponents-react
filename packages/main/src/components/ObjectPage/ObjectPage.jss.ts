@@ -56,11 +56,9 @@ export const styles = {
     marginBottom: '0.25rem',
     backgroundColor: ThemingParameters.sapObjectHeader_Background,
     display: 'grid',
-    gridAutoColumns: 'auto 1fr',
+    gridAutoColumns: 'min-content calc(100% - 5rem - 2rem)' /*avatar size - padding */,
     '& [data-component-name="ObjectPageHeaderContent"]': {
-      gridColumn: 2,
-      width: '100%',
-      height: '100%'
+      gridColumn: 2
     }
   },
   headerHoverStyles: {
@@ -76,10 +74,8 @@ export const styles = {
     position: 'sticky',
     top: 0,
     zIndex: 2,
-    gridAutoColumns: 'auto 1fr',
     '& [data-component-name="DynamicPageTitle"]': {
       gridColumn: 2,
-      width: '100%',
       paddingLeft: 0,
       paddingRight: 0
     },
