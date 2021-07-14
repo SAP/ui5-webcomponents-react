@@ -151,14 +151,14 @@ exports[`DynamicPage always show content header 1`] = `
           </div>
         </div>
         <div
-          class="Toolbar-outerContainer Toolbar-clear"
+          class="Toolbar-outerContainer Toolbar-clear Toolbar-active DynamicPageTitle-toolbar"
         >
           <div
             class="Toolbar-toolbar"
           >
             <span
               class="spacer"
-              style="flex-grow: 1;"
+              style="flex-grow: 1; height: 100%; cursor: pointer;"
             />
             <div>
               <ui5-button
@@ -344,14 +344,14 @@ exports[`DynamicPage hider header button 1`] = `
           </div>
         </div>
         <div
-          class="Toolbar-outerContainer Toolbar-clear"
+          class="Toolbar-outerContainer Toolbar-clear Toolbar-active DynamicPageTitle-toolbar"
         >
           <div
             class="Toolbar-toolbar"
           >
             <span
               class="spacer"
-              style="flex-grow: 1;"
+              style="flex-grow: 1; height: 100%; cursor: pointer;"
             />
             <div>
               <ui5-button
@@ -837,14 +837,14 @@ exports[`DynamicPage with content 1`] = `
           </div>
         </div>
         <div
-          class="Toolbar-outerContainer Toolbar-clear"
+          class="Toolbar-outerContainer Toolbar-clear Toolbar-active DynamicPageTitle-toolbar"
         >
           <div
             class="Toolbar-toolbar"
           >
             <span
               class="spacer"
-              style="flex-grow: 1;"
+              style="flex-grow: 1; height: 100%; cursor: pointer;"
             />
             <div>
               <ui5-button
@@ -1808,14 +1808,14 @@ exports[`DynamicPage without content 1`] = `
           </div>
         </div>
         <div
-          class="Toolbar-outerContainer Toolbar-clear"
+          class="Toolbar-outerContainer Toolbar-clear Toolbar-active DynamicPageTitle-toolbar"
         >
           <div
             class="Toolbar-toolbar"
           >
             <span
               class="spacer"
-              style="flex-grow: 1;"
+              style="flex-grow: 1; height: 100%; cursor: pointer;"
             />
             <div>
               <ui5-button
