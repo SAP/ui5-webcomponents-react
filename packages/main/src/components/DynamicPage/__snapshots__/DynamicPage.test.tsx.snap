@@ -8,7 +8,7 @@ exports[`DynamicPage always show content header 1`] = `
     <div
       class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container StdExtPadding-Desktop"
       data-component-name="DynamicPageTitle"
-      data-not-clickable="true"
+      data-not-clickable="false"
     >
       <div
         class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
@@ -323,7 +323,7 @@ exports[`DynamicPage hider header button 1`] = `
     <div
       class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container StdExtPadding-Desktop"
       data-component-name="DynamicPageTitle"
-      data-not-clickable="true"
+      data-not-clickable="false"
     >
       <div
         class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap"

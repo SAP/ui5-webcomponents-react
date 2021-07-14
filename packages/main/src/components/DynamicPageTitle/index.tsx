@@ -20,6 +20,7 @@ import React, {
   ReactNode,
   ReactNodeArray,
   Ref,
+  useCallback,
   useEffect,
   useState
 } from 'react';
@@ -108,7 +109,19 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
     containerClasses.put(classes.iEClass);
   }
   containerClasses.putIfPresent(className);
-  const passThroughProps = usePassThroughHtmlProps(props, ['onToggleHeaderContentVisibility']);
+  const passThroughProps = usePassThroughHtmlProps(props, ['onToggleHeaderContentVisibility', 'onClick']);
+
+  const onHeaderClick = useCallback(
+    (e) => {
+      if (typeof props?.onClick === 'function') {
+        props.onClick(e);
+      }
+      if (typeof onToggleHeaderContentVisibility === 'function') {
+        onToggleHeaderContentVisibility(e);
+      }
+    },
+    [props?.onClick, onToggleHeaderContentVisibility]
+  );
 
   useEffect(() => {
     const observer = new ResizeObserver(
@@ -143,7 +156,7 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
       ref={dynamicPageTitleRef}
       tooltip={tooltip}
       data-component-name="DynamicPageTitle"
-      onClick={onToggleHeaderContentVisibility}
+      onClick={onHeaderClick}
       {...passThroughProps}
     >
       {(breadcrumbs || (navigationActions && showNavigationInTopArea)) && (
