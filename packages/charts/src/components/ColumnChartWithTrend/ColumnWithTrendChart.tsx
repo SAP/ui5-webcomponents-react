@@ -1,41 +1,14 @@
-import { useIsRTL, usePassThroughHtmlProps, useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/hooks';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ColumnChart as ColumnChartLib } from '@ui5/webcomponents-react-charts/dist/ColumnChart';
 import { ColumnWithTrendChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/ColumnWithTrendChartPlaceholder';
-import { ChartContainer } from '@ui5/webcomponents-react-charts/dist/components/ChartContainer';
-import { ChartDataLabel } from '@ui5/webcomponents-react-charts/dist/components/ChartDataLabel';
-import { XAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/XAxisTicks';
-import { YAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/YAxisTicks';
 import { LineChart as LineChartLib } from '@ui5/webcomponents-react-charts/dist/LineChart';
-import { useLegendItemClick } from '@ui5/webcomponents-react-charts/dist/useLegendItemClick';
-import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
-import {
-  Bar as Column,
-  Brush,
-  CartesianGrid,
-  Label,
-  LabelList,
-  Legend,
-  ReferenceLine,
-  Tooltip,
-  XAxis,
-  YAxis
-} from 'recharts';
-import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
-import { useChartMargin } from '../../hooks/useChartMargin';
-import { useLabelFormatter } from '../../hooks/useLabelFormatter';
-import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
-import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights';
-import { useOnClickInternal } from '../../hooks/useOnClickInternal';
+import React, { FC, forwardRef, Ref } from 'react';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
-import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
+import { usePrepareTrendMeasures } from '../../hooks/usePrepareTrendMeasures';
 import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { defaultFormatter } from '../../internal/defaults';
-import { tickLineConfig, tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
-import { usePrepareTrendMeasures } from '../../hooks/usePrepareTrendMeasures';
 
 interface MeasureConfig extends IChartMeasure {
   /**
@@ -118,6 +91,8 @@ const ColumnWithTrendChart: FC<ColumnChartWithTrendProps> = forwardRef(
   (props: ColumnChartWithTrendProps, ref: Ref<HTMLDivElement>) => {
     const { dataset, style } = props;
 
+    const chartRef = useConsolidatedRef<any>(ref);
+
     const { dimensions, measures } = usePrepareDimensionsAndMeasures(
       props.dimensions,
       props.measures,
@@ -128,9 +103,13 @@ const ColumnWithTrendChart: FC<ColumnChartWithTrendProps> = forwardRef(
     const { lineMeasures, columnMeasures } = usePrepareTrendMeasures(measures);
 
     return (
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <div
+        ref={chartRef}
+        style={{ display: 'flex', flexDirection: 'column', height: style.height, width: style.width }}
+      >
         {dataset?.length !== 0 && (
           <LineChartLib
+            syncId={'trend'}
             style={{ ...style, height: `calc(${style.height} * 0.2)` }}
             dataset={dataset}
             measures={lineMeasures}
@@ -144,6 +123,7 @@ const ColumnWithTrendChart: FC<ColumnChartWithTrendProps> = forwardRef(
           />
         )}
         <ColumnChartLib
+          syncId={'trend'}
           trendPlaceholder={ColumnWithTrendChartPlaceholder}
           dataset={dataset}
           measures={columnMeasures}

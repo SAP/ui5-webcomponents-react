@@ -131,7 +131,8 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
     className,
     tooltip,
     slot,
-    trendPlaceholder
+    trendPlaceholder,
+    syncId
   } = props;
 
   const chartConfig = useMemo(() => {
@@ -218,6 +219,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
       {...passThroughProps}
     >
       <ColumnChartLib
+        syncId={syncId}
         onClick={onClickInternal}
         stackOffset="sign"
         margin={marginChart}

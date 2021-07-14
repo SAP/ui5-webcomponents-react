@@ -92,4 +92,9 @@ export interface IChartBaseProps<T = ICartesianChartConfig> extends Omit<CommonP
    * __Note:__ It is possible to overwrite internally used tooltip props, so use with caution!
    */
   tooltipConfig?: TooltipProps<number | string | Array<number | string>, number | string>;
+  /**
+   * A string which defines an id to synchronize two separate charts. Charts with the same syncId synchronize the position
+   * of the tooltips, the startIndex and the endIndex of the zooming tool.
+   */
+  syncId?: string;
 }
