@@ -4,7 +4,6 @@
 import { CssSizeVariables, CssSizeVariablesNames, cssVariablesStyles } from './dist/CssSizeVariables';
 import * as Device from './dist/Device';
 import * as hooks from './dist/hooks';
-import { LOG_LEVEL, Logger } from './dist/Logger';
 import * as spacing from './dist/spacing';
 import { StyleClassHelper } from './dist/StyleClassHelper';
 import { ThemingParameters } from './dist/ThemingParameters';
@@ -17,8 +16,6 @@ export {
   deprecationNotice,
   debounce,
   getScrollBarWidth,
-  Logger,
-  LOG_LEVEL,
   useConsolidatedRef,
   usePassThroughHtmlProps,
   CssSizeVariablesNames,

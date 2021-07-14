@@ -1,4 +1,3 @@
-import { Logger } from '@ui5/webcomponents-react-base/dist/Logger';
 import { EventProvider } from './EventProvider';
 
 interface Query {
@@ -93,7 +92,8 @@ const checkQueries = (infoOnly, matcher = matches): RangeInfo => {
 
     return info;
   }
-  Logger.warning(`RangeSet is not initialized`, 'DEVICE.MEDIA');
+  // eslint-disable-next-line no-console
+  console.warn(`RangeSet is not initialized`);
   return null;
 };
 
