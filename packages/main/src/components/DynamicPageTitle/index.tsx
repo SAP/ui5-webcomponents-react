@@ -25,6 +25,8 @@ import React, {
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
+import { stopPropagation } from '../../internal/stopPropagation';
+import { ActionsSpacer } from './ActionsSpacer';
 import { DynamicPageTitleStyles } from './DynamicPageTitle.jss';
 import { useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
 
@@ -116,11 +118,11 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
       if (typeof props?.onClick === 'function') {
         props.onClick(e);
       }
-      if (typeof onToggleHeaderContentVisibility === 'function') {
+      if (typeof onToggleHeaderContentVisibility === 'function' && !props?.['data-not-clickable']) {
         onToggleHeaderContentVisibility(e);
       }
     },
-    [props?.onClick, onToggleHeaderContentVisibility]
+    [props?.onClick, onToggleHeaderContentVisibility, props?.['data-not-clickable']]
   );
 
   useEffect(() => {
@@ -161,8 +163,14 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
     >
       {(breadcrumbs || (navigationActions && showNavigationInTopArea)) && (
         <FlexBox justifyContent={FlexBoxJustifyContent.SpaceBetween}>
-          <div className={classes.breadcrumbs}>{breadcrumbs}</div>
-          {showNavigationInTopArea && <FlexBox alignItems={FlexBoxAlignItems.End}>{navigationActions}</FlexBox>}
+          <div className={classes.breadcrumbs} onClick={stopPropagation}>
+            {breadcrumbs}
+          </div>
+          {showNavigationInTopArea && (
+            <FlexBox alignItems={FlexBoxAlignItems.End} onClick={stopPropagation}>
+              {navigationActions}
+            </FlexBox>
+          )}
         </FlexBox>
       )}
       <FlexBox alignItems={FlexBoxAlignItems.Center} style={{ flexGrow: 1, width: '100%' }}>
@@ -179,8 +187,14 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
             </div>
           )}
         </FlexBox>
-        <Toolbar design={ToolbarDesign.Auto} toolbarStyle={ToolbarStyle.Clear}>
-          <ToolbarSpacer />
+        <Toolbar
+          design={ToolbarDesign.Auto}
+          toolbarStyle={ToolbarStyle.Clear}
+          active
+          className={classes.toolbar}
+          onClick={stopPropagation}
+        >
+          <ActionsSpacer onClick={onHeaderClick} noHover={props?.['data-not-clickable']} />
           {actions}
           {!showNavigationInTopArea && Children.count(actions) > 0 && Children.count(navigationActions) > 0 && (
             <ToolbarSeparator />

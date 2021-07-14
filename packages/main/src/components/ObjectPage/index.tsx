@@ -495,6 +495,15 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     !headerContent ||
     (!showHideHeaderButton && !headerContentPinnable);
 
+  const onTitleClick = useCallback(
+    (e) => {
+      if (!titleHeaderNotClickable) {
+        onToggleHeaderContentVisibility(enrichEventWithDetails(e, { visible: !headerContentHeight }));
+      }
+    },
+    [onToggleHeaderContentVisibility, headerContentHeight, titleHeaderNotClickable]
+  );
+
   const renderTitleSection = useCallback(
     (inHeader = false) => {
       const titleStyles = { ...(inHeader ? { padding: 0 } : {}), ...(headerTitle?.props?.style ?? {}) };
@@ -503,15 +512,17 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         return React.cloneElement(headerTitle, {
           showSubheadingRight: true,
           style: titleStyles,
-          'data-not-clickable': titleHeaderNotClickable
+          'data-not-clickable': titleHeaderNotClickable,
+          onToggleHeaderContentVisibility: onTitleClick
         });
       }
       return React.cloneElement(headerTitle, {
         style: titleStyles,
-        'data-not-clickable': titleHeaderNotClickable
+        'data-not-clickable': titleHeaderNotClickable,
+        onToggleHeaderContentVisibility: onTitleClick
       });
     },
-    [headerTitle, titleHeaderNotClickable]
+    [headerTitle, titleHeaderNotClickable, onTitleClick]
   );
 
   const renderHeaderContentSection = useCallback(() => {
@@ -634,12 +645,6 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       }
     },
     [classes.headerHoverStyles]
-  );
-  const onTitleClick = useCallback(
-    (e) => {
-      onToggleHeaderContentVisibility(enrichEventWithDetails(e, { visible: !headerContentHeight }));
-    },
-    [onToggleHeaderContentVisibility, headerContentHeight]
   );
 
   return (
