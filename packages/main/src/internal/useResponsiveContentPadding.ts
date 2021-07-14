@@ -13,7 +13,7 @@ const useStyles = createUseStyles(
 );
 
 export const useResponsiveContentPadding = (element) => {
-  const [currentRange, setCurrentRange] = useState(getCurrentRange('StdExt', window.innerWidth).name);
+  const [currentRange, setCurrentRange] = useState(getCurrentRange(window.innerWidth).name);
   let resizeTimeout = useRef(null);
   const classes = useStyles();
 
@@ -25,7 +25,7 @@ export const useResponsiveContentPadding = (element) => {
         clearTimeout(resizeTimeout.current);
       }
       resizeTimeout.current = setTimeout(() => {
-        setCurrentRange(() => getCurrentRange('StdExt', contentBoxSize.inlineSize).name);
+        setCurrentRange(() => getCurrentRange(contentBoxSize.inlineSize).name);
       }, 150);
     });
     if (element) {
