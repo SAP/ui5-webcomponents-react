@@ -17,7 +17,9 @@ exports[`ObjectPageSubSection Render without Crashing 1`] = `
     <div
       class="ObjectPageSubSection-subSectionContent"
       data-component-name="ObjectPageSubSectionContent"
-    />
+    >
+      Content
+    </div>
   </div>
 </DocumentFragment>
 `;

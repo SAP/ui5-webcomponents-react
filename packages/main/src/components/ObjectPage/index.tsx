@@ -56,7 +56,7 @@ addCustomCSS(
   `
 );
 
-export interface ObjectPagePropTypes extends Omit<CommonProps, 'title'> {
+export interface ObjectPagePropTypes extends CommonProps {
   /**
    * Defines the the upper, always static, title section of the `ObjectPage`.
    *
@@ -737,7 +737,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
                 .filter((item) => item.props && item.props.isSubSection)
                 .map((item) => (
                   <StandardListItem key={item.props.id} data-key={item.props.id}>
-                    {item.props.title}
+                    {item.props.heading}
                   </StandardListItem>
                 ))}
             </List>

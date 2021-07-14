@@ -1,5 +1,6 @@
 import '@ui5/webcomponents-icons/dist/slim-arrow-down';
-import React, { FC, useEffect, useRef } from 'react';
+import React, { FC, ReactElement, useEffect, useRef } from 'react';
+import { ObjectPageSectionPropTypes } from '../ObjectPageSection';
 import { ObjectPageAnchorTab } from './ObjectPageAnchorTab';
 import { safeGetChildrenArray } from './ObjectPageUtils';
 
@@ -8,7 +9,7 @@ import { safeGetChildrenArray } from './ObjectPageUtils';
 ObjectPageAnchorTab.define();
 
 interface ObjectPageAnchorPropTypes {
-  section: any;
+  section: ReactElement<ObjectPageSectionPropTypes>;
   onShowSubSectionPopover: (event: any, section: any) => void;
   index: number;
   selected: boolean;
@@ -38,7 +39,7 @@ export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props: Obj
       ref={ref}
       data-index={index}
       data-section-id={section.props.id}
-      text={section.props.title}
+      text={section.props.heading}
       selected={selected || undefined}
       with-sub-sections={hasSubSections || undefined}
     />

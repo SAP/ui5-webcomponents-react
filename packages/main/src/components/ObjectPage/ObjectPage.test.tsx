@@ -19,31 +19,31 @@ const footer = <Bar design={BarDesign.FloatingFooter} endContent={<div>Footer</d
 
 const renderComponent = (props = {}) => (
   <ObjectPage {...props}>
-    <ObjectPageSection title="Title Section 1" id="1">
+    <ObjectPageSection heading="Title Section 1" id="1">
       <Label>Content Section 1</Label>
     </ObjectPageSection>
-    <ObjectPageSection title="Title Section 2" id="2">
+    <ObjectPageSection heading="Title Section 2" id="2">
       <div>Content Section 2</div>
     </ObjectPageSection>
-    <ObjectPageSection title="Title Section 3" id="3">
-      <ObjectPageSubSection title="Title SubSection 3.1" id="3.1">
+    <ObjectPageSection heading="Title Section 3" id="3">
+      <ObjectPageSubSection heading="Title SubSection 3.1" id="3.1">
         Content Section 3.1
       </ObjectPageSubSection>
-      <ObjectPageSubSection title="Title SubSection 3.2" id="3.2">
+      <ObjectPageSubSection heading="Title SubSection 3.2" id="3.2">
         Content Section 3.2
       </ObjectPageSubSection>
-      <ObjectPageSubSection title="Title SubSection 3.3" id="3.3">
+      <ObjectPageSubSection heading="Title SubSection 3.3" id="3.3">
         Content Section 3.3
       </ObjectPageSubSection>
     </ObjectPageSection>
-    <ObjectPageSection title="Title Section 4" id="4">
-      <ObjectPageSubSection title="Title SubSection 4.1" id="4.1">
+    <ObjectPageSection heading="Title Section 4" id="4">
+      <ObjectPageSubSection heading="Title SubSection 4.1" id="4.1">
         Content Section 4.1
       </ObjectPageSubSection>
-      <ObjectPageSubSection title="Title SubSection 4.2" id="4.2">
+      <ObjectPageSubSection heading="Title SubSection 4.2" id="4.2">
         Content Section 4.2
       </ObjectPageSubSection>
-      <ObjectPageSubSection title="Title SubSection 4.3" id="4.3">
+      <ObjectPageSubSection heading="Title SubSection 4.3" id="4.3">
         Content Section 4.3
       </ObjectPageSubSection>
     </ObjectPageSection>
@@ -52,13 +52,13 @@ const renderComponent = (props = {}) => (
 
 const renderComponentWithSections = (props = {}) => (
   <ObjectPage {...props}>
-    <ObjectPageSection title="Title 1" id="1">
+    <ObjectPageSection heading="Title 1" id="1">
       Content 1
     </ObjectPageSection>
-    <ObjectPageSection title="Title 2" id="2">
+    <ObjectPageSection heading="Title 2" id="2">
       <Label>Content 2</Label>
     </ObjectPageSection>
-    <ObjectPageSection title="Title 3" id="3">
+    <ObjectPageSection heading="Title 3" id="3">
       <Text>Content 3</Text>
     </ObjectPageSection>
   </ObjectPage>
