@@ -18,6 +18,96 @@ or the [changelog](https://github.com/SAP/ui5-webcomponents-react/blob/main/CHAN
 
 ## Migrating from 0.16.x to 0.17.0
 
+### Consolidate API of ObjectPage and DynamicPage
+
+The DynamicPage and the ObjectPage are very similar but had completely different APIs and props.
+We streamlined those APIs by adding components used by the `DynamicPage` to the `ObjectPage`.
+
+#### DynamicPage changes
+
+- `title` has been renamed to `headerTitle`.
+- **`DynamicPageTitle`:** `subHeading` has been renamed to `subheading`.
+- **`DynamicPageHeader`:** `children` are no longer displayed as `flex` items to support other display types like `grid`. To align children you now need to add the container (like `FlexBox`) and CSS yourself.
+  <br />
+  <br />
+  Example for aligning items next to each other:
+
+```jsx
+// Before
+<DynamicPageHeader>
+  <div>Content 1</div>
+  <div>Content 2</div>
+</DynamicPageHeader>
+
+// Now
+<DynamicPageHeader>
+  <FlexBox>
+    <div>Content 1</div>
+    <div>Content 2</div>
+  </FlexBox>
+</DynamicPageHeader>
+```
+
+#### ObjectPage changes
+
+- **`ObjectPageSection`:** `title` and `titleUppercase` has been renamed. Please use `heading` and `headingUppercase` instead.
+- **`ObjectPageSubSection`:** `title` has been renamed to `heading`.
+- `title` has been renamed to `headerTitle` and is now defining the upper, static, title section of the `ObjectPage`. It expects to receive the `DynamicPageTitle` component.
+- `headerContent` has been renamed to `header` and expects now the `DynamicPageHeader` component to be passed.
+- `noHeader` has been removed. It is now sufficient not to set `headerTitle` and `header` to achieve the same behavior.
+- `title`, `subTitle`, `headerActions`, `breadcrumbs` and `keyInfos` should now be passed to the corresponding `DynamicPageTitle` props.
+
+Setting the title section of the `ObjectPage`:
+
+```jsx
+//Before
+<ObjectPage
+  title="Heading"
+  subTitle="Subheading"
+  breadcrumbs={
+    <Breadcrumbs currentLocationText="current Breadcrumb">
+      <Link>Breadcrumb 1</Link>
+      <Link>Breadcrumb 2</Link>
+    </Breadcrumbs>
+  }
+  headerActions={
+    <>
+      <Button>Action 1</Button>
+      <Button>Action 2</Button>
+    </>
+  }
+  keyInfos={<ObjectStatus>keyInfo</ObjectStatus>}
+>
+  ObjectPage Content
+</ObjectPage>
+
+//Now
+<ObjectPage
+  headerTitle={
+    <DynamicPageTitle
+      heading="Heading" // replaces `title`
+      subheading="Subheading" // replaces `subTitle`
+      breadcrumbs={
+        <Breadcrumbs currentLocationText="current Breadcrumb">
+          <Link>Breadcrumb 1</Link>
+          <Link>Breadcrumb 2</Link>
+        </Breadcrumbs>
+      }
+      actions={ /* replaces `headerActions`*/
+        <>
+          <Button>Action 1</Button>
+          <Button>Action 2</Button>
+        </>
+      }
+    >
+      <ObjectStatus>keyInfo</ObjectStatus>  {/* replaces `keyInfos` */}
+    </DynamicPageTitle>
+  }
+>
+  ObjectPage Content
+</ObjectPage>
+```
+
 ### Device Cleanup
 
 <MessageStrip type={MessageStripType.Information} noCloseButton>

@@ -9,13 +9,12 @@ import { StyleClassHelper } from './dist/StyleClassHelper';
 import { ThemingParameters } from './dist/ThemingParameters';
 import { useConsolidatedRef } from './dist/useConsolidatedRef';
 import { usePassThroughHtmlProps } from './dist/usePassThroughHtmlProps';
-import { deprecationNotice, enrichEventWithDetails, getScrollBarWidth, debounce } from './dist/Utils';
+import { deprecationNotice, enrichEventWithDetails, debounce } from './dist/Utils';
 
 export {
   StyleClassHelper,
   deprecationNotice,
   debounce,
-  getScrollBarWidth,
   useConsolidatedRef,
   usePassThroughHtmlProps,
   CssSizeVariablesNames,
