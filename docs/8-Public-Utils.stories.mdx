@@ -11,7 +11,7 @@ import { TableOfContent } from '../shared/stories/TableOfContent';
 The `@ui5/webcomponents-react-base` package is providing a couple of utils, which can be used in your application as well.
 
 <MessageStrip type={MessageStripType.Warning} noCloseButton>
-  You should only use the utils mentioned in this document in your application. All other exports are intended for
+  Please only use the utils mentioned in this document in your application. All other exports are intended for
   internal use and are not subject to semantic versioning!
 </MessageStrip>
 
@@ -28,12 +28,12 @@ The `Device` allows you to detect information about the environment where your a
 
 ### General Device Information
 
-- `Device.isIE()` - returns `true` when running in Internet Explorer
-- `Device.isSafari()` - returns `true` when running in Safari
-- `Device.isDesktop()` - returns `true` when running on desktop devices
-- `Device.isTablet()` - returns `true` when running on tablet devices
-- `Device.isPhone()` - returns `true` when running on mobile phone devices
-- `Device.supportsTouch()` - returns `true` the device supports touch
+- `Device.isIE()` - returns `true` if running in Internet Explorer
+- `Device.isSafari()` - returns `true` if running in Safari
+- `Device.isDesktop()` - returns `true` if running on desktop devices
+- `Device.isTablet()` - returns `true` if running on tablet devices
+- `Device.isPhone()` - returns `true` if running on mobile phone devices
+- `Device.supportsTouch()` - returns `true` if device supports touch
 - `Device.getCurrentRange(width?: number)` <br />
   Returns the current media range of the window, or the optionally passed width. <br />
   Returns: `{ from: number, to?: number, name: 'Phone' | 'Tablet' | 'Desktop' | 'LargeDesktop', unit: string }`
