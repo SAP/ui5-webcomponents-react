@@ -1,4 +1,4 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { ResponsivePopover } from '@ui5/webcomponents-react/dist/ResponsivePopover';
 import { Bar } from '@ui5/webcomponents-react/dist/Bar';
 import { Title } from '@ui5/webcomponents-react/dist/Title';
@@ -11,23 +11,14 @@ import { PlacementType } from '@ui5/webcomponents-react/dist/PlacementType';
 import { PopoverVerticalAlign } from '@ui5/webcomponents-react/dist/PopoverVerticalAlign';
 import { CSSProperties, useRef } from 'react';
 import '@ui5/webcomponents-icons/dist/settings.js';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="Modals & Popovers / ResponsivePopover"
   component={ResponsivePopover}
   argTypes={{
-    ...createSelectArgTypes({
-      horizontalAlign: PopoverHorizontalAlign,
-      placementType: PlacementType,
-      verticalAlign: PopoverVerticalAlign
-    }),
-    ...DocsCommonProps,
     footer: { control: { disable: true } },
-    header: { control: { disable: true } },
-    ...DocsCommonProps
+    header: { control: { disable: true } }
   }}
   args={{
     children:

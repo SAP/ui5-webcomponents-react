@@ -136,6 +136,7 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
     loading,
     noLegend,
     noAnimation,
+    tooltipConfig,
     onDataPointClick,
     onLegendClick,
     onClick,
@@ -309,7 +310,12 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
             <Label>{chartConfig.referenceLineX.label}</Label>
           </ReferenceLine>
         )}
-        <Tooltip cursor={tooltipFillOpacity} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle} />
+        <Tooltip
+          cursor={tooltipFillOpacity}
+          formatter={tooltipValueFormatter}
+          contentStyle={tooltipContentStyle}
+          {...tooltipConfig}
+        />
         {props.children}
       </ScatterChartLib>
     </ChartContainer>

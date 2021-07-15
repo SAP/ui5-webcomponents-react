@@ -83,6 +83,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
     dataset,
     noLegend,
     noAnimation,
+    tooltipConfig,
     onDataPointClick,
     onLegendClick,
     onClick,
@@ -207,6 +208,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
           formatter={tooltipValueFormatter}
           contentStyle={tooltipContentStyle}
           labelFormatter={labelFormatter}
+          {...tooltipConfig}
         />
         {!noLegend && (
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment

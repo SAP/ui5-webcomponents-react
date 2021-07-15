@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.17.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.16.6...v0.17.0) (2021-07-15)
+
+**Note:** Version bump only for package @ui5/cra-template-webcomponents-react-seed
+
+
+
+
+
+## [0.16.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.16.1...v0.16.2) (2021-06-02)
+
+
+### Bug Fixes
+
+* **cra-template-seed:** fix husky pre push hook ([#1635](https://github.com/SAP/ui5-webcomponents-react/issues/1635)) ([b8af6ea](https://github.com/SAP/ui5-webcomponents-react/commit/b8af6eabb21c131966118f258b66a74b20f013fd))
+* **cra-templates:** use latest UI5 Web Components for React version ([#1666](https://github.com/SAP/ui5-webcomponents-react/issues/1666)) ([d0dc44e](https://github.com/SAP/ui5-webcomponents-react/commit/d0dc44e52cf4bb394e2d95992f8d86503b922d12))
+
+
+
+
+
 # [0.16.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.15.4...v0.16.0) (2021-05-11)
 
 **Note:** Version bump only for package @ui5/cra-template-webcomponents-react-seed

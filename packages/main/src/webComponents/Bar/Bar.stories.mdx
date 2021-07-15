@@ -1,4 +1,4 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { Bar } from '@ui5/webcomponents-react/dist/Bar';
 import { BarDesign } from '@ui5/webcomponents-react/dist/BarDesign';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
@@ -7,19 +7,13 @@ import { Link } from '@ui5/webcomponents-react/dist/Link';
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
 import { Title } from '@ui5/webcomponents-react/dist/Title';
 import '@ui5/webcomponents-icons/dist/nav-back.js';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 import { GitHubLogo } from '../../../../../shared/stories/GitHub-Mark';
 
 <Meta
   title="Layouts & Floorplans / Bar"
   component={Bar}
   argTypes={{
-    ...createSelectArgTypes({
-      design: BarDesign
-    }),
-    ...DocsCommonProps,
     startContent: { control: { disable: true } },
     middleContent: { control: { disable: true } },
     endContent: { control: { disable: true } }

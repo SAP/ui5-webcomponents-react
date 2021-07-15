@@ -1,16 +1,12 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { SegmentedButton } from '@ui5/webcomponents-react/dist/SegmentedButton';
 import { ToggleButton } from '@ui5/webcomponents-react/dist/ToggleButton';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="Inputs / SegmentedButton"
   component={SegmentedButton}
   argTypes={{
-    ...createSelectArgTypes({}),
-    ...DocsCommonProps,
     children: { control: { disable: true } }
   }}
   args={{

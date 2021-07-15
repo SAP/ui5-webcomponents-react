@@ -1,9 +1,7 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { Timeline } from '@ui5/webcomponents-react/dist/Timeline';
 import { TimelineItem } from '@ui5/webcomponents-react/dist/TimelineItem';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 import '@ui5/webcomponents-icons/dist/calendar';
 import '@ui5/webcomponents-icons/dist/phone';
 import '@ui5/webcomponents-icons/dist/wrench';
@@ -13,8 +11,6 @@ import '@ui5/webcomponents-icons/dist/wrench';
   component={Timeline}
   subcomponents={{ TimelineItem }}
   argTypes={{
-    ...createSelectArgTypes({}),
-    ...DocsCommonProps,
     children: { control: { disable: true } }
   }}
   args={{

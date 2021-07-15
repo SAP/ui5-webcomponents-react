@@ -36,6 +36,10 @@
   input:not(:checked) ~ span:last-of-type:not(:only-of-type) {
     background-color: rgba(0, 0, 0, 0.15) !important;
   }
+  input:checked ~ span:last-of-type,
+  input:not(:checked) ~ span:first-of-type {
+    background-color: transparent !important;
+  }
 </style>
 
 <script data-ui5-config type="application/json">
