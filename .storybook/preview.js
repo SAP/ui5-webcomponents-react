@@ -28,15 +28,7 @@ export const parameters = {
   options: {
     storySort: {
       method: 'alphabetical',
-      order: [
-        'Getting Started',
-        'Migration Guide',
-        'Style Web Components',
-        'Test Setup',
-        'Internationalization',
-        'Efficient Bundling',
-        'Knowledge Base'
-      ]
+      order: ['Getting Started', 'Migration Guide', 'Knowledge Base', 'Internationalization', 'Public Utils']
     }
   },
   argTypes: {
