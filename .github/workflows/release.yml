@@ -20,7 +20,7 @@ jobs:
           fetch-depth: 0
 
       - name: Setup Node.js environment
-        uses: actions/setup-node@v2.1.5
+        uses: actions/setup-node@v2.2.0
         with:
           node-version: 14.x
 
@@ -65,6 +65,10 @@ jobs:
           GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         with:
           script: |
-            const script = require('./.github/createIssueCommentsForRelease.js')
-            const { version } = require('./lerna.json')
+            const { readFileSync } = require('fs');
+            const { URL } = require('url');
+            const { version } = require('./lerna.json');
+            const script = require('./.github/createIssueCommentsForRelease.cjs');
+
+            console.log('Create issue comments for lerna version: ', version);
             await script({github, context, core, version})

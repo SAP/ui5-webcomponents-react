@@ -1,5 +1,5 @@
 import { Header } from '@shared/stories/Header';
-import { Description, Subtitle, Title } from '@storybook/addon-docs/blocks';
+import { Description, Subtitle, Title } from '@storybook/addon-docs';
 import React from 'react';
 
 import { Import } from './Import';

@@ -1,16 +1,15 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { MessageBox } from '@ui5/webcomponents-react/dist/MessageBox';
 import { MessageBoxActions } from '@ui5/webcomponents-react/dist/MessageBoxActions';
 import { MessageBoxTypes } from '@ui5/webcomponents-react/dist/MessageBoxTypes';
 import { useEffect, useState } from 'react';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
 <Meta
   title="Modals & Popovers / MessageBox"
   component={MessageBox}
-  argTypes={{ ref: { type: null }, ...createSelectArgTypes({ type: MessageBoxTypes }) }}
+  argTypes={{ ref: { type: null } }}
   args={{
     open: false,
     type: MessageBoxTypes.CONFIRM,

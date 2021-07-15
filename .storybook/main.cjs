@@ -1,12 +1,7 @@
 const path = require('path');
 const root = path.resolve(__dirname, '..');
 
-const addons = [
-  '@storybook/addon-toolbars',
-  '@storybook/addon-docs',
-  '@storybook/addon-controls',
-  '@storybook/addon-actions'
-];
+const addons = ['@storybook/addon-essentials'];
 
 if (process.env.NODE_ENV === 'development') {
   addons.push('@storybook/addon-a11y');
@@ -29,6 +24,13 @@ module.exports = {
     return config;
   },
   features: {
-    postcss: false,
+    postcss: false
   },
+  typescript: {
+    reactDocgen: 'react-docgen-typescript',
+    reactDocgenTypescriptOptions: {
+      shouldExtractLiteralValuesFromEnum: true,
+      propFilter: (prop) => prop.parent ? !/(@types\/react|@emotion\/core)/.test(prop.parent.fileName) : true,
+    },
+  }
 };

@@ -179,6 +179,15 @@ export interface FilterBarPropTypes extends CommonProps {
   onRestore?: (event: CustomEvent<{ source?: unknown }>) => void;
 }
 
+const resizeObserverEntryWidth = (entry) => {
+  if (entry.borderBoxSize) {
+    // Firefox implements `borderBoxSize` as a single content rect, rather than an array
+    return Array.isArray(entry.borderBoxSize) ? entry.borderBoxSize[0]?.inlineSize : entry.borderBoxSize?.inlineSize;
+  }
+  // Safari doesn't implement `borderBoxSize`
+  return entry.target.getBoundingClientRect().width;
+};
+
 const useStyles = createUseStyles(styles, { name: 'FilterBar' });
 /**
  * The `FilterBar` displays filters in a user-friendly manner to populate values for a query. It consists of a row containing the `VariantManagement`, the related buttons, and an area underneath displaying the filters. The filters are arranged in a logical row that is divided depending on the space available and the width of the filters. The area containing the filters can be hidden or shown using the "Hide FilterBar / Show FilterBar" button, the "Filters" button shows the filter dialog.
@@ -519,10 +528,9 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
   useEffect(() => {
     const filterAreaObserver = new ResizeObserver(
       debounce(([area]) => {
-        // Firefox implements `borderBoxSize` as a single content rect, rather than an array
-        const borderBoxSize = Array.isArray(area.borderBoxSize) ? area.borderBoxSize[0] : area.borderBoxSize;
-        if (borderBoxSize.inlineSize !== filterBarButtonsWidth) {
-          setFilterAreaWidth(borderBoxSize.inlineSize);
+        const filterWidth = resizeObserverEntryWidth(area);
+        if (filterWidth !== filterBarButtonsWidth) {
+          setFilterAreaWidth(filterWidth);
         }
       }, 100)
     );
@@ -537,9 +545,9 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
   useEffect(() => {
     const filterBarButtonsObserver = new ResizeObserver(
       debounce(([buttons]) => {
-        const borderBoxSize = Array.isArray(buttons.borderBoxSize) ? buttons.borderBoxSize[0] : buttons.borderBoxSize;
-        if (borderBoxSize.inlineSize !== filterBarButtonsWidth) {
-          setFilterBarButtonsWidth(borderBoxSize.inlineSize);
+        const buttonsWidth = resizeObserverEntryWidth(buttons);
+        if (buttonsWidth !== filterBarButtonsWidth) {
+          setFilterBarButtonsWidth(buttonsWidth);
         }
       }, 100)
     );

@@ -3,8 +3,7 @@ import {
   attachResizeHandler,
   detachOrientationChangeHandler,
   detachResizeHandler,
-  getOrientation,
-  getWindowSize
+  getOrientation
 } from './index';
 
 describe('Device', () => {
@@ -12,10 +11,6 @@ describe('Device', () => {
     jest.useFakeTimers();
     const callback = jest.fn();
     attachResizeHandler(callback);
-    expect(getWindowSize()).toEqual({
-      height: 768,
-      width: 1024
-    });
     Object.defineProperty(window, 'innerWidth', { writable: true, configurable: true, value: 200 });
     global.dispatchEvent(new Event('resize'));
     jest.runAllTimers();

@@ -1,4 +1,4 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { ComboBox } from '@ui5/webcomponents-react/dist/ComboBox';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import '@ui5/webcomponents-icons/dist/employee.js';
@@ -8,17 +8,13 @@ import { Label } from '@ui5/webcomponents-react/dist/Label';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
 import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';
 import { ComboBoxItem } from '@ui5/webcomponents-react/dist/ComboBoxItem';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="Inputs / ComboBox"
   component={ComboBox}
   subcomponents={{ ComboBoxItem }}
   argTypes={{
-    ...createSelectArgTypes({ valueState: ValueState }),
-    ...DocsCommonProps,
     children: { control: { disable: true } },
     icon: { control: { disable: true } },
     valueStateMessage: { control: { disable: true } }

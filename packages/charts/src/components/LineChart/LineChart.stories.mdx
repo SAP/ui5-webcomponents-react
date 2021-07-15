@@ -1,15 +1,13 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import { LineChart } from '@ui5/webcomponents-react-charts/dist/LineChart';
 import { bigDataSet, complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 import { LinearGradientExample } from './LinearGradientStory';
 
 <Meta
   title="Charts /  LineChart"
   component={LineChart}
   argTypes={{
-    ...DocsCommonProps,
     dataset: {
       control: { disable: true }
     }

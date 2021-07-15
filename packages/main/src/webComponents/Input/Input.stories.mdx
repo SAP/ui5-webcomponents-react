@@ -1,4 +1,4 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { Input } from '@ui5/webcomponents-react/dist/Input';
 import { ListItemTypes } from '@ui5/webcomponents-react/dist/ListItemTypes';
 import { InputType } from '@ui5/webcomponents-react/dist/InputType';
@@ -7,9 +7,7 @@ import '@ui5/webcomponents-icons/dist/employee.js';
 import '@ui5/webcomponents-icons/dist/globe.js';
 import { Icon } from '@ui5/webcomponents-react/dist/Icon';
 import { SuggestionItem } from '@ui5/webcomponents-react/dist/SuggestionItem';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 import '@ui5/webcomponents/dist/features/InputSuggestions.js';
 
 <Meta
@@ -17,11 +15,9 @@ import '@ui5/webcomponents/dist/features/InputSuggestions.js';
   component={Input}
   subcomponents={{ SuggestionItem }}
   argTypes={{
-    ...createSelectArgTypes({ type: InputType, valueState: ValueState }),
     children: { control: { disable: true } },
     icon: { control: { disable: true } },
-    valueStateMessage: { control: { disable: true } },
-    ...DocsCommonProps
+    valueStateMessage: { control: { disable: true } }
   }}
   args={{
     type: InputType.Text,

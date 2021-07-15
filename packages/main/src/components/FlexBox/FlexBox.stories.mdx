@@ -1,4 +1,4 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
@@ -9,23 +9,12 @@ import { Title } from '@ui5/webcomponents-react/dist/Title';
 import { Input } from '@ui5/webcomponents-react/dist/Input';
 import { FlexBoxWrap } from '@ui5/webcomponents-react/dist/FlexBoxWrap';
 import '@ui5/webcomponents-icons/dist/employee.js';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 import '@ui5/webcomponents-icons/dist/employee.js';
 
 <Meta
   title="Layouts & Floorplans / FlexBox"
   component={FlexBox}
-  argTypes={{
-    ...createSelectArgTypes({
-      justifyContent: FlexBoxJustifyContent,
-      alignItems: FlexBoxAlignItems,
-      direction: FlexBoxDirection,
-      wrap: FlexBoxWrap
-    }),
-    ...DocsCommonProps
-  }}
   args={{
     justifyContent: FlexBoxJustifyContent.Start,
     alignItems: FlexBoxAlignItems.Stretch,

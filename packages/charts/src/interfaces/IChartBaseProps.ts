@@ -1,6 +1,7 @@
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { ReactNode, ReactNodeArray } from 'react';
 import { ICartesianChartConfig } from './ICartesianChartConfig';
+import { TooltipProps } from 'recharts';
 
 export interface IChartBaseProps<T = ICartesianChartConfig> extends Omit<CommonProps, 'onClick'> {
   /**
@@ -84,4 +85,11 @@ export interface IChartBaseProps<T = ICartesianChartConfig> extends Omit<CommonP
      */
     resizeDebounce?: number;
   };
+  /**
+   * Defines the configuration object for the internally used `recharts` Tooltip popover that is displayed when hovering over data points.
+   * You can find all possible configuration properties [here](https://recharts.org/en-US/api/Tooltip).
+   *
+   * __Note:__ It is possible to overwrite internally used tooltip props, so use with caution!
+   */
+  tooltipConfig?: TooltipProps<number | string | Array<number | string>, number | string>;
 }
