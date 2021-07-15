@@ -71,14 +71,14 @@ const styles = {
 };
 const useStyles = createUseStyles(styles, { name: 'TableOfContent' });
 
-export const TableOfContent = () => {
+export const TableOfContent = ({ headingSelector = 'h2.sbdocs-h2, h3.sbdocs-h3, h4.sbdocs-h4' }) => {
   const classes = useStyles();
 
   useEffect(() => {
     tocbot.init({
       tocSelector: '.js-toc',
       contentSelector: '.sbdocs-wrapper',
-      headingSelector: 'h2.sbdocs-h2, h3.sbdocs-h3, h4.sbdocs-h4',
+      headingSelector,
       orderedList: false,
       collapseDepth: 6,
       hasInnerContainers: true
@@ -87,7 +87,7 @@ export const TableOfContent = () => {
     return () => {
       tocbot.destroy();
     };
-  }, []);
+  }, [headingSelector]);
 
   return (
     <>
