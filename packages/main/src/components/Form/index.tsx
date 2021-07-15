@@ -133,12 +133,12 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
 
   const formRef = useConsolidatedRef<HTMLDivElement>(ref);
   // use the window range set as first best guess
-  const [currentRange, setCurrentRange] = useState(getCurrentRange('StdExt', window.innerWidth).name);
+  const [currentRange, setCurrentRange] = useState(getCurrentRange().name);
   const lastRange = useRef(currentRange);
 
   useEffect(() => {
     const observer = new ResizeObserver(([form]) => {
-      const newRange = getCurrentRange('StdExt', form.contentRect.width).name;
+      const newRange = getCurrentRange(form.contentRect.width).name;
       if (lastRange.current !== newRange) {
         lastRange.current = newRange;
         setCurrentRange(newRange);

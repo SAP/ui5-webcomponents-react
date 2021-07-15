@@ -1,8 +1,8 @@
 import { getCurrentRange, attachMediaHandler, detachMediaHandler } from '@ui5/webcomponents-react-base/dist/Device';
 import { useEffect, useState } from 'react';
 
-export const useViewportRange = (rangeSet: string) => {
-  const [currentRange, setCurrentRange] = useState(getCurrentRange(rangeSet, window.innerWidth).name);
+export const useViewportRange = () => {
+  const [currentRange, setCurrentRange] = useState(getCurrentRange().name);
 
   useEffect(() => {
     let isMounted = true;
@@ -11,7 +11,7 @@ export const useViewportRange = (rangeSet: string) => {
         setCurrentRange(range);
       }
     };
-    attachMediaHandler(handler, rangeSet);
+    attachMediaHandler(handler);
     return () => {
       isMounted = false;
       detachMediaHandler(handler);
