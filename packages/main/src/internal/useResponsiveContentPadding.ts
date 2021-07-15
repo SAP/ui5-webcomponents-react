@@ -13,7 +13,7 @@ const useStyles = createUseStyles(
 );
 
 export const useResponsiveContentPadding = (element) => {
-  const [currentRange, setCurrentRange] = useState(getCurrentRange(window.innerWidth).name);
+  const [currentRange, setCurrentRange] = useState(getCurrentRange().name);
   let resizeTimeout = useRef(null);
   const classes = useStyles();
 
