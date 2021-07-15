@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.17.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.16.6...v0.17.0) (2021-07-15)
+
+
+### Features
+
+* **charts:** add `tooltipConfig` prop to allow control of Tooltip ([#1808](https://github.com/SAP/ui5-webcomponents-react/issues/1808)) ([e063144](https://github.com/SAP/ui5-webcomponents-react/commit/e0631448e15fd793d6cc0109f06f96d96b490290))
+
+
+
+
+
 ## [0.16.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.16.5...v0.16.6) (2021-07-06)
 
 
