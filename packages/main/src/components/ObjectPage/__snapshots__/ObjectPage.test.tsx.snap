@@ -823,14 +823,14 @@ exports[`ObjectPage with anchor-bar 1`] = `
             </div>
           </div>
           <div
-            class="Toolbar-outerContainer Toolbar-clear"
+            class="Toolbar-outerContainer Toolbar-clear Toolbar-active DynamicPageTitle-toolbar"
           >
             <div
               class="Toolbar-toolbar"
             >
               <span
                 class="spacer"
-                style="flex-grow: 1;"
+                style="flex-grow: 1; height: 100%; cursor: pointer;"
               />
             </div>
           </div>
@@ -1881,14 +1881,14 @@ exports[`ObjectPage with img 1`] = `
             </div>
           </div>
           <div
-            class="Toolbar-outerContainer Toolbar-clear"
+            class="Toolbar-outerContainer Toolbar-clear Toolbar-active DynamicPageTitle-toolbar"
           >
             <div
               class="Toolbar-toolbar"
             >
               <span
                 class="spacer"
-                style="flex-grow: 1;"
+                style="flex-grow: 1; height: 100%; cursor: auto;"
               />
             </div>
           </div>
@@ -2287,14 +2287,14 @@ exports[`ObjectPage with img 2`] = `
             </div>
           </div>
           <div
-            class="Toolbar-outerContainer Toolbar-clear"
+            class="Toolbar-outerContainer Toolbar-clear Toolbar-active DynamicPageTitle-toolbar"
           >
             <div
               class="Toolbar-toolbar"
             >
               <span
                 class="spacer"
-                style="flex-grow: 1;"
+                style="flex-grow: 1; height: 100%; cursor: auto;"
               />
             </div>
           </div>
@@ -2678,14 +2678,14 @@ exports[`ObjectPage with title 1`] = `
             </div>
           </div>
           <div
-            class="Toolbar-outerContainer Toolbar-clear"
+            class="Toolbar-outerContainer Toolbar-clear Toolbar-active DynamicPageTitle-toolbar"
           >
             <div
               class="Toolbar-toolbar"
             >
               <span
                 class="spacer"
-                style="flex-grow: 1;"
+                style="flex-grow: 1; height: 100%; cursor: auto;"
               />
             </div>
           </div>
@@ -3019,14 +3019,14 @@ exports[`ObjectPage with title, header & footer 1`] = `
             </div>
           </div>
           <div
-            class="Toolbar-outerContainer Toolbar-clear"
+            class="Toolbar-outerContainer Toolbar-clear Toolbar-active DynamicPageTitle-toolbar"
           >
             <div
               class="Toolbar-toolbar"
             >
               <span
                 class="spacer"
-                style="flex-grow: 1;"
+                style="flex-grow: 1; height: 100%; cursor: auto;"
               />
             </div>
           </div>

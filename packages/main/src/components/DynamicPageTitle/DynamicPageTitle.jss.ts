@@ -15,7 +15,6 @@ export const DynamicPageTitleStyles = {
     zIndex: 2,
     cursor: 'pointer',
     '&[data-not-clickable="true"]': {
-      pointerEvents: 'none',
       cursor: 'unset',
       '&:hover': {
         backgroundColor: ThemingParameters.sapObjectHeader_Background
@@ -60,5 +59,14 @@ export const DynamicPageTitleStyles = {
   content: {
     display: 'flex',
     flexShrink: 1.6
+  },
+  toolbar: {
+    cursor: 'auto',
+    '&:hover': {
+      backgroundColor: 'inherit'
+    },
+    '&>:first-child': {
+      height: '100%'
+    }
   }
 };
