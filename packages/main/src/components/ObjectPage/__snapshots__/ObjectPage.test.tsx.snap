@@ -817,6 +817,7 @@ exports[`ObjectPage with anchor-bar 1`] = `
           >
             <div
               class="DynamicPageTitle-content"
+              data-component-name="DynamicPageTitleContent"
               style="padding-left: 0.5rem;"
             >
               HeaderTitle
@@ -824,6 +825,7 @@ exports[`ObjectPage with anchor-bar 1`] = `
           </div>
           <div
             class="Toolbar-outerContainer Toolbar-clear Toolbar-active DynamicPageTitle-toolbar"
+            data-component-name="DynamicPageTitleActions"
           >
             <div
               class="Toolbar-toolbar"
@@ -859,6 +861,7 @@ exports[`ObjectPage with anchor-bar 1`] = `
     >
       <section
         class="DynamicPageAnchorBar-anchorBarActionButton"
+        data-component-name="DynamicPageAnchorBar"
         role="navigation"
       >
         <ui5-button
@@ -1848,6 +1851,7 @@ exports[`ObjectPage with img 1`] = `
     >
       <div
         class="CollapsedAvatar-base CollapsedAvatar-visible"
+        data-component-name="ObjectPageCollapsedAvatar"
         style="padding-right: 1rem;"
       >
         <span
@@ -1875,6 +1879,7 @@ exports[`ObjectPage with img 1`] = `
           >
             <div
               class="DynamicPageTitle-content"
+              data-component-name="DynamicPageTitleContent"
               style="padding-left: 0.5rem;"
             >
               HeaderTitle
@@ -1882,6 +1887,7 @@ exports[`ObjectPage with img 1`] = `
           </div>
           <div
             class="Toolbar-outerContainer Toolbar-clear Toolbar-active DynamicPageTitle-toolbar"
+            data-component-name="DynamicPageTitleActions"
           >
             <div
               class="Toolbar-toolbar"
@@ -1926,6 +1932,7 @@ exports[`ObjectPage with img 1`] = `
       style="top: 5px;"
     >
       <section
+        data-component-name="DynamicPageAnchorBar"
         role="navigation"
       />
     </div>
@@ -2257,6 +2264,7 @@ exports[`ObjectPage with img 2`] = `
     >
       <div
         class="CollapsedAvatar-base CollapsedAvatar-visible"
+        data-component-name="ObjectPageCollapsedAvatar"
         style="padding-right: 1rem;"
       >
         <ui5-avatar
@@ -2281,6 +2289,7 @@ exports[`ObjectPage with img 2`] = `
           >
             <div
               class="DynamicPageTitle-content"
+              data-component-name="DynamicPageTitleContent"
               style="padding-left: 0.5rem;"
             >
               HeaderTitle
@@ -2288,6 +2297,7 @@ exports[`ObjectPage with img 2`] = `
           </div>
           <div
             class="Toolbar-outerContainer Toolbar-clear Toolbar-active DynamicPageTitle-toolbar"
+            data-component-name="DynamicPageTitleActions"
           >
             <div
               class="Toolbar-toolbar"
@@ -2329,6 +2339,7 @@ exports[`ObjectPage with img 2`] = `
       style="top: 5px;"
     >
       <section
+        data-component-name="DynamicPageAnchorBar"
         role="navigation"
       />
     </div>
@@ -2672,6 +2683,7 @@ exports[`ObjectPage with title 1`] = `
           >
             <div
               class="DynamicPageTitle-content"
+              data-component-name="DynamicPageTitleContent"
               style="padding-left: 0.5rem;"
             >
               HeaderTitle
@@ -2679,6 +2691,7 @@ exports[`ObjectPage with title 1`] = `
           </div>
           <div
             class="Toolbar-outerContainer Toolbar-clear Toolbar-active DynamicPageTitle-toolbar"
+            data-component-name="DynamicPageTitleActions"
           >
             <div
               class="Toolbar-toolbar"
@@ -3013,6 +3026,7 @@ exports[`ObjectPage with title, header & footer 1`] = `
           >
             <div
               class="DynamicPageTitle-content"
+              data-component-name="DynamicPageTitleContent"
               style="padding-left: 0.5rem;"
             >
               HeaderTitle
@@ -3020,6 +3034,7 @@ exports[`ObjectPage with title, header & footer 1`] = `
           </div>
           <div
             class="Toolbar-outerContainer Toolbar-clear Toolbar-active DynamicPageTitle-toolbar"
+            data-component-name="DynamicPageTitleActions"
           >
             <div
               class="Toolbar-toolbar"
@@ -3054,6 +3069,7 @@ exports[`ObjectPage with title, header & footer 1`] = `
       style="top: 5px;"
     >
       <section
+        data-component-name="DynamicPageAnchorBar"
         role="navigation"
       />
     </div>

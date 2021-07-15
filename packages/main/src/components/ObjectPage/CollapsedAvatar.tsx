@@ -79,7 +79,12 @@ export const CollapsedAvatar = (props: CollapsedAvatarPropTypes) => {
   }
 
   return (
-    <div ref={domRef} className={containerClasses.valueOf()} style={style}>
+    <div
+      ref={domRef}
+      className={containerClasses.valueOf()}
+      style={style}
+      data-component-name="ObjectPageCollapsedAvatar"
+    >
       {avatarContent}
     </div>
   );

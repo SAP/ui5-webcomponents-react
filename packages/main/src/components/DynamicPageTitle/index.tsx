@@ -162,12 +162,16 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
       {...passThroughProps}
     >
       {(breadcrumbs || (navigationActions && showNavigationInTopArea)) && (
-        <FlexBox justifyContent={FlexBoxJustifyContent.SpaceBetween}>
+        <FlexBox justifyContent={FlexBoxJustifyContent.SpaceBetween} data-component-name="DynamicPageTitleBreadcrumbs">
           <div className={classes.breadcrumbs} onClick={stopPropagation}>
             {breadcrumbs}
           </div>
           {showNavigationInTopArea && (
-            <FlexBox alignItems={FlexBoxAlignItems.End} onClick={stopPropagation}>
+            <FlexBox
+              alignItems={FlexBoxAlignItems.End}
+              onClick={stopPropagation}
+              data-component-name="DynamicPageTitleNavActions"
+            >
               {navigationActions}
             </FlexBox>
           )}
@@ -175,14 +179,26 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
       )}
       <FlexBox alignItems={FlexBoxAlignItems.Center} style={{ flexGrow: 1, width: '100%' }}>
         <FlexBox className={classes.titleMainSection}>
-          {heading && <div className={classes.title}>{heading}</div>}
+          {heading && (
+            <div className={classes.title} data-component-name="DynamicPageTitleHeading">
+              {heading}
+            </div>
+          )}
           {subheading && showSubheadingRight && (
-            <div className={classes.subTitleRight} style={{ [paddingLeftRtl]: '0.5rem' }}>
+            <div
+              className={classes.subTitleRight}
+              style={{ [paddingLeftRtl]: '0.5rem' }}
+              data-component-name="DynamicPageTitleSubheading"
+            >
               {subheading}
             </div>
           )}
           {children && (
-            <div className={classes.content} style={{ [paddingLeftRtl]: '0.5rem' }}>
+            <div
+              className={classes.content}
+              style={{ [paddingLeftRtl]: '0.5rem' }}
+              data-component-name="DynamicPageTitleContent"
+            >
               {children}
             </div>
           )}
@@ -193,6 +209,7 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
           active
           className={classes.toolbar}
           onClick={stopPropagation}
+          data-component-name="DynamicPageTitleActions"
         >
           <ActionsSpacer onClick={onHeaderClick} noHover={props?.['data-not-clickable']} />
           {actions}
@@ -204,7 +221,9 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
       </FlexBox>
       {subheading && !showSubheadingRight && (
         <FlexBox>
-          <div className={classes.subTitleBottom}>{subheading}</div>
+          <div className={classes.subTitleBottom} data-component-name="DynamicPageTitleSubheading">
+            {subheading}
+          </div>
         </FlexBox>
       )}
     </FlexBox>
