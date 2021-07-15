@@ -1,14 +1,17 @@
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useConsolidatedRef, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ColumnChart as ColumnChartLib } from '@ui5/webcomponents-react-charts/dist/ColumnChart';
-import { ColumnWithTrendChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/ColumnWithTrendChartPlaceholder';
 import { LineChart as LineChartLib } from '@ui5/webcomponents-react-charts/dist/LineChart';
-import React, { FC, forwardRef, Ref } from 'react';
+import React, { FC, forwardRef, Ref, useMemo } from 'react';
+import { ColumnChartWithTrendPlaceholder } from '../../dist/ColumnChartWithTrendPlaceholder';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { usePrepareTrendMeasures } from '../../hooks/usePrepareTrendMeasures';
 import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { defaultFormatter } from '../../internal/defaults';
+import { ColumnChartPlaceholder } from '../..';
+import { ChartContainer } from '../../internal/ChartContainer';
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
 
 interface MeasureConfig extends IChartMeasure {
   /**
@@ -25,14 +28,13 @@ interface MeasureConfig extends IChartMeasure {
   type: AvailableChartTypes;
   /**
    * column Stack ID
-   * @default undefined
    */
   stackId?: string;
 }
 
 interface DimensionConfig extends IChartDimension {
   /**
-   * Interval of axis label
+   * Interval of axis label which defines the number that controls how many ticks are rendered on the x axis
    * @default 0
    */
   interval?: number;
@@ -87,11 +89,28 @@ type AvailableChartTypes = 'line' | 'column' | string;
 /**
  * A `ColumnChartWithTrend` is a data visualization where each category is represented by a rectangle, with the height of the rectangle being proportional to the values being plotted amd a trend line which is displayed above the column chart.
  */
-const ColumnWithTrendChart: FC<ColumnChartWithTrendProps> = forwardRef(
+const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
   (props: ColumnChartWithTrendProps, ref: Ref<HTMLDivElement>) => {
-    const { dataset, style } = props;
+    const { dataset, style, className, slot, tooltip } = props;
 
     const chartRef = useConsolidatedRef<any>(ref);
+    const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick', 'onClick']);
+
+    const chartConfig = useMemo(() => {
+      return {
+        yAxisVisible: false,
+        xAxisVisible: true,
+        gridStroke: ThemingParameters.sapList_BorderColor,
+        gridHorizontal: true,
+        gridVertical: false,
+        legendPosition: 'bottom',
+        legendHorizontalAlign: 'left',
+        barGap: 3,
+        zoomingTool: false,
+        resizeDebounce: 250,
+        ...props.chartConfig
+      };
+    }, [props.chartConfig]);
 
     const { dimensions, measures } = usePrepareDimensionsAndMeasures(
       props.dimensions,
@@ -105,7 +124,10 @@ const ColumnWithTrendChart: FC<ColumnChartWithTrendProps> = forwardRef(
     return (
       <div
         ref={chartRef}
-        style={{ display: 'flex', flexDirection: 'column', height: style.height, width: style.width }}
+        style={{ display: 'flex', flexDirection: 'column', height: style?.height, width: style?.width, ...style }}
+        className={className}
+        slot={slot}
+        {...passThroughProps}
       >
         {dataset?.length !== 0 && (
           <LineChartLib
@@ -114,20 +136,24 @@ const ColumnWithTrendChart: FC<ColumnChartWithTrendProps> = forwardRef(
             dataset={dataset}
             measures={lineMeasures}
             dimensions={dimensions}
+            tooltip={tooltip}
             noLegend
             chartConfig={{
               xAxisVisible: false,
               yAxisVisible: false,
-              yAxisTicksVisible: false
+              yAxisTicksVisible: false,
+              gridHorizontal: false
             }}
           />
         )}
         <ColumnChartLib
           syncId={'trend'}
-          trendPlaceholder={ColumnWithTrendChartPlaceholder}
+          placeholder={ColumnChartWithTrendPlaceholder}
           dataset={dataset}
           measures={columnMeasures}
           dimensions={dimensions}
+          chartConfig={chartConfig}
+          tooltip={tooltip}
           style={{ ...style, height: `calc(${style.height} * ${dataset?.length !== 0 ? 0.8 : 1})` }}
         />
       </div>
@@ -135,11 +161,11 @@ const ColumnWithTrendChart: FC<ColumnChartWithTrendProps> = forwardRef(
   }
 );
 
-ColumnWithTrendChart.defaultProps = {
+ColumnChartWithTrend.defaultProps = {
   noLegend: false,
   noAnimation: false
 };
 
-ColumnWithTrendChart.displayName = 'ColumnChartWithTrend';
+ColumnChartWithTrend.displayName = 'ColumnChartWithTrend';
 
-export { ColumnWithTrendChart };
+export { ColumnChartWithTrend };

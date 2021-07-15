@@ -1,12 +1,12 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import '@ui5/webcomponents-icons/dist/person-placeholder.js';
-import { ColumnWithTrendChart } from '@ui5/webcomponents-react-charts/dist/ColumnWithTrendChart';
+import { ColumnChartWithTrend } from '@ui5/webcomponents-react-charts/dist/ColumnChartWithTrend';
 import { complexDataSet } from '../../resources/DemoProps';
 
 <Meta
   title="Charts /  ColumnChart with Trend"
-  component={ColumnWithTrendChart}
+  component={ColumnChartWithTrend}
   argTypes={{
     dataset: {
       control: { disable: true }
@@ -48,7 +48,7 @@ import { complexDataSet } from '../../resources/DemoProps';
       ]
     }}
   >
-    {(props) => <ColumnWithTrendChart {...props} />}
+    {(props) => <ColumnChartWithTrend {...props} />}
   </Story>
 </Canvas>
 
@@ -70,6 +70,6 @@ import { complexDataSet } from '../../resources/DemoProps';
       measures: []
     }}
   >
-    {(props) => <ColumnWithTrendChart {...props} />}
+    {(props) => <ColumnChartWithTrend {...props} />}
   </Story>
 </Canvas>

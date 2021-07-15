@@ -1,12 +1,12 @@
 import { render } from '@shared/tests';
 import * as React from 'react';
 import { complexDataSet } from '../../resources/DemoProps';
-import { ColumnWithTrendChart } from './ColumnWithTrendChart';
+import { ColumnChartWithTrend } from './ColumnChartWithTrend';
 
 describe('ColumnChart', () => {
   test('Renders with data', () => {
     const utils = render(
-      <ColumnWithTrendChart
+      <ColumnChartWithTrend
         dataset={complexDataSet}
         style={{ width: '50%' }}
         dimensions={[
@@ -40,7 +40,7 @@ describe('ColumnChart', () => {
   });
 
   test('Loading placeholder', () => {
-    const wrapper = render(<ColumnWithTrendChart style={{ width: '30%' }} dimensions={[]} measures={[]} />);
+    const wrapper = render(<ColumnChartWithTrend style={{ width: '30%' }} dimensions={[]} measures={[]} />);
     expect(wrapper.asFragment()).toMatchSnapshot();
   });
 });

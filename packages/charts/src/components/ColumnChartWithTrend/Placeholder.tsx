@@ -2,7 +2,7 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingPar
 import React from 'react';
 import ContentLoader from 'react-content-loader';
 
-export const ColumnWithTrendChartPlaceholder = (props) => {
+export const ColumnChartWithTrendPlaceholder = (props) => {
   return (
     <ContentLoader
       viewBox="0 0 165 145"
