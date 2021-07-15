@@ -490,24 +490,39 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     isAfterScroll
   ]);
 
+  const titleHeaderNotClickable =
+    (alwaysShowContentHeader && !headerContentPinnable) ||
+    !headerContent ||
+    (!showHideHeaderButton && !headerContentPinnable);
+
+  const onTitleClick = useCallback(
+    (e) => {
+      if (!titleHeaderNotClickable) {
+        onToggleHeaderContentVisibility(enrichEventWithDetails(e, { visible: !headerContentHeight }));
+      }
+    },
+    [onToggleHeaderContentVisibility, headerContentHeight, titleHeaderNotClickable]
+  );
+
   const renderTitleSection = useCallback(
     (inHeader = false) => {
       const titleStyles = { ...(inHeader ? { padding: 0 } : {}), ...(headerTitle?.props?.style ?? {}) };
+
       if (headerTitle?.props && headerTitle.props?.showSubheadingRight === undefined) {
         return React.cloneElement(headerTitle, {
           showSubheadingRight: true,
           style: titleStyles,
-          'data-not-clickable':
-            alwaysShowContentHeader || !headerContent || (!showHideHeaderButton && !headerContentPinnable)
+          'data-not-clickable': titleHeaderNotClickable,
+          onToggleHeaderContentVisibility: onTitleClick
         });
       }
       return React.cloneElement(headerTitle, {
         style: titleStyles,
-        'data-not-clickable':
-          alwaysShowContentHeader || !headerContent || (!showHideHeaderButton && !headerContentPinnable)
+        'data-not-clickable': titleHeaderNotClickable,
+        onToggleHeaderContentVisibility: onTitleClick
       });
     },
-    [headerTitle, showHideHeaderButton, headerContentPinnable, headerContent]
+    [headerTitle, titleHeaderNotClickable, onTitleClick]
   );
 
   const renderHeaderContentSection = useCallback(() => {
@@ -631,12 +646,6 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     },
     [classes.headerHoverStyles]
   );
-  const onTitleClick = useCallback(
-    (e) => {
-      onToggleHeaderContentVisibility(enrichEventWithDetails(e, { visible: !headerContentHeight }));
-    },
-    [onToggleHeaderContentVisibility, headerContentHeight]
-  );
 
   return (
     <div
@@ -655,9 +664,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         data-component-name="ObjectPageTopHeader"
         ref={topHeaderRef}
         role="banner"
-        data-not-clickable={
-          alwaysShowContentHeader || !headerContent || (!showHideHeaderButton && !headerContentPinnable)
-        }
+        data-not-clickable={titleHeaderNotClickable}
         aria-roledescription="Object Page header"
         className={`${classes.header} ${responsivePaddingClass}`}
         onClick={onTitleClick}

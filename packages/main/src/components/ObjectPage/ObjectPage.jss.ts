@@ -62,9 +62,15 @@ export const styles = {
     }
   },
   headerHoverStyles: {
-    backgroundColor: `${ThemingParameters.sapTile_Active_Background} !important`,
-    '& [data-component-name="DynamicPageTitle"]': {
-      backgroundColor: ThemingParameters.sapTile_Active_Background
+    '&[data-not-clickable="true"]': {
+      cursor: 'unset'
+    },
+    '&[data-not-clickable="false"]': {
+      // TODO background color should be sapObjectHeader_Hover_Background (same color as sapTile_Active_Background)
+      backgroundColor: `${ThemingParameters.sapTile_Active_Background}`,
+      '& [data-component-name="DynamicPageTitle"]': {
+        backgroundColor: ThemingParameters.sapTile_Active_Background
+      }
     }
   },
   header: {
@@ -79,18 +85,7 @@ export const styles = {
       paddingLeft: 0,
       paddingRight: 0
     },
-    '&:hover': {
-      // TODO background color should be sapObjectHeader_Hover_Background (same color as sapTile_Active_Background)
-      backgroundColor: ThemingParameters.sapTile_Active_Background
-    },
-    cursor: 'pointer',
-    '&[data-not-clickable="true"]': {
-      pointerEvents: 'none',
-      cursor: 'unset',
-      '&:hover': {
-        backgroundColor: ThemingParameters.sapObjectHeader_Background
-      }
-    }
+    cursor: 'pointer'
   },
   iEClass: {
     position: 'fixed',

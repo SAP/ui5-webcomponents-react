@@ -26,6 +26,7 @@ We streamlined those APIs by adding components used by the `DynamicPage` to the 
 #### DynamicPage changes
 
 - `title` has been renamed to `headerTitle`.
+- `header` has been renamed to `headerContent`.
 - **`DynamicPageTitle`:** `subHeading` has been renamed to `subheading`.
 - **`DynamicPageHeader`:** `children` are no longer displayed as `flex` items to support other display types like `grid`. To align children you now need to add the container (like `FlexBox`) and CSS yourself.
   <br />
@@ -53,8 +54,8 @@ We streamlined those APIs by adding components used by the `DynamicPage` to the 
 - **`ObjectPageSection`:** `title` and `titleUppercase` has been renamed. Please use `heading` and `headingUppercase` instead.
 - **`ObjectPageSubSection`:** `title` has been renamed to `heading`.
 - `title` has been renamed to `headerTitle` and is now defining the upper, static, title section of the `ObjectPage`. It expects to receive the `DynamicPageTitle` component.
-- `headerContent` has been renamed to `header` and expects now the `DynamicPageHeader` component to be passed.
-- `noHeader` has been removed. It is now sufficient not to set `headerTitle` and `header` to achieve the same behavior.
+- `headerContent` now expects the `DynamicPageHeader` component to be passed.
+- `noHeader` has been removed. It is now sufficient not to set `headerTitle` and `headerContent` to achieve the same behavior.
 - `title`, `subTitle`, `headerActions`, `breadcrumbs` and `keyInfos` should now be passed to the corresponding `DynamicPageTitle` props.
 
 Setting the title section of the `ObjectPage`:
