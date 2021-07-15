@@ -1,5 +1,5 @@
-import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { useConsolidatedRef, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { ColumnChart as ColumnChartLib } from '@ui5/webcomponents-react-charts/dist/ColumnChart';
 import { ColumnChartWithTrendPlaceholder } from '@ui5/webcomponents-react-charts/dist/ColumnChartWithTrendPlaceholder';
 import { LineChart as LineChartLib } from '@ui5/webcomponents-react-charts/dist/LineChart';
