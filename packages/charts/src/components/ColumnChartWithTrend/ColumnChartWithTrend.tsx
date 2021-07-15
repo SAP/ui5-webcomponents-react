@@ -2,7 +2,7 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { useConsolidatedRef, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ColumnChart as ColumnChartLib } from '@ui5/webcomponents-react-charts/dist/ColumnChart';
 import { LineChart as LineChartLib } from '@ui5/webcomponents-react-charts/dist/LineChart';
-import React, { FC, forwardRef, Ref, useMemo } from 'react';
+import React, { ComponentType, FC, forwardRef, Ref, useMemo } from 'react';
 import { ColumnChartWithTrendPlaceholder } from '../../dist/ColumnChartWithTrendPlaceholder';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { usePrepareTrendMeasures } from '../../hooks/usePrepareTrendMeasures';
@@ -38,7 +38,7 @@ interface DimensionConfig extends IChartDimension {
   interval?: number;
 }
 
-export interface ColumnChartWithTrendProps extends IChartBaseProps {
+export interface ColumnChartWithTrendProps extends Omit<IChartBaseProps, 'syncId'> {
   /**
    * An array of config objects. Each object will define one dimension of the chart.
    *
@@ -172,7 +172,7 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
           loading={loading}
           onClick={onClick}
           syncId={'trend'}
-          placeholder={ColumnChartWithTrendPlaceholder}
+          chartPlaceholder={ColumnChartWithTrendPlaceholder}
           dataset={dataset}
           measures={columnMeasures}
           dimensions={dimensions}
