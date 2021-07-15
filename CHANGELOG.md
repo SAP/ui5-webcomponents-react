@@ -19,14 +19,30 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Features
 
 * **charts:** add `tooltipConfig` prop to allow control of Tooltip ([#1808](https://github.com/SAP/ui5-webcomponents-react/issues/1808)) ([e063144](https://github.com/SAP/ui5-webcomponents-react/commit/e0631448e15fd793d6cc0109f06f96d96b490290))
+* **ObjectPage & DynamicPage:** consolidates API of ObjectPage and DynamicPage (#1782)([58719ce](https://github.com/SAP/ui5-webcomponents-react/commit/58719ce8e69fe99e777f423ea611e2897f20f379))
 
 
 ### BREAKING CHANGES
+
+**[Migration Guide](https://sap.github.io/ui5-webcomponents-react/?path=/docs/migration-guide--page)**
 
 * **Device:** all `supportXYZ` methods have been removed. Please consult our [Migration Guide](https://sap.github.io/ui5-webcomponents-react/?path=/docs/migration-guide--page#device-cleanup) for alternatives
 * **Device:** the Media Range Set part of the Device has been cleaned up in order to support only one default range set. More details can be found in our [Migration Guide](https://sap.github.io/ui5-webcomponents-react/?path=/docs/migration-guide--page#media-range-sets)
 * **Device:** **useViewportRange**: the `rangeSetName` parameter has been removed without replacement
 * **Device:** `Logger` and `LogLevel` have been removed. Check our [Migration Guide](https://sap.github.io/ui5-webcomponents-react/?path=/docs/migration-guide--page#removal-of-logger-and-loglevel) for details
+* **DynamicPageHeader:** `children` are no longer displayed as `flex` items to support other display types like `grid`. To align children you now need to add the container (like `FlexBox`) and CSS yourself.
+* **DynamicPageTitle:** `subHeading` has been renamed. Please use `subheading` instead.
+* **DynamicPage:** `header` has been renamed. Please use `headerContent` instead.
+* **DynamicPage:** `title` has been renamed. Please use `headerTitle` instead.
+* **ObjectPage:** `title` has been renamed to `headerTitle` and is now defining the upper, static, title section of the `ObjectPage`. It expects to receive the `DynamicPageTitle` component.
+* **ObjectPage:** `noHeader` has been removed. It is now sufficient not to set `headerTitle` and `header` to achieve the same behavior.
+* **ObjectPage:** `title`, `subTitle`, `headerActions`, `breadcrumbs` and `keyInfos` should now be passed to the corresponding `DynamicPageTitle` props.
+* **ObjectPageSection:** `title` and `titleUppercase` has been renamed. Please use `heading` and `headingUppercase` instead.
+* **ObjectPageSubSection:** `title` has been renamed. Please use `heading` instead.
+* **getScrollBarWidth** has been removed.
+
+
+
 
 
 
