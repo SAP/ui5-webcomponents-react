@@ -1,3 +1,4 @@
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { useConsolidatedRef, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ColumnChart as ColumnChartLib } from '@ui5/webcomponents-react-charts/dist/ColumnChart';
 import { LineChart as LineChartLib } from '@ui5/webcomponents-react-charts/dist/LineChart';
@@ -9,9 +10,6 @@ import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { defaultFormatter } from '../../internal/defaults';
-import { ColumnChartPlaceholder } from '../..';
-import { ChartContainer } from '../../internal/ChartContainer';
-import { ThemingParameters } from '@ui5/webcomponents-react-base';
 
 interface MeasureConfig extends IChartMeasure {
   /**
@@ -91,7 +89,20 @@ type AvailableChartTypes = 'line' | 'column' | string;
  */
 const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
   (props: ColumnChartWithTrendProps, ref: Ref<HTMLDivElement>) => {
-    const { dataset, style, className, slot, tooltip } = props;
+    const {
+      loading,
+      dataset,
+      style,
+      className,
+      slot,
+      tooltip,
+      onClick,
+      noLegend,
+      noAnimation,
+      tooltipConfig,
+      onDataPointClick,
+      onLegendClick
+    } = props;
 
     const chartRef = useConsolidatedRef<any>(ref);
     const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick', 'onClick']);
@@ -131,6 +142,13 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
       >
         {dataset?.length !== 0 && (
           <LineChartLib
+            className={
+              typeof onDataPointClick === 'function' || typeof onClick === 'function' ? 'has-click-handler' : undefined
+            }
+            tooltipConfig={tooltipConfig}
+            noAnimation={noAnimation}
+            loading={loading}
+            onClick={onClick}
             syncId={'trend'}
             style={{ ...style, height: `calc(${style.height} * 0.2)` }}
             dataset={dataset}
@@ -147,6 +165,12 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
           />
         )}
         <ColumnChartLib
+          onLegendClick={onLegendClick}
+          tooltipConfig={tooltipConfig}
+          noAnimation={noAnimation}
+          noLegend={noLegend}
+          loading={loading}
+          onClick={onClick}
           syncId={'trend'}
           placeholder={ColumnChartWithTrendPlaceholder}
           dataset={dataset}
@@ -155,6 +179,9 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
           chartConfig={chartConfig}
           tooltip={tooltip}
           style={{ ...style, height: `calc(${style.height} * ${dataset?.length !== 0 ? 0.8 : 1})` }}
+          className={
+            typeof onDataPointClick === 'function' || typeof onClick === 'function' ? 'has-click-handler' : undefined
+          }
         />
       </div>
     );
