@@ -1,9 +1,9 @@
-import { ThemingParameters } from '@ui5/webcomponents-react-base';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { useConsolidatedRef, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ColumnChart as ColumnChartLib } from '@ui5/webcomponents-react-charts/dist/ColumnChart';
+import { ColumnChartWithTrendPlaceholder } from '@ui5/webcomponents-react-charts/dist/ColumnChartWithTrendPlaceholder';
 import { LineChart as LineChartLib } from '@ui5/webcomponents-react-charts/dist/LineChart';
-import React, { ComponentType, FC, forwardRef, Ref, useMemo } from 'react';
-import { ColumnChartWithTrendPlaceholder } from '../../dist/ColumnChartWithTrendPlaceholder';
+import React, { FC, forwardRef, Ref, useMemo } from 'react';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { usePrepareTrendMeasures } from '../../hooks/usePrepareTrendMeasures';
 import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
