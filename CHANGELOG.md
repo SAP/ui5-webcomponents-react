@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.17.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.16.6...v0.17.0) (2021-07-15)
+
+
+### Bug Fixes
+
+* **ObjectPage & DynamicPage:** active elements in `headerTitle` are always interactive and won't expand the header ([#1825](https://github.com/SAP/ui5-webcomponents-react/issues/1825)) ([1e1650d](https://github.com/SAP/ui5-webcomponents-react/commit/1e1650d71ca2cddb6d0c00da783aecebf5cbcd68))
+
+
+### chore
+
+* **Device:** document public methods and cleanup ([#1819](https://github.com/SAP/ui5-webcomponents-react/issues/1819)) ([dd8ad28](https://github.com/SAP/ui5-webcomponents-react/commit/dd8ad28aeaf11aaaf89ae5d47d6f9d0adbc40cbe)), closes [#1791](https://github.com/SAP/ui5-webcomponents-react/issues/1791)
+
+
+### Features
+
+* **charts:** add `tooltipConfig` prop to allow control of Tooltip ([#1808](https://github.com/SAP/ui5-webcomponents-react/issues/1808)) ([e063144](https://github.com/SAP/ui5-webcomponents-react/commit/e0631448e15fd793d6cc0109f06f96d96b490290))
+
+
+### BREAKING CHANGES
+
+* **Device:** all `supportXYZ` methods have been removed. Please consult our [Migration Guide](https://sap.github.io/ui5-webcomponents-react/?path=/docs/migration-guide--page#device-cleanup) for alternatives
+* **Device:** the Media Range Set part of the Device has been cleaned up in order to support only one default range set. More details can be found in our [Migration Guide](https://sap.github.io/ui5-webcomponents-react/?path=/docs/migration-guide--page#media-range-sets)
+* **Device:** **useViewportRange**: the `rangeSetName` parameter has been removed without replacement
+* **Device:** `Logger` and `LogLevel` have been removed. Check our [Migration Guide](https://sap.github.io/ui5-webcomponents-react/?path=/docs/migration-guide--page#removal-of-logger-and-loglevel) for details
+
+
+
+
+
 ## [0.16.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.16.5...v0.16.6) (2021-07-06)
 
 
