@@ -15,24 +15,29 @@ const useStyles = createUseStyles(
 export const useResponsiveContentPadding = (element) => {
   const [currentRange, setCurrentRange] = useState(getCurrentRange('StdExt', window.innerWidth).name);
   const resizeTimeout = useRef(null);
+  const isMounted = useRef(false);
   const classes = useStyles();
 
   useEffect(() => {
+    isMounted.current = true;
     const observer = new ResizeObserver(([el]) => {
       if (resizeTimeout.current) {
         clearTimeout(resizeTimeout.current);
       }
       resizeTimeout.current = setTimeout(() => {
-        setCurrentRange(() => getCurrentRange('StdExt', el.contentRect.width)?.name);
+        if (isMounted.current) {
+          setCurrentRange(() => getCurrentRange('StdExt', el.contentRect.width)?.name);
+        }
       }, 150);
     });
     if (element) {
       observer.observe(element);
     }
     return () => {
+      isMounted.current = false;
       observer.disconnect();
     };
-  }, [element]);
+  }, [element, isMounted]);
 
   return classes[currentRange];
 };

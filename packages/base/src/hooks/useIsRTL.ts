@@ -1,6 +1,6 @@
 import { getRTL } from '@ui5/webcomponents-base/dist/config/RTL';
 import { useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base/lib/hooks';
-import { RefObject, useState } from 'react';
+import { RefObject, useRef, useState } from 'react';
 
 const GLOBAL_DIR_CSS_VAR = '--_ui5_dir';
 
@@ -32,13 +32,17 @@ const detectRTL = (elementRef: RefObject<HTMLElement>) => {
 
 const useIsRTL = (elementRef: RefObject<HTMLElement>): boolean => {
   const [isRTL, setRTL] = useState<boolean>(getRTL()); // use config RTL as best guess
+  const isMounted = useRef(false);
   useIsomorphicLayoutEffect(() => {
+    isMounted.current = true;
     setRTL(detectRTL(elementRef)); // update immediately while rendering
     const targets = [document.documentElement, document.body, elementRef.current].filter(Boolean);
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         if (mutation.attributeName === 'dir') {
-          setRTL(detectRTL(elementRef));
+          if (isMounted.current) {
+            setRTL(detectRTL(elementRef));
+          }
         }
       });
     });
@@ -48,9 +52,10 @@ const useIsRTL = (elementRef: RefObject<HTMLElement>): boolean => {
     });
 
     return () => {
+      isMounted.current = false;
       observer.disconnect();
     };
-  }, []);
+  }, [isMounted]);
 
   return isRTL;
 };
