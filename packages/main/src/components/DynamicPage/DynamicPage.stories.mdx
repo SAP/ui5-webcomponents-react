@@ -256,7 +256,6 @@ import { useState, useReducer } from 'react';
   <Story name="with floating footer">
     {(args) => {
       const [collapsed, setCollapsed] = useReducer((coll) => !coll, true);
-      console.log(collapsed);
       return (
         <Panel collapsed={collapsed} onClick={setCollapsed} headerText="Display DynamicPage with floating footer">
           {collapsed ? (
