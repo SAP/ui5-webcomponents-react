@@ -138,10 +138,10 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
 
   useEffect(() => {
     const observer = new ResizeObserver(([form]) => {
-      const newRange = getCurrentRange(form.contentRect.width).name;
-      if (lastRange.current !== newRange) {
-        lastRange.current = newRange;
-        setCurrentRange(newRange);
+      const rangeInfo = getCurrentRange(form.contentRect.width);
+      if (rangeInfo && lastRange.current !== rangeInfo.name) {
+        lastRange.current = rangeInfo.name;
+        setCurrentRange(rangeInfo.name);
       }
     });
 
