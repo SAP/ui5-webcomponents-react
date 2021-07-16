@@ -23,7 +23,7 @@ export const useResponsiveContentPadding = (element) => {
         clearTimeout(resizeTimeout.current);
       }
       resizeTimeout.current = setTimeout(() => {
-        setCurrentRange(() => getCurrentRange(el.contentRect.width).name);
+        setCurrentRange(() => getCurrentRange(el.contentRect.width)?.name);
       }, 150);
     });
     if (element) {
