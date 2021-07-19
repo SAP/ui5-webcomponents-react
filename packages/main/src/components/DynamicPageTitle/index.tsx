@@ -22,6 +22,7 @@ import React, {
   Ref,
   useCallback,
   useEffect,
+  useRef,
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
@@ -106,6 +107,14 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
   const dynamicPageTitleRef = useConsolidatedRef<HTMLDivElement>(ref);
   const [showNavigationInTopArea, setShowNavigationInTopArea] = useState(undefined);
   const isRtl = useIsRTL(dynamicPageTitleRef);
+  const isMounted = useRef(false);
+
+  useEffect(() => {
+    isMounted.current = true;
+    return () => {
+      isMounted.current = false;
+    };
+  }, [isMounted]);
 
   if (isIE()) {
     containerClasses.put(classes.iEClass);
@@ -134,9 +143,9 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
           : titleContainer.borderBoxSize;
         // Safari doesn't implement `borderBoxSize`
         const titleContainerWidth = borderBoxSize?.inlineSize ?? titleContainer.target.getBoundingClientRect().width;
-        if (titleContainerWidth < 1280 && !showNavigationInTopArea === false) {
+        if (titleContainerWidth < 1280 && !showNavigationInTopArea === false && isMounted.current) {
           setShowNavigationInTopArea(false);
-        } else if (titleContainerWidth >= 1280 && !showNavigationInTopArea === true) {
+        } else if (titleContainerWidth >= 1280 && !showNavigationInTopArea === true && isMounted.current) {
           setShowNavigationInTopArea(true);
         }
       }, 300)
@@ -147,7 +156,7 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
     return () => {
       observer.disconnect();
     };
-  }, [dynamicPageTitleRef.current, showNavigationInTopArea]);
+  }, [dynamicPageTitleRef.current, showNavigationInTopArea, isMounted]);
 
   const paddingLeftRtl = isRtl ? 'paddingRight' : 'paddingLeft';
 
