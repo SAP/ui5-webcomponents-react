@@ -8,7 +8,6 @@ import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItem
 import { Toolbar } from '@ui5/webcomponents-react/lib/Toolbar';
 import { ToolbarDesign } from '@ui5/webcomponents-react/lib/ToolbarDesign';
 import { ToolbarSeparator } from '@ui5/webcomponents-react/lib/ToolbarSeparator';
-import { ToolbarSpacer } from '@ui5/webcomponents-react/lib/ToolbarSpacer';
 import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJustifyContent';
 import { ToolbarStyle } from '@ui5/webcomponents-react/lib/ToolbarStyle';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
