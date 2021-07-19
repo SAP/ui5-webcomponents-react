@@ -174,6 +174,7 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   return (
     <section
+      data-component-name="DynamicPageAnchorBar"
       style={style}
       role="navigation"
       className={showHideHeaderButton || headerContentPinnable ? classes.anchorBarActionButton : null}
