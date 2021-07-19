@@ -143,12 +143,12 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
           : titleContainer.borderBoxSize;
         // Safari doesn't implement `borderBoxSize`
         const titleContainerWidth = borderBoxSize?.inlineSize ?? titleContainer.target.getBoundingClientRect().width;
-        if (titleContainerWidth < 1280 && !showNavigationInTopArea === false && isMounted.current) {
-          setShowNavigationInTopArea(false);
-        } else if (titleContainerWidth >= 1280 && !showNavigationInTopArea === true && isMounted.current) {
+        if (titleContainerWidth < 1280 && !showNavigationInTopArea === true && isMounted.current) {
           setShowNavigationInTopArea(true);
+        } else if (titleContainerWidth >= 1280 && !showNavigationInTopArea === false && isMounted.current) {
+          setShowNavigationInTopArea(false);
         }
-      }, 300)
+      }, 150)
     );
     if (dynamicPageTitleRef.current) {
       observer.observe(dynamicPageTitleRef.current);
@@ -172,17 +172,23 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
     >
       {(breadcrumbs || (navigationActions && showNavigationInTopArea)) && (
         <FlexBox justifyContent={FlexBoxJustifyContent.SpaceBetween} data-component-name="DynamicPageTitleBreadcrumbs">
-          <div className={classes.breadcrumbs} onClick={stopPropagation}>
-            {breadcrumbs}
-          </div>
+          {breadcrumbs && (
+            <div className={classes.breadcrumbs} onClick={stopPropagation}>
+              {breadcrumbs}
+            </div>
+          )}
           {showNavigationInTopArea && (
-            <FlexBox
-              alignItems={FlexBoxAlignItems.End}
+            <Toolbar
+              design={ToolbarDesign.Auto}
+              toolbarStyle={ToolbarStyle.Clear}
+              active
+              className={classes.toolbar}
               onClick={stopPropagation}
               data-component-name="DynamicPageTitleNavActions"
             >
+              <ActionsSpacer onClick={onHeaderClick} noHover={props?.['data-not-clickable']} />
               {navigationActions}
-            </FlexBox>
+            </Toolbar>
           )}
         </FlexBox>
       )}
