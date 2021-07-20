@@ -35,6 +35,18 @@ describe('ColumnChart', () => {
     const responsiveContainers = container.querySelectorAll('div.recharts-responsive-container');
     expect(responsiveContainers.length).toBe(2);
 
+    const trendLineContainer = container.querySelector('g.recharts-line');
+    expect(trendLineContainer).toBeInTheDocument();
+    const trendLine = trendLineContainer.querySelector('path');
+    expect(trendLine).not.toBeNull();
+
+    const columnChartContainer = container.querySelector('g.recharts-bar');
+    expect(columnChartContainer).toBeInTheDocument();
+    const barContainer = columnChartContainer.querySelectorAll('g.recharts-bar-rectangles');
+    expect(barContainer.length).toBeGreaterThanOrEqual(1);
+    const singleBars = columnChartContainer.querySelectorAll('g.recharts-bar-rectangle');
+    expect(singleBars.length).toBeGreaterThanOrEqual(1);
+
     expect(asFragment()).toMatchSnapshot();
   });
 
@@ -42,6 +54,9 @@ describe('ColumnChart', () => {
     const { container, asFragment } = render(<ColumnChartWithTrend dimensions={[]} measures={[]} />);
     const responsiveContainers = container.querySelectorAll('div.recharts-responsive-container');
     expect(responsiveContainers.length).toBe(0);
+
+    const trendLineContainer = container.querySelector('g.recharts-line');
+    expect(trendLineContainer).toBeNull();
 
     expect(asFragment()).toMatchSnapshot();
   });
