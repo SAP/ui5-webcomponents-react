@@ -829,6 +829,7 @@ exports[`ObjectPage with anchor-bar 1`] = `
           >
             <div
               class="Toolbar-toolbar"
+              data-component-name="ToolbarContent"
             >
               <span
                 class="spacer"
@@ -1891,6 +1892,7 @@ exports[`ObjectPage with img 1`] = `
           >
             <div
               class="Toolbar-toolbar"
+              data-component-name="ToolbarContent"
             >
               <span
                 class="spacer"
@@ -2301,6 +2303,7 @@ exports[`ObjectPage with img 2`] = `
           >
             <div
               class="Toolbar-toolbar"
+              data-component-name="ToolbarContent"
             >
               <span
                 class="spacer"
@@ -2695,6 +2698,7 @@ exports[`ObjectPage with title 1`] = `
           >
             <div
               class="Toolbar-toolbar"
+              data-component-name="ToolbarContent"
             >
               <span
                 class="spacer"
@@ -3038,6 +3042,7 @@ exports[`ObjectPage with title, header & footer 1`] = `
           >
             <div
               class="Toolbar-toolbar"
+              data-component-name="ToolbarContent"
             >
               <span
                 class="spacer"
