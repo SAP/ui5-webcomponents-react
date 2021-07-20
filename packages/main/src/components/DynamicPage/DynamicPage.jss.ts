@@ -5,7 +5,7 @@ export const DynamicPageCssVariables = {
   headerDisplay: '--ui5wcr_DynamicPage_header_display'
 };
 
-const styles = {
+export const styles = {
   dynamicPage: {
     width: '100%',
     height: '100%',
@@ -43,8 +43,7 @@ const styles = {
     backgroundColor: ThemingParameters.sapObjectHeader_Background
   },
   contentContainer: {
-    ...sapUiResponsiveContentPadding,
-    paddingTop: '1rem !important',
+    paddingTop: '1rem',
     boxSizing: 'border-box',
     width: '100%',
     height: 'auto',
@@ -62,7 +61,10 @@ const styles = {
   },
   backgroundTransparent: {
     background: 'transparent'
+  },
+  footer: {
+    position: 'sticky',
+    bottom: '0.5rem',
+    margin: '0 0.5rem'
   }
 };
-
-export default styles;

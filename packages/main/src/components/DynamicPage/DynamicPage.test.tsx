@@ -17,6 +17,8 @@ import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { Badge } from '@ui5/webcomponents-react/lib/Badge';
 import { Form } from '@ui5/webcomponents-react/lib/Form';
 import { FormGroup } from '@ui5/webcomponents-react/lib/FormGroup';
+import { Bar } from '@ui5/webcomponents-react/lib/Bar';
+import { BarDesign } from '@ui5/webcomponents-react/lib/BarDesign';
 import { FormItem } from '@ui5/webcomponents-react/lib/FormItem';
 import { ObjectStatus } from '@ui5/webcomponents-react/lib/ObjectStatus';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
@@ -24,7 +26,7 @@ import { createPassThroughPropsTest } from '@shared/tests/utils';
 
 const renderComponent = () => (
   <DynamicPage
-    title={
+    headerTitle={
       <DynamicPageTitle
         actions={[
           <Button design={ButtonDesign.Emphasized}>Edit</Button>,
@@ -49,12 +51,12 @@ const renderComponent = () => (
           </Breadcrumbs>
         }
         heading={<Title>Header Title</Title>}
-        subHeading={<Label>This is a subheading</Label>}
+        subheading={<Label>This is a subheading</Label>}
       >
         <Badge>Status: OK</Badge>
       </DynamicPageTitle>
     }
-    header={
+    headerContent={
       <DynamicPageHeader>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <Label>Location: Warehouse A</Label>
@@ -205,7 +207,7 @@ const renderComponent = () => (
 
 const renderComponentWithoutContent = () => (
   <DynamicPage
-    title={
+    headerTitle={
       <DynamicPageTitle
         actions={[
           <Button design={ButtonDesign.Emphasized}>Edit</Button>,
@@ -230,12 +232,12 @@ const renderComponentWithoutContent = () => (
           </Breadcrumbs>
         }
         heading={<Title>Header Title</Title>}
-        subHeading={<Label>This is a subheading</Label>}
+        subheading={<Label>This is a subheading</Label>}
       >
         <Badge>Status: OK</Badge>
       </DynamicPageTitle>
     }
-    header={
+    headerContent={
       <DynamicPageHeader>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <Label>Location: Warehouse A</Label>
@@ -254,7 +256,7 @@ const renderComponentWithoutContent = () => (
 const renderComponentWithAlwaysShowContentHeader = () => (
   <DynamicPage
     alwaysShowContentHeader={true}
-    title={
+    headerTitle={
       <DynamicPageTitle
         actions={[
           <Button design={ButtonDesign.Emphasized}>Edit</Button>,
@@ -279,12 +281,12 @@ const renderComponentWithAlwaysShowContentHeader = () => (
           </Breadcrumbs>
         }
         heading={<Title>Header Title</Title>}
-        subHeading={<Label>This is a subheading</Label>}
+        subheading={<Label>This is a subheading</Label>}
       >
         <Badge>Status: OK</Badge>
       </DynamicPageTitle>
     }
-    header={
+    headerContent={
       <DynamicPageHeader>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <Label>Location: Warehouse A</Label>
@@ -304,7 +306,7 @@ const renderComponentHideHeaderButton = () => (
   <DynamicPage
     showHideHeaderButton={false}
     alwaysShowContentHeader={true}
-    title={
+    headerTitle={
       <DynamicPageTitle
         actions={[
           <Button design={ButtonDesign.Emphasized}>Edit</Button>,
@@ -313,28 +315,11 @@ const renderComponentHideHeaderButton = () => (
           <Button design={ButtonDesign.Transparent}>Toggle Footer</Button>,
           <Button icon="action" design={ButtonDesign.Transparent}></Button>
         ]}
-        navigationActions={[
-          <Button icon="full-screen" design={ButtonDesign.Transparent} />,
-          <Button icon="exit-full-screen" design={ButtonDesign.Transparent} />,
-          <Button icon="decline" design={ButtonDesign.Transparent} />
-        ]}
-        breadcrumbs={
-          <Breadcrumbs>
-            <Link>Home</Link>
-            <Link>Page 1</Link>
-            <Link>Page 2</Link>
-            <Link>Page 3</Link>
-            <Link>Page 4</Link>
-            <Link>Page 5</Link>
-          </Breadcrumbs>
-        }
         heading={<Title>Header Title</Title>}
-        subHeading={<Label>This is a subheading</Label>}
-      >
-        <Badge>Status: OK</Badge>
-      </DynamicPageTitle>
+        subheading={<Label>This is a subheading</Label>}
+      />
     }
-    header={
+    headerContent={
       <DynamicPageHeader>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <Label>Location: Warehouse A</Label>
@@ -398,7 +383,15 @@ describe('DynamicPage', () => {
     expect(asFragment()).toMatchSnapshot();
   });
   test('hider header button', () => {
-    const { asFragment } = render(renderComponentHideHeaderButton());
+    const { asFragment, queryByTitle } = render(renderComponentHideHeaderButton());
+    expect(queryByTitle('Expand Header')).toBeNull();
+    expect(asFragment()).toMatchSnapshot();
+  });
+  test('render footer', () => {
+    const { asFragment, getByText } = render(
+      <DynamicPage footer={<Bar design={BarDesign.FloatingFooter} endContent={<Text>Footer</Text>} />} />
+    );
+    getByText('Footer');
     expect(asFragment()).toMatchSnapshot();
   });
 

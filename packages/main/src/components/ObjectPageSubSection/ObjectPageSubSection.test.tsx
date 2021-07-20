@@ -5,12 +5,12 @@ import React from 'react';
 
 describe('ObjectPageSubSection', () => {
   test('Render without Crashing', () => {
-    const { asFragment } = render(<ObjectPageSubSection id="test" />);
+    const { asFragment } = render(<ObjectPageSubSection id="test">Content</ObjectPageSubSection>);
     expect(asFragment()).toMatchSnapshot();
   });
 
   test('No ID should throw', () => {
-    const renderer = () => render(<ObjectPageSubSection title="test" />);
+    const renderer = () => render(<ObjectPageSubSection heading="test">Content</ObjectPageSubSection>);
     expect(renderer).toThrow();
   });
 
