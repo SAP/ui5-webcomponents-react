@@ -31,7 +31,10 @@ export const useObserveHeights = (objectPage, topHeader, headerContentRef, ancho
   // top header
   useEffect(() => {
     const headerContentResizeObserver = new ResizeObserver(([header]) => {
-      setTopHeaderHeight(header?.contentRect?.height ?? 0);
+      // Firefox implements `borderBoxSize` as a single content rect, rather than an array
+      const borderBoxSize = Array.isArray(header.borderBoxSize) ? header.borderBoxSize[0] : header.borderBoxSize;
+      // Safari doesn't implement `borderBoxSize`
+      setTopHeaderHeight(borderBoxSize?.blockSize ?? header.target.getBoundingClientRect().height);
     });
     if (topHeader?.current) {
       headerContentResizeObserver.observe(topHeader.current);

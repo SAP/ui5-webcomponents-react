@@ -1,4 +1,3 @@
-import { sapUiResponsiveContentPadding } from '@ui5/webcomponents-react-base/lib/spacing';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 
 export const DynamicPageCssVariables = {
