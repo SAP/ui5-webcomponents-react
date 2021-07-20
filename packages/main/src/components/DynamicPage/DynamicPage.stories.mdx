@@ -1,4 +1,4 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import '@ui5/webcomponents-icons/dist/action';
 import '@ui5/webcomponents-icons/dist/full-screen';
@@ -28,7 +28,7 @@ import { Panel } from '@ui5/webcomponents-react/lib/Panel';
 import { BusyIndicator } from '@ui5/webcomponents-react/lib/BusyIndicator';
 import { BarDesign } from '@ui5/webcomponents-react/lib/BarDesign';
 import { Bar } from '@ui5/webcomponents-react/lib/Bar';
-import { useState,useReducer } from 'react';
+import { useState, useReducer } from 'react';
 
 <Meta
   title="Layouts & Floorplans / DynamicPage"
@@ -37,7 +37,7 @@ import { useState,useReducer } from 'react';
   argTypes={{
     ...createSelectArgTypes({ backgroundDesign: PageBackgroundDesign }),
     ...DocsCommonProps,
-    title: {
+    headerTitle: {
       type: null
     },
     headerContent: {
@@ -139,7 +139,7 @@ import { useState,useReducer } from 'react';
     {(args) => {
       const [collapsed, setCollapsed] = useReducer((coll) => !coll, true);
       return (
-        <Panel collapsed={collapsed} onToggle={setCollapsed} headerText="Display DynamicPage with fixed header.">
+        <Panel collapsed={collapsed} onClick={setCollapsed} headerText="Display DynamicPage with fixed header.">
           {collapsed ? (
             <BusyIndicator active style={{ width: '100%' }}>
               <span style={{ height: '700px' }} />
@@ -203,7 +203,7 @@ import { useState,useReducer } from 'react';
       };
       const [collapsed, setCollapsed] = useReducer((coll) => !coll, true);
       return (
-        <Panel collapsed={collapsed} onToggle={setCollapsed} headerText="Display DynamicPage with Variants">
+        <Panel collapsed={collapsed} onClick={setCollapsed} headerText="Display DynamicPage with Variants">
           {collapsed ? (
             <BusyIndicator active style={{ width: '100%' }}>
               <span style={{ height: '700px' }} />
@@ -256,8 +256,9 @@ import { useState,useReducer } from 'react';
   <Story name="with floating footer">
     {(args) => {
       const [collapsed, setCollapsed] = useReducer((coll) => !coll, true);
+      console.log(collapsed);
       return (
-        <Panel collapsed={collapsed} onToggle={setCollapsed} headerText="Display DynamicPage with floating footer">
+        <Panel collapsed={collapsed} onClick={setCollapsed} headerText="Display DynamicPage with floating footer">
           {collapsed ? (
             <BusyIndicator active style={{ width: '100%' }}>
               <span style={{ height: '700px' }} />
