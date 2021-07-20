@@ -1,4 +1,4 @@
-import { render } from '@shared/tests';
+import { render, screen } from '@shared/tests';
 import * as React from 'react';
 import { complexDataSet } from '../../resources/DemoProps';
 import { ColumnChartWithTrend } from './ColumnChartWithTrend';
@@ -6,10 +6,9 @@ import { createPassThroughPropsTest } from '@shared/tests/utils';
 
 describe('ColumnChart', () => {
   test('Renders with data', () => {
-    const { asFragment } = render(
+    const { container, asFragment } = render(
       <ColumnChartWithTrend
         dataset={complexDataSet}
-        style={{ width: '50%' }}
         dimensions={[
           {
             accessor: 'name',
@@ -28,22 +27,24 @@ describe('ColumnChart', () => {
             accessor: 'sessions',
             label: 'Active Sessions',
             type: 'column'
-          },
-          {
-            accessor: 'volume',
-            label: 'Vol.',
-            type: 'column'
           }
         ]}
       />
     );
+
+    const responsiveContainers = container.querySelectorAll('div.recharts-responsive-container');
+    expect(responsiveContainers.length).toBe(2);
+
     expect(asFragment()).toMatchSnapshot();
   });
 
   test('Loading placeholder', () => {
-    const wrapper = render(<ColumnChartWithTrend style={{ width: '30%' }} dimensions={[]} measures={[]} />);
-    expect(wrapper.asFragment()).toMatchSnapshot();
+    const { container, asFragment } = render(<ColumnChartWithTrend dimensions={[]} measures={[]} />);
+    const responsiveContainers = container.querySelectorAll('div.recharts-responsive-container');
+    expect(responsiveContainers.length).toBe(0);
+
+    expect(asFragment()).toMatchSnapshot();
   });
 
-  createPassThroughPropsTest(ColumnChartWithTrend);
+  createPassThroughPropsTest(ColumnChartWithTrend, { dimensions: [], measures: [] });
 });

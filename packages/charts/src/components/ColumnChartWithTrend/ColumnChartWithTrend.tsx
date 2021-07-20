@@ -150,7 +150,7 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
             loading={loading}
             onClick={onClick}
             syncId={'trend'}
-            style={{ ...style, height: `calc(${style.height} * 0.2)` }}
+            style={{ ...style, height: `calc(${style?.height} * 0.2)` }}
             dataset={dataset}
             measures={lineMeasures}
             dimensions={dimensions}
@@ -178,7 +178,7 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
           dimensions={dimensions}
           chartConfig={chartConfig}
           tooltip={tooltip}
-          style={{ ...style, height: `calc(${style.height} * ${dataset?.length !== 0 ? 0.8 : 1})` }}
+          style={{ ...style, height: `calc(${style?.height} * ${dataset?.length !== 0 ? 0.8 : 1})` }}
           className={
             typeof onDataPointClick === 'function' || typeof onClick === 'function' ? 'has-click-handler' : undefined
           }
