@@ -281,10 +281,10 @@ exports[`DynamicPage always show content header 1`] = `
           Availability:
         </ui5-label>
         <div
-          class="ObjectStatus-objectStatus ObjectStatus-success"
+          class="ObjectStatus-objectStatus"
         >
           <span
-            class="ObjectStatus-text"
+            class="ObjectStatus-textSuccess"
           >
             In Stock
           </span>
@@ -451,10 +451,10 @@ exports[`DynamicPage hider header button 1`] = `
           Availability:
         </ui5-label>
         <div
-          class="ObjectStatus-objectStatus ObjectStatus-success"
+          class="ObjectStatus-objectStatus"
         >
           <span
-            class="ObjectStatus-text"
+            class="ObjectStatus-textSuccess"
           >
             In Stock
           </span>
@@ -977,10 +977,10 @@ exports[`DynamicPage with content 1`] = `
           Availability:
         </ui5-label>
         <div
-          class="ObjectStatus-objectStatus ObjectStatus-success"
+          class="ObjectStatus-objectStatus"
         >
           <span
-            class="ObjectStatus-text"
+            class="ObjectStatus-textSuccess"
           >
             In Stock
           </span>
@@ -1954,10 +1954,10 @@ exports[`DynamicPage without content 1`] = `
           Availability:
         </ui5-label>
         <div
-          class="ObjectStatus-objectStatus ObjectStatus-success"
+          class="ObjectStatus-objectStatus"
         >
           <span
-            class="ObjectStatus-text"
+            class="ObjectStatus-textSuccess"
           >
             In Stock
           </span>
