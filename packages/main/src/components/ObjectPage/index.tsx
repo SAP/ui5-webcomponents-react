@@ -4,7 +4,7 @@ import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHe
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
-import {  enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { AvatarPropTypes } from '@ui5/webcomponents-react/lib/Avatar';
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
 import { GlobalStyleClasses } from '@ui5/webcomponents-react/lib/GlobalStyleClasses';
@@ -549,6 +549,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         )
       });
     }
+    return null;
   }, [
     headerContent,
     topHeaderHeight,
