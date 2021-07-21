@@ -1,3 +1,3 @@
-import { deprecationNotice, getScrollBarWidth, enrichEventWithDetails } from '../utils';
+import { deprecationNotice, enrichEventWithDetails } from '../utils';
 
-export { deprecationNotice, getScrollBarWidth, enrichEventWithDetails };
+export { deprecationNotice, enrichEventWithDetails };

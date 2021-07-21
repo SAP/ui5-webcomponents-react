@@ -6,115 +6,121 @@ exports[`DynamicPage always show content header 1`] = `
     class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundStandard"
   >
     <div
-      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container"
+      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container StdExtPadding-Desktop"
       data-component-name="DynamicPageTitle"
+      data-not-clickable="false"
     >
       <div
-        class="DynamicPageTitle-breadcrumbs"
+        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+        data-component-name="DynamicPageTitleBreadcrumbs"
       >
-        <nav
-          aria-label="Breadcrumb Trail"
+        <div
+          class="DynamicPageTitle-breadcrumbs"
         >
-          <ol
-            class="Breadcrumbs-list"
+          <nav
+            aria-label="Breadcrumb Trail"
           >
-            <li>
-              <ui5-link
-                data-breadcrumb-index="0"
-                design="Default"
-                tabindex="0"
-                ui5-link=""
-              >
-                Home
-              </ui5-link>
-              <ui5-label
-                aria-hidden="true"
-                class="Breadcrumbs-separatorInline"
-                ui5-label=""
-              >
-                /
-              </ui5-label>
-            </li>
-            <li>
-              <ui5-link
-                data-breadcrumb-index="1"
-                design="Default"
-                tabindex="-1"
-                ui5-link=""
-              >
-                Page 1
-              </ui5-link>
-              <ui5-label
-                aria-hidden="true"
-                class="Breadcrumbs-separatorInline"
-                ui5-label=""
-              >
-                /
-              </ui5-label>
-            </li>
-            <li>
-              <ui5-link
-                data-breadcrumb-index="2"
-                design="Default"
-                tabindex="-1"
-                ui5-link=""
-              >
-                Page 2
-              </ui5-link>
-              <ui5-label
-                aria-hidden="true"
-                class="Breadcrumbs-separatorInline"
-                ui5-label=""
-              >
-                /
-              </ui5-label>
-            </li>
-            <li>
-              <ui5-link
-                data-breadcrumb-index="3"
-                design="Default"
-                tabindex="-1"
-                ui5-link=""
-              >
-                Page 3
-              </ui5-link>
-              <ui5-label
-                aria-hidden="true"
-                class="Breadcrumbs-separatorInline"
-                ui5-label=""
-              >
-                /
-              </ui5-label>
-            </li>
-            <li>
-              <ui5-link
-                data-breadcrumb-index="4"
-                design="Default"
-                tabindex="-1"
-                ui5-link=""
-              >
-                Page 4
-              </ui5-link>
-              <ui5-label
-                aria-hidden="true"
-                class="Breadcrumbs-separatorInline"
-                ui5-label=""
-              >
-                /
-              </ui5-label>
-            </li>
-            <li>
-              <ui5-link
-                data-breadcrumb-index="5"
-                design="Default"
-                tabindex="-1"
-                ui5-link=""
-              >
-                Page 5
-              </ui5-link>
-            </li>
-          </ol>
-        </nav>
+            <ol
+              class="Breadcrumbs-list"
+            >
+              <li>
+                <ui5-link
+                  data-breadcrumb-index="0"
+                  design="Default"
+                  tabindex="0"
+                  ui5-link=""
+                >
+                  Home
+                </ui5-link>
+                <ui5-label
+                  aria-hidden="true"
+                  class="Breadcrumbs-separatorInline"
+                  ui5-label=""
+                >
+                  /
+                </ui5-label>
+              </li>
+              <li>
+                <ui5-link
+                  data-breadcrumb-index="1"
+                  design="Default"
+                  tabindex="-1"
+                  ui5-link=""
+                >
+                  Page 1
+                </ui5-link>
+                <ui5-label
+                  aria-hidden="true"
+                  class="Breadcrumbs-separatorInline"
+                  ui5-label=""
+                >
+                  /
+                </ui5-label>
+              </li>
+              <li>
+                <ui5-link
+                  data-breadcrumb-index="2"
+                  design="Default"
+                  tabindex="-1"
+                  ui5-link=""
+                >
+                  Page 2
+                </ui5-link>
+                <ui5-label
+                  aria-hidden="true"
+                  class="Breadcrumbs-separatorInline"
+                  ui5-label=""
+                >
+                  /
+                </ui5-label>
+              </li>
+              <li>
+                <ui5-link
+                  data-breadcrumb-index="3"
+                  design="Default"
+                  tabindex="-1"
+                  ui5-link=""
+                >
+                  Page 3
+                </ui5-link>
+                <ui5-label
+                  aria-hidden="true"
+                  class="Breadcrumbs-separatorInline"
+                  ui5-label=""
+                >
+                  /
+                </ui5-label>
+              </li>
+              <li>
+                <ui5-link
+                  data-breadcrumb-index="4"
+                  design="Default"
+                  tabindex="-1"
+                  ui5-link=""
+                >
+                  Page 4
+                </ui5-link>
+                <ui5-label
+                  aria-hidden="true"
+                  class="Breadcrumbs-separatorInline"
+                  ui5-label=""
+                >
+                  /
+                </ui5-label>
+              </li>
+              <li>
+                <ui5-link
+                  data-breadcrumb-index="5"
+                  design="Default"
+                  tabindex="-1"
+                  ui5-link=""
+                >
+                  Page 5
+                </ui5-link>
+              </li>
+            </ol>
+          </nav>
+        </div>
       </div>
       <div
         class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap"
@@ -125,6 +131,7 @@ exports[`DynamicPage always show content header 1`] = `
         >
           <div
             class="DynamicPageTitle-title"
+            data-component-name="DynamicPageTitleHeading"
           >
             <ui5-title
               level="H2"
@@ -135,36 +142,33 @@ exports[`DynamicPage always show content header 1`] = `
           </div>
           <div
             class="DynamicPageTitle-content"
+            data-component-name="DynamicPageTitleContent"
+            style="padding-left: 0.5rem;"
           >
-            <div
-              class="Toolbar-outerContainer Toolbar-clear"
+            <ui5-badge
+              color-scheme="1"
+              ui5-badge=""
             >
-              <div
-                class="Toolbar-toolbar"
-              >
-                <div>
-                  <ui5-badge
-                    color-scheme="1"
-                    ui5-badge=""
-                  >
-                    Status: OK
-                  </ui5-badge>
-                </div>
-              </div>
-            </div>
+              Status: OK
+            </ui5-badge>
           </div>
         </div>
         <div
-          class="Toolbar-outerContainer Toolbar-clear"
+          class="Toolbar-outerContainer Toolbar-clear Toolbar-active DynamicPageTitle-toolbar"
+          data-component-name="DynamicPageTitleActions"
         >
           <div
             class="Toolbar-toolbar"
+            data-component-name="ToolbarContent"
           >
             <span
               class="spacer"
-              style="flex-grow: 1;"
+              style="flex-grow: 1; height: 100%; cursor: pointer;"
             />
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Emphasized"
                 ui5-button=""
@@ -172,7 +176,10 @@ exports[`DynamicPage always show content header 1`] = `
                 Edit
               </ui5-button>
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Transparent"
                 ui5-button=""
@@ -180,7 +187,10 @@ exports[`DynamicPage always show content header 1`] = `
                 Delete
               </ui5-button>
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Transparent"
                 ui5-button=""
@@ -188,7 +198,10 @@ exports[`DynamicPage always show content header 1`] = `
                 Copy
               </ui5-button>
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Transparent"
                 ui5-button=""
@@ -196,34 +209,49 @@ exports[`DynamicPage always show content header 1`] = `
                 Toggle Footer
               </ui5-button>
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Transparent"
                 icon="action"
                 ui5-button=""
               />
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <div
                 aria-label="Separator"
                 class="ToolbarSeparator-separator"
               />
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Transparent"
                 icon="full-screen"
                 ui5-button=""
               />
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Transparent"
                 icon="exit-full-screen"
                 ui5-button=""
               />
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Transparent"
                 icon="decline"
@@ -237,7 +265,8 @@ exports[`DynamicPage always show content header 1`] = `
         class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
       >
         <div
-          class="DynamicPageTitle-subTitle"
+          class="DynamicPageTitle-subTitleBottom"
+          data-component-name="DynamicPageTitleSubheading"
         >
           <ui5-label
             ui5-label=""
@@ -248,58 +277,56 @@ exports[`DynamicPage always show content header 1`] = `
       </div>
     </div>
     <div
-      class="DynamicPageHeader-header"
+      class="DynamicPageHeader-header StdExtPadding-Desktop"
       data-component-name="DynamicPageHeader"
       style="top: 0px; z-index: 1;"
     >
       <div
-        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStart FlexBox-flexWrapNoWrap"
+        style="display: flex; flex-direction: column;"
       >
-        <div
-          style="display: flex; flex-direction: column;"
+        <ui5-label
+          ui5-label=""
         >
-          <ui5-label
-            ui5-label=""
-          >
-            Location: Warehouse A
-          </ui5-label>
-          <ui5-label
-            ui5-label=""
-          >
-            Halway: 23L
-          </ui5-label>
-          <ui5-label
-            ui5-label=""
-          >
-            Rack: 34
-          </ui5-label>
-        </div>
-        <div
-          style="display: flex; flex-direction: column; margin-left: 2vw;"
+          Location: Warehouse A
+        </ui5-label>
+        <ui5-label
+          ui5-label=""
         >
-          <ui5-label
-            ui5-label=""
+          Halway: 23L
+        </ui5-label>
+        <ui5-label
+          ui5-label=""
+        >
+          Rack: 34
+        </ui5-label>
+      </div>
+      <div
+        style="display: flex; flex-direction: column; margin-left: 2vw;"
+      >
+        <ui5-label
+          ui5-label=""
+        >
+          Availability:
+        </ui5-label>
+        <div
+          class="ObjectStatus-objectStatus"
+        >
+          <span
+            class="ObjectStatus-textSuccess"
           >
-            Availability:
-          </ui5-label>
-          <div
-            class="ObjectStatus-objectStatus"
-          >
-            <span
-              class="ObjectStatus-textSuccess"
-            >
-              In Stock
-            </span>
-          </div>
+            In Stock
+          </span>
         </div>
       </div>
     </div>
     <div
       class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPage-anchorBar"
+      data-component-name="DynamicPageAnchorBar"
       style="top: 0px;"
     >
       <section
         class="DynamicPageAnchorBar-anchorBarActionButton"
+        data-component-name="DynamicPageAnchorBar"
         role="navigation"
       >
         <ui5-button
@@ -314,8 +341,9 @@ exports[`DynamicPage always show content header 1`] = `
       </section>
     </div>
     <div
-      class="DynamicPage-contentContainer"
-      style="margin-top: 0px;"
+      class="DynamicPage-contentContainer StdExtPadding-Desktop"
+      data-component-name="DynamicPageContent"
+      style="margin-top: 0px; padding-bottom: 0px;"
     />
   </div>
 </DocumentFragment>
@@ -327,116 +355,10 @@ exports[`DynamicPage hider header button 1`] = `
     class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundStandard"
   >
     <div
-      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container"
+      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container StdExtPadding-Desktop"
       data-component-name="DynamicPageTitle"
+      data-not-clickable="false"
     >
-      <div
-        class="DynamicPageTitle-breadcrumbs"
-      >
-        <nav
-          aria-label="Breadcrumb Trail"
-        >
-          <ol
-            class="Breadcrumbs-list"
-          >
-            <li>
-              <ui5-link
-                data-breadcrumb-index="0"
-                design="Default"
-                tabindex="0"
-                ui5-link=""
-              >
-                Home
-              </ui5-link>
-              <ui5-label
-                aria-hidden="true"
-                class="Breadcrumbs-separatorInline"
-                ui5-label=""
-              >
-                /
-              </ui5-label>
-            </li>
-            <li>
-              <ui5-link
-                data-breadcrumb-index="1"
-                design="Default"
-                tabindex="-1"
-                ui5-link=""
-              >
-                Page 1
-              </ui5-link>
-              <ui5-label
-                aria-hidden="true"
-                class="Breadcrumbs-separatorInline"
-                ui5-label=""
-              >
-                /
-              </ui5-label>
-            </li>
-            <li>
-              <ui5-link
-                data-breadcrumb-index="2"
-                design="Default"
-                tabindex="-1"
-                ui5-link=""
-              >
-                Page 2
-              </ui5-link>
-              <ui5-label
-                aria-hidden="true"
-                class="Breadcrumbs-separatorInline"
-                ui5-label=""
-              >
-                /
-              </ui5-label>
-            </li>
-            <li>
-              <ui5-link
-                data-breadcrumb-index="3"
-                design="Default"
-                tabindex="-1"
-                ui5-link=""
-              >
-                Page 3
-              </ui5-link>
-              <ui5-label
-                aria-hidden="true"
-                class="Breadcrumbs-separatorInline"
-                ui5-label=""
-              >
-                /
-              </ui5-label>
-            </li>
-            <li>
-              <ui5-link
-                data-breadcrumb-index="4"
-                design="Default"
-                tabindex="-1"
-                ui5-link=""
-              >
-                Page 4
-              </ui5-link>
-              <ui5-label
-                aria-hidden="true"
-                class="Breadcrumbs-separatorInline"
-                ui5-label=""
-              >
-                /
-              </ui5-label>
-            </li>
-            <li>
-              <ui5-link
-                data-breadcrumb-index="5"
-                design="Default"
-                tabindex="-1"
-                ui5-link=""
-              >
-                Page 5
-              </ui5-link>
-            </li>
-          </ol>
-        </nav>
-      </div>
       <div
         class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap"
         style="flex-grow: 1; width: 100%;"
@@ -446,6 +368,7 @@ exports[`DynamicPage hider header button 1`] = `
         >
           <div
             class="DynamicPageTitle-title"
+            data-component-name="DynamicPageTitleHeading"
           >
             <ui5-title
               level="H2"
@@ -454,38 +377,23 @@ exports[`DynamicPage hider header button 1`] = `
               Header Title
             </ui5-title>
           </div>
-          <div
-            class="DynamicPageTitle-content"
-          >
-            <div
-              class="Toolbar-outerContainer Toolbar-clear"
-            >
-              <div
-                class="Toolbar-toolbar"
-              >
-                <div>
-                  <ui5-badge
-                    color-scheme="1"
-                    ui5-badge=""
-                  >
-                    Status: OK
-                  </ui5-badge>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
         <div
-          class="Toolbar-outerContainer Toolbar-clear"
+          class="Toolbar-outerContainer Toolbar-clear Toolbar-active DynamicPageTitle-toolbar"
+          data-component-name="DynamicPageTitleActions"
         >
           <div
             class="Toolbar-toolbar"
+            data-component-name="ToolbarContent"
           >
             <span
               class="spacer"
-              style="flex-grow: 1;"
+              style="flex-grow: 1; height: 100%; cursor: pointer;"
             />
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Emphasized"
                 ui5-button=""
@@ -493,7 +401,10 @@ exports[`DynamicPage hider header button 1`] = `
                 Edit
               </ui5-button>
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Transparent"
                 ui5-button=""
@@ -501,7 +412,10 @@ exports[`DynamicPage hider header button 1`] = `
                 Delete
               </ui5-button>
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Transparent"
                 ui5-button=""
@@ -509,7 +423,10 @@ exports[`DynamicPage hider header button 1`] = `
                 Copy
               </ui5-button>
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Transparent"
                 ui5-button=""
@@ -517,37 +434,13 @@ exports[`DynamicPage hider header button 1`] = `
                 Toggle Footer
               </ui5-button>
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Transparent"
                 icon="action"
-                ui5-button=""
-              />
-            </div>
-            <div>
-              <div
-                aria-label="Separator"
-                class="ToolbarSeparator-separator"
-              />
-            </div>
-            <div>
-              <ui5-button
-                design="Transparent"
-                icon="full-screen"
-                ui5-button=""
-              />
-            </div>
-            <div>
-              <ui5-button
-                design="Transparent"
-                icon="exit-full-screen"
-                ui5-button=""
-              />
-            </div>
-            <div>
-              <ui5-button
-                design="Transparent"
-                icon="decline"
                 ui5-button=""
               />
             </div>
@@ -558,7 +451,8 @@ exports[`DynamicPage hider header button 1`] = `
         class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
       >
         <div
-          class="DynamicPageTitle-subTitle"
+          class="DynamicPageTitle-subTitleBottom"
+          data-component-name="DynamicPageTitleSubheading"
         >
           <ui5-label
             ui5-label=""
@@ -569,64 +463,63 @@ exports[`DynamicPage hider header button 1`] = `
       </div>
     </div>
     <div
-      class="DynamicPageHeader-header"
+      class="DynamicPageHeader-header StdExtPadding-Desktop"
       data-component-name="DynamicPageHeader"
       style="top: 0px; z-index: 1;"
     >
       <div
-        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStart FlexBox-flexWrapNoWrap"
+        style="display: flex; flex-direction: column;"
       >
-        <div
-          style="display: flex; flex-direction: column;"
+        <ui5-label
+          ui5-label=""
         >
-          <ui5-label
-            ui5-label=""
-          >
-            Location: Warehouse A
-          </ui5-label>
-          <ui5-label
-            ui5-label=""
-          >
-            Halway: 23L
-          </ui5-label>
-          <ui5-label
-            ui5-label=""
-          >
-            Rack: 34
-          </ui5-label>
-        </div>
-        <div
-          style="display: flex; flex-direction: column; margin-left: 2vw;"
+          Location: Warehouse A
+        </ui5-label>
+        <ui5-label
+          ui5-label=""
         >
-          <ui5-label
-            ui5-label=""
+          Halway: 23L
+        </ui5-label>
+        <ui5-label
+          ui5-label=""
+        >
+          Rack: 34
+        </ui5-label>
+      </div>
+      <div
+        style="display: flex; flex-direction: column; margin-left: 2vw;"
+      >
+        <ui5-label
+          ui5-label=""
+        >
+          Availability:
+        </ui5-label>
+        <div
+          class="ObjectStatus-objectStatus"
+        >
+          <span
+            class="ObjectStatus-textSuccess"
           >
-            Availability:
-          </ui5-label>
-          <div
-            class="ObjectStatus-objectStatus"
-          >
-            <span
-              class="ObjectStatus-textSuccess"
-            >
-              In Stock
-            </span>
-          </div>
+            In Stock
+          </span>
         </div>
       </div>
     </div>
     <div
       class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPage-anchorBar"
+      data-component-name="DynamicPageAnchorBar"
       style="top: 0px;"
     >
       <section
         class="DynamicPageAnchorBar-anchorBarActionButton"
+        data-component-name="DynamicPageAnchorBar"
         role="navigation"
       />
     </div>
     <div
-      class="DynamicPage-contentContainer"
-      style="margin-top: 0px;"
+      class="DynamicPage-contentContainer StdExtPadding-Desktop"
+      data-component-name="DynamicPageContent"
+      style="margin-top: 0px; padding-bottom: 0px;"
     >
       <div
         class="Form-form Form-labelSpan4"
@@ -797,305 +690,19 @@ exports[`DynamicPage hider header button 1`] = `
 </DocumentFragment>
 `;
 
-exports[`DynamicPage with content 1`] = `
+exports[`DynamicPage render footer 1`] = `
 <DocumentFragment>
   <div
     class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundStandard"
   >
     <div
-      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container"
-      data-component-name="DynamicPageTitle"
-    >
-      <div
-        class="DynamicPageTitle-breadcrumbs"
-      >
-        <nav
-          aria-label="Breadcrumb Trail"
-        >
-          <ol
-            class="Breadcrumbs-list"
-          >
-            <li>
-              <ui5-link
-                data-breadcrumb-index="0"
-                design="Default"
-                tabindex="0"
-                ui5-link=""
-              >
-                Home
-              </ui5-link>
-              <ui5-label
-                aria-hidden="true"
-                class="Breadcrumbs-separatorInline"
-                ui5-label=""
-              >
-                /
-              </ui5-label>
-            </li>
-            <li>
-              <ui5-link
-                data-breadcrumb-index="1"
-                design="Default"
-                tabindex="-1"
-                ui5-link=""
-              >
-                Page 1
-              </ui5-link>
-              <ui5-label
-                aria-hidden="true"
-                class="Breadcrumbs-separatorInline"
-                ui5-label=""
-              >
-                /
-              </ui5-label>
-            </li>
-            <li>
-              <ui5-link
-                data-breadcrumb-index="2"
-                design="Default"
-                tabindex="-1"
-                ui5-link=""
-              >
-                Page 2
-              </ui5-link>
-              <ui5-label
-                aria-hidden="true"
-                class="Breadcrumbs-separatorInline"
-                ui5-label=""
-              >
-                /
-              </ui5-label>
-            </li>
-            <li>
-              <ui5-link
-                data-breadcrumb-index="3"
-                design="Default"
-                tabindex="-1"
-                ui5-link=""
-              >
-                Page 3
-              </ui5-link>
-              <ui5-label
-                aria-hidden="true"
-                class="Breadcrumbs-separatorInline"
-                ui5-label=""
-              >
-                /
-              </ui5-label>
-            </li>
-            <li>
-              <ui5-link
-                data-breadcrumb-index="4"
-                design="Default"
-                tabindex="-1"
-                ui5-link=""
-              >
-                Page 4
-              </ui5-link>
-              <ui5-label
-                aria-hidden="true"
-                class="Breadcrumbs-separatorInline"
-                ui5-label=""
-              >
-                /
-              </ui5-label>
-            </li>
-            <li>
-              <ui5-link
-                data-breadcrumb-index="5"
-                design="Default"
-                tabindex="-1"
-                ui5-link=""
-              >
-                Page 5
-              </ui5-link>
-            </li>
-          </ol>
-        </nav>
-      </div>
-      <div
-        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap"
-        style="flex-grow: 1; width: 100%;"
-      >
-        <div
-          class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-titleMainSection"
-        >
-          <div
-            class="DynamicPageTitle-title"
-          >
-            <ui5-title
-              level="H2"
-              ui5-title=""
-            >
-              Header Title
-            </ui5-title>
-          </div>
-          <div
-            class="DynamicPageTitle-content"
-          >
-            <div
-              class="Toolbar-outerContainer Toolbar-clear"
-            >
-              <div
-                class="Toolbar-toolbar"
-              >
-                <div>
-                  <ui5-badge
-                    color-scheme="1"
-                    ui5-badge=""
-                  >
-                    Status: OK
-                  </ui5-badge>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="Toolbar-outerContainer Toolbar-clear"
-        >
-          <div
-            class="Toolbar-toolbar"
-          >
-            <span
-              class="spacer"
-              style="flex-grow: 1;"
-            />
-            <div>
-              <ui5-button
-                design="Emphasized"
-                ui5-button=""
-              >
-                Edit
-              </ui5-button>
-            </div>
-            <div>
-              <ui5-button
-                design="Transparent"
-                ui5-button=""
-              >
-                Delete
-              </ui5-button>
-            </div>
-            <div>
-              <ui5-button
-                design="Transparent"
-                ui5-button=""
-              >
-                Copy
-              </ui5-button>
-            </div>
-            <div>
-              <ui5-button
-                design="Transparent"
-                ui5-button=""
-              >
-                Toggle Footer
-              </ui5-button>
-            </div>
-            <div>
-              <ui5-button
-                design="Transparent"
-                icon="action"
-                ui5-button=""
-              />
-            </div>
-            <div>
-              <div
-                aria-label="Separator"
-                class="ToolbarSeparator-separator"
-              />
-            </div>
-            <div>
-              <ui5-button
-                design="Transparent"
-                icon="full-screen"
-                ui5-button=""
-              />
-            </div>
-            <div>
-              <ui5-button
-                design="Transparent"
-                icon="exit-full-screen"
-                ui5-button=""
-              />
-            </div>
-            <div>
-              <ui5-button
-                design="Transparent"
-                icon="decline"
-                ui5-button=""
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
-      >
-        <div
-          class="DynamicPageTitle-subTitle"
-        >
-          <ui5-label
-            ui5-label=""
-          >
-            This is a subheading
-          </ui5-label>
-        </div>
-      </div>
-    </div>
-    <div
-      class="DynamicPageHeader-header"
-      data-component-name="DynamicPageHeader"
-    >
-      <div
-        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStart FlexBox-flexWrapNoWrap"
-      >
-        <div
-          style="display: flex; flex-direction: column;"
-        >
-          <ui5-label
-            ui5-label=""
-          >
-            Location: Warehouse A
-          </ui5-label>
-          <ui5-label
-            ui5-label=""
-          >
-            Halway: 23L
-          </ui5-label>
-          <ui5-label
-            ui5-label=""
-          >
-            Rack: 34
-          </ui5-label>
-        </div>
-        <div
-          style="display: flex; flex-direction: column; margin-left: 2vw;"
-        >
-          <ui5-label
-            ui5-label=""
-          >
-            Availability:
-          </ui5-label>
-          <div
-            class="ObjectStatus-objectStatus"
-          >
-            <span
-              class="ObjectStatus-textSuccess"
-            >
-              In Stock
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
       class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPage-anchorBar"
+      data-component-name="DynamicPageAnchorBar"
       style="top: 0px;"
     >
       <section
         class="DynamicPageAnchorBar-anchorBarActionButton"
+        data-component-name="DynamicPageAnchorBar"
         role="navigation"
       >
         <ui5-button
@@ -1110,8 +717,373 @@ exports[`DynamicPage with content 1`] = `
       </section>
     </div>
     <div
-      class="DynamicPage-contentContainer"
-      style="margin-top: 0px;"
+      class="DynamicPage-contentContainer StdExtPadding-Desktop"
+      data-component-name="DynamicPageContent"
+      style="margin-top: 0px; padding-bottom: 1rem;"
+    />
+    <footer
+      class="DynamicPage-footer"
+      data-component-name="DynamicPageFooter"
+    >
+      <ui5-bar
+        design="FloatingFooter"
+        ui5-bar=""
+      >
+        <span
+          class="Text-text"
+          slot="endContent"
+        >
+          Footer
+        </span>
+      </ui5-bar>
+    </footer>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`DynamicPage with content 1`] = `
+<DocumentFragment>
+  <div
+    class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundStandard"
+  >
+    <div
+      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container StdExtPadding-Desktop"
+      data-component-name="DynamicPageTitle"
+      data-not-clickable="false"
+    >
+      <div
+        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+        data-component-name="DynamicPageTitleBreadcrumbs"
+      >
+        <div
+          class="DynamicPageTitle-breadcrumbs"
+        >
+          <nav
+            aria-label="Breadcrumb Trail"
+          >
+            <ol
+              class="Breadcrumbs-list"
+            >
+              <li>
+                <ui5-link
+                  data-breadcrumb-index="0"
+                  design="Default"
+                  tabindex="0"
+                  ui5-link=""
+                >
+                  Home
+                </ui5-link>
+                <ui5-label
+                  aria-hidden="true"
+                  class="Breadcrumbs-separatorInline"
+                  ui5-label=""
+                >
+                  /
+                </ui5-label>
+              </li>
+              <li>
+                <ui5-link
+                  data-breadcrumb-index="1"
+                  design="Default"
+                  tabindex="-1"
+                  ui5-link=""
+                >
+                  Page 1
+                </ui5-link>
+                <ui5-label
+                  aria-hidden="true"
+                  class="Breadcrumbs-separatorInline"
+                  ui5-label=""
+                >
+                  /
+                </ui5-label>
+              </li>
+              <li>
+                <ui5-link
+                  data-breadcrumb-index="2"
+                  design="Default"
+                  tabindex="-1"
+                  ui5-link=""
+                >
+                  Page 2
+                </ui5-link>
+                <ui5-label
+                  aria-hidden="true"
+                  class="Breadcrumbs-separatorInline"
+                  ui5-label=""
+                >
+                  /
+                </ui5-label>
+              </li>
+              <li>
+                <ui5-link
+                  data-breadcrumb-index="3"
+                  design="Default"
+                  tabindex="-1"
+                  ui5-link=""
+                >
+                  Page 3
+                </ui5-link>
+                <ui5-label
+                  aria-hidden="true"
+                  class="Breadcrumbs-separatorInline"
+                  ui5-label=""
+                >
+                  /
+                </ui5-label>
+              </li>
+              <li>
+                <ui5-link
+                  data-breadcrumb-index="4"
+                  design="Default"
+                  tabindex="-1"
+                  ui5-link=""
+                >
+                  Page 4
+                </ui5-link>
+                <ui5-label
+                  aria-hidden="true"
+                  class="Breadcrumbs-separatorInline"
+                  ui5-label=""
+                >
+                  /
+                </ui5-label>
+              </li>
+              <li>
+                <ui5-link
+                  data-breadcrumb-index="5"
+                  design="Default"
+                  tabindex="-1"
+                  ui5-link=""
+                >
+                  Page 5
+                </ui5-link>
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+      <div
+        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap"
+        style="flex-grow: 1; width: 100%;"
+      >
+        <div
+          class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-titleMainSection"
+        >
+          <div
+            class="DynamicPageTitle-title"
+            data-component-name="DynamicPageTitleHeading"
+          >
+            <ui5-title
+              level="H2"
+              ui5-title=""
+            >
+              Header Title
+            </ui5-title>
+          </div>
+          <div
+            class="DynamicPageTitle-content"
+            data-component-name="DynamicPageTitleContent"
+            style="padding-left: 0.5rem;"
+          >
+            <ui5-badge
+              color-scheme="1"
+              ui5-badge=""
+            >
+              Status: OK
+            </ui5-badge>
+          </div>
+        </div>
+        <div
+          class="Toolbar-outerContainer Toolbar-clear Toolbar-active DynamicPageTitle-toolbar"
+          data-component-name="DynamicPageTitleActions"
+        >
+          <div
+            class="Toolbar-toolbar"
+            data-component-name="ToolbarContent"
+          >
+            <span
+              class="spacer"
+              style="flex-grow: 1; height: 100%; cursor: pointer;"
+            />
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
+              <ui5-button
+                design="Emphasized"
+                ui5-button=""
+              >
+                Edit
+              </ui5-button>
+            </div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
+              <ui5-button
+                design="Transparent"
+                ui5-button=""
+              >
+                Delete
+              </ui5-button>
+            </div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
+              <ui5-button
+                design="Transparent"
+                ui5-button=""
+              >
+                Copy
+              </ui5-button>
+            </div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
+              <ui5-button
+                design="Transparent"
+                ui5-button=""
+              >
+                Toggle Footer
+              </ui5-button>
+            </div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
+              <ui5-button
+                design="Transparent"
+                icon="action"
+                ui5-button=""
+              />
+            </div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
+              <div
+                aria-label="Separator"
+                class="ToolbarSeparator-separator"
+              />
+            </div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
+              <ui5-button
+                design="Transparent"
+                icon="full-screen"
+                ui5-button=""
+              />
+            </div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
+              <ui5-button
+                design="Transparent"
+                icon="exit-full-screen"
+                ui5-button=""
+              />
+            </div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
+              <ui5-button
+                design="Transparent"
+                icon="decline"
+                ui5-button=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+      >
+        <div
+          class="DynamicPageTitle-subTitleBottom"
+          data-component-name="DynamicPageTitleSubheading"
+        >
+          <ui5-label
+            ui5-label=""
+          >
+            This is a subheading
+          </ui5-label>
+        </div>
+      </div>
+    </div>
+    <div
+      class="DynamicPageHeader-header StdExtPadding-Desktop"
+      data-component-name="DynamicPageHeader"
+    >
+      <div
+        style="display: flex; flex-direction: column;"
+      >
+        <ui5-label
+          ui5-label=""
+        >
+          Location: Warehouse A
+        </ui5-label>
+        <ui5-label
+          ui5-label=""
+        >
+          Halway: 23L
+        </ui5-label>
+        <ui5-label
+          ui5-label=""
+        >
+          Rack: 34
+        </ui5-label>
+      </div>
+      <div
+        style="display: flex; flex-direction: column; margin-left: 2vw;"
+      >
+        <ui5-label
+          ui5-label=""
+        >
+          Availability:
+        </ui5-label>
+        <div
+          class="ObjectStatus-objectStatus"
+        >
+          <span
+            class="ObjectStatus-textSuccess"
+          >
+            In Stock
+          </span>
+        </div>
+      </div>
+    </div>
+    <div
+      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPage-anchorBar"
+      data-component-name="DynamicPageAnchorBar"
+      style="top: 0px;"
+    >
+      <section
+        class="DynamicPageAnchorBar-anchorBarActionButton"
+        data-component-name="DynamicPageAnchorBar"
+        role="navigation"
+      >
+        <ui5-button
+          aria-label="Expand Header"
+          class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonExpandable "
+          data-ui5wcr-dynamic-page-header-action=""
+          design="Default"
+          icon="slim-arrow-down"
+          title="Expand Header"
+          ui5-button=""
+        />
+      </section>
+    </div>
+    <div
+      class="DynamicPage-contentContainer StdExtPadding-Desktop"
+      data-component-name="DynamicPageContent"
+      style="margin-top: 0px; padding-bottom: 0px;"
     >
       <div
         class="Form-form Form-labelSpan4"
@@ -1780,115 +1752,121 @@ exports[`DynamicPage without content 1`] = `
     class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundStandard"
   >
     <div
-      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container"
+      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container StdExtPadding-Desktop"
       data-component-name="DynamicPageTitle"
+      data-not-clickable="false"
     >
       <div
-        class="DynamicPageTitle-breadcrumbs"
+        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+        data-component-name="DynamicPageTitleBreadcrumbs"
       >
-        <nav
-          aria-label="Breadcrumb Trail"
+        <div
+          class="DynamicPageTitle-breadcrumbs"
         >
-          <ol
-            class="Breadcrumbs-list"
+          <nav
+            aria-label="Breadcrumb Trail"
           >
-            <li>
-              <ui5-link
-                data-breadcrumb-index="0"
-                design="Default"
-                tabindex="0"
-                ui5-link=""
-              >
-                Home
-              </ui5-link>
-              <ui5-label
-                aria-hidden="true"
-                class="Breadcrumbs-separatorInline"
-                ui5-label=""
-              >
-                /
-              </ui5-label>
-            </li>
-            <li>
-              <ui5-link
-                data-breadcrumb-index="1"
-                design="Default"
-                tabindex="-1"
-                ui5-link=""
-              >
-                Page 1
-              </ui5-link>
-              <ui5-label
-                aria-hidden="true"
-                class="Breadcrumbs-separatorInline"
-                ui5-label=""
-              >
-                /
-              </ui5-label>
-            </li>
-            <li>
-              <ui5-link
-                data-breadcrumb-index="2"
-                design="Default"
-                tabindex="-1"
-                ui5-link=""
-              >
-                Page 2
-              </ui5-link>
-              <ui5-label
-                aria-hidden="true"
-                class="Breadcrumbs-separatorInline"
-                ui5-label=""
-              >
-                /
-              </ui5-label>
-            </li>
-            <li>
-              <ui5-link
-                data-breadcrumb-index="3"
-                design="Default"
-                tabindex="-1"
-                ui5-link=""
-              >
-                Page 3
-              </ui5-link>
-              <ui5-label
-                aria-hidden="true"
-                class="Breadcrumbs-separatorInline"
-                ui5-label=""
-              >
-                /
-              </ui5-label>
-            </li>
-            <li>
-              <ui5-link
-                data-breadcrumb-index="4"
-                design="Default"
-                tabindex="-1"
-                ui5-link=""
-              >
-                Page 4
-              </ui5-link>
-              <ui5-label
-                aria-hidden="true"
-                class="Breadcrumbs-separatorInline"
-                ui5-label=""
-              >
-                /
-              </ui5-label>
-            </li>
-            <li>
-              <ui5-link
-                data-breadcrumb-index="5"
-                design="Default"
-                tabindex="-1"
-                ui5-link=""
-              >
-                Page 5
-              </ui5-link>
-            </li>
-          </ol>
-        </nav>
+            <ol
+              class="Breadcrumbs-list"
+            >
+              <li>
+                <ui5-link
+                  data-breadcrumb-index="0"
+                  design="Default"
+                  tabindex="0"
+                  ui5-link=""
+                >
+                  Home
+                </ui5-link>
+                <ui5-label
+                  aria-hidden="true"
+                  class="Breadcrumbs-separatorInline"
+                  ui5-label=""
+                >
+                  /
+                </ui5-label>
+              </li>
+              <li>
+                <ui5-link
+                  data-breadcrumb-index="1"
+                  design="Default"
+                  tabindex="-1"
+                  ui5-link=""
+                >
+                  Page 1
+                </ui5-link>
+                <ui5-label
+                  aria-hidden="true"
+                  class="Breadcrumbs-separatorInline"
+                  ui5-label=""
+                >
+                  /
+                </ui5-label>
+              </li>
+              <li>
+                <ui5-link
+                  data-breadcrumb-index="2"
+                  design="Default"
+                  tabindex="-1"
+                  ui5-link=""
+                >
+                  Page 2
+                </ui5-link>
+                <ui5-label
+                  aria-hidden="true"
+                  class="Breadcrumbs-separatorInline"
+                  ui5-label=""
+                >
+                  /
+                </ui5-label>
+              </li>
+              <li>
+                <ui5-link
+                  data-breadcrumb-index="3"
+                  design="Default"
+                  tabindex="-1"
+                  ui5-link=""
+                >
+                  Page 3
+                </ui5-link>
+                <ui5-label
+                  aria-hidden="true"
+                  class="Breadcrumbs-separatorInline"
+                  ui5-label=""
+                >
+                  /
+                </ui5-label>
+              </li>
+              <li>
+                <ui5-link
+                  data-breadcrumb-index="4"
+                  design="Default"
+                  tabindex="-1"
+                  ui5-link=""
+                >
+                  Page 4
+                </ui5-link>
+                <ui5-label
+                  aria-hidden="true"
+                  class="Breadcrumbs-separatorInline"
+                  ui5-label=""
+                >
+                  /
+                </ui5-label>
+              </li>
+              <li>
+                <ui5-link
+                  data-breadcrumb-index="5"
+                  design="Default"
+                  tabindex="-1"
+                  ui5-link=""
+                >
+                  Page 5
+                </ui5-link>
+              </li>
+            </ol>
+          </nav>
+        </div>
       </div>
       <div
         class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap"
@@ -1899,6 +1877,7 @@ exports[`DynamicPage without content 1`] = `
         >
           <div
             class="DynamicPageTitle-title"
+            data-component-name="DynamicPageTitleHeading"
           >
             <ui5-title
               level="H2"
@@ -1909,36 +1888,33 @@ exports[`DynamicPage without content 1`] = `
           </div>
           <div
             class="DynamicPageTitle-content"
+            data-component-name="DynamicPageTitleContent"
+            style="padding-left: 0.5rem;"
           >
-            <div
-              class="Toolbar-outerContainer Toolbar-clear"
+            <ui5-badge
+              color-scheme="1"
+              ui5-badge=""
             >
-              <div
-                class="Toolbar-toolbar"
-              >
-                <div>
-                  <ui5-badge
-                    color-scheme="1"
-                    ui5-badge=""
-                  >
-                    Status: OK
-                  </ui5-badge>
-                </div>
-              </div>
-            </div>
+              Status: OK
+            </ui5-badge>
           </div>
         </div>
         <div
-          class="Toolbar-outerContainer Toolbar-clear"
+          class="Toolbar-outerContainer Toolbar-clear Toolbar-active DynamicPageTitle-toolbar"
+          data-component-name="DynamicPageTitleActions"
         >
           <div
             class="Toolbar-toolbar"
+            data-component-name="ToolbarContent"
           >
             <span
               class="spacer"
-              style="flex-grow: 1;"
+              style="flex-grow: 1; height: 100%; cursor: pointer;"
             />
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Emphasized"
                 ui5-button=""
@@ -1946,7 +1922,10 @@ exports[`DynamicPage without content 1`] = `
                 Edit
               </ui5-button>
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Transparent"
                 ui5-button=""
@@ -1954,7 +1933,10 @@ exports[`DynamicPage without content 1`] = `
                 Delete
               </ui5-button>
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Transparent"
                 ui5-button=""
@@ -1962,7 +1944,10 @@ exports[`DynamicPage without content 1`] = `
                 Copy
               </ui5-button>
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Transparent"
                 ui5-button=""
@@ -1970,34 +1955,49 @@ exports[`DynamicPage without content 1`] = `
                 Toggle Footer
               </ui5-button>
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Transparent"
                 icon="action"
                 ui5-button=""
               />
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <div
                 aria-label="Separator"
                 class="ToolbarSeparator-separator"
               />
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Transparent"
                 icon="full-screen"
                 ui5-button=""
               />
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Transparent"
                 icon="exit-full-screen"
                 ui5-button=""
               />
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Transparent"
                 icon="decline"
@@ -2011,7 +2011,8 @@ exports[`DynamicPage without content 1`] = `
         class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
       >
         <div
-          class="DynamicPageTitle-subTitle"
+          class="DynamicPageTitle-subTitleBottom"
+          data-component-name="DynamicPageTitleSubheading"
         >
           <ui5-label
             ui5-label=""
@@ -2022,57 +2023,55 @@ exports[`DynamicPage without content 1`] = `
       </div>
     </div>
     <div
-      class="DynamicPageHeader-header"
+      class="DynamicPageHeader-header StdExtPadding-Desktop"
       data-component-name="DynamicPageHeader"
     >
       <div
-        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStart FlexBox-flexWrapNoWrap"
+        style="display: flex; flex-direction: column;"
       >
-        <div
-          style="display: flex; flex-direction: column;"
+        <ui5-label
+          ui5-label=""
         >
-          <ui5-label
-            ui5-label=""
-          >
-            Location: Warehouse A
-          </ui5-label>
-          <ui5-label
-            ui5-label=""
-          >
-            Halway: 23L
-          </ui5-label>
-          <ui5-label
-            ui5-label=""
-          >
-            Rack: 34
-          </ui5-label>
-        </div>
-        <div
-          style="display: flex; flex-direction: column; margin-left: 2vw;"
+          Location: Warehouse A
+        </ui5-label>
+        <ui5-label
+          ui5-label=""
         >
-          <ui5-label
-            ui5-label=""
+          Halway: 23L
+        </ui5-label>
+        <ui5-label
+          ui5-label=""
+        >
+          Rack: 34
+        </ui5-label>
+      </div>
+      <div
+        style="display: flex; flex-direction: column; margin-left: 2vw;"
+      >
+        <ui5-label
+          ui5-label=""
+        >
+          Availability:
+        </ui5-label>
+        <div
+          class="ObjectStatus-objectStatus"
+        >
+          <span
+            class="ObjectStatus-textSuccess"
           >
-            Availability:
-          </ui5-label>
-          <div
-            class="ObjectStatus-objectStatus"
-          >
-            <span
-              class="ObjectStatus-textSuccess"
-            >
-              In Stock
-            </span>
-          </div>
+            In Stock
+          </span>
         </div>
       </div>
     </div>
     <div
       class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPage-anchorBar"
+      data-component-name="DynamicPageAnchorBar"
       style="top: 0px;"
     >
       <section
         class="DynamicPageAnchorBar-anchorBarActionButton"
+        data-component-name="DynamicPageAnchorBar"
         role="navigation"
       >
         <ui5-button
@@ -2087,8 +2086,9 @@ exports[`DynamicPage without content 1`] = `
       </section>
     </div>
     <div
-      class="DynamicPage-contentContainer"
-      style="margin-top: 0px;"
+      class="DynamicPage-contentContainer StdExtPadding-Desktop"
+      data-component-name="DynamicPageContent"
+      style="margin-top: 0px; padding-bottom: 0px;"
     />
   </div>
 </DocumentFragment>

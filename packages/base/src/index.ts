@@ -10,12 +10,11 @@ import { StyleClassHelper } from './lib/StyleClassHelper';
 import { ThemingParameters } from './lib/ThemingParameters';
 import { useConsolidatedRef } from './lib/useConsolidatedRef';
 import { usePassThroughHtmlProps } from './lib/usePassThroughHtmlProps';
-import { deprecationNotice, enrichEventWithDetails, getScrollBarWidth } from './lib/Utils';
+import { deprecationNotice, enrichEventWithDetails } from './lib/Utils';
 
 export {
   StyleClassHelper,
   deprecationNotice,
-  getScrollBarWidth,
   Logger,
   LOG_LEVEL,
   useConsolidatedRef,

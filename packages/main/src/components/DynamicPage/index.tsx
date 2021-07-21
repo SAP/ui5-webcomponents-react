@@ -1,3 +1,4 @@
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { createUseStyles } from 'react-jss';
 import {
   useConsolidatedRef,
@@ -6,27 +7,28 @@ import {
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
-import { GlobalStyleClasses } from '@ui5/webcomponents-react/lib/GlobalStyleClasses';
-import { PageBackgroundDesign } from '@ui5/webcomponents-react/lib/PageBackgroundDesign';
 import React, {
+  cloneElement,
+  FC,
   forwardRef,
   ReactElement,
   ReactNode,
   ReactNodeArray,
   Ref,
-  FC,
-  cloneElement,
   RefObject,
-  useRef,
   useCallback,
-  useState,
-  useEffect
+  useEffect,
+  useRef,
+  useState
 } from 'react';
+import { useResponsiveContentPadding } from '../../internal/useResponsiveContentPadding';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
-import { useObserveHeights } from '../ObjectPage/useObserveHeights';
-import styles from './DynamicPage.jss';
+import { useObserveHeights } from '../../internal/useObserveHeights';
+import { styles } from './DynamicPage.jss';
+import { PageBackgroundDesign } from '@ui5/webcomponents-react/lib/PageBackgroundDesign';
+import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { isIE } from '@ui5/webcomponents-react-base/lib/Device';
+import { GlobalStyleClasses } from '@ui5/webcomponents-react/lib/GlobalStyleClasses';
 
 export interface DynamicPageProps extends Omit<CommonProps, 'title'> {
   /**
@@ -34,11 +36,11 @@ export interface DynamicPageProps extends Omit<CommonProps, 'title'> {
    */
   backgroundDesign?: PageBackgroundDesign;
   /**
-   * Determines whether the content header is shown.
+   * Determines whether the `headerContent` is shown.
    */
   alwaysShowContentHeader?: boolean;
   /**
-   * Determines whether the header button is shown.
+   * Determines whether the expand/collapse `headerContent` button is shown.
    */
   showHideHeaderButton?: boolean;
   /**
@@ -46,13 +48,23 @@ export interface DynamicPageProps extends Omit<CommonProps, 'title'> {
    */
   headerContentPinnable?: boolean;
   /**
-   * React element which defines the title.
+   * Defines the the upper, always static, title section of the `DynamicPage`.
+   *
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `DynamicPageTitle` in order to preserve the intended design.
    */
-  title?: ReactElement;
+  headerTitle?: ReactElement;
   /**
-   * React element which defines the header content.
+   * Defines the dynamic header section of the `DynamicPage`.
+   *
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `DynamicPageHeader` in order to preserve the intended design.
    */
-  header?: ReactElement;
+  headerContent?: ReactElement;
+  /**
+   * React element which defines the footer content.
+   *
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `Bar` with `design={BarDesign.FloatingFooter}` in order to preserve the intended design.
+   */
+  footer?: ReactElement;
   /**
    * React element or node array which defines the content.
    */
@@ -69,6 +81,7 @@ enum HEADER_STATES {
   VISIBLE = 'VISIBLE',
   HIDDEN = 'HIDDEN'
 }
+
 const useStyles = createUseStyles(styles, { name: 'DynamicPage' });
 /**
  * The dynamic page is a generic layout control designed to support various floorplans and use cases.
@@ -79,8 +92,8 @@ const useStyles = createUseStyles(styles, { name: 'DynamicPage' });
  */
 const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, ref: Ref<HTMLDivElement>) => {
   const {
-    title,
-    header,
+    headerTitle,
+    headerContent,
     tooltip,
     style,
     backgroundDesign,
@@ -88,9 +101,10 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
     headerContentPinnable,
     alwaysShowContentHeader,
     children,
-    className
+    className,
+    footer
   } = props;
-  const passThroughProps = usePassThroughHtmlProps(props);
+  const passThroughProps = usePassThroughHtmlProps(props, ['onScroll']);
 
   const classes = useStyles();
   const dynamicPageClasses = StyleClassHelper.of(classes.dynamicPage, GlobalStyleClasses.sapScrollBar);
@@ -99,8 +113,10 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
 
   const anchorBarRef: RefObject<HTMLDivElement> = useRef();
   const dynamicPageRef: RefObject<HTMLDivElement> = useConsolidatedRef(ref);
-  const topHeaderRef: RefObject<HTMLDivElement> = useRef();
-  const headerContentRef: RefObject<HTMLDivElement> = useRef();
+  //@ts-ignore
+  const topHeaderRef: RefObject<HTMLDivElement> = useConsolidatedRef(headerTitle?.ref);
+  //@ts-ignore
+  const headerContentRef: RefObject<HTMLDivElement> = useConsolidatedRef(headerContent?.ref);
 
   const [headerState, setHeaderState] = useState<HEADER_STATES>(
     alwaysShowContentHeader ? HEADER_STATES.VISIBLE_PINNED : isIE() ? HEADER_STATES.VISIBLE : HEADER_STATES.AUTO
@@ -134,9 +150,8 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
   }, [dynamicPageRef, headerState]);
 
   const onToggleHeaderContentVisibility = useCallback(
-    (e, element?: Element | HTMLElement) => {
-      const srcElement = element ?? e.target;
-      const shouldHideHeader = srcElement.icon === 'slim-arrow-up';
+    (e) => {
+      const shouldHideHeader = !e.detail.visible;
       setHeaderState((oldState) => {
         if (oldState === HEADER_STATES.VISIBLE_PINNED || oldState === HEADER_STATES.HIDDEN_PINNED) {
           return shouldHideHeader ? HEADER_STATES.HIDDEN_PINNED : HEADER_STATES.VISIBLE_PINNED;
@@ -156,11 +171,12 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
     [topHeaderRef]
   );
 
-  const onToggleHeaderContent = (e) => {
-    if (e.target.tagName === 'DIV') {
-      onToggleHeaderContentVisibility(e, anchorBarRef.current.children.item(0).children.item(0));
-    }
-  };
+  const onToggleHeaderContent = useCallback(
+    (e) => {
+      onToggleHeaderContentVisibility(enrichEventWithDetails(e, { visible: !headerContentHeight }));
+    },
+    [headerContentHeight]
+  );
 
   const handleHeaderPinnedChange = useCallback(
     (headerWillPin) => {
@@ -185,26 +201,52 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
   if (isIE()) {
     anchorBarClasses.put(classes.iEClass);
   }
+  const responsivePaddingClass = useResponsiveContentPadding(dynamicPageRef.current);
+
+  const onDynamicPageScroll = useCallback(
+    (e) => {
+      if (typeof props?.onScroll === 'function') {
+        props.onScroll(e);
+      }
+      if (headerState === HEADER_STATES.HIDDEN_PINNED && e.target.scrollTop === 0) {
+        setHeaderState(HEADER_STATES.VISIBLE_PINNED);
+      }
+    },
+    [props?.onScroll, headerState]
+  );
+
   return (
     <div
       ref={dynamicPageRef}
       title={tooltip}
       className={dynamicPageClasses.toString()}
       style={style}
+      onScroll={onDynamicPageScroll}
       {...passThroughProps}
     >
-      {title &&
-        cloneElement(title, {
+      {headerTitle &&
+        cloneElement(headerTitle, {
+          'data-not-clickable':
+            (alwaysShowContentHeader && !headerContentPinnable) ||
+            !headerContent ||
+            (!showHideHeaderButton && !headerContentPinnable),
           ref: topHeaderRef,
+          className: headerTitle?.props?.className
+            ? `${responsivePaddingClass} ${headerTitle.props.className}`
+            : responsivePaddingClass,
           onToggleHeaderContentVisibility: onToggleHeaderContent
         })}
-      {header &&
-        cloneElement(header, {
+      {headerContent &&
+        cloneElement(headerContent, {
           ref: headerContentRef,
+          className: headerContent.props.className
+            ? `${responsivePaddingClass} ${headerContent.props.className}`
+            : responsivePaddingClass,
           headerPinned: headerState === HEADER_STATES.VISIBLE_PINNED || headerState === HEADER_STATES.VISIBLE,
           topHeaderHeight
         })}
       <FlexBox
+        data-component-name="DynamicPageAnchorBar"
         className={anchorBarClasses.className}
         ref={anchorBarRef}
         style={{
@@ -217,7 +259,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
         <DynamicPageAnchorBar
           headerContentPinnable={headerContentPinnable}
           showHideHeaderButton={showHideHeaderButton}
-          headerContentHeight={headerContentHeight}
+          headerContentVisible={!!headerContentHeight}
           onToggleHeaderContentVisibility={onToggleHeaderContentVisibility}
           setHeaderPinned={handleHeaderPinnedChange}
           headerPinned={headerState === HEADER_STATES.VISIBLE_PINNED || headerState === HEADER_STATES.HIDDEN_PINNED}
@@ -236,11 +278,20 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
         />
       )}
       <div
-        className={classes.contentContainer}
-        style={{ marginTop: isIE() ? `${headerContentHeight + topHeaderHeight + 34}px` : 0 }}
+        data-component-name="DynamicPageContent"
+        className={`${classes.contentContainer} ${responsivePaddingClass}`}
+        style={{
+          marginTop: isIE() ? `${headerContentHeight + topHeaderHeight + 34}px` : 0,
+          paddingBottom: footer ? '1rem' : 0
+        }}
       >
         {children}
       </div>
+      {footer && (
+        <footer className={classes.footer} data-component-name="DynamicPageFooter">
+          {footer}
+        </footer>
+      )}
     </div>
   );
 });

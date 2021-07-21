@@ -10,12 +10,16 @@ exports[`FilterBar Render without crashing - default props 1`] = `
     >
       <div
         class="Toolbar-toolbar"
+        data-component-name="ToolbarContent"
       >
         <span
           class="spacer"
           style="flex-grow: 1;"
         />
-        <div>
+        <div
+          class="Toolbar-childContainer"
+          data-component-name="ToolbarChildContainer"
+        >
           <ui5-button
             class="FilterBar-showFiltersBtn"
             design="Transparent"
@@ -88,8 +92,12 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
     >
       <div
         class="Toolbar-toolbar"
+        data-component-name="ToolbarContent"
       >
-        <div>
+        <div
+          class="Toolbar-childContainer"
+          data-component-name="ToolbarChildContainer"
+        >
           <div
             class="VariantManagement-container"
           >
@@ -107,13 +115,19 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
             />
           </div>
         </div>
-        <div>
+        <div
+          class="Toolbar-childContainer"
+          data-component-name="ToolbarChildContainer"
+        >
           <div
             aria-label="Separator"
             class="ToolbarSeparator-separator"
           />
         </div>
-        <div>
+        <div
+          class="Toolbar-childContainer"
+          data-component-name="ToolbarChildContainer"
+        >
           <div>
             <ui5-input
               placeholder="Search"
@@ -127,7 +141,10 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
           class="spacer"
           style="flex-grow: 1;"
         />
-        <div>
+        <div
+          class="Toolbar-childContainer"
+          data-component-name="ToolbarChildContainer"
+        >
           <ui5-button
             design="Transparent"
             ui5-button=""
@@ -135,7 +152,10 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
             Clear
           </ui5-button>
         </div>
-        <div>
+        <div
+          class="Toolbar-childContainer"
+          data-component-name="ToolbarChildContainer"
+        >
           <ui5-button
             design="Transparent"
             ui5-button=""
@@ -143,7 +163,10 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
             Restore
           </ui5-button>
         </div>
-        <div>
+        <div
+          class="Toolbar-childContainer"
+          data-component-name="ToolbarChildContainer"
+        >
           <ui5-button
             class="FilterBar-showFiltersBtn"
             design="Transparent"
@@ -152,7 +175,10 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
             Hide Filter Bar
           </ui5-button>
         </div>
-        <div>
+        <div
+          class="Toolbar-childContainer"
+          data-component-name="ToolbarChildContainer"
+        >
           <ui5-button
             design="Default"
             ui5-button=""
@@ -160,7 +186,10 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
             Filters (1337)
           </ui5-button>
         </div>
-        <div>
+        <div
+          class="Toolbar-childContainer"
+          data-component-name="ToolbarChildContainer"
+        >
           <ui5-button
             design="Emphasized"
             ui5-button=""
@@ -446,12 +475,16 @@ exports[`FilterBar Toggle FilterBar filters 1`] = `
     >
       <div
         class="Toolbar-toolbar"
+        data-component-name="ToolbarContent"
       >
         <span
           class="spacer"
           style="flex-grow: 1;"
         />
-        <div>
+        <div
+          class="Toolbar-childContainer"
+          data-component-name="ToolbarChildContainer"
+        >
           <ui5-button
             class="FilterBar-showFiltersBtn"
             design="Transparent"
