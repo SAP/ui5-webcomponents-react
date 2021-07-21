@@ -1,15 +1,15 @@
-import { debounce } from '@ui5/webcomponents-react-base/dist/Utils';
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
 import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
+import { useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
+import { debounce } from '@ui5/webcomponents-react-base/dist/Utils';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
+import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';
 import { Toolbar } from '@ui5/webcomponents-react/dist/Toolbar';
 import { ToolbarDesign } from '@ui5/webcomponents-react/dist/ToolbarDesign';
 import { ToolbarSeparator } from '@ui5/webcomponents-react/dist/ToolbarSeparator';
-import { ToolbarSpacer } from '@ui5/webcomponents-react/dist/ToolbarSpacer';
-import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';
 import { ToolbarStyle } from '@ui5/webcomponents-react/dist/ToolbarStyle';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import React, {
@@ -29,7 +29,6 @@ import { createUseStyles } from 'react-jss';
 import { stopPropagation } from '../../internal/stopPropagation';
 import { ActionsSpacer } from './ActionsSpacer';
 import { DynamicPageTitleStyles } from './DynamicPageTitle.jss';
-import { useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
 
 export interface DynamicPageTitleProps extends CommonProps {
   /**
@@ -143,12 +142,12 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
           : titleContainer.borderBoxSize;
         // Safari doesn't implement `borderBoxSize`
         const titleContainerWidth = borderBoxSize?.inlineSize ?? titleContainer.target.getBoundingClientRect().width;
-        if (titleContainerWidth < 1280 && !showNavigationInTopArea === false && isMounted.current) {
-          setShowNavigationInTopArea(false);
-        } else if (titleContainerWidth >= 1280 && !showNavigationInTopArea === true && isMounted.current) {
+        if (titleContainerWidth < 1280 && !showNavigationInTopArea === true && isMounted.current) {
           setShowNavigationInTopArea(true);
+        } else if (titleContainerWidth >= 1280 && !showNavigationInTopArea === false && isMounted.current) {
+          setShowNavigationInTopArea(false);
         }
-      }, 300)
+      }, 150)
     );
     if (dynamicPageTitleRef.current) {
       observer.observe(dynamicPageTitleRef.current);
@@ -172,17 +171,23 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
     >
       {(breadcrumbs || (navigationActions && showNavigationInTopArea)) && (
         <FlexBox justifyContent={FlexBoxJustifyContent.SpaceBetween} data-component-name="DynamicPageTitleBreadcrumbs">
-          <div className={classes.breadcrumbs} onClick={stopPropagation}>
-            {breadcrumbs}
-          </div>
+          {breadcrumbs && (
+            <div className={classes.breadcrumbs} onClick={stopPropagation}>
+              {breadcrumbs}
+            </div>
+          )}
           {showNavigationInTopArea && (
-            <FlexBox
-              alignItems={FlexBoxAlignItems.End}
+            <Toolbar
+              design={ToolbarDesign.Auto}
+              toolbarStyle={ToolbarStyle.Clear}
+              active
+              className={classes.toolbar}
               onClick={stopPropagation}
               data-component-name="DynamicPageTitleNavActions"
             >
+              <ActionsSpacer onClick={onHeaderClick} noHover={props?.['data-not-clickable']} />
               {navigationActions}
-            </FlexBox>
+            </Toolbar>
           )}
         </FlexBox>
       )}
