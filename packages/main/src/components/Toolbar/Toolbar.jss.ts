@@ -3,6 +3,7 @@ import { CssSizeVariables } from '@ui5/webcomponents-react-base/dist/CssSizeVari
 
 export const styles = {
   outerContainer: {
+    boxSizing: 'border-box',
     width: '100%',
     height: CssSizeVariables.sapWcrToolbarHeight,
     position: 'relative',
@@ -71,5 +72,6 @@ export const styles = {
     padding: CssSizeVariables.sapWcrToolbarPopoverContentPadding,
     display: 'flex',
     flexDirection: 'column'
-  }
+  },
+  childContainer: { display: 'flex' }
 };
