@@ -7,7 +7,24 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package ui5-webcomponents-react
 
+### Downport
 
+* **ObjectPage & DynamicPage:** [58719ce](https://github.com/SAP/ui5-webcomponents-react/commit/58719ce8e69fe99e777f423ea611e2897f20f379), [0ddeec7](https://github.com/SAP/ui5-webcomponents-react/pull/1848/commits/0ddeec7b48bcdcb59bc435fd663f6f8c1be9754f), [02fa5a1](https://github.com/SAP/ui5-webcomponents-react/pull/1848/commits/02fa5a169ef9773b653770b6963a0d14614b571e), [ea4cd60](https://github.com/SAP/ui5-webcomponents-react/commit/ea4cd60491eb1ba05afbfccf0409f8b0a1085c0c), [9bc3722](https://github.com/SAP/ui5-webcomponents-react/commit/9bc37220edb40f2c4e33415bc11b017b741b8e00), [ff55e08](https://github.com/SAP/ui5-webcomponents-react/commit/ff55e08eaac7b82e64184df16e90f494d54083d5), [79c43f7](https://github.com/SAP/ui5-webcomponents-react/commit/79c43f77c322d2b6bc8b14471bf4a8e6d4e82b5c)
+* **Toolbar:** [93a07cf](https://github.com/SAP/ui5-webcomponents-react/pull/1848/commits/93a07cf7f419eb120f9056febe5fd569390159f3)
+
+
+### BREAKING CHANGES
+
+* **DynamicPageHeader:** `children` are no longer displayed as `flex` items to support other display types like `grid`. To align children you now need to add the container (like `FlexBox`) and CSS yourself.
+* **DynamicPageTitle:** `subHeading` has been renamed. Please use `subheading` instead.
+* **DynamicPage:** `header` has been renamed. Please use `headerContent` instead.
+* **DynamicPage:** `title` has been renamed. Please use `headerTitle` instead.
+* **ObjectPage:** `title` has been renamed to `headerTitle` and is now defining the upper, static, title section of the `ObjectPage`. It expects to receive the `DynamicPageTitle` component.
+* **ObjectPage:** `noHeader` has been removed. It is now sufficient not to set `headerTitle` and `headerContent` to achieve the same behavior.
+* **ObjectPage:** `title`, `subTitle`, `headerActions`, `breadcrumbs` and `keyInfos` should now be passed to the corresponding `DynamicPageTitle` props.
+* **ObjectPageSection:** `title` and `titleUppercase` have been renamed. Please use `heading` and `headingUppercase` instead.
+* **ObjectPageSubSection:** `title` has been renamed. Please use `heading` instead.
+* **getScrollBarWidth** has been removed.
 
 
 
