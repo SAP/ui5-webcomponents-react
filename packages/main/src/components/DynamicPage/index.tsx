@@ -1,4 +1,4 @@
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { createUseStyles } from 'react-jss';
 import {
   useConsolidatedRef,
