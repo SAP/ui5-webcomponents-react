@@ -1,13 +1,15 @@
-import { render, screen } from '@shared/tests';
+import { fireEvent, render, screen, waitFor } from '@shared/tests';
 import * as React from 'react';
 import { complexDataSet } from '../../resources/DemoProps';
 import { ColumnChartWithTrend } from './ColumnChartWithTrend';
 import { createPassThroughPropsTest } from '@shared/tests/utils';
 
 describe('ColumnChart', () => {
-  test('Renders with data', () => {
+  test('Renders with data', async () => {
+    const onClick = jest.fn();
     const { container, asFragment } = render(
       <ColumnChartWithTrend
+        onClick={onClick}
         dataset={complexDataSet}
         dimensions={[
           {
@@ -35,10 +37,11 @@ describe('ColumnChart', () => {
     const responsiveContainers = container.querySelectorAll('div.recharts-responsive-container');
     expect(responsiveContainers.length).toBe(2);
 
-    const trendLineContainer = container.querySelector('g.recharts-line');
-    expect(trendLineContainer).toBeInTheDocument();
-    const trendLine = trendLineContainer.querySelector('path');
+    const trendLineChartContainer = container.querySelector('g.recharts-line');
+    expect(trendLineChartContainer).toBeInTheDocument();
+    const trendLine = trendLineChartContainer.querySelector('path');
     expect(trendLine).not.toBeNull();
+    expect(trendLine.getAttribute('d')[0]).toBe('M');
 
     const columnChartContainer = container.querySelector('g.recharts-bar');
     expect(columnChartContainer).toBeInTheDocument();
@@ -46,6 +49,12 @@ describe('ColumnChart', () => {
     expect(barContainer.length).toBeGreaterThanOrEqual(1);
     const singleBars = columnChartContainer.querySelectorAll('g.recharts-bar-rectangle');
     expect(singleBars.length).toBeGreaterThanOrEqual(1);
+
+    fireEvent.click(columnChartContainer);
+    expect(onClick).toHaveBeenCalledTimes(1);
+
+    fireEvent.click(trendLineChartContainer);
+    expect(onClick).toHaveBeenCalledTimes(2);
 
     expect(asFragment()).toMatchSnapshot();
   });

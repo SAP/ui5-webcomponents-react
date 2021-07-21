@@ -225,6 +225,7 @@ exports[`ColumnChart Renders with data 1`] = `
     style="display: flex; flex-direction: column;"
   >
     <div
+      class="has-click-handler"
       style="font-family: var(--sapFontFamily); width: 100%; height: calc(undefined * 0.2); position: relative;"
     >
       <div
@@ -301,6 +302,7 @@ exports[`ColumnChart Renders with data 1`] = `
       </div>
     </div>
     <div
+      class="has-click-handler"
       style="font-family: var(--sapFontFamily); width: 100%; height: calc(undefined * 0.8); position: relative;"
     >
       <div
@@ -308,7 +310,7 @@ exports[`ColumnChart Renders with data 1`] = `
         style="width: 400px; height: 400px;"
       >
         <div
-          class="recharts-wrapper"
+          class="recharts-wrapper has-click-handler"
           style="position: relative; cursor: default; width: 400px; height: 400px;"
         >
           <svg
