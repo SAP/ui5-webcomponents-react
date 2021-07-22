@@ -7,8 +7,10 @@ import { createPassThroughPropsTest } from '@shared/tests/utils';
 describe('ColumnChart', () => {
   test('Renders with data', async () => {
     const onClick = jest.fn();
+    const onLegendClick = jest.fn();
     const { container, asFragment } = render(
       <ColumnChartWithTrend
+        onLegendClick={onLegendClick}
         onClick={onClick}
         dataset={complexDataSet}
         dimensions={[
@@ -50,11 +52,15 @@ describe('ColumnChart', () => {
     const singleBars = columnChartContainer.querySelectorAll('g.recharts-bar-rectangle');
     expect(singleBars.length).toBeGreaterThanOrEqual(1);
 
+    const legendContainer = responsiveContainers[1].querySelector('li.recharts-legend-item');
+    fireEvent.click(legendContainer);
+    expect(onLegendClick).toHaveBeenCalledTimes(1);
+
     fireEvent.click(columnChartContainer);
-    expect(onClick).toHaveBeenCalledTimes(1);
+    expect(onClick).toHaveBeenCalledTimes(2);
 
     fireEvent.click(trendLineChartContainer);
-    expect(onClick).toHaveBeenCalledTimes(2);
+    expect(onClick).toHaveBeenCalledTimes(3);
 
     expect(asFragment()).toMatchSnapshot();
   });
