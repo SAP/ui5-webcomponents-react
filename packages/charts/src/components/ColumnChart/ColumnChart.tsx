@@ -7,7 +7,7 @@ import { ChartDataLabel } from '@ui5/webcomponents-react-charts/dist/components/
 import { XAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/XAxisTicks';
 import { YAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/YAxisTicks';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/dist/useLegendItemClick';
-import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
+import React, { ComponentType, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import {
   Bar as Column,
   BarChart as ColumnChartLib,
@@ -93,6 +93,11 @@ export interface ColumnChartProps extends IChartBaseProps {
    *
    */
   measures: MeasureConfig[];
+  /**
+   * Injects a custom loading placeholder which is used when no data are available. If the property isn't set the
+   * standard loading placeholder of the specific chart is used.
+   */
+  chartPlaceholder?: ComponentType;
 }
 
 const dimensionDefaults = {
@@ -126,7 +131,9 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
     style,
     className,
     tooltip,
-    slot
+    slot,
+    chartPlaceholder,
+    syncId
   } = props;
 
   const chartConfig = useMemo(() => {
@@ -203,7 +210,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
     <ChartContainer
       dataset={dataset}
       loading={loading}
-      Placeholder={ColumnChartPlaceholder}
+      Placeholder={chartPlaceholder ?? ColumnChartPlaceholder}
       ref={chartRef}
       style={style}
       className={className}
@@ -213,6 +220,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
       {...passThroughProps}
     >
       <ColumnChartLib
+        syncId={syncId}
         onClick={onClickInternal}
         stackOffset="sign"
         margin={marginChart}
