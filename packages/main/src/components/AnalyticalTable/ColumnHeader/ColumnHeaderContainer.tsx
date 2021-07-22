@@ -113,6 +113,7 @@ export const ColumnHeaderContainer = forwardRef((props: ColumnHeaderContainerPro
             )}
             <ColumnHeader
               {...rest}
+              columnIndex={virtualColumn.index}
               onSort={onSort}
               onGroupBy={onGroupByChanged}
               onDragStart={onDragStart}

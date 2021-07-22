@@ -44,6 +44,7 @@ export interface ColumnHeaderProps {
   isLastColumn: boolean;
   virtualColumn: VirtualItem;
   isRtl: boolean;
+  columnIndex: number;
 }
 
 const styles = {
@@ -105,7 +106,8 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     dragOver,
     role,
     virtualColumn,
-    isRtl
+    isRtl,
+    columnIndex
   } = props;
 
   const isFiltered = column.filterValue && column.filterValue.length > 0;
@@ -170,6 +172,8 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
       }}
     >
       <div
+        data-row-index={0}
+        data-column-index={columnIndex}
         id={id}
         className={className}
         style={{

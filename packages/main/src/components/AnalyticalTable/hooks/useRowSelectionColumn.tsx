@@ -38,7 +38,9 @@ const Header = ({
   if (selectionMode === TableSelectionMode.SINGLE_SELECT) {
     return null;
   }
-  return <CheckBox {...getToggleAllRowsSelectedProps()} style={customCheckBoxStyling} onChange={onChange} />;
+  return (
+    <CheckBox {...getToggleAllRowsSelectedProps()} style={customCheckBoxStyling} onChange={onChange} tabIndex={-1} />
+  );
 };
 
 const Cell = ({ row, webComponentsReactProperties: { selectionBehavior, selectionMode } }) => {
@@ -59,6 +61,7 @@ const Cell = ({ row, webComponentsReactProperties: { selectionBehavior, selectio
   return (
     <CheckBox
       {...row.getToggleRowSelectedProps()}
+      tabIndex={-1}
       onChange={handleCellClick}
       style={customCheckBoxStyling}
       data-name="internal_selection_column"

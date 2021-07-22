@@ -47,6 +47,7 @@ import { TablePlaceholder } from './defaults/LoadingComponent/TablePlaceholder';
 import { DefaultNoDataComponent } from './defaults/NoDataComponent';
 import { useDragAndDrop } from './hooks/useDragAndDrop';
 import { useDynamicColumnWidths } from './hooks/useDynamicColumnWidths';
+import { useKeyboardNavigation } from './hooks/useKeyboardNavigation';
 import { usePopIn } from './hooks/usePopIn';
 import { useRowHighlight } from './hooks/useRowHighlight';
 import { useRowNavigationIndicators } from './hooks/useRowNavigationIndicator';
@@ -455,6 +456,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     useToggleRowExpand,
     usePopIn,
     useVisibleColumnsWidth,
+    useKeyboardNavigation,
     ...tableHooks
   );
 
@@ -698,6 +700,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   if (withNavigationHighlight) {
     tableClasses.put(classes.hasNavigationIndicator);
   }
+
   return (
     <div className={className} style={inlineStyle} title={tooltip} ref={analyticalTableRef} {...passThroughProps}>
       {title && <TitleBar ref={titleBarRef}>{title}</TitleBar>}
@@ -705,10 +708,12 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       <FlexBox>
         <div
           {...getTableProps()}
+          tabIndex={0}
           role="grid"
           aria-rowcount={rows.length}
           aria-colcount={tableInternalColumns.length}
           data-per-page={internalVisibleRowCount}
+          data-component-name="AnalyticalTableContainer"
           ref={tableRef}
           className={tableClasses.className}
         >

@@ -28,6 +28,7 @@ const columns = (columns) => {
                 disabled
                 style={customCheckBoxStyling}
                 data-name="internal_selection_column"
+                tabIndex={-1}
               />
             );
           }
