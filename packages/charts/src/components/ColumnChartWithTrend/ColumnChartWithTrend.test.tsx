@@ -1,8 +1,30 @@
-import { fireEvent, render } from '@shared/tests';
+import { fireEvent, render, screen } from '@shared/tests';
 import * as React from 'react';
 import { complexDataSet } from '../../resources/DemoProps';
 import { ColumnChartWithTrend } from './ColumnChartWithTrend';
 import { createPassThroughPropsTest } from '@shared/tests/utils';
+
+const dimensions = [
+  {
+    accessor: 'name',
+    formatter: (d) => `${d} 2019`,
+    interval: 0
+  }
+];
+
+const measures = [
+  {
+    accessor: 'users',
+    label: 'Users',
+    formatter: (val) => val.toLocaleString(),
+    type: 'line'
+  },
+  {
+    accessor: 'sessions',
+    label: 'Active Sessions',
+    type: 'column'
+  }
+];
 
 describe('ColumnChart', () => {
   it('Renders with data', async () => {
@@ -13,26 +35,8 @@ describe('ColumnChart', () => {
         onLegendClick={onLegendClick}
         onClick={onClick}
         dataset={complexDataSet}
-        dimensions={[
-          {
-            accessor: 'name',
-            formatter: (d) => `${d} 2019`,
-            interval: 0
-          }
-        ]}
-        measures={[
-          {
-            accessor: 'users',
-            label: 'Users',
-            formatter: (val) => val.toLocaleString(),
-            type: 'line'
-          },
-          {
-            accessor: 'sessions',
-            label: 'Active Sessions',
-            type: 'column'
-          }
-        ]}
+        dimensions={dimensions}
+        measures={measures}
       />
     );
 
@@ -55,18 +59,23 @@ describe('ColumnChart', () => {
     const singleBars = columnChartContainer.querySelectorAll('g.recharts-bar-rectangle');
     expect(singleBars.length).toBeGreaterThanOrEqual(1);
 
+    // Check if click on axis label is working
+    const firstXAxisLabel = screen.getByText(/January 2.../);
+    fireEvent.click(firstXAxisLabel);
+    expect(onClick).toHaveBeenCalledTimes(1);
+
     // Check if click on legend is working
-    const legendContainer = responsiveContainers[1].querySelector('li.recharts-legend-item');
+    const legendContainer = screen.getByText(/Active Sessions/);
     fireEvent.click(legendContainer);
     expect(onLegendClick).toHaveBeenCalledTimes(1);
 
     // Check if click in column chart container is working
     fireEvent.click(columnChartContainer);
-    expect(onClick).toHaveBeenCalledTimes(2);
+    expect(onClick).toHaveBeenCalledTimes(3);
 
     // Check if click in trend line container is working
     fireEvent.click(trendLineChartContainer);
-    expect(onClick).toHaveBeenCalledTimes(3);
+    expect(onClick).toHaveBeenCalledTimes(4);
 
     // Check if snapshot matches render
     expect(asFragment()).toMatchSnapshot();
@@ -89,6 +98,21 @@ describe('ColumnChart', () => {
 
     // Check if snapshot matches render
     expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('onLegendClick should not crash when invalid handler is provided', () => {
+    render(
+      <ColumnChartWithTrend
+        dataset={complexDataSet}
+        dimensions={dimensions}
+        measures={measures}
+        onLegendClick={'123' as any}
+      />
+    );
+
+    expect(() => {
+      fireEvent.click(screen.getByText(/Active Sessions/));
+    }).not.toThrow();
   });
 
   createPassThroughPropsTest(ColumnChartWithTrend, { dimensions: [], measures: [] });
