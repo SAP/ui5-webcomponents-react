@@ -705,9 +705,9 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         </div>
       )}
       <div
+        className={classes.anchorBar}
         data-component-name="ObjectPageTabContainer"
         style={{
-          position: 'sticky',
           top:
             headerPinned || scrolledHeaderExpanded
               ? `${topHeaderHeight + headerContentHeight}px`
