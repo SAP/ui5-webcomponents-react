@@ -1,10 +1,11 @@
 import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming';
+import '@ui5/webcomponents-icons/dist/pushpin-off.js';
 import '@ui5/webcomponents-icons/dist/slim-arrow-down.js';
 import '@ui5/webcomponents-icons/dist/slim-arrow-up.js';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { useConsolidatedRef, useI18nBundle, useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import {
   COLLAPSE_HEADER,
   EXPAND_HEADER,
@@ -174,6 +175,7 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   return (
     <section
+      data-component-name="DynamicPageAnchorBar"
       style={style}
       role="navigation"
       className={showHideHeaderButton || headerContentPinnable ? classes.anchorBarActionButton : null}

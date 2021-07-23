@@ -110,6 +110,10 @@ export const styles = {
     position: 'sticky',
     zIndex: 2
   },
+  tabContainer: {
+    position: 'sticky',
+    zIndex: 1
+  },
   footer: {
     position: 'sticky',
     bottom: '0.5rem',

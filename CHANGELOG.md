@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.17.1...v0.17.2) (2021-07-23)
+
+
+### Bug Fixes
+
+* **DynamicPageTitle:** correct responsive positioning of nav and global actions ([#1842](https://github.com/SAP/ui5-webcomponents-react/issues/1842)) ([df9749d](https://github.com/SAP/ui5-webcomponents-react/commit/df9749d78eaa6945023c543ac71ff745e4bcb9f2))
+* **ObjectPage:** make sure TabBar is always on top of content ([#1857](https://github.com/SAP/ui5-webcomponents-react/issues/1857)) ([da61ab6](https://github.com/SAP/ui5-webcomponents-react/commit/da61ab6873ec7715267f1efba00602ef4b9514eb))
+* **TabContainer:** apply ObjectPage styles only in ObjectPage ([#1861](https://github.com/SAP/ui5-webcomponents-react/issues/1861)) ([718eb72](https://github.com/SAP/ui5-webcomponents-react/commit/718eb72965e6482467ea1406382b6ebef844264e))
+* **Toolbar:** always align items in the center ([#1847](https://github.com/SAP/ui5-webcomponents-react/issues/1847)) ([535051e](https://github.com/SAP/ui5-webcomponents-react/commit/535051e4aab6a2a18f6f53ad7c37211d7f44789a))
+
+
+
+
+
+## [0.17.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.17.0...v0.17.1) (2021-07-16)
+
+
+### Bug Fixes
+
+* **cra-templates:** always use latest version of ui5-webcomponents-react ([#1829](https://github.com/SAP/ui5-webcomponents-react/issues/1829)) ([623dc51](https://github.com/SAP/ui5-webcomponents-react/commit/623dc51117551f28d1d4418722a27883effcea47))
+* **DynamicPage:** fix memory leaks when unmounted during resize ([#1838](https://github.com/SAP/ui5-webcomponents-react/issues/1838)) ([9bc3722](https://github.com/SAP/ui5-webcomponents-react/commit/9bc37220edb40f2c4e33415bc11b017b741b8e00)), closes [#1835](https://github.com/SAP/ui5-webcomponents-react/issues/1835)
+* **Form:** don't crash when range detection returns null ([#1837](https://github.com/SAP/ui5-webcomponents-react/issues/1837)) ([f75a5fa](https://github.com/SAP/ui5-webcomponents-react/commit/f75a5face15487f460dfac9da3e7bf291013c08d)), closes [#1835](https://github.com/SAP/ui5-webcomponents-react/issues/1835)
+* **useResponsiveContentPadding:** don't crash in Safari ([#1836](https://github.com/SAP/ui5-webcomponents-react/issues/1836)) ([ea4cd60](https://github.com/SAP/ui5-webcomponents-react/commit/ea4cd60491eb1ba05afbfccf0409f8b0a1085c0c)), closes [#1835](https://github.com/SAP/ui5-webcomponents-react/issues/1835)
+
+
+### Features
+
+* **ObjectPage & DynamicPage:** add data attributes to elements ([#1831](https://github.com/SAP/ui5-webcomponents-react/issues/1831)) ([4983526](https://github.com/SAP/ui5-webcomponents-react/commit/49835267c8572bb00ee8d3a46bc2276650d97eea))
+
+
+
+
+
 # [0.17.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.16.6...v0.17.0) (2021-07-15)
 
 

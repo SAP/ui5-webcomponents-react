@@ -12,6 +12,7 @@ exports[`DynamicPage always show content header 1`] = `
     >
       <div
         class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+        data-component-name="DynamicPageTitleBreadcrumbs"
       >
         <div
           class="DynamicPageTitle-breadcrumbs"
@@ -130,6 +131,7 @@ exports[`DynamicPage always show content header 1`] = `
         >
           <div
             class="DynamicPageTitle-title"
+            data-component-name="DynamicPageTitleHeading"
           >
             <ui5-title
               level="H2"
@@ -140,6 +142,7 @@ exports[`DynamicPage always show content header 1`] = `
           </div>
           <div
             class="DynamicPageTitle-content"
+            data-component-name="DynamicPageTitleContent"
             style="padding-left: 0.5rem;"
           >
             <ui5-badge
@@ -152,15 +155,20 @@ exports[`DynamicPage always show content header 1`] = `
         </div>
         <div
           class="Toolbar-outerContainer Toolbar-clear Toolbar-active DynamicPageTitle-toolbar"
+          data-component-name="DynamicPageTitleActions"
         >
           <div
             class="Toolbar-toolbar"
+            data-component-name="ToolbarContent"
           >
             <span
               class="spacer"
               style="flex-grow: 1; height: 100%; cursor: pointer;"
             />
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Emphasized"
                 ui5-button=""
@@ -168,7 +176,10 @@ exports[`DynamicPage always show content header 1`] = `
                 Edit
               </ui5-button>
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Transparent"
                 ui5-button=""
@@ -176,7 +187,10 @@ exports[`DynamicPage always show content header 1`] = `
                 Delete
               </ui5-button>
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Transparent"
                 ui5-button=""
@@ -184,7 +198,10 @@ exports[`DynamicPage always show content header 1`] = `
                 Copy
               </ui5-button>
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Transparent"
                 ui5-button=""
@@ -192,34 +209,49 @@ exports[`DynamicPage always show content header 1`] = `
                 Toggle Footer
               </ui5-button>
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Transparent"
                 icon="action"
                 ui5-button=""
               />
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <div
                 aria-label="Separator"
                 class="ToolbarSeparator-separator"
               />
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Transparent"
                 icon="full-screen"
                 ui5-button=""
               />
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Transparent"
                 icon="exit-full-screen"
                 ui5-button=""
               />
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Transparent"
                 icon="decline"
@@ -234,6 +266,7 @@ exports[`DynamicPage always show content header 1`] = `
       >
         <div
           class="DynamicPageTitle-subTitleBottom"
+          data-component-name="DynamicPageTitleSubheading"
         >
           <ui5-label
             ui5-label=""
@@ -293,6 +326,7 @@ exports[`DynamicPage always show content header 1`] = `
     >
       <section
         class="DynamicPageAnchorBar-anchorBarActionButton"
+        data-component-name="DynamicPageAnchorBar"
         role="navigation"
       >
         <ui5-button
@@ -334,6 +368,7 @@ exports[`DynamicPage hider header button 1`] = `
         >
           <div
             class="DynamicPageTitle-title"
+            data-component-name="DynamicPageTitleHeading"
           >
             <ui5-title
               level="H2"
@@ -345,15 +380,20 @@ exports[`DynamicPage hider header button 1`] = `
         </div>
         <div
           class="Toolbar-outerContainer Toolbar-clear Toolbar-active DynamicPageTitle-toolbar"
+          data-component-name="DynamicPageTitleActions"
         >
           <div
             class="Toolbar-toolbar"
+            data-component-name="ToolbarContent"
           >
             <span
               class="spacer"
               style="flex-grow: 1; height: 100%; cursor: pointer;"
             />
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Emphasized"
                 ui5-button=""
@@ -361,7 +401,10 @@ exports[`DynamicPage hider header button 1`] = `
                 Edit
               </ui5-button>
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Transparent"
                 ui5-button=""
@@ -369,7 +412,10 @@ exports[`DynamicPage hider header button 1`] = `
                 Delete
               </ui5-button>
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Transparent"
                 ui5-button=""
@@ -377,7 +423,10 @@ exports[`DynamicPage hider header button 1`] = `
                 Copy
               </ui5-button>
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Transparent"
                 ui5-button=""
@@ -385,7 +434,10 @@ exports[`DynamicPage hider header button 1`] = `
                 Toggle Footer
               </ui5-button>
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Transparent"
                 icon="action"
@@ -400,6 +452,7 @@ exports[`DynamicPage hider header button 1`] = `
       >
         <div
           class="DynamicPageTitle-subTitleBottom"
+          data-component-name="DynamicPageTitleSubheading"
         >
           <ui5-label
             ui5-label=""
@@ -459,6 +512,7 @@ exports[`DynamicPage hider header button 1`] = `
     >
       <section
         class="DynamicPageAnchorBar-anchorBarActionButton"
+        data-component-name="DynamicPageAnchorBar"
         role="navigation"
       />
     </div>
@@ -648,6 +702,7 @@ exports[`DynamicPage render footer 1`] = `
     >
       <section
         class="DynamicPageAnchorBar-anchorBarActionButton"
+        data-component-name="DynamicPageAnchorBar"
         role="navigation"
       >
         <ui5-button
@@ -698,6 +753,7 @@ exports[`DynamicPage with content 1`] = `
     >
       <div
         class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+        data-component-name="DynamicPageTitleBreadcrumbs"
       >
         <div
           class="DynamicPageTitle-breadcrumbs"
@@ -816,6 +872,7 @@ exports[`DynamicPage with content 1`] = `
         >
           <div
             class="DynamicPageTitle-title"
+            data-component-name="DynamicPageTitleHeading"
           >
             <ui5-title
               level="H2"
@@ -826,6 +883,7 @@ exports[`DynamicPage with content 1`] = `
           </div>
           <div
             class="DynamicPageTitle-content"
+            data-component-name="DynamicPageTitleContent"
             style="padding-left: 0.5rem;"
           >
             <ui5-badge
@@ -838,15 +896,20 @@ exports[`DynamicPage with content 1`] = `
         </div>
         <div
           class="Toolbar-outerContainer Toolbar-clear Toolbar-active DynamicPageTitle-toolbar"
+          data-component-name="DynamicPageTitleActions"
         >
           <div
             class="Toolbar-toolbar"
+            data-component-name="ToolbarContent"
           >
             <span
               class="spacer"
               style="flex-grow: 1; height: 100%; cursor: pointer;"
             />
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Emphasized"
                 ui5-button=""
@@ -854,7 +917,10 @@ exports[`DynamicPage with content 1`] = `
                 Edit
               </ui5-button>
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Transparent"
                 ui5-button=""
@@ -862,7 +928,10 @@ exports[`DynamicPage with content 1`] = `
                 Delete
               </ui5-button>
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Transparent"
                 ui5-button=""
@@ -870,7 +939,10 @@ exports[`DynamicPage with content 1`] = `
                 Copy
               </ui5-button>
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Transparent"
                 ui5-button=""
@@ -878,34 +950,49 @@ exports[`DynamicPage with content 1`] = `
                 Toggle Footer
               </ui5-button>
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Transparent"
                 icon="action"
                 ui5-button=""
               />
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <div
                 aria-label="Separator"
                 class="ToolbarSeparator-separator"
               />
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Transparent"
                 icon="full-screen"
                 ui5-button=""
               />
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Transparent"
                 icon="exit-full-screen"
                 ui5-button=""
               />
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Transparent"
                 icon="decline"
@@ -920,6 +1007,7 @@ exports[`DynamicPage with content 1`] = `
       >
         <div
           class="DynamicPageTitle-subTitleBottom"
+          data-component-name="DynamicPageTitleSubheading"
         >
           <ui5-label
             ui5-label=""
@@ -978,6 +1066,7 @@ exports[`DynamicPage with content 1`] = `
     >
       <section
         class="DynamicPageAnchorBar-anchorBarActionButton"
+        data-component-name="DynamicPageAnchorBar"
         role="navigation"
       >
         <ui5-button
@@ -1669,6 +1758,7 @@ exports[`DynamicPage without content 1`] = `
     >
       <div
         class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+        data-component-name="DynamicPageTitleBreadcrumbs"
       >
         <div
           class="DynamicPageTitle-breadcrumbs"
@@ -1787,6 +1877,7 @@ exports[`DynamicPage without content 1`] = `
         >
           <div
             class="DynamicPageTitle-title"
+            data-component-name="DynamicPageTitleHeading"
           >
             <ui5-title
               level="H2"
@@ -1797,6 +1888,7 @@ exports[`DynamicPage without content 1`] = `
           </div>
           <div
             class="DynamicPageTitle-content"
+            data-component-name="DynamicPageTitleContent"
             style="padding-left: 0.5rem;"
           >
             <ui5-badge
@@ -1809,15 +1901,20 @@ exports[`DynamicPage without content 1`] = `
         </div>
         <div
           class="Toolbar-outerContainer Toolbar-clear Toolbar-active DynamicPageTitle-toolbar"
+          data-component-name="DynamicPageTitleActions"
         >
           <div
             class="Toolbar-toolbar"
+            data-component-name="ToolbarContent"
           >
             <span
               class="spacer"
               style="flex-grow: 1; height: 100%; cursor: pointer;"
             />
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Emphasized"
                 ui5-button=""
@@ -1825,7 +1922,10 @@ exports[`DynamicPage without content 1`] = `
                 Edit
               </ui5-button>
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Transparent"
                 ui5-button=""
@@ -1833,7 +1933,10 @@ exports[`DynamicPage without content 1`] = `
                 Delete
               </ui5-button>
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Transparent"
                 ui5-button=""
@@ -1841,7 +1944,10 @@ exports[`DynamicPage without content 1`] = `
                 Copy
               </ui5-button>
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Transparent"
                 ui5-button=""
@@ -1849,34 +1955,49 @@ exports[`DynamicPage without content 1`] = `
                 Toggle Footer
               </ui5-button>
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Transparent"
                 icon="action"
                 ui5-button=""
               />
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <div
                 aria-label="Separator"
                 class="ToolbarSeparator-separator"
               />
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Transparent"
                 icon="full-screen"
                 ui5-button=""
               />
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Transparent"
                 icon="exit-full-screen"
                 ui5-button=""
               />
             </div>
-            <div>
+            <div
+              class="Toolbar-childContainer"
+              data-component-name="ToolbarChildContainer"
+            >
               <ui5-button
                 design="Transparent"
                 icon="decline"
@@ -1891,6 +2012,7 @@ exports[`DynamicPage without content 1`] = `
       >
         <div
           class="DynamicPageTitle-subTitleBottom"
+          data-component-name="DynamicPageTitleSubheading"
         >
           <ui5-label
             ui5-label=""
@@ -1949,6 +2071,7 @@ exports[`DynamicPage without content 1`] = `
     >
       <section
         class="DynamicPageAnchorBar-anchorBarActionButton"
+        data-component-name="DynamicPageAnchorBar"
         role="navigation"
       >
         <ui5-button
