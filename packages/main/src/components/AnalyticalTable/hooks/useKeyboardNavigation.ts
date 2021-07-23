@@ -19,6 +19,13 @@ const findParentCell = (target) => {
   }
 };
 
+const setFocus = (currentlyFocusedCell, nextElement) => {
+  currentlyFocusedCell.current.tabIndex = -1;
+  nextElement.tabIndex = 0;
+  nextElement.focus();
+  currentlyFocusedCell.current = nextElement;
+};
+
 const getTableProps = (tableProps, { instance, row }) => {
   const currentlyFocusedCell = useRef<HTMLDivElement>(null);
   const tableRef = instance.webComponentsReactProperties.tableRef;
@@ -54,35 +61,91 @@ const getTableProps = (tableProps, { instance, row }) => {
         if (tableCell) {
           currentlyFocusedCell.current = tableCell;
         } else {
-          const firstVisibleCell = tableRef.current.querySelector(
-            `div[data-visible-column-index="0"][data-visible-row-index="1"]`
-          );
-          firstVisibleCell.tabIndex = 0;
-          firstVisibleCell.focus();
-          currentlyFocusedCell.current = firstVisibleCell;
+          getFirstVisibleCell(tableRef.current, currentlyFocusedCell);
         }
       }
     },
     [currentlyFocusedCell.current, tableRef.current]
   );
 
+  //todo:
+  // Shift-Tab: select previous actionable item
+  // Space or Enter: in Header - open Popover, in Body - Select Row (Enter is working, Space is not)
   const onKeyboardNavigation = useCallback(
     (e) => {
       if (currentlyFocusedCell.current) {
         const columnIndex = parseInt(currentlyFocusedCell.current.dataset.columnIndex, 10);
         const rowIndex = parseInt(currentlyFocusedCell.current.dataset.rowIndex, 10);
         switch (e.key) {
+          case 'End': {
+            e.preventDefault();
+            const visibleColumns = tableRef.current.querySelector(
+              `div[data-component-name="AnalyticalTableHeaderRow"]`
+            ).children;
+            const lastVisibleColumn = Array.from(visibleColumns)
+              .slice(0)
+              .reduceRight((prev, cur: HTMLDivElement, index, arr) => {
+                const columnIndex = parseInt(cur.children?.[0]?.dataset.columnIndex, 10);
+                if (!isNaN(columnIndex)) {
+                  arr.length = 0;
+                  return columnIndex;
+                }
+                return cur;
+              }) as number;
+
+            const newElement = tableRef.current.querySelector(
+              `div[data-visible-column-index="${lastVisibleColumn + 1}"][data-row-index="${rowIndex}"]`
+            );
+            setFocus(currentlyFocusedCell, newElement);
+            break;
+          }
+          case 'Home': {
+            e.preventDefault();
+            const newElement = tableRef.current.querySelector(
+              `div[data-visible-column-index="0"][data-row-index="${rowIndex}"]`
+            );
+            setFocus(currentlyFocusedCell, newElement);
+            break;
+          }
+          case 'PageDown': {
+            e.preventDefault();
+            if (currentlyFocusedCell.current.dataset.rowIndex === '0') {
+              const newElement = tableRef.current.querySelector(
+                `div[data-column-index="${columnIndex}"][data-row-index="${rowIndex + 1}"]`
+              );
+              setFocus(currentlyFocusedCell, newElement);
+            } else {
+              const lastVisibleRow = tableRef.current.querySelector(`div[data-component-name="AnalyticalTableBody"]`)
+                ?.children?.[0].children.length;
+              const newElement = tableRef.current.querySelector(
+                `div[data-column-index="${columnIndex}"][data-visible-row-index="${lastVisibleRow}"]`
+              );
+              setFocus(currentlyFocusedCell, newElement);
+            }
+            break;
+          }
+          case 'PageUp': {
+            e.preventDefault();
+            if (currentlyFocusedCell.current.dataset.rowIndex <= '1') {
+              const newElement = tableRef.current.querySelector(
+                `div[data-column-index="${columnIndex}"][data-row-index="0"]`
+              );
+              setFocus(currentlyFocusedCell, newElement);
+            } else {
+              const newElement = tableRef.current.querySelector(
+                `div[data-column-index="${columnIndex}"][data-visible-row-index="1"]`
+              );
+              setFocus(currentlyFocusedCell, newElement);
+            }
+            break;
+          }
           case 'ArrowRight': {
-            console.log('key');
             e.preventDefault();
             const newElement = tableRef.current.querySelector(
               `div[data-column-index="${columnIndex + 1}"][data-row-index="${rowIndex}"]`
             );
             if (newElement) {
-              currentlyFocusedCell.current.tabIndex = -1;
-              newElement.tabIndex = 0;
-              newElement.focus();
-              currentlyFocusedCell.current = newElement;
+              setFocus(currentlyFocusedCell, newElement);
             }
             break;
           }
@@ -92,10 +155,7 @@ const getTableProps = (tableProps, { instance, row }) => {
               `div[data-column-index="${columnIndex - 1}"][data-row-index="${rowIndex}"]`
             );
             if (newElement) {
-              currentlyFocusedCell.current.tabIndex = -1;
-              newElement.tabIndex = 0;
-              newElement.focus();
-              currentlyFocusedCell.current = newElement;
+              setFocus(currentlyFocusedCell, newElement);
             }
             break;
           }
@@ -115,20 +175,14 @@ const getTableProps = (tableProps, { instance, row }) => {
               firstChildOfParent.focus();
               currentlyFocusedCell.current = firstChildOfParent;
             } else if (newElement) {
-              currentlyFocusedCell.current.tabIndex = -1;
-              newElement.tabIndex = 0;
-              newElement.focus();
-              currentlyFocusedCell.current = newElement;
+              setFocus(currentlyFocusedCell, newElement);
             } else if (e.target.dataset.subcomponent) {
               const nextElementToSubComp = tableRef.current.querySelector(
                 `div[data-column-index="${parseInt(e.target.dataset.columnIndexSub)}"][data-row-index="${
                   parseInt(e.target.dataset.rowIndexSub) + 1
                 }"]`
               );
-              currentlyFocusedCell.current.tabIndex = -1;
-              nextElementToSubComp.tabIndex = 0;
-              nextElementToSubComp.focus();
-              currentlyFocusedCell.current = nextElementToSubComp;
+              setFocus(currentlyFocusedCell, nextElementToSubComp);
             }
             break;
           }
@@ -158,10 +212,7 @@ const getTableProps = (tableProps, { instance, row }) => {
               firstChildPrevRow.focus();
               currentlyFocusedCell.current = firstChildPrevRow;
             } else if (previousRowCell) {
-              currentlyFocusedCell.current.tabIndex = -1;
-              previousRowCell.tabIndex = 0;
-              previousRowCell.focus();
-              currentlyFocusedCell.current = previousRowCell;
+              setFocus(currentlyFocusedCell, previousRowCell);
             }
             break;
           }
