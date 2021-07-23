@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.17.1...v0.17.2) (2021-07-23)
+
+
+### Bug Fixes
+
+* **DynamicPageTitle:** correct responsive positioning of nav and global actions ([#1842](https://github.com/SAP/ui5-webcomponents-react/issues/1842)) ([df9749d](https://github.com/SAP/ui5-webcomponents-react/commit/df9749d78eaa6945023c543ac71ff745e4bcb9f2))
+* **ObjectPage:** make sure TabBar is always on top of content ([#1857](https://github.com/SAP/ui5-webcomponents-react/issues/1857)) ([da61ab6](https://github.com/SAP/ui5-webcomponents-react/commit/da61ab6873ec7715267f1efba00602ef4b9514eb))
+* **TabContainer:** apply ObjectPage styles only in ObjectPage ([#1861](https://github.com/SAP/ui5-webcomponents-react/issues/1861)) ([718eb72](https://github.com/SAP/ui5-webcomponents-react/commit/718eb72965e6482467ea1406382b6ebef844264e))
+* **Toolbar:** always align items in the center ([#1847](https://github.com/SAP/ui5-webcomponents-react/issues/1847)) ([535051e](https://github.com/SAP/ui5-webcomponents-react/commit/535051e4aab6a2a18f6f53ad7c37211d7f44789a))
+
+
+
+
+
 ## [0.17.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.17.0...v0.17.1) (2021-07-16)
 
 
