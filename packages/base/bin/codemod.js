@@ -3,7 +3,7 @@
 const childProcess = require('child_process');
 const path = require('path');
 
-const SUPPORTED_TRANSFORMERS = ['transformLibToDist', 'renamePropsV17'];
+const SUPPORTED_TRANSFORMERS = ['transformLibToDist', 'renamePropsV18'];
 
 const transformerDir = path.resolve(__dirname, '..', 'codemods');
 

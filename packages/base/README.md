@@ -30,10 +30,10 @@ npx ui5wcr-codemod transformLibToDist src
 # add --typescript if you are using TypeScript
 ```
 
-#### `renamePropsV17`
-`@ui5/webcomponents-react@0.17.0` renamed lots of props in order to have a more consistent API. You can migrate your codebase (e.g. your `src` folder) by running:
+#### `renamePropsV18`
+`@ui5/webcomponents-react@0.18.0` renamed lots of props in order to have a more consistent API. You can migrate your codebase (e.g. your `src` folder) by running:
 ```shell
-npx ui5wcr-codemod renamePropsV17 src
+npx ui5wcr-codemod renamePropsV18 src
 # add --typescript if you are using TypeScript
 ```
 
