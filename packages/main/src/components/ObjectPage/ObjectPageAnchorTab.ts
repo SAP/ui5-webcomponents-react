@@ -118,7 +118,7 @@ class ObjectPageAnchorTab extends Tab {
 
 TabContainer.registerTabStyles(`
 
-.ui5-tab-strip-itemContent {
+:host([data-component-name="ObjectPageTabContainer"]) .ui5-tab-strip-itemContent {
   display: flex;
   align-items: center;
   pointer-events: all;
