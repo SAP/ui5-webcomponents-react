@@ -118,7 +118,7 @@ class ObjectPageAnchorTab extends Tab {
 
 TabContainer.registerTabStyles(`
 
-.ui5-tab-strip-itemContent {
+:host([data-component-name="ObjectPageTabContainer"]) .ui5-tab-strip-itemContent {
   display: flex;
   align-items: center;
   pointer-events: all;
@@ -132,7 +132,7 @@ TabContainer.registerTabStyles(`
   color: ${ThemingParameters.sapContent_IconColor};
 }
 
-.ui5-tab-strip-itemText[data-active]:hover {
+:host([data-component-name="ObjectPageTabContainer"]) .ui5-tab-strip-itemText[data-active]:hover {
   color: ${ThemingParameters.sapButton_Lite_Hover_TextColor};
 }
 `);

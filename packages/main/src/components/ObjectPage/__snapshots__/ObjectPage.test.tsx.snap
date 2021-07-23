@@ -15,8 +15,9 @@ exports[`ObjectPage Default with Sections 1`] = `
       style="grid-auto-columns: min-content 100%; display: grid;"
     />
     <div
+      class="ObjectPage-tabContainer"
       data-component-name="ObjectPageTabContainer"
-      style="position: sticky; top: 0px;"
+      style="top: 0px;"
     >
       <ui5-tabcontainer
         collapsed="true"
@@ -164,8 +165,9 @@ exports[`ObjectPage Default with SubSections 1`] = `
       style="grid-auto-columns: min-content 100%; display: grid;"
     />
     <div
+      class="ObjectPage-tabContainer"
       data-component-name="ObjectPageTabContainer"
-      style="position: sticky; top: 0px;"
+      style="top: 0px;"
     >
       <ui5-tabcontainer
         collapsed="true"
@@ -471,8 +473,9 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
       style="grid-auto-columns: min-content 100%; display: grid;"
     />
     <div
+      class="ObjectPage-tabContainer"
       data-component-name="ObjectPageTabContainer"
-      style="position: sticky; top: 0px;"
+      style="top: 0px;"
     >
       <ui5-tabcontainer
         collapsed="true"
@@ -626,8 +629,9 @@ exports[`ObjectPage Not crashing with 0 sections 1`] = `
       style="grid-auto-columns: min-content 100%; display: grid;"
     />
     <div
+      class="ObjectPage-tabContainer"
       data-component-name="ObjectPageTabContainer"
-      style="position: sticky; top: 0px;"
+      style="top: 0px;"
     >
       <ui5-tabcontainer
         collapsed="true"
@@ -662,8 +666,9 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
       style="grid-auto-columns: min-content 100%; display: grid;"
     />
     <div
+      class="ObjectPage-tabContainer"
       data-component-name="ObjectPageTabContainer"
-      style="position: sticky; top: 0px;"
+      style="top: 0px;"
     >
       <ui5-tabcontainer
         collapsed="true"
@@ -733,8 +738,9 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
       style="grid-auto-columns: min-content 100%; display: grid;"
     />
     <div
+      class="ObjectPage-tabContainer"
       data-component-name="ObjectPageTabContainer"
-      style="position: sticky; top: 0px;"
+      style="top: 0px;"
     >
       <ui5-tabcontainer
         collapsed="true"
@@ -877,8 +883,9 @@ exports[`ObjectPage with anchor-bar 1`] = `
       </section>
     </div>
     <div
+      class="ObjectPage-tabContainer"
       data-component-name="ObjectPageTabContainer"
-      style="position: sticky; top: 0px;"
+      style="top: 0px;"
     >
       <ui5-tabcontainer
         collapsed="true"
@@ -1203,8 +1210,9 @@ exports[`ObjectPage with footer 1`] = `
       style="grid-auto-columns: min-content 100%; display: grid;"
     />
     <div
+      class="ObjectPage-tabContainer"
       data-component-name="ObjectPageTabContainer"
-      style="position: sticky; top: 0px;"
+      style="top: 0px;"
     >
       <ui5-tabcontainer
         collapsed="true"
@@ -1544,8 +1552,9 @@ exports[`ObjectPage with header 1`] = `
       </div>
     </div>
     <div
+      class="ObjectPage-tabContainer"
       data-component-name="ObjectPageTabContainer"
-      style="position: sticky; top: 0px;"
+      style="top: 0px;"
     >
       <ui5-tabcontainer
         collapsed="true"
@@ -1939,8 +1948,9 @@ exports[`ObjectPage with img 1`] = `
       />
     </div>
     <div
+      class="ObjectPage-tabContainer"
       data-component-name="ObjectPageTabContainer"
-      style="position: sticky; top: 0px;"
+      style="top: 0px;"
     >
       <ui5-tabcontainer
         collapsed="true"
@@ -2347,8 +2357,9 @@ exports[`ObjectPage with img 2`] = `
       />
     </div>
     <div
+      class="ObjectPage-tabContainer"
       data-component-name="ObjectPageTabContainer"
-      style="position: sticky; top: 0px;"
+      style="top: 0px;"
     >
       <ui5-tabcontainer
         collapsed="true"
@@ -2710,8 +2721,9 @@ exports[`ObjectPage with title 1`] = `
       </div>
     </header>
     <div
+      class="ObjectPage-tabContainer"
       data-component-name="ObjectPageTabContainer"
-      style="position: sticky; top: 0px;"
+      style="top: 0px;"
     >
       <ui5-tabcontainer
         collapsed="true"
@@ -3079,8 +3091,9 @@ exports[`ObjectPage with title, header & footer 1`] = `
       />
     </div>
     <div
+      class="ObjectPage-tabContainer"
       data-component-name="ObjectPageTabContainer"
-      style="position: sticky; top: 0px;"
+      style="top: 0px;"
     >
       <ui5-tabcontainer
         collapsed="true"
