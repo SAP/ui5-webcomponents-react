@@ -116,7 +116,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
         width: `${columnVirtualizer.totalSize}px`
       }}
     >
-      {rowVirtualizer.virtualItems.map((virtualRow) => {
+      {rowVirtualizer.virtualItems.map((virtualRow, visibleRowIndex) => {
         const row = rows[virtualRow.index];
         const rowIndexWithHeader = virtualRow.index + 1;
         if (!row) {
@@ -168,7 +168,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
                 {RowSubComponent}
               </SubComponent>
             )}
-            {columnVirtualizer.virtualItems.map((virtualColumn, index) => {
+            {columnVirtualizer.virtualItems.map((virtualColumn, visibleColumnIndex) => {
               const cell = row.cells[virtualColumn.index];
               const directionStyles = isRtl
                 ? {
@@ -205,7 +205,9 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
               return (
                 <div
                   {...cellProps}
+                  data-visible-column-index={visibleColumnIndex}
                   data-column-index={virtualColumn.index}
+                  data-visible-row-index={visibleRowIndex + 1}
                   data-row-index={rowIndexWithHeader}
                   style={{
                     ...cellProps.style,

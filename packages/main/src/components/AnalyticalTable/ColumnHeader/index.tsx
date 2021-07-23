@@ -45,6 +45,7 @@ export interface ColumnHeaderProps {
   virtualColumn: VirtualItem;
   isRtl: boolean;
   columnIndex: number;
+  visibleColumnIndex: number;
 }
 
 const styles = {
@@ -107,7 +108,8 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     role,
     virtualColumn,
     isRtl,
-    columnIndex
+    columnIndex,
+    visibleColumnIndex
   } = props;
 
   const isFiltered = column.filterValue && column.filterValue.length > 0;
@@ -161,6 +163,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
 
   const targetRef = useRef();
   if (!column) return null;
+
   return (
     <div
       ref={targetRef}
@@ -172,8 +175,11 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
       }}
     >
       <div
+        data-visible-column-index={visibleColumnIndex}
+        data-visible-row-index={0}
         data-row-index={0}
         data-column-index={columnIndex}
+        tabIndex={-1}
         id={id}
         className={className}
         style={{

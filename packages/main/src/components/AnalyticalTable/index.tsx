@@ -387,7 +387,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       withNavigationHighlight,
       markNavigatedRow,
       renderRowSubComponent,
-      alwaysShowSubComponent
+      alwaysShowSubComponent,
+      reactWindowRef
     }),
     [
       tableRef.current,
@@ -406,7 +407,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       withNavigationHighlight,
       markNavigatedRow,
       renderRowSubComponent,
-      alwaysShowSubComponent
+      alwaysShowSubComponent,
+      reactWindowRef
     ]
   );
 

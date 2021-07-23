@@ -1,7 +1,22 @@
 import { useCallback, useRef } from 'react';
 
-const getRowProps = (rowProps, { instance, row }) => {
-  return rowProps;
+const getFirstVisibleCell = (target, currentlyFocusedCell) => {
+  const firstVisibleCell = target.querySelector(`div[data-visible-column-index="0"][data-visible-row-index="1"]`);
+  firstVisibleCell.tabIndex = 0;
+  firstVisibleCell.focus();
+  currentlyFocusedCell.current = firstVisibleCell;
+};
+
+const findParentCell = (target) => {
+  if (target === undefined) return;
+  if (
+    (target.dataset.rowIndex !== undefined && target.dataset.columnIndex !== undefined) ||
+    (target.dataset.rowIndexSub !== undefined && target.dataset.columnIndexSub !== undefined)
+  ) {
+    return target;
+  } else {
+    return findParentCell(target.parentElement);
+  }
 };
 
 const getTableProps = (tableProps, { instance, row }) => {
@@ -10,7 +25,7 @@ const getTableProps = (tableProps, { instance, row }) => {
 
   const onTableFocus = useCallback(
     (e) => {
-      const firstCell = e.target.querySelector('div[data-column-index="0"][data-row-index="0"]');
+      const isFirstCellAvailable = e.target.querySelector('div[data-column-index="0"][data-row-index="1"]');
 
       if (e.target.dataset.componentName === 'AnalyticalTableContainer') {
         if (currentlyFocusedCell.current) {
@@ -24,16 +39,27 @@ const getTableProps = (tableProps, { instance, row }) => {
             currentlyFocusedCell.current.tabIndex = 0;
             currentlyFocusedCell.current.focus();
           } else {
-            // Fallback if cell is not mounted anymore (virtualization)
-            const firstRow = e.target.querySelector(`div[data-column-index="${columnIndex}"][data-row-index="0"]`);
-            firstRow.tabIndex = 0;
-            firstRow.focus();
-            currentlyFocusedCell.current = firstRow;
+            getFirstVisibleCell(e.target, currentlyFocusedCell);
           }
-        } else if (firstCell) {
+        } else if (isFirstCellAvailable) {
+          const firstCell = e.target.querySelector('div[data-column-index="0"][data-row-index="0"]');
           firstCell.tabIndex = 0;
           firstCell.focus();
           currentlyFocusedCell.current = firstCell;
+        } else {
+          getFirstVisibleCell(e.target, currentlyFocusedCell);
+        }
+      } else {
+        const tableCell = findParentCell(e.target);
+        if (tableCell) {
+          currentlyFocusedCell.current = tableCell;
+        } else {
+          const firstVisibleCell = tableRef.current.querySelector(
+            `div[data-visible-column-index="0"][data-visible-row-index="1"]`
+          );
+          firstVisibleCell.tabIndex = 0;
+          firstVisibleCell.focus();
+          currentlyFocusedCell.current = firstVisibleCell;
         }
       }
     },
@@ -43,10 +69,11 @@ const getTableProps = (tableProps, { instance, row }) => {
   const onKeyboardNavigation = useCallback(
     (e) => {
       if (currentlyFocusedCell.current) {
-        const columnIndex = parseInt(e.target.dataset.columnIndex, 10);
-        const rowIndex = parseInt(e.target.dataset.rowIndex, 10);
+        const columnIndex = parseInt(currentlyFocusedCell.current.dataset.columnIndex, 10);
+        const rowIndex = parseInt(currentlyFocusedCell.current.dataset.rowIndex, 10);
         switch (e.key) {
           case 'ArrowRight': {
+            console.log('key');
             e.preventDefault();
             const newElement = tableRef.current.querySelector(
               `div[data-column-index="${columnIndex + 1}"][data-row-index="${rowIndex}"]`
@@ -75,12 +102,11 @@ const getTableProps = (tableProps, { instance, row }) => {
           case 'ArrowDown': {
             e.preventDefault();
             const parent = currentlyFocusedCell.current.parentElement as HTMLDivElement;
-            const firstChildOfParent = parent.children[0] as HTMLDivElement;
+            const firstChildOfParent = parent?.children?.[0] as HTMLDivElement;
             const hasSubcomponent = firstChildOfParent?.dataset?.subcomponent;
             const newElement = tableRef.current.querySelector(
               `div[data-column-index="${columnIndex}"][data-row-index="${rowIndex + 1}"]`
             );
-
             if (hasSubcomponent && !currentlyFocusedCell.current?.dataset?.subcomponent) {
               currentlyFocusedCell.current.tabIndex = -1;
               firstChildOfParent.tabIndex = 0;
@@ -148,6 +174,5 @@ const getTableProps = (tableProps, { instance, row }) => {
 };
 
 export const useKeyboardNavigation = (hooks) => {
-  hooks.getRowProps.push(getRowProps);
   hooks.getTableProps.push(getTableProps);
 };
