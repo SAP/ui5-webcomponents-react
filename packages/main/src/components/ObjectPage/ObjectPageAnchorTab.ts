@@ -132,7 +132,7 @@ TabContainer.registerTabStyles(`
   color: ${ThemingParameters.sapContent_IconColor};
 }
 
-.ui5-tab-strip-itemText[data-active]:hover {
+:host([data-component-name="ObjectPageTabContainer"]) .ui5-tab-strip-itemText[data-active]:hover {
   color: ${ThemingParameters.sapButton_Lite_Hover_TextColor};
 }
 `);
