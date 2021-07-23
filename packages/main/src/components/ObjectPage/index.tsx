@@ -705,7 +705,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         </div>
       )}
       <div
-        className={classes.anchorBar}
+        className={classes.tabContainer}
         data-component-name="ObjectPageTabContainer"
         style={{
           top:
