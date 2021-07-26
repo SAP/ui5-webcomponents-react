@@ -7,13 +7,17 @@ import '@ui5/webcomponents/dist/Select';
 
 export interface SelectPropTypes extends Omit<WithWebComponentPropTypes, 'onChange'> {
   /**
-   * Defines whether `Select` is in disabled state.
+   * Sets the accessible aria name of the component.
+   */
+  accessibleName?: string;
+  /**
+   * Defines whether the component is in disabled state.
    *
-   * **Note:** A disabled `Select` is noninteractive.
+   * **Note:** A disabled component is noninteractive.
    */
   disabled?: boolean;
   /**
-   * Determines the name with which the `Select` will be submitted in an HTML form. The value of the `Select` will be the value of the currently selected `Option`.
+   * Determines the name with which the component will be submitted in an HTML form. The value of the component will be the value of the currently selected `Option`.
    *
    * **Important:** For the `name` property to have effect, you must add the following import to your project: `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
    *
@@ -21,11 +25,11 @@ export interface SelectPropTypes extends Omit<WithWebComponentPropTypes, 'onChan
    */
   name?: string;
   /**
-   * Defines whether the `Select` is required.
+   * Defines whether the component is required.
    */
   required?: boolean;
   /**
-   * Defines the value state of the `Select`.
+   * Defines the value state of the component.
    *
    * Available options are:
    *
@@ -37,7 +41,7 @@ export interface SelectPropTypes extends Omit<WithWebComponentPropTypes, 'onChan
    */
   valueState?: ValueState;
   /**
-   * Defines the `Select` options.
+   * Defines the component options.
    *
    * **Note:** Only one selected option is allowed. If more than one option is defined as selected, the last one would be considered as the selected one.
    *
@@ -45,10 +49,10 @@ export interface SelectPropTypes extends Omit<WithWebComponentPropTypes, 'onChan
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Defines the value state message that will be displayed as pop up under the `Select`.
+   * Defines the value state message that will be displayed as pop up under the component.
    *
    * **Note:** If not specified, a default text (in the respective language) will be displayed.
-   * **Note:** The `valueStateMessage` would be displayed, when the `Select` is in `Information`, `Warning` or `Error` value state.
+   * **Note:** The `valueStateMessage` would be displayed, when the component is in `Information`, `Warning` or `Error` value state.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
@@ -67,7 +71,7 @@ export interface SelectPropTypes extends Omit<WithWebComponentPropTypes, 'onChan
  */
 const Select: FC<SelectPropTypes> = withWebComponent<SelectPropTypes>(
   'ui5-select',
-  ['name', 'valueState'],
+  ['accessibleName', 'name', 'valueState'],
   ['disabled', 'required'],
   ['valueStateMessage'],
   ['change']
