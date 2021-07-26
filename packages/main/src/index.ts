@@ -173,6 +173,7 @@ import { VariantManagement } from './dist/VariantManagement';
 import { VerticalAlign } from './dist/VerticalAlign';
 import { Wizard } from './dist/Wizard';
 import { WizardStep } from './dist/WizardStep';
+import { WrappingType } from './dist/WrappingType';
 import { withWebComponent } from './dist/withWebComponent';
 
 export {
@@ -347,5 +348,6 @@ export {
   VerticalAlign,
   Wizard,
   WizardStep,
+  WrappingType,
   withWebComponent
 };

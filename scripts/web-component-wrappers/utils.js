@@ -135,6 +135,7 @@ export const getTypeDefinitionForProperty = (property, interfaces) => {
     case 'ToastPlacement':
     case 'UploadState':
     case 'ValueState':
+    case 'WrappingType':
       return {
         importStatement: `import { ${property.type} } from '@ui5/webcomponents-react/dist/${property.type}';`,
         tsType: `${property.type}`,
