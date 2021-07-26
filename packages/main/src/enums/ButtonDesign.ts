@@ -1,7 +1,43 @@
 export enum ButtonDesign {
+  /**
+   * default type (no special styling)
+   * @public
+   * @type {Default}
+   */
   Default = 'Default',
+
+  /**
+   * accept type (green button)
+   * @public
+   * @type {Positive}
+   */
   Positive = 'Positive',
+
+  /**
+   * reject style (red button)
+   * @public
+   * @type {Negative}
+   */
   Negative = 'Negative',
+
+  /**
+   * transparent type
+   * @public
+   * @type {Transparent}
+   */
   Transparent = 'Transparent',
-  Emphasized = 'Emphasized'
+
+  /**
+   * emphasized type
+   * @public
+   * @type {Emphasized}
+   */
+  Emphasized = 'Emphasized',
+
+  /**
+   * attention type
+   * @public
+   * @type {Attention}
+   */
+  Attention = 'Attention'
 }
