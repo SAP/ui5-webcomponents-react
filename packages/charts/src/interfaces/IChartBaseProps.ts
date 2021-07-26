@@ -48,7 +48,7 @@ export interface IChartBaseProps<T = ICartesianChartConfig> extends Omit<CommonP
   onLegendClick?: (event: CustomEvent) => void;
 
   /**
-   * `noAnimation` disabled all chart animations when set to `true`.
+   * `noAnimation` disables all chart animations when set to `true`.
    */
   noAnimation?: boolean;
 
