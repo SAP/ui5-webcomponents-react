@@ -19,11 +19,20 @@ export interface NotificationListGroupItemPropTypes extends WithWebComponentProp
    */
   busy?: boolean;
   /**
+   * Defines the delay in milliseconds, after which the busy indicator will show up for this component.
+   */
+  busyDelay?: number;
+  /**
    * Defines the `heading` of the item.
    */
   heading?: string;
   /**
-   * Defines the `priority` of the item.
+   * Defines the `priority` of the item. Available options are:
+   *
+   * *   `None`
+   * *   `Low`
+   * *   `Medium`
+   * *   `High`
    */
   priority?: Priority;
   /**
@@ -75,13 +84,14 @@ export interface NotificationListGroupItemPropTypes extends WithWebComponentProp
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/NotificationListGroupItem" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const NotificationListGroupItem: FC<NotificationListGroupItemPropTypes> = withWebComponent<NotificationListGroupItemPropTypes>(
-  'ui5-li-notification-group',
-  ['heading', 'priority'],
-  ['collapsed', 'showCounter', 'busy', 'read', 'showClose', 'selected'],
-  ['actions'],
-  ['toggle', 'close']
-);
+const NotificationListGroupItem: FC<NotificationListGroupItemPropTypes> =
+  withWebComponent<NotificationListGroupItemPropTypes>(
+    'ui5-li-notification-group',
+    ['busyDelay', 'heading', 'priority'],
+    ['collapsed', 'showCounter', 'busy', 'read', 'showClose', 'selected'],
+    ['actions'],
+    ['toggle', 'close']
+  );
 
 NotificationListGroupItem.displayName = 'NotificationListGroupItem';
 
@@ -89,6 +99,7 @@ NotificationListGroupItem.defaultProps = {
   collapsed: false,
   showCounter: false,
   busy: false,
+  busyDelay: 1000,
   priority: Priority.None,
   read: false,
   showClose: false,

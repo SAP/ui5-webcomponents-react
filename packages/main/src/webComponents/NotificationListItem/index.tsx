@@ -17,11 +17,20 @@ export interface NotificationListItemPropTypes extends WithWebComponentPropTypes
    */
   busy?: boolean;
   /**
+   * Defines the delay in milliseconds, after which the busy indicator will show up for this component.
+   */
+  busyDelay?: number;
+  /**
    * Defines the `heading` of the item.
    */
   heading?: string;
   /**
-   * Defines the `priority` of the item.
+   * Defines the `priority` of the item. Available options are:
+   *
+   * *   `None`
+   * *   `Low`
+   * *   `Medium`
+   * *   `High`
    */
   priority?: Priority;
   /**
@@ -42,7 +51,7 @@ export interface NotificationListItemPropTypes extends WithWebComponentPropTypes
    * Defines the avatar, displayed in the `NotificationListItem`.
    *
    * **Note:** Consider using the `Avatar` to display icons, initials or images.
-   * **Note:**In order to be complaint with the UX guidlines and for best experience, we recommend using avatars with 2rem X 2rem in size (32px X 32px). In case you are using the `Avatar` you can set its `size` ``property to `XS` to get the required size - .``
+   * **Note:**In order to be complaint with the UX guidlines and for best experience, we recommend using avatars with 2rem X 2rem in size (32px X 32px). In case you are using the `Avatar` you can set its `size` property to `XS` to get the required size - `<Avatar size="XS"></Avatar>`.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
@@ -55,7 +64,7 @@ export interface NotificationListItemPropTypes extends WithWebComponentPropTypes
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Defines the elements, dipalyed in the footer of the of the `NotificationListItem`.
+   * Defines the elements, displayed in the footer of the of the component.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
@@ -89,7 +98,7 @@ export interface NotificationListItemPropTypes extends WithWebComponentPropTypes
  */
 const NotificationListItem: FC<NotificationListItemPropTypes> = withWebComponent<NotificationListItemPropTypes>(
   'ui5-li-notification',
-  ['heading', 'priority'],
+  ['busyDelay', 'heading', 'priority'],
   ['wrap', 'busy', 'read', 'showClose', 'selected'],
   ['avatar', 'footnotes', 'actions'],
   ['close']
@@ -100,6 +109,7 @@ NotificationListItem.displayName = 'NotificationListItem';
 NotificationListItem.defaultProps = {
   wrap: false,
   busy: false,
+  busyDelay: 1000,
   priority: Priority.None,
   read: false,
   showClose: false,
