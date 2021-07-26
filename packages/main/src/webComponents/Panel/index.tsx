@@ -8,39 +8,39 @@ import '@ui5/webcomponents/dist/Panel';
 
 export interface PanelPropTypes extends WithWebComponentPropTypes {
   /**
-   * Sets the accessible aria name of the `Panel`.
+   * Sets the accessible aria name of the component.
    */
   accessibleName?: string;
   /**
-   * Sets the accessible aria role of the `Panel`. Depending on the usage, you can change the role from the default `Form` to `Region` or `Complementary`.
+   * Sets the accessible aria role of the component. Depending on the usage, you can change the role from the default `Form` to `Region` or `Complementary`.
    */
   accessibleRole?: PanelAccessibleRoles;
   /**
-   * Indicates whether the `Panel` is collapsed and only the header is displayed.
+   * Indicates whether the component is collapsed and only the header is displayed.
    */
   collapsed?: boolean;
   /**
-   * Determines whether the `Panel` is in a fixed state that is not expandable/collapsible by user interaction.
+   * Determines whether the component is in a fixed state that is not expandable/collapsible by user interaction.
    */
   fixed?: boolean;
   /**
-   * Defines the "aria-level" of `Panel` heading, set by the `headerText`.
+   * Defines the "aria-level" of component heading, set by the `headerText`.
    *
    * Available options are: `"H6"` to `"H1"`.
    */
   headerLevel?: TitleLevel;
   /**
-   * This property is used to set the header text of the `Panel`. The text is visible in both expanded and collapsed states.
+   * This property is used to set the header text of the component. The text is visible in both expanded and collapsed states.
    *
    * **Note:** This property is overridden by the `header` slot.
    */
   headerText?: string;
   /**
-   * Determines the content of the `Panel`. The content is visible only when the `Panel` is expanded.
+   * Determines the content of the component. The content is visible only when the component is expanded.
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Defines the `Panel` header area.
+   * Defines the component header area.
    *
    * **Note:** When a header is provided, the `headerText` property is ignored.
    *
@@ -49,7 +49,7 @@ export interface PanelPropTypes extends WithWebComponentPropTypes {
    */
   header?: ReactNode | ReactNode[];
   /**
-   * Fired when the Panel is expanded/collapsed by user interaction.
+   * Fired when the component is expanded/collapsed by user interaction.
    */
   onToggle?: (event: Ui5CustomEvent<HTMLElement>) => void;
 }
