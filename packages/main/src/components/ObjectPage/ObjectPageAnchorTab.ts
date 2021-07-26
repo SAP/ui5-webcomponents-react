@@ -1,10 +1,10 @@
 /* eslint-disable no-underscore-dangle */
-import ifDefined from '@ui5/webcomponents-base/dist/renderer/ifDefined.js';
-import { html, setSuffix, setTags } from '@ui5/webcomponents-base/dist/renderer/LitRenderer.js';
+import { html, setSuffix, setTags, scopeTag } from '@ui5/webcomponents-base/dist/renderer/LitRenderer';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import Icon from '@ui5/webcomponents/dist/Icon.js';
 import Tab from '@ui5/webcomponents/dist/Tab.js';
 import TabContainer from '@ui5/webcomponents/dist/TabContainer.js';
+import { ifDefined } from 'lit-html/directives/if-defined';
 import { DetailedHTMLProps, HTMLAttributes, MouseEventHandler } from 'react';
 
 interface ObjectPageAnchorTabPropTypes extends HTMLAttributes<HTMLElement> {
@@ -45,8 +45,6 @@ class ObjectPageAnchorTab extends Tab {
 
   static get stripTemplate() {
     return (context, tags, suffix) => {
-      setTags(tags);
-      setSuffix(suffix);
       return html` <li
         id="${ifDefined(context._id)}"
         class="${ifDefined(context.headerClasses)}"
@@ -73,7 +71,7 @@ class ObjectPageAnchorTab extends Tab {
               </span>`
             : undefined}
           ${context.withSubSections
-            ? html`<ui5-icon
+            ? html`<${scopeTag('ui5-icon', tags, suffix)}
                 name="slim-arrow-down"
                 class="objectPageSubSectionsIcon"
                 interactive
