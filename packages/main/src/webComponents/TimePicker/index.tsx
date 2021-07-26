@@ -15,9 +15,9 @@ export interface TimePickerPropTypes extends Omit<WithWebComponentPropTypes, 'on
    */
   formatPattern?: string;
   /**
-   * Defines a short hint, intended to aid the user with data entry when the `TimePicker` has no value.
+   * Defines a short hint, intended to aid the user with data entry when the component has no value.
    *
-   * **Note:** When no placeholder is set, the format pattern is displayed as a placeholder. Passing an empty string as the value of this property will make the `TimePicker` appear empty - without placeholder or format pattern.
+   * **Note:** When no placeholder is set, the format pattern is displayed as a placeholder. Passing an empty string as the value of this property will make the component appear empty - without placeholder or format pattern.
    */
   placeholder?: string;
   /**

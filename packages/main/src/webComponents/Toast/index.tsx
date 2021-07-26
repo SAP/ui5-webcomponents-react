@@ -6,13 +6,13 @@ import '@ui5/webcomponents/dist/Toast';
 
 export interface ToastPropTypes extends WithWebComponentPropTypes {
   /**
-   * Defines the duration in milliseconds for which `Toast` remains on the screen before it's automatically closed.
+   * Defines the duration in milliseconds for which component remains on the screen before it's automatically closed.
    *
    * **Note:** The minimum supported value is `500` ms and even if a lower value is set, the duration would remain `500` ms.
    */
   duration?: number;
   /**
-   * Defines the placement of the `Toast` web component.
+   * Defines the placement of the component.
    *
    * Available options are:
    *
@@ -28,7 +28,7 @@ export interface ToastPropTypes extends WithWebComponentPropTypes {
    */
   placement?: ToastPlacement;
   /**
-   * Defines the text of the `Toast` web component.
+   * Defines the text of the component.
    *
    * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
