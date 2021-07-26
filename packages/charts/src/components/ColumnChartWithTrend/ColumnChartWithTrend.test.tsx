@@ -28,16 +28,8 @@ const measures = [
 
 describe('ColumnChart', () => {
   it('Renders with data', async () => {
-    const onClick = jest.fn();
-    const onLegendClick = jest.fn();
     const { container, asFragment } = render(
-      <ColumnChartWithTrend
-        onLegendClick={onLegendClick}
-        onClick={onClick}
-        dataset={complexDataSet}
-        dimensions={dimensions}
-        measures={measures}
-      />
+      <ColumnChartWithTrend dataset={complexDataSet} dimensions={dimensions} measures={measures} />
     );
 
     // Check if two responsive containers are rendered
@@ -59,6 +51,23 @@ describe('ColumnChart', () => {
     const singleBars = columnChartContainer.querySelectorAll('g.recharts-bar-rectangle');
     expect(singleBars.length).toBeGreaterThanOrEqual(1);
 
+    // Check if snapshot matches render
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('Check onClick events', async () => {
+    const onClick = jest.fn();
+    const onLegendClick = jest.fn();
+    const { container, asFragment } = render(
+      <ColumnChartWithTrend
+        onLegendClick={onLegendClick}
+        onClick={onClick}
+        dataset={complexDataSet}
+        dimensions={dimensions}
+        measures={measures}
+      />
+    );
+
     // Check if click on axis label is working
     const firstXAxisLabel = screen.getByText(/January 2.../);
     fireEvent.click(firstXAxisLabel);
@@ -70,11 +79,11 @@ describe('ColumnChart', () => {
     expect(onLegendClick).toBeCalled();
 
     // Check if click in column chart container is working
-    fireEvent.click(columnChartContainer);
+    fireEvent.click(container.querySelector('g.recharts-bar'));
     expect(onClick).toBeCalled();
 
     // Check if click in trend line container is working
-    fireEvent.click(trendLineChartContainer);
+    fireEvent.click(container.querySelector('g.recharts-line'));
     expect(onClick).toBeCalled();
 
     // Check if snapshot matches render
