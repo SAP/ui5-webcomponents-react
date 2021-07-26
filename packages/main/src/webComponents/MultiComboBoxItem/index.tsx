@@ -5,7 +5,7 @@ import '@ui5/webcomponents/dist/MultiComboBoxItem';
 
 export interface MultiComboBoxItemPropTypes extends WithWebComponentPropTypes {
   /**
-   * Defines the selected state of the `MultiComboBoxItem`.
+   * Defines the selected state of the component.
    */
   selected?: boolean;
   /**
@@ -13,11 +13,11 @@ export interface MultiComboBoxItemPropTypes extends WithWebComponentPropTypes {
    */
   stableDomRef?: string;
   /**
-   * Defines the additional text of the `ComboBoxItem`.
+   * Defines the additional text of the component.
    */
   additionalText?: string;
   /**
-   * Defines the text of the `ComboBoxItem`.
+   * Defines the text of the component.
    */
   text?: string;
 }

@@ -11,41 +11,37 @@ export interface MultiComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 
    */
   allowCustomValues?: boolean;
   /**
-   * Defines whether `MultiComboBox` is in disabled state.
+   * Defines whether the component is in disabled state.
    *
-   * **Note:** A disabled `MultiComboBox` is completely noninteractive.
+   * **Note:** A disabled component is completely noninteractive.
    */
   disabled?: boolean;
   /**
-   * Defines the filter type of the `MultiComboBox`. Available options are: `StartsWithPerTerm`, `StartsWith`, `Contains` and `None`.
+   * Defines the filter type of the component. Available options are: `StartsWithPerTerm`, `StartsWith`, `Contains` and `None`.
    */
   filter?: string;
   /**
-   * Indicates whether the dropdown is open. True if the dropdown is open, false otherwise.
-   */
-  open?: boolean;
-  /**
-   * Defines a short hint intended to aid the user with data entry when the `MultiComboBox` has no value.
+   * Defines a short hint intended to aid the user with data entry when the component has no value.
    */
   placeholder?: string;
   /**
-   * Defines whether the `MultiComboBox` is read-only.
+   * Defines whether the component is read-only.
    *
-   * **Note:** A read-only `MultiComboBox` is not editable, but still provides visual feedback upon user interaction.
+   * **Note:** A read-only component is not editable, but still provides visual feedback upon user interaction.
    */
   readonly?: boolean;
   /**
-   * Defines whether the `MultiComboBox` is required.
+   * Defines whether the component is required.
    */
   required?: boolean;
   /**
-   * Defines the value of the `MultiComboBox`.
+   * Defines the value of the component.
    *
    * **Note:** The property is updated upon typing.
    */
   value?: string;
   /**
-   * Defines the value state of the `MultiComboBox`.
+   * Defines the value state of the component.
    *
    * Available options are:
    *
@@ -57,32 +53,21 @@ export interface MultiComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 
    */
   valueState?: ValueState;
   /**
-   * Defines the `MultiComboBox` items.
-   *
-   * Example:
-   *
-   * <pre>
-   *   <code>
-   *    &lt;MultiComboBox><br />
-   *    &nbsp;&nbsp;&lt;StandardListItem>Item #1&lt;/StandardListItem><br />
-   *    &nbsp;&nbsp;&lt;StandardListItem>Item #2&lt;/StandardListItem><br />
-   *    &lt;/MultiComboBox>
-   *  </code>
-   * </pre>
+   * Defines the component items.
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Defines the icon to be displayed in the `MultiComboBox`.
+   * Defines the icon to be displayed in the component.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
    */
   icon?: ReactNode;
   /**
-   * Defines the value state message that will be displayed as pop up under the `MultiComboBox`.
+   * Defines the value state message that will be displayed as pop up under the component.
    *
    * **Note:** If not specified, a default text (in the respective language) will be displayed.
-   * **Note:** The `valueStateMessage` would be displayed, when the `MultiComboBox` is in `Information`, `Warning` or `Error` value state.
+   * **Note:** The `valueStateMessage` would be displayed, when the component is in `Information`, `Warning` or `Error` value state.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
@@ -93,7 +78,7 @@ export interface MultiComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 
    */
   onChange?: (event: Ui5CustomEvent<HTMLInputElement>) => void;
   /**
-   * Fired when the value of the `MultiComboBox` changes at each keystroke.
+   * Fired when the value of the component changes at each keystroke.
    */
   onInput?: (event: Ui5CustomEvent<HTMLInputElement>) => void;
   /**
@@ -114,7 +99,7 @@ export interface MultiComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 
 const MultiComboBox: FC<MultiComboBoxPropTypes> = withWebComponent<MultiComboBoxPropTypes>(
   'ui5-multi-combobox',
   ['filter', 'placeholder', 'value', 'valueState'],
-  ['allowCustomValues', 'disabled', 'open', 'readonly', 'required'],
+  ['allowCustomValues', 'disabled', 'readonly', 'required'],
   ['icon', 'valueStateMessage'],
   ['change', 'input', 'open-change', 'selection-change']
 );
@@ -125,7 +110,6 @@ MultiComboBox.defaultProps = {
   allowCustomValues: false,
   disabled: false,
   filter: 'StartsWithPerTerm',
-  open: false,
   readonly: false,
   required: false,
   valueState: ValueState.None
