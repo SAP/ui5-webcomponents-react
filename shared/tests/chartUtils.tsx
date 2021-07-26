@@ -5,13 +5,15 @@ import { fireEvent, screen } from '@shared/tests/index';
 enum ChartQuery {
   'BarChart' = 'g.recharts-bar',
   'ColumnChart' = 'g.recharts-bar',
-  'LineChart' = 'g.recharts-line'
+  'LineChart' = 'g.recharts-line',
+  'MicroBarChart' = 'div[class^=MicroBarChart-container]'
 }
 
 enum ChartChildrenQuery {
   'ColumnChart' = 'g.recharts-bar-rectangles',
   'BarChart' = 'g.recharts-bar-rectangles',
-  'LineChart' = 'path'
+  'LineChart' = 'path',
+  'MicroBarChart' = 'div[class^=MicroBarChart-valueBar]'
 }
 
 export const createChartRenderTest = (Component: ComponentType<any>, props: {}) => {

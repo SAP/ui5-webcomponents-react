@@ -35,9 +35,9 @@ const measures = [
 ];
 
 describe('ColumnChart', () => {
-  createChartRenderTest(ColumnChart, { dataset: complexDataSet, dimensions: dimensions, measures: measures });
+  createChartRenderTest(ColumnChart, { dataset: complexDataSet, dimensions, measures });
 
-  createOnClickChartTest(ColumnChart, { dataset: complexDataSet, dimensions: dimensions, measures: measures });
+  createOnClickChartTest(ColumnChart, { dataset: complexDataSet, dimensions, measures });
 
   createLoadingPlaceholderTest(ColumnChart, { dimensions: [], measures: [] });
 

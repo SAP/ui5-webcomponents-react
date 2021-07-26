@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { render, screen, fireEvent } from '@shared/tests/index';
 import { MicroBarChart } from '@ui5/webcomponents-react-charts/dist/MicroBarChart';
+import { createChartRenderTest, createLoadingPlaceholderTest } from '@shared/tests/chartUtils';
+import { createPassThroughPropsTest } from '@shared/tests/utils';
 
 const text1 = 'Bar Number One';
 const text2 = 'Bar Number Two';
@@ -13,7 +15,7 @@ const dataset = [
 ];
 
 describe('Micro Bar Chart', () => {
-  test('Render with default Props', () => {
+  it('Render with default Props', () => {
     const utils = render(
       <MicroBarChart
         dimension={{
@@ -32,7 +34,7 @@ describe('Micro Bar Chart', () => {
     expect(utils.asFragment()).toMatchSnapshot();
   });
 
-  test('With formatted dimension', () => {
+  it('With formatted dimension', () => {
     render(
       <MicroBarChart
         dimension={{
@@ -49,7 +51,7 @@ describe('Micro Bar Chart', () => {
     expect(screen.getByText('Bar Number Two - formatted').textContent).toEqual('Bar Number Two - formatted');
   });
 
-  test('With custom colors', () => {
+  it('With custom colors', () => {
     expect(
       render(
         <MicroBarChart
@@ -67,7 +69,7 @@ describe('Micro Bar Chart', () => {
     ).toMatchSnapshot();
   });
 
-  test('Bar click', async () => {
+  it('Bar click', async () => {
     let internalDataset = dataset;
 
     const { getByText, rerender } = render(
@@ -104,8 +106,17 @@ describe('Micro Bar Chart', () => {
     expect(screen.getByText('Bar Number Two - clicked').textContent).toEqual('Bar Number Two - clicked');
   });
 
-  test('loading placeholder', () => {
-    const { asFragment } = render(<MicroBarChart style={{ width: '50%' }} dimension={null} measure={null} />);
-    expect(asFragment()).toMatchSnapshot();
+  createChartRenderTest(MicroBarChart, {
+    dataset,
+    measures: {
+      accessor: 'value'
+    },
+    dimension: {
+      accessor: 'label'
+    }
   });
+
+  createLoadingPlaceholderTest(MicroBarChart, { dimensions: [], measures: [] });
+
+  createPassThroughPropsTest(MicroBarChart, { dimensions: [], measures: [] });
 });
