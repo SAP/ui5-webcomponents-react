@@ -44,7 +44,6 @@ import { DateRangePicker } from './dist/DateRangePicker';
 import { DateTimePicker } from './dist/DateTimePicker';
 import { DeviationIndicator } from './dist/DeviationIndicator';
 import { Dialog } from './dist/Dialog';
-import { DurationPicker } from './dist/DurationPicker';
 import { DynamicPage } from './dist/DynamicPage';
 import { DynamicPageHeader } from './dist/DynamicPageHeader';
 import { DynamicPageTitle } from './dist/DynamicPageTitle';
@@ -221,7 +220,6 @@ export {
   DateTimePicker,
   DeviationIndicator,
   Dialog,
-  DurationPicker,
   DynamicPage,
   DynamicPageHeader,
   DynamicPageTitle,
