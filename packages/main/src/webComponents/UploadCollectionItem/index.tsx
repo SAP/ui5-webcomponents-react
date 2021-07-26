@@ -8,7 +8,11 @@ import '@ui5/webcomponents-fiori/dist/UploadCollectionItem';
 
 export interface UploadCollectionItemPropTypes extends WithWebComponentPropTypes {
   /**
-   * Holds `File`, associated with this item.
+   * Disables the delete button.
+   */
+  disableDeleteButton?: boolean;
+  /**
+   * Holds an instance of `File` associated with this item.
    */
   file?: File;
   /**
@@ -16,21 +20,17 @@ export interface UploadCollectionItemPropTypes extends WithWebComponentPropTypes
    */
   fileName?: string;
   /**
-   * If set to `true` the file name will be clickable and it will fire `onFileNameClick` event upon click.
+   * If set to `true` the file name will be clickable and it will fire `file-name-click` event upon click.
    */
   fileNameClickable?: boolean;
   /**
-   * Removes delete option from `UploadCollection` with `mode` `Delete` for this item.
-   */
-  noDelete?: boolean;
-  /**
    * Hides the retry button when `uploadState` property is `Error`.
    */
-  noRetry?: boolean;
+  hideRetryButton?: boolean;
   /**
    * Hides the terminate button when `uploadState` property is `Uploading`.
    */
-  noTerminate?: boolean;
+  hideTerminateButton?: boolean;
   /**
    * The upload progress in percentage.
    *
@@ -38,7 +38,7 @@ export interface UploadCollectionItemPropTypes extends WithWebComponentPropTypes
    */
   progress?: number;
   /**
-   * If set to `Uploading` or `Error`, a progress indicator showing the `progress` is displayed. Also if set to `Error`, a refresh button is shown. When this icon is pressed `onRetry` event is fired. If set to `Uploading`, a terminate button is shown. When this icon is pressed `onTerminate` event is fired.
+   * If set to `Uploading` or `Error`, a progress indicator showing the `progress` is displayed. Also if set to `Error`, a refresh button is shown. When this icon is pressed `retry` event is fired. If set to `Uploading`, a terminate button is shown. When this icon is pressed `terminate` event is fired.
    */
   uploadState?: UploadState;
   /**
@@ -102,7 +102,7 @@ export interface UploadCollectionItemPropTypes extends WithWebComponentPropTypes
 const UploadCollectionItem: FC<UploadCollectionItemPropTypes> = withWebComponent<UploadCollectionItemPropTypes>(
   'ui5-upload-collection-item',
   ['file', 'fileName', 'progress', 'uploadState', 'type'],
-  ['fileNameClickable', 'noDelete', 'noRetry', 'noTerminate', 'selected'],
+  ['disableDeleteButton', 'fileNameClickable', 'hideRetryButton', 'hideTerminateButton', 'selected'],
   ['thumbnail'],
   ['file-name-click', 'rename', 'retry', 'terminate', 'detail-click']
 );
@@ -110,11 +110,11 @@ const UploadCollectionItem: FC<UploadCollectionItemPropTypes> = withWebComponent
 UploadCollectionItem.displayName = 'UploadCollectionItem';
 
 UploadCollectionItem.defaultProps = {
+  disableDeleteButton: false,
   file: null,
   fileNameClickable: false,
-  noDelete: false,
-  noRetry: false,
-  noTerminate: false,
+  hideRetryButton: false,
+  hideTerminateButton: false,
   progress: 0,
   uploadState: UploadState.Ready,
   type: ListItemTypes.Active,

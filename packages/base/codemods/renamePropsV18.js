@@ -154,11 +154,13 @@ const renamingMap = {
     'aria-label': 'accessibleName'
   },
   UploadCollection: {
-    onFileDeleted: 'onFileDelete',
+    onFileDeleted: 'onItemDelete',
+    noDnd: 'hideDragOverlay'
+  },
+  UploadCollectionItem: {
     noDelete: 'disableDeleteButton',
     noRetry: 'hideRetryButton',
-    noTerminate: 'hideTerminateButton',
-    noDnd: 'hideDragOverlay'
+    noTerminate: 'hideTerminateButton'
   },
   Wizard: {
     'aria-label': 'accessibleName',
