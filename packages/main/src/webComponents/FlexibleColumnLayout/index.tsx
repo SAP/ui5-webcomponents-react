@@ -19,6 +19,10 @@ export interface FlexibleColumnLayoutPropTypes extends WithWebComponentPropTypes
    */
   accessibilityTexts?: Record<string, unknown>;
   /**
+   * Defines the visibility of the arrows, used for expanding and shrinking the columns.
+   */
+  hideArrows?: boolean;
+  /**
    * Defines the columns layout and their proportion.
    *
    * **Note:** The layout also depends on the screen size - one column for screens smaller than 599px, two columns between 599px and 1023px and three columns for sizes bigger than 1023px.
@@ -40,10 +44,6 @@ export interface FlexibleColumnLayoutPropTypes extends WithWebComponentPropTypes
    * **For example:** layout=`TwoColumnsStartExpanded` means the layout will display up to two columns in 67%/33% proportion.
    */
   layout?: FCLLayout;
-  /**
-   * Defines the visibility of the arrows, used for expanding and shrinking the columns.
-   */
-  noArrows?: boolean;
   /**
    * Defines the content in the end column.
    *
@@ -92,7 +92,7 @@ export interface FlexibleColumnLayoutPropTypes extends WithWebComponentPropTypes
 const FlexibleColumnLayout: FC<FlexibleColumnLayoutPropTypes> = withWebComponent<FlexibleColumnLayoutPropTypes>(
   'ui5-flexible-column-layout',
   ['accessibilityTexts', 'layout'],
-  ['noArrows'],
+  ['hideArrows'],
   ['endColumn', 'midColumn', 'startColumn'],
   ['layout-change']
 );
@@ -100,8 +100,8 @@ const FlexibleColumnLayout: FC<FlexibleColumnLayoutPropTypes> = withWebComponent
 FlexibleColumnLayout.displayName = 'FlexibleColumnLayout';
 
 FlexibleColumnLayout.defaultProps = {
-  layout: FCLLayout.OneColumn,
-  noArrows: false
+  hideArrows: false,
+  layout: FCLLayout.OneColumn
 };
 
 export { FlexibleColumnLayout };
