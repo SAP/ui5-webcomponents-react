@@ -56,8 +56,7 @@ Label.displayName = 'Label';
 
 Label.defaultProps = {
   required: false,
-  showColon: false,
-  wrappingType: WrappingType.None
+  showColon: false
 };
 
 export { Label };

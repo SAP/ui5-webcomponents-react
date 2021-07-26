@@ -77,8 +77,7 @@ Link.displayName = 'Link';
 
 Link.defaultProps = {
   design: LinkDesign.Default,
-  disabled: false,
-  wrappingType: WrappingType.None
+  disabled: false
 };
 
 export { Link };

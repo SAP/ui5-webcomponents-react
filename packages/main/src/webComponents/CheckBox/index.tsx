@@ -103,8 +103,7 @@ CheckBox.defaultProps = {
   disabled: false,
   indeterminate: false,
   readonly: false,
-  valueState: ValueState.None,
-  wrappingType: WrappingType.None
+  valueState: ValueState.None
 };
 
 export { CheckBox };

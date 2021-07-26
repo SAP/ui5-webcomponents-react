@@ -91,8 +91,7 @@ RadioButton.defaultProps = {
   checked: false,
   disabled: false,
   readonly: false,
-  valueState: ValueState.None,
-  wrappingType: WrappingType.None
+  valueState: ValueState.None
 };
 
 export { RadioButton };

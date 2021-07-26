@@ -5,7 +5,6 @@ import { FormGroup } from '@ui5/webcomponents-react/dist/FormGroup';
 import { FormItem } from '@ui5/webcomponents-react/dist/FormItem';
 import { Input } from '@ui5/webcomponents-react/dist/Input';
 import { InputType } from '@ui5/webcomponents-react/dist/InputType';
-import { Label } from '@ui5/webcomponents-react/dist/Label';
 import * as React from 'react';
 
 const SIZE_S = 200;

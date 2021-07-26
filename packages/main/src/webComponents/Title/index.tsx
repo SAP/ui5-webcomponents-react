@@ -35,8 +35,7 @@ const Title: FC<TitlePropTypes> = withWebComponent<TitlePropTypes>('ui5-title', 
 Title.displayName = 'Title';
 
 Title.defaultProps = {
-  level: TitleLevel.H2,
-  wrappingType: WrappingType.None
+  level: TitleLevel.H2
 };
 
 export { Title };

@@ -3,6 +3,7 @@
 exports[`NotificationListItem Basic Test (generated) 1`] = `
 <DocumentFragment>
   <ui5-li-notification
+    busy-delay="1000"
     heading="My Notification"
     priority="High"
     show-close="true"
