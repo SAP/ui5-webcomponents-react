@@ -6,9 +6,9 @@ import '@ui5/webcomponents-fiori/dist/ShellBar';
 
 export interface ShellBarPropTypes extends WithWebComponentPropTypes {
   /**
-   * Defines the `notificationCount`, displayed in the notification icon top-right corner.
+   * Defines the `notificationsCount`, displayed in the notification icon top-right corner.
    */
-  notificationCount?: string;
+  notificationsCount?: string;
   /**
    * Defines the `primaryTitle`.
    *
@@ -110,7 +110,7 @@ export interface ShellBarPropTypes extends WithWebComponentPropTypes {
  */
 const ShellBar: FC<ShellBarPropTypes> = withWebComponent<ShellBarPropTypes>(
   'ui5-shellbar',
-  ['notificationCount', 'primaryTitle', 'secondaryTitle'],
+  ['notificationsCount', 'primaryTitle', 'secondaryTitle'],
   ['showCoPilot', 'showNotifications', 'showProductSwitch'],
   ['logo', 'menuItems', 'profile', 'searchField', 'startButton'],
   ['co-pilot-click', 'logo-click', 'menu-item-click', 'notifications-click', 'product-switch-click', 'profile-click']
