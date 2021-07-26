@@ -8,12 +8,13 @@ import { Label } from '@ui5/webcomponents-react/dist/Label';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
 import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';
 import { ComboBoxItem } from '@ui5/webcomponents-react/dist/ComboBoxItem';
+import { ComboBoxGroupItem } from '@ui5/webcomponents-react/dist/ComboBoxGroupItem';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 
 <Meta
   title="Inputs / ComboBox"
   component={ComboBox}
-  subcomponents={{ ComboBoxItem }}
+  subcomponents={{ ComboBoxItem, ComboBoxGroupItem }}
   argTypes={{
     children: { control: { disable: true } },
     icon: { control: { disable: true } },
