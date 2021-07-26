@@ -176,6 +176,7 @@ import { WizardStep } from './dist/WizardStep';
 import { WrappingType } from './dist/WrappingType';
 import { withWebComponent } from './dist/withWebComponent';
 import { SwitchDesign } from './dist/SwitchDesign';
+import { TableMode } from './dist/TableMode';
 
 export {
   ActionSheet,
@@ -315,6 +316,7 @@ export {
   TableCell,
   TableColumn,
   TableGrowingMode,
+  TableMode,
   TablePlaceholder,
   TableRow,
   TableScaleWidthMode,
