@@ -6,11 +6,7 @@ import '@ui5/webcomponents-fiori/dist/ProductSwitchItem';
 
 export interface ProductSwitchItemPropTypes extends Omit<WithWebComponentPropTypes, 'onClick'> {
   /**
-   * Defines the title of the `ProductSwitchItem`.
-   */
-  heading?: string;
-  /**
-   * Defines the icon to be displayed as a graphical element within the `ProductSwitchItem`.
+   * Defines the icon to be displayed as a graphical element within the component.
    *
    * Example:
    *
@@ -20,9 +16,9 @@ export interface ProductSwitchItemPropTypes extends Omit<WithWebComponentPropTyp
    */
   icon?: string;
   /**
-   * Defines the subtitle of the `ProductSwitchItem`.
+   * Defines the subtitle of the component.
    */
-  subtitle?: string;
+  subtitleText?: string;
   /**
    * Defines a target where the `targetSrc` content must be open.
    *
@@ -36,9 +32,13 @@ export interface ProductSwitchItemPropTypes extends Omit<WithWebComponentPropTyp
    */
   target?: string;
   /**
-   * Defines the `ProductSwitchItem` target URI. Supports standard hyperlink behavior.
+   * Defines the component target URI. Supports standard hyperlink behavior.
    */
   targetSrc?: string;
+  /**
+   * Defines the title of the component.
+   */
+  titleText?: string;
   /**
    * Fired when the `ProductSwitchItem` is activated either with a click/tap or by using the Enter or Space key.
    */
@@ -54,7 +54,7 @@ export interface ProductSwitchItemPropTypes extends Omit<WithWebComponentPropTyp
  */
 const ProductSwitchItem: FC<ProductSwitchItemPropTypes> = withWebComponent<ProductSwitchItemPropTypes>(
   'ui5-product-switch-item',
-  ['heading', 'icon', 'subtitle', 'target', 'targetSrc'],
+  ['icon', 'subtitleText', 'target', 'targetSrc', 'titleText'],
   [],
   [],
   ['click']
