@@ -1,15 +1,16 @@
+// Generated file - do not change manually!
+
+/**
+ * Defines input types
+ */
 export enum SwitchDesign {
   /**
-   * Defines the Switch as Textual
-   * @public
-   * @type {Textual}
+   * Defines the Switch as Graphical
    */
-  Textual = 'Textual',
+  Graphical = 'Graphical',
 
   /**
-   * Defines the Switch as Graphical
-   * @public
-   * @type {Graphical}
+   * Defines the Switch as Textual
    */
-  Graphical = 'Graphical'
+  Textual = 'Textual'
 }

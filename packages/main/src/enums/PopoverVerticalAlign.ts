@@ -1,7 +1,23 @@
-// introduced because of web components
+// Generated file - do not change manually!
+
+/**
+ * Types for the placement of message Popover control.
+ */
 export enum PopoverVerticalAlign {
-  Center = 'Center',
-  Top = 'Top',
+  /**
+   * Popover will be placed at the bottom of the reference control.
+   */
   Bottom = 'Bottom',
-  Stretch = 'Stretch'
+
+  Center = 'Center',
+
+  /**
+   * Popover will be streched
+   */
+  Stretch = 'Stretch',
+
+  /**
+   * Popover will be placed at the top of the reference control.
+   */
+  Top = 'Top'
 }

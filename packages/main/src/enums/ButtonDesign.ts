@@ -1,43 +1,36 @@
+// Generated file - do not change manually!
+
+/**
+ * Different types of Button.
+ */
 export enum ButtonDesign {
   /**
+   * attention type
+   */
+  Attention = 'Attention',
+
+  /**
    * default type (no special styling)
-   * @public
-   * @type {Default}
    */
   Default = 'Default',
 
   /**
-   * accept type (green button)
-   * @public
-   * @type {Positive}
-   */
-  Positive = 'Positive',
-
-  /**
-   * reject style (red button)
-   * @public
-   * @type {Negative}
-   */
-  Negative = 'Negative',
-
-  /**
-   * transparent type
-   * @public
-   * @type {Transparent}
-   */
-  Transparent = 'Transparent',
-
-  /**
    * emphasized type
-   * @public
-   * @type {Emphasized}
    */
   Emphasized = 'Emphasized',
 
   /**
-   * attention type
-   * @public
-   * @type {Attention}
+   * reject style (red button)
    */
-  Attention = 'Attention'
+  Negative = 'Negative',
+
+  /**
+   * accept type (green button)
+   */
+  Positive = 'Positive',
+
+  /**
+   * transparent type
+   */
+  Transparent = 'Transparent'
 }

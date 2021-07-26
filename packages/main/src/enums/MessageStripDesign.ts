@@ -1,21 +1,26 @@
+// Generated file - do not change manually!
+
+/**
+ * Defines different types of MessageStrip.
+ */
 export enum MessageStripDesign {
   /**
-   * default type (no special styling)
+   * Message should be just an information
    */
   Information = 'Information',
 
   /**
-   * accept type
-   */
-  Positive = 'Positive',
-
-  /**
-   * reject style
+   * Message is an error
    */
   Negative = 'Negative',
 
   /**
-   * warning type
+   * Message is a success message
+   */
+  Positive = 'Positive',
+
+  /**
+   * Message is a warning
    */
   Warning = 'Warning'
 }
