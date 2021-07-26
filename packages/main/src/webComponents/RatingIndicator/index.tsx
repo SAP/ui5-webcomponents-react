@@ -6,19 +6,23 @@ import '@ui5/webcomponents/dist/RatingIndicator';
 
 export interface RatingIndicatorPropTypes extends Omit<WithWebComponentPropTypes, 'onChange'> {
   /**
-   * Defines whether the `RatingIndicator` is disabled.
+   * Sets the accessible aria name of the component.
+   */
+  accessibleName?: string;
+  /**
+   * Defines whether the component is disabled.
    *
-   * **Note:** A disabled `RatingIndicator` is completely noninteractive.
+   * **Note:** A disabled component is completely noninteractive.
    */
   disabled?: boolean;
   /**
    * The number of displayed rating symbols
    */
-  maxValue?: number;
+  max?: number;
   /**
-   * Defines whether the `RatingIndicator` is read-only.
+   * Defines whether the component is read-only.
    *
-   * **Note:** A read-only `RatingIndicator` is not editable, but still provides visual feedback upon user interaction.
+   * **Note:** A read-only component is not editable, but still provides visual feedback upon user interaction.
    */
   readonly?: boolean;
   /**
@@ -38,13 +42,13 @@ export interface RatingIndicatorPropTypes extends Omit<WithWebComponentPropTypes
 }
 
 /**
- * The rating indicator is used to display a specific number of icons that are used to rate an item. Additionally, it is also used to display the average and overall ratings.
+ * The RatingIndicator is used to display a specific number of icons that are used to rate an item. Additionally, it is also used to display the average and overall ratings.
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/RatingIndicator" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const RatingIndicator: FC<RatingIndicatorPropTypes> = withWebComponent<RatingIndicatorPropTypes>(
   'ui5-rating-indicator',
-  ['maxValue', 'value'],
+  ['accessibleName', 'max', 'value'],
   ['disabled', 'readonly'],
   [],
   ['change']
@@ -54,7 +58,7 @@ RatingIndicator.displayName = 'RatingIndicator';
 
 RatingIndicator.defaultProps = {
   disabled: false,
-  maxValue: 5,
+  max: 5,
   readonly: false,
   value: 0
 };
