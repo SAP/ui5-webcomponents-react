@@ -29,9 +29,10 @@ import { ButtonDesign } from '../../dist/ButtonDesign';
       <Bar
         design={BarDesign.Header}
         startContent={<Button icon="home" title="Go Home" />}
-        middleContent={<Label>Title</Label>}
         endContent={<Button icon="settings" title="Go to Settings" />}
-      />
+      >
+        <Label>Title</Label>
+      </Bar>
     ),
     footer: (
       <Bar

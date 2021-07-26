@@ -15,13 +15,13 @@ import { GitHubLogo } from '../../../../../shared/stories/GitHub-Mark';
   component={Bar}
   argTypes={{
     startContent: { control: { disable: true } },
-    middleContent: { control: { disable: true } },
+    children: { control: { disable: true } },
     endContent: { control: { disable: true } }
   }}
   args={{
     design: BarDesign.Auto,
     startContent: <span>Start Content</span>,
-    middleContent: <span>Center Content</span>,
+    children: <span>Center Content</span>,
     endContent: <span>End Content</span>
   }}
 />
@@ -76,7 +76,6 @@ With the use of the design property, you can set the style of the Bar to appear 
               />
             </>
           }
-          middleContent={<Title>Bar</Title>}
           endContent={
             <>
               <Input placeholder="Search" />
@@ -85,7 +84,9 @@ With the use of the design property, you can set the style of the Bar to appear 
               </Link>
             </>
           }
-        />
+        >
+          <Title>Bar</Title>
+        </Bar>
       );
     }}
   </Story>

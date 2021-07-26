@@ -162,7 +162,11 @@ Closing `ResponsivePopovers` works in the same way as opening them. So again an 
           <ResponsivePopover
             {...args}
             ref={popoverRef}
-            header={<Bar middleContent={<Title>Popover</Title>} endContent={<Icon name="settings" />} />}
+            header={
+              <Bar endContent={<Icon name="settings" />}>
+                <Title>Popover</Title>
+              </Bar>
+            }
             footer={<Bar endContent={<Button onClick={handleClose}>Close</Button>} />}
           >
             <List style={{ width: '200px' }}>

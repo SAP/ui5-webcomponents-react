@@ -5,18 +5,18 @@ import '@ui5/webcomponents/dist/Badge';
 
 export interface BadgePropTypes extends WithWebComponentPropTypes {
   /**
-   * Defines the color scheme of the `Badge`. There are 10 predefined schemes. Each scheme applies different values for the `background-color` and `border-color`. To use one you can set a number from `"1"` to `"10"`. The `colorScheme` `"1"` will be set by default.
+   * Defines the color scheme of the component. There are 10 predefined schemes. Each scheme applies different values for the `background-color` and `border-color`. To use one you can set a number from `"1"` to `"10"`. The `colorScheme` `"1"` will be set by default.
    *
    * **Note:** Color schemes have no visual representation in High Contrast Black (sap\_belize\_hcb) theme.
    */
   colorScheme?: string;
   /**
-   * Defines the text of the `Badge`.
+   * Defines the text of the component.
    * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Defines the `Icon` to be displayed in the `Badge`.
+   * Defines the icon to be displayed in the component.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
