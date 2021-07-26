@@ -38,7 +38,7 @@ export interface RadialChartProps extends Omit<CommonProps, 'onClick'> {
    */
   onClick?: (event: CustomEvent<{ payload: unknown; activePayloads: Record<string, unknown>[] }>) => void;
   /**
-   * `noAnimation` disabled all chart animations when set to `true`.
+   * `noAnimation` disables all chart animations when set to `true`.
    */
   noAnimation?: boolean;
 }
