@@ -128,6 +128,7 @@ export const getTypeDefinitionForProperty = (property, interfaces) => {
     case 'PopoverVerticalAlign':
     case 'Priority':
     case 'SemanticColor':
+    case 'SwitchDesign':
     case 'TabLayout':
     case 'TabContainerTabsPlacement':
     case 'TableGrowingMode':
