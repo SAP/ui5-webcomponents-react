@@ -177,6 +177,7 @@ import { WrappingType } from './dist/WrappingType';
 import { withWebComponent } from './dist/withWebComponent';
 import { SwitchDesign } from './dist/SwitchDesign';
 import { TableMode } from './dist/TableMode';
+import { TableRowType } from './dist/TableRowType';
 
 export {
   ActionSheet,
@@ -319,6 +320,7 @@ export {
   TableMode,
   TablePlaceholder,
   TableRow,
+  TableRowType,
   TableScaleWidthMode,
   TableSelectionBehavior,
   TableSelectionMode,
