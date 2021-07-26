@@ -3,7 +3,6 @@ import { BusyIndicator } from '@ui5/webcomponents-react/dist/BusyIndicator';
 import { BusyIndicatorSize } from '@ui5/webcomponents-react/dist/BusyIndicatorSize';
 import { Select } from '@ui5/webcomponents-react/dist/Select';
 import { Text } from '@ui5/webcomponents-react/dist/Text';
-import { CSSProperties } from 'react';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 
 <Meta
@@ -14,12 +13,8 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   }}
   args={{
     size: BusyIndicatorSize.Medium,
-    style: {},
-    className: '',
-    tooltip: '',
-    slot: '',
-    active: true,
-    ref: null
+    delay: 1000,
+    active: true
   }}
 />
 
