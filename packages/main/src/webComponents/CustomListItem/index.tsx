@@ -7,6 +7,10 @@ import '@ui5/webcomponents/dist/CustomListItem';
 
 export interface CustomListItemPropTypes extends WithWebComponentPropTypes {
   /**
+   * Defines the text alternative of the component. Note: If not provided a default text alternative will be set, if present.
+   */
+  accessibleName?: string;
+  /**
    * Defines the visual indication and behavior of the list items. Available options are `Active` (by default), `Inactive` and `Detail`.
    *
    * **Note:** When set to `Active`, the item will provide visual response upon press and hover, while with type `Inactive` and `Detail` - will not.
@@ -17,7 +21,7 @@ export interface CustomListItemPropTypes extends WithWebComponentPropTypes {
    */
   selected?: boolean;
   /**
-   * Defines the content of the `CustomListItem`.
+   * Defines the content of the component.
    */
   children?: ReactNode | ReactNode[];
   /**
@@ -27,13 +31,13 @@ export interface CustomListItemPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * A component to be used as custom list item within the `List` the same way as the standard `StandardListItem`. The `CustomListItem` accepts arbitrary HTML content to allow full customization
+ * A component to be used as custom list item within the `List` the same way as the standard `StandardListItem`. The component accepts arbitrary HTML content to allow full customization
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/CustomListItem" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const CustomListItem: FC<CustomListItemPropTypes> = withWebComponent<CustomListItemPropTypes>(
   'ui5-li-custom',
-  ['type'],
+  ['accessibleName', 'type'],
   ['selected'],
   [],
   ['detail-click']
