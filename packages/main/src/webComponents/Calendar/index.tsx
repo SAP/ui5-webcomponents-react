@@ -10,7 +10,7 @@ export interface CalendarPropTypes extends WithWebComponentPropTypes {
   /**
    * Defines the visibility of the week numbers column.
    *
-   * **Note: **For calendars other than Gregorian, the week numbers are not displayed regardless of what is set.****
+   * **Note:** For calendars other than Gregorian, the week numbers are not displayed regardless of what is set.
    */
   hideWeekNumbers?: boolean;
   /**
@@ -42,7 +42,7 @@ export interface CalendarPropTypes extends WithWebComponentPropTypes {
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Fired when the selected dates change. **Note:** If you call `preventDefault()` for this event, `Calendar` will not create instances of `CalendarDate` for the newly selected dates. In that case you should do this manually.
+   * Fired when the selected dates change. **Note:** If you call `preventDefault()` for this event, the component will not create instances of `CalendarDate` for the newly selected dates. In that case you should do this manually.
    */
   onSelectedDatesChange?: (event: Ui5CustomEvent<HTMLElement, { values: unknown[]; dates: unknown[] }>) => void;
 }
