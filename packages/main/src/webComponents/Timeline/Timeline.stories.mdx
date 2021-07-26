@@ -13,13 +13,6 @@ import '@ui5/webcomponents-icons/dist/wrench';
   argTypes={{
     children: { control: { disable: true } }
   }}
-  args={{
-    style: {},
-    className: '',
-    tooltip: '',
-    slot: '',
-    ref: null
-  }}
 />
 
 <DocsHeader />
@@ -33,7 +26,7 @@ import '@ui5/webcomponents-icons/dist/wrench';
     {(args) => {
       return (
         <Timeline {...args}>
-          <TimelineItem subtitleText="2019/01/01" icon="phone" itemName={`John Smith `} />
+          <TimelineItem titleText="Schedule Call" subtitleText="2019/01/01" icon="phone" itemName={`John Smith `} />
           <TimelineItem titleText="Weekly Sync - CP Design" subtitleText="2019/01/02" icon="calendar">
             <div>MR SOF02 2.43</div>
           </TimelineItem>

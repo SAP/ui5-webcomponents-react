@@ -738,7 +738,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
           <Popover
             placementType={PlacementType.Bottom}
             horizontalAlign={PopoverHorizontalAlign.Left}
-            noArrow
+            hideArrow
             ref={popoverRef}
             onAfterClose={stopPropagation}
           >

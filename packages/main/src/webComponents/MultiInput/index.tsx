@@ -104,11 +104,11 @@ export interface MultiInputPropTypes extends Omit<WithWebComponentPropTypes, 'on
    *
    * **Note:** The suggestion would be displayed only if the `showSuggestions` property is set to `true`.
    *
-   * **Note:** The `<SuggestionItem>` and <SuggestionGroupItem> are recommended to be used as suggestion items.
+   * **Note:** The `<SuggestionItem>` and `<SuggestionGroupItem>` are recommended to be used as suggestion items.
    *
    * **Note:** Importing the Input Suggestions Support feature:
    * `import "@ui5/webcomponents/dist/features/InputSuggestions.js";`
-   * automatically imports the `<SuggestionItem>` and <SuggestionGroupItem> for your convenience.
+   * automatically imports the `<SuggestionItem>` and `<SuggestionGroupItem>` for your convenience.
    */
   children?: ReactNode | ReactNode[];
   /**
