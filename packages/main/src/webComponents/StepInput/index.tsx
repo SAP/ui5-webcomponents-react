@@ -7,53 +7,57 @@ import '@ui5/webcomponents/dist/StepInput';
 
 export interface StepInputPropTypes extends Omit<WithWebComponentPropTypes, 'onChange'> {
   /**
-   * Determines whether the `StepInput` is displayed as disabled.
+   * Sets the accessible aria name of the component.
+   */
+  accessibleName?: string;
+  /**
+   * Determines whether the component is displayed as disabled.
    */
   disabled?: boolean;
   /**
-   * Defines a maximum value of the `StepInput`.
+   * Defines a maximum value of the component.
    */
   max?: number;
   /**
-   * Defines a minimum value of the `StepInput`.
+   * Defines a minimum value of the component.
    */
   min?: number;
   /**
-   * Determines the name with which the `StepInput` will be submitted in an HTML form.
+   * Determines the name with which the component will be submitted in an HTML form.
    *
    * **Important:** For the `name` property to have effect, you must add the following import to your project: `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
    *
-   * **Note:** When set, a native `input` HTML element will be created inside the `StepInput` so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
+   * **Note:** When set, a native `input` HTML element will be created inside the component so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
    */
   name?: string;
   /**
-   * Defines a short hint, intended to aid the user with data entry when the `StepInput` has no value.
+   * Defines a short hint, intended to aid the user with data entry when the component has no value.
    *
-   * **Note:** When no placeholder is set, the format pattern is displayed as a placeholder. Passing an empty string as the value of this property will make the `StepInput` appear empty - without placeholder or format pattern.
+   * **Note:** When no placeholder is set, the format pattern is displayed as a placeholder. Passing an empty string as the value of this property will make the component appear empty - without placeholder or format pattern.
    */
   placeholder?: string;
   /**
-   * Determines whether the `StepInput` is displayed as read-only.
+   * Determines whether the component is displayed as read-only.
    */
   readonly?: boolean;
   /**
-   * Defines whether the `StepInput` is required.
+   * Defines whether the component is required.
    */
   required?: boolean;
   /**
-   * Defines a step of increasing/decreasing the value of the `StepInput`.
+   * Defines a step of increasing/decreasing the value of the component.
    */
   step?: number;
   /**
-   * Defines a value of the `StepInput`.
+   * Defines a value of the component.
    */
   value?: number;
   /**
-   * Determines the number of digits after the decimal point of the `StepInput`.
+   * Determines the number of digits after the decimal point of the component.
    */
   valuePrecision?: number;
   /**
-   * Defines the value state of the `StepInput`.
+   * Defines the value state of the component.
    *
    * Available options are:
    *
@@ -65,10 +69,10 @@ export interface StepInputPropTypes extends Omit<WithWebComponentPropTypes, 'onC
    */
   valueState?: ValueState;
   /**
-   * Defines the value state message that will be displayed as pop up under the `StepInput`.
+   * Defines the value state message that will be displayed as pop up under the component.
    *
    * **Note:** If not specified, a default text (in the respective language) will be displayed.
-   * **Note:** The `valueStateMessage` would be displayed, when the `StepInput` is in `Information`, `Warning` or `Error` value state.
+   * **Note:** The `valueStateMessage` would be displayed, when the component is in `Information`, `Warning` or `Error` value state.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
@@ -89,7 +93,7 @@ export interface StepInputPropTypes extends Omit<WithWebComponentPropTypes, 'onC
  */
 const StepInput: FC<StepInputPropTypes> = withWebComponent<StepInputPropTypes>(
   'ui5-step-input',
-  ['max', 'min', 'name', 'placeholder', 'step', 'value', 'valuePrecision', 'valueState'],
+  ['accessibleName', 'max', 'min', 'name', 'placeholder', 'step', 'value', 'valuePrecision', 'valueState'],
   ['disabled', 'readonly', 'required'],
   ['valueStateMessage'],
   ['change']
