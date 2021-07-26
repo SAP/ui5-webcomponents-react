@@ -1,9 +1,13 @@
-import { screen, render, fireEvent } from '@shared/tests';
 import * as React from 'react';
 import { complexDataSet } from '../../resources/DemoProps';
 import { BarChart } from './BarChart';
 import { createPassThroughPropsTest } from '@shared/tests/utils';
-import { createChartRenderTest, createOnClickChartTest } from '@shared/tests/chartUtils';
+import {
+  createChartRenderTest,
+  createLoadingPlaceholderTest,
+  createOnClickChartTest,
+  createOnLegendClickNotCrashTest
+} from '@shared/tests/chartUtils';
 
 const dimensions = [
   {
@@ -30,34 +34,13 @@ const measures = [
 ];
 
 describe('BarChart', () => {
-  createChartRenderTest(BarChart, { dataset: complexDataSet, dimensions: dimensions, measures: measures });
+  createChartRenderTest(BarChart, { dataset: complexDataSet, dimensions, measures });
 
-  createOnClickChartTest(BarChart, { dataset: complexDataSet, dimensions: dimensions, measures: measures });
+  createOnClickChartTest(BarChart, { dataset: complexDataSet, dimensions, measures });
 
-  it('loading placeholder', () => {
-    const { container, asFragment } = render(<BarChart dimensions={[]} measures={[]} />);
+  createLoadingPlaceholderTest(BarChart, { dimensions: [], measures: [] });
 
-    // Check if no responsive container is rendered
-    const responsiveContainers = container.querySelectorAll('div.recharts-responsive-container');
-    expect(responsiveContainers.length).toBe(0);
-
-    // Check if no column chart container is rendered
-    const columnChartContainer = container.querySelector('g.recharts-bar');
-    expect(columnChartContainer).toBeNull();
-
-    // Check if snapshot matches render
-    expect(asFragment()).toMatchSnapshot();
-  });
-
-  it('onLegendClick should not crash when invalid handler is provided', () => {
-    render(
-      <BarChart dataset={complexDataSet} dimensions={dimensions} measures={measures} onLegendClick={'123' as any} />
-    );
-
-    expect(() => {
-      fireEvent.click(screen.getByText('Users'));
-    }).not.toThrow();
-  });
+  createOnLegendClickNotCrashTest(BarChart, { dataset: complexDataSet, dimensions, measures });
 
   createPassThroughPropsTest(BarChart, { dimensions: [], measures: [] });
 });

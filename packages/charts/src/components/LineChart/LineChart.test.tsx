@@ -1,9 +1,13 @@
-import { fireEvent, render, screen } from '@shared/tests';
 import * as React from 'react';
 import { complexDataSet } from '../../resources/DemoProps';
 import { LineChart } from './LineChart';
 import { createPassThroughPropsTest } from '@shared/tests/utils';
-import { createChartRenderTest, createOnClickChartTest } from '@shared/tests/chartUtils';
+import {
+  createChartRenderTest,
+  createLoadingPlaceholderTest,
+  createOnClickChartTest,
+  createOnLegendClickNotCrashTest
+} from '@shared/tests/chartUtils';
 
 const dimensions = [
   {
@@ -31,34 +35,13 @@ const measures = [
 ];
 
 describe('LineChart', () => {
-  createChartRenderTest(LineChart, { dataset: complexDataSet, dimensions: dimensions, measures: measures });
+  createChartRenderTest(LineChart, { dataset: complexDataSet, dimensions, measures });
 
-  createOnClickChartTest(LineChart, { dataset: complexDataSet, dimensions: dimensions, measures: measures });
+  createOnClickChartTest(LineChart, { dataset: complexDataSet, dimensions, measures });
 
-  it('loading placeholder', () => {
-    const { container, asFragment } = render(<LineChart style={{ width: '30%' }} dimensions={[]} measures={[]} />);
+  createLoadingPlaceholderTest(LineChart, { dimensions: [], measures: [] });
 
-    // Check if no responsive container is rendered
-    const responsiveContainers = container.querySelectorAll('div.recharts-responsive-container');
-    expect(responsiveContainers.length).toBe(0);
-
-    // Check if no line container is rendered
-    const trendLineContainer = container.querySelector('g.recharts-line');
-    expect(trendLineContainer).toBeNull();
-
-    // Check if snapshot matches render
-    expect(asFragment()).toMatchSnapshot();
-  });
-
-  it('onLegendClick should not crash when invalid handler is provided', () => {
-    render(
-      <LineChart dataset={complexDataSet} dimensions={dimensions} measures={measures} onLegendClick={'123' as any} />
-    );
-
-    expect(() => {
-      fireEvent.click(screen.getByText('Users'));
-    }).not.toThrow();
-  });
+  createOnLegendClickNotCrashTest(LineChart, { dataset: complexDataSet, dimensions, measures });
 
   createPassThroughPropsTest(LineChart, { dimensions: [], measures: [] });
 });

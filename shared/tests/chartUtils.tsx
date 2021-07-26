@@ -69,3 +69,37 @@ export const createOnClickChartTest = (Component: ComponentType<any>, props: {})
     expect(asFragment()).toMatchSnapshot();
   });
 };
+
+export const createLoadingPlaceholderTest = (Component: ComponentType<any>, props: {}) => {
+  it('Loading placeholder', () => {
+    const { asFragment, container } = render(<Component {...props} />);
+
+    const chartQueryType = ChartQuery[Component.displayName];
+
+    if (Component.displayName !== 'ColumnChartWithTrend') {
+      // Check if no responsive container is rendered
+      const responsiveContainers = container.querySelectorAll('div.recharts-responsive-container');
+      expect(responsiveContainers.length).toBe(0);
+
+      // Check if no column chart container is rendered
+      const columnChartContainer = container.querySelector(chartQueryType);
+      expect(columnChartContainer).toBeNull();
+    }
+
+    // Check if snapshot matches render
+    expect(asFragment()).toMatchSnapshot();
+  });
+};
+
+export const createOnLegendClickNotCrashTest = (Component: ComponentType<any>, props: {}) => {
+  it('onLegendClick should not crash when invalid handler is provided', () => {
+    const { asFragment } = render(<Component onLegendClick={'123' as any} {...props} />);
+
+    expect(() => {
+      fireEvent.click(screen.getByText('Users'));
+    }).not.toThrow();
+
+    // Check if snapshot matches render
+    expect(asFragment()).toMatchSnapshot();
+  });
+};
