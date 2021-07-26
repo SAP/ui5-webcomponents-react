@@ -122,7 +122,7 @@ export const getTypeDefinitionForProperty = (property, interfaces) => {
     case 'ListMode':
     case 'ListGrowingMode':
     case 'ListSeparators':
-    case 'MessageStripType':
+    case 'MessageStripDesign':
     case 'PageBackgroundDesign':
     case 'PopoverHorizontalAlign':
     case 'PopoverVerticalAlign':

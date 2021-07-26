@@ -1,4 +1,4 @@
-export enum MessageStripType {
+export enum MessageStripDesign {
   /**
    * default type (no special styling)
    */

@@ -6,7 +6,7 @@ import '@ui5/webcomponents-icons/dist/product';
 import '@ui5/webcomponents-icons/dist/hint';
 import '@ui5/webcomponents-icons/dist/action-settings';
 import '@ui5/webcomponents-icons/dist/lead';
-import { Button, ButtonDesign, CheckBox, Input, Label, MessageStrip, MessageStripType } from '../..';
+import { Button, ButtonDesign, CheckBox, Input, Label, MessageStrip, MessageStripDesign } from '../..';
 import { Title } from '../Title';
 import { useRef } from 'react';
 
@@ -60,7 +60,7 @@ import { useRef } from 'react';
         <Wizard {...args}>
           <WizardStep icon="product" heading="Product Type" selected>
             <Title>1. Product Type</Title>
-            <MessageStrip type={MessageStripType.Information}>
+            <MessageStrip type={MessageStripDesign.Information}>
               The Wizard control is supposed to break down large tasks, into smaller steps, easier for the user to work
               with.
             </MessageStrip>

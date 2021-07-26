@@ -1,4 +1,4 @@
-import { MessageStripType } from '@ui5/webcomponents-react/dist/MessageStripType';
+import { MessageStripDesign } from '@ui5/webcomponents-react/dist/MessageStripDesign';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, ReactNode } from 'react';
@@ -19,7 +19,7 @@ export interface MessageStripPropTypes extends WithWebComponentPropTypes {
    *
    * **Note:** Available options are `"Information"`, `"Positive"`, `"Negative"`, and `"Warning"`.
    */
-  type?: MessageStripType;
+  type?: MessageStripDesign;
   /**
    * Defines the text of the `MessageStrip`.
    *
@@ -61,7 +61,7 @@ MessageStrip.displayName = 'MessageStrip';
 MessageStrip.defaultProps = {
   noCloseButton: false,
   noIcon: false,
-  type: MessageStripType.Information
+  type: MessageStripDesign.Information
 };
 
 export { MessageStrip };

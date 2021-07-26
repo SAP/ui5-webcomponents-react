@@ -84,7 +84,7 @@ import { MessageBox } from './dist/MessageBox';
 import { MessageBoxActions } from './dist/MessageBoxActions';
 import { MessageBoxTypes } from './dist/MessageBoxTypes';
 import { MessageStrip } from './dist/MessageStrip';
-import { MessageStripType } from './dist/MessageStripType';
+import { MessageStripDesign } from './dist/MessageStripDesign';
 import { MultiComboBox } from './dist/MultiComboBox';
 import { MultiComboBoxItem } from './dist/MultiComboBoxItem';
 import { MultiInput } from './dist/MultiInput';
@@ -258,7 +258,7 @@ export {
   MessageBoxActions,
   MessageBoxTypes,
   MessageStrip,
-  MessageStripType,
+  MessageStripDesign,
   MultiComboBox,
   MultiComboBoxItem,
   MultiInput,
