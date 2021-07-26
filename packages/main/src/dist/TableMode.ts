@@ -1,1 +1,5 @@
-export * from '../enums/TableMode';
+// Generated file - do not change manually!
+
+import { TableMode } from '../enums/TableMode';
+
+export { TableMode };
