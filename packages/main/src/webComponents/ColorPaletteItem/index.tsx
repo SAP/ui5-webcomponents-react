@@ -5,11 +5,7 @@ import '@ui5/webcomponents/dist/ColorPaletteItem';
 
 export interface ColorPaletteItemPropTypes extends WithWebComponentPropTypes {
   /**
-   * Defines the stable selector that you can use via getStableDomRef method.
-   */
-  stableDomRef?: string;
-  /**
-   * Defines the value of the `ColorPaletteItem` color.
+   * Defines the colour of the component.
    *
    * **Note:** The value should be a valid CSS color.
    */
@@ -23,7 +19,7 @@ export interface ColorPaletteItemPropTypes extends WithWebComponentPropTypes {
  */
 const ColorPaletteItem: FC<ColorPaletteItemPropTypes> = withWebComponent<ColorPaletteItemPropTypes>(
   'ui5-color-palette-item',
-  ['stableDomRef', 'value'],
+  ['value'],
   [],
   [],
   []
