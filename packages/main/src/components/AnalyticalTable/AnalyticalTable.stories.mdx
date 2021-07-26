@@ -5,7 +5,7 @@ import { TableSelectionBehavior } from '@ui5/webcomponents-react/dist/TableSelec
 import { TableSelectionMode } from '@ui5/webcomponents-react/dist/TableSelectionMode';
 import { TableVisibleRowCountMode } from '@ui5/webcomponents-react/dist/TableVisibleRowCountMode';
 import { SegmentedButton } from '@ui5/webcomponents-react/dist/SegmentedButton';
-import { ToggleButton } from '@ui5/webcomponents-react/dist/ToggleButton';
+import { SegmentedButtonItem } from '@ui5/webcomponents-react/dist/SegmentedButtonItem';
 import generateData from './demo/generateData';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import '@ui5/webcomponents-icons/dist/delete';
@@ -232,21 +232,21 @@ With the `useRowDisableSelection` it's possible to disable the selection of spec
           ) : (
             <>
               <SegmentedButton>
-                <ToggleButton
+                <SegmentedButtonItem
                   onClick={() => {
                     setIsFunc(true);
                   }}
                   pressed
                 >
                   with function parameter
-                </ToggleButton>
-                <ToggleButton
+                </SegmentedButtonItem>
+                <SegmentedButtonItem
                   onClick={() => {
                     setIsFunc(false);
                   }}
                 >
                   with string parameter
-                </ToggleButton>
+                </SegmentedButtonItem>
               </SegmentedButton>
               {isFunc ? (
                 <AnalyticalTable
