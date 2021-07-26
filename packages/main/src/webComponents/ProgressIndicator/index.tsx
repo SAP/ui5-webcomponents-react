@@ -6,19 +6,19 @@ import '@ui5/webcomponents/dist/ProgressIndicator';
 
 export interface ProgressIndicatorPropTypes extends WithWebComponentPropTypes {
   /**
-   * Defines whether `ProgressIndicator` is in disabled state.
+   * Defines whether component is in disabled state.
    */
   disabled?: boolean;
   /**
-   * Defines whether `ProgressIndicator` value is shown.
+   * Defines whether the component value is shown.
    */
   hideValue?: boolean;
   /**
-   * Specifies the numerical value in percent for the length of the `ProgressIndicator`. **Note:** If a value greater than 100 is provided, the percentValue is set to 100. In other cases of invalid value, percentValue is set to its default of 0.
+   * Specifies the numerical value in percent for the length of the component. **Note:** If a value greater than 100 is provided, the percentValue is set to 100. In other cases of invalid value, percentValue is set to its default of 0.
    */
   value?: number;
   /**
-   * Defines the value state of the `ProgressIndicator`.
+   * Defines the value state of the component.
    *
    * Available options are:
    *
@@ -32,7 +32,7 @@ export interface ProgressIndicatorPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * Shows the progress of a process in a graphical way. To indicate the progress, the inside of the `ProgressIndicator` is filled with a color.
+ * Shows the progress of a process in a graphical way. To indicate the progress, the inside of the component is filled with a color.
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/ProgressIndicator" target="_blank">UI5 Web Components Playground</ui5-link>
  */
