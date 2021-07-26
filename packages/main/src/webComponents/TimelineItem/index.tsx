@@ -12,13 +12,13 @@ export interface TimelineItemPropTypes extends WithWebComponentPropTypes {
    */
   icon?: string;
   /**
-   * Defines the name of the item.
+   * Defines the name of the item, displayed before the `title-text`.
    */
-  itemName?: string;
+  name?: string;
   /**
-   * Defines whether the `itemName` is clickable.
+   * Defines if the `name` is clickable.
    */
-  itemNameClickable?: boolean;
+  nameClickable?: boolean;
   /**
    * Defines the subtitle text of the component.
    */
@@ -34,9 +34,9 @@ export interface TimelineItemPropTypes extends WithWebComponentPropTypes {
   /**
    * Fired when the item name is pressed either with a click/tap or by using the Enter or Space key.
    *
-   * **Note:** The event will not be fired if the `item-name-clickable` attribute is not set.
+   * **Note:** The event will not be fired if the `name-clickable` attribute is not set.
    */
-  onItemNameClick?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  onNameClick?: (event: Ui5CustomEvent<HTMLElement>) => void;
 }
 
 /**
@@ -46,16 +46,16 @@ export interface TimelineItemPropTypes extends WithWebComponentPropTypes {
  */
 const TimelineItem: FC<TimelineItemPropTypes> = withWebComponent<TimelineItemPropTypes>(
   'ui5-timeline-item',
-  ['icon', 'itemName', 'subtitleText', 'titleText'],
-  ['itemNameClickable'],
+  ['icon', 'name', 'subtitleText', 'titleText'],
+  ['nameClickable'],
   [],
-  ['item-name-click']
+  ['name-click']
 );
 
 TimelineItem.displayName = 'TimelineItem';
 
 TimelineItem.defaultProps = {
-  itemNameClickable: false
+  nameClickable: false
 };
 
 export { TimelineItem };
