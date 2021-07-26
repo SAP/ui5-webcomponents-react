@@ -184,9 +184,9 @@ export const getEventTargetForComponent = (componentName) => {
     case 'StepInput':
     case 'Switch':
     case 'TimePicker':
+    case 'RadioButton':
       return 'HTMLInputElement';
     case 'Option':
-    case 'RadioButton':
       return 'HTMLOptionElement';
     case 'Button':
     case 'SegmentedButton':
