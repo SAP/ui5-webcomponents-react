@@ -1,7 +1,8 @@
 import { TableGrowingMode } from '@ui5/webcomponents-react/dist/TableGrowingMode';
+import { TableMode } from '@ui5/webcomponents-react/dist/TableMode';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { FC, ReactNode } from 'react';
+import { ReactNode, FC } from 'react';
 
 import '@ui5/webcomponents/dist/Table';
 
@@ -10,6 +11,10 @@ export interface TablePropTypes extends WithWebComponentPropTypes {
    * Defines if the table is in busy state. **In this state the component's opacity is reduced and busy indicator is displayed at the bottom of the table.**
    */
   busy?: boolean;
+  /**
+   * Defines the delay in milliseconds, after which the busy indicator will show up for this component.
+   */
+  busyDelay?: number;
   /**
    * Defines whether the table will have growing capability either by pressing a `More` button, or via user scroll. In both cases `load-more` event is fired.
    *
@@ -23,26 +28,36 @@ export interface TablePropTypes extends WithWebComponentPropTypes {
    */
   growing?: TableGrowingMode;
   /**
-   * Defines the subtext that will be displayed under the `moreText`.
+   * Defines the subtext that will be displayed under the `growingButtonText`.
    *
    * **Note:** This property takes effect if `growing` is set to `Button`.
    */
-  moreSubtext?: string;
+  growingButtonSubtext?: string;
   /**
-   * Defines the text that will be displayed inside the `More` button at the bottom of the table, meant for loading more rows upon press.
+   * Defines the text that will be displayed inside the growing button at the bottom of the table, meant for loading more rows upon press.
    *
    * **Note:** If not specified a built-in text will be displayed.
    * **Note:** This property takes effect if `growing` is set to `Button`.
    */
-  moreText?: string;
+  growingButtonText?: string;
   /**
-   * Defines the text that will be displayed when there is no data and `showNoData` is present.
+   * Defines if the value of `noDataText` will be diplayed when there is no rows present in the table.
+   */
+  hideNoData?: boolean;
+  /**
+   * Defines the mode of the component.
+   *
+   * Available options are:
+   *
+   * *   `MultiSelect`
+   * *   `SingleSelect`
+   * *   `None`
+   */
+  mode?: TableMode;
+  /**
+   * Defines the text that will be displayed when there is no data and `hideNoData` is not present.
    */
   noDataText?: string;
-  /**
-   * Defines if the value of `noDataText` will be displayed when there is no rows present in the table.
-   */
-  showNoData?: boolean;
   /**
    * Determines whether the column headers remain fixed at the top of the page during vertical scrolling as long as the Web Component is in the viewport.
    *
@@ -57,7 +72,7 @@ export interface TablePropTypes extends WithWebComponentPropTypes {
    */
   stickyColumnHeader?: boolean;
   /**
-   * Defines the configuration for the columns of the `Table`.
+   * Defines the configuration for the columns of the component.
    *
    * **Note:** Use `TableColumn` for the intended design.
    *
@@ -66,7 +81,7 @@ export interface TablePropTypes extends WithWebComponentPropTypes {
    */
   columns?: ReactNode | ReactNode[];
   /**
-   * Defines the `Table` rows.
+   * Defines the component rows.
    *
    * **Note:** Use `TableRow` for the intended design.
    */
@@ -78,13 +93,19 @@ export interface TablePropTypes extends WithWebComponentPropTypes {
    */
   onLoadMore?: (event: Ui5CustomEvent<HTMLElement>) => void;
   /**
-   * Fired when the `TableColumn` is shown as a pop-in instead of hiding it.
+   * Fired when `TableColumn` is shown as a pop-in instead of hiding it.
    */
   onPopinChange?: (event: Ui5CustomEvent<HTMLElement, { poppedColumns: unknown[] }>) => void;
   /**
-   * Fired when a row is clicked.
+   * Fired when a row in `Active` mode is clicked or `Enter` key is pressed.
    */
   onRowClick?: (event: Ui5CustomEvent<HTMLElement, { row: ReactNode }>) => void;
+  /**
+   * Fired when selection is changed by user interaction in `SingleSelect` and `MultiSelect` modes.
+   */
+  onSelectionChange?: (
+    event: Ui5CustomEvent<HTMLElement, { selectedRows: unknown[]; previouslySelectedRows: unknown[] }>
+  ) => void;
 }
 
 /**
@@ -98,18 +119,20 @@ export interface TablePropTypes extends WithWebComponentPropTypes {
  */
 const Table: FC<TablePropTypes> = withWebComponent<TablePropTypes>(
   'ui5-table',
-  ['growing', 'moreSubtext', 'moreText', 'noDataText'],
-  ['busy', 'showNoData', 'stickyColumnHeader'],
+  ['busyDelay', 'growing', 'growingButtonSubtext', 'growingButtonText', 'mode', 'noDataText'],
+  ['busy', 'hideNoData', 'stickyColumnHeader'],
   ['columns'],
-  ['load-more', 'popin-change', 'row-click']
+  ['load-more', 'popin-change', 'row-click', 'selection-change']
 );
 
 Table.displayName = 'Table';
 
 Table.defaultProps = {
   busy: false,
+  busyDelay: 1000,
   growing: TableGrowingMode.None,
-  showNoData: false,
+  hideNoData: false,
+  mode: TableMode.None,
   stickyColumnHeader: false
 };
 

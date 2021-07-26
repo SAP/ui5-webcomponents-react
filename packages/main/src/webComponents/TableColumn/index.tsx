@@ -5,7 +5,7 @@ import '@ui5/webcomponents/dist/TableColumn';
 
 export interface TableColumnPropTypes extends WithWebComponentPropTypes {
   /**
-   * According to your `minWidth` settings, the `TableColumn` can be hidden in different screen sizes.
+   * According to your `minWidth` settings, the component can be hidden in different screen sizes.
    *
    * Setting this property to `true`, shows this column as pop-in instead of hiding it.
    */
@@ -13,7 +13,7 @@ export interface TableColumnPropTypes extends WithWebComponentPropTypes {
   /**
    * Defines the minimum table width required to display this column. By default it is always displayed.
    *
-   * The responsive behavior of the `Table` is determined by this property. As an example, by setting `minWidth` property to `40em` shows this column on tablet (and desktop) but hides it on mobile.
+   * The responsive behavior of the `Table` is determined by this property. As an example, by setting `minWidth` property to `400` sets the minimum width to 400 pixels, and shows this column on tablet (and desktop) but hides it on mobile.
    * For further responsive design options, see `demandPopin` property.
    */
   minWidth?: number;
@@ -28,7 +28,7 @@ export interface TableColumnPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * The `TableColumn` component allows to define column specific properties that are applied when rendering the `Table` component
+ * The `TableColumn` component allows to define column specific properties that are applied when rendering the `Table` component.
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/TableColumn" target="_blank">UI5 Web Components Playground</ui5-link>
  */
