@@ -1,4 +1,4 @@
-import { PlacementType } from '@ui5/webcomponents-react/dist/PlacementType';
+import { PopoverPlacementType } from '@ui5/webcomponents-react/dist/PopoverPlacementType';
 import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/dist/PopoverHorizontalAlign';
 import { PopoverVerticalAlign } from '@ui5/webcomponents-react/dist/PopoverVerticalAlign';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
@@ -51,7 +51,7 @@ export interface ResponsivePopoverPropTypes extends WithWebComponentPropTypes {
    * *   `Top`
    * *   `Bottom`
    */
-  placementType?: PlacementType;
+  placementType?: PopoverPlacementType;
   /**
    * Determines the vertical alignment of the component.
    *
@@ -132,7 +132,7 @@ ResponsivePopover.defaultProps = {
   hideBackdrop: false,
   horizontalAlign: PopoverHorizontalAlign.Center,
   modal: false,
-  placementType: PlacementType.Right,
+  placementType: PopoverPlacementType.Right,
   verticalAlign: PopoverVerticalAlign.Center,
   preventFocusRestore: false
 };

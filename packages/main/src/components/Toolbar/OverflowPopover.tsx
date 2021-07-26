@@ -1,6 +1,6 @@
 import '@ui5/webcomponents-icons/dist/overflow';
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
-import { PlacementType } from '@ui5/webcomponents-react/dist/PlacementType';
+import { PopoverPlacementType } from '@ui5/webcomponents-react/dist/PopoverPlacementType';
 import { Popover } from '@ui5/webcomponents-react/dist/Popover';
 import { ToggleButton } from '@ui5/webcomponents-react/dist/ToggleButton';
 import React, { FC, ReactElement, ReactNode, useCallback, useEffect, useRef, useState } from 'react';
@@ -79,7 +79,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
         pressed={pressed}
       />
       {createPortal(
-        <Popover placementType={PlacementType.Bottom} ref={popoverRef} onAfterClose={handleClose}>
+        <Popover placementType={PopoverPlacementType.Bottom} ref={popoverRef} onAfterClose={handleClose}>
           <div className={contentClass}>{renderChildren()}</div>
         </Popover>,
         document.body

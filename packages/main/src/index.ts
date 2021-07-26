@@ -99,7 +99,6 @@ import { Page } from './dist/Page';
 import { PageBackgroundDesign } from './dist/PageBackgroundDesign';
 import { Panel } from './dist/Panel';
 import { PanelAccessibleRoles } from './dist/PanelAccessibleRoles';
-import { PlacementType } from './dist/PlacementType';
 import { Popover } from './dist/Popover';
 import { PopoverHorizontalAlign } from './dist/PopoverHorizontalAlign';
 import { PopoverPlacementType } from './dist/PopoverPlacementType';
@@ -274,10 +273,9 @@ export {
   PageBackgroundDesign,
   Panel,
   PanelAccessibleRoles,
-  PlacementType,
+  PopoverPlacementType,
   Popover,
   PopoverHorizontalAlign,
-  PopoverPlacementType,
   PopoverVerticalAlign,
   Priority,
   ProductSwitch,

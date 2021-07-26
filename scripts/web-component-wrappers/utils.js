@@ -124,6 +124,7 @@ export const getTypeDefinitionForProperty = (property, interfaces) => {
     case 'MessageStripDesign':
     case 'PageBackgroundDesign':
     case 'PopoverHorizontalAlign':
+    case 'PopoverPlacementType':
     case 'PopoverVerticalAlign':
     case 'Priority':
     case 'SemanticColor':
@@ -153,12 +154,6 @@ export const getTypeDefinitionForProperty = (property, interfaces) => {
       return {
         importStatement: "import { PanelAccessibleRoles } from '@ui5/webcomponents-react/dist/PanelAccessibleRoles';",
         tsType: 'PanelAccessibleRoles',
-        isEnum: true
-      };
-    case 'PopoverPlacementType':
-      return {
-        importStatement: "import { PlacementType } from '@ui5/webcomponents-react/dist/PlacementType';",
-        tsType: 'PlacementType',
         isEnum: true
       };
     default:

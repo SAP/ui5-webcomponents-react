@@ -11,7 +11,7 @@ import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
 import { List } from '@ui5/webcomponents-react/dist/List';
 import { ListItemTypes } from '@ui5/webcomponents-react/dist/ListItemTypes';
 import { ListMode } from '@ui5/webcomponents-react/dist/ListMode';
-import { PlacementType } from '@ui5/webcomponents-react/dist/PlacementType';
+import { PopoverPlacementType } from '@ui5/webcomponents-react/dist/PopoverPlacementType';
 import { ResponsivePopover } from '@ui5/webcomponents-react/dist/ResponsivePopover';
 import { StandardListItem } from '@ui5/webcomponents-react/dist/StandardListItem';
 import { Title } from '@ui5/webcomponents-react/dist/Title';
@@ -31,7 +31,7 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
   /**
    * Determines on which side the VariantManagement popover is placed at.
    */
-  placement?: PlacementType;
+  placement?: PopoverPlacementType;
   /**
    * Describes the title of the VariantManagement popover.
    */
@@ -228,7 +228,7 @@ VariantManagement.defaultProps = {
   selectedKey: null,
   onSelect: () => {},
   closeOnItemSelect: true,
-  placement: PlacementType.Bottom,
+  placement: PopoverPlacementType.Bottom,
   level: TitleLevel.H4,
   disabled: false,
   variantItems: []
