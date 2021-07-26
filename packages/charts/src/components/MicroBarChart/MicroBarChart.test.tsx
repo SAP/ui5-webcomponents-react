@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { render, screen, fireEvent } from '@shared/tests/index';
 import { MicroBarChart } from '@ui5/webcomponents-react-charts/dist/MicroBarChart';
-import { createChartRenderTest, createLoadingPlaceholderTest } from '@shared/tests/chartUtils';
+import { createChartRenderTest, createLoadingPlaceholderTest, createOnClickChartTest } from '@shared/tests/chartUtils';
 import { createPassThroughPropsTest } from '@shared/tests/utils';
 
-const text1 = 'Bar Number One';
-const text2 = 'Bar Number Two';
-const text3 = 'Bar Number Three';
+const text1 = 'January';
+const text2 = 'February';
+const text3 = 'March';
 
 const dataset = [
   { value: 10, label: text1 },
@@ -47,8 +47,8 @@ describe('Micro Bar Chart', () => {
         dataset={dataset}
       />
     );
-    expect(screen.getByText('Bar Number One - formatted').textContent).toEqual('Bar Number One - formatted');
-    expect(screen.getByText('Bar Number Two - formatted').textContent).toEqual('Bar Number Two - formatted');
+    expect(screen.getByText('January - formatted').textContent).toEqual('January - formatted');
+    expect(screen.getByText('February - formatted').textContent).toEqual('February - formatted');
   });
 
   it('With custom colors', () => {
@@ -79,9 +79,9 @@ describe('Micro Bar Chart', () => {
         }}
         onDataPointClick={() =>
           (internalDataset = [
-            { value: 10, label: 'Bar Number One' },
-            { value: 100, label: 'Bar Number Two - clicked' },
-            { value: 70, label: 'Bar Number Three' }
+            { value: 10, label: 'January' },
+            { value: 100, label: 'February - clicked' },
+            { value: 70, label: 'March' }
           ])
         }
         measure={{
@@ -90,7 +90,7 @@ describe('Micro Bar Chart', () => {
         dataset={internalDataset}
       />
     );
-    fireEvent.click(getByText('Bar Number Two'));
+    fireEvent.click(getByText('February'));
 
     rerender(
       <MicroBarChart
@@ -103,11 +103,22 @@ describe('Micro Bar Chart', () => {
         dataset={internalDataset}
       />
     );
-    expect(screen.getByText('Bar Number Two - clicked').textContent).toEqual('Bar Number Two - clicked');
+    expect(screen.getByText('February - clicked').textContent).toEqual('February - clicked');
   });
 
   createChartRenderTest(MicroBarChart, {
     dataset,
+    measures: {
+      accessor: 'value'
+    },
+    dimension: {
+      accessor: 'label'
+    }
+  });
+
+  createOnClickChartTest(MicroBarChart, {
+    dataset,
+    noLegend: false,
     measures: {
       accessor: 'value'
     },

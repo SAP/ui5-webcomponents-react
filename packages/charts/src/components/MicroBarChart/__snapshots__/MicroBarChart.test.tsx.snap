@@ -1,5 +1,100 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Micro Bar Chart Check onClick events 1`] = `
+<DocumentFragment>
+  <div
+    style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
+  >
+    <div
+      class="recharts-responsive-container"
+      style="width: 400px; height: 400px;"
+    >
+      <div
+        class="MicroBarChart-container"
+        height="400"
+        width="400"
+      >
+        <div
+          class="MicroBarChart-barContainer"
+        >
+          <div
+            class="MicroBarChart-labelContainer"
+          >
+            <span
+              class="MicroBarChart-label"
+              title="January"
+            >
+              January
+            </span>
+            <span
+              class="MicroBarChart-text"
+            />
+          </div>
+          <div
+            class="MicroBarChart-valueContainer"
+            style="opacity: 1; height: 4px;"
+          >
+            <div
+              class="MicroBarChart-valueBar"
+            />
+          </div>
+        </div>
+        <div
+          class="MicroBarChart-barContainer"
+        >
+          <div
+            class="MicroBarChart-labelContainer"
+          >
+            <span
+              class="MicroBarChart-label"
+              title="February"
+            >
+              February
+            </span>
+            <span
+              class="MicroBarChart-text"
+            />
+          </div>
+          <div
+            class="MicroBarChart-valueContainer"
+            style="opacity: 1; height: 4px;"
+          >
+            <div
+              class="MicroBarChart-valueBar"
+            />
+          </div>
+        </div>
+        <div
+          class="MicroBarChart-barContainer"
+        >
+          <div
+            class="MicroBarChart-labelContainer"
+          >
+            <span
+              class="MicroBarChart-label"
+              title="March"
+            >
+              March
+            </span>
+            <span
+              class="MicroBarChart-text"
+            />
+          </div>
+          <div
+            class="MicroBarChart-valueContainer"
+            style="opacity: 1; height: 4px;"
+          >
+            <div
+              class="MicroBarChart-valueBar"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
 exports[`Micro Bar Chart Loading placeholder 1`] = `
 <DocumentFragment>
   <div
@@ -145,9 +240,9 @@ exports[`Micro Bar Chart Render chart with data 1`] = `
           >
             <span
               class="MicroBarChart-label"
-              title="Bar Number One"
+              title="January"
             >
-              Bar Number One
+              January
             </span>
             <span
               class="MicroBarChart-text"
@@ -170,9 +265,9 @@ exports[`Micro Bar Chart Render chart with data 1`] = `
           >
             <span
               class="MicroBarChart-label"
-              title="Bar Number Two"
+              title="February"
             >
-              Bar Number Two
+              February
             </span>
             <span
               class="MicroBarChart-text"
@@ -195,9 +290,9 @@ exports[`Micro Bar Chart Render chart with data 1`] = `
           >
             <span
               class="MicroBarChart-label"
-              title="Bar Number Three"
+              title="March"
             >
-              Bar Number Three
+              March
             </span>
             <span
               class="MicroBarChart-text"
@@ -240,9 +335,9 @@ exports[`Micro Bar Chart Render with default Props 1`] = `
           >
             <span
               class="MicroBarChart-label"
-              title="Bar Number One"
+              title="January"
             >
-              Bar Number One
+              January
             </span>
             <span
               class="MicroBarChart-text"
@@ -269,9 +364,9 @@ exports[`Micro Bar Chart Render with default Props 1`] = `
           >
             <span
               class="MicroBarChart-label"
-              title="Bar Number Two"
+              title="February"
             >
-              Bar Number Two
+              February
             </span>
             <span
               class="MicroBarChart-text"
@@ -298,9 +393,9 @@ exports[`Micro Bar Chart Render with default Props 1`] = `
           >
             <span
               class="MicroBarChart-label"
-              title="Bar Number Three"
+              title="March"
             >
-              Bar Number Three
+              March
             </span>
             <span
               class="MicroBarChart-text"
@@ -347,9 +442,9 @@ exports[`Micro Bar Chart With custom colors 1`] = `
           >
             <span
               class="MicroBarChart-label"
-              title="Bar Number One - formatted"
+              title="January - formatted"
             >
-              Bar Number One - formatted
+              January - formatted
             </span>
             <span
               class="MicroBarChart-text"
@@ -376,9 +471,9 @@ exports[`Micro Bar Chart With custom colors 1`] = `
           >
             <span
               class="MicroBarChart-label"
-              title="Bar Number Two - formatted"
+              title="February - formatted"
             >
-              Bar Number Two - formatted
+              February - formatted
             </span>
             <span
               class="MicroBarChart-text"
@@ -405,9 +500,9 @@ exports[`Micro Bar Chart With custom colors 1`] = `
           >
             <span
               class="MicroBarChart-label"
-              title="Bar Number Three - formatted"
+              title="March - formatted"
             >
-              Bar Number Three - formatted
+              March - formatted
             </span>
             <span
               class="MicroBarChart-text"

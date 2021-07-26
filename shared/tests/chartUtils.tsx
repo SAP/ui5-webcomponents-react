@@ -51,6 +51,7 @@ export const createOnClickChartTest = (Component: ComponentType<any>, props: {})
     const { asFragment, container } = render(<Component onClick={onClick} onLegendClick={onLegendClick} {...props} />);
 
     const chartQueryType = ChartQuery[Component.displayName];
+    const chartChildrenType = ChartChildrenQuery[Component.displayName];
 
     if (Component.displayName !== 'ColumnChartWithTrend') {
       // Check if click on axis label is working
@@ -58,13 +59,20 @@ export const createOnClickChartTest = (Component: ComponentType<any>, props: {})
       fireEvent.click(firstYAxisLabel);
       expect(onClick).toBeCalled();
 
-      // Check if click in column chart container is working
+      // Check if click in chart container is working
       fireEvent.click(container.querySelector(chartQueryType));
       expect(onClick).toBeCalled();
 
-      fireEvent.click(screen.getByText('Users'));
-      expect(onLegendClick).toBeCalled();
-      expect(onLegendClick.mock.calls[0][0].detail.dataKey).toEqual('users');
+      // Check if click on chart element is working
+      fireEvent.click(container.querySelector(chartChildrenType));
+      expect(onClick).toBeCalled();
+
+      // @ts-ignore
+      if (props.noLegend) {
+        fireEvent.click(screen.getByText('Users'));
+        expect(onLegendClick).toBeCalled();
+        expect(onLegendClick.mock.calls[0][0].detail.dataKey).toEqual('users');
+      }
     }
 
     // Check if snapshot matches render
