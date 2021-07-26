@@ -5,11 +5,11 @@ import '@ui5/webcomponents/dist/ComboBoxItem';
 
 export interface ComboBoxItemPropTypes extends WithWebComponentPropTypes {
   /**
-   * Defines the additional text of the `ComboBoxItem`.
+   * Defines the additional text of the component.
    */
   additionalText?: string;
   /**
-   * Defines the text of the `ComboBoxItem`.
+   * Defines the text of the component.
    */
   text?: string;
 }
