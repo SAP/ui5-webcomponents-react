@@ -3,6 +3,7 @@ import * as React from 'react';
 import { complexDataSet } from '../../resources/DemoProps';
 import { ColumnChart } from './ColumnChart';
 import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { createChartRenderTest } from '@shared/tests/chartUtils';
 
 const dimensions = [
   {
@@ -30,26 +31,7 @@ const measures = [
 ];
 
 describe('ColumnChart', () => {
-  it('Renders with data', () => {
-    const { asFragment, container } = render(
-      <ColumnChart dataset={complexDataSet} dimensions={dimensions} measures={measures} />
-    );
-
-    // Check if a single responsive container is rendered
-    const responsiveContainers = container.querySelectorAll('div.recharts-responsive-container');
-    expect(responsiveContainers.length).toBe(1);
-
-    // Check if bar chart container, bars and single bars are rendered
-    const columnChartContainer = container.querySelector('g.recharts-bar');
-    expect(columnChartContainer).toBeInTheDocument();
-    const barContainer = columnChartContainer.querySelectorAll('g.recharts-bar-rectangles');
-    expect(barContainer.length).toBeGreaterThanOrEqual(1);
-    const singleBars = columnChartContainer.querySelectorAll('g.recharts-bar-rectangle');
-    expect(singleBars.length).toBeGreaterThanOrEqual(1);
-
-    // Check if snapshot matches render
-    expect(asFragment()).toMatchSnapshot();
-  });
+  createChartRenderTest(<ColumnChart dataset={complexDataSet} dimensions={dimensions} measures={measures} />);
 
   it('Check onClick events', () => {
     const onClick = jest.fn();

@@ -3,6 +3,7 @@ import * as React from 'react';
 import { complexDataSet } from '../../resources/DemoProps';
 import { LineChart } from './LineChart';
 import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { createChartRenderTest } from '@shared/tests/chartUtils';
 
 const dimensions = [
   {
@@ -30,26 +31,9 @@ const measures = [
 ];
 
 describe('LineChart', () => {
-  it('Renders with data', () => {
-    const { container, asFragment } = render(
-      <LineChart dataset={complexDataSet} dimensions={dimensions} measures={measures} style={{ width: '50%' }} />
-    );
+  createChartRenderTest(<LineChart dataset={complexDataSet} dimensions={dimensions} measures={measures} />);
 
-    // Check if two responsive containers are rendered
-    const responsiveContainers = container.querySelectorAll('div.recharts-responsive-container');
-    expect(responsiveContainers.length).toBe(1);
-
-    // Check if trend line container, trend line and the path of the line is rendered correctly
-    const lineChartContainer = container.querySelector('g.recharts-line');
-    expect(lineChartContainer).toBeInTheDocument();
-    const trendLine = lineChartContainer.querySelector('path');
-    expect(trendLine).not.toBeNull();
-    expect(trendLine.getAttribute('d')[0]).toBe('M');
-
-    expect(asFragment()).toMatchSnapshot();
-  });
-
-  it('Renders with data', async () => {
+  it('Check onClick events', async () => {
     const onClick = jest.fn();
     const onLegendClick = jest.fn();
     const { container, asFragment } = render(
