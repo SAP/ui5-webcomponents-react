@@ -1,7 +1,7 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { ActionSheet } from '@ui5/webcomponents-react/dist/ActionSheet';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
-import { PlacementType } from '@ui5/webcomponents-react/dist/PlacementType';
+import { PopoverPlacementType } from '@ui5/webcomponents-react/dist/PopoverPlacementType';
 import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/dist/PopoverHorizontalAlign';
 import { PopoverVerticalAlign } from '@ui5/webcomponents-react/dist/PopoverVerticalAlign';
 import { useCallback, useRef } from 'react';
@@ -23,7 +23,7 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   }}
   args={{
     horizontalAlign: PopoverHorizontalAlign.Center,
-    placementType: PlacementType.Right,
+    placementType: PopoverPlacementType.Right,
     verticalAlign: PopoverVerticalAlign.Center
   }}
 />
