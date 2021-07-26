@@ -127,7 +127,7 @@ const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
 
     const handleOpenVariantManagement = useCallback(
       (e) => {
-        popoverRef.current.open(e.target);
+        popoverRef.current.openBy(e.target);
       },
       [popoverRef]
     );

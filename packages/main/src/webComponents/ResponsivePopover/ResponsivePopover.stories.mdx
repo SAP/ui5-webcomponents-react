@@ -46,7 +46,7 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
     {(args) => {
       const popoverRef = useRef(null);
       const onButtonClick = (e) => {
-        popoverRef.current.open(e.target);
+        popoverRef.current.openBy(e.target);
       };
       return (
         <>
@@ -87,7 +87,7 @@ Use it when you want to make sure that all the content is visible on any device
   const PopoverComponent = () => {
     const popoverRef = useRef();
     const onButtonClick = (e) => {
-        popoverRef.current.open(e.target);
+        popoverRef.current.openBy(e.target);
     };
     return (
       <>
@@ -107,7 +107,7 @@ In this case, we recommend using [createPortal](https://reactjs.org/docs/portals
 const PopoverComponent = () => {
   const popoverRef = useRef(null);
   const onButtonClick = (e) => {
-    popoverRef.current.open(e.target);
+    popoverRef.current.openBy(e.target);
   };
   return (
     <>
@@ -126,7 +126,7 @@ Closing `ResponsivePopovers` works in the same way as opening them. So again an 
   const PopoverComponent = () => {
     const popoverRef = useRef();
     const handleOpen = (e) => {
-        popoverRef.current.open(e.target);
+        popoverRef.current.openBy(e.target);
     };
     const handleClose = () => {
         popoverRef.current.close();
@@ -151,7 +151,7 @@ Closing `ResponsivePopovers` works in the same way as opening them. So again an 
     {(args) => {
       const popoverRef = useRef(null);
       const onButtonClick = (e) => {
-        popoverRef.current.open(e.target);
+        popoverRef.current.openBy(e.target);
       };
       const handleClose = () => {
         popoverRef.current.close();
