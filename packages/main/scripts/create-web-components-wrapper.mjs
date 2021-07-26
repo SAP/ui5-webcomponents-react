@@ -72,6 +72,7 @@ const prettierConfig = {
 };
 
 const WEB_COMPONENTS_ROOT_DIR = path.join(PATHS.packages, 'main', 'src', 'webComponents');
+const ENUMS_DIR = path.join(PATHS.packages, 'main', 'src', 'enums');
 const DIST_DIR = path.join(PATHS.packages, 'main', 'src', 'dist');
 
 const EXTENDED_PROP_DESCRIPTION = {
@@ -519,6 +520,54 @@ const resolveInheritedAttributes = (componentSpec) => {
 
   return componentSpec;
 };
+
+[
+  ...mainWebComponentsSpec.symbols.filter((spec) => spec.module.startsWith('types/') && spec.visibility === 'public'),
+  ...fioriWebComponentsSpec.symbols.filter((spec) => spec.module.startsWith('types/') && spec.visibility === 'public')
+].forEach((spec) => {
+  if (!spec.properties) {
+    return;
+  }
+  const properties = spec.properties.map((prop) => {
+    const propDescription = prop.description
+      ? dedent`
+    /**
+     * ${prop.description.replaceAll('\n', '\n * ') ?? ''}
+     */
+    `
+      : '';
+    return dedent`
+    ${propDescription}
+     ${prop.name} = '${prop.type}'`;
+  });
+
+  const template = dedent`
+  // Generated file - do not change manually! 
+  
+  /**
+   * ${spec.description ?? spec.basename}
+   */
+   export enum ${spec.basename} {
+     ${properties.join(',\n\n')}
+   }
+  `;
+
+  fs.writeFileSync(path.join(ENUMS_DIR, `${spec.basename}.ts`), prettier.format(template, prettierConfig));
+  fs.writeFileSync(
+    path.join(DIST_DIR, `${spec.basename}.ts`),
+    prettier.format(
+      dedent`
+  // Generated file - do not change manually!
+  
+  import { ${spec.basename} } from '../enums/${spec.basename}';
+  
+  export { ${spec.basename} };
+  
+  `,
+      prettierConfig
+    )
+  );
+});
 
 allWebComponents
   .filter((spec) => spec.visibility === 'public')
