@@ -105,7 +105,6 @@ export const getTypeDefinitionForProperty = (property, interfaces) => {
       };
     // UI5 Web Component Enums
     case 'AvatarColorScheme':
-    case 'AvatarFitType':
     case 'AvatarGroupType':
     case 'AvatarShape':
     case 'AvatarSize':
