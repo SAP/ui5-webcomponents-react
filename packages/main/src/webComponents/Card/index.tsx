@@ -6,23 +6,27 @@ import '@ui5/webcomponents/dist/Card';
 
 export interface CardPropTypes extends WithWebComponentPropTypes {
   /**
-   * Defines if the `Card` header would be interactive, e.g gets hover effect, gets focused and `headerPress` event is fired, when it is pressed.
+   * Sets the accessible aria name of the component.
+   */
+  accessibleName?: string;
+  /**
+   * Defines if the component header would be interactive, e.g gets hover effect, gets focused and `headerPress` event is fired, when it is pressed.
    */
   headerInteractive?: boolean;
   /**
-   * Defines the title displayed in the `Card` header.
-   */
-  heading?: string;
-  /**
-   * Defines the status displayed in the `Card` header.
+   * Defines the status displayed in the component header.
    *
    * **Note:** If the `action` slot is set, the `status` will not be displayed, you can either have `action`, or `status`.
    */
   status?: string;
   /**
-   * Defines the subheading displayed in the `Card` header.
+   * Defines the subtitle displayed in the component header.
    */
-  subheading?: string;
+  subtitleText?: string;
+  /**
+   * Defines the title displayed in the component header.
+   */
+  titleText?: string;
   /**
    * Defines an action, displayed in the right most part of the header.
    *
@@ -42,11 +46,11 @@ export interface CardPropTypes extends WithWebComponentPropTypes {
    */
   avatar?: ReactNode | ReactNode[];
   /**
-   * Defines the content of the `Card`.
+   * Defines the content of the component.
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Fired when the `Card` header is activated by mouse/tap or by using the Enter or Space key.
+   * Fired when the component header is activated by mouse/tap or by using the Enter or Space key.
    *
    * **Note:** The event would be fired only if the `headerInteractive` property is set to true.
    */
@@ -54,13 +58,13 @@ export interface CardPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * The `Card` is a component that represents information in the form of a tile with separate header and content areas. The content area of a `Card` can be arbitrary HTML content. The header can be used through several properties, such as: `heading`, `subheading`, `status` and two slots: `avatar` and `action`.
+ * The `Card` is a component that represents information in the form of a tile with separate header and content areas. The content area of a `Card` can be arbitrary HTML content. The header can be used through several properties, such as: `titleText`, `subtitleText`, `status` and two slots: `avatar` and `action`.
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Card" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const Card: FC<CardPropTypes> = withWebComponent<CardPropTypes>(
   'ui5-card',
-  ['heading', 'status', 'subheading'],
+  ['accessibleName', 'status', 'subtitleText', 'titleText'],
   ['headerInteractive'],
   ['action', 'avatar'],
   ['header-click']
