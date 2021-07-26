@@ -1,230 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ColumnChart Loading placeholder 1`] = `
+exports[`ColumnChart Check onClick events 1`] = `
 <DocumentFragment>
   <div
     style="display: flex; flex-direction: column;"
   >
     <div
-      style="font-family: var(--sapFontFamily); width: 100%; height: calc(undefined * 0.2); position: relative;"
-    >
-      <svg
-        aria-labelledby="TITLE_ARIA_ID"
-        height="100%"
-        preserveAspectRatio="xMidYMid meet"
-        role="img"
-        viewBox="0 0 165 145"
-        width="100%"
-      >
-        <title
-          id="TITLE_ARIA_ID"
-        >
-          Loading...
-        </title>
-        <rect
-          clip-path="STYLE-URL"
-          height="100%"
-          role="presentation"
-          style="fill: STYLE-URL;"
-          width="100%"
-          x="0"
-          y="0"
-        />
-        <defs>
-          <clippath
-            id="DIFF_ID"
-          >
-            <rect
-              height="1"
-              width="135"
-              x="10"
-              y="135"
-            />
-            <path
-              d="M20 135 L40 80 L60 70 L80 30 L100 50 L120 65 L 135 100 L120 67 L100 52 L80 32 L60 72 L40 82 L20 137 Z"
-              fill="none"
-              stroke-width="2"
-            />
-          </clippath>
-          <lineargradient
-            id="DIFF_ID"
-          >
-            <stop
-              offset="0%"
-              stop-color="var(--sapContent_ImagePlaceholderBackground)"
-              stop-opacity="var(--sapContent_DisabledOpacity)"
-            >
-              <animate
-                attributeName="offset"
-                dur="2s"
-                keyTimes="0; 0.25; 1"
-                repeatCount="indefinite"
-                values="-2; -2; 1"
-              />
-            </stop>
-            <stop
-              offset="50%"
-              stop-color="var(--sapContent_ImagePlaceholderForegroundColor)"
-              stop-opacity="1"
-            >
-              <animate
-                attributeName="offset"
-                dur="2s"
-                keyTimes="0; 0.25; 1"
-                repeatCount="indefinite"
-                values="-1; -1; 2"
-              />
-            </stop>
-            <stop
-              offset="100%"
-              stop-color="var(--sapContent_ImagePlaceholderBackground)"
-              stop-opacity="var(--sapContent_DisabledOpacity)"
-            >
-              <animate
-                attributeName="offset"
-                dur="2s"
-                keyTimes="0; 0.25; 1"
-                repeatCount="indefinite"
-                values="0; 0; 3"
-              />
-            </stop>
-          </lineargradient>
-        </defs>
-      </svg>
-    </div>
-    <div
-      style="font-family: var(--sapFontFamily); width: 100%; height: calc(undefined * 0.8); position: relative;"
-    >
-      <svg
-        aria-labelledby="TITLE_ARIA_ID"
-        height="100%"
-        preserveAspectRatio="xMidYMid meet"
-        role="img"
-        viewBox="0 0 165 145"
-        width="100%"
-      >
-        <title
-          id="TITLE_ARIA_ID"
-        >
-          Loading...
-        </title>
-        <rect
-          clip-path="STYLE-URL"
-          height="100%"
-          role="presentation"
-          style="fill: STYLE-URL;"
-          width="100%"
-          x="0"
-          y="0"
-        />
-        <defs>
-          <clippath
-            id="DIFF_ID"
-          >
-            <path
-              d="M 20 56 L 39 33 L 57 25 L 77 5 L 99 25 L 125 31 L 139 25 L 125 32 L 98 27 L 77 10 L 58 27 L 39 35 L 20 56 Z"
-              fill="none"
-              stroke-width="2"
-            />
-            <rect
-              height="1"
-              width="135"
-              x="10"
-              y="135"
-            />
-            <rect
-              height="70"
-              width="15"
-              x="20"
-              y="65"
-            />
-            <rect
-              height="77"
-              width="15"
-              x="40"
-              y="58"
-            />
-            <rect
-              height="67"
-              width="15"
-              x="60"
-              y="68"
-            />
-            <rect
-              height="75"
-              width="15"
-              x="80"
-              y="60"
-            />
-            <rect
-              height="100"
-              width="15"
-              x="100"
-              y="35"
-            />
-            <rect
-              height="60"
-              width="15"
-              x="120"
-              y="75"
-            />
-          </clippath>
-          <lineargradient
-            id="DIFF_ID"
-          >
-            <stop
-              offset="0%"
-              stop-color="var(--sapContent_ImagePlaceholderBackground)"
-              stop-opacity="var(--sapContent_DisabledOpacity)"
-            >
-              <animate
-                attributeName="offset"
-                dur="2s"
-                keyTimes="0; 0.25; 1"
-                repeatCount="indefinite"
-                values="-2; -2; 1"
-              />
-            </stop>
-            <stop
-              offset="50%"
-              stop-color="var(--sapContent_ImagePlaceholderForegroundColor)"
-              stop-opacity="1"
-            >
-              <animate
-                attributeName="offset"
-                dur="2s"
-                keyTimes="0; 0.25; 1"
-                repeatCount="indefinite"
-                values="-1; -1; 2"
-              />
-            </stop>
-            <stop
-              offset="100%"
-              stop-color="var(--sapContent_ImagePlaceholderBackground)"
-              stop-opacity="var(--sapContent_DisabledOpacity)"
-            >
-              <animate
-                attributeName="offset"
-                dur="2s"
-                keyTimes="0; 0.25; 1"
-                repeatCount="indefinite"
-                values="0; 0; 3"
-              />
-            </stop>
-          </lineargradient>
-        </defs>
-      </svg>
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`ColumnChart Renders with data 1`] = `
-<DocumentFragment>
-  <div
-    style="display: flex; flex-direction: column;"
-  >
-    <div
+      class="has-click-handler"
       style="font-family: var(--sapFontFamily); width: 100%; height: calc(undefined * 0.2); position: relative;"
     >
       <div
@@ -244,7 +26,7 @@ exports[`ColumnChart Renders with data 1`] = `
           >
             <defs>
               <clippath
-                id="recharts1-clip"
+                id="recharts7-clip"
               >
                 <rect
                   height="360"
@@ -301,6 +83,7 @@ exports[`ColumnChart Renders with data 1`] = `
       </div>
     </div>
     <div
+      class="has-click-handler"
       style="font-family: var(--sapFontFamily); width: 100%; height: calc(undefined * 0.8); position: relative;"
     >
       <div
@@ -308,7 +91,7 @@ exports[`ColumnChart Renders with data 1`] = `
         style="width: 400px; height: 400px;"
       >
         <div
-          class="recharts-wrapper"
+          class="recharts-wrapper has-click-handler"
           style="position: relative; cursor: default; width: 400px; height: 400px;"
         >
           <svg
@@ -320,7 +103,7 @@ exports[`ColumnChart Renders with data 1`] = `
           >
             <defs>
               <clippath
-                id="recharts4-clip"
+                id="recharts10-clip"
               >
                 <rect
                   height="330"
@@ -1056,13 +839,231 @@ exports[`ColumnChart Renders with data 1`] = `
 </DocumentFragment>
 `;
 
-exports[`ColumnChart Renders with data 2`] = `
+exports[`ColumnChart Loading placeholder 1`] = `
 <DocumentFragment>
   <div
     style="display: flex; flex-direction: column;"
   >
     <div
-      class="has-click-handler"
+      style="font-family: var(--sapFontFamily); width: 100%; height: calc(undefined * 0.2); position: relative;"
+    >
+      <svg
+        aria-labelledby="TITLE_ARIA_ID"
+        height="100%"
+        preserveAspectRatio="xMidYMid meet"
+        role="img"
+        viewBox="0 0 165 145"
+        width="100%"
+      >
+        <title
+          id="TITLE_ARIA_ID"
+        >
+          Loading...
+        </title>
+        <rect
+          clip-path="STYLE-URL"
+          height="100%"
+          role="presentation"
+          style="fill: STYLE-URL;"
+          width="100%"
+          x="0"
+          y="0"
+        />
+        <defs>
+          <clippath
+            id="DIFF_ID"
+          >
+            <rect
+              height="1"
+              width="135"
+              x="10"
+              y="135"
+            />
+            <path
+              d="M20 135 L40 80 L60 70 L80 30 L100 50 L120 65 L 135 100 L120 67 L100 52 L80 32 L60 72 L40 82 L20 137 Z"
+              fill="none"
+              stroke-width="2"
+            />
+          </clippath>
+          <lineargradient
+            id="DIFF_ID"
+          >
+            <stop
+              offset="0%"
+              stop-color="var(--sapContent_ImagePlaceholderBackground)"
+              stop-opacity="var(--sapContent_DisabledOpacity)"
+            >
+              <animate
+                attributeName="offset"
+                dur="2s"
+                keyTimes="0; 0.25; 1"
+                repeatCount="indefinite"
+                values="-2; -2; 1"
+              />
+            </stop>
+            <stop
+              offset="50%"
+              stop-color="var(--sapContent_ImagePlaceholderForegroundColor)"
+              stop-opacity="1"
+            >
+              <animate
+                attributeName="offset"
+                dur="2s"
+                keyTimes="0; 0.25; 1"
+                repeatCount="indefinite"
+                values="-1; -1; 2"
+              />
+            </stop>
+            <stop
+              offset="100%"
+              stop-color="var(--sapContent_ImagePlaceholderBackground)"
+              stop-opacity="var(--sapContent_DisabledOpacity)"
+            >
+              <animate
+                attributeName="offset"
+                dur="2s"
+                keyTimes="0; 0.25; 1"
+                repeatCount="indefinite"
+                values="0; 0; 3"
+              />
+            </stop>
+          </lineargradient>
+        </defs>
+      </svg>
+    </div>
+    <div
+      style="font-family: var(--sapFontFamily); width: 100%; height: calc(undefined * 0.8); position: relative;"
+    >
+      <svg
+        aria-labelledby="TITLE_ARIA_ID"
+        height="100%"
+        preserveAspectRatio="xMidYMid meet"
+        role="img"
+        viewBox="0 0 165 145"
+        width="100%"
+      >
+        <title
+          id="TITLE_ARIA_ID"
+        >
+          Loading...
+        </title>
+        <rect
+          clip-path="STYLE-URL"
+          height="100%"
+          role="presentation"
+          style="fill: STYLE-URL;"
+          width="100%"
+          x="0"
+          y="0"
+        />
+        <defs>
+          <clippath
+            id="DIFF_ID"
+          >
+            <path
+              d="M 20 56 L 39 33 L 57 25 L 77 5 L 99 25 L 125 31 L 139 25 L 125 32 L 98 27 L 77 10 L 58 27 L 39 35 L 20 56 Z"
+              fill="none"
+              stroke-width="2"
+            />
+            <rect
+              height="1"
+              width="135"
+              x="10"
+              y="135"
+            />
+            <rect
+              height="70"
+              width="15"
+              x="20"
+              y="65"
+            />
+            <rect
+              height="77"
+              width="15"
+              x="40"
+              y="58"
+            />
+            <rect
+              height="67"
+              width="15"
+              x="60"
+              y="68"
+            />
+            <rect
+              height="75"
+              width="15"
+              x="80"
+              y="60"
+            />
+            <rect
+              height="100"
+              width="15"
+              x="100"
+              y="35"
+            />
+            <rect
+              height="60"
+              width="15"
+              x="120"
+              y="75"
+            />
+          </clippath>
+          <lineargradient
+            id="DIFF_ID"
+          >
+            <stop
+              offset="0%"
+              stop-color="var(--sapContent_ImagePlaceholderBackground)"
+              stop-opacity="var(--sapContent_DisabledOpacity)"
+            >
+              <animate
+                attributeName="offset"
+                dur="2s"
+                keyTimes="0; 0.25; 1"
+                repeatCount="indefinite"
+                values="-2; -2; 1"
+              />
+            </stop>
+            <stop
+              offset="50%"
+              stop-color="var(--sapContent_ImagePlaceholderForegroundColor)"
+              stop-opacity="1"
+            >
+              <animate
+                attributeName="offset"
+                dur="2s"
+                keyTimes="0; 0.25; 1"
+                repeatCount="indefinite"
+                values="-1; -1; 2"
+              />
+            </stop>
+            <stop
+              offset="100%"
+              stop-color="var(--sapContent_ImagePlaceholderBackground)"
+              stop-opacity="var(--sapContent_DisabledOpacity)"
+            >
+              <animate
+                attributeName="offset"
+                dur="2s"
+                keyTimes="0; 0.25; 1"
+                repeatCount="indefinite"
+                values="0; 0; 3"
+              />
+            </stop>
+          </lineargradient>
+        </defs>
+      </svg>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`ColumnChart Renders with data 1`] = `
+<DocumentFragment>
+  <div
+    style="display: flex; flex-direction: column;"
+  >
+    <div
       style="font-family: var(--sapFontFamily); width: 100%; height: calc(undefined * 0.2); position: relative;"
     >
       <div
@@ -1082,7 +1083,7 @@ exports[`ColumnChart Renders with data 2`] = `
           >
             <defs>
               <clippath
-                id="recharts7-clip"
+                id="recharts1-clip"
               >
                 <rect
                   height="360"
@@ -1139,7 +1140,6 @@ exports[`ColumnChart Renders with data 2`] = `
       </div>
     </div>
     <div
-      class="has-click-handler"
       style="font-family: var(--sapFontFamily); width: 100%; height: calc(undefined * 0.8); position: relative;"
     >
       <div
@@ -1147,7 +1147,7 @@ exports[`ColumnChart Renders with data 2`] = `
         style="width: 400px; height: 400px;"
       >
         <div
-          class="recharts-wrapper has-click-handler"
+          class="recharts-wrapper"
           style="position: relative; cursor: default; width: 400px; height: 400px;"
         >
           <svg
@@ -1159,7 +1159,7 @@ exports[`ColumnChart Renders with data 2`] = `
           >
             <defs>
               <clippath
-                id="recharts10-clip"
+                id="recharts4-clip"
               >
                 <rect
                   height="330"
