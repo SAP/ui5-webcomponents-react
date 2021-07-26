@@ -9,7 +9,7 @@ import { CANCEL } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults'
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
 import { List } from '@ui5/webcomponents-react/dist/List';
-import { ListItemTypes } from '@ui5/webcomponents-react/dist/ListItemTypes';
+import { ListItemType } from '@ui5/webcomponents-react/dist/ListItemType';
 import { ListMode } from '@ui5/webcomponents-react/dist/ListMode';
 import { PopoverPlacementType } from '@ui5/webcomponents-react/dist/PopoverPlacementType';
 import { ResponsivePopover } from '@ui5/webcomponents-react/dist/ResponsivePopover';
@@ -207,7 +207,7 @@ const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
                 <StandardListItem
                   style={{ width: '300px' }}
                   data-key={item.key}
-                  type={ListItemTypes.Active}
+                  type={ListItemType.Active}
                   key={item.key}
                   selected={selectedKey === item.key}
                 >

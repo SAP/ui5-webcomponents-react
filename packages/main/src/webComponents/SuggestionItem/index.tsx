@@ -1,4 +1,4 @@
-import { ListItemTypes } from '@ui5/webcomponents-react/dist/ListItemTypes';
+import { ListItemType } from '@ui5/webcomponents-react/dist/ListItemType';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { FC } from 'react';
@@ -47,7 +47,7 @@ export interface SuggestionItemPropTypes extends WithWebComponentPropTypes {
    *
    * **Note:** When set to `Active`, the item will provide visual response upon press and hover, while when `Inactive` or `Detail` - will not.
    */
-  type?: ListItemTypes;
+  type?: ListItemType;
 }
 
 /**
@@ -68,7 +68,7 @@ SuggestionItem.displayName = 'SuggestionItem';
 SuggestionItem.defaultProps = {
   additionalTextState: ValueState.None,
   iconEnd: false,
-  type: ListItemTypes.Active
+  type: ListItemType.Active
 };
 
 export { SuggestionItem };

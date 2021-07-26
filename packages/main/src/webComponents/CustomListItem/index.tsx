@@ -1,4 +1,4 @@
-import { ListItemTypes } from '@ui5/webcomponents-react/dist/ListItemTypes';
+import { ListItemType } from '@ui5/webcomponents-react/dist/ListItemType';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, ReactNode } from 'react';
@@ -15,7 +15,7 @@ export interface CustomListItemPropTypes extends WithWebComponentPropTypes {
    *
    * **Note:** When set to `Active`, the item will provide visual response upon press and hover, while with type `Inactive` and `Detail` - will not.
    */
-  type?: ListItemTypes;
+  type?: ListItemType;
   /**
    * Defines the selected state of the `ListItem`.
    */
@@ -46,7 +46,7 @@ const CustomListItem: FC<CustomListItemPropTypes> = withWebComponent<CustomListI
 CustomListItem.displayName = 'CustomListItem';
 
 CustomListItem.defaultProps = {
-  type: ListItemTypes.Active,
+  type: ListItemType.Active,
   selected: false
 };
 

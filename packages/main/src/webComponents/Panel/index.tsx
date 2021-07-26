@@ -1,4 +1,4 @@
-import { PanelAccessibleRoles } from '@ui5/webcomponents-react/dist/PanelAccessibleRoles';
+import { PanelAccessibleRole } from '@ui5/webcomponents-react/dist/PanelAccessibleRole';
 import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
@@ -14,7 +14,7 @@ export interface PanelPropTypes extends WithWebComponentPropTypes {
   /**
    * Sets the accessible aria role of the component. Depending on the usage, you can change the role from the default `Form` to `Region` or `Complementary`.
    */
-  accessibleRole?: PanelAccessibleRoles;
+  accessibleRole?: PanelAccessibleRole;
   /**
    * Indicates whether the component is collapsed and only the header is displayed.
    */
@@ -70,7 +70,7 @@ const Panel: FC<PanelPropTypes> = withWebComponent<PanelPropTypes>(
 Panel.displayName = 'Panel';
 
 Panel.defaultProps = {
-  accessibleRole: PanelAccessibleRoles.Form,
+  accessibleRole: PanelAccessibleRole.Form,
   collapsed: false,
   fixed: false,
   headerLevel: TitleLevel.H2

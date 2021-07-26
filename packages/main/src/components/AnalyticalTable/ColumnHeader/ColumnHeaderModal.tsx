@@ -13,7 +13,7 @@ import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
 import { Icon } from '@ui5/webcomponents-react/dist/Icon';
 import { List } from '@ui5/webcomponents-react/dist/List';
-import { ListItemTypes } from '@ui5/webcomponents-react/dist/ListItemTypes';
+import { ListItemType } from '@ui5/webcomponents-react/dist/ListItemType';
 import { PopoverPlacementType } from '@ui5/webcomponents-react/dist/PopoverPlacementType';
 import { Popover } from '@ui5/webcomponents-react/dist/Popover';
 import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/dist/PopoverHorizontalAlign';
@@ -155,22 +155,22 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
     >
       <List onItemClick={handleSort}>
         {isSortedAscending && (
-          <StandardListItem type={ListItemTypes.Active} icon="decline" data-sort="clear">
+          <StandardListItem type={ListItemType.Active} icon="decline" data-sort="clear">
             {clearSortingText}
           </StandardListItem>
         )}
         {showSort && !isSortedAscending && (
-          <StandardListItem type={ListItemTypes.Active} icon="sort-ascending" data-sort="asc">
+          <StandardListItem type={ListItemType.Active} icon="sort-ascending" data-sort="asc">
             {sortAscendingText}
           </StandardListItem>
         )}
         {showSort && !isSortedDescending && (
-          <StandardListItem type={ListItemTypes.Active} icon="sort-descending" data-sort="desc">
+          <StandardListItem type={ListItemType.Active} icon="sort-descending" data-sort="desc">
             {sortDescendingText}
           </StandardListItem>
         )}
         {isSortedDescending && (
-          <StandardListItem type={ListItemTypes.Active} icon="decline" data-sort="clear">
+          <StandardListItem type={ListItemType.Active} icon="decline" data-sort="clear">
             {clearSortingText}
           </StandardListItem>
         )}
@@ -181,7 +181,7 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
           </FlexBox>
         )}
         {showGroup && (
-          <StandardListItem type={ListItemTypes.Active} icon="group-2" data-sort={'group'}>
+          <StandardListItem type={ListItemType.Active} icon="group-2" data-sort={'group'}>
             {column.isGrouped ? ungroupText : groupText}
           </StandardListItem>
         )}

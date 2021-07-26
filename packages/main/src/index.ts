@@ -73,7 +73,7 @@ import { Link } from './dist/Link';
 import { LinkDesign } from './dist/LinkDesign';
 import { List } from './dist/List';
 import { ListGrowingMode } from './dist/ListGrowingMode';
-import { ListItemTypes } from './dist/ListItemTypes';
+import { ListItemType } from './dist/ListItemType';
 import { ListMode } from './dist/ListMode';
 import { ListSeparators } from './dist/ListSeparators';
 import { Loader } from './dist/Loader';
@@ -98,7 +98,7 @@ import { Option } from './dist/Option';
 import { Page } from './dist/Page';
 import { PageBackgroundDesign } from './dist/PageBackgroundDesign';
 import { Panel } from './dist/Panel';
-import { PanelAccessibleRoles } from './dist/PanelAccessibleRoles';
+import { PanelAccessibleRole } from './dist/PanelAccessibleRole';
 import { Popover } from './dist/Popover';
 import { PopoverHorizontalAlign } from './dist/PopoverHorizontalAlign';
 import { PopoverPlacementType } from './dist/PopoverPlacementType';
@@ -247,7 +247,7 @@ export {
   LinkDesign,
   List,
   ListGrowingMode,
-  ListItemTypes,
+  ListItemType,
   ListMode,
   ListSeparators,
   Loader,
@@ -272,7 +272,7 @@ export {
   Page,
   PageBackgroundDesign,
   Panel,
-  PanelAccessibleRoles,
+  PanelAccessibleRole,
   PopoverPlacementType,
   Popover,
   PopoverHorizontalAlign,

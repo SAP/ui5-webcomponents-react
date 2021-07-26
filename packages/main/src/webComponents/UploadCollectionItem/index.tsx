@@ -1,4 +1,4 @@
-import { ListItemTypes } from '@ui5/webcomponents-react/dist/ListItemTypes';
+import { ListItemType } from '@ui5/webcomponents-react/dist/ListItemType';
 import { UploadState } from '@ui5/webcomponents-react/dist/UploadState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
@@ -46,7 +46,7 @@ export interface UploadCollectionItemPropTypes extends WithWebComponentPropTypes
    *
    * **Note:** When set to `Active`, the item will provide visual response upon press and hover, while with type `Inactive` and `Detail` - will not.
    */
-  type?: ListItemTypes;
+  type?: ListItemType;
   /**
    * Defines the selected state of the `ListItem`.
    */
@@ -117,7 +117,7 @@ UploadCollectionItem.defaultProps = {
   hideTerminateButton: false,
   progress: 0,
   uploadState: UploadState.Ready,
-  type: ListItemTypes.Active,
+  type: ListItemType.Active,
   selected: false
 };
 

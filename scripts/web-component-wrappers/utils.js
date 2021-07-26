@@ -118,11 +118,13 @@ export const getTypeDefinitionForProperty = (property, interfaces) => {
     case 'FCLLayout':
     case 'InputType':
     case 'LinkDesign':
+    case 'ListItemType':
     case 'ListMode':
     case 'ListGrowingMode':
     case 'ListSeparators':
     case 'MessageStripDesign':
     case 'PageBackgroundDesign':
+    case 'PanelAccessibleRole':
     case 'PopoverHorizontalAlign':
     case 'PopoverPlacementType':
     case 'PopoverVerticalAlign':
@@ -141,19 +143,6 @@ export const getTypeDefinitionForProperty = (property, interfaces) => {
       return {
         importStatement: `import { ${property.type} } from '@ui5/webcomponents-react/dist/${property.type}';`,
         tsType: `${property.type}`,
-        isEnum: true
-      };
-    case 'ListItemType': {
-      return {
-        importStatement: "import { ListItemTypes } from '@ui5/webcomponents-react/dist/ListItemTypes';",
-        tsType: 'ListItemTypes',
-        isEnum: true
-      };
-    }
-    case 'PanelAccessibleRole':
-      return {
-        importStatement: "import { PanelAccessibleRoles } from '@ui5/webcomponents-react/dist/PanelAccessibleRoles';",
-        tsType: 'PanelAccessibleRoles',
         isEnum: true
       };
     default:

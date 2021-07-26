@@ -1,4 +1,4 @@
-import { ListItemTypes } from '@ui5/webcomponents-react/dist/ListItemTypes';
+import { ListItemType } from '@ui5/webcomponents-react/dist/ListItemType';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
@@ -47,7 +47,7 @@ export interface StandardListItemPropTypes extends WithWebComponentPropTypes {
    *
    * **Note:** When set to `Active`, the item will provide visual response upon press and hover, while with type `Inactive` and `Detail` - will not.
    */
-  type?: ListItemTypes;
+  type?: ListItemType;
   /**
    * Defines the selected state of the `ListItem`.
    */
@@ -82,7 +82,7 @@ StandardListItem.displayName = 'StandardListItem';
 StandardListItem.defaultProps = {
   additionalTextState: ValueState.None,
   iconEnd: false,
-  type: ListItemTypes.Active,
+  type: ListItemType.Active,
   selected: false
 };
 
