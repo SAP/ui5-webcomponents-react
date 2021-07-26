@@ -6,13 +6,13 @@ import '@ui5/webcomponents/dist/Token';
 
 export interface TokenPropTypes extends Omit<WithWebComponentPropTypes, 'onSelect'> {
   /**
-   * Defines whether the `Token` is read-only.
+   * Defines whether the component is read-only.
    *
-   * **Note:** A read-only `Token` can not be deleted or selected, but still provides visual feedback upon user interaction.
+   * **Note:** A read-only component can not be deleted or selected, but still provides visual feedback upon user interaction.
    */
   readonly?: boolean;
   /**
-   * Defines whether the `Token` is selected or not.
+   * Defines whether the component is selected or not.
    */
   selected?: boolean;
   /**
@@ -27,7 +27,7 @@ export interface TokenPropTypes extends Omit<WithWebComponentPropTypes, 'onSelec
    */
   closeIcon?: ReactNode;
   /**
-   * Fired when the a `Token` is selected by user interaction with mouse or clicking space.
+   * Fired when the the component is selected by user interaction with mouse or by clicking space.
    */
   onSelect?: (event: Ui5CustomEvent<HTMLElement>) => void;
 }

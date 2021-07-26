@@ -7,33 +7,40 @@ import '@ui5/webcomponents/dist/Tree';
 
 export interface TreePropTypes extends WithWebComponentPropTypes {
   /**
-   * Defines the `Tree` footer text.
+   * Defines the component footer text.
    */
   footerText?: string;
   /**
-   * Defines the `Tree` header text.
+   * Defines the component header text.
    *
    * **Note:** If the `header` slot is set, this property is ignored.
    */
   headerText?: string;
   /**
-   * Defines the mode of the `Tree`. Since the tree uses a `List` to display its structure, the tree modes are exactly the same as the list modes, and are all applicable.
+   * Defines the mode of the component. Since the tree uses a `List` to display its structure, the tree modes are exactly the same as the list modes, and are all applicable.
    *
-   * **Note:** Available options are `None`, `SingleSelect`, `SingleSelectBegin`, `SingleSelectEnd`, `MultiSelect`, and `Delete`.
+   * **Note:**
+   *
+   * *   `None`
+   * *   `SingleSelect`
+   * *   `SingleSelectBegin`
+   * *   `SingleSelectEnd`
+   * *   `MultiSelect`
+   * *   `Delete`
    */
   mode?: ListMode;
   /**
-   * Defines the text that is displayed when the `Tree` contains no items.
+   * Defines the text that is displayed when the component contains no items.
    */
   noDataText?: string;
   /**
-   * Defines the items of the `Tree`. Tree items may have other tree items as children.
+   * Defines the items of the component. Tree items may have other tree items as children.
    *
    * **Note:** Use `TreeItem` for the intended design.
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Defines the `Tree` header.
+   * Defines the component header.
    *
    * **Note:** When the `header` slot is set, the `headerText` property is ignored.
    *
@@ -48,7 +55,7 @@ export interface TreePropTypes extends WithWebComponentPropTypes {
   /**
    * Fired when the Delete button of any tree item is pressed.
    *
-   * **Note:** A Delete button is displayed on each item, when the `Tree` `mode` property is set to `Delete`.
+   * **Note:** A Delete button is displayed on each item, when the component `mode` property is set to `Delete`.
    */
   onItemDelete?: (event: Ui5CustomEvent<HTMLElement, { item: ReactNode }>) => void;
   /**

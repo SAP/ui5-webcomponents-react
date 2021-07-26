@@ -6,6 +6,15 @@ import '@ui5/webcomponents/dist/TreeItem';
 
 export interface TreeItemPropTypes extends WithWebComponentPropTypes {
   /**
+   * Defines the `additionalText`, displayed in the end of the tree item.
+   */
+  additionalText?: string;
+  /**
+   * Defines the state of the `additionalText`.
+   * Available options are: `"None"` (by default), `"Success"`, `"Warning"`, `"Information"` and `"Erorr"`.
+   */
+  additionalTextState?: ValueState;
+  /**
    * Defines whether the tree node is expanded or collapsed. Only has visual effect for tree nodes with children.
    */
   expanded?: boolean;
@@ -19,15 +28,6 @@ export interface TreeItemPropTypes extends WithWebComponentPropTypes {
    */
   icon?: string;
   /**
-   * Defines the `info`, displayed in the end of the tree item.
-   */
-  info?: string;
-  /**
-   * Defines the state of the `info`.
-   * Available options are: `"None"` (by default), `"Success"`, `"Warning"`, `"Information"` and `"Erorr"`.
-   */
-  infoState?: ValueState;
-  /**
    * Defines whether the tree node is selected by the user. Only has effect if the `Tree` is in one of the following modes: in `SingleSelect`, `SingleSelectBegin`, `SingleSelectEnd` and `MultiSelect`.
    */
   selected?: boolean;
@@ -36,7 +36,7 @@ export interface TreeItemPropTypes extends WithWebComponentPropTypes {
    */
   text?: string;
   /**
-   * Defines the items of this `TreeItem`.
+   * Defines the items of this component.
    */
   children?: ReactNode | ReactNode[];
 }
@@ -48,7 +48,7 @@ export interface TreeItemPropTypes extends WithWebComponentPropTypes {
  */
 const TreeItem: FC<TreeItemPropTypes> = withWebComponent<TreeItemPropTypes>(
   'ui5-tree-item',
-  ['icon', 'info', 'infoState', 'text'],
+  ['additionalText', 'additionalTextState', 'icon', 'text'],
   ['expanded', 'hasChildren', 'selected'],
   [],
   []
@@ -57,9 +57,9 @@ const TreeItem: FC<TreeItemPropTypes> = withWebComponent<TreeItemPropTypes>(
 TreeItem.displayName = 'TreeItem';
 
 TreeItem.defaultProps = {
+  additionalTextState: ValueState.None,
   expanded: false,
   hasChildren: false,
-  infoState: ValueState.None,
   selected: false
 };
 
