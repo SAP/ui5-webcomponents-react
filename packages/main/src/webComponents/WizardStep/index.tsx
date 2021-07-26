@@ -5,6 +5,10 @@ import '@ui5/webcomponents-fiori/dist/WizardStep';
 
 export interface WizardStepPropTypes extends WithWebComponentPropTypes {
   /**
+   * Sets the accessible aria name of the component.
+   */
+  accessibleName?: boolean;
+  /**
    * When `branching` is enabled a dashed line would be displayed after the step, meant to indicate that the next step is not yet known and depends on user choice in the current step.
    *
    * **Note:** It is recommended to use `branching` on the last known step and later add new steps when it becomes clear how the wizard flow should continue.
@@ -16,13 +20,6 @@ export interface WizardStepPropTypes extends WithWebComponentPropTypes {
    * **Note:** Step can't be `selected` and `disabled` at the same time. In this case the `selected` property would take precedence.
    */
   disabled?: boolean;
-  /**
-   * Defines the `heading` of the step.
-   *
-   * **Note:** the text is displayed in the `Wizard` navigation header.
-   * **Note:** the text will hide on small sizes (about 559 px).
-   */
-  heading?: string;
   /**
    * Defines the `icon` of the step.
    *
@@ -38,12 +35,19 @@ export interface WizardStepPropTypes extends WithWebComponentPropTypes {
    */
   selected?: boolean;
   /**
-   * Defines the `subheading` of the step.
+   * Defines the `subtitleText` of the step.
    *
    * **Note:** the text is displayed in the `Wizard` navigation header.
    * **Note:** the text will hide on small sizes (about 559 px).
    */
-  subheading?: string;
+  subtitleText?: string;
+  /**
+   * Defines the `titleText` of the step.
+   *
+   * **Note:** the text is displayed in the `Wizard` navigation header.
+   * **Note:** the text will hide on small sizes (about 559 px).
+   */
+  titleText?: string;
   /**
    * Defines the step content.
    */
@@ -57,8 +61,8 @@ export interface WizardStepPropTypes extends WithWebComponentPropTypes {
  */
 const WizardStep: FC<WizardStepPropTypes> = withWebComponent<WizardStepPropTypes>(
   'ui5-wizard-step',
-  ['heading', 'icon', 'subheading'],
-  ['branching', 'disabled', 'selected'],
+  ['icon', 'subtitleText', 'titleText'],
+  ['accessibleName', 'branching', 'disabled', 'selected'],
   [],
   []
 );
@@ -66,6 +70,7 @@ const WizardStep: FC<WizardStepPropTypes> = withWebComponent<WizardStepPropTypes
 WizardStep.displayName = 'WizardStep';
 
 WizardStep.defaultProps = {
+  accessibleName: false,
   branching: false,
   disabled: false,
   selected: false
