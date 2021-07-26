@@ -1,8 +1,7 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { Avatar } from '@ui5/webcomponents-react/dist/Avatar';
-import { AvatarBackgroundColor } from '@ui5/webcomponents-react/dist/AvatarBackgroundColor';
+import { AvatarColorScheme } from '@ui5/webcomponents-react/dist/AvatarColorScheme';
 import '@ui5/webcomponents-icons/dist/employee.js';
-import { AvatarFitType } from '@ui5/webcomponents-react/dist/AvatarFitType';
 import { AvatarShape } from '@ui5/webcomponents-react/dist/AvatarShape';
 import { AvatarSize } from '@ui5/webcomponents-react/dist/AvatarSize';
 import { DocsHeader } from '@shared/stories/DocsHeader';
@@ -11,16 +10,13 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   title="Data Display / Avatar"
   component={Avatar}
   args={{
-    backgroundColor: AvatarBackgroundColor.Accent6,
+    colorScheme: AvatarColorScheme.Accent6,
     icon: 'employee',
-    imageFitType: AvatarFitType.Cover,
     shape: AvatarShape.Circle,
-    size: AvatarSize.S,
-    style: {},
-    className: '',
-    tooltip: '',
-    slot: '',
-    ref: null
+    size: AvatarSize.S
+  }}
+  argTypes={{
+    children: { control: { disable: true } }
   }}
 />
 

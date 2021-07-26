@@ -1,7 +1,7 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { NotificationListItem } from '@ui5/webcomponents-react/dist/NotificationListItem';
 import { Avatar } from '@ui5/webcomponents-react/dist/Avatar';
-import { AvatarBackgroundColor } from '@ui5/webcomponents-react/dist/AvatarBackgroundColor';
+import { AvatarColorScheme } from '@ui5/webcomponents-react/dist/AvatarColorScheme';
 import { List } from '@ui5/webcomponents-react/dist/List';
 import { NotificationAction } from '@ui5/webcomponents-react/dist/NotificationAction';
 import { Label } from '@ui5/webcomponents-react/dist/Label';
@@ -48,10 +48,9 @@ import '@ui5/webcomponents-icons/dist/employee.js';
         <NotificationListItem
           {...args}
           avatar={
-            <Avatar
-              size={AvatarSize.XS}
-              image="https://sap.github.io/ui5-webcomponents/assets/images/avatars/woman_avatar_1.png"
-            />
+            <Avatar size={AvatarSize.XS}>
+              <img src="https://sap.github.io/ui5-webcomponents/assets/images/avatars/woman_avatar_1.png" />
+            </Avatar>
           }
           footnotes={
             <>
@@ -101,7 +100,7 @@ The component can be used in a standard `List`.
             Short description
           </NotificationListItem>
           <NotificationListItem
-            avatar={<Avatar size={AvatarSize.XS} icon="employee" backgroundColor={AvatarBackgroundColor.Accent1} />}
+            avatar={<Avatar size={AvatarSize.XS} icon="employee" colorScheme={AvatarColorScheme.Accent1} />}
             footnotes={<Label>3 Days</Label>}
             heading="New order (#2527) with single NotificationAction and close button"
             showClose
@@ -114,10 +113,9 @@ The component can be used in a standard `List`.
             heading="New high priority order (#2528) without close button"
             priority={Priority.High}
             avatar={
-              <Avatar
-                size={AvatarSize.XS}
-                image="https://sap.github.io/ui5-webcomponents/assets/images/avatars/man_avatar_1.png"
-              />
+              <Avatar size={AvatarSize.XS}>
+                <img src="https://sap.github.io/ui5-webcomponents/assets/images/avatars/man_avatar_1.png" />
+              </Avatar>
             }
             footnotes={
               <>
