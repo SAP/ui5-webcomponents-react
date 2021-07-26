@@ -1,7 +1,6 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { TabContainer } from '@ui5/webcomponents-react/dist/TabContainer';
 import { TabLayout } from '@ui5/webcomponents-react/dist/TabLayout';
-import { TabContainerTabsPlacement } from '@ui5/webcomponents-react/dist/TabContainerTabsPlacement';
 import { Tab } from '@ui5/webcomponents-react/dist/Tab';
 import { SemanticColor } from '@ui5/webcomponents-react/dist/SemanticColor';
 import { TabSeparator } from '@ui5/webcomponents-react/dist/TabSeparator';
@@ -22,13 +21,7 @@ import '@ui5/webcomponents-icons/dist/sys-monitor.js';
     overflowButton: { control: { disable: true } }
   }}
   args={{
-    tabLayout: TabLayout.Standard,
-    tabsPlacement: TabContainerTabsPlacement.Top,
-    style: {},
-    className: '',
-    tooltip: '',
-    slot: '',
-    ref: null
+    tabLayout: TabLayout.Standard
   }}
 />
 
@@ -95,7 +88,7 @@ selected
       disabled: false,
       icon: 'sys-monitor',
       selected: true,
-      semanticColor: SemanticColor.Positive,
+      design: SemanticColor.Positive,
       text: 'Customizable Tab',
       children: 'Tab Content'
     }}
@@ -106,10 +99,9 @@ selected
         description: `Defines the icon source URI to be displayed as graphical element within the <code>Tab</code>. The SAP-icons font provides numerous built-in icons. See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.`
       },
       selected: { description: `Specifies if the <code>Tab</code> is selected.` },
-      semanticColor: {
+      design: {
         options: Object.values(SemanticColor),
-        control: { type: 'radio' },
-        description: `Defines the <code>Tab</code> semantic color. <br><br> The color is applied to: <ul> <li>the <code>Tab</code> icon</li> <li>the <code>text</code> when <code>Tab</code> overflows</li> <li>the tab selection line</li> </ul><br/><br/>Available semantic colors are: <code>"Default"</code>, <code>"Neutral"</code>, <code>"Positive"</code>, <code>"Critical"</code> and <code>"Negative"</code>.<br/><br/><b>Note:</b> The color value depends on the current theme.`
+        control: { type: 'radio' }
       },
       stableDomRef: { description: `Defines the stable selector that you can use via getStableDomRef method.` },
       text: { description: `The text to be displayed for the item.` },

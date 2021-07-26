@@ -129,7 +129,6 @@ import { SuggestionItem } from './dist/SuggestionItem';
 import { Switch } from './dist/Switch';
 import { Tab } from './dist/Tab';
 import { TabContainer } from './dist/TabContainer';
-import { TabContainerTabsPlacement } from './dist/TabContainerTabsPlacement';
 import { TabLayout } from './dist/TabLayout';
 import { TabSeparator } from './dist/TabSeparator';
 import { Table } from './dist/Table';
@@ -306,7 +305,6 @@ export {
   SwitchDesign,
   Tab,
   TabContainer,
-  TabContainerTabsPlacement,
   TabLayout,
   TabSeparator,
   Table,

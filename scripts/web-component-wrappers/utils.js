@@ -129,7 +129,6 @@ export const getTypeDefinitionForProperty = (property, interfaces) => {
     case 'SemanticColor':
     case 'SwitchDesign':
     case 'TabLayout':
-    case 'TabContainerTabsPlacement':
     case 'TableGrowingMode':
     case 'TableMode':
     case 'TableRowType':
