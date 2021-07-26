@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ComponentType } from 'react';
 import { render } from '@shared/tests';
 
 enum ChartQuery {
@@ -13,20 +13,18 @@ enum ChartChildrenQuery {
   'LineChart' = 'path'
 }
 
-export const createChartRenderTest = (component: React.ReactElement) => {
-  it('Render chart', () => {
-    const { asFragment, container } = render(component);
+export const createChartRenderTest = (Component: ComponentType<any>, props: {}) => {
+  test('Render chart with data', () => {
+    const { asFragment, container } = render(<Component {...props} />);
 
-    // @ts-ignore
-    if (component.type?.render?.displayName !== 'ColumnChartWithTrend') {
+    if (Component.displayName !== 'ColumnChartWithTrend') {
       // Check if a single responsive container is rendered
+      console.log(container.querySelectorAll('div.recharts-responsive-container'));
       const responsiveContainers = container.querySelectorAll('div.recharts-responsive-container');
       expect(responsiveContainers.length).toBe(1);
 
-      // @ts-ignore
-      const chartQueryType = ChartQuery[component.type?.render?.displayName];
-      // @ts-ignore
-      const chartChildrenType = ChartChildrenQuery[component.type?.render?.displayName];
+      const chartQueryType = ChartQuery[Component.displayName];
+      const chartChildrenType = ChartChildrenQuery[Component.displayName];
 
       // Check if a single chart is rendered
       const chartContainer = container.querySelector(chartQueryType);

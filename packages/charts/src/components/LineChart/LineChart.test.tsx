@@ -31,7 +31,7 @@ const measures = [
 ];
 
 describe('LineChart', () => {
-  createChartRenderTest(<LineChart dataset={complexDataSet} dimensions={dimensions} measures={measures} />);
+  createChartRenderTest(LineChart, { dataset: complexDataSet, dimensions: dimensions, measures: measures });
 
   it('Check onClick events', async () => {
     const onClick = jest.fn();

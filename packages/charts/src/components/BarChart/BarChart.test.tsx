@@ -30,7 +30,7 @@ const measures = [
 ];
 
 describe('BarChart', () => {
-  createChartRenderTest(<BarChart dataset={complexDataSet} dimensions={dimensions} measures={measures} />);
+  createChartRenderTest(BarChart, { dataset: complexDataSet, dimensions: dimensions, measures: measures });
 
   it('Check onClick events', () => {
     const onClick = jest.fn();

@@ -825,7 +825,7 @@ exports[`LineChart Check onClick events 1`] = `
 </DocumentFragment>
 `;
 
-exports[`LineChart Render chart 1`] = `
+exports[`LineChart Render chart with data 1`] = `
 <DocumentFragment>
   <div
     style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"

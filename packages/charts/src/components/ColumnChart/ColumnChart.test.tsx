@@ -31,7 +31,7 @@ const measures = [
 ];
 
 describe('ColumnChart', () => {
-  createChartRenderTest(<ColumnChart dataset={complexDataSet} dimensions={dimensions} measures={measures} />);
+  createChartRenderTest(ColumnChart, { dataset: complexDataSet, dimensions: dimensions, measures: measures });
 
   it('Check onClick events', () => {
     const onClick = jest.fn();
