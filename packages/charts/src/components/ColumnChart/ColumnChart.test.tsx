@@ -3,7 +3,7 @@ import * as React from 'react';
 import { complexDataSet } from '../../resources/DemoProps';
 import { ColumnChart } from './ColumnChart';
 import { createPassThroughPropsTest } from '@shared/tests/utils';
-import { createChartRenderTest } from '@shared/tests/chartUtils';
+import { createChartRenderTest, createOnClickChartTest } from '@shared/tests/chartUtils';
 
 const dimensions = [
   {
@@ -33,36 +33,7 @@ const measures = [
 describe('ColumnChart', () => {
   createChartRenderTest(ColumnChart, { dataset: complexDataSet, dimensions: dimensions, measures: measures });
 
-  it('Check onClick events', () => {
-    const onClick = jest.fn();
-    const onLegendClick = jest.fn();
-    const { asFragment, container } = render(
-      <ColumnChart
-        onClick={onClick}
-        onLegendClick={onLegendClick}
-        dataset={complexDataSet}
-        dimensions={dimensions}
-        measures={measures}
-      />
-    );
-
-    // Check if click on axis label is working
-    const firstYAxisLabel = screen.getByText(/January/);
-    fireEvent.click(firstYAxisLabel);
-    expect(onClick).toBeCalled();
-
-    // Check if click on legend is working
-    const legendContainer = screen.getByText(/Active Sessions/);
-    fireEvent.click(legendContainer);
-    expect(onLegendClick).toBeCalled();
-
-    // Check if click in column chart container is working
-    fireEvent.click(container.querySelector('g.recharts-bar'));
-    expect(onClick).toBeCalled();
-
-    // Check if snapshot matches render
-    expect(asFragment()).toMatchSnapshot();
-  });
+  createOnClickChartTest(ColumnChart, { dataset: complexDataSet, dimensions: dimensions, measures: measures });
 
   it('loading placeholder', () => {
     const { container, asFragment } = render(<ColumnChart dimensions={[]} measures={[]} />);

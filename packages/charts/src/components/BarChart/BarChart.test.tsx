@@ -3,7 +3,7 @@ import * as React from 'react';
 import { complexDataSet } from '../../resources/DemoProps';
 import { BarChart } from './BarChart';
 import { createPassThroughPropsTest } from '@shared/tests/utils';
-import { createChartRenderTest } from '@shared/tests/chartUtils';
+import { createChartRenderTest, createOnClickChartTest } from '@shared/tests/chartUtils';
 
 const dimensions = [
   {
@@ -32,36 +32,7 @@ const measures = [
 describe('BarChart', () => {
   createChartRenderTest(BarChart, { dataset: complexDataSet, dimensions: dimensions, measures: measures });
 
-  it('Check onClick events', () => {
-    const onClick = jest.fn();
-    const onLegendClick = jest.fn();
-    const { asFragment, container } = render(
-      <BarChart
-        onClick={onClick}
-        onLegendClick={onLegendClick}
-        dataset={complexDataSet}
-        dimensions={dimensions}
-        measures={measures}
-      />
-    );
-
-    // Check if click on axis label is working
-    const firstYAxisLabel = screen.getByText(/January/);
-    fireEvent.click(firstYAxisLabel);
-    expect(onClick).toBeCalled();
-
-    // Check if click on legend is working
-    const legendContainer = screen.getByText(/Active Sessions/);
-    fireEvent.click(legendContainer);
-    expect(onLegendClick).toBeCalled();
-
-    // Check if click in column chart container is working
-    fireEvent.click(container.querySelector('g.recharts-bar'));
-    expect(onClick).toBeCalled();
-
-    // Check if snapshot matches render
-    expect(asFragment()).toMatchSnapshot();
-  });
+  createOnClickChartTest(BarChart, { dataset: complexDataSet, dimensions: dimensions, measures: measures });
 
   it('loading placeholder', () => {
     const { container, asFragment } = render(<BarChart dimensions={[]} measures={[]} />);
@@ -76,16 +47,6 @@ describe('BarChart', () => {
 
     // Check if snapshot matches render
     expect(asFragment()).toMatchSnapshot();
-  });
-
-  it('onLegendClick', () => {
-    const cb = jest.fn((e) => {
-      e.persist();
-    });
-    render(<BarChart dataset={complexDataSet} dimensions={dimensions} measures={measures} onLegendClick={cb} />);
-    fireEvent.click(screen.getByText('Users'));
-    expect(cb).toBeCalled();
-    expect(cb.mock.calls[0][0].detail.dataKey).toEqual('users');
   });
 
   it('onLegendClick should not crash when invalid handler is provided', () => {
