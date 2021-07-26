@@ -135,6 +135,10 @@ const renamingMap = {
   Title: {
     wrap: 'wrappingType'
   },
+  ToggleButton: {
+    'aria-label': 'accessibleName',
+    iconSize: null
+  },
   TreeListItem: {
     info: 'additionalText',
     infoState: 'additionalTextState'
