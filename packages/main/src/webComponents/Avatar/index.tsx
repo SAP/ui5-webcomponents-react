@@ -1,4 +1,4 @@
-import { AvatarBackgroundColor } from '@ui5/webcomponents-react/dist/AvatarBackgroundColor';
+import { AvatarColorScheme } from '@ui5/webcomponents-react/dist/AvatarColorScheme';
 import { AvatarFitType } from '@ui5/webcomponents-react/dist/AvatarFitType';
 import { AvatarShape } from '@ui5/webcomponents-react/dist/AvatarShape';
 import { AvatarSize } from '@ui5/webcomponents-react/dist/AvatarSize';
@@ -29,7 +29,7 @@ export interface AvatarPropTypes extends WithWebComponentPropTypes {
    * *   `Accent10`
    * *   `Placeholder`
    */
-  backgroundColor?: AvatarBackgroundColor;
+  backgroundColor?: AvatarColorScheme;
   /**
    * Defines the name of the UI5 Icon, that would be displayed.
    * **Note:** If `image` is set, the property would be ignored.

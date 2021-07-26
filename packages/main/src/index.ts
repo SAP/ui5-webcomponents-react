@@ -9,7 +9,7 @@ import { AnalyticalTable } from './dist/AnalyticalTable';
 import * as AnalyticalTableHooks from './dist/AnalyticalTableHooks';
 import { AnalyticalTableScrollMode } from './dist/AnalyticalTableScrollMode';
 import { Avatar } from './dist/Avatar';
-import { AvatarBackgroundColor } from './dist/AvatarBackgroundColor';
+import { AvatarColorScheme } from './dist/AvatarColorScheme';
 import { AvatarFitType } from './dist/AvatarFitType';
 import { AvatarGroup } from './dist/AvatarGroup';
 import { AvatarGroupType } from './dist/AvatarGroupType';
@@ -183,7 +183,7 @@ export {
   AnalyticalTableHooks,
   AnalyticalTableScrollMode,
   Avatar,
-  AvatarBackgroundColor,
+  AvatarColorScheme,
   AvatarFitType,
   AvatarGroup,
   AvatarGroupType,

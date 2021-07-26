@@ -1,4 +1,4 @@
-export enum AvatarBackgroundColor {
+export enum AvatarColorScheme {
   Accent1 = 'Accent1',
   Accent2 = 'Accent2',
   Accent3 = 'Accent3',

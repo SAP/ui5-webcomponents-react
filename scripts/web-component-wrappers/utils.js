@@ -104,7 +104,7 @@ export const getTypeDefinitionForProperty = (property, interfaces) => {
         importStatement: "import { CSSProperties } from 'react';"
       };
     // UI5 Web Component Enums
-    case 'AvatarBackgroundColor':
+    case 'AvatarColorScheme':
     case 'AvatarFitType':
     case 'AvatarGroupType':
     case 'AvatarShape':
