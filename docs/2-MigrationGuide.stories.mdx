@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/addon-docs';
-import { MessageStrip, MessageStripType } from '@ui5/webcomponents-react';
+import { MessageStrip, MessageStripDesign } from '@ui5/webcomponents-react';
 import { TableOfContent } from '../shared/stories/TableOfContent';
 
 <Meta title="Migration Guide" />
@@ -111,7 +111,7 @@ Setting the title section of the `ObjectPage`:
 
 ### Device Cleanup
 
-<MessageStrip type={MessageStripType.Information} noCloseButton>
+<MessageStrip design={MessageStripDesign.Information} noCloseButton>
   As the <code>Device</code> was never mentioned as a public module in our documentation, most of those changes will
   most probably not affect you. They are mainly mentioned for the sake of completeness.
 </MessageStrip>
@@ -242,7 +242,7 @@ npx jscodeshift --transform node_modules/@ui5/webcomponents-react-base/codemods/
 npx jscodeshift --transform node_modules/@ui5/webcomponents-react-base/codemods/transformLibToDist.js --extensions js,jsx,ts,tsx --parser tsx src
 ```
 
-<MessageStrip type={MessageStripType.Warning} noCloseButton>
+<MessageStrip design={MessageStripDesign.Warning} noCloseButton>
   Please make sure that you have committed all changes before running this codemod.
   <br />
   <br />
