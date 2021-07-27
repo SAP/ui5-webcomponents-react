@@ -117,7 +117,8 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     className,
     tooltip,
     slot,
-    syncId
+    syncId,
+    ChartPlaceholder
   } = props;
 
   const chartConfig = useMemo(() => {
@@ -199,7 +200,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     <ChartContainer
       dataset={dataset}
       loading={loading}
-      Placeholder={LineChartPlaceholder}
+      Placeholder={ChartPlaceholder ?? LineChartPlaceholder}
       ref={chartRef}
       style={style}
       className={className}

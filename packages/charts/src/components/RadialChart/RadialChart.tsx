@@ -63,7 +63,8 @@ const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, r
     className,
     tooltip,
     slot,
-    noAnimation
+    noAnimation,
+    ChartPlaceholder
   } = props;
 
   const range = useMemo<AxisDomain>(() => {
@@ -95,7 +96,7 @@ const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, r
     <ChartContainer
       dataset={dataset}
       ref={ref}
-      Placeholder={PieChartPlaceholder}
+      Placeholder={ChartPlaceholder ?? PieChartPlaceholder}
       style={style}
       className={className}
       tooltip={tooltip}

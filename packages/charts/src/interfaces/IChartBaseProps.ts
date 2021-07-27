@@ -1,5 +1,5 @@
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { ReactNode, ReactNodeArray } from 'react';
+import { ComponentType, ReactNode, ReactNodeArray } from 'react';
 import { TooltipProps } from 'recharts';
 import { ICartesianChartConfig } from './ICartesianChartConfig';
 
@@ -97,4 +97,9 @@ export interface IChartBaseProps<T = ICartesianChartConfig> extends Omit<CommonP
    * of the tooltips, the startIndex and the endIndex of the zooming tool.
    */
   syncId?: string;
+  /**
+   * Injects a custom loading placeholder which is used when no data are available. If the property isn't set the
+   * standard loading placeholder of the specific chart is used.
+   */
+  ChartPlaceholder?: ComponentType;
 }

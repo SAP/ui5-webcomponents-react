@@ -101,7 +101,8 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
       noAnimation,
       tooltipConfig,
       onDataPointClick,
-      onLegendClick
+      onLegendClick,
+      ChartPlaceholder
     } = props;
 
     const chartRef = useConsolidatedRef<any>(ref);
@@ -172,7 +173,7 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
           loading={loading}
           onClick={onClick}
           syncId={'trend'}
-          chartPlaceholder={ColumnChartWithTrendPlaceholder}
+          ChartPlaceholder={ChartPlaceholder ?? ColumnChartWithTrendPlaceholder}
           dataset={dataset}
           measures={columnMeasures}
           dimensions={dimensions}

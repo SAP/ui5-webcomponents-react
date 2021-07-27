@@ -142,7 +142,8 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
     style,
     className,
     tooltip,
-    slot
+    slot,
+    ChartPlaceholder
   } = props;
 
   const chartConfig = useMemo(() => {
@@ -215,7 +216,7 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
     <ChartContainer
       dataset={dataset}
       loading={loading}
-      Placeholder={ScatterChartPlaceholder}
+      Placeholder={ChartPlaceholder ?? ScatterChartPlaceholder}
       ref={chartRef}
       style={style}
       className={className}

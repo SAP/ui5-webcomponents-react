@@ -129,7 +129,8 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
     className,
     tooltip,
     slot,
-    syncId
+    syncId,
+    ChartPlaceholder
   } = props;
 
   const chartConfig = useMemo(() => {
@@ -199,7 +200,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
     <ChartContainer
       dataset={dataset}
       loading={loading}
-      Placeholder={BarChartPlaceholder}
+      Placeholder={ChartPlaceholder ?? BarChartPlaceholder}
       ref={chartRef}
       style={style}
       className={className}
