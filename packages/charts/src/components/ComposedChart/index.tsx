@@ -136,7 +136,9 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     style,
     className,
     tooltip,
-    slot
+    slot,
+    syncId,
+    ChartPlaceholder
   } = props;
 
   const chartRef = useConsolidatedRef<any>(ref);
@@ -240,7 +242,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
       ref={chartRef}
       loading={loading}
       dataset={dataset}
-      Placeholder={Placeholder}
+      Placeholder={ChartPlaceholder ?? Placeholder}
       style={style}
       className={className}
       tooltip={tooltip}
@@ -249,6 +251,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
       {...passThroughProps}
     >
       <ComposedChartLib
+        syncId={syncId}
         onClick={onClickInternal}
         stackOffset="sign"
         margin={marginChart}
