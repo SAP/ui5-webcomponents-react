@@ -4,7 +4,7 @@ import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils
 import { ChartContainer } from '@ui5/webcomponents-react-charts/dist/components/ChartContainer';
 import { PieChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/PieChartPlaceholder';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
+import React, { ComponentType, CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import { PolarAngleAxis, RadialBar, RadialBarChart } from 'recharts';
 import { AxisDomain } from 'recharts/types/util/types';
 import { useOnClickInternal } from '../../hooks/useOnClickInternal';
@@ -63,8 +63,7 @@ const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, r
     className,
     tooltip,
     slot,
-    noAnimation,
-    ChartPlaceholder
+    noAnimation
   } = props;
 
   const range = useMemo<AxisDomain>(() => {
@@ -96,7 +95,7 @@ const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, r
     <ChartContainer
       dataset={dataset}
       ref={ref}
-      Placeholder={ChartPlaceholder ?? PieChartPlaceholder}
+      Placeholder={PieChartPlaceholder}
       style={style}
       className={className}
       tooltip={tooltip}
