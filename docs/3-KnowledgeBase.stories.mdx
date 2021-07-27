@@ -14,6 +14,54 @@ This section is a collection of special use cases that might be encountered when
 
 <br />
 
+## Test Setup
+
+This guide is applicable if you are using a standard `create-react-app` setup.
+
+`create-react-app` offers you to modify specific parts of the `jest` config by adding `jest` object to your `package.json`.
+Here you need to tell `jest` to transpile the UI5 Web Components as well as the `lit-html` library:<br />
+`package.json:`
+
+```json
+{
+  "jest": {
+    "transformIgnorePatterns": ["node_modules/(?!(@ui5|lit-html)).*\\.js$"]
+  }
+}
+```
+
+Since the UI5 Web Components for React are based on the `ResizeObserver` and `matchMedia` API, you'll need to polyfill both APIs.
+Therefore, create (or edit) your `src/setupTests.js` file:
+
+```js
+import ResizeObserverPolyfill from 'resize-observer-polyfill';
+
+const setupMatchMedia = () => {
+  Object.defineProperty(window, 'matchMedia', {
+    writable: true,
+    value: jest.fn().mockImplementation((query) => ({
+      matches: false,
+      media: query,
+      onchange: null,
+      addListener: jest.fn(), // deprecated
+      removeListener: jest.fn(), // deprecated
+      addEventListener: jest.fn(),
+      removeEventListener: jest.fn(),
+      dispatchEvent: jest.fn()
+    }))
+  });
+};
+
+beforeEach(() => {
+  setupMatchMedia();
+  window.ResizeObserver = ResizeObserverPolyfill;
+});
+```
+
+Now you should be able to run your test by using `npm run test` or `yarn test`.
+
+<br />
+
 ## Adding custom components to slots
 
 With our wrapper we provide an easy way to consume the `slots` of the UI5 Web Components by attaching them to a `prop`.
@@ -63,26 +111,6 @@ export const BarComponent = () => {
 Now the `BarComponent` would compile to this:
 
 <BarComponent />
-
-<br />
-
-## Test Setup
-
-This guide is applicable if you are using a standard `create-react-app` setup.
-
-`create-react-app` offers you to modify specific parts of the `jest` config by adding `jest` object to your `package.json`.
-Here you need to tell `jest` to transpile the UI5 Web Components as well as the `lit-html` library:<br />
-`package.json:`
-
-```json
-{
-  "jest": {
-    "transformIgnorePatterns": ["node_modules/(?!(@ui5|lit-html)).*\\.js$"]
-  }
-}
-```
-
-Now you should be able to run your test by using `npm run test` or `yarn test`.
 
 <br />
 
