@@ -116,7 +116,9 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     style,
     className,
     tooltip,
-    slot
+    slot,
+    syncId,
+    ChartPlaceholder
   } = props;
 
   const chartConfig = useMemo(() => {
@@ -130,6 +132,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
       legendHorizontalAlign: 'left',
       zoomingTool: false,
       resizeDebounce: 250,
+      yAxisTicksVisible: true,
       ...props.chartConfig
     };
   }, [props.chartConfig]);
@@ -197,7 +200,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     <ChartContainer
       dataset={dataset}
       loading={loading}
-      Placeholder={LineChartPlaceholder}
+      Placeholder={ChartPlaceholder ?? LineChartPlaceholder}
       ref={chartRef}
       style={style}
       className={className}
@@ -207,6 +210,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
       {...passThroughProps}
     >
       <LineChartLib
+        syncId={syncId}
         margin={marginChart}
         data={dataset}
         onClick={onDataPointClickInternal}
@@ -217,24 +221,23 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
           horizontal={chartConfig.gridHorizontal}
           stroke={chartConfig.gridStroke}
         />
-        {chartConfig.xAxisVisible &&
-          dimensions.map((dimension, index) => {
-            return (
-              <XAxis
-                key={dimension.accessor}
-                dataKey={dimension.accessor}
-                xAxisId={index}
-                interval={dimension?.interval ?? (isBigDataSet ? 'preserveStart' : 0)}
-                tick={<XAxisTicks config={dimension} />}
-                tickLine={index < 1}
-                axisLine={index < 1}
-                height={xAxisHeights[index]}
-                padding={xAxisPadding}
-                allowDuplicatedCategory={index === 0}
-                reversed={isRTL}
-              />
-            );
-          })}
+        {dimensions.map((dimension, index) => {
+          return (
+            <XAxis
+              key={dimension.accessor}
+              dataKey={dimension.accessor}
+              xAxisId={index}
+              interval={dimension?.interval ?? (isBigDataSet ? 'preserveStart' : 0)}
+              tick={<XAxisTicks config={dimension} />}
+              tickLine={index < 1}
+              axisLine={index < 1}
+              height={chartConfig.xAxisVisible ? xAxisHeights[index] : 0}
+              padding={xAxisPadding}
+              allowDuplicatedCategory={index === 0}
+              reversed={isRTL}
+            />
+          );
+        })}
         <YAxis
           orientation={isRTL === true ? 'right' : 'left'}
           axisLine={chartConfig.yAxisVisible}
@@ -242,7 +245,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
           yAxisId="left"
           tickFormatter={primaryMeasure?.formatter}
           interval={0}
-          tick={<YAxisTicks config={primaryMeasure} />}
+          tick={chartConfig.yAxisTicksVisible && <YAxisTicks config={primaryMeasure} />}
           width={yAxisWidth}
         />
         {chartConfig.secondYAxis?.dataKey && (
