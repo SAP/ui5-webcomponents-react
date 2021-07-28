@@ -42,7 +42,7 @@ export const createChartRenderTest = (Component: ComponentType<any>, props: {}) 
   });
 };
 
-export const createOnClickChartTest = (Component: ComponentType<any>, props: {}) => {
+export const createOnClickChartTest = (Component: ComponentType<any>, props: Record<string, any>) => {
   it('Check onClick events', () => {
     const onClick = jest.fn();
     const onLegendClick = jest.fn((e) => {
@@ -53,26 +53,23 @@ export const createOnClickChartTest = (Component: ComponentType<any>, props: {})
     const chartQueryType = ChartQuery[Component.displayName];
     const chartChildrenType = ChartChildrenQuery[Component.displayName];
 
-    if (Component.displayName !== 'ColumnChartWithTrend') {
-      // Check if click on axis label is working
-      const firstYAxisLabel = screen.getByText(/January/);
-      fireEvent.click(firstYAxisLabel);
-      expect(onClick).toBeCalled();
+    // Check if click on axis label is working
+    const firstYAxisLabel = screen.getByText(/January/);
+    fireEvent.click(firstYAxisLabel);
+    expect(onClick).toBeCalled();
 
-      // Check if click in chart container is working
-      fireEvent.click(container.querySelector(chartQueryType));
-      expect(onClick).toBeCalled();
+    // Check if click in chart container is working
+    fireEvent.click(container.querySelector(chartQueryType));
+    expect(onClick).toBeCalled();
 
-      // Check if click on chart element is working
-      fireEvent.click(container.querySelector(chartChildrenType));
-      expect(onClick).toBeCalled();
+    // Check if click on chart element is working
+    fireEvent.click(container.querySelector(chartChildrenType));
+    expect(onClick).toBeCalled();
 
-      // @ts-ignore
-      if (props.noLegend) {
-        fireEvent.click(screen.getByText('Users'));
-        expect(onLegendClick).toBeCalled();
-        expect(onLegendClick.mock.calls[0][0].detail.dataKey).toEqual('users');
-      }
+    if (props.noLegend) {
+      fireEvent.click(screen.getByText('Users'));
+      expect(onLegendClick).toBeCalled();
+      expect(onLegendClick.mock.calls[0][0].detail.dataKey).toEqual('users');
     }
 
     // Check if snapshot matches render
