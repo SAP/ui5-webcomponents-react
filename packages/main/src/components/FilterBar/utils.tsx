@@ -5,6 +5,7 @@ export const filterValue = (ref, child) => {
   let filterItemProps = {};
   if (
     tagName === 'UI5-INPUT' ||
+    tagName === 'UI5-COMBOBOX' ||
     tagName === 'UI5-DATE-PICKER' ||
     tagName === 'UI5-DATETIME-PICKER' ||
     tagName === 'UI5-DATERANGE-PICKER' ||
@@ -12,9 +13,6 @@ export const filterValue = (ref, child) => {
     tagName === 'UI5-DURATION-PICKER'
   ) {
     filterItemProps = { value: ref.value };
-  }
-  if (tagName === 'UI5-COMBOBOX') {
-    filterItemProps = { value: ref.value, filterValue: ref.filterValue };
   }
   if (tagName === 'UI5-SELECT' || tagName === 'UI5-MULTI-COMBOBOX') {
     const selectedIndices = Array.from(ref.children as HTMLCollectionOf<any>)
