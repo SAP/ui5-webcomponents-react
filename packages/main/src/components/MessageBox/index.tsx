@@ -1,9 +1,9 @@
+import '@ui5/webcomponents-icons/dist/hint';
 import '@ui5/webcomponents-icons/dist/message-error';
 import '@ui5/webcomponents-icons/dist/message-information';
 import '@ui5/webcomponents-icons/dist/message-success';
 import '@ui5/webcomponents-icons/dist/message-warning';
 import '@ui5/webcomponents-icons/dist/question-mark';
-import '@ui5/webcomponents-icons/dist/hint';
 import { useConsolidatedRef, useI18nBundle, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
@@ -33,6 +33,9 @@ import { MessageBoxTypes } from '@ui5/webcomponents-react/dist/MessageBoxTypes';
 import { Text } from '@ui5/webcomponents-react/dist/Text';
 import { Title } from '@ui5/webcomponents-react/dist/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { Ui5DialogDomRef } from '@ui5/webcomponents-react/interfaces/Ui5DialogDomRef';
 import React, {
   FC,
   forwardRef,
@@ -45,8 +48,6 @@ import React, {
   useMemo
 } from 'react';
 import { createUseStyles } from 'react-jss';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { Ui5DialogDomRef } from '@ui5/webcomponents-react/interfaces/Ui5DialogDomRef';
 import { stopPropagation } from '../../internal/stopPropagation';
 import styles from './MessageBox.jss';
 
@@ -70,6 +71,12 @@ export interface MessageBoxPropTypes extends CommonProps {
    */
   actions?: (MessageBoxActions | string)[];
   /**
+   * Specifies which action of the created dialog will be emphasized.
+   *
+   * @since 0.16.3
+   */
+  emphasizedAction?: MessageBoxActions | string;
+  /**
    * A custom icon. If not present, it will be derived from the `MessageBox` type.
    */
   icon?: ReactNode;
@@ -78,9 +85,21 @@ export interface MessageBoxPropTypes extends CommonProps {
    */
   type?: MessageBoxTypes;
   /**
+   * Defines the ID of the HTML Element or the `MessageBoxAction`, which will get the initial focus.
+   */
+  initialFocus?: string | MessageBoxActions;
+  /**
    * Callback to be executed when the `MessageBox` is closed (either by pressing on one of the `actions` or by pressing the `ESC` key). `event.detail.action` contains the pressed action button.
    */
   onClose: (event: CustomEvent<{ action: MessageBoxActions }>) => void;
+  /**
+   * Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. This event does not bubble.
+   */
+  onBeforeOpen?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  /**
+   * Fired after the component is opened. This event does not bubble.
+   */
+  onAfterOpen?: (event: Ui5CustomEvent<HTMLElement>) => void;
 }
 
 const useStyles = createUseStyles(styles, { name: 'MessageBox' });
@@ -90,7 +109,23 @@ const useStyles = createUseStyles(styles, { name: 'MessageBox' });
  * For convenience, it also provides an `open` prop, so it is not necessary to attach a `ref` to open the `MessageBox`.
  */
 const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDomRef>) => {
-  const { open, type, children, className, style, tooltip, slot, title, icon, actions, onClose } = props;
+  const {
+    open,
+    type,
+    children,
+    className,
+    style,
+    tooltip,
+    slot,
+    title,
+    icon,
+    actions,
+    emphasizedAction,
+    onClose,
+    initialFocus,
+    onBeforeOpen,
+    onAfterOpen
+  } = props;
   const dialogRef = useConsolidatedRef<Ui5DialogDomRef>(ref);
 
   const classes = useStyles();
@@ -176,8 +211,7 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
   useEffect(() => {
     if (dialogRef.current) {
       if (open) {
-        dialogRef.current.open?.(true);
-        dialogRef.current.focus();
+        dialogRef.current.open?.();
       } else {
         dialogRef.current.close?.();
       }
@@ -195,7 +229,10 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
       style={style}
       tooltip={tooltip}
       className={messageBoxClassNames}
+      onAfterOpen={onAfterOpen}
+      onBeforeOpen={onBeforeOpen}
       onAfterClose={open ? handleOnClose : stopPropagation}
+      initialFocus={initialFocus}
       {...passThroughProps}
     >
       <header slot="header" className={classes.header} data-type={type}>
@@ -207,8 +244,9 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
         {getActions().map((action, index) => {
           return (
             <Button
+              id={action}
               key={`${action}-${index}`}
-              design={index === 0 ? ButtonDesign.Emphasized : ButtonDesign.Transparent}
+              design={emphasizedAction === action ? ButtonDesign.Emphasized : ButtonDesign.Transparent}
               onClick={handleOnClose}
               data-action={action}
             >
@@ -228,6 +266,7 @@ MessageBox.defaultProps = {
   title: null,
   icon: null,
   type: MessageBoxTypes.CONFIRM,
+  emphasizedAction: MessageBoxActions.OK,
   actions: []
 };
 

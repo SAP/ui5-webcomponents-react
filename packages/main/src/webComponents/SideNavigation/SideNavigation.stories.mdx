@@ -1,10 +1,8 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { SideNavigation } from '@ui5/webcomponents-react/dist/SideNavigation';
 import { SideNavigationItem } from '@ui5/webcomponents-react/dist/SideNavigationItem';
 import { SideNavigationSubItem } from '@ui5/webcomponents-react/dist/SideNavigationSubItem';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 import '@ui5/webcomponents-icons/dist/home';
 import '@ui5/webcomponents-icons/dist/group';
 import '@ui5/webcomponents-icons/dist/locate-me';
@@ -18,10 +16,9 @@ import '@ui5/webcomponents-icons/dist/wrench';
   component={SideNavigation}
   subcomponents={{ SideNavigationItem, SideNavigationSubItem }}
   argTypes={{
-    ...createSelectArgTypes({}),
-    ...DocsCommonProps,
     children: { control: { disable: true } },
-    fixedItems: { control: { disable: true } }
+    fixedItems: { control: { disable: true } },
+    header: { control: { disable: true } }
   }}
   args={{
     style: {},

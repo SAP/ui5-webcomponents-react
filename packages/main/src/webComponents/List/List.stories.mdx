@@ -1,4 +1,4 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { List } from '@ui5/webcomponents-react/dist/List';
 import { ProgressIndicator } from '@ui5/webcomponents-react/dist/ProgressIndicator';
 import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';
@@ -13,9 +13,7 @@ import { ListGrowingMode } from '@ui5/webcomponents-react/dist/ListGrowingMode';
 import { StandardListItem } from '@ui5/webcomponents-react/dist/StandardListItem';
 import { CustomListItem } from '@ui5/webcomponents-react/dist/CustomListItem';
 import { GroupHeaderListItem } from '@ui5/webcomponents-react/dist/GroupHeaderListItem';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 import '@ui5/webcomponents-icons/dist/employee.js';
 
 <Meta
@@ -23,8 +21,6 @@ import '@ui5/webcomponents-icons/dist/employee.js';
   component={List}
   subcomponents={{ StandardListItem, CustomListItem, GroupHeaderListItem }}
   argTypes={{
-    ...createSelectArgTypes({ mode: ListMode, separators: ListSeparators, growing: ListGrowingMode }),
-    ...DocsCommonProps,
     children: { control: { disable: true } },
     header: { control: { disable: true } }
   }}
@@ -80,7 +76,6 @@ list item, providing the most common use cases such as <code>text</code>, <code>
   <Story
     name="with StandardListItem"
     args={{
-      ...createSelectArgTypes({ mode: ListMode, separators: ListSeparators }),
       description: 'StandardListItem',
       icon: 'employee',
       iconEnd: false,
@@ -92,7 +87,6 @@ list item, providing the most common use cases such as <code>text</code>, <code>
       children: 'List Item'
     }}
     argTypes={{
-      ...createSelectArgTypes({ infoState: ValueState, type: ListItemTypes }),
       description: { description: `Defines the description displayed right under the item text, if such is present.` },
       icon: {
         description: `Defines the <code>icon</code> source URI. <br><br> <b>Note:</b> SAP-icons font provides numerous built-in icons. To find all the available icons, see the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.`

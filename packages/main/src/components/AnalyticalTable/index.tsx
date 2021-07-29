@@ -3,7 +3,7 @@ import { useIsomorphicLayoutEffect, useIsRTL } from '@ui5/webcomponents-react-ba
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
+import { enrichEventWithDetails, debounce } from '@ui5/webcomponents-react-base/dist/Utils';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { GlobalStyleClasses } from '@ui5/webcomponents-react/dist/GlobalStyleClasses';
 import { TableScaleWidthMode } from '@ui5/webcomponents-react/dist/TableScaleWidthMode';
@@ -11,7 +11,6 @@ import { TableSelectionBehavior } from '@ui5/webcomponents-react/dist/TableSelec
 import { TableSelectionMode } from '@ui5/webcomponents-react/dist/TableSelectionMode';
 import { TableVisibleRowCountMode } from '@ui5/webcomponents-react/dist/TableVisibleRowCountMode';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
-import debounce from 'lodash/debounce';
 import React, {
   ComponentType,
   CSSProperties,
@@ -487,8 +486,14 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
 
   const updateRowsCount = useCallback(() => {
     if (visibleRowCountMode === TableVisibleRowCountMode.AUTO && analyticalTableRef.current?.parentElement) {
-      const tableYPosition = analyticalTableRef.current?.offsetTop ?? 0;
-      const parentHeight = analyticalTableRef.current?.parentElement?.getBoundingClientRect().height;
+      const parentElement = analyticalTableRef.current?.parentElement;
+      const tableYPosition =
+        parentElement &&
+        getComputedStyle(parentElement).position === 'relative' &&
+        analyticalTableRef.current?.offsetTop
+          ? analyticalTableRef.current?.offsetTop
+          : 0;
+      const parentHeight = parentElement?.getBoundingClientRect().height;
       const tableHeight = parentHeight ? parentHeight - tableYPosition : 0;
       const rowCount = Math.floor((tableHeight - extensionsHeight) / popInRowHeight);
       dispatch({

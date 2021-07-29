@@ -3,6 +3,7 @@
 exports[`DateTimePicker Basic Test (generated) 1`] = `
 <DocumentFragment>
   <ui5-datetime-picker
+    ui5-datetime-picker=""
     value-state="None"
   />
 </DocumentFragment>

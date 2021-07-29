@@ -67,8 +67,8 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
       (index) => {
         if (
           renderRowSubComponent &&
-          (rows[index].isExpanded || alwaysShowSubComponent) &&
-          subComponentsHeight?.[index]?.rowId === rows[index].id
+          (rows[index]?.isExpanded || alwaysShowSubComponent) &&
+          subComponentsHeight?.[index]?.rowId === rows[index]?.id
         ) {
           return rowHeight + (subComponentsHeight?.[index]?.subComponentHeight ?? 0);
         }
@@ -251,6 +251,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
           <div
             {...rowProps}
             style={{
+              ...(rowProps.style ?? {}),
               height: `${rowHeight}px`,
               transform: `translateY(${virtualRow.start}px)`,
               position: 'absolute'

@@ -1,3 +1,4 @@
+import { useConsolidatedRef, useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
 import { createUseStyles } from 'react-jss';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
@@ -76,27 +77,31 @@ export const FilterGroupItem: FC<FilterGroupItemPropTypes> = forwardRef(
       loading,
       className,
       tooltip,
-      slot,
-      // @ts-ignore
-      inFB
+      slot
     } = props;
-
     const passThroughProps = usePassThroughHtmlProps(props);
+    const inFB = props['data-in-fb'];
+    const filterGroupItemRef = useConsolidatedRef<HTMLDivElement>(ref);
+
+    const isRtl = useIsRTL(filterGroupItemRef);
+    const transformMarginRight = isRtl ? 'marginLeft' : 'marginRight';
 
     const styleClasses = StyleClassHelper.of(inFB ? classes.filterItem : classes.filterItemDialog);
     if (className) {
       styleClasses.put(className);
     }
 
+    const inlineStyle = { [transformMarginRight]: '1rem', ...style };
+
     if (!required && (!visible || (inFB && !visibleInFilterBar))) return null;
     return (
       <div
-        ref={ref}
+        ref={filterGroupItemRef}
         title={tooltip}
         slot={slot}
         {...passThroughProps}
         className={styleClasses.valueOf()}
-        style={inFB ? style : emptyObject}
+        style={inFB ? inlineStyle : emptyObject}
       >
         <div className={inFB ? classes.innerFilterItemContainer : classes.innerFilterItemContainerDialog}>
           <FlexBox>
