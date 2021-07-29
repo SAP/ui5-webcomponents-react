@@ -59,7 +59,7 @@ const renderLabel = (
 ) => {
   if (typeof label === 'string') {
     return (
-      <Label className={classes.label} style={styles} wrap>
+      <Label className={classes.label} style={styles} wrappingType={WrappingType.Normal}>
         {label ? `${label}:` : ''}
       </Label>
     );

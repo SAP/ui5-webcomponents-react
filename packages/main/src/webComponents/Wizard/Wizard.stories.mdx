@@ -1,6 +1,7 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { Wizard } from '@ui5/webcomponents-react/dist/Wizard';
 import { WizardStep } from '@ui5/webcomponents-react/dist/WizardStep';
+import { WrappingType } from '@ui5/webcomponents-react/dist/WrappingType';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import '@ui5/webcomponents-icons/dist/product';
 import '@ui5/webcomponents-icons/dist/hint';
@@ -60,7 +61,7 @@ import { useRef } from 'react';
               The Wizard control is supposed to break down large tasks, into smaller steps, easier for the user to work
               with.
             </MessageStrip>
-            <Label wrap>
+            <Label wrappingType={WrappingType.None}>
               Sed fermentum, mi et tristique ullamcorper, sapien sapien faucibus sem, quis pretium nibh lorem malesuada
               diam. Nulla quis arcu aliquet, feugiat massa semper, volutpat diam. Nam vitae ante posuere, molestie neque
               sit amet, dapibus velit. Maecenas eleifend tempor lorem. Mauris vitae elementum mi, sed eleifend ligula.
@@ -75,7 +76,7 @@ import { useRef } from 'react';
           </WizardStep>
           <WizardStep icon="hint" titleText="Product Information" disabled ref={step2}>
             <Title>2. Product Information</Title>
-            <Label wrap>
+            <Label wrappingType={WrappingType.None}>
               Integer pellentesque leo sit amet dui vehicula, quis ullamcorper est pulvinar. Nam in libero sem.
               Suspendisse arcu metus, molestie a turpis a, molestie aliquet dui. Donec ppellentesque leo sit amet dui
               vehicula, quis ullamcorper est pulvinar. Nam in libero sem. Suspendisse arcu metus, molestie a turpis a,
@@ -91,7 +92,7 @@ import { useRef } from 'react';
           </WizardStep>
           <WizardStep icon="lead" titleText="Pricing" disabled ref={step3}>
             <Title>4. Pricing</Title>
-            <Label wrap>
+            <Label wrappingType={WrappingType.None}>
               Integer pellentesque leo sit amet dui vehicula, quis ullamcorper est pulvinar. Nam in libero sem.
               Suspendisse arcu metus, molestie a turpis a, molestie aliquet dui. Donec ppellentesque leo sit amet dui
               vehicula, quis ullamcorper est pulvinar. Nam in libero sem. Suspendisse arcu metus, molestie a turpis a,
