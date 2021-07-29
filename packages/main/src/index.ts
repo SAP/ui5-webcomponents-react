@@ -29,6 +29,7 @@ import { CalendarSelection } from './dist/CalendarSelection';
 import { CalendarSelectionMode } from './dist/CalendarSelectionMode';
 import { CalendarType } from './dist/CalendarType';
 import { Card } from './dist/Card';
+import { CardHeader } from './dist/CardHeader';
 import { Carousel } from './dist/Carousel';
 import { CarouselArrowsPlacement } from './dist/CarouselArrowsPlacement';
 import { CheckBox } from './dist/CheckBox';
@@ -36,6 +37,7 @@ import { ColorPalette } from './dist/ColorPalette';
 import { ColorPaletteItem } from './dist/ColorPaletteItem';
 import { ColorPicker } from './dist/ColorPicker';
 import { ComboBox } from './dist/ComboBox';
+import { ComboBoxGroupItem } from './dist/ComboBoxGroupItem';
 import { ComboBoxItem } from './dist/ComboBoxItem';
 import { ContentDensity } from './dist/ContentDensity';
 import { CustomListItem } from './dist/CustomListItem';
@@ -65,6 +67,8 @@ import { Grid } from './dist/Grid';
 import { GridPosition } from './dist/GridPosition';
 import { GroupHeaderListItem } from './dist/GroupHeaderListItem';
 import { Icon } from './dist/Icon';
+import { IllustratedMessage } from './dist/IllustratedMessage';
+import { IllustrationMessageType } from './dist/IllustrationMessageType';
 import { IndicationColor } from './dist/IndicationColor';
 import { Input } from './dist/Input';
 import { InputType } from './dist/InputType';
@@ -113,6 +117,7 @@ import { RatingIndicator } from './dist/RatingIndicator';
 import { ResponsiveGridLayout } from './dist/ResponsiveGridLayout';
 import { ResponsivePopover } from './dist/ResponsivePopover';
 import { SegmentedButton } from './dist/SegmentedButton';
+import { SegmentedButtonItem } from './dist/SegmentedButtonItem';
 import { Select } from './dist/Select';
 import { SemanticColor } from './dist/SemanticColor';
 import { ShellBar } from './dist/ShellBar';
@@ -124,8 +129,10 @@ import { Size } from './dist/Size';
 import { Slider } from './dist/Slider';
 import { StandardListItem } from './dist/StandardListItem';
 import { StepInput } from './dist/StepInput';
+import { SuggestionGroupItem } from './dist/SuggestionGroupItem';
 import { SuggestionItem } from './dist/SuggestionItem';
 import { Switch } from './dist/Switch';
+import { SwitchDesign } from './dist/SwitchDesign';
 import { Tab } from './dist/Tab';
 import { TabContainer } from './dist/TabContainer';
 import { TabLayout } from './dist/TabLayout';
@@ -133,9 +140,12 @@ import { TabSeparator } from './dist/TabSeparator';
 import { Table } from './dist/Table';
 import { TableCell } from './dist/TableCell';
 import { TableColumn } from './dist/TableColumn';
+import { TableGroupRow } from './dist/TableGroupRow';
 import { TableGrowingMode } from './dist/TableGrowingMode';
+import { TableMode } from './dist/TableMode';
 import { TablePlaceholder } from './dist/TablePlaceholder';
 import { TableRow } from './dist/TableRow';
+import { TableRowType } from './dist/TableRowType';
 import { TableScaleWidthMode } from './dist/TableScaleWidthMode';
 import { TableSelectionBehavior } from './dist/TableSelectionBehavior';
 import { TableSelectionMode } from './dist/TableSelectionMode';
@@ -171,9 +181,6 @@ import { Wizard } from './dist/Wizard';
 import { WizardStep } from './dist/WizardStep';
 import { WrappingType } from './dist/WrappingType';
 import { withWebComponent } from './dist/withWebComponent';
-import { SwitchDesign } from './dist/SwitchDesign';
-import { TableMode } from './dist/TableMode';
-import { TableRowType } from './dist/TableRowType';
 
 export {
   ActionSheet,
@@ -203,6 +210,7 @@ export {
   CalendarSelectionMode,
   CalendarType,
   Card,
+  CardHeader,
   Carousel,
   CarouselArrowsPlacement,
   CheckBox,
@@ -210,6 +218,7 @@ export {
   ColorPaletteItem,
   ColorPicker,
   ComboBox,
+  ComboBoxGroupItem,
   ComboBoxItem,
   ContentDensity,
   CustomListItem,
@@ -239,6 +248,8 @@ export {
   GridPosition,
   GroupHeaderListItem,
   Icon,
+  IllustratedMessage,
+  IllustrationMessageType,
   IndicationColor,
   Input,
   InputType,
@@ -273,9 +284,9 @@ export {
   PageBackgroundDesign,
   Panel,
   PanelAccessibleRole,
-  PopoverPlacementType,
   Popover,
   PopoverHorizontalAlign,
+  PopoverPlacementType,
   PopoverVerticalAlign,
   Priority,
   ProductSwitch,
@@ -287,6 +298,7 @@ export {
   ResponsiveGridLayout,
   ResponsivePopover,
   SegmentedButton,
+  SegmentedButtonItem,
   Select,
   SemanticColor,
   ShellBar,
@@ -298,6 +310,7 @@ export {
   Slider,
   StandardListItem,
   StepInput,
+  SuggestionGroupItem,
   SuggestionItem,
   Switch,
   SwitchDesign,
@@ -308,6 +321,7 @@ export {
   Table,
   TableCell,
   TableColumn,
+  TableGroupRow,
   TableGrowingMode,
   TableMode,
   TablePlaceholder,
