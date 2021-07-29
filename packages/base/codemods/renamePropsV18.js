@@ -169,6 +169,9 @@ const renamingMap = {
   // UI5 Web Components React
   AnalyticalTable: {
     title: 'header'
+  },
+  VariantManagement: {
+    popupTitle: 'titleText'
   }
 };
 
