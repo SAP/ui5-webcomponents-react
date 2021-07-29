@@ -580,7 +580,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   const onShowSubSectionPopover = useCallback(
     (e, section) => {
       setPopoverContent(section);
-      popoverRef.current.openBy(e.detail.targetRef);
+      popoverRef.current.showAt(e.detail.targetRef);
     },
     [setPopoverContent, popoverRef]
   );

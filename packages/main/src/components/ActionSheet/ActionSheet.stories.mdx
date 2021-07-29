@@ -40,7 +40,7 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
       const actionSheetRef = useRef();
       const onButtonClick = useCallback(
         (e) => {
-          actionSheetRef.current.openBy(e.target);
+          actionSheetRef.current.showAt(e.target);
         },
         [actionSheetRef]
       );
@@ -81,7 +81,7 @@ This component exposes public methods. You can invoke them directly on the insta
 const ActionSheetComponent = () => {
   const actionSheetRef = useRef();
   const onButtonClick = (e) => {
-    actionSheetRef.current.openBy(e.target);
+    actionSheetRef.current.showAt(e.target);
   };
   return (
     <>
@@ -105,7 +105,7 @@ In this case, we recommend using [createPortal](https://reactjs.org/docs/portals
 const ActionSheetComponent = () => {
   const actionSheetRef = useRef();
   const onButtonClick = (e) => {
-    actionSheetRef.current.openBy(e.target);
+    actionSheetRef.current.showAt(e.target);
   };
   return (
     <>

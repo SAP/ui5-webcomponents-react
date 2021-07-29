@@ -24,7 +24,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
       e.stopPropagation();
       if (popoverRef.current) {
         if (!pressed) {
-          popoverRef.current.openBy(e.target);
+          popoverRef.current.showAt(e.target);
           setPressed(true);
         } else {
           popoverRef.current.close();

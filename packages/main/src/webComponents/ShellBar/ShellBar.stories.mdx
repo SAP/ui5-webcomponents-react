@@ -142,7 +142,7 @@ To open a popover with the `ShellBarItem` you can use the `targetRef` property o
 const ShellBarComponent = () => {
   const popoverRef = useRef(null);
   const handleShellBarItemClick = (e) => {
-    popoverRef.current.openBy(e.detail.targetRef);
+    popoverRef.current.showAt(e.detail.targetRef);
   };
   return (
     <>

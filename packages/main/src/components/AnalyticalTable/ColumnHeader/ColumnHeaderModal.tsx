@@ -130,7 +130,7 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
   useEffect(() => {
     const popoverInstance = ref.current;
     if (open) {
-      popoverInstance?.openBy(targetRef.current);
+      popoverInstance?.showAt(targetRef.current);
     }
   }, [open, targetRef.current, ref.current]);
 

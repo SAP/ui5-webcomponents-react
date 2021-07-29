@@ -124,25 +124,26 @@ function MyNewComponent() {
 }
 ```
 
-You can open all Popovers (`ActionSheet`, `Popover`, `ResponsivePopover`) using the `.openBy` method:
+You can open all Popovers (`ActionSheet`, `Popover`, `ResponsivePopover`) using the `.showAt` method:
 
 ```js
 // with 0.17.x
 function MyOldComponent() {
   const ref = useRef();
   const openPopover = (event) => {
-    ref.current.open(event.target); // ActionSheet and ResponsivePopover, Popover was already using openBy
+    ref.current.open(event.target); // ActionSheet and ResponsivePopover
+    ref.current.openBy(event.target); // Popover
   };
-  return <Popver ref={ref}>Content</Popver>;
+  return <Popover ref={ref}>Content</Popover>;
 }
 
 // with 0.18.x
 function MyNewComponent() {
   const ref = useRef();
   const openPopover = (event) => {
-    ref.current.openBy(event.target);
+    ref.current.showAt(event.target);
   };
-  return <Popver ref={ref}>Content</Popver>;
+  return <Poppver ref={ref}>Content</Poppver>;
 }
 ```
 

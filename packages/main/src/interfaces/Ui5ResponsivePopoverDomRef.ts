@@ -5,7 +5,7 @@ export interface Ui5ResponsivePopoverDomRef extends Ui5DomRef {
    * Opens popover on desktop and dialog on mobile.
    * @param opener - The element that the popover is opened by.
    */
-  openBy: (opener: HTMLElement | EventTarget) => void;
+  showAt: (opener: HTMLElement | EventTarget) => void;
   /**
    * Closes the popover/dialog.
    */
