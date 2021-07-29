@@ -1,25 +1,28 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { ObjectPage } from '@ui5/webcomponents-react/dist/ObjectPage';
 import { ObjectPageSection } from '@ui5/webcomponents-react/dist/ObjectPageSection';
 import { ObjectPageSubSection } from '@ui5/webcomponents-react/dist/ObjectPageSubSection';
 import { ObjectPageMode } from '@ui5/webcomponents-react/dist/ObjectPageMode';
 import { Text } from '@ui5/webcomponents-react/dist/Text';
 import { Link } from '@ui5/webcomponents-react/dist/Link';
-import { ProgressIndicator } from '@ui5/webcomponents-react/dist/ProgressIndicator';
 import { Breadcrumbs } from '@ui5/webcomponents-react/dist/Breadcrumbs';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
+import { Bar } from '@ui5/webcomponents-react/dist/Bar';
+import { BarDesign } from '@ui5/webcomponents-react/dist/BarDesign';
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
 import { Label } from '@ui5/webcomponents-react/dist/Label';
 import { Form } from '@ui5/webcomponents-react/dist/Form';
 import { FormItem } from '@ui5/webcomponents-react/dist/FormItem';
 import { FormGroup } from '@ui5/webcomponents-react/dist/FormGroup';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
+import { DynamicPageTitle } from '@ui5/webcomponents-react/dist/DynamicPageTitle';
+import { DynamicPageHeader } from '@ui5/webcomponents-react/dist/DynamicPageHeader';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { ObjectStatus } from '@ui5/webcomponents-react/dist/ObjectStatus';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
+import { FlexBoxWrap } from '@ui5/webcomponents-react/dist/FlexBoxWrap';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 import '@ui5/webcomponents-icons/dist/activate.js';
 import SampleImage from './DemoImage.png';
 import '@ui5/webcomponents-icons/dist/wrench.js';
@@ -29,60 +32,70 @@ import '@ui5/webcomponents-icons/dist/wrench.js';
   component={ObjectPage}
   subcomponents={{ ObjectPageSection, ObjectPageSubSection }}
   argTypes={{
-    ...createSelectArgTypes({ mode: ObjectPageMode }),
+    headerTitle: { control: { disable: true } },
     headerContent: { control: { disable: true } },
-    breadcrumbs: { control: { disable: true } },
-    headerActions: { control: { disable: true } },
-    children: { control: { disable: true } },
-    keyInfos: { control: { disable: true } },
-    ...DocsCommonProps
+    footer: { control: { disable: true } },
+    children: { control: { disable: true } }
   }}
   args={{
     mode: ObjectPageMode.Default,
-    title: 'Denise Smith',
-    subTitle: 'Senior UI Developer',
     showHideHeaderButton: true,
     selectedSectionId: 'goals',
     headerContentPinnable: true,
     imageShapeCircle: true,
-    headerContent: (
-      <>
-        <FlexBox direction={FlexBoxDirection.Column}>
-          <Link>+33 6 4512 5158</Link>
-          <Link href="mailto:ui5-webcomponents-react@sap.com">DeniseSmith@sap.com</Link>
-          <Link href="https://github.com/SAP/ui5-webcomponents-react">
-            https://github.com/SAP/ui5-webcomponents-react
-          </Link>
-        </FlexBox>
-        <FlexBox direction={FlexBoxDirection.Column} style={{ width: '200px' }}>
-          <Label>Achieved Goals</Label>
-          <ProgressIndicator value={80} valueState={ValueState.Success} />
-        </FlexBox>
-        <FlexBox direction={FlexBoxDirection.Column}>
-          <Label>San Jose</Label>
-          <Label>California, USA</Label>
-        </FlexBox>
-      </>
-    ),
-    breadcrumbs: (
-      <Breadcrumbs currentLocationText="Employee Details">
-        <Link>Manager Cockpit</Link>
-        <Link>My Team</Link>
-      </Breadcrumbs>
-    ),
-    headerActions: [
-      <Button key="1" design={ButtonDesign.Emphasized}>
-        Primary Action
-      </Button>,
-      <Button key="2">Action</Button>
-    ],
-    keyInfos: <ObjectStatus state={ValueState.Success}>employed</ObjectStatus>,
     image: SampleImage,
     style: { height: '700px' },
-    className: '',
-    tooltip: '',
-    slot: '',
-    ref: null
+    footer: (
+      <Bar
+        design={BarDesign.FloatingFooter}
+        endContent={
+          <>
+            <Button design={ButtonDesign.Positive}>Accept</Button>
+            <Button design={ButtonDesign.Negative}>Reject</Button>
+          </>
+        }
+      />
+    ),
+    headerTitle: (
+      <DynamicPageTitle
+        showSubheadingRight
+        heading="Denise Smith"
+        subheading="Senior UI Developer"
+        actions={
+          <>
+            <Button key="1" design={ButtonDesign.Emphasized}>
+              Primary Action
+            </Button>
+            <Button key="2">Action</Button>
+          </>
+        }
+        breadcrumbs={
+          <Breadcrumbs currentLocationText="Employee Details">
+            <Link>Manager Cockpit</Link>
+            <Link>My Team</Link>
+          </Breadcrumbs>
+        }
+      >
+        <ObjectStatus state={ValueState.Success}>employed</ObjectStatus>
+      </DynamicPageTitle>
+    ),
+    headerContent: (
+      <DynamicPageHeader>
+        <FlexBox wrap={FlexBoxWrap.Wrap} alignItems={FlexBoxAlignItems.Center}>
+          <FlexBox direction={FlexBoxDirection.Column}>
+            <Link>+33 6 4512 5158</Link>
+            <Link href="mailto:ui5-webcomponents-react@sap.com">DeniseSmith@sap.com</Link>
+            <Link href="https://github.com/SAP/ui5-webcomponents-react">
+              https://github.com/SAP/ui5-webcomponents-react
+            </Link>
+          </FlexBox>
+          <FlexBox direction={FlexBoxDirection.Column} style={{ padding: '10px' }}>
+            <Label>San Jose</Label>
+            <Label>California, USA</Label>
+          </FlexBox>
+        </FlexBox>
+      </DynamicPageHeader>
+    )
   }}
 />
 
@@ -97,7 +110,7 @@ import '@ui5/webcomponents-icons/dist/wrench.js';
     {(args) => {
       return (
         <ObjectPage {...args}>
-          <ObjectPageSection title="Goals" id="goals" aria-label="Goals">
+          <ObjectPageSection heading="Goals" id="goals" aria-label="Goals">
             <Form columnsL={3} columnsXL={3} labelSpanXL={6} labelSpanL={6} columnsM={2} labelSpanM={6}>
               <FormItem label="Evangelize the UI framework across the company">
                 <Text>4 days overdue - Cascaded</Text>
@@ -110,8 +123,8 @@ import '@ui5/webcomponents-icons/dist/wrench.js';
               </FormItem>
             </Form>
           </ObjectPageSection>
-          <ObjectPageSection title="Personal" id="personal" aria-label="Personal">
-            <ObjectPageSubSection title="Connect" id="personal-connect" aria-label="Connect">
+          <ObjectPageSection heading="Personal" id="personal" aria-label="Personal">
+            <ObjectPageSubSection heading="Connect" id="personal-connect" aria-label="Connect">
               <Form columnsXL={4} columnsL={4}>
                 <FormGroup heading="Phone Numbers">
                   <FormItem label="Home">
@@ -145,7 +158,7 @@ import '@ui5/webcomponents-icons/dist/wrench.js';
               </Form>
             </ObjectPageSubSection>
             <ObjectPageSubSection
-              title="Payment Information"
+              heading="Payment Information"
               id="personal-payment-information"
               aria-label="Payment Information"
             >
@@ -163,8 +176,12 @@ import '@ui5/webcomponents-icons/dist/wrench.js';
               </Form>
             </ObjectPageSubSection>
           </ObjectPageSection>
-          <ObjectPageSection title="Employment" id="employment" aria-label="Employment">
-            <ObjectPageSubSection title="Job Information" id="employment-job-information" aria-label="Job Information">
+          <ObjectPageSection heading="Employment" id="employment" aria-label="Employment">
+            <ObjectPageSubSection
+              heading="Job Information"
+              id="employment-job-information"
+              aria-label="Job Information"
+            >
               <Form columnsXL={4} columnsL={4}>
                 <FormItem label="Job Classification">
                   <FlexBox direction={FlexBoxDirection.Column}>
@@ -193,7 +210,7 @@ import '@ui5/webcomponents-icons/dist/wrench.js';
               </Form>
             </ObjectPageSubSection>
             <ObjectPageSubSection
-              title="Employee Details"
+              heading="Employee Details"
               id="employment-employee-details"
               aria-label="Employee Details"
             >
@@ -219,7 +236,7 @@ import '@ui5/webcomponents-icons/dist/wrench.js';
               </Form>
             </ObjectPageSubSection>
             <ObjectPageSubSection
-              title="Job Relationship"
+              heading="Job Relationship"
               id="employment-job-relationship"
               aria-label="Job Relationship"
             >

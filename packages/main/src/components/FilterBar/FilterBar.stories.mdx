@@ -1,4 +1,4 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { FilterBar } from '@ui5/webcomponents-react/dist/FilterBar';
 import { FilterGroupItem } from '@ui5/webcomponents-react/dist/FilterGroupItem';
 import { Input } from '@ui5/webcomponents-react/dist/Input';
@@ -7,12 +7,10 @@ import { MultiComboBoxItem } from '@ui5/webcomponents-react/dist/MultiComboBoxIt
 import { Option } from '@ui5/webcomponents-react/dist/Option';
 import { Select } from '@ui5/webcomponents-react/dist/Select';
 import { Switch } from '@ui5/webcomponents-react/dist/Switch';
-import { DatePicker } from '@ui5/webcomponents-react/dist/DatePicker';
+import { DateRangePicker } from '@ui5/webcomponents-react/dist/DateRangePicker';
 import { VariantManagement } from '@ui5/webcomponents-react/dist/VariantManagement';
 import '@ui5/webcomponents-icons/dist/nav-back.js';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="Layouts & Floorplans / FilterBar"
@@ -23,8 +21,7 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
     search: { control: { disable: true } },
     variants: { control: { disable: true } },
     children: { control: { disable: true } },
-    filterContainerWidth: { control: 'text' },
-    ...DocsCommonProps
+    filterContainerWidth: { control: 'text' }
   }}
   args={{
     search: <Input placeholder={'Search'} />,
@@ -108,7 +105,7 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
             </MultiComboBox>
           </FilterGroupItem>
           <FilterGroupItem label="Date Picker" groupName="Group 2">
-            <DatePicker />
+            <DateRangePicker style={{ minWidth: 'auto' }} />
           </FilterGroupItem>
         </FilterBar>
       );

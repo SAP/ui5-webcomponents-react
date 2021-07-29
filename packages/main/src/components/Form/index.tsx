@@ -33,51 +33,65 @@ export interface FormPropTypes extends CommonProps {
    */
   heading?: string;
   /**
-   * Form columns for small size.
-   * Must be a number between 1 and 12.<br />
+   * Form columns for small size (`< 600px`).
+   * Must be a number between 1 and 12.
+   *
    * Default Value: 1
    */
   columnsS?: number;
   /**
-   * Form columns for medium size. The number of columns for medium size must not be smaller than the number of columns for small size.
-   * Must be a number between 1 and 12.<br />
+   * Form columns for medium size (`600px` - `1023px`).
+   * Must be a number between 1 and 12.
+   *
    * Default Value: 1
+   *
+   * __Note__: The number of columns for medium size must not be smaller than the number of columns for small size.
    */
   columnsM?: number;
   /**
-   * Form columns for large size. The number of columns for large size must not be smaller than the number of columns for medium size.
-   * Must be a number between 1 and 12.<br />
+   * Form columns for large size (`1024px` - `1439px`).
+   * Must be a number between 1 and 12.
+   *
    * Default Value: 1
+   *
+   * __Note:__ The number of columns for large size must not be smaller than the number of columns for medium size.
    */
   columnsL?: number;
   /**
-   * Form columns for extra large size. The number of columns for extra large size must not be smaller than the number of columns for large size.
-   * Must be a number between 1 and 12.<br />
+   * Form columns for extra large size (`>= 1440px`).
+   * Must be a number between 1 and 12.
+   *
    * Default Value: 2
+   *
+   * __Note:__ The number of columns for extra large size must not be smaller than the number of columns for large size.
    */
   columnsXL?: number;
 
   /**
-   * Default span for labels in small size.
-   * Must be a number between 1 and 12.<br />
+   * Default span for labels in small size (`< 600px`).
+   * Must be a number between 1 and 12.
+   *
    * Default Value: 12
    */
   labelSpanS?: number;
   /**
-   * Default span for labels in medium size.
-   * Must be a number between 1 and 12.<br />
+   * Default span for labels in medium size (`600px` - `1023px`).
+   * Must be a number between 1 and 12.
+   *
    * Default Value: 2
    */
   labelSpanM?: number;
   /**
-   * Default span for labels in large size.
-   * Must be a number between 1 and 12.<br />
+   * Default span for labels in large size (`1024px` - `1439px`).
+   * Must be a number between 1 and 12.
+   *
    * Default Value: 4
    */
   labelSpanL?: number;
   /**
-   * Default span for labels in extra large size.
-   * Must be a number between 1 and 12.<br />
+   * Default span for labels in extra large size (`>= 1440px`).
+   * Must be a number between 1 and 12.
+   *
    * Default Value: 4
    */
   labelSpanXL?: number;
@@ -119,15 +133,15 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
 
   const formRef = useConsolidatedRef<HTMLDivElement>(ref);
   // use the window range set as first best guess
-  const [currentRange, setCurrentRange] = useState(getCurrentRange('StdExt', window.innerWidth).name);
+  const [currentRange, setCurrentRange] = useState(getCurrentRange().name);
   const lastRange = useRef(currentRange);
 
   useEffect(() => {
     const observer = new ResizeObserver(([form]) => {
-      const newRange = getCurrentRange('StdExt', form.contentRect.width).name;
-      if (lastRange.current !== newRange) {
-        lastRange.current = newRange;
-        setCurrentRange(newRange);
+      const rangeInfo = getCurrentRange(form.contentRect.width);
+      if (rangeInfo && lastRange.current !== rangeInfo.name) {
+        lastRange.current = rangeInfo.name;
+        setCurrentRange(rangeInfo.name);
       }
     });
 
@@ -147,9 +161,11 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
 
   const [formGroups, updatedTitle] = useMemo(() => {
     const computedFormGroups: any[] = [];
-
-    if (Children.count(children) === 1 && !heading && (children as ReactElement).props.heading?.length > 0) {
-      return [cloneElement(children as ReactElement, { heading: null }), (children as ReactElement).props.heading];
+    if (Children.count(children) === 1 && !title) {
+      const singleChild = Array.isArray(children) ? children[0] : children;
+      if (singleChild?.props?.title?.length > 0) {
+        return [cloneElement(singleChild, { title: null }), singleChild.props.title];
+      }
     }
 
     const currentColumnCount = currentNumberOfColumns;

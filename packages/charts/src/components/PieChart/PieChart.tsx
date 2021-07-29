@@ -4,10 +4,9 @@ import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils
 import { ChartContainer } from '@ui5/webcomponents-react-charts/dist/components/ChartContainer';
 import { PieChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/PieChartPlaceholder';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/dist/useLegendItemClick';
-import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo, isValidElement, cloneElement } from 'react';
-import { Cell, Label, Legend, Pie, PieChart as PieChartLib, Tooltip, Text, Sector } from 'recharts';
+import React, { cloneElement, CSSProperties, FC, forwardRef, isValidElement, Ref, useCallback, useMemo } from 'react';
+import { Cell, Label, Legend, Pie, PieChart as PieChartLib, Sector, Text, Tooltip } from 'recharts';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
-import { ComposedChart as ComposedChartLib } from 'recharts/types/chart/ComposedChart';
 import { useOnClickInternal } from '../../hooks/useOnClickInternal';
 import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
 import { IChartDimension } from '../../interfaces/IChartDimension';
@@ -16,7 +15,7 @@ import { IPolarChartConfig } from '../../interfaces/IPolarChartConfig';
 import { defaultFormatter } from '../../internal/defaults';
 import { tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
 
-interface MeasureConfig extends Omit<IChartMeasure, 'accessor' | 'label' | 'color'> {
+interface MeasureConfig extends Omit<IChartMeasure, 'accessor' | 'label' | 'color' | 'hideDataLabel'> {
   /**
    * A string containing the path to the dataset key this pie should display.
    * Supports object structures by using `'parent.child'`. Can also be a getter.
@@ -26,6 +25,11 @@ interface MeasureConfig extends Omit<IChartMeasure, 'accessor' | 'label' | 'colo
    * array of any valid CSS Color or CSS Variable. Defaults to the `sapChart_OrderedColor_` colors
    */
   colors?: CSSProperties['color'][];
+  /**
+   * Flag whether the data labels should be hidden in the chart for this segment.
+   * When passed a function it will be called for each data label with the corresponding chart properties.
+   */
+  hideDataLabel?: boolean | ((chartConfig: any) => boolean);
 }
 
 export interface PieChartProps extends IChartBaseProps<IPolarChartConfig> {
@@ -56,9 +60,9 @@ export interface PieChartProps extends IChartBaseProps<IPolarChartConfig> {
    * #### Optional properties
    *
    * - `formatter`: function will be called for each data label and allows you to format it according to your needs
-   * - `hideDataLabel`: flag whether the data labels should be hidden in the chart for this pie.
    * - `DataLabel`: a custom component to be used for the data label
    * - `colors`: array of any valid CSS Color or CSS Variable. Defaults to the `sapChart_OrderedColor_` colors
+   * - `hideDataLabel`: flag whether the data labels should be hidden in the chart for this segment. When passed a function it will be called for each data label with the corresponding chart properties.
    */
   measure: MeasureConfig;
 }
@@ -78,6 +82,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
     dataset,
     noLegend,
     noAnimation,
+    tooltipConfig,
     onDataPointClick,
     onLegendClick,
     onClick,
@@ -85,7 +90,8 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
     style,
     className,
     tooltip,
-    slot
+    slot,
+    ChartPlaceholder
   } = props;
 
   const chartConfig = useMemo(() => {
@@ -121,7 +127,9 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
 
   const dataLabel = useCallback(
     (props) => {
-      if (measure.hideDataLabel || chartConfig.activeSegment === props.index) return null;
+      const hideDataLabel =
+        typeof measure.hideDataLabel === 'function' ? measure.hideDataLabel(props) : measure.hideDataLabel;
+      if (hideDataLabel || chartConfig.activeSegment === props.index) return null;
 
       if (isValidElement(measure.DataLabel)) {
         return cloneElement(measure.DataLabel, { ...props, config: measure });
@@ -136,10 +144,10 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
     [measure, chartConfig.activeSegment]
   );
 
-  const tooltipValueFormatter = useCallback((value, name) => [measure.formatter(value), dimension.formatter(name)], [
-    measure.formatter,
-    dimension.formatter
-  ]);
+  const tooltipValueFormatter = useCallback(
+    (value, name) => [measure.formatter(value), dimension.formatter(name)],
+    [measure.formatter, dimension.formatter]
+  );
   const chartRef = useConsolidatedRef<any>(ref);
 
   const onItemLegendClick = useLegendItemClick(onLegendClick, () => measure.accessor);
@@ -219,7 +227,9 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
 
   const renderLabelLine = useCallback(
     (props) => {
-      if (measure.hideDataLabel || chartConfig.activeSegment === props.index) return null;
+      const hideDataLabel =
+        typeof measure.hideDataLabel === 'function' ? measure.hideDataLabel(props) : measure.hideDataLabel;
+      if (hideDataLabel || chartConfig.activeSegment === props.index) return null;
       return Pie.renderLabelLineItem(undefined, props);
     },
     [chartConfig.activeSegment, measure.hideDataLabel]
@@ -248,7 +258,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
       dataset={dataset}
       ref={chartRef}
       loading={loading}
-      Placeholder={PieChartPlaceholder}
+      Placeholder={ChartPlaceholder ?? PieChartPlaceholder}
       style={style}
       className={className}
       tooltip={tooltip}
@@ -297,6 +307,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
           contentStyle={tooltipContentStyle}
           itemStyle={chartConfig.tooltipItemStyle}
           labelStyle={chartConfig.tooltipLabelStyle}
+          {...tooltipConfig}
         />
         {!noLegend && (
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment

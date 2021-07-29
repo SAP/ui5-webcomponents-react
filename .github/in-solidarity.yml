@@ -1,0 +1,58 @@
+rules:
+  master:
+    regex:
+      - /master/gi
+    level: notice
+    alternatives:
+      - primary
+      - main
+      - leader
+      - active
+      - writer
+  slave:
+    regex:
+      - /slave/gi
+    level: failure
+    alternatives:
+      - secondary
+      - node
+      - worker
+      - replica
+      - passive
+  whitelist:
+    regex:
+      - '/white[_-]*list/gi'
+    level: failure
+    alternatives:
+      - include list
+      - allow list
+  blacklist:
+    regex:
+      - '/black[_-]*list/gi'
+    level: failure
+    alternatives:
+      - exclude list
+      - deny list
+  grandfathered:
+    regex:
+      - /grandfathered/gi
+    level: warning
+    alternatives:
+      - legacied
+      - exempted
+  sanity_check:
+    regex:
+      - '/sanity[_-]*check/gi'
+    level: warning
+    alternatives:
+      - smoke test
+      - confidence check
+  man_hours:
+    regex:
+      - '/man[_-]*hours/gi'
+    level: warning
+    alternatives:
+      - person-hours
+      - human-hours
+ignore:
+ - ".github/in-solidarity.yml"

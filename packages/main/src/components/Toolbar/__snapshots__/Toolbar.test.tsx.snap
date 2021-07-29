@@ -8,22 +8,32 @@ exports[`Toolbar Renders with children 1`] = `
   >
     <div
       class="Toolbar-toolbar"
+      data-component-name="ToolbarContent"
     >
-      <div>
+      <div
+        class="Toolbar-childContainer"
+        data-component-name="ToolbarChildContainer"
+      >
         <span
           class="Text-text"
         >
           Item1
         </span>
       </div>
-      <div>
+      <div
+        class="Toolbar-childContainer"
+        data-component-name="ToolbarChildContainer"
+      >
         <span
           class="Text-text"
         >
           Item2
         </span>
       </div>
-      <div>
+      <div
+        class="Toolbar-childContainer"
+        data-component-name="ToolbarChildContainer"
+      >
         <span
           class="Text-text"
         >
@@ -43,22 +53,32 @@ exports[`Toolbar Renders with children as react fragments 1`] = `
   >
     <div
       class="Toolbar-toolbar"
+      data-component-name="ToolbarContent"
     >
-      <div>
+      <div
+        class="Toolbar-childContainer"
+        data-component-name="ToolbarChildContainer"
+      >
         <span
           class="Text-text"
         >
           Item1
         </span>
       </div>
-      <div>
+      <div
+        class="Toolbar-childContainer"
+        data-component-name="ToolbarChildContainer"
+      >
         <span
           class="Text-text"
         >
           Item2
         </span>
       </div>
-      <div>
+      <div
+        class="Toolbar-childContainer"
+        data-component-name="ToolbarChildContainer"
+      >
         <span
           class="Text-text"
         >
@@ -77,6 +97,7 @@ exports[`Toolbar Renders with default Props 1`] = `
   >
     <div
       class="Toolbar-toolbar"
+      data-component-name="ToolbarContent"
     />
   </div>
 </DocumentFragment>
@@ -90,28 +111,41 @@ exports[`Toolbar ToolbarSeparator 1`] = `
   >
     <div
       class="Toolbar-toolbar"
+      data-component-name="ToolbarContent"
     >
-      <div>
+      <div
+        class="Toolbar-childContainer"
+        data-component-name="ToolbarChildContainer"
+      >
         <span
           class="Text-text"
         >
           Item1
         </span>
       </div>
-      <div>
+      <div
+        class="Toolbar-childContainer"
+        data-component-name="ToolbarChildContainer"
+      >
         <div
           aria-label="Separator"
           class="ToolbarSeparator-separator"
         />
       </div>
-      <div>
+      <div
+        class="Toolbar-childContainer"
+        data-component-name="ToolbarChildContainer"
+      >
         <span
           class="Text-text"
         >
           Item2
         </span>
       </div>
-      <div>
+      <div
+        class="Toolbar-childContainer"
+        data-component-name="ToolbarChildContainer"
+      >
         <span
           class="Text-text"
         >
@@ -131,8 +165,12 @@ exports[`Toolbar ToolbarSpacer 1`] = `
   >
     <div
       class="Toolbar-toolbar"
+      data-component-name="ToolbarContent"
     >
-      <div>
+      <div
+        class="Toolbar-childContainer"
+        data-component-name="ToolbarChildContainer"
+      >
         <span
           class="Text-text"
         >
@@ -143,14 +181,20 @@ exports[`Toolbar ToolbarSpacer 1`] = `
         class="spacer"
         style="flex-grow: 1;"
       />
-      <div>
+      <div
+        class="Toolbar-childContainer"
+        data-component-name="ToolbarChildContainer"
+      >
         <span
           class="Text-text"
         >
           Item2
         </span>
       </div>
-      <div>
+      <div
+        class="Toolbar-childContainer"
+        data-component-name="ToolbarChildContainer"
+      >
         <span
           class="Text-text"
         >
@@ -172,8 +216,12 @@ exports[`Toolbar overflow menu 1`] = `
     >
       <div
         class="Toolbar-toolbar"
+        data-component-name="ToolbarContent"
       >
-        <div>
+        <div
+          class="Toolbar-childContainer"
+          data-component-name="ToolbarChildContainer"
+        >
           <span
             class="Text-text"
             data-testid="toolbar-item"
@@ -183,6 +231,8 @@ exports[`Toolbar overflow menu 1`] = `
           </span>
         </div>
         <div
+          class="Toolbar-childContainer"
+          data-component-name="ToolbarChildContainer"
           style="visibility: hidden;"
         >
           <span
@@ -194,6 +244,8 @@ exports[`Toolbar overflow menu 1`] = `
           </span>
         </div>
         <div
+          class="Toolbar-childContainer"
+          data-component-name="ToolbarChildContainer"
           style="visibility: hidden;"
         >
           <span
@@ -207,6 +259,7 @@ exports[`Toolbar overflow menu 1`] = `
       </div>
       <div
         class="Toolbar-overflowButtonContainer"
+        data-component-name="ToolbarOverflowButtonContainer"
         title="Show More"
       >
         <ui5-togglebutton
@@ -255,8 +308,12 @@ exports[`Toolbar overflow menu 2`] = `
     >
       <div
         class="Toolbar-toolbar"
+        data-component-name="ToolbarContent"
       >
-        <div>
+        <div
+          class="Toolbar-childContainer"
+          data-component-name="ToolbarChildContainer"
+        >
           <span
             class="Text-text"
             data-testid="toolbar-item"
@@ -266,6 +323,8 @@ exports[`Toolbar overflow menu 2`] = `
           </span>
         </div>
         <div
+          class="Toolbar-childContainer"
+          data-component-name="ToolbarChildContainer"
           style="visibility: hidden;"
         >
           <span
@@ -277,6 +336,8 @@ exports[`Toolbar overflow menu 2`] = `
           </span>
         </div>
         <div
+          class="Toolbar-childContainer"
+          data-component-name="ToolbarChildContainer"
           style="visibility: hidden;"
         >
           <span
@@ -290,6 +351,7 @@ exports[`Toolbar overflow menu 2`] = `
       </div>
       <div
         class="Toolbar-overflowButtonContainer"
+        data-component-name="ToolbarOverflowButtonContainer"
         title="Show More"
       >
         <ui5-togglebutton
@@ -338,8 +400,12 @@ exports[`Toolbar overflow menu 3`] = `
     >
       <div
         class="Toolbar-toolbar"
+        data-component-name="ToolbarContent"
       >
-        <div>
+        <div
+          class="Toolbar-childContainer"
+          data-component-name="ToolbarChildContainer"
+        >
           <span
             class="Text-text"
             data-testid="toolbar-item"
@@ -349,6 +415,8 @@ exports[`Toolbar overflow menu 3`] = `
           </span>
         </div>
         <div
+          class="Toolbar-childContainer"
+          data-component-name="ToolbarChildContainer"
           style="visibility: hidden;"
         >
           <div
@@ -357,6 +425,8 @@ exports[`Toolbar overflow menu 3`] = `
           />
         </div>
         <div
+          class="Toolbar-childContainer"
+          data-component-name="ToolbarChildContainer"
           style="visibility: hidden;"
         >
           <span
@@ -368,6 +438,8 @@ exports[`Toolbar overflow menu 3`] = `
           </span>
         </div>
         <div
+          class="Toolbar-childContainer"
+          data-component-name="ToolbarChildContainer"
           style="visibility: hidden;"
         >
           <span
@@ -381,6 +453,7 @@ exports[`Toolbar overflow menu 3`] = `
       </div>
       <div
         class="Toolbar-overflowButtonContainer"
+        data-component-name="ToolbarOverflowButtonContainer"
         title="Show More"
       >
         <ui5-togglebutton

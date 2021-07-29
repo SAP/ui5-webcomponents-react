@@ -22,7 +22,6 @@ import {
 import { useChartMargin } from '../../hooks/useChartMargin';
 import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
 import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights';
-import { useOnClickInternal } from '../../hooks/useOnClickInternal';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { ICartesianChartConfig } from '../../interfaces/ICartesianChartConfig';
@@ -136,13 +135,15 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
     loading,
     noLegend,
     noAnimation,
+    tooltipConfig,
     onDataPointClick,
     onLegendClick,
     onClick,
     style,
     className,
     tooltip,
-    slot
+    slot,
+    ChartPlaceholder
   } = props;
 
   const chartConfig = useMemo(() => {
@@ -215,7 +216,7 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
     <ChartContainer
       dataset={dataset}
       loading={loading}
-      Placeholder={ScatterChartPlaceholder}
+      Placeholder={ChartPlaceholder ?? ScatterChartPlaceholder}
       ref={chartRef}
       style={style}
       className={className}
@@ -309,7 +310,12 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
             <Label>{chartConfig.referenceLineX.label}</Label>
           </ReferenceLine>
         )}
-        <Tooltip cursor={tooltipFillOpacity} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle} />
+        <Tooltip
+          cursor={tooltipFillOpacity}
+          formatter={tooltipValueFormatter}
+          contentStyle={tooltipContentStyle}
+          {...tooltipConfig}
+        />
         {props.children}
       </ScatterChartLib>
     </ChartContainer>

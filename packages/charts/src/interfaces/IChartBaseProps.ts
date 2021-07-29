@@ -1,5 +1,6 @@
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { ReactNode, ReactNodeArray } from 'react';
+import { ComponentType, ReactNode, ReactNodeArray } from 'react';
+import { TooltipProps } from 'recharts';
 import { ICartesianChartConfig } from './ICartesianChartConfig';
 
 export interface IChartBaseProps<T = ICartesianChartConfig> extends Omit<CommonProps, 'onClick'> {
@@ -47,7 +48,7 @@ export interface IChartBaseProps<T = ICartesianChartConfig> extends Omit<CommonP
   onLegendClick?: (event: CustomEvent) => void;
 
   /**
-   * `noAnimation` disabled all chart animations when set to `true`.
+   * `noAnimation` disables all chart animations when set to `true`.
    */
   noAnimation?: boolean;
 
@@ -84,4 +85,21 @@ export interface IChartBaseProps<T = ICartesianChartConfig> extends Omit<CommonP
      */
     resizeDebounce?: number;
   };
+  /**
+   * Defines the configuration object for the internally used `recharts` Tooltip popover that is displayed when hovering over data points.
+   * You can find all possible configuration properties [here](https://recharts.org/en-US/api/Tooltip).
+   *
+   * __Note:__ It is possible to overwrite internally used tooltip props, so use with caution!
+   */
+  tooltipConfig?: TooltipProps<number | string | Array<number | string>, number | string>;
+  /**
+   * A string which defines an id to synchronize two separate charts. Charts with the same syncId synchronize the position
+   * of the tooltips, the startIndex and the endIndex of the zooming tool.
+   */
+  syncId?: string;
+  /**
+   * Injects a custom loading placeholder which is used when no data are available. If the property isn't set the
+   * standard loading placeholder of the specific chart is used.
+   */
+  ChartPlaceholder?: ComponentType;
 }

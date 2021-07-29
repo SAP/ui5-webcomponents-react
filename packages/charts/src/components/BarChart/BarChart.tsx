@@ -44,9 +44,11 @@ const measureDefaults = {
   opacity: 1
 };
 
-const valueAccessor = (attribute) => ({ payload }) => {
-  return getValueByDataKey(payload, attribute);
-};
+const valueAccessor =
+  (attribute) =>
+  ({ payload }) => {
+    return getValueByDataKey(payload, attribute);
+  };
 
 interface MeasureConfig extends IChartMeasure {
   /**
@@ -119,13 +121,16 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
     dataset,
     noLegend,
     noAnimation,
+    tooltipConfig,
     onDataPointClick,
     onLegendClick,
     onClick,
     style,
     className,
     tooltip,
-    slot
+    slot,
+    syncId,
+    ChartPlaceholder
   } = props;
 
   const chartConfig = useMemo(() => {
@@ -195,7 +200,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
     <ChartContainer
       dataset={dataset}
       loading={loading}
-      Placeholder={BarChartPlaceholder}
+      Placeholder={ChartPlaceholder ?? BarChartPlaceholder}
       ref={chartRef}
       style={style}
       className={className}
@@ -205,6 +210,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
       {...passThroughProps}
     >
       <BarChartLib
+        syncId={syncId}
         onClick={onClickInternal}
         stackOffset="sign"
         margin={marginChart}
@@ -296,6 +302,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
           formatter={tooltipValueFormatter}
           contentStyle={tooltipContentStyle}
           labelFormatter={labelFormatter}
+          {...tooltipConfig}
         />
         {chartConfig.zoomingTool && (
           <Brush
