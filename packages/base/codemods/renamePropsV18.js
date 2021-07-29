@@ -169,6 +169,11 @@ const renamingMap = {
   // UI5 Web Components React
   AnalyticalTable: {
     title: 'header'
+  },
+  AnalyticalCardHeader: {
+    title: 'titleText',
+    subTitle: 'subtitleText',
+    onHeaderClick: 'onClick'
   }
 };
 
