@@ -13,8 +13,8 @@ const SIZE_M = 800;
 const SIZE_L = 1200;
 const SIZE_XL = 1600;
 const component = (
-  <Form heading={'Test form'}>
-    <FormGroup heading={'Group 1'}>
+  <Form titleText={'Test form'}>
+    <FormGroup titleText={'Group 1'}>
       <FormItem label={'item 1'}>
         <Input type={InputType.Text} />
       </FormItem>
@@ -22,7 +22,7 @@ const component = (
         <Input type={InputType.Number} />
       </FormItem>
     </FormGroup>
-    <FormGroup heading={'Group 2'}>
+    <FormGroup titleText={'Group 2'}>
       <FormItem label={'item 1'}>
         <Input type={InputType.Text} />
       </FormItem>
@@ -61,7 +61,7 @@ describe('Create a Form', () => {
   test("should use a single FormGroup's heading as a Form heading if one is not set", () => {
     const ungroupedChildren = (
       <Form>
-        <FormGroup heading={'To be Form title'}>
+        <FormGroup titleText={'To be Form title'}>
           <FormItem label={'item 1'}>
             <Input type={InputType.Text} />
           </FormItem>

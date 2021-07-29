@@ -27,7 +27,7 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
     columnsXL: { control: { type: 'number', min: 1, max: 12 } }
   }}
   args={{
-    heading: 'Test Form',
+    titleText: 'Test Form',
     labelSpanS: 12,
     labelSpanM: 2,
     labelSpanL: 4,
@@ -52,7 +52,7 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
         <FormItem label={'Sole Form Item'}>
           <Input type={InputType.Text} />
         </FormItem>
-        <FormGroup heading={'Personal Data'}>
+        <FormGroup titleText={'Personal Data'}>
           <FormItem label={'Name'}>
             <Input type={InputType.Text} />
           </FormItem>
@@ -73,7 +73,7 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
             <CheckBox checked />
           </FormItem>
         </FormGroup>
-        <FormGroup heading={'Company Data'}>
+        <FormGroup titleText={'Company Data'}>
           <FormItem label={'Company Name'}>
             <Input type={InputType.Text} />
           </FormItem>
@@ -93,7 +93,7 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
             <CheckBox checked />
           </FormItem>
         </FormGroup>
-        <FormGroup heading={'Marketing Data'}>
+        <FormGroup titleText={'Marketing Data'}>
           <FormItem label={'Email'}>
             <Input type={InputType.Email} />
           </FormItem>

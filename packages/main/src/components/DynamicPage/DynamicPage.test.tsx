@@ -71,7 +71,7 @@ const renderComponent = () => (
     }
   >
     <Form style={{ paddingBottom: '2rem', zIndex: 0 }} columnsXL={4} columnsL={4}>
-      <FormGroup heading="Phone Numbers">
+      <FormGroup titleText="Phone Numbers">
         <FormItem label="Home">
           <Text>+1 234-567-8901</Text>
         </FormItem>
@@ -79,7 +79,7 @@ const renderComponent = () => (
           <Text>+1 234-567-5555</Text>
         </FormItem>
       </FormGroup>
-      <FormGroup heading="Social Accounts">
+      <FormGroup titleText="Social Accounts">
         <FormItem label="LinkedIn">
           <Text>/DeniseSmith</Text>
         </FormItem>
@@ -89,7 +89,7 @@ const renderComponent = () => (
       </FormGroup>
     </Form>
     <Form style={{ paddingBottom: '2rem' }} columnsXL={4} columnsL={4}>
-      <FormGroup heading="Addresses">
+      <FormGroup titleText="Addresses">
         <FormItem label="Home Address">
           <Text>2096 Mission Street</Text>
         </FormItem>
@@ -97,14 +97,14 @@ const renderComponent = () => (
           <Text>PO Box 32114</Text>
         </FormItem>
       </FormGroup>
-      <FormGroup heading="Mailing Address">
+      <FormGroup titleText="Mailing Address">
         <FormItem label="Work">
           <Text>DeniseSmith@sap.com</Text>
         </FormItem>
       </FormGroup>
     </Form>
     <Form style={{ paddingBottom: '2rem' }} columnsXL={4} columnsL={4}>
-      <FormGroup heading="Phone Numbers">
+      <FormGroup titleText="Phone Numbers">
         <FormItem label="Home">
           <Text>+1 234-567-8901</Text>
         </FormItem>
@@ -112,7 +112,7 @@ const renderComponent = () => (
           <Text>+1 234-567-5555</Text>
         </FormItem>
       </FormGroup>
-      <FormGroup heading="Social Accounts">
+      <FormGroup titleText="Social Accounts">
         <FormItem label="LinkedIn">
           <Text>/DeniseSmith</Text>
         </FormItem>
@@ -122,7 +122,7 @@ const renderComponent = () => (
       </FormGroup>
     </Form>
     <Form style={{ paddingBottom: '2rem' }} columnsXL={4} columnsL={4}>
-      <FormGroup heading="Addresses">
+      <FormGroup titleText="Addresses">
         <FormItem label="Home Address">
           <Text>2096 Mission Street</Text>
         </FormItem>
@@ -130,14 +130,14 @@ const renderComponent = () => (
           <Text>PO Box 32114</Text>
         </FormItem>
       </FormGroup>
-      <FormGroup heading="Mailing Address">
+      <FormGroup titleText="Mailing Address">
         <FormItem label="Work">
           <Text>DeniseSmith@sap.com</Text>
         </FormItem>
       </FormGroup>
     </Form>
     <Form style={{ paddingBottom: '2rem', zIndex: 0 }} columnsXL={4} columnsL={4}>
-      <FormGroup heading="Phone Numbers">
+      <FormGroup titleText="Phone Numbers">
         <FormItem label="Home">
           <Text>+1 234-567-8901</Text>
         </FormItem>
@@ -145,7 +145,7 @@ const renderComponent = () => (
           <Text>+1 234-567-5555</Text>
         </FormItem>
       </FormGroup>
-      <FormGroup heading="Social Accounts">
+      <FormGroup titleText="Social Accounts">
         <FormItem label="LinkedIn">
           <Text>/DeniseSmith</Text>
         </FormItem>
@@ -155,7 +155,7 @@ const renderComponent = () => (
       </FormGroup>
     </Form>
     <Form style={{ paddingBottom: '2rem' }} columnsXL={4} columnsL={4}>
-      <FormGroup heading="Addresses">
+      <FormGroup titleText="Addresses">
         <FormItem label="Home Address">
           <Text>2096 Mission Street</Text>
         </FormItem>
@@ -163,14 +163,14 @@ const renderComponent = () => (
           <Text>PO Box 32114</Text>
         </FormItem>
       </FormGroup>
-      <FormGroup heading="Mailing Address">
+      <FormGroup titleText="Mailing Address">
         <FormItem label="Work">
           <Text>DeniseSmith@sap.com</Text>
         </FormItem>
       </FormGroup>
     </Form>
     <Form style={{ paddingBottom: '2rem' }} columnsXL={4} columnsL={4}>
-      <FormGroup heading="Phone Numbers">
+      <FormGroup titleText="Phone Numbers">
         <FormItem label="Home">
           <Text>+1 234-567-8901</Text>
         </FormItem>
@@ -178,7 +178,7 @@ const renderComponent = () => (
           <Text>+1 234-567-5555</Text>
         </FormItem>
       </FormGroup>
-      <FormGroup heading="Social Accounts">
+      <FormGroup titleText="Social Accounts">
         <FormItem label="LinkedIn">
           <Text>/DeniseSmith</Text>
         </FormItem>
@@ -188,7 +188,7 @@ const renderComponent = () => (
       </FormGroup>
     </Form>
     <Form style={{ paddingBottom: '2rem' }} columnsXL={4} columnsL={4}>
-      <FormGroup heading="Addresses">
+      <FormGroup titleText="Addresses">
         <FormItem label="Home Address">
           <Text>2096 Mission Street</Text>
         </FormItem>
@@ -196,7 +196,7 @@ const renderComponent = () => (
           <Text>PO Box 32114</Text>
         </FormItem>
       </FormGroup>
-      <FormGroup heading="Mailing Address">
+      <FormGroup titleText="Mailing Address">
         <FormItem label="Work">
           <Text>DeniseSmith@sap.com</Text>
         </FormItem>
@@ -334,7 +334,7 @@ const renderComponentHideHeaderButton = () => (
     }
   >
     <Form style={{ paddingBottom: '2rem' }} columnsXL={4} columnsL={4}>
-      <FormGroup heading="Phone Numbers">
+      <FormGroup titleText="Phone Numbers">
         <FormItem label="Home">
           <Text>+1 234-567-8901</Text>
         </FormItem>
@@ -342,7 +342,7 @@ const renderComponentHideHeaderButton = () => (
           <Text>+1 234-567-5555</Text>
         </FormItem>
       </FormGroup>
-      <FormGroup heading="Social Accounts">
+      <FormGroup titleText="Social Accounts">
         <FormItem label="LinkedIn">
           <Text>/DeniseSmith</Text>
         </FormItem>
@@ -352,7 +352,7 @@ const renderComponentHideHeaderButton = () => (
       </FormGroup>
     </Form>
     <Form style={{ paddingBottom: '2rem' }} columnsXL={4} columnsL={4}>
-      <FormGroup heading="Addresses">
+      <FormGroup titleText="Addresses">
         <FormItem label="Home Address">
           <Text>2096 Mission Street</Text>
         </FormItem>
@@ -360,7 +360,7 @@ const renderComponentHideHeaderButton = () => (
           <Text>PO Box 32114</Text>
         </FormItem>
       </FormGroup>
-      <FormGroup heading="Mailing Address">
+      <FormGroup titleText="Mailing Address">
         <FormItem label="Work">
           <Text>DeniseSmith@sap.com</Text>
         </FormItem>
