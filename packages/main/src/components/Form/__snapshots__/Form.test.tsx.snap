@@ -20,7 +20,7 @@ exports[`Create a Form should use a single FormGroup's title as a Form title if 
       class="FormItem-label"
       style="grid-column-start: 1; grid-row-start: 0;"
       ui5-label=""
-      wrap="true"
+      wrapping-type="Normal"
     >
       item 1:
     </ui5-label>
@@ -38,7 +38,7 @@ exports[`Create a Form should use a single FormGroup's title as a Form title if 
       class="FormItem-label"
       style="grid-column-start: 1; grid-row-start: 0;"
       ui5-label=""
-      wrap="true"
+      wrapping-type="Normal"
     >
       item 2:
     </ui5-label>
@@ -83,7 +83,7 @@ exports[`Create a Form size rate L; should create Label and Element with 33% and
       class="FormItem-label"
       style="grid-column-start: 1; grid-row-start: 0;"
       ui5-label=""
-      wrap="true"
+      wrapping-type="Normal"
     >
       item 1:
     </ui5-label>
@@ -101,7 +101,7 @@ exports[`Create a Form size rate L; should create Label and Element with 33% and
       class="FormItem-label"
       style="grid-column-start: 1; grid-row-start: 0;"
       ui5-label=""
-      wrap="true"
+      wrapping-type="Normal"
     >
       item 2:
     </ui5-label>
@@ -129,7 +129,7 @@ exports[`Create a Form size rate L; should create Label and Element with 33% and
       class="FormItem-label"
       style="grid-column-start: 1; grid-row-start: 0;"
       ui5-label=""
-      wrap="true"
+      wrapping-type="Normal"
     >
       item 1:
     </ui5-label>
@@ -147,7 +147,7 @@ exports[`Create a Form size rate L; should create Label and Element with 33% and
       class="FormItem-label"
       style="grid-column-start: 1; grid-row-start: 0;"
       ui5-label=""
-      wrap="true"
+      wrapping-type="Normal"
     >
       item 2:
     </ui5-label>
@@ -192,7 +192,7 @@ exports[`Create a Form size rate M; should create Label and Element with 16% and
       class="FormItem-label"
       style="grid-column-start: 1; grid-row-start: 0;"
       ui5-label=""
-      wrap="true"
+      wrapping-type="Normal"
     >
       item 1:
     </ui5-label>
@@ -210,7 +210,7 @@ exports[`Create a Form size rate M; should create Label and Element with 16% and
       class="FormItem-label"
       style="grid-column-start: 1; grid-row-start: 0;"
       ui5-label=""
-      wrap="true"
+      wrapping-type="Normal"
     >
       item 2:
     </ui5-label>
@@ -238,7 +238,7 @@ exports[`Create a Form size rate M; should create Label and Element with 16% and
       class="FormItem-label"
       style="grid-column-start: 1; grid-row-start: 0;"
       ui5-label=""
-      wrap="true"
+      wrapping-type="Normal"
     >
       item 1:
     </ui5-label>
@@ -256,7 +256,7 @@ exports[`Create a Form size rate M; should create Label and Element with 16% and
       class="FormItem-label"
       style="grid-column-start: 1; grid-row-start: 0;"
       ui5-label=""
-      wrap="true"
+      wrapping-type="Normal"
     >
       item 2:
     </ui5-label>
@@ -301,7 +301,7 @@ exports[`Create a Form size rate S; should create Label and Element with 100% wi
       class="FormItem-label"
       style="grid-column-start: 1; grid-row-start: 0;"
       ui5-label=""
-      wrap="true"
+      wrapping-type="Normal"
     >
       item 1:
     </ui5-label>
@@ -319,7 +319,7 @@ exports[`Create a Form size rate S; should create Label and Element with 100% wi
       class="FormItem-label"
       style="grid-column-start: 1; grid-row-start: 0;"
       ui5-label=""
-      wrap="true"
+      wrapping-type="Normal"
     >
       item 2:
     </ui5-label>
@@ -347,7 +347,7 @@ exports[`Create a Form size rate S; should create Label and Element with 100% wi
       class="FormItem-label"
       style="grid-column-start: 1; grid-row-start: 0;"
       ui5-label=""
-      wrap="true"
+      wrapping-type="Normal"
     >
       item 1:
     </ui5-label>
@@ -365,7 +365,7 @@ exports[`Create a Form size rate S; should create Label and Element with 100% wi
       class="FormItem-label"
       style="grid-column-start: 1; grid-row-start: 0;"
       ui5-label=""
-      wrap="true"
+      wrapping-type="Normal"
     >
       item 2:
     </ui5-label>
@@ -410,7 +410,7 @@ exports[`Create a Form size rate XL; should create Label and Element with 33% an
       class="FormItem-label"
       style="grid-column-start: 1; grid-row-start: 3;"
       ui5-label=""
-      wrap="true"
+      wrapping-type="Normal"
     >
       item 1:
     </ui5-label>
@@ -428,7 +428,7 @@ exports[`Create a Form size rate XL; should create Label and Element with 33% an
       class="FormItem-label"
       style="grid-column-start: 1; grid-row-start: 4;"
       ui5-label=""
-      wrap="true"
+      wrapping-type="Normal"
     >
       item 2:
     </ui5-label>
@@ -453,7 +453,7 @@ exports[`Create a Form size rate XL; should create Label and Element with 33% an
       class="FormItem-label"
       style="grid-column-start: 13; grid-row-start: 3;"
       ui5-label=""
-      wrap="true"
+      wrapping-type="Normal"
     >
       item 1:
     </ui5-label>
@@ -471,7 +471,7 @@ exports[`Create a Form size rate XL; should create Label and Element with 33% an
       class="FormItem-label"
       style="grid-column-start: 13; grid-row-start: 4;"
       ui5-label=""
-      wrap="true"
+      wrapping-type="Normal"
     >
       item 2:
     </ui5-label>
