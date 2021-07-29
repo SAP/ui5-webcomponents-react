@@ -1,9 +1,9 @@
 {
   "package": {
     "dependencies": {
-      "@ui5/webcomponents": "0.0.0-c3e8fd9b7",
-      "@ui5/webcomponents-fiori": "0.0.0-c3e8fd9b7",
-      "@ui5/webcomponents-icons": "0.0.0-c3e8fd9b7",
+      "@ui5/webcomponents": "0.0.0-4821618b2",
+      "@ui5/webcomponents-fiori": "0.0.0-4821618b2",
+      "@ui5/webcomponents-icons": "0.0.0-4821618b2",
       "@ui5/webcomponents-react": "latest",
       "@testing-library/jest-dom": "^5.11.4",
       "@testing-library/react": "^11.1.0",

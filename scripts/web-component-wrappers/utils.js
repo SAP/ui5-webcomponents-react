@@ -116,6 +116,7 @@ export const getTypeDefinitionForProperty = (property, interfaces) => {
     case 'CalendarSelectionMode':
     case 'CarouselArrowsPlacement':
     case 'FCLLayout':
+    case 'IllustrationMessageType':
     case 'InputType':
     case 'LinkDesign':
     case 'ListItemType':

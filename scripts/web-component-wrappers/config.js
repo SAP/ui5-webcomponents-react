@@ -21,9 +21,11 @@ export const PRIVATE_COMPONENTS = new Set([
 ]);
 
 export const COMPONENTS_WITHOUT_DEMOS = new Set(PRIVATE_COMPONENTS);
-COMPONENTS_WITHOUT_DEMOS.add('CustomListItem');
 COMPONENTS_WITHOUT_DEMOS.add('CalendarDate');
+COMPONENTS_WITHOUT_DEMOS.add('CustomListItem');
 COMPONENTS_WITHOUT_DEMOS.add('ColorPaletteItem');
+COMPONENTS_WITHOUT_DEMOS.add('ComboBoxItem');
+COMPONENTS_WITHOUT_DEMOS.add('ComboBoxGroupItem');
 COMPONENTS_WITHOUT_DEMOS.add('GroupHeaderListItem');
 COMPONENTS_WITHOUT_DEMOS.add('Option');
 COMPONENTS_WITHOUT_DEMOS.add('ShellBarItem');
@@ -38,8 +40,6 @@ COMPONENTS_WITHOUT_DEMOS.add('TabSeparator');
 COMPONENTS_WITHOUT_DEMOS.add('TimelineItem');
 COMPONENTS_WITHOUT_DEMOS.add('TreeItem');
 COMPONENTS_WITHOUT_DEMOS.add('ProductSwitchItem');
-COMPONENTS_WITHOUT_DEMOS.add('ComboBoxItem');
-COMPONENTS_WITHOUT_DEMOS.add('ComboBoxGroupItem');
 COMPONENTS_WITHOUT_DEMOS.add('MultiComboBoxItem');
 COMPONENTS_WITHOUT_DEMOS.add('SideNavigationItem');
 COMPONENTS_WITHOUT_DEMOS.add('SideNavigationSubItem');
