@@ -33,11 +33,11 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
    */
   placement?: PlacementType;
   /**
-   * Describes the heading of the VariantManagement popover.
+   * Describes the title of the VariantManagement popover.
    *
-   * __Note:__ If not set, the default heading is used.
+   * __Note:__ If not set, the default title is used.
    */
-  heading?: string;
+  titleText?: string;
   /**
    * Selects the <code>variantItem</code> by its key.
    */
@@ -51,7 +51,7 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
    */
   variantItems: VariantItem[];
   /**
-   * Describes the `HTML Headings` level of the variants.
+   * Describes the `HTML Title` level of the variants.
    */
   level?: TitleLevel;
   /**
@@ -102,7 +102,7 @@ const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
     const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
     const {
       variantItems,
-      heading = i18nBundle.getText(VARIANTS),
+      titleText = i18nBundle.getText(VARIANTS),
       className,
       style,
       tooltip,
@@ -198,7 +198,7 @@ const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
         {createPortal(
           <ResponsivePopover
             ref={popoverRef}
-            headerText={heading}
+            headerText={titleText}
             placementType={placement}
             footer={footerButtons}
             onAfterClose={stopPropagation}
