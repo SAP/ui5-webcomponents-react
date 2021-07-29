@@ -57,9 +57,9 @@ export interface MessageBoxPropTypes extends CommonProps {
    */
   open?: boolean;
   /**
-   * A custom heading for the MessageBox. If not present, it will be derived from the `MessageBox` type.
+   * A custom title for the MessageBox. If not present, it will be derived from the `MessageBox` type.
    */
-  heading?: string;
+  titleText?: string;
   /**
    * Defines the content of the `MessageBox`.
    *
@@ -81,7 +81,7 @@ export interface MessageBoxPropTypes extends CommonProps {
    */
   icon?: ReactNode;
   /**
-   * Defines the type of the `MessageBox` with predefined heading, icon, actions and a visual highlight color.
+   * Defines the type of the `MessageBox` with predefined title, icon, actions and a visual highlight color.
    */
   type?: MessageBoxTypes;
   /**
@@ -117,7 +117,7 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
     style,
     tooltip,
     slot,
-    heading,
+    titleText,
     icon,
     actions,
     emphasizedAction,
@@ -165,8 +165,8 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
   };
 
   const titleToRender = () => {
-    if (heading) {
-      return heading;
+    if (titleText) {
+      return titleText;
     }
     switch (type) {
       case MessageBoxTypes.CONFIRM:

@@ -49,7 +49,7 @@ describe('MessageBox', () => {
   test('Show', () => {
     const callback = jest.fn();
     const { asFragment, unmount } = render(
-      <MessageBox open onClose={callback} heading="Custom" actions={[MessageBoxActions.YES, MessageBoxActions.NO]}>
+      <MessageBox open onClose={callback} titleText="Custom" actions={[MessageBoxActions.YES, MessageBoxActions.NO]}>
         Custom
       </MessageBox>
     );
@@ -71,7 +71,7 @@ describe('MessageBox', () => {
         type={MessageBoxTypes.SUCCESS}
         open
         onClose={callback}
-        heading="Custom Success"
+        titleText="Custom Success"
         icon={<Icon name="add" />}
       >
         Custom Success
@@ -88,7 +88,7 @@ describe('MessageBox', () => {
   test('Not open', () => {
     const callback = jest.fn();
     const { asFragment, unmount } = render(
-      <MessageBox type={MessageBoxTypes.SUCCESS} open={false} onClose={callback} heading="Custom Success">
+      <MessageBox type={MessageBoxTypes.SUCCESS} open={false} onClose={callback} titleText="Custom Success">
         Custom Success
       </MessageBox>
     );
