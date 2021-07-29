@@ -1,5 +1,6 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { Card } from '@ui5/webcomponents-react/dist/Card';
+import { CardHeader } from '@ui5/webcomponents-react/dist/CardHeader';
 import { List } from '@ui5/webcomponents-react/dist/List';
 import { StandardListItem } from '@ui5/webcomponents-react/dist/StandardListItem';
 import { Icon } from '@ui5/webcomponents-react/dist/Icon';
@@ -9,17 +10,21 @@ import '@ui5/webcomponents-icons/dist/person-placeholder.js';
 <Meta
   title="Data Display / Card"
   component={Card}
+  subcomponents={{ CardHeader }}
   argTypes={{
-    action: { control: { disable: true } },
-    avatar: { control: { disable: true } },
+    header: { control: { disable: true } },
     children: { control: { disable: true } }
   }}
   args={{
     style: { width: '300px' },
-    avatar: <Icon name="person-placeholder" />,
-    titleText: 'Team Space',
-    status: '3 of 5',
-    subtitleText: 'Direct Reports'
+    header: (
+      <CardHeader
+        titleText="TeamSpace"
+        subtitleText="Direct Reports"
+        status={'3 of 5'}
+        avatar={<Icon name="person-placeholder" />}
+      />
+    )
   }}
 />
 

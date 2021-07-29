@@ -16,9 +16,7 @@ const renamingMap = {
     iconSize: null
   },
   Card: {
-    'aria-label': 'accessibleName',
-    heading: 'titleText',
-    subheading: 'subtitleText'
+    'aria-label': 'accessibleName'
   },
   Carousel: {
     hideNavigation: 'hideNavigationArrows',

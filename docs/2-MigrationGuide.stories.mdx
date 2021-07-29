@@ -64,6 +64,42 @@ In addition, the `imageFitType` prop is replaced by using the `objectFit` style 
 </Avatar>
 ```
 
+### Card
+
+The header part of the `Card` component has been extracted into an own component:
+
+```jsx
+// with 0.17.x
+<Card
+  header={"My Header"}
+  subheading={"My Sub Heading"}
+  status={"Status"}
+  headerInteractive
+  action={}
+  avatar={<Icon name="person-placeholder" />}
+  onHeaderClick={console.log}
+>
+ My Card Content
+</Card>
+
+// with 0.18.x
+<Card
+  header={
+      <CardHeader
+        titleText={"My Header"}
+        subtitleText={"My Sub Heading"}
+        status={"Status"}
+        headerInteractive
+        onClick={console.log}
+        avatar={<Icon name="person-placeholder" />}
+        action={<Button>Go</Button>}
+      />
+  }
+>
+ My Card Content
+</Card>
+```
+
 ### Opening Dialogs & Popovers
 
 You can open `Dialogs` using the `show` method:
