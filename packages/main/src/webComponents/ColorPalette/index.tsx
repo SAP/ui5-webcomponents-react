@@ -1,4 +1,5 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/ColorPalette';
@@ -8,6 +9,10 @@ export interface ColorPalettePropTypes extends WithWebComponentPropTypes {
    * Defines the `ColorPaletteItem` items.
    */
   children?: ReactNode | ReactNode[];
+  /**
+   * Fired when the user selects a color.
+   */
+  onItemClick?: (event: Ui5CustomEvent<HTMLElement, { color: string }>) => void;
 }
 
 /**
@@ -20,7 +25,7 @@ const ColorPalette: FC<ColorPalettePropTypes> = withWebComponent<ColorPalettePro
   [],
   [],
   [],
-  []
+  ['item-click']
 );
 
 ColorPalette.displayName = 'ColorPalette';
