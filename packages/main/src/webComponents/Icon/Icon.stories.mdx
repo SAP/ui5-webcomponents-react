@@ -1,17 +1,11 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { Icon } from '@ui5/webcomponents-react/dist/Icon';
 import '@ui5/webcomponents-icons/dist/employee.js';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="Data Display / Icon"
   component={Icon}
-  argTypes={{
-    ...createSelectArgTypes({}),
-    ...DocsCommonProps
-  }}
   args={{
     name: 'employee',
     style: {},

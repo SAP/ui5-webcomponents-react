@@ -1,18 +1,14 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { MessageStrip } from '@ui5/webcomponents-react/dist/MessageStrip';
 import { MessageStripType } from '@ui5/webcomponents-react/dist/MessageStripType';
 import '@ui5/webcomponents-icons/dist/employee.js';
 import { Icon } from '@ui5/webcomponents-react/dist/Icon';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="Data Display / MessageStrip"
   component={MessageStrip}
   argTypes={{
-    ...createSelectArgTypes({ type: MessageStripType }),
-    ...DocsCommonProps,
     children: { control: 'text' },
     icon: { control: { disable: true } }
   }}

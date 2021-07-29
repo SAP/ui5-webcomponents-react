@@ -2,6 +2,8 @@
 
 exports[`ShellBar Basic Test (generated) 1`] = `
 <DocumentFragment>
-  <ui5-shellbar />
+  <ui5-shellbar
+    ui5-shellbar=""
+  />
 </DocumentFragment>
 `;
