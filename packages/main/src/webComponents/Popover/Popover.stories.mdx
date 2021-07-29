@@ -7,6 +7,7 @@ import { PopoverPlacementType } from '@ui5/webcomponents-react/dist/PopoverPlace
 import { PopoverVerticalAlign } from '@ui5/webcomponents-react/dist/PopoverVerticalAlign';
 import { Icon } from '@ui5/webcomponents-react/dist/Icon';
 import { Bar } from '@ui5/webcomponents-react/dist/Bar';
+import { Label } from '@ui5/webcomponents-react/dist/Label';
 import { List } from '@ui5/webcomponents-react/dist/List';
 import { StandardListItem } from '@ui5/webcomponents-react/dist/StandardListItem';
 import { useRef } from 'react';
@@ -23,7 +24,7 @@ import '@ui5/webcomponents-icons/dist/settings.js';
     header: { control: { disable: true } }
   }}
   args={{
-    children: 'Press "Escape" or click outside to close the Popover.',
+    children: <Label>Press "Escape" or click outside to close the Popover</Label>,
     headerText: 'Popover Header',
     horizontalAlign: PopoverHorizontalAlign.Center,
     placementType: PopoverPlacementType.Right,
