@@ -37,6 +37,10 @@ export interface RadialChartProps extends Omit<CommonProps, 'onClick'> {
    * Fired when clicked anywhere in the chart.
    */
   onClick?: (event: CustomEvent<{ payload: unknown; activePayloads: Record<string, unknown>[] }>) => void;
+  /**
+   * `noAnimation` disables all chart animations when set to `true`.
+   */
+  noAnimation?: boolean;
 }
 
 const radialChartMargin = { right: 30, left: 30, top: 30, bottom: 30 };
@@ -48,7 +52,19 @@ const radialBarLabelStyle = { fontSize: ThemingParameters.sapFontHeader3Size, fi
  * The status can be emphasized by using the `color` prop.
  */
 const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, ref: Ref<HTMLDivElement>) => {
-  const { maxValue, value, displayValue, onDataPointClick, onClick, color, style, className, tooltip, slot } = props;
+  const {
+    maxValue,
+    value,
+    displayValue,
+    onDataPointClick,
+    onClick,
+    color,
+    style,
+    className,
+    tooltip,
+    slot,
+    noAnimation
+  } = props;
 
   const range = useMemo<AxisDomain>(() => {
     return [0, maxValue];
@@ -101,6 +117,7 @@ const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, r
       >
         <PolarAngleAxis type="number" domain={range} tick={false} />
         <RadialBar
+          isAnimationActive={noAnimation === false}
           background={radialBarBackground}
           dataKey="value"
           cornerRadius="50%"
@@ -125,7 +142,8 @@ const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, r
 });
 
 RadialChart.defaultProps = {
-  maxValue: 100
+  maxValue: 100,
+  noAnimation: false
 };
 
 RadialChart.displayName = 'RadialChart';

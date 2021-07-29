@@ -1,18 +1,14 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
 import '@ui5/webcomponents-icons/dist/employee.js';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="Inputs / Button"
   component={Button}
   argTypes={{
-    ...createSelectArgTypes({ design: ButtonDesign }),
-    children: { control: 'text' },
-    ...DocsCommonProps
+    children: { control: 'text' }
   }}
   args={{
     design: ButtonDesign.Default,

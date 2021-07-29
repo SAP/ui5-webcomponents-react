@@ -2,7 +2,6 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingPar
 
 const styles = {
   header: {
-    padding: '0 3rem 0 2.5rem',
     borderBottom: `1px solid ${ThemingParameters.sapGroup_TitleBorderColor}`,
     boxSizing: 'border-box',
     height: '2.75rem'
@@ -26,7 +25,8 @@ const styles = {
     whiteSpace: 'normal'
   },
   sectionContentInner: {
-    padding: '1rem 2rem 2rem 2.5rem',
+    paddingTop: '1rem',
+    paddingBottom: '2rem',
     fontFamily: ThemingParameters.sapFontFamily
   }
 };

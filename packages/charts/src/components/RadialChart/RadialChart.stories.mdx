@@ -1,14 +1,10 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import { RadialChart } from '@ui5/webcomponents-react-charts/dist/RadialChart';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="Charts /  RadialChart"
   component={RadialChart}
-  argTypes={{
-    ...DocsCommonProps
-  }}
   args={{
     displayValue: '50%',
     value: 50,

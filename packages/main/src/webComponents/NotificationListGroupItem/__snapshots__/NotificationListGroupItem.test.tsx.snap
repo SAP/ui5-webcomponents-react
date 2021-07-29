@@ -4,6 +4,7 @@ exports[`NotificationListGroupItem Basic Test (generated) 1`] = `
 <DocumentFragment>
   <ui5-li-notification-group
     priority="None"
+    ui5-li-notification-group=""
   />
 </DocumentFragment>
 `;

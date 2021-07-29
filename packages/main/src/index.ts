@@ -67,6 +67,7 @@ import { Grid } from './dist/Grid';
 import { GridPosition } from './dist/GridPosition';
 import { GroupHeaderListItem } from './dist/GroupHeaderListItem';
 import { Icon } from './dist/Icon';
+import { IndicationColor } from './dist/IndicationColor';
 import { Input } from './dist/Input';
 import { InputType } from './dist/InputType';
 import { Label } from './dist/Label';
@@ -112,6 +113,7 @@ import { ProgressIndicator } from './dist/ProgressIndicator';
 import { RadioButton } from './dist/RadioButton';
 import { RangeSlider } from './dist/RangeSlider';
 import { RatingIndicator } from './dist/RatingIndicator';
+import { ResponsiveGridLayout } from './dist/ResponsiveGridLayout';
 import { ResponsivePopover } from './dist/ResponsivePopover';
 import { SegmentedButton } from './dist/SegmentedButton';
 import { Select } from './dist/Select';
@@ -239,6 +241,7 @@ export {
   GridPosition,
   GroupHeaderListItem,
   Icon,
+  IndicationColor,
   Input,
   InputType,
   Label,
@@ -284,6 +287,7 @@ export {
   RadioButton,
   RangeSlider,
   RatingIndicator,
+  ResponsiveGridLayout,
   ResponsivePopover,
   SegmentedButton,
   Select,
