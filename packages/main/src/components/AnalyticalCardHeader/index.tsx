@@ -1,7 +1,5 @@
-import { createUseStyles } from 'react-jss';
 import { useI18nBundle, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { DEVIATION, TARGET } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { DeviationIndicator } from '@ui5/webcomponents-react/dist/DeviationIndicator';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
@@ -11,19 +9,20 @@ import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJust
 import { FlexBoxWrap } from '@ui5/webcomponents-react/dist/FlexBoxWrap';
 import { ObjectStatus } from '@ui5/webcomponents-react/dist/ObjectStatus';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
-import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import React, { FC, forwardRef, MouseEventHandler, Ref, useMemo } from 'react';
+import { createUseStyles } from 'react-jss';
 import styles from './AnalyticalCardHeader.jss';
 
 export interface AnalyticalCardHeaderPropTypes extends CommonProps {
   /**
-   * Defines the heading of the `AnalyticalCardHeader`.
+   * Defines the title text of the `AnalyticalCardHeader`.
    */
-  heading?: string;
+  titleText?: string;
   /**
-   * Defines the subheading of the `AnalyticalCardHeader`.
+   * Defines the subtitle text of the `AnalyticalCardHeader`.
    */
-  subheading?: string;
+  subtitleText?: string;
   /**
    * Defines the orientation of the deviation indicator.
    */
@@ -76,9 +75,9 @@ export interface AnalyticalCardHeaderPropTypes extends CommonProps {
    */
   currency?: string;
   /**
-   * Fired when the `AnalyticalCardHeader` header is clicked.
+   * Fired when the `AnalyticalCardHeader` is clicked.
    */
-  onHeaderClick?: (event: CustomEvent<{}>) => void;
+  onClick?: MouseEventHandler<HTMLDivElement>;
 }
 
 const useStyles = createUseStyles(styles, {
@@ -88,14 +87,14 @@ const useStyles = createUseStyles(styles, {
 export const AnalyticalCardHeader: FC<AnalyticalCardHeaderPropTypes> = forwardRef(
   (props: AnalyticalCardHeaderPropTypes, ref: Ref<HTMLDivElement>) => {
     const {
-      heading,
-      subheading,
+      titleText,
+      subtitleText,
       value,
       unit,
       target,
       deviation,
       valueState,
-      onHeaderClick,
+      onClick,
       showIndicator,
       tooltip,
       className,
@@ -108,14 +107,7 @@ export const AnalyticalCardHeader: FC<AnalyticalCardHeaderPropTypes> = forwardRe
       style
     } = props;
     const classes = useStyles();
-    const onClick = useCallback(
-      (e) => {
-        if (onHeaderClick) {
-          onHeaderClick(enrichEventWithDetails(e));
-        }
-      },
-      [onHeaderClick]
-    );
+
     const indicatorIcon = useMemo(() => {
       const arrowClasses = StyleClassHelper.of(classes.arrowIndicatorShape);
       switch (arrowIndicator) {
@@ -149,7 +141,7 @@ export const AnalyticalCardHeader: FC<AnalyticalCardHeaderPropTypes> = forwardRe
     }, [arrowIndicator, indicatorState, classes]);
 
     const headerClasses = StyleClassHelper.of(classes.cardHeader);
-    if (onHeaderClick) {
+    if (onClick) {
       headerClasses.put(classes.cardHeaderClickable);
     }
 
@@ -185,16 +177,16 @@ export const AnalyticalCardHeader: FC<AnalyticalCardHeaderPropTypes> = forwardRe
         <div className={classes.headerContent}>
           <div className={classes.headerTitles}>
             <FlexBox justifyContent={FlexBoxJustifyContent.SpaceBetween} wrap={FlexBoxWrap.NoWrap}>
-              <div className={classes.headerText}>{heading}</div>
+              <div className={classes.headerText}>{titleText}</div>
               {counter && (
                 <ObjectStatus className={classes.counter} state={counterState}>
                   {counter}
                 </ObjectStatus>
               )}
             </FlexBox>
-            {(subheading || currency) && (
+            {(subtitleText || currency) && (
               <div className={classes.subHeaderText}>
-                {subheading}
+                {subtitleText}
                 {currency && ` | ${currency}`}
               </div>
             )}

@@ -42,21 +42,21 @@ describe('AnalyticalCardHeader', () => {
   test('click event', () => {
     const cb = jest.fn();
 
-    const { rerender, container } = render(<AnalyticalCardHeader onHeaderClick={cb} heading="header" />);
+    const { rerender, container } = render(<AnalyticalCardHeader onClick={cb} titleText="header" />);
 
     expect(container.firstChild).toHaveClass('AnalyticalCardHeader-cardHeaderClickable');
     fireEvent.click(screen.getByText('header'));
     expect(cb).toHaveBeenCalledTimes(1);
 
-    rerender(<AnalyticalCardHeader heading="header" />);
+    rerender(<AnalyticalCardHeader titleText="header" />);
     expect(container.firstChild).not.toHaveClass('AnalyticalCardHeader-cardHeaderClickable');
   });
 
   test('with all string props', () => {
     const { asFragment } = render(
       <AnalyticalCardHeader
-        heading="Title"
-        subheading="Subtitle"
+        titleText="Title"
+        subtitleText="Subtitle"
         value="Value"
         unit="Unit"
         target="TargetDesc"
