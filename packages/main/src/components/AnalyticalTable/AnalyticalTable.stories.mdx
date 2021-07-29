@@ -1,6 +1,5 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { AnalyticalTable } from '@ui5/webcomponents-react/dist/AnalyticalTable';
-import { createSelectArgTypes } from '../../../../../shared/stories/createSelectArgTypes';
 import { TableScaleWidthMode } from '@ui5/webcomponents-react/dist/TableScaleWidthMode';
 import { TableSelectionBehavior } from '@ui5/webcomponents-react/dist/TableSelectionBehavior';
 import { TableSelectionMode } from '@ui5/webcomponents-react/dist/TableSelectionMode';
@@ -25,7 +24,6 @@ import { MessageStrip } from '@ui5/webcomponents-react/dist/MessageStrip';
 import { TextAlign } from '@ui5/webcomponents-react/dist/TextAlign';
 import { DefaultLoadingComponent } from './defaults/LoadingComponent';
 import { DefaultNoDataComponent } from './defaults/NoDataComponent';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 import { useCallback, useEffect, useReducer, useRef, useState } from 'react';
 import { useRowDisableSelection } from '@ui5/webcomponents-react/dist/AnalyticalTableHooks';
 
@@ -121,19 +119,13 @@ import { useRowDisableSelection } from '@ui5/webcomponents-react/dist/Analytical
     visibleRowCountMode: TableVisibleRowCountMode.FIXED
   }}
   argTypes={{
-    ...DocsCommonProps,
     data: { type: null },
     columns: { type: null },
     reactTableOptions: { type: null },
     tableHooks: { type: null },
     NoDataComponent: { type: null },
     LoadingComponent: { type: null },
-    ...createSelectArgTypes({
-      scaleWidthMode: TableScaleWidthMode,
-      selectionMode: TableSelectionMode,
-      selectionBehavior: TableSelectionBehavior,
-      visibleRowCountMode: TableVisibleRowCountMode
-    })
+    extension: { type: null }
   }}
 />
 

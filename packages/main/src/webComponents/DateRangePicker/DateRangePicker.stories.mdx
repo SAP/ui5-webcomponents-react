@@ -1,4 +1,4 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { DateRangePicker } from '@ui5/webcomponents-react/dist/DateRangePicker';
 import { CalendarType } from '@ui5/webcomponents-react/dist/CalendarType';
 import '@ui5/webcomponents-localization/dist/features/calendar/Gregorian.js';
@@ -7,17 +7,13 @@ import '@ui5/webcomponents-localization/dist/features/calendar/Islamic.js';
 import '@ui5/webcomponents-localization/dist/features/calendar/Japanese.js';
 import '@ui5/webcomponents-localization/dist/features/calendar/Persian.js';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="Inputs / DateRangePicker"
   component={DateRangePicker}
   argTypes={{
-    ...createSelectArgTypes({ primaryCalendarType: CalendarType, valueState: ValueState }),
-    valueStateMessage: { control: { disable: true } },
-    ...DocsCommonProps
+    valueStateMessage: { control: { disable: true } }
   }}
   args={{
     primaryCalendarType: CalendarType.Gregorian,

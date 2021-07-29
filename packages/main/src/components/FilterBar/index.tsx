@@ -1,10 +1,11 @@
-import { useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useConsolidatedRef, useI18nBundle, useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
+import { debounce, enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import {
   CLEAR,
   FILTERS,
+  ADAPT_FILTERS,
   GO,
   HIDE_FILTER_BAR,
   RESTORE,
@@ -14,9 +15,6 @@ import { BusyIndicator } from '@ui5/webcomponents-react/dist/BusyIndicator';
 import { BusyIndicatorSize } from '@ui5/webcomponents-react/dist/BusyIndicatorSize';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
-import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
-import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
-import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';
 import { InputPropTypes } from '@ui5/webcomponents-react/dist/Input';
 import { Toolbar } from '@ui5/webcomponents-react/dist/Toolbar';
 import { ToolbarSeparator } from '@ui5/webcomponents-react/dist/ToolbarSeparator';
@@ -36,7 +34,6 @@ import React, {
   RefObject,
   useCallback,
   useEffect,
-  useMemo,
   useRef,
   useState
 } from 'react';
@@ -77,6 +74,9 @@ export interface FilterBarPropTypes extends CommonProps {
   filterBarExpanded?: boolean;
   /**
    * Defines the width of the `FilterGroupItems`.
+   *
+   * __Note:__ If your filter elements (e.g. `DateRangePicker`) have an internal `minWidth`, please make sure to overwrite it with `minWidth:'auto'` or the corresponding `filterContainerWidth` otherwise it can lead to unintended behavior.
+   * __Note:__ This prop is not supported with IE11, there it defaults to `13.125rem`.
    */
   filterContainerWidth?: CSSProperties['width'];
   /**
@@ -179,6 +179,15 @@ export interface FilterBarPropTypes extends CommonProps {
   onRestore?: (event: CustomEvent<{ source?: unknown }>) => void;
 }
 
+const resizeObserverEntryWidth = (entry) => {
+  if (entry.borderBoxSize) {
+    // Firefox implements `borderBoxSize` as a single content rect, rather than an array
+    return Array.isArray(entry.borderBoxSize) ? entry.borderBoxSize[0]?.inlineSize : entry.borderBoxSize?.inlineSize;
+  }
+  // Safari doesn't implement `borderBoxSize`
+  return entry.target.getBoundingClientRect().width;
+};
+
 const useStyles = createUseStyles(styles, { name: 'FilterBar' });
 /**
  * The `FilterBar` displays filters in a user-friendly manner to populate values for a query. It consists of a row containing the `VariantManagement`, the related buttons, and an area underneath displaying the filters. The filters are arranged in a logical row that is divided depending on the space available and the width of the filters. The area containing the filters can be hidden or shown using the "Hide FilterBar / Show FilterBar" button, the "Filters" button shows the filter dialog.
@@ -231,6 +240,9 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
   const [toggledFilters, setToggledFilters] = useState({});
   const prevVisibleInFilterBarProps = useRef({});
   const prevSearchInputPropsValueRef = useRef<string>();
+  const filterBarButtonsRef = useRef(null);
+  const filterAreaRef = useRef(null);
+  const filterBarRef = useConsolidatedRef<HTMLDivElement>(ref);
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
@@ -239,7 +251,10 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
   const showFilterBarText = i18nBundle.getText(SHOW_FILTER_BAR);
   const hideFilterBarText = i18nBundle.getText(HIDE_FILTER_BAR);
   const goText = i18nBundle.getText(GO);
-  const filtersText = i18nBundle.getText(FILTERS);
+  const filtersText = useToolbar ? i18nBundle.getText(FILTERS) : i18nBundle.getText(ADAPT_FILTERS);
+
+  const isRtl = useIsRTL(filterBarRef);
+  const transformRightRTL = isRtl ? 'Left' : 'Right';
 
   useEffect(() => {
     Children.toArray(children).forEach((item: ReactElement<any>) => {
@@ -346,12 +361,13 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
   const prevChildren = useRef({});
 
   const renderChildren = useCallback(() => {
-    const childProps = { considerGroupName, inFB: true } as any;
+    const childProps = { considerGroupName, ['data-in-fb']: true, ['data-with-toolbar']: useToolbar } as any;
     return safeChildren()
       .filter((item: ReactElement<any, any>) => {
         return item?.props?.visible && item.props?.visibleInFilterBar;
       })
       .map((child: ReactElement<any, any>) => {
+        // necessary because of varying widths of input elements
         if (filterContainerWidth) {
           childProps.style = { width: filterContainerWidth, ...child.props.style };
         }
@@ -403,7 +419,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
           }
         });
       });
-  }, [filterContainerWidth, considerGroupName, dialogRefs, safeChildren, showFilterConfiguration]);
+  }, [filterContainerWidth, considerGroupName, dialogRefs, safeChildren, showFilterConfiguration, useToolbar]);
 
   const handleSearchValueChange = useCallback(
     (newVal) => {
@@ -439,8 +455,8 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
   if (className) {
     cssClasses.put(className);
   }
-  if (filterContainerWidth) {
-    cssClasses.put(classes.filterItemExpand);
+  if (useToolbar) {
+    cssClasses.put(classes.outerContainerWithToolbar);
   }
 
   useEffect(() => {
@@ -487,6 +503,92 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
     </>
   );
   const hasButtons = ToolbarButtons.props.children.some(Boolean);
+
+  const [filterBarButtonsWidth, setFilterBarButtonsWidth] = useState(undefined);
+  const [filterAreaWidth, setFilterAreaWidth] = useState(undefined);
+  const [firstChildWidth, setFirstChildWidth] = useState(undefined);
+
+  useEffect(() => {
+    const filterAreaObserver = new ResizeObserver(
+      debounce(([area]) => {
+        const firstChild = area.target?.children?.[0];
+        if (firstChild && firstChild.offsetWidth !== firstChildWidth) {
+          setFirstChildWidth(firstChild.offsetWidth + 16 /*margin*/);
+        }
+      }, 100)
+    );
+    if (!useToolbar && filterAreaRef.current) {
+      filterAreaObserver.observe(filterAreaRef.current);
+    }
+    return () => {
+      filterAreaObserver.disconnect();
+    };
+  }, [filterAreaRef.current, useToolbar]);
+
+  useEffect(() => {
+    const filterAreaObserver = new ResizeObserver(
+      debounce(([area]) => {
+        const filterWidth = resizeObserverEntryWidth(area);
+        if (filterWidth !== filterBarButtonsWidth) {
+          setFilterAreaWidth(filterWidth);
+        }
+      }, 100)
+    );
+    if (!useToolbar && filterAreaRef.current) {
+      filterAreaObserver.observe(filterAreaRef.current);
+    }
+    return () => {
+      filterAreaObserver.disconnect();
+    };
+  }, [filterAreaWidth, filterAreaRef.current, useToolbar]);
+
+  useEffect(() => {
+    const filterBarButtonsObserver = new ResizeObserver(
+      debounce(([buttons]) => {
+        const buttonsWidth = resizeObserverEntryWidth(buttons);
+        if (buttonsWidth !== filterBarButtonsWidth) {
+          setFilterBarButtonsWidth(buttonsWidth);
+        }
+      }, 100)
+    );
+    if (!useToolbar && filterBarButtonsRef.current) {
+      filterBarButtonsObserver.observe(filterBarButtonsRef.current);
+    }
+    return () => {
+      filterBarButtonsObserver.disconnect();
+    };
+  }, [filterBarButtonsRef.current, useToolbar, filterBarButtonsWidth]);
+
+  const calculatedChildren = renderChildren();
+  // calculates the number of spacers depending on the available width inside the row
+  const renderSpacers = () => {
+    if (firstChildWidth && filterAreaWidth && filterBarButtonsWidth) {
+      let spacers = [];
+      const filterItemsWidth = calculatedChildren.length * firstChildWidth;
+      //early return if enough space is available
+      if (filterAreaWidth - filterBarButtonsWidth > filterItemsWidth) {
+        return null;
+      }
+      const usedSpaceLastRow = filterItemsWidth % filterAreaWidth;
+      const emptySpaceLastRow = filterAreaWidth - usedSpaceLastRow;
+      // deduct width of buttons container of the empty space in the last row to calculate number of spacers
+      const numberOfSpacers = Math.floor((emptySpaceLastRow - filterBarButtonsWidth) / firstChildWidth);
+      for (let i = 0; i < numberOfSpacers; i++) {
+        spacers.push(
+          <div
+            key={`filter-spacer-${i}`}
+            className={classes.spacer}
+            style={{
+              [`margin${transformRightRTL}`]: '1rem'
+            }}
+          />
+        );
+      }
+      return spacers;
+    }
+    return null;
+  };
+
   return (
     <>
       {dialogOpen && showFilterConfiguration && (
@@ -512,7 +614,14 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
           {safeChildren()}
         </FilterDialog>
       )}
-      <div ref={ref} className={cssClasses.toString()} style={style} title={tooltip} slot={slot} {...passThroughProps}>
+      <div
+        ref={filterBarRef}
+        className={cssClasses.toString()}
+        style={{ ['--_ui5wcr_filter_group_item_flex_basis']: filterContainerWidth, ...style } as CSSProperties}
+        title={tooltip}
+        slot={slot}
+        {...passThroughProps}
+      >
         {loading ? (
           <BusyIndicator active className={classes.loadingContainer} size={BusyIndicatorSize.Large} />
         ) : (
@@ -527,16 +636,32 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
               </Toolbar>
             )}
             {mountFilters && (
-              <div className={filterAreaClasses.className}>
-                {renderChildren()}
+              <div className={filterAreaClasses.className} style={{ position: 'relative' }} ref={filterAreaRef}>
+                {calculatedChildren}
                 {!useToolbar && (
-                  <FlexBox
-                    alignItems={FlexBoxAlignItems.Center}
-                    justifyContent={FlexBoxJustifyContent.End}
-                    style={{ flexGrow: 1 }}
-                  >
-                    {ToolbarButtons}
-                  </FlexBox>
+                  <>
+                    {renderSpacers()}
+                    <div
+                      style={{
+                        width: filterBarButtonsWidth ? `${filterBarButtonsWidth}px` : '120px',
+                        minWidth: filterBarButtonsWidth ? `${filterBarButtonsWidth}px` : '120px',
+                        [`margin${transformRightRTL}`]: '1rem'
+                      }}
+                      className={classes.lastSpacer}
+                    >
+                      <div
+                        className={classes.filterBarButtons}
+                        ref={filterBarButtonsRef}
+                        style={{
+                          [`margin${transformRightRTL}`]: '1rem',
+                          left: isRtl ? 0 : 'auto',
+                          right: isRtl ? 'auto' : 0
+                        }}
+                      >
+                        {ToolbarButtons}
+                      </div>
+                    </div>
+                  </>
                 )}
               </div>
             )}
@@ -548,6 +673,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
 });
 
 FilterBar.defaultProps = {
+  filterContainerWidth: '13.125rem',
   useToolbar: true,
   filterBarExpanded: true,
   showClearOnFB: false,

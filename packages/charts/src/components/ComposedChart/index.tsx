@@ -129,13 +129,16 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     onDataPointClick,
     noLegend,
     noAnimation,
+    tooltipConfig,
     onLegendClick,
     onClick,
     layout,
     style,
     className,
     tooltip,
-    slot
+    slot,
+    syncId,
+    ChartPlaceholder
   } = props;
 
   const chartRef = useConsolidatedRef<any>(ref);
@@ -239,7 +242,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
       ref={chartRef}
       loading={loading}
       dataset={dataset}
-      Placeholder={Placeholder}
+      Placeholder={ChartPlaceholder ?? Placeholder}
       style={style}
       className={className}
       tooltip={tooltip}
@@ -248,6 +251,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
       {...passThroughProps}
     >
       <ComposedChartLib
+        syncId={syncId}
         onClick={onClickInternal}
         stackOffset="sign"
         margin={marginChart}
@@ -371,6 +375,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
           formatter={tooltipValueFormatter}
           labelFormatter={labelFormatter}
           contentStyle={tooltipContentStyle}
+          {...tooltipConfig}
         />
         {!noLegend && (
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -383,7 +388,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
           />
         )}
         {measures?.map((element, index) => {
-          const ChartElement = (ChartTypes[element.type] as any) as FC<any>;
+          const ChartElement = ChartTypes[element.type] as any as FC<any>;
 
           const chartElementProps: any = {
             isAnimationActive: noAnimation === false

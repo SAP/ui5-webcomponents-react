@@ -1,5 +1,4 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import '@ui5/webcomponents-icons/dist/person-placeholder.js';
 import { AnalyticalCard } from '@ui5/webcomponents-react/dist/AnalyticalCard';
@@ -7,7 +6,6 @@ import { AnalyticalCardHeader } from '@ui5/webcomponents-react/dist/AnalyticalCa
 import { DeviationIndicator } from '@ui5/webcomponents-react/dist/DeviationIndicator';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { LineChart } from '@ui5/webcomponents-react-charts/dist/LineChart';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="Data Display / AnalyticalCard"
@@ -16,7 +14,6 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
     subcomponents: { AnalyticalCardHeader }
   }}
   argTypes={{
-    ...DocsCommonProps,
     header: {
       type: null
     },
@@ -128,12 +125,6 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
       heading: { description: 'Defines the heading of the `AnalyticalCardHeader`.' },
       subheading: { description: 'Defines the subheading of the `AnalyticalCardHeader`.' },
       value: { description: 'Defines the value of the `AnalyticalCardHeader`.' },
-      ...createSelectArgTypes({
-        arrowIndicator: DeviationIndicator,
-        indicatorState: ValueState,
-        valueState: ValueState,
-        counterState: ValueState
-      }),
       unit: { description: 'Defines the unit displayed next to the value of the `AnalyticalCardHeader`.' },
       target: { description: 'Defines the target value.' },
       deviation: { description: 'Defines the deviation value.' },

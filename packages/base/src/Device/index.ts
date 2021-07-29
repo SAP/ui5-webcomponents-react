@@ -1,17 +1,17 @@
 import '@ui5/webcomponents-react-base/types/UI5Device.d.ts';
 import { supportsTouch } from '@ui5/webcomponents-base/dist/Device';
-import EventProvider from '@ui5/webcomponents-base/dist/EventProvider';
-import { supportOrientation } from './Support';
-import * as Utils from './utils';
+import { EventProvider } from './EventProvider';
 
-const eventProvider = new EventProvider();
+const getActualWindowSize = (): [width: number, height: number] => {
+  return [window.innerWidth, window.innerHeight];
+};
 
 let iResizeTimeout;
 let bOrientationChange = false;
 let bResize = false;
 let iOrientationTimeout;
 let iClearFlagTimeout;
-let [iWindowWidthOld, iWindowHeightOld] = Utils.getWindowSize();
+let [iWindowWidthOld, iWindowHeightOld] = getActualWindowSize();
 let bKeyboardOpen = false;
 let iLastResizeTime;
 const rInputTagRegex = /INPUT|TEXTAREA|SELECT/;
@@ -38,13 +38,17 @@ const internalOrientation: IOrientation = {
 
 // PRIVATE API
 
+const isLandscape = () => {
+  return !!window.matchMedia('(orientation: landscape)').matches;
+};
+
 const setResizeInfo = () => {
-  internalWindowSize.width = Utils.getWindowSize()[0];
-  internalWindowSize.height = Utils.getWindowSize()[1];
+  internalWindowSize.width = getActualWindowSize()[0];
+  internalWindowSize.height = getActualWindowSize()[1];
 };
 
 const setOrientationInfo = () => {
-  internalOrientation.landscape = Utils.isLandscape();
+  internalOrientation.landscape = isLandscape();
   internalOrientation.portrait = !internalOrientation.landscape;
 };
 
@@ -57,7 +61,7 @@ const clearFlags = () => {
 let eventListenersInitialized = false;
 const initEventListeners = () => {
   // Add handler for orientationchange and resize after initialization of Device API
-  if (supportsTouch() && supportOrientation()) {
+  if (supportsTouch()) {
     // logic for mobile devices which support orientationchange (like ios, android)
     window.addEventListener('resize', handleMobileOrientationResizeChange, false);
     window.addEventListener('orientationchange', handleMobileOrientationResizeChange, false);
@@ -73,7 +77,7 @@ const initEventListeners = () => {
 // orientation change
 const handleOrientationChange = () => {
   setOrientationInfo();
-  eventProvider.fireEvent('orientation', {
+  EventProvider.fireEvent('orientation', {
     landscape: internalOrientation.landscape,
     portrait: internalOrientation.portrait
   });
@@ -103,7 +107,7 @@ const handleMobileOrientationResizeChange = (evt) => {
       return;
     }
 
-    const [iWindowWidthNew, iWindowHeightNew] = Utils.getWindowSize();
+    const [iWindowWidthNew, iWindowHeightNew] = getActualWindowSize();
     const iTime = new Date().getTime();
     // skip multiple resize events by only one orientationchange
     if (iWindowHeightNew === iWindowHeightOld && iWindowWidthNew === iWindowWidthOld) {
@@ -149,7 +153,7 @@ const handleMobileOrientationResizeChange = (evt) => {
 // RESIZE ONLY WITHOUT ORIENTATION CHANGE
 const handleResizeChange = () => {
   setResizeInfo();
-  eventProvider.fireEvent('resize', {
+  EventProvider.fireEvent('resize', {
     height: internalWindowSize.height,
     width: internalWindowSize.width
   });
@@ -162,7 +166,7 @@ const handleResizeTimeout = () => {
 
 const handleResizeEvent = () => {
   const wasL = internalOrientation.landscape;
-  const isL = Utils.isLandscape();
+  const isL = isLandscape();
   if (wasL !== isL) {
     handleOrientationChange();
   }
@@ -176,27 +180,23 @@ const handleResizeEvent = () => {
 
 // re-export everything from the web components device
 export { isIE, isSafari, isDesktop, isTablet, isPhone, supportsTouch } from '@ui5/webcomponents-base/dist/Device';
-// export all support methods
-export * from './Support';
 // export all media methods
-export * from './Media';
+export { attachMediaHandler, detachMediaHandler, getCurrentRange } from './Media';
+
 // resize events
-export const getWindowSize = () => {
-  return internalWindowSize;
-};
 export const attachResizeHandler = (fnFunction: (windowSize: IWindowSize) => void): void => {
   if (!eventListenersInitialized) {
     initEventListeners();
   }
-  eventProvider.attachEvent('resize', fnFunction);
+  EventProvider.attachEvent('resize', fnFunction);
 };
 
 export const detachResizeHandler = (fnFunction: (windowSize: IWindowSize) => void) => {
-  eventProvider.detachEvent('resize', fnFunction);
+  EventProvider.detachEvent('resize', fnFunction);
 };
 
 // orientation change events
-export const getOrientation = () => {
+export const getOrientation = (): IOrientation => {
   return internalOrientation;
 };
 
@@ -204,9 +204,9 @@ export const attachOrientationChangeHandler = (fnFunction: (orientation: IOrient
   if (!eventListenersInitialized) {
     initEventListeners();
   }
-  eventProvider.attachEvent('orientation', fnFunction);
+  EventProvider.attachEvent('orientation', fnFunction);
 };
 
 export const detachOrientationChangeHandler = (fnFunction: (orientation: IOrientation) => void) => {
-  eventProvider.detachEvent('orientation', fnFunction);
+  EventProvider.detachEvent('orientation', fnFunction);
 };

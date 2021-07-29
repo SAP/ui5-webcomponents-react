@@ -1,7 +1,19 @@
-import { DocsContext } from '@storybook/addon-docs/blocks';
+import { DocsContext } from '@storybook/addon-docs';
 import React, { useContext } from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { googlecode } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+
+export const ImportStatement = ({ children }: { children: string }) => {
+  return (
+    <SyntaxHighlighter
+      customStyle={{ padding: '10px 0', whiteSpace: 'pre-wrap', fontSize: 14 }}
+      language="javascript"
+      style={googlecode}
+    >
+      {children}
+    </SyntaxHighlighter>
+  );
+};
 
 export const Import = () => {
   const context = useContext(DocsContext);
@@ -10,13 +22,9 @@ export const Import = () => {
   const moduleName = groups[groups.length - 1].trim();
 
   return (
-    <SyntaxHighlighter
-      customStyle={{ padding: '10px 0', whiteSpace: 'pre-wrap', fontSize: 14 }}
-      language="javascript"
-      style={googlecode}
-    >
+    <ImportStatement>
       {`import { ${moduleName} } from '@ui5/webcomponents-react${isChart ? '-charts' : ''}';`}
-    </SyntaxHighlighter>
+    </ImportStatement>
   );
 };
 

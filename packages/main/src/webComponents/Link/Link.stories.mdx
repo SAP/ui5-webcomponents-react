@@ -1,18 +1,14 @@
-import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
 import { Link } from '@ui5/webcomponents-react/dist/Link';
 import { LinkDesign } from '@ui5/webcomponents-react/dist/LinkDesign';
 import { CSSProperties, Ref } from 'react';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="Data Display / Link"
   component={Link}
   argTypes={{
-    ...createSelectArgTypes({ design: LinkDesign }),
-    children: { control: 'text' },
-    ...DocsCommonProps
+    children: { control: 'text' }
   }}
   args={{
     design: LinkDesign.Default,

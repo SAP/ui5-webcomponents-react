@@ -83,13 +83,15 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
     dataset,
     noLegend,
     noAnimation,
+    tooltipConfig,
     onDataPointClick,
     onLegendClick,
     onClick,
     style,
     className,
     tooltip,
-    slot
+    slot,
+    ChartPlaceholder
   } = props;
 
   const chartConfig = useMemo(() => {
@@ -164,7 +166,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
       dataset={dataset}
       ref={chartRef}
       loading={loading}
-      Placeholder={PieChartPlaceholder}
+      Placeholder={ChartPlaceholder ?? PieChartPlaceholder}
       style={style}
       className={className}
       tooltip={tooltip}
@@ -207,6 +209,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
           formatter={tooltipValueFormatter}
           contentStyle={tooltipContentStyle}
           labelFormatter={labelFormatter}
+          {...tooltipConfig}
         />
         {!noLegend && (
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
