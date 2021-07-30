@@ -16,6 +16,10 @@ export interface MultiInputPropTypes extends Omit<WithWebComponentPropTypes, 'on
    */
   accessibleName?: string;
   /**
+   * Receives id(or many ids) of the elements that label the input
+   */
+  accessibleNameRef?: string;
+  /**
    * Defines whether the component is in disabled state.
    *
    * **Note:** A disabled component is completely noninteractive.
@@ -106,8 +110,7 @@ export interface MultiInputPropTypes extends Omit<WithWebComponentPropTypes, 'on
    *
    * **Note:** The `<SuggestionItem>` and `<SuggestionGroupItem>` are recommended to be used as suggestion items.
    *
-   * **Note:** Importing the Input Suggestions Support feature:
-   * `import "@ui5/webcomponents/dist/features/InputSuggestions.js";`
+   * **Note:** Importing the Input Suggestions Support feature: `import "@ui5/webcomponents/dist/features/InputSuggestions.js";`
    * automatically imports the `<SuggestionItem>` and `<SuggestionGroupItem>` for your convenience.
    */
   children?: ReactNode | ReactNode[];
@@ -176,7 +179,7 @@ export interface MultiInputPropTypes extends Omit<WithWebComponentPropTypes, 'on
  */
 const MultiInput: FC<MultiInputPropTypes> = withWebComponent<MultiInputPropTypes>(
   'ui5-multi-input',
-  ['accessibleName', 'maxlength', 'name', 'placeholder', 'type', 'value', 'valueState'],
+  ['accessibleName', 'accessibleNameRef', 'maxlength', 'name', 'placeholder', 'type', 'value', 'valueState'],
   ['showValueHelpIcon', 'disabled', 'readonly', 'required', 'showSuggestions'],
   ['tokens', 'icon', 'valueStateMessage'],
   [

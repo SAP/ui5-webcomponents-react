@@ -11,6 +11,10 @@ export interface ComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
    */
   accessibleName?: string;
   /**
+   * Receives id(or many ids) of the elements that label the combo box
+   */
+  accessibleNameRef?: string;
+  /**
    * Defines whether the component is in disabled state.
    *
    * **Note:** A disabled component is completely uninteractive.
@@ -98,7 +102,7 @@ export interface ComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
  */
 const ComboBox: FC<ComboBoxPropTypes> = withWebComponent<ComboBoxPropTypes>(
   'ui5-combobox',
-  ['accessibleName', 'filter', 'placeholder', 'value', 'valueState'],
+  ['accessibleName', 'accessibleNameRef', 'filter', 'placeholder', 'value', 'valueState'],
   ['disabled', 'loading', 'readonly', 'required'],
   ['icon', 'valueStateMessage'],
   ['change', 'input', 'selection-change']

@@ -8,6 +8,7 @@ import { Label } from '@ui5/webcomponents-react/dist/Label';
 import { AvatarSize } from '@ui5/webcomponents-react/dist/AvatarSize';
 import { Priority } from '@ui5/webcomponents-react/dist/Priority';
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
+import { WrappingType } from '@ui5/webcomponents-react/dist/WrappingType';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import '@ui5/webcomponents-icons/dist/employee.js';
 
@@ -109,7 +110,7 @@ The component can be used in a standard `List`.
             Short description
           </NotificationListItem>
           <NotificationListItem
-            wrap
+            wrap={WrappingType.Normal}
             heading="New high priority order (#2528) without close button"
             priority={Priority.High}
             avatar={

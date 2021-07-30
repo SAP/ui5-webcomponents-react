@@ -12,6 +12,10 @@ export interface InputPropTypes extends Omit<WithWebComponentPropTypes, 'onChang
    */
   accessibleName?: string;
   /**
+   * Receives id(or many ids) of the elements that label the input
+   */
+  accessibleNameRef?: string;
+  /**
    * Defines whether the component is in disabled state.
    *
    * **Note:** A disabled component is completely noninteractive.
@@ -95,8 +99,7 @@ export interface InputPropTypes extends Omit<WithWebComponentPropTypes, 'onChang
    *
    * **Note:** The `<SuggestionItem>` and `<SuggestionGroupItem>` are recommended to be used as suggestion items.
    *
-   * **Note:** Importing the Input Suggestions Support feature:
-   * `import "@ui5/webcomponents/dist/features/InputSuggestions.js";`
+   * **Note:** Importing the Input Suggestions Support feature: `import "@ui5/webcomponents/dist/features/InputSuggestions.js";`
    * automatically imports the `<SuggestionItem>` and `<SuggestionGroupItem>` for your convenience.
    */
   children?: ReactNode | ReactNode[];
@@ -156,7 +159,7 @@ export interface InputPropTypes extends Omit<WithWebComponentPropTypes, 'onChang
  */
 const Input: FC<InputPropTypes> = withWebComponent<InputPropTypes>(
   'ui5-input',
-  ['accessibleName', 'maxlength', 'name', 'placeholder', 'type', 'value', 'valueState'],
+  ['accessibleName', 'accessibleNameRef', 'maxlength', 'name', 'placeholder', 'type', 'value', 'valueState'],
   ['disabled', 'readonly', 'required', 'showSuggestions'],
   ['icon', 'valueStateMessage'],
   ['change', 'input', 'suggestion-item-preview', 'suggestion-item-select', 'suggestion-scroll']

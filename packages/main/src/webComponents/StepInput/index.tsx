@@ -11,6 +11,10 @@ export interface StepInputPropTypes extends Omit<WithWebComponentPropTypes, 'onC
    */
   accessibleName?: string;
   /**
+   * Receives id(or many ids) of the elements that label the component.
+   */
+  accessibleNameRef?: string;
+  /**
    * Determines whether the component is displayed as disabled.
    */
   disabled?: boolean;
@@ -93,7 +97,18 @@ export interface StepInputPropTypes extends Omit<WithWebComponentPropTypes, 'onC
  */
 const StepInput: FC<StepInputPropTypes> = withWebComponent<StepInputPropTypes>(
   'ui5-step-input',
-  ['accessibleName', 'max', 'min', 'name', 'placeholder', 'step', 'value', 'valuePrecision', 'valueState'],
+  [
+    'accessibleName',
+    'accessibleNameRef',
+    'max',
+    'min',
+    'name',
+    'placeholder',
+    'step',
+    'value',
+    'valuePrecision',
+    'valueState'
+  ],
   ['disabled', 'readonly', 'required'],
   ['valueStateMessage'],
   ['change']

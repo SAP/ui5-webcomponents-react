@@ -8,10 +8,6 @@ import '@ui5/webcomponents/dist/CheckBox';
 
 export interface CheckBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onChange'> {
   /**
-   * Sets the accessible aria name of the component.
-   */
-  accessibleName?: string;
-  /**
    * Defines if the component is checked.
    *
    * **Note:** The property can be changed with user interaction, either by cliking/tapping on the component, or by pressing the Enter or Space key.
@@ -89,7 +85,7 @@ export interface CheckBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
  */
 const CheckBox: FC<CheckBoxPropTypes> = withWebComponent<CheckBoxPropTypes>(
   'ui5-checkbox',
-  ['accessibleName', 'name', 'text', 'valueState', 'wrappingType'],
+  ['name', 'text', 'valueState', 'wrappingType'],
   ['checked', 'disabled', 'indeterminate', 'readonly'],
   [],
   ['change']
@@ -98,7 +94,6 @@ const CheckBox: FC<CheckBoxPropTypes> = withWebComponent<CheckBoxPropTypes>(
 CheckBox.displayName = 'CheckBox';
 
 CheckBox.defaultProps = {
-  accessibleName: undefined,
   checked: false,
   disabled: false,
   indeterminate: false,

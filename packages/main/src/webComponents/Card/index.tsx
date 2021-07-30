@@ -5,10 +5,6 @@ import '@ui5/webcomponents/dist/Card';
 
 export interface CardPropTypes extends WithWebComponentPropTypes {
   /**
-   * Sets the accessible aria name of the component.
-   */
-  accessibleName?: string;
-  /**
    * Defines the content of the component.
    */
   children?: ReactNode | ReactNode[];
@@ -32,7 +28,7 @@ export interface CardPropTypes extends WithWebComponentPropTypes {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Card" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Card: FC<CardPropTypes> = withWebComponent<CardPropTypes>('ui5-card', ['accessibleName'], [], ['header'], []);
+const Card: FC<CardPropTypes> = withWebComponent<CardPropTypes>('ui5-card', [], [], ['header'], []);
 
 Card.displayName = 'Card';
 

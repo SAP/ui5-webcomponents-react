@@ -13,6 +13,10 @@ export interface ListPropTypes extends WithWebComponentPropTypes {
    */
   accessibleName?: string;
   /**
+   * Receives id(or many ids) of the elements that label the input
+   */
+  accessibleNameRef?: string;
+  /**
    * Defines the accessible role of the component.
    *
    * **Note:** If you use notification list items, it's recommended to set `accessible-role="list"` for better accessibility.
@@ -144,6 +148,7 @@ const List: FC<ListPropTypes> = withWebComponent<ListPropTypes>(
   'ui5-list',
   [
     'accessibleName',
+    'accessibleNameRef',
     'accessibleRole',
     'busyDelay',
     'footerText',

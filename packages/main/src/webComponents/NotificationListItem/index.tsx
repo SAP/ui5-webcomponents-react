@@ -1,5 +1,6 @@
 import { Priority } from '@ui5/webcomponents-react/dist/Priority';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { WrappingType } from '@ui5/webcomponents-react/dist/WrappingType';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { FC, ReactNode } from 'react';
 
@@ -11,7 +12,7 @@ export interface NotificationListItemPropTypes extends WithWebComponentPropTypes
    *
    * **Note:** by default the `heading` and `decription`, and a `ShowMore/Less` button would be displayed.
    */
-  wrap?: boolean;
+  wrappingType?: WrappingType;
   /**
    * Defines if a busy indicator would be displayed over the item.
    */
@@ -98,8 +99,8 @@ export interface NotificationListItemPropTypes extends WithWebComponentPropTypes
  */
 const NotificationListItem: FC<NotificationListItemPropTypes> = withWebComponent<NotificationListItemPropTypes>(
   'ui5-li-notification',
-  ['busyDelay', 'heading', 'priority'],
-  ['wrap', 'busy', 'read', 'showClose', 'selected'],
+  ['wrappingType', 'busyDelay', 'heading', 'priority'],
+  ['busy', 'read', 'showClose', 'selected'],
   ['avatar', 'footnotes', 'actions'],
   ['close']
 );
@@ -107,7 +108,6 @@ const NotificationListItem: FC<NotificationListItemPropTypes> = withWebComponent
 NotificationListItem.displayName = 'NotificationListItem';
 
 NotificationListItem.defaultProps = {
-  wrap: false,
   busy: false,
   busyDelay: 1000,
   priority: Priority.None,

@@ -1,26 +1,26 @@
-import { FC } from 'react';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import { ReactNode } from 'react';
+import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { FC, ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/CardHeader';
 
-export interface CardHeaderPropTypes extends WithWebComponentPropTypes {
+export interface CardHeaderPropTypes extends Omit<WithWebComponentPropTypes, 'onClick'> {
   /**
-   * Defines if the component header would be interactive, e.g gets hover effect, gets focused and `headerPress` event is fired, when it is pressed.
+   * Defines if the component would be interactive, e.g gets hover effect, gets focus outline and `click` event is fired, when pressed.
    */
-  headerInteractive?: boolean;
+  interactive?: boolean;
   /**
-   * Defines the status displayed in the component header.
+   * Defines the status text.
    *
    * **Note:** If the `action` slot is set, the `status` will not be displayed, you can either have `action`, or `status`.
    */
   status?: string;
   /**
-   * Defines the subtitle displayed in the component header.
+   * Defines the subtitle text.
    */
   subtitleText?: string;
   /**
-   * Defines the title displayed in the component header.
+   * Defines the title text.
    */
   titleText?: string;
   /**
@@ -39,25 +39,31 @@ export interface CardHeaderPropTypes extends WithWebComponentPropTypes {
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
    */
   avatar?: ReactNode | ReactNode[];
+  /**
+   * Fired when the component is activated by mouse/tap or by using the Enter or Space key.
+   *
+   * **Note:** The event would be fired only if the `interactive` property is set to true.
+   */
+  onClick?: (event: Ui5CustomEvent<HTMLElement>) => void;
 }
 
 /**
- * The `CardHeader` is a component that represents information in the header slot of the `Card` component. The header can be used through several properties, such as: `titleText`, `subtitleText`, `status` and two slots: `avatar` and `action`.
+ * The `CardHeader` is a component, meant to be used as a header of the `Card` component. It displays valuable information, that can be defined with several properties, such as: `titleText`, `subtitleText`, `status` and two slots: `avatar` and `action`.
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/CardHeader" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const CardHeader: FC<CardHeaderPropTypes> = withWebComponent<CardHeaderPropTypes>(
   'ui5-card-header',
   ['status', 'subtitleText', 'titleText'],
-  ['headerInteractive'],
+  ['interactive'],
   ['action', 'avatar'],
-  []
+  ['click']
 );
 
 CardHeader.displayName = 'CardHeader';
 
 CardHeader.defaultProps = {
-  headerInteractive: false
+  interactive: false
 };
 
 export { CardHeader };

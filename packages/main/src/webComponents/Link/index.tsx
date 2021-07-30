@@ -7,9 +7,9 @@ import '@ui5/webcomponents/dist/Link';
 
 export interface LinkPropTypes extends Omit<WithWebComponentPropTypes, 'onClick'> {
   /**
-   * Sets the accessible aria name of the component.
+   * Receives id(or many ids) of the elements that label the input
    */
-  accessibleName?: string;
+  accessibleNameRef?: string;
   /**
    * Defines the component design.
    *
@@ -67,7 +67,7 @@ export interface LinkPropTypes extends Omit<WithWebComponentPropTypes, 'onClick'
  */
 const Link: FC<LinkPropTypes> = withWebComponent<LinkPropTypes>(
   'ui5-link',
-  ['accessibleName', 'design', 'href', 'target', 'wrappingType'],
+  ['accessibleNameRef', 'design', 'href', 'target', 'wrappingType'],
   ['disabled'],
   [],
   ['click']

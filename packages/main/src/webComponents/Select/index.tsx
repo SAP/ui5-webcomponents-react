@@ -11,6 +11,10 @@ export interface SelectPropTypes extends Omit<WithWebComponentPropTypes, 'onChan
    */
   accessibleName?: string;
   /**
+   * Receives id(or many ids) of the elements that label the select.
+   */
+  accessibleNameRef?: string;
+  /**
    * Defines whether the component is in disabled state.
    *
    * **Note:** A disabled component is noninteractive.
@@ -71,7 +75,7 @@ export interface SelectPropTypes extends Omit<WithWebComponentPropTypes, 'onChan
  */
 const Select: FC<SelectPropTypes> = withWebComponent<SelectPropTypes>(
   'ui5-select',
-  ['accessibleName', 'name', 'valueState'],
+  ['accessibleName', 'accessibleNameRef', 'name', 'valueState'],
   ['disabled', 'required'],
   ['valueStateMessage'],
   ['change']

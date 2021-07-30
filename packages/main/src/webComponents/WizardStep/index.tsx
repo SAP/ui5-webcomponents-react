@@ -9,6 +9,10 @@ export interface WizardStepPropTypes extends WithWebComponentPropTypes {
    */
   accessibleName?: boolean;
   /**
+   * Defines the aria-labelledby of the step.
+   */
+  accessibleNameRef?: boolean;
+  /**
    * When `branching` is enabled a dashed line would be displayed after the step, meant to indicate that the next step is not yet known and depends on user choice in the current step.
    *
    * **Note:** It is recommended to use `branching` on the last known step and later add new steps when it becomes clear how the wizard flow should continue.
@@ -62,7 +66,7 @@ export interface WizardStepPropTypes extends WithWebComponentPropTypes {
 const WizardStep: FC<WizardStepPropTypes> = withWebComponent<WizardStepPropTypes>(
   'ui5-wizard-step',
   ['icon', 'subtitleText', 'titleText'],
-  ['accessibleName', 'branching', 'disabled', 'selected'],
+  ['accessibleName', 'accessibleNameRef', 'branching', 'disabled', 'selected'],
   [],
   []
 );
@@ -71,6 +75,7 @@ WizardStep.displayName = 'WizardStep';
 
 WizardStep.defaultProps = {
   accessibleName: false,
+  accessibleNameRef: false,
   branching: false,
   disabled: false,
   selected: false

@@ -11,6 +11,10 @@ export interface TextAreaPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
    */
   accessibleName?: string;
   /**
+   * Receives id(or many ids) of the elements that label the textarea.
+   */
+  accessibleNameRef?: string;
+  /**
    * Indicates whether the user can interact with the component or not.
    *
    * **Note:** Disabled components cannot be focused and they are out of the tab chain.
@@ -117,7 +121,17 @@ export interface TextAreaPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
  */
 const TextArea: FC<TextAreaPropTypes> = withWebComponent<TextAreaPropTypes>(
   'ui5-textarea',
-  ['accessibleName', 'growingMaxLines', 'maxlength', 'name', 'placeholder', 'rows', 'value', 'valueState'],
+  [
+    'accessibleName',
+    'accessibleNameRef',
+    'growingMaxLines',
+    'maxlength',
+    'name',
+    'placeholder',
+    'rows',
+    'value',
+    'valueState'
+  ],
   ['disabled', 'growing', 'readonly', 'required', 'showExceededText'],
   ['valueStateMessage'],
   ['change', 'input']

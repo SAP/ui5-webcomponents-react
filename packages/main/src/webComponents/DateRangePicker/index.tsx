@@ -16,6 +16,10 @@ export interface DateRangePickerPropTypes extends Omit<WithWebComponentPropTypes
    */
   accessibleName?: string;
   /**
+   * Receives id(or many ids) of the elements that label the component.
+   */
+  accessibleNameRef?: string;
+  /**
    * Determines whether the component is displayed as disabled.
    */
   disabled?: boolean;
@@ -109,6 +113,7 @@ const DateRangePicker: FC<DateRangePickerPropTypes> = withWebComponent<DateRange
   [
     'delimiter',
     'accessibleName',
+    'accessibleNameRef',
     'name',
     'placeholder',
     'value',

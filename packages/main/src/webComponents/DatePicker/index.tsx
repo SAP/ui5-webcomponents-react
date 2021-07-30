@@ -12,6 +12,10 @@ export interface DatePickerPropTypes extends Omit<WithWebComponentPropTypes, 'on
    */
   accessibleName?: string;
   /**
+   * Receives id(or many ids) of the elements that label the component.
+   */
+  accessibleNameRef?: string;
+  /**
    * Determines whether the component is displayed as disabled.
    */
   disabled?: boolean;
@@ -104,6 +108,7 @@ const DatePicker: FC<DatePickerPropTypes> = withWebComponent<DatePickerPropTypes
   'ui5-date-picker',
   [
     'accessibleName',
+    'accessibleNameRef',
     'name',
     'placeholder',
     'value',
