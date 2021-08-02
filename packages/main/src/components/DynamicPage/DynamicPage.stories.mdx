@@ -78,8 +78,8 @@ import { useReducer, useState } from 'react';
             <Link>Page 5</Link>
           </Breadcrumbs>
         }
-        heading={<Title>Header Title</Title>}
-        subheading={<Label>This is a subheading</Label>}
+        header={<Title>Header Title</Title>}
+        subHeader={<Label>This is a sub header</Label>}
       >
         <Badge>Status: OK</Badge>
       </DynamicPageTitle>
@@ -221,7 +221,7 @@ import { useReducer, useState } from 'react';
                       <Link>Page 5</Link>
                     </Breadcrumbs>
                   }
-                  heading={
+                  header={
                     <VariantManagement
                       onSelect={selectVariant}
                       variantItems={[
@@ -231,7 +231,7 @@ import { useReducer, useState } from 'react';
                       selectedKey={headerVariant}
                     />
                   }
-                  subheading={<Label>This is a subheading</Label>}
+                  subHeader={<Label>This is a sub header</Label>}
                 >
                   <Badge>Status: OK</Badge>
                 </DynamicPageTitle>

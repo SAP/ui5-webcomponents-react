@@ -175,6 +175,11 @@ const renamingMap = {
   AnalyticalTable: {
     title: 'header'
   },
+  DynamicPageTitle: {
+    heading: 'header',
+    subheading: 'subHeader',
+    showSubheadingRight: 'showSubHeaderRight'
+  },
   Form: {
     title: 'titleText'
   },
