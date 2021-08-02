@@ -31,7 +31,10 @@ interface MeasureConfig extends Omit<IChartMeasure, 'color'> {
 }
 
 export interface MicroBarChartProps
-  extends Omit<IChartBaseProps, 'noLegend' | 'onLegendClick' | 'noAnimation' | 'chartConfig' | 'children'> {
+  extends Omit<
+    IChartBaseProps,
+    'noLegend' | 'onLegendClick' | 'noAnimation' | 'chartConfig' | 'children' | 'tooltipConfig'
+  > {
   /**
    * A object which contains the configuration of the dimension.
    *
@@ -131,7 +134,7 @@ const useStyles = createUseStyles(MicroBarChartStyles, { name: 'MicroBarChart' }
  * The `MicroBarChart` compares different values of the same category to each other by displaying them in a compact way.
  */
 const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartProps, ref: Ref<HTMLDivElement>) => {
-  const { loading, dataset, onDataPointClick, style, className, tooltip, slot } = props;
+  const { loading, dataset, onDataPointClick, style, className, tooltip, slot, ChartPlaceholder } = props;
   const classes = useStyles();
 
   const dimension = useMemo<IChartDimension>(
@@ -185,7 +188,7 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
     <ChartContainer
       dataset={dataset}
       loading={loading}
-      Placeholder={BarChartPlaceholder}
+      Placeholder={ChartPlaceholder ?? BarChartPlaceholder}
       ref={chartRef}
       style={style}
       className={className}

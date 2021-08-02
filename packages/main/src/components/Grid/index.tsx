@@ -54,8 +54,10 @@ export interface GridPropTypes extends CommonProps {
   children: ReactNode | ReactNodeArray;
 }
 
-const INDENT_PATTERN = /^([X][L](?<LargeDesktop>[0-9]|1[0-2]))? ?([L](?<Desktop>[0-9]|1[0-2]))? ?([M](?<Tablet>[0-9]|1[0-2]))? ?([S](?<Phone>[0-9]|1[0-2]))?$/i;
-const SPAN_PATTERN = /^([X][L](?<LargeDesktop>[1-9]|1[0-2]))? ?([L](?<Desktop>[1-9]|1[0-2]))? ?([M](?<Tablet>[1-9]|1[0-2]))? ?([S](?<Phone>[1-9]|1[0-2]))?$/i;
+const INDENT_PATTERN =
+  /^([X][L](?<LargeDesktop>[0-9]|1[0-2]))? ?([L](?<Desktop>[0-9]|1[0-2]))? ?([M](?<Tablet>[0-9]|1[0-2]))? ?([S](?<Phone>[0-9]|1[0-2]))?$/i;
+const SPAN_PATTERN =
+  /^([X][L](?<LargeDesktop>[1-9]|1[0-2]))? ?([L](?<Desktop>[1-9]|1[0-2]))? ?([M](?<Tablet>[1-9]|1[0-2]))? ?([S](?<Phone>[1-9]|1[0-2]))?$/i;
 
 const DefaultSpanMap = new Map();
 DefaultSpanMap.set('Phone', 1);
@@ -101,7 +103,7 @@ const useStyles = createUseStyles(styles, { name: 'Grid' });
 const Grid: FC<GridPropTypes> = forwardRef((props: GridPropTypes, ref: Ref<HTMLDivElement>) => {
   const { position, children, hSpacing, vSpacing, style, className, tooltip, slot, defaultIndent, defaultSpan } = props;
   const classes = useStyles();
-  const currentRange = useViewportRange('StdExt');
+  const currentRange = useViewportRange();
   const gridClasses = StyleClassHelper.of(classes.grid);
 
   if (GridPosition.Center === position) {

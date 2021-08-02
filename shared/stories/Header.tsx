@@ -2,16 +2,15 @@ import { Badge, FlexBox, FlexBoxAlignItems, Link, Text, Title, TitleLevel } from
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import React, { useContext } from 'react';
 import { GitHubLogo } from './GitHub-Mark';
-import { DocsContext } from '@storybook/addon-docs/blocks';
+import { DocsContext } from '@storybook/addon-docs';
 import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming';
 import { version as chartsVersion } from '../../packages/charts/package.json';
 import { version } from '../../packages/main/package.json';
 
 addCustomCSS('ui5-badge', ':host([data-lowercase]) .ui5-badge-text { text-transform: none; }');
 
-export const Header = (props) => {
+export const Header = () => {
   const docsContext = useContext(DocsContext);
-
   const isChart = docsContext.id.startsWith('charts-');
 
   return (

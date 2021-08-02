@@ -1,26 +1,14 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { RadioButton } from '@ui5/webcomponents-react/dist/RadioButton';
 import { Label } from '@ui5/webcomponents-react/dist/Label';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent } from '../..';
 
 <Meta
   title="Inputs / RadioButton"
   component={RadioButton}
-  argTypes={{
-    ...createSelectArgTypes({
-      valueState: {
-        Error: 'Error',
-        None: 'None',
-        Warning: 'Warning'
-      }
-    }),
-    ...DocsCommonProps
-  }}
   args={{
     valueState: ValueState.None,
     style: {},

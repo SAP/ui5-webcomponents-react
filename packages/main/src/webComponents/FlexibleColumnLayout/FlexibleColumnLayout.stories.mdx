@@ -1,11 +1,9 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { FlexibleColumnLayout } from '@ui5/webcomponents-react/dist/FlexibleColumnLayout';
 import { List } from '@ui5/webcomponents-react/dist/List';
 import { StandardListItem } from '@ui5/webcomponents-react/dist/StandardListItem';
 import { FCLLayout } from '@ui5/webcomponents-react/dist/FCLLayout';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 import { Avatar } from '@ui5/webcomponents-react/dist/Avatar';
 import { AvatarSize } from '@ui5/webcomponents-react/dist/AvatarSize';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
@@ -31,8 +29,6 @@ import { sapUiContentPadding } from '@ui5/webcomponents-react-base/dist/spacing'
   title="Layouts & Floorplans / FlexibleColumnLayout"
   component={FlexibleColumnLayout}
   argTypes={{
-    ...createSelectArgTypes({ layout: FCLLayout }),
-    ...DocsCommonProps,
     endColumn: { control: { disable: true } },
     midColumn: { control: { disable: true } },
     startColumn: { control: { disable: true } }

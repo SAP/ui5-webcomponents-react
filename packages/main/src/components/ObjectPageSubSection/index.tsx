@@ -11,7 +11,7 @@ export interface ObjectPageSubSectionPropTypes extends CommonProps {
   /**
    * Defines the title of the `ObjectPageSubSection`.
    */
-  title?: string;
+  titleText?: string;
   /**
    * Defines the ID of the `ObjectPageSubSection`.
    */
@@ -24,7 +24,6 @@ export interface ObjectPageSubSectionPropTypes extends CommonProps {
 
 const styles = {
   objectPageSubSection: {
-    padding: '1rem 0',
     '&:focus': {
       outline: `${ThemingParameters.sapContent_FocusWidth} ${ThemingParameters.sapContent_FocusStyle} ${ThemingParameters.sapContent_FocusColor}`,
       outlineOffset: `calc(-1 * ${ThemingParameters.sapContent_FocusWidth})`
@@ -36,7 +35,7 @@ const styles = {
     marginBottom: '0.5rem'
   },
   subSectionContent: {
-    padding: '1rem 2rem 3rem 0'
+    padding: '1rem 0 3rem 0'
   }
 };
 
@@ -47,7 +46,7 @@ const useStyles = createUseStyles(styles, { name: 'ObjectPageSubSection' });
  */
 const ObjectPageSubSection: FC<ObjectPageSubSectionPropTypes> = forwardRef(
   (props: ObjectPageSubSectionPropTypes, ref: RefObject<any>) => {
-    const { children, id, title, className, style, tooltip } = props;
+    const { children, id, titleText, className, style, tooltip } = props;
 
     if (!id) {
       throw new EmptyIdPropException('ObjectPageSubSection requires a unique ID property!');
@@ -67,25 +66,31 @@ const ObjectPageSubSection: FC<ObjectPageSubSectionPropTypes> = forwardRef(
     return (
       <div
         ref={htmlRef}
-        className={subSectionClassName.toString()}
         role="region"
         style={style}
         title={tooltip}
+        tabIndex={-1}
         {...passThroughProps}
+        className={subSectionClassName.toString()}
         id={htmlId}
-        data-component-name="ObjectPageSubSection"
       >
-        <div role="heading" aria-level={4} className={classes.objectPageSubSectionHeaderTitle}>
-          {title}
+        <div
+          role="heading"
+          aria-level={4}
+          className={classes.objectPageSubSectionHeaderTitle}
+          data-component-name="ObjectPageSubSectionTitleText"
+        >
+          {titleText}
         </div>
-        <div className={classes.subSectionContent}>{children}</div>
+        <div className={classes.subSectionContent} data-component-name="ObjectPageSubSectionContent">
+          {children}
+        </div>
       </div>
     );
   }
 );
 
 ObjectPageSubSection.defaultProps = {
-  title: null,
   // @ts-ignore
   isSubSection: true
 };
