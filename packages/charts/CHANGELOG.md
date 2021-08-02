@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.17.2...v0.17.3) (2021-08-02)
+
+
+### Features
+
+* **ColumnChartWithTrend:** initial component implementation ([#1824](https://github.com/SAP/ui5-webcomponents-react/issues/1824)) ([f8f069a](https://github.com/SAP/ui5-webcomponents-react/commit/f8f069a11621158490420d2b10de554e918f1a12))
+* **RadialChart:** add noAnimation prop ([#1877](https://github.com/SAP/ui5-webcomponents-react/issues/1877)) ([e3cd4c8](https://github.com/SAP/ui5-webcomponents-react/commit/e3cd4c8c388f21e5ba57de4ff3b88c96ca44d635))
+
+
+
+
+
 # [0.17.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.16.6...v0.17.0) (2021-07-15)
 
 
