@@ -50,8 +50,8 @@ const renderComponent = () => (
             <Link>Page 5</Link>
           </Breadcrumbs>
         }
-        heading={<Title>Header Title</Title>}
-        subheading={<Label>This is a subheading</Label>}
+        header={<Title>Header Title</Title>}
+        subHeader={<Label>This is a subheading</Label>}
       >
         <Badge>Status: OK</Badge>
       </DynamicPageTitle>
@@ -231,8 +231,8 @@ const renderComponentWithoutContent = () => (
             <Link>Page 5</Link>
           </Breadcrumbs>
         }
-        heading={<Title>Header Title</Title>}
-        subheading={<Label>This is a subheading</Label>}
+        header={<Title>Header Title</Title>}
+        subHeader={<Label>This is a subheading</Label>}
       >
         <Badge>Status: OK</Badge>
       </DynamicPageTitle>
@@ -280,8 +280,8 @@ const renderComponentWithAlwaysShowContentHeader = () => (
             <Link>Page 5</Link>
           </Breadcrumbs>
         }
-        heading={<Title>Header Title</Title>}
-        subheading={<Label>This is a subheading</Label>}
+        header={<Title>Header Title</Title>}
+        subHeader={<Label>This is a subheading</Label>}
       >
         <Badge>Status: OK</Badge>
       </DynamicPageTitle>
@@ -315,8 +315,8 @@ const renderComponentHideHeaderButton = () => (
           <Button design={ButtonDesign.Transparent}>Toggle Footer</Button>,
           <Button icon="action" design={ButtonDesign.Transparent}></Button>
         ]}
-        heading={<Title>Header Title</Title>}
-        subheading={<Label>This is a subheading</Label>}
+        header={<Title>Header Title</Title>}
+        subHeader={<Label>This is a subheading</Label>}
       />
     }
     headerContent={
