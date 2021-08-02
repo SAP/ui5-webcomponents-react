@@ -39,7 +39,7 @@ export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props: Obj
       ref={ref}
       data-index={index}
       data-section-id={section.props.id}
-      text={section.props.heading}
+      text={section.props.titleText}
       selected={selected || undefined}
       with-sub-sections={hasSubSections || undefined}
     />
