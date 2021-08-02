@@ -1,5 +1,5 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
-import { getTextWidth, truncateLongLabel, get } from '@ui5/webcomponents-react-charts/dist/Utils';
+import { getTextWidth, truncateLongLabel } from '@ui5/webcomponents-react-charts/dist/Utils';
 import React, { FC } from 'react';
 import { IChartMeasure } from '../interfaces/IChartMeasure';
 
