@@ -59,7 +59,7 @@ export interface MessageBoxPropTypes extends CommonProps {
   /**
    * A custom title for the MessageBox. If not present, it will be derived from the `MessageBox` type.
    */
-  title?: string;
+  titleText?: string;
   /**
    * Defines the content of the `MessageBox`.
    *
@@ -117,7 +117,7 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
     style,
     tooltip,
     slot,
-    title,
+    titleText,
     icon,
     actions,
     emphasizedAction,
@@ -165,8 +165,8 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
   };
 
   const titleToRender = () => {
-    if (title) {
-      return title;
+    if (titleText) {
+      return titleText;
     }
     switch (type) {
       case MessageBoxTypes.CONFIRM:
@@ -263,8 +263,6 @@ MessageBox.displayName = 'MessageBox';
 
 MessageBox.defaultProps = {
   open: false,
-  title: null,
-  icon: null,
   type: MessageBoxTypes.CONFIRM,
   emphasizedAction: MessageBoxActions.OK,
   actions: []

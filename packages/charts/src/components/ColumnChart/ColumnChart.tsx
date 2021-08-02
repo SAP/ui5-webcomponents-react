@@ -126,7 +126,9 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
     style,
     className,
     tooltip,
-    slot
+    slot,
+    ChartPlaceholder,
+    syncId
   } = props;
 
   const chartConfig = useMemo(() => {
@@ -203,7 +205,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
     <ChartContainer
       dataset={dataset}
       loading={loading}
-      Placeholder={ColumnChartPlaceholder}
+      Placeholder={ChartPlaceholder ?? ColumnChartPlaceholder}
       ref={chartRef}
       style={style}
       className={className}
@@ -213,6 +215,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
       {...passThroughProps}
     >
       <ColumnChartLib
+        syncId={syncId}
         onClick={onClickInternal}
         stackOffset="sign"
         margin={marginChart}

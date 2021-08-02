@@ -90,7 +90,8 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
     style,
     className,
     tooltip,
-    slot
+    slot,
+    ChartPlaceholder
   } = props;
 
   const chartConfig = useMemo(() => {
@@ -257,7 +258,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
       dataset={dataset}
       ref={chartRef}
       loading={loading}
-      Placeholder={PieChartPlaceholder}
+      Placeholder={ChartPlaceholder ?? PieChartPlaceholder}
       style={style}
       className={className}
       tooltip={tooltip}
