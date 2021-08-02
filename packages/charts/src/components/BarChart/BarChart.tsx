@@ -7,12 +7,14 @@ import { ChartDataLabel } from '@ui5/webcomponents-react-charts/dist/components/
 import { XAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/XAxisTicks';
 import { YAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/YAxisTicks';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/dist/useLegendItemClick';
-import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
+import { getCellColors } from '@ui5/webcomponents-react-charts/dist/Utils';
+import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import {
   Bar,
   BarChart as BarChartLib,
   Brush,
   CartesianGrid,
+  Cell,
   Label,
   LabelList,
   Legend,
@@ -66,6 +68,13 @@ interface MeasureConfig extends IChartMeasure {
    * @default undefined
    */
   stackId?: string;
+  /**
+   * Highlight color of defined elements
+   * @param value
+   * @param measure
+   * @param dataElement
+   */
+  highlightColor?: (value: number, measure: MeasureConfig, dataElement: Record<string, any>) => CSSProperties['color'];
 }
 
 interface DimensionConfig extends IChartDimension {
@@ -107,6 +116,7 @@ export interface BarChartProps extends IChartBaseProps {
    * - `width`: bar width, defaults to `auto`
    * - `opacity`: bar opacity, defaults to `1`
    * - `stackId`: bars with the same stackId will be stacked
+   * - `highlightColor`: defines a custom color of a specific element. Overwrites code>color</code> of the element.
    *
    */
   measures: MeasureConfig[];
@@ -279,6 +289,15 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
                 valueAccessor={valueAccessor(element.accessor)}
                 content={<ChartDataLabel config={element} chartType="bar" position={'insideRight'} />}
               />
+              {dataset.map((data, i) => {
+                return (
+                  <Cell
+                    key={i}
+                    fill={getCellColors(element, data, index)}
+                    stroke={getCellColors(element, data, index)}
+                  />
+                );
+              })}
             </Bar>
           );
         })}

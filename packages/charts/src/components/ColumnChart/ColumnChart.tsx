@@ -7,12 +7,14 @@ import { ChartDataLabel } from '@ui5/webcomponents-react-charts/dist/components/
 import { XAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/XAxisTicks';
 import { YAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/YAxisTicks';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/dist/useLegendItemClick';
-import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
+import { getCellColors } from '@ui5/webcomponents-react-charts/dist/Utils';
+import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import {
   Bar as Column,
   BarChart as ColumnChartLib,
   Brush,
   CartesianGrid,
+  Cell,
   Label,
   LabelList,
   Legend,
@@ -49,6 +51,13 @@ interface MeasureConfig extends IChartMeasure {
    * @default undefined
    */
   stackId?: string;
+  /**
+   * Highlight color of defined elements
+   * @param value
+   * @param measure
+   * @param dataElement
+   */
+  highlightColor?: (value: number, measure: MeasureConfig, dataElement: Record<string, any>) => CSSProperties['color'];
 }
 
 interface DimensionConfig extends IChartDimension {
@@ -90,6 +99,7 @@ export interface ColumnChartProps extends IChartBaseProps {
    * - `width`: column width, defaults to `auto`
    * - `opacity`: column opacity, defaults to `1`
    * - `stackId`: columns with the same stackId will be stacked
+   * - `highlightColor`: defines a custom color of a specific element. Overwrites code>color</code> of the element.
    *
    */
   measures: MeasureConfig[];
@@ -298,6 +308,15 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
                 valueAccessor={valueAccessor(element.accessor)}
                 content={<ChartDataLabel config={element} chartType="column" position={'insideTop'} />}
               />
+              {dataset.map((data, i) => {
+                return (
+                  <Cell
+                    key={i}
+                    fill={getCellColors(element, data, index)}
+                    stroke={getCellColors(element, data, index)}
+                  />
+                );
+              })}
             </Column>
           );
         })}
