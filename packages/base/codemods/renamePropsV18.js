@@ -183,7 +183,14 @@ const renamingMap = {
   },
   MessageBox: {
     title: 'titleText'
-  },  
+  },
+  ObjectPageSection: {
+    heading: 'titleText',
+    headingUppercase: 'titleTextUppercase'
+  },
+  ObjectPageSubSection: {
+    heading: 'titleText'
+  },
   VariantManagement: {
     popupTitle: 'titleText'
   }

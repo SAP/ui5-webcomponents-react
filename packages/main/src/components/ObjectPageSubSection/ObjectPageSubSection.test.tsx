@@ -10,7 +10,7 @@ describe('ObjectPageSubSection', () => {
   });
 
   test('No ID should throw', () => {
-    const renderer = () => render(<ObjectPageSubSection heading="test">Content</ObjectPageSubSection>);
+    const renderer = () => render(<ObjectPageSubSection titleText="test">Content</ObjectPageSubSection>);
     expect(renderer).toThrow();
   });
 
