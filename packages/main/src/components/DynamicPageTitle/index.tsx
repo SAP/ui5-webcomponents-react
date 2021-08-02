@@ -194,7 +194,7 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
       <FlexBox alignItems={FlexBoxAlignItems.Center} style={{ flexGrow: 1, width: '100%' }}>
         <FlexBox className={classes.titleMainSection}>
           {header && (
-            <div className={classes.title} data-component-name="DynamicPageTitleHeading">
+            <div className={classes.title} data-component-name="DynamicPageTitleHeader">
               {header}
             </div>
           )}
@@ -202,7 +202,7 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
             <div
               className={classes.subTitleRight}
               style={{ [paddingLeftRtl]: '0.5rem' }}
-              data-component-name="DynamicPageTitleSubheading"
+              data-component-name="DynamicPageTitleSubHeader"
             >
               {subHeader}
             </div>
@@ -235,7 +235,7 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
       </FlexBox>
       {subHeader && !showSubHeaderRight && (
         <FlexBox>
-          <div className={classes.subTitleBottom} data-component-name="DynamicPageTitleSubheading">
+          <div className={classes.subTitleBottom} data-component-name="DynamicPageTitleSubHeader">
             {subHeader}
           </div>
         </FlexBox>
