@@ -178,6 +178,9 @@ const renamingMap = {
   },
   MessageBox: {
     title: 'titleText'
+  },  
+  VariantManagement: {
+    popupTitle: 'titleText'
   }
 };
 
