@@ -31,7 +31,7 @@ export interface FormPropTypes extends CommonProps {
   /**
    * Form title
    */
-  title?: string;
+  titleText?: string;
   /**
    * Form columns for small size (`< 600px`).
    * Must be a number between 1 and 12.
@@ -103,7 +103,7 @@ const useStyles = createUseStyles(styles, { name: 'Form' });
  */
 const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLDivElement>) => {
   const {
-    title,
+    titleText,
     children,
     className,
     slot,
@@ -161,7 +161,7 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
 
   const [formGroups, updatedTitle] = useMemo(() => {
     const computedFormGroups: any[] = [];
-    if (Children.count(children) === 1 && !title) {
+    if (Children.count(children) === 1 && !titleText) {
       const singleChild = Array.isArray(children) ? children[0] : children;
       if (singleChild?.props?.title?.length > 0) {
         return [cloneElement(singleChild, { title: null }), singleChild.props.title];
@@ -170,7 +170,7 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
 
     const currentColumnCount = currentNumberOfColumns;
     if (currentColumnCount === 1) {
-      return [children, title];
+      return [children, titleText];
     }
 
     const rows = [];
@@ -214,15 +214,15 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
           paddingTop: '1rem'
         };
 
-        if (cell?.props?.title) {
+        if (cell?.props?.titleText) {
           computedFormGroups.push(
             <h6
               style={titleStyles}
-              title={cell.props.title}
-              aria-label={cell.props.title}
+              title={cell.props.titleText}
+              aria-label={cell.props.titleText}
               key={`title-col-${columnIndex}-row-${totalRowCount}`}
             >
-              {cell.props.title}
+              {cell.props.titleText}
             </h6>
           );
         }
@@ -254,8 +254,8 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
       }
     });
 
-    return [computedFormGroups, title];
-  }, [children, currentRange, title, currentNumberOfColumns, currentLabelSpan]);
+    return [computedFormGroups, titleText];
+  }, [children, currentRange, titleText, currentNumberOfColumns, currentLabelSpan]);
   const passThroughProps = usePassThroughHtmlProps(props);
 
   const formClassNames = StyleClassHelper.of(classes.form)
