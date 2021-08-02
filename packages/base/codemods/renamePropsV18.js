@@ -170,6 +170,12 @@ const renamingMap = {
   AnalyticalTable: {
     title: 'header'
   },
+  Form: {
+    title: 'titleText'
+  },
+  FormGroup: {
+    title: 'titleText'
+  },
   MessageBox: {
     title: 'titleText'
   }
