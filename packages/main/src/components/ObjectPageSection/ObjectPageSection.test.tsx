@@ -6,7 +6,7 @@ import React from 'react';
 describe('ObjectPageSection', () => {
   test('Renders with children', () => {
     const { asFragment } = render(
-      <ObjectPageSection id={'1'} heading="Test" headingUppercase>
+      <ObjectPageSection id={'1'} titleText="Test" titleTextUppercase>
         This is my Text
       </ObjectPageSection>
     );
@@ -15,7 +15,7 @@ describe('ObjectPageSection', () => {
 
   test('ObjectPage w/ lowercase title', () => {
     const { asFragment } = render(
-      <ObjectPageSection id={'1'} heading="Test" headingUppercase={false}>
+      <ObjectPageSection id={'1'} titleText="Test" titleTextUppercase={false}>
         This is my Text
       </ObjectPageSection>
     );
