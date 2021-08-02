@@ -175,6 +175,9 @@ const renamingMap = {
   },
   FormGroup: {
     title: 'titleText'
+  },
+  MessageBox: {
+    title: 'titleText'
   }
 };
 
