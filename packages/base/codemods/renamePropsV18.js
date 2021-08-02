@@ -167,8 +167,22 @@ const renamingMap = {
   },
 
   // UI5 Web Components React
+  AnalyticalCardHeader: {
+    title: 'titleText',
+    subTitle: 'subtitleText',
+    onHeaderClick: 'onClick'
+  },
   AnalyticalTable: {
     title: 'header'
+  },
+  Form: {
+    title: 'titleText'
+  },
+  FormGroup: {
+    title: 'titleText'
+  },
+  MessageBox: {
+    title: 'titleText'
   },
   ObjectPageSection: {
     heading: 'titleText',
@@ -176,6 +190,9 @@ const renamingMap = {
   },
   ObjectPageSubSection: {
     heading: 'titleText'
+  },
+  VariantManagement: {
+    popupTitle: 'titleText'
   }
 };
 
