@@ -17,6 +17,7 @@ import { AvatarSize } from './dist/AvatarSize';
 import { Badge } from './dist/Badge';
 import { Bar } from './dist/Bar';
 import { BarDesign } from './dist/BarDesign';
+import { BarcodeScannerDialog } from './dist/BarcodeScannerDialog';
 import { Breadcrumbs } from './dist/Breadcrumbs';
 import { BreadcrumbsSeparatorStyle } from './dist/BreadcrumbsSeparatorStyle';
 import { BusyIndicator } from './dist/BusyIndicator';
@@ -158,6 +159,7 @@ import { Themes } from './dist/Themes';
 import { TimePicker } from './dist/TimePicker';
 import { Timeline } from './dist/Timeline';
 import { TimelineItem } from './dist/TimelineItem';
+import { TimelineLayout } from './dist/TimelineLayout';
 import { Title } from './dist/Title';
 import { TitleLevel } from './dist/TitleLevel';
 import { Toast } from './dist/Toast';
@@ -198,6 +200,7 @@ export {
   Badge,
   Bar,
   BarDesign,
+  BarcodeScannerDialog,
   Breadcrumbs,
   BreadcrumbsSeparatorStyle,
   BusyIndicator,
@@ -339,6 +342,7 @@ export {
   TimePicker,
   Timeline,
   TimelineItem,
+  TimelineLayout,
   Title,
   TitleLevel,
   Toast,
