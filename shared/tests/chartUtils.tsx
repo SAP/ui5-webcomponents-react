@@ -5,13 +5,15 @@ import { fireEvent, screen } from '@shared/tests/index';
 enum ChartQuery {
   'BarChart' = 'g.recharts-bar',
   'ColumnChart' = 'g.recharts-bar',
+  'ComposedChart' = 'g.recharts-bar',
   'LineChart' = 'g.recharts-line',
   'MicroBarChart' = 'div[class^=MicroBarChart-container]'
 }
 
 enum ChartChildrenQuery {
-  'ColumnChart' = 'g.recharts-bar-rectangles',
   'BarChart' = 'g.recharts-bar-rectangles',
+  'ColumnChart' = 'g.recharts-bar-rectangles',
+  'ComposedChart' = 'g.recharts-bar-rectangles',
   'LineChart' = 'path',
   'MicroBarChart' = 'div[class^=MicroBarChart-valueBar]'
 }
@@ -23,19 +25,15 @@ export const createChartRenderTest = (Component: ComponentType<any>, props: {}) 
     const chartQueryType = ChartQuery[Component.displayName];
     const chartChildrenType = ChartChildrenQuery[Component.displayName];
 
-    if (Component.displayName !== 'ColumnChartWithTrend') {
-      // Check if a single responsive container is rendered
-      const responsiveContainers = container.querySelectorAll('div.recharts-responsive-container');
-      expect(responsiveContainers.length).toBe(1);
+    // Check if a single responsive container is rendered
+    const responsiveContainers = container.querySelectorAll('div.recharts-responsive-container');
+    expect(responsiveContainers.length).toBe(1);
 
-      // Check if a single chart is rendered
-      const chartContainer = container.querySelector(chartQueryType);
-      expect(chartContainer).toBeInTheDocument();
-      const chartChildrenContainer = chartContainer.querySelectorAll(chartChildrenType);
-      expect(chartChildrenContainer.length).toBeGreaterThanOrEqual(1);
-      const children = chartContainer.querySelectorAll(chartChildrenType);
-      expect(children.length).toBeGreaterThanOrEqual(1);
-    }
+    // Check if a single chart is rendered
+    const chartContainer = container.querySelector(chartQueryType);
+    expect(chartContainer).toBeInTheDocument();
+    const chartChildrenContainer = chartContainer.querySelectorAll(chartChildrenType);
+    expect(chartChildrenContainer.length).toBeGreaterThanOrEqual(1);
 
     // Check if snapshot matches render
     expect(asFragment()).toMatchSnapshot();
