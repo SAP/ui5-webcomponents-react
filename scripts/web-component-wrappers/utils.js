@@ -190,6 +190,12 @@ export const getEventTargetForComponent = (componentName) => {
 
 export const getDomRefTypingForComponent = (componentName) => {
   switch (componentName) {
+    case 'BarcodeScannerDialog':
+      return {
+        tsType: 'Ui5BarcodeScannerDialogDomRef',
+        importStatement:
+          "import { Ui5BarcodeScannerDialogDomRef } from '@ui5/webcomponents-react/interfaces/Ui5BarcodeScannerDialogDomRef';"
+      };
     case 'DatePicker':
     case 'DateRangePicker':
     case 'DateTimePicker':

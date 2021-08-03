@@ -1,6 +1,7 @@
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { Ui5BarcodeScannerDialogDomRef } from '@ui5/webcomponents-react/interfaces/Ui5BarcodeScannerDialogDomRef';
 
 import '@ui5/webcomponents-fiori/dist/BarcodeScannerDialog';
 
@@ -24,7 +25,7 @@ export interface BarcodeScannerDialogPropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/BarcodeScannerDialog" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const BarcodeScannerDialog = withWebComponent<BarcodeScannerDialogPropTypes>(
+const BarcodeScannerDialog = withWebComponent<BarcodeScannerDialogPropTypes, Ui5BarcodeScannerDialogDomRef>(
   'ui5-barcode-scanner-dialog',
   [],
   [],
