@@ -24,10 +24,6 @@ export interface NotificationListGroupItemPropTypes extends CommonProps {
    */
   busyDelay?: number;
   /**
-   * Defines the `heading` of the item.
-   */
-  heading?: string;
-  /**
    * Defines the `priority` of the item. Available options are:
    *
    * *   `None`
@@ -39,13 +35,17 @@ export interface NotificationListGroupItemPropTypes extends CommonProps {
   /**
    * Defines if the `notification` is new or has been already read.
    *
-   * **Note:** if set to `false` the `heading` has bold font, if set to true - it has a normal font.
+   * **Note:** if set to `false` the `titleText` has bold font, if set to true - it has a normal font.
    */
   read?: boolean;
   /**
    * Defines if the `close` button would be displayed.
    */
   showClose?: boolean;
+  /**
+   * Defines the `titleText` of the item.
+   */
+  titleText?: string;
   /**
    * Defines the selected state of the `ListItem`.
    */
@@ -79,7 +79,7 @@ export interface NotificationListGroupItemPropTypes extends CommonProps {
  *
  * *   `Toggle` button to expand and collapse the group
  * *   `Priority` icon to display the priority of the group
- * *   `Heading` to entitle the group
+ * *   `TitleText` to entitle the group
  * *   Custom actions - with the use of `NotificationAction`
  * *   Items of the group
  *
@@ -87,7 +87,7 @@ export interface NotificationListGroupItemPropTypes extends CommonProps {
  */
 const NotificationListGroupItem = withWebComponent<NotificationListGroupItemPropTypes>(
   'ui5-li-notification-group',
-  ['busyDelay', 'heading', 'priority'],
+  ['busyDelay', 'priority', 'titleText'],
   ['collapsed', 'showCounter', 'busy', 'read', 'showClose', 'selected'],
   ['actions'],
   ['toggle', 'close']

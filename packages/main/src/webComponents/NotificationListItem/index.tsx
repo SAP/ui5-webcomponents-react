@@ -9,9 +9,9 @@ import '@ui5/webcomponents-fiori/dist/NotificationListItem';
 
 export interface NotificationListItemPropTypes extends CommonProps {
   /**
-   * Defines if the `heading` and `description` should wrap, they truncate by default.
+   * Defines if the `titleText` and `description` should wrap, they truncate by default.
    *
-   * **Note:** by default the `heading` and `decription`, and a `ShowMore/Less` button would be displayed.
+   * **Note:** by default the `titleText` and `decription`, and a `ShowMore/Less` button would be displayed.
    */
   wrappingType?: WrappingType;
   /**
@@ -22,10 +22,6 @@ export interface NotificationListItemPropTypes extends CommonProps {
    * Defines the delay in milliseconds, after which the busy indicator will show up for this component.
    */
   busyDelay?: number;
-  /**
-   * Defines the `heading` of the item.
-   */
-  heading?: string;
   /**
    * Defines the `priority` of the item. Available options are:
    *
@@ -38,13 +34,17 @@ export interface NotificationListItemPropTypes extends CommonProps {
   /**
    * Defines if the `notification` is new or has been already read.
    *
-   * **Note:** if set to `false` the `heading` has bold font, if set to true - it has a normal font.
+   * **Note:** if set to `false` the `titleText` has bold font, if set to true - it has a normal font.
    */
   read?: boolean;
   /**
    * Defines if the `close` button would be displayed.
    */
   showClose?: boolean;
+  /**
+   * Defines the `titleText` of the item.
+   */
+  titleText?: string;
   /**
    * Defines the selected state of the `ListItem`.
    */
@@ -89,18 +89,18 @@ export interface NotificationListItemPropTypes extends CommonProps {
 
 /**
  * The `NotificationListItem` is a type of list item, meant to display notifications.
- * The component has a rich set of various properties that allows the user to set `avatar`, `heading`, descriptive `content` and `footnotes` to fully describe a notification.
+ * The component has a rich set of various properties that allows the user to set `avatar`, `titleText`, descriptive `content` and `footnotes` to fully describe a notification.
  * The user can:
  *
  * *   display a `Close` button
- * *   can control whether the `heading` and `description` should wrap or truncate and display a `ShowMore` button to switch between less and more information
+ * *   can control whether the `titleText` and `description` should wrap or truncate and display a `ShowMore` button to switch between less and more information
  * *   add custom actions by using the `NotificationAction` component
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/NotificationListItem" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const NotificationListItem = withWebComponent<NotificationListItemPropTypes>(
   'ui5-li-notification',
-  ['wrappingType', 'busyDelay', 'heading', 'priority'],
+  ['wrappingType', 'busyDelay', 'priority', 'titleText'],
   ['busy', 'read', 'showClose', 'selected'],
   ['avatar', 'footnotes', 'actions'],
   ['close']

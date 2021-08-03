@@ -23,7 +23,7 @@ import '@ui5/webcomponents-icons/dist/employee.js';
     actions: { control: { disable: true } }
   }}
   args={{
-    heading:
+    titleText:
       'New order (#2525) With a very long title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat, turpis vel scelerisque pharetra, tellus odio vehicula dolor, nec elementum lectus turpis at nunc.',
     priority: Priority.None,
     children:
@@ -90,7 +90,7 @@ The component can be used in a standard `List`.
             showClose
             avatar={<Avatar size={AvatarSize.XS} icon="employee" />}
             footnotes={<Label>3 Days</Label>}
-            heading="New order (#2526) with multiple NotificationAction buttons and close button"
+            titleText="New order (#2526) with multiple NotificationAction buttons and close button"
             actions={
               <>
                 <NotificationAction design={ButtonDesign.Transparent} text="Accept All Requested Information" />
@@ -103,7 +103,7 @@ The component can be used in a standard `List`.
           <NotificationListItem
             avatar={<Avatar size={AvatarSize.XS} icon="employee" colorScheme={AvatarColorScheme.Accent1} />}
             footnotes={<Label>3 Days</Label>}
-            heading="New order (#2527) with single NotificationAction and close button"
+            titleText="New order (#2527) with single NotificationAction and close button"
             showClose
             actions={<NotificationAction design={ButtonDesign.Transparent} text="Accept All Requested Information" />}
           >
@@ -111,7 +111,7 @@ The component can be used in a standard `List`.
           </NotificationListItem>
           <NotificationListItem
             wrap={WrappingType.Normal}
-            heading="New high priority order (#2528) without close button"
+            titleText="New high priority order (#2528) without close button"
             priority={Priority.High}
             avatar={
               <Avatar size={AvatarSize.XS}>
