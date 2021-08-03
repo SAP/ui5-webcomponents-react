@@ -21,7 +21,7 @@ describe('DonutChart', () => {
 
   createOnClickChartTest(DonutChart, { dimension, measure, dataset: simpleDataSet });
 
-  createLoadingPlaceholderTest(DonutChart, { measures: {}, dimensions: {}, noLegend: true });
+  createLoadingPlaceholderTest(DonutChart, { measures: {}, dimensions: {} });
 
   createOnLegendClickNotCrashTest(DonutChart, { dataset: simpleDataSet, dimension, measure });
 

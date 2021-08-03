@@ -1,37 +1,39 @@
-import { render } from '@shared/tests';
 import { ScatterChart } from '@ui5/webcomponents-react-charts/dist/ScatterChart';
 import * as React from 'react';
 import { scatterComplexDataSet } from '../../resources/DemoProps';
+import {
+  createChartRenderTest,
+  createLoadingPlaceholderTest,
+  createOnClickChartTest,
+  createOnLegendClickNotCrashTest
+} from '@shared/tests/chartUtils';
+import { createPassThroughPropsTest } from '@shared/tests/utils';
+
+const measures = [
+  {
+    accessor: 'users',
+    label: 'Number',
+    axis: 'x'
+  },
+  {
+    accessor: 'sessions',
+    label: 'Sessions',
+    axis: 'y'
+  },
+  {
+    accessor: 'volume',
+    axis: 'z'
+  }
+];
 
 describe('Scatter Chart', () => {
-  test('Renders with data', () => {
-    const utils = render(
-      <ScatterChart
-        dataset={scatterComplexDataSet}
-        style={{ width: '100%' }}
-        measures={[
-          {
-            accessor: 'users',
-            label: 'Users',
-            axis: 'x'
-          },
-          {
-            accessor: 'sessions',
-            label: 'Sessions',
-            axis: 'y'
-          },
-          {
-            accessor: 'volume',
-            axis: 'z'
-          }
-        ]}
-      />
-    );
-    expect(utils.asFragment()).toMatchSnapshot();
-  });
+  createChartRenderTest(ScatterChart, { dataset: scatterComplexDataSet, measures });
 
-  test('loading placeholder', () => {
-    const wrapper = render(<ScatterChart style={{ width: '30%' }} measures={[]} />);
-    expect(wrapper.asFragment()).toMatchSnapshot();
-  });
+  createOnClickChartTest(ScatterChart, { dataset: scatterComplexDataSet, measures, noLegend: true });
+
+  createOnLegendClickNotCrashTest(ScatterChart, { dataset: scatterComplexDataSet, measures });
+
+  createLoadingPlaceholderTest(ScatterChart, { measures: [] });
+
+  createPassThroughPropsTest(ScatterChart, { dataset: scatterComplexDataSet, measures });
 });

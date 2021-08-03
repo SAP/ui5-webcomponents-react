@@ -9,7 +9,10 @@ enum ChartQuery {
   'DonutChart' = 'g.recharts-pie',
   'PieChart' = 'g.recharts-pie',
   'LineChart' = 'g.recharts-line',
-  'MicroBarChart' = 'div[class^=MicroBarChart-container]'
+  'MicroBarChart' = 'div[class^=MicroBarChart-container]',
+  'RadarChart' = 'g.recharts-radar',
+  'RadialChart' = 'g.recharts-area',
+  'ScatterChart' = 'g.recharts-scatter'
 }
 
 enum ChartChildrenQuery {
@@ -19,7 +22,10 @@ enum ChartChildrenQuery {
   'DonutChart' = 'g.recharts-pie-sector',
   'PieChart' = 'g.recharts-pie-sector',
   'LineChart' = 'path',
-  'MicroBarChart' = 'div[class^=MicroBarChart-valueBar]'
+  'MicroBarChart' = 'div[class^=MicroBarChart-valueBar]',
+  'RadarChart' = 'g.recharts-radar-polygon',
+  'RadialChart' = 'g.recharts-radial-bar-sectors',
+  'ScatterChart' = 'path'
 }
 
 export const createChartRenderTest = (Component: ComponentType<any>, props: {}) => {
@@ -78,9 +84,11 @@ export const createOnClickChartTest = (Component: ComponentType<any>, props: Rec
     const chartChildrenType = ChartChildrenQuery[Component.displayName];
 
     // Check if click on axis label is working
-    const firstYAxisLabel = screen.getByText(/January/);
-    fireEvent.click(firstYAxisLabel);
-    expect(onClick).toBeCalled();
+    if (Component.displayName !== 'RadialChart' && Component.displayName !== 'ScatterChart') {
+      const firstYAxisLabel = screen.getByText(/January/);
+      fireEvent.click(firstYAxisLabel);
+      expect(onClick).toBeCalled();
+    }
 
     // Check if click in chart container is working
     fireEvent.click(container.querySelector(chartQueryType));
@@ -90,8 +98,10 @@ export const createOnClickChartTest = (Component: ComponentType<any>, props: Rec
     fireEvent.click(container.querySelector(chartChildrenType));
     expect(onClick).toBeCalled();
 
-    if (props.noLegend) {
-      fireEvent.click(screen.getByText('Users'));
+    if (!props.noLegend) {
+      const legendElement =
+        Component.displayName === 'DonutChart' || Component.displayName === 'PieChart' ? /January/ : 'Users';
+      fireEvent.click(screen.getByText(legendElement));
       expect(onLegendClick).toBeCalled();
       expect(onLegendClick.mock.calls[0][0].detail.dataKey).toEqual('users');
     }

@@ -4,6 +4,8 @@ import { useCallback } from 'react';
 export const useLegendItemClick = (handler, dataKeyExtractor?) => {
   return useCallback(
     (payload, index, event) => {
+      console.log(payload);
+      console.log(event);
       if (typeof handler === 'function') {
         const dataKeyExtractorInternal = typeof dataKeyExtractor === 'function' ? dataKeyExtractor : (e?) => e?.dataKey;
         handler(

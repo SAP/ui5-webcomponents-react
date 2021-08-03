@@ -21,7 +21,7 @@ describe('PieChart', () => {
 
   createOnClickChartTest(PieChart, { dimension, measure, dataset: simpleDataSet });
 
-  createLoadingPlaceholderTest(PieChart, { measures: {}, dimensions: {}, noLegend: true });
+  createLoadingPlaceholderTest(PieChart, { measures: {}, dimensions: {} });
 
   createOnLegendClickNotCrashTest(PieChart, { dataset: simpleDataSet, dimension, measure });
 

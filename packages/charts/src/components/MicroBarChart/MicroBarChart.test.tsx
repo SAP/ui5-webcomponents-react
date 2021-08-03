@@ -118,7 +118,7 @@ describe('Micro Bar Chart', () => {
 
   createOnClickChartTest(MicroBarChart, {
     dataset,
-    noLegend: false,
+    noLegend: true,
     measures: {
       accessor: 'value'
     },
