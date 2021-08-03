@@ -6,6 +6,8 @@ enum ChartQuery {
   'BarChart' = 'g.recharts-bar',
   'ColumnChart' = 'g.recharts-bar',
   'ComposedChart' = 'g.recharts-bar',
+  'DonutChart' = 'g.recharts-pie',
+  'PieChart' = 'g.recharts-pie',
   'LineChart' = 'g.recharts-line',
   'MicroBarChart' = 'div[class^=MicroBarChart-container]'
 }
@@ -14,12 +16,36 @@ enum ChartChildrenQuery {
   'BarChart' = 'g.recharts-bar-rectangles',
   'ColumnChart' = 'g.recharts-bar-rectangles',
   'ComposedChart' = 'g.recharts-bar-rectangles',
+  'DonutChart' = 'g.recharts-pie-sector',
+  'PieChart' = 'g.recharts-pie-sector',
   'LineChart' = 'path',
   'MicroBarChart' = 'div[class^=MicroBarChart-valueBar]'
 }
 
 export const createChartRenderTest = (Component: ComponentType<any>, props: {}) => {
   it('Render chart with data', () => {
+    const { asFragment, container } = render(<Component {...props} />);
+
+    const chartQueryType = ChartQuery[Component.displayName];
+    const chartChildrenType = ChartChildrenQuery[Component.displayName];
+
+    // Check if a single responsive container is rendered
+    const responsiveContainers = container.querySelectorAll('div.recharts-responsive-container');
+    expect(responsiveContainers.length).toBe(1);
+
+    // Check if a single chart is rendered
+    const chartContainer = container.querySelector(chartQueryType);
+    expect(chartContainer).toBeInTheDocument();
+    const chartChildrenContainer = chartContainer.querySelectorAll(chartChildrenType);
+    expect(chartChildrenContainer.length).toBeGreaterThanOrEqual(1);
+
+    // Check if snapshot matches render
+    expect(asFragment()).toMatchSnapshot();
+  });
+};
+
+export const createCircleChartRenderTest = (Component: ComponentType<any>, props: {}) => {
+  it('Render circle chart with data', () => {
     const { asFragment, container } = render(<Component {...props} />);
 
     const chartQueryType = ChartQuery[Component.displayName];
@@ -100,8 +126,11 @@ export const createOnLegendClickNotCrashTest = (Component: ComponentType<any>, p
   it('onLegendClick should not crash when invalid handler is provided', () => {
     const { asFragment } = render(<Component onLegendClick={'123' as any} {...props} />);
 
+    const legendElement =
+      Component.displayName === 'DonutChart' || Component.displayName === 'PieChart' ? /January/ : 'Users';
+
     expect(() => {
-      fireEvent.click(screen.getByText('Users'));
+      fireEvent.click(screen.getByText(legendElement));
     }).not.toThrow();
 
     // Check if snapshot matches render
