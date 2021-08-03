@@ -136,6 +136,7 @@ export const getTypeDefinitionForProperty = (property, interfaces) => {
     case 'TableGrowingMode':
     case 'TableMode':
     case 'TableRowType':
+    case 'TimelineLayout':
     case 'TitleLevel':
     case 'ToastPlacement':
     case 'UploadState':
