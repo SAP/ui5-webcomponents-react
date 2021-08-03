@@ -187,12 +187,65 @@ export const getEventTargetForComponent = (componentName) => {
   }
 };
 
+export const getDomRefTypingForComponent = (componentName) => {
+  switch (componentName) {
+    case 'DatePicker':
+    case 'DateRangePicker':
+    case 'DateTimePicker':
+      return {
+        tsType: 'Ui5DatePickerDomRef',
+        importStatement:
+          "import { Ui5DatePickerDomRef } from '@ui5/webcomponents-react/interfaces/Ui5DatePickerDomRef';"
+      };
+    case 'Dialog':
+      return {
+        tsType: 'Ui5DialogDomRef',
+        importStatement: "import { Ui5DialogDomRef } from '@ui5/webcomponents-react/interfaces/Ui5DialogDomRef';"
+      };
+    case 'Input':
+    case 'MultiInput':
+      return {
+        tsType: 'Ui5InputDomRef',
+        importStatement: "import { Ui5InputDomRef } from '@ui5/webcomponents-react/interfaces/Ui5InputDomRef';"
+      };
+    case 'DurationPicker':
+      return {
+        tsType: 'Ui5PickerDomRef',
+        importStatement: "import { Ui5PickerDomRef } from '@ui5/webcomponents-react/interfaces/Ui5PickerDomRef';"
+      };
+    case 'Popover':
+      return {
+        tsType: 'Ui5PopoverDomRef',
+        importStatement: "import { Ui5PopoverDomRef } from '@ui5/webcomponents-react/interfaces/Ui5PopoverDomRef';"
+      };
+    case 'ResponsivePopover':
+      return {
+        tsType: 'Ui5ResponsivePopoverDomRef',
+        importStatement:
+          "import { Ui5ResponsivePopoverDomRef } from '@ui5/webcomponents-react/interfaces/Ui5ResponsivePopoverDomRef';"
+      };
+    case 'ShellBar':
+      return {
+        tsType: 'Ui5ShellBarDomRef',
+        importStatement: "import { Ui5ShellBarDomRef } from '@ui5/webcomponents-react/interfaces/Ui5ShellBarDomRef';"
+      };
+    case 'Tree':
+      return {
+        tsType: 'Ui5TreeDomRef',
+        importStatement: "import { Ui5TreeDomRef } from '@ui5/webcomponents-react/interfaces/Ui5TreeDomRef';"
+      };
+    default:
+      return null;
+  }
+};
+
 export const runEsLint = async (text, name) => {
   const [result] = await eslint.lintText(text, {
     filePath: `packages/main/src/webComponents/${name}/index.tsx`
   });
   if (result.messages.length) {
     console.warn(`Failed to run ESLint for '${name}! Please check the file manually.'`);
+    console.warn(...result.messages);
     return text;
   }
   return result.output;
