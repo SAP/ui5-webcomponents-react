@@ -1,12 +1,13 @@
 import { Priority } from '@ui5/webcomponents-react/dist/Priority';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { WrappingType } from '@ui5/webcomponents-react/dist/WrappingType';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/NotificationListItem';
 
-export interface NotificationListItemPropTypes extends WithWebComponentPropTypes {
+export interface NotificationListItemPropTypes extends CommonProps {
   /**
    * Defines if the `heading` and `description` should wrap, they truncate by default.
    *
@@ -97,7 +98,7 @@ export interface NotificationListItemPropTypes extends WithWebComponentPropTypes
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/NotificationListItem" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const NotificationListItem: FC<NotificationListItemPropTypes> = withWebComponent<NotificationListItemPropTypes>(
+const NotificationListItem = withWebComponent<NotificationListItemPropTypes>(
   'ui5-li-notification',
   ['wrappingType', 'busyDelay', 'heading', 'priority'],
   ['busy', 'read', 'showClose', 'selected'],

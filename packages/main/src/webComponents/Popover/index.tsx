@@ -1,13 +1,15 @@
 import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/dist/PopoverHorizontalAlign';
 import { PopoverPlacementType } from '@ui5/webcomponents-react/dist/PopoverPlacementType';
 import { PopoverVerticalAlign } from '@ui5/webcomponents-react/dist/PopoverVerticalAlign';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { FC, ReactNode } from 'react';
+import { Ui5PopoverDomRef } from '@ui5/webcomponents-react/interfaces/Ui5PopoverDomRef';
+import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Popover';
 
-export interface PopoverPropTypes extends WithWebComponentPropTypes {
+export interface PopoverPropTypes extends CommonProps {
   /**
    * Determines if there is no enough space, the component can be placed over the target.
    */
@@ -116,7 +118,7 @@ export interface PopoverPropTypes extends WithWebComponentPropTypes {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Popover" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Popover: FC<PopoverPropTypes> = withWebComponent<PopoverPropTypes>(
+const Popover = withWebComponent<PopoverPropTypes, Ui5PopoverDomRef>(
   'ui5-popover',
   ['headerText', 'horizontalAlign', 'placementType', 'verticalAlign', 'accessibleName', 'initialFocus'],
   ['allowTargetOverlap', 'hideArrow', 'hideBackdrop', 'modal', 'preventFocusRestore'],

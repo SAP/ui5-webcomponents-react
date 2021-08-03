@@ -1,10 +1,11 @@
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { WrappingType } from '@ui5/webcomponents-react/dist/WrappingType';
-import { FC, ReactNode } from 'react';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Label';
 
-export interface LabelPropTypes extends WithWebComponentPropTypes {
+export interface LabelPropTypes extends CommonProps {
   /**
    * Defines the labeled input by providing its ID.
    *
@@ -44,13 +45,7 @@ export interface LabelPropTypes extends WithWebComponentPropTypes {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Label" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Label: FC<LabelPropTypes> = withWebComponent<LabelPropTypes>(
-  'ui5-label',
-  ['for', 'wrappingType'],
-  ['required', 'showColon'],
-  [],
-  []
-);
+const Label = withWebComponent<LabelPropTypes>('ui5-label', ['for', 'wrappingType'], ['required', 'showColon'], [], []);
 
 Label.displayName = 'Label';
 

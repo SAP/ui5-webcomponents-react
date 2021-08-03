@@ -1,10 +1,11 @@
 import { TableRowType } from '@ui5/webcomponents-react/dist/TableRowType';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import { FC, ReactNode } from 'react';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/TableRow';
 
-export interface TableRowPropTypes extends WithWebComponentPropTypes {
+export interface TableRowPropTypes extends CommonProps {
   /**
    * Defines the row's selected state.
    */
@@ -35,13 +36,7 @@ export interface TableRowPropTypes extends WithWebComponentPropTypes {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/TableRow" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const TableRow: FC<TableRowPropTypes> = withWebComponent<TableRowPropTypes>(
-  'ui5-table-row',
-  ['type'],
-  ['selected'],
-  [],
-  []
-);
+const TableRow = withWebComponent<TableRowPropTypes>('ui5-table-row', ['type'], ['selected'], [], []);
 
 TableRow.displayName = 'TableRow';
 

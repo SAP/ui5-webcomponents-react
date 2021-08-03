@@ -1,10 +1,11 @@
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/CardHeader';
 
-export interface CardHeaderPropTypes extends Omit<WithWebComponentPropTypes, 'onClick'> {
+export interface CardHeaderPropTypes extends Omit<CommonProps, 'onClick'> {
   /**
    * Defines if the component would be interactive, e.g gets hover effect, gets focus outline and `click` event is fired, when pressed.
    */
@@ -52,7 +53,7 @@ export interface CardHeaderPropTypes extends Omit<WithWebComponentPropTypes, 'on
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/CardHeader" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const CardHeader: FC<CardHeaderPropTypes> = withWebComponent<CardHeaderPropTypes>(
+const CardHeader = withWebComponent<CardHeaderPropTypes>(
   'ui5-card-header',
   ['status', 'subtitleText', 'titleText'],
   ['interactive'],

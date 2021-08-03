@@ -1,12 +1,14 @@
 import { InputType } from '@ui5/webcomponents-react/dist/InputType';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { ReactNode, FC } from 'react';
+import { Ui5InputDomRef } from '@ui5/webcomponents-react/interfaces/Ui5InputDomRef';
+import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/MultiInput';
 
-export interface MultiInputPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput'> {
+export interface MultiInputPropTypes extends Omit<CommonProps, 'onChange' | 'onInput'> {
   /**
    * Determines whether a value help icon will be should in the end of the input. Pressing the icon will fire `value-help-trigger` event.
    */
@@ -177,7 +179,7 @@ export interface MultiInputPropTypes extends Omit<WithWebComponentPropTypes, 'on
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/MultiInput" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const MultiInput: FC<MultiInputPropTypes> = withWebComponent<MultiInputPropTypes>(
+const MultiInput = withWebComponent<MultiInputPropTypes, Ui5InputDomRef>(
   'ui5-multi-input',
   ['accessibleName', 'accessibleNameRef', 'maxlength', 'name', 'placeholder', 'type', 'value', 'valueState'],
   ['showValueHelpIcon', 'disabled', 'readonly', 'required', 'showSuggestions'],

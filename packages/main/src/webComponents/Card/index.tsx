@@ -1,9 +1,10 @@
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import { FC, ReactNode } from 'react';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Card';
 
-export interface CardPropTypes extends WithWebComponentPropTypes {
+export interface CardPropTypes extends CommonProps {
   /**
    * Defines the content of the component.
    */
@@ -28,7 +29,7 @@ export interface CardPropTypes extends WithWebComponentPropTypes {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Card" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Card: FC<CardPropTypes> = withWebComponent<CardPropTypes>('ui5-card', [], [], ['header'], []);
+const Card = withWebComponent<CardPropTypes>('ui5-card', [], [], ['header'], []);
 
 Card.displayName = 'Card';
 

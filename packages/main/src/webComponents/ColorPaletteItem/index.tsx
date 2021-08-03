@@ -1,9 +1,10 @@
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import { FC, CSSProperties } from 'react';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { CSSProperties } from 'react';
 
 import '@ui5/webcomponents/dist/ColorPaletteItem';
 
-export interface ColorPaletteItemPropTypes extends WithWebComponentPropTypes {
+export interface ColorPaletteItemPropTypes extends CommonProps {
   /**
    * Defines the colour of the component.
    *
@@ -17,13 +18,7 @@ export interface ColorPaletteItemPropTypes extends WithWebComponentPropTypes {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/ColorPaletteItem" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const ColorPaletteItem: FC<ColorPaletteItemPropTypes> = withWebComponent<ColorPaletteItemPropTypes>(
-  'ui5-color-palette-item',
-  ['value'],
-  [],
-  [],
-  []
-);
+const ColorPaletteItem = withWebComponent<ColorPaletteItemPropTypes>('ui5-color-palette-item', ['value'], [], [], []);
 
 ColorPaletteItem.displayName = 'ColorPaletteItem';
 

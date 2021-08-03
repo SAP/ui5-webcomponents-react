@@ -1,9 +1,9 @@
-import { FC } from 'react';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 
 import '@ui5/webcomponents/dist/SuggestionGroupItem';
 
-export interface SuggestionGroupItemPropTypes extends WithWebComponentPropTypes {
+export interface SuggestionGroupItemPropTypes extends CommonProps {
   /**
    * Defines the text of the `SuggestionGroupItem`.
    */
@@ -15,7 +15,7 @@ export interface SuggestionGroupItemPropTypes extends WithWebComponentPropTypes 
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/SuggestionGroupItem" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const SuggestionGroupItem: FC<SuggestionGroupItemPropTypes> = withWebComponent<SuggestionGroupItemPropTypes>(
+const SuggestionGroupItem = withWebComponent<SuggestionGroupItemPropTypes>(
   'ui5-suggestion-group-item',
   ['text'],
   [],

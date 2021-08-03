@@ -1,12 +1,13 @@
 import { ListItemType } from '@ui5/webcomponents-react/dist/ListItemType';
 import { UploadState } from '@ui5/webcomponents-react/dist/UploadState';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/UploadCollectionItem';
 
-export interface UploadCollectionItemPropTypes extends WithWebComponentPropTypes {
+export interface UploadCollectionItemPropTypes extends CommonProps {
   /**
    * Disables the delete button.
    */
@@ -99,7 +100,7 @@ export interface UploadCollectionItemPropTypes extends WithWebComponentPropTypes
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/UploadCollectionItem" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const UploadCollectionItem: FC<UploadCollectionItemPropTypes> = withWebComponent<UploadCollectionItemPropTypes>(
+const UploadCollectionItem = withWebComponent<UploadCollectionItemPropTypes>(
   'ui5-upload-collection-item',
   ['file', 'fileName', 'progress', 'uploadState', 'type'],
   ['disableDeleteButton', 'fileNameClickable', 'hideRetryButton', 'hideTerminateButton', 'selected'],

@@ -1,9 +1,10 @@
-import { FC, MouseEventHandler, ReactNode } from 'react';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { ReactNode, MouseEventHandler } from 'react';
 
 import '@ui5/webcomponents/dist/SegmentedButtonItem';
 
-export interface SegmentedButtonItemPropTypes extends Omit<WithWebComponentPropTypes, 'onClick'> {
+export interface SegmentedButtonItemPropTypes extends Omit<CommonProps, 'onClick'> {
   /**
    * Determines whether the component is displayed as pressed.
    */
@@ -43,7 +44,7 @@ export interface SegmentedButtonItemPropTypes extends Omit<WithWebComponentPropT
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/SegmentedButtonItem" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const SegmentedButtonItem: FC<SegmentedButtonItemPropTypes> = withWebComponent<SegmentedButtonItemPropTypes>(
+const SegmentedButtonItem = withWebComponent<SegmentedButtonItemPropTypes>(
   'ui5-segmented-button-item',
   ['accessibleName', 'icon'],
   ['pressed', 'disabled'],

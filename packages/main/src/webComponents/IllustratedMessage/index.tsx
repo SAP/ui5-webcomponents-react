@@ -1,10 +1,11 @@
 import { IllustrationMessageType } from '@ui5/webcomponents-react/dist/IllustrationMessageType';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import { FC, ReactNode } from 'react';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/IllustratedMessage';
 
-export interface IllustratedMessagePropTypes extends WithWebComponentPropTypes {
+export interface IllustratedMessagePropTypes extends CommonProps {
   /**
    * Defines the illustration name that will be displayed in the component.
    *
@@ -58,7 +59,7 @@ export interface IllustratedMessagePropTypes extends WithWebComponentPropTypes {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/IllustratedMessage" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const IllustratedMessage: FC<IllustratedMessagePropTypes> = withWebComponent<IllustratedMessagePropTypes>(
+const IllustratedMessage = withWebComponent<IllustratedMessagePropTypes>(
   'ui5-illustrated-message',
   ['name', 'subtitleText', 'titleText'],
   [],

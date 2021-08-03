@@ -1,12 +1,13 @@
 import { ListItemType } from '@ui5/webcomponents-react/dist/ListItemType';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/StandardListItem';
 
-export interface StandardListItemPropTypes extends WithWebComponentPropTypes {
+export interface StandardListItemPropTypes extends CommonProps {
   /**
    * Defines the text alternative of the component. Note: If not provided a default text alternative will be set, if present.
    */
@@ -69,7 +70,7 @@ export interface StandardListItemPropTypes extends WithWebComponentPropTypes {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/StandardListItem" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const StandardListItem: FC<StandardListItemPropTypes> = withWebComponent<StandardListItemPropTypes>(
+const StandardListItem = withWebComponent<StandardListItemPropTypes>(
   'ui5-li',
   ['accessibleName', 'additionalText', 'additionalTextState', 'description', 'icon', 'image', 'type'],
   ['iconEnd', 'selected'],

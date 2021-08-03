@@ -1,12 +1,12 @@
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { WrappingType } from '@ui5/webcomponents-react/dist/WrappingType';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { FC } from 'react';
 
 import '@ui5/webcomponents/dist/RadioButton';
 
-export interface RadioButtonPropTypes extends Omit<WithWebComponentPropTypes, 'onChange'> {
+export interface RadioButtonPropTypes extends Omit<CommonProps, 'onChange'> {
   /**
    * Defines whether the component is checked or not.
    *
@@ -77,7 +77,7 @@ export interface RadioButtonPropTypes extends Omit<WithWebComponentPropTypes, 'o
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/RadioButton" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const RadioButton: FC<RadioButtonPropTypes> = withWebComponent<RadioButtonPropTypes>(
+const RadioButton = withWebComponent<RadioButtonPropTypes>(
   'ui5-radio-button',
   ['name', 'text', 'value', 'valueState', 'wrappingType'],
   ['checked', 'disabled', 'readonly'],
