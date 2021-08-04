@@ -73,6 +73,7 @@ const prettierConfig = {
 
 const WEB_COMPONENTS_ROOT_DIR = path.join(PATHS.packages, 'main', 'src', 'webComponents');
 const ENUMS_DIR = path.join(PATHS.packages, 'main', 'src', 'enums');
+const INTERFACES_DIR = path.join(PATHS.packages, 'main', 'src', 'interfaces');
 const DIST_DIR = path.join(PATHS.packages, 'main', 'src', 'dist');
 
 const EXTENDED_PROP_DESCRIPTION = {
@@ -625,7 +626,7 @@ allWebComponents
      ${property.name}?: ${tsType.tsType};
     `);
 
-        if (property.hasOwnProperty('defaultValue')) {
+        if (property.hasOwnProperty('defaultValue') && property.name !== 'wrappingType') {
           if (tsType.tsType === 'boolean') {
             defaultProps.push(`${property.name}: ${property.defaultValue === 'true'}`);
           } else if (tsType.isEnum === true) {
@@ -716,6 +717,58 @@ allWebComponents
     const webComponentWrapperPath = path.join(webComponentFolderPath, 'index.tsx');
     if (!fs.existsSync(webComponentWrapperPath)) {
       fs.writeFileSync(webComponentWrapperPath, '');
+    }
+
+    const publicMethods = componentSpec.methods?.filter((method) => method.visibility === 'public') ?? [];
+    const isOptionalParameter = (p) => {
+      return p.optional || p.hasOwnProperty('defaultValue');
+    };
+    const resolveTsTypeForMethods = (param) => {
+      let tsType;
+      if (param.type === 'HTMLElement') {
+        tsType = 'HTMLElement | EventTarget';
+      } else if (param.type === 'function' && componentSpec.module === 'Tree') {
+        tsType = '(treeNode: HTMLElement, level: number) => void';
+      } else if (param.type === 'object' && ['DatePicker', 'DateRangePicker', 'DateTimePicker', 'TimePicker'].includes(componentSpec.module)) {
+        tsType = 'Date';
+      } else {
+        tsType = Utils.getTypeDefinitionForProperty(param, new Set()).tsType;
+      }
+      return tsType;
+    };
+    if (publicMethods.length > 0) {
+      const methods = publicMethods.map((method) => {
+        const params = method.parameters?.map((param) => {
+          return ` * @param {${resolveTsTypeForMethods(param)}} ${isOptionalParameter(param) ? '[' : ''}${param.name}${
+            isOptionalParameter(param) ? ']' : ''
+          } - ${param.description}`;
+        });
+
+        return dedent`
+          /**
+           * ${method.description.replaceAll('\n', '\n * ')}
+           ${params?.join('\n') ?? '*'}
+           */
+          ${method.name}: (${
+          method.parameters
+            ?.map((p) => `${p.name}${isOptionalParameter(p) ? '?' : ''}: ${resolveTsTypeForMethods(p)}`)
+            .join(', ') ?? ''
+        }) => void
+          `;
+      });
+      const domRefTemplate = dedent`
+      // @generated
+      
+      import { Ui5DomRef } from './Ui5DomRef';
+
+      export interface Ui5${componentSpec.module}DomRef extends Ui5DomRef {
+        ${methods.join('\n\n')}
+      }
+      `;
+      fs.writeFileSync(
+        path.resolve(INTERFACES_DIR, `Ui5${componentSpec.module}DomRef.ts`),
+        prettier.format(domRefTemplate, prettierConfig)
+      );
     }
 
     if (
