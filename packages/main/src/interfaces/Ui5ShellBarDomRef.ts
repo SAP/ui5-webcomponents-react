@@ -1,3 +1,5 @@
+// @generated
+
 import { Ui5DomRef } from './Ui5DomRef';
 
 export interface Ui5ShellBarDomRef extends Ui5DomRef {

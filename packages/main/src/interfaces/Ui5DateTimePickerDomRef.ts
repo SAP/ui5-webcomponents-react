@@ -1,3 +1,5 @@
+// @generated
+
 import { Ui5DomRef } from './Ui5DomRef';
 
 export interface Ui5DateTimePickerDomRef extends Ui5DomRef {
