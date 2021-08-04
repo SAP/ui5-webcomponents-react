@@ -8,6 +8,7 @@ import { Badge } from '@ui5/webcomponents-react/dist/Badge';
 import { Bar } from '@ui5/webcomponents-react/dist/Bar';
 import { BarDesign } from '@ui5/webcomponents-react/dist/BarDesign';
 import { Breadcrumbs } from '@ui5/webcomponents-react/dist/Breadcrumbs';
+import { BreadcrumbsItem } from '@ui5/webcomponents-react/dist/BreadcrumbsItem';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
 import { DynamicPage } from '@ui5/webcomponents-react/dist/DynamicPage';
@@ -42,12 +43,12 @@ const renderComponent = () => (
         ]}
         breadcrumbs={
           <Breadcrumbs>
-            <Link>Home</Link>
-            <Link>Page 1</Link>
-            <Link>Page 2</Link>
-            <Link>Page 3</Link>
-            <Link>Page 4</Link>
-            <Link>Page 5</Link>
+            <BreadcrumbsItem>Home</BreadcrumbsItem>
+            <BreadcrumbsItem>Page 1</BreadcrumbsItem>
+            <BreadcrumbsItem>Page 2</BreadcrumbsItem>
+            <BreadcrumbsItem>Page 3</BreadcrumbsItem>
+            <BreadcrumbsItem>Page 4</BreadcrumbsItem>
+            <BreadcrumbsItem>Page 5</BreadcrumbsItem>
           </Breadcrumbs>
         }
         header={<Title>Header Title</Title>}
@@ -223,12 +224,12 @@ const renderComponentWithoutContent = () => (
         ]}
         breadcrumbs={
           <Breadcrumbs>
-            <Link>Home</Link>
-            <Link>Page 1</Link>
-            <Link>Page 2</Link>
-            <Link>Page 3</Link>
-            <Link>Page 4</Link>
-            <Link>Page 5</Link>
+            <BreadcrumbsItem>Home</BreadcrumbsItem>
+            <BreadcrumbsItem>Page 1</BreadcrumbsItem>
+            <BreadcrumbsItem>Page 2</BreadcrumbsItem>
+            <BreadcrumbsItem>Page 3</BreadcrumbsItem>
+            <BreadcrumbsItem>Page 4</BreadcrumbsItem>
+            <BreadcrumbsItem>Page 5</BreadcrumbsItem>
           </Breadcrumbs>
         }
         header={<Title>Header Title</Title>}
@@ -272,12 +273,12 @@ const renderComponentWithAlwaysShowContentHeader = () => (
         ]}
         breadcrumbs={
           <Breadcrumbs>
-            <Link>Home</Link>
-            <Link>Page 1</Link>
-            <Link>Page 2</Link>
-            <Link>Page 3</Link>
-            <Link>Page 4</Link>
-            <Link>Page 5</Link>
+            <BreadcrumbsItem>Home</BreadcrumbsItem>
+            <BreadcrumbsItem>Page 1</BreadcrumbsItem>
+            <BreadcrumbsItem>Page 2</BreadcrumbsItem>
+            <BreadcrumbsItem>Page 3</BreadcrumbsItem>
+            <BreadcrumbsItem>Page 4</BreadcrumbsItem>
+            <BreadcrumbsItem>Page 5</BreadcrumbsItem>
           </Breadcrumbs>
         }
         header={<Title>Header Title</Title>}
