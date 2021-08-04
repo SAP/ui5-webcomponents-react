@@ -1,6 +1,12 @@
 import { Ui5DomRef } from './Ui5DomRef';
 
-export interface Ui5DatePickerDomRef extends Ui5DomRef {
+export interface Ui5DateTimePickerDomRef extends Ui5DomRef {
+  /**
+   * Opens the picker.
+   *
+   */
+  openPicker: () => void;
+
   /**
    * Closes the picker.
    *
@@ -30,10 +36,4 @@ export interface Ui5DatePickerDomRef extends Ui5DomRef {
    * @param {string} value - A value to be tested against the current date format
    */
   isValid: (value: string) => void;
-
-  /**
-   * Opens the picker.
-   *
-   */
-  openPicker: () => void;
 }

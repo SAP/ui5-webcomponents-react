@@ -1,6 +1,6 @@
 import { Ui5DomRef } from './Ui5DomRef';
 
-export interface Ui5DatePickerDomRef extends Ui5DomRef {
+export interface Ui5DateRangePickerDomRef extends Ui5DomRef {
   /**
    * Closes the picker.
    *
