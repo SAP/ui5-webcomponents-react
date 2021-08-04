@@ -1,4 +1,5 @@
-const { NotificationListItem } = require('@ui5/webcomponents-react/src');
+const { NotificationListGroupItem } = require('@ui5/webcomponents-react/src');
+
 const renamingMap = {
   // UI5 Web Components
   Avatar: {
@@ -82,7 +83,11 @@ const renamingMap = {
     type: 'design'
   },
   NotificationListItem: {
+    heading: 'titleText',
     wrap: 'wrappingType'
+  },
+  NotificationListGroupItem: {
+    heading: 'titleText'
   },
   Panel: {
     'aria-label': 'accessibleName'
