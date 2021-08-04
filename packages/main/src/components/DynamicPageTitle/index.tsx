@@ -49,15 +49,15 @@ export interface DynamicPageTitleProps extends CommonProps {
   children?: ReactNode | ReactNodeArray;
 
   /**
-   * The `heading` is positioned in the `DynamicPageTitle` left area.
-   * Use this aggregation to display a `Title` (or any other component that serves as a heading)
+   * The `header` is positioned in the `DynamicPageTitle` left area.
+   * Use this aggregation to display a `Title` (or any other component that serves as a header)
    */
-  heading?: ReactNode;
+  header?: ReactNode;
   /**
-   * The `subheading` is positioned in the `DynamicPageTitle` left area below the `heading`.
-   * Use this aggregation to display a component like `Label` or any other component that serves as subheading.
+   * The `subHeader` is positioned in the `DynamicPageTitle` left area below the `header`.
+   * Use this aggregation to display a component like `Label` or any other component that serves as sub header.
    */
-  subheading?: ReactNode;
+  subHeader?: ReactNode;
   /**
    * The `DynamicPageTitle` navigation actions.<br />
    * *Note*: The `navigationActions` position depends on the control size.
@@ -68,9 +68,9 @@ export interface DynamicPageTitleProps extends CommonProps {
    */
   navigationActions?: ReactElement | ReactElement[];
   /**
-   * Display the subheading on the right instead of below the heading.
+   * Display the `subHeader` on the right instead of below the `header`.
    */
-  showSubheadingRight?: boolean;
+  showSubHeaderRight?: boolean;
 }
 
 interface InternalProps extends DynamicPageTitleProps {
@@ -92,9 +92,9 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
     onToggleHeaderContentVisibility,
     breadcrumbs,
     children,
-    heading,
-    subheading,
-    showSubheadingRight,
+    header,
+    subHeader,
+    showSubHeaderRight,
     navigationActions,
     className,
     style,
@@ -193,18 +193,18 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
       )}
       <FlexBox alignItems={FlexBoxAlignItems.Center} style={{ flexGrow: 1, width: '100%' }}>
         <FlexBox className={classes.titleMainSection}>
-          {heading && (
-            <div className={classes.title} data-component-name="DynamicPageTitleHeading">
-              {heading}
+          {header && (
+            <div className={classes.title} data-component-name="DynamicPageTitleHeader">
+              {header}
             </div>
           )}
-          {subheading && showSubheadingRight && (
+          {subHeader && showSubHeaderRight && (
             <div
               className={classes.subTitleRight}
               style={{ [paddingLeftRtl]: '0.5rem' }}
-              data-component-name="DynamicPageTitleSubheading"
+              data-component-name="DynamicPageTitleSubHeader"
             >
-              {subheading}
+              {subHeader}
             </div>
           )}
           {children && (
@@ -233,10 +233,10 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
           {!showNavigationInTopArea && navigationActions}
         </Toolbar>
       </FlexBox>
-      {subheading && !showSubheadingRight && (
+      {subHeader && !showSubHeaderRight && (
         <FlexBox>
-          <div className={classes.subTitleBottom} data-component-name="DynamicPageTitleSubheading">
-            {subheading}
+          <div className={classes.subTitleBottom} data-component-name="DynamicPageTitleSubHeader">
+            {subHeader}
           </div>
         </FlexBox>
       )}

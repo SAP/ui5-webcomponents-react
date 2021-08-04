@@ -61,7 +61,7 @@ export interface ObjectPagePropTypes extends CommonProps {
    * Defines the the upper, always static, title section of the `ObjectPage`.
    *
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `DynamicPageTitle` in order to preserve the intended design.
-   * __Note:__ If not defined otherwise the prop `showSubheadingRight` of the `DynamicPageTitle` is set to `true` by default.
+   * __Note:__ If not defined otherwise the prop `showSubHeaderRight` of the `DynamicPageTitle` is set to `true` by default.
    */
   headerTitle?: ReactElement;
   /**
@@ -508,9 +508,9 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     (inHeader = false) => {
       const titleStyles = { ...(inHeader ? { padding: 0 } : {}), ...(headerTitle?.props?.style ?? {}) };
 
-      if (headerTitle?.props && headerTitle.props?.showSubheadingRight === undefined) {
+      if (headerTitle?.props && headerTitle.props?.showSubHeaderRight === undefined) {
         return React.cloneElement(headerTitle, {
-          showSubheadingRight: true,
+          showSubHeaderRight: true,
           style: titleStyles,
           'data-not-clickable': titleHeaderNotClickable,
           onToggleHeaderContentVisibility: onTitleClick
@@ -747,7 +747,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
                 .filter((item) => item.props && item.props.isSubSection)
                 .map((item) => (
                   <StandardListItem key={item.props.id} data-key={item.props.id}>
-                    {item.props.heading}
+                    {item.props.titleText}
                   </StandardListItem>
                 ))}
             </List>

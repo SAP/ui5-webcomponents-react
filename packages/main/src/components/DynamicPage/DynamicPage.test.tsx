@@ -50,8 +50,8 @@ const renderComponent = () => (
             <Link>Page 5</Link>
           </Breadcrumbs>
         }
-        heading={<Title>Header Title</Title>}
-        subheading={<Label>This is a subheading</Label>}
+        header={<Title>Header Title</Title>}
+        subHeader={<Label>This is a sub header</Label>}
       >
         <Badge>Status: OK</Badge>
       </DynamicPageTitle>
@@ -71,7 +71,7 @@ const renderComponent = () => (
     }
   >
     <Form style={{ paddingBottom: '2rem', zIndex: 0 }} columnsXL={4} columnsL={4}>
-      <FormGroup title="Phone Numbers">
+      <FormGroup titleText="Phone Numbers">
         <FormItem label="Home">
           <Text>+1 234-567-8901</Text>
         </FormItem>
@@ -79,7 +79,7 @@ const renderComponent = () => (
           <Text>+1 234-567-5555</Text>
         </FormItem>
       </FormGroup>
-      <FormGroup title="Social Accounts">
+      <FormGroup titleText="Social Accounts">
         <FormItem label="LinkedIn">
           <Text>/DeniseSmith</Text>
         </FormItem>
@@ -89,7 +89,7 @@ const renderComponent = () => (
       </FormGroup>
     </Form>
     <Form style={{ paddingBottom: '2rem' }} columnsXL={4} columnsL={4}>
-      <FormGroup title="Addresses">
+      <FormGroup titleText="Addresses">
         <FormItem label="Home Address">
           <Text>2096 Mission Street</Text>
         </FormItem>
@@ -97,14 +97,14 @@ const renderComponent = () => (
           <Text>PO Box 32114</Text>
         </FormItem>
       </FormGroup>
-      <FormGroup title="Mailing Address">
+      <FormGroup titleText="Mailing Address">
         <FormItem label="Work">
           <Text>DeniseSmith@sap.com</Text>
         </FormItem>
       </FormGroup>
     </Form>
     <Form style={{ paddingBottom: '2rem' }} columnsXL={4} columnsL={4}>
-      <FormGroup title="Phone Numbers">
+      <FormGroup titleText="Phone Numbers">
         <FormItem label="Home">
           <Text>+1 234-567-8901</Text>
         </FormItem>
@@ -112,7 +112,7 @@ const renderComponent = () => (
           <Text>+1 234-567-5555</Text>
         </FormItem>
       </FormGroup>
-      <FormGroup title="Social Accounts">
+      <FormGroup titleText="Social Accounts">
         <FormItem label="LinkedIn">
           <Text>/DeniseSmith</Text>
         </FormItem>
@@ -122,7 +122,7 @@ const renderComponent = () => (
       </FormGroup>
     </Form>
     <Form style={{ paddingBottom: '2rem' }} columnsXL={4} columnsL={4}>
-      <FormGroup title="Addresses">
+      <FormGroup titleText="Addresses">
         <FormItem label="Home Address">
           <Text>2096 Mission Street</Text>
         </FormItem>
@@ -130,14 +130,14 @@ const renderComponent = () => (
           <Text>PO Box 32114</Text>
         </FormItem>
       </FormGroup>
-      <FormGroup title="Mailing Address">
+      <FormGroup titleText="Mailing Address">
         <FormItem label="Work">
           <Text>DeniseSmith@sap.com</Text>
         </FormItem>
       </FormGroup>
     </Form>
     <Form style={{ paddingBottom: '2rem', zIndex: 0 }} columnsXL={4} columnsL={4}>
-      <FormGroup title="Phone Numbers">
+      <FormGroup titleText="Phone Numbers">
         <FormItem label="Home">
           <Text>+1 234-567-8901</Text>
         </FormItem>
@@ -145,7 +145,7 @@ const renderComponent = () => (
           <Text>+1 234-567-5555</Text>
         </FormItem>
       </FormGroup>
-      <FormGroup title="Social Accounts">
+      <FormGroup titleText="Social Accounts">
         <FormItem label="LinkedIn">
           <Text>/DeniseSmith</Text>
         </FormItem>
@@ -155,7 +155,7 @@ const renderComponent = () => (
       </FormGroup>
     </Form>
     <Form style={{ paddingBottom: '2rem' }} columnsXL={4} columnsL={4}>
-      <FormGroup title="Addresses">
+      <FormGroup titleText="Addresses">
         <FormItem label="Home Address">
           <Text>2096 Mission Street</Text>
         </FormItem>
@@ -163,14 +163,14 @@ const renderComponent = () => (
           <Text>PO Box 32114</Text>
         </FormItem>
       </FormGroup>
-      <FormGroup title="Mailing Address">
+      <FormGroup titleText="Mailing Address">
         <FormItem label="Work">
           <Text>DeniseSmith@sap.com</Text>
         </FormItem>
       </FormGroup>
     </Form>
     <Form style={{ paddingBottom: '2rem' }} columnsXL={4} columnsL={4}>
-      <FormGroup title="Phone Numbers">
+      <FormGroup titleText="Phone Numbers">
         <FormItem label="Home">
           <Text>+1 234-567-8901</Text>
         </FormItem>
@@ -178,7 +178,7 @@ const renderComponent = () => (
           <Text>+1 234-567-5555</Text>
         </FormItem>
       </FormGroup>
-      <FormGroup title="Social Accounts">
+      <FormGroup titleText="Social Accounts">
         <FormItem label="LinkedIn">
           <Text>/DeniseSmith</Text>
         </FormItem>
@@ -188,7 +188,7 @@ const renderComponent = () => (
       </FormGroup>
     </Form>
     <Form style={{ paddingBottom: '2rem' }} columnsXL={4} columnsL={4}>
-      <FormGroup title="Addresses">
+      <FormGroup titleText="Addresses">
         <FormItem label="Home Address">
           <Text>2096 Mission Street</Text>
         </FormItem>
@@ -196,7 +196,7 @@ const renderComponent = () => (
           <Text>PO Box 32114</Text>
         </FormItem>
       </FormGroup>
-      <FormGroup title="Mailing Address">
+      <FormGroup titleText="Mailing Address">
         <FormItem label="Work">
           <Text>DeniseSmith@sap.com</Text>
         </FormItem>
@@ -231,8 +231,8 @@ const renderComponentWithoutContent = () => (
             <Link>Page 5</Link>
           </Breadcrumbs>
         }
-        heading={<Title>Header Title</Title>}
-        subheading={<Label>This is a subheading</Label>}
+        header={<Title>Header Title</Title>}
+        subHeader={<Label>This is a sub header</Label>}
       >
         <Badge>Status: OK</Badge>
       </DynamicPageTitle>
@@ -280,8 +280,8 @@ const renderComponentWithAlwaysShowContentHeader = () => (
             <Link>Page 5</Link>
           </Breadcrumbs>
         }
-        heading={<Title>Header Title</Title>}
-        subheading={<Label>This is a subheading</Label>}
+        header={<Title>Header Title</Title>}
+        subHeader={<Label>This is a sub header</Label>}
       >
         <Badge>Status: OK</Badge>
       </DynamicPageTitle>
@@ -315,8 +315,8 @@ const renderComponentHideHeaderButton = () => (
           <Button design={ButtonDesign.Transparent}>Toggle Footer</Button>,
           <Button icon="action" design={ButtonDesign.Transparent}></Button>
         ]}
-        heading={<Title>Header Title</Title>}
-        subheading={<Label>This is a subheading</Label>}
+        header={<Title>Header Title</Title>}
+        subHeader={<Label>This is a sub header</Label>}
       />
     }
     headerContent={
@@ -334,7 +334,7 @@ const renderComponentHideHeaderButton = () => (
     }
   >
     <Form style={{ paddingBottom: '2rem' }} columnsXL={4} columnsL={4}>
-      <FormGroup title="Phone Numbers">
+      <FormGroup titleText="Phone Numbers">
         <FormItem label="Home">
           <Text>+1 234-567-8901</Text>
         </FormItem>
@@ -342,7 +342,7 @@ const renderComponentHideHeaderButton = () => (
           <Text>+1 234-567-5555</Text>
         </FormItem>
       </FormGroup>
-      <FormGroup title="Social Accounts">
+      <FormGroup titleText="Social Accounts">
         <FormItem label="LinkedIn">
           <Text>/DeniseSmith</Text>
         </FormItem>
@@ -352,7 +352,7 @@ const renderComponentHideHeaderButton = () => (
       </FormGroup>
     </Form>
     <Form style={{ paddingBottom: '2rem' }} columnsXL={4} columnsL={4}>
-      <FormGroup title="Addresses">
+      <FormGroup titleText="Addresses">
         <FormItem label="Home Address">
           <Text>2096 Mission Street</Text>
         </FormItem>
@@ -360,7 +360,7 @@ const renderComponentHideHeaderButton = () => (
           <Text>PO Box 32114</Text>
         </FormItem>
       </FormGroup>
-      <FormGroup title="Mailing Address">
+      <FormGroup titleText="Mailing Address">
         <FormItem label="Work">
           <Text>DeniseSmith@sap.com</Text>
         </FormItem>

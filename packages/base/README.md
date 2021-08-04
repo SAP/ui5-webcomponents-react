@@ -3,33 +3,40 @@ Base Utilities for ui5-webcomponents-react
 
 ## Installation
 ```
-yarn add @ui5/webcomponents-react-base
-OR
 npm install @ui5/webcomponents-react-base --save
 ```
 
-## Modules
+## Usage
 
-### StyleClassHelper
-Concat multiple CSS Module into an instance of this class helper and place them into a react component.<br>
-Example:
-```javascript
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
-import style from 'YOUR_STYLESHEET';
+This package is a collection of internal utils for the `@ui5/webcomponents-react` project and is not intended to be used
+as a standalone library in applications. The only intended public usage is running the codemod cli:
 
-const classes = new StyleClassHelper.of(style.text);
-classes.put(style.anotherClass);
-classes.put(style.thirdClass)
+*The codemod cli is exposed starting from `@ui5/webcomponents-react-base@0.16.2`.*
 
-const MyComponent = props => (
-  <div className={classes}>
-    My Component
-  </div>
-);
+```shell
+# if you only have .js and .jsx files in your project
+npx ui5wcr-codemod [transformer-name] [file-or-directory-to-run-on]
 
-export default MyComponent;
-
+# if you are using TypeScript (.ts and .tsx)
+npx ui5wcr-codemod [transformer-name] [file-or-directory-to-run-on] --typescript
 ```
+
+### Available Transformers
+
+#### `transformLibToDist`
+`@ui5/webcomponents-react@0.15.0` changed all import paths from `/lib` to `/dist`. You can migrate your codebase (e.g. your `src` folder) by running:
+```shell
+npx ui5wcr-codemod transformLibToDist src
+# add --typescript if you are using TypeScript
+```
+
+#### `renamePropsV18`
+`@ui5/webcomponents-react@0.18.0` renamed lots of props in order to have a more consistent API. You can migrate your codebase (e.g. your `src` folder) by running:
+```shell
+npx ui5wcr-codemod renamePropsV18 src
+# add --typescript if you are using TypeScript
+```
+
 
 ## Contribute
 Please check our [Contribution Guidelines](https://github.com/SAP/ui5-webcomponents-react/blob/master/CONTRIBUTING.md).

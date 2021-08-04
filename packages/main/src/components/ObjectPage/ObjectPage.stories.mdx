@@ -58,9 +58,9 @@ import '@ui5/webcomponents-icons/dist/wrench.js';
     ),
     headerTitle: (
       <DynamicPageTitle
-        showSubheadingRight
-        heading="Denise Smith"
-        subheading="Senior UI Developer"
+        showSubHeaderRight
+        header="Denise Smith"
+        subHeader="Senior UI Developer"
         actions={
           <>
             <Button key="1" design={ButtonDesign.Emphasized}>
@@ -110,7 +110,7 @@ import '@ui5/webcomponents-icons/dist/wrench.js';
     {(args) => {
       return (
         <ObjectPage {...args}>
-          <ObjectPageSection heading="Goals" id="goals" aria-label="Goals">
+          <ObjectPageSection titleText="Goals" id="goals" aria-label="Goals">
             <Form columnsL={3} columnsXL={3} labelSpanXL={6} labelSpanL={6} columnsM={2} labelSpanM={6}>
               <FormItem label="Evangelize the UI framework across the company">
                 <Text>4 days overdue - Cascaded</Text>
@@ -123,10 +123,10 @@ import '@ui5/webcomponents-icons/dist/wrench.js';
               </FormItem>
             </Form>
           </ObjectPageSection>
-          <ObjectPageSection heading="Personal" id="personal" aria-label="Personal">
-            <ObjectPageSubSection heading="Connect" id="personal-connect" aria-label="Connect">
+          <ObjectPageSection titleText="Personal" id="personal" aria-label="Personal">
+            <ObjectPageSubSection titleText="Connect" id="personal-connect" aria-label="Connect">
               <Form columnsXL={4} columnsL={4}>
-                <FormGroup title="Phone Numbers">
+                <FormGroup titleText="Phone Numbers">
                   <FormItem label="Home">
                     <Text>+1 234-567-8901</Text>
                   </FormItem>
@@ -134,7 +134,7 @@ import '@ui5/webcomponents-icons/dist/wrench.js';
                     <Text>+1 234-567-5555</Text>
                   </FormItem>
                 </FormGroup>
-                <FormGroup title="Social Accounts">
+                <FormGroup titleText="Social Accounts">
                   <FormItem label="LinkedIn">
                     <Text>/DeniseSmith</Text>
                   </FormItem>
@@ -142,7 +142,7 @@ import '@ui5/webcomponents-icons/dist/wrench.js';
                     <Text>@DeniseSmith</Text>
                   </FormItem>
                 </FormGroup>
-                <FormGroup title="Addresses">
+                <FormGroup titleText="Addresses">
                   <FormItem label="Home Address">
                     <Text>2096 Mission Street</Text>
                   </FormItem>
@@ -150,7 +150,7 @@ import '@ui5/webcomponents-icons/dist/wrench.js';
                     <Text>PO Box 32114</Text>
                   </FormItem>
                 </FormGroup>
-                <FormGroup title="Mailing Address">
+                <FormGroup titleText="Mailing Address">
                   <FormItem label="Work">
                     <Text>DeniseSmith@sap.com</Text>
                   </FormItem>
@@ -158,17 +158,17 @@ import '@ui5/webcomponents-icons/dist/wrench.js';
               </Form>
             </ObjectPageSubSection>
             <ObjectPageSubSection
-              heading="Payment Information"
+              titleText="Payment Information"
               id="personal-payment-information"
               aria-label="Payment Information"
             >
               <Form columnsXL={4} columnsL={4}>
-                <FormGroup title="Salary">
+                <FormGroup titleText="Salary">
                   <FormItem label="Bank Transfer">
                     <Text>Money Bank, Inc.</Text>
                   </FormItem>
                 </FormGroup>
-                <FormGroup title="Payment method for Expenses">
+                <FormGroup titleText="Payment method for Expenses">
                   <FormItem label="Extra Travel Expenses">
                     <Text>Cash 100 USD</Text>
                   </FormItem>
@@ -176,9 +176,9 @@ import '@ui5/webcomponents-icons/dist/wrench.js';
               </Form>
             </ObjectPageSubSection>
           </ObjectPageSection>
-          <ObjectPageSection heading="Employment" id="employment" aria-label="Employment">
+          <ObjectPageSection titleText="Employment" id="employment" aria-label="Employment">
             <ObjectPageSubSection
-              heading="Job Information"
+              titleText="Job Information"
               id="employment-job-information"
               aria-label="Job Information"
             >
@@ -210,7 +210,7 @@ import '@ui5/webcomponents-icons/dist/wrench.js';
               </Form>
             </ObjectPageSubSection>
             <ObjectPageSubSection
-              heading="Employee Details"
+              titleText="Employee Details"
               id="employment-employee-details"
               aria-label="Employee Details"
             >
@@ -236,7 +236,7 @@ import '@ui5/webcomponents-icons/dist/wrench.js';
               </Form>
             </ObjectPageSubSection>
             <ObjectPageSubSection
-              heading="Job Relationship"
+              titleText="Job Relationship"
               id="employment-job-relationship"
               aria-label="Job Relationship"
             >

@@ -131,7 +131,7 @@ exports[`DynamicPage always show content header 1`] = `
         >
           <div
             class="DynamicPageTitle-title"
-            data-component-name="DynamicPageTitleHeading"
+            data-component-name="DynamicPageTitleHeader"
           >
             <ui5-title
               level="H2"
@@ -266,12 +266,12 @@ exports[`DynamicPage always show content header 1`] = `
       >
         <div
           class="DynamicPageTitle-subTitleBottom"
-          data-component-name="DynamicPageTitleSubheading"
+          data-component-name="DynamicPageTitleSubHeader"
         >
           <ui5-label
             ui5-label=""
           >
-            This is a subheading
+            This is a sub header
           </ui5-label>
         </div>
       </div>
@@ -368,7 +368,7 @@ exports[`DynamicPage hider header button 1`] = `
         >
           <div
             class="DynamicPageTitle-title"
-            data-component-name="DynamicPageTitleHeading"
+            data-component-name="DynamicPageTitleHeader"
           >
             <ui5-title
               level="H2"
@@ -452,12 +452,12 @@ exports[`DynamicPage hider header button 1`] = `
       >
         <div
           class="DynamicPageTitle-subTitleBottom"
-          data-component-name="DynamicPageTitleSubheading"
+          data-component-name="DynamicPageTitleSubHeader"
         >
           <ui5-label
             ui5-label=""
           >
-            This is a subheading
+            This is a sub header
           </ui5-label>
         </div>
       </div>
@@ -872,7 +872,7 @@ exports[`DynamicPage with content 1`] = `
         >
           <div
             class="DynamicPageTitle-title"
-            data-component-name="DynamicPageTitleHeading"
+            data-component-name="DynamicPageTitleHeader"
           >
             <ui5-title
               level="H2"
@@ -1007,12 +1007,12 @@ exports[`DynamicPage with content 1`] = `
       >
         <div
           class="DynamicPageTitle-subTitleBottom"
-          data-component-name="DynamicPageTitleSubheading"
+          data-component-name="DynamicPageTitleSubHeader"
         >
           <ui5-label
             ui5-label=""
           >
-            This is a subheading
+            This is a sub header
           </ui5-label>
         </div>
       </div>
@@ -1877,7 +1877,7 @@ exports[`DynamicPage without content 1`] = `
         >
           <div
             class="DynamicPageTitle-title"
-            data-component-name="DynamicPageTitleHeading"
+            data-component-name="DynamicPageTitleHeader"
           >
             <ui5-title
               level="H2"
@@ -2012,12 +2012,12 @@ exports[`DynamicPage without content 1`] = `
       >
         <div
           class="DynamicPageTitle-subTitleBottom"
-          data-component-name="DynamicPageTitleSubheading"
+          data-component-name="DynamicPageTitleSubHeader"
         >
           <ui5-label
             ui5-label=""
           >
-            This is a subheading
+            This is a sub header
           </ui5-label>
         </div>
       </div>

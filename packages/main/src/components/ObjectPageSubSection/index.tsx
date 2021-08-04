@@ -9,9 +9,9 @@ import { EmptyIdPropException } from '../ObjectPage/EmptyIdPropException';
 
 export interface ObjectPageSubSectionPropTypes extends CommonProps {
   /**
-   * Defines the heading of the `ObjectPageSubSection`.
+   * Defines the title of the `ObjectPageSubSection`.
    */
-  heading?: string;
+  titleText?: string;
   /**
    * Defines the ID of the `ObjectPageSubSection`.
    */
@@ -46,7 +46,7 @@ const useStyles = createUseStyles(styles, { name: 'ObjectPageSubSection' });
  */
 const ObjectPageSubSection: FC<ObjectPageSubSectionPropTypes> = forwardRef(
   (props: ObjectPageSubSectionPropTypes, ref: RefObject<any>) => {
-    const { children, id, heading, className, style, tooltip } = props;
+    const { children, id, titleText, className, style, tooltip } = props;
 
     if (!id) {
       throw new EmptyIdPropException('ObjectPageSubSection requires a unique ID property!');
@@ -78,9 +78,9 @@ const ObjectPageSubSection: FC<ObjectPageSubSectionPropTypes> = forwardRef(
           role="heading"
           aria-level={4}
           className={classes.objectPageSubSectionHeaderTitle}
-          data-component-name="ObjectPageSubSectionHeading"
+          data-component-name="ObjectPageSubSectionTitleText"
         >
-          {heading}
+          {titleText}
         </div>
         <div className={classes.subSectionContent} data-component-name="ObjectPageSubSectionContent">
           {children}
