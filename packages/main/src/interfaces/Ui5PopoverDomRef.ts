@@ -2,21 +2,27 @@ import { Ui5DomRef } from './Ui5DomRef';
 
 export interface Ui5PopoverDomRef extends Ui5DomRef {
   /**
-   * Opens the popover.
-   * @param opener - The element that the popover is opened by.
-   * @param preventInitialFocus - Prevents applying the focus inside the popover.
+   * Shows the popover.
+   * @param {HTMLElement | EventTarget} opener - the element that the popover is shown at
+   * @param {boolean} [preventInitialFocus] - prevents applying the focus inside the popover
    */
   showAt: (opener: HTMLElement | EventTarget, preventInitialFocus?: boolean) => void;
+
   /**
-   * Closes the popover/dialog.
-   */
-  close: () => void;
-  /**
-   * Focuses the element denoted by initialFocus, if provided, or the first focusable element otherwise.
+   * Focuses the element denoted by <code>initialFocus</code>, if provided, or the first focusable element otherwise.
+   *
    */
   applyFocus: () => void;
+
   /**
-   * Override this method to provide custom logic for the popup's open/closed state. Maps to the "opened" property by default.
+   * Hides the block layer (for modal popups only)
+   *
+   */
+  close: () => void;
+
+  /**
+   * Tells if the component is opened
+   *
    */
   isOpen: () => void;
 }
