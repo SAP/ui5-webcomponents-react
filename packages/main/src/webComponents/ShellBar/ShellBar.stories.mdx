@@ -1,11 +1,9 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { ShellBar } from '@ui5/webcomponents-react/dist/ShellBar';
 import { ShellBarItem } from '@ui5/webcomponents-react/dist/ShellBarItem';
 import { Avatar } from '@ui5/webcomponents-react/dist/Avatar';
 import { StandardListItem } from '@ui5/webcomponents-react/dist/StandardListItem';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 import '@ui5/webcomponents-icons/dist/add.js';
 import image from '../../components/ObjectPage/DemoImage.png';
 
@@ -14,19 +12,17 @@ import image from '../../components/ObjectPage/DemoImage.png';
   component={ShellBar}
   subcomponents={{ ShellBarItem }}
   argTypes={{
-    ...createSelectArgTypes({}),
     children: { control: { disable: true } },
     logo: { control: { disable: true } },
     menuItems: { control: { disable: true } },
     profile: { control: { disable: true } },
     searchField: { control: { disable: true } },
-    startButton: { control: { disable: true } },
-    ...DocsCommonProps
+    startButton: { control: { disable: true } }
   }}
   args={{
     logo: <img src="https://sap.github.io/ui5-webcomponents/assets/images/sap-logo-svg.svg" alt="SAP Logo" />,
     profile: <Avatar image={image} />,
-    notificationCount: 10,
+    notificationCount: '10',
     primaryTitle: 'Shell Bar',
     secondaryTitle: 'Fiori 3 Shell Bar',
     showCoPilot: true,

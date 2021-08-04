@@ -7,7 +7,7 @@ export interface FormGroupPropTypes {
   /**
    * Title of the FormGroup.
    */
-  title: string;
+  titleText: string;
   /**
    * Contents of the FormGroup. Please use only `FormItem` to keep the intended design.
    */
@@ -36,17 +36,17 @@ const useStyles = createUseStyles(
 );
 /**
  * The `FormGroup` encapsulates `FormItems` into groups.
- * __Note:__ `FormGroup` is only used for calculating the final layout of the `Form`, thus it doesn't accept any other props than `title` and `children`, especially no `className`, `style` or `ref`.
+ * __Note:__ `FormGroup` is only used for calculating the final layout of the `Form`, thus it doesn't accept any other props than `heading` and `children`, especially no `className`, `style` or `ref`.
  */
 const FormGroup: FC<FormGroupPropTypes> = (props: FormGroupPropTypes) => {
-  const { title, children } = props;
+  const { titleText, children } = props;
 
   const classes = useStyles();
 
   return (
     <>
-      <h6 className={classes.title} title={title} aria-label={title}>
-        {title}
+      <h6 className={classes.title} title={titleText} aria-label={titleText}>
+        {titleText}
       </h6>
       {children}
       <span className={classes.spacer} />

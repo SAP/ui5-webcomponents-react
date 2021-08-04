@@ -1,7 +1,5 @@
-import { createUseStyles } from 'react-jss';
 import { useI18nBundle, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { DEVIATION, TARGET } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { DeviationIndicator } from '@ui5/webcomponents-react/dist/DeviationIndicator';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
@@ -11,19 +9,20 @@ import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJust
 import { FlexBoxWrap } from '@ui5/webcomponents-react/dist/FlexBoxWrap';
 import { ObjectStatus } from '@ui5/webcomponents-react/dist/ObjectStatus';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
-import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import React, { FC, forwardRef, MouseEventHandler, Ref, useMemo } from 'react';
+import { createUseStyles } from 'react-jss';
 import styles from './AnalyticalCardHeader.jss';
 
 export interface AnalyticalCardHeaderPropTypes extends CommonProps {
   /**
-   * Defines the title of the `AnalyticalCardHeader`.
+   * Defines the title text of the `AnalyticalCardHeader`.
    */
-  title?: string;
+  titleText?: string;
   /**
-   * Defines the subtitle of the `AnalyticalCardHeader`.
+   * Defines the subtitle text of the `AnalyticalCardHeader`.
    */
-  subTitle?: string;
+  subtitleText?: string;
   /**
    * Defines the orientation of the deviation indicator.
    */
@@ -76,9 +75,9 @@ export interface AnalyticalCardHeaderPropTypes extends CommonProps {
    */
   currency?: string;
   /**
-   * Fired when the `AnalyticalCardHeader` header is clicked.
+   * Fired when the `AnalyticalCardHeader` is clicked.
    */
-  onHeaderPress?: (event: CustomEvent<{}>) => void;
+  onClick?: MouseEventHandler<HTMLDivElement>;
 }
 
 const useStyles = createUseStyles(styles, {
@@ -88,14 +87,14 @@ const useStyles = createUseStyles(styles, {
 export const AnalyticalCardHeader: FC<AnalyticalCardHeaderPropTypes> = forwardRef(
   (props: AnalyticalCardHeaderPropTypes, ref: Ref<HTMLDivElement>) => {
     const {
-      title,
-      subTitle,
+      titleText,
+      subtitleText,
       value,
       unit,
       target,
       deviation,
       valueState,
-      onHeaderPress,
+      onClick,
       showIndicator,
       tooltip,
       className,
@@ -108,14 +107,7 @@ export const AnalyticalCardHeader: FC<AnalyticalCardHeaderPropTypes> = forwardRe
       style
     } = props;
     const classes = useStyles();
-    const onClick = useCallback(
-      (e) => {
-        if (onHeaderPress) {
-          onHeaderPress(enrichEventWithDetails(e));
-        }
-      },
-      [onHeaderPress]
-    );
+
     const indicatorIcon = useMemo(() => {
       const arrowClasses = StyleClassHelper.of(classes.arrowIndicatorShape);
       switch (arrowIndicator) {
@@ -149,7 +141,7 @@ export const AnalyticalCardHeader: FC<AnalyticalCardHeaderPropTypes> = forwardRe
     }, [arrowIndicator, indicatorState, classes]);
 
     const headerClasses = StyleClassHelper.of(classes.cardHeader);
-    if (onHeaderPress) {
+    if (onClick) {
       headerClasses.put(classes.cardHeaderClickable);
     }
 
@@ -167,9 +159,9 @@ export const AnalyticalCardHeader: FC<AnalyticalCardHeaderPropTypes> = forwardRe
     if (className) {
       headerClasses.put(className);
     }
-    const shouldRenderContent = [value, unit, deviation, target].some((v) => v !== null);
+    const shouldRenderContent = [value, unit, deviation, target].some((v) => !!v);
 
-    const passThroughProps = usePassThroughHtmlProps(props, ['onHeaderPress']);
+    const passThroughProps = usePassThroughHtmlProps(props, ['onHeaderClick']);
 
     const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
@@ -185,15 +177,19 @@ export const AnalyticalCardHeader: FC<AnalyticalCardHeaderPropTypes> = forwardRe
         <div className={classes.headerContent}>
           <div className={classes.headerTitles}>
             <FlexBox justifyContent={FlexBoxJustifyContent.SpaceBetween} wrap={FlexBoxWrap.NoWrap}>
-              <div className={classes.headerText}>{title}</div>
-              <ObjectStatus className={classes.counter} state={counterState}>
-                {counter}
-              </ObjectStatus>
+              <div className={classes.headerText}>{titleText}</div>
+              {counter && (
+                <ObjectStatus className={classes.counter} state={counterState}>
+                  {counter}
+                </ObjectStatus>
+              )}
             </FlexBox>
-            <div className={classes.subHeaderText}>
-              {subTitle}
-              {currency && ` | ${currency}`}
-            </div>
+            {(subtitleText || currency) && (
+              <div className={classes.subHeaderText}>
+                {subtitleText}
+                {currency && ` | ${currency}`}
+              </div>
+            )}
           </div>
           {shouldRenderContent && (
             <FlexBox direction={FlexBoxDirection.Row} className={classes.kpiContent} alignItems={FlexBoxAlignItems.End}>
@@ -211,7 +207,7 @@ export const AnalyticalCardHeader: FC<AnalyticalCardHeaderPropTypes> = forwardRe
                 wrap={FlexBoxWrap.NoWrap}
                 className={classes.targetAndDeviation}
               >
-                {target !== null && (
+                {target && (
                   <FlexBox
                     direction={FlexBoxDirection.Column}
                     className={classes.targetAndDeviationColumn}
@@ -221,7 +217,7 @@ export const AnalyticalCardHeader: FC<AnalyticalCardHeaderPropTypes> = forwardRe
                     <span className={classes.targetAndDeviationValue}>{target}</span>
                   </FlexBox>
                 )}
-                {deviation !== null && (
+                {deviation && (
                   <FlexBox
                     direction={FlexBoxDirection.Column}
                     className={classes.targetAndDeviationColumn}
@@ -234,7 +230,7 @@ export const AnalyticalCardHeader: FC<AnalyticalCardHeaderPropTypes> = forwardRe
               </FlexBox>
             </FlexBox>
           )}
-          <div className={classes.description}>{description}</div>
+          {description && <div className={classes.description}>{description}</div>}
         </div>
       </div>
     );
@@ -244,19 +240,8 @@ export const AnalyticalCardHeader: FC<AnalyticalCardHeaderPropTypes> = forwardRe
 AnalyticalCardHeader.displayName = 'AnalyticalCardHeader';
 
 AnalyticalCardHeader.defaultProps = {
-  title: null,
-  subTitle: null,
   arrowIndicator: DeviationIndicator.None,
-  showIndicator: true,
   indicatorState: ValueState.None,
-  value: null,
-  unit: null,
   valueState: ValueState.None,
-  target: null,
-  deviation: null,
-  onHeaderPress: null,
-  description: null,
-  counter: null,
-  counterState: ValueState.None,
-  currency: null
+  counterState: ValueState.None
 };

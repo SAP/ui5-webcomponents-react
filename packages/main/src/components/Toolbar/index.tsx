@@ -118,12 +118,12 @@ const Toolbar: FC<ToolbarPropTypes> = forwardRef((props: ToolbarPropTypes, ref: 
         return item;
       }
       return (
-        <div ref={itemRef} key={index}>
+        <div ref={itemRef} key={index} className={classes.childContainer} data-component-name="ToolbarChildContainer">
           {item}
         </div>
       );
     });
-  }, [children, controlMetaData]);
+  }, [children, controlMetaData, classes.childContainer]);
 
   const overflowNeeded =
     (lastVisibleIndex || lastVisibleIndex === 0) && React.Children.count(childrenWithRef) !== lastVisibleIndex + 1;
@@ -208,7 +208,7 @@ const Toolbar: FC<ToolbarPropTypes> = forwardRef((props: ToolbarPropTypes, ref: 
       onClick={handleToolbarClick}
       {...passThroughProps}
     >
-      <div className={classes.toolbar}>
+      <div className={classes.toolbar} data-component-name="ToolbarContent">
         {overflowNeeded &&
           React.Children.map(childrenWithRef, (item, index) => {
             if (index >= lastVisibleIndex + 1) {
@@ -219,7 +219,11 @@ const Toolbar: FC<ToolbarPropTypes> = forwardRef((props: ToolbarPropTypes, ref: 
         {!overflowNeeded && childrenWithRef}
       </div>
       {overflowNeeded && (
-        <div className={classes.overflowButtonContainer} title={i18nBundle.getText(SHOW_MORE)}>
+        <div
+          className={classes.overflowButtonContainer}
+          title={i18nBundle.getText(SHOW_MORE)}
+          data-component-name="ToolbarOverflowButtonContainer"
+        >
           <OverflowPopover lastVisibleIndex={lastVisibleIndex} contentClass={classes.popoverContent}>
             {React.Children.toArray(children).map((child) => {
               if ((child as ReactElement).type === React.Fragment) {

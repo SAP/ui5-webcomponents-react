@@ -213,15 +213,19 @@ export const sapUiLargePaddingBeginEnd = {
 
 export const sapUiResponsiveContentPadding = {
   '@media(max-width:599px)': {
-    padding: '0 1rem'
+    paddingLeft: '1rem',
+    paddingRight: '1rem'
   },
   '@media (min-width:600px) and (max-width:1023px)': {
-    padding: '0 2rem'
+    paddingLeft: '2rem',
+    paddingRight: '2rem'
   },
   '@media (min-width:1024px) and (max-width: 1439px)': {
-    padding: '0 2rem'
+    paddingLeft: '2rem',
+    paddingRight: '2rem'
   },
   '@media (min-width:1440px)': {
-    padding: '0 3rem'
+    paddingLeft: '3rem',
+    paddingRight: '3rem'
   }
 };

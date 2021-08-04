@@ -1,5 +1,4 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { ActionSheet } from '@ui5/webcomponents-react/dist/ActionSheet';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { PlacementType } from '@ui5/webcomponents-react/dist/PlacementType';
@@ -7,17 +6,11 @@ import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/dist/PopoverHor
 import { PopoverVerticalAlign } from '@ui5/webcomponents-react/dist/PopoverVerticalAlign';
 import { useCallback, useRef } from 'react';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="Modals & Popovers / ActionSheet"
   component={ActionSheet}
   argTypes={{
-    ...createSelectArgTypes({
-      placementType: PlacementType,
-      horizontalAlign: PopoverHorizontalAlign,
-      verticalAlign: PopoverVerticalAlign
-    }),
     children: {
       type: null
     },
@@ -26,8 +19,7 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
     },
     header: {
       type: null
-    },
-    ...DocsCommonProps
+    }
   }}
   args={{
     horizontalAlign: PopoverHorizontalAlign.Center,

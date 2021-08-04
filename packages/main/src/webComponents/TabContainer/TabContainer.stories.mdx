@@ -1,13 +1,11 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { TabContainer } from '@ui5/webcomponents-react/dist/TabContainer';
 import { TabLayout } from '@ui5/webcomponents-react/dist/TabLayout';
 import { TabContainerTabsPlacement } from '@ui5/webcomponents-react/dist/TabContainerTabsPlacement';
 import { Tab } from '@ui5/webcomponents-react/dist/Tab';
 import { SemanticColor } from '@ui5/webcomponents-react/dist/SemanticColor';
 import { TabSeparator } from '@ui5/webcomponents-react/dist/TabSeparator';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 import '@ui5/webcomponents-icons/dist/menu.js';
 import '@ui5/webcomponents-icons/dist/activities.js';
 import '@ui5/webcomponents-icons/dist/add.js';
@@ -20,8 +18,6 @@ import '@ui5/webcomponents-icons/dist/sys-monitor.js';
   component={TabContainer}
   subcomponents={{ Tab, TabSeparator }}
   argTypes={{
-    ...createSelectArgTypes({ tabLayout: TabLayout, tabsPlacement: TabContainerTabsPlacement }),
-    ...DocsCommonProps,
     children: { control: { disable: true } },
     overflowButton: { control: { disable: true } }
   }}

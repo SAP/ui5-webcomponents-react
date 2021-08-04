@@ -11,7 +11,7 @@ export interface ObjectPageSectionPropTypes extends CommonProps {
   /**
    * Defines the title of the `ObjectPageSection`.
    */
-  title?: string;
+  titleText?: string;
   /**
    * Defines the ID of the `ObjectPageSection`.<br />
    * __Note:__ The `id` is taken into account when the section selection changes.
@@ -20,7 +20,7 @@ export interface ObjectPageSectionPropTypes extends CommonProps {
   /**
    * Defines whether the title is always displayed in uppercase.
    */
-  titleUppercase?: boolean;
+  titleTextUppercase?: boolean;
   /**
    * Defines the content of the `ObjectPageSection`.
    */
@@ -33,7 +33,7 @@ const useStyles = createUseStyles(styles, { name: 'ObjectPageSection' });
  */
 const ObjectPageSection: FC<ObjectPageSectionPropTypes> = forwardRef(
   (props: ObjectPageSectionPropTypes, ref: RefObject<any>) => {
-    const { title, id, children, titleUppercase, className, style, tooltip } = props;
+    const { titleText, id, children, titleTextUppercase, className, style, tooltip } = props;
     const classes = useStyles();
 
     if (!id) {
@@ -44,12 +44,11 @@ const ObjectPageSection: FC<ObjectPageSectionPropTypes> = forwardRef(
     const htmlId = `ObjectPageSection-${id}`;
 
     const titleClasses = StyleClassHelper.of(classes.title);
-    if (titleUppercase) {
+    if (titleTextUppercase) {
       titleClasses.put(classes.uppercase);
     }
 
     const passThroughProps = usePassThroughHtmlProps(props, ['id']);
-
     return (
       <section
         ref={sectionRef}
@@ -61,12 +60,14 @@ const ObjectPageSection: FC<ObjectPageSectionPropTypes> = forwardRef(
         id={htmlId}
         data-component-name="ObjectPageSection"
       >
-        <div role="heading" aria-level={3} className={classes.header}>
-          <div className={titleClasses.valueOf()}>{title}</div>
+        <div role="heading" aria-level={3} className={classes.header} data-component-name="ObjectPageSectionTitleText">
+          <div className={titleClasses.className}>{titleText}</div>
         </div>
         {/* TODO Check for subsections as they should win over the children */}
         <div className={classes.sectionContent}>
-          <div className={classes.sectionContentInner}>{children}</div>
+          <div className={classes.sectionContentInner} data-component-name="ObjectPageSectionContent">
+            {children}
+          </div>
         </div>
       </section>
     );
@@ -74,10 +75,8 @@ const ObjectPageSection: FC<ObjectPageSectionPropTypes> = forwardRef(
 );
 
 ObjectPageSection.defaultProps = {
-  title: '',
-  // @ts-ignore
-  isSection: true,
-  titleUppercase: true
+  titleText: '',
+  titleTextUppercase: true
 };
 
 ObjectPageSection.displayName = 'ObjectPageSection';

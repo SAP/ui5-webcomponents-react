@@ -3,7 +3,7 @@ import { useIsomorphicLayoutEffect, useIsRTL } from '@ui5/webcomponents-react-ba
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
+import { enrichEventWithDetails, debounce } from '@ui5/webcomponents-react-base/dist/Utils';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { GlobalStyleClasses } from '@ui5/webcomponents-react/dist/GlobalStyleClasses';
 import { TableScaleWidthMode } from '@ui5/webcomponents-react/dist/TableScaleWidthMode';
@@ -11,7 +11,6 @@ import { TableSelectionBehavior } from '@ui5/webcomponents-react/dist/TableSelec
 import { TableSelectionMode } from '@ui5/webcomponents-react/dist/TableSelectionMode';
 import { TableVisibleRowCountMode } from '@ui5/webcomponents-react/dist/TableVisibleRowCountMode';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
-import debounce from 'lodash/debounce';
 import React, {
   ComponentType,
   CSSProperties,
@@ -81,11 +80,11 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    */
   data: Record<any, any>[];
   /**
-   * Component or text rendered in the title section of the `AnalyticalTable`.
+   * Component or text rendered in the header section of the `AnalyticalTable`.
    *
    * __Note:__ If not set, it will be hidden.
    */
-  title?: ReactText | ReactNode;
+  header?: ReactText | ReactNode;
   /**
    * Extension section of the Table. If not set, no extension area will be rendered
    */
@@ -308,7 +307,7 @@ const AnalyticalTable: FC<AnalyticalTablePropTypes> = forwardRef(
       className,
       style,
       tooltip,
-      title,
+      header,
       loading,
       groupBy,
       selectionMode,
@@ -488,8 +487,14 @@ const AnalyticalTable: FC<AnalyticalTablePropTypes> = forwardRef(
 
     const updateRowsCount = useCallback(() => {
       if (visibleRowCountMode === TableVisibleRowCountMode.AUTO && analyticalTableRef.current?.parentElement) {
-        const tableYPosition = analyticalTableRef.current?.offsetTop ?? 0;
-        const parentHeight = analyticalTableRef.current?.parentElement?.getBoundingClientRect().height;
+        const parentElement = analyticalTableRef.current?.parentElement;
+        const tableYPosition =
+          parentElement &&
+          getComputedStyle(parentElement).position === 'relative' &&
+          analyticalTableRef.current?.offsetTop
+            ? analyticalTableRef.current?.offsetTop
+            : 0;
+        const parentHeight = parentElement?.getBoundingClientRect().height;
         const tableHeight = parentHeight ? parentHeight - tableYPosition : 0;
         const rowCount = Math.floor((tableHeight - extensionsHeight) / popInRowHeight);
         dispatch({
@@ -699,7 +704,7 @@ const AnalyticalTable: FC<AnalyticalTablePropTypes> = forwardRef(
     }
     return (
       <div className={className} style={inlineStyle} title={tooltip} ref={analyticalTableRef} {...passThroughProps}>
-        {title && <TitleBar ref={titleBarRef}>{title}</TitleBar>}
+        {header && <TitleBar ref={titleBarRef}>{header}</TitleBar>}
         {extension && <div ref={extensionRef}>{extension}</div>}
         <FlexBox>
           <div
@@ -840,7 +845,6 @@ AnalyticalTable.defaultProps = {
   scaleWidthMode: TableScaleWidthMode.Default,
   data: [],
   columns: [],
-  title: null,
   minRows: 5,
   groupBy: [],
   NoDataComponent: DefaultNoDataComponent,

@@ -1,16 +1,10 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { RatingIndicator } from '@ui5/webcomponents-react/dist/RatingIndicator';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="Inputs / RatingIndicator"
   component={RatingIndicator}
-  argTypes={{
-    ...createSelectArgTypes({}),
-    ...DocsCommonProps
-  }}
   args={{
     style: {},
     className: '',

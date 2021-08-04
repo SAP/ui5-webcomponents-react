@@ -103,7 +103,7 @@ const useStyles = createUseStyles(styles, { name: 'Grid' });
 const Grid: FC<GridPropTypes> = forwardRef((props: GridPropTypes, ref: Ref<HTMLDivElement>) => {
   const { position, children, hSpacing, vSpacing, style, className, tooltip, slot, defaultIndent, defaultSpan } = props;
   const classes = useStyles();
-  const currentRange = useViewportRange('StdExt');
+  const currentRange = useViewportRange();
   const gridClasses = StyleClassHelper.of(classes.grid);
 
   if (GridPosition.Center === position) {
