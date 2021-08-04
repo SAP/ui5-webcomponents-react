@@ -112,6 +112,8 @@ export const getTypeDefinitionForProperty = (property, interfaces) => {
     case 'BarDesign':
     case 'BusyIndicatorSize':
     case 'ButtonDesign':
+    case 'BreadcrumbsDesign':
+    case 'BreadcrumbsSeparatorStyle':
     case 'CalendarType':
     case 'CalendarSelection':
     case 'CalendarSelectionMode':

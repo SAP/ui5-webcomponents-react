@@ -21,6 +21,7 @@ export const PRIVATE_COMPONENTS = new Set([
 ]);
 
 export const COMPONENTS_WITHOUT_DEMOS = new Set(PRIVATE_COMPONENTS);
+COMPONENTS_WITHOUT_DEMOS.add('BreadcrumbsItem');
 COMPONENTS_WITHOUT_DEMOS.add('CalendarDate');
 COMPONENTS_WITHOUT_DEMOS.add('CardHeader');
 COMPONENTS_WITHOUT_DEMOS.add('CustomListItem');
