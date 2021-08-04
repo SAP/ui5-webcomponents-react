@@ -391,8 +391,6 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
           prevChildren.current?.[child.key] &&
           //Input
           (child.props.children?.props?.value !== prevChildren.current?.[child.key]?.value ||
-            //Combobox
-            child.props.children?.props?.filterValue !== prevChildren.current?.[child.key]?.filterValue ||
             //Checkbox
             child.props.children?.props?.checked !== prevChildren.current?.[child.key]?.checked ||
             //Selectable

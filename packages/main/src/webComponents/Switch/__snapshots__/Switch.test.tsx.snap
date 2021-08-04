@@ -3,6 +3,7 @@
 exports[`Switch Basic Test (generated) 1`] = `
 <DocumentFragment>
   <ui5-switch
+    design="Textual"
     ui5-switch=""
   />
 </DocumentFragment>

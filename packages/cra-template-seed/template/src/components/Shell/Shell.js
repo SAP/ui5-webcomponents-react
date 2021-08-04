@@ -49,7 +49,7 @@ const Shell = ({ title, ...props }) => {
         logo={<img alt={t('shell.logo.alt')} src="https://sap.github.io/ui5-webcomponents/assets/images/sap-logo-svg.svg" />}
         onLogoClick={() => history.push(ROUTES.HOME)}
         profile={<Avatar icon="customer" shape={AvatarShape.Circle} />}
-        onProfileClick={(e) => popoverConfigItemsRef.current.openBy(e.detail.targetRef)}
+        onProfileClick={(e) => popoverConfigItemsRef.current.showAt(e.detail.targetRef)}
         {...props}
       />
       <div data-testid="emptySpace-wrapper" style={style.emptySpace} />

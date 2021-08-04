@@ -1,6 +1,7 @@
 import { ESLint } from 'eslint';
 import PATHS from '../../config/paths.js';
 import path from 'path';
+import fs from 'fs';
 
 const eslint = new ESLint({
   overrideConfig: {
@@ -104,59 +105,49 @@ export const getTypeDefinitionForProperty = (property, interfaces) => {
         importStatement: "import { CSSProperties } from 'react';"
       };
     // UI5 Web Component Enums
-    case 'AvatarBackgroundColor':
-    case 'AvatarFitType':
+    case 'AvatarColorScheme':
     case 'AvatarGroupType':
     case 'AvatarShape':
     case 'AvatarSize':
     case 'BarDesign':
     case 'BusyIndicatorSize':
     case 'ButtonDesign':
+    case 'BreadcrumbsDesign':
+    case 'BreadcrumbsSeparatorStyle':
     case 'CalendarType':
     case 'CalendarSelection':
     case 'CalendarSelectionMode':
     case 'CarouselArrowsPlacement':
     case 'FCLLayout':
+    case 'IllustrationMessageType':
     case 'InputType':
     case 'LinkDesign':
+    case 'ListItemType':
     case 'ListMode':
     case 'ListGrowingMode':
     case 'ListSeparators':
-    case 'MessageStripType':
+    case 'MessageStripDesign':
     case 'PageBackgroundDesign':
+    case 'PanelAccessibleRole':
     case 'PopoverHorizontalAlign':
+    case 'PopoverPlacementType':
     case 'PopoverVerticalAlign':
     case 'Priority':
     case 'SemanticColor':
+    case 'SwitchDesign':
     case 'TabLayout':
-    case 'TabContainerTabsPlacement':
     case 'TableGrowingMode':
+    case 'TableMode':
+    case 'TableRowType':
+    case 'TimelineLayout':
     case 'TitleLevel':
     case 'ToastPlacement':
     case 'UploadState':
     case 'ValueState':
+    case 'WrappingType':
       return {
         importStatement: `import { ${property.type} } from '@ui5/webcomponents-react/dist/${property.type}';`,
         tsType: `${property.type}`,
-        isEnum: true
-      };
-    case 'ListItemType': {
-      return {
-        importStatement: "import { ListItemTypes } from '@ui5/webcomponents-react/dist/ListItemTypes';",
-        tsType: 'ListItemTypes',
-        isEnum: true
-      };
-    }
-    case 'PanelAccessibleRole':
-      return {
-        importStatement: "import { PanelAccessibleRoles } from '@ui5/webcomponents-react/dist/PanelAccessibleRoles';",
-        tsType: 'PanelAccessibleRoles',
-        isEnum: true
-      };
-    case 'PopoverPlacementType':
-      return {
-        importStatement: "import { PlacementType } from '@ui5/webcomponents-react/dist/PlacementType';",
-        tsType: 'PlacementType',
         isEnum: true
       };
     default:
@@ -181,9 +172,9 @@ export const getEventTargetForComponent = (componentName) => {
     case 'StepInput':
     case 'Switch':
     case 'TimePicker':
+    case 'RadioButton':
       return 'HTMLInputElement';
     case 'Option':
-    case 'RadioButton':
       return 'HTMLOptionElement';
     case 'Button':
     case 'SegmentedButton':
@@ -200,12 +191,31 @@ export const getEventTargetForComponent = (componentName) => {
   }
 };
 
+export const getDomRefTypingForComponent = (componentName) => {
+  const availableInterfaces = fs
+    .readdirSync(path.resolve(PATHS.packages, 'main', 'src', 'interfaces'))
+    .filter((file) => {
+      return file.startsWith('Ui5');
+    })
+    .map((file) => path.basename(file, '.ts'));
+
+  if (availableInterfaces.includes(`Ui5${componentName}DomRef`)) {
+    return {
+      tsType: `Ui5${componentName}DomRef`,
+      importStatement: `import { Ui5${componentName}DomRef } from '@ui5/webcomponents-react/interfaces/Ui5${componentName}DomRef';`
+    };
+  }
+
+  return null;
+};
+
 export const runEsLint = async (text, name) => {
   const [result] = await eslint.lintText(text, {
     filePath: `packages/main/src/webComponents/${name}/index.tsx`
   });
   if (result.messages.length) {
     console.warn(`Failed to run ESLint for '${name}! Please check the file manually.'`);
+    console.warn(...result.messages);
     return text;
   }
   return result.output;

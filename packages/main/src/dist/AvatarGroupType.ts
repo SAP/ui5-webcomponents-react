@@ -1,1 +1,5 @@
-export { AvatarGroupType } from '../enums/AvatarGroupType';
+// Generated file - do not change manually!
+
+import { AvatarGroupType } from '../enums/AvatarGroupType';
+
+export { AvatarGroupType };

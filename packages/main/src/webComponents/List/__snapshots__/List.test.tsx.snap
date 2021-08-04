@@ -3,6 +3,8 @@
 exports[`List Basic Test (generated) 1`] = `
 <DocumentFragment>
   <ui5-list
+    accessible-role="listbox"
+    busy-delay="1000"
     growing="None"
     mode="None"
     separators="All"
@@ -10,8 +12,8 @@ exports[`List Basic Test (generated) 1`] = `
   >
     <ui5-li
       actionable=""
+      additional-text-state="None"
       has-title=""
-      info-state="None"
       type="Active"
       ui5-li=""
     >

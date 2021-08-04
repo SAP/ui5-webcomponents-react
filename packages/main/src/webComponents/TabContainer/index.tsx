@@ -1,12 +1,12 @@
-import { TabContainerTabsPlacement } from '@ui5/webcomponents-react/dist/TabContainerTabsPlacement';
 import { TabLayout } from '@ui5/webcomponents-react/dist/TabLayout';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/TabContainer';
 
-export interface TabContainerPropTypes extends WithWebComponentPropTypes {
+export interface TabContainerPropTypes extends CommonProps {
   /**
    * Defines whether the tab content is collapsed.
    */
@@ -22,9 +22,9 @@ export interface TabContainerPropTypes extends WithWebComponentPropTypes {
    */
   showOverflow?: boolean;
   /**
-   * Defines the alignment of the `main text` and the `additionalText` of a tab.
+   * Defines the alignment of the content and the `additionalText` of a tab.
    *
-   * **Note:** The `main text` and the `additionalText` would be displayed vertically by defualt, but when set to `Inline`, they would be displayed horizontally.
+   * **Note:** The content and the `additionalText` would be displayed vertically by defualt, but when set to `Inline`, they would be displayed horizontally.
    *
    * Available options are:
    *
@@ -32,12 +32,6 @@ export interface TabContainerPropTypes extends WithWebComponentPropTypes {
    * *   `Inline`
    */
   tabLayout?: TabLayout;
-  /**
-   * Defines the placement of the tab strip (tab buttons area) relative to the actual tabs' content.
-   *
-   * **Note:** By default the tab strip is displayed above the tabs' content area and this is the recommended layout for most scenarios. Set to `Bottom` only when the `TabContainer` is at the bottom of the page and you want the tab strip to act as a menu.
-   */
-  tabsPlacement?: TabContainerTabsPlacement;
   /**
    * Defines the tabs.
    *
@@ -62,9 +56,9 @@ export interface TabContainerPropTypes extends WithWebComponentPropTypes {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/TabContainer" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const TabContainer: FC<TabContainerPropTypes> = withWebComponent<TabContainerPropTypes>(
+const TabContainer = withWebComponent<TabContainerPropTypes>(
   'ui5-tabcontainer',
-  ['tabLayout', 'tabsPlacement'],
+  ['tabLayout'],
   ['collapsed', 'fixed', 'showOverflow'],
   ['overflowButton'],
   ['tab-select']
@@ -76,8 +70,7 @@ TabContainer.defaultProps = {
   collapsed: false,
   fixed: false,
   showOverflow: false,
-  tabLayout: TabLayout.Standard,
-  tabsPlacement: TabContainerTabsPlacement.Top
+  tabLayout: TabLayout.Standard
 };
 
 export { TabContainer };
