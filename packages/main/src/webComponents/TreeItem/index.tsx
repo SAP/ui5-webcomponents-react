@@ -1,6 +1,7 @@
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { Ui5TreeItemDomRef } from '@ui5/webcomponents-react/interfaces/Ui5TreeItemDomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/TreeItem';
@@ -47,7 +48,7 @@ export interface TreeItemPropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/TreeItem" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const TreeItem = withWebComponent<TreeItemPropTypes>(
+const TreeItem = withWebComponent<TreeItemPropTypes, Ui5TreeItemDomRef>(
   'ui5-tree-item',
   ['additionalText', 'additionalTextState', 'icon', 'text'],
   ['expanded', 'hasChildren', 'selected'],

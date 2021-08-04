@@ -1,6 +1,7 @@
 import { CarouselArrowsPlacement } from '@ui5/webcomponents-react/dist/CarouselArrowsPlacement';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { Ui5CarouselDomRef } from '@ui5/webcomponents-react/interfaces/Ui5CarouselDomRef';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { ReactNode } from 'react';
 
@@ -65,7 +66,7 @@ export interface CarouselPropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Carousel" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Carousel = withWebComponent<CarouselPropTypes>(
+const Carousel = withWebComponent<CarouselPropTypes, Ui5CarouselDomRef>(
   'ui5-carousel',
   ['arrowsPlacement', 'itemsPerPageL', 'itemsPerPageM', 'itemsPerPageS'],
   ['cyclic', 'hideNavigationArrows', 'hidePageIndicator'],

@@ -2,6 +2,7 @@ import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { Ui5TimePickerDomRef } from '@ui5/webcomponents-react/interfaces/Ui5TimePickerDomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/TimePicker';
@@ -66,7 +67,7 @@ export interface TimePickerPropTypes extends Omit<CommonProps, 'onChange' | 'onI
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/TimePicker" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const TimePicker = withWebComponent<TimePickerPropTypes>(
+const TimePicker = withWebComponent<TimePickerPropTypes, Ui5TimePickerDomRef>(
   'ui5-time-picker',
   ['formatPattern', 'placeholder', 'value', 'valueState'],
   ['disabled', 'readonly'],
