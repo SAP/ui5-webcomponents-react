@@ -1,0 +1,48 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+import { IllustratedMessage } from '@ui5/webcomponents-react/dist/IllustratedMessage';
+import { IllustrationMessageType } from '@ui5/webcomponents-react/dist/IllustrationMessageType';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+import '@ui5/webcomponents-fiori/dist/illustrations/BeforeSearch';
+import '@ui5/webcomponents-fiori/dist/illustrations/NoActivities';
+import '@ui5/webcomponents-fiori/dist/illustrations/NoData';
+import '@ui5/webcomponents-fiori/dist/illustrations/NoEntries';
+import '@ui5/webcomponents-fiori/dist/illustrations/NoMail';
+import '@ui5/webcomponents-fiori/dist/illustrations/NoNotifications';
+import '@ui5/webcomponents-fiori/dist/illustrations/NoSavedItems';
+import '@ui5/webcomponents-fiori/dist/illustrations/NoSearchResults';
+import '@ui5/webcomponents-fiori/dist/illustrations/NoTasks';
+import '@ui5/webcomponents-fiori/dist/illustrations/UnableToLoad';
+import '@ui5/webcomponents-fiori/dist/illustrations/UnableToUpload';
+
+<Meta
+  title="User Feedback / IllustratedMessage"
+  component={IllustratedMessage}
+  argTypes={{
+    children: { control: { disable: true } }
+  }}
+  args={{
+    name: IllustrationMessageType.BeforeSearch
+  }}
+/>
+
+<DocsHeader />
+
+<br />
+
+## Example
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return <IllustratedMessage {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+## Properties
+
+<ArgsTable story="." />
+
+## Usage
+
+`IllustratedMessage` is meant to be used inside container component, for example a `Card`, a `Dialog` or a `Page`.

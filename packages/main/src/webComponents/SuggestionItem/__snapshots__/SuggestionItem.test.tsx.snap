@@ -3,7 +3,7 @@
 exports[`SuggestionItem Basic Test (generated) 1`] = `
 <DocumentFragment>
   <ui5-suggestion-item
-    info-state="None"
+    additional-text-state="None"
     type="Active"
     ui5-suggestion-item=""
   />

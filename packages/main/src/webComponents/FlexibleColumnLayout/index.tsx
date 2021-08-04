@@ -1,11 +1,12 @@
 import { FCLLayout } from '@ui5/webcomponents-react/dist/FCLLayout';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/FlexibleColumnLayout';
 
-export interface FlexibleColumnLayoutPropTypes extends WithWebComponentPropTypes {
+export interface FlexibleColumnLayoutPropTypes extends CommonProps {
   /**
    * An object of strings that defines several additional accessibility texts for even further customization. It supports the following fields:
    *
@@ -18,6 +19,10 @@ export interface FlexibleColumnLayoutPropTypes extends WithWebComponentPropTypes
    * *   `endArrowRightText`: the text that the second arrow (between the `mid` and `end` columns) will have when pointing to the right
    */
   accessibilityTexts?: Record<string, unknown>;
+  /**
+   * Defines the visibility of the arrows, used for expanding and shrinking the columns.
+   */
+  hideArrows?: boolean;
   /**
    * Defines the columns layout and their proportion.
    *
@@ -40,10 +45,6 @@ export interface FlexibleColumnLayoutPropTypes extends WithWebComponentPropTypes
    * **For example:** layout=`TwoColumnsStartExpanded` means the layout will display up to two columns in 67%/33% proportion.
    */
   layout?: FCLLayout;
-  /**
-   * Defines the visibility of the arrows, used for expanding and shrinking the columns.
-   */
-  noArrows?: boolean;
   /**
    * Defines the content in the end column.
    *
@@ -89,10 +90,10 @@ export interface FlexibleColumnLayoutPropTypes extends WithWebComponentPropTypes
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/FlexibleColumnLayout" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const FlexibleColumnLayout: FC<FlexibleColumnLayoutPropTypes> = withWebComponent<FlexibleColumnLayoutPropTypes>(
+const FlexibleColumnLayout = withWebComponent<FlexibleColumnLayoutPropTypes>(
   'ui5-flexible-column-layout',
   ['accessibilityTexts', 'layout'],
-  ['noArrows'],
+  ['hideArrows'],
   ['endColumn', 'midColumn', 'startColumn'],
   ['layout-change']
 );
@@ -100,8 +101,8 @@ const FlexibleColumnLayout: FC<FlexibleColumnLayoutPropTypes> = withWebComponent
 FlexibleColumnLayout.displayName = 'FlexibleColumnLayout';
 
 FlexibleColumnLayout.defaultProps = {
-  layout: FCLLayout.OneColumn,
-  noArrows: false
+  hideArrows: false,
+  layout: FCLLayout.OneColumn
 };
 
 export { FlexibleColumnLayout };

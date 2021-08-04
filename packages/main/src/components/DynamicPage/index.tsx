@@ -296,7 +296,7 @@ const DynamicPage: FC<DynamicPagePropTypes> = forwardRef((props: DynamicPageProp
 DynamicPage.displayName = 'DynamicPage';
 
 DynamicPage.defaultProps = {
-  backgroundDesign: PageBackgroundDesign.Standard,
+  backgroundDesign: PageBackgroundDesign.Solid,
   showHideHeaderButton: true,
   headerContentPinnable: true,
   alwaysShowContentHeader: false

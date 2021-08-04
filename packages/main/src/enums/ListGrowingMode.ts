@@ -1,23 +1,21 @@
+// Generated file - do not change manually!
+
+/**
+ * Defines the growing mode of the component.
+ */
 export enum ListGrowingMode {
   /**
-   * Component's <code>load-more</code> is fired upon pressing a "More" button.
-   * at the bottom.
-   * @public
-   * @type {Button}
+   * Component's <code>load-more</code> is fired upon pressing a "More" button. at the bottom.
    */
   Button = 'Button',
 
   /**
-   * Component's <code>load-more</code> is fired upon scroll.
-   * @public
-   * @type {Scroll}
+   * Component's growing is not enabled.
    */
-  Scroll = 'Scroll',
+  None = 'None',
 
   /**
-   * Component's growing is not enabled.
-   * @public
-   * @type {None}
+   * Component's <code>load-more</code> is fired upon scroll.
    */
-  None = 'None'
+  Scroll = 'Scroll'
 }

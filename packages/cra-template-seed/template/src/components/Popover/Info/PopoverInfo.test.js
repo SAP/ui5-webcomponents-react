@@ -7,7 +7,7 @@ import PopoverInfo from './PopoverInfo';
 
 const popoverInfoRef = {
   current: {
-    openBy: jest.fn(),
+    showAt: jest.fn(),
   },
 };
 
@@ -15,7 +15,7 @@ describe('PopoverInfo.js Test Suite', () => {
   beforeEach(() => {
     render(
       <>
-        <p data-testid="opener-wrapper" onClick={(e) => popoverInfoRef.current.openBy(e.detail.targetRef)}>
+        <p data-testid="opener-wrapper" onClick={(e) => popoverInfoRef.current.showAt(e.detail.targetRef)}>
           Open Popover
         </p>
         <PopoverInfo popoverRef={popoverInfoRef} title="Some Title" />
@@ -54,7 +54,7 @@ describe('PopoverInfo.js Test Suite', () => {
   test('should render without title if none is passed', async () => {
     render(
       <>
-        <p data-testid="opener-wrapper" onClick={(e) => popoverInfoRef.current.openBy(e.detail.targetRef)}>
+        <p data-testid="opener-wrapper" onClick={(e) => popoverInfoRef.current.showAt(e.detail.targetRef)}>
           Open Popover
         </p>
         <PopoverInfo popoverRef={popoverInfoRef} />

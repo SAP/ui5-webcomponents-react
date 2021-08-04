@@ -78,7 +78,7 @@ export const FilterDialog = (props) => {
 
   useEffect(() => {
     if (open) {
-      dialogRef.current.open();
+      dialogRef.current.show();
     }
   }, [open]);
 

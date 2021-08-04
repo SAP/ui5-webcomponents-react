@@ -4,6 +4,7 @@ import { TableColumn } from '@ui5/webcomponents-react/dist/TableColumn';
 import { TableRow } from '@ui5/webcomponents-react/dist/TableRow';
 import { Label } from '@ui5/webcomponents-react/dist/Label';
 import { TableCell } from '@ui5/webcomponents-react/dist/TableCell';
+import { TableGroupRow } from '@ui5/webcomponents-react/dist/TableGroupRow';
 import { TableGrowingMode } from '@ui5/webcomponents-react/dist/TableGrowingMode';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import { useState } from 'react';
@@ -11,17 +12,10 @@ import { useState } from 'react';
 <Meta
   title="Data Display / Table"
   component={Table}
-  subcomponents={{ TableColumn, TableRow, TableCell }}
+  subcomponents={{ TableColumn, TableRow, TableCell, TableGroupRow }}
   argTypes={{
     columns: { control: { disable: true } },
     children: { control: { disable: true } }
-  }}
-  args={{
-    style: {},
-    className: '',
-    tooltip: '',
-    slot: '',
-    ref: null
   }}
 />
 
@@ -140,7 +134,7 @@ The `TableColumn` component allows defining column specific properties that are 
       },
       popinText: { description: `he text for the column when it pops in.` },
       noDataText: { table: { disable: true } },
-      showNoData: { table: { disable: true } },
+      hideNoData: { table: { disable: true } },
       stickyColumnHeader: { table: { disable: true } },
       columns: { control: { table: true } },
       onPopinChange: { table: { disable: true } },

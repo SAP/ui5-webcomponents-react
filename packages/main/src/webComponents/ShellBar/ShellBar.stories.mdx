@@ -21,8 +21,12 @@ import image from '../../components/ObjectPage/DemoImage.png';
   }}
   args={{
     logo: <img src="https://sap.github.io/ui5-webcomponents/assets/images/sap-logo-svg.svg" alt="SAP Logo" />,
-    profile: <Avatar image={image} />,
-    notificationCount: '10',
+    profile: (
+      <Avatar>
+        <img src={image} />
+      </Avatar>
+    ),
+    notificationsCount: '10',
     primaryTitle: 'Shell Bar',
     secondaryTitle: 'Fiori 3 Shell Bar',
     showCoPilot: true,
@@ -100,7 +104,7 @@ This component exposes public methods. You can invoke them directly on the insta
       onItemClick: {
         description: `Fired, when the item is pressed.<br /><br />__Note:__ To get the DOM reference of the clicked \`ShellBarItem\`, use \`event.detail.targetRef\`.`
       },
-      notificationCount: { table: { disable: true } },
+      notificationsCount: { table: { disable: true } },
       primaryTitle: { table: { disable: true } },
       secondaryTitle: { table: { disable: true } },
       showCoPilot: { table: { disable: true } },
@@ -138,7 +142,7 @@ To open a popover with the `ShellBarItem` you can use the `targetRef` property o
 const ShellBarComponent = () => {
   const popoverRef = useRef(null);
   const handleShellBarItemClick = (e) => {
-    popoverRef.current.openBy(e.detail.targetRef);
+    popoverRef.current.showAt(e.detail.targetRef);
   };
   return (
     <>

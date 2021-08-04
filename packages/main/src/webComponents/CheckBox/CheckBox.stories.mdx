@@ -54,14 +54,14 @@ You can disable the `CheckBox` by setting the `disabled` property to `true`, or 
     {() => {
       return (
         <>
-          <CheckBox text="Error" value-state={ValueState.Error} />
-          <CheckBox text="Warning" value-state={ValueState.Warning} />
+          <CheckBox text="Error" valueState={ValueState.Error} />
+          <CheckBox text="Warning" valueState={ValueState.Warning} />
           <CheckBox text="Disabled" disabled checked />
           <CheckBox text="Readonly" readonly checked />
-          <CheckBox text="Error disabled" disabled value-state={ValueState.Error} checked />
-          <CheckBox text="Warning disabled " disabled value-state={ValueState.Warning} checked />
-          <CheckBox text="Error readonly" readonly value-state={ValueState.Error} checked />
-          <CheckBox text="Warning readonly" readonly value-state={ValueState.Warning} checked />
+          <CheckBox text="Error disabled" disabled valueState={ValueState.Error} checked />
+          <CheckBox text="Warning disabled " disabled valueState={ValueState.Warning} checked />
+          <CheckBox text="Error readonly" readonly valueState={ValueState.Error} checked />
+          <CheckBox text="Warning readonly" readonly valueState={ValueState.Warning} checked />
         </>
       );
     }}

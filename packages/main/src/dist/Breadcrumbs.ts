@@ -1,4 +1,5 @@
-import type { BreadcrumbsPropTypes } from '../components/Breadcrumbs';
-import { Breadcrumbs } from '../components/Breadcrumbs';
+import { Breadcrumbs } from '../webComponents/Breadcrumbs';
+import type { BreadcrumbsPropTypes } from '../webComponents/Breadcrumbs';
+
 export { Breadcrumbs };
 export type { BreadcrumbsPropTypes };

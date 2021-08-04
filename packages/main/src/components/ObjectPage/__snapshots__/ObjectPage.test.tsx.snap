@@ -25,7 +25,6 @@ exports[`ObjectPage Default with Sections 1`] = `
         fixed="true"
         show-overflow="true"
         tab-layout="Standard"
-        tabs-placement="Top"
         ui5-tabcontainer=""
       >
         <ui5-object-page-anchor-tab
@@ -175,7 +174,6 @@ exports[`ObjectPage Default with SubSections 1`] = `
         fixed="true"
         show-overflow="true"
         tab-layout="Standard"
-        tabs-placement="Top"
         ui5-tabcontainer=""
       >
         <ui5-object-page-anchor-tab
@@ -483,7 +481,6 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
         fixed="true"
         show-overflow="true"
         tab-layout="Standard"
-        tabs-placement="Top"
         ui5-tabcontainer=""
       >
         <ui5-object-page-anchor-tab
@@ -639,7 +636,6 @@ exports[`ObjectPage Not crashing with 0 sections 1`] = `
         fixed="true"
         show-overflow="true"
         tab-layout="Standard"
-        tabs-placement="Top"
         ui5-tabcontainer=""
       />
     </div>
@@ -676,7 +672,6 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
         fixed="true"
         show-overflow="true"
         tab-layout="Standard"
-        tabs-placement="Top"
         ui5-tabcontainer=""
       >
         <ui5-object-page-anchor-tab
@@ -748,7 +743,6 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
         fixed="true"
         show-overflow="true"
         tab-layout="Standard"
-        tabs-placement="Top"
         ui5-tabcontainer=""
       >
         <ui5-object-page-anchor-tab
@@ -893,7 +887,6 @@ exports[`ObjectPage with anchor-bar 1`] = `
         fixed="true"
         show-overflow="true"
         tab-layout="Standard"
-        tabs-placement="Top"
         ui5-tabcontainer=""
       >
         <ui5-object-page-anchor-tab
@@ -1220,7 +1213,6 @@ exports[`ObjectPage with footer 1`] = `
         fixed="true"
         show-overflow="true"
         tab-layout="Standard"
-        tabs-placement="Top"
         ui5-tabcontainer=""
       >
         <ui5-object-page-anchor-tab
@@ -1562,7 +1554,6 @@ exports[`ObjectPage with header 1`] = `
         fixed="true"
         show-overflow="true"
         tab-layout="Standard"
-        tabs-placement="Top"
         ui5-tabcontainer=""
       >
         <ui5-object-page-anchor-tab
@@ -1958,7 +1949,6 @@ exports[`ObjectPage with img 1`] = `
         fixed="true"
         show-overflow="true"
         tab-layout="Standard"
-        tabs-placement="Top"
         ui5-tabcontainer=""
       >
         <ui5-object-page-anchor-tab
@@ -2281,7 +2271,6 @@ exports[`ObjectPage with img 2`] = `
       >
         <ui5-avatar
           class="CollapsedAvatar-imageContainer"
-          image-fit-type="Cover"
           shape="Circle"
           size="S"
           ui5-avatar=""
@@ -2334,7 +2323,6 @@ exports[`ObjectPage with img 2`] = `
       >
         <ui5-avatar
           class="ObjectPage-headerImage"
-          image-fit-type="Cover"
           shape="Circle"
           size="L"
           ui5-avatar=""
@@ -2367,7 +2355,6 @@ exports[`ObjectPage with img 2`] = `
         fixed="true"
         show-overflow="true"
         tab-layout="Standard"
-        tabs-placement="Top"
         ui5-tabcontainer=""
       >
         <ui5-object-page-anchor-tab
@@ -2731,7 +2718,6 @@ exports[`ObjectPage with title 1`] = `
         fixed="true"
         show-overflow="true"
         tab-layout="Standard"
-        tabs-placement="Top"
         ui5-tabcontainer=""
       >
         <ui5-object-page-anchor-tab
@@ -3101,7 +3087,6 @@ exports[`ObjectPage with title, header & footer 1`] = `
         fixed="true"
         show-overflow="true"
         tab-layout="Standard"
-        tabs-placement="Top"
         ui5-tabcontainer=""
       >
         <ui5-object-page-anchor-tab

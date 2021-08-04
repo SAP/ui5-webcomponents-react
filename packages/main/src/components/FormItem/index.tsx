@@ -2,16 +2,8 @@ import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
 import { Label, LabelPropTypes } from '@ui5/webcomponents-react/dist/Label';
-import React, {
-  cloneElement,
-  CSSProperties,
-  FC,
-  isValidElement,
-  ReactElement,
-  ReactNode,
-  ReactNodeArray,
-  useMemo
-} from 'react';
+import { WrappingType } from '@ui5/webcomponents-react/dist/WrappingType';
+import React, { cloneElement, CSSProperties, FC, isValidElement, ReactElement, ReactNode, ReactNodeArray } from 'react';
 import { createUseStyles } from 'react-jss';
 import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming';
 
@@ -67,7 +59,7 @@ const renderLabel = (
 ) => {
   if (typeof label === 'string') {
     return (
-      <Label className={classes.label} style={styles} wrap>
+      <Label className={classes.label} style={styles} wrappingType={WrappingType.Normal}>
         {label ? `${label}:` : ''}
       </Label>
     );
@@ -77,7 +69,7 @@ const renderLabel = (
     return cloneElement<LabelPropTypes>(
       label,
       {
-        wrap: (label as ReactElement<LabelPropTypes>).props.wrap ?? true,
+        wrappingType: (label as ReactElement<LabelPropTypes>).props.wrappingType ?? WrappingType.Normal,
         className: `${classes.label} ${(label as ReactElement<LabelPropTypes>).props.className ?? ''}`,
         style: {
           gridColumnStart: styles.gridColumnStart,
