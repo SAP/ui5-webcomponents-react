@@ -152,6 +152,7 @@ import { Themes } from './lib/Themes';
 import { TimePicker } from './lib/TimePicker';
 import { Timeline } from './lib/Timeline';
 import { TimelineItem } from './lib/TimelineItem';
+import { TimelineLayout } from './lib/TimelineLayout';
 import { Title } from './lib/Title';
 import { TitleLevel } from './lib/TitleLevel';
 import { Toast } from './lib/Toast';
@@ -326,6 +327,7 @@ export {
   TimePicker,
   Timeline,
   TimelineItem,
+  TimelineLayout,
   Title,
   TitleLevel,
   Toast,

@@ -518,6 +518,12 @@ const getTypeScriptTypeForProperty = (property) => {
         tsType: 'TableGrowingMode',
         isEnum: true
       };
+    case 'TimelineLayout':
+      return {
+        importStatement: "import { TimelineLayout } from '@ui5/webcomponents-react/lib/TimelineLayout';",
+        tsType: 'TimelineLayout',
+        isEnum: true
+      };
     case 'TitleLevel':
       return {
         importStatement: "import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';",

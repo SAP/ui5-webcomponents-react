@@ -1,6 +1,7 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { Timeline } from '@ui5/webcomponents-react/lib/Timeline';
 import { TimelineItem } from '@ui5/webcomponents-react/lib/TimelineItem';
+import { TimelineLayout } from '@ui5/webcomponents-react/lib/TimelineLayout';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
@@ -13,7 +14,7 @@ import '@ui5/webcomponents-icons/dist/wrench';
   component={Timeline}
   subcomponents={{ TimelineItem }}
   argTypes={{
-    ...createSelectArgTypes({}),
+    ...createSelectArgTypes({layout: TimelineLayout }),
     ...DocsCommonProps,
     children: { control: { disable: true } }
   }}
