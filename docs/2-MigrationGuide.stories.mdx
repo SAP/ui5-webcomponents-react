@@ -43,7 +43,7 @@ npx ui5wcr-codemod renamePropsV18 src --typescript
 
 ### Avatar
 
-The `Avatar` component does not longer have an `img` prop but expects you to pass an `<img />` element as children.
+The `Avatar` component does no longer have an `img` prop but expects you to pass an `<img />` element as children.
 In addition, the `imageFitType` prop is replaced by using the `objectFit` style property on the image:
 
 ```jsx
@@ -75,7 +75,7 @@ The header part of the `Card` component has been extracted into an own component
   subheading={"My Sub Heading"}
   status={"Status"}
   headerInteractive
-  action={}
+  action={<Button>Go</Button>}
   avatar={<Icon name="person-placeholder" />}
   onHeaderClick={console.log}
 >
