@@ -1,7 +1,13 @@
-import { screen, render, fireEvent } from '@shared/tests';
 import * as React from 'react';
 import { complexDataSet } from '../../resources/DemoProps';
 import { BarChart } from './BarChart';
+import { createPassThroughPropsTest } from '@shared/tests/utils';
+import {
+  createChartRenderTest,
+  createLoadingPlaceholderTest,
+  createOnClickChartTest,
+  createOnLegendClickNotCrashTest
+} from '@shared/tests/chartUtils';
 
 const dimensions = [
   {
@@ -28,33 +34,13 @@ const measures = [
 ];
 
 describe('BarChart', () => {
-  test('Renders with data', () => {
-    const utils = render(<BarChart dataset={complexDataSet} dimensions={dimensions} measures={measures} />);
-    expect(utils.asFragment()).toMatchSnapshot();
-  });
+  createChartRenderTest(BarChart, { dataset: complexDataSet, dimensions, measures });
 
-  test('loading placeholder', () => {
-    const wrapper = render(<BarChart dimensions={[]} measures={[]} />);
-    expect(wrapper.asFragment()).toMatchSnapshot();
-  });
+  createOnClickChartTest(BarChart, { dataset: complexDataSet, dimensions, measures });
 
-  test('onLegendClick', () => {
-    const cb = jest.fn((e) => {
-      e.persist();
-    });
-    render(<BarChart dataset={complexDataSet} dimensions={dimensions} measures={measures} onLegendClick={cb} />);
-    fireEvent.click(screen.getByText('Users'));
-    expect(cb).toBeCalled();
-    expect(cb.mock.calls[0][0].detail.dataKey).toEqual('users');
-  });
+  createLoadingPlaceholderTest(BarChart, { dimensions: [], measures: [] });
 
-  test('onLegendClick should not crash when invalid handler is provided', () => {
-    render(
-      <BarChart dataset={complexDataSet} dimensions={dimensions} measures={measures} onLegendClick={'123' as any} />
-    );
+  createOnLegendClickNotCrashTest(BarChart, { dataset: complexDataSet, dimensions, measures });
 
-    expect(() => {
-      fireEvent.click(screen.getByText('Users'));
-    }).not.toThrow();
-  });
+  createPassThroughPropsTest(BarChart, { dimensions: [], measures: [] });
 });
