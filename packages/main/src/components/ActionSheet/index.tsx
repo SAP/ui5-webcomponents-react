@@ -12,7 +12,6 @@ import { ResponsivePopover } from '@ui5/webcomponents-react/dist/ResponsivePopov
 import React, {
   Children,
   cloneElement,
-  FC,
   forwardRef,
   ReactElement,
   RefObject,
@@ -84,148 +83,146 @@ if (isPhone()) {
  * The `ActionSheet` holds a list of buttons from which the user can select to complete an action. <br />
  * The children of the action sheet should be `Button` components. Elements in the `ActionSheet` are left-aligned. Actions should be arranged in order of importance, from top to bottom.
  */
-const ActionSheet: FC<ActionSheetPropTypes> = forwardRef(
-  (props: ActionSheetPropTypes, ref: RefObject<Ui5ResponsivePopoverDomRef>) => {
-    const {
-      children,
-      style,
-      slot,
-      className,
-      allowTargetOverlap,
-      headerText,
-      horizontalAlign,
-      initialFocus,
-      modal,
-      hideArrow,
-      placementType,
-      verticalAlign,
-      footer,
-      header,
-      onAfterClose,
-      onAfterOpen,
-      onBeforeClose,
-      onBeforeOpen,
-      showCancelButton,
-      alwaysShowHeader
-    } = props;
-    const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
-    const classes = useStyles();
-    const actionSheetClasses = StyleClassHelper.of(classes.actionSheet).putIfPresent(className);
-    const popoverRef: RefObject<Ui5ResponsivePopoverDomRef> = useConsolidatedRef(ref);
-    const actionBtnsRef = useRef(null);
-    const [focusedItem, setFocusedItem] = useReducer((_, action) => {
-      return parseInt(action.target.dataset.actionBtnIndex);
-    }, 0);
-    const childrenToRender = Children.toArray(children).filter(Boolean);
-    const childrenArrayLength = childrenToRender.length;
-    const childrenLength = isPhone() && showCancelButton ? childrenArrayLength + 1 : childrenArrayLength;
+const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: RefObject<Ui5ResponsivePopoverDomRef>) => {
+  const {
+    children,
+    style,
+    slot,
+    className,
+    allowTargetOverlap,
+    headerText,
+    horizontalAlign,
+    initialFocus,
+    modal,
+    hideArrow,
+    placementType,
+    verticalAlign,
+    footer,
+    header,
+    onAfterClose,
+    onAfterOpen,
+    onBeforeClose,
+    onBeforeOpen,
+    showCancelButton,
+    alwaysShowHeader
+  } = props;
+  const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
+  const classes = useStyles();
+  const actionSheetClasses = StyleClassHelper.of(classes.actionSheet).putIfPresent(className);
+  const popoverRef: RefObject<Ui5ResponsivePopoverDomRef> = useConsolidatedRef(ref);
+  const actionBtnsRef = useRef(null);
+  const [focusedItem, setFocusedItem] = useReducer((_, action) => {
+    return parseInt(action.target.dataset.actionBtnIndex);
+  }, 0);
+  const childrenToRender = Children.toArray(children).filter(Boolean);
+  const childrenArrayLength = childrenToRender.length;
+  const childrenLength = isPhone() && showCancelButton ? childrenArrayLength + 1 : childrenArrayLength;
 
-    const handleCancelBtnClick = () => {
-      popoverRef.current.close();
-    };
+  const handleCancelBtnClick = () => {
+    popoverRef.current.close();
+  };
 
-    const onActionButtonClicked = (handler) => (e) => {
-      popoverRef.current.close();
-      if (typeof handler === 'function') {
-        handler(e);
+  const onActionButtonClicked = (handler) => (e) => {
+    popoverRef.current.close();
+    if (typeof handler === 'function') {
+      handler(e);
+    }
+  };
+
+  const handleKeyDown = useCallback(
+    (e) => {
+      const currentIndex = parseInt(e.target.dataset.actionBtnIndex);
+      if (e.key === 'ArrowDown' && currentIndex + 1 < childrenLength) {
+        actionBtnsRef.current.querySelector(`[data-action-btn-index="${currentIndex + 1}"]`).focus();
       }
-    };
+      if (e.key === 'ArrowUp' && currentIndex > 0) {
+        actionBtnsRef.current.querySelector(`[data-action-btn-index="${currentIndex - 1}"]`).focus();
+      }
+    },
+    [childrenLength, actionBtnsRef.current]
+  );
 
-    const handleKeyDown = useCallback(
-      (e) => {
-        const currentIndex = parseInt(e.target.dataset.actionBtnIndex);
-        if (e.key === 'ArrowDown' && currentIndex + 1 < childrenLength) {
-          actionBtnsRef.current.querySelector(`[data-action-btn-index="${currentIndex + 1}"]`).focus();
-        }
-        if (e.key === 'ArrowUp' && currentIndex > 0) {
-          actionBtnsRef.current.querySelector(`[data-action-btn-index="${currentIndex - 1}"]`).focus();
-        }
-      },
-      [childrenLength, actionBtnsRef.current]
-    );
+  const renderActionSheetButton = (element, index: number, childrenArray) => {
+    return cloneElement(element, {
+      role: 'button',
+      key: index,
+      design: ButtonDesign.Transparent,
+      onClick: onActionButtonClicked(element.props?.onClick),
+      'data-action-btn-index': index,
+      'aria-label': `${i18nBundle.getText(X_OF_Y, index + 1, childrenArray.length)} ${element.props?.children}`,
+      tabIndex: focusedItem === index ? 0 : -1,
+      onFocus: setFocusedItem
+    });
+  };
 
-    const renderActionSheetButton = (element, index: number, childrenArray) => {
-      return cloneElement(element, {
-        role: 'button',
-        key: index,
-        design: ButtonDesign.Transparent,
-        onClick: onActionButtonClicked(element.props?.onClick),
-        'data-action-btn-index': index,
-        'aria-label': `${i18nBundle.getText(X_OF_Y, index + 1, childrenArray.length)} ${element.props?.children}`,
-        tabIndex: focusedItem === index ? 0 : -1,
-        onFocus: setFocusedItem
-      });
-    };
+  const passThroughProps = usePassThroughHtmlProps(props, [
+    'onAfterClose',
+    'onAfterOpen',
+    'onBeforeClose',
+    'onBeforeOpen'
+  ]);
+  const handleAfterOpen = useCallback(
+    (e) => {
+      if (isPhone()) {
+        actionBtnsRef.current.querySelector(`[data-action-btn-index="${focusedItem}"]`).focus();
+      }
+      if (typeof onAfterOpen === 'function') {
+        onAfterOpen(e);
+      }
+    },
+    [onAfterOpen, actionBtnsRef.current, focusedItem]
+  );
+  const displayHeader = alwaysShowHeader || isPhone();
 
-    const passThroughProps = usePassThroughHtmlProps(props, [
-      'onAfterClose',
-      'onAfterOpen',
-      'onBeforeClose',
-      'onBeforeOpen'
-    ]);
-    const handleAfterOpen = useCallback(
-      (e) => {
-        if (isPhone()) {
-          actionBtnsRef.current.querySelector(`[data-action-btn-index="${focusedItem}"]`).focus();
-        }
-        if (typeof onAfterOpen === 'function') {
-          onAfterOpen(e);
-        }
-      },
-      [onAfterOpen, actionBtnsRef.current, focusedItem]
-    );
-    const displayHeader = alwaysShowHeader || isPhone();
-
-    return createPortal(
-      <ResponsivePopover
-        aria-modal
-        role="dialog"
-        style={style}
-        slot={slot}
-        allowTargetOverlap={allowTargetOverlap}
-        headerText={displayHeader ? headerText : undefined}
-        horizontalAlign={horizontalAlign}
-        initialFocus={initialFocus}
-        modal={modal}
-        hideArrow={hideArrow}
-        placementType={placementType}
-        verticalAlign={verticalAlign}
-        footer={footer}
-        header={displayHeader ? header : undefined}
-        onAfterClose={onAfterClose}
-        onBeforeClose={onBeforeClose}
-        onBeforeOpen={onBeforeOpen}
-        {...passThroughProps}
-        onAfterOpen={handleAfterOpen}
-        ref={popoverRef}
-        className={actionSheetClasses.className}
-        data-actionsheet
+  return createPortal(
+    <ResponsivePopover
+      aria-modal
+      role="dialog"
+      style={style}
+      slot={slot}
+      allowTargetOverlap={allowTargetOverlap}
+      headerText={displayHeader ? headerText : undefined}
+      horizontalAlign={horizontalAlign}
+      initialFocus={initialFocus}
+      modal={modal}
+      hideArrow={hideArrow}
+      placementType={placementType}
+      verticalAlign={verticalAlign}
+      footer={footer}
+      header={displayHeader ? header : undefined}
+      onAfterClose={onAfterClose}
+      onBeforeClose={onBeforeClose}
+      onBeforeOpen={onBeforeOpen}
+      {...passThroughProps}
+      onAfterOpen={handleAfterOpen}
+      ref={popoverRef}
+      className={actionSheetClasses.className}
+      data-actionsheet
+    >
+      <div
+        className={isPhone() ? classes.contentMobile : undefined}
+        role="presentation"
+        aria-label={i18nBundle.getText(AVAILABLE_ACTIONS)}
+        onKeyDown={handleKeyDown}
+        ref={actionBtnsRef}
       >
-        <div
-          className={isPhone() ? classes.contentMobile : undefined}
-          role="presentation"
-          aria-label={i18nBundle.getText(AVAILABLE_ACTIONS)}
-          onKeyDown={handleKeyDown}
-          ref={actionBtnsRef}
-        >
-          {childrenToRender.map(renderActionSheetButton)}
-          {isPhone() && showCancelButton && (
-            <Button
-              design={ButtonDesign.Negative}
-              onClick={handleCancelBtnClick}
-              tabIndex={focusedItem === childrenLength - 1 ? 0 : -1}
-              data-action-btn-index={childrenLength - 1}
-              onFocus={setFocusedItem}
-            >
-              {i18nBundle.getText(CANCEL)}
-            </Button>
-          )}
-        </div>
-      </ResponsivePopover>,
-      document.body
-    );
-  }
-);
+        {childrenToRender.map(renderActionSheetButton)}
+        {isPhone() && showCancelButton && (
+          <Button
+            design={ButtonDesign.Negative}
+            onClick={handleCancelBtnClick}
+            tabIndex={focusedItem === childrenLength - 1 ? 0 : -1}
+            data-action-btn-index={childrenLength - 1}
+            onFocus={setFocusedItem}
+          >
+            {i18nBundle.getText(CANCEL)}
+          </Button>
+        )}
+      </div>
+    </ResponsivePopover>,
+    document.body
+  );
+});
 
 ActionSheet.defaultProps = {
   showCancelButton: true,

@@ -8,7 +8,6 @@ import React, {
   Children,
   cloneElement,
   CSSProperties,
-  FC,
   forwardRef,
   ReactElement,
   ReactNode,
@@ -100,7 +99,7 @@ const useStyles = createUseStyles(styles, { name: 'Grid' });
 /**
  * A layout container component used for aligning items with various sizes in a simple grid.
  */
-const Grid: FC<GridPropTypes> = forwardRef((props: GridPropTypes, ref: Ref<HTMLDivElement>) => {
+const Grid = forwardRef((props: GridPropTypes, ref: Ref<HTMLDivElement>) => {
   const { position, children, hSpacing, vSpacing, style, className, tooltip, slot, defaultIndent, defaultSpan } = props;
   const classes = useStyles();
   const currentRange = useViewportRange();

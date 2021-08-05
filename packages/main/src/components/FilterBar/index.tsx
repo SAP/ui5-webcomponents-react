@@ -3,9 +3,9 @@ import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassH
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { debounce, enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import {
+  ADAPT_FILTERS,
   CLEAR,
   FILTERS,
-  ADAPT_FILTERS,
   GO,
   HIDE_FILTER_BAR,
   RESTORE,
@@ -25,7 +25,6 @@ import React, {
   Children,
   cloneElement,
   CSSProperties,
-  FC,
   forwardRef,
   MouseEventHandler,
   ReactElement,
@@ -193,7 +192,7 @@ const useStyles = createUseStyles(styles, { name: 'FilterBar' });
  * The `FilterBar` displays filters in a user-friendly manner to populate values for a query. It consists of a row containing the `VariantManagement`, the related buttons, and an area underneath displaying the filters. The filters are arranged in a logical row that is divided depending on the space available and the width of the filters. The area containing the filters can be hidden or shown using the "Hide FilterBar / Show FilterBar" button, the "Filters" button shows the filter dialog.
  In this dialog, the consumer has full control over the FilterBar. The filters in this dialog are displayed in one column and organized in groups. Each filter can be marked as visible in the FilterBar by selecting "Add to FilterBar".
  */
-const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivElement>) => {
+const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivElement>) => {
   const {
     children,
     useToolbar,
