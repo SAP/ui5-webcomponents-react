@@ -10,7 +10,6 @@ import { ToolbarStyle } from '@ui5/webcomponents-react/dist/ToolbarStyle';
 import React, {
   cloneElement,
   createRef,
-  FC,
   forwardRef,
   ReactElement,
   ReactFragment,
@@ -61,7 +60,7 @@ export interface ToolbarPropTypes extends Omit<CommonProps, 'onClick'> {
  * The content of the `Toolbar` moves into the overflow area from right to left when the available space is not enough in the visible area of the container.
  * It can be accessed by the user through the overflow button that opens it in a popover.
  */
-const Toolbar: FC<ToolbarPropTypes> = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) => {
+const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) => {
   const { children, toolbarStyle, design, active, style, tooltip, className, onClick, slot } = props;
   const classes = useStyles();
   const outerContainer: RefObject<HTMLDivElement> = useConsolidatedRef(ref);

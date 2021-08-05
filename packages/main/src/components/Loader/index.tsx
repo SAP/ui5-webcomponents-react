@@ -4,7 +4,7 @@ import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassH
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { PLEASE_WAIT } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { LoaderType } from '@ui5/webcomponents-react/dist/LoaderType';
-import React, { CSSProperties, FC, forwardRef, RefObject, useEffect, useMemo, useState } from 'react';
+import React, { CSSProperties, forwardRef, RefObject, useEffect, useMemo, useState } from 'react';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { styles } from './Loader.jss';
 
@@ -30,7 +30,7 @@ const useStyles = createUseStyles(styles, { name: 'Loader' });
  * The `Loader` signals that an operation is currently being executed. It uses as little space as possible to allow the user to interact with the UI.<br />
  * It can be used to signal a data update on an already existing dataset, or where an expansion will happen.
  */
-const Loader: FC<LoaderPropTypes> = forwardRef((props: LoaderPropTypes, ref: RefObject<HTMLDivElement>) => {
+const Loader = forwardRef((props: LoaderPropTypes, ref: RefObject<HTMLDivElement>) => {
   const { className, type, progress, tooltip, slot, style, delay } = props;
   const classes = useStyles();
   const [isVisible, setIsVisible] = useState(delay === 0);

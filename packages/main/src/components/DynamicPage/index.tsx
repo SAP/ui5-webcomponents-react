@@ -9,7 +9,6 @@ import { PageBackgroundDesign } from '@ui5/webcomponents-react/dist/PageBackgrou
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import React, {
   cloneElement,
-  FC,
   forwardRef,
   ReactElement,
   ReactNode,
@@ -87,7 +86,7 @@ const useStyles = createUseStyles(styles, { name: 'DynamicPage' });
  * The header of the dynamic page is collapsible, which helps users to focus on the actual page content, but still ensures that important header information
  * and actions are readily available.
  */
-const DynamicPage: FC<DynamicPagePropTypes> = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivElement>) => {
+const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivElement>) => {
   const {
     headerTitle,
     headerContent,

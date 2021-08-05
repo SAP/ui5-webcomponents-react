@@ -2,7 +2,7 @@ import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import React, { FC, forwardRef, ReactNode, ReactNodeArray, Ref, useMemo } from 'react';
+import React, { forwardRef, ReactNode, ReactNodeArray, Ref, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { DynamicPageHeaderStyles } from './DynamicPageHeader.jss';
 
@@ -30,44 +30,42 @@ const useStyles = createUseStyles(DynamicPageHeaderStyles, { name: 'DynamicPageH
  * The dynamic page header contains the header content of the dynamic page.
  * This component can be collapsed and pinned by the anchorbar.
  */
-const DynamicPageHeader: FC<DynamicPageHeaderPropTypes> = forwardRef(
-  (props: InternalProps, ref: Ref<HTMLDivElement>) => {
-    const { children, headerPinned, topHeaderHeight, tooltip, className, style } = props;
+const DynamicPageHeader = forwardRef((props: InternalProps, ref: Ref<HTMLDivElement>) => {
+  const { children, headerPinned, topHeaderHeight, tooltip, className, style } = props;
 
-    const passThroughProps = usePassThroughHtmlProps(props);
+  const passThroughProps = usePassThroughHtmlProps(props);
 
-    const headerStyles = useMemo(() => {
-      if (headerPinned) {
-        return {
-          ...style,
-          top: `${topHeaderHeight}px`,
-          zIndex: 1
-        };
-      }
-      return style;
-    }, [headerPinned, topHeaderHeight, style]);
-
-    const classes = useStyles();
-    const classNames = StyleClassHelper.of(classes.header);
-    if (isIE()) {
-      classNames.put(classes.iEClass);
+  const headerStyles = useMemo(() => {
+    if (headerPinned) {
+      return {
+        ...style,
+        top: `${topHeaderHeight}px`,
+        zIndex: 1
+      };
     }
-    classNames.putIfPresent(className);
+    return style;
+  }, [headerPinned, topHeaderHeight, style]);
 
-    return (
-      <div
-        title={tooltip}
-        ref={ref}
-        {...passThroughProps}
-        className={classNames.className}
-        data-component-name="DynamicPageHeader"
-        style={headerStyles}
-      >
-        {children}
-      </div>
-    );
+  const classes = useStyles();
+  const classNames = StyleClassHelper.of(classes.header);
+  if (isIE()) {
+    classNames.put(classes.iEClass);
   }
-);
+  classNames.putIfPresent(className);
+
+  return (
+    <div
+      title={tooltip}
+      ref={ref}
+      {...passThroughProps}
+      className={classNames.className}
+      data-component-name="DynamicPageHeader"
+      style={headerStyles}
+    >
+      {children}
+    </div>
+  );
+});
 
 DynamicPageHeader.displayName = 'DynamicPageHeader';
 

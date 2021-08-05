@@ -3,7 +3,7 @@ import { createUseStyles } from 'react-jss';
 import { CssSizeVariables } from '@ui5/webcomponents-react-base/dist/CssSizeVariables';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
-import React from 'react';
+import React, { forwardRef, Ref } from 'react';
 import { SEPARATOR } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 
@@ -19,7 +19,7 @@ const useStyles = createUseStyles(styles, { name: 'ToolbarSeparator' });
 
 export type ToolbarSeparatorPropTypes = CommonProps;
 
-const ToolbarSeparator = (props: ToolbarSeparatorPropTypes) => {
+const ToolbarSeparator = forwardRef((props: ToolbarSeparatorPropTypes, ref: Ref<HTMLDivElement>) => {
   const { style, className } = props;
   const classes = useStyles();
   const separatorClasses = StyleClassHelper.of(classes.separator);
@@ -31,12 +31,13 @@ const ToolbarSeparator = (props: ToolbarSeparatorPropTypes) => {
 
   return (
     <div
+      ref={ref}
       style={style}
       className={separatorClasses.valueOf()}
       aria-label={i18nBundle.getText(SEPARATOR)}
       {...passThroughProps}
     />
   );
-};
+});
 ToolbarSeparator.displayName = 'ToolbarSeparator';
 export { ToolbarSeparator };
