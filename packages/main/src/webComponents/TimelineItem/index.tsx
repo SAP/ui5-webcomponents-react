@@ -1,10 +1,11 @@
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/TimelineItem';
 
-export interface TimelineItemPropTypes extends WithWebComponentPropTypes {
+export interface TimelineItemPropTypes extends CommonProps {
   /**
    * Defines the icon to be displayed as graphical element within the `TimelineItem`. SAP-icons font provides numerous options.
    *
@@ -12,13 +13,13 @@ export interface TimelineItemPropTypes extends WithWebComponentPropTypes {
    */
   icon?: string;
   /**
-   * Defines the name of the item.
+   * Defines the name of the item, displayed before the `title-text`.
    */
-  itemName?: string;
+  name?: string;
   /**
-   * Defines whether the `itemName` is clickable.
+   * Defines if the `name` is clickable.
    */
-  itemNameClickable?: boolean;
+  nameClickable?: boolean;
   /**
    * Defines the subtitle text of the component.
    */
@@ -34,9 +35,9 @@ export interface TimelineItemPropTypes extends WithWebComponentPropTypes {
   /**
    * Fired when the item name is pressed either with a click/tap or by using the Enter or Space key.
    *
-   * **Note:** The event will not be fired if the `item-name-clickable` attribute is not set.
+   * **Note:** The event will not be fired if the `name-clickable` attribute is not set.
    */
-  onItemNameClick?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  onNameClick?: (event: Ui5CustomEvent<HTMLElement>) => void;
 }
 
 /**
@@ -44,18 +45,18 @@ export interface TimelineItemPropTypes extends WithWebComponentPropTypes {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/TimelineItem" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const TimelineItem: FC<TimelineItemPropTypes> = withWebComponent<TimelineItemPropTypes>(
+const TimelineItem = withWebComponent<TimelineItemPropTypes>(
   'ui5-timeline-item',
-  ['icon', 'itemName', 'subtitleText', 'titleText'],
-  ['itemNameClickable'],
+  ['icon', 'name', 'subtitleText', 'titleText'],
+  ['nameClickable'],
   [],
-  ['item-name-click']
+  ['name-click']
 );
 
 TimelineItem.displayName = 'TimelineItem';
 
 TimelineItem.defaultProps = {
-  itemNameClickable: false
+  nameClickable: false
 };
 
 export { TimelineItem };

@@ -1,6 +1,6 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { Panel } from '@ui5/webcomponents-react/dist/Panel';
-import { PanelAccessibleRoles } from '@ui5/webcomponents-react/dist/PanelAccessibleRoles';
+import { PanelAccessibleRole } from '@ui5/webcomponents-react/dist/PanelAccessibleRole';
 import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
 import { Title } from '@ui5/webcomponents-react/dist/Title';
 import { Text } from '@ui5/webcomponents-react/dist/Text';
@@ -20,7 +20,7 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
     header: { control: { disable: true } }
   }}
   args={{
-    accessibleRole: PanelAccessibleRoles.Form,
+    accessibleRole: PanelAccessibleRole.Form,
     headerLevel: TitleLevel.H2,
     headerText: 'Panel',
     style: {},

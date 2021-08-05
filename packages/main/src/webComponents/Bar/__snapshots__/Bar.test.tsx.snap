@@ -12,14 +12,12 @@ exports[`Bar Basic Test (generated) 1`] = `
       End
     </span>
     <span
-      slot="middleContent"
-    >
-      Middle
-    </span>
-    <span
       slot="startContent"
     >
       Start
+    </span>
+    <span>
+      Middle
     </span>
   </ui5-bar>
 </DocumentFragment>

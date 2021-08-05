@@ -2,8 +2,8 @@
 
 exports[`RadioButton Basic Test (generated) 1`] = `
 <DocumentFragment>
-  <ui5-radiobutton
-    ui5-radiobutton=""
+  <ui5-radio-button
+    ui5-radio-button=""
     value-state="None"
   />
 </DocumentFragment>

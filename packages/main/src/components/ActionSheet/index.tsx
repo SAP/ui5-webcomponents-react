@@ -96,7 +96,7 @@ const ActionSheet: FC<ActionSheetPropTypes> = forwardRef(
       horizontalAlign,
       initialFocus,
       modal,
-      noArrow,
+      hideArrow,
       placementType,
       verticalAlign,
       footer,
@@ -187,7 +187,7 @@ const ActionSheet: FC<ActionSheetPropTypes> = forwardRef(
         horizontalAlign={horizontalAlign}
         initialFocus={initialFocus}
         modal={modal}
-        noArrow={noArrow}
+        hideArrow={hideArrow}
         placementType={placementType}
         verticalAlign={verticalAlign}
         footer={footer}

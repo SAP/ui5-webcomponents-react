@@ -1,25 +1,29 @@
-import { ListItemTypes } from '@ui5/webcomponents-react/dist/ListItemTypes';
+import { ListItemType } from '@ui5/webcomponents-react/dist/ListItemType';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import { FC } from 'react';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 
 import '@ui5/webcomponents/dist/SuggestionItem';
 
-export interface SuggestionItemPropTypes extends WithWebComponentPropTypes {
+export interface SuggestionItemPropTypes extends CommonProps {
+  /**
+   * Defines the `additionalText`, displayed in the end of the item.
+   */
+  additionalText?: string;
+  /**
+   * Defines the state of the `additionalText`.
+   *
+   * Available options are: `"None"` (by default), `"Success"`, `"Warning"` and `"Erorr"`.
+   */
+  additionalTextState?: ValueState;
   /**
    * Defines the description displayed right under the item text, if such is present.
    */
   description?: string;
   /**
-   * Defines the item to be displayed as a group item.
-   *
-   * **Note:** When set, the other properties, such as `image`, `icon`, `description`, etc. will be omitted and only the `text` will be displayed.
-   */
-  group?: boolean;
-  /**
    * Defines the `icon` source URI.
    *
-   * **Note:** SAP-icons font provides numerous buil-in icons. To find all the available icons, see the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
+   * **Note:** SAP-icons font provides numerous built-in icons. To find all the available icons, see the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
    */
   icon?: string;
   /**
@@ -35,17 +39,7 @@ export interface SuggestionItemPropTypes extends WithWebComponentPropTypes {
    */
   image?: string;
   /**
-   * Defines the `info`, displayed in the end of the item.
-   */
-  info?: string;
-  /**
-   * Defines the state of the `info`.
-   *
-   * Available options are: `"None"` (by default), `"Success"`, `"Warning"` and `"Erorr"`.
-   */
-  infoState?: ValueState;
-  /**
-   * Defines the text of the `SuggestionItem`.
+   * Defines the text of the component.
    */
   text?: string;
   /**
@@ -53,7 +47,7 @@ export interface SuggestionItemPropTypes extends WithWebComponentPropTypes {
    *
    * **Note:** When set to `Active`, the item will provide visual response upon press and hover, while when `Inactive` or `Detail` - will not.
    */
-  type?: ListItemTypes;
+  type?: ListItemType;
 }
 
 /**
@@ -61,10 +55,10 @@ export interface SuggestionItemPropTypes extends WithWebComponentPropTypes {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/SuggestionItem" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const SuggestionItem: FC<SuggestionItemPropTypes> = withWebComponent<SuggestionItemPropTypes>(
+const SuggestionItem = withWebComponent<SuggestionItemPropTypes>(
   'ui5-suggestion-item',
-  ['description', 'icon', 'image', 'info', 'infoState', 'text', 'type'],
-  ['group', 'iconEnd'],
+  ['additionalText', 'additionalTextState', 'description', 'icon', 'image', 'text', 'type'],
+  ['iconEnd'],
   [],
   []
 );
@@ -72,10 +66,9 @@ const SuggestionItem: FC<SuggestionItemPropTypes> = withWebComponent<SuggestionI
 SuggestionItem.displayName = 'SuggestionItem';
 
 SuggestionItem.defaultProps = {
-  group: false,
+  additionalTextState: ValueState.None,
   iconEnd: false,
-  infoState: ValueState.None,
-  type: ListItemTypes.Active
+  type: ListItemType.Active
 };
 
 export { SuggestionItem };

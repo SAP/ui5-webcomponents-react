@@ -9,9 +9,9 @@ import { CANCEL, VARIANTS } from '@ui5/webcomponents-react/dist/assets/i18n/i18n
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
 import { List } from '@ui5/webcomponents-react/dist/List';
-import { ListItemTypes } from '@ui5/webcomponents-react/dist/ListItemTypes';
+import { ListItemType } from '@ui5/webcomponents-react/dist/ListItemType';
 import { ListMode } from '@ui5/webcomponents-react/dist/ListMode';
-import { PlacementType } from '@ui5/webcomponents-react/dist/PlacementType';
+import { PopoverPlacementType } from '@ui5/webcomponents-react/dist/PopoverPlacementType';
 import { ResponsivePopover } from '@ui5/webcomponents-react/dist/ResponsivePopover';
 import { StandardListItem } from '@ui5/webcomponents-react/dist/StandardListItem';
 import { Title } from '@ui5/webcomponents-react/dist/Title';
@@ -31,7 +31,7 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
   /**
    * Determines on which side the VariantManagement popover is placed at.
    */
-  placement?: PlacementType;
+  placement?: PopoverPlacementType;
   /**
    * Describes the title of the VariantManagement popover.
    *
@@ -130,7 +130,7 @@ const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
 
     const handleOpenVariantManagement = useCallback(
       (e) => {
-        popoverRef.current.open(e.target);
+        popoverRef.current.showAt(e.target);
       },
       [popoverRef]
     );
@@ -208,7 +208,7 @@ const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
                 <StandardListItem
                   style={{ width: '300px' }}
                   data-key={item.key}
-                  type={ListItemTypes.Active}
+                  type={ListItemType.Active}
                   key={item.key}
                   selected={selectedKey === item.key}
                 >
@@ -227,7 +227,7 @@ const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
 VariantManagement.defaultProps = {
   onSelect: () => {},
   closeOnItemSelect: true,
-  placement: PlacementType.Bottom,
+  placement: PopoverPlacementType.Bottom,
   level: TitleLevel.H4,
   disabled: false,
   variantItems: []

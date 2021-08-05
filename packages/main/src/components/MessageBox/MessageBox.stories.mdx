@@ -169,6 +169,7 @@ const MessageBoxComponent = () => {
           // do something on "Custom Action" button click
         }
         setOpen(false);
+        args.onClose(e);
       };
       return (
         <>

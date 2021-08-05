@@ -1,14 +1,16 @@
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { FC, ReactNode } from 'react';
+import { Ui5ShellBarDomRef } from '@ui5/webcomponents-react/interfaces/Ui5ShellBarDomRef';
+import { ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/ShellBar';
 
-export interface ShellBarPropTypes extends WithWebComponentPropTypes {
+export interface ShellBarPropTypes extends CommonProps {
   /**
-   * Defines the `notificationCount`, displayed in the notification icon top-right corner.
+   * Defines the `notificationsCount`, displayed in the notification icon top-right corner.
    */
-  notificationCount?: string;
+  notificationsCount?: string;
   /**
    * Defines the `primaryTitle`.
    *
@@ -108,9 +110,9 @@ export interface ShellBarPropTypes extends WithWebComponentPropTypes {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/ShellBar" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const ShellBar: FC<ShellBarPropTypes> = withWebComponent<ShellBarPropTypes>(
+const ShellBar = withWebComponent<ShellBarPropTypes, Ui5ShellBarDomRef>(
   'ui5-shellbar',
-  ['notificationCount', 'primaryTitle', 'secondaryTitle'],
+  ['notificationsCount', 'primaryTitle', 'secondaryTitle'],
   ['showCoPilot', 'showNotifications', 'showProductSwitch'],
   ['logo', 'menuItems', 'profile', 'searchField', 'startButton'],
   ['co-pilot-click', 'logo-click', 'menu-item-click', 'notifications-click', 'product-switch-click', 'profile-click']

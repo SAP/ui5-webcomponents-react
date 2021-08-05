@@ -10,7 +10,7 @@ import { AvatarSize } from '@ui5/webcomponents-react/dist/AvatarSize';
 import { GlobalStyleClasses } from '@ui5/webcomponents-react/dist/GlobalStyleClasses';
 import { List } from '@ui5/webcomponents-react/dist/List';
 import { ObjectPageMode } from '@ui5/webcomponents-react/dist/ObjectPageMode';
-import { PlacementType } from '@ui5/webcomponents-react/dist/PlacementType';
+import { PopoverPlacementType } from '@ui5/webcomponents-react/dist/PopoverPlacementType';
 import { Popover } from '@ui5/webcomponents-react/dist/Popover';
 import { StandardListItem } from '@ui5/webcomponents-react/dist/StandardListItem';
 import { TabContainer } from '@ui5/webcomponents-react/dist/TabContainer';
@@ -580,7 +580,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   const onShowSubSectionPopover = useCallback(
     (e, section) => {
       setPopoverContent(section);
-      popoverRef.current.openBy(e.detail.targetRef);
+      popoverRef.current.showAt(e.detail.targetRef);
     },
     [setPopoverContent, popoverRef]
   );
@@ -736,9 +736,9 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         </TabContainer>
         {createPortal(
           <Popover
-            placementType={PlacementType.Bottom}
+            placementType={PopoverPlacementType.Bottom}
             horizontalAlign={PopoverHorizontalAlign.Left}
-            noArrow
+            hideArrow
             ref={popoverRef}
             onAfterClose={stopPropagation}
           >
