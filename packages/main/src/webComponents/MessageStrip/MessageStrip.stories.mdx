@@ -1,6 +1,6 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { MessageStrip } from '@ui5/webcomponents-react/dist/MessageStrip';
-import { MessageStripType } from '@ui5/webcomponents-react/dist/MessageStripType';
+import { MessageStripDesign } from '@ui5/webcomponents-react/dist/MessageStripDesign';
 import '@ui5/webcomponents-icons/dist/employee.js';
 import { Icon } from '@ui5/webcomponents-react/dist/Icon';
 import { DocsHeader } from '@shared/stories/DocsHeader';
@@ -13,13 +13,8 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
     icon: { control: { disable: true } }
   }}
   args={{
-    type: MessageStripType.Information,
-    children: 'MessageStrip Text',
-    style: {},
-    className: '',
-    tooltip: '',
-    slot: '',
-    ref: null
+    design: MessageStripDesign.Information,
+    children: 'MessageStrip Text'
   }}
 />
 
@@ -43,7 +38,7 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
 
 ## Usage
 
-For the `MessageStrip` component, you can define whether it displays an icon in the beginning and a close button. Moreover, its size and background can be controlled with CSS.
+For the `MessageStrip` component, you can define whether it displays an icon in the beginning, and a close button. Moreover, its size and background can be controlled with CSS.
 
 <b />
 

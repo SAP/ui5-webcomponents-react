@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { spacing } from '@ui5/webcomponents-react-base';
-import { Label as UI5Label } from '@ui5/webcomponents-react';
+import { Label as UI5Label, WrappingType } from '@ui5/webcomponents-react';
 
 const Label = ({ style, ...props }) => {
   const innerStyle = {
@@ -11,7 +11,7 @@ const Label = ({ style, ...props }) => {
   };
 
   return (
-    <UI5Label data-testid="label-wrapper" wrap style={innerStyle} {...props}>
+    <UI5Label data-testid="label-wrapper" wrappingType={WrappingType.Normal} style={innerStyle} {...props}>
       {props.children}
     </UI5Label>
   );

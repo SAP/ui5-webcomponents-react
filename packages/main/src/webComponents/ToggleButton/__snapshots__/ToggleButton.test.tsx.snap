@@ -2,9 +2,9 @@
 
 exports[`ToggleButton Basic Test (generated) 1`] = `
 <DocumentFragment>
-  <ui5-togglebutton
+  <ui5-toggle-button
     design="Default"
-    ui5-togglebutton=""
+    ui5-toggle-button=""
   />
 </DocumentFragment>
 `;

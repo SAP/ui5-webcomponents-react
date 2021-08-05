@@ -7,6 +7,7 @@ import '@ui5/webcomponents-icons/dist/decline';
 import { Title } from '@ui5/webcomponents-react/dist/Title';
 import { Label } from '@ui5/webcomponents-react/dist/Label';
 import { Breadcrumbs } from '@ui5/webcomponents-react/dist/Breadcrumbs';
+import { BreadcrumbsItem } from '@ui5/webcomponents-react/dist/BreadcrumbsItem';
 import { PageBackgroundDesign } from '@ui5/webcomponents-react/dist/PageBackgroundDesign';
 import { Link } from '@ui5/webcomponents-react/dist/Link';
 import { Bar } from '@ui5/webcomponents-react/dist/Bar';
@@ -47,7 +48,7 @@ import { useReducer, useState } from 'react';
     }
   }}
   args={{
-    backgroundDesign: PageBackgroundDesign.Standard,
+    backgroundDesign: PageBackgroundDesign.Solid,
     style: { maxHeight: '700px' },
     headerTitle: (
       <DynamicPageTitle
@@ -70,12 +71,12 @@ import { useReducer, useState } from 'react';
         ]}
         breadcrumbs={
           <Breadcrumbs>
-            <Link>Home</Link>
-            <Link>Page 1</Link>
-            <Link>Page 2</Link>
-            <Link>Page 3</Link>
-            <Link>Page 4</Link>
-            <Link>Page 5</Link>
+            <BreadcrumbsItem>Home</BreadcrumbsItem>
+            <BreadcrumbsItem>Page 1</BreadcrumbsItem>
+            <BreadcrumbsItem>Page 2</BreadcrumbsItem>
+            <BreadcrumbsItem>Page 3</BreadcrumbsItem>
+            <BreadcrumbsItem>Page 4</BreadcrumbsItem>
+            <BreadcrumbsItem>Page 5</BreadcrumbsItem>
           </Breadcrumbs>
         }
         header={<Title>Header Title</Title>}
@@ -213,12 +214,12 @@ import { useReducer, useState } from 'react';
                   navigationActions={navigationItems}
                   breadcrumbs={
                     <Breadcrumbs>
-                      <Link>Home</Link>
-                      <Link>Page 1</Link>
-                      <Link>Page 2</Link>
-                      <Link>Page 3</Link>
-                      <Link>Page 4</Link>
-                      <Link>Page 5</Link>
+                      <BreadcrumbsItem>Home</BreadcrumbsItem>
+                      <BreadcrumbsItem>Page 1</BreadcrumbsItem>
+                      <BreadcrumbsItem>Page 2</BreadcrumbsItem>
+                      <BreadcrumbsItem>Page 3</BreadcrumbsItem>
+                      <BreadcrumbsItem>Page 4</BreadcrumbsItem>
+                      <BreadcrumbsItem>Page 5</BreadcrumbsItem>
                     </Breadcrumbs>
                   }
                   header={

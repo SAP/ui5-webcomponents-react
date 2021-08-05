@@ -3,7 +3,6 @@
 exports[`Avatar Basic Test (generated) 1`] = `
 <DocumentFragment>
   <ui5-avatar
-    image-fit-type="Cover"
     shape="Circle"
     ui5-avatar=""
   />

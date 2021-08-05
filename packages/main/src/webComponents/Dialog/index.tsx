@@ -1,14 +1,20 @@
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { FC, ReactNode } from 'react';
+import { Ui5DialogDomRef } from '@ui5/webcomponents-react/interfaces/Ui5DialogDomRef';
+import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Dialog';
 
-export interface DialogPropTypes extends WithWebComponentPropTypes {
+export interface DialogPropTypes extends CommonProps {
   /**
-   * Determines whether the `Dialog` is draggable. If this property is set to true, the Dialog will be draggable by its header.
+   * Sets the accessible aria name of the component.
+   */
+  accessibleName?: string;
+  /**
+   * Determines whether the component is draggable. If this property is set to true, the Dialog will be draggable by its header.
    *
-   * **Note:** The `Dialog` can be draggable only in desktop mode.
+   * **Note:** The component can be draggable only in desktop mode.
    */
   draggable?: boolean;
   /**
@@ -18,16 +24,16 @@ export interface DialogPropTypes extends WithWebComponentPropTypes {
    */
   headerText?: string;
   /**
-   * Configures the `Dialog` to be resizable. If this property is set to true, the Dialog will have a resize handle in its bottom right corner in LTR languages. In RTL languages, the resize handle will be placed in the bottom left corner.
+   * Configures the component to be resizable. If this property is set to true, the Dialog will have a resize handle in its bottom right corner in LTR languages. In RTL languages, the resize handle will be placed in the bottom left corner.
    *
-   * **Note:** The `Dialog` can be resizable only in desktop mode.
+   * **Note:** The component can be resizable only in desktop mode.
    * **Note:** Upon resizing, externally defined height and width styling will be ignored.
    */
   resizable?: boolean;
   /**
-   * Determines whether the `Dialog` should be stretched to fullscreen.
+   * Determines whether the component should be stretched to fullscreen.
    *
-   * **Note:** The `Dialog` will be stretched to approximately 90% of the viewport.
+   * **Note:** The component will be stretched to approximately 90% of the viewport.
    */
   stretch?: boolean;
   /**
@@ -48,6 +54,8 @@ export interface DialogPropTypes extends WithWebComponentPropTypes {
   /**
    * Defines the header HTML Element.
    *
+   * **Note:** If `header` slot is provided, the labelling of the dialog is a responsibility of the application developer. `accessibleName` should be used.
+   *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
    */
@@ -57,19 +65,19 @@ export interface DialogPropTypes extends WithWebComponentPropTypes {
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Fired after the component is closed. This event does not bubble.
+   * Fired after the component is closed. **This event does not bubble.**
    */
   onAfterClose?: (event: Ui5CustomEvent<HTMLElement>) => void;
   /**
-   * Fired after the component is opened. This event does not bubble.
+   * Fired after the component is opened. **This event does not bubble.**
    */
   onAfterOpen?: (event: Ui5CustomEvent<HTMLElement>) => void;
   /**
-   * Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing. This event does not bubble.
+   * Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing. **This event does not bubble.**
    */
   onBeforeClose?: (event: Ui5CustomEvent<HTMLElement, { escPressed: boolean }>) => void;
   /**
-   * Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. This event does not bubble.
+   * Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. **This event does not bubble.**
    */
   onBeforeOpen?: (event: Ui5CustomEvent<HTMLElement>) => void;
 }
@@ -81,9 +89,9 @@ export interface DialogPropTypes extends WithWebComponentPropTypes {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Dialog" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Dialog: FC<DialogPropTypes> = withWebComponent<DialogPropTypes>(
+const Dialog = withWebComponent<DialogPropTypes, Ui5DialogDomRef>(
   'ui5-dialog',
-  ['headerText', 'initialFocus'],
+  ['accessibleName', 'headerText', 'initialFocus'],
   ['draggable', 'resizable', 'stretch', 'preventFocusRestore'],
   ['footer', 'header'],
   ['after-close', 'after-open', 'before-close', 'before-open']

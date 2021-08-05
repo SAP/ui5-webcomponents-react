@@ -1,5 +1,21 @@
+// Generated file - do not change manually!
+
+/**
+ * Different types of BusyIndicator.
+ */
 export enum BusyIndicatorSize {
-  Small = 'Small',
+  /**
+   * large size
+   */
+  Large = 'Large',
+
+  /**
+   * medium size
+   */
   Medium = 'Medium',
-  Large = 'Large'
+
+  /**
+   * small size
+   */
+  Small = 'Small'
 }

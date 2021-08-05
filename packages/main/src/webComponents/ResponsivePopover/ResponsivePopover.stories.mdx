@@ -3,11 +3,12 @@ import { ResponsivePopover } from '@ui5/webcomponents-react/dist/ResponsivePopov
 import { Bar } from '@ui5/webcomponents-react/dist/Bar';
 import { Title } from '@ui5/webcomponents-react/dist/Title';
 import { Icon } from '@ui5/webcomponents-react/dist/Icon';
+import { Label } from '@ui5/webcomponents-react/dist/Label';
 import { List } from '@ui5/webcomponents-react/dist/List';
 import { StandardListItem } from '@ui5/webcomponents-react/dist/StandardListItem';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/dist/PopoverHorizontalAlign';
-import { PlacementType } from '@ui5/webcomponents-react/dist/PlacementType';
+import { PopoverPlacementType } from '@ui5/webcomponents-react/dist/PopoverPlacementType';
 import { PopoverVerticalAlign } from '@ui5/webcomponents-react/dist/PopoverVerticalAlign';
 import { CSSProperties, useRef } from 'react';
 import '@ui5/webcomponents-icons/dist/settings.js';
@@ -21,11 +22,14 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
     header: { control: { disable: true } }
   }}
   args={{
-    children:
-      'Press "Esc", click outside or in mobile-mode press the "x" in the corner to close the ResponsivePopover.',
+    children: (
+      <Label>
+        Press "Esc", click outside or in mobile-mode press the "x" in the corner to close the ResponsivePopover.
+      </Label>
+    ),
     headerText: 'ResponsivePopover Header',
     horizontalAlign: PopoverHorizontalAlign.Center,
-    placementType: PlacementType.Right,
+    placementType: PopoverPlacementType.Right,
     verticalAlign: PopoverVerticalAlign.Center,
     style: {},
     className: '',
@@ -46,7 +50,7 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
     {(args) => {
       const popoverRef = useRef(null);
       const onButtonClick = (e) => {
-        popoverRef.current.open(e.target);
+        popoverRef.current.showAt(e.target);
       };
       return (
         <>
@@ -69,7 +73,7 @@ This component exposes public methods. You can invoke them directly on the insta
 | Name           | Parameters                                                                                                                                                    | Description                                                                                                               |
 | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
 | **close**      | &mdash;                                                                                                                                                       | Closes the popover/dialog.                                                                                                |
-| **open**       | <dl><dt className="methodText">**opener**</dt><dd className="methodText">the element that the popover is opened by</dd><dd><code>HTMLElement</code></dd></dl> | Opens popover on desktop and dialog on mobile.                                                                            |
+| **showAt**     | <dl><dt className="methodText">**opener**</dt><dd className="methodText">the element that the popover is opened by</dd><dd><code>HTMLElement</code></dd></dl> | Opens popover on desktop and dialog on mobile.                                                                            |
 | **applyFocus** | &mdash;                                                                                                                                                       | Focuses the element denoted by <code>initialFocus</code>, if provided, or the first focusable element otherwise.          |
 | **isOpen**     | &mdash;                                                                                                                                                       | Override this method to provide custom logic for the popup's open/closed state. Maps to the "opened" property by default. |
 
@@ -87,7 +91,7 @@ Use it when you want to make sure that all the content is visible on any device
   const PopoverComponent = () => {
     const popoverRef = useRef();
     const onButtonClick = (e) => {
-        popoverRef.current.open(e.target);
+        popoverRef.current.showAt(e.target);
     };
     return (
       <>
@@ -107,7 +111,7 @@ In this case, we recommend using [createPortal](https://reactjs.org/docs/portals
 const PopoverComponent = () => {
   const popoverRef = useRef(null);
   const onButtonClick = (e) => {
-    popoverRef.current.open(e.target);
+    popoverRef.current.showAt(e.target);
   };
   return (
     <>
@@ -126,7 +130,7 @@ Closing `ResponsivePopovers` works in the same way as opening them. So again an 
   const PopoverComponent = () => {
     const popoverRef = useRef();
     const handleOpen = (e) => {
-        popoverRef.current.open(e.target);
+        popoverRef.current.showAt(e.target);
     };
     const handleClose = () => {
         popoverRef.current.close();
@@ -151,7 +155,7 @@ Closing `ResponsivePopovers` works in the same way as opening them. So again an 
     {(args) => {
       const popoverRef = useRef(null);
       const onButtonClick = (e) => {
-        popoverRef.current.open(e.target);
+        popoverRef.current.showAt(e.target);
       };
       const handleClose = () => {
         popoverRef.current.close();
@@ -162,13 +166,17 @@ Closing `ResponsivePopovers` works in the same way as opening them. So again an 
           <ResponsivePopover
             {...args}
             ref={popoverRef}
-            header={<Bar middleContent={<Title>Popover</Title>} endContent={<Icon name="settings" />} />}
+            header={
+              <Bar endContent={<Icon name="settings" />}>
+                <Title>Popover</Title>
+              </Bar>
+            }
             footer={<Bar endContent={<Button onClick={handleClose}>Close</Button>} />}
           >
             <List style={{ width: '200px' }}>
-              <StandardListItem info="3">List Item 1</StandardListItem>
-              <StandardListItem info="2">List Item 2</StandardListItem>
-              <StandardListItem info="1">List Item 3</StandardListItem>
+              <StandardListItem additionalText="3">List Item 1</StandardListItem>
+              <StandardListItem additionalText="2">List Item 2</StandardListItem>
+              <StandardListItem additionalText="1">List Item 3</StandardListItem>
             </List>
           </ResponsivePopover>
         </>

@@ -3,7 +3,7 @@
 exports[`DynamicPage always show content header 1`] = `
 <DocumentFragment>
   <div
-    class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundStandard"
+    class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundSolid"
   >
     <div
       class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container StdExtPadding-Desktop"
@@ -17,109 +17,42 @@ exports[`DynamicPage always show content header 1`] = `
         <div
           class="DynamicPageTitle-breadcrumbs"
         >
-          <nav
-            aria-label="Breadcrumb Trail"
+          <ui5-breadcrumbs
+            design="Standard"
+            separator-style="Slash"
+            ui5-breadcrumbs=""
           >
-            <ol
-              class="Breadcrumbs-list"
+            <ui5-breadcrumbs-item
+              ui5-breadcrumbs-item=""
             >
-              <li>
-                <ui5-link
-                  data-breadcrumb-index="0"
-                  design="Default"
-                  tabindex="0"
-                  ui5-link=""
-                >
-                  Home
-                </ui5-link>
-                <ui5-label
-                  aria-hidden="true"
-                  class="Breadcrumbs-separatorInline"
-                  ui5-label=""
-                >
-                  /
-                </ui5-label>
-              </li>
-              <li>
-                <ui5-link
-                  data-breadcrumb-index="1"
-                  design="Default"
-                  tabindex="-1"
-                  ui5-link=""
-                >
-                  Page 1
-                </ui5-link>
-                <ui5-label
-                  aria-hidden="true"
-                  class="Breadcrumbs-separatorInline"
-                  ui5-label=""
-                >
-                  /
-                </ui5-label>
-              </li>
-              <li>
-                <ui5-link
-                  data-breadcrumb-index="2"
-                  design="Default"
-                  tabindex="-1"
-                  ui5-link=""
-                >
-                  Page 2
-                </ui5-link>
-                <ui5-label
-                  aria-hidden="true"
-                  class="Breadcrumbs-separatorInline"
-                  ui5-label=""
-                >
-                  /
-                </ui5-label>
-              </li>
-              <li>
-                <ui5-link
-                  data-breadcrumb-index="3"
-                  design="Default"
-                  tabindex="-1"
-                  ui5-link=""
-                >
-                  Page 3
-                </ui5-link>
-                <ui5-label
-                  aria-hidden="true"
-                  class="Breadcrumbs-separatorInline"
-                  ui5-label=""
-                >
-                  /
-                </ui5-label>
-              </li>
-              <li>
-                <ui5-link
-                  data-breadcrumb-index="4"
-                  design="Default"
-                  tabindex="-1"
-                  ui5-link=""
-                >
-                  Page 4
-                </ui5-link>
-                <ui5-label
-                  aria-hidden="true"
-                  class="Breadcrumbs-separatorInline"
-                  ui5-label=""
-                >
-                  /
-                </ui5-label>
-              </li>
-              <li>
-                <ui5-link
-                  data-breadcrumb-index="5"
-                  design="Default"
-                  tabindex="-1"
-                  ui5-link=""
-                >
-                  Page 5
-                </ui5-link>
-              </li>
-            </ol>
-          </nav>
+              Home
+            </ui5-breadcrumbs-item>
+            <ui5-breadcrumbs-item
+              ui5-breadcrumbs-item=""
+            >
+              Page 1
+            </ui5-breadcrumbs-item>
+            <ui5-breadcrumbs-item
+              ui5-breadcrumbs-item=""
+            >
+              Page 2
+            </ui5-breadcrumbs-item>
+            <ui5-breadcrumbs-item
+              ui5-breadcrumbs-item=""
+            >
+              Page 3
+            </ui5-breadcrumbs-item>
+            <ui5-breadcrumbs-item
+              ui5-breadcrumbs-item=""
+            >
+              Page 4
+            </ui5-breadcrumbs-item>
+            <ui5-breadcrumbs-item
+              ui5-breadcrumbs-item=""
+            >
+              Page 5
+            </ui5-breadcrumbs-item>
+          </ui5-breadcrumbs>
         </div>
       </div>
       <div
@@ -352,7 +285,7 @@ exports[`DynamicPage always show content header 1`] = `
 exports[`DynamicPage hider header button 1`] = `
 <DocumentFragment>
   <div
-    class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundStandard"
+    class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundSolid"
   >
     <div
       class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container StdExtPadding-Desktop"
@@ -537,7 +470,7 @@ exports[`DynamicPage hider header button 1`] = `
           class="FormItem-label"
           style="grid-column-start: 1; grid-row-start: 3;"
           ui5-label=""
-          wrap="true"
+          wrapping-type="Normal"
         >
           Home:
         </ui5-label>
@@ -555,7 +488,7 @@ exports[`DynamicPage hider header button 1`] = `
           class="FormItem-label"
           style="grid-column-start: 1; grid-row-start: 4;"
           ui5-label=""
-          wrap="true"
+          wrapping-type="Normal"
         />
         <div
           class="FormItem-content"
@@ -578,7 +511,7 @@ exports[`DynamicPage hider header button 1`] = `
           class="FormItem-label"
           style="grid-column-start: 13; grid-row-start: 3;"
           ui5-label=""
-          wrap="true"
+          wrapping-type="Normal"
         >
           LinkedIn:
         </ui5-label>
@@ -596,7 +529,7 @@ exports[`DynamicPage hider header button 1`] = `
           class="FormItem-label"
           style="grid-column-start: 13; grid-row-start: 4;"
           ui5-label=""
-          wrap="true"
+          wrapping-type="Normal"
         >
           Twitter:
         </ui5-label>
@@ -627,7 +560,7 @@ exports[`DynamicPage hider header button 1`] = `
           class="FormItem-label"
           style="grid-column-start: 1; grid-row-start: 3;"
           ui5-label=""
-          wrap="true"
+          wrapping-type="Normal"
         >
           Home Address:
         </ui5-label>
@@ -645,7 +578,7 @@ exports[`DynamicPage hider header button 1`] = `
           class="FormItem-label"
           style="grid-column-start: 1; grid-row-start: 4;"
           ui5-label=""
-          wrap="true"
+          wrapping-type="Normal"
         >
           Mailing Address:
         </ui5-label>
@@ -670,7 +603,7 @@ exports[`DynamicPage hider header button 1`] = `
           class="FormItem-label"
           style="grid-column-start: 13; grid-row-start: 3;"
           ui5-label=""
-          wrap="true"
+          wrapping-type="Normal"
         >
           Work:
         </ui5-label>
@@ -693,7 +626,7 @@ exports[`DynamicPage hider header button 1`] = `
 exports[`DynamicPage render footer 1`] = `
 <DocumentFragment>
   <div
-    class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundStandard"
+    class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundSolid"
   >
     <div
       class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPage-anchorBar"
@@ -744,7 +677,7 @@ exports[`DynamicPage render footer 1`] = `
 exports[`DynamicPage with content 1`] = `
 <DocumentFragment>
   <div
-    class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundStandard"
+    class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundSolid"
   >
     <div
       class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container StdExtPadding-Desktop"
@@ -758,109 +691,42 @@ exports[`DynamicPage with content 1`] = `
         <div
           class="DynamicPageTitle-breadcrumbs"
         >
-          <nav
-            aria-label="Breadcrumb Trail"
+          <ui5-breadcrumbs
+            design="Standard"
+            separator-style="Slash"
+            ui5-breadcrumbs=""
           >
-            <ol
-              class="Breadcrumbs-list"
+            <ui5-breadcrumbs-item
+              ui5-breadcrumbs-item=""
             >
-              <li>
-                <ui5-link
-                  data-breadcrumb-index="0"
-                  design="Default"
-                  tabindex="0"
-                  ui5-link=""
-                >
-                  Home
-                </ui5-link>
-                <ui5-label
-                  aria-hidden="true"
-                  class="Breadcrumbs-separatorInline"
-                  ui5-label=""
-                >
-                  /
-                </ui5-label>
-              </li>
-              <li>
-                <ui5-link
-                  data-breadcrumb-index="1"
-                  design="Default"
-                  tabindex="-1"
-                  ui5-link=""
-                >
-                  Page 1
-                </ui5-link>
-                <ui5-label
-                  aria-hidden="true"
-                  class="Breadcrumbs-separatorInline"
-                  ui5-label=""
-                >
-                  /
-                </ui5-label>
-              </li>
-              <li>
-                <ui5-link
-                  data-breadcrumb-index="2"
-                  design="Default"
-                  tabindex="-1"
-                  ui5-link=""
-                >
-                  Page 2
-                </ui5-link>
-                <ui5-label
-                  aria-hidden="true"
-                  class="Breadcrumbs-separatorInline"
-                  ui5-label=""
-                >
-                  /
-                </ui5-label>
-              </li>
-              <li>
-                <ui5-link
-                  data-breadcrumb-index="3"
-                  design="Default"
-                  tabindex="-1"
-                  ui5-link=""
-                >
-                  Page 3
-                </ui5-link>
-                <ui5-label
-                  aria-hidden="true"
-                  class="Breadcrumbs-separatorInline"
-                  ui5-label=""
-                >
-                  /
-                </ui5-label>
-              </li>
-              <li>
-                <ui5-link
-                  data-breadcrumb-index="4"
-                  design="Default"
-                  tabindex="-1"
-                  ui5-link=""
-                >
-                  Page 4
-                </ui5-link>
-                <ui5-label
-                  aria-hidden="true"
-                  class="Breadcrumbs-separatorInline"
-                  ui5-label=""
-                >
-                  /
-                </ui5-label>
-              </li>
-              <li>
-                <ui5-link
-                  data-breadcrumb-index="5"
-                  design="Default"
-                  tabindex="-1"
-                  ui5-link=""
-                >
-                  Page 5
-                </ui5-link>
-              </li>
-            </ol>
-          </nav>
+              Home
+            </ui5-breadcrumbs-item>
+            <ui5-breadcrumbs-item
+              ui5-breadcrumbs-item=""
+            >
+              Page 1
+            </ui5-breadcrumbs-item>
+            <ui5-breadcrumbs-item
+              ui5-breadcrumbs-item=""
+            >
+              Page 2
+            </ui5-breadcrumbs-item>
+            <ui5-breadcrumbs-item
+              ui5-breadcrumbs-item=""
+            >
+              Page 3
+            </ui5-breadcrumbs-item>
+            <ui5-breadcrumbs-item
+              ui5-breadcrumbs-item=""
+            >
+              Page 4
+            </ui5-breadcrumbs-item>
+            <ui5-breadcrumbs-item
+              ui5-breadcrumbs-item=""
+            >
+              Page 5
+            </ui5-breadcrumbs-item>
+          </ui5-breadcrumbs>
         </div>
       </div>
       <div
@@ -1101,7 +967,7 @@ exports[`DynamicPage with content 1`] = `
           class="FormItem-label"
           style="grid-column-start: 1; grid-row-start: 3;"
           ui5-label=""
-          wrap="true"
+          wrapping-type="Normal"
         >
           Home:
         </ui5-label>
@@ -1119,7 +985,7 @@ exports[`DynamicPage with content 1`] = `
           class="FormItem-label"
           style="grid-column-start: 1; grid-row-start: 4;"
           ui5-label=""
-          wrap="true"
+          wrapping-type="Normal"
         />
         <div
           class="FormItem-content"
@@ -1142,7 +1008,7 @@ exports[`DynamicPage with content 1`] = `
           class="FormItem-label"
           style="grid-column-start: 13; grid-row-start: 3;"
           ui5-label=""
-          wrap="true"
+          wrapping-type="Normal"
         >
           LinkedIn:
         </ui5-label>
@@ -1160,7 +1026,7 @@ exports[`DynamicPage with content 1`] = `
           class="FormItem-label"
           style="grid-column-start: 13; grid-row-start: 4;"
           ui5-label=""
-          wrap="true"
+          wrapping-type="Normal"
         >
           Twitter:
         </ui5-label>
@@ -1191,7 +1057,7 @@ exports[`DynamicPage with content 1`] = `
           class="FormItem-label"
           style="grid-column-start: 1; grid-row-start: 3;"
           ui5-label=""
-          wrap="true"
+          wrapping-type="Normal"
         >
           Home Address:
         </ui5-label>
@@ -1209,7 +1075,7 @@ exports[`DynamicPage with content 1`] = `
           class="FormItem-label"
           style="grid-column-start: 1; grid-row-start: 4;"
           ui5-label=""
-          wrap="true"
+          wrapping-type="Normal"
         >
           Mailing Address:
         </ui5-label>
@@ -1234,7 +1100,7 @@ exports[`DynamicPage with content 1`] = `
           class="FormItem-label"
           style="grid-column-start: 13; grid-row-start: 3;"
           ui5-label=""
-          wrap="true"
+          wrapping-type="Normal"
         >
           Work:
         </ui5-label>
@@ -1265,7 +1131,7 @@ exports[`DynamicPage with content 1`] = `
           class="FormItem-label"
           style="grid-column-start: 1; grid-row-start: 3;"
           ui5-label=""
-          wrap="true"
+          wrapping-type="Normal"
         >
           Home:
         </ui5-label>
@@ -1283,7 +1149,7 @@ exports[`DynamicPage with content 1`] = `
           class="FormItem-label"
           style="grid-column-start: 1; grid-row-start: 4;"
           ui5-label=""
-          wrap="true"
+          wrapping-type="Normal"
         />
         <div
           class="FormItem-content"
@@ -1306,7 +1172,7 @@ exports[`DynamicPage with content 1`] = `
           class="FormItem-label"
           style="grid-column-start: 13; grid-row-start: 3;"
           ui5-label=""
-          wrap="true"
+          wrapping-type="Normal"
         >
           LinkedIn:
         </ui5-label>
@@ -1324,7 +1190,7 @@ exports[`DynamicPage with content 1`] = `
           class="FormItem-label"
           style="grid-column-start: 13; grid-row-start: 4;"
           ui5-label=""
-          wrap="true"
+          wrapping-type="Normal"
         >
           Twitter:
         </ui5-label>
@@ -1355,7 +1221,7 @@ exports[`DynamicPage with content 1`] = `
           class="FormItem-label"
           style="grid-column-start: 1; grid-row-start: 3;"
           ui5-label=""
-          wrap="true"
+          wrapping-type="Normal"
         >
           Home Address:
         </ui5-label>
@@ -1373,7 +1239,7 @@ exports[`DynamicPage with content 1`] = `
           class="FormItem-label"
           style="grid-column-start: 1; grid-row-start: 4;"
           ui5-label=""
-          wrap="true"
+          wrapping-type="Normal"
         >
           Mailing Address:
         </ui5-label>
@@ -1398,7 +1264,7 @@ exports[`DynamicPage with content 1`] = `
           class="FormItem-label"
           style="grid-column-start: 13; grid-row-start: 3;"
           ui5-label=""
-          wrap="true"
+          wrapping-type="Normal"
         >
           Work:
         </ui5-label>
@@ -1429,7 +1295,7 @@ exports[`DynamicPage with content 1`] = `
           class="FormItem-label"
           style="grid-column-start: 1; grid-row-start: 3;"
           ui5-label=""
-          wrap="true"
+          wrapping-type="Normal"
         >
           Home:
         </ui5-label>
@@ -1447,7 +1313,7 @@ exports[`DynamicPage with content 1`] = `
           class="FormItem-label"
           style="grid-column-start: 1; grid-row-start: 4;"
           ui5-label=""
-          wrap="true"
+          wrapping-type="Normal"
         />
         <div
           class="FormItem-content"
@@ -1470,7 +1336,7 @@ exports[`DynamicPage with content 1`] = `
           class="FormItem-label"
           style="grid-column-start: 13; grid-row-start: 3;"
           ui5-label=""
-          wrap="true"
+          wrapping-type="Normal"
         >
           LinkedIn:
         </ui5-label>
@@ -1488,7 +1354,7 @@ exports[`DynamicPage with content 1`] = `
           class="FormItem-label"
           style="grid-column-start: 13; grid-row-start: 4;"
           ui5-label=""
-          wrap="true"
+          wrapping-type="Normal"
         >
           Twitter:
         </ui5-label>
@@ -1519,7 +1385,7 @@ exports[`DynamicPage with content 1`] = `
           class="FormItem-label"
           style="grid-column-start: 1; grid-row-start: 3;"
           ui5-label=""
-          wrap="true"
+          wrapping-type="Normal"
         >
           Home Address:
         </ui5-label>
@@ -1537,7 +1403,7 @@ exports[`DynamicPage with content 1`] = `
           class="FormItem-label"
           style="grid-column-start: 1; grid-row-start: 4;"
           ui5-label=""
-          wrap="true"
+          wrapping-type="Normal"
         >
           Mailing Address:
         </ui5-label>
@@ -1562,7 +1428,7 @@ exports[`DynamicPage with content 1`] = `
           class="FormItem-label"
           style="grid-column-start: 13; grid-row-start: 3;"
           ui5-label=""
-          wrap="true"
+          wrapping-type="Normal"
         >
           Work:
         </ui5-label>
@@ -1593,7 +1459,7 @@ exports[`DynamicPage with content 1`] = `
           class="FormItem-label"
           style="grid-column-start: 1; grid-row-start: 3;"
           ui5-label=""
-          wrap="true"
+          wrapping-type="Normal"
         >
           Home:
         </ui5-label>
@@ -1611,7 +1477,7 @@ exports[`DynamicPage with content 1`] = `
           class="FormItem-label"
           style="grid-column-start: 1; grid-row-start: 4;"
           ui5-label=""
-          wrap="true"
+          wrapping-type="Normal"
         />
         <div
           class="FormItem-content"
@@ -1634,7 +1500,7 @@ exports[`DynamicPage with content 1`] = `
           class="FormItem-label"
           style="grid-column-start: 13; grid-row-start: 3;"
           ui5-label=""
-          wrap="true"
+          wrapping-type="Normal"
         >
           LinkedIn:
         </ui5-label>
@@ -1652,7 +1518,7 @@ exports[`DynamicPage with content 1`] = `
           class="FormItem-label"
           style="grid-column-start: 13; grid-row-start: 4;"
           ui5-label=""
-          wrap="true"
+          wrapping-type="Normal"
         >
           Twitter:
         </ui5-label>
@@ -1683,7 +1549,7 @@ exports[`DynamicPage with content 1`] = `
           class="FormItem-label"
           style="grid-column-start: 1; grid-row-start: 3;"
           ui5-label=""
-          wrap="true"
+          wrapping-type="Normal"
         >
           Home Address:
         </ui5-label>
@@ -1701,7 +1567,7 @@ exports[`DynamicPage with content 1`] = `
           class="FormItem-label"
           style="grid-column-start: 1; grid-row-start: 4;"
           ui5-label=""
-          wrap="true"
+          wrapping-type="Normal"
         >
           Mailing Address:
         </ui5-label>
@@ -1726,7 +1592,7 @@ exports[`DynamicPage with content 1`] = `
           class="FormItem-label"
           style="grid-column-start: 13; grid-row-start: 3;"
           ui5-label=""
-          wrap="true"
+          wrapping-type="Normal"
         >
           Work:
         </ui5-label>
@@ -1749,7 +1615,7 @@ exports[`DynamicPage with content 1`] = `
 exports[`DynamicPage without content 1`] = `
 <DocumentFragment>
   <div
-    class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundStandard"
+    class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundSolid"
   >
     <div
       class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container StdExtPadding-Desktop"
@@ -1763,109 +1629,42 @@ exports[`DynamicPage without content 1`] = `
         <div
           class="DynamicPageTitle-breadcrumbs"
         >
-          <nav
-            aria-label="Breadcrumb Trail"
+          <ui5-breadcrumbs
+            design="Standard"
+            separator-style="Slash"
+            ui5-breadcrumbs=""
           >
-            <ol
-              class="Breadcrumbs-list"
+            <ui5-breadcrumbs-item
+              ui5-breadcrumbs-item=""
             >
-              <li>
-                <ui5-link
-                  data-breadcrumb-index="0"
-                  design="Default"
-                  tabindex="0"
-                  ui5-link=""
-                >
-                  Home
-                </ui5-link>
-                <ui5-label
-                  aria-hidden="true"
-                  class="Breadcrumbs-separatorInline"
-                  ui5-label=""
-                >
-                  /
-                </ui5-label>
-              </li>
-              <li>
-                <ui5-link
-                  data-breadcrumb-index="1"
-                  design="Default"
-                  tabindex="-1"
-                  ui5-link=""
-                >
-                  Page 1
-                </ui5-link>
-                <ui5-label
-                  aria-hidden="true"
-                  class="Breadcrumbs-separatorInline"
-                  ui5-label=""
-                >
-                  /
-                </ui5-label>
-              </li>
-              <li>
-                <ui5-link
-                  data-breadcrumb-index="2"
-                  design="Default"
-                  tabindex="-1"
-                  ui5-link=""
-                >
-                  Page 2
-                </ui5-link>
-                <ui5-label
-                  aria-hidden="true"
-                  class="Breadcrumbs-separatorInline"
-                  ui5-label=""
-                >
-                  /
-                </ui5-label>
-              </li>
-              <li>
-                <ui5-link
-                  data-breadcrumb-index="3"
-                  design="Default"
-                  tabindex="-1"
-                  ui5-link=""
-                >
-                  Page 3
-                </ui5-link>
-                <ui5-label
-                  aria-hidden="true"
-                  class="Breadcrumbs-separatorInline"
-                  ui5-label=""
-                >
-                  /
-                </ui5-label>
-              </li>
-              <li>
-                <ui5-link
-                  data-breadcrumb-index="4"
-                  design="Default"
-                  tabindex="-1"
-                  ui5-link=""
-                >
-                  Page 4
-                </ui5-link>
-                <ui5-label
-                  aria-hidden="true"
-                  class="Breadcrumbs-separatorInline"
-                  ui5-label=""
-                >
-                  /
-                </ui5-label>
-              </li>
-              <li>
-                <ui5-link
-                  data-breadcrumb-index="5"
-                  design="Default"
-                  tabindex="-1"
-                  ui5-link=""
-                >
-                  Page 5
-                </ui5-link>
-              </li>
-            </ol>
-          </nav>
+              Home
+            </ui5-breadcrumbs-item>
+            <ui5-breadcrumbs-item
+              ui5-breadcrumbs-item=""
+            >
+              Page 1
+            </ui5-breadcrumbs-item>
+            <ui5-breadcrumbs-item
+              ui5-breadcrumbs-item=""
+            >
+              Page 2
+            </ui5-breadcrumbs-item>
+            <ui5-breadcrumbs-item
+              ui5-breadcrumbs-item=""
+            >
+              Page 3
+            </ui5-breadcrumbs-item>
+            <ui5-breadcrumbs-item
+              ui5-breadcrumbs-item=""
+            >
+              Page 4
+            </ui5-breadcrumbs-item>
+            <ui5-breadcrumbs-item
+              ui5-breadcrumbs-item=""
+            >
+              Page 5
+            </ui5-breadcrumbs-item>
+          </ui5-breadcrumbs>
         </div>
       </div>
       <div

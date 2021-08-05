@@ -1,14 +1,24 @@
 import { CalendarType } from '@ui5/webcomponents-react/dist/CalendarType';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { FC, ReactNode } from 'react';
+import { Ui5DateTimePickerDomRef } from '@ui5/webcomponents-react/interfaces/Ui5DateTimePickerDomRef';
+import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/DateTimePicker';
 
-export interface DateTimePickerPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput'> {
+export interface DateTimePickerPropTypes extends Omit<CommonProps, 'onChange' | 'onInput'> {
   /**
-   * Determines whether the `DatePicker` is displayed as disabled.
+   * Defines the aria-label attribute for the component.
+   */
+  accessibleName?: string;
+  /**
+   * Receives id(or many ids) of the elements that label the component.
+   */
+  accessibleNameRef?: string;
+  /**
+   * Determines whether the component is displayed as disabled.
    */
   disabled?: boolean;
   /**
@@ -18,25 +28,25 @@ export interface DateTimePickerPropTypes extends Omit<WithWebComponentPropTypes,
    */
   hideWeekNumbers?: boolean;
   /**
-   * Determines the name with which the `DatePicker` will be submitted in an HTML form.
+   * Determines the name with which the component will be submitted in an HTML form.
    *
    * **Important:** For the `name` property to have effect, you must add the following import to your project: `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
    *
-   * **Note:** When set, a native `input` HTML element will be created inside the `DatePicker` so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
+   * **Note:** When set, a native `input` HTML element will be created inside the component so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
    */
   name?: string;
   /**
-   * Defines a short hint, intended to aid the user with data entry when the `DatePicker` has no value.
+   * Defines a short hint, intended to aid the user with data entry when the component has no value.
    *
-   * **Note:** When no placeholder is set, the format pattern is displayed as a placeholder. Passing an empty string as the value of this property will make the `DatePicker` appear empty - without placeholder or format pattern.
+   * **Note:** When no placeholder is set, the format pattern is displayed as a placeholder. Passing an empty string as the value of this property will make the component appear empty - without placeholder or format pattern.
    */
   placeholder?: string;
   /**
-   * Determines whether the `DatePicker` is displayed as read-only.
+   * Determines whether the component is displayed as read-only.
    */
   readonly?: boolean;
   /**
-   * Defines whether the `DatePicker` is required.
+   * Defines whether the component is required.
    */
   required?: boolean;
   /**
@@ -44,7 +54,7 @@ export interface DateTimePickerPropTypes extends Omit<WithWebComponentPropTypes,
    */
   value?: string;
   /**
-   * Defines the value state of the `DatePicker`.
+   * Defines the value state of the component.
    *
    * Available options are:
    *
@@ -72,10 +82,10 @@ export interface DateTimePickerPropTypes extends Omit<WithWebComponentPropTypes,
    */
   primaryCalendarType?: CalendarType;
   /**
-   * Defines the value state message that will be displayed as pop up under the `DatePicker`.
+   * Defines the value state message that will be displayed as pop up under the component.
    *
    * **Note:** If not specified, a default text (in the respective language) will be displayed.
-   * **Note:** The `valueStateMessage` would be displayed, when the `DatePicker` is in `Information`, `Warning` or `Error` value state.
+   * **Note:** The `valueStateMessage` would be displayed, when the component is in `Information`, `Warning` or `Error` value state.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
@@ -86,7 +96,7 @@ export interface DateTimePickerPropTypes extends Omit<WithWebComponentPropTypes,
    */
   onChange?: (event: Ui5CustomEvent<HTMLInputElement>) => void;
   /**
-   * Fired when the value of the `DatePicker` is changed at each key stroke.
+   * Fired when the value of the component is changed at each key stroke.
    */
   onInput?: (event: Ui5CustomEvent<HTMLInputElement>) => void;
 }
@@ -96,9 +106,20 @@ export interface DateTimePickerPropTypes extends Omit<WithWebComponentPropTypes,
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/DateTimePicker" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const DateTimePicker: FC<DateTimePickerPropTypes> = withWebComponent<DateTimePickerPropTypes>(
+const DateTimePicker = withWebComponent<DateTimePickerPropTypes, Ui5DateTimePickerDomRef>(
   'ui5-datetime-picker',
-  ['name', 'placeholder', 'value', 'valueState', 'formatPattern', 'maxDate', 'minDate', 'primaryCalendarType'],
+  [
+    'accessibleName',
+    'accessibleNameRef',
+    'name',
+    'placeholder',
+    'value',
+    'valueState',
+    'formatPattern',
+    'maxDate',
+    'minDate',
+    'primaryCalendarType'
+  ],
   ['disabled', 'hideWeekNumbers', 'readonly', 'required'],
   ['valueStateMessage'],
   ['change', 'input']

@@ -1,9 +1,18 @@
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import { FC, ReactNode } from 'react';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/WizardStep';
 
-export interface WizardStepPropTypes extends WithWebComponentPropTypes {
+export interface WizardStepPropTypes extends CommonProps {
+  /**
+   * Sets the accessible aria name of the component.
+   */
+  accessibleName?: boolean;
+  /**
+   * Defines the aria-labelledby of the step.
+   */
+  accessibleNameRef?: boolean;
   /**
    * When `branching` is enabled a dashed line would be displayed after the step, meant to indicate that the next step is not yet known and depends on user choice in the current step.
    *
@@ -16,13 +25,6 @@ export interface WizardStepPropTypes extends WithWebComponentPropTypes {
    * **Note:** Step can't be `selected` and `disabled` at the same time. In this case the `selected` property would take precedence.
    */
   disabled?: boolean;
-  /**
-   * Defines the `heading` of the step.
-   *
-   * **Note:** the text is displayed in the `Wizard` navigation header.
-   * **Note:** the text will hide on small sizes (about 559 px).
-   */
-  heading?: string;
   /**
    * Defines the `icon` of the step.
    *
@@ -38,12 +40,19 @@ export interface WizardStepPropTypes extends WithWebComponentPropTypes {
    */
   selected?: boolean;
   /**
-   * Defines the `subheading` of the step.
+   * Defines the `subtitleText` of the step.
    *
    * **Note:** the text is displayed in the `Wizard` navigation header.
    * **Note:** the text will hide on small sizes (about 559 px).
    */
-  subheading?: string;
+  subtitleText?: string;
+  /**
+   * Defines the `titleText` of the step.
+   *
+   * **Note:** the text is displayed in the `Wizard` navigation header.
+   * **Note:** the text will hide on small sizes (about 559 px).
+   */
+  titleText?: string;
   /**
    * Defines the step content.
    */
@@ -55,10 +64,10 @@ export interface WizardStepPropTypes extends WithWebComponentPropTypes {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/WizardStep" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const WizardStep: FC<WizardStepPropTypes> = withWebComponent<WizardStepPropTypes>(
+const WizardStep = withWebComponent<WizardStepPropTypes>(
   'ui5-wizard-step',
-  ['heading', 'icon', 'subheading'],
-  ['branching', 'disabled', 'selected'],
+  ['icon', 'subtitleText', 'titleText'],
+  ['accessibleName', 'accessibleNameRef', 'branching', 'disabled', 'selected'],
   [],
   []
 );
@@ -66,6 +75,8 @@ const WizardStep: FC<WizardStepPropTypes> = withWebComponent<WizardStepPropTypes
 WizardStep.displayName = 'WizardStep';
 
 WizardStep.defaultProps = {
+  accessibleName: false,
+  accessibleNameRef: false,
   branching: false,
   disabled: false,
   selected: false
