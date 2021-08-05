@@ -21,9 +21,11 @@ const findParentCell = (target) => {
 
 const setFocus = (currentlyFocusedCell, nextElement) => {
   currentlyFocusedCell.current.tabIndex = -1;
-  nextElement.tabIndex = 0;
-  nextElement.focus();
-  currentlyFocusedCell.current = nextElement;
+  if (nextElement) {
+    nextElement.tabIndex = 0;
+    nextElement.focus();
+    currentlyFocusedCell.current = nextElement;
+  }
 };
 
 const getTableProps = (tableProps, { instance }) => {
