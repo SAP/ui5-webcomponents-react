@@ -14,7 +14,6 @@ import { ToolbarStyle } from '@ui5/webcomponents-react/dist/ToolbarStyle';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import React, {
   Children,
-  FC,
   forwardRef,
   ReactElement,
   ReactNode,
@@ -30,7 +29,7 @@ import { stopPropagation } from '../../internal/stopPropagation';
 import { ActionsSpacer } from './ActionsSpacer';
 import { DynamicPageTitleStyles } from './DynamicPageTitle.jss';
 
-export interface DynamicPageTitleProps extends CommonProps {
+export interface DynamicPageTitlePropTypes extends CommonProps {
   /**
    * The `DynamicPageTitle` actions.
    */
@@ -73,7 +72,7 @@ export interface DynamicPageTitleProps extends CommonProps {
   showSubHeaderRight?: boolean;
 }
 
-interface InternalProps extends DynamicPageTitleProps {
+interface InternalProps extends DynamicPageTitlePropTypes {
   /**
    * The onToggleHeaderContentVisibility show or hide the header section
    */
@@ -86,7 +85,7 @@ const useStyles = createUseStyles(DynamicPageTitleStyles, { name: 'DynamicPageTi
  * The dynamic page title defines the elements in the top header.
  * It can contain Breadcrumbs, Title, Subtitle, Content, KPIs and Actions.
  */
-const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalProps, ref: Ref<HTMLDivElement>) => {
+const DynamicPageTitle = forwardRef((props: DynamicPageTitlePropTypes, ref: Ref<HTMLDivElement>) => {
   const {
     actions,
     onToggleHeaderContentVisibility,
@@ -99,7 +98,7 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef((props: InternalP
     className,
     style,
     tooltip
-  } = props;
+  } = props as InternalProps;
 
   const classes = useStyles();
   const containerClasses = StyleClassHelper.of(classes.container);

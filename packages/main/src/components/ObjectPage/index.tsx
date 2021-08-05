@@ -17,7 +17,6 @@ import { TabContainer } from '@ui5/webcomponents-react/dist/TabContainer';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import React, {
   ComponentType,
-  FC,
   forwardRef,
   ReactElement,
   RefObject,
@@ -138,7 +137,7 @@ const useStyles = createUseStyles(styles, { name: 'ObjectPage' });
  * A component that allows apps to easily display information related to a business object.<br />
  * The `ObjectPage` is composed of a header (title and content) and block content wrapped in sections and subsections that structure the information.
  */
-const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDivElement>) => {
+const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDivElement>) => {
   const {
     headerTitle,
     image,
