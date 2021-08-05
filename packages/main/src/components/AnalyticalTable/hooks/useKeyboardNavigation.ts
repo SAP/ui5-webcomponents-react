@@ -8,7 +8,7 @@ const getFirstVisibleCell = (target, currentlyFocusedCell) => {
 };
 
 const findParentCell = (target) => {
-  if (target === undefined) return;
+  if (target === undefined || target === null) return;
   if (
     (target.dataset.rowIndex !== undefined && target.dataset.columnIndex !== undefined) ||
     (target.dataset.rowIndexSub !== undefined && target.dataset.columnIndexSub !== undefined)
@@ -29,6 +29,15 @@ const setFocus = (currentlyFocusedCell, nextElement) => {
 const getTableProps = (tableProps, { instance }) => {
   const currentlyFocusedCell = useRef<HTMLDivElement>(null);
   const tableRef = instance.webComponentsReactProperties.tableRef;
+
+  const onTableBlur = useCallback(
+    (e) => {
+      if (e.target.tagName === 'UI5-LI' || e.target.tagName === 'UI5-LI-CUSTOM') {
+        currentlyFocusedCell.current = null;
+      }
+    },
+    [currentlyFocusedCell.current]
+  );
 
   const onTableFocus = useCallback(
     (e) => {
@@ -220,7 +229,7 @@ const getTableProps = (tableProps, { instance }) => {
     },
     [currentlyFocusedCell.current, tableRef.current]
   );
-  return [tableProps, { onFocus: onTableFocus, onKeyDown: onKeyboardNavigation }];
+  return [tableProps, { onFocus: onTableFocus, onKeyDown: onKeyboardNavigation, onBlur: onTableBlur }];
 };
 
 export const useKeyboardNavigation = (hooks) => {

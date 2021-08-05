@@ -42,8 +42,8 @@ export interface ColumnHeaderProps {
 
   //getHeaderProps()
   id: string;
-  onClick: MouseEventHandler<HTMLDivElement>;
-  onKeyDown?: KeyboardEventHandler<HTMLDivElement>;
+  onClick: MouseEventHandler<HTMLDivElement> | undefined;
+  onKeyDown?: KeyboardEventHandler<HTMLDivElement> | undefined;
   className: string;
   style: CSSProperties;
   column: ColumnType;
@@ -156,7 +156,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
 
   const handleHeaderCellClick = useCallback(
     (e) => {
-      onClick(e);
+      onClick?.(e);
       if (hasPopover) {
         setPopoverOpen(true);
       }
@@ -168,6 +168,17 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     : { left: 0, transform: `translateX(${virtualColumn.start}px)` };
 
   const iconContainerDirectionStyles = isRtl ? { left: '0.5rem' } : { right: '0.5rem' };
+
+  const handleHeaderCellKeyDown = useCallback(
+    (e) => {
+      onKeyDown?.(e);
+      //todo add Space key support when List issue has been fixed
+      if (hasPopover && /*e.code === 'Space' ||*/ e.code === 'Enter') {
+        setPopoverOpen(true);
+      }
+    },
+    [hasPopover, onKeyDown]
+  );
 
   const targetRef = useRef();
   if (!column) return null;
@@ -204,7 +215,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
         onDragEnd={onDragEnd}
         data-column-id={id}
         onClick={handleHeaderCellClick}
-        onKeyDown={onKeyDown}
+        onKeyDown={handleHeaderCellKeyDown}
       >
         <div className={classes.header} data-h-align={column.hAlign}>
           <Text tooltip={tooltip} wrapping={false} style={textStyle} className={classes.text}>
