@@ -248,7 +248,7 @@ export const secondaryDimensionDataSet = [
 
 export const scatterComplexDataSet = [
   {
-    label: 'Americas',
+    label: 'Users',
     data: [
       {
         users: 120,
