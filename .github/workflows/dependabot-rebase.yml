@@ -6,12 +6,18 @@ on:
 
 jobs:
   rebase-pr:
-    if: github.event.pull_request.merged == 'true'
+    if: github.event.pull_request
     runs-on: ubuntu-latest
     steps:
       - uses: actions/github-script@v4
         with:
           script: |
+            console.log(JSON.stringify(context.payload.pull_request))
+            
+            if (context.payload.pull_request.merged !== true) {
+              return 
+            }
+          
             const { data: openPullRequests } = await github.pulls.list({
               owner: 'SAP',
               repo: 'ui5-webcomponents-react',
