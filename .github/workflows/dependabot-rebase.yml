@@ -1,0 +1,31 @@
+name: rebase-dependabot-prs
+
+on:
+  pull_request:
+    types: [ closed ]
+
+jobs:
+  rebase-pr:
+    if: github.event.pull_request.merged == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v4
+        with:
+          script: |
+            const { data: openPullRequests } = await github.pulls.list({
+              owner: 'SAP',
+              repo: 'ui5-webcomponents-react',
+              state: 'open',
+              per_page: 100
+            });
+            
+            const firstOpenDependabotPR = openPullRequests.find((pr) => pr.user.login === 'dependabot[bot]');
+            
+            if (firstOpenDependabotPR) {
+              github.issues.createComment({
+                owner: 'SAP',
+                repo: 'ui5-webcomponents-react',
+                issue_number: firstOpenDependabotPR.number,
+                body: '@dependabot rebase'
+              });
+            }
