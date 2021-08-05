@@ -15,31 +15,17 @@ const customCheckBoxStyling = {
  * COMPONENTS
  */
 
-const Header = ({
-  getToggleAllRowsSelectedProps,
-  flatRows,
-  webComponentsReactProperties: { onRowSelected, selectionMode },
-  toggleAllRowsSelected
-}) => {
-  const onChange = useCallback(
-    (e) => {
-      const allRowsSelected = e.target.checked;
-      toggleAllRowsSelected(allRowsSelected);
-      if (typeof onRowSelected === 'function') {
-        onRowSelected(
-          // cannot use instance.selectedFlatRows here as it only returns all rows on the first level
-          enrichEventWithDetails(e, { allRowsSelected, selectedFlatRows: allRowsSelected ? flatRows : [] })
-        );
-      }
-    },
-    [toggleAllRowsSelected, flatRows]
-  );
+const Header = (instance) => {
+  const {
+    getToggleAllRowsSelectedProps,
+    webComponentsReactProperties: { selectionMode }
+  } = instance;
 
   if (selectionMode === TableSelectionMode.SINGLE_SELECT) {
     return null;
   }
   return (
-    <CheckBox {...getToggleAllRowsSelectedProps()} style={customCheckBoxStyling} onChange={onChange} tabIndex={-1} />
+    <CheckBox {...getToggleAllRowsSelectedProps()} style={customCheckBoxStyling} tabIndex={-1} onChange={undefined} />
   );
 };
 
@@ -72,6 +58,41 @@ const Cell = ({ row, webComponentsReactProperties: { selectionBehavior, selectio
 /*
  * TABLE HOOKS
  */
+
+const headerProps = (
+  props,
+  {
+    instance: {
+      flatRows,
+      webComponentsReactProperties: { onRowSelected, selectionMode },
+      toggleAllRowsSelected,
+      isAllRowsSelected
+    }
+  }
+) => {
+  if (props.key === 'header___ui5wcr__internal_selection_column' && selectionMode === TableSelectionMode.MULTI_SELECT) {
+    const onClick = (e) => {
+      toggleAllRowsSelected();
+      if (typeof onRowSelected === 'function') {
+        onRowSelected(
+          // cannot use instance.selectedFlatRows here as it only returns all rows on the first level
+          enrichEventWithDetails(e, {
+            allRowsSelected: isAllRowsSelected,
+            selectedFlatRows: isAllRowsSelected ? flatRows : []
+          })
+        );
+      }
+    };
+
+    const onKeyDown = (e) => {
+      if (e.code === 'Space' || e.code === 'Enter') {
+        onClick(e);
+      }
+    };
+    return [props, { onClick, onKeyDown }];
+  }
+  return props;
+};
 
 const columnDeps = (deps, { instance: { webComponentsReactProperties } }) => {
   return [...deps, webComponentsReactProperties.selectionMode, webComponentsReactProperties.selectionBehavior];
@@ -131,6 +152,7 @@ const columns = (currentColumns, { instance }) => {
 };
 
 export const useRowSelectionColumn = (hooks) => {
+  hooks.getHeaderProps.push(headerProps);
   hooks.columns.push(columns);
   hooks.columnsDeps.push(columnDeps);
   hooks.visibleColumnsDeps.push(visibleColumnsDeps);

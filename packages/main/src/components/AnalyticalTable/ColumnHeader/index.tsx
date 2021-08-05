@@ -10,6 +10,8 @@ import React, {
   CSSProperties,
   DragEventHandler,
   FC,
+  MouseEventHandler,
+  KeyboardEventHandler,
   ReactNode,
   ReactNodeArray,
   useCallback,
@@ -22,13 +24,8 @@ import { ColumnType } from '../types/ColumnType';
 import { ColumnHeaderModal } from './ColumnHeaderModal';
 
 export interface ColumnHeaderProps {
-  id: string;
-  defaultSortDesc: boolean;
-  children: ReactNode | ReactNodeArray;
-  grouping: string;
-  className: string;
-  column: ColumnType;
-  style: CSSProperties;
+  visibleColumnIndex: number;
+  columnIndex: number;
   onSort?: (e: CustomEvent<{ column: unknown; sortDirection: string }>) => void;
   onGroupBy?: (e: CustomEvent<{ column: unknown; isGrouped: boolean }>) => void;
   onDragStart: DragEventHandler<HTMLDivElement>;
@@ -37,15 +34,20 @@ export interface ColumnHeaderProps {
   onDragEnter: DragEventHandler<HTMLDivElement>;
   onDragEnd: DragEventHandler<HTMLDivElement>;
   dragOver: boolean;
-  isResizing: boolean;
-  headerTooltip: string;
   isDraggable: boolean;
-  role: string;
-  isLastColumn: boolean;
+  headerTooltip: string;
   virtualColumn: VirtualItem;
   isRtl: boolean;
-  columnIndex: number;
-  visibleColumnIndex: number;
+  children: ReactNode | ReactNodeArray;
+
+  //getHeaderProps()
+  id: string;
+  onClick: MouseEventHandler<HTMLDivElement>;
+  onKeyDown?: KeyboardEventHandler<HTMLDivElement>;
+  className: string;
+  style: CSSProperties;
+  column: ColumnType;
+  role: string;
 }
 
 const styles = {
@@ -109,7 +111,9 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     virtualColumn,
     isRtl,
     columnIndex,
-    visibleColumnIndex
+    visibleColumnIndex,
+    onClick,
+    onKeyDown
   } = props;
 
   const isFiltered = column.filterValue && column.filterValue.length > 0;
@@ -150,11 +154,15 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
 
   const hasPopover = column.canGroupBy || column.canSort || column.canFilter;
 
-  const onOpenPopover = useCallback(() => {
-    if (hasPopover) {
-      setPopoverOpen(true);
-    }
-  }, [hasPopover]);
+  const handleHeaderCellClick = useCallback(
+    (e) => {
+      onClick(e);
+      if (hasPopover) {
+        setPopoverOpen(true);
+      }
+    },
+    [hasPopover, onClick]
+  );
   const directionStyles = isRtl
     ? { right: 0, transform: `translateX(-${virtualColumn.start}px)` }
     : { left: 0, transform: `translateX(${virtualColumn.start}px)` };
@@ -195,7 +203,8 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
         onDrop={onDrop}
         onDragEnd={onDragEnd}
         data-column-id={id}
-        onClick={onOpenPopover}
+        onClick={handleHeaderCellClick}
+        onKeyDown={onKeyDown}
       >
         <div className={classes.header} data-h-align={column.hAlign}>
           <Text tooltip={tooltip} wrapping={false} style={textStyle} className={classes.text}>

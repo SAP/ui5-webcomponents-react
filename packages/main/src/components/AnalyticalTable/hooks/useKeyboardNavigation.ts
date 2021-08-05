@@ -26,7 +26,7 @@ const setFocus = (currentlyFocusedCell, nextElement) => {
   currentlyFocusedCell.current = nextElement;
 };
 
-const getTableProps = (tableProps, { instance, row }) => {
+const getTableProps = (tableProps, { instance }) => {
   const currentlyFocusedCell = useRef<HTMLDivElement>(null);
   const tableRef = instance.webComponentsReactProperties.tableRef;
 
@@ -69,8 +69,7 @@ const getTableProps = (tableProps, { instance, row }) => {
   );
 
   //todo:
-  // Shift-Tab: select previous actionable item
-  // Space or Enter: in Header - open Popover, in Body - Select Row (Enter is working, Space is not)
+  // Space or Enter: in Header - open Popover
   const onKeyboardNavigation = useCallback(
     (e) => {
       if (currentlyFocusedCell.current) {
@@ -85,7 +84,7 @@ const getTableProps = (tableProps, { instance, row }) => {
             const lastVisibleColumn = Array.from(visibleColumns)
               .slice(0)
               .reduceRight((prev, cur: HTMLDivElement, index, arr) => {
-                const columnIndex = parseInt(cur.children?.[0]?.dataset.columnIndex, 10);
+                const columnIndex = parseInt((cur.children?.[0] as HTMLDivElement)?.dataset.columnIndex, 10);
                 if (!isNaN(columnIndex)) {
                   arr.length = 0;
                   return columnIndex;
