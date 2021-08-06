@@ -1,35 +1,54 @@
 import { ListGrowingMode } from '@ui5/webcomponents-react/dist/ListGrowingMode';
 import { ListMode } from '@ui5/webcomponents-react/dist/ListMode';
 import { ListSeparators } from '@ui5/webcomponents-react/dist/ListSeparators';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/List';
 
-export interface ListPropTypes extends WithWebComponentPropTypes {
+export interface ListPropTypes extends CommonProps {
+  /**
+   * Sets the accessible aria name of the component.
+   */
+  accessibleName?: string;
+  /**
+   * Receives id(or many ids) of the elements that label the input
+   */
+  accessibleNameRef?: string;
+  /**
+   * Defines the accessible role of the component.
+   *
+   * **Note:** If you use notification list items, it's recommended to set `accessible-role="list"` for better accessibility.
+   */
+  accessibleRole?: string;
   /**
    * Defines if the component would display a loading indicator over the list.
    */
   busy?: boolean;
   /**
+   * Defines the delay in milliseconds, after which the busy indicator will show up for this component.
+   */
+  busyDelay?: number;
+  /**
    * Defines the footer text.
    */
   footerText?: string;
   /**
-   * Defines whether the `List` will have growing capability either by pressing a `More` button, or via user scroll. In both cases `onLoadMore` event is fired.
+   * Defines whether the component will have growing capability either by pressing a `More` button, or via user scroll. In both cases `load-more` event is fired.
    *
    * Available options:
    *
-   * - `Button` - Shows a `More` button at the bottom of the list, pressing of which triggers the `onLoadMore` event.
-   * - `Scroll` - The `onLoadMore` event is triggered when the user scrolls to the bottom of the list;
-   * - `None` (default) - The growing is off.
+   * `Button` - Shows a `More` button at the bottom of the list, pressing of which triggers the `load-more` event.
+   * `Scroll` - The `load-more` event is triggered when the user scrolls to the bottom of the list;
+   * `None` (default) - The growing is off.
    *
    * **Limitations:** `growing="Scroll"` is not supported for Internet Explorer, on IE the component will fallback to `growing="Button"`.
    */
   growing?: ListGrowingMode;
   /**
-   * Defines the `List` header text.
+   * Defines the component header text.
    *
    * **Note:** If `header` is set this property is ignored.
    */
@@ -37,15 +56,15 @@ export interface ListPropTypes extends WithWebComponentPropTypes {
   /**
    * Determines whether the list items are indented.
    */
-  inset?: boolean;
+  indent?: boolean;
   /**
-   * Defines the mode of the `List`.
+   * Defines the mode of the component.
    *
    * **Note:** Available options are `None`, `SingleSelect`, `SingleSelectBegin`, `SingleSelectEnd`, `MultiSelect`, and `Delete`.
    */
   mode?: ListMode;
   /**
-   * Defines the text that is displayed when the `List` contains no items.
+   * Defines the text that is displayed when the component contains no items.
    */
   noDataText?: string;
   /**
@@ -59,13 +78,13 @@ export interface ListPropTypes extends WithWebComponentPropTypes {
    */
   separators?: ListSeparators;
   /**
-   * Defines the items of the `List`.
+   * Defines the items of the component.
    *
    * **Note:** Use `StandardListItem`, `CustomListItem`, and `GroupHeaderListItem` for the intended design.
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Defines the `List` header.
+   * Defines the component header.
    *
    * **Note:** When `header` is set, the `headerText` property is ignored.
    *
@@ -86,7 +105,7 @@ export interface ListPropTypes extends WithWebComponentPropTypes {
   /**
    * Fired when the Delete button of any item is pressed.
    *
-   * **Note:** A Delete button is displayed on each item, when the `List` `mode` property is set to `Delete`.
+   * **Note:** A Delete button is displayed on each item, when the component `mode` property is set to `Delete`.
    */
   onItemDelete?: (event: Ui5CustomEvent<HTMLElement, { item: ReactNode }>) => void;
   /**
@@ -126,10 +145,21 @@ export interface ListPropTypes extends WithWebComponentPropTypes {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/List" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const List: FC<ListPropTypes> = withWebComponent<ListPropTypes>(
+const List = withWebComponent<ListPropTypes>(
   'ui5-list',
-  ['footerText', 'growing', 'headerText', 'mode', 'noDataText', 'separators'],
-  ['busy', 'inset'],
+  [
+    'accessibleName',
+    'accessibleNameRef',
+    'accessibleRole',
+    'busyDelay',
+    'footerText',
+    'growing',
+    'headerText',
+    'mode',
+    'noDataText',
+    'separators'
+  ],
+  ['busy', 'indent'],
   ['header'],
   ['item-click', 'item-close', 'item-delete', 'item-toggle', 'load-more', 'selection-change']
 );
@@ -137,9 +167,11 @@ const List: FC<ListPropTypes> = withWebComponent<ListPropTypes>(
 List.displayName = 'List';
 
 List.defaultProps = {
+  accessibleRole: 'listbox',
   busy: false,
+  busyDelay: 1000,
   growing: ListGrowingMode.None,
-  inset: false,
+  indent: false,
   mode: ListMode.None,
   separators: ListSeparators.All
 };

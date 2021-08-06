@@ -6,8 +6,8 @@ exports[`ProductSwitch Basic Test (generated) 1`] = `
     ui5-product-switch=""
   >
     <ui5-product-switch-item
-      heading="Product Switch Item"
       target="_self"
+      title-text="Product Switch Item"
       ui5-product-switch-item=""
     />
   </ui5-product-switch>

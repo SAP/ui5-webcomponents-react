@@ -13,12 +13,12 @@ const renamingMap = {
   },
   Button: {
     'aria-label': 'accessibleName',
+    'aria-labelledby': null,
     iconSize: null
   },
   Card: {
-    'aria-label': 'accessibleName',
-    heading: 'titleText',
-    subheading: 'subtitleText'
+    'aria-label': null,
+    'aria-labelledby': null
   },
   Carousel: {
     hideNavigation: 'hideNavigationArrows',
@@ -26,11 +26,13 @@ const renamingMap = {
     infiniteScrollOffset: null
   },
   CheckBox: {
-    'aria-label': 'accessibleName',
+    'aria-label': null,
+    'aria-labelledby': null,
     wrap: 'wrappingType'
   },
   ComboBox: {
     'aria-label': 'accessibleName',
+    'aria-labelledby': 'accessibleNameRef',
     filterValue: 'value'
   },
   ColorPalette: {
@@ -43,7 +45,8 @@ const renamingMap = {
     stableDomRef: null
   },
   DatePicker: {
-    'aria-label': 'accessibleName'
+    'aria-label': 'accessibleName',
+    'aria-labelledby': 'accessibleNameRef'
   },
   DateRangePicker: {
     firstDateValue: 'startDateValue',
@@ -57,23 +60,32 @@ const renamingMap = {
   },
   Input: {
     'aria-label': 'accessibleName',
+    'aria-labelledby': 'accessibleNameRef',
     highlight: null
   },
   Label: {
     wrap: 'wrappingType'
   },
   Link: {
-    'aria-label': 'accessibleName',
+    'aria-label': null,
     wrap: 'wrappingType'
   },
   List: {
     'aria-label': 'accessibleName',
+    'aria-labelledby': 'accessibleNameRef',
     inset: 'indent'
   },
   MessageStrip: {
     noIcon: 'hideIcon',
     noCloseButton: 'hideCloseButton',
     type: 'design'
+  },
+  NotificationListItem: {
+    heading: 'titleText',
+    wrap: 'wrappingType'
+  },
+  NotificationListGroupItem: {
+    heading: 'titleText'
   },
   Panel: {
     'aria-label': 'accessibleName'
@@ -96,10 +108,16 @@ const renamingMap = {
   },
   RatingIndicator: {
     'aria-label': 'accessibleName',
+    'aria-labelledby': 'accessibleNameRef',
     maxValue: 'max'
   },
   Select: {
-    'aria-label': 'accessibleName'
+    'aria-label': 'accessibleName',
+    'aria-labelledby': 'accessibleNameRef'
+  },
+  StepInput: {
+    'aria-label': 'accessibleName',
+    'aria-labelledby': 'accessibleNameRef'
   },
   ShellBar: {
     notificationCount: 'notificationsCount'
@@ -135,6 +153,10 @@ const renamingMap = {
   Title: {
     wrap: 'wrappingType'
   },
+  ToggleButton: {
+    'aria-label': 'accessibleName',
+    iconSize: null
+  },
   TreeListItem: {
     info: 'additionalText',
     infoState: 'additionalTextState'
@@ -143,21 +165,22 @@ const renamingMap = {
     info: 'additionalText',
     infoState: 'additionalTextState'
   },
-  StepInput: {
-    'aria-label': 'accessibleName'
-  },
   TextArea: {
-    'aria-label': 'accessibleName'
+    'aria-label': 'accessibleName',
+    'aria-labelledby': 'accessibleNameRef'
   },
   UploadCollection: {
-    onFileDeleted: 'onFileDelete',
+    onFileDeleted: 'onItemDelete',
+    noDnd: 'hideDragOverlay'
+  },
+  UploadCollectionItem: {
     noDelete: 'disableDeleteButton',
     noRetry: 'hideRetryButton',
-    noTerminate: 'hideTerminateButton',
-    noDnd: 'hideDragOverlay'
+    noTerminate: 'hideTerminateButton'
   },
   Wizard: {
     'aria-label': 'accessibleName',
+    'aria-labelledby': 'accessibleNameRef',
     onSelectionChange: 'onStepChange'
   },
   WizardStep: {

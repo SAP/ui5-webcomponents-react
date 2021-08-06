@@ -8,7 +8,7 @@ describe('NotificationListItem', () => {
   test('Basic Test (generated)', () => {
     const { asFragment } = render(
       <NotificationListItem
-        heading="My Notification"
+        titleText="My Notification"
         showClose
         priority={Priority.High}
         actions={<NotificationAction text="My Action" />}

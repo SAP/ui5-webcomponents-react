@@ -1,9 +1,8 @@
-import { createUseStyles } from 'react-jss';
 import { useIsomorphicLayoutEffect, useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
-import { enrichEventWithDetails, debounce } from '@ui5/webcomponents-react-base/dist/Utils';
+import { debounce, enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { GlobalStyleClasses } from '@ui5/webcomponents-react/dist/GlobalStyleClasses';
 import { TableScaleWidthMode } from '@ui5/webcomponents-react/dist/TableScaleWidthMode';
@@ -11,10 +10,11 @@ import { TableSelectionBehavior } from '@ui5/webcomponents-react/dist/TableSelec
 import { TableSelectionMode } from '@ui5/webcomponents-react/dist/TableSelectionMode';
 import { TableVisibleRowCountMode } from '@ui5/webcomponents-react/dist/TableVisibleRowCountMode';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
+import { AnalyticalTableColumnDefinition } from '@ui5/webcomponents-react/interfaces/AnalyticalTableColumnDefinition';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import React, {
   ComponentType,
   CSSProperties,
-  FC,
   forwardRef,
   ReactNode,
   ReactText,
@@ -25,20 +25,19 @@ import React, {
   useMemo,
   useRef
 } from 'react';
+import { createUseStyles } from 'react-jss';
 import {
   PluginHook,
   useColumnOrder,
   useExpanded,
   useFilters,
+  useGlobalFilter,
   useGroupBy,
   useResizeColumns,
   useRowSelect,
   useSortBy,
-  useTable,
-  useGlobalFilter
+  useTable
 } from 'react-table';
-import { AnalyticalTableColumnDefinition } from '@ui5/webcomponents-react/interfaces/AnalyticalTableColumnDefinition';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import styles from './AnayticalTable.jss';
 import { ColumnHeaderContainer } from './ColumnHeader/ColumnHeaderContainer';
 import { DefaultColumn } from './defaults/Column';
@@ -69,7 +68,7 @@ interface DivWithCustomScrollProp extends HTMLDivElement {
   isExternalVerticalScroll?: boolean;
 }
 
-export interface TableProps extends Omit<CommonProps, 'title'> {
+export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * Defines the columns array where you can define the configuration for each column.
    *
@@ -301,7 +300,7 @@ const useStyles = createUseStyles(styles, { name: 'AnalyticalTable' });
  * The `AnalyticalTable` provides a set of convenient functions for responsive table design, including virtualization of rows and columns, infinite scrolling and customizable columns that will, unless otherwise defined, distribute the available space equally among themselves.
  * It also provides several possibilities for working with the data, including sorting, filtering, grouping and aggregation.
  */
-const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<HTMLDivElement>) => {
+const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HTMLDivElement>) => {
   const {
     columns,
     className,

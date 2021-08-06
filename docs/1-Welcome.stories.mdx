@@ -155,7 +155,7 @@ import { Ui5PopoverDomRef } from '@ui5/webcomponents-react/interfaces/Ui5Popover
 export default function App() {
   const popoverRef = useRef<Ui5PopoverDomRef>(null);
   const onClick = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
-    popoverRef.current?.openBy(e.target);
+    popoverRef.current?.showAt(e.target);
   };
 
   return (

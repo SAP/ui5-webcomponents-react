@@ -260,6 +260,7 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
             </ui5-label>
           </div>
           <ui5-switch
+            design="Textual"
             ui5-switch=""
           />
         </div>

@@ -1,13 +1,14 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { NotificationListItem } from '@ui5/webcomponents-react/dist/NotificationListItem';
 import { Avatar } from '@ui5/webcomponents-react/dist/Avatar';
-import { AvatarBackgroundColor } from '@ui5/webcomponents-react/dist/AvatarBackgroundColor';
+import { AvatarColorScheme } from '@ui5/webcomponents-react/dist/AvatarColorScheme';
 import { List } from '@ui5/webcomponents-react/dist/List';
 import { NotificationAction } from '@ui5/webcomponents-react/dist/NotificationAction';
 import { Label } from '@ui5/webcomponents-react/dist/Label';
 import { AvatarSize } from '@ui5/webcomponents-react/dist/AvatarSize';
 import { Priority } from '@ui5/webcomponents-react/dist/Priority';
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
+import { WrappingType } from '@ui5/webcomponents-react/dist/WrappingType';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import '@ui5/webcomponents-icons/dist/employee.js';
 
@@ -22,7 +23,7 @@ import '@ui5/webcomponents-icons/dist/employee.js';
     actions: { control: { disable: true } }
   }}
   args={{
-    heading:
+    titleText:
       'New order (#2525) With a very long title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat, turpis vel scelerisque pharetra, tellus odio vehicula dolor, nec elementum lectus turpis at nunc.',
     priority: Priority.None,
     children:
@@ -48,10 +49,9 @@ import '@ui5/webcomponents-icons/dist/employee.js';
         <NotificationListItem
           {...args}
           avatar={
-            <Avatar
-              size={AvatarSize.XS}
-              image="https://sap.github.io/ui5-webcomponents/assets/images/avatars/woman_avatar_1.png"
-            />
+            <Avatar size={AvatarSize.XS}>
+              <img src="https://sap.github.io/ui5-webcomponents/assets/images/avatars/woman_avatar_1.png" />
+            </Avatar>
           }
           footnotes={
             <>
@@ -90,7 +90,7 @@ The component can be used in a standard `List`.
             showClose
             avatar={<Avatar size={AvatarSize.XS} icon="employee" />}
             footnotes={<Label>3 Days</Label>}
-            heading="New order (#2526) with multiple NotificationAction buttons and close button"
+            titleText="New order (#2526) with multiple NotificationAction buttons and close button"
             actions={
               <>
                 <NotificationAction design={ButtonDesign.Transparent} text="Accept All Requested Information" />
@@ -101,23 +101,22 @@ The component can be used in a standard `List`.
             Short description
           </NotificationListItem>
           <NotificationListItem
-            avatar={<Avatar size={AvatarSize.XS} icon="employee" backgroundColor={AvatarBackgroundColor.Accent1} />}
+            avatar={<Avatar size={AvatarSize.XS} icon="employee" colorScheme={AvatarColorScheme.Accent1} />}
             footnotes={<Label>3 Days</Label>}
-            heading="New order (#2527) with single NotificationAction and close button"
+            titleText="New order (#2527) with single NotificationAction and close button"
             showClose
             actions={<NotificationAction design={ButtonDesign.Transparent} text="Accept All Requested Information" />}
           >
             Short description
           </NotificationListItem>
           <NotificationListItem
-            wrap
-            heading="New high priority order (#2528) without close button"
+            wrap={WrappingType.Normal}
+            titleText="New high priority order (#2528) without close button"
             priority={Priority.High}
             avatar={
-              <Avatar
-                size={AvatarSize.XS}
-                image="https://sap.github.io/ui5-webcomponents/assets/images/avatars/man_avatar_1.png"
-              />
+              <Avatar size={AvatarSize.XS}>
+                <img src="https://sap.github.io/ui5-webcomponents/assets/images/avatars/man_avatar_1.png" />
+              </Avatar>
             }
             footnotes={
               <>

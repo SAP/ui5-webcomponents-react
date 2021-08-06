@@ -1,18 +1,19 @@
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Token';
 
-export interface TokenPropTypes extends Omit<WithWebComponentPropTypes, 'onSelect'> {
+export interface TokenPropTypes extends Omit<CommonProps, 'onSelect'> {
   /**
-   * Defines whether the `Token` is read-only.
+   * Defines whether the component is read-only.
    *
-   * **Note:** A read-only `Token` can not be deleted or selected, but still provides visual feedback upon user interaction.
+   * **Note:** A read-only component can not be deleted or selected, but still provides visual feedback upon user interaction.
    */
   readonly?: boolean;
   /**
-   * Defines whether the `Token` is selected or not.
+   * Defines whether the component is selected or not.
    */
   selected?: boolean;
   /**
@@ -27,7 +28,7 @@ export interface TokenPropTypes extends Omit<WithWebComponentPropTypes, 'onSelec
    */
   closeIcon?: ReactNode;
   /**
-   * Fired when the a `Token` is selected by user interaction with mouse or clicking space.
+   * Fired when the the component is selected by user interaction with mouse or by clicking space.
    */
   onSelect?: (event: Ui5CustomEvent<HTMLElement>) => void;
 }
@@ -37,7 +38,7 @@ export interface TokenPropTypes extends Omit<WithWebComponentPropTypes, 'onSelec
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Token" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Token: FC<TokenPropTypes> = withWebComponent<TokenPropTypes>(
+const Token = withWebComponent<TokenPropTypes>(
   'ui5-token',
   ['text'],
   ['readonly', 'selected'],

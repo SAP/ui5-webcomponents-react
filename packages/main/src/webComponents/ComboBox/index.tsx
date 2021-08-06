@@ -1,53 +1,54 @@
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/ComboBox';
 
-export interface ComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput'> {
+export interface ComboBoxPropTypes extends Omit<CommonProps, 'onChange' | 'onInput'> {
   /**
-   * Defines whether `ComboBox` is in disabled state.
+   * Sets the accessible aria name of the component.
+   */
+  accessibleName?: string;
+  /**
+   * Receives id(or many ids) of the elements that label the combo box
+   */
+  accessibleNameRef?: string;
+  /**
+   * Defines whether the component is in disabled state.
    *
-   * **Note:** A disabled `ComboBox` is completely uninteractive.
+   * **Note:** A disabled component is completely uninteractive.
    */
   disabled?: boolean;
   /**
-   * Defines the filter type of the `ComboBox`. Available options are: `StartsWithPerTerm`, `StartsWith` and `Contains`.
+   * Defines the filter type of the component. Available options are: `StartsWithPerTerm`, `StartsWith` and `Contains`.
    */
   filter?: string;
-  /**
-   * Defines the "live" value of the `ComboBox`.
-   *
-   * **Note:** The property is updated upon typing.
-   *
-   * **Note:** Initially the filter value is synced with value.
-   */
-  filterValue?: string;
   /**
    * Indicates whether a loading indicator should be shown in the picker.
    */
   loading?: boolean;
   /**
-   * Defines a short hint intended to aid the user with data entry when the `ComboBox` has no value.
+   * Defines a short hint intended to aid the user with data entry when the component has no value.
    */
   placeholder?: string;
   /**
-   * Defines whether the `ComboBox` is readonly.
+   * Defines whether the component is readonly.
    *
-   * **Note:** A read-only `ComboBox` is not editable, but still provides visual feedback upon user interaction.
+   * **Note:** A read-only component is not editable, but still provides visual feedback upon user interaction.
    */
   readonly?: boolean;
   /**
-   * Defines whether the `ComboBox` is required.
+   * Defines whether the component is required.
    */
   required?: boolean;
   /**
-   * Defines the value of the `ComboBox`.
+   * Defines the value of the component.
    */
   value?: string;
   /**
-   * Defines the value state of the `ComboBox`.
+   * Defines the value state of the component.
    *
    * Available options are:
    *
@@ -59,18 +60,7 @@ export interface ComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
    */
   valueState?: ValueState;
   /**
-   * Defines the `ComboBox` items.
-   *
-   * Example:
-   *
-   * <pre>
-   *   <code>
-   *    &lt;ComboBox><br />
-   *    &nbsp;&nbsp;&lt;StandardListItem>Item #1&lt;/StandardListItem><br />
-   *    &nbsp;&nbsp;&lt;StandardListItem>Item #2&lt;/StandardListItem><br />
-   *    &lt;/ComboBox>
-   *  </code>
-   * </pre>
+   * Defines the component items.
    */
   children?: ReactNode | ReactNode[];
   /**
@@ -81,7 +71,7 @@ export interface ComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
    */
   icon?: ReactNode;
   /**
-   * Defines the value state message that will be displayed as pop up under the `ComboBox`.
+   * Defines the value state message that will be displayed as pop up under the component.
    *
    * **Note:** If not specified, a default text (in the respective language) will be displayed.
    * **Note:** The `valueStateMessage` would be displayed, when the `Select` is in `Information`, `Warning` or `Error` value state.
@@ -111,9 +101,9 @@ export interface ComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/ComboBox" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const ComboBox: FC<ComboBoxPropTypes> = withWebComponent<ComboBoxPropTypes>(
+const ComboBox = withWebComponent<ComboBoxPropTypes>(
   'ui5-combobox',
-  ['filter', 'filterValue', 'placeholder', 'value', 'valueState'],
+  ['accessibleName', 'accessibleNameRef', 'filter', 'placeholder', 'value', 'valueState'],
   ['disabled', 'loading', 'readonly', 'required'],
   ['icon', 'valueStateMessage'],
   ['change', 'input', 'selection-change']

@@ -2,20 +2,12 @@ import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
 import { Label, LabelPropTypes } from '@ui5/webcomponents-react/dist/Label';
-import React, {
-  cloneElement,
-  CSSProperties,
-  FC,
-  isValidElement,
-  ReactElement,
-  ReactNode,
-  ReactNodeArray,
-  useMemo
-} from 'react';
+import { WrappingType } from '@ui5/webcomponents-react/dist/WrappingType';
+import React, { cloneElement, CSSProperties, FC, isValidElement, ReactElement, ReactNode, ReactNodeArray } from 'react';
 import { createUseStyles } from 'react-jss';
 import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming';
 
-export interface FormItemProps {
+export interface FormItemPropTypes {
   /**
    * Label of the FormItem. Can be either a string or a `Label` component.
    */
@@ -36,7 +28,7 @@ addCustomCSS(
  `
 );
 
-interface InternalProps extends FormItemProps {
+interface InternalProps extends FormItemPropTypes {
   columnIndex?: number;
   labelSpan?: number;
   rowIndex?: number;
@@ -67,7 +59,7 @@ const renderLabel = (
 ) => {
   if (typeof label === 'string') {
     return (
-      <Label className={classes.label} style={styles} wrap>
+      <Label className={classes.label} style={styles} wrappingType={WrappingType.Normal}>
         {label ? `${label}:` : ''}
       </Label>
     );
@@ -77,7 +69,7 @@ const renderLabel = (
     return cloneElement<LabelPropTypes>(
       label,
       {
-        wrap: (label as ReactElement<LabelPropTypes>).props.wrap ?? true,
+        wrappingType: (label as ReactElement<LabelPropTypes>).props.wrappingType ?? WrappingType.Normal,
         className: `${classes.label} ${(label as ReactElement<LabelPropTypes>).props.className ?? ''}`,
         style: {
           gridColumnStart: styles.gridColumnStart,
@@ -97,7 +89,7 @@ const renderLabel = (
 /**
  * The `FormItem` is only used for calculating the final layout of the `Form`, thus it doesn't accept any other props than `label` and `children`, especially no `className`, `style` or `ref`.
  */
-const FormItem: FC<FormItemProps> = (props: FormItemProps) => {
+const FormItem: FC<FormItemPropTypes> = (props: FormItemPropTypes) => {
   const { label, children, columnIndex, rowIndex, labelSpan, lastGroupItem } = props as InternalProps;
 
   const classes = useStyles();

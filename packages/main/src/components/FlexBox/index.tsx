@@ -5,7 +5,7 @@ import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignIte
 import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
 import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';
 import { FlexBoxWrap } from '@ui5/webcomponents-react/dist/FlexBoxWrap';
-import React, { FC, forwardRef, ReactNode, ReactNodeArray, Ref } from 'react';
+import React, { forwardRef, ReactNode, ReactNodeArray, Ref } from 'react';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { styles } from './FlexBox.jss';
 
@@ -49,7 +49,7 @@ export interface FlexBoxPropTypes extends CommonProps {
 /**
  * The `FlexBox` builds the container for a flexible box layout by leveraging the CSS flexbox layout.
  */
-const FlexBox: FC<FlexBoxPropTypes> = forwardRef((props: FlexBoxPropTypes, ref: Ref<HTMLDivElement>) => {
+const FlexBox = forwardRef((props: FlexBoxPropTypes, ref: Ref<HTMLDivElement>) => {
   const {
     children,
     justifyContent,

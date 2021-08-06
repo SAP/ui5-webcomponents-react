@@ -1,15 +1,15 @@
-import { AvatarBackgroundColor } from '@ui5/webcomponents-react/dist/AvatarBackgroundColor';
-import { AvatarFitType } from '@ui5/webcomponents-react/dist/AvatarFitType';
+import { AvatarColorScheme } from '@ui5/webcomponents-react/dist/AvatarColorScheme';
 import { AvatarShape } from '@ui5/webcomponents-react/dist/AvatarShape';
 import { AvatarSize } from '@ui5/webcomponents-react/dist/AvatarSize';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import { FC } from 'react';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Avatar';
 
-export interface AvatarPropTypes extends WithWebComponentPropTypes {
+export interface AvatarPropTypes extends CommonProps {
   /**
-   * Defines the text alternative of the `Avatar`. If not provided a default text alternative will be set, if present.
+   * Defines the text alternative of the component. If not provided a default text alternative will be set, if present.
    */
   accessibleName?: string;
   /**
@@ -29,13 +29,13 @@ export interface AvatarPropTypes extends WithWebComponentPropTypes {
    * *   `Accent10`
    * *   `Placeholder`
    */
-  backgroundColor?: AvatarBackgroundColor;
+  colorScheme?: AvatarColorScheme;
   /**
    * Defines the name of the UI5 Icon, that would be displayed.
-   * **Note:** If `image` is set, the property would be ignored.
+   * **Note:** If `image` slot is provided, the property would be ignored.
    * **Note:** You should import the desired icon first, then use its name as "icon".
    *
-   * `import "@ui5/webcomponents-icons/dist/{icon\_name}.js"`
+   * import "@ui5/webcomponents-icons/dist/{icon\_name}.js"
    *
    * `<Avatar icon="employee">`
    *
@@ -43,21 +43,8 @@ export interface AvatarPropTypes extends WithWebComponentPropTypes {
    */
   icon?: string;
   /**
-   * Defines the source path to the desired image.
-   */
-  image?: string;
-  /**
-   * Defines the fit type of the desired image.
-   *
-   * Available options are:
-   *
-   * *   `Cover`
-   * *   `Contain`
-   */
-  imageFitType?: AvatarFitType;
-  /**
    * Defines the displayed initials.
-   * Up to two Latin letters can be displayed as initials in a `Avatar`.
+   * Up to two Latin letters can be displayed as initials.
    */
   initials?: string;
   /**
@@ -65,7 +52,7 @@ export interface AvatarPropTypes extends WithWebComponentPropTypes {
    */
   interactive?: boolean;
   /**
-   * Defines the shape of the `Avatar`.
+   * Defines the shape of the component.
    *
    * Available options are:
    *
@@ -74,7 +61,7 @@ export interface AvatarPropTypes extends WithWebComponentPropTypes {
    */
   shape?: AvatarShape;
   /**
-   * Defines predefined size of the `Avatar`.
+   * Defines predefined size of the component.
    *
    * Available options are:
    *
@@ -85,6 +72,14 @@ export interface AvatarPropTypes extends WithWebComponentPropTypes {
    * *   `XL`
    */
   size?: AvatarSize;
+  /**
+   * Receives the desired `<img>` tag
+   *
+   * **Note:** If you experience flickering of the provided image, you can hide the component until it is being defined with the following CSS:
+   *
+   * `Avatar:not(:defined) {  visibility: hidden;   }   `
+   */
+  children?: ReactNode;
 }
 
 /**
@@ -92,9 +87,9 @@ export interface AvatarPropTypes extends WithWebComponentPropTypes {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Avatar" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Avatar: FC<AvatarPropTypes> = withWebComponent<AvatarPropTypes>(
+const Avatar = withWebComponent<AvatarPropTypes>(
   'ui5-avatar',
-  ['accessibleName', 'backgroundColor', 'icon', 'image', 'imageFitType', 'initials', 'shape', 'size'],
+  ['accessibleName', 'colorScheme', 'icon', 'initials', 'shape', 'size'],
   ['interactive'],
   [],
   []
@@ -103,11 +98,10 @@ const Avatar: FC<AvatarPropTypes> = withWebComponent<AvatarPropTypes>(
 Avatar.displayName = 'Avatar';
 
 Avatar.defaultProps = {
-  // backgroundColor: AvatarBackgroundColor.Accent6, // needs to be removed for avatar group
-  imageFitType: AvatarFitType.Cover,
+  // colorScheme: AvatarColorScheme.Accent6, // needs to be removed for AvatarGroup
   interactive: false,
   shape: AvatarShape.Circle
-  // size: AvatarSize.S // needs to be removed for avatar group
+  // size: AvatarSize.S
 };
 
 export { Avatar };

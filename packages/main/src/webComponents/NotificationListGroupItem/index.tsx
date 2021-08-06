@@ -1,11 +1,12 @@
 import { Priority } from '@ui5/webcomponents-react/dist/Priority';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/NotificationListGroupItem';
 
-export interface NotificationListGroupItemPropTypes extends WithWebComponentPropTypes {
+export interface NotificationListGroupItemPropTypes extends CommonProps {
   /**
    * Defines if the group is collapsed or expanded.
    */
@@ -19,23 +20,32 @@ export interface NotificationListGroupItemPropTypes extends WithWebComponentProp
    */
   busy?: boolean;
   /**
-   * Defines the `heading` of the item.
+   * Defines the delay in milliseconds, after which the busy indicator will show up for this component.
    */
-  heading?: string;
+  busyDelay?: number;
   /**
-   * Defines the `priority` of the item.
+   * Defines the `priority` of the item. Available options are:
+   *
+   * *   `None`
+   * *   `Low`
+   * *   `Medium`
+   * *   `High`
    */
   priority?: Priority;
   /**
    * Defines if the `notification` is new or has been already read.
    *
-   * **Note:** if set to `false` the `heading` has bold font, if set to true - it has a normal font.
+   * **Note:** if set to `false` the `titleText` has bold font, if set to true - it has a normal font.
    */
   read?: boolean;
   /**
    * Defines if the `close` button would be displayed.
    */
   showClose?: boolean;
+  /**
+   * Defines the `titleText` of the item.
+   */
+  titleText?: string;
   /**
    * Defines the selected state of the `ListItem`.
    */
@@ -69,15 +79,15 @@ export interface NotificationListGroupItemPropTypes extends WithWebComponentProp
  *
  * *   `Toggle` button to expand and collapse the group
  * *   `Priority` icon to display the priority of the group
- * *   `Heading` to entitle the group
+ * *   `TitleText` to entitle the group
  * *   Custom actions - with the use of `NotificationAction`
  * *   Items of the group
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/NotificationListGroupItem" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const NotificationListGroupItem: FC<NotificationListGroupItemPropTypes> = withWebComponent<NotificationListGroupItemPropTypes>(
+const NotificationListGroupItem = withWebComponent<NotificationListGroupItemPropTypes>(
   'ui5-li-notification-group',
-  ['heading', 'priority'],
+  ['busyDelay', 'priority', 'titleText'],
   ['collapsed', 'showCounter', 'busy', 'read', 'showClose', 'selected'],
   ['actions'],
   ['toggle', 'close']
@@ -89,6 +99,7 @@ NotificationListGroupItem.defaultProps = {
   collapsed: false,
   showCounter: false,
   busy: false,
+  busyDelay: 1000,
   priority: Priority.None,
   read: false,
   showClose: false,

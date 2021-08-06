@@ -1,3 +1,8 @@
+// Generated file - do not change manually!
+
+/**
+ * UploadState
+ */
 export enum UploadState {
   /**
    * The file has been uploaded successfully.

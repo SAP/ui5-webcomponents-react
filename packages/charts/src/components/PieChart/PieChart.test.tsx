@@ -1,31 +1,29 @@
-import { render } from '@shared/tests';
 import * as React from 'react';
 import { simpleDataSet } from '../../resources/DemoProps';
 import { PieChart } from './PieChart';
+import {
+  createCircleChartRenderTest,
+  createLoadingPlaceholderTest,
+  createOnClickChartTest,
+  createOnLegendClickNotCrashTest
+} from '@shared/tests/chartUtils';
+import { createPassThroughPropsTest } from '@shared/tests/utils';
+
+const dimension = {
+  accessor: 'name'
+};
+const measure = {
+  accessor: 'users'
+};
 
 describe('PieChart', () => {
-  test('Renders with data', () => {
-    const utils = render(
-      <PieChart
-        dataset={simpleDataSet}
-        chartConfig={{
-          innerRadius: '0%'
-        }}
-        dimension={{
-          accessor: 'name'
-        }}
-        measure={{
-          accessor: 'users'
-        }}
-      />
-    );
-    expect(utils.asFragment()).toMatchSnapshot();
-  });
+  createCircleChartRenderTest(PieChart, { dimension, measure, dataset: simpleDataSet });
 
-  test('loading placeholder', () => {
-    const wrapper = render(
-      <PieChart style={{ width: '50%' }} dimension={{ accessor: 'name' }} measure={{ accessor: 'users' }} />
-    );
-    expect(wrapper.asFragment()).toMatchSnapshot();
-  });
+  createOnClickChartTest(PieChart, { dimension, measure, dataset: simpleDataSet });
+
+  createLoadingPlaceholderTest(PieChart, { measures: {}, dimensions: {} });
+
+  createOnLegendClickNotCrashTest(PieChart, { dataset: simpleDataSet, dimension, measure });
+
+  createPassThroughPropsTest(PieChart, { dimension: {}, measure: {} });
 });

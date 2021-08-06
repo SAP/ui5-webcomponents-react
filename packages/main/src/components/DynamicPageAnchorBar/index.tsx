@@ -31,7 +31,7 @@ addCustomCSS(
   }`
 );
 addCustomCSS(
-  'ui5-togglebutton',
+  'ui5-toggle-button',
   `
     :host([data-ui5wcr-dynamic-page-header-action]){
     width: 1.375rem;
