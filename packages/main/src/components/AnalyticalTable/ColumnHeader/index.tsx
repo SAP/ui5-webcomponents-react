@@ -172,12 +172,20 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
   const handleHeaderCellKeyDown = useCallback(
     (e) => {
       onKeyDown?.(e);
-      //todo add Space key support when List issue has been fixed
       if (hasPopover && /*e.code === 'Space' ||*/ e.code === 'Enter') {
         setPopoverOpen(true);
       }
     },
     [hasPopover, onKeyDown]
+  );
+
+  const handleHeaderCellKeyUp = useCallback(
+    (e) => {
+      if (hasPopover && e.code === 'Space') {
+        setPopoverOpen(true);
+      }
+    },
+    [hasPopover]
   );
 
   const targetRef = useRef();
@@ -216,6 +224,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
         data-column-id={id}
         onClick={handleHeaderCellClick}
         onKeyDown={handleHeaderCellKeyDown}
+        onKeyUp={handleHeaderCellKeyUp}
       >
         <div className={classes.header} data-h-align={column.hAlign}>
           <Text tooltip={tooltip} wrapping={false} style={textStyle} className={classes.text}>
