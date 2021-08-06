@@ -186,7 +186,7 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
         )}
         {showFilter && !column.isGrouped && (
           //todo maybe need to enhance Input selection after ui5-webcomponents issue has been fixed
-          <CustomListItem type={ListItemTypes.Inactive}>
+          <CustomListItem type={ListItemType.Inactive}>
             <FlexBox alignItems={FlexBoxAlignItems.Center} className={classes.filter}>
               <Icon name="filter" className={classes.filterIcon} />
               <Filter column={column} popoverRef={ref} />
