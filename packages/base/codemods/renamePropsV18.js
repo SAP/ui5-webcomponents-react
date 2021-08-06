@@ -1,5 +1,3 @@
-const { NotificationListGroupItem } = require('@ui5/webcomponents-react/src');
-
 const renamingMap = {
   // UI5 Web Components
   Avatar: {
