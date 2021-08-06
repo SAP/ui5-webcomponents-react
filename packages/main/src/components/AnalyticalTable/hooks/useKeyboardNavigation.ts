@@ -44,8 +44,8 @@ const getTableProps = (tableProps, { instance }) => {
   const onTableFocus = useCallback(
     (e) => {
       const isFirstCellAvailable = e.target.querySelector('div[data-column-index="0"][data-row-index="1"]');
-
       if (e.target.dataset.componentName === 'AnalyticalTableContainer') {
+        e.target.tabIndex = -1;
         if (currentlyFocusedCell.current) {
           const { dataset } = currentlyFocusedCell.current;
           const rowIndex = parseInt(dataset.rowIndex ?? dataset.rowIndexSub, 10);
@@ -79,8 +79,6 @@ const getTableProps = (tableProps, { instance }) => {
     [currentlyFocusedCell.current, tableRef.current]
   );
 
-  //todo:
-  // Space or Enter: in Header - open Popover
   const onKeyboardNavigation = useCallback(
     (e) => {
       if (currentlyFocusedCell.current) {
