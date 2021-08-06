@@ -3,23 +3,34 @@ import { TableSelectionBehavior } from '@ui5/webcomponents-react/dist/TableSelec
 import { TableSelectionMode } from '@ui5/webcomponents-react/dist/TableSelectionMode';
 
 const tagNamesWhichShouldNotSelectARow = new Set([
-  'UI5-INPUT',
-  'UI5-LINK',
+  'UI5-AVATAR',
   'UI5-BUTTON',
+  'UI5-CALENDAR',
   'UI5-CHECKBOX',
+  'UI5-COLOR-PICKER',
   'UI5-COMBOBOX',
-  'UI5-MULTI-COMBOBOX',
-  'UI5-SELECT',
-  'UI5-RADIOBUTTON',
-  'UI5-SEGMENTEDBUTTON',
-  'UI5-SWITCH',
-  'UI5-TOGGLEBUTTON',
   'UI5-DATE-PICKER',
   'UI5-DATERANGE-PICKER',
   'UI5-DATETIME-PICKER',
   'UI5-DURATION-PICKER',
+  'UI5-FILE-UPLOADER',
+  'UI5-ICON',
+  'UI5-INPUT',
+  'UI5-LINK',
+  'UI5-MULTI-COMBOBOX',
+  'UI5-MULTI-INPUT',
+  'UI5-RADIO-BUTTON',
+  'UI5-RANGE-SLIDER',
+  'UI5-RATING-INDICATOR',
+  'UI5-SEGMENTED-BUTTON',
+  'UI5-SELECT',
+  'UI5-SLIDER',
+  'UI5-STEP-INPUT',
+  'UI5-SWITCH',
+  'UI5-TEXT-AREA',
   'UI5-TIME-PICKER',
-  'UI5-FILE-UPLOADER'
+  'UI5-TOGGLE-BUTTON',
+  'UI5-UPLOAD-COLLECTION'
 ]);
 
 const getRowProps = (rowProps, { row, instance }) => {

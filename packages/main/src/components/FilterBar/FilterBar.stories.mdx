@@ -11,6 +11,10 @@ import { Select } from '@ui5/webcomponents-react/dist/Select';
 import { Switch } from '@ui5/webcomponents-react/dist/Switch';
 import { DateRangePicker } from '@ui5/webcomponents-react/dist/DateRangePicker';
 import { VariantManagement } from '@ui5/webcomponents-react/dist/VariantManagement';
+import { MultiInput } from '@ui5/webcomponents-react/dist/MultiInput';
+import { RatingIndicator } from '@ui5/webcomponents-react/dist/RatingIndicator';
+import { StepInput } from '@ui5/webcomponents-react/dist/StepInput';
+import { Token } from '@ui5/webcomponents-react/dist/Token';
 import '@ui5/webcomponents-icons/dist/nav-back.js';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 
@@ -57,6 +61,24 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
     {(args) => {
       return (
         <FilterBar {...args}>
+          <FilterGroupItem label="StepInput">
+            <StepInput />
+          </FilterGroupItem>
+          <FilterGroupItem label="RatingIndicator">
+            <RatingIndicator />
+          </FilterGroupItem>
+          <FilterGroupItem label="MultiInput">
+            <MultiInput
+              tokens={
+                <>
+                  <Token text="Argentina" />
+                  <Token text="Bulgaria" />
+                  <Token text="England" />
+                  <Token text="Finland" />
+                </>
+              }
+            />
+          </FilterGroupItem>
           <FilterGroupItem label="Input">
             <Input placeholder="Placeholder" />
           </FilterGroupItem>
