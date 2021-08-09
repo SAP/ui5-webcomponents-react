@@ -224,6 +224,21 @@ const renamingMap = {
   }
 };
 
+const enumRenamingMap = {
+  AvatarBackgroundColor: 'AvatarColorScheme',
+  PlacementType: 'PopoverPlacementType',
+  PanelAccessibleRoles: 'PanelAccessibleRole',
+  ListItemTypes: 'ListItemType',
+  MessageStripType: 'MessageStripDesign',
+  AvatarFitType: null,
+  TabContainerTabsPlacement: null,
+  SearchFunctions: null,
+  TabContainerHeaderMode: null,
+  TabDesignMode: null
+};
+
+process.env.NODE_ENV = 'development';
+
 const componentIsImportedFromWebComponentsReact = (j, root, componentName) => {
   const imports = root.find(j.ImportDeclaration);
   const importStatement = imports.find(j.ImportSpecifier, { local: { name: componentName } });
@@ -254,6 +269,41 @@ const addWebComponentsReactImport = (j, root, importName) => {
     j(imports.at(n - 1).get()).insertAfter(importStatement);
   } else {
     root.get().node.program.body.unshift(importStatement);
+  }
+};
+
+const renameEnums = (j, root) => {
+  for (const oldEnumName in enumRenamingMap) {
+    if (!componentIsImportedFromWebComponentsReact(j, root, oldEnumName)) {
+      continue;
+    }
+
+    const newEnumName = enumRenamingMap[oldEnumName];
+
+    // import statement
+    const importStatement = root.find(j.ImportSpecifier, { local: { name: oldEnumName } });
+    const importedFrom = importStatement.get().parentPath.parentPath.value.source.value;
+
+    if (importedFrom === '@ui5/webcomponents-react') {
+      if (newEnumName === null) {
+        importStatement.remove();
+      } else {
+        importStatement.replaceWith(j.importSpecifier(j.identifier(newEnumName), j.identifier(newEnumName)));
+      }
+    } else if (importedFrom.startsWith(`@ui5/webcomponents-react/dist/${oldEnumName}`)) {
+      if (newEnumName === null) {
+        root.find(j.ImportDeclaration, { source: { value: importedFrom } }).remove();
+      } else {
+        importStatement.replaceWith(j.importSpecifier(j.identifier(newEnumName), j.identifier(newEnumName)));
+        importStatement.get().parentPath.parentPath.value.source = j.literal('@ui5/webcomponents-react');
+      }
+    }
+
+    // usages
+    const expression = root.find(j.MemberExpression, { object: { name: oldEnumName } });
+    expression.replaceWith((nodePath) => {
+      return j.memberExpression(j.identifier(newEnumName), nodePath.value.property);
+    });
   }
 };
 
@@ -333,6 +383,8 @@ module.exports = (file, api, options) => {
       }
     });
   }
+
+  renameEnums(j, root);
 
   return root.toSource(printOptions);
 };
