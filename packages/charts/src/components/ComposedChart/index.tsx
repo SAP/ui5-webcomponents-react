@@ -168,9 +168,8 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
   const tooltipValueFormatter = useTooltipFormatter(measures);
 
   const primaryDimension = dimensions[0];
-  const primaryMeasure = measures[0];
-
   const secondaryMeasure = measures.find((measure) => measure.accessor === chartConfig.secondYAxis?.dataKey);
+  const primaryMeasure = measures[0] === secondaryMeasure ? measures[1] ?? measures[0] : measures[0];
 
   const labelFormatter = useLabelFormatter(primaryDimension);
 

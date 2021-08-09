@@ -160,7 +160,14 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
   const tooltipValueFormatter = useTooltipFormatter(measures);
 
   const primaryDimension = dimensions[0];
-  const primaryMeasure = measures[0];
+  const secondaryMeasure = measures.find((measure) => measure.accessor === chartConfig.secondYAxis?.dataKey);
+  const primaryMeasure = measures[0] === secondaryMeasure ? measures[1] ?? measures[0] : measures[0];
+
+  const dataKeys = measures.map(({ accessor }) => accessor);
+  const colorSecondY = chartConfig.secondYAxis
+    ? dataKeys.findIndex((key) => key === chartConfig.secondYAxis?.dataKey)
+    : 0;
+
   const chartRef = useConsolidatedRef<any>(ref);
 
   const onItemLegendClick = useLegendItemClick(onLegendClick);
@@ -236,6 +243,32 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
             tickFormatter={primaryMeasure?.formatter}
             height={xAxisHeight}
             reversed={isRTL}
+          />
+        )}
+        {chartConfig.secondYAxis?.dataKey && (
+          <XAxis
+            dataKey={chartConfig.secondYAxis.dataKey}
+            axisLine={{
+              stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
+            }}
+            tick={
+              <XAxisTicks
+                config={secondaryMeasure}
+                secondYAxisConfig={{
+                  color: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
+                }}
+              />
+            }
+            tickLine={{
+              stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
+            }}
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            label={{ value: chartConfig.secondYAxis.name, offset: 2, angle: +90, position: 'center' }}
+            orientation="top"
+            interval={0}
+            xAxisId="secondary"
+            type="number"
           />
         )}
         {chartConfig.yAxisVisible &&
