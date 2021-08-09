@@ -27,7 +27,7 @@ const Header = (instance) => {
   const checkBoxProps = getToggleAllRowsSelectedProps();
   return (
     <CheckBox
-      {...getToggleAllRowsSelectedProps()}
+      {...checkBoxProps}
       style={customCheckBoxStyling}
       tabIndex={-1}
       onChange={undefined}
