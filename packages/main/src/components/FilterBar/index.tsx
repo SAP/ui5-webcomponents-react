@@ -412,6 +412,13 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
             },
             ref: (node) => {
               filterRefs.current[child.key] = node;
+              if (child.props.children.ref) {
+                if (typeof child.props.children.ref === 'function') {
+                  child.props.children.ref(node);
+                } else if (child.props.children.ref.hasOwnProperty('current')) {
+                  child.props.children.ref.current = node;
+                }
+              }
             }
           }
         });
