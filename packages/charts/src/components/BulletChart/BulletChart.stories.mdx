@@ -1,0 +1,103 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+import '@ui5/webcomponents-icons/dist/person-placeholder.js';
+import { BulletChart } from '@ui5/webcomponents-react-charts/dist/BulletChart';
+import { complexDataSet } from '../../resources/DemoProps';
+
+<Meta
+  title="Charts /  BulletChart"
+  component={BulletChart}
+  argTypes={{
+    dataset: {
+      control: { disable: true }
+    },
+    children: {
+      control: { disable: true }
+    }
+  }}
+/>
+
+<DocsHeader />
+
+## Example
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      dataset: complexDataSet,
+      style: { height: '60vh' },
+      dimensions: [
+        {
+          accessor: 'name',
+          formatter: (d) => `${d} 2019`,
+          interval: 0
+        }
+      ],
+      measures: [
+        {
+          accessor: 'sessions',
+          label: 'Active Sessions',
+          type: 'bar'
+        },
+        {
+          accessor: 'users',
+          label: 'Users',
+          formatter: (val) => val.toLocaleString(),
+          type: 'bar'
+        }
+      ]
+    }}
+  >
+    {(props) => <BulletChart {...props} />}
+  </Story>
+</Canvas>
+
+## Properties
+
+<ArgsTable story="Default" />
+
+<br />
+<br />
+
+## More Examples
+
+### Loading Placeholder
+
+<Canvas>
+  <Story
+    name="Loading Placeholder"
+    args={{
+      dataset: [],
+      style: { height: '60vh' },
+      dimensions: [
+        {
+          accessor: 'name',
+          formatter: (d) => `${d} 2019`,
+          interval: 0
+        }
+      ],
+      measures: [
+        {
+          accessor: 'sessions',
+          label: 'Active Sessions',
+          type: 'bar'
+        },
+        {
+          accessor: 'users',
+          label: 'Users',
+          formatter: (val) => val.toLocaleString(),
+          type: 'area'
+        },
+        {
+          accessor: 'volume',
+          label: 'Vol.',
+          formatter: (val) => `${val} sessions`,
+          type: 'line'
+        }
+      ]
+    }}
+  >
+    {(props) => <BulletChart {...props} />}
+  </Story>
+</Canvas>

@@ -1,6 +1,8 @@
 // Library Export
 import { BarChart } from './dist/BarChart';
 import { BarChartPlaceholder } from './dist/BarChartPlaceholder';
+import { BulletChart } from './dist/BulletChart';
+import { BulletChartPlaceholder } from './dist/BulletChartPlaceholder';
 import { ColumnChart } from './dist/ColumnChart';
 import { ColumnChartPlaceholder } from './dist/ColumnChartPlaceholder';
 import { ColumnChartWithTrend } from './dist/ColumnChartWithTrend';
@@ -20,6 +22,7 @@ import { ScatterChartPlaceholder } from './dist/ScatterChartPlaceholder';
 
 export {
   BarChart,
+  BulletChart,
   ColumnChart,
   ColumnChartWithTrend,
   ComposedChart,
@@ -31,6 +34,7 @@ export {
   RadialChart,
   ScatterChart,
   BarChartPlaceholder,
+  BulletChartPlaceholder,
   ColumnChartPlaceholder,
   ComposedChartPlaceholder,
   LineChartPlaceholder,
