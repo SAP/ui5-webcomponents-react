@@ -18,8 +18,6 @@ const customCheckBoxStyling = {
 const Header = ({
   getToggleAllRowsSelectedProps,
   flatRows,
-  selectedFlatRows,
-  state: { selectedRowIds },
   webComponentsReactProperties: { onRowSelected, selectionMode },
   toggleAllRowsSelected
 }) => {
