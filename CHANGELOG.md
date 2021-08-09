@@ -34,6 +34,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### BREAKING CHANGES
 
+#### Updated `@ui5/webcomponents` to 1.0.0-rc.15.
+This update includes several **breaking changes** that are reflected in this library as well. Please visit our [**Migration Guide**](https://sap.github.io/ui5-webcomponents-react/?path=/docs/migration-guide--page#migrating-from-017x-to-0180) for update instructions.
+
 * **AnalyticalCard (TypeScript only)**: `AnalyticalCardTypes` has been renamed to `AnalyticalCardPropTypes`
 * **AnalyticalTable (TypeScript only)**: `TableProps` has been renamed to `AnalyticalTablePropTypes`
 * **DynamicPage (TypeScript only)**: `DynamicPageProps` has been renamed to `DynamicPagePropTypes`
@@ -45,7 +48,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **Text (TypeScript only)**: `TextProps` has been renamed to `TextPropTypes`
 * **ThemeProvider (TypeScript only)**: `ThemeProviderProps` has been renamed to `ThemeProviderPropTypes`
 * **Toolbar (TypeScript only)**: `ToolbarProptypes` has been renamed to `ToolbarPropTypes`
-* updated `@ui5/webcomponents` to 1.0.0-rc.15. This update includes several breaking changes that are reflected in this library as well. Please visit our [Migration Guide](https://sap.github.io/ui5-webcomponents-react/?path=/docs/migration-guide--page#migrating-from-017x-to-0180) for update instructions.
 * **ActionSheet**: the ActionSheet can now be opened with `actionSheetRef.current.showAt(opener)` instead of `actionSheetRef.current.open(opener)`
 * **Avatar**: `img` prop is replaced by `children` with a `<img>` component
 * **Breadcrumbs**: the `Breadcrumbs` component has been replaced with the official UI5 Web Component. Please visit our migration guide for details.
