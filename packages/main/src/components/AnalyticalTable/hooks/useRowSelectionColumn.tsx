@@ -40,13 +40,13 @@ const Header = ({
   if (selectionMode === TableSelectionMode.SINGLE_SELECT) {
     return null;
   }
-  const hasSelectedRow = Object.values(selectedRowIds).includes(true) || selectedFlatRows.length > 0;
+  const checkBoxProps = getToggleAllRowsSelectedProps();
   return (
     <CheckBox
-      {...getToggleAllRowsSelectedProps()}
+      {...checkBoxProps}
       style={customCheckBoxStyling}
       onChange={onChange}
-      checked={hasSelectedRow}
+      checked={checkBoxProps.indeterminate ? true : checkBoxProps.checked}
     />
   );
 };
