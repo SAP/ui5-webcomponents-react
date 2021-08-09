@@ -15,15 +15,14 @@ const customCheckBoxStyling = {
  * COMPONENTS
  */
 
-const Header = (instance) => {
-  const {
-    getToggleAllRowsSelectedProps,
-    flatRows,
-    selectedFlatRows,
-    state: { selectedRowIds },
-    webComponentsReactProperties: { onRowSelected, selectionMode },
-    toggleAllRowsSelected
-  } = instance;
+const Header = ({
+  getToggleAllRowsSelectedProps,
+  flatRows,
+  selectedFlatRows,
+  state: { selectedRowIds },
+  webComponentsReactProperties: { onRowSelected, selectionMode },
+  toggleAllRowsSelected
+}) => {
   const onChange = useCallback(
     (e) => {
       const allRowsSelected = e.target.checked;
