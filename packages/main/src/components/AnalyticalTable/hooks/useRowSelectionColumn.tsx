@@ -42,14 +42,12 @@ const Header = ({
 };
 
 const Cell = ({ row, webComponentsReactProperties: { selectionBehavior, selectionMode } }) => {
-  const handleCellClick = useCallback(
-    (e) => {
-      if (TableSelectionBehavior.ROW_SELECTOR === selectionBehavior) {
-        row.getRowProps().onClick(e, true);
-      }
-    },
-    [selectionMode, row.getRowProps]
-  );
+  const handleCellClick = (e) => {
+    if (TableSelectionBehavior.ROW_SELECTOR === selectionBehavior) {
+      row.getRowProps().onClick(e, true);
+    }
+  };
+
   if (row.isGrouped && selectionMode === TableSelectionMode.SINGLE_SELECT) {
     return null;
   }
