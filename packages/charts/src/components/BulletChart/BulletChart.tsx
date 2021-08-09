@@ -109,11 +109,7 @@ export interface BulletChartProps extends IChartBaseProps {
   layout?: 'horizontal' | 'vertical';
 }
 
-const ChartTypes = {
-  bar: Bar
-};
-
-type AvailableChartTypes = 'line' | 'bar' | 'area' | string;
+type AvailableChartTypes = 'primary' | 'comparison' | 'additional' | string;
 
 /**
  * TODO DESCRIPTION
@@ -230,6 +226,11 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
   const Placeholder = useCallback(() => {
     return <BulletChartPlaceholder layout={layout} measures={measures} />;
   }, [layout, measures]);
+
+  const ComparisonLine = (comparisonProps) => {
+    const { x, y, width, index, fill } = comparisonProps;
+    return <line key={`target-${index}`} x1={x} x2={x + width} y1={y} y2={y} stroke={fill} />;
+  };
 
   const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick', 'onClick']);
   const isRTL = useIsRTL(chartRef);
@@ -385,41 +386,53 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
           />
         )}
         {measures?.map((element, index) => {
-          const ChartElement = ChartTypes[element.type] as any as FC<any>;
+          const ChartElement = Bar as any as FC<any>;
 
           const chartElementProps: any = {
             isAnimationActive: noAnimation === false
           };
           let labelPosition = 'top';
-
           switch (element.type) {
-            case 'line':
+            case 'primary':
+              element.type = Bar;
+              chartElementProps.stackId = 'A';
               chartElementProps.activeDot = {
                 onClick: onDataPointClickInternal
               };
               chartElementProps.strokeWidth = element.width;
               chartElementProps.strokeOpacity = element.opacity;
               chartElementProps.dot = !isBigDataSet;
-              break;
-            case 'bar':
-              chartElementProps.fillOpacity = element.opacity;
-              chartElementProps.strokeOpacity = element.opacity;
-              chartElementProps.barSize = element.width;
-              chartElementProps.onClick = onDataPointClickInternal;
-              chartElementProps.stackId = element.stackId ?? undefined;
               chartElementProps.labelPosition = element.stackId ? 'insideTop' : 'top';
               if (layout === 'vertical') {
                 labelPosition = 'insideRight';
               } else {
                 labelPosition = 'insideTop';
               }
+
               break;
-            case 'area':
-              chartElementProps.dot = !isBigDataSet;
-              chartElementProps.fillOpacity = 0.3;
-              chartElementProps.strokeOpacity = element.opacity;
-              chartElementProps.onClick = onDataPointClickInternal;
+            case 'comparison':
+              chartElementProps.type = 'monotone';
+              chartElementProps.shape = ComparisonLine;
+              chartElementProps.activeDot = { r: 8 };
               chartElementProps.strokeWidth = element.width;
+              chartElementProps.strokeOpacity = element.opacity;
+              chartElementProps.label = false;
+              chartElementProps.dot = !isBigDataSet;
+
+              break;
+            case 'additional':
+              element.type = Bar;
+              chartElementProps.stackId = 'A';
+              chartElementProps.fillOpacity = element.opacity;
+              chartElementProps.strokeOpacity = element.opacity;
+              chartElementProps.barSize = element.width;
+              chartElementProps.onClick = onDataPointClickInternal;
+              chartElementProps.labelPosition = element.stackId ? 'insideTop' : 'top';
+              if (layout === 'vertical') {
+                labelPosition = 'insideRight';
+              } else {
+                labelPosition = 'insideTop';
+              }
               break;
           }
 
@@ -428,6 +441,7 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
           } else {
             chartElementProps.yAxisId = chartConfig.secondYAxis?.dataKey === element.accessor ? 'secondary' : 'primary';
           }
+
           return (
             <ChartElement
               key={element.accessor}

@@ -38,13 +38,18 @@ import { complexDataSet } from '../../resources/DemoProps';
         {
           accessor: 'sessions',
           label: 'Active Sessions',
-          type: 'bar'
+          type: 'primary'
         },
         {
           accessor: 'users',
           label: 'Users',
           formatter: (val) => val.toLocaleString(),
-          type: 'bar'
+          type: 'comparison'
+        },
+        {
+          accessor: 'volume',
+          label: 'Volume',
+          type: 'additional'
         }
       ]
     }}
@@ -81,19 +86,13 @@ import { complexDataSet } from '../../resources/DemoProps';
         {
           accessor: 'sessions',
           label: 'Active Sessions',
-          type: 'bar'
-        },
-        {
-          accessor: 'users',
-          label: 'Users',
-          formatter: (val) => val.toLocaleString(),
-          type: 'area'
+          type: 'primary'
         },
         {
           accessor: 'volume',
           label: 'Vol.',
           formatter: (val) => `${val} sessions`,
-          type: 'line'
+          type: 'comparison'
         }
       ]
     }}
