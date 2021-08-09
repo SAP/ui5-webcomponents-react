@@ -14,7 +14,7 @@ const isBrowserIe = isIE();
 const getPadding = (level) => {
   switch (level) {
     case 0:
-      return 0;
+      return '0px';
     case 1:
       return isBrowserIe ? '1rem' : CssSizeVariables.sapWcrAnalyticalTableTreePaddingLevel1;
     case 2:
@@ -29,7 +29,14 @@ const getPadding = (level) => {
 };
 
 export const Expandable = (props) => {
-  const { cell, row, column, columns, webComponentsReactProperties } = props;
+  const {
+    cell,
+    row,
+    column,
+    columns,
+    webComponentsReactProperties,
+    state: { isRtl }
+  } = props;
 
   const tableColumns = columns.filter(
     ({ id }) =>
@@ -39,7 +46,7 @@ export const Expandable = (props) => {
   );
 
   const columnIndex = tableColumns.findIndex((col) => col.id === column.id);
-
+  const paddingRtl = isRtl ? 'paddingRight' : 'paddingLeft';
   let paddingLeft;
   if (row.canExpand) {
     paddingLeft = columnIndex === 0 ? getPadding(row.depth) : 0;
@@ -47,7 +54,7 @@ export const Expandable = (props) => {
     paddingLeft = columnIndex === 0 ? `calc(${getPadding(row.depth)} + 2rem)` : 0;
   }
   const style: CSSProperties = {
-    paddingLeft
+    [paddingRtl]: paddingLeft
   };
   const rowProps = row.getToggleRowExpandedProps();
 
