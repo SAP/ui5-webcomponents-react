@@ -262,7 +262,14 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * Fired when a row is selected or unselected.
    */
-  onRowSelected?: (e?: CustomEvent<{ allRowsSelected?: boolean; row?: unknown; isSelected?: boolean }>) => void;
+  onRowSelected?: (
+    e?: CustomEvent<{
+      allRowsSelected?: boolean;
+      row?: Record<string, unknown>;
+      isSelected?: boolean;
+      selectedFlatRows?: Record<string, unknown>[] | string[];
+    }>
+  ) => void;
   /**
    * Fired when a row is clicked
    */

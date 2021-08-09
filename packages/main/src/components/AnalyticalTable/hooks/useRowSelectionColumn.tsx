@@ -50,20 +50,19 @@ const Header = ({
 };
 
 const Cell = ({ row, webComponentsReactProperties: { selectionBehavior, selectionMode } }) => {
-  const handleCellClick = useCallback(
-    (e) => {
-      if (TableSelectionBehavior.ROW_SELECTOR === selectionBehavior) {
-        row.getRowProps().onClick(e, true);
-      }
-    },
-    [selectionMode, row]
-  );
+  const handleCellClick = (e) => {
+    if (TableSelectionBehavior.ROW_SELECTOR === selectionBehavior) {
+      row.getRowProps().onClick(e, true);
+    }
+  };
+
   if (row.isGrouped && selectionMode === TableSelectionMode.SINGLE_SELECT) {
     return null;
   }
   if (selectionMode === TableSelectionMode.SINGLE_SELECT) {
     return <div style={divStyle} onClick={handleCellClick} data-name="internal_selection_column" />;
   }
+
   return (
     <CheckBox
       {...row.getToggleRowSelectedProps()}
