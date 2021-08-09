@@ -15,12 +15,15 @@ const customCheckBoxStyling = {
  * COMPONENTS
  */
 
-const Header = ({
-  getToggleAllRowsSelectedProps,
-  flatRows,
-  webComponentsReactProperties: { onRowSelected, selectionMode },
-  toggleAllRowsSelected
-}) => {
+const Header = (instance) => {
+  const {
+    getToggleAllRowsSelectedProps,
+    flatRows,
+    selectedFlatRows,
+    state: { selectedRowIds },
+    webComponentsReactProperties: { onRowSelected, selectionMode },
+    toggleAllRowsSelected
+  } = instance;
   const onChange = useCallback(
     (e) => {
       const allRowsSelected = e.target.checked;
@@ -38,7 +41,15 @@ const Header = ({
   if (selectionMode === TableSelectionMode.SINGLE_SELECT) {
     return null;
   }
-  return <CheckBox {...getToggleAllRowsSelectedProps()} style={customCheckBoxStyling} onChange={onChange} />;
+  const hasSelectedRows = Object.values(selectedRowIds).includes(true) || selectedFlatRows.length > 0;
+  return (
+    <CheckBox
+      {...getToggleAllRowsSelectedProps()}
+      style={customCheckBoxStyling}
+      onChange={onChange}
+      checked={hasSelectedRows}
+    />
+  );
 };
 
 const Cell = ({ row, webComponentsReactProperties: { selectionBehavior, selectionMode } }) => {
