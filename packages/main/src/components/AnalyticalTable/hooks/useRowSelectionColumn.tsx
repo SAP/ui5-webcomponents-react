@@ -38,7 +38,15 @@ const Header = ({
   if (selectionMode === TableSelectionMode.SINGLE_SELECT) {
     return null;
   }
-  return <CheckBox {...getToggleAllRowsSelectedProps()} style={customCheckBoxStyling} onChange={onChange} />;
+  const checkBoxProps = getToggleAllRowsSelectedProps();
+  return (
+    <CheckBox
+      {...checkBoxProps}
+      style={customCheckBoxStyling}
+      onChange={onChange}
+      checked={checkBoxProps.indeterminate ? true : checkBoxProps.checked}
+    />
+  );
 };
 
 const Cell = ({ row, webComponentsReactProperties: { selectionBehavior, selectionMode } }) => {
