@@ -71,8 +71,10 @@ const getRowProps = (rowProps, { row, instance }) => {
     }
 
     if (selectionMode === TableSelectionMode.SINGLE_SELECT) {
-      for (const row of selectedFlatRows) {
-        toggleRowSelected(row.id, false);
+      for (const selectedRow of selectedFlatRows) {
+        if (selectedRow.id !== row.id) {
+          toggleRowSelected(selectedRow.id, false);
+        }
       }
     }
     instance.toggleRowSelected(row.id);
@@ -85,13 +87,18 @@ const getRowProps = (rowProps, { row, instance }) => {
         selectedFlatRows: !row.isSelected ? [row.id] : []
       };
       if (selectionMode === TableSelectionMode.MULTI_SELECT) {
-        payload.selectedFlatRows = !row.isSelected
+        const isRowSelected = selectionCellClick ? row.isSelected : !row.isSelected;
+        if (selectionCellClick) {
+          payload.isSelected = row.isSelected;
+        }
+        payload.selectedFlatRows = isRowSelected
           ? [...selectedFlatRows, row]
           : selectedFlatRows.filter((prevRow) => prevRow.id !== row.id);
       }
       onRowSelected(enrichEventWithDetails(e, payload));
     }
   };
+
   return [
     rowProps,
     {

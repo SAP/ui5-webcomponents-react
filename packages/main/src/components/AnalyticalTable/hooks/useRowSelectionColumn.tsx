@@ -48,7 +48,7 @@ const Cell = ({ row, webComponentsReactProperties: { selectionBehavior, selectio
         row.getRowProps().onClick(e, true);
       }
     },
-    [selectionMode, row]
+    [selectionMode, row.getRowProps]
   );
   if (row.isGrouped && selectionMode === TableSelectionMode.SINGLE_SELECT) {
     return null;
@@ -56,6 +56,7 @@ const Cell = ({ row, webComponentsReactProperties: { selectionBehavior, selectio
   if (selectionMode === TableSelectionMode.SINGLE_SELECT) {
     return <div style={divStyle} onClick={handleCellClick} data-name="internal_selection_column" />;
   }
+
   return (
     <CheckBox
       {...row.getToggleRowSelectedProps()}
