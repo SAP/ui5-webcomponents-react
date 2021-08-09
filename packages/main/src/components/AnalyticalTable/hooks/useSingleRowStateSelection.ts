@@ -34,7 +34,7 @@ const tagNamesWhichShouldNotSelectARow = new Set([
 ]);
 
 const getRowProps = (rowProps, { row, instance }) => {
-  const { webComponentsReactProperties, toggleRowSelected, selectedFlatRows } = instance;
+  const { webComponentsReactProperties, toggleRowSelected, selectedFlatRows, flatRows } = instance;
   const handleRowSelect = (e, selectionCellClick = false) => {
     if (
       e.target?.dataset?.name !== 'internal_selection_column' &&
@@ -84,7 +84,8 @@ const getRowProps = (rowProps, { row, instance }) => {
       const payload = {
         row,
         isSelected: !row.isSelected,
-        selectedFlatRows: !row.isSelected ? [row.id] : []
+        selectedFlatRows: !row.isSelected ? [row.id] : [],
+        allRowsSelected: false
       };
       if (selectionMode === TableSelectionMode.MULTI_SELECT) {
         const isRowSelected = selectionCellClick ? row.isSelected : !row.isSelected;
@@ -94,6 +95,10 @@ const getRowProps = (rowProps, { row, instance }) => {
         payload.selectedFlatRows = isRowSelected
           ? [...selectedFlatRows, row]
           : selectedFlatRows.filter((prevRow) => prevRow.id !== row.id);
+
+        if (payload.selectedFlatRows.length === flatRows.length) {
+          payload.allRowsSelected = true;
+        }
       }
       onRowSelected(enrichEventWithDetails(e, payload));
     }
