@@ -2,18 +2,18 @@ import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import React, { FC, forwardRef, ReactNode, ReactNodeArray, Ref, useMemo } from 'react';
+import React, { forwardRef, ReactNode, ReactNodeArray, Ref, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { DynamicPageHeaderStyles } from './DynamicPageHeader.jss';
 
-export interface DynamicPageHeaderProps extends CommonProps {
+export interface DynamicPageHeaderPropTypes extends CommonProps {
   /**
    * Content of the `DynamicPageHeader`.
    */
   children?: ReactNode | ReactNodeArray;
 }
 
-interface InternalProps extends DynamicPageHeaderProps {
+interface InternalProps extends DynamicPageHeaderPropTypes {
   /**
    * Determines if the header is pinned.
    */
@@ -30,7 +30,7 @@ const useStyles = createUseStyles(DynamicPageHeaderStyles, { name: 'DynamicPageH
  * The dynamic page header contains the header content of the dynamic page.
  * This component can be collapsed and pinned by the anchorbar.
  */
-const DynamicPageHeader: FC<DynamicPageHeaderProps> = forwardRef((props: InternalProps, ref: Ref<HTMLDivElement>) => {
+const DynamicPageHeader = forwardRef((props: InternalProps, ref: Ref<HTMLDivElement>) => {
   const { children, headerPinned, topHeaderHeight, tooltip, className, style } = props;
 
   const passThroughProps = usePassThroughHtmlProps(props);

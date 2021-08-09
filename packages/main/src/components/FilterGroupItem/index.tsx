@@ -6,7 +6,7 @@ import { BusyIndicator } from '@ui5/webcomponents-react/dist/BusyIndicator';
 import { BusyIndicatorSize } from '@ui5/webcomponents-react/dist/BusyIndicatorSize';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { Label } from '@ui5/webcomponents-react/dist/Label';
-import React, { FC, forwardRef, ReactElement, RefObject } from 'react';
+import React, { forwardRef, ReactElement, RefObject } from 'react';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import styles from './FilterGroupItem.jss';
 
@@ -61,65 +61,63 @@ export interface FilterGroupItemPropTypes extends CommonProps {
 /**
  * Represents a filter belonging to the `FilterBar`.
  */
-export const FilterGroupItem: FC<FilterGroupItemPropTypes> = forwardRef(
-  (props: FilterGroupItemPropTypes, ref: RefObject<HTMLDivElement>) => {
-    const classes = useStyles();
-    const {
-      groupName,
-      considerGroupName,
-      label,
-      labelTooltip,
-      required,
-      visible,
-      visibleInFilterBar,
-      children,
-      style,
-      loading,
-      className,
-      tooltip,
-      slot
-    } = props;
-    const passThroughProps = usePassThroughHtmlProps(props);
-    const inFB = props['data-in-fb'];
-    const filterGroupItemRef = useConsolidatedRef<HTMLDivElement>(ref);
+export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref: RefObject<HTMLDivElement>) => {
+  const classes = useStyles();
+  const {
+    groupName,
+    considerGroupName,
+    label,
+    labelTooltip,
+    required,
+    visible,
+    visibleInFilterBar,
+    children,
+    style,
+    loading,
+    className,
+    tooltip,
+    slot
+  } = props;
+  const passThroughProps = usePassThroughHtmlProps(props);
+  const inFB = props['data-in-fb'];
+  const filterGroupItemRef = useConsolidatedRef<HTMLDivElement>(ref);
 
-    const isRtl = useIsRTL(filterGroupItemRef);
-    const transformMarginRight = isRtl ? 'marginLeft' : 'marginRight';
+  const isRtl = useIsRTL(filterGroupItemRef);
+  const transformMarginRight = isRtl ? 'marginLeft' : 'marginRight';
 
-    const styleClasses = StyleClassHelper.of(inFB ? classes.filterItem : classes.filterItemDialog);
-    if (className) {
-      styleClasses.put(className);
-    }
-
-    const inlineStyle = { [transformMarginRight]: '1rem', ...style };
-
-    if (!required && (!visible || (inFB && !visibleInFilterBar))) return null;
-    return (
-      <div
-        ref={filterGroupItemRef}
-        title={tooltip}
-        slot={slot}
-        {...passThroughProps}
-        className={styleClasses.valueOf()}
-        style={inFB ? inlineStyle : emptyObject}
-      >
-        <div className={inFB ? classes.innerFilterItemContainer : classes.innerFilterItemContainerDialog}>
-          <FlexBox>
-            <Label tooltip={labelTooltip ?? label} required={required}>
-              {`${considerGroupName && groupName !== 'default' ? `${groupName}: ` : ''}
-          ${label}`}
-            </Label>
-          </FlexBox>
-          {loading ? (
-            <BusyIndicator className={classes.loadingContainer} active size={BusyIndicatorSize.Small} />
-          ) : (
-            children
-          )}
-        </div>
-      </div>
-    );
+  const styleClasses = StyleClassHelper.of(inFB ? classes.filterItem : classes.filterItemDialog);
+  if (className) {
+    styleClasses.put(className);
   }
-);
+
+  const inlineStyle = { [transformMarginRight]: '1rem', ...style };
+
+  if (!required && (!visible || (inFB && !visibleInFilterBar))) return null;
+  return (
+    <div
+      ref={filterGroupItemRef}
+      title={tooltip}
+      slot={slot}
+      {...passThroughProps}
+      className={styleClasses.valueOf()}
+      style={inFB ? inlineStyle : emptyObject}
+    >
+      <div className={inFB ? classes.innerFilterItemContainer : classes.innerFilterItemContainerDialog}>
+        <FlexBox>
+          <Label tooltip={labelTooltip ?? label} required={required}>
+            {`${considerGroupName && groupName !== 'default' ? `${groupName}: ` : ''}
+          ${label}`}
+          </Label>
+        </FlexBox>
+        {loading ? (
+          <BusyIndicator className={classes.loadingContainer} active size={BusyIndicatorSize.Small} />
+        ) : (
+          children
+        )}
+      </div>
+    </div>
+  );
+});
 
 FilterGroupItem.displayName = 'FilterGroupItem';
 
