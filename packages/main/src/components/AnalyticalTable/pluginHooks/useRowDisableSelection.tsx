@@ -8,6 +8,21 @@ type DisableRowSelectionType = string | ((row: Record<any, any>) => boolean);
 const customCheckBoxStyling = {
   verticalAlign: 'middle'
 };
+
+const headerProps = (
+  props,
+  {
+    instance: {
+      webComponentsReactProperties: { selectionMode }
+    }
+  }
+) => {
+  if (props.key === 'header___ui5wcr__internal_selection_column' && selectionMode === TableSelectionMode.MULTI_SELECT) {
+    return [props, { onClick: undefined, onKeyDown: undefined }];
+  }
+  return props;
+};
+
 const columns = (columns) => {
   return columns.map((column) => {
     if (column.id === '__ui5wcr__internal_selection_column') {
@@ -28,6 +43,7 @@ const columns = (columns) => {
                 disabled
                 style={customCheckBoxStyling}
                 data-name="internal_selection_column"
+                tabIndex={-1}
               />
             );
           }
@@ -65,6 +81,7 @@ export const useRowDisableSelection = (disableRowSelection: DisableRowSelectionT
   };
 
   const useDisableSelectionRow = (hooks) => {
+    hooks.getHeaderProps.push(headerProps);
     hooks.getRowProps.push(getRowProps);
     hooks.columns.push(columns);
     hooks.columnsDeps.push(columnDeps);

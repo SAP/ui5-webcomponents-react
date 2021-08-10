@@ -83,8 +83,13 @@ export const ColumnHeaderContainer = forwardRef((props: ColumnHeaderContainerPro
   const classes = useStyles();
 
   return (
-    <div {...headerProps} style={{ width: `${columnVirtualizer.totalSize}px` }} ref={ref}>
-      {columnVirtualizer.virtualItems.map((virtualColumn: VirtualItem) => {
+    <div
+      {...headerProps}
+      style={{ width: `${columnVirtualizer.totalSize}px` }}
+      ref={ref}
+      data-component-name="AnalyticalTableHeaderRow"
+    >
+      {columnVirtualizer.virtualItems.map((virtualColumn: VirtualItem, index) => {
         const column = headerGroup.headers[virtualColumn.index];
         if (!column) {
           return null;
@@ -113,6 +118,8 @@ export const ColumnHeaderContainer = forwardRef((props: ColumnHeaderContainerPro
             )}
             <ColumnHeader
               {...rest}
+              visibleColumnIndex={index}
+              columnIndex={virtualColumn.index}
               onSort={onSort}
               onGroupBy={onGroupByChanged}
               onDragStart={onDragStart}

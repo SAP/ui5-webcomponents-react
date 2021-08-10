@@ -51,12 +51,19 @@ const styles = {
     textAlign: 'start',
     boxSizing: 'border-box',
     '&[data-column-id="__ui5wcr__internal_highlight_column"]': {
-      borderRight: 'none'
+      borderRight: '1px solid transparent'
     },
     '&:last-child': {
       '& [data-resizer]': {
         transform: 'translateX(0px)'
       }
+    },
+    '&:focus': {
+      '&[data-column-id="__ui5wcr__internal_selection_column"]': {
+        borderLeft: '1px solid transparent'
+      },
+      outlineOffset: `calc(-1 * ${ThemingParameters.sapContent_FocusWidth})`,
+      outline: `${ThemingParameters.sapContent_FocusWidth} ${ThemingParameters.sapContent_FocusStyle} ${ThemingParameters.sapContent_FocusColor}`
     }
   },
   tbody: {
