@@ -230,19 +230,20 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
   }, [layout, measures]);
 
   const ComparisonLine = (comparisonProps) => {
-    const { x, y, width, index, fill } = comparisonProps;
+    const { x, y, width, height, index, fill } = comparisonProps;
 
     if (layout === 'horizontal') {
       return <line key={`target-${index}`} x1={x - 3} x2={x + width + 3} y1={y} y2={y} stroke={fill} strokeWidth={3} />;
     }
+    console.log(comparisonProps);
     //TODO
     return (
       <line
         key={`target-${index}`}
         x1={x + width}
-        x2={x + width + 3}
-        y1={y + 10}
-        y2={y}
+        x2={x + width}
+        y1={y - 3}
+        y2={y + height + 3}
         stroke={fill}
         strokeWidth={3}
       />
@@ -374,7 +375,7 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
           />
         )}
         {layout === 'horizontal' && <XAxis xAxisId={'comparisonXAxis'} hide />}
-        {layout === 'vertical' && <YAxis yAxisId={'comparisonYAxis'} hide />}
+        {layout === 'vertical' && <YAxis yAxisId={'comparisonYAxis'} type={'category'} hide />}
         {chartConfig.referenceLine && (
           <ReferenceLine
             stroke={chartConfig.referenceLine.color}
@@ -433,7 +434,8 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
               chartElementProps.strokeWidth = element.width;
               chartElementProps.strokeOpacity = element.opacity;
               chartElementProps.label = false;
-              chartElementProps.xAxisId = layout === 'horizontal' ? 'comparisonXAxis' : 'comparisonYAxis';
+              chartElementProps.xAxisId = 'comparisonXAxis';
+              chartElementProps.yAxisId = 'comparisonYAxis';
               chartElementProps.dot = !isBigDataSet;
 
               break;
