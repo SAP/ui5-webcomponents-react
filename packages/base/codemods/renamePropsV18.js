@@ -338,6 +338,29 @@ module.exports = (file, api, options) => {
         jsxAttributes.find(j.JSXIdentifier, { name: oldName }).replaceWith(j.jsxIdentifier(newName));
       }
 
+      if (componentName === 'Avatar' && newName === 'children') {
+        jsxAttributes
+          .filter((nodePath) => {
+            return nodePath.value.name.name === 'children';
+          })
+          .replaceWith((nodePath) => {
+            const imageSrc =
+              nodePath.value.value.type === 'StringLiteral'
+                ? nodePath.value.value.value
+                : nodePath.value.value.expression.value;
+            const imageTag = j.jsxElement(
+              j.jsxOpeningElement(
+                j.jsxIdentifier('img'),
+                [j.jsxAttribute(j.jsxIdentifier('src'), j.stringLiteral(imageSrc))],
+                true
+              ),
+              null,
+              []
+            );
+            return j.jsxAttribute(nodePath.value.name, j.jsxExpressionContainer(imageTag));
+          });
+      }
+
       if (newName === 'wrappingType') {
         addWebComponentsReactImport(j, root, 'WrappingType');
         jsxAttributes.replaceWith((nodePath) => {
