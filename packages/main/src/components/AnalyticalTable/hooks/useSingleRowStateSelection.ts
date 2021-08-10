@@ -96,8 +96,11 @@ const getRowProps = (rowProps, { row, instance }) => {
   return [
     rowProps,
     {
-      onKeyUp: (e, selectionCellClick = false) => {
-        if (e.key === 'Enter') {
+      onKeyDown: (e, selectionCellClick = false) => {
+        if (e.key === 'Enter' || e.code === 'Space') {
+          if (!tagNamesWhichShouldNotSelectARow.has(e.target.tagName)) {
+            e.preventDefault();
+          }
           handleRowSelect(e, selectionCellClick);
         }
       },

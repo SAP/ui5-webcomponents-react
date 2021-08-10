@@ -79,6 +79,7 @@ export const VirtualTableBodyContainer = (props) => {
         height: `${tableBodyHeight}px`,
         width: `${totalColumnsWidth}px`
       }}
+      data-component-name="AnalyticalTableBody"
     >
       {isMounted && children}
     </div>
