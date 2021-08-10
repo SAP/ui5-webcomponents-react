@@ -25,15 +25,7 @@ const Header = (instance) => {
     return null;
   }
   const checkBoxProps = getToggleAllRowsSelectedProps();
-  return (
-    <CheckBox
-      {...checkBoxProps}
-      style={customCheckBoxStyling}
-      tabIndex={-1}
-      onChange={undefined}
-      checked={checkBoxProps.indeterminate ? true : checkBoxProps.checked}
-    />
-  );
+  return <CheckBox {...checkBoxProps} style={customCheckBoxStyling} tabIndex={-1} onChange={undefined} />;
 };
 
 const Cell = ({ row, webComponentsReactProperties: { selectionBehavior, selectionMode } }) => {
