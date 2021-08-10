@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.18.1...v0.18.2) (2021-08-10)
+
+
+### Bug Fixes
+
+* add missing library exports of `BreadcrumbsDesign` and `BreadcrumbsItem` ([92fc225](https://github.com/SAP/ui5-webcomponents-react/commit/92fc2251de66b7e9be96307b9562e5908207ada6))
+
+
+
+
+
 ## [0.18.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.18.0...v0.18.1) (2021-08-10)
 
 
