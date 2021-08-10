@@ -3,6 +3,7 @@ import '@ui5/webcomponents-icons/dist/navigation-right-arrow';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import React, { MutableRefObject, ReactNode, useCallback, useMemo, useRef } from 'react';
 import { useVirtual } from 'react-virtual';
+import { RowSubComponent as SubComponent } from './RowSubComponent';
 
 interface VirtualTableBodyProps {
   classes: Record<string, string>;
@@ -24,6 +25,9 @@ interface VirtualTableBodyProps {
   popInRowHeight: number;
   isRtl: boolean;
   markNavigatedRow?: (row?: Record<any, any>) => boolean;
+  alwaysShowSubComponent: boolean;
+  dispatch?: (e: { type: string; payload?: any }) => void;
+  subComponentsHeight?: Record<string, { rowId: string; subComponentHeight?: number }>;
 }
 
 export const VirtualTableBody = (props: VirtualTableBodyProps) => {
@@ -45,10 +49,11 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     renderRowSubComponent,
     popInRowHeight,
     markNavigatedRow,
-    isRtl
+    isRtl,
+    alwaysShowSubComponent,
+    dispatch,
+    subComponentsHeight
   } = props;
-
-  const rowSubComponentsHeight = useRef({});
 
   const itemCount = Math.max(minRows, rows.length);
   const overscan = overscanCount ? overscanCount : Math.floor(visibleRows / 2);
@@ -60,16 +65,19 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     parentRef: consolidatedParentRef,
     estimateSize: React.useCallback(
       (index) => {
-        if (renderRowSubComponent && rows[index].isExpanded && rowSubComponentsHeight.current.hasOwnProperty(index)) {
-          return rowHeight + (rowSubComponentsHeight.current?.[index] ?? 0);
+        if (
+          renderRowSubComponent &&
+          (rows[index]?.isExpanded || alwaysShowSubComponent) &&
+          subComponentsHeight?.[index]?.rowId === rows[index]?.id
+        ) {
+          return rowHeight + (subComponentsHeight?.[index]?.subComponentHeight ?? 0);
         }
         return rowHeight;
       },
-      [rowHeight, rows, renderRowSubComponent]
+      [rowHeight, rows, renderRowSubComponent, alwaysShowSubComponent, subComponentsHeight]
     ),
     overscan
   });
-
   const columnVirtualizer = useVirtual({
     size: visibleColumns.length,
     parentRef: tableRef,
@@ -89,77 +97,6 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     scrollToIndex: rowVirtualizer.scrollToIndex
   };
 
-  const currentlyFocusedCell = useRef<HTMLDivElement>(null);
-  const onTableFocus = useCallback(
-    (e) => {
-      const firstCell: HTMLDivElement = e.target.querySelector(
-        'div[role="row"]:first-child div[role="cell"]:first-child'
-      );
-      if (firstCell) {
-        firstCell.tabIndex = 0;
-        firstCell.focus();
-        currentlyFocusedCell.current = firstCell;
-      }
-    },
-    [currentlyFocusedCell]
-  );
-
-  const onKeyboardNavigation = useCallback(
-    (e) => {
-      if (currentlyFocusedCell.current) {
-        switch (e.key) {
-          case 'ArrowRight': {
-            const newElement = currentlyFocusedCell.current.nextElementSibling as HTMLDivElement;
-            if (newElement) {
-              currentlyFocusedCell.current.tabIndex = -1;
-              newElement.tabIndex = 0;
-              newElement.focus();
-              currentlyFocusedCell.current = newElement;
-            }
-            break;
-          }
-          case 'ArrowLeft': {
-            const newElement = currentlyFocusedCell.current.previousElementSibling as HTMLDivElement;
-            if (newElement) {
-              currentlyFocusedCell.current.tabIndex = -1;
-              newElement.tabIndex = 0;
-              newElement.focus();
-              currentlyFocusedCell.current = newElement;
-            }
-            break;
-          }
-          case 'ArrowDown': {
-            const nextRow = currentlyFocusedCell.current.parentElement.nextElementSibling as HTMLDivElement;
-            if (nextRow) {
-              currentlyFocusedCell.current.tabIndex = -1;
-              const currentColumnIndex = currentlyFocusedCell.current.getAttribute('aria-colindex');
-              const newElement: HTMLDivElement = nextRow.querySelector(`div[aria-colindex="${currentColumnIndex}"]`);
-              newElement.tabIndex = 0;
-              newElement.focus();
-              currentlyFocusedCell.current = newElement;
-            }
-            break;
-          }
-          case 'ArrowUp': {
-            const previousRow = currentlyFocusedCell.current.parentElement.previousElementSibling as HTMLDivElement;
-            if (previousRow) {
-              currentlyFocusedCell.current.tabIndex = -1;
-              const currentColumnIndex = currentlyFocusedCell.current.getAttribute('aria-colindex');
-              const newElement: HTMLDivElement = previousRow.querySelector(
-                `div[aria-colindex="${currentColumnIndex}"]`
-              );
-              newElement.tabIndex = 0;
-              newElement.focus();
-              currentlyFocusedCell.current = newElement;
-            }
-            break;
-          }
-        }
-      }
-    },
-    [currentlyFocusedCell]
-  );
-
   const popInColumn = useMemo(
     () =>
       visibleColumns.filter(
@@ -173,22 +110,15 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
 
   return (
     <div
-      tabIndex={0}
-      onFocus={onTableFocus}
-      onKeyDown={onKeyboardNavigation}
       style={{
         position: 'relative',
         height: `${rowVirtualizer.totalSize}px`,
         width: `${columnVirtualizer.totalSize}px`
       }}
     >
-      {rowVirtualizer.virtualItems.map((virtualRow) => {
+      {rowVirtualizer.virtualItems.map((virtualRow, visibleRowIndex) => {
         const row = rows[virtualRow.index];
-        const setSubcomponentsRefs = (el) => {
-          if (el?.offsetHeight) {
-            rowSubComponentsHeight.current[virtualRow.index] = el.offsetHeight;
-          }
-        };
+        const rowIndexWithHeader = virtualRow.index + 1;
         if (!row) {
           return (
             <div
@@ -204,29 +134,41 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
         prepareRow(row);
         const rowProps = row.getRowProps();
         const isNavigatedCell = markNavigatedRow(row);
-        const RowSubComponent = typeof renderRowSubComponent === 'function' ? renderRowSubComponent(row) : null;
+        const RowSubComponent = typeof renderRowSubComponent === 'function' ? renderRowSubComponent(row) : undefined;
+
+        if (!RowSubComponent && subComponentsHeight && subComponentsHeight?.[virtualRow.index]?.subComponentHeight) {
+          dispatch({
+            type: 'SUB_COMPONENTS_HEIGHT',
+            payload: {
+              ...subComponentsHeight,
+              [virtualRow.index]: { subComponentHeight: 0, rowId: row.id }
+            }
+          });
+        }
         return (
           <div
             {...rowProps}
             style={{
+              ...(rowProps.style ?? {}),
               height: `${rowHeight}px`,
               transform: `translateY(${virtualRow.start}px)`,
               position: 'absolute'
             }}
           >
-            {RowSubComponent && row.isExpanded && (
-              <div
-                ref={setSubcomponentsRefs}
-                style={{
-                  transform: `translateY(${rowHeight}px)`,
-                  position: 'absolute',
-                  width: '100%'
-                }}
+            {RowSubComponent && (row.isExpanded || alwaysShowSubComponent) && (
+              <SubComponent
+                subComponentsHeight={subComponentsHeight}
+                virtualRow={virtualRow}
+                dispatch={dispatch}
+                row={row}
+                rowHeight={rowHeight}
+                rows={rows}
+                alwaysShowSubComponent={alwaysShowSubComponent}
               >
                 {RowSubComponent}
-              </div>
+              </SubComponent>
             )}
-            {columnVirtualizer.virtualItems.map((virtualColumn, index) => {
+            {columnVirtualizer.virtualItems.map((virtualColumn, visibleColumnIndex) => {
               const cell = row.cells[virtualColumn.index];
               const directionStyles = isRtl
                 ? {
@@ -249,7 +191,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
                 cell.column.id === '__ui5wcr__internal_navigation_column'
               ) {
                 contentToRender = 'Cell';
-              } else if (isTreeTable || RowSubComponent) {
+              } else if (isTreeTable || (!alwaysShowSubComponent && RowSubComponent)) {
                 contentToRender = 'Expandable';
               } else if (cell.isGrouped) {
                 contentToRender = 'Grouped';
@@ -263,6 +205,10 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
               return (
                 <div
                   {...cellProps}
+                  data-visible-column-index={visibleColumnIndex}
+                  data-column-index={virtualColumn.index}
+                  data-visible-row-index={visibleRowIndex + 1}
+                  data-row-index={rowIndexWithHeader}
                   style={{
                     ...cellProps.style,
                     position: 'absolute',

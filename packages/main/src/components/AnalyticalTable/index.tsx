@@ -35,7 +35,8 @@ import {
   useResizeColumns,
   useRowSelect,
   useSortBy,
-  useTable
+  useTable,
+  useGlobalFilter
 } from 'react-table';
 import { AnalyticalTableColumnDefinition } from '../../interfaces/AnalyticalTableColumnDefinition';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -47,6 +48,7 @@ import { TablePlaceholder } from './defaults/LoadingComponent/TablePlaceholder';
 import { DefaultNoDataComponent } from './defaults/NoDataComponent';
 import { useDragAndDrop } from './hooks/useDragAndDrop';
 import { useDynamicColumnWidths } from './hooks/useDynamicColumnWidths';
+import { useKeyboardNavigation } from './hooks/useKeyboardNavigation';
 import { usePopIn } from './hooks/usePopIn';
 import { useRowHighlight } from './hooks/useRowHighlight';
 import { useRowNavigationIndicators } from './hooks/useRowNavigationIndicator';
@@ -89,8 +91,6 @@ export interface TableProps extends Omit<CommonProps, 'title'> {
    * Extension section of the Table. If not set, no extension area will be rendered
    */
   extension?: ReactNode;
-
-  // appearance
   /**
    * The minimum number of rows that are displayed. If the data contains less entries than `minRows`, it will be filled with empty rows.
    */
@@ -147,8 +147,6 @@ export interface TableProps extends Omit<CommonProps, 'title'> {
    * or an accessor function which should return a `ValueState`.
    */
   highlightField?: string | ((row: Record<any, any>) => ValueState);
-
-  // features
   /**
    * Defines whether columns are filterable.
    */
@@ -206,43 +204,10 @@ export interface TableProps extends Omit<CommonProps, 'title'> {
    * Example: Your initial dataset consists of 50 entries and you want to load more data when the user scrolled to the 40th row. Then you should set the `infiniteScrollThreshold` to 10.
    */
   infiniteScrollThreshold?: number;
-
-  // events
-
   /**
-   * This callback can be used to programmatically show an indicator for navigated rows. It has no effect if `withNavigationHighlight` is not set.
-   *
-   * __Must be memoized!__
+   * The current global filter value.
    */
-  markNavigatedRow?: (row?: Record<any, any>) => boolean;
-  /**
-   * Fired when the sorting of the rows changes.
-   */
-  onSort?: (e: CustomEvent<{ column: unknown; sortDirection: string }>) => void;
-  /**
-   * Fired when the grouping of the rows changes.
-   */
-  onGroup?: (e: CustomEvent<{ column: unknown; groupedColumns: string[] }>) => void;
-  /**
-   * Fired when a row is selected or unselected.
-   */
-  onRowSelected?: (e?: CustomEvent<{ allRowsSelected?: boolean; row?: unknown; isSelected?: boolean }>) => void;
-  /**
-   * Fired when a row is clicked
-   */
-  onRowClick?: (e?: CustomEvent<{ row?: unknown }>) => void;
-  /**
-   * Fired when a row is expanded or collapsed
-   */
-  onRowExpandChange?: (e?: CustomEvent<{ row: unknown; column: unknown }>) => void;
-  /**
-   * Fired when the columns order is changed.
-   */
-  onColumnsReordered?: (e?: CustomEvent<{ columnsNewOrder: string[]; column: unknown }>) => void;
-  /**
-   * Fired when the `infiniteScrollThreshold` is reached.
-   */
-  onLoadMore?: (e?: { detail: { rowCount: number } }) => void;
+  globalFilterValue?: string;
   /**
    * Additional options which will be passed to [react-table´s useTable hook](https://react-table.tanstack.com/docs/api/useTable#table-options)
    */
@@ -277,6 +242,56 @@ export interface TableProps extends Omit<CommonProps, 'title'> {
    * Defines the subcomponent that should be displayed below each row.
    */
   renderRowSubComponent?: (row?: any) => ReactNode;
+  /**
+   * Defines whether a subcomponent should be rendered as expandable container or directly at the bottom of the row.
+   */
+  alwaysShowSubComponent?: boolean;
+
+  // events
+  /**
+   * This callback can be used to programmatically show an indicator for navigated rows. It has no effect if `withNavigationHighlight` is not set.
+   *
+   * __Must be memoized!__
+   */
+  markNavigatedRow?: (row?: Record<any, any>) => boolean;
+  /**
+   * Fired when the sorting of the rows changes.
+   */
+  onSort?: (e: CustomEvent<{ column: unknown; sortDirection: string }>) => void;
+  /**
+   * Fired when the grouping of the rows changes.
+   */
+  onGroup?: (e: CustomEvent<{ column: unknown; groupedColumns: string[] }>) => void;
+  /**
+   * Fired when a row is selected or unselected.
+   */
+  onRowSelected?: (
+    e?: CustomEvent<{
+      allRowsSelected?: boolean;
+      row?: Record<string, unknown>;
+      isSelected?: boolean;
+      selectedFlatRows?: Record<string, unknown>[] | string[];
+    }>
+  ) => void;
+  /**
+   * Fired when a row is clicked
+   */
+  onRowClick?: (e?: CustomEvent<{ row?: unknown }>) => void;
+  /**
+   * Fired when a row is expanded or collapsed
+   */
+  onRowExpandChange?: (e?: CustomEvent<{ row: unknown; column: unknown }>) => void;
+  /**
+   * Fired when the columns order is changed.
+   */
+  onColumnsReordered?: (e?: CustomEvent<{ columnsNewOrder: string[]; column: unknown }>) => void;
+  /**
+   * Fired when the `infiniteScrollThreshold` is reached.
+   *
+   * @param {number} e.detail.rowCount - The number of rows
+   * @param {number} e.detail.totalRowCount - The total number of rows, including sub-rows
+   */
+  onLoadMore?: (e?: { detail: { rowCount: number; totalRowCount: number } }) => void;
 
   // default components
   /**
@@ -338,7 +353,9 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     onLoadMore,
     extension,
     columnOrder,
-    renderRowSubComponent
+    renderRowSubComponent,
+    alwaysShowSubComponent,
+    globalFilterValue
   } = props;
 
   const classes = useStyles();
@@ -360,6 +377,49 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     return props.data;
   }, [props.data, minRows]);
 
+  const webComponentsReactProperties = useMemo(
+    () => ({
+      tableRef,
+      selectionMode,
+      selectionBehavior,
+      classes,
+      onRowSelected,
+      onRowClick,
+      onRowExpandChange,
+      isTreeTable,
+      alternateRowColor,
+      scaleWidthMode,
+      loading,
+      withRowHighlight,
+      highlightField,
+      withNavigationHighlight,
+      markNavigatedRow,
+      renderRowSubComponent,
+      alwaysShowSubComponent,
+      reactWindowRef
+    }),
+    [
+      tableRef.current,
+      selectionMode,
+      selectionBehavior,
+      classes,
+      onRowSelected,
+      onRowClick,
+      onRowExpandChange,
+      isTreeTable,
+      alternateRowColor,
+      scaleWidthMode,
+      loading,
+      withRowHighlight,
+      highlightField,
+      withNavigationHighlight,
+      markNavigatedRow,
+      renderRowSubComponent,
+      alwaysShowSubComponent,
+      reactWindowRef
+    ]
+  );
+
   const {
     getTableProps,
     headerGroups,
@@ -372,7 +432,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     totalColumnsWidth,
     visibleColumns,
     visibleColumnsWidth,
-    setGroupBy
+    setGroupBy,
+    setGlobalFilter
   } = useTable(
     {
       columns,
@@ -385,27 +446,11 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       disableSortBy: !sortable,
       disableGroupBy: isTreeTable || renderRowSubComponent ? true : !groupable,
       selectSubRows: false,
-      webComponentsReactProperties: {
-        tableRef,
-        selectionMode,
-        selectionBehavior,
-        classes,
-        onRowSelected,
-        onRowClick,
-        onRowExpandChange,
-        isTreeTable,
-        alternateRowColor,
-        scaleWidthMode,
-        loading,
-        withRowHighlight,
-        highlightField,
-        withNavigationHighlight,
-        markNavigatedRow,
-        renderRowSubComponent
-      },
+      webComponentsReactProperties,
       ...reactTableOptions
     },
     useFilters,
+    useGlobalFilter,
     useColumnOrder,
     useGroupBy,
     useSortBy,
@@ -421,6 +466,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     useToggleRowExpand,
     usePopIn,
     useVisibleColumnsWidth,
+    useKeyboardNavigation,
     ...tableHooks
   );
 
@@ -452,15 +498,32 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
 
   const updateRowsCount = useCallback(() => {
     if (visibleRowCountMode === TableVisibleRowCountMode.AUTO && analyticalTableRef.current?.parentElement) {
-      const rowCount = Math.floor(
-        ((analyticalTableRef.current?.parentElement?.clientHeight ?? 0) - extensionsHeight) / popInRowHeight
-      );
+      const parentElement = analyticalTableRef.current?.parentElement;
+      const tableYPosition =
+        parentElement &&
+        getComputedStyle(parentElement).position === 'relative' &&
+        analyticalTableRef.current?.offsetTop
+          ? analyticalTableRef.current?.offsetTop
+          : 0;
+      const parentHeight = parentElement?.getBoundingClientRect().height;
+      const tableHeight = parentHeight ? parentHeight - tableYPosition : 0;
+      const rowCount = Math.floor((tableHeight - extensionsHeight) / popInRowHeight);
       dispatch({
         type: 'VISIBLE_ROWS',
         payload: { visibleRows: rowCount }
       });
     }
-  }, [analyticalTableRef.current?.parentElement?.clientHeight, extensionsHeight, popInRowHeight, visibleRowCountMode]);
+  }, [
+    analyticalTableRef.current?.parentElement?.getBoundingClientRect().height,
+    analyticalTableRef.current?.getBoundingClientRect().y,
+    extensionsHeight,
+    popInRowHeight,
+    visibleRowCountMode
+  ]);
+
+  useEffect(() => {
+    setGlobalFilter(globalFilterValue);
+  }, [globalFilterValue, setGlobalFilter]);
 
   useEffect(() => {
     const tableWidthObserver = new ResizeObserver(debounce(updateTableClientWidth, 500));
@@ -647,6 +710,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   if (withNavigationHighlight) {
     tableClasses.put(classes.hasNavigationIndicator);
   }
+
   return (
     <div className={className} style={inlineStyle} title={tooltip} ref={analyticalTableRef} {...passThroughProps}>
       {title && <TitleBar ref={titleBarRef}>{title}</TitleBar>}
@@ -654,10 +718,12 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       <FlexBox>
         <div
           {...getTableProps()}
+          tabIndex={0}
           role="grid"
           aria-rowcount={rows.length}
           aria-colcount={tableInternalColumns.length}
           data-per-page={internalVisibleRowCount}
+          data-component-name="AnalyticalTableContainer"
           ref={tableRef}
           className={tableClasses.className}
         >
@@ -742,8 +808,11 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
                 visibleColumnsWidth={visibleColumnsWidth}
                 overscanCountHorizontal={overscanCountHorizontal}
                 renderRowSubComponent={renderRowSubComponent}
+                alwaysShowSubComponent={alwaysShowSubComponent}
                 markNavigatedRow={markNavigatedRow}
                 isRtl={isRtl}
+                subComponentsHeight={tableState.subComponentsHeight}
+                dispatch={dispatch}
               />
             </VirtualTableBodyContainer>
           )}
@@ -805,7 +874,8 @@ AnalyticalTable.defaultProps = {
   isTreeTable: false,
   alternateRowColor: false,
   overscanCountHorizontal: 5,
-  visibleRowCountMode: TableVisibleRowCountMode.FIXED
+  visibleRowCountMode: TableVisibleRowCountMode.FIXED,
+  alwaysShowSubComponent: false
 };
 
 export { AnalyticalTable };

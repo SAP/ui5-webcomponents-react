@@ -42,9 +42,11 @@ export const VirtualTableBodyContainer = (props) => {
           (popInRowHeight === internalRowHeight ? visibleRows : Math.floor(tableBodyHeight / popInRowHeight));
         if (rows.length - currentLastRow < infiniteScrollThreshold) {
           if (!firedInfiniteLoadEvents.current.has(rows.length)) {
+            const rootNodes = rows.filter((row) => row.depth === 0);
             onLoadMore({
               detail: {
-                rowCount: rows.length
+                rowCount: rootNodes.length,
+                totalRowCount: rows.length
               }
             });
           }
@@ -77,6 +79,7 @@ export const VirtualTableBodyContainer = (props) => {
         height: `${tableBodyHeight}px`,
         width: `${totalColumnsWidth}px`
       }}
+      data-component-name="AnalyticalTableBody"
     >
       {isMounted && children}
     </div>
