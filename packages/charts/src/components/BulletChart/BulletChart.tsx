@@ -9,12 +9,14 @@ import { YAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/YAxi
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/dist/useLegendItemClick';
 import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import {
+  Area,
   Bar,
   Brush,
   CartesianGrid,
   ComposedChart as ComposedChartLib,
   Label,
   Legend,
+  Line,
   ReferenceLine,
   Tooltip,
   XAxis,
@@ -368,13 +370,13 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
             <Label>{chartConfig.referenceLine.label}</Label>
           </ReferenceLine>
         )}
-        <Tooltip
-          cursor={tooltipFillOpacity}
-          formatter={tooltipValueFormatter}
-          labelFormatter={labelFormatter}
-          contentStyle={tooltipContentStyle}
-          {...tooltipConfig}
-        />
+        {/*<Tooltip*/}
+        {/*  cursor={tooltipFillOpacity}*/}
+        {/*  formatter={tooltipValueFormatter}*/}
+        {/*  labelFormatter={labelFormatter}*/}
+        {/*  contentStyle={tooltipContentStyle}*/}
+        {/*  {...tooltipConfig}*/}
+        {/*/>*/}
         {!noLegend && (
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
@@ -394,7 +396,6 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
           let labelPosition = 'top';
           switch (element.type) {
             case 'primary':
-              element.type = Bar;
               chartElementProps.stackId = 'A';
               chartElementProps.activeDot = {
                 onClick: onDataPointClickInternal
@@ -421,7 +422,6 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
 
               break;
             case 'additional':
-              element.type = Bar;
               chartElementProps.stackId = 'A';
               chartElementProps.fillOpacity = element.opacity;
               chartElementProps.strokeOpacity = element.opacity;
@@ -447,9 +447,7 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
               key={element.accessor}
               name={element.label ?? element.accessor}
               label={
-                isBigDataSet ? null : (
-                  <ChartDataLabel config={element} chartType={element.type} position={labelPosition} />
-                )
+                isBigDataSet ? null : <ChartDataLabel config={element} chartType={'bar'} position={labelPosition} />
               }
               stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
               fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
