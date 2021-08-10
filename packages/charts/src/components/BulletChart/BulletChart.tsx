@@ -231,7 +231,7 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
 
   const ComparisonLine = (comparisonProps) => {
     const { x, y, width, index, fill } = comparisonProps;
-    return <line key={`target-${index}`} x1={x} x2={x + width} y1={y} y2={y} stroke={fill} />;
+    return <line key={`target-${index}`} x1={x - 3} x2={x + width + 3} y1={y} y2={y} stroke={fill} strokeWidth={3} />;
   };
 
   const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick', 'onClick']);
@@ -359,6 +359,7 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
             type="number"
           />
         )}
+        <XAxis xAxisId={'comparisonAxis'} hide />
         {chartConfig.referenceLine && (
           <ReferenceLine
             stroke={chartConfig.referenceLine.color}
@@ -409,7 +410,6 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
               } else {
                 labelPosition = 'insideTop';
               }
-
               break;
             case 'comparison':
               chartElementProps.type = 'monotone';
@@ -418,6 +418,7 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
               chartElementProps.strokeWidth = element.width;
               chartElementProps.strokeOpacity = element.opacity;
               chartElementProps.label = false;
+              chartElementProps.xAxisId = 'comparisonAxis';
               chartElementProps.dot = !isBigDataSet;
 
               break;

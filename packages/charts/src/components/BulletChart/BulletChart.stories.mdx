@@ -41,15 +41,16 @@ import { complexDataSet } from '../../resources/DemoProps';
           type: 'primary'
         },
         {
-          accessor: 'users',
-          label: 'Users',
-          formatter: (val) => val.toLocaleString(),
-          type: 'comparison'
-        },
-        {
           accessor: 'volume',
           label: 'Volume',
           type: 'additional'
+        },
+        {
+          accessor: 'users',
+          label: 'Users',
+          formatter: (val) => val.toLocaleString(),
+          type: 'comparison',
+          color: 'red'
         }
       ]
     }}
