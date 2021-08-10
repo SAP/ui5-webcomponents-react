@@ -46,6 +46,7 @@ import { TablePlaceholder } from './defaults/LoadingComponent/TablePlaceholder';
 import { DefaultNoDataComponent } from './defaults/NoDataComponent';
 import { useDragAndDrop } from './hooks/useDragAndDrop';
 import { useDynamicColumnWidths } from './hooks/useDynamicColumnWidths';
+import { useKeyboardNavigation } from './hooks/useKeyboardNavigation';
 import { usePopIn } from './hooks/usePopIn';
 import { useRowHighlight } from './hooks/useRowHighlight';
 import { useRowNavigationIndicators } from './hooks/useRowNavigationIndicator';
@@ -392,7 +393,8 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
       withNavigationHighlight,
       markNavigatedRow,
       renderRowSubComponent,
-      alwaysShowSubComponent
+      alwaysShowSubComponent,
+      reactWindowRef
     }),
     [
       tableRef.current,
@@ -411,7 +413,8 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
       withNavigationHighlight,
       markNavigatedRow,
       renderRowSubComponent,
-      alwaysShowSubComponent
+      alwaysShowSubComponent,
+      reactWindowRef
     ]
   );
 
@@ -461,6 +464,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     useToggleRowExpand,
     usePopIn,
     useVisibleColumnsWidth,
+    useKeyboardNavigation,
     ...tableHooks
   );
 
@@ -704,6 +708,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
   if (withNavigationHighlight) {
     tableClasses.put(classes.hasNavigationIndicator);
   }
+
   return (
     <div className={className} style={inlineStyle} title={tooltip} ref={analyticalTableRef} {...passThroughProps}>
       {header && <TitleBar ref={titleBarRef}>{header}</TitleBar>}
@@ -711,10 +716,12 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
       <FlexBox>
         <div
           {...getTableProps()}
+          tabIndex={0}
           role="grid"
           aria-rowcount={rows.length}
           aria-colcount={tableInternalColumns.length}
           data-per-page={internalVisibleRowCount}
+          data-component-name="AnalyticalTableContainer"
           ref={tableRef}
           className={tableClasses.className}
         >

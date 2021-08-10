@@ -68,6 +68,7 @@ export const Expandable = (props) => {
       {columnIndex === 0 && (row.canExpand || subComponentExpandable) ? (
         <span onClick={rowProps.onClick} title={rowProps.title} style={{ ...rowProps.style, ...style }}>
           <Icon
+            interactive
             name={`${row.isExpanded ? 'navigation-down-arrow' : 'navigation-right-arrow'}`}
             style={tableGroupExpandCollapseIcon}
           />
