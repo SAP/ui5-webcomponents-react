@@ -32,7 +32,7 @@ import React, { Children, cloneElement, ReactElement, useCallback, useEffect, us
 import { Ui5DialogDomRef } from '@ui5/webcomponents-react/interfaces/Ui5DialogDomRef';
 import { stopPropagation } from '../../internal/stopPropagation';
 import styles from './FilterBarDialog.jss';
-import { filterValue, renderSearchWithValue } from './utils';
+import { filterValue, renderSearchWithValue, syncRef } from './utils';
 import { createPortal } from 'react-dom';
 
 const useStyles = createUseStyles(styles, { name: 'FilterBarDialog' });
@@ -213,6 +213,7 @@ export const FilterDialog = (props) => {
             },
             ref: (node) => {
               dialogRefs.current[child.key] = node;
+              syncRef(child.props.children.ref, node);
             }
           }
         });

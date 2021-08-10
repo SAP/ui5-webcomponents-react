@@ -39,7 +39,7 @@ import React, {
 import { createUseStyles } from 'react-jss';
 import styles from './FilterBar.jss';
 import { FilterDialog } from './FilterDialog';
-import { filterValue, renderSearchWithValue } from './utils';
+import { filterValue, renderSearchWithValue, syncRef } from './utils';
 
 export interface FilterBarPropTypes extends CommonProps {
   /**
@@ -412,13 +412,7 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
             },
             ref: (node) => {
               filterRefs.current[child.key] = node;
-              if (child.props.children.ref) {
-                if (typeof child.props.children.ref === 'function') {
-                  child.props.children.ref(node);
-                } else if (child.props.children.ref.hasOwnProperty('current')) {
-                  child.props.children.ref.current = node;
-                }
-              }
+              syncRef(child.props.children.ref, node);
             }
           }
         });
