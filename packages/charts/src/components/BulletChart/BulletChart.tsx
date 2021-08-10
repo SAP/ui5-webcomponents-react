@@ -235,8 +235,7 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
     if (layout === 'horizontal') {
       return <line key={`target-${index}`} x1={x - 3} x2={x + width + 3} y1={y} y2={y} stroke={fill} strokeWidth={3} />;
     }
-    console.log(comparisonProps);
-    //TODO
+
     return (
       <line
         key={`target-${index}`}
