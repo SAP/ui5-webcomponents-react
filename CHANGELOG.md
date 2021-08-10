@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.18.1...v0.18.2) (2021-08-10)
+
+
+### Bug Fixes
+
+* add missing library exports of `BreadcrumbsDesign` and `BreadcrumbsItem` ([92fc225](https://github.com/SAP/ui5-webcomponents-react/commit/92fc2251de66b7e9be96307b9562e5908207ada6))
+
+
+
+
+
+## [0.18.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.18.0...v0.18.1) (2021-08-10)
+
+
+### Bug Fixes
+
+* **FilterBar:** pass refs of FilterGroupItems children to rendered component ([#1954](https://github.com/SAP/ui5-webcomponents-react/issues/1954)) ([26b7e12](https://github.com/SAP/ui5-webcomponents-react/commit/26b7e121ceb59211e694641f5889cb749456733c))
+* **withWebComponent:** don't append CommonProps to Component Props ([#1957](https://github.com/SAP/ui5-webcomponents-react/issues/1957)) ([9c26995](https://github.com/SAP/ui5-webcomponents-react/commit/9c26995b2d1d89871cded3fdfdae04bc5953fdd2))
+
+
+
+
+
 # [0.18.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.17.3...v0.18.0) (2021-08-09)
 
 

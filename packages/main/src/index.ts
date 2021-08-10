@@ -19,6 +19,8 @@ import { Bar } from './dist/Bar';
 import { BarDesign } from './dist/BarDesign';
 import { BarcodeScannerDialog } from './dist/BarcodeScannerDialog';
 import { Breadcrumbs } from './dist/Breadcrumbs';
+import { BreadcrumbsDesign } from './dist/BreadcrumbsDesign';
+import { BreadcrumbsItem } from './dist/BreadcrumbsItem';
 import { BreadcrumbsSeparatorStyle } from './dist/BreadcrumbsSeparatorStyle';
 import { BusyIndicator } from './dist/BusyIndicator';
 import { BusyIndicatorSize } from './dist/BusyIndicatorSize';
@@ -202,6 +204,8 @@ export {
   BarDesign,
   BarcodeScannerDialog,
   Breadcrumbs,
+  BreadcrumbsDesign,
+  BreadcrumbsItem,
   BreadcrumbsSeparatorStyle,
   BusyIndicator,
   BusyIndicatorSize,
