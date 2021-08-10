@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.17.3...v0.17.4) (2021-08-10)
+
+
+### Features
+
+* **AnalyticalTable:** cherry-pick keyboard navigation and other fixes ([#1958](https://github.com/SAP/ui5-webcomponents-react/issues/1958)) ([e795b19](https://github.com/SAP/ui5-webcomponents-react/commit/e795b19c3c345444a635007d707c567ea3037fc7)), closes [#1948](https://github.com/SAP/ui5-webcomponents-react/issues/1948) [#1951](https://github.com/SAP/ui5-webcomponents-react/issues/1951) [#1864](https://github.com/SAP/ui5-webcomponents-react/issues/1864)
+
+
+
+
+
 ## [0.17.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.17.2...v0.17.3) (2021-08-02)
 
 
