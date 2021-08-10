@@ -17,6 +17,8 @@ import { Toolbar } from '@ui5/webcomponents-react/dist/Toolbar';
 import { VariantManagement } from '@ui5/webcomponents-react/dist/VariantManagement';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
+import { createRef } from 'react';
+import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 
 const variantItems = [
   { label: 'Variant 1', key: '1' },
@@ -44,6 +46,7 @@ describe('FilterBar', () => {
   });
 
   it('Render without crashing - w/ filter dialog', () => {
+    const inputRef = createRef<Ui5DomRef>();
     const { asFragment } = render(
       <FilterBar
         search={search}
@@ -64,7 +67,7 @@ describe('FilterBar', () => {
         showRestoreButton={true}
       >
         <FilterGroupItem label="Input">
-          <Input placeholder="Placeholder" />
+          <Input placeholder="Placeholder" ref={inputRef} />
         </FilterGroupItem>
         <FilterGroupItem label="Switch">
           <Switch />
@@ -115,7 +118,9 @@ describe('FilterBar', () => {
         </FilterGroupItem>
       </FilterBar>
     );
+
     expect(asFragment()).toMatchSnapshot();
+    expect(inputRef.current.tagName).toBe('UI5-INPUT');
   });
 
   it('Toggle FilterBar filters', () => {
