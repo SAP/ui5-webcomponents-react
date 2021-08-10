@@ -231,7 +231,22 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
 
   const ComparisonLine = (comparisonProps) => {
     const { x, y, width, index, fill } = comparisonProps;
-    return <line key={`target-${index}`} x1={x - 3} x2={x + width + 3} y1={y} y2={y} stroke={fill} strokeWidth={3} />;
+
+    if (layout === 'horizontal') {
+      return <line key={`target-${index}`} x1={x - 3} x2={x + width + 3} y1={y} y2={y} stroke={fill} strokeWidth={3} />;
+    }
+    //TODO
+    return (
+      <line
+        key={`target-${index}`}
+        x1={x + width}
+        x2={x + width + 3}
+        y1={y + 10}
+        y2={y}
+        stroke={fill}
+        strokeWidth={3}
+      />
+    );
   };
 
   const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick', 'onClick']);
@@ -313,7 +328,6 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
             tick={<XAxisTicks config={primaryMeasure} />}
           />
         )}
-
         {chartConfig.secondYAxis?.dataKey && layout === 'horizontal' && (
           <YAxis
             dataKey={chartConfig.secondYAxis.dataKey}
@@ -359,7 +373,8 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
             type="number"
           />
         )}
-        <XAxis xAxisId={'comparisonAxis'} hide />
+        {layout === 'horizontal' && <XAxis xAxisId={'comparisonXAxis'} hide />}
+        {layout === 'vertical' && <YAxis yAxisId={'comparisonYAxis'} hide />}
         {chartConfig.referenceLine && (
           <ReferenceLine
             stroke={chartConfig.referenceLine.color}
@@ -418,7 +433,7 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
               chartElementProps.strokeWidth = element.width;
               chartElementProps.strokeOpacity = element.opacity;
               chartElementProps.label = false;
-              chartElementProps.xAxisId = 'comparisonAxis';
+              chartElementProps.xAxisId = layout === 'horizontal' ? 'comparisonXAxis' : 'comparisonYAxis';
               chartElementProps.dot = !isBigDataSet;
 
               break;
