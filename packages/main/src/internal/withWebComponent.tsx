@@ -29,7 +29,7 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
   slotProperties: string[],
   eventProperties: string[]
 ) => {
-  const WithWebComponent = forwardRef((props: Props & CommonProps, wcRef: RefObject<RefType>) => {
+  const WithWebComponent = forwardRef((props: Props, wcRef: RefObject<RefType>) => {
     const { className, tooltip, children, ...rest } = props;
 
     const ref = useConsolidatedRef<HTMLElement>(wcRef);
