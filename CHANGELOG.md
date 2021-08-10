@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.18.2...v0.18.3) (2021-08-10)
+
+
+### Bug Fixes
+
+* **codemod:** correctly replace `image` -> `children` for `Avatar` ([#1959](https://github.com/SAP/ui5-webcomponents-react/issues/1959)) ([70975bb](https://github.com/SAP/ui5-webcomponents-react/commit/70975bbcda1335340204d84d4af31aed9b40786b))
+
+
+
+
+
 ## [0.18.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.18.1...v0.18.2) (2021-08-10)
 
 
