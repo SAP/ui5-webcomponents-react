@@ -3,6 +3,58 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.18.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.17.3...v0.18.0) (2021-08-09)
+
+
+### Code Refactoring
+
+* **AnalyticalCardHeader:** rename props and don't render unnecessary elements ([#1601](https://github.com/SAP/ui5-webcomponents-react/issues/1601)) ([3ba2e7e](https://github.com/SAP/ui5-webcomponents-react/commit/3ba2e7e3bf3e2cb64ecef8a515870677be66d239))
+* **DynamicPageTitle:** rename props ([#1912](https://github.com/SAP/ui5-webcomponents-react/issues/1912)) ([d4cefad](https://github.com/SAP/ui5-webcomponents-react/commit/d4cefade5f619a2643df22670bbd9bcff05ac6df))
+* **Form & FormGroup:** rename `title` to `titleText` ([#1603](https://github.com/SAP/ui5-webcomponents-react/issues/1603)) ([862b815](https://github.com/SAP/ui5-webcomponents-react/commit/862b8156cd4f6425073126b4f70b8faae6e721de))
+* **MessageBox:** rename `title` to `titleText` ([#1604](https://github.com/SAP/ui5-webcomponents-react/issues/1604)) ([f76930a](https://github.com/SAP/ui5-webcomponents-react/commit/f76930a95d1e20eed414c88a228c9dedbe67e4db))
+* **ObjectPage:** rename `heading` to `titleText` ([#1910](https://github.com/SAP/ui5-webcomponents-react/issues/1910)) ([94f4521](https://github.com/SAP/ui5-webcomponents-react/commit/94f4521f9bb5da37c2e1f77c125138622a67c556))
+* **VariantManagement:** rename `popupTitle` to `titleText` ([#1605](https://github.com/SAP/ui5-webcomponents-react/issues/1605)) ([57bd620](https://github.com/SAP/ui5-webcomponents-react/commit/57bd6200ca5d28585117c47e4fcc35ebf40d90c4))
+
+
+### Features
+
+* update `@ui5/webcomponents` to 1.0.0-rc.15 ([#1873](https://github.com/SAP/ui5-webcomponents-react/issues/1873)) ([db2145f](https://github.com/SAP/ui5-webcomponents-react/commit/db2145f5057fecbd698634a78c60f42769d20f2d))
+
+
+### BREAKING CHANGES
+
+* updated `@ui5/webcomponents` to 1.0.0-rc.15. This update includes several breaking changes that are reflected in this library as well. Please visit our [Migration Guide](https://sap.github.io/ui5-webcomponents-react/?path=/docs/migration-guide--page#migrating-from-017x-to-0180) for update instructions.
+* **ActionSheet**: the ActionSheet can now be opened with `actionSheetRef.current.showAt(opener)` instead of `actionSheetRef.current.open(opener)`
+* **Avatar**: `img` prop is replaced by `children` with a `<img>` component
+* **Breadcrumbs**: the `Breadcrumbs` component has been replaced with the official UI5 Web Component. Please visit our migration guide for details.
+* **Card**: props `headerInteractive`, `status`,  `subtitleText`, `titleText`, `action`, `avatar` and `onHeaderClick` have been removed. Please use the `CardHeader` component instead and pass it to the new `header` prop of the Card.
+* **Carousel**: `selectedIndex`, `infiniteScrollOffset`, and  `onLoadMore` are removed, use the `onNavigate` event to load more items.
+* **ComboBox**: The `filterValue` property has been removed. The `value` property should be used as now it represents the "live" value of the component.
+* **Dialog**: Dialogs can now be opened with `dialogRef.current.show()` instead of `dialogRef.current.open()`
+* **DurationPicker**: Component was made private by the UI5 Web Components, hence it's removed here as well.
+* **MessageStrip**: rename `MessageStripType` enum to `MessageStripDesign`. The prop `type` has been renamed to `design` and now accepts `MessageStripDesign` values.
+* **RadioButton**: the `onSelect` event has been renamed to `onChange`. Read the state of the Radio Button in the event handler with `event.target.checked`.
+* **ResponsivePopover**: the responsive popover can now be opened with `popoverRef.current.showAt(opener)` instead of `popoverRef.current.open(opener)`
+* **Popover**: the popover can now be opened with `popoverRef.current.showAt(opener)` instead of `popoverRef.current.openBy(opener)`
+* **SegmentedButton**: The SegmentedButton no longer accepts `ToggleButton` as children but expects `SegmentedButtonItem`.
+* **SuggestionItem**: prop `group` is not longer supported. Please use the `SuggestionItemGroup` component instead for creating groups.
+* **Wizard**: the `onSelectionChange` event has been renamed to `onStepChange`. In addition, the event param `selectedStep` has been renamed to `step` and `previouslySelectedStep` has been renamed to `previousStep`.
+* **deleted enums**:  `AvatarFitType` (Avatar component doesn't support the fitType prop anymore), `TabContainerHeaderMode`, `TabDesignMode`,  `SearchFunctions` (all three unused), `TabContainerTabsPlacement` (TabContainer component doesn't accept the placement prop anymore)
+* **renamed enums**: `AvatarBackgroundColor` to `AvatarColorScheme`, `PlacementType` to `PopoverPlacementType`, `PanelAccessibleRoles` to `PanelAccessibleRole`, `ListItemTypes` to `ListItemType`
+* **PageBackgroundDesign**: `PageBackgroundDesign.Standard` has been removed. Please use `PageBackgroundDesign.Solid` instead.
+* **DynamicPageTitle:** `heading` has been renamed to `header`,  `subheading` to `subHeader` and `showSubheadingRight` to `showSubHeaderRight`
+* **ObjectPage:** **ObjectPageSection**: `heading` has been renamed to `titleText` and `headingUppercase` to `titleTextUppercase`
+* **ObjectPage:** **ObjectPageSubSection**: `heading` has been renamed to `titleText`
+* **AnalyticalCardHeader:** `title` has been renamed to `titleText`, `subTitle` to `subtitleText` and `onHeaderPress` to `onClick`.
+* **VariantManagement:** `popupTitle` has been renamed to `titleText`
+* **MessageBox:** `title` has been renamed to `titleText`
+* **Form & FormGroup:** **Form:** `title` has been renamed to `titleText`
+* **Form & FormGroup:** **FormGroup:** `title` has been renamed to `titleText`
+
+
+
+
+
 ## [0.17.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.17.2...v0.17.3) (2021-08-02)
 
 **Note:** Version bump only for package @ui5/webcomponents-react-base
