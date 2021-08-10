@@ -39,7 +39,7 @@ import React, {
 import { createUseStyles } from 'react-jss';
 import styles from './FilterBar.jss';
 import { FilterDialog } from './FilterDialog';
-import { filterValue, renderSearchWithValue } from './utils';
+import { filterValue, renderSearchWithValue, syncRef } from './utils';
 
 export interface FilterBarPropTypes extends CommonProps {
   /**
@@ -343,7 +343,7 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
     'onFiltersDialogCancel'
   ]);
 
-  const safeChildren = useCallback(() => {
+  const safeChildren = () => {
     if (Object.keys(toggledFilters).length > 0) {
       return Children.toArray(children).map((child: ReactElement) => {
         if (toggledFilters?.[child.key] !== undefined) {
@@ -355,11 +355,11 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
       });
     }
     return Children.toArray(children) as unknown[];
-  }, [toggledFilters, children]);
+  };
 
   const prevChildren = useRef({});
 
-  const renderChildren = useCallback(() => {
+  const renderChildren = () => {
     const childProps = { considerGroupName, ['data-in-fb']: true, ['data-with-toolbar']: useToolbar } as any;
     return safeChildren()
       .filter((item: ReactElement<any, any>) => {
@@ -412,18 +412,12 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
             },
             ref: (node) => {
               filterRefs.current[child.key] = node;
+              syncRef(child.props.children.ref, node);
             }
           }
         });
       });
-  }, [filterContainerWidth, considerGroupName, dialogRefs, safeChildren, showFilterConfiguration, useToolbar]);
-
-  const handleSearchValueChange = useCallback(
-    (newVal) => {
-      setSearchValue(newVal);
-    },
-    [setSearchValue]
-  );
+  };
 
   const handleRestoreFilters = useCallback(
     (e, source) => {
@@ -596,7 +590,7 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
           onGo={onGo}
           handleRestoreFilters={handleRestoreFilters}
           searchValue={searchRef.current?.children[0].value}
-          handleSearchValueChange={handleSearchValueChange}
+          handleSearchValueChange={setSearchValue}
           showClearButton={showClearButton}
           showRestoreButton={showRestoreButton}
           showSearch={showSearchOnFiltersDialog}

@@ -1,4 +1,4 @@
-import { cloneElement } from 'react';
+import { cloneElement, Ref } from 'react';
 
 const inputTagNames = new Set([
   'UI5-COMBOBOX',
@@ -40,4 +40,16 @@ export const filterValue = (ref, child) => {
 
 export const renderSearchWithValue = (renderSearchElement, searchValue) => {
   return cloneElement(renderSearchElement, { value: searchValue ?? renderSearchElement?.props?.value });
+};
+
+export const syncRef = (ref: Ref<unknown>, node: unknown): void => {
+  if (ref) {
+    if (typeof ref === 'function') {
+      ref(node);
+    } else if (ref.hasOwnProperty('current')) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      ref.current = node;
+    }
+  }
 };
