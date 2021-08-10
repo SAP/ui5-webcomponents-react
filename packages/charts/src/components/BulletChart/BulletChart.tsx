@@ -428,6 +428,7 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
               break;
             case 'comparison':
               chartElementProps.type = 'monotone';
+              chartElementProps.fill = element.color ?? 'black';
               chartElementProps.shape = ComparisonLine;
               chartElementProps.activeDot = { r: 8 };
               chartElementProps.strokeWidth = element.width;

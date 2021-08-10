@@ -2,7 +2,7 @@ import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import '@ui5/webcomponents-icons/dist/person-placeholder.js';
 import { BulletChart } from '@ui5/webcomponents-react-charts/dist/BulletChart';
-import { complexDataSet } from '../../resources/DemoProps';
+import { complexBulletDataset, complexDataSet } from '../../resources/DemoProps';
 
 <Meta
   title="Charts /  BulletChart"
@@ -25,7 +25,7 @@ import { complexDataSet } from '../../resources/DemoProps';
   <Story
     name="Default"
     args={{
-      dataset: complexDataSet,
+      dataset: complexBulletDataset,
       style: { height: '60vh' },
       layout: 'horizontal',
       dimensions: [
@@ -42,13 +42,13 @@ import { complexDataSet } from '../../resources/DemoProps';
           type: 'primary'
         },
         {
-          accessor: 'volume',
-          label: 'Volume',
+          accessor: 'users',
+          label: 'Users',
           type: 'additional'
         },
         {
-          accessor: 'users',
-          label: 'Users',
+          accessor: 'volume',
+          label: 'Volume',
           formatter: (val) => val.toLocaleString(),
           type: 'comparison',
           color: 'red'
