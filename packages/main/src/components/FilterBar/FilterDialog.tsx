@@ -170,25 +170,7 @@ export const FilterDialog = (props) => {
     ]
   );
 
-  const renderFooter = useCallback(() => {
-    return <Bar design={BarDesign.Footer} endContent={footerContentRight} />;
-  }, [footerContentRight]);
-
-  const renderHeader = useCallback(
-    () => (
-      <FlexBox direction={FlexBoxDirection.Column} alignItems={FlexBoxAlignItems.Center} className={classes.header}>
-        <Title level={TitleLevel.H4} tooltip={filtersTitle}>
-          {filtersTitle}
-        </Title>
-        {showSearch && (
-          <Input placeholder={searchForFiltersText} onInput={handleSearch} icon={<Icon name="search" />} />
-        )}
-      </FlexBox>
-    ),
-    [classes.header, showSearch, handleSearch, filtersTitle]
-  );
-
-  const renderChildren = useCallback(() => {
+  const renderChildren = () => {
     return children
       .filter((item) => {
         return (
@@ -218,7 +200,7 @@ export const FilterDialog = (props) => {
           }
         });
       });
-  }, [children, searchString, filterBarRefs]);
+  };
 
   const handleCheckBoxChange = useCallback(
     (element) => (e) => {
@@ -229,8 +211,8 @@ export const FilterDialog = (props) => {
     },
     [setToggledFilters, handleSelectionChange]
   );
-  const renderGroups = useCallback(() => {
-    let groups = {};
+  const renderGroups = () => {
+    const groups = {};
     Children.forEach(renderChildren(), (child) => {
       const childGroups = child.props.groupName ?? 'default';
       if (groups[childGroups]) {
@@ -271,10 +253,24 @@ export const FilterDialog = (props) => {
           </div>
         );
       });
-  }, [renderChildren, toggledFilters, handleCheckBoxChange]);
+  };
 
   return createPortal(
-    <Dialog ref={dialogRef} header={renderHeader()} footer={renderFooter()} onAfterClose={handleClose}>
+    <Dialog
+      ref={dialogRef}
+      header={
+        <FlexBox direction={FlexBoxDirection.Column} alignItems={FlexBoxAlignItems.Center} className={classes.header}>
+          <Title level={TitleLevel.H4} tooltip={filtersTitle}>
+            {filtersTitle}
+          </Title>
+          {showSearch && (
+            <Input placeholder={searchForFiltersText} onInput={handleSearch} icon={<Icon name="search" />} />
+          )}
+        </FlexBox>
+      }
+      footer={<Bar design={BarDesign.Footer} endContent={footerContentRight} />}
+      onAfterClose={handleClose}
+    >
       <div className={classes.dialog} role="dialog">
         {renderFBSearch && (
           <div className={classes.fbSearch} ref={searchRef}>
