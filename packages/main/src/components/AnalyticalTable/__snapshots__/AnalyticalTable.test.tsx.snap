@@ -1161,7 +1161,9 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
             x="0"
             y="0"
           />
-          <defs>
+          <defs
+            role="presentation"
+          >
             <clippath
               id="DIFF_ID"
             >
