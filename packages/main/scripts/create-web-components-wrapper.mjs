@@ -904,7 +904,7 @@ resolvedWebComponents.forEach((componentSpec) => {
   const allComponentProperties = [...(componentSpec.properties || []), ...(componentSpec.slots || [])]
     .filter((prop) => prop.visibility === 'public' && prop.readonly !== 'true' && prop.static !== true)
     .map((property) => {
-      const tsType = getTypeScriptTypeForProperty(property, interfaces);
+      const tsType = getTypeScriptTypeForProperty(property);
       if (tsType.importStatement) {
         importStatements.push(tsType.importStatement);
       }
