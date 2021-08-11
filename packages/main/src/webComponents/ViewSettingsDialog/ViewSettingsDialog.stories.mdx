@@ -1,0 +1,59 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { ViewSettingsDialog } from '@ui5/webcomponents-react/lib/ViewSettingsDialog';
+import { Button } from '@ui5/webcomponents-react/lib/Button';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
+import { useRef } from 'react';
+
+<Meta
+  title="Components / ViewSettingsDialog"
+  component={ViewSettingsDialog}
+  argTypes={{
+    ...createSelectArgTypes({}),
+    ...DocsCommonProps,
+    sortItems: { control: { disable: true } }
+  }}
+  args={{
+    style: {},
+    className: '',
+    tooltip: '',
+    slot: '',
+    ref: null
+  }}
+/>
+
+<DocsHeader />
+
+<br />
+
+## Example
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      const dialogRef = useRef(null);
+      const onButtonClick = () => {
+        dialogRef.current.open();
+      };
+      return (
+        <>
+          <Button onClick={onButtonClick}>Open Dialog</Button>
+          <ViewSettingsDialog {...args} ref={dialogRef} />
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Properties
+
+<ArgsTable story="." />
+
+## Structure
+
+A `ViewSettingsDialog` consists of a header, content, and a footer for action buttons. The `ViewSettingsDialog` is usually displayed at the center of the screen.
+
+## Responsive Behavior
+
+`ViewSettingsDialog` stretches on full screen on phones.

@@ -258,7 +258,7 @@ const replaceTagNameWithModuleName = (description) => {
 };
 
 const getTypeScriptTypeForProperty = (property) => {
-  if (/\[]$/.test(property.type) || property.type === 'sap.ui.webcomponents.fiori.ListItem') {
+  if (/\[]$/.test(property.type)) {
     return {
       tsType: 'ReactNode | ReactNode[]',
       importStatement: "import { ReactNode } from 'react';"
