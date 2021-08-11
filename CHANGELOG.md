@@ -8,9 +8,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* update to @ui5/webcomponents 0.31.15 & downport `AnalyticalTable` ([#1967](https://github.com/SAP/ui5-webcomponents-react/issues/1967)) ([59178e7](https://github.com/SAP/ui5-webcomponents-react/commit/59178e75aaf0dcea36f969e4bcbaea6215cbab8b)), closes [#1958](https://github.com/SAP/ui5-webcomponents-react/issues/1958)
-
-
+* update to @ui5/webcomponents 0.31.15 & downport `AnalyticalTable` ([#1967](https://github.com/SAP/ui5-webcomponents-react/issues/1967)) ([59178e7](https://github.com/SAP/ui5-webcomponents-react/commit/59178e75aaf0dcea36f969e4bcbaea6215cbab8b))
+* The downport of the `AnalyticalTable` mainly includes the keyboard navigation feature ([#1864](https://github.com/SAP/ui5-webcomponents-react/pull/1864)), but since we couldn't update just that also all other changes up until [v0.17.4](https://github.com/SAP/ui5-webcomponents-react/releases/tag/v0.17.4) are included as well. <br />The last downported version of the table was the one of [v0.14.2](https://github.com/SAP/ui5-webcomponents-react/releases/tag/v0.14.2).
 
 
 
