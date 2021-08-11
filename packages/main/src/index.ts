@@ -6,7 +6,7 @@ import { ActionSheet } from './lib/ActionSheet';
 import { AnalyticalCard } from './lib/AnalyticalCard';
 import { AnalyticalCardHeader } from './lib/AnalyticalCardHeader';
 import { AnalyticalTable } from './lib/AnalyticalTable';
-import * as AnalyticalTableHooks from './lib/AnalyticalTableHooks';
+import { AnalyticalTableHooks } from './lib/AnalyticalTableHooks';
 import { AnalyticalTableScrollMode } from './lib/AnalyticalTableScrollMode';
 import { Avatar } from './lib/Avatar';
 import { AvatarBackgroundColor } from './lib/AvatarBackgroundColor';
@@ -116,6 +116,7 @@ import { RatingIndicator } from './lib/RatingIndicator';
 import { ResponsiveGridLayout } from './lib/ResponsiveGridLayout';
 import { ResponsivePopover } from './lib/ResponsivePopover';
 import { SegmentedButton } from './lib/SegmentedButton';
+import { SegmentedButtonItem } from './lib/SegmentedButtonItem';
 import { Select } from './lib/Select';
 import { SemanticColor } from './lib/SemanticColor';
 import { ShellBar } from './lib/ShellBar';
@@ -172,6 +173,7 @@ import { UploadState } from './lib/UploadState';
 import { ValueState } from './lib/ValueState';
 import { VariantManagement } from './lib/VariantManagement';
 import { VerticalAlign } from './lib/VerticalAlign';
+import { ViewSettingsDialog } from './lib/ViewSettingsDialog';
 import { Wizard } from './lib/Wizard';
 import { WizardStep } from './lib/WizardStep';
 import { withWebComponent } from './lib/withWebComponent';
@@ -291,6 +293,7 @@ export {
   ResponsiveGridLayout,
   ResponsivePopover,
   SegmentedButton,
+  SegmentedButtonItem,
   Select,
   SemanticColor,
   ShellBar,
@@ -347,6 +350,7 @@ export {
   ValueState,
   VariantManagement,
   VerticalAlign,
+  ViewSettingsDialog,
   Wizard,
   WizardStep,
   withWebComponent
