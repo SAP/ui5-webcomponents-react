@@ -121,7 +121,7 @@ const columns = (columns, { instance }) => {
     return DEFAULT_COLUMN_WIDTH;
   };
 
-  const hasData = rows.some((row) => !row.original?.emptyRow);
+  const hasData = instance.data.length > 0;
 
   if (scaleWidthMode === TableScaleWidthMode.Default || (!hasData && loading)) {
     const defaultWidth = calculateDefaultTableWidth();
