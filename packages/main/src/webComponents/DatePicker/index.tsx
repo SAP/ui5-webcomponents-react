@@ -82,11 +82,11 @@ export interface DatePickerPropTypes extends Omit<WithWebComponentPropTypes, 'on
   /**
    * Fired when the input operation has finished by pressing Enter or on focusout.
    */
-  onChange?: (event: CustomEvent) => void;
+  onChange?: (event: CustomEvent<{ value: string; valid: boolean }>) => void;
   /**
    * Fired when the value of the `DatePicker` is changed at each key stroke.
    */
-  onInput?: (event: CustomEvent) => void;
+  onInput?: (event: CustomEvent<{ value: string; valid: boolean }>) => void;
 }
 
 /**

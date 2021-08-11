@@ -215,6 +215,8 @@ COMPONENTS_WITHOUT_DEMOS.add('SuggestionItem');
 COMPONENTS_WITHOUT_DEMOS.add('UploadCollectionItem');
 COMPONENTS_WITHOUT_DEMOS.add('NotificationAction');
 COMPONENTS_WITHOUT_DEMOS.add('WizardStep');
+COMPONENTS_WITHOUT_DEMOS.add('SegmentedButtonItem');
+COMPONENTS_WITHOUT_DEMOS.add('ComboBoxGroupItem');
 
 const componentsFromFioriPackage = new Set(fioriWebComponentsSpec.symbols.map((componentSpec) => componentSpec.module));
 
@@ -256,6 +258,12 @@ const replaceTagNameWithModuleName = (description) => {
 };
 
 const getTypeScriptTypeForProperty = (property) => {
+  if (/\[]$/.test(property.type)) {
+    return {
+      tsType: 'ReactNode | ReactNode[]',
+      importStatement: "import { ReactNode } from 'react';"
+    };
+  }
   switch (property.type) {
     // native ts types
     case 'string':

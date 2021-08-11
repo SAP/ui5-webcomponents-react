@@ -1,6 +1,6 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { SegmentedButton } from '@ui5/webcomponents-react/lib/SegmentedButton';
-import { ToggleButton } from '@ui5/webcomponents-react/lib/ToggleButton';
+import { SegmentedButtonItem } from '@ui5/webcomponents-react/lib/SegmentedButtonItem';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
@@ -8,6 +8,7 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 <Meta
   title="Inputs / SegmentedButton"
   component={SegmentedButton}
+  subcomponents={{SegmentedButtonItem}}
   argTypes={{
     ...createSelectArgTypes({}),
     ...DocsCommonProps,
@@ -33,9 +34,9 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
     {(args) => {
       return (
         <SegmentedButton {...args}>
-          <ToggleButton>Button 1</ToggleButton>
-          <ToggleButton pressed>Button 2</ToggleButton>
-          <ToggleButton>Button 3</ToggleButton>
+          <SegmentedButtonItem>Button 1</SegmentedButtonItem>
+          <SegmentedButtonItem pressed>Button 2</SegmentedButtonItem>
+          <SegmentedButtonItem>Button 3</SegmentedButtonItem>
         </SegmentedButton>
       );
     }}
