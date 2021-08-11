@@ -168,7 +168,7 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
   }, [measures]);
 
   const tooltipValueFormatter = useTooltipFormatter(sortedMeasures);
-  console.log(sortedMeasures);
+
   const primaryDimension = dimensions[0];
   const secondaryMeasure = sortedMeasures.find((measure) => measure.accessor === chartConfig.secondYAxis?.dataKey);
   const primaryMeasure =
