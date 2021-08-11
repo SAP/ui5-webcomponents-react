@@ -232,7 +232,7 @@ With the `useRowDisableSelection` it's possible to disable the selection of spec
       const [isFunc, setIsFunc] = useState(true);
       const [collapsed, setCollapsed] = useReducer((coll) => !coll, true);
       return (
-        <Panel collapsed={collapsed} onToggle={setCollapsed} headerText="Show useRowDisableSelection example">
+        <Panel collapsed={collapsed} onClick={setCollapsed} headerText="Show useRowDisableSelection example">
           {collapsed ? (
             <BusyIndicator active style={{ width: '100%' }}>
               <span style={{ height: '580px' }} />
@@ -406,7 +406,7 @@ For more details on this behavior you can double check the [react-table docs](ht
     {(args) => {
       const [collapsed, setCollapsed] = useReducer((coll) => !coll, true);
       return (
-        <Panel collapsed={collapsed} onToggle={setCollapsed} headerText="Show Tree Table">
+        <Panel collapsed={collapsed} onClick={setCollapsed} headerText="Show Tree Table">
           {collapsed ? (
             <BusyIndicator active style={{ width: '100%' }}>
               <span style={{ height: '800px' }} />
@@ -475,7 +475,7 @@ The table initially contains 50 rows, when the last 10 rows are reached the tabl
       }, [loading, args.data, offset.current]);
       const [collapsed, setCollapsed] = useReducer((coll) => !coll, true);
       return (
-        <Panel collapsed={collapsed} onToggle={setCollapsed} headerText="Show infinite scroll table">
+        <Panel collapsed={collapsed} onClick={setCollapsed} headerText="Show infinite scroll table">
           {collapsed ? (
             <BusyIndicator active style={{ width: '100%' }}>
               <span style={{ height: '750px' }} />
@@ -1008,7 +1008,7 @@ Click on any of the rows in the example below to display the "navigated" indicat
       );
       const [collapsed, setCollapsed] = useReducer((coll) => !coll, true);
       return (
-        <Panel collapsed={collapsed} onToggle={setCollapsed} headerText="Show table with navigation indicator">
+        <Panel collapsed={collapsed} onClick={setCollapsed} headerText="Show table with navigation indicator">
           {collapsed ? (
             <BusyIndicator active style={{ width: '100%' }}>
               <span style={{ height: '580px' }} />
