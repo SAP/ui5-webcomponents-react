@@ -50,9 +50,7 @@ const PRIVATE_COMPONENTS = new Set([
   'TimePickerBase',
   'TreeListItem',
   'YearPicker',
-  'WheelSlider',
-  'SegmentedButtonItem',
-  'ComboBoxGroupItem'
+  'WheelSlider'
 ]);
 
 const EXTENDED_PROP_DESCRIPTION = {
@@ -217,6 +215,8 @@ COMPONENTS_WITHOUT_DEMOS.add('SuggestionItem');
 COMPONENTS_WITHOUT_DEMOS.add('UploadCollectionItem');
 COMPONENTS_WITHOUT_DEMOS.add('NotificationAction');
 COMPONENTS_WITHOUT_DEMOS.add('WizardStep');
+COMPONENTS_WITHOUT_DEMOS.add('SegmentedButtonItem');
+COMPONENTS_WITHOUT_DEMOS.add('ComboBoxGroupItem');
 
 const componentsFromFioriPackage = new Set(fioriWebComponentsSpec.symbols.map((componentSpec) => componentSpec.module));
 
@@ -258,7 +258,7 @@ const replaceTagNameWithModuleName = (description) => {
 };
 
 const getTypeScriptTypeForProperty = (property) => {
-  if (/\[]$/.test(property.type)) {
+  if (/\[]$/.test(property.type) || property.type === 'sap.ui.webcomponents.fiori.ListItem') {
     return {
       tsType: 'ReactNode | ReactNode[]',
       importStatement: "import { ReactNode } from 'react';"
