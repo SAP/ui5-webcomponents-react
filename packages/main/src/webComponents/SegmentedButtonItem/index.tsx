@@ -4,22 +4,6 @@ import { FC, ReactNode } from 'react';
 
 export interface SegmentedButtonItemPropTypes extends Omit<WithWebComponentPropTypes, 'onClick'> {
   /**
-   * **Note:** The property is inherited and not supported. If set, it won't take any effect.
-   */
-  design?: unknown;
-  /**
-   * **Note:** The property is inherited and not supported. If set, it won't take any effect.
-   */
-  iconEnd?: unknown;
-  /**
-   * **Note:** The property is inherited and not supported. If set, it won't take any effect.
-   */
-  iconSize?: unknown;
-  /**
-   * **Note:** The property is inherited and not supported. If set, it won't take any effect.
-   */
-  submits?: unknown;
-  /**
    * Determines whether the `ToggleButton` is displayed as pressed.
    */
   pressed?: boolean;
@@ -60,7 +44,7 @@ export interface SegmentedButtonItemPropTypes extends Omit<WithWebComponentPropT
  */
 const SegmentedButtonItem: FC<SegmentedButtonItemPropTypes> = withWebComponent<SegmentedButtonItemPropTypes>(
   'ui5-segmented-button-item',
-  ['design', 'iconEnd', 'iconSize', 'submits', 'icon'],
+  ['icon'],
   ['pressed', 'disabled'],
   [],
   ['click']
