@@ -466,19 +466,19 @@ export const complexBulletDataset = [
     name: 'January',
     users: 100,
     sessions: 300,
-    volume: 570
+    volume: 350
   },
   {
     name: 'February',
     users: 90,
     sessions: 330,
-    volume: 460
+    volume: 370
   },
   {
     name: 'March',
     users: 0,
     sessions: 404,
-    volume: 500
+    volume: 446
   },
   {
     name: 'April',
@@ -502,7 +502,7 @@ export const complexBulletDataset = [
     name: 'July',
     users: 65,
     sessions: 300,
-    volume: 450
+    volume: 300
   },
   {
     name: 'August',

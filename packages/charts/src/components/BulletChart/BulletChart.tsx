@@ -9,14 +9,12 @@ import { YAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/YAxi
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/dist/useLegendItemClick';
 import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import {
-  Area,
   Bar,
   Brush,
   CartesianGrid,
   ComposedChart as ComposedChartLib,
   Label,
   Legend,
-  Line,
   ReferenceLine,
   Tooltip,
   XAxis,
@@ -386,13 +384,13 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
             <Label>{chartConfig.referenceLine.label}</Label>
           </ReferenceLine>
         )}
-        {/*<Tooltip*/}
-        {/*  cursor={tooltipFillOpacity}*/}
-        {/*  formatter={tooltipValueFormatter}*/}
-        {/*  labelFormatter={labelFormatter}*/}
-        {/*  contentStyle={tooltipContentStyle}*/}
-        {/*  {...tooltipConfig}*/}
-        {/*/>*/}
+        <Tooltip
+          cursor={tooltipFillOpacity}
+          formatter={tooltipValueFormatter}
+          labelFormatter={labelFormatter}
+          contentStyle={tooltipContentStyle}
+          {...tooltipConfig}
+        />
         {!noLegend && (
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
@@ -412,13 +410,12 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
           let labelPosition = 'top';
           switch (element.type) {
             case 'primary':
-              chartElementProps.stackId = 'A';
-              chartElementProps.activeDot = {
-                onClick: onDataPointClickInternal
-              };
-              chartElementProps.strokeWidth = element.width;
+            case 'additional':
+              chartElementProps.fillOpacity = element.opacity;
               chartElementProps.strokeOpacity = element.opacity;
-              chartElementProps.dot = !isBigDataSet;
+              chartElementProps.barSize = element.width;
+              chartElementProps.onClick = onDataPointClickInternal;
+              chartElementProps.stackId = 'A';
               chartElementProps.labelPosition = element.stackId ? 'insideTop' : 'top';
               if (layout === 'vertical') {
                 labelPosition = 'insideRight';
@@ -427,30 +424,15 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
               }
               break;
             case 'comparison':
-              chartElementProps.type = 'monotone';
+              chartElementProps.onClick = onDataPointClickInternal;
               chartElementProps.fill = element.color ?? 'black';
               chartElementProps.shape = ComparisonLine;
-              chartElementProps.activeDot = { r: 8 };
               chartElementProps.strokeWidth = element.width;
               chartElementProps.strokeOpacity = element.opacity;
               chartElementProps.label = false;
               chartElementProps.xAxisId = 'comparisonXAxis';
               chartElementProps.yAxisId = 'comparisonYAxis';
               chartElementProps.dot = !isBigDataSet;
-
-              break;
-            case 'additional':
-              chartElementProps.stackId = 'A';
-              chartElementProps.fillOpacity = element.opacity;
-              chartElementProps.strokeOpacity = element.opacity;
-              chartElementProps.barSize = element.width;
-              chartElementProps.onClick = onDataPointClickInternal;
-              chartElementProps.labelPosition = element.stackId ? 'insideTop' : 'top';
-              if (layout === 'vertical') {
-                labelPosition = 'insideRight';
-              } else {
-                labelPosition = 'insideTop';
-              }
               break;
           }
 
