@@ -2,7 +2,7 @@ import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import '@ui5/webcomponents-icons/dist/person-placeholder.js';
 import { BulletChart } from '@ui5/webcomponents-react-charts/dist/BulletChart';
-import { complexBulletDataset, complexDataSet } from '../../resources/DemoProps';
+import { complexBulletDataset, complexDataSet, secondaryDimensionDataSet } from '../../resources/DemoProps';
 
 <Meta
   title="Charts /  BulletChart"
@@ -101,6 +101,58 @@ import { complexBulletDataset, complexDataSet } from '../../resources/DemoProps'
           width: 10
         }
       ]
+    }}
+  >
+    {(props) => <BulletChart {...props} />}
+  </Story>
+</Canvas>
+
+### With Second YAxis
+
+<Canvas>
+  <Story
+    name="With Second YAxis"
+    args={{
+      dataset: complexDataSet,
+      style: { width: '95%', height: '60vh' },
+      dimensions: [{ accessor: 'name' }],
+      measures: [
+        {
+          accessor: 'users',
+          type: 'comparison'
+        },
+        {
+          accessor: 'sessions',
+          type: 'additional',
+          formatter: (e) => '$' + e,
+          opacity: 0.6
+        },
+        {
+          accessor: 'volume',
+          type: 'primary'
+        }
+      ],
+      chartConfig: {
+        secondYAxis: {
+          dataKey: 'sessions'
+        }
+      }
+    }}
+  >
+    {(props) => <BulletChart {...props} />}
+  </Story>
+</Canvas>
+
+### With Secondary Dimension
+
+<Canvas>
+  <Story
+    name="With Secondary Dimension"
+    args={{
+      dataset: secondaryDimensionDataSet,
+      style: { width: '95%', height: '60vh' },
+      dimensions: [{ accessor: 'name' }, { accessor: 'dimension' }],
+      measures: [{ accessor: 'users', type: 'primary', color: 'red', opacity: 0.5 }]
     }}
   >
     {(props) => <BulletChart {...props} />}

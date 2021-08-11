@@ -158,10 +158,24 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
     measureDefaults
   );
 
+  const sortedMeasures = useMemo(() => {
+    return measures.sort((measure) => {
+      let returnValue = 0;
+
+      if (measure.type === 'comparison') {
+        returnValue += 1;
+      } else {
+        returnValue = returnValue - 1;
+      }
+      return returnValue;
+    });
+  }, [measures]);
+
   const tooltipValueFormatter = useTooltipFormatter(measures);
 
   const primaryDimension = dimensions[0];
-  const primaryMeasure = measures[0];
+  const secondaryMeasure = measures.find((measure) => measure.accessor === chartConfig.secondYAxis?.dataKey);
+  const primaryMeasure = measures[0] === secondaryMeasure ? measures[1] ?? measures[0] : measures[0];
 
   const labelFormatter = useLabelFormatter(primaryDimension);
 
@@ -352,10 +366,14 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
             axisLine={{
               stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
             }}
-            tick={{
-              direction: 'ltr',
-              fill: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
-            }}
+            tick={
+              <YAxisTicks
+                config={secondaryMeasure}
+                secondYAxisConfig={{
+                  color: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
+                }}
+              />
+            }
             tickLine={{
               stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
             }}
@@ -378,7 +396,14 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
             axisLine={{
               stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
             }}
-            tick={{ fill: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})` }}
+            tick={
+              <XAxisTicks
+                config={secondaryMeasure}
+                secondYAxisConfig={{
+                  color: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
+                }}
+              />
+            }
             tickLine={{
               stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
             }}
@@ -421,7 +446,7 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
             wrapperStyle={legendPosition}
           />
         )}
-        {measures?.map((element, index) => {
+        {sortedMeasures?.map((element, index) => {
           const ChartElement = Bar as any as FC<any>;
 
           const chartElementProps: any = {
@@ -444,6 +469,7 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
               }
               break;
             case 'comparison':
+              chartElementProps.style = { zIndex: 999 };
               chartElementProps.onClick = onDataPointClickInternal;
               chartElementProps.fill = element.color ?? 'black';
               chartElementProps.strokeWidth = element.width;

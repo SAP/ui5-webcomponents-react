@@ -84,22 +84,6 @@ import { bigDataSet, complexDataSet, secondaryDimensionDataSet, simpleDataSet } 
   </Story>
 </Canvas>
 
-### With Secondary Dimension
-
-<Canvas>
-  <Story
-    name="With Secondary Dimension"
-    args={{
-      dataset: secondaryDimensionDataSet,
-      style: { width: '95%', height: '60vh' },
-      dimensions: [{ accessor: 'name' }, { accessor: 'dimension' }],
-      measures: [{ accessor: 'users', type: 'area', color: 'red', width: 2, opacity: 0.5 }]
-    }}
-  >
-    {(props) => <ComposedChart {...props} />}
-  </Story>
-</Canvas>
-
 ### With Data Labels
 
 <Canvas>
