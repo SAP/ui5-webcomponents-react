@@ -51,12 +51,19 @@ const styles = {
     textAlign: 'start',
     boxSizing: 'border-box',
     '&[data-column-id="__ui5wcr__internal_highlight_column"]': {
-      borderRight: 'none'
+      borderRight: '1px solid transparent'
     },
     '&:last-child': {
       '& [data-resizer]': {
         transform: 'translateX(0px)'
       }
+    },
+    '&:focus': {
+      '&[data-column-id="__ui5wcr__internal_selection_column"]': {
+        borderLeft: '1px solid transparent'
+      },
+      outlineOffset: `calc(-1 * ${ThemingParameters.sapContent_FocusWidth})`,
+      outline: `${ThemingParameters.sapContent_FocusWidth} ${ThemingParameters.sapContent_FocusStyle} ${ThemingParameters.sapContent_FocusColor}`
     }
   },
   tbody: {
@@ -132,8 +139,8 @@ const styles = {
     alignItems: 'center',
     position: 'relative',
     '&:focus': {
-      outlineOffset: '-2px',
-      outline: `1px dotted ${ThemingParameters.sapContent_FocusColor}`
+      outlineOffset: `calc(-1 * ${ThemingParameters.sapContent_FocusWidth})`,
+      outline: `${ThemingParameters.sapContent_FocusWidth} ${ThemingParameters.sapContent_FocusStyle} ${ThemingParameters.sapContent_FocusColor}`
     }
   },
   noDataContainer: {

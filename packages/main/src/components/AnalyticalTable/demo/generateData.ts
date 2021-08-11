@@ -30,33 +30,6 @@ const range = (len) => {
   return arr;
 };
 
-const newEntry = () => {
-  return {
-    name: getRandomName(),
-    age: getRandomNumber(18, 65),
-    friend: {
-      name: getRandomName(),
-      age: getRandomNumber(18, 65)
-    },
-    status: [ValueState.None, ValueState.Information, ValueState.Success, ValueState.Warning, ValueState.Error][
-      Math.floor(Math.random() * 4)
-    ]
-  };
-};
-
-const makeTreeEntry = (...lens) => {
-  const makeDataLevel = (depth = 0) => {
-    const len = lens[depth];
-    return range(len).map((d) => {
-      return {
-        ...newEntry(),
-        subRows: lens[depth + 1] ? makeDataLevel(depth + 1) : undefined
-      };
-    });
-  };
-  return makeDataLevel();
-};
-
 const makeEntry = () => ({
   name: getRandomName(),
   longColumn: 'Really really long column content... don´t crop please',
@@ -69,6 +42,22 @@ const makeEntry = () => ({
     Math.floor(Math.random() * 4)
   ]
 });
+
+const makeTreeEntry = (...lens) => {
+  const makeDataLevel = (depth = 0) => {
+    const len = lens[depth];
+    return range(len).map((d, index) => {
+      if (index === 0) {
+        return makeEntry();
+      }
+      return {
+        ...makeEntry(),
+        subRows: lens[depth + 1] ? makeDataLevel(depth + 1) : undefined
+      };
+    });
+  };
+  return makeDataLevel();
+};
 
 const generateData = (numEntries, isTree = false) => {
   if (isTree) {

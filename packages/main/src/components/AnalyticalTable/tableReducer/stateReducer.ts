@@ -1,11 +1,11 @@
 import { actions } from 'react-table';
 
-export const stateReducer = (newState, action) => {
+export const stateReducer = (prevState, action) => {
   const { payload } = action;
 
-  if (newState.isRtl && action.type === actions.columnResizing) {
+  if (prevState.isRtl && action.type === actions.columnResizing) {
     const { clientX } = action;
-    const { startX, columnWidth, headerIdWidths } = newState.columnResizing;
+    const { startX, columnWidth, headerIdWidths } = prevState.columnResizing;
 
     const deltaX = startX - clientX;
     const percentageDeltaX = deltaX / columnWidth;
@@ -17,11 +17,11 @@ export const stateReducer = (newState, action) => {
     });
 
     return {
-      ...newState,
+      ...prevState,
       columnResizing: {
-        ...newState.columnResizing,
+        ...prevState.columnResizing,
         columnWidths: {
-          ...newState.columnResizing.columnWidths,
+          ...prevState.columnResizing.columnWidths,
           ...newColumnWidths
         }
       }
@@ -30,20 +30,22 @@ export const stateReducer = (newState, action) => {
 
   switch (action.type) {
     case 'TABLE_RESIZE':
-      return { ...newState, tableClientWidth: payload.tableClientWidth };
+      return { ...prevState, tableClientWidth: payload.tableClientWidth };
     case 'VISIBLE_ROWS':
-      return { ...newState, visibleRows: payload.visibleRows };
+      return { ...prevState, visibleRows: payload.visibleRows };
     case 'TABLE_SCROLLING_ENABLED':
-      return { ...newState, isScrollable: payload.isScrollable };
+      return { ...prevState, isScrollable: payload.isScrollable };
     case 'SET_SELECTED_ROW_IDS':
-      return { ...newState, selectedRowIds: payload.selectedRowIds };
+      return { ...prevState, selectedRowIds: payload.selectedRowIds };
     case 'SET_POPIN_COLUMNS':
-      return { ...newState, popInColumns: payload };
+      return { ...prevState, popInColumns: payload };
     case 'INTERACTIVE_ROWS_HAVE_POPIN':
-      return { ...newState, interactiveRowsHavePopIn: payload };
+      return { ...prevState, interactiveRowsHavePopIn: payload };
     case 'IS_RTL':
-      return { ...newState, isRtl: payload.isRtl };
+      return { ...prevState, isRtl: payload.isRtl };
+    case 'SUB_COMPONENTS_HEIGHT':
+      return { ...prevState, subComponentsHeight: payload };
     default:
-      return newState;
+      return prevState;
   }
 };
