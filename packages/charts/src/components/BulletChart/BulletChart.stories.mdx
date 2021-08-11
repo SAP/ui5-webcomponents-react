@@ -84,20 +84,17 @@ import { complexBulletDataset, complexDataSet, secondaryDimensionDataSet } from 
           formatter: (element) => `${element / 10}`,
           type: 'additional',
           label: 'Number of users',
-          stackId: 'A',
           width: 10
         },
         {
           accessor: 'sessions',
           type: 'primary',
-          stackId: 'A',
           width: 10,
           opacity: 0.5
         },
         {
           accessor: 'volume',
           type: 'comparison',
-          color: 'red',
           width: 10
         }
       ]
@@ -123,7 +120,7 @@ import { complexBulletDataset, complexDataSet, secondaryDimensionDataSet } from 
         },
         {
           accessor: 'sessions',
-          type: 'additional',
+          type: 'primary',
           formatter: (e) => '$' + e,
           opacity: 0.6
         },
@@ -137,22 +134,6 @@ import { complexBulletDataset, complexDataSet, secondaryDimensionDataSet } from 
           dataKey: 'sessions'
         }
       }
-    }}
-  >
-    {(props) => <BulletChart {...props} />}
-  </Story>
-</Canvas>
-
-### With Secondary Dimension
-
-<Canvas>
-  <Story
-    name="With Secondary Dimension"
-    args={{
-      dataset: secondaryDimensionDataSet,
-      style: { width: '95%', height: '60vh' },
-      dimensions: [{ accessor: 'name' }, { accessor: 'dimension' }],
-      measures: [{ accessor: 'users', type: 'primary', color: 'red', opacity: 0.5 }]
     }}
   >
     {(props) => <BulletChart {...props} />}

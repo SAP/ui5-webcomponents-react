@@ -56,11 +56,6 @@ interface MeasureConfig extends IChartMeasure {
    * Chart type
    */
   type: AvailableChartTypes;
-  /**
-   * bar Stack ID
-   * @default undefined
-   */
-  stackId?: string;
 }
 
 interface DimensionConfig extends IChartDimension {
@@ -98,7 +93,6 @@ export interface BulletChartProps extends IChartBaseProps {
    * - `DataLabel`: a custom component to be used for the data label
    * - `width`: width of the current chart element, defaults to `1` for `lines` and `20` for bars
    * - `opacity`: element opacity, defaults to `1`
-   * - `stackId`: bars with the same stackId will be stacked
    *
    */
   measures: MeasureConfig[];
@@ -112,8 +106,8 @@ export interface BulletChartProps extends IChartBaseProps {
 type AvailableChartTypes = 'primary' | 'comparison' | 'additional' | string;
 
 /**
- * TODO DESCRIPTION
- * The `BulletChart`
+ * The `BulletChart` is used to compare primary and secondary (comparison) values. The primary and additional values
+ * are rendered as a stacked Bar Chart while the comparison value is displayed as a line above.
  */
 const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, ref: Ref<HTMLDivElement>) => {
   const {
@@ -164,22 +158,25 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
 
       if (measure.type === 'comparison') {
         returnValue += 1;
-      } else {
+      }
+      if (measure.type === 'primary') {
         returnValue = returnValue - 1;
       }
+
       return returnValue;
     });
   }, [measures]);
 
-  const tooltipValueFormatter = useTooltipFormatter(measures);
-
+  const tooltipValueFormatter = useTooltipFormatter(sortedMeasures);
+  console.log(sortedMeasures);
   const primaryDimension = dimensions[0];
-  const secondaryMeasure = measures.find((measure) => measure.accessor === chartConfig.secondYAxis?.dataKey);
-  const primaryMeasure = measures[0] === secondaryMeasure ? measures[1] ?? measures[0] : measures[0];
+  const secondaryMeasure = sortedMeasures.find((measure) => measure.accessor === chartConfig.secondYAxis?.dataKey);
+  const primaryMeasure =
+    sortedMeasures[0] === secondaryMeasure ? sortedMeasures[1] ?? sortedMeasures[0] : sortedMeasures[0];
 
   const labelFormatter = useLabelFormatter(primaryDimension);
 
-  const dataKeys = measures.map(({ accessor }) => accessor);
+  const dataKeys = sortedMeasures.map(({ accessor }) => accessor);
   const colorSecondY = chartConfig.secondYAxis
     ? dataKeys.findIndex((key) => key === chartConfig.secondYAxis?.dataKey)
     : 0;
@@ -225,7 +222,10 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
   const isBigDataSet = dataset?.length > 30 ?? false;
   const primaryDimensionAccessor = primaryDimension?.accessor;
 
-  const [yAxisWidth, legendPosition] = useLongestYAxisLabel(dataset, layout === 'vertical' ? dimensions : measures);
+  const [yAxisWidth, legendPosition] = useLongestYAxisLabel(
+    dataset,
+    layout === 'vertical' ? dimensions : sortedMeasures
+  );
 
   const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
   const xAxisHeights = useObserveXAxisHeights(chartRef, layout === 'vertical' ? 1 : props.dimensions.length);
@@ -469,7 +469,6 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
               }
               break;
             case 'comparison':
-              chartElementProps.style = { zIndex: 999 };
               chartElementProps.onClick = onDataPointClickInternal;
               chartElementProps.fill = element.color ?? 'black';
               chartElementProps.strokeWidth = element.width;
