@@ -82,7 +82,7 @@ export interface BulletChartProps extends IChartBaseProps {
    * #### Required properties
    * - `accessor`: string containing the path to the dataset key this element should display. Supports object structures by using <code>'parent.child'</code>.
    *   Can also be a getter.
-   * - `type`: string which chart element to show. Possible values: `line`, `bar`, `area`.
+   * - `type`: string which chart element (value type) to show. Possible values: `primary`, `comparison`, `additional`.
    *
    * #### Optional properties
    *
