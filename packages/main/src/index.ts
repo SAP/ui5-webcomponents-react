@@ -6,7 +6,7 @@ import { ActionSheet } from './lib/ActionSheet';
 import { AnalyticalCard } from './lib/AnalyticalCard';
 import { AnalyticalCardHeader } from './lib/AnalyticalCardHeader';
 import { AnalyticalTable } from './lib/AnalyticalTable';
-import { AnalyticalTableHooks } from './lib/AnalyticalTableHooks';
+import * as AnalyticalTableHooks from './lib/AnalyticalTableHooks';
 import { AnalyticalTableScrollMode } from './lib/AnalyticalTableScrollMode';
 import { Avatar } from './lib/Avatar';
 import { AvatarBackgroundColor } from './lib/AvatarBackgroundColor';
