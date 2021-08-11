@@ -227,11 +227,31 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
     return <BulletChartPlaceholder layout={layout} measures={measures} />;
   }, [layout, measures]);
 
-  const ComparisonLine = (comparisonProps) => {
+  const ComparisonLine = (comparisonProps, element) => {
     const { x, y, width, height, index, fill } = comparisonProps;
 
+    const horizontalCalc = {
+      x1: element.width ? x + (width - element.width) / 2 - 1 : x - 3,
+      x2: element.width ? x + element.width + (width - element.width) / 2 : x + width + 3
+    };
+
+    const verticalCalc = {
+      y1: element.width ? y + (height - element.width) / 2 - 1 : y - 3,
+      y2: element.width ? y + element.width + (height - element.width) / 2 : y + height + 3
+    };
+
     if (layout === 'horizontal') {
-      return <line key={`target-${index}`} x1={x - 3} x2={x + width + 3} y1={y} y2={y} stroke={fill} strokeWidth={3} />;
+      return (
+        <line
+          key={`target-${index}`}
+          x1={horizontalCalc.x1}
+          x2={horizontalCalc.x2}
+          y1={y}
+          y2={y}
+          stroke={fill}
+          strokeWidth={3}
+        />
+      );
     }
 
     return (
@@ -239,8 +259,8 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
         key={`target-${index}`}
         x1={x + width}
         x2={x + width}
-        y1={y - 3}
-        y2={y + height + 3}
+        y1={verticalCalc.y1}
+        y2={verticalCalc.y2}
         stroke={fill}
         strokeWidth={3}
       />
@@ -426,8 +446,8 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
             case 'comparison':
               chartElementProps.onClick = onDataPointClickInternal;
               chartElementProps.fill = element.color ?? 'black';
-              chartElementProps.shape = ComparisonLine;
               chartElementProps.strokeWidth = element.width;
+              chartElementProps.shape = (e) => ComparisonLine(e, element);
               chartElementProps.strokeOpacity = element.opacity;
               chartElementProps.label = false;
               chartElementProps.xAxisId = 'comparisonXAxis';

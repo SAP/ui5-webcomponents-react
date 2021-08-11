@@ -54,8 +54,8 @@ export const BulletChartPlaceholder = ({ layout, measures }) => {
     >
       {layout === 'vertical' && <rect x="20" y="10" width="1" height="135" />}
       {layout === 'horizontal' && <rect x="10" y="135" width="135" height="1" />}
-      {layout === 'vertical' && distinctElements.has('bar') && barContentVertical}
-      {layout === 'horizontal' && distinctElements.has('bar') && barContentHorizontal}
+      {layout === 'vertical' && distinctElements.has('primary') && barContentVertical}
+      {layout === 'horizontal' && distinctElements.has('primary') && barContentHorizontal}
     </ContentLoader>
   );
 };
