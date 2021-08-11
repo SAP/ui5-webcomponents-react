@@ -216,21 +216,23 @@ const DynamicPageTitle = forwardRef((props: DynamicPageTitlePropTypes, ref: Ref<
             </div>
           )}
         </FlexBox>
-        <Toolbar
-          design={ToolbarDesign.Auto}
-          toolbarStyle={ToolbarStyle.Clear}
-          active
-          className={classes.toolbar}
-          onClick={stopPropagation}
-          data-component-name="DynamicPageTitleActions"
-        >
-          <ActionsSpacer onClick={onHeaderClick} noHover={props?.['data-not-clickable']} />
-          {actions}
-          {!showNavigationInTopArea && Children.count(actions) > 0 && Children.count(navigationActions) > 0 && (
-            <ToolbarSeparator />
-          )}
-          {!showNavigationInTopArea && navigationActions}
-        </Toolbar>
+        {(actions || (!showNavigationInTopArea && navigationActions)) && (
+          <Toolbar
+            design={ToolbarDesign.Auto}
+            toolbarStyle={ToolbarStyle.Clear}
+            active
+            className={classes.toolbar}
+            onClick={stopPropagation}
+            data-component-name="DynamicPageTitleActions"
+          >
+            <ActionsSpacer onClick={onHeaderClick} noHover={props?.['data-not-clickable']} />
+            {actions}
+            {!showNavigationInTopArea && Children.count(actions) > 0 && Children.count(navigationActions) > 0 && (
+              <ToolbarSeparator />
+            )}
+            {!showNavigationInTopArea && navigationActions}
+          </Toolbar>
+        )}
       </FlexBox>
       {subHeader && !showSubHeaderRight && (
         <FlexBox>
