@@ -50,7 +50,9 @@ const PRIVATE_COMPONENTS = new Set([
   'TimePickerBase',
   'TreeListItem',
   'YearPicker',
-  'WheelSlider'
+  'WheelSlider',
+  'SegmentedButtonItem',
+  'ComboBoxGroupItem'
 ]);
 
 const EXTENDED_PROP_DESCRIPTION = {
@@ -256,6 +258,12 @@ const replaceTagNameWithModuleName = (description) => {
 };
 
 const getTypeScriptTypeForProperty = (property) => {
+  if (/\[]$/.test(property.type)) {
+    return {
+      tsType: 'ReactNode | ReactNode[]',
+      importStatement: "import { ReactNode } from 'react';"
+    };
+  }
   switch (property.type) {
     // native ts types
     case 'string':
@@ -896,7 +904,7 @@ resolvedWebComponents.forEach((componentSpec) => {
   const allComponentProperties = [...(componentSpec.properties || []), ...(componentSpec.slots || [])]
     .filter((prop) => prop.visibility === 'public' && prop.readonly !== 'true' && prop.static !== true)
     .map((property) => {
-      const tsType = getTypeScriptTypeForProperty(property);
+      const tsType = getTypeScriptTypeForProperty(property, interfaces);
       if (tsType.importStatement) {
         importStatements.push(tsType.importStatement);
       }
