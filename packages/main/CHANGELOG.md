@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.131.15](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.14...v0.131.15) (2021-08-11)
+
+
+### Features
+
+* update to @ui5/webcomponents 0.31.15 & downport `AnalyticalTable` ([#1967](https://github.com/SAP/ui5-webcomponents-react/issues/1967)) ([59178e7](https://github.com/SAP/ui5-webcomponents-react/commit/59178e75aaf0dcea36f969e4bcbaea6215cbab8b)), closes [#1958](https://github.com/SAP/ui5-webcomponents-react/issues/1958)
+
+
+
+
+
 ## [0.131.14](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.13...v0.131.14) (2021-08-04)
 
 
