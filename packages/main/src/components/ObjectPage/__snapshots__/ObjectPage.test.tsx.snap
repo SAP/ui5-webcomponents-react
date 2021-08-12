@@ -829,20 +829,6 @@ exports[`ObjectPage with anchor-bar 1`] = `
               HeaderTitle
             </div>
           </div>
-          <div
-            class="Toolbar-outerContainer Toolbar-clear Toolbar-active DynamicPageTitle-toolbar"
-            data-component-name="DynamicPageTitleActions"
-          >
-            <div
-              class="Toolbar-toolbar"
-              data-component-name="ToolbarContent"
-            >
-              <span
-                class="spacer"
-                style="flex-grow: 1; height: 100%; cursor: pointer;"
-              />
-            </div>
-          </div>
         </div>
       </div>
     </header>
@@ -1895,20 +1881,6 @@ exports[`ObjectPage with img 1`] = `
               HeaderTitle
             </div>
           </div>
-          <div
-            class="Toolbar-outerContainer Toolbar-clear Toolbar-active DynamicPageTitle-toolbar"
-            data-component-name="DynamicPageTitleActions"
-          >
-            <div
-              class="Toolbar-toolbar"
-              data-component-name="ToolbarContent"
-            >
-              <span
-                class="spacer"
-                style="flex-grow: 1; height: 100%; cursor: auto;"
-              />
-            </div>
-          </div>
         </div>
       </div>
     </header>
@@ -2307,20 +2279,6 @@ exports[`ObjectPage with img 2`] = `
               HeaderTitle
             </div>
           </div>
-          <div
-            class="Toolbar-outerContainer Toolbar-clear Toolbar-active DynamicPageTitle-toolbar"
-            data-component-name="DynamicPageTitleActions"
-          >
-            <div
-              class="Toolbar-toolbar"
-              data-component-name="ToolbarContent"
-            >
-              <span
-                class="spacer"
-                style="flex-grow: 1; height: 100%; cursor: auto;"
-              />
-            </div>
-          </div>
         </div>
       </div>
     </header>
@@ -2703,20 +2661,6 @@ exports[`ObjectPage with title 1`] = `
               HeaderTitle
             </div>
           </div>
-          <div
-            class="Toolbar-outerContainer Toolbar-clear Toolbar-active DynamicPageTitle-toolbar"
-            data-component-name="DynamicPageTitleActions"
-          >
-            <div
-              class="Toolbar-toolbar"
-              data-component-name="ToolbarContent"
-            >
-              <span
-                class="spacer"
-                style="flex-grow: 1; height: 100%; cursor: auto;"
-              />
-            </div>
-          </div>
         </div>
       </div>
     </header>
@@ -3046,20 +2990,6 @@ exports[`ObjectPage with title, header & footer 1`] = `
               style="padding-left: 0.5rem;"
             >
               HeaderTitle
-            </div>
-          </div>
-          <div
-            class="Toolbar-outerContainer Toolbar-clear Toolbar-active DynamicPageTitle-toolbar"
-            data-component-name="DynamicPageTitleActions"
-          >
-            <div
-              class="Toolbar-toolbar"
-              data-component-name="ToolbarContent"
-            >
-              <span
-                class="spacer"
-                style="flex-grow: 1; height: 100%; cursor: auto;"
-              />
             </div>
           </div>
         </div>

@@ -84,6 +84,7 @@ const headerProps = (
 
     const onKeyDown = (e) => {
       if (e.code === 'Space' || e.code === 'Enter') {
+        e.preventDefault();
         onClick(e);
       }
     };
