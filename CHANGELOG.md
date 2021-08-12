@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.17.4...v0.17.5) (2021-08-12)
+
+
+### Bug Fixes
+
+* use correct peer dependency version for charts ([9b893db](https://github.com/SAP/ui5-webcomponents-react/commit/9b893db84dc44ed2eb13440e4b5283a2aa0dc091))
+
+
+### Features
+
+* downport `AnalyticalTable`, `FilterBar` `VariantManagement` and `DynamicPageTitle` changes ([#1975](https://github.com/SAP/ui5-webcomponents-react/issues/1975)) ([feb5ccb](https://github.com/SAP/ui5-webcomponents-react/commit/feb5ccb468576e08d2a6dc35673717f40c2ab96a)), closes [#1954](https://github.com/SAP/ui5-webcomponents-react/issues/1954) [#1969](https://github.com/SAP/ui5-webcomponents-react/issues/1969) [#1968](https://github.com/SAP/ui5-webcomponents-react/issues/1968)
+
+
+
+
+
 ## [0.17.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.17.3...v0.17.4) (2021-08-10)
 
 
