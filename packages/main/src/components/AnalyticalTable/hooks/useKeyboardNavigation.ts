@@ -1,10 +1,14 @@
 import { useCallback, useRef } from 'react';
 
-const getFirstVisibleCell = (target, currentlyFocusedCell) => {
-  const firstVisibleCell = target.querySelector(`div[data-visible-column-index="0"][data-visible-row-index="1"]`);
-  firstVisibleCell.tabIndex = 0;
-  firstVisibleCell.focus();
-  currentlyFocusedCell.current = firstVisibleCell;
+const getFirstVisibleCell = (target, currentlyFocusedCell, noData) => {
+  const firstVisibleCell = noData
+    ? target.querySelector(`div[data-visible-column-index="0"][data-visible-row-index="0"]`)
+    : target.querySelector(`div[data-visible-column-index="0"][data-visible-row-index="1"]`);
+  if (firstVisibleCell) {
+    firstVisibleCell.tabIndex = 0;
+    firstVisibleCell.focus();
+    currentlyFocusedCell.current = firstVisibleCell;
+  }
 };
 
 const findParentCell = (target) => {
@@ -28,9 +32,10 @@ const setFocus = (currentlyFocusedCell, nextElement) => {
   }
 };
 
-const getTableProps = (tableProps, { instance }) => {
+const getTableProps = (tableProps, { instance: { webComponentsReactProperties, data } }) => {
   const currentlyFocusedCell = useRef<HTMLDivElement>(null);
-  const tableRef = instance.webComponentsReactProperties.tableRef;
+  const tableRef = webComponentsReactProperties.tableRef;
+  const noData = data.length === 0;
 
   const onTableBlur = useCallback(
     (e) => {
@@ -57,7 +62,7 @@ const getTableProps = (tableProps, { instance }) => {
             currentlyFocusedCell.current.tabIndex = 0;
             currentlyFocusedCell.current.focus();
           } else {
-            getFirstVisibleCell(e.target, currentlyFocusedCell);
+            getFirstVisibleCell(e.target, currentlyFocusedCell, noData);
           }
         } else if (isFirstCellAvailable) {
           const firstCell = e.target.querySelector('div[data-column-index="0"][data-row-index="0"]');
@@ -65,18 +70,18 @@ const getTableProps = (tableProps, { instance }) => {
           firstCell.focus();
           currentlyFocusedCell.current = firstCell;
         } else {
-          getFirstVisibleCell(e.target, currentlyFocusedCell);
+          getFirstVisibleCell(e.target, currentlyFocusedCell, noData);
         }
       } else {
         const tableCell = findParentCell(e.target);
         if (tableCell) {
           currentlyFocusedCell.current = tableCell;
         } else {
-          getFirstVisibleCell(tableRef.current, currentlyFocusedCell);
+          getFirstVisibleCell(tableRef.current, currentlyFocusedCell, noData);
         }
       }
     },
-    [currentlyFocusedCell.current, tableRef.current]
+    [currentlyFocusedCell.current, tableRef.current, noData]
   );
 
   const onKeyboardNavigation = useCallback(
