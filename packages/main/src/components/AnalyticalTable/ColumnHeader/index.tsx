@@ -119,7 +119,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
   const isFiltered = column.filterValue && column.filterValue.length > 0;
   const [popoverOpen, setPopoverOpen] = useState(false);
 
-  const tooltip = useMemo(() => {
+  const tooltip = (() => {
     if (headerTooltip) {
       return headerTooltip;
     }
@@ -127,9 +127,9 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
       return children;
     }
     return null;
-  }, [children, headerTooltip]);
+  })();
 
-  const textStyle = useMemo(() => {
+  const textStyle = (() => {
     let margin = 0;
 
     if (column.isSorted) margin++;
@@ -150,43 +150,37 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     return {
       marginRight: `${margin}rem`
     };
-  }, [column.isSorted, column.isGrouped, isFiltered, isRtl]);
+  })();
 
   const hasPopover = column.canGroupBy || column.canSort || column.canFilter;
 
-  const handleHeaderCellClick = useCallback(
-    (e) => {
-      onClick?.(e);
-      if (hasPopover) {
-        setPopoverOpen(true);
-      }
-    },
-    [hasPopover, onClick]
-  );
+  const handleHeaderCellClick = (e) => {
+    onClick?.(e);
+    if (hasPopover) {
+      setPopoverOpen(true);
+    }
+  };
   const directionStyles = isRtl
     ? { right: 0, transform: `translateX(-${virtualColumn.start}px)` }
     : { left: 0, transform: `translateX(${virtualColumn.start}px)` };
 
   const iconContainerDirectionStyles = isRtl ? { left: '0.5rem' } : { right: '0.5rem' };
 
-  const handleHeaderCellKeyDown = useCallback(
-    (e) => {
-      onKeyDown?.(e);
-      if (hasPopover && /*e.code === 'Space' ||*/ e.code === 'Enter') {
-        setPopoverOpen(true);
-      }
-    },
-    [hasPopover, onKeyDown]
-  );
+  const handleHeaderCellKeyDown = (e) => {
+    onKeyDown?.(e);
+    if (hasPopover && e.code === 'Enter') {
+      setPopoverOpen(true);
+    }
+    if (e.code === 'Space') {
+      e.preventDefault();
+    }
+  };
 
-  const handleHeaderCellKeyUp = useCallback(
-    (e) => {
-      if (hasPopover && e.code === 'Space') {
-        setPopoverOpen(true);
-      }
-    },
-    [hasPopover]
-  );
+  const handleHeaderCellKeyUp = (e) => {
+    if (hasPopover && e.code === 'Space') {
+      setPopoverOpen(true);
+    }
+  };
 
   const targetRef = useRef();
   if (!column) return null;

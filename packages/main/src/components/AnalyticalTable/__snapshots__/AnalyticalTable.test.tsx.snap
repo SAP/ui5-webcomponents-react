@@ -966,7 +966,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
     >
       <div
         aria-colcount="4"
-        aria-rowcount="5"
+        aria-rowcount="0"
         class="AnalyticalTable-table sapScrollBar"
         data-component-name="AnalyticalTableContainer"
         data-per-page="15"
@@ -8231,7 +8231,7 @@ exports[`AnalyticalTable render without data 1`] = `
     >
       <div
         aria-colcount="4"
-        aria-rowcount="5"
+        aria-rowcount="0"
         class="AnalyticalTable-table sapScrollBar"
         data-component-name="AnalyticalTableContainer"
         data-per-page="15"
