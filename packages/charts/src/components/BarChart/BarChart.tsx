@@ -70,9 +70,9 @@ interface MeasureConfig extends IChartMeasure {
   stackId?: string;
   /**
    * Highlight color of defined elements
-   * @param value
-   * @param measure
-   * @param dataElement
+   * @param value {string | number} Current value of the highlighted measure
+   * @param measure {IChartMeasure} Current measure object
+   * @param dataElement {object} Current data element
    */
   highlightColor?: (value: number, measure: MeasureConfig, dataElement: Record<string, any>) => CSSProperties['color'];
 }
@@ -116,7 +116,8 @@ export interface BarChartProps extends IChartBaseProps {
    * - `width`: bar width, defaults to `auto`
    * - `opacity`: bar opacity, defaults to `1`
    * - `stackId`: bars with the same stackId will be stacked
-   * - `highlightColor`: defines a custom color of a specific element. Overwrites code>color</code> of the element.
+   * - `highlightColor`: function will be called to define a custom color of a specific element which matches the
+   *    defined condition. Overwrites code>color</code> of the element.
    *
    */
   measures: MeasureConfig[];

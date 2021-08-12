@@ -232,8 +232,8 @@ import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../
         },
         {
           accessor: 'volume',
-          highlightColor: (currVal, currMeasure, currData) => {
-            if (currData.name === 'February') {
+          highlightColor: (value, measure, data) => {
+            if (data.name === 'February') {
               return 'red';
             }
           }

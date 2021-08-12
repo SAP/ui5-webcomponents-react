@@ -222,8 +222,8 @@ import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../
         {
           accessor: 'volume',
           label: 'Vol.',
-          highlightColor: (currVal) => {
-            if (currVal > 750) {
+          highlightColor: (value) => {
+            if (value > 750) {
               return 'red';
             }
           }
