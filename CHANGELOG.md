@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.131.16](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.15...v0.131.16) (2021-08-12)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** don't throw errors on empty table ([#1968](https://github.com/SAP/ui5-webcomponents-react/issues/1968)) ([f5444f6](https://github.com/SAP/ui5-webcomponents-react/commit/f5444f683bca0ab0f166966814273ec5e23828c9))
+* **DynamicPageTitle:** only render actions toolbar if necessary ([#1969](https://github.com/SAP/ui5-webcomponents-react/issues/1969)) ([212e296](https://github.com/SAP/ui5-webcomponents-react/commit/212e29661859ea5ce7b1ccb2ebc011dcdd18863f))
+
+
+
+
+
 ## [0.131.15](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.14...v0.131.15) (2021-08-11)
 
 
