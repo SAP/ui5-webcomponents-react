@@ -145,12 +145,9 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
     [setPopoverOpen]
   );
 
-  const onAfterOpen = useCallback(
-    (e) => {
-      listRef.current.children[0].focus();
-    },
-    [listRef.current]
-  );
+  const onAfterOpen = () => {
+    listRef.current?.children?.[0]?.focus();
+  };
 
   if (!open) return null;
   return createPortal(
