@@ -1,12 +1,13 @@
 import { useIsRTL, usePassThroughHtmlProps, useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
-import { enrichEventWithDetails, resolvePrimaryAndSecondaryMeasures } from '@ui5/webcomponents-react-base/dist/Utils';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { ColumnChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/ColumnChartPlaceholder';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/dist/components/ChartContainer';
 import { ChartDataLabel } from '@ui5/webcomponents-react-charts/dist/components/ChartDataLabel';
 import { XAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/XAxisTicks';
 import { YAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/YAxisTicks';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/dist/useLegendItemClick';
+import { resolvePrimaryAndSecondaryMeasures } from '@ui5/webcomponents-react-charts/dist/Utils';
 import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import {
   Bar as Column,
