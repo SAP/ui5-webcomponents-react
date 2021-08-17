@@ -1,6 +1,6 @@
 import { useConsolidatedRef, useIsRTL, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
+import { enrichEventWithDetails, resolvePrimaryAndSecondaryMeasures } from '@ui5/webcomponents-react-base/dist/Utils';
 import { BulletChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/BulletChartPlaceholder';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/dist/components/ChartContainer';
 import { ChartDataLabel } from '@ui5/webcomponents-react-charts/dist/components/ChartDataLabel';
@@ -237,52 +237,11 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
     interval: 0
   };
 
+  const isRTL = useIsRTL(chartRef);
+
   const Placeholder = useCallback(() => {
     return <BulletChartPlaceholder layout={layout} measures={measures} />;
   }, [layout, measures]);
-
-  const ComparisonLine = (comparisonProps, element) => {
-    const { x, y, width, height, index, fill } = comparisonProps;
-
-    const horizontalCalc = {
-      x1: element.width ? x + (width - element.width) / 2 - 1 : x - 3,
-      x2: element.width ? x + element.width + (width - element.width) / 2 : x + width + 3
-    };
-
-    const verticalCalc = {
-      y1: element.width ? y + (height - element.width) / 2 - 1 : y - 3,
-      y2: element.width ? y + element.width + (height - element.width) / 2 : y + height + 3
-    };
-
-    if (layout === 'horizontal') {
-      return (
-        <line
-          key={`target-${index}`}
-          x1={horizontalCalc.x1}
-          x2={horizontalCalc.x2}
-          y1={y}
-          y2={y}
-          stroke={fill}
-          strokeWidth={3}
-        />
-      );
-    }
-
-    return (
-      <line
-        key={`target-${index}`}
-        x1={x + width}
-        x2={x + width}
-        y1={verticalCalc.y1}
-        y2={verticalCalc.y2}
-        stroke={fill}
-        strokeWidth={3}
-      />
-    );
-  };
-
-  const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick', 'onClick']);
-  const isRTL = useIsRTL(chartRef);
 
   return (
     <ChartContainer
@@ -447,8 +406,6 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
           />
         )}
         {sortedMeasures?.map((element, index) => {
-          const ChartElement = Bar as any as FC<any>;
-
           const chartElementProps: any = {
             isAnimationActive: noAnimation === false
           };
@@ -472,7 +429,7 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
               chartElementProps.onClick = onDataPointClickInternal;
               chartElementProps.fill = element.color ?? 'black';
               chartElementProps.strokeWidth = element.width;
-              chartElementProps.shape = (e) => ComparisonLine(e, element);
+              chartElementProps.shape = <ComparisonLine layout={layout} />;
               chartElementProps.strokeOpacity = element.opacity;
               chartElementProps.label = false;
               chartElementProps.xAxisId = 'comparisonXAxis';
@@ -488,7 +445,7 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
           }
 
           return (
-            <ChartElement
+            <Bar
               key={element.accessor}
               name={element.label ?? element.accessor}
               label={
