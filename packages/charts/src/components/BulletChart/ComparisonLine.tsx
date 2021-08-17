@@ -8,7 +8,7 @@ interface ComparisonLine extends BarProp {
   index?: number;
   strokeWidth?: number;
   fill?: CSSProperties['fill'];
-  layout: string;
+  layout: 'vertical' | 'horizontal';
 }
 
 export const ComparisonLine = (props: ComparisonLine) => {
