@@ -104,42 +104,6 @@ import { complexBulletDataset, complexDataSet, secondaryDimensionDataSet } from 
   </Story>
 </Canvas>
 
-### With Second YAxis
-
-<Canvas>
-  <Story
-    name="With Second YAxis"
-    args={{
-      dataset: complexDataSet,
-      style: { width: '95%', height: '60vh' },
-      dimensions: [{ accessor: 'name' }],
-      measures: [
-        {
-          accessor: 'users',
-          type: 'comparison'
-        },
-        {
-          accessor: 'sessions',
-          type: 'primary',
-          formatter: (e) => '$' + e,
-          opacity: 0.6
-        },
-        {
-          accessor: 'volume',
-          type: 'primary'
-        }
-      ],
-      chartConfig: {
-        secondYAxis: {
-          dataKey: 'sessions'
-        }
-      }
-    }}
-  >
-    {(props) => <BulletChart {...props} />}
-  </Story>
-</Canvas>
-
 ### Loading Placeholder
 
 <Canvas>
