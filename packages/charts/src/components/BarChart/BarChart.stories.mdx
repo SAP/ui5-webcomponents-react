@@ -67,11 +67,11 @@ import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../
 
 ## More Examples
 
-### with custom color
+### With Custom Color
 
 <Canvas>
   <Story
-    name="with custom color"
+    name="With Custom Color"
     args={{
       dimensions: [{ accessor: 'name' }],
       measures: [{ accessor: 'users', color: 'red' }],
@@ -83,11 +83,11 @@ import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../
   </Story>
 </Canvas>
 
-### with secondary dimension
+### With Secondary Dimension
 
 <Canvas>
   <Story
-    name="With secondary dimension"
+    name="With Secondary Dimension"
     args={{
       dimensions: [{ accessor: 'name' }, { accessor: 'dimension' }],
       measures: [{ accessor: 'users', color: 'red' }],
@@ -99,11 +99,11 @@ import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../
   </Story>
 </Canvas>
 
-### with data labels
+### With Data Labels
 
 <Canvas>
   <Story
-    name="with data labels"
+    name="With Data Labels"
     args={{
       dimensions: [{ accessor: 'name' }],
       measures: [
@@ -125,11 +125,11 @@ import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../
   </Story>
 </Canvas>
 
-### with formatter
+### With Formatter
 
 <Canvas>
   <Story
-    name="with formatter"
+    name="With Formatter"
     args={{
       dataset: complexDataSet,
       dimensions: [{ accessor: 'name', formatter: (element) => element.slice(0, 3) }],
@@ -164,11 +164,11 @@ import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../
   </Story>
 </Canvas>
 
-### with reference line
+### With Reference Line
 
 <Canvas>
   <Story
-    name="with reference line"
+    name="With Reference Line"
     args={{
       dataset: complexDataSet,
       dimensions: [{ accessor: 'name' }],
@@ -207,6 +207,38 @@ import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../
           value: 650
         }
       }
+    }}
+  >
+    {(props) => <BarChart {...props} />}
+  </Story>
+</Canvas>
+
+### With Highlighted Measure
+
+<Canvas>
+  <Story
+    name="With Highlighted Measure"
+    args={{
+      dataset: complexDataSet,
+      dimensions: [{ accessor: 'name' }],
+      measures: [
+        {
+          accessor: 'users',
+          stackId: 'A'
+        },
+        {
+          accessor: 'sessions',
+          stackId: 'A'
+        },
+        {
+          accessor: 'volume',
+          highlightColor: (value, measure, data) => {
+            if (data.name === 'February') {
+              return 'red';
+            }
+          }
+        }
+      ]
     }}
   >
     {(props) => <BarChart {...props} />}
