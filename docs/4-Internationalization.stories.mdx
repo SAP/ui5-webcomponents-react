@@ -1,4 +1,5 @@
 import { Meta } from '@storybook/addon-docs';
+import { MessageStrip, MessageStripDesign } from '@ui5/webcomponents-react';
 
 <Meta title="Internationalization" />
 
@@ -25,6 +26,18 @@ That's it! You can now test whether the translations work correctly by adding e.
 ## How to add custom translations
 
 _Please also read the [UI5 Web Components i18n documentation](https://github.com/SAP/ui5-webcomponents/blob/master/docs/i18n.md)._
+
+<MessageStrip design={MessageStripDesign.Information} hideCloseButton>
+  When using custom translations, you have to enable the <code>fetchDefaultLanguage</code> option for UI5 Web
+  Components. If it is not set, your default language translations (english) will be missing. Learn more about it{' '}
+  <a
+    href="https://github.com/SAP/ui5-webcomponents/blob/master/docs/Configuration.md#fetchDefaultLanguage"
+    target="_blank"
+  >
+    here
+  </a>
+  .
+</MessageStrip>
 
 **1. Start by creating some `i18n` resources in a directory that can be served, for example:**
 

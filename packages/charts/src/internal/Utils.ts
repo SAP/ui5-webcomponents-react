@@ -1,4 +1,13 @@
+import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { IChartMeasure } from '../interfaces/IChartMeasure';
+
+export const getCellColors = (element: Record<string, any>, data: Record<string, any>, index: number): string => {
+  return (
+    element.highlightColor?.(getValueByDataKey(data, element.accessor), element, data) ??
+    element.color ??
+    `var(--sapChart_OrderedColor_${(index % 11) + 1})`
+  );
+};
 
 let canvas;
 
