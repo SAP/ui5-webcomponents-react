@@ -32,6 +32,7 @@ import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { defaultFormatter } from '../../internal/defaults';
 import { tickLineConfig, tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
+import { ComparisonLine } from './ComparisonLine';
 
 const dimensionDefaults = {
   formatter: defaultFormatter
@@ -154,25 +155,26 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
 
   const sortedMeasures = useMemo(() => {
     return measures.sort((measure) => {
-      let returnValue = 0;
-
       if (measure.type === 'comparison') {
-        returnValue += 1;
-      }
-      if (measure.type === 'primary') {
-        returnValue = returnValue - 1;
+        return 1;
       }
 
-      return returnValue;
+      if (measure.type === 'primary') {
+        return -1;
+      }
+
+      return 0;
     });
   }, [measures]);
 
   const tooltipValueFormatter = useTooltipFormatter(sortedMeasures);
 
   const primaryDimension = dimensions[0];
-  const secondaryMeasure = sortedMeasures.find((measure) => measure.accessor === chartConfig.secondYAxis?.dataKey);
-  const primaryMeasure =
-    sortedMeasures[0] === secondaryMeasure ? sortedMeasures[1] ?? sortedMeasures[0] : sortedMeasures[0];
+
+  const { primaryMeasure, secondaryMeasure } = resolvePrimaryAndSecondaryMeasures(
+    sortedMeasures,
+    chartConfig?.secondYAxis?.dataKey
+  );
 
   const labelFormatter = useLabelFormatter(primaryDimension);
 
@@ -237,6 +239,7 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
     interval: 0
   };
 
+  const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick', 'onClick']);
   const isRTL = useIsRTL(chartRef);
 
   const Placeholder = useCallback(() => {
