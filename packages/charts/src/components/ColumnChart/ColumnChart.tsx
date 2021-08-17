@@ -1,6 +1,6 @@
 import { useIsRTL, usePassThroughHtmlProps, useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
+import { enrichEventWithDetails, resolvePrimaryAndSecondaryMeasures } from '@ui5/webcomponents-react-base/dist/Utils';
 import { ColumnChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/ColumnChartPlaceholder';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/dist/components/ChartContainer';
 import { ChartDataLabel } from '@ui5/webcomponents-react-charts/dist/components/ChartDataLabel';
@@ -159,8 +159,10 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
   const [yAxisWidth, legendPosition] = useLongestYAxisLabel(dataset, measures);
 
   const primaryDimension = dimensions[0];
-  const secondaryMeasure = measures.find((measure) => measure.accessor === chartConfig.secondYAxis?.dataKey);
-  const primaryMeasure = measures[0] === secondaryMeasure ? measures[1] ?? measures[0] : measures[0];
+  const { primaryMeasure, secondaryMeasure } = resolvePrimaryAndSecondaryMeasures(
+    measures,
+    chartConfig?.secondYAxis?.dataKey
+  );
 
   const labelFormatter = useLabelFormatter(primaryDimension);
   const chartRef = useConsolidatedRef<any>(ref);
