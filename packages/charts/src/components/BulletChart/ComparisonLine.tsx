@@ -1,6 +1,6 @@
 import React, { CSSProperties } from 'react';
 
-interface ComparisonLine extends BarProp {
+interface ComparisonLine {
   x?: number;
   y?: number;
   width?: number;
