@@ -1,8 +1,6 @@
 import { useConsolidatedRef, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
-import { ColumnChart as ColumnChartLib } from '@ui5/webcomponents-react-charts/dist/ColumnChart';
 import { ColumnChartWithTrendPlaceholder } from '@ui5/webcomponents-react-charts/dist/ColumnChartWithTrendPlaceholder';
-import { LineChart as LineChartLib } from '@ui5/webcomponents-react-charts/dist/LineChart';
 import React, { CSSProperties, FC, forwardRef, Ref, useMemo } from 'react';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { usePrepareTrendMeasures } from '../../hooks/usePrepareTrendMeasures';
@@ -11,7 +9,6 @@ import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { defaultFormatter } from '../../internal/defaults';
 import { ComposedChart } from '../ComposedChart';
-import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
 
 interface MeasureConfig extends IChartMeasure {
   /**
