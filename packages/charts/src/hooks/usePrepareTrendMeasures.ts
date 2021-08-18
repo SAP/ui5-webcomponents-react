@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { IChartMeasure } from '../interfaces/IChartMeasure';
 
 interface ITrendChartMeasure extends IChartMeasure {
-  type: 'line' | 'column';
+  type: 'line' | 'bar';
 }
 
 export const usePrepareTrendMeasures = (measures: ITrendChartMeasure[]) =>
@@ -17,7 +17,7 @@ export const usePrepareTrendMeasures = (measures: ITrendChartMeasure[]) =>
           ...measure
         });
       }
-      if (measure.type === 'column') {
+      if (measure.type === 'bar') {
         columnMeasures.push({
           color: measure.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`,
           ...measure

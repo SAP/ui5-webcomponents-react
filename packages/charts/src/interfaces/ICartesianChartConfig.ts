@@ -2,6 +2,7 @@ export interface ICartesianChartConfig {
   yAxisVisible?: boolean;
   xAxisVisible?: boolean;
   yAxisTicksVisible?: boolean;
+  yAxisLabelsVisible?: boolean;
 
   gridStroke?: string;
   gridVertical?: boolean;

@@ -10,6 +10,8 @@ import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { defaultFormatter } from '../../internal/defaults';
+import { ComposedChart } from '../ComposedChart';
+import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
 
 interface MeasureConfig extends IChartMeasure {
   /**
@@ -92,7 +94,7 @@ const measureDefaults = {
   opacity: 1
 };
 
-type AvailableChartTypes = 'line' | 'column' | string;
+type AvailableChartTypes = 'line' | 'bar' | string;
 /**
  * A `ColumnChartWithTrend` is a data visualization where each category is represented by a rectangle, with the height of the rectangle being proportional to the values being plotted amd a trend line which is displayed above the column chart.
  */
@@ -151,7 +153,7 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
         {...passThroughProps}
       >
         {dataset?.length !== 0 && (
-          <LineChartLib
+          <ComposedChart
             className={
               typeof onDataPointClick === 'function' || typeof onClick === 'function' ? 'has-click-handler' : undefined
             }
@@ -170,11 +172,12 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
               xAxisVisible: false,
               yAxisVisible: false,
               yAxisTicksVisible: false,
-              gridHorizontal: false
+              gridHorizontal: false,
+              yAxisLabelsVisible: false
             }}
           />
         )}
-        <ColumnChartLib
+        <ComposedChart
           onLegendClick={onLegendClick}
           tooltipConfig={tooltipConfig}
           noAnimation={noAnimation}
