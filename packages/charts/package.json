@@ -22,7 +22,7 @@
   "dependencies": {
     "@babel/runtime": "^7.8.4",
     "react-content-loader": "6.0.3",
-    "recharts": "2.1.0"
+    "recharts": "2.0.10"
   },
   "peerDependencies": {
     "@ui5/webcomponents-react": "^0.18.0",
