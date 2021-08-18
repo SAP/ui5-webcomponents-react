@@ -63,6 +63,39 @@ import { complexBulletDataset, complexDataSet, secondaryDimensionDataSet } from 
 <ArgsTable story="Default" />
 
 <br />
+
+## Usage Notes
+
+In order to display the "Bullet" lines in the chart, you have to configure which measure should be rendered as bullet line.
+You can do this via the `measures` array:
+
+```jsx
+<BulletChart
+  data={
+    [
+      /* data */
+    ]
+  }
+  dimensions={
+    [
+      /* dimensions */
+    ]
+  }
+  measures={[
+    {
+      accessor: 'actuals',
+      label: 'Actual Revenue',
+      type: 'primary' // this will be the primary bar
+    },
+    {
+      accessor: 'target',
+      label: 'Planned Target Revenue',
+      type: 'comparison' // this will be the bullet line
+    }
+  ]}
+/>
+```
+
 <br />
 
 ## More Examples
