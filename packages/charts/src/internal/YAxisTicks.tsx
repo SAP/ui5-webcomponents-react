@@ -9,10 +9,13 @@ interface YAxisTicksProps {
   y?: number;
   payload?: any;
   config: IChartMeasure;
+  secondYAxisConfig?: {
+    color: string;
+  };
 }
 
 export const YAxisTicks: FC<YAxisTicksProps> = (props: YAxisTicksProps) => {
-  const { x, y, payload, config } = props;
+  const { x, y, payload, config, secondYAxisConfig } = props;
 
   const formattedValue = config.formatter(payload.value);
   let textToDisplay = formattedValue;
@@ -27,7 +30,10 @@ export const YAxisTicks: FC<YAxisTicksProps> = (props: YAxisTicksProps) => {
 
   return (
     <g transform={`translate(${x},${y + 3})`}>
-      <text fill={ThemingParameters.sapContent_LabelColor} textAnchor="end">
+      <text
+        fill={secondYAxisConfig?.color ?? ThemingParameters.sapContent_LabelColor}
+        textAnchor={secondYAxisConfig ? 'start' : 'end'}
+      >
         {textToDisplay}
       </text>
     </g>

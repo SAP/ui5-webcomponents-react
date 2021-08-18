@@ -1,4 +1,5 @@
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
+import { IChartMeasure } from '../interfaces/IChartMeasure';
 
 export const getCellColors = (element: Record<string, any>, data: Record<string, any>, index: number): string => {
   return (
@@ -25,4 +26,14 @@ export const truncateLongLabel = (value: string, length = 13) => {
     return `${value.slice(0, length - 2)}...`;
   }
   return value;
+};
+
+export const resolvePrimaryAndSecondaryMeasures = (measures: IChartMeasure[], secondaryAxisDataKey: string) => {
+  const secondaryMeasure = measures.find((measure) => measure.accessor === secondaryAxisDataKey);
+  const primaryMeasure = measures[0] === secondaryMeasure ? measures[1] ?? measures[0] : measures[0];
+
+  return {
+    primaryMeasure,
+    secondaryMeasure
+  };
 };

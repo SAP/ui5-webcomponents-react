@@ -4,6 +4,7 @@ import { fireEvent, screen } from '@shared/tests/index';
 
 enum ChartQuery {
   'BarChart' = 'g.recharts-bar',
+  'BulletChart' = 'g.recharts-bar',
   'ColumnChart' = 'g.recharts-bar',
   'ComposedChart' = 'g.recharts-bar',
   'DonutChart' = 'g.recharts-pie',
@@ -17,6 +18,7 @@ enum ChartQuery {
 
 enum ChartChildrenQuery {
   'BarChart' = 'g.recharts-bar-rectangles',
+  'BulletChart' = 'g.recharts-bar-rectangles',
   'ColumnChart' = 'g.recharts-bar-rectangles',
   'ComposedChart' = 'g.recharts-bar-rectangles',
   'DonutChart' = 'g.recharts-pie-sector',
