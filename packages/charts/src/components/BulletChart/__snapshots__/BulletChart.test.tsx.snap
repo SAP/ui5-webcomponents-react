@@ -714,7 +714,7 @@ exports[`BulletChart Check onClick events 1`] = `
                   class="recharts-layer recharts-bar-rectangle"
                 >
                   <line
-                    stroke="var(--sapChart_OrderedColor_2)"
+                    stroke="black"
                     stroke-width="3"
                     x1="20.90833333333333"
                     x2="49.90833333333333"
@@ -726,7 +726,7 @@ exports[`BulletChart Check onClick events 1`] = `
                   class="recharts-layer recharts-bar-rectangle"
                 >
                   <line
-                    stroke="var(--sapChart_OrderedColor_2)"
+                    stroke="black"
                     stroke-width="3"
                     x1="49.99166666666666"
                     x2="78.99166666666666"
@@ -738,7 +738,7 @@ exports[`BulletChart Check onClick events 1`] = `
                   class="recharts-layer recharts-bar-rectangle"
                 >
                   <line
-                    stroke="var(--sapChart_OrderedColor_2)"
+                    stroke="black"
                     stroke-width="3"
                     x1="79.07499999999999"
                     x2="108.07499999999999"
@@ -750,7 +750,7 @@ exports[`BulletChart Check onClick events 1`] = `
                   class="recharts-layer recharts-bar-rectangle"
                 >
                   <line
-                    stroke="var(--sapChart_OrderedColor_2)"
+                    stroke="black"
                     stroke-width="3"
                     x1="108.15833333333333"
                     x2="137.15833333333333"
@@ -762,7 +762,7 @@ exports[`BulletChart Check onClick events 1`] = `
                   class="recharts-layer recharts-bar-rectangle"
                 >
                   <line
-                    stroke="var(--sapChart_OrderedColor_2)"
+                    stroke="black"
                     stroke-width="3"
                     x1="137.24166666666665"
                     x2="166.24166666666665"
@@ -774,7 +774,7 @@ exports[`BulletChart Check onClick events 1`] = `
                   class="recharts-layer recharts-bar-rectangle"
                 >
                   <line
-                    stroke="var(--sapChart_OrderedColor_2)"
+                    stroke="black"
                     stroke-width="3"
                     x1="166.325"
                     x2="195.325"
@@ -786,7 +786,7 @@ exports[`BulletChart Check onClick events 1`] = `
                   class="recharts-layer recharts-bar-rectangle"
                 >
                   <line
-                    stroke="var(--sapChart_OrderedColor_2)"
+                    stroke="black"
                     stroke-width="3"
                     x1="195.40833333333333"
                     x2="224.40833333333333"
@@ -798,7 +798,7 @@ exports[`BulletChart Check onClick events 1`] = `
                   class="recharts-layer recharts-bar-rectangle"
                 >
                   <line
-                    stroke="var(--sapChart_OrderedColor_2)"
+                    stroke="black"
                     stroke-width="3"
                     x1="224.49166666666665"
                     x2="253.49166666666665"
@@ -810,7 +810,7 @@ exports[`BulletChart Check onClick events 1`] = `
                   class="recharts-layer recharts-bar-rectangle"
                 >
                   <line
-                    stroke="var(--sapChart_OrderedColor_2)"
+                    stroke="black"
                     stroke-width="3"
                     x1="253.575"
                     x2="282.575"
@@ -822,7 +822,7 @@ exports[`BulletChart Check onClick events 1`] = `
                   class="recharts-layer recharts-bar-rectangle"
                 >
                   <line
-                    stroke="var(--sapChart_OrderedColor_2)"
+                    stroke="black"
                     stroke-width="3"
                     x1="282.65833333333336"
                     x2="311.65833333333336"
@@ -834,7 +834,7 @@ exports[`BulletChart Check onClick events 1`] = `
                   class="recharts-layer recharts-bar-rectangle"
                 >
                   <line
-                    stroke="var(--sapChart_OrderedColor_2)"
+                    stroke="black"
                     stroke-width="3"
                     x1="311.7416666666667"
                     x2="340.7416666666667"
@@ -846,7 +846,7 @@ exports[`BulletChart Check onClick events 1`] = `
                   class="recharts-layer recharts-bar-rectangle"
                 >
                   <line
-                    stroke="var(--sapChart_OrderedColor_2)"
+                    stroke="black"
                     stroke-width="3"
                     x1="340.825"
                     x2="369.825"
@@ -1813,7 +1813,7 @@ exports[`BulletChart Render chart with data 1`] = `
                   class="recharts-layer recharts-bar-rectangle"
                 >
                   <line
-                    stroke="var(--sapChart_OrderedColor_2)"
+                    stroke="black"
                     stroke-width="3"
                     x1="20.90833333333333"
                     x2="49.90833333333333"
@@ -1825,7 +1825,7 @@ exports[`BulletChart Render chart with data 1`] = `
                   class="recharts-layer recharts-bar-rectangle"
                 >
                   <line
-                    stroke="var(--sapChart_OrderedColor_2)"
+                    stroke="black"
                     stroke-width="3"
                     x1="49.99166666666666"
                     x2="78.99166666666666"
@@ -1837,7 +1837,7 @@ exports[`BulletChart Render chart with data 1`] = `
                   class="recharts-layer recharts-bar-rectangle"
                 >
                   <line
-                    stroke="var(--sapChart_OrderedColor_2)"
+                    stroke="black"
                     stroke-width="3"
                     x1="79.07499999999999"
                     x2="108.07499999999999"
@@ -1849,7 +1849,7 @@ exports[`BulletChart Render chart with data 1`] = `
                   class="recharts-layer recharts-bar-rectangle"
                 >
                   <line
-                    stroke="var(--sapChart_OrderedColor_2)"
+                    stroke="black"
                     stroke-width="3"
                     x1="108.15833333333333"
                     x2="137.15833333333333"
@@ -1861,7 +1861,7 @@ exports[`BulletChart Render chart with data 1`] = `
                   class="recharts-layer recharts-bar-rectangle"
                 >
                   <line
-                    stroke="var(--sapChart_OrderedColor_2)"
+                    stroke="black"
                     stroke-width="3"
                     x1="137.24166666666665"
                     x2="166.24166666666665"
@@ -1873,7 +1873,7 @@ exports[`BulletChart Render chart with data 1`] = `
                   class="recharts-layer recharts-bar-rectangle"
                 >
                   <line
-                    stroke="var(--sapChart_OrderedColor_2)"
+                    stroke="black"
                     stroke-width="3"
                     x1="166.325"
                     x2="195.325"
@@ -1885,7 +1885,7 @@ exports[`BulletChart Render chart with data 1`] = `
                   class="recharts-layer recharts-bar-rectangle"
                 >
                   <line
-                    stroke="var(--sapChart_OrderedColor_2)"
+                    stroke="black"
                     stroke-width="3"
                     x1="195.40833333333333"
                     x2="224.40833333333333"
@@ -1897,7 +1897,7 @@ exports[`BulletChart Render chart with data 1`] = `
                   class="recharts-layer recharts-bar-rectangle"
                 >
                   <line
-                    stroke="var(--sapChart_OrderedColor_2)"
+                    stroke="black"
                     stroke-width="3"
                     x1="224.49166666666665"
                     x2="253.49166666666665"
@@ -1909,7 +1909,7 @@ exports[`BulletChart Render chart with data 1`] = `
                   class="recharts-layer recharts-bar-rectangle"
                 >
                   <line
-                    stroke="var(--sapChart_OrderedColor_2)"
+                    stroke="black"
                     stroke-width="3"
                     x1="253.575"
                     x2="282.575"
@@ -1921,7 +1921,7 @@ exports[`BulletChart Render chart with data 1`] = `
                   class="recharts-layer recharts-bar-rectangle"
                 >
                   <line
-                    stroke="var(--sapChart_OrderedColor_2)"
+                    stroke="black"
                     stroke-width="3"
                     x1="282.65833333333336"
                     x2="311.65833333333336"
@@ -1933,7 +1933,7 @@ exports[`BulletChart Render chart with data 1`] = `
                   class="recharts-layer recharts-bar-rectangle"
                 >
                   <line
-                    stroke="var(--sapChart_OrderedColor_2)"
+                    stroke="black"
                     stroke-width="3"
                     x1="311.7416666666667"
                     x2="340.7416666666667"
@@ -1945,7 +1945,7 @@ exports[`BulletChart Render chart with data 1`] = `
                   class="recharts-layer recharts-bar-rectangle"
                 >
                   <line
-                    stroke="var(--sapChart_OrderedColor_2)"
+                    stroke="black"
                     stroke-width="3"
                     x1="340.825"
                     x2="369.825"
@@ -2825,7 +2825,7 @@ exports[`BulletChart onLegendClick should not crash when invalid handler is prov
                   class="recharts-layer recharts-bar-rectangle"
                 >
                   <line
-                    stroke="var(--sapChart_OrderedColor_2)"
+                    stroke="black"
                     stroke-width="3"
                     x1="20.90833333333333"
                     x2="49.90833333333333"
@@ -2837,7 +2837,7 @@ exports[`BulletChart onLegendClick should not crash when invalid handler is prov
                   class="recharts-layer recharts-bar-rectangle"
                 >
                   <line
-                    stroke="var(--sapChart_OrderedColor_2)"
+                    stroke="black"
                     stroke-width="3"
                     x1="49.99166666666666"
                     x2="78.99166666666666"
@@ -2849,7 +2849,7 @@ exports[`BulletChart onLegendClick should not crash when invalid handler is prov
                   class="recharts-layer recharts-bar-rectangle"
                 >
                   <line
-                    stroke="var(--sapChart_OrderedColor_2)"
+                    stroke="black"
                     stroke-width="3"
                     x1="79.07499999999999"
                     x2="108.07499999999999"
@@ -2861,7 +2861,7 @@ exports[`BulletChart onLegendClick should not crash when invalid handler is prov
                   class="recharts-layer recharts-bar-rectangle"
                 >
                   <line
-                    stroke="var(--sapChart_OrderedColor_2)"
+                    stroke="black"
                     stroke-width="3"
                     x1="108.15833333333333"
                     x2="137.15833333333333"
@@ -2873,7 +2873,7 @@ exports[`BulletChart onLegendClick should not crash when invalid handler is prov
                   class="recharts-layer recharts-bar-rectangle"
                 >
                   <line
-                    stroke="var(--sapChart_OrderedColor_2)"
+                    stroke="black"
                     stroke-width="3"
                     x1="137.24166666666665"
                     x2="166.24166666666665"
@@ -2885,7 +2885,7 @@ exports[`BulletChart onLegendClick should not crash when invalid handler is prov
                   class="recharts-layer recharts-bar-rectangle"
                 >
                   <line
-                    stroke="var(--sapChart_OrderedColor_2)"
+                    stroke="black"
                     stroke-width="3"
                     x1="166.325"
                     x2="195.325"
@@ -2897,7 +2897,7 @@ exports[`BulletChart onLegendClick should not crash when invalid handler is prov
                   class="recharts-layer recharts-bar-rectangle"
                 >
                   <line
-                    stroke="var(--sapChart_OrderedColor_2)"
+                    stroke="black"
                     stroke-width="3"
                     x1="195.40833333333333"
                     x2="224.40833333333333"
@@ -2909,7 +2909,7 @@ exports[`BulletChart onLegendClick should not crash when invalid handler is prov
                   class="recharts-layer recharts-bar-rectangle"
                 >
                   <line
-                    stroke="var(--sapChart_OrderedColor_2)"
+                    stroke="black"
                     stroke-width="3"
                     x1="224.49166666666665"
                     x2="253.49166666666665"
@@ -2921,7 +2921,7 @@ exports[`BulletChart onLegendClick should not crash when invalid handler is prov
                   class="recharts-layer recharts-bar-rectangle"
                 >
                   <line
-                    stroke="var(--sapChart_OrderedColor_2)"
+                    stroke="black"
                     stroke-width="3"
                     x1="253.575"
                     x2="282.575"
@@ -2933,7 +2933,7 @@ exports[`BulletChart onLegendClick should not crash when invalid handler is prov
                   class="recharts-layer recharts-bar-rectangle"
                 >
                   <line
-                    stroke="var(--sapChart_OrderedColor_2)"
+                    stroke="black"
                     stroke-width="3"
                     x1="282.65833333333336"
                     x2="311.65833333333336"
@@ -2945,7 +2945,7 @@ exports[`BulletChart onLegendClick should not crash when invalid handler is prov
                   class="recharts-layer recharts-bar-rectangle"
                 >
                   <line
-                    stroke="var(--sapChart_OrderedColor_2)"
+                    stroke="black"
                     stroke-width="3"
                     x1="311.7416666666667"
                     x2="340.7416666666667"
@@ -2957,7 +2957,7 @@ exports[`BulletChart onLegendClick should not crash when invalid handler is prov
                   class="recharts-layer recharts-bar-rectangle"
                 >
                   <line
-                    stroke="var(--sapChart_OrderedColor_2)"
+                    stroke="black"
                     stroke-width="3"
                     x1="340.825"
                     x2="369.825"

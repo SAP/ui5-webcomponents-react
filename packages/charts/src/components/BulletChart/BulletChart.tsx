@@ -104,6 +104,7 @@ export interface BulletChartProps extends IChartBaseProps {
    * - `width`: width of the current chart element, defaults to `1` for `lines` and `20` for bars
    * - `opacity`: element opacity, defaults to `1`
    * - `highlightColor`: function will be called to define a custom color of a specific element which matches the
+   *    defined condition. Overwrites code>color</code> of the element.
    *
    */
   measures: MeasureConfig[];

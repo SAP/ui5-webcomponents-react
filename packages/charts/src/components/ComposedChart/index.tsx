@@ -111,6 +111,7 @@ export interface ComposedChartProps extends IChartBaseProps {
    * - `opacity`: element opacity, defaults to `1`
    * - `stackId`: bars with the same stackId will be stacked
    * - `highlightColor`: function will be called to define a custom color of a specific element which matches the
+   *    defined condition. Overwrites code>color</code> of the element.
    *
    */
   measures: MeasureConfig[];
