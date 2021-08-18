@@ -1,15 +1,15 @@
-import { createUseStyles } from 'react-jss';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Label } from '@ui5/webcomponents-react/dist/Label';
 import { Loader } from '@ui5/webcomponents-react/dist/Loader';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import React, { ComponentType, CSSProperties, FC, forwardRef, ReactElement, ReactNode, Ref, useMemo } from 'react';
+import { createUseStyles } from 'react-jss';
 import { ResponsiveContainer } from 'recharts';
 
 export interface ContainerProps extends CommonProps {
   children: ReactElement;
-  Placeholder?: ComponentType<unknown>;
+  Placeholder?: ComponentType;
   dataset: unknown[];
   loading?: boolean;
   resizeDebounce: number;

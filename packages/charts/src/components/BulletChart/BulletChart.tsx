@@ -1,15 +1,15 @@
-import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { useConsolidatedRef, useIsRTL, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
+import { BulletChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/BulletChartPlaceholder';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/dist/components/ChartContainer';
 import { ChartDataLabel } from '@ui5/webcomponents-react-charts/dist/components/ChartDataLabel';
-import { ComposedChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/ComposedChartPlaceholder';
 import { XAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/XAxisTicks';
 import { YAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/YAxisTicks';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/dist/useLegendItemClick';
+import { getCellColors, resolvePrimaryAndSecondaryMeasures } from '@ui5/webcomponents-react-charts/dist/Utils';
 import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import {
-  Area,
   Bar,
   Brush,
   CartesianGrid,
@@ -17,7 +17,6 @@ import {
   ComposedChart as ComposedChartLib,
   Label,
   Legend,
-  Line,
   ReferenceLine,
   Tooltip,
   XAxis,
@@ -35,7 +34,7 @@ import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { defaultFormatter } from '../../internal/defaults';
 import { tickLineConfig, tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
-import { getCellColors } from '../../internal/Utils';
+import { ComparisonLine } from './ComparisonLine';
 
 const dimensionDefaults = {
   formatter: defaultFormatter
@@ -61,11 +60,6 @@ interface MeasureConfig extends IChartMeasure {
    */
   type: AvailableChartTypes;
   /**
-   * bar Stack ID
-   * @default undefined
-   */
-  stackId?: string;
-  /**
    * Highlight color of defined elements
    * @param value {string | number} Current value of the highlighted measure
    * @param measure {IChartMeasure} Current measure object
@@ -78,7 +72,7 @@ interface DimensionConfig extends IChartDimension {
   interval?: number;
 }
 
-export interface ComposedChartProps extends IChartBaseProps {
+export interface BulletChartProps extends IChartBaseProps {
   /**
    * An array of config objects. Each object will define one dimension of the chart.
    *
@@ -98,7 +92,7 @@ export interface ComposedChartProps extends IChartBaseProps {
    * #### Required properties
    * - `accessor`: string containing the path to the dataset key this element should display. Supports object structures by using <code>'parent.child'</code>.
    *   Can also be a getter.
-   * - `type`: string which chart element to show. Possible values: `line`, `bar`, `area`.
+   * - `type`: string which chart element (value type) to show. Possible values: `primary`, `comparison`, `additional`.
    *
    * #### Optional properties
    *
@@ -109,7 +103,6 @@ export interface ComposedChartProps extends IChartBaseProps {
    * - `DataLabel`: a custom component to be used for the data label
    * - `width`: width of the current chart element, defaults to `1` for `lines` and `20` for bars
    * - `opacity`: element opacity, defaults to `1`
-   * - `stackId`: bars with the same stackId will be stacked
    * - `highlightColor`: function will be called to define a custom color of a specific element which matches the
    *    defined condition. Overwrites code>color</code> of the element.
    *
@@ -122,18 +115,13 @@ export interface ComposedChartProps extends IChartBaseProps {
   layout?: 'horizontal' | 'vertical';
 }
 
-const ChartTypes = {
-  line: Line,
-  bar: Bar,
-  area: Area
-};
-
-type AvailableChartTypes = 'line' | 'bar' | 'area' | string;
+type AvailableChartTypes = 'primary' | 'comparison' | 'additional' | string;
 
 /**
- * The `ComposedChart` enables you to combine different chart types in one chart, e.g. showing bars together with lines.
+ * The `BulletChart` is used to compare primary and secondary (comparison) values. The primary and additional values
+ * are rendered as a stacked Bar Chart while the comparison value is displayed as a line above.
  */
-const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartProps, ref: Ref<HTMLDivElement>) => {
+const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, ref: Ref<HTMLDivElement>) => {
   const {
     loading,
     dataset,
@@ -176,14 +164,32 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     measureDefaults
   );
 
-  const tooltipValueFormatter = useTooltipFormatter(measures);
+  const sortedMeasures = useMemo(() => {
+    return measures.sort((measure) => {
+      if (measure.type === 'comparison') {
+        return 1;
+      }
+
+      if (measure.type === 'primary') {
+        return -1;
+      }
+
+      return 0;
+    });
+  }, [measures]);
+
+  const tooltipValueFormatter = useTooltipFormatter(sortedMeasures);
 
   const primaryDimension = dimensions[0];
-  const primaryMeasure = measures[0];
+
+  const { primaryMeasure, secondaryMeasure } = resolvePrimaryAndSecondaryMeasures(
+    sortedMeasures,
+    chartConfig?.secondYAxis?.dataKey
+  );
 
   const labelFormatter = useLabelFormatter(primaryDimension);
 
-  const dataKeys = measures.map(({ accessor }) => accessor);
+  const dataKeys = sortedMeasures.map(({ accessor }) => accessor);
   const colorSecondY = chartConfig.secondYAxis
     ? dataKeys.findIndex((key) => key === chartConfig.secondYAxis?.dataKey)
     : 0;
@@ -229,7 +235,10 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
   const isBigDataSet = dataset?.length > 30 ?? false;
   const primaryDimensionAccessor = primaryDimension?.accessor;
 
-  const [yAxisWidth, legendPosition] = useLongestYAxisLabel(dataset, layout === 'vertical' ? dimensions : measures);
+  const [yAxisWidth, legendPosition] = useLongestYAxisLabel(
+    dataset,
+    layout === 'vertical' ? dimensions : sortedMeasures
+  );
 
   const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
   const xAxisHeights = useObserveXAxisHeights(chartRef, layout === 'vertical' ? 1 : props.dimensions.length);
@@ -241,12 +250,12 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     interval: 0
   };
 
-  const Placeholder = useCallback(() => {
-    return <ComposedChartPlaceholder layout={layout} measures={measures} />;
-  }, [layout, measures]);
-
   const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick', 'onClick']);
   const isRTL = useIsRTL(chartRef);
+
+  const Placeholder = useCallback(() => {
+    return <BulletChartPlaceholder layout={layout} measures={measures} />;
+  }, [layout, measures]);
 
   return (
     <ChartContainer
@@ -324,17 +333,20 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
             tick={<XAxisTicks config={primaryMeasure} />}
           />
         )}
-
         {chartConfig.secondYAxis?.dataKey && layout === 'horizontal' && (
           <YAxis
             dataKey={chartConfig.secondYAxis.dataKey}
             axisLine={{
               stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
             }}
-            tick={{
-              direction: 'ltr',
-              fill: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
-            }}
+            tick={
+              <YAxisTicks
+                config={secondaryMeasure}
+                secondYAxisConfig={{
+                  color: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
+                }}
+              />
+            }
             tickLine={{
               stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
             }}
@@ -357,7 +369,14 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
             axisLine={{
               stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
             }}
-            tick={{ fill: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})` }}
+            tick={
+              <XAxisTicks
+                config={secondaryMeasure}
+                secondYAxisConfig={{
+                  color: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
+                }}
+              />
+            }
             tickLine={{
               stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
             }}
@@ -370,6 +389,8 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
             type="number"
           />
         )}
+        {layout === 'horizontal' && <XAxis xAxisId={'comparisonXAxis'} hide />}
+        {layout === 'vertical' && <YAxis yAxisId={'comparisonYAxis'} type={'category'} hide />}
         {chartConfig.referenceLine && (
           <ReferenceLine
             stroke={chartConfig.referenceLine.color}
@@ -398,29 +419,19 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
             wrapperStyle={legendPosition}
           />
         )}
-        {measures?.map((element, index) => {
-          const ChartElement = ChartTypes[element.type] as any as FC<any>;
-
+        {sortedMeasures?.map((element, index) => {
           const chartElementProps: any = {
             isAnimationActive: noAnimation === false
           };
           let labelPosition = 'top';
-
           switch (element.type) {
-            case 'line':
-              chartElementProps.activeDot = {
-                onClick: onDataPointClickInternal
-              };
-              chartElementProps.strokeWidth = element.width;
-              chartElementProps.strokeOpacity = element.opacity;
-              chartElementProps.dot = !isBigDataSet;
-              break;
-            case 'bar':
+            case 'primary':
+            case 'additional':
               chartElementProps.fillOpacity = element.opacity;
               chartElementProps.strokeOpacity = element.opacity;
               chartElementProps.barSize = element.width;
               chartElementProps.onClick = onDataPointClickInternal;
-              chartElementProps.stackId = element.stackId ?? undefined;
+              chartElementProps.stackId = 'A';
               chartElementProps.labelPosition = element.stackId ? 'insideTop' : 'top';
               if (layout === 'vertical') {
                 labelPosition = 'insideRight';
@@ -428,12 +439,16 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
                 labelPosition = 'insideTop';
               }
               break;
-            case 'area':
-              chartElementProps.dot = !isBigDataSet;
-              chartElementProps.fillOpacity = 0.3;
-              chartElementProps.strokeOpacity = element.opacity;
+            case 'comparison':
               chartElementProps.onClick = onDataPointClickInternal;
+              chartElementProps.fill = element.color ?? 'black';
               chartElementProps.strokeWidth = element.width;
+              chartElementProps.shape = <ComparisonLine layout={layout} />;
+              chartElementProps.strokeOpacity = element.opacity;
+              chartElementProps.label = false;
+              chartElementProps.xAxisId = 'comparisonXAxis';
+              chartElementProps.yAxisId = 'comparisonYAxis';
+              chartElementProps.dot = !isBigDataSet;
               break;
           }
 
@@ -442,14 +457,13 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
           } else {
             chartElementProps.yAxisId = chartConfig.secondYAxis?.dataKey === element.accessor ? 'secondary' : 'primary';
           }
+
           return (
-            <ChartElement
+            <Bar
               key={element.accessor}
               name={element.label ?? element.accessor}
               label={
-                isBigDataSet ? null : (
-                  <ChartDataLabel config={element} chartType={element.type} position={labelPosition} />
-                )
+                isBigDataSet ? null : <ChartDataLabel config={element} chartType={'bar'} position={labelPosition} />
               }
               stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
               fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
@@ -457,7 +471,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               dataKey={element.accessor}
               {...chartElementProps}
             >
-              {element.type === 'bar' &&
+              {element.type !== 'comparison' &&
                 dataset.map((data, i) => {
                   return (
                     <Cell
@@ -467,7 +481,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
                     />
                   );
                 })}
-            </ChartElement>
+            </Bar>
           );
         })}
         {chartConfig.zoomingTool && (
@@ -486,12 +500,12 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
   );
 });
 
-ComposedChart.defaultProps = {
+BulletChart.defaultProps = {
   noLegend: false,
   noAnimation: false,
   layout: 'horizontal'
 };
 
-ComposedChart.displayName = 'ComposedChart';
+BulletChart.displayName = 'BulletChart';
 
-export { ComposedChart };
+export { BulletChart };

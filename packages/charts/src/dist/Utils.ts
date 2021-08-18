@@ -1,3 +1,3 @@
-import { getTextWidth, truncateLongLabel, getCellColors } from '../internal/Utils';
+import { getTextWidth, truncateLongLabel, getCellColors, resolvePrimaryAndSecondaryMeasures } from '../internal/Utils';
 
-export { truncateLongLabel, getTextWidth, getCellColors };
+export { truncateLongLabel, getTextWidth, getCellColors, resolvePrimaryAndSecondaryMeasures };
