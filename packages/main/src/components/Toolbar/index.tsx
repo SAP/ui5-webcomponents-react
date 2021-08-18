@@ -38,12 +38,12 @@ export interface ToolbarPropTypes extends Omit<CommonProps, 'onClick'> {
    * Defines the visual style of the `Toolbar`.<br />
    * <b>Note:</b> The visual styles are theme-dependent.
    */
-  toolbarStyle?: ToolbarStyle;
+  toolbarStyle?: ToolbarStyle | keyof typeof ToolbarStyle;
   /**
    * Defines the `Toolbar` design.<br />
    * <b>Note:</b> Design settings are theme-dependent.
    */
-  design?: ToolbarDesign;
+  design?: ToolbarDesign | keyof typeof ToolbarDesign;
   /**
    * Indicates that the whole `Toolbar` is clickable. The Press event is fired only if `active` is set to true.
    */

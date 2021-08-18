@@ -120,7 +120,7 @@ export interface ObjectPagePropTypes extends CommonProps {
    * - "Default": All `ObjectPageSections` and `ObjectPageSubSections` are displayed on one page. Selecting tabs will scroll to the corresponding section.
    * - "IconTabBar": All `ObjectPageSections` are displayed on separate pages. Selecting tabs will lead to the corresponding page.
    */
-  mode?: ObjectPageMode;
+  mode?: ObjectPageMode | keyof typeof ObjectPageMode;
   /**
    * Defines whether the pin button of the header is displayed.
    */
