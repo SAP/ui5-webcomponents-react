@@ -470,15 +470,16 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
               dataKey={element.accessor}
               {...chartElementProps}
             >
-              {dataset.map((data, i) => {
-                return (
-                  <Cell
-                    key={i}
-                    fill={getCellColors(element, data, index)}
-                    stroke={getCellColors(element, data, index)}
-                  />
-                );
-              })}
+              {element.type !== 'comparison' &&
+                dataset.map((data, i) => {
+                  return (
+                    <Cell
+                      key={i}
+                      fill={getCellColors(element, data, index)}
+                      stroke={getCellColors(element, data, index)}
+                    />
+                  );
+                })}
             </Bar>
           );
         })}
