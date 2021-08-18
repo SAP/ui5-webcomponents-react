@@ -31,7 +31,7 @@ export interface TabContainerPropTypes extends CommonProps {
    * *   `Standard`
    * *   `Inline`
    */
-  tabLayout?: TabLayout;
+  tabLayout?: TabLayout | keyof typeof TabLayout;
   /**
    * Defines the tabs.
    *

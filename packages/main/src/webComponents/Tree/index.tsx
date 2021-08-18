@@ -30,7 +30,7 @@ export interface TreePropTypes extends CommonProps {
    * *   `MultiSelect`
    * *   `Delete`
    */
-  mode?: ListMode;
+  mode?: ListMode | keyof typeof ListMode;
   /**
    * Defines the text that is displayed when the component contains no items.
    */

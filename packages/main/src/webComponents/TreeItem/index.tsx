@@ -15,7 +15,7 @@ export interface TreeItemPropTypes extends CommonProps {
    * Defines the state of the `additionalText`.
    * Available options are: `"None"` (by default), `"Success"`, `"Warning"`, `"Information"` and `"Erorr"`.
    */
-  additionalTextState?: ValueState;
+  additionalTextState?: ValueState | keyof typeof ValueState;
   /**
    * Defines whether the tree node is expanded or collapsed. Only has visual effect for tree nodes with children.
    */

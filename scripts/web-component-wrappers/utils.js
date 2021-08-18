@@ -147,7 +147,8 @@ export const getTypeDefinitionForProperty = (property, interfaces) => {
     case 'WrappingType':
       return {
         importStatement: `import { ${property.type} } from '@ui5/webcomponents-react/dist/${property.type}';`,
-        tsType: `${property.type}`,
+        tsType: `${property.type} | keyof typeof ${property.type}`,
+        enum: `${property.type}`,
         isEnum: true
       };
     default:

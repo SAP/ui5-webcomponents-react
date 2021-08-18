@@ -23,7 +23,7 @@ export interface UploadCollectionPropTypes extends Omit<CommonProps, 'onDrop'> {
    * *   `MultiSelect`
    * *   `Delete`
    */
-  mode?: ListMode;
+  mode?: ListMode | keyof typeof ListMode;
   /**
    * Allows you to set your own text for the 'No data' description.
    */

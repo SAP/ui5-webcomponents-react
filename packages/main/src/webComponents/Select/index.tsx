@@ -44,7 +44,7 @@ export interface SelectPropTypes extends Omit<CommonProps, 'onChange'> {
    * *   `Success`
    * *   `Information`
    */
-  valueState?: ValueState;
+  valueState?: ValueState | keyof typeof ValueState;
   /**
    * Defines the component options.
    *

@@ -44,7 +44,7 @@ export interface FlexibleColumnLayoutPropTypes extends CommonProps {
    *
    * **For example:** layout=`TwoColumnsStartExpanded` means the layout will display up to two columns in 67%/33% proportion.
    */
-  layout?: FCLLayout;
+  layout?: FCLLayout | keyof typeof FCLLayout;
   /**
    * Defines the content in the end column.
    *
@@ -73,7 +73,7 @@ export interface FlexibleColumnLayoutPropTypes extends CommonProps {
     event: Ui5CustomEvent<
       HTMLElement,
       {
-        layout: FCLLayout;
+        layout: FCLLayout | keyof typeof FCLLayout;
         columnLayout: unknown[];
         startColumnVisible: boolean;
         midColumnVisible: boolean;

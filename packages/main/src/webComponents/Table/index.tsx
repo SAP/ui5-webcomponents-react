@@ -27,7 +27,7 @@ export interface TablePropTypes extends CommonProps {
    *
    * **Limitations:** `growing="Scroll"` is not supported for Internet Explorer, and the component will fallback to `growing="Button"`.
    */
-  growing?: TableGrowingMode;
+  growing?: TableGrowingMode | keyof typeof TableGrowingMode;
   /**
    * Defines the subtext that will be displayed under the `growingButtonText`.
    *
@@ -54,7 +54,7 @@ export interface TablePropTypes extends CommonProps {
    * *   `SingleSelect`
    * *   `None`
    */
-  mode?: TableMode;
+  mode?: TableMode | keyof typeof TableMode;
   /**
    * Defines the text that will be displayed when there is no data and `hideNoData` is not present.
    */

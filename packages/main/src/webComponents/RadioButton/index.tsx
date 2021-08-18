@@ -55,7 +55,7 @@ export interface RadioButtonPropTypes extends Omit<CommonProps, 'onChange'> {
    * *   `Error`
    * *   `Warning`
    */
-  valueState?: ValueState;
+  valueState?: ValueState | keyof typeof ValueState;
   /**
    * Defines whether the component text wraps when there is not enough space.
    *
@@ -64,7 +64,7 @@ export interface RadioButtonPropTypes extends Omit<CommonProps, 'onChange'> {
    * *   `None` - The text will be truncated with an ellipsis.
    * *   `Normal` - The text will wrap. The words will not be broken based on hyphenation.
    */
-  wrappingType?: WrappingType;
+  wrappingType?: WrappingType | keyof typeof WrappingType;
   /**
    * Fired when the component checked state changes.
    */

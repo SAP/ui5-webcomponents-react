@@ -16,7 +16,7 @@ export interface CustomListItemPropTypes extends CommonProps {
    *
    * **Note:** When set to `Active`, the item will provide visual response upon press and hover, while with type `Inactive` and `Detail` - will not.
    */
-  type?: ListItemType;
+  type?: ListItemType | keyof typeof ListItemType;
   /**
    * Defines the selected state of the `ListItem`.
    */

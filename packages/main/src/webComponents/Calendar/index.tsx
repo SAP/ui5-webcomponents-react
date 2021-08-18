@@ -21,7 +21,7 @@ export interface CalendarPropTypes extends CommonProps {
    * *   `CalendarSelectionMode.Range` - enables selection of a date range.
    * *   `CalendarSelectionMode.Multiple` - enables selection of multiple dates.
    */
-  selectionMode?: CalendarSelectionMode;
+  selectionMode?: CalendarSelectionMode | keyof typeof CalendarSelectionMode;
   /**
    * Determines the format, displayed in the input field.
    */
@@ -37,7 +37,7 @@ export interface CalendarPropTypes extends CommonProps {
   /**
    * Sets a calendar type used for display. If not set, the calendar type of the global configuration is used.<br/>__Note:__ Calendar types other than Gregorian must be imported manually:<br />`import "@ui5/webcomponents-localization/dist/features/calendar/{primaryCalendarType}.js";`
    */
-  primaryCalendarType?: CalendarType;
+  primaryCalendarType?: CalendarType | keyof typeof CalendarType;
   /**
    * Defines the selected date or dates (depending on the `selectionMode` property) for this calendar as instances of `CalendarDate`
    */
