@@ -7,12 +7,13 @@ import { ComposedChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/C
 import { XAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/XAxisTicks';
 import { YAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/YAxisTicks';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/dist/useLegendItemClick';
-import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
+import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import {
   Area,
   Bar,
   Brush,
   CartesianGrid,
+  Cell,
   ComposedChart as ComposedChartLib,
   Label,
   Legend,
@@ -34,6 +35,7 @@ import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { defaultFormatter } from '../../internal/defaults';
 import { tickLineConfig, tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
+import { getCellColors } from '../../internal/Utils';
 
 const dimensionDefaults = {
   formatter: defaultFormatter
@@ -63,6 +65,13 @@ interface MeasureConfig extends IChartMeasure {
    * @default undefined
    */
   stackId?: string;
+  /**
+   * Highlight color of defined elements
+   * @param value {string | number} Current value of the highlighted measure
+   * @param measure {IChartMeasure} Current measure object
+   * @param dataElement {object} Current data element
+   */
+  highlightColor?: (value: number, measure: MeasureConfig, dataElement: Record<string, any>) => CSSProperties['color'];
 }
 
 interface DimensionConfig extends IChartDimension {
@@ -101,6 +110,8 @@ export interface ComposedChartProps extends IChartBaseProps {
    * - `width`: width of the current chart element, defaults to `1` for `lines` and `20` for bars
    * - `opacity`: element opacity, defaults to `1`
    * - `stackId`: bars with the same stackId will be stacked
+   * - `highlightColor`: function will be called to define a custom color of a specific element which matches the
+   *    defined condition. Overwrites code>color</code> of the element.
    *
    */
   measures: MeasureConfig[];
@@ -445,7 +456,18 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               type="monotone"
               dataKey={element.accessor}
               {...chartElementProps}
-            />
+            >
+              {element.type === 'bar' &&
+                dataset.map((data, i) => {
+                  return (
+                    <Cell
+                      key={i}
+                      fill={getCellColors(element, data, index)}
+                      stroke={getCellColors(element, data, index)}
+                    />
+                  );
+                })}
+            </ChartElement>
           );
         })}
         {chartConfig.zoomingTool && (
