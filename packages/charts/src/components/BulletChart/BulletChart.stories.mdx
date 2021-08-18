@@ -136,6 +136,51 @@ You can do this via the `measures` array:
   </Story>
 </Canvas>
 
+### With Highlighted Measures
+
+<Canvas>
+  <Story
+    name="With Highlighted Measures"
+    args={{
+      dataset: complexBulletDataset,
+      style: { height: '60vh' },
+      layout: 'horizontal',
+      dimensions: [
+        {
+          accessor: 'name',
+          formatter: (d) => `${d} 2019`,
+          interval: 0
+        }
+      ],
+      measures: [
+        {
+          accessor: 'sessions',
+          label: 'Active Sessions',
+          type: 'primary'
+        },
+        {
+          accessor: 'users',
+          label: 'Users',
+          type: 'additional',
+          highlightColor: (value, measure, data) => {
+            if (value > 100) {
+              return 'red';
+            }
+          }
+        },
+        {
+          accessor: 'volume',
+          label: 'Volume',
+          formatter: (val) => val.toLocaleString(),
+          type: 'comparison'
+        }
+      ]
+    }}
+  >
+    {(props) => <BulletChart {...props} />}
+  </Story>
+</Canvas>
+
 ### Loading Placeholder
 
 <Canvas>

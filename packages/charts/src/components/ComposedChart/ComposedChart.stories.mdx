@@ -194,6 +194,51 @@ import { bigDataSet, complexDataSet, secondaryDimensionDataSet, simpleDataSet } 
   </Story>
 </Canvas>
 
+### With Highlighted Measures
+
+<Canvas>
+  <Story
+    name="With Highlighted Measures"
+    args={{
+      dataset: complexDataSet,
+      style: { height: '60vh' },
+      dimensions: [
+        {
+          accessor: 'name',
+          formatter: (d) => `${d} 2019`,
+          interval: 0
+        }
+      ],
+      measures: [
+        {
+          accessor: 'sessions',
+          label: 'Active Sessions',
+          type: 'bar',
+          highlightColor: (value, measure, data) => {
+            if (value > 400) {
+              return 'red';
+            }
+          }
+        },
+        {
+          accessor: 'users',
+          label: 'Users',
+          formatter: (val) => val.toLocaleString(),
+          type: 'area'
+        },
+        {
+          accessor: 'volume',
+          label: 'Vol.',
+          formatter: (val) => `${val} sessions`,
+          type: 'line'
+        }
+      ]
+    }}
+  >
+    {(props) => <ComposedChart {...props} />}
+  </Story>
+</Canvas>
+
 ### Loading Placeholder
 
 <Canvas>

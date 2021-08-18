@@ -7,12 +7,13 @@ import { ChartDataLabel } from '@ui5/webcomponents-react-charts/dist/components/
 import { XAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/XAxisTicks';
 import { YAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/YAxisTicks';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/dist/useLegendItemClick';
-import { resolvePrimaryAndSecondaryMeasures } from '@ui5/webcomponents-react-charts/dist/Utils';
-import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
+import { getCellColors, resolvePrimaryAndSecondaryMeasures } from '@ui5/webcomponents-react-charts/dist/Utils';
+import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import {
   Bar,
   Brush,
   CartesianGrid,
+  Cell,
   ComposedChart as ComposedChartLib,
   Label,
   Legend,
@@ -58,6 +59,13 @@ interface MeasureConfig extends IChartMeasure {
    * Chart type
    */
   type: AvailableChartTypes;
+  /**
+   * Highlight color of defined elements
+   * @param value {string | number} Current value of the highlighted measure
+   * @param measure {IChartMeasure} Current measure object
+   * @param dataElement {object} Current data element
+   */
+  highlightColor?: (value: number, measure: MeasureConfig, dataElement: Record<string, any>) => CSSProperties['color'];
 }
 
 interface DimensionConfig extends IChartDimension {
@@ -95,6 +103,7 @@ export interface BulletChartProps extends IChartBaseProps {
    * - `DataLabel`: a custom component to be used for the data label
    * - `width`: width of the current chart element, defaults to `1` for `lines` and `20` for bars
    * - `opacity`: element opacity, defaults to `1`
+   * - `highlightColor`: function will be called to define a custom color of a specific element which matches the
    *
    */
   measures: MeasureConfig[];
@@ -460,7 +469,17 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
               type="monotone"
               dataKey={element.accessor}
               {...chartElementProps}
-            />
+            >
+              {dataset.map((data, i) => {
+                return (
+                  <Cell
+                    key={i}
+                    fill={getCellColors(element, data, index)}
+                    stroke={getCellColors(element, data, index)}
+                  />
+                );
+              })}
+            </Bar>
           );
         })}
         {chartConfig.zoomingTool && (
