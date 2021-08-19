@@ -15,7 +15,6 @@ interface CustomDataLabelProps {
 
 export const ChartDataLabel: FC<CustomDataLabelProps> = (props: CustomDataLabelProps) => {
   const { config, chartType, viewBox } = props;
-
   if (config.hideDataLabel) {
     return null;
   }
@@ -39,5 +38,14 @@ export const ChartDataLabel: FC<CustomDataLabelProps> = (props: CustomDataLabelP
     fill = ThemingParameters.sapTextColor; // label is displayed outside of the colored element
   }
 
-  return <Label fill={fill} viewBox={viewBox} {...(props as any)} content={undefined} value={formattedLabel} />;
+  return (
+    <Label
+      viewBox={viewBox}
+      {...(props as any)}
+      fill={fill}
+      stroke={'none'}
+      content={undefined}
+      value={formattedLabel}
+    />
+  );
 };
