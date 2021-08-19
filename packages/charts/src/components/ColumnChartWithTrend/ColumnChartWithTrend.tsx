@@ -140,8 +140,8 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
       measureDefaults
     );
 
-    const { lineMeasures, columnMeasures } = usePrepareTrendMeasures(measures);
-    const [yAxisWidth] = useLongestYAxisLabel(dataset, columnMeasures);
+    const { lineMeasures, columnMeasures, columnDataset } = usePrepareTrendMeasures(measures, dataset);
+    const [yAxisWidth] = useLongestYAxisLabel(columnDataset, columnMeasures);
 
     return (
       <div
@@ -186,7 +186,7 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
           onClick={onClick}
           syncId={'trend'}
           ChartPlaceholder={ChartPlaceholder ?? ColumnChartWithTrendPlaceholder}
-          dataset={dataset}
+          dataset={columnDataset}
           measures={columnMeasures}
           dimensions={dimensions}
           chartConfig={chartConfig}
