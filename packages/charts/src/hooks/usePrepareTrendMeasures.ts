@@ -11,16 +11,23 @@ export const usePrepareTrendMeasures = (measures: ITrendChartMeasure[]) =>
     const columnMeasures = [];
 
     measures.forEach((measure, index) => {
+      if (measure.type === 'bar') {
+        columnMeasures.push({
+          color: measure.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`,
+          ...measure
+        });
+      }
+
       if (measure.type === 'line') {
         lineMeasures.push({
           color: measure.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`,
           ...measure
         });
-      }
-      if (measure.type === 'bar') {
         columnMeasures.push({
-          color: measure.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`,
-          ...measure
+          ...measure,
+          opacity: 0,
+          hideDataLabel: true,
+          showDot: false
         });
       }
     });

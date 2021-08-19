@@ -417,7 +417,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               };
               chartElementProps.strokeWidth = element.width;
               chartElementProps.strokeOpacity = element.opacity;
-              chartElementProps.dot = !isBigDataSet;
+              chartElementProps.dot = element.showDot ?? !isBigDataSet;
               break;
             case 'bar':
               chartElementProps.fillOpacity = element.opacity;

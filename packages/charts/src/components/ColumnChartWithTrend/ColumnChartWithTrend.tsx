@@ -156,7 +156,7 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
             className={
               typeof onDataPointClick === 'function' || typeof onClick === 'function' ? 'has-click-handler' : undefined
             }
-            tooltipConfig={tooltipConfig}
+            tooltipConfig={{ wrapperStyle: { visibility: 'hidden' } }}
             noAnimation={noAnimation}
             loading={loading}
             onClick={onClick}
