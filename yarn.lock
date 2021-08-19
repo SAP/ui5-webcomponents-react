@@ -3963,9 +3963,9 @@
     form-data "^3.0.0"
 
 "@types/node@*", "@types/node@^16.0.0":
-  version "16.6.1"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.6.1.tgz#aee62c7b966f55fc66c7b6dfa1d58db2a616da61"
-  integrity sha512-Sr7BhXEAer9xyGuCN3Ek9eg9xPviCF2gfu9kTfuU2HkTVAMYSDeX40fvpmo72n5nansg3nsBjuQBrsS28r+NUw==
+  version "16.6.2"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.6.2.tgz#331b7b9f8621c638284787c5559423822fdffc50"
+  integrity sha512-LSw8TZt12ZudbpHc6EkIyDM3nHVWKYrAvGy6EAJfNfjusbwnThqjqxUKKRwuV3iWYeW/LYMzNgaq3MaLffQ2xA==
 
 "@types/node@^14.0.10":
   version "14.14.41"
@@ -16986,9 +16986,9 @@ to-regex@^3.0.1, to-regex@^3.0.2:
     safe-regex "^1.1.0"
 
 tocbot@^4.12.0:
-  version "4.13.0"
-  resolved "https://registry.yarnpkg.com/tocbot/-/tocbot-4.13.0.tgz#262f1c34f43a506bb4b3f7b7455a4762d163d867"
-  integrity sha512-usmeF93Yhn8+FknLNDMHN+O2TCT5eNZ8r6mSzms6jPwc1hXqr5c082qShNsePhO6I8eUT2XM8fyW/2iuqj25gg==
+  version "4.13.1"
+  resolved "https://registry.yarnpkg.com/tocbot/-/tocbot-4.13.1.tgz#df1dde108558a12175a264a50d54cca86d246b0b"
+  integrity sha512-3kkxE9otN0dxCDMyYgkvRm9Mvikecc9b9LNC5liBtVDcXNxU0BpW+4rpmzM6QQpQ8jVMcyUUIsHb1da/17KhAw==
 
 toggle-selection@^1.0.6:
   version "1.0.6"
