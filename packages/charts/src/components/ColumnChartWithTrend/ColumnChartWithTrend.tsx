@@ -9,6 +9,7 @@ import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { defaultFormatter } from '../../internal/defaults';
 import { ComposedChart } from '../ComposedChart';
+import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
 
 interface MeasureConfig extends IChartMeasure {
   /**
@@ -140,6 +141,7 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
     );
 
     const { lineMeasures, columnMeasures } = usePrepareTrendMeasures(measures);
+    const [yAxisWidth] = useLongestYAxisLabel(dataset, columnMeasures);
 
     return (
       <div
@@ -170,7 +172,8 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
               yAxisVisible: false,
               yAxisTicksVisible: false,
               gridHorizontal: false,
-              yAxisLabelsVisible: false
+              yAxisLabelsVisible: false,
+              yAxisWidth
             }}
           />
         )}
