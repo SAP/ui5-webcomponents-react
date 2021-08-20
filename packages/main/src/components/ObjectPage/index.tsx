@@ -262,6 +262,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
   const [timeStamp, setTimeStamp] = useState(0);
   useEffect(() => {
     if (selectedSectionId) {
+      // wait for DOM draw, otherwise initial scroll won't work as intended
       if (timeStamp < 750 && timeStamp !== undefined) {
         requestAnimationFrame((internalTimestamp) => {
           setTimeStamp(internalTimestamp);
