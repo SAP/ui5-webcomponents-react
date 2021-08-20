@@ -181,6 +181,13 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
   };
   const debouncedOnSectionChange = useRef(debounce(fireOnSelectedChangedEvent, 500)).current;
 
+  useEffect(() => {
+    return () => {
+      debouncedOnSectionChange.cancel();
+      clearTimeout(scrollTimeout.current);
+    };
+  });
+
   const isRTL = useIsRTL(objectPageRef);
   const responsivePaddingClass = useResponsiveContentPadding(objectPageRef.current);
 
@@ -257,30 +264,38 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     ]
   );
 
+  const programmaticallySetSection = () => {
+    const currentId = selectedSectionId ?? firstSectionId;
+    if (currentId !== prevSelectedSectionId.current) {
+      debouncedOnSectionChange.cancel();
+      isProgrammaticallyScrolled.current = true;
+      setInternalSelectedSectionId(currentId);
+      prevSelectedSectionId.current = currentId;
+      const sections = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
+      const currentIndex = safeGetChildrenArray(children).findIndex((objectPageSection: ReactElement, index) => {
+        return objectPageSection.props?.id === currentId;
+      });
+      fireOnSelectedChangedEvent({} as any, currentIndex, currentId, sections[0]);
+    }
+  };
+
   // change selected section when prop is changed (external change)
   const prevSelectedSectionId = useRef();
   const [timeStamp, setTimeStamp] = useState(0);
   useEffect(() => {
     if (selectedSectionId) {
-      // wait for DOM draw, otherwise initial scroll won't work as intended
-      if (timeStamp < 750 && timeStamp !== undefined) {
-        requestAnimationFrame((internalTimestamp) => {
-          setTimeStamp(internalTimestamp);
-        });
-      } else {
-        setTimeStamp(undefined);
-        const currentId = selectedSectionId ?? firstSectionId;
-        if (currentId !== prevSelectedSectionId.current) {
-          debouncedOnSectionChange.cancel();
-          isProgrammaticallyScrolled.current = true;
-          setInternalSelectedSectionId(currentId);
-          prevSelectedSectionId.current = currentId;
-          const sections = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
-          const currentIndex = safeGetChildrenArray(children).findIndex((objectPageSection: ReactElement, index) => {
-            return objectPageSection.props?.id === currentId;
+      if (mode === ObjectPageMode.Default) {
+        // wait for DOM draw, otherwise initial scroll won't work as intended
+        if (timeStamp < 750 && timeStamp !== undefined) {
+          requestAnimationFrame((internalTimestamp) => {
+            setTimeStamp(internalTimestamp);
           });
-          fireOnSelectedChangedEvent({} as any, currentIndex, currentId, sections[0]);
+        } else {
+          setTimeStamp(undefined);
+          programmaticallySetSection();
         }
+      } else {
+        programmaticallySetSection();
       }
     }
   }, [timeStamp, selectedSectionId, firstSectionId, debouncedOnSectionChange]);
