@@ -257,30 +257,32 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     ]
   );
 
-  // wait for DOM draw, otherwise scroll won't work as intended
-  const [initialRender, setInitialRender] = useState(!!selectedSectionId);
-  useEffect(() => {
-    setInitialRender(false);
-  }, []);
-
   // change selected section when prop is changed (external change)
   const prevSelectedSectionId = useRef();
+  const [timeStamp, setTimeStamp] = useState(0);
   useEffect(() => {
-    if (!initialRender) {
-      const currentId = selectedSectionId ?? firstSectionId;
-      if (currentId !== prevSelectedSectionId.current) {
-        debouncedOnSectionChange.cancel();
-        isProgrammaticallyScrolled.current = true;
-        setInternalSelectedSectionId(currentId);
-        prevSelectedSectionId.current = currentId;
-        const sections = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
-        const currentIndex = safeGetChildrenArray(children).findIndex((objectPageSection: ReactElement, index) => {
-          return objectPageSection.props?.id === currentId;
+    if (selectedSectionId) {
+      if (timeStamp < 750 && timeStamp !== undefined) {
+        requestAnimationFrame((internalTimestamp) => {
+          setTimeStamp(internalTimestamp);
         });
-        fireOnSelectedChangedEvent({} as any, currentIndex, currentId, sections[0]);
+      } else {
+        setTimeStamp(undefined);
+        const currentId = selectedSectionId ?? firstSectionId;
+        if (currentId !== prevSelectedSectionId.current) {
+          debouncedOnSectionChange.cancel();
+          isProgrammaticallyScrolled.current = true;
+          setInternalSelectedSectionId(currentId);
+          prevSelectedSectionId.current = currentId;
+          const sections = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
+          const currentIndex = safeGetChildrenArray(children).findIndex((objectPageSection: ReactElement, index) => {
+            return objectPageSection.props?.id === currentId;
+          });
+          fireOnSelectedChangedEvent({} as any, currentIndex, currentId, sections[0]);
+        }
       }
     }
-  }, [selectedSectionId, firstSectionId, debouncedOnSectionChange, initialRender]);
+  }, [timeStamp, selectedSectionId, firstSectionId, debouncedOnSectionChange]);
 
   // section was selected by clicking on the anchor bar buttons
   const handleOnSectionSelected = useCallback(
@@ -447,7 +449,6 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
   const passThroughProps = usePassThroughHtmlProps(props, ['onSelectedSectionChanged', 'onScroll']);
 
   useEffect(() => {
-    if (initialRender) return;
     const sections = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
     const objectPageHeight = objectPageRef.current?.clientHeight ?? 1000;
     const marginBottom = objectPageHeight - totalHeaderHeight - /*TabContainer*/ 48;
@@ -510,7 +511,6 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
       observer.disconnect();
     };
   }, [
-    initialRender,
     objectPageRef.current,
     children,
     totalHeaderHeight,
