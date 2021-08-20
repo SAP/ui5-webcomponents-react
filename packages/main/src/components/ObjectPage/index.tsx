@@ -4,30 +4,21 @@ import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassH
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
+import { debounce, enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { AvatarPropTypes } from '@ui5/webcomponents-react/dist/Avatar';
 import { AvatarSize } from '@ui5/webcomponents-react/dist/AvatarSize';
 import { GlobalStyleClasses } from '@ui5/webcomponents-react/dist/GlobalStyleClasses';
 import { List } from '@ui5/webcomponents-react/dist/List';
 import { ObjectPageMode } from '@ui5/webcomponents-react/dist/ObjectPageMode';
-import { PopoverPlacementType } from '@ui5/webcomponents-react/dist/PopoverPlacementType';
 import { Popover } from '@ui5/webcomponents-react/dist/Popover';
+import { PopoverPlacementType } from '@ui5/webcomponents-react/dist/PopoverPlacementType';
 import { StandardListItem } from '@ui5/webcomponents-react/dist/StandardListItem';
 import { TabContainer } from '@ui5/webcomponents-react/dist/TabContainer';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import React, {
-  ComponentType,
-  forwardRef,
-  ReactElement,
-  RefObject,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState
-} from 'react';
+import React, { forwardRef, ReactElement, RefObject, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
+import { PopoverHorizontalAlign } from '../../enums/PopoverHorizontalAlign';
 import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
 import { stopPropagation } from '../../internal/stopPropagation';
 import { useObserveHeights } from '../../internal/useObserveHeights';
@@ -44,7 +35,6 @@ import {
   getSectionById,
   safeGetChildrenArray
 } from './ObjectPageUtils';
-import { PopoverHorizontalAlign } from '../../enums/PopoverHorizontalAlign';
 
 addCustomCSS(
   'ui5-tabcontainer',
@@ -189,6 +179,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
       prevInternalSelectedSectionId.current = id;
     }
   };
+  const debouncedOnSectionChange = useRef(debounce(fireOnSelectedChangedEvent, 500)).current;
 
   const isRTL = useIsRTL(objectPageRef);
   const responsivePaddingClass = useResponsiveContentPadding(objectPageRef.current);
@@ -278,6 +269,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     if (!initialRender) {
       const currentId = selectedSectionId ?? firstSectionId;
       if (currentId !== prevSelectedSectionId.current) {
+        debouncedOnSectionChange.cancel();
         isProgrammaticallyScrolled.current = true;
         setInternalSelectedSectionId(currentId);
         prevSelectedSectionId.current = currentId;
@@ -288,18 +280,20 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
         fireOnSelectedChangedEvent({} as any, currentIndex, currentId, sections[0]);
       }
     }
-  }, [selectedSectionId, firstSectionId, fireOnSelectedChangedEvent, initialRender]);
+  }, [selectedSectionId, firstSectionId, debouncedOnSectionChange, initialRender]);
 
   // section was selected by clicking on the anchor bar buttons
   const handleOnSectionSelected = useCallback(
     (targetEvent, newSelectionSectionId, index, section) => {
       isProgrammaticallyScrolled.current = true;
+      debouncedOnSectionChange.cancel();
       setInternalSelectedSectionId((oldSelectedSection) => {
         if (oldSelectedSection === newSelectionSectionId) {
           scrollToSection(newSelectionSectionId);
         }
         return newSelectionSectionId;
       });
+      scrollEvent.current = targetEvent;
       fireOnSelectedChangedEvent(targetEvent, index, newSelectionSectionId, section);
     },
     [onSelectedSectionChanged, setInternalSelectedSectionId, isProgrammaticallyScrolled, scrollToSection]
@@ -421,7 +415,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
         const currentIndex = safeGetChildrenArray(children).findIndex((objectPageSection: ReactElement) => {
           return objectPageSection.props?.id === sectionId;
         });
-        fireOnSelectedChangedEvent(e, currentIndex, sectionId, sections[currentIndex]);
+        debouncedOnSectionChange(e, currentIndex, sectionId, sections[currentIndex]);
       }
       const subSection = e.detail.subSection;
       setSelectedSubSectionId(subSection.props.id);
@@ -470,7 +464,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
             const currentIndex = safeGetChildrenArray(children).findIndex((objectPageSection: ReactElement) => {
               return objectPageSection.props?.id === currentId;
             });
-            fireOnSelectedChangedEvent(scrollEvent.current, currentIndex, currentId, section.target);
+            debouncedOnSectionChange(scrollEvent.current, currentIndex, currentId, section.target);
           }
         }
       },
@@ -498,7 +492,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
       const currentSectionId = extractSectionIdFromHtmlId(currentSection.id);
       if (currentSectionId !== internalSelectedSectionId) {
         setInternalSelectedSectionId(currentSectionId);
-        fireOnSelectedChangedEvent(
+        debouncedOnSectionChange(
           scrollEvent.current,
           currentIndex ?? sections.length - 1,
           currentSectionId,
