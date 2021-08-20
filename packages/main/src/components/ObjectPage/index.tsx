@@ -186,7 +186,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
       debouncedOnSectionChange.cancel();
       clearTimeout(scrollTimeout.current);
     };
-  });
+  }, []);
 
   const isRTL = useIsRTL(objectPageRef);
   const responsivePaddingClass = useResponsiveContentPadding(objectPageRef.current);
