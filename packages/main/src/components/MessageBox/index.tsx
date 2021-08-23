@@ -50,8 +50,11 @@ import { createUseStyles } from 'react-jss';
 import { stopPropagation } from '../../internal/stopPropagation';
 import styles from './MessageBox.jss';
 
+type MessageBoxAction = MessageBoxActions | keyof typeof MessageBoxActions | string;
+
 const onlyUpperCaseRegExp = /^[A-Z]+$/;
-const deprecatedActions = new Set([
+
+const deprecatedActions = new Set<MessageBoxAction>([
   MessageBoxActions.ABORT,
   MessageBoxActions.CANCEL,
   MessageBoxActions.CLOSE,
@@ -82,7 +85,7 @@ export interface MessageBoxPropTypes extends CommonProps {
    *
    * **Note: The uppercase `MessageBoxActions` are deprecated and will be removed with version 0.19.0.**
    */
-  actions?: (MessageBoxActions | keyof typeof MessageBoxActions | string)[];
+  actions?: MessageBoxAction[];
   /**
    * Specifies which action of the created dialog will be emphasized.
    *
@@ -90,7 +93,7 @@ export interface MessageBoxPropTypes extends CommonProps {
    *
    * @since 0.16.3
    */
-  emphasizedAction?: MessageBoxActions | keyof typeof MessageBoxActions | string;
+  emphasizedAction?: MessageBoxAction;
   /**
    * A custom icon. If not present, it will be derived from the `MessageBox` type.
    */
@@ -106,13 +109,13 @@ export interface MessageBoxPropTypes extends CommonProps {
    *
    * **Note: The uppercase `MessageBoxActions` are deprecated and will be removed with version 0.19.0.**
    */
-  initialFocus?: string | MessageBoxActions | keyof typeof MessageBoxActions;
+  initialFocus?: MessageBoxAction;
   /**
    * Callback to be executed when the `MessageBox` is closed (either by pressing on one of the `actions` or by pressing the `ESC` key). `event.detail.action` contains the pressed action button.
    *
    * **Note: The uppercase `MessageBoxActions` are deprecated and will be removed with version 0.19.0.**
    */
-  onClose: (event: CustomEvent<{ action: MessageBoxActions | keyof typeof MessageBoxActions }>) => void;
+  onClose: (event: CustomEvent<{ action: MessageBoxAction }>) => void;
   /**
    * Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. This event does not bubble.
    */
