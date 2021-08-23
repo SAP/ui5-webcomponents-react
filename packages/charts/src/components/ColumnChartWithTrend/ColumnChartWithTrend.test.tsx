@@ -4,6 +4,12 @@ import { complexDataSet } from '../../resources/DemoProps';
 import { ColumnChartWithTrend } from './ColumnChartWithTrend';
 import { createPassThroughPropsTest } from '@shared/tests/utils';
 
+enum ComposedChartChildrenQuery {
+  'area' = 'g.recharts-area-dots',
+  'bar' = 'g.recharts-bar-rectangles',
+  'line' = 'path'
+}
+
 const dimensions = [
   {
     accessor: 'name',
@@ -22,7 +28,7 @@ const measures = [
   {
     accessor: 'sessions',
     label: 'Active Sessions',
-    type: 'column'
+    type: 'bar'
   }
 ];
 
@@ -32,24 +38,18 @@ describe('ColumnChart', () => {
       <ColumnChartWithTrend dataset={complexDataSet} dimensions={dimensions} measures={measures} />
     );
 
-    // Check if two responsive containers are rendered
+    // Check if a single responsive container is rendered
     const responsiveContainers = container.querySelectorAll('div.recharts-responsive-container');
     expect(responsiveContainers.length).toBe(2);
 
-    // Check if trend line container, trend line and the path of the line is rendered correctly
-    const trendLineChartContainer = container.querySelector('g.recharts-line');
-    expect(trendLineChartContainer).toBeInTheDocument();
-    const trendLine = trendLineChartContainer.querySelector('path');
-    expect(trendLine).not.toBeNull();
-    expect(trendLine.getAttribute('d')[0]).toBe('M');
+    // Check if containers of charts and associated elements are rendered in the composed chart
+    measures.forEach((measure) => {
+      const chartContainer = container.querySelector(`g.recharts-${measure.type}`);
+      expect(chartContainer).toBeInTheDocument();
 
-    // Check if column chart container, bars and single bars are rendered
-    const columnChartContainer = container.querySelector('g.recharts-bar');
-    expect(columnChartContainer).toBeInTheDocument();
-    const barContainer = columnChartContainer.querySelectorAll('g.recharts-bar-rectangles');
-    expect(barContainer.length).toBeGreaterThanOrEqual(1);
-    const singleBars = columnChartContainer.querySelectorAll('g.recharts-bar-rectangle');
-    expect(singleBars.length).toBeGreaterThanOrEqual(1);
+      const chartContainerChild = chartContainer.querySelectorAll(ComposedChartChildrenQuery[measure.type]);
+      expect(chartContainerChild.length).toBeGreaterThanOrEqual(0);
+    });
 
     // Check if snapshot matches render
     expect(asFragment()).toMatchSnapshot();
