@@ -64,6 +64,8 @@ import { TitleBar } from './TitleBar';
 import { orderByFn } from './util';
 import { VerticalResizer } from './VerticalResizer';
 
+const onlyUpperCaseRegExp = /^[A-Z_]+$/;
+
 interface DivWithCustomScrollProp extends HTMLDivElement {
   isExternalVerticalScroll?: boolean;
 }
@@ -726,6 +728,56 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
   if (withNavigationHighlight) {
     tableClasses.put(classes.hasNavigationIndicator);
   }
+
+  // check deprecations
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
+      if (onlyUpperCaseRegExp.test(visibleRowCountMode)) {
+        // eslint-disable-next-line no-console
+        console.warn(
+          'UI5 Web Components for React - AnalyticalTable\n',
+          `'TableVisibleRowCountMode.${visibleRowCountMode}' is deprecated and will be removed with v0.19.0.`,
+          `Please use 'TableVisibleRowCountMode.${visibleRowCountMode.charAt(0)}${visibleRowCountMode
+            .slice(1)
+            .toLowerCase()}' instead.`
+        );
+      }
+    }
+  }, [visibleRowCountMode]);
+
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
+      if (onlyUpperCaseRegExp.test(selectionBehavior)) {
+        const newName = selectionBehavior
+          .split('_')
+          .map((s) => s.charAt(0) + s.slice(1).toLowerCase())
+          .join('');
+        // eslint-disable-next-line no-console
+        console.warn(
+          'UI5 Web Components for React - AnalyticalTable\n',
+          `'TableSelectionBehavior.${selectionBehavior}' is deprecated and will be removed with v0.19.0.`,
+          `Please use 'TableSelectionBehavior.${newName}' instead.`
+        );
+      }
+    }
+  }, [selectionBehavior]);
+
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
+      if (onlyUpperCaseRegExp.test(selectionMode)) {
+        const newName = selectionMode
+          .split('_')
+          .map((s) => s.charAt(0) + s.slice(1).toLowerCase())
+          .join('');
+        // eslint-disable-next-line no-console
+        console.warn(
+          'UI5 Web Components for React - AnalyticalTable\n',
+          `'TableSelectionMode.${selectionMode}' is deprecated and will be removed with v0.19.0.`,
+          `Please use 'TableSelectionMode.${newName}' instead.`
+        );
+      }
+    }
+  }, [selectionMode]);
 
   return (
     <div className={className} style={inlineStyle} title={tooltip} ref={analyticalTableRef} {...passThroughProps}>
