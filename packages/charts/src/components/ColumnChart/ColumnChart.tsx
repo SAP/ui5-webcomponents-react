@@ -7,7 +7,7 @@ import { ChartDataLabel } from '@ui5/webcomponents-react-charts/dist/components/
 import { XAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/XAxisTicks';
 import { YAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/YAxisTicks';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/dist/useLegendItemClick';
-import { getCellColors } from '@ui5/webcomponents-react-charts/dist/Utils';
+import { resolvePrimaryAndSecondaryMeasures, getCellColors } from '@ui5/webcomponents-react-charts/dist/Utils';
 import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import {
   Bar as Column,
@@ -170,7 +170,10 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
   const [yAxisWidth, legendPosition] = useLongestYAxisLabel(dataset, measures);
 
   const primaryDimension = dimensions[0];
-  const primaryMeasure = measures[0];
+  const { primaryMeasure, secondaryMeasure } = resolvePrimaryAndSecondaryMeasures(
+    measures,
+    chartConfig?.secondYAxis?.dataKey
+  );
 
   const labelFormatter = useLabelFormatter(primaryDimension);
   const chartRef = useConsolidatedRef<any>(ref);
@@ -273,7 +276,14 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
             axisLine={{
               stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
             }}
-            tick={{ fill: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})` }}
+            tick={
+              <YAxisTicks
+                config={secondaryMeasure}
+                secondYAxisConfig={{
+                  color: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
+                }}
+              />
+            }
             tickLine={{
               stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
             }}

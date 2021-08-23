@@ -1,12 +1,13 @@
-import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { useConsolidatedRef, useIsRTL, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/dist/components/ChartContainer';
 import { ChartDataLabel } from '@ui5/webcomponents-react-charts/dist/components/ChartDataLabel';
-import { ComposedChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/ComposedChartPlaceholder';
 import { XAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/XAxisTicks';
 import { YAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/YAxisTicks';
+import { ComposedChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/ComposedChartPlaceholder';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/dist/useLegendItemClick';
+import { resolvePrimaryAndSecondaryMeasures } from '@ui5/webcomponents-react-charts/dist/Utils';
 import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import {
   Area,
@@ -181,7 +182,10 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
   const tooltipValueFormatter = useTooltipFormatter(measures);
 
   const primaryDimension = dimensions[0];
-  const primaryMeasure = measures[0];
+  const { primaryMeasure, secondaryMeasure } = resolvePrimaryAndSecondaryMeasures(
+    measures,
+    chartConfig?.secondYAxis?.dataKey
+  );
 
   const labelFormatter = useLabelFormatter(primaryDimension);
 
@@ -336,10 +340,14 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
             axisLine={{
               stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
             }}
-            tick={{
-              direction: 'ltr',
-              fill: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
-            }}
+            tick={
+              <YAxisTicks
+                config={secondaryMeasure}
+                secondYAxisConfig={{
+                  color: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
+                }}
+              />
+            }
             tickLine={{
               stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
             }}
@@ -362,7 +370,14 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
             axisLine={{
               stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
             }}
-            tick={{ fill: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})` }}
+            tick={
+              <XAxisTicks
+                config={secondaryMeasure}
+                secondYAxisConfig={{
+                  color: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
+                }}
+              />
+            }
             tickLine={{
               stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
             }}
