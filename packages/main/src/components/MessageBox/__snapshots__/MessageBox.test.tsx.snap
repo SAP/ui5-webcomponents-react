@@ -34,17 +34,17 @@ exports[`MessageBox Confirm - Cancel 1`] = `
       slot="footer"
     >
       <ui5-button
-        data-action="OK"
+        data-action="ok"
         design="Emphasized"
-        id="OK"
+        id="ok"
         ui5-button=""
       >
         OK
       </ui5-button>
       <ui5-button
-        data-action="Cancel"
+        data-action="cancel"
         design="Transparent"
-        id="Cancel"
+        id="cancel"
         ui5-button=""
       >
         Cancel
@@ -88,17 +88,17 @@ exports[`MessageBox Confirm 1`] = `
       slot="footer"
     >
       <ui5-button
-        data-action="OK"
+        data-action="ok"
         design="Emphasized"
-        id="OK"
+        id="ok"
         ui5-button=""
       >
         OK
       </ui5-button>
       <ui5-button
-        data-action="Cancel"
+        data-action="cancel"
         design="Transparent"
-        id="Cancel"
+        id="cancel"
         ui5-button=""
       >
         Cancel
@@ -140,17 +140,17 @@ exports[`MessageBox Custom Action Text 1`] = `
       slot="footer"
     >
       <ui5-button
-        data-action="OK"
+        data-action="ok"
         design="Emphasized"
-        id="OK"
+        id="ok"
         ui5-button=""
       >
         OK
       </ui5-button>
       <ui5-button
-        data-action="My Custom Action"
+        data-action="my custom action"
         design="Transparent"
-        id="My Custom Action"
+        id="my custom action"
         ui5-button=""
       >
         My Custom Action
@@ -188,9 +188,9 @@ exports[`MessageBox Don't crash on unknown type 1`] = `
       slot="footer"
     >
       <ui5-button
-        data-action="OK"
+        data-action="ok"
         design="Emphasized"
-        id="OK"
+        id="ok"
         ui5-button=""
       >
         OK
@@ -234,9 +234,9 @@ exports[`MessageBox Error 1`] = `
       slot="footer"
     >
       <ui5-button
-        data-action="Close"
+        data-action="close"
         design="Transparent"
-        id="Close"
+        id="close"
         ui5-button=""
       >
         Close
@@ -280,9 +280,9 @@ exports[`MessageBox Highlight 1`] = `
       slot="footer"
     >
       <ui5-button
-        data-action="OK"
+        data-action="ok"
         design="Emphasized"
-        id="OK"
+        id="ok"
         ui5-button=""
       >
         OK
@@ -326,9 +326,9 @@ exports[`MessageBox Information 1`] = `
       slot="footer"
     >
       <ui5-button
-        data-action="OK"
+        data-action="ok"
         design="Emphasized"
-        id="OK"
+        id="ok"
         ui5-button=""
       >
         OK
@@ -372,17 +372,17 @@ exports[`MessageBox No Title 1`] = `
       slot="footer"
     >
       <ui5-button
-        data-action="OK"
+        data-action="ok"
         design="Emphasized"
-        id="OK"
+        id="ok"
         ui5-button=""
       >
         OK
       </ui5-button>
       <ui5-button
-        data-action="Cancel"
+        data-action="cancel"
         design="Transparent"
-        id="Cancel"
+        id="cancel"
         ui5-button=""
       >
         Cancel
@@ -424,9 +424,9 @@ exports[`MessageBox Not open 1`] = `
       slot="footer"
     >
       <ui5-button
-        data-action="OK"
+        data-action="ok"
         design="Emphasized"
-        id="OK"
+        id="ok"
         ui5-button=""
       >
         OK
@@ -470,17 +470,17 @@ exports[`MessageBox Show 1`] = `
       slot="footer"
     >
       <ui5-button
-        data-action="Yes"
+        data-action="yes"
         design="Transparent"
-        id="Yes"
+        id="yes"
         ui5-button=""
       >
         Yes
       </ui5-button>
       <ui5-button
-        data-action="No"
+        data-action="no"
         design="Transparent"
-        id="No"
+        id="no"
         ui5-button=""
       >
         No
@@ -524,9 +524,9 @@ exports[`MessageBox Success 1`] = `
       slot="footer"
     >
       <ui5-button
-        data-action="OK"
+        data-action="ok"
         design="Emphasized"
-        id="OK"
+        id="ok"
         ui5-button=""
       >
         OK
@@ -570,9 +570,9 @@ exports[`MessageBox Success w/ custom title 1`] = `
       slot="footer"
     >
       <ui5-button
-        data-action="OK"
+        data-action="ok"
         design="Emphasized"
-        id="OK"
+        id="ok"
         ui5-button=""
       >
         OK
@@ -616,9 +616,9 @@ exports[`MessageBox Warning 1`] = `
       slot="footer"
     >
       <ui5-button
-        data-action="OK"
+        data-action="ok"
         design="Emphasized"
-        id="OK"
+        id="ok"
         ui5-button=""
       >
         OK
