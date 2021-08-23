@@ -1,5 +1,7 @@
 import { useMemo } from 'react';
+import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { IChartMeasure } from '../interfaces/IChartMeasure';
+import { defaultFormatter } from '../internal/defaults';
 
 interface ITrendChartMeasure extends IChartMeasure {
   type: 'line' | 'bar';
@@ -15,20 +17,23 @@ export const usePrepareTrendMeasures = (measures: ITrendChartMeasure[], dataset:
       if (measure.type === 'bar') {
         columnMeasures.push({
           color: measure.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`,
-          ...measure
+          ...measure,
+          formatter: defaultFormatter
         });
       }
 
       if (measure.type === 'line') {
         lineMeasures.push({
           color: measure.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`,
-          ...measure
+          ...measure,
+          formatter: defaultFormatter
         });
         columnMeasures.push({
           ...measure,
           opacity: 0,
           hideDataLabel: true,
-          showDot: false
+          showDot: false,
+          formatter: defaultFormatter
         });
       }
     });
@@ -37,6 +42,7 @@ export const usePrepareTrendMeasures = (measures: ITrendChartMeasure[], dataset:
       const reducedLineValues = {};
 
       lineMeasures.forEach((line) => {
+        reducedLineValues[`__${line.accessor}`] = getValueByDataKey(data, line.accessor);
         reducedLineValues[line.accessor] = 0;
       });
 

@@ -166,7 +166,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
       legendHorizontalAlign: 'left',
       zoomingTool: false,
       resizeDebounce: 250,
-      yAxisWidth: null,
+      yAxisWidth,
       ...props.chartConfig
     };
   }, [props.chartConfig]);
@@ -292,6 +292,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
           if (layout === 'vertical') {
             axisProps.type = 'category';
             axisProps.visible = false;
+            axisProps.hide = !chartConfig.yAxisVisible;
             axisProps.tick = <YAxisTicks config={dimension} />;
             axisProps.yAxisId = index;
             axisProps.width = chartConfig.yAxisWidth ?? yAxisWidth;

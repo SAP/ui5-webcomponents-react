@@ -1,15 +1,16 @@
 import { useConsolidatedRef, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
+import { ComposedChart } from '@ui5/webcomponents-react-charts/dist//ComposedChart';
 import { ColumnChartWithTrendPlaceholder } from '@ui5/webcomponents-react-charts/dist/ColumnChartWithTrendPlaceholder';
 import React, { CSSProperties, FC, forwardRef, Ref, useMemo } from 'react';
+import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { usePrepareTrendMeasures } from '../../hooks/usePrepareTrendMeasures';
 import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { defaultFormatter } from '../../internal/defaults';
-import { ComposedChart } from '../ComposedChart';
-import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
+import { TooltipProps } from 'recharts';
 
 interface MeasureConfig extends IChartMeasure {
   /**
@@ -92,6 +93,8 @@ const measureDefaults = {
   opacity: 1
 };
 
+const lineTooltipConfig = { wrapperStyle: { visibility: 'hidden' } } as TooltipProps<any, any>;
+
 type AvailableChartTypes = 'line' | 'bar' | string;
 /**
  * A `ColumnChartWithTrend` is a data visualization where each category is represented by a rectangle, with the height of the rectangle being proportional to the values being plotted amd a trend line which is displayed above the column chart.
@@ -143,6 +146,18 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
     const { lineMeasures, columnMeasures, columnDataset } = usePrepareTrendMeasures(measures, dataset);
     const [yAxisWidth] = useLongestYAxisLabel(columnDataset, columnMeasures);
 
+    const columnTooltipConfig = {
+      formatter: (value, name, tooltipProps) => {
+        const line = lineMeasures.find((currLine) => currLine.accessor === tooltipProps.dataKey);
+        const column = columnMeasures.find((currLine) => currLine.accessor === tooltipProps.dataKey);
+        if (line) {
+          // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+          return line.formatter(tooltipProps.payload[`__${line.accessor}`]);
+        }
+        return column.formatter(value, name, tooltipProps);
+      }
+    } as TooltipProps<any, any>;
+
     return (
       <div
         ref={chartRef}
@@ -156,7 +171,7 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
             className={
               typeof onDataPointClick === 'function' || typeof onClick === 'function' ? 'has-click-handler' : undefined
             }
-            tooltipConfig={{ wrapperStyle: { visibility: 'hidden' } }}
+            tooltipConfig={lineTooltipConfig}
             noAnimation={noAnimation}
             loading={loading}
             onClick={onClick}
@@ -179,7 +194,7 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
         )}
         <ComposedChart
           onLegendClick={onLegendClick}
-          tooltipConfig={tooltipConfig}
+          tooltipConfig={columnTooltipConfig}
           noAnimation={noAnimation}
           noLegend={noLegend}
           loading={loading}
