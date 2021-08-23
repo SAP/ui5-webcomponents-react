@@ -149,11 +149,11 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
     const columnTooltipConfig = {
       formatter: (value, name, tooltipProps) => {
         const line = lineMeasures.find((currLine) => currLine.accessor === tooltipProps.dataKey);
-        const column = columnMeasures.find((currLine) => currLine.accessor === tooltipProps.dataKey);
         if (line) {
           // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
           return line.formatter(tooltipProps.payload[`__${line.accessor}`]);
         }
+        const column = columnMeasures.find((currLine) => currLine.accessor === tooltipProps.dataKey);
         return column.formatter(value, name, tooltipProps);
       }
     } as TooltipProps<any, any>;
