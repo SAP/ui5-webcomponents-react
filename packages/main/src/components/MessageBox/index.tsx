@@ -351,7 +351,7 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDom
                 emphasizedAction?.toLowerCase() === lowerCaseAction ? ButtonDesign.Emphasized : ButtonDesign.Transparent
               }
               onClick={handleOnClose}
-              data-action={lowerCaseAction}
+              data-action={action}
             >
               {actionTranslations[action] ?? action}
             </Button>

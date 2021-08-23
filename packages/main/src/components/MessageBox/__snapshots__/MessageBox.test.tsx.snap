@@ -34,7 +34,7 @@ exports[`MessageBox Confirm - Cancel 1`] = `
       slot="footer"
     >
       <ui5-button
-        data-action="ok"
+        data-action="OK"
         design="Emphasized"
         id="ok"
         ui5-button=""
@@ -42,7 +42,7 @@ exports[`MessageBox Confirm - Cancel 1`] = `
         OK
       </ui5-button>
       <ui5-button
-        data-action="cancel"
+        data-action="Cancel"
         design="Transparent"
         id="cancel"
         ui5-button=""
@@ -88,7 +88,7 @@ exports[`MessageBox Confirm 1`] = `
       slot="footer"
     >
       <ui5-button
-        data-action="ok"
+        data-action="OK"
         design="Emphasized"
         id="ok"
         ui5-button=""
@@ -96,7 +96,7 @@ exports[`MessageBox Confirm 1`] = `
         OK
       </ui5-button>
       <ui5-button
-        data-action="cancel"
+        data-action="Cancel"
         design="Transparent"
         id="cancel"
         ui5-button=""
@@ -140,7 +140,7 @@ exports[`MessageBox Custom Action Text 1`] = `
       slot="footer"
     >
       <ui5-button
-        data-action="ok"
+        data-action="OK"
         design="Emphasized"
         id="ok"
         ui5-button=""
@@ -148,7 +148,7 @@ exports[`MessageBox Custom Action Text 1`] = `
         OK
       </ui5-button>
       <ui5-button
-        data-action="my custom action"
+        data-action="My Custom Action"
         design="Transparent"
         id="my custom action"
         ui5-button=""
@@ -188,7 +188,7 @@ exports[`MessageBox Don't crash on unknown type 1`] = `
       slot="footer"
     >
       <ui5-button
-        data-action="ok"
+        data-action="OK"
         design="Emphasized"
         id="ok"
         ui5-button=""
@@ -234,7 +234,7 @@ exports[`MessageBox Error 1`] = `
       slot="footer"
     >
       <ui5-button
-        data-action="close"
+        data-action="Close"
         design="Transparent"
         id="close"
         ui5-button=""
@@ -280,7 +280,7 @@ exports[`MessageBox Highlight 1`] = `
       slot="footer"
     >
       <ui5-button
-        data-action="ok"
+        data-action="OK"
         design="Emphasized"
         id="ok"
         ui5-button=""
@@ -326,7 +326,7 @@ exports[`MessageBox Information 1`] = `
       slot="footer"
     >
       <ui5-button
-        data-action="ok"
+        data-action="OK"
         design="Emphasized"
         id="ok"
         ui5-button=""
@@ -372,7 +372,7 @@ exports[`MessageBox No Title 1`] = `
       slot="footer"
     >
       <ui5-button
-        data-action="ok"
+        data-action="OK"
         design="Emphasized"
         id="ok"
         ui5-button=""
@@ -380,7 +380,7 @@ exports[`MessageBox No Title 1`] = `
         OK
       </ui5-button>
       <ui5-button
-        data-action="cancel"
+        data-action="Cancel"
         design="Transparent"
         id="cancel"
         ui5-button=""
@@ -424,7 +424,7 @@ exports[`MessageBox Not open 1`] = `
       slot="footer"
     >
       <ui5-button
-        data-action="ok"
+        data-action="OK"
         design="Emphasized"
         id="ok"
         ui5-button=""
@@ -470,7 +470,7 @@ exports[`MessageBox Show 1`] = `
       slot="footer"
     >
       <ui5-button
-        data-action="yes"
+        data-action="Yes"
         design="Transparent"
         id="yes"
         ui5-button=""
@@ -478,7 +478,7 @@ exports[`MessageBox Show 1`] = `
         Yes
       </ui5-button>
       <ui5-button
-        data-action="no"
+        data-action="No"
         design="Transparent"
         id="no"
         ui5-button=""
@@ -524,7 +524,7 @@ exports[`MessageBox Success 1`] = `
       slot="footer"
     >
       <ui5-button
-        data-action="ok"
+        data-action="OK"
         design="Emphasized"
         id="ok"
         ui5-button=""
@@ -570,7 +570,7 @@ exports[`MessageBox Success w/ custom title 1`] = `
       slot="footer"
     >
       <ui5-button
-        data-action="ok"
+        data-action="OK"
         design="Emphasized"
         id="ok"
         ui5-button=""
@@ -616,7 +616,7 @@ exports[`MessageBox Warning 1`] = `
       slot="footer"
     >
       <ui5-button
-        data-action="ok"
+        data-action="OK"
         design="Emphasized"
         id="ok"
         ui5-button=""
