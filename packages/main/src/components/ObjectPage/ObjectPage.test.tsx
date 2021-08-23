@@ -98,7 +98,7 @@ describe('ObjectPage', () => {
   test('IconTabBar Mode', () => {
     const cb = jest.fn();
     const { asFragment, getByText, queryByText, container, rerender } = render(
-      renderComponent({ mode: ObjectPageMode.IconTabBar, onSelectedSectionChanged: cb })
+      renderComponent({ mode: ObjectPageMode.IconTabBar, onSelectedSectionChange: cb })
     );
     expect(getByText('Title Section 1')).not.toBeVisible();
     expect(getByText('Content Section 1')).toBeVisible();
@@ -112,9 +112,7 @@ describe('ObjectPage', () => {
     //does not work due to shadow-DOM
     // fireEvent.click(tabs[2]);
     // expect(cb).toHaveBeenCalled();
-    rerender(
-      renderComponent({ mode: ObjectPageMode.IconTabBar, onSelectedSectionChanged: cb, selectedSectionId: '3' })
-    );
+    rerender(renderComponent({ mode: ObjectPageMode.IconTabBar, onSelectedSectionChange: cb, selectedSectionId: '3' }));
     expect(getByText('Title Section 3')).not.toBeVisible();
     expect(getByText('Content Section 3.1')).toBeVisible();
     expect(queryByText('Title Section 1')).toBeNull();
