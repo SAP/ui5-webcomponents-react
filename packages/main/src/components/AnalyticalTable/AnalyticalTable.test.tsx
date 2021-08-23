@@ -310,7 +310,7 @@ describe('AnalyticalTable', () => {
         filterable={true}
         visibleRows={15}
         minRows={5}
-        selectionMode={TableSelectionMode.SINGLE_SELECT}
+        selectionMode={TableSelectionMode.MultiSelect}
         subRowsKey="subRows"
         isTreeTable={true}
       />
@@ -454,8 +454,8 @@ describe('AnalyticalTable', () => {
         header="Table Title"
         data={data}
         columns={columns}
-        selectionMode={TableSelectionMode.SINGLE_SELECT}
-        selectionBehavior={TableSelectionBehavior.ROW_ONLY}
+        selectionMode={TableSelectionMode.SingleSelect}
+        selectionBehavior={TableSelectionBehavior.RowOnly}
       />
     );
 
@@ -522,7 +522,7 @@ describe('AnalyticalTable', () => {
         header="Table Title"
         data={data}
         columns={columns}
-        selectionMode={TableSelectionMode.SINGLE_SELECT}
+        selectionMode={TableSelectionMode.SingleSelect}
         withRowHighlight
         minRows={1}
       />
@@ -544,7 +544,7 @@ describe('AnalyticalTable', () => {
         header="Table Title"
         data={data}
         columns={columns}
-        selectionMode={TableSelectionMode.SINGLE_SELECT}
+        selectionMode={TableSelectionMode.SingleSelect}
         minRows={1}
       />
     );
@@ -561,7 +561,7 @@ describe('AnalyticalTable', () => {
         header="Table Title"
         data={data}
         columns={columns}
-        selectionMode={TableSelectionMode.SINGLE_SELECT}
+        selectionMode={TableSelectionMode.SingleSelect}
         withRowHighlight
         minRows={1}
       />
@@ -583,7 +583,7 @@ describe('AnalyticalTable', () => {
         header="Table Title"
         data={data}
         columns={columns}
-        selectionMode={TableSelectionMode.SINGLE_SELECT}
+        selectionMode={TableSelectionMode.SingleSelect}
         minRows={1}
       />
     );
@@ -597,7 +597,7 @@ describe('AnalyticalTable', () => {
   test('highlight row with custom row key', () => {
     const utils = render(
       <AnalyticalTable
-        selectionMode={TableSelectionMode.SINGLE_SELECT}
+        selectionMode={TableSelectionMode.SingleSelect}
         data={data}
         columns={columns}
         reactTableOptions={{
@@ -663,7 +663,7 @@ describe('AnalyticalTable', () => {
       <AnalyticalTable
         data={[...data, ...moreData]}
         columns={columns}
-        visibleRowCountMode={TableVisibleRowCountMode.AUTO}
+        visibleRowCountMode={TableVisibleRowCountMode.Auto}
       />
     );
 
@@ -687,7 +687,7 @@ describe('AnalyticalTable', () => {
       <AnalyticalTable
         data={[...data, ...moreData]}
         columns={columns}
-        visibleRowCountMode={TableVisibleRowCountMode.AUTO}
+        visibleRowCountMode={TableVisibleRowCountMode.Auto}
       />
     );
     expect(tableContainer.getAttribute('data-per-page')).toBe('22');
@@ -698,7 +698,7 @@ describe('AnalyticalTable', () => {
       <AnalyticalTable
         data={[...data, ...moreData]}
         columns={columns}
-        visibleRowCountMode={TableVisibleRowCountMode.AUTO}
+        visibleRowCountMode={TableVisibleRowCountMode.Auto}
         visibleRows={1337}
       />
     );
@@ -709,7 +709,7 @@ describe('AnalyticalTable', () => {
       <AnalyticalTable
         data={[...data, ...moreData]}
         columns={columns}
-        visibleRowCountMode={TableVisibleRowCountMode.FIXED}
+        visibleRowCountMode={TableVisibleRowCountMode.Fixed}
       />
     );
     expect(tableContainer.getAttribute('data-per-page')).toBe('15');
@@ -719,7 +719,7 @@ describe('AnalyticalTable', () => {
       <AnalyticalTable
         data={[...data, ...moreData]}
         columns={columns}
-        visibleRowCountMode={TableVisibleRowCountMode.FIXED}
+        visibleRowCountMode={TableVisibleRowCountMode.Fixed}
         visibleRows={1337}
       />
     );
@@ -738,7 +738,7 @@ describe('AnalyticalTable', () => {
       <AnalyticalTable
         data={[...data, ...moreData]}
         columns={columns}
-        visibleRowCountMode={TableVisibleRowCountMode.INTERACTIVE}
+        visibleRowCountMode={TableVisibleRowCountMode.Interactive}
       />
     );
     const tableContainer = screen.getByRole('grid', { hidden: true });
@@ -911,8 +911,8 @@ describe('AnalyticalTable', () => {
         header="Table Title"
         data={data}
         columns={columns}
-        selectionBehavior={TableSelectionBehavior.ROW}
-        selectionMode={TableSelectionMode.SINGLE_SELECT}
+        selectionBehavior={TableSelectionBehavior.Row}
+        selectionMode={TableSelectionMode.SingleSelect}
         onRowClick={callback}
       />
     );
@@ -1014,7 +1014,7 @@ describe('AnalyticalTable', () => {
           data={dataWithDisableSelectProp}
           columns={columns}
           onRowSelected={cb}
-          selectionMode={TableSelectionMode.MULTI_SELECT}
+          selectionMode={TableSelectionMode.MultiSelect}
           tableHooks={[useRowDisableSelection('disableSelection')]}
           minRows={1}
         />

@@ -10,24 +10,15 @@ import { AvatarSize } from '@ui5/webcomponents-react/dist/AvatarSize';
 import { GlobalStyleClasses } from '@ui5/webcomponents-react/dist/GlobalStyleClasses';
 import { List } from '@ui5/webcomponents-react/dist/List';
 import { ObjectPageMode } from '@ui5/webcomponents-react/dist/ObjectPageMode';
-import { PopoverPlacementType } from '@ui5/webcomponents-react/dist/PopoverPlacementType';
 import { Popover } from '@ui5/webcomponents-react/dist/Popover';
+import { PopoverPlacementType } from '@ui5/webcomponents-react/dist/PopoverPlacementType';
 import { StandardListItem } from '@ui5/webcomponents-react/dist/StandardListItem';
 import { TabContainer } from '@ui5/webcomponents-react/dist/TabContainer';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import React, {
-  ComponentType,
-  forwardRef,
-  ReactElement,
-  RefObject,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState
-} from 'react';
+import React, { forwardRef, ReactElement, RefObject, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
+import { PopoverHorizontalAlign } from '../../enums/PopoverHorizontalAlign';
 import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
 import { stopPropagation } from '../../internal/stopPropagation';
 import { useObserveHeights } from '../../internal/useObserveHeights';
@@ -44,7 +35,6 @@ import {
   getSectionById,
   safeGetChildrenArray
 } from './ObjectPageUtils';
-import { PopoverHorizontalAlign } from '../../enums/PopoverHorizontalAlign';
 
 addCustomCSS(
   'ui5-tabcontainer',
@@ -100,13 +90,13 @@ export interface ObjectPagePropTypes extends CommonProps {
    * @deprecated
    */
   onSelectedSectionChanged?: (
-    event: CustomEvent<{ selectedSectionIndex: number; selectedSectionId: string; section: ComponentType }>
+    event: CustomEvent<{ selectedSectionIndex: number; selectedSectionId: string; section: HTMLDivElement }>
   ) => void;
   /**
    * Fired when the selected section changes.
    */
   onSelectedSectionChange?: (
-    event: CustomEvent<{ selectedSectionIndex: number; selectedSectionId: string; section: ComponentType }>
+    event: CustomEvent<{ selectedSectionIndex: number; selectedSectionId: string; section: HTMLDivElement }>
   ) => void;
 
   // appearance
@@ -129,7 +119,7 @@ export interface ObjectPagePropTypes extends CommonProps {
    * - "Default": All `ObjectPageSections` and `ObjectPageSubSections` are displayed on one page. Selecting tabs will scroll to the corresponding section.
    * - "IconTabBar": All `ObjectPageSections` are displayed on separate pages. Selecting tabs will lead to the corresponding page.
    */
-  mode?: ObjectPageMode;
+  mode?: ObjectPageMode | keyof typeof ObjectPageMode;
   /**
    * Defines whether the pin button of the header is displayed.
    */
@@ -182,6 +172,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
   const internalOnSelectedSectionChange = onSelectedSectionChange ?? onSelectedSectionChanged;
 
   const firstSectionId = safeGetChildrenArray<ReactElement>(children)[0]?.props?.id;
+
   const [internalSelectedSectionId, setInternalSelectedSectionId] = useState(selectedSectionId ?? firstSectionId);
   const [selectedSubSectionId, setSelectedSubSectionId] = useState(props.selectedSubSectionId);
   const [headerPinned, setHeaderPinned] = useState(alwaysShowContentHeader);
@@ -189,11 +180,34 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
 
   const objectPageRef: RefObject<HTMLDivElement> = useConsolidatedRef(ref);
   const topHeaderRef: RefObject<HTMLDivElement> = useRef();
+  const scrollEvent = useRef();
   //@ts-ignore
   const headerContentRef: RefObject<HTMLDivElement> = useConsolidatedRef(headerContent?.ref);
   const anchorBarRef: RefObject<HTMLDivElement> = useRef();
   const scrollTimeout = useRef(null);
   const [isAfterScroll, setIsAfterScroll] = useState(false);
+
+  const prevInternalSelectedSectionId = useRef(internalSelectedSectionId);
+  const fireOnSelectedChangedEvent = (targetEvent, index, id, section) => {
+    if (typeof internalOnSelectedSectionChange === 'function' && prevInternalSelectedSectionId.current !== id) {
+      internalOnSelectedSectionChange(
+        enrichEventWithDetails(targetEvent, {
+          selectedSectionIndex: parseInt(index, 10),
+          selectedSectionId: id,
+          section
+        })
+      );
+      prevInternalSelectedSectionId.current = id;
+    }
+  };
+  const debouncedOnSectionChange = useRef(debounce(fireOnSelectedChangedEvent, 500)).current;
+
+  useEffect(() => {
+    return () => {
+      debouncedOnSectionChange.cancel();
+      clearTimeout(scrollTimeout.current);
+    };
+  }, []);
 
   const isRTL = useIsRTL(objectPageRef);
   const responsivePaddingClass = useResponsiveContentPadding(objectPageRef.current);
@@ -271,34 +285,65 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     ]
   );
 
+  const programmaticallySetSection = () => {
+    const currentId = selectedSectionId ?? firstSectionId;
+    if (currentId !== prevSelectedSectionId.current) {
+      debouncedOnSectionChange.cancel();
+      isProgrammaticallyScrolled.current = true;
+      setInternalSelectedSectionId(currentId);
+      prevSelectedSectionId.current = currentId;
+      const sections = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
+      const currentIndex = safeGetChildrenArray(children).findIndex((objectPageSection: ReactElement, index) => {
+        return objectPageSection.props?.id === currentId;
+      });
+      fireOnSelectedChangedEvent({} as any, currentIndex, currentId, sections[0]);
+    }
+  };
+
   // change selected section when prop is changed (external change)
+  const prevSelectedSectionId = useRef();
+  const [timeStamp, setTimeStamp] = useState(0);
   useEffect(() => {
-    isProgrammaticallyScrolled.current = true;
-    setInternalSelectedSectionId(selectedSectionId ?? firstSectionId);
-  }, [selectedSectionId, isProgrammaticallyScrolled, firstSectionId]);
+    if (selectedSectionId) {
+      if (mode === ObjectPageMode.Default) {
+        // wait for DOM draw, otherwise initial scroll won't work as intended
+        if (timeStamp < 750 && timeStamp !== undefined) {
+          requestAnimationFrame((internalTimestamp) => {
+            setTimeStamp(internalTimestamp);
+          });
+        } else {
+          setTimeStamp(undefined);
+          programmaticallySetSection();
+        }
+      } else {
+        programmaticallySetSection();
+      }
+    }
+  }, [timeStamp, selectedSectionId, firstSectionId, debouncedOnSectionChange]);
 
   // section was selected by clicking on the anchor bar buttons
   const handleOnSectionSelected = useCallback(
-    (e) => {
+    (targetEvent, newSelectionSectionId, index, section) => {
       isProgrammaticallyScrolled.current = true;
-      const newSelectionSection = e.detail.props?.id;
+      debouncedOnSectionChange.cancel();
       setInternalSelectedSectionId((oldSelectedSection) => {
-        if (oldSelectedSection === newSelectionSection) {
-          scrollToSection(newSelectionSection);
+        if (oldSelectedSection === newSelectionSectionId) {
+          scrollToSection(newSelectionSectionId);
         }
-        return newSelectionSection;
+        return newSelectionSectionId;
       });
-      fireOnSelectedChangedEvent(e);
+      scrollEvent.current = targetEvent;
+      fireOnSelectedChangedEvent(targetEvent, index, newSelectionSectionId, section);
     },
     [internalOnSelectedSectionChange, setInternalSelectedSectionId, isProgrammaticallyScrolled, scrollToSection]
   );
 
   // do internal scrolling
   useEffect(() => {
-    if (mode === ObjectPageMode.Default && isProgrammaticallyScrolled.current === true) {
+    if (mode === ObjectPageMode.Default && isProgrammaticallyScrolled.current === true && !selectedSubSectionId) {
       scrollToSection(internalSelectedSectionId);
     }
-  }, [internalSelectedSectionId, mode, isProgrammaticallyScrolled, scrollToSection]);
+  }, [internalSelectedSectionId, mode, isProgrammaticallyScrolled, scrollToSection, selectedSubSectionId]);
 
   // Scrolling for Sub Section Selection
   useEffect(() => {
@@ -324,7 +369,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     }
   }, [
     selectedSubSectionId,
-    isProgrammaticallyScrolled,
+    isProgrammaticallyScrolled.current,
     topHeaderHeight,
     anchorBarHeight,
     headerPinned,
@@ -361,14 +406,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
         }
       }
     }
-  }, [
-    props.selectedSubSectionId,
-    setInternalSelectedSectionId,
-    setSelectedSubSectionId,
-    children,
-    mode,
-    isProgrammaticallyScrolled
-  ]);
+  }, [props.selectedSubSectionId, setInternalSelectedSectionId, setSelectedSubSectionId, children, mode]);
 
   useEffect(() => {
     const fillerDivObserver = new ResizeObserver(() => {
@@ -405,29 +443,23 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     };
   }, [totalHeaderHeight, objectPageRef, children, mode, footer]);
 
-  const fireOnSelectedChangedEvent = debounce((e) => {
-    if (typeof internalOnSelectedSectionChange === 'function') {
-      internalOnSelectedSectionChange(
-        enrichEventWithDetails(e, {
-          selectedSectionIndex: e.detail.index,
-          selectedSectionId: e.detail.props.id,
-          section: e.detail
-        })
-      );
-    }
-  }, 500);
-
   const handleOnSubSectionSelected = useCallback(
     (e) => {
       isProgrammaticallyScrolled.current = true;
       if (mode === ObjectPageMode.IconTabBar) {
         const sectionId = e.detail.section.props?.id;
         setInternalSelectedSectionId(sectionId);
+
+        const sections = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
+        const currentIndex = safeGetChildrenArray(children).findIndex((objectPageSection: ReactElement) => {
+          return objectPageSection.props?.id === sectionId;
+        });
+        debouncedOnSectionChange(e, currentIndex, sectionId, sections[currentIndex]);
       }
       const subSection = e.detail.subSection;
       setSelectedSubSectionId(subSection.props.id);
     },
-    [mode, setInternalSelectedSectionId, setSelectedSubSectionId, isProgrammaticallyScrolled]
+    [mode, setInternalSelectedSectionId, setSelectedSubSectionId, isProgrammaticallyScrolled, children]
   );
   const [scrolledHeaderExpanded, setScrolledHeaderExpanded] = useState(false);
   const onToggleHeaderContentVisibility = useCallback(
@@ -469,7 +501,12 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
             objectPageRef.current.getBoundingClientRect().top + totalHeaderHeight + 48 <=
             section.target.getBoundingClientRect().bottom
           ) {
-            setInternalSelectedSectionId(extractSectionIdFromHtmlId(section.target.id));
+            const currentId = extractSectionIdFromHtmlId(section.target.id);
+            setInternalSelectedSectionId(currentId);
+            const currentIndex = safeGetChildrenArray(children).findIndex((objectPageSection: ReactElement) => {
+              return objectPageSection.props?.id === currentId;
+            });
+            debouncedOnSectionChange(scrollEvent.current, currentIndex, currentId, section.target);
           }
         }
       },
@@ -482,6 +519,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     // Fallback when scrolling faster than the IntersectionObserver can observe (in most cases faster than 60fps)
     if (isAfterScroll) {
       let currentSection = sections[sections.length - 1];
+      let currentIndex;
       for (let i = 0; i <= sections.length - 1; i++) {
         const section = sections[i];
         if (
@@ -489,11 +527,19 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
           section.getBoundingClientRect().bottom
         ) {
           currentSection = section;
+          currentIndex = i;
           break;
         }
       }
-      if (extractSectionIdFromHtmlId(currentSection.id) !== internalSelectedSectionId) {
-        setInternalSelectedSectionId(extractSectionIdFromHtmlId(currentSection.id));
+      const currentSectionId = extractSectionIdFromHtmlId(currentSection.id);
+      if (currentSectionId !== internalSelectedSectionId) {
+        setInternalSelectedSectionId(currentSectionId);
+        debouncedOnSectionChange(
+          scrollEvent.current,
+          currentIndex ?? sections.length - 1,
+          currentSectionId,
+          currentSection
+        );
       }
       setIsAfterScroll(false);
     }
@@ -590,12 +636,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     (event) => {
       const { sectionId, index } = event.detail.tab.dataset;
       const section = safeGetChildrenArray<ReactElement>(children).find((el) => el.props.id == sectionId);
-      handleOnSectionSelected(
-        enrichEventWithDetails({} as any, {
-          ...section,
-          index
-        })
-      );
+      handleOnSectionSelected(event, section?.props?.id, index, section);
     },
     [children]
   );
@@ -625,6 +666,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
   const prevScrollTop = useRef();
   const onObjectPageScroll = useCallback(
     (e) => {
+      scrollEvent.current = e;
       if (typeof props.onScroll === 'function') {
         props.onScroll(e);
       }

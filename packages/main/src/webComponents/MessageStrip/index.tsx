@@ -12,7 +12,7 @@ export interface MessageStripPropTypes extends CommonProps {
    *
    * **Note:** Available options are `"Information"`, `"Positive"`, `"Negative"`, and `"Warning"`.
    */
-  design?: MessageStripDesign;
+  design?: MessageStripDesign | keyof typeof MessageStripDesign;
   /**
    * Defines whether the MessageStrip renders close icon.
    */

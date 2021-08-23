@@ -72,7 +72,7 @@ export interface StepInputPropTypes extends Omit<CommonProps, 'onChange'> {
    * *   `Success`
    * *   `Information`
    */
-  valueState?: ValueState;
+  valueState?: ValueState | keyof typeof ValueState;
   /**
    * Defines the value state message that will be displayed as pop up under the component.
    *

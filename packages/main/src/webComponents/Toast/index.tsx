@@ -28,7 +28,7 @@ export interface ToastPropTypes extends CommonProps {
    * *   `BottomCenter`
    * *   `BottomEnd`
    */
-  placement?: ToastPlacement;
+  placement?: ToastPlacement | keyof typeof ToastPlacement;
   /**
    * Defines the text of the component.
    *

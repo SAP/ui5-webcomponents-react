@@ -20,7 +20,7 @@ export interface StandardListItemPropTypes extends CommonProps {
    * Defines the state of the `additionalText`.
    * Available options are: `"None"` (by default), `"Success"`, `"Warning"`, `"Information"` and `"Erorr"`.
    */
-  additionalTextState?: ValueState;
+  additionalTextState?: ValueState | keyof typeof ValueState;
   /**
    * Defines the description displayed right under the item text, if such is present.
    */
@@ -48,7 +48,7 @@ export interface StandardListItemPropTypes extends CommonProps {
    *
    * **Note:** When set to `Active`, the item will provide visual response upon press and hover, while with type `Inactive` and `Detail` - will not.
    */
-  type?: ListItemType;
+  type?: ListItemType | keyof typeof ListItemType;
   /**
    * Defines the selected state of the `ListItem`.
    */

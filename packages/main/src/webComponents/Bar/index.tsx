@@ -16,7 +16,7 @@ export interface BarPropTypes extends CommonProps {
    * *   `Footer`
    * *   `FloatingFooter`
    */
-  design?: BarDesign;
+  design?: BarDesign | keyof typeof BarDesign;
   /**
    * Defines the content in the middle of the bar
    */

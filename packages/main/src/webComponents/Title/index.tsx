@@ -10,14 +10,14 @@ export interface TitlePropTypes extends CommonProps {
   /**
    * Defines the component level. Available options are: `"H6"` to `"H1"`.
    */
-  level?: TitleLevel;
+  level?: TitleLevel | keyof typeof TitleLevel;
   /**
    * Defines how the text of a component will be displayed when there is not enough space. Available options are:
    *
    * *   `None` - The text will be truncated with an ellipsis.
    * *   `Normal` - The text will wrap. The words will not be broken based on hyphenation.
    */
-  wrappingType?: WrappingType;
+  wrappingType?: WrappingType | keyof typeof WrappingType;
   /**
    * Defines the text of the component.
    *

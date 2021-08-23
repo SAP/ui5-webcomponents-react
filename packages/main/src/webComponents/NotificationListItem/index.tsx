@@ -13,7 +13,7 @@ export interface NotificationListItemPropTypes extends CommonProps {
    *
    * **Note:** by default the `titleText` and `decription`, and a `ShowMore/Less` button would be displayed.
    */
-  wrappingType?: WrappingType;
+  wrappingType?: WrappingType | keyof typeof WrappingType;
   /**
    * Defines if a busy indicator would be displayed over the item.
    */
@@ -30,7 +30,7 @@ export interface NotificationListItemPropTypes extends CommonProps {
    * *   `Medium`
    * *   `High`
    */
-  priority?: Priority;
+  priority?: Priority | keyof typeof Priority;
   /**
    * Defines if the `notification` is new or has been already read.
    *
