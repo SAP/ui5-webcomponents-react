@@ -58,7 +58,7 @@ export interface ComboBoxPropTypes extends Omit<CommonProps, 'onChange' | 'onInp
    * *   `Success`
    * *   `Information`
    */
-  valueState?: ValueState;
+  valueState?: ValueState | keyof typeof ValueState;
   /**
    * Defines the component items.
    */

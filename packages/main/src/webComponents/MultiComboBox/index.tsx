@@ -52,7 +52,7 @@ export interface MultiComboBoxPropTypes extends Omit<CommonProps, 'onChange' | '
    * *   `Success`
    * *   `Information`
    */
-  valueState?: ValueState;
+  valueState?: ValueState | keyof typeof ValueState;
   /**
    * Defines the component items.
    */

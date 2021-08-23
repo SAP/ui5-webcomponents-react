@@ -26,7 +26,7 @@ export interface AnalyticalCardHeaderPropTypes extends CommonProps {
   /**
    * Defines the orientation of the deviation indicator.
    */
-  arrowIndicator?: DeviationIndicator;
+  arrowIndicator?: DeviationIndicator | keyof typeof DeviationIndicator;
   /**
    * Defines whether the deviation indicator should be displayed.
    */
@@ -35,7 +35,7 @@ export interface AnalyticalCardHeaderPropTypes extends CommonProps {
    * Defines the value state of the deviation indicator.
    * Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li></ul>
    */
-  indicatorState?: ValueState;
+  indicatorState?: ValueState | keyof typeof ValueState;
   /**
    * Defines the value of the `AnalyticalCardHeader`.
    */
@@ -48,7 +48,7 @@ export interface AnalyticalCardHeaderPropTypes extends CommonProps {
    * Defines the value state of the value.
    * Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li></ul>
    */
-  valueState?: ValueState;
+  valueState?: ValueState | keyof typeof ValueState;
   /**
    * Defines the target value.
    */
@@ -69,7 +69,7 @@ export interface AnalyticalCardHeaderPropTypes extends CommonProps {
    * Defines the value state of the counter.
    * Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>
    */
-  counterState?: ValueState;
+  counterState?: ValueState | keyof typeof ValueState;
   /**
    * Defines the currency.
    */

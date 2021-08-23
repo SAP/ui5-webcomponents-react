@@ -31,7 +31,7 @@ export interface NotificationListGroupItemPropTypes extends CommonProps {
    * *   `Medium`
    * *   `High`
    */
-  priority?: Priority;
+  priority?: Priority | keyof typeof Priority;
   /**
    * Defines if the `notification` is new or has been already read.
    *

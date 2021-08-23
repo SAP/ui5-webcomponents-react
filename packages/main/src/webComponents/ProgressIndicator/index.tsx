@@ -28,7 +28,7 @@ export interface ProgressIndicatorPropTypes extends CommonProps {
    * *   `Success`
    * *   `Information`
    */
-  valueState?: ValueState;
+  valueState?: ValueState | keyof typeof ValueState;
 }
 
 /**

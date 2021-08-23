@@ -62,7 +62,7 @@ export interface InputPropTypes extends Omit<CommonProps, 'onChange' | 'onInput'
    * *   The particular effect of this property differs depending on the browser and the current language settings, especially for type `Number`.
    * *   The property is mostly intended to be used with touch devices that use different soft keyboard layouts depending on the given input type.
    */
-  type?: InputType;
+  type?: InputType | keyof typeof InputType;
   /**
    * Defines the value of the component.
    *
@@ -80,7 +80,7 @@ export interface InputPropTypes extends Omit<CommonProps, 'onChange' | 'onInput'
    * *   `Success`
    * *   `Information`
    */
-  valueState?: ValueState;
+  valueState?: ValueState | keyof typeof ValueState;
   /**
    * Defines the suggestion items.
    *

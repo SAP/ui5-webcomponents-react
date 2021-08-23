@@ -31,7 +31,7 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
   /**
    * Determines on which side the VariantManagement popover is placed at.
    */
-  placement?: PopoverPlacementType;
+  placement?: PopoverPlacementType | keyof typeof PopoverPlacementType;
   /**
    * Describes the title of the VariantManagement popover.
    *
@@ -53,7 +53,7 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
   /**
    * Describes the `HTML Title` level of the variants.
    */
-  level?: TitleLevel;
+  level?: TitleLevel | keyof typeof TitleLevel;
   /**
    * Defines whether the VariantManagement is disabled.
    */

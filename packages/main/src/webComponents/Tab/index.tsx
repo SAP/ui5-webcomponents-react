@@ -25,7 +25,7 @@ export interface TabPropTypes extends CommonProps {
    *
    * **Note:** The design depends on the current theme.
    */
-  design?: SemanticColor;
+  design?: SemanticColor | keyof typeof SemanticColor;
   /**
    * Enabled items can be selected.
    */

@@ -17,7 +17,7 @@ export interface PagePropTypes extends CommonProps {
    * *   `Transparent`
    * *   `List`
    */
-  backgroundDesign?: PageBackgroundDesign;
+  backgroundDesign?: PageBackgroundDesign | keyof typeof PageBackgroundDesign;
   /**
    * Disables vertical scrolling of page content. If set to true, there will be no vertical scrolling at all.
    */
