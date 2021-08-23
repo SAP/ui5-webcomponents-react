@@ -1,7 +1,7 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import { BulletChart } from '@ui5/webcomponents-react-charts/dist/BulletChart';
-import { complexBulletDataset, complexDataSet, secondaryDimensionDataSet } from '../../resources/DemoProps';
+import { complexBulletDataset, complexDataSet } from '../../resources/DemoProps';
 
 <Meta
   title="Charts /  BulletChart"
@@ -128,6 +128,51 @@ You can do this via the `measures` array:
           accessor: 'volume',
           type: 'comparison',
           width: 10
+        }
+      ]
+    }}
+  >
+    {(props) => <BulletChart {...props} />}
+  </Story>
+</Canvas>
+
+### With Highlighted Measures
+
+<Canvas>
+  <Story
+    name="With Highlighted Measures"
+    args={{
+      dataset: complexBulletDataset,
+      style: { height: '60vh' },
+      layout: 'horizontal',
+      dimensions: [
+        {
+          accessor: 'name',
+          formatter: (d) => `${d} 2019`,
+          interval: 0
+        }
+      ],
+      measures: [
+        {
+          accessor: 'sessions',
+          label: 'Active Sessions',
+          type: 'primary'
+        },
+        {
+          accessor: 'users',
+          label: 'Users',
+          type: 'additional',
+          highlightColor: (value, measure, data) => {
+            if (value > 100) {
+              return 'red';
+            }
+          }
+        },
+        {
+          accessor: 'volume',
+          label: 'Volume',
+          formatter: (val) => val.toLocaleString(),
+          type: 'comparison'
         }
       ]
     }}
