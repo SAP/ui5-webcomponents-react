@@ -4,7 +4,7 @@ import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassH
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
-import { debounce, enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
+import { debounce, deprecationNotice, enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { AvatarPropTypes } from '@ui5/webcomponents-react/dist/Avatar';
 import { AvatarSize } from '@ui5/webcomponents-react/dist/AvatarSize';
 import { GlobalStyleClasses } from '@ui5/webcomponents-react/dist/GlobalStyleClasses';
@@ -95,8 +95,17 @@ export interface ObjectPagePropTypes extends CommonProps {
   selectedSubSectionId?: string;
   /**
    * Fired when the selected section changes.
+   *
+   * __Note:__ This prop is deprecated and will be removed in `v0.19.0`. Please use `onSelectedSectionChange` instead.
+   * @deprecated
    */
   onSelectedSectionChanged?: (
+    event: CustomEvent<{ selectedSectionIndex: number; selectedSectionId: string; section: ComponentType }>
+  ) => void;
+  /**
+   * Fired when the selected section changes.
+   */
+  onSelectedSectionChange?: (
     event: CustomEvent<{ selectedSectionIndex: number; selectedSectionId: string; section: ComponentType }>
   ) => void;
 
@@ -150,6 +159,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     slot,
     showHideHeaderButton,
     children,
+    onSelectedSectionChange,
     onSelectedSectionChanged,
     selectedSectionId,
     alwaysShowContentHeader,
@@ -159,6 +169,17 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
   } = props;
 
   const classes = useStyles();
+
+  useEffect(() => {
+    if (onSelectedSectionChanged) {
+      deprecationNotice(
+        'onSelectedSectionChanged',
+        `\`onSelectedSectionChanged\` is deprecated. Please use \`onSelectedSectionChange\` instead.`
+      );
+    }
+  }, [onSelectedSectionChanged]);
+
+  const internalOnSelectedSectionChange = onSelectedSectionChange ?? onSelectedSectionChanged;
 
   const firstSectionId = safeGetChildrenArray<ReactElement>(children)[0]?.props?.id;
   const [internalSelectedSectionId, setInternalSelectedSectionId] = useState(selectedSectionId ?? firstSectionId);
@@ -269,7 +290,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
       });
       fireOnSelectedChangedEvent(e);
     },
-    [onSelectedSectionChanged, setInternalSelectedSectionId, isProgrammaticallyScrolled, scrollToSection]
+    [internalOnSelectedSectionChange, setInternalSelectedSectionId, isProgrammaticallyScrolled, scrollToSection]
   );
 
   // do internal scrolling
@@ -385,8 +406,8 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
   }, [totalHeaderHeight, objectPageRef, children, mode, footer]);
 
   const fireOnSelectedChangedEvent = debounce((e) => {
-    if (typeof onSelectedSectionChanged === 'function') {
-      onSelectedSectionChanged(
+    if (typeof internalOnSelectedSectionChange === 'function') {
+      internalOnSelectedSectionChange(
         enrichEventWithDetails(e, {
           selectedSectionIndex: e.detail.index,
           selectedSectionId: e.detail.props.id,
@@ -430,7 +451,11 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     objectPageClasses.put(classes.iconTabBarMode);
   }
 
-  const passThroughProps = usePassThroughHtmlProps(props, ['onSelectedSectionChanged', 'onScroll']);
+  const passThroughProps = usePassThroughHtmlProps(props, [
+    'onSelectedSectionChange',
+    'onSelectedSectionChanged',
+    'onScroll'
+  ]);
 
   useEffect(() => {
     const sections = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
