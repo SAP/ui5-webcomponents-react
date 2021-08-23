@@ -294,6 +294,34 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDom
     }
   }, [actions]);
 
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
+      if (onlyUpperCaseRegExp.test(initialFocus) && initialFocus !== MessageBoxActions.OK) {
+        // eslint-disable-next-line no-console
+        console.warn(
+          'UI5 Web Components for React - MessageBox',
+          `'MessageBoxTypes.${initialFocus}' is deprecated and will be removed with v0.19.0.`,
+          `Please use 'MessageBoxTypes.${initialFocus.charAt(0)}${initialFocus.slice(1).toLowerCase()}' instead.`
+        );
+      }
+    }
+  }, [initialFocus]);
+
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
+      if (onlyUpperCaseRegExp.test(emphasizedAction) && emphasizedAction !== MessageBoxActions.OK) {
+        // eslint-disable-next-line no-console
+        console.warn(
+          'UI5 Web Components for React - MessageBox',
+          `'MessageBoxTypes.${emphasizedAction}' is deprecated and will be removed with v0.19.0.`,
+          `Please use 'MessageBoxTypes.${emphasizedAction.charAt(0)}${emphasizedAction
+            .slice(1)
+            .toLowerCase()}' instead.`
+        );
+      }
+    }
+  }, [emphasizedAction]);
+  // todo remove lowercase conversions
   return (
     <Dialog
       slot={slot}
@@ -304,7 +332,7 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDom
       onAfterOpen={onAfterOpen}
       onBeforeOpen={onBeforeOpen}
       onAfterClose={open ? handleOnClose : stopPropagation}
-      initialFocus={initialFocus}
+      initialFocus={initialFocus?.toLowerCase()}
       {...passThroughProps}
     >
       <header slot="header" className={classes.header} data-type={type}>
@@ -314,13 +342,16 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDom
       <Text className={classes.content}>{children}</Text>
       <footer slot="footer" className={classes.footer}>
         {getActions().map((action, index) => {
+          const lowerCaseAction = action?.toLowerCase();
           return (
             <Button
-              id={action}
+              id={lowerCaseAction}
               key={`${action}-${index}`}
-              design={emphasizedAction === action ? ButtonDesign.Emphasized : ButtonDesign.Transparent}
+              design={
+                emphasizedAction?.toLowerCase() === lowerCaseAction ? ButtonDesign.Emphasized : ButtonDesign.Transparent
+              }
               onClick={handleOnClose}
-              data-action={action}
+              data-action={lowerCaseAction}
             >
               {actionTranslations[action] ?? action}
             </Button>

@@ -3,7 +3,7 @@ import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils
 import { CheckBox } from '@ui5/webcomponents-react/dist/CheckBox';
 import { TableSelectionBehavior } from '@ui5/webcomponents-react/dist/TableSelectionBehavior';
 import { TableSelectionMode } from '@ui5/webcomponents-react/dist/TableSelectionMode';
-import React, { useCallback } from 'react';
+import React from 'react';
 
 const divStyle = { width: '100%', height: '100%', cursor: 'pointer' };
 const customCheckBoxStyling = {
