@@ -166,7 +166,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
       legendHorizontalAlign: 'left',
       zoomingTool: false,
       resizeDebounce: 250,
-      yAxisWidth,
+      yAxisWidth: null,
       ...props.chartConfig
     };
   }, [props.chartConfig]);
