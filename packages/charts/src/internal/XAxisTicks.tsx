@@ -10,10 +10,13 @@ interface XAxisTicksProps {
   y?: number;
   payload?: any;
   config: IChartMeasure;
+  secondYAxisConfig?: {
+    color: string;
+  };
 }
 
 export const XAxisTicks: FC<XAxisTicksProps> = (props: XAxisTicksProps) => {
-  const { x, y, payload, config, visibleTicksCount, width } = props;
+  const { x, y, payload, config, visibleTicksCount, width, secondYAxisConfig } = props;
 
   const bandWidth = width / visibleTicksCount;
   const shouldRotate = bandWidth <= 100;
@@ -32,9 +35,9 @@ export const XAxisTicks: FC<XAxisTicksProps> = (props: XAxisTicksProps) => {
   }
 
   return (
-    <g style={{ direction: 'ltr' }} transform={`translate(${x},${y + 10})`}>
+    <g style={{ direction: 'ltr' }} transform={`translate(${x},${y + (secondYAxisConfig ? 0 : 10)})`}>
       <text
-        fill={ThemingParameters.sapContent_LabelColor}
+        fill={secondYAxisConfig?.color ?? ThemingParameters.sapContent_LabelColor}
         transform={shouldRotate ? 'rotate(-35)' : undefined}
         textAnchor={shouldRotate ? 'end' : 'middle'}
       >

@@ -1,8 +1,7 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import '@ui5/webcomponents-icons/dist/person-placeholder.js';
 import { ComposedChart } from '@ui5/webcomponents-react-charts/dist/ComposedChart';
-import { bigDataSet, complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
+import { bigDataSet, complexDataSet, simpleDataSet } from '../../resources/DemoProps';
 
 <Meta
   title="Charts /  ComposedChart"
@@ -78,22 +77,6 @@ import { bigDataSet, complexDataSet, secondaryDimensionDataSet, simpleDataSet } 
       style: { width: '95%', height: '40vh' },
       dimensions: [{ accessor: 'name' }],
       measures: [{ accessor: 'users', color: 'red', type: 'bar' }]
-    }}
-  >
-    {(props) => <ComposedChart {...props} />}
-  </Story>
-</Canvas>
-
-### With Secondary Dimension
-
-<Canvas>
-  <Story
-    name="With Secondary Dimension"
-    args={{
-      dataset: secondaryDimensionDataSet,
-      style: { width: '95%', height: '60vh' },
-      dimensions: [{ accessor: 'name' }, { accessor: 'dimension' }],
-      measures: [{ accessor: 'users', type: 'area', color: 'red', width: 2, opacity: 0.5 }]
     }}
   >
     {(props) => <ComposedChart {...props} />}
@@ -201,6 +184,51 @@ import { bigDataSet, complexDataSet, secondaryDimensionDataSet, simpleDataSet } 
         },
         {
           accessor: 'volume',
+          type: 'line'
+        }
+      ]
+    }}
+  >
+    {(props) => <ComposedChart {...props} />}
+  </Story>
+</Canvas>
+
+### With Highlighted Measures
+
+<Canvas>
+  <Story
+    name="With Highlighted Measures"
+    args={{
+      dataset: complexDataSet,
+      style: { height: '60vh' },
+      dimensions: [
+        {
+          accessor: 'name',
+          formatter: (d) => `${d} 2019`,
+          interval: 0
+        }
+      ],
+      measures: [
+        {
+          accessor: 'sessions',
+          label: 'Active Sessions',
+          type: 'bar',
+          highlightColor: (value, measure, data) => {
+            if (value > 400) {
+              return 'red';
+            }
+          }
+        },
+        {
+          accessor: 'users',
+          label: 'Users',
+          formatter: (val) => val.toLocaleString(),
+          type: 'area'
+        },
+        {
+          accessor: 'volume',
+          label: 'Vol.',
+          formatter: (val) => `${val} sessions`,
           type: 'line'
         }
       ]

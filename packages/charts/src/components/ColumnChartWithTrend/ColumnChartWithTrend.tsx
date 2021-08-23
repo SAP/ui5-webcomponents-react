@@ -3,7 +3,7 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingPar
 import { ColumnChart as ColumnChartLib } from '@ui5/webcomponents-react-charts/dist/ColumnChart';
 import { ColumnChartWithTrendPlaceholder } from '@ui5/webcomponents-react-charts/dist/ColumnChartWithTrendPlaceholder';
 import { LineChart as LineChartLib } from '@ui5/webcomponents-react-charts/dist/LineChart';
-import React, { FC, forwardRef, Ref, useMemo } from 'react';
+import React, { CSSProperties, FC, forwardRef, Ref, useMemo } from 'react';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { usePrepareTrendMeasures } from '../../hooks/usePrepareTrendMeasures';
 import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
@@ -28,6 +28,13 @@ interface MeasureConfig extends IChartMeasure {
    * column Stack ID
    */
   stackId?: string;
+  /**
+   * Highlight color of defined elements
+   * @param value {string | number} Current value of the highlighted measure
+   * @param measure {IChartMeasure} Current measure object
+   * @param dataElement {object} Current data element
+   */
+  highlightColor?: (value: number, measure: MeasureConfig, dataElement: Record<string, any>) => CSSProperties['color'];
 }
 
 interface DimensionConfig extends IChartDimension {
@@ -69,6 +76,8 @@ export interface ColumnChartWithTrendProps extends Omit<IChartBaseProps, 'syncId
    * - `width`: column width, defaults to `auto`
    * - `opacity`: column opacity, defaults to `1`
    * - `stackId`: columns with the same stackId will be stacked
+   * - `highlightColor`: function will be called to define a custom color of a specific element which matches the
+   *    defined condition. Overwrites code>color</code> of the element.
    *
    */
   measures: MeasureConfig[];
