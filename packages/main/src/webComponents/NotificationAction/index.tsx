@@ -16,7 +16,7 @@ export interface NotificationActionPropTypes extends CommonProps {
    * *   `Negative`
    * *   `Transparent`
    */
-  design?: ButtonDesign;
+  design?: ButtonDesign | keyof typeof ButtonDesign;
   /**
    * Defines if the action is disabled.
    *

@@ -50,6 +50,21 @@ import { createUseStyles } from 'react-jss';
 import { stopPropagation } from '../../internal/stopPropagation';
 import styles from './MessageBox.jss';
 
+type MessageBoxAction = MessageBoxActions | keyof typeof MessageBoxActions | string;
+
+const onlyUpperCaseRegExp = /^[A-Z]+$/;
+
+const deprecatedActions = new Set<MessageBoxAction>([
+  MessageBoxActions.ABORT,
+  MessageBoxActions.CANCEL,
+  MessageBoxActions.CLOSE,
+  MessageBoxActions.DELETE,
+  MessageBoxActions.IGNORE,
+  MessageBoxActions.NO,
+  MessageBoxActions.RETRY,
+  MessageBoxActions.YES
+]);
+
 export interface MessageBoxPropTypes extends CommonProps {
   /**
    * Flag whether the Message Box should be opened or closed
@@ -67,30 +82,40 @@ export interface MessageBoxPropTypes extends CommonProps {
   children: ReactNode | ReactNodeArray;
   /**
    * Array of actions of the MessageBox. Those actions will be transformed into buttons in the `MessageBox` footer.
+   *
+   * **Note: The uppercase `MessageBoxActions` are deprecated and will be removed with version 0.19.0.**
    */
-  actions?: (MessageBoxActions | string)[];
+  actions?: MessageBoxAction[];
   /**
    * Specifies which action of the created dialog will be emphasized.
    *
+   * **Note: The uppercase `MessageBoxActions` are deprecated and will be removed with version 0.19.0.**
+   *
    * @since 0.16.3
    */
-  emphasizedAction?: MessageBoxActions | string;
+  emphasizedAction?: MessageBoxAction;
   /**
    * A custom icon. If not present, it will be derived from the `MessageBox` type.
    */
   icon?: ReactNode;
   /**
    * Defines the type of the `MessageBox` with predefined title, icon, actions and a visual highlight color.
+   *
+   * **Note: The uppercase `MessageBoxTypes` are deprecated and will be removed with version 0.19.0.**
    */
-  type?: MessageBoxTypes;
+  type?: MessageBoxTypes | keyof typeof MessageBoxTypes;
   /**
    * Defines the ID of the HTML Element or the `MessageBoxAction`, which will get the initial focus.
+   *
+   * **Note: The uppercase `MessageBoxActions` are deprecated and will be removed with version 0.19.0.**
    */
-  initialFocus?: string | MessageBoxActions;
+  initialFocus?: MessageBoxAction;
   /**
    * Callback to be executed when the `MessageBox` is closed (either by pressing on one of the `actions` or by pressing the `ESC` key). `event.detail.action` contains the pressed action button.
+   *
+   * **Note: The uppercase `MessageBoxActions` are deprecated and will be removed with version 0.19.0.**
    */
-  onClose: (event: CustomEvent<{ action: MessageBoxActions }>) => void;
+  onClose: (event: CustomEvent<{ action: MessageBoxAction }>) => void;
   /**
    * Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. This event does not bubble.
    */
@@ -132,16 +157,22 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDom
   const iconToRender = useMemo(() => {
     if (isValidElement(icon)) return icon;
     switch (type) {
+      case MessageBoxTypes.Confirm:
       case MessageBoxTypes.CONFIRM:
         return <Icon name="question-mark" />;
+      case MessageBoxTypes.Error:
       case MessageBoxTypes.ERROR:
         return <Icon name="message-error" />;
+      case MessageBoxTypes.Information:
       case MessageBoxTypes.INFORMATION:
         return <Icon name="message-information" />;
+      case MessageBoxTypes.Success:
       case MessageBoxTypes.SUCCESS:
         return <Icon name="message-success" />;
+      case MessageBoxTypes.Warning:
       case MessageBoxTypes.WARNING:
         return <Icon name="message-warning" />;
+      case MessageBoxTypes.Highlight:
       case MessageBoxTypes.HIGHLIGHT:
         return <Icon name="hint" />;
       default:
@@ -152,14 +183,22 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDom
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
   const actionTranslations = {
+    [MessageBoxActions.Abort]: i18nBundle.getText(ABORT),
     [MessageBoxActions.ABORT]: i18nBundle.getText(ABORT),
+    [MessageBoxActions.Cancel]: i18nBundle.getText(CANCEL),
     [MessageBoxActions.CANCEL]: i18nBundle.getText(CANCEL),
+    [MessageBoxActions.Close]: i18nBundle.getText(CLOSE),
     [MessageBoxActions.CLOSE]: i18nBundle.getText(CLOSE),
+    [MessageBoxActions.Delete]: i18nBundle.getText(DELETE),
     [MessageBoxActions.DELETE]: i18nBundle.getText(DELETE),
+    [MessageBoxActions.Ignore]: i18nBundle.getText(IGNORE),
     [MessageBoxActions.IGNORE]: i18nBundle.getText(IGNORE),
+    [MessageBoxActions.No]: i18nBundle.getText(NO),
     [MessageBoxActions.NO]: i18nBundle.getText(NO),
     [MessageBoxActions.OK]: i18nBundle.getText(OK),
+    [MessageBoxActions.Retry]: i18nBundle.getText(RETRY),
     [MessageBoxActions.RETRY]: i18nBundle.getText(RETRY),
+    [MessageBoxActions.Yes]: i18nBundle.getText(YES),
     [MessageBoxActions.YES]: i18nBundle.getText(YES)
   };
 
@@ -168,16 +207,22 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDom
       return titleText;
     }
     switch (type) {
+      case MessageBoxTypes.Confirm:
       case MessageBoxTypes.CONFIRM:
         return i18nBundle.getText(CONFIRMATION);
+      case MessageBoxTypes.Error:
       case MessageBoxTypes.ERROR:
         return i18nBundle.getText(ERROR);
+      case MessageBoxTypes.Information:
       case MessageBoxTypes.INFORMATION:
         return i18nBundle.getText(INFORMATION);
+      case MessageBoxTypes.Success:
       case MessageBoxTypes.SUCCESS:
         return i18nBundle.getText(SUCCESS);
+      case MessageBoxTypes.Warning:
       case MessageBoxTypes.WARNING:
         return i18nBundle.getText(WARNING);
+      case MessageBoxTypes.Highlight:
       case MessageBoxTypes.HIGHLIGHT:
         return i18nBundle.getText(HIGHLIGHT);
       default:
@@ -189,11 +234,11 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDom
     if (actions && actions.length > 0) {
       return actions;
     }
-    if (type === MessageBoxTypes.CONFIRM) {
-      return [MessageBoxActions.OK, MessageBoxActions.CANCEL];
+    if (type === MessageBoxTypes.Confirm || type === MessageBoxTypes.CONFIRM) {
+      return [MessageBoxActions.OK, MessageBoxActions.Cancel];
     }
-    if (type === MessageBoxTypes.ERROR) {
-      return [MessageBoxActions.CLOSE];
+    if (type === MessageBoxTypes.Error || type === MessageBoxTypes.ERROR) {
+      return [MessageBoxActions.Close];
     }
     return [MessageBoxActions.OK];
   };
@@ -221,6 +266,62 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDom
 
   const messageBoxClassNames = StyleClassHelper.of(classes.messageBox).putIfPresent(className).className;
 
+  // check deprecations
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
+      if (onlyUpperCaseRegExp.test(type)) {
+        // eslint-disable-next-line no-console
+        console.warn(
+          'UI5 Web Components for React - MessageBox',
+          `'MessageBoxTypes.${type}' is deprecated and will be removed with v0.19.0.`,
+          `Please use 'MessageBoxTypes.${type.charAt(0)}${type.slice(1).toLowerCase()}' instead.`
+        );
+      }
+    }
+  }, [type]);
+
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
+      const uppercaseActions = Array.isArray(actions) ? actions.filter((action) => deprecatedActions.has(action)) : [];
+      for (const action of uppercaseActions) {
+        // eslint-disable-next-line no-console
+        console.warn(
+          'UI5 Web Components for React - MessageBox',
+          `'MessageBoxActions.${action}' is deprecated and will be removed with v0.19.0.`,
+          `Please use 'MessageBoxActions.${action.charAt(0)}${action.slice(1).toLowerCase()}' instead.`
+        );
+      }
+    }
+  }, [actions]);
+
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
+      if (onlyUpperCaseRegExp.test(initialFocus) && initialFocus !== MessageBoxActions.OK) {
+        // eslint-disable-next-line no-console
+        console.warn(
+          'UI5 Web Components for React - MessageBox',
+          `'MessageBoxTypes.${initialFocus}' is deprecated and will be removed with v0.19.0.`,
+          `Please use 'MessageBoxTypes.${initialFocus.charAt(0)}${initialFocus.slice(1).toLowerCase()}' instead.`
+        );
+      }
+    }
+  }, [initialFocus]);
+
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
+      if (onlyUpperCaseRegExp.test(emphasizedAction) && emphasizedAction !== MessageBoxActions.OK) {
+        // eslint-disable-next-line no-console
+        console.warn(
+          'UI5 Web Components for React - MessageBox',
+          `'MessageBoxTypes.${emphasizedAction}' is deprecated and will be removed with v0.19.0.`,
+          `Please use 'MessageBoxTypes.${emphasizedAction.charAt(0)}${emphasizedAction
+            .slice(1)
+            .toLowerCase()}' instead.`
+        );
+      }
+    }
+  }, [emphasizedAction]);
+  // todo remove lowercase conversions
   return (
     <Dialog
       slot={slot}
@@ -231,7 +332,7 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDom
       onAfterOpen={onAfterOpen}
       onBeforeOpen={onBeforeOpen}
       onAfterClose={open ? handleOnClose : stopPropagation}
-      initialFocus={initialFocus}
+      initialFocus={initialFocus?.toLowerCase()}
       {...passThroughProps}
     >
       <header slot="header" className={classes.header} data-type={type}>
@@ -241,11 +342,14 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDom
       <Text className={classes.content}>{children}</Text>
       <footer slot="footer" className={classes.footer}>
         {getActions().map((action, index) => {
+          const lowerCaseAction = action?.toLowerCase();
           return (
             <Button
-              id={action}
+              id={lowerCaseAction}
               key={`${action}-${index}`}
-              design={emphasizedAction === action ? ButtonDesign.Emphasized : ButtonDesign.Transparent}
+              design={
+                emphasizedAction?.toLowerCase() === lowerCaseAction ? ButtonDesign.Emphasized : ButtonDesign.Transparent
+              }
               onClick={handleOnClose}
               data-action={action}
             >
@@ -262,7 +366,7 @@ MessageBox.displayName = 'MessageBox';
 
 MessageBox.defaultProps = {
   open: false,
-  type: MessageBoxTypes.CONFIRM,
+  type: MessageBoxTypes.Confirm,
   emphasizedAction: MessageBoxActions.OK,
   actions: []
 };

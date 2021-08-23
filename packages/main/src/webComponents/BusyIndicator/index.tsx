@@ -23,7 +23,7 @@ export interface BusyIndicatorPropTypes extends CommonProps {
    * *   `Medium`
    * *   `Large`
    */
-  size?: BusyIndicatorSize;
+  size?: BusyIndicatorSize | keyof typeof BusyIndicatorSize;
   /**
    * Defines text to be displayed below the component. It can be used to inform the user of the current operation.
    */

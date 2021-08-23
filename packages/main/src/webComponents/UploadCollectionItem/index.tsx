@@ -41,13 +41,13 @@ export interface UploadCollectionItemPropTypes extends CommonProps {
   /**
    * If set to `Uploading` or `Error`, a progress indicator showing the `progress` is displayed. Also if set to `Error`, a refresh button is shown. When this icon is pressed `retry` event is fired. If set to `Uploading`, a terminate button is shown. When this icon is pressed `terminate` event is fired.
    */
-  uploadState?: UploadState;
+  uploadState?: UploadState | keyof typeof UploadState;
   /**
    * Defines the visual indication and behavior of the list items. Available options are `Active` (by default), `Inactive` and `Detail`.
    *
    * **Note:** When set to `Active`, the item will provide visual response upon press and hover, while with type `Inactive` and `Detail` - will not.
    */
-  type?: ListItemType;
+  type?: ListItemType | keyof typeof ListItemType;
   /**
    * Defines the selected state of the `ListItem`.
    */

@@ -14,7 +14,7 @@ export interface TimelinePropTypes extends CommonProps {
    * *   `Vertical`
    * *   `Horizontal`
    */
-  layout?: TimelineLayout;
+  layout?: TimelineLayout | keyof typeof TimelineLayout;
   /**
    * Determines the content of the `Timeline`.
    */

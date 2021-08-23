@@ -113,10 +113,10 @@ import { useRowDisableSelection } from '@ui5/webcomponents-react/dist/Analytical
     NoDataComponent: DefaultNoDataComponent,
     LoadingComponent: DefaultLoadingComponent,
     scaleWidthMode: TableScaleWidthMode.Default,
-    selectionMode: TableSelectionMode.SINGLE_SELECT,
-    selectionBehavior: TableSelectionBehavior.ROW,
+    selectionMode: TableSelectionMode.SingleSelect,
+    selectionBehavior: TableSelectionBehavior.Row,
     overscanCountHorizontal: 5,
-    visibleRowCountMode: TableVisibleRowCountMode.FIXED
+    visibleRowCountMode: TableVisibleRowCountMode.Fixed
   }}
   argTypes={{
     data: { type: null },
@@ -216,7 +216,7 @@ With the `useRowDisableSelection` it's possible to disable the selection of spec
     name="Plugin: useRowDisableSelection"
     args={{
       data: generateData(20).map((item) => ({ ...item, disableSelection: Math.random() < 0.5 })),
-      selectionMode: TableSelectionMode.MULTI_SELECT
+      selectionMode: TableSelectionMode.MultiSelect
     }}
   >
     {(args) => {
@@ -285,7 +285,7 @@ const WithFunctionParameter = () => {
     <AnalyticalTable
       data={data}
       columns={columns}
-      selectionMode={TableSelectionMode.MULTI_SELECT}
+      selectionMode={TableSelectionMode.MultiSelect}
       tableHooks={[useRowDisableSelection(disableRowFunc)]}
     />
   );
@@ -305,7 +305,7 @@ const data = [
     <AnalyticalTable
       data={data}
       columns={columns}
-      selectionMode={TableSelectionMode.MULTI_SELECT}
+      selectionMode={TableSelectionMode.MultiSelect}
       tableHooks={[useRowDisableSelection('disableSelection')]}
     />
   );
@@ -697,14 +697,14 @@ const TableWithSubcomponents = (props) => {
 
 ## Adjust the number of visible rows to the container height
 
-By adding the `visibleRowCountMode` prop and setting it to `TableVisibleRowCountMode.AUTO` the table automatically fills the surrounding container with rows.
+By adding the `visibleRowCountMode` prop and setting it to `TableVisibleRowCountMode.Auto` the table automatically fills the surrounding container with rows.
 
 <ArgsTable story="Adjust number of rows to container height" />
 
 <Canvas>
   <Story
     name="Adjust number of rows to container height"
-    args={{ visibleRowCountMode: TableVisibleRowCountMode.AUTO, containerHeight: 250 }}
+    args={{ visibleRowCountMode: TableVisibleRowCountMode.Auto, containerHeight: 250 }}
     argTypes={{
       columns: { table: { disable: true } },
       data: { table: { disable: true } },
@@ -797,7 +797,7 @@ In the example below you can have a look at this behavior:
   <Story
     name="Responsive columns"
     args={{
-      visibleRowCountMode: TableVisibleRowCountMode.FIXED,
+      visibleRowCountMode: TableVisibleRowCountMode.Fixed,
       containerWidth: 'auto',
       data: generateData(50),
       columns: [
@@ -1001,7 +1001,7 @@ Click on any of the rows in the example below to display the "navigated" indicat
 <Canvas>
   <Story
     name="with navigation indicator"
-    args={{ withNavigationHighlight: true, selectionMode: TableSelectionMode.MULTI_SELECT, data: generateData(20) }}
+    args={{ withNavigationHighlight: true, selectionMode: TableSelectionMode.MultiSelect, data: generateData(20) }}
   >
     {(args) => {
       const [selectedRow, setSelectedRow] = useState();

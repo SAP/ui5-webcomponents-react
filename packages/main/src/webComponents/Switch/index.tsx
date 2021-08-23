@@ -17,7 +17,7 @@ export interface SwitchPropTypes extends Omit<CommonProps, 'onChange'> {
    *
    * **Note:** If `Graphical` type is set, positive and negative icons will replace the `textOn` and `textOff`.
    */
-  design?: SwitchDesign;
+  design?: SwitchDesign | keyof typeof SwitchDesign;
   /**
    * Defines whether the component is disabled.
    *

@@ -22,7 +22,7 @@ export interface TableRowPropTypes extends CommonProps {
    *
    * **Note:** When set to `Active`, the item will provide visual response upon press, while with type `Inactive` - will not.
    */
-  type?: TableRowType;
+  type?: TableRowType | keyof typeof TableRowType;
   /**
    * Defines the cells of the component.
    *

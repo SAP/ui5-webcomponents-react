@@ -46,7 +46,7 @@ export interface ListPropTypes extends CommonProps {
    *
    * **Limitations:** `growing="Scroll"` is not supported for Internet Explorer, on IE the component will fallback to `growing="Button"`.
    */
-  growing?: ListGrowingMode;
+  growing?: ListGrowingMode | keyof typeof ListGrowingMode;
   /**
    * Defines the component header text.
    *
@@ -62,7 +62,7 @@ export interface ListPropTypes extends CommonProps {
    *
    * **Note:** Available options are `None`, `SingleSelect`, `SingleSelectBegin`, `SingleSelectEnd`, `MultiSelect`, and `Delete`.
    */
-  mode?: ListMode;
+  mode?: ListMode | keyof typeof ListMode;
   /**
    * Defines the text that is displayed when the component contains no items.
    */
@@ -76,7 +76,7 @@ export interface ListPropTypes extends CommonProps {
    * *   When set to `None`, none of the items are separated by horizontal lines.
    * *   When set to `Inner`, the first item doesn't have a top separator and the last item doesn't have a bottom separator.
    */
-  separators?: ListSeparators;
+  separators?: ListSeparators | keyof typeof ListSeparators;
   /**
    * Defines the items of the component.
    *

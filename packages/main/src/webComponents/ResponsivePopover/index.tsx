@@ -38,7 +38,7 @@ export interface ResponsivePopoverPropTypes extends CommonProps {
    * *   `Right`
    * *   `Stretch`
    */
-  horizontalAlign?: PopoverHorizontalAlign;
+  horizontalAlign?: PopoverHorizontalAlign | keyof typeof PopoverHorizontalAlign;
   /**
    * Defines whether the component should close when clicking/tapping outside of the popover. If enabled, it blocks any interaction with the background.
    */
@@ -53,7 +53,7 @@ export interface ResponsivePopoverPropTypes extends CommonProps {
    * *   `Top`
    * *   `Bottom`
    */
-  placementType?: PopoverPlacementType;
+  placementType?: PopoverPlacementType | keyof typeof PopoverPlacementType;
   /**
    * Determines the vertical alignment of the component.
    *
@@ -64,7 +64,7 @@ export interface ResponsivePopoverPropTypes extends CommonProps {
    * *   `Bottom`
    * *   `Stretch`
    */
-  verticalAlign?: PopoverVerticalAlign;
+  verticalAlign?: PopoverVerticalAlign | keyof typeof PopoverVerticalAlign;
   /**
    * Sets the accessible aria name of the component.
    */

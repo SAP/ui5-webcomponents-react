@@ -15,7 +15,7 @@ export interface AvatarGroupPropTypes extends Omit<CommonProps, 'onClick'> {
    * *   `Group`
    * *   `Individual`
    */
-  type?: AvatarGroupType;
+  type?: AvatarGroupType | keyof typeof AvatarGroupType;
   /**
    * Defines the items of the component. Use the `Avatar` component as an item.
    *

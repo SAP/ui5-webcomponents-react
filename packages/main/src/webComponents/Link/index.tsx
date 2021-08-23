@@ -16,7 +16,7 @@ export interface LinkPropTypes extends Omit<CommonProps, 'onClick'> {
    *
    * **Note:** Avaialble options are `Default`, `Subtle`, and `Emphasized`.
    */
-  design?: LinkDesign;
+  design?: LinkDesign | keyof typeof LinkDesign;
   /**
    * Defines whether the component is disabled.
    *
@@ -49,7 +49,7 @@ export interface LinkPropTypes extends Omit<CommonProps, 'onClick'> {
    * *   `None` - The text will be truncated with an ellipsis.
    * *   `Normal` - The text will wrap. The words will not be broken based on hyphenation.
    */
-  wrappingType?: WrappingType;
+  wrappingType?: WrappingType | keyof typeof WrappingType;
   /**
    * Defines the text of the component.
    * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.

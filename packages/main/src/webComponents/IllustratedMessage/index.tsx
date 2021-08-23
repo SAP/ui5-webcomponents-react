@@ -30,7 +30,7 @@ export interface IllustratedMessagePropTypes extends CommonProps {
    * When using an illustration type, other than the default, it should be loaded in addition:
    * `import "@ui5/webcomponents-fiori/dist/illustrations/NoData.js";`
    */
-  name?: IllustrationMessageType;
+  name?: IllustrationMessageType | keyof typeof IllustrationMessageType;
   /**
    * Defines the subtitle of the component.
    *
