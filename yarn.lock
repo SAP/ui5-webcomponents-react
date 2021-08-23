@@ -15166,10 +15166,10 @@ recharts-scale@^0.4.4:
   dependencies:
     decimal.js-light "^2.4.1"
 
-recharts@2.0.10:
-  version "2.0.10"
-  resolved "https://registry.yarnpkg.com/recharts/-/recharts-2.0.10.tgz#d5b212b06aeb4ba346c20c6987fe8f9f97d57b4d"
-  integrity sha512-yVIlHXPiSgxg8z+qApVnBcGVCLpluqNbXJenK3jKxsCb/FJzh77wyEztS6kXLXSC1RCZa7UABmBPBhqspMCF+g==
+recharts@2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/recharts/-/recharts-2.1.1.tgz#704f89a7aa7772ba522d0713b17d1275b8965d4a"
+  integrity sha512-slV1RDbLPxyA3/63bjvtdrTXOuFnO6cdh/XlEu1XaM/PigPwBK2NZrVarjcirlAd7fkUzFIgKQjCxC+Hk1ymGQ==
   dependencies:
     "@types/d3-scale" "^3.0.0"
     "@types/d3-shape" "^2.0.0"
