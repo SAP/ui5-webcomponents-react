@@ -15,7 +15,7 @@ export interface PanelPropTypes extends CommonProps {
   /**
    * Sets the accessible aria role of the component. Depending on the usage, you can change the role from the default `Form` to `Region` or `Complementary`.
    */
-  accessibleRole?: PanelAccessibleRole;
+  accessibleRole?: PanelAccessibleRole | keyof typeof PanelAccessibleRole;
   /**
    * Indicates whether the component is collapsed and only the header is displayed.
    */
@@ -29,7 +29,7 @@ export interface PanelPropTypes extends CommonProps {
    *
    * Available options are: `"H6"` to `"H1"`.
    */
-  headerLevel?: TitleLevel;
+  headerLevel?: TitleLevel | keyof typeof TitleLevel;
   /**
    * This property is used to set the header text of the component. The text is visible in both expanded and collapsed states.
    *

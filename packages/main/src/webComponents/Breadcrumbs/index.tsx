@@ -1,9 +1,9 @@
-import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { BreadcrumbsDesign } from '@ui5/webcomponents-react/dist/BreadcrumbsDesign';
 import { BreadcrumbsSeparatorStyle } from '@ui5/webcomponents-react/dist/BreadcrumbsSeparatorStyle';
-import { ReactNode } from 'react';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Breadcrumbs';
 
@@ -13,7 +13,7 @@ export interface BreadcrumbsPropTypes extends CommonProps {
    *
    * **Note:** The `Standard` breadcrumbs show the current page as the last item in the trail. The last item contains only plain text and is not a link.
    */
-  design?: BreadcrumbsDesign;
+  design?: BreadcrumbsDesign | keyof typeof BreadcrumbsDesign;
   /**
    * Determines the visual style of the separator between the breadcrumb items.
    *
@@ -26,7 +26,7 @@ export interface BreadcrumbsPropTypes extends CommonProps {
    * *   `DoubleSlash`
    * *   `GreaterThan`
    */
-  separatorStyle?: BreadcrumbsSeparatorStyle;
+  separatorStyle?: BreadcrumbsSeparatorStyle | keyof typeof BreadcrumbsSeparatorStyle;
   /**
    * Defines the component items.
    *

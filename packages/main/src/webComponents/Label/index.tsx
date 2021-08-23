@@ -30,7 +30,7 @@ export interface LabelPropTypes extends CommonProps {
    * *   `None` - The text will be truncated with an ellipsis.
    * *   `Normal` - The text will wrap. The words will not be broken based on hyphenation.
    */
-  wrappingType?: WrappingType;
+  wrappingType?: WrappingType | keyof typeof WrappingType;
   /**
    * Defines the text of the component.
    * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.

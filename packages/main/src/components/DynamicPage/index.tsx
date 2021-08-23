@@ -30,7 +30,7 @@ export interface DynamicPagePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * Determines the background color of DynamicPage.
    */
-  backgroundDesign?: PageBackgroundDesign;
+  backgroundDesign?: PageBackgroundDesign | keyof typeof PageBackgroundDesign;
   /**
    * Determines whether the `headerContent` is shown.
    */

@@ -15,7 +15,7 @@ export interface SuggestionItemPropTypes extends CommonProps {
    *
    * Available options are: `"None"` (by default), `"Success"`, `"Warning"` and `"Erorr"`.
    */
-  additionalTextState?: ValueState;
+  additionalTextState?: ValueState | keyof typeof ValueState;
   /**
    * Defines the description displayed right under the item text, if such is present.
    */
@@ -47,7 +47,7 @@ export interface SuggestionItemPropTypes extends CommonProps {
    *
    * **Note:** When set to `Active`, the item will provide visual response upon press and hover, while when `Inactive` or `Detail` - will not.
    */
-  type?: ListItemType;
+  type?: ListItemType | keyof typeof ListItemType;
 }
 
 /**

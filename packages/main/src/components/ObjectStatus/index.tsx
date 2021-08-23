@@ -46,7 +46,7 @@ export interface ObjectStatusPropTypes extends CommonProps {
    *
    * Since version 0.17.0 the state property also accepts values from enum `IndicationColor`.
    */
-  state?: ValueState | IndicationColor;
+  state?: ValueState | keyof typeof ValueState | IndicationColor | keyof typeof IndicationColor;
 
   /**
    * Defines whether the default icon for each `ValueState` should be displayed.<br />

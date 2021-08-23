@@ -20,7 +20,7 @@ export interface CarouselPropTypes extends CommonProps {
    * When set to "Content", the arrows are placed on the sides of the current page.
    * When set to "Navigation", the arrows are placed on the sides of the page indicator.
    */
-  arrowsPlacement?: CarouselArrowsPlacement;
+  arrowsPlacement?: CarouselArrowsPlacement | keyof typeof CarouselArrowsPlacement;
   /**
    * Defines whether the carousel should loop, i.e show the first page after the last page is reached and vice versa.
    */

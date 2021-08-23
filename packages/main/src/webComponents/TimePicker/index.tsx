@@ -41,7 +41,7 @@ export interface TimePickerPropTypes extends Omit<CommonProps, 'onChange' | 'onI
    * *   `Success`
    * *   `Information`
    */
-  valueState?: ValueState;
+  valueState?: ValueState | keyof typeof ValueState;
   /**
    * Defines the value state message that will be displayed as pop up under the `TimePicker`.
    *

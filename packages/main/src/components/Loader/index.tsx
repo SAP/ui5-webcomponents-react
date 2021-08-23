@@ -17,7 +17,7 @@ export interface LoaderPropTypes extends CommonProps {
    * Defines the type of the `Loader`.
    * __Note:__ If the process completion rate can be detected the `Determinate` type should be used.
    */
-  type?: LoaderType;
+  type?: LoaderType | keyof typeof LoaderType;
   /**
    * Defines the progress of the Loader Bar. <br />
    * __Note:__ This prop has no effect if used with type `Indeterminate`.
