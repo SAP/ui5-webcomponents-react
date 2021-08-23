@@ -124,7 +124,7 @@ const visibleColumns = (currentVisibleColumns, { instance: { webComponentsReactP
   if (
     webComponentsReactProperties.selectionMode === TableSelectionMode.NONE ||
     webComponentsReactProperties.selectionMode === TableSelectionMode.None ||
-    webComponentsReactProperties.selectionMode === TableSelectionBehavior.ROW_ONLY ||
+    webComponentsReactProperties.selectionBehavior === TableSelectionBehavior.ROW_ONLY ||
     webComponentsReactProperties.selectionBehavior === TableSelectionBehavior.RowOnly
   ) {
     return currentVisibleColumns;
