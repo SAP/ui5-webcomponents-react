@@ -1,10 +1,15 @@
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/Wizard';
 
-export interface WizardPropTypes extends WithWebComponentPropTypes {
+export interface WizardPropTypes extends CommonProps {
+  /**
+   * Sets the accessible aria name of the component.
+   */
+  accessibleName?: string;
   /**
    * Defines the steps.
    *
@@ -12,13 +17,10 @@ export interface WizardPropTypes extends WithWebComponentPropTypes {
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Fired when the step selection is changed by user interaction - either with scrolling, or by clicking on the steps within the component header.
+   * Fired when the step is changed by user interaction - either with scrolling, or by clicking on the steps within the component header.
    */
-  onSelectionChange?: (
-    event: Ui5CustomEvent<
-      HTMLElement,
-      { selectedStep: ReactNode; previouslySelectedStep: ReactNode; changeWithClick: boolean }
-    >
+  onStepChange?: (
+    event: Ui5CustomEvent<HTMLElement, { step: ReactNode; previousStep: ReactNode; changeWithClick: boolean }>
   ) => void;
 }
 
@@ -27,10 +29,12 @@ export interface WizardPropTypes extends WithWebComponentPropTypes {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Wizard" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Wizard: FC<WizardPropTypes> = withWebComponent<WizardPropTypes>('ui5-wizard', [], [], [], ['selection-change']);
+const Wizard = withWebComponent<WizardPropTypes>('ui5-wizard', ['accessibleName'], [], [], ['step-change']);
 
 Wizard.displayName = 'Wizard';
 
-Wizard.defaultProps = {};
+Wizard.defaultProps = {
+  accessibleName: undefined
+};
 
 export { Wizard };

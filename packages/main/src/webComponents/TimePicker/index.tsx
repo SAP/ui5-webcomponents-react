@@ -1,11 +1,13 @@
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { FC, ReactNode } from 'react';
+import { Ui5TimePickerDomRef } from '@ui5/webcomponents-react/interfaces/Ui5TimePickerDomRef';
+import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/TimePicker';
 
-export interface TimePickerPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput'> {
+export interface TimePickerPropTypes extends Omit<CommonProps, 'onChange' | 'onInput'> {
   /**
    * Determines whether the `TimePicker` is displayed as disabled.
    */
@@ -15,9 +17,9 @@ export interface TimePickerPropTypes extends Omit<WithWebComponentPropTypes, 'on
    */
   formatPattern?: string;
   /**
-   * Defines a short hint, intended to aid the user with data entry when the `TimePicker` has no value.
+   * Defines a short hint, intended to aid the user with data entry when the component has no value.
    *
-   * **Note:** When no placeholder is set, the format pattern is displayed as a placeholder. Passing an empty string as the value of this property will make the `TimePicker` appear empty - without placeholder or format pattern.
+   * **Note:** When no placeholder is set, the format pattern is displayed as a placeholder. Passing an empty string as the value of this property will make the component appear empty - without placeholder or format pattern.
    */
   placeholder?: string;
   /**
@@ -39,7 +41,7 @@ export interface TimePickerPropTypes extends Omit<WithWebComponentPropTypes, 'on
    * *   `Success`
    * *   `Information`
    */
-  valueState?: ValueState;
+  valueState?: ValueState | keyof typeof ValueState;
   /**
    * Defines the value state message that will be displayed as pop up under the `TimePicker`.
    *
@@ -65,7 +67,7 @@ export interface TimePickerPropTypes extends Omit<WithWebComponentPropTypes, 'on
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/TimePicker" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const TimePicker: FC<TimePickerPropTypes> = withWebComponent<TimePickerPropTypes>(
+const TimePicker = withWebComponent<TimePickerPropTypes, Ui5TimePickerDomRef>(
   'ui5-time-picker',
   ['formatPattern', 'placeholder', 'value', 'valueState'],
   ['disabled', 'readonly'],

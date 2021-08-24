@@ -1,19 +1,28 @@
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Select';
 
-export interface SelectPropTypes extends Omit<WithWebComponentPropTypes, 'onChange'> {
+export interface SelectPropTypes extends Omit<CommonProps, 'onChange'> {
   /**
-   * Defines whether `Select` is in disabled state.
+   * Sets the accessible aria name of the component.
+   */
+  accessibleName?: string;
+  /**
+   * Receives id(or many ids) of the elements that label the select.
+   */
+  accessibleNameRef?: string;
+  /**
+   * Defines whether the component is in disabled state.
    *
-   * **Note:** A disabled `Select` is noninteractive.
+   * **Note:** A disabled component is noninteractive.
    */
   disabled?: boolean;
   /**
-   * Determines the name with which the `Select` will be submitted in an HTML form. The value of the `Select` will be the value of the currently selected `Option`.
+   * Determines the name with which the component will be submitted in an HTML form. The value of the component will be the value of the currently selected `Option`.
    *
    * **Important:** For the `name` property to have effect, you must add the following import to your project: `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
    *
@@ -21,11 +30,11 @@ export interface SelectPropTypes extends Omit<WithWebComponentPropTypes, 'onChan
    */
   name?: string;
   /**
-   * Defines whether the `Select` is required.
+   * Defines whether the component is required.
    */
   required?: boolean;
   /**
-   * Defines the value state of the `Select`.
+   * Defines the value state of the component.
    *
    * Available options are:
    *
@@ -35,9 +44,9 @@ export interface SelectPropTypes extends Omit<WithWebComponentPropTypes, 'onChan
    * *   `Success`
    * *   `Information`
    */
-  valueState?: ValueState;
+  valueState?: ValueState | keyof typeof ValueState;
   /**
-   * Defines the `Select` options.
+   * Defines the component options.
    *
    * **Note:** Only one selected option is allowed. If more than one option is defined as selected, the last one would be considered as the selected one.
    *
@@ -45,10 +54,10 @@ export interface SelectPropTypes extends Omit<WithWebComponentPropTypes, 'onChan
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Defines the value state message that will be displayed as pop up under the `Select`.
+   * Defines the value state message that will be displayed as pop up under the component.
    *
    * **Note:** If not specified, a default text (in the respective language) will be displayed.
-   * **Note:** The `valueStateMessage` would be displayed, when the `Select` is in `Information`, `Warning` or `Error` value state.
+   * **Note:** The `valueStateMessage` would be displayed, when the component is in `Information`, `Warning` or `Error` value state.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
@@ -65,9 +74,9 @@ export interface SelectPropTypes extends Omit<WithWebComponentPropTypes, 'onChan
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Select" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Select: FC<SelectPropTypes> = withWebComponent<SelectPropTypes>(
+const Select = withWebComponent<SelectPropTypes>(
   'ui5-select',
-  ['name', 'valueState'],
+  ['accessibleName', 'accessibleNameRef', 'name', 'valueState'],
   ['disabled', 'required'],
   ['valueStateMessage'],
   ['change']

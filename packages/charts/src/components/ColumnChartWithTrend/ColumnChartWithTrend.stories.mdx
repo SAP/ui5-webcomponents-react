@@ -1,0 +1,69 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+import { ColumnChartWithTrend } from '@ui5/webcomponents-react-charts/dist/ColumnChartWithTrend';
+import { complexDataSet } from '../../resources/DemoProps';
+
+<Meta
+  title="Charts / ColumnChartWithTrend"
+  component={ColumnChartWithTrend}
+  args={{
+    dataset: complexDataSet,
+    style: { height: '60vh' },
+    dimensions: [
+      {
+        accessor: 'name',
+        formatter: (d) => `${d} 2019`
+      }
+    ],
+    measures: [
+      {
+        accessor: 'users',
+        label: 'Users',
+        formatter: (val) => val.toLocaleString(),
+        type: 'line'
+      },
+      {
+        accessor: 'sessions',
+        label: 'Active Sessions',
+        type: 'bar'
+      }
+    ]
+  }}
+  argTypes={{
+    dataset: {
+      control: { disable: true }
+    },
+    children: {
+      control: { disable: true }
+    }
+  }}
+/>
+
+<DocsHeader />
+
+## Example
+
+<Canvas>
+  <Story name="Default">{(props) => <ColumnChartWithTrend {...props} />}</Story>
+</Canvas>
+
+### Loading Placeholder
+
+<Canvas>
+  <Story
+    name="Loading Placeholder"
+    args={{
+      dataset: [],
+      dimensions: [
+        {
+          accessor: 'name',
+          formatter: (d) => `${d} 2019`,
+          interval: 0
+        }
+      ],
+      measures: []
+    }}
+  >
+    {(props) => <ColumnChartWithTrend {...props} />}
+  </Story>
+</Canvas>

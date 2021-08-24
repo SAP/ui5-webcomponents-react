@@ -7,7 +7,7 @@ import PopoverListItems from './PopoverListItems';
 
 const popoverListItemsRef = {
   current: {
-    openBy: jest.fn(),
+    showAt: jest.fn(),
   },
 };
 
@@ -26,7 +26,7 @@ describe('PopoverListItems.js Test Suite', () => {
   beforeEach(() => {
     render(
       <>
-        <p data-testid="opener-wrapper" onClick={(e) => popoverListItemsRef.current.openBy(e.detail.targetRef)}>
+        <p data-testid="opener-wrapper" onClick={(e) => popoverListItemsRef.current.showAt(e.detail.targetRef)}>
           Open Popover
         </p>
         <PopoverListItems popoverRef={popoverListItemsRef} title="Some Title" items={popoverItems} />

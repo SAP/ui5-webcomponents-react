@@ -1,11 +1,11 @@
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import { FC } from 'react';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 
 import '@ui5/webcomponents/dist/Icon';
 
-export interface IconPropTypes extends WithWebComponentPropTypes {
+export interface IconPropTypes extends CommonProps {
   /**
-   * Defines the text alternative of the `Icon`. If not provided a default text alternative will be set, if present.
+   * Defines the text alternative of the component. If not provided a default text alternative will be set, if present.
    *
    * **Note:** Every icon should have a text alternative in order to calculate its accessible name.
    */
@@ -15,7 +15,7 @@ export interface IconPropTypes extends WithWebComponentPropTypes {
    */
   interactive?: boolean;
   /**
-   * Defines the unique identifier (icon name) of each `Icon`.
+   * Defines the unique identifier (icon name) of the component.
    * To browse all available icons, see the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
    * Example:
    * `name='add'`, `name='delete'`, `name='employee'`.
@@ -26,7 +26,7 @@ export interface IconPropTypes extends WithWebComponentPropTypes {
    */
   name?: string;
   /**
-   * Defines whether the `Icon` should have a tooltip.
+   * Defines whether the component should have a tooltip.
    */
   showTooltip?: boolean;
 }
@@ -42,7 +42,7 @@ export interface IconPropTypes extends WithWebComponentPropTypes {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Icon" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Icon: FC<IconPropTypes> = withWebComponent<IconPropTypes>(
+const Icon = withWebComponent<IconPropTypes>(
   'ui5-icon',
   ['accessibleName', 'name'],
   ['interactive', 'showTooltip'],

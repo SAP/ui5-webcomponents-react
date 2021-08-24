@@ -248,7 +248,7 @@ export const secondaryDimensionDataSet = [
 
 export const scatterComplexDataSet = [
   {
-    label: 'Americas',
+    label: 'Users',
     data: [
       {
         users: 120,
@@ -459,4 +459,79 @@ export const bigDataSet = [
   ...concatYear(complexDataSet, 2020),
   ...concatYear(complexDataSet, 2021),
   ...concatYear(complexDataSet, 2022)
+];
+
+export const complexBulletDataset = [
+  {
+    name: 'January',
+    users: 100,
+    sessions: 300,
+    volume: 350
+  },
+  {
+    name: 'February',
+    users: 90,
+    sessions: 330,
+    volume: 370
+  },
+  {
+    name: 'March',
+    users: 0,
+    sessions: 404,
+    volume: 446
+  },
+  {
+    name: 'April',
+    users: 0,
+    sessions: 80,
+    volume: 250
+  },
+  {
+    name: 'May',
+    users: 0,
+    sessions: 300,
+    volume: 450
+  },
+  {
+    name: 'June',
+    users: 0,
+    sessions: 330,
+    volume: 500
+  },
+  {
+    name: 'July',
+    users: 65,
+    sessions: 300,
+    volume: 300
+  },
+  {
+    name: 'August',
+    users: 12,
+    sessions: 180,
+    volume: 104
+  },
+  {
+    name: 'September',
+    users: 99,
+    sessions: 360,
+    volume: 300
+  },
+  {
+    name: 'October',
+    users: 120,
+    sessions: 500,
+    volume: 200
+  },
+  {
+    name: 'November',
+    users: 130,
+    sessions: 404,
+    volume: 600
+  },
+  {
+    name: 'December',
+    users: 100,
+    sessions: 80,
+    volume: 320
+  }
 ];

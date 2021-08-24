@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Field, Form, Formik } from 'formik';
-import { Button, ButtonDesign, FlexBox, FlexBoxAlignItems, FlexBoxDirection, InputType, Title, TitleLevel } from '@ui5/webcomponents-react';
+import { Button, ButtonDesign, FlexBox, FlexBoxAlignItems, FlexBoxDirection, InputType, Title, TitleLevel, SwitchDesign } from '@ui5/webcomponents-react';
 import '@ui5/webcomponents-icons/dist/paper-plane';
 
 import Input from '../../../components/Form/Input/Input';
@@ -41,7 +41,7 @@ const TodoEditForm = ({ data, onSubmitHandler }) => {
               <Title level={TitleLevel.H3}>Basic Info</Title>
               <Field labelText="Name" name="name" required placeholder="Name goes here" type={InputType.Text} component={Input} />
               <Field labelText="Description" name="description" required placeholder="Add your description here" rows={5} component={TextArea} />
-              <Field labelText="Completed" name="completed" required component={Switch} graphical />
+              <Field labelText="Completed" name="completed" required component={Switch} design={SwitchDesign.Graphical} />
             </>
             <>
               <Title level={TitleLevel.H3}>Custom Info</Title>

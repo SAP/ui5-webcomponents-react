@@ -9,8 +9,7 @@ import { AnalyticalTable } from './dist/AnalyticalTable';
 import * as AnalyticalTableHooks from './dist/AnalyticalTableHooks';
 import { AnalyticalTableScrollMode } from './dist/AnalyticalTableScrollMode';
 import { Avatar } from './dist/Avatar';
-import { AvatarBackgroundColor } from './dist/AvatarBackgroundColor';
-import { AvatarFitType } from './dist/AvatarFitType';
+import { AvatarColorScheme } from './dist/AvatarColorScheme';
 import { AvatarGroup } from './dist/AvatarGroup';
 import { AvatarGroupType } from './dist/AvatarGroupType';
 import { AvatarShape } from './dist/AvatarShape';
@@ -18,7 +17,10 @@ import { AvatarSize } from './dist/AvatarSize';
 import { Badge } from './dist/Badge';
 import { Bar } from './dist/Bar';
 import { BarDesign } from './dist/BarDesign';
+import { BarcodeScannerDialog } from './dist/BarcodeScannerDialog';
 import { Breadcrumbs } from './dist/Breadcrumbs';
+import { BreadcrumbsDesign } from './dist/BreadcrumbsDesign';
+import { BreadcrumbsItem } from './dist/BreadcrumbsItem';
 import { BreadcrumbsSeparatorStyle } from './dist/BreadcrumbsSeparatorStyle';
 import { BusyIndicator } from './dist/BusyIndicator';
 import { BusyIndicatorSize } from './dist/BusyIndicatorSize';
@@ -30,6 +32,7 @@ import { CalendarSelection } from './dist/CalendarSelection';
 import { CalendarSelectionMode } from './dist/CalendarSelectionMode';
 import { CalendarType } from './dist/CalendarType';
 import { Card } from './dist/Card';
+import { CardHeader } from './dist/CardHeader';
 import { Carousel } from './dist/Carousel';
 import { CarouselArrowsPlacement } from './dist/CarouselArrowsPlacement';
 import { CheckBox } from './dist/CheckBox';
@@ -37,6 +40,7 @@ import { ColorPalette } from './dist/ColorPalette';
 import { ColorPaletteItem } from './dist/ColorPaletteItem';
 import { ColorPicker } from './dist/ColorPicker';
 import { ComboBox } from './dist/ComboBox';
+import { ComboBoxGroupItem } from './dist/ComboBoxGroupItem';
 import { ComboBoxItem } from './dist/ComboBoxItem';
 import { ContentDensity } from './dist/ContentDensity';
 import { CustomListItem } from './dist/CustomListItem';
@@ -45,7 +49,6 @@ import { DateRangePicker } from './dist/DateRangePicker';
 import { DateTimePicker } from './dist/DateTimePicker';
 import { DeviationIndicator } from './dist/DeviationIndicator';
 import { Dialog } from './dist/Dialog';
-import { DurationPicker } from './dist/DurationPicker';
 import { DynamicPage } from './dist/DynamicPage';
 import { DynamicPageHeader } from './dist/DynamicPageHeader';
 import { DynamicPageTitle } from './dist/DynamicPageTitle';
@@ -67,6 +70,8 @@ import { Grid } from './dist/Grid';
 import { GridPosition } from './dist/GridPosition';
 import { GroupHeaderListItem } from './dist/GroupHeaderListItem';
 import { Icon } from './dist/Icon';
+import { IllustratedMessage } from './dist/IllustratedMessage';
+import { IllustrationMessageType } from './dist/IllustrationMessageType';
 import { IndicationColor } from './dist/IndicationColor';
 import { Input } from './dist/Input';
 import { InputType } from './dist/InputType';
@@ -75,7 +80,7 @@ import { Link } from './dist/Link';
 import { LinkDesign } from './dist/LinkDesign';
 import { List } from './dist/List';
 import { ListGrowingMode } from './dist/ListGrowingMode';
-import { ListItemTypes } from './dist/ListItemTypes';
+import { ListItemType } from './dist/ListItemType';
 import { ListMode } from './dist/ListMode';
 import { ListSeparators } from './dist/ListSeparators';
 import { Loader } from './dist/Loader';
@@ -84,7 +89,7 @@ import { MessageBox } from './dist/MessageBox';
 import { MessageBoxActions } from './dist/MessageBoxActions';
 import { MessageBoxTypes } from './dist/MessageBoxTypes';
 import { MessageStrip } from './dist/MessageStrip';
-import { MessageStripType } from './dist/MessageStripType';
+import { MessageStripDesign } from './dist/MessageStripDesign';
 import { MultiComboBox } from './dist/MultiComboBox';
 import { MultiComboBoxItem } from './dist/MultiComboBoxItem';
 import { MultiInput } from './dist/MultiInput';
@@ -100,8 +105,7 @@ import { Option } from './dist/Option';
 import { Page } from './dist/Page';
 import { PageBackgroundDesign } from './dist/PageBackgroundDesign';
 import { Panel } from './dist/Panel';
-import { PanelAccessibleRoles } from './dist/PanelAccessibleRoles';
-import { PlacementType } from './dist/PlacementType';
+import { PanelAccessibleRole } from './dist/PanelAccessibleRole';
 import { Popover } from './dist/Popover';
 import { PopoverHorizontalAlign } from './dist/PopoverHorizontalAlign';
 import { PopoverPlacementType } from './dist/PopoverPlacementType';
@@ -116,6 +120,7 @@ import { RatingIndicator } from './dist/RatingIndicator';
 import { ResponsiveGridLayout } from './dist/ResponsiveGridLayout';
 import { ResponsivePopover } from './dist/ResponsivePopover';
 import { SegmentedButton } from './dist/SegmentedButton';
+import { SegmentedButtonItem } from './dist/SegmentedButtonItem';
 import { Select } from './dist/Select';
 import { SemanticColor } from './dist/SemanticColor';
 import { ShellBar } from './dist/ShellBar';
@@ -127,19 +132,23 @@ import { Size } from './dist/Size';
 import { Slider } from './dist/Slider';
 import { StandardListItem } from './dist/StandardListItem';
 import { StepInput } from './dist/StepInput';
+import { SuggestionGroupItem } from './dist/SuggestionGroupItem';
 import { SuggestionItem } from './dist/SuggestionItem';
 import { Switch } from './dist/Switch';
+import { SwitchDesign } from './dist/SwitchDesign';
 import { Tab } from './dist/Tab';
 import { TabContainer } from './dist/TabContainer';
-import { TabContainerTabsPlacement } from './dist/TabContainerTabsPlacement';
 import { TabLayout } from './dist/TabLayout';
 import { TabSeparator } from './dist/TabSeparator';
 import { Table } from './dist/Table';
 import { TableCell } from './dist/TableCell';
 import { TableColumn } from './dist/TableColumn';
+import { TableGroupRow } from './dist/TableGroupRow';
 import { TableGrowingMode } from './dist/TableGrowingMode';
+import { TableMode } from './dist/TableMode';
 import { TablePlaceholder } from './dist/TablePlaceholder';
 import { TableRow } from './dist/TableRow';
+import { TableRowType } from './dist/TableRowType';
 import { TableScaleWidthMode } from './dist/TableScaleWidthMode';
 import { TableSelectionBehavior } from './dist/TableSelectionBehavior';
 import { TableSelectionMode } from './dist/TableSelectionMode';
@@ -152,6 +161,7 @@ import { Themes } from './dist/Themes';
 import { TimePicker } from './dist/TimePicker';
 import { Timeline } from './dist/Timeline';
 import { TimelineItem } from './dist/TimelineItem';
+import { TimelineLayout } from './dist/TimelineLayout';
 import { Title } from './dist/Title';
 import { TitleLevel } from './dist/TitleLevel';
 import { Toast } from './dist/Toast';
@@ -173,6 +183,7 @@ import { VariantManagement } from './dist/VariantManagement';
 import { VerticalAlign } from './dist/VerticalAlign';
 import { Wizard } from './dist/Wizard';
 import { WizardStep } from './dist/WizardStep';
+import { WrappingType } from './dist/WrappingType';
 import { withWebComponent } from './dist/withWebComponent';
 
 export {
@@ -183,8 +194,7 @@ export {
   AnalyticalTableHooks,
   AnalyticalTableScrollMode,
   Avatar,
-  AvatarBackgroundColor,
-  AvatarFitType,
+  AvatarColorScheme,
   AvatarGroup,
   AvatarGroupType,
   AvatarShape,
@@ -192,7 +202,10 @@ export {
   Badge,
   Bar,
   BarDesign,
+  BarcodeScannerDialog,
   Breadcrumbs,
+  BreadcrumbsDesign,
+  BreadcrumbsItem,
   BreadcrumbsSeparatorStyle,
   BusyIndicator,
   BusyIndicatorSize,
@@ -204,6 +217,7 @@ export {
   CalendarSelectionMode,
   CalendarType,
   Card,
+  CardHeader,
   Carousel,
   CarouselArrowsPlacement,
   CheckBox,
@@ -211,6 +225,7 @@ export {
   ColorPaletteItem,
   ColorPicker,
   ComboBox,
+  ComboBoxGroupItem,
   ComboBoxItem,
   ContentDensity,
   CustomListItem,
@@ -219,7 +234,6 @@ export {
   DateTimePicker,
   DeviationIndicator,
   Dialog,
-  DurationPicker,
   DynamicPage,
   DynamicPageHeader,
   DynamicPageTitle,
@@ -241,6 +255,8 @@ export {
   GridPosition,
   GroupHeaderListItem,
   Icon,
+  IllustratedMessage,
+  IllustrationMessageType,
   IndicationColor,
   Input,
   InputType,
@@ -249,7 +265,7 @@ export {
   LinkDesign,
   List,
   ListGrowingMode,
-  ListItemTypes,
+  ListItemType,
   ListMode,
   ListSeparators,
   Loader,
@@ -258,7 +274,7 @@ export {
   MessageBoxActions,
   MessageBoxTypes,
   MessageStrip,
-  MessageStripType,
+  MessageStripDesign,
   MultiComboBox,
   MultiComboBoxItem,
   MultiInput,
@@ -274,8 +290,7 @@ export {
   Page,
   PageBackgroundDesign,
   Panel,
-  PanelAccessibleRoles,
-  PlacementType,
+  PanelAccessibleRole,
   Popover,
   PopoverHorizontalAlign,
   PopoverPlacementType,
@@ -290,6 +305,7 @@ export {
   ResponsiveGridLayout,
   ResponsivePopover,
   SegmentedButton,
+  SegmentedButtonItem,
   Select,
   SemanticColor,
   ShellBar,
@@ -301,19 +317,23 @@ export {
   Slider,
   StandardListItem,
   StepInput,
+  SuggestionGroupItem,
   SuggestionItem,
   Switch,
+  SwitchDesign,
   Tab,
   TabContainer,
-  TabContainerTabsPlacement,
   TabLayout,
   TabSeparator,
   Table,
   TableCell,
   TableColumn,
+  TableGroupRow,
   TableGrowingMode,
+  TableMode,
   TablePlaceholder,
   TableRow,
+  TableRowType,
   TableScaleWidthMode,
   TableSelectionBehavior,
   TableSelectionMode,
@@ -326,6 +346,7 @@ export {
   TimePicker,
   Timeline,
   TimelineItem,
+  TimelineLayout,
   Title,
   TitleLevel,
   Toast,
@@ -347,5 +368,6 @@ export {
   VerticalAlign,
   Wizard,
   WizardStep,
+  WrappingType,
   withWebComponent
 };

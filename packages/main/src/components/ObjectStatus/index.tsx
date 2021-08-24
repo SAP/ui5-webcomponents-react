@@ -7,7 +7,7 @@ import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/useP
 import { Icon } from '@ui5/webcomponents-react/dist/Icon';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { IndicationColor } from '@ui5/webcomponents-react/dist/IndicationColor';
-import React, { FC, forwardRef, MouseEventHandler, ReactNode, Ref } from 'react';
+import React, { forwardRef, MouseEventHandler, ReactNode, Ref } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import styles from './ObjectStatus.jss';
@@ -46,7 +46,7 @@ export interface ObjectStatusPropTypes extends CommonProps {
    *
    * Since version 0.17.0 the state property also accepts values from enum `IndicationColor`.
    */
-  state?: ValueState | IndicationColor;
+  state?: ValueState | keyof typeof ValueState | IndicationColor | keyof typeof IndicationColor;
 
   /**
    * Defines whether the default icon for each `ValueState` should be displayed.<br />
@@ -82,7 +82,7 @@ const useStyles = createUseStyles(styles, { name: 'ObjectStatus' });
 /**
  * Status information that can be either text with a value state, or an icon.
  */
-const ObjectStatus: FC<ObjectStatusPropTypes> = forwardRef((props: ObjectStatusPropTypes, ref: Ref<HTMLDivElement>) => {
+const ObjectStatus = forwardRef((props: ObjectStatusPropTypes, ref: Ref<HTMLDivElement>) => {
   const { state, showDefaultIcon, children, icon, className, style, tooltip, active, inverted, onClick } = props;
 
   const iconToRender = (() => {

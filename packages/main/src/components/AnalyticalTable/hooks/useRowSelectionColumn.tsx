@@ -3,7 +3,7 @@ import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils
 import { CheckBox } from '@ui5/webcomponents-react/dist/CheckBox';
 import { TableSelectionBehavior } from '@ui5/webcomponents-react/dist/TableSelectionBehavior';
 import { TableSelectionMode } from '@ui5/webcomponents-react/dist/TableSelectionMode';
-import React, { useCallback } from 'react';
+import React from 'react';
 
 const divStyle = { width: '100%', height: '100%', cursor: 'pointer' };
 const customCheckBoxStyling = {
@@ -15,50 +15,51 @@ const customCheckBoxStyling = {
  * COMPONENTS
  */
 
-const Header = ({
-  getToggleAllRowsSelectedProps,
-  flatRows,
-  webComponentsReactProperties: { onRowSelected, selectionMode },
-  toggleAllRowsSelected
-}) => {
-  const onChange = useCallback(
-    (e) => {
-      const allRowsSelected = e.target.checked;
-      toggleAllRowsSelected(allRowsSelected);
-      if (typeof onRowSelected === 'function') {
-        onRowSelected(
-          // cannot use instance.selectedFlatRows here as it only returns all rows on the first level
-          enrichEventWithDetails(e, { allRowsSelected, selectedFlatRows: allRowsSelected ? flatRows : [] })
-        );
-      }
-    },
-    [toggleAllRowsSelected, flatRows]
-  );
+const Header = (instance) => {
+  const {
+    getToggleAllRowsSelectedProps,
+    webComponentsReactProperties: { selectionMode }
+  } = instance;
 
-  if (selectionMode === TableSelectionMode.SINGLE_SELECT) {
+  if (selectionMode === TableSelectionMode.SINGLE_SELECT || selectionMode === TableSelectionMode.SingleSelect) {
     return null;
   }
-  return <CheckBox {...getToggleAllRowsSelectedProps()} style={customCheckBoxStyling} onChange={onChange} />;
+  const checkBoxProps = getToggleAllRowsSelectedProps();
+  return (
+    <CheckBox
+      {...checkBoxProps}
+      style={customCheckBoxStyling}
+      tabIndex={-1}
+      onChange={undefined}
+      checked={checkBoxProps.indeterminate ? true : checkBoxProps.checked}
+    />
+  );
 };
 
 const Cell = ({ row, webComponentsReactProperties: { selectionBehavior, selectionMode } }) => {
-  const handleCellClick = useCallback(
-    (e) => {
-      if (TableSelectionBehavior.ROW_SELECTOR === selectionBehavior) {
-        row.getRowProps().onClick(e, true);
-      }
-    },
-    [selectionMode, row]
-  );
-  if (row.isGrouped && selectionMode === TableSelectionMode.SINGLE_SELECT) {
+  const handleCellClick = (e) => {
+    if (
+      TableSelectionBehavior.ROW_SELECTOR === selectionBehavior ||
+      TableSelectionBehavior.RowSelector === selectionBehavior
+    ) {
+      row.getRowProps().onClick(e, true);
+    }
+  };
+
+  if (
+    row.isGrouped &&
+    (selectionMode === TableSelectionMode.SINGLE_SELECT || selectionMode === TableSelectionMode.SingleSelect)
+  ) {
     return null;
   }
-  if (selectionMode === TableSelectionMode.SINGLE_SELECT) {
+  if (selectionMode === TableSelectionMode.SINGLE_SELECT || selectionMode === TableSelectionMode.SingleSelect) {
     return <div style={divStyle} onClick={handleCellClick} data-name="internal_selection_column" />;
   }
+
   return (
     <CheckBox
       {...row.getToggleRowSelectedProps()}
+      tabIndex={-1}
       onChange={handleCellClick}
       style={customCheckBoxStyling}
       data-name="internal_selection_column"
@@ -69,6 +70,45 @@ const Cell = ({ row, webComponentsReactProperties: { selectionBehavior, selectio
 /*
  * TABLE HOOKS
  */
+
+const headerProps = (
+  props,
+  {
+    instance: {
+      flatRows,
+      webComponentsReactProperties: { onRowSelected, selectionMode },
+      toggleAllRowsSelected,
+      isAllRowsSelected
+    }
+  }
+) => {
+  if (
+    props.key === 'header___ui5wcr__internal_selection_column' &&
+    (selectionMode === TableSelectionMode.MULTI_SELECT || selectionMode === TableSelectionMode.MultiSelect)
+  ) {
+    const onClick = (e) => {
+      toggleAllRowsSelected();
+      if (typeof onRowSelected === 'function') {
+        onRowSelected(
+          // cannot use instance.selectedFlatRows here as it only returns all rows on the first level
+          enrichEventWithDetails(e, {
+            allRowsSelected: isAllRowsSelected,
+            selectedFlatRows: isAllRowsSelected ? flatRows : []
+          })
+        );
+      }
+    };
+
+    const onKeyDown = (e) => {
+      if (e.code === 'Space' || e.code === 'Enter') {
+        e.preventDefault();
+        onClick(e);
+      }
+    };
+    return [props, { onClick, onKeyDown }];
+  }
+  return props;
+};
 
 const columnDeps = (deps, { instance: { webComponentsReactProperties } }) => {
   return [...deps, webComponentsReactProperties.selectionMode, webComponentsReactProperties.selectionBehavior];
@@ -83,7 +123,9 @@ const visibleColumnsDeps = (deps, { instance }) => [
 const visibleColumns = (currentVisibleColumns, { instance: { webComponentsReactProperties } }) => {
   if (
     webComponentsReactProperties.selectionMode === TableSelectionMode.NONE ||
-    webComponentsReactProperties.selectionBehavior === TableSelectionBehavior.ROW_ONLY
+    webComponentsReactProperties.selectionMode === TableSelectionMode.None ||
+    webComponentsReactProperties.selectionBehavior === TableSelectionBehavior.ROW_ONLY ||
+    webComponentsReactProperties.selectionBehavior === TableSelectionBehavior.RowOnly
   ) {
     return currentVisibleColumns;
   }
@@ -95,7 +137,12 @@ const columns = (currentColumns, { instance }) => {
   const { webComponentsReactProperties } = instance;
   const { selectionMode, selectionBehavior, tableRef } = webComponentsReactProperties;
 
-  if (selectionMode === TableSelectionMode.NONE || selectionBehavior === TableSelectionBehavior.ROW_ONLY) {
+  if (
+    selectionMode === TableSelectionMode.NONE ||
+    selectionBehavior === TableSelectionBehavior.ROW_ONLY ||
+    selectionMode === TableSelectionMode.None ||
+    selectionBehavior === TableSelectionBehavior.RowOnly
+  ) {
     return currentColumns;
   }
   const tableSelectionColumnWidth =
@@ -128,6 +175,7 @@ const columns = (currentColumns, { instance }) => {
 };
 
 export const useRowSelectionColumn = (hooks) => {
+  hooks.getHeaderProps.push(headerProps);
   hooks.columns.push(columns);
   hooks.columnsDeps.push(columnDeps);
   hooks.visibleColumnsDeps.push(visibleColumnsDeps);

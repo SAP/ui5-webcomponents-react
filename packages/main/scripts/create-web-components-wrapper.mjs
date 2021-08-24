@@ -72,6 +72,8 @@ const prettierConfig = {
 };
 
 const WEB_COMPONENTS_ROOT_DIR = path.join(PATHS.packages, 'main', 'src', 'webComponents');
+const ENUMS_DIR = path.join(PATHS.packages, 'main', 'src', 'enums');
+const INTERFACES_DIR = path.join(PATHS.packages, 'main', 'src', 'interfaces');
 const DIST_DIR = path.join(PATHS.packages, 'main', 'src', 'dist');
 
 const EXTENDED_PROP_DESCRIPTION = {
@@ -296,6 +298,7 @@ const createWebComponentWrapper = async (
   description,
   types,
   importStatements,
+  ref,
   defaultProps,
   regularProps,
   booleanProps,
@@ -303,9 +306,9 @@ const createWebComponentWrapper = async (
   eventProps
 ) => {
   const eventsToBeOmitted = eventProps.filter((eventName) => KNOWN_EVENTS.has(eventName));
-  let tsExtendsStatement = 'WithWebComponentPropTypes';
+  let tsExtendsStatement = 'CommonProps';
   if (eventsToBeOmitted.length > 0) {
-    tsExtendsStatement = `Omit<WithWebComponentPropTypes, ${eventsToBeOmitted
+    tsExtendsStatement = `Omit<CommonProps, ${eventsToBeOmitted
       .map((eventName) => `'on${capitalizeFirstLetter(snakeToCamel(eventName))}'`)
       .join(' | ')}>`;
   }
@@ -338,7 +341,8 @@ const createWebComponentWrapper = async (
         booleanProps,
         slotProps: slotProps.filter((name) => name !== 'children'),
         eventProps,
-        defaultProps
+        defaultProps,
+        ref: ref?.tsType
       }),
       name
     ),
@@ -520,6 +524,54 @@ const resolveInheritedAttributes = (componentSpec) => {
   return componentSpec;
 };
 
+[
+  ...mainWebComponentsSpec.symbols.filter((spec) => spec.module.startsWith('types/') && spec.visibility === 'public'),
+  ...fioriWebComponentsSpec.symbols.filter((spec) => spec.module.startsWith('types/') && spec.visibility === 'public')
+].forEach((spec) => {
+  if (!spec.properties) {
+    return;
+  }
+  const properties = spec.properties.map((prop) => {
+    const propDescription = prop.description
+      ? dedent`
+    /**
+     * ${prop.description.replaceAll('\n', '\n * ') ?? ''}
+     */
+    `
+      : '';
+    return dedent`
+    ${propDescription}
+     ${prop.name} = '${prop.type}'`;
+  });
+
+  const template = dedent`
+  // Generated file - do not change manually! 
+  
+  /**
+   * ${spec.description ?? spec.basename}
+   */
+   export enum ${spec.basename} {
+     ${properties.join(',\n\n')}
+   }
+  `;
+
+  fs.writeFileSync(path.join(ENUMS_DIR, `${spec.basename}.ts`), prettier.format(template, prettierConfig));
+  fs.writeFileSync(
+    path.join(DIST_DIR, `${spec.basename}.ts`),
+    prettier.format(
+      dedent`
+  // Generated file - do not change manually!
+  
+  import { ${spec.basename} } from '../enums/${spec.basename}';
+  
+  export { ${spec.basename} };
+  
+  `,
+      prettierConfig
+    )
+  );
+});
+
 allWebComponents
   .filter((spec) => spec.visibility === 'public')
   .filter((spec) => !PRIVATE_COMPONENTS.has(spec.module))
@@ -574,11 +626,11 @@ allWebComponents
      ${property.name}?: ${tsType.tsType};
     `);
 
-        if (property.hasOwnProperty('defaultValue')) {
+        if (property.hasOwnProperty('defaultValue') && property.name !== 'wrappingType') {
           if (tsType.tsType === 'boolean') {
             defaultProps.push(`${property.name}: ${property.defaultValue === 'true'}`);
           } else if (tsType.isEnum === true) {
-            defaultProps.push(`${property.name}: ${tsType.tsType}.${property.defaultValue.replace(/['"]/g, '')}`);
+            defaultProps.push(`${property.name}: ${tsType.enum}.${property.defaultValue.replace(/['"]/g, '')}`);
           } else if (tsType.tsType !== 'string' || (tsType.tsType === 'string' && property.defaultValue !== '""')) {
             defaultProps.push(`${property.name}: ${property.defaultValue}`);
           }
@@ -619,6 +671,11 @@ allWebComponents
        on${capitalizeFirstLetter(snakeToCamel(eventSpec.name))}?: ${eventParameters.tsType};
       `);
       });
+
+    const domRef = Utils.getDomRefTypingForComponent(componentSpec.module);
+    if (domRef) {
+      importStatements.push(domRef.importStatement);
+    }
 
     const uniqueAdditionalImports = [...new Set(importStatements)];
 
@@ -662,6 +719,58 @@ allWebComponents
       fs.writeFileSync(webComponentWrapperPath, '');
     }
 
+    const publicMethods = componentSpec.methods?.filter((method) => method.visibility === 'public') ?? [];
+    const isOptionalParameter = (p) => {
+      return p.optional || p.hasOwnProperty('defaultValue');
+    };
+    const resolveTsTypeForMethods = (param) => {
+      let tsType;
+      if (param.type === 'HTMLElement') {
+        tsType = 'HTMLElement | EventTarget';
+      } else if (param.type === 'function' && componentSpec.module === 'Tree') {
+        tsType = '(treeNode: HTMLElement, level: number) => void';
+      } else if (param.type === 'object' && ['DatePicker', 'DateRangePicker', 'DateTimePicker', 'TimePicker'].includes(componentSpec.module)) {
+        tsType = 'Date';
+      } else {
+        tsType = Utils.getTypeDefinitionForProperty(param, new Set()).tsType;
+      }
+      return tsType;
+    };
+    if (publicMethods.length > 0) {
+      const methods = publicMethods.map((method) => {
+        const params = method.parameters?.map((param) => {
+          return ` * @param {${resolveTsTypeForMethods(param)}} ${isOptionalParameter(param) ? '[' : ''}${param.name}${
+            isOptionalParameter(param) ? ']' : ''
+          } - ${param.description}`;
+        });
+
+        return dedent`
+          /**
+           * ${method.description.replaceAll('\n', '\n * ')}
+           ${params?.join('\n') ?? '*'}
+           */
+          ${method.name}: (${
+          method.parameters
+            ?.map((p) => `${p.name}${isOptionalParameter(p) ? '?' : ''}: ${resolveTsTypeForMethods(p)}`)
+            .join(', ') ?? ''
+        }) => void
+          `;
+      });
+      const domRefTemplate = dedent`
+      // @generated
+      
+      import { Ui5DomRef } from './Ui5DomRef';
+
+      export interface Ui5${componentSpec.module}DomRef extends Ui5DomRef {
+        ${methods.join('\n\n')}
+      }
+      `;
+      fs.writeFileSync(
+        path.resolve(INTERFACES_DIR, `Ui5${componentSpec.module}DomRef.ts`),
+        prettier.format(domRefTemplate, prettierConfig)
+      );
+    }
+
     if (
       (CREATE_SINGLE_COMPONENT === componentSpec.module || !CREATE_SINGLE_COMPONENT) &&
       !EXCLUDE_LIST.includes(componentSpec.module)
@@ -672,6 +781,7 @@ allWebComponents
         mainDescription,
         propTypes,
         uniqueAdditionalImports,
+        domRef,
         defaultProps,
         (componentSpec.properties || [])
           .filter(filterNonPublicAttributes)

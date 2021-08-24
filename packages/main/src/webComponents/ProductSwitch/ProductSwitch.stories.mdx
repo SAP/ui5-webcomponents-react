@@ -14,11 +14,11 @@ import '@ui5/webcomponents-icons/dist/wrench';
   subcomponents={{ ProductSwitchItem }}
   argTypes={{
     children: { control: { disable: true } },
-    heading: { description: `Defines the title of the <code>ProductSwitchItem</code>.` },
+    titleText: { description: `Defines the titleText of the <code>ProductSwitchItem</code>.` },
     icon: {
       description: `Defines the icon to be displayed as a graphical element within the <code>ProductSwitchItem</code>. <br><br> Example: <br> <pre>ProductSwitchItem icon="palette"</pre><br/><br/>See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.`
     },
-    subtitle: { description: `Defines the subtitle of the <code>ProductSwitchItem</code>.` },
+    subtitleText: { description: `Defines the subtitleText of the <code>ProductSwitchItem</code>.` },
     target: {
       description: `Defines a target where the <code>targetSrc</code> content must be open. <br><br> Available options are: <ul> <li><code>_self</code></li> <li><code>_top</code></li> <li><code>_blank</code></li> <li><code>_parent</code></li> <li><code>_search</code></li> </ul>`
     },
@@ -30,16 +30,11 @@ import '@ui5/webcomponents-icons/dist/wrench';
     }
   }}
   args={{
-    heading: 'ProductSwitchItem',
-    subtitle: 'Customizable',
+    titleText: 'ProductSwitchItem',
+    subtitleText: 'Customizable',
     icon: 'wrench',
     target: '_blank',
-    targetSrc: 'https://sap.github.io/ui5-webcomponents-react/',
-    style: {},
-    className: '',
-    tooltip: '',
-    slot: '',
-    ref: null
+    targetSrc: 'https://sap.github.io/ui5-webcomponents-react/'
   }}
 />
 
@@ -55,14 +50,14 @@ import '@ui5/webcomponents-icons/dist/wrench';
       return (
         <ProductSwitch>
           <ProductSwitchItem {...args} />
-          <ProductSwitchItem heading="Home" subtitle="Central Home" icon="home" />
+          <ProductSwitchItem titleText="Home" subtitleText="Central Home" icon="home" />
           <ProductSwitchItem
-            heading="Analytical Cloud"
-            subtitle="Analytical Cloud"
+            titleText="Analytical Cloud"
+            subtitleText="Analytical Cloud"
             icon="business-objects-experience"
           />
-          <ProductSwitchItem heading="Catalog" subtitle="Ariba" icon="contacts" />
-          <ProductSwitchItem heading="Travel & Expense" subtitle="Concur" icon="flight" />
+          <ProductSwitchItem titleText="Catalog" subtitleText="Ariba" icon="contacts" />
+          <ProductSwitchItem titleText="Travel & Expense" subtitleText="Concur" icon="flight" />
         </ProductSwitch>
       );
     }}

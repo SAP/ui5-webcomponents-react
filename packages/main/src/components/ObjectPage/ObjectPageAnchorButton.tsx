@@ -3,10 +3,13 @@ import React, { FC, ReactElement, useEffect, useRef } from 'react';
 import { ObjectPageSectionPropTypes } from '../ObjectPageSection';
 import { ObjectPageAnchorTab } from './ObjectPageAnchorTab';
 import { safeGetChildrenArray } from './ObjectPageUtils';
+import { getEffectiveScopingSuffixForTag } from '@ui5/webcomponents-base/dist/CustomElementsScope';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 ObjectPageAnchorTab.define();
+
+const tagName = 'ui5-object-page-anchor-tab';
 
 interface ObjectPageAnchorPropTypes {
   section: ReactElement<ObjectPageSectionPropTypes>;
@@ -34,12 +37,15 @@ export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props: Obj
     };
   }, [onShowSubSectionPopover]);
 
+  const tagNameSuffix: string = getEffectiveScopingSuffixForTag(tagName);
+  const Component = (tagNameSuffix ? `${tagName}-${tagNameSuffix}` : tagName) as any;
+
   return (
-    <ui5-object-page-anchor-tab
+    <Component
       ref={ref}
       data-index={index}
       data-section-id={section.props.id}
-      text={section.props.heading}
+      text={section.props.titleText}
       selected={selected || undefined}
       with-sub-sections={hasSubSections || undefined}
     />

@@ -7,7 +7,7 @@ describe('ProductSwitch', () => {
   test('Basic Test (generated)', () => {
     const { asFragment } = render(
       <ProductSwitch>
-        <ProductSwitchItem heading="Product Switch Item" />
+        <ProductSwitchItem titleText="Product Switch Item" />
       </ProductSwitch>
     );
     expect(asFragment()).toMatchSnapshot();

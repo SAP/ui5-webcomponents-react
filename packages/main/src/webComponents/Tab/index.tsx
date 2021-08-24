@@ -1,42 +1,43 @@
 import { SemanticColor } from '@ui5/webcomponents-react/dist/SemanticColor';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import { FC, ReactNode } from 'react';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Tab';
 
-export interface TabPropTypes extends WithWebComponentPropTypes {
+export interface TabPropTypes extends CommonProps {
   /**
    * Represents the "additionalText" text, which is displayed in the tab filter.
    */
   additionalText?: string;
   /**
-   * Enabled items can be selected.
-   */
-  disabled?: boolean;
-  /**
-   * Defines the icon source URI to be displayed as graphical element within the `Tab`. The SAP-icons font provides numerous built-in icons. See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
-   */
-  icon?: string;
-  /**
-   * Specifies if the `Tab` is selected.
-   */
-  selected?: boolean;
-  /**
-   * Defines the `Tab` semantic color.
+   * Defines the component's design color.
    *
-   * The color is applied to:
+   * The design is applied to:
    *
-   * *   the `Tab` icon
-   * *   the `text` when `Tab` overflows
+   * *   the component icon
+   * *   the `text` when the component overflows
    * *   the tab selection line
    *
    *
    *
-   * Available semantic colors are: `"Default"`, `"Neutral"`, `"Positive"`, `"Critical"` and `"Negative"`.
+   * Available designs are: `"Default"`, `"Neutral"`, `"Positive"`, `"Critical"` and `"Negative"`.
    *
-   * **Note:** The color value depends on the current theme.
+   * **Note:** The design depends on the current theme.
    */
-  semanticColor?: SemanticColor;
+  design?: SemanticColor | keyof typeof SemanticColor;
+  /**
+   * Enabled items can be selected.
+   */
+  disabled?: boolean;
+  /**
+   * Defines the icon source URI to be displayed as graphical element within the component. The SAP-icons font provides numerous built-in icons. See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
+   */
+  icon?: string;
+  /**
+   * Specifies if the component is selected.
+   */
+  selected?: boolean;
   /**
    * Defines the stable selector that you can use via getStableDomRef method.
    */
@@ -56,9 +57,9 @@ export interface TabPropTypes extends WithWebComponentPropTypes {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Tab" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Tab: FC<TabPropTypes> = withWebComponent<TabPropTypes>(
+const Tab = withWebComponent<TabPropTypes>(
   'ui5-tab',
-  ['additionalText', 'icon', 'semanticColor', 'stableDomRef', 'text'],
+  ['additionalText', 'design', 'icon', 'stableDomRef', 'text'],
   ['disabled', 'selected'],
   [],
   []
@@ -67,9 +68,9 @@ const Tab: FC<TabPropTypes> = withWebComponent<TabPropTypes>(
 Tab.displayName = 'Tab';
 
 Tab.defaultProps = {
+  design: SemanticColor.Default,
   disabled: false,
-  selected: false,
-  semanticColor: SemanticColor.Default
+  selected: false
 };
 
 export { Tab };

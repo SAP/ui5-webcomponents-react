@@ -3,6 +3,76 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.18.4...v0.18.5) (2021-08-24)
+
+
+### Bug Fixes
+
+* **ColumnChartWithTrend:** fix sync of charts ([#1999](https://github.com/SAP/ui5-webcomponents-react/issues/1999)) ([c36042d](https://github.com/SAP/ui5-webcomponents-react/commit/c36042deb126858aaa27d851c8c3fc2e9f8eea7a))
+
+
+### Features
+
+* **BulletChart:** initial component implementation  ([#1960](https://github.com/SAP/ui5-webcomponents-react/issues/1960)) ([21be8ef](https://github.com/SAP/ui5-webcomponents-react/commit/21be8ef7e7d511515234f72870233dc532f0424f))
+* **charts:** add `highlightColor` option for measures in `Bar`, `Column` and `ColumnWithTrend` ([#1911](https://github.com/SAP/ui5-webcomponents-react/issues/1911)) ([cf1e65d](https://github.com/SAP/ui5-webcomponents-react/commit/cf1e65db39fd4467d931c14a32fb06567f349092))
+* **charts:** add `highlightColor` option for measures in `BulletChart` and `ComposedChart` ([#1994](https://github.com/SAP/ui5-webcomponents-react/issues/1994)) ([fcdbca5](https://github.com/SAP/ui5-webcomponents-react/commit/fcdbca54b78581d8db658b9dbe9516bbc4cb1b6d))
+* **charts:** support formatter on secondary y axis for Bar, Column, Composed and Line Chart ([#1934](https://github.com/SAP/ui5-webcomponents-react/issues/1934)) ([a8e2e6f](https://github.com/SAP/ui5-webcomponents-react/commit/a8e2e6fb3b6492b3a44990965322273825bb3784))
+
+
+### Reverts
+
+* Revert "chore(deps): bump recharts from 2.0.10 to 2.1.0 (#1961)" (#1996) ([7b0632d](https://github.com/SAP/ui5-webcomponents-react/commit/7b0632daf63090fed4a6f2fbecea54d42083e20b)), closes [#1961](https://github.com/SAP/ui5-webcomponents-react/issues/1961) [#1996](https://github.com/SAP/ui5-webcomponents-react/issues/1996)
+
+
+
+
+
+# [0.18.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.17.3...v0.18.0) (2021-08-09)
+
+
+### Features
+
+* update `@ui5/webcomponents` to 1.0.0-rc.15 ([#1873](https://github.com/SAP/ui5-webcomponents-react/issues/1873)) ([db2145f](https://github.com/SAP/ui5-webcomponents-react/commit/db2145f5057fecbd698634a78c60f42769d20f2d))
+
+
+### BREAKING CHANGES
+
+* updated `@ui5/webcomponents` to 1.0.0-rc.15. This update includes several breaking changes that are reflected in this library as well. Please visit our [Migration Guide](https://sap.github.io/ui5-webcomponents-react/?path=/docs/migration-guide--page#migrating-from-017x-to-0180) for update instructions.
+* **ActionSheet**: the ActionSheet can now be opened with `actionSheetRef.current.showAt(opener)` instead of `actionSheetRef.current.open(opener)`
+* **Avatar**: `img` prop is replaced by `children` with a `<img>` component
+* **Breadcrumbs**: the `Breadcrumbs` component has been replaced with the official UI5 Web Component. Please visit our migration guide for details.
+* **Card**: props `headerInteractive`, `status`,  `subtitleText`, `titleText`, `action`, `avatar` and `onHeaderClick` have been removed. Please use the `CardHeader` component instead and pass it to the new `header` prop of the Card.
+* **Carousel**: `selectedIndex`, `infiniteScrollOffset`, and  `onLoadMore` are removed, use the `onNavigate` event to load more items.
+* **ComboBox**: The `filterValue` property has been removed. The `value` property should be used as now it represents the "live" value of the component.
+* **Dialog**: Dialogs can now be opened with `dialogRef.current.show()` instead of `dialogRef.current.open()`
+* **DurationPicker**: Component was made private by the UI5 Web Components, hence it's removed here as well.
+* **MessageStrip**: rename `MessageStripType` enum to `MessageStripDesign`. The prop `type` has been renamed to `design` and now accepts `MessageStripDesign` values.
+* **RadioButton**: the `onSelect` event has been renamed to `onChange`. Read the state of the Radio Button in the event handler with `event.target.checked`.
+* **ResponsivePopover**: the responsive popover can now be opened with `popoverRef.current.showAt(opener)` instead of `popoverRef.current.open(opener)`
+* **Popover**: the popover can now be opened with `popoverRef.current.showAt(opener)` instead of `popoverRef.current.openBy(opener)`
+* **SegmentedButton**: The SegmentedButton no longer accepts `ToggleButton` as children but expects `SegmentedButtonItem`.
+* **SuggestionItem**: prop `group` is not longer supported. Please use the `SuggestionItemGroup` component instead for creating groups.
+* **Wizard**: the `onSelectionChange` event has been renamed to `onStepChange`. In addition, the event param `selectedStep` has been renamed to `step` and `previouslySelectedStep` has been renamed to `previousStep`.
+* **deleted enums**:  `AvatarFitType` (Avatar component doesn't support the fitType prop anymore), `TabContainerHeaderMode`, `TabDesignMode`,  `SearchFunctions` (all three unused), `TabContainerTabsPlacement` (TabContainer component doesn't accept the placement prop anymore)
+* **renamed enums**: `AvatarBackgroundColor` to `AvatarColorScheme`, `PlacementType` to `PopoverPlacementType`, `PanelAccessibleRoles` to `PanelAccessibleRole`, `ListItemTypes` to `ListItemType`
+* **PageBackgroundDesign**: `PageBackgroundDesign.Standard` has been removed. Please use `PageBackgroundDesign.Solid` instead.
+
+
+
+
+
+## [0.17.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.17.2...v0.17.3) (2021-08-02)
+
+
+### Features
+
+* **ColumnChartWithTrend:** initial component implementation ([#1824](https://github.com/SAP/ui5-webcomponents-react/issues/1824)) ([f8f069a](https://github.com/SAP/ui5-webcomponents-react/commit/f8f069a11621158490420d2b10de554e918f1a12))
+* **RadialChart:** add noAnimation prop ([#1877](https://github.com/SAP/ui5-webcomponents-react/issues/1877)) ([e3cd4c8](https://github.com/SAP/ui5-webcomponents-react/commit/e3cd4c8c388f21e5ba57de4ff3b88c96ca44d635))
+
+
+
+
+
 # [0.17.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.16.6...v0.17.0) (2021-07-15)
 
 

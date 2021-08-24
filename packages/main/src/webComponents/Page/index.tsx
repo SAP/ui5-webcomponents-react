@@ -1,10 +1,11 @@
 import { PageBackgroundDesign } from '@ui5/webcomponents-react/dist/PageBackgroundDesign';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import { FC, ReactNode } from 'react';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/Page';
 
-export interface PagePropTypes extends WithWebComponentPropTypes {
+export interface PagePropTypes extends CommonProps {
   /**
    * Defines the background color of the `Page`.
    *
@@ -16,7 +17,7 @@ export interface PagePropTypes extends WithWebComponentPropTypes {
    * *   `Transparent`
    * *   `List`
    */
-  backgroundDesign?: PageBackgroundDesign;
+  backgroundDesign?: PageBackgroundDesign | keyof typeof PageBackgroundDesign;
   /**
    * Disables vertical scrolling of page content. If set to true, there will be no vertical scrolling at all.
    */
@@ -56,7 +57,7 @@ export interface PagePropTypes extends WithWebComponentPropTypes {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Page" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Page: FC<PagePropTypes> = withWebComponent<PagePropTypes>(
+const Page = withWebComponent<PagePropTypes>(
   'ui5-page',
   ['backgroundDesign'],
   ['disableScrolling', 'floatingFooter', 'hideFooter'],

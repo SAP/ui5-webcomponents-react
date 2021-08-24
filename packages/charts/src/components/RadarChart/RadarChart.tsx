@@ -90,7 +90,8 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
     style,
     className,
     tooltip,
-    slot
+    slot,
+    ChartPlaceholder
   } = props;
 
   const chartConfig = useMemo(() => {
@@ -165,7 +166,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
       dataset={dataset}
       ref={chartRef}
       loading={loading}
-      Placeholder={PieChartPlaceholder}
+      Placeholder={ChartPlaceholder ?? PieChartPlaceholder}
       style={style}
       className={className}
       tooltip={tooltip}

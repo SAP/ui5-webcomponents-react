@@ -5,7 +5,7 @@ import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignIte
 import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
 import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';
 import { FlexBoxWrap } from '@ui5/webcomponents-react/dist/FlexBoxWrap';
-import React, { FC, forwardRef, ReactNode, ReactNodeArray, Ref } from 'react';
+import React, { forwardRef, ReactNode, ReactNodeArray, Ref } from 'react';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { styles } from './FlexBox.jss';
 
@@ -16,12 +16,12 @@ export interface FlexBoxPropTypes extends CommonProps {
    * Controls the alignment of items on the Cross Axis.<br />
    * <b>Note:</b> Corresponds to `align-items`.
    */
-  alignItems?: FlexBoxAlignItems;
+  alignItems?: FlexBoxAlignItems | keyof typeof FlexBoxAlignItems;
   /**
    * Controls how the items are placed in the `FlexBox`.<br />
    * <b>Note:</b> Corresponds to `flex-direction`.
    */
-  direction?: FlexBoxDirection;
+  direction?: FlexBoxDirection | keyof typeof FlexBoxDirection;
   /**
    * Determines whether the `FlexBox` is in `flex` or `inline-flex` mode.
    */
@@ -34,12 +34,12 @@ export interface FlexBoxPropTypes extends CommonProps {
    * Defines how the browser distributes space between and around items along the main-axis.<br />
    * <b>Note:</b> Corresponds to `justify-content`.
    */
-  justifyContent?: FlexBoxJustifyContent;
+  justifyContent?: FlexBoxJustifyContent | keyof typeof FlexBoxJustifyContent;
   /**
    * Determines whether the `FlexBox` should wrap, when there is not enough space to display all items in one line.<br />
    * <b>Note:</b> Corresponds to `flex-wrap`.
    */
-  wrap?: FlexBoxWrap;
+  wrap?: FlexBoxWrap | keyof typeof FlexBoxWrap;
   /**
    * Content of the `FlexBox`.
    */
@@ -49,7 +49,7 @@ export interface FlexBoxPropTypes extends CommonProps {
 /**
  * The `FlexBox` builds the container for a flexible box layout by leveraging the CSS flexbox layout.
  */
-const FlexBox: FC<FlexBoxPropTypes> = forwardRef((props: FlexBoxPropTypes, ref: Ref<HTMLDivElement>) => {
+const FlexBox = forwardRef((props: FlexBoxPropTypes, ref: Ref<HTMLDivElement>) => {
   const {
     children,
     justifyContent,

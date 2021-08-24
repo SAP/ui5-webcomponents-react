@@ -14,27 +14,30 @@ const useStyles = createUseStyles(
 
 export const useResponsiveContentPadding = (element) => {
   const [currentRange, setCurrentRange] = useState(getCurrentRange().name);
-  let resizeTimeout = useRef(null);
+  const resizeTimeout = useRef(null);
+  const isMounted = useRef(false);
   const classes = useStyles();
 
   useEffect(() => {
+    isMounted.current = true;
     const observer = new ResizeObserver(([el]) => {
-      // Firefox implements `contentBoxSize` as a single content rect, rather than an array
-      const contentBoxSize = Array.isArray(el.contentBoxSize) ? el.contentBoxSize[0] : el.contentBoxSize;
       if (resizeTimeout.current) {
         clearTimeout(resizeTimeout.current);
       }
       resizeTimeout.current = setTimeout(() => {
-        setCurrentRange(() => getCurrentRange(contentBoxSize.inlineSize).name);
+        if (isMounted.current) {
+          setCurrentRange(() => getCurrentRange(el.contentRect.width)?.name);
+        }
       }, 150);
     });
     if (element) {
       observer.observe(element);
     }
     return () => {
+      isMounted.current = false;
       observer.disconnect();
     };
-  }, [element]);
+  }, [element, isMounted]);
 
   return classes[currentRange];
 };

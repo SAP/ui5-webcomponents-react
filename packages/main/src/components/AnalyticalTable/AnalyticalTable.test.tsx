@@ -253,7 +253,7 @@ describe('AnalyticalTable', () => {
   });
   //todo when it's possible to open popovers on click, activate this test again
   test.skip('test Asc desc', async () => {
-    const { asFragment } = render(<AnalyticalTable data={data} title={'Test'} columns={columns} />);
+    const { asFragment } = render(<AnalyticalTable data={data} header={'Test'} columns={columns} />);
 
     expect(asFragment()).toMatchSnapshot();
 
@@ -302,7 +302,7 @@ describe('AnalyticalTable', () => {
   test('Tree Table', () => {
     const utils = render(
       <AnalyticalTable
-        title="Table Title"
+        header="Table Title"
         data={dataTree}
         columns={columns}
         loading={false}
@@ -310,7 +310,7 @@ describe('AnalyticalTable', () => {
         filterable={true}
         visibleRows={15}
         minRows={5}
-        selectionMode={TableSelectionMode.SINGLE_SELECT}
+        selectionMode={TableSelectionMode.MultiSelect}
         subRowsKey="subRows"
         isTreeTable={true}
       />
@@ -325,7 +325,7 @@ describe('AnalyticalTable', () => {
 
   test('Loading - Placeholder', () => {
     const { asFragment } = render(
-      <AnalyticalTable title="Table Title" data={[]} columns={columns} loading visibleRows={15} minRows={5} />
+      <AnalyticalTable header="Table Title" data={[]} columns={columns} loading visibleRows={15} minRows={5} />
     );
 
     expect(asFragment()).toMatchSnapshot();
@@ -333,7 +333,7 @@ describe('AnalyticalTable', () => {
 
   test('Loading - Loader', () => {
     const { asFragment } = render(
-      <AnalyticalTable title="Table Title" data={data} columns={columns} loading visibleRows={15} minRows={5} />
+      <AnalyticalTable header="Table Title" data={data} columns={columns} loading visibleRows={15} minRows={5} />
     );
 
     expect(asFragment()).toMatchSnapshot();
@@ -341,14 +341,16 @@ describe('AnalyticalTable', () => {
 
   test('Alternate Row Color', () => {
     const { asFragment } = render(
-      <AnalyticalTable title="Table Title" data={data} columns={columns} alternateRowColor />
+      <AnalyticalTable header="Table Title" data={data} columns={columns} alternateRowColor />
     );
 
     expect(asFragment()).toMatchSnapshot();
   });
 
   test('custom row height', () => {
-    const { asFragment } = render(<AnalyticalTable title="Table Title" data={data} columns={columns} rowHeight={60} />);
+    const { asFragment } = render(
+      <AnalyticalTable header="Table Title" data={data} columns={columns} rowHeight={60} />
+    );
 
     expect(asFragment()).toMatchSnapshot();
   });
@@ -392,7 +394,7 @@ describe('AnalyticalTable', () => {
   });
 
   test('test drag and drop of a draggable column', () => {
-    const { asFragment, container } = render(<AnalyticalTable data={data} title={'Test'} columns={columns} />);
+    const { asFragment, container } = render(<AnalyticalTable data={data} header={'Test'} columns={columns} />);
 
     // get first column of the table and simulate dragging of it
     let componentDrag = container.querySelector<HTMLElement>('div[role="columnheader"][draggable]');
@@ -415,7 +417,7 @@ describe('AnalyticalTable', () => {
   });
 
   test('RTL: test drag and drop of a draggable column', () => {
-    const { asFragment, container } = renderRtl(<AnalyticalTable data={data} title={'Test'} columns={columns} />);
+    const { asFragment, container } = renderRtl(<AnalyticalTable data={data} header={'Test'} columns={columns} />);
 
     // get first column of the table and simulate dragging of it
     let componentDrag = container.querySelector<HTMLElement>('div[role="columnheader"][draggable]');
@@ -440,7 +442,7 @@ describe('AnalyticalTable', () => {
   test('render without data', () => {
     const data = [];
     const { asFragment } = render(
-      <AnalyticalTable title="Table Title" data={data} columns={columns} alternateRowColor />
+      <AnalyticalTable header="Table Title" data={data} columns={columns} alternateRowColor />
     );
 
     expect(asFragment()).toMatchSnapshot();
@@ -449,11 +451,11 @@ describe('AnalyticalTable', () => {
   test('without selection Column', () => {
     const { asFragment } = render(
       <AnalyticalTable
-        title="Table Title"
+        header="Table Title"
         data={data}
         columns={columns}
-        selectionMode={TableSelectionMode.SINGLE_SELECT}
-        selectionBehavior={TableSelectionBehavior.ROW_ONLY}
+        selectionMode={TableSelectionMode.SingleSelect}
+        selectionBehavior={TableSelectionBehavior.RowOnly}
       />
     );
 
@@ -468,7 +470,7 @@ describe('AnalyticalTable', () => {
         <AnalyticalTable
           style={{ width: '170px' }}
           ref={tableRef}
-          title="Table Title"
+          header="Table Title"
           data={data}
           columns={columns}
           visibleRows={1}
@@ -517,10 +519,10 @@ describe('AnalyticalTable', () => {
   test('with highlight row', () => {
     const { asFragment, getAllByRole, rerender } = render(
       <AnalyticalTable
-        title="Table Title"
+        header="Table Title"
         data={data}
         columns={columns}
-        selectionMode={TableSelectionMode.SINGLE_SELECT}
+        selectionMode={TableSelectionMode.SingleSelect}
         withRowHighlight
         minRows={1}
       />
@@ -539,10 +541,10 @@ describe('AnalyticalTable', () => {
 
     rerender(
       <AnalyticalTable
-        title="Table Title"
+        header="Table Title"
         data={data}
         columns={columns}
-        selectionMode={TableSelectionMode.SINGLE_SELECT}
+        selectionMode={TableSelectionMode.SingleSelect}
         minRows={1}
       />
     );
@@ -556,10 +558,10 @@ describe('AnalyticalTable', () => {
   test('RTL: with highlight row', () => {
     const { asFragment, getAllByRole, rerender } = renderRtl(
       <AnalyticalTable
-        title="Table Title"
+        header="Table Title"
         data={data}
         columns={columns}
-        selectionMode={TableSelectionMode.SINGLE_SELECT}
+        selectionMode={TableSelectionMode.SingleSelect}
         withRowHighlight
         minRows={1}
       />
@@ -578,10 +580,10 @@ describe('AnalyticalTable', () => {
 
     rerender(
       <AnalyticalTable
-        title="Table Title"
+        header="Table Title"
         data={data}
         columns={columns}
-        selectionMode={TableSelectionMode.SINGLE_SELECT}
+        selectionMode={TableSelectionMode.SingleSelect}
         minRows={1}
       />
     );
@@ -595,7 +597,7 @@ describe('AnalyticalTable', () => {
   test('highlight row with custom row key', () => {
     const utils = render(
       <AnalyticalTable
-        selectionMode={TableSelectionMode.SINGLE_SELECT}
+        selectionMode={TableSelectionMode.SingleSelect}
         data={data}
         columns={columns}
         reactTableOptions={{
@@ -661,7 +663,7 @@ describe('AnalyticalTable', () => {
       <AnalyticalTable
         data={[...data, ...moreData]}
         columns={columns}
-        visibleRowCountMode={TableVisibleRowCountMode.AUTO}
+        visibleRowCountMode={TableVisibleRowCountMode.Auto}
       />
     );
 
@@ -685,7 +687,7 @@ describe('AnalyticalTable', () => {
       <AnalyticalTable
         data={[...data, ...moreData]}
         columns={columns}
-        visibleRowCountMode={TableVisibleRowCountMode.AUTO}
+        visibleRowCountMode={TableVisibleRowCountMode.Auto}
       />
     );
     expect(tableContainer.getAttribute('data-per-page')).toBe('22');
@@ -696,7 +698,7 @@ describe('AnalyticalTable', () => {
       <AnalyticalTable
         data={[...data, ...moreData]}
         columns={columns}
-        visibleRowCountMode={TableVisibleRowCountMode.AUTO}
+        visibleRowCountMode={TableVisibleRowCountMode.Auto}
         visibleRows={1337}
       />
     );
@@ -707,7 +709,7 @@ describe('AnalyticalTable', () => {
       <AnalyticalTable
         data={[...data, ...moreData]}
         columns={columns}
-        visibleRowCountMode={TableVisibleRowCountMode.FIXED}
+        visibleRowCountMode={TableVisibleRowCountMode.Fixed}
       />
     );
     expect(tableContainer.getAttribute('data-per-page')).toBe('15');
@@ -717,7 +719,7 @@ describe('AnalyticalTable', () => {
       <AnalyticalTable
         data={[...data, ...moreData]}
         columns={columns}
-        visibleRowCountMode={TableVisibleRowCountMode.FIXED}
+        visibleRowCountMode={TableVisibleRowCountMode.Fixed}
         visibleRows={1337}
       />
     );
@@ -736,7 +738,7 @@ describe('AnalyticalTable', () => {
       <AnalyticalTable
         data={[...data, ...moreData]}
         columns={columns}
-        visibleRowCountMode={TableVisibleRowCountMode.INTERACTIVE}
+        visibleRowCountMode={TableVisibleRowCountMode.Interactive}
       />
     );
     const tableContainer = screen.getByRole('grid', { hidden: true });
@@ -906,11 +908,11 @@ describe('AnalyticalTable', () => {
     const callback = jest.fn();
     const { getByText, getAllByRole } = render(
       <AnalyticalTable
-        title="Table Title"
+        header="Table Title"
         data={data}
         columns={columns}
-        selectionBehavior={TableSelectionBehavior.ROW}
-        selectionMode={TableSelectionMode.SINGLE_SELECT}
+        selectionBehavior={TableSelectionBehavior.Row}
+        selectionMode={TableSelectionMode.SingleSelect}
         onRowClick={callback}
       />
     );
@@ -1012,7 +1014,7 @@ describe('AnalyticalTable', () => {
           data={dataWithDisableSelectProp}
           columns={columns}
           onRowSelected={cb}
-          selectionMode={TableSelectionMode.MULTI_SELECT}
+          selectionMode={TableSelectionMode.MultiSelect}
           tableHooks={[useRowDisableSelection('disableSelection')]}
           minRows={1}
         />

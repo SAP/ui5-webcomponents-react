@@ -8,7 +8,6 @@ import React, {
   Children,
   cloneElement,
   CSSProperties,
-  FC,
   forwardRef,
   ReactElement,
   ReactNode,
@@ -31,7 +30,7 @@ export interface GridPropTypes extends CommonProps {
   /**
    * Position of the Grid in the window or surrounding container. Possible values are "Center", "Left" and "Right".
    */
-  position?: GridPosition;
+  position?: GridPosition | keyof typeof GridPosition;
   /**
    * A string type that represents Grid's default span values for very large, large, medium and small screens for the whole Grid.
    * Allowed values are separated by space Letters XL, L, M or S followed by number of columns from 1 to 12 that the container has to take, for example: "L2 M4 S6", "M12", "s10" or "l4 m4".
@@ -100,7 +99,7 @@ const useStyles = createUseStyles(styles, { name: 'Grid' });
 /**
  * A layout container component used for aligning items with various sizes in a simple grid.
  */
-const Grid: FC<GridPropTypes> = forwardRef((props: GridPropTypes, ref: Ref<HTMLDivElement>) => {
+const Grid = forwardRef((props: GridPropTypes, ref: Ref<HTMLDivElement>) => {
   const { position, children, hSpacing, vSpacing, style, className, tooltip, slot, defaultIndent, defaultSpan } = props;
   const classes = useStyles();
   const currentRange = useViewportRange();

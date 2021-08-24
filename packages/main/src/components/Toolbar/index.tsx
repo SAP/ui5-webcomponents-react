@@ -10,7 +10,6 @@ import { ToolbarStyle } from '@ui5/webcomponents-react/dist/ToolbarStyle';
 import React, {
   cloneElement,
   createRef,
-  FC,
   forwardRef,
   ReactElement,
   ReactFragment,
@@ -30,7 +29,7 @@ import { styles } from './Toolbar.jss';
 
 const useStyles = createUseStyles(styles, { name: 'Toolbar' });
 
-export interface ToolbarProptypes extends Omit<CommonProps, 'onClick'> {
+export interface ToolbarPropTypes extends Omit<CommonProps, 'onClick'> {
   /**
    * Defines the content of the `Toolbar`.
    */
@@ -39,12 +38,12 @@ export interface ToolbarProptypes extends Omit<CommonProps, 'onClick'> {
    * Defines the visual style of the `Toolbar`.<br />
    * <b>Note:</b> The visual styles are theme-dependent.
    */
-  toolbarStyle?: ToolbarStyle;
+  toolbarStyle?: ToolbarStyle | keyof typeof ToolbarStyle;
   /**
    * Defines the `Toolbar` design.<br />
    * <b>Note:</b> Design settings are theme-dependent.
    */
-  design?: ToolbarDesign;
+  design?: ToolbarDesign | keyof typeof ToolbarDesign;
   /**
    * Indicates that the whole `Toolbar` is clickable. The Press event is fired only if `active` is set to true.
    */
@@ -61,7 +60,7 @@ export interface ToolbarProptypes extends Omit<CommonProps, 'onClick'> {
  * The content of the `Toolbar` moves into the overflow area from right to left when the available space is not enough in the visible area of the container.
  * It can be accessed by the user through the overflow button that opens it in a popover.
  */
-const Toolbar: FC<ToolbarProptypes> = forwardRef((props: ToolbarProptypes, ref: Ref<HTMLDivElement>) => {
+const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) => {
   const { children, toolbarStyle, design, active, style, tooltip, className, onClick, slot } = props;
   const classes = useStyles();
   const outerContainer: RefObject<HTMLDivElement> = useConsolidatedRef(ref);
@@ -118,12 +117,12 @@ const Toolbar: FC<ToolbarProptypes> = forwardRef((props: ToolbarProptypes, ref: 
         return item;
       }
       return (
-        <div ref={itemRef} key={index}>
+        <div ref={itemRef} key={index} className={classes.childContainer} data-component-name="ToolbarChildContainer">
           {item}
         </div>
       );
     });
-  }, [children, controlMetaData]);
+  }, [children, controlMetaData, classes.childContainer]);
 
   const overflowNeeded =
     (lastVisibleIndex || lastVisibleIndex === 0) && React.Children.count(childrenWithRef) !== lastVisibleIndex + 1;
@@ -208,7 +207,7 @@ const Toolbar: FC<ToolbarProptypes> = forwardRef((props: ToolbarProptypes, ref: 
       onClick={handleToolbarClick}
       {...passThroughProps}
     >
-      <div className={classes.toolbar}>
+      <div className={classes.toolbar} data-component-name="ToolbarContent">
         {overflowNeeded &&
           React.Children.map(childrenWithRef, (item, index) => {
             if (index >= lastVisibleIndex + 1) {
@@ -219,7 +218,11 @@ const Toolbar: FC<ToolbarProptypes> = forwardRef((props: ToolbarProptypes, ref: 
         {!overflowNeeded && childrenWithRef}
       </div>
       {overflowNeeded && (
-        <div className={classes.overflowButtonContainer} title={i18nBundle.getText(SHOW_MORE)}>
+        <div
+          className={classes.overflowButtonContainer}
+          title={i18nBundle.getText(SHOW_MORE)}
+          data-component-name="ToolbarOverflowButtonContainer"
+        >
           <OverflowPopover lastVisibleIndex={lastVisibleIndex} contentClass={classes.popoverContent}>
             {React.Children.toArray(children).map((child) => {
               if ((child as ReactElement).type === React.Fragment) {

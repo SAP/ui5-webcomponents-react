@@ -10,6 +10,8 @@ import React, {
   CSSProperties,
   DragEventHandler,
   FC,
+  MouseEventHandler,
+  KeyboardEventHandler,
   ReactNode,
   ReactNodeArray,
   useCallback,
@@ -22,13 +24,8 @@ import { ColumnType } from '../types/ColumnType';
 import { ColumnHeaderModal } from './ColumnHeaderModal';
 
 export interface ColumnHeaderProps {
-  id: string;
-  defaultSortDesc: boolean;
-  children: ReactNode | ReactNodeArray;
-  grouping: string;
-  className: string;
-  column: ColumnType;
-  style: CSSProperties;
+  visibleColumnIndex: number;
+  columnIndex: number;
   onSort?: (e: CustomEvent<{ column: unknown; sortDirection: string }>) => void;
   onGroupBy?: (e: CustomEvent<{ column: unknown; isGrouped: boolean }>) => void;
   onDragStart: DragEventHandler<HTMLDivElement>;
@@ -37,13 +34,20 @@ export interface ColumnHeaderProps {
   onDragEnter: DragEventHandler<HTMLDivElement>;
   onDragEnd: DragEventHandler<HTMLDivElement>;
   dragOver: boolean;
-  isResizing: boolean;
-  headerTooltip: string;
   isDraggable: boolean;
-  role: string;
-  isLastColumn: boolean;
+  headerTooltip: string;
   virtualColumn: VirtualItem;
   isRtl: boolean;
+  children: ReactNode | ReactNodeArray;
+
+  //getHeaderProps()
+  id: string;
+  onClick: MouseEventHandler<HTMLDivElement> | undefined;
+  onKeyDown?: KeyboardEventHandler<HTMLDivElement> | undefined;
+  className: string;
+  style: CSSProperties;
+  column: ColumnType;
+  role: string;
 }
 
 const styles = {
@@ -105,13 +109,17 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     dragOver,
     role,
     virtualColumn,
-    isRtl
+    isRtl,
+    columnIndex,
+    visibleColumnIndex,
+    onClick,
+    onKeyDown
   } = props;
 
   const isFiltered = column.filterValue && column.filterValue.length > 0;
   const [popoverOpen, setPopoverOpen] = useState(false);
 
-  const tooltip = useMemo(() => {
+  const tooltip = (() => {
     if (headerTooltip) {
       return headerTooltip;
     }
@@ -119,9 +127,9 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
       return children;
     }
     return null;
-  }, [children, headerTooltip]);
+  })();
 
-  const textStyle = useMemo(() => {
+  const textStyle = (() => {
     let margin = 0;
 
     if (column.isSorted) margin++;
@@ -142,23 +150,41 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     return {
       marginRight: `${margin}rem`
     };
-  }, [column.isSorted, column.isGrouped, isFiltered, isRtl]);
+  })();
 
   const hasPopover = column.canGroupBy || column.canSort || column.canFilter;
 
-  const onOpenPopover = useCallback(() => {
+  const handleHeaderCellClick = (e) => {
+    onClick?.(e);
     if (hasPopover) {
       setPopoverOpen(true);
     }
-  }, [hasPopover]);
+  };
   const directionStyles = isRtl
     ? { right: 0, transform: `translateX(-${virtualColumn.start}px)` }
     : { left: 0, transform: `translateX(${virtualColumn.start}px)` };
 
   const iconContainerDirectionStyles = isRtl ? { left: '0.5rem' } : { right: '0.5rem' };
 
+  const handleHeaderCellKeyDown = (e) => {
+    onKeyDown?.(e);
+    if (hasPopover && e.code === 'Enter') {
+      setPopoverOpen(true);
+    }
+    if (e.code === 'Space') {
+      e.preventDefault();
+    }
+  };
+
+  const handleHeaderCellKeyUp = (e) => {
+    if (hasPopover && e.code === 'Space') {
+      setPopoverOpen(true);
+    }
+  };
+
   const targetRef = useRef();
   if (!column) return null;
+
   return (
     <div
       ref={targetRef}
@@ -170,6 +196,11 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
       }}
     >
       <div
+        data-visible-column-index={visibleColumnIndex}
+        data-visible-row-index={0}
+        data-row-index={0}
+        data-column-index={columnIndex}
+        tabIndex={-1}
         id={id}
         className={className}
         style={{
@@ -185,7 +216,9 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
         onDrop={onDrop}
         onDragEnd={onDragEnd}
         data-column-id={id}
-        onClick={onOpenPopover}
+        onClick={handleHeaderCellClick}
+        onKeyDown={handleHeaderCellKeyDown}
+        onKeyUp={handleHeaderCellKeyUp}
       >
         <div className={classes.header} data-h-align={column.hAlign}>
           <Text tooltip={tooltip} wrapping={false} style={textStyle} className={classes.text}>

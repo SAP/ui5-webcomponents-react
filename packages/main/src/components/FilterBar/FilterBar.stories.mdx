@@ -3,12 +3,18 @@ import { FilterBar } from '@ui5/webcomponents-react/dist/FilterBar';
 import { FilterGroupItem } from '@ui5/webcomponents-react/dist/FilterGroupItem';
 import { Input } from '@ui5/webcomponents-react/dist/Input';
 import { MultiComboBox } from '@ui5/webcomponents-react/dist/MultiComboBox';
+import { ComboBox } from '@ui5/webcomponents-react/dist/ComboBox';
+import { ComboBoxItem } from '@ui5/webcomponents-react/dist/ComboBoxItem';
 import { MultiComboBoxItem } from '@ui5/webcomponents-react/dist/MultiComboBoxItem';
 import { Option } from '@ui5/webcomponents-react/dist/Option';
 import { Select } from '@ui5/webcomponents-react/dist/Select';
 import { Switch } from '@ui5/webcomponents-react/dist/Switch';
 import { DateRangePicker } from '@ui5/webcomponents-react/dist/DateRangePicker';
 import { VariantManagement } from '@ui5/webcomponents-react/dist/VariantManagement';
+import { MultiInput } from '@ui5/webcomponents-react/dist/MultiInput';
+import { RatingIndicator } from '@ui5/webcomponents-react/dist/RatingIndicator';
+import { StepInput } from '@ui5/webcomponents-react/dist/StepInput';
+import { Token } from '@ui5/webcomponents-react/dist/Token';
 import '@ui5/webcomponents-icons/dist/nav-back.js';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 
@@ -55,6 +61,24 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
     {(args) => {
       return (
         <FilterBar {...args}>
+          <FilterGroupItem label="StepInput">
+            <StepInput />
+          </FilterGroupItem>
+          <FilterGroupItem label="RatingIndicator">
+            <RatingIndicator />
+          </FilterGroupItem>
+          <FilterGroupItem label="MultiInput">
+            <MultiInput
+              tokens={
+                <>
+                  <Token text="Argentina" />
+                  <Token text="Bulgaria" />
+                  <Token text="England" />
+                  <Token text="Finland" />
+                </>
+              }
+            />
+          </FilterGroupItem>
           <FilterGroupItem label="Input">
             <Input placeholder="Placeholder" />
           </FilterGroupItem>
@@ -96,13 +120,13 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
               <MultiComboBoxItem selected text="MultiComboBoxItem 4" />
             </MultiComboBox>
           </FilterGroupItem>
-          <FilterGroupItem label="MultBox w/o initial selected" groupName="Group 2">
-            <MultiComboBox>
-              <MultiComboBoxItem text="MultiComboBoxItem 1" />
-              <MultiComboBoxItem text="MultiComboBoxItem 2" />
-              <MultiComboBoxItem text="MultiComboBoxItem 3" />
-              <MultiComboBoxItem text="MultiComboBoxItem 4" />
-            </MultiComboBox>
+          <FilterGroupItem label="ComboBox w/o initial selected" groupName="Group 2">
+            <ComboBox>
+              <ComboBoxItem text="ComboBoxItem 1" />
+              <ComboBoxItem text="ComboBoxItem 2" />
+              <ComboBoxItem text="ComboBoxItem 3" />
+              <ComboBoxItem text="ComboBoxItem 4" />
+            </ComboBox>
           </FilterGroupItem>
           <FilterGroupItem label="Date Picker" groupName="Group 2">
             <DateRangePicker style={{ minWidth: 'auto' }} />

@@ -10,11 +10,9 @@ const FaultyBarEnd = () => {
 };
 export const FaultyBarComponent = () => {
   return (
-    <Bar
-      startContent={<FaultyBarStart />}
-      middleContent={<div>I'm not a custom component</div>}
-      endContent={<FaultyBarEnd />}
-    />
+    <Bar startContent={<FaultyBarStart />} endContent={<FaultyBarEnd />}>
+      <div>I'm not a custom component</div>
+    </Bar>
   );
 };
 
@@ -26,6 +24,8 @@ const BarEnd = (props) => {
 };
 export const BarComponent = () => {
   return (
-    <Bar startContent={<BarStart />} middleContent={<div>I'm not a custom component</div>} endContent={<BarEnd />} />
+    <Bar startContent={<BarStart />} endContent={<BarEnd />}>
+      <div>I'm not a custom component</div>
+    </Bar>
   );
 };

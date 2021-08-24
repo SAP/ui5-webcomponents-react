@@ -9,19 +9,20 @@ import {
   SORT_DESCENDING,
   UNGROUP
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
+import { CustomListItem } from '@ui5/webcomponents-react/dist/CustomListItem';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
 import { Icon } from '@ui5/webcomponents-react/dist/Icon';
 import { List } from '@ui5/webcomponents-react/dist/List';
-import { ListItemTypes } from '@ui5/webcomponents-react/dist/ListItemTypes';
-import { PlacementType } from '@ui5/webcomponents-react/dist/PlacementType';
+import { ListItemType } from '@ui5/webcomponents-react/dist/ListItemType';
+import { PopoverPlacementType } from '@ui5/webcomponents-react/dist/PopoverPlacementType';
 import { Popover } from '@ui5/webcomponents-react/dist/Popover';
 import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/dist/PopoverHorizontalAlign';
 import { StandardListItem } from '@ui5/webcomponents-react/dist/StandardListItem';
+import { Ui5PopoverDomRef } from '@ui5/webcomponents-react/interfaces/Ui5PopoverDomRef';
 import React, { RefObject, useCallback, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
-import { Ui5PopoverDomRef } from '@ui5/webcomponents-react/interfaces/Ui5PopoverDomRef';
 import { stopPropagation } from '../../../internal/stopPropagation';
 import { ColumnType } from '../types/ColumnType';
 
@@ -55,6 +56,7 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
   const showSort = column.canSort;
 
   const ref = useRef<Ui5PopoverDomRef>(null);
+  const listRef = useRef(null);
 
   const { Filter } = column;
 
@@ -130,7 +132,7 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
   useEffect(() => {
     const popoverInstance = ref.current;
     if (open) {
-      popoverInstance?.openBy(targetRef.current);
+      popoverInstance?.showAt(targetRef.current);
     }
   }, [open, targetRef.current, ref.current]);
 
@@ -143,45 +145,53 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
     [setPopoverOpen]
   );
 
+  const onAfterOpen = () => {
+    listRef.current?.children?.[0]?.focus();
+  };
+
   if (!open) return null;
   return createPortal(
     <Popover
-      noArrow
+      hideArrow
       horizontalAlign={PopoverHorizontalAlign.Left}
-      placementType={PlacementType.Bottom}
+      placementType={PopoverPlacementType.Bottom}
       ref={ref}
       className={classes.popover}
       onAfterClose={onAfterClose}
+      onAfterOpen={onAfterOpen}
     >
-      <List onItemClick={handleSort}>
+      <List onItemClick={handleSort} ref={listRef}>
         {isSortedAscending && (
-          <StandardListItem type={ListItemTypes.Active} icon="decline" data-sort="clear">
+          <StandardListItem type={ListItemType.Active} icon="decline" data-sort="clear">
             {clearSortingText}
           </StandardListItem>
         )}
         {showSort && !isSortedAscending && (
-          <StandardListItem type={ListItemTypes.Active} icon="sort-ascending" data-sort="asc">
+          <StandardListItem type={ListItemType.Active} icon="sort-ascending" data-sort="asc">
             {sortAscendingText}
           </StandardListItem>
         )}
         {showSort && !isSortedDescending && (
-          <StandardListItem type={ListItemTypes.Active} icon="sort-descending" data-sort="desc">
+          <StandardListItem type={ListItemType.Active} icon="sort-descending" data-sort="desc">
             {sortDescendingText}
           </StandardListItem>
         )}
         {isSortedDescending && (
-          <StandardListItem type={ListItemTypes.Active} icon="decline" data-sort="clear">
+          <StandardListItem type={ListItemType.Active} icon="decline" data-sort="clear">
             {clearSortingText}
           </StandardListItem>
         )}
         {showFilter && !column.isGrouped && (
-          <FlexBox alignItems={FlexBoxAlignItems.Center} className={classes.filter}>
-            <Icon name="filter" className={classes.filterIcon} />
-            <Filter column={column} popoverRef={ref} />
-          </FlexBox>
+          //todo maybe need to enhance Input selection after ui5-webcomponents issue has been fixed
+          <CustomListItem type={ListItemType.Inactive}>
+            <FlexBox alignItems={FlexBoxAlignItems.Center} className={classes.filter}>
+              <Icon name="filter" className={classes.filterIcon} />
+              <Filter column={column} popoverRef={ref} />
+            </FlexBox>
+          </CustomListItem>
         )}
         {showGroup && (
-          <StandardListItem type={ListItemTypes.Active} icon="group-2" data-sort={'group'}>
+          <StandardListItem type={ListItemType.Active} icon="group-2" data-sort={'group'}>
             {column.isGrouped ? ungroupText : groupText}
           </StandardListItem>
         )}

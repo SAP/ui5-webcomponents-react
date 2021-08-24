@@ -1,15 +1,17 @@
-import { PlacementType } from '@ui5/webcomponents-react/dist/PlacementType';
 import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/dist/PopoverHorizontalAlign';
+import { PopoverPlacementType } from '@ui5/webcomponents-react/dist/PopoverPlacementType';
 import { PopoverVerticalAlign } from '@ui5/webcomponents-react/dist/PopoverVerticalAlign';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { ReactNode, FC } from 'react';
+import { Ui5ResponsivePopoverDomRef } from '@ui5/webcomponents-react/interfaces/Ui5ResponsivePopoverDomRef';
+import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/ResponsivePopover';
 
-export interface ResponsivePopoverPropTypes extends WithWebComponentPropTypes {
+export interface ResponsivePopoverPropTypes extends CommonProps {
   /**
-   * Determines if there is no enough space, the `Popover` can be placed over the target.
+   * Determines if there is no enough space, the component can be placed over the target.
    */
   allowTargetOverlap?: boolean;
   /**
@@ -19,11 +21,15 @@ export interface ResponsivePopoverPropTypes extends WithWebComponentPropTypes {
    */
   headerText?: string;
   /**
+   * Determines whether the component arrow is hidden.
+   */
+  hideArrow?: boolean;
+  /**
    * Defines whether the block layer will be shown if modal property is set to true.
    */
   hideBackdrop?: boolean;
   /**
-   * Determines the horizontal alignment of the `Popover`.
+   * Determines the horizontal alignment of the component.
    *
    * Available options are:
    *
@@ -32,17 +38,13 @@ export interface ResponsivePopoverPropTypes extends WithWebComponentPropTypes {
    * *   `Right`
    * *   `Stretch`
    */
-  horizontalAlign?: PopoverHorizontalAlign;
+  horizontalAlign?: PopoverHorizontalAlign | keyof typeof PopoverHorizontalAlign;
   /**
-   * Defines whether the `Popover` should close when clicking/tapping outside of the popover. If enabled, it blocks any interaction with the background.
+   * Defines whether the component should close when clicking/tapping outside of the popover. If enabled, it blocks any interaction with the background.
    */
   modal?: boolean;
   /**
-   * Determines whether the `Popover` arrow is hidden.
-   */
-  noArrow?: boolean;
-  /**
-   * Determines on which side the `Popover` is placed at.
+   * Determines on which side the component is placed at.
    *
    * Available options are:
    *
@@ -51,9 +53,9 @@ export interface ResponsivePopoverPropTypes extends WithWebComponentPropTypes {
    * *   `Top`
    * *   `Bottom`
    */
-  placementType?: PlacementType;
+  placementType?: PopoverPlacementType | keyof typeof PopoverPlacementType;
   /**
-   * Determines the vertical alignment of the `Popover`.
+   * Determines the vertical alignment of the component.
    *
    * Available options are:
    *
@@ -62,7 +64,11 @@ export interface ResponsivePopoverPropTypes extends WithWebComponentPropTypes {
    * *   `Bottom`
    * *   `Stretch`
    */
-  verticalAlign?: PopoverVerticalAlign;
+  verticalAlign?: PopoverVerticalAlign | keyof typeof PopoverVerticalAlign;
+  /**
+   * Sets the accessible aria name of the component.
+   */
+  accessibleName?: string;
   /**
    * Defines the ID of the HTML Element, which will get the initial focus.
    */
@@ -90,19 +96,19 @@ export interface ResponsivePopoverPropTypes extends WithWebComponentPropTypes {
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Fired after the component is closed. This event does not bubble.
+   * Fired after the component is closed. **This event does not bubble.**
    */
   onAfterClose?: (event: Ui5CustomEvent<HTMLElement>) => void;
   /**
-   * Fired after the component is opened. This event does not bubble.
+   * Fired after the component is opened. **This event does not bubble.**
    */
   onAfterOpen?: (event: Ui5CustomEvent<HTMLElement>) => void;
   /**
-   * Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing. This event does not bubble.
+   * Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing. **This event does not bubble.**
    */
   onBeforeClose?: (event: Ui5CustomEvent<HTMLElement, { escPressed: boolean }>) => void;
   /**
-   * Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. This event does not bubble.
+   * Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. **This event does not bubble.**
    */
   onBeforeOpen?: (event: Ui5CustomEvent<HTMLElement>) => void;
 }
@@ -112,10 +118,10 @@ export interface ResponsivePopoverPropTypes extends WithWebComponentPropTypes {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/ResponsivePopover" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const ResponsivePopover: FC<ResponsivePopoverPropTypes> = withWebComponent<ResponsivePopoverPropTypes>(
+const ResponsivePopover = withWebComponent<ResponsivePopoverPropTypes, Ui5ResponsivePopoverDomRef>(
   'ui5-responsive-popover',
-  ['headerText', 'horizontalAlign', 'placementType', 'verticalAlign', 'initialFocus'],
-  ['allowTargetOverlap', 'hideBackdrop', 'modal', 'noArrow', 'preventFocusRestore'],
+  ['headerText', 'horizontalAlign', 'placementType', 'verticalAlign', 'accessibleName', 'initialFocus'],
+  ['allowTargetOverlap', 'hideArrow', 'hideBackdrop', 'modal', 'preventFocusRestore'],
   ['footer', 'header'],
   ['after-close', 'after-open', 'before-close', 'before-open']
 );
@@ -124,11 +130,11 @@ ResponsivePopover.displayName = 'ResponsivePopover';
 
 ResponsivePopover.defaultProps = {
   allowTargetOverlap: false,
+  hideArrow: false,
   hideBackdrop: false,
   horizontalAlign: PopoverHorizontalAlign.Center,
   modal: false,
-  noArrow: false,
-  placementType: PlacementType.Right,
+  placementType: PopoverPlacementType.Right,
   verticalAlign: PopoverVerticalAlign.Center,
   preventFocusRestore: false
 };

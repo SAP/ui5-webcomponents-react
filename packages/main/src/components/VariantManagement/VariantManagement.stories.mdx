@@ -1,4 +1,4 @@
-import { PlacementType } from '@ui5/webcomponents-react/dist/PlacementType';
+import { PopoverPlacementType } from '@ui5/webcomponents-react/dist/PopoverPlacementType';
 import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
 import { VariantManagement } from '@ui5/webcomponents-react/dist/VariantManagement';
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
@@ -14,7 +14,7 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
   }}
   args={{
     selectedKey: '2',
-    placement: PlacementType.Bottom,
+    placement: PopoverPlacementType.Bottom,
     level: TitleLevel.H4,
     variantItems: [
       { label: 'Variant 1', key: '1' },
@@ -30,19 +30,7 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
 ## Example
 
 <Canvas>
-  <Story name="Default">
-    {(props) => (
-      <VariantManagement
-        closeOnItemSelect={props.closeOnItemSelect}
-        selectedKey={props.selectedKey}
-        variantItems={props.variantItems}
-        onSelect={props.onSelect}
-        placement={props.placement}
-        level={props.level}
-        disabled={props.disabled}
-      />
-    )}
-  </Story>
+  <Story name="Default">{(props) => <VariantManagement {...props} />}</Story>
 </Canvas>
 
 ## Properties

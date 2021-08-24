@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/addon-docs';
-import { MessageStrip, MessageStripType } from '@ui5/webcomponents-react';
+import { MessageStrip, MessageStripDesign } from '@ui5/webcomponents-react';
 import { TableOfContent } from '../shared/stories/TableOfContent';
 
 <Meta title="Migration Guide" />
@@ -15,6 +15,216 @@ or the [changelog](https://github.com/SAP/ui5-webcomponents-react/blob/main/CHAN
 <br />
 
 <TableOfContent headingSelector="h2.sbdocs-h2" />
+
+## Migrating from 0.17.x to 0.18.0
+
+In this release, the UI5 Web Components have renamed lots of properties in order to pave the way to the 1.0.0 release.
+You can check the list of all breaking changes of the UI5 Web Components [here](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.0.0-rc.15).<br />
+To make your update more convenient, we are providing a codemod that helps you to rename (most) of the props.
+
+**Requirement**: You have to install `@ui5/webcomponents-react@^0.18.0` or `@ui5/webcomponents-react-base@^0.18.0` before running the codemod!
+
+```bash
+# rename src with the directory where your sources are located
+npx ui5wcr-codemod renamePropsV18 src
+
+# if you are using TypeScript: rename src with the directory where your sources are located
+npx ui5wcr-codemod renamePropsV18 src --typescript
+```
+
+<MessageStrip design={MessageStripDesign.Warning} hideCloseButton>
+  Please make sure that you have committed all changes before running this codemod.
+  <br />
+  Keep in mind that the codemod output will not always match your project’s coding style, so you might want to run{' '}
+  <a href="https://prettier.io" target="_blank">
+    Prettier
+  </a>{' '}
+  after the codemod finishes for consistent formatting.
+</MessageStrip>
+
+### Avatar
+
+The `Avatar` component does no longer have an `img` prop but expects you to pass an `<img />` element as children.
+In addition, the `imageFitType` prop is replaced by using the `objectFit` style property on the image:
+
+```jsx
+// with 0.17.x
+<Avatar img={"urlToMyImage"} />
+<Avatar img={"urlToMyImage"} imageFitType={AvatarFitType.Contain} />
+<Avatar img={"urlToMyImage"} imageFitType={AvatarFitType.Cover} />
+
+// with 0.18.x
+<Avatar>
+  <img src={"urlToMyImage"} />
+</Avatar>
+<Avatar>
+  <img src={"urlToMyImage"} style={{objectFit: 'contain' }} />
+</Avatar>
+<Avatar>
+  <img src={"urlToMyImage"} style={{objectFit: 'cover' }} />
+</Avatar>
+```
+
+### Breadcrumbs
+
+The `Breadcrumbs` component has been replaced with the official UI5 Web Component, so it has now a slightly different API:
+
+```jsx
+// with v0.17.x with current location
+<Breadcrumbs separatorStyle={BreadcrumbsSeparatorStyle.Slash} currentLocationText="Current Location">
+  <Link href="https://www.sap.com">Link 1</Link>
+  <Link>Link 2</Link>
+  <Link>Link 3</Link>
+</Breadcrumbs>
+// with v0.17.x without current location
+<Breadcrumbs separatorStyle={BreadcrumbsSeparatorStyle.Slash}>
+  <Link href="https://www.sap.com">Link 1</Link>
+  <Link>Link 2</Link>
+  <Link>Link 3</Link>
+</Breadcrumbs>
+
+// with v0.18.x with current location
+<Breadcrumbs separatorStyle={BreadcrumbsSeparatorStyle.Slash}>
+  <BreadcrumbsItem href="https://www.sap.com">Link 1</BreadcrumbsItem>
+  <BreadcrumbsItem>Link 2</BreadcrumbsItem>
+  <BreadcrumbsItem>Link 3</BreadcrumbsItem>
+  <BreadcrumbsItem>Current Location</BreadcrumbsItem>
+</Breadcrumbs>
+// with v0.18.x without current location
+<Breadcrumbs separatorStyle={BreadcrumbsSeparatorStyle.Slash} design={BreadcrumbsDesign.NoCurrentPage}>
+  <BreadcrumbsItem href="https://www.sap.com">Link 1</BreadcrumbsItem>
+  <BreadcrumbsItem>Link 2</BreadcrumbsItem>
+  <BreadcrumbsItem>Link 3</BreadcrumbsItem>
+</Breadcrumbs>
+```
+
+### Card
+
+The header part of the `Card` component has been extracted into an own component:
+
+```jsx
+// with 0.17.x
+<Card
+  header={"My Header"}
+  subheading={"My Sub Heading"}
+  status={"Status"}
+  headerInteractive
+  action={<Button>Go</Button>}
+  avatar={<Icon name="person-placeholder" />}
+  onHeaderClick={console.log}
+>
+ My Card Content
+</Card>
+
+// with 0.18.x
+<Card
+  header={
+      <CardHeader
+        titleText={"My Header"}
+        subtitleText={"My Sub Heading"}
+        status={"Status"}
+        interactive
+        onClick={console.log}
+        avatar={<Icon name="person-placeholder" />}
+        action={<Button>Go</Button>}
+      />
+  }
+>
+ My Card Content
+</Card>
+```
+
+### Opening Dialogs & Popovers
+
+You can open `Dialogs` using the `show` method:
+
+```js
+// with 0.17.x
+function MyOldComponent() {
+  const ref = useRef();
+  const openDialog = () => {
+    ref.current.open();
+  };
+  return <Dialog ref={ref}>Content</Dialog>;
+}
+
+// with 0.18.x
+function MyNewComponent() {
+  const ref = useRef();
+  const openDialog = () => {
+    ref.current.show();
+  };
+  return <Dialog ref={ref}>Content</Dialog>;
+}
+```
+
+You can open all Popovers (`ActionSheet`, `Popover`, `ResponsivePopover`) using the `.showAt` method:
+
+```js
+// with 0.17.x
+function MyOldComponent() {
+  const ref = useRef();
+  const openPopover = (event) => {
+    ref.current.open(event.target); // ActionSheet and ResponsivePopover
+    ref.current.openBy(event.target); // Popover
+  };
+  return <Popover ref={ref}>Content</Popover>;
+}
+
+// with 0.18.x
+function MyNewComponent() {
+  const ref = useRef();
+  const openPopover = (event) => {
+    ref.current.showAt(event.target);
+  };
+  return <Poppver ref={ref}>Content</Poppver>;
+}
+```
+
+### SegmentedButton
+
+The SegmentedButton no longer accepts `ToggleButton` as children but expects `SegmentedButtonItem`
+
+```jsx
+// with 0.17.x
+<SegmentedButton>
+  <ToggleButton pressed>Button 1</ToggleButton>
+  <ToggleButton>Button 2</ToggleButton>
+  <ToggleButton>Button 3</ToggleButton>
+</SegmentedButton>
+
+// with 0.18.x
+<SegmentedButton>
+  <SegmentedButtonItem pressed>Button 1</SegmentedButtonItem>
+  <SegmentedButtonItem>Button 2</SegmentedButtonItem>
+  <SegmentedButtonItem>Button 3</SegmentedButtonItem>
+</SegmentedButton>
+```
+
+### Other changes:
+
+- **Carousel**: `selectedIndex`, `infiniteScrollOffset`, and `onLoadMore` are removed, use the `onNavigate` event to load more items.
+- **ComboBox**: The `filterValue` property has been removed. The `value` property should be used as now it represents the "live" value of the component.
+- **DurationPicker**: Component was made private by the UI5 Web Components, hence it's removed here as well.
+- **RadioButton**: the `onSelect` event has been renamed to `onChange`. Read the state of the Radio Button in the event handler with `event.target.checked`.
+- **SuggestionItem**: prop `group` is not longer supported. Please use the `SuggestionItemGroup` component instead for creating groups.
+- **Wizard**: the `onSelectionChange` event has been renamed to `onStepChange`. In addition, the event param `selectedStep` has been renamed to `step` and `previouslySelectedStep` has been renamed to `previousStep`.
+
+### Renamed or deleted enums
+
+- rename `AvatarBackgroundColor` to `AvatarColorScheme`
+- rename `PlacementType` to `PopoverPlacementType`
+- rename `PanelAccessibleRoles` to `PanelAccessibleRole`
+- rename `ListItemTypes` to `ListItemType`
+- rename `MessageStripType` to `MessageStripDesign`
+- delete `AvatarFitType`
+- delete `TabContainerTabsPlacement`
+- delete unused `SearchFunctions` enum
+- delete unused `TabContainerHeaderMode` enum
+- delete unused `TabDesignMode` enum
+- `PageBackgroundDesign.Standard` has been removed, please use `PageBackgroundDesign.Solid` instead
+
+<br />
 
 ## Migrating from 0.16.x to 0.17.0
 
@@ -111,7 +321,7 @@ Setting the title section of the `ObjectPage`:
 
 ### Device Cleanup
 
-<MessageStrip type={MessageStripType.Information} noCloseButton>
+<MessageStrip design={MessageStripDesign.Information} hideCloseButton>
   As the <code>Device</code> was never mentioned as a public module in our documentation, most of those changes will
   most probably not affect you. They are mainly mentioned for the sake of completeness.
 </MessageStrip>
@@ -242,7 +452,7 @@ npx jscodeshift --transform node_modules/@ui5/webcomponents-react-base/codemods/
 npx jscodeshift --transform node_modules/@ui5/webcomponents-react-base/codemods/transformLibToDist.js --extensions js,jsx,ts,tsx --parser tsx src
 ```
 
-<MessageStrip type={MessageStripType.Warning} noCloseButton>
+<MessageStrip design={MessageStripDesign.Warning} hideCloseButton>
   Please make sure that you have committed all changes before running this codemod.
   <br />
   <br />

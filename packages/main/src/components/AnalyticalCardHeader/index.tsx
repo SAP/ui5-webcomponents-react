@@ -1,7 +1,5 @@
-import { createUseStyles } from 'react-jss';
 import { useI18nBundle, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { DEVIATION, TARGET } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { DeviationIndicator } from '@ui5/webcomponents-react/dist/DeviationIndicator';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
@@ -11,23 +9,24 @@ import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJust
 import { FlexBoxWrap } from '@ui5/webcomponents-react/dist/FlexBoxWrap';
 import { ObjectStatus } from '@ui5/webcomponents-react/dist/ObjectStatus';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
-import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import React, { forwardRef, MouseEventHandler, Ref, useMemo } from 'react';
+import { createUseStyles } from 'react-jss';
 import styles from './AnalyticalCardHeader.jss';
 
 export interface AnalyticalCardHeaderPropTypes extends CommonProps {
   /**
-   * Defines the title of the `AnalyticalCardHeader`.
+   * Defines the title text of the `AnalyticalCardHeader`.
    */
-  title?: string;
+  titleText?: string;
   /**
-   * Defines the subtitle of the `AnalyticalCardHeader`.
+   * Defines the subtitle text of the `AnalyticalCardHeader`.
    */
-  subTitle?: string;
+  subtitleText?: string;
   /**
    * Defines the orientation of the deviation indicator.
    */
-  arrowIndicator?: DeviationIndicator;
+  arrowIndicator?: DeviationIndicator | keyof typeof DeviationIndicator;
   /**
    * Defines whether the deviation indicator should be displayed.
    */
@@ -36,7 +35,7 @@ export interface AnalyticalCardHeaderPropTypes extends CommonProps {
    * Defines the value state of the deviation indicator.
    * Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li></ul>
    */
-  indicatorState?: ValueState;
+  indicatorState?: ValueState | keyof typeof ValueState;
   /**
    * Defines the value of the `AnalyticalCardHeader`.
    */
@@ -49,7 +48,7 @@ export interface AnalyticalCardHeaderPropTypes extends CommonProps {
    * Defines the value state of the value.
    * Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li></ul>
    */
-  valueState?: ValueState;
+  valueState?: ValueState | keyof typeof ValueState;
   /**
    * Defines the target value.
    */
@@ -70,193 +69,173 @@ export interface AnalyticalCardHeaderPropTypes extends CommonProps {
    * Defines the value state of the counter.
    * Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>
    */
-  counterState?: ValueState;
+  counterState?: ValueState | keyof typeof ValueState;
   /**
    * Defines the currency.
    */
   currency?: string;
   /**
-   * Fired when the `AnalyticalCardHeader` header is clicked.
+   * Fired when the `AnalyticalCardHeader` is clicked.
    */
-  onHeaderPress?: (event: CustomEvent<{}>) => void;
+  onClick?: MouseEventHandler<HTMLDivElement>;
 }
 
 const useStyles = createUseStyles(styles, {
   name: 'AnalyticalCardHeader'
 });
 
-export const AnalyticalCardHeader: FC<AnalyticalCardHeaderPropTypes> = forwardRef(
-  (props: AnalyticalCardHeaderPropTypes, ref: Ref<HTMLDivElement>) => {
-    const {
-      title,
-      subTitle,
-      value,
-      unit,
-      target,
-      deviation,
-      valueState,
-      onHeaderPress,
-      showIndicator,
-      tooltip,
-      className,
-      description,
-      counter,
-      counterState,
-      currency,
-      indicatorState,
-      arrowIndicator,
-      style
-    } = props;
-    const classes = useStyles();
-    const onClick = useCallback(
-      (e) => {
-        if (onHeaderPress) {
-          onHeaderPress(enrichEventWithDetails(e));
-        }
-      },
-      [onHeaderPress]
-    );
-    const indicatorIcon = useMemo(() => {
-      const arrowClasses = StyleClassHelper.of(classes.arrowIndicatorShape);
-      switch (arrowIndicator) {
-        case DeviationIndicator.Up:
-          arrowClasses.put(classes.arrowUp);
-          break;
-        case DeviationIndicator.Down:
-          arrowClasses.put(classes.arrowDown);
-          break;
-        default:
-          arrowClasses.put(classes.arrowRight);
-          break;
-      }
+export const AnalyticalCardHeader = forwardRef((props: AnalyticalCardHeaderPropTypes, ref: Ref<HTMLDivElement>) => {
+  const {
+    titleText,
+    subtitleText,
+    value,
+    unit,
+    target,
+    deviation,
+    valueState,
+    onClick,
+    showIndicator,
+    tooltip,
+    className,
+    description,
+    counter,
+    counterState,
+    currency,
+    indicatorState,
+    arrowIndicator,
+    style
+  } = props;
+  const classes = useStyles();
 
-      switch (indicatorState) {
-        case ValueState.Success:
-          arrowClasses.put(classes.good);
-          break;
-        case ValueState.Error:
-          arrowClasses.put(classes.error);
-          break;
-        case ValueState.Warning:
-          arrowClasses.put(classes.critical);
-          break;
-        default:
-          arrowClasses.put(classes.none);
-
-          break;
-      }
-      return <div className={arrowClasses.valueOf()} />;
-    }, [arrowIndicator, indicatorState, classes]);
-
-    const headerClasses = StyleClassHelper.of(classes.cardHeader);
-    if (onHeaderPress) {
-      headerClasses.put(classes.cardHeaderClickable);
+  const indicatorIcon = useMemo(() => {
+    const arrowClasses = StyleClassHelper.of(classes.arrowIndicatorShape);
+    switch (arrowIndicator) {
+      case DeviationIndicator.Up:
+        arrowClasses.put(classes.arrowUp);
+        break;
+      case DeviationIndicator.Down:
+        arrowClasses.put(classes.arrowDown);
+        break;
+      default:
+        arrowClasses.put(classes.arrowRight);
+        break;
     }
 
-    const valueAndUnitClasses = StyleClassHelper.of(classes.valueAndUnit);
-    if (valueState === ValueState.Error) {
-      valueAndUnitClasses.put(classes.error);
-    }
-    if (valueState === ValueState.Warning) {
-      valueAndUnitClasses.put(classes.critical);
-    }
-    if (valueState === ValueState.Success) {
-      valueAndUnitClasses.put(classes.good);
-    }
+    switch (indicatorState) {
+      case ValueState.Success:
+        arrowClasses.put(classes.good);
+        break;
+      case ValueState.Error:
+        arrowClasses.put(classes.error);
+        break;
+      case ValueState.Warning:
+        arrowClasses.put(classes.critical);
+        break;
+      default:
+        arrowClasses.put(classes.none);
 
-    if (className) {
-      headerClasses.put(className);
+        break;
     }
-    const shouldRenderContent = [value, unit, deviation, target].some((v) => v !== null);
+    return <div className={arrowClasses.valueOf()} />;
+  }, [arrowIndicator, indicatorState, classes]);
 
-    const passThroughProps = usePassThroughHtmlProps(props, ['onHeaderPress']);
+  const headerClasses = StyleClassHelper.of(classes.cardHeader);
+  if (onClick) {
+    headerClasses.put(classes.cardHeaderClickable);
+  }
 
-    const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
+  const valueAndUnitClasses = StyleClassHelper.of(classes.valueAndUnit);
+  if (valueState === ValueState.Error) {
+    valueAndUnitClasses.put(classes.error);
+  }
+  if (valueState === ValueState.Warning) {
+    valueAndUnitClasses.put(classes.critical);
+  }
+  if (valueState === ValueState.Success) {
+    valueAndUnitClasses.put(classes.good);
+  }
 
-    return (
-      <div
-        ref={ref}
-        className={headerClasses.valueOf()}
-        title={tooltip}
-        style={style}
-        {...passThroughProps}
-        onClick={onClick}
-      >
-        <div className={classes.headerContent}>
-          <div className={classes.headerTitles}>
-            <FlexBox justifyContent={FlexBoxJustifyContent.SpaceBetween} wrap={FlexBoxWrap.NoWrap}>
-              <div className={classes.headerText}>{title}</div>
+  if (className) {
+    headerClasses.put(className);
+  }
+  const shouldRenderContent = [value, unit, deviation, target].some((v) => !!v);
+
+  const passThroughProps = usePassThroughHtmlProps(props, ['onHeaderClick']);
+
+  const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
+
+  return (
+    <div
+      ref={ref}
+      className={headerClasses.valueOf()}
+      title={tooltip}
+      style={style}
+      {...passThroughProps}
+      onClick={onClick}
+    >
+      <div className={classes.headerContent}>
+        <div className={classes.headerTitles}>
+          <FlexBox justifyContent={FlexBoxJustifyContent.SpaceBetween} wrap={FlexBoxWrap.NoWrap}>
+            <div className={classes.headerText}>{titleText}</div>
+            {counter && (
               <ObjectStatus className={classes.counter} state={counterState}>
                 {counter}
               </ObjectStatus>
-            </FlexBox>
+            )}
+          </FlexBox>
+          {(subtitleText || currency) && (
             <div className={classes.subHeaderText}>
-              {subTitle}
+              {subtitleText}
               {currency && ` | ${currency}`}
             </div>
-          </div>
-          {shouldRenderContent && (
-            <FlexBox direction={FlexBoxDirection.Row} className={classes.kpiContent} alignItems={FlexBoxAlignItems.End}>
-              <FlexBox direction={FlexBoxDirection.Row}>
-                <div className={valueAndUnitClasses.valueOf()}>
-                  <div className={classes.value}>{value}</div>
-                  <div className={classes.indicatorAndUnit}>
-                    {showIndicator && indicatorIcon}
-                    <div className={classes.unit}>{unit}</div>
-                  </div>
-                </div>
-              </FlexBox>
-              <FlexBox
-                direction={FlexBoxDirection.Row}
-                wrap={FlexBoxWrap.NoWrap}
-                className={classes.targetAndDeviation}
-              >
-                {target !== null && (
-                  <FlexBox
-                    direction={FlexBoxDirection.Column}
-                    className={classes.targetAndDeviationColumn}
-                    wrap={FlexBoxWrap.NoWrap}
-                  >
-                    <span>{i18nBundle.getText(TARGET)}</span>
-                    <span className={classes.targetAndDeviationValue}>{target}</span>
-                  </FlexBox>
-                )}
-                {deviation !== null && (
-                  <FlexBox
-                    direction={FlexBoxDirection.Column}
-                    className={classes.targetAndDeviationColumn}
-                    wrap={FlexBoxWrap.NoWrap}
-                  >
-                    <span>{i18nBundle.getText(DEVIATION)}</span>
-                    <span className={classes.targetAndDeviationValue}>{deviation}</span>
-                  </FlexBox>
-                )}
-              </FlexBox>
-            </FlexBox>
           )}
-          <div className={classes.description}>{description}</div>
         </div>
+        {shouldRenderContent && (
+          <FlexBox direction={FlexBoxDirection.Row} className={classes.kpiContent} alignItems={FlexBoxAlignItems.End}>
+            <FlexBox direction={FlexBoxDirection.Row}>
+              <div className={valueAndUnitClasses.valueOf()}>
+                <div className={classes.value}>{value}</div>
+                <div className={classes.indicatorAndUnit}>
+                  {showIndicator && indicatorIcon}
+                  <div className={classes.unit}>{unit}</div>
+                </div>
+              </div>
+            </FlexBox>
+            <FlexBox direction={FlexBoxDirection.Row} wrap={FlexBoxWrap.NoWrap} className={classes.targetAndDeviation}>
+              {target && (
+                <FlexBox
+                  direction={FlexBoxDirection.Column}
+                  className={classes.targetAndDeviationColumn}
+                  wrap={FlexBoxWrap.NoWrap}
+                >
+                  <span>{i18nBundle.getText(TARGET)}</span>
+                  <span className={classes.targetAndDeviationValue}>{target}</span>
+                </FlexBox>
+              )}
+              {deviation && (
+                <FlexBox
+                  direction={FlexBoxDirection.Column}
+                  className={classes.targetAndDeviationColumn}
+                  wrap={FlexBoxWrap.NoWrap}
+                >
+                  <span>{i18nBundle.getText(DEVIATION)}</span>
+                  <span className={classes.targetAndDeviationValue}>{deviation}</span>
+                </FlexBox>
+              )}
+            </FlexBox>
+          </FlexBox>
+        )}
+        {description && <div className={classes.description}>{description}</div>}
       </div>
-    );
-  }
-);
+    </div>
+  );
+});
 
 AnalyticalCardHeader.displayName = 'AnalyticalCardHeader';
 
 AnalyticalCardHeader.defaultProps = {
-  title: null,
-  subTitle: null,
   arrowIndicator: DeviationIndicator.None,
-  showIndicator: true,
   indicatorState: ValueState.None,
-  value: null,
-  unit: null,
   valueState: ValueState.None,
-  target: null,
-  deviation: null,
-  onHeaderPress: null,
-  description: null,
-  counter: null,
-  counterState: ValueState.None,
-  currency: null
+  counterState: ValueState.None
 };

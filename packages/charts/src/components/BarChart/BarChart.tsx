@@ -7,12 +7,14 @@ import { ChartDataLabel } from '@ui5/webcomponents-react-charts/dist/components/
 import { XAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/XAxisTicks';
 import { YAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/YAxisTicks';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/dist/useLegendItemClick';
-import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
+import { resolvePrimaryAndSecondaryMeasures, getCellColors } from '@ui5/webcomponents-react-charts/dist/Utils';
+import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import {
   Bar,
   BarChart as BarChartLib,
   Brush,
   CartesianGrid,
+  Cell,
   Label,
   LabelList,
   Legend,
@@ -66,6 +68,13 @@ interface MeasureConfig extends IChartMeasure {
    * @default undefined
    */
   stackId?: string;
+  /**
+   * Highlight color of defined elements
+   * @param value {string | number} Current value of the highlighted measure
+   * @param measure {IChartMeasure} Current measure object
+   * @param dataElement {object} Current data element
+   */
+  highlightColor?: (value: number, measure: MeasureConfig, dataElement: Record<string, any>) => CSSProperties['color'];
 }
 
 interface DimensionConfig extends IChartDimension {
@@ -107,6 +116,8 @@ export interface BarChartProps extends IChartBaseProps {
    * - `width`: bar width, defaults to `auto`
    * - `opacity`: bar opacity, defaults to `1`
    * - `stackId`: bars with the same stackId will be stacked
+   * - `highlightColor`: function will be called to define a custom color of a specific element which matches the
+   *    defined condition. Overwrites code>color</code> of the element.
    *
    */
   measures: MeasureConfig[];
@@ -128,7 +139,9 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
     style,
     className,
     tooltip,
-    slot
+    slot,
+    syncId,
+    ChartPlaceholder
   } = props;
 
   const chartConfig = useMemo(() => {
@@ -158,7 +171,16 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
   const tooltipValueFormatter = useTooltipFormatter(measures);
 
   const primaryDimension = dimensions[0];
-  const primaryMeasure = measures[0];
+  const { primaryMeasure, secondaryMeasure } = resolvePrimaryAndSecondaryMeasures(
+    measures,
+    chartConfig?.secondYAxis?.dataKey
+  );
+
+  const dataKeys = measures.map(({ accessor }) => accessor);
+  const colorSecondY = chartConfig.secondYAxis
+    ? dataKeys.findIndex((key) => key === chartConfig.secondYAxis?.dataKey)
+    : 0;
+
   const chartRef = useConsolidatedRef<any>(ref);
 
   const onItemLegendClick = useLegendItemClick(onLegendClick);
@@ -198,7 +220,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
     <ChartContainer
       dataset={dataset}
       loading={loading}
-      Placeholder={BarChartPlaceholder}
+      Placeholder={ChartPlaceholder ?? BarChartPlaceholder}
       ref={chartRef}
       style={style}
       className={className}
@@ -208,6 +230,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
       {...passThroughProps}
     >
       <BarChartLib
+        syncId={syncId}
         onClick={onClickInternal}
         stackOffset="sign"
         margin={marginChart}
@@ -233,6 +256,32 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
             tickFormatter={primaryMeasure?.formatter}
             height={xAxisHeight}
             reversed={isRTL}
+          />
+        )}
+        {chartConfig.secondYAxis?.dataKey && (
+          <XAxis
+            dataKey={chartConfig.secondYAxis.dataKey}
+            axisLine={{
+              stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
+            }}
+            tick={
+              <XAxisTicks
+                config={secondaryMeasure}
+                secondYAxisConfig={{
+                  color: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
+                }}
+              />
+            }
+            tickLine={{
+              stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
+            }}
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            label={{ value: chartConfig.secondYAxis.name, offset: 2, angle: +90, position: 'center' }}
+            orientation="top"
+            interval={0}
+            xAxisId="secondary"
+            type="number"
           />
         )}
         {chartConfig.yAxisVisible &&
@@ -276,6 +325,15 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
                 valueAccessor={valueAccessor(element.accessor)}
                 content={<ChartDataLabel config={element} chartType="bar" position={'insideRight'} />}
               />
+              {dataset.map((data, i) => {
+                return (
+                  <Cell
+                    key={i}
+                    fill={getCellColors(element, data, index)}
+                    stroke={getCellColors(element, data, index)}
+                  />
+                );
+              })}
             </Bar>
           );
         })}

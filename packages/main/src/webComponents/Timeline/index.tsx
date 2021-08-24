@@ -1,9 +1,20 @@
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import { FC, ReactNode } from 'react';
+import { TimelineLayout } from '@ui5/webcomponents-react/dist/TimelineLayout';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/Timeline';
 
-export interface TimelinePropTypes extends WithWebComponentPropTypes {
+export interface TimelinePropTypes extends CommonProps {
+  /**
+   * Defines the items orientation.
+   *
+   * **Note:** Available options are:
+   *
+   * *   `Vertical`
+   * *   `Horizontal`
+   */
+  layout?: TimelineLayout | keyof typeof TimelineLayout;
   /**
    * Determines the content of the `Timeline`.
    */
@@ -15,10 +26,12 @@ export interface TimelinePropTypes extends WithWebComponentPropTypes {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Timeline" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Timeline: FC<TimelinePropTypes> = withWebComponent<TimelinePropTypes>('ui5-timeline', [], [], [], []);
+const Timeline = withWebComponent<TimelinePropTypes>('ui5-timeline', ['layout'], [], [], []);
 
 Timeline.displayName = 'Timeline';
 
-Timeline.defaultProps = {};
+Timeline.defaultProps = {
+  layout: TimelineLayout.Vertical
+};
 
 export { Timeline };

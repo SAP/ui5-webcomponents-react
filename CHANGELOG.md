@@ -3,6 +3,210 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.18.4...v0.18.5) (2021-08-24)
+
+
+### Bug Fixes
+
+* **ColumnChartWithTrend:** fix sync of charts ([#1999](https://github.com/SAP/ui5-webcomponents-react/issues/1999)) ([c36042d](https://github.com/SAP/ui5-webcomponents-react/commit/c36042deb126858aaa27d851c8c3fc2e9f8eea7a))
+* **FilterBar:** update filter item refs on every dialog save ([#2025](https://github.com/SAP/ui5-webcomponents-react/issues/2025)) ([1a46272](https://github.com/SAP/ui5-webcomponents-react/commit/1a462723ab0f15d90723ecb58784032f3d3321e3))
+* **ObjectPage:** fire `onSelectedSectionChanged` on every section change ([#1997](https://github.com/SAP/ui5-webcomponents-react/issues/1997)) ([993b52f](https://github.com/SAP/ui5-webcomponents-react/commit/993b52fb3a2eed347d2aa1ecf1d8b5b3a8dce43a))
+* **ObjectPage:** respect scoping suffix for custom anchor tab ([#2011](https://github.com/SAP/ui5-webcomponents-react/issues/2011)) ([7123cac](https://github.com/SAP/ui5-webcomponents-react/commit/7123cac8d5376bf69af7051ac0221d2ede82f780))
+
+
+### Features
+
+* allow string values in all enums ([#2018](https://github.com/SAP/ui5-webcomponents-react/issues/2018)) ([927c0c2](https://github.com/SAP/ui5-webcomponents-react/commit/927c0c2316e5d506dc13cfc7e1f2997c31bc8499))
+* **BulletChart:** initial component implementation  ([#1960](https://github.com/SAP/ui5-webcomponents-react/issues/1960)) ([21be8ef](https://github.com/SAP/ui5-webcomponents-react/commit/21be8ef7e7d511515234f72870233dc532f0424f))
+* **charts:** add `highlightColor` option for measures in `Bar`, `Column` and `ColumnWithTrend` ([#1911](https://github.com/SAP/ui5-webcomponents-react/issues/1911)) ([cf1e65d](https://github.com/SAP/ui5-webcomponents-react/commit/cf1e65db39fd4467d931c14a32fb06567f349092))
+* **charts:** add `highlightColor` option for measures in `BulletChart` and `ComposedChart` ([#1994](https://github.com/SAP/ui5-webcomponents-react/issues/1994)) ([fcdbca5](https://github.com/SAP/ui5-webcomponents-react/commit/fcdbca54b78581d8db658b9dbe9516bbc4cb1b6d))
+* **charts:** support formatter on secondary y axis for Bar, Column, Composed and Line Chart ([#1934](https://github.com/SAP/ui5-webcomponents-react/issues/1934)) ([a8e2e6f](https://github.com/SAP/ui5-webcomponents-react/commit/a8e2e6fb3b6492b3a44990965322273825bb3784))
+
+
+### Deprecation
+
+Deprecated values and props are going to be removed with version 0.19.0.
+
+* **ObjectPage:** `onSelectedSectionChanged` is deprecated, please use `onSelectedSectionChange`
+* **AnalyticalTable:** string values of `visibleRowCountMode`, `selectionBehavior` and `selectionMode` in all caps and snake_case are deprecated, please use the respective camelCase (first letter uppercase) values instead.
+* **MessageBox:** string values of `type`, `actions`, `initialFocus`, and `emphasizedAction` in all caps and snake_case are deprecated, please use the respective camelCase (first letter uppercase) values instead.
+
+
+
+
+## [0.18.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.18.3...v0.18.4) (2021-08-12)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** don't throw errors on empty table ([#1968](https://github.com/SAP/ui5-webcomponents-react/issues/1968)) ([c2400e0](https://github.com/SAP/ui5-webcomponents-react/commit/c2400e03778b6fca3165dcfc3916866230f210b8))
+* **DynamicPageTitle:** only render actions toolbar if necessary ([#1969](https://github.com/SAP/ui5-webcomponents-react/issues/1969)) ([5c80a71](https://github.com/SAP/ui5-webcomponents-react/commit/5c80a7124bf69c4d38421a14c6e9463b4c212673))
+
+
+
+
+
+## [0.18.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.18.2...v0.18.3) (2021-08-10)
+
+
+### Bug Fixes
+
+* **codemod:** correctly replace `image` -> `children` for `Avatar` ([#1959](https://github.com/SAP/ui5-webcomponents-react/issues/1959)) ([70975bb](https://github.com/SAP/ui5-webcomponents-react/commit/70975bbcda1335340204d84d4af31aed9b40786b))
+
+
+
+
+
+## [0.18.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.18.1...v0.18.2) (2021-08-10)
+
+
+### Bug Fixes
+
+* add missing library exports of `BreadcrumbsDesign` and `BreadcrumbsItem` ([92fc225](https://github.com/SAP/ui5-webcomponents-react/commit/92fc2251de66b7e9be96307b9562e5908207ada6))
+
+
+
+
+
+## [0.18.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.18.0...v0.18.1) (2021-08-10)
+
+
+### Bug Fixes
+
+* **FilterBar:** pass refs of FilterGroupItems children to rendered component ([#1954](https://github.com/SAP/ui5-webcomponents-react/issues/1954)) ([26b7e12](https://github.com/SAP/ui5-webcomponents-react/commit/26b7e121ceb59211e694641f5889cb749456733c))
+* **withWebComponent:** don't append CommonProps to Component Props ([#1957](https://github.com/SAP/ui5-webcomponents-react/issues/1957)) ([9c26995](https://github.com/SAP/ui5-webcomponents-react/commit/9c26995b2d1d89871cded3fdfdae04bc5953fdd2))
+
+
+
+
+
+# [0.18.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.17.3...v0.18.0) (2021-08-09)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** correctly indent root level tree rows ([#1948](https://github.com/SAP/ui5-webcomponents-react/issues/1948)) ([efbcfc1](https://github.com/SAP/ui5-webcomponents-react/commit/efbcfc15b86cc7504ba5d09cd0cec73ba6ad86e2))
+* **AnalyticalTable:** unselect rows in single-select mode & correctly select rows with row-selector only behavior ([#1951](https://github.com/SAP/ui5-webcomponents-react/issues/1951)) ([ba7128c](https://github.com/SAP/ui5-webcomponents-react/commit/ba7128cf27dc3793ea1ca7071057ce07a4755c91))
+* use squash merge for dependabot ([7287515](https://github.com/SAP/ui5-webcomponents-react/commit/7287515e57e3fceb5575a286a36ecdae8761589c))
+
+
+### Code Refactoring
+
+* add missing component PropTypes exports ([#1638](https://github.com/SAP/ui5-webcomponents-react/issues/1638)) ([5335e6a](https://github.com/SAP/ui5-webcomponents-react/commit/5335e6a048f81136e3b1e32e46d195cfbeee8bbc))
+* **AnalyticalCardHeader:** rename props and don't render unnecessary elements ([#1601](https://github.com/SAP/ui5-webcomponents-react/issues/1601)) ([3ba2e7e](https://github.com/SAP/ui5-webcomponents-react/commit/3ba2e7e3bf3e2cb64ecef8a515870677be66d239))
+* **AnalyticalTable:** rename `title` to `header` ([#1602](https://github.com/SAP/ui5-webcomponents-react/issues/1602)) ([4a537b7](https://github.com/SAP/ui5-webcomponents-react/commit/4a537b72c06f4006c06bba7c0cbd8253f07076ce))
+* **DynamicPageTitle:** rename props ([#1912](https://github.com/SAP/ui5-webcomponents-react/issues/1912)) ([d4cefad](https://github.com/SAP/ui5-webcomponents-react/commit/d4cefade5f619a2643df22670bbd9bcff05ac6df))
+* **Form & FormGroup:** rename `title` to `titleText` ([#1603](https://github.com/SAP/ui5-webcomponents-react/issues/1603)) ([862b815](https://github.com/SAP/ui5-webcomponents-react/commit/862b8156cd4f6425073126b4f70b8faae6e721de))
+* **MessageBox:** rename `title` to `titleText` ([#1604](https://github.com/SAP/ui5-webcomponents-react/issues/1604)) ([f76930a](https://github.com/SAP/ui5-webcomponents-react/commit/f76930a95d1e20eed414c88a228c9dedbe67e4db))
+* **ObjectPage:** rename `heading` to `titleText` ([#1910](https://github.com/SAP/ui5-webcomponents-react/issues/1910)) ([94f4521](https://github.com/SAP/ui5-webcomponents-react/commit/94f4521f9bb5da37c2e1f77c125138622a67c556))
+* **VariantManagement:** rename `popupTitle` to `titleText` ([#1605](https://github.com/SAP/ui5-webcomponents-react/issues/1605)) ([57bd620](https://github.com/SAP/ui5-webcomponents-react/commit/57bd6200ca5d28585117c47e4fcc35ebf40d90c4))
+
+
+### Features
+
+* **AnalyticalTable:** add improved keyboard navigation ([#1864](https://github.com/SAP/ui5-webcomponents-react/issues/1864)) ([0f8bfdd](https://github.com/SAP/ui5-webcomponents-react/commit/0f8bfdda7d56c677d66b36f06c03025c701962b3))
+* **AnalyticalTable:** add indeterminate state to select-all checkbox ([#1949](https://github.com/SAP/ui5-webcomponents-react/issues/1949)) ([a69c5e4](https://github.com/SAP/ui5-webcomponents-react/commit/a69c5e491b995525ac472031e6862356b84aec2d))
+* update `@ui5/webcomponents` to 1.0.0-rc.15 ([#1873](https://github.com/SAP/ui5-webcomponents-react/issues/1873)) ([db2145f](https://github.com/SAP/ui5-webcomponents-react/commit/db2145f5057fecbd698634a78c60f42769d20f2d))
+
+
+### BREAKING CHANGES
+
+#### Updated `@ui5/webcomponents` to 1.0.0-rc.15.
+This update includes several **breaking changes** that are reflected in this library as well. Please visit our [**Migration Guide**](https://sap.github.io/ui5-webcomponents-react/?path=/docs/migration-guide--page#migrating-from-017x-to-0180) for update instructions.
+
+* **AnalyticalCard (TypeScript only)**: `AnalyticalCardTypes` has been renamed to `AnalyticalCardPropTypes`
+* **AnalyticalTable (TypeScript only)**: `TableProps` has been renamed to `AnalyticalTablePropTypes`
+* **DynamicPage (TypeScript only)**: `DynamicPageProps` has been renamed to `DynamicPagePropTypes`
+* **DynamicPageHeader (TypeScript only)**: `DynamicPageHeaderProps` has been renamed to `DynamicPageHeaderPropTypes`
+* **DynamicPageTitle (TypeScript only)**: `DynamicPageTitleProps` has been renamed to `DynamicPageTitlePropTypes`
+* **FormGroup (TypeScript only)**: `FormGroupProps` has been renamed to `FormGroupPropTypes`
+* **FormItem (TypeScript only)**: `FormItemProps` has been renamed to `FormItemPropTypes`
+* **Loader (TypeScript only)**: `LoaderProps` has been renamed to `LoaderPropTypes`
+* **Text (TypeScript only)**: `TextProps` has been renamed to `TextPropTypes`
+* **ThemeProvider (TypeScript only)**: `ThemeProviderProps` has been renamed to `ThemeProviderPropTypes`
+* **Toolbar (TypeScript only)**: `ToolbarProptypes` has been renamed to `ToolbarPropTypes`
+* **ActionSheet**: the ActionSheet can now be opened with `actionSheetRef.current.showAt(opener)` instead of `actionSheetRef.current.open(opener)`
+* **Avatar**: `img` prop is replaced by `children` with a `<img>` component
+* **Breadcrumbs**: the `Breadcrumbs` component has been replaced with the official UI5 Web Component. Please visit our migration guide for details.
+* **Card**: props `headerInteractive`, `status`,  `subtitleText`, `titleText`, `action`, `avatar` and `onHeaderClick` have been removed. Please use the `CardHeader` component instead and pass it to the new `header` prop of the Card.
+* **Carousel**: `selectedIndex`, `infiniteScrollOffset`, and  `onLoadMore` are removed, use the `onNavigate` event to load more items.
+* **ComboBox**: The `filterValue` property has been removed. The `value` property should be used as now it represents the "live" value of the component.
+* **Dialog**: Dialogs can now be opened with `dialogRef.current.show()` instead of `dialogRef.current.open()`
+* **DurationPicker**: Component was made private by the UI5 Web Components, hence it's removed here as well.
+* **MessageStrip**: rename `MessageStripType` enum to `MessageStripDesign`. The prop `type` has been renamed to `design` and now accepts `MessageStripDesign` values.
+* **RadioButton**: the `onSelect` event has been renamed to `onChange`. Read the state of the Radio Button in the event handler with `event.target.checked`.
+* **ResponsivePopover**: the responsive popover can now be opened with `popoverRef.current.showAt(opener)` instead of `popoverRef.current.open(opener)`
+* **Popover**: the popover can now be opened with `popoverRef.current.showAt(opener)` instead of `popoverRef.current.openBy(opener)`
+* **SegmentedButton**: The SegmentedButton no longer accepts `ToggleButton` as children but expects `SegmentedButtonItem`.
+* **SuggestionItem**: prop `group` is not longer supported. Please use the `SuggestionItemGroup` component instead for creating groups.
+* **Wizard**: the `onSelectionChange` event has been renamed to `onStepChange`. In addition, the event param `selectedStep` has been renamed to `step` and `previouslySelectedStep` has been renamed to `previousStep`.
+* **deleted enums**:  `AvatarFitType` (Avatar component doesn't support the fitType prop anymore), `TabContainerHeaderMode`, `TabDesignMode`,  `SearchFunctions` (all three unused), `TabContainerTabsPlacement` (TabContainer component doesn't accept the placement prop anymore)
+* **renamed enums**: `AvatarBackgroundColor` to `AvatarColorScheme`, `PlacementType` to `PopoverPlacementType`, `PanelAccessibleRoles` to `PanelAccessibleRole`, `ListItemTypes` to `ListItemType`
+* **PageBackgroundDesign**: `PageBackgroundDesign.Standard` has been removed. Please use `PageBackgroundDesign.Solid` instead.
+* **DynamicPageTitle:** `heading` has been renamed to `header`,  `subheading` to `subHeader` and `showSubheadingRight` to `showSubHeaderRight`
+* **ObjectPage:** **ObjectPageSection**: `heading` has been renamed to `titleText` and `headingUppercase` to `titleTextUppercase`
+* **ObjectPage:** **ObjectPageSubSection**: `heading` has been renamed to `titleText`
+* **AnalyticalCardHeader:** `title` has been renamed to `titleText`, `subTitle` to `subtitleText` and `onHeaderPress` to `onClick`.
+* **VariantManagement:** `popupTitle` has been renamed to `titleText`
+* **MessageBox:** `title` has been renamed to `titleText`
+* **Form & FormGroup:** **Form:** `title` has been renamed to `titleText`
+* **Form & FormGroup:** **FormGroup:** `title` has been renamed to `titleText`
+* **AnalyticalTable:** `title` has been renamed to `header`
+
+
+
+
+
+## [0.17.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.17.2...v0.17.3) (2021-08-02)
+
+
+### Bug Fixes
+
+* improve setupMatchMedia for cra-templates and docs ([#1909](https://github.com/SAP/ui5-webcomponents-react/issues/1909)) ([d8ef7a1](https://github.com/SAP/ui5-webcomponents-react/commit/d8ef7a130d09229f2c5f9b4d3fa3ee67f0e6e256))
+
+
+### Features
+
+* **ColumnChartWithTrend:** initial component implementation ([#1824](https://github.com/SAP/ui5-webcomponents-react/issues/1824)) ([f8f069a](https://github.com/SAP/ui5-webcomponents-react/commit/f8f069a11621158490420d2b10de554e918f1a12))
+* **RadialChart:** add noAnimation prop ([#1877](https://github.com/SAP/ui5-webcomponents-react/issues/1877)) ([e3cd4c8](https://github.com/SAP/ui5-webcomponents-react/commit/e3cd4c8c388f21e5ba57de4ff3b88c96ca44d635))
+
+
+
+
+
+## [0.17.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.17.1...v0.17.2) (2021-07-23)
+
+
+### Bug Fixes
+
+* **DynamicPageTitle:** correct responsive positioning of nav and global actions ([#1842](https://github.com/SAP/ui5-webcomponents-react/issues/1842)) ([df9749d](https://github.com/SAP/ui5-webcomponents-react/commit/df9749d78eaa6945023c543ac71ff745e4bcb9f2))
+* **ObjectPage:** make sure TabBar is always on top of content ([#1857](https://github.com/SAP/ui5-webcomponents-react/issues/1857)) ([da61ab6](https://github.com/SAP/ui5-webcomponents-react/commit/da61ab6873ec7715267f1efba00602ef4b9514eb))
+* **TabContainer:** apply ObjectPage styles only in ObjectPage ([#1861](https://github.com/SAP/ui5-webcomponents-react/issues/1861)) ([718eb72](https://github.com/SAP/ui5-webcomponents-react/commit/718eb72965e6482467ea1406382b6ebef844264e))
+* **Toolbar:** always align items in the center ([#1847](https://github.com/SAP/ui5-webcomponents-react/issues/1847)) ([535051e](https://github.com/SAP/ui5-webcomponents-react/commit/535051e4aab6a2a18f6f53ad7c37211d7f44789a))
+
+
+
+
+
+## [0.17.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.17.0...v0.17.1) (2021-07-16)
+
+
+### Bug Fixes
+
+* **cra-templates:** always use latest version of ui5-webcomponents-react ([#1829](https://github.com/SAP/ui5-webcomponents-react/issues/1829)) ([623dc51](https://github.com/SAP/ui5-webcomponents-react/commit/623dc51117551f28d1d4418722a27883effcea47))
+* **DynamicPage:** fix memory leaks when unmounted during resize ([#1838](https://github.com/SAP/ui5-webcomponents-react/issues/1838)) ([9bc3722](https://github.com/SAP/ui5-webcomponents-react/commit/9bc37220edb40f2c4e33415bc11b017b741b8e00)), closes [#1835](https://github.com/SAP/ui5-webcomponents-react/issues/1835)
+* **Form:** don't crash when range detection returns null ([#1837](https://github.com/SAP/ui5-webcomponents-react/issues/1837)) ([f75a5fa](https://github.com/SAP/ui5-webcomponents-react/commit/f75a5face15487f460dfac9da3e7bf291013c08d)), closes [#1835](https://github.com/SAP/ui5-webcomponents-react/issues/1835)
+* **useResponsiveContentPadding:** don't crash in Safari ([#1836](https://github.com/SAP/ui5-webcomponents-react/issues/1836)) ([ea4cd60](https://github.com/SAP/ui5-webcomponents-react/commit/ea4cd60491eb1ba05afbfccf0409f8b0a1085c0c)), closes [#1835](https://github.com/SAP/ui5-webcomponents-react/issues/1835)
+
+
+### Features
+
+* **ObjectPage & DynamicPage:** add data attributes to elements ([#1831](https://github.com/SAP/ui5-webcomponents-react/issues/1831)) ([4983526](https://github.com/SAP/ui5-webcomponents-react/commit/49835267c8572bb00ee8d3a46bc2276650d97eea))
+
+
+
+
+
 # [0.17.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.16.6...v0.17.0) (2021-07-15)
 
 

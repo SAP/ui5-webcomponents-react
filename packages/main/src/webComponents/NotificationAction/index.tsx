@@ -1,16 +1,22 @@
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
-import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/dist/withWebComponent';
-import { FC } from 'react';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 
 import '@ui5/webcomponents-fiori/dist/NotificationAction';
 
-export interface NotificationActionPropTypes extends WithWebComponentPropTypes {
+export interface NotificationActionPropTypes extends CommonProps {
   /**
    * Defines the action design.
    *
-   * **Note:** Available options are "Default", "Emphasized", "Positive", "Negative", and "Transparent".
+   * **Note:**
+   *
+   * *   `Default`
+   * *   `Emphasized`
+   * *   `Positive`
+   * *   `Negative`
+   * *   `Transparent`
    */
-  design?: ButtonDesign;
+  design?: ButtonDesign | keyof typeof ButtonDesign;
   /**
    * Defines if the action is disabled.
    *
@@ -20,7 +26,7 @@ export interface NotificationActionPropTypes extends WithWebComponentPropTypes {
   /**
    * Defines the `icon` source URI.
    *
-   * **Note:** SAP-icons font provides numerous buil-in icons. To find all the available icons, see the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
+   * **Note:** SAP-icons font provides numerous built-in icons. To find all the available icons, see the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
    */
   icon?: string;
   /**
@@ -34,7 +40,7 @@ export interface NotificationActionPropTypes extends WithWebComponentPropTypes {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/NotificationAction" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const NotificationAction: FC<NotificationActionPropTypes> = withWebComponent<NotificationActionPropTypes>(
+const NotificationAction = withWebComponent<NotificationActionPropTypes>(
   'ui5-notification-action',
   ['design', 'icon', 'text'],
   ['disabled'],

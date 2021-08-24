@@ -3,9 +3,9 @@ import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassH
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { debounce, enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import {
+  ADAPT_FILTERS,
   CLEAR,
   FILTERS,
-  ADAPT_FILTERS,
   GO,
   HIDE_FILTER_BAR,
   RESTORE,
@@ -25,7 +25,6 @@ import React, {
   Children,
   cloneElement,
   CSSProperties,
-  FC,
   forwardRef,
   MouseEventHandler,
   ReactElement,
@@ -40,7 +39,7 @@ import React, {
 import { createUseStyles } from 'react-jss';
 import styles from './FilterBar.jss';
 import { FilterDialog } from './FilterDialog';
-import { filterValue, renderSearchWithValue } from './utils';
+import { filterValue, renderSearchWithValue, syncRef } from './utils';
 
 export interface FilterBarPropTypes extends CommonProps {
   /**
@@ -193,7 +192,7 @@ const useStyles = createUseStyles(styles, { name: 'FilterBar' });
  * The `FilterBar` displays filters in a user-friendly manner to populate values for a query. It consists of a row containing the `VariantManagement`, the related buttons, and an area underneath displaying the filters. The filters are arranged in a logical row that is divided depending on the space available and the width of the filters. The area containing the filters can be hidden or shown using the "Hide FilterBar / Show FilterBar" button, the "Filters" button shows the filter dialog.
  In this dialog, the consumer has full control over the FilterBar. The filters in this dialog are displayed in one column and organized in groups. Each filter can be marked as visible in the FilterBar by selecting "Add to FilterBar".
  */
-const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivElement>) => {
+const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivElement>) => {
   const {
     children,
     useToolbar,
@@ -295,6 +294,8 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
 
   const handleDialogSave = useCallback(
     (e, newRefs, updatedToggledFilters) => {
+      setMountFilters(false);
+      setMountFilters(true);
       setDialogRefs(newRefs);
       setToggledFilters((old) => ({ ...old, ...updatedToggledFilters }));
       if (onFiltersDialogSave) {
@@ -344,7 +345,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
     'onFiltersDialogCancel'
   ]);
 
-  const safeChildren = useCallback(() => {
+  const safeChildren = () => {
     if (Object.keys(toggledFilters).length > 0) {
       return Children.toArray(children).map((child: ReactElement) => {
         if (toggledFilters?.[child.key] !== undefined) {
@@ -356,11 +357,11 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
       });
     }
     return Children.toArray(children) as unknown[];
-  }, [toggledFilters, children]);
+  };
 
   const prevChildren = useRef({});
 
-  const renderChildren = useCallback(() => {
+  const renderChildren = () => {
     const childProps = { considerGroupName, ['data-in-fb']: true, ['data-with-toolbar']: useToolbar } as any;
     return safeChildren()
       .filter((item: ReactElement<any, any>) => {
@@ -391,8 +392,6 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
           prevChildren.current?.[child.key] &&
           //Input
           (child.props.children?.props?.value !== prevChildren.current?.[child.key]?.value ||
-            //Combobox
-            child.props.children?.props?.filterValue !== prevChildren.current?.[child.key]?.filterValue ||
             //Checkbox
             child.props.children?.props?.checked !== prevChildren.current?.[child.key]?.checked ||
             //Selectable
@@ -415,18 +414,12 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
             },
             ref: (node) => {
               filterRefs.current[child.key] = node;
+              syncRef(child.props.children.ref, node);
             }
           }
         });
       });
-  }, [filterContainerWidth, considerGroupName, dialogRefs, safeChildren, showFilterConfiguration, useToolbar]);
-
-  const handleSearchValueChange = useCallback(
-    (newVal) => {
-      setSearchValue(newVal);
-    },
-    [setSearchValue]
-  );
+  };
 
   const handleRestoreFilters = useCallback(
     (e, source) => {
@@ -599,7 +592,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
           onGo={onGo}
           handleRestoreFilters={handleRestoreFilters}
           searchValue={searchRef.current?.children[0].value}
-          handleSearchValueChange={handleSearchValueChange}
+          handleSearchValueChange={setSearchValue}
           showClearButton={showClearButton}
           showRestoreButton={showRestoreButton}
           showSearch={showSearchOnFiltersDialog}
