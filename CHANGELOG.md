@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.18.4...v0.18.5) (2021-08-24)
+
+
+### Bug Fixes
+
+* **ColumnChartWithTrend:** fix sync of charts ([#1999](https://github.com/SAP/ui5-webcomponents-react/issues/1999)) ([c36042d](https://github.com/SAP/ui5-webcomponents-react/commit/c36042deb126858aaa27d851c8c3fc2e9f8eea7a))
+* **FilterBar:** update filter item refs on every dialog save ([#2025](https://github.com/SAP/ui5-webcomponents-react/issues/2025)) ([1a46272](https://github.com/SAP/ui5-webcomponents-react/commit/1a462723ab0f15d90723ecb58784032f3d3321e3))
+* **ObjectPage:** fire `onSelectedSectionChanged` on every section change ([#1997](https://github.com/SAP/ui5-webcomponents-react/issues/1997)) ([993b52f](https://github.com/SAP/ui5-webcomponents-react/commit/993b52fb3a2eed347d2aa1ecf1d8b5b3a8dce43a))
+* **ObjectPage:** respect scoping suffix for custom anchor tab ([#2011](https://github.com/SAP/ui5-webcomponents-react/issues/2011)) ([7123cac](https://github.com/SAP/ui5-webcomponents-react/commit/7123cac8d5376bf69af7051ac0221d2ede82f780))
+
+
+### Features
+
+* allow string values in all enums ([#2018](https://github.com/SAP/ui5-webcomponents-react/issues/2018)) ([927c0c2](https://github.com/SAP/ui5-webcomponents-react/commit/927c0c2316e5d506dc13cfc7e1f2997c31bc8499))
+* **BulletChart:** initial component implementation  ([#1960](https://github.com/SAP/ui5-webcomponents-react/issues/1960)) ([21be8ef](https://github.com/SAP/ui5-webcomponents-react/commit/21be8ef7e7d511515234f72870233dc532f0424f))
+* **charts:** add `highlightColor` option for measures in `Bar`, `Column` and `ColumnWithTrend` ([#1911](https://github.com/SAP/ui5-webcomponents-react/issues/1911)) ([cf1e65d](https://github.com/SAP/ui5-webcomponents-react/commit/cf1e65db39fd4467d931c14a32fb06567f349092))
+* **charts:** add `highlightColor` option for measures in `BulletChart` and `ComposedChart` ([#1994](https://github.com/SAP/ui5-webcomponents-react/issues/1994)) ([fcdbca5](https://github.com/SAP/ui5-webcomponents-react/commit/fcdbca54b78581d8db658b9dbe9516bbc4cb1b6d))
+* **charts:** support formatter on secondary y axis for Bar, Column, Composed and Line Chart ([#1934](https://github.com/SAP/ui5-webcomponents-react/issues/1934)) ([a8e2e6f](https://github.com/SAP/ui5-webcomponents-react/commit/a8e2e6fb3b6492b3a44990965322273825bb3784))
+
+
+### Reverts
+
+* Revert "chore(deps): bump recharts from 2.0.10 to 2.1.0 (#1961)" (#1996) ([7b0632d](https://github.com/SAP/ui5-webcomponents-react/commit/7b0632daf63090fed4a6f2fbecea54d42083e20b)), closes [#1961](https://github.com/SAP/ui5-webcomponents-react/issues/1961) [#1996](https://github.com/SAP/ui5-webcomponents-react/issues/1996)
+
+
+
+
+
 ## [0.18.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.18.3...v0.18.4) (2021-08-12)
 
 

@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.18.4...v0.18.5) (2021-08-24)
+
+
+### Bug Fixes
+
+* **ColumnChartWithTrend:** fix sync of charts ([#1999](https://github.com/SAP/ui5-webcomponents-react/issues/1999)) ([c36042d](https://github.com/SAP/ui5-webcomponents-react/commit/c36042deb126858aaa27d851c8c3fc2e9f8eea7a))
+
+
+### Features
+
+* **BulletChart:** initial component implementation  ([#1960](https://github.com/SAP/ui5-webcomponents-react/issues/1960)) ([21be8ef](https://github.com/SAP/ui5-webcomponents-react/commit/21be8ef7e7d511515234f72870233dc532f0424f))
+* **charts:** add `highlightColor` option for measures in `Bar`, `Column` and `ColumnWithTrend` ([#1911](https://github.com/SAP/ui5-webcomponents-react/issues/1911)) ([cf1e65d](https://github.com/SAP/ui5-webcomponents-react/commit/cf1e65db39fd4467d931c14a32fb06567f349092))
+* **charts:** add `highlightColor` option for measures in `BulletChart` and `ComposedChart` ([#1994](https://github.com/SAP/ui5-webcomponents-react/issues/1994)) ([fcdbca5](https://github.com/SAP/ui5-webcomponents-react/commit/fcdbca54b78581d8db658b9dbe9516bbc4cb1b6d))
+* **charts:** support formatter on secondary y axis for Bar, Column, Composed and Line Chart ([#1934](https://github.com/SAP/ui5-webcomponents-react/issues/1934)) ([a8e2e6f](https://github.com/SAP/ui5-webcomponents-react/commit/a8e2e6fb3b6492b3a44990965322273825bb3784))
+
+
+### Reverts
+
+* Revert "chore(deps): bump recharts from 2.0.10 to 2.1.0 (#1961)" (#1996) ([7b0632d](https://github.com/SAP/ui5-webcomponents-react/commit/7b0632daf63090fed4a6f2fbecea54d42083e20b)), closes [#1961](https://github.com/SAP/ui5-webcomponents-react/issues/1961) [#1996](https://github.com/SAP/ui5-webcomponents-react/issues/1996)
+
+
+
+
+
 # [0.18.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.17.3...v0.18.0) (2021-08-09)
 
 

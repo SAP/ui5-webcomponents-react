@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.18.4...v0.18.5) (2021-08-24)
+
+
+### Bug Fixes
+
+* **FilterBar:** update filter item refs on every dialog save ([#2025](https://github.com/SAP/ui5-webcomponents-react/issues/2025)) ([1a46272](https://github.com/SAP/ui5-webcomponents-react/commit/1a462723ab0f15d90723ecb58784032f3d3321e3))
+* **ObjectPage:** fire `onSelectedSectionChanged` on every section change ([#1997](https://github.com/SAP/ui5-webcomponents-react/issues/1997)) ([993b52f](https://github.com/SAP/ui5-webcomponents-react/commit/993b52fb3a2eed347d2aa1ecf1d8b5b3a8dce43a))
+* **ObjectPage:** respect scoping suffix for custom anchor tab ([#2011](https://github.com/SAP/ui5-webcomponents-react/issues/2011)) ([7123cac](https://github.com/SAP/ui5-webcomponents-react/commit/7123cac8d5376bf69af7051ac0221d2ede82f780))
+
+
+### Features
+
+* allow string values in all enums ([#2018](https://github.com/SAP/ui5-webcomponents-react/issues/2018)) ([927c0c2](https://github.com/SAP/ui5-webcomponents-react/commit/927c0c2316e5d506dc13cfc7e1f2997c31bc8499))
+
+
+
+
+
 ## [0.18.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.18.3...v0.18.4) (2021-08-12)
 
 
