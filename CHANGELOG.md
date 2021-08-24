@@ -23,10 +23,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **charts:** support formatter on secondary y axis for Bar, Column, Composed and Line Chart ([#1934](https://github.com/SAP/ui5-webcomponents-react/issues/1934)) ([a8e2e6f](https://github.com/SAP/ui5-webcomponents-react/commit/a8e2e6fb3b6492b3a44990965322273825bb3784))
 
 
-### Reverts
+### Deprecation
 
-* Revert "chore(deps): bump recharts from 2.0.10 to 2.1.0 (#1961)" (#1996) ([7b0632d](https://github.com/SAP/ui5-webcomponents-react/commit/7b0632daf63090fed4a6f2fbecea54d42083e20b)), closes [#1961](https://github.com/SAP/ui5-webcomponents-react/issues/1961) [#1996](https://github.com/SAP/ui5-webcomponents-react/issues/1996)
+Deprecated values and props are going to be removed with version 0.19.0.
 
+* **ObjectPage:** `onSelectedSectionChanged` is deprecated, please use `onSelectedSectionChange`
+* **AnalyticalTable:** string values of `visibleRowCountMode`, `selectionBehavior` and `selectionMode` in all caps and snake_case are deprecated, please use the respective camelCase (first letter uppercase) values instead.
+* **MessageBox:** string values of `type`, `actions`, `initialFocus`, and `emphasizedAction` in all caps and snake_case are deprecated, please use the respective camelCase (first letter uppercase) values instead.
 
 
 
