@@ -22,7 +22,7 @@ import React, {
 } from 'react';
 import { createUseStyles } from 'react-jss';
 import { useResponsiveContentPadding } from '../../internal/useResponsiveContentPadding';
-import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
+import { DynamicPageAnchorBar, DynamicPageAnchorBarA11Y } from '../DynamicPageAnchorBar';
 import { useObserveHeights } from '../../internal/useObserveHeights';
 import { styles } from './DynamicPage.jss';
 
@@ -65,6 +65,10 @@ export interface DynamicPagePropTypes extends Omit<CommonProps, 'title'> {
    * React element or node array which defines the content.
    */
   children?: ReactNode | ReactNodeArray;
+  /**
+   * Defines internally used a11y properties.
+   */
+  a11yConfig?: DynamicPageAnchorBarA11Y;
 }
 
 /**
@@ -98,7 +102,8 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
     alwaysShowContentHeader,
     children,
     className,
-    footer
+    footer,
+    a11yConfig
   } = props;
   const passThroughProps = usePassThroughHtmlProps(props, ['onScroll']);
 
@@ -260,6 +265,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
           setHeaderPinned={handleHeaderPinnedChange}
           headerPinned={headerState === HEADER_STATES.VISIBLE_PINNED || headerState === HEADER_STATES.HIDDEN_PINNED}
           onHoverToggleButton={onHoverToggleButton}
+          a11yConfig={a11yConfig}
         />
       </FlexBox>
       {isIE() && (

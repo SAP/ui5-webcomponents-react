@@ -23,7 +23,7 @@ import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
 import { stopPropagation } from '../../internal/stopPropagation';
 import { useObserveHeights } from '../../internal/useObserveHeights';
 import { useResponsiveContentPadding } from '../../internal/useResponsiveContentPadding';
-import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
+import { DynamicPageAnchorBar, DynamicPageAnchorBarA11Y } from '../DynamicPageAnchorBar';
 import { ObjectPageSectionPropTypes } from '../ObjectPageSection';
 import { ObjectPageSubSectionPropTypes } from '../ObjectPageSubSection';
 import { CollapsedAvatar } from './CollapsedAvatar';
@@ -44,6 +44,13 @@ addCustomCSS(
   }
   `
 );
+
+interface A11Y extends DynamicPageAnchorBarA11Y {
+  objectPageTopHeader?: {
+    role?: string;
+    ariaRoledescription?: string;
+  };
+}
 
 export interface ObjectPagePropTypes extends CommonProps {
   /**
@@ -128,6 +135,10 @@ export interface ObjectPagePropTypes extends CommonProps {
    * Defines whether the `headerContent` is pinnable.
    */
   headerContentPinnable?: boolean;
+  /**
+   * Defines internally used a11y properties.
+   */
+  a11yConfig?: A11Y;
 }
 
 const useStyles = createUseStyles(styles, { name: 'ObjectPage' });
@@ -155,7 +166,8 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     alwaysShowContentHeader,
     showTitleInHeaderContent,
     headerContent,
-    headerContentPinnable
+    headerContentPinnable,
+    a11yConfig
   } = props;
 
   const classes = useStyles();
@@ -729,9 +741,9 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
         onMouseLeave={onHoverToggleButton}
         data-component-name="ObjectPageTopHeader"
         ref={topHeaderRef}
-        role="banner"
+        role={a11yConfig?.objectPageTopHeader?.role ?? 'banner'}
         data-not-clickable={titleHeaderNotClickable}
-        aria-roledescription="Object Page header"
+        aria-roledescription={a11yConfig?.objectPageTopHeader?.ariaRoledescription ?? 'Object Page header'}
         className={`${classes.header} ${responsivePaddingClass}`}
         onClick={onTitleClick}
         style={{
@@ -767,6 +779,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
             setHeaderPinned={setHeaderPinned}
             headerPinned={headerPinned}
             onHoverToggleButton={onHoverToggleButton}
+            a11yConfig={a11yConfig}
           />
         </div>
       )}

@@ -26,6 +26,13 @@ import { ButtonPropTypes } from '../../webComponents/Button';
 import { ResponsivePopoverPropTypes } from '../../webComponents/ResponsivePopover';
 import styles from './ActionSheet.jss';
 
+interface A11Y {
+  actionSheetMobileContent?: {
+    role?: string;
+    ariaLabel?: string;
+  };
+}
+
 export interface ActionSheetPropTypes extends Omit<ResponsivePopoverPropTypes, 'children'> {
   /**
    * Defines the actions of the <code>ActionSheet</code>. <br><b>Note:</b> Although this slot accepts all HTML Elements, it is strongly recommended that you only use `Buttons` in order to preserve the intended design.
@@ -39,6 +46,10 @@ export interface ActionSheetPropTypes extends Omit<ResponsivePopoverPropTypes, '
    * Defines whether the `header` or `headerText` should always be displayed or only on mobile devices.
    */
   alwaysShowHeader?: boolean;
+  /**
+   * Defines internally used a11y properties.
+   */
+  a11yConfig?: A11Y;
 }
 
 const useStyles = createUseStyles(styles, { name: 'ActionSheet' });
@@ -104,7 +115,8 @@ const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: RefObject<Ui5R
     onBeforeClose,
     onBeforeOpen,
     showCancelButton,
-    alwaysShowHeader
+    alwaysShowHeader,
+    a11yConfig
   } = props;
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const classes = useStyles();
@@ -145,13 +157,14 @@ const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: RefObject<Ui5R
   const renderActionSheetButton = (element, index: number, childrenArray) => {
     return cloneElement(element, {
       role: 'button',
-      key: index,
+      'aria-label': `${i18nBundle.getText(X_OF_Y, index + 1, childrenArray.length)} ${element.props?.children}`,
+      ...element.props,
       design: ButtonDesign.Transparent,
       onClick: onActionButtonClicked(element.props?.onClick),
-      'data-action-btn-index': index,
-      'aria-label': `${i18nBundle.getText(X_OF_Y, index + 1, childrenArray.length)} ${element.props?.children}`,
       tabIndex: focusedItem === index ? 0 : -1,
-      onFocus: setFocusedItem
+      onFocus: setFocusedItem,
+      key: index,
+      'data-action-btn-index': index
     });
   };
 
@@ -173,7 +186,6 @@ const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: RefObject<Ui5R
     [onAfterOpen, actionBtnsRef.current, focusedItem]
   );
   const displayHeader = alwaysShowHeader || isPhone();
-
   return createPortal(
     <ResponsivePopover
       aria-modal
@@ -201,8 +213,9 @@ const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: RefObject<Ui5R
     >
       <div
         className={isPhone() ? classes.contentMobile : undefined}
-        role="presentation"
-        aria-label={i18nBundle.getText(AVAILABLE_ACTIONS)}
+        data-component-name="ActionSheetMobileContent"
+        role={a11yConfig?.actionSheetMobileContent?.role ?? 'presentation'}
+        aria-label={a11yConfig?.actionSheetMobileContent?.ariaLabel ?? i18nBundle.getText(AVAILABLE_ACTIONS)}
         onKeyDown={handleKeyDown}
         ref={actionBtnsRef}
       >

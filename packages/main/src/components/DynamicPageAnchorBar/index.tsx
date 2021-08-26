@@ -96,6 +96,12 @@ const anchorBarStyles = {
   }
 };
 
+export interface DynamicPageAnchorBarA11Y {
+  dynamicPageAnchorBar?: {
+    role?: string;
+  };
+}
+
 const useStyles = createUseStyles(anchorBarStyles, { name: 'DynamicPageAnchorBar' });
 
 interface Props extends CommonProps {
@@ -127,6 +133,10 @@ interface Props extends CommonProps {
    * Highlight title when hovered.
    */
   onHoverToggleButton?: (e: any) => void;
+  /**
+   * Defines internally used a11y properties.
+   */
+  a11yConfig?: DynamicPageAnchorBarA11Y;
 }
 
 /**
@@ -142,7 +152,8 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
     setHeaderPinned,
     onToggleHeaderContentVisibility,
     onHoverToggleButton,
-    style
+    style,
+    a11yConfig
   } = props;
 
   const classes = useStyles();
@@ -177,7 +188,7 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
     <section
       data-component-name="DynamicPageAnchorBar"
       style={style}
-      role="navigation"
+      role={a11yConfig.dynamicPageAnchorBar.role ?? 'navigation'}
       className={showHideHeaderButton || headerContentPinnable ? classes.anchorBarActionButton : null}
       ref={anchorBarRef}
     >
