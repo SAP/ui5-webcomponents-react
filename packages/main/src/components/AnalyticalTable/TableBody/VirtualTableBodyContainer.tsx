@@ -29,6 +29,19 @@ export const VirtualTableBodyContainer = (props) => {
 
   const lastScrollTop = useRef(0);
   const firedInfiniteLoadEvents = useRef(new Set());
+  const prevRowsLength = useRef(rows.length);
+
+  useEffect(() => {
+    if (prevRowsLength.current > rows.length) {
+      firedInfiniteLoadEvents.current.clear();
+      parentRef.current.scrollTop = 0;
+      lastScrollTop.current = 0;
+    }
+  }, [rows.length, prevRowsLength.current]);
+
+  useEffect(() => {
+    prevRowsLength.current = rows.length;
+  }, [rows.length]);
 
   const onScroll = useCallback(
     (event) => {
