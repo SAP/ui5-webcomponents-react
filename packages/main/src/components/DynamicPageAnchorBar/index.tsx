@@ -188,7 +188,7 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
     <section
       data-component-name="DynamicPageAnchorBar"
       style={style}
-      role={a11yConfig.dynamicPageAnchorBar.role ?? 'navigation'}
+      role={a11yConfig?.dynamicPageAnchorBar?.role ?? 'navigation'}
       className={showHideHeaderButton || headerContentPinnable ? classes.anchorBarActionButton : null}
       ref={anchorBarRef}
     >

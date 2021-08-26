@@ -45,9 +45,13 @@ import { useReducer, useState } from 'react';
     },
     footer: {
       type: null
-    }
+    },
+    a11yConfig: { table: { category: 'A11y props' } }
   }}
   args={{
+    a11yConfig: {
+      dynamicPageAnchorBar: { role: 'navigation' }
+    },
     backgroundDesign: PageBackgroundDesign.Solid,
     style: { maxHeight: '700px' },
     headerTitle: (
