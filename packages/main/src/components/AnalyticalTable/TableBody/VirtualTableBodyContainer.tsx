@@ -1,15 +1,6 @@
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
-class SetWithLastEntryAccessor extends Set {
-  lastEntry: any;
-  add(value) {
-    super.add(value);
-    this.lastEntry = value;
-    return this;
-  }
-}
-
 export const VirtualTableBodyContainer = (props) => {
   const {
     tableBodyHeight,
@@ -46,7 +37,7 @@ export const VirtualTableBodyContainer = (props) => {
       parentRef.current.scrollTop = 0;
       lastScrollTop.current = 0;
     }
-  }, [firedInfiniteLoadEvents.current.lastEntry, rows.length, prevRowsLength.current]);
+  }, [rows.length, prevRowsLength.current]);
 
   useEffect(() => {
     prevRowsLength.current = rows.length;
