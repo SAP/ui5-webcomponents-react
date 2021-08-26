@@ -92,8 +92,8 @@ const headerProps = (
         onRowSelected(
           // cannot use instance.selectedFlatRows here as it only returns all rows on the first level
           enrichEventWithDetails(e, {
-            allRowsSelected: isAllRowsSelected,
-            selectedFlatRows: isAllRowsSelected ? flatRows : []
+            allRowsSelected: !isAllRowsSelected,
+            selectedFlatRows: !isAllRowsSelected ? flatRows : []
           })
         );
       }
