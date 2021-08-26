@@ -1,6 +1,15 @@
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
+class SetWithLastEntryAccessor extends Set {
+  lastEntry: any;
+  add(value) {
+    super.add(value);
+    this.lastEntry = value;
+    return this;
+  }
+}
+
 export const VirtualTableBodyContainer = (props) => {
   const {
     tableBodyHeight,
@@ -29,6 +38,19 @@ export const VirtualTableBodyContainer = (props) => {
 
   const lastScrollTop = useRef(0);
   const firedInfiniteLoadEvents = useRef(new Set());
+  const prevRowsLength = useRef(rows.length);
+
+  useEffect(() => {
+    if (prevRowsLength.current > rows.length) {
+      firedInfiniteLoadEvents.current.clear();
+      parentRef.current.scrollTop = 0;
+      lastScrollTop.current = 0;
+    }
+  }, [firedInfiniteLoadEvents.current.lastEntry, rows.length, prevRowsLength.current]);
+
+  useEffect(() => {
+    prevRowsLength.current = rows.length;
+  }, [rows.length]);
 
   const onScroll = useCallback(
     (event) => {
