@@ -20,7 +20,9 @@ export enum CssSizeVariablesNames {
   sapWcrToolbarPopoverContentPadding = 'sapWcrToolbarPopoverContentPadding',
   sapWcrToolbarSeparatorHeight = 'sapWcrToolbarSeparatorHeight',
   sapWcrFormLabelPaddingTop = 'sapWcrFormLabelPaddingTop',
-  sapWcrFormGroupTitleHeight = 'sapWcrFormGroupTitleHeight'
+  sapWcrFormGroupTitleHeight = 'sapWcrFormGroupTitleHeight',
+  sapWcrMessageViewListItemHeightSingle = 'sapWcrMessageViewListItemHeightSingle',
+  sapWcrMessageViewListItemHeightByLine = 'sapWcrMessageViewListItemHeightByLine'
 }
 
 export const CssSizeVariables: Record<CssSizeVariablesNames, string> = Object.values(CssSizeVariablesNames).reduce(
@@ -55,6 +57,8 @@ export const cssVariablesStyles = `
   --${CssSizeVariablesNames.sapWcrToolbarSeparatorHeight}: 2rem;
   --${CssSizeVariablesNames.sapWcrFormLabelPaddingTop}: 0.5rem;
   --${CssSizeVariablesNames.sapWcrFormGroupTitleHeight}: 2.75rem;
+  --${CssSizeVariablesNames.sapWcrMessageViewListItemHeightSingle}: 2.75rem;
+  --${CssSizeVariablesNames.sapWcrMessageViewListItemHeightByLine}: 3.325rem;
 }
 
 [data-ui5-compact-size],
@@ -81,5 +85,7 @@ export const cssVariablesStyles = `
   --${CssSizeVariablesNames.sapWcrToolbarSeparatorHeight}: 1.5rem;
   --${CssSizeVariablesNames.sapWcrFormLabelPaddingTop}: 0.25rem;
   --${CssSizeVariablesNames.sapWcrFormGroupTitleHeight}: 2rem;
+  --${CssSizeVariablesNames.sapWcrMessageViewListItemHeightSingle}: 2rem;
+  --${CssSizeVariablesNames.sapWcrMessageViewListItemHeightByLine}: 3.25rem;
 }
 `;

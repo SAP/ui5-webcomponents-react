@@ -2,12 +2,12 @@ import { Bar, List, SegmentedButton, SegmentedButtonItem, ValueState } from '@ui
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import React, { Children, forwardRef, ReactNode, ReactNodeArray, Ref, useState } from 'react';
+import { createUseStyles } from 'react-jss';
 import { getIconNameForType } from './utils';
 import '@ui5/webcomponents-icons/dist/error';
 import '@ui5/webcomponents-icons/dist/sys-enter-2';
 import '@ui5/webcomponents-icons/dist/alert';
 import '@ui5/webcomponents-icons/dist/information';
-import { createUseStyles } from 'react-jss';
 
 export interface MessageViewPropTypes extends CommonProps {
   /**

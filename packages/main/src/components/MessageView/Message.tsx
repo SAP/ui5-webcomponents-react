@@ -8,7 +8,7 @@ import {
   ListItemType,
   ValueState
 } from '@ui5/webcomponents-react';
-import { StyleClassHelper, ThemingParameters } from '@ui5/webcomponents-react-base';
+import { CssSizeVariables, StyleClassHelper, ThemingParameters } from '@ui5/webcomponents-react-base';
 import React, { forwardRef, ReactNode, ReactNodeArray, Ref } from 'react';
 import { createUseStyles } from 'react-jss';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
@@ -48,6 +48,9 @@ export interface MessagePropTypes {
 
 const useStyles = createUseStyles(
   {
+    listItem: {
+      height: CssSizeVariables.sapWcrMessageViewListItemHeightSingle
+    },
     message: {
       padding: '0.25rem 0',
       width: '100%',
@@ -55,6 +58,9 @@ const useStyles = createUseStyles(
       overflow: 'hidden',
       paddingRight: '1rem',
       boxSizing: 'border-box'
+    },
+    withSubtitle: {
+      height: CssSizeVariables.sapWcrMessageViewListItemHeightByLine
     },
     withChildren: {
       paddingRight: '0rem'
@@ -134,16 +140,18 @@ const Message = forwardRef((props: MessagePropTypes, ref: Ref<Ui5DomRef>) => {
 
   const classes = useStyles();
 
+  const listItemClasses = StyleClassHelper.of(classes.listItem, Reflect.get(classes, `type${type}`));
+  if (subtitleText) {
+    listItemClasses.put(classes.withSubtitle);
+  }
+
   const messageClasses = StyleClassHelper.of(classes.message);
   if (children) {
     messageClasses.put(classes.withChildren);
   }
 
   return (
-    <CustomListItem
-      className={StyleClassHelper.of(Reflect.get(classes, `type${type}`)).className}
-      type={children ? ListItemType.Active : ListItemType.Inactive}
-    >
+    <CustomListItem className={listItemClasses.className} type={children ? ListItemType.Active : ListItemType.Inactive}>
       <FlexBox alignItems={FlexBoxAlignItems.Center} className={messageClasses.className}>
         <div className={classes.iconContainer}>
           <Icon name={getIconNameForType(type as ValueState)} className={classes.icon} />
