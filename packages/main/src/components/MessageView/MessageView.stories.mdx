@@ -1,0 +1,41 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { MessageView, Message, ValueState } from '@ui5/webcomponents-react';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+import '@ui5/webcomponents-icons/dist/activate.js';
+
+<Meta title="User Feedback / MessageView" component={MessageView} subcomponents={{ Message }} />
+
+<DocsHeader />
+
+<br />
+
+## Example
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return (
+        <MessageView {...args}>
+          <Message titleText={'Error Message Type'} subtitleText={'Sub'} type={ValueState.Error} counter={1}>
+            bla bla bla
+          </Message>
+          <Message titleText={'Success Message Type'} subtitleText={'Sub'} type={ValueState.Success} counter={2}>
+            bla bla bla
+          </Message>
+          <Message titleText={'Warning Message Type'} subtitleText={'Sub'} type={ValueState.Warning} counter={3} />
+          <Message titleText={'Empty Message Type'} subtitleText={'Sub'} />
+          <Message titleText={'Information Message Type'} subtitleText={'Sub'} type={ValueState.Information} />
+          <Message titleText={'None Message Type'} subtitleText={'Sub'} type={ValueState.None}>
+            bla bla bla
+          </Message>
+        </MessageView>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Properties
+
+<ArgsTable story="." />
+
+<br />

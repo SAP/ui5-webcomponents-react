@@ -69,6 +69,7 @@ import { GlobalStyleClasses } from './dist/GlobalStyleClasses';
 import { Grid } from './dist/Grid';
 import { GridPosition } from './dist/GridPosition';
 import { GroupHeaderListItem } from './dist/GroupHeaderListItem';
+import { GrowingMode } from './dist/GrowingMode';
 import { Icon } from './dist/Icon';
 import { IllustratedMessage } from './dist/IllustratedMessage';
 import { IllustrationMessageType } from './dist/IllustrationMessageType';
@@ -85,11 +86,13 @@ import { ListMode } from './dist/ListMode';
 import { ListSeparators } from './dist/ListSeparators';
 import { Loader } from './dist/Loader';
 import { LoaderType } from './dist/LoaderType';
+import { Message } from './dist/Message';
 import { MessageBox } from './dist/MessageBox';
 import { MessageBoxActions } from './dist/MessageBoxActions';
 import { MessageBoxTypes } from './dist/MessageBoxTypes';
 import { MessageStrip } from './dist/MessageStrip';
 import { MessageStripDesign } from './dist/MessageStripDesign';
+import { MessageView } from './dist/MessageView';
 import { MultiComboBox } from './dist/MultiComboBox';
 import { MultiComboBoxItem } from './dist/MultiComboBoxItem';
 import { MultiInput } from './dist/MultiInput';
@@ -254,6 +257,7 @@ export {
   Grid,
   GridPosition,
   GroupHeaderListItem,
+  GrowingMode,
   Icon,
   IllustratedMessage,
   IllustrationMessageType,
@@ -270,11 +274,13 @@ export {
   ListSeparators,
   Loader,
   LoaderType,
+  Message,
   MessageBox,
   MessageBoxActions,
   MessageBoxTypes,
   MessageStrip,
   MessageStripDesign,
+  MessageView,
   MultiComboBox,
   MultiComboBoxItem,
   MultiInput,
