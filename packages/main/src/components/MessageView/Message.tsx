@@ -9,9 +9,10 @@ import {
   ValueState
 } from '@ui5/webcomponents-react';
 import { CssSizeVariables, StyleClassHelper, ThemingParameters } from '@ui5/webcomponents-react-base';
-import React, { forwardRef, ReactNode, ReactNodeArray, Ref } from 'react';
+import { MessageViewContext } from '@ui5/webcomponents-react/dist/MessageViewContext';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
+import React, { forwardRef, ReactNode, ReactNodeArray, Ref, useContext } from 'react';
 import { createUseStyles } from 'react-jss';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { getIconNameForType } from './utils';
 
 export interface MessagePropTypes {
@@ -136,7 +137,9 @@ const useStyles = createUseStyles(
 );
 
 const Message = forwardRef((props: MessagePropTypes, ref: Ref<Ui5DomRef>) => {
-  const { titleText, subtitleText, counter, type, children } = props;
+  const { titleText, subtitleText, counter, type, children, ...rest } = props;
+
+  const { selectMessage } = useContext(MessageViewContext);
 
   const classes = useStyles();
 
@@ -151,7 +154,18 @@ const Message = forwardRef((props: MessagePropTypes, ref: Ref<Ui5DomRef>) => {
   }
 
   return (
-    <CustomListItem className={listItemClasses.className} type={children ? ListItemType.Active : ListItemType.Inactive}>
+    <CustomListItem
+      onClick={() => {
+        if (children) {
+          selectMessage(props);
+        }
+      }}
+      {...rest}
+      className={listItemClasses.className}
+      type={children ? ListItemType.Active : ListItemType.Inactive}
+      ref={ref}
+      data-children={children}
+    >
       <FlexBox alignItems={FlexBoxAlignItems.Center} className={messageClasses.className}>
         <div className={classes.iconContainer}>
           <Icon name={getIconNameForType(type as ValueState)} className={classes.icon} />

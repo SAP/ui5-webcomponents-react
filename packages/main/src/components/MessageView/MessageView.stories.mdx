@@ -3,7 +3,12 @@ import { MessageView, Message, ValueState } from '@ui5/webcomponents-react';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import '@ui5/webcomponents-icons/dist/activate.js';
 
-<Meta title="User Feedback / MessageView" component={MessageView} subcomponents={{ Message }} />
+<Meta
+  title="User Feedback / MessageView"
+  component={MessageView}
+  subcomponents={{ Message }}
+  args={{ showDetailsPageHeader: true }}
+/>
 
 <DocsHeader />
 
@@ -17,7 +22,7 @@ import '@ui5/webcomponents-icons/dist/activate.js';
       return (
         <MessageView {...args}>
           <Message titleText={'Error Message Type'} subtitleText={'Sub'} type={ValueState.Error} counter={1}>
-            bla bla bla
+            <span>Hello World! 🔥</span>
           </Message>
           <Message titleText={'Success Message Type'} subtitleText={'Sub'} type={ValueState.Success} counter={2}>
             bla bla bla
