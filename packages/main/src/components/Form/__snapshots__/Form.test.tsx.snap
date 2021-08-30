@@ -2,7 +2,7 @@
 
 exports[`Create a Form should use a single FormGroup's title as a Form title if one is not set 1`] = `
 <DocumentFragment>
-  <div
+  <form
     class="Form-form Form-labelSpan4"
     data-columns="2"
   >
@@ -55,13 +55,13 @@ exports[`Create a Form should use a single FormGroup's title as a Form title if 
     <span
       class="FormGroup-spacer"
     />
-  </div>
+  </form>
 </DocumentFragment>
 `;
 
 exports[`Create a Form size rate L; should create Label and Element with 33% and 66% width respectively and display: flex for top FormItem div 1`] = `
 <DocumentFragment>
-  <div
+  <form
     class="Form-form Form-labelSpan4"
     data-columns="1"
   >
@@ -164,13 +164,13 @@ exports[`Create a Form size rate L; should create Label and Element with 33% and
     <span
       class="FormGroup-spacer"
     />
-  </div>
+  </form>
 </DocumentFragment>
 `;
 
 exports[`Create a Form size rate M; should create Label and Element with 16% and 83% width respectively and display: flex for top FormItem div 1`] = `
 <DocumentFragment>
-  <div
+  <form
     class="Form-form Form-labelSpan2"
     data-columns="1"
   >
@@ -273,13 +273,13 @@ exports[`Create a Form size rate M; should create Label and Element with 16% and
     <span
       class="FormGroup-spacer"
     />
-  </div>
+  </form>
 </DocumentFragment>
 `;
 
 exports[`Create a Form size rate S; should create Label and Element with 100% width and display: block for top FormItem div 1`] = `
 <DocumentFragment>
-  <div
+  <form
     class="Form-form Form-labelSpan12"
     data-columns="1"
   >
@@ -382,13 +382,13 @@ exports[`Create a Form size rate S; should create Label and Element with 100% wi
     <span
       class="FormGroup-spacer"
     />
-  </div>
+  </form>
 </DocumentFragment>
 `;
 
 exports[`Create a Form size rate XL; should create Label and Element with 33% and 66% width respectively and display: flex for top FormItem div 1`] = `
 <DocumentFragment>
-  <div
+  <form
     class="Form-form Form-labelSpan4"
     data-columns="2"
   >
@@ -485,6 +485,6 @@ exports[`Create a Form size rate XL; should create Label and Element with 33% an
         value-state="None"
       />
     </div>
-  </div>
+  </form>
 </DocumentFragment>
 `;

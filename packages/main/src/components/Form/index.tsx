@@ -87,7 +87,7 @@ const useStyles = createUseStyles(styles, { name: 'Form' });
 /**
  * The `Form` component arranges labels and fields into groups and rows. There are different ways to visualize forms for different screen sizes.
  */
-const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLDivElement>) => {
+const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLFormElement>) => {
   const {
     title,
     children,
@@ -117,7 +117,7 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
   labelSpanMap.set('Desktop', labelSpanL);
   labelSpanMap.set('LargeDesktop', labelSpanXL);
 
-  const formRef = useConsolidatedRef<HTMLDivElement>(ref);
+  const formRef = useConsolidatedRef<HTMLFormElement>(ref);
   // use the window range set as first best guess
   const [currentRange, setCurrentRange] = useState(getCurrentRange('StdExt', window.innerWidth).name);
   const lastRange = useRef(currentRange);
@@ -247,7 +247,7 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
     .putIfPresent(className);
 
   return (
-    <div
+    <form
       ref={formRef}
       slot={slot}
       className={formClassNames.valueOf()}
@@ -262,7 +262,7 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
         </Title>
       )}
       {formGroups}
-    </div>
+    </form>
   );
 });
 

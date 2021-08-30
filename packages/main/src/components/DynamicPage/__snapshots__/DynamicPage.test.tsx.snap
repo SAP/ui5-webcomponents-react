@@ -521,7 +521,7 @@ exports[`DynamicPage hider header button 1`] = `
       data-component-name="DynamicPageContent"
       style="margin-top: 0px; padding-bottom: 0px;"
     >
-      <div
+      <form
         class="Form-form Form-labelSpan4"
         data-columns="4"
         style="padding-bottom: 2rem;"
@@ -610,8 +610,8 @@ exports[`DynamicPage hider header button 1`] = `
             @DeniseSmith
           </span>
         </div>
-      </div>
-      <div
+      </form>
+      <form
         class="Form-form Form-labelSpan4"
         data-columns="4"
         style="padding-bottom: 2rem;"
@@ -684,7 +684,7 @@ exports[`DynamicPage hider header button 1`] = `
             DeniseSmith@sap.com
           </span>
         </div>
-      </div>
+      </form>
     </div>
   </div>
 </DocumentFragment>
@@ -1085,7 +1085,7 @@ exports[`DynamicPage with content 1`] = `
       data-component-name="DynamicPageContent"
       style="margin-top: 0px; padding-bottom: 0px;"
     >
-      <div
+      <form
         class="Form-form Form-labelSpan4"
         data-columns="4"
         style="padding-bottom: 2rem; z-index: 0;"
@@ -1174,8 +1174,8 @@ exports[`DynamicPage with content 1`] = `
             @DeniseSmith
           </span>
         </div>
-      </div>
-      <div
+      </form>
+      <form
         class="Form-form Form-labelSpan4"
         data-columns="4"
         style="padding-bottom: 2rem;"
@@ -1248,8 +1248,8 @@ exports[`DynamicPage with content 1`] = `
             DeniseSmith@sap.com
           </span>
         </div>
-      </div>
-      <div
+      </form>
+      <form
         class="Form-form Form-labelSpan4"
         data-columns="4"
         style="padding-bottom: 2rem;"
@@ -1338,8 +1338,8 @@ exports[`DynamicPage with content 1`] = `
             @DeniseSmith
           </span>
         </div>
-      </div>
-      <div
+      </form>
+      <form
         class="Form-form Form-labelSpan4"
         data-columns="4"
         style="padding-bottom: 2rem;"
@@ -1412,8 +1412,8 @@ exports[`DynamicPage with content 1`] = `
             DeniseSmith@sap.com
           </span>
         </div>
-      </div>
-      <div
+      </form>
+      <form
         class="Form-form Form-labelSpan4"
         data-columns="4"
         style="padding-bottom: 2rem; z-index: 0;"
@@ -1502,8 +1502,8 @@ exports[`DynamicPage with content 1`] = `
             @DeniseSmith
           </span>
         </div>
-      </div>
-      <div
+      </form>
+      <form
         class="Form-form Form-labelSpan4"
         data-columns="4"
         style="padding-bottom: 2rem;"
@@ -1576,8 +1576,8 @@ exports[`DynamicPage with content 1`] = `
             DeniseSmith@sap.com
           </span>
         </div>
-      </div>
-      <div
+      </form>
+      <form
         class="Form-form Form-labelSpan4"
         data-columns="4"
         style="padding-bottom: 2rem;"
@@ -1666,8 +1666,8 @@ exports[`DynamicPage with content 1`] = `
             @DeniseSmith
           </span>
         </div>
-      </div>
-      <div
+      </form>
+      <form
         class="Form-form Form-labelSpan4"
         data-columns="4"
         style="padding-bottom: 2rem;"
@@ -1740,7 +1740,7 @@ exports[`DynamicPage with content 1`] = `
             DeniseSmith@sap.com
           </span>
         </div>
-      </div>
+      </form>
     </div>
   </div>
 </DocumentFragment>
