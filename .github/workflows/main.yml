@@ -46,7 +46,7 @@ jobs:
         yarn build:storybook
 
     - name: Deploy 🚀
-      uses: JamesIves/github-pages-deploy-action@4.1.4
+      uses: JamesIves/github-pages-deploy-action@4.1.5
       with:
         # token: ${{ secrets.ACCESS_TOKEN }} # maybe the default github access token is now sufficient?
         branch: gh-pages # The branch the action should deploy to.
