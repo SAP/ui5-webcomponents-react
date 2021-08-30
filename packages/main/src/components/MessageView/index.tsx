@@ -4,6 +4,7 @@ import {
   ButtonDesign,
   FlexBox,
   FlexBoxDirection,
+  GroupHeaderListItem,
   Icon,
   List,
   SegmentedButton,
@@ -12,26 +13,30 @@ import {
   TitleLevel,
   ValueState
 } from '@ui5/webcomponents-react';
-import { StyleClassHelper, ThemingParameters } from '@ui5/webcomponents-react-base';
+import { StyleClassHelper, ThemingParameters, useConsolidatedRef } from '@ui5/webcomponents-react-base';
 import { MessageViewContext } from '@ui5/webcomponents-react/dist/MessageViewContext';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { MessageViewDomRef } from '@ui5/webcomponents-react/interfaces/MessageViewDomRef';
 import React, {
   Children,
   forwardRef,
+  Fragment,
   ReactElement,
   ReactNode,
   ReactNodeArray,
   Ref,
   useCallback,
+  useEffect,
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
 import type { MessagePropTypes } from './Message';
 import { getIconNameForType } from './utils';
-import '@ui5/webcomponents-icons/dist/error';
-import '@ui5/webcomponents-icons/dist/sys-enter-2';
 import '@ui5/webcomponents-icons/dist/alert';
+import '@ui5/webcomponents-icons/dist/error';
 import '@ui5/webcomponents-icons/dist/information';
+import '@ui5/webcomponents-icons/dist/slim-arrow-left';
+import '@ui5/webcomponents-icons/dist/sys-enter-2';
 
 export interface MessageViewPropTypes extends CommonProps {
   /**
@@ -51,6 +56,42 @@ export interface MessageViewPropTypes extends CommonProps {
    */
   children: ReactNode | ReactNodeArray;
 }
+
+export const resolveMessageTypes = (children: ReactElement<MessagePropTypes>[]) => {
+  return children
+    .map((message) => message?.props?.type)
+    .reduce(
+      (acc, type) => {
+        const finalType = type === ValueState.None ? ValueState.Information : type;
+        if (acc.hasOwnProperty(finalType)) {
+          acc[finalType]++;
+        }
+        return acc;
+      },
+      {
+        [ValueState.Error]: 0,
+        [ValueState.Warning]: 0,
+        [ValueState.Success]: 0,
+        [ValueState.Information]: 0
+      }
+    );
+};
+
+export const resolveMessageGroups = (children: ReactElement<MessagePropTypes>[]) => {
+  const groups = children.reduce((acc, val) => {
+    const groupName = val?.props?.groupName ?? '';
+    if (acc.hasOwnProperty(groupName)) {
+      acc[groupName].push(val);
+    } else {
+      acc[groupName] = [val];
+    }
+    return acc;
+  }, {});
+
+  return Object.entries<ReactElement<MessagePropTypes>[]>(groups).sort((a, b) => {
+    return a[0].localeCompare(b[0]);
+  });
+};
 
 const useStyles = createUseStyles(
   {
@@ -100,8 +141,10 @@ const useStyles = createUseStyles(
   { name: 'MessageView' }
 );
 
-const MessageView = forwardRef((props: MessageViewPropTypes, ref: Ref<HTMLDivElement>) => {
-  const { children, groupItems, showDetailsPageHeader, ...rest } = props;
+const MessageView = forwardRef((props: MessageViewPropTypes, ref: Ref<MessageViewDomRef>) => {
+  const { children, groupItems, showDetailsPageHeader, className, ...rest } = props;
+
+  const internalRef = useConsolidatedRef<MessageViewDomRef>(ref);
 
   const classes = useStyles();
 
@@ -109,41 +152,42 @@ const MessageView = forwardRef((props: MessageViewPropTypes, ref: Ref<HTMLDivEle
   const [selectedMessage, setSelectedMessage] = useState<MessagePropTypes>(null);
 
   const childrenArray = Children.toArray(children);
-  const messageTypes = childrenArray
-    .map((message: ReactElement<MessagePropTypes>) => message?.props?.type)
-    .reduce(
-      (acc, type) => {
-        const finalType = type === ValueState.None ? ValueState.Information : type;
-        if (acc.hasOwnProperty(finalType)) {
-          acc[finalType]++;
-        }
-        return acc;
-      },
-      {
-        [ValueState.Error]: 0,
-        [ValueState.Warning]: 0,
-        [ValueState.Success]: 0,
-        [ValueState.Information]: 0
-      }
-    );
-
+  const messageTypes = resolveMessageTypes(children as ReactElement<MessagePropTypes>[]);
   const filledTypes = Object.values(messageTypes).filter((count) => count > 0).length;
+
+  const filteredChildren =
+    listFilter === 'All'
+      ? children
+      : childrenArray.filter((message: ReactElement<MessagePropTypes>) => {
+          if (listFilter === ValueState.Information) {
+            return message?.props?.type === ValueState.Information || message?.props?.type === ValueState.None;
+          }
+          return message?.props?.type === listFilter;
+        });
+
+  const groupedMessages = resolveMessageGroups(filteredChildren as ReactElement<MessagePropTypes>[]);
 
   const navigateBack = useCallback(() => {
     setSelectedMessage(null);
   }, [setSelectedMessage]);
 
+  useEffect(() => {
+    if (internalRef.current) {
+      internalRef.current.navigateBack = navigateBack;
+    }
+  }, [internalRef.current, navigateBack]);
+
   const handleListFilterChange = (e) => {
     setListFilter(e.detail.selectedItem.dataset.key);
   };
 
-  const outerClasses = StyleClassHelper.of(classes.container);
+  const outerClasses = StyleClassHelper.of(classes.container).putIfPresent(className);
   if (selectedMessage) {
     outerClasses.put(classes.showDetails);
   }
 
   return (
-    <div ref={ref} {...rest} style={{}} className={outerClasses.className}>
+    <div ref={internalRef} {...rest} className={outerClasses.className}>
       <MessageViewContext.Provider
         value={{
           selectMessage: setSelectedMessage
@@ -157,59 +201,37 @@ const MessageView = forwardRef((props: MessageViewPropTypes, ref: Ref<HTMLDivEle
                   <SegmentedButtonItem data-key="All" pressed={listFilter === 'All'}>
                     All
                   </SegmentedButtonItem>
-                  {messageTypes[ValueState.Error] > 0 && (
-                    <SegmentedButtonItem
-                      data-key={ValueState.Error}
-                      pressed={listFilter === ValueState.Error}
-                      icon={getIconNameForType(ValueState.Error)}
-                      className={classes.button}
-                    >
-                      {messageTypes[ValueState.Error]}
-                    </SegmentedButtonItem>
-                  )}
-                  {messageTypes[ValueState.Warning] > 0 && (
-                    <SegmentedButtonItem
-                      data-key={ValueState.Warning}
-                      pressed={listFilter === ValueState.Warning}
-                      icon={getIconNameForType(ValueState.Warning)}
-                      className={classes.button}
-                    >
-                      {messageTypes[ValueState.Warning]}
-                    </SegmentedButtonItem>
-                  )}
-                  {messageTypes[ValueState.Success] > 0 && (
-                    <SegmentedButtonItem
-                      data-key={ValueState.Success}
-                      pressed={listFilter === ValueState.Success}
-                      icon={getIconNameForType(ValueState.Success)}
-                      className={classes.button}
-                    >
-                      {messageTypes[ValueState.Success]}
-                    </SegmentedButtonItem>
-                  )}
-                  {messageTypes[ValueState.Information] > 0 && (
-                    <SegmentedButtonItem
-                      pressed={listFilter === ValueState.Information}
-                      data-key={ValueState.Information}
-                      icon={getIconNameForType(ValueState.Information)}
-                      className={classes.button}
-                    >
-                      {messageTypes[ValueState.Information]}
-                    </SegmentedButtonItem>
-                  )}
+                  {Object.entries(messageTypes).map(([valueState, count]: [ValueState, number]) => {
+                    if (count === 0) {
+                      return null;
+                    }
+                    return (
+                      <SegmentedButtonItem
+                        key={valueState}
+                        data-key={valueState}
+                        pressed={listFilter === valueState}
+                        icon={getIconNameForType(valueState)}
+                        className={classes.button}
+                      >
+                        {count}
+                      </SegmentedButtonItem>
+                    );
+                  })}
                 </SegmentedButton>
               }
             />
           )}
           <List>
-            {listFilter === 'All'
-              ? children
-              : childrenArray.filter((message: ReactElement<MessagePropTypes>) => {
-                  if (listFilter === ValueState.Information) {
-                    return message?.props?.type === ValueState.Information || message?.props?.type === ValueState.None;
-                  }
-                  return message?.props?.type === listFilter;
-                })}
+            {groupItems
+              ? groupedMessages.map(([groupName, items]) => {
+                  return (
+                    <Fragment key={groupName}>
+                      {groupName && <GroupHeaderListItem>{groupName}</GroupHeaderListItem>}
+                      {items}
+                    </Fragment>
+                  );
+                })
+              : filteredChildren}
           </List>
         </div>
         <div>
@@ -240,5 +262,10 @@ const MessageView = forwardRef((props: MessageViewPropTypes, ref: Ref<HTMLDivEle
 });
 
 MessageView.displayName = 'MessageView';
+
+MessageView.defaultProps = {
+  showDetailsPageHeader: false,
+  groupItems: false
+};
 
 export { MessageView };
