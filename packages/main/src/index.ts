@@ -69,7 +69,6 @@ import { GlobalStyleClasses } from './dist/GlobalStyleClasses';
 import { Grid } from './dist/Grid';
 import { GridPosition } from './dist/GridPosition';
 import { GroupHeaderListItem } from './dist/GroupHeaderListItem';
-import { GrowingMode } from './dist/GrowingMode';
 import { Icon } from './dist/Icon';
 import { IllustratedMessage } from './dist/IllustratedMessage';
 import { IllustrationMessageType } from './dist/IllustrationMessageType';
@@ -257,7 +256,6 @@ export {
   Grid,
   GridPosition,
   GroupHeaderListItem,
-  GrowingMode,
   Icon,
   IllustratedMessage,
   IllustrationMessageType,
