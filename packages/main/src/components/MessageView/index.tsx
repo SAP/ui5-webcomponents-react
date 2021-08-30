@@ -17,6 +17,7 @@ import { StyleClassHelper, ThemingParameters, useConsolidatedRef } from '@ui5/we
 import { MessageViewContext } from '@ui5/webcomponents-react/dist/MessageViewContext';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { MessageViewDomRef } from '@ui5/webcomponents-react/interfaces/MessageViewDomRef';
+import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import React, {
   Children,
   forwardRef,
@@ -55,6 +56,11 @@ export interface MessageViewPropTypes extends CommonProps {
    * * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `Message` in order to preserve the intended design.
    */
   children: ReactNode | ReactNodeArray;
+
+  /**
+   * Event is fired when the details of a message are shown
+   */
+  onItemSelect: (event: Ui5CustomEvent<HTMLElement, { item: ReactNode }>) => void;
 }
 
 export const resolveMessageTypes = (children: ReactElement<MessagePropTypes>[]) => {
@@ -142,7 +148,7 @@ const useStyles = createUseStyles(
 );
 
 const MessageView = forwardRef((props: MessageViewPropTypes, ref: Ref<MessageViewDomRef>) => {
-  const { children, groupItems, showDetailsPageHeader, className, ...rest } = props;
+  const { children, groupItems, showDetailsPageHeader, className, onItemSelect, tooltip, ...rest } = props;
 
   const internalRef = useConsolidatedRef<MessageViewDomRef>(ref);
 
@@ -187,7 +193,7 @@ const MessageView = forwardRef((props: MessageViewPropTypes, ref: Ref<MessageVie
   }
 
   return (
-    <div ref={internalRef} {...rest} className={outerClasses.className}>
+    <div ref={internalRef} title={tooltip} {...rest} className={outerClasses.className}>
       <MessageViewContext.Provider
         value={{
           selectMessage: setSelectedMessage
@@ -221,7 +227,7 @@ const MessageView = forwardRef((props: MessageViewPropTypes, ref: Ref<MessageVie
               }
             />
           )}
-          <List>
+          <List onItemClick={onItemSelect}>
             {groupItems
               ? groupedMessages.map(([groupName, items]) => {
                   return (

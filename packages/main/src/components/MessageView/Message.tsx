@@ -164,7 +164,8 @@ const Message = forwardRef((props: MessagePropTypes, ref: Ref<Ui5DomRef>) => {
       className={listItemClasses.className}
       type={children ? ListItemType.Active : ListItemType.Inactive}
       ref={ref}
-      data-children={children}
+      data-title={titleText}
+      data-type={type}
     >
       <FlexBox alignItems={FlexBoxAlignItems.Center} className={messageClasses.className}>
         <div className={classes.iconContainer}>
