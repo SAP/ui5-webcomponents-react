@@ -1,6 +1,7 @@
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useConsolidatedRef, useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
+import { ALL } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { Bar } from '@ui5/webcomponents-react/dist/Bar';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
@@ -153,6 +154,7 @@ const MessageView = forwardRef((props: MessageViewPropTypes, ref: Ref<MessageVie
   const internalRef = useConsolidatedRef<MessageViewDomRef>(ref);
 
   const classes = useStyles();
+  const i18nBundle = useI18nBundle();
 
   const [listFilter, setListFilter] = useState('All');
   const [selectedMessage, setSelectedMessage] = useState<MessagePropTypes>(null);
@@ -205,7 +207,7 @@ const MessageView = forwardRef((props: MessageViewPropTypes, ref: Ref<MessageVie
               startContent={
                 <SegmentedButton onSelectionChange={handleListFilterChange}>
                   <SegmentedButtonItem data-key="All" pressed={listFilter === 'All'}>
-                    All
+                    {i18nBundle.getText(ALL)}
                   </SegmentedButtonItem>
                   {Object.entries(messageTypes).map(([valueState, count]: [ValueState, number]) => {
                     if (count === 0) {
