@@ -81,7 +81,6 @@ const useStyles = createUseStyles(
     title: {
       fontFamily: ThemingParameters.sapFontHeaderFamily,
       fontSize: ThemingParameters.sapFontHeader6Size,
-      // fontWeight: ThemingParameters.sapFontHeaderWeight
       color: ThemingParameters.sapGroup_TitleTextColor,
       maxWidth: '100%',
       whiteSpace: 'nowrap',

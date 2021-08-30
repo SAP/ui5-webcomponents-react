@@ -128,6 +128,7 @@ const useStyles = createUseStyles(
       padding: '1rem'
     },
     detailsIcon: {
+      flexShrink: 0,
       margin: '0 1rem 0 0.5rem',
       '&[data-type="Error"]': { color: ThemingParameters.sapNegativeElementColor },
       '&[data-type="Warning"]': { color: ThemingParameters.sapCriticalElementColor },
