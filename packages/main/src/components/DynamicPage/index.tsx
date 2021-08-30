@@ -1,8 +1,8 @@
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
 import { useConsolidatedRef, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { GlobalStyleClasses } from '@ui5/webcomponents-react/dist/GlobalStyleClasses';
 import { PageBackgroundDesign } from '@ui5/webcomponents-react/dist/PageBackgroundDesign';
@@ -21,9 +21,9 @@ import React, {
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
+import { useObserveHeights } from '../../internal/useObserveHeights';
 import { useResponsiveContentPadding } from '../../internal/useResponsiveContentPadding';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
-import { useObserveHeights } from '../../internal/useObserveHeights';
 import { styles } from './DynamicPage.jss';
 
 export interface DynamicPagePropTypes extends Omit<CommonProps, 'title'> {
@@ -65,6 +65,14 @@ export interface DynamicPagePropTypes extends Omit<CommonProps, 'title'> {
    * React element or node array which defines the content.
    */
   children?: ReactNode | ReactNodeArray;
+  /**
+   * Defines internally used a11y properties.
+   */
+  a11yConfig?: {
+    dynamicPageAnchorBar?: {
+      role?: string;
+    };
+  };
 }
 
 /**
@@ -98,7 +106,8 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
     alwaysShowContentHeader,
     children,
     className,
-    footer
+    footer,
+    a11yConfig
   } = props;
   const passThroughProps = usePassThroughHtmlProps(props, ['onScroll']);
 
@@ -109,9 +118,9 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
 
   const anchorBarRef: RefObject<HTMLDivElement> = useRef();
   const dynamicPageRef: RefObject<HTMLDivElement> = useConsolidatedRef(ref);
-  //@ts-ignore
+  // @ts-ignore
   const topHeaderRef: RefObject<HTMLDivElement> = useConsolidatedRef(headerTitle?.ref);
-  //@ts-ignore
+  // @ts-ignore
   const headerContentRef: RefObject<HTMLDivElement> = useConsolidatedRef(headerContent?.ref);
 
   const [headerState, setHeaderState] = useState<HEADER_STATES>(
@@ -260,6 +269,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
           setHeaderPinned={handleHeaderPinnedChange}
           headerPinned={headerState === HEADER_STATES.VISIBLE_PINNED || headerState === HEADER_STATES.HIDDEN_PINNED}
           onHoverToggleButton={onHoverToggleButton}
+          a11yConfig={a11yConfig}
         />
       </FlexBox>
       {isIE() && (
