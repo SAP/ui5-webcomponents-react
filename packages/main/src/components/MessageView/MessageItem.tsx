@@ -10,12 +10,13 @@ import { Label } from '@ui5/webcomponents-react/dist/Label';
 import { ListItemType } from '@ui5/webcomponents-react/dist/ListItemType';
 import { MessageViewContext } from '@ui5/webcomponents-react/dist/MessageViewContext';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import React, { forwardRef, ReactNode, ReactNodeArray, Ref, useContext } from 'react';
 import { createUseStyles } from 'react-jss';
 import { getIconNameForType } from './utils';
 
-export interface MessagePropTypes {
+export interface MessageItemPropTypes extends CommonProps {
   /**
    * Specifies the title of the message
    */
@@ -132,17 +133,19 @@ const useStyles = createUseStyles(
       }
     }
   },
-  { name: 'Message' }
+  { name: 'MessageItem' }
 );
 
-const Message = forwardRef((props: MessagePropTypes, ref: Ref<Ui5DomRef>) => {
-  const { titleText, subtitleText, counter, type, children, ...rest } = props;
+const MessageItem = forwardRef((props: MessageItemPropTypes, ref: Ref<Ui5DomRef>) => {
+  const { titleText, subtitleText, counter, type, children, className, ...rest } = props;
 
   const { selectMessage } = useContext(MessageViewContext);
 
   const classes = useStyles();
 
-  const listItemClasses = StyleClassHelper.of(classes.listItem, Reflect.get(classes, `type${type}`));
+  const listItemClasses = StyleClassHelper.of(classes.listItem, Reflect.get(classes, `type${type}`)).putIfPresent(
+    className
+  );
   if (subtitleText) {
     listItemClasses.put(classes.withSubtitle);
   }
@@ -152,19 +155,23 @@ const Message = forwardRef((props: MessagePropTypes, ref: Ref<Ui5DomRef>) => {
     messageClasses.put(classes.withChildren);
   }
 
+  const handleListItemClick = (e) => {
+    if (children) {
+      selectMessage(props);
+      if (typeof rest.onClick === 'function') {
+        rest.onClick(e);
+      }
+    }
+  };
   return (
     <CustomListItem
-      onClick={() => {
-        if (children) {
-          selectMessage(props);
-        }
-      }}
-      {...rest}
-      className={listItemClasses.className}
-      type={children ? ListItemType.Active : ListItemType.Inactive}
-      ref={ref}
+      onClick={handleListItemClick}
       data-title={titleText}
       data-type={type}
+      type={children ? ListItemType.Active : ListItemType.Inactive}
+      {...rest}
+      className={listItemClasses.className}
+      ref={ref}
     >
       <FlexBox alignItems={FlexBoxAlignItems.Center} className={messageClasses.className}>
         <div className={classes.iconContainer}>
@@ -184,10 +191,10 @@ const Message = forwardRef((props: MessagePropTypes, ref: Ref<Ui5DomRef>) => {
   );
 });
 
-Message.displayName = 'Message';
+MessageItem.displayName = 'Message';
 
-Message.defaultProps = {
+MessageItem.defaultProps = {
   type: ValueState.None
 };
 
-export { Message };
+export { MessageItem };

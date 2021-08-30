@@ -32,13 +32,13 @@ import React, {
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
-import type { MessagePropTypes } from './Message';
 import { getIconNameForType } from './utils';
 import '@ui5/webcomponents-icons/dist/alert';
 import '@ui5/webcomponents-icons/dist/error';
 import '@ui5/webcomponents-icons/dist/information';
 import '@ui5/webcomponents-icons/dist/slim-arrow-left';
 import '@ui5/webcomponents-icons/dist/sys-enter-2';
+import type { MessageItemPropTypes } from './MessageItem';
 
 export interface MessageViewPropTypes extends CommonProps {
   /**
@@ -64,7 +64,7 @@ export interface MessageViewPropTypes extends CommonProps {
   onItemSelect?: (event: Ui5CustomEvent<HTMLElement, { item: ReactNode }>) => void;
 }
 
-export const resolveMessageTypes = (children: ReactElement<MessagePropTypes>[]) => {
+export const resolveMessageTypes = (children: ReactElement<MessageItemPropTypes>[]) => {
   return (children ?? [])
     .map((message) => message?.props?.type)
     .reduce(
@@ -84,7 +84,7 @@ export const resolveMessageTypes = (children: ReactElement<MessagePropTypes>[]) 
     );
 };
 
-export const resolveMessageGroups = (children: ReactElement<MessagePropTypes>[]) => {
+export const resolveMessageGroups = (children: ReactElement<MessageItemPropTypes>[]) => {
   const groups = (children ?? []).reduce((acc, val) => {
     const groupName = val?.props?.groupName ?? '';
     if (acc.hasOwnProperty(groupName)) {
@@ -95,7 +95,7 @@ export const resolveMessageGroups = (children: ReactElement<MessagePropTypes>[])
     return acc;
   }, {});
 
-  return Object.entries<ReactElement<MessagePropTypes>[]>(groups).sort((a, b) => {
+  return Object.entries<ReactElement<MessageItemPropTypes>[]>(groups).sort((a, b) => {
     return a[0].localeCompare(b[0]);
   });
 };
@@ -158,23 +158,23 @@ const MessageView = forwardRef((props: MessageViewPropTypes, ref: Ref<MessageVie
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
   const [listFilter, setListFilter] = useState('All');
-  const [selectedMessage, setSelectedMessage] = useState<MessagePropTypes>(null);
+  const [selectedMessage, setSelectedMessage] = useState<MessageItemPropTypes>(null);
 
   const childrenArray = Children.toArray(children);
-  const messageTypes = resolveMessageTypes(childrenArray as ReactElement<MessagePropTypes>[]);
+  const messageTypes = resolveMessageTypes(childrenArray as ReactElement<MessageItemPropTypes>[]);
   const filledTypes = Object.values(messageTypes).filter((count) => count > 0).length;
 
   const filteredChildren =
     listFilter === 'All'
       ? childrenArray
-      : childrenArray.filter((message: ReactElement<MessagePropTypes>) => {
+      : childrenArray.filter((message: ReactElement<MessageItemPropTypes>) => {
           if (listFilter === ValueState.Information) {
             return message?.props?.type === ValueState.Information || message?.props?.type === ValueState.None;
           }
           return message?.props?.type === listFilter;
         });
 
-  const groupedMessages = resolveMessageGroups(filteredChildren as ReactElement<MessagePropTypes>[]);
+  const groupedMessages = resolveMessageGroups(filteredChildren as ReactElement<MessageItemPropTypes>[]);
 
   const navigateBack = useCallback(() => {
     setSelectedMessage(null);

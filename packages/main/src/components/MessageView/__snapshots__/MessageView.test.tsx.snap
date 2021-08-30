@@ -18,9 +18,7 @@ exports[`MessageView renders list view 1`] = `
             data-key="All"
             pressed="true"
             ui5-segmented-button-item=""
-          >
-            All
-          </ui5-segmented-button-item>
+          />
           <ui5-segmented-button-item
             class="MessageView-button"
             data-key="Error"
@@ -65,20 +63,20 @@ exports[`MessageView renders list view 1`] = `
       >
         <ui5-li-custom
           actionable=""
-          class="Message-listItem Message-typeError"
+          class="MessageItem-listItem MessageItem-typeError"
           data-title="Error"
           data-type="Error"
           type="Active"
           ui5-li-custom=""
         >
           <div
-            class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap Message-message Message-withChildren"
+            class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap MessageItem-message MessageItem-withChildren"
           >
             <div
-              class="Message-iconContainer"
+              class="MessageItem-iconContainer"
             >
               <ui5-icon
-                class="Message-icon"
+                class="MessageItem-icon"
                 name="error"
                 ui5-icon=""
               />
@@ -88,13 +86,13 @@ exports[`MessageView renders list view 1`] = `
               style="flex-basis: auto; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
             >
               <span
-                class="Message-title"
+                class="MessageItem-title"
               >
                 Error
               </span>
             </div>
             <ui5-icon
-              class="Message-navigation"
+              class="MessageItem-navigation"
               name="slim-arrow-right"
               ui5-icon=""
             />
@@ -102,20 +100,20 @@ exports[`MessageView renders list view 1`] = `
         </ui5-li-custom>
         <ui5-li-custom
           actionable=""
-          class="Message-listItem Message-typeWarning"
+          class="MessageItem-listItem MessageItem-typeWarning"
           data-title="Warning"
           data-type="Warning"
           type="Active"
           ui5-li-custom=""
         >
           <div
-            class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap Message-message Message-withChildren"
+            class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap MessageItem-message MessageItem-withChildren"
           >
             <div
-              class="Message-iconContainer"
+              class="MessageItem-iconContainer"
             >
               <ui5-icon
-                class="Message-icon"
+                class="MessageItem-icon"
                 name="alert"
                 ui5-icon=""
               />
@@ -125,13 +123,13 @@ exports[`MessageView renders list view 1`] = `
               style="flex-basis: auto; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
             >
               <span
-                class="Message-title"
+                class="MessageItem-title"
               >
                 Warning
               </span>
             </div>
             <ui5-icon
-              class="Message-navigation"
+              class="MessageItem-navigation"
               name="slim-arrow-right"
               ui5-icon=""
             />
@@ -139,20 +137,20 @@ exports[`MessageView renders list view 1`] = `
         </ui5-li-custom>
         <ui5-li-custom
           actionable=""
-          class="Message-listItem Message-typeSuccess"
+          class="MessageItem-listItem MessageItem-typeSuccess"
           data-title="Success"
           data-type="Success"
           type="Active"
           ui5-li-custom=""
         >
           <div
-            class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap Message-message Message-withChildren"
+            class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap MessageItem-message MessageItem-withChildren"
           >
             <div
-              class="Message-iconContainer"
+              class="MessageItem-iconContainer"
             >
               <ui5-icon
-                class="Message-icon"
+                class="MessageItem-icon"
                 name="sys-enter-2"
                 ui5-icon=""
               />
@@ -162,13 +160,13 @@ exports[`MessageView renders list view 1`] = `
               style="flex-basis: auto; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
             >
               <span
-                class="Message-title"
+                class="MessageItem-title"
               >
                 Success
               </span>
             </div>
             <ui5-icon
-              class="Message-navigation"
+              class="MessageItem-navigation"
               name="slim-arrow-right"
               ui5-icon=""
             />
@@ -176,20 +174,20 @@ exports[`MessageView renders list view 1`] = `
         </ui5-li-custom>
         <ui5-li-custom
           actionable=""
-          class="Message-listItem Message-typeInformation"
+          class="MessageItem-listItem MessageItem-typeInformation"
           data-title="Information"
           data-type="Information"
           type="Active"
           ui5-li-custom=""
         >
           <div
-            class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap Message-message Message-withChildren"
+            class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap MessageItem-message MessageItem-withChildren"
           >
             <div
-              class="Message-iconContainer"
+              class="MessageItem-iconContainer"
             >
               <ui5-icon
-                class="Message-icon"
+                class="MessageItem-icon"
                 name="information"
                 ui5-icon=""
               />
@@ -199,13 +197,13 @@ exports[`MessageView renders list view 1`] = `
               style="flex-basis: auto; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
             >
               <span
-                class="Message-title"
+                class="MessageItem-title"
               >
                 Information
               </span>
             </div>
             <ui5-icon
-              class="Message-navigation"
+              class="MessageItem-navigation"
               name="slim-arrow-right"
               ui5-icon=""
             />
@@ -213,20 +211,20 @@ exports[`MessageView renders list view 1`] = `
         </ui5-li-custom>
         <ui5-li-custom
           actionable=""
-          class="Message-listItem Message-typeNone"
+          class="MessageItem-listItem MessageItem-typeNone"
           data-title="None"
           data-type="None"
           type="Active"
           ui5-li-custom=""
         >
           <div
-            class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap Message-message Message-withChildren"
+            class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap MessageItem-message MessageItem-withChildren"
           >
             <div
-              class="Message-iconContainer"
+              class="MessageItem-iconContainer"
             >
               <ui5-icon
-                class="Message-icon"
+                class="MessageItem-icon"
                 name="information"
                 ui5-icon=""
               />
@@ -236,13 +234,13 @@ exports[`MessageView renders list view 1`] = `
               style="flex-basis: auto; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
             >
               <span
-                class="Message-title"
+                class="MessageItem-title"
               >
                 None
               </span>
             </div>
             <ui5-icon
-              class="Message-navigation"
+              class="MessageItem-navigation"
               name="slim-arrow-right"
               ui5-icon=""
             />
@@ -273,9 +271,7 @@ exports[`MessageView renders list view with groups 1`] = `
             data-key="All"
             pressed="true"
             ui5-segmented-button-item=""
-          >
-            All
-          </ui5-segmented-button-item>
+          />
           <ui5-segmented-button-item
             class="MessageView-button"
             data-key="Error"
@@ -320,20 +316,20 @@ exports[`MessageView renders list view with groups 1`] = `
       >
         <ui5-li-custom
           actionable=""
-          class="Message-listItem Message-typeError"
+          class="MessageItem-listItem MessageItem-typeError"
           data-title="Error"
           data-type="Error"
           type="Active"
           ui5-li-custom=""
         >
           <div
-            class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap Message-message Message-withChildren"
+            class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap MessageItem-message MessageItem-withChildren"
           >
             <div
-              class="Message-iconContainer"
+              class="MessageItem-iconContainer"
             >
               <ui5-icon
-                class="Message-icon"
+                class="MessageItem-icon"
                 name="error"
                 ui5-icon=""
               />
@@ -343,13 +339,13 @@ exports[`MessageView renders list view with groups 1`] = `
               style="flex-basis: auto; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
             >
               <span
-                class="Message-title"
+                class="MessageItem-title"
               >
                 Error
               </span>
             </div>
             <ui5-icon
-              class="Message-navigation"
+              class="MessageItem-navigation"
               name="slim-arrow-right"
               ui5-icon=""
             />
@@ -357,20 +353,20 @@ exports[`MessageView renders list view with groups 1`] = `
         </ui5-li-custom>
         <ui5-li-custom
           actionable=""
-          class="Message-listItem Message-typeWarning"
+          class="MessageItem-listItem MessageItem-typeWarning"
           data-title="Warning"
           data-type="Warning"
           type="Active"
           ui5-li-custom=""
         >
           <div
-            class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap Message-message Message-withChildren"
+            class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap MessageItem-message MessageItem-withChildren"
           >
             <div
-              class="Message-iconContainer"
+              class="MessageItem-iconContainer"
             >
               <ui5-icon
-                class="Message-icon"
+                class="MessageItem-icon"
                 name="alert"
                 ui5-icon=""
               />
@@ -380,13 +376,13 @@ exports[`MessageView renders list view with groups 1`] = `
               style="flex-basis: auto; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
             >
               <span
-                class="Message-title"
+                class="MessageItem-title"
               >
                 Warning
               </span>
             </div>
             <ui5-icon
-              class="Message-navigation"
+              class="MessageItem-navigation"
               name="slim-arrow-right"
               ui5-icon=""
             />
@@ -394,20 +390,20 @@ exports[`MessageView renders list view with groups 1`] = `
         </ui5-li-custom>
         <ui5-li-custom
           actionable=""
-          class="Message-listItem Message-typeSuccess"
+          class="MessageItem-listItem MessageItem-typeSuccess"
           data-title="Success"
           data-type="Success"
           type="Active"
           ui5-li-custom=""
         >
           <div
-            class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap Message-message Message-withChildren"
+            class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap MessageItem-message MessageItem-withChildren"
           >
             <div
-              class="Message-iconContainer"
+              class="MessageItem-iconContainer"
             >
               <ui5-icon
-                class="Message-icon"
+                class="MessageItem-icon"
                 name="sys-enter-2"
                 ui5-icon=""
               />
@@ -417,13 +413,13 @@ exports[`MessageView renders list view with groups 1`] = `
               style="flex-basis: auto; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
             >
               <span
-                class="Message-title"
+                class="MessageItem-title"
               >
                 Success
               </span>
             </div>
             <ui5-icon
-              class="Message-navigation"
+              class="MessageItem-navigation"
               name="slim-arrow-right"
               ui5-icon=""
             />
@@ -431,20 +427,20 @@ exports[`MessageView renders list view with groups 1`] = `
         </ui5-li-custom>
         <ui5-li-custom
           actionable=""
-          class="Message-listItem Message-typeInformation"
+          class="MessageItem-listItem MessageItem-typeInformation"
           data-title="Information"
           data-type="Information"
           type="Active"
           ui5-li-custom=""
         >
           <div
-            class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap Message-message Message-withChildren"
+            class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap MessageItem-message MessageItem-withChildren"
           >
             <div
-              class="Message-iconContainer"
+              class="MessageItem-iconContainer"
             >
               <ui5-icon
-                class="Message-icon"
+                class="MessageItem-icon"
                 name="information"
                 ui5-icon=""
               />
@@ -454,13 +450,13 @@ exports[`MessageView renders list view with groups 1`] = `
               style="flex-basis: auto; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
             >
               <span
-                class="Message-title"
+                class="MessageItem-title"
               >
                 Information
               </span>
             </div>
             <ui5-icon
-              class="Message-navigation"
+              class="MessageItem-navigation"
               name="slim-arrow-right"
               ui5-icon=""
             />
@@ -468,20 +464,20 @@ exports[`MessageView renders list view with groups 1`] = `
         </ui5-li-custom>
         <ui5-li-custom
           actionable=""
-          class="Message-listItem Message-typeNone"
+          class="MessageItem-listItem MessageItem-typeNone"
           data-title="None"
           data-type="None"
           type="Active"
           ui5-li-custom=""
         >
           <div
-            class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap Message-message Message-withChildren"
+            class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap MessageItem-message MessageItem-withChildren"
           >
             <div
-              class="Message-iconContainer"
+              class="MessageItem-iconContainer"
             >
               <ui5-icon
-                class="Message-icon"
+                class="MessageItem-icon"
                 name="information"
                 ui5-icon=""
               />
@@ -491,13 +487,13 @@ exports[`MessageView renders list view with groups 1`] = `
               style="flex-basis: auto; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
             >
               <span
-                class="Message-title"
+                class="MessageItem-title"
               >
                 None
               </span>
             </div>
             <ui5-icon
-              class="Message-navigation"
+              class="MessageItem-navigation"
               name="slim-arrow-right"
               ui5-icon=""
             />

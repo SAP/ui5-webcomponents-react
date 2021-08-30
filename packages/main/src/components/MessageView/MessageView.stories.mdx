@@ -6,7 +6,7 @@ import {
   FlexBox,
   FlexBoxAlignItems,
   Link,
-  Message,
+  MessageItem,
   MessageView,
   Title,
   TitleLevel,
@@ -19,12 +19,12 @@ import { useRef, useState } from 'react';
 <Meta
   title="User Feedback / MessageView"
   component={MessageView}
-  subcomponents={{ Message }}
+  subcomponents={{ MessageItem }}
   args={{
     showDetailsPageHeader: true,
     groupItems: false,
     children: [
-      <Message
+      <MessageItem
         key={1}
         titleText={'Error Message Type'}
         subtitleText={'Some bad error occurred'}
@@ -33,8 +33,8 @@ import { useRef, useState } from 'react';
         groupName={'Products'}
       >
         First Error Message Description.
-      </Message>,
-      <Message
+      </MessageItem>,
+      <MessageItem
         key={2}
         titleText={'Success Message Type'}
         subtitleText={'You can also use subtitles'}
@@ -43,22 +43,22 @@ import { useRef, useState } from 'react';
       >
         This is a success message! You can even use{' '}
         <Link href={'https://github.com/SAP/ui5-webcomponents-react'}>links here</Link>.
-      </Message>,
-      <Message
+      </MessageItem>,
+      <MessageItem
         key={3}
         titleText={'Warning Message Type'}
         subtitleText={'Warnign without details'}
         type={ValueState.Warning}
         counter={3}
       />,
-      <Message key={4} titleText={'Empty Message Type'} groupName={'Products'} />,
-      <Message
+      <MessageItem key={4} titleText={'Empty Message Type'} groupName={'Products'} />,
+      <MessageItem
         key={5}
         titleText={'Information Message Type without subtitle'}
         type={ValueState.Information}
         groupName={'Products'}
       />,
-      <Message
+      <MessageItem
         key={6}
         titleText={'None Message Type'}
         subtitleText={'Value State None will be handled as Information'}
@@ -66,7 +66,7 @@ import { useRef, useState } from 'react';
         groupName={'Employees'}
       >
         bla bla bla
-      </Message>
+      </MessageItem>
     ]
   }}
   argTypes={{

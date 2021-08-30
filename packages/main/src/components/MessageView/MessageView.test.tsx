@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@shared/tests';
 import { createPassThroughPropsTest } from '@shared/tests/utils';
 import { MessageView } from '@ui5/webcomponents-react/dist/MessageView';
-import { Message } from '@ui5/webcomponents-react/dist/Message';
+import { MessageItem } from '@ui5/webcomponents-react/dist/MessageItem';
 import { MessageViewDomRef } from '@ui5/webcomponents-react/dist/interfaces/MessageViewDomRef';
 import React, { createRef, forwardRef } from 'react';
 import { ValueState } from '../../enums/ValueState';
@@ -9,21 +9,21 @@ import { ValueState } from '../../enums/ValueState';
 const TestComponent = forwardRef((props, ref) => {
   return (
     <MessageView {...props} ref={ref}>
-      <Message titleText="Error" type={ValueState.Error}>
+      <MessageItem titleText="Error" type={ValueState.Error}>
         Error
-      </Message>
-      <Message titleText="Warning" type={ValueState.Warning}>
+      </MessageItem>
+      <MessageItem titleText="Warning" type={ValueState.Warning}>
         Warning
-      </Message>
-      <Message titleText="Success" type={ValueState.Success}>
+      </MessageItem>
+      <MessageItem titleText="Success" type={ValueState.Success}>
         Success
-      </Message>
-      <Message titleText="Information" type={ValueState.Information}>
+      </MessageItem>
+      <MessageItem titleText="Information" type={ValueState.Information}>
         Information
-      </Message>
-      <Message titleText="None" type={ValueState.None}>
+      </MessageItem>
+      <MessageItem titleText="None" type={ValueState.None}>
         None
-      </Message>
+      </MessageItem>
     </MessageView>
   );
 });
@@ -42,9 +42,9 @@ describe('MessageView', () => {
   it('render no filter when only one message type is used', () => {
     render(
       <MessageView>
-        <Message titleText="Error" type={ValueState.Error}>
+        <MessageItem titleText="Error" type={ValueState.Error}>
           Error
-        </Message>
+        </MessageItem>
       </MessageView>
     );
 

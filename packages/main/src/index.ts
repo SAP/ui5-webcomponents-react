@@ -85,10 +85,10 @@ import { ListMode } from './dist/ListMode';
 import { ListSeparators } from './dist/ListSeparators';
 import { Loader } from './dist/Loader';
 import { LoaderType } from './dist/LoaderType';
-import { Message } from './dist/Message';
 import { MessageBox } from './dist/MessageBox';
 import { MessageBoxActions } from './dist/MessageBoxActions';
 import { MessageBoxTypes } from './dist/MessageBoxTypes';
+import { MessageItem } from './dist/MessageItem';
 import { MessageStrip } from './dist/MessageStrip';
 import { MessageStripDesign } from './dist/MessageStripDesign';
 import { MessageView } from './dist/MessageView';
@@ -272,7 +272,7 @@ export {
   ListSeparators,
   Loader,
   LoaderType,
-  Message,
+  MessageItem,
   MessageBox,
   MessageBoxActions,
   MessageBoxTypes,
