@@ -23,7 +23,7 @@ import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
 import { stopPropagation } from '../../internal/stopPropagation';
 import { useObserveHeights } from '../../internal/useObserveHeights';
 import { useResponsiveContentPadding } from '../../internal/useResponsiveContentPadding';
-import { DynamicPageAnchorBar, DynamicPageAnchorBarA11Y } from '../DynamicPageAnchorBar';
+import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
 import { ObjectPageSectionPropTypes } from '../ObjectPageSection';
 import { ObjectPageSubSectionPropTypes } from '../ObjectPageSubSection';
 import { CollapsedAvatar } from './CollapsedAvatar';
@@ -44,13 +44,6 @@ addCustomCSS(
   }
   `
 );
-
-interface A11Y extends DynamicPageAnchorBarA11Y {
-  objectPageTopHeader?: {
-    role?: string;
-    ariaRoledescription?: string;
-  };
-}
 
 export interface ObjectPagePropTypes extends CommonProps {
   /**
@@ -138,7 +131,15 @@ export interface ObjectPagePropTypes extends CommonProps {
   /**
    * Defines internally used a11y properties.
    */
-  a11yConfig?: A11Y;
+  a11yConfig?: {
+    objectPageTopHeader?: {
+      role?: string;
+      ariaRoledescription?: string;
+    };
+    dynamicPageAnchorBar?: {
+      role?: string;
+    };
+  };
 }
 
 const useStyles = createUseStyles(styles, { name: 'ObjectPage' });

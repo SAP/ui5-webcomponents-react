@@ -96,12 +96,6 @@ const anchorBarStyles = {
   }
 };
 
-export interface DynamicPageAnchorBarA11Y {
-  dynamicPageAnchorBar?: {
-    role?: string;
-  };
-}
-
 const useStyles = createUseStyles(anchorBarStyles, { name: 'DynamicPageAnchorBar' });
 
 interface Props extends CommonProps {
@@ -136,7 +130,11 @@ interface Props extends CommonProps {
   /**
    * Defines internally used a11y properties.
    */
-  a11yConfig?: DynamicPageAnchorBarA11Y;
+  a11yConfig?: {
+    dynamicPageAnchorBar?: {
+      role?: string;
+    };
+  };
 }
 
 /**

@@ -26,13 +26,6 @@ import { ButtonPropTypes } from '../../webComponents/Button';
 import { ResponsivePopoverPropTypes } from '../../webComponents/ResponsivePopover';
 import styles from './ActionSheet.jss';
 
-interface A11Y {
-  actionSheetMobileContent?: {
-    role?: string;
-    ariaLabel?: string;
-  };
-}
-
 export interface ActionSheetPropTypes extends Omit<ResponsivePopoverPropTypes, 'children'> {
   /**
    * Defines the actions of the <code>ActionSheet</code>. <br><b>Note:</b> Although this slot accepts all HTML Elements, it is strongly recommended that you only use `Buttons` in order to preserve the intended design.
@@ -49,7 +42,12 @@ export interface ActionSheetPropTypes extends Omit<ResponsivePopoverPropTypes, '
   /**
    * Defines internally used a11y properties.
    */
-  a11yConfig?: A11Y;
+  a11yConfig?: {
+    actionSheetMobileContent?: {
+      role?: string;
+      ariaLabel?: string;
+    };
+  };
 }
 
 const useStyles = createUseStyles(styles, { name: 'ActionSheet' });
