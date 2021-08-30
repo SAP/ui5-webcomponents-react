@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.131.17](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.16...v0.131.17) (2021-08-30)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** reset infinity-scroll offset with data change ([#2036](https://github.com/SAP/ui5-webcomponents-react/issues/2036)) ([86691bd](https://github.com/SAP/ui5-webcomponents-react/commit/86691bd3796a090c791030386dc7db5430fc74f7))
+* **AnalyticalTable:** return correct value for `onRowSelected` with select-all checkbox ([#2035](https://github.com/SAP/ui5-webcomponents-react/issues/2035)) ([9dc9d10](https://github.com/SAP/ui5-webcomponents-react/commit/9dc9d1022738722b5e8098ed004ef761cd42be5d))
+* **Form:** use form element instead of div (cherry-pick 8d19e93) ([4481afc](https://github.com/SAP/ui5-webcomponents-react/commit/4481afc1e3947fd446a70d6e1269312b12840620))
+* **ObjectPage:** respect scoping suffix for custom anchor tab ([#2011](https://github.com/SAP/ui5-webcomponents-react/issues/2011)) ([2325dd0](https://github.com/SAP/ui5-webcomponents-react/commit/2325dd00ffbac028447a8151239bc62868168412))
+
+
+### Features
+
+* **MessageBox:** add emphasizedAction prop (cherry-pick 40bd570) ([30086e7](https://github.com/SAP/ui5-webcomponents-react/commit/30086e774032f4d7a04e02c1a75e6d885d409b4a))
+* update to @ui5/webcomponents 0.31.16 ([b829393](https://github.com/SAP/ui5-webcomponents-react/commit/b829393058ca5e9356b74d9788611366e1076bf6))
+
+
+
+
+
 ## [0.131.16](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.15...v0.131.16) (2021-08-12)
 
 
