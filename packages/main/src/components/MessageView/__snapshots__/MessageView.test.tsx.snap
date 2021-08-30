@@ -18,7 +18,9 @@ exports[`MessageView renders list view 1`] = `
             data-key="All"
             pressed="true"
             ui5-segmented-button-item=""
-          />
+          >
+            All
+          </ui5-segmented-button-item>
           <ui5-segmented-button-item
             class="MessageView-button"
             data-key="Error"
@@ -271,7 +273,9 @@ exports[`MessageView renders list view with groups 1`] = `
             data-key="All"
             pressed="true"
             ui5-segmented-button-item=""
-          />
+          >
+            All
+          </ui5-segmented-button-item>
           <ui5-segmented-button-item
             class="MessageView-button"
             data-key="Error"
