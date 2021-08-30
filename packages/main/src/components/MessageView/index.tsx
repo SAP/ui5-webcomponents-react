@@ -154,7 +154,7 @@ const MessageView = forwardRef((props: MessageViewPropTypes, ref: Ref<MessageVie
   const internalRef = useConsolidatedRef<MessageViewDomRef>(ref);
 
   const classes = useStyles();
-  const i18nBundle = useI18nBundle();
+  const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
   const [listFilter, setListFilter] = useState('All');
   const [selectedMessage, setSelectedMessage] = useState<MessagePropTypes>(null);
