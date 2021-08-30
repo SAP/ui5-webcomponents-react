@@ -34,7 +34,6 @@ import { Text } from '@ui5/webcomponents-react/lib/Text';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { Ui5DialogDomRef } from '@ui5/webcomponents-react/interfaces/Ui5DialogDomRef';
 import React, {
   FC,
@@ -95,11 +94,11 @@ export interface MessageBoxPropTypes extends CommonProps {
   /**
    * Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. This event does not bubble.
    */
-  onBeforeOpen?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  onBeforeOpen?: (event: CustomEvent) => void;
   /**
    * Fired after the component is opened. This event does not bubble.
    */
-  onAfterOpen?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  onAfterOpen?: (event: CustomEvent) => void;
 }
 
 const useStyles = createUseStyles(styles, { name: 'MessageBox' });
