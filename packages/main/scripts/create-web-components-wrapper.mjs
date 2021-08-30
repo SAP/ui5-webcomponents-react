@@ -325,6 +325,7 @@ const getTypeScriptTypeForProperty = (property) => {
     // react ts types
     case 'Node[]':
     case 'HTMLElement[]':
+    case 'sap.ui.webcomponents.fiori.ListItem':
       return {
         tsType: 'ReactNode | ReactNode[]',
         importStatement: "import { ReactNode } from 'react';"

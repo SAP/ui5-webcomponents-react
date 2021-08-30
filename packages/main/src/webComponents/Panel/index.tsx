@@ -10,7 +10,7 @@ export interface PanelPropTypes extends WithWebComponentPropTypes {
    */
   accessibleName?: string;
   /**
-   * Sets the accessible aria role of the `Panel`. Depending on the usage, you can change the role from the default `Form` to `Region` or `Complementary`.
+   * Sets the accessible aria role of the component. Depending on the usage, you can change the role from the default `Form` to `Region` or `Complementary`.
    */
   accessibleRole?: PanelAccessibleRoles;
   /**
@@ -34,6 +34,10 @@ export interface PanelPropTypes extends WithWebComponentPropTypes {
    */
   headerText?: string;
   /**
+   * Indicates whether the transition between the expanded and the collapsed state of the component is animated. By default the animation is enabled.
+   */
+  noAnimation?: boolean;
+  /**
    * Determines the content of the `Panel`. The content is visible only when the `Panel` is expanded.
    */
   children?: ReactNode | ReactNode[];
@@ -56,7 +60,7 @@ export interface PanelPropTypes extends WithWebComponentPropTypes {
 const Panel: FC<PanelPropTypes> = withWebComponent<PanelPropTypes>(
   'ui5-panel',
   ['accessibleName', 'accessibleRole', 'headerLevel', 'headerText'],
-  ['collapsed', 'fixed'],
+  ['collapsed', 'fixed', 'noAnimation'],
   ['header'],
   []
 );
@@ -67,7 +71,8 @@ Panel.defaultProps = {
   accessibleRole: PanelAccessibleRoles.Form,
   collapsed: false,
   fixed: false,
-  headerLevel: TitleLevel.H2
+  headerLevel: TitleLevel.H2,
+  noAnimation: false
 };
 
 export { Panel };
