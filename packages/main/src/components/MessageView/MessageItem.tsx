@@ -89,7 +89,8 @@ const useStyles = createUseStyles(
       textOverflow: 'ellipsis',
       flex: '1 1 auto',
       '& + $subtitle': {
-        marginTop: '0.25rem'
+        marginTop: '0.25rem',
+        cursor: 'inherit'
       }
     },
     subtitle: {},
