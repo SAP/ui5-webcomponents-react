@@ -1,20 +1,20 @@
-import {
-  Bar,
-  Button,
-  ButtonDesign,
-  FlexBox,
-  FlexBoxDirection,
-  GroupHeaderListItem,
-  Icon,
-  List,
-  SegmentedButton,
-  SegmentedButtonItem,
-  Title,
-  TitleLevel,
-  ValueState
-} from '@ui5/webcomponents-react';
-import { StyleClassHelper, ThemingParameters, useConsolidatedRef } from '@ui5/webcomponents-react-base';
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/hooks';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
+import { Bar } from '@ui5/webcomponents-react/dist/Bar';
+import { Button } from '@ui5/webcomponents-react/dist/Button';
+import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
+import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
+import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
+import { GroupHeaderListItem } from '@ui5/webcomponents-react/dist/GroupHeaderListItem';
+import { Icon } from '@ui5/webcomponents-react/dist/Icon';
+import { List } from '@ui5/webcomponents-react/dist/List';
 import { MessageViewContext } from '@ui5/webcomponents-react/dist/MessageViewContext';
+import { SegmentedButton } from '@ui5/webcomponents-react/dist/SegmentedButton';
+import { SegmentedButtonItem } from '@ui5/webcomponents-react/dist/SegmentedButtonItem';
+import { Title } from '@ui5/webcomponents-react/dist/Title';
+import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
+import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { MessageViewDomRef } from '@ui5/webcomponents-react/interfaces/MessageViewDomRef';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
@@ -60,11 +60,11 @@ export interface MessageViewPropTypes extends CommonProps {
   /**
    * Event is fired when the details of a message are shown
    */
-  onItemSelect: (event: Ui5CustomEvent<HTMLElement, { item: ReactNode }>) => void;
+  onItemSelect?: (event: Ui5CustomEvent<HTMLElement, { item: ReactNode }>) => void;
 }
 
 export const resolveMessageTypes = (children: ReactElement<MessagePropTypes>[]) => {
-  return children
+  return (children ?? [])
     .map((message) => message?.props?.type)
     .reduce(
       (acc, type) => {
@@ -84,7 +84,7 @@ export const resolveMessageTypes = (children: ReactElement<MessagePropTypes>[]) 
 };
 
 export const resolveMessageGroups = (children: ReactElement<MessagePropTypes>[]) => {
-  const groups = children.reduce((acc, val) => {
+  const groups = (children ?? []).reduce((acc, val) => {
     const groupName = val?.props?.groupName ?? '';
     if (acc.hasOwnProperty(groupName)) {
       acc[groupName].push(val);
@@ -158,12 +158,12 @@ const MessageView = forwardRef((props: MessageViewPropTypes, ref: Ref<MessageVie
   const [selectedMessage, setSelectedMessage] = useState<MessagePropTypes>(null);
 
   const childrenArray = Children.toArray(children);
-  const messageTypes = resolveMessageTypes(children as ReactElement<MessagePropTypes>[]);
+  const messageTypes = resolveMessageTypes(childrenArray as ReactElement<MessagePropTypes>[]);
   const filledTypes = Object.values(messageTypes).filter((count) => count > 0).length;
 
   const filteredChildren =
     listFilter === 'All'
-      ? children
+      ? childrenArray
       : childrenArray.filter((message: ReactElement<MessagePropTypes>) => {
           if (listFilter === ValueState.Information) {
             return message?.props?.type === ValueState.Information || message?.props?.type === ValueState.None;

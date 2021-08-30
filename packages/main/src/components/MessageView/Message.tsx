@@ -1,15 +1,15 @@
-import {
-  CustomListItem,
-  FlexBox,
-  FlexBoxAlignItems,
-  FlexBoxDirection,
-  Icon,
-  Label,
-  ListItemType,
-  ValueState
-} from '@ui5/webcomponents-react';
-import { CssSizeVariables, StyleClassHelper, ThemingParameters } from '@ui5/webcomponents-react-base';
+import { CssSizeVariables } from '@ui5/webcomponents-react-base/dist/CssSizeVariables';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
+import { CustomListItem } from '@ui5/webcomponents-react/dist/CustomListItem';
+import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
+import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
+import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
+import { Icon } from '@ui5/webcomponents-react/dist/Icon';
+import { Label } from '@ui5/webcomponents-react/dist/Label';
+import { ListItemType } from '@ui5/webcomponents-react/dist/ListItemType';
 import { MessageViewContext } from '@ui5/webcomponents-react/dist/MessageViewContext';
+import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import React, { forwardRef, ReactNode, ReactNodeArray, Ref, useContext } from 'react';
 import { createUseStyles } from 'react-jss';
