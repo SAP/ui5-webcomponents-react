@@ -39,7 +39,8 @@ import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
     headerContent: { control: { disable: true } },
     footer: { control: { disable: true } },
     children: { control: { disable: true } },
-      ...DocsCommonProps
+    ...DocsCommonProps,
+    a11yConfig: { table: { category: 'A11y props' } }
   }}
   args={{
     mode: ObjectPageMode.Default,

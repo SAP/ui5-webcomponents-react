@@ -131,6 +131,18 @@ export interface ObjectPagePropTypes extends CommonProps {
    * Defines whether the `headerContent` is pinnable.
    */
   headerContentPinnable?: boolean;
+  /**
+   * Defines internally used a11y properties.
+   */
+  a11yConfig?: {
+    objectPageTopHeader?: {
+      role?: string;
+      ariaRoledescription?: string;
+    };
+    dynamicPageAnchorBar?: {
+      role?: string;
+    };
+  };
 }
 
 const useStyles = createUseStyles(styles, { name: 'ObjectPage' });
@@ -157,7 +169,8 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     alwaysShowContentHeader,
     showTitleInHeaderContent,
     headerContent,
-    headerContentPinnable
+    headerContentPinnable,
+    a11yConfig
   } = props;
 
   const classes = useStyles();
@@ -665,9 +678,9 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         onMouseLeave={onHoverToggleButton}
         data-component-name="ObjectPageTopHeader"
         ref={topHeaderRef}
-        role="banner"
+        role={a11yConfig?.objectPageTopHeader?.role ?? 'banner'}
         data-not-clickable={titleHeaderNotClickable}
-        aria-roledescription="Object Page header"
+        aria-roledescription={a11yConfig?.objectPageTopHeader?.ariaRoledescription ?? 'Object Page header'}
         className={`${classes.header} ${responsivePaddingClass}`}
         onClick={onTitleClick}
         style={{
@@ -703,6 +716,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
             setHeaderPinned={setHeaderPinned}
             headerPinned={headerPinned}
             onHoverToggleButton={onHoverToggleButton}
+            a11yConfig={a11yConfig}
           />
         </div>
       )}

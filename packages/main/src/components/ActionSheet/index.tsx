@@ -40,6 +40,15 @@ export interface ActionSheetPropTypes extends Omit<ResponsivePopoverPropTypes, '
    * Defines whether the `header` or `headerText` should always be displayed or only on mobile devices.
    */
   alwaysShowHeader?: boolean;
+  /**
+   * Defines internally used a11y properties.
+   */
+  a11yConfig?: {
+    actionSheetMobileContent?: {
+      role?: string;
+      ariaLabel?: string;
+    };
+  };
 }
 
 const useStyles = createUseStyles(styles, { name: 'ActionSheet' });
@@ -106,8 +115,8 @@ const ActionSheet: FC<ActionSheetPropTypes> = forwardRef(
       onBeforeClose,
       onBeforeOpen,
       showCancelButton,
-      alwaysShowHeader
-    } = props;
+      alwaysShowHeader,
+    a11yConfig} = props;
     const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
     const classes = useStyles();
     const actionSheetClasses = StyleClassHelper.of(classes.actionSheet).putIfPresent(className);
@@ -147,13 +156,14 @@ const ActionSheet: FC<ActionSheetPropTypes> = forwardRef(
     const renderActionSheetButton = (element, index: number, childrenArray) => {
       return cloneElement(element, {
         role: 'button',
-        key: index,
-        design: ButtonDesign.Transparent,
-        onClick: onActionButtonClicked(element.props?.onClick),
-        'data-action-btn-index': index,
+
         'aria-label': `${i18nBundle.getText(X_OF_Y, index + 1, childrenArray.length)} ${element.props?.children}`,
-        tabIndex: focusedItem === index ? 0 : -1,
-        onFocus: setFocusedItem
+        ...element.props,
+      design: ButtonDesign.Transparent,
+      onClick: onActionButtonClicked(element.props?.onClick),tabIndex: focusedItem === index ? 0 : -1,
+        onFocus: setFocusedItem,
+      key: index,
+      'data-action-btn-index': index
       });
     };
 
@@ -202,9 +212,9 @@ const ActionSheet: FC<ActionSheetPropTypes> = forwardRef(
         data-actionsheet
       >
         <div
-          className={isPhone() ? classes.contentMobile : undefined}
-          role="presentation"
-          aria-label={i18nBundle.getText(AVAILABLE_ACTIONS)}
+          className={isPhone() ? classes.contentMobile : undefined}data-component-name="ActionSheetMobileContent"
+          role={a11yConfig?.actionSheetMobileContent?.role ?? 'presentation'}
+          aria-label={a11yConfig?.actionSheetMobileContent?.ariaLabel ??i18nBundle.getText(AVAILABLE_ACTIONS)}
           onKeyDown={handleKeyDown}
           ref={actionBtnsRef}
         >
