@@ -377,11 +377,14 @@ React.useEffect(() => {
   data={data}
   reactTableOptions={{
     // ... any other options you want to set
+    autoResetHiddenColumns: !skipPageResetRef.current,
+    autoResetPage: !skipPageResetRef.current,
     autoResetExpanded: !skipPageResetRef.current,
     autoResetGroupBy: !skipPageResetRef.current,
     autoResetSelectedRows: !skipPageResetRef.current,
     autoResetSortBy: !skipPageResetRef.current,
     autoResetFilters: !skipPageResetRef.current,
+    autoResetRowState: !skipPageResetRef.current
   }}
 />
 ```
