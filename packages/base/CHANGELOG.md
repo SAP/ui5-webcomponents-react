@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.18.5...v0.18.6) (2021-08-31)
+
+
+### Features
+
+* **ActionSheet/DynamicPage/ObjectPage:** add `a11yConfig` prop to customize a11y properties ([#2038](https://github.com/SAP/ui5-webcomponents-react/issues/2038)) ([49f5293](https://github.com/SAP/ui5-webcomponents-react/commit/49f5293e9e7ae56a4b720926e4fe89bf475bab82))
+* **AnalyticalTable:** expose table instance via `tableInstance` prop ([#2064](https://github.com/SAP/ui5-webcomponents-react/issues/2064)) ([32fff10](https://github.com/SAP/ui5-webcomponents-react/commit/32fff10b825745c52bc11604446021cec53c6d01))
+* **MessageView:** initial component implementation ([#2044](https://github.com/SAP/ui5-webcomponents-react/issues/2044)) ([dd8d2c8](https://github.com/SAP/ui5-webcomponents-react/commit/dd8d2c8c18f3283b42458911db649afb0df9c8da))
+
+
+
+
+
 ## [0.18.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.18.4...v0.18.5) (2021-08-24)
 
 **Note:** Version bump only for package @ui5/webcomponents-react-base
