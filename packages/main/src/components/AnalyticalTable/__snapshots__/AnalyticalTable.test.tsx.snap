@@ -1814,7 +1814,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
         class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
       >
         <div
-          aria-colcount="6"
+          aria-colcount="1"
           aria-rowcount="5"
           class="AnalyticalTable-table sapScrollBar"
           data-component-name="AnalyticalTableContainer"
@@ -2172,7 +2172,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
         class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
       >
         <div
-          aria-colcount="6"
+          aria-colcount="2"
           aria-rowcount="5"
           class="AnalyticalTable-table sapScrollBar"
           data-component-name="AnalyticalTableContainer"
@@ -5135,7 +5135,7 @@ exports[`AnalyticalTable expose table instance 1`] = `
       class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
     >
       <div
-        aria-colcount="4"
+        aria-colcount="3"
         aria-rowcount="5"
         class="AnalyticalTable-table sapScrollBar"
         data-component-name="AnalyticalTableContainer"
@@ -6895,7 +6895,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins & hidden column 1`] = `
       class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
     >
       <div
-        aria-colcount="6"
+        aria-colcount="1"
         aria-rowcount="5"
         class="AnalyticalTable-table sapScrollBar"
         data-component-name="AnalyticalTableContainer"
@@ -7249,7 +7249,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 1`] = `
       class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
     >
       <div
-        aria-colcount="6"
+        aria-colcount="2"
         aria-rowcount="5"
         class="AnalyticalTable-table sapScrollBar"
         data-component-name="AnalyticalTableContainer"

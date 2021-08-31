@@ -780,7 +780,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
           tabIndex={0}
           role="grid"
           aria-rowcount={rows.length}
-          aria-colcount={tableInternalColumns.length}
+          aria-colcount={visibleColumns.length}
           data-per-page={internalVisibleRowCount}
           data-component-name="AnalyticalTableContainer"
           ref={tableRef}
@@ -822,9 +822,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
           {loading && props.data?.length === 0 && (
             <TablePlaceholder
               isRtl={isRtl}
-              columns={tableInternalColumns.filter(
-                (col) => (col.isVisible ?? true) && !tableState.hiddenColumns.includes(col.accessor)
-              )}
+              columns={visibleColumns}
               rows={props.minRows}
               style={noDataStyles}
               rowHeight={internalRowHeight}
