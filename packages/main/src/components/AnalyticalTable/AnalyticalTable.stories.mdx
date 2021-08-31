@@ -581,7 +581,8 @@ The prop expects a function with an optional parameter containing the `row` inst
       onRowClick: { table: { disable: true } },
       withNavigationHighlight: { table: { disable: true } },
       markNavigatedRow: { table: { disable: true } },
-      globalFilterValue: { table: { disable: true } }
+      globalFilterValue: { table: { disable: true } },
+      tableInstance: { table: { disable: true } }
     }}
   >
     {(args) => {
@@ -754,6 +755,7 @@ By adding the `visibleRowCountMode` prop and setting it to `TableVisibleRowCount
       withNavigationHighlight: { table: { disable: true } },
       markNavigatedRow: { table: { disable: true } },
       globalFilterValue: { table: { disable: true } },
+      tableInstance: { table: { disable: true } },
       containerHeight: {
         options: [250, 500, 750, 1000],
         control: {
@@ -893,6 +895,7 @@ In the example below you can have a look at this behavior:
       withNavigationHighlight: { table: { disable: true } },
       markNavigatedRow: { table: { disable: true } },
       globalFilterValue: { table: { disable: true } },
+      tableInstance: { table: { disable: true } },
       containerWidth: {
         options: [400, 600, 800, 'auto'],
         control: {
