@@ -469,7 +469,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     setGroupBy,
     setGlobalFilter
   } = tableInstanceRef.current;
-
+  // console.log(tableState.hiddenColumns);
   const titleBarRef = useRef(null);
   const extensionRef = useRef(null);
   const headerRef = useRef(null);
