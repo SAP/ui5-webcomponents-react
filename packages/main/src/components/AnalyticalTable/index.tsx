@@ -312,8 +312,8 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * Exposes the internal table instance.
    * This object will contain all [instance properties](https://react-table.tanstack.com/docs/api/useTable#instance-properties)
-   * and all instance properties from `useColumnOrder`, `useExpanded`, `useFilters`, `useGlobalFilter`, `useGroupBy`,
-   * `useResizeColumns`, `useRowSelect` and `useSortBy`.
+   * of the `useTable` hook and all instance properties from `useColumnOrder`, `useExpanded`, `useFilters`,
+   * `useGlobalFilter`, `useGroupBy`,`useResizeColumns`, `useRowSelect` and `useSortBy` plugin hooks.
    *
    * **Note**: Use this prop with care, some properties might have an impact on the internal `AnalyticalTable` implementation.
    */
