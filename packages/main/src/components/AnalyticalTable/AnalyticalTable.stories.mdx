@@ -133,7 +133,9 @@ import { useRowDisableSelection } from '@ui5/webcomponents-react/lib/AnalyticalT
       selectionMode: TableSelectionMode,
       selectionBehavior: TableSelectionBehavior,
       visibleRowCountMode: TableVisibleRowCountMode
-    })
+    }),
+    extension: { type: null },
+    tableInstance: { control: { disable: true } }
   }}
 />
 
@@ -588,7 +590,8 @@ The prop expects a function with an optional parameter containing the `row` inst
       onRowClick: { table: { disable: true } },
       withNavigationHighlight: { table: { disable: true } },
       markNavigatedRow: { table: { disable: true } },
-      globalFilterValue: { table: { disable: true } }
+      globalFilterValue: { table: { disable: true } },
+      tableInstance: { table: { disable: true } }
     }}
   >
     {(args) => {
@@ -760,7 +763,16 @@ By adding the `visibleRowCountMode` prop and setting it to `TableVisibleRowCount
       onRowClick: { table: { disable: true } },
       withNavigationHighlight: { table: { disable: true } },
       markNavigatedRow: { table: { disable: true } },
-      globalFilterValue: { table: { disable: true } }
+      globalFilterValue: { table: { disable: true } },
+      tableInstance: { table: { disable: true } },
+      containerHeight: {
+        options: [250, 500, 750, 1000],
+        control: {
+          type: 'radio'
+        },
+        description:
+          'Select an option to change the height of the surrounding container of the table (in `px`). <br /> __Note__: This is not an actual prop of the table.'
+      }
     }}
   >
     {(args) => {
@@ -891,7 +903,16 @@ In the example below you can have a look at this behavior:
       onRowClick: { table: { disable: true } },
       withNavigationHighlight: { table: { disable: true } },
       markNavigatedRow: { table: { disable: true } },
-      globalFilterValue: { table: { disable: true } }
+      globalFilterValue: { table: { disable: true } },
+      tableInstance: { table: { disable: true } },
+      containerWidth: {
+        options: [400, 600, 800, 'auto'],
+        control: {
+          type: 'radio'
+        },
+        description:
+          'Select an option to change the width of the surrounding container of the table (in `px`). <br /> __Note__: This is not an actual prop of the table.'
+      }
     }}
   >
     {(args) => {

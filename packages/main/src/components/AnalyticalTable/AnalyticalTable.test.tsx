@@ -7,7 +7,7 @@ import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionM
 import { TableVisibleRowCountMode } from '@ui5/webcomponents-react/lib/TableVisibleRowCountMode';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
-import React, { useRef } from 'react';
+import React, { createRef, useRef } from 'react';
 
 const columns = [
   {
@@ -1052,6 +1052,17 @@ describe('AnalyticalTable', () => {
     // test if "select-all" checkbox is not rendered
     const headers = getAllByRole('columnheader', { hidden: true });
     expect(headers[0].getElementsByTagName('ui5-checkbox')[0]).toBeFalsy();
+
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  test('expose table instance', () => {
+    const ref = createRef();
+    const { asFragment } = render(<AnalyticalTable data={data} columns={columns} tableInstance={ref} />);
+
+    ref.current.toggleHideColumn('age', true);
+
+    expect(screen.queryAllByText('Age')).toHaveLength(0);
 
     expect(asFragment()).toMatchSnapshot();
   });

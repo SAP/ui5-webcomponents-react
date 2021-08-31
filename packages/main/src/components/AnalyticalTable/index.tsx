@@ -1,5 +1,5 @@
 import { createUseStyles } from 'react-jss';
-import { useIsomorphicLayoutEffect, useIsRTL } from '@ui5/webcomponents-react-base/lib/hooks';
+import { useConsolidatedRef, useIsomorphicLayoutEffect, useIsRTL } from '@ui5/webcomponents-react-base/lib/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
@@ -302,6 +302,16 @@ export interface TableProps extends Omit<CommonProps, 'title'> {
    * Component that will be rendered when the table is loading and has no data.
    */
   LoadingComponent?: ComponentType<any>;
+
+  /**
+   * Exposes the internal table instance.
+   * This object will contain all [instance properties](https://react-table.tanstack.com/docs/api/useTable#instance-properties)
+   * of the `useTable` hook and all instance properties from `useColumnOrder`, `useExpanded`, `useFilters`,
+   * `useGlobalFilter`, `useGroupBy`,`useResizeColumns`, `useRowSelect` and `useSortBy` plugin hooks.
+   *
+   * **Note**: Use this prop with care, some properties might have an impact on the internal `AnalyticalTable` implementation.
+   */
+  tableInstance?: Ref<Record<string, any>>;
 }
 
 const useStyles = createUseStyles(styles, { name: 'AnalyticalTable' });
@@ -355,7 +365,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     columnOrder,
     renderRowSubComponent,
     alwaysShowSubComponent,
-    globalFilterValue
+    globalFilterValue,
+    tableInstance
   } = props;
 
   const classes = useStyles();
@@ -380,64 +391,9 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     return props.data;
   }, [props.data, minRows]);
 
-  const webComponentsReactProperties = useMemo(
-    () => ({
-      tableRef,
-      selectionMode,
-      selectionBehavior,
-      classes,
-      onRowSelected,
-      onRowClick,
-      onRowExpandChange,
-      isTreeTable,
-      alternateRowColor,
-      scaleWidthMode,
-      loading,
-      withRowHighlight,
-      highlightField,
-      withNavigationHighlight,
-      markNavigatedRow,
-      renderRowSubComponent,
-      alwaysShowSubComponent,
-      reactWindowRef
-    }),
-    [
-      tableRef.current,
-      selectionMode,
-      selectionBehavior,
-      classes,
-      onRowSelected,
-      onRowClick,
-      onRowExpandChange,
-      isTreeTable,
-      alternateRowColor,
-      scaleWidthMode,
-      loading,
-      withRowHighlight,
-      highlightField,
-      withNavigationHighlight,
-      markNavigatedRow,
-      renderRowSubComponent,
-      alwaysShowSubComponent,
-      reactWindowRef
-    ]
-  );
+  const tableInstanceRef = useConsolidatedRef<Record<string, any>>(tableInstance);
 
-  const {
-    getTableProps,
-    headerGroups,
-    rows,
-    prepareRow,
-    state: tableState,
-    columns: tableInternalColumns,
-    setColumnOrder,
-    dispatch,
-    totalColumnsWidth,
-    visibleColumns,
-    visibleColumnsWidth,
-    setGroupBy,
-    setGlobalFilter
-  } = useTable(
+  tableInstanceRef.current = useTable(
     {
       columns,
       data,
@@ -449,7 +405,26 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       disableSortBy: !sortable,
       disableGroupBy: isTreeTable || renderRowSubComponent ? true : !groupable,
       selectSubRows: false,
-      webComponentsReactProperties,
+      webComponentsReactProperties: {
+        tableRef,
+        selectionMode,
+        selectionBehavior,
+        classes,
+        onRowSelected,
+        onRowClick,
+        onRowExpandChange,
+        isTreeTable,
+        alternateRowColor,
+        scaleWidthMode,
+        loading,
+        withRowHighlight,
+        highlightField,
+        withNavigationHighlight,
+        markNavigatedRow,
+        renderRowSubComponent,
+        alwaysShowSubComponent,
+        reactWindowRef
+      },
       ...reactTableOptions
     },
     useFilters,
@@ -472,6 +447,22 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     useKeyboardNavigation,
     ...tableHooks
   );
+
+  const {
+    getTableProps,
+    headerGroups,
+    rows,
+    prepareRow,
+    state: tableState,
+    columns: tableInternalColumns,
+    setColumnOrder,
+    dispatch,
+    totalColumnsWidth,
+    visibleColumns,
+    visibleColumnsWidth,
+    setGroupBy,
+    setGlobalFilter
+  } = tableInstanceRef.current;
 
   const titleBarRef = useRef(null);
   const extensionRef = useRef(null);
@@ -724,7 +715,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
           tabIndex={0}
           role="grid"
           aria-rowcount={rows.length}
-          aria-colcount={tableInternalColumns.length}
+          aria-colcount={visibleColumns.length}
           data-per-page={internalVisibleRowCount}
           data-component-name="AnalyticalTableContainer"
           ref={tableRef}
@@ -766,9 +757,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
           {loading && props.data?.length === 0 && (
             <TablePlaceholder
               isRtl={isRtl}
-              columns={tableInternalColumns.filter(
-                (col) => (col.isVisible ?? true) && !tableState.hiddenColumns.includes(col.accessor)
-              )}
+              columns={visibleColumns}
               rows={props.minRows}
               style={noDataStyles}
               rowHeight={internalRowHeight}
