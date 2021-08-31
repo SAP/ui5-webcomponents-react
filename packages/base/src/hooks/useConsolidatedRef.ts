@@ -1,9 +1,9 @@
-import { RefObject, useEffect, useMemo, useRef } from 'react';
+import { MutableRefObject, useEffect, useMemo, useRef } from 'react';
 
-export const useConsolidatedRef = <T>(ref): RefObject<T> => {
-  const localRef: RefObject<T> = useRef(null);
+export const useConsolidatedRef = <T>(ref): MutableRefObject<T> => {
+  const localRef: MutableRefObject<T> = useRef(null);
 
-  const consolidatedRef = useMemo(() => {
+  const consolidatedRef: MutableRefObject<T> = useMemo(() => {
     if (!ref || typeof ref === 'function') {
       return localRef;
     }
