@@ -12,7 +12,6 @@ export const useConsolidatedRef = <T>(ref): RefObject<T> => {
 
   useEffect(() => {
     if (typeof ref === 'function') {
-      // @ts-ignore
       ref(consolidatedRef.current);
     }
   }, [consolidatedRef.current]);
