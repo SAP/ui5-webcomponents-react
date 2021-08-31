@@ -399,7 +399,6 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
 
   const tableInstanceRef = useConsolidatedRef<Record<string, any>>(tableInstance);
 
-  // @ts-ignore
   tableInstanceRef.current = useTable(
     {
       columns,
