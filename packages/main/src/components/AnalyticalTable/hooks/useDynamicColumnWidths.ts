@@ -13,6 +13,7 @@ const approximateContentPxFromCharLength = (charLength) => 8 * charLength;
 const columnsDeps = (deps, { instance: { state, webComponentsReactProperties, visibleColumns } }) => [
   ...deps,
   state.tableClientWidth,
+  state.hiddenColumns.length,
   visibleColumns?.length,
   webComponentsReactProperties.scaleWidthMode,
   webComponentsReactProperties.loading

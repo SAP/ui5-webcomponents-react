@@ -5139,17 +5139,17 @@ exports[`AnalyticalTable expose table instance 1`] = `
           class="AnalyticalTable-tableHeaderRow"
           data-component-name="AnalyticalTableHeaderRow"
           role="row"
-          style="width: 450px;"
+          style="width: 1200px;"
         >
           <div
             class="Resizer-resizer"
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 150px; transform: translateX(-50%);"
+            style="left: 400px; transform: translateX(-50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 150px; left: 0px; transform: translateX(0px);"
+            style="position: absolute; top: 0px; width: 400px; left: 0px; transform: translateX(0px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -5161,7 +5161,7 @@ exports[`AnalyticalTable expose table instance 1`] = `
               draggable="true"
               id="name"
               role="columnheader"
-              style="position: relative; width: 150px; cursor: pointer;"
+              style="position: relative; width: 400px; cursor: pointer;"
               tabindex="-1"
             >
               <div
@@ -5185,10 +5185,10 @@ exports[`AnalyticalTable expose table instance 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 300px; transform: translateX(-50%);"
+            style="left: 800px; transform: translateX(-50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 150px; left: 0px; transform: translateX(150px);"
+            style="position: absolute; top: 0px; width: 400px; left: 0px; transform: translateX(400px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -5200,7 +5200,7 @@ exports[`AnalyticalTable expose table instance 1`] = `
               draggable="true"
               id="friend.name"
               role="columnheader"
-              style="position: relative; width: 150px; cursor: pointer;"
+              style="position: relative; width: 400px; cursor: pointer;"
               tabindex="-1"
             >
               <div
@@ -5224,10 +5224,10 @@ exports[`AnalyticalTable expose table instance 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 447px; transform: translateX(-50%);"
+            style="left: 1197px; transform: translateX(-50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 150px; left: 0px; transform: translateX(300px);"
+            style="position: absolute; top: 0px; width: 400px; left: 0px; transform: translateX(800px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -5239,7 +5239,7 @@ exports[`AnalyticalTable expose table instance 1`] = `
               draggable="true"
               id="friend.age"
               role="columnheader"
-              style="position: relative; width: 150px; cursor: pointer;"
+              style="position: relative; width: 400px; cursor: pointer;"
               tabindex="-1"
             >
               <div
@@ -5263,10 +5263,10 @@ exports[`AnalyticalTable expose table instance 1`] = `
         <div
           class="AnalyticalTable-tbody"
           data-component-name="AnalyticalTableBody"
-          style="position: relative; overflow-y: auto; height: 220px; width: 450px;"
+          style="position: relative; overflow-y: auto; height: 220px; width: 1200px;"
         >
           <div
-            style="position: relative; height: 220px; width: 450px;"
+            style="position: relative; height: 220px; width: 1200px;"
           >
             <div
               aria-rowindex="0"
@@ -5282,7 +5282,7 @@ exports[`AnalyticalTable expose table instance 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                style="width: 400px; align-items: center; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -5300,7 +5300,7 @@ exports[`AnalyticalTable expose table instance 1`] = `
                 data-visible-column-index="1"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(150px); left: 0px;"
+                style="width: 400px; align-items: center; position: absolute; top: 0px; transform: translateX(400px); left: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -5318,7 +5318,7 @@ exports[`AnalyticalTable expose table instance 1`] = `
                 data-visible-column-index="2"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(300px); left: 0px;"
+                style="width: 400px; align-items: center; position: absolute; top: 0px; transform: translateX(800px); left: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -5343,7 +5343,7 @@ exports[`AnalyticalTable expose table instance 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                style="width: 400px; align-items: center; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -5361,7 +5361,7 @@ exports[`AnalyticalTable expose table instance 1`] = `
                 data-visible-column-index="1"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(150px); left: 0px;"
+                style="width: 400px; align-items: center; position: absolute; top: 0px; transform: translateX(400px); left: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -5379,7 +5379,7 @@ exports[`AnalyticalTable expose table instance 1`] = `
                 data-visible-column-index="2"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(300px); left: 0px;"
+                style="width: 400px; align-items: center; position: absolute; top: 0px; transform: translateX(800px); left: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -5400,21 +5400,21 @@ exports[`AnalyticalTable expose table instance 1`] = `
                 aria-colindex="1"
                 class="AnalyticalTable-tableCell"
                 role="cell"
-                style="width: 150px; align-items: center;"
+                style="width: 400px; align-items: center;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="2"
                 class="AnalyticalTable-tableCell"
                 role="cell"
-                style="width: 150px; align-items: center;"
+                style="width: 400px; align-items: center;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="3"
                 class="AnalyticalTable-tableCell"
                 role="cell"
-                style="width: 150px; align-items: center;"
+                style="width: 400px; align-items: center;"
                 tabindex="-1"
               />
             </div>
@@ -5428,21 +5428,21 @@ exports[`AnalyticalTable expose table instance 1`] = `
                 aria-colindex="1"
                 class="AnalyticalTable-tableCell"
                 role="cell"
-                style="width: 150px; align-items: center;"
+                style="width: 400px; align-items: center;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="2"
                 class="AnalyticalTable-tableCell"
                 role="cell"
-                style="width: 150px; align-items: center;"
+                style="width: 400px; align-items: center;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="3"
                 class="AnalyticalTable-tableCell"
                 role="cell"
-                style="width: 150px; align-items: center;"
+                style="width: 400px; align-items: center;"
                 tabindex="-1"
               />
             </div>
@@ -5456,21 +5456,21 @@ exports[`AnalyticalTable expose table instance 1`] = `
                 aria-colindex="1"
                 class="AnalyticalTable-tableCell"
                 role="cell"
-                style="width: 150px; align-items: center;"
+                style="width: 400px; align-items: center;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="2"
                 class="AnalyticalTable-tableCell"
                 role="cell"
-                style="width: 150px; align-items: center;"
+                style="width: 400px; align-items: center;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="3"
                 class="AnalyticalTable-tableCell"
                 role="cell"
-                style="width: 150px; align-items: center;"
+                style="width: 400px; align-items: center;"
                 tabindex="-1"
               />
             </div>

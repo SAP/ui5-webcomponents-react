@@ -1058,11 +1058,23 @@ describe('AnalyticalTable', () => {
 
   test('expose table instance', () => {
     const ref = createRef();
-    const { asFragment } = render(<AnalyticalTable data={data} columns={columns} tableInstance={ref} />);
-
+    const { asFragment, queryAllByText, getByText } = render(
+      <AnalyticalTable
+        data={data}
+        columns={columns}
+        tableInstance={ref}
+        reactTableOptions={{
+          autoResetHiddenColumns: false
+        }}
+      />
+    );
+    //set internal clientWidth
+    ref.current.dispatch({ type: 'TABLE_RESIZE', payload: { tableClientWidth: 1200 } });
+    const nameHeaderCell = getByText('Name').parentElement.parentElement;
+    expect(nameHeaderCell).toHaveStyle({ width: '300px' });
     ref.current.toggleHideColumn('age', true);
-
-    expect(screen.queryAllByText('Age')).toHaveLength(0);
+    expect(nameHeaderCell).toHaveStyle({ width: '400px' });
+    expect(queryAllByText('Age')).toHaveLength(0);
 
     expect(asFragment()).toMatchSnapshot();
   });
