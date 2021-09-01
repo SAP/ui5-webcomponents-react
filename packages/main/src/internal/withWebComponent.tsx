@@ -93,6 +93,7 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
         eventProperties.forEach((eventName) => {
           const eventHandler = rest[createEventPropName(eventName)] as EventHandler;
           if (typeof eventHandler === 'function') {
+            //todo remove when UI5 Web Components have fixed this
             if (tagName === 'ui5-card-header' && eventName === 'click') {
               eventRegistry.current[eventName] = debounce(eventHandler, 100);
             } else {
