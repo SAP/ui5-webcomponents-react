@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.7](https://github.com/SAP/ui5-webcomponents-react/compare/v0.18.6...v0.18.7) (2021-09-01)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** programatically setting hidden columns triggers table resize ([#2066](https://github.com/SAP/ui5-webcomponents-react/issues/2066)) ([df5d1cd](https://github.com/SAP/ui5-webcomponents-react/commit/df5d1cd1a4e9701b2cd65b60e6190d4bc8432aa4))
+* **AnalyticalTable:** remove filter without showing `undefined` ([#2074](https://github.com/SAP/ui5-webcomponents-react/issues/2074)) ([47ebd40](https://github.com/SAP/ui5-webcomponents-react/commit/47ebd40fe26becfdda29b00354ee6cee8eb7f96a))
+* **CardHeader:** fire `onClick` only once ([#2075](https://github.com/SAP/ui5-webcomponents-react/issues/2075)) ([b07dc41](https://github.com/SAP/ui5-webcomponents-react/commit/b07dc413efab53cdf2d587c57554af39a36c5710))
+
+
+
+
+
 ## [0.18.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.18.5...v0.18.6) (2021-08-31)
 
 
