@@ -1,4 +1,5 @@
 import { getEffectiveScopingSuffixForTag } from '@ui5/webcomponents-base/dist/CustomElementsScope';
+import { debounce } from '@ui5/webcomponents-react-base/dist/Utils';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
 import React, {
   Children,
@@ -92,7 +93,11 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
         eventProperties.forEach((eventName) => {
           const eventHandler = rest[createEventPropName(eventName)] as EventHandler;
           if (typeof eventHandler === 'function') {
-            eventRegistry.current[eventName] = eventHandler;
+            if (tagName === 'ui5-card-header' && eventName === 'click') {
+              eventRegistry.current[eventName] = debounce(eventHandler, 100);
+            } else {
+              eventRegistry.current[eventName] = eventHandler;
+            }
             ref.current.addEventListener(eventName, eventRegistry.current[eventName]);
           }
         });
