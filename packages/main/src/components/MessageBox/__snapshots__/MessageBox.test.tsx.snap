@@ -36,7 +36,7 @@ exports[`MessageBox Confirm - Cancel 1`] = `
       <ui5-button
         data-action="OK"
         design="Emphasized"
-        id="ok"
+        id="ok-910764772145"
         ui5-button=""
       >
         OK
@@ -44,7 +44,7 @@ exports[`MessageBox Confirm - Cancel 1`] = `
       <ui5-button
         data-action="Cancel"
         design="Transparent"
-        id="cancel"
+        id="cancel-684825424822"
         ui5-button=""
       >
         Cancel
@@ -90,7 +90,7 @@ exports[`MessageBox Confirm 1`] = `
       <ui5-button
         data-action="OK"
         design="Emphasized"
-        id="ok"
+        id="ok-6006377069825"
         ui5-button=""
       >
         OK
@@ -98,7 +98,7 @@ exports[`MessageBox Confirm 1`] = `
       <ui5-button
         data-action="Cancel"
         design="Transparent"
-        id="cancel"
+        id="cancel-869492236701"
         ui5-button=""
       >
         Cancel
@@ -142,7 +142,7 @@ exports[`MessageBox Custom Action Text 1`] = `
       <ui5-button
         data-action="OK"
         design="Emphasized"
-        id="ok"
+        id="ok-979635588192"
         ui5-button=""
       >
         OK
@@ -150,7 +150,7 @@ exports[`MessageBox Custom Action Text 1`] = `
       <ui5-button
         data-action="My Custom Action"
         design="Transparent"
-        id="my custom action"
+        id="my custom action-289884830741"
         ui5-button=""
       >
         My Custom Action
@@ -190,7 +190,7 @@ exports[`MessageBox Don't crash on unknown type 1`] = `
       <ui5-button
         data-action="OK"
         design="Emphasized"
-        id="ok"
+        id="ok-924621347729"
         ui5-button=""
       >
         OK
@@ -236,7 +236,7 @@ exports[`MessageBox Error 1`] = `
       <ui5-button
         data-action="Close"
         design="Transparent"
-        id="close"
+        id="close-656041307278"
         ui5-button=""
       >
         Close
@@ -282,7 +282,7 @@ exports[`MessageBox Highlight 1`] = `
       <ui5-button
         data-action="OK"
         design="Emphasized"
-        id="ok"
+        id="ok-046727006951"
         ui5-button=""
       >
         OK
@@ -328,7 +328,7 @@ exports[`MessageBox Information 1`] = `
       <ui5-button
         data-action="OK"
         design="Emphasized"
-        id="ok"
+        id="ok-1683613561145"
         ui5-button=""
       >
         OK
@@ -374,7 +374,7 @@ exports[`MessageBox No Title 1`] = `
       <ui5-button
         data-action="OK"
         design="Emphasized"
-        id="ok"
+        id="ok-110841433183"
         ui5-button=""
       >
         OK
@@ -382,7 +382,7 @@ exports[`MessageBox No Title 1`] = `
       <ui5-button
         data-action="Cancel"
         design="Transparent"
-        id="cancel"
+        id="cancel-560611535459"
         ui5-button=""
       >
         Cancel
@@ -426,7 +426,7 @@ exports[`MessageBox Not open 1`] = `
       <ui5-button
         data-action="OK"
         design="Emphasized"
-        id="ok"
+        id="ok-944441346252"
         ui5-button=""
       >
         OK
@@ -472,7 +472,7 @@ exports[`MessageBox Show 1`] = `
       <ui5-button
         data-action="Yes"
         design="Transparent"
-        id="yes"
+        id="yes-803029758159"
         ui5-button=""
       >
         Yes
@@ -480,7 +480,7 @@ exports[`MessageBox Show 1`] = `
       <ui5-button
         data-action="No"
         design="Transparent"
-        id="no"
+        id="no-846898425632"
         ui5-button=""
       >
         No
@@ -526,7 +526,7 @@ exports[`MessageBox Success 1`] = `
       <ui5-button
         data-action="OK"
         design="Emphasized"
-        id="ok"
+        id="ok-907931166879"
         ui5-button=""
       >
         OK
@@ -572,7 +572,7 @@ exports[`MessageBox Success w/ custom title 1`] = `
       <ui5-button
         data-action="OK"
         design="Emphasized"
-        id="ok"
+        id="ok-026098369137"
         ui5-button=""
       >
         OK
@@ -618,7 +618,7 @@ exports[`MessageBox Warning 1`] = `
       <ui5-button
         data-action="OK"
         design="Emphasized"
-        id="ok"
+        id="ok-596537592332"
         ui5-button=""
       >
         OK
