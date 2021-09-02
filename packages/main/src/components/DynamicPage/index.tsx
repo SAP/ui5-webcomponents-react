@@ -126,12 +126,17 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
     { noHeader: false }
   );
   const [isOverflowing, setIsOverflowing] = useState(false);
+
   useEffect(() => {
     const observer = new ResizeObserver(([objPage]) => {
       const { clientHeight, scrollHeight } = objPage.target;
       setIsOverflowing(scrollHeight > clientHeight - 60 /* footer height + margin*/);
     });
     observer.observe(dynamicPageRef.current);
+
+    return () => {
+      observer.disconnect();
+    };
   }, []);
 
   if (headerState === HEADER_STATES.HIDDEN || headerState === HEADER_STATES.HIDDEN_PINNED) {
@@ -278,10 +283,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
       {footer && (
         <footer
           className={classes.footer}
-          style={{
-            opacity: '0.2',
-            position: isOverflowing ? 'sticky' : 'absolute'
-          }}
+          style={{ position: isOverflowing ? 'sticky' : 'absolute' }}
           data-component-name="DynamicPageFooter"
         >
           {footer}
