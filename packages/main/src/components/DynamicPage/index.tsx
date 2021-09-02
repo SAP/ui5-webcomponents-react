@@ -1,11 +1,11 @@
-import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
-import { useConsolidatedRef, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
-import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
-import { GlobalStyleClasses } from '@ui5/webcomponents-react/dist/GlobalStyleClasses';
-import { PageBackgroundDesign } from '@ui5/webcomponents-react/dist/PageBackgroundDesign';
+import { isIE } from '@ui5/webcomponents-react-base/lib/Device';
+import { useConsolidatedRef, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/hooks';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
+import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
+import { GlobalStyleClasses } from '@ui5/webcomponents-react/lib/GlobalStyleClasses';
+import { PageBackgroundDesign } from '@ui5/webcomponents-react/lib/PageBackgroundDesign';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import React, {
   cloneElement,
