@@ -62,8 +62,10 @@ export const styles = {
     background: 'transparent'
   },
   footer: {
-    position: 'sticky',
+    // position: 'absolute',
     bottom: '0.5rem',
-    margin: '0 0.5rem'
+    margin: '0 0.5rem',
+    left: 0,
+    right: 0
   }
 };

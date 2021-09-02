@@ -15,7 +15,6 @@ import React, {
   ReactNodeArray,
   Ref,
   RefObject,
-  useCallback,
   useEffect,
   useRef,
   useState
@@ -126,6 +125,14 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
     anchorBarRef,
     { noHeader: false }
   );
+  const [isOverflowing, setIsOverflowing] = useState(false);
+  useEffect(() => {
+    const observer = new ResizeObserver(([objPage]) => {
+      const { clientHeight, scrollHeight } = objPage.target;
+      setIsOverflowing(scrollHeight > clientHeight - 60 /* footer height + margin*/);
+    });
+    observer.observe(dynamicPageRef.current);
+  }, []);
 
   if (headerState === HEADER_STATES.HIDDEN || headerState === HEADER_STATES.HIDDEN_PINNED) {
     dynamicPageClasses.put(classes.headerCollapsed);
@@ -145,45 +152,33 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
     };
   }, [dynamicPageRef, headerState]);
 
-  const onToggleHeaderContentVisibility = useCallback(
-    (e) => {
-      const shouldHideHeader = !e.detail.visible;
-      setHeaderState((oldState) => {
-        if (oldState === HEADER_STATES.VISIBLE_PINNED || oldState === HEADER_STATES.HIDDEN_PINNED) {
-          return shouldHideHeader ? HEADER_STATES.HIDDEN_PINNED : HEADER_STATES.VISIBLE_PINNED;
-        }
-        return shouldHideHeader ? HEADER_STATES.HIDDEN : HEADER_STATES.VISIBLE;
-      });
-    },
-    [setHeaderState]
-  );
-
-  const onHoverToggleButton = useCallback(
-    (e) => {
-      // TODO background color should be sapObjectHeader_Hover_Background (same color as sapTile_Active_Background)
-      topHeaderRef.current.style.backgroundColor =
-        e?.type === 'mouseover' ? ThemingParameters.sapTile_Active_Background : null;
-    },
-    [topHeaderRef]
-  );
-
-  const onToggleHeaderContent = useCallback(
-    (e) => {
-      onToggleHeaderContentVisibility(enrichEventWithDetails(e, { visible: !headerContentHeight }));
-    },
-    [headerContentHeight]
-  );
-
-  const handleHeaderPinnedChange = useCallback(
-    (headerWillPin) => {
-      if (headerWillPin) {
-        setHeaderState(HEADER_STATES.VISIBLE_PINNED);
-      } else {
-        setHeaderState(HEADER_STATES.VISIBLE);
+  const onToggleHeaderContentVisibility = (e) => {
+    const shouldHideHeader = !e.detail.visible;
+    setHeaderState((oldState) => {
+      if (oldState === HEADER_STATES.VISIBLE_PINNED || oldState === HEADER_STATES.HIDDEN_PINNED) {
+        return shouldHideHeader ? HEADER_STATES.HIDDEN_PINNED : HEADER_STATES.VISIBLE_PINNED;
       }
-    },
-    [setHeaderState]
-  );
+      return shouldHideHeader ? HEADER_STATES.HIDDEN : HEADER_STATES.VISIBLE;
+    });
+  };
+
+  const onHoverToggleButton = (e) => {
+    // TODO background color should be sapObjectHeader_Hover_Background (same color as sapTile_Active_Background)
+    topHeaderRef.current.style.backgroundColor =
+      e?.type === 'mouseover' ? ThemingParameters.sapTile_Active_Background : null;
+  };
+
+  const onToggleHeaderContent = (e) => {
+    onToggleHeaderContentVisibility(enrichEventWithDetails(e, { visible: !headerContentHeight }));
+  };
+
+  const handleHeaderPinnedChange = (headerWillPin) => {
+    if (headerWillPin) {
+      setHeaderState(HEADER_STATES.VISIBLE_PINNED);
+    } else {
+      setHeaderState(HEADER_STATES.VISIBLE);
+    }
+  };
 
   useEffect(() => {
     if (alwaysShowContentHeader) {
@@ -199,17 +194,14 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
   }
   const responsivePaddingClass = useResponsiveContentPadding(dynamicPageRef.current);
 
-  const onDynamicPageScroll = useCallback(
-    (e) => {
-      if (typeof props?.onScroll === 'function') {
-        props.onScroll(e);
-      }
-      if (headerState === HEADER_STATES.HIDDEN_PINNED && e.target.scrollTop === 0) {
-        setHeaderState(HEADER_STATES.VISIBLE_PINNED);
-      }
-    },
-    [props?.onScroll, headerState]
-  );
+  const onDynamicPageScroll = (e) => {
+    if (typeof props?.onScroll === 'function') {
+      props.onScroll(e);
+    }
+    if (headerState === HEADER_STATES.HIDDEN_PINNED && e.target.scrollTop === 0) {
+      setHeaderState(HEADER_STATES.VISIBLE_PINNED);
+    }
+  };
 
   return (
     <div
@@ -284,7 +276,14 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
         {children}
       </div>
       {footer && (
-        <footer className={classes.footer} data-component-name="DynamicPageFooter">
+        <footer
+          className={classes.footer}
+          style={{
+            opacity: '0.2',
+            position: isOverflowing ? 'sticky' : 'absolute'
+          }}
+          data-component-name="DynamicPageFooter"
+        >
           {footer}
         </footer>
       )}
