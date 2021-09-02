@@ -7,7 +7,7 @@ import { TableSelectionMode } from '@ui5/webcomponents-react/dist/TableSelection
 import { TableVisibleRowCountMode } from '@ui5/webcomponents-react/dist/TableVisibleRowCountMode';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
-import React, { useRef } from 'react';
+import React, { createRef, useRef } from 'react';
 
 const columns = [
   {
@@ -1054,6 +1054,29 @@ describe('AnalyticalTable', () => {
     // test if "select-all" checkbox is not rendered
     const headers = getAllByRole('columnheader', { hidden: true });
     expect(headers[0].getElementsByTagName('ui5-checkbox')[0]).toBeFalsy();
+
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  test('expose table instance', () => {
+    const ref = createRef();
+    const { asFragment, queryAllByText, getByText } = render(
+      <AnalyticalTable
+        data={data}
+        columns={columns}
+        tableInstance={ref}
+        reactTableOptions={{
+          autoResetHiddenColumns: false
+        }}
+      />
+    );
+    //set internal clientWidth
+    ref.current.dispatch({ type: 'TABLE_RESIZE', payload: { tableClientWidth: 1200 } });
+    const nameHeaderCell = getByText('Name').parentElement.parentElement;
+    expect(nameHeaderCell).toHaveStyle({ width: '300px' });
+    ref.current.toggleHideColumn('age', true);
+    expect(nameHeaderCell).toHaveStyle({ width: '400px' });
+    expect(queryAllByText('Age')).toHaveLength(0);
 
     expect(asFragment()).toMatchSnapshot();
   });
