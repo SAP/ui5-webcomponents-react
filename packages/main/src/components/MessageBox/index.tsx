@@ -44,7 +44,8 @@ import React, {
   Ref,
   useCallback,
   useEffect,
-  useMemo
+  useMemo,
+  useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
 import { stopPropagation } from '../../internal/stopPropagation';
@@ -265,6 +266,8 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDom
   const passThroughProps = usePassThroughHtmlProps(props, ['onClose']);
 
   const messageBoxClassNames = StyleClassHelper.of(classes.messageBox).putIfPresent(className).className;
+  const internalActions = getActions();
+  const [uniqueIds, _] = useState(internalActions.map((_) => `${performance.now() + Math.random()}`.split('.')[1]));
 
   // check deprecations
   useEffect(() => {
@@ -341,11 +344,11 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDom
       </header>
       <Text className={classes.content}>{children}</Text>
       <footer slot="footer" className={classes.footer}>
-        {getActions().map((action, index) => {
+        {internalActions.map((action, index) => {
           const lowerCaseAction = action?.toLowerCase();
           return (
             <Button
-              id={lowerCaseAction}
+              id={`${lowerCaseAction}-${uniqueIds[index]}`}
               key={`${action}-${index}`}
               design={
                 emphasizedAction?.toLowerCase() === lowerCaseAction ? ButtonDesign.Emphasized : ButtonDesign.Transparent
