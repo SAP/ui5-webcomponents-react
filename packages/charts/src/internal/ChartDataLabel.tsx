@@ -26,10 +26,10 @@ export const ChartDataLabel: FC<CustomDataLabelProps> = (props: CustomDataLabelP
 
   const formattedLabel = config.formatter(props.value ?? props.children);
   if (chartType === 'bar' || chartType === 'column') {
-    if (viewBox.width < getTextWidth(formattedLabel)) {
+    if (Math.abs(viewBox.width) < getTextWidth(formattedLabel)) {
       return null;
     }
-    if (viewBox.height < 12) {
+    if (Math.abs(viewBox.height) < 12) {
       return null;
     }
   }
