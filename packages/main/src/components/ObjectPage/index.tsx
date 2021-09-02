@@ -544,7 +544,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
           break;
         }
       }
-      const currentSectionId = extractSectionIdFromHtmlId(currentSection.id);
+      const currentSectionId = extractSectionIdFromHtmlId(currentSection?.id);
       if (currentSectionId !== internalSelectedSectionId) {
         setInternalSelectedSectionId(currentSectionId);
         debouncedOnSectionChange(
