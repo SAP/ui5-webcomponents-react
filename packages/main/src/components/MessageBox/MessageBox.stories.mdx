@@ -10,10 +10,14 @@ import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 <Meta
   title="Modals & Popovers / MessageBox"
   component={MessageBox}
-  argTypes={{ ref: { type: null }, ...createSelectArgTypes({ type: MessageBoxTypes }) }}
+  argTypes={{
+    ref: { type: null },
+    ...createSelectArgTypes({ type: MessageBoxTypes, emphasizedAction: MessageBoxTypes })
+  }}
   args={{
     open: false,
     type: MessageBoxTypes.CONFIRM,
+    emphasizedAction: MessageBoxTypes.OK,
     children: 'Press "Escape" to close the MessageBox.'
   }}
 />

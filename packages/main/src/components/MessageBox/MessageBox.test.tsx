@@ -7,6 +7,12 @@ import { MessageBoxActions } from '@ui5/webcomponents-react/lib/MessageBoxAction
 import { MessageBoxTypes } from '@ui5/webcomponents-react/lib/MessageBoxTypes';
 import React from 'react';
 
+const mockActionIds = (element) => {
+  element.querySelectorAll('ui5-button').forEach((item, index) => {
+    item.id = `${index}`;
+  });
+};
+
 describe('MessageBox', () => {
   test.each([
     [MessageBoxTypes.CONFIRM, MessageBoxActions.OK],
@@ -17,12 +23,12 @@ describe('MessageBox', () => {
     [MessageBoxTypes.HIGHLIGHT, MessageBoxActions.OK]
   ])('%s', (type, buttonText) => {
     const callback = jest.fn();
-    const { asFragment, unmount } = render(
+    const { asFragment, unmount, container } = render(
       <MessageBox type={type} open onClose={callback}>
         My Message Box Content
       </MessageBox>
     );
-
+    mockActionIds(container);
     expect(asFragment()).toMatchSnapshot();
 
     fireEvent.click(screen.getByText(buttonText));
@@ -33,11 +39,12 @@ describe('MessageBox', () => {
 
   test('Confirm - Cancel', () => {
     const callback = jest.fn();
-    const { asFragment, unmount } = render(
+    const { asFragment, unmount, container } = render(
       <MessageBox type={MessageBoxTypes.CONFIRM} open onClose={callback}>
         Confirm
       </MessageBox>
     );
+    mockActionIds(container);
     expect(asFragment()).toMatchSnapshot();
 
     fireEvent.click(screen.getByText('Cancel'));
@@ -48,11 +55,12 @@ describe('MessageBox', () => {
 
   test('Show', () => {
     const callback = jest.fn();
-    const { asFragment, unmount } = render(
+    const { asFragment, unmount, container } = render(
       <MessageBox open onClose={callback} title="Custom" actions={[MessageBoxActions.YES, MessageBoxActions.NO]}>
         Custom
       </MessageBox>
     );
+    mockActionIds(container);
     expect(asFragment()).toMatchSnapshot();
 
     fireEvent.click(screen.getByText('Yes'));
@@ -66,7 +74,7 @@ describe('MessageBox', () => {
 
   test('Success w/ custom title', () => {
     const callback = jest.fn();
-    const { asFragment, unmount } = render(
+    const { asFragment, unmount, container } = render(
       <MessageBox
         type={MessageBoxTypes.SUCCESS}
         open
@@ -77,6 +85,7 @@ describe('MessageBox', () => {
         Custom Success
       </MessageBox>
     );
+    mockActionIds(container);
     expect(asFragment()).toMatchSnapshot();
 
     fireEvent.click(screen.getByText('OK'));
@@ -86,23 +95,24 @@ describe('MessageBox', () => {
 
   test('Not open', () => {
     const callback = jest.fn();
-    const { asFragment, unmount } = render(
+    const { asFragment, unmount, container } = render(
       <MessageBox type={MessageBoxTypes.SUCCESS} open={false} onClose={callback} title="Custom Success">
         Custom Success
       </MessageBox>
     );
+    mockActionIds(container);
     expect(asFragment()).toMatchSnapshot();
     unmount();
   });
 
   test('No Title', () => {
     const callback = jest.fn();
-    const { asFragment, unmount } = render(
+    const { asFragment, unmount, container } = render(
       <MessageBox open onClose={callback}>
         No Title
       </MessageBox>
     );
-
+    mockActionIds(container);
     expect(asFragment()).toMatchSnapshot();
 
     expect(screen.getByText('Confirmation')).toBeInTheDocument();
@@ -111,12 +121,12 @@ describe('MessageBox', () => {
 
   test('Custom Action Text', async () => {
     const onClose = jest.fn();
-    const { asFragment, unmount } = render(
+    const { asFragment, unmount, container } = render(
       <MessageBox type={MessageBoxTypes.CONFIRM} actions={[MessageBoxActions.OK, 'My Custom Action']} onClose={onClose}>
         My Message Box Content
       </MessageBox>
     );
-
+    mockActionIds(container);
     expect(asFragment()).toMatchSnapshot();
 
     const textOK = screen.getByText(MessageBoxActions.OK);
@@ -134,14 +144,50 @@ describe('MessageBox', () => {
 
   test("Don't crash on unknown type", () => {
     const callback = jest.fn();
-    const { asFragment, unmount } = render(
+    const { asFragment, unmount, container } = render(
       <MessageBox open onClose={callback} type="FOO_BAR">
         Unknown Type!
       </MessageBox>
     );
-
+    mockActionIds(container);
     expect(asFragment()).toMatchSnapshot();
     unmount();
+  });
+
+  test('Unique ids for actions', () => {
+    jest.spyOn(console, 'error').mockImplementation(() => {});
+    jest.spyOn(console, 'warn').mockImplementation(() => {});
+    const callback = jest.fn();
+    const { getAllByText } = render(
+      <>
+        {new Array(200).fill('howdy').map((_) => (
+          <MessageBox onClose={callback} open type={MessageBoxTypes.CONFIRM}>
+            Content
+          </MessageBox>
+        ))}
+      </>
+    );
+    const okBtns = getAllByText('OK');
+    const okBtnsIds = okBtns.map((btn) => btn.id);
+    expect(new Set(okBtnsIds).size).toEqual(okBtnsIds.length);
+    const cancelBtns = getAllByText('Cancel');
+    const cancelBtnsIds = cancelBtns.map((btn) => btn.id);
+    expect(new Set(cancelBtnsIds).size).toEqual(cancelBtnsIds.length);
+  });
+
+  test('initial focus', () => {
+    jest.spyOn(console, 'warn').mockImplementation(() => {});
+    jest.spyOn(console, 'error').mockImplementation(() => {});
+    const callback = jest.fn();
+    const { getByText, getByTestId } = render(
+      <MessageBox onClose={callback} open type={MessageBoxTypes.CONFIRM} initialFocus={MessageBoxActions.Cancel} data-testid="Dialog">
+        Content
+      </MessageBox>
+    );
+    const dialogInitialFocus = getByTestId('Dialog').getAttribute('initial-focus');
+    const cancelBtnId = getByText('Cancel').getAttribute('id');
+
+    expect(dialogInitialFocus).toEqual(cancelBtnId);
   });
 
   createPassThroughPropsTest(MessageBox);
