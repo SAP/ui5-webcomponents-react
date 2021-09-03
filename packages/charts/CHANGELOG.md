@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.131.18](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.17...v0.131.18) (2021-09-03)
+
+
+### Bug Fixes
+
+* **charts:** show data labels with negative values ([#2079](https://github.com/SAP/ui5-webcomponents-react/issues/2079)) ([0245fd6](https://github.com/SAP/ui5-webcomponents-react/commit/0245fd6400901bd302b54d59a75420048f9b66c3))
+
+
+
+
+
 ## [0.131.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.4...v0.131.5) (2021-05-19)
 
 

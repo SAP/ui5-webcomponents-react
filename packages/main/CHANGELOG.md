@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.131.18](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.17...v0.131.18) (2021-09-03)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** programatically setting hidden columns triggers table resize ([#2066](https://github.com/SAP/ui5-webcomponents-react/issues/2066)) ([f7b3483](https://github.com/SAP/ui5-webcomponents-react/commit/f7b348362df7238058c7e1f410da6a6eefadf1fb))
+* **AnalyticalTable:** remove filter without showing `undefined` ([#2074](https://github.com/SAP/ui5-webcomponents-react/issues/2074)) ([f1d9e83](https://github.com/SAP/ui5-webcomponents-react/commit/f1d9e83601f54608f2c00150e039323cc76cf4bd))
+
+
+### Features
+
+* allow disabling sapScrollBar ([#2078](https://github.com/SAP/ui5-webcomponents-react/issues/2078)) ([9a19f79](https://github.com/SAP/ui5-webcomponents-react/commit/9a19f7971d4fbf75869b83ffd4165dafefcaf75e))
+* **ActionSheet/DynamicPage/ObjectPage:** add `a11yConfig` prop to customize a11y properties ([57af867](https://github.com/SAP/ui5-webcomponents-react/commit/57af8675f1dce04ae39b852b1d608f85efa1f51b))
+* **AnalyticalTable:** expose table instance via `tableInstance` prop ([0444437](https://github.com/SAP/ui5-webcomponents-react/commit/0444437c4e7c574930d9b28716c49acb9325d016))
+
+
+
+
+
 ## [0.131.17](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.16...v0.131.17) (2021-08-30)
 
 

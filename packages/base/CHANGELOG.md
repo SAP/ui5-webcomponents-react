@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.131.18](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.17...v0.131.18) (2021-09-03)
+
+
+### Features
+
+* **ActionSheet/DynamicPage/ObjectPage:** add `a11yConfig` prop to customize a11y properties ([57af867](https://github.com/SAP/ui5-webcomponents-react/commit/57af8675f1dce04ae39b852b1d608f85efa1f51b))
+* **AnalyticalTable:** expose table instance via `tableInstance` prop ([0444437](https://github.com/SAP/ui5-webcomponents-react/commit/0444437c4e7c574930d9b28716c49acb9325d016))
+
+
+
+
+
 ## [0.131.17](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.16...v0.131.17) (2021-08-30)
 
 
