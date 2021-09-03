@@ -4,7 +4,12 @@ import '@ui5/webcomponents-icons/dist/message-information';
 import '@ui5/webcomponents-icons/dist/message-success';
 import '@ui5/webcomponents-icons/dist/message-warning';
 import '@ui5/webcomponents-icons/dist/question-mark';
-import { useConsolidatedRef, useI18nBundle, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/hooks';
+import {
+  useConsolidatedRef,
+  useI18nBundle,
+  useIsomorphicLayoutEffect,
+  usePassThroughHtmlProps
+} from '@ui5/webcomponents-react-base/lib/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import {
@@ -44,7 +49,8 @@ import React, {
   Ref,
   useCallback,
   useEffect,
-  useMemo
+  useMemo,
+  useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
 import { stopPropagation } from '../../internal/stopPropagation';
@@ -90,7 +96,7 @@ export interface MessageBoxPropTypes extends CommonProps {
   /**
    * Callback to be executed when the `MessageBox` is closed (either by pressing on one of the `actions` or by pressing the `ESC` key). `event.detail.action` contains the pressed action button.
    */
-  onClose: (event: CustomEvent<{ action: MessageBoxActions }>) => void;
+  onClose?: (event: CustomEvent<{ action: MessageBoxActions }>) => void;
   /**
    * Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. This event does not bubble.
    */
@@ -102,6 +108,9 @@ export interface MessageBoxPropTypes extends CommonProps {
 }
 
 const useStyles = createUseStyles(styles, { name: 'MessageBox' });
+
+const createUniqueIds = (internalActions) =>
+  internalActions.map((_) => `${performance.now() + Math.random()}`.split('.')[1]);
 
 /**
  * The `MessageBox` component provides easier methods to create a `Dialog`, such as standard alerts, confirmation dialogs, or arbitrary message dialogs.
@@ -121,9 +130,7 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
     actions,
     emphasizedAction,
     onClose,
-    initialFocus,
-    onBeforeOpen,
-    onAfterOpen
+    initialFocus
   } = props;
   const dialogRef = useConsolidatedRef<Ui5DialogDomRef>(ref);
 
@@ -215,23 +222,35 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
         dialogRef.current.close?.();
       }
     }
-  }, [dialogRef, open]);
+  }, [dialogRef.current, open]);
 
   const passThroughProps = usePassThroughHtmlProps(props, ['onClose']);
 
   const messageBoxClassNames = StyleClassHelper.of(classes.messageBox).putIfPresent(className).className;
+  const internalActions = getActions();
 
+  const [uniqueIds, setUniqueIds] = useState(() => createUniqueIds(internalActions));
+  useIsomorphicLayoutEffect(() => {
+    setUniqueIds(createUniqueIds(internalActions));
+  }, [internalActions.length]);
+
+  const getInitialFocus = () => {
+    // todo: refactor to `indexOf` when deprecation is removed
+    const indexOfInitialFocus = internalActions.findIndex((item) => item.toLowerCase() === initialFocus?.toLowerCase());
+    if (~indexOfInitialFocus) {
+      return `${internalActions[indexOfInitialFocus].toLowerCase()}-${uniqueIds[indexOfInitialFocus]}`;
+    }
+    return initialFocus;
+  };
   return (
     <Dialog
       slot={slot}
       ref={dialogRef}
       style={style}
-      tooltip={tooltip}
+      title={tooltip ?? props.title}
       className={messageBoxClassNames}
-      onAfterOpen={onAfterOpen}
-      onBeforeOpen={onBeforeOpen}
       onAfterClose={open ? handleOnClose : stopPropagation}
-      initialFocus={initialFocus}
+      initialFocus={getInitialFocus()}
       {...passThroughProps}
     >
       <header slot="header" className={classes.header} data-type={type}>
@@ -240,12 +259,20 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
       </header>
       <Text className={classes.content}>{children}</Text>
       <footer slot="footer" className={classes.footer}>
-        {getActions().map((action, index) => {
+        {internalActions.map((action, index) => {
+          const lowerCaseAction = action?.toLowerCase();
+          console.log(
+            lowerCaseAction,
+            emphasizedAction?.toLowerCase(),
+            lowerCaseAction === emphasizedAction?.toLowerCase()
+          );
           return (
             <Button
-              id={action}
+              id={`${lowerCaseAction}-${uniqueIds[index]}`}
               key={`${action}-${index}`}
-              design={emphasizedAction === action ? ButtonDesign.Emphasized : ButtonDesign.Transparent}
+              design={
+                emphasizedAction?.toLowerCase() === lowerCaseAction ? ButtonDesign.Emphasized : ButtonDesign.Transparent
+              }
               onClick={handleOnClose}
               data-action={action}
             >
@@ -262,8 +289,6 @@ MessageBox.displayName = 'MessageBox';
 
 MessageBox.defaultProps = {
   open: false,
-  title: null,
-  icon: null,
   type: MessageBoxTypes.CONFIRM,
   emphasizedAction: MessageBoxActions.OK,
   actions: []
