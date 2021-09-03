@@ -8,19 +8,19 @@ import { CANCEL, VARIANTS } from '@ui5/webcomponents-react/dist/assets/i18n/i18n
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
 import { List } from '@ui5/webcomponents-react/dist/List';
-import { ListItemType } from '@ui5/webcomponents-react/dist/ListItemType';
 import { ListMode } from '@ui5/webcomponents-react/dist/ListMode';
 import { PopoverPlacementType } from '@ui5/webcomponents-react/dist/PopoverPlacementType';
 import { ResponsivePopover } from '@ui5/webcomponents-react/dist/ResponsivePopover';
-import { StandardListItem } from '@ui5/webcomponents-react/dist/StandardListItem';
 import { Title } from '@ui5/webcomponents-react/dist/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
+import { Bar } from '@ui5/webcomponents-react/dist/Bar';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5ResponsivePopoverDomRef } from '@ui5/webcomponents-react/interfaces/Ui5ResponsivePopoverDomRef';
 import React, { forwardRef, Ref, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
 import { stopPropagation } from '../../internal/stopPropagation';
+import { ManageViewsDialog } from './ManageViewsDialog';
 
 export interface VariantItem {
   key: string;
@@ -62,6 +62,71 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
    * Fired after a variant has been selected.
    */
   onSelect?: (event: CustomEvent<{ item: HTMLElement; selectedItem: VariantItem }>) => void;
+  /**
+   * todo
+   */
+  children?: any;
+  /**
+   * todo this is not a prop, if >10 favorite views exist search is rendered (ui5: >8)
+   */
+  showSearchInput?: boolean;
+  /**
+   * todo dirtyStateText
+   */
+  dirtyStateText?: string;
+  /**
+   * Indicates that the 'Favorites' feature is used. Only variants marked as favorites will be displayed in the variant list.
+   * todo necessary? name is confusing --> hook
+   */
+  useFavorites?: boolean;
+  /**
+   * Indicates that set as default is visible in the Save Variant and the Manage Variants dialogs.
+   */
+  showSetAsDefault?: boolean;
+  /**
+   * todo this will most probably only render the respective checkbox with an cb attached
+   * Indicates that the Public checkbox is visible in the Save View and the Manage Views dialogs. Selecting this checkbox allows you to share variants with other users.
+   */
+  showShare?: boolean;
+  /**
+   * todo how is it indicated?
+   * Indicates that end users are allowed to create variants.
+   */
+  variantCreationByUserAllowed?: boolean;
+
+  //custom
+  /**
+   * todo opens the ManageViews dialog
+   */
+  showManage?: boolean;
+  /**
+   * todo
+   */
+  showSaveAs?: boolean;
+
+  // not sure
+  /**
+   * Indicates that the control is in error state. If set to true error message will be displayed whenever the variant is opened.
+   */
+  inErrorState?: boolean;
+  /**
+   * Indicates that a Create Tile is visible in the Create dialog.
+   * todo what is this?
+   */
+  showCreateTile?: boolean;
+  /**
+   * todo see variant item
+   * Indicates that Execute on Selection is visible in the Save Variant and the Manage Variants dialogs.
+   */
+  showApplyAutomatically?: boolean; //ui5 showExecuteOnSelection
+  /**
+   * Defines the author of the standard variant, for example, the name of the own company.
+   */
+  standardItemAuthor?: boolean;
+  /**
+   * Overwrites the default Standard variant title.
+   */
+  standardItemText?: boolean;
 }
 
 const styles = {
@@ -109,13 +174,18 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
     level,
     onSelect,
     closeOnItemSelect,
-    disabled
+    disabled,
+
+    children,
+    showManage
   } = props;
 
   const classes = useStyles();
   const popoverRef = useRef<Ui5ResponsivePopoverDomRef>(null);
+  const saveAsRef = useRef<Ui5ResponsivePopoverDomRef>(null);
 
   const [selectedKey, setSelectedKey] = useState(props.selectedKey ?? variantItems?.[0]?.key ?? null);
+  const [manageViewsDialogOpen, setManageViewsDialogOpen] = useState(false);
 
   useEffect(() => {
     if (props.selectedKey) {
@@ -123,9 +193,16 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
     }
   }, [props.selectedKey, setSelectedKey]);
 
-  const handleCancelButtonClick = useCallback(() => {
+  const handleCancelButtonClick = () => {
     popoverRef.current.close();
-  }, [popoverRef]);
+  };
+
+  const handleManageClick = () => {
+    setManageViewsDialogOpen(true);
+  };
+  const handleManageClose = () => {
+    setManageViewsDialogOpen(false);
+  };
 
   const handleOpenVariantManagement = useCallback(
     (e) => {
@@ -134,15 +211,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
     [popoverRef]
   );
 
-  const text = i18nBundle.getText(CANCEL);
-
-  const footerButtons = useMemo(() => {
-    return (
-      <Button className={classes.footer} onClick={handleCancelButtonClick} design={ButtonDesign.Emphasized}>
-        {text}
-      </Button>
-    );
-  }, [classes.footer, handleCancelButtonClick, text]);
+  const cancelText = i18nBundle.getText(CANCEL);
 
   const getItemByKey = (key) => {
     return variantItems?.find((item) => item.key === key);
@@ -199,25 +268,46 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
           ref={popoverRef}
           headerText={titleText}
           placementType={placement}
-          footer={footerButtons}
+          footer={
+            <Bar
+              endContent={
+                <>
+                  {/*todo footer styling*/}
+                  <Button onClick={handleCancelButtonClick} design={ButtonDesign.Emphasized}>
+                    {cancelText}
+                  </Button>
+                  {/*todo i18n*/}
+                  {showManage && (
+                    <Button onClick={handleManageClick} design={ButtonDesign.Transparent}>
+                      Manage
+                    </Button>
+                  )}
+                </>
+              }
+            />
+          }
           onAfterClose={stopPropagation}
         >
           <List onItemClick={handleVariantItemSelect} mode={ListMode.SingleSelect}>
-            {variantItems.map((item) => (
-              <StandardListItem
-                style={{ width: '300px' }}
-                data-key={item.key}
-                type={ListItemType.Active}
-                key={item.key}
-                selected={selectedKey === item.key}
-              >
-                {item.label}
-              </StandardListItem>
-            ))}
+            {children}
+            {/*{variantItems.map((item) => {*/}
+            {/*  return (*/}
+            {/*    <VariantManagementItem*/}
+            {/*      style={{ minWidth: '300px' }}*/}
+            {/*      data-key={item.key}*/}
+            {/*      type={ListItemType.Active}*/}
+            {/*      key={item.key}*/}
+            {/*      selected={selectedKey === item.key}*/}
+            {/*    >*/}
+            {/*      {item.label}*/}
+            {/*    </VariantManagementItem>*/}
+            {/*  );*/}
+            {/*})}*/}
           </List>
         </ResponsivePopover>,
         document.body
       )}
+      {manageViewsDialogOpen && <ManageViewsDialog onAfterClose={handleManageClose}>{children}</ManageViewsDialog>}
     </div>
   );
 });

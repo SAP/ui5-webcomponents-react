@@ -3,6 +3,7 @@ import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
 import { VariantManagement } from '@ui5/webcomponents-react/dist/VariantManagement';
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { DocsHeader } from '@shared/stories/DocsHeader';
+import { VariantItem } from './VariantItem';
 
 <Meta
   title="Inputs / VariantManagement"
@@ -30,7 +31,19 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
 ## Example
 
 <Canvas>
-  <Story name="Default">{(props) => <VariantManagement {...props} />}</Story>
+  <Story name="Default">
+    {(props) => (
+      <VariantManagement {...props} showManage>
+        <VariantItem labelReadOnly>Variant 1</VariantItem>
+        <VariantItem isDefault selected author="Guybrush Threepwood" favorite>
+          Variant 2 - Default
+        </VariantItem>
+        <VariantItem author="LeChuck" global applyAutomatically>
+          Variant 3
+        </VariantItem>
+      </VariantManagement>
+    )}
+  </Story>
 </Canvas>
 
 ## Properties
