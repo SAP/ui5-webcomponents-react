@@ -3,7 +3,7 @@ import { GlobalStyleClasses } from '@ui5/webcomponents-react/dist/GlobalStyleCla
 
 export const GlobalStyleClassesStyles = {
   '@global': {
-    [`.${GlobalStyleClasses.sapScrollBar}`]: {
+    [`.${GlobalStyleClasses.sapScrollBar}:not([data-native-scrollbar])`]: {
       '&::-webkit-scrollbar': {
         backgroundColor: ThemingParameters.sapScrollBar_TrackColor,
         '&:horizontal': {

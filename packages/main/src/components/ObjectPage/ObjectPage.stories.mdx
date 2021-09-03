@@ -36,9 +36,11 @@ import '@ui5/webcomponents-icons/dist/wrench.js';
     headerTitle: { control: { disable: true } },
     headerContent: { control: { disable: true } },
     footer: { control: { disable: true } },
-    children: { control: { disable: true } }
+    children: { control: { disable: true } },
+    a11yConfig: { table: { category: 'A11y props' } }
   }}
   args={{
+    onSelectedSectionChanged: null,
     mode: ObjectPageMode.Default,
     showHideHeaderButton: true,
     selectedSectionId: 'goals',

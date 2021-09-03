@@ -29,7 +29,7 @@ export interface AvatarPropTypes extends CommonProps {
    * *   `Accent10`
    * *   `Placeholder`
    */
-  colorScheme?: AvatarColorScheme;
+  colorScheme?: AvatarColorScheme | keyof typeof AvatarColorScheme;
   /**
    * Defines the name of the UI5 Icon, that would be displayed.
    * **Note:** If `image` slot is provided, the property would be ignored.
@@ -59,7 +59,7 @@ export interface AvatarPropTypes extends CommonProps {
    * *   `Circle`
    * *   `Square`
    */
-  shape?: AvatarShape;
+  shape?: AvatarShape | keyof typeof AvatarShape;
   /**
    * Defines predefined size of the component.
    *
@@ -71,7 +71,7 @@ export interface AvatarPropTypes extends CommonProps {
    * *   `L`
    * *   `XL`
    */
-  size?: AvatarSize;
+  size?: AvatarSize | keyof typeof AvatarSize;
   /**
    * Receives the desired `<img>` tag
    *

@@ -1,0 +1,68 @@
+import { fireEvent, render, screen } from '@shared/tests';
+import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { MessageView } from '@ui5/webcomponents-react/dist/MessageView';
+import { MessageItem } from '@ui5/webcomponents-react/dist/MessageItem';
+import { MessageViewDomRef } from '@ui5/webcomponents-react/dist/interfaces/MessageViewDomRef';
+import React, { createRef, forwardRef } from 'react';
+import { ValueState } from '../../enums/ValueState';
+
+const TestComponent = forwardRef((props, ref) => {
+  return (
+    <MessageView {...props} ref={ref}>
+      <MessageItem titleText="Error" type={ValueState.Error}>
+        Error
+      </MessageItem>
+      <MessageItem titleText="Warning" type={ValueState.Warning}>
+        Warning
+      </MessageItem>
+      <MessageItem titleText="Success" type={ValueState.Success}>
+        Success
+      </MessageItem>
+      <MessageItem titleText="Information" type={ValueState.Information}>
+        Information
+      </MessageItem>
+      <MessageItem titleText="None" type={ValueState.None}>
+        None
+      </MessageItem>
+    </MessageView>
+  );
+});
+
+describe('MessageView', () => {
+  it('renders list view', () => {
+    const { asFragment } = render(<TestComponent />);
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('renders list view with groups', () => {
+    const { asFragment } = render(<TestComponent groupItems />);
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('render no filter when only one message type is used', () => {
+    render(
+      <MessageView>
+        <MessageItem titleText="Error" type={ValueState.Error}>
+          Error
+        </MessageItem>
+      </MessageView>
+    );
+
+    expect(screen.queryAllByText('All')).toHaveLength(0);
+  });
+
+  it('navigate to details and back to list', () => {
+    const ref = createRef<MessageViewDomRef>();
+    render(<TestComponent ref={ref} />);
+
+    fireEvent.click(screen.getByText('Error').parentElement.parentElement.parentElement);
+
+    expect(screen.queryAllByText('Error')).toHaveLength(3); // list, details page header and children
+
+    ref.current.navigateBack();
+
+    expect(screen.queryAllByText('Error')).toHaveLength(1); // list
+  });
+
+  createPassThroughPropsTest(MessageView);
+});

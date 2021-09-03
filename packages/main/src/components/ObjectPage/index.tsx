@@ -4,7 +4,7 @@ import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassH
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
-import { debounce, enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
+import { debounce, deprecationNotice, enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { AvatarPropTypes } from '@ui5/webcomponents-react/dist/Avatar';
 import { AvatarSize } from '@ui5/webcomponents-react/dist/AvatarSize';
 import { GlobalStyleClasses } from '@ui5/webcomponents-react/dist/GlobalStyleClasses';
@@ -85,8 +85,17 @@ export interface ObjectPagePropTypes extends CommonProps {
   selectedSubSectionId?: string;
   /**
    * Fired when the selected section changes.
+   *
+   * __Note:__ This prop is deprecated and will be removed in `v0.19.0`. Please use `onSelectedSectionChange` instead.
+   * @deprecated
    */
   onSelectedSectionChanged?: (
+    event: CustomEvent<{ selectedSectionIndex: number; selectedSectionId: string; section: HTMLDivElement }>
+  ) => void;
+  /**
+   * Fired when the selected section changes.
+   */
+  onSelectedSectionChange?: (
     event: CustomEvent<{ selectedSectionIndex: number; selectedSectionId: string; section: HTMLDivElement }>
   ) => void;
 
@@ -110,7 +119,7 @@ export interface ObjectPagePropTypes extends CommonProps {
    * - "Default": All `ObjectPageSections` and `ObjectPageSubSections` are displayed on one page. Selecting tabs will scroll to the corresponding section.
    * - "IconTabBar": All `ObjectPageSections` are displayed on separate pages. Selecting tabs will lead to the corresponding page.
    */
-  mode?: ObjectPageMode;
+  mode?: ObjectPageMode | keyof typeof ObjectPageMode;
   /**
    * Defines whether the pin button of the header is displayed.
    */
@@ -119,6 +128,18 @@ export interface ObjectPagePropTypes extends CommonProps {
    * Defines whether the `headerContent` is pinnable.
    */
   headerContentPinnable?: boolean;
+  /**
+   * Defines internally used a11y properties.
+   */
+  a11yConfig?: {
+    objectPageTopHeader?: {
+      role?: string;
+      ariaRoledescription?: string;
+    };
+    dynamicPageAnchorBar?: {
+      role?: string;
+    };
+  };
 }
 
 const useStyles = createUseStyles(styles, { name: 'ObjectPage' });
@@ -140,15 +161,28 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     slot,
     showHideHeaderButton,
     children,
+    onSelectedSectionChange,
     onSelectedSectionChanged,
     selectedSectionId,
     alwaysShowContentHeader,
     showTitleInHeaderContent,
     headerContent,
-    headerContentPinnable
+    headerContentPinnable,
+    a11yConfig
   } = props;
 
   const classes = useStyles();
+
+  useEffect(() => {
+    if (onSelectedSectionChanged) {
+      deprecationNotice(
+        'onSelectedSectionChanged',
+        `\`onSelectedSectionChanged\` is deprecated. Please use \`onSelectedSectionChange\` instead.`
+      );
+    }
+  }, [onSelectedSectionChanged]);
+
+  const internalOnSelectedSectionChange = onSelectedSectionChange ?? onSelectedSectionChanged;
 
   const firstSectionId = safeGetChildrenArray<ReactElement>(children)[0]?.props?.id;
 
@@ -168,8 +202,8 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
 
   const prevInternalSelectedSectionId = useRef(internalSelectedSectionId);
   const fireOnSelectedChangedEvent = (targetEvent, index, id, section) => {
-    if (typeof onSelectedSectionChanged === 'function' && prevInternalSelectedSectionId.current !== id) {
-      onSelectedSectionChanged(
+    if (typeof internalOnSelectedSectionChange === 'function' && prevInternalSelectedSectionId.current !== id) {
+      internalOnSelectedSectionChange(
         enrichEventWithDetails(targetEvent, {
           selectedSectionIndex: parseInt(index, 10),
           selectedSectionId: id,
@@ -314,7 +348,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
       scrollEvent.current = targetEvent;
       fireOnSelectedChangedEvent(targetEvent, index, newSelectionSectionId, section);
     },
-    [onSelectedSectionChanged, setInternalSelectedSectionId, isProgrammaticallyScrolled, scrollToSection]
+    [internalOnSelectedSectionChange, setInternalSelectedSectionId, isProgrammaticallyScrolled, scrollToSection]
   );
 
   // do internal scrolling
@@ -462,7 +496,11 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     objectPageClasses.put(classes.iconTabBarMode);
   }
 
-  const passThroughProps = usePassThroughHtmlProps(props, ['onSelectedSectionChanged', 'onScroll']);
+  const passThroughProps = usePassThroughHtmlProps(props, [
+    'onSelectedSectionChange',
+    'onSelectedSectionChanged',
+    'onScroll'
+  ]);
 
   useEffect(() => {
     const sections = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
@@ -704,9 +742,9 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
         onMouseLeave={onHoverToggleButton}
         data-component-name="ObjectPageTopHeader"
         ref={topHeaderRef}
-        role="banner"
+        role={a11yConfig?.objectPageTopHeader?.role ?? 'banner'}
         data-not-clickable={titleHeaderNotClickable}
-        aria-roledescription="Object Page header"
+        aria-roledescription={a11yConfig?.objectPageTopHeader?.ariaRoledescription ?? 'Object Page header'}
         className={`${classes.header} ${responsivePaddingClass}`}
         onClick={onTitleClick}
         style={{
@@ -742,6 +780,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
             setHeaderPinned={setHeaderPinned}
             headerPinned={headerPinned}
             onHoverToggleButton={onHoverToggleButton}
+            a11yConfig={a11yConfig}
           />
         </div>
       )}

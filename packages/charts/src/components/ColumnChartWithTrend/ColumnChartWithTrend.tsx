@@ -1,15 +1,16 @@
 import { useConsolidatedRef, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
-import { ColumnChart as ColumnChartLib } from '@ui5/webcomponents-react-charts/dist/ColumnChart';
+import { ComposedChart } from '@ui5/webcomponents-react-charts/dist//ComposedChart';
 import { ColumnChartWithTrendPlaceholder } from '@ui5/webcomponents-react-charts/dist/ColumnChartWithTrendPlaceholder';
-import { LineChart as LineChartLib } from '@ui5/webcomponents-react-charts/dist/LineChart';
 import React, { CSSProperties, FC, forwardRef, Ref, useMemo } from 'react';
+import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { usePrepareTrendMeasures } from '../../hooks/usePrepareTrendMeasures';
 import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { defaultFormatter } from '../../internal/defaults';
+import { TooltipProps } from 'recharts';
 
 interface MeasureConfig extends IChartMeasure {
   /**
@@ -92,7 +93,9 @@ const measureDefaults = {
   opacity: 1
 };
 
-type AvailableChartTypes = 'line' | 'column' | string;
+const lineTooltipConfig = { wrapperStyle: { visibility: 'hidden' } } as TooltipProps<any, any>;
+
+type AvailableChartTypes = 'line' | 'bar' | string;
 /**
  * A `ColumnChartWithTrend` is a data visualization where each category is represented by a rectangle, with the height of the rectangle being proportional to the values being plotted amd a trend line which is displayed above the column chart.
  */
@@ -140,7 +143,20 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
       measureDefaults
     );
 
-    const { lineMeasures, columnMeasures } = usePrepareTrendMeasures(measures);
+    const { lineMeasures, columnMeasures, columnDataset } = usePrepareTrendMeasures(measures, dataset);
+    const [yAxisWidth] = useLongestYAxisLabel(columnDataset, columnMeasures);
+
+    const columnTooltipConfig = {
+      formatter: (value, name, tooltipProps) => {
+        const line = lineMeasures.find((currLine) => currLine.accessor === tooltipProps.dataKey);
+        if (line) {
+          // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+          return line.formatter(tooltipProps.payload[`__${line.accessor}`]);
+        }
+        const column = columnMeasures.find((currLine) => currLine.accessor === tooltipProps.dataKey);
+        return column.formatter(value, name, tooltipProps);
+      }
+    } as TooltipProps<any, any>;
 
     return (
       <div
@@ -151,11 +167,11 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
         {...passThroughProps}
       >
         {dataset?.length !== 0 && (
-          <LineChartLib
+          <ComposedChart
             className={
               typeof onDataPointClick === 'function' || typeof onClick === 'function' ? 'has-click-handler' : undefined
             }
-            tooltipConfig={tooltipConfig}
+            tooltipConfig={lineTooltipConfig}
             noAnimation={noAnimation}
             loading={loading}
             onClick={onClick}
@@ -170,20 +186,22 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
               xAxisVisible: false,
               yAxisVisible: false,
               yAxisTicksVisible: false,
-              gridHorizontal: false
+              gridHorizontal: false,
+              yAxisLabelsVisible: false,
+              yAxisWidth
             }}
           />
         )}
-        <ColumnChartLib
+        <ComposedChart
           onLegendClick={onLegendClick}
-          tooltipConfig={tooltipConfig}
+          tooltipConfig={columnTooltipConfig}
           noAnimation={noAnimation}
           noLegend={noLegend}
           loading={loading}
           onClick={onClick}
           syncId={'trend'}
           ChartPlaceholder={ChartPlaceholder ?? ColumnChartWithTrendPlaceholder}
-          dataset={dataset}
+          dataset={columnDataset}
           measures={columnMeasures}
           dimensions={dimensions}
           chartConfig={chartConfig}

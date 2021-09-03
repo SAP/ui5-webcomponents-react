@@ -91,7 +91,7 @@ export interface TextAreaPropTypes extends Omit<CommonProps, 'onChange' | 'onInp
    *
    * **Note:** If `maxlength` property is set, the component turns into "Warning" state once the characters exceeds the limit. In this case, only the "Error" state is considered and can be applied.
    */
-  valueState?: ValueState;
+  valueState?: ValueState | keyof typeof ValueState;
   /**
    * Defines the value state message that will be displayed as pop up under the component.
    *

@@ -26,7 +26,7 @@ export interface ToggleButtonPropTypes extends Omit<CommonProps, 'onClick'> {
    * *   `Transparent`
    * *   `Attention`
    */
-  design?: ButtonDesign;
+  design?: ButtonDesign | keyof typeof ButtonDesign;
   /**
    * Defines whether the component is disabled (default is set to `false`). A disabled component can't be pressed or focused, and it is not in the tab chain.
    */

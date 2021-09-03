@@ -630,7 +630,7 @@ allWebComponents
           if (tsType.tsType === 'boolean') {
             defaultProps.push(`${property.name}: ${property.defaultValue === 'true'}`);
           } else if (tsType.isEnum === true) {
-            defaultProps.push(`${property.name}: ${tsType.tsType}.${property.defaultValue.replace(/['"]/g, '')}`);
+            defaultProps.push(`${property.name}: ${tsType.enum}.${property.defaultValue.replace(/['"]/g, '')}`);
           } else if (tsType.tsType !== 'string' || (tsType.tsType === 'string' && property.defaultValue !== '""')) {
             defaultProps.push(`${property.name}: ${property.defaultValue}`);
           }

@@ -68,7 +68,7 @@ export interface DateRangePickerPropTypes extends Omit<CommonProps, 'onChange' |
    * *   `Success`
    * *   `Information`
    */
-  valueState?: ValueState;
+  valueState?: ValueState | keyof typeof ValueState;
   /**
    * Determines the format, displayed in the input field.
    */
@@ -84,7 +84,7 @@ export interface DateRangePickerPropTypes extends Omit<CommonProps, 'onChange' |
   /**
    * Sets a calendar type used for display. If not set, the calendar type of the global configuration is used.<br/>__Note:__ Calendar types other than Gregorian must be imported manually:<br />`import "@ui5/webcomponents-localization/dist/features/calendar/{primaryCalendarType}.js";`
    */
-  primaryCalendarType?: CalendarType;
+  primaryCalendarType?: CalendarType | keyof typeof CalendarType;
   /**
    * Defines the value state message that will be displayed as pop up under the component.
    *

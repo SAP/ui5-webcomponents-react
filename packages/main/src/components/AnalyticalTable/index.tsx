@@ -1,4 +1,4 @@
-import { useIsomorphicLayoutEffect, useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useConsolidatedRef, useIsomorphicLayoutEffect, useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
@@ -64,6 +64,8 @@ import { TitleBar } from './TitleBar';
 import { orderByFn } from './util';
 import { VerticalResizer } from './VerticalResizer';
 
+const onlyUpperCaseRegExp = /^[A-Z_]+$/;
+
 interface DivWithCustomScrollProp extends HTMLDivElement {
   isExternalVerticalScroll?: boolean;
 }
@@ -101,8 +103,10 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * - __"Interactive":__ Adds a resizer to the bottom of the table to dynamically add or remove visible rows. The initial number of rows is defined by the `visibleRows` prop.
    *
    * __Note:__ When `"Auto"` is enabled, we recommend to use a fixed height for the outer container.
+   *
+   * **Note: The uppercase `TableVisibleRowCountMode` values are deprecated and will be removed with version 0.19.0.**
    */
-  visibleRowCountMode?: TableVisibleRowCountMode;
+  visibleRowCountMode?: TableVisibleRowCountMode | keyof typeof TableVisibleRowCountMode;
   /**
    * The number of rows visible without going into overflow.
    *
@@ -169,16 +173,20 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * - __"Row":__ A selection column is rendered along with the normal columns. The whole row is selectable.
    * - __"RowOnly":__ No selection column is rendered along with the normal columns. The whole row is selectable.
    * - __"RowSelector":__ The row is only selectable by clicking on the corresponding field in the selection column.
+   *
+   * **Note: The uppercase `TableSelectionBehavior` values are deprecated and will be removed with version 0.19.0.**
    */
-  selectionBehavior?: TableSelectionBehavior;
+  selectionBehavior?: TableSelectionBehavior | keyof typeof TableSelectionBehavior;
   /**
    * Defines the `SelectionMode` of the table.
    *
    * - __"None":__ The rows are not selectable.
    * - __"SingleSelect":__ You can select only one row at once. Clicking on another row will unselect the previously selected row.
    * - __"MultiSelect":__ You can select multiple rows.
+   *
+   * **Note: The uppercase `TableSelectionMode` values are deprecated and will be removed with version 0.19.0.**
    */
-  selectionMode?: TableSelectionMode;
+  selectionMode?: TableSelectionMode | keyof typeof TableSelectionMode;
   /**
    * Defines the column growing behaviour. Possible Values:
    *
@@ -187,7 +195,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * - **Grow**: Every column gets the space it needs for displaying its full header text and full content of all cells. If it requires more space than the table has, horizontal scrolling will be enabled.
    *
    */
-  scaleWidthMode?: TableScaleWidthMode;
+  scaleWidthMode?: TableScaleWidthMode | keyof typeof TableScaleWidthMode;
   /**
    * Defines the columns order by their `accessor` or `id`.
    */
@@ -300,6 +308,16 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * Component that will be rendered when the table is loading and has no data.
    */
   LoadingComponent?: ComponentType<any>;
+
+  /**
+   * Exposes the internal table instance.
+   * This object will contain all [instance properties](https://react-table.tanstack.com/docs/api/useTable#instance-properties)
+   * of the `useTable` hook and all instance properties from `useColumnOrder`, `useExpanded`, `useFilters`,
+   * `useGlobalFilter`, `useGroupBy`,`useResizeColumns`, `useRowSelect` and `useSortBy` plugin hooks.
+   *
+   * **Note**: Use this prop with care, some properties might have an impact on the internal `AnalyticalTable` implementation.
+   */
+  tableInstance?: Ref<Record<string, any>>;
 }
 
 const useStyles = createUseStyles(styles, { name: 'AnalyticalTable' });
@@ -353,7 +371,8 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     columnOrder,
     renderRowSubComponent,
     alwaysShowSubComponent,
-    globalFilterValue
+    globalFilterValue,
+    tableInstance
   } = props;
 
   const classes = useStyles();
@@ -378,64 +397,9 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     return props.data;
   }, [props.data, minRows]);
 
-  const webComponentsReactProperties = useMemo(
-    () => ({
-      tableRef,
-      selectionMode,
-      selectionBehavior,
-      classes,
-      onRowSelected,
-      onRowClick,
-      onRowExpandChange,
-      isTreeTable,
-      alternateRowColor,
-      scaleWidthMode,
-      loading,
-      withRowHighlight,
-      highlightField,
-      withNavigationHighlight,
-      markNavigatedRow,
-      renderRowSubComponent,
-      alwaysShowSubComponent,
-      reactWindowRef
-    }),
-    [
-      tableRef.current,
-      selectionMode,
-      selectionBehavior,
-      classes,
-      onRowSelected,
-      onRowClick,
-      onRowExpandChange,
-      isTreeTable,
-      alternateRowColor,
-      scaleWidthMode,
-      loading,
-      withRowHighlight,
-      highlightField,
-      withNavigationHighlight,
-      markNavigatedRow,
-      renderRowSubComponent,
-      alwaysShowSubComponent,
-      reactWindowRef
-    ]
-  );
+  const tableInstanceRef = useConsolidatedRef<Record<string, any>>(tableInstance);
 
-  const {
-    getTableProps,
-    headerGroups,
-    rows,
-    prepareRow,
-    state: tableState,
-    columns: tableInternalColumns,
-    setColumnOrder,
-    dispatch,
-    totalColumnsWidth,
-    visibleColumns,
-    visibleColumnsWidth,
-    setGroupBy,
-    setGlobalFilter
-  } = useTable(
+  tableInstanceRef.current = useTable(
     {
       columns,
       data,
@@ -447,7 +411,26 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
       disableSortBy: !sortable,
       disableGroupBy: isTreeTable || renderRowSubComponent ? true : !groupable,
       selectSubRows: false,
-      webComponentsReactProperties,
+      webComponentsReactProperties: {
+        tableRef,
+        selectionMode,
+        selectionBehavior,
+        classes,
+        onRowSelected,
+        onRowClick,
+        onRowExpandChange,
+        isTreeTable,
+        alternateRowColor,
+        scaleWidthMode,
+        loading,
+        withRowHighlight,
+        highlightField,
+        withNavigationHighlight,
+        markNavigatedRow,
+        renderRowSubComponent,
+        alwaysShowSubComponent,
+        reactWindowRef
+      },
       ...reactTableOptions
     },
     useFilters,
@@ -470,6 +453,22 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     useKeyboardNavigation,
     ...tableHooks
   );
+
+  const {
+    getTableProps,
+    headerGroups,
+    rows,
+    prepareRow,
+    state: tableState,
+    columns: tableInternalColumns,
+    setColumnOrder,
+    dispatch,
+    totalColumnsWidth,
+    visibleColumns,
+    visibleColumnsWidth,
+    setGroupBy,
+    setGlobalFilter
+  } = tableInstanceRef.current;
 
   const titleBarRef = useRef(null);
   const extensionRef = useRef(null);
@@ -498,7 +497,11 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
   }, [tableRef.current]);
 
   const updateRowsCount = useCallback(() => {
-    if (visibleRowCountMode === TableVisibleRowCountMode.AUTO && analyticalTableRef.current?.parentElement) {
+    if (
+      (visibleRowCountMode === TableVisibleRowCountMode.AUTO ||
+        visibleRowCountMode === TableVisibleRowCountMode.Auto) &&
+      analyticalTableRef.current?.parentElement
+    ) {
       const parentElement = analyticalTableRef.current?.parentElement;
       const tableYPosition =
         parentElement &&
@@ -551,7 +554,10 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
   }, [updateRowsCount]);
 
   useEffect(() => {
-    if (tableState.visibleRows !== undefined && visibleRowCountMode === TableVisibleRowCountMode.FIXED) {
+    if (
+      tableState.visibleRows !== undefined &&
+      (visibleRowCountMode === TableVisibleRowCountMode.FIXED || visibleRowCountMode === TableVisibleRowCountMode.Fixed)
+    ) {
       dispatch({
         type: 'VISIBLE_ROWS',
         payload: { visibleRows: undefined }
@@ -576,7 +582,9 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
   const tableBodyHeight = useMemo(() => {
     const rowNum = rows.length < internalVisibleRowCount ? Math.max(rows.length, minRows) : internalVisibleRowCount;
     const rowHeight =
-      visibleRowCountMode === TableVisibleRowCountMode.AUTO || tableState?.interactiveRowsHavePopIn
+      visibleRowCountMode === TableVisibleRowCountMode.AUTO ||
+      visibleRowCountMode === TableVisibleRowCountMode.Auto ||
+      tableState?.interactiveRowsHavePopIn
         ? popInRowHeight
         : internalRowHeight;
     return rowHeight * rowNum;
@@ -712,6 +720,56 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     tableClasses.put(classes.hasNavigationIndicator);
   }
 
+  // check deprecations
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
+      if (onlyUpperCaseRegExp.test(visibleRowCountMode)) {
+        // eslint-disable-next-line no-console
+        console.warn(
+          'UI5 Web Components for React - AnalyticalTable\n',
+          `'TableVisibleRowCountMode.${visibleRowCountMode}' is deprecated and will be removed with v0.19.0.`,
+          `Please use 'TableVisibleRowCountMode.${visibleRowCountMode.charAt(0)}${visibleRowCountMode
+            .slice(1)
+            .toLowerCase()}' instead.`
+        );
+      }
+    }
+  }, [visibleRowCountMode]);
+
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
+      if (onlyUpperCaseRegExp.test(selectionBehavior)) {
+        const newName = selectionBehavior
+          .split('_')
+          .map((s) => s.charAt(0) + s.slice(1).toLowerCase())
+          .join('');
+        // eslint-disable-next-line no-console
+        console.warn(
+          'UI5 Web Components for React - AnalyticalTable\n',
+          `'TableSelectionBehavior.${selectionBehavior}' is deprecated and will be removed with v0.19.0.`,
+          `Please use 'TableSelectionBehavior.${newName}' instead.`
+        );
+      }
+    }
+  }, [selectionBehavior]);
+
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
+      if (onlyUpperCaseRegExp.test(selectionMode)) {
+        const newName = selectionMode
+          .split('_')
+          .map((s) => s.charAt(0) + s.slice(1).toLowerCase())
+          .join('');
+        // eslint-disable-next-line no-console
+        console.warn(
+          'UI5 Web Components for React - AnalyticalTable\n',
+          `'TableSelectionMode.${selectionMode}' is deprecated and will be removed with v0.19.0.`,
+          `Please use 'TableSelectionMode.${newName}' instead.`
+        );
+      }
+    }
+  }, [selectionMode]);
+
   return (
     <div className={className} style={inlineStyle} title={tooltip} ref={analyticalTableRef} {...passThroughProps}>
       {header && <TitleBar ref={titleBarRef}>{header}</TitleBar>}
@@ -722,7 +780,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
           tabIndex={0}
           role="grid"
           aria-rowcount={rows.length}
-          aria-colcount={tableInternalColumns.length}
+          aria-colcount={visibleColumns.length}
           data-per-page={internalVisibleRowCount}
           data-component-name="AnalyticalTableContainer"
           ref={tableRef}
@@ -764,9 +822,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
           {loading && props.data?.length === 0 && (
             <TablePlaceholder
               isRtl={isRtl}
-              columns={tableInternalColumns.filter(
-                (col) => (col.isVisible ?? true) && !tableState.hiddenColumns.includes(col.accessor)
-              )}
+              columns={visibleColumns}
               rows={props.minRows}
               style={noDataStyles}
               rowHeight={internalRowHeight}
@@ -830,7 +886,8 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
           />
         )}
       </FlexBox>
-      {visibleRowCountMode === TableVisibleRowCountMode.INTERACTIVE && (
+      {(visibleRowCountMode === TableVisibleRowCountMode.Interactive ||
+        visibleRowCountMode === TableVisibleRowCountMode.INTERACTIVE) && (
         <VerticalResizer
           popInRowHeight={popInRowHeight}
           hasPopInColumns={tableState?.popInColumns?.length > 0}
@@ -851,8 +908,8 @@ AnalyticalTable.defaultProps = {
   sortable: true,
   filterable: false,
   groupable: false,
-  selectionMode: TableSelectionMode.NONE,
-  selectionBehavior: TableSelectionBehavior.ROW,
+  selectionMode: TableSelectionMode.None,
+  selectionBehavior: TableSelectionBehavior.Row,
   scaleWidthMode: TableScaleWidthMode.Default,
   data: [],
   columns: [],
@@ -874,7 +931,7 @@ AnalyticalTable.defaultProps = {
   isTreeTable: false,
   alternateRowColor: false,
   overscanCountHorizontal: 5,
-  visibleRowCountMode: TableVisibleRowCountMode.FIXED,
+  visibleRowCountMode: TableVisibleRowCountMode.Fixed,
   alwaysShowSubComponent: false
 };
 

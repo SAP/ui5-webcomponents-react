@@ -3,6 +3,57 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.7](https://github.com/SAP/ui5-webcomponents-react/compare/v0.18.6...v0.18.7) (2021-09-01)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** programatically setting hidden columns triggers table resize ([#2066](https://github.com/SAP/ui5-webcomponents-react/issues/2066)) ([df5d1cd](https://github.com/SAP/ui5-webcomponents-react/commit/df5d1cd1a4e9701b2cd65b60e6190d4bc8432aa4))
+* **AnalyticalTable:** remove filter without showing `undefined` ([#2074](https://github.com/SAP/ui5-webcomponents-react/issues/2074)) ([47ebd40](https://github.com/SAP/ui5-webcomponents-react/commit/47ebd40fe26becfdda29b00354ee6cee8eb7f96a))
+* **CardHeader:** fire `onClick` only once ([#2075](https://github.com/SAP/ui5-webcomponents-react/issues/2075)) ([b07dc41](https://github.com/SAP/ui5-webcomponents-react/commit/b07dc413efab53cdf2d587c57554af39a36c5710))
+
+
+
+
+
+## [0.18.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.18.5...v0.18.6) (2021-08-31)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** reset infinity-scroll offset with data change ([#2036](https://github.com/SAP/ui5-webcomponents-react/issues/2036)) ([b749f5c](https://github.com/SAP/ui5-webcomponents-react/commit/b749f5c21cfa2a87e4e89ad22f71c4ef2d978a76))
+* **AnalyticalTable:** return correct value for `onRowSelected` with select-all checkbox ([#2035](https://github.com/SAP/ui5-webcomponents-react/issues/2035)) ([efb41a4](https://github.com/SAP/ui5-webcomponents-react/commit/efb41a463c9ef4345d42442c0723797676ffd680))
+* **Form:** use `form` element instead of `div` ([#2051](https://github.com/SAP/ui5-webcomponents-react/issues/2051)) ([8d19e93](https://github.com/SAP/ui5-webcomponents-react/commit/8d19e934c24f2e5fbf75a751885b7cb8bb1a41f1))
+
+
+### Features
+
+* **ActionSheet/DynamicPage/ObjectPage:** add `a11yConfig` prop to customize a11y properties ([#2038](https://github.com/SAP/ui5-webcomponents-react/issues/2038)) ([49f5293](https://github.com/SAP/ui5-webcomponents-react/commit/49f5293e9e7ae56a4b720926e4fe89bf475bab82))
+* **AnalyticalTable:** expose table instance via `tableInstance` prop ([#2064](https://github.com/SAP/ui5-webcomponents-react/issues/2064)) ([32fff10](https://github.com/SAP/ui5-webcomponents-react/commit/32fff10b825745c52bc11604446021cec53c6d01))
+* **MessageView:** initial component implementation ([#2044](https://github.com/SAP/ui5-webcomponents-react/issues/2044)) ([dd8d2c8](https://github.com/SAP/ui5-webcomponents-react/commit/dd8d2c8c18f3283b42458911db649afb0df9c8da))
+
+
+
+
+
+## [0.18.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.18.4...v0.18.5) (2021-08-24)
+
+
+### Bug Fixes
+
+* **FilterBar:** update filter item refs on every dialog save ([#2025](https://github.com/SAP/ui5-webcomponents-react/issues/2025)) ([1a46272](https://github.com/SAP/ui5-webcomponents-react/commit/1a462723ab0f15d90723ecb58784032f3d3321e3))
+* **ObjectPage:** fire `onSelectedSectionChanged` on every section change ([#1997](https://github.com/SAP/ui5-webcomponents-react/issues/1997)) ([993b52f](https://github.com/SAP/ui5-webcomponents-react/commit/993b52fb3a2eed347d2aa1ecf1d8b5b3a8dce43a))
+* **ObjectPage:** respect scoping suffix for custom anchor tab ([#2011](https://github.com/SAP/ui5-webcomponents-react/issues/2011)) ([7123cac](https://github.com/SAP/ui5-webcomponents-react/commit/7123cac8d5376bf69af7051ac0221d2ede82f780))
+
+
+### Features
+
+* allow string values in all enums ([#2018](https://github.com/SAP/ui5-webcomponents-react/issues/2018)) ([927c0c2](https://github.com/SAP/ui5-webcomponents-react/commit/927c0c2316e5d506dc13cfc7e1f2997c31bc8499))
+
+
+
+
+
 ## [0.18.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.18.3...v0.18.4) (2021-08-12)
 
 

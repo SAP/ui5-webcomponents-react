@@ -294,6 +294,8 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
 
   const handleDialogSave = useCallback(
     (e, newRefs, updatedToggledFilters) => {
+      setMountFilters(false);
+      setMountFilters(true);
       setDialogRefs(newRefs);
       setToggledFilters((old) => ({ ...old, ...updatedToggledFilters }));
       if (onFiltersDialogSave) {

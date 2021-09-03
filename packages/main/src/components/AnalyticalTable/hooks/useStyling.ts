@@ -47,7 +47,12 @@ const getRowProps = (rowProps, { instance, row }) => {
   const isEmptyRow = row.original?.emptyRow;
   let className = classes.tr;
   const rowCanBeSelected =
-    [TableSelectionMode.SINGLE_SELECT, TableSelectionMode.MULTI_SELECT].includes(selectionMode) && !isEmptyRow;
+    [
+      TableSelectionMode.SINGLE_SELECT,
+      TableSelectionMode.MULTI_SELECT,
+      TableSelectionMode.SingleSelect,
+      TableSelectionMode.MultiSelect
+    ].includes(selectionMode) && !isEmptyRow;
 
   if (row.isGrouped) {
     className += ` ${classes.tableGroupHeader}`;
@@ -64,7 +69,10 @@ const getRowProps = (rowProps, { instance, row }) => {
   };
 
   if (rowCanBeSelected) {
-    if (TableSelectionBehavior.ROW_SELECTOR !== selectionBehavior) {
+    if (
+      TableSelectionBehavior.RowSelector !== selectionBehavior &&
+      TableSelectionBehavior.ROW_SELECTOR !== selectionBehavior
+    ) {
       newRowProps.className += ` ${classes.trActive}`;
     }
     if (row.isSelected) {

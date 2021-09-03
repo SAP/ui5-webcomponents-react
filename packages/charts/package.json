@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react-charts",
-  "version": "0.18.0",
+  "version": "0.18.6",
   "description": "Charts for ui5-webcomponents-react",
   "main": "index.esm.js",
   "module": "index.esm.js",
@@ -22,7 +22,7 @@
   "dependencies": {
     "@babel/runtime": "^7.8.4",
     "react-content-loader": "6.0.3",
-    "recharts": "2.1.1"
+    "recharts": "2.1.2"
   },
   "peerDependencies": {
     "@ui5/webcomponents-react": "^0.18.0",

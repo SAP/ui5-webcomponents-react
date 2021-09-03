@@ -54,7 +54,7 @@ export interface FileUploaderPropTypes extends Omit<CommonProps, 'onChange'> {
    * *   `Success`
    * *   `Information`
    */
-  valueState?: ValueState;
+  valueState?: ValueState | keyof typeof ValueState;
   /**
    * By default the component contains a single input field. With this slot you can pass any content that you wish to add. See the samples for more information.
    */

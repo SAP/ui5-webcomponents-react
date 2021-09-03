@@ -88,8 +88,10 @@ import { LoaderType } from './dist/LoaderType';
 import { MessageBox } from './dist/MessageBox';
 import { MessageBoxActions } from './dist/MessageBoxActions';
 import { MessageBoxTypes } from './dist/MessageBoxTypes';
+import { MessageItem } from './dist/MessageItem';
 import { MessageStrip } from './dist/MessageStrip';
 import { MessageStripDesign } from './dist/MessageStripDesign';
+import { MessageView } from './dist/MessageView';
 import { MultiComboBox } from './dist/MultiComboBox';
 import { MultiComboBoxItem } from './dist/MultiComboBoxItem';
 import { MultiInput } from './dist/MultiInput';
@@ -270,11 +272,13 @@ export {
   ListSeparators,
   Loader,
   LoaderType,
+  MessageItem,
   MessageBox,
   MessageBoxActions,
   MessageBoxTypes,
   MessageStrip,
   MessageStripDesign,
+  MessageView,
   MultiComboBox,
   MultiComboBoxItem,
   MultiInput,
