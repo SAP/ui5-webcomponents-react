@@ -4,7 +4,12 @@ import '@ui5/webcomponents-icons/dist/message-information';
 import '@ui5/webcomponents-icons/dist/message-success';
 import '@ui5/webcomponents-icons/dist/message-warning';
 import '@ui5/webcomponents-icons/dist/question-mark';
-import { useConsolidatedRef, useI18nBundle, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
+import {
+  useConsolidatedRef,
+  useI18nBundle,
+  useIsomorphicLayoutEffect,
+  usePassThroughHtmlProps
+} from '@ui5/webcomponents-react-base/dist/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import {
@@ -116,7 +121,7 @@ export interface MessageBoxPropTypes extends CommonProps {
    *
    * **Note: The uppercase `MessageBoxActions` are deprecated and will be removed with version 0.19.0.**
    */
-  onClose: (event: CustomEvent<{ action: MessageBoxAction }>) => void;
+  onClose?: (event: CustomEvent<{ action: MessageBoxAction }>) => void;
   /**
    * Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. This event does not bubble.
    */
@@ -128,6 +133,9 @@ export interface MessageBoxPropTypes extends CommonProps {
 }
 
 const useStyles = createUseStyles(styles, { name: 'MessageBox' });
+
+const createUniqueIds = (internalActions) =>
+  internalActions.map((_) => `${performance.now() + Math.random()}`.split('.')[1]);
 
 /**
  * The `MessageBox` component provides easier methods to create a `Dialog`, such as standard alerts, confirmation dialogs, or arbitrary message dialogs.
@@ -147,9 +155,7 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDom
     actions,
     emphasizedAction,
     onClose,
-    initialFocus,
-    onBeforeOpen,
-    onAfterOpen
+    initialFocus
   } = props;
   const dialogRef = useConsolidatedRef<Ui5DialogDomRef>(ref);
 
@@ -261,13 +267,26 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDom
         dialogRef.current.close?.();
       }
     }
-  }, [dialogRef, open]);
+  }, [dialogRef.current, open]);
 
   const passThroughProps = usePassThroughHtmlProps(props, ['onClose']);
 
   const messageBoxClassNames = StyleClassHelper.of(classes.messageBox).putIfPresent(className).className;
   const internalActions = getActions();
-  const [uniqueIds, _] = useState(internalActions.map((_) => `${performance.now() + Math.random()}`.split('.')[1]));
+
+  const [uniqueIds, setUniqueIds] = useState(() => createUniqueIds(internalActions));
+  useIsomorphicLayoutEffect(() => {
+    setUniqueIds(createUniqueIds(internalActions));
+  }, [internalActions.length]);
+
+  const getInitialFocus = () => {
+    // todo: refactor to `indexOf` when deprecation is removed
+    const indexOfInitialFocus = internalActions.findIndex((item) => item.toLowerCase() === initialFocus?.toLowerCase());
+    if (~indexOfInitialFocus) {
+      return `${internalActions[indexOfInitialFocus].toLowerCase()}-${uniqueIds[indexOfInitialFocus]}`;
+    }
+    return initialFocus;
+  };
 
   // check deprecations
   useEffect(() => {
@@ -324,18 +343,16 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDom
       }
     }
   }, [emphasizedAction]);
-  // todo remove lowercase conversions
+  // todo: remove lowercase conversions
   return (
     <Dialog
       slot={slot}
       ref={dialogRef}
       style={style}
-      tooltip={tooltip}
+      title={tooltip ?? props.title}
       className={messageBoxClassNames}
-      onAfterOpen={onAfterOpen}
-      onBeforeOpen={onBeforeOpen}
       onAfterClose={open ? handleOnClose : stopPropagation}
-      initialFocus={initialFocus?.toLowerCase()}
+      initialFocus={getInitialFocus()}
       {...passThroughProps}
     >
       <header slot="header" className={classes.header} data-type={type}>

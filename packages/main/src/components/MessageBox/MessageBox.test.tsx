@@ -158,11 +158,10 @@ describe('MessageBox', () => {
   test('Unique ids for actions', () => {
     jest.spyOn(console, 'error').mockImplementation(() => {});
     jest.spyOn(console, 'warn').mockImplementation(() => {});
-    const callback = jest.fn();
     const { getAllByText } = render(
       <>
         {new Array(200).fill('howdy').map((_) => (
-          <MessageBox open onClose={callback} type={MessageBoxTypes.Confirm}>
+          <MessageBox open type={MessageBoxTypes.Confirm}>
             Content
           </MessageBox>
         ))}
@@ -170,10 +169,24 @@ describe('MessageBox', () => {
     );
     const okBtns = getAllByText('OK');
     const okBtnsIds = okBtns.map((btn) => btn.id);
-    expect(new Set(okBtnsIds).size === okBtnsIds.length).toBeTruthy();
+    expect(new Set(okBtnsIds).size).toEqual(okBtnsIds.length);
     const cancelBtns = getAllByText('Cancel');
     const cancelBtnsIds = cancelBtns.map((btn) => btn.id);
-    expect(new Set(cancelBtnsIds).size === cancelBtnsIds.length).toBeTruthy();
+    expect(new Set(cancelBtnsIds).size).toEqual(cancelBtnsIds.length);
+  });
+
+  test('initial focus', () => {
+    jest.spyOn(console, 'warn').mockImplementation(() => {});
+    jest.spyOn(console, 'error').mockImplementation(() => {});
+    const { getByText, getByTestId } = render(
+      <MessageBox open type={MessageBoxTypes.Confirm} initialFocus={MessageBoxActions.Cancel} data-testid="Dialog">
+        Content
+      </MessageBox>
+    );
+    const dialogInitialFocus = getByTestId('Dialog').getAttribute('initial-focus');
+    const cancelBtnId = getByText('Cancel').getAttribute('id');
+
+    expect(dialogInitialFocus).toEqual(cancelBtnId);
   });
 
   createPassThroughPropsTest(MessageBox);
