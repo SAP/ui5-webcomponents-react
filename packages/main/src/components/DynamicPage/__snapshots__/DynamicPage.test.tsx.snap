@@ -657,6 +657,7 @@ exports[`DynamicPage render footer 1`] = `
     <footer
       class="DynamicPage-footer"
       data-component-name="DynamicPageFooter"
+      style="position: absolute;"
     >
       <ui5-bar
         design="FloatingFooter"
