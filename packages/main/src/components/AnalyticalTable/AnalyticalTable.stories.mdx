@@ -769,9 +769,9 @@ By adding the `visibleRowCountMode` prop and setting it to `TableVisibleRowCount
       globalFilterValue: { table: { disable: true } },
       tableInstance: { table: { disable: true } },
       containerHeight: {
-        options: [250, 500, 750, 1000],
         control: {
-          type: 'radio'
+          type: 'radio',
+          options: [250, 500, 750, 1000]
         },
         description:
           'Select an option to change the height of the surrounding container of the table (in `px`). <br /> __Note__: This is not an actual prop of the table.'
@@ -909,9 +909,9 @@ In the example below you can have a look at this behavior:
       globalFilterValue: { table: { disable: true } },
       tableInstance: { table: { disable: true } },
       containerWidth: {
-        options: [400, 600, 800, 'auto'],
         control: {
-          type: 'radio'
+          type: 'radio',
+          options: [400, 600, 800, 'auto']
         },
         description:
           'Select an option to change the width of the surrounding container of the table (in `px`). <br /> __Note__: This is not an actual prop of the table.'
