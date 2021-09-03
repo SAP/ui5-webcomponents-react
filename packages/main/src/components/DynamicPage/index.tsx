@@ -115,8 +115,9 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
   dynamicPageClasses.put(classes[`background${backgroundDesign}`]);
   dynamicPageClasses.putIfPresent(className);
 
-  const anchorBarRef: RefObject<HTMLDivElement> = useRef();
-  const dynamicPageRef: RefObject<HTMLDivElement> = useConsolidatedRef(ref);
+  const anchorBarRef = useRef<HTMLDivElement>();
+  const dynamicPageRef = useConsolidatedRef<HTMLDivElement>(ref);
+  const contentRef = useRef<HTMLDivElement>();
   // @ts-ignore
   const topHeaderRef: RefObject<HTMLDivElement> = useConsolidatedRef(headerTitle?.ref);
   // @ts-ignore
@@ -137,11 +138,20 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
   const [isOverflowing, setIsOverflowing] = useState(false);
 
   useEffect(() => {
-    const observer = new ResizeObserver(([objPage]) => {
-      const { clientHeight, scrollHeight } = objPage.target;
-      setIsOverflowing(scrollHeight > clientHeight - 60 /* footer height + margin*/);
-    });
-    observer.observe(dynamicPageRef.current);
+    const observer = new IntersectionObserver(
+      ([element]) => {
+        setIsOverflowing(!element.isIntersecting);
+      },
+      {
+        root: dynamicPageRef.current,
+        threshold: 1,
+        rootMargin: '0px 0px -60px 0px' // negative bottom margin for footer height
+      }
+    );
+
+    if (contentRef.current) {
+      observer.observe(contentRef.current);
+    }
 
     return () => {
       observer.disconnect();
@@ -281,6 +291,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
         />
       )}
       <div
+        ref={contentRef}
         data-component-name="DynamicPageContent"
         className={`${classes.contentContainer} ${responsivePaddingClass}`}
         style={{
