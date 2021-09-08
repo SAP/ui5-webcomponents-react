@@ -313,7 +313,8 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
 });
 
 VariantManagement.defaultProps = {
-  onSelect: () => {},
+  //todo
+  // onSelect: () => {},
   closeOnItemSelect: true,
   placement: PopoverPlacementType.Bottom,
   level: TitleLevel.H4,

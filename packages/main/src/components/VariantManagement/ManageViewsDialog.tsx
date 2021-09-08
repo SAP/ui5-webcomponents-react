@@ -14,7 +14,7 @@ import { TableCell } from '@ui5/webcomponents-react/dist/TableCell';
 import { TableColumn } from '@ui5/webcomponents-react/dist/TableColumn';
 import { TableRow } from '@ui5/webcomponents-react/dist/TableRow';
 import { Text } from '@ui5/webcomponents-react/dist/Text';
-import React, { Children, useEffect, useRef } from 'react';
+import React, { Children, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Ui5DialogDomRef } from '../../interfaces/Ui5DialogDomRef';
 
@@ -51,7 +51,7 @@ export const ManageViewsDialog = (props) => {
   useEffect(() => {
     manageViewsRef.current.show();
     return () => {
-      manageViewsRef.current.close();
+      manageViewsRef.current?.close();
     };
   }, []);
 
@@ -59,15 +59,19 @@ export const ManageViewsDialog = (props) => {
     return child.props;
   });
   console.log(childrenProps);
-
+  const [defaultView, setDefaultView] = useState<undefined | string>();
+  //todo apply view automatically
+  const [applyViewAutomatically, setApplyViewAutomatically] = useState<undefined | string[]>();
   return createPortal(
     //todo i18n
     <Dialog ref={manageViewsRef} onAfterClose={onAfterClose} headerText="Manage Views">
       {/*todo create separate component*/}
       <Table columns={COLUMNS_TABLE} style={{ minWidth: '600px' }}>
-        {childrenProps.map((itemProps) => {
+        {childrenProps.map((itemProps, index) => {
           const { labelReadOnly, favorite, children, isGlobal, isDefault, applyAutomatically, author, readOnly } =
             itemProps;
+          const rowId = `${children ?? ''}-${index}`;
+
           const name = favorite ? 'favorite' : 'unfavorite';
           const renderView = () => {
             if (labelReadOnly) {
@@ -84,7 +88,7 @@ export const ManageViewsDialog = (props) => {
             return <Input value={children} />;
           };
           return (
-            <>
+            <React.Fragment key={rowId}>
               <TableRow>
                 <TableCell>
                   {/*todo icon not interactive (when?), icon callback*/}
@@ -95,7 +99,14 @@ export const ManageViewsDialog = (props) => {
                 <TableCell>{isGlobal ? 'Public' : 'Private'}</TableCell>
                 {/*todo callback --> handle interaction (only single checked)*/}
                 <TableCell>
-                  <RadioButton checked={isDefault} />
+                  <RadioButton
+                    data-row-id={rowId}
+                    checked={defaultView !== undefined ? defaultView === rowId : isDefault}
+                    onChange={(e) => {
+                      //todo user callback (targetRow, rowId, state, )
+                      setDefaultView(e.target.dataset.rowId);
+                    }}
+                  />
                 </TableCell>
                 {/*todo cb*/}
                 <TableCell>
@@ -106,7 +117,7 @@ export const ManageViewsDialog = (props) => {
                 </TableCell>
                 <TableCell>{!readOnly && <Button icon="decline" design={ButtonDesign.Transparent} />}</TableCell>
               </TableRow>
-            </>
+            </React.Fragment>
           );
         })}
       </Table>
