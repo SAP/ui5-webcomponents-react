@@ -11,13 +11,11 @@ export const useCancelAnimationFallback = (noAnimation) => {
 
   const handleBarAnimationStart = () => {
     if (!noAnimation) {
-      console.log('start');
       debouncedCancelAnimationFallback();
     }
   };
   const handleBarAnimationEnd = () => {
     if (!noAnimation) {
-      console.log('end');
       debouncedCancelAnimationFallback.cancel();
     }
   };
