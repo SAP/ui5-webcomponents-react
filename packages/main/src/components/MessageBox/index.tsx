@@ -261,11 +261,6 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
       <footer slot="footer" className={classes.footer}>
         {internalActions.map((action, index) => {
           const lowerCaseAction = action?.toLowerCase();
-          console.log(
-            lowerCaseAction,
-            emphasizedAction?.toLowerCase(),
-            lowerCaseAction === emphasizedAction?.toLowerCase()
-          );
           return (
             <Button
               id={`${lowerCaseAction}-${uniqueIds[index]}`}
