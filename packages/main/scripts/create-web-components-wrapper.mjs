@@ -217,6 +217,9 @@ COMPONENTS_WITHOUT_DEMOS.add('NotificationAction');
 COMPONENTS_WITHOUT_DEMOS.add('WizardStep');
 COMPONENTS_WITHOUT_DEMOS.add('SegmentedButtonItem');
 COMPONENTS_WITHOUT_DEMOS.add('ComboBoxGroupItem');
+COMPONENTS_WITHOUT_DEMOS.add('FilterItemOption');
+COMPONENTS_WITHOUT_DEMOS.add('SortItem');
+COMPONENTS_WITHOUT_DEMOS.add('FilterItem');
 
 const componentsFromFioriPackage = new Set(fioriWebComponentsSpec.symbols.map((componentSpec) => componentSpec.module));
 
@@ -326,6 +329,8 @@ const getTypeScriptTypeForProperty = (property) => {
     case 'Node[]':
     case 'HTMLElement[]':
     case 'sap.ui.webcomponents.fiori.ListItem':
+    //todo remove this when fixed in ui5-webcomponents
+    case 'ui5-filter-item-option':
       return {
         tsType: 'ReactNode | ReactNode[]',
         importStatement: "import { ReactNode } from 'react';"
@@ -948,7 +953,7 @@ resolvedWebComponents.forEach((componentSpec) => {
      ${property.name}?: ${tsType.tsType};
     `);
 
-      if (property.hasOwnProperty('defaultValue')) {
+      if (property.hasOwnProperty('defaultValue') && property.defaultValue !== 'undefined') {
         if (tsType.tsType === 'boolean') {
           defaultProps.push(`${property.name}: ${property.defaultValue === 'true'}`);
         } else if (tsType.isEnum === true) {

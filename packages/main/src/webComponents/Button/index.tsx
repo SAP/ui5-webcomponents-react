@@ -71,7 +71,6 @@ Button.defaultProps = {
   design: ButtonDesign.Default,
   disabled: false,
   iconEnd: false,
-  iconSize: undefined,
   submits: false
 };
 

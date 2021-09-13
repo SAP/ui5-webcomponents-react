@@ -70,6 +70,10 @@ export interface DatePickerPropTypes extends Omit<WithWebComponentPropTypes, 'on
    */
   primaryCalendarType?: CalendarType;
   /**
+   * Defines the secondary calendar type. If not set, the calendar will only show the primary calendar type.
+   */
+  secondaryCalendarType?: CalendarType;
+  /**
    * Defines the value state message that will be displayed as pop up under the `DatePicker`.
    *
    * **Note:** If not specified, a default text (in the respective language) will be displayed.
@@ -96,7 +100,17 @@ export interface DatePickerPropTypes extends Omit<WithWebComponentPropTypes, 'on
  */
 const DatePicker: FC<DatePickerPropTypes> = withWebComponent<DatePickerPropTypes>(
   'ui5-date-picker',
-  ['name', 'placeholder', 'value', 'valueState', 'formatPattern', 'maxDate', 'minDate', 'primaryCalendarType'],
+  [
+    'name',
+    'placeholder',
+    'value',
+    'valueState',
+    'formatPattern',
+    'maxDate',
+    'minDate',
+    'primaryCalendarType',
+    'secondaryCalendarType'
+  ],
   ['disabled', 'hideWeekNumbers', 'readonly', 'required'],
   ['valueStateMessage'],
   ['change', 'input']
@@ -107,7 +121,6 @@ DatePicker.displayName = 'DatePicker';
 DatePicker.defaultProps = {
   disabled: false,
   hideWeekNumbers: false,
-  placeholder: undefined,
   readonly: false,
   required: false,
   valueState: ValueState.None

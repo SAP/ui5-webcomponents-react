@@ -36,6 +36,10 @@ export interface CalendarPropTypes extends WithWebComponentPropTypes {
    */
   primaryCalendarType?: CalendarType;
   /**
+   * Defines the secondary calendar type. If not set, the calendar will only show the primary calendar type.
+   */
+  secondaryCalendarType?: CalendarType;
+  /**
    * Defines the selected date or dates (depending on the `selectionMode` property) for this calendar as instances of `CalendarDate`
    */
   children?: ReactNode | ReactNode[];
@@ -54,7 +58,7 @@ export interface CalendarPropTypes extends WithWebComponentPropTypes {
  */
 const Calendar: FC<CalendarPropTypes> = withWebComponent<CalendarPropTypes>(
   'ui5-calendar',
-  ['selectionMode', 'formatPattern', 'maxDate', 'minDate', 'primaryCalendarType'],
+  ['selectionMode', 'formatPattern', 'maxDate', 'minDate', 'primaryCalendarType', 'secondaryCalendarType'],
   ['hideWeekNumbers'],
   [],
   ['selected-dates-change']

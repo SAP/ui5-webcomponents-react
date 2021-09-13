@@ -105,7 +105,6 @@ DurationPicker.defaultProps = {
   secondsStep: 1,
   value: '00:00:00',
   disabled: false,
-  placeholder: undefined,
   readonly: false,
   valueState: ValueState.None
 };

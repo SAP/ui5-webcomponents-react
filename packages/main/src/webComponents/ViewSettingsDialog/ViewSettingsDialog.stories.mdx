@@ -1,6 +1,10 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { ViewSettingsDialog } from '@ui5/webcomponents-react/lib/ViewSettingsDialog';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
+import { FilterItem } from '@ui5/webcomponents-react/lib/FilterItem';
+import { FilterItemOption } from '@ui5/webcomponents-react/lib/FilterItemOption';
+import { ListItemTypes } from '@ui5/webcomponents-react/lib/ListItemTypes';
+import { SortItem } from '@ui5/webcomponents-react/lib/SortItem';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
@@ -9,10 +13,12 @@ import { useRef } from 'react';
 <Meta
   title="Modals & Popovers / ViewSettingsDialog"
   component={ViewSettingsDialog}
+  subcomponents={{ SortItem, FilterItem, FilterItemOption }}
   argTypes={{
     ...createSelectArgTypes({}),
     ...DocsCommonProps,
-    sortItems: { control: { disable: true } }
+    sortItems: { control: { disable: true } },
+    filterItems: { control: { disable: true } }
   }}
   args={{
     style: {},
@@ -57,3 +63,73 @@ A `ViewSettingsDialog` consists of a header, content, and a footer for action bu
 ## Responsive Behavior
 
 `ViewSettingsDialog` stretches on full screen on phones.
+
+# More Examples
+
+## ViewSettingDialog with FilterItems
+
+<Canvas>
+  <Story name="with FilterItems">
+    {(args) => {
+      const dialogRef = useRef(null);
+      const onButtonClick = () => {
+        dialogRef.current.open();
+      };
+      return (
+        <>
+          <Button onClick={onButtonClick}>Open Dialog</Button>
+          <ViewSettingsDialog
+            {...args}
+            ref={dialogRef}
+            filterItems={
+              <>
+                <FilterItem text="FilterItem" />
+                <FilterItem
+                  text="FilterItem w/ FilterItemOption"
+                  values={
+                    <>
+                      <FilterItemOption text="FilterItemOption 1" />
+                      <FilterItemOption text="FilterItemOption 2" />
+                      <FilterItemOption text="FilterItemOption 3" />
+                    </>
+                  }
+                />
+                <FilterItem text="Selected FilterItem" selected />
+                <FilterItem text="Inactive FilterItem" type={ListItemTypes.Inactive} />
+                <FilterItem text="Detail FilterItem type" type={ListItemTypes.Detail} />
+              </>
+            }
+          />
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## ViewSettingDialog with SortItems
+
+<Canvas>
+  <Story name="with SortItems">
+    {(args) => {
+      const dialogRef = useRef(null);
+      const onButtonClick = () => {
+        dialogRef.current.open();
+      };
+      return (
+        <>
+          <Button onClick={onButtonClick}>Open Dialog</Button>
+          <ViewSettingsDialog
+            {...args}
+            ref={dialogRef}
+            sortItems={
+              <>
+                <SortItem text="SortItem 1" />
+                <SortItem text="SortItem 2 - selected" selected />
+              </>
+            }
+          />
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
