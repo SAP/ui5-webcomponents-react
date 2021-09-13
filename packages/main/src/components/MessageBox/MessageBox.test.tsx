@@ -180,7 +180,7 @@ describe('MessageBox', () => {
     jest.spyOn(console, 'error').mockImplementation(() => {});
     const callback = jest.fn();
     const { getByText, getByTestId } = render(
-      <MessageBox onClose={callback} open type={MessageBoxTypes.CONFIRM} initialFocus={MessageBoxActions.Cancel} data-testid="Dialog">
+      <MessageBox onClose={callback} open type={MessageBoxTypes.CONFIRM} initialFocus={MessageBoxActions.CANCEL} data-testid="Dialog">
         Content
       </MessageBox>
     );
