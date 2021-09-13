@@ -74,6 +74,10 @@ export interface DateRangePickerPropTypes extends Omit<WithWebComponentPropTypes
    */
   primaryCalendarType?: CalendarType;
   /**
+   * Defines the secondary calendar type. If not set, the calendar will only show the primary calendar type.
+   */
+  secondaryCalendarType?: CalendarType;
+  /**
    * Defines the value state message that will be displayed as pop up under the `DatePicker`.
    *
    * **Note:** If not specified, a default text (in the respective language) will be displayed.
@@ -109,7 +113,8 @@ const DateRangePicker: FC<DateRangePickerPropTypes> = withWebComponent<DateRange
     'formatPattern',
     'maxDate',
     'minDate',
-    'primaryCalendarType'
+    'primaryCalendarType',
+    'secondaryCalendarType'
   ],
   ['disabled', 'hideWeekNumbers', 'readonly', 'required'],
   ['valueStateMessage'],
@@ -121,7 +126,6 @@ DateRangePicker.displayName = 'DateRangePicker';
 DateRangePicker.defaultProps = {
   disabled: false,
   hideWeekNumbers: false,
-  placeholder: undefined,
   readonly: false,
   required: false,
   valueState: ValueState.None

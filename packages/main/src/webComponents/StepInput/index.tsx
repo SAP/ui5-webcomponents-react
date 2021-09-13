@@ -97,7 +97,6 @@ StepInput.displayName = 'StepInput';
 
 StepInput.defaultProps = {
   disabled: false,
-  placeholder: undefined,
   readonly: false,
   required: false,
   step: 1,

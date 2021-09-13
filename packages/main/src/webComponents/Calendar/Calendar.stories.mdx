@@ -1,29 +1,34 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { Calendar } from '@ui5/webcomponents-react/lib/Calendar';
-import { CalendarSelection } from '@ui5/webcomponents-react/lib/CalendarSelection';
-import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';
-import { CalendarDate } from '@ui5/webcomponents-react/lib/CalendarDate';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
-import { DocsHeader } from '@shared/stories/DocsHeader';
-import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
+import { CalendarSelectionMode } from '@ui5/webcomponents-react/lib/CalendarSelectionMode';
 import '@ui5/webcomponents-localization/dist/features/calendar/Gregorian.js';
 import '@ui5/webcomponents-localization/dist/features/calendar/Buddhist.js';
 import '@ui5/webcomponents-localization/dist/features/calendar/Islamic.js';
 import '@ui5/webcomponents-localization/dist/features/calendar/Japanese.js';
 import '@ui5/webcomponents-localization/dist/features/calendar/Persian.js';
+import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';
+import { CalendarDate } from '@ui5/webcomponents-react/lib/CalendarDate';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
 <Meta
   title="Inputs / Calendar"
   component={Calendar}
   subcomponents={{ CalendarDate }}
   argTypes={{
-    ...createSelectArgTypes({ selectionMode: CalendarSelection, primaryCalendarType: CalendarType }),
+    ...createSelectArgTypes({
+      selectionMode: CalendarSelectionMode,
+      primaryCalendarType: CalendarType,
+      secondaryCalendarType: CalendarType
+    }),
     ...DocsCommonProps,
     children: { control: { disable: true } }
   }}
   args={{
-    primaryCalendarType: CalendarType.Gregorian,
-    selectionMode: CalendarSelection.Single,
+    selectionMode: CalendarSelectionMode.Single,
+    primaryCalendarType: CalendarType,
+    secondaryCalendarType: CalendarType,
     style: {},
     className: '',
     tooltip: '',
@@ -41,10 +46,10 @@ import '@ui5/webcomponents-localization/dist/features/calendar/Persian.js';
 
 <Canvas>
   <Story name="Default">
-    {({ selectedDate, ...props }) => {
+    {(args) => {
       return (
-        <Calendar {...props}>
-          <CalendarDate value={selectedDate} />
+        <Calendar {...args}>
+          <CalendarDate />
         </Calendar>
       );
     }}
@@ -66,27 +71,54 @@ The user can confirm a date selection by pressing over a date inside the days vi
 
 ## Keyboard Handling
 
-The `Calendar` provides advanced keyboard handling. If the `Calendar` is focused the user can choose a picker by using the following shortcuts:
+The `Calendar` provides advanced keyboard handling. When a picker is displayed and focused the user can use the following keyboard shortcuts in order to perform a navigation:
+\- Day picker:
 
 - \[F4\] - Shows month picker
 - \[SHIFT\] + \[F4\] - Shows year picker
-
-When a picker is showed and focused the user can use the following keyboard shortcuts in order to perform a navigation:  
-\- Day picker:
-
 - \[PAGEUP\] - Navigate to the previous month
 - \[PAGEDOWN\] - Navigate to the next month
 - \[SHIFT\] + \[PAGEUP\] - Navigate to the previous year
 - \[SHIFT\] + \[PAGEDOWN\] - Navigate to the next year
 - \[CTRL\] + \[SHIFT\] + \[PAGEUP\] - Navigate ten years backwards
 - \[CTRL\] + \[SHIFT\] + \[PAGEDOWN\] - Navigate ten years forwards
+- \[HOME\] - Navigate to the first day of the week
+- \[END\] - Navigate to the last day of the week
+- \[CTRL\] + \[HOME\] - Navigate to the first day of the month
+- \[CTRL\] + \[END\] - Navigate to the last day of the month
 
 \- Month picker:
 
 - \[PAGEUP\] - Navigate to the previous month
 - \[PAGEDOWN\] - Navigate to the next month
+- \[HOME\] - Navigate to the first month of the current row
+- \[END\] - Navigate to the last month of the current row
+- \[CTRL\] + \[HOME\] - Navigate to the first month of the current year
+- \[CTRL\] + \[END\] - Navigate to the last month of the year
 
 \- Year picker:
 
 - \[PAGEUP\] - Navigate to the previous year range
 - \[PAGEDOWN\] - Navigate the next year range
+- \[HOME\] - Navigate to the first year of the current row
+- \[END\] - Navigate to the last year of the current row
+- \[CTRL\] + \[HOME\] - Navigate to the first year of the current year range
+- \[CTRL\] + \[END\] - Navigate to the last year of the current year range
+
+## Calendar types
+
+The component supports several calendar types - Gregorian, Buddhist, Islamic, Japanese and Persian. By default the Gregorian Calendar is used. In order to use the Buddhist, Islamic, Japanese or Persian calendar, you need to set the `primaryCalendarType` property and import one or more of the following modules:
+
+`import "@ui5/webcomponents-localization/dist/features/calendar/Buddhist.js";`  
+`import "@ui5/webcomponents-localization/dist/features/calendar/Islamic.js";`  
+`import "@ui5/webcomponents-localization/dist/features/calendar/Japanese.js";`  
+`import "@ui5/webcomponents-localization/dist/features/calendar/Persian.js";`
+
+Or, you can use the global configuration and set the `calendarType` key:
+
+```
+<script data-id="sap-ui-config" type="application/json">
+{ "calendarType": "Japanese"
+}
+</script>
+```

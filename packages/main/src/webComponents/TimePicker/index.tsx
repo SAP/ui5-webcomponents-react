@@ -75,9 +75,7 @@ TimePicker.displayName = 'TimePicker';
 
 TimePicker.defaultProps = {
   disabled: false,
-  placeholder: undefined,
   readonly: false,
-  value: undefined,
   valueState: ValueState.None
 };
 

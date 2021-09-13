@@ -8,7 +8,18 @@ export interface ViewSettingsDialogPropTypes extends WithWebComponentPropTypes {
    */
   sortDescending?: boolean;
   /**
-   * Defines the `sortItems` list.
+   * Defines the `filterItems` list.
+   *
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `FilterItem` in order to preserve the intended design.
+   *
+   * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
+   */
+  filterItems?: ReactNode | ReactNode[];
+  /**
+   * Defines the `sortItems` list. **Note:** If you want to use this slot, you need to import used item: `import "@ui5/webcomponents-fiori/dist/SortItem";`
+   *
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `SortItem` in order to preserve the intended design.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
@@ -25,7 +36,7 @@ export interface ViewSettingsDialogPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * The `ViewSettingsDialog` component helps the user to sort data within a list or a table. It consists of several lists like `Sort order` which is built-in and `Sort By` which must be provided by the developer. The selected options can be used to create sorters for the table. The `ViewSettingsDialog` interrupts the current application processing as it is the only focused UI element and the main screen is dimmed/blocked. The `ViewSettingsDialog` is modal, which means that user action is required before returning to the parent window is possible.
+ * The `ViewSettingsDialog` component helps the user to sort data within a list or a table. It consists of several lists like `Sort order` which is built-in and `Sort By` and `Filter By` lists, for which you must be provide items(`SortItem` & `FilterItem` respectively) These options can be used to create sorters for a table. The `ViewSettingsDialog` interrupts the current application processing as it is the only focused UI element and the main screen is dimmed/blocked. The `ViewSettingsDialog` is modal, which means that user action is required before returning to the parent window is possible.
  *
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/ViewSettingsDialog" target="_blank">UI5 Web Components Playground</a>
  */
@@ -33,7 +44,7 @@ const ViewSettingsDialog: FC<ViewSettingsDialogPropTypes> = withWebComponent<Vie
   'ui5-view-settings-dialog',
   [],
   ['sortDescending'],
-  ['sortItems'],
+  ['filterItems', 'sortItems'],
   ['cancel', 'confirm']
 );
 
