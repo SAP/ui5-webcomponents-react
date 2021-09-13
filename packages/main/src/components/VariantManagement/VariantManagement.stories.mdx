@@ -33,13 +33,16 @@ import { VariantItem } from './VariantItem';
 <Canvas>
   <Story name="Default">
     {(props) => (
-      <VariantManagement {...props} showManage>
+      <VariantManagement {...props} showManage showSaveAs>
         <VariantItem labelReadOnly>Variant 1</VariantItem>
         <VariantItem isDefault selected author="Guybrush Threepwood" favorite>
           Variant 2 - Default
         </VariantItem>
         <VariantItem author="LeChuck" global applyAutomatically>
           Variant 3
+        </VariantItem>
+        <VariantItem author="LeChuck" readOnly>
+          Read Only
         </VariantItem>
       </VariantManagement>
     )}

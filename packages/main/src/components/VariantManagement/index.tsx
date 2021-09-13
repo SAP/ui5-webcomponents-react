@@ -21,6 +21,7 @@ import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
 import { stopPropagation } from '../../internal/stopPropagation';
 import { ManageViewsDialog } from './ManageViewsDialog';
+import { SaveViewDialog } from './SaveViewDialog';
 
 export interface VariantItem {
   key: string;
@@ -176,6 +177,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
     closeOnItemSelect,
     disabled,
 
+    showSaveAs,
     children,
     showManage
   } = props;
@@ -186,6 +188,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
 
   const [selectedKey, setSelectedKey] = useState(props.selectedKey ?? variantItems?.[0]?.key ?? null);
   const [manageViewsDialogOpen, setManageViewsDialogOpen] = useState(false);
+  const [saveAsDialogOpen, setSaveAsDialogOpen] = useState(false);
 
   useEffect(() => {
     if (props.selectedKey) {
@@ -198,10 +201,24 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
   };
 
   const handleManageClick = () => {
+    //todo userEvent
     setManageViewsDialogOpen(true);
   };
   const handleManageClose = () => {
+    //todo userEvent
     setManageViewsDialogOpen(false);
+  };
+  const handleSaveAsClick = () => {
+    //todo userEvent
+    setSaveAsDialogOpen(true);
+  };
+  const handleSaveAsClose = () => {
+    //todo userEvent
+    setSaveAsDialogOpen(false);
+  };
+
+  const handleSaveView = (e) => {
+    //todo userEvent
   };
 
   const handleOpenVariantManagement = useCallback(
@@ -248,10 +265,6 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
 
   const passThroughProps = usePassThroughHtmlProps(props, ['onSelect']);
 
-  if (!variantItems || variantItems.length < 1) {
-    return null;
-  }
-
   return (
     <div className={variantManagementClasses.valueOf()} style={style} title={tooltip} {...passThroughProps} ref={ref}>
       <Title level={level} className={classes.title}>
@@ -282,6 +295,11 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
                       Manage
                     </Button>
                   )}
+                  {showSaveAs && (
+                    <Button onClick={handleSaveAsClick} design={ButtonDesign.Transparent}>
+                      Save As
+                    </Button>
+                  )}
                 </>
               }
             />
@@ -308,6 +326,11 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
         document.body
       )}
       {manageViewsDialogOpen && <ManageViewsDialog onAfterClose={handleManageClose}>{children}</ManageViewsDialog>}
+      {saveAsDialogOpen && (
+        <SaveViewDialog onAfterClose={handleSaveAsClose} handleSave={handleSaveView}>
+          {children}
+        </SaveViewDialog>
+      )}
     </div>
   );
 });
