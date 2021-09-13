@@ -1,7 +1,7 @@
 import { debounce } from '@ui5/webcomponents-react-base/dist/Utils';
 import { useRef, useState } from 'react';
 
-export const useCancelAnimationFallback = (noAnimation) => {
+export const useCancelAnimationFallback = (noAnimation: boolean) => {
   const [isMounted, setIsMounted] = useState(true);
   const cancelAnimationFallback = () => {
     setIsMounted(false);
