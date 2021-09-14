@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.131.19](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.18...v0.131.19) (2021-09-14)
+
+
+### Bug Fixes
+
+* **MessageBox:** actions receive unique ids ([#2086](https://github.com/SAP/ui5-webcomponents-react/issues/2086)) ([14fbd6c](https://github.com/SAP/ui5-webcomponents-react/commit/14fbd6cf5d1573abd2d15f8165d91dcf02b122c2))
+
+
+### Features
+
+* update to @ui5/webcomponents 0.31.17 ([44e6aa7](https://github.com/SAP/ui5-webcomponents-react/commit/44e6aa7fe519f15e2978de62678a2f8e9a008cb2))
+
+
+
+
+
 ## [0.131.18](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.17...v0.131.18) (2021-09-03)
 
 
