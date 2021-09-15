@@ -479,10 +479,8 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
   const onToggleHeaderContentVisibility = (e) => {
     scrollTimout.current = performance.now() + 500;
     if (!e.detail.visible) {
-      console.log('collapse');
       objectPageRef.current?.classList.add(classes.headerCollapsed);
     } else {
-      console.log('expand');
       setScrolledHeaderExpanded(true);
       objectPageRef.current?.classList.remove(classes.headerCollapsed);
     }
