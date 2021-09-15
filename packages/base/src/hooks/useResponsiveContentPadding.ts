@@ -24,6 +24,7 @@ export const useResponsiveContentPadding = (element: HTMLElement) => {
 
   useEffect(() => {
     const observer = new ResizeObserver(([el]) => {
+      cancelAnimationFrame(requestAnimationFrameRef.current);
       requestAnimationFrameRef.current = requestAnimationFrame(() => {
         setCurrentRange(() => getCurrentRange(el.contentRect.width)?.name);
       });
