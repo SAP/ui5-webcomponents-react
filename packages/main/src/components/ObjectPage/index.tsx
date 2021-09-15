@@ -22,7 +22,7 @@ import { PopoverHorizontalAlign } from '../../enums/PopoverHorizontalAlign';
 import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
 import { stopPropagation } from '../../internal/stopPropagation';
 import { useObserveHeights } from '../../internal/useObserveHeights';
-import { useResponsiveContentPadding } from '../../internal/useResponsiveContentPadding';
+import { useResponsiveContentPadding } from '@ui5/webcomponents-react-base/dist/hooks';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
 import { ObjectPageSectionPropTypes } from '../ObjectPageSection';
 import { ObjectPageSubSectionPropTypes } from '../ObjectPageSubSection';
@@ -316,12 +316,13 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
   // change selected section when prop is changed (external change)
   const prevSelectedSectionId = useRef();
   const [timeStamp, setTimeStamp] = useState(0);
+  const requestAnimationFrameRef = useRef<undefined | number>();
   useEffect(() => {
     if (selectedSectionId) {
       if (mode === ObjectPageMode.Default) {
         // wait for DOM draw, otherwise initial scroll won't work as intended
         if (timeStamp < 750 && timeStamp !== undefined) {
-          requestAnimationFrame((internalTimestamp) => {
+          requestAnimationFrameRef.current = requestAnimationFrame((internalTimestamp) => {
             setTimeStamp(internalTimestamp);
           });
         } else {
@@ -332,6 +333,9 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
         programmaticallySetSection();
       }
     }
+    return () => {
+      cancelAnimationFrame(requestAnimationFrameRef.current);
+    };
   }, [timeStamp, selectedSectionId, firstSectionId, debouncedOnSectionChange]);
 
   // section was selected by clicking on the anchor bar buttons
