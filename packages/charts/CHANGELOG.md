@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.8](https://github.com/SAP/ui5-webcomponents-react/compare/v0.18.7...v0.18.8) (2021-09-15)
+
+
+### Bug Fixes
+
+* **Bar & ColumnChart:** always show labels if enough space is available ([#2100](https://github.com/SAP/ui5-webcomponents-react/issues/2100)) ([09b7e25](https://github.com/SAP/ui5-webcomponents-react/commit/09b7e250a642b5aed86cc1ded6007d7c6d951953))
+* **charts:** show data labels with negative values ([#2079](https://github.com/SAP/ui5-webcomponents-react/issues/2079)) ([3d1c6c1](https://github.com/SAP/ui5-webcomponents-react/commit/3d1c6c1a844246b55455714d31d53fd037c3ca25))
+
+
+
+
+
 ## [0.18.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.18.5...v0.18.6) (2021-08-31)
 
 **Note:** Version bump only for package @ui5/webcomponents-react-charts
