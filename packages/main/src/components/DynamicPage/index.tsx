@@ -21,7 +21,7 @@ import React, {
 } from 'react';
 import { createUseStyles } from 'react-jss';
 import { useObserveHeights } from '../../internal/useObserveHeights';
-import { useResponsiveContentPadding } from '../../internal/useResponsiveContentPadding';
+import { useResponsiveContentPadding } from '@ui5/webcomponents-react-base/dist/hooks';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
 import { styles } from './DynamicPage.jss';
 
