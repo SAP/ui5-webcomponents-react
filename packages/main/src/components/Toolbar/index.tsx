@@ -1,5 +1,5 @@
 import { createUseStyles } from 'react-jss';
-import { useConsolidatedRef, useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useConsolidatedRef, useI18nBundle, useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base/dist/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
@@ -19,7 +19,6 @@ import React, {
   RefObject,
   useCallback,
   useEffect,
-  useLayoutEffect,
   useMemo,
   useRef,
   useState
@@ -129,9 +128,10 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
 
   toolbarClasses.putIfPresent(overflowNeeded && classes.hasOverflow);
 
+  const requestAnimationFrameRef = useRef<undefined | number>();
   const calculateVisibleItems = useCallback(() => {
     const OVERFLOW_BUTTON_WIDTH = 32 + 8;
-    requestAnimationFrame(() => {
+    requestAnimationFrameRef.current = requestAnimationFrame(() => {
       if (!outerContainer.current) return;
       const availableWidth = outerContainer.current.getBoundingClientRect().width;
       let consumedWidth = 0;
@@ -180,11 +180,12 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
       observer.current.observe(outerContainer.current);
     }
     return () => {
+      cancelAnimationFrame(requestAnimationFrameRef.current);
       observer.current.disconnect();
     };
   }, [outerContainer.current]);
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     calculateVisibleItems();
   }, [calculateVisibleItems]);
 
