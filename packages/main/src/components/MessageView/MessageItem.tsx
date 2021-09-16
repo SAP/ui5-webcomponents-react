@@ -192,7 +192,7 @@ const MessageItem = forwardRef((props: MessageItemPropTypes, ref: Ref<Ui5DomRef>
   );
 });
 
-MessageItem.displayName = 'Message';
+MessageItem.displayName = 'MessageItem';
 
 MessageItem.defaultProps = {
   type: ValueState.None
