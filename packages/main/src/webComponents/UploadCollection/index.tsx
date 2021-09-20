@@ -5,6 +5,10 @@ import { FC, ReactNode } from 'react';
 
 export interface UploadCollectionPropTypes extends Omit<WithWebComponentPropTypes, 'onDrop'> {
   /**
+   * Sets the accessible aria name of the component.
+   */
+  accessibleName?: string;
+  /**
    * Defines the mode of the `UploadCollection`.
    *
    * **Note:** Available options are `None`, `SingleSelect`, `MultiSelect`, and `Delete`.
@@ -31,6 +35,8 @@ export interface UploadCollectionPropTypes extends Omit<WithWebComponentPropType
   children?: ReactNode | ReactNode[];
   /**
    * Defines the `UploadCollection` header.
+   *
+   * **Note:** If `header` slot is provided, the labelling of the `UploadCollection` is a responsibility of the application developer. `accessibleName` should be used.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
@@ -61,7 +67,7 @@ export interface UploadCollectionPropTypes extends Omit<WithWebComponentPropType
  */
 const UploadCollection: FC<UploadCollectionPropTypes> = withWebComponent<UploadCollectionPropTypes>(
   'ui5-upload-collection',
-  ['mode', 'noDataDescription', 'noDataText'],
+  ['accessibleName', 'mode', 'noDataDescription', 'noDataText'],
   ['noDnd'],
   ['header'],
   ['drop', 'file-deleted', 'selection-change']
