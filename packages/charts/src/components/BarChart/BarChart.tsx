@@ -24,6 +24,7 @@ import {
   YAxis
 } from 'recharts';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
+import { useCancelAnimationFallback } from '../../hooks/useCancelAnimationFallback';
 import { useChartMargin } from '../../hooks/useChartMargin';
 import { useLabelFormatter } from '../../hooks/useLabelFormatter';
 import { useLongestYAxisLabelBar } from '../../hooks/useLongestYAxisLabelBar';
@@ -216,6 +217,8 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
   const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick', 'onClick']);
   const isRTL = useIsRTL(chartRef);
 
+  const { isMounted, handleBarAnimationStart, handleBarAnimationEnd } = useCancelAnimationFallback(noAnimation);
+
   return (
     <ChartContainer
       dataset={dataset}
@@ -302,41 +305,44 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
               />
             );
           })}
-        {measures.map((element, index) => {
-          return (
-            <Bar
-              stackId={element.stackId}
-              fillOpacity={element.opacity}
-              key={element.accessor}
-              name={element.label ?? element.accessor}
-              strokeOpacity={element.opacity}
-              type="monotone"
-              dataKey={element.accessor}
-              fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
-              stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
-              barSize={element.width}
-              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-              // @ts-ignore
-              onClick={onDataPointClickInternal}
-              isAnimationActive={noAnimation === false}
-            >
-              <LabelList
-                data={dataset}
-                valueAccessor={valueAccessor(element.accessor)}
-                content={<ChartDataLabel config={element} chartType="bar" position={'insideRight'} />}
-              />
-              {dataset.map((data, i) => {
-                return (
-                  <Cell
-                    key={i}
-                    fill={getCellColors(element, data, index)}
-                    stroke={getCellColors(element, data, index)}
-                  />
-                );
-              })}
-            </Bar>
-          );
-        })}
+        {isMounted &&
+          measures.map((element, index) => {
+            return (
+              <Bar
+                stackId={element.stackId}
+                fillOpacity={element.opacity}
+                key={element.accessor}
+                name={element.label ?? element.accessor}
+                strokeOpacity={element.opacity}
+                type="monotone"
+                dataKey={element.accessor}
+                fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
+                stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
+                barSize={element.width}
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                onClick={onDataPointClickInternal}
+                isAnimationActive={noAnimation === false}
+                onAnimationStart={handleBarAnimationStart}
+                onAnimationEnd={handleBarAnimationEnd}
+              >
+                <LabelList
+                  data={dataset}
+                  valueAccessor={valueAccessor(element.accessor)}
+                  content={<ChartDataLabel config={element} chartType="bar" position={'insideRight'} />}
+                />
+                {dataset.map((data, i) => {
+                  return (
+                    <Cell
+                      key={i}
+                      fill={getCellColors(element, data, index)}
+                      stroke={getCellColors(element, data, index)}
+                    />
+                  );
+                })}
+              </Bar>
+            );
+          })}
         {!noLegend && (
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore

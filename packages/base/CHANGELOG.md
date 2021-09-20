@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.8](https://github.com/SAP/ui5-webcomponents-react/compare/v0.18.7...v0.18.8) (2021-09-15)
+
+
+### Features
+
+* export `useResponsiveContentPadding` hook in base package ([#2125](https://github.com/SAP/ui5-webcomponents-react/issues/2125)) ([503aecb](https://github.com/SAP/ui5-webcomponents-react/commit/503aecbcf4b1acd3e5871566a53fedff062f604a))
+
+
+
+
+
 ## [0.18.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.18.5...v0.18.6) (2021-08-31)
 
 

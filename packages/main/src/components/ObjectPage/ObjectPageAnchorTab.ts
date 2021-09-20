@@ -4,7 +4,7 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingPar
 import Icon from '@ui5/webcomponents/dist/Icon.js';
 import Tab from '@ui5/webcomponents/dist/Tab.js';
 import TabContainer from '@ui5/webcomponents/dist/TabContainer.js';
-import { ifDefined } from 'lit-html/directives/if-defined';
+import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { DetailedHTMLProps, HTMLAttributes, MouseEventHandler } from 'react';
 
 interface ObjectPageAnchorTabPropTypes extends HTMLAttributes<HTMLElement> {

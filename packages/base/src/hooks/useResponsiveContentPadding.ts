@@ -12,32 +12,31 @@ const useStyles = createUseStyles(
   { name: 'StdExtPadding' }
 );
 
-export const useResponsiveContentPadding = (element) => {
+/**
+ * Hook for creating a style class, which sets `padding-left` and `padding-right` depending on the width of the element.
+ *
+ * @param {HTMLElement} element
+ */
+export const useResponsiveContentPadding = (element: HTMLElement) => {
   const [currentRange, setCurrentRange] = useState(getCurrentRange().name);
-  const resizeTimeout = useRef(null);
-  const isMounted = useRef(false);
   const classes = useStyles();
+  const requestAnimationFrameRef = useRef<number | undefined>();
 
   useEffect(() => {
-    isMounted.current = true;
     const observer = new ResizeObserver(([el]) => {
-      if (resizeTimeout.current) {
-        clearTimeout(resizeTimeout.current);
-      }
-      resizeTimeout.current = setTimeout(() => {
-        if (isMounted.current) {
-          setCurrentRange(() => getCurrentRange(el.contentRect.width)?.name);
-        }
-      }, 150);
+      cancelAnimationFrame(requestAnimationFrameRef.current);
+      requestAnimationFrameRef.current = requestAnimationFrame(() => {
+        setCurrentRange(() => getCurrentRange(el.contentRect.width)?.name);
+      });
     });
     if (element) {
       observer.observe(element);
     }
     return () => {
-      isMounted.current = false;
       observer.disconnect();
+      cancelAnimationFrame(requestAnimationFrameRef.current);
     };
-  }, [element, isMounted]);
+  }, [element]);
 
   return classes[currentRange];
 };

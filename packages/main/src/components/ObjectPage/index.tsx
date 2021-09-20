@@ -22,7 +22,7 @@ import { PopoverHorizontalAlign } from '../../enums/PopoverHorizontalAlign';
 import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
 import { stopPropagation } from '../../internal/stopPropagation';
 import { useObserveHeights } from '../../internal/useObserveHeights';
-import { useResponsiveContentPadding } from '../../internal/useResponsiveContentPadding';
+import { useResponsiveContentPadding } from '@ui5/webcomponents-react-base/dist/hooks';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
 import { ObjectPageSectionPropTypes } from '../ObjectPageSection';
 import { ObjectPageSubSectionPropTypes } from '../ObjectPageSubSection';
@@ -316,12 +316,13 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
   // change selected section when prop is changed (external change)
   const prevSelectedSectionId = useRef();
   const [timeStamp, setTimeStamp] = useState(0);
+  const requestAnimationFrameRef = useRef<undefined | number>();
   useEffect(() => {
     if (selectedSectionId) {
       if (mode === ObjectPageMode.Default) {
         // wait for DOM draw, otherwise initial scroll won't work as intended
         if (timeStamp < 750 && timeStamp !== undefined) {
-          requestAnimationFrame((internalTimestamp) => {
+          requestAnimationFrameRef.current = requestAnimationFrame((internalTimestamp) => {
             setTimeStamp(internalTimestamp);
           });
         } else {
@@ -332,6 +333,9 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
         programmaticallySetSection();
       }
     }
+    return () => {
+      cancelAnimationFrame(requestAnimationFrameRef.current);
+    };
   }, [timeStamp, selectedSectionId, firstSectionId, debouncedOnSectionChange]);
 
   // section was selected by clicking on the anchor bar buttons
@@ -475,17 +479,16 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     [mode, setInternalSelectedSectionId, setSelectedSubSectionId, isProgrammaticallyScrolled, children]
   );
   const [scrolledHeaderExpanded, setScrolledHeaderExpanded] = useState(false);
-  const onToggleHeaderContentVisibility = useCallback(
-    (e) => {
-      if (!e.detail.visible) {
-        objectPageRef.current?.classList.add(classes.headerCollapsed);
-      } else {
-        setScrolledHeaderExpanded(true);
-        objectPageRef.current?.classList.remove(classes.headerCollapsed);
-      }
-    },
-    [objectPageRef.current, classes.headerCollapsed]
-  );
+  const scrollTimout = useRef(0);
+  const onToggleHeaderContentVisibility = (e) => {
+    scrollTimout.current = performance.now() + 500;
+    if (!e.detail.visible) {
+      objectPageRef.current?.classList.add(classes.headerCollapsed);
+    } else {
+      setScrolledHeaderExpanded(true);
+      objectPageRef.current?.classList.remove(classes.headerCollapsed);
+    }
+  };
 
   const objectPageClasses = StyleClassHelper.of(classes.objectPage, GlobalStyleClasses.sapScrollBar);
   if (className) {
@@ -544,7 +547,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
           break;
         }
       }
-      const currentSectionId = extractSectionIdFromHtmlId(currentSection.id);
+      const currentSectionId = extractSectionIdFromHtmlId(currentSection?.id);
       if (currentSectionId !== internalSelectedSectionId) {
         setInternalSelectedSectionId(currentSectionId);
         debouncedOnSectionChange(
@@ -679,6 +682,9 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
   const prevScrollTop = useRef();
   const onObjectPageScroll = useCallback(
     (e) => {
+      if (scrollTimout.current >= performance.now()) {
+        return;
+      }
       scrollEvent.current = e;
       if (typeof props.onScroll === 'function') {
         props.onScroll(e);
@@ -704,6 +710,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
       }
     },
     [
+      scrollTimout.current,
       topHeaderHeight,
       headerPinned,
       props.onScroll,

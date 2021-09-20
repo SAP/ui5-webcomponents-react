@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.8](https://github.com/SAP/ui5-webcomponents-react/compare/v0.18.7...v0.18.8) (2021-09-15)
+
+
+### Bug Fixes
+
+* **Bar & ColumnChart:** always show labels if enough space is available ([#2100](https://github.com/SAP/ui5-webcomponents-react/issues/2100)) ([09b7e25](https://github.com/SAP/ui5-webcomponents-react/commit/09b7e250a642b5aed86cc1ded6007d7c6d951953))
+* **charts:** show data labels with negative values ([#2079](https://github.com/SAP/ui5-webcomponents-react/issues/2079)) ([3d1c6c1](https://github.com/SAP/ui5-webcomponents-react/commit/3d1c6c1a844246b55455714d31d53fd037c3ca25))
+* **DynamicPage:** footer always sticks to bottom of the page ([#2083](https://github.com/SAP/ui5-webcomponents-react/issues/2083)) ([4d291cb](https://github.com/SAP/ui5-webcomponents-react/commit/4d291cb0c20ad5a4bad04ad84cffa6967f0ad8e5))
+* **MessageBox:** actions receive unique ids ([#2086](https://github.com/SAP/ui5-webcomponents-react/issues/2086)) ([a6980e1](https://github.com/SAP/ui5-webcomponents-react/commit/a6980e15975ea17c141f2d0971efb3e5fdf8e737))
+* **ObjectPage:** consistently toggle header after scrolling  ([#2122](https://github.com/SAP/ui5-webcomponents-react/issues/2122)) ([c116579](https://github.com/SAP/ui5-webcomponents-react/commit/c116579ef1b8b4136d47719b3250f9ba6601655d))
+* **ObjectPage:** programatically remove sections without crashing ([#2085](https://github.com/SAP/ui5-webcomponents-react/issues/2085)) ([d043d6f](https://github.com/SAP/ui5-webcomponents-react/commit/d043d6f60429c7fd14943b6f9ae30bd32ad36651))
+
+
+### Features
+
+* allow disabling sapScrollBar ([#2078](https://github.com/SAP/ui5-webcomponents-react/issues/2078)) ([77908af](https://github.com/SAP/ui5-webcomponents-react/commit/77908af6daa997052bcf485ad4fe8d5f8ef1f8f6))
+* export `useResponsiveContentPadding` hook in base package ([#2125](https://github.com/SAP/ui5-webcomponents-react/issues/2125)) ([503aecb](https://github.com/SAP/ui5-webcomponents-react/commit/503aecbcf4b1acd3e5871566a53fedff062f604a))
+
+
+
+
+
 ## [0.18.7](https://github.com/SAP/ui5-webcomponents-react/compare/v0.18.6...v0.18.7) (2021-09-01)
 
 
