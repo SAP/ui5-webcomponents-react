@@ -188,6 +188,4 @@ describe('MessageBox', () => {
 
     expect(dialogInitialFocus).toEqual(cancelBtnId);
   });
-
-  createPassThroughPropsTest(MessageBox);
 });

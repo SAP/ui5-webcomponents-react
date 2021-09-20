@@ -4,12 +4,7 @@ import '@ui5/webcomponents-icons/dist/message-information';
 import '@ui5/webcomponents-icons/dist/message-success';
 import '@ui5/webcomponents-icons/dist/message-warning';
 import '@ui5/webcomponents-icons/dist/question-mark';
-import {
-  useConsolidatedRef,
-  useI18nBundle,
-  useIsomorphicLayoutEffect,
-  usePassThroughHtmlProps
-} from '@ui5/webcomponents-react-base/dist/hooks';
+import { useConsolidatedRef, useI18nBundle, useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base/dist/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import {
@@ -31,14 +26,13 @@ import {
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
-import { Dialog } from '@ui5/webcomponents-react/dist/Dialog';
+import { Dialog, DialogPropTypes } from '@ui5/webcomponents-react/dist/Dialog';
 import { Icon } from '@ui5/webcomponents-react/dist/Icon';
 import { MessageBoxActions } from '@ui5/webcomponents-react/dist/MessageBoxActions';
 import { MessageBoxTypes } from '@ui5/webcomponents-react/dist/MessageBoxTypes';
 import { Text } from '@ui5/webcomponents-react/dist/Text';
 import { Title } from '@ui5/webcomponents-react/dist/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { Ui5DialogDomRef } from '@ui5/webcomponents-react/interfaces/Ui5DialogDomRef';
 import React, {
@@ -71,7 +65,7 @@ const deprecatedActions = new Set<MessageBoxAction>([
   MessageBoxActions.YES
 ]);
 
-export interface MessageBoxPropTypes extends CommonProps {
+export interface MessageBoxPropTypes extends Omit<DialogPropTypes, 'children' | 'footer' | 'headerText'> {
   /**
    * Flag whether the Message Box should be opened or closed
    */
@@ -155,7 +149,8 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDom
     actions,
     emphasizedAction,
     onClose,
-    initialFocus
+    initialFocus,
+    ...rest
   } = props;
   const dialogRef = useConsolidatedRef<Ui5DialogDomRef>(ref);
 
@@ -269,8 +264,6 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDom
     }
   }, [dialogRef.current, open]);
 
-  const passThroughProps = usePassThroughHtmlProps(props, ['onClose']);
-
   const messageBoxClassNames = StyleClassHelper.of(classes.messageBox).putIfPresent(className).className;
   const internalActions = getActions();
 
@@ -343,6 +336,8 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDom
       }
     }
   }, [emphasizedAction]);
+  // @ts-ignore
+  const { footer, headerText, ...restWithoutOmitted } = rest;
   // todo: remove lowercase conversions
   return (
     <Dialog
@@ -353,7 +348,7 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDom
       className={messageBoxClassNames}
       onAfterClose={open ? handleOnClose : stopPropagation}
       initialFocus={getInitialFocus()}
-      {...passThroughProps}
+      {...restWithoutOmitted}
     >
       <header slot="header" className={classes.header} data-type={type}>
         {iconToRender}
