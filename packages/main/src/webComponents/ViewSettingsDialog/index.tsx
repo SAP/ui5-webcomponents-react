@@ -8,9 +8,9 @@ export interface ViewSettingsDialogPropTypes extends WithWebComponentPropTypes {
    */
   sortDescending?: boolean;
   /**
-   * Defines the `filterItems` list.
+   * Defines the `filterItems` list. **Note:** If you want to use this slot, you need to import used item: `import "@ui5/webcomponents-fiori/dist/FilterItem";`
    *
-   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `FilterItem` in order to preserve the intended design.
+   * * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `FilterItem` in order to preserve the intended design.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
@@ -18,8 +18,6 @@ export interface ViewSettingsDialogPropTypes extends WithWebComponentPropTypes {
   filterItems?: ReactNode | ReactNode[];
   /**
    * Defines the `sortItems` list. **Note:** If you want to use this slot, you need to import used item: `import "@ui5/webcomponents-fiori/dist/SortItem";`
-   *
-   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `SortItem` in order to preserve the intended design.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
