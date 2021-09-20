@@ -350,10 +350,12 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDom
       initialFocus={getInitialFocus()}
       {...restWithoutOmitted}
     >
-      <header slot="header" className={classes.header} data-type={type}>
-        {iconToRender}
-        <Title level={TitleLevel.H2}>{titleToRender()}</Title>
-      </header>
+      {!props.header && (
+        <header slot="header" className={classes.header} data-type={type}>
+          {iconToRender}
+          <Title level={TitleLevel.H2}>{titleToRender()}</Title>
+        </header>
+      )}
       <Text className={classes.content}>{children}</Text>
       <footer slot="footer" className={classes.footer}>
         {internalActions.map((action, index) => {
