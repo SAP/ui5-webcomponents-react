@@ -1,5 +1,5 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/Dialog';
+import '@ui5/webcomponents/dist/Dialog.js';
 import { FC, ReactNode } from 'react';
 
 export interface DialogPropTypes extends WithWebComponentPropTypes {

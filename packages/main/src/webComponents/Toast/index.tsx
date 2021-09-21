@@ -1,6 +1,6 @@
 import { ToastPlacement } from '@ui5/webcomponents-react/lib/ToastPlacement';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/Toast';
+import '@ui5/webcomponents/dist/Toast.js';
 import { FC, ReactNode } from 'react';
 
 export interface ToastPropTypes extends WithWebComponentPropTypes {

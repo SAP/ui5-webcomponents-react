@@ -1,5 +1,5 @@
 import React from 'react';
-import { isMobile } from '@ui5/webcomponents-base/dist/Device';
+import { isMobile } from '@ui5/webcomponents-base/dist/Device.js';
 
 const style = {
   centered: {

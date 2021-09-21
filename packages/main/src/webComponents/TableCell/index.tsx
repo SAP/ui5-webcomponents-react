@@ -1,5 +1,5 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/TableCell';
+import '@ui5/webcomponents/dist/TableCell.js';
 import { FC, ReactNode } from 'react';
 
 export interface TableCellPropTypes extends WithWebComponentPropTypes {

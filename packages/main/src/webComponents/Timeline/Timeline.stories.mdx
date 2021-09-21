@@ -5,16 +5,16 @@ import { TimelineLayout } from '@ui5/webcomponents-react/lib/TimelineLayout';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
-import '@ui5/webcomponents-icons/dist/calendar';
-import '@ui5/webcomponents-icons/dist/phone';
-import '@ui5/webcomponents-icons/dist/wrench';
+import '@ui5/webcomponents-icons/dist/calendar.js';
+import '@ui5/webcomponents-icons/dist/phone.js';
+import '@ui5/webcomponents-icons/dist/wrench.js';
 
 <Meta
   title="Data Display / Timeline"
   component={Timeline}
   subcomponents={{ TimelineItem }}
   argTypes={{
-    ...createSelectArgTypes({layout: TimelineLayout }),
+    ...createSelectArgTypes({ layout: TimelineLayout }),
     ...DocsCommonProps,
     children: { control: { disable: true } }
   }}

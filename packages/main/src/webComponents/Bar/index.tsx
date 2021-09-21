@@ -1,6 +1,6 @@
 import { BarDesign } from '@ui5/webcomponents-react/lib/BarDesign';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents-fiori/dist/Bar';
+import '@ui5/webcomponents-fiori/dist/Bar.js';
 import { FC, ReactNode } from 'react';
 
 export interface BarPropTypes extends WithWebComponentPropTypes {

@@ -227,7 +227,7 @@ function MyOldComponent() {
 // becomes
 
 import { Bar, ButtonDesign, Label, Page } from '@ui5/webcomponents-react';
-import '@ui5/webcomponents-icons/dist/navigation-left-arrow';
+import '@ui5/webcomponents-icons/dist/navigation-left-arrow.js';
 
 function MyNewComponent() {
   return (
@@ -761,8 +761,8 @@ In case you want to change your applications' theme, you have to import a couple
 
 ```js
 import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme';
-import '@ui5/webcomponents/dist/Assets';
-import '@ui5/webcomponents-fiori/dist/Assets'; // only if you are using the ShellBar, Product Switch or UploadCollection
+import '@ui5/webcomponents/dist/Assets.js';
+import '@ui5/webcomponents-fiori/dist/Assets.js'; // only if you are using the ShellBar, Product Switch or UploadCollection
 ```
 
 Now you can call `setTheme` with a string parameter of the new theme.  

@@ -1,5 +1,5 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents-fiori/dist/SideNavigation';
+import '@ui5/webcomponents-fiori/dist/SideNavigation.js';
 import { FC, ReactNode } from 'react';
 
 export interface SideNavigationPropTypes extends WithWebComponentPropTypes {

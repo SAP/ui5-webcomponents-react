@@ -1,8 +1,8 @@
-import '@ui5/webcomponents-icons/dist/hint';
-import '@ui5/webcomponents-icons/dist/status-critical';
-import '@ui5/webcomponents-icons/dist/status-inactive';
-import '@ui5/webcomponents-icons/dist/status-negative';
-import '@ui5/webcomponents-icons/dist/status-positive';
+import '@ui5/webcomponents-icons/dist/hint.js';
+import '@ui5/webcomponents-icons/dist/status-critical.js';
+import '@ui5/webcomponents-icons/dist/status-inactive.js';
+import '@ui5/webcomponents-icons/dist/status-negative.js';
+import '@ui5/webcomponents-icons/dist/status-positive.js';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';

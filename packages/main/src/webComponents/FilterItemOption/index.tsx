@@ -1,5 +1,5 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents-fiori/dist/FilterItemOption';
+import '@ui5/webcomponents-fiori/dist/FilterItemOption.js';
 import { FC } from 'react';
 
 export interface FilterItemOptionPropTypes extends WithWebComponentPropTypes {

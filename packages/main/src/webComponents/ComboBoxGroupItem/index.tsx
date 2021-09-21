@@ -1,5 +1,5 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/ComboBoxGroupItem';
+import '@ui5/webcomponents/dist/ComboBoxGroupItem.js';
 import { FC } from 'react';
 
 export interface ComboBoxGroupItemPropTypes extends WithWebComponentPropTypes {

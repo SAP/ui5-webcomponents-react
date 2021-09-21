@@ -1,5 +1,5 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/Slider';
+import '@ui5/webcomponents/dist/Slider.js';
 import { FC } from 'react';
 
 export interface SliderPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput'> {

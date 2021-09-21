@@ -1,5 +1,5 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/Option';
+import '@ui5/webcomponents/dist/Option.js';
 import { FC } from 'react';
 
 export interface OptionPropTypes extends WithWebComponentPropTypes {

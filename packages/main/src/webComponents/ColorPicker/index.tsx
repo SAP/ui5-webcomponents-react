@@ -1,5 +1,5 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/ColorPicker';
+import '@ui5/webcomponents/dist/ColorPicker.js';
 import { FC } from 'react';
 
 export interface ColorPickerPropTypes extends Omit<WithWebComponentPropTypes, 'onChange'> {

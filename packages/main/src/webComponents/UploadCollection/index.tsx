@@ -1,6 +1,6 @@
 import { ListMode } from '@ui5/webcomponents-react/lib/ListMode';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents-fiori/dist/UploadCollection';
+import '@ui5/webcomponents-fiori/dist/UploadCollection.js';
 import { FC, ReactNode } from 'react';
 
 export interface UploadCollectionPropTypes extends Omit<WithWebComponentPropTypes, 'onDrop'> {

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Field, Form, Formik } from 'formik';
 import { Button, ButtonDesign, FlexBox, FlexBoxAlignItems, FlexBoxDirection, InputType, Title, TitleLevel } from '@ui5/webcomponents-react';
-import '@ui5/webcomponents-icons/dist/paper-plane';
+import '@ui5/webcomponents-icons/dist/paper-plane.js';
 
 import Input from '../../../components/Form/Input/Input';
 import Switch from '../../../components/Form/Switch/Switch';

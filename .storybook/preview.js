@@ -1,9 +1,9 @@
 import { makeDecorator } from '@storybook/addons';
 import { addDecorator, addParameters } from '@storybook/react';
 import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme';
-import '@ui5/webcomponents/dist/Assets';
-import '@ui5/webcomponents-fiori/dist/Assets';
-import '@ui5/webcomponents-icons/dist/Assets';
+import '@ui5/webcomponents/dist/Assets.js';
+import '@ui5/webcomponents-fiori/dist/Assets.js';
+import '@ui5/webcomponents-icons/dist/Assets.js';
 import '@ui5/webcomponents-react/dist/Assets';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import { ThemeProvider } from '@ui5/webcomponents-react/lib/ThemeProvider';

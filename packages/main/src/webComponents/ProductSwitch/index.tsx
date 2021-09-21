@@ -1,5 +1,5 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents-fiori/dist/ProductSwitch';
+import '@ui5/webcomponents-fiori/dist/ProductSwitch.js';
 import { FC, ReactNode } from 'react';
 
 export interface ProductSwitchPropTypes extends WithWebComponentPropTypes {

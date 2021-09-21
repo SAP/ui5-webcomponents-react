@@ -1,4 +1,4 @@
-import '@ui5/webcomponents-icons/dist/decline';
+import '@ui5/webcomponents-icons/dist/decline.js';
 import { useI18nBundle } from '@ui5/webcomponents-react-base/lib/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';

@@ -53,7 +53,7 @@ interface System {
   };
 }
 
-declare module '@ui5/webcomponents-base/dist/Device' {
+declare module '@ui5/webcomponents-base/dist/Device.js' {
   export function isIE(): boolean;
 
   export function isEdge(): boolean;

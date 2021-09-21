@@ -1,7 +1,7 @@
 import { AvatarGroupType } from '@ui5/webcomponents-react/lib/AvatarGroupType';
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/AvatarGroup';
+import '@ui5/webcomponents/dist/AvatarGroup.js';
 import { FC, ReactNode } from 'react';
 
 export interface AvatarGroupPropTypes extends Omit<WithWebComponentPropTypes, 'onClick'> {

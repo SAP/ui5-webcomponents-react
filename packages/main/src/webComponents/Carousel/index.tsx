@@ -1,6 +1,6 @@
 import { CarouselArrowsPlacement } from '@ui5/webcomponents-react/lib/CarouselArrowsPlacement';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/Carousel';
+import '@ui5/webcomponents/dist/Carousel.js';
 import { FC, ReactNode } from 'react';
 
 export interface CarouselPropTypes extends WithWebComponentPropTypes {

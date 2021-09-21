@@ -1,5 +1,5 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/ColorPalette';
+import '@ui5/webcomponents/dist/ColorPalette.js';
 import { CSSProperties, FC, ReactNode } from 'react';
 
 export interface ColorPalettePropTypes extends Omit<WithWebComponentPropTypes, 'onChange'> {

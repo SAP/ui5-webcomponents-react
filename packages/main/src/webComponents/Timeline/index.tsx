@@ -1,6 +1,6 @@
 import { TimelineLayout } from '@ui5/webcomponents-react/lib/TimelineLayout';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents-fiori/dist/Timeline';
+import '@ui5/webcomponents-fiori/dist/Timeline.js';
 import { FC, ReactNode } from 'react';
 
 export interface TimelinePropTypes extends WithWebComponentPropTypes {

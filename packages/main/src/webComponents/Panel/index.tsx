@@ -1,7 +1,7 @@
 import { PanelAccessibleRoles } from '@ui5/webcomponents-react/lib/PanelAccessibleRoles';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/Panel';
+import '@ui5/webcomponents/dist/Panel.js';
 import { FC, ReactNode } from 'react';
 
 export interface PanelPropTypes extends WithWebComponentPropTypes {

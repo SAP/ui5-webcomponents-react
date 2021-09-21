@@ -1,5 +1,5 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/CalendarDate';
+import '@ui5/webcomponents/dist/CalendarDate.js';
 import { FC } from 'react';
 
 export interface CalendarDatePropTypes extends WithWebComponentPropTypes {

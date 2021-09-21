@@ -1,4 +1,4 @@
-import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming';
+import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming.js';
 import { useIsRTL } from '@ui5/webcomponents-react-base/lib/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
