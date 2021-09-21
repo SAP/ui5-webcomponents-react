@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.131.20](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.19...v0.131.20) (2021-09-21)
+
+
+### Bug Fixes
+
+* **Bar & ColumnChart:** always show labels if enough space is available ([#2100](https://github.com/SAP/ui5-webcomponents-react/issues/2100)) ([d087f73](https://github.com/SAP/ui5-webcomponents-react/commit/d087f73a6fa37ca8d8ef7c095499b9d5167c1f6c))
+
+
+
+
+
 ## [0.131.18](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.17...v0.131.18) (2021-09-03)
 
 
