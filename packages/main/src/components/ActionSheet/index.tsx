@@ -1,5 +1,5 @@
-import { isPhone } from '@ui5/webcomponents-base/dist/Device';
-import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming';
+import { isPhone } from '@ui5/webcomponents-base/dist/Device.js';
+import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming.js';
 import { useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';

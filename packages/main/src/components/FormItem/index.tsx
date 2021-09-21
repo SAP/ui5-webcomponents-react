@@ -5,7 +5,7 @@ import { Label, LabelPropTypes } from '@ui5/webcomponents-react/dist/Label';
 import { WrappingType } from '@ui5/webcomponents-react/dist/WrappingType';
 import React, { cloneElement, CSSProperties, FC, isValidElement, ReactElement, ReactNode, ReactNodeArray } from 'react';
 import { createUseStyles } from 'react-jss';
-import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming';
+import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming.js';
 
 export interface FormItemPropTypes {
   /**

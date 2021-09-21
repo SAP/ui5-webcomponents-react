@@ -2,7 +2,7 @@ import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 
-import '@ui5/webcomponents/dist/ColorPicker';
+import '@ui5/webcomponents/dist/ColorPicker.js';
 
 export interface ColorPickerPropTypes extends Omit<CommonProps, 'onChange'> {
   /**

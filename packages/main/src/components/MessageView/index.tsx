@@ -33,11 +33,11 @@ import React, {
 } from 'react';
 import { createUseStyles } from 'react-jss';
 import { getIconNameForType } from './utils';
-import '@ui5/webcomponents-icons/dist/alert';
-import '@ui5/webcomponents-icons/dist/error';
-import '@ui5/webcomponents-icons/dist/information';
-import '@ui5/webcomponents-icons/dist/slim-arrow-left';
-import '@ui5/webcomponents-icons/dist/sys-enter-2';
+import '@ui5/webcomponents-icons/dist/alert.js';
+import '@ui5/webcomponents-icons/dist/error.js';
+import '@ui5/webcomponents-icons/dist/information.js';
+import '@ui5/webcomponents-icons/dist/slim-arrow-left.js';
+import '@ui5/webcomponents-icons/dist/sys-enter-2.js';
 import type { MessageItemPropTypes } from './MessageItem';
 
 export interface MessageViewPropTypes extends CommonProps {

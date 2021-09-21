@@ -325,7 +325,7 @@ const createWebComponentWrapper = async (
   const imports = [
     ...importStatements,
     '', // do not remove this empty line - otherwise the eslint/import-order plugin won't work as expected
-    `import '@ui5/webcomponents${componentsFromFioriPackage.has(name) ? '-fiori' : ''}/dist/${name}';`
+    `import '@ui5/webcomponents${componentsFromFioriPackage.has(name) ? '-fiori' : ''}/dist/${name}.js';`
   ];
 
   return prettier.format(

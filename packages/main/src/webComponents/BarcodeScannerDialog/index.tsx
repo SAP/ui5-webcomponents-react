@@ -3,7 +3,7 @@ import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5BarcodeScannerDialogDomRef } from '@ui5/webcomponents-react/interfaces/Ui5BarcodeScannerDialogDomRef';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 
-import '@ui5/webcomponents-fiori/dist/BarcodeScannerDialog';
+import '@ui5/webcomponents-fiori/dist/BarcodeScannerDialog.js';
 
 export interface BarcodeScannerDialogPropTypes extends CommonProps {
   /**

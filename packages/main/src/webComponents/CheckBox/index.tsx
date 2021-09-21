@@ -4,7 +4,7 @@ import { WrappingType } from '@ui5/webcomponents-react/dist/WrappingType';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 
-import '@ui5/webcomponents/dist/CheckBox';
+import '@ui5/webcomponents/dist/CheckBox.js';
 
 export interface CheckBoxPropTypes extends Omit<CommonProps, 'onChange'> {
   /**

@@ -2,7 +2,7 @@ import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 
-import '@ui5/webcomponents/dist/ProgressIndicator';
+import '@ui5/webcomponents/dist/ProgressIndicator.js';
 
 export interface ProgressIndicatorPropTypes extends CommonProps {
   /**

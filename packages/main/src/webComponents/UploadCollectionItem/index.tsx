@@ -5,7 +5,7 @@ import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { ReactNode } from 'react';
 
-import '@ui5/webcomponents-fiori/dist/UploadCollectionItem';
+import '@ui5/webcomponents-fiori/dist/UploadCollectionItem.js';
 
 export interface UploadCollectionItemPropTypes extends CommonProps {
   /**

@@ -4,7 +4,7 @@ import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5TreeItemDomRef } from '@ui5/webcomponents-react/interfaces/Ui5TreeItemDomRef';
 import { ReactNode } from 'react';
 
-import '@ui5/webcomponents/dist/TreeItem';
+import '@ui5/webcomponents/dist/TreeItem.js';
 
 export interface TreeItemPropTypes extends CommonProps {
   /**

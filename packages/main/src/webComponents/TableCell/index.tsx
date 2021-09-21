@@ -2,7 +2,7 @@ import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { ReactNode } from 'react';
 
-import '@ui5/webcomponents/dist/TableCell';
+import '@ui5/webcomponents/dist/TableCell.js';
 
 export interface TableCellPropTypes extends CommonProps {
   /**
