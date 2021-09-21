@@ -8,6 +8,7 @@ export const getSectionById = (sections: ReactElement<any> | ReactElement<any>[]
 };
 
 export const extractSectionIdFromHtmlId = (id: string) => {
+  if (!id) return null;
   return id.replace(/^ObjectPageSection-/, '');
 };
 
