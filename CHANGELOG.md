@@ -12,12 +12,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **Bar & ColumnChart:** always show labels if enough space is available ([#2100](https://github.com/SAP/ui5-webcomponents-react/issues/2100)) ([d087f73](https://github.com/SAP/ui5-webcomponents-react/commit/d087f73a6fa37ca8d8ef7c095499b9d5167c1f6c))
 * **ObjectPage:** consistently toggle header after scrolling  ([#2122](https://github.com/SAP/ui5-webcomponents-react/issues/2122)) ([40e89bb](https://github.com/SAP/ui5-webcomponents-react/commit/40e89bbd409f68098670d465d710d1f60e686c81))
 * **ObjectPage:** programatically remove sections without crashing ([#2085](https://github.com/SAP/ui5-webcomponents-react/issues/2085)) ([c361d1f](https://github.com/SAP/ui5-webcomponents-react/commit/c361d1f36066b65f823fa84d980c194b1d0b4598))
-* **ViewSettingsDialog:** jsdoc ([0aebccb](https://github.com/SAP/ui5-webcomponents-react/commit/0aebccba30bbf3d5694fda6dfdd5ea850f7098e0))
-* **ViewSettingsDialog:** jsdoc ([cdd7e3c](https://github.com/SAP/ui5-webcomponents-react/commit/cdd7e3cc68327f706a13ab72ed24ac1c10c5dcf4))
 
 
 ### Features
 
+
+* update to @ui5/webcomponents 0.31.18 ([fedf664](https://github.com/SAP/ui5-webcomponents-react/commit/fedf664ebf568da26276d8cf9fe1558d51e46014))
 * **MessageBox:** expose all `Dialog` props, except `footer`, `headerText` and `onAfterClose` ([#2141](https://github.com/SAP/ui5-webcomponents-react/issues/2141)) ([e557c5f](https://github.com/SAP/ui5-webcomponents-react/commit/e557c5fd423521e97f96cb010d0e7ca1d4373d93))
 
 
