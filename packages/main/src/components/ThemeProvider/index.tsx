@@ -1,4 +1,4 @@
-import { fetchI18nBundle } from '@ui5/webcomponents-base/dist/i18nBundle';
+import { fetchI18nBundle } from '@ui5/webcomponents-base/dist/i18nBundle.js';
 import { cssVariablesStyles } from '@ui5/webcomponents-react-base/dist/CssSizeVariables';
 import { useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';

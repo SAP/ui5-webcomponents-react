@@ -3,7 +3,7 @@ import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { ReactNode } from 'react';
 
-import '@ui5/webcomponents/dist/BusyIndicator';
+import '@ui5/webcomponents/dist/BusyIndicator.js';
 
 export interface BusyIndicatorPropTypes extends CommonProps {
   /**

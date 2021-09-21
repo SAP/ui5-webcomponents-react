@@ -5,7 +5,7 @@ import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEve
 import { Ui5TreeDomRef } from '@ui5/webcomponents-react/interfaces/Ui5TreeDomRef';
 import { ReactNode } from 'react';
 
-import '@ui5/webcomponents/dist/Tree';
+import '@ui5/webcomponents/dist/Tree.js';
 
 export interface TreePropTypes extends CommonProps {
   /**

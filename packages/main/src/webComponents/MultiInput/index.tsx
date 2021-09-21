@@ -5,7 +5,7 @@ import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { ReactNode } from 'react';
 
-import '@ui5/webcomponents/dist/MultiInput';
+import '@ui5/webcomponents/dist/MultiInput.js';
 
 export interface MultiInputPropTypes extends Omit<CommonProps, 'onChange' | 'onInput'> {
   /**

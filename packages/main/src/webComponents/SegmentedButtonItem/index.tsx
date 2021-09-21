@@ -2,7 +2,7 @@ import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { ReactNode, MouseEventHandler } from 'react';
 
-import '@ui5/webcomponents/dist/SegmentedButtonItem';
+import '@ui5/webcomponents/dist/SegmentedButtonItem.js';
 
 export interface SegmentedButtonItemPropTypes extends Omit<CommonProps, 'onClick'> {
   /**

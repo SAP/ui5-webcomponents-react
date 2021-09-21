@@ -4,7 +4,7 @@ import { WrappingType } from '@ui5/webcomponents-react/dist/WrappingType';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 
-import '@ui5/webcomponents/dist/RadioButton';
+import '@ui5/webcomponents/dist/RadioButton.js';
 
 export interface RadioButtonPropTypes extends Omit<CommonProps, 'onChange'> {
   /**

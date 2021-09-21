@@ -1,5 +1,5 @@
 /* eslint-disable no-underscore-dangle */
-import { html, scopeTag } from '@ui5/webcomponents-base/dist/renderer/LitRenderer';
+import { html, scopeTag } from '@ui5/webcomponents-base/dist/renderer/LitRenderer.js';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import Icon from '@ui5/webcomponents/dist/Icon.js';
 import Tab from '@ui5/webcomponents/dist/Tab.js';

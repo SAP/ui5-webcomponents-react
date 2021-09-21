@@ -3,7 +3,7 @@ import { WrappingType } from '@ui5/webcomponents-react/dist/WrappingType';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { ReactNode } from 'react';
 
-import '@ui5/webcomponents/dist/Label';
+import '@ui5/webcomponents/dist/Label.js';
 
 export interface LabelPropTypes extends CommonProps {
   /**

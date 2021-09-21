@@ -2,7 +2,7 @@ import { act, renderHook } from '@testing-library/react-hooks';
 import { useI18nBundle } from './useI18nBundle';
 import { setLanguage, setFetchDefaultLanguage } from '@ui5/webcomponents-base/dist/config/Language.js';
 import { version as reactVersion } from 'react/package.json';
-import { fetchI18nBundle } from '@ui5/webcomponents-base/dist/i18nBundle';
+import { fetchI18nBundle } from '@ui5/webcomponents-base/dist/i18nBundle.js';
 
 describe('useI18nBundle', () => {
   beforeAll(() => {

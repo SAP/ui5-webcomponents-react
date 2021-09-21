@@ -4,7 +4,7 @@ import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEve
 import { Ui5ShellBarDomRef } from '@ui5/webcomponents-react/interfaces/Ui5ShellBarDomRef';
 import { ReactNode } from 'react';
 
-import '@ui5/webcomponents-fiori/dist/ShellBar';
+import '@ui5/webcomponents-fiori/dist/ShellBar.js';
 
 export interface ShellBarPropTypes extends CommonProps {
   /**

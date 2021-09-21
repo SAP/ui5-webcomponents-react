@@ -1,9 +1,9 @@
-import '@ui5/webcomponents-icons/dist/hint';
-import '@ui5/webcomponents-icons/dist/message-error';
-import '@ui5/webcomponents-icons/dist/message-information';
-import '@ui5/webcomponents-icons/dist/message-success';
-import '@ui5/webcomponents-icons/dist/message-warning';
-import '@ui5/webcomponents-icons/dist/question-mark';
+import '@ui5/webcomponents-icons/dist/hint.js';
+import '@ui5/webcomponents-icons/dist/message-error.js';
+import '@ui5/webcomponents-icons/dist/message-information.js';
+import '@ui5/webcomponents-icons/dist/message-success.js';
+import '@ui5/webcomponents-icons/dist/message-warning.js';
+import '@ui5/webcomponents-icons/dist/question-mark.js';
 import {
   useConsolidatedRef,
   useI18nBundle,

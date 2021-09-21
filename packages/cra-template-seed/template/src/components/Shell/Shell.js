@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 
 import { Avatar, AvatarShape, ShellBar } from '@ui5/webcomponents-react';
-import '@ui5/webcomponents-icons/dist/customer';
+import '@ui5/webcomponents-icons/dist/customer.js';
 import PopoverListItems from '../Popover/List/PopoverListItems';
 import ThemeSwitch from '../ThemeSwitch/ThemeSwitch';
 import LanguageSwitch from '../LanguageSwitch/LanguageSwitch';
