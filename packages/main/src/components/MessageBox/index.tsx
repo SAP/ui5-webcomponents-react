@@ -65,7 +65,7 @@ const deprecatedActions = new Set<MessageBoxAction>([
   MessageBoxActions.YES
 ]);
 
-export interface MessageBoxPropTypes extends Omit<DialogPropTypes, 'children' | 'footer' | 'headerText'> {
+export interface MessageBoxPropTypes extends Omit<DialogPropTypes, 'children' | 'footer' | 'headerText' | 'onAfterClose'> {
   /**
    * Flag whether the Message Box should be opened or closed
    */
@@ -337,7 +337,7 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDom
     }
   }, [emphasizedAction]);
   // @ts-ignore
-  const { footer, headerText, ...restWithoutOmitted } = rest;
+  const { footer, headerText, title, initialFocus, onAfterClose, ...restWithoutOmitted } = rest;
   // todo: remove lowercase conversions
   return (
     <Dialog
