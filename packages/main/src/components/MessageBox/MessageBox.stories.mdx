@@ -12,7 +12,7 @@ import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
   component={MessageBox}
   argTypes={{
     ref: { type: null },
-    ...createSelectArgTypes({ type: MessageBoxTypes, emphasizedAction: MessageBoxTypes })
+    ...createSelectArgTypes({ type: MessageBoxTypes, emphasizedAction: MessageBoxActions })
   }}
   args={{
     open: false,

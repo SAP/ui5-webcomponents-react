@@ -180,7 +180,13 @@ describe('MessageBox', () => {
     jest.spyOn(console, 'error').mockImplementation(() => {});
     const callback = jest.fn();
     const { getByText, getByTestId } = render(
-      <MessageBox onClose={callback} open type={MessageBoxTypes.CONFIRM} initialFocus={MessageBoxActions.CANCEL} data-testid="Dialog">
+      <MessageBox
+        onClose={callback}
+        open
+        type={MessageBoxTypes.CONFIRM}
+        initialFocus={MessageBoxActions.CANCEL}
+        data-testid="Dialog"
+      >
         Content
       </MessageBox>
     );
@@ -189,6 +195,13 @@ describe('MessageBox', () => {
 
     expect(dialogInitialFocus).toEqual(cancelBtnId);
   });
-
-  createPassThroughPropsTest(MessageBox);
+  test('display custom header', () => {
+    const { getByText, queryByText } = render(
+      <MessageBox open header={<div>Custom Header</div>}>
+        Content
+      </MessageBox>
+    );
+    expect(queryByText('Confirmation')).toBeNull();
+    expect(getByText('Custom Header')).toHaveTextContent('Custom Header');
+  });
 });
