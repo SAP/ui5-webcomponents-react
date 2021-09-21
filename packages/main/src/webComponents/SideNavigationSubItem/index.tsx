@@ -1,7 +1,7 @@
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 
-import '@ui5/webcomponents-fiori/dist/SideNavigationSubItem';
+import '@ui5/webcomponents-fiori/dist/SideNavigationSubItem.js';
 
 export interface SideNavigationSubItemPropTypes extends CommonProps {
   /**

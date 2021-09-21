@@ -4,7 +4,7 @@ import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { ReactNode } from 'react';
 
-import '@ui5/webcomponents/dist/Select';
+import '@ui5/webcomponents/dist/Select.js';
 
 export interface SelectPropTypes extends Omit<CommonProps, 'onChange'> {
   /**

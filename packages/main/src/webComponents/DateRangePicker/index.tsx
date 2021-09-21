@@ -6,7 +6,7 @@ import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEve
 import { Ui5DateRangePickerDomRef } from '@ui5/webcomponents-react/interfaces/Ui5DateRangePickerDomRef';
 import { ReactNode } from 'react';
 
-import '@ui5/webcomponents/dist/DateRangePicker';
+import '@ui5/webcomponents/dist/DateRangePicker.js';
 
 export interface DateRangePickerPropTypes extends Omit<CommonProps, 'onChange' | 'onInput'> {
   /**

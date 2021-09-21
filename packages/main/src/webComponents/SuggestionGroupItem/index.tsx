@@ -1,7 +1,7 @@
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 
-import '@ui5/webcomponents/dist/SuggestionGroupItem';
+import '@ui5/webcomponents/dist/SuggestionGroupItem.js';
 
 export interface SuggestionGroupItemPropTypes extends CommonProps {
   /**

@@ -5,7 +5,7 @@ import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEve
 import { Ui5TimePickerDomRef } from '@ui5/webcomponents-react/interfaces/Ui5TimePickerDomRef';
 import { ReactNode } from 'react';
 
-import '@ui5/webcomponents/dist/TimePicker';
+import '@ui5/webcomponents/dist/TimePicker.js';
 
 export interface TimePickerPropTypes extends Omit<CommonProps, 'onChange' | 'onInput'> {
   /**

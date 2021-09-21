@@ -1,6 +1,6 @@
-import { getI18nBundleData } from '@ui5/webcomponents-base/dist/asset-registries/i18n';
-import { fetchI18nBundle, getI18nBundle } from '@ui5/webcomponents-base/dist/i18nBundle';
-import { attachLanguageChange, detachLanguageChange } from '@ui5/webcomponents-base/dist/locale/languageChange';
+import { getI18nBundleData } from '@ui5/webcomponents-base/dist/asset-registries/i18n.js';
+import { fetchI18nBundle, getI18nBundle } from '@ui5/webcomponents-base/dist/i18nBundle.js';
+import { attachLanguageChange, detachLanguageChange } from '@ui5/webcomponents-base/dist/locale/languageChange.js';
 import { useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base/dist/hooks';
 import { useEffect, useState } from 'react';
 

@@ -4,7 +4,7 @@ import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { ReactNode, DragEventHandler } from 'react';
 
-import '@ui5/webcomponents-fiori/dist/UploadCollection';
+import '@ui5/webcomponents-fiori/dist/UploadCollection.js';
 
 export interface UploadCollectionPropTypes extends Omit<CommonProps, 'onDrop'> {
   /**

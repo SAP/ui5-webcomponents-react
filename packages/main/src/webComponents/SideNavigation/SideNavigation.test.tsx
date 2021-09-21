@@ -1,10 +1,10 @@
 import { render } from '@shared/tests';
-import '@ui5/webcomponents-icons/dist/calendar';
-import '@ui5/webcomponents-icons/dist/chain-link';
-import '@ui5/webcomponents-icons/dist/group';
-import '@ui5/webcomponents-icons/dist/history';
-import '@ui5/webcomponents-icons/dist/home';
-import '@ui5/webcomponents-icons/dist/locate-me';
+import '@ui5/webcomponents-icons/dist/calendar.js';
+import '@ui5/webcomponents-icons/dist/chain-link.js';
+import '@ui5/webcomponents-icons/dist/group.js';
+import '@ui5/webcomponents-icons/dist/history.js';
+import '@ui5/webcomponents-icons/dist/home.js';
+import '@ui5/webcomponents-icons/dist/locate-me.js';
 import { SideNavigation } from '@ui5/webcomponents-react/dist/SideNavigation';
 import { SideNavigationItem } from '@ui5/webcomponents-react/dist/SideNavigationItem';
 import { SideNavigationSubItem } from '@ui5/webcomponents-react/dist/SideNavigationSubItem';

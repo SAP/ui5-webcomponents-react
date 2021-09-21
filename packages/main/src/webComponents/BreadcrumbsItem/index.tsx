@@ -2,7 +2,7 @@ import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { ReactNode } from 'react';
 
-import '@ui5/webcomponents/dist/BreadcrumbsItem';
+import '@ui5/webcomponents/dist/BreadcrumbsItem.js';
 
 export interface BreadcrumbsItemPropTypes extends CommonProps {
   /**
