@@ -615,6 +615,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         )
       });
     }
+    return null;
   }, [
     headerContent,
     topHeaderHeight,
