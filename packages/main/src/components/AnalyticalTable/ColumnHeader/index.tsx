@@ -1,7 +1,7 @@
-import '@ui5/webcomponents-icons/dist/filter';
-import '@ui5/webcomponents-icons/dist/group-2';
-import '@ui5/webcomponents-icons/dist/sort-ascending';
-import '@ui5/webcomponents-icons/dist/sort-descending';
+import '@ui5/webcomponents-icons/dist/filter.js';
+import '@ui5/webcomponents-icons/dist/group-2.js';
+import '@ui5/webcomponents-icons/dist/sort-ascending.js';
+import '@ui5/webcomponents-icons/dist/sort-descending.js';
 import { createUseStyles } from 'react-jss';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { Icon } from '@ui5/webcomponents-react/dist/Icon';

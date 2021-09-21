@@ -4,7 +4,7 @@ import { WrappingType } from '@ui5/webcomponents-react/dist/WrappingType';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { ReactNode, MouseEventHandler } from 'react';
 
-import '@ui5/webcomponents/dist/Link';
+import '@ui5/webcomponents/dist/Link.js';
 
 export interface LinkPropTypes extends Omit<CommonProps, 'onClick'> {
   /**

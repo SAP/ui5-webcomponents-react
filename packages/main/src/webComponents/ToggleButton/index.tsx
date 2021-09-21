@@ -3,7 +3,7 @@ import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { ReactNode, MouseEventHandler } from 'react';
 
-import '@ui5/webcomponents/dist/ToggleButton';
+import '@ui5/webcomponents/dist/ToggleButton.js';
 
 export interface ToggleButtonPropTypes extends Omit<CommonProps, 'onClick'> {
   /**

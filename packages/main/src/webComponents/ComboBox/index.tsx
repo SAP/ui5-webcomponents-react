@@ -4,7 +4,7 @@ import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { ReactNode } from 'react';
 
-import '@ui5/webcomponents/dist/ComboBox';
+import '@ui5/webcomponents/dist/ComboBox.js';
 
 export interface ComboBoxPropTypes extends Omit<CommonProps, 'onChange' | 'onInput'> {
   /**

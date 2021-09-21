@@ -1,9 +1,9 @@
 import { render } from '@shared/tests';
 import { createPassThroughPropsTest } from '@shared/tests/utils';
-import '@ui5/webcomponents-icons/dist/action';
-import '@ui5/webcomponents-icons/dist/decline';
-import '@ui5/webcomponents-icons/dist/exit-full-screen';
-import '@ui5/webcomponents-icons/dist/full-screen';
+import '@ui5/webcomponents-icons/dist/action.js';
+import '@ui5/webcomponents-icons/dist/decline.js';
+import '@ui5/webcomponents-icons/dist/exit-full-screen.js';
+import '@ui5/webcomponents-icons/dist/full-screen.js';
 import { Badge } from '@ui5/webcomponents-react/dist/Badge';
 import { Bar } from '@ui5/webcomponents-react/dist/Bar';
 import { BarDesign } from '@ui5/webcomponents-react/dist/BarDesign';

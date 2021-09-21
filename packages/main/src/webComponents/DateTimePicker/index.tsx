@@ -6,7 +6,7 @@ import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEve
 import { Ui5DateTimePickerDomRef } from '@ui5/webcomponents-react/interfaces/Ui5DateTimePickerDomRef';
 import { ReactNode } from 'react';
 
-import '@ui5/webcomponents/dist/DateTimePicker';
+import '@ui5/webcomponents/dist/DateTimePicker.js';
 
 export interface DateTimePickerPropTypes extends Omit<CommonProps, 'onChange' | 'onInput'> {
   /**

@@ -3,7 +3,7 @@ import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { ReactNode } from 'react';
 
-import '@ui5/webcomponents-fiori/dist/ShellBarItem';
+import '@ui5/webcomponents-fiori/dist/ShellBarItem.js';
 
 export interface ShellBarItemPropTypes extends CommonProps {
   /**

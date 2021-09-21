@@ -1,4 +1,4 @@
-import { isIE } from '@ui5/webcomponents-base/dist/Device';
+import { isIE } from '@ui5/webcomponents-base/dist/Device.js';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 
 const styles = {

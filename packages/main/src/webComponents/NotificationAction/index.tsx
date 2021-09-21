@@ -2,7 +2,7 @@ import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 
-import '@ui5/webcomponents-fiori/dist/NotificationAction';
+import '@ui5/webcomponents-fiori/dist/NotificationAction.js';
 
 export interface NotificationActionPropTypes extends CommonProps {
   /**

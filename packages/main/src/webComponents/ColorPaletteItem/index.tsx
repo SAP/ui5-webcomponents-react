@@ -2,7 +2,7 @@ import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { CSSProperties } from 'react';
 
-import '@ui5/webcomponents/dist/ColorPaletteItem';
+import '@ui5/webcomponents/dist/ColorPaletteItem.js';
 
 export interface ColorPaletteItemPropTypes extends CommonProps {
   /**

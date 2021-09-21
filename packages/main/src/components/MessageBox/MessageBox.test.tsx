@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@shared/tests';
 import { createPassThroughPropsTest } from '@shared/tests/utils';
-import '@ui5/webcomponents-icons/dist/add';
+import '@ui5/webcomponents-icons/dist/add.js';
 import { Icon } from '@ui5/webcomponents-react/dist/Icon';
 import { MessageBox } from '@ui5/webcomponents-react/dist/MessageBox';
 import { MessageBoxActions } from '@ui5/webcomponents-react/dist/MessageBoxActions';
@@ -188,6 +188,13 @@ describe('MessageBox', () => {
 
     expect(dialogInitialFocus).toEqual(cancelBtnId);
   });
-
-  createPassThroughPropsTest(MessageBox);
+  test('display custom header', () => {
+    const { getByText, queryByText } = render(
+      <MessageBox open header={<div>Custom Header</div>}>
+        Content
+      </MessageBox>
+    );
+    expect(queryByText('Confirmation')).toBeNull();
+    expect(getByText('Custom Header')).toHaveTextContent('Custom Header');
+  });
 });

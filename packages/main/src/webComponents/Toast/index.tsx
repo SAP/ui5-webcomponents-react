@@ -4,7 +4,7 @@ import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5ToastDomRef } from '@ui5/webcomponents-react/interfaces/Ui5ToastDomRef';
 import { ReactNode } from 'react';
 
-import '@ui5/webcomponents/dist/Toast';
+import '@ui5/webcomponents/dist/Toast.js';
 
 export interface ToastPropTypes extends CommonProps {
   /**
