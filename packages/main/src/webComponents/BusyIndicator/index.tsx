@@ -1,6 +1,6 @@
 import { BusyIndicatorSize } from '@ui5/webcomponents-react/lib/BusyIndicatorSize';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/BusyIndicator';
+import '@ui5/webcomponents/dist/BusyIndicator.js';
 import { FC, ReactNode } from 'react';
 
 export interface BusyIndicatorPropTypes extends WithWebComponentPropTypes {

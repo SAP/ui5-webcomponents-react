@@ -2,7 +2,7 @@ import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/lib/PopoverHorizontalAlign';
 import { PopoverVerticalAlign } from '@ui5/webcomponents-react/lib/PopoverVerticalAlign';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/Popover';
+import '@ui5/webcomponents/dist/Popover.js';
 import { FC, ReactNode } from 'react';
 
 export interface PopoverPropTypes extends WithWebComponentPropTypes {

@@ -1,6 +1,6 @@
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents-fiori/dist/NotificationAction';
+import '@ui5/webcomponents-fiori/dist/NotificationAction.js';
 import { FC } from 'react';
 
 export interface NotificationActionPropTypes extends WithWebComponentPropTypes {

@@ -1,5 +1,5 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/ColorPaletteItem';
+import '@ui5/webcomponents/dist/ColorPaletteItem.js';
 import { CSSProperties, FC } from 'react';
 
 export interface ColorPaletteItemPropTypes extends WithWebComponentPropTypes {

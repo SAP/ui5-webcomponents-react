@@ -1,6 +1,6 @@
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/TreeItem';
+import '@ui5/webcomponents/dist/TreeItem.js';
 import { FC, ReactNode } from 'react';
 
 export interface TreeItemPropTypes extends WithWebComponentPropTypes {

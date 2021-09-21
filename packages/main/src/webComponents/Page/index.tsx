@@ -1,6 +1,6 @@
 import { PageBackgroundDesign } from '@ui5/webcomponents-react/lib/PageBackgroundDesign';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents-fiori/dist/Page';
+import '@ui5/webcomponents-fiori/dist/Page.js';
 import { FC, ReactNode } from 'react';
 
 export interface PagePropTypes extends WithWebComponentPropTypes {

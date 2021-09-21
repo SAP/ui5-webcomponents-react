@@ -1,5 +1,5 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/SegmentedButtonItem';
+import '@ui5/webcomponents/dist/SegmentedButtonItem.js';
 import { FC, ReactNode } from 'react';
 
 export interface SegmentedButtonItemPropTypes extends Omit<WithWebComponentPropTypes, 'onClick'> {

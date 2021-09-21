@@ -1,9 +1,9 @@
-import '@ui5/webcomponents-icons/dist/slim-arrow-down';
+import '@ui5/webcomponents-icons/dist/slim-arrow-down.js';
 import React, { FC, ReactElement, useEffect, useRef } from 'react';
 import { ObjectPageSectionPropTypes } from '../ObjectPageSection';
 import { ObjectPageAnchorTab } from './ObjectPageAnchorTab';
 import { safeGetChildrenArray } from './ObjectPageUtils';
-import { getEffectiveScopingSuffixForTag } from '@ui5/webcomponents-base/dist/CustomElementsScope';
+import { getEffectiveScopingSuffixForTag } from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore

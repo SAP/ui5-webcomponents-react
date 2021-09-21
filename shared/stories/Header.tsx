@@ -3,7 +3,7 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import React, { useContext } from 'react';
 import { GitHubLogo } from './GitHub-Mark';
 import { DocsContext } from '@storybook/addon-docs/blocks';
-import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming';
+import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming.js';
 import { version as chartsVersion } from '../../packages/charts/package.json';
 import { version } from '../../packages/main/package.json';
 

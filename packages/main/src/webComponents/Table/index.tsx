@@ -1,6 +1,6 @@
 import { TableGrowingMode } from '@ui5/webcomponents-react/lib/TableGrowingMode';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/Table';
+import '@ui5/webcomponents/dist/Table.js';
 import { FC, ReactNode } from 'react';
 
 export interface TablePropTypes extends WithWebComponentPropTypes {

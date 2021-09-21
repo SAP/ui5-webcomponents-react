@@ -1,5 +1,5 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/Badge';
+import '@ui5/webcomponents/dist/Badge.js';
 import { FC, ReactNode } from 'react';
 
 export interface BadgePropTypes extends WithWebComponentPropTypes {

@@ -1,7 +1,7 @@
 import { ListItemTypes } from '@ui5/webcomponents-react/lib/ListItemTypes';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/SuggestionItem';
+import '@ui5/webcomponents/dist/SuggestionItem.js';
 import { FC } from 'react';
 
 export interface SuggestionItemPropTypes extends WithWebComponentPropTypes {

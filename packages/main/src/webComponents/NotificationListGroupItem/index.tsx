@@ -1,6 +1,6 @@
 import { Priority } from '@ui5/webcomponents-react/lib/Priority';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents-fiori/dist/NotificationListGroupItem';
+import '@ui5/webcomponents-fiori/dist/NotificationListGroupItem.js';
 import { FC, ReactNode } from 'react';
 
 export interface NotificationListGroupItemPropTypes extends WithWebComponentPropTypes {

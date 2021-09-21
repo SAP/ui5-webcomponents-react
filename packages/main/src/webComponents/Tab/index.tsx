@@ -1,6 +1,6 @@
 import { SemanticColor } from '@ui5/webcomponents-react/lib/SemanticColor';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/Tab';
+import '@ui5/webcomponents/dist/Tab.js';
 import { FC, ReactNode } from 'react';
 
 export interface TabPropTypes extends WithWebComponentPropTypes {

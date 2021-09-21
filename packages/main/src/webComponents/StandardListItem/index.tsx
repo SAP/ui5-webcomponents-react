@@ -1,7 +1,7 @@
 import { ListItemTypes } from '@ui5/webcomponents-react/lib/ListItemTypes';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents/dist/StandardListItem';
+import '@ui5/webcomponents/dist/StandardListItem.js';
 import { FC, ReactNode } from 'react';
 
 export interface StandardListItemPropTypes extends WithWebComponentPropTypes {

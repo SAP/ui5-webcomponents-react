@@ -1,6 +1,6 @@
 import '@ui5/webcomponents-react-base/types/UI5Device.d.ts';
-import { getOS, getSystem, supportTouch } from '@ui5/webcomponents-base/dist/Device';
-import EventProvider from '@ui5/webcomponents-base/dist/EventProvider';
+import { getOS, getSystem, supportTouch } from '@ui5/webcomponents-base/dist/Device.js';
+import EventProvider from '@ui5/webcomponents-base/dist/EventProvider.js';
 import { supportOrientation } from './Support';
 import * as Utils from './utils';
 
@@ -190,7 +190,7 @@ export {
   getSystem,
   getBrowser,
   supportTouch
-} from '@ui5/webcomponents-base/dist/Device';
+} from '@ui5/webcomponents-base/dist/Device.js';
 // export all support methods
 export * from './Support';
 // export all media methods

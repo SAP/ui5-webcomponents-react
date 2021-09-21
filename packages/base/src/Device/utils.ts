@@ -1,4 +1,4 @@
-import { getOS, supportTouch } from '@ui5/webcomponents-base/dist/Device';
+import { getOS, supportTouch } from '@ui5/webcomponents-base/dist/Device.js';
 import { supportMatchMedia, supportOrientation } from './Support';
 
 export const getWindowSize = () => {

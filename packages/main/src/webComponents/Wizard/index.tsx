@@ -1,5 +1,5 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents-fiori/dist/Wizard';
+import '@ui5/webcomponents-fiori/dist/Wizard.js';
 import { FC, ReactNode } from 'react';
 
 export interface WizardPropTypes extends WithWebComponentPropTypes {

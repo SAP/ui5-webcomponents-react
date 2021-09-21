@@ -1,5 +1,5 @@
 import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-import '@ui5/webcomponents-fiori/dist/SortItem';
+import '@ui5/webcomponents-fiori/dist/SortItem.js';
 import { FC } from 'react';
 
 export interface SortItemPropTypes extends WithWebComponentPropTypes {

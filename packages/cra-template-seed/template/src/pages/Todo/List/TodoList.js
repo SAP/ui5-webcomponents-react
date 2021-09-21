@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useHistory } from 'react-router-dom';
-import { isChrome, isDesktop, isIE, isMobile, isTablet } from '@ui5/webcomponents-base/dist/Device';
+import { isChrome, isDesktop, isIE, isMobile, isTablet } from '@ui5/webcomponents-base/dist/Device.js';
 
 import { Link, Text, Title, TitleLevel } from '@ui5/webcomponents-react';
 import ComponentWithAuthorizationRestriction from '../../../auth/ComponentWithAuthorizationRestriction';
