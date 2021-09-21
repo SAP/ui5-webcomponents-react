@@ -188,6 +188,13 @@ describe('MessageBox', () => {
 
     expect(dialogInitialFocus).toEqual(cancelBtnId);
   });
-
-  createPassThroughPropsTest(MessageBox);
+  test('display custom header', () => {
+    const { getByText, queryByText } = render(
+      <MessageBox open header={<div>Custom Header</div>}>
+        Content
+      </MessageBox>
+    );
+    expect(queryByText('Confirmation')).toBeNull();
+    expect(getByText('Custom Header')).toHaveTextContent('Custom Header');
+  });
 });
