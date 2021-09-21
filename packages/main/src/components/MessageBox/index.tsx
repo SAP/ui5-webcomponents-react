@@ -337,7 +337,7 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDom
     }
   }, [emphasizedAction]);
   // @ts-ignore
-  const { footer, headerText, title, initialFocus, onAfterClose, ...restWithoutOmitted } = rest;
+  const { footer, headerText, title, onAfterClose, ...restWithoutOmitted } = rest;
   // todo: remove lowercase conversions
   return (
     <Dialog
@@ -347,8 +347,8 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDom
       title={tooltip ?? props.title}
       className={messageBoxClassNames}
       onAfterClose={open ? handleOnClose : stopPropagation}
-      initialFocus={getInitialFocus()}
       {...restWithoutOmitted}
+      initialFocus={getInitialFocus()}
     >
       {!props.header && (
         <header slot="header" className={classes.header} data-type={type}>
