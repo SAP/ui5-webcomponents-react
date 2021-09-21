@@ -16,8 +16,8 @@ import { AvatarShape } from './dist/AvatarShape';
 import { AvatarSize } from './dist/AvatarSize';
 import { Badge } from './dist/Badge';
 import { Bar } from './dist/Bar';
-import { BarDesign } from './dist/BarDesign';
 import { BarcodeScannerDialog } from './dist/BarcodeScannerDialog';
+import { BarDesign } from './dist/BarDesign';
 import { Breadcrumbs } from './dist/Breadcrumbs';
 import { BreadcrumbsDesign } from './dist/BreadcrumbsDesign';
 import { BreadcrumbsItem } from './dist/BreadcrumbsItem';
@@ -132,6 +132,7 @@ import { SideNavigationItem } from './dist/SideNavigationItem';
 import { SideNavigationSubItem } from './dist/SideNavigationSubItem';
 import { Size } from './dist/Size';
 import { Slider } from './dist/Slider';
+import { SplitterLayout } from './dist/SplitterLayout';
 import { StandardListItem } from './dist/StandardListItem';
 import { StepInput } from './dist/StepInput';
 import { SuggestionGroupItem } from './dist/SuggestionGroupItem';
@@ -141,7 +142,6 @@ import { SwitchDesign } from './dist/SwitchDesign';
 import { Tab } from './dist/Tab';
 import { TabContainer } from './dist/TabContainer';
 import { TabLayout } from './dist/TabLayout';
-import { TabSeparator } from './dist/TabSeparator';
 import { Table } from './dist/Table';
 import { TableCell } from './dist/TableCell';
 import { TableColumn } from './dist/TableColumn';
@@ -155,15 +155,16 @@ import { TableScaleWidthMode } from './dist/TableScaleWidthMode';
 import { TableSelectionBehavior } from './dist/TableSelectionBehavior';
 import { TableSelectionMode } from './dist/TableSelectionMode';
 import { TableVisibleRowCountMode } from './dist/TableVisibleRowCountMode';
+import { TabSeparator } from './dist/TabSeparator';
 import { Text } from './dist/Text';
 import { TextAlign } from './dist/TextAlign';
 import { TextArea } from './dist/TextArea';
 import { ThemeProvider } from './dist/ThemeProvider';
 import { Themes } from './dist/Themes';
-import { TimePicker } from './dist/TimePicker';
 import { Timeline } from './dist/Timeline';
 import { TimelineItem } from './dist/TimelineItem';
 import { TimelineLayout } from './dist/TimelineLayout';
+import { TimePicker } from './dist/TimePicker';
 import { Title } from './dist/Title';
 import { TitleLevel } from './dist/TitleLevel';
 import { Toast } from './dist/Toast';
@@ -183,10 +184,10 @@ import { UploadState } from './dist/UploadState';
 import { ValueState } from './dist/ValueState';
 import { VariantManagement } from './dist/VariantManagement';
 import { VerticalAlign } from './dist/VerticalAlign';
+import { withWebComponent } from './dist/withWebComponent';
 import { Wizard } from './dist/Wizard';
 import { WizardStep } from './dist/WizardStep';
 import { WrappingType } from './dist/WrappingType';
-import { withWebComponent } from './dist/withWebComponent';
 
 export {
   ActionSheet,
@@ -319,6 +320,7 @@ export {
   SideNavigationSubItem,
   Size,
   Slider,
+  SplitterLayout,
   StandardListItem,
   StepInput,
   SuggestionGroupItem,

@@ -1,0 +1,42 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Label } from '@ui5/webcomponents-react/dist/Label';
+import { Title } from '@ui5/webcomponents-react/dist/Title';
+import { Button } from '@ui5/webcomponents-react/dist/Button';
+import '@ui5/webcomponents-icons/dist/employee.js';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+import '@ui5/webcomponents-icons/dist/employee.js';
+import { SplitterLayout } from '@ui5/webcomponents-react/dist/SplitterLayout';
+import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';
+
+<Meta
+  title="Layouts & Floorplans / SplitterLayout"
+  component={SplitterLayout}
+  args={{
+    orientation: 'horizontal',
+    justifyContent: FlexBoxJustifyContent.Center
+  }}
+/>
+
+<DocsHeader />
+
+<br />
+
+## Example
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return (
+        <SplitterLayout {...args}>
+          <Title>Item 1</Title>
+          <Button style={{ width: '95%' }}>TEST</Button>
+          <Label>Item 5</Label>
+        </SplitterLayout>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Properties
+
+<ArgsTable story="." />
