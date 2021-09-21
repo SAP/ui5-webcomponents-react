@@ -4,12 +4,7 @@ import '@ui5/webcomponents-icons/dist/message-information';
 import '@ui5/webcomponents-icons/dist/message-success';
 import '@ui5/webcomponents-icons/dist/message-warning';
 import '@ui5/webcomponents-icons/dist/question-mark';
-import {
-  useConsolidatedRef,
-  useI18nBundle,
-  useIsomorphicLayoutEffect,
-  usePassThroughHtmlProps
-} from '@ui5/webcomponents-react-base/lib/hooks';
+import { useConsolidatedRef, useI18nBundle, useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base/lib/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import {
@@ -29,17 +24,16 @@ import {
   WARNING,
   YES
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
+import { Ui5DialogDomRef } from '@ui5/webcomponents-react/interfaces/Ui5DialogDomRef';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
-import { Dialog } from '@ui5/webcomponents-react/lib/Dialog';
+import { Dialog, DialogPropTypes } from '@ui5/webcomponents-react/lib/Dialog';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { MessageBoxActions } from '@ui5/webcomponents-react/lib/MessageBoxActions';
 import { MessageBoxTypes } from '@ui5/webcomponents-react/lib/MessageBoxTypes';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { Ui5DialogDomRef } from '@ui5/webcomponents-react/interfaces/Ui5DialogDomRef';
 import React, {
   FC,
   forwardRef,
@@ -56,7 +50,8 @@ import { createUseStyles } from 'react-jss';
 import { stopPropagation } from '../../internal/stopPropagation';
 import styles from './MessageBox.jss';
 
-export interface MessageBoxPropTypes extends CommonProps {
+export interface MessageBoxPropTypes
+  extends Omit<DialogPropTypes, 'children' | 'footer' | 'headerText' | 'onAfterClose'> {
   /**
    * Flag whether the Message Box should be opened or closed
    */
@@ -130,7 +125,8 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
     actions,
     emphasizedAction,
     onClose,
-    initialFocus
+    initialFocus,
+    ...rest
   } = props;
   const dialogRef = useConsolidatedRef<Ui5DialogDomRef>(ref);
 
@@ -224,8 +220,6 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
     }
   }, [dialogRef.current, open]);
 
-  const passThroughProps = usePassThroughHtmlProps(props, ['onClose']);
-
   const messageBoxClassNames = StyleClassHelper.of(classes.messageBox).putIfPresent(className).className;
   const internalActions = getActions();
 
@@ -242,21 +236,25 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
     }
     return initialFocus;
   };
+  // @ts-ignore
+  const { footer, headerText, onAfterClose, ...restWithoutOmitted } = rest;
   return (
     <Dialog
       slot={slot}
       ref={dialogRef}
       style={style}
-      title={tooltip ?? props.title}
+      title={tooltip}
       className={messageBoxClassNames}
       onAfterClose={open ? handleOnClose : stopPropagation}
+      {...restWithoutOmitted}
       initialFocus={getInitialFocus()}
-      {...passThroughProps}
     >
-      <header slot="header" className={classes.header} data-type={type}>
-        {iconToRender}
-        <Title level={TitleLevel.H2}>{titleToRender()}</Title>
-      </header>
+      {!props.header && (
+        <header slot="header" className={classes.header} data-type={type}>
+          {iconToRender}
+          <Title level={TitleLevel.H2}>{titleToRender()}</Title>
+        </header>
+      )}
       <Text className={classes.content}>{children}</Text>
       <footer slot="footer" className={classes.footer}>
         {internalActions.map((action, index) => {
