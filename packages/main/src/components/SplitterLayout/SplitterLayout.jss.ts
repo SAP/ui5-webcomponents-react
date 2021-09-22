@@ -22,12 +22,12 @@ const styles = {
     },
     '&:before': {
       top: '130%',
-      left: 'calc(50% - 0.03125rem)',
+      left: 'calc(50%)',
       backgroundImage: `linear-gradient(to bottom, ${ThemingParameters.sapHighlightColor}, rgba(8,84,160,0))`
     },
     '&:after': {
       top: '-440%',
-      left: 'calc(50% - 0.0625rem)',
+      left: 'calc(50%)',
       backgroundImage: `linear-gradient(to top, ${ThemingParameters.sapHighlightColor}, rgba(8,84,160,0))`
     }
   }
