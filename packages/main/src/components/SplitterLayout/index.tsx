@@ -1,12 +1,13 @@
-import { ThemingParameters, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
-import React, { forwardRef, ReactNode, ReactNodeArray, Ref } from 'react';
+import React, { forwardRef, ReactNode, ReactNodeArray, Ref, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { ReflexContainer, ReflexSplitter, ReflexElement } from 'react-reflex';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { styles } from './SplitterLayout.jss';
 import 'react-reflex/styles.css';
 import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';
+
 const useStyles = createUseStyles(styles, { name: 'SplitterLayout' });
 
 export interface SplitterLayoutPropTypes extends CommonProps {
@@ -41,6 +42,34 @@ const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTML
   }
   const passThroughProps = usePassThroughHtmlProps(props);
 
+  const layoutElements = useMemo(() => {
+    if (React.isValidElement(children)) {
+      return children;
+    }
+
+    const elements = [];
+    (children as ReactNodeArray).forEach((child, index) => {
+      elements.push(
+        <ReflexElement
+          key={index}
+          style={{ display: 'flex', justifyContent, height: '200px', backgroundColor: 'lightgrey' }}
+        >
+          {child}
+        </ReflexElement>
+      );
+
+      if ((children as ReactNodeArray).length - 1 > index) {
+        elements.push(
+          <ReflexSplitter
+            key={`splitter${index}`}
+            style={{ width: '15px', height: '200px', backgroundColor: 'black' }}
+          />
+        );
+      }
+    });
+    return elements;
+  }, [children]);
+
   return (
     <div
       style={style}
@@ -50,22 +79,7 @@ const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTML
       className={splitterLayoutClasses.valueOf()}
       ref={ref}
     >
-      <ReflexContainer orientation="vertical">
-        <ReflexElement style={{ display: 'flex', justifyContent, height: '200px', backgroundColor: 'lightgrey' }}>
-          <div>{children[0]}</div>
-        </ReflexElement>
-
-        <ReflexSplitter style={{ width: '15px', height: '200px', backgroundColor: 'black' }} />
-
-        <ReflexElement style={{ display: 'flex', justifyContent, height: '200px', backgroundColor: 'lightblue' }}>
-          {children[1]}
-        </ReflexElement>
-        <ReflexSplitter style={{ width: '15px', height: '200px', backgroundColor: 'black' }} />
-
-        <ReflexElement style={{ display: 'flex', justifyContent, height: '200px', backgroundColor: 'lightgrey' }}>
-          {children[2]}
-        </ReflexElement>
-      </ReflexContainer>
+      <ReflexContainer orientation="vertical">{layoutElements}</ReflexContainer>
     </div>
   );
 });
