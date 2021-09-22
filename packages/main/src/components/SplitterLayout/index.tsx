@@ -1,4 +1,5 @@
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import React, { forwardRef, ReactNode, ReactNodeArray, Ref, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
@@ -7,10 +8,28 @@ import { CommonProps } from '../../interfaces/CommonProps';
 import { styles } from './SplitterLayout.jss';
 import 'react-reflex/styles.css';
 import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';
+import content from '*.md';
 
 const useStyles = createUseStyles(styles, { name: 'SplitterLayout' });
 
 export interface SplitterLayoutPropTypes extends CommonProps {
+  /**
+   * Controls the width of the `SplitterLayout` container.<br />
+   */
+  width: number;
+  /**
+   * Controls the height of the `SplitterLayout` container.<br />
+   */
+  height: string | number;
+  /**
+   * Controls the `width` / `height` of the layout elements in the container.
+   */
+  contentAreaProps?: [
+    {
+      size?: number;
+      resizable?: boolean;
+    }
+  ];
   /**
    * Controls if the `SplitterLayout` is displayed `horizontal` or `vertical`.<br />
    */
@@ -27,15 +46,12 @@ export interface SplitterLayoutPropTypes extends CommonProps {
 }
 
 const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTMLDivElement>) => {
-  const { orientation, justifyContent, children, slot, tooltip, style, className } = props;
+  const { orientation, width, height, contentAreaProps, justifyContent, children, slot, tooltip, style, className } =
+    props;
 
   const classes = useStyles();
 
   const splitterLayoutClasses = StyleClassHelper.of(classes.splitterLayout);
-  // direction
-  splitterLayoutClasses.put(classes[`flexBoxDirection${orientation}`]);
-  // justify content
-  splitterLayoutClasses.put(classes[`justifyContent${justifyContent}`]);
 
   if (className) {
     splitterLayoutClasses.put(className);
@@ -52,19 +68,26 @@ const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTML
       elements.push(
         <ReflexElement
           key={index}
-          style={{ display: 'flex', justifyContent, height: '200px', backgroundColor: 'lightgrey' }}
+          size={contentAreaProps?.[index]?.size}
+          style={{
+            maxHeight: height,
+            backgroundColor: ThemingParameters.sapBackgroundColor
+          }}
         >
           {child}
         </ReflexElement>
       );
 
-      if ((children as ReactNodeArray).length - 1 > index) {
+      if ((children as ReactNodeArray).length - 1 > index && contentAreaProps?.[index]?.resizable) {
         elements.push(
-          <ReflexSplitter
-            key={`splitter${index}`}
-            style={{ width: '15px', height: '200px', backgroundColor: 'black' }}
-          />
+          <ReflexSplitter key={`splitter${index}`} style={{ width: '15px', height, backgroundColor: 'black' }} />
         );
+      } else if (index > 0 && !contentAreaProps?.[index]?.resizable) {
+        const indexOfSplitter = elements.findIndex((element) => element.key === `${index}`) - 1;
+
+        if (elements[indexOfSplitter].key.startsWith('splitter')) {
+          elements.splice(indexOfSplitter, 1);
+        }
       }
     });
     return elements;
@@ -79,7 +102,9 @@ const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTML
       className={splitterLayoutClasses.valueOf()}
       ref={ref}
     >
-      <ReflexContainer orientation="vertical">{layoutElements}</ReflexContainer>
+      <ReflexContainer style={{ width, height }} orientation="vertical">
+        {layoutElements}
+      </ReflexContainer>
     </div>
   );
 });

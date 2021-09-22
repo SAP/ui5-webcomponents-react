@@ -13,7 +13,21 @@ import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJust
   component={SplitterLayout}
   args={{
     orientation: 'horizontal',
-    justifyContent: FlexBoxJustifyContent.Start
+    justifyContent: FlexBoxJustifyContent.Center,
+    contentAreaProps: [
+      {
+        size: 100,
+        resizable: true
+      },
+      {
+        size: 200,
+        resizable: false
+      },
+      {
+        size: 50,
+        resizable: true
+      }
+    ]
   }}
 />
 
@@ -27,9 +41,9 @@ import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJust
   <Story name="Default">
     {(args) => {
       return (
-        <SplitterLayout {...args}>
-          <Title>Item 1</Title>
-          <Button style={{ width: '95%' }}>TEST</Button>
+        <SplitterLayout {...args} width={400} height={'30vh'}>
+          <Title width={'50px'}>Item 1</Title>
+          <Button style={{ width: '100px' }}>TEST</Button>
           <Label>Item 5</Label>
         </SplitterLayout>
       );
