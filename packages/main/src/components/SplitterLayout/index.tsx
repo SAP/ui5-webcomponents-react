@@ -96,7 +96,7 @@ const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTML
             style={{ width: '16px', height, border: 'none', backgroundColor: ThemingParameters.sapShell_Background }}
           >
             <Icon
-              style={{ position: 'relative', top: 'calc(50% - 8px)' }}
+              className={classes.gripIcon}
               name={orientation === 'vertical' ? 'vertical-grip' : 'horizontal-grip'}
             />
           </ReflexSplitter>
