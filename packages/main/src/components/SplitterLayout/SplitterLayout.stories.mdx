@@ -12,20 +12,19 @@ import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJust
   title="Layouts & Floorplans / SplitterLayout"
   component={SplitterLayout}
   args={{
-    orientation: 'horizontal',
-    justifyContent: FlexBoxJustifyContent.Center,
+    orientation: 'vertical',
+    justifyContent: FlexBoxJustifyContent.Start,
     contentAreaProps: [
       {
         size: 100,
         resizable: true
       },
       {
-        size: 200,
-        resizable: false
+        size: 400,
+        resizable: true
       },
       {
-        size: 50,
-        resizable: true
+        size: 100
       }
     ]
   }}
@@ -41,10 +40,10 @@ import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJust
   <Story name="Default">
     {(args) => {
       return (
-        <SplitterLayout {...args} width={400} height={'30vh'}>
-          <Title width={'50px'}>Item 1</Title>
-          <Button style={{ width: '100px' }}>TEST</Button>
-          <Label>Item 5</Label>
+        <SplitterLayout {...args} width={'100%'} height={'50vh'}>
+          <Button style={{ width: '100%' }}>Content 1</Button>
+          <Button style={{ width: '100%' }}>Content 2</Button>
+          <Button style={{ width: '100%' }}>Content 3</Button>
         </SplitterLayout>
       );
     }}

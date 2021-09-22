@@ -8,7 +8,9 @@ import { CommonProps } from '../../interfaces/CommonProps';
 import { styles } from './SplitterLayout.jss';
 import 'react-reflex/styles.css';
 import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';
-import content from '*.md';
+import '@ui5/webcomponents-icons/dist/vertical-grip.js';
+import '@ui5/webcomponents-icons/dist/horizontal-grip.js';
+import { Icon } from '@ui5/webcomponents-react/dist/Icon';
 
 const useStyles = createUseStyles(styles, { name: 'SplitterLayout' });
 
@@ -16,7 +18,7 @@ export interface SplitterLayoutPropTypes extends CommonProps {
   /**
    * Controls the width of the `SplitterLayout` container.<br />
    */
-  width: number;
+  width: number | string;
   /**
    * Controls the height of the `SplitterLayout` container.<br />
    */
@@ -26,7 +28,7 @@ export interface SplitterLayoutPropTypes extends CommonProps {
    */
   contentAreaProps?: [
     {
-      size?: number;
+      size: number;
       resizable?: boolean;
     }
   ];
@@ -52,6 +54,10 @@ const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTML
   const classes = useStyles();
 
   const splitterLayoutClasses = StyleClassHelper.of(classes.splitterLayout);
+  // direction
+  splitterLayoutClasses.put(classes[`flexBoxDirection${orientation}`]);
+  // justify content
+  splitterLayoutClasses.put(classes[`justifyContent${justifyContent}`]);
 
   if (className) {
     splitterLayoutClasses.put(className);
@@ -70,6 +76,8 @@ const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTML
           key={index}
           size={contentAreaProps?.[index]?.size}
           style={{
+            display: 'flex',
+            justifyContent,
             maxHeight: height,
             backgroundColor: ThemingParameters.sapBackgroundColor
           }}
@@ -78,11 +86,22 @@ const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTML
         </ReflexElement>
       );
 
-      if ((children as ReactNodeArray).length - 1 > index && contentAreaProps?.[index]?.resizable) {
+      if (
+        (children as ReactNodeArray).length - 1 > index &&
+        (contentAreaProps?.[index]?.resizable || contentAreaProps?.[index]?.resizable === undefined)
+      ) {
         elements.push(
-          <ReflexSplitter key={`splitter${index}`} style={{ width: '15px', height, backgroundColor: 'black' }} />
+          <ReflexSplitter
+            key={`splitter${index}`}
+            style={{ width: '16px', height, border: 'none', backgroundColor: ThemingParameters.sapShell_Background }}
+          >
+            <Icon
+              style={{ position: 'relative', top: 'calc(50% - 8px)' }}
+              name={orientation === 'vertical' ? 'vertical-grip' : 'horizontal-grip'}
+            />
+          </ReflexSplitter>
         );
-      } else if (index > 0 && !contentAreaProps?.[index]?.resizable) {
+      } else if (index > 0 && contentAreaProps?.[index]?.resizable === false) {
         const indexOfSplitter = elements.findIndex((element) => element.key === `${index}`) - 1;
 
         if (elements[indexOfSplitter].key.startsWith('splitter')) {
