@@ -29,6 +29,7 @@ export interface SplitterLayoutPropTypes extends CommonProps {
   contentAreaProps?: [
     {
       size: number;
+      minSize?: number;
       resizable?: boolean;
     }
   ];
@@ -75,6 +76,7 @@ const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTML
         <ReflexElement
           key={index}
           size={contentAreaProps?.[index]?.size}
+          minSize={contentAreaProps?.[index]?.minSize}
           style={{
             display: 'flex',
             justifyContent,
