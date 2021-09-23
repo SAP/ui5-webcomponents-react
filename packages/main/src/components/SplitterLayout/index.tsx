@@ -51,7 +51,7 @@ const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTML
   const { orientation, width, height, contentAreaProps, justifyContent, children, slot, tooltip, style, className } =
     props;
 
-  const classes = useStyles();
+  const classes = useStyles(props);
 
   const splitterLayoutClasses = StyleClassHelper.of(classes.splitterLayout);
   // direction
@@ -92,8 +92,13 @@ const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTML
       ) {
         elements.push(
           <ReflexSplitter
+            style={{
+              width: '16px',
+              height,
+              border: 'none',
+              backgroundColor: ThemingParameters.sapShell_Background
+            }}
             key={`splitter${index}`}
-            style={{ width: '16px', height, border: 'none', backgroundColor: ThemingParameters.sapShell_Background }}
           >
             <Icon
               className={classes.gripIcon}
