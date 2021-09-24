@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useReducer, useRef, useState } from 'react';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
@@ -23,11 +23,25 @@ export const ManageViewsTableRows = (props) => {
     readOnly,
     index,
     defaultView,
-    setDefaultView
+    showShare,
+    showApplyAutomatically,
+    showSetAsDefault,
+    //todo
+    setDefaultView,
+    handleRowChange
   } = props;
-
   const rowId = `${children ?? ''}-${index}`;
-  const name = favorite ? 'favorite' : 'unfavorite';
+  const [internalFavorite, setFavorite] = useReducer((prev) => {
+    return !prev;
+  }, !!favorite);
+  const name = internalFavorite ? 'favorite' : 'unfavorite';
+  const currentVariant = useRef();
+
+  const onFavoriteClick = (e) => {
+    setFavorite();
+    handleRowChange(e, { currentVariant: currentVariant.current, favorite: !internalFavorite });
+  };
+
   const renderView = () => {
     if (labelReadOnly) {
       return (
@@ -40,37 +54,47 @@ export const ManageViewsTableRows = (props) => {
         </Text>
       );
     }
+    // todo Variant name is unique
     return <Input value={children} />;
   };
   return (
     <React.Fragment key={rowId}>
-      <TableRow>
+      <TableRow data-id={children} ref={currentVariant}>
         <TableCell>
           {/*todo icon not interactive (when - also with readOnly?), icon callback*/}
           {isDefault ? (
             <Icon name="favorite" style={{ color: ThemingParameters.sapContent_NonInteractiveIconColor }} />
           ) : (
-            <Icon name={name} interactive style={{ color: ThemingParameters.sapContent_MarkerIconColor }} />
+            <Icon
+              name={name}
+              interactive
+              style={{ color: ThemingParameters.sapContent_MarkerIconColor }}
+              onClick={onFavoriteClick}
+            />
           )}
         </TableCell>
         <TableCell>{renderView()}</TableCell>
         {/*todo i18n*/}
-        <TableCell>{global ? 'Public' : 'Private'}</TableCell>
+        {showShare && <TableCell>{global ? 'Public' : 'Private'}</TableCell>}
         {/*todo callback --> handle interaction (only single checked)*/}
-        <TableCell>
-          <RadioButton
-            data-row-id={rowId}
-            checked={defaultView !== undefined ? defaultView === rowId : isDefault}
-            onChange={(e) => {
-              //todo user callback (targetRow, rowId, state, )
-              setDefaultView(e.target.dataset.rowId);
-            }}
-          />
-        </TableCell>
+        {showSetAsDefault && (
+          <TableCell>
+            <RadioButton
+              data-row-id={rowId}
+              checked={defaultView !== undefined ? defaultView === rowId : isDefault}
+              onChange={(e) => {
+                //todo user callback (targetRow, rowId, state, )
+                setDefaultView(e.target.dataset.rowId);
+              }}
+            />
+          </TableCell>
+        )}
         {/*todo cb*/}
-        <TableCell>
-          <CheckBox checked={applyAutomatically} />
-        </TableCell>
+        {showApplyAutomatically && (
+          <TableCell>
+            <CheckBox checked={applyAutomatically} />
+          </TableCell>
+        )}
         <TableCell>
           <Text>{author}</Text>
         </TableCell>

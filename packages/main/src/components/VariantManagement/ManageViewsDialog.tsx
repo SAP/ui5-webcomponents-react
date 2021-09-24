@@ -22,20 +22,20 @@ import { createPortal } from 'react-dom';
 import { Ui5DialogDomRef } from '../../interfaces/Ui5DialogDomRef';
 import { ManageViewsTableRows } from './MangeViewsTableRows';
 
-const COLUMNS_TABLE = (
-  <>
-    <TableColumn key="favorite-variant-item" />
-    <TableColumn>View</TableColumn>
-    <TableColumn>Sharing</TableColumn>
-    <TableColumn>Default</TableColumn>
-    <TableColumn>Apply Automatically</TableColumn>
-    <TableColumn>Created By</TableColumn>
-    <TableColumn key="delete-variant-item" />
-  </>
-);
-
+//todo prop types
 export const ManageViewsDialog = (props) => {
-  const { children, onAfterClose } = props;
+  const { children, onAfterClose, handleSaveManageViews, showShare, showApplyAutomatically, showSetAsDefault } = props;
+  const columns = (
+    <>
+      <TableColumn key="favorite-variant-item" />
+      <TableColumn>View</TableColumn>
+      {showShare && <TableColumn>Sharing</TableColumn>}
+      {showSetAsDefault && <TableColumn>Default</TableColumn>}
+      {showApplyAutomatically && <TableColumn>Apply Automatically</TableColumn>}
+      <TableColumn>Created By</TableColumn>
+      <TableColumn key="delete-variant-item" />
+    </>
+  );
   const manageViewsRef = useRef<Ui5DialogDomRef>(null);
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
@@ -56,9 +56,18 @@ export const ManageViewsDialog = (props) => {
   const [defaultView, setDefaultView] = useState<undefined | string>();
   //todo apply view automatically
   const [applyViewAutomatically, setApplyViewAutomatically] = useState<undefined | string[]>();
+
+  const handleTableRowChange = (e, payload) => {
+    console.log(e, payload);
+  };
+  const handleDelete = (e, payload) => {
+    console.log(e, payload);
+  };
+  const handleSave = (e) => {};
   return createPortal(
     //todo i18n
     <Dialog
+      //todo media query?
       //todo max-width (ui5 has some calculation there)
       style={{ width: '64%' }}
       ref={manageViewsRef}
@@ -69,22 +78,30 @@ export const ManageViewsDialog = (props) => {
           //todo cb
           endContent={
             <>
-              <Button design={ButtonDesign.Emphasized}>{saveText}</Button>
-              <Button design={ButtonDesign.Transparent}>{cancelText}</Button>
+              <Button design={ButtonDesign.Emphasized} onClick={handleSave}>
+                {saveText}
+              </Button>
+              <Button design={ButtonDesign.Transparent} onClick={onAfterClose}>
+                {cancelText}
+              </Button>
             </>
           }
         />
       }
     >
-      {/*todo create separate component*/}
-      <Table columns={COLUMNS_TABLE} style={{ minWidth: '600px' }}>
+      <Table columns={columns} style={{ minWidth: '600px' }}>
         {childrenProps.map((itemProps, index) => {
           return (
             <ManageViewsTableRows
               {...itemProps}
+              handleRowChange={handleTableRowChange}
+              handleDelete={handleDelete}
               index={index}
               defaultView={defaultView}
               setDefaultView={setDefaultView}
+              showShare={showShare}
+              showApplyAutomatically={showApplyAutomatically}
+              showSetAsDefault={showSetAsDefault}
             />
           );
         })}

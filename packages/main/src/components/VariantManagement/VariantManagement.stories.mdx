@@ -1,9 +1,12 @@
 import { PopoverPlacementType } from '@ui5/webcomponents-react/dist/PopoverPlacementType';
 import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
+import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { VariantManagement } from '@ui5/webcomponents-react/dist/VariantManagement';
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import { VariantItem } from './VariantItem';
+import { useState } from '@storybook/addons';
+import { useReducer } from 'react';
 
 <Meta
   title="Inputs / VariantManagement"
@@ -14,13 +17,8 @@ import { VariantItem } from './VariantItem';
     }
   }}
   args={{
-    selectedKey: '2',
     placement: PopoverPlacementType.Bottom,
-    level: TitleLevel.H4,
-    variantItems: [
-      { label: 'Variant 1', key: '1' },
-      { label: 'Variant 2', key: '2' }
-    ]
+    level: TitleLevel.H4
   }}
 />
 
@@ -32,20 +30,34 @@ import { VariantItem } from './VariantItem';
 
 <Canvas>
   <Story name="Default">
-    {(props) => (
-      <VariantManagement {...props} showManage showSaveAs>
-        <VariantItem labelReadOnly>Variant 1</VariantItem>
-        <VariantItem isDefault selected author="Guybrush Threepwood" favorite>
-          Variant 2 - Default
-        </VariantItem>
-        <VariantItem author="LeChuck" global applyAutomatically>
-          Variant 3
-        </VariantItem>
-        <VariantItem author="LeChuck" readOnly>
-          Read Only
-        </VariantItem>
-      </VariantManagement>
-    )}
+    {(props) => {
+      const [favs, setFavs] = useReducer((prev) => !prev, false);
+      return (
+        <>
+          <VariantManagement
+            {...props}
+            closeOnItemSelect={false}
+            onSaveAs={(e) => {}}
+            onSelect={(e) => {
+              console.log(e);
+            }}
+          >
+            <VariantItem labelReadOnly favorite={favs} data-test={'Hello there'} selected>
+              Variant 1
+            </VariantItem>
+            <VariantItem isDefault author="Guybrush Threepwood" favorite>
+              Variant 2 - Default
+            </VariantItem>
+            <VariantItem author="LeChuck" global applyAutomatically>
+              Variant 3
+            </VariantItem>
+            <VariantItem author="LeChuck" readOnly>
+              Read Only
+            </VariantItem>
+          </VariantManagement>
+        </>
+      );
+    }}
   </Story>
 </Canvas>
 

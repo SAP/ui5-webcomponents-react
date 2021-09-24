@@ -1,7 +1,11 @@
-import React from 'react';
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
+import React, { forwardRef, Ref, useContext, useEffect } from 'react';
 import { StandardListItem, StandardListItemPropTypes } from '@ui5/webcomponents-react/dist/StandardListItem';
+import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
+import { VariantManagementContext } from './index';
 
-export interface VariantItem extends StandardListItemPropTypes {
+export interface VariantItemPropTypes extends StandardListItemPropTypes {
+  //todo should children be required?
   /**
    * Author of the variant
    */
@@ -15,7 +19,8 @@ export interface VariantItem extends StandardListItemPropTypes {
    */
   global?: boolean;
   /**
-   * todo necessary? name?
+   * todo
+   *
    */
   isDefault?: boolean;
   /**
@@ -23,25 +28,39 @@ export interface VariantItem extends StandardListItemPropTypes {
    */
   labelReadOnly?: boolean;
   /**
-   * Attribute for usage in SmartFilterBar
-   * todo this should apply the view immediately when it's checked
-   * --> check how this can be implemented, probably best to just return a callback
+   * Indicates if the variant should be applied automatically on selection.
    */
-  applyAutomatically?: boolean; // ui5 executeOnSelection
-
-  //todo
+  applyAutomatically?: boolean;
   /**
-   * If set to false, the user is allowed to change the item's data
-   *  todo is this really the prop for the delete button?
+   * todo
+   * If set to false, the user is allowed to change the item's data. --> dirty state
    */
   readOnly?: boolean; //with ui5 it's readOnly
 }
 
-export const VariantItem = (props) => {
-  const { isDefault, author, favorite, global, labelReadOnly, applyAutomatically, readOnly } = props;
+//sap.ui.getCore().byId($0.id).getVariantItems()[1].setExecuteOnSelection(true)
+export const VariantItem = forwardRef((props: VariantItemPropTypes, ref: Ref<Ui5DomRef>) => {
+  const { isDefault, author, favorite, global, labelReadOnly, applyAutomatically, readOnly, selected } = props;
+  const { selectVariantItem } = useContext(VariantManagementContext);
+  const consolidatedRef = useConsolidatedRef(ref);
+  useEffect(() => {
+    if (selected) {
+      selectVariantItem({ ...props, variantItem: consolidatedRef.current });
+    }
+  }, [selected]);
+
+  const handleVariantItemClick = (e) => {
+    selectVariantItem({ ...props, variantItem: consolidatedRef.current });
+    if (typeof props?.onClick === 'function') {
+      props.onClick(e);
+    }
+  };
+
   return (
     <StandardListItem
       {...props}
+      ref={consolidatedRef}
+      onClick={handleVariantItemClick}
       data-is-default={isDefault}
       data-author={author}
       data-favorite={favorite}
@@ -51,6 +70,6 @@ export const VariantItem = (props) => {
       data-read-only={readOnly}
     />
   );
-};
+});
 
 VariantItem.displayName = 'VariantItem';
