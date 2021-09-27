@@ -2,6 +2,7 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingPara
 
 export const DynamicPageTitleStyles = {
   container: {
+    flex: '1 1 100%',
     backgroundColor: ThemingParameters.sapObjectHeader_Background,
     minHeight: '3rem',
     wordWrap: 'break-word',
@@ -35,22 +36,17 @@ export const DynamicPageTitleStyles = {
     padding: '0.5rem 0 0.25rem 0'
   },
   titleMainSection: {
-    flexGrow: 1,
-    width: '100%',
+    flex: '1 1 100%',
     alignItems: 'baseline'
   },
   title: {
     color: ThemingParameters.sapGroup_TitleTextColor,
     fontSize: ThemingParameters.sapFontHeader3Size,
-    whiteSpace: 'nowrap',
-    textOverflow: 'ellipsis',
-    flexShrink: 1,
     paddingTop: '0.3125rem'
   },
   subTitleRight: {
     color: ThemingParameters.sapContent_LabelColor,
-    fontSize: ThemingParameters.sapFontSize,
-    whiteSpace: 'nowrap'
+    fontSize: ThemingParameters.sapFontSize
   },
   subTitleBottom: {
     color: ThemingParameters.sapContent_LabelColor,
@@ -62,6 +58,7 @@ export const DynamicPageTitleStyles = {
     flexShrink: 1.6
   },
   toolbar: {
+    flex: '1 1.6 100%',
     cursor: 'auto',
     '&:hover': {
       backgroundColor: 'inherit'
