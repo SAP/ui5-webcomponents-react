@@ -647,7 +647,7 @@ const createWebComponentWrapper = (
     `
     ${regularImports.join('\n')}
     import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
-    import '@ui5/webcomponents${componentsFromFioriPackage.has(name) ? '-fiori' : ''}/dist/${name}';
+    import '@ui5/webcomponents${componentsFromFioriPackage.has(name) ? '-fiori' : ''}/dist/${name}.js';
     import { ${reactImports.join(', ')} } from 'react';
 
     export interface ${name}PropTypes extends ${tsExtendsStatement} {
