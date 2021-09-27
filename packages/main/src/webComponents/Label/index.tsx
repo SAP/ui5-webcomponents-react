@@ -16,7 +16,7 @@ export interface LabelPropTypes extends WithWebComponentPropTypes {
    */
   required?: boolean;
   /**
-   * Defines whether semi-colon is added to the `Label` text.
+   * Defines whether colon is added to the component text.
    *
    * **Note:** Usually used in forms.
    */

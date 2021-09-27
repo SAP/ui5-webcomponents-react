@@ -7,6 +7,18 @@ import { FC, ReactNode } from 'react';
 
 export interface ListPropTypes extends WithWebComponentPropTypes {
   /**
+   * Sets the accessible aria name of the component.
+   */
+  accessibleName?: string;
+  /**
+   * Receives id(or many ids) of the elements that label the input
+   */
+  accessibleNameRef?: string;
+  /**
+   * Defines the accessible role of the component.
+   */
+  accessibleRole?: string;
+  /**
    * Defines if the component would display a loading indicator over the list.
    */
   busy?: boolean;
@@ -124,7 +136,17 @@ export interface ListPropTypes extends WithWebComponentPropTypes {
  */
 const List: FC<ListPropTypes> = withWebComponent<ListPropTypes>(
   'ui5-list',
-  ['footerText', 'growing', 'headerText', 'mode', 'noDataText', 'separators'],
+  [
+    'accessibleName',
+    'accessibleNameRef',
+    'accessibleRole',
+    'footerText',
+    'growing',
+    'headerText',
+    'mode',
+    'noDataText',
+    'separators'
+  ],
   ['busy', 'inset'],
   ['header'],
   ['item-click', 'item-close', 'item-delete', 'item-toggle', 'load-more', 'selection-change']
@@ -133,6 +155,7 @@ const List: FC<ListPropTypes> = withWebComponent<ListPropTypes>(
 List.displayName = 'List';
 
 List.defaultProps = {
+  accessibleRole: 'list',
   busy: false,
   growing: ListGrowingMode.None,
   inset: false,
