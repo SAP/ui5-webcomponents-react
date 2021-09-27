@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.131.21](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.20...v0.131.21) (2021-09-27)
+
+
+### Bug Fixes
+
+* **DynamicPageTitle:** wrap `header` and `subHeader` if not enough space is available ([#2171](https://github.com/SAP/ui5-webcomponents-react/issues/2171)) ([40458fd](https://github.com/SAP/ui5-webcomponents-react/commit/40458fd9face44b68252bf0c27affbe531cd1be3))
+
+
+### Features
+
+* update to @ui5/webcomponents 0.31.19 ([7d3677c](https://github.com/SAP/ui5-webcomponents-react/commit/7d3677c8bf6a1c0f27ce8954c49cd075e7973b56))
+
+
+
+
+
 ## [0.131.20](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.19...v0.131.20) (2021-09-21)
 
 
