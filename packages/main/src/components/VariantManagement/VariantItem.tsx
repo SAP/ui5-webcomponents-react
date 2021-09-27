@@ -2,7 +2,7 @@ import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
 import React, { forwardRef, Ref, useContext, useEffect } from 'react';
 import { StandardListItem, StandardListItemPropTypes } from '@ui5/webcomponents-react/dist/StandardListItem';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { VariantManagementContext } from './index';
+import { VariantManagementContext } from '@ui5/webcomponents-react/dist/VariantManagementContext';
 
 export interface VariantItemPropTypes extends StandardListItemPropTypes {
   //todo should children be required?

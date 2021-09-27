@@ -58,9 +58,11 @@ export const ManageViewsDialog = (props) => {
   const [applyViewAutomatically, setApplyViewAutomatically] = useState<undefined | string[]>();
 
   const handleTableRowChange = (e, payload) => {
+    //todo
     console.log(e, payload);
   };
   const handleDelete = (e, payload) => {
+    //todo
     console.log(e, payload);
   };
   const handleSave = (e) => {};

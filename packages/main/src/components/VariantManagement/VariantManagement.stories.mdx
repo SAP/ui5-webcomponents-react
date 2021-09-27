@@ -37,9 +37,11 @@ import { useReducer } from 'react';
           <VariantManagement
             {...props}
             closeOnItemSelect={false}
-            onSaveAs={(e) => {}}
+            onSaveAs={(e) => {
+              console.log(e.detail);
+            }}
             onSelect={(e) => {
-              console.log(e);
+              console.log();
             }}
           >
             <VariantItem labelReadOnly favorite={favs} data-test={'Hello there'} selected>

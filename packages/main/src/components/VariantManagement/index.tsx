@@ -4,7 +4,7 @@ import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassH
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
-import { CANCEL, VARIANTS } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
+import { CANCEL, MY_VIEWS } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { Bar } from '@ui5/webcomponents-react/dist/Bar';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
@@ -24,6 +24,8 @@ import React, {
   createContext,
   forwardRef,
   isValidElement,
+  ReactChild,
+  ReactChildren,
   ReactNode,
   ReactNodeArray,
   Ref,
@@ -41,15 +43,7 @@ import { ManageViewsDialog } from './ManageViewsDialog';
 import { SaveViewDialog } from './SaveViewDialog';
 import { VariantItem, VariantItemPropTypes } from './VariantItem';
 import '@ui5/webcomponents-fiori/dist/illustrations/UnableToLoad.js';
-
-// todo fix type, move to different file
-export interface SelectedVariant extends VariantItemPropTypes {
-  variantItem: Ref<Ui5DomRef>;
-}
-
-export const VariantManagementContext = createContext({
-  selectVariantItem: (selectedVariant: SelectedVariant) => {}
-});
+import { VariantManagementContext, SelectedVariant } from '@ui5/webcomponents-react/dist/VariantManagementContext';
 
 export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'> {
   /**
@@ -175,7 +169,7 @@ const useStyles = createUseStyles(styles, { name: 'VariantManagement' });
 const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Ref<HTMLDivElement>) => {
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const {
-    titleText = i18nBundle.getText(VARIANTS),
+    titleText = i18nBundle.getText(MY_VIEWS),
     className,
     style,
     tooltip,
@@ -199,7 +193,6 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
   const popoverRef = useRef<Ui5ResponsivePopoverDomRef>(null);
   const saveAsRef = useRef<Ui5ResponsivePopoverDomRef>(null);
 
-  //todo should we support fragments?
   const [safeChildren, setSafeChildren] = useState(Children.toArray(children));
 
   const [manageViewsDialogOpen, setManageViewsDialogOpen] = useState(false);
@@ -235,7 +228,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
 
   const handleSaveView = (e, selectedVariant) => {
     if (typeof onSaveAs === 'function') {
-      onSaveAs(enrichEventWithDetails(e, { savedVariantProps: selectedVariant }));
+      onSaveAs(enrichEventWithDetails(e, { ...selectedVariant }));
     }
     handleSaveAsClose();
   };
@@ -280,8 +273,13 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
     }
   };
 
-  const passThroughProps = usePassThroughHtmlProps(props, ['onSelect']);
-  console.log(selectedVariant);
+  const variantNames = safeChildren.map((item: ComponentElement<any, any>) =>
+    typeof item.props?.children === 'string' ? item.props.children : ''
+  );
+
+  //todo
+  const passThroughProps = usePassThroughHtmlProps(props, ['onSelect', 'onSaveAs']);
+
   return (
     <div className={variantManagementClasses.valueOf()} style={style} title={tooltip} {...passThroughProps} ref={ref}>
       <VariantManagementContext.Provider
@@ -363,6 +361,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
             onAfterClose={handleSaveAsClose}
             handleSave={handleSaveView}
             selectedVariant={selectedVariant}
+            variantNames={variantNames}
           />
         )}
       </VariantManagementContext.Provider>

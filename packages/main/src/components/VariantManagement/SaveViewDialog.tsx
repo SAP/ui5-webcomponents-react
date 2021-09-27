@@ -1,44 +1,83 @@
 import { useI18nBundle } from '@ui5/webcomponents-react-base/hooks/useI18nBundle';
-import { Dialog } from '@ui5/webcomponents-react/dist/Dialog';
-import { Select } from '@ui5/webcomponents-react/dist/Select';
-import React, { useEffect, useReducer, useRef, useState } from 'react';
 import {
-  ButtonDesign,
-  CheckBox,
-  FlexBox,
-  FlexBoxAlignItems,
-  FlexBoxDirection,
-  FlexBoxJustifyContent,
-  Input,
-  Label
-} from '../..';
-import { CANCEL, SAVE } from '../../../dist/assets/i18n/i18n-defaults';
-import { Ui5DialogDomRef } from '../../interfaces/Ui5DialogDomRef';
-import { Bar } from '../../webComponents/Bar';
-import { Button } from '../../webComponents/Button';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
+  CANCEL,
+  SAVE,
+  SAVE_VIEW,
+  VIEW,
+  SET_AS_DEFAULT,
+  PUBLIC,
+  APPLY_AUTOMATICALLY,
+  FILE_ALREADY_EXISTS
+} from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
+import { Bar } from '@ui5/webcomponents-react/dist/Bar';
+import { Button } from '@ui5/webcomponents-react/dist/Button';
+import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
+import { CheckBox } from '@ui5/webcomponents-react/dist/CheckBox';
+import { Dialog } from '@ui5/webcomponents-react/dist/Dialog';
+import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
+import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
+import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
+import { Input } from '@ui5/webcomponents-react/dist/Input';
+import { Label } from '@ui5/webcomponents-react/dist/Label';
+import { SelectedVariant } from '@ui5/webcomponents-react/dist/VariantManagementContext';
+import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { Ui5DialogDomRef } from '@ui5/webcomponents-react/interfaces/Ui5DialogDomRef';
+import React, { useEffect, useRef, useState } from 'react';
 
-//todo prop types
-//todo needs currently selected item
-export const SaveViewDialog = (props) => {
-  const { onAfterClose, handleSave, selectedVariant, showShare, showApplyAutomatically, showSetAsDefault } = props;
+//todo styles
+interface SaveViewDialogPropTypes {
+  onAfterClose: (event: Ui5CustomEvent<HTMLElement>) => void;
+  handleSave: (event: Ui5CustomEvent<HTMLElement>, selectedVariant: SelectedVariant) => void;
+  selectedVariant: SelectedVariant;
+  showShare: boolean;
+  showApplyAutomatically: boolean;
+  showSetAsDefault: boolean;
+  variantNames: string[];
+}
+
+export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
+  const {
+    onAfterClose,
+    handleSave,
+    selectedVariant,
+    showShare,
+    showApplyAutomatically,
+    showSetAsDefault,
+    variantNames
+  } = props;
   const saveViewDialogRef = useRef<Ui5DialogDomRef>(null);
+  const inputRef = useRef(undefined);
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
   const cancelText = i18nBundle.getText(CANCEL);
   const saveText = i18nBundle.getText(SAVE);
+  const headingText = i18nBundle.getText(SAVE_VIEW);
+  const defaultCbLabel = i18nBundle.getText(SET_AS_DEFAULT);
+  const publicCbLabel = i18nBundle.getText(PUBLIC);
+  const applyAutomaticallyCbLabel = i18nBundle.getText(APPLY_AUTOMATICALLY);
+  const inputLabelText = i18nBundle.getText(VIEW);
+  const errorText = i18nBundle.getText(FILE_ALREADY_EXISTS);
 
   const [isDefault, setDefault] = useState(selectedVariant.isDefault);
-  const [isPublic, setPublic] = useState(selectedVariant.public);
+  const [isPublic, setPublic] = useState(selectedVariant.global);
   const [applyAutomatically, setApplyAutomatically] = useState(selectedVariant.applyAutomatically);
-  const [variantName, setVariantName] = useState(selectedVariant.children ?? '');
+  const [variantName, setVariantName] = useState<string>(
+    typeof selectedVariant?.children === 'string' ? selectedVariant.children : ''
+  );
+  const [variantNameValid, setVariantNameValid] = useState(true);
 
   const handleInputChange = (e) => {
     setVariantName(e.target.value);
   };
 
   const onSave = (e) => {
-    handleSave(e, { ...selectedVariant, children: variantName, isDefault, ['public']: isPublic, applyAutomatically });
+    if (variantNames.includes(variantName)) {
+      setVariantNameValid(false);
+      inputRef.current?.focus();
+    } else {
+      setVariantNameValid(true);
+      handleSave(e, { ...selectedVariant, children: variantName, isDefault, global: isPublic, applyAutomatically });
+    }
   };
 
   const handleCancel = () => {
@@ -65,11 +104,10 @@ export const SaveViewDialog = (props) => {
   return (
     <Dialog
       ref={saveViewDialogRef}
-      headerText="todo Save View"
+      headerText={headingText}
       onAfterClose={onAfterClose}
       footer={
         <Bar
-          //todo cb
           endContent={
             <>
               <Button design={ButtonDesign.Emphasized} onClick={onSave}>
@@ -85,12 +123,15 @@ export const SaveViewDialog = (props) => {
     >
       <FlexBox direction={FlexBoxDirection.Column} alignItems={FlexBoxAlignItems.Start}>
         <Label for="view" showColon>
-          View
+          {inputLabelText}
         </Label>
         <Input
+          ref={inputRef}
           style={{ width: '100%', margin: '0.1875rem 0' /* todo cozy: 0.25rem 0*/ }}
           id="view"
           value={variantName}
+          valueState={variantNameValid ? 'None' : 'Error'}
+          valueStateMessage={<div>{errorText}</div>}
           onChange={handleInputChange}
         />
         <FlexBox
@@ -98,14 +139,12 @@ export const SaveViewDialog = (props) => {
           direction={FlexBoxDirection.Column}
           style={{ padding: '0 0.5rem' }}
         >
-          {showSetAsDefault && (
-            <CheckBox onChange={handleChangeDefault} text="todo Set as Default" checked={isDefault} />
-          )}
-          {showShare && <CheckBox onChange={handleChangePublic} text="todo Public" checked={isPublic} />}
+          {showSetAsDefault && <CheckBox onChange={handleChangeDefault} text={defaultCbLabel} checked={isDefault} />}
+          {showShare && <CheckBox onChange={handleChangePublic} text={publicCbLabel} checked={isPublic} />}
           {showApplyAutomatically && (
             <CheckBox
               onChange={handleChangeApplyAutomatically}
-              text="todo Apply Automatically"
+              text={applyAutomaticallyCbLabel}
               checked={applyAutomatically}
             />
           )}
