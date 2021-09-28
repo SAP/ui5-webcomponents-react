@@ -1,16 +1,15 @@
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
+import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';
+import { Icon } from '@ui5/webcomponents-react/dist/Icon';
 import React, { forwardRef, ReactNode, ReactNodeArray, Ref, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { ReflexContainer, ReflexSplitter, ReflexElement } from 'react-reflex';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { styles } from './SplitterLayout.jss';
-import 'react-reflex/styles.css';
-import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';
 import '@ui5/webcomponents-icons/dist/vertical-grip.js';
 import '@ui5/webcomponents-icons/dist/horizontal-grip.js';
-import { Icon } from '@ui5/webcomponents-react/dist/Icon';
 
 const useStyles = createUseStyles(styles, { name: 'SplitterLayout' });
 
