@@ -64,7 +64,7 @@ const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTML
       className={splitterLayoutClasses.valueOf()}
       ref={ref}
     >
-      <ReflexContainer style={{ width, height }} orientation="vertical">
+      <ReflexContainer style={{ width: height, height: width }} orientation={orientation}>
         {layoutElements}
       </ReflexContainer>
     </div>

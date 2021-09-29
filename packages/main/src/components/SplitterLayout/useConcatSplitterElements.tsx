@@ -16,8 +16,8 @@ const Splitter = (key: number, height: string | number, orientation: 'horizontal
   return (
     <ReflexSplitter
       style={{
-        width: '16px',
-        height,
+        width: orientation === 'vertical' ? '16px' : height,
+        height: orientation === 'vertical' ? height : '16px',
         border: 'none',
         backgroundColor: ThemingParameters.sapShell_Background
       }}

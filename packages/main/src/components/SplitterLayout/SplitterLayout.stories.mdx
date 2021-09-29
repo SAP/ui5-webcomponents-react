@@ -11,8 +11,7 @@ import { SplitterElement } from '@ui5/webcomponents-react/dist/SplitterElement';
   title="Layouts & Floorplans / SplitterLayout"
   component={SplitterLayout}
   args={{
-    orientation: 'vertical',
-    justifyContent: FlexBoxJustifyContent.Start
+    orientation: 'horizontal'
   }}
 />
 
@@ -30,8 +29,8 @@ import { SplitterElement } from '@ui5/webcomponents-react/dist/SplitterElement';
           <SplitterElement size={100} minSize={50} maxSize={250} resizable={true}>
             <Button style={{ width: '100%' }}>Content 1</Button>
           </SplitterElement>
-          <SplitterElement size={200} minSize={50} resizable={true}>
-            <Button style={{ width: '100%' }}>Content 2</Button>
+          <SplitterElement justifyContent={FlexBoxJustifyContent.Center} size={200} minSize={50} resizable={true}>
+            <Button style={{ width: '50%' }}>Content 2</Button>
           </SplitterElement>
           <SplitterElement size={100} minSize={50} resizable={true}>
             <Button style={{ width: '100%' }}>Content 3</Button>

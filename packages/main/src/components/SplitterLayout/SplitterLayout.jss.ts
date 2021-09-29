@@ -16,36 +16,39 @@ const styles = () => {
     },
     gripIcon: (props) => ({
       position: 'relative',
+      left: props.orientation === 'vertical' ? null : 'calc(50% - 8px)',
       top: 'calc(50% - 8px)',
       '&:hover': {
         '&:before': {
-          height: `calc(${props.height} / 2 - 14px)`,
-          transition: 'height 0.15s ease-in'
+          height: props.orientation === 'vertical' ? `calc(${props.height} / 2 - 14px)` : null,
+          width: props.orientation === 'vertical' ? null : `calc(${props.height} / 2 - 14px)`,
+          transition: 'width 0.15s ease-in'
         },
         '&:after': {
-          height: `calc(${props.height} / 2 - 16px)`,
-          transition: 'height 0.15s ease-in'
+          height: props.orientation === 'vertical' ? `calc(${props.height} / 2 - 16px)` : null,
+          width: props.orientation === 'vertical' ? null : `calc(${props.height} / 2 - 16px)`,
+          transition: 'width 0.15s ease-in'
         }
       },
       '&:before, &:after': {
         content: '""',
         position: 'absolute',
-        height: '4rem',
-        width: '0.0625rem'
+        height: props.orientation === 'vertical' ? '4rem' : '0.0625rem',
+        width: props.orientation === 'vertical' ? '0.0625rem' : '4rem'
       },
       '&:before': {
-        top: '130%',
-        left: 'calc(50%)',
-        backgroundImage: `linear-gradient(to bottom, ${ThemingParameters.sapHighlightColor}, rgba(8,84,160,0))`
-        // '&:hover': {
-        //   height: `calc(${props.height} / 2 - 14px)`,
-        //   transition: 'height 0.15s ease-in'
-        // }
+        top: props.orientation === 'vertical' ? '130%' : 'calc(50%)',
+        left: props.orientation === 'vertical' ? 'calc(50%)' : '130%',
+        backgroundImage: `linear-gradient(to ${props.orientation === 'vertical' ? 'bottom' : 'right'}, ${
+          ThemingParameters.sapHighlightColor
+        }, rgba(8,84,160,0))`
       },
       '&:after': {
-        bottom: '130%',
-        left: 'calc(50%)',
-        backgroundImage: `linear-gradient(to top, ${ThemingParameters.sapHighlightColor}, rgba(8,84,160,0))`
+        bottom: props.orientation === 'vertical' ? '130%' : 'calc(50%)',
+        right: props.orientation === 'vertical' ? 'calc(50%)' : '130%',
+        backgroundImage: `linear-gradient(to ${props.orientation === 'vertical' ? 'top' : 'left'}, ${
+          ThemingParameters.sapHighlightColor
+        }, rgba(8,84,160,0))`
       }
     }),
     '@global': {
