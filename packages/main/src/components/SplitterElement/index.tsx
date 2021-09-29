@@ -12,7 +12,7 @@ export interface SplitterElementPropTypes {
   children?: ReactNode | ReactNodeArray;
 }
 
-const SplitterElement = forwardRef((props: SplitterElementPropTypes, ref: Ref<HTMLDivElement>) => {
+const SplitterElement = forwardRef((props: SplitterElementPropTypes, ref: Ref<React.Component>) => {
   const { size, minSize, maxSize, children, justifyContent } = props;
 
   return (
