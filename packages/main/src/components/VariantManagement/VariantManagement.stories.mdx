@@ -36,7 +36,8 @@ import { useReducer } from 'react';
         <>
           <VariantManagement
             {...props}
-            closeOnItemSelect={false}
+            level="H6"
+            dirtyState
             onSaveAs={(e) => {
               console.log(e.detail);
             }}

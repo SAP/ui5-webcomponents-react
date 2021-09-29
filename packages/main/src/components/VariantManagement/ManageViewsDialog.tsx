@@ -2,45 +2,60 @@ import '@ui5/webcomponents-icons/dist/decline.js';
 import '@ui5/webcomponents-icons/dist/favorite.js';
 import '@ui5/webcomponents-icons/dist/unfavorite.js';
 import { useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
-import { CANCEL, SAVE } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
+import {
+  APPLY_AUTOMATICALLY,
+  CANCEL,
+  CREATED_BY,
+  DEFAULT,
+  SAVE,
+  SHARING,
+  VIEW
+} from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { Bar } from '@ui5/webcomponents-react/dist/Bar';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
-import { CheckBox } from '@ui5/webcomponents-react/dist/CheckBox';
 import { Dialog } from '@ui5/webcomponents-react/dist/Dialog';
-import { Icon } from '@ui5/webcomponents-react/dist/Icon';
-import { Input } from '@ui5/webcomponents-react/dist/Input';
-import { RadioButton } from '@ui5/webcomponents-react/dist/RadioButton';
 import { Table } from '@ui5/webcomponents-react/dist/Table';
-import { TableCell } from '@ui5/webcomponents-react/dist/TableCell';
 import { TableColumn } from '@ui5/webcomponents-react/dist/TableColumn';
-import { TableRow } from '@ui5/webcomponents-react/dist/TableRow';
-import { Text } from '@ui5/webcomponents-react/dist/Text';
 import React, { Children, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Ui5DialogDomRef } from '../../interfaces/Ui5DialogDomRef';
 import { ManageViewsTableRows } from './MangeViewsTableRows';
 
+//todo styles
+//todo i18n
 //todo prop types
 export const ManageViewsDialog = (props) => {
-  const { children, onAfterClose, handleSaveManageViews, showShare, showApplyAutomatically, showSetAsDefault } = props;
+  const {
+    children,
+    onAfterClose,
+    handleSaveManageViews,
+    showShare,
+    showApplyAutomatically,
+    showSetAsDefault,
+    variantNames
+  } = props;
+  const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
+  const cancelText = i18nBundle.getText(CANCEL);
+  const saveText = i18nBundle.getText(SAVE);
+  const viewHeaderText = i18nBundle.getText(VIEW);
+  const sharingHeaderText = i18nBundle.getText(SHARING);
+  const defaultHeaderText = i18nBundle.getText(DEFAULT);
+  const applyAutomaticallyHeaderText = i18nBundle.getText(APPLY_AUTOMATICALLY);
+  const createdByHeaderText = i18nBundle.getText(CREATED_BY);
+
   const columns = (
     <>
       <TableColumn key="favorite-variant-item" />
-      <TableColumn>View</TableColumn>
-      {showShare && <TableColumn>Sharing</TableColumn>}
-      {showSetAsDefault && <TableColumn>Default</TableColumn>}
-      {showApplyAutomatically && <TableColumn>Apply Automatically</TableColumn>}
-      <TableColumn>Created By</TableColumn>
+      <TableColumn>{viewHeaderText}</TableColumn>
+      {showShare && <TableColumn>{sharingHeaderText}</TableColumn>}
+      {showSetAsDefault && <TableColumn>{defaultHeaderText}</TableColumn>}
+      {showApplyAutomatically && <TableColumn>{applyAutomaticallyHeaderText}</TableColumn>}
+      <TableColumn>{createdByHeaderText}</TableColumn>
       <TableColumn key="delete-variant-item" />
     </>
   );
   const manageViewsRef = useRef<Ui5DialogDomRef>(null);
-  const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
-
-  const cancelText = i18nBundle.getText(CANCEL);
-  const saveText = i18nBundle.getText(SAVE);
 
   useEffect(() => {
     manageViewsRef.current.show();
@@ -91,11 +106,13 @@ export const ManageViewsDialog = (props) => {
         />
       }
     >
+      {/*todo width*/}
       <Table columns={columns} style={{ minWidth: '600px' }}>
         {childrenProps.map((itemProps, index) => {
           return (
             <ManageViewsTableRows
               {...itemProps}
+              variantNames={variantNames}
               handleRowChange={handleTableRowChange}
               handleDelete={handleDelete}
               index={index}

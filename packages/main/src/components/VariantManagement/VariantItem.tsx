@@ -33,7 +33,7 @@ export interface VariantItemPropTypes extends StandardListItemPropTypes {
   applyAutomatically?: boolean;
   /**
    * todo
-   * If set to false, the user is allowed to change the item's data. --> dirty state
+   * If set to false, the user is allowed to change the item's data. --> dirty state (has nothing to do with actual interaction)
    */
   readOnly?: boolean; //with ui5 it's readOnly
 }
