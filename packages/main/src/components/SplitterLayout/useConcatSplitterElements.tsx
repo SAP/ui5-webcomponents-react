@@ -1,15 +1,15 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { Icon } from '@ui5/webcomponents-react/dist/Icon';
+import { SplitterElementPropTypes } from '@ui5/webcomponents-react/dist/SplitterElement';
 import React, { ReactElement, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { ReflexSplitter } from 'react-reflex';
 import { safeGetChildrenArray } from '../ObjectPage/ObjectPageUtils';
-import { SplitterElementProps } from './SplitterElement';
 import { styles } from './SplitterLayout.jss';
 
 const useStyles = createUseStyles(styles, { name: 'SplitterLayout' });
 
-const Splitter = (key: number, height: number, orientation: 'horizontal' | 'vertical') => {
+const Splitter = (key: number, height: string | number, orientation: 'horizontal' | 'vertical') => {
   const props = { key, height, orientation };
   const classes = useStyles(props);
 
@@ -29,7 +29,7 @@ const Splitter = (key: number, height: number, orientation: 'horizontal' | 'vert
 };
 
 export const useConcatSplitterElements = (
-  children: ReactElement<SplitterElementProps> | ReactElement<SplitterElementProps>[],
+  children: ReactElement<SplitterElementPropTypes> | ReactElement<SplitterElementPropTypes>[],
   height: number,
   orientation: 'horizontal' | 'vertical'
 ) => {

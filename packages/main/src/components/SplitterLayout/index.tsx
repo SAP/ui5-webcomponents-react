@@ -1,6 +1,7 @@
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';
+import { SplitterElementPropTypes } from '@ui5/webcomponents-react/dist/SplitterElement';
 import React, { forwardRef, ReactElement, Ref } from 'react';
 import { createUseStyles } from 'react-jss';
 import { ReflexContainer } from 'react-reflex';
@@ -8,7 +9,6 @@ import { CommonProps } from '../../interfaces/CommonProps';
 import { styles } from './SplitterLayout.jss';
 import '@ui5/webcomponents-icons/dist/vertical-grip.js';
 import '@ui5/webcomponents-icons/dist/horizontal-grip.js';
-import { SplitterElementProps } from './SplitterElement';
 import { useConcatSplitterElements } from './useConcatSplitterElements';
 
 const useStyles = createUseStyles(styles, { name: 'SplitterLayout' });
@@ -34,7 +34,7 @@ export interface SplitterLayoutPropTypes extends CommonProps {
   /**
    * Content of the `SplitterLayout`.
    */
-  children: ReactElement<SplitterElementProps> | ReactElement<SplitterElementProps>[];
+  children: ReactElement<SplitterElementPropTypes> | ReactElement<SplitterElementPropTypes>[];
 }
 
 const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTMLDivElement>) => {

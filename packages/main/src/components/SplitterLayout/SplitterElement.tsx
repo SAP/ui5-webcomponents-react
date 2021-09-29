@@ -3,7 +3,7 @@ import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJust
 import { forwardRef, ReactNode, ReactNodeArray, Ref } from 'react';
 import { ReflexElement } from 'react-reflex';
 
-export interface SplitterElementProps {
+export interface SplitterElementPropTypes {
   resizable?: boolean;
   size?: number;
   minSize?: number;
@@ -12,7 +12,7 @@ export interface SplitterElementProps {
   children?: ReactNode | ReactNodeArray;
 }
 
-const SplitterElement = forwardRef((props: SplitterElementProps, ref: Ref<HTMLDivElement>) => {
+const SplitterElement = forwardRef((props: SplitterElementPropTypes, ref: Ref<HTMLDivElement>) => {
   const { size, minSize, maxSize, children, justifyContent } = props;
 
   return (
