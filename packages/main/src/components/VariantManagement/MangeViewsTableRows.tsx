@@ -33,17 +33,19 @@ export const ManageViewsTableRows = (props) => {
     variantNames,
     //todo
     setDefaultView,
-    handleRowChange
+    handleRowChange,
+    handleDelete
   } = props;
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const errorText = i18nBundle.getText(FILE_ALREADY_EXISTS);
 
-  const rowId = `${children ?? ''}-${index}`;
+  // const rowId = `${children ?? ''}`;
   const [internalFavorite, setFavorite] = useReducer((prev) => {
     return !prev;
   }, !!favorite);
   const iconName = internalFavorite ? 'favorite' : 'unfavorite';
+  // can be removed?
   const currentVariant = useRef();
   const inputRef = useRef(undefined);
 
@@ -51,7 +53,7 @@ export const ManageViewsTableRows = (props) => {
 
   const onFavoriteClick = (e) => {
     setFavorite();
-    handleRowChange(e, { currentVariant: currentVariant.current, favorite: !internalFavorite });
+    handleRowChange(e, { currentVariant: children, favorite: !internalFavorite });
   };
 
   const handleVariantInput = (e) => {
@@ -62,8 +64,17 @@ export const ManageViewsTableRows = (props) => {
       setVariantNameValid(true);
       //todo state needed?
       //todo propertyName
-      handleRowChange(e, { currentVariant: currentVariant.current, children: e.target.value });
+      handleRowChange(e, { currentVariant: children, children: e.target.value });
     }
+  };
+
+  const handleDefaultChange = (e) => {
+    //todo user callback (targetRow, rowId, state, )
+    setDefaultView(children);
+  };
+
+  const handleApplyAutomaticallyChange = (e) => {
+    handleRowChange(e, { currentVariant: children, applyAutomatically: e.target.checked });
   };
 
   //todo if default, always fav, not changable <-- is this true?
@@ -90,7 +101,8 @@ export const ManageViewsTableRows = (props) => {
     );
   };
   return (
-    <React.Fragment key={rowId}>
+    //todo remove key if typesafe children
+    <React.Fragment key={`${children}`}>
       <TableRow data-id={children} ref={currentVariant}>
         <TableCell>
           {/*todo i18n aria*/}
@@ -112,26 +124,27 @@ export const ManageViewsTableRows = (props) => {
         {showSetAsDefault && (
           <TableCell>
             <RadioButton
-              data-row-id={rowId}
-              checked={defaultView !== undefined ? defaultView === rowId : isDefault}
-              onChange={(e) => {
-                //todo user callback (targetRow, rowId, state, )
-                setDefaultView(e.target.dataset.rowId);
-              }}
+              // data-row-id={rowId}
+              checked={defaultView !== undefined ? defaultView === children : isDefault}
+              onChange={handleDefaultChange}
             />
           </TableCell>
         )}
         {/*todo cb*/}
         {showApplyAutomatically && (
           <TableCell>
-            <CheckBox checked={applyAutomatically} />
+            <CheckBox checked={applyAutomatically} onChange={handleApplyAutomaticallyChange} />
           </TableCell>
         )}
         <TableCell>
           <Text>{author}</Text>
         </TableCell>
         {/*todo readOnly has nothing to to with this, I guess this is the public/private flag*/}
-        <TableCell>{!readOnly && <Button icon="decline" design={ButtonDesign.Transparent} />}</TableCell>
+        <TableCell>
+          {!global && (
+            <Button icon="decline" design={ButtonDesign.Transparent} onClick={handleDelete} data-children={children} />
+          )}
+        </TableCell>
       </TableRow>
     </React.Fragment>
   );

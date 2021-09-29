@@ -23,6 +23,7 @@ import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5ResponsivePopoverDomRef } from '@ui5/webcomponents-react/interfaces/Ui5ResponsivePopoverDomRef';
 import React, {
   Children,
+  cloneElement,
   ComponentElement,
   forwardRef,
   isValidElement,
@@ -131,6 +132,10 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
    * todo
    */
   onSaveAs?: any;
+  /**
+   * todo
+   */
+  onSaveManageViews?: any;
 }
 
 //todo
@@ -192,6 +197,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
     closeOnItemSelect,
     disabled,
     onSaveAs,
+    onSaveManageViews,
 
     inErrorState,
     hideShare,
@@ -248,8 +254,36 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
     handleSaveAsClose();
   };
 
-  const handleSaveManageViews = (e) => {
-    console.log(e);
+  const handleSaveManageViews = (e, payload) => {
+    const { defaultView, updatedRows, deletedRows } = payload;
+    //todo cb for user
+    if (typeof onSaveManageViews === 'function') {
+      //todo give previous props, etc.
+      onSaveManageViews(enrichEventWithDetails(e, {}));
+    }
+    setSafeChildren((prev) =>
+      prev
+        .map((child) => {
+          let updatedProps = {};
+          if (defaultView) {
+            if (defaultView === child.props.children) {
+              updatedProps.isDefault = true;
+            } else {
+              updatedProps.isDefault = false;
+            }
+          }
+          if (Object.keys(updatedRows).includes(child.props.children)) {
+            const { currentVariant, ...rest } = updatedRows[child.props.children];
+            updatedProps = { ...updatedProps, ...rest };
+          }
+          if (deletedRows.has(child.props.children)) {
+            return false;
+          }
+          return cloneElement(child, updatedProps);
+        })
+        .filter(Boolean)
+    );
+    handleManageClose();
   };
 
   const handleOpenVariantManagement = useCallback(

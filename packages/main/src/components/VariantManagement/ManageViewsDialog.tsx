@@ -64,23 +64,35 @@ export const ManageViewsDialog = (props) => {
     };
   }, []);
 
-  const childrenProps = Children.map(children, (child) => {
-    return child.props;
-  });
+  const [childrenProps, setChildrenProps] = useState(
+    Children.map(children, (child) => {
+      return { ...child.props, ref: child.ref };
+    })
+  );
 
   const [defaultView, setDefaultView] = useState<undefined | string>();
   //todo apply view automatically
-  const [applyViewAutomatically, setApplyViewAutomatically] = useState<undefined | string[]>();
 
+  const changedTableRows = useRef({});
   const handleTableRowChange = (e, payload) => {
-    //todo
-    console.log(e, payload);
+    //todo default special case
+    changedTableRows.current[payload?.currentVariant] = {
+      ...(changedTableRows.current[payload?.currentVariant] ?? {}),
+      ...payload
+    };
   };
-  const handleDelete = (e, payload) => {
-    //todo
-    console.log(e, payload);
+  const deletedTableRows = useRef(new Set([]));
+  const handleDelete = (e) => {
+    deletedTableRows.current.add(e.target.dataset.children);
+    setChildrenProps((prev) => prev.filter((item) => item.children !== e.target.dataset.children));
   };
-  const handleSave = (e) => {};
+  const handleSave = (e) => {
+    handleSaveManageViews(e, {
+      updatedRows: changedTableRows.current,
+      defaultView,
+      deletedRows: deletedTableRows.current
+    });
+  };
   return createPortal(
     //todo i18n
     <Dialog

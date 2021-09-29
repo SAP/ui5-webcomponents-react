@@ -36,13 +36,15 @@ import { useReducer } from 'react';
         <>
           <VariantManagement
             {...props}
-            level="H6"
             dirtyState
             onSaveAs={(e) => {
               console.log(e.detail);
             }}
             onSelect={(e) => {
               console.log();
+            }}
+            onSaveManageViews={(e) => {
+              console.log(e.detail);
             }}
           >
             <VariantItem labelReadOnly favorite={favs} data-test={'Hello there'} selected>
