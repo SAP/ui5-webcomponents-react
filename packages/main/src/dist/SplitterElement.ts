@@ -1,4 +1,5 @@
-import { SplitterElement } from '../components/SplitterLayout/SplitterElement';
+import { SplitterElement } from '../components/SplitterElement';
+import { SplitterElementPropTypes } from '../components/SplitterElement';
 
-export type { SplitterElementPropTypes } from '../components/SplitterLayout/SplitterElement';
 export { SplitterElement };
+export type { SplitterElementPropTypes };

@@ -30,7 +30,7 @@ const Splitter = (key: number, height: string | number, orientation: 'horizontal
 
 export const useConcatSplitterElements = (
   children: ReactElement<SplitterElementPropTypes> | ReactElement<SplitterElementPropTypes>[],
-  height: number,
+  height: string | number,
   orientation: 'horizontal' | 'vertical'
 ) => {
   return useMemo(() => {

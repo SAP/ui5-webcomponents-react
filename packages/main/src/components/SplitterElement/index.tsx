@@ -1,6 +1,6 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';
-import { forwardRef, ReactNode, ReactNodeArray, Ref } from 'react';
+import React, { forwardRef, ReactNode, ReactNodeArray, Ref } from 'react';
 import { ReflexElement } from 'react-reflex';
 
 export interface SplitterElementPropTypes {
