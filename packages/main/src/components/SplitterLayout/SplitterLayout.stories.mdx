@@ -1,33 +1,18 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
-import { Label } from '@ui5/webcomponents-react/dist/Label';
-import { Title } from '@ui5/webcomponents-react/dist/Title';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import '@ui5/webcomponents-icons/dist/employee.js';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import '@ui5/webcomponents-icons/dist/employee.js';
 import { SplitterLayout } from '@ui5/webcomponents-react/dist/SplitterLayout';
 import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';
+import { SplitterElement } from '@ui5/webcomponents-react/dist/SplitterElement';
 
 <Meta
   title="Layouts & Floorplans / SplitterLayout"
   component={SplitterLayout}
   args={{
     orientation: 'vertical',
-    justifyContent: FlexBoxJustifyContent.Start,
-    contentAreaProps: [
-      {
-        size: 100,
-        resizable: true,
-        minSize: 100
-      },
-      {
-        size: 400,
-        resizable: true
-      },
-      {
-        size: 100
-      }
-    ]
+    justifyContent: FlexBoxJustifyContent.Start
   }}
 />
 
@@ -42,9 +27,15 @@ import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJust
     {(args) => {
       return (
         <SplitterLayout {...args} width={'700px'} height={'50vh'}>
-          <Button style={{ width: '100%' }}>Content 1</Button>
-          <Button style={{ width: '100%' }}>Content 2</Button>
-          <Button style={{ width: '100%' }}>Content 3</Button>
+          <SplitterElement size={100} minSize={50} maxSize={250} resizable={true}>
+            <Button style={{ width: '100%' }}>Content 1</Button>
+          </SplitterElement>
+          <SplitterElement size={200} minSize={50} resizable={true}>
+            <Button style={{ width: '100%' }}>Content 2</Button>
+          </SplitterElement>
+          <SplitterElement size={100} minSize={50} resizable={true}>
+            <Button style={{ width: '100%' }}>Content 3</Button>
+          </SplitterElement>
         </SplitterLayout>
       );
     }}
