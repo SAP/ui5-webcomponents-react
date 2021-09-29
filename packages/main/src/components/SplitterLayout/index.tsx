@@ -27,26 +27,19 @@ export interface SplitterLayoutPropTypes extends CommonProps {
    */
   orientation?: 'horizontal' | 'vertical';
   /**
-   * Defines how the browser distributes space between and around items along the main-axis.<br />
-   * <b>Note:</b> Corresponds to `justify-content`.
-   */
-  justifyContent?: FlexBoxJustifyContent | keyof typeof FlexBoxJustifyContent;
-  /**
    * Content of the `SplitterLayout`.
    */
   children: ReactElement<SplitterElementPropTypes> | ReactElement<SplitterElementPropTypes>[];
 }
 
 const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTMLDivElement>) => {
-  const { orientation, width, height, justifyContent, children, slot, tooltip, style, className } = props;
+  const { orientation, width, height, children, slot, tooltip, style, className } = props;
 
   const classes = useStyles(props);
 
   const splitterLayoutClasses = StyleClassHelper.of(classes.splitterLayout);
   // direction
   splitterLayoutClasses.put(classes[`flexBoxDirection${orientation}`]);
-  // justify content
-  splitterLayoutClasses.put(classes[`justifyContent${justifyContent}`]);
 
   if (className) {
     splitterLayoutClasses.put(className);
@@ -64,7 +57,13 @@ const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTML
       className={splitterLayoutClasses.valueOf()}
       ref={ref}
     >
-      <ReflexContainer style={{ width: height, height: width }} orientation={orientation}>
+      <ReflexContainer
+        style={{
+          width: orientation === 'vertical' ? width : height,
+          height: orientation === 'vertical' ? height : width
+        }}
+        orientation={orientation}
+      >
         {layoutElements}
       </ReflexContainer>
     </div>

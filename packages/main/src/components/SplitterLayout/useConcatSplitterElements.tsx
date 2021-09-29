@@ -6,6 +6,7 @@ import { createUseStyles } from 'react-jss';
 import { ReflexSplitter } from 'react-reflex';
 import { safeGetChildrenArray } from '../ObjectPage/ObjectPageUtils';
 import { styles } from './SplitterLayout.jss';
+import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';
 
 const useStyles = createUseStyles(styles, { name: 'SplitterLayout' });
 
@@ -42,6 +43,7 @@ export const useConcatSplitterElements = (
     let splitterCount = 0;
     childrenArray.forEach((child, index) => {
       const splitterElementChild = childrenArray[index + splitterCount];
+
       if (
         childrenArray.length - splitterCount - 1 > index &&
         (splitterElementChild.props.resizable || splitterElementChild.props.resizable === undefined) &&

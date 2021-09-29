@@ -10,8 +10,14 @@ import { SplitterElement } from '@ui5/webcomponents-react/dist/SplitterElement';
 <Meta
   title="Layouts & Floorplans / SplitterLayout"
   component={SplitterLayout}
+  argTypes={{
+    orientation: { control: { disable: true } },
+    children: { control: { disable: true } },
+    height: { control: { disable: true } },
+    width: { control: { disable: true } }
+  }}
   args={{
-    orientation: 'horizontal'
+    width: '100%'
   }}
 />
 
@@ -25,14 +31,41 @@ import { SplitterElement } from '@ui5/webcomponents-react/dist/SplitterElement';
   <Story name="Default">
     {(args) => {
       return (
-        <SplitterLayout {...args} width={'700px'} height={'50vh'}>
+        <SplitterLayout justifyContent={FlexBoxJustifyContent.Center} {...args} height={'50vh'}>
+          <SplitterElement
+            justifyContent={FlexBoxJustifyContent.Center}
+            orientation={'vertical'}
+            size={200}
+            minSize={50}
+            maxSize={500}
+            resizable={true}
+          >
+            <Button style={{ width: '30%' }}>Content 1</Button>
+          </SplitterElement>
+          <SplitterElement justifyContent={FlexBoxJustifyContent.Center} size={200} minSize={50} resizable={true}>
+            <Button style={{ width: '50%' }}>Content 2</Button>
+          </SplitterElement>
+          <SplitterElement size={100} minSize={50} resizable={true}>
+            <Button style={{ width: '100%' }}>Content 3</Button>
+          </SplitterElement>
+        </SplitterLayout>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Horizontal Layout">
+    {(args) => {
+      return (
+        <SplitterLayout orientation={'horizontal'} {...args} width={'700px'} height={'50vh'}>
           <SplitterElement size={100} minSize={50} maxSize={250} resizable={true}>
             <Button style={{ width: '100%' }}>Content 1</Button>
           </SplitterElement>
           <SplitterElement justifyContent={FlexBoxJustifyContent.Center} size={200} minSize={50} resizable={true}>
             <Button style={{ width: '50%' }}>Content 2</Button>
           </SplitterElement>
-          <SplitterElement size={100} minSize={50} resizable={true}>
+          <SplitterElement size={100} minSize={50}>
             <Button style={{ width: '100%' }}>Content 3</Button>
           </SplitterElement>
         </SplitterLayout>
