@@ -16,11 +16,11 @@ export interface SplitterLayoutPropTypes extends CommonProps {
   /**
    * Controls the width of the `SplitterLayout` container.<br />
    */
-  width: number | string;
+  width?: number | string;
   /**
    * Controls the height of the `SplitterLayout` container.<br />
    */
-  height: string | number;
+  height?: string | number;
   /**
    * Controls if the `SplitterLayout` is displayed `horizontal` or `vertical`.<br />
    */
@@ -43,7 +43,7 @@ const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTML
   }
   const passThroughProps = usePassThroughHtmlProps(props);
 
-  const layoutElements = useConcatSplitterElements(children, height, orientation);
+  const layoutElements = useConcatSplitterElements(children ?? [], height, orientation);
 
   return (
     <div

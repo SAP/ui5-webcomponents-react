@@ -1,0 +1,135 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SplitterLayout noChildren should not crash 1`] = `
+<DocumentFragment>
+  <div
+    class="SplitterLayout-splitterLayout"
+  >
+    <div
+      class="vertical reflex-container"
+      style="width: 100px; height: 100px;"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`SplitterLayout noProps should not crash 1`] = `
+<DocumentFragment>
+  <div
+    class="SplitterLayout-splitterLayout"
+  >
+    <div
+      class="horizontal reflex-container"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`SplitterLayout renderVerticalSplitterLayout 1`] = `
+<DocumentFragment>
+  <div
+    class="SplitterLayout-splitterLayout"
+  >
+    <div
+      class="vertical reflex-container"
+      style="width: 100%; height: 50vh;"
+    >
+      <div
+        class="vertical reflex-element"
+        style="display: flex; justify-content: Center; flex-grow: 0; flex-shrink: 1; flex-basis: 0%;"
+      >
+        <ui5-button
+          design="Default"
+          style="width: 70%;"
+          ui5-button=""
+        >
+          Content 1
+        </ui5-button>
+      </div>
+      <div
+        class="vertical reflex-element"
+        style="display: flex; justify-content: Center; flex-grow: 0; flex-shrink: 1; flex-basis: 0%;"
+      >
+        <ui5-button
+          design="Default"
+          style="width: 50%;"
+          ui5-button=""
+        >
+          Content 2
+        </ui5-button>
+      </div>
+      <div
+        class="vertical reflex-element"
+        style="display: flex; flex-grow: 0; flex-shrink: 1; flex-basis: 0%;"
+      >
+        <ui5-button
+          design="Default"
+          style="width: 100%;"
+          ui5-button=""
+        >
+          Content 3
+        </ui5-button>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`SplitterLayout renderVerticalSplitterLayout 2`] = `
+<DocumentFragment>
+  <div
+    class="SplitterLayout-splitterLayout"
+  >
+    <div
+      class="horizontal reflex-container"
+    >
+      <div
+        class="horizontal reflex-element"
+        style="display: flex; flex-grow: 0; flex-shrink: 1; flex-basis: 0%;"
+      >
+        <ui5-button
+          design="Default"
+          style="width: 100%;"
+          ui5-button=""
+        >
+          Content 1
+        </ui5-button>
+      </div>
+      <div
+        class="reflex-splitter"
+        style="height: 16px;"
+      >
+        <ui5-icon
+          class="SplitterLayout-gripIconHorizontal SplitterLayout-gripIconHorizontal-d1"
+          name="horizontal-grip"
+          ui5-icon=""
+        />
+      </div>
+      <div
+        class="horizontal reflex-element"
+        style="display: flex; justify-content: Center; flex-grow: 0; flex-shrink: 1; flex-basis: 0%;"
+      >
+        <ui5-button
+          design="Default"
+          style="width: 50%;"
+          ui5-button=""
+        >
+          Content 2
+        </ui5-button>
+      </div>
+      <div
+        class="horizontal reflex-element"
+        style="display: flex; flex-grow: 0; flex-shrink: 1; flex-basis: 0%;"
+      >
+        <ui5-button
+          design="Default"
+          style="width: 100%;"
+          ui5-button=""
+        >
+          Content 3
+        </ui5-button>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
