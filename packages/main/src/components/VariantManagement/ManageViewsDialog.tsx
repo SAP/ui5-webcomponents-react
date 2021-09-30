@@ -21,6 +21,7 @@ import React, { Children, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Ui5DialogDomRef } from '../../interfaces/Ui5DialogDomRef';
 import { ManageViewsTableRows } from './MangeViewsTableRows';
+import { VariantItemPropTypes } from './VariantItem';
 
 //todo styles
 //todo i18n
@@ -66,16 +67,14 @@ export const ManageViewsDialog = (props) => {
 
   const [childrenProps, setChildrenProps] = useState(
     Children.map(children, (child) => {
-      return { ...child.props, ref: child.ref };
+      return child.props;
     })
   );
 
   const [defaultView, setDefaultView] = useState<undefined | string>();
-  //todo apply view automatically
 
   const changedTableRows = useRef({});
   const handleTableRowChange = (e, payload) => {
-    //todo default special case
     changedTableRows.current[payload?.currentVariant] = {
       ...(changedTableRows.current[payload?.currentVariant] ?? {}),
       ...payload
@@ -120,14 +119,13 @@ export const ManageViewsDialog = (props) => {
     >
       {/*todo width*/}
       <Table columns={columns} style={{ minWidth: '600px' }}>
-        {childrenProps.map((itemProps, index) => {
+        {childrenProps.map((itemProps: VariantItemPropTypes, index) => {
           return (
             <ManageViewsTableRows
               {...itemProps}
               variantNames={variantNames}
               handleRowChange={handleTableRowChange}
               handleDelete={handleDelete}
-              index={index}
               defaultView={defaultView}
               setDefaultView={setDefaultView}
               showShare={showShare}

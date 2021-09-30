@@ -1,6 +1,6 @@
 import '@ui5/webcomponents-fiori/dist/illustrations/UnableToLoad.js';
 import '@ui5/webcomponents-icons/dist/navigation-down-arrow';
-import { useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useConsolidatedRef, useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
@@ -45,6 +45,12 @@ import { VariantItemPropTypes } from './VariantItem';
 
 export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'> {
   /**
+   * Variant items displayed by the VariantManagement component.
+   *
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `VariantItem` in order to preserve the intended design.
+   */
+  children?: ReactNode | ReactNodeArray;
+  /**
    * Determines on which side the VariantManagement popover is placed at.
    */
   placement?: PopoverPlacementType | keyof typeof PopoverPlacementType;
@@ -80,10 +86,6 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
     >
   ) => void;
   /**
-   * Variant items displayed by the VariantManagement component.
-   */
-  children?: ReactNode | ReactNodeArray;
-  /**
    * todo this is not a prop, if >10 favorite views exist search is rendered (ui5: >8)
    */
   showSearchInput?: boolean;
@@ -100,6 +102,7 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
   /**
    * Indicates that the 'Favorites' feature is used. Only variants marked as favorites will be displayed in the variant list.
    * todo necessary? name is confusing --> hook
+   * todo not used yet
    */
   useFavorites?: boolean;
   /**
@@ -256,19 +259,20 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
 
   const handleSaveManageViews = (e, payload) => {
     const { defaultView, updatedRows, deletedRows } = payload;
-    //todo cb for user
+    let callbackProperties = { deletedVariants: [], prevVariants: [], updatedVariants: [], variants: [] };
     if (typeof onSaveManageViews === 'function') {
-      //todo give previous props, etc.
-      onSaveManageViews(enrichEventWithDetails(e, {}));
+      onSaveManageViews(enrichEventWithDetails(e, callbackProperties));
     }
     setSafeChildren((prev) =>
       prev
         .map((child) => {
           let updatedProps = {};
+          const currentVariant = popoverRef.current.querySelector(`ui5-li[data-text="${child.props.children}"]`);
+          callbackProperties.prevVariants.push(child.props);
           if (defaultView) {
             if (defaultView === child.props.children) {
               updatedProps.isDefault = true;
-            } else {
+            } else if (child.props.isDefault) {
               updatedProps.isDefault = false;
             }
           }
@@ -277,8 +281,18 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
             updatedProps = { ...updatedProps, ...rest };
           }
           if (deletedRows.has(child.props.children)) {
+            callbackProperties.deletedVariants.push(child.props);
             return false;
           }
+          if (Object.keys(updatedProps).length > 0) {
+            callbackProperties.updatedVariants.push({
+              ...child.props,
+              ...updatedProps,
+              variant: currentVariant,
+              prevVariant: { ...child.props }
+            });
+          }
+          callbackProperties.variants.push({ ...child.props, ...updatedProps, variant: currentVariant });
           return cloneElement(child, updatedProps);
         })
         .filter(Boolean)
@@ -354,7 +368,6 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
           icon="navigation-down-arrow"
           disabled={disabled}
         />
-
         {createPortal(
           <ResponsivePopover
             ref={popoverRef}

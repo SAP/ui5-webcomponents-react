@@ -7,7 +7,8 @@ import {
   SET_AS_DEFAULT,
   PUBLIC,
   APPLY_AUTOMATICALLY,
-  FILE_ALREADY_EXISTS
+  FILE_ALREADY_EXISTS,
+  SPECIFY_VIEW_NAME
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { Bar } from '@ui5/webcomponents-react/dist/Bar';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
@@ -56,7 +57,8 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
   const publicCbLabel = i18nBundle.getText(PUBLIC);
   const applyAutomaticallyCbLabel = i18nBundle.getText(APPLY_AUTOMATICALLY);
   const inputLabelText = i18nBundle.getText(VIEW);
-  const errorText = i18nBundle.getText(FILE_ALREADY_EXISTS);
+  const errorTextAlreadyExists = i18nBundle.getText(FILE_ALREADY_EXISTS);
+  const errorTextEmpty = i18nBundle.getText(SPECIFY_VIEW_NAME);
 
   const [isDefault, setDefault] = useState(selectedVariant.isDefault);
   const [isPublic, setPublic] = useState(selectedVariant.global);
@@ -64,7 +66,7 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
   const [variantName, setVariantName] = useState<string>(
     typeof selectedVariant?.children === 'string' ? selectedVariant.children : ''
   );
-  const [variantNameValid, setVariantNameValid] = useState(true);
+  const [variantNameInvalid, setVariantNameInvalid] = useState<string | boolean>(false);
 
   const handleInputChange = (e) => {
     setVariantName(e.target.value);
@@ -72,10 +74,13 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
 
   const onSave = (e) => {
     if (variantNames.includes(variantName)) {
-      setVariantNameValid(false);
+      setVariantNameInvalid(errorTextAlreadyExists);
+      inputRef.current?.focus();
+    } else if (variantName.length === 0) {
+      setVariantNameInvalid(errorTextEmpty);
       inputRef.current?.focus();
     } else {
-      setVariantNameValid(true);
+      setVariantNameInvalid(false);
       handleSave(e, { ...selectedVariant, children: variantName, isDefault, global: isPublic, applyAutomatically });
     }
   };
@@ -130,8 +135,8 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
           style={{ width: '100%', margin: '0.1875rem 0' /* todo cozy: 0.25rem 0*/ }}
           id="view"
           value={variantName}
-          valueState={variantNameValid ? 'None' : 'Error'}
-          valueStateMessage={<div>{errorText}</div>}
+          valueState={!variantNameInvalid ? 'None' : 'Error'}
+          valueStateMessage={<div>{variantNameInvalid}</div>}
           onChange={handleInputChange}
         />
         <FlexBox

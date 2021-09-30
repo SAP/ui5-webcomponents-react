@@ -41,13 +41,13 @@ import { useReducer } from 'react';
               console.log(e.detail);
             }}
             onSelect={(e) => {
-              console.log();
+              console.log(e.detail);
             }}
             onSaveManageViews={(e) => {
               console.log(e.detail);
             }}
           >
-            <VariantItem labelReadOnly favorite={favs} data-test={'Hello there'} selected>
+            <VariantItem labelReadOnly favorite={favs} selected>
               Variant 1
             </VariantItem>
             <VariantItem isDefault author="Guybrush Threepwood" favorite>
