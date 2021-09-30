@@ -31,7 +31,13 @@ import { SplitterElement } from '@ui5/webcomponents-react/dist/SplitterElement';
   <Story name="Default">
     {(args) => {
       return (
-        <SplitterLayout justifyContent={FlexBoxJustifyContent.Center} {...args} height={'50vh'}>
+        <SplitterLayout
+          orientation={'vertical'}
+          justifyContent={FlexBoxJustifyContent.Center}
+          {...args}
+          width={700}
+          height={'50vh'}
+        >
           <SplitterElement
             justifyContent={FlexBoxJustifyContent.Center}
             orientation={'vertical'}
@@ -40,7 +46,7 @@ import { SplitterElement } from '@ui5/webcomponents-react/dist/SplitterElement';
             maxSize={500}
             resizable={true}
           >
-            <Button style={{ width: '30%' }}>Content 1</Button>
+            <Button style={{ width: '70%' }}>Content 1</Button>
           </SplitterElement>
           <SplitterElement justifyContent={FlexBoxJustifyContent.Center} size={200} minSize={50} resizable={true}>
             <Button style={{ width: '50%' }}>Content 2</Button>

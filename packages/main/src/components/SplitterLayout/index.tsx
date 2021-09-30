@@ -1,8 +1,7 @@
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
-import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';
 import { SplitterElementPropTypes } from '@ui5/webcomponents-react/dist/SplitterElement';
-import React, { forwardRef, ReactElement, Ref } from 'react';
+import React, { forwardRef, ReactElement, Ref, useEffect, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { ReflexContainer } from 'react-reflex';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -33,13 +32,11 @@ export interface SplitterLayoutPropTypes extends CommonProps {
 }
 
 const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTMLDivElement>) => {
-  const { orientation, width, height, children, slot, tooltip, style, className } = props;
+  const { orientation, children, slot, tooltip, style, className, height, width } = props;
 
   const classes = useStyles(props);
 
   const splitterLayoutClasses = StyleClassHelper.of(classes.splitterLayout);
-  // direction
-  splitterLayoutClasses.put(classes[`flexBoxDirection${orientation}`]);
 
   if (className) {
     splitterLayoutClasses.put(className);

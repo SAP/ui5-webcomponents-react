@@ -6,13 +6,14 @@ import { createUseStyles } from 'react-jss';
 import { ReflexSplitter } from 'react-reflex';
 import { safeGetChildrenArray } from '../ObjectPage/ObjectPageUtils';
 import { styles } from './SplitterLayout.jss';
-import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';
 
 const useStyles = createUseStyles(styles, { name: 'SplitterLayout' });
 
 const Splitter = (key: number, height: string | number, orientation: 'horizontal' | 'vertical') => {
   const props = { key, height, orientation };
   const classes = useStyles(props);
+
+  const gripIconClass = orientation === 'vertical' ? classes.gripIconVertical : classes.gripIconHorizontal;
 
   return (
     <ReflexSplitter
@@ -24,7 +25,7 @@ const Splitter = (key: number, height: string | number, orientation: 'horizontal
       }}
       key={`splitter${key}`}
     >
-      <Icon className={classes.gripIcon} name={orientation === 'vertical' ? 'vertical-grip' : 'horizontal-grip'} />
+      <Icon className={gripIconClass} name={orientation === 'vertical' ? 'vertical-grip' : 'horizontal-grip'} />
     </ReflexSplitter>
   );
 };
