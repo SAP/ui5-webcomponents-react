@@ -1,6 +1,6 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';
-import React, { forwardRef, ReactNode, ReactNodeArray, Ref } from 'react';
+import React, { forwardRef, LegacyRef, ReactNode, ReactNodeArray, Ref } from 'react';
 import { ReflexElement } from 'react-reflex';
 
 export interface SplitterElementPropTypes {
@@ -12,7 +12,7 @@ export interface SplitterElementPropTypes {
   children?: ReactNode | ReactNodeArray;
 }
 
-const SplitterElement = forwardRef((props: SplitterElementPropTypes, ref: Ref<HTMLDivElement>) => {
+const SplitterElement = forwardRef((props: SplitterElementPropTypes, ref: LegacyRef<ReflexElement>) => {
   const { size, minSize, maxSize, children, justifyContent } = props;
 
   return (
