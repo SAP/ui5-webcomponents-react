@@ -1,17 +1,19 @@
 import '@ui5/webcomponents-fiori/dist/illustrations/UnableToLoad.js';
 import '@ui5/webcomponents-icons/dist/navigation-down-arrow';
-import { useConsolidatedRef, useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
-import { CANCEL, MY_VIEWS } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
+import { CANCEL, MY_VIEWS, SEARCH } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { Bar } from '@ui5/webcomponents-react/dist/Bar';
+import { Icon } from '@ui5/webcomponents-react/dist/Icon';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { IllustratedMessage } from '@ui5/webcomponents-react/dist/IllustratedMessage';
 import { IllustrationMessageType } from '@ui5/webcomponents-react/dist/IllustrationMessageType';
+import { Input } from '@ui5/webcomponents-react/dist/Input';
 import { List } from '@ui5/webcomponents-react/dist/List';
 import { ListMode } from '@ui5/webcomponents-react/dist/ListMode';
 import { PopoverPlacementType } from '@ui5/webcomponents-react/dist/PopoverPlacementType';
@@ -42,6 +44,8 @@ import { stopPropagation } from '../../internal/stopPropagation';
 import { ManageViewsDialog } from './ManageViewsDialog';
 import { SaveViewDialog } from './SaveViewDialog';
 import { VariantItemPropTypes } from './VariantItem';
+import '@ui5/webcomponents-icons/dist/search';
+import '@ui5/webcomponents-icons/dist/decline';
 
 export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'> {
   /**
@@ -218,6 +222,16 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
   const saveAsRef = useRef<Ui5ResponsivePopoverDomRef>(null);
 
   const [safeChildren, setSafeChildren] = useState(Children.toArray(children));
+  const [showInput, setShowInput] = useState(safeChildren.length > 9);
+
+  useEffect(() => {
+    if (safeChildren.length > 9) {
+      setShowInput(true);
+    } else {
+      setShowInput(false);
+    }
+  }, [safeChildren.length]);
+  console.log(showInput);
 
   const [manageViewsDialogOpen, setManageViewsDialogOpen] = useState(false);
   const [saveAsDialogOpen, setSaveAsDialogOpen] = useState(false);
@@ -265,7 +279,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
     }
     setSafeChildren((prev) =>
       prev
-        .map((child) => {
+        .map((child: ComponentElement<any, any>) => {
           let updatedProps = {};
           const currentVariant = popoverRef.current.querySelector(`ui5-li[data-text="${child.props.children}"]`);
           callbackProperties.prevVariants.push(child.props);
@@ -308,6 +322,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
   );
 
   const cancelText = i18nBundle.getText(CANCEL);
+  const searchText = i18nBundle.getText(SEARCH);
 
   const variantManagementClasses = StyleClassHelper.of(classes.container);
 
@@ -345,6 +360,24 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
   const variantNames = safeChildren.map((item: ComponentElement<any, any>) =>
     typeof item.props?.children === 'string' ? item.props.children : ''
   );
+
+  const [filteredChildren, setFilteredChildren] = useState(undefined);
+  const [searchValue, setSearchValue] = useState('');
+  const handleSearchInput = (e) => {
+    setSearchValue(e.target.value);
+    setFilteredChildren(
+      safeChildren.filter(
+        (child: ComponentElement<any, any>) =>
+          typeof child?.props?.children === 'string' &&
+          child.props.children.toLowerCase().includes(e.target.value.toLowerCase())
+      )
+    );
+  };
+
+  const handleResetFilter = () => {
+    setSearchValue('');
+    setFilteredChildren(undefined);
+  };
 
   //todo
   const passThroughProps = usePassThroughHtmlProps(props, ['onSelect', 'onSaveAs']);
@@ -407,8 +440,38 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
             {inErrorState ? (
               <IllustratedMessage name={IllustrationMessageType.UnableToLoad} />
             ) : (
-              <List onSelectionChange={handleVariantItemSelect} mode={ListMode.SingleSelect}>
-                {safeChildren}
+              <List
+                onSelectionChange={handleVariantItemSelect}
+                mode={ListMode.SingleSelect}
+                //todo style padding: 0 0.5rem 0 0.25rem;
+                header={
+                  showInput ? (
+                    <div style={{ padding: '0.25rem 0.5rem 0.25rem 0.25rem' }}>
+                      {/*todo space isn't working*/}
+                      <Input
+                        value={searchValue}
+                        placeholder={searchText}
+                        onInput={handleSearchInput}
+                        icon={
+                          <>
+                            {/*todo style*/}
+                            {filteredChildren && (
+                              <Icon
+                                name="decline"
+                                interactive
+                                onClick={handleResetFilter}
+                                style={{ cursor: 'pointer' }}
+                              />
+                            )}
+                            <Icon name="search" />
+                          </>
+                        }
+                      />
+                    </div>
+                  ) : undefined
+                }
+              >
+                {filteredChildren ?? safeChildren}
               </List>
             )}
           </ResponsivePopover>,

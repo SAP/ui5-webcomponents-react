@@ -34,7 +34,7 @@ export interface VariantItemPropTypes extends Omit<StandardListItemPropTypes, 'c
    */
   applyAutomatically?: boolean;
   /**
-   * todo is this really needed?
+   * todo is this really needed? --> no SaveAs is shown then (I guess)
    * If set to false, the user is allowed to change the item's data. --> dirty state (has nothing to do with actual interaction)
    */
   readOnly?: boolean;
