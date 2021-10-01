@@ -2,7 +2,7 @@ import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 
-import '@ui5/webcomponents-fiori/dist/ProductSwitchItem';
+import '@ui5/webcomponents-fiori/dist/ProductSwitchItem.js';
 
 export interface ProductSwitchItemPropTypes extends Omit<CommonProps, 'onClick'> {
   /**

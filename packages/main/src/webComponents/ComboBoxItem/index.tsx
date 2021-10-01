@@ -1,7 +1,7 @@
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 
-import '@ui5/webcomponents/dist/ComboBoxItem';
+import '@ui5/webcomponents/dist/ComboBoxItem.js';
 
 export interface ComboBoxItemPropTypes extends CommonProps {
   /**

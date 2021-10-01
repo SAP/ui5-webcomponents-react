@@ -5,7 +5,7 @@ import { Bar } from '@ui5/webcomponents-react/dist/Bar';
 import {
   setCustomElementsScopingSuffix,
   setCustomElementsScopingRules
-} from '@ui5/webcomponents-base/dist/CustomElementsScope';
+} from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
 import React from 'react';
 
 describe('withWebComponent', () => {

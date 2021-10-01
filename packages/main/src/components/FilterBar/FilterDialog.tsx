@@ -1,4 +1,4 @@
-import '@ui5/webcomponents-icons/dist/search';
+import '@ui5/webcomponents-icons/dist/search.js';
 import { createUseStyles } from 'react-jss';
 import { useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';

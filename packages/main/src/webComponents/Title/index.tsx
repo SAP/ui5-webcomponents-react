@@ -4,7 +4,7 @@ import { WrappingType } from '@ui5/webcomponents-react/dist/WrappingType';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { ReactNode } from 'react';
 
-import '@ui5/webcomponents/dist/Title';
+import '@ui5/webcomponents/dist/Title.js';
 
 export interface TitlePropTypes extends CommonProps {
   /**

@@ -5,7 +5,7 @@ import { Ui5CarouselDomRef } from '@ui5/webcomponents-react/interfaces/Ui5Carous
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { ReactNode } from 'react';
 
-import '@ui5/webcomponents/dist/Carousel';
+import '@ui5/webcomponents/dist/Carousel.js';
 
 export interface CarouselPropTypes extends CommonProps {
   /**

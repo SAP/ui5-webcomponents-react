@@ -1,4 +1,4 @@
-import '@ui5/webcomponents-icons/dist/overflow';
+import '@ui5/webcomponents-icons/dist/overflow.js';
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
 import { PopoverPlacementType } from '@ui5/webcomponents-react/dist/PopoverPlacementType';
 import { Popover } from '@ui5/webcomponents-react/dist/Popover';

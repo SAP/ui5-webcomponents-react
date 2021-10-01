@@ -4,7 +4,7 @@ import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { ReactNode } from 'react';
 
-import '@ui5/webcomponents/dist/MessageStrip';
+import '@ui5/webcomponents/dist/MessageStrip.js';
 
 export interface MessageStripPropTypes extends CommonProps {
   /**

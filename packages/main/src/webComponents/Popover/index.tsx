@@ -7,7 +7,7 @@ import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEve
 import { Ui5PopoverDomRef } from '@ui5/webcomponents-react/interfaces/Ui5PopoverDomRef';
 import { ReactNode } from 'react';
 
-import '@ui5/webcomponents/dist/Popover';
+import '@ui5/webcomponents/dist/Popover.js';
 
 export interface PopoverPropTypes extends CommonProps {
   /**

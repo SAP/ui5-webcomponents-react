@@ -4,7 +4,7 @@ import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEve
 import { Ui5DialogDomRef } from '@ui5/webcomponents-react/interfaces/Ui5DialogDomRef';
 import { ReactNode } from 'react';
 
-import '@ui5/webcomponents/dist/Dialog';
+import '@ui5/webcomponents/dist/Dialog.js';
 
 export interface DialogPropTypes extends CommonProps {
   /**

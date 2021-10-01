@@ -6,7 +6,7 @@ import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEve
 import { Ui5DatePickerDomRef } from '@ui5/webcomponents-react/interfaces/Ui5DatePickerDomRef';
 import { ReactNode } from 'react';
 
-import '@ui5/webcomponents/dist/DatePicker';
+import '@ui5/webcomponents/dist/DatePicker.js';
 
 export interface DatePickerPropTypes extends Omit<CommonProps, 'onChange' | 'onInput'> {
   /**

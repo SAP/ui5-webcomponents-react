@@ -3,7 +3,7 @@ import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { ReactNode } from 'react';
 
-import '@ui5/webcomponents-fiori/dist/SideNavigation';
+import '@ui5/webcomponents-fiori/dist/SideNavigation.js';
 
 export interface SideNavigationPropTypes extends CommonProps {
   /**

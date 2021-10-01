@@ -5,7 +5,7 @@ import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { ReactNode } from 'react';
 
-import '@ui5/webcomponents-fiori/dist/NotificationListItem';
+import '@ui5/webcomponents-fiori/dist/NotificationListItem.js';
 
 export interface NotificationListItemPropTypes extends CommonProps {
   /**
