@@ -7,7 +7,14 @@ import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassH
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
-import { CANCEL, MANAGE, MY_VIEWS, SAVE_AS, SEARCH } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
+import {
+  CANCEL,
+  MANAGE,
+  MY_VIEWS,
+  SAVE,
+  SAVE_AS,
+  SEARCH
+} from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { Bar } from '@ui5/webcomponents-react/dist/Bar';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
@@ -128,6 +135,10 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
    */
   hideManageVariants?: boolean;
   /**
+   * Displays the cancel button in the popover.
+   */
+  showCancelButton?: boolean;
+  /**
    * Indicates that the control is in error state. If set to true error message will be displayed whenever the variant is opened.
    */
   inErrorState?: boolean;
@@ -146,6 +157,12 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
       variants: SelectedVariant[];
     }>
   ) => void;
+  /**
+   * The event is fired when the "Save" button is clicked in the `VariantManagement` popover.
+   *
+   * __Note:__ The save button is only displayed if the `VariantManagement` is in `dirtyState` and the selected variant is not in `readOnly` mode.
+   */
+  onSave?: (e: CustomEvent<SelectedVariant>) => void;
 }
 
 const styles = {
@@ -217,7 +234,9 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
     hideSetAsDefault,
     hideSaveAs,
     dirtyStateText,
-    dirtyState
+    dirtyState,
+    showCancelButton,
+    onSave
   } = props;
 
   const classes = useStyles();
@@ -244,6 +263,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
       return { ...currentSelectedVariant.props, variantItem: currentSelectedVariant.ref };
     }
   });
+
   const handleClose = () => {
     popoverRef.current.close();
   };
@@ -261,9 +281,15 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
     setSaveAsDialogOpen(false);
   };
 
+  const handleSave = (e) => {
+    if (typeof onSave === 'function') {
+      onSave(enrichEventWithDetails(e, {}));
+    }
+  };
+
   const handleSaveView = (e, selectedVariant) => {
     if (typeof onSaveAs === 'function') {
-      onSaveAs(enrichEventWithDetails(e, { ...selectedVariant }));
+      onSaveAs(enrichEventWithDetails(e, selectedVariant));
     }
     handleSaveAsClose();
   };
@@ -322,6 +348,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
   const searchText = i18nBundle.getText(SEARCH);
   const saveAsText = i18nBundle.getText(SAVE_AS);
   const manageText = i18nBundle.getText(MANAGE);
+  const saveText = i18nBundle.getText(SAVE);
 
   const variantManagementClasses = StyleClassHelper.of(classes.container);
 
@@ -363,7 +390,6 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
   const [favoriteChildren, setFavoriteChildren] = useState(undefined);
 
   useEffect(() => {
-    //todo reset filtered children
     if (showOnlyFavorites) {
       setFavoriteChildren(
         safeChildren.filter((child: ComponentElement<any, any>) => child.props.favorite || child.props.isDefault)
@@ -408,7 +434,9 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
     setFilteredChildren(undefined);
   };
 
-  const passThroughProps = usePassThroughHtmlProps(props, ['onSelect', 'onSaveAs', 'onSaveManageViews']);
+  const showSaveBtn = dirtyState && !selectedVariant?.readOnly;
+
+  const passThroughProps = usePassThroughHtmlProps(props, ['onSelect', 'onSaveAs', 'onSaveManageViews', 'onSave']);
 
   return (
     <div className={variantManagementClasses.className} style={style} title={tooltip} {...passThroughProps} ref={ref}>
@@ -435,25 +463,42 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
             headerText={titleText}
             placementType={placement}
             footer={
-              !inErrorState && (
+              (showSaveBtn || !hideSaveAs || !hideManageVariants || showCancelButton) && (
                 <Bar
                   endContent={
                     <>
-                      <Button onClick={handleClose} design={ButtonDesign.Emphasized}>
-                        {cancelText}
-                      </Button>
-                      {!hideSaveAs && (
+                      {!inErrorState && showSaveBtn && (
+                        <Button onClick={handleSave} design={ButtonDesign.Emphasized}>
+                          {saveText}
+                        </Button>
+                      )}
+                      {!inErrorState && !hideSaveAs && (
                         <Button
                           onClick={handleOpenSaveAsDialog}
-                          design={ButtonDesign.Transparent}
+                          design={showSaveBtn ? ButtonDesign.Transparent : ButtonDesign.Emphasized}
                           disabled={!selectedVariant || Object.keys(selectedVariant).length === 0}
                         >
                           {saveAsText}
                         </Button>
                       )}
-                      {!hideManageVariants && (
-                        <Button onClick={handleManageClick} design={ButtonDesign.Transparent}>
+                      {!inErrorState && !hideManageVariants && (
+                        <Button
+                          onClick={handleManageClick}
+                          design={showSaveBtn || !hideSaveAs ? ButtonDesign.Transparent : ButtonDesign.Emphasized}
+                        >
                           {manageText}
+                        </Button>
+                      )}
+                      {showCancelButton && (
+                        <Button
+                          onClick={handleClose}
+                          design={
+                            !inErrorState && (showSaveBtn || !hideSaveAs || !hideManageVariants)
+                              ? ButtonDesign.Transparent
+                              : ButtonDesign.Emphasized
+                          }
+                        >
+                          {cancelText}
                         </Button>
                       )}
                     </>

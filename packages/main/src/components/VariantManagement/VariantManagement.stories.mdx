@@ -49,7 +49,7 @@ import { useReducer } from 'react';
             onSaveManageViews={(e) => {
               console.log(e.detail);
             }}
-            showOnlyFavorites
+            showCancelButton
           >
             <VariantItem labelReadOnly favorite={true} selected>
               Variant 1
@@ -63,7 +63,7 @@ import { useReducer } from 'react';
             <VariantItem author="LeChuck" readOnly>
               Read Only
             </VariantItem>
-            <VariantItem author="LeChuck" readOnly>
+            <VariantItem author="LeChuck" readOnly favorite>
               Read Only2
             </VariantItem>
             <VariantItem author="LeChuck" readOnly>
