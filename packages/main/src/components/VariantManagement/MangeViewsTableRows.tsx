@@ -34,7 +34,6 @@ interface ManageViewsTableRowsProps extends VariantItemPropTypes {
   showSetAsDefault: boolean;
 }
 
-//todo styling
 export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
   const {
     variantNames,

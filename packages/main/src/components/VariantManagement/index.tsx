@@ -204,11 +204,11 @@ const styles = {
     margin: '0.4375rem 1rem 0.4325rem auto'
   },
   inputIcon: { cursor: 'pointer', color: ThemingParameters.sapContent_IconColor },
-  searchInput: { padding: '0.25rem 0.5rem 0.25rem 0.25rem' }
+  searchInput: { padding: '0.25rem 0.5rem 0.25rem 0.25rem' },
+  popover: { minWidth: '25rem' }
 };
 
 const useStyles = createUseStyles(styles, { name: 'VariantManagement' });
-/*todo styling: width, ?footer */
 /**
  * The `VariantManagement` component can be used to manage variants, such as FilterBar variants or AnalyticalTable variants.
  */
@@ -461,6 +461,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
         />
         {createPortal(
           <ResponsivePopover
+            className={classes.popover}
             ref={popoverRef}
             headerText={titleText}
             placementType={placement}

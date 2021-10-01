@@ -25,7 +25,6 @@ import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEve
 import { Ui5DialogDomRef } from '@ui5/webcomponents-react/interfaces/Ui5DialogDomRef';
 import React, { useEffect, useRef, useState } from 'react';
 
-//todo styles
 interface SaveViewDialogPropTypes {
   onAfterClose: (event: Ui5CustomEvent<HTMLElement>) => void;
   handleSave: (event: Ui5CustomEvent<HTMLElement>, selectedVariant: SelectedVariant) => void;

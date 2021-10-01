@@ -31,6 +31,17 @@ import { createPortal } from 'react-dom';
 import { Ui5DialogDomRef } from '../../interfaces/Ui5DialogDomRef';
 import { ManageViewsTableRows } from './MangeViewsTableRows';
 import { VariantItemPropTypes } from './VariantItem';
+import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming';
+import { isPhone, isTablet } from '@ui5/webcomponents-base/dist/Device';
+
+addCustomCSS(
+  'ui5-dialog',
+  `
+  :host([data-component-name="VariantManagementManageViewsDialog"]) .ui5-popup-content{
+    padding: 0;
+  }
+  `
+);
 
 interface ManageViewsDialogPropTypes {
   children: ReactNode | ReactNodeArray;
@@ -49,7 +60,6 @@ interface ManageViewsDialogPropTypes {
   variantNames: string[];
 }
 
-//todo styles
 export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
   const {
     children,
@@ -73,10 +83,24 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
     <>
       <TableColumn key="favorite-variant-item" />
       <TableColumn>{viewHeaderText}</TableColumn>
-      {showShare && <TableColumn>{sharingHeaderText}</TableColumn>}
-      {showSetAsDefault && <TableColumn>{defaultHeaderText}</TableColumn>}
-      {showApplyAutomatically && <TableColumn>{applyAutomaticallyHeaderText}</TableColumn>}
-      <TableColumn>{createdByHeaderText}</TableColumn>
+      {showShare && (
+        <TableColumn demandPopin minWidth={600}>
+          {sharingHeaderText}
+        </TableColumn>
+      )}
+      {showSetAsDefault && (
+        <TableColumn demandPopin minWidth={600} popinText={defaultHeaderText}>
+          {defaultHeaderText}
+        </TableColumn>
+      )}
+      {showApplyAutomatically && (
+        <TableColumn demandPopin minWidth={600} popinText={applyAutomaticallyHeaderText}>
+          {applyAutomaticallyHeaderText}
+        </TableColumn>
+      )}
+      <TableColumn demandPopin minWidth={600} popinText={createdByHeaderText}>
+        {createdByHeaderText}
+      </TableColumn>
       <TableColumn key="delete-variant-item" />
     </>
   );
@@ -118,9 +142,8 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
   };
   return createPortal(
     <Dialog
-      //todo media query?
-      //todo max-width (ui5 has some calculation there)
-      style={{ width: '64%' }}
+      style={{ width: isPhone() || isTablet() ? '100%' : '70vw' }}
+      data-component-name="VariantManagementManageViewsDialog"
       ref={manageViewsRef}
       onAfterClose={onAfterClose}
       headerText="Manage Views"
@@ -139,8 +162,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
         />
       }
     >
-      {/*todo width, popin columns*/}
-      <Table columns={columns} style={{ minWidth: '600px' }}>
+      <Table columns={columns} stickyColumnHeader>
         {childrenProps.map((itemProps: VariantItemPropTypes) => (
           <ManageViewsTableRows
             {...itemProps}
