@@ -19,7 +19,6 @@ export const TestComp = (props) => {
       />
       <VariantManagement
         {...props}
-        dirtyState
         onSaveAs={(e) => {
           console.log(e.detail);
         }}
@@ -29,17 +28,33 @@ export const TestComp = (props) => {
         onSaveManageViews={(e) => {
           console.log(e.detail);
         }}
-        showCancelButton
       >
-        <VariantItem labelReadOnly favorite={true} selected>
-          Variant 1
+        <VariantItem selected>Selected</VariantItem>
+        <VariantItem isDefault author="Guybrush Threepwood">
+          Default w/ author
         </VariantItem>
-        {typeof numberOfVariants === 'number' &&
-          new Array(numberOfVariants).fill('').map((item, index) => (
-            <VariantItem isDefault author="Guybrush Threepwood">
-              {`Variant ${index + 2}`}
-            </VariantItem>
-          ))}
+        <VariantItem favorite>Favorite</VariantItem>
+        <VariantItem favorite isDefault>
+          Favorite & Default
+        </VariantItem>
+        <VariantItem favorite isDefault labelReadOnly>
+          Favorite & Default & labelReadOnly
+        </VariantItem>
+        <VariantItem applyAutomatically>Apply Automatically</VariantItem>
+        <VariantItem readOnly>Read Only</VariantItem>
+        <VariantItem global>Global</VariantItem>
+        <VariantItem global readOnly>
+          Global & ReadOnly
+        </VariantItem>
+        <VariantItem applyAutomatically global readOnly favorite isDefault labelReadOnly author="LeChuck">
+          Everything
+        </VariantItem>
+        {/*{typeof numberOfVariants === 'number' &&*/}
+        {/*  new Array(numberOfVariants).fill('').map((item, index) => (*/}
+        {/*    <VariantItem isDefault author="Guybrush Threepwood">*/}
+        {/*      {`Variant ${index + 2}`}*/}
+        {/*    </VariantItem>*/}
+        {/*  ))}*/}
       </VariantManagement>
     </>
   );

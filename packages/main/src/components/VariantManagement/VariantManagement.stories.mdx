@@ -32,13 +32,10 @@ import { TestComp } from './TestComp';
 <Canvas>
   <Story name="Default">
     {(props) => {
-      //todo check if external children are updated
-      //todo check what happens if no children are rendered
-      //todo test all callbacks with all props in ts
       const [favs, setFavs] = useReducer((prev) => !prev, false);
       return (
         <>
-          <TestComp />
+          <TestComp {...props} />
         </>
       );
     }}
