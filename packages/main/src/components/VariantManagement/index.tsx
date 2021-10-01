@@ -1,16 +1,18 @@
 import '@ui5/webcomponents-fiori/dist/illustrations/UnableToLoad.js';
+import '@ui5/webcomponents-icons/dist/decline';
 import '@ui5/webcomponents-icons/dist/navigation-down-arrow';
+import '@ui5/webcomponents-icons/dist/search';
 import { useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
-import { CANCEL, MY_VIEWS, SEARCH } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
+import { CANCEL, MANAGE, MY_VIEWS, SAVE_AS, SEARCH } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { Bar } from '@ui5/webcomponents-react/dist/Bar';
-import { Icon } from '@ui5/webcomponents-react/dist/Icon';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
+import { Icon } from '@ui5/webcomponents-react/dist/Icon';
 import { IllustratedMessage } from '@ui5/webcomponents-react/dist/IllustratedMessage';
 import { IllustrationMessageType } from '@ui5/webcomponents-react/dist/IllustrationMessageType';
 import { Input } from '@ui5/webcomponents-react/dist/Input';
@@ -44,8 +46,10 @@ import { stopPropagation } from '../../internal/stopPropagation';
 import { ManageViewsDialog } from './ManageViewsDialog';
 import { SaveViewDialog } from './SaveViewDialog';
 import { VariantItemPropTypes } from './VariantItem';
-import '@ui5/webcomponents-icons/dist/search';
-import '@ui5/webcomponents-icons/dist/decline';
+
+interface UpdatedVariant extends SelectedVariant {
+  prevVariant?: VariantItemPropTypes;
+}
 
 export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'> {
   /**
@@ -90,10 +94,6 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
     >
   ) => void;
   /**
-   * todo this is not a prop, if >10 favorite views exist search is rendered (ui5: >8)
-   */
-  showSearchInput?: boolean;
-  /**
    * Indicator for modified but not saved variants.
    *
    * __Note:__ You can change the indicator by setting `dirtyStateText`.
@@ -105,10 +105,8 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
   dirtyStateText?: string;
   /**
    * Indicates that the 'Favorites' feature is used. Only variants marked as favorites will be displayed in the variant list.
-   * todo necessary? name is confusing --> hook
-   * todo not used yet
    */
-  useFavorites?: boolean;
+  showOnlyFavorites?: boolean;
   /**
    * Indicates that set as default is visible in the Save View and the Manage Views dialogs.
    */
@@ -133,20 +131,23 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
    * Indicates that the control is in error state. If set to true error message will be displayed whenever the variant is opened.
    */
   inErrorState?: boolean;
-
-  //custom
   /**
-   * todo
+   * The event is fired when the "Save" button is clicked inside the Save View dialog.
    */
-  onSaveAs?: any;
+  onSaveAs?: (e: CustomEvent<SelectedVariant>) => void;
   /**
-   * todo
+   * The event is fired when the "Save" button is clicked inside the Manage Views dialog.
    */
-  onSaveManageViews?: any;
+  onSaveManageViews?: (
+    e: CustomEvent<{
+      deletedVariants: VariantItemPropTypes[];
+      prevVariants: VariantItemPropTypes[];
+      updatedVariants: UpdatedVariant[];
+      variants: SelectedVariant[];
+    }>
+  ) => void;
 }
 
-//todo
-//sap.ui.getCore().byId($0.id).setStandardItemAuthor("Test")
 const styles = {
   container: {
     display: 'flex',
@@ -183,11 +184,13 @@ const styles = {
   },
   footer: {
     margin: '0.4375rem 1rem 0.4325rem auto'
-  }
+  },
+  inputIcon: { cursor: 'pointer', color: ThemingParameters.sapContent_IconColor },
+  searchInput: { padding: '0.25rem 0.5rem 0.25rem 0.25rem' }
 };
-//todo check that it's called view instead of variant in i18n
-const useStyles = createUseStyles(styles, { name: 'VariantManagement' });
 
+const useStyles = createUseStyles(styles, { name: 'VariantManagement' });
+/*todo styling: width, ?footer */
 /**
  * The `VariantManagement` component can be used to manage variants, such as FilterBar variants or AnalyticalTable variants.
  */
@@ -205,7 +208,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
     disabled,
     onSaveAs,
     onSaveManageViews,
-
+    showOnlyFavorites,
     inErrorState,
     hideShare,
     children,
@@ -219,7 +222,6 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
 
   const classes = useStyles();
   const popoverRef = useRef<Ui5ResponsivePopoverDomRef>(null);
-  const saveAsRef = useRef<Ui5ResponsivePopoverDomRef>(null);
 
   const [safeChildren, setSafeChildren] = useState(Children.toArray(children));
   const [showInput, setShowInput] = useState(safeChildren.length > 9);
@@ -231,11 +233,10 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
       setShowInput(false);
     }
   }, [safeChildren.length]);
-  console.log(showInput);
 
   const [manageViewsDialogOpen, setManageViewsDialogOpen] = useState(false);
   const [saveAsDialogOpen, setSaveAsDialogOpen] = useState(false);
-  const [selectedVariant, setSelectedVariant] = useState<VariantItemPropTypes | undefined>(() => {
+  const [selectedVariant, setSelectedVariant] = useState<SelectedVariant | undefined>(() => {
     const currentSelectedVariant = safeChildren.find(
       (item) => isValidElement(item) && item.props.selected
     ) as ComponentElement<any, any>;
@@ -248,19 +249,15 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
   };
 
   const handleManageClick = () => {
-    //todo userEvent
     setManageViewsDialogOpen(true);
   };
   const handleManageClose = () => {
-    //todo userEvent
     setManageViewsDialogOpen(false);
   };
   const handleOpenSaveAsDialog = () => {
-    //todo userEvent
     setSaveAsDialogOpen(true);
   };
   const handleSaveAsClose = () => {
-    //todo userEvent
     setSaveAsDialogOpen(false);
   };
 
@@ -280,7 +277,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
     setSafeChildren((prev) =>
       prev
         .map((child: ComponentElement<any, any>) => {
-          let updatedProps = {};
+          let updatedProps: Omit<SelectedVariant, 'children' | 'variantItem'> = {};
           const currentVariant = popoverRef.current.querySelector(`ui5-li[data-text="${child.props.children}"]`);
           callbackProperties.prevVariants.push(child.props);
           if (defaultView) {
@@ -302,11 +299,11 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
             callbackProperties.updatedVariants.push({
               ...child.props,
               ...updatedProps,
-              variant: currentVariant,
+              variantItem: currentVariant,
               prevVariant: { ...child.props }
             });
           }
-          callbackProperties.variants.push({ ...child.props, ...updatedProps, variant: currentVariant });
+          callbackProperties.variants.push({ ...child.props, ...updatedProps, variantItem: currentVariant });
           return cloneElement(child, updatedProps);
         })
         .filter(Boolean)
@@ -323,6 +320,8 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
 
   const cancelText = i18nBundle.getText(CANCEL);
   const searchText = i18nBundle.getText(SEARCH);
+  const saveAsText = i18nBundle.getText(SAVE_AS);
+  const manageText = i18nBundle.getText(MANAGE);
 
   const variantManagementClasses = StyleClassHelper.of(classes.container);
 
@@ -361,26 +360,55 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
     typeof item.props?.children === 'string' ? item.props.children : ''
   );
 
+  const [favoriteChildren, setFavoriteChildren] = useState(undefined);
+
+  useEffect(() => {
+    //todo reset filtered children
+    if (showOnlyFavorites) {
+      setFavoriteChildren(
+        safeChildren.filter((child: ComponentElement<any, any>) => child.props.favorite || child.props.isDefault)
+      );
+    }
+    if (!showOnlyFavorites && favoriteChildren?.length > 0) {
+      setFavoriteChildren(undefined);
+    }
+  }, [showOnlyFavorites, safeChildren]);
+
+  const safeChildrenWithFavorites = favoriteChildren ?? safeChildren;
+
   const [filteredChildren, setFilteredChildren] = useState(undefined);
   const [searchValue, setSearchValue] = useState('');
   const handleSearchInput = (e) => {
     setSearchValue(e.target.value);
     setFilteredChildren(
-      safeChildren.filter(
+      safeChildrenWithFavorites.filter(
         (child: ComponentElement<any, any>) =>
           typeof child?.props?.children === 'string' &&
           child.props.children.toLowerCase().includes(e.target.value.toLowerCase())
       )
     );
   };
-
+  useEffect(() => {
+    if (filteredChildren) {
+      setFilteredChildren(
+        safeChildrenWithFavorites.filter(
+          (child: ComponentElement<any, any>) =>
+            typeof child?.props?.children === 'string' && child.props.children.toLowerCase().includes(searchValue)
+        )
+      );
+    }
+  }, [safeChildrenWithFavorites]);
+  const handleSpaceInput = (e) => {
+    if (e.code === 'Space') {
+      setSearchValue((prev) => prev + ' ');
+    }
+  };
   const handleResetFilter = () => {
     setSearchValue('');
     setFilteredChildren(undefined);
   };
 
-  //todo
-  const passThroughProps = usePassThroughHtmlProps(props, ['onSelect', 'onSaveAs']);
+  const passThroughProps = usePassThroughHtmlProps(props, ['onSelect', 'onSaveAs', 'onSaveManageViews']);
 
   return (
     <div className={variantManagementClasses.className} style={style} title={tooltip} {...passThroughProps} ref={ref}>
@@ -411,23 +439,21 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
                 <Bar
                   endContent={
                     <>
-                      {/*todo footer styling*/}
                       <Button onClick={handleClose} design={ButtonDesign.Emphasized}>
                         {cancelText}
                       </Button>
-                      {/*todo i18n*/}
                       {!hideSaveAs && (
                         <Button
                           onClick={handleOpenSaveAsDialog}
                           design={ButtonDesign.Transparent}
                           disabled={!selectedVariant || Object.keys(selectedVariant).length === 0}
                         >
-                          Save As
+                          {saveAsText}
                         </Button>
                       )}
                       {!hideManageVariants && (
                         <Button onClick={handleManageClick} design={ButtonDesign.Transparent}>
-                          Manage
+                          {manageText}
                         </Button>
                       )}
                     </>
@@ -443,27 +469,26 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
               <List
                 onSelectionChange={handleVariantItemSelect}
                 mode={ListMode.SingleSelect}
-                //todo style padding: 0 0.5rem 0 0.25rem;
                 header={
                   showInput ? (
-                    <div style={{ padding: '0.25rem 0.5rem 0.25rem 0.25rem' }}>
-                      {/*todo space isn't working*/}
+                    <div className={classes.searchInput}>
                       <Input
                         value={searchValue}
                         placeholder={searchText}
                         onInput={handleSearchInput}
+                        // todo remove when fixed
+                        onKeyDown={handleSpaceInput}
                         icon={
                           <>
-                            {/*todo style*/}
                             {filteredChildren && (
                               <Icon
                                 name="decline"
                                 interactive
                                 onClick={handleResetFilter}
-                                style={{ cursor: 'pointer' }}
+                                className={classes.inputIcon}
                               />
                             )}
-                            <Icon name="search" />
+                            <Icon name="search" className={classes.inputIcon} />
                           </>
                         }
                       />
@@ -471,7 +496,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
                   ) : undefined
                 }
               >
-                {filteredChildren ?? safeChildren}
+                {filteredChildren ?? safeChildrenWithFavorites}
               </List>
             )}
           </ResponsivePopover>,
@@ -505,7 +530,6 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
   );
 });
 
-//todo change names to hide, default to false
 VariantManagement.defaultProps = {
   placement: PopoverPlacementType.Bottom,
   level: TitleLevel.H4,

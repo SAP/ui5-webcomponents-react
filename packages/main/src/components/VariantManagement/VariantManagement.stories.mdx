@@ -31,6 +31,9 @@ import { useReducer } from 'react';
 <Canvas>
   <Story name="Default">
     {(props) => {
+      //todo check if external children are updated
+      //todo check what happens if no children are rendered
+      //todo test all callbacks with all props in ts
       const [favs, setFavs] = useReducer((prev) => !prev, false);
       return (
         <>
@@ -46,11 +49,12 @@ import { useReducer } from 'react';
             onSaveManageViews={(e) => {
               console.log(e.detail);
             }}
+            showOnlyFavorites
           >
-            <VariantItem labelReadOnly favorite={favs} selected>
+            <VariantItem labelReadOnly favorite={true} selected>
               Variant 1
             </VariantItem>
-            <VariantItem isDefault author="Guybrush Threepwood" favorite>
+            <VariantItem isDefault author="Guybrush Threepwood">
               Variant 2 - Default
             </VariantItem>
             <VariantItem author="LeChuck" global applyAutomatically>
