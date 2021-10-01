@@ -17,16 +17,40 @@ import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
 import { Dialog } from '@ui5/webcomponents-react/dist/Dialog';
 import { Table } from '@ui5/webcomponents-react/dist/Table';
 import { TableColumn } from '@ui5/webcomponents-react/dist/TableColumn';
-import React, { Children, useEffect, useRef, useState } from 'react';
+import React, {
+  Children,
+  ComponentElement,
+  MouseEventHandler,
+  ReactNode,
+  ReactNodeArray,
+  useEffect,
+  useRef,
+  useState
+} from 'react';
 import { createPortal } from 'react-dom';
 import { Ui5DialogDomRef } from '../../interfaces/Ui5DialogDomRef';
 import { ManageViewsTableRows } from './MangeViewsTableRows';
 import { VariantItemPropTypes } from './VariantItem';
 
+interface ManageViewsDialogPropTypes {
+  children: ReactNode | ReactNodeArray;
+  onAfterClose: any;
+  handleSaveManageViews: (
+    e: MouseEventHandler<HTMLElement>,
+    payload: {
+      updatedRows: any;
+      defaultView: string;
+      deletedRows: any;
+    }
+  ) => void;
+  showShare: boolean;
+  showApplyAutomatically: boolean;
+  showSetAsDefault: boolean;
+  variantNames: string[];
+}
+
 //todo styles
-//todo i18n
-//todo prop types
-export const ManageViewsDialog = (props) => {
+export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
   const {
     children,
     onAfterClose,
@@ -66,7 +90,7 @@ export const ManageViewsDialog = (props) => {
   }, []);
 
   const [childrenProps, setChildrenProps] = useState(
-    Children.map(children, (child) => {
+    Children.map(children, (child: ComponentElement<any, any>) => {
       return child.props;
     })
   );
@@ -93,7 +117,6 @@ export const ManageViewsDialog = (props) => {
     });
   };
   return createPortal(
-    //todo i18n
     <Dialog
       //todo media query?
       //todo max-width (ui5 has some calculation there)
@@ -103,7 +126,6 @@ export const ManageViewsDialog = (props) => {
       headerText="Manage Views"
       footer={
         <Bar
-          //todo cb
           endContent={
             <>
               <Button design={ButtonDesign.Emphasized} onClick={handleSave}>
@@ -117,23 +139,21 @@ export const ManageViewsDialog = (props) => {
         />
       }
     >
-      {/*todo width*/}
+      {/*todo width, popin columns*/}
       <Table columns={columns} style={{ minWidth: '600px' }}>
-        {childrenProps.map((itemProps: VariantItemPropTypes, index) => {
-          return (
-            <ManageViewsTableRows
-              {...itemProps}
-              variantNames={variantNames}
-              handleRowChange={handleTableRowChange}
-              handleDelete={handleDelete}
-              defaultView={defaultView}
-              setDefaultView={setDefaultView}
-              showShare={showShare}
-              showApplyAutomatically={showApplyAutomatically}
-              showSetAsDefault={showSetAsDefault}
-            />
-          );
-        })}
+        {childrenProps.map((itemProps: VariantItemPropTypes) => (
+          <ManageViewsTableRows
+            {...itemProps}
+            variantNames={variantNames}
+            handleRowChange={handleTableRowChange}
+            handleDelete={handleDelete}
+            defaultView={defaultView}
+            setDefaultView={setDefaultView}
+            showShare={showShare}
+            showApplyAutomatically={showApplyAutomatically}
+            showSetAsDefault={showSetAsDefault}
+          />
+        ))}
       </Table>
     </Dialog>,
     document.body

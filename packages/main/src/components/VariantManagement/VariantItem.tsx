@@ -1,8 +1,8 @@
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
-import React, { forwardRef, Ref, useContext, useEffect } from 'react';
 import { StandardListItem, StandardListItemPropTypes } from '@ui5/webcomponents-react/dist/StandardListItem';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { VariantManagementContext } from '@ui5/webcomponents-react/dist/VariantManagementContext';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
+import React, { forwardRef, Ref, useContext, useEffect } from 'react';
 
 export interface VariantItemPropTypes extends Omit<StandardListItemPropTypes, 'children'> {
   /**
@@ -34,19 +34,18 @@ export interface VariantItemPropTypes extends Omit<StandardListItemPropTypes, 'c
    */
   applyAutomatically?: boolean;
   /**
-   * todo is this really needed? --> no SaveAs is shown then (I guess)
-   * If set to false, the user is allowed to change the item's data. --> dirty state (has nothing to do with actual interaction)
+   * If set to false, the user is allowed to change the item's data.
+   *
+   * __Note:__ When set to true, no "Save" button will be displayed for the the `VariantItem` when the `VariantManagement` is in `dirtyState`.
    */
   readOnly?: boolean;
 }
 
-//todo
-//sap.ui.getCore().byId($0.id).getVariantItems()[1].setExecuteOnSelection(true)
 export const VariantItem = forwardRef((props: VariantItemPropTypes, ref: Ref<Ui5DomRef>) => {
   const { isDefault, author, favorite, global, labelReadOnly, applyAutomatically, readOnly, selected, children } =
     props;
   const { selectVariantItem } = useContext(VariantManagementContext);
-  const consolidatedRef = useConsolidatedRef<Ref<Ui5DomRef>>(ref);
+  const consolidatedRef = useConsolidatedRef<any>(ref);
   useEffect(() => {
     if (selected) {
       selectVariantItem({ ...props, variantItem: consolidatedRef.current });
@@ -63,7 +62,6 @@ export const VariantItem = forwardRef((props: VariantItemPropTypes, ref: Ref<Ui5
   return (
     <StandardListItem
       {...props}
-      //todo type
       ref={consolidatedRef}
       onClick={handleVariantItemClick}
       data-is-default={isDefault}

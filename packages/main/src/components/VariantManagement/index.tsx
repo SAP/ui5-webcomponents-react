@@ -13,7 +13,8 @@ import {
   MY_VIEWS,
   SAVE,
   SAVE_AS,
-  SEARCH
+  SEARCH,
+  SEARCH_VARIANT
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { Bar } from '@ui5/webcomponents-react/dist/Bar';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
@@ -349,6 +350,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
   const saveAsText = i18nBundle.getText(SAVE_AS);
   const manageText = i18nBundle.getText(MANAGE);
   const saveText = i18nBundle.getText(SAVE);
+  const a11ySearchText = i18nBundle.getText(SEARCH_VARIANT);
 
   const variantManagementClasses = StyleClassHelper.of(classes.container);
 
@@ -516,8 +518,9 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
                 mode={ListMode.SingleSelect}
                 header={
                   showInput ? (
-                    <div className={classes.searchInput}>
+                    <div className={classes.searchInput} tabIndex={-1}>
                       <Input
+                        accessibleName={a11ySearchText}
                         value={searchValue}
                         placeholder={searchText}
                         onInput={handleSearchInput}

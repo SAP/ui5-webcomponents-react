@@ -1,6 +1,15 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { useI18nBundle } from '@ui5/webcomponents-react-base/hooks/useI18nBundle';
-import { FILE_ALREADY_EXISTS, SPECIFY_VIEW_NAME } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
+import {
+  APPLY_AUTOMATICALLY,
+  DELETE_VIEW,
+  FILE_ALREADY_EXISTS,
+  MARK_AS_FAVORITE,
+  MARK_AS_STANDARD,
+  PRIVATE,
+  PUBLIC,
+  SPECIFY_VIEW_NAME
+} from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
 import { CheckBox } from '@ui5/webcomponents-react/dist/CheckBox';
@@ -25,7 +34,6 @@ interface ManageViewsTableRowsProps extends VariantItemPropTypes {
   showSetAsDefault: boolean;
 }
 
-//todo prop types
 //todo styling
 export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
   const {
@@ -37,7 +45,6 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
     showShare,
     showApplyAutomatically,
     showSetAsDefault,
-    // VariantItemProps
     labelReadOnly,
     favorite,
     children,
@@ -50,6 +57,12 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const errorTextAlreadyExists = i18nBundle.getText(FILE_ALREADY_EXISTS);
   const errorTextEmpty = i18nBundle.getText(SPECIFY_VIEW_NAME);
+  const publicText = i18nBundle.getText(PUBLIC);
+  const privateText = i18nBundle.getText(PRIVATE);
+  const a11yFavoriteText = i18nBundle.getText(MARK_AS_FAVORITE);
+  const a11yStandardText = i18nBundle.getText(MARK_AS_STANDARD);
+  const a11yDeleteText = i18nBundle.getText(DELETE_VIEW);
+  const a11yApplyAutomaticallyText = i18nBundle.getText(APPLY_AUTOMATICALLY);
 
   const [internalFavorite, setFavorite] = useReducer((prev) => {
     return !prev;
@@ -84,7 +97,7 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
   const handleApplyAutomaticallyChange = (e) => {
     handleRowChange(e, { currentVariant: children, applyAutomatically: e.target.checked });
   };
-  //todo if default, always fav, not changable <-- is this true?
+
   const renderView = () => {
     if (labelReadOnly) {
       return (
@@ -110,11 +123,11 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
   return (
     <TableRow data-id={children} key={`${children}`}>
       <TableCell>
-        {/*todo i18n aria*/}
         {isDefault ? (
           <Icon name="favorite" style={{ color: ThemingParameters.sapContent_NonInteractiveIconColor }} />
         ) : (
           <Icon
+            aria-label={a11yFavoriteText}
             name={iconName}
             interactive
             style={{ color: ThemingParameters.sapContent_MarkerIconColor, cursor: 'pointer' }}
@@ -123,12 +136,11 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
         )}
       </TableCell>
       <TableCell>{renderView()}</TableCell>
-      {/*todo i18n aria*/}
-      {showShare && <TableCell>{global ? 'Public' : 'Private'}</TableCell>}
+      {showShare && <TableCell>{global ? publicText : privateText}</TableCell>}
       {showSetAsDefault && (
         <TableCell>
           <RadioButton
-            // data-row-id={rowId}
+            aria-label={a11yStandardText}
             checked={defaultView !== undefined ? defaultView === children : isDefault}
             onChange={handleDefaultChange}
           />
@@ -136,7 +148,11 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
       )}
       {showApplyAutomatically && (
         <TableCell>
-          <CheckBox checked={applyAutomatically} onChange={handleApplyAutomaticallyChange} />
+          <CheckBox
+            aria-label={a11yApplyAutomaticallyText}
+            checked={applyAutomatically}
+            onChange={handleApplyAutomaticallyChange}
+          />
         </TableCell>
       )}
       <TableCell>
@@ -144,7 +160,13 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
       </TableCell>
       <TableCell>
         {!global && (
-          <Button icon="decline" design={ButtonDesign.Transparent} onClick={handleDelete} data-children={children} />
+          <Button
+            accessibleName={a11yDeleteText}
+            icon="decline"
+            design={ButtonDesign.Transparent}
+            onClick={handleDelete}
+            data-children={children}
+          />
         )}
       </TableCell>
     </TableRow>

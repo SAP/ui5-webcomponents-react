@@ -132,7 +132,7 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
         </Label>
         <Input
           ref={inputRef}
-          style={{ width: '100%', margin: '0.1875rem 0' /* todo cozy: 0.25rem 0*/ }}
+          style={{ width: '100%', margin: '0.1875rem 0' }}
           id="view"
           value={variantName}
           valueState={!variantNameInvalid ? 'None' : 'Error'}
