@@ -247,6 +247,10 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
   const [showInput, setShowInput] = useState(safeChildren.length > 9);
 
   useEffect(() => {
+    setSafeChildren(Children.toArray(children));
+  }, [children]);
+
+  useEffect(() => {
     if (safeChildren.length > 9) {
       setShowInput(true);
     } else {

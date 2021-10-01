@@ -118,20 +118,38 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
       return child.props;
     })
   );
+  useEffect(() => {
+    setChildrenProps(
+      Children.map(children, (child: ComponentElement<any, any>) => {
+        return child.props;
+      })
+    );
+  }, [children]);
 
   const [defaultView, setDefaultView] = useState<undefined | string>();
 
   const changedTableRows = useRef({});
   const handleTableRowChange = (e, payload) => {
-    changedTableRows.current[payload?.currentVariant] = {
-      ...(changedTableRows.current[payload?.currentVariant] ?? {}),
-      ...payload
-    };
+    if (payload) {
+      changedTableRows.current[payload.currentVariant] = {
+        ...(changedTableRows.current[payload.currentVariant] ?? {}),
+        ...payload
+      };
+    }
   };
   const deletedTableRows = useRef(new Set([]));
   const handleDelete = (e) => {
     deletedTableRows.current.add(e.target.dataset.children);
-    setChildrenProps((prev) => prev.filter((item) => item.children !== e.target.dataset.children));
+    setChildrenProps((prev) =>
+      prev
+        .filter((item) => item.children !== e.target.dataset.children)
+        .map((item) => {
+          if (changedTableRows.current.hasOwnProperty(item.children)) {
+            return { ...item, ...changedTableRows.current[item.children] };
+          }
+          return item;
+        })
+    );
   };
   const handleSave = (e) => {
     handleSaveManageViews(e, {
@@ -163,19 +181,21 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
       }
     >
       <Table columns={columns} stickyColumnHeader>
-        {childrenProps.map((itemProps: VariantItemPropTypes) => (
-          <ManageViewsTableRows
-            {...itemProps}
-            variantNames={variantNames}
-            handleRowChange={handleTableRowChange}
-            handleDelete={handleDelete}
-            defaultView={defaultView}
-            setDefaultView={setDefaultView}
-            showShare={showShare}
-            showApplyAutomatically={showApplyAutomatically}
-            showSetAsDefault={showSetAsDefault}
-          />
-        ))}
+        {childrenProps.map((itemProps: VariantItemPropTypes) => {
+          return (
+            <ManageViewsTableRows
+              {...itemProps}
+              variantNames={variantNames}
+              handleRowChange={handleTableRowChange}
+              handleDelete={handleDelete}
+              defaultView={defaultView}
+              setDefaultView={setDefaultView}
+              showShare={showShare}
+              showApplyAutomatically={showApplyAutomatically}
+              showSetAsDefault={showSetAsDefault}
+            />
+          );
+        })}
       </Table>
     </Dialog>,
     document.body
