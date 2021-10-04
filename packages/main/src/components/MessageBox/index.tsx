@@ -65,7 +65,8 @@ const deprecatedActions = new Set<MessageBoxAction>([
   MessageBoxActions.YES
 ]);
 
-export interface MessageBoxPropTypes extends Omit<DialogPropTypes, 'children' | 'footer' | 'headerText' | 'onAfterClose'> {
+export interface MessageBoxPropTypes
+  extends Omit<DialogPropTypes, 'children' | 'footer' | 'headerText' | 'onAfterClose'> {
   /**
    * Flag whether the Message Box should be opened or closed
    */
@@ -353,6 +354,7 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDom
       {!props.header && (
         <header slot="header" className={classes.header} data-type={type}>
           {iconToRender}
+          {iconToRender && <span className={classes.spacer} />}
           <Title level={TitleLevel.H2}>{titleToRender()}</Title>
         </header>
       )}
