@@ -29,7 +29,9 @@ export const TestComp = (props) => {
           console.log(e.detail);
         }}
       >
-        <VariantItem selected>Selected</VariantItem>
+        <VariantItem selected hideDelete>
+          Selected
+        </VariantItem>
         <VariantItem isDefault author="Guybrush Threepwood">
           Default w/ author
         </VariantItem>
@@ -48,6 +50,14 @@ export const TestComp = (props) => {
         </VariantItem>
         <VariantItem applyAutomatically global readOnly favorite isDefault labelReadOnly author="LeChuck">
           Everything
+        </VariantItem>
+        <VariantItem global>Not deletable - global</VariantItem>
+        <VariantItem hideDelete>Not deletable - hideDelete</VariantItem>
+        <VariantItem hideDelete global={false}>
+          Not deletable - global false
+        </VariantItem>
+        <VariantItem hideDelete={false} global>
+          Deletable - global true, delete false
         </VariantItem>
         {/*{typeof numberOfVariants === 'number' &&*/}
         {/*  new Array(numberOfVariants)*/}

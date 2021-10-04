@@ -57,7 +57,8 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
     isDefault,
     applyAutomatically,
     author,
-    setInvalidVariants
+    setInvalidVariants,
+    hideDelete
   } = props;
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
@@ -195,7 +196,7 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
         <Text>{author}</Text>
       </TableCell>
       <TableCell>
-        {!global && (
+        {!(hideDelete ?? global) && (
           <Button
             accessibleName={a11yDeleteText}
             icon="decline"

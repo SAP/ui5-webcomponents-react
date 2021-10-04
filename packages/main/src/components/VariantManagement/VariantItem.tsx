@@ -39,11 +39,30 @@ export interface VariantItemPropTypes extends Omit<StandardListItemPropTypes, 'c
    * __Note:__ When set to true, no "Save" button will be displayed for the the `VariantItem` when the `VariantManagement` is in `dirtyState`.
    */
   readOnly?: boolean;
+  /**
+   * Indicates if the variant can be deleted.
+   *
+   * __Note:__ If not set, a delete button is shown for all variants except for variants with `global={true}`.
+   */
+  hideDelete?: boolean;
 }
 
+/**
+ * The `VariantItem` describes a variant/view of the `VariantManagement` component.
+ */
 const VariantItem = forwardRef((props: VariantItemPropTypes, ref: Ref<Ui5DomRef>) => {
-  const { isDefault, author, favorite, global, labelReadOnly, applyAutomatically, readOnly, selected, children } =
-    props;
+  const {
+    isDefault,
+    author,
+    favorite,
+    global,
+    labelReadOnly,
+    applyAutomatically,
+    readOnly,
+    selected,
+    children,
+    hideDelete
+  } = props;
   const { selectVariantItem } = useContext(VariantManagementContext);
   const consolidatedRef = useConsolidatedRef<any>(ref);
   useEffect(() => {
@@ -72,6 +91,7 @@ const VariantItem = forwardRef((props: VariantItemPropTypes, ref: Ref<Ui5DomRef>
       data-apply-automatically={applyAutomatically}
       data-read-only={readOnly}
       data-text={children}
+      data-hide-delete={hideDelete}
     />
   );
 });
