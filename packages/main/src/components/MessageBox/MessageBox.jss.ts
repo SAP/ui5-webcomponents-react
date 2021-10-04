@@ -17,7 +17,6 @@ const style = {
     color: ThemingParameters.sapContent_LabelColor,
     fontSize: '1rem',
     '& ui5-icon:first-child': {
-      marginRight: '0.5rem',
       width: '1rem',
       height: '1rem'
     },
@@ -55,6 +54,7 @@ const style = {
       '--sapContent_NonInteractiveIconColor': ThemingParameters.sapInformativeElementColor
     }
   },
+  spacer: { width: '0.5rem' },
   content: {
     padding: '1rem'
   },
