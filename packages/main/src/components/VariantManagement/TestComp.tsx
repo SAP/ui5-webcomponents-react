@@ -10,13 +10,13 @@ export const TestComp = (props) => {
   const [numberOfVariants, setNumberOfVariants] = useState(5);
   return (
     <>
-      {/*<Input*/}
-      {/*  type="Number"*/}
-      {/*  value={`${numberOfVariants}`}*/}
-      {/*  onInput={(e) => {*/}
-      {/*    setNumberOfVariants(parseInt(e.target.value));*/}
-      {/*  }}*/}
-      {/*/>*/}
+      <Input
+        type="Number"
+        value={`${numberOfVariants}`}
+        onInput={(e) => {
+          setNumberOfVariants(parseInt(e.target.value));
+        }}
+      />
       <VariantManagement
         {...props}
         onSaveAs={(e) => {
@@ -50,11 +50,9 @@ export const TestComp = (props) => {
           Everything
         </VariantItem>
         {/*{typeof numberOfVariants === 'number' &&*/}
-        {/*  new Array(numberOfVariants).fill('').map((item, index) => (*/}
-        {/*    <VariantItem isDefault author="Guybrush Threepwood">*/}
-        {/*      {`Variant ${index + 2}`}*/}
-        {/*    </VariantItem>*/}
-        {/*  ))}*/}
+        {/*  new Array(numberOfVariants)*/}
+        {/*    .fill('')*/}
+        {/*    .map((item, index) => <VariantItem author="Guybrush Threepwood">{`Variant ${index + 2}`}</VariantItem>)}*/}
       </VariantManagement>
     </>
   );

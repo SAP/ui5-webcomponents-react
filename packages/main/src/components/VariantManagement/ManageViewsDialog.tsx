@@ -154,6 +154,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
         })
     );
   };
+
   const handleSave = (e) => {
     if (Object.keys(invalidVariants).length === 0) {
       handleSaveManageViews(e, {
@@ -165,6 +166,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
       Object.values(invalidVariants)[0].focus();
     }
   };
+
   return createPortal(
     <Dialog
       style={{ width: isPhone() || isTablet() ? '100%' : '70vw' }}

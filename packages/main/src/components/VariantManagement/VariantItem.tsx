@@ -18,7 +18,7 @@ export interface VariantItemPropTypes extends Omit<StandardListItemPropTypes, 'c
    */
   favorite?: boolean;
   /**
-   * Indicator if a variant is visible for all users.
+   * Indicator if a variant is visible for all users (public flag is set).
    */
   global?: boolean;
   /**

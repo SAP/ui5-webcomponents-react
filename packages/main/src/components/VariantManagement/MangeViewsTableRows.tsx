@@ -82,16 +82,15 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
     setFavorite();
     handleRowChange(e, { currentVariant: children, favorite: !internalFavorite });
   };
-
   const handleVariantInput = (e) => {
     if (variantNames.includes(e.target.value) || Array.from(changedVariantNames.values()).includes(e.target.value)) {
       setVariantNameInvalid(errorTextAlreadyExists);
       setInvalidVariants((prev) => ({ ...prev, [`${children}`]: inputRef.current }));
-      inputRef.current?.focus();
+      handleRowChange(e, { currentVariant: children, children: e.target.value });
     } else if (e.target.value.length === 0) {
       setVariantNameInvalid(errorTextEmpty);
       setInvalidVariants((prev) => ({ ...prev, [children]: inputRef.current }));
-      inputRef.current?.focus();
+      handleRowChange(e, { currentVariant: children, children: e.target.value });
     } else {
       setVariantNameInvalid(false);
       setInvalidVariants((prev) => {
@@ -108,6 +107,22 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
       currentChangedVariants.set(children, e.target.value);
       return currentChangedVariants;
     });
+  };
+
+  const handleVariantFocus = () => {
+    const filteredChangedValues = Array.from(changedVariantNames.values()).filter(
+      (item) => item === inputRef.current.value
+    );
+    if (filteredChangedValues.length === 1) {
+      setVariantNameInvalid(false);
+      setInvalidVariants((prev) => {
+        let invalidRows = { ...prev };
+        if (prev.hasOwnProperty(children)) {
+          delete invalidRows[children];
+        }
+        return invalidRows;
+      });
+    }
   };
 
   const handleDefaultChange = () => {
@@ -134,6 +149,7 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
       <Input
         value={children}
         onInput={handleVariantInput}
+        onFocus={handleVariantFocus}
         ref={inputRef}
         valueStateMessage={<div>{variantNameInvalid}</div>}
         valueState={!variantNameInvalid ? ValueState.None : ValueState.Error}
