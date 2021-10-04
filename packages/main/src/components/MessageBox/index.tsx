@@ -252,6 +252,7 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
       {!props.header && (
         <header slot="header" className={classes.header} data-type={type}>
           {iconToRender}
+          {iconToRender && <span className={classes.spacer} />}
           <Title level={TitleLevel.H2}>{titleToRender()}</Title>
         </header>
       )}

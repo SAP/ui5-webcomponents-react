@@ -17,6 +17,9 @@ exports[`MessageBox Confirm - Cancel 1`] = `
         name="question-mark"
         ui5-icon=""
       />
+      <span
+        class="MessageBox-spacer"
+      />
       <ui5-title
         level="H2"
         ui5-title=""
@@ -71,6 +74,9 @@ exports[`MessageBox Confirm 1`] = `
         name="question-mark"
         ui5-icon=""
       />
+      <span
+        class="MessageBox-spacer"
+      />
       <ui5-title
         level="H2"
         ui5-title=""
@@ -122,6 +128,9 @@ exports[`MessageBox Custom Action Text 1`] = `
       <ui5-icon
         name="question-mark"
         ui5-icon=""
+      />
+      <span
+        class="MessageBox-spacer"
       />
       <ui5-title
         level="H2"
@@ -217,6 +226,9 @@ exports[`MessageBox Error 1`] = `
         name="message-error"
         ui5-icon=""
       />
+      <span
+        class="MessageBox-spacer"
+      />
       <ui5-title
         level="H2"
         ui5-title=""
@@ -262,6 +274,9 @@ exports[`MessageBox Highlight 1`] = `
       <ui5-icon
         name="hint"
         ui5-icon=""
+      />
+      <span
+        class="MessageBox-spacer"
       />
       <ui5-title
         level="H2"
@@ -309,6 +324,9 @@ exports[`MessageBox Information 1`] = `
         name="message-information"
         ui5-icon=""
       />
+      <span
+        class="MessageBox-spacer"
+      />
       <ui5-title
         level="H2"
         ui5-title=""
@@ -354,6 +372,9 @@ exports[`MessageBox No Title 1`] = `
       <ui5-icon
         name="question-mark"
         ui5-icon=""
+      />
+      <span
+        class="MessageBox-spacer"
       />
       <ui5-title
         level="H2"
@@ -407,6 +428,9 @@ exports[`MessageBox Not open 1`] = `
         name="message-success"
         ui5-icon=""
       />
+      <span
+        class="MessageBox-spacer"
+      />
       <ui5-title
         level="H2"
         ui5-title=""
@@ -452,6 +476,9 @@ exports[`MessageBox Show 1`] = `
       <ui5-icon
         name="question-mark"
         ui5-icon=""
+      />
+      <span
+        class="MessageBox-spacer"
       />
       <ui5-title
         level="H2"
@@ -507,6 +534,9 @@ exports[`MessageBox Success 1`] = `
         name="message-success"
         ui5-icon=""
       />
+      <span
+        class="MessageBox-spacer"
+      />
       <ui5-title
         level="H2"
         ui5-title=""
@@ -553,6 +583,9 @@ exports[`MessageBox Success w/ custom title 1`] = `
         name="add"
         ui5-icon=""
       />
+      <span
+        class="MessageBox-spacer"
+      />
       <ui5-title
         level="H2"
         ui5-title=""
@@ -598,6 +631,9 @@ exports[`MessageBox Warning 1`] = `
       <ui5-icon
         name="message-warning"
         ui5-icon=""
+      />
+      <span
+        class="MessageBox-spacer"
       />
       <ui5-title
         level="H2"
