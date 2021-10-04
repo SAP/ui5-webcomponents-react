@@ -41,7 +41,7 @@ export interface VariantItemPropTypes extends Omit<StandardListItemPropTypes, 'c
   readOnly?: boolean;
 }
 
-export const VariantItem = forwardRef((props: VariantItemPropTypes, ref: Ref<Ui5DomRef>) => {
+const VariantItem = forwardRef((props: VariantItemPropTypes, ref: Ref<Ui5DomRef>) => {
   const { isDefault, author, favorite, global, labelReadOnly, applyAutomatically, readOnly, selected, children } =
     props;
   const { selectVariantItem } = useContext(VariantManagementContext);
@@ -77,3 +77,5 @@ export const VariantItem = forwardRef((props: VariantItemPropTypes, ref: Ref<Ui5
 });
 
 VariantItem.displayName = 'VariantItem';
+
+export { VariantItem };
