@@ -5,7 +5,6 @@ export const DynamicPageTitleStyles = {
     flex: '1 1 100%',
     backgroundColor: ThemingParameters.sapObjectHeader_Background,
     minHeight: '3rem',
-    wordWrap: 'break-word',
     paddingTop: '0.5rem',
     paddingBottom: '0.5rem',
     display: 'flex',
@@ -42,16 +41,22 @@ export const DynamicPageTitleStyles = {
   title: {
     color: ThemingParameters.sapGroup_TitleTextColor,
     fontSize: ThemingParameters.sapFontHeader3Size,
-    paddingTop: '0.3125rem'
+    paddingTop: '0.3125rem',
+    overflowWrap: 'break-word',
+    hyphens: 'auto'
   },
   subTitleRight: {
     color: ThemingParameters.sapContent_LabelColor,
-    fontSize: ThemingParameters.sapFontSize
+    fontSize: ThemingParameters.sapFontSize,
+    overflowWrap: 'break-word',
+    hyphens: 'auto'
   },
   subTitleBottom: {
     color: ThemingParameters.sapContent_LabelColor,
     fontSize: ThemingParameters.sapFontSize,
-    marginTop: '0.25rem'
+    marginTop: '0.25rem',
+    overflowWrap: 'break-word',
+    hyphens: 'auto'
   },
   content: {
     display: 'flex',
