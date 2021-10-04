@@ -193,6 +193,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
               showShare={showShare}
               showApplyAutomatically={showApplyAutomatically}
               showSetAsDefault={showSetAsDefault}
+              key={itemProps?.children}
             />
           );
         })}

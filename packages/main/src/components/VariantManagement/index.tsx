@@ -451,7 +451,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
           selectVariantItem: setSelectedVariant
         }}
       >
-        <FlexBox>
+        <FlexBox onClick={disabled ? undefined : handleOpenVariantManagement}>
           <Title level={level} className={classes.title}>
             {selectedVariant?.children}
           </Title>

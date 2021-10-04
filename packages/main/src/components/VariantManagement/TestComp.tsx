@@ -5,18 +5,18 @@ import { Input } from '@ui5/webcomponents-react/dist/Input';
 import { VariantManagement } from '@ui5/webcomponents-react/dist/VariantManagement';
 import { VariantItem } from './VariantItem';
 import { useReducer, useState } from 'react';
-
+//todo delete
 export const TestComp = (props) => {
   const [numberOfVariants, setNumberOfVariants] = useState(5);
   return (
     <>
-      <Input
-        type="Number"
-        value={`${numberOfVariants}`}
-        onInput={(e) => {
-          setNumberOfVariants(parseInt(e.target.value));
-        }}
-      />
+      {/*<Input*/}
+      {/*  type="Number"*/}
+      {/*  value={`${numberOfVariants}`}*/}
+      {/*  onInput={(e) => {*/}
+      {/*    setNumberOfVariants(parseInt(e.target.value));*/}
+      {/*  }}*/}
+      {/*/>*/}
       <VariantManagement
         {...props}
         onSaveAs={(e) => {
