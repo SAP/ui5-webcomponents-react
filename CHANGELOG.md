@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.131.22](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.21...v0.131.22) (2021-10-04)
+
+
+### Bug Fixes
+
+* **MessageBox:** correct spacing of header items in rtl mode ([#2190](https://github.com/SAP/ui5-webcomponents-react/issues/2190)) ([9022638](https://github.com/SAP/ui5-webcomponents-react/commit/90226380790adfebaaa40c6689aa49383e8139f3))
+
+
+### Features
+
+* **DynamicPageTitle:** if not enough space is available break words at hyphenation points ([#2177](https://github.com/SAP/ui5-webcomponents-react/issues/2177)) ([2e8762a](https://github.com/SAP/ui5-webcomponents-react/commit/2e8762a17a4cde3fee27ba412fd2825bd7459231))
+* update to @ui5/webcomponents 0.31.20 ([f728290](https://github.com/SAP/ui5-webcomponents-react/commit/f7282905f01825788799d5425827df0f02cc6f73))
+
+
+
+
+
 ## [0.131.21](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.20...v0.131.21) (2021-09-27)
 
 
