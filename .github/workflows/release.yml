@@ -60,7 +60,7 @@ jobs:
           target-folder: master
           clean: true
 
-      - uses: actions/github-script@v4
+      - uses: actions/github-script@v5
         env:
           GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         with:
