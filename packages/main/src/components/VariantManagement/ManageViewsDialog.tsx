@@ -79,6 +79,9 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
   const applyAutomaticallyHeaderText = i18nBundle.getText(APPLY_AUTOMATICALLY);
   const createdByHeaderText = i18nBundle.getText(CREATED_BY);
 
+  const [changedVariantNames, setChangedVariantNames] = useState(new Map());
+  const [invalidVariants, setInvalidVariants] = useState<Record<string, HTMLInputElement>>({});
+
   const columns = (
     <>
       <TableColumn key="favorite-variant-item" />
@@ -126,7 +129,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
     );
   }, [children]);
 
-  const [defaultView, setDefaultView] = useState<undefined | string>();
+  const [defaultView, setDefaultView] = useState<string>();
 
   const changedTableRows = useRef({});
   const handleTableRowChange = (e, payload) => {
@@ -152,11 +155,15 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
     );
   };
   const handleSave = (e) => {
-    handleSaveManageViews(e, {
-      updatedRows: changedTableRows.current,
-      defaultView,
-      deletedRows: deletedTableRows.current
-    });
+    if (Object.keys(invalidVariants).length === 0) {
+      handleSaveManageViews(e, {
+        updatedRows: changedTableRows.current,
+        defaultView,
+        deletedRows: deletedTableRows.current
+      });
+    } else {
+      Object.values(invalidVariants)[0].focus();
+    }
   };
   return createPortal(
     <Dialog
@@ -185,6 +192,9 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
           return (
             <ManageViewsTableRows
               {...itemProps}
+              setInvalidVariants={setInvalidVariants}
+              setChangedVariantNames={setChangedVariantNames}
+              changedVariantNames={changedVariantNames}
               variantNames={variantNames}
               handleRowChange={handleTableRowChange}
               handleDelete={handleDelete}

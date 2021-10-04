@@ -32,11 +32,17 @@ interface ManageViewsTableRowsProps extends VariantItemPropTypes {
   showShare: boolean;
   showApplyAutomatically: boolean;
   showSetAsDefault: boolean;
+  //todo
+  changedVariantNames: any;
+  setChangedVariantNames: any;
+  setInvalidVariants: any;
 }
 
 export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
   const {
     variantNames,
+    changedVariantNames,
+    setChangedVariantNames,
     handleRowChange,
     handleDelete,
     defaultView,
@@ -50,7 +56,8 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
     global,
     isDefault,
     applyAutomatically,
-    author
+    author,
+    setInvalidVariants
   } = props;
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
@@ -77,16 +84,30 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
   };
 
   const handleVariantInput = (e) => {
-    if (variantNames.includes(e.target.value)) {
+    if (variantNames.includes(e.target.value) || Array.from(changedVariantNames.values()).includes(e.target.value)) {
       setVariantNameInvalid(errorTextAlreadyExists);
+      setInvalidVariants((prev) => ({ ...prev, [`${children}`]: inputRef.current }));
       inputRef.current?.focus();
     } else if (e.target.value.length === 0) {
       setVariantNameInvalid(errorTextEmpty);
+      setInvalidVariants((prev) => ({ ...prev, [children]: inputRef.current }));
       inputRef.current?.focus();
     } else {
       setVariantNameInvalid(false);
+      setInvalidVariants((prev) => {
+        let invalidRows = { ...prev };
+        if (prev.hasOwnProperty(children)) {
+          delete invalidRows[children];
+        }
+        return invalidRows;
+      });
       handleRowChange(e, { currentVariant: children, children: e.target.value });
     }
+    setChangedVariantNames((prev) => {
+      let currentChangedVariants = new Map(prev);
+      currentChangedVariants.set(children, e.target.value);
+      return currentChangedVariants;
+    });
   };
 
   const handleDefaultChange = () => {
