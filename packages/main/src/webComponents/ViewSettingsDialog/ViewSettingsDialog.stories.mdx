@@ -1,21 +1,49 @@
-import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { ViewSettingsDialog } from '@ui5/webcomponents-react/dist/ViewSettingsDialog';
-import { CSSProperties, Ref } from 'react';
 import { DocsHeader } from '@shared/stories/DocsHeader';
+import { Button, FilterItem, FilterItemOption, SortItem } from '../../index';
+import { useRef } from 'react';
 
 <Meta
-  title="Components / ViewSettingsDialog"
+  title="Modals & Popovers / ViewSettingsDialog"
   component={ViewSettingsDialog}
   argTypes={{
     filterItems: { control: { disable: true } },
     sortItems: { control: { disable: true } }
   }}
   args={{
-    style: {},
-    className: '',
-    tooltip: '',
-    slot: '',
-    ref: null
+    filterItems: (
+      <>
+        <FilterItem
+          text="Position"
+          values={
+            <>
+              <FilterItemOption text="CEO" />
+              <FilterItemOption text="CTO" />
+              <FilterItemOption text="CIO" />
+            </>
+          }
+        />
+        <FilterItem
+          text="Department"
+          values={
+            <>
+              <FilterItemOption text="Legal" />
+              <FilterItemOption text="Finance" />
+              <FilterItemOption text="Development" />
+            </>
+          }
+        />
+      </>
+    ),
+    sortItems: (
+      <>
+        <SortItem text="Name" />
+        <SortItem text="Position" />
+        <SortItem text="Company" />
+        <SortItem text="Department" />
+      </>
+    )
   }}
 />
 
@@ -28,7 +56,19 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
 <Canvas>
   <Story name="Default">
     {(args) => {
-      return <ViewSettingsDialog {...args} />;
+      const ref = useRef();
+      return (
+        <>
+          <Button
+            onClick={() => {
+              ref.current.show();
+            }}
+          >
+            Show ViewSettingsDialog
+          </Button>
+          <ViewSettingsDialog ref={ref} {...args} />
+        </>
+      );
     }}
   </Story>
 </Canvas>
