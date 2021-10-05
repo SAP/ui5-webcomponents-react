@@ -1,8 +1,7 @@
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { CSSProperties } from 'react';
-import { ReactNode } from 'react';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { CSSProperties, ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/ColorPalettePopover.js';
 

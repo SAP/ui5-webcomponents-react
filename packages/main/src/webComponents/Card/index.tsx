@@ -6,6 +6,10 @@ import '@ui5/webcomponents/dist/Card.js';
 
 export interface CardPropTypes extends CommonProps {
   /**
+   * Defines the accessible name of the component, which is used as the name of the card region and should be unique per card. **Note:** `accessibleName` should be always set.
+   */
+  accessibleName?: string;
+  /**
    * Defines the content of the component.
    */
   children?: ReactNode | ReactNode[];
@@ -29,7 +33,7 @@ export interface CardPropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Card" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Card = withWebComponent<CardPropTypes>('ui5-card', [], [], ['header'], []);
+const Card = withWebComponent<CardPropTypes>('ui5-card', ['accessibleName'], [], ['header'], []);
 
 Card.displayName = 'Card';
 

@@ -1,8 +1,8 @@
+import { ListItemType } from '@ui5/webcomponents-react/dist/ListItemType';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { ListItemType } from '@ui5/webcomponents-react/dist/ListItemType';
-import { ReactNode } from 'react';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/FilterItem.js';
 
