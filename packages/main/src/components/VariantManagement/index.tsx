@@ -14,7 +14,8 @@ import {
   SAVE,
   SAVE_AS,
   SEARCH,
-  SEARCH_VARIANT
+  SEARCH_VARIANT,
+  SELECT_VIEW
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { Bar } from '@ui5/webcomponents-react/dist/Bar';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
@@ -355,6 +356,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
   const manageText = i18nBundle.getText(MANAGE);
   const saveText = i18nBundle.getText(SAVE);
   const a11ySearchText = i18nBundle.getText(SEARCH_VARIANT);
+  const selectViewText = i18nBundle.getText(SELECT_VIEW);
 
   const variantManagementClasses = StyleClassHelper.of(classes.container);
 
@@ -458,6 +460,8 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
           {dirtyState && <div className={dirtyStateClasses.className}>{dirtyStateText}</div>}
         </FlexBox>
         <Button
+          tooltip={selectViewText}
+          aria-label={selectViewText}
           onClick={handleOpenVariantManagement}
           design={ButtonDesign.Transparent}
           icon="navigation-down-arrow"
