@@ -16,6 +16,7 @@ exports[`MessageView renders list view 1`] = `
         >
           <ui5-segmented-button-item
             data-key="All"
+            design="Default"
             pressed="true"
             ui5-segmented-button-item=""
           >
@@ -24,6 +25,7 @@ exports[`MessageView renders list view 1`] = `
           <ui5-segmented-button-item
             class="MessageView-button"
             data-key="Error"
+            design="Default"
             icon="error"
             ui5-segmented-button-item=""
           >
@@ -32,6 +34,7 @@ exports[`MessageView renders list view 1`] = `
           <ui5-segmented-button-item
             class="MessageView-button"
             data-key="Warning"
+            design="Default"
             icon="alert"
             ui5-segmented-button-item=""
           >
@@ -40,6 +43,7 @@ exports[`MessageView renders list view 1`] = `
           <ui5-segmented-button-item
             class="MessageView-button"
             data-key="Success"
+            design="Default"
             icon="sys-enter-2"
             ui5-segmented-button-item=""
           >
@@ -48,6 +52,7 @@ exports[`MessageView renders list view 1`] = `
           <ui5-segmented-button-item
             class="MessageView-button"
             data-key="Information"
+            design="Default"
             icon="information"
             ui5-segmented-button-item=""
           >
@@ -56,7 +61,7 @@ exports[`MessageView renders list view 1`] = `
         </ui5-segmented-button>
       </ui5-bar>
       <ui5-list
-        accessible-role="listbox"
+        accessible-role="list"
         busy-delay="1000"
         growing="None"
         mode="None"
@@ -271,6 +276,7 @@ exports[`MessageView renders list view with groups 1`] = `
         >
           <ui5-segmented-button-item
             data-key="All"
+            design="Default"
             pressed="true"
             ui5-segmented-button-item=""
           >
@@ -279,6 +285,7 @@ exports[`MessageView renders list view with groups 1`] = `
           <ui5-segmented-button-item
             class="MessageView-button"
             data-key="Error"
+            design="Default"
             icon="error"
             ui5-segmented-button-item=""
           >
@@ -287,6 +294,7 @@ exports[`MessageView renders list view with groups 1`] = `
           <ui5-segmented-button-item
             class="MessageView-button"
             data-key="Warning"
+            design="Default"
             icon="alert"
             ui5-segmented-button-item=""
           >
@@ -295,6 +303,7 @@ exports[`MessageView renders list view with groups 1`] = `
           <ui5-segmented-button-item
             class="MessageView-button"
             data-key="Success"
+            design="Default"
             icon="sys-enter-2"
             ui5-segmented-button-item=""
           >
@@ -303,6 +312,7 @@ exports[`MessageView renders list view with groups 1`] = `
           <ui5-segmented-button-item
             class="MessageView-button"
             data-key="Information"
+            design="Default"
             icon="information"
             ui5-segmented-button-item=""
           >
@@ -311,7 +321,7 @@ exports[`MessageView renders list view with groups 1`] = `
         </ui5-segmented-button>
       </ui5-bar>
       <ui5-list
-        accessible-role="listbox"
+        accessible-role="list"
         busy-delay="1000"
         growing="None"
         mode="None"

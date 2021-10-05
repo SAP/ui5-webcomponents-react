@@ -3,6 +3,7 @@
 exports[`SegmentedButtonItem Basic Test (generated) 1`] = `
 <DocumentFragment>
   <ui5-segmented-button-item
+    design="Default"
     ui5-segmented-button-item=""
   />
 </DocumentFragment>
