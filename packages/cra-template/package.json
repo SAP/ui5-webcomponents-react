@@ -1,5 +1,6 @@
 {
   "name": "@ui5/cra-template-webcomponents-react",
+  "private": true,
   "version": "0.18.0",
   "keywords": [
     "react",
