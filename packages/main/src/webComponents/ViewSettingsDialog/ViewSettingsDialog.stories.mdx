@@ -1,0 +1,54 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+import { ViewSettingsDialog } from '@ui5/webcomponents-react/dist/ViewSettingsDialog';
+import { CSSProperties, Ref } from 'react';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+
+<Meta
+  title="Components / ViewSettingsDialog"
+  component={ViewSettingsDialog}
+  argTypes={{
+    filterItems: { control: { disable: true } },
+    sortItems: { control: { disable: true } }
+  }}
+  args={{
+    style: {},
+    className: '',
+    tooltip: '',
+    slot: '',
+    ref: null
+  }}
+/>
+
+<DocsHeader />
+
+<br />
+
+## Example
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return <ViewSettingsDialog {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+## Properties
+
+<ArgsTable story="." />
+
+## Methods
+
+This component exposes public methods. You can invoke them directly on the instance of the component, e.g. by using React Refs.
+
+| Name     | Parameters | Description       |
+| -------- | ---------- | ----------------- |
+| **show** | &mdash;    | Shows the dialog. |
+
+## Structure
+
+A `ViewSettingsDialog` consists of a header, content, and a footer for action buttons. The `ViewSettingsDialog` is usually displayed at the center of the screen.
+
+## Responsive Behavior
+
+`ViewSettingsDialog` stretches on full screen on phones.

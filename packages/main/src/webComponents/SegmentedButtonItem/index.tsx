@@ -1,3 +1,4 @@
+import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { ReactNode, MouseEventHandler } from 'react';
@@ -5,6 +6,18 @@ import { ReactNode, MouseEventHandler } from 'react';
 import '@ui5/webcomponents/dist/SegmentedButtonItem.js';
 
 export interface SegmentedButtonItemPropTypes extends Omit<CommonProps, 'onClick'> {
+  /**
+   * **Note:** The property is inherited and not supported. If set, it won't take any effect.
+   */
+  design?: ButtonDesign | keyof typeof ButtonDesign;
+  /**
+   * **Note:** The property is inherited and not supported. If set, it won't take any effect.
+   */
+  iconEnd?: boolean;
+  /**
+   * **Note:** The property is inherited and not supported. If set, it won't take any effect.
+   */
+  submits?: boolean;
   /**
    * Determines whether the component is displayed as pressed.
    */
@@ -14,7 +27,7 @@ export interface SegmentedButtonItemPropTypes extends Omit<CommonProps, 'onClick
    */
   accessibleName?: string;
   /**
-   * Defines whether the component is disabled (default is set to `false`). A disabled component can't be pressed or focused, and it is not in the tab chain.
+   * Defines whether the component is disabled. A disabled component can't be pressed or focused, and it is not in the tab chain.
    */
   disabled?: boolean;
   /**
@@ -46,8 +59,8 @@ export interface SegmentedButtonItemPropTypes extends Omit<CommonProps, 'onClick
  */
 const SegmentedButtonItem = withWebComponent<SegmentedButtonItemPropTypes>(
   'ui5-segmented-button-item',
-  ['accessibleName', 'icon'],
-  ['pressed', 'disabled'],
+  ['design', 'accessibleName', 'icon'],
+  ['iconEnd', 'submits', 'pressed', 'disabled'],
   [],
   ['click']
 );
@@ -55,6 +68,9 @@ const SegmentedButtonItem = withWebComponent<SegmentedButtonItemPropTypes>(
 SegmentedButtonItem.displayName = 'SegmentedButtonItem';
 
 SegmentedButtonItem.defaultProps = {
+  design: ButtonDesign.Default,
+  iconEnd: false,
+  submits: false,
   pressed: false,
   disabled: false
 };

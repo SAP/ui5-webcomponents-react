@@ -20,7 +20,7 @@ export interface LinkPropTypes extends Omit<CommonProps, 'onClick'> {
   /**
    * Defines whether the component is disabled.
    *
-   * **Note:** When disabled, the component cannot be triggered by the user.
+   * **Note:** When disabled, the click event cannot be triggered by the user.
    */
   disabled?: boolean;
   /**

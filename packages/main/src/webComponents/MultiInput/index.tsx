@@ -9,7 +9,7 @@ import '@ui5/webcomponents/dist/MultiInput.js';
 
 export interface MultiInputPropTypes extends Omit<CommonProps, 'onChange' | 'onInput'> {
   /**
-   * Determines whether a value help icon will be should in the end of the input. Pressing the icon will fire `value-help-trigger` event.
+   * Determines whether a value help icon will be visualized in the end of the input. Pressing the icon will fire `value-help-trigger` event.
    */
   showValueHelpIcon?: boolean;
   /**
@@ -17,7 +17,7 @@ export interface MultiInputPropTypes extends Omit<CommonProps, 'onChange' | 'onI
    */
   accessibleName?: string;
   /**
-   * Receives id(or many ids) of the elements that label the input
+   * Receives id(or many ids) of the elements that label the input.
    */
   accessibleNameRef?: string;
   /**
@@ -107,7 +107,7 @@ export interface MultiInputPropTypes extends Omit<CommonProps, 'onChange' | 'onI
    * </pre>
    *
    *
-   * **Note:** The suggestion would be displayed only if the `showSuggestions` property is set to `true`.
+   * **Note:** The suggestions would be displayed only if the `showSuggestions` property is set to `true`.
    *
    * **Note:** The `<SuggestionItem>` and `<SuggestionGroupItem>` are recommended to be used as suggestion items.
    *
@@ -126,7 +126,9 @@ export interface MultiInputPropTypes extends Omit<CommonProps, 'onChange' | 'onI
    * Defines the value state message that will be displayed as pop up under the component.
    *
    * **Note:** If not specified, a default text (in the respective language) will be displayed.
+   *
    * **Note:** The `valueStateMessage` would be displayed, when the component is in `Information`, `Warning` or `Error` value state.
+   *
    * **Note:** If the component has `suggestionItems`, the `valueStateMessage` would be displayed as part of the same popover, if used on desktop, or dialog - on phone.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.

@@ -19,7 +19,7 @@ export interface LabelPropTypes extends CommonProps {
    */
   required?: boolean;
   /**
-   * Defines whether semi-colon is added to the component text.
+   * Defines whether colon is added to the component text.
    *
    * **Note:** Usually used in forms.
    */

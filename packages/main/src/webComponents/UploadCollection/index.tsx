@@ -8,6 +8,10 @@ import '@ui5/webcomponents-fiori/dist/UploadCollection.js';
 
 export interface UploadCollectionPropTypes extends Omit<CommonProps, 'onDrop'> {
   /**
+   * Sets the accessible aria name of the component.
+   */
+  accessibleName?: string;
+  /**
    * By default there will be drag and drop overlay shown over the `UploadCollection` when files are dragged. If you don't intend to use drag and drop, set this property.
    *
    * **Note:** It is up to the application developer to add handler for `drop` event and handle it. `UploadCollection` only displays an overlay.
@@ -40,6 +44,8 @@ export interface UploadCollectionPropTypes extends Omit<CommonProps, 'onDrop'> {
   /**
    * Defines the `UploadCollection` header.
    *
+   * **Note:** If `header` slot is provided, the labelling of the `UploadCollection` is a responsibility of the application developer. `accessibleName` should be used.
+   *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
    */
@@ -69,7 +75,7 @@ export interface UploadCollectionPropTypes extends Omit<CommonProps, 'onDrop'> {
  */
 const UploadCollection = withWebComponent<UploadCollectionPropTypes>(
   'ui5-upload-collection',
-  ['mode', 'noDataDescription', 'noDataText'],
+  ['accessibleName', 'mode', 'noDataDescription', 'noDataText'],
   ['hideDragOverlay'],
   ['header'],
   ['drop', 'item-delete', 'selection-change']

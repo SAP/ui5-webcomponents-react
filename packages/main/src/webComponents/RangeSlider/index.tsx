@@ -24,15 +24,15 @@ export interface RangeSliderPropTypes extends Omit<CommonProps, 'onChange' | 'on
    */
   labelInterval?: number;
   /**
-   * Defines the maximum value of the slider
+   * Defines the maximum value of the slider.
    */
   max?: number;
   /**
-   * Defines the minimum value of the slider
+   * Defines the minimum value of the slider.
    */
   min?: number;
   /**
-   * Enables tick marks visualization for each step.
+   * Enables tickmarks visualization for each step.
    *
    * **Note:** The step must be a positive number.
    */

@@ -10,6 +10,13 @@ export interface ProgressIndicatorPropTypes extends CommonProps {
    */
   disabled?: boolean;
   /**
+   * Specifies the text value to be displayed in the bar. **Note:**
+   *
+   * *   If there is no value provided or the value is empty, the default percentage value is shown.
+   * *   If `hideValue` property is `true` both the `displayValue` and `value` property values are not shown.
+   */
+  displayValue?: string;
+  /**
    * Defines whether the component value is shown.
    */
   hideValue?: boolean;
@@ -38,7 +45,7 @@ export interface ProgressIndicatorPropTypes extends CommonProps {
  */
 const ProgressIndicator = withWebComponent<ProgressIndicatorPropTypes>(
   'ui5-progress-indicator',
-  ['value', 'valueState'],
+  ['displayValue', 'value', 'valueState'],
   ['disabled', 'hideValue'],
   [],
   []

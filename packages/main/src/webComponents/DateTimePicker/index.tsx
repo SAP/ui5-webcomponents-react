@@ -24,7 +24,7 @@ export interface DateTimePickerPropTypes extends Omit<CommonProps, 'onChange' | 
   /**
    * Defines the visibility of the week numbers column.
    *
-   * **Note: **For calendars other than Gregorian, the week numbers are not displayed regardless of what is set.****
+   * **Note:** For calendars other than Gregorian, the week numbers are not displayed regardless of what is set.
    */
   hideWeekNumbers?: boolean;
   /**
@@ -74,13 +74,17 @@ export interface DateTimePickerPropTypes extends Omit<CommonProps, 'onChange' | 
    */
   maxDate?: string;
   /**
-   * Determines the мinimum date available for selection.
+   * Determines the minimum date available for selection.
    */
   minDate?: string;
   /**
    * Sets a calendar type used for display. If not set, the calendar type of the global configuration is used.<br/>__Note:__ Calendar types other than Gregorian must be imported manually:<br />`import "@ui5/webcomponents-localization/dist/features/calendar/{primaryCalendarType}.js";`
    */
   primaryCalendarType?: CalendarType | keyof typeof CalendarType;
+  /**
+   * Defines the secondary calendar type. If not set, the calendar will only show the primary calendar type.
+   */
+  secondaryCalendarType?: CalendarType | keyof typeof CalendarType;
   /**
    * Defines the value state message that will be displayed as pop up under the component.
    *
@@ -94,11 +98,11 @@ export interface DateTimePickerPropTypes extends Omit<CommonProps, 'onChange' | 
   /**
    * Fired when the input operation has finished by pressing Enter or on focusout.
    */
-  onChange?: (event: Ui5CustomEvent<HTMLInputElement>) => void;
+  onChange?: (event: Ui5CustomEvent<HTMLInputElement, { value: string; valid: boolean }>) => void;
   /**
    * Fired when the value of the component is changed at each key stroke.
    */
-  onInput?: (event: Ui5CustomEvent<HTMLInputElement>) => void;
+  onInput?: (event: Ui5CustomEvent<HTMLInputElement, { value: string; valid: boolean }>) => void;
 }
 
 /**
@@ -118,7 +122,8 @@ const DateTimePicker = withWebComponent<DateTimePickerPropTypes, Ui5DateTimePick
     'formatPattern',
     'maxDate',
     'minDate',
-    'primaryCalendarType'
+    'primaryCalendarType',
+    'secondaryCalendarType'
   ],
   ['disabled', 'hideWeekNumbers', 'readonly', 'required'],
   ['valueStateMessage'],

@@ -16,7 +16,11 @@ const eslint = new ESLint({
 });
 
 export const getTypeDefinitionForProperty = (property, interfaces) => {
-  if (interfaces.has(property.type.replace(/\[]$/, ''))) {
+  if (
+    interfaces.has(property.type.replace(/\[]$/, '')) ||
+    property.type === 'sap.ui.webcomponents.fiori.FilterItem[]' ||
+    property.type === 'sap.ui.webcomponents.fiori.SortItem[]'
+  ) {
     if (/\[]$/.test(property.type)) {
       return {
         tsType: 'ReactNode | ReactNode[]',
@@ -90,6 +94,7 @@ export const getTypeDefinitionForProperty = (property, interfaces) => {
     // react ts types
     case 'Node[]':
     case 'HTMLElement[]':
+    case 'ui5-filter-item-option':
       return {
         tsType: 'ReactNode | ReactNode[]',
         importStatement: "import { ReactNode } from 'react';"

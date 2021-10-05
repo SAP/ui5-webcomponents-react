@@ -8,11 +8,11 @@ export interface WizardStepPropTypes extends CommonProps {
   /**
    * Sets the accessible aria name of the component.
    */
-  accessibleName?: boolean;
+  accessibleName?: string;
   /**
    * Defines the aria-labelledby of the step.
    */
-  accessibleNameRef?: boolean;
+  accessibleNameRef?: string;
   /**
    * When `branching` is enabled a dashed line would be displayed after the step, meant to indicate that the next step is not yet known and depends on user choice in the current step.
    *
@@ -28,7 +28,7 @@ export interface WizardStepPropTypes extends CommonProps {
   /**
    * Defines the `icon` of the step.
    *
-   * **Note:** the icon is displayed in the `Wizard` navigation header.
+   * **Note:** The icon is displayed in the `Wizard` navigation header.
    *
    * The SAP-icons font provides numerous options. See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
    */
@@ -43,14 +43,12 @@ export interface WizardStepPropTypes extends CommonProps {
    * Defines the `subtitleText` of the step.
    *
    * **Note:** the text is displayed in the `Wizard` navigation header.
-   * **Note:** the text will hide on small sizes (about 559 px).
    */
   subtitleText?: string;
   /**
    * Defines the `titleText` of the step.
    *
-   * **Note:** the text is displayed in the `Wizard` navigation header.
-   * **Note:** the text will hide on small sizes (about 559 px).
+   * **Note:** The text is displayed in the `Wizard` navigation header.
    */
   titleText?: string;
   /**
@@ -60,14 +58,14 @@ export interface WizardStepPropTypes extends CommonProps {
 }
 
 /**
- * A component that represents a logical step as part of the `Wizard`. It is meant to aggregate arbitrary HTML elements that forms the content of a single step.
+ * A component that represents a logical step as part of the `Wizard`. It is meant to aggregate arbitrary HTML elements that form the content of a single step.
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/WizardStep" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const WizardStep = withWebComponent<WizardStepPropTypes>(
   'ui5-wizard-step',
-  ['icon', 'subtitleText', 'titleText'],
-  ['accessibleName', 'accessibleNameRef', 'branching', 'disabled', 'selected'],
+  ['accessibleName', 'accessibleNameRef', 'icon', 'subtitleText', 'titleText'],
+  ['branching', 'disabled', 'selected'],
   [],
   []
 );
@@ -75,8 +73,6 @@ const WizardStep = withWebComponent<WizardStepPropTypes>(
 WizardStep.displayName = 'WizardStep';
 
 WizardStep.defaultProps = {
-  accessibleName: false,
-  accessibleNameRef: false,
   branching: false,
   disabled: false,
   selected: false

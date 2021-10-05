@@ -13,7 +13,7 @@ export interface SuggestionItemPropTypes extends CommonProps {
   /**
    * Defines the state of the `additionalText`.
    *
-   * Available options are: `"None"` (by default), `"Success"`, `"Warning"` and `"Erorr"`.
+   * Available options are: `"None"` (by default), `"Success"`, `"Information"`, `"Warning"` and `"Erorr"`.
    */
   additionalTextState?: ValueState | keyof typeof ValueState;
   /**

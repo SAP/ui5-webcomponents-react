@@ -16,7 +16,7 @@ export interface RatingIndicatorPropTypes extends Omit<CommonProps, 'onChange'> 
    */
   disabled?: boolean;
   /**
-   * The number of displayed rating symbols
+   * The number of displayed rating symbols.
    */
   max?: number;
   /**
@@ -26,7 +26,7 @@ export interface RatingIndicatorPropTypes extends Omit<CommonProps, 'onChange'> 
    */
   readonly?: boolean;
   /**
-   * The indicated value of the rating
+   * The indicated value of the rating.
    *
    * **Note:** If you set a number which is not round, it would be shown as follows:
    *
@@ -42,7 +42,7 @@ export interface RatingIndicatorPropTypes extends Omit<CommonProps, 'onChange'> 
 }
 
 /**
- * The RatingIndicator is used to display a specific number of icons that are used to rate an item. Additionally, it is also used to display the average and overall ratings.
+ * The Rating Indicator is used to display a specific number of icons that are used to rate an item. Additionally, it is also used to display the average and overall ratings.
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/RatingIndicator" target="_blank">UI5 Web Components Playground</ui5-link>
  */

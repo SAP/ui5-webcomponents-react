@@ -16,7 +16,7 @@ export interface FileUploaderPropTypes extends Omit<CommonProps, 'onChange'> {
   /**
    * Defines whether the component is in disabled state.
    *
-   * **Note:** A disabledcomponent is completely noninteractive.
+   * **Note:** A disabled component is completely noninteractive.
    */
   disabled?: boolean;
   /**

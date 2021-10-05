@@ -14,7 +14,7 @@ export interface MessageStripPropTypes extends CommonProps {
    */
   design?: MessageStripDesign | keyof typeof MessageStripDesign;
   /**
-   * Defines whether the MessageStrip renders close icon.
+   * Defines whether the MessageStrip renders close button.
    */
   hideCloseButton?: boolean;
   /**
