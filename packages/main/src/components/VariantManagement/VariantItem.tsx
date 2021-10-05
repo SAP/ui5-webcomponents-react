@@ -71,18 +71,10 @@ const VariantItem = forwardRef((props: VariantItemPropTypes, ref: Ref<Ui5DomRef>
     }
   }, [selected]);
 
-  const handleVariantItemClick = (e) => {
-    selectVariantItem({ ...props, variantItem: consolidatedRef.current });
-    if (typeof props?.onClick === 'function') {
-      props.onClick(e);
-    }
-  };
-
   return (
     <StandardListItem
       {...props}
       ref={consolidatedRef}
-      onClick={handleVariantItemClick}
       data-is-default={isDefault}
       data-author={author}
       data-favorite={favorite}
@@ -90,7 +82,7 @@ const VariantItem = forwardRef((props: VariantItemPropTypes, ref: Ref<Ui5DomRef>
       data-label-read-only={labelReadOnly}
       data-apply-automatically={applyAutomatically}
       data-read-only={readOnly}
-      data-text={children}
+      data-children={children}
       data-hide-delete={hideDelete}
     />
   );

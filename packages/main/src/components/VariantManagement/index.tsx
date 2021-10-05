@@ -385,6 +385,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
   }, [selectedVariant, onSelect]);
 
   const handleVariantItemSelect = (e) => {
+    setSelectedVariant({ ...e.detail.selectedItems[0].dataset, variantItem: e.detail.selectedItems[0] });
     selectVariantEventRef.current = e;
     if (closeOnItemSelect) {
       handleClose();
