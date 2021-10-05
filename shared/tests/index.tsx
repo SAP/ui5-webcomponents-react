@@ -59,3 +59,10 @@ export function getMouseEvent(type: string, values = {}): FakeMouseEvent {
   };
   return new FakeMouseEvent(type, values);
 }
+
+export const renderWithDefine = async (Component, elements: string[]) => {
+  const { ...rest } = render(Component);
+  elements.forEach(async (item) => await customElements.whenDefined(item));
+
+  return { ...rest };
+};

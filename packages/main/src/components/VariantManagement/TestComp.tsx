@@ -20,18 +20,16 @@ export const TestComp = (props) => {
       <VariantManagement
         {...props}
         onSaveAs={(e) => {
-          console.log(e.detail);
+          console.log('save as', e.detail);
         }}
         onSelect={(e) => {
-          console.log(e.detail.selectedVariant);
+          console.log('select', e);
         }}
         onSaveManageViews={(e) => {
-          console.log(e.detail);
+          console.log('manage', e.detail);
         }}
       >
-        <VariantItem selected hideDelete>
-          Selected
-        </VariantItem>
+        <VariantItem selected>Selected</VariantItem>
         <VariantItem isDefault author="Guybrush Threepwood">
           Default w/ author
         </VariantItem>

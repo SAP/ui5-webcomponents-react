@@ -130,6 +130,7 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
           {inputLabelText}
         </Label>
         <Input
+          accessibleName="view"
           ref={inputRef}
           style={{ width: '100%', margin: '0.1875rem 0' }}
           id="view"

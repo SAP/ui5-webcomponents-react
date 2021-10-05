@@ -171,6 +171,7 @@ import { useReducer, useState } from 'react';
         </Button>
       ]);
       const selectVariant = (e) => {
+        // todo
         setHeaderVariant(e.detail?.selectedItem?.key);
         setNavigationItems(
           e.detail?.selectedItem?.key === '2'
