@@ -38,6 +38,7 @@ import { CarouselArrowsPlacement } from './dist/CarouselArrowsPlacement';
 import { CheckBox } from './dist/CheckBox';
 import { ColorPalette } from './dist/ColorPalette';
 import { ColorPaletteItem } from './dist/ColorPaletteItem';
+import { ColorPalettePopover } from './dist/ColorPalettePopover';
 import { ColorPicker } from './dist/ColorPicker';
 import { ComboBox } from './dist/ComboBox';
 import { ComboBoxGroupItem } from './dist/ComboBoxGroupItem';
@@ -56,6 +57,8 @@ import { FCLLayout } from './dist/FCLLayout';
 import { FileUploader } from './dist/FileUploader';
 import { FilterBar } from './dist/FilterBar';
 import { FilterGroupItem } from './dist/FilterGroupItem';
+import { FilterItem } from './dist/FilterItem';
+import { FilterItemOption } from './dist/FilterItemOption';
 import { FlexBox } from './dist/FlexBox';
 import { FlexBoxAlignItems } from './dist/FlexBoxAlignItems';
 import { FlexBoxDirection } from './dist/FlexBoxDirection';
@@ -92,6 +95,7 @@ import { MessageItem } from './dist/MessageItem';
 import { MessageStrip } from './dist/MessageStrip';
 import { MessageStripDesign } from './dist/MessageStripDesign';
 import { MessageView } from './dist/MessageView';
+import { MessageViewContext } from './dist/MessageViewContext';
 import { MultiComboBox } from './dist/MultiComboBox';
 import { MultiComboBoxItem } from './dist/MultiComboBoxItem';
 import { MultiInput } from './dist/MultiInput';
@@ -132,6 +136,7 @@ import { SideNavigationItem } from './dist/SideNavigationItem';
 import { SideNavigationSubItem } from './dist/SideNavigationSubItem';
 import { Size } from './dist/Size';
 import { Slider } from './dist/Slider';
+import { SortItem } from './dist/SortItem';
 import { StandardListItem } from './dist/StandardListItem';
 import { StepInput } from './dist/StepInput';
 import { SuggestionGroupItem } from './dist/SuggestionGroupItem';
@@ -183,6 +188,7 @@ import { UploadState } from './dist/UploadState';
 import { ValueState } from './dist/ValueState';
 import { VariantManagement } from './dist/VariantManagement';
 import { VerticalAlign } from './dist/VerticalAlign';
+import { ViewSettingsDialog } from './dist/ViewSettingsDialog';
 import { Wizard } from './dist/Wizard';
 import { WizardStep } from './dist/WizardStep';
 import { WrappingType } from './dist/WrappingType';
@@ -225,6 +231,7 @@ export {
   CheckBox,
   ColorPalette,
   ColorPaletteItem,
+  ColorPalettePopover,
   ColorPicker,
   ComboBox,
   ComboBoxGroupItem,
@@ -243,6 +250,8 @@ export {
   FileUploader,
   FilterBar,
   FilterGroupItem,
+  FilterItem,
+  FilterItemOption,
   FlexBox,
   FlexBoxAlignItems,
   FlexBoxDirection,
@@ -272,13 +281,14 @@ export {
   ListSeparators,
   Loader,
   LoaderType,
-  MessageItem,
   MessageBox,
   MessageBoxActions,
   MessageBoxTypes,
+  MessageItem,
   MessageStrip,
   MessageStripDesign,
   MessageView,
+  MessageViewContext,
   MultiComboBox,
   MultiComboBoxItem,
   MultiInput,
@@ -319,6 +329,7 @@ export {
   SideNavigationSubItem,
   Size,
   Slider,
+  SortItem,
   StandardListItem,
   StepInput,
   SuggestionGroupItem,
@@ -370,6 +381,7 @@ export {
   ValueState,
   VariantManagement,
   VerticalAlign,
+  ViewSettingsDialog,
   Wizard,
   WizardStep,
   WrappingType,
