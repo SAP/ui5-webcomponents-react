@@ -11,6 +11,7 @@ import {
   CANCEL,
   MANAGE,
   MY_VIEWS,
+  RESET,
   SAVE,
   SAVE_AS,
   SEARCH,
@@ -357,6 +358,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
   const saveText = i18nBundle.getText(SAVE);
   const a11ySearchText = i18nBundle.getText(SEARCH_VARIANT);
   const selectViewText = i18nBundle.getText(SELECT_VIEW);
+  const resetIconTitleText = i18nBundle.getText(RESET);
 
   const variantManagementClasses = StyleClassHelper.of(classes.container);
 
@@ -540,6 +542,8 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
                           <>
                             {filteredChildren && (
                               <Icon
+                                accessibleName={resetIconTitleText}
+                                tooltip={resetIconTitleText}
                                 name="decline"
                                 interactive
                                 onClick={handleResetFilter}
