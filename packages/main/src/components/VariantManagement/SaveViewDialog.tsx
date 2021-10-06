@@ -62,9 +62,7 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
   const [isDefault, setDefault] = useState(selectedVariant.isDefault);
   const [isPublic, setPublic] = useState(selectedVariant.global);
   const [applyAutomatically, setApplyAutomatically] = useState(selectedVariant.applyAutomatically);
-  const [variantName, setVariantName] = useState<string>(
-    typeof selectedVariant?.children === 'string' ? selectedVariant.children : ''
-  );
+  const [variantName, setVariantName] = useState(selectedVariant.children);
   const [variantNameInvalid, setVariantNameInvalid] = useState<string | boolean>(false);
 
   const handleInputChange = (e) => {
