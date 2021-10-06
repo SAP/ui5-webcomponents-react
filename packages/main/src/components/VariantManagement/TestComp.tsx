@@ -32,6 +32,10 @@ export const TestComp = (props) => {
           console.log('manage', e.detail);
         }}
       >
+        <VariantItem>Default VariantItem</VariantItem>
+        <VariantItem applyAutomatically global readOnly favorite isDefault labelReadOnly author="LeChuck" hideDelete>
+          All props
+        </VariantItem>
         <VariantItem selected>Selected</VariantItem>
         <VariantItem isDefault author="Guybrush Threepwood">
           Default w/ author

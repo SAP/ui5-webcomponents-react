@@ -1,4 +1,4 @@
-import { fireEvent, getByText, render, renderWithDefine, screen, waitFor } from '@shared/tests';
+import { fireEvent, getByText, render, renderWithDefine, screen, waitFor, within } from '@shared/tests';
 import { createPassThroughPropsTest } from '@shared/tests/utils';
 import { VariantManagement } from '@ui5/webcomponents-react/dist/VariantManagement';
 import React from 'react';
@@ -18,14 +18,11 @@ describe('VariantManagement', () => {
   test('Render without crashing', () => {
     const { rerender, getByTitle, getAllByText, getByText } = render(<VariantManagement />);
     getByTitle('Select view');
-    //todo
-    // expect(screen).toMatchSnapshot();
+
     rerender(<VariantManagement>{TwoVariantItems}</VariantManagement>);
     getByTitle('Select view');
     expect(getAllByText('VariantItem 2')).toHaveLength(2);
     getByText('VariantItem 1');
-    //todo
-    // expect(document.body).toMatchSnapshot();
   });
 
   test('Selection', async () => {
@@ -56,8 +53,7 @@ describe('VariantManagement', () => {
     expect(cb).toHaveBeenCalledTimes(1);
     expect(getAllByText('VariantItem 1')).toHaveLength(2);
     expect(getAllByText('VariantItem 2')).toHaveLength(1);
-    //todo
-    // expect(document.body).toMatchSnapshot();
+
     expect(cb.mock.results[0].value.selectedVariant.children).toBe('VariantItem 1');
     expect(cb.mock.results[0].value.selectedVariant.variantItem).toBeInTheDocument();
 
@@ -79,8 +75,6 @@ describe('VariantManagement', () => {
 
     expect(headingContainer).toHaveClass('VariantManagement-disabled');
     expect(btn).toHaveAttribute('disabled', 'true');
-    // todo
-    // expect(document.body).toMatchSnapshot();
   });
 
   test('Close on item selection', async () => {
@@ -131,9 +125,6 @@ describe('VariantManagement', () => {
     expect(cb.mock.results[0].value.children).toBe('VariantItem 2');
     expect(cb.mock.results[0].value.variantItem).toBeInTheDocument();
 
-    //todo
-    // expect(document.body).toMatchSnapshot();
-
     const popover: Ui5PopoverDomRef = document.querySelector('ui5-responsive-popover');
     const btn = getByTitle('Select view');
     fireEvent.click(btn);
@@ -146,8 +137,7 @@ describe('VariantManagement', () => {
         {variantItems}
       </VariantManagement>
     );
-    //todo
-    // expect(document.body).toMatchSnapshot();
+
     getByText('Dirty state');
     rerender(<VariantManagement>{variantItems}</VariantManagement>);
     expect(queryByText('*')).toBeNull();
@@ -172,8 +162,6 @@ describe('VariantManagement', () => {
   test('In error state', () => {
     render(<VariantManagement inErrorState>{TwoVariantItems}</VariantManagement>);
     expect(document.querySelector('ui5-illustrated-message')).toBeInTheDocument();
-    // todo
-    // expect(document.body).toMatchSnapshot();
   });
 
   test('Headings customization', async () => {
@@ -190,8 +178,6 @@ describe('VariantManagement', () => {
     const popoverHeading = popover.shadowRoot.querySelector('h2');
     expect(popoverHeading).toHaveTextContent('Popover Heading');
     expect(getAllByText('VariantItem 2')[0]).toHaveAttribute('level', 'H1');
-    //todo
-    // expect(document.body).toMatchSnapshot();
   });
 
   test('Show search input', () => {
@@ -201,18 +187,21 @@ describe('VariantManagement', () => {
         .fill(':)')
         .map((_, index) => <VariantItem key={index + 3}>{`VariantItem ${index + 3}`}</VariantItem>)
     ];
-    const { rerender, getByPlaceholderText, queryByPlaceholderText } = render(
+    const { rerender, getByPlaceholderText, queryByPlaceholderText, getByTitle } = render(
       <VariantManagement>{variantItems}</VariantManagement>
     );
     const input = getByPlaceholderText('Search');
     fireEvent.input(input, { target: { value: 'VariantItem 10' } });
-    screen.debug();
     expect(document.querySelectorAll('ui5-li')).toHaveLength(1);
+
+    const resetIcon = getByTitle('Reset');
+    fireEvent.click(resetIcon);
+    expect(input).toHaveValue('');
+    expect(document.querySelectorAll('ui5-li')).toHaveLength(10);
 
     const [a, ...rest] = variantItems;
     rerender(<VariantManagement>{rest}</VariantManagement>);
     expect(queryByPlaceholderText('Search')).toBeNull();
-    //todo snapshot
   });
 
   test('Show only favorite', () => {
@@ -237,7 +226,28 @@ describe('VariantManagement', () => {
     getByText('VariantItem 2');
     expect(getAllByText('Favorite VariantItem')).toHaveLength(2);
     getByText('Default VariantItem');
-    //todo snapshot
+  });
+
+  test('Hide variant props', () => {
+    const { getByText } = render(
+      <VariantManagement hideApplyAutomatically hideSetAsDefault hideShare>
+        {TwoVariantItems}
+      </VariantManagement>
+    );
+    const saveAsBtn = getByText('Save As');
+    fireEvent.click(saveAsBtn);
+    expect(document.querySelectorAll('ui5-checkbox')).toHaveLength(0);
+
+    const cancelBtn = getByText('Cancel');
+    expect(document.querySelector('ui5-dialog')).toBeInTheDocument();
+    fireEvent.click(cancelBtn);
+
+    const manageBtn = getByText('Manage');
+    fireEvent.click(manageBtn);
+    const table = screen.getByRole('table');
+    expect(within(table).queryByText('Sharing')).toBeNull();
+    expect(within(table).queryByText('Default')).toBeNull();
+    expect(within(table).queryByText('ApplyAutomatically')).toBeNull();
   });
 
   test('Save As', () => {
@@ -276,7 +286,7 @@ describe('VariantManagement', () => {
     checkboxes.forEach((item: HTMLInputElement) => {
       expect(item.checked).toBeTruthy();
     });
-    //todo snapshot
+
     fireEvent.click(saveBtn);
     expect(queryByText('Please specify a view name')).toBeNull();
     expect(queryByText('A file with this name already exists')).toBeNull();
@@ -294,6 +304,187 @@ describe('VariantManagement', () => {
     expect(document.querySelector('ui5-dialog')).toBeInTheDocument();
     fireEvent.click(cancelBtn);
     expect(document.querySelector('ui5-dialog')).not.toBeInTheDocument();
+  });
+
+  test('Manage Views - render variants', () => {
+    const variantItems = [
+      { rowId: 'Default VariantItem', props: {} },
+      { rowId: 'LabelReadOnly', props: { labelReadOnly: true } },
+      { rowId: 'Favorite', props: { favorite: true } },
+      { rowId: 'Favorite & isDefault', props: { favorite: true, isDefault: true } },
+      { rowId: 'IsDefault', props: { isDefault: true } },
+      { rowId: 'HideDelete', props: { hideDelete: true } },
+      { rowId: 'HideDelete - false & global - true', props: { hideDelete: false, global: true } },
+      { rowId: 'Global', props: { global: true } },
+      { rowId: 'Apply Automatically (List item)', props: { applyAutomatically: true } },
+      { rowId: 'Author', props: { author: 'author' } },
+      {
+        rowId: 'All props',
+        props: {
+          labelReadOnly: true,
+          favorite: true,
+          isDefault: true,
+          hideDelete: true,
+          global: true,
+          applyAutomatically: true,
+          author: 'bla'
+        }
+      }
+    ];
+    const { getByText } = render(
+      <VariantManagement>
+        {variantItems.map((item) => (
+          <VariantItem {...item.props}>{item.rowId}</VariantItem>
+        ))}
+      </VariantManagement>
+    );
+    const manageBtn = getByText('Manage');
+    fireEvent.click(manageBtn);
+    const dialog: Ui5DialogDomRef = document.querySelector('ui5-dialog');
+    const table = screen.getByRole('table');
+    expect(dialog).toHaveAttribute('header-text', 'Manage Views');
+    expect(dialog.isOpen()).toBeTruthy();
+
+    const manageViewsRowTest = (variantItems) => {
+      variantItems.forEach((item) => {
+        const { rowId, props } = item;
+        const { favorite, children, labelReadOnly, isDefault, hideDelete, global, applyAutomatically, author } = props;
+        const row = table.querySelector(`ui5-table-row[data-id="${rowId}"]`);
+
+        if (labelReadOnly) {
+          expect(screen.getAllByText(rowId)).toHaveLength(2);
+        } else {
+          expect(screen.getAllByText(rowId)).toHaveLength(1);
+          expect(row.querySelector('ui5-input')).toHaveValue(rowId);
+        }
+
+        if (isDefault) {
+          expect(row.querySelector(`ui5-icon[name="favorite"]`)).not.toHaveAttribute('title', 'Selected as Favorite');
+          expect(row.querySelector(`ui5-icon[name="favorite"]`)).not.toHaveAttribute('title', 'Unselected as Favorite');
+        } else {
+          if (favorite) {
+            expect(row.querySelector(`ui5-icon[name="favorite"]`)).toHaveAttribute('title', 'Selected as Favorite');
+          } else {
+            expect(row.querySelector(`ui5-icon[name="unfavorite"]`)).toHaveAttribute('title', 'Unselected as Favorite');
+          }
+        }
+
+        if (hideDelete) {
+          expect(row.querySelector(`ui5-button`)).not.toBeInTheDocument();
+        } else {
+          if (global && hideDelete !== false) {
+            expect(row.querySelector(`ui5-button`)).not.toBeInTheDocument();
+          } else {
+            expect(row.querySelector(`ui5-button`)).toHaveAttribute('title', 'Delete view');
+          }
+        }
+
+        if (applyAutomatically) {
+          expect(row.querySelector(`ui5-checkbox`)).toHaveAttribute('checked', 'true');
+        } else {
+          expect(row.querySelector(`ui5-checkbox`)).not.toHaveAttribute('checked', 'true');
+        }
+
+        if (author) {
+          screen.getByText(author);
+        }
+      });
+    };
+    manageViewsRowTest(variantItems);
+  });
+
+  test('Manage Views interactions', async () => {
+    const cb = jest.fn((e) => e.detail);
+    const { getByText } = await renderWithDefine(
+      <VariantManagement onSaveManageViews={cb}>
+        {[...TwoVariantItems, <VariantItem isDefault>VariantItem 3</VariantItem>]}
+      </VariantManagement>,
+      ['ui5-checkbox', 'ui5-radio-button']
+    );
+
+    const manageBtn = getByText('Manage');
+    fireEvent.click(manageBtn);
+
+    const wcRadioBtn = screen.getAllByLabelText('Use as standard view')[0];
+    const radioBtn = await waitFor(() => wcRadioBtn.shadowRoot.querySelector('div[role="radio"]'));
+
+    const wcCheckbox = screen.getAllByLabelText('Apply Automatically')[0];
+    const checkbox = await waitFor(() => wcCheckbox.shadowRoot.querySelector('div[role="checkbox"]'));
+
+    const saveBtn = screen.getByText('Save');
+    const table = screen.getByRole('table');
+
+    fireEvent.click(within(table).getAllByTitle('Unselected as Favorite')[0]);
+    fireEvent.input(within(table).getAllByPlaceholderText('View')[0], { target: { value: 'Updated!' } });
+    fireEvent.click(radioBtn);
+    fireEvent.click(checkbox);
+
+    fireEvent.click(saveBtn);
+    expect(cb).toHaveBeenCalledTimes(1);
+
+    expect(cb.mock.results[0].value.updatedVariants[0].children).toBe('Updated!');
+    expect(cb.mock.results[0].value.updatedVariants[0].isDefault).toBe(true);
+    expect(cb.mock.results[0].value.updatedVariants[0].favorite).toBe(true);
+    expect(cb.mock.results[0].value.updatedVariants[0].applyAutomatically).toBe(true);
+    expect(cb.mock.results[0].value.variants[2].isDefault).toBe(false);
+    expect(document.querySelector('ui5-dialog')).not.toBeInTheDocument();
+
+    fireEvent.click(manageBtn);
+    expect(document.querySelector('ui5-dialog')).toBeInTheDocument();
+    fireEvent.click(screen.getByText('Cancel'));
+    expect(document.querySelector('ui5-dialog')).not.toBeInTheDocument();
+  });
+
+  test('Delete variants', () => {
+    const cb = jest.fn((e) => e.detail);
+    const { getByText } = render(
+      <VariantManagement onSaveManageViews={cb}>
+        {[...TwoVariantItems, <VariantItem isDefault>VariantItem 3</VariantItem>]}
+      </VariantManagement>
+    );
+    const manageBtn = getByText('Manage');
+    fireEvent.click(manageBtn);
+    const saveBtn = screen.getByText('Save');
+
+    const row1DeleteBtn = screen.getAllByTitle('Delete view')[0];
+    const row2DeleteBtn = screen.getAllByTitle('Delete view')[1];
+    fireEvent.click(row1DeleteBtn);
+    fireEvent.click(row2DeleteBtn);
+
+    fireEvent.click(saveBtn);
+    expect(cb).toHaveBeenCalledTimes(1);
+
+    expect(cb.mock.results[0].value.deletedVariants[0].children).toBe('VariantItem 1');
+    expect(cb.mock.results[0].value.deletedVariants[1].children).toBe('VariantItem 2');
+    expect(document.querySelector('ui5-dialog')).not.toBeInTheDocument();
+  });
+
+  test('Manage Views input validation', () => {
+    const cb = jest.fn((e) => e.detail);
+    const { getByText } = render(
+      <VariantManagement onSaveManageViews={cb}>
+        {[...TwoVariantItems, <VariantItem isDefault>VariantItem 3</VariantItem>]}
+      </VariantManagement>
+    );
+    const manageBtn = getByText('Manage');
+    fireEvent.click(manageBtn);
+    const saveBtn = screen.getByText('Save');
+
+    fireEvent.input(screen.getAllByPlaceholderText('View')[0], { target: { value: 'Updated!' } });
+    fireEvent.input(screen.getAllByPlaceholderText('View')[1], { target: { value: 'Updated!' } });
+    fireEvent.input(screen.getAllByPlaceholderText('View')[2], { target: { value: 'Updated!' } });
+    fireEvent.click(saveBtn);
+    expect(cb).toHaveBeenCalledTimes(0);
+    fireEvent.input(screen.getAllByPlaceholderText('View')[0], { target: { value: '1' } });
+    fireEvent.click(saveBtn);
+    expect(cb).toHaveBeenCalledTimes(0);
+    fireEvent.input(screen.getAllByPlaceholderText('View')[1], { target: { value: '2' } });
+    fireEvent.click(saveBtn);
+    expect(cb).toHaveBeenCalledTimes(0);
+    // focuses the 3rd item so the error state is cleared (happens automatically outside of tests)
+    fireEvent.focus(screen.getAllByPlaceholderText('View')[2]);
+    fireEvent.click(saveBtn);
+    expect(cb).toHaveBeenCalledTimes(1);
   });
 
   createPassThroughPropsTest(VariantManagement);

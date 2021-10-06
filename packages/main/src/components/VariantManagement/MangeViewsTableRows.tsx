@@ -10,7 +10,8 @@ import {
   PUBLIC,
   SELECTED_AS_FAVORITE,
   SPECIFY_VIEW_NAME,
-  UNSELECTED_AS_FAVORITE
+  UNSELECTED_AS_FAVORITE,
+  VIEW
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
@@ -74,6 +75,7 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
   const a11yApplyAutomaticallyText = i18nBundle.getText(APPLY_AUTOMATICALLY);
   const favoriteIconTitleText = i18nBundle.getText(SELECTED_AS_FAVORITE);
   const unfavoriteIconTitleText = i18nBundle.getText(UNSELECTED_AS_FAVORITE);
+  const inputPlaceHolder = i18nBundle.getText(VIEW);
 
   const [internalFavorite, setFavorite] = useReducer((prev) => {
     return !prev;
@@ -152,6 +154,7 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
     }
     return (
       <Input
+        placeholder={inputPlaceHolder}
         value={children}
         onInput={handleVariantInput}
         onFocus={handleVariantFocus}
@@ -169,7 +172,7 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
         ) : (
           <Icon
             aria-label={a11yFavoriteText}
-            tooltip={iconName === 'favorite' ? unfavoriteIconTitleText : favoriteIconTitleText}
+            tooltip={iconName === 'favorite' ? favoriteIconTitleText : unfavoriteIconTitleText}
             name={iconName}
             interactive
             style={{ color: ThemingParameters.sapContent_MarkerIconColor, cursor: 'pointer' }}
@@ -203,7 +206,7 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
       <TableCell>
         {!(hideDelete ?? global) && (
           <Button
-            title={a11yDeleteText}
+            tooltip={a11yDeleteText}
             accessibleName={a11yDeleteText}
             icon="decline"
             design={ButtonDesign.Transparent}
