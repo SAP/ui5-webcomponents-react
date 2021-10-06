@@ -9,10 +9,10 @@ jobs:
     if: ${{ github.event.pull_request.merged == true }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/github-script@v4
+      - uses: actions/github-script@v5
         with:
           script: |
-            const { data: openPullRequests } = await github.pulls.list({
+            const { data: openPullRequests } = await github.rest.pulls.list({
               owner: 'SAP',
               repo: 'ui5-webcomponents-react',
               state: 'open',
@@ -22,7 +22,7 @@ jobs:
             const firstOpenDependabotPR = openPullRequests.find((pr) => pr.user.login === 'dependabot[bot]');
             
             if (firstOpenDependabotPR) {
-              github.issues.createComment({
+              github.rest.issues.createComment({
                 owner: 'SAP',
                 repo: 'ui5-webcomponents-react',
                 issue_number: firstOpenDependabotPR.number,
