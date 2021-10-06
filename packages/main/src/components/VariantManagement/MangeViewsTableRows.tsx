@@ -8,7 +8,9 @@ import {
   MARK_AS_STANDARD,
   PRIVATE,
   PUBLIC,
-  SPECIFY_VIEW_NAME
+  SELECTED_AS_FAVORITE,
+  SPECIFY_VIEW_NAME,
+  UNSELECTED_AS_FAVORITE
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
@@ -70,6 +72,8 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
   const a11yStandardText = i18nBundle.getText(MARK_AS_STANDARD);
   const a11yDeleteText = i18nBundle.getText(DELETE_VIEW);
   const a11yApplyAutomaticallyText = i18nBundle.getText(APPLY_AUTOMATICALLY);
+  const favoriteIconTitleText = i18nBundle.getText(SELECTED_AS_FAVORITE);
+  const unfavoriteIconTitleText = i18nBundle.getText(UNSELECTED_AS_FAVORITE);
 
   const [internalFavorite, setFavorite] = useReducer((prev) => {
     return !prev;
@@ -165,6 +169,7 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
         ) : (
           <Icon
             aria-label={a11yFavoriteText}
+            tooltip={iconName === 'favorite' ? unfavoriteIconTitleText : favoriteIconTitleText}
             name={iconName}
             interactive
             style={{ color: ThemingParameters.sapContent_MarkerIconColor, cursor: 'pointer' }}

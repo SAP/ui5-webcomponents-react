@@ -189,7 +189,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
         />
       }
     >
-      <Table columns={columns} stickyColumnHeader>
+      <Table columns={columns} stickyColumnHeader role="table">
         {childrenProps.map((itemProps: VariantItemPropTypes) => {
           return (
             <ManageViewsTableRows
