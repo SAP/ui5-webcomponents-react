@@ -19,7 +19,7 @@ describe('VariantManagement', () => {
     const { rerender, getByTitle, getAllByText, getByText } = render(<VariantManagement />);
     getByTitle('Select view');
     //todo
-    expect(screen).toMatchSnapshot();
+    // expect(screen).toMatchSnapshot();
     rerender(<VariantManagement>{TwoVariantItems}</VariantManagement>);
     getByTitle('Select view');
     expect(getAllByText('VariantItem 2')).toHaveLength(2);
@@ -287,6 +287,13 @@ describe('VariantManagement', () => {
     expect(cb.mock.results[0].value.global).toBeTruthy();
     expect(cb.mock.results[0].value.applyAutomatically).toBeTruthy();
     expect(cb.mock.results[0].value.variantItem).toBeInTheDocument();
+
+    // cancel click
+    fireEvent.click(saveAsBtn);
+    const cancelBtn = getByText('Cancel');
+    expect(document.querySelector('ui5-dialog')).toBeInTheDocument();
+    fireEvent.click(cancelBtn);
+    expect(document.querySelector('ui5-dialog')).not.toBeInTheDocument();
   });
 
   createPassThroughPropsTest(VariantManagement);
