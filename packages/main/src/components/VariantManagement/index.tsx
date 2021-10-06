@@ -289,7 +289,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
 
   const handleSave = (e) => {
     if (typeof onSave === 'function') {
-      onSave(enrichEventWithDetails(e, {}));
+      onSave(enrichEventWithDetails(e, selectedVariant as Record<string, unknown>));
     }
   };
 

@@ -19,6 +19,9 @@ export const TestComp = (props) => {
       />
       <VariantManagement
         {...props}
+        onSave={(e) => {
+          console.log('Save', e.detail);
+        }}
         onSaveAs={(e) => {
           console.log('save as', e.detail);
         }}
