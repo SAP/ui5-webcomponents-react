@@ -1,22 +1,14 @@
 import { PopoverPlacementType } from '@ui5/webcomponents-react/dist/PopoverPlacementType';
 import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
-import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { VariantManagement } from '@ui5/webcomponents-react/dist/VariantManagement';
+import { VariantItem } from '@ui5/webcomponents-react/dist/VariantItem';
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { DocsHeader } from '@shared/stories/DocsHeader';
-import { VariantItem } from './VariantItem';
-import { useState } from '@storybook/addons';
-import { useReducer } from 'react';
-import { TestComp } from './TestComp';
 
 <Meta
   title="Inputs / VariantManagement"
   component={VariantManagement}
-  argTypes={{
-    ref: {
-      type: null
-    }
-  }}
+  subcomponents={{ VariantItem }}
   args={{
     placement: PopoverPlacementType.Bottom,
     level: TitleLevel.H4
@@ -32,11 +24,28 @@ import { TestComp } from './TestComp';
 <Canvas>
   <Story name="Default">
     {(props) => {
-      const [favs, setFavs] = useReducer((prev) => !prev, false);
       return (
-        <>
-          <TestComp {...props} />
-        </>
+        <VariantManagement {...props}>
+          <VariantItem>Default VariantItem</VariantItem>
+          <VariantItem selected>Selected</VariantItem>
+          <VariantItem author="SAP">Author</VariantItem>
+          <VariantItem favorite>Favorite</VariantItem>
+          <VariantItem isDefault>IsDefault</VariantItem>
+          <VariantItem favorite labelReadOnly>
+            Favorite & labelReadOnly
+          </VariantItem>
+          <VariantItem applyAutomatically>ApplyAutomatically</VariantItem>
+          <VariantItem readOnly>ReadOnly</VariantItem>
+          <VariantItem global>Global</VariantItem>
+          <VariantItem global readOnly>
+            Global & readOnly
+          </VariantItem>
+          <VariantItem global>{`Not deletable -> global`}</VariantItem>
+          <VariantItem hideDelete>{`Not deletable -> hideDelete`}</VariantItem>
+          <VariantItem hideDelete={false} global>
+            {`Deletable -> hideDelete: false, global: true`}
+          </VariantItem>
+        </VariantManagement>
       );
     }}
   </Story>
