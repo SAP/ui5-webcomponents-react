@@ -9,12 +9,12 @@ import { Label } from '@ui5/webcomponents-react/dist/Label';
 import { Breadcrumbs } from '@ui5/webcomponents-react/dist/Breadcrumbs';
 import { BreadcrumbsItem } from '@ui5/webcomponents-react/dist/BreadcrumbsItem';
 import { PageBackgroundDesign } from '@ui5/webcomponents-react/dist/PageBackgroundDesign';
-import { Link } from '@ui5/webcomponents-react/dist/Link';
 import { Bar } from '@ui5/webcomponents-react/dist/Bar';
 import { DynamicPageTitle } from '@ui5/webcomponents-react/dist/DynamicPageTitle';
 import { DynamicPage } from '@ui5/webcomponents-react/dist/DynamicPage';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { DynamicPageHeader } from '@ui5/webcomponents-react/dist/DynamicPageHeader';
+import { VariantItem } from '@ui5/webcomponents-react/dist/VariantItem';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
 import { Badge } from '@ui5/webcomponents-react/dist/Badge';
@@ -158,7 +158,7 @@ import { useReducer, useState } from 'react';
 <Canvas>
   <Story name="with Variants">
     {(args) => {
-      const [headerVariant, setHeaderVariant] = useState('1');
+      const [headerVariant, setHeaderVariant] = useState('Header Variant 1');
       const [navigationItems, setNavigationItems] = useState([
         <Button key={'decline'} icon="decline" design={ButtonDesign.Transparent} />
       ]);
@@ -171,10 +171,10 @@ import { useReducer, useState } from 'react';
         </Button>
       ]);
       const selectVariant = (e) => {
-        // todo
-        setHeaderVariant(e.detail?.selectedItem?.key);
+        const selectedVariant = e.detail.selectedVariant.children;
+        setHeaderVariant(selectedVariant);
         setNavigationItems(
-          e.detail?.selectedItem?.key === '2'
+          selectedVariant === 'Header Variant 2'
             ? [
                 <Button key={'fullscreen'} icon="full-screen" design={ButtonDesign.Transparent} />,
                 <Button key={'exitFullscreen'} icon="exit-full-screen" design={ButtonDesign.Transparent} />,
@@ -183,7 +183,7 @@ import { useReducer, useState } from 'react';
             : [<Button key={'decline'} icon="decline" design={ButtonDesign.Transparent} />]
         );
         setActionItems(
-          e.detail?.selectedItem?.key === '1'
+          selectedVariant === 'Header Variant 1'
             ? [
                 <Button key={'edit'} design={ButtonDesign.Emphasized}>
                   Edit
@@ -196,7 +196,7 @@ import { useReducer, useState } from 'react';
                 <Button key={'copy'} design={ButtonDesign.Transparent}>
                   Copy
                 </Button>,
-                <Button key={'action'} icon="action" design={ButtonDesign.Transparent}></Button>
+                <Button key={'action'} icon="action" design={ButtonDesign.Transparent} />
               ]
         );
       };
@@ -225,14 +225,10 @@ import { useReducer, useState } from 'react';
                     </Breadcrumbs>
                   }
                   header={
-                    <VariantManagement
-                      onSelect={selectVariant}
-                      variantItems={[
-                        { label: 'Header Variant 1', key: '1' },
-                        { label: 'Header Variant 2', key: '2' }
-                      ]}
-                      selectedKey={headerVariant}
-                    />
+                    <VariantManagement onSelect={selectVariant}>
+                      <VariantItem selected={headerVariant === 'Header Variant 1'}>Header Variant 1</VariantItem>
+                      <VariantItem selected={headerVariant === 'Header Variant 2'}>Header Variant 2</VariantItem>
+                    </VariantManagement>
                   }
                   subHeader={<Label>This is a sub header</Label>}
                 >
