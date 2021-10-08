@@ -1,6 +1,5 @@
-import { Form } from '@ui5/webcomponents-react/src';
-import React, { ComponentType } from 'react';
 import { render, screen } from '@testing-library/react';
+import React, { ComponentType } from 'react';
 
 export const modifyObjectProperty = (object: any, attr: string, value: any) => {
   Object.defineProperty(object, attr, {
