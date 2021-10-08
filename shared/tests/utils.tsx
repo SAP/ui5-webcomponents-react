@@ -1,3 +1,4 @@
+import { Form } from '@ui5/webcomponents-react/src';
 import React, { ComponentType } from 'react';
 import { render, screen } from '@testing-library/react';
 
@@ -36,5 +37,12 @@ export const createPassThroughPropsTest = (Component: ComponentType<any>, props 
       expect(element.id).toBe('element-id');
     }
     expect(element.hasAttribute('disabled-custom-prop')).toBeFalsy();
+  });
+};
+
+export const createChangeTagNameTest = (Component: ComponentType<any>) => {
+  test('Change tag name', () => {
+    const { getByTestId } = render(<Component data-testid={'component-to-be-tested'} as="header" />);
+    expect(getByTestId('component-to-be-tested').tagName).toBe('HEADER');
   });
 };

@@ -48,6 +48,12 @@ export interface ToolbarPropTypes extends Omit<CommonProps, 'onClick'> {
    */
   active?: boolean;
   /**
+   * Sets the components outer HTML tag.
+   *
+   * __Note:__ For TypeScript the types of `ref` are bound to the default tag name, if you change it you are responsible to set the respective types yourself.
+   */
+  as?: keyof HTMLElementTagNameMap;
+  /**
    * Fired when the user clicks on the `Toolbar`, if the `active` prop is set to "true".
    */
   onClick?: (event: CustomEvent) => void;
@@ -60,7 +66,7 @@ export interface ToolbarPropTypes extends Omit<CommonProps, 'onClick'> {
  * It can be accessed by the user through the overflow button that opens it in a popover.
  */
 const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) => {
-  const { children, toolbarStyle, design, active, style, tooltip, className, onClick, slot } = props;
+  const { children, toolbarStyle, design, active, style, tooltip, className, onClick, slot, as } = props;
   const classes = useStyles();
   const outerContainer: RefObject<HTMLDivElement> = useConsolidatedRef(ref);
   const controlMetaData = useRef([]);
@@ -198,8 +204,9 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
     [onClick, active]
   );
 
+  const CustomTag = as as React.ElementType;
   return (
-    <div
+    <CustomTag
       title={tooltip}
       style={style}
       className={toolbarClasses.className}
@@ -234,11 +241,12 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
           </OverflowPopover>
         </div>
       )}
-    </div>
+    </CustomTag>
   );
 });
 
 Toolbar.defaultProps = {
+  as: 'div',
   toolbarStyle: ToolbarStyle.Standard,
   design: ToolbarDesign.Auto,
   active: false
