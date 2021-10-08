@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { createChangeTagNameTest, createPassThroughPropsTest } from '@shared/tests/utils';
 import { Form } from '@ui5/webcomponents-react/dist/Form';
 import { FormGroup } from '@ui5/webcomponents-react/dist/FormGroup';
 import { FormItem } from '@ui5/webcomponents-react/dist/FormItem';
@@ -73,6 +73,8 @@ describe('Create a Form', () => {
     const { asFragment } = render(ungroupedChildren);
     expect(asFragment()).toMatchSnapshot();
   });
+
+  createChangeTagNameTest(Form);
 
   createPassThroughPropsTest(Form, {
     children: (

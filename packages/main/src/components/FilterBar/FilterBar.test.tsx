@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@shared/tests';
-import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { createChangeTagNameTest, createPassThroughPropsTest } from '@shared/tests/utils';
 import { Bar } from '@ui5/webcomponents-react/dist/Bar';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { DatePicker } from '@ui5/webcomponents-react/dist/DatePicker';
@@ -579,6 +579,8 @@ describe('FilterBar', () => {
     getByText('Go');
     expect(asFragment()).toMatchSnapshot();
   });
+
+  createChangeTagNameTest(FilterBar);
 
   createPassThroughPropsTest(FilterBar);
 });

@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@shared/tests';
-import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { createChangeTagNameTest, createPassThroughPropsTest } from '@shared/tests/utils';
 import { Text } from '@ui5/webcomponents-react/dist/Text';
 import { Toolbar } from '@ui5/webcomponents-react/dist/Toolbar';
 import { ToolbarDesign } from '@ui5/webcomponents-react/dist/ToolbarDesign';
@@ -282,6 +282,8 @@ describe('Toolbar', () => {
 
     expect(screen.getByTestId('toolbar')).toHaveClass(expected);
   });
+
+  createChangeTagNameTest(Toolbar);
 
   createPassThroughPropsTest(Toolbar);
 });
