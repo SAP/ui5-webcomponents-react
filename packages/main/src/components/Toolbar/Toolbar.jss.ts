@@ -5,6 +5,7 @@ export const styles = {
   outerContainer: {
     boxSizing: 'border-box',
     width: '100%',
+    maxWidth: '100%',
     height: CssSizeVariables.sapWcrToolbarHeight,
     position: 'relative',
     overflow: 'hidden',
