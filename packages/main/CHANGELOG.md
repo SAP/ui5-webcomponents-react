@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.10](https://github.com/SAP/ui5-webcomponents-react/compare/v0.18.9...v0.18.10) (2021-10-11)
+
+
+### Bug Fixes
+
+* **DynamicPageTitle:** wrap `header` and `subHeader` if not enough space is available ([#2171](https://github.com/SAP/ui5-webcomponents-react/issues/2171)) ([5e706f3](https://github.com/SAP/ui5-webcomponents-react/commit/5e706f343603233cb010a2c9157f3d458ec45a2e))
+* **MessageBox:** correct spacing of header items in rtl mode ([#2190](https://github.com/SAP/ui5-webcomponents-react/issues/2190)) ([93f1ed1](https://github.com/SAP/ui5-webcomponents-react/commit/93f1ed186cc8ede4eff4e70921276d744cfe5ff8))
+* **Toolbar:** add `max-width: 100%` to outer toolbar container ([#2207](https://github.com/SAP/ui5-webcomponents-react/issues/2207)) ([d9c63c8](https://github.com/SAP/ui5-webcomponents-react/commit/d9c63c8a7d5349bd2a6fb117727603882974f28d))
+
+
+### Features
+
+* **DynamicPageTitle:** if not enough space is available break words at hyphenation points ([#2177](https://github.com/SAP/ui5-webcomponents-react/issues/2177)) ([6655587](https://github.com/SAP/ui5-webcomponents-react/commit/6655587deaafc03edb5d36e27e8f2d027f54920c))
+* **FilterBar & FlexBox & Form & Toolbar:** introduce `as` prop to change HTML tag dynamically ([#2203](https://github.com/SAP/ui5-webcomponents-react/issues/2203)) ([f75582a](https://github.com/SAP/ui5-webcomponents-react/commit/f75582a0eaa76bc26541cb1e66583b2b6846fb6b))
+
+
+
+
+
 ## [0.18.9](https://github.com/SAP/ui5-webcomponents-react/compare/v0.18.8...v0.18.9) (2021-09-21)
 
 
