@@ -4,7 +4,7 @@ import { VariantManagementContext } from '@ui5/webcomponents-react/dist/VariantM
 import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import React, { forwardRef, Ref, useContext, useEffect } from 'react';
 
-export interface VariantItemPropTypes extends Omit<StandardListItemPropTypes, 'children'> {
+export interface VariantItemPropTypes extends Omit<StandardListItemPropTypes, 'children' | 'onDetailClick'> {
   /**
    * The name of the variant.
    */
