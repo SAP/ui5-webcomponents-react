@@ -1,11 +1,11 @@
-import { render, screen, fireEvent } from '@shared/tests';
-import { createChangeTagNameTest, createPassThroughPropsTest } from '@shared/tests/utils';
+import { fireEvent, render, screen } from '@shared/tests';
+import { createChangeTagNameTest } from '@shared/tests/utils';
 import { Text } from '@ui5/webcomponents-react/dist/Text';
 import { Toolbar } from '@ui5/webcomponents-react/dist/Toolbar';
 import { ToolbarDesign } from '@ui5/webcomponents-react/dist/ToolbarDesign';
-import { ToolbarStyle } from '@ui5/webcomponents-react/dist/ToolbarStyle';
 import { ToolbarSeparator } from '@ui5/webcomponents-react/dist/ToolbarSeparator';
 import { ToolbarSpacer } from '@ui5/webcomponents-react/dist/ToolbarSpacer';
+import { ToolbarStyle } from '@ui5/webcomponents-react/dist/ToolbarStyle';
 import React from 'react';
 
 describe('Toolbar', () => {
@@ -284,6 +284,4 @@ describe('Toolbar', () => {
   });
 
   createChangeTagNameTest(Toolbar);
-
-  createPassThroughPropsTest(Toolbar);
 });
