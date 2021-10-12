@@ -78,7 +78,7 @@ export interface MessageBoxPropTypes
   /**
    * Defines the content of the `MessageBox`.
    *
-   * **Note:** Although this prop accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
+   * **Note:** Although this prop accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design and a11y capabilities.
    */
   children: ReactNode | ReactNodeArray;
   /**
@@ -151,6 +151,7 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDom
     emphasizedAction,
     onClose,
     initialFocus,
+    accessibleName,
     ...rest
   } = props;
   const dialogRef = useConsolidatedRef<Ui5DialogDomRef>(ref);
@@ -349,6 +350,7 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDom
       className={messageBoxClassNames}
       onAfterClose={open ? handleOnClose : stopPropagation}
       {...restWithoutOmitted}
+      accessibleName={accessibleName ?? `${titleToRender()} ${typeof children === 'string' ? children : ''}`}
       initialFocus={getInitialFocus()}
     >
       {!props.header && (
