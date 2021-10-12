@@ -1,4 +1,5 @@
 # @ui5/webcomponents-react-base
+
 Base Utilities for ui5-webcomponents-react
 
 ## Installation
@@ -36,7 +37,6 @@ npx ui5wcr-codemod transformLibToDist src
 npx ui5wcr-codemod renamePropsV18 src
 # add --typescript if you are using TypeScript
 ```
-
 
 ## Contribute
 Please check our [Contribution Guidelines](https://github.com/SAP/ui5-webcomponents-react/blob/master/CONTRIBUTING.md).
