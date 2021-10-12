@@ -1,9 +1,9 @@
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
 import { GlobalStyleClasses } from '@ui5/webcomponents-react/dist/GlobalStyleClasses';
 import React, { forwardRef, Ref, RefObject } from 'react';
+import clsx from 'clsx';
 import { createUseStyles } from 'react-jss';
 
 interface VerticalScrollbarProps {
@@ -49,10 +49,10 @@ export const VerticalScrollbar = forwardRef((props: VerticalScrollbarProps, ref:
   const classes = useStyles();
   const hasHorizontalScrollbar = tableRef?.current?.clientWidth !== tableRef?.current?.scrollWidth;
 
-  const horizontalScrollbarSectionStyles = StyleClassHelper.of(classes.bottomSection);
-  if (hasHorizontalScrollbar) {
-    horizontalScrollbarSectionStyles.put(classes.bottomSectionWithScrollbar);
-  }
+  const horizontalScrollbarSectionStyles = clsx(
+    classes.bottomSection,
+    hasHorizontalScrollbar && classes.bottomSectionWithScrollbar
+  );
 
   return (
     <FlexBox direction={FlexBoxDirection.Column} style={{ position: 'relative' }}>
@@ -77,7 +77,7 @@ export const VerticalScrollbar = forwardRef((props: VerticalScrollbarProps, ref:
           }}
         />
       </div>
-      <div className={horizontalScrollbarSectionStyles.valueOf()} />
+      <div className={horizontalScrollbarSectionStyles} />
     </FlexBox>
   );
 });

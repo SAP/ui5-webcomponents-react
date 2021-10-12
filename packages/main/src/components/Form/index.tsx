@@ -3,7 +3,6 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingPar
 import { createUseStyles } from 'react-jss';
 import { getCurrentRange } from '@ui5/webcomponents-react-base/dist/Device';
 import { useConsolidatedRef, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { Title } from '@ui5/webcomponents-react/dist/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
 import React, {
@@ -20,6 +19,7 @@ import React, {
 } from 'react';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { styles } from './Form.jss';
+import clsx from 'clsx';
 
 export interface FormPropTypes extends CommonProps {
   /**
@@ -264,16 +264,14 @@ const Form = forwardRef((props: FormPropTypes, ref: Ref<HTMLFormElement>) => {
   }, [children, currentRange, titleText, currentNumberOfColumns, currentLabelSpan]);
   const passThroughProps = usePassThroughHtmlProps(props);
 
-  const formClassNames = StyleClassHelper.of(classes.form)
-    .put(classes[`labelSpan${((currentLabelSpan - 1) % 12) + 1}`])
-    .putIfPresent(className);
+  const formClassNames = clsx(classes.form, classes[`labelSpan${((currentLabelSpan - 1) % 12) + 1}`], className);
 
   const CustomTag = as as React.ElementType;
   return (
     <CustomTag
       ref={formRef}
       slot={slot}
-      className={formClassNames.valueOf()}
+      className={formClassNames}
       title={tooltip}
       style={style}
       data-columns={currentNumberOfColumns}

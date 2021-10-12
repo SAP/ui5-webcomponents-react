@@ -3,7 +3,6 @@ import '@ui5/webcomponents-icons/dist/decline.js';
 import '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
 import '@ui5/webcomponents-icons/dist/search.js';
 import { useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
@@ -56,6 +55,7 @@ import { stopPropagation } from '../../internal/stopPropagation';
 import { ManageViewsDialog } from './ManageViewsDialog';
 import { SaveViewDialog } from './SaveViewDialog';
 import { VariantItemPropTypes } from './VariantItem';
+import clsx from 'clsx';
 
 interface UpdatedVariant extends SelectedVariant {
   prevVariant?: VariantItemPropTypes;
@@ -360,21 +360,9 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
   const selectViewText = i18nBundle.getText(SELECT_VIEW);
   const resetIconTitleText = i18nBundle.getText(RESET);
 
-  const variantManagementClasses = StyleClassHelper.of(classes.container);
+  const variantManagementClasses = clsx(classes.container, disabled && classes.disabled, className);
 
-  if (disabled) {
-    variantManagementClasses.put(classes.disabled);
-  }
-
-  if (className) {
-    variantManagementClasses.put(className);
-  }
-
-  const dirtyStateClasses = StyleClassHelper.of(classes.dirtyState);
-
-  if (dirtyStateText !== '*') {
-    dirtyStateClasses.put(classes.dirtyStateText);
-  }
+  const dirtyStateClasses = clsx(classes.dirtyState, dirtyStateText !== '*' && classes.dirtyStateText);
 
   const selectVariantEventRef = useRef();
   useEffect(() => {
@@ -450,7 +438,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
   const passThroughProps = usePassThroughHtmlProps(props, ['onSelect', 'onSaveAs', 'onSaveManageViews', 'onSave']);
 
   return (
-    <div className={variantManagementClasses.className} style={style} title={tooltip} {...passThroughProps} ref={ref}>
+    <div className={variantManagementClasses} style={style} title={tooltip} {...passThroughProps} ref={ref}>
       <VariantManagementContext.Provider
         value={{
           selectVariantItem: setSelectedVariant
@@ -460,7 +448,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
           <Title level={level} className={classes.title}>
             {selectedVariant?.children}
           </Title>
-          {dirtyState && <div className={dirtyStateClasses.className}>{dirtyStateText}</div>}
+          {dirtyState && <div className={dirtyStateClasses}>{dirtyStateText}</div>}
         </FlexBox>
         <Button
           tooltip={selectViewText}
