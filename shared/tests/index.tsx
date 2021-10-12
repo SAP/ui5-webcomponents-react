@@ -62,7 +62,8 @@ export function getMouseEvent(type: string, values = {}): FakeMouseEvent {
 
 export const renderWithDefine = async (Component, elements: string[]) => {
   const { ...rest } = render(Component);
-  elements.forEach(async (item) => await customElements.whenDefined(item));
+  // @ts-ignore
+  await Promise.all(...elements.map(customElements.whenDefined));
 
   return { ...rest };
 };

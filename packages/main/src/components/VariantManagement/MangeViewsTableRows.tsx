@@ -35,10 +35,9 @@ interface ManageViewsTableRowsProps extends VariantItemPropTypes {
   showShare: boolean;
   showApplyAutomatically: boolean;
   showSetAsDefault: boolean;
-  //todo
-  changedVariantNames: any;
-  setChangedVariantNames: any;
-  setInvalidVariants: any;
+  changedVariantNames: Map<string, any>;
+  setChangedVariantNames: (varNames: Map<string, any>) => void;
+  setInvalidVariants: (invalidVars: Record<string, HTMLInputElement>) => void;
 }
 
 export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
