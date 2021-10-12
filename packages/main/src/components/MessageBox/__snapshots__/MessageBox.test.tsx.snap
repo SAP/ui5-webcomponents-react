@@ -3,6 +3,7 @@
 exports[`MessageBox Confirm - Cancel 1`] = `
 <DocumentFragment>
   <ui5-dialog
+    accessible-name="Confirmation Confirm"
     class="MessageBox-messageBox"
     opened=""
     style="z-index: 128; display: flex; top: 384px; left: 512px;"
@@ -60,6 +61,7 @@ exports[`MessageBox Confirm - Cancel 1`] = `
 exports[`MessageBox Confirm 1`] = `
 <DocumentFragment>
   <ui5-dialog
+    accessible-name="Confirmation My Message Box Content"
     class="MessageBox-messageBox"
     opened=""
     style="z-index: 104; display: flex; top: 384px; left: 512px;"
@@ -117,6 +119,7 @@ exports[`MessageBox Confirm 1`] = `
 exports[`MessageBox Custom Action Text 1`] = `
 <DocumentFragment>
   <ui5-dialog
+    accessible-name="Confirmation My Message Box Content"
     class="MessageBox-messageBox"
     ui5-dialog=""
   >
@@ -172,6 +175,7 @@ exports[`MessageBox Custom Action Text 1`] = `
 exports[`MessageBox Don't crash on unknown type 1`] = `
 <DocumentFragment>
   <ui5-dialog
+    accessible-name=" Unknown Type!"
     class="MessageBox-messageBox"
     opened=""
     style="z-index: 144; display: flex; top: 384px; left: 512px;"
@@ -212,6 +216,7 @@ exports[`MessageBox Don't crash on unknown type 1`] = `
 exports[`MessageBox Error 1`] = `
 <DocumentFragment>
   <ui5-dialog
+    accessible-name="Error My Message Box Content"
     class="MessageBox-messageBox"
     opened=""
     style="z-index: 116; display: flex; top: 384px; left: 512px;"
@@ -261,6 +266,7 @@ exports[`MessageBox Error 1`] = `
 exports[`MessageBox Highlight 1`] = `
 <DocumentFragment>
   <ui5-dialog
+    accessible-name="Highlight My Message Box Content"
     class="MessageBox-messageBox"
     opened=""
     style="z-index: 124; display: flex; top: 384px; left: 512px;"
@@ -310,6 +316,7 @@ exports[`MessageBox Highlight 1`] = `
 exports[`MessageBox Information 1`] = `
 <DocumentFragment>
   <ui5-dialog
+    accessible-name="Information My Message Box Content"
     class="MessageBox-messageBox"
     opened=""
     style="z-index: 120; display: flex; top: 384px; left: 512px;"
@@ -359,6 +366,7 @@ exports[`MessageBox Information 1`] = `
 exports[`MessageBox No Title 1`] = `
 <DocumentFragment>
   <ui5-dialog
+    accessible-name="Confirmation No Title"
     class="MessageBox-messageBox"
     opened=""
     style="z-index: 140; display: flex; top: 384px; left: 512px;"
@@ -416,6 +424,7 @@ exports[`MessageBox No Title 1`] = `
 exports[`MessageBox Not open 1`] = `
 <DocumentFragment>
   <ui5-dialog
+    accessible-name="Custom Success Custom Success"
     class="MessageBox-messageBox"
     ui5-dialog=""
   >
@@ -463,6 +472,7 @@ exports[`MessageBox Not open 1`] = `
 exports[`MessageBox Show 1`] = `
 <DocumentFragment>
   <ui5-dialog
+    accessible-name="Custom Custom"
     class="MessageBox-messageBox"
     opened=""
     style="z-index: 132; display: flex; top: 384px; left: 512px;"
@@ -520,6 +530,7 @@ exports[`MessageBox Show 1`] = `
 exports[`MessageBox Success 1`] = `
 <DocumentFragment>
   <ui5-dialog
+    accessible-name="Success My Message Box Content"
     class="MessageBox-messageBox"
     opened=""
     style="z-index: 108; display: flex; top: 384px; left: 512px;"
@@ -569,6 +580,7 @@ exports[`MessageBox Success 1`] = `
 exports[`MessageBox Success w/ custom title 1`] = `
 <DocumentFragment>
   <ui5-dialog
+    accessible-name="Custom Success Custom Success"
     class="MessageBox-messageBox"
     opened=""
     style="z-index: 136; display: flex; top: 384px; left: 512px;"
@@ -618,6 +630,7 @@ exports[`MessageBox Success w/ custom title 1`] = `
 exports[`MessageBox Warning 1`] = `
 <DocumentFragment>
   <ui5-dialog
+    accessible-name="Warning My Message Box Content"
     class="MessageBox-messageBox"
     opened=""
     style="z-index: 112; display: flex; top: 384px; left: 512px;"

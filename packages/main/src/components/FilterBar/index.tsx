@@ -133,6 +133,12 @@ export interface FilterBarPropTypes extends CommonProps {
    */
   showRestoreOnFB?: boolean;
   /**
+   * Sets the components outer HTML tag.
+   *
+   * __Note:__ For TypeScript the types of `ref` are bound to the default tag name, if you change it you are responsible to set the respective types yourself.
+   */
+  as?: keyof HTMLElementTagNameMap;
+  /**
    * The event is fired when the `FilterBar` is collapsed/expanded.
    */
   onToggleFilters?: (event: CustomEvent<{ visible?: boolean }>) => void;
@@ -216,6 +222,7 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
     slot,
     search,
     variants,
+    as,
 
     onToggleFilters,
     onFiltersDialogOpen,
@@ -581,7 +588,7 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
     }
     return null;
   };
-
+  const CustomTag = as as React.ElementType;
   return (
     <>
       {dialogOpen && showFilterConfiguration && (
@@ -607,7 +614,7 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
           {safeChildren()}
         </FilterDialog>
       )}
-      <div
+      <CustomTag
         ref={filterBarRef}
         className={cssClasses.toString()}
         style={{ ['--_ui5wcr_filter_group_item_flex_basis']: filterContainerWidth, ...style } as CSSProperties}
@@ -660,12 +667,13 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
             )}
           </>
         )}
-      </div>
+      </CustomTag>
     </>
   );
 });
 
 FilterBar.defaultProps = {
+  as: 'div',
   filterContainerWidth: '13.125rem',
   useToolbar: true,
   filterBarExpanded: true,

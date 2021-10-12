@@ -1,5 +1,4 @@
 import { fireEvent, render, screen } from '@shared/tests';
-import { createPassThroughPropsTest } from '@shared/tests/utils';
 import '@ui5/webcomponents-icons/dist/add.js';
 import { Icon } from '@ui5/webcomponents-react/dist/Icon';
 import { MessageBox } from '@ui5/webcomponents-react/dist/MessageBox';
