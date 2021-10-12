@@ -175,7 +175,7 @@ exports[`MessageBox Custom Action Text 1`] = `
 exports[`MessageBox Don't crash on unknown type 1`] = `
 <DocumentFragment>
   <ui5-dialog
-    accessible-name="null Unknown Type!"
+    accessible-name=" Unknown Type!"
     class="MessageBox-messageBox"
     opened=""
     style="z-index: 144; display: flex; top: 384px; left: 512px;"

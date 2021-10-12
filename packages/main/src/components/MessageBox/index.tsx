@@ -350,7 +350,7 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDom
       className={messageBoxClassNames}
       onAfterClose={open ? handleOnClose : stopPropagation}
       {...restWithoutOmitted}
-      accessibleName={accessibleName ?? `${titleToRender()} ${typeof children === 'string' ? children : ''}`}
+      accessibleName={accessibleName ?? `${titleToRender() ?? ''} ${typeof children === 'string' ? children : ''}`}
       initialFocus={getInitialFocus()}
     >
       {!props.header && (
