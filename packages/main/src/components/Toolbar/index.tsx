@@ -1,7 +1,6 @@
 import { createUseStyles } from 'react-jss';
 import { useConsolidatedRef, useI18nBundle, useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base/dist/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { SHOW_MORE } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
@@ -66,13 +65,11 @@ export interface ToolbarPropTypes extends Omit<CommonProps, 'onClick'> {
  * It can be accessed by the user through the overflow button that opens it in a popover.
  */
 const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) => {
-  const { children, toolbarStyle, design, active, style, tooltip, className, onClick, slot, as } = props;
+  const { children, toolbarStyle, design, active, style, tooltip, className, onClick, slot, as, ...rest } = props;
   const classes = useStyles();
   const outerContainer: RefObject<HTMLDivElement> = useConsolidatedRef(ref);
   const controlMetaData = useRef([]);
   const [lastVisibleIndex, setLastVisibleIndex] = useState<number>(null);
-
-  const passThroughProps = usePassThroughHtmlProps(props, ['onClick']);
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
@@ -213,7 +210,7 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
       ref={outerContainer}
       slot={slot}
       onClick={handleToolbarClick}
-      {...passThroughProps}
+      {...rest}
     >
       <div className={classes.toolbar} data-component-name="ToolbarContent">
         {overflowNeeded &&
