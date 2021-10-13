@@ -94,6 +94,12 @@ export interface FormPropTypes extends CommonProps {
    * Default Value: 4
    */
   labelSpanXL?: number;
+  /**
+   * Sets the components outer HTML tag.
+   *
+   * __Note:__ For TypeScript the types of `ref` are bound to the default tag name, if you change it you are responsible to set the respective types yourself.
+   */
+  as?: keyof HTMLElementTagNameMap;
 }
 
 const useStyles = createUseStyles(styles, { name: 'Form' });
@@ -115,7 +121,8 @@ const Form = forwardRef((props: FormPropTypes, ref: Ref<HTMLFormElement>) => {
     labelSpanS,
     labelSpanM,
     labelSpanL,
-    labelSpanXL
+    labelSpanXL,
+    as
   } = props;
 
   const columnsMap = new Map();
@@ -261,8 +268,9 @@ const Form = forwardRef((props: FormPropTypes, ref: Ref<HTMLFormElement>) => {
     .put(classes[`labelSpan${((currentLabelSpan - 1) % 12) + 1}`])
     .putIfPresent(className);
 
+  const CustomTag = as as React.ElementType;
   return (
-    <form
+    <CustomTag
       ref={formRef}
       slot={slot}
       className={formClassNames.valueOf()}
@@ -277,13 +285,14 @@ const Form = forwardRef((props: FormPropTypes, ref: Ref<HTMLFormElement>) => {
         </Title>
       )}
       {formGroups}
-    </form>
+    </CustomTag>
   );
 });
 
 Form.displayName = 'Form';
 
 Form.defaultProps = {
+  as: 'form',
   columnsS: 1,
   columnsM: 1,
   columnsL: 1,

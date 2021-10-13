@@ -92,6 +92,7 @@ import { MessageItem } from './dist/MessageItem';
 import { MessageStrip } from './dist/MessageStrip';
 import { MessageStripDesign } from './dist/MessageStripDesign';
 import { MessageView } from './dist/MessageView';
+import { MessageViewContext } from './dist/MessageViewContext';
 import { MultiComboBox } from './dist/MultiComboBox';
 import { MultiComboBoxItem } from './dist/MultiComboBoxItem';
 import { MultiInput } from './dist/MultiInput';
@@ -183,7 +184,9 @@ import { UploadCollection } from './dist/UploadCollection';
 import { UploadCollectionItem } from './dist/UploadCollectionItem';
 import { UploadState } from './dist/UploadState';
 import { ValueState } from './dist/ValueState';
+import { VariantItem } from './dist/VariantItem';
 import { VariantManagement } from './dist/VariantManagement';
+import { VariantManagementContext } from './dist/VariantManagementContext';
 import { VerticalAlign } from './dist/VerticalAlign';
 import { withWebComponent } from './dist/withWebComponent';
 import { Wizard } from './dist/Wizard';
@@ -274,13 +277,14 @@ export {
   ListSeparators,
   Loader,
   LoaderType,
-  MessageItem,
   MessageBox,
   MessageBoxActions,
   MessageBoxTypes,
+  MessageItem,
   MessageStrip,
   MessageStripDesign,
   MessageView,
+  MessageViewContext,
   MultiComboBox,
   MultiComboBoxItem,
   MultiInput,
@@ -372,7 +376,9 @@ export {
   UploadCollectionItem,
   UploadState,
   ValueState,
+  VariantItem,
   VariantManagement,
+  VariantManagementContext,
   VerticalAlign,
   Wizard,
   WizardStep,

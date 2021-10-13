@@ -24,10 +24,10 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@storybook/addon-a11y": "6.3.6",
-    "@storybook/addon-essentials": "6.3.6",
-    "@storybook/react": "6.3.6",
-    "@storybook/theming": "6.3.6",
+    "@storybook/addon-a11y": "6.3.10",
+    "@storybook/addon-essentials": "6.3.10",
+    "@storybook/react": "6.3.10",
+    "@storybook/theming": "6.3.10",
     "@ui5/webcomponents": "1.0.0-rc.15",
     "@ui5/webcomponents-fiori": "1.0.0-rc.15",
     "@ui5/webcomponents-icons": "1.0.0-rc.15",
