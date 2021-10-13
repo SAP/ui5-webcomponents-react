@@ -27,6 +27,7 @@ const styles = () => {
       maxHeight: props.maxSize
     }),
     splitterVertical: (props) => ({
+      cursor: 'col-resize',
       width: '16px',
       height: props.height,
       border: 'none',

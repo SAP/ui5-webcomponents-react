@@ -1,5 +1,4 @@
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
-import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import React, { forwardRef, ReactNode, ReactNodeArray, RefObject, useContext } from 'react';
 import { createUseStyles } from 'react-jss';
@@ -13,7 +12,6 @@ export interface SplitterElementPropTypes extends CommonProps {
   size?: number | string;
   minSize?: number | string;
   maxSize?: number | string;
-  justifyContent?: FlexBoxJustifyContent | keyof typeof FlexBoxJustifyContent;
   children?: ReactNode | ReactNodeArray;
 }
 
