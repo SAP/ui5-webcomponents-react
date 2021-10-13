@@ -1,6 +1,6 @@
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { SplitterElementPropTypes } from '@ui5/webcomponents-react/dist/SplitterElement';
-import React, { forwardRef, ReactElement, Ref } from 'react';
+import React, { forwardRef, ReactElement, ReactNodeArray, Ref, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { styles } from './SplitterLayout.jss';
@@ -12,8 +12,8 @@ import clsx from 'clsx';
 const useStyles = createUseStyles(styles, { name: 'SplitterLayout' });
 
 interface ThemeContextType {
-  width: string | number;
-  height?: string | number;
+  containerWidth: string | number;
+  containerHeight?: string | number;
   orientation?: 'horizontal' | 'vertical';
 }
 
@@ -21,11 +21,11 @@ export interface SplitterLayoutPropTypes extends CommonProps {
   /**
    * Controls the width of the `SplitterLayout` container.<br />
    */
-  width?: number | string;
+  width?: string;
   /**
    * Controls the height of the `SplitterLayout` container.<br />
    */
-  height?: string | number;
+  height?: string;
   /**
    * Controls if the `SplitterLayout` is displayed `horizontal` or `vertical`.<br />
    */
@@ -50,7 +50,7 @@ const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTML
   const layoutElements = useConcatSplitterElements(children ?? [], width, height, orientation);
 
   return (
-    <ThemeContext.Provider value={{ width, height, orientation }}>
+    <ThemeContext.Provider value={{ containerWidth: width, containerHeight: height, orientation }}>
       <div
         style={style}
         title={tooltip}
@@ -66,7 +66,7 @@ const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTML
 });
 
 SplitterLayout.defaultProps = {
-  orientation: 'horizontal'
+  orientation: 'vertical'
 };
 SplitterLayout.displayName = 'SplitterLayout';
 

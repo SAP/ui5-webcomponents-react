@@ -6,25 +6,24 @@ const styles = () => {
     splitterLayout: (props) => ({
       display: 'flex',
       flexDirection: props.orientation === 'vertical' ? FlexBoxDirection.Row : FlexBoxDirection.Column,
+      flex: `0 0 ${props.orientation === 'vertical' ? props.width : props.height}`,
       width: props.orientation === 'vertical' ? props.width : props.height,
       height: props.orientation === 'vertical' ? props.height : props.width
     }),
     splitterElementVertical: (props) => ({
-      display: 'flex',
       justifyContent: props.justifyContent,
       backgroundColor: ThemingParameters.sapBackgroundColor,
-      height: props.height,
-      width: props.size,
-      minWidth: props.minSize,
+      height: props.containerHeight,
+      flex: !!props.size && props.size !== 'auto' ? `0 0 ${props.size}` : '1 0 auto',
+      minWidth: props.minSize ?? 0,
       maxWidth: props.maxSize
     }),
     splitterElementHorizontal: (props) => ({
-      display: 'flex',
       justifyContent: props.justifyContent,
       backgroundColor: ThemingParameters.sapBackgroundColor,
-      width: props.width,
-      height: props.size,
-      minHeight: props.minSize,
+      width: props.containerWidth,
+      flex: !!props.size || props.size === 'auto' ? `0 0 ${props.size}` : '1 0 auto',
+      minHeight: props.minSize ?? 0,
       maxHeight: props.maxSize
     }),
     splitterVertical: (props) => ({

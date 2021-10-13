@@ -6,7 +6,7 @@ import { createUseStyles } from 'react-jss';
 import { ThemeContext } from '../SplitterLayout';
 import { styles } from '../SplitterLayout/SplitterLayout.jss';
 
-const useStyles = createUseStyles(styles, { name: 'ObjectPageSection' });
+const useStyles = createUseStyles(styles, { name: 'SplitterElement' });
 
 export interface SplitterElementPropTypes extends CommonProps {
   resizable?: boolean;
@@ -25,7 +25,7 @@ const SplitterElement = forwardRef((props: SplitterElementPropTypes, ref: RefObj
 
   const classes = useStyles({ ...props, ...containerContext });
   const splitterElementClass =
-    containerContext.orientation === 'vertical' ? classes.splitterElementVertical : classes.splitterElementHorizontal;
+    containerContext?.orientation === 'vertical' ? classes.splitterElementVertical : classes.splitterElementHorizontal;
 
   return (
     <div ref={ref} className={className ?? splitterElementClass} title={tooltip} style={style} {...passThroughProps}>
