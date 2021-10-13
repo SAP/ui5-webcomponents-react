@@ -31,7 +31,7 @@ export interface SplitterLayoutPropTypes extends CommonProps {
 }
 
 const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTMLDivElement>) => {
-  const { height, orientation, children, slot, tooltip, style, className } = props;
+  const { width, height, orientation, children, slot, tooltip, style, className } = props;
 
   const classes = useStyles(props);
 
@@ -39,7 +39,7 @@ const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTML
 
   const passThroughProps = usePassThroughHtmlProps(props);
 
-  const layoutElements = useConcatSplitterElements(children ?? [], height, orientation);
+  const layoutElements = useConcatSplitterElements(children ?? [], width, height, orientation);
 
   return (
     <div

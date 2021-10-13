@@ -31,6 +31,7 @@ const Splitter = (key: number, height: string | number, orientation: 'horizontal
 
 export const useConcatSplitterElements = (
   children: ReactElement<SplitterElementPropTypes> | ReactElement<SplitterElementPropTypes>[],
+  width: string | number,
   height: string | number,
   orientation: 'horizontal' | 'vertical'
 ) => {

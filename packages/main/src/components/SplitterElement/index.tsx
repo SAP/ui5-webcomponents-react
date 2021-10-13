@@ -12,17 +12,12 @@ export interface SplitterElementPropTypes {
 }
 
 const SplitterElement = forwardRef((props: SplitterElementPropTypes, ref: Ref<HTMLDivElement>) => {
-  const { size, minSize, maxSize, children, justifyContent } = props;
-
-  // TODO: orientation, height, width from container
+  const { children, justifyContent } = props;
 
   return (
     <div
       ref={ref}
       style={{
-        width: size,
-        minWidth: minSize,
-        maxWidth: maxSize,
         display: 'flex',
         justifyContent,
         backgroundColor: ThemingParameters.sapBackgroundColor
