@@ -15,7 +15,7 @@ import { SplitterElement } from '@ui5/webcomponents-react/dist/SplitterElement';
     width: { control: { disable: true } }
   }}
   args={{
-    width: '100%'
+    orientation: 'vertical'
   }}
 />
 
@@ -36,7 +36,7 @@ import { SplitterElement } from '@ui5/webcomponents-react/dist/SplitterElement';
           <SplitterElement>
             <Button>Button 2</Button>
           </SplitterElement>
-          <SplitterElement>
+          <SplitterElement resizable={true}>
             <Button>Button 3</Button>
           </SplitterElement>
         </SplitterLayout>

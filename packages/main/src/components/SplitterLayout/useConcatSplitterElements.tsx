@@ -27,7 +27,7 @@ export const useConcatSplitterElements = (
         childrenArray.splice(
           index + splitterCount + 1,
           0,
-          <Splitter key={index} height={height} width={width} orientation={orientation} />
+          <Splitter key={`splitter${index}`} height={height} width={width} orientation={orientation} />
         );
         ++splitterCount;
       } else if (index > 0 && splitterElementChild?.props.resizable === false) {
@@ -38,6 +38,7 @@ export const useConcatSplitterElements = (
         --splitterCount;
       }
     });
+
     return childrenArray;
   }, [children, width, height, orientation]);
 };
