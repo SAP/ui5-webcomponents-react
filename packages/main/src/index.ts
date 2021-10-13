@@ -133,6 +133,7 @@ import { SideNavigationItem } from './dist/SideNavigationItem';
 import { SideNavigationSubItem } from './dist/SideNavigationSubItem';
 import { Size } from './dist/Size';
 import { Slider } from './dist/Slider';
+import { Splitter } from './dist/Splitter';
 import { SplitterElement } from './dist/SplitterElement';
 import { SplitterLayout } from './dist/SplitterLayout';
 import { StandardListItem } from './dist/StandardListItem';
@@ -325,6 +326,7 @@ export {
   SideNavigationSubItem,
   Size,
   Slider,
+  Splitter,
   SplitterElement,
   SplitterLayout,
   StandardListItem,

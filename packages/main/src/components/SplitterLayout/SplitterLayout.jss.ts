@@ -9,6 +9,36 @@ const styles = () => {
       width: props.orientation === 'vertical' ? props.width : props.height,
       height: props.orientation === 'vertical' ? props.height : props.width
     }),
+    splitterElementVertical: (props) => ({
+      display: 'flex',
+      justifyContent: props.justifyContent,
+      backgroundColor: ThemingParameters.sapBackgroundColor,
+      height: props.height,
+      width: props.size,
+      minWidth: props.minSize,
+      maxWidth: props.maxSize
+    }),
+    splitterElementHorizontal: (props) => ({
+      display: 'flex',
+      justifyContent: props.justifyContent,
+      backgroundColor: ThemingParameters.sapBackgroundColor,
+      width: props.width,
+      height: props.size,
+      minHeight: props.minSize,
+      maxHeight: props.maxSize
+    }),
+    splitterVertical: (props) => ({
+      width: '16px',
+      height: props.height,
+      border: 'none',
+      backgroundColor: ThemingParameters.sapShell_Background
+    }),
+    splitterHorizontal: (props) => ({
+      width: props.width,
+      height: '16px',
+      border: 'none',
+      backgroundColor: ThemingParameters.sapShell_Background
+    }),
     gripIconVertical: (props) => ({
       position: 'relative',
       top: 'calc(50% - 8px)',

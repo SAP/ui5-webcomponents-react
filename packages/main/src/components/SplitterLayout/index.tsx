@@ -11,6 +11,12 @@ import clsx from 'clsx';
 
 const useStyles = createUseStyles(styles, { name: 'SplitterLayout' });
 
+interface ThemeContextType {
+  width: string | number;
+  height?: string | number;
+  orientation?: 'horizontal' | 'vertical';
+}
+
 export interface SplitterLayoutPropTypes extends CommonProps {
   /**
    * Controls the width of the `SplitterLayout` container.<br />
@@ -30,6 +36,8 @@ export interface SplitterLayoutPropTypes extends CommonProps {
   children: ReactElement<SplitterElementPropTypes> | ReactElement<SplitterElementPropTypes>[];
 }
 
+export const ThemeContext = React.createContext({} as ThemeContextType);
+
 const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTMLDivElement>) => {
   const { width, height, orientation, children, slot, tooltip, style, className } = props;
 
@@ -42,16 +50,18 @@ const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTML
   const layoutElements = useConcatSplitterElements(children ?? [], width, height, orientation);
 
   return (
-    <div
-      style={style}
-      title={tooltip}
-      slot={slot}
-      {...passThroughProps}
-      className={splitterLayoutClasses.valueOf()}
-      ref={ref}
-    >
-      {layoutElements}
-    </div>
+    <ThemeContext.Provider value={{ width, height, orientation }}>
+      <div
+        style={style}
+        title={tooltip}
+        slot={slot}
+        {...passThroughProps}
+        className={splitterLayoutClasses.valueOf()}
+        ref={ref}
+      >
+        {layoutElements}
+      </div>
+    </ThemeContext.Provider>
   );
 });
 

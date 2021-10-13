@@ -4,14 +4,12 @@ import '@ui5/webcomponents-icons/dist/employee.js';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import '@ui5/webcomponents-icons/dist/employee.js';
 import { SplitterLayout } from '@ui5/webcomponents-react/dist/SplitterLayout';
-import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';
 import { SplitterElement } from '@ui5/webcomponents-react/dist/SplitterElement';
 
 <Meta
   title="Layouts & Floorplans / SplitterLayout"
   component={SplitterLayout}
   argTypes={{
-    orientation: { control: { disable: true } },
     children: { control: { disable: true } },
     height: { control: { disable: true } },
     width: { control: { disable: true } }
@@ -31,8 +29,8 @@ import { SplitterElement } from '@ui5/webcomponents-react/dist/SplitterElement';
   <Story name="Default">
     {(args) => {
       return (
-        <SplitterLayout orientation={'horizontal'} {...args} width={'300px'} height={'300px'}>
-          <SplitterElement>
+        <SplitterLayout orientation={'vertical'} {...args} width={'300px'} height={'600px'}>
+          <SplitterElement minSize={'50px'} maxSize={'600px'} size={'300px'}>
             <Button>Button 1</Button>
           </SplitterElement>
           <SplitterElement>

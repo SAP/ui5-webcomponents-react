@@ -1,33 +1,7 @@
-import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
-import { Icon } from '@ui5/webcomponents-react/dist/Icon';
+import { Splitter } from '@ui5/webcomponents-react/dist/Splitter';
 import { SplitterElementPropTypes } from '@ui5/webcomponents-react/dist/SplitterElement';
 import React, { ReactElement, useMemo } from 'react';
-import { createUseStyles } from 'react-jss';
 import { safeGetChildrenArray } from '../ObjectPage/ObjectPageUtils';
-import { styles } from './SplitterLayout.jss';
-
-const useStyles = createUseStyles(styles, { name: 'SplitterLayout' });
-
-const Splitter = (key: number, height: string | number, orientation: 'horizontal' | 'vertical') => {
-  const props = { key, height, orientation };
-  const classes = useStyles(props);
-
-  const gripIconClass = orientation === 'vertical' ? classes.gripIconVertical : classes.gripIconHorizontal;
-
-  return (
-    <div
-      style={{
-        width: orientation === 'vertical' ? '16px' : height,
-        height: orientation === 'vertical' ? height : '16px',
-        border: 'none',
-        backgroundColor: ThemingParameters.sapShell_Background
-      }}
-      key={`splitter${key}`}
-    >
-      <Icon className={gripIconClass} name={orientation === 'vertical' ? 'vertical-grip' : 'horizontal-grip'} />
-    </div>
-  );
-};
 
 export const useConcatSplitterElements = (
   children: ReactElement<SplitterElementPropTypes> | ReactElement<SplitterElementPropTypes>[],
@@ -50,7 +24,11 @@ export const useConcatSplitterElements = (
         (splitterElementChild.props.resizable || splitterElementChild.props.resizable === undefined) &&
         !(splitterElementChild.key as string).startsWith('splitter')
       ) {
-        childrenArray.splice(index + splitterCount + 1, 0, Splitter(index, height, orientation));
+        childrenArray.splice(
+          index + splitterCount + 1,
+          0,
+          <Splitter key={index} height={height} width={width} orientation={orientation} />
+        );
         ++splitterCount;
       } else if (index > 0 && splitterElementChild?.props.resizable === false) {
         const indexOfSplitter = childrenArray.findIndex((element) => element === splitterElementChild) - 1;
@@ -61,5 +39,5 @@ export const useConcatSplitterElements = (
       }
     });
     return childrenArray;
-  }, [children, height, orientation]);
+  }, [children, width, height, orientation]);
 };
