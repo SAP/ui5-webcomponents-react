@@ -1,14 +1,13 @@
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { SplitterElementPropTypes } from '@ui5/webcomponents-react/dist/SplitterElement';
-import React, { forwardRef, ReactElement, Ref, useEffect, useMemo } from 'react';
+import React, { forwardRef, ReactElement, Ref } from 'react';
 import { createUseStyles } from 'react-jss';
-import { ReflexContainer } from 'react-reflex';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { styles } from './SplitterLayout.jss';
 import '@ui5/webcomponents-icons/dist/vertical-grip.js';
 import '@ui5/webcomponents-icons/dist/horizontal-grip.js';
 import { useConcatSplitterElements } from './useConcatSplitterElements';
+import clsx from 'clsx';
 
 const useStyles = createUseStyles(styles, { name: 'SplitterLayout' });
 
@@ -32,15 +31,12 @@ export interface SplitterLayoutPropTypes extends CommonProps {
 }
 
 const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTMLDivElement>) => {
-  const { orientation, children, slot, tooltip, style, className, height, width } = props;
+  const { height, orientation, children, slot, tooltip, style, className } = props;
 
   const classes = useStyles(props);
 
-  const splitterLayoutClasses = StyleClassHelper.of(classes.splitterLayout);
+  const splitterLayoutClasses = clsx({ [classes.splitterLayout]: !className, [className]: className });
 
-  if (className) {
-    splitterLayoutClasses.put(className);
-  }
   const passThroughProps = usePassThroughHtmlProps(props);
 
   const layoutElements = useConcatSplitterElements(children ?? [], height, orientation);
@@ -54,15 +50,7 @@ const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTML
       className={splitterLayoutClasses.valueOf()}
       ref={ref}
     >
-      <ReflexContainer
-        style={{
-          width: orientation === 'vertical' ? width : height,
-          height: orientation === 'vertical' ? height : width
-        }}
-        orientation={orientation}
-      >
-        {layoutElements}
-      </ReflexContainer>
+      {layoutElements}
     </div>
   );
 });

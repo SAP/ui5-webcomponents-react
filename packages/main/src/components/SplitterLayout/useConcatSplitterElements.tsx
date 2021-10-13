@@ -3,7 +3,6 @@ import { Icon } from '@ui5/webcomponents-react/dist/Icon';
 import { SplitterElementPropTypes } from '@ui5/webcomponents-react/dist/SplitterElement';
 import React, { ReactElement, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
-import { ReflexSplitter } from 'react-reflex';
 import { safeGetChildrenArray } from '../ObjectPage/ObjectPageUtils';
 import { styles } from './SplitterLayout.jss';
 
@@ -16,7 +15,7 @@ const Splitter = (key: number, height: string | number, orientation: 'horizontal
   const gripIconClass = orientation === 'vertical' ? classes.gripIconVertical : classes.gripIconHorizontal;
 
   return (
-    <ReflexSplitter
+    <div
       style={{
         width: orientation === 'vertical' ? '16px' : height,
         height: orientation === 'vertical' ? height : '16px',
@@ -26,7 +25,7 @@ const Splitter = (key: number, height: string | number, orientation: 'horizontal
       key={`splitter${key}`}
     >
       <Icon className={gripIconClass} name={orientation === 'vertical' ? 'vertical-grip' : 'horizontal-grip'} />
-    </ReflexSplitter>
+    </div>
   );
 };
 
