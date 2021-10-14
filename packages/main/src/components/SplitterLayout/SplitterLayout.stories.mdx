@@ -30,14 +30,17 @@ import { SplitterElement } from '@ui5/webcomponents-react/dist/SplitterElement';
     {(args) => {
       return (
         <SplitterLayout orientation={'vertical'} {...args} width={'100%'} height={'50vw'}>
-          <SplitterElement size={'20%'} minSize={'100px'}>
+          <SplitterElement size={'100px'}>
             <Button>Button 1</Button>
           </SplitterElement>
-          <SplitterElement>
+          <SplitterElement size={'300px'}>
             <Button>Button 2</Button>
           </SplitterElement>
-          <SplitterElement>
+          <SplitterElement size={'150px'}>
             <Button>Button 3</Button>
+          </SplitterElement>
+          <SplitterElement size={'100px'}>
+            <Button>Button 4</Button>
           </SplitterElement>
         </SplitterLayout>
       );

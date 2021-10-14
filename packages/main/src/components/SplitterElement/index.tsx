@@ -9,9 +9,9 @@ const useStyles = createUseStyles(styles, { name: 'SplitterElement' });
 
 export interface SplitterElementPropTypes extends CommonProps {
   resizable?: boolean;
-  size?: number | string;
-  minSize?: number | string;
-  maxSize?: number | string;
+  size?: string;
+  minSize?: string;
+  maxSize?: string;
   children?: ReactNode | ReactNodeArray;
 }
 

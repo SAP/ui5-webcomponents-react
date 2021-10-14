@@ -15,10 +15,14 @@ export const useConcatSplitterElements = (
     }
 
     const childrenArray: ReactElement<SplitterElementPropTypes>[] = safeGetChildrenArray(children);
+
     let splitterCount = 0;
+    let nextSplitterPosition = '0px';
     childrenArray.forEach((child, index) => {
       const splitterElementChild = childrenArray[index + splitterCount];
-
+      if (splitterElementChild?.props?.size) {
+        nextSplitterPosition = `calc(${splitterElementChild.props.size} + ${nextSplitterPosition})`;
+      }
       if (
         childrenArray.length - splitterCount - 1 > index &&
         (splitterElementChild.props.resizable || splitterElementChild.props.resizable === undefined) &&
@@ -32,7 +36,7 @@ export const useConcatSplitterElements = (
             height={height}
             width={width}
             orientation={orientation}
-            position={'100px'}
+            position={nextSplitterPosition}
           />
         );
         ++splitterCount;

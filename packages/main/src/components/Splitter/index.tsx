@@ -1,3 +1,4 @@
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base/hooks/useConsolidatedRef';
 import { Icon } from '@ui5/webcomponents-react/dist/Icon';
 import React, { forwardRef, Ref, useCallback, useEffect, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
@@ -22,10 +23,12 @@ const isTouchEvent = (e, touchEvent) => {
 const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>) => {
   const { orientation, position } = props;
   const classes = useStyles(props);
-  const splitterRef = useRef(null);
+  const splitterRef = useConsolidatedRef(ref);
   const startX = useRef(null);
 
   const [splitterPosition, setSplitterPosition] = useState({ left: position });
+  const [previousSiblingWidth, setPreviousSiblingWidth] = useState(null);
+  const [nextSiblingWidth, setNextSiblingWidth] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
   const [mountTouchEvents, setMountTouchEvents] = useState(false);
 
@@ -45,12 +48,22 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
 
   const handleSplitterMove = useCallback(
     (e) => {
+      const prevPositionLeft = splitterPosition.left;
+      const nextPositionLeft = splitterRef.current?.getBoundingClientRect()?.left + window.scrollX;
+      const previousSibling = splitterRef.current?.previousSibling;
+
+      if (prevPositionLeft > nextPositionLeft) {
+        if (previousSibling) {
+          previousSibling.style.flex = `0 0 ${nextPositionLeft}px`;
+        }
+      }
+
       setSplitterPosition((prev) => ({
         ...prev,
         left: isTouchEvent(e, 'touchmove') ? Math.round(e.touches[0].pageX) : e.pageX
       }));
     },
-    [setSplitterPosition]
+    [setSplitterPosition, splitterPosition]
   );
 
   const handleMoveSplitterEnd = useCallback(() => {
@@ -83,11 +96,14 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
   }, [isDragging]);
 
   useEffect(() => {
-    const splitterPosLeft = splitterRef?.current?.getBoundingClientRect()?.left + window.scrollX;
+    const splitterPosLeft = splitterRef.current?.getBoundingClientRect()?.left + window.scrollX;
+
     if (!isDragging && splitterPosLeft > 0) {
       setSplitterPosition({ left: splitterPosLeft });
     }
   }, [splitterRef.current?.getBoundingClientRect()?.left, isDragging]);
+
+  // console.log(splitterRef?.current?.previousSibling.style)
 
   return (
     <div
