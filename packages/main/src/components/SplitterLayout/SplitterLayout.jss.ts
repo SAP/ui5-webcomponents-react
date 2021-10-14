@@ -27,7 +27,11 @@ const styles = () => {
       maxHeight: props.maxSize
     }),
     splitterVertical: (props) => ({
+      position: 'absolute',
+      display: 'inline-block',
+      willChange: 'transform',
       cursor: 'col-resize',
+      zIndex: 20,
       width: '16px',
       height: props.height,
       border: 'none',
