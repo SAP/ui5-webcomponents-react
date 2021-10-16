@@ -24,10 +24,10 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@storybook/addon-a11y": "6.3.10",
-    "@storybook/addon-essentials": "6.3.10",
-    "@storybook/react": "6.3.10",
-    "@storybook/theming": "6.3.10",
+    "@storybook/addon-a11y": "6.3.12",
+    "@storybook/addon-essentials": "6.3.12",
+    "@storybook/react": "6.3.12",
+    "@storybook/theming": "6.3.12",
     "@ui5/webcomponents": "1.0.0-rc.15",
     "@ui5/webcomponents-fiori": "1.0.0-rc.15",
     "@ui5/webcomponents-icons": "1.0.0-rc.15",
@@ -82,10 +82,10 @@
     "rimraf": "^3.0.1",
     "rollup": "^2.23.0",
     "turndown": "^7.0.0",
-    "typescript": "4.4.3"
+    "typescript": "4.4.4"
   },
   "resolutions": {
-    "@types/react": "17.0.27",
+    "@types/react": "17.0.30",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "trim": "0.0.3",
