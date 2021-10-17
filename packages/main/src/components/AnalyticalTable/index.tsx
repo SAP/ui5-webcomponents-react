@@ -1,5 +1,4 @@
 import { useConsolidatedRef, useIsomorphicLayoutEffect, useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { debounce, enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
@@ -63,6 +62,7 @@ import { stateReducer } from './tableReducer/stateReducer';
 import { TitleBar } from './TitleBar';
 import { orderByFn } from './util';
 import { VerticalResizer } from './VerticalResizer';
+import clsx from 'clsx';
 
 const onlyUpperCaseRegExp = /^[A-Z_]+$/;
 
@@ -715,10 +715,11 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     verticalScrollBarRef.current.isExternalVerticalScroll = false;
   };
 
-  const tableClasses = StyleClassHelper.of(classes.table, GlobalStyleClasses.sapScrollBar);
-  if (withNavigationHighlight) {
-    tableClasses.put(classes.hasNavigationIndicator);
-  }
+  const tableClasses = clsx(
+    classes.table,
+    GlobalStyleClasses.sapScrollBar,
+    withNavigationHighlight && classes.hasNavigationIndicator
+  );
 
   // check deprecations
   useEffect(() => {
@@ -784,7 +785,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
           data-per-page={internalVisibleRowCount}
           data-component-name="AnalyticalTableContainer"
           ref={tableRef}
-          className={tableClasses.className}
+          className={tableClasses}
         >
           <div className={classes.tableHeaderBackgroundElement} />
           {headerGroups.map((headerGroup) => {

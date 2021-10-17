@@ -1,5 +1,4 @@
 import { useConsolidatedRef, useI18nBundle, useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { debounce, enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import {
@@ -40,6 +39,7 @@ import { createUseStyles } from 'react-jss';
 import styles from './FilterBar.jss';
 import { FilterDialog } from './FilterDialog';
 import { filterValue, renderSearchWithValue, syncRef } from './utils';
+import clsx from 'clsx';
 
 export interface FilterBarPropTypes extends CommonProps {
   /**
@@ -282,12 +282,7 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
 
   const classes = useStyles();
 
-  const filterAreaClasses = StyleClassHelper.of(classes.filterArea);
-  if (showFilters) {
-    filterAreaClasses.put(classes.filterAreaOpen);
-  } else {
-    filterAreaClasses.put(classes.filterAreaClosed);
-  }
+  const filterAreaClasses = clsx(classes.filterArea, showFilters ? classes.filterAreaOpen : classes.filterAreaClosed);
 
   const handleToggle = useCallback(
     (e) => {
@@ -451,13 +446,7 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
     [handleRestoreFilters]
   );
 
-  const cssClasses = StyleClassHelper.of(classes.outerContainer);
-  if (className) {
-    cssClasses.put(className);
-  }
-  if (useToolbar) {
-    cssClasses.put(classes.outerContainerWithToolbar);
-  }
+  const cssClasses = clsx(classes.outerContainer, className, useToolbar && classes.outerContainerWithToolbar);
 
   useEffect(() => {
     prevSearchInputPropsValueRef.current = search?.props?.value;
@@ -616,7 +605,7 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
       )}
       <CustomTag
         ref={filterBarRef}
-        className={cssClasses.toString()}
+        className={cssClasses}
         style={{ ['--_ui5wcr_filter_group_item_flex_basis']: filterContainerWidth, ...style } as CSSProperties}
         title={tooltip}
         slot={slot}
@@ -636,7 +625,7 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
               </Toolbar>
             )}
             {mountFilters && (
-              <div className={filterAreaClasses.className} style={{ position: 'relative' }} ref={filterAreaRef}>
+              <div className={filterAreaClasses} style={{ position: 'relative' }} ref={filterAreaRef}>
                 {calculatedChildren}
                 {!useToolbar && (
                   <>

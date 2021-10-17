@@ -1,12 +1,12 @@
 import { createUseStyles } from 'react-jss';
 import { useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { PLEASE_WAIT } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { LoaderType } from '@ui5/webcomponents-react/dist/LoaderType';
 import React, { CSSProperties, forwardRef, RefObject, useEffect, useMemo, useState } from 'react';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { styles } from './Loader.jss';
+import clsx from 'clsx';
 
 export interface LoaderPropTypes extends CommonProps {
   /**
@@ -35,11 +35,7 @@ const Loader = forwardRef((props: LoaderPropTypes, ref: RefObject<HTMLDivElement
   const classes = useStyles();
   const [isVisible, setIsVisible] = useState(delay === 0);
 
-  const loaderClasses = StyleClassHelper.of(classes.loader);
-  if (className) {
-    loaderClasses.put(className);
-  }
-  loaderClasses.put(classes[`loader${type}`]);
+  const loaderClasses = clsx(classes.loader, className, classes[`loader${type}`]);
 
   const inlineStyles = useMemo(() => {
     const backgroundSize = type !== LoaderType.Determinate ? '40%' : progress;
@@ -72,7 +68,7 @@ const Loader = forwardRef((props: LoaderPropTypes, ref: RefObject<HTMLDivElement
   return (
     <div
       ref={ref}
-      className={loaderClasses.valueOf()}
+      className={loaderClasses}
       data-component-name="Loader"
       aria-busy="true"
       role="progressbar"

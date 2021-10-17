@@ -1,7 +1,7 @@
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { AvatarSize } from '@ui5/webcomponents-react/dist/AvatarSize';
 import React, { CSSProperties, ReactElement, useEffect, useMemo, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
+import clsx from 'clsx';
 
 const styles = {
   base: {
@@ -71,20 +71,10 @@ export const CollapsedAvatar = (props: CollapsedAvatarPropTypes) => {
     setIsMounted(true);
   }, []);
 
-  const containerClasses = StyleClassHelper.of(classes.base);
-  if (isMounted) {
-    containerClasses.put(classes.visible);
-  } else {
-    containerClasses.put(classes.hidden);
-  }
+  const containerClasses = clsx(classes.base, isMounted ? classes.visible : classes.hidden);
 
   return (
-    <div
-      ref={domRef}
-      className={containerClasses.valueOf()}
-      style={style}
-      data-component-name="ObjectPageCollapsedAvatar"
-    >
+    <div ref={domRef} className={containerClasses} style={style} data-component-name="ObjectPageCollapsedAvatar">
       {avatarContent}
     </div>
   );

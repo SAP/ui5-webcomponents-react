@@ -1,9 +1,9 @@
 import { createUseStyles } from 'react-jss';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import React, { forwardRef, ReactNode, Ref } from 'react';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { TextStyles } from './Text.jss';
+import clsx from 'clsx';
 
 export interface TextPropTypes extends CommonProps {
   /**
@@ -28,28 +28,17 @@ const useStyles = createUseStyles(TextStyles, { name: 'Text' });
 const Text = forwardRef((props: TextPropTypes, ref: Ref<HTMLSpanElement>) => {
   const { children, renderWhitespace, wrapping, className, style, tooltip, slot } = props;
   const classes = useStyles();
-  const classNameString = StyleClassHelper.of(classes.text);
-  if (wrapping === false) {
-    classNameString.put(classes.noWrap);
-  }
-  if (renderWhitespace) {
-    classNameString.put(classes.renderWhitespace);
-  }
-  if (className) {
-    classNameString.put(className);
-  }
+  const classNameString = clsx(
+    classes.text,
+    wrapping === false && classes.noWrap,
+    renderWhitespace && classes.renderWhitespace,
+    className
+  );
 
   const passThroughProps = usePassThroughHtmlProps(props);
 
   return (
-    <span
-      ref={ref}
-      style={style}
-      className={classNameString.toString()}
-      title={tooltip}
-      slot={slot}
-      {...passThroughProps}
-    >
+    <span ref={ref} style={style} className={classNameString} title={tooltip} slot={slot} {...passThroughProps}>
       {children}
     </span>
   );

@@ -1,5 +1,4 @@
 import { createUseStyles } from 'react-jss';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
@@ -8,6 +7,7 @@ import { FlexBoxWrap } from '@ui5/webcomponents-react/dist/FlexBoxWrap';
 import React, { forwardRef, ReactNode, ReactNodeArray, Ref } from 'react';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { styles } from './FlexBox.jss';
+import clsx from 'clsx';
 
 const useStyles = createUseStyles(styles, { name: 'FlexBox' });
 
@@ -72,39 +72,21 @@ const FlexBox = forwardRef((props: FlexBoxPropTypes, ref: Ref<HTMLDivElement>) =
   } = props;
 
   const classes = useStyles();
-  const flexBoxClasses = StyleClassHelper.of(classes.flexBox);
-  // direction
-  flexBoxClasses.put(classes[`flexBoxDirection${direction}`]);
-  // justify content
-  flexBoxClasses.put(classes[`justifyContent${justifyContent}`]);
-  // align items
-  flexBoxClasses.put(classes[`alignItems${alignItems}`]);
-  // wrapping
-  flexBoxClasses.put(classes[`flexWrap${wrap}`]);
-
-  if (displayInline) {
-    flexBoxClasses.put(classes.flexBoxDisplayInline);
-  }
-
-  if (fitContainer) {
-    flexBoxClasses.put(classes.fitContainer);
-  }
-
-  if (className) {
-    flexBoxClasses.put(className);
-  }
+  const flexBoxClasses = clsx(
+    classes.flexBox,
+    classes[`flexBoxDirection${direction}`],
+    classes[`justifyContent${justifyContent}`],
+    classes[`alignItems${alignItems}`],
+    classes[`flexWrap${wrap}`],
+    displayInline && classes.flexBoxDisplayInline,
+    fitContainer && classes.fitContainer,
+    className
+  );
 
   const passThroughProps = usePassThroughHtmlProps(props);
   const CustomTag = as as React.ElementType;
   return (
-    <CustomTag
-      ref={ref}
-      className={flexBoxClasses.valueOf()}
-      style={style}
-      title={tooltip}
-      slot={slot}
-      {...passThroughProps}
-    >
+    <CustomTag ref={ref} className={flexBoxClasses} style={style} title={tooltip} slot={slot} {...passThroughProps}>
       {children}
     </CustomTag>
   );

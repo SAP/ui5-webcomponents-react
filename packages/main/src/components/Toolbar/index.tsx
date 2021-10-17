@@ -1,6 +1,5 @@
 import { createUseStyles } from 'react-jss';
 import { useConsolidatedRef, useI18nBundle, useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base/dist/hooks';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { SHOW_MORE } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
@@ -24,6 +23,7 @@ import React, {
 } from 'react';
 import { OverflowPopover } from './OverflowPopover';
 import { styles } from './Toolbar.jss';
+import clsx from 'clsx';
 
 const useStyles = createUseStyles(styles, { name: 'Toolbar' });
 
@@ -73,27 +73,15 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
-  const toolbarClasses = StyleClassHelper.of(classes.outerContainer);
-  if (toolbarStyle === ToolbarStyle.Clear) {
-    toolbarClasses.put(classes.clear);
-  }
-  if (active) {
-    toolbarClasses.put(classes.active);
-  }
-  switch (design) {
-    case ToolbarDesign.Solid:
-      toolbarClasses.put(classes.solid);
-      break;
-    case ToolbarDesign.Transparent:
-      toolbarClasses.put(classes.transparent);
-      break;
-    case ToolbarDesign.Info:
-      toolbarClasses.put(classes.info);
-      break;
-    default:
-      break;
-  }
-  toolbarClasses.putIfPresent(className);
+  const toolbarClasses = clsx(
+    classes.outerContainer,
+    toolbarStyle === ToolbarStyle.Clear && classes.clear,
+    active && classes.active,
+    design === ToolbarDesign.Solid && classes.solid,
+    design === ToolbarDesign.Transparent && classes.transparent,
+    design === ToolbarDesign.Info && classes.info,
+    className
+  );
 
   const childrenWithRef = useMemo(() => {
     controlMetaData.current = [];
@@ -128,8 +116,6 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
 
   const overflowNeeded =
     (lastVisibleIndex || lastVisibleIndex === 0) && React.Children.count(childrenWithRef) !== lastVisibleIndex + 1;
-
-  toolbarClasses.putIfPresent(overflowNeeded && classes.hasOverflow);
 
   const requestAnimationFrameRef = useRef<undefined | number>();
   const calculateVisibleItems = useCallback(() => {
@@ -206,7 +192,7 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
     <CustomTag
       title={tooltip}
       style={style}
-      className={toolbarClasses.className}
+      className={clsx(toolbarClasses, overflowNeeded && classes.hasOverflow)}
       ref={outerContainer}
       slot={slot}
       onClick={handleToolbarClick}
