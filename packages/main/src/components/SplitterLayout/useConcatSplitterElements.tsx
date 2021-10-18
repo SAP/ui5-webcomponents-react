@@ -21,7 +21,7 @@ export const useConcatSplitterElements = (
     childrenArray.forEach((child, index) => {
       const splitterElementChild = childrenArray[index + splitterCount];
       if (splitterElementChild?.props?.size) {
-        nextSplitterPosition = `calc(${splitterElementChild.props.size} + ${nextSplitterPosition})`;
+        nextSplitterPosition = `calc(${splitterElementChild?.props?.size} + ${nextSplitterPosition})`;
       }
       if (
         childrenArray.length - splitterCount - 1 > index &&

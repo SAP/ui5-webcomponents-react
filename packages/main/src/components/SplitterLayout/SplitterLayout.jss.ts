@@ -5,28 +5,28 @@ const styles = {
   splitterLayout: (props) => ({
     display: 'flex',
     overflow: 'auto',
-    flexDirection: props.orientation === 'vertical' ? FlexBoxDirection.Row : FlexBoxDirection.Column,
-    flex: `0 0 ${props.orientation === 'vertical' ? props.width : props.height}`,
-    width: props.orientation === 'vertical' ? props.width : props.height,
-    height: props.orientation === 'vertical' ? props.height : props.width
+    flexDirection: props?.orientation === 'vertical' ? FlexBoxDirection.Row : FlexBoxDirection.Column,
+    flex: `0 0 ${props?.orientation === 'vertical' ? props?.width : props?.height}`,
+    width: props?.orientation === 'vertical' ? props?.width : props?.height,
+    height: props?.orientation === 'vertical' ? props?.height : props?.width
   }),
   splitterElementVertical: (props) => ({
     display: 'flex',
     overflow: 'hidden',
     position: 'relative',
     backgroundColor: ThemingParameters.sapBackgroundColor,
-    height: props.containerHeight,
-    flex: !!props.size && props.size !== 'auto' ? `0 0 ${props.size}` : '1 0 auto',
-    minWidth: props.minSize ?? 0,
-    maxWidth: props.maxSize
+    height: props?.containerHeight,
+    flex: !!props?.size && props?.size !== 'auto' ? `0 0 ${props?.size}` : '1 0 auto',
+    minWidth: props?.minSize ?? 0,
+    maxWidth: props?.maxSize
   }),
   splitterElementHorizontal: (props) => ({
     justifyContent: props.justifyContent,
     backgroundColor: ThemingParameters.sapBackgroundColor,
-    width: props.containerWidth,
-    flex: !!props.size || props.size === 'auto' ? `0 0 ${props.size}` : '1 0 auto',
-    minHeight: props.minSize ?? 0,
-    maxHeight: props.maxSize
+    width: props?.containerWidth,
+    flex: !!props?.size || props?.size === 'auto' ? `0 0 ${props?.size}` : '1 0 auto',
+    minHeight: props?.minSize ?? 0,
+    maxHeight: props?.maxSize
   }),
   splitterVertical: (props) => ({
     position: 'absolute',
@@ -34,12 +34,12 @@ const styles = {
     cursor: 'col-resize',
     zIndex: 20,
     width: '16px',
-    height: props.height,
+    height: props?.height,
     border: 'none',
     backgroundColor: ThemingParameters.sapShell_Background
   }),
   splitterHorizontal: (props) => ({
-    width: props.width,
+    width: props?.width,
     height: '16px',
     border: 'none',
     backgroundColor: ThemingParameters.sapShell_Background
@@ -49,11 +49,11 @@ const styles = {
     top: 'calc(50% - 8px)',
     '&:hover': {
       '&:before': {
-        height: `calc(${props.height} / 2 - 14px)`,
+        height: `calc(${props?.height} / 2 - 14px)`,
         transition: 'width 0.15s ease-in'
       },
       '&:after': {
-        height: `calc(${props.height} / 2 - 16px)`,
+        height: `calc(${props?.height} / 2 - 16px)`,
         transition: 'width 0.15s ease-in'
       }
     },
@@ -80,11 +80,11 @@ const styles = {
     top: 'calc(50% - 8px)',
     '&:hover': {
       '&:before': {
-        width: `calc(${props.height} / 2 - 14px)`,
+        width: `calc(${props?.height} / 2 - 14px)`,
         transition: 'width 0.15s ease-in'
       },
       '&:after': {
-        width: `calc(${props.height} / 2 - 16px)`,
+        width: `calc(${props?.height} / 2 - 16px)`,
         transition: 'width 0.15s ease-in'
       }
     },
@@ -95,8 +95,8 @@ const styles = {
       width: '4rem'
     },
     '&:before': {
-      top: props.orientation === 'vertical' ? '130%' : 'calc(50%)',
-      left: props.orientation === 'vertical' ? 'calc(50%)' : '130%',
+      top: props?.orientation === 'vertical' ? '130%' : 'calc(50%)',
+      left: props?.orientation === 'vertical' ? 'calc(50%)' : '130%',
       backgroundImage: `linear-gradient(to right, ${ThemingParameters.sapHighlightColor}, rgba(8,84,160,0))`
     },
     '&:after': {
