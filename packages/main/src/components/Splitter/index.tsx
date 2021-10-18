@@ -55,7 +55,7 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
 
       if (prevPositionLeft > nextPositionLeft) {
         if (previousSibling) {
-          previousSibling.style.flex = `0 0 ${nextPositionLeft}px`;
+          (previousSibling as HTMLElement).style.flex = `0 0 ${nextPositionLeft}px`;
         }
       }
 
