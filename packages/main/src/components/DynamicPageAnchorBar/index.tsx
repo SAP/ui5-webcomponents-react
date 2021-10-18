@@ -3,7 +3,6 @@ import '@ui5/webcomponents-icons/dist/pushpin-off.js';
 import '@ui5/webcomponents-icons/dist/slim-arrow-down.js';
 import '@ui5/webcomponents-icons/dist/slim-arrow-up.js';
 import { useConsolidatedRef, useI18nBundle, useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import {
@@ -17,6 +16,7 @@ import { ToggleButton } from '@ui5/webcomponents-react/dist/ToggleButton';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import React, { forwardRef, RefObject, useCallback } from 'react';
 import { createUseStyles } from 'react-jss';
+import clsx from 'clsx';
 
 addCustomCSS(
   'ui5-button',
@@ -168,15 +168,12 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
     [setHeaderPinned]
   );
 
-  const anchorBarActionButtonClasses = StyleClassHelper.of(classes.anchorBarActionButton);
-  if (isRTL) {
-    anchorBarActionButtonClasses.put(classes.anchorBarActionButtonRtl);
-  }
+  const anchorBarActionButtonClasses = clsx(classes.anchorBarActionButton, isRTL && classes.anchorBarActionButtonRtl);
 
-  const bothActionClasses = StyleClassHelper.of(classes.anchorBarActionPinnableAndExpandable);
-  if (isRTL) {
-    bothActionClasses.put(classes.anchorBarActionPinnableAndExpandableRtl);
-  }
+  const bothActionClasses = clsx(
+    classes.anchorBarActionPinnableAndExpandable,
+    isRTL && classes.anchorBarActionPinnableAndExpandableRtl
+  );
 
   const onToggleHeaderButtonClick = (e) => {
     onToggleHeaderContentVisibility(enrichEventWithDetails(e, { visible: !headerContentVisible }));
@@ -194,9 +191,11 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
         <Button
           icon={!headerContentVisible ? 'slim-arrow-down' : 'slim-arrow-up'}
           data-ui5wcr-dynamic-page-header-action=""
-          className={`${anchorBarActionButtonClasses.className} ${classes.anchorBarActionButtonExpandable} ${
-            showBothActions ? bothActionClasses.className : ''
-          }`}
+          className={clsx(
+            anchorBarActionButtonClasses,
+            classes.anchorBarActionButtonExpandable,
+            showBothActions && bothActionClasses
+          )}
           onClick={onToggleHeaderButtonClick}
           onMouseOver={onHoverToggleButton}
           onMouseLeave={onHoverToggleButton}
@@ -208,9 +207,11 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
         <ToggleButton
           icon="pushpin-off"
           data-ui5wcr-dynamic-page-header-action=""
-          className={`${anchorBarActionButtonClasses.className} ${classes.anchorBarActionButtonPinnable} ${
-            showBothActions ? bothActionClasses.className : ''
-          }`}
+          className={clsx(
+            anchorBarActionButtonClasses,
+            classes.anchorBarActionButtonPinnable,
+            showBothActions && bothActionClasses
+          )}
           pressed={headerPinned}
           onClick={onPinHeader}
           tooltip={i18nBundle.getText(headerPinned ? UNPIN_HEADER : PIN_HEADER)}

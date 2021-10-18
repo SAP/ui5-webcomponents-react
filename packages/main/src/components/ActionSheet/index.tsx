@@ -1,7 +1,6 @@
 import { isPhone } from '@ui5/webcomponents-base/dist/Device.js';
 import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming.js';
 import { useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
@@ -24,6 +23,7 @@ import { createUseStyles } from 'react-jss';
 import { Ui5ResponsivePopoverDomRef } from '@ui5/webcomponents-react/interfaces/Ui5ResponsivePopoverDomRef';
 import { ButtonPropTypes } from '../../webComponents/Button';
 import { ResponsivePopoverPropTypes } from '../../webComponents/ResponsivePopover';
+import clsx from 'clsx';
 import styles from './ActionSheet.jss';
 
 export interface ActionSheetPropTypes extends Omit<ResponsivePopoverPropTypes, 'children'> {
@@ -118,7 +118,7 @@ const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: RefObject<Ui5R
   } = props;
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const classes = useStyles();
-  const actionSheetClasses = StyleClassHelper.of(classes.actionSheet).putIfPresent(className);
+  const actionSheetClasses = clsx(classes.actionSheet, className);
   const popoverRef: RefObject<Ui5ResponsivePopoverDomRef> = useConsolidatedRef(ref);
   const actionBtnsRef = useRef(null);
   const [focusedItem, setFocusedItem] = useReducer((_, action) => {
@@ -206,7 +206,7 @@ const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: RefObject<Ui5R
       {...passThroughProps}
       onAfterOpen={handleAfterOpen}
       ref={popoverRef}
-      className={actionSheetClasses.className}
+      className={actionSheetClasses}
       data-actionsheet
     >
       <div

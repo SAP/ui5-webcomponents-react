@@ -5,7 +5,6 @@ import '@ui5/webcomponents-icons/dist/message-success.js';
 import '@ui5/webcomponents-icons/dist/message-warning.js';
 import '@ui5/webcomponents-icons/dist/question-mark.js';
 import { useConsolidatedRef, useI18nBundle, useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base/dist/hooks';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import {
   ABORT,
@@ -49,6 +48,7 @@ import React, {
 import { createUseStyles } from 'react-jss';
 import { stopPropagation } from '../../internal/stopPropagation';
 import styles from './MessageBox.jss';
+import clsx from 'clsx';
 
 type MessageBoxAction = MessageBoxActions | keyof typeof MessageBoxActions | string;
 
@@ -266,7 +266,7 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDom
     }
   }, [dialogRef.current, open]);
 
-  const messageBoxClassNames = StyleClassHelper.of(classes.messageBox).putIfPresent(className).className;
+  const messageBoxClassNames = clsx(classes.messageBox, className);
   const internalActions = getActions();
 
   const [uniqueIds, setUniqueIds] = useState(() => createUniqueIds(internalActions));
