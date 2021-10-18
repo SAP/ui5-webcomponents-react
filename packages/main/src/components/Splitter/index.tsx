@@ -23,7 +23,7 @@ const isTouchEvent = (e, touchEvent) => {
 const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>) => {
   const { orientation, position } = props;
   const classes = useStyles(props);
-  const splitterRef = useConsolidatedRef(ref);
+  const splitterRef = useConsolidatedRef<HTMLDivElement>(ref);
   const startX = useRef(null);
 
   const [splitterPosition, setSplitterPosition] = useState({ left: position });
@@ -49,7 +49,8 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
   const handleSplitterMove = useCallback(
     (e) => {
       const prevPositionLeft = splitterPosition.left;
-      const nextPositionLeft = splitterRef.current?.getBoundingClientRect()?.left + window.scrollX;
+      const nextPositionLeft =
+        splitterRef.current?.getBoundingClientRect()?.left.toString() + window.scrollX.toString();
       const previousSibling = splitterRef.current?.previousSibling;
 
       if (prevPositionLeft > nextPositionLeft) {
@@ -99,7 +100,7 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
     const splitterPosLeft = splitterRef.current?.getBoundingClientRect()?.left + window.scrollX;
 
     if (!isDragging && splitterPosLeft > 0) {
-      setSplitterPosition({ left: splitterPosLeft });
+      setSplitterPosition({ left: splitterPosLeft.toString() });
     }
   }, [splitterRef.current?.getBoundingClientRect()?.left, isDragging]);
 
