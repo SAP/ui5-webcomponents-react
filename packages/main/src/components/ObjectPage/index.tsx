@@ -15,7 +15,17 @@ import { PopoverPlacementType } from '@ui5/webcomponents-react/dist/PopoverPlace
 import { StandardListItem } from '@ui5/webcomponents-react/dist/StandardListItem';
 import { TabContainer } from '@ui5/webcomponents-react/dist/TabContainer';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import React, { forwardRef, ReactElement, RefObject, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, {
+  forwardRef,
+  ReactElement,
+  ReactNode,
+  RefObject,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState
+} from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
 import { PopoverHorizontalAlign } from '../../enums/PopoverHorizontalAlign';
@@ -140,6 +150,12 @@ export interface ObjectPagePropTypes extends CommonProps {
       role?: string;
     };
   };
+  /**
+   * If set, only the specified `IllustratedMessage` will be displayed as content of the `ObjectPage`, no sections or sub-sections will be rendered.
+   *
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `IllustratedMessage` in order to preserve the intended design.
+   */
+  illustratedMessage?: ReactNode;
 }
 
 const useStyles = createUseStyles(styles, { name: 'ObjectPage' });
@@ -168,7 +184,8 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     showTitleInHeaderContent,
     headerContent,
     headerContentPinnable,
-    a11yConfig
+    a11yConfig,
+    illustratedMessage
   } = props;
 
   const classes = useStyles();
@@ -791,59 +808,65 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
           />
         </div>
       )}
-      <div
-        className={classes.tabContainer}
-        data-component-name="ObjectPageTabContainer"
-        style={{
-          top:
-            headerPinned || scrolledHeaderExpanded
-              ? `${topHeaderHeight + headerContentHeight}px`
-              : `${topHeaderHeight}px`
-        }}
-      >
-        <TabContainer
-          collapsed
-          fixed
-          onTabSelect={onTabItemSelect}
-          showOverflow
+      {!illustratedMessage && (
+        <div
+          className={classes.tabContainer}
           data-component-name="ObjectPageTabContainer"
+          style={{
+            top:
+              headerPinned || scrolledHeaderExpanded
+                ? `${topHeaderHeight + headerContentHeight}px`
+                : `${topHeaderHeight}px`
+          }}
         >
-          {safeGetChildrenArray(children).map((section: ReactElement, index) => {
-            if (!section.props) return null;
-            return (
-              <ObjectPageAnchorButton
-                key={`Anchor-${section.props?.id}`}
-                section={section}
-                index={index}
-                selected={internalSelectedSectionId === section.props?.id}
-                onShowSubSectionPopover={onShowSubSectionPopover}
-              />
-            );
-          })}
-        </TabContainer>
-        {createPortal(
-          <Popover
-            placementType={PopoverPlacementType.Bottom}
-            horizontalAlign={PopoverHorizontalAlign.Left}
-            hideArrow
-            ref={popoverRef}
-            onAfterClose={stopPropagation}
+          <TabContainer
+            collapsed
+            fixed
+            onTabSelect={onTabItemSelect}
+            showOverflow
+            data-component-name="ObjectPageTabContainer"
           >
-            <List onItemClick={onSubSectionClick}>
-              {popoverContent?.props?.children
-                .filter((item) => item.props && item.props.isSubSection)
-                .map((item) => (
-                  <StandardListItem key={item.props.id} data-key={item.props.id}>
-                    {item.props.titleText}
-                  </StandardListItem>
-                ))}
-            </List>
-          </Popover>,
-          document.body
-        )}
-      </div>
+            {safeGetChildrenArray(children).map((section: ReactElement, index) => {
+              if (!section.props) return null;
+              return (
+                <ObjectPageAnchorButton
+                  key={`Anchor-${section.props?.id}`}
+                  section={section}
+                  index={index}
+                  selected={internalSelectedSectionId === section.props?.id}
+                  onShowSubSectionPopover={onShowSubSectionPopover}
+                />
+              );
+            })}
+          </TabContainer>
+          {createPortal(
+            <Popover
+              placementType={PopoverPlacementType.Bottom}
+              horizontalAlign={PopoverHorizontalAlign.Left}
+              hideArrow
+              ref={popoverRef}
+              onAfterClose={stopPropagation}
+            >
+              <List onItemClick={onSubSectionClick}>
+                {popoverContent?.props?.children
+                  .filter((item) => item.props && item.props.isSubSection)
+                  .map((item) => (
+                    <StandardListItem key={item.props.id} data-key={item.props.id}>
+                      {item.props.titleText}
+                    </StandardListItem>
+                  ))}
+              </List>
+            </Popover>,
+            document.body
+          )}
+        </div>
+      )}
       <div data-component-name="ObjectPageContent" className={responsivePaddingClass}>
-        {mode === ObjectPageMode.IconTabBar ? getSectionById(children, internalSelectedSectionId) : children}
+        {illustratedMessage
+          ? illustratedMessage
+          : mode === ObjectPageMode.IconTabBar
+          ? getSectionById(children, internalSelectedSectionId)
+          : children}
       </div>
       {footer && <div style={{ height: '1rem' }} data-component-name="ObjectPageFooterSpacer" />}
       {footer && (

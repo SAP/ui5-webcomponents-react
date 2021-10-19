@@ -27,6 +27,7 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
 import '@ui5/webcomponents-icons/dist/activate.js';
 import SampleImage from './DemoImage.png';
 import '@ui5/webcomponents-icons/dist/wrench.js';
+import { IllustratedMessage } from '../../webComponents/IllustratedMessage';
 
 <Meta
   title="Layouts & Floorplans / ObjectPage"
@@ -112,7 +113,7 @@ import '@ui5/webcomponents-icons/dist/wrench.js';
   <Story name="Default">
     {(args) => {
       return (
-        <ObjectPage {...args}>
+        <ObjectPage {...args} illustratedMessage={<IllustratedMessage />}>
           <ObjectPageSection titleText="Goals" id="goals" aria-label="Goals">
             <Form columnsL={3} columnsXL={3} labelSpanXL={6} labelSpanL={6} columnsM={2} labelSpanM={6}>
               <FormItem label="Evangelize the UI framework across the company">
