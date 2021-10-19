@@ -3,7 +3,7 @@
 exports[`FilterBar Render without crashing - default props 1`] = `
 <DocumentFragment>
   <div
-    class="FilterBar-outerContainer"
+    class="FilterBar-outerContainer FilterBar-filterItemExpand"
   >
     <div
       class="Toolbar-outerContainer Toolbar-clear FilterBar-filterBarHeader"
@@ -35,6 +35,7 @@ exports[`FilterBar Render without crashing - default props 1`] = `
     >
       <div
         class="FilterGroupItem-filterItem"
+        style="width: 13.125rem;"
       >
         <div
           class="FilterGroupItem-innerFilterItemContainer"
@@ -468,7 +469,7 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
 exports[`FilterBar Toggle FilterBar filters 1`] = `
 <DocumentFragment>
   <div
-    class="FilterBar-outerContainer"
+    class="FilterBar-outerContainer FilterBar-filterItemExpand"
   >
     <div
       class="Toolbar-outerContainer Toolbar-clear FilterBar-filterBarHeader"
@@ -500,6 +501,7 @@ exports[`FilterBar Toggle FilterBar filters 1`] = `
     >
       <div
         class="FilterGroupItem-filterItem"
+        style="width: 13.125rem;"
       >
         <div
           class="FilterGroupItem-innerFilterItemContainer"
