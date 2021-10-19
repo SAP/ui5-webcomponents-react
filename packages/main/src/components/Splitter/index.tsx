@@ -27,8 +27,6 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
   const startX = useRef(null);
 
   const [splitterPosition, setSplitterPosition] = useState({ prev: position, left: position });
-  const [previousSiblingWidth, setPreviousSiblingWidth] = useState(null);
-  const [nextSiblingWidth, setNextSiblingWidth] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
   const [mountTouchEvents, setMountTouchEvents] = useState(false);
 
@@ -50,7 +48,7 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
     const sibs = [];
     while ((elem = elem[sibling])) {
       if (elem.nodeType === 3) continue; // text node
-      if ((!filter || filter(elem)) && elem.className.includes('splitterVertical'))
+      if ((!filter || filter(elem)) && elem.className.includes('splitterVertical' || 'splitterHorizontal'))
         sibs.push(elem.getBoundingClientRect()?.left);
     }
     return sibs;
@@ -63,16 +61,17 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
       const previousSibling = splitterRef.current?.previousSibling;
       const nextSibling = splitterRef.current?.nextSibling;
       const prevSiblingLeft = getPreviousSiblings(splitterRef.current, 'previousSibling')?.[0] ?? 0;
-      const nextSiblingLeft = getPreviousSiblings(splitterRef.current, 'nextSibling')?.[0] ?? 0;
 
-      (previousSibling as HTMLElement).style.flex = `0 0 ${nextPositionLeft - prevSiblingLeft}px`;
-      if (nextSibling.nextSibling) {
-        (nextSibling as HTMLElement).style.flex = `0 0 ${
-          nextSibling.nextSibling.getBoundingClientRect()?.left - nextSibling.getBoundingClientRect()?.left + 16
-        }px`;
-      }
-      if (!nextSibling.nextSibling) {
-        (nextSibling as HTMLElement).style.flex = `1 0 auto`;
+      if (nextPositionLeft > prevSiblingLeft && nextPositionLeft < nextSibling.getBoundingClientRect()?.right - 32) {
+        (previousSibling as HTMLElement).style.flex = `0 0 ${nextPositionLeft - prevSiblingLeft}px`;
+        if (nextSibling.nextSibling) {
+          (nextSibling as HTMLElement).style.flex = `0 0 ${
+            nextSibling.nextSibling.getBoundingClientRect()?.left - nextSibling.getBoundingClientRect()?.left + 16
+          }px`;
+        }
+        if (!nextSibling.nextSibling) {
+          (nextSibling as HTMLElement).style.flex = `1 0 auto`;
+        }
       }
 
       setSplitterPosition((prev) => ({
@@ -114,6 +113,13 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
 
   useEffect(() => {
     const splitterPosLeft = splitterRef.current?.getBoundingClientRect()?.left + window.scrollX;
+
+    if (
+      splitterPosLeft < splitterRef.current?.previousSibling.getBoundingClientRect()?.left ||
+      splitterPosLeft > splitterRef.current?.nextSibling.getBoundingClientRect()?.right - 32
+    ) {
+      setIsDragging(false);
+    }
 
     if (!isDragging && splitterPosLeft > 0) {
       setSplitterPosition({ prev: splitterPosLeft.toString(), left: splitterPosLeft.toString() });
