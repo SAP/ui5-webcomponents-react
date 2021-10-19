@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.131.23](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.22...v0.131.23) (2021-10-19)
+
+
+### Bug Fixes
+
+* **Toolbar:** add `max-width: 100%` to outer toolbar container ([#2207](https://github.com/SAP/ui5-webcomponents-react/issues/2207)) ([16322be](https://github.com/SAP/ui5-webcomponents-react/commit/16322be9527dbefeddef82b1a63df001ebaae73c))
+
+
+### Features
+
+* **FilterBar & FlexBox & Form & Toolbar:** introduce `as` prop to change HTML tag dynamically ([#2203](https://github.com/SAP/ui5-webcomponents-react/issues/2203)) ([d7cb123](https://github.com/SAP/ui5-webcomponents-react/commit/d7cb12383d3a8732b33bdb60652e21e340e3da67))
+* **MessageBox:** add `accessibleName` default text ([#2208](https://github.com/SAP/ui5-webcomponents-react/issues/2208)) ([4922021](https://github.com/SAP/ui5-webcomponents-react/commit/49220212bfec15ac75289deac920b8307bdc867f))
+
+
+
+
+
 ## [0.131.22](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.21...v0.131.22) (2021-10-04)
 
 
