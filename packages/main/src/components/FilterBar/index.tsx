@@ -114,6 +114,12 @@ export interface FilterBarPropTypes extends CommonProps {
    */
   showRestoreOnFB?: boolean;
   /**
+   * Sets the components outer HTML tag.
+   *
+   * __Note:__ For TypeScript the types of `ref` are bound to the default tag name, if you change it you are responsible to set the respective types yourself.
+   */
+  as?: keyof HTMLElementTagNameMap;
+  /**
    * The event is fired when the `FilterBar` is collapsed/expanded.
    */
   onToggleFilters?: (event: CustomEvent<{ visible?: boolean }>) => void;
@@ -187,6 +193,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
     slot,
     search,
     variants,
+    as,
 
     onToggleFilters,
     onFiltersDialogOpen,
@@ -434,6 +441,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
     }
   }, [prevSearchInputPropsValue, search?.props?.value]);
 
+  const CustomTag = as as React.ElementType;
   return (
     <>
       {dialogOpen && showFilterConfiguration && (
@@ -459,7 +467,14 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
           {safeChildren()}
         </FilterDialog>
       )}
-      <div ref={ref} className={cssClasses.toString()} style={style} title={tooltip} slot={slot} {...passThroughProps}>
+      <CustomTag
+        ref={ref}
+        className={cssClasses.toString()}
+        style={style}
+        title={tooltip}
+        slot={slot}
+        {...passThroughProps}
+      >
         {loading ? (
           <BusyIndicator active className={classes.loadingContainer} size={BusyIndicatorSize.Large} />
         ) : (
@@ -500,12 +515,14 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
             {mountFilters && <div className={filterAreaClasses.valueOf()}>{renderChildren()}</div>}
           </>
         )}
-      </div>
+      </CustomTag>
     </>
   );
 });
 
 FilterBar.defaultProps = {
+  as: 'div',
+  filterContainerWidth: '13.125rem',
   useToolbar: true,
   filterBarExpanded: true,
   showClearOnFB: false,

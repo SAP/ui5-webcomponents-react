@@ -44,6 +44,12 @@ export interface FlexBoxPropTypes extends CommonProps {
    * Content of the `FlexBox`.
    */
   children: ReactNode | ReactNodeArray;
+  /**
+   * Sets the components outer HTML tag.
+   *
+   * __Note:__ For TypeScript the types of `ref` are bound to the default tag name, if you change it you are responsible to set the respective types yourself.
+   */
+  as?: keyof HTMLElementTagNameMap;
 }
 
 /**
@@ -61,7 +67,8 @@ const FlexBox: FC<FlexBoxPropTypes> = forwardRef((props: FlexBoxPropTypes, ref: 
     className,
     tooltip,
     fitContainer,
-    slot
+    slot,
+    as
   } = props;
 
   const classes = useStyles();
@@ -88,15 +95,23 @@ const FlexBox: FC<FlexBoxPropTypes> = forwardRef((props: FlexBoxPropTypes, ref: 
   }
 
   const passThroughProps = usePassThroughHtmlProps(props);
-
+  const CustomTag = as as React.ElementType;
   return (
-    <div ref={ref} className={flexBoxClasses.valueOf()} style={style} title={tooltip} slot={slot} {...passThroughProps}>
+    <CustomTag
+      ref={ref}
+      className={flexBoxClasses.valueOf()}
+      style={style}
+      title={tooltip}
+      slot={slot}
+      {...passThroughProps}
+    >
       {children}
-    </div>
+    </CustomTag>
   );
 });
 
 FlexBox.defaultProps = {
+  as: 'div',
   alignItems: FlexBoxAlignItems.Stretch,
   direction: FlexBoxDirection.Row,
   displayInline: false,

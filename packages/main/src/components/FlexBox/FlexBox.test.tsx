@@ -1,4 +1,4 @@
-import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { createChangeTagNameTest, createPassThroughPropsTest } from '@shared/tests/utils';
 import { render, screen } from '@shared/tests';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJustifyContent';
@@ -42,6 +42,8 @@ describe('FlexBox', () => {
     );
     expect(asFragment()).toMatchSnapshot();
   });
+
+  createChangeTagNameTest(FlexBox);
 
   createPassThroughPropsTest(FlexBox);
 });
