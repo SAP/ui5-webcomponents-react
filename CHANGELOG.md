@@ -13,6 +13,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
+* update to @ui5/webcomponents 0.31.21
 * **FilterBar & FlexBox & Form & Toolbar:** introduce `as` prop to change HTML tag dynamically ([#2203](https://github.com/SAP/ui5-webcomponents-react/issues/2203)) ([d7cb123](https://github.com/SAP/ui5-webcomponents-react/commit/d7cb12383d3a8732b33bdb60652e21e340e3da67))
 * **MessageBox:** add `accessibleName` default text ([#2208](https://github.com/SAP/ui5-webcomponents-react/issues/2208)) ([4922021](https://github.com/SAP/ui5-webcomponents-react/commit/49220212bfec15ac75289deac920b8307bdc867f))
 
