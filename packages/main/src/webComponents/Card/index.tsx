@@ -4,6 +4,10 @@ import { FC, ReactNode } from 'react';
 
 export interface CardPropTypes extends WithWebComponentPropTypes {
   /**
+   * Defines the accessible name of the component, which is used as the name of the card region and should be unique per card. **Note:** `accessibleName` should be always set.
+   */
+  accessibleName?: string;
+  /**
    * Defines if the `Card` header would be interactive, e.g gets hover effect, gets focused and `headerPress` event is fired, when it is pressed.
    */
   headerInteractive?: boolean;
@@ -58,7 +62,7 @@ export interface CardPropTypes extends WithWebComponentPropTypes {
  */
 const Card: FC<CardPropTypes> = withWebComponent<CardPropTypes>(
   'ui5-card',
-  ['heading', 'status', 'subheading'],
+  ['accessibleName', 'heading', 'status', 'subheading'],
   ['headerInteractive'],
   ['action', 'avatar'],
   ['header-click']
