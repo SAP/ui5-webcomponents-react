@@ -37,7 +37,7 @@
     "clsx": "1.1.1",
     "lit-html": "2.0.0-rc.3",
     "react-content-loader": "6.0.3",
-    "react-jss": "10.8.0",
+    "react-jss": "10.8.1",
     "react-table": "7.7.0",
     "react-virtual": "2.8.2"
   },
