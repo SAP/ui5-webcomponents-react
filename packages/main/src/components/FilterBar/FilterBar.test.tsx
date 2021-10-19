@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@shared/tests';
-import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { createChangeTagNameTest, createPassThroughPropsTest } from '@shared/tests/utils';
 import { Bar } from '@ui5/webcomponents-react/lib/Bar';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { DatePicker } from '@ui5/webcomponents-react/lib/DatePicker';
@@ -522,6 +522,8 @@ describe('FilterBar', () => {
     expect(onFiltersDialogSave).toHaveBeenCalledTimes(2);
     expect(onFiltersDialogClose).toHaveBeenCalledTimes(5);
   });
+
+  createChangeTagNameTest(FilterBar);
 
   createPassThroughPropsTest(FilterBar);
 });

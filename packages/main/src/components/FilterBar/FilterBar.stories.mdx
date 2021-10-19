@@ -10,7 +10,6 @@ import { Switch } from '@ui5/webcomponents-react/lib/Switch';
 import { DatePicker } from '@ui5/webcomponents-react/lib/DatePicker';
 import { VariantManagement } from '@ui5/webcomponents-react/lib/VariantManagement';
 import '@ui5/webcomponents-icons/dist/nav-back.js';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
 
@@ -24,6 +23,7 @@ import { DocsCommonProps } from '@shared/stories/DocsCommonProps';
     variants: { control: { disable: true } },
     children: { control: { disable: true } },
     filterContainerWidth: { control: 'text' },
+    as: { control: { disable: true } },
     ...DocsCommonProps
   }}
   args={{
