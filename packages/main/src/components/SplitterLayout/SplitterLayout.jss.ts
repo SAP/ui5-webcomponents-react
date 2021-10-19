@@ -4,7 +4,7 @@ import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection
 const styles = {
   splitterLayout: (props) => ({
     display: 'flex',
-    overflow: 'auto',
+    overflow: 'hidden',
     flexDirection: props?.orientation === 'vertical' ? FlexBoxDirection.Row : FlexBoxDirection.Column,
     flex: `0 0 ${props?.orientation === 'vertical' ? props?.width : props?.height}`,
     width: props?.orientation === 'vertical' ? props?.width : props?.height,

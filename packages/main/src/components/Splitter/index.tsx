@@ -26,7 +26,7 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
   const splitterRef = useConsolidatedRef<HTMLDivElement>(ref);
   const startX = useRef(null);
 
-  const [splitterPosition, setSplitterPosition] = useState({ left: position });
+  const [splitterPosition, setSplitterPosition] = useState({ prev: position, left: position });
   const [previousSiblingWidth, setPreviousSiblingWidth] = useState(null);
   const [nextSiblingWidth, setNextSiblingWidth] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -46,17 +46,33 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
     [startX.current, setIsDragging]
   );
 
+  const getPreviousSiblings = (elem, sibling: string, filter?): number[] => {
+    const sibs = [];
+    while ((elem = elem[sibling])) {
+      if (elem.nodeType === 3) continue; // text node
+      if ((!filter || filter(elem)) && elem.className.includes('splitterVertical'))
+        sibs.push(elem.getBoundingClientRect()?.left);
+    }
+    return sibs;
+  };
+
   const handleSplitterMove = useCallback(
     (e) => {
       const prevPositionLeft = splitterPosition.left;
-      const nextPositionLeft =
-        splitterRef.current?.getBoundingClientRect()?.left.toString() + window.scrollX.toString();
+      const nextPositionLeft = splitterRef.current?.getBoundingClientRect()?.left;
       const previousSibling = splitterRef.current?.previousSibling;
+      const nextSibling = splitterRef.current?.nextSibling;
+      const prevSiblingLeft = getPreviousSiblings(splitterRef.current, 'previousSibling')?.[0] ?? 0;
+      const nextSiblingLeft = getPreviousSiblings(splitterRef.current, 'nextSibling')?.[0] ?? 0;
 
-      if (prevPositionLeft > nextPositionLeft) {
-        if (previousSibling) {
-          (previousSibling as HTMLElement).style.flex = `0 0 ${nextPositionLeft}px`;
-        }
+      (previousSibling as HTMLElement).style.flex = `0 0 ${nextPositionLeft - prevSiblingLeft}px`;
+      if (nextSibling.nextSibling) {
+        (nextSibling as HTMLElement).style.flex = `0 0 ${
+          nextSibling.nextSibling.getBoundingClientRect()?.left - nextSibling.getBoundingClientRect()?.left + 16
+        }px`;
+      }
+      if (!nextSibling.nextSibling) {
+        (nextSibling as HTMLElement).style.flex = `1 0 auto`;
       }
 
       setSplitterPosition((prev) => ({
@@ -100,7 +116,7 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
     const splitterPosLeft = splitterRef.current?.getBoundingClientRect()?.left + window.scrollX;
 
     if (!isDragging && splitterPosLeft > 0) {
-      setSplitterPosition({ left: splitterPosLeft.toString() });
+      setSplitterPosition({ prev: splitterPosLeft.toString(), left: splitterPosLeft.toString() });
     }
   }, [splitterRef.current?.getBoundingClientRect()?.left, isDragging]);
 
