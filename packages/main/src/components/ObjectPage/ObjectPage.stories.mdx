@@ -23,11 +23,13 @@ import { ObjectStatus } from '@ui5/webcomponents-react/dist/ObjectStatus';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
 import { FlexBoxWrap } from '@ui5/webcomponents-react/dist/FlexBoxWrap';
+import { IllustratedMessage } from '@ui5/webcomponents-react/dist/IllustratedMessage';
+import { IllustrationMessageType } from '@ui5/webcomponents-react/dist/IllustrationMessageType';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import '@ui5/webcomponents-icons/dist/activate.js';
 import SampleImage from './DemoImage.png';
 import '@ui5/webcomponents-icons/dist/wrench.js';
-import { IllustratedMessage } from '../../webComponents/IllustratedMessage';
+import '@ui5/webcomponents-fiori/dist/illustrations/NoData.js';
 
 <Meta
   title="Layouts & Floorplans / ObjectPage"
@@ -113,7 +115,7 @@ import { IllustratedMessage } from '../../webComponents/IllustratedMessage';
   <Story name="Default">
     {(args) => {
       return (
-        <ObjectPage {...args} illustratedMessage={<IllustratedMessage />}>
+        <ObjectPage {...args}>
           <ObjectPageSection titleText="Goals" id="goals" aria-label="Goals">
             <Form columnsL={3} columnsXL={3} labelSpanXL={6} labelSpanL={6} columnsM={2} labelSpanM={6}>
               <FormItem label="Evangelize the UI framework across the company">
@@ -266,3 +268,20 @@ import { IllustratedMessage } from '../../webComponents/IllustratedMessage';
 ## Properties
 
 <ArgsTable story="Default" />
+
+## ObjectPage with IllustratedMessage (`NoData`) placeholder
+
+<Canvas>
+  <Story name="with IllustratedMessage">
+    {(args) => {
+      return (
+        <ObjectPage
+          image={args.image}
+          headerTitle={args.headerTitle}
+          imageShapeCircle
+          illustratedMessage={<IllustratedMessage name={IllustrationMessageType.NoData} />}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
