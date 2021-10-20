@@ -3,6 +3,25 @@ import { SplitterElementPropTypes } from '@ui5/webcomponents-react/dist/Splitter
 import React, { ReactElement, useMemo } from 'react';
 import { safeGetChildrenArray } from '../ObjectPage/ObjectPageUtils';
 
+const calculateAutoSizes = (childrenArray: ReactElement<SplitterElementPropTypes>[], width: string) => {
+  const childrenWithouSizeCount =
+    childrenArray.filter((child) => !child?.props?.size || child?.props?.size === 'auto')?.length ?? 0;
+  const childrenWithSizes = childrenArray
+    .map((child) => {
+      if (child.props?.size && child.props?.size.includes('%')) {
+        const absoluteSize = child.props?.size.replace('%', '');
+        return `calc(${width} * (${absoluteSize} / 100))`;
+      }
+      return child.props?.size;
+    })
+    ?.filter((el) => el && el !== 'auto');
+  const childrenWithSizeTotal =
+    childrenWithSizes.length !== 0
+      ? childrenWithSizes.reduce((total, current) => `calc(${total} + ${current})`)
+      : '0px';
+  return `calc((${width} - ${childrenWithSizeTotal}) / ${childrenWithouSizeCount})`;
+};
+
 export const useConcatSplitterElements = (
   children: ReactElement<SplitterElementPropTypes> | ReactElement<SplitterElementPropTypes>[],
   width: string | number,
@@ -15,26 +34,9 @@ export const useConcatSplitterElements = (
     }
 
     const childrenArray: ReactElement<SplitterElementPropTypes>[] = safeGetChildrenArray(children);
-
     let splitterCount = 0;
     let nextSplitterPosition = '0px';
-
-    const childrenWithouSizeCount =
-      childrenArray.filter((child) => !child?.props?.size || child?.props?.size === 'auto')?.length ?? 0;
-    const childrenWithSizes = childrenArray
-      .map((child) => {
-        if (child.props?.size && child.props?.size.includes('%')) {
-          const absoluteSize = child.props?.size.replace('%', '');
-          return `calc(${width} * (${absoluteSize} / 100))`;
-        }
-        return child.props?.size;
-      })
-      ?.filter((el) => el && el !== 'auto');
-    const childrenWithSizeTotal =
-      childrenWithSizes.length !== 0
-        ? childrenWithSizes.reduce((total, current) => `calc(${total} + ${current})`)
-        : '0px';
-    const remainingSizePerChild = `calc((${width} - ${childrenWithSizeTotal}) / ${childrenWithouSizeCount})`;
+    const remainingSizePerChild = calculateAutoSizes(childrenArray, width);
 
     childrenArray.forEach((child, index) => {
       const splitterElementChild = childrenArray[index + splitterCount];
