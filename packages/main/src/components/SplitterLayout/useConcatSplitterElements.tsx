@@ -18,11 +18,20 @@ export const useConcatSplitterElements = (
 
     let splitterCount = 0;
     let nextSplitterPosition = '0px';
+
+    const childrenWithouSizeCount = childrenArray.filter((child) => !child?.props?.size)?.length ?? 0;
+    const childrenWithSizes = childrenArray.map((child) => child.props?.size)?.filter((el) => el);
+    const childrenWithSizeTotal =
+      childrenWithSizes.length !== 0
+        ? childrenWithSizes.reduce((total, current) => `calc(${total} + ${current})`)
+        : '0px';
+    const remainingSizePerChild = `calc((${width} - ${childrenWithSizeTotal}) / ${childrenWithouSizeCount})`;
+
     childrenArray.forEach((child, index) => {
       const splitterElementChild = childrenArray[index + splitterCount];
-      if (splitterElementChild?.props?.size) {
-        nextSplitterPosition = `calc(${splitterElementChild?.props?.size} + ${nextSplitterPosition})`;
-      }
+      nextSplitterPosition = `calc(${
+        splitterElementChild?.props?.size ?? remainingSizePerChild
+      } + ${nextSplitterPosition})`;
       if (
         childrenArray.length - splitterCount - 1 > index &&
         (splitterElementChild.props.resizable || splitterElementChild.props.resizable === undefined) &&
