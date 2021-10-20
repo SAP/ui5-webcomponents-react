@@ -56,17 +56,21 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
 
   const handleSplitterMove = useCallback(
     (e) => {
-      const prevPositionLeft = splitterPosition.left;
       const nextPositionLeft = splitterRef.current?.getBoundingClientRect()?.left;
       const previousSibling = splitterRef.current?.previousSibling;
       const nextSibling = splitterRef.current?.nextSibling;
       const prevSiblingLeft = getPreviousSiblings(splitterRef.current, 'previousSibling')?.[0] ?? 0;
 
-      if (nextPositionLeft > prevSiblingLeft && nextPositionLeft < nextSibling.getBoundingClientRect()?.right - 32) {
+      if (
+        nextPositionLeft > prevSiblingLeft &&
+        nextPositionLeft < (nextSibling as HTMLElement).getBoundingClientRect()?.right - 32
+      ) {
         (previousSibling as HTMLElement).style.flex = `0 0 ${nextPositionLeft - prevSiblingLeft}px`;
         if (nextSibling.nextSibling) {
           (nextSibling as HTMLElement).style.flex = `0 0 ${
-            nextSibling.nextSibling.getBoundingClientRect()?.left - nextSibling.getBoundingClientRect()?.left + 16
+            (nextSibling.nextSibling as HTMLElement).getBoundingClientRect()?.left -
+            (nextSibling as HTMLElement).getBoundingClientRect()?.left +
+            16
           }px`;
         }
         if (!nextSibling.nextSibling) {
@@ -115,8 +119,8 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
     const splitterPosLeft = splitterRef.current?.getBoundingClientRect()?.left + window.scrollX;
 
     if (
-      splitterPosLeft < splitterRef.current?.previousSibling.getBoundingClientRect()?.left ||
-      splitterPosLeft > splitterRef.current?.nextSibling.getBoundingClientRect()?.right - 32
+      splitterPosLeft < (splitterRef.current?.previousSibling as HTMLElement).getBoundingClientRect()?.left ||
+      splitterPosLeft > (splitterRef.current?.nextSibling as HTMLElement).getBoundingClientRect()?.right - 32
     ) {
       setIsDragging(false);
     }

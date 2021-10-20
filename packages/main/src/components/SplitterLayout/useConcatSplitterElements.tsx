@@ -24,8 +24,8 @@ const calculateAutoSizes = (childrenArray: ReactElement<SplitterElementPropTypes
 
 export const useConcatSplitterElements = (
   children: ReactElement<SplitterElementPropTypes> | ReactElement<SplitterElementPropTypes>[],
-  width: string | number,
-  height: string | number,
+  width: string,
+  height: string,
   orientation: 'horizontal' | 'vertical'
 ) => {
   return useMemo(() => {
