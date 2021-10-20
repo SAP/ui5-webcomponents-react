@@ -19,8 +19,17 @@ export const useConcatSplitterElements = (
     let splitterCount = 0;
     let nextSplitterPosition = '0px';
 
-    const childrenWithouSizeCount = childrenArray.filter((child) => !child?.props?.size)?.length ?? 0;
-    const childrenWithSizes = childrenArray.map((child) => child.props?.size)?.filter((el) => el);
+    const childrenWithouSizeCount =
+      childrenArray.filter((child) => !child?.props?.size || child?.props?.size === 'auto')?.length ?? 0;
+    const childrenWithSizes = childrenArray
+      .map((child) => {
+        if (child.props?.size && child.props?.size.includes('%')) {
+          const absoluteSize = child.props?.size.replace('%', '');
+          return `calc(${width} * (${absoluteSize} / 100))`;
+        }
+        return child.props?.size;
+      })
+      ?.filter((el) => el && el !== 'auto');
     const childrenWithSizeTotal =
       childrenWithSizes.length !== 0
         ? childrenWithSizes.reduce((total, current) => `calc(${total} + ${current})`)
@@ -30,7 +39,9 @@ export const useConcatSplitterElements = (
     childrenArray.forEach((child, index) => {
       const splitterElementChild = childrenArray[index + splitterCount];
       nextSplitterPosition = `calc(${
-        splitterElementChild?.props?.size ?? remainingSizePerChild
+        splitterElementChild?.props?.size && splitterElementChild?.props?.size !== 'auto'
+          ? splitterElementChild?.props?.size
+          : remainingSizePerChild
       } + ${nextSplitterPosition})`;
       if (
         childrenArray.length - splitterCount - 1 > index &&

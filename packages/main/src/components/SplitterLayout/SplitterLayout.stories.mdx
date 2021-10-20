@@ -30,10 +30,10 @@ import { SplitterElement } from '@ui5/webcomponents-react/dist/SplitterElement';
     {(args) => {
       return (
         <SplitterLayout orientation={'vertical'} {...args} width={'800px'} height={'50vw'}>
-          <SplitterElement>
+          <SplitterElement size={'50%'}>
             <Button>Button 1</Button>
           </SplitterElement>
-          <SplitterElement>
+          <SplitterElement size={'auto'}>
             <Button>Button 2</Button>
           </SplitterElement>
           <SplitterElement>
