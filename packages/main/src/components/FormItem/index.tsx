@@ -52,11 +52,7 @@ const useStyles = createUseStyles(
   { name: 'FormItem' }
 );
 
-const renderLabel = (
-  label: string | ReactElement,
-  classes: Record<'label' | 'content', string>,
-  styles: CSSProperties
-) => {
+const renderLabel = (label: ReactNode, classes: Record<'label' | 'content', string>, styles: CSSProperties) => {
   if (typeof label === 'string') {
     return (
       <Label className={classes.label} style={styles} wrappingType={WrappingType.Normal}>
@@ -66,21 +62,20 @@ const renderLabel = (
   }
 
   if (isValidElement(label)) {
+    const { showColon, wrappingType, className, style, children } = label.props;
     return cloneElement<LabelPropTypes>(
       label,
       {
-        wrappingType: (label as ReactElement<LabelPropTypes>).props.wrappingType ?? WrappingType.Normal,
-        className: `${classes.label} ${(label as ReactElement<LabelPropTypes>).props.className ?? ''}`,
+        showColon: showColon ?? true,
+        wrappingType: wrappingType ?? WrappingType.Normal,
+        className: `${classes.label} ${className ?? ''}`,
         style: {
           gridColumnStart: styles.gridColumnStart,
           gridRowStart: styles.gridRowStart,
-          ...((label as ReactElement<LabelPropTypes>).props.style || {})
+          ...(style || {})
         }
       },
-      (label as ReactElement<LabelPropTypes>).props.children
-        ? // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-          `${(label as ReactElement<LabelPropTypes>).props.children}:`
-        : ''
+      children ?? ''
     );
   }
 
