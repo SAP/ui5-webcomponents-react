@@ -1,6 +1,5 @@
 import { useConsolidatedRef, useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
 import { createUseStyles } from 'react-jss';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { BusyIndicator } from '@ui5/webcomponents-react/dist/BusyIndicator';
 import { BusyIndicatorSize } from '@ui5/webcomponents-react/dist/BusyIndicatorSize';
@@ -9,6 +8,7 @@ import { Label } from '@ui5/webcomponents-react/dist/Label';
 import React, { forwardRef, ReactElement, RefObject } from 'react';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import styles from './FilterGroupItem.jss';
+import clsx from 'clsx';
 
 const useStyles = createUseStyles(styles, { name: 'FilterGroupItem' });
 
@@ -85,10 +85,7 @@ export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref:
   const isRtl = useIsRTL(filterGroupItemRef);
   const transformMarginRight = isRtl ? 'marginLeft' : 'marginRight';
 
-  const styleClasses = StyleClassHelper.of(inFB ? classes.filterItem : classes.filterItemDialog);
-  if (className) {
-    styleClasses.put(className);
-  }
+  const styleClasses = clsx(className, inFB ? classes.filterItem : classes.filterItemDialog);
 
   const inlineStyle = { [transformMarginRight]: '1rem', ...style };
 
@@ -99,7 +96,7 @@ export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref:
       title={tooltip}
       slot={slot}
       {...passThroughProps}
-      className={styleClasses.valueOf()}
+      className={styleClasses}
       style={inFB ? inlineStyle : emptyObject}
     >
       <div className={inFB ? classes.innerFilterItemContainer : classes.innerFilterItemContainerDialog}>

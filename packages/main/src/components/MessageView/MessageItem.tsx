@@ -1,5 +1,4 @@
 import { CssSizeVariables } from '@ui5/webcomponents-react-base/dist/CssSizeVariables';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { CustomListItem } from '@ui5/webcomponents-react/dist/CustomListItem';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
@@ -15,6 +14,7 @@ import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import React, { forwardRef, ReactNode, ReactNodeArray, Ref, useContext } from 'react';
 import { createUseStyles } from 'react-jss';
 import { getIconNameForType } from './utils';
+import clsx from 'clsx';
 
 export interface MessageItemPropTypes extends CommonProps {
   /**
@@ -144,17 +144,14 @@ const MessageItem = forwardRef((props: MessageItemPropTypes, ref: Ref<Ui5DomRef>
 
   const classes = useStyles();
 
-  const listItemClasses = StyleClassHelper.of(classes.listItem, Reflect.get(classes, `type${type}`)).putIfPresent(
-    className
+  const listItemClasses = clsx(
+    classes.listItem,
+    Reflect.get(classes, `type${type}`),
+    className,
+    subtitleText && classes.withSubtitle
   );
-  if (subtitleText) {
-    listItemClasses.put(classes.withSubtitle);
-  }
 
-  const messageClasses = StyleClassHelper.of(classes.message);
-  if (children) {
-    messageClasses.put(classes.withChildren);
-  }
+  const messageClasses = clsx(classes.message, children && classes.withChildren);
 
   const handleListItemClick = (e) => {
     if (children) {
@@ -171,10 +168,10 @@ const MessageItem = forwardRef((props: MessageItemPropTypes, ref: Ref<Ui5DomRef>
       data-type={type}
       type={children ? ListItemType.Active : ListItemType.Inactive}
       {...rest}
-      className={listItemClasses.className}
+      className={listItemClasses}
       ref={ref}
     >
-      <FlexBox alignItems={FlexBoxAlignItems.Center} className={messageClasses.className}>
+      <FlexBox alignItems={FlexBoxAlignItems.Center} className={messageClasses}>
         <div className={classes.iconContainer}>
           <Icon name={getIconNameForType(type as ValueState)} className={classes.icon} />
         </div>

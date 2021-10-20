@@ -1,6 +1,5 @@
 import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming.js';
 import { useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
@@ -45,6 +44,7 @@ import {
   getSectionById,
   safeGetChildrenArray
 } from './ObjectPageUtils';
+import clsx from 'clsx';
 
 addCustomCSS(
   'ui5-tabcontainer',
@@ -255,26 +255,18 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     if (!image) {
       return null;
     }
-    const headerImageClasses = StyleClassHelper.of(classes.headerImage);
-    if (isRTL) {
-      headerImageClasses.put(classes.headerImageRtl);
-    }
+    const headerImageClasses = clsx(classes.headerImage, isRTL && classes.headerImageRtl);
+
     if (typeof image === 'string') {
       return (
-        <span
-          className={headerImageClasses.className}
-          style={{ borderRadius: imageShapeCircle ? '50%' : 0, overflow: 'hidden' }}
-        >
+        <span className={headerImageClasses} style={{ borderRadius: imageShapeCircle ? '50%' : 0, overflow: 'hidden' }}>
           <img src={image} className={classes.image} alt="Company Logo" />
         </span>
       );
     } else {
-      if (image.props?.className) {
-        headerImageClasses.put(image.props?.className);
-      }
       return React.cloneElement(image, {
         size: AvatarSize.L,
-        className: headerImageClasses.className
+        className: clsx(headerImageClasses, image.props?.className)
       } as AvatarPropTypes);
     }
   }, [image, classes.headerImage, classes.headerImageRtl, classes.image, imageShapeCircle, isRTL]);
@@ -507,14 +499,12 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     }
   };
 
-  const objectPageClasses = StyleClassHelper.of(classes.objectPage, GlobalStyleClasses.sapScrollBar);
-  if (className) {
-    objectPageClasses.put(className);
-  }
-
-  if (mode === ObjectPageMode.IconTabBar) {
-    objectPageClasses.put(classes.iconTabBarMode);
-  }
+  const objectPageClasses = clsx(
+    classes.objectPage,
+    GlobalStyleClasses.sapScrollBar,
+    className,
+    mode === ObjectPageMode.IconTabBar && classes.iconTabBarMode
+  );
 
   const passThroughProps = usePassThroughHtmlProps(props, [
     'onSelectedSectionChange',
@@ -754,7 +744,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     <div
       data-component-name="ObjectPage"
       slot={slot}
-      className={objectPageClasses.toString()}
+      className={objectPageClasses}
       style={style}
       ref={objectPageRef}
       title={tooltip}
