@@ -50,6 +50,21 @@ The variant management was completely overhauled to comply with the UX guideline
 </VariantManagement>
 ```
 
+### ObjectPage
+
+The deprecated `onSelectedSectionChanged` event handler has been removed. Please use `onSelectedSectionChange` instead.
+
+### Removed all caps enum keys and values
+
+Removed all deprecated values and enum keys that consisted of uppercase letters only (`SCREAMING_SNAKE_CASE`).
+
+- **`MessageBoxActions`**: `ABORT`, `CANCEL`, `CLOSE`, `DELETE`, `IGNORE`, `NO`,`RETRY`,`YES` has been transformed to PascalCase notation.
+- **`MessageBoxTypes`**: `CONFIRM`, `ERROR`, `INFORMATION`, `SUCCESS`, `WARNING`, `HIGHLIGHT` has been transformed to PascalCase notation.
+
+- **`TableSelectionBehavior`:** `ROW`, `ROW_ONLY`, `ROW_SELECTOR` has been transformed to PascalCase notation.
+- **`TableSelectionMode`:** `NONE`, `SINGLE_SELECT`, `MULTI_SELECT` has been transformed to PascalCase notation.
+- **`TableVisibleRowCountMode`:** `FIXED`, `AUTO`, `INTERACTIVE` has been transformed to PascalCase notation.
+
 ## Migrating from 0.17.x to 0.18.0
 
 In this release, the UI5 Web Components have renamed lots of properties in order to pave the way to the 1.0.0 release.
