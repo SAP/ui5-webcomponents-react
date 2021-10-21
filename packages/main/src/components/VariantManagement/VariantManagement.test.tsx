@@ -17,10 +17,10 @@ const TwoVariantItems = [
 describe('VariantManagement', () => {
   test('Render without crashing', () => {
     const { rerender, getByTitle, getAllByText, getByText } = render(<VariantManagement />);
-    getByTitle('Select view');
+    getByTitle('Select View');
 
     rerender(<VariantManagement>{TwoVariantItems}</VariantManagement>);
-    getByTitle('Select view');
+    getByTitle('Select View');
     expect(getAllByText('VariantItem 2')).toHaveLength(2);
     getByText('VariantItem 1');
   });
@@ -38,7 +38,7 @@ describe('VariantManagement', () => {
     const li = wcListItem.shadowRoot.querySelector('li');
 
     const popover: Ui5PopoverDomRef = document.querySelector('ui5-responsive-popover');
-    const btn = getByTitle('Select view');
+    const btn = getByTitle('Select View');
     const heading = getAllByText('VariantItem 2')[0];
     const closeBtn = getByText('Cancel');
 
@@ -70,7 +70,7 @@ describe('VariantManagement', () => {
   test('Disabled', () => {
     const { container, getByTitle } = render(<VariantManagement disabled>{TwoVariantItems}</VariantManagement>);
 
-    const btn = getByTitle('Select view');
+    const btn = getByTitle('Select View');
     const headingContainer = container.children[0];
 
     expect(headingContainer).toHaveClass('VariantManagement-disabled');
@@ -87,7 +87,7 @@ describe('VariantManagement', () => {
     const li = wcListItem.shadowRoot.querySelector('li');
 
     const popover: Ui5PopoverDomRef = document.querySelector('ui5-responsive-popover');
-    const btn = getByTitle('Select view');
+    const btn = getByTitle('Select View');
     fireEvent.click(btn);
     expect(popover.isOpen()).toBeTruthy();
     fireEvent.click(li);
@@ -126,7 +126,7 @@ describe('VariantManagement', () => {
     expect(cb.mock.results[0].value.variantItem).toBeInTheDocument();
 
     const popover: Ui5PopoverDomRef = document.querySelector('ui5-responsive-popover');
-    const btn = getByTitle('Select view');
+    const btn = getByTitle('Select View');
     fireEvent.click(btn);
     expect(popover.isOpen()).toBeTruthy();
     fireEvent.click(li);
@@ -171,7 +171,7 @@ describe('VariantManagement', () => {
       </VariantManagement>,
       ['ui5-responsive-popover']
     );
-    const btn = getByTitle('Select view');
+    const btn = getByTitle('Select View');
     fireEvent.click(btn);
     const popover: Ui5PopoverDomRef = document.querySelector('ui5-responsive-popover');
     await waitFor(() => popover.shadowRoot.querySelector('h2'));
@@ -375,7 +375,7 @@ describe('VariantManagement', () => {
           if (global && hideDelete !== false) {
             expect(row.querySelector(`ui5-button`)).not.toBeInTheDocument();
           } else {
-            expect(row.querySelector(`ui5-button`)).toHaveAttribute('title', 'Delete view');
+            expect(row.querySelector(`ui5-button`)).toHaveAttribute('title', 'Delete View');
           }
         }
 
@@ -405,7 +405,7 @@ describe('VariantManagement', () => {
     const manageBtn = getByText('Manage');
     fireEvent.click(manageBtn);
 
-    const wcRadioBtn = screen.getAllByLabelText('Use as standard view')[0];
+    const wcRadioBtn = screen.getAllByLabelText('Use as Standard View')[0];
     const radioBtn = await waitFor(() => wcRadioBtn.shadowRoot.querySelector('div[role="radio"]'));
 
     const wcCheckbox = screen.getAllByLabelText('Apply Automatically')[0];
@@ -446,8 +446,8 @@ describe('VariantManagement', () => {
     fireEvent.click(manageBtn);
     const saveBtn = screen.getByText('Save');
 
-    const row1DeleteBtn = screen.getAllByTitle('Delete view')[0];
-    const row2DeleteBtn = screen.getAllByTitle('Delete view')[1];
+    const row1DeleteBtn = screen.getAllByTitle('Delete View')[0];
+    const row2DeleteBtn = screen.getAllByTitle('Delete View')[1];
     fireEvent.click(row1DeleteBtn);
     fireEvent.click(row2DeleteBtn);
 

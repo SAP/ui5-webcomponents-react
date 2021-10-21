@@ -120,10 +120,10 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
               </ui5-title>
             </div>
             <ui5-button
-              aria-label="Select view"
+              aria-label="Select View"
               design="Transparent"
               icon="navigation-down-arrow"
-              title="Select view"
+              title="Select View"
               ui5-button=""
             />
           </div>
