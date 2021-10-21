@@ -9,7 +9,17 @@ import { useEffect, useState } from 'react';
 <Meta
   title="Modals & Popovers / MessageBox"
   component={MessageBox}
-  argTypes={{ ref: { type: null } }}
+  argTypes={{
+    header: {
+      control: { disable: true }
+    },
+    actions: {
+      control: { disable: true }
+    },
+    icon: {
+      control: { disable: true }
+    }
+  }}
   args={{
     open: false,
     type: MessageBoxTypes.Confirm,
