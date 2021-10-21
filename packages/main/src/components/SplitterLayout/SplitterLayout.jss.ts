@@ -44,7 +44,7 @@ const styles = {
     position: 'absolute',
     display: 'flex',
     width: props?.width,
-    cursor: 'col-resize',
+    cursor: 'row-resize',
     height: '16px',
     border: 'none',
     backgroundColor: ThemingParameters.sapShell_Background,

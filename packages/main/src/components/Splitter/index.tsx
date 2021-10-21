@@ -45,28 +45,18 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
     [start.current, setIsDragging]
   );
 
-  const getPreviousSiblings = (elem, sibling: string, filter?): number[] => {
-    const sibs = [];
-    while ((elem = elem[sibling])) {
-      if (elem.nodeType === 3) continue; // text node
-      if ((!filter || filter(elem)) && elem.className.includes('splitterVertical' || 'splitterHorizontal'))
-        sibs.push(elem.getBoundingClientRect()?.[positionKeys[0]]);
-    }
-    return sibs;
-  };
-
   const handleSplitterMove = useCallback(
     (e) => {
-      const nextPositionLeft = splitterRef.current?.getBoundingClientRect()?.[positionKeys[0]];
+      const nextPosition = splitterRef.current?.getBoundingClientRect()?.[positionKeys[0]];
       const previousSibling = splitterRef.current?.previousSibling;
+      const prevSiblingOffset = (previousSibling as HTMLElement).getBoundingClientRect()?.[positionKeys[0]];
       const nextSibling = splitterRef.current?.nextSibling;
-      const prevSiblingLeft = getPreviousSiblings(splitterRef.current, 'previousSibling')?.[0] ?? 0;
 
       if (
-        nextPositionLeft > prevSiblingLeft &&
-        nextPositionLeft < (nextSibling as HTMLElement).getBoundingClientRect()?.[positionKeys[1]] - 32
+        nextPosition > prevSiblingOffset &&
+        nextPosition < (nextSibling as HTMLElement).getBoundingClientRect()?.[positionKeys[1]] - 32
       ) {
-        (previousSibling as HTMLElement).style.flex = `0 0 ${nextPositionLeft - prevSiblingLeft}px`;
+        (previousSibling as HTMLElement).style.flex = `0 0 ${nextPosition - prevSiblingOffset + 17}px`;
         if (nextSibling.nextSibling) {
           (nextSibling as HTMLElement).style.flex = `0 0 ${
             (nextSibling.nextSibling as HTMLElement).getBoundingClientRect()?.[positionKeys[0]] -
@@ -119,20 +109,17 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
   }, [isDragging]);
 
   useEffect(() => {
-    const splitterPosLeft =
-      splitterRef.current?.getBoundingClientRect()?.[positionKeys[0]] + window[`scroll${positionKeys[2]}`];
+    const splitterPos = splitterRef.current?.getBoundingClientRect()?.[positionKeys[0]];
 
     if (
-      splitterPosLeft <
-        (splitterRef.current?.previousSibling as HTMLElement).getBoundingClientRect()?.[positionKeys[0]] ||
-      splitterPosLeft >
-        (splitterRef.current?.nextSibling as HTMLElement).getBoundingClientRect()?.[positionKeys[1]] - 32
+      splitterPos < (splitterRef.current?.previousSibling as HTMLElement).getBoundingClientRect()?.[positionKeys[0]] ||
+      splitterPos > (splitterRef.current?.nextSibling as HTMLElement).getBoundingClientRect()?.[positionKeys[1]] - 32
     ) {
       setIsDragging(false);
     }
 
-    if (!isDragging && splitterPosLeft > 0) {
-      setSplitterPosition({ prev: splitterPosLeft.toString(), [positionKeys[0]]: splitterPosLeft.toString() });
+    if (!isDragging && splitterPos > 0) {
+      setSplitterPosition({ prev: splitterPos.toString(), [positionKeys[0]]: splitterPos.toString() });
     }
   }, [splitterRef.current?.getBoundingClientRect()?.[positionKeys[0]], isDragging]);
 
