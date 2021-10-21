@@ -61,23 +61,16 @@ const getRowProps = (rowProps, { row, instance }) => {
       onRowClick(enrichEventWithDetails(e, { row }));
     }
 
-    if (
-      webComponentsReactProperties.selectionMode === TableSelectionMode.NONE ||
-      webComponentsReactProperties.selectionMode === TableSelectionMode.None
-    ) {
+    if (webComponentsReactProperties.selectionMode === TableSelectionMode.None) {
       return;
     }
 
     // dont continue if the row was clicked and selection mode is row selector only
-    if (
-      (selectionBehavior === TableSelectionBehavior.ROW_SELECTOR ||
-        selectionBehavior === TableSelectionBehavior.RowSelector) &&
-      !selectionCellClick
-    ) {
+    if (selectionBehavior === TableSelectionBehavior.RowSelector && !selectionCellClick) {
       return;
     }
 
-    if (selectionMode === TableSelectionMode.SINGLE_SELECT || selectionMode === TableSelectionMode.SingleSelect) {
+    if (selectionMode === TableSelectionMode.SingleSelect) {
       for (const selectedRow of selectedFlatRows) {
         if (selectedRow.id !== row.id) {
           toggleRowSelected(selectedRow.id, false);
@@ -94,7 +87,7 @@ const getRowProps = (rowProps, { row, instance }) => {
         selectedFlatRows: !row.isSelected ? [row.id] : [],
         allRowsSelected: false
       };
-      if (selectionMode === TableSelectionMode.MULTI_SELECT || selectionMode === TableSelectionMode.MultiSelect) {
+      if (selectionMode === TableSelectionMode.MultiSelect) {
         const isRowSelected = selectionCellClick ? row.isSelected : !row.isSelected;
         if (selectionCellClick) {
           payload.isSelected = row.isSelected;
