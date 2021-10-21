@@ -12,7 +12,8 @@ import { SplitterElement } from '@ui5/webcomponents-react/dist/SplitterElement';
   argTypes={{
     children: { control: { disable: true } },
     height: { control: { disable: true } },
-    width: { control: { disable: true } }
+    width: { control: { disable: true } },
+    orientation: { control: { disable: true } }
   }}
 />
 
@@ -26,7 +27,7 @@ import { SplitterElement } from '@ui5/webcomponents-react/dist/SplitterElement';
   <Story name="Default">
     {(args) => {
       return (
-        <SplitterLayout orientation={'horizontal'} {...args} width={'800px'} height={'700px'}>
+        <SplitterLayout orientation={'horizontal'} {...args} width={'400px'} height={'800px'}>
           <SplitterElement size={'100px'}>
             <Button>Button 1</Button>
           </SplitterElement>

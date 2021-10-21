@@ -29,6 +29,8 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
   const [positionKeys] = useState(orientation === 'vertical' ? ['left', 'right', 'X'] : ['top', 'bottom', 'Y']);
   const [splitterPosition, setSplitterPosition] = useState({ prev: position, [positionKeys[0]]: position });
   const [isDragging, setIsDragging] = useState(false);
+  const [isPostCollapsed, setIsPostCollapsed] = useState(true);
+  const [isPreCollapsed, setIsPreCollapsed] = useState(true);
   const [mountTouchEvents, setMountTouchEvents] = useState(false);
 
   const gripIconClass = orientation === 'vertical' ? classes.gripIconVertical : classes.gripIconHorizontal;
@@ -112,10 +114,37 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
     const splitterPos = splitterRef.current?.getBoundingClientRect()?.[positionKeys[0]];
 
     if (
-      splitterPos < (splitterRef.current?.previousSibling as HTMLElement).getBoundingClientRect()?.[positionKeys[0]] ||
-      splitterPos > (splitterRef.current?.nextSibling as HTMLElement).getBoundingClientRect()?.[positionKeys[1]] - 32
+      splitterPos < (splitterRef.current?.previousSibling as HTMLElement).getBoundingClientRect()?.[positionKeys[0]]
     ) {
-      setIsDragging(false);
+      if (!isPreCollapsed) {
+        setIsPreCollapsed(true);
+        setIsDragging(false);
+      }
+    }
+
+    if (
+      splitterPos >
+      (splitterRef.current?.nextSibling as HTMLElement).getBoundingClientRect()?.[positionKeys[1]] - 32
+    ) {
+      if (!isPostCollapsed) {
+        setIsPostCollapsed(true);
+        setIsDragging(false);
+      }
+    }
+
+    if (
+      splitterPos - (splitterRef.current?.previousSibling as HTMLElement).getBoundingClientRect()?.[positionKeys[0]] >
+      1
+    ) {
+      setIsPreCollapsed(false);
+    }
+
+    if (
+      isPostCollapsed &&
+      splitterPos - (splitterRef.current?.nextSibling as HTMLElement).getBoundingClientRect()?.[positionKeys[1]] + 32 <
+        -1
+    ) {
+      setIsPostCollapsed(false);
     }
 
     if (!isDragging && splitterPos > 0) {

@@ -86,11 +86,11 @@ const styles = {
     top: 'calc(50% - 8px)',
     '&:hover': {
       '&:before': {
-        width: `calc(${props?.height} / 2 - 14px)`,
+        width: `calc(${props?.width} / 2 - 14px)`,
         transition: 'width 0.15s ease-in'
       },
       '&:after': {
-        width: `calc(${props?.height} / 2 - 16px)`,
+        width: `calc(${props?.width} / 2 - 16px)`,
         transition: 'width 0.15s ease-in'
       }
     },
@@ -101,8 +101,8 @@ const styles = {
       width: '4rem'
     },
     '&:before': {
-      top: props?.orientation === 'vertical' ? '130%' : 'calc(50%)',
-      left: props?.orientation === 'vertical' ? 'calc(50%)' : '130%',
+      top: 'calc(50%)',
+      left: '130%',
       backgroundImage: `linear-gradient(to right, ${ThemingParameters.sapHighlightColor}, rgba(8,84,160,0))`
     },
     '&:after': {
