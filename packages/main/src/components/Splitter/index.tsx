@@ -58,7 +58,7 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
         nextPosition > prevSiblingOffset &&
         nextPosition < (nextSibling as HTMLElement).getBoundingClientRect()?.[positionKeys[1]] - 32
       ) {
-        (previousSibling as HTMLElement).style.flex = `0 0 ${nextPosition - prevSiblingOffset + 17}px`;
+        (previousSibling as HTMLElement).style.flex = `0 0 ${nextPosition - prevSiblingOffset + 16}px`;
         if (nextSibling.nextSibling) {
           (nextSibling as HTMLElement).style.flex = `0 0 ${
             (nextSibling.nextSibling as HTMLElement).getBoundingClientRect()?.[positionKeys[0]] -

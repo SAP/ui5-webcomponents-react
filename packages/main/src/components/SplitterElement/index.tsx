@@ -16,9 +16,8 @@ export interface SplitterElementPropTypes extends CommonProps {
 }
 
 const SplitterElement = forwardRef((props: SplitterElementPropTypes, ref: RefObject<HTMLDivElement>) => {
-  const { children, style, tooltip, className } = props;
+  const { children, style, tooltip, className, ...rest } = props;
 
-  const passThroughProps = usePassThroughHtmlProps(props);
   const containerContext = useContext(ThemeContext);
 
   const classes = useStyles({ ...props, ...containerContext });
@@ -26,7 +25,7 @@ const SplitterElement = forwardRef((props: SplitterElementPropTypes, ref: RefObj
     containerContext?.orientation === 'vertical' ? classes.splitterElementVertical : classes.splitterElementHorizontal;
 
   return (
-    <div ref={ref} className={className ?? splitterElementClass} title={tooltip} style={style} {...passThroughProps}>
+    <div ref={ref} className={className ?? splitterElementClass} title={tooltip} style={style} {...rest}>
       {children}
     </div>
   );

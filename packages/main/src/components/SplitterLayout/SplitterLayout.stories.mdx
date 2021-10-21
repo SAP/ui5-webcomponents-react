@@ -24,11 +24,34 @@ import { SplitterElement } from '@ui5/webcomponents-react/dist/SplitterElement';
 ## Example
 
 <Canvas>
-  <Story name="Default">
+  <Story name="Vertical Layout">
     {(args) => {
       return (
-        <SplitterLayout orientation={'horizontal'} {...args} width={'400px'} height={'800px'}>
+        <SplitterLayout orientation={'vertical'} {...args} width={'800px'} height={'400px'}>
+          <SplitterElement size={'400px'}>
+            <Button>Button 1</Button>
+          </SplitterElement>
+          <SplitterElement size={'20%'}>
+            <Button>Button 2</Button>
+          </SplitterElement>
           <SplitterElement size={'100px'}>
+            <Button>Button 3</Button>
+          </SplitterElement>
+          <SplitterElement>
+            <Button>Button 4</Button>
+          </SplitterElement>
+        </SplitterLayout>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Horizontal Layout">
+    {(args) => {
+      return (
+        <SplitterLayout orientation={'horizontal'} {...args} width={'80vw'} height={'500px'}>
+          <SplitterElement>
             <Button>Button 1</Button>
           </SplitterElement>
           <SplitterElement>
@@ -36,9 +59,6 @@ import { SplitterElement } from '@ui5/webcomponents-react/dist/SplitterElement';
           </SplitterElement>
           <SplitterElement>
             <Button>Button 3</Button>
-          </SplitterElement>
-          <SplitterElement>
-            <Button>Button 4</Button>
           </SplitterElement>
         </SplitterLayout>
       );

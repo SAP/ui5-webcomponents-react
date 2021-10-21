@@ -3,14 +3,18 @@ import { SplitterElementPropTypes } from '@ui5/webcomponents-react/dist/Splitter
 import React, { ReactElement, useMemo } from 'react';
 import { safeGetChildrenArray } from '../ObjectPage/ObjectPageUtils';
 
+const percentageSizeToTotal = (totalSize: string, size: string) => {
+  const sizeNumber = size.replace('%', '');
+  return `calc(${totalSize} * (${sizeNumber} / 100))`;
+};
+
 const calculateAutoSizes = (childrenArray: ReactElement<SplitterElementPropTypes>[], size: string) => {
   const childrenWithouSizeCount =
     childrenArray.filter((child) => !child?.props?.size || child?.props?.size === 'auto')?.length ?? 0;
   const childrenWithSizes = childrenArray
     .map((child) => {
       if (child.props?.size && child.props?.size.includes('%')) {
-        const absoluteSize = child.props?.size.replace('%', '');
-        return `calc(${size} * (${absoluteSize} / 100))`;
+        return percentageSizeToTotal(size, child.props?.size);
       }
       return child.props?.size;
     })
@@ -42,7 +46,9 @@ export const useConcatSplitterElements = (
       const splitterElementChild = childrenArray[index + splitterCount];
       nextSplitterPosition = `calc(${
         splitterElementChild?.props?.size && splitterElementChild?.props?.size !== 'auto'
-          ? splitterElementChild?.props?.size
+          ? splitterElementChild.props?.size.includes('%')
+            ? percentageSizeToTotal(orientation === 'vertical' ? width : height, splitterElementChild?.props?.size)
+            : splitterElementChild?.props?.size
           : remainingSizePerChild
       } + ${nextSplitterPosition})`;
       if (
