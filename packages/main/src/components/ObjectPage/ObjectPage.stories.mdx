@@ -29,7 +29,7 @@ import { DocsHeader } from '@shared/stories/DocsHeader';
 import '@ui5/webcomponents-icons/dist/activate.js';
 import SampleImage from './DemoImage.png';
 import '@ui5/webcomponents-icons/dist/wrench.js';
-import '@ui5/webcomponents-fiori/dist/illustrations/NoData.js';
+import '@ui5/webcomponents-fiori/dist/illustrations/UnableToLoad.js';
 
 <Meta
   title="Layouts & Floorplans / ObjectPage"
@@ -269,7 +269,7 @@ import '@ui5/webcomponents-fiori/dist/illustrations/NoData.js';
 
 <ArgsTable story="Default" />
 
-## ObjectPage with IllustratedMessage (`NoData`) placeholder
+## ObjectPage with IllustratedMessage (`UnableToLoad`) placeholder
 
 <Canvas>
   <Story name="with IllustratedMessage">
@@ -279,7 +279,7 @@ import '@ui5/webcomponents-fiori/dist/illustrations/NoData.js';
           image={args.image}
           headerTitle={args.headerTitle}
           imageShapeCircle
-          illustratedMessage={<IllustratedMessage name={IllustrationMessageType.NoData} />}
+          placeholder={<IllustratedMessage name={IllustrationMessageType.UnableToLoad} />}
         />
       );
     }}
