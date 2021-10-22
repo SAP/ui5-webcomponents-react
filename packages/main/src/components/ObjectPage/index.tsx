@@ -3,7 +3,7 @@ import { useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
-import { debounce, deprecationNotice, enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
+import { debounce, enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { AvatarPropTypes } from '@ui5/webcomponents-react/dist/Avatar';
 import { AvatarSize } from '@ui5/webcomponents-react/dist/AvatarSize';
 import { GlobalStyleClasses } from '@ui5/webcomponents-react/dist/GlobalStyleClasses';
@@ -95,15 +95,6 @@ export interface ObjectPagePropTypes extends CommonProps {
   selectedSubSectionId?: string;
   /**
    * Fired when the selected section changes.
-   *
-   * __Note:__ This prop is deprecated and will be removed in `v0.19.0`. Please use `onSelectedSectionChange` instead.
-   * @deprecated
-   */
-  onSelectedSectionChanged?: (
-    event: CustomEvent<{ selectedSectionIndex: number; selectedSectionId: string; section: HTMLDivElement }>
-  ) => void;
-  /**
-   * Fired when the selected section changes.
    */
   onSelectedSectionChange?: (
     event: CustomEvent<{ selectedSectionIndex: number; selectedSectionId: string; section: HTMLDivElement }>
@@ -178,7 +169,6 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     showHideHeaderButton,
     children,
     onSelectedSectionChange,
-    onSelectedSectionChanged,
     selectedSectionId,
     alwaysShowContentHeader,
     showTitleInHeaderContent,
@@ -189,17 +179,6 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
   } = props;
 
   const classes = useStyles();
-
-  useEffect(() => {
-    if (onSelectedSectionChanged) {
-      deprecationNotice(
-        'onSelectedSectionChanged',
-        `\`onSelectedSectionChanged\` is deprecated. Please use \`onSelectedSectionChange\` instead.`
-      );
-    }
-  }, [onSelectedSectionChanged]);
-
-  const internalOnSelectedSectionChange = onSelectedSectionChange ?? onSelectedSectionChanged;
 
   const firstSectionId = safeGetChildrenArray<ReactElement>(children)[0]?.props?.id;
 
@@ -219,8 +198,8 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
 
   const prevInternalSelectedSectionId = useRef(internalSelectedSectionId);
   const fireOnSelectedChangedEvent = (targetEvent, index, id, section) => {
-    if (typeof internalOnSelectedSectionChange === 'function' && prevInternalSelectedSectionId.current !== id) {
-      internalOnSelectedSectionChange(
+    if (typeof onSelectedSectionChange === 'function' && prevInternalSelectedSectionId.current !== id) {
+      onSelectedSectionChange(
         enrichEventWithDetails(targetEvent, {
           selectedSectionIndex: parseInt(index, 10),
           selectedSectionId: id,
@@ -361,7 +340,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
       scrollEvent.current = targetEvent;
       fireOnSelectedChangedEvent(targetEvent, index, newSelectionSectionId, section);
     },
-    [internalOnSelectedSectionChange, setInternalSelectedSectionId, isProgrammaticallyScrolled, scrollToSection]
+    [onSelectedSectionChange, setInternalSelectedSectionId, isProgrammaticallyScrolled, scrollToSection]
   );
 
   // do internal scrolling
