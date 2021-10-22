@@ -2,7 +2,7 @@ import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils
 import { TableSelectionBehavior } from '@ui5/webcomponents-react/dist/TableSelectionBehavior';
 import { TableSelectionMode } from '@ui5/webcomponents-react/dist/TableSelectionMode';
 
-const tagNamesWhichShouldNotSelectARow = new Set([
+export const tagNamesWhichShouldNotSelectARow = new Set([
   'UI5-AVATAR',
   'UI5-BUTTON',
   'UI5-CALENDAR',

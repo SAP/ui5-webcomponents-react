@@ -26,6 +26,7 @@ import { DefaultLoadingComponent } from './defaults/LoadingComponent';
 import { DefaultNoDataComponent } from './defaults/NoDataComponent';
 import { useCallback, useEffect, useReducer, useRef, useState } from 'react';
 import { useRowDisableSelection } from '@ui5/webcomponents-react/dist/AnalyticalTableHooks';
+import { useIndeterminateRowSelection } from './pluginHooks/useIndeterminateRowSelection';
 
 <Meta
   title="Data Display / AnalyticalTable"
@@ -398,9 +399,9 @@ For more details on this behavior you can double check the [react-table docs](ht
 ## Tree Table
 
 <Canvas>
-  <Story name="Tree Table" args={{ data: generateData(15, true), isTreeTable: true }}>
+  <Story name="Tree Table" args={{ data: generateData(3, true), isTreeTable: true }}>
     {(args) => {
-      const [collapsed, setCollapsed] = useReducer((coll) => !coll, true);
+      const [collapsed, setCollapsed] = useReducer((coll) => !coll, false);
       return (
         <Panel collapsed={collapsed} onToggle={setCollapsed} headerText="Show Tree Table">
           {collapsed ? (
@@ -408,7 +409,14 @@ For more details on this behavior you can double check the [react-table docs](ht
               <span style={{ height: '800px' }} />
             </BusyIndicator>
           ) : (
-            <AnalyticalTable {...args} />
+            <AnalyticalTable
+              selectionMode="MultiSelect"
+              data={args.data}
+              columns={args.columns}
+              isTreeTable
+              tableHooks={[useIndeterminateRowSelection(true)]}
+              selectedRowIds={{ '1.1': true, '1.2': false, '2.1.2.1.3.4': true }}
+            />
           )}
         </Panel>
       );
