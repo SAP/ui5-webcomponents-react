@@ -55,7 +55,7 @@ addCustomCSS(
   `
 );
 
-export interface ObjectPagePropTypes extends CommonProps {
+export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
   /**
    * Defines the the upper, always static, title section of the `ObjectPage`.
    *
