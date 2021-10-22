@@ -55,7 +55,7 @@ addCustomCSS(
   `
 );
 
-export interface ObjectPagePropTypes extends CommonProps {
+export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
   /**
    * Defines the the upper, always static, title section of the `ObjectPage`.
    *
@@ -142,11 +142,11 @@ export interface ObjectPagePropTypes extends CommonProps {
     };
   };
   /**
-   * If set, only the specified `IllustratedMessage` will be displayed as content of the `ObjectPage`, no sections or sub-sections will be rendered.
+   * If set, only the specified placeholder will be displayed as content of the `ObjectPage`, no sections or sub-sections will be rendered.
    *
-   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `IllustratedMessage` in order to preserve the intended design.
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use placeholder components like the `IllustratedMessage` or custom skeletons pages in order to preserve the intended design.
    */
-  illustratedMessage?: ReactNode;
+  placeholder?: ReactNode;
 }
 
 const useStyles = createUseStyles(styles, { name: 'ObjectPage' });
@@ -175,7 +175,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     headerContent,
     headerContentPinnable,
     a11yConfig,
-    illustratedMessage
+    placeholder
   } = props;
 
   const classes = useStyles();
@@ -777,7 +777,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
           />
         </div>
       )}
-      {!illustratedMessage && (
+      {!placeholder && (
         <div
           className={classes.tabContainer}
           data-component-name="ObjectPageTabContainer"
@@ -831,8 +831,8 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
         </div>
       )}
       <div data-component-name="ObjectPageContent" className={responsivePaddingClass}>
-        {illustratedMessage
-          ? illustratedMessage
+        {placeholder
+          ? placeholder
           : mode === ObjectPageMode.IconTabBar
           ? getSectionById(children, internalSelectedSectionId)
           : children}

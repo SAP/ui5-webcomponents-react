@@ -226,7 +226,7 @@ describe('ObjectPage', () => {
       renderComponent({
         headerTitle,
         headerContent,
-        illustratedMessage: <IllustratedMessage data-testid="no-data" name={IllustrationMessageType.NoData} />
+        placeholder: <IllustratedMessage data-testid="no-data" name={IllustrationMessageType.NoData} />
       })
     );
     expect(queryByText('Title Section 2')).toBeNull();
@@ -238,7 +238,7 @@ describe('ObjectPage', () => {
       renderComponent({
         headerTitle,
         headerContent,
-        illustratedMessage: undefined
+        placeholder: undefined
       })
     );
     expect(queryByText('Title Section 2')).toBeVisible();
