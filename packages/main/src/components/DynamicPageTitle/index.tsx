@@ -1,7 +1,6 @@
 import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
 import { useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { debounce } from '@ui5/webcomponents-react-base/dist/Utils';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
@@ -97,7 +96,8 @@ const DynamicPageTitle = forwardRef((props: DynamicPageTitlePropTypes, ref: Ref<
     navigationActions,
     className,
     style,
-    tooltip
+    tooltip,
+    ...rest
   } = props as InternalProps;
 
   const classes = useStyles();
@@ -113,8 +113,6 @@ const DynamicPageTitle = forwardRef((props: DynamicPageTitlePropTypes, ref: Ref<
       isMounted.current = false;
     };
   }, [isMounted]);
-
-  const passThroughProps = usePassThroughHtmlProps(props, ['onToggleHeaderContentVisibility', 'onClick']);
 
   const onHeaderClick = useCallback(
     (e) => {
@@ -162,7 +160,7 @@ const DynamicPageTitle = forwardRef((props: DynamicPageTitlePropTypes, ref: Ref<
       tooltip={tooltip}
       data-component-name="DynamicPageTitle"
       onClick={onHeaderClick}
-      {...passThroughProps}
+      {...rest}
     >
       {(breadcrumbs || (navigationActions && showNavigationInTopArea)) && (
         <FlexBox justifyContent={FlexBoxJustifyContent.SpaceBetween} data-component-name="DynamicPageTitleBreadcrumbs">

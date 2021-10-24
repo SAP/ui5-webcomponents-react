@@ -1,6 +1,5 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/dist/components/ChartContainer';
 import { ChartDataLabel } from '@ui5/webcomponents-react-charts/dist/components/ChartDataLabel';
@@ -91,7 +90,8 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
     className,
     tooltip,
     slot,
-    ChartPlaceholder
+    ChartPlaceholder,
+    ...rest
   } = props;
 
   const chartConfig = useMemo(() => {
@@ -159,8 +159,6 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
     [onDataPointClick, preventOnClickCall.current]
   );
 
-  const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick', 'onClick']);
-
   return (
     <ChartContainer
       dataset={dataset}
@@ -172,7 +170,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
       tooltip={tooltip}
       slot={slot}
       resizeDebounce={chartConfig.resizeDebounce}
-      {...passThroughProps}
+      {...rest}
     >
       <RadarChartLib
         onClick={onClickInternal}

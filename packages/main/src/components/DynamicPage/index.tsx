@@ -1,5 +1,4 @@
 import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
-import { useConsolidatedRef, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
@@ -106,9 +105,9 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
     children,
     className,
     footer,
-    a11yConfig
+    a11yConfig,
+    ...rest
   } = props;
-  const passThroughProps = usePassThroughHtmlProps(props, ['onScroll']);
 
   const anchorBarRef = useRef<HTMLDivElement>();
   const dynamicPageRef = useConsolidatedRef<HTMLDivElement>(ref);
@@ -231,7 +230,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
       className={dynamicPageClasses}
       style={style}
       onScroll={onDynamicPageScroll}
-      {...passThroughProps}
+      {...rest}
     >
       {headerTitle &&
         cloneElement(headerTitle, {

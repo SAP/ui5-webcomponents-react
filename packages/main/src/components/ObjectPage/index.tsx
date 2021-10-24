@@ -2,7 +2,6 @@ import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming.js';
 import { useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { debounce, enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { AvatarPropTypes } from '@ui5/webcomponents-react/dist/Avatar';
 import { AvatarSize } from '@ui5/webcomponents-react/dist/AvatarSize';
@@ -175,7 +174,8 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     headerContent,
     headerContentPinnable,
     a11yConfig,
-    placeholder
+    placeholder,
+    ...rest
   } = props;
 
   const classes = useStyles();
@@ -485,12 +485,6 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     mode === ObjectPageMode.IconTabBar && classes.iconTabBarMode
   );
 
-  const passThroughProps = usePassThroughHtmlProps(props, [
-    'onSelectedSectionChange',
-    'onSelectedSectionChanged',
-    'onScroll'
-  ]);
-
   useEffect(() => {
     const sections = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
     const objectPageHeight = objectPageRef.current?.clientHeight ?? 1000;
@@ -728,7 +722,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
       ref={objectPageRef}
       title={tooltip}
       onScroll={onObjectPageScroll}
-      {...passThroughProps}
+      {...rest}
     >
       <header
         onMouseOver={onHoverToggleButton}

@@ -1,5 +1,4 @@
 import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import React, { forwardRef, ReactNode, ReactNodeArray, Ref, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
@@ -31,9 +30,7 @@ const useStyles = createUseStyles(DynamicPageHeaderStyles, { name: 'DynamicPageH
  * This component can be collapsed and pinned by the anchorbar.
  */
 const DynamicPageHeader = forwardRef((props: InternalProps, ref: Ref<HTMLDivElement>) => {
-  const { children, headerPinned, topHeaderHeight, tooltip, className, style } = props;
-
-  const passThroughProps = usePassThroughHtmlProps(props);
+  const { children, headerPinned, topHeaderHeight, tooltip, className, style, ...rest } = props;
 
   const headerStyles = useMemo(() => {
     if (headerPinned) {
@@ -53,7 +50,7 @@ const DynamicPageHeader = forwardRef((props: InternalProps, ref: Ref<HTMLDivElem
     <div
       title={tooltip}
       ref={ref}
-      {...passThroughProps}
+      {...rest}
       className={classNames}
       data-component-name="DynamicPageHeader"
       style={headerStyles}

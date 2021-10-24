@@ -1,6 +1,5 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import React, { forwardRef, ReactNode, ReactNodeArray, RefObject } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
@@ -45,7 +44,7 @@ const useStyles = createUseStyles(styles, { name: 'ObjectPageSubSection' });
  * __Note:__ This component should only be used inside an `ObjectPageSection` component.
  */
 const ObjectPageSubSection = forwardRef((props: ObjectPageSubSectionPropTypes, ref: RefObject<HTMLDivElement>) => {
-  const { children, id, titleText, className, style, tooltip } = props;
+  const { children, id, titleText, className, style, tooltip, ...rest } = props;
 
   if (!id) {
     throw new EmptyIdPropException('ObjectPageSubSection requires a unique ID property!');
@@ -56,7 +55,6 @@ const ObjectPageSubSection = forwardRef((props: ObjectPageSubSectionPropTypes, r
 
   const classes = useStyles();
   const subSectionClassName = clsx(classes.objectPageSubSection, className);
-  const passThroughProps = usePassThroughHtmlProps(props, ['id']);
 
   return (
     <div
@@ -65,7 +63,7 @@ const ObjectPageSubSection = forwardRef((props: ObjectPageSubSectionPropTypes, r
       style={style}
       title={tooltip}
       tabIndex={-1}
-      {...passThroughProps}
+      {...rest}
       className={subSectionClassName}
       id={htmlId}
     >

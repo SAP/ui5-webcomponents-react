@@ -1,4 +1,3 @@
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import React, { CSSProperties, forwardRef, ReactNode, ReactNodeArray, Ref } from 'react';
 import { createUseStyles } from 'react-jss';
@@ -88,12 +87,11 @@ const ResponsiveGridLayout = forwardRef((props: ResponsiveGridLayoutPropTypes, r
     style,
     className,
     tooltip,
-    title
+    title,
+    ...rest
   } = props;
   const classes = useStyles();
   const finalClassNames = clsx(classes.container, className);
-
-  const passThroughProps = usePassThroughHtmlProps(props);
 
   return (
     <div
@@ -115,7 +113,7 @@ const ResponsiveGridLayout = forwardRef((props: ResponsiveGridLayoutPropTypes, r
           ...style
         } as CSSProperties
       }
-      {...passThroughProps}
+      {...rest}
     >
       {children}
     </div>

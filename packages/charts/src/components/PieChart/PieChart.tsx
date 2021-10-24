@@ -1,5 +1,4 @@
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/dist/components/ChartContainer';
 import { PieChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/PieChartPlaceholder';
@@ -91,7 +90,8 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
     className,
     tooltip,
     slot,
-    ChartPlaceholder
+    ChartPlaceholder,
+    ...rest
   } = props;
 
   const chartConfig = useMemo(() => {
@@ -251,8 +251,6 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
     return null;
   }, [showActiveSegmentDataLabel, chartConfig.activeSegment, chartConfig.legendPosition]);
 
-  const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick', 'onClick']);
-
   return (
     <ChartContainer
       dataset={dataset}
@@ -264,7 +262,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
       tooltip={tooltip}
       slot={slot}
       resizeDebounce={chartConfig.resizeDebounce}
-      {...passThroughProps}
+      {...rest}
     >
       <PieChartLib
         onClick={onClickInternal}

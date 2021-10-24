@@ -3,7 +3,6 @@ import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming.js';
 import { useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { AVAILABLE_ACTIONS, CANCEL, X_OF_Y } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
@@ -114,7 +113,8 @@ const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: RefObject<Ui5R
     onBeforeOpen,
     showCancelButton,
     alwaysShowHeader,
-    a11yConfig
+    a11yConfig,
+    ...rest
   } = props;
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const classes = useStyles();
@@ -166,12 +166,6 @@ const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: RefObject<Ui5R
     });
   };
 
-  const passThroughProps = usePassThroughHtmlProps(props, [
-    'onAfterClose',
-    'onAfterOpen',
-    'onBeforeClose',
-    'onBeforeOpen'
-  ]);
   const handleAfterOpen = useCallback(
     (e) => {
       if (isPhone()) {
@@ -203,7 +197,7 @@ const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: RefObject<Ui5R
       onAfterClose={onAfterClose}
       onBeforeClose={onBeforeClose}
       onBeforeOpen={onBeforeOpen}
-      {...passThroughProps}
+      {...rest}
       onAfterOpen={handleAfterOpen}
       ref={popoverRef}
       className={actionSheetClasses}

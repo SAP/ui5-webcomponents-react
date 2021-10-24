@@ -1,6 +1,5 @@
 import { createUseStyles } from 'react-jss';
 import { useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { PLEASE_WAIT } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { LoaderType } from '@ui5/webcomponents-react/dist/LoaderType';
 import React, { CSSProperties, forwardRef, RefObject, useEffect, useMemo, useState } from 'react';
@@ -31,7 +30,7 @@ const useStyles = createUseStyles(styles, { name: 'Loader' });
  * It can be used to signal a data update on an already existing dataset, or where an expansion will happen.
  */
 const Loader = forwardRef((props: LoaderPropTypes, ref: RefObject<HTMLDivElement>) => {
-  const { className, type, progress, tooltip, slot, style, delay } = props;
+  const { className, type, progress, tooltip, slot, style, delay, ...rest } = props;
   const classes = useStyles();
   const [isVisible, setIsVisible] = useState(delay === 0);
 
@@ -57,8 +56,6 @@ const Loader = forwardRef((props: LoaderPropTypes, ref: RefObject<HTMLDivElement
     };
   }, []);
 
-  const passThroughProps = usePassThroughHtmlProps(props);
-
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
   if (!isVisible) {
@@ -75,7 +72,7 @@ const Loader = forwardRef((props: LoaderPropTypes, ref: RefObject<HTMLDivElement
       title={tooltip || i18nBundle.getText(PLEASE_WAIT)}
       slot={slot}
       style={inlineStyles}
-      {...passThroughProps}
+      {...rest}
     />
   );
 });

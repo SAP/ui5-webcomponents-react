@@ -1,7 +1,6 @@
 import { createUseStyles } from 'react-jss';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { BarChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/BarChartPlaceholder';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/dist/components/ChartContainer';
@@ -134,7 +133,7 @@ const useStyles = createUseStyles(MicroBarChartStyles, { name: 'MicroBarChart' }
  * The `MicroBarChart` compares different values of the same category to each other by displaying them in a compact way.
  */
 const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartProps, ref: Ref<HTMLDivElement>) => {
-  const { loading, dataset, onDataPointClick, style, className, tooltip, slot, ChartPlaceholder } = props;
+  const { loading, dataset, onDataPointClick, style, className, tooltip, slot, ChartPlaceholder, ...rest } = props;
   const classes = useStyles();
 
   const dimension = useMemo<IChartDimension>(
@@ -179,7 +178,6 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
     [measure.accessor, onDataPointClick]
   );
   const barContainerClasses = clsx(classes.barContainer, onDataPointClick && classes.barContainerActive);
-  const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick']);
 
   return (
     <ChartContainer
@@ -192,7 +190,7 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
       tooltip={tooltip}
       slot={slot}
       resizeDebounce={250}
-      {...passThroughProps}
+      {...rest}
     >
       <div className={classes.container}>
         {dataset?.map((item, index) => {

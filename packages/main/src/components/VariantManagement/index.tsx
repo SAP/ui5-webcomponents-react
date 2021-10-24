@@ -4,7 +4,6 @@ import '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
 import '@ui5/webcomponents-icons/dist/search.js';
 import { useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import {
   CANCEL,
@@ -239,7 +238,8 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
     dirtyStateText,
     dirtyState,
     showCancelButton,
-    onSave
+    onSave,
+    ...rest
   } = props;
 
   const classes = useStyles();
@@ -435,10 +435,8 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
 
   const showSaveBtn = dirtyState && !selectedVariant?.readOnly;
 
-  const passThroughProps = usePassThroughHtmlProps(props, ['onSelect', 'onSaveAs', 'onSaveManageViews', 'onSave']);
-
   return (
-    <div className={variantManagementClasses} style={style} title={tooltip} {...passThroughProps} ref={ref}>
+    <div className={variantManagementClasses} style={style} title={tooltip} {...rest} ref={ref}>
       <VariantManagementContext.Provider
         value={{
           selectVariantItem: setSelectedVariant

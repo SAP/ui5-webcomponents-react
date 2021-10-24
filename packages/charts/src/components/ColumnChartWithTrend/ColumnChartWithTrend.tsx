@@ -1,4 +1,4 @@
-import { useConsolidatedRef, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { ComposedChart } from '@ui5/webcomponents-react-charts/dist//ComposedChart';
 import { ColumnChartWithTrendPlaceholder } from '@ui5/webcomponents-react-charts/dist/ColumnChartWithTrendPlaceholder';
@@ -114,11 +114,11 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
       tooltipConfig,
       onDataPointClick,
       onLegendClick,
-      ChartPlaceholder
+      ChartPlaceholder,
+      ...rest
     } = props;
 
     const chartRef = useConsolidatedRef<any>(ref);
-    const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick', 'onClick']);
 
     const chartConfig = useMemo(() => {
       return {
@@ -164,7 +164,7 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
         style={{ display: 'flex', flexDirection: 'column', height: style?.height, width: style?.width, ...style }}
         className={className}
         slot={slot}
-        {...passThroughProps}
+        {...rest}
       >
         {dataset?.length !== 0 && (
           <ComposedChart

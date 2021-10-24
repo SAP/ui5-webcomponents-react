@@ -1,4 +1,4 @@
-import { useIsRTL, usePassThroughHtmlProps, useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useIsRTL, useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/dist/components/ChartContainer';
@@ -119,7 +119,8 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     tooltip,
     slot,
     syncId,
-    ChartPlaceholder
+    ChartPlaceholder,
+    ...rest
   } = props;
 
   const chartConfig = useMemo(() => {
@@ -197,7 +198,6 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
   const [yAxisWidth, legendPosition] = useLongestYAxisLabel(dataset, measures);
   const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
   const xAxisHeights = useObserveXAxisHeights(chartRef, props.dimensions.length);
-  const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick', 'onClick']);
   const isRTL = useIsRTL(chartRef);
 
   return (
@@ -211,7 +211,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
       tooltip={tooltip}
       slot={slot}
       resizeDebounce={chartConfig.resizeDebounce}
-      {...passThroughProps}
+      {...rest}
     >
       <LineChartLib
         syncId={syncId}

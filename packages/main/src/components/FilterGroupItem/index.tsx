@@ -1,6 +1,5 @@
 import { useConsolidatedRef, useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
 import { createUseStyles } from 'react-jss';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { BusyIndicator } from '@ui5/webcomponents-react/dist/BusyIndicator';
 import { BusyIndicatorSize } from '@ui5/webcomponents-react/dist/BusyIndicatorSize';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
@@ -76,9 +75,9 @@ export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref:
     loading,
     className,
     tooltip,
-    slot
+    slot,
+    ...rest
   } = props;
-  const passThroughProps = usePassThroughHtmlProps(props);
   const inFB = props['data-in-fb'];
   const filterGroupItemRef = useConsolidatedRef<HTMLDivElement>(ref);
 
@@ -95,7 +94,7 @@ export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref:
       ref={filterGroupItemRef}
       title={tooltip}
       slot={slot}
-      {...passThroughProps}
+      {...rest}
       className={styleClasses}
       style={inFB ? inlineStyle : emptyObject}
     >

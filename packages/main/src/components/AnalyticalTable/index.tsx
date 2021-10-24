@@ -1,6 +1,5 @@
 import { useConsolidatedRef, useIsomorphicLayoutEffect, useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { debounce, enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { GlobalStyleClasses } from '@ui5/webcomponents-react/dist/GlobalStyleClasses';
@@ -366,7 +365,8 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     renderRowSubComponent,
     alwaysShowSubComponent,
     globalFilterValue,
-    tableInstance
+    tableInstance,
+    ...rest
   } = props;
 
   const classes = useStyles();
@@ -639,16 +639,6 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     tableInternalColumns
   );
 
-  const passThroughProps = usePassThroughHtmlProps(props, [
-    'onSort',
-    'onGroup',
-    'onRowSelected',
-    'onRowClick',
-    'onRowExpandChange',
-    'onColumnsReordered',
-    'onLoadMore'
-  ]);
-
   const inlineStyle = useMemo(() => {
     const tableStyles = {
       maxWidth: '100%',
@@ -707,7 +697,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
   );
 
   return (
-    <div className={className} style={inlineStyle} title={tooltip} ref={analyticalTableRef} {...passThroughProps}>
+    <div className={className} style={inlineStyle} title={tooltip} ref={analyticalTableRef} {...rest}>
       {header && <TitleBar ref={titleBarRef}>{header}</TitleBar>}
       {extension && <div ref={extensionRef}>{extension}</div>}
       <FlexBox>

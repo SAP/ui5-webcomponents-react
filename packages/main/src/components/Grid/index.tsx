@@ -1,5 +1,4 @@
 import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { useViewportRange } from '@ui5/webcomponents-react-base/dist/useViewportRange';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { GridPosition } from '@ui5/webcomponents-react/dist/GridPosition';
@@ -100,7 +99,19 @@ const useStyles = createUseStyles(styles, { name: 'Grid' });
  * A layout container component used for aligning items with various sizes in a simple grid.
  */
 const Grid = forwardRef((props: GridPropTypes, ref: Ref<HTMLDivElement>) => {
-  const { position, children, hSpacing, vSpacing, style, className, tooltip, slot, defaultIndent, defaultSpan } = props;
+  const {
+    position,
+    children,
+    hSpacing,
+    vSpacing,
+    style,
+    className,
+    tooltip,
+    slot,
+    defaultIndent,
+    defaultSpan,
+    ...rest
+  } = props;
   const classes = useStyles();
   const currentRange = useViewportRange();
   const gridClasses = clsx(
@@ -145,8 +156,6 @@ const Grid = forwardRef((props: GridPropTypes, ref: Ref<HTMLDivElement>) => {
     [currentRange, defaultSpan, defaultIndent, classes, vSpacing, hSpacing]
   );
 
-  const passThroughProps = usePassThroughHtmlProps(props);
-
   return (
     <div
       ref={ref}
@@ -154,7 +163,7 @@ const Grid = forwardRef((props: GridPropTypes, ref: Ref<HTMLDivElement>) => {
       style={{ gridRowGap: vSpacing, gridColumnGap: hSpacing, ...style }}
       title={tooltip}
       slot={slot}
-      {...passThroughProps}
+      {...rest}
     >
       {Children.map(children, renderGridElements)}
     </div>
