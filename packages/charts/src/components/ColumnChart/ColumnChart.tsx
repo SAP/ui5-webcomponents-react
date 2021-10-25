@@ -1,4 +1,4 @@
-import { useConsolidatedRef, useIsRTL, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useConsolidatedRef, useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { ColumnChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/ColumnChartPlaceholder';
@@ -140,7 +140,8 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
     tooltip,
     slot,
     ChartPlaceholder,
-    syncId
+    syncId,
+    ...rest
   } = props;
 
   const chartConfig = useMemo(() => {
@@ -213,7 +214,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
 
   const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
   const xAxisHeights = useObserveXAxisHeights(chartRef, props.dimensions.length);
-  const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick', 'onClick']);
+
   const isRTL = useIsRTL(chartRef);
 
   const { isMounted, handleBarAnimationStart, handleBarAnimationEnd } = useCancelAnimationFallback(noAnimation);
@@ -229,7 +230,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
       tooltip={tooltip}
       slot={slot}
       resizeDebounce={chartConfig.resizeDebounce}
-      {...passThroughProps}
+      {...rest}
     >
       <ColumnChartLib
         syncId={syncId}

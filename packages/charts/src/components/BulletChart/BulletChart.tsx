@@ -1,4 +1,4 @@
-import { useConsolidatedRef, useIsRTL, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useConsolidatedRef, useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { BulletChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/BulletChartPlaceholder';
@@ -137,7 +137,8 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
     tooltip,
     slot,
     syncId,
-    ChartPlaceholder
+    ChartPlaceholder,
+    ...rest
   } = props;
 
   const chartRef = useConsolidatedRef<any>(ref);
@@ -250,7 +251,6 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
     interval: 0
   };
 
-  const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick', 'onClick']);
   const isRTL = useIsRTL(chartRef);
 
   const Placeholder = useCallback(() => {
@@ -268,7 +268,7 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
       tooltip={tooltip}
       slot={slot}
       resizeDebounce={chartConfig.resizeDebounce}
-      {...passThroughProps}
+      {...rest}
     >
       <ComposedChartLib
         syncId={syncId}

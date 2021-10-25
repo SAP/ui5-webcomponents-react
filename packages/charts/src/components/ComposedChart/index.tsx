@@ -1,4 +1,4 @@
-import { useConsolidatedRef, useIsRTL, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useConsolidatedRef, useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/dist/components/ChartContainer';
@@ -150,7 +150,8 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     tooltip,
     slot,
     syncId,
-    ChartPlaceholder
+    ChartPlaceholder,
+    ...rest
   } = props;
 
   const chartRef = useConsolidatedRef<any>(ref);
@@ -251,7 +252,6 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     return <ComposedChartPlaceholder layout={layout} measures={measures} />;
   }, [layout, measures]);
 
-  const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick', 'onClick']);
   const isRTL = useIsRTL(chartRef);
 
   return (
@@ -265,7 +265,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
       tooltip={tooltip}
       slot={slot}
       resizeDebounce={chartConfig.resizeDebounce}
-      {...passThroughProps}
+      {...rest}
     >
       <ComposedChartLib
         syncId={syncId}
