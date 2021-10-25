@@ -1,5 +1,4 @@
 import { fireEvent, render, screen } from '@shared/tests';
-import { createPassThroughPropsTest } from '@shared/tests/utils';
 import { ActionSheet } from '@ui5/webcomponents-react/dist/ActionSheet';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { Label } from '@ui5/webcomponents-react/dist/Label';
@@ -65,6 +64,4 @@ describe('ActionSheet', () => {
     );
     expect(container.parentElement).toMatchSnapshot();
   });
-
-  createPassThroughPropsTest(ActionSheet);
 });

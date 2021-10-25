@@ -7,7 +7,6 @@ import {
   createOnClickChartTest,
   createOnLegendClickNotCrashTest
 } from '@shared/tests/chartUtils';
-import { createPassThroughPropsTest } from '@shared/tests/utils';
 
 const dimension = {
   accessor: 'name'
@@ -24,6 +23,4 @@ describe('PieChart', () => {
   createLoadingPlaceholderTest(PieChart, { measures: {}, dimensions: {} });
 
   createOnLegendClickNotCrashTest(PieChart, { dataset: simpleDataSet, dimension, measure });
-
-  createPassThroughPropsTest(PieChart, { dimension: {}, measure: {} });
 });

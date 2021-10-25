@@ -1,5 +1,4 @@
 import { fireEvent, getByText, render, renderWithDefine, screen, waitFor, within } from '@shared/tests';
-import { createPassThroughPropsTest } from '@shared/tests/utils';
 import { VariantManagement } from '@ui5/webcomponents-react/dist/VariantManagement';
 import React from 'react';
 import { TitleLevel } from '../..';
@@ -486,6 +485,4 @@ describe('VariantManagement', () => {
     fireEvent.click(saveBtn);
     expect(cb).toHaveBeenCalledTimes(1);
   });
-
-  createPassThroughPropsTest(VariantManagement);
 });

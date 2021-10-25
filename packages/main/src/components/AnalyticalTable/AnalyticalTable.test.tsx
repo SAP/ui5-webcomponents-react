@@ -1,5 +1,4 @@
 import { act, fireEvent, getByText, getMouseEvent, render, renderRtl, screen } from '@shared/tests';
-import { createPassThroughPropsTest } from '@shared/tests/utils';
 import { AnalyticalTable } from '@ui5/webcomponents-react/dist/AnalyticalTable';
 import { useRowDisableSelection } from '@ui5/webcomponents-react/dist/AnalyticalTableHooks';
 import { TableSelectionBehavior } from '@ui5/webcomponents-react/dist/TableSelectionBehavior';
@@ -1080,6 +1079,4 @@ describe('AnalyticalTable', () => {
 
     expect(asFragment()).toMatchSnapshot();
   });
-
-  createPassThroughPropsTest(AnalyticalTable);
 });

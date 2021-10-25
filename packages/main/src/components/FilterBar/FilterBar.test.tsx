@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@shared/tests';
-import { createChangeTagNameTest, createPassThroughPropsTest } from '@shared/tests/utils';
+import { createChangeTagNameTest } from '@shared/tests/utils';
 import { Bar } from '@ui5/webcomponents-react/dist/Bar';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { DatePicker } from '@ui5/webcomponents-react/dist/DatePicker';
@@ -582,6 +582,4 @@ describe('FilterBar', () => {
   });
 
   createChangeTagNameTest(FilterBar);
-
-  createPassThroughPropsTest(FilterBar);
 });

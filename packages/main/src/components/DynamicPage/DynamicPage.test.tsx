@@ -1,5 +1,4 @@
 import { render } from '@shared/tests';
-import { createPassThroughPropsTest } from '@shared/tests/utils';
 import '@ui5/webcomponents-icons/dist/action.js';
 import '@ui5/webcomponents-icons/dist/decline.js';
 import '@ui5/webcomponents-icons/dist/exit-full-screen.js';
@@ -395,6 +394,4 @@ describe('DynamicPage', () => {
     getByText('Footer');
     expect(asFragment()).toMatchSnapshot();
   });
-
-  createPassThroughPropsTest(DynamicPage);
 });

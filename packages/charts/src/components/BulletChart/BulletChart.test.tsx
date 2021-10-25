@@ -7,7 +7,6 @@ import {
   createOnClickChartTest,
   createOnLegendClickNotCrashTest
 } from '@shared/tests/chartUtils';
-import { createPassThroughPropsTest } from '@shared/tests/utils';
 
 const dimensions = [
   {
@@ -44,6 +43,4 @@ describe('BulletChart', () => {
   createLoadingPlaceholderTest(BulletChart, { dimensions: [], measures: [] });
 
   createOnLegendClickNotCrashTest(BulletChart, { dataset: complexDataSet, dimensions, measures });
-
-  createPassThroughPropsTest(BulletChart, { dimensions: [], measures: [] });
 });

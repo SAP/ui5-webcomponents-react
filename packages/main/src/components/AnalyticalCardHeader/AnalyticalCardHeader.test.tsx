@@ -1,5 +1,4 @@
 import { fireEvent, render, screen } from '@shared/tests';
-import { createPassThroughPropsTest } from '@shared/tests/utils';
 import { AnalyticalCard } from '@ui5/webcomponents-react/dist/AnalyticalCard';
 import { AnalyticalCardHeader } from '@ui5/webcomponents-react/dist/AnalyticalCardHeader';
 import { DeviationIndicator } from '@ui5/webcomponents-react/dist/DeviationIndicator';
@@ -87,6 +86,4 @@ describe('AnalyticalCardHeader', () => {
   });
 
   testFactory();
-
-  createPassThroughPropsTest(AnalyticalCard);
 });

@@ -7,7 +7,6 @@ import {
   createOnClickChartTest,
   createOnLegendClickNotCrashTest
 } from '@shared/tests/chartUtils';
-import { createPassThroughPropsTest } from '@shared/tests/utils';
 
 const measures = [
   {
@@ -34,6 +33,4 @@ describe('Scatter Chart', () => {
   createOnLegendClickNotCrashTest(ScatterChart, { dataset: scatterComplexDataSet, measures });
 
   createLoadingPlaceholderTest(ScatterChart, { measures: [] });
-
-  createPassThroughPropsTest(ScatterChart, { dataset: scatterComplexDataSet, measures });
 });
