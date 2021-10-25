@@ -3,6 +3,9 @@
 exports[`DonutChart Check onClick events 1`] = `
 <DocumentFragment>
   <div
+    chartconfig="[object Object]"
+    dimension="[object Object]"
+    measure="[object Object]"
     style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
   >
     <div
@@ -412,6 +415,9 @@ exports[`DonutChart Check onClick events 1`] = `
 exports[`DonutChart Loading placeholder 1`] = `
 <DocumentFragment>
   <div
+    chartconfig="[object Object]"
+    dimensions="[object Object]"
+    measures="[object Object]"
     style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
   >
     <svg
@@ -498,6 +504,9 @@ exports[`DonutChart Loading placeholder 1`] = `
 exports[`DonutChart Render circle chart with data 1`] = `
 <DocumentFragment>
   <div
+    chartconfig="[object Object]"
+    dimension="[object Object]"
+    measure="[object Object]"
     style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
   >
     <div
@@ -907,6 +916,9 @@ exports[`DonutChart Render circle chart with data 1`] = `
 exports[`DonutChart onLegendClick should not crash when invalid handler is provided 1`] = `
 <DocumentFragment>
   <div
+    chartconfig="[object Object]"
+    dimension="[object Object]"
+    measure="[object Object]"
     style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
   >
     <div

@@ -3,6 +3,8 @@
 exports[`Micro Bar Chart Check onClick events 1`] = `
 <DocumentFragment>
   <div
+    dimension="[object Object]"
+    measures="[object Object]"
     style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
   >
     <div
@@ -98,6 +100,8 @@ exports[`Micro Bar Chart Check onClick events 1`] = `
 exports[`Micro Bar Chart Loading placeholder 1`] = `
 <DocumentFragment>
   <div
+    dimensions=""
+    measures=""
     style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
   >
     <svg
@@ -221,6 +225,8 @@ exports[`Micro Bar Chart Loading placeholder 1`] = `
 exports[`Micro Bar Chart Render chart with data 1`] = `
 <DocumentFragment>
   <div
+    dimension="[object Object]"
+    measures="[object Object]"
     style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
   >
     <div
@@ -316,6 +322,8 @@ exports[`Micro Bar Chart Render chart with data 1`] = `
 exports[`Micro Bar Chart Render with default Props 1`] = `
 <DocumentFragment>
   <div
+    dimension="[object Object]"
+    measure="[object Object]"
     style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
   >
     <div
@@ -423,6 +431,8 @@ exports[`Micro Bar Chart Render with default Props 1`] = `
 exports[`Micro Bar Chart With custom colors 1`] = `
 <DocumentFragment>
   <div
+    dimension="[object Object]"
+    measure="[object Object]"
     style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
   >
     <div

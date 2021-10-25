@@ -3,6 +3,8 @@
 exports[`ColumnChart Check onClick events 1`] = `
 <DocumentFragment>
   <div
+    dimensions="[object Object]"
+    measures="[object Object],[object Object],[object Object]"
     style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
   >
     <div
@@ -906,6 +908,8 @@ exports[`ColumnChart Check onClick events 1`] = `
 exports[`ColumnChart Loading placeholder 1`] = `
 <DocumentFragment>
   <div
+    dimensions=""
+    measures=""
     style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
   >
     <svg
@@ -1029,6 +1033,8 @@ exports[`ColumnChart Loading placeholder 1`] = `
 exports[`ColumnChart Render chart with data 1`] = `
 <DocumentFragment>
   <div
+    dimensions="[object Object]"
+    measures="[object Object],[object Object],[object Object]"
     style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
   >
     <div
@@ -1932,6 +1938,8 @@ exports[`ColumnChart Render chart with data 1`] = `
 exports[`ColumnChart onLegendClick should not crash when invalid handler is provided 1`] = `
 <DocumentFragment>
   <div
+    dimensions="[object Object]"
+    measures="[object Object],[object Object],[object Object]"
     style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
   >
     <div

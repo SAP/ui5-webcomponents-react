@@ -3,6 +3,8 @@
 exports[`RadarChart Check onClick events 1`] = `
 <DocumentFragment>
   <div
+    dimensions="[object Object]"
+    measures="[object Object],[object Object],[object Object]"
     style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
   >
     <div
@@ -958,6 +960,8 @@ exports[`RadarChart Check onClick events 1`] = `
 exports[`RadarChart Check onClick events 2`] = `
 <DocumentFragment>
   <div
+    dimensions="[object Object]"
+    measures="[object Object],[object Object],[object Object]"
     style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
   >
     <div
@@ -1913,6 +1917,8 @@ exports[`RadarChart Check onClick events 2`] = `
 exports[`RadarChart Loading placeholder 1`] = `
 <DocumentFragment>
   <div
+    dimensions=""
+    measures=""
     style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
   >
     <svg
@@ -1999,6 +2005,8 @@ exports[`RadarChart Loading placeholder 1`] = `
 exports[`RadarChart Render chart with data 1`] = `
 <DocumentFragment>
   <div
+    dimensions="[object Object]"
+    measures="[object Object],[object Object],[object Object]"
     style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
   >
     <div
@@ -2954,6 +2962,8 @@ exports[`RadarChart Render chart with data 1`] = `
 exports[`RadarChart onLegendClick should not crash when invalid handler is provided 1`] = `
 <DocumentFragment>
   <div
+    dimensions="[object Object]"
+    measures="[object Object],[object Object],[object Object]"
     style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
   >
     <div

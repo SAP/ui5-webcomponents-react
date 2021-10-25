@@ -3,6 +3,8 @@
 exports[`BulletChart Check onClick events 1`] = `
 <DocumentFragment>
   <div
+    dimensions="[object Object]"
+    measures="[object Object],[object Object],[object Object]"
     style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
   >
     <div
@@ -1015,6 +1017,8 @@ exports[`BulletChart Check onClick events 1`] = `
 exports[`BulletChart Loading placeholder 1`] = `
 <DocumentFragment>
   <div
+    dimensions=""
+    measures=""
     style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
   >
     <svg
@@ -1102,6 +1106,8 @@ exports[`BulletChart Loading placeholder 1`] = `
 exports[`BulletChart Render chart with data 1`] = `
 <DocumentFragment>
   <div
+    dimensions="[object Object]"
+    measures="[object Object],[object Object],[object Object]"
     style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
   >
     <div
@@ -2114,6 +2120,8 @@ exports[`BulletChart Render chart with data 1`] = `
 exports[`BulletChart onLegendClick should not crash when invalid handler is provided 1`] = `
 <DocumentFragment>
   <div
+    dimensions="[object Object]"
+    measures="[object Object],[object Object],[object Object]"
     style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
   >
     <div

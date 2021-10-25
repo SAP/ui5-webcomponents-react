@@ -3,6 +3,7 @@
 exports[`Scatter Chart Check onClick events 1`] = `
 <DocumentFragment>
   <div
+    measures="[object Object],[object Object],[object Object]"
     style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
   >
     <div
@@ -992,6 +993,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
 exports[`Scatter Chart Loading placeholder 1`] = `
 <DocumentFragment>
   <div
+    measures=""
     style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
   >
     <svg
@@ -1119,6 +1121,7 @@ exports[`Scatter Chart Loading placeholder 1`] = `
 exports[`Scatter Chart Render chart with data 1`] = `
 <DocumentFragment>
   <div
+    measures="[object Object],[object Object],[object Object]"
     style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
   >
     <div
@@ -2174,6 +2177,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
 exports[`Scatter Chart onLegendClick should not crash when invalid handler is provided 1`] = `
 <DocumentFragment>
   <div
+    measures="[object Object],[object Object],[object Object]"
     style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
   >
     <div
