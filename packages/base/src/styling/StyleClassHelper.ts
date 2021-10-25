@@ -6,6 +6,7 @@ class StyleClassHelper {
   private classes: string[] = [];
 
   constructor(...classes: string[]) {
+    console.warn(`StyleClassHelper is deprecated! Please use clsx instead.`);
     this.classes = [...classes];
   }
 

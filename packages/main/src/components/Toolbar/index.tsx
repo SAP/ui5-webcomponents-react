@@ -1,7 +1,5 @@
 import { createUseStyles } from 'react-jss';
 import { useConsolidatedRef, useI18nBundle, useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base/dist/hooks';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { SHOW_MORE } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
@@ -25,6 +23,7 @@ import React, {
 } from 'react';
 import { OverflowPopover } from './OverflowPopover';
 import { styles } from './Toolbar.jss';
+import clsx from 'clsx';
 
 const useStyles = createUseStyles(styles, { name: 'Toolbar' });
 
@@ -48,6 +47,12 @@ export interface ToolbarPropTypes extends Omit<CommonProps, 'onClick'> {
    */
   active?: boolean;
   /**
+   * Sets the components outer HTML tag.
+   *
+   * __Note:__ For TypeScript the types of `ref` are bound to the default tag name, if you change it you are responsible to set the respective types yourself.
+   */
+  as?: keyof HTMLElementTagNameMap;
+  /**
    * Fired when the user clicks on the `Toolbar`, if the `active` prop is set to "true".
    */
   onClick?: (event: CustomEvent) => void;
@@ -60,37 +65,23 @@ export interface ToolbarPropTypes extends Omit<CommonProps, 'onClick'> {
  * It can be accessed by the user through the overflow button that opens it in a popover.
  */
 const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) => {
-  const { children, toolbarStyle, design, active, style, tooltip, className, onClick, slot } = props;
+  const { children, toolbarStyle, design, active, style, tooltip, className, onClick, slot, as, ...rest } = props;
   const classes = useStyles();
   const outerContainer: RefObject<HTMLDivElement> = useConsolidatedRef(ref);
   const controlMetaData = useRef([]);
   const [lastVisibleIndex, setLastVisibleIndex] = useState<number>(null);
 
-  const passThroughProps = usePassThroughHtmlProps(props, ['onClick']);
-
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
-  const toolbarClasses = StyleClassHelper.of(classes.outerContainer);
-  if (toolbarStyle === ToolbarStyle.Clear) {
-    toolbarClasses.put(classes.clear);
-  }
-  if (active) {
-    toolbarClasses.put(classes.active);
-  }
-  switch (design) {
-    case ToolbarDesign.Solid:
-      toolbarClasses.put(classes.solid);
-      break;
-    case ToolbarDesign.Transparent:
-      toolbarClasses.put(classes.transparent);
-      break;
-    case ToolbarDesign.Info:
-      toolbarClasses.put(classes.info);
-      break;
-    default:
-      break;
-  }
-  toolbarClasses.putIfPresent(className);
+  const toolbarClasses = clsx(
+    classes.outerContainer,
+    toolbarStyle === ToolbarStyle.Clear && classes.clear,
+    active && classes.active,
+    design === ToolbarDesign.Solid && classes.solid,
+    design === ToolbarDesign.Transparent && classes.transparent,
+    design === ToolbarDesign.Info && classes.info,
+    className
+  );
 
   const childrenWithRef = useMemo(() => {
     controlMetaData.current = [];
@@ -125,8 +116,6 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
 
   const overflowNeeded =
     (lastVisibleIndex || lastVisibleIndex === 0) && React.Children.count(childrenWithRef) !== lastVisibleIndex + 1;
-
-  toolbarClasses.putIfPresent(overflowNeeded && classes.hasOverflow);
 
   const requestAnimationFrameRef = useRef<undefined | number>();
   const calculateVisibleItems = useCallback(() => {
@@ -198,15 +187,16 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
     [onClick, active]
   );
 
+  const CustomTag = as as React.ElementType;
   return (
-    <div
+    <CustomTag
       title={tooltip}
       style={style}
-      className={toolbarClasses.className}
+      className={clsx(toolbarClasses, overflowNeeded && classes.hasOverflow)}
       ref={outerContainer}
       slot={slot}
       onClick={handleToolbarClick}
-      {...passThroughProps}
+      {...rest}
     >
       <div className={classes.toolbar} data-component-name="ToolbarContent">
         {overflowNeeded &&
@@ -234,11 +224,12 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
           </OverflowPopover>
         </div>
       )}
-    </div>
+    </CustomTag>
   );
 });
 
 Toolbar.defaultProps = {
+  as: 'div',
   toolbarStyle: ToolbarStyle.Standard,
   design: ToolbarDesign.Auto,
   active: false

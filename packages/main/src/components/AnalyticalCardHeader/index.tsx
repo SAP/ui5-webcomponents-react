@@ -1,5 +1,4 @@
 import { useI18nBundle, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { DEVIATION, TARGET } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { DeviationIndicator } from '@ui5/webcomponents-react/dist/DeviationIndicator';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
@@ -12,6 +11,7 @@ import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import React, { forwardRef, MouseEventHandler, Ref, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
+import clsx from 'clsx';
 import styles from './AnalyticalCardHeader.jss';
 
 export interface AnalyticalCardHeaderPropTypes extends CommonProps {
@@ -108,56 +108,32 @@ export const AnalyticalCardHeader = forwardRef((props: AnalyticalCardHeaderPropT
   const classes = useStyles();
 
   const indicatorIcon = useMemo(() => {
-    const arrowClasses = StyleClassHelper.of(classes.arrowIndicatorShape);
-    switch (arrowIndicator) {
-      case DeviationIndicator.Up:
-        arrowClasses.put(classes.arrowUp);
-        break;
-      case DeviationIndicator.Down:
-        arrowClasses.put(classes.arrowDown);
-        break;
-      default:
-        arrowClasses.put(classes.arrowRight);
-        break;
-    }
+    const arrowClasses = clsx(
+      classes.arrowIndicatorShape,
+      arrowIndicator === DeviationIndicator.Up && classes.arrowUp,
+      arrowIndicator === DeviationIndicator.Down && classes.arrowDown,
+      arrowIndicator === DeviationIndicator.None && classes.arrowRight,
+      !(arrowIndicator in DeviationIndicator) && classes.arrowRight,
+      indicatorState === ValueState.Success && classes.good,
+      indicatorState === ValueState.Error && classes.error,
+      indicatorState === ValueState.Warning && classes.critical,
+      indicatorState === ValueState.Information && classes.none,
+      indicatorState === ValueState.None && classes.none,
+      !(indicatorState in ValueState) && classes.none
+    );
 
-    switch (indicatorState) {
-      case ValueState.Success:
-        arrowClasses.put(classes.good);
-        break;
-      case ValueState.Error:
-        arrowClasses.put(classes.error);
-        break;
-      case ValueState.Warning:
-        arrowClasses.put(classes.critical);
-        break;
-      default:
-        arrowClasses.put(classes.none);
-
-        break;
-    }
-    return <div className={arrowClasses.valueOf()} />;
+    return <div className={arrowClasses} />;
   }, [arrowIndicator, indicatorState, classes]);
 
-  const headerClasses = StyleClassHelper.of(classes.cardHeader);
-  if (onClick) {
-    headerClasses.put(classes.cardHeaderClickable);
-  }
+  const headerClasses = clsx(classes.cardHeader, onClick && classes.cardHeaderClickable, className);
 
-  const valueAndUnitClasses = StyleClassHelper.of(classes.valueAndUnit);
-  if (valueState === ValueState.Error) {
-    valueAndUnitClasses.put(classes.error);
-  }
-  if (valueState === ValueState.Warning) {
-    valueAndUnitClasses.put(classes.critical);
-  }
-  if (valueState === ValueState.Success) {
-    valueAndUnitClasses.put(classes.good);
-  }
+  const valueAndUnitClasses = clsx(
+    classes.valueAndUnit,
+    valueState === ValueState.Error && classes.error,
+    valueState === ValueState.Warning && classes.critical,
+    valueState === ValueState.Success && classes.good
+  );
 
-  if (className) {
-    headerClasses.put(className);
-  }
   const shouldRenderContent = [value, unit, deviation, target].some((v) => !!v);
 
   const passThroughProps = usePassThroughHtmlProps(props, ['onHeaderClick']);
@@ -165,14 +141,7 @@ export const AnalyticalCardHeader = forwardRef((props: AnalyticalCardHeaderPropT
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
   return (
-    <div
-      ref={ref}
-      className={headerClasses.valueOf()}
-      title={tooltip}
-      style={style}
-      {...passThroughProps}
-      onClick={onClick}
-    >
+    <div ref={ref} className={headerClasses} title={tooltip} style={style} {...passThroughProps} onClick={onClick}>
       <div className={classes.headerContent}>
         <div className={classes.headerTitles}>
           <FlexBox justifyContent={FlexBoxJustifyContent.SpaceBetween} wrap={FlexBoxWrap.NoWrap}>
@@ -193,7 +162,7 @@ export const AnalyticalCardHeader = forwardRef((props: AnalyticalCardHeaderPropT
         {shouldRenderContent && (
           <FlexBox direction={FlexBoxDirection.Row} className={classes.kpiContent} alignItems={FlexBoxAlignItems.End}>
             <FlexBox direction={FlexBoxDirection.Row}>
-              <div className={valueAndUnitClasses.valueOf()}>
+              <div className={valueAndUnitClasses}>
                 <div className={classes.value}>{value}</div>
                 <div className={classes.indicatorAndUnit}>
                   {showIndicator && indicatorIcon}

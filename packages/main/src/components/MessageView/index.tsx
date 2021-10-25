@@ -1,5 +1,4 @@
 import { useConsolidatedRef, useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { ALL } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { Bar } from '@ui5/webcomponents-react/dist/Bar';
@@ -39,6 +38,7 @@ import '@ui5/webcomponents-icons/dist/information.js';
 import '@ui5/webcomponents-icons/dist/slim-arrow-left.js';
 import '@ui5/webcomponents-icons/dist/sys-enter-2.js';
 import type { MessageItemPropTypes } from './MessageItem';
+import clsx from 'clsx';
 
 export interface MessageViewPropTypes extends CommonProps {
   /**
@@ -190,13 +190,10 @@ const MessageView = forwardRef((props: MessageViewPropTypes, ref: Ref<MessageVie
     setListFilter(e.detail.selectedItem.dataset.key);
   };
 
-  const outerClasses = StyleClassHelper.of(classes.container).putIfPresent(className);
-  if (selectedMessage) {
-    outerClasses.put(classes.showDetails);
-  }
+  const outerClasses = clsx(classes.container, className, selectedMessage && classes.showDetails);
 
   return (
-    <div ref={internalRef} title={tooltip} {...rest} className={outerClasses.className}>
+    <div ref={internalRef} title={tooltip} {...rest} className={outerClasses}>
       <MessageViewContext.Provider
         value={{
           selectMessage: setSelectedMessage

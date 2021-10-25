@@ -21,7 +21,7 @@ const Header = (instance) => {
     webComponentsReactProperties: { selectionMode }
   } = instance;
 
-  if (selectionMode === TableSelectionMode.SINGLE_SELECT || selectionMode === TableSelectionMode.SingleSelect) {
+  if (selectionMode === TableSelectionMode.SingleSelect) {
     return null;
   }
   const checkBoxProps = getToggleAllRowsSelectedProps();
@@ -38,21 +38,15 @@ const Header = (instance) => {
 
 const Cell = ({ row, webComponentsReactProperties: { selectionBehavior, selectionMode } }) => {
   const handleCellClick = (e) => {
-    if (
-      TableSelectionBehavior.ROW_SELECTOR === selectionBehavior ||
-      TableSelectionBehavior.RowSelector === selectionBehavior
-    ) {
+    if (TableSelectionBehavior.RowSelector === selectionBehavior) {
       row.getRowProps().onClick(e, true);
     }
   };
 
-  if (
-    row.isGrouped &&
-    (selectionMode === TableSelectionMode.SINGLE_SELECT || selectionMode === TableSelectionMode.SingleSelect)
-  ) {
+  if (row.isGrouped && selectionMode === TableSelectionMode.SingleSelect) {
     return null;
   }
-  if (selectionMode === TableSelectionMode.SINGLE_SELECT || selectionMode === TableSelectionMode.SingleSelect) {
+  if (selectionMode === TableSelectionMode.SingleSelect) {
     return <div style={divStyle} onClick={handleCellClick} data-name="internal_selection_column" />;
   }
 
@@ -82,10 +76,7 @@ const headerProps = (
     }
   }
 ) => {
-  if (
-    props.key === 'header___ui5wcr__internal_selection_column' &&
-    (selectionMode === TableSelectionMode.MULTI_SELECT || selectionMode === TableSelectionMode.MultiSelect)
-  ) {
+  if (props.key === 'header___ui5wcr__internal_selection_column' && selectionMode === TableSelectionMode.MultiSelect) {
     const onClick = (e) => {
       toggleAllRowsSelected();
       if (typeof onRowSelected === 'function') {
@@ -122,9 +113,7 @@ const visibleColumnsDeps = (deps, { instance }) => [
 
 const visibleColumns = (currentVisibleColumns, { instance: { webComponentsReactProperties } }) => {
   if (
-    webComponentsReactProperties.selectionMode === TableSelectionMode.NONE ||
     webComponentsReactProperties.selectionMode === TableSelectionMode.None ||
-    webComponentsReactProperties.selectionBehavior === TableSelectionBehavior.ROW_ONLY ||
     webComponentsReactProperties.selectionBehavior === TableSelectionBehavior.RowOnly
   ) {
     return currentVisibleColumns;
@@ -137,12 +126,7 @@ const columns = (currentColumns, { instance }) => {
   const { webComponentsReactProperties } = instance;
   const { selectionMode, selectionBehavior, tableRef } = webComponentsReactProperties;
 
-  if (
-    selectionMode === TableSelectionMode.NONE ||
-    selectionBehavior === TableSelectionBehavior.ROW_ONLY ||
-    selectionMode === TableSelectionMode.None ||
-    selectionBehavior === TableSelectionBehavior.RowOnly
-  ) {
+  if (selectionMode === TableSelectionMode.None || selectionBehavior === TableSelectionBehavior.RowOnly) {
     return currentColumns;
   }
   const tableSelectionColumnWidth =

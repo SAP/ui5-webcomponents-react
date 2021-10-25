@@ -1,5 +1,4 @@
 import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { useViewportRange } from '@ui5/webcomponents-react-base/dist/useViewportRange';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
@@ -17,6 +16,7 @@ import React, {
 } from 'react';
 import { createUseStyles } from 'react-jss';
 import { styles } from './Grid.jss';
+import clsx from 'clsx';
 
 export interface GridPropTypes extends CommonProps {
   /**
@@ -103,19 +103,12 @@ const Grid = forwardRef((props: GridPropTypes, ref: Ref<HTMLDivElement>) => {
   const { position, children, hSpacing, vSpacing, style, className, tooltip, slot, defaultIndent, defaultSpan } = props;
   const classes = useStyles();
   const currentRange = useViewportRange();
-  const gridClasses = StyleClassHelper.of(classes.grid);
-
-  if (GridPosition.Center === position) {
-    gridClasses.put(classes.positionCenter);
-  }
-
-  if (GridPosition.Right === position) {
-    gridClasses.put(classes.positionRight);
-  }
-
-  if (className) {
-    gridClasses.put(className);
-  }
+  const gridClasses = clsx(
+    classes.grid,
+    GridPosition.Center === position && classes.positionCenter,
+    GridPosition.Right === position && classes.positionRight,
+    className
+  );
 
   let column = 0;
   let row = 1;
@@ -157,7 +150,7 @@ const Grid = forwardRef((props: GridPropTypes, ref: Ref<HTMLDivElement>) => {
   return (
     <div
       ref={ref}
-      className={gridClasses.valueOf()}
+      className={gridClasses}
       style={{ gridRowGap: vSpacing, gridColumnGap: hSpacing, ...style }}
       title={tooltip}
       slot={slot}

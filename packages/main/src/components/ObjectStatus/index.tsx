@@ -2,7 +2,6 @@ import '@ui5/webcomponents-icons/dist/hint.js';
 import '@ui5/webcomponents-icons/dist/status-critical.js';
 import '@ui5/webcomponents-icons/dist/status-negative.js';
 import '@ui5/webcomponents-icons/dist/status-positive.js';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { Icon } from '@ui5/webcomponents-react/dist/Icon';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
@@ -11,6 +10,7 @@ import React, { forwardRef, MouseEventHandler, ReactNode, Ref } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import styles from './ObjectStatus.jss';
+import clsx from 'clsx';
 
 export interface ObjectStatusPropTypes extends CommonProps {
   /**
@@ -96,26 +96,20 @@ const ObjectStatus = forwardRef((props: ObjectStatusPropTypes, ref: Ref<HTMLDivE
   })();
 
   const classes = useStyles();
-  const objStatusClasses = StyleClassHelper.of(classes.objectStatus, classes[`${state as string}`.toLowerCase()]);
-
-  if (active) {
-    objStatusClasses.put(classes.active);
-  }
-
-  if (inverted) {
-    objStatusClasses.put(classes.inverted);
-  }
-
-  if (className) {
-    objStatusClasses.put(className);
-  }
+  const objStatusClasses = clsx(
+    classes.objectStatus,
+    classes[`${state as string}`.toLowerCase()],
+    active && classes.active,
+    inverted && classes.inverted,
+    className
+  );
 
   const passThroughProps = usePassThroughHtmlProps(props);
 
   return (
     <div
       ref={ref}
-      className={objStatusClasses.valueOf()}
+      className={objStatusClasses}
       style={style}
       title={tooltip}
       onClick={active ? onClick : undefined}

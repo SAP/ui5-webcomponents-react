@@ -11,6 +11,8 @@ import { ObjectPageMode } from '@ui5/webcomponents-react/dist/ObjectPageMode';
 import { ObjectPageSection } from '@ui5/webcomponents-react/dist/ObjectPageSection';
 import { ObjectPageSubSection } from '@ui5/webcomponents-react/dist/ObjectPageSubSection';
 import { Text } from '@ui5/webcomponents-react/dist/Text';
+import { IllustratedMessage } from '@ui5/webcomponents-react/dist/IllustratedMessage';
+import { IllustrationMessageType } from '@ui5/webcomponents-react/dist/IllustrationMessageType';
 import React from 'react';
 
 const headerContent = <DynamicPageHeader>HeaderContent</DynamicPageHeader>;
@@ -217,6 +219,32 @@ describe('ObjectPage', () => {
     const { container } = render(
       renderComponent({ headerTitle, headerContent, footer, image: <Avatar />, showTitleInHeaderContent: true })
     );
+  });
+
+  test('with IllustratedMessage', () => {
+    const { getByTestId, queryByText, rerender, queryByTestId, asFragment, container } = render(
+      renderComponent({
+        headerTitle,
+        headerContent,
+        placeholder: <IllustratedMessage data-testid="no-data" name={IllustrationMessageType.NoData} />
+      })
+    );
+    expect(queryByText('Title Section 2')).toBeNull();
+    expect(queryByText('Content Section 1')).toBeNull();
+    getByTestId('no-data');
+    expect(container.querySelector("[data-component-name='ObjectPageTabContainer']")).not.toBeInTheDocument();
+    expect(asFragment()).toMatchSnapshot();
+    rerender(
+      renderComponent({
+        headerTitle,
+        headerContent,
+        placeholder: undefined
+      })
+    );
+    expect(queryByText('Title Section 2')).toBeVisible();
+    expect(queryByText('Content Section 1')).toBeVisible();
+    expect(queryByTestId('no-data')).toBeNull();
+    expect(container.querySelector("[data-component-name='ObjectPageTabContainer']")).toBeInTheDocument();
   });
 
   createPassThroughPropsTest(ObjectPage);

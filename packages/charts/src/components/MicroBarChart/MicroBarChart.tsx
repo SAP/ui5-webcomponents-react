@@ -1,5 +1,4 @@
 import { createUseStyles } from 'react-jss';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
@@ -12,6 +11,7 @@ import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { defaultFormatter } from '../../internal/defaults';
+import clsx from 'clsx';
 
 interface MeasureConfig extends Omit<IChartMeasure, 'color'> {
   /**
@@ -178,10 +178,7 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
     },
     [measure.accessor, onDataPointClick]
   );
-  const barContainerClasses = StyleClassHelper.of(classes.barContainer);
-  if (onDataPointClick) {
-    barContainerClasses.put(classes.barContainerActive);
-  }
+  const barContainerClasses = clsx(classes.barContainer, onDataPointClick && classes.barContainerActive);
   const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick']);
 
   return (
@@ -215,7 +212,7 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
             }
           }
           return (
-            <div key={dimensionValue} className={barContainerClasses.className} onClick={onBarClick(item, index)}>
+            <div key={dimensionValue} className={barContainerClasses} onClick={onBarClick(item, index)}>
               <div className={classes.labelContainer}>
                 <span className={classes.label} title={formattedDimension}>
                   {formattedDimension}
