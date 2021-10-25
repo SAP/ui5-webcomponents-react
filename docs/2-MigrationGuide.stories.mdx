@@ -16,6 +16,55 @@ or the [changelog](https://github.com/SAP/ui5-webcomponents-react/blob/main/CHAN
 
 <TableOfContent headingSelector="h2.sbdocs-h2" />
 
+## Migrating from 0.18.x to 0.19.0
+
+### VariantManagement
+
+The variant management was completely overhauled to comply with the UX guidelines.
+
+- `variantItems` has been removed. Please pass the `VariantItem` component for each variant instead.
+- `selectedKey` has been removed. To mark a variant as selected, please pass the `selected` prop to the corresponding `VariantItem` component.
+- Per default no "Cancel" button is displayed in the popover. If you want to add it again, you can set the `showCancelButton` prop to `true`.
+- Per default the "Save As" and "Manage" buttons are displayed in the popover. If you want to hide them, you can set the `hideSaveAs` and `hideManageVariants` props to `true`.
+
+```jsx
+// with 0.18.x
+<VariantManagement
+  selectedKey="2"
+  variantItems={[
+    {
+      key: '1',
+      label: 'Variant 1'
+    },
+    {
+      key: '2',
+      label: 'Variant 2'
+    }
+  ]}
+/>
+
+// with 0.19.x
+<VariantManagement showCancelButton hideManageVariants hideSaveAs>
+  <VariantItem>Variant 1</VariantItem>
+  <VariantItem selected>Variant 2</VariantItem>
+</VariantManagement>
+```
+
+### ObjectPage
+
+The deprecated `onSelectedSectionChanged` event handler has been removed. Please use `onSelectedSectionChange` instead.
+
+### Removed all caps enum keys and values
+
+Removed all deprecated values and enum keys that consisted of uppercase letters only (`SCREAMING_SNAKE_CASE`).
+
+- **`MessageBoxActions`**: `ABORT`, `CANCEL`, `CLOSE`, `DELETE`, `IGNORE`, `NO`,`RETRY`,`YES` has been transformed to PascalCase notation.
+- **`MessageBoxTypes`**: `CONFIRM`, `ERROR`, `INFORMATION`, `SUCCESS`, `WARNING`, `HIGHLIGHT` has been transformed to PascalCase notation.
+
+- **`TableSelectionBehavior`:** `ROW`, `ROW_ONLY`, `ROW_SELECTOR` has been transformed to PascalCase notation.
+- **`TableSelectionMode`:** `NONE`, `SINGLE_SELECT`, `MULTI_SELECT` has been transformed to PascalCase notation.
+- **`TableVisibleRowCountMode`:** `FIXED`, `AUTO`, `INTERACTIVE` has been transformed to PascalCase notation.
+
 ## Migrating from 0.17.x to 0.18.0
 
 In this release, the UI5 Web Components have renamed lots of properties in order to pave the way to the 1.0.0 release.

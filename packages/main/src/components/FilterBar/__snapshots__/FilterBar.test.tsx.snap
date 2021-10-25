@@ -108,16 +108,22 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
           <div
             class="VariantManagement-container"
           >
-            <ui5-title
-              class="VariantManagement-title"
-              level="H4"
-              ui5-title=""
+            <div
+              class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
             >
-              Variant 1
-            </ui5-title>
+              <ui5-title
+                class="VariantManagement-title"
+                level="H4"
+                ui5-title=""
+              >
+                Variant 2
+              </ui5-title>
+            </div>
             <ui5-button
+              aria-label="Select View"
               design="Transparent"
               icon="navigation-down-arrow"
+              title="Select View"
               ui5-button=""
             />
           </div>

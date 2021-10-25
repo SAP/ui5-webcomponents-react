@@ -1,6 +1,5 @@
 import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
 import { useConsolidatedRef, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
@@ -23,6 +22,7 @@ import { createUseStyles } from 'react-jss';
 import { useObserveHeights } from '../../internal/useObserveHeights';
 import { useResponsiveContentPadding } from '@ui5/webcomponents-react-base/dist/hooks';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
+import clsx from 'clsx';
 import { styles } from './DynamicPage.jss';
 
 export interface DynamicPagePropTypes extends Omit<CommonProps, 'title'> {
@@ -110,11 +110,6 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
   } = props;
   const passThroughProps = usePassThroughHtmlProps(props, ['onScroll']);
 
-  const classes = useStyles();
-  const dynamicPageClasses = StyleClassHelper.of(classes.dynamicPage, GlobalStyleClasses.sapScrollBar);
-  dynamicPageClasses.put(classes[`background${backgroundDesign}`]);
-  dynamicPageClasses.putIfPresent(className);
-
   const anchorBarRef = useRef<HTMLDivElement>();
   const dynamicPageRef = useConsolidatedRef<HTMLDivElement>(ref);
   const contentRef = useRef<HTMLDivElement>();
@@ -125,6 +120,15 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
 
   const [headerState, setHeaderState] = useState<HEADER_STATES>(
     alwaysShowContentHeader ? HEADER_STATES.VISIBLE_PINNED : isIE() ? HEADER_STATES.VISIBLE : HEADER_STATES.AUTO
+  );
+
+  const classes = useStyles();
+  const dynamicPageClasses = clsx(
+    classes.dynamicPage,
+    GlobalStyleClasses.sapScrollBar,
+    classes[`background${backgroundDesign}`],
+    className,
+    [HEADER_STATES.HIDDEN, HEADER_STATES.HIDDEN_PINNED].includes(headerState) && classes.headerCollapsed
   );
 
   // observe heights of header parts
@@ -157,10 +161,6 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
       observer.disconnect();
     };
   }, []);
-
-  if (headerState === HEADER_STATES.HIDDEN || headerState === HEADER_STATES.HIDDEN_PINNED) {
-    dynamicPageClasses.put(classes.headerCollapsed);
-  }
 
   useEffect(() => {
     const oneTimeScrollHandler = () => {
@@ -212,10 +212,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
     }
   }, [alwaysShowContentHeader, setHeaderState]);
 
-  const anchorBarClasses = StyleClassHelper.of(classes.anchorBar);
-  if (isIE()) {
-    anchorBarClasses.put(classes.iEClass);
-  }
+  const anchorBarClasses = clsx(classes.anchorBar, isIE() && classes.iEClass);
   const responsivePaddingClass = useResponsiveContentPadding(dynamicPageRef.current);
 
   const onDynamicPageScroll = (e) => {
@@ -231,7 +228,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
     <div
       ref={dynamicPageRef}
       title={tooltip}
-      className={dynamicPageClasses.toString()}
+      className={dynamicPageClasses}
       style={style}
       onScroll={onDynamicPageScroll}
       {...passThroughProps}
@@ -259,7 +256,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
         })}
       <FlexBox
         data-component-name="DynamicPageAnchorBar"
-        className={anchorBarClasses.className}
+        className={anchorBarClasses}
         ref={anchorBarRef}
         style={{
           top:

@@ -50,8 +50,9 @@ const Label = withWebComponent<LabelPropTypes>('ui5-label', ['for', 'wrappingTyp
 Label.displayName = 'Label';
 
 Label.defaultProps = {
-  required: false,
-  showColon: false
+  required: false
+  // needs to be removed for FormItem
+  // showColon: false
 };
 
 export { Label };

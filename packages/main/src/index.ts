@@ -186,7 +186,9 @@ import { UploadCollection } from './dist/UploadCollection';
 import { UploadCollectionItem } from './dist/UploadCollectionItem';
 import { UploadState } from './dist/UploadState';
 import { ValueState } from './dist/ValueState';
+import { VariantItem } from './dist/VariantItem';
 import { VariantManagement } from './dist/VariantManagement';
+import { VariantManagementContext } from './dist/VariantManagementContext';
 import { VerticalAlign } from './dist/VerticalAlign';
 import { ViewSettingsDialog } from './dist/ViewSettingsDialog';
 import { Wizard } from './dist/Wizard';
@@ -379,7 +381,9 @@ export {
   UploadCollectionItem,
   UploadState,
   ValueState,
+  VariantItem,
   VariantManagement,
+  VariantManagementContext,
   VerticalAlign,
   ViewSettingsDialog,
   Wizard,

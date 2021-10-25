@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@shared/tests';
-import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { createChangeTagNameTest, createPassThroughPropsTest } from '@shared/tests/utils';
 import { Bar } from '@ui5/webcomponents-react/dist/Bar';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { DatePicker } from '@ui5/webcomponents-react/dist/DatePicker';
@@ -15,17 +15,18 @@ import { Select } from '@ui5/webcomponents-react/dist/Select';
 import { Switch } from '@ui5/webcomponents-react/dist/Switch';
 import { Toolbar } from '@ui5/webcomponents-react/dist/Toolbar';
 import { VariantManagement } from '@ui5/webcomponents-react/dist/VariantManagement';
+import { VariantItem } from '@ui5/webcomponents-react/dist/VariantItem';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 import { createRef } from 'react';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 
-const variantItems = [
-  { label: 'Variant 1', key: '1' },
-  { label: 'Variant 2', key: '2' }
-];
-
-const variants = <VariantManagement variantItems={variantItems} />;
+const variants = (
+  <VariantManagement>
+    <VariantItem>Variant 1</VariantItem>
+    <VariantItem selected>Variant 2</VariantItem>
+  </VariantManagement>
+);
 const search = <Input placeholder={'Search'} />;
 
 describe('FilterBar', () => {
@@ -579,6 +580,8 @@ describe('FilterBar', () => {
     getByText('Go');
     expect(asFragment()).toMatchSnapshot();
   });
+
+  createChangeTagNameTest(FilterBar);
 
   createPassThroughPropsTest(FilterBar);
 });

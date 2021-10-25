@@ -789,6 +789,82 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
 </DocumentFragment>
 `;
 
+exports[`ObjectPage with IllustratedMessage 1`] = `
+<DocumentFragment>
+  <div
+    class="ObjectPage-objectPage sapScrollBar"
+    data-component-name="ObjectPage"
+  >
+    <header
+      aria-roledescription="Object Page header"
+      class="ObjectPage-header StdExtPadding-Desktop"
+      data-component-name="ObjectPageTopHeader"
+      data-not-clickable="true"
+      role="banner"
+      style="grid-auto-columns: min-content 100%; display: grid;"
+    >
+      <div
+        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container"
+        data-component-name="DynamicPageTitle"
+        data-not-clickable="true"
+      >
+        <div
+          class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap"
+          style="flex-grow: 1; width: 100%;"
+        >
+          <div
+            class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-titleMainSection"
+          >
+            <div
+              class="DynamicPageTitle-content"
+              data-component-name="DynamicPageTitleContent"
+              style="padding-left: 0.5rem;"
+            >
+              HeaderTitle
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div
+      class="DynamicPageHeader-header"
+      data-component-name="DynamicPageHeader"
+    >
+      <div
+        class="ObjectPage-headerContainer StdExtPadding-Desktop"
+        data-component-name="ObjectPageHeaderContainer"
+      >
+        <div
+          data-component-name="ObjectPageHeaderContent"
+        >
+          HeaderContent
+        </div>
+      </div>
+    </div>
+    <div
+      class="ObjectPage-anchorBar"
+      data-component-name="ObjectPageAnchorBar"
+      style="top: 5px;"
+    >
+      <section
+        data-component-name="DynamicPageAnchorBar"
+        role="navigation"
+      />
+    </div>
+    <div
+      class="StdExtPadding-Desktop"
+      data-component-name="ObjectPageContent"
+    >
+      <ui5-illustrated-message
+        data-testid="no-data"
+        name="NoData"
+        ui5-illustrated-message=""
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
 exports[`ObjectPage with anchor-bar 1`] = `
 <DocumentFragment>
   <div
@@ -853,7 +929,7 @@ exports[`ObjectPage with anchor-bar 1`] = `
       >
         <ui5-button
           aria-label="Expand Header"
-          class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonExpandable "
+          class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonExpandable"
           data-ui5wcr-dynamic-page-header-action=""
           design="Default"
           icon="slim-arrow-down"

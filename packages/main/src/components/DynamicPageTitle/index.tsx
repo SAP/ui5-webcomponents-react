@@ -1,6 +1,5 @@
 import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
 import { useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { debounce } from '@ui5/webcomponents-react-base/dist/Utils';
@@ -28,6 +27,7 @@ import { createUseStyles } from 'react-jss';
 import { stopPropagation } from '../../internal/stopPropagation';
 import { ActionsSpacer } from './ActionsSpacer';
 import { DynamicPageTitleStyles } from './DynamicPageTitle.jss';
+import clsx from 'clsx';
 
 export interface DynamicPageTitlePropTypes extends CommonProps {
   /**
@@ -101,7 +101,7 @@ const DynamicPageTitle = forwardRef((props: DynamicPageTitlePropTypes, ref: Ref<
   } = props as InternalProps;
 
   const classes = useStyles();
-  const containerClasses = StyleClassHelper.of(classes.container);
+  const containerClasses = clsx(classes.container, className, isIE() && classes.iEClass);
   const dynamicPageTitleRef = useConsolidatedRef<HTMLDivElement>(ref);
   const [showNavigationInTopArea, setShowNavigationInTopArea] = useState(undefined);
   const isRtl = useIsRTL(dynamicPageTitleRef);
@@ -114,10 +114,6 @@ const DynamicPageTitle = forwardRef((props: DynamicPageTitlePropTypes, ref: Ref<
     };
   }, [isMounted]);
 
-  if (isIE()) {
-    containerClasses.put(classes.iEClass);
-  }
-  containerClasses.putIfPresent(className);
   const passThroughProps = usePassThroughHtmlProps(props, ['onToggleHeaderContentVisibility', 'onClick']);
 
   const onHeaderClick = useCallback(
@@ -160,7 +156,7 @@ const DynamicPageTitle = forwardRef((props: DynamicPageTitlePropTypes, ref: Ref<
 
   return (
     <FlexBox
-      className={containerClasses.className}
+      className={containerClasses}
       style={style}
       ref={dynamicPageTitleRef}
       tooltip={tooltip}

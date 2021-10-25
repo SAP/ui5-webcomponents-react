@@ -1,10 +1,10 @@
 import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import React, { forwardRef, ReactNode, ReactNodeArray, Ref, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { DynamicPageHeaderStyles } from './DynamicPageHeader.jss';
+import clsx from 'clsx';
 
 export interface DynamicPageHeaderPropTypes extends CommonProps {
   /**
@@ -47,18 +47,14 @@ const DynamicPageHeader = forwardRef((props: InternalProps, ref: Ref<HTMLDivElem
   }, [headerPinned, topHeaderHeight, style]);
 
   const classes = useStyles();
-  const classNames = StyleClassHelper.of(classes.header);
-  if (isIE()) {
-    classNames.put(classes.iEClass);
-  }
-  classNames.putIfPresent(className);
+  const classNames = clsx(classes.header, className, isIE() && classes.iEClass);
 
   return (
     <div
       title={tooltip}
       ref={ref}
       {...passThroughProps}
-      className={classNames.className}
+      className={classNames}
       data-component-name="DynamicPageHeader"
       style={headerStyles}
     >

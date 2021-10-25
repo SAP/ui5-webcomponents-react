@@ -1,5 +1,5 @@
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import clsx from 'clsx';
 
 export const VirtualTableBodyContainer = (props) => {
   const {
@@ -25,7 +25,7 @@ export const VirtualTableBodyContainer = (props) => {
     }
   }, [parentRef.current]);
 
-  const classNames = StyleClassHelper.of(classes.tbody).className;
+  const classNames = clsx(classes.tbody);
 
   const lastScrollTop = useRef(0);
   const firedInfiniteLoadEvents = useRef(new Set());

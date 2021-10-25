@@ -1,11 +1,11 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/dist/StyleClassHelper';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import React, { forwardRef, ReactNode, ReactNodeArray, RefObject } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { EmptyIdPropException } from '../ObjectPage/EmptyIdPropException';
+import clsx from 'clsx';
 
 export interface ObjectPageSubSectionPropTypes extends CommonProps {
   /**
@@ -55,11 +55,7 @@ const ObjectPageSubSection = forwardRef((props: ObjectPageSubSectionPropTypes, r
   const htmlId = `ObjectPageSubSection-${id}`;
 
   const classes = useStyles();
-  const subSectionClassName = StyleClassHelper.of(classes.objectPageSubSection);
-  if (className) {
-    subSectionClassName.put(className);
-  }
-
+  const subSectionClassName = clsx(classes.objectPageSubSection, className);
   const passThroughProps = usePassThroughHtmlProps(props, ['id']);
 
   return (
@@ -70,7 +66,7 @@ const ObjectPageSubSection = forwardRef((props: ObjectPageSubSectionPropTypes, r
       title={tooltip}
       tabIndex={-1}
       {...passThroughProps}
-      className={subSectionClassName.toString()}
+      className={subSectionClassName}
       id={htmlId}
     >
       <div
