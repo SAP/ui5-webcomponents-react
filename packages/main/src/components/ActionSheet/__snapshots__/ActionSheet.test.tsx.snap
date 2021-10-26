@@ -72,7 +72,7 @@ exports[`ActionSheet does not crash with other component 1`] = `
       role="presentation"
     >
       <ui5-label
-        aria-label="{0} of {1} I should not crash"
+        aria-label="1 of 1 I should not crash"
         data-action-btn-index="0"
         design="Transparent"
         role="button"

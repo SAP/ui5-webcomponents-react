@@ -19,6 +19,7 @@ describe('useI18nBundle', () => {
       return;
     }
     const { result, waitForNextUpdate } = renderHook(() => useI18nBundle('@ui5/webcomponents-react'));
+
     act(() => {
       result.current.getText('PLEASE_WAIT');
     });
@@ -45,6 +46,6 @@ describe('useI18nBundle', () => {
 
     await waitForNextUpdate();
     expect(result.current.getText('PLEASE_WAIT')).toBe('Bitte warten');
-    expect(result.all).toHaveLength(4);
+    expect(result.all).toHaveLength(3);
   });
 });

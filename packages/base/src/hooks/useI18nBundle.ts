@@ -9,16 +9,21 @@ interface I18nBundle {
   getText: (textObj: TextWithDefault, ...args: any[]) => string;
 }
 
+const i18nBundles = new Map<string, I18nBundle>([]);
+
+const defaultBundle = { getText: (val) => val?.defaultText ?? val };
+
 export const useI18nBundle = (bundleName: string): I18nBundle => {
   //todo still necessary?
   const [_, setUpdater] = useState(0);
-  const [data, setData] = useState({ getText: (val) => val?.defaultText ?? val });
-
   useIsomorphicLayoutEffect(() => {
     let isMounted = true;
+    if (i18nBundles.has(bundleName)) {
+      return;
+    }
     const fetchI18n = async () => {
       const bundle = await getI18nBundle(bundleName);
-      setData(bundle);
+      i18nBundles.set(bundleName, bundle);
     };
     fetchI18n().then(() => {
       if (isMounted) {
@@ -46,5 +51,5 @@ export const useI18nBundle = (bundleName: string): I18nBundle => {
     };
   }, []);
 
-  return data;
+  return i18nBundles.get(bundleName) ?? defaultBundle;
 };
