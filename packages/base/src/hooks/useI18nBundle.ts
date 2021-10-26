@@ -1,5 +1,4 @@
-import { getI18nBundleData } from '@ui5/webcomponents-base/dist/asset-registries/i18n.js';
-import { fetchI18nBundle, getI18nBundle } from '@ui5/webcomponents-base/dist/i18nBundle.js';
+import { getI18nBundle } from '@ui5/webcomponents-base/dist/i18nBundle.js';
 import { attachLanguageChange, detachLanguageChange } from '@ui5/webcomponents-base/dist/locale/languageChange.js';
 import { useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base/dist/hooks';
 import { useEffect, useState } from 'react';
@@ -11,27 +10,30 @@ interface I18nBundle {
 }
 
 export const useI18nBundle = (bundleName: string): I18nBundle => {
+  //todo still necessary?
   const [_, setUpdater] = useState(0);
+  const [data, setData] = useState({ getText: (val) => val?.defaultText ?? val });
 
   useIsomorphicLayoutEffect(() => {
     let isMounted = true;
-    const i18nBundleData = getI18nBundleData(bundleName);
-    if (!i18nBundleData) {
-      fetchI18nBundle(`${bundleName}`).then(() => {
-        if (isMounted) {
-          setUpdater((old) => old + 1);
-        }
-      });
-    }
+    const fetchI18n = async () => {
+      const bundle = await getI18nBundle(bundleName);
+      setData(bundle);
+    };
+    fetchI18n().then(() => {
+      if (isMounted) {
+        setUpdater((old) => old + 1);
+      }
+    });
     return () => {
       isMounted = false;
     };
-  }, [bundleName]);
+  }, []);
 
   useEffect(() => {
     let isMounted = true;
     const handler = () => {
-      fetchI18nBundle(`${bundleName}`).then(() => {
+      getI18nBundle(bundleName).then(() => {
         if (isMounted) {
           setUpdater((old) => old + 1);
         }
@@ -44,5 +46,5 @@ export const useI18nBundle = (bundleName: string): I18nBundle => {
     };
   }, []);
 
-  return getI18nBundle(bundleName);
+  return data;
 };
