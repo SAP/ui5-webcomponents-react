@@ -1,5 +1,4 @@
-import { getI18nBundleData } from '@ui5/webcomponents-base/dist/asset-registries/i18n.js';
-import { fetchI18nBundle, getI18nBundle } from '@ui5/webcomponents-base/dist/i18nBundle.js';
+import { getI18nBundle } from '@ui5/webcomponents-base/dist/i18nBundle.js';
 import { attachLanguageChange, detachLanguageChange } from '@ui5/webcomponents-base/dist/locale/languageChange.js';
 import { useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base/dist/hooks';
 import { useEffect, useState } from 'react';
@@ -10,28 +9,36 @@ interface I18nBundle {
   getText: (textObj: TextWithDefault, ...args: any[]) => string;
 }
 
-export const useI18nBundle = (bundleName: string): I18nBundle => {
-  const [_, setUpdater] = useState(0);
+const i18nBundles = new Map<string, I18nBundle>([]);
 
+const defaultBundle = { getText: (val) => val?.defaultText ?? val };
+
+export const useI18nBundle = (bundleName: string): I18nBundle => {
+  //todo still necessary?
+  const [_, setUpdater] = useState(0);
   useIsomorphicLayoutEffect(() => {
     let isMounted = true;
-    const i18nBundleData = getI18nBundleData(bundleName);
-    if (!i18nBundleData) {
-      fetchI18nBundle(`${bundleName}`).then(() => {
-        if (isMounted) {
-          setUpdater((old) => old + 1);
-        }
-      });
+    if (i18nBundles.has(bundleName)) {
+      return;
     }
+    const fetchI18n = async () => {
+      const bundle = await getI18nBundle(bundleName);
+      i18nBundles.set(bundleName, bundle);
+    };
+    fetchI18n().then(() => {
+      if (isMounted) {
+        setUpdater((old) => old + 1);
+      }
+    });
     return () => {
       isMounted = false;
     };
-  }, [bundleName]);
+  }, []);
 
   useEffect(() => {
     let isMounted = true;
     const handler = () => {
-      fetchI18nBundle(`${bundleName}`).then(() => {
+      getI18nBundle(bundleName).then(() => {
         if (isMounted) {
           setUpdater((old) => old + 1);
         }
@@ -44,5 +51,5 @@ export const useI18nBundle = (bundleName: string): I18nBundle => {
     };
   }, []);
 
-  return getI18nBundle(bundleName);
+  return i18nBundles.get(bundleName) ?? defaultBundle;
 };

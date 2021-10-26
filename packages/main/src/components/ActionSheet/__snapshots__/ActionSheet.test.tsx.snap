@@ -19,7 +19,7 @@ exports[`ActionSheet Render without Crashing 1`] = `
       role="presentation"
     >
       <ui5-button
-        aria-label="1 of 3 Accept"
+        aria-label="{0} of {1} Accept"
         data-action-btn-index="0"
         design="Transparent"
         role="button"
@@ -29,7 +29,7 @@ exports[`ActionSheet Render without Crashing 1`] = `
         Accept
       </ui5-button>
       <ui5-button
-        aria-label="2 of 3 Reject"
+        aria-label="{0} of {1} Reject"
         data-action-btn-index="1"
         design="Transparent"
         role="button"
@@ -39,7 +39,7 @@ exports[`ActionSheet Render without Crashing 1`] = `
         Reject
       </ui5-button>
       <ui5-button
-        aria-label="3 of 3 This is my super long text!"
+        aria-label="{0} of {1} This is my super long text!"
         data-action-btn-index="2"
         design="Transparent"
         role="button"
