@@ -3,7 +3,7 @@ import { useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
-import { debounce, deprecationNotice, enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
+import { debounce, enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { AvatarPropTypes } from '@ui5/webcomponents-react/dist/Avatar';
 import { AvatarSize } from '@ui5/webcomponents-react/dist/AvatarSize';
 import { GlobalStyleClasses } from '@ui5/webcomponents-react/dist/GlobalStyleClasses';
@@ -14,7 +14,17 @@ import { PopoverPlacementType } from '@ui5/webcomponents-react/dist/PopoverPlace
 import { StandardListItem } from '@ui5/webcomponents-react/dist/StandardListItem';
 import { TabContainer } from '@ui5/webcomponents-react/dist/TabContainer';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import React, { forwardRef, ReactElement, RefObject, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, {
+  forwardRef,
+  ReactElement,
+  ReactNode,
+  RefObject,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState
+} from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
 import { PopoverHorizontalAlign } from '../../enums/PopoverHorizontalAlign';
@@ -45,7 +55,7 @@ addCustomCSS(
   `
 );
 
-export interface ObjectPagePropTypes extends CommonProps {
+export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
   /**
    * Defines the the upper, always static, title section of the `ObjectPage`.
    *
@@ -83,15 +93,6 @@ export interface ObjectPagePropTypes extends CommonProps {
    * Defines the ID of the currently `ObjectPageSubSection` section.
    */
   selectedSubSectionId?: string;
-  /**
-   * Fired when the selected section changes.
-   *
-   * __Note:__ This prop is deprecated and will be removed in `v0.19.0`. Please use `onSelectedSectionChange` instead.
-   * @deprecated
-   */
-  onSelectedSectionChanged?: (
-    event: CustomEvent<{ selectedSectionIndex: number; selectedSectionId: string; section: HTMLDivElement }>
-  ) => void;
   /**
    * Fired when the selected section changes.
    */
@@ -140,6 +141,12 @@ export interface ObjectPagePropTypes extends CommonProps {
       role?: string;
     };
   };
+  /**
+   * If set, only the specified placeholder will be displayed as content of the `ObjectPage`, no sections or sub-sections will be rendered.
+   *
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use placeholder components like the `IllustratedMessage` or custom skeletons pages in order to preserve the intended design.
+   */
+  placeholder?: ReactNode;
 }
 
 const useStyles = createUseStyles(styles, { name: 'ObjectPage' });
@@ -162,27 +169,16 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     showHideHeaderButton,
     children,
     onSelectedSectionChange,
-    onSelectedSectionChanged,
     selectedSectionId,
     alwaysShowContentHeader,
     showTitleInHeaderContent,
     headerContent,
     headerContentPinnable,
-    a11yConfig
+    a11yConfig,
+    placeholder
   } = props;
 
   const classes = useStyles();
-
-  useEffect(() => {
-    if (onSelectedSectionChanged) {
-      deprecationNotice(
-        'onSelectedSectionChanged',
-        `\`onSelectedSectionChanged\` is deprecated. Please use \`onSelectedSectionChange\` instead.`
-      );
-    }
-  }, [onSelectedSectionChanged]);
-
-  const internalOnSelectedSectionChange = onSelectedSectionChange ?? onSelectedSectionChanged;
 
   const firstSectionId = safeGetChildrenArray<ReactElement>(children)[0]?.props?.id;
 
@@ -202,8 +198,8 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
 
   const prevInternalSelectedSectionId = useRef(internalSelectedSectionId);
   const fireOnSelectedChangedEvent = (targetEvent, index, id, section) => {
-    if (typeof internalOnSelectedSectionChange === 'function' && prevInternalSelectedSectionId.current !== id) {
-      internalOnSelectedSectionChange(
+    if (typeof onSelectedSectionChange === 'function' && prevInternalSelectedSectionId.current !== id) {
+      onSelectedSectionChange(
         enrichEventWithDetails(targetEvent, {
           selectedSectionIndex: parseInt(index, 10),
           selectedSectionId: id,
@@ -344,7 +340,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
       scrollEvent.current = targetEvent;
       fireOnSelectedChangedEvent(targetEvent, index, newSelectionSectionId, section);
     },
-    [internalOnSelectedSectionChange, setInternalSelectedSectionId, isProgrammaticallyScrolled, scrollToSection]
+    [onSelectedSectionChange, setInternalSelectedSectionId, isProgrammaticallyScrolled, scrollToSection]
   );
 
   // do internal scrolling
@@ -781,59 +777,65 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
           />
         </div>
       )}
-      <div
-        className={classes.tabContainer}
-        data-component-name="ObjectPageTabContainer"
-        style={{
-          top:
-            headerPinned || scrolledHeaderExpanded
-              ? `${topHeaderHeight + headerContentHeight}px`
-              : `${topHeaderHeight}px`
-        }}
-      >
-        <TabContainer
-          collapsed
-          fixed
-          onTabSelect={onTabItemSelect}
-          showOverflow
+      {!placeholder && (
+        <div
+          className={classes.tabContainer}
           data-component-name="ObjectPageTabContainer"
+          style={{
+            top:
+              headerPinned || scrolledHeaderExpanded
+                ? `${topHeaderHeight + headerContentHeight}px`
+                : `${topHeaderHeight}px`
+          }}
         >
-          {safeGetChildrenArray(children).map((section: ReactElement, index) => {
-            if (!section.props) return null;
-            return (
-              <ObjectPageAnchorButton
-                key={`Anchor-${section.props?.id}`}
-                section={section}
-                index={index}
-                selected={internalSelectedSectionId === section.props?.id}
-                onShowSubSectionPopover={onShowSubSectionPopover}
-              />
-            );
-          })}
-        </TabContainer>
-        {createPortal(
-          <Popover
-            placementType={PopoverPlacementType.Bottom}
-            horizontalAlign={PopoverHorizontalAlign.Left}
-            hideArrow
-            ref={popoverRef}
-            onAfterClose={stopPropagation}
+          <TabContainer
+            collapsed
+            fixed
+            onTabSelect={onTabItemSelect}
+            showOverflow
+            data-component-name="ObjectPageTabContainer"
           >
-            <List onItemClick={onSubSectionClick}>
-              {popoverContent?.props?.children
-                .filter((item) => item.props && item.props.isSubSection)
-                .map((item) => (
-                  <StandardListItem key={item.props.id} data-key={item.props.id}>
-                    {item.props.titleText}
-                  </StandardListItem>
-                ))}
-            </List>
-          </Popover>,
-          document.body
-        )}
-      </div>
+            {safeGetChildrenArray(children).map((section: ReactElement, index) => {
+              if (!section.props) return null;
+              return (
+                <ObjectPageAnchorButton
+                  key={`Anchor-${section.props?.id}`}
+                  section={section}
+                  index={index}
+                  selected={internalSelectedSectionId === section.props?.id}
+                  onShowSubSectionPopover={onShowSubSectionPopover}
+                />
+              );
+            })}
+          </TabContainer>
+          {createPortal(
+            <Popover
+              placementType={PopoverPlacementType.Bottom}
+              horizontalAlign={PopoverHorizontalAlign.Left}
+              hideArrow
+              ref={popoverRef}
+              onAfterClose={stopPropagation}
+            >
+              <List onItemClick={onSubSectionClick}>
+                {popoverContent?.props?.children
+                  .filter((item) => item.props && item.props.isSubSection)
+                  .map((item) => (
+                    <StandardListItem key={item.props.id} data-key={item.props.id}>
+                      {item.props.titleText}
+                    </StandardListItem>
+                  ))}
+              </List>
+            </Popover>,
+            document.body
+          )}
+        </div>
+      )}
       <div data-component-name="ObjectPageContent" className={responsivePaddingClass}>
-        {mode === ObjectPageMode.IconTabBar ? getSectionById(children, internalSelectedSectionId) : children}
+        {placeholder
+          ? placeholder
+          : mode === ObjectPageMode.IconTabBar
+          ? getSectionById(children, internalSelectedSectionId)
+          : children}
       </div>
       {footer && <div style={{ height: '1rem' }} data-component-name="ObjectPageFooterSpacer" />}
       {footer && (

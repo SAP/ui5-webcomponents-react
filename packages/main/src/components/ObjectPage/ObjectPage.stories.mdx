@@ -23,10 +23,13 @@ import { ObjectStatus } from '@ui5/webcomponents-react/dist/ObjectStatus';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
 import { FlexBoxWrap } from '@ui5/webcomponents-react/dist/FlexBoxWrap';
+import { IllustratedMessage } from '@ui5/webcomponents-react/dist/IllustratedMessage';
+import { IllustrationMessageType } from '@ui5/webcomponents-react/dist/IllustrationMessageType';
 import { DocsHeader } from '@shared/stories/DocsHeader';
 import '@ui5/webcomponents-icons/dist/activate.js';
 import SampleImage from './DemoImage.png';
 import '@ui5/webcomponents-icons/dist/wrench.js';
+import '@ui5/webcomponents-fiori/dist/illustrations/UnableToLoad.js';
 
 <Meta
   title="Layouts & Floorplans / ObjectPage"
@@ -37,6 +40,7 @@ import '@ui5/webcomponents-icons/dist/wrench.js';
     headerContent: { control: { disable: true } },
     footer: { control: { disable: true } },
     children: { control: { disable: true } },
+    placeholder: { control: { disable: true } },
     a11yConfig: { table: { category: 'A11y props' } }
   }}
   args={{
@@ -265,3 +269,20 @@ import '@ui5/webcomponents-icons/dist/wrench.js';
 ## Properties
 
 <ArgsTable story="Default" />
+
+## ObjectPage with IllustratedMessage (`UnableToLoad`) placeholder
+
+<Canvas>
+  <Story name="with IllustratedMessage">
+    {(args) => {
+      return (
+        <ObjectPage
+          image={args.image}
+          headerTitle={args.headerTitle}
+          imageShapeCircle
+          placeholder={<IllustratedMessage name={IllustrationMessageType.UnableToLoad} />}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
