@@ -43,7 +43,7 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
       setMountTouchEvents(touchEvent);
       setIsDragging(true);
     },
-    [start.current, setIsDragging]
+    [start.current]
   );
 
   const handleSplitterMove = useCallback(
