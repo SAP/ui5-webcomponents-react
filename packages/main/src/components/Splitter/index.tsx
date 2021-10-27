@@ -29,8 +29,7 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
   const [positionKeys] = useState(orientation === 'vertical' ? ['left', 'right', 'X'] : ['top', 'bottom', 'Y']);
   const [splitterPosition, setSplitterPosition] = useState({ prev: position, [positionKeys[0]]: position });
   const [isDragging, setIsDragging] = useState(false);
-  const [isPostCollapsed, setIsPostCollapsed] = useState(true);
-  const [isPreCollapsed, setIsPreCollapsed] = useState(true);
+  const [isCollapsed, setIsCollapsed] = useState(false);
   const [mountTouchEvents, setMountTouchEvents] = useState(false);
 
   const gripIconClass = orientation === 'vertical' ? classes.gripIconVertical : classes.gripIconHorizontal;
@@ -83,7 +82,9 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
 
   const handleMoveSplitterEnd = useCallback(() => {
     setIsDragging(false);
+    setIsCollapsed(false);
   }, [splitterRef.current?.clientHeight, start.current]);
+
   useEffect(() => {
     const removeEventListeners = () => {
       if (mountTouchEvents) {
@@ -115,62 +116,32 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
 
     if (
       splitterPos < (splitterRef.current?.previousSibling as HTMLElement).getBoundingClientRect()?.[positionKeys[0]] ||
-      splitterPos <
-        Number(window.getComputedStyle(splitterRef.current?.previousSibling as Element).minWidth.replace('px', ''))
+      (splitterRef.current?.previousSibling as HTMLElement).getBoundingClientRect()?.width ===
+        Number(window.getComputedStyle(splitterRef.current?.previousSibling as Element).minWidth.replace('px', '')) ||
+      Math.round((splitterRef.current?.previousSibling as HTMLElement).getBoundingClientRect()?.width) ===
+        Number(window.getComputedStyle(splitterRef.current?.previousSibling as Element).maxWidth.replace('px', ''))
     ) {
-      if (!isPreCollapsed) {
-        setIsPreCollapsed(true);
+      if (!isCollapsed) {
+        setIsCollapsed(true);
         setIsDragging(false);
       }
     }
 
     if (
       splitterPos > (splitterRef.current?.nextSibling as HTMLElement).getBoundingClientRect()?.[positionKeys[1]] - 32 ||
-      splitterPos >
-        Number(window.getComputedStyle(splitterRef.current?.previousSibling as Element).maxWidth.replace('px', ''))
+      Math.round((splitterRef.current?.nextSibling as HTMLElement).getBoundingClientRect()?.width) ===
+        Math.round(
+          Number(window.getComputedStyle(splitterRef.current?.nextSibling as Element).minWidth.replace('px', ''))
+        ) ||
+      Math.round((splitterRef.current?.nextSibling as HTMLElement).getBoundingClientRect()?.width) ===
+        Math.round(
+          Number(window.getComputedStyle(splitterRef.current?.nextSibling as Element).maxWidth.replace('px', ''))
+        )
     ) {
-      if (!isPostCollapsed) {
-        setIsPostCollapsed(true);
+      if (!isCollapsed) {
+        setIsCollapsed(true);
         setIsDragging(false);
       }
-    }
-
-    if (
-      isPreCollapsed &&
-      window.getComputedStyle(splitterRef.current?.previousSibling as Element).minWidth === '0px' &&
-      splitterPos - (splitterRef.current?.previousSibling as HTMLElement).getBoundingClientRect()?.[positionKeys[0]] > 1
-    ) {
-      setIsPreCollapsed(false);
-    }
-
-    if (
-      isPreCollapsed &&
-      window.getComputedStyle(splitterRef.current?.previousSibling as Element).minWidth !== '0px' &&
-      splitterPos -
-        Number(window.getComputedStyle(splitterRef.current?.previousSibling as Element).minWidth.replace('px', '')) >
-        1
-    ) {
-      setIsPreCollapsed(false);
-    }
-
-    if (
-      isPostCollapsed &&
-      window.getComputedStyle(splitterRef.current?.previousSibling as Element).maxWidth === '0px' &&
-      splitterPos - (splitterRef.current?.nextSibling as HTMLElement).getBoundingClientRect()?.[positionKeys[1]] + 32 <
-        -1
-    ) {
-      setIsPostCollapsed(false);
-    }
-
-    if (
-      isPostCollapsed &&
-      window.getComputedStyle(splitterRef.current?.previousSibling as Element).maxWidth !== '0px' &&
-      splitterPos -
-        Number(window.getComputedStyle(splitterRef.current?.previousSibling as Element).maxWidth.replace('px', '')) +
-        32 <
-        -1
-    ) {
-      setIsPostCollapsed(false);
     }
 
     if (!isDragging && splitterPos > 0) {

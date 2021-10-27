@@ -28,13 +28,13 @@ import { SplitterElement } from '@ui5/webcomponents-react/dist/SplitterElement';
     {(args) => {
       return (
         <SplitterLayout orientation={'vertical'} {...args} width={'800px'} height={'400px'}>
-          <SplitterElement minSize={'300px'} size={'400px'} maxSize={'500px'}>
+          <SplitterElement size={'200px'}>
             <Button>Button 1</Button>
           </SplitterElement>
-          <SplitterElement size={'20%'}>
+          <SplitterElement minSize={'300px'} size={'400px'} maxSize={'500px'}>
             <Button>Button 2</Button>
           </SplitterElement>
-          <SplitterElement size={'100px'}>
+          <SplitterElement>
             <Button>Button 3</Button>
           </SplitterElement>
           <SplitterElement>
@@ -54,7 +54,7 @@ import { SplitterElement } from '@ui5/webcomponents-react/dist/SplitterElement';
           <SplitterElement>
             <Button>Button 1</Button>
           </SplitterElement>
-          <SplitterElement>
+          <SplitterElement minSize={'50px'}>
             <Button>Button 2</Button>
           </SplitterElement>
           <SplitterElement>
