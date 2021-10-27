@@ -114,7 +114,9 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
     const splitterPos = splitterRef.current?.getBoundingClientRect()?.[positionKeys[0]];
 
     if (
-      splitterPos < (splitterRef.current?.previousSibling as HTMLElement).getBoundingClientRect()?.[positionKeys[0]]
+      splitterPos < (splitterRef.current?.previousSibling as HTMLElement).getBoundingClientRect()?.[positionKeys[0]] ||
+      splitterPos <
+        Number(window.getComputedStyle(splitterRef.current?.previousSibling as Element).minWidth.replace('px', ''))
     ) {
       if (!isPreCollapsed) {
         setIsPreCollapsed(true);
@@ -123,8 +125,9 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
     }
 
     if (
+      splitterPos > (splitterRef.current?.nextSibling as HTMLElement).getBoundingClientRect()?.[positionKeys[1]] - 32 ||
       splitterPos >
-      (splitterRef.current?.nextSibling as HTMLElement).getBoundingClientRect()?.[positionKeys[1]] - 32
+        Number(window.getComputedStyle(splitterRef.current?.previousSibling as Element).maxWidth.replace('px', ''))
     ) {
       if (!isPostCollapsed) {
         setIsPostCollapsed(true);
@@ -133,15 +136,38 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
     }
 
     if (
-      splitterPos - (splitterRef.current?.previousSibling as HTMLElement).getBoundingClientRect()?.[positionKeys[0]] >
-      1
+      isPreCollapsed &&
+      window.getComputedStyle(splitterRef.current?.previousSibling as Element).minWidth === '0px' &&
+      splitterPos - (splitterRef.current?.previousSibling as HTMLElement).getBoundingClientRect()?.[positionKeys[0]] > 1
+    ) {
+      setIsPreCollapsed(false);
+    }
+
+    if (
+      isPreCollapsed &&
+      window.getComputedStyle(splitterRef.current?.previousSibling as Element).minWidth !== '0px' &&
+      splitterPos -
+        Number(window.getComputedStyle(splitterRef.current?.previousSibling as Element).minWidth.replace('px', '')) >
+        1
     ) {
       setIsPreCollapsed(false);
     }
 
     if (
       isPostCollapsed &&
+      window.getComputedStyle(splitterRef.current?.previousSibling as Element).maxWidth === '0px' &&
       splitterPos - (splitterRef.current?.nextSibling as HTMLElement).getBoundingClientRect()?.[positionKeys[1]] + 32 <
+        -1
+    ) {
+      setIsPostCollapsed(false);
+    }
+
+    if (
+      isPostCollapsed &&
+      window.getComputedStyle(splitterRef.current?.previousSibling as Element).maxWidth !== '0px' &&
+      splitterPos -
+        Number(window.getComputedStyle(splitterRef.current?.previousSibling as Element).maxWidth.replace('px', '')) +
+        32 <
         -1
     ) {
       setIsPostCollapsed(false);

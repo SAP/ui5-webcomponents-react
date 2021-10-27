@@ -1,6 +1,5 @@
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import React, { forwardRef, ReactNode, ReactNodeArray, RefObject, useContext } from 'react';
+import React, { forwardRef, ReactElement, RefObject, useContext } from 'react';
 import { createUseStyles } from 'react-jss';
 import { ThemeContext } from '../SplitterLayout';
 import { styles } from '../SplitterLayout/SplitterLayout.jss';
@@ -12,7 +11,7 @@ export interface SplitterElementPropTypes extends CommonProps {
   size?: string;
   minSize?: string;
   maxSize?: string;
-  children?: ReactNode | ReactNodeArray;
+  children?: ReactElement | ReactElement[];
 }
 
 const SplitterElement = forwardRef((props: SplitterElementPropTypes, ref: RefObject<HTMLDivElement>) => {
