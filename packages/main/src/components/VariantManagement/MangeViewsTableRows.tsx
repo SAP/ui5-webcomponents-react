@@ -1,5 +1,5 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
-import { useI18nBundle } from '@ui5/webcomponents-react-base/hooks/useI18nBundle';
+import { useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
 import {
   APPLY_AUTOMATICALLY,
   DELETE_VIEW,
