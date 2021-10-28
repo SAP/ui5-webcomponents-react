@@ -31,6 +31,10 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
   const [isDragging, setIsDragging] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [mountTouchEvents, setMountTouchEvents] = useState(false);
+  const [isPreviousSiblingRect, setIsPreviousSiblingRect] = useState(null);
+  const [isPreviousSiblingStyle, setIsPreviousSiblingStyle] = useState(null);
+  const [isNextSiblingRect, setIsNextSiblingRect] = useState(null);
+  const [isNextSiblingStyle, setIsNextSiblingStyle] = useState(null);
 
   const gripIconClass = orientation === 'vertical' ? classes.gripIconVertical : classes.gripIconHorizontal;
   const splitterClass = orientation === 'vertical' ? classes.splitterVertical : classes.splitterHorizontal;
@@ -58,15 +62,23 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
         nextPosition < (nextSibling as HTMLElement).getBoundingClientRect()?.[positionKeys[1]] - 32
       ) {
         (previousSibling as HTMLElement).style.flex = `0 0 ${nextPosition - prevSiblingOffset + 16}px`;
+        setIsPreviousSiblingRect((previousSibling as HTMLElement)?.getBoundingClientRect());
+        setIsPreviousSiblingStyle(window.getComputedStyle(previousSibling as Element));
+
         if (nextSibling.nextSibling) {
           (nextSibling as HTMLElement).style.flex = `0 0 ${
             (nextSibling.nextSibling as HTMLElement).getBoundingClientRect()?.[positionKeys[0]] -
             (nextSibling as HTMLElement).getBoundingClientRect()?.[positionKeys[0]] +
             16
           }px`;
+          setIsNextSiblingRect((nextSibling as HTMLElement)?.getBoundingClientRect());
+          setIsNextSiblingStyle(window.getComputedStyle(nextSibling as Element));
         }
         if (!nextSibling.nextSibling) {
           (nextSibling as HTMLElement).style.flex = `1 0 auto`;
+        }
+        if (isCollapsed === true) {
+          setIsCollapsed(false);
         }
       }
 
@@ -77,13 +89,19 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
           : e[`page${positionKeys[2]}`]
       }));
     },
-    [setSplitterPosition, splitterPosition]
+    [
+      setSplitterPosition,
+      splitterPosition,
+      isCollapsed,
+      splitterRef.current?.previousSibling,
+      splitterRef.current?.nextSibling
+    ]
   );
 
   const handleMoveSplitterEnd = useCallback(() => {
     setIsDragging(false);
     setIsCollapsed(false);
-  }, [splitterRef.current?.clientHeight, start.current]);
+  }, [splitterRef.current?.clientHeight, start.current, setIsCollapsed]);
 
   useEffect(() => {
     const removeEventListeners = () => {
@@ -115,33 +133,16 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
     const splitterPos = splitterRef.current?.getBoundingClientRect()?.[positionKeys[0]];
 
     if (
-      splitterPos < (splitterRef.current?.previousSibling as HTMLElement).getBoundingClientRect()?.[positionKeys[0]] ||
-      (splitterRef.current?.previousSibling as HTMLElement).getBoundingClientRect()?.width ===
-        Number(window.getComputedStyle(splitterRef.current?.previousSibling as Element).minWidth.replace('px', '')) ||
-      Math.round((splitterRef.current?.previousSibling as HTMLElement).getBoundingClientRect()?.width) ===
-        Number(window.getComputedStyle(splitterRef.current?.previousSibling as Element).maxWidth.replace('px', ''))
+      !isCollapsed &&
+      (splitterPos < isPreviousSiblingRect?.[positionKeys[0]] ||
+        isPreviousSiblingRect?.width === Number(isPreviousSiblingStyle?.minWidth.replace('px', '')) ||
+        Math.round(isPreviousSiblingRect?.width) === Number(isPreviousSiblingStyle?.maxWidth.replace('px', '')) ||
+        splitterPos > isNextSiblingRect?.[positionKeys[1]] - 32 ||
+        Math.round(isNextSiblingRect?.width) === Math.round(Number(isNextSiblingStyle?.minWidth.replace('px', ''))) ||
+        Math.round(isNextSiblingRect?.width) === Math.round(Number(isNextSiblingStyle?.maxWidth.replace('px', ''))))
     ) {
-      if (!isCollapsed) {
-        setIsCollapsed(true);
-        setIsDragging(false);
-      }
-    }
-
-    if (
-      splitterPos > (splitterRef.current?.nextSibling as HTMLElement).getBoundingClientRect()?.[positionKeys[1]] - 32 ||
-      Math.round((splitterRef.current?.nextSibling as HTMLElement).getBoundingClientRect()?.width) ===
-        Math.round(
-          Number(window.getComputedStyle(splitterRef.current?.nextSibling as Element).minWidth.replace('px', ''))
-        ) ||
-      Math.round((splitterRef.current?.nextSibling as HTMLElement).getBoundingClientRect()?.width) ===
-        Math.round(
-          Number(window.getComputedStyle(splitterRef.current?.nextSibling as Element).maxWidth.replace('px', ''))
-        )
-    ) {
-      if (!isCollapsed) {
-        setIsCollapsed(true);
-        setIsDragging(false);
-      }
+      setIsDragging(false);
+      setIsCollapsed(true);
     }
 
     if (!isDragging && splitterPos > 0) {
