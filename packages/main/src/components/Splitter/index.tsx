@@ -208,13 +208,6 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
     if (!isDragging && splitterPos > 0) {
       setSplitterPosition({ prev: splitterPos.toString(), [positionKeys[0]]: splitterPos.toString() });
     }
-
-    // console.log('PREV ' + isPrevCollapsed);
-    // console.log('PREVMIN ' + isMinPrevCollapsed);
-    // console.log('PREVMAX ' + isMaxPrevCollapsed);
-    // console.log('POST ' + isPostCollapsed);
-    // console.log('POSTMIN ' + isMinPostCollapsed);
-    // console.log('POSTMAX ' + isMaxPostCollapsed);
   }, [splitterRef.current?.getBoundingClientRect()?.[positionKeys[0]], isDragging]);
 
   return (
