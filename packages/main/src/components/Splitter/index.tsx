@@ -29,7 +29,12 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
   const [positionKeys] = useState(orientation === 'vertical' ? ['left', 'right', 'X'] : ['top', 'bottom', 'Y']);
   const [splitterPosition, setSplitterPosition] = useState({ prev: position, [positionKeys[0]]: position });
   const [isDragging, setIsDragging] = useState(false);
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isPrevCollapsed, setIsPrevCollapsed] = useState(false);
+  const [isMinPrevCollapsed, setIsMinPrevCollapsed] = useState(false);
+  const [isMaxPrevCollapsed, setIsMaxPrevCollapsed] = useState(false);
+  const [isPostCollapsed, setIsPostCollapsed] = useState(false);
+  const [isMinPostCollapsed, setIsMinPostCollapsed] = useState(false);
+  const [isMaxPostCollapsed, setIsMaxPostCollapsed] = useState(false);
   const [mountTouchEvents, setMountTouchEvents] = useState(false);
   const [isPreviousSiblingRect, setIsPreviousSiblingRect] = useState(null);
   const [isPreviousSiblingStyle, setIsPreviousSiblingStyle] = useState(null);
@@ -77,9 +82,6 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
         if (!nextSibling.nextSibling) {
           (nextSibling as HTMLElement).style.flex = `1 0 auto`;
         }
-        if (isCollapsed === true) {
-          setIsCollapsed(false);
-        }
       }
 
       setSplitterPosition((prev) => ({
@@ -89,19 +91,12 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
           : e[`page${positionKeys[2]}`]
       }));
     },
-    [
-      setSplitterPosition,
-      splitterPosition,
-      isCollapsed,
-      splitterRef.current?.previousSibling,
-      splitterRef.current?.nextSibling
-    ]
+    [setSplitterPosition, splitterPosition]
   );
 
   const handleMoveSplitterEnd = useCallback(() => {
     setIsDragging(false);
-    setIsCollapsed(false);
-  }, [splitterRef.current?.clientHeight, start.current, setIsCollapsed]);
+  }, [splitterRef.current?.clientHeight, start.current]);
 
   useEffect(() => {
     const removeEventListeners = () => {
@@ -132,22 +127,94 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
   useEffect(() => {
     const splitterPos = splitterRef.current?.getBoundingClientRect()?.[positionKeys[0]];
 
+    if (!isPrevCollapsed && splitterPos < isPreviousSiblingRect?.[positionKeys[0]]) {
+      setIsDragging(false);
+      setIsPrevCollapsed(true);
+    }
+
     if (
-      !isCollapsed &&
-      (splitterPos < isPreviousSiblingRect?.[positionKeys[0]] ||
-        isPreviousSiblingRect?.width === Number(isPreviousSiblingStyle?.minWidth.replace('px', '')) ||
-        Math.round(isPreviousSiblingRect?.width) === Number(isPreviousSiblingStyle?.maxWidth.replace('px', '')) ||
-        splitterPos > isNextSiblingRect?.[positionKeys[1]] - 32 ||
-        Math.round(isNextSiblingRect?.width) === Math.round(Number(isNextSiblingStyle?.minWidth.replace('px', ''))) ||
-        Math.round(isNextSiblingRect?.width) === Math.round(Number(isNextSiblingStyle?.maxWidth.replace('px', ''))))
+      !isMinPrevCollapsed &&
+      isPreviousSiblingRect?.width === Number(isPreviousSiblingStyle?.minWidth.replace('px', ''))
     ) {
       setIsDragging(false);
-      setIsCollapsed(true);
+      setIsMinPrevCollapsed(true);
+    }
+
+    if (
+      !isMaxPrevCollapsed &&
+      Math.round(isPreviousSiblingRect?.width) === Number(isPreviousSiblingStyle?.maxWidth.replace('px', ''))
+    ) {
+      setIsDragging(false);
+      setIsMaxPrevCollapsed(true);
+    }
+
+    if (!isPostCollapsed && splitterPos > isNextSiblingRect?.[positionKeys[1]] - 32) {
+      setIsDragging(false);
+      setIsPostCollapsed(true);
+    }
+
+    if (
+      !isMinPostCollapsed &&
+      Math.round(isNextSiblingRect?.width) === Math.round(Number(isNextSiblingStyle?.minWidth.replace('px', '')))
+    ) {
+      setIsDragging(false);
+      setIsMinPostCollapsed(true);
+    }
+
+    if (
+      !isMaxPostCollapsed &&
+      Math.round(isNextSiblingRect?.width) === Math.round(Number(isNextSiblingStyle?.maxWidth.replace('px', '')))
+    ) {
+      setIsDragging(false);
+      setIsMaxPostCollapsed(true);
+    }
+
+    if (isPostCollapsed && isNextSiblingRect?.[positionKeys[1]] - 32 - splitterPos > 1) {
+      setIsPostCollapsed(false);
+    }
+
+    if (
+      isMinPostCollapsed &&
+      Math.round(isNextSiblingRect?.width) - Math.round(Number(isNextSiblingStyle?.minWidth.replace('px', ''))) > 3
+    ) {
+      setIsMinPostCollapsed(false);
+    }
+
+    if (
+      isMaxPostCollapsed &&
+      Math.round(Number(isNextSiblingStyle?.maxWidth.replace('px', ''))) - Math.round(isNextSiblingRect?.width) > 3
+    ) {
+      setIsMaxPostCollapsed(false);
+    }
+
+    if (isPrevCollapsed && splitterPos - isPreviousSiblingRect?.[positionKeys[0]] > 3) {
+      setIsPrevCollapsed(false);
+    }
+
+    if (
+      isMinPrevCollapsed &&
+      isPreviousSiblingRect?.width - Number(isPreviousSiblingStyle?.minWidth.replace('px', '')) > 3
+    ) {
+      setIsMinPrevCollapsed(false);
+    }
+
+    if (
+      isMaxPrevCollapsed &&
+      Number(isPreviousSiblingStyle?.maxWidth.replace('px', '')) - Math.round(isPreviousSiblingRect?.width) > 3
+    ) {
+      setIsMaxPrevCollapsed(false);
     }
 
     if (!isDragging && splitterPos > 0) {
       setSplitterPosition({ prev: splitterPos.toString(), [positionKeys[0]]: splitterPos.toString() });
     }
+
+    // console.log('PREV ' + isPrevCollapsed);
+    // console.log('PREVMIN ' + isMinPrevCollapsed);
+    // console.log('PREVMAX ' + isMaxPrevCollapsed);
+    // console.log('POST ' + isPostCollapsed);
+    // console.log('POSTMIN ' + isMinPostCollapsed);
+    // console.log('POSTMAX ' + isMaxPostCollapsed);
   }, [splitterRef.current?.getBoundingClientRect()?.[positionKeys[0]], isDragging]);
 
   return (
