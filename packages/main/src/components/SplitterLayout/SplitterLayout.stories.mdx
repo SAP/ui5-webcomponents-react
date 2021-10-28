@@ -50,11 +50,11 @@ import { SplitterElement } from '@ui5/webcomponents-react/dist/SplitterElement';
   <Story name="Horizontal Layout">
     {(args) => {
       return (
-        <SplitterLayout orientation={'horizontal'} {...args} width={'80vw'} height={'500px'}>
+        <SplitterLayout orientation={'horizontal'} {...args} width={'80vw'} height={'600px'}>
           <SplitterElement>
             <Button>Button 1</Button>
           </SplitterElement>
-          <SplitterElement minSize={'50px'}>
+          <SplitterElement minSize={'50px'} size={'100px'} maxSize={'200px'}>
             <Button>Button 2</Button>
           </SplitterElement>
           <SplitterElement>

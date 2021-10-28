@@ -27,6 +27,9 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
   const start = useRef(null);
 
   const [positionKeys] = useState(orientation === 'vertical' ? ['left', 'right', 'X'] : ['top', 'bottom', 'Y']);
+  const [styleKeys] = useState(
+    orientation === 'vertical' ? ['width', 'minWidth', 'maxWidth'] : ['height', 'minHeight', 'maxHeight']
+  );
   const [splitterPosition, setSplitterPosition] = useState({ prev: position, [positionKeys[0]]: position });
   const [isDragging, setIsDragging] = useState(false);
   const [isPrevCollapsed, setIsPrevCollapsed] = useState(false);
@@ -134,7 +137,7 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
 
     if (
       !isMinPrevCollapsed &&
-      isPreviousSiblingRect?.width === Number(isPreviousSiblingStyle?.minWidth.replace('px', ''))
+      isPreviousSiblingRect?.[styleKeys[0]] === Number(isPreviousSiblingStyle?.[styleKeys[1]].replace('px', ''))
     ) {
       setIsDragging(false);
       setIsMinPrevCollapsed(true);
@@ -142,7 +145,8 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
 
     if (
       !isMaxPrevCollapsed &&
-      Math.round(isPreviousSiblingRect?.width) === Number(isPreviousSiblingStyle?.maxWidth.replace('px', ''))
+      Math.round(isPreviousSiblingRect?.[styleKeys[0]]) ===
+        Number(isPreviousSiblingStyle?.[styleKeys[2]].replace('px', ''))
     ) {
       setIsDragging(false);
       setIsMaxPrevCollapsed(true);
@@ -155,7 +159,8 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
 
     if (
       !isMinPostCollapsed &&
-      Math.round(isNextSiblingRect?.width) === Math.round(Number(isNextSiblingStyle?.minWidth.replace('px', '')))
+      Math.round(isNextSiblingRect?.[styleKeys[0]]) ===
+        Math.round(Number(isNextSiblingStyle?.[styleKeys[1]].replace('px', '')))
     ) {
       setIsDragging(false);
       setIsMinPostCollapsed(true);
@@ -163,7 +168,8 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
 
     if (
       !isMaxPostCollapsed &&
-      Math.round(isNextSiblingRect?.width) === Math.round(Number(isNextSiblingStyle?.maxWidth.replace('px', '')))
+      Math.round(isNextSiblingRect?.[styleKeys[0]]) ===
+        Math.round(Number(isNextSiblingStyle?.[styleKeys[2]].replace('px', '')))
     ) {
       setIsDragging(false);
       setIsMaxPostCollapsed(true);
@@ -175,32 +181,38 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
 
     if (
       isMinPostCollapsed &&
-      Math.round(isNextSiblingRect?.width) - Math.round(Number(isNextSiblingStyle?.minWidth.replace('px', ''))) > 3
+      Math.round(isNextSiblingRect?.[styleKeys[0]]) -
+        Math.round(Number(isNextSiblingStyle?.[styleKeys[1]].replace('px', ''))) >
+        1
     ) {
       setIsMinPostCollapsed(false);
     }
 
     if (
       isMaxPostCollapsed &&
-      Math.round(Number(isNextSiblingStyle?.maxWidth.replace('px', ''))) - Math.round(isNextSiblingRect?.width) > 3
+      Math.round(Number(isNextSiblingStyle?.[styleKeys[2]].replace('px', ''))) -
+        Math.round(isNextSiblingRect?.[styleKeys[0]]) >
+        1
     ) {
       setIsMaxPostCollapsed(false);
     }
 
-    if (isPrevCollapsed && splitterPos - isPreviousSiblingRect?.[positionKeys[0]] > 3) {
+    if (isPrevCollapsed && splitterPos - isPreviousSiblingRect?.[positionKeys[0]] > 1) {
       setIsPrevCollapsed(false);
     }
 
     if (
       isMinPrevCollapsed &&
-      isPreviousSiblingRect?.width - Number(isPreviousSiblingStyle?.minWidth.replace('px', '')) > 3
+      isPreviousSiblingRect?.[styleKeys[0]] - Number(isPreviousSiblingStyle?.[styleKeys[1]].replace('px', '')) > 1
     ) {
       setIsMinPrevCollapsed(false);
     }
 
     if (
       isMaxPrevCollapsed &&
-      Number(isPreviousSiblingStyle?.maxWidth.replace('px', '')) - Math.round(isPreviousSiblingRect?.width) > 3
+      Number(isPreviousSiblingStyle?.[styleKeys[2]].replace('px', '')) -
+        Math.round(isPreviousSiblingRect?.[styleKeys[0]]) >
+        1
     ) {
       setIsMaxPrevCollapsed(false);
     }
