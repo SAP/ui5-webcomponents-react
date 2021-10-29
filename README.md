@@ -1,12 +1,7 @@
 <a name="top"></a>
 
 <p align="center">
-  <picture>
-    <source
-      srcset="https://raw.githubusercontent.com/SAP/ui5-webcomponents-react/master/assets/Logo_Dark_Mode.png"
-      media="(prefers-color-scheme: dark)">
-    <img src="https://raw.githubusercontent.com/SAP/ui5-webcomponents-react/master/assets/Logo.png" alt="UI5 Web Components for React Logo" >
-  </picture>
+  <img src="https://raw.githubusercontent.com/SAP/ui5-webcomponents-react/master/assets/Logo-Sticker.png" alt="UI5 Web Components for React Logo" />
 </p>
 <p align="center">
   <a href="https://github.com/SAP/ui5-webcomponents-react/actions?query=workflow:%22build%22" target="_blank">
