@@ -14,7 +14,6 @@ const defaultBundle = { getText: (val) => val?.defaultText ?? val };
 const i18nBundles = new Map<string, I18nBundle>([]);
 
 export const useI18nBundle = (bundleName: string): I18nBundle => {
-  const [bundle, setBundle] = useState(i18nBundles.get(bundleName) ?? defaultBundle);
   const [_, setUpdater] = useState(0);
 
   useIsomorphicLayoutEffect(() => {
@@ -23,7 +22,6 @@ export const useI18nBundle = (bundleName: string): I18nBundle => {
       const internalBundle = await getI18nBundle(bundleName);
       if (isMounted) {
         if (!i18nBundles.has(bundleName) || newLanguage) {
-          setBundle(internalBundle);
           setUpdater((prev) => prev + 1);
         }
         i18nBundles.set(bundleName, internalBundle);
@@ -37,5 +35,5 @@ export const useI18nBundle = (bundleName: string): I18nBundle => {
     };
   }, [bundleName]);
 
-  return bundle;
+  return i18nBundles.get(bundleName) ?? defaultBundle;
 };
