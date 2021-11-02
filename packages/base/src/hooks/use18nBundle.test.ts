@@ -37,8 +37,16 @@ describe('useI18nBundle', () => {
     act(() => {
       setLanguage('de');
     });
+
     await waitForNextUpdate();
     expect(result.current.getText('PLEASE_WAIT')).toBe('Bitte warten');
+    act(() => {
+      setLanguage('de');
+    });
+    const shouldNotUpdate = async () => await waitForNextUpdate();
+    await expect(shouldNotUpdate).rejects.toMatchInlineSnapshot(
+      `[Error: Timed out in waitForNextUpdate after 1000ms.]`
+    );
     expect(result.all).toHaveLength(2);
   });
 });
