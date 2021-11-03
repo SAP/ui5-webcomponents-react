@@ -250,7 +250,6 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * Defines where modals and other elements which should be mounted outside of the DOM hierarchy are rendered into via `React.createPortal`.
    *
    * Defaults to: `document.body`
-   *
    */
   portalContainer?: Element;
 

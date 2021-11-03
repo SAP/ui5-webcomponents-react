@@ -142,7 +142,6 @@ export interface FilterBarPropTypes extends CommonProps {
    * Defines where modals are rendered into via `React.createPortal`.
    *
    * Defaults to: `document.body`
-   *
    */
   portalContainer?: Element;
   /**

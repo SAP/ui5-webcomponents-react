@@ -97,7 +97,6 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
    * Defines where modals are rendered into via `React.createPortal`.
    *
    * Defaults to: `document.body`
-   *
    */
   portalContainer?: Element;
   /**

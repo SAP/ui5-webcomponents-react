@@ -149,7 +149,6 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
    * Defines where modals are rendered into via `React.createPortal`.
    *
    * Defaults to: `document.body`
-   *
    */
   portalContainer?: Element;
   /**

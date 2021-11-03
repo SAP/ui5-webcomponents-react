@@ -54,7 +54,6 @@ export interface ActionSheetPropTypes extends Omit<ResponsivePopoverPropTypes, '
    * Defines where modals are rendered into via `React.createPortal`.
    *
    * Defaults to: `document.body`
-   *
    */
   portalContainer?: Element;
 }
