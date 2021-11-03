@@ -255,7 +255,7 @@ export const FilterDialog = (props) => {
         );
       });
   };
-  console.log(portalContainer);
+
   return createPortal(
     <Dialog
       ref={dialogRef}
