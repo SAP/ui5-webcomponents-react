@@ -1,5 +1,6 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
-import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsHeader } from '@docs/DocsHeader';
+import { Footer } from '@docs/Footer';
 import { ComposedChart } from '@ui5/webcomponents-react-charts/dist/ComposedChart';
 import { bigDataSet, complexDataSet, simpleDataSet } from '../../resources/DemoProps';
 
@@ -310,3 +311,5 @@ import { bigDataSet, complexDataSet, simpleDataSet } from '../../resources/DemoP
     {(props) => <ComposedChart {...props} />}
   </Story>
 </Canvas>
+
+<Footer />

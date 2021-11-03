@@ -1,5 +1,6 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
-import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsHeader } from '@docs/DocsHeader';
+import { Footer } from '@docs/Footer';
 import { RadarChart } from '@ui5/webcomponents-react-charts/dist/RadarChart';
 import { complexDataSet, simpleDataSet } from '../../resources/DemoProps';
 
@@ -140,3 +141,5 @@ import { complexDataSet, simpleDataSet } from '../../resources/DemoProps';
     <RadarChart style={{ width: '100%' }} dimensions={[]} measures={[]} />
   </Story>
 </Canvas>
+
+<Footer />

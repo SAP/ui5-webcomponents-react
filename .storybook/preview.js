@@ -10,7 +10,7 @@ import { ThemeProvider } from '@ui5/webcomponents-react/dist/ThemeProvider';
 import { Themes } from '@ui5/webcomponents-react/dist/Themes';
 import '@ui5/webcomponents/dist/features/InputElementsFormSupport';
 import React, { useEffect } from 'react';
-import { DocsPage } from '../shared/stories/DocsPage';
+import { DocsPage } from './components/DocsPage';
 import applyDirection from '@ui5/webcomponents-base/dist/locale/applyDirection';
 
 const argTypesCategoryCommonProps = {
