@@ -1,0 +1,128 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SplitterLayout Render Horizontal SplitterLayout with multiple SplitterElements 1`] = `
+<DocumentFragment>
+  <div
+    class="SplitterLayout-splitterLayout SplitterLayout-splitterLayout-d0"
+    data-testid="Layout"
+  >
+    <div
+      class="SplitterElement-splitterElementHorizontal SplitterElement-splitterElementHorizontal-d2"
+    >
+      <ui5-button
+        design="Default"
+        ui5-button=""
+      >
+        Button 1
+      </ui5-button>
+    </div>
+    <div
+      class="SplitterLayout-splitterHorizontal SplitterLayout-splitterHorizontal-d4"
+      role="separator"
+    >
+      <ui5-icon
+        class="SplitterLayout-gripIconHorizontal SplitterLayout-gripIconHorizontal-d6"
+        name="horizontal-grip"
+        ui5-icon=""
+      />
+    </div>
+    <div
+      class="SplitterElement-splitterElementHorizontal SplitterElement-splitterElementHorizontal-d9"
+      data-testid="Element"
+      maxsize="200px"
+      minsize="50px"
+    >
+      <ui5-button
+        design="Default"
+        ui5-button=""
+      >
+        Button 2
+      </ui5-button>
+    </div>
+    <div
+      class="SplitterLayout-splitterHorizontal SplitterLayout-splitterHorizontal-d11"
+      role="separator"
+    >
+      <ui5-icon
+        class="SplitterLayout-gripIconHorizontal SplitterLayout-gripIconHorizontal-d13"
+        name="horizontal-grip"
+        ui5-icon=""
+      />
+    </div>
+    <div
+      class="SplitterElement-splitterElementHorizontal SplitterElement-splitterElementHorizontal-d16"
+    >
+      <ui5-button
+        design="Default"
+        ui5-button=""
+      >
+        Button 3
+      </ui5-button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`SplitterLayout Render SplitterLayout without props and children 1`] = `
+<DocumentFragment>
+  <div
+    class="SplitterLayout-splitterLayout SplitterLayout-splitterLayout-d0"
+  />
+</DocumentFragment>
+`;
+
+exports[`SplitterLayout Render Vertical SplitterLayout with multiple SplitterElements 1`] = `
+<DocumentFragment>
+  <div
+    class="SplitterLayout-splitterLayout SplitterLayout-splitterLayout-d0"
+    data-testid="SplitterLayout"
+  >
+    <div
+      class="SplitterElement-splitterElementVertical SplitterElement-splitterElementVertical-d1"
+      data-testid="SplitterElement1"
+    >
+      <ui5-button
+        data-testid="Button"
+        design="Default"
+        ui5-button=""
+      >
+        Button 1
+      </ui5-button>
+    </div>
+    <div
+      class="SplitterLayout-splitterVertical SplitterLayout-splitterVertical-d3"
+      role="separator"
+    >
+      <ui5-icon
+        class="SplitterLayout-gripIconVertical SplitterLayout-gripIconVertical-d5"
+        name="vertical-grip"
+        ui5-icon=""
+      />
+    </div>
+    <div
+      class="SplitterElement-splitterElementVertical SplitterElement-splitterElementVertical-d8"
+      data-testid="SplitterElement2"
+      maxsize="500px"
+      minsize="300px"
+    >
+      <ui5-button
+        design="Default"
+        ui5-button=""
+      >
+        Button 2
+      </ui5-button>
+    </div>
+    <div
+      class="SplitterElement-splitterElementVertical SplitterElement-splitterElementVertical-d15"
+      data-testid="SplitterElement3"
+    >
+      <ui5-button
+        design="Default"
+        ui5-button=""
+      >
+        Button 3
+      </ui5-button>
+    </div>
+  </div>
+</DocumentFragment>
+`;

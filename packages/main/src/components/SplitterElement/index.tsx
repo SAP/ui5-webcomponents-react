@@ -15,7 +15,7 @@ export interface SplitterElementPropTypes extends CommonProps {
 }
 
 const SplitterElement = forwardRef((props: SplitterElementPropTypes, ref: RefObject<HTMLDivElement>) => {
-  const { children, style, tooltip, className, ...rest } = props;
+  const { children, style, tooltip, className, minSize, maxSize, size, resizable, ...rest } = props;
 
   const containerContext = useContext(ThemeContext);
 
