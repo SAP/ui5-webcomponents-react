@@ -1,6 +1,5 @@
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { SplitterElementPropTypes } from '@ui5/webcomponents-react/dist/SplitterElement';
-import React, { forwardRef, ReactElement, ReactNodeArray, Ref, useMemo } from 'react';
+import React, { forwardRef, ReactElement, Ref } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { styles } from './SplitterLayout.jss';
