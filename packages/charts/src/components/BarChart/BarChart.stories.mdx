@@ -1,7 +1,9 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
-import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsHeader } from '@docs/DocsHeader';
+import { Footer } from '@docs/Footer';
 import { BarChart } from '@ui5/webcomponents-react-charts/dist/BarChart';
 import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
+import { Footer } from '../../../../../.storybook/components/Footer';
 
 <Meta
   title="Charts /  BarChart"
@@ -243,3 +245,5 @@ import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../
     {(props) => <BarChart {...props} />}
   </Story>
 </Canvas>
+
+<Footer />

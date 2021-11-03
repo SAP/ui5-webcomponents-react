@@ -13,7 +13,7 @@ module.exports = {
   webpack: async (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@shared': path.join(root, 'shared'),
+      '@docs': path.join(root, '.storybook', 'components'),
       '@ui5/webcomponents-react/dist/assets/i18n': path.join(root, 'packages', 'main', 'dist', 'assets', 'i18n'),
       '@ui5/webcomponents-react/dist/Assets': path.join(root, 'packages', 'main', 'dist', 'Assets'),
       '@ui5/webcomponents-react': path.join(root, 'packages', 'main', 'src'),
