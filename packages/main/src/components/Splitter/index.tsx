@@ -73,10 +73,10 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
       const previousSibling = previousSiblingRef.current;
       const nextSibling = nextSiblingRef.current;
       const sizeDiv = e[`client${positionKeys[2]}`] - start.current;
-
+      console.log();
       if (
-        !(sizeDiv < 0 && (isMinPrevCollapsed || isMaxPrevCollapsed || isPrevCollapsed)) &&
-        !(sizeDiv > 0 && (isMinPostCollapsed || isMaxPostCollapsed || isPostCollapsed))
+        !(sizeDiv < 0 && (isMinPrevCollapsed || isPrevCollapsed || isMaxPostCollapsed)) &&
+        !(sizeDiv > 0 && (isMinPostCollapsed || isMaxPrevCollapsed || isPostCollapsed))
       ) {
         (previousSibling as HTMLElement).style.flex = `0 0 ${previousSiblingSize.current + sizeDiv}px`;
         setIsPreviousSiblingRect((previousSibling as HTMLElement)?.getBoundingClientRect());
@@ -149,7 +149,7 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
       setIsMaxPrevCollapsed(true);
     }
 
-    if (!isPostCollapsed && splitterPos > isNextSiblingRect?.[positionKeys[1]] - 32) {
+    if (!isPostCollapsed && splitterPos > isNextSiblingRect?.[positionKeys[1]] - 16) {
       setIsDragging(false);
       setIsPostCollapsed(true);
     }
@@ -172,7 +172,7 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
       setIsMaxPostCollapsed(true);
     }
 
-    if (isPostCollapsed && isNextSiblingRect?.[positionKeys[1]] - 32 - splitterPos > 1) {
+    if (isPostCollapsed && isNextSiblingRect?.[positionKeys[1]] - 16 - splitterPos > 5) {
       setIsPostCollapsed(false);
     }
 
@@ -189,18 +189,18 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
       isMaxPostCollapsed &&
       Math.round(Number(isNextSiblingStyle?.[styleKeys[2]].replace('px', ''))) -
         Math.round(isNextSiblingRect?.[styleKeys[0]]) >
-        1
+        5
     ) {
       setIsMaxPostCollapsed(false);
     }
 
-    if (isPrevCollapsed && splitterPos - isPreviousSiblingRect?.[positionKeys[0]] > 1) {
+    if (isPrevCollapsed && splitterPos - isPreviousSiblingRect?.[positionKeys[0]] > 5) {
       setIsPrevCollapsed(false);
     }
 
     if (
       isMinPrevCollapsed &&
-      isPreviousSiblingRect?.[styleKeys[0]] - Number(isPreviousSiblingStyle?.[styleKeys[1]].replace('px', '')) > 1
+      isPreviousSiblingRect?.[styleKeys[0]] - Number(isPreviousSiblingStyle?.[styleKeys[1]].replace('px', '')) > 5
     ) {
       setIsMinPrevCollapsed(false);
     }
