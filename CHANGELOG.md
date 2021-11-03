@@ -9,7 +9,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Bug Fixes
 
 * **FormItem:** remove unecessary string conversion ([#2236](https://github.com/SAP/ui5-webcomponents-react/issues/2236)) ([ed094c3](https://github.com/SAP/ui5-webcomponents-react/commit/ed094c35a5ecf3612b9e43c979614cd302bfd133))
-* **VariantManagement:** replace bad imports ([#2257](https://github.com/SAP/ui5-webcomponents-react/issues/2257)) ([61f2f92](https://github.com/SAP/ui5-webcomponents-react/commit/61f2f925ad005fe5e8a933275f1e1169c2cceba8))
 
 
 ### Features
@@ -17,6 +16,23 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * add `portalContainer` prop for elements rendered via `createPortal` ([#2275](https://github.com/SAP/ui5-webcomponents-react/issues/2275)) ([e71b663](https://github.com/SAP/ui5-webcomponents-react/commit/e71b663299bcdc4bc8e4ee02f38e982d33de5f51))
 * **MessageBox:** add `accessibleName` default text ([#2208](https://github.com/SAP/ui5-webcomponents-react/issues/2208)) ([a79051a](https://github.com/SAP/ui5-webcomponents-react/commit/a79051a983fe428b5c79dbfbf11eed362dc3500c))
 * **VariantManagement:** add features to comply with UX Guidelines ([#2163](https://github.com/SAP/ui5-webcomponents-react/issues/2163)) ([2b621f4](https://github.com/SAP/ui5-webcomponents-react/commit/2b621f46ac5bb6c9347771b001b47f2ea623a589))
+
+
+### BREAKING CHANGES
+
+* **VariantManagement**: `variantItems` has been removed. Please pass the `VariantItem` component for each variant instead.
+* **VariantManagement**: `selectedKey` has been removed. To mark a variant as selected, please pass the `selected` prop to the corresponding `VariantItem` component.
+* **VariantManagement**: Per default no "Cancel" button is displayed in the popover. If you want to add it again, you can set the `showCancelButton` prop to `true`.
+* **VariantManagement**: Per default the "Save As" and "Manage" buttons are displayed in the popover. If you want to hide them, you can set the `hideSaveAs` and `hideManageVariants` props to `true`.
+
+* **ObjectPage**: `onSelectedSectionChanged` event handler has been removed. Please use `onSelectedSectionChange` instead. 
+
+- **MessageBoxActions**: `ABORT`, `CANCEL`, `CLOSE`, `DELETE`, `IGNORE`, `NO`,`RETRY`,`YES` has been transformed to PascalCase notation.
+- **MessageBoxTypes**: `CONFIRM`, `ERROR`, `INFORMATION`, `SUCCESS`, `WARNING`, `HIGHLIGHT` has been transformed to PascalCase notation.
+
+- **TableSelectionBehavior:** `ROW`, `ROW_ONLY`, `ROW_SELECTOR` has been transformed to PascalCase notation.
+- **TableSelectionMode:** `NONE`, `SINGLE_SELECT`, `MULTI_SELECT` has been transformed to PascalCase notation.
+- **TableVisibleRowCountMode:** `FIXED`, `AUTO`, `INTERACTIVE` has been transformed to PascalCase notation.
 
 
 
