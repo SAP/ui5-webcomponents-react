@@ -33,6 +33,7 @@ export interface ColumnHeaderModalProperties {
   open: boolean;
   setPopoverOpen: (open: boolean) => void;
   targetRef: RefObject<any>;
+  portalContainer: Element;
 }
 
 const styles = {
@@ -49,7 +50,7 @@ const styles = {
 const useStyles = createUseStyles(styles, { name: 'ColumnHeaderModal' });
 
 export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
-  const { column, onSort, onGroupBy, open, setPopoverOpen, targetRef } = props;
+  const { column, onSort, onGroupBy, open, setPopoverOpen, targetRef, portalContainer } = props;
   const classes = useStyles();
   const showFilter = column.canFilter;
   const showGroup = column.canGroupBy;
@@ -197,7 +198,7 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
         )}
       </List>
     </Popover>,
-    document.body
+    portalContainer
   );
 };
 ColumnHeaderModal.displayName = 'ColumnHeaderModal';

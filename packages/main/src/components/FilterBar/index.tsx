@@ -139,6 +139,13 @@ export interface FilterBarPropTypes extends CommonProps {
    */
   as?: keyof HTMLElementTagNameMap;
   /**
+   * Defines where modals are rendered into via `React.createPortal`.
+   *
+   * Defaults to: `document.body`
+   *
+   */
+  portalContainer?: Element;
+  /**
    * The event is fired when the `FilterBar` is collapsed/expanded.
    */
   onToggleFilters?: (event: CustomEvent<{ visible?: boolean }>) => void;
@@ -223,6 +230,7 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
     search,
     variants,
     as,
+    portalContainer,
 
     onToggleFilters,
     onFiltersDialogOpen,
@@ -599,6 +607,7 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
           showGoButton={showGo}
           handleDialogSearch={onFiltersDialogSearch}
           handleDialogCancel={onFiltersDialogCancel}
+          portalContainer={portalContainer}
         >
           {safeChildren()}
         </FilterDialog>
@@ -666,28 +675,7 @@ FilterBar.defaultProps = {
   filterContainerWidth: '13.125rem',
   useToolbar: true,
   filterBarExpanded: true,
-  showClearOnFB: false,
-  showGo: false,
-  showRestoreOnFB: false,
-  showGoOnFB: false,
-  showFilterConfiguration: false,
-  showClearButton: false,
-  showRestoreButton: false,
-  showSearchOnFiltersDialog: false,
-  hideToggleFiltersButton: false,
-  considerGroupName: false,
-  loading: false,
-  onToggleFilters: null,
-  onFiltersDialogOpen: null,
-  onFiltersDialogCancel: null,
-  onFiltersDialogClose: null,
-  onFiltersDialogSave: null,
-  onFiltersDialogClear: null,
-  onClear: null,
-  onFiltersDialogSelectionChange: null,
-  onFiltersDialogSearch: null,
-  onGo: null,
-  onRestore: null
+  portalContainer: document.body
 };
 
 FilterBar.displayName = 'FilterBar';

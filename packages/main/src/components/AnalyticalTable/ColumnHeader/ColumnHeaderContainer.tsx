@@ -38,6 +38,7 @@ interface ColumnHeaderContainerProps {
   resizeInfo: Record<string, unknown>;
   reactWindowRef: MutableRefObject<any>;
   isRtl: boolean;
+  portalContainer: Element;
 }
 
 const useStyles = createUseStyles(styles, { name: 'Resizer' });
@@ -59,7 +60,8 @@ export const ColumnHeaderContainer = forwardRef((props: ColumnHeaderContainerPro
     overscanCountHorizontal,
     resizeInfo,
     reactWindowRef,
-    isRtl
+    isRtl,
+    portalContainer
   } = props;
   const columnVirtualizer = useVirtual({
     size: visibleColumnsWidth.length,
@@ -132,6 +134,7 @@ export const ColumnHeaderContainer = forwardRef((props: ColumnHeaderContainerPro
               isDraggable={column.canReorder && !resizeInfo.isResizingColumn}
               virtualColumn={virtualColumn}
               isRtl={isRtl}
+              portalContainer={portalContainer}
             >
               {column.render('Header')}
             </ColumnHeader>

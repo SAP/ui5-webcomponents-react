@@ -246,6 +246,13 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * Defines whether a subcomponent should be rendered as expandable container or directly at the bottom of the row.
    */
   alwaysShowSubComponent?: boolean;
+  /**
+   * Defines where modals and other elements which should be mounted outside of the DOM hierarchy are rendered into via `React.createPortal`.
+   *
+   * Defaults to: `document.body`
+   *
+   */
+  portalContainer?: Element;
 
   // events
   /**
@@ -321,52 +328,53 @@ const useStyles = createUseStyles(styles, { name: 'AnalyticalTable' });
  */
 const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HTMLDivElement>) => {
   const {
-    columns,
-    className,
-    style,
-    tooltip,
-    header,
-    loading,
-    groupBy,
-    selectionMode,
-    selectionBehavior,
-    onRowSelected,
-    onRowClick,
-    onSort,
-    reactTableOptions,
-    tableHooks,
-    subRowsKey,
-    onGroup,
-    rowHeight,
-    selectedRowIds,
-    LoadingComponent,
-    onRowExpandChange,
-    noDataText,
-    NoDataComponent,
-    visibleRows,
-    visibleRowCountMode,
-    minRows,
-    isTreeTable,
     alternateRowColor,
-    overscanCount,
-    overscanCountHorizontal,
-    scaleWidthMode,
-    withRowHighlight,
-    highlightField,
-    withNavigationHighlight,
-    markNavigatedRow,
-    groupable,
-    sortable,
+    alwaysShowSubComponent,
+    className,
+    columnOrder,
+    columns,
+    extension,
     filterable,
+    globalFilterValue,
+    groupBy,
+    groupable,
+    header,
+    highlightField,
     infiniteScroll,
     infiniteScrollThreshold,
-    onLoadMore,
-    extension,
-    columnOrder,
+    isTreeTable,
+    loading,
+    markNavigatedRow,
+    minRows,
+    noDataText,
+    overscanCount,
+    overscanCountHorizontal,
+    portalContainer,
+    reactTableOptions,
     renderRowSubComponent,
-    alwaysShowSubComponent,
-    globalFilterValue,
-    tableInstance
+    rowHeight,
+    scaleWidthMode,
+    selectedRowIds,
+    selectionBehavior,
+    selectionMode,
+    sortable,
+    style,
+    subRowsKey,
+    tableHooks,
+    tableInstance,
+    tooltip,
+    visibleRowCountMode,
+    visibleRows,
+    withNavigationHighlight,
+    withRowHighlight,
+    onGroup,
+    onLoadMore,
+    onRowClick,
+    onRowExpandChange,
+    onRowSelected,
+    onSort,
+    LoadingComponent,
+    NoDataComponent
   } = props;
 
   const classes = useStyles();
@@ -750,6 +758,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
                   onDragEnd={handleOnDragEnd}
                   dragOver={dragOver}
                   isRtl={isRtl}
+                  portalContainer={portalContainer}
                 />
               )
             );
@@ -830,6 +839,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
           dispatch={dispatch}
           extensionsHeight={extensionsHeight}
           internalRowHeight={internalRowHeight}
+          portalContainer={portalContainer}
         />
       )}
     </div>
@@ -867,7 +877,8 @@ AnalyticalTable.defaultProps = {
   alternateRowColor: false,
   overscanCountHorizontal: 5,
   visibleRowCountMode: TableVisibleRowCountMode.Fixed,
-  alwaysShowSubComponent: false
+  alwaysShowSubComponent: false,
+  portalContainer: document.body
 };
 
 export { AnalyticalTable };
