@@ -20,19 +20,18 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### BREAKING CHANGES
 
+Please visit our [__Migration Guide__](https://sap.github.io/ui5-webcomponents-react/?path=/docs/migration-guide--page#migrating-from-018x-to-0190) for update instructions.
+
 * **VariantManagement**: `variantItems` has been removed. Please pass the `VariantItem` component for each variant instead.
 * **VariantManagement**: `selectedKey` has been removed. To mark a variant as selected, please pass the `selected` prop to the corresponding `VariantItem` component.
 * **VariantManagement**: Per default no "Cancel" button is displayed in the popover. If you want to add it again, you can set the `showCancelButton` prop to `true`.
 * **VariantManagement**: Per default the "Save As" and "Manage" buttons are displayed in the popover. If you want to hide them, you can set the `hideSaveAs` and `hideManageVariants` props to `true`.
-
 * **ObjectPage**: `onSelectedSectionChanged` event handler has been removed. Please use `onSelectedSectionChange` instead. 
-
-- **MessageBoxActions**: `ABORT`, `CANCEL`, `CLOSE`, `DELETE`, `IGNORE`, `NO`,`RETRY`,`YES` has been transformed to PascalCase notation.
-- **MessageBoxTypes**: `CONFIRM`, `ERROR`, `INFORMATION`, `SUCCESS`, `WARNING`, `HIGHLIGHT` has been transformed to PascalCase notation.
-
-- **TableSelectionBehavior:** `ROW`, `ROW_ONLY`, `ROW_SELECTOR` has been transformed to PascalCase notation.
-- **TableSelectionMode:** `NONE`, `SINGLE_SELECT`, `MULTI_SELECT` has been transformed to PascalCase notation.
-- **TableVisibleRowCountMode:** `FIXED`, `AUTO`, `INTERACTIVE` has been transformed to PascalCase notation.
+* **MessageBoxActions**: `ABORT`, `CANCEL`, `CLOSE`, `DELETE`, `IGNORE`, `NO`,`RETRY`,`YES` has been transformed to PascalCase notation.
+* **MessageBoxTypes**: `CONFIRM`, `ERROR`, `INFORMATION`, `SUCCESS`, `WARNING`, `HIGHLIGHT` has been transformed to PascalCase notation.
+* **TableSelectionBehavior:** `ROW`, `ROW_ONLY`, `ROW_SELECTOR` has been transformed to PascalCase notation.
+* **TableSelectionMode:** `NONE`, `SINGLE_SELECT`, `MULTI_SELECT` has been transformed to PascalCase notation.
+* **TableVisibleRowCountMode:** `FIXED`, `AUTO`, `INTERACTIVE` has been transformed to PascalCase notation.
 
 
 
