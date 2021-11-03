@@ -68,23 +68,31 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
     [start.current]
   );
 
-  const handleSplitterMove = useCallback((e) => {
-    const previousSibling = previousSiblingRef.current;
-    const nextSibling = nextSiblingRef.current;
-    const sizeDiv = e[`client${positionKeys[2]}`] - start.current;
+  const handleSplitterMove = useCallback(
+    (e) => {
+      const previousSibling = previousSiblingRef.current;
+      const nextSibling = nextSiblingRef.current;
+      const sizeDiv = e[`client${positionKeys[2]}`] - start.current;
 
-    (previousSibling as HTMLElement).style.flex = `0 0 ${previousSiblingSize.current + sizeDiv}px`;
-    setIsPreviousSiblingRect((previousSibling as HTMLElement)?.getBoundingClientRect());
-    setIsPreviousSiblingStyle(window.getComputedStyle(previousSibling as Element));
-    if (nextSibling.nextSibling) {
-      (nextSibling as HTMLElement).style.flex = `0 0 ${nextSiblingSize.current - sizeDiv}px`;
-      setIsNextSiblingRect((nextSibling as HTMLElement)?.getBoundingClientRect());
-      setIsNextSiblingStyle(window.getComputedStyle(nextSibling as Element));
-    }
-    if (!nextSibling.nextSibling) {
-      (nextSibling as HTMLElement).style.flex = `1 0 auto`;
-    }
-  }, []);
+      if (
+        !(sizeDiv < 0 && (isMinPrevCollapsed || isMaxPrevCollapsed || isPrevCollapsed)) &&
+        !(sizeDiv > 0 && (isMinPostCollapsed || isMaxPostCollapsed || isPostCollapsed))
+      ) {
+        (previousSibling as HTMLElement).style.flex = `0 0 ${previousSiblingSize.current + sizeDiv}px`;
+        setIsPreviousSiblingRect((previousSibling as HTMLElement)?.getBoundingClientRect());
+        setIsPreviousSiblingStyle(window.getComputedStyle(previousSibling as Element));
+        if (nextSibling.nextSibling) {
+          (nextSibling as HTMLElement).style.flex = `0 0 ${nextSiblingSize.current - sizeDiv}px`;
+          setIsNextSiblingRect((nextSibling as HTMLElement)?.getBoundingClientRect());
+          setIsNextSiblingStyle(window.getComputedStyle(nextSibling as Element));
+        }
+        if (!nextSibling.nextSibling) {
+          (nextSibling as HTMLElement).style.flex = `1 0 auto`;
+        }
+      }
+    },
+    [isMinPrevCollapsed, isMaxPrevCollapsed, isPrevCollapsed, isMinPostCollapsed, isMaxPostCollapsed, isPostCollapsed]
+  );
 
   const handleMoveSplitterEnd = useCallback(() => {
     setIsDragging(false);
