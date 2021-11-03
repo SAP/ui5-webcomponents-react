@@ -94,6 +94,12 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
    */
   selectedSubSectionId?: string;
   /**
+   * Defines where modals are rendered into via `React.createPortal`.
+   *
+   * Defaults to: `document.body`
+   */
+  portalContainer?: Element;
+  /**
    * Fired when the selected section changes.
    */
   onSelectedSectionChange?: (
@@ -175,7 +181,8 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     headerContent,
     headerContentPinnable,
     a11yConfig,
-    placeholder
+    placeholder,
+    portalContainer
   } = props;
 
   const classes = useStyles();
@@ -826,7 +833,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
                   ))}
               </List>
             </Popover>,
-            document.body
+            portalContainer
           )}
         </div>
       )}
@@ -853,7 +860,8 @@ ObjectPage.defaultProps = {
   image: null,
   mode: ObjectPageMode.Default,
   imageShapeCircle: false,
-  showHideHeaderButton: false
+  showHideHeaderButton: false,
+  portalContainer: document.body
 };
 
 export { ObjectPage };

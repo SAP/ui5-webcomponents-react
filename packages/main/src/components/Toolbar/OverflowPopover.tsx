@@ -12,10 +12,11 @@ interface OverflowPopoverProps {
   lastVisibleIndex: number;
   contentClass: string;
   children: ReactNode;
+  portalContainer: Element;
 }
 
 export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopoverProps) => {
-  const { lastVisibleIndex, contentClass, children } = props;
+  const { lastVisibleIndex, contentClass, children, portalContainer } = props;
   const popoverRef = useRef<Ui5PopoverDomRef>();
   const [pressed, setPressed] = useState(false);
 
@@ -82,7 +83,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
         <Popover placementType={PopoverPlacementType.Bottom} ref={popoverRef} onAfterClose={handleClose}>
           <div className={contentClass}>{renderChildren()}</div>
         </Popover>,
-        document.body
+        portalContainer
       )}
     </>
   );

@@ -55,7 +55,8 @@ export const FilterDialog = (props) => {
     onGo,
     handleSelectionChange,
     handleDialogSearch,
-    handleDialogCancel
+    handleDialogCancel,
+    portalContainer
   } = props;
   const classes = useStyles();
   const [searchString, setSearchString] = useState('');
@@ -281,6 +282,6 @@ export const FilterDialog = (props) => {
         {renderGroups()}
       </div>
     </Dialog>,
-    document.body
+    portalContainer
   );
 };
