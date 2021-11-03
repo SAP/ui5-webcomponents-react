@@ -18,7 +18,8 @@ const styles = {
     height: props?.containerHeight,
     flex: !!props?.size && props?.size !== 'auto' ? `0 0 ${props?.size}` : '1 0 auto',
     minWidth: props?.minSize ?? 0,
-    maxWidth: props?.maxSize
+    maxWidth: props?.maxSize,
+    willChange: 'flex'
   }),
   splitterElementHorizontal: (props) => ({
     display: 'flex',
@@ -28,27 +29,30 @@ const styles = {
     width: props?.containerWidth,
     flex: !!props?.size || props?.size === 'auto' ? `0 0 ${props?.size}` : '1 0 auto',
     minHeight: props?.minSize ?? 0,
-    maxHeight: props?.maxSize
+    maxHeight: props?.maxSize,
+    willChange: 'flex'
   }),
   splitterVertical: (props) => ({
-    position: 'absolute',
+    position: 'relative',
     display: 'flex',
     cursor: 'col-resize',
     zIndex: 20,
     width: '16px',
     height: props?.height,
     border: 'none',
-    backgroundColor: ThemingParameters.sapShell_Background
+    backgroundColor: ThemingParameters.sapShell_Background,
+    willChange: 'flex'
   }),
   splitterHorizontal: (props) => ({
-    position: 'absolute',
+    position: 'relative',
     display: 'flex',
     width: props?.width,
     cursor: 'row-resize',
     height: '16px',
     border: 'none',
     backgroundColor: ThemingParameters.sapShell_Background,
-    zIndex: 20
+    zIndex: 20,
+    willChange: 'flex'
   }),
   gripIconVertical: (props) => ({
     position: 'relative',

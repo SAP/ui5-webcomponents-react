@@ -9,7 +9,6 @@ const useStyles = createUseStyles(styles, { name: 'SplitterLayout' });
 export interface SplitterPropTypes {
   height: string | number;
   width: string | number;
-  position: string;
   orientation: 'horizontal' | 'vertical';
 }
 
@@ -21,16 +20,21 @@ const isTouchEvent = (e, touchEvent) => {
 };
 
 const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>) => {
-  const { orientation, position } = props;
+  const { orientation } = props;
   const classes = useStyles(props);
   const splitterRef = useConsolidatedRef<HTMLDivElement>(ref);
   const start = useRef(null);
+  const previousSiblingRef = useRef(splitterRef.current?.previousSibling);
+  const nextSiblingRef = useRef(splitterRef.current?.nextSibling);
+  const previousSiblingSize = useRef<number>(null);
+  const nextSiblingSize = useRef<number>(null);
 
-  const [positionKeys] = useState(orientation === 'vertical' ? ['left', 'right', 'X'] : ['top', 'bottom', 'Y']);
+  const [positionKeys] = useState(
+    orientation === 'vertical' ? ['left', 'right', 'X', 'width'] : ['top', 'bottom', 'Y', 'height']
+  );
   const [styleKeys] = useState(
     orientation === 'vertical' ? ['width', 'minWidth', 'maxWidth'] : ['height', 'minHeight', 'maxHeight']
   );
-  const [splitterPosition, setSplitterPosition] = useState({ prev: position, [positionKeys[0]]: position });
   const [isDragging, setIsDragging] = useState(false);
   const [isPrevCollapsed, setIsPrevCollapsed] = useState(false);
   const [isMinPrevCollapsed, setIsMinPrevCollapsed] = useState(false);
@@ -50,56 +54,41 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
   const handleMoveSplitterStart = useCallback(
     (e) => {
       e.preventDefault();
+      previousSiblingRef.current = splitterRef.current.previousSibling;
+      nextSiblingRef.current = splitterRef.current.nextSibling;
+      previousSiblingSize.current = (previousSiblingRef.current as HTMLElement).getBoundingClientRect()?.[
+        positionKeys[3]
+      ];
+      nextSiblingSize.current = (nextSiblingRef.current as HTMLElement).getBoundingClientRect()?.[positionKeys[3]];
       const touchEvent = isTouchEvent(e, 'touchstart');
-      start.current = touchEvent ? Math.round(e.touches[0][`page${positionKeys[2]}`]) : e[`page${positionKeys[2]}`];
+      start.current = touchEvent ? Math.round(e.touches[0][`client${positionKeys[2]}`]) : e[`client${positionKeys[2]}`];
       setMountTouchEvents(touchEvent);
       setIsDragging(true);
     },
     [start.current]
   );
 
-  const handleSplitterMove = useCallback(
-    (e) => {
-      const nextPosition = splitterRef.current?.getBoundingClientRect()?.[positionKeys[0]];
-      const previousSibling = splitterRef.current?.previousSibling;
-      const prevSiblingOffset = (previousSibling as HTMLElement).getBoundingClientRect()?.[positionKeys[0]];
-      const nextSibling = splitterRef.current?.nextSibling;
+  const handleSplitterMove = useCallback((e) => {
+    const previousSibling = previousSiblingRef.current;
+    const nextSibling = nextSiblingRef.current;
+    const sizeDiv = e[`client${positionKeys[2]}`] - start.current;
 
-      if (
-        nextPosition > prevSiblingOffset &&
-        nextPosition < (nextSibling as HTMLElement).getBoundingClientRect()?.[positionKeys[1]] - 32
-      ) {
-        (previousSibling as HTMLElement).style.flex = `0 0 ${nextPosition - prevSiblingOffset + 16}px`;
-        setIsPreviousSiblingRect((previousSibling as HTMLElement)?.getBoundingClientRect());
-        setIsPreviousSiblingStyle(window.getComputedStyle(previousSibling as Element));
-
-        if (nextSibling.nextSibling) {
-          (nextSibling as HTMLElement).style.flex = `0 0 ${
-            (nextSibling.nextSibling as HTMLElement).getBoundingClientRect()?.[positionKeys[0]] -
-            (nextSibling as HTMLElement).getBoundingClientRect()?.[positionKeys[0]] +
-            16
-          }px`;
-          setIsNextSiblingRect((nextSibling as HTMLElement)?.getBoundingClientRect());
-          setIsNextSiblingStyle(window.getComputedStyle(nextSibling as Element));
-        }
-        if (!nextSibling.nextSibling) {
-          (nextSibling as HTMLElement).style.flex = `1 0 auto`;
-        }
-      }
-
-      setSplitterPosition((prev) => ({
-        ...prev,
-        [positionKeys[0]]: isTouchEvent(e, 'touchmove')
-          ? Math.round(e.touches[0][`page${positionKeys[2]}`])
-          : e[`page${positionKeys[2]}`]
-      }));
-    },
-    [setSplitterPosition, splitterPosition]
-  );
+    (previousSibling as HTMLElement).style.flex = `0 0 ${previousSiblingSize.current + sizeDiv}px`;
+    setIsPreviousSiblingRect((previousSibling as HTMLElement)?.getBoundingClientRect());
+    setIsPreviousSiblingStyle(window.getComputedStyle(previousSibling as Element));
+    if (nextSibling.nextSibling) {
+      (nextSibling as HTMLElement).style.flex = `0 0 ${nextSiblingSize.current - sizeDiv}px`;
+      setIsNextSiblingRect((nextSibling as HTMLElement)?.getBoundingClientRect());
+      setIsNextSiblingStyle(window.getComputedStyle(nextSibling as Element));
+    }
+    if (!nextSibling.nextSibling) {
+      (nextSibling as HTMLElement).style.flex = `1 0 auto`;
+    }
+  }, []);
 
   const handleMoveSplitterEnd = useCallback(() => {
     setIsDragging(false);
-  }, [splitterRef.current?.clientHeight, start.current]);
+  }, [splitterRef.current?.clientHeight]);
 
   useEffect(() => {
     const removeEventListeners = () => {
@@ -216,10 +205,6 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
     ) {
       setIsMaxPrevCollapsed(false);
     }
-
-    if (!isDragging && splitterPos > 0) {
-      setSplitterPosition({ prev: splitterPos.toString(), [positionKeys[0]]: splitterPos.toString() });
-    }
   }, [splitterRef.current?.getBoundingClientRect()?.[positionKeys[0]], isDragging]);
 
   return (
@@ -229,7 +214,6 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
       onMouseDown={handleMoveSplitterStart}
       ref={splitterRef}
       role="separator"
-      style={{ [positionKeys[0]]: splitterPosition?.[positionKeys[0]] }}
     >
       <Icon className={gripIconClass} name={orientation === 'vertical' ? 'vertical-grip' : 'horizontal-grip'} />
     </div>
