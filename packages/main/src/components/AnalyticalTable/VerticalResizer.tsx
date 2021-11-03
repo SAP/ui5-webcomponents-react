@@ -44,6 +44,7 @@ interface VerticalResizerProps {
   internalRowHeight: number;
   hasPopInColumns: boolean;
   popInRowHeight: number;
+  portalContainer: Element;
 }
 
 const isTouchEvent = (e, touchEvent) => {
@@ -54,7 +55,15 @@ const isTouchEvent = (e, touchEvent) => {
 };
 
 export const VerticalResizer = (props: VerticalResizerProps) => {
-  const { analyticalTableRef, dispatch, extensionsHeight, internalRowHeight, hasPopInColumns, popInRowHeight } = props;
+  const {
+    analyticalTableRef,
+    dispatch,
+    extensionsHeight,
+    internalRowHeight,
+    hasPopInColumns,
+    popInRowHeight,
+    portalContainer
+  } = props;
   const classes = useStyles();
   const startY = useRef(null);
   const verticalResizerRef = useRef(null);
@@ -162,7 +171,7 @@ export const VerticalResizer = (props: VerticalResizerProps) => {
             className={classes.resizer}
             style={{ top: resizerPosition.top, left: resizerPosition.left, width: resizerPosition.width }}
           />,
-          document.body
+          portalContainer
         )}
     </div>
   );
