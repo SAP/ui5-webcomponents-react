@@ -73,7 +73,7 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
       const previousSibling = previousSiblingRef.current;
       const nextSibling = nextSiblingRef.current;
       const sizeDiv = e[`client${positionKeys[2]}`] - start.current;
-      console.log();
+
       if (
         !(sizeDiv < 0 && (isMinPrevCollapsed || isPrevCollapsed || isMaxPostCollapsed)) &&
         !(sizeDiv > 0 && (isMinPostCollapsed || isMaxPrevCollapsed || isPostCollapsed))
