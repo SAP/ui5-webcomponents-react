@@ -1,36 +1,59 @@
 import {
-  Bar,
-  BarDesign,
-  Button,
-  ButtonDesign,
   FlexBox,
   FlexBoxAlignItems,
+  FlexBoxJustifyContent,
+  FlexBoxWrap,
   Label,
   Link,
-  List,
-  ListItemType,
   Popover,
   PopoverPlacementType,
-  StandardListItem,
   WrappingType
 } from '@ui5/webcomponents-react';
+import { useResponsiveContentPadding } from '@ui5/webcomponents-react-base/dist/hooks';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import React, { useRef } from 'react';
 import BestRunLogo from '../../assets/SAP_Best_R_grad_blk_scrn.png';
 
 export const Footer = () => {
-  const ref = useRef(null);
+  const popoverRef = useRef(null);
+  const footerRef = useRef(null);
+  const responsivePaddingClass = useResponsiveContentPadding(footerRef.current);
 
   const showPrivacyPopover = (e) => {
-    ref.current.showAt(e.target);
+    popoverRef.current.showAt(e.target);
   };
 
   return (
     <footer>
-      <Bar
-        design={BarDesign.Footer}
-        style={{ position: 'absolute', left: 0, right: 0 }}
-        endContent={
-          <FlexBox alignItems={FlexBoxAlignItems.Center}>
+      <div
+        ref={footerRef}
+        className={responsivePaddingClass}
+        style={{
+          minHeight: 'var(--_ui5_bar_base_height)',
+          display: 'flex',
+          alignItems: 'center',
+          backgroundColor: ThemingParameters.sapPageFooter_Background,
+          borderTop: `0.0625rem solid ${ThemingParameters.sapPageFooter_BorderColor}`,
+          position: 'absolute',
+          left: 0,
+          right: 0,
+          height: 'auto',
+          overflow: 'hidden'
+        }}
+      >
+        <FlexBox
+          justifyContent={FlexBoxJustifyContent.SpaceBetween}
+          alignItems={FlexBoxAlignItems.Center}
+          wrap={FlexBoxWrap.Wrap}
+          style={{ width: '100%' }}
+        >
+          <FlexBox alignItems={FlexBoxAlignItems.Center} wrap={FlexBoxWrap.Wrap}>
+            <img src={BestRunLogo} alt="SAP Logo with Text 'The Best Run'" style={{ height: '1.5rem' }} />
+            <Label wrappingType={WrappingType.Normal}>
+              © Copyright {new Date().getFullYear()}, SAP SE and UI5 Web Components for React Contributors
+            </Label>
+          </FlexBox>
+          <FlexBox alignItems={FlexBoxAlignItems.Center} wrap={FlexBoxWrap.Wrap}>
             <Link onClick={showPrivacyPopover}>Privacy</Link>
             &nbsp;
             <Label>|</Label>
@@ -45,16 +68,11 @@ export const Footer = () => {
             &nbsp;
             <Link href="https://www.sap.com/corporate/en/legal/trademark.html">Trademarks</Link>
           </FlexBox>
-        }
-      >
-        <FlexBox slot="startContent" alignItems={FlexBoxAlignItems.Center}>
-          <img src={BestRunLogo} alt="SAP Logo with Text 'The Best Run'" style={{ height: '1.5rem' }} />
-          <Label>© Copyright {new Date().getFullYear()}, SAP SE and UI5 Web Components for React Contributors</Label>
         </FlexBox>
-      </Bar>
+      </div>
       <Popover
         headerText={'Privacy Statement'}
-        ref={ref}
+        ref={popoverRef}
         placementType={PopoverPlacementType.Top}
         data-ui5-compact-size
         style={{ width: '360px', maxWidth: '100%' }}

@@ -25,7 +25,7 @@ const Links = () => {
           <GitHubLogo />
         </a>
         &nbsp; &nbsp;
-        <a>
+        <a href={`https://www.npmjs.com/package/@ui5/webcomponents-react${isChart ? '-charts' : ''}`}>
           <img
             alt="npm badge"
             src={`https://badgen.net/badge/@ui5%2Fwebcomponents-react${isChart ? '-charts' : ''}/v${
