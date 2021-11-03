@@ -28,7 +28,9 @@ import styles from './ActionSheet.jss';
 
 export interface ActionSheetPropTypes extends Omit<ResponsivePopoverPropTypes, 'children'> {
   /**
-   * Defines the actions of the <code>ActionSheet</code>. <br><b>Note:</b> Although this slot accepts all HTML Elements, it is strongly recommended that you only use `Buttons` in order to preserve the intended design.
+   * Defines the actions of the `ActionSheet`.
+   *
+   * __Note:__ Although this slot accepts all HTML Elements, it is strongly recommended that you only use `Buttons` in order to preserve the intended design.
    */
   children?: ReactElement<ButtonPropTypes> | ReactElement<ButtonPropTypes>[];
   /**
@@ -48,6 +50,12 @@ export interface ActionSheetPropTypes extends Omit<ResponsivePopoverPropTypes, '
       ariaLabel?: string;
     };
   };
+  /**
+   * Defines where modals are rendered into via `React.createPortal`.
+   *
+   * Defaults to: `document.body`
+   */
+  portalContainer?: Element;
 }
 
 const useStyles = createUseStyles(styles, { name: 'ActionSheet' });
@@ -94,27 +102,28 @@ if (isPhone()) {
  */
 const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: RefObject<Ui5ResponsivePopoverDomRef>) => {
   const {
-    children,
-    style,
-    slot,
-    className,
+    a11yConfig,
     allowTargetOverlap,
+    alwaysShowHeader,
+    children,
+    className,
+    footer,
+    header,
     headerText,
+    hideArrow,
     horizontalAlign,
     initialFocus,
     modal,
-    hideArrow,
     placementType,
+    portalContainer,
+    showCancelButton,
+    slot,
+    style,
     verticalAlign,
-    footer,
-    header,
     onAfterClose,
     onAfterOpen,
     onBeforeClose,
-    onBeforeOpen,
-    showCancelButton,
-    alwaysShowHeader,
-    a11yConfig
+    onBeforeOpen
   } = props;
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const classes = useStyles();
@@ -231,13 +240,14 @@ const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: RefObject<Ui5R
         )}
       </div>
     </ResponsivePopover>,
-    document.body
+    portalContainer
   );
 });
 
 ActionSheet.defaultProps = {
   showCancelButton: true,
-  alwaysShowHeader: true
+  alwaysShowHeader: true,
+  portalContainer: document.body
 };
 
 ActionSheet.displayName = 'ActionSheet';
