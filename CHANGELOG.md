@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.19.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.18.10...v0.19.0) (2021-11-03)
+
+
+### Bug Fixes
+
+* **FormItem:** remove unecessary string conversion ([#2236](https://github.com/SAP/ui5-webcomponents-react/issues/2236)) ([ed094c3](https://github.com/SAP/ui5-webcomponents-react/commit/ed094c35a5ecf3612b9e43c979614cd302bfd133))
+* **VariantManagement:** replace bad imports ([#2257](https://github.com/SAP/ui5-webcomponents-react/issues/2257)) ([61f2f92](https://github.com/SAP/ui5-webcomponents-react/commit/61f2f925ad005fe5e8a933275f1e1169c2cceba8))
+
+
+### Features
+
+* add `portalContainer` prop for elements rendered via `createPortal` ([#2275](https://github.com/SAP/ui5-webcomponents-react/issues/2275)) ([e71b663](https://github.com/SAP/ui5-webcomponents-react/commit/e71b663299bcdc4bc8e4ee02f38e982d33de5f51))
+* **MessageBox:** add `accessibleName` default text ([#2208](https://github.com/SAP/ui5-webcomponents-react/issues/2208)) ([a79051a](https://github.com/SAP/ui5-webcomponents-react/commit/a79051a983fe428b5c79dbfbf11eed362dc3500c))
+* **VariantManagement:** add features to comply with UX Guidelines ([#2163](https://github.com/SAP/ui5-webcomponents-react/issues/2163)) ([2b621f4](https://github.com/SAP/ui5-webcomponents-react/commit/2b621f46ac5bb6c9347771b001b47f2ea623a589))
+
+
+
+
+
 ## [0.18.10](https://github.com/SAP/ui5-webcomponents-react/compare/v0.18.9...v0.18.10) (2021-10-11)
 
 
