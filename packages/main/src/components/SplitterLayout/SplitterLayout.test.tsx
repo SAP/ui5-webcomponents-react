@@ -53,7 +53,6 @@ describe('SplitterLayout', () => {
     );
 
     const AllSplitter = document.querySelectorAll('[role="separator"]');
-    fireEvent.mouseDown(AllSplitter[0]);
 
     expect(AllSplitter.length).toBe(2);
     expect(screen.getByTestId('Layout')).toHaveStyle('width: 80vw; height: 600px; flex: 0 0 600px');

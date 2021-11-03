@@ -29,8 +29,6 @@ exports[`SplitterLayout Render Horizontal SplitterLayout with multiple SplitterE
     <div
       class="SplitterElement-splitterElementHorizontal SplitterElement-splitterElementHorizontal-d9"
       data-testid="Element"
-      maxsize="200px"
-      minsize="50px"
     >
       <ui5-button
         design="Default"
@@ -102,8 +100,6 @@ exports[`SplitterLayout Render Vertical SplitterLayout with multiple SplitterEle
     <div
       class="SplitterElement-splitterElementVertical SplitterElement-splitterElementVertical-d8"
       data-testid="SplitterElement2"
-      maxsize="500px"
-      minsize="300px"
     >
       <ui5-button
         design="Default"
