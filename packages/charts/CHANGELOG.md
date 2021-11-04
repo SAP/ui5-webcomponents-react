@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.19.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.19.0...v0.19.1) (2021-11-04)
+
+
+### Bug Fixes
+
+* **charts:** correct version of wcr peer-dependencies ([#2281](https://github.com/SAP/ui5-webcomponents-react/issues/2281)) ([9f934f0](https://github.com/SAP/ui5-webcomponents-react/commit/9f934f0f4aacc4c6780eb7f3dc4f4a903d4317aa))
+
+
+
+
+
 # [0.19.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.18.10...v0.19.0) (2021-11-03)
 
 **Note:** Version bump only for package @ui5/webcomponents-react-charts
