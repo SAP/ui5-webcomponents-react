@@ -12,10 +12,11 @@ const Links = () => {
   const docsContext = useContext(DocsContext);
   const isChart = docsContext.id.startsWith('charts-');
 
-  const filePath = docsContext.parameters.fileName.replace(/^\.\//, '');
-  const folderPath = filePath.substr(0, filePath.lastIndexOf('/'));
+  // const filePath = docsContext.parameters.fileName.replace(/^\.\//, '');
+  // const folderPath = filePath.substr(0, filePath.lastIndexOf('/'));
 
-  const githubUrl = `https://github.com/SAP/ui5-webcomponents-react/tree/main/${folderPath}`;
+  // const githubUrl = `https://github.com/SAP/ui5-webcomponents-react/tree/main/${folderPath}`;
+  const githubUrl = `https://github.com/SAP/ui5-webcomponents-react`;
 
   return (
     <>
