@@ -50,7 +50,7 @@ export interface MessageStripPropTypes extends CommonProps {
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/MessageStrip" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const MessageStrip = withWebComponent<MessageStripPropTypes>(
-  'ui5-messagestrip',
+  'ui5-message-strip',
   ['design'],
   ['hideCloseButton', 'hideIcon'],
   ['icon'],

@@ -27,13 +27,13 @@ export interface SwitchPropTypes extends Omit<CommonProps, 'onChange'> {
   /**
    * Defines the text, displayed when the component is not checked.
    *
-   * **Note:** We recommend using short texts, up to 3 letters (larger texts would be cut off).
+   * **Note:** We recommend using short texts, up to 3 letters (larger texts would be cut off). **Note:** This property will have no effect if the theme is set to `sap_horizon`.
    */
   textOff?: string;
   /**
    * Defines the text, displayed when the component is checked.
    *
-   * **Note:** We recommend using short texts, up to 3 letters (larger texts would be cut off).
+   * **Note:** We recommend using short texts, up to 3 letters (larger texts would be cut off). **Note:** This property will have no effect if the theme is set to `sap_horizon`.
    */
   textOn?: string;
   /**

@@ -15,10 +15,6 @@ export interface ShellBarItemPropTypes extends CommonProps {
    */
   icon?: string;
   /**
-   * Defines the stable selector that you can use via getStableDomRef method.
-   */
-  stableDomRef?: string;
-  /**
    * Defines the item text.
    */
   text?: string;
@@ -37,7 +33,7 @@ export interface ShellBarItemPropTypes extends CommonProps {
  */
 const ShellBarItem = withWebComponent<ShellBarItemPropTypes>(
   'ui5-shellbar-item',
-  ['count', 'icon', 'stableDomRef', 'text'],
+  ['count', 'icon', 'text'],
   [],
   [],
   ['item-click']

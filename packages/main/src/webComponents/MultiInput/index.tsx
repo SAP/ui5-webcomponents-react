@@ -111,7 +111,8 @@ export interface MultiInputPropTypes extends Omit<CommonProps, 'onChange' | 'onI
    *
    * **Note:** The `<SuggestionItem>` and `<SuggestionGroupItem>` are recommended to be used as suggestion items.
    *
-   * **Note:** Importing the Input Suggestions Support feature: `import "@ui5/webcomponents/dist/features/InputSuggestions.js";`
+   * **Note:** Importing the Input Suggestions Support feature:
+   * `import "@ui5/webcomponents/dist/features/InputSuggestions.js";`
    * automatically imports the `<SuggestionItem>` and `<SuggestionGroupItem>` for your convenience.
    */
   children?: ReactNode | ReactNode[];
@@ -121,7 +122,7 @@ export interface MultiInputPropTypes extends Omit<CommonProps, 'onChange' | 'onI
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
    */
-  icon?: ReactNode;
+  icon?: ReactNode | ReactNode[];
   /**
    * Defines the value state message that will be displayed as pop up under the component.
    *
@@ -161,12 +162,6 @@ export interface MultiInputPropTypes extends Omit<CommonProps, 'onChange' | 'onI
    * Fired when a suggestion item, that is displayed in the suggestion popup, is selected.
    */
   onSuggestionItemSelect?: (event: Ui5CustomEvent<HTMLInputElement, { item: ReactNode }>) => void;
-  /**
-   * Fired when the user scrolls the suggestion popover.
-   */
-  onSuggestionScroll?: (
-    event: Ui5CustomEvent<HTMLInputElement, { scrollTop: number; scrollContainer: ReactNode }>
-  ) => void;
 }
 
 /**
@@ -185,15 +180,7 @@ const MultiInput = withWebComponent<MultiInputPropTypes>(
   ['accessibleName', 'accessibleNameRef', 'maxlength', 'name', 'placeholder', 'type', 'value', 'valueState'],
   ['showValueHelpIcon', 'disabled', 'readonly', 'required', 'showSuggestions'],
   ['tokens', 'icon', 'valueStateMessage'],
-  [
-    'token-delete',
-    'value-help-trigger',
-    'change',
-    'input',
-    'suggestion-item-preview',
-    'suggestion-item-select',
-    'suggestion-scroll'
-  ]
+  ['token-delete', 'value-help-trigger', 'change', 'input', 'suggestion-item-preview', 'suggestion-item-select']
 );
 
 MultiInput.displayName = 'MultiInput';

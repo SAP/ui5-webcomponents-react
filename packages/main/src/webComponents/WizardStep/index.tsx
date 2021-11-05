@@ -6,14 +6,6 @@ import '@ui5/webcomponents-fiori/dist/WizardStep.js';
 
 export interface WizardStepPropTypes extends CommonProps {
   /**
-   * Sets the accessible aria name of the component.
-   */
-  accessibleName?: string;
-  /**
-   * Defines the aria-labelledby of the step.
-   */
-  accessibleNameRef?: string;
-  /**
    * When `branching` is enabled a dashed line would be displayed after the step, meant to indicate that the next step is not yet known and depends on user choice in the current step.
    *
    * **Note:** It is recommended to use `branching` on the last known step and later add new steps when it becomes clear how the wizard flow should continue.
@@ -64,7 +56,7 @@ export interface WizardStepPropTypes extends CommonProps {
  */
 const WizardStep = withWebComponent<WizardStepPropTypes>(
   'ui5-wizard-step',
-  ['accessibleName', 'accessibleNameRef', 'icon', 'subtitleText', 'titleText'],
+  ['icon', 'subtitleText', 'titleText'],
   ['branching', 'disabled', 'selected'],
   [],
   []

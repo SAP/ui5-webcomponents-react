@@ -6,9 +6,13 @@ import '@ui5/webcomponents/dist/Card.js';
 
 export interface CardPropTypes extends CommonProps {
   /**
-   * Defines the accessible name of the component, which is used as the name of the card region and should be unique per card. **Note:** `accessibleName` should be always set.
+   * Defines the accessible name of the component, which is used as the name of the card region and should be unique per card. **Note:** `accessibleName` should be always set, unless `accessibleNameRef` is set.
    */
   accessibleName?: string;
+  /**
+   * Defines the IDs of the elements that label the component.
+   */
+  accessibleNameRef?: string;
   /**
    * Defines the content of the component.
    */
@@ -25,15 +29,11 @@ export interface CardPropTypes extends CommonProps {
 }
 
 /**
- * The `Card` is a component that represents information in the form of a tile with separate header and content areas.
- * The content area of a `Card` can be arbitrary HTML content. The header can be used through slot `header`.
- * For which there is a `CardHeader` component to achieve the card look and fill.
- *
- * Note: We recommend the usage of `CardHeader` for the header slot, so advantage can be taken for keyboard handling, styling and accessibility.
+ * The `Card` is a component that represents information in the form of a tile with separate header and content areas. The content area of a `Card` can be arbitrary HTML content. The header can be used through slot `header`. For which there is a `Card-header` component to achieve the card look and fill. Note: We recommend the usage of `Card-header` for the header slot, so advantage can be taken for keyboard handling, styling and accessibility.
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Card" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Card = withWebComponent<CardPropTypes>('ui5-card', ['accessibleName'], [], ['header'], []);
+const Card = withWebComponent<CardPropTypes>('ui5-card', ['accessibleName', 'accessibleNameRef'], [], ['header'], []);
 
 Card.displayName = 'Card';
 

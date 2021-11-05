@@ -129,7 +129,7 @@ export interface ListPropTypes extends CommonProps {
 /**
  * The `List` component allows displaying a list of items, advanced keyboard handling support for navigating between items, and predefined modes to improve the development efficiency.
  *
- * The `List` is а container for the available list items:
+ * The `List` is a container for the available list items:
  *
  * *   `StandardListItem`
  * *   `CustomListItem`

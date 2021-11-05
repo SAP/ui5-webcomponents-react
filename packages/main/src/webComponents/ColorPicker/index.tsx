@@ -1,6 +1,7 @@
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { CSSProperties } from 'react';
 
 import '@ui5/webcomponents/dist/ColorPicker.js';
 
@@ -10,7 +11,7 @@ export interface ColorPickerPropTypes extends Omit<CommonProps, 'onChange'> {
    *
    * **Note**: use HEX, RGB, RGBA, HSV formats or a CSS color name when modifying this property.
    */
-  color?: string;
+  color?: CSSProperties['color'];
   /**
    * Fired when the the selected color is changed
    */

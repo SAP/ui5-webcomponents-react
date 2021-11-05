@@ -1,6 +1,7 @@
 import { SemanticColor } from '@ui5/webcomponents-react/dist/SemanticColor';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { Ui5TabDomRef } from '@ui5/webcomponents-react/interfaces/Ui5TabDomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Tab.js';
@@ -39,10 +40,6 @@ export interface TabPropTypes extends CommonProps {
    */
   selected?: boolean;
   /**
-   * Defines the stable selector that you can use via getStableDomRef method.
-   */
-  stableDomRef?: string;
-  /**
    * The text to be displayed for the item.
    */
   text?: string;
@@ -57,9 +54,9 @@ export interface TabPropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Tab" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Tab = withWebComponent<TabPropTypes>(
+const Tab = withWebComponent<TabPropTypes, Ui5TabDomRef>(
   'ui5-tab',
-  ['additionalText', 'design', 'icon', 'stableDomRef', 'text'],
+  ['additionalText', 'design', 'icon', 'text'],
   ['disabled', 'selected'],
   [],
   []
