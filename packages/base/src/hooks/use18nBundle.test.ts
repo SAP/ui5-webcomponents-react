@@ -9,6 +9,10 @@ describe('useI18nBundle', () => {
     setFetchDefaultLanguage(true);
   });
 
+  beforeEach(async () => {
+    await setLanguage('en');
+  });
+
   afterAll(() => {
     setFetchDefaultLanguage(false);
   });
@@ -48,5 +52,14 @@ describe('useI18nBundle', () => {
       `[Error: Timed out in waitForNextUpdate after 1000ms.]`
     );
     expect(result.all).toHaveLength(2);
+  });
+
+  test('should fill placeholders', async () => {
+    if (reactVersion === '16.8.0') {
+      // not testable with 16.8.0
+      return;
+    }
+    const { result, waitForNextUpdate } = renderHook(() => useI18nBundle('@ui5/webcomponents-react'));
+    expect(result.current.getText('X_OF_Y', 13, 37)).toBe('13 of 37');
   });
 });
