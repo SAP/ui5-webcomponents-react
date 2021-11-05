@@ -58,6 +58,7 @@ interface ManageViewsDialogPropTypes {
   showApplyAutomatically: boolean;
   showSetAsDefault: boolean;
   variantNames: string[];
+  portalContainer: Element;
 }
 
 export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
@@ -68,7 +69,8 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
     showShare,
     showApplyAutomatically,
     showSetAsDefault,
-    variantNames
+    variantNames,
+    portalContainer
   } = props;
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const cancelText = i18nBundle.getText(CANCEL);
@@ -211,6 +213,6 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
         })}
       </Table>
     </Dialog>,
-    document.body
+    portalContainer
   );
 };

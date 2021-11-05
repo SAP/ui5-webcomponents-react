@@ -146,6 +146,12 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
    */
   inErrorState?: boolean;
   /**
+   * Defines where modals are rendered into via `React.createPortal`.
+   *
+   * Defaults to: `document.body`
+   */
+  portalContainer?: Element;
+  /**
    * The event is fired when the "Save" button is clicked inside the Save View dialog.
    */
   onSaveAs?: (e: CustomEvent<SelectedVariant>) => void;
@@ -239,7 +245,8 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
     dirtyStateText,
     dirtyState,
     showCancelButton,
-    onSave
+    onSave,
+    portalContainer
   } = props;
 
   const classes = useStyles();
@@ -550,7 +557,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
               </List>
             )}
           </ResponsivePopover>,
-          document.body
+          portalContainer
         )}
         {manageViewsDialogOpen && (
           <ManageViewsDialog
@@ -560,6 +567,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
             showApplyAutomatically={!hideApplyAutomatically}
             showSetAsDefault={!hideSetAsDefault}
             variantNames={variantNames}
+            portalContainer={portalContainer}
           >
             {safeChildren}
           </ManageViewsDialog>
@@ -583,7 +591,8 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
 VariantManagement.defaultProps = {
   placement: PopoverPlacementType.Bottom,
   level: TitleLevel.H4,
-  dirtyStateText: '*'
+  dirtyStateText: '*',
+  portalContainer: document.body
 };
 VariantManagement.displayName = 'VariantManagement';
 

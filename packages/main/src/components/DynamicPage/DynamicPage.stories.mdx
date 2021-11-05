@@ -1,5 +1,6 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
-import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsHeader } from '@docs/DocsHeader';
+import { Footer } from '@docs/Footer';
 import '@ui5/webcomponents-icons/dist/action.js';
 import '@ui5/webcomponents-icons/dist/full-screen.js';
 import '@ui5/webcomponents-icons/dist/exit-full-screen.js';
@@ -22,12 +23,12 @@ import { FlexBoxWrap } from '@ui5/webcomponents-react/dist/FlexBoxWrap';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
 import { ObjectStatus } from '@ui5/webcomponents-react/dist/ObjectStatus';
-import { ProductsTable } from '@shared/stories/ProductsTable';
 import { VariantManagement } from '@ui5/webcomponents-react/dist/VariantManagement';
 import { BarDesign } from '@ui5/webcomponents-react/dist/BarDesign';
 import { Panel } from '@ui5/webcomponents-react/dist/Panel';
 import { BusyIndicator } from '@ui5/webcomponents-react/dist/BusyIndicator';
 import { useReducer, useState } from 'react';
+import { ProductsTable } from '../../../../../.storybook/components/ProductsTable';
 
 <Meta
   title="Layouts & Floorplans / DynamicPage"
@@ -280,3 +281,5 @@ import { useReducer, useState } from 'react';
     }}
   </Story>
 </Canvas>
+
+<Footer />

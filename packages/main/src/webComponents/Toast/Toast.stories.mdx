@@ -2,7 +2,8 @@ import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { Toast } from '@ui5/webcomponents-react/dist/Toast';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { ToastPlacement } from '@ui5/webcomponents-react/dist/ToastPlacement';
-import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsHeader } from '@docs/DocsHeader';
+import { Footer } from '@docs/Footer';
 import { useRef } from 'react';
 
 <Meta
@@ -98,3 +99,5 @@ This component exposes public methods. You can invoke them directly on the insta
 - You want to interrupt users while they are performing an action.
 - You want to make sure that users read the message before they leave the page.
 - You want users to be able to copy some part of the message text.
+
+<Footer />

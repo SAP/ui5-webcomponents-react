@@ -1,7 +1,6 @@
 {
   "name": "@ui5/cra-template-webcomponents-react",
-  "private": true,
-  "version": "0.18.0",
+  "version": "0.19.0",
   "keywords": [
     "react",
     "create-react-app",

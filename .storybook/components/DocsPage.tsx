@@ -1,4 +1,5 @@
-import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsHeader } from '@docs/DocsHeader';
+import { Footer } from '@docs/Footer';
 import { ArgsTable, Primary, Stories } from '@storybook/addon-docs';
 import React from 'react';
 

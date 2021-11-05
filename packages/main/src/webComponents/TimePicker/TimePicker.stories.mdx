@@ -2,7 +2,8 @@ import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
 import { TimePicker } from '@ui5/webcomponents-react/dist/TimePicker';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { CSSProperties, Ref } from 'react';
-import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsHeader } from '@docs/DocsHeader';
+import { Footer } from '@docs/Footer';
 
 <Meta
   title="Inputs / TimePicker"
@@ -86,3 +87,5 @@ When opened:
 - \[RIGHT\] If focus is on one of the selection lists: Move focus to the selection list which is right of the current selection list. When focus is at the last selection list, move focus to the first selection list.
 - \[PAGEUP\] If focus is on one of the selection lists: Move focus to the first entry of this list.
 - \[PAGEDOWN\] If focus is on one of the selection lists: Move focus to the last entry of this list.
+
+<Footer />

@@ -2,7 +2,8 @@ import { Meta } from '@storybook/addon-docs';
 import { MyCustomElement } from './styling/MyCustomElement';
 import { ThemeProvider } from '@ui5/webcomponents-react/dist/ThemeProvider';
 import { BarComponent, FaultyBarComponent } from './knowledgeBaseExamples/slotExamples';
-import { TableOfContent } from '../shared/stories/TableOfContent';
+import { TableOfContent } from '../.storybook/components/TableOfContent';
+import { Footer } from '@docs/Footer';
 
 <Meta title="Knowledge Base" />
 
@@ -201,3 +202,5 @@ This would then be the result:
 <ThemeProvider>
   <MyCustomElement />
 </ThemeProvider>
+
+<Footer />
