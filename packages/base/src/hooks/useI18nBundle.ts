@@ -1,4 +1,5 @@
 import { getI18nBundle } from '@ui5/webcomponents-base/dist/i18nBundle.js';
+import formatMessage from '@ui5/webcomponents-base/dist/util/formatMessage.js';
 import { attachLanguageChange, detachLanguageChange } from '@ui5/webcomponents-base/dist/locale/languageChange.js';
 import { useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base/dist/hooks';
 import { useState } from 'react';
@@ -9,7 +10,11 @@ interface I18nBundle {
   getText: (textObj: TextWithDefault, ...args: any[]) => string;
 }
 
-const defaultBundle = { getText: (val) => val?.defaultText ?? val };
+const defaultBundle = {
+  getText: (val, ...values) => {
+    return formatMessage(val?.defaultText ?? val ?? '', values);
+  }
+};
 
 const i18nBundles = new Map<string, I18nBundle>([]);
 
