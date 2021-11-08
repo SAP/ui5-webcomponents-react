@@ -112,11 +112,7 @@ const ComboBox = withWebComponent<ComboBoxPropTypes>(
 ComboBox.displayName = 'ComboBox';
 
 ComboBox.defaultProps = {
-  disabled: false,
   filter: 'StartsWithPerTerm',
-  loading: false,
-  readonly: false,
-  required: false,
   valueState: ValueState.None
 };
 

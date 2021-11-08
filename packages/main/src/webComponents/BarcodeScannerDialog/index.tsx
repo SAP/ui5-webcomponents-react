@@ -35,6 +35,4 @@ const BarcodeScannerDialog = withWebComponent<BarcodeScannerDialogPropTypes, Ui5
 
 BarcodeScannerDialog.displayName = 'BarcodeScannerDialog';
 
-BarcodeScannerDialog.defaultProps = {};
-
 export { BarcodeScannerDialog };

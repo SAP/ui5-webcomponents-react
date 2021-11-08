@@ -65,9 +65,7 @@ const Tab = withWebComponent<TabPropTypes, Ui5TabDomRef>(
 Tab.displayName = 'Tab';
 
 Tab.defaultProps = {
-  design: SemanticColor.Default,
-  disabled: false,
-  selected: false
+  design: SemanticColor.Default
 };
 
 export { Tab };

@@ -111,15 +111,10 @@ const UploadCollectionItem = withWebComponent<UploadCollectionItemPropTypes>(
 UploadCollectionItem.displayName = 'UploadCollectionItem';
 
 UploadCollectionItem.defaultProps = {
-  disableDeleteButton: false,
   file: null,
-  fileNameClickable: false,
-  hideRetryButton: false,
-  hideTerminateButton: false,
   progress: 0,
   uploadState: UploadState.Ready,
-  type: ListItemType.Active,
-  selected: false
+  type: ListItemType.Active
 };
 
 export { UploadCollectionItem };

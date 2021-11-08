@@ -98,9 +98,8 @@ const Avatar = withWebComponent<AvatarPropTypes>(
 Avatar.displayName = 'Avatar';
 
 Avatar.defaultProps = {
-  // colorScheme: AvatarColorScheme.Accent6, // needs to be removed for AvatarGroup
-  interactive: false,
-  shape: AvatarShape.Circle
+  colorScheme: AvatarColorScheme.Accent6
+  // shape: AvatarShape.Circle,
   // size: AvatarSize.S
 };
 

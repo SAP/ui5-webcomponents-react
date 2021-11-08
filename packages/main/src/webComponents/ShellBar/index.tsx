@@ -120,10 +120,4 @@ const ShellBar = withWebComponent<ShellBarPropTypes, Ui5ShellBarDomRef>(
 
 ShellBar.displayName = 'ShellBar';
 
-ShellBar.defaultProps = {
-  showCoPilot: false,
-  showNotifications: false,
-  showProductSwitch: false
-};
-
 export { ShellBar };

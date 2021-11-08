@@ -33,8 +33,4 @@ const MultiComboBoxItem = withWebComponent<MultiComboBoxItemPropTypes>(
 
 MultiComboBoxItem.displayName = 'MultiComboBoxItem';
 
-MultiComboBoxItem.defaultProps = {
-  selected: false
-};
-
 export { MultiComboBoxItem };

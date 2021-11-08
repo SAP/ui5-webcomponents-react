@@ -2,6 +2,7 @@ import { FCLLayout } from '@ui5/webcomponents-react/dist/FCLLayout';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { Ui5FlexibleColumnLayoutDomRef } from '@ui5/webcomponents-react/interfaces/Ui5FlexibleColumnLayoutDomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/FlexibleColumnLayout.js';
@@ -90,7 +91,7 @@ export interface FlexibleColumnLayoutPropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/FlexibleColumnLayout" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const FlexibleColumnLayout = withWebComponent<FlexibleColumnLayoutPropTypes>(
+const FlexibleColumnLayout = withWebComponent<FlexibleColumnLayoutPropTypes, Ui5FlexibleColumnLayoutDomRef>(
   'ui5-flexible-column-layout',
   ['accessibilityTexts', 'layout'],
   ['hideArrows'],
@@ -101,7 +102,6 @@ const FlexibleColumnLayout = withWebComponent<FlexibleColumnLayoutPropTypes>(
 FlexibleColumnLayout.displayName = 'FlexibleColumnLayout';
 
 FlexibleColumnLayout.defaultProps = {
-  hideArrows: false,
   layout: FCLLayout.OneColumn
 };
 

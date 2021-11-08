@@ -19,6 +19,4 @@ const ComboBoxGroupItem = withWebComponent<ComboBoxGroupItemPropTypes>('ui5-cb-g
 
 ComboBoxGroupItem.displayName = 'ComboBoxGroupItem';
 
-ComboBoxGroupItem.defaultProps = {};
-
 export { ComboBoxGroupItem };

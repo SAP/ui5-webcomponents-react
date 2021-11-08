@@ -78,9 +78,6 @@ Carousel.displayName = 'Carousel';
 
 Carousel.defaultProps = {
   arrowsPlacement: CarouselArrowsPlacement.Content,
-  cyclic: false,
-  hideNavigationArrows: false,
-  hidePageIndicator: false,
   itemsPerPageL: 1,
   itemsPerPageM: 1,
   itemsPerPageS: 1

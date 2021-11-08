@@ -51,8 +51,7 @@ const NotificationAction = withWebComponent<NotificationActionPropTypes>(
 NotificationAction.displayName = 'NotificationAction';
 
 NotificationAction.defaultProps = {
-  design: ButtonDesign.Transparent,
-  disabled: false
+  design: ButtonDesign.Transparent
 };
 
 export { NotificationAction };

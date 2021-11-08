@@ -75,12 +75,9 @@ RangeSlider.displayName = 'RangeSlider';
 RangeSlider.defaultProps = {
   endValue: 100,
   startValue: 0,
-  disabled: false,
   labelInterval: 0,
   max: 100,
   min: 0,
-  showTickmarks: false,
-  showTooltip: false,
   step: 1
 };
 

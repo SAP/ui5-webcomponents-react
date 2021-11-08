@@ -54,8 +54,6 @@ const ProgressIndicator = withWebComponent<ProgressIndicatorPropTypes>(
 ProgressIndicator.displayName = 'ProgressIndicator';
 
 ProgressIndicator.defaultProps = {
-  disabled: false,
-  hideValue: false,
   value: 0,
   valueState: ValueState.None
 };

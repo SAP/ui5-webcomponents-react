@@ -57,9 +57,7 @@ const RatingIndicator = withWebComponent<RatingIndicatorPropTypes>(
 RatingIndicator.displayName = 'RatingIndicator';
 
 RatingIndicator.defaultProps = {
-  disabled: false,
   max: 5,
-  readonly: false,
   value: 0
 };
 

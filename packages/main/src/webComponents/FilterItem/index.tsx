@@ -50,8 +50,7 @@ const FilterItem = withWebComponent<FilterItemPropTypes>(
 FilterItem.displayName = 'FilterItem';
 
 FilterItem.defaultProps = {
-  type: ListItemType.Active,
-  selected: false
+  type: ListItemType.Active
 };
 
 export { FilterItem };

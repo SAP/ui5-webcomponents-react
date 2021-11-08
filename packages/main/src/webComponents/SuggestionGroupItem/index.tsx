@@ -25,6 +25,4 @@ const SuggestionGroupItem = withWebComponent<SuggestionGroupItemPropTypes>(
 
 SuggestionGroupItem.displayName = 'SuggestionGroupItem';
 
-SuggestionGroupItem.defaultProps = {};
-
 export { SuggestionGroupItem };

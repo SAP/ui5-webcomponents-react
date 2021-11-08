@@ -138,11 +138,6 @@ const DateRangePicker = withWebComponent<DateRangePickerPropTypes, Ui5DateRangeP
 DateRangePicker.displayName = 'DateRangePicker';
 
 DateRangePicker.defaultProps = {
-  disabled: false,
-  hideWeekNumbers: false,
-  placeholder: undefined,
-  readonly: false,
-  required: false,
   valueState: ValueState.None
 };
 

@@ -4,6 +4,20 @@ import { Ui5DomRef } from './Ui5DomRef';
 
 export interface Ui5DateRangePickerDomRef extends Ui5DomRef {
   /**
+   * Returns the end date of the currently selected range as JavaScript Date instance.
+   */
+  readonly endDateValue: Date;
+
+  /**
+   * Returns the start date of the currently selected range as JavaScript Date instance.
+   */
+  readonly startDateValue: Date;
+
+  /**
+   * Currently selected date represented as a Local JavaScript Date instance.
+   */
+  readonly dateValue: Date;
+  /**
    * Closes the picker.
    *
    */

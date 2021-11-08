@@ -79,11 +79,7 @@ const ToggleButton = withWebComponent<ToggleButtonPropTypes>(
 ToggleButton.displayName = 'ToggleButton';
 
 ToggleButton.defaultProps = {
-  pressed: false,
-  design: ButtonDesign.Default,
-  disabled: false,
-  iconEnd: false,
-  submits: false
+  design: ButtonDesign.Default
 };
 
 export { ToggleButton };

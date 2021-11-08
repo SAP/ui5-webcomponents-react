@@ -37,6 +37,4 @@ const Card = withWebComponent<CardPropTypes>('ui5-card', ['accessibleName', 'acc
 
 Card.displayName = 'Card';
 
-Card.defaultProps = {};
-
 export { Card };

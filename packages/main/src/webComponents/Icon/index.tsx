@@ -52,9 +52,4 @@ const Icon = withWebComponent<IconPropTypes>(
 
 Icon.displayName = 'Icon';
 
-Icon.defaultProps = {
-  interactive: false,
-  showTooltip: false
-};
-
 export { Icon };

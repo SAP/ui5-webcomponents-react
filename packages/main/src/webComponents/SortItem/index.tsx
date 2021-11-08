@@ -23,8 +23,4 @@ const SortItem = withWebComponent<SortItemPropTypes>('ui5-sort-item', ['text'], 
 
 SortItem.displayName = 'SortItem';
 
-SortItem.defaultProps = {
-  selected: false
-};
-
 export { SortItem };

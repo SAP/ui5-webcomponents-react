@@ -166,10 +166,8 @@ List.displayName = 'List';
 
 List.defaultProps = {
   accessibleRole: 'list',
-  busy: false,
   busyDelay: 1000,
   growing: ListGrowingMode.None,
-  indent: false,
   mode: ListMode.None,
   separators: ListSeparators.All
 };

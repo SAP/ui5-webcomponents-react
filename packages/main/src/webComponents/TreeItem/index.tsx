@@ -59,10 +59,7 @@ const TreeItem = withWebComponent<TreeItemPropTypes, Ui5TreeItemDomRef>(
 TreeItem.displayName = 'TreeItem';
 
 TreeItem.defaultProps = {
-  additionalTextState: ValueState.None,
-  expanded: false,
-  hasChildren: false,
-  selected: false
+  additionalTextState: ValueState.None
 };
 
 export { TreeItem };

@@ -109,12 +109,8 @@ const NotificationListItem = withWebComponent<NotificationListItemPropTypes>(
 NotificationListItem.displayName = 'NotificationListItem';
 
 NotificationListItem.defaultProps = {
-  busy: false,
   busyDelay: 1000,
-  priority: Priority.None,
-  read: false,
-  showClose: false,
-  selected: false
+  priority: Priority.None
 };
 
 export { NotificationListItem };

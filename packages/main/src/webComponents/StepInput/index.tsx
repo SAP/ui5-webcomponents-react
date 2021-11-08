@@ -118,10 +118,6 @@ const StepInput = withWebComponent<StepInputPropTypes>(
 StepInput.displayName = 'StepInput';
 
 StepInput.defaultProps = {
-  disabled: false,
-  placeholder: undefined,
-  readonly: false,
-  required: false,
   step: 1,
   value: 0,
   valuePrecision: 0,

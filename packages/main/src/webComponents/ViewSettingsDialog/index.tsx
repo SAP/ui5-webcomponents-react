@@ -50,8 +50,4 @@ const ViewSettingsDialog = withWebComponent<ViewSettingsDialogPropTypes, Ui5View
 
 ViewSettingsDialog.displayName = 'ViewSettingsDialog';
 
-ViewSettingsDialog.defaultProps = {
-  sortDescending: false
-};
-
 export { ViewSettingsDialog };

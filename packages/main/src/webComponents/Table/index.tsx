@@ -129,12 +129,9 @@ const Table = withWebComponent<TablePropTypes>(
 Table.displayName = 'Table';
 
 Table.defaultProps = {
-  busy: false,
   busyDelay: 1000,
   growing: TableGrowingMode.None,
-  hideNoData: false,
-  mode: TableMode.None,
-  stickyColumnHeader: false
+  mode: TableMode.None
 };
 
 export { Table };

@@ -48,6 +48,4 @@ const Token = withWebComponent<TokenPropTypes>(
 
 Token.displayName = 'Token';
 
-Token.defaultProps = {};
-
 export { Token };

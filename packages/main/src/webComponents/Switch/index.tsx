@@ -61,9 +61,7 @@ const Switch = withWebComponent<SwitchPropTypes>(
 Switch.displayName = 'Switch';
 
 Switch.defaultProps = {
-  checked: false,
-  design: SwitchDesign.Textual,
-  disabled: false
+  design: SwitchDesign.Textual
 };
 
 export { Switch };

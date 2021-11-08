@@ -3,6 +3,7 @@ import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { Ui5MultiInputDomRef } from '@ui5/webcomponents-react/interfaces/Ui5MultiInputDomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/MultiInput.js';
@@ -175,7 +176,7 @@ export interface MultiInputPropTypes extends Omit<CommonProps, 'onChange' | 'onI
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/MultiInput" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const MultiInput = withWebComponent<MultiInputPropTypes>(
+const MultiInput = withWebComponent<MultiInputPropTypes, Ui5MultiInputDomRef>(
   'ui5-multi-input',
   ['accessibleName', 'accessibleNameRef', 'maxlength', 'name', 'placeholder', 'type', 'value', 'valueState'],
   ['showValueHelpIcon', 'disabled', 'readonly', 'required', 'showSuggestions'],
@@ -186,11 +187,6 @@ const MultiInput = withWebComponent<MultiInputPropTypes>(
 MultiInput.displayName = 'MultiInput';
 
 MultiInput.defaultProps = {
-  showValueHelpIcon: false,
-  disabled: false,
-  readonly: false,
-  required: false,
-  showSuggestions: false,
   type: InputType.Text,
   valueState: ValueState.None
 };

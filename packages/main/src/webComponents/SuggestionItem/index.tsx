@@ -67,7 +67,6 @@ SuggestionItem.displayName = 'SuggestionItem';
 
 SuggestionItem.defaultProps = {
   additionalTextState: ValueState.None,
-  iconEnd: false,
   type: ListItemType.Active
 };
 

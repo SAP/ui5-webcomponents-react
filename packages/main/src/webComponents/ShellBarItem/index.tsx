@@ -41,6 +41,4 @@ const ShellBarItem = withWebComponent<ShellBarItemPropTypes>(
 
 ShellBarItem.displayName = 'ShellBarItem';
 
-ShellBarItem.defaultProps = {};
-
 export { ShellBarItem };

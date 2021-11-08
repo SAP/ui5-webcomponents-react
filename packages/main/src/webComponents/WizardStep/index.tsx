@@ -64,10 +64,4 @@ const WizardStep = withWebComponent<WizardStepPropTypes>(
 
 WizardStep.displayName = 'WizardStep';
 
-WizardStep.defaultProps = {
-  branching: false,
-  disabled: false,
-  selected: false
-};
-
 export { WizardStep };

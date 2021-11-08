@@ -60,9 +60,7 @@ const MessageStrip = withWebComponent<MessageStripPropTypes>(
 MessageStrip.displayName = 'MessageStrip';
 
 MessageStrip.defaultProps = {
-  design: MessageStripDesign.Information,
-  hideCloseButton: false,
-  hideIcon: false
+  design: MessageStripDesign.Information
 };
 
 export { MessageStrip };

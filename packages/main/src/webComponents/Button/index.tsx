@@ -73,10 +73,7 @@ const Button = withWebComponent<ButtonPropTypes>(
 Button.displayName = 'Button';
 
 Button.defaultProps = {
-  design: ButtonDesign.Default,
-  disabled: false,
-  iconEnd: false,
-  submits: false
+  design: ButtonDesign.Default
 };
 
 export { Button };

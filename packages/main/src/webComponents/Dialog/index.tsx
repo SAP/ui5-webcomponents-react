@@ -99,11 +99,4 @@ const Dialog = withWebComponent<DialogPropTypes, Ui5DialogDomRef>(
 
 Dialog.displayName = 'Dialog';
 
-Dialog.defaultProps = {
-  draggable: false,
-  resizable: false,
-  stretch: false,
-  preventFocusRestore: false
-};
-
 export { Dialog };

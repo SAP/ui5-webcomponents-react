@@ -67,9 +67,6 @@ const TabContainer = withWebComponent<TabContainerPropTypes>(
 TabContainer.displayName = 'TabContainer';
 
 TabContainer.defaultProps = {
-  collapsed: false,
-  fixed: false,
-  showOverflow: false,
   tabLayout: TabLayout.Standard
 };
 

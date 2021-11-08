@@ -21,6 +21,4 @@ const TableGroupRow = withWebComponent<TableGroupRowPropTypes>('ui5-table-group-
 
 TableGroupRow.displayName = 'TableGroupRow';
 
-TableGroupRow.defaultProps = {};
-
 export { TableGroupRow };

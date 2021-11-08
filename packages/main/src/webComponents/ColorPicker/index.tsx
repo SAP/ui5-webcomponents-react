@@ -27,6 +27,4 @@ const ColorPicker = withWebComponent<ColorPickerPropTypes>('ui5-color-picker', [
 
 ColorPicker.displayName = 'ColorPicker';
 
-ColorPicker.defaultProps = {};
-
 export { ColorPicker };

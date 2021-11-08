@@ -44,7 +44,6 @@ const TableColumn = withWebComponent<TableColumnPropTypes>(
 TableColumn.displayName = 'TableColumn';
 
 TableColumn.defaultProps = {
-  demandPopin: false,
   minWidth: Infinity
 };
 

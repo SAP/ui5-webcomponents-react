@@ -1,6 +1,7 @@
 import { AvatarGroupType } from '@ui5/webcomponents-react/dist/AvatarGroupType';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { Ui5AvatarGroupDomRef } from '@ui5/webcomponents-react/interfaces/Ui5AvatarGroupDomRef';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { ReactNode } from 'react';
 
@@ -49,7 +50,7 @@ export interface AvatarGroupPropTypes extends Omit<CommonProps, 'onClick'> {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/AvatarGroup" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const AvatarGroup = withWebComponent<AvatarGroupPropTypes>(
+const AvatarGroup = withWebComponent<AvatarGroupPropTypes, Ui5AvatarGroupDomRef>(
   'ui5-avatar-group',
   ['type'],
   [],

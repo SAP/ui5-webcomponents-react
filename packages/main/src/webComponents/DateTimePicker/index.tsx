@@ -133,11 +133,6 @@ const DateTimePicker = withWebComponent<DateTimePickerPropTypes, Ui5DateTimePick
 DateTimePicker.displayName = 'DateTimePicker';
 
 DateTimePicker.defaultProps = {
-  disabled: false,
-  hideWeekNumbers: false,
-  placeholder: undefined,
-  readonly: false,
-  required: false,
   valueState: ValueState.None
 };
 

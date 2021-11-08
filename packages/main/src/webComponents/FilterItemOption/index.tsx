@@ -29,8 +29,4 @@ const FilterItemOption = withWebComponent<FilterItemOptionPropTypes>(
 
 FilterItemOption.displayName = 'FilterItemOption';
 
-FilterItemOption.defaultProps = {
-  selected: false
-};
-
 export { FilterItemOption };

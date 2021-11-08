@@ -29,6 +29,4 @@ const Wizard = withWebComponent<WizardPropTypes>('ui5-wizard', [], [], [], ['ste
 
 Wizard.displayName = 'Wizard';
 
-Wizard.defaultProps = {};
-
 export { Wizard };

@@ -84,7 +84,6 @@ const UploadCollection = withWebComponent<UploadCollectionPropTypes>(
 UploadCollection.displayName = 'UploadCollection';
 
 UploadCollection.defaultProps = {
-  hideDragOverlay: false,
   mode: ListMode.None
 };
 

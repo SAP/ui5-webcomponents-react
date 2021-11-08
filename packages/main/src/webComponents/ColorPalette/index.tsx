@@ -25,6 +25,4 @@ const ColorPalette = withWebComponent<ColorPalettePropTypes>('ui5-color-palette'
 
 ColorPalette.displayName = 'ColorPalette';
 
-ColorPalette.defaultProps = {};
-
 export { ColorPalette };

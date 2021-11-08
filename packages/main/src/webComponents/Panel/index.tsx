@@ -76,10 +76,7 @@ Panel.displayName = 'Panel';
 
 Panel.defaultProps = {
   accessibleRole: PanelAccessibleRole.Form,
-  collapsed: false,
-  fixed: false,
-  headerLevel: TitleLevel.H2,
-  noAnimation: false
+  headerLevel: TitleLevel.H2
 };
 
 export { Panel };

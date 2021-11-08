@@ -47,8 +47,7 @@ const CustomListItem = withWebComponent<CustomListItemPropTypes>(
 CustomListItem.displayName = 'CustomListItem';
 
 CustomListItem.defaultProps = {
-  type: ListItemType.Active,
-  selected: false
+  type: ListItemType.Active
 };
 
 export { CustomListItem };

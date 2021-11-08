@@ -129,14 +129,9 @@ const Popover = withWebComponent<PopoverPropTypes, Ui5PopoverDomRef>(
 Popover.displayName = 'Popover';
 
 Popover.defaultProps = {
-  allowTargetOverlap: false,
-  hideArrow: false,
-  hideBackdrop: false,
   horizontalAlign: PopoverHorizontalAlign.Center,
-  modal: false,
   placementType: PopoverPlacementType.Right,
-  verticalAlign: PopoverVerticalAlign.Center,
-  preventFocusRestore: false
+  verticalAlign: PopoverVerticalAlign.Center
 };
 
 export { Popover };

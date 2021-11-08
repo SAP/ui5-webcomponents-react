@@ -3,6 +3,7 @@ import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { Ui5InputDomRef } from '@ui5/webcomponents-react/interfaces/Ui5InputDomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Input.js';
@@ -155,7 +156,7 @@ export interface InputPropTypes extends Omit<CommonProps, 'onChange' | 'onInput'
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Input" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Input = withWebComponent<InputPropTypes>(
+const Input = withWebComponent<InputPropTypes, Ui5InputDomRef>(
   'ui5-input',
   ['accessibleName', 'accessibleNameRef', 'maxlength', 'name', 'placeholder', 'type', 'value', 'valueState'],
   ['disabled', 'readonly', 'required', 'showSuggestions'],
@@ -166,10 +167,6 @@ const Input = withWebComponent<InputPropTypes>(
 Input.displayName = 'Input';
 
 Input.defaultProps = {
-  disabled: false,
-  readonly: false,
-  required: false,
-  showSuggestions: false,
   type: InputType.Text,
   valueState: ValueState.None
 };

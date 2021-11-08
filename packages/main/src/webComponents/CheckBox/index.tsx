@@ -94,10 +94,6 @@ const CheckBox = withWebComponent<CheckBoxPropTypes>(
 CheckBox.displayName = 'CheckBox';
 
 CheckBox.defaultProps = {
-  checked: false,
-  disabled: false,
-  indeterminate: false,
-  readonly: false,
   valueState: ValueState.None
 };
 

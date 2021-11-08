@@ -68,11 +68,7 @@ const SegmentedButtonItem = withWebComponent<SegmentedButtonItemPropTypes>(
 SegmentedButtonItem.displayName = 'SegmentedButtonItem';
 
 SegmentedButtonItem.defaultProps = {
-  design: ButtonDesign.Default,
-  iconEnd: false,
-  submits: false,
-  pressed: false,
-  disabled: false
+  design: ButtonDesign.Default
 };
 
 export { SegmentedButtonItem };

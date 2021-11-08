@@ -133,11 +133,6 @@ const DatePicker = withWebComponent<DatePickerPropTypes, Ui5DatePickerDomRef>(
 DatePicker.displayName = 'DatePicker';
 
 DatePicker.defaultProps = {
-  disabled: false,
-  hideWeekNumbers: false,
-  placeholder: undefined,
-  readonly: false,
-  required: false,
   valueState: ValueState.None
 };
 

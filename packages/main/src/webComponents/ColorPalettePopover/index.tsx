@@ -47,10 +47,4 @@ const ColorPalettePopover = withWebComponent<ColorPalettePopoverPropTypes>(
 
 ColorPalettePopover.displayName = 'ColorPalettePopover';
 
-ColorPalettePopover.defaultProps = {
-  showDefaultColor: false,
-  showMoreColors: false,
-  showRecentColors: false
-};
-
 export { ColorPalettePopover };

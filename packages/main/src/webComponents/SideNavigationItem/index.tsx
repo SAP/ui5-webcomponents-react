@@ -49,10 +49,4 @@ const SideNavigationItem = withWebComponent<SideNavigationItemPropTypes>(
 
 SideNavigationItem.displayName = 'SideNavigationItem';
 
-SideNavigationItem.defaultProps = {
-  expanded: false,
-  selected: false,
-  wholeItemToggleable: false
-};
-
 export { SideNavigationItem };

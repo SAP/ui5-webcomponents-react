@@ -35,8 +35,4 @@ const GroupHeaderListItem = withWebComponent<GroupHeaderListItemPropTypes>(
 
 GroupHeaderListItem.displayName = 'GroupHeaderListItem';
 
-GroupHeaderListItem.defaultProps = {
-  selected: false
-};
-
 export { GroupHeaderListItem };

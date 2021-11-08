@@ -77,8 +77,7 @@ const Link = withWebComponent<LinkPropTypes>(
 Link.displayName = 'Link';
 
 Link.defaultProps = {
-  design: LinkDesign.Default,
-  disabled: false
+  design: LinkDesign.Default
 };
 
 export { Link };

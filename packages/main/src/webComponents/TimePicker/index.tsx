@@ -78,10 +78,6 @@ const TimePicker = withWebComponent<TimePickerPropTypes, Ui5TimePickerDomRef>(
 TimePicker.displayName = 'TimePicker';
 
 TimePicker.defaultProps = {
-  disabled: false,
-  placeholder: undefined,
-  readonly: false,
-  value: undefined,
   valueState: ValueState.None
 };
 

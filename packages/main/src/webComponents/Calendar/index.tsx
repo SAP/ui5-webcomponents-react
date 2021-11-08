@@ -70,7 +70,6 @@ const Calendar = withWebComponent<CalendarPropTypes>(
 Calendar.displayName = 'Calendar';
 
 Calendar.defaultProps = {
-  hideWeekNumbers: false,
   selectionMode: CalendarSelectionMode.Single
 };
 

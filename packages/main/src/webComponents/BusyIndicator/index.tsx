@@ -50,7 +50,6 @@ const BusyIndicator = withWebComponent<BusyIndicatorPropTypes>(
 BusyIndicator.displayName = 'BusyIndicator';
 
 BusyIndicator.defaultProps = {
-  active: false,
   delay: 1000,
   size: BusyIndicatorSize.Medium
 };

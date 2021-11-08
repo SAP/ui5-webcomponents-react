@@ -42,9 +42,4 @@ const Option = withWebComponent<OptionPropTypes>('ui5-option', ['icon', 'value']
 
 Option.displayName = 'Option';
 
-Option.defaultProps = {
-  disabled: false,
-  selected: false
-};
-
 export { Option };

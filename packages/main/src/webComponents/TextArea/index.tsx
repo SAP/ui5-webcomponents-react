@@ -141,14 +141,9 @@ const TextArea = withWebComponent<TextAreaPropTypes>(
 TextArea.displayName = 'TextArea';
 
 TextArea.defaultProps = {
-  disabled: false,
-  growing: false,
   growingMaxLines: 0,
   maxlength: null,
-  readonly: false,
-  required: false,
   rows: 0,
-  showExceededText: false,
   valueState: ValueState.None
 };
 
