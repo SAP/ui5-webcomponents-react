@@ -225,6 +225,8 @@ export const runEsLint = async (text, name) => {
 };
 
 export const createDomRef = (componentSpec) => {
+  const importStatements = new Set();
+
   const isOptionalParameter = (p) => {
     return p.optional || p.hasOwnProperty('defaultValue');
   };
@@ -240,7 +242,9 @@ export const createDomRef = (componentSpec) => {
     ) {
       tsType = 'Date';
     } else {
-      tsType = getTypeDefinitionForProperty(param).tsType;
+      const tsDefinition = getTypeDefinitionForProperty(param);
+      importStatements.add(tsDefinition.importStatement);
+      tsType = tsDefinition.tsType;
     }
     return tsType;
   };
@@ -248,11 +252,13 @@ export const createDomRef = (componentSpec) => {
   const getters = (
     componentSpec.properties?.filter((prop) => prop.visibility === 'public' && prop.readonly === 'true') ?? []
   ).map((prop) => {
+    const tsDefinition = getTypeDefinitionForProperty(prop);
+    importStatements.add(tsDefinition.importStatement);
     return dedent`
     /**
      * ${(prop.description ?? '').replaceAll('\n', '\n * ')}
      */
-     readonly ${prop.name}: ${getTypeDefinitionForProperty(prop).tsType};
+     readonly ${prop.name}: ${tsDefinition.tsType};
     `;
   });
 
@@ -280,6 +286,7 @@ export const createDomRef = (componentSpec) => {
     const domRefTemplate = dedent`
       // @generated
       
+      ${[...importStatements].filter(Boolean).join('\n')}
       import { Ui5DomRef } from './Ui5DomRef';
 
       export interface Ui5${componentSpec.module}DomRef extends Ui5DomRef {
