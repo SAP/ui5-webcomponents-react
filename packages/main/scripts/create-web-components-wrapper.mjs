@@ -630,7 +630,9 @@ allWebComponents
           property.defaultValue !== 'undefined'
         ) {
           if (tsType.tsType === 'boolean') {
-            defaultProps.push(`${property.name}: ${property.defaultValue === 'true'}`);
+            if (property.defaultValue === 'true') {
+              defaultProps.push(`${property.name}: true`);
+            }
           } else if (tsType.isEnum === true) {
             defaultProps.push(`${property.name}: ${tsType.enum}.${property.defaultValue.replace(/['"]/g, '')}`);
           } else if (tsType.tsType !== 'string' || (tsType.tsType === 'string' && property.defaultValue !== '""')) {
