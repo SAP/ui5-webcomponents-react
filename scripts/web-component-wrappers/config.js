@@ -55,3 +55,4 @@ COMPONENTS_WITHOUT_DEMOS.add('NotificationAction');
 COMPONENTS_WITHOUT_DEMOS.add('WizardStep');
 
 export const KNOWN_EVENTS = new Set(['click', 'input', 'submit', 'change', 'select', 'drop']);
+export const KNOWN_ATTRIBUTES = new Set(['draggable', 'color']);

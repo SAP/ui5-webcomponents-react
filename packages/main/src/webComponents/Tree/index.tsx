@@ -2,12 +2,12 @@ import { ListMode } from '@ui5/webcomponents-react/dist/ListMode';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { Ui5TreeDomRef } from '@ui5/webcomponents-react/interfaces/Ui5TreeDomRef';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Tree.js';
 
-export interface TreePropTypes extends CommonProps {
+interface TreeAttributes {
   /**
    * Defines the component footer text.
    */
@@ -35,6 +35,17 @@ export interface TreePropTypes extends CommonProps {
    * Defines the text that is displayed when the component contains no items.
    */
   noDataText?: string;
+}
+
+export interface TreeDomRef extends TreeAttributes, Ui5DomRef {
+  /**
+   * Perform Depth-First-Search walk on the tree and run a callback on each node
+   * @param {(treeNode: HTMLElement, level: number) => void} callback - function to execute on each node of the tree with 2 arguments: the node and the level
+   */
+  walk: (callback: (treeNode: HTMLElement, level: number) => void) => void;
+}
+
+export interface TreePropTypes extends TreeAttributes, CommonProps {
   /**
    * Defines the items of the component. Tree items may have other tree items as children.
    *
@@ -85,7 +96,7 @@ export interface TreePropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Tree" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Tree = withWebComponent<TreePropTypes, Ui5TreeDomRef>(
+const Tree = withWebComponent<TreePropTypes, TreeDomRef>(
   'ui5-tree',
   ['footerText', 'headerText', 'mode', 'noDataText'],
   [],

@@ -1,11 +1,12 @@
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Token.js';
 
-export interface TokenPropTypes extends Omit<CommonProps, 'onSelect'> {
+interface TokenAttributes {
   /**
    * Defines whether the component is read-only.
    *
@@ -20,6 +21,11 @@ export interface TokenPropTypes extends Omit<CommonProps, 'onSelect'> {
    * Defines the text of the token.
    */
   text?: string;
+}
+
+export interface TokenDomRef extends TokenAttributes, Ui5DomRef {}
+
+export interface TokenPropTypes extends TokenAttributes, Omit<CommonProps, 'onSelect'> {
   /**
    * Defines the close icon for the token. If nothing is provided to this slot, the default close icon will be used. Accepts `Icon`.
    *
@@ -38,7 +44,7 @@ export interface TokenPropTypes extends Omit<CommonProps, 'onSelect'> {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Token" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Token = withWebComponent<TokenPropTypes>(
+const Token = withWebComponent<TokenPropTypes, TokenDomRef>(
   'ui5-token',
   ['text'],
   ['readonly', 'selected'],

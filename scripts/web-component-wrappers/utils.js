@@ -4,9 +4,6 @@ import path from 'path';
 import fs from 'fs';
 import dedent from 'dedent';
 import prettierConfigRaw from '../../prettier.config.cjs';
-import prettier from 'prettier';
-
-const INTERFACES_DIR = path.join(PATHS.packages, 'main', 'src', 'interfaces');
 
 const eslint = new ESLint({
   overrideConfig: {
@@ -224,7 +221,7 @@ export const runEsLint = async (text, name) => {
   const [result] = await eslint.lintText(text, {
     filePath: `packages/main/src/webComponents/${name}/index.tsx`
   });
-  if (result.messages.length) {
+  if (result.messages.some((message) => message.severity === 2)) {
     console.warn(`Failed to run ESLint for '${name}! Please check the file manually.'`);
     console.warn(...result.messages);
     return text;
@@ -290,29 +287,7 @@ export const createDomRef = (componentSpec) => {
           `;
   });
 
-  if (getters.length > 0 || methods.length > 0) {
-    const domRefTemplate = dedent`
-      // @generated
-      
-      ${[...importStatements].filter(Boolean).join('\n')}
-      import { Ui5DomRef } from './Ui5DomRef';
-
-      export interface Ui5${componentSpec.module}DomRef extends Ui5DomRef {
-        ${getters.join('\n\n')}
-        ${methods.join('\n\n')}
-      }
-      `;
-    fs.writeFileSync(
-      path.resolve(INTERFACES_DIR, `Ui5${componentSpec.module}DomRef.ts`),
-      prettier.format(domRefTemplate, prettierConfig)
-    );
-
-    return {
-      tsType: `Ui5${componentSpec.module}DomRef`,
-      importStatement: `import { Ui5${componentSpec.module}DomRef } from '@ui5/webcomponents-react/interfaces/Ui5${componentSpec.module}DomRef';`
-    };
-  }
-  return null;
+  return [...getters, methods];
 };
 
 export const prettierConfig = {

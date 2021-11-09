@@ -1,11 +1,12 @@
 import { BusyIndicatorSize } from '@ui5/webcomponents-react/dist/BusyIndicatorSize';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/BusyIndicator.js';
 
-export interface BusyIndicatorPropTypes extends CommonProps {
+interface BusyIndicatorAttributes {
   /**
    * Defines if the busy indicator is visible on the screen. By default it is not.
    */
@@ -28,6 +29,11 @@ export interface BusyIndicatorPropTypes extends CommonProps {
    * Defines text to be displayed below the component. It can be used to inform the user of the current operation.
    */
   text?: string;
+}
+
+export interface BusyIndicatorDomRef extends BusyIndicatorAttributes, Ui5DomRef {}
+
+export interface BusyIndicatorPropTypes extends BusyIndicatorAttributes, CommonProps {
   /**
    * Determines the content over which the component will appear.
    */
@@ -39,7 +45,7 @@ export interface BusyIndicatorPropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/BusyIndicator" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const BusyIndicator = withWebComponent<BusyIndicatorPropTypes>(
+const BusyIndicator = withWebComponent<BusyIndicatorPropTypes, BusyIndicatorDomRef>(
   'ui5-busy-indicator',
   ['delay', 'size', 'text'],
   ['active'],

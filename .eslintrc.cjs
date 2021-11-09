@@ -133,7 +133,8 @@ module.exports = {
         '@typescript-eslint/semi': ['error', 'always'],
         '@typescript-eslint/space-within-parens': ['off', 'never'],
         '@typescript-eslint/type-annotation-spacing': 'error',
-        '@typescript-eslint/unified-signatures': 'error'
+        '@typescript-eslint/unified-signatures': 'error',
+        '@typescript-eslint/no-empty-interface': 'warn'
       }
     }
   ]

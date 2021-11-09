@@ -1,12 +1,12 @@
 import { ToastPlacement } from '@ui5/webcomponents-react/dist/ToastPlacement';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { Ui5ToastDomRef } from '@ui5/webcomponents-react/interfaces/Ui5ToastDomRef';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Toast.js';
 
-export interface ToastPropTypes extends CommonProps {
+interface ToastAttributes {
   /**
    * Defines the duration in milliseconds for which component remains on the screen before it's automatically closed.
    *
@@ -29,6 +29,17 @@ export interface ToastPropTypes extends CommonProps {
    * *   `BottomEnd`
    */
   placement?: ToastPlacement | keyof typeof ToastPlacement;
+}
+
+export interface ToastDomRef extends ToastAttributes, Ui5DomRef {
+  /**
+   * Shows the component.
+   *
+   */
+  show: () => void;
+}
+
+export interface ToastPropTypes extends ToastAttributes, CommonProps {
   /**
    * Defines the text of the component.
    *
@@ -42,7 +53,7 @@ export interface ToastPropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Toast" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Toast = withWebComponent<ToastPropTypes, Ui5ToastDomRef>('ui5-toast', ['duration', 'placement'], [], [], []);
+const Toast = withWebComponent<ToastPropTypes, ToastDomRef>('ui5-toast', ['duration', 'placement'], [], [], []);
 
 Toast.displayName = 'Toast';
 

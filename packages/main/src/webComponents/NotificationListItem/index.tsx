@@ -3,11 +3,12 @@ import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent
 import { WrappingType } from '@ui5/webcomponents-react/dist/WrappingType';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/NotificationListItem.js';
 
-export interface NotificationListItemPropTypes extends CommonProps {
+interface NotificationListItemAttributes {
   /**
    * Defines if the `titleText` and `description` should wrap, they truncate by default.
    *
@@ -49,6 +50,11 @@ export interface NotificationListItemPropTypes extends CommonProps {
    * Defines the selected state of the `ListItem`.
    */
   selected?: boolean;
+}
+
+export interface NotificationListItemDomRef extends NotificationListItemAttributes, Ui5DomRef {}
+
+export interface NotificationListItemPropTypes extends NotificationListItemAttributes, CommonProps {
   /**
    * Defines the avatar, displayed in the `NotificationListItem`.
    *
@@ -98,7 +104,7 @@ export interface NotificationListItemPropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/NotificationListItem" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const NotificationListItem = withWebComponent<NotificationListItemPropTypes>(
+const NotificationListItem = withWebComponent<NotificationListItemPropTypes, NotificationListItemDomRef>(
   'ui5-li-notification',
   ['wrappingType', 'busyDelay', 'priority', 'titleText'],
   ['busy', 'read', 'showClose', 'selected'],

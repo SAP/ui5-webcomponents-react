@@ -2,12 +2,12 @@ import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { Ui5MultiComboBoxDomRef } from '@ui5/webcomponents-react/interfaces/Ui5MultiComboBoxDomRef';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/MultiComboBox.js';
 
-export interface MultiComboBoxPropTypes extends Omit<CommonProps, 'onChange' | 'onInput'> {
+interface MultiComboBoxAttributes {
   /**
    * Defines if the user input will be prevented, if no matching item has been found
    */
@@ -54,6 +54,16 @@ export interface MultiComboBoxPropTypes extends Omit<CommonProps, 'onChange' | '
    * *   `Information`
    */
   valueState?: ValueState | keyof typeof ValueState;
+}
+
+export interface MultiComboBoxDomRef extends MultiComboBoxAttributes, Ui5DomRef {
+  /**
+   * Indicates whether the dropdown is open. True if the dropdown is open, false otherwise.
+   */
+  readonly open: boolean;
+}
+
+export interface MultiComboBoxPropTypes extends MultiComboBoxAttributes, Omit<CommonProps, 'onChange' | 'onInput'> {
   /**
    * Defines the component items.
    */
@@ -98,7 +108,7 @@ export interface MultiComboBoxPropTypes extends Omit<CommonProps, 'onChange' | '
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/MultiComboBox" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const MultiComboBox = withWebComponent<MultiComboBoxPropTypes, Ui5MultiComboBoxDomRef>(
+const MultiComboBox = withWebComponent<MultiComboBoxPropTypes, MultiComboBoxDomRef>(
   'ui5-multi-combobox',
   ['filter', 'placeholder', 'value', 'valueState'],
   ['allowCustomValues', 'disabled', 'readonly', 'required'],

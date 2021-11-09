@@ -3,11 +3,12 @@ import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/StandardListItem.js';
 
-export interface StandardListItemPropTypes extends CommonProps {
+interface StandardListItemAttributes {
   /**
    * Defines the text alternative of the component. Note: If not provided a default text alternative will be set, if present.
    */
@@ -53,6 +54,11 @@ export interface StandardListItemPropTypes extends CommonProps {
    * Defines the selected state of the `ListItem`.
    */
   selected?: boolean;
+}
+
+export interface StandardListItemDomRef extends StandardListItemAttributes, Ui5DomRef {}
+
+export interface StandardListItemPropTypes extends StandardListItemAttributes, CommonProps {
   /**
    * Defines the text of the component.
    *
@@ -70,7 +76,7 @@ export interface StandardListItemPropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/StandardListItem" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const StandardListItem = withWebComponent<StandardListItemPropTypes>(
+const StandardListItem = withWebComponent<StandardListItemPropTypes, StandardListItemDomRef>(
   'ui5-li',
   ['accessibleName', 'additionalText', 'additionalTextState', 'description', 'icon', 'image', 'type'],
   ['iconEnd', 'selected'],

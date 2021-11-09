@@ -2,11 +2,12 @@ import { ListMode } from '@ui5/webcomponents-react/dist/ListMode';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode, DragEventHandler } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/UploadCollection.js';
 
-export interface UploadCollectionPropTypes extends Omit<CommonProps, 'onDrop'> {
+interface UploadCollectionAttributes {
   /**
    * Sets the accessible aria name of the component.
    */
@@ -36,6 +37,11 @@ export interface UploadCollectionPropTypes extends Omit<CommonProps, 'onDrop'> {
    * Allows you to set your own text for the 'No data' text.
    */
   noDataText?: string;
+}
+
+export interface UploadCollectionDomRef extends UploadCollectionAttributes, Ui5DomRef {}
+
+export interface UploadCollectionPropTypes extends UploadCollectionAttributes, Omit<CommonProps, 'onDrop'> {
   /**
    * Defines the items of the `UploadCollection`.
    * **Note:** Use `UploadCollectionItem` for the intended design.
@@ -73,7 +79,7 @@ export interface UploadCollectionPropTypes extends Omit<CommonProps, 'onDrop'> {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/UploadCollection" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const UploadCollection = withWebComponent<UploadCollectionPropTypes>(
+const UploadCollection = withWebComponent<UploadCollectionPropTypes, UploadCollectionDomRef>(
   'ui5-upload-collection',
   ['accessibleName', 'mode', 'noDataDescription', 'noDataText'],
   ['hideDragOverlay'],

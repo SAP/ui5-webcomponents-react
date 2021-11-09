@@ -1,11 +1,12 @@
 import { PageBackgroundDesign } from '@ui5/webcomponents-react/dist/PageBackgroundDesign';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/Page.js';
 
-export interface PagePropTypes extends CommonProps {
+interface PageAttributes {
   /**
    * Defines the background color of the `Page`.
    *
@@ -32,6 +33,11 @@ export interface PagePropTypes extends CommonProps {
    * Defines the footer visibility.
    */
   hideFooter?: boolean;
+}
+
+export interface PageDomRef extends PageAttributes, Ui5DomRef {}
+
+export interface PagePropTypes extends PageAttributes, CommonProps {
   /**
    * Defines the content HTML Element.
    */
@@ -57,7 +63,7 @@ export interface PagePropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Page" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Page = withWebComponent<PagePropTypes>(
+const Page = withWebComponent<PagePropTypes, PageDomRef>(
   'ui5-page',
   ['backgroundDesign'],
   ['disableScrolling', 'floatingFooter', 'hideFooter'],

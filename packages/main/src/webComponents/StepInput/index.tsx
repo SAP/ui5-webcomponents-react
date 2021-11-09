@@ -2,11 +2,12 @@ import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/StepInput.js';
 
-export interface StepInputPropTypes extends Omit<CommonProps, 'onChange'> {
+interface StepInputAttributes {
   /**
    * Sets the accessible aria name of the component.
    */
@@ -73,6 +74,11 @@ export interface StepInputPropTypes extends Omit<CommonProps, 'onChange'> {
    * *   `Information`
    */
   valueState?: ValueState | keyof typeof ValueState;
+}
+
+export interface StepInputDomRef extends StepInputAttributes, Ui5DomRef {}
+
+export interface StepInputPropTypes extends StepInputAttributes, Omit<CommonProps, 'onChange'> {
   /**
    * Defines the value state message that will be displayed as pop up under the component.
    *
@@ -96,7 +102,7 @@ export interface StepInputPropTypes extends Omit<CommonProps, 'onChange'> {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/StepInput" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const StepInput = withWebComponent<StepInputPropTypes>(
+const StepInput = withWebComponent<StepInputPropTypes, StepInputDomRef>(
   'ui5-step-input',
   [
     'accessibleName',
