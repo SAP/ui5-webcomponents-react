@@ -1,11 +1,10 @@
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { ReactNode } from 'react';
+import { MouseEventHandler } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/ShellBarItem.js';
 
-export interface ShellBarItemPropTypes extends CommonProps {
+export interface ShellBarItemPropTypes extends Omit<CommonProps, 'onClick'> {
   /**
    * Defines the count displayed in the top-right corner.
    */
@@ -20,10 +19,8 @@ export interface ShellBarItemPropTypes extends CommonProps {
   text?: string;
   /**
    * Fired, when the item is pressed.
-   *
-   * __Note:__ To get the DOM reference of the clicked `ShellBarItem`, use `event.detail.targetRef`.
    */
-  onItemClick?: (event: Ui5CustomEvent<HTMLElement, { targetRef: ReactNode }>) => void;
+  onClick?: MouseEventHandler<HTMLElement>;
 }
 
 /**
@@ -36,7 +33,7 @@ const ShellBarItem = withWebComponent<ShellBarItemPropTypes>(
   ['count', 'icon', 'text'],
   [],
   [],
-  ['item-click']
+  ['click']
 );
 
 ShellBarItem.displayName = 'ShellBarItem';

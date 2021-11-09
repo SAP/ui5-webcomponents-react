@@ -124,6 +124,14 @@ export const getTypeDefinitionForProperty = (property) => {
         tsType: "CSSProperties['color']",
         importStatement: "import { CSSProperties } from 'react';"
       };
+    case 'AvatarColorScheme[]': {
+      return {
+        importStatement: `import { AvatarColorScheme } from '@ui5/webcomponents-react/dist/AvatarColorScheme';`,
+        tsType: `Array<${property.type} | keyof typeof ${property.type}>`,
+        enum: `AvatarColorScheme`,
+        isEnum: true
+      };
+    }
     // UI5 Web Component Enums
     case 'AvatarColorScheme':
     case 'AvatarGroupType':
