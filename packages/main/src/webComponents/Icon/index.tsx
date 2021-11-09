@@ -1,9 +1,10 @@
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 
 import '@ui5/webcomponents/dist/Icon.js';
 
-export interface IconPropTypes extends CommonProps {
+interface IconAttributes {
   /**
    * Defines the text alternative of the component. If not provided a default text alternative will be set, if present.
    *
@@ -31,6 +32,10 @@ export interface IconPropTypes extends CommonProps {
   showTooltip?: boolean;
 }
 
+export interface IconDomRef extends IconAttributes, Ui5DomRef {}
+
+export interface IconPropTypes extends IconAttributes, CommonProps {}
+
 /**
  * The `Icon` component represents an SVG icon. There are two main scenarios how the `Icon` component is used: as a purely decorative element; or as a visually appealing clickable area in the form of an icon button.
  *
@@ -42,7 +47,7 @@ export interface IconPropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Icon" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Icon = withWebComponent<IconPropTypes>(
+const Icon = withWebComponent<IconPropTypes, IconDomRef>(
   'ui5-icon',
   ['accessibleName', 'name'],
   ['interactive', 'showTooltip'],

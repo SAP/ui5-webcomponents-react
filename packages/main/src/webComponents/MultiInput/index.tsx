@@ -3,12 +3,12 @@ import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { Ui5MultiInputDomRef } from '@ui5/webcomponents-react/interfaces/Ui5MultiInputDomRef';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/MultiInput.js';
 
-export interface MultiInputPropTypes extends Omit<CommonProps, 'onChange' | 'onInput'> {
+interface MultiInputAttributes {
   /**
    * Determines whether a value help icon will be visualized in the end of the input. Pressing the icon will fire `value-help-trigger` event.
    */
@@ -86,6 +86,16 @@ export interface MultiInputPropTypes extends Omit<CommonProps, 'onChange' | 'onI
    * *   `Information`
    */
   valueState?: ValueState | keyof typeof ValueState;
+}
+
+export interface MultiInputDomRef extends MultiInputAttributes, Ui5DomRef {
+  /**
+   * The suggestion item on preview.
+   */
+  readonly previewItem: ReactNode;
+}
+
+export interface MultiInputPropTypes extends MultiInputAttributes, Omit<CommonProps, 'onChange' | 'onInput'> {
   /**
    * Defines the component tokens.
    *
@@ -176,7 +186,7 @@ export interface MultiInputPropTypes extends Omit<CommonProps, 'onChange' | 'onI
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/MultiInput" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const MultiInput = withWebComponent<MultiInputPropTypes, Ui5MultiInputDomRef>(
+const MultiInput = withWebComponent<MultiInputPropTypes, MultiInputDomRef>(
   'ui5-multi-input',
   ['accessibleName', 'accessibleNameRef', 'maxlength', 'name', 'placeholder', 'type', 'value', 'valueState'],
   ['showValueHelpIcon', 'disabled', 'readonly', 'required', 'showSuggestions'],

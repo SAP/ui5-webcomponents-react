@@ -2,12 +2,12 @@ import { FCLLayout } from '@ui5/webcomponents-react/dist/FCLLayout';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { Ui5FlexibleColumnLayoutDomRef } from '@ui5/webcomponents-react/interfaces/Ui5FlexibleColumnLayoutDomRef';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/FlexibleColumnLayout.js';
 
-export interface FlexibleColumnLayoutPropTypes extends CommonProps {
+interface FlexibleColumnLayoutAttributes {
   /**
    * An object of strings that defines several additional accessibility texts for even further customization. It supports the following fields:
    *
@@ -46,6 +46,32 @@ export interface FlexibleColumnLayoutPropTypes extends CommonProps {
    * **For example:** layout=`TwoColumnsStartExpanded` means the layout will display up to two columns in 67%/33% proportion.
    */
   layout?: FCLLayout | keyof typeof FCLLayout;
+}
+
+export interface FlexibleColumnLayoutDomRef extends FlexibleColumnLayoutAttributes, Ui5DomRef {
+  /**
+   * Returns the current column layout, based on both the <code>layout</code> property and the screen size. <br><br> <b>For example:</b> ["67%", "33%", 0], ["100%", 0, 0], ["25%", "50%", "25%"], etc, where the numbers represents the width of the start, middle and end columns.
+   */
+  readonly columnLayout: unknown[];
+  /**
+   * Returns if the <code>end</code> column is visible.
+   */
+  readonly endColumnVisible: boolean;
+  /**
+   * Returns if the <code>middle</code> column is visible.
+   */
+  readonly midColumnVisible: boolean;
+  /**
+   * Returns if the <code>start</code> column is visible.
+   */
+  readonly startColumnVisible: boolean;
+  /**
+   * Returns the number of currently visible columns.
+   */
+  readonly visibleColumns: number;
+}
+
+export interface FlexibleColumnLayoutPropTypes extends FlexibleColumnLayoutAttributes, CommonProps {
   /**
    * Defines the content in the end column.
    *
@@ -91,7 +117,7 @@ export interface FlexibleColumnLayoutPropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/FlexibleColumnLayout" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const FlexibleColumnLayout = withWebComponent<FlexibleColumnLayoutPropTypes, Ui5FlexibleColumnLayoutDomRef>(
+const FlexibleColumnLayout = withWebComponent<FlexibleColumnLayoutPropTypes, FlexibleColumnLayoutDomRef>(
   'ui5-flexible-column-layout',
   ['accessibilityTexts', 'layout'],
   ['hideArrows'],

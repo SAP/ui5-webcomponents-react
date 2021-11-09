@@ -1,16 +1,27 @@
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { Ui5ViewSettingsDialogDomRef } from '@ui5/webcomponents-react/interfaces/Ui5ViewSettingsDialogDomRef';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/ViewSettingsDialog.js';
 
-export interface ViewSettingsDialogPropTypes extends CommonProps {
+interface ViewSettingsDialogAttributes {
   /**
    * Defines the initial sort order.
    */
   sortDescending?: boolean;
+}
+
+export interface ViewSettingsDialogDomRef extends ViewSettingsDialogAttributes, Ui5DomRef {
+  /**
+   * Shows the dialog.
+   *
+   */
+  show: () => void;
+}
+
+export interface ViewSettingsDialogPropTypes extends ViewSettingsDialogAttributes, CommonProps {
   /**
    * Defines the `filterItems` list. **Note:** If you want to use this slot, you need to import used item: `import "@ui5/webcomponents-fiori/dist/FilterItem";`
    *
@@ -40,7 +51,7 @@ export interface ViewSettingsDialogPropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/ViewSettingsDialog" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const ViewSettingsDialog = withWebComponent<ViewSettingsDialogPropTypes, Ui5ViewSettingsDialogDomRef>(
+const ViewSettingsDialog = withWebComponent<ViewSettingsDialogPropTypes, ViewSettingsDialogDomRef>(
   'ui5-view-settings-dialog',
   [],
   ['sortDescending'],

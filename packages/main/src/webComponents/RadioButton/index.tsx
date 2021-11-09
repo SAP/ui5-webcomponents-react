@@ -3,10 +3,11 @@ import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent
 import { WrappingType } from '@ui5/webcomponents-react/dist/WrappingType';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 
 import '@ui5/webcomponents/dist/RadioButton.js';
 
-export interface RadioButtonPropTypes extends Omit<CommonProps, 'onChange'> {
+interface RadioButtonAttributes {
   /**
    * Defines whether the component is checked or not.
    *
@@ -65,6 +66,11 @@ export interface RadioButtonPropTypes extends Omit<CommonProps, 'onChange'> {
    * *   `Normal` - The text will wrap. The words will not be broken based on hyphenation.
    */
   wrappingType?: WrappingType | keyof typeof WrappingType;
+}
+
+export interface RadioButtonDomRef extends RadioButtonAttributes, Ui5DomRef {}
+
+export interface RadioButtonPropTypes extends RadioButtonAttributes, Omit<CommonProps, 'onChange'> {
   /**
    * Fired when the component checked state changes.
    */
@@ -77,7 +83,7 @@ export interface RadioButtonPropTypes extends Omit<CommonProps, 'onChange'> {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/RadioButton" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const RadioButton = withWebComponent<RadioButtonPropTypes>(
+const RadioButton = withWebComponent<RadioButtonPropTypes, RadioButtonDomRef>(
   'ui5-radio-button',
   ['name', 'text', 'value', 'valueState', 'wrappingType'],
   ['checked', 'disabled', 'readonly'],

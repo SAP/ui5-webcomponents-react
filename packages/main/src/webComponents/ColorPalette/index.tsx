@@ -1,11 +1,16 @@
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/ColorPalette.js';
 
-export interface ColorPalettePropTypes extends CommonProps {
+interface ColorPaletteAttributes {}
+
+export interface ColorPaletteDomRef extends ColorPaletteAttributes, Ui5DomRef {}
+
+export interface ColorPalettePropTypes extends ColorPaletteAttributes, CommonProps {
   /**
    * Defines the `ColorPaletteItem` elements.
    */
@@ -21,7 +26,13 @@ export interface ColorPalettePropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/ColorPalette" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const ColorPalette = withWebComponent<ColorPalettePropTypes>('ui5-color-palette', [], [], [], ['item-click']);
+const ColorPalette = withWebComponent<ColorPalettePropTypes, ColorPaletteDomRef>(
+  'ui5-color-palette',
+  [],
+  [],
+  [],
+  ['item-click']
+);
 
 ColorPalette.displayName = 'ColorPalette';
 

@@ -1,10 +1,11 @@
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 
 import '@ui5/webcomponents-fiori/dist/ProductSwitchItem.js';
 
-export interface ProductSwitchItemPropTypes extends Omit<CommonProps, 'onClick'> {
+interface ProductSwitchItemAttributes {
   /**
    * Defines the icon to be displayed as a graphical element within the component.
    *
@@ -39,6 +40,11 @@ export interface ProductSwitchItemPropTypes extends Omit<CommonProps, 'onClick'>
    * Defines the title of the component.
    */
   titleText?: string;
+}
+
+export interface ProductSwitchItemDomRef extends ProductSwitchItemAttributes, Ui5DomRef {}
+
+export interface ProductSwitchItemPropTypes extends ProductSwitchItemAttributes, Omit<CommonProps, 'onClick'> {
   /**
    * Fired when the `ProductSwitchItem` is activated either with a click/tap or by using the Enter or Space key.
    */
@@ -52,7 +58,7 @@ export interface ProductSwitchItemPropTypes extends Omit<CommonProps, 'onClick'>
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/ProductSwitchItem" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const ProductSwitchItem = withWebComponent<ProductSwitchItemPropTypes>(
+const ProductSwitchItem = withWebComponent<ProductSwitchItemPropTypes, ProductSwitchItemDomRef>(
   'ui5-product-switch-item',
   ['icon', 'subtitleText', 'target', 'targetSrc', 'titleText'],
   [],

@@ -1,12 +1,12 @@
 import { SemanticColor } from '@ui5/webcomponents-react/dist/SemanticColor';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { Ui5TabDomRef } from '@ui5/webcomponents-react/interfaces/Ui5TabDomRef';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Tab.js';
 
-export interface TabPropTypes extends CommonProps {
+interface TabAttributes {
   /**
    * Represents the "additionalText" text, which is displayed in the tab filter.
    */
@@ -43,6 +43,17 @@ export interface TabPropTypes extends CommonProps {
    * The text to be displayed for the item.
    */
   text?: string;
+}
+
+export interface TabDomRef extends TabAttributes, Ui5DomRef {
+  /**
+   * Returns the DOM reference of the tab that is placed in the header. <b>Note:</b> If you need a DOM ref to the tab content please use the <code>getDomRef</code> method.
+   *
+   */
+  getTabInStripDomRef: () => void;
+}
+
+export interface TabPropTypes extends TabAttributes, CommonProps {
   /**
    * Defines the tab content.
    */
@@ -54,7 +65,7 @@ export interface TabPropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Tab" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Tab = withWebComponent<TabPropTypes, Ui5TabDomRef>(
+const Tab = withWebComponent<TabPropTypes, TabDomRef>(
   'ui5-tab',
   ['additionalText', 'design', 'icon', 'text'],
   ['disabled', 'selected'],

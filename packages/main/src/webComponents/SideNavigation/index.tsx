@@ -1,15 +1,21 @@
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/SideNavigation.js';
 
-export interface SideNavigationPropTypes extends CommonProps {
+interface SideNavigationAttributes {
   /**
    * Defines whether the `SideNavigation` is expanded or collapsed.
    */
   collapsed?: boolean;
+}
+
+export interface SideNavigationDomRef extends SideNavigationAttributes, Ui5DomRef {}
+
+export interface SideNavigationPropTypes extends SideNavigationAttributes, CommonProps {
   /**
    * Defines the main items of the `SideNavigation`. Use the `SideNavigationItem` component for the top-level items, and the `SideNavigationSubItem` component for second-level items, nested inside the items.
    */
@@ -45,7 +51,7 @@ export interface SideNavigationPropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/SideNavigation" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const SideNavigation = withWebComponent<SideNavigationPropTypes>(
+const SideNavigation = withWebComponent<SideNavigationPropTypes, SideNavigationDomRef>(
   'ui5-side-navigation',
   [],
   ['collapsed'],

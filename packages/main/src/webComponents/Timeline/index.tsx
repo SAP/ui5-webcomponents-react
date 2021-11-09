@@ -1,11 +1,12 @@
 import { TimelineLayout } from '@ui5/webcomponents-react/dist/TimelineLayout';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/Timeline.js';
 
-export interface TimelinePropTypes extends CommonProps {
+interface TimelineAttributes {
   /**
    * Defines the items orientation.
    *
@@ -15,6 +16,11 @@ export interface TimelinePropTypes extends CommonProps {
    * *   `Horizontal`
    */
   layout?: TimelineLayout | keyof typeof TimelineLayout;
+}
+
+export interface TimelineDomRef extends TimelineAttributes, Ui5DomRef {}
+
+export interface TimelinePropTypes extends TimelineAttributes, CommonProps {
   /**
    * Determines the content of the `Timeline`.
    */
@@ -26,7 +32,7 @@ export interface TimelinePropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Timeline" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Timeline = withWebComponent<TimelinePropTypes>('ui5-timeline', ['layout'], [], [], []);
+const Timeline = withWebComponent<TimelinePropTypes, TimelineDomRef>('ui5-timeline', ['layout'], [], [], []);
 
 Timeline.displayName = 'Timeline';
 

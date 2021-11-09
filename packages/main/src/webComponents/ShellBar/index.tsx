@@ -1,7 +1,7 @@
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { Ui5ShellBarDomRef } from '@ui5/webcomponents-react/interfaces/Ui5ShellBarDomRef';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/ShellBar.js';
@@ -36,6 +36,17 @@ export interface ShellBarPropTypes extends CommonProps {
    * Defines, if the product switch icon would be displayed.
    */
   showProductSwitch?: boolean;
+}
+
+export interface ShellBarDomRef extends ShellBarAttributes, Ui5DomRef {
+  /**
+   * Closes the overflow area. Useful to manually close the overflow after having suppressed automatic closing with preventDefault() of ShellbarItem's press event
+   *
+   */
+  closeOverflow: () => void;
+}
+
+export interface ShellBarPropTypes extends ShellBarAttributes, CommonProps {
   /**
    * Defines the `ShellBar` aditional items.
    *
@@ -110,7 +121,7 @@ export interface ShellBarPropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/ShellBar" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const ShellBar = withWebComponent<ShellBarPropTypes, Ui5ShellBarDomRef>(
+const ShellBar = withWebComponent<ShellBarPropTypes, ShellBarDomRef>(
   'ui5-shellbar',
   ['notificationsCount', 'primaryTitle', 'secondaryTitle'],
   ['showCoPilot', 'showNotifications', 'showProductSwitch'],

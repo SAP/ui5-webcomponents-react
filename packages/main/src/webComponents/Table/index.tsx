@@ -3,11 +3,12 @@ import { TableMode } from '@ui5/webcomponents-react/dist/TableMode';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Table.js';
 
-export interface TablePropTypes extends CommonProps {
+interface TableAttributes {
   /**
    * Defines if the table is in busy state. **In this state the component's opacity is reduced and busy indicator is displayed at the bottom of the table.**
    */
@@ -72,6 +73,11 @@ export interface TablePropTypes extends CommonProps {
    *     *   If the Web Component is placed in layout containers that have the `overflow: hidden` or `overflow: auto` style definition, this can prevent the sticky elements of the Web Component from becoming fixed at the top of the viewport.
    */
   stickyColumnHeader?: boolean;
+}
+
+export interface TableDomRef extends TableAttributes, Ui5DomRef {}
+
+export interface TablePropTypes extends TableAttributes, CommonProps {
   /**
    * Defines the configuration for the columns of the component.
    *
@@ -118,7 +124,7 @@ export interface TablePropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Table" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Table = withWebComponent<TablePropTypes>(
+const Table = withWebComponent<TablePropTypes, TableDomRef>(
   'ui5-table',
   ['busyDelay', 'growing', 'growingButtonSubtext', 'growingButtonText', 'mode', 'noDataText'],
   ['busy', 'hideNoData', 'stickyColumnHeader'],

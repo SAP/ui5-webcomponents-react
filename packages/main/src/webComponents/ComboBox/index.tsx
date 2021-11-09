@@ -2,11 +2,12 @@ import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/ComboBox.js';
 
-export interface ComboBoxPropTypes extends Omit<CommonProps, 'onChange' | 'onInput'> {
+interface ComboBoxAttributes {
   /**
    * Sets the accessible aria name of the component.
    */
@@ -59,6 +60,11 @@ export interface ComboBoxPropTypes extends Omit<CommonProps, 'onChange' | 'onInp
    * *   `Information`
    */
   valueState?: ValueState | keyof typeof ValueState;
+}
+
+export interface ComboBoxDomRef extends ComboBoxAttributes, Ui5DomRef {}
+
+export interface ComboBoxPropTypes extends ComboBoxAttributes, Omit<CommonProps, 'onChange' | 'onInput'> {
   /**
    * Defines the component items.
    */
@@ -101,7 +107,7 @@ export interface ComboBoxPropTypes extends Omit<CommonProps, 'onChange' | 'onInp
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/ComboBox" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const ComboBox = withWebComponent<ComboBoxPropTypes>(
+const ComboBox = withWebComponent<ComboBoxPropTypes, ComboBoxDomRef>(
   'ui5-combobox',
   ['accessibleName', 'accessibleNameRef', 'filter', 'placeholder', 'value', 'valueState'],
   ['disabled', 'loading', 'readonly', 'required'],

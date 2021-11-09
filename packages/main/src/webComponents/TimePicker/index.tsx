@@ -2,12 +2,12 @@ import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { Ui5TimePickerDomRef } from '@ui5/webcomponents-react/interfaces/Ui5TimePickerDomRef';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/TimePicker.js';
 
-export interface TimePickerPropTypes extends Omit<CommonProps, 'onChange' | 'onInput'> {
+interface TimePickerAttributes {
   /**
    * Determines whether the `TimePicker` is displayed as disabled.
    */
@@ -42,6 +42,43 @@ export interface TimePickerPropTypes extends Omit<CommonProps, 'onChange' | 'onI
    * *   `Information`
    */
   valueState?: ValueState | keyof typeof ValueState;
+}
+
+export interface TimePickerDomRef extends TimePickerAttributes, Ui5DomRef {
+  /**
+   * Currently selected time represented as JavaScript Date instance
+   */
+  readonly dateValue: Date;
+  /**
+   * Closes the picker
+   *
+   */
+  closePicker: () => void;
+  /**
+   * Formats a Java Script date object into a string representing a locale date and time according to the <code>formatPattern</code> property of the TimePicker instance
+   * @param {Date} date - A Java Script date object to be formatted as string
+   */
+  formatValue: (date: Date) => void;
+  /**
+   * Checks if the picker is open
+   *
+   */
+  isOpen: () => void;
+  /**
+   * Checks if a value is valid against the current <code>formatPattern</code> value.
+   *
+   * <br><br> <b>Note:</b> an empty string is considered as valid value.
+   * @param {string} value - The value to be tested against the current date format
+   */
+  isValid: (value: string) => void;
+  /**
+   * Opens the picker.
+   *
+   */
+  openPicker: () => void;
+}
+
+export interface TimePickerPropTypes extends TimePickerAttributes, Omit<CommonProps, 'onChange' | 'onInput'> {
   /**
    * Defines the value state message that will be displayed as pop up under the `TimePicker`.
    *
@@ -67,7 +104,7 @@ export interface TimePickerPropTypes extends Omit<CommonProps, 'onChange' | 'onI
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/TimePicker" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const TimePicker = withWebComponent<TimePickerPropTypes, Ui5TimePickerDomRef>(
+const TimePicker = withWebComponent<TimePickerPropTypes, TimePickerDomRef>(
   'ui5-time-picker',
   ['formatPattern', 'placeholder', 'value', 'valueState'],
   ['disabled', 'readonly'],

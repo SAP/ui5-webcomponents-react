@@ -2,10 +2,11 @@ import { ListItemType } from '@ui5/webcomponents-react/dist/ListItemType';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 
 import '@ui5/webcomponents/dist/SuggestionItem.js';
 
-export interface SuggestionItemPropTypes extends CommonProps {
+interface SuggestionItemAttributes {
   /**
    * Defines the `additionalText`, displayed in the end of the item.
    */
@@ -50,12 +51,16 @@ export interface SuggestionItemPropTypes extends CommonProps {
   type?: ListItemType | keyof typeof ListItemType;
 }
 
+export interface SuggestionItemDomRef extends SuggestionItemAttributes, Ui5DomRef {}
+
+export interface SuggestionItemPropTypes extends SuggestionItemAttributes, CommonProps {}
+
 /**
  * The `SuggestionItem` represents the suggestion item of the `Input`
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/SuggestionItem" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const SuggestionItem = withWebComponent<SuggestionItemPropTypes>(
+const SuggestionItem = withWebComponent<SuggestionItemPropTypes, SuggestionItemDomRef>(
   'ui5-suggestion-item',
   ['additionalText', 'additionalTextState', 'description', 'icon', 'image', 'text', 'type'],
   ['iconEnd'],
