@@ -4122,6 +4122,11 @@
   resolved "https://registry.npmjs.org/@types/trusted-types/-/trusted-types-1.0.6.tgz"
   integrity sha512-230RC8sFeHoT6sSUlRO6a8cAnclO06eeiq1QDfiv2FGCLWFvvERWgwIQD4FWqD9A69BN7Lzee4OXwoMVnnsWDw==
 
+"@types/trusted-types@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@types/trusted-types/-/trusted-types-2.0.2.tgz#fc25ad9943bcac11cceb8168db4f275e0e72e756"
+  integrity sha512-F5DIZ36YVLE+PN+Zwws4kJogq47hNgX3Nx6WyDJ3kcplxyke3XIzB8uK5n/Lpm1HBsbGzd6nmGehL8cPekP+Tg==
+
 "@types/uglify-js@*":
   version "3.13.0"
   resolved "https://registry.npmjs.org/@types/uglify-js/-/uglify-js-3.13.0.tgz"
@@ -4268,6 +4273,13 @@
   dependencies:
     lit-html "2.0.0-rc.3"
 
+"@ui5/webcomponents-base@1.0.0-rc.16":
+  version "1.0.0-rc.16"
+  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-base/-/webcomponents-base-1.0.0-rc.16.tgz#52fe716eb30d0961adc4b68189aae9921ee84aa6"
+  integrity sha512-QicYZyVwikNnOP5uB9STOWznTrrLevLrm8ZoXxphV0jlFS1xmEpymCdOF6hYxfCzrEjtnsznogSMCQrIIa2DPA==
+  dependencies:
+    lit-html "2.0.1"
+
 "@ui5/webcomponents-fiori@1.0.0-rc.15":
   version "1.0.0-rc.15"
   resolved "https://registry.npmjs.org/@ui5/webcomponents-fiori/-/webcomponents-fiori-1.0.0-rc.15.tgz"
@@ -4286,6 +4298,13 @@
   integrity sha512-9x+LBkcuBoyNLqtEgYHx3VTf1qFMwWTaG3J7b75GdthvENraRoa+NQVt7MNDIR6TSy0CxkFgiCc4FmhP+Xu6cw==
   dependencies:
     "@ui5/webcomponents-base" "1.0.0-rc.15"
+
+"@ui5/webcomponents-icons@1.0.0-rc.16":
+  version "1.0.0-rc.16"
+  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-icons/-/webcomponents-icons-1.0.0-rc.16.tgz#7ed84228532ad195eff0c9d99c9b8a006fbd1374"
+  integrity sha512-DKYoVtl/VawX6NhKKpWsUU99VFJ/2+oVu3IFSHBbT+fLuJqfxUslDdp6tGlPINLkfyjhWKDEft+kUaO6UyDdgA==
+  dependencies:
+    "@ui5/webcomponents-base" "1.0.0-rc.16"
 
 "@ui5/webcomponents-ie11@1.0.0-rc.15":
   version "1.0.0-rc.15"
@@ -11902,6 +11921,13 @@ lit-html@2.0.0-rc.3:
   integrity sha512-Y6P8LlAyQuqvzq6l/Nc4z5/P5M/rVLYKQIRxcNwSuGajK0g4kbcBFQqZmgvqKG+ak+dHZjfm2HUw9TF5N/pkCw==
   dependencies:
     "@types/trusted-types" "^1.0.1"
+
+lit-html@2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/lit-html/-/lit-html-2.0.1.tgz#63241015efa07bc9259b6f96f04abd052d2a1f95"
+  integrity sha512-KF5znvFdXbxTYM/GjpdOOnMsjgRcFGusTnB54ixnCTya5zUR0XqrDRj29ybuLS+jLXv1jji6Y8+g4W7WP8uL4w==
+  dependencies:
+    "@types/trusted-types" "^2.0.2"
 
 livereload-js@^3.3.1:
   version "3.3.2"
