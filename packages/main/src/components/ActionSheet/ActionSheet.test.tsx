@@ -1,10 +1,10 @@
 import { fireEvent, render, screen } from '@shared/tests';
 import { createPassThroughPropsTest } from '@shared/tests/utils';
 import { ActionSheet } from '@ui5/webcomponents-react/dist/ActionSheet';
+import { PopoverDomRef } from '@ui5/webcomponents-react/dist/Popover';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { Label } from '@ui5/webcomponents-react/dist/Label';
 import React, { createRef, RefObject } from 'react';
-import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
 
 describe('ActionSheet', () => {
   test('Render without Crashing', () => {
@@ -52,7 +52,7 @@ describe('ActionSheet', () => {
   });
 
   test('Ref object', () => {
-    const ref: RefObject<Ui5PopoverDomRef> = createRef();
+    const ref: RefObject<PopoverDomRef> = createRef();
     render(<ActionSheet ref={ref} />);
     expect((ref.current as any).tagName).toEqual('UI5-RESPONSIVE-POPOVER');
   });

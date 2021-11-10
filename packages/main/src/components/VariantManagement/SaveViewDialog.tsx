@@ -14,7 +14,7 @@ import { Bar } from '@ui5/webcomponents-react/dist/Bar';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
 import { CheckBox } from '@ui5/webcomponents-react/dist/CheckBox';
-import { Dialog } from '@ui5/webcomponents-react/dist/Dialog';
+import { Dialog, DialogDomRef } from '@ui5/webcomponents-react/dist/Dialog';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
@@ -22,7 +22,6 @@ import { Input } from '@ui5/webcomponents-react/dist/Input';
 import { Label } from '@ui5/webcomponents-react/dist/Label';
 import { SelectedVariant } from '@ui5/webcomponents-react/dist/VariantManagementContext';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { Ui5DialogDomRef } from '@ui5/webcomponents-react/interfaces/Ui5DialogDomRef';
 import React, { useEffect, useRef, useState } from 'react';
 
 interface SaveViewDialogPropTypes {
@@ -45,7 +44,7 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
     showSetAsDefault,
     variantNames
   } = props;
-  const saveViewDialogRef = useRef<Ui5DialogDomRef>(null);
+  const saveViewDialogRef = useRef<DialogDomRef>(null);
   const inputRef = useRef(undefined);
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 

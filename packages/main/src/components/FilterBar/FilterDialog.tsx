@@ -29,7 +29,7 @@ import { Text } from '@ui5/webcomponents-react/dist/Text';
 import { Title } from '@ui5/webcomponents-react/dist/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
 import React, { Children, cloneElement, ReactElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Ui5DialogDomRef } from '@ui5/webcomponents-react/interfaces/Ui5DialogDomRef';
+import { DialogDomRef } from '@ui5/webcomponents-react/dist/Dialog';
 import { stopPropagation } from '../../internal/stopPropagation';
 import styles from './FilterBarDialog.jss';
 import { filterValue, renderSearchWithValue, syncRef } from './utils';
@@ -63,7 +63,7 @@ export const FilterDialog = (props) => {
   const searchRef = useRef(null);
   const [toggledFilters, setToggledFilters] = useState({});
   const dialogRefs = useRef({});
-  const dialogRef = useRef<Ui5DialogDomRef>();
+  const dialogRef = useRef<DialogDomRef>();
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 

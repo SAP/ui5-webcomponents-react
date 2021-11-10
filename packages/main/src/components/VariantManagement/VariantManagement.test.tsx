@@ -3,8 +3,8 @@ import { createPassThroughPropsTest } from '@shared/tests/utils';
 import { VariantManagement } from '@ui5/webcomponents-react/dist/VariantManagement';
 import React from 'react';
 import { TitleLevel } from '../..';
-import { Ui5DialogDomRef } from '../../interfaces/Ui5DialogDomRef';
-import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
+import { DialogDomRef } from '../../webComponents/Dialog';
+import { PopoverDomRef } from '../../webComponents/Popover';
 import { VariantItem } from './VariantItem';
 
 const TwoVariantItems = [
@@ -37,7 +37,7 @@ describe('VariantManagement', () => {
     await waitFor(() => wcListItem.shadowRoot.querySelector('li'));
     const li = wcListItem.shadowRoot.querySelector('li');
 
-    const popover: Ui5PopoverDomRef = document.querySelector('ui5-responsive-popover');
+    const popover: PopoverDomRef = document.querySelector('ui5-responsive-popover');
     const btn = getByTitle('Select View');
     const heading = getAllByText('VariantItem 2')[0];
     const closeBtn = getByText('Cancel');
@@ -86,7 +86,7 @@ describe('VariantManagement', () => {
     await waitFor(() => wcListItem.shadowRoot.querySelector('li'));
     const li = wcListItem.shadowRoot.querySelector('li');
 
-    const popover: Ui5PopoverDomRef = document.querySelector('ui5-responsive-popover');
+    const popover: PopoverDomRef = document.querySelector('ui5-responsive-popover');
     const btn = getByTitle('Select View');
     fireEvent.click(btn);
     expect(popover.isOpen()).toBeTruthy();
@@ -125,7 +125,7 @@ describe('VariantManagement', () => {
     expect(cb.mock.results[0].value.children).toBe('VariantItem 2');
     expect(cb.mock.results[0].value.variantItem).toBeInTheDocument();
 
-    const popover: Ui5PopoverDomRef = document.querySelector('ui5-responsive-popover');
+    const popover: PopoverDomRef = document.querySelector('ui5-responsive-popover');
     const btn = getByTitle('Select View');
     fireEvent.click(btn);
     expect(popover.isOpen()).toBeTruthy();
@@ -173,7 +173,7 @@ describe('VariantManagement', () => {
     );
     const btn = getByTitle('Select View');
     fireEvent.click(btn);
-    const popover: Ui5PopoverDomRef = document.querySelector('ui5-responsive-popover');
+    const popover: PopoverDomRef = document.querySelector('ui5-responsive-popover');
     await waitFor(() => popover.shadowRoot.querySelector('h2'));
     const popoverHeading = popover.shadowRoot.querySelector('h2');
     expect(popoverHeading).toHaveTextContent('Popover Heading');
@@ -256,7 +256,7 @@ describe('VariantManagement', () => {
     const saveAsBtn = getByText('Save As');
 
     fireEvent.click(saveAsBtn);
-    const dialog: Ui5DialogDomRef = document.querySelector('ui5-dialog');
+    const dialog: DialogDomRef = document.querySelector('ui5-dialog');
     expect(dialog).toHaveAttribute('header-text', 'Save View');
     expect(dialog.isOpen()).toBeTruthy();
 
@@ -340,7 +340,7 @@ describe('VariantManagement', () => {
     );
     const manageBtn = getByText('Manage');
     fireEvent.click(manageBtn);
-    const dialog: Ui5DialogDomRef = document.querySelector('ui5-dialog');
+    const dialog: DialogDomRef = document.querySelector('ui5-dialog');
     const table = screen.getByRole('table');
     expect(dialog).toHaveAttribute('header-text', 'Manage Views');
     expect(dialog.isOpen()).toBeTruthy();

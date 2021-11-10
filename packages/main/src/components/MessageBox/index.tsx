@@ -25,7 +25,7 @@ import {
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
-import { Dialog, DialogPropTypes } from '@ui5/webcomponents-react/dist/Dialog';
+import { Dialog, DialogPropTypes, DialogDomRef } from '@ui5/webcomponents-react/dist/Dialog';
 import { Icon } from '@ui5/webcomponents-react/dist/Icon';
 import { MessageBoxActions } from '@ui5/webcomponents-react/dist/MessageBoxActions';
 import { MessageBoxTypes } from '@ui5/webcomponents-react/dist/MessageBoxTypes';
@@ -33,7 +33,6 @@ import { Text } from '@ui5/webcomponents-react/dist/Text';
 import { Title } from '@ui5/webcomponents-react/dist/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { Ui5DialogDomRef } from '@ui5/webcomponents-react/interfaces/Ui5DialogDomRef';
 import React, {
   forwardRef,
   isValidElement,
@@ -113,7 +112,7 @@ const createUniqueIds = (internalActions) =>
  * The `MessageBox` component provides easier methods to create a `Dialog`, such as standard alerts, confirmation dialogs, or arbitrary message dialogs.
  * For convenience, it also provides an `open` prop, so it is not necessary to attach a `ref` to open the `MessageBox`.
  */
-const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDomRef>) => {
+const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<DialogDomRef>) => {
   const {
     open,
     type,
@@ -131,7 +130,7 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDom
     accessibleName,
     ...rest
   } = props;
-  const dialogRef = useConsolidatedRef<Ui5DialogDomRef>(ref);
+  const dialogRef = useConsolidatedRef<DialogDomRef>(ref);
 
   const classes = useStyles();
 

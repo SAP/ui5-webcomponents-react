@@ -1,11 +1,11 @@
-import { Ui5PopoverDomRef } from '@ui5/webcomponents-react/interfaces/Ui5PopoverDomRef';
+import { PopoverDomRef } from '@ui5/webcomponents-react/dist/Popover';
 import { ComponentType, RefObject } from 'react';
 import { Column } from 'react-table';
 
 export interface ColumnType extends Column {
   show: boolean;
   id: string;
-  Filter: ComponentType<{ column: ColumnType; popoverRef?: RefObject<Ui5PopoverDomRef> }>;
+  Filter: ComponentType<{ column: ColumnType; popoverRef?: RefObject<PopoverDomRef> }>;
   toggleSortBy: (descending: boolean, multi?: any) => void;
   clearSortBy: () => void;
   toggleGroupBy: (set: boolean) => void;
