@@ -88,9 +88,6 @@ const RadioButton = withWebComponent<RadioButtonPropTypes>(
 RadioButton.displayName = 'RadioButton';
 
 RadioButton.defaultProps = {
-  checked: false,
-  disabled: false,
-  readonly: false,
   valueState: ValueState.None
 };
 

@@ -69,9 +69,7 @@ Page.displayName = 'Page';
 
 Page.defaultProps = {
   backgroundDesign: PageBackgroundDesign.Solid,
-  disableScrolling: false,
-  floatingFooter: true,
-  hideFooter: false
+  floatingFooter: true
 };
 
 export { Page };

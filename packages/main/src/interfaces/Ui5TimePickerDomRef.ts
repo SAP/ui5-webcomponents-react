@@ -4,6 +4,10 @@ import { Ui5DomRef } from './Ui5DomRef';
 
 export interface Ui5TimePickerDomRef extends Ui5DomRef {
   /**
+   * Currently selected time represented as JavaScript Date instance
+   */
+  readonly dateValue: Date;
+  /**
    * Closes the picker
    *
    */

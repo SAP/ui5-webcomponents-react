@@ -19,7 +19,7 @@ export interface LabelPropTypes extends CommonProps {
    */
   required?: boolean;
   /**
-   * Defines whether semi-colon is added to the component text.
+   * Defines whether colon is added to the component text.
    *
    * **Note:** Usually used in forms.
    */
@@ -48,11 +48,5 @@ export interface LabelPropTypes extends CommonProps {
 const Label = withWebComponent<LabelPropTypes>('ui5-label', ['for', 'wrappingType'], ['required', 'showColon'], [], []);
 
 Label.displayName = 'Label';
-
-Label.defaultProps = {
-  required: false
-  // needs to be removed for FormItem
-  // showColon: false
-};
 
 export { Label };

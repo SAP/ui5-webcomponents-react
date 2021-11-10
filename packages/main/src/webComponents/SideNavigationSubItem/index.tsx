@@ -36,8 +36,4 @@ const SideNavigationSubItem = withWebComponent<SideNavigationSubItemPropTypes>(
 
 SideNavigationSubItem.displayName = 'SideNavigationSubItem';
 
-SideNavigationSubItem.defaultProps = {
-  selected: false
-};
-
 export { SideNavigationSubItem };

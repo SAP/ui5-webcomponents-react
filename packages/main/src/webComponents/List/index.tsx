@@ -10,17 +10,15 @@ import '@ui5/webcomponents/dist/List.js';
 
 export interface ListPropTypes extends CommonProps {
   /**
-   * Sets the accessible aria name of the component.
+   * Defines the accessible name of the component.
    */
   accessibleName?: string;
   /**
-   * Receives id(or many ids) of the elements that label the input
+   * Defines the IDs of the elements that label the input.
    */
   accessibleNameRef?: string;
   /**
    * Defines the accessible role of the component.
-   *
-   * **Note:** If you use notification list items, it's recommended to set `accessible-role="list"` for better accessibility.
    */
   accessibleRole?: string;
   /**
@@ -54,7 +52,7 @@ export interface ListPropTypes extends CommonProps {
    */
   headerText?: string;
   /**
-   * Determines whether the list items are indented.
+   * Determines whether the component is indented.
    */
   indent?: boolean;
   /**
@@ -131,7 +129,7 @@ export interface ListPropTypes extends CommonProps {
 /**
  * The `List` component allows displaying a list of items, advanced keyboard handling support for navigating between items, and predefined modes to improve the development efficiency.
  *
- * The `List` is а container for the available list items:
+ * The `List` is a container for the available list items:
  *
  * *   `StandardListItem`
  * *   `CustomListItem`
@@ -167,11 +165,9 @@ const List = withWebComponent<ListPropTypes>(
 List.displayName = 'List';
 
 List.defaultProps = {
-  accessibleRole: 'listbox',
-  busy: false,
+  accessibleRole: 'list',
   busyDelay: 1000,
   growing: ListGrowingMode.None,
-  indent: false,
   mode: ListMode.None,
   separators: ListSeparators.All
 };

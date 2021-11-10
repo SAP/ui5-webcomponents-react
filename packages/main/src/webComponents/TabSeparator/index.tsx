@@ -14,6 +14,4 @@ const TabSeparator = withWebComponent<TabSeparatorPropTypes>('ui5-tab-separator'
 
 TabSeparator.displayName = 'TabSeparator';
 
-TabSeparator.defaultProps = {};
-
 export { TabSeparator };

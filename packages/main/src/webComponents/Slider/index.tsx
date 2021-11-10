@@ -20,15 +20,15 @@ export interface SliderPropTypes extends Omit<CommonProps, 'onChange' | 'onInput
    */
   labelInterval?: number;
   /**
-   * Defines the maximum value of the slider
+   * Defines the maximum value of the slider.
    */
   max?: number;
   /**
-   * Defines the minimum value of the slider
+   * Defines the minimum value of the slider.
    */
   min?: number;
   /**
-   * Enables tick marks visualization for each step.
+   * Enables tickmarks visualization for each step.
    *
    * **Note:** The step must be a positive number.
    */
@@ -70,12 +70,9 @@ Slider.displayName = 'Slider';
 
 Slider.defaultProps = {
   value: 0,
-  disabled: false,
   labelInterval: 0,
   max: 100,
   min: 0,
-  showTickmarks: false,
-  showTooltip: false,
   step: 1
 };
 

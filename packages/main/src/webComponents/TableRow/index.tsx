@@ -41,7 +41,6 @@ const TableRow = withWebComponent<TableRowPropTypes>('ui5-table-row', ['type'], 
 TableRow.displayName = 'TableRow';
 
 TableRow.defaultProps = {
-  selected: false,
   type: TableRowType.Inactive
 };
 

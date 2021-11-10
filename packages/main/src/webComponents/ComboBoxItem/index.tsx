@@ -23,6 +23,4 @@ const ComboBoxItem = withWebComponent<ComboBoxItemPropTypes>('ui5-cb-item', ['ad
 
 ComboBoxItem.displayName = 'ComboBoxItem';
 
-ComboBoxItem.defaultProps = {};
-
 export { ComboBoxItem };

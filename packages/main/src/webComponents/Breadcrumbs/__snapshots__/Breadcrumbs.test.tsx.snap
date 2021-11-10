@@ -6,6 +6,12 @@ exports[`Breadcrumbs Basic Test (generated) 1`] = `
     design="Standard"
     separator-style="Slash"
     ui5-breadcrumbs=""
-  />
+  >
+    <ui5-breadcrumbs-item
+      ui5-breadcrumbs-item=""
+    >
+      Hello World!
+    </ui5-breadcrumbs-item>
+  </ui5-breadcrumbs>
 </DocumentFragment>
 `;

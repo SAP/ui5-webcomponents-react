@@ -56,7 +56,7 @@ exports[`MessageView renders list view 1`] = `
         </ui5-segmented-button>
       </ui5-bar>
       <ui5-list
-        accessible-role="listbox"
+        accessible-role="list"
         busy-delay="1000"
         growing="None"
         mode="None"
@@ -311,7 +311,7 @@ exports[`MessageView renders list view with groups 1`] = `
         </ui5-segmented-button>
       </ui5-bar>
       <ui5-list
-        accessible-role="listbox"
+        accessible-role="list"
         busy-delay="1000"
         growing="None"
         mode="None"

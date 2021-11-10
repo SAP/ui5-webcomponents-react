@@ -31,13 +31,17 @@ export interface CalendarPropTypes extends CommonProps {
    */
   maxDate?: string;
   /**
-   * Determines the мinimum date available for selection.
+   * Determines the minimum date available for selection.
    */
   minDate?: string;
   /**
    * Sets a calendar type used for display. If not set, the calendar type of the global configuration is used.<br/>__Note:__ Calendar types other than Gregorian must be imported manually:<br />`import "@ui5/webcomponents-localization/dist/features/calendar/{primaryCalendarType}.js";`
    */
   primaryCalendarType?: CalendarType | keyof typeof CalendarType;
+  /**
+   * Defines the secondary calendar type. If not set, the calendar will only show the primary calendar type.
+   */
+  secondaryCalendarType?: CalendarType | keyof typeof CalendarType;
   /**
    * Defines the selected date or dates (depending on the `selectionMode` property) for this calendar as instances of `CalendarDate`
    */
@@ -57,7 +61,7 @@ export interface CalendarPropTypes extends CommonProps {
  */
 const Calendar = withWebComponent<CalendarPropTypes>(
   'ui5-calendar',
-  ['selectionMode', 'formatPattern', 'maxDate', 'minDate', 'primaryCalendarType'],
+  ['selectionMode', 'formatPattern', 'maxDate', 'minDate', 'primaryCalendarType', 'secondaryCalendarType'],
   ['hideWeekNumbers'],
   [],
   ['selected-dates-change']
@@ -66,7 +70,6 @@ const Calendar = withWebComponent<CalendarPropTypes>(
 Calendar.displayName = 'Calendar';
 
 Calendar.defaultProps = {
-  hideWeekNumbers: false,
   selectionMode: CalendarSelectionMode.Single
 };
 

@@ -4,6 +4,10 @@ import { Ui5DomRef } from './Ui5DomRef';
 
 export interface Ui5DatePickerDomRef extends Ui5DomRef {
   /**
+   * Currently selected date represented as a Local JavaScript Date instance.
+   */
+  readonly dateValue: Date;
+  /**
    * Closes the picker.
    *
    */

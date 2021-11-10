@@ -3,7 +3,6 @@ import mainWebComponentsSpec from '@ui5/webcomponents/dist/api.json';
 import fioriWebComponentsSpec from '@ui5/webcomponents-fiori/dist/api.json';
 import dedent from 'dedent';
 import prettier from 'prettier';
-import prettierConfigRaw from '../../../prettier.config.cjs';
 import path from 'path';
 import PATHS from '../../../config/paths.js';
 import fs from 'fs';
@@ -66,14 +65,8 @@ const CREATE_SINGLE_COMPONENT = process.argv[2] || false;
 
 const EXCLUDE_LIST = [];
 
-const prettierConfig = {
-  ...prettierConfigRaw,
-  parser: 'typescript'
-};
-
 const WEB_COMPONENTS_ROOT_DIR = path.join(PATHS.packages, 'main', 'src', 'webComponents');
 const ENUMS_DIR = path.join(PATHS.packages, 'main', 'src', 'enums');
-const INTERFACES_DIR = path.join(PATHS.packages, 'main', 'src', 'interfaces');
 const DIST_DIR = path.join(PATHS.packages, 'main', 'src', 'dist');
 
 const EXTENDED_PROP_DESCRIPTION = {
@@ -228,6 +221,11 @@ const allWebComponents = [
   return true;
 });
 
+fs.writeFileSync(
+  path.join(PATHS.root, 'scripts', 'web-component-wrappers', 'interfaces.json'),
+  JSON.stringify(Array.from(interfaces))
+);
+
 const htmlTagToModuleNameMap = new Map();
 for (const spec of allWebComponents) {
   htmlTagToModuleNameMap.set(spec.tagname, spec.module);
@@ -346,7 +344,7 @@ const createWebComponentWrapper = async (
       }),
       name
     ),
-    prettierConfig
+    Utils.prettierConfig
   );
 };
 
@@ -447,7 +445,7 @@ const createWebComponentDemo = (componentSpec, componentProps, description) => {
       args,
       methods: componentSpec.methods?.filter((item) => item.visibility === 'public') ?? []
     }),
-    { ...prettierConfigRaw, parser: 'mdx' }
+    { ...Utils.prettierConfig, parser: 'mdx' }
   )}\n${formattedDescription}`;
 };
 
@@ -555,7 +553,7 @@ const resolveInheritedAttributes = (componentSpec) => {
    }
   `;
 
-  fs.writeFileSync(path.join(ENUMS_DIR, `${spec.basename}.ts`), prettier.format(template, prettierConfig));
+  fs.writeFileSync(path.join(ENUMS_DIR, `${spec.basename}.ts`), prettier.format(template, Utils.prettierConfig));
   fs.writeFileSync(
     path.join(DIST_DIR, `${spec.basename}.ts`),
     prettier.format(
@@ -567,7 +565,7 @@ const resolveInheritedAttributes = (componentSpec) => {
   export { ${spec.basename} };
   
   `,
-      prettierConfig
+      Utils.prettierConfig
     )
   );
 });
@@ -583,7 +581,7 @@ allWebComponents
     const allComponentProperties = [...(componentSpec.properties || []), ...(componentSpec.slots || [])]
       .filter((prop) => prop.visibility === 'public' && prop.readonly !== 'true' && prop.static !== true)
       .map((property) => {
-        const tsType = Utils.getTypeDefinitionForProperty(property, interfaces);
+        const tsType = Utils.getTypeDefinitionForProperty(property);
         if (tsType.importStatement) {
           importStatements.push(tsType.importStatement);
         }
@@ -626,9 +624,15 @@ allWebComponents
      ${property.name}?: ${tsType.tsType};
     `);
 
-        if (property.hasOwnProperty('defaultValue') && property.name !== 'wrappingType') {
+        if (
+          property.hasOwnProperty('defaultValue') &&
+          property.name !== 'wrappingType' &&
+          property.defaultValue !== 'undefined'
+        ) {
           if (tsType.tsType === 'boolean') {
-            defaultProps.push(`${property.name}: ${property.defaultValue === 'true'}`);
+            if (property.defaultValue === 'true') {
+              defaultProps.push(`${property.name}: true`);
+            }
           } else if (tsType.isEnum === true) {
             defaultProps.push(`${property.name}: ${tsType.enum}.${property.defaultValue.replace(/['"]/g, '')}`);
           } else if (tsType.tsType !== 'string' || (tsType.tsType === 'string' && property.defaultValue !== '""')) {
@@ -672,11 +676,6 @@ allWebComponents
       `);
       });
 
-    const domRef = Utils.getDomRefTypingForComponent(componentSpec.module);
-    if (domRef) {
-      importStatements.push(domRef.importStatement);
-    }
-
     const uniqueAdditionalImports = [...new Set(importStatements)];
 
     const formatDescription = () => {
@@ -719,56 +718,9 @@ allWebComponents
       fs.writeFileSync(webComponentWrapperPath, '');
     }
 
-    const publicMethods = componentSpec.methods?.filter((method) => method.visibility === 'public') ?? [];
-    const isOptionalParameter = (p) => {
-      return p.optional || p.hasOwnProperty('defaultValue');
-    };
-    const resolveTsTypeForMethods = (param) => {
-      let tsType;
-      if (param.type === 'HTMLElement') {
-        tsType = 'HTMLElement | EventTarget';
-      } else if (param.type === 'function' && componentSpec.module === 'Tree') {
-        tsType = '(treeNode: HTMLElement, level: number) => void';
-      } else if (param.type === 'object' && ['DatePicker', 'DateRangePicker', 'DateTimePicker', 'TimePicker'].includes(componentSpec.module)) {
-        tsType = 'Date';
-      } else {
-        tsType = Utils.getTypeDefinitionForProperty(param, new Set()).tsType;
-      }
-      return tsType;
-    };
-    if (publicMethods.length > 0) {
-      const methods = publicMethods.map((method) => {
-        const params = method.parameters?.map((param) => {
-          return ` * @param {${resolveTsTypeForMethods(param)}} ${isOptionalParameter(param) ? '[' : ''}${param.name}${
-            isOptionalParameter(param) ? ']' : ''
-          } - ${param.description}`;
-        });
-
-        return dedent`
-          /**
-           * ${method.description.replaceAll('\n', '\n * ')}
-           ${params?.join('\n') ?? '*'}
-           */
-          ${method.name}: (${
-          method.parameters
-            ?.map((p) => `${p.name}${isOptionalParameter(p) ? '?' : ''}: ${resolveTsTypeForMethods(p)}`)
-            .join(', ') ?? ''
-        }) => void
-          `;
-      });
-      const domRefTemplate = dedent`
-      // @generated
-      
-      import { Ui5DomRef } from './Ui5DomRef';
-
-      export interface Ui5${componentSpec.module}DomRef extends Ui5DomRef {
-        ${methods.join('\n\n')}
-      }
-      `;
-      fs.writeFileSync(
-        path.resolve(INTERFACES_DIR, `Ui5${componentSpec.module}DomRef.ts`),
-        prettier.format(domRefTemplate, prettierConfig)
-      );
+    const domRef = Utils.createDomRef(componentSpec);
+    if (domRef) {
+      uniqueAdditionalImports.push(domRef.importStatement);
     }
 
     if (
@@ -797,12 +749,12 @@ allWebComponents
       fs.writeFileSync(webComponentWrapperPath, webComponentWrapper);
 
       // create lib export
-      const libContent = prettier.format(libraryExportTemplate({ name: componentSpec.module }), prettierConfig);
+      const libContent = prettier.format(libraryExportTemplate({ name: componentSpec.module }), Utils.prettierConfig);
       fs.writeFileSync(path.join(DIST_DIR, `${componentSpec.module}.ts`), libContent);
 
       // create test
       if (!fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.test.tsx`))) {
-        const webComponentTest = prettier.format(testTemplate({ name: componentSpec.module }), prettierConfig);
+        const webComponentTest = prettier.format(testTemplate({ name: componentSpec.module }), Utils.prettierConfig);
         fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.test.tsx`), webComponentTest);
       }
 

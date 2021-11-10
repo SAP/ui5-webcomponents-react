@@ -37,6 +37,10 @@ export interface PanelPropTypes extends CommonProps {
    */
   headerText?: string;
   /**
+   * Indicates whether the transition between the expanded and the collapsed state of the component is animated. By default the animation is enabled.
+   */
+  noAnimation?: boolean;
+  /**
    * Determines the content of the component. The content is visible only when the component is expanded.
    */
   children?: ReactNode | ReactNode[];
@@ -63,7 +67,7 @@ export interface PanelPropTypes extends CommonProps {
 const Panel = withWebComponent<PanelPropTypes>(
   'ui5-panel',
   ['accessibleName', 'accessibleRole', 'headerLevel', 'headerText'],
-  ['collapsed', 'fixed'],
+  ['collapsed', 'fixed', 'noAnimation'],
   ['header'],
   ['toggle']
 );
@@ -72,8 +76,6 @@ Panel.displayName = 'Panel';
 
 Panel.defaultProps = {
   accessibleRole: PanelAccessibleRole.Form,
-  collapsed: false,
-  fixed: false,
   headerLevel: TitleLevel.H2
 };
 

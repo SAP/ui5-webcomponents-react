@@ -82,9 +82,7 @@ StandardListItem.displayName = 'StandardListItem';
 
 StandardListItem.defaultProps = {
   additionalTextState: ValueState.None,
-  iconEnd: false,
-  type: ListItemType.Active,
-  selected: false
+  type: ListItemType.Active
 };
 
 export { StandardListItem };

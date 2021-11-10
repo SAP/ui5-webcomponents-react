@@ -20,6 +20,4 @@ const TableCell = withWebComponent<TableCellPropTypes>('ui5-table-cell', [], [],
 
 TableCell.displayName = 'TableCell';
 
-TableCell.defaultProps = {};
-
 export { TableCell };

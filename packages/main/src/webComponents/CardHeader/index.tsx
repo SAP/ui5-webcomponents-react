@@ -63,8 +63,4 @@ const CardHeader = withWebComponent<CardHeaderPropTypes>(
 
 CardHeader.displayName = 'CardHeader';
 
-CardHeader.defaultProps = {
-  interactive: false
-};
-
 export { CardHeader };

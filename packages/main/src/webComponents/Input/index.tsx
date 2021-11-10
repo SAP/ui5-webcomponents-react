@@ -3,6 +3,7 @@ import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { Ui5InputDomRef } from '@ui5/webcomponents-react/interfaces/Ui5InputDomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Input.js';
@@ -13,7 +14,7 @@ export interface InputPropTypes extends Omit<CommonProps, 'onChange' | 'onInput'
    */
   accessibleName?: string;
   /**
-   * Receives id(or many ids) of the elements that label the input
+   * Receives id(or many ids) of the elements that label the input.
    */
   accessibleNameRef?: string;
   /**
@@ -96,11 +97,12 @@ export interface InputPropTypes extends Omit<CommonProps, 'onChange' | 'onInput'
    * </pre>
    *
    *
-   * **Note:** The suggestion would be displayed only if the `showSuggestions` property is set to `true`.
+   * **Note:** The suggestions would be displayed only if the `showSuggestions` property is set to `true`.
    *
    * **Note:** The `<SuggestionItem>` and `<SuggestionGroupItem>` are recommended to be used as suggestion items.
    *
-   * **Note:** Importing the Input Suggestions Support feature: `import "@ui5/webcomponents/dist/features/InputSuggestions.js";`
+   * **Note:** Importing the Input Suggestions Support feature:
+   * `import "@ui5/webcomponents/dist/features/InputSuggestions.js";`
    * automatically imports the `<SuggestionItem>` and `<SuggestionGroupItem>` for your convenience.
    */
   children?: ReactNode | ReactNode[];
@@ -110,12 +112,14 @@ export interface InputPropTypes extends Omit<CommonProps, 'onChange' | 'onInput'
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
    */
-  icon?: ReactNode;
+  icon?: ReactNode | ReactNode[];
   /**
    * Defines the value state message that will be displayed as pop up under the component.
    *
    * **Note:** If not specified, a default text (in the respective language) will be displayed.
+   *
    * **Note:** The `valueStateMessage` would be displayed, when the component is in `Information`, `Warning` or `Error` value state.
+   *
    * **Note:** If the component has `suggestionItems`, the `valueStateMessage` would be displayed as part of the same popover, if used on desktop, or dialog - on phone.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
@@ -140,39 +144,29 @@ export interface InputPropTypes extends Omit<CommonProps, 'onChange' | 'onInput'
    * Fired when a suggestion item, that is displayed in the suggestion popup, is selected.
    */
   onSuggestionItemSelect?: (event: Ui5CustomEvent<HTMLInputElement, { item: ReactNode }>) => void;
-  /**
-   * Fired when the user scrolls the suggestion popover.
-   */
-  onSuggestionScroll?: (
-    event: Ui5CustomEvent<HTMLInputElement, { scrollTop: number; scrollContainer: ReactNode }>
-  ) => void;
 }
 
 /**
  * The `Input` component allows the user to enter and edit text or numeric values in one line.
  * Additionally, you can provide `suggestionItems`, that are displayed in a popover right under the input.
  *
- * The text field can be editable or read-only (`readonly` property), and it can be enabled or disabled (`enabled` property). To visualize semantic states, such as "error" or "warning", the `valueState` property is provided. When the user makes changes to the text, the change event is fired, which enables you to react on any text change.
+ * The text field can be editable or read-only (`readonly` property), and it can be enabled or disabled (`disabled` property). To visualize semantic states, such as "error" or "warning", the `valueState` property is provided. When the user makes changes to the text, the change event is fired, which enables you to react on any text change.
  *
  * **Note:** If you are using the `Input` as a single npm module, don't forget to import the `InputSuggestions` module from "@ui5/webcomponents/dist/features/InputSuggestions.js" to enable the suggestions functionality.
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Input" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Input = withWebComponent<InputPropTypes>(
+const Input = withWebComponent<InputPropTypes, Ui5InputDomRef>(
   'ui5-input',
   ['accessibleName', 'accessibleNameRef', 'maxlength', 'name', 'placeholder', 'type', 'value', 'valueState'],
   ['disabled', 'readonly', 'required', 'showSuggestions'],
   ['icon', 'valueStateMessage'],
-  ['change', 'input', 'suggestion-item-preview', 'suggestion-item-select', 'suggestion-scroll']
+  ['change', 'input', 'suggestion-item-preview', 'suggestion-item-select']
 );
 
 Input.displayName = 'Input';
 
 Input.defaultProps = {
-  disabled: false,
-  readonly: false,
-  required: false,
-  showSuggestions: false,
   type: InputType.Text,
   valueState: ValueState.None
 };

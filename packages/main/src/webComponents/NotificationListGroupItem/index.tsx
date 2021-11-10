@@ -96,14 +96,8 @@ const NotificationListGroupItem = withWebComponent<NotificationListGroupItemProp
 NotificationListGroupItem.displayName = 'NotificationListGroupItem';
 
 NotificationListGroupItem.defaultProps = {
-  collapsed: false,
-  showCounter: false,
-  busy: false,
   busyDelay: 1000,
-  priority: Priority.None,
-  read: false,
-  showClose: false,
-  selected: false
+  priority: Priority.None
 };
 
 export { NotificationListGroupItem };

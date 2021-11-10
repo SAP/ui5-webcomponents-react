@@ -7,7 +7,7 @@ import '@ui5/webcomponents/dist/ColorPalette.js';
 
 export interface ColorPalettePropTypes extends CommonProps {
   /**
-   * Defines the `ColorPaletteItem` items.
+   * Defines the `ColorPaletteItem` elements.
    */
   children?: ReactNode | ReactNode[];
   /**
@@ -17,14 +17,12 @@ export interface ColorPalettePropTypes extends CommonProps {
 }
 
 /**
- * The ColorPalette provides the users with a range of predefined colors. The colors are fixed and do not change with the theme.
+ * The `ColorPalette` provides the users with a range of predefined colors. The colors are fixed and do not change with the theme.
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/ColorPalette" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const ColorPalette = withWebComponent<ColorPalettePropTypes>('ui5-color-palette', [], [], [], ['item-click']);
 
 ColorPalette.displayName = 'ColorPalette';
-
-ColorPalette.defaultProps = {};
 
 export { ColorPalette };

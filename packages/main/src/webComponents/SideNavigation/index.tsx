@@ -55,8 +55,4 @@ const SideNavigation = withWebComponent<SideNavigationPropTypes>(
 
 SideNavigation.displayName = 'SideNavigation';
 
-SideNavigation.defaultProps = {
-  collapsed: false
-};
-
 export { SideNavigation };

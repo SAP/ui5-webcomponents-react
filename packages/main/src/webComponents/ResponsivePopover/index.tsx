@@ -129,14 +129,9 @@ const ResponsivePopover = withWebComponent<ResponsivePopoverPropTypes, Ui5Respon
 ResponsivePopover.displayName = 'ResponsivePopover';
 
 ResponsivePopover.defaultProps = {
-  allowTargetOverlap: false,
-  hideArrow: false,
-  hideBackdrop: false,
   horizontalAlign: PopoverHorizontalAlign.Center,
-  modal: false,
   placementType: PopoverPlacementType.Right,
-  verticalAlign: PopoverVerticalAlign.Center,
-  preventFocusRestore: false
+  verticalAlign: PopoverVerticalAlign.Center
 };
 
 export { ResponsivePopover };

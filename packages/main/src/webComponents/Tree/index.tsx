@@ -61,6 +61,14 @@ export interface TreePropTypes extends CommonProps {
    */
   onItemDelete?: (event: Ui5CustomEvent<HTMLElement, { item: ReactNode }>) => void;
   /**
+   * Fired when the mouse cursor leaves the tree item borders.
+   */
+  onItemMouseout?: (event: Ui5CustomEvent<HTMLElement, { item: ReactNode }>) => void;
+  /**
+   * Fired when the mouse cursor enters the tree item borders.
+   */
+  onItemMouseover?: (event: Ui5CustomEvent<HTMLElement, { item: ReactNode }>) => void;
+  /**
    * Fired when a tree item is expanded or collapsed. _Note:_ You can call `preventDefault()` on the event object to suppress the event, if needed. This may be handy for example if you want to dynamically load tree items upon the user expanding a node. Even if you prevented the event's default behavior, you can always manually call `toggle()` on a tree item.
    */
   onItemToggle?: (event: Ui5CustomEvent<HTMLElement, { item: ReactNode }>) => void;
@@ -82,7 +90,7 @@ const Tree = withWebComponent<TreePropTypes, Ui5TreeDomRef>(
   ['footerText', 'headerText', 'mode', 'noDataText'],
   [],
   ['header'],
-  ['item-click', 'item-delete', 'item-toggle', 'selection-change']
+  ['item-click', 'item-delete', 'item-mouseout', 'item-mouseover', 'item-toggle', 'selection-change']
 );
 
 Tree.displayName = 'Tree';

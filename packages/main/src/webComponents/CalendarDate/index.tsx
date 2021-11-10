@@ -19,6 +19,4 @@ const CalendarDate = withWebComponent<CalendarDatePropTypes>('ui5-date', ['value
 
 CalendarDate.displayName = 'CalendarDate';
 
-CalendarDate.defaultProps = {};
-
 export { CalendarDate };

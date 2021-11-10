@@ -16,10 +16,6 @@ export interface BreadcrumbsItemPropTypes extends CommonProps {
    */
   href?: string;
   /**
-   * Defines the stable selector that you can use via `getStableDomRef` method.
-   */
-  stableDomRef?: string;
-  /**
    * Defines the link target.
    *
    * Available options are:
@@ -50,7 +46,7 @@ export interface BreadcrumbsItemPropTypes extends CommonProps {
  */
 const BreadcrumbsItem = withWebComponent<BreadcrumbsItemPropTypes>(
   'ui5-breadcrumbs-item',
-  ['accessibleName', 'href', 'stableDomRef', 'target'],
+  ['accessibleName', 'href', 'target'],
   [],
   [],
   []

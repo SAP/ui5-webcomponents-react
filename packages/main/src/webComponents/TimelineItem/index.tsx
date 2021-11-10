@@ -55,8 +55,4 @@ const TimelineItem = withWebComponent<TimelineItemPropTypes>(
 
 TimelineItem.displayName = 'TimelineItem';
 
-TimelineItem.defaultProps = {
-  nameClickable: false
-};
-
 export { TimelineItem };

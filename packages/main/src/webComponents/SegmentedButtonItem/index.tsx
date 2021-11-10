@@ -1,3 +1,4 @@
+import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { ReactNode, MouseEventHandler } from 'react';
@@ -14,7 +15,7 @@ export interface SegmentedButtonItemPropTypes extends Omit<CommonProps, 'onClick
    */
   accessibleName?: string;
   /**
-   * Defines whether the component is disabled (default is set to `false`). A disabled component can't be pressed or focused, and it is not in the tab chain.
+   * Defines whether the component is disabled. A disabled component can't be pressed or focused, and it is not in the tab chain.
    */
   disabled?: boolean;
   /**
@@ -53,10 +54,5 @@ const SegmentedButtonItem = withWebComponent<SegmentedButtonItemPropTypes>(
 );
 
 SegmentedButtonItem.displayName = 'SegmentedButtonItem';
-
-SegmentedButtonItem.defaultProps = {
-  pressed: false,
-  disabled: false
-};
 
 export { SegmentedButtonItem };

@@ -20,6 +20,4 @@ const ProductSwitch = withWebComponent<ProductSwitchPropTypes>('ui5-product-swit
 
 ProductSwitch.displayName = 'ProductSwitch';
 
-ProductSwitch.defaultProps = {};
-
 export { ProductSwitch };

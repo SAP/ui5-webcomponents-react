@@ -7,10 +7,6 @@ import '@ui5/webcomponents-fiori/dist/Wizard.js';
 
 export interface WizardPropTypes extends CommonProps {
   /**
-   * Sets the accessible aria name of the component.
-   */
-  accessibleName?: string;
-  /**
    * Defines the steps.
    *
    * **Note:** Use the available `WizardStep` component.
@@ -25,16 +21,12 @@ export interface WizardPropTypes extends CommonProps {
 }
 
 /**
- * The `Wizard` helps users complete a complex task by dividing it into sections and guiding the user through it. It has two main areas - a navigation area at the top showing the step sequence and a content area below it.
+ * The `Wizard` helps users to complete a complex task by dividing it into sections and guiding them through it. It has two main areas - a navigation area at the top showing the step sequence and a content area below it.
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Wizard" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Wizard = withWebComponent<WizardPropTypes>('ui5-wizard', ['accessibleName'], [], [], ['step-change']);
+const Wizard = withWebComponent<WizardPropTypes>('ui5-wizard', [], [], [], ['step-change']);
 
 Wizard.displayName = 'Wizard';
-
-Wizard.defaultProps = {
-  accessibleName: undefined
-};
 
 export { Wizard };

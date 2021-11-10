@@ -3,13 +3,14 @@ import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { Ui5MultiInputDomRef } from '@ui5/webcomponents-react/interfaces/Ui5MultiInputDomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/MultiInput.js';
 
 export interface MultiInputPropTypes extends Omit<CommonProps, 'onChange' | 'onInput'> {
   /**
-   * Determines whether a value help icon will be should in the end of the input. Pressing the icon will fire `value-help-trigger` event.
+   * Determines whether a value help icon will be visualized in the end of the input. Pressing the icon will fire `value-help-trigger` event.
    */
   showValueHelpIcon?: boolean;
   /**
@@ -17,7 +18,7 @@ export interface MultiInputPropTypes extends Omit<CommonProps, 'onChange' | 'onI
    */
   accessibleName?: string;
   /**
-   * Receives id(or many ids) of the elements that label the input
+   * Receives id(or many ids) of the elements that label the input.
    */
   accessibleNameRef?: string;
   /**
@@ -107,11 +108,12 @@ export interface MultiInputPropTypes extends Omit<CommonProps, 'onChange' | 'onI
    * </pre>
    *
    *
-   * **Note:** The suggestion would be displayed only if the `showSuggestions` property is set to `true`.
+   * **Note:** The suggestions would be displayed only if the `showSuggestions` property is set to `true`.
    *
    * **Note:** The `<SuggestionItem>` and `<SuggestionGroupItem>` are recommended to be used as suggestion items.
    *
-   * **Note:** Importing the Input Suggestions Support feature: `import "@ui5/webcomponents/dist/features/InputSuggestions.js";`
+   * **Note:** Importing the Input Suggestions Support feature:
+   * `import "@ui5/webcomponents/dist/features/InputSuggestions.js";`
    * automatically imports the `<SuggestionItem>` and `<SuggestionGroupItem>` for your convenience.
    */
   children?: ReactNode | ReactNode[];
@@ -121,12 +123,14 @@ export interface MultiInputPropTypes extends Omit<CommonProps, 'onChange' | 'onI
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
    */
-  icon?: ReactNode;
+  icon?: ReactNode | ReactNode[];
   /**
    * Defines the value state message that will be displayed as pop up under the component.
    *
    * **Note:** If not specified, a default text (in the respective language) will be displayed.
+   *
    * **Note:** The `valueStateMessage` would be displayed, when the component is in `Information`, `Warning` or `Error` value state.
+   *
    * **Note:** If the component has `suggestionItems`, the `valueStateMessage` would be displayed as part of the same popover, if used on desktop, or dialog - on phone.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
@@ -159,12 +163,6 @@ export interface MultiInputPropTypes extends Omit<CommonProps, 'onChange' | 'onI
    * Fired when a suggestion item, that is displayed in the suggestion popup, is selected.
    */
   onSuggestionItemSelect?: (event: Ui5CustomEvent<HTMLInputElement, { item: ReactNode }>) => void;
-  /**
-   * Fired when the user scrolls the suggestion popover.
-   */
-  onSuggestionScroll?: (
-    event: Ui5CustomEvent<HTMLInputElement, { scrollTop: number; scrollContainer: ReactNode }>
-  ) => void;
 }
 
 /**
@@ -178,30 +176,17 @@ export interface MultiInputPropTypes extends Omit<CommonProps, 'onChange' | 'onI
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/MultiInput" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const MultiInput = withWebComponent<MultiInputPropTypes>(
+const MultiInput = withWebComponent<MultiInputPropTypes, Ui5MultiInputDomRef>(
   'ui5-multi-input',
   ['accessibleName', 'accessibleNameRef', 'maxlength', 'name', 'placeholder', 'type', 'value', 'valueState'],
   ['showValueHelpIcon', 'disabled', 'readonly', 'required', 'showSuggestions'],
   ['tokens', 'icon', 'valueStateMessage'],
-  [
-    'token-delete',
-    'value-help-trigger',
-    'change',
-    'input',
-    'suggestion-item-preview',
-    'suggestion-item-select',
-    'suggestion-scroll'
-  ]
+  ['token-delete', 'value-help-trigger', 'change', 'input', 'suggestion-item-preview', 'suggestion-item-select']
 );
 
 MultiInput.displayName = 'MultiInput';
 
 MultiInput.defaultProps = {
-  showValueHelpIcon: false,
-  disabled: false,
-  readonly: false,
-  required: false,
-  showSuggestions: false,
   type: InputType.Text,
   valueState: ValueState.None
 };

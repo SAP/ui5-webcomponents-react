@@ -13,7 +13,7 @@ export interface ButtonPropTypes extends Omit<CommonProps, 'onClick'> {
   /**
    * Defines the component design.
    *
-   * **Note:**
+   * **The available values are:**
    *
    * *   `Default`
    * *   `Emphasized`
@@ -24,7 +24,7 @@ export interface ButtonPropTypes extends Omit<CommonProps, 'onClick'> {
    */
   design?: ButtonDesign | keyof typeof ButtonDesign;
   /**
-   * Defines whether the component is disabled (default is set to `false`). A disabled component can't be pressed or focused, and it is not in the tab chain.
+   * Defines whether the component is disabled. A disabled component can't be pressed or focused, and it is not in the tab chain.
    */
   disabled?: boolean;
   /**
@@ -40,7 +40,7 @@ export interface ButtonPropTypes extends Omit<CommonProps, 'onClick'> {
   /**
    * When set to `true`, the component will automatically submit the nearest form element upon `press`.
    *
-   * **Important:** For the `submits` property to have effect, you must add the following import to your project: `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
+   * **Note:** For the `submits` property to have effect, you must add the following import to your project: `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
    */
   submits?: boolean;
   /**
@@ -73,10 +73,7 @@ const Button = withWebComponent<ButtonPropTypes>(
 Button.displayName = 'Button';
 
 Button.defaultProps = {
-  design: ButtonDesign.Default,
-  disabled: false,
-  iconEnd: false,
-  submits: false
+  design: ButtonDesign.Default
 };
 
 export { Button };
