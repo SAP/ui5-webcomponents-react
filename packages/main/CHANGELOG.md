@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.20.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.19.1...v0.20.0) (2021-11-10)
+
+
+### Features
+
+* create dom ref interfaces for all web components ([#2292](https://github.com/SAP/ui5-webcomponents-react/issues/2292)) ([4b1d0fc](https://github.com/SAP/ui5-webcomponents-react/commit/4b1d0fc9c415646e7c964ac23a622c2ee176de7d))
+* update @ui5/webcomponents to 1.0.0 🎉  ([#2282](https://github.com/SAP/ui5-webcomponents-react/issues/2282)) ([e6971af](https://github.com/SAP/ui5-webcomponents-react/commit/e6971afcab6553f813156f8188665a8a3965a6b5))
+
+
+### BREAKING CHANGES
+
+* **TypeScript only**: The `Ui5` prefix for interfaces for using DOM refs (e.g. `Ui5DialogDomRef`) has been removed (now `DialogDomRef`) and the interfaces are now exported from the respective components themselves. For details please check our [Migration Guide](https://sap.github.io/ui5-webcomponents-react/?path=/docs/migration-guide--page#changed-typescript-interfaces-for-ref).
+
+Co-authored-by: Harbarth, Lukas <lukas.harbarth@sap.com>
+* update @ui5/webcomponents to [1.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.0.0) 
+* **Input:** The `onSuggestionScroll` event has been removed.
+* **BreadcrumbsItem, ComboboxItem, MultiComboboxItem, Option, Tab:** `stableDomRef` prop has been removed - call `getDomRef()` to get the matching actual DOM ref.
+* **ShellbarItem:** `onItemClick` has been renamed to `onClick`.
+* **Wizard:** The `accessibleName` prop  has been removed.
+
+
+
+
+
 # [0.19.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.18.10...v0.19.0) (2021-11-03)
 
 
