@@ -7,18 +7,6 @@ import '@ui5/webcomponents/dist/SegmentedButtonItem.js';
 
 export interface SegmentedButtonItemPropTypes extends Omit<CommonProps, 'onClick'> {
   /**
-   * **Note:** The property is inherited and not supported. If set, it won't take any effect.
-   */
-  design?: ButtonDesign | keyof typeof ButtonDesign;
-  /**
-   * **Note:** The property is inherited and not supported. If set, it won't take any effect.
-   */
-  iconEnd?: boolean;
-  /**
-   * **Note:** The property is inherited and not supported. If set, it won't take any effect.
-   */
-  submits?: boolean;
-  /**
    * Determines whether the component is displayed as pressed.
    */
   pressed?: boolean;
@@ -59,16 +47,12 @@ export interface SegmentedButtonItemPropTypes extends Omit<CommonProps, 'onClick
  */
 const SegmentedButtonItem = withWebComponent<SegmentedButtonItemPropTypes>(
   'ui5-segmented-button-item',
-  ['design', 'accessibleName', 'icon'],
-  ['iconEnd', 'submits', 'pressed', 'disabled'],
+  ['accessibleName', 'icon'],
+  ['pressed', 'disabled'],
   [],
   ['click']
 );
 
 SegmentedButtonItem.displayName = 'SegmentedButtonItem';
-
-SegmentedButtonItem.defaultProps = {
-  design: ButtonDesign.Default
-};
 
 export { SegmentedButtonItem };
