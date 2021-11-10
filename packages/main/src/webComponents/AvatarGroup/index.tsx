@@ -23,11 +23,11 @@ export interface AvatarGroupDomRef extends AvatarGroupAttributes, Ui5DomRef {
   /**
    * Returns an array containing the <code>AvatarColorScheme</code> values that correspond to the avatars in the component.
    */
-  readonly colorScheme: unknown[];
+  readonly colorScheme: (AvatarColorScheme[] | keyof typeof AvatarColorScheme[])[];
   /**
    * Returns an array containing the <code>ui5-avatar</code> instances that are currently not displayed due to lack of space.
    */
-  readonly hiddenItems: unknown[];
+  readonly hiddenItems: ReactNode | ReactNode[];
 }
 
 export interface AvatarGroupPropTypes extends AvatarGroupAttributes, Omit<CommonProps, 'onClick'> {
