@@ -1,5 +1,5 @@
 import { DatePicker } from '../webComponents/DatePicker';
-import type { DatePickerPropTypes } from '../webComponents/DatePicker';
+import type { DatePickerPropTypes, DatePickerDomRef } from '../webComponents/DatePicker';
 
 export { DatePicker };
-export type { DatePickerPropTypes };
+export type { DatePickerPropTypes, DatePickerDomRef };

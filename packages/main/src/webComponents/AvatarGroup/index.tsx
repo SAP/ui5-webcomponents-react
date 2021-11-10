@@ -1,3 +1,4 @@
+import { AvatarColorScheme } from '@ui5/webcomponents-react/dist/AvatarColorScheme';
 import { AvatarGroupType } from '@ui5/webcomponents-react/dist/AvatarGroupType';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';

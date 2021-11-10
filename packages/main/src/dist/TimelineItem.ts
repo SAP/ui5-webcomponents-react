@@ -1,5 +1,5 @@
 import { TimelineItem } from '../webComponents/TimelineItem';
-import type { TimelineItemPropTypes } from '../webComponents/TimelineItem';
+import type { TimelineItemPropTypes, TimelineItemDomRef } from '../webComponents/TimelineItem';
 
 export { TimelineItem };
-export type { TimelineItemPropTypes };
+export type { TimelineItemPropTypes, TimelineItemDomRef };

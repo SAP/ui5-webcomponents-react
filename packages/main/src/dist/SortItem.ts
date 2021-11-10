@@ -1,5 +1,5 @@
 import { SortItem } from '../webComponents/SortItem';
-import type { SortItemPropTypes } from '../webComponents/SortItem';
+import type { SortItemPropTypes, SortItemDomRef } from '../webComponents/SortItem';
 
 export { SortItem };
-export type { SortItemPropTypes };
+export type { SortItemPropTypes, SortItemDomRef };
