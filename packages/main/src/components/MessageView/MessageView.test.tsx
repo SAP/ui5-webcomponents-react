@@ -1,8 +1,7 @@
 import { fireEvent, render, screen } from '@shared/tests';
 import { createPassThroughPropsTest } from '@shared/tests/utils';
-import { MessageView } from '@ui5/webcomponents-react/dist/MessageView';
+import { MessageView, MessageViewDomRef } from '@ui5/webcomponents-react/dist/MessageView';
 import { MessageItem } from '@ui5/webcomponents-react/dist/MessageItem';
-import { MessageViewDomRef } from '@ui5/webcomponents-react/dist/interfaces/MessageViewDomRef';
 import React, { createRef, forwardRef } from 'react';
 import { ValueState } from '../../enums/ValueState';
 

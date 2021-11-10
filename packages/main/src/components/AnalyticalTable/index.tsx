@@ -2,6 +2,7 @@ import { useConsolidatedRef, useIsomorphicLayoutEffect, useIsRTL } from '@ui5/we
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { debounce, enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
+import { AnalyticalTableScrollMode } from '@ui5/webcomponents-react/dist/AnalyticalTableScrollMode';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { GlobalStyleClasses } from '@ui5/webcomponents-react/dist/GlobalStyleClasses';
 import { TableScaleWidthMode } from '@ui5/webcomponents-react/dist/TableScaleWidthMode';
@@ -68,6 +69,11 @@ const onlyUpperCaseRegExp = /^[A-Z_]+$/;
 
 interface DivWithCustomScrollProp extends HTMLDivElement {
   isExternalVerticalScroll?: boolean;
+}
+
+export interface AnalyticalTableDomRef extends Omit<HTMLDivElement, 'scrollTo'> {
+  scrollToItem: (index: number, align?: AnalyticalTableScrollMode) => void;
+  scrollTo: (scrollOffset: number) => void; // overrides native scrollTo function
 }
 
 export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
