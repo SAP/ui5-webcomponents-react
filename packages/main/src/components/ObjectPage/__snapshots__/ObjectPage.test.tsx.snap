@@ -2319,7 +2319,6 @@ exports[`ObjectPage with img 2`] = `
       >
         <ui5-avatar
           class="CollapsedAvatar-imageContainer"
-          color-scheme="Accent6"
           size="S"
           ui5-avatar=""
         />
@@ -2357,7 +2356,6 @@ exports[`ObjectPage with img 2`] = `
       >
         <ui5-avatar
           class="ObjectPage-headerImage"
-          color-scheme="Accent6"
           size="L"
           ui5-avatar=""
         />

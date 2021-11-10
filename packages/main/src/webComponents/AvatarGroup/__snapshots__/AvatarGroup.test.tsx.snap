@@ -7,7 +7,6 @@ exports[`AvatarGroup Basic Test (generated) 1`] = `
     ui5-avatar-group=""
   >
     <ui5-avatar
-      color-scheme="Accent6"
       initials="UI5"
       ui5-avatar=""
     />

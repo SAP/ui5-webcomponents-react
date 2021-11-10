@@ -6,19 +6,16 @@ exports[`SegmentedButton Basic Test (generated) 1`] = `
     ui5-segmented-button=""
   >
     <ui5-segmented-button-item
-      design="Default"
       ui5-segmented-button-item=""
     >
       Segment 1
     </ui5-segmented-button-item>
     <ui5-segmented-button-item
-      design="Default"
       ui5-segmented-button-item=""
     >
       Segment 2
     </ui5-segmented-button-item>
     <ui5-segmented-button-item
-      design="Default"
       ui5-segmented-button-item=""
     >
       Segment 3

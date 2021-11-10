@@ -3,7 +3,6 @@
 exports[`Avatar Basic Test (generated) 1`] = `
 <DocumentFragment>
   <ui5-avatar
-    color-scheme="Accent6"
     ui5-avatar=""
   />
 </DocumentFragment>
