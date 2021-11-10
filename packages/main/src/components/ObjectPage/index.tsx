@@ -28,7 +28,7 @@ import React, {
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
 import { PopoverHorizontalAlign } from '../../enums/PopoverHorizontalAlign';
-import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
+import { PopoverDomRef } from '../../webComponents/Popover';
 import { stopPropagation } from '../../internal/stopPropagation';
 import { useObserveHeights } from '../../internal/useObserveHeights';
 import { useResponsiveContentPadding } from '@ui5/webcomponents-react-base/dist/hooks';
@@ -650,7 +650,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     [children]
   );
   const [popoverContent, setPopoverContent] = useState<ReactElement>(null);
-  const popoverRef = useRef<Ui5PopoverDomRef>(null);
+  const popoverRef = useRef<PopoverDomRef>(null);
   const onShowSubSectionPopover = useCallback(
     (e, section) => {
       setPopoverContent(section);

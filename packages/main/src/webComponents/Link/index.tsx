@@ -2,11 +2,12 @@ import { LinkDesign } from '@ui5/webcomponents-react/dist/LinkDesign';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { WrappingType } from '@ui5/webcomponents-react/dist/WrappingType';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode, MouseEventHandler } from 'react';
 
 import '@ui5/webcomponents/dist/Link.js';
 
-export interface LinkPropTypes extends Omit<CommonProps, 'onClick'> {
+interface LinkAttributes {
   /**
    * Receives id(or many ids) of the elements that label the input
    */
@@ -50,6 +51,11 @@ export interface LinkPropTypes extends Omit<CommonProps, 'onClick'> {
    * *   `Normal` - The text will wrap. The words will not be broken based on hyphenation.
    */
   wrappingType?: WrappingType | keyof typeof WrappingType;
+}
+
+export interface LinkDomRef extends LinkAttributes, Ui5DomRef {}
+
+export interface LinkPropTypes extends LinkAttributes, Omit<CommonProps, 'onClick'> {
   /**
    * Defines the text of the component.
    * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
@@ -66,7 +72,7 @@ export interface LinkPropTypes extends Omit<CommonProps, 'onClick'> {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Link" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Link = withWebComponent<LinkPropTypes>(
+const Link = withWebComponent<LinkPropTypes, LinkDomRef>(
   'ui5-link',
   ['accessibleNameRef', 'design', 'href', 'target', 'wrappingType'],
   ['disabled'],

@@ -1,5 +1,5 @@
 import { ViewSettingsDialog } from '../webComponents/ViewSettingsDialog';
-import type { ViewSettingsDialogPropTypes } from '../webComponents/ViewSettingsDialog';
+import type { ViewSettingsDialogPropTypes, ViewSettingsDialogDomRef } from '../webComponents/ViewSettingsDialog';
 
 export { ViewSettingsDialog };
-export type { ViewSettingsDialogPropTypes };
+export type { ViewSettingsDialogPropTypes, ViewSettingsDialogDomRef };

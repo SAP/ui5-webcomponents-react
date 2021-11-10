@@ -20,9 +20,8 @@ import React, {
 } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
-import { Ui5ResponsivePopoverDomRef } from '@ui5/webcomponents-react/interfaces/Ui5ResponsivePopoverDomRef';
 import { ButtonPropTypes } from '../../webComponents/Button';
-import { ResponsivePopoverPropTypes } from '../../webComponents/ResponsivePopover';
+import { ResponsivePopoverDomRef, ResponsivePopoverPropTypes } from '../../webComponents/ResponsivePopover';
 import clsx from 'clsx';
 import styles from './ActionSheet.jss';
 
@@ -100,7 +99,7 @@ if (isPhone()) {
  * The `ActionSheet` holds a list of buttons from which the user can select to complete an action. <br />
  * The children of the action sheet should be `Button` components. Elements in the `ActionSheet` are left-aligned. Actions should be arranged in order of importance, from top to bottom.
  */
-const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: RefObject<Ui5ResponsivePopoverDomRef>) => {
+const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: RefObject<ResponsivePopoverDomRef>) => {
   const {
     a11yConfig,
     allowTargetOverlap,
@@ -128,7 +127,7 @@ const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: RefObject<Ui5R
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const classes = useStyles();
   const actionSheetClasses = clsx(classes.actionSheet, className);
-  const popoverRef: RefObject<Ui5ResponsivePopoverDomRef> = useConsolidatedRef(ref);
+  const popoverRef: RefObject<ResponsivePopoverDomRef> = useConsolidatedRef(ref);
   const actionBtnsRef = useRef(null);
   const [focusedItem, setFocusedItem] = useReducer((_, action) => {
     return parseInt(action.target.dataset.actionBtnIndex);

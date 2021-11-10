@@ -1,5 +1,5 @@
 import { SideNavigationItem } from '../webComponents/SideNavigationItem';
-import type { SideNavigationItemPropTypes } from '../webComponents/SideNavigationItem';
+import type { SideNavigationItemPropTypes, SideNavigationItemDomRef } from '../webComponents/SideNavigationItem';
 
 export { SideNavigationItem };
-export type { SideNavigationItemPropTypes };
+export type { SideNavigationItemPropTypes, SideNavigationItemDomRef };

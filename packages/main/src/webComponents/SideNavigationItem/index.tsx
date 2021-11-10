@@ -1,10 +1,11 @@
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/SideNavigationItem.js';
 
-export interface SideNavigationItemPropTypes extends CommonProps {
+interface SideNavigationItemAttributes {
   /**
    * Defines if the item is expanded
    */
@@ -28,6 +29,11 @@ export interface SideNavigationItemPropTypes extends CommonProps {
    * Defines whether pressing the whole item or only pressing the icon will show/hide the items's sub items(if present). If set to true, pressing the whole item will toggle the sub items, and it won't fire the `click` event. By default, only pressing the arrow icon will toggle the sub items & the click event will be fired if the item is pressed outside of the icon.
    */
   wholeItemToggleable?: boolean;
+}
+
+export interface SideNavigationItemDomRef extends SideNavigationItemAttributes, Ui5DomRef {}
+
+export interface SideNavigationItemPropTypes extends SideNavigationItemAttributes, CommonProps {
   /**
    * If you wish to nest menus, you can pass inner menu items to the default slot.
    */
@@ -39,7 +45,7 @@ export interface SideNavigationItemPropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/SideNavigationItem" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const SideNavigationItem = withWebComponent<SideNavigationItemPropTypes>(
+const SideNavigationItem = withWebComponent<SideNavigationItemPropTypes, SideNavigationItemDomRef>(
   'ui5-side-navigation-item',
   ['icon', 'text'],
   ['expanded', 'selected', 'wholeItemToggleable'],

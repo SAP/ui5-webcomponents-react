@@ -1,5 +1,5 @@
 import { SuggestionGroupItem } from '../webComponents/SuggestionGroupItem';
-import type { SuggestionGroupItemPropTypes } from '../webComponents/SuggestionGroupItem';
+import type { SuggestionGroupItemPropTypes, SuggestionGroupItemDomRef } from '../webComponents/SuggestionGroupItem';
 
 export { SuggestionGroupItem };
-export type { SuggestionGroupItemPropTypes };
+export type { SuggestionGroupItemPropTypes, SuggestionGroupItemDomRef };

@@ -1,5 +1,5 @@
 import { CustomListItem } from '../webComponents/CustomListItem';
-import type { CustomListItemPropTypes } from '../webComponents/CustomListItem';
+import type { CustomListItemPropTypes, CustomListItemDomRef } from '../webComponents/CustomListItem';
 
 export { CustomListItem };
-export type { CustomListItemPropTypes };
+export type { CustomListItemPropTypes, CustomListItemDomRef };

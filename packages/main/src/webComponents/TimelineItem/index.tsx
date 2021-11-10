@@ -1,11 +1,12 @@
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/TimelineItem.js';
 
-export interface TimelineItemPropTypes extends CommonProps {
+interface TimelineItemAttributes {
   /**
    * Defines the icon to be displayed as graphical element within the `TimelineItem`. SAP-icons font provides numerous options.
    *
@@ -28,6 +29,11 @@ export interface TimelineItemPropTypes extends CommonProps {
    * Defines the title text of the component.
    */
   titleText?: string;
+}
+
+export interface TimelineItemDomRef extends TimelineItemAttributes, Ui5DomRef {}
+
+export interface TimelineItemPropTypes extends TimelineItemAttributes, CommonProps {
   /**
    * Determines the description of the `TimelineItem`.
    */
@@ -45,7 +51,7 @@ export interface TimelineItemPropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/TimelineItem" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const TimelineItem = withWebComponent<TimelineItemPropTypes>(
+const TimelineItem = withWebComponent<TimelineItemPropTypes, TimelineItemDomRef>(
   'ui5-timeline-item',
   ['icon', 'name', 'subtitleText', 'titleText'],
   ['nameClickable'],

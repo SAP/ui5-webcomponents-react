@@ -16,7 +16,6 @@ import { Title } from '@ui5/webcomponents-react/dist/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { MessageViewDomRef } from '@ui5/webcomponents-react/interfaces/MessageViewDomRef';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import React, {
   Children,
@@ -39,6 +38,13 @@ import '@ui5/webcomponents-icons/dist/slim-arrow-left.js';
 import '@ui5/webcomponents-icons/dist/sys-enter-2.js';
 import type { MessageItemPropTypes } from './MessageItem';
 import clsx from 'clsx';
+
+export interface MessageViewDomRef extends HTMLDivElement {
+  /**
+   * Navigates back to the list page
+   */
+  navigateBack: () => void;
+}
 
 export interface MessageViewPropTypes extends CommonProps {
   /**

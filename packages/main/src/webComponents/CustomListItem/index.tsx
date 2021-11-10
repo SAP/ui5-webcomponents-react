@@ -2,11 +2,12 @@ import { ListItemType } from '@ui5/webcomponents-react/dist/ListItemType';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/CustomListItem.js';
 
-export interface CustomListItemPropTypes extends CommonProps {
+interface CustomListItemAttributes {
   /**
    * Defines the text alternative of the component. Note: If not provided a default text alternative will be set, if present.
    */
@@ -21,6 +22,11 @@ export interface CustomListItemPropTypes extends CommonProps {
    * Defines the selected state of the `ListItem`.
    */
   selected?: boolean;
+}
+
+export interface CustomListItemDomRef extends CustomListItemAttributes, Ui5DomRef {}
+
+export interface CustomListItemPropTypes extends CustomListItemAttributes, CommonProps {
   /**
    * Defines the content of the component.
    */
@@ -36,7 +42,7 @@ export interface CustomListItemPropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/CustomListItem" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const CustomListItem = withWebComponent<CustomListItemPropTypes>(
+const CustomListItem = withWebComponent<CustomListItemPropTypes, CustomListItemDomRef>(
   'ui5-li-custom',
   ['accessibleName', 'type'],
   ['selected'],

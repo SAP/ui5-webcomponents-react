@@ -1,5 +1,5 @@
 import { RadioButton } from '../webComponents/RadioButton';
-import type { RadioButtonPropTypes } from '../webComponents/RadioButton';
+import type { RadioButtonPropTypes, RadioButtonDomRef } from '../webComponents/RadioButton';
 
 export { RadioButton };
-export type { RadioButtonPropTypes };
+export type { RadioButtonPropTypes, RadioButtonDomRef };

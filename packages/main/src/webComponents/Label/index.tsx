@@ -1,11 +1,12 @@
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { WrappingType } from '@ui5/webcomponents-react/dist/WrappingType';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Label.js';
 
-export interface LabelPropTypes extends CommonProps {
+interface LabelAttributes {
   /**
    * Defines the labeled input by providing its ID.
    *
@@ -31,6 +32,11 @@ export interface LabelPropTypes extends CommonProps {
    * *   `Normal` - The text will wrap. The words will not be broken based on hyphenation.
    */
   wrappingType?: WrappingType | keyof typeof WrappingType;
+}
+
+export interface LabelDomRef extends LabelAttributes, Ui5DomRef {}
+
+export interface LabelPropTypes extends LabelAttributes, CommonProps {
   /**
    * Defines the text of the component.
    * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
@@ -45,7 +51,13 @@ export interface LabelPropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Label" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Label = withWebComponent<LabelPropTypes>('ui5-label', ['for', 'wrappingType'], ['required', 'showColon'], [], []);
+const Label = withWebComponent<LabelPropTypes, LabelDomRef>(
+  'ui5-label',
+  ['for', 'wrappingType'],
+  ['required', 'showColon'],
+  [],
+  []
+);
 
 Label.displayName = 'Label';
 

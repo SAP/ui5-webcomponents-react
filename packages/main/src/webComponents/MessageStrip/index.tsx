@@ -2,11 +2,12 @@ import { MessageStripDesign } from '@ui5/webcomponents-react/dist/MessageStripDe
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/MessageStrip.js';
 
-export interface MessageStripPropTypes extends CommonProps {
+interface MessageStripAttributes {
   /**
    * Defines the component type.
    *
@@ -21,6 +22,11 @@ export interface MessageStripPropTypes extends CommonProps {
    * Defines whether the MessageStrip will show an icon in the beginning. You can directly provide an icon with the `icon` slot. Otherwise, the default icon for the type will be used.
    */
   hideIcon?: boolean;
+}
+
+export interface MessageStripDomRef extends MessageStripAttributes, Ui5DomRef {}
+
+export interface MessageStripPropTypes extends MessageStripAttributes, CommonProps {
   /**
    * Defines the text of the component.
    *
@@ -49,7 +55,7 @@ export interface MessageStripPropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/MessageStrip" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const MessageStrip = withWebComponent<MessageStripPropTypes>(
+const MessageStrip = withWebComponent<MessageStripPropTypes, MessageStripDomRef>(
   'ui5-message-strip',
   ['design'],
   ['hideCloseButton', 'hideIcon'],

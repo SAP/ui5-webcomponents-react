@@ -2,12 +2,12 @@ import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { Ui5SelectDomRef } from '@ui5/webcomponents-react/interfaces/Ui5SelectDomRef';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Select.js';
 
-export interface SelectPropTypes extends Omit<CommonProps, 'onChange'> {
+interface SelectAttributes {
   /**
    * Sets the accessible aria name of the component.
    */
@@ -46,6 +46,16 @@ export interface SelectPropTypes extends Omit<CommonProps, 'onChange'> {
    * *   `Information`
    */
   valueState?: ValueState | keyof typeof ValueState;
+}
+
+export interface SelectDomRef extends SelectAttributes, Ui5DomRef {
+  /**
+   * Currently selected option.
+   */
+  readonly selectedOption: ReactNode;
+}
+
+export interface SelectPropTypes extends SelectAttributes, Omit<CommonProps, 'onChange'> {
   /**
    * Defines the component options.
    *
@@ -75,7 +85,7 @@ export interface SelectPropTypes extends Omit<CommonProps, 'onChange'> {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Select" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Select = withWebComponent<SelectPropTypes, Ui5SelectDomRef>(
+const Select = withWebComponent<SelectPropTypes, SelectDomRef>(
   'ui5-select',
   ['accessibleName', 'accessibleNameRef', 'name', 'valueState'],
   ['disabled', 'required'],

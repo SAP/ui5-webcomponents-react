@@ -11,6 +11,7 @@ import Handlebars from 'handlebars';
 import * as Utils from '../../../scripts/web-component-wrappers/utils.js';
 import {
   COMPONENTS_WITHOUT_DEMOS,
+  KNOWN_ATTRIBUTES,
   KNOWN_EVENTS,
   PRIVATE_COMPONENTS
 } from '../../../scripts/web-component-wrappers/config.js';
@@ -291,58 +292,72 @@ const getEventParameters = (name, parameters) => {
 };
 
 const createWebComponentWrapper = async (
-  name,
-  tag,
+  componentSpec,
   description,
-  types,
+  attributes,
+  slotsAndEvents,
   importStatements,
-  ref,
   defaultProps,
   regularProps,
   booleanProps,
   slotProps,
   eventProps
 ) => {
-  const eventsToBeOmitted = eventProps.filter((eventName) => KNOWN_EVENTS.has(eventName));
+  const eventsToBeOmitted = eventProps
+    .filter((eventName) => KNOWN_EVENTS.has(eventName))
+    .map((eventName) => `'on${capitalizeFirstLetter(snakeToCamel(eventName))}'`);
+  const attributesToBeOmitted = [...regularProps, ...booleanProps]
+    .filter((attribute) => KNOWN_ATTRIBUTES.has(attribute))
+    .map((a) => `'${a}'`);
+
+  let domRefExtends = 'Ui5DomRef';
+  if (attributesToBeOmitted.length > 0) {
+    domRefExtends = `Omit<Ui5DomRef, ${attributesToBeOmitted.join(' | ')}>`;
+  }
+
   let tsExtendsStatement = 'CommonProps';
-  if (eventsToBeOmitted.length > 0) {
-    tsExtendsStatement = `Omit<CommonProps, ${eventsToBeOmitted
-      .map((eventName) => `'on${capitalizeFirstLetter(snakeToCamel(eventName))}'`)
-      .join(' | ')}>`;
+  if (eventsToBeOmitted.length > 0 || attributesToBeOmitted.length > 0) {
+    tsExtendsStatement = `Omit<CommonProps, ${[...attributesToBeOmitted, ...eventsToBeOmitted].join(' | ')}>`;
   }
   let componentDescription;
   try {
     componentDescription = turndownService.turndown(description).replace(/\n/g, '\n * ');
   } catch (e) {
     console.warn(
-      `----------------------\nHeader description of ${name} couldn't be generated. \nThere is probably a syntax error in the associated description that can't be fixed automatically.\n----------------------`
+      `----------------------\nHeader description of ${componentSpec.module} couldn't be generated. \nThere is probably a syntax error in the associated description that can't be fixed automatically.\n----------------------`
     );
     componentDescription = '';
   }
 
+  const domRef = Utils.createDomRef(componentSpec);
+
   const imports = [
     ...importStatements,
     '', // do not remove this empty line - otherwise the eslint/import-order plugin won't work as expected
-    `import '@ui5/webcomponents${componentsFromFioriPackage.has(name) ? '-fiori' : ''}/dist/${name}.js';`
+    `import '@ui5/webcomponents${componentsFromFioriPackage.has(componentSpec.module) ? '-fiori' : ''}/dist/${
+      componentSpec.module
+    }.js';`
   ];
 
   return prettier.format(
     await Utils.runEsLint(
       componentTemplate({
-        name,
+        name: componentSpec.module,
         imports,
         propTypesExtends: tsExtendsStatement,
-        types,
+        domRefExtends,
+        attributes,
+        slotsAndEvents,
         description: componentDescription,
-        tagName: tag,
+        tagName: componentSpec.tagname,
         regularProps,
         booleanProps,
         slotProps: slotProps.filter((name) => name !== 'children'),
         eventProps,
         defaultProps,
-        ref: ref?.tsType
+        domRef
       }),
-      name
+      componentSpec.module
     ),
     Utils.prettierConfig
   );
@@ -570,15 +585,42 @@ const resolveInheritedAttributes = (componentSpec) => {
   );
 });
 
+const propDescription = (componentSpec, property) => {
+  if (!componentSpec.tagname) {
+    return property.description || '';
+  }
+  let formattedDescription = turndownService.turndown((property.description || '').trim()).replace(/\n/g, '\n   * ');
+
+  const customDescriptionReplace = CUSTOM_DESCRIPTION_REPLACE[componentSpec.module];
+  if (customDescriptionReplace && customDescriptionReplace[property.name]) {
+    formattedDescription = customDescriptionReplace[property.name](formattedDescription);
+  }
+
+  const extendedDescription = EXTENDED_PROP_DESCRIPTION[property.name];
+
+  if (property.name !== 'children' && componentSpec?.slots?.some((item) => item.name === property.name)) {
+    formattedDescription += `
+          *
+          * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the \`slot\` prop and appends it to the most outer element of your component.
+          * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).`;
+  }
+
+  if (extendedDescription) {
+    return replaceTagNameWithModuleName(`${formattedDescription}${extendedDescription}`);
+  }
+  return replaceTagNameWithModuleName(formattedDescription);
+};
+
 allWebComponents
   .filter((spec) => spec.visibility === 'public')
   .filter((spec) => !PRIVATE_COMPONENTS.has(spec.module))
   .map(resolveInheritedAttributes)
   .forEach(async (componentSpec) => {
-    const propTypes = [];
+    const attributes = [];
+    const slotsAndEvents = [];
     const importStatements = [];
     const defaultProps = [];
-    const allComponentProperties = [...(componentSpec.properties || []), ...(componentSpec.slots || [])]
+    const allComponentProperties = (componentSpec.properties || [])
       .filter((prop) => prop.visibility === 'public' && prop.readonly !== 'true' && prop.static !== true)
       .map((property) => {
         const tsType = Utils.getTypeDefinitionForProperty(property);
@@ -586,43 +628,12 @@ allWebComponents
           importStatements.push(tsType.importStatement);
         }
 
-        if (property.name === 'default') {
-          property.name = 'children';
-        }
-        const propDescription = () => {
-          if (!componentSpec.tagname) {
-            return property.description || '';
-          }
-          let formattedDescription = turndownService
-            .turndown((property.description || '').trim())
-            .replace(/\n/g, '\n   * ');
-
-          const customDescriptionReplace = CUSTOM_DESCRIPTION_REPLACE[componentSpec.module];
-          if (customDescriptionReplace && customDescriptionReplace[property.name]) {
-            formattedDescription = customDescriptionReplace[property.name](formattedDescription);
-          }
-
-          const extendedDescription = EXTENDED_PROP_DESCRIPTION[property.name];
-
-          if (property.name !== 'children' && componentSpec?.slots?.some((item) => item.name === property.name)) {
-            formattedDescription += `
-          *
-          * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the \`slot\` prop and appends it to the most outer element of your component.
-          * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).`;
-          }
-
-          if (extendedDescription) {
-            return replaceTagNameWithModuleName(`${formattedDescription}${extendedDescription}`);
-          }
-          return replaceTagNameWithModuleName(formattedDescription);
-        };
-
-        propTypes.push(dedent`
-    /**
-     * ${propDescription()}
-     */
-     ${property.name}?: ${tsType.tsType};
-    `);
+        attributes.push(dedent`
+        /**
+         * ${propDescription(componentSpec, property)}
+         */
+         ${property.name}?: ${tsType.tsType};
+        `);
 
         if (
           property.hasOwnProperty('defaultValue') &&
@@ -646,6 +657,33 @@ allWebComponents
         };
       });
 
+    allComponentProperties.push(
+      ...(componentSpec.slots || [])
+        .filter((prop) => prop.visibility === 'public' && prop.readonly !== 'true' && prop.static !== true)
+        .map((property) => {
+          const tsType = Utils.getTypeDefinitionForProperty(property);
+          if (tsType.importStatement) {
+            importStatements.push(tsType.importStatement);
+          }
+
+          if (property.name === 'default') {
+            property.name = 'children';
+          }
+
+          slotsAndEvents.push(dedent`
+        /**
+         * ${propDescription(componentSpec, property)}
+         */
+         ${property.name}?: ${tsType.tsType};
+        `);
+
+          return {
+            ...property,
+            ...tsType
+          };
+        })
+    );
+
     (componentSpec.events || [])
       .filter((eventSpec) => eventSpec.visibility === 'public')
       .forEach((eventSpec) => {
@@ -666,7 +704,7 @@ allWebComponents
           eventParameters = getEventParameters(componentSpec.module, eventSpec.parameters || []);
         }
         importStatements.push(...eventParameters.importStatements);
-        propTypes.push(dedent`
+        slotsAndEvents.push(dedent`
       /**
        * ${replaceTagNameWithModuleName(
          turndownService.turndown((eventSpec.description || '').trim()).replace(/\n/g, '\n   * ')
@@ -675,8 +713,6 @@ allWebComponents
        on${capitalizeFirstLetter(snakeToCamel(eventSpec.name))}?: ${eventParameters.tsType};
       `);
       });
-
-    const uniqueAdditionalImports = [...new Set(importStatements)];
 
     const formatDescription = () => {
       let description = componentSpec.description;
@@ -718,22 +754,16 @@ allWebComponents
       fs.writeFileSync(webComponentWrapperPath, '');
     }
 
-    const domRef = Utils.createDomRef(componentSpec);
-    if (domRef) {
-      uniqueAdditionalImports.push(domRef.importStatement);
-    }
-
     if (
       (CREATE_SINGLE_COMPONENT === componentSpec.module || !CREATE_SINGLE_COMPONENT) &&
       !EXCLUDE_LIST.includes(componentSpec.module)
     ) {
       const webComponentWrapper = await createWebComponentWrapper(
-        componentSpec.module,
-        componentSpec.tagname,
+        componentSpec,
         mainDescription,
-        propTypes,
-        uniqueAdditionalImports,
-        domRef,
+        attributes,
+        slotsAndEvents,
+        [...new Set(importStatements)],
         defaultProps,
         (componentSpec.properties || [])
           .filter(filterNonPublicAttributes)

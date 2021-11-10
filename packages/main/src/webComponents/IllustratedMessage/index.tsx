@@ -1,11 +1,12 @@
 import { IllustrationMessageType } from '@ui5/webcomponents-react/dist/IllustrationMessageType';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/IllustratedMessage.js';
 
-export interface IllustratedMessagePropTypes extends CommonProps {
+interface IllustratedMessageAttributes {
   /**
    * Defines the illustration name that will be displayed in the component.
    *
@@ -64,6 +65,11 @@ export interface IllustratedMessagePropTypes extends CommonProps {
    * **Note:** Using this property, the default title text of illustration will be overwritten.
    */
   titleText?: string;
+}
+
+export interface IllustratedMessageDomRef extends IllustratedMessageAttributes, Ui5DomRef {}
+
+export interface IllustratedMessagePropTypes extends IllustratedMessageAttributes, CommonProps {
   /**
    * Defines the component actions.
    */
@@ -87,7 +93,7 @@ export interface IllustratedMessagePropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/IllustratedMessage" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const IllustratedMessage = withWebComponent<IllustratedMessagePropTypes>(
+const IllustratedMessage = withWebComponent<IllustratedMessagePropTypes, IllustratedMessageDomRef>(
   'ui5-illustrated-message',
   ['name', 'subtitleText', 'titleText'],
   [],

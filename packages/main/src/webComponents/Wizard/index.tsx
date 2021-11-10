@@ -1,11 +1,16 @@
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/Wizard.js';
 
-export interface WizardPropTypes extends CommonProps {
+interface WizardAttributes {}
+
+export interface WizardDomRef extends WizardAttributes, Ui5DomRef {}
+
+export interface WizardPropTypes extends WizardAttributes, CommonProps {
   /**
    * Defines the steps.
    *
@@ -25,7 +30,7 @@ export interface WizardPropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Wizard" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Wizard = withWebComponent<WizardPropTypes>('ui5-wizard', [], [], [], ['step-change']);
+const Wizard = withWebComponent<WizardPropTypes, WizardDomRef>('ui5-wizard', [], [], [], ['step-change']);
 
 Wizard.displayName = 'Wizard';
 

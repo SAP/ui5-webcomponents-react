@@ -14,7 +14,7 @@ import {
 import { Bar } from '@ui5/webcomponents-react/dist/Bar';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
-import { Dialog } from '@ui5/webcomponents-react/dist/Dialog';
+import { Dialog, DialogDomRef } from '@ui5/webcomponents-react/dist/Dialog';
 import { Table } from '@ui5/webcomponents-react/dist/Table';
 import { TableColumn } from '@ui5/webcomponents-react/dist/TableColumn';
 import React, {
@@ -28,7 +28,6 @@ import React, {
   useState
 } from 'react';
 import { createPortal } from 'react-dom';
-import { Ui5DialogDomRef } from '../../interfaces/Ui5DialogDomRef';
 import { ManageViewsTableRows } from './MangeViewsTableRows';
 import { VariantItemPropTypes } from './VariantItem';
 import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming';
@@ -109,7 +108,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
       <TableColumn key="delete-variant-item" />
     </>
   );
-  const manageViewsRef = useRef<Ui5DialogDomRef>(null);
+  const manageViewsRef = useRef<DialogDomRef>(null);
 
   useEffect(() => {
     manageViewsRef.current.show();

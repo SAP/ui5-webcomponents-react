@@ -2,11 +2,12 @@ import { ListItemType } from '@ui5/webcomponents-react/dist/ListItemType';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/FilterItem.js';
 
-export interface FilterItemPropTypes extends CommonProps {
+interface FilterItemAttributes {
   /**
    * Defines the text of the component.
    */
@@ -21,6 +22,11 @@ export interface FilterItemPropTypes extends CommonProps {
    * Defines the selected state of the `ListItem`.
    */
   selected?: boolean;
+}
+
+export interface FilterItemDomRef extends FilterItemAttributes, Ui5DomRef {}
+
+export interface FilterItemPropTypes extends FilterItemAttributes, CommonProps {
   /**
    * Defines the `values` list.
    *
@@ -39,7 +45,7 @@ export interface FilterItemPropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/FilterItem" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const FilterItem = withWebComponent<FilterItemPropTypes>(
+const FilterItem = withWebComponent<FilterItemPropTypes, FilterItemDomRef>(
   'ui5-filter-item',
   ['text', 'type'],
   ['selected'],
