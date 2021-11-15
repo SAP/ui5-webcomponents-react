@@ -114,7 +114,6 @@ export const FilterDialog = (props) => {
     if (typeof onGo === 'function') {
       handleSave(e, true);
     }
-    handleDialogClose(e);
   };
 
   const handleCancel = (e) => {

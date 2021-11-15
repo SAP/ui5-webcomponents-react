@@ -143,6 +143,7 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
         >
           <div>
             <ui5-input
+              data-component-name="FilterBarSearch"
               placeholder="Search"
               type="Text"
               ui5-input=""
