@@ -1,5 +1,5 @@
 import { createUseStyles } from 'react-jss';
-import { useConsolidatedRef, useI18nBundle, useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useSyncRef, useI18nBundle, useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base/dist/hooks';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { SHOW_MORE } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
@@ -86,7 +86,7 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
     ...rest
   } = props;
   const classes = useStyles();
-  const outerContainer: RefObject<HTMLDivElement> = useConsolidatedRef(ref);
+  const [componentRef, outerContainer] = useSyncRef<HTMLDivElement>(ref);
   const controlMetaData = useRef([]);
   const [lastVisibleIndex, setLastVisibleIndex] = useState<number>(null);
 
@@ -212,7 +212,7 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
       title={tooltip}
       style={style}
       className={clsx(toolbarClasses, overflowNeeded && classes.hasOverflow)}
-      ref={outerContainer}
+      ref={componentRef}
       slot={slot}
       onClick={handleToolbarClick}
       {...rest}

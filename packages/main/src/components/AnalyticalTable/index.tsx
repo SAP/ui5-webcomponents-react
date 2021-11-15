@@ -1,4 +1,4 @@
-import { useConsolidatedRef, useIsomorphicLayoutEffect, useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useIsomorphicLayoutEffect, useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { debounce, enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
@@ -15,6 +15,7 @@ import React, {
   ComponentType,
   CSSProperties,
   forwardRef,
+  MutableRefObject,
   ReactNode,
   ReactText,
   Ref,
@@ -63,8 +64,6 @@ import { TitleBar } from './TitleBar';
 import { orderByFn } from './util';
 import { VerticalResizer } from './VerticalResizer';
 import clsx from 'clsx';
-
-const onlyUpperCaseRegExp = /^[A-Z_]+$/;
 
 interface DivWithCustomScrollProp extends HTMLDivElement {
   isExternalVerticalScroll?: boolean;
@@ -317,7 +316,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    *
    * **Note**: Use this prop with care, some properties might have an impact on the internal `AnalyticalTable` implementation.
    */
-  tableInstance?: Ref<Record<string, any>>;
+  tableInstance?: MutableRefObject<Record<string, any>>;
 }
 
 const useStyles = createUseStyles(styles, { name: 'AnalyticalTable' });
@@ -398,7 +397,10 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     return props.data;
   }, [props.data, minRows]);
 
-  const tableInstanceRef = useConsolidatedRef<Record<string, any>>(tableInstance);
+  let tableInstanceRef = useRef<Record<string, any>>();
+  if (tableInstance) {
+    tableInstanceRef = tableInstance;
+  }
 
   tableInstanceRef.current = useTable(
     {

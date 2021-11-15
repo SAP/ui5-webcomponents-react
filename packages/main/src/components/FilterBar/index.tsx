@@ -1,4 +1,4 @@
-import { useConsolidatedRef, useI18nBundle, useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useI18nBundle, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { debounce, enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import {
@@ -20,26 +20,24 @@ import { ToolbarSeparator } from '@ui5/webcomponents-react/dist/ToolbarSeparator
 import { ToolbarSpacer } from '@ui5/webcomponents-react/dist/ToolbarSpacer';
 import { ToolbarStyle } from '@ui5/webcomponents-react/dist/ToolbarStyle';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import clsx from 'clsx';
 import React, {
   Children,
   cloneElement,
   CSSProperties,
   forwardRef,
-  MouseEventHandler,
   ReactElement,
   ReactNode,
-  ReactNodeArray,
   RefObject,
-  useCallback,
   useEffect,
   useRef,
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
+import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import styles from './FilterBar.jss';
 import { FilterDialog } from './FilterDialog';
 import { filterValue, renderSearchWithValue, syncRef } from './utils';
-import clsx from 'clsx';
 
 export interface FilterBarPropTypes extends CommonProps {
   /**
@@ -47,7 +45,7 @@ export interface FilterBarPropTypes extends CommonProps {
    *
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `FilterGroupItems` in order to preserve the intended design.
    */
-  children: ReactNode | ReactNodeArray;
+  children: ReactNode | ReactNode[];
   /**
    * Defines the search field next to the variants of the `FilterBar`.
    *
@@ -147,47 +145,67 @@ export interface FilterBarPropTypes extends CommonProps {
   /**
    * The event is fired when the `FilterBar` is collapsed/expanded.
    */
-  onToggleFilters?: (event: CustomEvent<{ visible?: boolean }>) => void;
+  onToggleFilters?: (event: CustomEvent<{ visible: boolean; filters: HTMLElement[]; search: HTMLElement }>) => void;
   /**
    * The event is fired when the "Save" button of the filter configuration dialog is clicked.
    */
-  onFiltersDialogSave?: (event: CustomEvent<{ elements?: unknown; toggledElements?: unknown }>) => void;
+  onFiltersDialogSave?: (
+    event: CustomEvent<{
+      elements: Record<string, HTMLElement>;
+      toggledElements?: Record<string, HTMLElement>;
+      filters: HTMLElement[];
+      search: HTMLElement;
+    }>
+  ) => void;
   /**
    * The event is fired when the "Clear" button of the filter configuration dialog is clicked.
    */
-  onFiltersDialogClear?: (event: CustomEvent) => void;
+  onFiltersDialogClear?: (
+    event: CustomEvent<{ dialogSearch: HTMLElement; filters: HTMLElement[]; search: HTMLElement }>
+  ) => void;
   /**
    * The event is fired when the "Cancel" button of the filter configuration dialog is clicked.
    */
-  onFiltersDialogCancel?: (event: CustomEvent) => void;
+  onFiltersDialogCancel?: (event: Ui5CustomEvent<HTMLElement>) => void;
   /**
    * The event is fired when the filter configuration dialog is opened.
    */
-  onFiltersDialogOpen?: (event: CustomEvent) => void;
+  onFiltersDialogOpen?: (event: Ui5CustomEvent<HTMLElement>) => void;
   /**
    * The event is fired when the filter configuration dialog is closed.
    */
-  onFiltersDialogClose?: (event: CustomEvent) => void;
+  onFiltersDialogClose?: (event: Ui5CustomEvent<HTMLElement>) => void;
   /**
    * The event is fired when a filter is selected/unselected in the filter configuration dialog.
    */
-  onFiltersDialogSelectionChange?: (event: CustomEvent<{ element?: unknown; checked?: unknown }>) => void;
+  onFiltersDialogSelectionChange?: (
+    event: CustomEvent<{ elements: Record<string, HTMLElement>; toggledElements?: Record<string, HTMLElement> }>
+  ) => void;
   /**
    * The event is fired on input in the filter configuration dialog search field.
    */
-  onFiltersDialogSearch?: (event: CustomEvent<{ value?: unknown }>) => void;
+  onFiltersDialogSearch?: (event: CustomEvent<{ value: string; element: HTMLElement }>) => void;
   /**
    * The event is fired when the "Clear" button is clicked.
    */
-  onClear?: MouseEventHandler<HTMLButtonElement>;
+  onClear?: (event: CustomEvent<{ dialogSearch: HTMLElement; filters: HTMLElement[]; search: HTMLElement }>) => void;
   /**
    * The event is fired when the "Go" button is clicked.
    */
-  onGo?: MouseEventHandler<HTMLButtonElement>;
+  onGo?: (
+    event: CustomEvent<{
+      elements: Record<string, HTMLElement>;
+      toggledElements?: Record<string, HTMLElement>;
+      filters: HTMLElement[];
+      search: HTMLElement;
+    }>
+  ) => void;
   /**
    * The event is fired when the "Restore" button is clicked.
    */
-  onRestore?: (event: CustomEvent<{ source?: unknown }>) => void;
+  onRestore?: (
+    event: CustomEvent<{ source: string; filters: HTMLElement[]; search: HTMLElement; dialogSearch?: HTMLElement }>
+  ) => void;
 }
 
 const resizeObserverEntryWidth = (entry) => {
@@ -255,7 +273,7 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
   const prevSearchInputPropsValueRef = useRef<string>();
   const filterBarButtonsRef = useRef(null);
   const filterAreaRef = useRef(null);
-  const filterBarRef = useConsolidatedRef<HTMLDivElement>(ref);
+  const [componentRef, filterBarRef] = useSyncRef<HTMLDivElement>(ref);
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
@@ -291,54 +309,59 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
 
   const filterAreaClasses = clsx(classes.filterArea, showFilters ? classes.filterAreaOpen : classes.filterAreaClosed);
 
-  const handleToggle = useCallback(
-    (e) => {
-      if (onToggleFilters) {
-        onToggleFilters(enrichEventWithDetails(e, { visible: !showFilters }));
-      }
-      setShowFilters(!showFilters);
-    },
-    [showFilters, onToggleFilters, setShowFilters]
-  );
+  const getFilterElements = () => {
+    const search = searchRef.current?.querySelector(`[data-component-name="FilterBarSearch"]`);
+    return {
+      filters: filterRefs?.current ? Object.values(filterRefs.current).filter(Boolean) : [],
+      search
+    };
+  };
 
-  const handleDialogSave = useCallback(
-    (e, newRefs, updatedToggledFilters) => {
-      setMountFilters(false);
-      setMountFilters(true);
-      setDialogRefs(newRefs);
-      setToggledFilters((old) => ({ ...old, ...updatedToggledFilters }));
-      if (onFiltersDialogSave) {
-        onFiltersDialogSave(
-          enrichEventWithDetails(e, {
-            elements: newRefs,
-            toggledElements: { ...toggledFilters, ...updatedToggledFilters }
-          })
-        );
-      }
-      handleDialogClose(e);
-    },
-    [setDialogOpen, setDialogRefs, setToggledFilters, onFiltersDialogSave, toggledFilters]
-  );
+  const handleToggle = (e) => {
+    if (onToggleFilters) {
+      onToggleFilters(enrichEventWithDetails(e, { visible: !showFilters, ...getFilterElements() }));
+    }
+    setShowFilters(!showFilters);
+  };
 
-  const handleDialogOpen = useCallback(
-    (e) => {
-      setDialogOpen(true);
-      if (onFiltersDialogOpen) {
-        onFiltersDialogOpen(enrichEventWithDetails(e));
-      }
-    },
-    [setDialogOpen, onFiltersDialogOpen]
-  );
+  const [executeGo, setExecuteGo] = useState(false);
+  const handleDialogSave = (e, newRefs, updatedToggledFilters, go = false) => {
+    setDialogRefs(newRefs);
+    const details = {
+      elements: newRefs,
+      toggledElements: { ...toggledFilters, ...updatedToggledFilters },
+      ...getFilterElements()
+    };
+    if (typeof onGo === 'function' && go) {
+      setExecuteGo(enrichEventWithDetails(e, details));
+    }
 
-  const handleDialogClose = useCallback(
-    (e) => {
-      if (onFiltersDialogClose) {
-        onFiltersDialogClose(enrichEventWithDetails(e));
-      }
-      setDialogOpen(false);
-    },
-    [setDialogOpen, onFiltersDialogClose]
-  );
+    setToggledFilters((old) => ({ ...old, ...updatedToggledFilters }));
+    if (onFiltersDialogSave) {
+      onFiltersDialogSave(enrichEventWithDetails(e, details));
+    }
+    handleDialogClose(e);
+  };
+
+  const handleDialogOpen = (e) => {
+    setDialogOpen(true);
+    if (onFiltersDialogOpen) {
+      onFiltersDialogOpen(e);
+    }
+  };
+
+  const handleDialogClose = (e) => {
+    if (onFiltersDialogClose) {
+      onFiltersDialogClose(enrichEventWithDetails(e));
+    }
+    setDialogOpen(false);
+  };
+
+  const handleGoOnFb = (e) => {
+    if (typeof onGo === 'function') {
+      onGo(enrichEventWithDetails(e, { elements: filterRefs.current, ...getFilterElements() }));
+    }
+  };
 
   const passThroughProps = usePassThroughHtmlProps(props, [
     'onToggleFilters',
@@ -367,7 +390,6 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
     }
     return Children.toArray(children) as unknown[];
   };
-
   const prevChildren = useRef({});
 
   const renderChildren = () => {
@@ -404,8 +426,9 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
             //Checkbox
             child.props.children?.props?.checked !== prevChildren.current?.[child.key]?.checked ||
             //Selectable
-            child.props.children?.props?.children?.map((item) => item.props.selected).join(',') !==
-              prevChildren?.current?.[child.key]?.children?.map((item) => item.props.selected).join(','))
+            (Array.isArray(child.props.children?.props?.children) &&
+              child.props.children?.props?.children?.map((item) => item.props.selected).join(',') !==
+                prevChildren?.current?.[child.key]?.children?.map((item) => item.props.selected).join(',')))
         ) {
           // @ts-ignore
           const { [child.key]: omit, ...rest } = dialogRefs;
@@ -423,35 +446,34 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
             },
             ref: (node) => {
               filterRefs.current[child.key] = node;
-              syncRef(child.props.children.ref, node);
+              if (!dialogOpen) syncRef(child.props.children.ref, node);
             }
           }
         });
       });
   };
+  const handleRestoreFilters = (e, source, filterElements) => {
+    if (source === 'dialog' && showGo) {
+      setDialogOpen(false);
+      setDialogOpen(true);
+    } else if (source === 'filterBar' && showGoOnFB) {
+      setMountFilters(false);
+      setMountFilters(true);
+    }
+    if (onRestore) {
+      onRestore(enrichEventWithDetails(e, { source, ...filterElements }));
+    }
+  };
 
-  const handleRestoreFilters = useCallback(
-    (e, source) => {
-      if (source === 'dialog' && showGo) {
-        setDialogOpen(false);
-        setDialogOpen(true);
-      } else if (source === 'filterBar' && showGoOnFB) {
-        setMountFilters(false);
-        setMountFilters(true);
-      }
-      if (onRestore) {
-        onRestore(enrichEventWithDetails(e, { source }));
-      }
-    },
-    [setDialogOpen, showGo, showGoOnFB, onRestore]
-  );
+  const handleFBRestore = (e) => {
+    handleRestoreFilters(e, 'filterBar', getFilterElements());
+  };
 
-  const handleFBRestore = useCallback(
-    (e) => {
-      handleRestoreFilters(e, 'filterBar');
-    },
-    [handleRestoreFilters]
-  );
+  const handleClear = (e) => {
+    if (typeof onClear === 'function') {
+      onClear(enrichEventWithDetails(e, getFilterElements()));
+    }
+  };
 
   const cssClasses = clsx(classes.outerContainer, className, useToolbar && classes.outerContainerWithToolbar);
 
@@ -470,7 +492,7 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
   const ToolbarButtons = (
     <>
       {showClearOnFB && (
-        <Button onClick={onClear} design={ButtonDesign.Transparent}>
+        <Button onClick={handleClear} design={ButtonDesign.Transparent}>
           {clearText}
         </Button>
       )}
@@ -487,23 +509,23 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
       {showFilterConfiguration && (
         <Button onClick={handleDialogOpen} aria-haspopup="dialog">
           {`${filtersText}${
-            activeFiltersCount && parseInt(activeFiltersCount as string) > 0 ? ` (${activeFiltersCount})` : ''
+            activeFiltersCount && parseInt(activeFiltersCount as string, 10) > 0 ? ` (${activeFiltersCount})` : ''
           }`}
         </Button>
       )}
       {showGoOnFB && (
-        <Button onClick={onGo} design={ButtonDesign.Emphasized}>
+        <Button onClick={handleGoOnFb} design={ButtonDesign.Emphasized}>
           {goText}
         </Button>
       )}
     </>
   );
-  const hasButtons = ToolbarButtons.props.children.some(Boolean);
 
+  const hasButtons = ToolbarButtons.props.children.some(Boolean);
   const [filterBarButtonsWidth, setFilterBarButtonsWidth] = useState(undefined);
+
   const [filterAreaWidth, setFilterAreaWidth] = useState(undefined);
   const [firstChildWidth, setFirstChildWidth] = useState(undefined);
-
   useEffect(() => {
     const filterAreaObserver = new ResizeObserver(
       debounce(([area]) => {
@@ -556,6 +578,16 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
   }, [filterBarButtonsRef.current, useToolbar, filterBarButtonsWidth]);
 
   const calculatedChildren = renderChildren();
+
+  useEffect(() => {
+    if (executeGo) {
+      setExecuteGo((prevEvent) => {
+        onGo(prevEvent as any);
+        return false;
+      });
+    }
+  }, [executeGo]);
+
   // calculates the number of spacers depending on the available width inside the row
   const renderSpacers = () => {
     if (firstChildWidth && filterAreaWidth && filterBarButtonsWidth) {
@@ -612,7 +644,7 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
         </FilterDialog>
       )}
       <CustomTag
-        ref={filterBarRef}
+        ref={componentRef}
         className={cssClasses}
         style={{ ['--_ui5wcr_filter_group_item_flex_basis']: filterContainerWidth, ...style } as CSSProperties}
         title={tooltip}

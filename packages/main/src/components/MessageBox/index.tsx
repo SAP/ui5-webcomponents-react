@@ -4,7 +4,7 @@ import '@ui5/webcomponents-icons/dist/message-information.js';
 import '@ui5/webcomponents-icons/dist/message-success.js';
 import '@ui5/webcomponents-icons/dist/message-warning.js';
 import '@ui5/webcomponents-icons/dist/question-mark.js';
-import { useConsolidatedRef, useI18nBundle, useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useI18nBundle, useIsomorphicLayoutEffect, useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import {
   ABORT,
@@ -34,6 +34,7 @@ import { Title } from '@ui5/webcomponents-react/dist/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import { Ui5DialogDomRef } from '@ui5/webcomponents-react/interfaces/Ui5DialogDomRef';
+import clsx from 'clsx';
 import React, {
   forwardRef,
   isValidElement,
@@ -48,7 +49,6 @@ import React, {
 import { createUseStyles } from 'react-jss';
 import { stopPropagation } from '../../internal/stopPropagation';
 import styles from './MessageBox.jss';
-import clsx from 'clsx';
 
 type MessageBoxAction = MessageBoxActions | keyof typeof MessageBoxActions | string;
 
@@ -131,7 +131,7 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDom
     accessibleName,
     ...rest
   } = props;
-  const dialogRef = useConsolidatedRef<Ui5DialogDomRef>(ref);
+  const [componentRef, dialogRef] = useSyncRef<Ui5DialogDomRef>(ref);
 
   const classes = useStyles();
 
@@ -245,7 +245,7 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDom
   return (
     <Dialog
       slot={slot}
-      ref={dialogRef}
+      ref={componentRef}
       style={style}
       title={tooltip ?? props.title}
       className={messageBoxClassNames}

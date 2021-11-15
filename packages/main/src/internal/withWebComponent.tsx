@@ -1,6 +1,6 @@
 import { getEffectiveScopingSuffixForTag } from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
 import { debounce } from '@ui5/webcomponents-react-base/dist/Utils';
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
+import { useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import React, {
   Children,
   cloneElement,
@@ -33,7 +33,7 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
   const WithWebComponent = forwardRef((props: Props, wcRef: RefObject<RefType>) => {
     const { className, tooltip, children, ...rest } = props;
 
-    const ref = useConsolidatedRef<HTMLElement>(wcRef);
+    const [componentRef, ref] = useSyncRef(wcRef);
     const eventRegistry = useRef<Record<string, EventHandler>>({});
 
     // regular props (no booleans, no slots and no events)
@@ -128,7 +128,7 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
 
     return (
       <Component
-        ref={ref}
+        ref={componentRef}
         {...booleanProps}
         {...regularProps}
         {...nonWebComponentRelatedProps}

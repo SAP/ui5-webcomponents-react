@@ -2,7 +2,7 @@ import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming.js';
 import '@ui5/webcomponents-icons/dist/pushpin-off.js';
 import '@ui5/webcomponents-icons/dist/slim-arrow-down.js';
 import '@ui5/webcomponents-icons/dist/slim-arrow-up.js';
-import { useConsolidatedRef, useI18nBundle, useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useI18nBundle, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import {
@@ -155,7 +155,7 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
   } = props;
 
   const classes = useStyles();
-  const anchorBarRef = useConsolidatedRef<HTMLDivElement>(ref);
+  const [componentRef, anchorBarRef] = useSyncRef<HTMLElement>(ref);
   const isRTL = useIsRTL(anchorBarRef);
 
   const shouldRenderHeaderPinnableButton = headerContentPinnable && headerContentVisible;
@@ -185,7 +185,7 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
       style={style}
       role={a11yConfig?.dynamicPageAnchorBar?.role ?? 'navigation'}
       className={showHideHeaderButton || headerContentPinnable ? classes.anchorBarActionButton : null}
-      ref={anchorBarRef}
+      ref={componentRef}
     >
       {showHideHeaderButton && (
         <Button

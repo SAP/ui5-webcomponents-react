@@ -1,5 +1,4 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/dist/components/ChartContainer';
@@ -105,8 +104,6 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
     };
   }, [props.chartConfig]);
 
-  const chartRef = useConsolidatedRef<any>(ref);
-
   const { dimensions, measures } = usePrepareDimensionsAndMeasures(
     props.dimensions,
     props.measures,
@@ -164,7 +161,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
   return (
     <ChartContainer
       dataset={dataset}
-      ref={chartRef}
+      ref={ref}
       loading={loading}
       Placeholder={ChartPlaceholder ?? PieChartPlaceholder}
       style={style}

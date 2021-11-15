@@ -1,4 +1,4 @@
-import { useIsRTL, usePassThroughHtmlProps, useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useIsRTL, usePassThroughHtmlProps, useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/dist/components/ChartContainer';
@@ -155,7 +155,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
 
   const labelFormatter = useLabelFormatter(primaryDimension);
 
-  const chartRef = useConsolidatedRef<any>(ref);
+  const [componentRef, chartRef] = useSyncRef<any>(ref);
 
   const dataKeys = measures.map(({ accessor }) => accessor);
   const colorSecondY = chartConfig.secondYAxis
@@ -205,7 +205,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
       dataset={dataset}
       loading={loading}
       Placeholder={ChartPlaceholder ?? LineChartPlaceholder}
-      ref={chartRef}
+      ref={componentRef}
       style={style}
       className={className}
       tooltip={tooltip}

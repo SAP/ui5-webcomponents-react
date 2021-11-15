@@ -1,23 +1,12 @@
 import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
-import { useConsolidatedRef, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
+import { usePassThroughHtmlProps, useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { GlobalStyleClasses } from '@ui5/webcomponents-react/dist/GlobalStyleClasses';
 import { PageBackgroundDesign } from '@ui5/webcomponents-react/dist/PageBackgroundDesign';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import React, {
-  cloneElement,
-  forwardRef,
-  ReactElement,
-  ReactNode,
-  ReactNodeArray,
-  Ref,
-  RefObject,
-  useEffect,
-  useRef,
-  useState
-} from 'react';
+import React, { cloneElement, forwardRef, ReactElement, ReactNode, Ref, useEffect, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { useObserveHeights } from '../../internal/useObserveHeights';
 import { useResponsiveContentPadding } from '@ui5/webcomponents-react-base/dist/hooks';
@@ -63,7 +52,7 @@ export interface DynamicPagePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * React element or node array which defines the content.
    */
-  children?: ReactNode | ReactNodeArray;
+  children?: ReactNode | ReactNode[];
   /**
    * Defines internally used a11y properties.
    */
@@ -111,12 +100,12 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
   const passThroughProps = usePassThroughHtmlProps(props, ['onScroll']);
 
   const anchorBarRef = useRef<HTMLDivElement>();
-  const dynamicPageRef = useConsolidatedRef<HTMLDivElement>(ref);
+  const [componentRef, dynamicPageRef] = useSyncRef<HTMLDivElement>(ref);
   const contentRef = useRef<HTMLDivElement>();
   // @ts-ignore
-  const topHeaderRef: RefObject<HTMLDivElement> = useConsolidatedRef(headerTitle?.ref);
+  const [componentRefTopHeader, topHeaderRef] = useSyncRef(headerTitle?.ref);
   // @ts-ignore
-  const headerContentRef: RefObject<HTMLDivElement> = useConsolidatedRef(headerContent?.ref);
+  const [componentRefHeaderContent, headerContentRef] = useSyncRef(headerContent?.ref);
 
   const [headerState, setHeaderState] = useState<HEADER_STATES>(
     alwaysShowContentHeader ? HEADER_STATES.VISIBLE_PINNED : isIE() ? HEADER_STATES.VISIBLE : HEADER_STATES.AUTO
@@ -226,7 +215,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
 
   return (
     <div
-      ref={dynamicPageRef}
+      ref={componentRef}
       title={tooltip}
       className={dynamicPageClasses}
       style={style}
@@ -239,7 +228,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
             (alwaysShowContentHeader && !headerContentPinnable) ||
             !headerContent ||
             (!showHideHeaderButton && !headerContentPinnable),
-          ref: topHeaderRef,
+          ref: componentRefTopHeader,
           className: headerTitle?.props?.className
             ? `${responsivePaddingClass} ${headerTitle.props.className}`
             : responsivePaddingClass,
@@ -247,7 +236,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
         })}
       {headerContent &&
         cloneElement(headerContent, {
-          ref: headerContentRef,
+          ref: componentRefHeaderContent,
           className: headerContent.props.className
             ? `${responsivePaddingClass} ${headerContent.props.className}`
             : responsivePaddingClass,
