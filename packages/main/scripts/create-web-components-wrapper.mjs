@@ -3,7 +3,6 @@ import mainWebComponentsSpec from '@ui5/webcomponents/dist/api.json';
 import fioriWebComponentsSpec from '@ui5/webcomponents-fiori/dist/api.json';
 import dedent from 'dedent';
 import prettier from 'prettier';
-import prettierConfigRaw from '../../../prettier.config.cjs';
 import path from 'path';
 import PATHS from '../../../config/paths.js';
 import fs from 'fs';
@@ -12,6 +11,7 @@ import Handlebars from 'handlebars';
 import * as Utils from '../../../scripts/web-component-wrappers/utils.js';
 import {
   COMPONENTS_WITHOUT_DEMOS,
+  KNOWN_ATTRIBUTES,
   KNOWN_EVENTS,
   PRIVATE_COMPONENTS
 } from '../../../scripts/web-component-wrappers/config.js';
@@ -66,14 +66,8 @@ const CREATE_SINGLE_COMPONENT = process.argv[2] || false;
 
 const EXCLUDE_LIST = [];
 
-const prettierConfig = {
-  ...prettierConfigRaw,
-  parser: 'typescript'
-};
-
 const WEB_COMPONENTS_ROOT_DIR = path.join(PATHS.packages, 'main', 'src', 'webComponents');
 const ENUMS_DIR = path.join(PATHS.packages, 'main', 'src', 'enums');
-const INTERFACES_DIR = path.join(PATHS.packages, 'main', 'src', 'interfaces');
 const DIST_DIR = path.join(PATHS.packages, 'main', 'src', 'dist');
 
 const EXTENDED_PROP_DESCRIPTION = {
@@ -228,6 +222,11 @@ const allWebComponents = [
   return true;
 });
 
+fs.writeFileSync(
+  path.join(PATHS.root, 'scripts', 'web-component-wrappers', 'interfaces.json'),
+  JSON.stringify(Array.from(interfaces))
+);
+
 const htmlTagToModuleNameMap = new Map();
 for (const spec of allWebComponents) {
   htmlTagToModuleNameMap.set(spec.tagname, spec.module);
@@ -293,60 +292,74 @@ const getEventParameters = (name, parameters) => {
 };
 
 const createWebComponentWrapper = async (
-  name,
-  tag,
+  componentSpec,
   description,
-  types,
+  attributes,
+  slotsAndEvents,
   importStatements,
-  ref,
   defaultProps,
   regularProps,
   booleanProps,
   slotProps,
   eventProps
 ) => {
-  const eventsToBeOmitted = eventProps.filter((eventName) => KNOWN_EVENTS.has(eventName));
+  const eventsToBeOmitted = eventProps
+    .filter((eventName) => KNOWN_EVENTS.has(eventName))
+    .map((eventName) => `'on${capitalizeFirstLetter(snakeToCamel(eventName))}'`);
+  const attributesToBeOmitted = [...regularProps, ...booleanProps]
+    .filter((attribute) => KNOWN_ATTRIBUTES.has(attribute))
+    .map((a) => `'${a}'`);
+
+  let domRefExtends = 'Ui5DomRef';
+  if (attributesToBeOmitted.length > 0) {
+    domRefExtends = `Omit<Ui5DomRef, ${attributesToBeOmitted.join(' | ')}>`;
+  }
+
   let tsExtendsStatement = 'CommonProps';
-  if (eventsToBeOmitted.length > 0) {
-    tsExtendsStatement = `Omit<CommonProps, ${eventsToBeOmitted
-      .map((eventName) => `'on${capitalizeFirstLetter(snakeToCamel(eventName))}'`)
-      .join(' | ')}>`;
+  if (eventsToBeOmitted.length > 0 || attributesToBeOmitted.length > 0) {
+    tsExtendsStatement = `Omit<CommonProps, ${[...attributesToBeOmitted, ...eventsToBeOmitted].join(' | ')}>`;
   }
   let componentDescription;
   try {
     componentDescription = turndownService.turndown(description).replace(/\n/g, '\n * ');
   } catch (e) {
     console.warn(
-      `----------------------\nHeader description of ${name} couldn't be generated. \nThere is probably a syntax error in the associated description that can't be fixed automatically.\n----------------------`
+      `----------------------\nHeader description of ${componentSpec.module} couldn't be generated. \nThere is probably a syntax error in the associated description that can't be fixed automatically.\n----------------------`
     );
     componentDescription = '';
   }
 
+  const domRef = Utils.createDomRef(componentSpec);
+
   const imports = [
     ...importStatements,
     '', // do not remove this empty line - otherwise the eslint/import-order plugin won't work as expected
-    `import '@ui5/webcomponents${componentsFromFioriPackage.has(name) ? '-fiori' : ''}/dist/${name}.js';`
+    `import '@ui5/webcomponents${componentsFromFioriPackage.has(componentSpec.module) ? '-fiori' : ''}/dist/${
+      componentSpec.module
+    }.js';`
   ];
 
   return prettier.format(
     await Utils.runEsLint(
       componentTemplate({
-        name,
+        name: componentSpec.module,
         imports,
         propTypesExtends: tsExtendsStatement,
-        types,
+        domRefExtends,
+        attributes,
+        slotsAndEvents,
         description: componentDescription,
-        tagName: tag,
+        tagName: componentSpec.tagname,
         regularProps,
         booleanProps,
         slotProps: slotProps.filter((name) => name !== 'children'),
         eventProps,
         defaultProps,
-        ref: ref?.tsType
+        domRef
       }),
-      name
+      componentSpec.module
     ),
-    prettierConfig
+    Utils.prettierConfig
   );
 };
 
@@ -447,7 +460,7 @@ const createWebComponentDemo = (componentSpec, componentProps, description) => {
       args,
       methods: componentSpec.methods?.filter((item) => item.visibility === 'public') ?? []
     }),
-    { ...prettierConfigRaw, parser: 'mdx' }
+    { ...Utils.prettierConfig, parser: 'mdx' }
   )}\n${formattedDescription}`;
 };
 
@@ -555,7 +568,7 @@ const resolveInheritedAttributes = (componentSpec) => {
    }
   `;
 
-  fs.writeFileSync(path.join(ENUMS_DIR, `${spec.basename}.ts`), prettier.format(template, prettierConfig));
+  fs.writeFileSync(path.join(ENUMS_DIR, `${spec.basename}.ts`), prettier.format(template, Utils.prettierConfig));
   fs.writeFileSync(
     path.join(DIST_DIR, `${spec.basename}.ts`),
     prettier.format(
@@ -567,68 +580,70 @@ const resolveInheritedAttributes = (componentSpec) => {
   export { ${spec.basename} };
   
   `,
-      prettierConfig
+      Utils.prettierConfig
     )
   );
 });
+
+const propDescription = (componentSpec, property) => {
+  if (!componentSpec.tagname) {
+    return property.description || '';
+  }
+  let formattedDescription = turndownService.turndown((property.description || '').trim()).replace(/\n/g, '\n   * ');
+
+  const customDescriptionReplace = CUSTOM_DESCRIPTION_REPLACE[componentSpec.module];
+  if (customDescriptionReplace && customDescriptionReplace[property.name]) {
+    formattedDescription = customDescriptionReplace[property.name](formattedDescription);
+  }
+
+  const extendedDescription = EXTENDED_PROP_DESCRIPTION[property.name];
+
+  if (property.name !== 'children' && componentSpec?.slots?.some((item) => item.name === property.name)) {
+    formattedDescription += `
+          *
+          * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the \`slot\` prop and appends it to the most outer element of your component.
+          * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).`;
+  }
+
+  if (extendedDescription) {
+    return replaceTagNameWithModuleName(`${formattedDescription}${extendedDescription}`);
+  }
+  return replaceTagNameWithModuleName(formattedDescription);
+};
 
 allWebComponents
   .filter((spec) => spec.visibility === 'public')
   .filter((spec) => !PRIVATE_COMPONENTS.has(spec.module))
   .map(resolveInheritedAttributes)
   .forEach(async (componentSpec) => {
-    const propTypes = [];
+    const attributes = [];
+    const slotsAndEvents = [];
     const importStatements = [];
     const defaultProps = [];
-    const allComponentProperties = [...(componentSpec.properties || []), ...(componentSpec.slots || [])]
+    const allComponentProperties = (componentSpec.properties || [])
       .filter((prop) => prop.visibility === 'public' && prop.readonly !== 'true' && prop.static !== true)
       .map((property) => {
-        const tsType = Utils.getTypeDefinitionForProperty(property, interfaces);
+        const tsType = Utils.getTypeDefinitionForProperty(property);
         if (tsType.importStatement) {
           importStatements.push(tsType.importStatement);
         }
 
-        if (property.name === 'default') {
-          property.name = 'children';
-        }
-        const propDescription = () => {
-          if (!componentSpec.tagname) {
-            return property.description || '';
-          }
-          let formattedDescription = turndownService
-            .turndown((property.description || '').trim())
-            .replace(/\n/g, '\n   * ');
+        attributes.push(dedent`
+        /**
+         * ${propDescription(componentSpec, property)}
+         */
+         ${property.name}?: ${tsType.tsType};
+        `);
 
-          const customDescriptionReplace = CUSTOM_DESCRIPTION_REPLACE[componentSpec.module];
-          if (customDescriptionReplace && customDescriptionReplace[property.name]) {
-            formattedDescription = customDescriptionReplace[property.name](formattedDescription);
-          }
-
-          const extendedDescription = EXTENDED_PROP_DESCRIPTION[property.name];
-
-          if (property.name !== 'children' && componentSpec?.slots?.some((item) => item.name === property.name)) {
-            formattedDescription += `
-          *
-          * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the \`slot\` prop and appends it to the most outer element of your component.
-          * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).`;
-          }
-
-          if (extendedDescription) {
-            return replaceTagNameWithModuleName(`${formattedDescription}${extendedDescription}`);
-          }
-          return replaceTagNameWithModuleName(formattedDescription);
-        };
-
-        propTypes.push(dedent`
-    /**
-     * ${propDescription()}
-     */
-     ${property.name}?: ${tsType.tsType};
-    `);
-
-        if (property.hasOwnProperty('defaultValue') && property.name !== 'wrappingType') {
+        if (
+          property.hasOwnProperty('defaultValue') &&
+          property.name !== 'wrappingType' &&
+          property.defaultValue !== 'undefined'
+        ) {
           if (tsType.tsType === 'boolean') {
-            defaultProps.push(`${property.name}: ${property.defaultValue === 'true'}`);
+            if (property.defaultValue === 'true') {
+              defaultProps.push(`${property.name}: true`);
+            }
           } else if (tsType.isEnum === true) {
             defaultProps.push(`${property.name}: ${tsType.enum}.${property.defaultValue.replace(/['"]/g, '')}`);
           } else if (tsType.tsType !== 'string' || (tsType.tsType === 'string' && property.defaultValue !== '""')) {
@@ -641,6 +656,33 @@ allWebComponents
           ...tsType
         };
       });
+
+    allComponentProperties.push(
+      ...(componentSpec.slots || [])
+        .filter((prop) => prop.visibility === 'public' && prop.readonly !== 'true' && prop.static !== true)
+        .map((property) => {
+          const tsType = Utils.getTypeDefinitionForProperty(property);
+          if (tsType.importStatement) {
+            importStatements.push(tsType.importStatement);
+          }
+
+          if (property.name === 'default') {
+            property.name = 'children';
+          }
+
+          slotsAndEvents.push(dedent`
+        /**
+         * ${propDescription(componentSpec, property)}
+         */
+         ${property.name}?: ${tsType.tsType};
+        `);
+
+          return {
+            ...property,
+            ...tsType
+          };
+        })
+    );
 
     (componentSpec.events || [])
       .filter((eventSpec) => eventSpec.visibility === 'public')
@@ -662,7 +704,7 @@ allWebComponents
           eventParameters = getEventParameters(componentSpec.module, eventSpec.parameters || []);
         }
         importStatements.push(...eventParameters.importStatements);
-        propTypes.push(dedent`
+        slotsAndEvents.push(dedent`
       /**
        * ${replaceTagNameWithModuleName(
          turndownService.turndown((eventSpec.description || '').trim()).replace(/\n/g, '\n   * ')
@@ -671,13 +713,6 @@ allWebComponents
        on${capitalizeFirstLetter(snakeToCamel(eventSpec.name))}?: ${eventParameters.tsType};
       `);
       });
-
-    const domRef = Utils.getDomRefTypingForComponent(componentSpec.module);
-    if (domRef) {
-      importStatements.push(domRef.importStatement);
-    }
-
-    const uniqueAdditionalImports = [...new Set(importStatements)];
 
     const formatDescription = () => {
       let description = componentSpec.description;
@@ -719,69 +754,16 @@ allWebComponents
       fs.writeFileSync(webComponentWrapperPath, '');
     }
 
-    const publicMethods = componentSpec.methods?.filter((method) => method.visibility === 'public') ?? [];
-    const isOptionalParameter = (p) => {
-      return p.optional || p.hasOwnProperty('defaultValue');
-    };
-    const resolveTsTypeForMethods = (param) => {
-      let tsType;
-      if (param.type === 'HTMLElement') {
-        tsType = 'HTMLElement | EventTarget';
-      } else if (param.type === 'function' && componentSpec.module === 'Tree') {
-        tsType = '(treeNode: HTMLElement, level: number) => void';
-      } else if (param.type === 'object' && ['DatePicker', 'DateRangePicker', 'DateTimePicker', 'TimePicker'].includes(componentSpec.module)) {
-        tsType = 'Date';
-      } else {
-        tsType = Utils.getTypeDefinitionForProperty(param, new Set()).tsType;
-      }
-      return tsType;
-    };
-    if (publicMethods.length > 0) {
-      const methods = publicMethods.map((method) => {
-        const params = method.parameters?.map((param) => {
-          return ` * @param {${resolveTsTypeForMethods(param)}} ${isOptionalParameter(param) ? '[' : ''}${param.name}${
-            isOptionalParameter(param) ? ']' : ''
-          } - ${param.description}`;
-        });
-
-        return dedent`
-          /**
-           * ${method.description.replaceAll('\n', '\n * ')}
-           ${params?.join('\n') ?? '*'}
-           */
-          ${method.name}: (${
-          method.parameters
-            ?.map((p) => `${p.name}${isOptionalParameter(p) ? '?' : ''}: ${resolveTsTypeForMethods(p)}`)
-            .join(', ') ?? ''
-        }) => void
-          `;
-      });
-      const domRefTemplate = dedent`
-      // @generated
-      
-      import { Ui5DomRef } from './Ui5DomRef';
-
-      export interface Ui5${componentSpec.module}DomRef extends Ui5DomRef {
-        ${methods.join('\n\n')}
-      }
-      `;
-      fs.writeFileSync(
-        path.resolve(INTERFACES_DIR, `Ui5${componentSpec.module}DomRef.ts`),
-        prettier.format(domRefTemplate, prettierConfig)
-      );
-    }
-
     if (
       (CREATE_SINGLE_COMPONENT === componentSpec.module || !CREATE_SINGLE_COMPONENT) &&
       !EXCLUDE_LIST.includes(componentSpec.module)
     ) {
       const webComponentWrapper = await createWebComponentWrapper(
-        componentSpec.module,
-        componentSpec.tagname,
+        componentSpec,
         mainDescription,
-        propTypes,
-        uniqueAdditionalImports,
-        domRef,
+        attributes,
+        slotsAndEvents,
+        [...new Set(importStatements)],
         defaultProps,
         (componentSpec.properties || [])
           .filter(filterNonPublicAttributes)
@@ -797,12 +779,12 @@ allWebComponents
       fs.writeFileSync(webComponentWrapperPath, webComponentWrapper);
 
       // create lib export
-      const libContent = prettier.format(libraryExportTemplate({ name: componentSpec.module }), prettierConfig);
+      const libContent = prettier.format(libraryExportTemplate({ name: componentSpec.module }), Utils.prettierConfig);
       fs.writeFileSync(path.join(DIST_DIR, `${componentSpec.module}.ts`), libContent);
 
       // create test
       if (!fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.test.tsx`))) {
-        const webComponentTest = prettier.format(testTemplate({ name: componentSpec.module }), prettierConfig);
+        const webComponentTest = prettier.format(testTemplate({ name: componentSpec.module }), Utils.prettierConfig);
         fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.test.tsx`), webComponentTest);
       }
 

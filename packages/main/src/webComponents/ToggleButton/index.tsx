@@ -1,11 +1,12 @@
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode, MouseEventHandler } from 'react';
 
 import '@ui5/webcomponents/dist/ToggleButton.js';
 
-export interface ToggleButtonPropTypes extends Omit<CommonProps, 'onClick'> {
+interface ToggleButtonAttributes {
   /**
    * Determines whether the component is displayed as pressed.
    */
@@ -17,7 +18,7 @@ export interface ToggleButtonPropTypes extends Omit<CommonProps, 'onClick'> {
   /**
    * Defines the component design.
    *
-   * **Note:**
+   * **The available values are:**
    *
    * *   `Default`
    * *   `Emphasized`
@@ -28,7 +29,7 @@ export interface ToggleButtonPropTypes extends Omit<CommonProps, 'onClick'> {
    */
   design?: ButtonDesign | keyof typeof ButtonDesign;
   /**
-   * Defines whether the component is disabled (default is set to `false`). A disabled component can't be pressed or focused, and it is not in the tab chain.
+   * Defines whether the component is disabled. A disabled component can't be pressed or focused, and it is not in the tab chain.
    */
   disabled?: boolean;
   /**
@@ -44,9 +45,14 @@ export interface ToggleButtonPropTypes extends Omit<CommonProps, 'onClick'> {
   /**
    * When set to `true`, the component will automatically submit the nearest form element upon `press`.
    *
-   * **Important:** For the `submits` property to have effect, you must add the following import to your project: `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
+   * **Note:** For the `submits` property to have effect, you must add the following import to your project: `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
    */
   submits?: boolean;
+}
+
+export interface ToggleButtonDomRef extends ToggleButtonAttributes, Ui5DomRef {}
+
+export interface ToggleButtonPropTypes extends ToggleButtonAttributes, Omit<CommonProps, 'onClick'> {
   /**
    * Defines the text of the component.
    *
@@ -68,7 +74,7 @@ export interface ToggleButtonPropTypes extends Omit<CommonProps, 'onClick'> {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/ToggleButton" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const ToggleButton = withWebComponent<ToggleButtonPropTypes>(
+const ToggleButton = withWebComponent<ToggleButtonPropTypes, ToggleButtonDomRef>(
   'ui5-toggle-button',
   ['accessibleName', 'design', 'icon'],
   ['pressed', 'disabled', 'iconEnd', 'submits'],
@@ -79,11 +85,7 @@ const ToggleButton = withWebComponent<ToggleButtonPropTypes>(
 ToggleButton.displayName = 'ToggleButton';
 
 ToggleButton.defaultProps = {
-  pressed: false,
-  design: ButtonDesign.Default,
-  disabled: false,
-  iconEnd: false,
-  submits: false
+  design: ButtonDesign.Default
 };
 
 export { ToggleButton };

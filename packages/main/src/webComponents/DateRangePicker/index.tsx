@@ -3,12 +3,12 @@ import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { Ui5DateRangePickerDomRef } from '@ui5/webcomponents-react/interfaces/Ui5DateRangePickerDomRef';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/DateRangePicker.js';
 
-export interface DateRangePickerPropTypes extends Omit<CommonProps, 'onChange' | 'onInput'> {
+interface DateRangePickerAttributes {
   /**
    * Determines the symbol which separates the dates. If not supplied, the default time interval delimiter for the current locale will be used.
    */
@@ -28,7 +28,7 @@ export interface DateRangePickerPropTypes extends Omit<CommonProps, 'onChange' |
   /**
    * Defines the visibility of the week numbers column.
    *
-   * **Note: **For calendars other than Gregorian, the week numbers are not displayed regardless of what is set.****
+   * **Note:** For calendars other than Gregorian, the week numbers are not displayed regardless of what is set.
    */
   hideWeekNumbers?: boolean;
   /**
@@ -78,13 +78,65 @@ export interface DateRangePickerPropTypes extends Omit<CommonProps, 'onChange' |
    */
   maxDate?: string;
   /**
-   * Determines the мinimum date available for selection.
+   * Determines the minimum date available for selection.
    */
   minDate?: string;
   /**
    * Sets a calendar type used for display. If not set, the calendar type of the global configuration is used.<br/>__Note:__ Calendar types other than Gregorian must be imported manually:<br />`import "@ui5/webcomponents-localization/dist/features/calendar/{primaryCalendarType}.js";`
    */
   primaryCalendarType?: CalendarType | keyof typeof CalendarType;
+  /**
+   * Defines the secondary calendar type. If not set, the calendar will only show the primary calendar type.
+   */
+  secondaryCalendarType?: CalendarType | keyof typeof CalendarType;
+}
+
+export interface DateRangePickerDomRef extends DateRangePickerAttributes, Ui5DomRef {
+  /**
+   * Returns the end date of the currently selected range as JavaScript Date instance.
+   */
+  readonly endDateValue: Date;
+  /**
+   * Returns the start date of the currently selected range as JavaScript Date instance.
+   */
+  readonly startDateValue: Date;
+  /**
+   * Currently selected date represented as a Local JavaScript Date instance.
+   */
+  readonly dateValue: Date;
+  /**
+   * Closes the picker.
+   *
+   */
+  closePicker: () => void;
+  /**
+   * Formats a Java Script date object into a string representing a locale date according to the <code>formatPattern</code> property of the DatePicker instance
+   * @param {Date} date - A Java Script date object to be formatted as string
+   */
+  formatValue: (date: Date) => void;
+  /**
+   * Checks if a date is between the minimum and maximum date.
+   * @param {string} value - A value to be checked
+   */
+  isInValidRange: (value: string) => void;
+  /**
+   * Checks if the picker is open.
+   *
+   */
+  isOpen: () => void;
+  /**
+   * Checks if a value is valid against the current date format of the DatePicker.
+   * @param {string} value - A value to be tested against the current date format
+   */
+  isValid: (value: string) => void;
+  /**
+   * Opens the picker.
+   *
+   */
+  openPicker: () => void;
+}
+
+export interface DateRangePickerPropTypes extends DateRangePickerAttributes, Omit<CommonProps, 'onChange' | 'onInput'> {
   /**
    * Defines the value state message that will be displayed as pop up under the component.
    *
@@ -98,11 +150,11 @@ export interface DateRangePickerPropTypes extends Omit<CommonProps, 'onChange' |
   /**
    * Fired when the input operation has finished by pressing Enter or on focusout.
    */
-  onChange?: (event: Ui5CustomEvent<HTMLInputElement>) => void;
+  onChange?: (event: Ui5CustomEvent<HTMLInputElement, { value: string; valid: boolean }>) => void;
   /**
    * Fired when the value of the component is changed at each key stroke.
    */
-  onInput?: (event: Ui5CustomEvent<HTMLInputElement>) => void;
+  onInput?: (event: Ui5CustomEvent<HTMLInputElement, { value: string; valid: boolean }>) => void;
 }
 
 /**
@@ -110,7 +162,7 @@ export interface DateRangePickerPropTypes extends Omit<CommonProps, 'onChange' |
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/DateRangePicker" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const DateRangePicker = withWebComponent<DateRangePickerPropTypes, Ui5DateRangePickerDomRef>(
+const DateRangePicker = withWebComponent<DateRangePickerPropTypes, DateRangePickerDomRef>(
   'ui5-daterange-picker',
   [
     'delimiter',
@@ -123,7 +175,8 @@ const DateRangePicker = withWebComponent<DateRangePickerPropTypes, Ui5DateRangeP
     'formatPattern',
     'maxDate',
     'minDate',
-    'primaryCalendarType'
+    'primaryCalendarType',
+    'secondaryCalendarType'
   ],
   ['disabled', 'hideWeekNumbers', 'readonly', 'required'],
   ['valueStateMessage'],
@@ -133,11 +186,6 @@ const DateRangePicker = withWebComponent<DateRangePickerPropTypes, Ui5DateRangeP
 DateRangePicker.displayName = 'DateRangePicker';
 
 DateRangePicker.defaultProps = {
-  disabled: false,
-  hideWeekNumbers: false,
-  placeholder: undefined,
-  readonly: false,
-  required: false,
   valueState: ValueState.None
 };
 

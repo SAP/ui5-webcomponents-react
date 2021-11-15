@@ -1,11 +1,12 @@
 import { TableRowType } from '@ui5/webcomponents-react/dist/TableRowType';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/TableRow.js';
 
-export interface TableRowPropTypes extends CommonProps {
+interface TableRowAttributes {
   /**
    * Defines the row's selected state.
    */
@@ -23,6 +24,11 @@ export interface TableRowPropTypes extends CommonProps {
    * **Note:** When set to `Active`, the item will provide visual response upon press, while with type `Inactive` - will not.
    */
   type?: TableRowType | keyof typeof TableRowType;
+}
+
+export interface TableRowDomRef extends TableRowAttributes, Ui5DomRef {}
+
+export interface TableRowPropTypes extends TableRowAttributes, CommonProps {
   /**
    * Defines the cells of the component.
    *
@@ -36,12 +42,11 @@ export interface TableRowPropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/TableRow" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const TableRow = withWebComponent<TableRowPropTypes>('ui5-table-row', ['type'], ['selected'], [], []);
+const TableRow = withWebComponent<TableRowPropTypes, TableRowDomRef>('ui5-table-row', ['type'], ['selected'], [], []);
 
 TableRow.displayName = 'TableRow';
 
 TableRow.defaultProps = {
-  selected: false,
   type: TableRowType.Inactive
 };
 

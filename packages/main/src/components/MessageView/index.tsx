@@ -21,7 +21,6 @@ import { Title } from '@ui5/webcomponents-react/dist/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { MessageViewDomRef } from '@ui5/webcomponents-react/interfaces/MessageViewDomRef';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import clsx from 'clsx';
 import React, {
@@ -39,6 +38,13 @@ import React, {
 import { createUseStyles } from 'react-jss';
 import type { MessageItemPropTypes } from './MessageItem';
 import { getIconNameForType } from './utils';
+
+export interface MessageViewDomRef extends HTMLDivElement {
+  /**
+   * Navigates back to the list page
+   */
+  navigateBack: () => void;
+}
 
 export interface MessageViewPropTypes extends CommonProps {
   /**

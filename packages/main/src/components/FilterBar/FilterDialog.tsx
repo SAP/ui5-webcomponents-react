@@ -27,7 +27,7 @@ import { Input } from '@ui5/webcomponents-react/dist/Input';
 import { Text } from '@ui5/webcomponents-react/dist/Text';
 import { Title } from '@ui5/webcomponents-react/dist/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
-import { Ui5DialogDomRef } from '@ui5/webcomponents-react/interfaces/Ui5DialogDomRef';
+import { DialogDomRef } from '@ui5/webcomponents-react/dist/Dialog';
 import React, { Children, cloneElement, ReactElement, useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
@@ -63,7 +63,7 @@ export const FilterDialog = (props) => {
   const searchRef = useRef(null);
   const [toggledFilters, setToggledFilters] = useState({});
   const dialogRefs = useRef({});
-  const dialogRef = useRef<Ui5DialogDomRef>();
+  const dialogRef = useRef<DialogDomRef>();
   const dialogSearchRef = useRef(null);
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');

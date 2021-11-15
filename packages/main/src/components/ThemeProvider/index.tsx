@@ -1,6 +1,4 @@
-import { fetchI18nBundle } from '@ui5/webcomponents-base/dist/i18nBundle.js';
 import { cssVariablesStyles } from '@ui5/webcomponents-react-base/dist/CssSizeVariables';
-import { useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import React, { FC, ReactNode, useEffect } from 'react';
 import { createUseStyles, ThemeProvider as ReactJssThemeProvider } from 'react-jss';
@@ -35,10 +33,6 @@ const ThemeProvider: FC<ThemeProviderPropTypes> = (props: ThemeProviderPropTypes
         silent: true
       });
     }
-  }, []);
-
-  useIsomorphicLayoutEffect(() => {
-    fetchI18nBundle('@ui5/webcomponents-react');
   }, []);
 
   return <ReactJssThemeProvider theme={ThemingParameters}>{children}</ReactJssThemeProvider>;

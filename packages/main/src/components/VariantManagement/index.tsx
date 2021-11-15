@@ -28,12 +28,11 @@ import { Input } from '@ui5/webcomponents-react/dist/Input';
 import { List } from '@ui5/webcomponents-react/dist/List';
 import { ListMode } from '@ui5/webcomponents-react/dist/ListMode';
 import { PopoverPlacementType } from '@ui5/webcomponents-react/dist/PopoverPlacementType';
-import { ResponsivePopover } from '@ui5/webcomponents-react/dist/ResponsivePopover';
+import { ResponsivePopover, ResponsivePopoverDomRef } from '@ui5/webcomponents-react/dist/ResponsivePopover';
 import { Title } from '@ui5/webcomponents-react/dist/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
 import { SelectedVariant, VariantManagementContext } from '@ui5/webcomponents-react/dist/VariantManagementContext';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { Ui5ResponsivePopoverDomRef } from '@ui5/webcomponents-react/interfaces/Ui5ResponsivePopoverDomRef';
 import React, {
   Children,
   cloneElement,
@@ -250,7 +249,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
   } = props;
 
   const classes = useStyles();
-  const popoverRef = useRef<Ui5ResponsivePopoverDomRef>(null);
+  const popoverRef = useRef<ResponsivePopoverDomRef>(null);
 
   const [safeChildren, setSafeChildren] = useState(Children.toArray(children));
   const [showInput, setShowInput] = useState(safeChildren.length > 9);

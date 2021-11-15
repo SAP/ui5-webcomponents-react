@@ -1,5 +1,5 @@
 import { Option } from '../webComponents/Option';
-import type { OptionPropTypes } from '../webComponents/Option';
+import type { OptionPropTypes, OptionDomRef } from '../webComponents/Option';
 
 export { Option };
-export type { OptionPropTypes };
+export type { OptionPropTypes, OptionDomRef };

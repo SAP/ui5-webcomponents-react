@@ -1,5 +1,5 @@
 import { Popover } from '../webComponents/Popover';
-import type { PopoverPropTypes } from '../webComponents/Popover';
+import type { PopoverPropTypes, PopoverDomRef } from '../webComponents/Popover';
 
 export { Popover };
-export type { PopoverPropTypes };
+export type { PopoverPropTypes, PopoverDomRef };

@@ -1,10 +1,11 @@
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Option.js';
 
-export interface OptionPropTypes extends CommonProps {
+interface OptionAttributes {
   /**
    * Defines whether the component is in disabled state.
    *
@@ -22,13 +23,14 @@ export interface OptionPropTypes extends CommonProps {
    */
   selected?: boolean;
   /**
-   * Defines the stable selector that you can use via getStableDomRef method.
-   */
-  stableDomRef?: string;
-  /**
    * Defines the value of the `Select` inside an HTML Form element when this component is selected. For more information on HTML Form support, see the `name` property of `Select`.
    */
   value?: string;
+}
+
+export interface OptionDomRef extends OptionAttributes, Ui5DomRef {}
+
+export interface OptionPropTypes extends OptionAttributes, CommonProps {
   /**
    * Defines the text of the component.
    *
@@ -42,19 +44,14 @@ export interface OptionPropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Option" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Option = withWebComponent<OptionPropTypes>(
+const Option = withWebComponent<OptionPropTypes, OptionDomRef>(
   'ui5-option',
-  ['icon', 'stableDomRef', 'value'],
+  ['icon', 'value'],
   ['disabled', 'selected'],
   [],
   []
 );
 
 Option.displayName = 'Option';
-
-Option.defaultProps = {
-  disabled: false,
-  selected: false
-};
 
 export { Option };

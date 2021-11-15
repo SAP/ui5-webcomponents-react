@@ -1,13 +1,13 @@
 import { CarouselArrowsPlacement } from '@ui5/webcomponents-react/dist/CarouselArrowsPlacement';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { Ui5CarouselDomRef } from '@ui5/webcomponents-react/interfaces/Ui5CarouselDomRef';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Carousel.js';
 
-export interface CarouselPropTypes extends CommonProps {
+interface CarouselAttributes {
   /**
    * Defines the position of arrows.
    *
@@ -47,6 +47,17 @@ export interface CarouselPropTypes extends CommonProps {
    * Defines the number of items per page on small size (up to 640px). One item per page shown by default.
    */
   itemsPerPageS?: number;
+}
+
+export interface CarouselDomRef extends CarouselAttributes, Ui5DomRef {
+  /**
+   * Changes the currently displayed page.
+   * @param {number} itemIndex - The index of the target page
+   */
+  navigateTo: (itemIndex: number) => void;
+}
+
+export interface CarouselPropTypes extends CarouselAttributes, CommonProps {
   /**
    * Defines the content of the component.
    */
@@ -66,7 +77,7 @@ export interface CarouselPropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Carousel" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Carousel = withWebComponent<CarouselPropTypes, Ui5CarouselDomRef>(
+const Carousel = withWebComponent<CarouselPropTypes, CarouselDomRef>(
   'ui5-carousel',
   ['arrowsPlacement', 'itemsPerPageL', 'itemsPerPageM', 'itemsPerPageS'],
   ['cyclic', 'hideNavigationArrows', 'hidePageIndicator'],
@@ -78,9 +89,6 @@ Carousel.displayName = 'Carousel';
 
 Carousel.defaultProps = {
   arrowsPlacement: CarouselArrowsPlacement.Content,
-  cyclic: false,
-  hideNavigationArrows: false,
-  hidePageIndicator: false,
   itemsPerPageL: 1,
   itemsPerPageM: 1,
   itemsPerPageS: 1

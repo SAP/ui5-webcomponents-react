@@ -121,7 +121,11 @@ import { useRowDisableSelection } from '@ui5/webcomponents-react/dist/Analytical
   }}
   argTypes={{
     data: { type: null },
-    columns: { type: null },
+    columns: {
+      type: null,
+      description:
+        'Defines the columns array where you can define the configuration for each column.<br />Please refer to the [AnalyticalTableColumnDefinition interface](#column-properties) for a full list of options.'
+    },
     reactTableOptions: { type: null },
     tableHooks: { type: null },
     NoDataComponent: { type: null },

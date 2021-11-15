@@ -1,12 +1,12 @@
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { Ui5TreeItemDomRef } from '@ui5/webcomponents-react/interfaces/Ui5TreeItemDomRef';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/TreeItem.js';
 
-export interface TreeItemPropTypes extends CommonProps {
+interface TreeItemAttributes {
   /**
    * Defines the `additionalText`, displayed in the end of the tree item.
    */
@@ -37,6 +37,17 @@ export interface TreeItemPropTypes extends CommonProps {
    * Defines the text of the tree item.
    */
   text?: string;
+}
+
+export interface TreeItemDomRef extends TreeItemAttributes, Ui5DomRef {
+  /**
+   * Call this method to manually switch the <code>expanded</code> state of a tree item.
+   *
+   */
+  toggle: () => void;
+}
+
+export interface TreeItemPropTypes extends TreeItemAttributes, CommonProps {
   /**
    * Defines the items of this component.
    */
@@ -48,7 +59,7 @@ export interface TreeItemPropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/TreeItem" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const TreeItem = withWebComponent<TreeItemPropTypes, Ui5TreeItemDomRef>(
+const TreeItem = withWebComponent<TreeItemPropTypes, TreeItemDomRef>(
   'ui5-tree-item',
   ['additionalText', 'additionalTextState', 'icon', 'text'],
   ['expanded', 'hasChildren', 'selected'],
@@ -59,10 +70,7 @@ const TreeItem = withWebComponent<TreeItemPropTypes, Ui5TreeItemDomRef>(
 TreeItem.displayName = 'TreeItem';
 
 TreeItem.defaultProps = {
-  additionalTextState: ValueState.None,
-  expanded: false,
-  hasChildren: false,
-  selected: false
+  additionalTextState: ValueState.None
 };
 
 export { TreeItem };

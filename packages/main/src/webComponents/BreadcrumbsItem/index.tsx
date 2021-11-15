@@ -1,10 +1,11 @@
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/BreadcrumbsItem.js';
 
-export interface BreadcrumbsItemPropTypes extends CommonProps {
+interface BreadcrumbsItemAttributes {
   /**
    * Defines the accessible aria name of the item.
    */
@@ -15,10 +16,6 @@ export interface BreadcrumbsItemPropTypes extends CommonProps {
    * **Note:** Standard hyperlink behavior is supported.
    */
   href?: string;
-  /**
-   * Defines the stable selector that you can use via `getStableDomRef` method.
-   */
-  stableDomRef?: string;
   /**
    * Defines the link target.
    *
@@ -35,6 +32,11 @@ export interface BreadcrumbsItemPropTypes extends CommonProps {
    * **Note: **This property must only be used when the `href` property is set.****
    */
   target?: string;
+}
+
+export interface BreadcrumbsItemDomRef extends BreadcrumbsItemAttributes, Ui5DomRef {}
+
+export interface BreadcrumbsItemPropTypes extends BreadcrumbsItemAttributes, CommonProps {
   /**
    * Defines the text of the component.
    *
@@ -48,9 +50,9 @@ export interface BreadcrumbsItemPropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/BreadcrumbsItem" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const BreadcrumbsItem = withWebComponent<BreadcrumbsItemPropTypes>(
+const BreadcrumbsItem = withWebComponent<BreadcrumbsItemPropTypes, BreadcrumbsItemDomRef>(
   'ui5-breadcrumbs-item',
-  ['accessibleName', 'href', 'stableDomRef', 'target'],
+  ['accessibleName', 'href', 'target'],
   [],
   [],
   []

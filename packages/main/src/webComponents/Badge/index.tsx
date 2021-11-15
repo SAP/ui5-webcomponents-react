@@ -1,16 +1,22 @@
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Badge.js';
 
-export interface BadgePropTypes extends CommonProps {
+interface BadgeAttributes {
   /**
    * Defines the color scheme of the component. There are 10 predefined schemes. Each scheme applies different values for the `background-color` and `border-color`. To use one you can set a number from `"1"` to `"10"`. The `colorScheme` `"1"` will be set by default.
    *
    * **Note:** Color schemes have no visual representation in High Contrast Black (sap\_belize\_hcb) theme.
    */
   colorScheme?: string;
+}
+
+export interface BadgeDomRef extends BadgeAttributes, Ui5DomRef {}
+
+export interface BadgePropTypes extends BadgeAttributes, CommonProps {
   /**
    * Defines the text of the component.
    * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
@@ -30,7 +36,7 @@ export interface BadgePropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Badge" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Badge = withWebComponent<BadgePropTypes>('ui5-badge', ['colorScheme'], [], ['icon'], []);
+const Badge = withWebComponent<BadgePropTypes, BadgeDomRef>('ui5-badge', ['colorScheme'], [], ['icon'], []);
 
 Badge.displayName = 'Badge';
 

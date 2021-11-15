@@ -151,10 +151,10 @@ Example - `Popover` with `Ref` type declaration:
 ```tsx
 import React, { useRef } from 'react';
 import { ThemeProvider, Button, Popover } from '@ui5/webcomponents-react';
-import { Ui5PopoverDomRef } from '@ui5/webcomponents-react/interfaces/Ui5PopoverDomRef';
+import { PopoverDomRef } from '@ui5/webcomponents-react/dist/Popover';
 
 export default function App() {
-  const popoverRef = useRef<Ui5PopoverDomRef>(null);
+  const popoverRef = useRef<PopoverDomRef>(null);
   const onClick = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
     popoverRef.current?.showAt(e.target);
   };

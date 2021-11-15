@@ -4,12 +4,12 @@ import { PopoverVerticalAlign } from '@ui5/webcomponents-react/dist/PopoverVerti
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { Ui5PopoverDomRef } from '@ui5/webcomponents-react/interfaces/Ui5PopoverDomRef';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Popover.js';
 
-export interface PopoverPropTypes extends CommonProps {
+interface PopoverAttributes {
   /**
    * Determines if there is no enough space, the component can be placed over the target.
    */
@@ -77,6 +77,33 @@ export interface PopoverPropTypes extends CommonProps {
    * Defines if the focus should be returned to the previously focused element, when the popup closes.
    */
   preventFocusRestore?: boolean;
+}
+
+export interface PopoverDomRef extends PopoverAttributes, Ui5DomRef {
+  /**
+   * Shows the popover.
+   * @param {HTMLElement | EventTarget} opener - the element that the popover is shown at
+   * @param {boolean} [preventInitialFocus] - prevents applying the focus inside the popover
+   */
+  showAt: (opener: HTMLElement | EventTarget, preventInitialFocus?: boolean) => void;
+  /**
+   * Focuses the element denoted by <code>initialFocus</code>, if provided, or the first focusable element otherwise.
+   *
+   */
+  applyFocus: () => void;
+  /**
+   * Hides the block layer (for modal popups only)
+   *
+   */
+  close: () => void;
+  /**
+   * Tells if the component is opened
+   *
+   */
+  isOpen: () => void;
+}
+
+export interface PopoverPropTypes extends PopoverAttributes, CommonProps {
   /**
    * Defines the footer HTML Element.
    *
@@ -118,7 +145,7 @@ export interface PopoverPropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Popover" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Popover = withWebComponent<PopoverPropTypes, Ui5PopoverDomRef>(
+const Popover = withWebComponent<PopoverPropTypes, PopoverDomRef>(
   'ui5-popover',
   ['headerText', 'horizontalAlign', 'placementType', 'verticalAlign', 'accessibleName', 'initialFocus'],
   ['allowTargetOverlap', 'hideArrow', 'hideBackdrop', 'modal', 'preventFocusRestore'],
@@ -129,14 +156,9 @@ const Popover = withWebComponent<PopoverPropTypes, Ui5PopoverDomRef>(
 Popover.displayName = 'Popover';
 
 Popover.defaultProps = {
-  allowTargetOverlap: false,
-  hideArrow: false,
-  hideBackdrop: false,
   horizontalAlign: PopoverHorizontalAlign.Center,
-  modal: false,
   placementType: PopoverPlacementType.Right,
-  verticalAlign: PopoverVerticalAlign.Center,
-  preventFocusRestore: false
+  verticalAlign: PopoverVerticalAlign.Center
 };
 
 export { Popover };

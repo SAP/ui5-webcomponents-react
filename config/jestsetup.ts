@@ -2,6 +2,7 @@ import contentLoaderSerializer from '@shared/tests/serializer/content-loader-ser
 import '@testing-library/jest-dom';
 import 'intersection-observer';
 import ResizeObserver from 'resize-observer-polyfill';
+import 'whatwg-fetch';
 
 const setupMatchMedia = () => {
   Object.defineProperty(window, 'matchMedia', {

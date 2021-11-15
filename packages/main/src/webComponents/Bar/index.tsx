@@ -1,11 +1,12 @@
 import { BarDesign } from '@ui5/webcomponents-react/dist/BarDesign';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/Bar.js';
 
-export interface BarPropTypes extends CommonProps {
+interface BarAttributes {
   /**
    * Defines the `Bar` design.
    *
@@ -17,6 +18,11 @@ export interface BarPropTypes extends CommonProps {
    * *   `FloatingFooter`
    */
   design?: BarDesign | keyof typeof BarDesign;
+}
+
+export interface BarDomRef extends BarAttributes, Ui5DomRef {}
+
+export interface BarPropTypes extends BarAttributes, CommonProps {
   /**
    * Defines the content in the middle of the bar
    */
@@ -42,7 +48,7 @@ export interface BarPropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Bar" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Bar = withWebComponent<BarPropTypes>('ui5-bar', ['design'], [], ['endContent', 'startContent'], []);
+const Bar = withWebComponent<BarPropTypes, BarDomRef>('ui5-bar', ['design'], [], ['endContent', 'startContent'], []);
 
 Bar.displayName = 'Bar';
 

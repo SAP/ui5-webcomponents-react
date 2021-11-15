@@ -2,6 +2,8 @@ import { ESLint } from 'eslint';
 import PATHS from '../../config/paths.js';
 import path from 'path';
 import fs from 'fs';
+import dedent from 'dedent';
+import prettierConfigRaw from '../../prettier.config.cjs';
 
 const eslint = new ESLint({
   overrideConfig: {
@@ -15,7 +17,16 @@ const eslint = new ESLint({
   fix: true
 });
 
-export const getTypeDefinitionForProperty = (property, interfaces) => {
+export const getTypeDefinitionForProperty = (property) => {
+  const interfaces = new Set([
+    ...JSON.parse(
+      fs.readFileSync(path.join(PATHS.root, 'scripts', 'web-component-wrappers', 'interfaces.json')).toString()
+    ),
+    'ui5-suggestion-item',
+    'ui5-segmented-button-item',
+    'ui5-option'
+  ]);
+
   if (interfaces.has(property.type.replace(/\[]$/, ''))) {
     if (/\[]$/.test(property.type)) {
       return {
@@ -61,6 +72,12 @@ export const getTypeDefinitionForProperty = (property, interfaces) => {
         importStatement: null,
         tsType: 'unknown[]'
       };
+    case 'Date': {
+      return {
+        importStatement: null,
+        tsType: 'Date'
+      };
+    }
     case 'File': {
       return {
         importStatement: null,
@@ -104,6 +121,14 @@ export const getTypeDefinitionForProperty = (property, interfaces) => {
         tsType: "CSSProperties['color']",
         importStatement: "import { CSSProperties } from 'react';"
       };
+    case 'AvatarColorScheme[]': {
+      return {
+        importStatement: `import { AvatarColorScheme } from '@ui5/webcomponents-react/dist/AvatarColorScheme';`,
+        tsType: `Array<${property.type} | keyof typeof ${property.type}>`,
+        enum: `AvatarColorScheme`,
+        isEnum: true
+      };
+    }
     // UI5 Web Component Enums
     case 'AvatarColorScheme':
     case 'AvatarGroupType':
@@ -192,32 +217,80 @@ export const getEventTargetForComponent = (componentName) => {
   }
 };
 
-export const getDomRefTypingForComponent = (componentName) => {
-  const availableInterfaces = fs
-    .readdirSync(path.resolve(PATHS.packages, 'main', 'src', 'interfaces'))
-    .filter((file) => {
-      return file.startsWith('Ui5');
-    })
-    .map((file) => path.basename(file, '.ts'));
-
-  if (availableInterfaces.includes(`Ui5${componentName}DomRef`)) {
-    return {
-      tsType: `Ui5${componentName}DomRef`,
-      importStatement: `import { Ui5${componentName}DomRef } from '@ui5/webcomponents-react/interfaces/Ui5${componentName}DomRef';`
-    };
-  }
-
-  return null;
-};
-
 export const runEsLint = async (text, name) => {
   const [result] = await eslint.lintText(text, {
     filePath: `packages/main/src/webComponents/${name}/index.tsx`
   });
-  if (result.messages.length) {
+  if (result.messages.some((message) => message.severity === 2)) {
     console.warn(`Failed to run ESLint for '${name}! Please check the file manually.'`);
     console.warn(...result.messages);
     return text;
   }
   return result.output;
+};
+
+export const createDomRef = (componentSpec) => {
+  const importStatements = new Set();
+
+  const isOptionalParameter = (p) => {
+    return p.optional || p.hasOwnProperty('defaultValue');
+  };
+  const resolveTsTypeForMethods = (param) => {
+    let tsType;
+    if (param.type === 'HTMLElement') {
+      tsType = 'HTMLElement | EventTarget';
+    } else if (param.type === 'function' && componentSpec.module === 'Tree') {
+      tsType = '(treeNode: HTMLElement, level: number) => void';
+    } else if (
+      param.type === 'object' &&
+      ['DatePicker', 'DateRangePicker', 'DateTimePicker', 'TimePicker'].includes(componentSpec.module)
+    ) {
+      tsType = 'Date';
+    } else {
+      const tsDefinition = getTypeDefinitionForProperty(param);
+      importStatements.add(tsDefinition.importStatement);
+      tsType = tsDefinition.tsType;
+    }
+    return tsType;
+  };
+
+  const getters = (
+    componentSpec.properties?.filter((prop) => prop.visibility === 'public' && prop.readonly === 'true') ?? []
+  ).map((prop) => {
+    const tsDefinition = getTypeDefinitionForProperty(prop);
+    importStatements.add(tsDefinition.importStatement);
+    return dedent`
+    /**
+     * ${(prop.description ?? '').replaceAll('\n', '\n * ')}
+     */
+     readonly ${prop.name}: ${tsDefinition.tsType};
+    `;
+  });
+
+  const methods = (componentSpec.methods?.filter((method) => method.visibility === 'public') ?? []).map((method) => {
+    const params = method.parameters?.map((param) => {
+      return ` * @param {${resolveTsTypeForMethods(param)}} ${isOptionalParameter(param) ? '[' : ''}${param.name}${
+        isOptionalParameter(param) ? ']' : ''
+      } - ${param.description}`;
+    });
+
+    return dedent`
+          /**
+           * ${method.description.replaceAll('\n', '\n * ')}
+           ${params?.join('\n') ?? '*'}
+           */
+          ${method.name}: (${
+      method.parameters
+        ?.map((p) => `${p.name}${isOptionalParameter(p) ? '?' : ''}: ${resolveTsTypeForMethods(p)}`)
+        .join(', ') ?? ''
+    }) => void
+          `;
+  });
+
+  return [...getters, methods];
+};
+
+export const prettierConfig = {
+  ...prettierConfigRaw,
+  parser: 'typescript'
 };

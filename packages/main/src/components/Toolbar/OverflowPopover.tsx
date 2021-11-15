@@ -1,11 +1,10 @@
 import '@ui5/webcomponents-icons/dist/overflow.js';
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
 import { PopoverPlacementType } from '@ui5/webcomponents-react/dist/PopoverPlacementType';
-import { Popover } from '@ui5/webcomponents-react/dist/Popover';
+import { Popover, PopoverDomRef } from '@ui5/webcomponents-react/dist/Popover';
 import { ToggleButton } from '@ui5/webcomponents-react/dist/ToggleButton';
 import React, { FC, ReactElement, ReactNode, useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { Ui5PopoverDomRef } from '@ui5/webcomponents-react/interfaces/Ui5PopoverDomRef';
 import { stopPropagation } from '../../internal/stopPropagation';
 
 interface OverflowPopoverProps {
@@ -17,7 +16,7 @@ interface OverflowPopoverProps {
 
 export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopoverProps) => {
   const { lastVisibleIndex, contentClass, children, portalContainer } = props;
-  const popoverRef = useRef<Ui5PopoverDomRef>();
+  const popoverRef = useRef<PopoverDomRef>();
   const [pressed, setPressed] = useState(false);
 
   const handleToggleButtonClick = useCallback(

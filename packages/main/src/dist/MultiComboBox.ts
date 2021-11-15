@@ -1,5 +1,5 @@
 import { MultiComboBox } from '../webComponents/MultiComboBox';
-import type { MultiComboBoxPropTypes } from '../webComponents/MultiComboBox';
+import type { MultiComboBoxPropTypes, MultiComboBoxDomRef } from '../webComponents/MultiComboBox';
 
 export { MultiComboBox };
-export type { MultiComboBoxPropTypes };
+export type { MultiComboBoxPropTypes, MultiComboBoxDomRef };
