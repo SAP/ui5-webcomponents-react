@@ -2,7 +2,7 @@ import { CssSizeVariables } from '@ui5/webcomponents-react-base/dist/CssSizeVari
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { createUseStyles } from 'react-jss';
 import { getCurrentRange } from '@ui5/webcomponents-react-base/dist/Device';
-import { useConsolidatedRef, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useSyncRef, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
 import { Title } from '@ui5/webcomponents-react/dist/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
 import React, {
@@ -137,7 +137,7 @@ const Form = forwardRef((props: FormPropTypes, ref: Ref<HTMLFormElement>) => {
   labelSpanMap.set('Desktop', labelSpanL);
   labelSpanMap.set('LargeDesktop', labelSpanXL);
 
-  const formRef = useConsolidatedRef<HTMLFormElement>(ref);
+  const [componentRef, formRef] = useSyncRef<HTMLFormElement>(ref);
   // use the window range set as first best guess
   const [currentRange, setCurrentRange] = useState(getCurrentRange().name);
   const lastRange = useRef(currentRange);
@@ -269,7 +269,7 @@ const Form = forwardRef((props: FormPropTypes, ref: Ref<HTMLFormElement>) => {
   const CustomTag = as as React.ElementType;
   return (
     <CustomTag
-      ref={formRef}
+      ref={componentRef}
       slot={slot}
       className={formClassNames}
       title={tooltip}

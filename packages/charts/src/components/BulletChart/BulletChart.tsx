@@ -1,4 +1,4 @@
-import { useConsolidatedRef, useIsRTL, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useSyncRef, useIsRTL, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { BulletChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/BulletChartPlaceholder';
@@ -140,7 +140,7 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
     ChartPlaceholder
   } = props;
 
-  const chartRef = useConsolidatedRef<any>(ref);
+  const [componentRef, chartRef] = useSyncRef<any>(ref);
 
   const chartConfig = useMemo(() => {
     return {
@@ -259,7 +259,7 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
 
   return (
     <ChartContainer
-      ref={chartRef}
+      ref={componentRef}
       loading={loading}
       dataset={dataset}
       Placeholder={ChartPlaceholder ?? Placeholder}

@@ -1,7 +1,6 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
-import React, { forwardRef, ReactNode, ReactNodeArray, RefObject } from 'react';
+import React, { forwardRef, ReactNode, RefObject } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { EmptyIdPropException } from '../ObjectPage/EmptyIdPropException';
@@ -19,7 +18,7 @@ export interface ObjectPageSubSectionPropTypes extends CommonProps {
   /**
    * Defines the content of the `ObjectPageSubSection`.
    */
-  children: ReactNode | ReactNodeArray;
+  children: ReactNode | ReactNode[];
 }
 
 const styles = {
@@ -51,7 +50,6 @@ const ObjectPageSubSection = forwardRef((props: ObjectPageSubSectionPropTypes, r
     throw new EmptyIdPropException('ObjectPageSubSection requires a unique ID property!');
   }
 
-  const htmlRef: RefObject<HTMLDivElement> = useConsolidatedRef(ref);
   const htmlId = `ObjectPageSubSection-${id}`;
 
   const classes = useStyles();
@@ -60,7 +58,7 @@ const ObjectPageSubSection = forwardRef((props: ObjectPageSubSectionPropTypes, r
 
   return (
     <div
-      ref={htmlRef}
+      ref={ref}
       role="region"
       style={style}
       title={tooltip}

@@ -1,4 +1,4 @@
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
+import { useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import { StandardListItem, StandardListItemPropTypes } from '@ui5/webcomponents-react/dist/StandardListItem';
 import { VariantManagementContext } from '@ui5/webcomponents-react/dist/VariantManagementContext';
 import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
@@ -64,7 +64,7 @@ const VariantItem = forwardRef((props: VariantItemPropTypes, ref: Ref<Ui5DomRef>
     hideDelete
   } = props;
   const { selectVariantItem } = useContext(VariantManagementContext);
-  const consolidatedRef = useConsolidatedRef<any>(ref);
+  const [componentRef, consolidatedRef] = useSyncRef<any>(ref);
   useEffect(() => {
     if (selected) {
       selectVariantItem({ ...props, variantItem: consolidatedRef.current });
@@ -74,7 +74,7 @@ const VariantItem = forwardRef((props: VariantItemPropTypes, ref: Ref<Ui5DomRef>
   return (
     <StandardListItem
       {...props}
-      ref={consolidatedRef}
+      ref={componentRef}
       data-is-default={isDefault}
       data-author={author}
       data-favorite={favorite}

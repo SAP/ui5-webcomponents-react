@@ -1,8 +1,7 @@
 import { isPhone } from '@ui5/webcomponents-base/dist/Device.js';
 import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming.js';
-import { useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { AVAILABLE_ACTIONS, CANCEL, X_OF_Y } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
@@ -127,7 +126,7 @@ const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: RefObject<Resp
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const classes = useStyles();
   const actionSheetClasses = clsx(classes.actionSheet, className);
-  const popoverRef: RefObject<ResponsivePopoverDomRef> = useConsolidatedRef(ref);
+  const [componentRef, popoverRef] = useSyncRef(ref);
   const actionBtnsRef = useRef(null);
   const [focusedItem, setFocusedItem] = useReducer((_, action) => {
     return parseInt(action.target.dataset.actionBtnIndex);
@@ -213,7 +212,7 @@ const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: RefObject<Resp
       onBeforeOpen={onBeforeOpen}
       {...passThroughProps}
       onAfterOpen={handleAfterOpen}
-      ref={popoverRef}
+      ref={componentRef}
       className={actionSheetClasses}
       data-actionsheet
     >

@@ -1,4 +1,3 @@
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/dist/components/ChartContainer';
@@ -148,7 +147,6 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
     (value, name) => [measure.formatter(value), dimension.formatter(name)],
     [measure.formatter, dimension.formatter]
   );
-  const chartRef = useConsolidatedRef<any>(ref);
 
   const onItemLegendClick = useLegendItemClick(onLegendClick, () => measure.accessor);
   const onClickInternal = useOnClickInternal(onClick);
@@ -256,7 +254,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
   return (
     <ChartContainer
       dataset={dataset}
-      ref={chartRef}
+      ref={ref}
       loading={loading}
       Placeholder={ChartPlaceholder ?? PieChartPlaceholder}
       style={style}

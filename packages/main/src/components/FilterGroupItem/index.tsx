@@ -1,4 +1,4 @@
-import { useConsolidatedRef, useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import { createUseStyles } from 'react-jss';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { BusyIndicator } from '@ui5/webcomponents-react/dist/BusyIndicator';
@@ -80,7 +80,7 @@ export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref:
   } = props;
   const passThroughProps = usePassThroughHtmlProps(props);
   const inFB = props['data-in-fb'];
-  const filterGroupItemRef = useConsolidatedRef<HTMLDivElement>(ref);
+  const [componentRef, filterGroupItemRef] = useSyncRef<HTMLDivElement>(ref);
 
   const isRtl = useIsRTL(filterGroupItemRef);
   const transformMarginRight = isRtl ? 'marginLeft' : 'marginRight';
@@ -92,7 +92,7 @@ export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref:
   if (!required && (!visible || (inFB && !visibleInFilterBar))) return null;
   return (
     <div
-      ref={filterGroupItemRef}
+      ref={componentRef}
       title={tooltip}
       slot={slot}
       {...passThroughProps}

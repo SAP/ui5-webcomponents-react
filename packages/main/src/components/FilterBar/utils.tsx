@@ -17,7 +17,7 @@ export const filterValue = (ref, child) => {
   const tagName = ref.tagName;
   let filterItemProps = {};
   if (inputTagNames.has(tagName)) {
-    filterItemProps = { value: ref.value };
+    filterItemProps = { value: ref.value ?? '' };
   }
   if (tagName === 'UI5-SELECT' || tagName === 'UI5-MULTI-COMBOBOX') {
     const selectedIndices = Array.from(ref.children as HTMLCollectionOf<any>)
@@ -39,7 +39,10 @@ export const filterValue = (ref, child) => {
 };
 
 export const renderSearchWithValue = (renderSearchElement, searchValue) => {
-  return cloneElement(renderSearchElement, { value: searchValue ?? renderSearchElement?.props?.value });
+  return cloneElement(renderSearchElement, {
+    value: searchValue ?? renderSearchElement?.props?.value,
+    'data-component-name': 'FilterBarSearch'
+  });
 };
 
 export const syncRef = (ref: Ref<unknown>, node: unknown): void => {

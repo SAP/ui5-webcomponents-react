@@ -1,7 +1,6 @@
 import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming.js';
-import { useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { debounce, enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { AvatarPropTypes } from '@ui5/webcomponents-react/dist/Avatar';
@@ -194,11 +193,11 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
   const [headerPinned, setHeaderPinned] = useState(alwaysShowContentHeader);
   const isProgrammaticallyScrolled = useRef(false);
 
-  const objectPageRef: RefObject<HTMLDivElement> = useConsolidatedRef(ref);
+  const [componentRef, objectPageRef] = useSyncRef(ref);
   const topHeaderRef: RefObject<HTMLDivElement> = useRef();
   const scrollEvent = useRef();
   //@ts-ignore
-  const headerContentRef: RefObject<HTMLDivElement> = useConsolidatedRef(headerContent?.ref);
+  const [componentRefHeaderContent, headerContentRef] = useSyncRef(headerContent?.ref);
   const anchorBarRef: RefObject<HTMLDivElement> = useRef();
   const scrollTimeout = useRef(null);
   const [isAfterScroll, setIsAfterScroll] = useState(false);
@@ -610,7 +609,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
         ...headerContent.props,
         topHeaderHeight,
         headerPinned: headerPinned || scrolledHeaderExpanded,
-        ref: headerContentRef,
+        ref: componentRefHeaderContent,
         children: (
           <div
             className={`${classes.headerContainer} ${responsivePaddingClass}`}
@@ -732,7 +731,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
       slot={slot}
       className={objectPageClasses}
       style={style}
-      ref={objectPageRef}
+      ref={componentRef}
       title={tooltip}
       onScroll={onObjectPageScroll}
       {...passThroughProps}
