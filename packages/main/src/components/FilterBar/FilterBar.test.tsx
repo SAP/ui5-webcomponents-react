@@ -500,7 +500,7 @@ describe('FilterBar', () => {
     const dialogGoButton = screen.getAllByText('Go')[1];
     fireEvent.click(dialogGoButton);
     expect(onGo).toHaveBeenCalledTimes(2);
-    expect(onFiltersDialogSave).toHaveBeenCalledTimes(1);
+    expect(onFiltersDialogSave).toHaveBeenCalledTimes(2);
     expect(onFiltersDialogClose).toHaveBeenCalledTimes(4);
 
     rerender(
@@ -541,7 +541,7 @@ describe('FilterBar', () => {
     fireEvent.click(filterButton);
 
     fireEvent.keyDown(document.getElementsByTagName('ui5-dialog')[0], { key: 'Escape', code: 'Escape' });
-    expect(onFiltersDialogSave).toHaveBeenCalledTimes(2);
+    expect(onFiltersDialogSave).toHaveBeenCalledTimes(3);
     expect(onFiltersDialogClose).toHaveBeenCalledTimes(5);
   });
 

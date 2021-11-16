@@ -1,4 +1,4 @@
-import { useConsolidatedRef, useIsomorphicLayoutEffect, useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useIsomorphicLayoutEffect, useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { debounce, enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
@@ -17,6 +17,7 @@ import React, {
   ComponentType,
   CSSProperties,
   forwardRef,
+  MutableRefObject,
   ReactNode,
   ReactText,
   Ref,
@@ -552,7 +553,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     return props.data;
   }, [props.data, minRows]);
 
-  const tableInstanceRef = useConsolidatedRef<Record<string, any>>(tableInstance);
+  const tableInstanceRef = useRef<Record<string, any>>(null);
 
   tableInstanceRef.current = useTable(
     {
@@ -624,6 +625,13 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     setGroupBy,
     setGlobalFilter
   } = tableInstanceRef.current;
+
+  if (tableInstance && {}.hasOwnProperty.call(tableInstance, 'current')) {
+    (tableInstance as MutableRefObject<Record<string, any>>).current = tableInstanceRef.current;
+  }
+  if (typeof tableInstance === 'function') {
+    tableInstance(tableInstanceRef.current);
+  }
 
   const titleBarRef = useRef(null);
   const extensionRef = useRef(null);

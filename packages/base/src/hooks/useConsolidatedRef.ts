@@ -1,7 +1,12 @@
 import { MutableRefObject, useEffect, useMemo, useRef } from 'react';
+import { deprecationNotice } from '@ui5/webcomponents-react-base/dist/Utils';
 
 export const useConsolidatedRef = <T>(ref): MutableRefObject<T> => {
   const localRef: MutableRefObject<T> = useRef(null);
+
+  useEffect(() => {
+    deprecationNotice('useConsolidatedRef', `\`useConsolidatedRef\` is deprecated. Please use \`useSyncRef\` instead.`);
+  }, []);
 
   const consolidatedRef: MutableRefObject<T> = useMemo(() => {
     if (!ref || typeof ref === 'function') {
