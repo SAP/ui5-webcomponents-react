@@ -459,7 +459,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    *
    * **Note**: Use this prop with care, some properties might have an impact on the internal `AnalyticalTable` implementation.
    */
-  tableInstance?: MutableRefObject<Record<string, any>>;
+  tableInstance?: Ref<Record<string, any>>;
 }
 
 const useStyles = createUseStyles(styles, { name: 'AnalyticalTable' });
@@ -541,8 +541,11 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
   }, [props.data, minRows]);
 
   let tableInstanceRef = useRef<Record<string, any>>();
-  if (tableInstance) {
+  if (tableInstance && typeof tableInstance !== 'function') {
     tableInstanceRef = tableInstance;
+  }
+  if (typeof tableInstance === 'function') {
+    tableInstance(tableInstanceRef.current);
   }
 
   tableInstanceRef.current = useTable(

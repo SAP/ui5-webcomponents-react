@@ -1,17 +1,7 @@
 import { getEffectiveScopingSuffixForTag } from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
 import { debounce } from '@ui5/webcomponents-react-base/dist/Utils';
-import { useConsolidatedRef, useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
-import React, {
-  Children,
-  cloneElement,
-  ComponentType,
-  forwardRef,
-  ReactElement,
-  Ref,
-  RefObject,
-  useEffect,
-  useRef
-} from 'react';
+import { useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
+import React, { Children, cloneElement, ComponentType, forwardRef, ReactElement, Ref, useEffect, useRef } from 'react';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 
