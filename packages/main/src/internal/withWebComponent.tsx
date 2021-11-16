@@ -23,7 +23,7 @@ const createEventPropName = (eventName) => `on${capitalizeFirstLetter(kebabToCam
 
 type EventHandler = (event: CustomEvent<unknown>) => void;
 
-export const withWebComponent = <Props extends Record<string, any>, RefType extends Ui5DomRef>(
+export const withWebComponent = <Props extends Record<string, any>, RefType = Ui5DomRef>(
   tagName: string,
   regularProperties: string[],
   booleanProperties: string[],
