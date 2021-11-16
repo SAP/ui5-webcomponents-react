@@ -541,12 +541,6 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
   }, [props.data, minRows]);
 
   let tableInstanceRef = useRef<Record<string, any>>();
-  if (tableInstance && typeof tableInstance !== 'function') {
-    tableInstanceRef = tableInstance;
-  }
-  if (typeof tableInstance === 'function') {
-    tableInstance(tableInstanceRef.current);
-  }
 
   tableInstanceRef.current = useTable(
     {
@@ -618,6 +612,13 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     setGroupBy,
     setGlobalFilter
   } = tableInstanceRef.current;
+
+  if (tableInstance && {}.hasOwnProperty.call(tableInstance, 'current')) {
+    (tableInstance as MutableRefObject<Record<string, any>>).current = tableInstanceRef.current;
+  }
+  if (typeof tableInstance === 'function') {
+    tableInstance(tableInstanceRef.current);
+  }
 
   const titleBarRef = useRef(null);
   const extensionRef = useRef(null);
