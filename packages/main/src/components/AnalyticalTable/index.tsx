@@ -201,6 +201,19 @@ export interface AnalyticalTableColumnDefinition {
    */
   PopInHeader?: string | ComponentType<any>;
 
+  //use useDragAndDrop
+  /**
+   * Defines if the column is reorderable by dragging and dropping columns.
+   *
+   * Defaults to: `true`
+   *
+   * @deprecated please use `disableDragAndDrop` instead.
+   */
+  canReorder?: boolean;
+  /**
+   * Defines if the column is reorderable by dragging and dropping columns.
+   */
+  disableDragAndDrop?: boolean;
   // all other custom properties or [React Table](https://react-table.tanstack.com/) column options
   [key: string]: any;
 }

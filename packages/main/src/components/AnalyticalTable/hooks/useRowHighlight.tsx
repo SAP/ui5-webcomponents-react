@@ -56,7 +56,7 @@ const columns = (currentColumns, { instance }) => {
       disableSortBy: true,
       disableGroupBy: true,
       disableResizing: true,
-      canReorder: false,
+      disableDragAndDrop: true,
       width: 6,
       minWidth: 6,
       maxWidth: 6,

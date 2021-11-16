@@ -84,7 +84,7 @@ import { useRowDisableSelection } from '@ui5/webcomponents-react/dist/Analytical
         Header: 'Actions',
         accessor: '.',
         width: 100,
-        canResize: false,
+        disableResizing: true,
         Cell: ({ cell, row }) => {
           // console.log('This is your row data', row.original);
           return (
@@ -188,6 +188,8 @@ import { useRowDisableSelection } from '@ui5/webcomponents-react/dist/Analytical
 | `responsivePopIn`     | `boolean`                                                                | Enables the pop-in behavior of the column. When the `responsiveMinWidth` is smaller then the width of the table, the content of each cell will move to the first cell in the row, improving usability on small or mobile devices.                                                                                                                                                                               |
 | `responsiveMinWidth`  | `number`                                                                 | Defines how the table should react when its width falls below the `responsiveMinWidth`. <ul><li>If `responsivePopIn` is `true` the content of this column will be moved to the first column.</li><li>If `responsivePopIn` is not set or `false` the column will be hidden.</li></ul>                                                                                                                            |
 | `PopInHeader`         | `string OR ComponentType`                                                | Custom pop-in header renderer. If set, the table will call that component for every column that is "popped-in" and pass the table instance as prop.                                                                                                                                                                                                                                                             |
+| `disableDragAndDrop`  | `boolean`                                                                | Defines if the column is reorderable by dragging and dropping columns.                                                                                                                                                                                                                                                                                                                                          |
+| `canReorder`          | `boolean`                                                                | **deprecated** Defines if the column is reorderable by dragging and dropping columns. Please use `disableDragAndDrop` instead. Defaults to: `true`.                                                                                                                                                                                                                                                                                                      |
 
 <br />
 
@@ -843,7 +845,7 @@ In the example below you can have a look at this behavior:
           id: 'actions',
           Header: 'Actions',
           width: 100,
-          canResize: false,
+          disableResizing: true,
           Cell: (instance) => {
             return (
               <FlexBox>
@@ -968,7 +970,7 @@ const COLUMNS = [
     id: 'actions',
     Header: 'Actions',
     width: 100,
-    canResize: false,
+    disableResizing: true,
     Cell: (instance) => {
       return (
         <FlexBox>
