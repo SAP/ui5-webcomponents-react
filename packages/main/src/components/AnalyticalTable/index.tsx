@@ -540,7 +540,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     return props.data;
   }, [props.data, minRows]);
 
-  let tableInstanceRef = useRef<Record<string, any>>();
+  const tableInstanceRef = useRef<Record<string, any>>(null);
 
   tableInstanceRef.current = useTable(
     {
