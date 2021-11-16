@@ -147,7 +147,7 @@ const columns = (currentColumns, { instance }) => {
       disableSortBy: true,
       disableGroupBy: true,
       disableResizing: true,
-      canReorder: false,
+      disableDragAndDrop: true,
       width: selectionColumnWidth,
       minWidth: selectionColumnWidth,
       maxWidth: selectionColumnWidth,
