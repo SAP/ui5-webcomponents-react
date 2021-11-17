@@ -3,11 +3,12 @@ import { AvatarShape } from '@ui5/webcomponents-react/dist/AvatarShape';
 import { AvatarSize } from '@ui5/webcomponents-react/dist/AvatarSize';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Avatar.js';
 
-export interface AvatarPropTypes extends CommonProps {
+interface AvatarAttributes {
   /**
    * Defines the text alternative of the component. If not provided a default text alternative will be set, if present.
    */
@@ -72,6 +73,11 @@ export interface AvatarPropTypes extends CommonProps {
    * *   `XL`
    */
   size?: AvatarSize | keyof typeof AvatarSize;
+}
+
+export interface AvatarDomRef extends AvatarAttributes, Ui5DomRef {}
+
+export interface AvatarPropTypes extends AvatarAttributes, CommonProps {
   /**
    * Receives the desired `<img>` tag
    *
@@ -87,7 +93,7 @@ export interface AvatarPropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Avatar" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Avatar = withWebComponent<AvatarPropTypes>(
+const Avatar = withWebComponent<AvatarPropTypes, AvatarDomRef>(
   'ui5-avatar',
   ['accessibleName', 'colorScheme', 'icon', 'initials', 'shape', 'size'],
   ['interactive'],
@@ -96,12 +102,5 @@ const Avatar = withWebComponent<AvatarPropTypes>(
 );
 
 Avatar.displayName = 'Avatar';
-
-Avatar.defaultProps = {
-  // colorScheme: AvatarColorScheme.Accent6, // needs to be removed for AvatarGroup
-  interactive: false,
-  shape: AvatarShape.Circle
-  // size: AvatarSize.S
-};
 
 export { Avatar };

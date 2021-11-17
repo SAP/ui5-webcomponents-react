@@ -2,11 +2,12 @@ import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/MultiComboBox.js';
 
-export interface MultiComboBoxPropTypes extends Omit<CommonProps, 'onChange' | 'onInput'> {
+interface MultiComboBoxAttributes {
   /**
    * Defines if the user input will be prevented, if no matching item has been found
    */
@@ -53,6 +54,16 @@ export interface MultiComboBoxPropTypes extends Omit<CommonProps, 'onChange' | '
    * *   `Information`
    */
   valueState?: ValueState | keyof typeof ValueState;
+}
+
+export interface MultiComboBoxDomRef extends MultiComboBoxAttributes, Ui5DomRef {
+  /**
+   * Indicates whether the dropdown is open. True if the dropdown is open, false otherwise.
+   */
+  readonly open: boolean;
+}
+
+export interface MultiComboBoxPropTypes extends MultiComboBoxAttributes, Omit<CommonProps, 'onChange' | 'onInput'> {
   /**
    * Defines the component items.
    */
@@ -93,11 +104,11 @@ export interface MultiComboBoxPropTypes extends Omit<CommonProps, 'onChange' | '
 }
 
 /**
- * The `MultiComboBox` component provides a list box with items and a text field allowing the user to either type a value directly into the control, or choose from the list of existing items. It is a drop-down list for selecting and filtering values, commonly used to enable users to select one or more options from a predefined list. The control provides an editable input field to filter the list, and a dropdown arrow of available options. The select options in the list have checkboxes that permit multi-selection. Entered values are displayed as tokens.
+ * The `MultiComboBox` component consists of a list box with items and a text field allowing the user to either type a value directly into the text field, or choose from the list of existing items. The drop-down list is used for selecting and filtering values, it enables users to select one or more options from a predefined list. The control provides an editable input field to filter the list, and a dropdown arrow to expand/collapse the list of available options. The options in the list have checkboxes that permit multi-selection. Entered values are displayed as tokens.
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/MultiComboBox" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const MultiComboBox = withWebComponent<MultiComboBoxPropTypes>(
+const MultiComboBox = withWebComponent<MultiComboBoxPropTypes, MultiComboBoxDomRef>(
   'ui5-multi-combobox',
   ['filter', 'placeholder', 'value', 'valueState'],
   ['allowCustomValues', 'disabled', 'readonly', 'required'],
@@ -108,11 +119,7 @@ const MultiComboBox = withWebComponent<MultiComboBoxPropTypes>(
 MultiComboBox.displayName = 'MultiComboBox';
 
 MultiComboBox.defaultProps = {
-  allowCustomValues: false,
-  disabled: false,
   filter: 'StartsWithPerTerm',
-  readonly: false,
-  required: false,
   valueState: ValueState.None
 };
 

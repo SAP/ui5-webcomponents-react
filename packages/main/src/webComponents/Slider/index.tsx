@@ -1,10 +1,11 @@
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 
 import '@ui5/webcomponents/dist/Slider.js';
 
-export interface SliderPropTypes extends Omit<CommonProps, 'onChange' | 'onInput'> {
+interface SliderAttributes {
   /**
    * Current value of the slider
    */
@@ -20,15 +21,15 @@ export interface SliderPropTypes extends Omit<CommonProps, 'onChange' | 'onInput
    */
   labelInterval?: number;
   /**
-   * Defines the maximum value of the slider
+   * Defines the maximum value of the slider.
    */
   max?: number;
   /**
-   * Defines the minimum value of the slider
+   * Defines the minimum value of the slider.
    */
   min?: number;
   /**
-   * Enables tick marks visualization for each step.
+   * Enables tickmarks visualization for each step.
    *
    * **Note:** The step must be a positive number.
    */
@@ -43,6 +44,11 @@ export interface SliderPropTypes extends Omit<CommonProps, 'onChange' | 'onInput
    * **Note:** If set to 0 the slider handle movement is disabled. When negative number or value other than a number, the component fallbacks to its default value.
    */
   step?: number;
+}
+
+export interface SliderDomRef extends SliderAttributes, Ui5DomRef {}
+
+export interface SliderPropTypes extends SliderAttributes, Omit<CommonProps, 'onChange' | 'onInput'> {
   /**
    * Fired when the value changes and the user has finished interacting with the slider.
    */
@@ -58,7 +64,7 @@ export interface SliderPropTypes extends Omit<CommonProps, 'onChange' | 'onInput
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Slider" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Slider = withWebComponent<SliderPropTypes>(
+const Slider = withWebComponent<SliderPropTypes, SliderDomRef>(
   'ui5-slider',
   ['value', 'labelInterval', 'max', 'min', 'step'],
   ['disabled', 'showTickmarks', 'showTooltip'],
@@ -70,12 +76,9 @@ Slider.displayName = 'Slider';
 
 Slider.defaultProps = {
   value: 0,
-  disabled: false,
   labelInterval: 0,
   max: 100,
   min: 0,
-  showTickmarks: false,
-  showTooltip: false,
   step: 1
 };
 

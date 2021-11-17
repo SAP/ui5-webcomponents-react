@@ -4,23 +4,22 @@ import { ListSeparators } from '@ui5/webcomponents-react/dist/ListSeparators';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/List.js';
 
-export interface ListPropTypes extends CommonProps {
+interface ListAttributes {
   /**
-   * Sets the accessible aria name of the component.
+   * Defines the accessible name of the component.
    */
   accessibleName?: string;
   /**
-   * Receives id(or many ids) of the elements that label the input
+   * Defines the IDs of the elements that label the input.
    */
   accessibleNameRef?: string;
   /**
    * Defines the accessible role of the component.
-   *
-   * **Note:** If you use notification list items, it's recommended to set `accessible-role="list"` for better accessibility.
    */
   accessibleRole?: string;
   /**
@@ -54,7 +53,7 @@ export interface ListPropTypes extends CommonProps {
    */
   headerText?: string;
   /**
-   * Determines whether the list items are indented.
+   * Determines whether the component is indented.
    */
   indent?: boolean;
   /**
@@ -77,6 +76,11 @@ export interface ListPropTypes extends CommonProps {
    * *   When set to `Inner`, the first item doesn't have a top separator and the last item doesn't have a bottom separator.
    */
   separators?: ListSeparators | keyof typeof ListSeparators;
+}
+
+export interface ListDomRef extends ListAttributes, Ui5DomRef {}
+
+export interface ListPropTypes extends ListAttributes, CommonProps {
   /**
    * Defines the items of the component.
    *
@@ -131,7 +135,7 @@ export interface ListPropTypes extends CommonProps {
 /**
  * The `List` component allows displaying a list of items, advanced keyboard handling support for navigating between items, and predefined modes to improve the development efficiency.
  *
- * The `List` is а container for the available list items:
+ * The `List` is a container for the available list items:
  *
  * *   `StandardListItem`
  * *   `CustomListItem`
@@ -145,7 +149,7 @@ export interface ListPropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/List" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const List = withWebComponent<ListPropTypes>(
+const List = withWebComponent<ListPropTypes, ListDomRef>(
   'ui5-list',
   [
     'accessibleName',
@@ -167,11 +171,9 @@ const List = withWebComponent<ListPropTypes>(
 List.displayName = 'List';
 
 List.defaultProps = {
-  accessibleRole: 'listbox',
-  busy: false,
+  accessibleRole: 'list',
   busyDelay: 1000,
   growing: ListGrowingMode.None,
-  indent: false,
   mode: ListMode.None,
   separators: ListSeparators.All
 };

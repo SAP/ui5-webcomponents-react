@@ -1,6 +1,5 @@
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
-import React, { forwardRef, ReactNode, ReactNodeArray, RefObject } from 'react';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
+import React, { forwardRef, ReactNode, RefObject } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { EmptyIdPropException } from '../ObjectPage/EmptyIdPropException';
@@ -24,7 +23,7 @@ export interface ObjectPageSectionPropTypes extends CommonProps {
   /**
    * Defines the content of the `ObjectPageSection`.
    */
-  children: ReactNode | ReactNodeArray;
+  children: ReactNode | ReactNode[];
 }
 
 const useStyles = createUseStyles(styles, { name: 'ObjectPageSection' });
@@ -38,8 +37,6 @@ const ObjectPageSection = forwardRef((props: ObjectPageSectionPropTypes, ref: Re
   if (!id) {
     throw new EmptyIdPropException('ObjectPageSection requires a unique ID property!');
   }
-
-  const sectionRef: RefObject<HTMLElement> = useConsolidatedRef(ref);
   const htmlId = `ObjectPageSection-${id}`;
 
   const titleClasses = clsx(classes.title, titleTextUppercase && classes.uppercase);
@@ -47,7 +44,7 @@ const ObjectPageSection = forwardRef((props: ObjectPageSectionPropTypes, ref: Re
   const passThroughProps = usePassThroughHtmlProps(props, ['id']);
   return (
     <section
-      ref={sectionRef}
+      ref={ref}
       role="region"
       className={className}
       style={style}

@@ -16,10 +16,9 @@ import { Icon } from '@ui5/webcomponents-react/dist/Icon';
 import { List } from '@ui5/webcomponents-react/dist/List';
 import { ListItemType } from '@ui5/webcomponents-react/dist/ListItemType';
 import { PopoverPlacementType } from '@ui5/webcomponents-react/dist/PopoverPlacementType';
-import { Popover } from '@ui5/webcomponents-react/dist/Popover';
+import { Popover, PopoverDomRef } from '@ui5/webcomponents-react/dist/Popover';
 import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/dist/PopoverHorizontalAlign';
 import { StandardListItem } from '@ui5/webcomponents-react/dist/StandardListItem';
-import { Ui5PopoverDomRef } from '@ui5/webcomponents-react/interfaces/Ui5PopoverDomRef';
 import React, { RefObject, useCallback, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
@@ -56,7 +55,7 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
   const showGroup = column.canGroupBy;
   const showSort = column.canSort;
 
-  const ref = useRef<Ui5PopoverDomRef>(null);
+  const ref = useRef<PopoverDomRef>(null);
   const listRef = useRef(null);
 
   const { Filter } = column;

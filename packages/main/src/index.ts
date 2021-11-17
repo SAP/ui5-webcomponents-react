@@ -38,6 +38,7 @@ import { CarouselArrowsPlacement } from './dist/CarouselArrowsPlacement';
 import { CheckBox } from './dist/CheckBox';
 import { ColorPalette } from './dist/ColorPalette';
 import { ColorPaletteItem } from './dist/ColorPaletteItem';
+import { ColorPalettePopover } from './dist/ColorPalettePopover';
 import { ColorPicker } from './dist/ColorPicker';
 import { ComboBox } from './dist/ComboBox';
 import { ComboBoxGroupItem } from './dist/ComboBoxGroupItem';
@@ -56,6 +57,8 @@ import { FCLLayout } from './dist/FCLLayout';
 import { FileUploader } from './dist/FileUploader';
 import { FilterBar } from './dist/FilterBar';
 import { FilterGroupItem } from './dist/FilterGroupItem';
+import { FilterItem } from './dist/FilterItem';
+import { FilterItemOption } from './dist/FilterItemOption';
 import { FlexBox } from './dist/FlexBox';
 import { FlexBoxAlignItems } from './dist/FlexBoxAlignItems';
 import { FlexBoxDirection } from './dist/FlexBoxDirection';
@@ -136,6 +139,7 @@ import { Slider } from './dist/Slider';
 import { Splitter } from './dist/Splitter';
 import { SplitterElement } from './dist/SplitterElement';
 import { SplitterLayout } from './dist/SplitterLayout';
+import { SortItem } from './dist/SortItem';
 import { StandardListItem } from './dist/StandardListItem';
 import { StepInput } from './dist/StepInput';
 import { SuggestionGroupItem } from './dist/SuggestionGroupItem';
@@ -190,6 +194,7 @@ import { VariantManagement } from './dist/VariantManagement';
 import { VariantManagementContext } from './dist/VariantManagementContext';
 import { VerticalAlign } from './dist/VerticalAlign';
 import { withWebComponent } from './dist/withWebComponent';
+import { ViewSettingsDialog } from './dist/ViewSettingsDialog';
 import { Wizard } from './dist/Wizard';
 import { WizardStep } from './dist/WizardStep';
 import { WrappingType } from './dist/WrappingType';
@@ -231,6 +236,7 @@ export {
   CheckBox,
   ColorPalette,
   ColorPaletteItem,
+  ColorPalettePopover,
   ColorPicker,
   ComboBox,
   ComboBoxGroupItem,
@@ -249,6 +255,8 @@ export {
   FileUploader,
   FilterBar,
   FilterGroupItem,
+  FilterItem,
+  FilterItemOption,
   FlexBox,
   FlexBoxAlignItems,
   FlexBoxDirection,
@@ -329,6 +337,7 @@ export {
   Splitter,
   SplitterElement,
   SplitterLayout,
+  SortItem,
   StandardListItem,
   StepInput,
   SuggestionGroupItem,
@@ -382,6 +391,7 @@ export {
   VariantManagement,
   VariantManagementContext,
   VerticalAlign,
+  ViewSettingsDialog,
   Wizard,
   WizardStep,
   WrappingType,

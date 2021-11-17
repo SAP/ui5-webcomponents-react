@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react-base",
-  "version": "0.19.0",
+  "version": "0.20.0",
   "description": "Base for ui5-webcomponents-react",
   "main": "index.esm.js",
   "module": "index.esm.js",
@@ -33,7 +33,7 @@
     "smoothscroll-polyfill": "0.4.4"
   },
   "peerDependencies": {
-    "@ui5/webcomponents-base": "1.0.0-rc.15",
+    "@ui5/webcomponents-base": "^1.0.0",
     "react": "^16.8.0 || ^17.0.0"
   },
   "peerDependenciesMeta": {

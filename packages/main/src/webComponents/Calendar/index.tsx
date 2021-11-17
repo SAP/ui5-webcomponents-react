@@ -3,11 +3,12 @@ import { CalendarType } from '@ui5/webcomponents-react/dist/CalendarType';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Calendar.js';
 
-export interface CalendarPropTypes extends CommonProps {
+interface CalendarAttributes {
   /**
    * Defines the visibility of the week numbers column.
    *
@@ -31,13 +32,22 @@ export interface CalendarPropTypes extends CommonProps {
    */
   maxDate?: string;
   /**
-   * Determines the мinimum date available for selection.
+   * Determines the minimum date available for selection.
    */
   minDate?: string;
   /**
    * Sets a calendar type used for display. If not set, the calendar type of the global configuration is used.<br/>__Note:__ Calendar types other than Gregorian must be imported manually:<br />`import "@ui5/webcomponents-localization/dist/features/calendar/{primaryCalendarType}.js";`
    */
   primaryCalendarType?: CalendarType | keyof typeof CalendarType;
+  /**
+   * Defines the secondary calendar type. If not set, the calendar will only show the primary calendar type.
+   */
+  secondaryCalendarType?: CalendarType | keyof typeof CalendarType;
+}
+
+export interface CalendarDomRef extends CalendarAttributes, Ui5DomRef {}
+
+export interface CalendarPropTypes extends CalendarAttributes, CommonProps {
   /**
    * Defines the selected date or dates (depending on the `selectionMode` property) for this calendar as instances of `CalendarDate`
    */
@@ -55,9 +65,9 @@ export interface CalendarPropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Calendar" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Calendar = withWebComponent<CalendarPropTypes>(
+const Calendar = withWebComponent<CalendarPropTypes, CalendarDomRef>(
   'ui5-calendar',
-  ['selectionMode', 'formatPattern', 'maxDate', 'minDate', 'primaryCalendarType'],
+  ['selectionMode', 'formatPattern', 'maxDate', 'minDate', 'primaryCalendarType', 'secondaryCalendarType'],
   ['hideWeekNumbers'],
   [],
   ['selected-dates-change']
@@ -66,7 +76,6 @@ const Calendar = withWebComponent<CalendarPropTypes>(
 Calendar.displayName = 'Calendar';
 
 Calendar.defaultProps = {
-  hideWeekNumbers: false,
   selectionMode: CalendarSelectionMode.Single
 };
 

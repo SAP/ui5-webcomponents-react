@@ -1,11 +1,26 @@
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { Ui5BarcodeScannerDialogDomRef } from '@ui5/webcomponents-react/interfaces/Ui5BarcodeScannerDialogDomRef';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 
 import '@ui5/webcomponents-fiori/dist/BarcodeScannerDialog.js';
 
-export interface BarcodeScannerDialogPropTypes extends CommonProps {
+interface BarcodeScannerDialogAttributes {}
+
+export interface BarcodeScannerDialogDomRef extends BarcodeScannerDialogAttributes, Ui5DomRef {
+  /**
+   * Closes the dialog and the scan session.
+   *
+   */
+  close: () => void;
+  /**
+   * Shows a dialog with the camera videostream. Starts a scan session.
+   *
+   */
+  show: () => void;
+}
+
+export interface BarcodeScannerDialogPropTypes extends BarcodeScannerDialogAttributes, CommonProps {
   /**
    * Fires when the scan fails with error.
    */
@@ -25,7 +40,7 @@ export interface BarcodeScannerDialogPropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/BarcodeScannerDialog" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const BarcodeScannerDialog = withWebComponent<BarcodeScannerDialogPropTypes, Ui5BarcodeScannerDialogDomRef>(
+const BarcodeScannerDialog = withWebComponent<BarcodeScannerDialogPropTypes, BarcodeScannerDialogDomRef>(
   'ui5-barcode-scanner-dialog',
   [],
   [],
@@ -34,7 +49,5 @@ const BarcodeScannerDialog = withWebComponent<BarcodeScannerDialogPropTypes, Ui5
 );
 
 BarcodeScannerDialog.displayName = 'BarcodeScannerDialog';
-
-BarcodeScannerDialog.defaultProps = {};
 
 export { BarcodeScannerDialog };

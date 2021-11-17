@@ -1,5 +1,4 @@
 import '@ui5/webcomponents-icons/dist/search.js';
-import { createUseStyles } from 'react-jss';
 import { useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import {
@@ -28,12 +27,13 @@ import { Input } from '@ui5/webcomponents-react/dist/Input';
 import { Text } from '@ui5/webcomponents-react/dist/Text';
 import { Title } from '@ui5/webcomponents-react/dist/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
-import React, { Children, cloneElement, ReactElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Ui5DialogDomRef } from '@ui5/webcomponents-react/interfaces/Ui5DialogDomRef';
+import { DialogDomRef } from '@ui5/webcomponents-react/dist/Dialog';
+import React, { Children, cloneElement, ReactElement, useCallback, useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
+import { createUseStyles } from 'react-jss';
 import { stopPropagation } from '../../internal/stopPropagation';
 import styles from './FilterBarDialog.jss';
 import { filterValue, renderSearchWithValue, syncRef } from './utils';
-import { createPortal } from 'react-dom';
 
 const useStyles = createUseStyles(styles, { name: 'FilterBarDialog' });
 export const FilterDialog = (props) => {
@@ -63,7 +63,8 @@ export const FilterDialog = (props) => {
   const searchRef = useRef(null);
   const [toggledFilters, setToggledFilters] = useState({});
   const dialogRefs = useRef({});
-  const dialogRef = useRef<Ui5DialogDomRef>();
+  const dialogRef = useRef<DialogDomRef>();
+  const dialogSearchRef = useRef(null);
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
@@ -83,93 +84,63 @@ export const FilterDialog = (props) => {
     }
   }, [open]);
 
-  const handleSearch = useCallback(
-    (e) => {
-      if (handleDialogSearch) {
-        handleDialogSearch(enrichEventWithDetails(e, { value: e.target.value }));
-      }
-      setSearchString(e.target.value);
-    },
-    [setSearchString, handleDialogSearch]
-  );
-  const handleSave = useCallback(
-    (e) => {
-      if (renderFBSearch) {
-        handleSearchValueChange(searchRef.current?.children[1].value);
-      }
+  const handleSearch = (e) => {
+    if (handleDialogSearch) {
+      handleDialogSearch(enrichEventWithDetails(e, { value: e.target.value, element: e.target }));
+    }
+    setSearchString(e.target.value);
+  };
+  const handleSave = (e, go = false) => {
+    if (renderFBSearch) {
+      handleSearchValueChange(searchRef.current?.children[1].value);
+    }
+    if (go) {
+      handleDialogSave(e, dialogRefs.current, toggledFilters, true);
+    } else {
       handleDialogSave(e, dialogRefs.current, toggledFilters);
-    },
-    [renderFBSearch, handleSearchValueChange, searchRef, handleDialogSave, toggledFilters, dialogRefs]
-  );
+    }
+  };
 
-  const handleClose = useCallback(
-    (e) => {
-      stopPropagation(e);
-      if (!showGoButton) {
-        handleSave(e);
-        return;
-      }
-      handleDialogClose(e);
-    },
-    [showGoButton, handleSave, handleDialogClose]
-  );
+  const handleClose = (e) => {
+    stopPropagation(e);
+    if (!showGoButton) {
+      handleSave(e);
+      return;
+    }
+    handleDialogClose(e);
+  };
 
-  const handleDialogGo = useCallback(
-    (e) => {
-      if (onGo) {
-        onGo(enrichEventWithDetails(e));
-      }
-      handleDialogClose(e);
-    },
-    [onGo, handleDialogClose]
-  );
+  const handleDialogGo = (e) => {
+    if (typeof onGo === 'function') {
+      handleSave(e, true);
+    }
+  };
 
-  const handleRestore = useCallback(
-    (e) => {
-      handleRestoreFilters(e, 'dialog');
-    },
-    [handleRestoreFilters]
-  );
+  const handleCancel = (e) => {
+    if (handleDialogCancel) {
+      handleDialogCancel(enrichEventWithDetails(e));
+    }
+    handleDialogClose(e);
+  };
 
-  const handleCancel = useCallback(
-    (e) => {
-      if (handleDialogCancel) {
-        handleDialogCancel(enrichEventWithDetails(e));
-      }
-      handleDialogClose(e);
-    },
-    [handleDialogCancel]
-  );
+  const getFilterElements = () => {
+    const search = searchRef.current?.querySelector(`[data-component-name="FilterBarSearch"]`);
+    return {
+      filters: dialogFilterRefs.current,
+      search,
+      dialogSearch: dialogSearchRef.current
+    };
+  };
 
-  const footerContentRight = useMemo(
-    () => (
-      <FlexBox justifyContent={FlexBoxJustifyContent.End} className={classes.footer}>
-        {showGoButton && (
-          <Button onClick={handleDialogGo} design={ButtonDesign.Emphasized} title={goText}>
-            {goText}
-          </Button>
-        )}
-        {showClearButton && <Button onClick={handleClearFilters}>{clearText}</Button>}
-        {showRestoreButton && <Button onClick={handleRestore}>{restoreText}</Button>}
-        <Button onClick={handleSave}>{saveText}</Button>
-        <Button design={ButtonDesign.Transparent} onClick={handleCancel}>
-          {cancelText}
-        </Button>
-      </FlexBox>
-    ),
-    [
-      goText,
-      showGoButton,
-      classes.footer,
-      handleDialogGo,
-      showClearButton,
-      handleClearFilters,
-      showRestoreButton,
-      handleRestore,
-      handleSave,
-      handleCancel
-    ]
-  );
+  const handleRestore = (e) => {
+    handleRestoreFilters(e, 'dialog', getFilterElements());
+  };
+
+  const handleClear = (e) => {
+    if (typeof handleClearFilters === 'function') {
+      handleClearFilters(enrichEventWithDetails(e, getFilterElements()));
+    }
+  };
 
   const renderChildren = () => {
     return children
@@ -195,8 +166,10 @@ export const FilterDialog = (props) => {
               ...filterItemProps
             },
             ref: (node) => {
-              dialogRefs.current[child.key] = node;
-              syncRef(child.props.children.ref, node);
+              if (node) {
+                dialogRefs.current[child.key] = node;
+                syncRef(child.props.children.ref, node);
+              }
             }
           }
         });
@@ -212,8 +185,10 @@ export const FilterDialog = (props) => {
     },
     [setToggledFilters, handleSelectionChange]
   );
+  const dialogFilterRefs = useRef([]);
   const renderGroups = () => {
     const groups = {};
+    let dialogFilters = [];
     Children.forEach(renderChildren(), (child) => {
       const childGroups = child.props.groupName ?? 'default';
       if (groups[childGroups]) {
@@ -222,12 +197,21 @@ export const FilterDialog = (props) => {
         groups[childGroups] = [child];
       }
     });
-    return Object.keys(groups)
+
+    const filterGroups = Object.keys(groups)
       .sort((x, y) => (x === 'default' ? -1 : y === 'role' ? 1 : 0))
       .map((item, index) => {
         const filters = groups[item].map((el) => {
           return (
-            <div className={classes.singleFilter} key={`${el.key}-container`}>
+            <div
+              className={classes.singleFilter}
+              key={`${el.key}-container`}
+              ref={(node) => {
+                if (node) {
+                  dialogFilters.push(node.children?.[0]?.children?.[0]?.children?.[1]);
+                }
+              }}
+            >
               {el}
               <CheckBox
                 role="checkbox"
@@ -254,8 +238,9 @@ export const FilterDialog = (props) => {
           </div>
         );
       });
+    dialogFilterRefs.current = dialogFilters;
+    return filterGroups;
   };
-
   return createPortal(
     <Dialog
       ref={dialogRef}
@@ -265,11 +250,35 @@ export const FilterDialog = (props) => {
             {filtersTitle}
           </Title>
           {showSearch && (
-            <Input placeholder={searchForFiltersText} onInput={handleSearch} icon={<Icon name="search" />} />
+            <Input
+              placeholder={searchForFiltersText}
+              onInput={handleSearch}
+              icon={<Icon name="search" />}
+              ref={dialogSearchRef}
+            />
           )}
         </FlexBox>
       }
-      footer={<Bar design={BarDesign.Footer} endContent={footerContentRight} />}
+      footer={
+        <Bar
+          design={BarDesign.Footer}
+          endContent={
+            <FlexBox justifyContent={FlexBoxJustifyContent.End} className={classes.footer}>
+              {showGoButton && (
+                <Button onClick={handleDialogGo} design={ButtonDesign.Emphasized} title={goText}>
+                  {goText}
+                </Button>
+              )}
+              {showClearButton && <Button onClick={handleClear}>{clearText}</Button>}
+              {showRestoreButton && <Button onClick={handleRestore}>{restoreText}</Button>}
+              <Button onClick={handleSave}>{saveText}</Button>
+              <Button design={ButtonDesign.Transparent} onClick={handleCancel}>
+                {cancelText}
+              </Button>
+            </FlexBox>
+          }
+        />
+      }
       onAfterClose={handleClose}
     >
       <div className={classes.dialog} role="dialog">

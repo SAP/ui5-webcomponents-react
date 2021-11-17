@@ -4,12 +4,12 @@ import { PopoverVerticalAlign } from '@ui5/webcomponents-react/dist/PopoverVerti
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { Ui5ResponsivePopoverDomRef } from '@ui5/webcomponents-react/interfaces/Ui5ResponsivePopoverDomRef';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/ResponsivePopover.js';
 
-export interface ResponsivePopoverPropTypes extends CommonProps {
+interface ResponsivePopoverAttributes {
   /**
    * Determines if there is no enough space, the component can be placed over the target.
    */
@@ -77,6 +77,33 @@ export interface ResponsivePopoverPropTypes extends CommonProps {
    * Defines if the focus should be returned to the previously focused element, when the popup closes.
    */
   preventFocusRestore?: boolean;
+}
+
+export interface ResponsivePopoverDomRef extends ResponsivePopoverAttributes, Ui5DomRef {
+  /**
+   * Closes the popover/dialog.
+   *
+   */
+  close: () => void;
+  /**
+   * Tells if the responsive popover is open
+   *
+   */
+  isOpen: () => void;
+  /**
+   * Shows popover on desktop and dialog on mobile.
+   * @param {HTMLElement | EventTarget} opener - the element that the popover is shown at
+   * @param {boolean} [preventInitialFocus] - Prevents applying the focus inside the popup
+   */
+  showAt: (opener: HTMLElement | EventTarget, preventInitialFocus?: boolean) => void;
+  /**
+   * Focuses the element denoted by <code>initialFocus</code>, if provided, or the first focusable element otherwise.
+   *
+   */
+  applyFocus: () => void;
+}
+
+export interface ResponsivePopoverPropTypes extends ResponsivePopoverAttributes, CommonProps {
   /**
    * Defines the footer HTML Element.
    *
@@ -118,7 +145,7 @@ export interface ResponsivePopoverPropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/ResponsivePopover" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const ResponsivePopover = withWebComponent<ResponsivePopoverPropTypes, Ui5ResponsivePopoverDomRef>(
+const ResponsivePopover = withWebComponent<ResponsivePopoverPropTypes, ResponsivePopoverDomRef>(
   'ui5-responsive-popover',
   ['headerText', 'horizontalAlign', 'placementType', 'verticalAlign', 'accessibleName', 'initialFocus'],
   ['allowTargetOverlap', 'hideArrow', 'hideBackdrop', 'modal', 'preventFocusRestore'],
@@ -129,14 +156,9 @@ const ResponsivePopover = withWebComponent<ResponsivePopoverPropTypes, Ui5Respon
 ResponsivePopover.displayName = 'ResponsivePopover';
 
 ResponsivePopover.defaultProps = {
-  allowTargetOverlap: false,
-  hideArrow: false,
-  hideBackdrop: false,
   horizontalAlign: PopoverHorizontalAlign.Center,
-  modal: false,
   placementType: PopoverPlacementType.Right,
-  verticalAlign: PopoverVerticalAlign.Center,
-  preventFocusRestore: false
+  verticalAlign: PopoverVerticalAlign.Center
 };
 
 export { ResponsivePopover };

@@ -2,11 +2,12 @@ import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/TextArea.js';
 
-export interface TextAreaPropTypes extends Omit<CommonProps, 'onChange' | 'onInput'> {
+interface TextAreaAttributes {
   /**
    * Sets the accessible aria name of the component.
    */
@@ -18,7 +19,7 @@ export interface TextAreaPropTypes extends Omit<CommonProps, 'onChange' | 'onInp
   /**
    * Indicates whether the user can interact with the component or not.
    *
-   * **Note:** Disabled components cannot be focused and they are out of the tab chain.
+   * **Note:** A disabled component is completely noninteractive.
    */
   disabled?: boolean;
   /**
@@ -28,7 +29,7 @@ export interface TextAreaPropTypes extends Omit<CommonProps, 'onChange' | 'onInp
    */
   growing?: boolean;
   /**
-   * Defines the maximum number of lines that the Web Component can grow.
+   * Defines the maximum number of lines that the component can grow.
    */
   growingMaxLines?: number;
   /**
@@ -73,7 +74,7 @@ export interface TextAreaPropTypes extends Omit<CommonProps, 'onChange' | 'onInp
    */
   showExceededText?: boolean;
   /**
-   * Defines the value of the Web Component.
+   * Defines the value of the component.
    */
   value?: string;
   /**
@@ -92,6 +93,11 @@ export interface TextAreaPropTypes extends Omit<CommonProps, 'onChange' | 'onInp
    * **Note:** If `maxlength` property is set, the component turns into "Warning" state once the characters exceeds the limit. In this case, only the "Error" state is considered and can be applied.
    */
   valueState?: ValueState | keyof typeof ValueState;
+}
+
+export interface TextAreaDomRef extends TextAreaAttributes, Ui5DomRef {}
+
+export interface TextAreaPropTypes extends TextAreaAttributes, Omit<CommonProps, 'onChange' | 'onInput'> {
   /**
    * Defines the value state message that will be displayed as pop up under the component.
    *
@@ -114,13 +120,13 @@ export interface TextAreaPropTypes extends Omit<CommonProps, 'onChange' | 'onInp
 }
 
 /**
- * The `TextArea` component provides large spaces for text entries in the form of multiple rows. It has the functionality of the `TextField` with the additional functionality for multiline texts.
+ * The `TextArea` component is used to enter multiple lines of text.
  *
  * When empty, it can hold a placeholder similar to a `Input`. You can define the rows of the `TextArea` and also determine specific behavior when handling long texts.
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/TextArea" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const TextArea = withWebComponent<TextAreaPropTypes>(
+const TextArea = withWebComponent<TextAreaPropTypes, TextAreaDomRef>(
   'ui5-textarea',
   [
     'accessibleName',
@@ -141,14 +147,9 @@ const TextArea = withWebComponent<TextAreaPropTypes>(
 TextArea.displayName = 'TextArea';
 
 TextArea.defaultProps = {
-  disabled: false,
-  growing: false,
   growingMaxLines: 0,
   maxlength: null,
-  readonly: false,
-  required: false,
   rows: 0,
-  showExceededText: false,
   valueState: ValueState.None
 };
 

@@ -4,7 +4,7 @@ import '@ui5/webcomponents-icons/dist/message-information.js';
 import '@ui5/webcomponents-icons/dist/message-success.js';
 import '@ui5/webcomponents-icons/dist/message-warning.js';
 import '@ui5/webcomponents-icons/dist/question-mark.js';
-import { useConsolidatedRef, useI18nBundle, useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useI18nBundle, useIsomorphicLayoutEffect, useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import {
   ABORT,
@@ -25,7 +25,7 @@ import {
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
-import { Dialog, DialogPropTypes } from '@ui5/webcomponents-react/dist/Dialog';
+import { Dialog, DialogPropTypes, DialogDomRef } from '@ui5/webcomponents-react/dist/Dialog';
 import { Icon } from '@ui5/webcomponents-react/dist/Icon';
 import { MessageBoxActions } from '@ui5/webcomponents-react/dist/MessageBoxActions';
 import { MessageBoxTypes } from '@ui5/webcomponents-react/dist/MessageBoxTypes';
@@ -33,7 +33,7 @@ import { Text } from '@ui5/webcomponents-react/dist/Text';
 import { Title } from '@ui5/webcomponents-react/dist/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { Ui5DialogDomRef } from '@ui5/webcomponents-react/interfaces/Ui5DialogDomRef';
+import clsx from 'clsx';
 import React, {
   forwardRef,
   isValidElement,
@@ -48,7 +48,6 @@ import React, {
 import { createUseStyles } from 'react-jss';
 import { stopPropagation } from '../../internal/stopPropagation';
 import styles from './MessageBox.jss';
-import clsx from 'clsx';
 
 type MessageBoxAction = MessageBoxActions | keyof typeof MessageBoxActions | string;
 
@@ -113,7 +112,7 @@ const createUniqueIds = (internalActions) =>
  * The `MessageBox` component provides easier methods to create a `Dialog`, such as standard alerts, confirmation dialogs, or arbitrary message dialogs.
  * For convenience, it also provides an `open` prop, so it is not necessary to attach a `ref` to open the `MessageBox`.
  */
-const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDomRef>) => {
+const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<DialogDomRef>) => {
   const {
     open,
     type,
@@ -131,7 +130,7 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDom
     accessibleName,
     ...rest
   } = props;
-  const dialogRef = useConsolidatedRef<Ui5DialogDomRef>(ref);
+  const [componentRef, dialogRef] = useSyncRef<DialogDomRef>(ref);
 
   const classes = useStyles();
 
@@ -245,7 +244,7 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDom
   return (
     <Dialog
       slot={slot}
-      ref={dialogRef}
+      ref={componentRef}
       style={style}
       title={tooltip ?? props.title}
       className={messageBoxClassNames}

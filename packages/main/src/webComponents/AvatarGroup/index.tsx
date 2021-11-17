@@ -1,12 +1,14 @@
+import { AvatarColorScheme } from '@ui5/webcomponents-react/dist/AvatarColorScheme';
 import { AvatarGroupType } from '@ui5/webcomponents-react/dist/AvatarGroupType';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/AvatarGroup.js';
 
-export interface AvatarGroupPropTypes extends Omit<CommonProps, 'onClick'> {
+interface AvatarGroupAttributes {
   /**
    * Defines the mode of the `AvatarGroup`.
    *
@@ -16,6 +18,20 @@ export interface AvatarGroupPropTypes extends Omit<CommonProps, 'onClick'> {
    * *   `Individual`
    */
   type?: AvatarGroupType | keyof typeof AvatarGroupType;
+}
+
+export interface AvatarGroupDomRef extends AvatarGroupAttributes, Ui5DomRef {
+  /**
+   * Returns an array containing the <code>AvatarColorScheme</code> values that correspond to the avatars in the component.
+   */
+  readonly colorScheme: (AvatarColorScheme[] | keyof typeof AvatarColorScheme[])[];
+  /**
+   * Returns an array containing the <code>ui5-avatar</code> instances that are currently not displayed due to lack of space.
+   */
+  readonly hiddenItems: ReactNode | ReactNode[];
+}
+
+export interface AvatarGroupPropTypes extends AvatarGroupAttributes, Omit<CommonProps, 'onClick'> {
   /**
    * Defines the items of the component. Use the `Avatar` component as an item.
    *
@@ -49,7 +65,7 @@ export interface AvatarGroupPropTypes extends Omit<CommonProps, 'onClick'> {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/AvatarGroup" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const AvatarGroup = withWebComponent<AvatarGroupPropTypes>(
+const AvatarGroup = withWebComponent<AvatarGroupPropTypes, AvatarGroupDomRef>(
   'ui5-avatar-group',
   ['type'],
   [],

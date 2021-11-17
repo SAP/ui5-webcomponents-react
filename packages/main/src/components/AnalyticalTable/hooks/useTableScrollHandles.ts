@@ -1,9 +1,10 @@
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
-import { RefObject, useEffect, useRef } from 'react';
-import { AnalyticalTableDomRef } from '@ui5/webcomponents-react/interfaces/AnalyticalTableDomRef';
+import { useEffect, useRef } from 'react';
 
 export const useTableScrollHandles = (ref) => {
-  const analyticalTableRef: RefObject<AnalyticalTableDomRef> = useConsolidatedRef(ref);
+  let analyticalTableRef = useRef(null);
+  if (ref) {
+    analyticalTableRef = ref;
+  }
   const reactWindowRef = useRef<any>({});
 
   useEffect(() => {
@@ -31,13 +32,7 @@ export const useTableScrollHandles = (ref) => {
         }
       });
     }
-  }, [
-    analyticalTableRef.current,
-    reactWindowRef.current.scrollToIndex,
-    reactWindowRef.current.scrollToOffset,
-    reactWindowRef.current.horizontalScrollToIndex,
-    reactWindowRef.current.horizontalScrollToOffset
-  ]);
+  }, []);
 
   return [analyticalTableRef, reactWindowRef];
 };

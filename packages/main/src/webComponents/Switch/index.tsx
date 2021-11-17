@@ -2,10 +2,11 @@ import { SwitchDesign } from '@ui5/webcomponents-react/dist/SwitchDesign';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 
 import '@ui5/webcomponents/dist/Switch.js';
 
-export interface SwitchPropTypes extends Omit<CommonProps, 'onChange'> {
+interface SwitchAttributes {
   /**
    * Defines if the component is checked.
    *
@@ -27,15 +28,20 @@ export interface SwitchPropTypes extends Omit<CommonProps, 'onChange'> {
   /**
    * Defines the text, displayed when the component is not checked.
    *
-   * **Note:** We recommend using short texts, up to 3 letters (larger texts would be cut off).
+   * **Note:** We recommend using short texts, up to 3 letters (larger texts would be cut off). **Note:** This property will have no effect if the theme is set to `sap_horizon`.
    */
   textOff?: string;
   /**
    * Defines the text, displayed when the component is checked.
    *
-   * **Note:** We recommend using short texts, up to 3 letters (larger texts would be cut off).
+   * **Note:** We recommend using short texts, up to 3 letters (larger texts would be cut off). **Note:** This property will have no effect if the theme is set to `sap_horizon`.
    */
   textOn?: string;
+}
+
+export interface SwitchDomRef extends SwitchAttributes, Ui5DomRef {}
+
+export interface SwitchPropTypes extends SwitchAttributes, Omit<CommonProps, 'onChange'> {
   /**
    * Fired when the component checked state changes.
    */
@@ -50,7 +56,7 @@ export interface SwitchPropTypes extends Omit<CommonProps, 'onChange'> {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Switch" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Switch = withWebComponent<SwitchPropTypes>(
+const Switch = withWebComponent<SwitchPropTypes, SwitchDomRef>(
   'ui5-switch',
   ['design', 'textOff', 'textOn'],
   ['checked', 'disabled'],
@@ -61,9 +67,7 @@ const Switch = withWebComponent<SwitchPropTypes>(
 Switch.displayName = 'Switch';
 
 Switch.defaultProps = {
-  checked: false,
-  design: SwitchDesign.Textual,
-  disabled: false
+  design: SwitchDesign.Textual
 };
 
 export { Switch };
