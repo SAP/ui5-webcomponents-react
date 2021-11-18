@@ -1,6 +1,7 @@
 import { Meta } from '@storybook/addon-docs';
 import { MessageStrip, MessageStripDesign } from '@ui5/webcomponents-react';
-import { TableOfContent } from '../shared/stories/TableOfContent';
+import { TableOfContent } from '../.storybook/components/TableOfContent';
+import { Footer } from '@docs/Footer';
 
 <Meta title="Migration Guide" />
 
@@ -15,6 +16,73 @@ or the [changelog](https://github.com/SAP/ui5-webcomponents-react/blob/main/CHAN
 <br />
 
 <TableOfContent headingSelector="h2.sbdocs-h2" />
+
+## Migrating from 0.19.x to 0.20.0
+
+### Changed TypeScript `interfaces` for `ref`
+
+TypeScript `interfaces` that can be used for accessing the DOM-`ref` of a component have been updated:
+
+- The `Ui5` prefix has been removed
+- The `interfaces` can now be imported from the component itself
+
+Migration Path:
+
+```tsx
+import { Dialog } from '@ui5/webcomponents-react';
+import { Ui5DialogDomRef } from '@ui5/webcomponents-react/interfaces/Ui5DialogDomRef';
+import { useRef } from 'react';
+
+function MyOldComponent() {
+  const ref = useRef<Ui5DialogDomRef>(null);
+  return <Dialog ref={ref} />;
+}
+
+// becomes
+
+import { Dialog } from '@ui5/webcomponents-react';
+import { DialogDomRef } from '@ui5/webcomponents-react/dist/Dialog';
+import { useRef } from 'react';
+
+function MyNewComponent() {
+  const ref = useRef<DialogDomRef>(null);
+  return <Dialog ref={ref} />;
+}
+```
+
+Affected Interfaces:
+
+- `Ui5BarcodeScannerDialogDomRef` <br />
+  new import: `import { BarcodeScannerDialogDomRef } from '@ui5/webcomponents-react/dist/BarcodeScannerDialog';`
+- `Ui5CarouselDomRef`<br />
+  new import: `import { CarouselDomRef } from '@ui5/webcomponents-react/dist/Carousel';`
+- `Ui5DatePickerDomRef`<br />
+  new import: `import { DatePickerDomRef } from '@ui5/webcomponents-react/dist/DatePicker';`
+- `Ui5DateRangePickerDomRef`<br />
+  new import: `import { DateRangePickerDomRef } from '@ui5/webcomponents-react/dist/DateRangePicker';`
+- `Ui5DateTimePickerDomRef`<br />
+  new import: `import { DateTimePickerDomRef } from '@ui5/webcomponents-react/dist/DateTimePicker';`
+- `Ui5DialogDomRef`<br />
+  new import: `import { DialogDomRef } from '@ui5/webcomponents-react/dist/Dialog';`
+- `Ui5PopoverDomRef`<br />
+  new import: `import { PopoverDomRef } from '@ui5/webcomponents-react/dist/Popover';`
+- `Ui5ResponsivePopoverDomRef`<br />
+  new import: `import { ResponsivePopoverDomRef } from '@ui5/webcomponents-react/dist/ResponsivePopover';`
+- `Ui5ShellBarDomRef`<br />
+  new import: `import { ShellBarDomRef } from '@ui5/webcomponents-react/dist/ShellBar';`
+- `Ui5TimePickerDomRef`<br />
+  new import: `import { TimePickerDomRef } from '@ui5/webcomponents-react/dist/TimePicker';`
+- `Ui5ToastDomRef`<br />
+  new import: `import { ToastDomRef } from '@ui5/webcomponents-react/dist/Toast';`
+- `Ui5TreeDomRef`<br />
+  new import: `import { TreeDomRef } from '@ui5/webcomponents-react/dist/Tree';`
+- `Ui5TreeItemDomRef`<br />
+  new import: `import { TreeItemDomRef } from '@ui5/webcomponents-react/dist/TreeItem';`
+
+- `AnalyticalTableDomRef`<br />
+  new import: `import { AnalyticalTableDomRef } from '@ui5/webcomponents-react/dist/AnalyticalTable';`
+- `MessageViewDomRef`<br />
+  new import: `import { MessageViewDomRef } from '@ui5/webcomponents-react/dist/MessageView';`
 
 ## Migrating from 0.18.x to 0.19.0
 
@@ -1318,3 +1386,5 @@ ShellBar:
 
 - props:
 - `profile`: Is now a slot where you should use the `Avatar` component.
+
+<Footer />

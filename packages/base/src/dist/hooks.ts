@@ -5,6 +5,7 @@ import { useIsRTL } from '../hooks/useIsRTL';
 import { usePassThroughHtmlProps } from '../hooks/usePassThroughHtmlProps';
 import { useResponsiveContentPadding } from '../hooks/useResponsiveContentPadding';
 import { useViewportRange } from '../hooks/useViewportRange';
+import { useSyncRef } from '../hooks/useSyncRef';
 
 export {
   useConsolidatedRef,
@@ -13,5 +14,6 @@ export {
   useIsRTL,
   usePassThroughHtmlProps,
   useResponsiveContentPadding,
+  useSyncRef,
   useViewportRange
 };

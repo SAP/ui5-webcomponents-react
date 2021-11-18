@@ -13,9 +13,6 @@ import React, {
   MouseEventHandler,
   KeyboardEventHandler,
   ReactNode,
-  ReactNodeArray,
-  useCallback,
-  useMemo,
   useRef,
   useState
 } from 'react';
@@ -38,7 +35,8 @@ export interface ColumnHeaderProps {
   headerTooltip: string;
   virtualColumn: VirtualItem;
   isRtl: boolean;
-  children: ReactNode | ReactNodeArray;
+  children: ReactNode | ReactNode[];
+  portalContainer: Element;
 
   //getHeaderProps()
   id: string;
@@ -113,7 +111,8 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     columnIndex,
     visibleColumnIndex,
     onClick,
-    onKeyDown
+    onKeyDown,
+    portalContainer
   } = props;
 
   const isFiltered = column.filterValue && column.filterValue.length > 0;
@@ -238,6 +237,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
             targetRef={targetRef}
             open={popoverOpen}
             setPopoverOpen={setPopoverOpen}
+            portalContainer={portalContainer}
           />
         )}
       </div>

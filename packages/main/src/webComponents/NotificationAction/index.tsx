@@ -1,10 +1,11 @@
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 
 import '@ui5/webcomponents-fiori/dist/NotificationAction.js';
 
-export interface NotificationActionPropTypes extends CommonProps {
+interface NotificationActionAttributes {
   /**
    * Defines the action design.
    *
@@ -35,12 +36,16 @@ export interface NotificationActionPropTypes extends CommonProps {
   text?: string;
 }
 
+export interface NotificationActionDomRef extends NotificationActionAttributes, Ui5DomRef {}
+
+export interface NotificationActionPropTypes extends NotificationActionAttributes, CommonProps {}
+
 /**
  * The `NotificationAction` represents an abstract action, used in the `NotificationListItem` and the `NotificationListItemBase` items
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/NotificationAction" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const NotificationAction = withWebComponent<NotificationActionPropTypes>(
+const NotificationAction = withWebComponent<NotificationActionPropTypes, NotificationActionDomRef>(
   'ui5-notification-action',
   ['design', 'icon', 'text'],
   ['disabled'],
@@ -51,8 +56,7 @@ const NotificationAction = withWebComponent<NotificationActionPropTypes>(
 NotificationAction.displayName = 'NotificationAction';
 
 NotificationAction.defaultProps = {
-  design: ButtonDesign.Transparent,
-  disabled: false
+  design: ButtonDesign.Transparent
 };
 
 export { NotificationAction };

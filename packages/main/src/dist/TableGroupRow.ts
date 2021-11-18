@@ -1,5 +1,5 @@
 import { TableGroupRow } from '../webComponents/TableGroupRow';
-import type { TableGroupRowPropTypes } from '../webComponents/TableGroupRow';
+import type { TableGroupRowPropTypes, TableGroupRowDomRef } from '../webComponents/TableGroupRow';
 
 export { TableGroupRow };
-export type { TableGroupRowPropTypes };
+export type { TableGroupRowPropTypes, TableGroupRowDomRef };

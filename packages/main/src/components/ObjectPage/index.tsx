@@ -1,7 +1,6 @@
 import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming.js';
-import { useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { debounce, enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { AvatarPropTypes } from '@ui5/webcomponents-react/dist/Avatar';
@@ -28,7 +27,7 @@ import React, {
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
 import { PopoverHorizontalAlign } from '../../enums/PopoverHorizontalAlign';
-import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
+import { PopoverDomRef } from '../../webComponents/Popover';
 import { stopPropagation } from '../../internal/stopPropagation';
 import { useObserveHeights } from '../../internal/useObserveHeights';
 import { useResponsiveContentPadding } from '@ui5/webcomponents-react-base/dist/hooks';
@@ -55,7 +54,7 @@ addCustomCSS(
   `
 );
 
-export interface ObjectPagePropTypes extends CommonProps {
+export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
   /**
    * Defines the the upper, always static, title section of the `ObjectPage`.
    *
@@ -93,6 +92,12 @@ export interface ObjectPagePropTypes extends CommonProps {
    * Defines the ID of the currently `ObjectPageSubSection` section.
    */
   selectedSubSectionId?: string;
+  /**
+   * Defines where modals are rendered into via `React.createPortal`.
+   *
+   * Defaults to: `document.body`
+   */
+  portalContainer?: Element;
   /**
    * Fired when the selected section changes.
    */
@@ -142,11 +147,11 @@ export interface ObjectPagePropTypes extends CommonProps {
     };
   };
   /**
-   * If set, only the specified `IllustratedMessage` will be displayed as content of the `ObjectPage`, no sections or sub-sections will be rendered.
+   * If set, only the specified placeholder will be displayed as content of the `ObjectPage`, no sections or sub-sections will be rendered.
    *
-   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `IllustratedMessage` in order to preserve the intended design.
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use placeholder components like the `IllustratedMessage` or custom skeletons pages in order to preserve the intended design.
    */
-  illustratedMessage?: ReactNode;
+  placeholder?: ReactNode;
 }
 
 const useStyles = createUseStyles(styles, { name: 'ObjectPage' });
@@ -175,7 +180,8 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     headerContent,
     headerContentPinnable,
     a11yConfig,
-    illustratedMessage
+    placeholder,
+    portalContainer
   } = props;
 
   const classes = useStyles();
@@ -187,11 +193,11 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
   const [headerPinned, setHeaderPinned] = useState(alwaysShowContentHeader);
   const isProgrammaticallyScrolled = useRef(false);
 
-  const objectPageRef: RefObject<HTMLDivElement> = useConsolidatedRef(ref);
+  const [componentRef, objectPageRef] = useSyncRef(ref);
   const topHeaderRef: RefObject<HTMLDivElement> = useRef();
   const scrollEvent = useRef();
   //@ts-ignore
-  const headerContentRef: RefObject<HTMLDivElement> = useConsolidatedRef(headerContent?.ref);
+  const [componentRefHeaderContent, headerContentRef] = useSyncRef(headerContent?.ref);
   const anchorBarRef: RefObject<HTMLDivElement> = useRef();
   const scrollTimeout = useRef(null);
   const [isAfterScroll, setIsAfterScroll] = useState(false);
@@ -603,7 +609,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
         ...headerContent.props,
         topHeaderHeight,
         headerPinned: headerPinned || scrolledHeaderExpanded,
-        ref: headerContentRef,
+        ref: componentRefHeaderContent,
         children: (
           <div
             className={`${classes.headerContainer} ${responsivePaddingClass}`}
@@ -643,7 +649,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     [children]
   );
   const [popoverContent, setPopoverContent] = useState<ReactElement>(null);
-  const popoverRef = useRef<Ui5PopoverDomRef>(null);
+  const popoverRef = useRef<PopoverDomRef>(null);
   const onShowSubSectionPopover = useCallback(
     (e, section) => {
       setPopoverContent(section);
@@ -725,7 +731,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
       slot={slot}
       className={objectPageClasses}
       style={style}
-      ref={objectPageRef}
+      ref={componentRef}
       title={tooltip}
       onScroll={onObjectPageScroll}
       {...passThroughProps}
@@ -777,7 +783,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
           />
         </div>
       )}
-      {!illustratedMessage && (
+      {!placeholder && (
         <div
           className={classes.tabContainer}
           data-component-name="ObjectPageTabContainer"
@@ -826,13 +832,13 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
                   ))}
               </List>
             </Popover>,
-            document.body
+            portalContainer
           )}
         </div>
       )}
       <div data-component-name="ObjectPageContent" className={responsivePaddingClass}>
-        {illustratedMessage
-          ? illustratedMessage
+        {placeholder
+          ? placeholder
           : mode === ObjectPageMode.IconTabBar
           ? getSectionById(children, internalSelectedSectionId)
           : children}
@@ -853,7 +859,8 @@ ObjectPage.defaultProps = {
   image: null,
   mode: ObjectPageMode.Default,
   imageShapeCircle: false,
-  showHideHeaderButton: false
+  showHideHeaderButton: false,
+  portalContainer: document.body
 };
 
 export { ObjectPage };

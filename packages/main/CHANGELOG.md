@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.20.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.19.1...v0.20.0) (2021-11-10)
+
+
+### Features
+
+* create dom ref interfaces for all web components ([#2292](https://github.com/SAP/ui5-webcomponents-react/issues/2292)) ([4b1d0fc](https://github.com/SAP/ui5-webcomponents-react/commit/4b1d0fc9c415646e7c964ac23a622c2ee176de7d))
+* update @ui5/webcomponents to 1.0.0 🎉  ([#2282](https://github.com/SAP/ui5-webcomponents-react/issues/2282)) ([e6971af](https://github.com/SAP/ui5-webcomponents-react/commit/e6971afcab6553f813156f8188665a8a3965a6b5))
+
+
+### BREAKING CHANGES
+
+* **TypeScript only**: The `Ui5` prefix for interfaces for using DOM refs (e.g. `Ui5DialogDomRef`) has been removed (now `DialogDomRef`) and the interfaces are now exported from the respective components themselves. For details please check our [Migration Guide](https://sap.github.io/ui5-webcomponents-react/?path=/docs/migration-guide--page#changed-typescript-interfaces-for-ref).
+
+Co-authored-by: Harbarth, Lukas <lukas.harbarth@sap.com>
+* update @ui5/webcomponents to [1.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.0.0) 
+* **Input:** The `onSuggestionScroll` event has been removed.
+* **BreadcrumbsItem, ComboboxItem, MultiComboboxItem, Option, Tab:** `stableDomRef` prop has been removed - call `getDomRef()` to get the matching actual DOM ref.
+* **ShellbarItem:** `onItemClick` has been renamed to `onClick`.
+* **Wizard:** The `accessibleName` prop  has been removed.
+
+
+
+
+
+# [0.19.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.18.10...v0.19.0) (2021-11-03)
+
+
+### Bug Fixes
+
+* **FormItem:** remove unecessary string conversion ([#2236](https://github.com/SAP/ui5-webcomponents-react/issues/2236)) ([ed094c3](https://github.com/SAP/ui5-webcomponents-react/commit/ed094c35a5ecf3612b9e43c979614cd302bfd133))
+* **VariantManagement:** replace bad imports ([#2257](https://github.com/SAP/ui5-webcomponents-react/issues/2257)) ([61f2f92](https://github.com/SAP/ui5-webcomponents-react/commit/61f2f925ad005fe5e8a933275f1e1169c2cceba8))
+
+
+### Features
+
+* add `portalContainer` prop for elements rendered via `createPortal` ([#2275](https://github.com/SAP/ui5-webcomponents-react/issues/2275)) ([e71b663](https://github.com/SAP/ui5-webcomponents-react/commit/e71b663299bcdc4bc8e4ee02f38e982d33de5f51))
+* **MessageBox:** add `accessibleName` default text ([#2208](https://github.com/SAP/ui5-webcomponents-react/issues/2208)) ([a79051a](https://github.com/SAP/ui5-webcomponents-react/commit/a79051a983fe428b5c79dbfbf11eed362dc3500c))
+* **VariantManagement:** add features to comply with UX Guidelines ([#2163](https://github.com/SAP/ui5-webcomponents-react/issues/2163)) ([2b621f4](https://github.com/SAP/ui5-webcomponents-react/commit/2b621f46ac5bb6c9347771b001b47f2ea623a589))
+
+
+
+
+
 ## [0.18.10](https://github.com/SAP/ui5-webcomponents-react/compare/v0.18.9...v0.18.10) (2021-10-11)
 
 

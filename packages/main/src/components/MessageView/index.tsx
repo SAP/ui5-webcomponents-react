@@ -1,4 +1,9 @@
-import { useConsolidatedRef, useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
+import '@ui5/webcomponents-icons/dist/alert.js';
+import '@ui5/webcomponents-icons/dist/error.js';
+import '@ui5/webcomponents-icons/dist/information.js';
+import '@ui5/webcomponents-icons/dist/slim-arrow-left.js';
+import '@ui5/webcomponents-icons/dist/sys-enter-2.js';
+import { useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { ALL } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { Bar } from '@ui5/webcomponents-react/dist/Bar';
@@ -16,8 +21,8 @@ import { Title } from '@ui5/webcomponents-react/dist/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { MessageViewDomRef } from '@ui5/webcomponents-react/interfaces/MessageViewDomRef';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import clsx from 'clsx';
 import React, {
   Children,
   forwardRef,
@@ -31,14 +36,15 @@ import React, {
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
-import { getIconNameForType } from './utils';
-import '@ui5/webcomponents-icons/dist/alert.js';
-import '@ui5/webcomponents-icons/dist/error.js';
-import '@ui5/webcomponents-icons/dist/information.js';
-import '@ui5/webcomponents-icons/dist/slim-arrow-left.js';
-import '@ui5/webcomponents-icons/dist/sys-enter-2.js';
 import type { MessageItemPropTypes } from './MessageItem';
-import clsx from 'clsx';
+import { getIconNameForType } from './utils';
+
+export interface MessageViewDomRef extends HTMLDivElement {
+  /**
+   * Navigates back to the list page
+   */
+  navigateBack: () => void;
+}
 
 export interface MessageViewPropTypes extends CommonProps {
   /**
@@ -56,7 +62,7 @@ export interface MessageViewPropTypes extends CommonProps {
    *
    * * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `Message` in order to preserve the intended design.
    */
-  children: ReactNode | ReactNodeArray;
+  children: ReactNode | ReactNode[];
 
   /**
    * Event is fired when the details of a message are shown
@@ -152,7 +158,7 @@ const useStyles = createUseStyles(
 const MessageView = forwardRef((props: MessageViewPropTypes, ref: Ref<MessageViewDomRef>) => {
   const { children, groupItems, showDetailsPageHeader, className, onItemSelect, tooltip, ...rest } = props;
 
-  const internalRef = useConsolidatedRef<MessageViewDomRef>(ref);
+  const [componentRef, internalRef] = useSyncRef<MessageViewDomRef>(ref);
 
   const classes = useStyles();
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
@@ -193,7 +199,7 @@ const MessageView = forwardRef((props: MessageViewPropTypes, ref: Ref<MessageVie
   const outerClasses = clsx(classes.container, className, selectedMessage && classes.showDetails);
 
   return (
-    <div ref={internalRef} title={tooltip} {...rest} className={outerClasses}>
+    <div ref={componentRef} title={tooltip} {...rest} className={outerClasses}>
       <MessageViewContext.Provider
         value={{
           selectMessage: setSelectedMessage

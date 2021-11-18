@@ -1,5 +1,5 @@
 import { TimePicker } from '../webComponents/TimePicker';
-import type { TimePickerPropTypes } from '../webComponents/TimePicker';
+import type { TimePickerPropTypes, TimePickerDomRef } from '../webComponents/TimePicker';
 
 export { TimePicker };
-export type { TimePickerPropTypes };
+export type { TimePickerPropTypes, TimePickerDomRef };

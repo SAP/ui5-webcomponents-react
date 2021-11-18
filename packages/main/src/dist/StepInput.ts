@@ -1,5 +1,5 @@
 import { StepInput } from '../webComponents/StepInput';
-import type { StepInputPropTypes } from '../webComponents/StepInput';
+import type { StepInputPropTypes, StepInputDomRef } from '../webComponents/StepInput';
 
 export { StepInput };
-export type { StepInputPropTypes };
+export type { StepInputPropTypes, StepInputDomRef };

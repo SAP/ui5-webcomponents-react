@@ -1,5 +1,5 @@
 import { Toast } from '../webComponents/Toast';
-import type { ToastPropTypes } from '../webComponents/Toast';
+import type { ToastPropTypes, ToastDomRef } from '../webComponents/Toast';
 
 export { Toast };
-export type { ToastPropTypes };
+export type { ToastPropTypes, ToastDomRef };

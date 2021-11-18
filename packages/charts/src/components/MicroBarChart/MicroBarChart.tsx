@@ -1,13 +1,12 @@
 import { createUseStyles } from 'react-jss';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { BarChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/BarChartPlaceholder';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/dist/components/ChartContainer';
 import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { defaultFormatter } from '../../internal/defaults';
@@ -159,7 +158,6 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
     }
     return 0;
   }, [dataset, measure, props.maxValue]);
-  const chartRef = useConsolidatedRef<any>(ref);
 
   const barHeight = measure?.width ? `${measure.width}px` : '4px';
 
@@ -186,7 +184,7 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
       dataset={dataset}
       loading={loading}
       Placeholder={ChartPlaceholder ?? BarChartPlaceholder}
-      ref={chartRef}
+      ref={ref}
       style={style}
       className={className}
       tooltip={tooltip}

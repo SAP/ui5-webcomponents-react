@@ -1,10 +1,11 @@
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 
 import '@ui5/webcomponents/dist/RatingIndicator.js';
 
-export interface RatingIndicatorPropTypes extends Omit<CommonProps, 'onChange'> {
+interface RatingIndicatorAttributes {
   /**
    * Sets the accessible aria name of the component.
    */
@@ -16,7 +17,7 @@ export interface RatingIndicatorPropTypes extends Omit<CommonProps, 'onChange'> 
    */
   disabled?: boolean;
   /**
-   * The number of displayed rating symbols
+   * The number of displayed rating symbols.
    */
   max?: number;
   /**
@@ -26,7 +27,7 @@ export interface RatingIndicatorPropTypes extends Omit<CommonProps, 'onChange'> 
    */
   readonly?: boolean;
   /**
-   * The indicated value of the rating
+   * The indicated value of the rating.
    *
    * **Note:** If you set a number which is not round, it would be shown as follows:
    *
@@ -35,6 +36,11 @@ export interface RatingIndicatorPropTypes extends Omit<CommonProps, 'onChange'> 
    * *   1.8 - 1.9 -> 2
    */
   value?: number;
+}
+
+export interface RatingIndicatorDomRef extends RatingIndicatorAttributes, Ui5DomRef {}
+
+export interface RatingIndicatorPropTypes extends RatingIndicatorAttributes, Omit<CommonProps, 'onChange'> {
   /**
    * The event is fired when the value changes.
    */
@@ -42,11 +48,11 @@ export interface RatingIndicatorPropTypes extends Omit<CommonProps, 'onChange'> 
 }
 
 /**
- * The RatingIndicator is used to display a specific number of icons that are used to rate an item. Additionally, it is also used to display the average and overall ratings.
+ * The Rating Indicator is used to display a specific number of icons that are used to rate an item. Additionally, it is also used to display the average and overall ratings.
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/RatingIndicator" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const RatingIndicator = withWebComponent<RatingIndicatorPropTypes>(
+const RatingIndicator = withWebComponent<RatingIndicatorPropTypes, RatingIndicatorDomRef>(
   'ui5-rating-indicator',
   ['accessibleName', 'max', 'value'],
   ['disabled', 'readonly'],
@@ -57,9 +63,7 @@ const RatingIndicator = withWebComponent<RatingIndicatorPropTypes>(
 RatingIndicator.displayName = 'RatingIndicator';
 
 RatingIndicator.defaultProps = {
-  disabled: false,
   max: 5,
-  readonly: false,
   value: 0
 };
 

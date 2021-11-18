@@ -1,0 +1,43 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+import { ColorPalettePopover } from '@ui5/webcomponents-react/dist/ColorPalettePopover';
+import { DocsHeader } from '@docs/DocsHeader';
+import { Footer } from '@docs/Footer';
+
+<Meta
+  title="Modals & Popovers / ColorPalettePopover"
+  component={ColorPalettePopover}
+  argTypes={{
+    children: { control: { disable: true } }
+  }}
+  args={{
+    style: {},
+    className: '',
+    tooltip: '',
+    slot: '',
+    ref: null
+  }}
+/>
+
+<DocsHeader />
+
+<br />
+
+## Example
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return <ColorPalettePopover {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+## Properties
+
+<ArgsTable story="." />
+
+## Usage
+
+The palette is intended for users, who don't want to check and remember the different values of the colors and spend large amount of time to configure the right color through the color picker. For the `ColorPalettePopover`
+
+<Footer />

@@ -1,8 +1,7 @@
 import { isPhone } from '@ui5/webcomponents-base/dist/Device.js';
 import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming.js';
-import { useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { AVAILABLE_ACTIONS, CANCEL, X_OF_Y } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
@@ -20,15 +19,16 @@ import React, {
 } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
-import { Ui5ResponsivePopoverDomRef } from '@ui5/webcomponents-react/interfaces/Ui5ResponsivePopoverDomRef';
 import { ButtonPropTypes } from '../../webComponents/Button';
-import { ResponsivePopoverPropTypes } from '../../webComponents/ResponsivePopover';
+import { ResponsivePopoverDomRef, ResponsivePopoverPropTypes } from '../../webComponents/ResponsivePopover';
 import clsx from 'clsx';
 import styles from './ActionSheet.jss';
 
 export interface ActionSheetPropTypes extends Omit<ResponsivePopoverPropTypes, 'children'> {
   /**
-   * Defines the actions of the <code>ActionSheet</code>. <br><b>Note:</b> Although this slot accepts all HTML Elements, it is strongly recommended that you only use `Buttons` in order to preserve the intended design.
+   * Defines the actions of the `ActionSheet`.
+   *
+   * __Note:__ Although this slot accepts all HTML Elements, it is strongly recommended that you only use `Buttons` in order to preserve the intended design.
    */
   children?: ReactElement<ButtonPropTypes> | ReactElement<ButtonPropTypes>[];
   /**
@@ -48,6 +48,12 @@ export interface ActionSheetPropTypes extends Omit<ResponsivePopoverPropTypes, '
       ariaLabel?: string;
     };
   };
+  /**
+   * Defines where modals are rendered into via `React.createPortal`.
+   *
+   * Defaults to: `document.body`
+   */
+  portalContainer?: Element;
 }
 
 const useStyles = createUseStyles(styles, { name: 'ActionSheet' });
@@ -92,34 +98,35 @@ if (isPhone()) {
  * The `ActionSheet` holds a list of buttons from which the user can select to complete an action. <br />
  * The children of the action sheet should be `Button` components. Elements in the `ActionSheet` are left-aligned. Actions should be arranged in order of importance, from top to bottom.
  */
-const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: RefObject<Ui5ResponsivePopoverDomRef>) => {
+const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: RefObject<ResponsivePopoverDomRef>) => {
   const {
-    children,
-    style,
-    slot,
-    className,
+    a11yConfig,
     allowTargetOverlap,
+    alwaysShowHeader,
+    children,
+    className,
+    footer,
+    header,
     headerText,
+    hideArrow,
     horizontalAlign,
     initialFocus,
     modal,
-    hideArrow,
     placementType,
+    portalContainer,
+    showCancelButton,
+    slot,
+    style,
     verticalAlign,
-    footer,
-    header,
     onAfterClose,
     onAfterOpen,
     onBeforeClose,
-    onBeforeOpen,
-    showCancelButton,
-    alwaysShowHeader,
-    a11yConfig
+    onBeforeOpen
   } = props;
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const classes = useStyles();
   const actionSheetClasses = clsx(classes.actionSheet, className);
-  const popoverRef: RefObject<Ui5ResponsivePopoverDomRef> = useConsolidatedRef(ref);
+  const [componentRef, popoverRef] = useSyncRef(ref);
   const actionBtnsRef = useRef(null);
   const [focusedItem, setFocusedItem] = useReducer((_, action) => {
     return parseInt(action.target.dataset.actionBtnIndex);
@@ -205,7 +212,7 @@ const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: RefObject<Ui5R
       onBeforeOpen={onBeforeOpen}
       {...passThroughProps}
       onAfterOpen={handleAfterOpen}
-      ref={popoverRef}
+      ref={componentRef}
       className={actionSheetClasses}
       data-actionsheet
     >
@@ -231,13 +238,14 @@ const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: RefObject<Ui5R
         )}
       </div>
     </ResponsivePopover>,
-    document.body
+    portalContainer
   );
 });
 
 ActionSheet.defaultProps = {
   showCancelButton: true,
-  alwaysShowHeader: true
+  alwaysShowHeader: true,
+  portalContainer: document.body
 };
 
 ActionSheet.displayName = 'ActionSheet';

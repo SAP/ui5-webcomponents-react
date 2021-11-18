@@ -1,5 +1,5 @@
 import { Tree } from '../webComponents/Tree';
-import type { TreePropTypes } from '../webComponents/Tree';
+import type { TreePropTypes, TreeDomRef } from '../webComponents/Tree';
 
 export { Tree };
-export type { TreePropTypes };
+export type { TreePropTypes, TreeDomRef };

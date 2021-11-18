@@ -1,7 +1,7 @@
 import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import React, { forwardRef, ReactNode, ReactNodeArray, Ref, useMemo } from 'react';
+import React, { forwardRef, ReactNode, Ref, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { DynamicPageHeaderStyles } from './DynamicPageHeader.jss';
 import clsx from 'clsx';
@@ -10,7 +10,7 @@ export interface DynamicPageHeaderPropTypes extends CommonProps {
   /**
    * Content of the `DynamicPageHeader`.
    */
-  children?: ReactNode | ReactNodeArray;
+  children?: ReactNode | ReactNode[];
 }
 
 interface InternalProps extends DynamicPageHeaderPropTypes {

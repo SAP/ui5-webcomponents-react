@@ -1,7 +1,6 @@
 import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
 import { useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
+import { usePassThroughHtmlProps, useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import { debounce } from '@ui5/webcomponents-react-base/dist/Utils';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
@@ -16,7 +15,6 @@ import React, {
   forwardRef,
   ReactElement,
   ReactNode,
-  ReactNodeArray,
   Ref,
   useCallback,
   useEffect,
@@ -40,12 +38,12 @@ export interface DynamicPageTitlePropTypes extends CommonProps {
    *
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `Breadcrumbs` in order to preserve the intended design.
    */
-  breadcrumbs?: ReactNode | ReactNodeArray;
+  breadcrumbs?: ReactNode | ReactNode[];
 
   /**
    * The content is positioned in the `DynamicPageTitle` middle area
    */
-  children?: ReactNode | ReactNodeArray;
+  children?: ReactNode | ReactNode[];
 
   /**
    * The `header` is positioned in the `DynamicPageTitle` left area.
@@ -102,7 +100,7 @@ const DynamicPageTitle = forwardRef((props: DynamicPageTitlePropTypes, ref: Ref<
 
   const classes = useStyles();
   const containerClasses = clsx(classes.container, className, isIE() && classes.iEClass);
-  const dynamicPageTitleRef = useConsolidatedRef<HTMLDivElement>(ref);
+  const [componentRef, dynamicPageTitleRef] = useSyncRef<HTMLDivElement>(ref);
   const [showNavigationInTopArea, setShowNavigationInTopArea] = useState(undefined);
   const isRtl = useIsRTL(dynamicPageTitleRef);
   const isMounted = useRef(false);
@@ -158,7 +156,7 @@ const DynamicPageTitle = forwardRef((props: DynamicPageTitlePropTypes, ref: Ref<
     <FlexBox
       className={containerClasses}
       style={style}
-      ref={dynamicPageTitleRef}
+      ref={componentRef}
       tooltip={tooltip}
       data-component-name="DynamicPageTitle"
       onClick={onHeaderClick}

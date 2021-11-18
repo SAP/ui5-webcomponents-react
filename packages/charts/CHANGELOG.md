@@ -3,6 +3,45 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.20.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.19.1...v0.20.0) (2021-11-10)
+
+
+### Features
+
+* update @ui5/webcomponents to 1.0.0 🎉  ([#2282](https://github.com/SAP/ui5-webcomponents-react/issues/2282)) ([e6971af](https://github.com/SAP/ui5-webcomponents-react/commit/e6971afcab6553f813156f8188665a8a3965a6b5))
+
+
+### BREAKING CHANGES
+
+* update @ui5/webcomponents to [1.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.0.0) 
+* **Input:** The `onSuggestionScroll` event has been removed.
+* **BreadcrumbsItem, ComboboxItem, MultiComboboxItem, Option, Tab:** `stableDomRef` prop has been removed - call `getDomRef()` to get the matching actual DOM ref.
+* **ShellbarItem:** `onItemClick` has been renamed to `onClick`.
+* **Wizard:** The `accessibleName` prop  has been removed.
+
+
+
+
+
+## [0.19.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.19.0...v0.19.1) (2021-11-04)
+
+
+### Bug Fixes
+
+* **charts:** correct version of wcr peer-dependencies ([#2281](https://github.com/SAP/ui5-webcomponents-react/issues/2281)) ([9f934f0](https://github.com/SAP/ui5-webcomponents-react/commit/9f934f0f4aacc4c6780eb7f3dc4f4a903d4317aa))
+
+
+
+
+
+# [0.19.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.18.10...v0.19.0) (2021-11-03)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-charts
+
+
+
+
+
 ## [0.18.10](https://github.com/SAP/ui5-webcomponents-react/compare/v0.18.9...v0.18.10) (2021-10-11)
 
 **Note:** Version bump only for package @ui5/webcomponents-react-charts

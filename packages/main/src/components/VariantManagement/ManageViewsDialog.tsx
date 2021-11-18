@@ -14,7 +14,7 @@ import {
 import { Bar } from '@ui5/webcomponents-react/dist/Bar';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
-import { Dialog } from '@ui5/webcomponents-react/dist/Dialog';
+import { Dialog, DialogDomRef } from '@ui5/webcomponents-react/dist/Dialog';
 import { Table } from '@ui5/webcomponents-react/dist/Table';
 import { TableColumn } from '@ui5/webcomponents-react/dist/TableColumn';
 import React, {
@@ -28,7 +28,6 @@ import React, {
   useState
 } from 'react';
 import { createPortal } from 'react-dom';
-import { Ui5DialogDomRef } from '../../interfaces/Ui5DialogDomRef';
 import { ManageViewsTableRows } from './MangeViewsTableRows';
 import { VariantItemPropTypes } from './VariantItem';
 import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming';
@@ -58,6 +57,7 @@ interface ManageViewsDialogPropTypes {
   showApplyAutomatically: boolean;
   showSetAsDefault: boolean;
   variantNames: string[];
+  portalContainer: Element;
 }
 
 export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
@@ -68,7 +68,8 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
     showShare,
     showApplyAutomatically,
     showSetAsDefault,
-    variantNames
+    variantNames,
+    portalContainer
   } = props;
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const cancelText = i18nBundle.getText(CANCEL);
@@ -107,7 +108,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
       <TableColumn key="delete-variant-item" />
     </>
   );
-  const manageViewsRef = useRef<Ui5DialogDomRef>(null);
+  const manageViewsRef = useRef<DialogDomRef>(null);
 
   useEffect(() => {
     manageViewsRef.current.show();
@@ -211,6 +212,6 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
         })}
       </Table>
     </Dialog>,
-    document.body
+    portalContainer
   );
 };

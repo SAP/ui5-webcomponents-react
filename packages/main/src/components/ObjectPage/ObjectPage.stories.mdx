@@ -25,11 +25,12 @@ import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignIte
 import { FlexBoxWrap } from '@ui5/webcomponents-react/dist/FlexBoxWrap';
 import { IllustratedMessage } from '@ui5/webcomponents-react/dist/IllustratedMessage';
 import { IllustrationMessageType } from '@ui5/webcomponents-react/dist/IllustrationMessageType';
-import { DocsHeader } from '@shared/stories/DocsHeader';
+import { DocsHeader } from '@docs/DocsHeader';
+import { Footer } from '@docs/Footer';
 import '@ui5/webcomponents-icons/dist/activate.js';
 import SampleImage from './DemoImage.png';
 import '@ui5/webcomponents-icons/dist/wrench.js';
-import '@ui5/webcomponents-fiori/dist/illustrations/NoData.js';
+import '@ui5/webcomponents-fiori/dist/illustrations/UnableToLoad.js';
 
 <Meta
   title="Layouts & Floorplans / ObjectPage"
@@ -40,6 +41,7 @@ import '@ui5/webcomponents-fiori/dist/illustrations/NoData.js';
     headerContent: { control: { disable: true } },
     footer: { control: { disable: true } },
     children: { control: { disable: true } },
+    placeholder: { control: { disable: true } },
     a11yConfig: { table: { category: 'A11y props' } }
   }}
   args={{
@@ -269,7 +271,7 @@ import '@ui5/webcomponents-fiori/dist/illustrations/NoData.js';
 
 <ArgsTable story="Default" />
 
-## ObjectPage with IllustratedMessage (`NoData`) placeholder
+## ObjectPage with IllustratedMessage (`UnableToLoad`) placeholder
 
 <Canvas>
   <Story name="with IllustratedMessage">
@@ -279,9 +281,11 @@ import '@ui5/webcomponents-fiori/dist/illustrations/NoData.js';
           image={args.image}
           headerTitle={args.headerTitle}
           imageShapeCircle
-          illustratedMessage={<IllustratedMessage name={IllustrationMessageType.NoData} />}
+          placeholder={<IllustratedMessage name={IllustrationMessageType.UnableToLoad} />}
         />
       );
     }}
   </Story>
 </Canvas>
+
+<Footer />

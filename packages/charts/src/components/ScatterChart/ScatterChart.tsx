@@ -1,4 +1,4 @@
-import { useIsRTL, usePassThroughHtmlProps, useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useIsRTL, usePassThroughHtmlProps, useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/dist/components/ChartContainer';
@@ -164,7 +164,7 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
   const { measures } = usePrepareDimensionsAndMeasures([], props.measures, {}, measureDefaults);
 
   const tooltipValueFormatter = useTooltipFormatter(measures);
-  const chartRef = useConsolidatedRef<any>(ref);
+  const [componentRef, chartRef] = useSyncRef<any>(ref);
   const preventOnClickCall = useRef(false);
   const onItemLegendClick = useLegendItemClick(onLegendClick);
   const onClickInternal = useCallback(
@@ -217,7 +217,7 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
       dataset={dataset}
       loading={loading}
       Placeholder={ChartPlaceholder ?? ScatterChartPlaceholder}
-      ref={chartRef}
+      ref={componentRef}
       style={style}
       className={className}
       tooltip={tooltip}

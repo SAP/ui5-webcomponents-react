@@ -1,5 +1,5 @@
 import { CalendarDate } from '../webComponents/CalendarDate';
-import type { CalendarDatePropTypes } from '../webComponents/CalendarDate';
+import type { CalendarDatePropTypes, CalendarDateDomRef } from '../webComponents/CalendarDate';
 
 export { CalendarDate };
-export type { CalendarDatePropTypes };
+export type { CalendarDatePropTypes, CalendarDateDomRef };

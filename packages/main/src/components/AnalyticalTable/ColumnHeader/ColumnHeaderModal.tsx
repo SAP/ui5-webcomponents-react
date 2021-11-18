@@ -16,10 +16,9 @@ import { Icon } from '@ui5/webcomponents-react/dist/Icon';
 import { List } from '@ui5/webcomponents-react/dist/List';
 import { ListItemType } from '@ui5/webcomponents-react/dist/ListItemType';
 import { PopoverPlacementType } from '@ui5/webcomponents-react/dist/PopoverPlacementType';
-import { Popover } from '@ui5/webcomponents-react/dist/Popover';
+import { Popover, PopoverDomRef } from '@ui5/webcomponents-react/dist/Popover';
 import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/dist/PopoverHorizontalAlign';
 import { StandardListItem } from '@ui5/webcomponents-react/dist/StandardListItem';
-import { Ui5PopoverDomRef } from '@ui5/webcomponents-react/interfaces/Ui5PopoverDomRef';
 import React, { RefObject, useCallback, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
@@ -33,6 +32,7 @@ export interface ColumnHeaderModalProperties {
   open: boolean;
   setPopoverOpen: (open: boolean) => void;
   targetRef: RefObject<any>;
+  portalContainer: Element;
 }
 
 const styles = {
@@ -49,13 +49,13 @@ const styles = {
 const useStyles = createUseStyles(styles, { name: 'ColumnHeaderModal' });
 
 export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
-  const { column, onSort, onGroupBy, open, setPopoverOpen, targetRef } = props;
+  const { column, onSort, onGroupBy, open, setPopoverOpen, targetRef, portalContainer } = props;
   const classes = useStyles();
   const showFilter = column.canFilter;
   const showGroup = column.canGroupBy;
   const showSort = column.canSort;
 
-  const ref = useRef<Ui5PopoverDomRef>(null);
+  const ref = useRef<PopoverDomRef>(null);
   const listRef = useRef(null);
 
   const { Filter } = column;
@@ -197,7 +197,7 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
         )}
       </List>
     </Popover>,
-    document.body
+    portalContainer
   );
 };
 ColumnHeaderModal.displayName = 'ColumnHeaderModal';

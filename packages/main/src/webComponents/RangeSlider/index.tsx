@@ -1,10 +1,11 @@
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 
 import '@ui5/webcomponents/dist/RangeSlider.js';
 
-export interface RangeSliderPropTypes extends Omit<CommonProps, 'onChange' | 'onInput'> {
+interface RangeSliderAttributes {
   /**
    * Defines end point of a selection - position of a second handle on the slider.
    */
@@ -24,15 +25,15 @@ export interface RangeSliderPropTypes extends Omit<CommonProps, 'onChange' | 'on
    */
   labelInterval?: number;
   /**
-   * Defines the maximum value of the slider
+   * Defines the maximum value of the slider.
    */
   max?: number;
   /**
-   * Defines the minimum value of the slider
+   * Defines the minimum value of the slider.
    */
   min?: number;
   /**
-   * Enables tick marks visualization for each step.
+   * Enables tickmarks visualization for each step.
    *
    * **Note:** The step must be a positive number.
    */
@@ -47,6 +48,11 @@ export interface RangeSliderPropTypes extends Omit<CommonProps, 'onChange' | 'on
    * **Note:** If set to 0 the slider handle movement is disabled. When negative number or value other than a number, the component fallbacks to its default value.
    */
   step?: number;
+}
+
+export interface RangeSliderDomRef extends RangeSliderAttributes, Ui5DomRef {}
+
+export interface RangeSliderPropTypes extends RangeSliderAttributes, Omit<CommonProps, 'onChange' | 'onInput'> {
   /**
    * Fired when the value changes and the user has finished interacting with the slider.
    */
@@ -62,7 +68,7 @@ export interface RangeSliderPropTypes extends Omit<CommonProps, 'onChange' | 'on
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/RangeSlider" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const RangeSlider = withWebComponent<RangeSliderPropTypes>(
+const RangeSlider = withWebComponent<RangeSliderPropTypes, RangeSliderDomRef>(
   'ui5-range-slider',
   ['endValue', 'startValue', 'labelInterval', 'max', 'min', 'step'],
   ['disabled', 'showTickmarks', 'showTooltip'],
@@ -75,12 +81,9 @@ RangeSlider.displayName = 'RangeSlider';
 RangeSlider.defaultProps = {
   endValue: 100,
   startValue: 0,
-  disabled: false,
   labelInterval: 0,
   max: 100,
   min: 0,
-  showTickmarks: false,
-  showTooltip: false,
   step: 1
 };
 

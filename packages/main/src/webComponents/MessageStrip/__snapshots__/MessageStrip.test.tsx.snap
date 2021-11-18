@@ -2,9 +2,9 @@
 
 exports[`MessageStrip Basic Test (generated) 1`] = `
 <DocumentFragment>
-  <ui5-messagestrip
+  <ui5-message-strip
     design="Information"
-    ui5-messagestrip=""
+    ui5-message-strip=""
   />
 </DocumentFragment>
 `;

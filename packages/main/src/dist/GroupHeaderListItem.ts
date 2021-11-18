@@ -1,5 +1,5 @@
 import { GroupHeaderListItem } from '../webComponents/GroupHeaderListItem';
-import type { GroupHeaderListItemPropTypes } from '../webComponents/GroupHeaderListItem';
+import type { GroupHeaderListItemPropTypes, GroupHeaderListItemDomRef } from '../webComponents/GroupHeaderListItem';
 
 export { GroupHeaderListItem };
-export type { GroupHeaderListItemPropTypes };
+export type { GroupHeaderListItemPropTypes, GroupHeaderListItemDomRef };

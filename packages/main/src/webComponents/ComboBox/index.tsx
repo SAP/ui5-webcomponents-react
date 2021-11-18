@@ -2,11 +2,12 @@ import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/ComboBox.js';
 
-export interface ComboBoxPropTypes extends Omit<CommonProps, 'onChange' | 'onInput'> {
+interface ComboBoxAttributes {
   /**
    * Sets the accessible aria name of the component.
    */
@@ -18,7 +19,7 @@ export interface ComboBoxPropTypes extends Omit<CommonProps, 'onChange' | 'onInp
   /**
    * Defines whether the component is in disabled state.
    *
-   * **Note:** A disabled component is completely uninteractive.
+   * **Note:** A disabled component is completely noninteractive.
    */
   disabled?: boolean;
   /**
@@ -34,7 +35,7 @@ export interface ComboBoxPropTypes extends Omit<CommonProps, 'onChange' | 'onInp
    */
   placeholder?: string;
   /**
-   * Defines whether the component is readonly.
+   * Defines whether the component is read-only.
    *
    * **Note:** A read-only component is not editable, but still provides visual feedback upon user interaction.
    */
@@ -59,6 +60,11 @@ export interface ComboBoxPropTypes extends Omit<CommonProps, 'onChange' | 'onInp
    * *   `Information`
    */
   valueState?: ValueState | keyof typeof ValueState;
+}
+
+export interface ComboBoxDomRef extends ComboBoxAttributes, Ui5DomRef {}
+
+export interface ComboBoxPropTypes extends ComboBoxAttributes, Omit<CommonProps, 'onChange' | 'onInput'> {
   /**
    * Defines the component items.
    */
@@ -74,7 +80,7 @@ export interface ComboBoxPropTypes extends Omit<CommonProps, 'onChange' | 'onInp
    * Defines the value state message that will be displayed as pop up under the component.
    *
    * **Note:** If not specified, a default text (in the respective language) will be displayed.
-   * **Note:** The `valueStateMessage` would be displayed, when the `Select` is in `Information`, `Warning` or `Error` value state.
+   * **Note:** The `valueStateMessage` would be displayed, when the `ComboBox` is in `Information`, `Warning` or `Error` value state.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
@@ -97,11 +103,11 @@ export interface ComboBoxPropTypes extends Omit<CommonProps, 'onChange' | 'onInp
 }
 
 /**
- * The `ComboBox` component represents a drop-down menu with a list of the available options and a text input field to narrow down the options. It is commonly used to enable users to select one or more options from a predefined list.
+ * The `ComboBox` component represents a drop-down menu with a list of the available options and a text input field to narrow down the options. It is commonly used to enable users to select an option from a predefined list.
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/ComboBox" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const ComboBox = withWebComponent<ComboBoxPropTypes>(
+const ComboBox = withWebComponent<ComboBoxPropTypes, ComboBoxDomRef>(
   'ui5-combobox',
   ['accessibleName', 'accessibleNameRef', 'filter', 'placeholder', 'value', 'valueState'],
   ['disabled', 'loading', 'readonly', 'required'],
@@ -112,11 +118,7 @@ const ComboBox = withWebComponent<ComboBoxPropTypes>(
 ComboBox.displayName = 'ComboBox';
 
 ComboBox.defaultProps = {
-  disabled: false,
   filter: 'StartsWithPerTerm',
-  loading: false,
-  readonly: false,
-  required: false,
   valueState: ValueState.None
 };
 

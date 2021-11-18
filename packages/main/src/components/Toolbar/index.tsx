@@ -1,5 +1,5 @@
 import { createUseStyles } from 'react-jss';
-import { useConsolidatedRef, useI18nBundle, useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useSyncRef, useI18nBundle, useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base/dist/hooks';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { SHOW_MORE } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
@@ -53,6 +53,12 @@ export interface ToolbarPropTypes extends Omit<CommonProps, 'onClick'> {
    */
   as?: keyof HTMLElementTagNameMap;
   /**
+   * Defines where modals are rendered into via `React.createPortal`.
+   *
+   * Defaults to: `document.body`
+   */
+  portalContainer?: Element;
+  /**
    * Fired when the user clicks on the `Toolbar`, if the `active` prop is set to "true".
    */
   onClick?: (event: CustomEvent) => void;
@@ -65,9 +71,22 @@ export interface ToolbarPropTypes extends Omit<CommonProps, 'onClick'> {
  * It can be accessed by the user through the overflow button that opens it in a popover.
  */
 const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) => {
-  const { children, toolbarStyle, design, active, style, tooltip, className, onClick, slot, as, ...rest } = props;
+  const {
+    children,
+    toolbarStyle,
+    design,
+    active,
+    style,
+    tooltip,
+    className,
+    onClick,
+    slot,
+    as,
+    portalContainer,
+    ...rest
+  } = props;
   const classes = useStyles();
-  const outerContainer: RefObject<HTMLDivElement> = useConsolidatedRef(ref);
+  const [componentRef, outerContainer] = useSyncRef<HTMLDivElement>(ref);
   const controlMetaData = useRef([]);
   const [lastVisibleIndex, setLastVisibleIndex] = useState<number>(null);
 
@@ -193,7 +212,7 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
       title={tooltip}
       style={style}
       className={clsx(toolbarClasses, overflowNeeded && classes.hasOverflow)}
-      ref={outerContainer}
+      ref={componentRef}
       slot={slot}
       onClick={handleToolbarClick}
       {...rest}
@@ -214,7 +233,11 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
           title={i18nBundle.getText(SHOW_MORE)}
           data-component-name="ToolbarOverflowButtonContainer"
         >
-          <OverflowPopover lastVisibleIndex={lastVisibleIndex} contentClass={classes.popoverContent}>
+          <OverflowPopover
+            lastVisibleIndex={lastVisibleIndex}
+            contentClass={classes.popoverContent}
+            portalContainer={portalContainer}
+          >
             {React.Children.toArray(children).map((child) => {
               if ((child as ReactElement).type === React.Fragment) {
                 return (child as ReactElement).props.children;
@@ -232,7 +255,8 @@ Toolbar.defaultProps = {
   as: 'div',
   toolbarStyle: ToolbarStyle.Standard,
   design: ToolbarDesign.Auto,
-  active: false
+  active: false,
+  portalContainer: document.body
 };
 
 Toolbar.displayName = 'Toolbar';

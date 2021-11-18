@@ -1,5 +1,6 @@
 import { Meta, Story, Canvas } from '@storybook/addon-docs';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
+import { Footer } from '@docs/Footer';
 
 <Meta title="Getting Started" />
 
@@ -150,10 +151,10 @@ Example - `Popover` with `Ref` type declaration:
 ```tsx
 import React, { useRef } from 'react';
 import { ThemeProvider, Button, Popover } from '@ui5/webcomponents-react';
-import { Ui5PopoverDomRef } from '@ui5/webcomponents-react/interfaces/Ui5PopoverDomRef';
+import { PopoverDomRef } from '@ui5/webcomponents-react/dist/Popover';
 
 export default function App() {
-  const popoverRef = useRef<Ui5PopoverDomRef>(null);
+  const popoverRef = useRef<PopoverDomRef>(null);
   const onClick = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
     popoverRef.current?.showAt(e.target);
   };
@@ -172,3 +173,5 @@ export default function App() {
 Feel free to open issues or ask us directly in the [`#webcomponents-react`](https://openui5.slack.com/archives/CSQEJ2J04) channel in the
 [OpenUI5 Community Slack](https://ui5-slack-invite.cfapps.eu10.hana.ondemand.com/).<br />
 Please note that you have to join this slack workspace via [this link](https://ui5-slack-invite.cfapps.eu10.hana.ondemand.com/) if you are not part of it already.
+
+<Footer />

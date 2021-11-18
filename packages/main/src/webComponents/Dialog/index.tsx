@@ -1,12 +1,12 @@
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { Ui5DialogDomRef } from '@ui5/webcomponents-react/interfaces/Ui5DialogDomRef';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Dialog.js';
 
-export interface DialogPropTypes extends CommonProps {
+interface DialogAttributes {
   /**
    * Sets the accessible aria name of the component.
    */
@@ -44,6 +44,32 @@ export interface DialogPropTypes extends CommonProps {
    * Defines if the focus should be returned to the previously focused element, when the popup closes.
    */
   preventFocusRestore?: boolean;
+}
+
+export interface DialogDomRef extends DialogAttributes, Omit<Ui5DomRef, 'draggable'> {
+  /**
+   * Shows the dialog.
+   * @param {boolean} [preventInitialFocus] - Prevents applying the focus inside the popup
+   */
+  show: (preventInitialFocus?: boolean) => void;
+  /**
+   * Focuses the element denoted by <code>initialFocus</code>, if provided, or the first focusable element otherwise.
+   *
+   */
+  applyFocus: () => void;
+  /**
+   * Hides the block layer (for modal popups only)
+   *
+   */
+  close: () => void;
+  /**
+   * Tells if the component is opened
+   *
+   */
+  isOpen: () => void;
+}
+
+export interface DialogPropTypes extends DialogAttributes, Omit<CommonProps, 'draggable'> {
   /**
    * Defines the footer HTML Element.
    *
@@ -89,7 +115,7 @@ export interface DialogPropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Dialog" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Dialog = withWebComponent<DialogPropTypes, Ui5DialogDomRef>(
+const Dialog = withWebComponent<DialogPropTypes, DialogDomRef>(
   'ui5-dialog',
   ['accessibleName', 'headerText', 'initialFocus'],
   ['draggable', 'resizable', 'stretch', 'preventFocusRestore'],
@@ -98,12 +124,5 @@ const Dialog = withWebComponent<DialogPropTypes, Ui5DialogDomRef>(
 );
 
 Dialog.displayName = 'Dialog';
-
-Dialog.defaultProps = {
-  draggable: false,
-  resizable: false,
-  stretch: false,
-  preventFocusRestore: false
-};
 
 export { Dialog };

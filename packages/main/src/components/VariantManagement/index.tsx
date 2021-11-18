@@ -28,12 +28,11 @@ import { Input } from '@ui5/webcomponents-react/dist/Input';
 import { List } from '@ui5/webcomponents-react/dist/List';
 import { ListMode } from '@ui5/webcomponents-react/dist/ListMode';
 import { PopoverPlacementType } from '@ui5/webcomponents-react/dist/PopoverPlacementType';
-import { ResponsivePopover } from '@ui5/webcomponents-react/dist/ResponsivePopover';
+import { ResponsivePopover, ResponsivePopoverDomRef } from '@ui5/webcomponents-react/dist/ResponsivePopover';
 import { Title } from '@ui5/webcomponents-react/dist/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
 import { SelectedVariant, VariantManagementContext } from '@ui5/webcomponents-react/dist/VariantManagementContext';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { Ui5ResponsivePopoverDomRef } from '@ui5/webcomponents-react/interfaces/Ui5ResponsivePopoverDomRef';
 import React, {
   Children,
   cloneElement,
@@ -146,6 +145,12 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
    */
   inErrorState?: boolean;
   /**
+   * Defines where modals are rendered into via `React.createPortal`.
+   *
+   * Defaults to: `document.body`
+   */
+  portalContainer?: Element;
+  /**
    * The event is fired when the "Save" button is clicked inside the Save View dialog.
    */
   onSaveAs?: (e: CustomEvent<SelectedVariant>) => void;
@@ -239,11 +244,12 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
     dirtyStateText,
     dirtyState,
     showCancelButton,
-    onSave
+    onSave,
+    portalContainer
   } = props;
 
   const classes = useStyles();
-  const popoverRef = useRef<Ui5ResponsivePopoverDomRef>(null);
+  const popoverRef = useRef<ResponsivePopoverDomRef>(null);
 
   const [safeChildren, setSafeChildren] = useState(Children.toArray(children));
   const [showInput, setShowInput] = useState(safeChildren.length > 9);
@@ -550,7 +556,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
               </List>
             )}
           </ResponsivePopover>,
-          document.body
+          portalContainer
         )}
         {manageViewsDialogOpen && (
           <ManageViewsDialog
@@ -560,6 +566,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
             showApplyAutomatically={!hideApplyAutomatically}
             showSetAsDefault={!hideSetAsDefault}
             variantNames={variantNames}
+            portalContainer={portalContainer}
           >
             {safeChildren}
           </ManageViewsDialog>
@@ -583,7 +590,8 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
 VariantManagement.defaultProps = {
   placement: PopoverPlacementType.Bottom,
   level: TitleLevel.H4,
-  dirtyStateText: '*'
+  dirtyStateText: '*',
+  portalContainer: document.body
 };
 VariantManagement.displayName = 'VariantManagement';
 

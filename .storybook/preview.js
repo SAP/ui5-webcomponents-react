@@ -1,16 +1,17 @@
 import { makeDecorator } from '@storybook/addons';
 import { addDecorator } from '@storybook/react';
 import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme';
-import '@ui5/webcomponents/dist/Assets';
-import '@ui5/webcomponents-fiori/dist/Assets';
-import '@ui5/webcomponents-icons/dist/Assets';
+import '@ui5/webcomponents/dist/Assets.js';
+import '@ui5/webcomponents-fiori/dist/Assets.js';
+import '@ui5/webcomponents-icons/dist/Assets.js';
 import '@ui5/webcomponents-react/dist/Assets';
+import '@ui5/webcomponents-icons/dist/AllIcons.js';
 import { ContentDensity } from '@ui5/webcomponents-react/dist/ContentDensity';
 import { ThemeProvider } from '@ui5/webcomponents-react/dist/ThemeProvider';
 import { Themes } from '@ui5/webcomponents-react/dist/Themes';
 import '@ui5/webcomponents/dist/features/InputElementsFormSupport';
 import React, { useEffect } from 'react';
-import { DocsPage } from '../shared/stories/DocsPage';
+import { DocsPage } from './components/DocsPage';
 import applyDirection from '@ui5/webcomponents-base/dist/locale/applyDirection';
 
 const argTypesCategoryCommonProps = {

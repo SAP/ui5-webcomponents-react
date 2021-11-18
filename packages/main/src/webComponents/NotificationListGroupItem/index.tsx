@@ -2,11 +2,12 @@ import { Priority } from '@ui5/webcomponents-react/dist/Priority';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
+import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents-fiori/dist/NotificationListGroupItem.js';
 
-export interface NotificationListGroupItemPropTypes extends CommonProps {
+interface NotificationListGroupItemAttributes {
   /**
    * Defines if the group is collapsed or expanded.
    */
@@ -50,6 +51,11 @@ export interface NotificationListGroupItemPropTypes extends CommonProps {
    * Defines the selected state of the `ListItem`.
    */
   selected?: boolean;
+}
+
+export interface NotificationListGroupItemDomRef extends NotificationListGroupItemAttributes, Ui5DomRef {}
+
+export interface NotificationListGroupItemPropTypes extends NotificationListGroupItemAttributes, CommonProps {
   /**
    * Defines the items of the `NotificationListItemBase`, usually `NotificationListItem` items.
    */
@@ -85,7 +91,7 @@ export interface NotificationListGroupItemPropTypes extends CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/NotificationListGroupItem" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const NotificationListGroupItem = withWebComponent<NotificationListGroupItemPropTypes>(
+const NotificationListGroupItem = withWebComponent<NotificationListGroupItemPropTypes, NotificationListGroupItemDomRef>(
   'ui5-li-notification-group',
   ['busyDelay', 'priority', 'titleText'],
   ['collapsed', 'showCounter', 'busy', 'read', 'showClose', 'selected'],
@@ -96,14 +102,8 @@ const NotificationListGroupItem = withWebComponent<NotificationListGroupItemProp
 NotificationListGroupItem.displayName = 'NotificationListGroupItem';
 
 NotificationListGroupItem.defaultProps = {
-  collapsed: false,
-  showCounter: false,
-  busy: false,
   busyDelay: 1000,
-  priority: Priority.None,
-  read: false,
-  showClose: false,
-  selected: false
+  priority: Priority.None
 };
 
 export { NotificationListGroupItem };

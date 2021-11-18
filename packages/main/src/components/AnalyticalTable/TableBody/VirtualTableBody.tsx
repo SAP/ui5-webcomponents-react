@@ -1,7 +1,6 @@
 import '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
 import '@ui5/webcomponents-icons/dist/navigation-right-arrow.js';
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base/dist/useConsolidatedRef';
-import React, { MutableRefObject, ReactNode, useCallback, useMemo, useRef } from 'react';
+import React, { MutableRefObject, ReactNode, useCallback, useMemo } from 'react';
 import { useVirtual } from 'react-virtual';
 import { RowSubComponent as SubComponent } from './RowSubComponent';
 
@@ -57,12 +56,11 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
 
   const itemCount = Math.max(minRows, rows.length);
   const overscan = overscanCount ? overscanCount : Math.floor(visibleRows / 2);
-  const consolidatedParentRef = useConsolidatedRef(parentRef);
   const rowHeight = popInRowHeight !== internalRowHeight ? popInRowHeight : internalRowHeight;
 
   const rowVirtualizer = useVirtual({
     size: itemCount,
-    parentRef: consolidatedParentRef,
+    parentRef: parentRef,
     estimateSize: React.useCallback(
       (index) => {
         if (

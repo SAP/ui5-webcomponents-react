@@ -3,14 +3,12 @@
     "outDir": "build",
     "module": "esnext",
     "target": "ES2015",
-    "lib": [
-      "es2019",
-      "dom"
-    ],
+    "lib": ["es2019", "dom"],
     "sourceMap": true,
     "jsx": "react",
     "baseUrl": ".",
     "paths": {
+      "@docs/*": [".storybook/components/*"],
       "@shared/*": ["shared/*"],
       "@ui5/webcomponents-react/*": ["node_modules/@ui5/webcomponents-react/src/*"],
       "@ui5/webcomponents-react-base/*": ["node_modules/@ui5/webcomponents-react-base/src/*"],
@@ -25,14 +23,7 @@
     "esModuleInterop": true,
     "resolveJsonModule": true
   },
-  "include": [
-    "packages/**/*",
-    "shared/**/*"
-  ],
-  "exclude": [
-    "node_modules"
-  ],
-  "files": [
-    "types.d.ts"
-  ]
+  "include": ["packages/**/*", "shared/**/*"],
+  "exclude": ["node_modules"],
+  "files": ["types.d.ts"]
 }

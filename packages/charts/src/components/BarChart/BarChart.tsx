@@ -1,4 +1,4 @@
-import { useConsolidatedRef, useIsRTL, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useSyncRef, useIsRTL, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { BarChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/BarChartPlaceholder';
@@ -182,7 +182,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
     ? dataKeys.findIndex((key) => key === chartConfig.secondYAxis?.dataKey)
     : 0;
 
-  const chartRef = useConsolidatedRef<any>(ref);
+  const [componentRef, chartRef] = useSyncRef<any>(ref);
 
   const onItemLegendClick = useLegendItemClick(onLegendClick);
   const labelFormatter = useLabelFormatter(primaryDimension);
@@ -224,7 +224,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
       dataset={dataset}
       loading={loading}
       Placeholder={ChartPlaceholder ?? BarChartPlaceholder}
-      ref={chartRef}
+      ref={componentRef}
       style={style}
       className={className}
       tooltip={tooltip}
