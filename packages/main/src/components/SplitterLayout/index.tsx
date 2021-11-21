@@ -38,17 +38,17 @@ export interface SplitterLayoutPropTypes extends CommonProps {
 export const ThemeContext = React.createContext({} as ThemeContextType);
 
 const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTMLDivElement>) => {
-  const { width, height, orientation, children, slot, tooltip, style, className, ...rest } = props;
+  const { width, height, orientation, children, title, tooltip, style, className, ...rest } = props;
 
   const classes = useStyles(props);
 
-  const splitterLayoutClasses = clsx({ [classes.splitterLayout]: !className, [className]: className });
+  const splitterLayoutClasses = clsx(classes.splitterLayout, className);
 
   const layoutElements = useConcatSplitterElements(children ?? [], width, height, orientation);
 
   return (
     <ThemeContext.Provider value={{ containerWidth: width, containerHeight: height, orientation }}>
-      <div style={style} title={tooltip} slot={slot} {...rest} className={splitterLayoutClasses.valueOf()} ref={ref}>
+      <div style={style} title={title ?? tooltip} {...rest} className={splitterLayoutClasses} ref={ref}>
         {layoutElements}
       </div>
     </ThemeContext.Provider>
