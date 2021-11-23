@@ -14,8 +14,6 @@ const defaultFilterMethod = (filter, row) => {
 
 export const DefaultColumn = {
   Filter: DefaultFilterComponent,
-  canResize: true,
-  canReorder: true,
   minWidth: DEFAULT_COLUMN_WIDTH,
   vAlign: VerticalAlign.Middle,
   defaultFilter: defaultFilterMethod,

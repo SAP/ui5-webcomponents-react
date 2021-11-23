@@ -131,7 +131,7 @@ export const ColumnHeaderContainer = forwardRef((props: ColumnHeaderContainerPro
               onDragEnd={onDragEnd}
               dragOver={column.id === dragOver}
               headerTooltip={column.headerTooltip}
-              isDraggable={column.canReorder && !resizeInfo.isResizingColumn}
+              isDraggable={(column.canReorder || !column.disableDragAndDrop) && !resizeInfo.isResizingColumn}
               virtualColumn={virtualColumn}
               isRtl={isRtl}
               portalContainer={portalContainer}
