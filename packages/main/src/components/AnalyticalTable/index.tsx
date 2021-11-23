@@ -604,12 +604,10 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     }
   }, [rows.length, minRows, internalVisibleRowCount, popInRowHeight, tableBodyHeight]);
 
-  const noDataStyles = useMemo(() => {
-    return {
-      height: `${tableBodyHeight}px`,
-      width: `${totalColumnsWidth}px`
-    };
-  }, [tableBodyHeight, totalColumnsWidth]);
+  const noDataStyles = {
+    height: `${tableBodyHeight}px`,
+    width: totalColumnsWidth ? `${totalColumnsWidth}px` : '100%'
+  };
 
   const onGroupByChanged = useCallback(
     (e) => {
