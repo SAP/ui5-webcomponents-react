@@ -96,6 +96,12 @@ export interface ObjectPagePropTypes extends CommonProps {
    */
   selectedSubSectionId?: string;
   /**
+   * Defines where modals are rendered into via `React.createPortal`.
+   *
+   * Defaults to: `document.body`
+   */
+  portalContainer?: Element;
+  /**
    * Fired when the selected section changes.
    */
   onSelectedSectionChanged?: (
@@ -170,7 +176,8 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     showTitleInHeaderContent,
     headerContent,
     headerContentPinnable,
-    a11yConfig
+    a11yConfig,
+    portalContainer
   } = props;
 
   const classes = useStyles();
@@ -821,7 +828,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
                 ))}
             </List>
           </Popover>,
-          document.body
+          portalContainer
         )}
       </div>
       <div data-component-name="ObjectPageContent" className={responsivePaddingClass}>
@@ -843,7 +850,8 @@ ObjectPage.defaultProps = {
   image: null,
   mode: ObjectPageMode.Default,
   imageShapeCircle: false,
-  showHideHeaderButton: false
+  showHideHeaderButton: false,
+  portalContainer: document.body
 };
 
 export { ObjectPage };

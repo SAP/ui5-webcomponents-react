@@ -246,6 +246,12 @@ export interface TableProps extends Omit<CommonProps, 'title'> {
    * Defines whether a subcomponent should be rendered as expandable container or directly at the bottom of the row.
    */
   alwaysShowSubComponent?: boolean;
+  /**
+   * Defines where modals and other elements which should be mounted outside of the DOM hierarchy are rendered into via `React.createPortal`.
+   *
+   * Defaults to: `document.body`
+   */
+  portalContainer?: Element;
 
   // events
   /**
@@ -366,7 +372,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     renderRowSubComponent,
     alwaysShowSubComponent,
     globalFilterValue,
-    tableInstance
+    tableInstance,
+    portalContainer
   } = props;
 
   const classes = useStyles();
@@ -749,6 +756,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
                   onDragEnd={handleOnDragEnd}
                   dragOver={dragOver}
                   isRtl={isRtl}
+                  portalContainer={portalContainer}
                 />
               )
             );
@@ -829,6 +837,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
           dispatch={dispatch}
           extensionsHeight={extensionsHeight}
           internalRowHeight={internalRowHeight}
+          portalContainer={portalContainer}
         />
       )}
     </div>
@@ -867,7 +876,8 @@ AnalyticalTable.defaultProps = {
   alternateRowColor: false,
   overscanCountHorizontal: 5,
   visibleRowCountMode: TableVisibleRowCountMode.FIXED,
-  alwaysShowSubComponent: false
+  alwaysShowSubComponent: false,
+  portalContainer: document.body
 };
 
 export { AnalyticalTable };
