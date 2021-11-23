@@ -53,7 +53,8 @@ Label.displayName = 'Label';
 
 Label.defaultProps = {
   required: false,
-  showColon: false,
+  // needs to be removed for FormItem
+  // showColon: false,
   wrap: false
 };
 

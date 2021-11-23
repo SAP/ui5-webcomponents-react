@@ -24,6 +24,8 @@ interface InternalProps extends FormItemProps {
   lastGroupItem?: boolean;
 }
 
+const CENTER_ALIGNED_CHILDREN = new Set(['CheckBox', 'RadioButton', 'Switch', 'RangeSlider', 'Slider']);
+
 const useStyles = createUseStyles(
   {
     label: {
@@ -39,11 +41,7 @@ const useStyles = createUseStyles(
   { name: 'FormItem' }
 );
 
-const renderLabel = (
-  label: string | ReactElement,
-  classes: Record<'label' | 'content', string>,
-  styles: CSSProperties
-) => {
+const renderLabel = (label: ReactNode, classes: Record<'label' | 'content', string>, styles: CSSProperties) => {
   if (typeof label === 'string') {
     return (
       <Label className={classes.label} style={styles} wrap>
@@ -53,21 +51,20 @@ const renderLabel = (
   }
 
   if (isValidElement(label)) {
+    const { showColon, wrap, className, style, children } = label.props;
     return cloneElement<LabelPropTypes>(
       label,
       {
-        wrap: (label as ReactElement<LabelPropTypes>).props.wrap ?? true,
-        className: `${classes.label} ${(label as ReactElement<LabelPropTypes>).props.className ?? ''}`,
+        showColon: showColon ?? true,
+        wrap: wrap ?? true,
+        className: `${classes.label} ${className ?? ''}`,
         style: {
           gridColumnStart: styles.gridColumnStart,
           gridRowStart: styles.gridRowStart,
-          ...((label as ReactElement<LabelPropTypes>).props.style || {})
+          ...(style || {})
         }
       },
-      (label as ReactElement<LabelPropTypes>).props.children
-        ? // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-          `${(label as ReactElement<LabelPropTypes>).props.children}:`
-        : ''
+      children ?? ''
     );
   }
 
@@ -100,9 +97,21 @@ const FormItem: FC<FormItemProps> = (props: FormItemProps) => {
     );
   }
 
+  const inlineLabelStyles = () => {
+    const styles = { gridColumnStart, gridRowStart };
+    if (CENTER_ALIGNED_CHILDREN.has((children as any)?.type?.displayName)) {
+      return {
+        ...styles,
+        alignSelf: 'center',
+        paddingBottom: lastGroupItem ? '1rem' : 0
+      };
+    }
+    return styles;
+  };
+
   return (
     <>
-      {renderLabel(label, classes, { gridColumnStart, gridRowStart })}
+      {renderLabel(label, classes, inlineLabelStyles())}
       <div
         className={classes.content}
         style={{
