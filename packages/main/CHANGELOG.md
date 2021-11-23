@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.131.24](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.23...v0.131.24) (2021-11-23)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** center `noDataText` if no columns are defined ([#2305](https://github.com/SAP/ui5-webcomponents-react/issues/2305)) ([ee1a9c0](https://github.com/SAP/ui5-webcomponents-react/commit/ee1a9c01d532644591a8d322c9190d44e49f0d6e))
+* **FormItem:** remove unecessary string conversion ([#2236](https://github.com/SAP/ui5-webcomponents-react/issues/2236)) ([80921d0](https://github.com/SAP/ui5-webcomponents-react/commit/80921d0bd7c07436e2a487c7dd4ab7eb0fdfdcae))
+
+
+### Features
+
+* add `portalContainer` prop for elements rendered via `createPortal` ([#2275](https://github.com/SAP/ui5-webcomponents-react/issues/2275)) ([3fff8ba](https://github.com/SAP/ui5-webcomponents-react/commit/3fff8ba56f0a932fbca47e7ffa8597ba38d9bf1f))
+* update ui5-webcomponents to 0.31.24 ([456f660](https://github.com/SAP/ui5-webcomponents-react/commit/456f6605ef73d31cd34f49eadc273226b5fca871))
+
+
+
+
+
 ## [0.131.23](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.22...v0.131.23) (2021-10-19)
 
 
