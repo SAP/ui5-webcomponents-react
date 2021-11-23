@@ -1,133 +1,95 @@
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
-import { TableSelectionMode } from '@ui5/webcomponents-react/dist/TableSelectionMode';
-import React from 'react';
-import { TableSelectionBehavior } from '../../..';
-import { tagNamesWhichShouldNotSelectARow } from '../hooks/useSingleRowStateSelection';
-
-type DisableRowSelectionType = string | ((row: Record<any, any>) => boolean);
-
-const customCheckBoxStyling = {
-  verticalAlign: 'middle'
+import React, { useEffect } from 'react';
+const getParentIndicesRecursive = (rowId) => {
+  const parentIndices = {};
+  const getParentIndices = (internalRowId) => {
+    const lastDotIndex = internalRowId.lastIndexOf('.');
+    if (~lastDotIndex) {
+      const parentRowId = internalRowId.slice(0, lastDotIndex);
+      if (!parentIndices[parentRowId]) {
+        parentIndices[parentRowId] = true;
+        getParentIndices(parentRowId);
+      }
+    }
+  };
+  getParentIndices(rowId);
+  return parentIndices;
 };
 
 /**
- * todo
+ * Todo
  */
-export const useIndeterminateRowSelection = (selectSubRows: true) => {
-  const selectedSubRows = () => {};
+export const useIndeterminateRowSelection = () => {
   const toggleRowProps = (rowProps, { row, instance }) => {
-    let parentIndices = {};
-    const getParentIndices = (rowId) => {
-      const lastDotIndex = rowId.lastIndexOf('.');
-      if (~lastDotIndex) {
-        const parentRowId = rowId.slice(0, lastDotIndex);
-        if (!parentIndices[parentRowId]) {
-          parentIndices[parentRowId] = true;
-          getParentIndices(parentRowId);
-        }
-      }
-    };
-
-    Object.entries(instance.state.selectedRowIds).forEach(([key, val]) => {
-      if (val) {
-        getParentIndices(key);
-      }
-    });
-    const indeterminate = parentIndices[row.id] ?? false;
-    return [rowProps, { indeterminate, checked: indeterminate ? true : rowProps.checked }];
-  };
-
-  // todo: check if it's possible to manipulate without copying
-  const getRowProps = (rowProps, { row, instance }) => {
-    const { webComponentsReactProperties, toggleRowSelected, selectedFlatRows, flatRows } = instance;
-    const handleRowSelect = (e, selectionCellClick = false) => {
-      if (
-        e.target?.dataset?.name !== 'internal_selection_column' &&
-        !(e.markerAllowTableRowSelection === true || e.nativeEvent?.markerAllowTableRowSelection === true) &&
-        tagNamesWhichShouldNotSelectARow.has(e.target.tagName)
-      ) {
-        return;
-      }
-
-      // dont select empty rows
-      const isEmptyRow = row.original?.emptyRow;
-      if (isEmptyRow) {
-        return;
-      }
-
-      // dont select grouped rows
-      if (row.isGrouped) {
-        return;
-      }
-
-      const { selectionBehavior, selectionMode, onRowSelected, onRowClick } = webComponentsReactProperties;
-
-      if (typeof onRowClick === 'function' && e.target?.dataset?.name !== 'internal_selection_column') {
-        onRowClick(enrichEventWithDetails(e, { row }));
-      }
-
-      if (webComponentsReactProperties.selectionMode === TableSelectionMode.None) {
-        return;
-      }
-
-      // dont continue if the row was clicked and selection mode is row selector only
-      if (selectionBehavior === TableSelectionBehavior.RowSelector && !selectionCellClick) {
-        return;
-      }
-
-      if (selectionMode === TableSelectionMode.SingleSelect) {
-        for (const selectedRow of selectedFlatRows) {
-          if (selectedRow.id !== row.id) {
-            toggleRowSelected(selectedRow.id, false);
-          }
-        }
-      }
-      instance.toggleRowSelected(row.id);
-
-      // fire event
-      if (typeof onRowSelected === 'function') {
-        const payload = {
-          row,
-          isSelected: !row.isSelected,
-          selectedFlatRows: !row.isSelected ? [row.id] : [],
-          allRowsSelected: false
-        };
-        if (selectionMode === TableSelectionMode.MultiSelect) {
-          const isRowSelected = selectionCellClick ? row.isSelected : !row.isSelected;
-          if (selectionCellClick) {
-            payload.isSelected = row.isSelected;
-          }
-          payload.selectedFlatRows = isRowSelected
-            ? [...selectedFlatRows, row]
-            : selectedFlatRows.filter((prevRow) => prevRow.id !== row.id);
-
-          if (payload.selectedFlatRows.length === flatRows.length) {
-            payload.allRowsSelected = true;
-          }
-        }
-        onRowSelected(enrichEventWithDetails(e, payload));
-      }
-    };
-
+    let indeterminate;
+    if (instance.isAllRowsSelected) {
+      indeterminate = false;
+    } else {
+      indeterminate = instance?.state?.indeterminateRows?.[row.id] ?? false;
+    }
     return [
       rowProps,
       {
-        onKeyDown: (e, selectionCellClick = false) => {
-          if (e.key === 'Enter' || e.code === 'Space') {
-            if (!tagNamesWhichShouldNotSelectARow.has(e.target.tagName)) {
-              e.preventDefault();
-            }
-            handleRowSelect(e, selectionCellClick);
-          }
-        },
-        onClick: handleRowSelect
+        indeterminate: indeterminate,
+        checked: indeterminate ? true : rowProps.checked
       }
     ];
   };
 
+  const stateReducer = (newState, action, prevState, instance) => {
+    if (action.type === 'INDETERMINATE_ROW_IDS') {
+      let indeterminateRows = {};
+      const allSelectedRows = {};
+      let allSelected = true;
+      let currentDepth = -1;
+
+      instance.flatRows
+        ?.filter((item) => !item.original.emptyRow)
+        .sort((a, b) => b.id.localeCompare(a.id))
+        .map((item) => {
+          if (currentDepth === -1) {
+            currentDepth = item.depth;
+          } else if (currentDepth !== item.depth) {
+            currentDepth = item.depth;
+            if (allSelected && newState.selectedRowIds[item.id]) {
+              allSelectedRows[item.id] = true;
+              delete indeterminateRows[item.id];
+            }
+            allSelected = true;
+          }
+
+          if (newState.selectedRowIds[item.id]) {
+            const parentRowId = item.id.slice(0, item.id.lastIndexOf('.'));
+            if (parentRowId) {
+              indeterminateRows = { ...indeterminateRows, ...getParentIndicesRecursive(item.id) };
+            }
+          } else {
+            allSelected = false;
+          }
+          return item;
+        });
+      return {
+        ...newState,
+        indeterminateRows: indeterminateRows
+      };
+    }
+  };
+
+  const useInstanceAfterData = (instance) => {
+    const {
+      data,
+      dispatch,
+      state: { selectedRowIds }
+    } = instance;
+
+    useEffect(() => {
+      dispatch({ type: 'INDETERMINATE_ROW_IDS' });
+    }, [data, selectedRowIds]);
+  };
+
   const useIndeterminate = (hooks) => {
     hooks.getToggleRowSelectedProps.push(toggleRowProps);
-    hooks.getRowProps.push(getRowProps);
+    hooks.stateReducers.push(stateReducer);
+    hooks.useInstanceAfterData.push(useInstanceAfterData);
   };
 
   useIndeterminate.pluginName = 'useIndeterminate';

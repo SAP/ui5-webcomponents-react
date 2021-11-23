@@ -63,7 +63,7 @@ import { VirtualTableBody } from './TableBody/VirtualTableBody';
 import { VirtualTableBodyContainer } from './TableBody/VirtualTableBodyContainer';
 import { stateReducer } from './tableReducer/stateReducer';
 import { TitleBar } from './TitleBar';
-import { orderByFn } from './util';
+import { orderByFn, tagNamesWhichShouldNotSelectARow } from './util';
 import { VerticalResizer } from './VerticalResizer';
 import clsx from 'clsx';
 
@@ -568,6 +568,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
       disableGroupBy: isTreeTable || renderRowSubComponent ? true : !groupable,
       selectSubRows: false,
       webComponentsReactProperties: {
+        tagNamesWhichShouldNotSelectARow,
         tableRef,
         selectionMode,
         selectionBehavior,
