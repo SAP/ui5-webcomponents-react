@@ -113,7 +113,7 @@ export interface AnalyticalTableColumnDefinition {
    */
   vAlign?: VerticalAlign;
 
-  //usePopIn
+  // usePopIn
   /**
    * Enables the pop-in behavior of the column. When the `responsiveMinWidth` is smaller then the width of the table, the content of each cell will move to the first cell in the row, improving usability on small or mobile devices.
    */
@@ -129,6 +129,19 @@ export interface AnalyticalTableColumnDefinition {
    * Custom pop-in header renderer. If set, the table will call that component for every column that is "popped-in" and pass the table instance as prop.
    */
   PopInHeader?: string | ComponentType<any>;
-
+  // use useDragAndDrop
+  /**
+   * Defines if the column is reorderable by dragging and dropping columns.
+   *
+   * Defaults to: `true`
+   *
+   * @deprecated please use `disableDragAndDrop` instead.
+   */
+  canReorder?: boolean;
+  /**
+   * Defines if the column is reorderable by dragging and dropping columns.
+   */
+  disableDragAndDrop?: boolean;
+  // all other custom properties or [React Table](https://react-table.tanstack.com/) column options
   [key: string]: any;
 }
