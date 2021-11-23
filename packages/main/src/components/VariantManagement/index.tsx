@@ -59,6 +59,10 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
   /**
    * Fired after a variant has been selected.
    */
+  portalContainer?: Element;
+  /**
+   * The event is fired when the "Save" button is clicked inside the Save View dialog.
+   */
   onSelect?: (event: CustomEvent<{ item: HTMLElement; selectedItem: VariantItem }>) => void;
 }
 
@@ -107,7 +111,8 @@ const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
       level,
       onSelect,
       closeOnItemSelect,
-      disabled
+      disabled,
+      portalContainer
     } = props;
 
     const classes = useStyles();
@@ -216,7 +221,7 @@ const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
               ))}
             </List>
           </ResponsivePopover>,
-          document.body
+          portalContainer
         )}
       </div>
     );
@@ -231,7 +236,8 @@ VariantManagement.defaultProps = {
   placement: PlacementType.Bottom,
   level: TitleLevel.H4,
   disabled: false,
-  variantItems: []
+  variantItems: [],
+  portalContainer: document.body
 };
 VariantManagement.displayName = 'VariantManagement';
 

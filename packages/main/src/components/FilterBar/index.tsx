@@ -120,6 +120,12 @@ export interface FilterBarPropTypes extends CommonProps {
    */
   as?: keyof HTMLElementTagNameMap;
   /**
+   * Defines where modals are rendered into via `React.createPortal`.
+   *
+   * Defaults to: `document.body`
+   */
+  portalContainer?: Element;
+  /**
    * The event is fired when the `FilterBar` is collapsed/expanded.
    */
   onToggleFilters?: (event: CustomEvent<{ visible?: boolean }>) => void;
@@ -194,6 +200,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
     search,
     variants,
     as,
+    portalContainer,
 
     onToggleFilters,
     onFiltersDialogOpen,
@@ -463,6 +470,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
           showGoButton={showGo}
           handleDialogSearch={onFiltersDialogSearch}
           handleDialogCancel={onFiltersDialogCancel}
+          portalContainer={portalContainer}
         >
           {safeChildren()}
         </FilterDialog>
@@ -545,7 +553,8 @@ FilterBar.defaultProps = {
   onFiltersDialogSelectionChange: null,
   onFiltersDialogSearch: null,
   onGo: null,
-  onRestore: null
+  onRestore: null,
+  portalContainer: document.body
 };
 
 FilterBar.displayName = 'FilterBar';

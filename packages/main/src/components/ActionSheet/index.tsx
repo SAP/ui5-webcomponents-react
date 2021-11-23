@@ -29,7 +29,9 @@ import { Button } from '@ui5/webcomponents-react/lib/Button';
 
 export interface ActionSheetPropTypes extends Omit<ResponsivePopoverPropTypes, 'children'> {
   /**
-   * Defines the actions of the <code>ActionSheet</code>. <br><b>Note:</b> Although this slot accepts all HTML Elements, it is strongly recommended that you only use `Buttons` in order to preserve the intended design.
+   * Defines the actions of the `ActionSheet`.
+   *
+   * __Note:__ Although this slot accepts all HTML Elements, it is strongly recommended that you only use `Buttons` in order to preserve the intended design.
    */
   children?: ReactElement<ButtonPropTypes> | ReactElement<ButtonPropTypes>[];
   /**
@@ -49,6 +51,12 @@ export interface ActionSheetPropTypes extends Omit<ResponsivePopoverPropTypes, '
       ariaLabel?: string;
     };
   };
+  /**
+   * Defines where modals are rendered into via `React.createPortal`.
+   *
+   * Defaults to: `document.body`
+   */
+  portalContainer?: Element;
 }
 
 const useStyles = createUseStyles(styles, { name: 'ActionSheet' });
@@ -116,7 +124,8 @@ const ActionSheet: FC<ActionSheetPropTypes> = forwardRef(
       onBeforeOpen,
       showCancelButton,
       alwaysShowHeader,
-      a11yConfig
+      a11yConfig,
+      portalContainer
     } = props;
     const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
     const classes = useStyles();
@@ -235,14 +244,15 @@ const ActionSheet: FC<ActionSheetPropTypes> = forwardRef(
           )}
         </div>
       </ResponsivePopover>,
-      document.body
+      portalContainer
     );
   }
 );
 
 ActionSheet.defaultProps = {
   showCancelButton: true,
-  alwaysShowHeader: true
+  alwaysShowHeader: true,
+  portalContainer: document.body
 };
 
 ActionSheet.displayName = 'ActionSheet';
