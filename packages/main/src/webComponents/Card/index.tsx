@@ -8,6 +8,10 @@ export interface CardPropTypes extends WithWebComponentPropTypes {
    */
   accessibleName?: string;
   /**
+   * Defines the IDs of the elements that label the component.
+   */
+  accessibleNameRef?: string;
+  /**
    * Defines if the `Card` header would be interactive, e.g gets hover effect, gets focused and `headerPress` event is fired, when it is pressed.
    */
   headerInteractive?: boolean;
@@ -62,7 +66,7 @@ export interface CardPropTypes extends WithWebComponentPropTypes {
  */
 const Card: FC<CardPropTypes> = withWebComponent<CardPropTypes>(
   'ui5-card',
-  ['accessibleName', 'heading', 'status', 'subheading'],
+  ['accessibleName', 'accessibleNameRef', 'heading', 'status', 'subheading'],
   ['headerInteractive'],
   ['action', 'avatar'],
   ['header-click']

@@ -4,6 +4,10 @@ import { FC, ReactNode } from 'react';
 
 export interface ShellBarPropTypes extends WithWebComponentPropTypes {
   /**
+   * An object of strings that defines several additional accessibility texts for even further customization. It supports the following fields: - `profileButtonTitle`: defines the tooltip for the profile button
+   */
+  accessibilityTexts?: Record<string, unknown>;
+  /**
    * Defines the `notificationCount`, displayed in the notification icon top-right corner.
    */
   notificationCount?: string;
@@ -108,7 +112,7 @@ export interface ShellBarPropTypes extends WithWebComponentPropTypes {
  */
 const ShellBar: FC<ShellBarPropTypes> = withWebComponent<ShellBarPropTypes>(
   'ui5-shellbar',
-  ['notificationCount', 'primaryTitle', 'secondaryTitle'],
+  ['accessibilityTexts', 'notificationCount', 'primaryTitle', 'secondaryTitle'],
   ['showCoPilot', 'showNotifications', 'showProductSwitch'],
   ['logo', 'menuItems', 'profile', 'searchField', 'startButton'],
   ['co-pilot-click', 'logo-click', 'menu-item-click', 'notifications-click', 'product-switch-click', 'profile-click']
