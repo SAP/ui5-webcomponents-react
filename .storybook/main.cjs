@@ -27,6 +27,7 @@ module.exports = {
     return config;
   },
   features: {
+    storyStoreV7: true,
     postcss: false
   },
   typescript: {
