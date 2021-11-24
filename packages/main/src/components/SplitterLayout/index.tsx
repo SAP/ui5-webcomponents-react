@@ -1,5 +1,6 @@
 import { SplitterElementPropTypes } from '@ui5/webcomponents-react/dist/SplitterElement';
-import React, { forwardRef, ReactElement, Ref } from 'react';
+import { SplitterLayoutContext } from '@ui5/webcomponents-react/dist/SplitterLayoutContext';
+import React, { CSSProperties, forwardRef, ReactElement, Ref } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { styles } from './SplitterLayout.jss';
@@ -35,23 +36,34 @@ export interface SplitterLayoutPropTypes extends CommonProps {
   children: ReactElement<SplitterElementPropTypes> | ReactElement<SplitterElementPropTypes>[];
 }
 
-export const ThemeContext = React.createContext({} as ThemeContextType);
-
 const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTMLDivElement>) => {
   const { width, height, orientation, children, title, tooltip, style, className, ...rest } = props;
 
-  const classes = useStyles(props);
+  const classes = useStyles();
 
   const splitterLayoutClasses = clsx(classes.splitterLayout, className);
 
   const layoutElements = useConcatSplitterElements(children ?? [], width, height, orientation);
 
   return (
-    <ThemeContext.Provider value={{ containerWidth: width, containerHeight: height, orientation }}>
-      <div style={style} title={title ?? tooltip} {...rest} className={splitterLayoutClasses} ref={ref}>
+    <SplitterLayoutContext.Provider value={{ orientation }}>
+      <div
+        style={
+          {
+            width,
+            height,
+            ...style
+          } as CSSProperties
+        }
+        title={title ?? tooltip}
+        {...rest}
+        className={splitterLayoutClasses}
+        ref={ref}
+        data-splitter-orientation={orientation}
+      >
         {layoutElements}
       </div>
-    </ThemeContext.Provider>
+    </SplitterLayoutContext.Provider>
   );
 });
 

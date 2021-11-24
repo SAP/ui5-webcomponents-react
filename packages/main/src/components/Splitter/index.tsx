@@ -1,6 +1,7 @@
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base/hooks/useConsolidatedRef';
+import { useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
+import { Icon } from '@ui5/webcomponents-react/dist/Icon';
 import React, {
-  CSSProperties,
   forwardRef,
   MouseEventHandler,
   Ref,
@@ -11,10 +12,7 @@ import React, {
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
-import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import { Icon } from '../..';
 
-// const useStyles = createUseStyles(styles, { name: 'SplitterLayout' });
 const useStyles = createUseStyles(
   {
     splitter: {
@@ -24,82 +22,79 @@ const useStyles = createUseStyles(
       willChange: 'flex',
       border: 'none',
       backgroundColor: ThemingParameters.sapShell_Background,
+      alignItems: 'center',
+      justifyContent: 'center',
 
       '&[data-splitter-orientation="vertical"]': {
         cursor: 'col-resize',
+        minWidth: '1rem',
         width: '1rem',
-        height: 'var(--ui5wcrSplitterSize)',
+        height: '100%',
+        flexDirection: 'column',
 
-        '& $icon': {
-          top: 'calc(50% - 8px)',
-
-          '&:before, &:after': {
-            height: '4rem',
-            width: '0.0625rem',
-            margin: '0 0.5rem',
-            boxSizing: 'border-box',
-            transition: 'height 0.15s ease-in'
-          },
-          '&:before': {
-            bottom: '1.5rem',
-            background: `linear-gradient(to top, ${ThemingParameters.sapHighlightColor}, rgba(8,84,160,0))`
-          },
-          '&:after': {
-            top: '1.5rem',
-            background: `linear-gradient(to bottom, ${ThemingParameters.sapHighlightColor}, rgba(8,84,160,0))`
-          }
+        '& $lineBefore, & $lineAfter': {
+          backgroundSize: '0.0625rem 100%',
+          width: '1rem',
+          height: '4rem'
         },
 
-        '&:hover': {
-          '& $icon': {
-            '&:before, &:after': {
-              height: `calc(var(--ui5wcrSplitterSize) / 2 - 16px)`
-            }
-          }
+        '& $lineBefore': {
+          backgroundImage: `linear-gradient(to top, ${ThemingParameters.sapHighlightColor}, transparent)`
+        },
+
+        '& $icon': {
+          padding: '0.5rem 0',
+          zIndex: 1
+        },
+
+        '& $lineAfter': {
+          backgroundImage: `linear-gradient(to bottom, ${ThemingParameters.sapHighlightColor}, transparent)`
         }
       },
 
       '&[data-splitter-orientation="horizontal"]': {
         cursor: 'row-resize',
+        minHeight: '1rem',
         height: '1rem',
-        width: 'var(--ui5wcrSplitterSize)',
+        width: '100%',
+        flexDirection: 'row',
 
-        '& $icon': {
-          left: 'calc(50% - 8px)',
-
-          '&:before, &:after': {
-            top: 0,
-            width: '4rem',
-            height: '0.0625rem',
-            margin: '0.5rem 0',
-            boxSizing: 'border-box',
-            transition: 'width 0.15s ease-in'
-          },
-          '&:before': {
-            right: '1.5rem',
-            background: `linear-gradient(to left, ${ThemingParameters.sapHighlightColor}, rgba(8,84,160,0))`
-          },
-          '&:after': {
-            left: '1.5rem',
-            background: `linear-gradient(to right, ${ThemingParameters.sapHighlightColor}, rgba(8,84,160,0))`
-          }
+        '& $lineBefore, & $lineAfter': {
+          backgroundSize: '100% 0.0625rem ',
+          width: '5rem',
+          height: '1rem'
         },
 
-        '&:hover': {
-          '& $icon': {
-            '&:before, &:after': {
-              width: `calc(var(--ui5wcrSplitterSize) / 2 - 16px)`
-            }
-          }
+        '& $lineBefore': {
+          backgroundImage: `linear-gradient(to left, ${ThemingParameters.sapHighlightColor}, transparent)`
+        },
+
+        '& $icon': {
+          padding: '0 0.5rem',
+          zIndex: 1
+        },
+
+        '& $lineAfter': {
+          backgroundImage: `linear-gradient(to right, ${ThemingParameters.sapHighlightColor}, transparent)`
+        }
+      },
+      '&:hover': {
+        '& $lineBefore, & $lineAfter': {
+          flexGrow: 1,
+          transition: 'all 0.1s ease-in'
         }
       }
     },
     icon: {
-      position: 'absolute',
-      '&:before, &:after': {
-        content: '""',
-        position: 'absolute'
-      }
+      color: ThemingParameters.sapHighlightColor
+    },
+    lineBefore: {
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat'
+    },
+    lineAfter: {
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat'
     }
   },
   { name: 'Splitter' }
@@ -147,7 +142,7 @@ const horiontalStyle = {
 const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>) => {
   const { orientation } = props;
   const classes = useStyles();
-  const splitterRef = useConsolidatedRef<HTMLDivElement>(ref);
+  const [componentRef, localRef] = useSyncRef<HTMLDivElement>(ref);
   const start = useRef(null);
 
   const previousSiblingSize = useRef<number>(null);
@@ -155,7 +150,6 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
 
   const positionKeys = orientation === 'vertical' ? verticalPositionInfo : horizontalPositionInfo;
   const styleKeys = orientation === 'vertical' ? verticalStyle : horiontalStyle;
-  // const gripIconClass = orientation === 'vertical' ? classes.gripIconVertical : classes.gripIconHorizontal;
 
   const [isDragging, setIsDragging] = useState(false);
 
@@ -172,8 +166,8 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
 
   const handleSplitterMove = useCallback(
     (e) => {
-      const previousSibling = splitterRef.current.previousSibling;
-      const nextSibling = splitterRef.current.nextSibling;
+      const previousSibling = localRef.current.previousSibling;
+      const nextSibling = localRef.current.nextSibling;
       const sizeDiv = e[`client${positionKeys.position}`] - start.current;
 
       if (
@@ -198,10 +192,10 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
 
   const handleMoveSplitterStart: TouchEventHandler | MouseEventHandler = (e) => {
     e.preventDefault();
-    previousSiblingSize.current = (splitterRef.current.previousSibling as HTMLElement).getBoundingClientRect()?.[
+    previousSiblingSize.current = (localRef.current.previousSibling as HTMLElement).getBoundingClientRect()?.[
       positionKeys.size
     ];
-    nextSiblingSize.current = (splitterRef.current.nextSibling as HTMLElement).getBoundingClientRect()?.[
+    nextSiblingSize.current = (localRef.current.nextSibling as HTMLElement).getBoundingClientRect()?.[
       positionKeys.size
     ];
 
@@ -236,7 +230,7 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
   };
 
   useEffect(() => {
-    const splitterPos = splitterRef.current?.getBoundingClientRect()?.[positionKeys.start];
+    const splitterPos = localRef.current?.getBoundingClientRect()?.[positionKeys.start];
 
     if (!isPrevCollapsed && splitterPos < isPreviousSiblingRect?.[positionKeys.start]) {
       setIsDragging(false);
@@ -324,23 +318,20 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
     ) {
       setIsMaxPrevCollapsed(false);
     }
-  }, [splitterRef.current?.getBoundingClientRect()?.[positionKeys.start], isDragging]);
+  }, [localRef.current?.getBoundingClientRect()?.[positionKeys.start], isDragging]);
 
   return (
     <div
       className={classes.splitter}
       onTouchStart={handleMoveSplitterStart}
       onMouseDown={handleMoveSplitterStart}
-      ref={splitterRef}
+      ref={componentRef}
       role="separator"
       data-splitter-orientation={orientation}
-      style={
-        {
-          '--ui5wcrSplitterSize': orientation === 'vertical' ? props.height : props.width
-        } as CSSProperties
-      }
     >
+      <div className={classes.lineBefore} />
       <Icon className={classes.icon} name={orientation === 'vertical' ? 'vertical-grip' : 'horizontal-grip'} />
+      <div className={classes.lineAfter} />
     </div>
   );
 });
