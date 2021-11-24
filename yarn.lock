@@ -3563,9 +3563,9 @@
     pretty-format "^27.0.2"
 
 "@testing-library/jest-dom@^5.11.4":
-  version "5.15.0"
-  resolved "https://registry.yarnpkg.com/@testing-library/jest-dom/-/jest-dom-5.15.0.tgz#4f5295dbc476a14aec3b07176434b3d51aae5da7"
-  integrity sha512-lOMuQidnL1tWHLEWIhL6UvSZC1Qt3OkNe1khvi2h6xFiqpe5O8arYs46OU0qyUGq0cSTbroQyMktYNXu3a7sAA==
+  version "5.15.1"
+  resolved "https://registry.yarnpkg.com/@testing-library/jest-dom/-/jest-dom-5.15.1.tgz#4c49ba4d244f235aec53f0a83498daeb4ee06c33"
+  integrity sha512-kmj8opVDRE1E4GXyLlESsQthCXK7An28dFWxhiMwD7ZUI7ZxA6sjdJRxLerD9Jd8cHX4BDc1jzXaaZKqzlUkvg==
   dependencies:
     "@babel/runtime" "^7.9.2"
     "@types/testing-library__jest-dom" "^5.9.1"
@@ -8229,10 +8229,10 @@ eslint-plugin-react@^7.21.3:
     semver "^6.3.0"
     string.prototype.matchall "^4.0.6"
 
-eslint-plugin-storybook@^0.4.1:
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-storybook/-/eslint-plugin-storybook-0.4.2.tgz#66894d2941e0735763000995f6307d0c796beeb0"
-  integrity sha512-6tVSjCr7t/BaCc+ZbZeYpFypb5J6Ayndx0/KYw7BpYz+TbPog2ttoOCfaS62dONOwCmRvZYpWfjShJI1XCGfNg==
+eslint-plugin-storybook@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-storybook/-/eslint-plugin-storybook-0.5.0.tgz#e3e92c5e81f4eea8cb3f23bdf445ded7d7a9e35c"
+  integrity sha512-WZDOT6LCmAAmcvWO1EQuGkCAKfT+bjNWrR6UNgaRug1+AGKUS0H+XwhjA4DTHvoVfyEFGAX2ECeZRYfxE4SsUw==
   dependencies:
     "@storybook/csf" "^0.0.1"
     "@typescript-eslint/experimental-utils" "^5.3.0"
