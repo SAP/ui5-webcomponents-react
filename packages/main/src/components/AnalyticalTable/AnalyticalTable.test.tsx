@@ -1,7 +1,10 @@
 import { act, fireEvent, getByText, getMouseEvent, render, renderRtl, screen } from '@shared/tests';
 import { createPassThroughPropsTest } from '@shared/tests/utils';
 import { AnalyticalTable } from '@ui5/webcomponents-react/dist/AnalyticalTable';
-import { useRowDisableSelection } from '@ui5/webcomponents-react/dist/AnalyticalTableHooks';
+import {
+  useRowDisableSelection,
+  useIndeterminateRowSelection
+} from '@ui5/webcomponents-react/dist/AnalyticalTableHooks';
 import { TableSelectionBehavior } from '@ui5/webcomponents-react/dist/TableSelectionBehavior';
 import { TableSelectionMode } from '@ui5/webcomponents-react/dist/TableSelectionMode';
 import { TableVisibleRowCountMode } from '@ui5/webcomponents-react/dist/TableVisibleRowCountMode';
@@ -1079,6 +1082,83 @@ describe('AnalyticalTable', () => {
     expect(queryAllByText('Age')).toHaveLength(0);
 
     expect(asFragment()).toMatchSnapshot();
+  });
+
+  test('plugin hook: useIndeterminateRowSelection', async () => {
+    const cb = jest.fn();
+    const { rerender, getAllByTitle, getByTitle, getByText, container, unmount, asFragment } = render(
+      <AnalyticalTable
+        data={dataTree}
+        columns={columns}
+        selectionMode={TableSelectionMode.MultiSelect}
+        isTreeTable={true}
+        tableHooks={[useIndeterminateRowSelection()]}
+        onRowSelected={cb}
+        selectedRowIds={{ '1': true }}
+      />
+    );
+    const checkboxes = container.querySelectorAll('ui5-checkbox');
+
+    expect(checkboxes[0]).toHaveAttribute('indeterminate', 'true');
+    expect(checkboxes[1]).not.toHaveAttribute('indeterminate', 'true');
+    expect(checkboxes[1]).not.toHaveAttribute('checked', 'true');
+    expect(checkboxes[2]).not.toHaveAttribute('indeterminate', 'true');
+    expect(checkboxes[2]).toHaveAttribute('checked', 'true');
+
+    fireEvent.click(getByText('bla'));
+    expect(cb).toHaveBeenCalled();
+
+    expect(checkboxes[0]).not.toHaveAttribute('indeterminate', 'true');
+    expect(checkboxes[1]).not.toHaveAttribute('indeterminate', 'true');
+    expect(checkboxes[2]).not.toHaveAttribute('indeterminate', 'true');
+    expect(checkboxes[0]).not.toHaveAttribute('checked', 'true');
+    expect(checkboxes[1]).not.toHaveAttribute('checked', 'true');
+    expect(checkboxes[2]).not.toHaveAttribute('checked', 'true');
+
+    fireEvent.click(getByTitle('Toggle Row Expanded'));
+    fireEvent.click(getAllByTitle('Toggle Row Expanded')[1]);
+    fireEvent.click(getAllByTitle('Toggle Row Expanded')[2]);
+    fireEvent.click(getAllByTitle('Toggle Row Expanded')[3]);
+
+    fireEvent.click(getByText('GHijkl'));
+
+    Array.from(container.querySelectorAll('ui5-checkbox'))
+      .slice(0, 4)
+      .forEach((item, index) => {
+        expect(item).toHaveAttribute('indeterminate', 'true');
+      });
+    expect(container.querySelectorAll('ui5-checkbox')[4]).not.toHaveAttribute('indeterminate', 'true');
+    expect(container.querySelectorAll('ui5-checkbox')[4]).toHaveAttribute('checked', 'true');
+
+    Array.from(container.querySelectorAll('ui5-checkbox'))
+      .slice(5)
+      .forEach((item, index) => {
+        expect(item).not.toHaveAttribute('indeterminate', 'true');
+        expect(item).not.toHaveAttribute('checked', 'true');
+      });
+
+    expect(asFragment()).toMatchSnapshot();
+
+    unmount();
+    rerender(
+      <AnalyticalTable
+        data={dataTree}
+        columns={columns}
+        selectionMode={TableSelectionMode.MultiSelect}
+        isTreeTable={true}
+        tableHooks={[useIndeterminateRowSelection()]}
+        onRowSelected={cb}
+        selectedRowIds={{
+          '0.0.0.0.0': true,
+          '1': true
+        }}
+      />
+    );
+
+    expect(container.querySelectorAll('ui5-checkbox')[0]).toHaveAttribute('indeterminate', 'true');
+    expect(container.querySelectorAll('ui5-checkbox')[1]).toHaveAttribute('indeterminate', 'true');
+    expect(container.querySelectorAll('ui5-checkbox')[2]).not.toHaveAttribute('indeterminate', 'true');
+    expect(container.querySelectorAll('ui5-checkbox')[2]).toHaveAttribute('checked', 'true');
   });
 
   createPassThroughPropsTest(AnalyticalTable);

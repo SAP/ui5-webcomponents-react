@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react';
+import { TableSelectionBehavior } from '@ui5/webcomponents-react/dist/TableSelectionBehavior';
+import { TableSelectionMode } from '@ui5/webcomponents-react/dist/TableSelectionMode';
 const getParentIndicesRecursive = (rowId) => {
   const parentIndices = {};
   const getParentIndices = (internalRowId) => {
@@ -16,7 +18,8 @@ const getParentIndicesRecursive = (rowId) => {
 };
 
 /**
- * Todo
+ * A plugin hook that marks parent rows as indeterminate if a child row is selected in `MultiSelect` mode.
+ * When using this hook, it is recommended to also select all sub-rows when selecting a row. (`reactTableOptions={{ selectSubRows: true }}`)
  */
 export const useIndeterminateRowSelection = () => {
   const toggleRowProps = (rowProps, { row, instance }) => {
@@ -78,12 +81,19 @@ export const useIndeterminateRowSelection = () => {
     const {
       data,
       dispatch,
-      state: { selectedRowIds }
+      state: { selectedRowIds },
+      webComponentsReactProperties: { selectionMode, selectionBehavior, isTreeTable }
     } = instance;
 
     useEffect(() => {
-      dispatch({ type: 'INDETERMINATE_ROW_IDS' });
-    }, [data, selectedRowIds]);
+      if (
+        isTreeTable &&
+        selectionMode === TableSelectionMode.MultiSelect &&
+        selectionBehavior !== TableSelectionBehavior.RowOnly
+      ) {
+        dispatch({ type: 'INDETERMINATE_ROW_IDS' });
+      }
+    }, [data, selectedRowIds, isTreeTable, selectionMode, selectionBehavior]);
   };
 
   const useIndeterminate = (hooks) => {
