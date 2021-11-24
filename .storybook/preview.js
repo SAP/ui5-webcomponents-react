@@ -1,5 +1,4 @@
 import { makeDecorator } from '@storybook/addons';
-import { addDecorator } from '@storybook/react';
 import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme';
 import '@ui5/webcomponents/dist/Assets.js';
 import '@ui5/webcomponents-fiori/dist/Assets.js';
@@ -66,7 +65,7 @@ const ThemeContainer = ({ theme, contentDensity, children, direction }) => {
   return <ThemeProvider>{children}</ThemeProvider>;
 };
 
-const withQuery = makeDecorator({
+const ThemeProviderDecorator = makeDecorator({
   name: 'themr',
   parameterName: 'themr',
   wrapper: (getStory, context) => {
@@ -82,7 +81,7 @@ const withQuery = makeDecorator({
   }
 });
 
-addDecorator(withQuery);
+export const decorators = [ThemeProviderDecorator];
 
 export const globalTypes = {
   theme: {
