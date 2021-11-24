@@ -16,6 +16,7 @@ import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { Badge } from '@ui5/webcomponents-react/dist/Badge';
 import { Text } from '@ui5/webcomponents-react/dist/Text';
 import { BusyIndicator } from '@ui5/webcomponents-react/dist/BusyIndicator';
+import { ToggleButton } from '@ui5/webcomponents-react/dist/ToggleButton';
 import { Panel } from '@ui5/webcomponents-react/dist/Panel';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
@@ -26,7 +27,10 @@ import { TextAlign } from '@ui5/webcomponents-react/dist/TextAlign';
 import { DefaultLoadingComponent } from './defaults/LoadingComponent';
 import { DefaultNoDataComponent } from './defaults/NoDataComponent';
 import { useCallback, useEffect, useReducer, useRef, useState } from 'react';
-import { useRowDisableSelection } from '@ui5/webcomponents-react/dist/AnalyticalTableHooks';
+import {
+  useRowDisableSelection,
+  useIndeterminateRowSelection
+} from '@ui5/webcomponents-react/dist/AnalyticalTableHooks';
 
 <Meta
   title="Data Display / AnalyticalTable"
@@ -189,7 +193,7 @@ import { useRowDisableSelection } from '@ui5/webcomponents-react/dist/Analytical
 | `responsiveMinWidth`  | `number`                                                                 | Defines how the table should react when its width falls below the `responsiveMinWidth`. <ul><li>If `responsivePopIn` is `true` the content of this column will be moved to the first column.</li><li>If `responsivePopIn` is not set or `false` the column will be hidden.</li></ul>                                                                                                                            |
 | `PopInHeader`         | `string OR ComponentType`                                                | Custom pop-in header renderer. If set, the table will call that component for every column that is "popped-in" and pass the table instance as prop.                                                                                                                                                                                                                                                             |
 | `disableDragAndDrop`  | `boolean`                                                                | Defines if the column is reorderable by dragging and dropping columns.                                                                                                                                                                                                                                                                                                                                          |
-| `canReorder`          | `boolean`                                                                | **deprecated** Defines if the column is reorderable by dragging and dropping columns. Please use `disableDragAndDrop` instead. Defaults to: `true`.                                                                                                                                                                                                                                                                                                      |
+| `canReorder`          | `boolean`                                                                | **deprecated** Defines if the column is reorderable by dragging and dropping columns. Please use `disableDragAndDrop` instead. Defaults to: `true`.                                                                                                                                                                                                                                                             |
 
 <br />
 
@@ -216,6 +220,8 @@ With the `useRowDisableSelection` it's possible to disable the selection of spec
 
 - `string`: Defines the key in the dataset for disabling rows. If the value of the key is `true`, then the row will not be selectable.
 - `Function(row) => boolean`: Programmatically disable rows for selection. The function receives the current row as parameter.
+
+_ES6 Import: `import { useRowDisableSelection } from '@ui5/webcomponents-react/dist/AnalyticalTableHooks';`_
 
 **Note:** The "Select All" checkbox is not available with this hook.
 
@@ -320,6 +326,56 @@ const data = [
 };
 ```
 
+### MultiSelect with indeterminate state
+
+The `useIndeterminateRowSelection` plugin hook allows marking parent rows as indeterminate when a child row is selected.
+When using this hook, it is recommended to also select all sub-rows when selecting a row. (`reactTableOptions={{ selectSubRows: true }}`)
+
+_ES6 Import: `import { useIndeterminateRowSelection } from '@ui5/webcomponents-react/dist/AnalyticalTableHooks';`_
+
+<Canvas>
+  <Story name="Plugin: useIndeterminateRowSelection" args={{ data: generateData(3, true) }}>
+    {(args) => {
+      const [collapsed, setCollapsed] = useReducer((coll) => !coll, true);
+      const [selectSubRows, setSelectSubRows] = useReducer((prev) => !prev, true);
+      return (
+        <Panel collapsed={collapsed} onToggle={setCollapsed} headerText="Show useIndeterminateRowSelection example">
+          {collapsed ? (
+            <BusyIndicator active style={{ width: '100%' }}>
+              <span style={{ height: '800px' }} />
+            </BusyIndicator>
+          ) : (
+            <>
+              <ToggleButton onClick={setSelectSubRows} pressed={selectSubRows}>{`${
+                selectSubRows ? "Don't " : ''
+              }Select Sub-Rows`}</ToggleButton>
+              <AnalyticalTable
+                selectionMode={TableSelectionMode.MultiSelect}
+                data={args.data}
+                columns={args.columns}
+                isTreeTable
+                tableHooks={[useIndeterminateRowSelection()]}
+                reactTableOptions={{ selectSubRows: selectSubRows }}
+              />
+            </>
+          )}
+        </Panel>
+      );
+    }}
+  </Story>
+</Canvas>
+
+```jsx
+<AnalyticalTable
+  selectionMode={TableSelectionMode.MultiSelect}
+  data={data}
+  columns={columns}
+  isTreeTable
+  tableHooks={[useIndeterminateRowSelection()]}
+  reactTableOptions={{ selectSubRows: true }}
+/>
+```
+
 <br />
 
 ## Recipes
@@ -405,9 +461,9 @@ For more details on this behavior you can double check the [react-table docs](ht
 ## Tree Table
 
 <Canvas>
-  <Story name="Tree Table" args={{ data: generateData(15, true), isTreeTable: true }}>
+  <Story name="Tree Table" args={{ data: generateData(3, true), isTreeTable: true }}>
     {(args) => {
-      const [collapsed, setCollapsed] = useReducer((coll) => !coll, true);
+      const [collapsed, setCollapsed] = useReducer((coll) => !coll, false);
       return (
         <Panel collapsed={collapsed} onToggle={setCollapsed} headerText="Show Tree Table">
           {collapsed ? (
@@ -415,7 +471,14 @@ For more details on this behavior you can double check the [react-table docs](ht
               <span style={{ height: '800px' }} />
             </BusyIndicator>
           ) : (
-            <AnalyticalTable {...args} />
+            <AnalyticalTable
+              selectionMode="MultiSelect"
+              data={args.data}
+              columns={args.columns}
+              isTreeTable
+              tableHooks={[useIndeterminateRowSelection(true)]}
+              selectedRowIds={{ '1.1': true, '1.2': false, '2.1.2.1.3.4': true }}
+            />
           )}
         </Panel>
       );
