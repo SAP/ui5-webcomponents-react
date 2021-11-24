@@ -1,9 +1,11 @@
 const path = require('path');
 const root = path.resolve(__dirname, '..');
 
+const isDevMode = process.env.NODE_ENV === 'development';
+
 const addons = ['@storybook/addon-essentials'];
 
-if (process.env.NODE_ENV === 'development') {
+if (isDevMode) {
   addons.push('@storybook/addon-a11y');
 }
 
@@ -30,7 +32,8 @@ module.exports = {
     reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
-      propFilter: (prop) => prop.parent ? !/(@types\/react|@emotion\/core)/.test(prop.parent.fileName) : true,
-    },
-  }
+      propFilter: (prop) => (prop.parent ? !/(@types\/react|@emotion\/core)/.test(prop.parent.fileName) : true)
+    }
+  },
+  staticDirs: [isDevMode ? 'images-dev' : 'images']
 };
