@@ -8229,10 +8229,10 @@ eslint-plugin-react@^7.21.3:
     semver "^6.3.0"
     string.prototype.matchall "^4.0.6"
 
-eslint-plugin-storybook@^0.4.1:
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-storybook/-/eslint-plugin-storybook-0.4.2.tgz#66894d2941e0735763000995f6307d0c796beeb0"
-  integrity sha512-6tVSjCr7t/BaCc+ZbZeYpFypb5J6Ayndx0/KYw7BpYz+TbPog2ttoOCfaS62dONOwCmRvZYpWfjShJI1XCGfNg==
+eslint-plugin-storybook@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-storybook/-/eslint-plugin-storybook-0.5.0.tgz#e3e92c5e81f4eea8cb3f23bdf445ded7d7a9e35c"
+  integrity sha512-WZDOT6LCmAAmcvWO1EQuGkCAKfT+bjNWrR6UNgaRug1+AGKUS0H+XwhjA4DTHvoVfyEFGAX2ECeZRYfxE4SsUw==
   dependencies:
     "@storybook/csf" "^0.0.1"
     "@typescript-eslint/experimental-utils" "^5.3.0"
