@@ -10,6 +10,7 @@ if (isDevMode) {
 }
 
 module.exports = {
+  framework: '@storybook/react',
   stories: ['../docs/**/*.stories.mdx', '../packages/**/*.stories.@(tsx|jsx|mdx)'],
   addons: addons,
   webpack: async (config) => {
