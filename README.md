@@ -28,7 +28,6 @@
 </p>
 
 `ui5-webcomponents-react` is providing a Fiori-compliant React implementation by leveraging the [UI5 Web Components](https://github.com/SAP/ui5-webcomponents).
-This project was formerly known as `fiori-for-react`.
 
 ## Resources
 
@@ -76,16 +75,10 @@ You can find our documentation under the following links:
 
 ## Download and Installation
 
-To consume `ui5-webcomponents-react`, first you need to install the npm module:
+To consume `ui5-webcomponents-react`, you need to install the npm module and required peer dependencies:
 
 ```sh
-npm install @ui5/webcomponents-react --save
-```
-
-Required peer dependencies:
-
-```sh
-npm install @ui5/webcomponents @ui5/webcomponents-fiori --save
+npm install @ui5/webcomponents-react @ui5/webcomponents @ui5/webcomponents-fiori --save
 ```
 
 <!-- *********************************************************************** -->
