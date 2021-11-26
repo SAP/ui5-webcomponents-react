@@ -69,7 +69,7 @@ addCustomCSS(
  `
 );
 
-interface SelectDialogPropTypes extends Omit<DialogPropTypes, 'header' | 'headerText' | 'footer' | 'children'> {
+export interface SelectDialogPropTypes extends Omit<DialogPropTypes, 'header' | 'headerText' | 'footer' | 'children'> {
   /**
    * Defines the list items of the component.
    *
