@@ -150,6 +150,9 @@ export interface SelectDialogPropTypes extends Omit<DialogPropTypes, 'header' | 
   onLoadMore?: (event: Ui5CustomEvent) => void;
 }
 
+/**
+ * The SelectDialog enables users to filter a comprehensive list via a search field and to select one or more items.
+ */
 const SelectDialog = forwardRef((props: SelectDialogPropTypes, ref: Ref<DialogDomRef>) => {
   const {
     children,
