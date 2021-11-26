@@ -85,26 +85,6 @@ export interface SelectDialogPropTypes extends Omit<DialogPropTypes, 'header' | 
    */
   headerText?: string;
   /**
-   * This event will be fired when the value of the search field is changed by a user - e.g. at each key press
-   */
-  onSearchInput?: (event: Ui5CustomEvent<HTMLInputElement, { value: string }>) => void;
-  /**
-   * This event will be fired when the search button has been clicked or the ENTER key has been pressed in the search field.
-   */
-  onSearch?: (event: Ui5CustomEvent<{ value: string }>) => void;
-  /**
-   * This event will be fired when the reset button has been clicked in the search field.
-   */
-  onSearchReset?: (event: Ui5CustomEvent<{ prevValue: string }>) => void;
-  /**
-   * This event will be fired when the clear button has been clicked.
-   */
-  onClear?: (event: Ui5CustomEvent<{ prevSelectedItems: HTMLElement[] }>) => void;
-  /**
-   * This event will be fired when the dialog is confirmed by selecting an item in single selection mode or by pressing the confirmation button in multi selection mode.
-   */
-  onConfirm?: (event: Ui5CustomEvent<{ selectedItems: HTMLElement[] }>) => void;
-  /**
    * Specifies the `headerText` alignment.
    */
   headerTextAlignCenter?: boolean;
@@ -137,17 +117,37 @@ export interface SelectDialogPropTypes extends Omit<DialogPropTypes, 'header' | 
    */
   growing?: ListGrowingMode | keyof typeof ListGrowingMode;
   /**
-   * Fired when the user scrolls to the bottom of the list.
-   *
-   * **Note:** The event is fired when the `growing='Scroll'` property is enabled.
-   */
-  onLoadMore?: (event: Ui5CustomEvent) => void;
-  /**
    * Defines props you can pass to the internal `List` component.
    *
    * __Note:__ `mode`, `children`, `growing`, `onLoadMore` and `footerText` are not supported.
    */
   listProps?: Omit<ListPropTypes, 'mode' | 'children' | 'footerText' | 'growing' | 'onLoadMore'>;
+  /**
+   * This event will be fired when the value of the search field is changed by a user - e.g. at each key press
+   */
+  onSearchInput?: (event: Ui5CustomEvent<HTMLInputElement, { value: string }>) => void;
+  /**
+   * This event will be fired when the search button has been clicked or the ENTER key has been pressed in the search field.
+   */
+  onSearch?: (event: Ui5CustomEvent<{ value: string }>) => void;
+  /**
+   * This event will be fired when the reset button has been clicked in the search field.
+   */
+  onSearchReset?: (event: Ui5CustomEvent<{ prevValue: string }>) => void;
+  /**
+   * This event will be fired when the clear button has been clicked.
+   */
+  onClear?: (event: Ui5CustomEvent<{ prevSelectedItems: HTMLElement[] }>) => void;
+  /**
+   * This event will be fired when the dialog is confirmed by selecting an item in single selection mode or by pressing the confirmation button in multi selection mode.
+   */
+  onConfirm?: (event: Ui5CustomEvent<{ selectedItems: HTMLElement[] }>) => void;
+  /**
+   * Fired when the user scrolls to the bottom of the list.
+   *
+   * **Note:** The event is fired when the `growing='Scroll'` property is enabled.
+   */
+  onLoadMore?: (event: Ui5CustomEvent) => void;
 }
 
 const SelectDialog = forwardRef((props: SelectDialogPropTypes, ref: Ref<DialogDomRef>) => {
@@ -209,7 +209,7 @@ const SelectDialog = forwardRef((props: SelectDialogPropTypes, ref: Ref<DialogDo
       setSelectedItems(e.detail.selectedItems);
     } else {
       if (typeof onConfirm === 'function') {
-        onConfirm(enrichEventWithDetails(e, { selectedItems: e.detail.selectedItems }));
+        onConfirm(e);
       }
       selectDialogRef.current.close();
     }
@@ -309,7 +309,13 @@ const SelectDialog = forwardRef((props: SelectDialogPropTypes, ref: Ref<DialogDo
                   className={classes.inputIcon}
                 />
               )}
-              <Icon name="search" className={classes.inputIcon} onClick={handleSearchSubmit} />
+              <Icon
+                name="search"
+                className={classes.inputIcon}
+                onClick={handleSearchSubmit}
+                accessibleName={i18nBundle.getText(SEARCH)}
+                tooltip={i18nBundle.getText(SEARCH)}
+              />
             </>
           }
         />
