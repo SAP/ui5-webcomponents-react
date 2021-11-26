@@ -21,18 +21,10 @@ describe('SelectDialog', () => {
   });
   test('with children', () => {
     const { asFragment, getByText } = render(<SelectDialog>{listItems}</SelectDialog>);
-    getByText('Product0');
-    getByText('Description0');
-    getByText('Product4');
-    getByText('Description4');
-    expect(asFragment()).toMatchSnapshot();
-  });
-  test('with children', () => {
-    const { asFragment, getByText } = render(<SelectDialog>{listItems}</SelectDialog>);
-    getByText('Product0');
-    getByText('Description0');
-    getByText('Product4');
-    getByText('Description4');
+    const li1 = getByText('Product0');
+    expect(li1).toHaveAttribute('description', 'description0');
+    const li2 = getByText('Product4');
+    expect(li2).toHaveAttribute('description', 'description4');
     expect(asFragment()).toMatchSnapshot();
   });
   test('with headerText', () => {
