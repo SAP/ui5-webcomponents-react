@@ -66,7 +66,7 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
    *
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `VariantItem` in order to preserve the intended design.
    */
-  children?: ReactNode | ReactNodeArray;
+  children?: ReactNode | ReactNode[];
   /**
    * Determines on which side the VariantManagement popover is placed at.
    */
