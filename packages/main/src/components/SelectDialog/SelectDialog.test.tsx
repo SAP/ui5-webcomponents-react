@@ -135,7 +135,7 @@ describe('SelectDialog', () => {
     fireEvent.input(searchField, { target: { value: 'Test' } });
     expect(input).toHaveBeenCalledTimes(1);
     expect(search).not.toHaveBeenCalled();
-    fireEvent.keyUp(searchField, { key: 'Enter', code: 'Enter', charCode: 13 });
+    fireEvent.keyUp(searchField, { key: 'Enter', code: 'Enter', keyCode: 13 });
     expect(search).toHaveBeenCalledTimes(1);
     fireEvent.click(getByTitle('Search'));
     expect(search).toHaveBeenCalledTimes(2);

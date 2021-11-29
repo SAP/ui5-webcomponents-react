@@ -43,7 +43,11 @@ import Pc2 from '../../../../../.storybook/demoImages/PC2.jpg';
             {new Array(40).fill('').map((_, index) => {
               const currentProduct = images[index % 4];
               return (
-                <StandardListItem image={currentProduct.img} description={`${currentProduct.description}${index}`}>
+                <StandardListItem
+                  image={currentProduct.img}
+                  description={`${currentProduct.description}${index}`}
+                  key={`${currentProduct.text}${index}`}
+                >
                   {currentProduct.text}
                 </StandardListItem>
               );
