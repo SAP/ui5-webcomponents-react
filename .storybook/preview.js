@@ -30,17 +30,18 @@ export const parameters = {
       method: 'alphabetical',
       order: ['Getting Started', 'Migration Guide', 'Knowledge Base', 'Internationalization', 'Public Utils']
     }
+  }
+};
+
+export const argTypes = {
+  style: argTypesCategoryCommonProps,
+  className: argTypesCategoryCommonProps,
+  tooltip: argTypesCategoryCommonProps,
+  slot: {
+    table: { disable: true }
   },
-  argTypes: {
-    style: argTypesCategoryCommonProps,
-    className: argTypesCategoryCommonProps,
-    tooltip: argTypesCategoryCommonProps,
-    slot: {
-      table: { disable: true }
-    },
-    ref: {
-      table: { disable: true }
-    }
+  ref: {
+    table: { disable: true }
   }
 };
 
