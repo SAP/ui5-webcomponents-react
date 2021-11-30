@@ -31,7 +31,15 @@ interface MeasureConfig extends Omit<IChartMeasure, 'color'> {
 export interface MicroBarChartProps
   extends Omit<
     IChartBaseProps,
-    'noLegend' | 'onLegendClick' | 'noAnimation' | 'chartConfig' | 'children' | 'tooltipConfig' | 'onClick'
+    | 'noLegend'
+    | 'onLegendClick'
+    | 'noAnimation'
+    | 'chartConfig'
+    | 'children'
+    | 'tooltipConfig'
+    | 'onClick'
+    | 'measures'
+    | 'dimensions'
   > {
   /**
    * A object which contains the configuration of the dimension.

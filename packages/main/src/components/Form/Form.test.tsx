@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { createChangeTagNameTest, createPassThroughPropsTest } from '@shared/tests/utils';
+import { createChangeTagNameTest, createCustomPropsTest } from '@shared/tests/utils';
 import { Form } from '@ui5/webcomponents-react/dist/Form';
 import { FormGroup } from '@ui5/webcomponents-react/dist/FormGroup';
 import { FormItem } from '@ui5/webcomponents-react/dist/FormItem';
@@ -76,7 +76,7 @@ describe('Create a Form', () => {
 
   createChangeTagNameTest(Form);
 
-  createPassThroughPropsTest(Form, {
+  createCustomPropsTest(Form, {
     children: (
       <FormItem>
         <Input type={InputType.Text} />

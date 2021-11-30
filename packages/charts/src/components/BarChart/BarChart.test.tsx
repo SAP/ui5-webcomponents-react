@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { complexDataSet } from '../../resources/DemoProps';
 import { BarChart } from './BarChart';
-import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { createCustomPropsTest } from '@shared/tests/utils';
 import {
   createChartRenderTest,
   createLoadingPlaceholderTest,
@@ -42,5 +42,5 @@ describe('BarChart', () => {
 
   createOnLegendClickNotCrashTest(BarChart, { dataset: complexDataSet, dimensions, measures });
 
-  createPassThroughPropsTest(BarChart, { dimensions: [], measures: [] });
+  createCustomPropsTest(BarChart, { dimensions: [], measures: [] });
 });

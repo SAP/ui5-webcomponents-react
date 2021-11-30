@@ -7,7 +7,7 @@ import {
   createOnClickChartTest,
   createOnLegendClickNotCrashTest
 } from '@shared/tests/chartUtils';
-import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { createCustomPropsTest } from '@shared/tests/utils';
 
 const measures = [
   {
@@ -35,5 +35,5 @@ describe('Scatter Chart', () => {
 
   createLoadingPlaceholderTest(ScatterChart, { measures: [] });
 
-  createPassThroughPropsTest(ScatterChart, { dataset: scatterComplexDataSet, measures });
+  createCustomPropsTest(ScatterChart, { dataset: scatterComplexDataSet, measures });
 });

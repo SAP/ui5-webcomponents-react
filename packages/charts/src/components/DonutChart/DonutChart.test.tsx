@@ -7,7 +7,7 @@ import {
   createOnClickChartTest,
   createOnLegendClickNotCrashTest
 } from '@shared/tests/chartUtils';
-import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { createCustomPropsTest } from '@shared/tests/utils';
 
 const dimension = {
   accessor: 'name'
@@ -21,9 +21,9 @@ describe('DonutChart', () => {
 
   createOnClickChartTest(DonutChart, { dimension, measure, dataset: simpleDataSet });
 
-  createLoadingPlaceholderTest(DonutChart, { measures: {}, dimensions: {} });
+  createLoadingPlaceholderTest(DonutChart, { measure: {}, dimension: {} });
 
   createOnLegendClickNotCrashTest(DonutChart, { dataset: simpleDataSet, dimension, measure });
 
-  createPassThroughPropsTest(DonutChart, { dimension: {}, measure: {} });
+  createCustomPropsTest(DonutChart, { dimension: {}, measure: {} });
 });

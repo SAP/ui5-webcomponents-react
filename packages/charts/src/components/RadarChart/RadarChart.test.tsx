@@ -7,7 +7,7 @@ import {
   createOnClickChartTest,
   createOnLegendClickNotCrashTest
 } from '@shared/tests/chartUtils';
-import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { createCustomPropsTest } from '@shared/tests/utils';
 
 const dimensions = [
   {
@@ -46,5 +46,5 @@ describe('RadarChart', () => {
 
   createOnClickChartTest(RadarChart, { dataset: complexDataSet, dimensions, measures });
 
-  createPassThroughPropsTest(RadarChart, { dataset: complexDataSet, dimensions, measures });
+  createCustomPropsTest(RadarChart, { dataset: complexDataSet, dimensions, measures });
 });

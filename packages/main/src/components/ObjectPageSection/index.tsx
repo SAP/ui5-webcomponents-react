@@ -1,4 +1,3 @@
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
 import React, { forwardRef, ReactNode, RefObject } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
@@ -31,7 +30,7 @@ const useStyles = createUseStyles(styles, { name: 'ObjectPageSection' });
  * Top-level information container of an `ObjectPage`.
  */
 const ObjectPageSection = forwardRef((props: ObjectPageSectionPropTypes, ref: RefObject<HTMLElement>) => {
-  const { titleText, id, children, titleTextUppercase, className, style, tooltip } = props;
+  const { titleText, id, children, titleTextUppercase, className, style, tooltip, ...rest } = props;
   const classes = useStyles();
 
   if (!id) {
@@ -41,7 +40,6 @@ const ObjectPageSection = forwardRef((props: ObjectPageSectionPropTypes, ref: Re
 
   const titleClasses = clsx(classes.title, titleTextUppercase && classes.uppercase);
 
-  const passThroughProps = usePassThroughHtmlProps(props, ['id']);
   return (
     <section
       ref={ref}
@@ -49,7 +47,7 @@ const ObjectPageSection = forwardRef((props: ObjectPageSectionPropTypes, ref: Re
       className={className}
       style={style}
       title={tooltip}
-      {...passThroughProps}
+      {...rest}
       id={htmlId}
       data-component-name="ObjectPageSection"
     >

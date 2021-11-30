@@ -1,6 +1,5 @@
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import React, { CSSProperties, forwardRef, ReactNode, ReactNodeArray, Ref } from 'react';
+import React, { CSSProperties, forwardRef, ReactNode, Ref } from 'react';
 import { createUseStyles } from 'react-jss';
 import { ResponsiveGridLayoutStyles } from './ResponsiveGridLayout.jss';
 import clsx from 'clsx';
@@ -59,7 +58,7 @@ export interface ResponsiveGridLayoutPropTypes extends CommonProps {
    * Example: If you want one child to span across 4 columns, you can add this element style to the child element:
    * `style={{ gridColumn: 'span 4' }}`
    */
-  children: ReactNode | ReactNodeArray;
+  children: ReactNode | ReactNode[];
 }
 
 const useStyles = createUseStyles(ResponsiveGridLayoutStyles, { name: 'ResponsiveGridLayout' });
@@ -88,12 +87,11 @@ const ResponsiveGridLayout = forwardRef((props: ResponsiveGridLayoutPropTypes, r
     style,
     className,
     tooltip,
-    title
+    title,
+    ...rest
   } = props;
   const classes = useStyles();
   const finalClassNames = clsx(classes.container, className);
-
-  const passThroughProps = usePassThroughHtmlProps(props);
 
   return (
     <div
@@ -115,7 +113,7 @@ const ResponsiveGridLayout = forwardRef((props: ResponsiveGridLayoutPropTypes, r
           ...style
         } as CSSProperties
       }
-      {...passThroughProps}
+      {...rest}
     >
       {children}
     </div>

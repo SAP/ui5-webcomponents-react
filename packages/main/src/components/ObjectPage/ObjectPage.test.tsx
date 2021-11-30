@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { createCustomPropsTest } from '@shared/tests/utils';
 import { Avatar } from '@ui5/webcomponents-react/dist/Avatar';
 import { Bar } from '@ui5/webcomponents-react/dist/Bar';
 import { BarDesign } from '@ui5/webcomponents-react/dist/BarDesign';
@@ -247,5 +247,5 @@ describe('ObjectPage', () => {
     expect(container.querySelector("[data-component-name='ObjectPageTabContainer']")).toBeInTheDocument();
   });
 
-  createPassThroughPropsTest(ObjectPage);
+  createCustomPropsTest(ObjectPage);
 });

@@ -2,11 +2,11 @@ import { isPhone } from '@ui5/webcomponents-base/dist/Device.js';
 import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming.js';
 import { useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { AVAILABLE_ACTIONS, CANCEL, X_OF_Y } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
 import { ResponsivePopover } from '@ui5/webcomponents-react/dist/ResponsivePopover';
+import clsx from 'clsx';
 import React, {
   Children,
   cloneElement,
@@ -21,7 +21,6 @@ import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
 import { ButtonPropTypes } from '../../webComponents/Button';
 import { ResponsivePopoverDomRef, ResponsivePopoverPropTypes } from '../../webComponents/ResponsivePopover';
-import clsx from 'clsx';
 import styles from './ActionSheet.jss';
 
 export interface ActionSheetPropTypes extends Omit<ResponsivePopoverPropTypes, 'children'> {
@@ -121,7 +120,8 @@ const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: RefObject<Resp
     onAfterClose,
     onAfterOpen,
     onBeforeClose,
-    onBeforeOpen
+    onBeforeOpen,
+    ...rest
   } = props;
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const classes = useStyles();
@@ -173,12 +173,6 @@ const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: RefObject<Resp
     });
   };
 
-  const passThroughProps = usePassThroughHtmlProps(props, [
-    'onAfterClose',
-    'onAfterOpen',
-    'onBeforeClose',
-    'onBeforeOpen'
-  ]);
   const handleAfterOpen = useCallback(
     (e) => {
       if (isPhone()) {
@@ -210,7 +204,7 @@ const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: RefObject<Resp
       onAfterClose={onAfterClose}
       onBeforeClose={onBeforeClose}
       onBeforeOpen={onBeforeOpen}
-      {...passThroughProps}
+      {...rest}
       onAfterOpen={handleAfterOpen}
       ref={componentRef}
       className={actionSheetClasses}

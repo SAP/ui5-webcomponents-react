@@ -30,7 +30,7 @@ interface MeasureConfig extends Omit<IChartMeasure, 'accessor' | 'label' | 'colo
   hideDataLabel?: boolean | ((chartConfig: any) => boolean);
 }
 
-export interface PieChartProps extends IChartBaseProps<IPolarChartConfig> {
+export interface PieChartProps extends Omit<IChartBaseProps<IPolarChartConfig>, 'dimensions' | 'measures'> {
   /**
    * A label to display in the center of the `PieChart`.
    * If you use this prop to display a text, we recommend to increase `chartConfig.innerRadius` to have some free

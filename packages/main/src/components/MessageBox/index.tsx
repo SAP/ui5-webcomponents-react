@@ -34,17 +34,7 @@ import { Title } from '@ui5/webcomponents-react/dist/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import clsx from 'clsx';
-import React, {
-  forwardRef,
-  isValidElement,
-  ReactNode,
-  ReactNodeArray,
-  Ref,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState
-} from 'react';
+import React, { forwardRef, isValidElement, ReactNode, Ref, useCallback, useEffect, useMemo, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { stopPropagation } from '../../internal/stopPropagation';
 import styles from './MessageBox.jss';
@@ -66,7 +56,7 @@ export interface MessageBoxPropTypes
    *
    * **Note:** Although this prop accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design and a11y capabilities.
    */
-  children: ReactNode | ReactNodeArray;
+  children: ReactNode | ReactNode[];
   /**
    * Array of actions of the MessageBox. Those actions will be transformed into buttons in the `MessageBox` footer.
    */

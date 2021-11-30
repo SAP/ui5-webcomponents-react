@@ -1,5 +1,4 @@
 import { createUseStyles } from 'react-jss';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
 import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';
@@ -68,7 +67,8 @@ const FlexBox = forwardRef((props: FlexBoxPropTypes, ref: Ref<HTMLDivElement>) =
     tooltip,
     fitContainer,
     slot,
-    as
+    as,
+    ...rest
   } = props;
 
   const classes = useStyles();
@@ -83,10 +83,9 @@ const FlexBox = forwardRef((props: FlexBoxPropTypes, ref: Ref<HTMLDivElement>) =
     className
   );
 
-  const passThroughProps = usePassThroughHtmlProps(props);
   const CustomTag = as as React.ElementType;
   return (
-    <CustomTag ref={ref} className={flexBoxClasses} style={style} title={tooltip} slot={slot} {...passThroughProps}>
+    <CustomTag ref={ref} className={flexBoxClasses} style={style} title={tooltip} slot={slot} {...rest}>
       {children}
     </CustomTag>
   );

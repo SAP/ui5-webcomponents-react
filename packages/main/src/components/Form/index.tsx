@@ -1,10 +1,11 @@
 import { CssSizeVariables } from '@ui5/webcomponents-react-base/dist/CssSizeVariables';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
-import { createUseStyles } from 'react-jss';
 import { getCurrentRange } from '@ui5/webcomponents-react-base/dist/Device';
-import { useSyncRef, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { Title } from '@ui5/webcomponents-react/dist/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import clsx from 'clsx';
 import React, {
   Children,
   cloneElement,
@@ -17,9 +18,8 @@ import React, {
   useRef,
   useState
 } from 'react';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { createUseStyles } from 'react-jss';
 import { styles } from './Form.jss';
-import clsx from 'clsx';
 
 export interface FormPropTypes extends CommonProps {
   /**
@@ -122,7 +122,8 @@ const Form = forwardRef((props: FormPropTypes, ref: Ref<HTMLFormElement>) => {
     labelSpanM,
     labelSpanL,
     labelSpanXL,
-    as
+    as,
+    ...rest
   } = props;
 
   const columnsMap = new Map();
@@ -262,7 +263,6 @@ const Form = forwardRef((props: FormPropTypes, ref: Ref<HTMLFormElement>) => {
 
     return [computedFormGroups, titleText];
   }, [children, currentRange, titleText, currentNumberOfColumns, currentLabelSpan]);
-  const passThroughProps = usePassThroughHtmlProps(props);
 
   const formClassNames = clsx(classes.form, classes[`labelSpan${((currentLabelSpan - 1) % 12) + 1}`], className);
 
@@ -275,7 +275,7 @@ const Form = forwardRef((props: FormPropTypes, ref: Ref<HTMLFormElement>) => {
       title={tooltip}
       style={style}
       data-columns={currentNumberOfColumns}
-      {...passThroughProps}
+      {...rest}
     >
       {updatedTitle && (
         <Title level={TitleLevel.H3} className={classes.formTitle}>
