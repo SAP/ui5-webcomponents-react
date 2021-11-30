@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.20.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.20.0...v0.20.1) (2021-11-29)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** center `noDataText` if no columns are defined ([#2305](https://github.com/SAP/ui5-webcomponents-react/issues/2305)) ([54c5663](https://github.com/SAP/ui5-webcomponents-react/commit/54c5663def66fe6137382928d2647fe2712b4776))
+* sync refs correctly with `useSyncRef` hook ([#2314](https://github.com/SAP/ui5-webcomponents-react/issues/2314)) ([d1db74c](https://github.com/SAP/ui5-webcomponents-react/commit/d1db74ce01054be56f684cf16205d6848770a688))
+
+
+### Features
+
+* **AnalyticalTable:** introduce useIndeterminateRowSelection plugin hook ([#2344](https://github.com/SAP/ui5-webcomponents-react/issues/2344)) ([9ea460d](https://github.com/SAP/ui5-webcomponents-react/commit/9ea460d71e40017f04d7262a11e3f2db7774da90))
+
+
+
+
+
 # [0.20.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.19.1...v0.20.0) (2021-11-10)
 
 

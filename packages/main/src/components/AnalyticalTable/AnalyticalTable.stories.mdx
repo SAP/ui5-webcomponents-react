@@ -16,6 +16,7 @@ import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { Badge } from '@ui5/webcomponents-react/dist/Badge';
 import { Text } from '@ui5/webcomponents-react/dist/Text';
 import { BusyIndicator } from '@ui5/webcomponents-react/dist/BusyIndicator';
+import { ToggleButton } from '@ui5/webcomponents-react/dist/ToggleButton';
 import { Panel } from '@ui5/webcomponents-react/dist/Panel';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
@@ -26,7 +27,10 @@ import { TextAlign } from '@ui5/webcomponents-react/dist/TextAlign';
 import { DefaultLoadingComponent } from './defaults/LoadingComponent';
 import { DefaultNoDataComponent } from './defaults/NoDataComponent';
 import { useCallback, useEffect, useReducer, useRef, useState } from 'react';
-import { useRowDisableSelection } from '@ui5/webcomponents-react/dist/AnalyticalTableHooks';
+import {
+  useRowDisableSelection,
+  useIndeterminateRowSelection
+} from '@ui5/webcomponents-react/dist/AnalyticalTableHooks';
 
 <Meta
   title="Data Display / AnalyticalTable"
@@ -217,6 +221,8 @@ With the `useRowDisableSelection` it's possible to disable the selection of spec
 - `string`: Defines the key in the dataset for disabling rows. If the value of the key is `true`, then the row will not be selectable.
 - `Function(row) => boolean`: Programmatically disable rows for selection. The function receives the current row as parameter.
 
+_ES6 Import: `import { useRowDisableSelection } from '@ui5/webcomponents-react/dist/AnalyticalTableHooks';`_
+
 **Note:** The "Select All" checkbox is not available with this hook.
 
 <Canvas>
@@ -318,6 +324,56 @@ const data = [
     />
   );
 };
+```
+
+### MultiSelect with indeterminate state
+
+The `useIndeterminateRowSelection` plugin hook allows marking parent rows as indeterminate when a child row is selected.
+When using this hook, it is recommended to also select all sub-rows when selecting a row. (`reactTableOptions={{ selectSubRows: true }}`)
+
+_ES6 Import: `import { useIndeterminateRowSelection } from '@ui5/webcomponents-react/dist/AnalyticalTableHooks';`_
+
+<Canvas>
+  <Story name="Plugin: useIndeterminateRowSelection" args={{ data: generateData(3, true) }}>
+    {(args) => {
+      const [collapsed, setCollapsed] = useReducer((coll) => !coll, true);
+      const [selectSubRows, setSelectSubRows] = useReducer((prev) => !prev, true);
+      return (
+        <Panel collapsed={collapsed} onToggle={setCollapsed} headerText="Show useIndeterminateRowSelection example">
+          {collapsed ? (
+            <BusyIndicator active style={{ width: '100%' }}>
+              <span style={{ height: '800px' }} />
+            </BusyIndicator>
+          ) : (
+            <>
+              <ToggleButton onClick={setSelectSubRows} pressed={selectSubRows}>{`${
+                selectSubRows ? "Don't " : ''
+              }Select Sub-Rows`}</ToggleButton>
+              <AnalyticalTable
+                selectionMode={TableSelectionMode.MultiSelect}
+                data={args.data}
+                columns={args.columns}
+                isTreeTable
+                tableHooks={[useIndeterminateRowSelection()]}
+                reactTableOptions={{ selectSubRows: selectSubRows }}
+              />
+            </>
+          )}
+        </Panel>
+      );
+    }}
+  </Story>
+</Canvas>
+
+```jsx
+<AnalyticalTable
+  selectionMode={TableSelectionMode.MultiSelect}
+  data={data}
+  columns={columns}
+  isTreeTable
+  tableHooks={[useIndeterminateRowSelection()]}
+  reactTableOptions={{ selectSubRows: true }}
+/>
 ```
 
 <br />
