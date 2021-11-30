@@ -3,7 +3,7 @@ import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignIte
 import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
 import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';
 import { FlexBoxWrap } from '@ui5/webcomponents-react/dist/FlexBoxWrap';
-import React, { forwardRef, ReactNode, ReactNodeArray, Ref } from 'react';
+import React, { forwardRef, ReactNode, Ref } from 'react';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { styles } from './FlexBox.jss';
 import clsx from 'clsx';
@@ -42,7 +42,7 @@ export interface FlexBoxPropTypes extends CommonProps {
   /**
    * Content of the `FlexBox`.
    */
-  children: ReactNode | ReactNodeArray;
+  children: ReactNode | ReactNode[];
   /**
    * Sets the components outer HTML tag.
    *
