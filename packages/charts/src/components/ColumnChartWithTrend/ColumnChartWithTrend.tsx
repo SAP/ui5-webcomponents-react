@@ -1,8 +1,8 @@
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { ComposedChart } from '@ui5/webcomponents-react-charts/dist//ComposedChart';
 import { ColumnChartWithTrendPlaceholder } from '@ui5/webcomponents-react-charts/dist/ColumnChartWithTrendPlaceholder';
 import React, { CSSProperties, FC, forwardRef, Ref, useMemo } from 'react';
+import { TooltipProps } from 'recharts';
 import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { usePrepareTrendMeasures } from '../../hooks/usePrepareTrendMeasures';
@@ -10,7 +10,6 @@ import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { defaultFormatter } from '../../internal/defaults';
-import { TooltipProps } from 'recharts';
 
 interface MeasureConfig extends IChartMeasure {
   /**
@@ -114,10 +113,9 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
       tooltipConfig,
       onDataPointClick,
       onLegendClick,
-      ChartPlaceholder
+      ChartPlaceholder,
+      ...rest
     } = props;
-
-    const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick', 'onClick']);
 
     const chartConfig = useMemo(() => {
       return {
@@ -157,13 +155,15 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
       }
     } as TooltipProps<any, any>;
 
+    const { chartConfig: _0, dimensions: _1, measures: _2, ...propsWithoutOmitted } = rest;
+
     return (
       <div
         ref={ref}
         style={{ display: 'flex', flexDirection: 'column', height: style?.height, width: style?.width, ...style }}
         className={className}
         slot={slot}
-        {...passThroughProps}
+        {...propsWithoutOmitted}
       >
         {dataset?.length !== 0 && (
           <ComposedChart
