@@ -12,6 +12,7 @@ import React, {
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
+import { doc } from 'prettier';
 
 const useStyles = createUseStyles(
   {
@@ -170,21 +171,43 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
       const nextSibling = localRef.current.nextSibling;
       const sizeDiv = e[`client${positionKeys.position}`] - start.current;
 
+      if (sizeDiv < 0) {
+        (previousSibling as HTMLElement).style.flex = `0 0 ${previousSiblingSize.current + sizeDiv}px`;
+        setIsPreviousSiblingRect((previousSibling as HTMLElement)?.getBoundingClientRect());
+        setIsPreviousSiblingStyle(window.getComputedStyle(previousSibling as Element));
+      }
+
       if (
-        !(sizeDiv < 0 && (isMinPrevCollapsed || isPrevCollapsed || isMaxPostCollapsed)) &&
-        !(sizeDiv > 0 && (isMinPostCollapsed || isMaxPrevCollapsed || isPostCollapsed))
+        sizeDiv > 0 &&
+        nextSibling.nextSibling.getBoundingClientRect().left - localRef.current.getBoundingClientRect().right > 10
       ) {
         (previousSibling as HTMLElement).style.flex = `0 0 ${previousSiblingSize.current + sizeDiv}px`;
         setIsPreviousSiblingRect((previousSibling as HTMLElement)?.getBoundingClientRect());
         setIsPreviousSiblingStyle(window.getComputedStyle(previousSibling as Element));
-        if (nextSibling.nextSibling) {
-          (nextSibling as HTMLElement).style.flex = `0 0 ${nextSiblingSize.current - sizeDiv}px`;
-          setIsNextSiblingRect((nextSibling as HTMLElement)?.getBoundingClientRect());
-          setIsNextSiblingStyle(window.getComputedStyle(nextSibling as Element));
+      }
+
+      if (nextSibling.nextSibling) {
+        if (sizeDiv < 0) {
+          if (previousSiblingSize.current + sizeDiv > 0) {
+            (nextSibling as HTMLElement).style.flex = `0 0 ${nextSiblingSize.current - sizeDiv}px`;
+            setIsNextSiblingRect((nextSibling as HTMLElement)?.getBoundingClientRect());
+            setIsNextSiblingStyle(window.getComputedStyle(nextSibling as Element));
+          }
         }
-        if (!nextSibling.nextSibling) {
-          (nextSibling as HTMLElement).style.flex = `1 0 auto`;
+        if (sizeDiv > 0) {
+          if (
+            previousSiblingSize.current + sizeDiv > 0 &&
+            nextSibling.nextSibling.getBoundingClientRect().left - localRef.current.getBoundingClientRect().right > 10
+          ) {
+            (nextSibling as HTMLElement).style.flex = `0 0 ${nextSiblingSize.current - sizeDiv}px`;
+            setIsNextSiblingRect((nextSibling as HTMLElement)?.getBoundingClientRect());
+            setIsNextSiblingStyle(window.getComputedStyle(nextSibling as Element));
+          }
         }
+      }
+
+      if (!nextSibling.nextSibling) {
+        (nextSibling as HTMLElement).style.flex = `1 0 auto`;
       }
     },
     [isMinPrevCollapsed, isMaxPrevCollapsed, isPrevCollapsed, isMinPostCollapsed, isMaxPostCollapsed, isPostCollapsed]
@@ -228,97 +251,6 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
       );
     }
   };
-
-  useEffect(() => {
-    const splitterPos = localRef.current?.getBoundingClientRect()?.[positionKeys.start];
-
-    if (!isPrevCollapsed && splitterPos < isPreviousSiblingRect?.[positionKeys.start]) {
-      setIsDragging(false);
-      setIsPrevCollapsed(true);
-    }
-
-    if (
-      !isMinPrevCollapsed &&
-      isPreviousSiblingRect?.[styleKeys.current] === Number(isPreviousSiblingStyle?.[styleKeys.min].replace('px', ''))
-    ) {
-      setIsDragging(false);
-      setIsMinPrevCollapsed(true);
-    }
-
-    if (
-      !isMaxPrevCollapsed &&
-      Math.round(isPreviousSiblingRect?.[styleKeys.current]) ===
-        Number(isPreviousSiblingStyle?.[styleKeys.max].replace('px', ''))
-    ) {
-      setIsDragging(false);
-      setIsMaxPrevCollapsed(true);
-    }
-
-    if (!isPostCollapsed && splitterPos > isNextSiblingRect?.[positionKeys.end] - 16) {
-      setIsDragging(false);
-      setIsPostCollapsed(true);
-    }
-
-    if (
-      !isMinPostCollapsed &&
-      Math.round(isNextSiblingRect?.[styleKeys.current]) ===
-        Math.round(Number(isNextSiblingStyle?.[styleKeys.min].replace('px', '')))
-    ) {
-      setIsDragging(false);
-      setIsMinPostCollapsed(true);
-    }
-
-    if (
-      !isMaxPostCollapsed &&
-      Math.round(isNextSiblingRect?.[styleKeys.current]) ===
-        Math.round(Number(isNextSiblingStyle?.[styleKeys.max].replace('px', '')))
-    ) {
-      setIsDragging(false);
-      setIsMaxPostCollapsed(true);
-    }
-
-    if (isPostCollapsed && isNextSiblingRect?.[positionKeys.end] - 16 - splitterPos > 5) {
-      setIsPostCollapsed(false);
-    }
-
-    if (
-      isMinPostCollapsed &&
-      Math.round(isNextSiblingRect?.[styleKeys.current]) -
-        Math.round(Number(isNextSiblingStyle?.[styleKeys.min].replace('px', ''))) >
-        1
-    ) {
-      setIsMinPostCollapsed(false);
-    }
-
-    if (
-      isMaxPostCollapsed &&
-      Math.round(Number(isNextSiblingStyle?.[styleKeys.max].replace('px', ''))) -
-        Math.round(isNextSiblingRect?.[styleKeys.current]) >
-        5
-    ) {
-      setIsMaxPostCollapsed(false);
-    }
-
-    if (isPrevCollapsed && splitterPos - isPreviousSiblingRect?.[positionKeys.start] > 5) {
-      setIsPrevCollapsed(false);
-    }
-
-    if (
-      isMinPrevCollapsed &&
-      isPreviousSiblingRect?.[styleKeys.current] - Number(isPreviousSiblingStyle?.[styleKeys.min].replace('px', '')) > 5
-    ) {
-      setIsMinPrevCollapsed(false);
-    }
-
-    if (
-      isMaxPrevCollapsed &&
-      Number(isPreviousSiblingStyle?.[styleKeys.max].replace('px', '')) -
-        Math.round(isPreviousSiblingRect?.[styleKeys.current]) >
-        1
-    ) {
-      setIsMaxPrevCollapsed(false);
-    }
-  }, [localRef.current?.getBoundingClientRect()?.[positionKeys.start], isDragging]);
 
   return (
     <div
