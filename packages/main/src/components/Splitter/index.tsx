@@ -171,7 +171,11 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
       const nextSibling = localRef.current.nextSibling;
       const sizeDiv = e[`client${positionKeys.position}`] - start.current;
 
-      if (sizeDiv < 0) {
+      if (
+        sizeDiv < 0 &&
+        Number(window.getComputedStyle(previousSibling as HTMLElement).minWidth.replace('px', '')) !==
+          (previousSibling as HTMLElement).getBoundingClientRect().width
+      ) {
         (previousSibling as HTMLElement).style.flex = `0 0 ${previousSiblingSize.current + sizeDiv}px`;
         setIsPreviousSiblingRect((previousSibling as HTMLElement)?.getBoundingClientRect());
         setIsPreviousSiblingStyle(window.getComputedStyle(previousSibling as Element));
@@ -179,7 +183,9 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
 
       if (
         sizeDiv > 0 &&
-        nextSibling.nextSibling.getBoundingClientRect().left - localRef.current.getBoundingClientRect().right > 10
+        Math.round((nextSibling.nextSibling as HTMLElement)?.getBoundingClientRect().left) -
+          Math.round(localRef.current.getBoundingClientRect().right) >
+          10
       ) {
         (previousSibling as HTMLElement).style.flex = `0 0 ${previousSiblingSize.current + sizeDiv}px`;
         setIsPreviousSiblingRect((previousSibling as HTMLElement)?.getBoundingClientRect());
@@ -188,7 +194,11 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
 
       if (nextSibling.nextSibling) {
         if (sizeDiv < 0) {
-          if (previousSiblingSize.current + sizeDiv > 0) {
+          if (
+            previousSiblingSize.current + sizeDiv > 0 &&
+            Number(window.getComputedStyle(previousSibling as HTMLElement).minWidth.replace('px', '')) !==
+              (previousSibling as HTMLElement).getBoundingClientRect().width
+          ) {
             (nextSibling as HTMLElement).style.flex = `0 0 ${nextSiblingSize.current - sizeDiv}px`;
             setIsNextSiblingRect((nextSibling as HTMLElement)?.getBoundingClientRect());
             setIsNextSiblingStyle(window.getComputedStyle(nextSibling as Element));
@@ -197,7 +207,9 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
         if (sizeDiv > 0) {
           if (
             previousSiblingSize.current + sizeDiv > 0 &&
-            nextSibling.nextSibling.getBoundingClientRect().left - localRef.current.getBoundingClientRect().right > 10
+            (nextSibling.nextSibling as HTMLElement).getBoundingClientRect().left -
+              localRef.current.getBoundingClientRect().right >
+              10
           ) {
             (nextSibling as HTMLElement).style.flex = `0 0 ${nextSiblingSize.current - sizeDiv}px`;
             setIsNextSiblingRect((nextSibling as HTMLElement)?.getBoundingClientRect());
@@ -208,6 +220,7 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
 
       if (!nextSibling.nextSibling) {
         (nextSibling as HTMLElement).style.flex = `1 0 auto`;
+        console.log('IN');
       }
     },
     [isMinPrevCollapsed, isMaxPrevCollapsed, isPrevCollapsed, isMinPostCollapsed, isMaxPostCollapsed, isPostCollapsed]
