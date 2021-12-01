@@ -1,4 +1,5 @@
-import { fireEvent, screen, render } from '@shared/tests';
+import { render } from '@shared/tests';
+import { fireEvent, screen } from '@shared/tests/index';
 import { SplitterLayout } from '@ui5/webcomponents-react/dist/SplitterLayout';
 import { SplitterElement } from '@ui5/webcomponents-react/dist/SplitterElement';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
@@ -28,10 +29,10 @@ describe('SplitterLayout', () => {
     fireEvent.click(screen.getByTestId('Button'));
 
     expect(AllSplitter.length).toBe(1);
-    expect(screen.getByTestId('SplitterLayout')).toHaveStyle('width: 800px; height: 400px; flex: 0 0 800px');
-    expect(screen.getByTestId('SplitterElement1')).toHaveStyle('flex: 0 0 200px');
-    expect(screen.getByTestId('SplitterElement2')).toHaveStyle('flex: 0 0 400px; min-width: 300px; max-width: 500px');
-    expect(screen.getByTestId('SplitterElement3')).toHaveStyle('flex: 1 0 auto; min-width: 0; height: 400px');
+    expect(screen.getByTestId('SplitterLayout')).toHaveStyle('width: 800px; height: 400px');
+    expect(screen.getByTestId('SplitterElement1')).toHaveStyle('flex: 0 0 auto');
+    expect(screen.getByTestId('SplitterElement2')).toHaveStyle('flex: 0 0 auto; min-width: 300px; max-width: 500px');
+    expect(screen.getByTestId('SplitterElement3')).toHaveStyle('flex: 0 0 auto; min-width: 0; height: 100%');
     expect(onClick).toHaveBeenCalled();
 
     expect(asFragment()).toMatchSnapshot();
@@ -55,8 +56,8 @@ describe('SplitterLayout', () => {
     const AllSplitter = document.querySelectorAll('[role="separator"]');
 
     expect(AllSplitter.length).toBe(2);
-    expect(screen.getByTestId('Layout')).toHaveStyle('width: 80vw; height: 600px; flex: 0 0 600px');
-    expect(screen.getByTestId('Element')).toHaveStyle('flex: 0 0 100px; min-height: 50px; max-height: 200px');
+    expect(screen.getByTestId('Layout')).toHaveStyle('width: 80vw; height: 600px');
+    expect(screen.getByTestId('Element')).toHaveStyle('flex: 0 0 auto; min-height: 50px; max-height: 200px');
 
     expect(asFragment()).toMatchSnapshot();
   });
