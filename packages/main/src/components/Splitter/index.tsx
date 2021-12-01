@@ -150,125 +150,112 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
   const nextSiblingSize = useRef<number>(null);
 
   const positionKeys = orientation === 'vertical' ? verticalPositionInfo : horizontalPositionInfo;
-  const styleKeys = orientation === 'vertical' ? verticalStyle : horiontalStyle;
 
-  const [isDragging, setIsDragging] = useState(false);
+  const handleSplitterMove = useCallback((e) => {
+    const previousSibling = localRef.current.previousSibling;
+    const nextSibling = localRef.current.nextSibling;
+    const sizeDiv = e[`client${positionKeys.position}`] - start.current;
 
-  const [isPrevCollapsed, setIsPrevCollapsed] = useState(false);
-  const [isMinPrevCollapsed, setIsMinPrevCollapsed] = useState(false);
-  const [isMaxPrevCollapsed, setIsMaxPrevCollapsed] = useState(false);
-  const [isPostCollapsed, setIsPostCollapsed] = useState(false);
-  const [isMinPostCollapsed, setIsMinPostCollapsed] = useState(false);
-  const [isMaxPostCollapsed, setIsMaxPostCollapsed] = useState(false);
-  const [isPreviousSiblingRect, setIsPreviousSiblingRect] = useState(null);
-  const [isPreviousSiblingStyle, setIsPreviousSiblingStyle] = useState(null);
-  const [isNextSiblingRect, setIsNextSiblingRect] = useState(null);
-  const [isNextSiblingStyle, setIsNextSiblingStyle] = useState(null);
+    // Move splitter left
+    if (
+      sizeDiv < 0 &&
+      Number(window.getComputedStyle(previousSibling as HTMLElement).minWidth.replace('px', '')) !==
+        (previousSibling as HTMLElement).getBoundingClientRect().width &&
+      Number(window.getComputedStyle(nextSibling as HTMLElement).maxWidth.replace('px', '')) !==
+        (nextSibling as HTMLElement).getBoundingClientRect().width
+    ) {
+      (previousSibling as HTMLElement).style.flex = `0 0 ${previousSiblingSize.current + sizeDiv}px`;
+      if (nextSibling.nextSibling && previousSiblingSize.current + sizeDiv > 0) {
+        (nextSibling as HTMLElement).style.flex = `0 0 ${nextSiblingSize.current - sizeDiv}px`;
+      }
+    }
 
-  const handleSplitterMove = useCallback(
+    // Move splitter right
+    if (
+      sizeDiv > 0 &&
+      (nextSibling.nextSibling
+        ? Math.round((nextSibling.nextSibling as HTMLElement)?.getBoundingClientRect().left) -
+            Math.round(localRef.current.getBoundingClientRect().right) >
+          20
+        : true) &&
+      Number(window.getComputedStyle(nextSibling as HTMLElement).minWidth.replace('px', '')) !==
+        (nextSibling as HTMLElement).getBoundingClientRect().width &&
+      Number(window.getComputedStyle(previousSibling as HTMLElement).maxWidth.replace('px', '')) !==
+        (previousSibling as HTMLElement).getBoundingClientRect().width
+    ) {
+      (previousSibling as HTMLElement).style.flex = `0 0 ${previousSiblingSize.current + sizeDiv}px`;
+      if (nextSibling.nextSibling && previousSiblingSize.current + sizeDiv > 0) {
+        (nextSibling as HTMLElement).style.flex = `0 0 ${nextSiblingSize.current - sizeDiv}px`;
+      }
+    }
+
+    if (!nextSibling.nextSibling) {
+      (nextSibling as HTMLElement).style.flex = `1 0 auto`;
+    }
+  }, []);
+
+  const handleMoveSplitterStart: MouseEventHandler = useCallback(
     (e) => {
-      const previousSibling = localRef.current.previousSibling;
-      const nextSibling = localRef.current.nextSibling;
-      const sizeDiv = e[`client${positionKeys.position}`] - start.current;
+      e.preventDefault();
+      previousSiblingSize.current = (localRef.current.previousSibling as HTMLElement).getBoundingClientRect()?.[
+        positionKeys.size
+      ];
+      nextSiblingSize.current = (localRef.current.nextSibling as HTMLElement).getBoundingClientRect()?.[
+        positionKeys.size
+      ];
 
-      if (
-        sizeDiv < 0 &&
-        Number(window.getComputedStyle(previousSibling as HTMLElement).minWidth.replace('px', '')) !==
-          (previousSibling as HTMLElement).getBoundingClientRect().width
-      ) {
-        (previousSibling as HTMLElement).style.flex = `0 0 ${previousSiblingSize.current + sizeDiv}px`;
-        setIsPreviousSiblingRect((previousSibling as HTMLElement)?.getBoundingClientRect());
-        setIsPreviousSiblingStyle(window.getComputedStyle(previousSibling as Element));
-      }
-
-      if (
-        sizeDiv > 0 &&
-        Math.round((nextSibling.nextSibling as HTMLElement)?.getBoundingClientRect().left) -
-          Math.round(localRef.current.getBoundingClientRect().right) >
-          10
-      ) {
-        (previousSibling as HTMLElement).style.flex = `0 0 ${previousSiblingSize.current + sizeDiv}px`;
-        setIsPreviousSiblingRect((previousSibling as HTMLElement)?.getBoundingClientRect());
-        setIsPreviousSiblingStyle(window.getComputedStyle(previousSibling as Element));
-      }
-
-      if (nextSibling.nextSibling) {
-        if (sizeDiv < 0) {
-          if (
-            previousSiblingSize.current + sizeDiv > 0 &&
-            Number(window.getComputedStyle(previousSibling as HTMLElement).minWidth.replace('px', '')) !==
-              (previousSibling as HTMLElement).getBoundingClientRect().width
-          ) {
-            (nextSibling as HTMLElement).style.flex = `0 0 ${nextSiblingSize.current - sizeDiv}px`;
-            setIsNextSiblingRect((nextSibling as HTMLElement)?.getBoundingClientRect());
-            setIsNextSiblingStyle(window.getComputedStyle(nextSibling as Element));
-          }
-        }
-        if (sizeDiv > 0) {
-          if (
-            previousSiblingSize.current + sizeDiv > 0 &&
-            (nextSibling.nextSibling as HTMLElement).getBoundingClientRect().left -
-              localRef.current.getBoundingClientRect().right >
-              10
-          ) {
-            (nextSibling as HTMLElement).style.flex = `0 0 ${nextSiblingSize.current - sizeDiv}px`;
-            setIsNextSiblingRect((nextSibling as HTMLElement)?.getBoundingClientRect());
-            setIsNextSiblingStyle(window.getComputedStyle(nextSibling as Element));
-          }
-        }
-      }
-
-      if (!nextSibling.nextSibling) {
-        (nextSibling as HTMLElement).style.flex = `1 0 auto`;
-        console.log('IN');
-      }
-    },
-    [isMinPrevCollapsed, isMaxPrevCollapsed, isPrevCollapsed, isMinPostCollapsed, isMaxPostCollapsed, isPostCollapsed]
-  );
-
-  const handleMoveSplitterStart: TouchEventHandler | MouseEventHandler = (e) => {
-    e.preventDefault();
-    previousSiblingSize.current = (localRef.current.previousSibling as HTMLElement).getBoundingClientRect()?.[
-      positionKeys.size
-    ];
-    nextSiblingSize.current = (localRef.current.nextSibling as HTMLElement).getBoundingClientRect()?.[
-      positionKeys.size
-    ];
-
-    const touchEvent = isTouchEvent(e, 'touchstart');
-    start.current = touchEvent
-      ? Math.round(e.touches[0][`client${positionKeys.position}`])
-      : e[`client${positionKeys.position}`];
-    setIsDragging(true);
-
-    // bind event listeners
-    if (touchEvent) {
-      document.addEventListener('touchmove', handleSplitterMove);
-      document.addEventListener(
-        'touchend',
-        () => {
-          document.removeEventListener('touchmove', handleSplitterMove);
-          setIsDragging(false);
-        },
-        { once: true }
-      );
-    } else {
       document.addEventListener('mousemove', handleSplitterMove);
       document.addEventListener(
         'mouseup',
         () => {
           document.removeEventListener('mousemove', handleSplitterMove);
-          setIsDragging(false);
         },
         { once: true }
       );
-    }
-  };
+    },
+    [
+      previousSiblingSize.current,
+      localRef.current,
+      nextSiblingSize.current,
+      start.current,
+      handleSplitterMove,
+      positionKeys
+    ]
+  );
+
+  const handleTouchMoveSplitterStart: TouchEventHandler = useCallback(
+    (e) => {
+      e.preventDefault();
+      previousSiblingSize.current = (localRef.current.previousSibling as HTMLElement).getBoundingClientRect()?.[
+        positionKeys.size
+      ];
+      nextSiblingSize.current = (localRef.current.nextSibling as HTMLElement).getBoundingClientRect()?.[
+        positionKeys.size
+      ];
+
+      document.addEventListener('touchmove', handleSplitterMove);
+      document.addEventListener(
+        'touchend',
+        () => {
+          document.removeEventListener('touchmove', handleSplitterMove);
+        },
+        { once: true }
+      );
+    },
+    [
+      previousSiblingSize.current,
+      localRef.current,
+      nextSiblingSize.current,
+      start.current,
+      handleSplitterMove,
+      positionKeys
+    ]
+  );
 
   return (
     <div
       className={classes.splitter}
-      onTouchStart={handleMoveSplitterStart}
+      onTouchStart={handleTouchMoveSplitterStart}
       onMouseDown={handleMoveSplitterStart}
       ref={componentRef}
       role="separator"
