@@ -18,10 +18,27 @@ const useStyles = createUseStyles(
 );
 
 export interface SplitterElementPropTypes extends CommonProps {
+  /**
+   * Defines wether a resizer element is displayed.<br />
+   * If the next `SplitterElement` has the prop `resizable={false}`, no resizer element will be shown after this
+   * `SplitterElement`. The resizer element is only shown when all siblings of the resizer are resizable.<br />
+   */
   resizable?: boolean;
+  /**
+   * Defines the initial size of the `SplitterElement`.<br />
+   */
   size?: string;
+  /**
+   * Defines the minimum size of the `SplitterElement`. The resize element stops when the minimum size is reached.<br />
+   */
   minSize?: string;
+  /**
+   * Defines the maximum size of the `SplitterElement`. The resize element stops when the maximum size is reached.<br />
+   */
   maxSize?: string;
+  /**
+   * Defines the content which is shown inside the `SplitterElement`.<br />
+   */
   children?: ReactElement | ReactElement[];
 }
 

@@ -1,18 +1,8 @@
 import { useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { Icon } from '@ui5/webcomponents-react/dist/Icon';
-import React, {
-  forwardRef,
-  MouseEventHandler,
-  Ref,
-  TouchEventHandler,
-  useCallback,
-  useEffect,
-  useRef,
-  useState
-} from 'react';
+import React, { forwardRef, MouseEventHandler, Ref, TouchEventHandler, useCallback, useRef } from 'react';
 import { createUseStyles } from 'react-jss';
-import { doc } from 'prettier';
 
 const useStyles = createUseStyles(
   {

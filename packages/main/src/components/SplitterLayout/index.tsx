@@ -11,12 +11,6 @@ import clsx from 'clsx';
 
 const useStyles = createUseStyles(styles, { name: 'SplitterLayout' });
 
-interface ThemeContextType {
-  containerWidth: string | number;
-  containerHeight?: string | number;
-  orientation?: 'horizontal' | 'vertical';
-}
-
 export interface SplitterLayoutPropTypes extends CommonProps {
   /**
    * Controls the width of the `SplitterLayout` container.<br />
