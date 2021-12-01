@@ -204,6 +204,8 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
         positionKeys.size
       ];
 
+      start.current = e[`client${positionKeys.position}`];
+
       document.addEventListener('mousemove', handleSplitterMove);
       document.addEventListener(
         'mouseup',
@@ -232,6 +234,8 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
       nextSiblingSize.current = (localRef.current.nextSibling as HTMLElement).getBoundingClientRect()?.[
         positionKeys.size
       ];
+
+      start.current = Math.round(e.touches[0][`client${positionKeys.position}`]);
 
       document.addEventListener('touchmove', handleSplitterMove);
       document.addEventListener(
