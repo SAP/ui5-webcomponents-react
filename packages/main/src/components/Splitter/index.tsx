@@ -118,25 +118,17 @@ const verticalPositionInfo = {
   start: 'left',
   end: 'right',
   position: 'X',
-  size: 'width'
+  size: 'width',
+  min: 'minWidth',
+  max: 'maxWidth'
 };
 
 const horizontalPositionInfo = {
   start: 'top',
   end: 'bottom',
   position: 'Y',
-  size: 'height'
-};
-
-const verticalStyle = {
-  min: 'minWidth',
-  current: 'width',
-  max: 'maxWidth'
-};
-
-const horiontalStyle = {
+  size: 'height',
   min: 'minHeight',
-  current: 'height',
   max: 'maxHeight'
 };
 
@@ -159,10 +151,10 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
     // Move splitter left
     if (
       sizeDiv < 0 &&
-      Number(window.getComputedStyle(previousSibling as HTMLElement).minWidth.replace('px', '')) !==
-        (previousSibling as HTMLElement).getBoundingClientRect().width &&
-      Number(window.getComputedStyle(nextSibling as HTMLElement).maxWidth.replace('px', '')) !==
-        (nextSibling as HTMLElement).getBoundingClientRect().width
+      Number(window.getComputedStyle(previousSibling as HTMLElement)?.[positionKeys.min].replace('px', '')) !==
+        (previousSibling as HTMLElement).getBoundingClientRect()?.[positionKeys.size] &&
+      Number(window.getComputedStyle(nextSibling as HTMLElement)?.[positionKeys.max].replace('px', '')) !==
+        (nextSibling as HTMLElement).getBoundingClientRect()?.[positionKeys.size]
     ) {
       (previousSibling as HTMLElement).style.flex = `0 0 ${previousSiblingSize.current + sizeDiv}px`;
       if (nextSibling.nextSibling && previousSiblingSize.current + sizeDiv > 0) {
@@ -174,14 +166,14 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
     if (
       sizeDiv > 0 &&
       (nextSibling.nextSibling
-        ? Math.round((nextSibling.nextSibling as HTMLElement)?.getBoundingClientRect().left) -
-            Math.round(localRef.current.getBoundingClientRect().right) >
+        ? Math.round((nextSibling.nextSibling as HTMLElement)?.getBoundingClientRect()?.[positionKeys.start]) -
+            Math.round(localRef.current.getBoundingClientRect()?.[positionKeys.end]) >
           20
         : true) &&
-      Number(window.getComputedStyle(nextSibling as HTMLElement).minWidth.replace('px', '')) !==
-        (nextSibling as HTMLElement).getBoundingClientRect().width &&
-      Number(window.getComputedStyle(previousSibling as HTMLElement).maxWidth.replace('px', '')) !==
-        (previousSibling as HTMLElement).getBoundingClientRect().width
+      Number(window.getComputedStyle(nextSibling as HTMLElement)?.[positionKeys.min].replace('px', '')) !==
+        (nextSibling as HTMLElement).getBoundingClientRect()?.[positionKeys.size] &&
+      Number(window.getComputedStyle(previousSibling as HTMLElement)?.[positionKeys.max].replace('px', '')) !==
+        (previousSibling as HTMLElement).getBoundingClientRect()?.[positionKeys.size]
     ) {
       (previousSibling as HTMLElement).style.flex = `0 0 ${previousSiblingSize.current + sizeDiv}px`;
       if (nextSibling.nextSibling && previousSiblingSize.current + sizeDiv > 0) {
