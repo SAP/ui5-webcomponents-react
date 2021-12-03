@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { complexDataSet } from '../../resources/DemoProps';
 import { LineChart } from './LineChart';
-import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { createCustomPropsTest } from '@shared/tests/utils';
 import {
   createChartRenderTest,
   createLoadingPlaceholderTest,
@@ -43,5 +43,5 @@ describe('LineChart', () => {
 
   createOnLegendClickNotCrashTest(LineChart, { dataset: complexDataSet, dimensions, measures });
 
-  createPassThroughPropsTest(LineChart, { dimensions: [], measures: [] });
+  createCustomPropsTest(LineChart, { dimensions: [], measures: [] });
 });

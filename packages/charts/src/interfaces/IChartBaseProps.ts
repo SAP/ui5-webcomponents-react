@@ -1,5 +1,5 @@
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { ComponentType, ReactNode, ReactNodeArray } from 'react';
+import { ComponentType, ReactNode } from 'react';
 import { TooltipProps } from 'recharts';
 import { ICartesianChartConfig } from './ICartesianChartConfig';
 
@@ -20,7 +20,7 @@ export interface IChartBaseProps<T = ICartesianChartConfig> extends Omit<CommonP
    * With the help of the `children` prop you can add more svg elements to the chart, e.g. if you want to display
    * a linear gradient.
    */
-  children?: ReactNode | ReactNodeArray;
+  children?: ReactNode | ReactNode[];
 
   /**
    * `noLegend` toggles the visibility of the legend below the chart. If this prop is `true`, no legend will be rendered.

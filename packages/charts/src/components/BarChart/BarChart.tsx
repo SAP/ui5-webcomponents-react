@@ -1,4 +1,4 @@
-import { useSyncRef, useIsRTL, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { BarChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/BarChartPlaceholder';
@@ -7,7 +7,7 @@ import { ChartDataLabel } from '@ui5/webcomponents-react-charts/dist/components/
 import { XAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/XAxisTicks';
 import { YAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/YAxisTicks';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/dist/useLegendItemClick';
-import { resolvePrimaryAndSecondaryMeasures, getCellColors } from '@ui5/webcomponents-react-charts/dist/Utils';
+import { getCellColors, resolvePrimaryAndSecondaryMeasures } from '@ui5/webcomponents-react-charts/dist/Utils';
 import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import {
   Bar,
@@ -142,7 +142,9 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
     tooltip,
     slot,
     syncId,
-    ChartPlaceholder
+    ChartPlaceholder,
+    children,
+    ...rest
   } = props;
 
   const chartConfig = useMemo(() => {
@@ -214,11 +216,11 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
   const [width, legendPosition] = useLongestYAxisLabelBar(dataset, dimensions);
   const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
   const [xAxisHeight] = useObserveXAxisHeights(chartRef, 1);
-  const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick', 'onClick']);
   const isRTL = useIsRTL(chartRef);
 
   const { isMounted, handleBarAnimationStart, handleBarAnimationEnd } = useCancelAnimationFallback(noAnimation);
 
+  const { chartConfig: _0, dimensions: _1, measures: _2, ...propsWithoutOmitted } = rest;
   return (
     <ChartContainer
       dataset={dataset}
@@ -230,7 +232,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
       tooltip={tooltip}
       slot={slot}
       resizeDebounce={chartConfig.resizeDebounce}
-      {...passThroughProps}
+      {...propsWithoutOmitted}
     >
       <BarChartLib
         syncId={syncId}
@@ -375,7 +377,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
             height={20}
           />
         )}
-        {props.children}
+        {children}
       </BarChartLib>
     </ChartContainer>
   );

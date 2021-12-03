@@ -1,4 +1,4 @@
-import { useI18nBundle, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
 import { DEVIATION, TARGET } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { DeviationIndicator } from '@ui5/webcomponents-react/dist/DeviationIndicator';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
@@ -9,9 +9,9 @@ import { FlexBoxWrap } from '@ui5/webcomponents-react/dist/FlexBoxWrap';
 import { ObjectStatus } from '@ui5/webcomponents-react/dist/ObjectStatus';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import clsx from 'clsx';
 import React, { forwardRef, MouseEventHandler, Ref, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
-import clsx from 'clsx';
 import styles from './AnalyticalCardHeader.jss';
 
 export interface AnalyticalCardHeaderPropTypes extends CommonProps {
@@ -103,7 +103,8 @@ export const AnalyticalCardHeader = forwardRef((props: AnalyticalCardHeaderPropT
     currency,
     indicatorState,
     arrowIndicator,
-    style
+    style,
+    ...rest
   } = props;
   const classes = useStyles();
 
@@ -136,12 +137,10 @@ export const AnalyticalCardHeader = forwardRef((props: AnalyticalCardHeaderPropT
 
   const shouldRenderContent = [value, unit, deviation, target].some((v) => !!v);
 
-  const passThroughProps = usePassThroughHtmlProps(props, ['onHeaderClick']);
-
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
   return (
-    <div ref={ref} className={headerClasses} title={tooltip} style={style} {...passThroughProps} onClick={onClick}>
+    <div ref={ref} className={headerClasses} title={tooltip} style={style} {...rest} onClick={onClick}>
       <div className={classes.headerContent}>
         <div className={classes.headerTitles}>
           <FlexBox justifyContent={FlexBoxJustifyContent.SpaceBetween} wrap={FlexBoxWrap.NoWrap}>

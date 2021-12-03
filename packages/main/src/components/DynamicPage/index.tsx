@@ -1,17 +1,16 @@
 import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
-import { usePassThroughHtmlProps, useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useResponsiveContentPadding, useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { GlobalStyleClasses } from '@ui5/webcomponents-react/dist/GlobalStyleClasses';
 import { PageBackgroundDesign } from '@ui5/webcomponents-react/dist/PageBackgroundDesign';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import clsx from 'clsx';
 import React, { cloneElement, forwardRef, ReactElement, ReactNode, Ref, useEffect, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { useObserveHeights } from '../../internal/useObserveHeights';
-import { useResponsiveContentPadding } from '@ui5/webcomponents-react-base/dist/hooks';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
-import clsx from 'clsx';
 import { styles } from './DynamicPage.jss';
 
 export interface DynamicPagePropTypes extends Omit<CommonProps, 'title'> {
@@ -95,9 +94,10 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
     children,
     className,
     footer,
-    a11yConfig
+    a11yConfig,
+    ...rest
   } = props;
-  const passThroughProps = usePassThroughHtmlProps(props, ['onScroll']);
+  const { onScroll: _1, ...propsWithoutOmitted } = rest;
 
   const anchorBarRef = useRef<HTMLDivElement>();
   const [componentRef, dynamicPageRef] = useSyncRef<HTMLDivElement>(ref);
@@ -220,7 +220,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
       className={dynamicPageClasses}
       style={style}
       onScroll={onDynamicPageScroll}
-      {...passThroughProps}
+      {...propsWithoutOmitted}
     >
       {headerTitle &&
         cloneElement(headerTitle, {

@@ -1,4 +1,4 @@
-import { createChangeTagNameTest, createPassThroughPropsTest } from '@shared/tests/utils';
+import { createChangeTagNameTest, createCustomPropsTest } from '@shared/tests/utils';
 import { render, screen } from '@shared/tests';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';
@@ -45,5 +45,5 @@ describe('FlexBox', () => {
 
   createChangeTagNameTest(FlexBox);
 
-  createPassThroughPropsTest(FlexBox);
+  createCustomPropsTest(FlexBox);
 });

@@ -1,6 +1,5 @@
 import { useIsomorphicLayoutEffect, useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { debounce, enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { AnalyticalTableScrollMode } from '@ui5/webcomponents-react/dist/AnalyticalTableScrollMode';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
@@ -10,9 +9,10 @@ import { TableSelectionBehavior } from '@ui5/webcomponents-react/dist/TableSelec
 import { TableSelectionMode } from '@ui5/webcomponents-react/dist/TableSelectionMode';
 import { TableVisibleRowCountMode } from '@ui5/webcomponents-react/dist/TableVisibleRowCountMode';
 import { TextAlign } from '@ui5/webcomponents-react/dist/TextAlign';
-import { VerticalAlign } from '@ui5/webcomponents-react/dist/VerticalAlign';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
+import { VerticalAlign } from '@ui5/webcomponents-react/dist/VerticalAlign';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import clsx from 'clsx';
 import React, {
   ComponentType,
   CSSProperties,
@@ -65,7 +65,6 @@ import { stateReducer } from './tableReducer/stateReducer';
 import { TitleBar } from './TitleBar';
 import { orderByFn, tagNamesWhichShouldNotSelectARow } from './util';
 import { VerticalResizer } from './VerticalResizer';
-import clsx from 'clsx';
 
 export interface AnalyticalTableColumnDefinition {
   // base properties
@@ -214,6 +213,7 @@ export interface AnalyticalTableColumnDefinition {
    * Defines if the column is reorderable by dragging and dropping columns.
    */
   disableDragAndDrop?: boolean;
+
   // all other custom properties or [React Table](https://react-table.tanstack.com/) column options
   [key: string]: any;
 }
@@ -528,7 +528,8 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     onRowSelected,
     onSort,
     LoadingComponent,
-    NoDataComponent
+    NoDataComponent,
+    ...rest
   } = props;
 
   const classes = useStyles();
@@ -807,15 +808,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     tableInternalColumns
   );
 
-  const passThroughProps = usePassThroughHtmlProps(props, [
-    'onSort',
-    'onGroup',
-    'onRowSelected',
-    'onRowClick',
-    'onRowExpandChange',
-    'onColumnsReordered',
-    'onLoadMore'
-  ]);
+  const { onColumnsReordered: _0, data: _1, ...propsWithoutOmitted } = rest;
 
   const inlineStyle = useMemo(() => {
     const tableStyles = {
@@ -875,7 +868,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
   );
 
   return (
-    <div className={className} style={inlineStyle} title={tooltip} ref={analyticalTableRef} {...passThroughProps}>
+    <div className={className} style={inlineStyle} title={tooltip} ref={analyticalTableRef} {...propsWithoutOmitted}>
       {header && <TitleBar ref={titleBarRef}>{header}</TitleBar>}
       {extension && <div ref={extensionRef}>{extension}</div>}
       <FlexBox>

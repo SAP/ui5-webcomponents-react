@@ -28,7 +28,10 @@ exports[`Micro Bar Chart Check onClick events 1`] = `
             </span>
             <span
               class="MicroBarChart-text"
-            />
+              title="10"
+            >
+              10
+            </span>
           </div>
           <div
             class="MicroBarChart-valueContainer"
@@ -36,6 +39,7 @@ exports[`Micro Bar Chart Check onClick events 1`] = `
           >
             <div
               class="MicroBarChart-valueBar"
+              style="width: 10%;"
             />
           </div>
         </div>
@@ -53,7 +57,10 @@ exports[`Micro Bar Chart Check onClick events 1`] = `
             </span>
             <span
               class="MicroBarChart-text"
-            />
+              title="100"
+            >
+              100
+            </span>
           </div>
           <div
             class="MicroBarChart-valueContainer"
@@ -61,6 +68,7 @@ exports[`Micro Bar Chart Check onClick events 1`] = `
           >
             <div
               class="MicroBarChart-valueBar"
+              style="width: 100%;"
             />
           </div>
         </div>
@@ -78,7 +86,10 @@ exports[`Micro Bar Chart Check onClick events 1`] = `
             </span>
             <span
               class="MicroBarChart-text"
-            />
+              title="70"
+            >
+              70
+            </span>
           </div>
           <div
             class="MicroBarChart-valueContainer"
@@ -86,6 +97,7 @@ exports[`Micro Bar Chart Check onClick events 1`] = `
           >
             <div
               class="MicroBarChart-valueBar"
+              style="width: 70%;"
             />
           </div>
         </div>
@@ -246,7 +258,10 @@ exports[`Micro Bar Chart Render chart with data 1`] = `
             </span>
             <span
               class="MicroBarChart-text"
-            />
+              title="10"
+            >
+              10
+            </span>
           </div>
           <div
             class="MicroBarChart-valueContainer"
@@ -254,6 +269,7 @@ exports[`Micro Bar Chart Render chart with data 1`] = `
           >
             <div
               class="MicroBarChart-valueBar"
+              style="width: 10%;"
             />
           </div>
         </div>
@@ -271,7 +287,10 @@ exports[`Micro Bar Chart Render chart with data 1`] = `
             </span>
             <span
               class="MicroBarChart-text"
-            />
+              title="100"
+            >
+              100
+            </span>
           </div>
           <div
             class="MicroBarChart-valueContainer"
@@ -279,6 +298,7 @@ exports[`Micro Bar Chart Render chart with data 1`] = `
           >
             <div
               class="MicroBarChart-valueBar"
+              style="width: 100%;"
             />
           </div>
         </div>
@@ -296,7 +316,10 @@ exports[`Micro Bar Chart Render chart with data 1`] = `
             </span>
             <span
               class="MicroBarChart-text"
-            />
+              title="70"
+            >
+              70
+            </span>
           </div>
           <div
             class="MicroBarChart-valueContainer"
@@ -304,6 +327,7 @@ exports[`Micro Bar Chart Render chart with data 1`] = `
           >
             <div
               class="MicroBarChart-valueBar"
+              style="width: 70%;"
             />
           </div>
         </div>

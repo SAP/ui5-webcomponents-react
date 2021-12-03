@@ -7,7 +7,7 @@ import {
   createOnClickChartTest,
   createOnLegendClickNotCrashTest
 } from '@shared/tests/chartUtils';
-import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { createCustomPropsTest } from '@shared/tests/utils';
 
 const dimensions = [
   {
@@ -45,5 +45,5 @@ describe('BulletChart', () => {
 
   createOnLegendClickNotCrashTest(BulletChart, { dataset: complexDataSet, dimensions, measures });
 
-  createPassThroughPropsTest(BulletChart, { dimensions: [], measures: [] });
+  createCustomPropsTest(BulletChart, { dimensions: [], measures: [] });
 });

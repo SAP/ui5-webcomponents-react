@@ -1,4 +1,4 @@
-import { useIsRTL, usePassThroughHtmlProps, useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/dist/components/ChartContainer';
@@ -12,14 +12,14 @@ import React, { FC, forwardRef, Ref, useCallback, useMemo, useRef } from 'react'
 import {
   Brush,
   CartesianGrid,
+  Label,
   Legend,
   Line,
   LineChart as LineChartLib,
   ReferenceLine,
   Tooltip,
   XAxis,
-  YAxis,
-  Label
+  YAxis
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin';
 import { useLabelFormatter } from '../../hooks/useLabelFormatter';
@@ -119,7 +119,9 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     tooltip,
     slot,
     syncId,
-    ChartPlaceholder
+    ChartPlaceholder,
+    children,
+    ...rest
   } = props;
 
   const chartConfig = useMemo(() => {
@@ -197,7 +199,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
   const [yAxisWidth, legendPosition] = useLongestYAxisLabel(dataset, measures);
   const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
   const xAxisHeights = useObserveXAxisHeights(chartRef, props.dimensions.length);
-  const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick', 'onClick']);
+  const { chartConfig: _0, dimensions: _1, measures: _2, ...propsWithoutOmitted } = rest;
   const isRTL = useIsRTL(chartRef);
 
   return (
@@ -211,7 +213,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
       tooltip={tooltip}
       slot={slot}
       resizeDebounce={chartConfig.resizeDebounce}
-      {...passThroughProps}
+      {...propsWithoutOmitted}
     >
       <LineChartLib
         syncId={syncId}
@@ -329,7 +331,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
             height={20}
           />
         )}
-        {props.children}
+        {children}
       </LineChartLib>
     </ChartContainer>
   );

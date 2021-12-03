@@ -1,4 +1,4 @@
-import { useSyncRef, useIsRTL, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { BulletChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/BulletChartPlaceholder';
@@ -137,7 +137,9 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
     tooltip,
     slot,
     syncId,
-    ChartPlaceholder
+    ChartPlaceholder,
+    children,
+    ...rest
   } = props;
 
   const [componentRef, chartRef] = useSyncRef<any>(ref);
@@ -250,12 +252,13 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
     interval: 0
   };
 
-  const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick', 'onClick']);
   const isRTL = useIsRTL(chartRef);
 
   const Placeholder = useCallback(() => {
     return <BulletChartPlaceholder layout={layout} measures={measures} />;
   }, [layout, measures]);
+
+  const { chartConfig: _0, dimensions: _1, measures: _2, ...propsWithoutOmitted } = rest;
 
   return (
     <ChartContainer
@@ -268,7 +271,7 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
       tooltip={tooltip}
       slot={slot}
       resizeDebounce={chartConfig.resizeDebounce}
-      {...passThroughProps}
+      {...propsWithoutOmitted}
     >
       <ComposedChartLib
         syncId={syncId}
@@ -494,7 +497,7 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
             height={20}
           />
         )}
-        {props.children}
+        {children}
       </ComposedChartLib>
     </ChartContainer>
   );
