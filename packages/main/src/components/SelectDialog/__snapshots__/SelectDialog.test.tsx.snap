@@ -40,9 +40,9 @@ exports[`SelectDialog Basic 1`] = `
       ui5-bar=""
     >
       <ui5-input
-        accessible-name="Search"
         class="SelectDialog-spread"
         placeholder="Search"
+        slot="middleContent"
         type="Text"
         ui5-input=""
         value=""
@@ -60,7 +60,6 @@ exports[`SelectDialog Basic 1`] = `
     </ui5-bar>
     <ui5-list
       accessible-role="list"
-      busy-delay="1000"
       growing="None"
       mode="SingleSelect"
       separators="All"
@@ -292,9 +291,9 @@ exports[`SelectDialog confirmButtonText 1`] = `
       ui5-bar=""
     >
       <ui5-input
-        accessible-name="Search"
         class="SelectDialog-spread"
         placeholder="Search"
+        slot="middleContent"
         type="Text"
         ui5-input=""
         value=""
@@ -312,7 +311,6 @@ exports[`SelectDialog confirmButtonText 1`] = `
     </ui5-bar>
     <ui5-list
       accessible-role="list"
-      busy-delay="1000"
       growing="None"
       mode="MultiSelect"
       separators="All"
@@ -362,9 +360,9 @@ exports[`SelectDialog with children 1`] = `
       ui5-bar=""
     >
       <ui5-input
-        accessible-name="Search"
         class="SelectDialog-spread"
         placeholder="Search"
+        slot="middleContent"
         type="Text"
         ui5-input=""
         value=""
@@ -382,7 +380,6 @@ exports[`SelectDialog with children 1`] = `
     </ui5-bar>
     <ui5-list
       accessible-role="list"
-      busy-delay="1000"
       growing="None"
       mode="SingleSelect"
       separators="All"
@@ -390,10 +387,10 @@ exports[`SelectDialog with children 1`] = `
     >
       <ui5-li
         actionable=""
-        additional-text-state="None"
         data-li="0"
         description="description0"
         has-title=""
+        info-state="None"
         type="Active"
         ui5-li=""
       >
@@ -401,10 +398,10 @@ exports[`SelectDialog with children 1`] = `
       </ui5-li>
       <ui5-li
         actionable=""
-        additional-text-state="None"
         data-li="1"
         description="description1"
         has-title=""
+        info-state="None"
         type="Active"
         ui5-li=""
       >
@@ -412,10 +409,10 @@ exports[`SelectDialog with children 1`] = `
       </ui5-li>
       <ui5-li
         actionable=""
-        additional-text-state="None"
         data-li="2"
         description="description2"
         has-title=""
+        info-state="None"
         type="Active"
         ui5-li=""
       >
@@ -423,10 +420,10 @@ exports[`SelectDialog with children 1`] = `
       </ui5-li>
       <ui5-li
         actionable=""
-        additional-text-state="None"
         data-li="3"
         description="description3"
         has-title=""
+        info-state="None"
         type="Active"
         ui5-li=""
       >
@@ -434,10 +431,10 @@ exports[`SelectDialog with children 1`] = `
       </ui5-li>
       <ui5-li
         actionable=""
-        additional-text-state="None"
         data-li="4"
         description="description4"
         has-title=""
+        info-state="None"
         type="Active"
         ui5-li=""
       >
@@ -490,9 +487,9 @@ exports[`SelectDialog with headerText 1`] = `
       ui5-bar=""
     >
       <ui5-input
-        accessible-name="Search"
         class="SelectDialog-spread"
         placeholder="Search"
+        slot="middleContent"
         type="Text"
         ui5-input=""
         value=""
@@ -510,7 +507,6 @@ exports[`SelectDialog with headerText 1`] = `
     </ui5-bar>
     <ui5-list
       accessible-role="list"
-      busy-delay="1000"
       growing="None"
       mode="SingleSelect"
       separators="All"
@@ -518,10 +514,10 @@ exports[`SelectDialog with headerText 1`] = `
     >
       <ui5-li
         actionable=""
-        additional-text-state="None"
         data-li="0"
         description="description0"
         has-title=""
+        info-state="None"
         type="Active"
         ui5-li=""
       >
@@ -529,10 +525,10 @@ exports[`SelectDialog with headerText 1`] = `
       </ui5-li>
       <ui5-li
         actionable=""
-        additional-text-state="None"
         data-li="1"
         description="description1"
         has-title=""
+        info-state="None"
         type="Active"
         ui5-li=""
       >
@@ -540,10 +536,10 @@ exports[`SelectDialog with headerText 1`] = `
       </ui5-li>
       <ui5-li
         actionable=""
-        additional-text-state="None"
         data-li="2"
         description="description2"
         has-title=""
+        info-state="None"
         type="Active"
         ui5-li=""
       >
@@ -551,10 +547,10 @@ exports[`SelectDialog with headerText 1`] = `
       </ui5-li>
       <ui5-li
         actionable=""
-        additional-text-state="None"
         data-li="3"
         description="description3"
         has-title=""
+        info-state="None"
         type="Active"
         ui5-li=""
       >
@@ -562,10 +558,10 @@ exports[`SelectDialog with headerText 1`] = `
       </ui5-li>
       <ui5-li
         actionable=""
-        additional-text-state="None"
         data-li="4"
         description="description4"
         has-title=""
+        info-state="None"
         type="Active"
         ui5-li=""
       >
