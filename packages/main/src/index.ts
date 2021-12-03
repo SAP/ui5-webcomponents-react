@@ -54,6 +54,8 @@ import { FCLLayout } from './lib/FCLLayout';
 import { FileUploader } from './lib/FileUploader';
 import { FilterBar } from './lib/FilterBar';
 import { FilterGroupItem } from './lib/FilterGroupItem';
+import { FilterItem } from './lib/FilterItem';
+import { FilterItemOption } from './lib/FilterItemOption';
 import { FlexBox } from './lib/FlexBox';
 import { FlexBoxAlignItems } from './lib/FlexBoxAlignItems';
 import { FlexBoxDirection } from './lib/FlexBoxDirection';
@@ -118,6 +120,7 @@ import { ResponsivePopover } from './lib/ResponsivePopover';
 import { SegmentedButton } from './lib/SegmentedButton';
 import { SegmentedButtonItem } from './lib/SegmentedButtonItem';
 import { Select } from './lib/Select';
+import { SelectDialog } from './lib/SelectDialog';
 import { SemanticColor } from './lib/SemanticColor';
 import { ShellBar } from './lib/ShellBar';
 import { ShellBarItem } from './lib/ShellBarItem';
@@ -126,6 +129,7 @@ import { SideNavigationItem } from './lib/SideNavigationItem';
 import { SideNavigationSubItem } from './lib/SideNavigationSubItem';
 import { Size } from './lib/Size';
 import { Slider } from './lib/Slider';
+import { SortItem } from './lib/SortItem';
 import { StandardListItem } from './lib/StandardListItem';
 import { StepInput } from './lib/StepInput';
 import { SuggestionItem } from './lib/SuggestionItem';
@@ -231,6 +235,8 @@ export {
   FileUploader,
   FilterBar,
   FilterGroupItem,
+  FilterItem,
+  FilterItemOption,
   FlexBox,
   FlexBoxAlignItems,
   FlexBoxDirection,
@@ -295,6 +301,7 @@ export {
   SegmentedButton,
   SegmentedButtonItem,
   Select,
+  SelectDialog,
   SemanticColor,
   ShellBar,
   ShellBarItem,
@@ -303,6 +310,7 @@ export {
   SideNavigationSubItem,
   Size,
   Slider,
+  SortItem,
   StandardListItem,
   StepInput,
   SuggestionItem,

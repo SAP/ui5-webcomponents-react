@@ -1,0 +1,68 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Button } from '@ui5/webcomponents-react/lib/Button';
+import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
+import { SelectDialog } from '@ui5/webcomponents-react/lib/SelectDialog';
+import { useRef } from 'react';
+import Laptop1 from '../../../../../.storybook/demoImages/Laptop1.jpg';
+import Laptop2 from '../../../../../.storybook/demoImages/Laptop2.jpg';
+import Pc1 from '../../../../../.storybook/demoImages/PC1.jpg';
+import Pc2 from '../../../../../.storybook/demoImages/PC2.jpg';
+import { DocsHeader } from '@shared/stories/DocsHeader';
+import { ListMode } from '@ui5/webcomponents-react/lib/ListMode';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+
+<Meta
+  title="Modals & Popovers / SelectDialog"
+  component={SelectDialog}
+  argTypes={{
+    children: { control: { disable: true } },
+    ...createSelectArgTypes({ mode: ListMode })
+  }}
+  args={{ headerText: 'Select Product', mode: ListMode.SingleSelect }}
+/>
+
+<DocsHeader />
+
+<br />
+
+## Example
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      const images = [
+        { img: Laptop1, description: 'LT-10', text: 'Gaming Laptop' },
+        { img: Laptop2, description: 'LT-20', text: 'Business Laptop' },
+        { img: Pc2, description: 'HT-10', text: 'Gaming PC' },
+        { img: Pc1, description: 'HT-20', text: 'Business PC' }
+      ];
+      const dialogRef = useRef(null);
+      const onButtonClick = () => {
+        dialogRef.current.open();
+      };
+      return (
+        <>
+          <Button onClick={onButtonClick}>Open Dialog</Button>
+          <SelectDialog {...args} ref={dialogRef}>
+            {new Array(40).fill('').map((_, index) => {
+              const currentProduct = images[index % 4];
+              return (
+                <StandardListItem
+                  image={currentProduct.img}
+                  description={`${currentProduct.description}${index}`}
+                  key={`${currentProduct.text}${index}`}
+                >
+                  {currentProduct.text}
+                </StandardListItem>
+              );
+            })}
+          </SelectDialog>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Properties
+
+<ArgsTable story="." />
