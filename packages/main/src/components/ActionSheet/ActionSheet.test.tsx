@@ -65,6 +65,4 @@ describe('ActionSheet', () => {
     );
     expect(container.parentElement).toMatchSnapshot();
   });
-
-  createPassThroughPropsTest(ActionSheet);
 });
