@@ -1,8 +1,7 @@
 import { fireEvent, render, renderWithDefine, waitFor } from '@shared/tests';
-import { SelectDialog } from '@ui5/webcomponents-react/dist/SelectDialog';
-import { DialogDomRef } from '@ui5/webcomponents-react/dist/Dialog';
-import { StandardListItem } from '@ui5/webcomponents-react/dist/StandardListItem';
-import { ListMode } from '@ui5/webcomponents-react/dist/ListMode';
+import { SelectDialog } from '@ui5/webcomponents-react/lib/SelectDialog';
+import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
+import { ListMode } from '@ui5/webcomponents-react/lib/ListMode';
 import React from 'react';
 
 const listItems = new Array(5).fill('o_O').map((_, index) => (
@@ -50,7 +49,7 @@ describe('SelectDialog', () => {
       </SelectDialog>,
       ['ui5-li']
     );
-    const dialog = document.querySelector('ui5-dialog') as DialogDomRef;
+    const dialog = document.querySelector('ui5-dialog') as any;
     dialog.show();
     const li = getByText('Product1');
     await waitFor(() => li.shadowRoot.querySelector('li'));
@@ -82,7 +81,7 @@ describe('SelectDialog', () => {
       </SelectDialog>,
       ['ui5-li']
     );
-    const dialog = document.querySelector('ui5-dialog') as DialogDomRef;
+    const dialog = document.querySelector('ui5-dialog') as any;
     dialog.show();
 
     const li = getByText('Product1');
