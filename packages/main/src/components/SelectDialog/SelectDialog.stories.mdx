@@ -1,0 +1,66 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Button } from '@ui5/webcomponents-react/dist/Button';
+import { StandardListItem } from '@ui5/webcomponents-react/dist/StandardListItem';
+import { SelectDialog } from '@ui5/webcomponents-react/dist/SelectDialog';
+import { DocsHeader } from '@docs/DocsHeader';
+import { Footer } from '@docs/Footer';
+import { useRef } from 'react';
+import Laptop1 from '../../../../../.storybook/demoImages/Laptop1.jpg';
+import Laptop2 from '../../../../../.storybook/demoImages/Laptop2.jpg';
+import Pc1 from '../../../../../.storybook/demoImages/PC1.jpg';
+import Pc2 from '../../../../../.storybook/demoImages/PC2.jpg';
+
+<Meta
+  title="Modals & Popovers / SelectDialog"
+  component={SelectDialog}
+  argTypes={{ children: { control: { disable: true } } }}
+  args={{ headerText: 'Select Product' }}
+/>
+
+<DocsHeader />
+
+<br />
+
+## Example
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      const images = [
+        { img: Laptop1, description: 'LT-10', text: 'Gaming Laptop' },
+        { img: Laptop2, description: 'LT-20', text: 'Business Laptop' },
+        { img: Pc2, description: 'HT-10', text: 'Gaming PC' },
+        { img: Pc1, description: 'HT-20', text: 'Business PC' }
+      ];
+      const dialogRef = useRef(null);
+      const onButtonClick = () => {
+        dialogRef.current.show();
+      };
+      return (
+        <>
+          <Button onClick={onButtonClick}>Open Dialog</Button>
+          <SelectDialog {...args} ref={dialogRef}>
+            {new Array(40).fill('').map((_, index) => {
+              const currentProduct = images[index % 4];
+              return (
+                <StandardListItem
+                  image={currentProduct.img}
+                  description={`${currentProduct.description}${index}`}
+                  key={`${currentProduct.text}${index}`}
+                >
+                  {currentProduct.text}
+                </StandardListItem>
+              );
+            })}
+          </SelectDialog>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Properties
+
+<ArgsTable story="." />
+
+<Footer />

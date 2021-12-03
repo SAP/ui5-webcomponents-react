@@ -35,7 +35,7 @@ interface ListAttributes {
    */
   footerText?: string;
   /**
-   * Defines whether the component will have growing capability either by pressing a `More` button, or via user scroll. In both cases `load-more` event is fired.
+   * Defines whether the component will have growing capability either by pressing a `More` button, or via user scroll. In both cases the `onLoadMore` event is fired.
    *
    * Available options:
    *
