@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.20.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.20.1...v0.20.2) (2021-12-03)
+
+
+### Features
+
+* **SelectDialog:** initial component implementation ([#2349](https://github.com/SAP/ui5-webcomponents-react/issues/2349)) ([37767d8](https://github.com/SAP/ui5-webcomponents-react/commit/37767d86c52d304bd51e4e722a07c052ad21a285))
+
+
+
+
+
 ## [0.20.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.20.0...v0.20.1) (2021-11-29)
 
 
