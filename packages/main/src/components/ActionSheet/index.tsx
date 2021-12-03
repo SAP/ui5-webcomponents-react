@@ -3,7 +3,6 @@ import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming.js';
 import { createUseStyles } from 'react-jss';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { ResponsivePopover } from '@ui5/webcomponents-react/lib/ResponsivePopover';
 import React, {
@@ -125,7 +124,8 @@ const ActionSheet: FC<ActionSheetPropTypes> = forwardRef(
       showCancelButton,
       alwaysShowHeader,
       a11yConfig,
-      portalContainer
+      portalContainer,
+      ...rest
     } = props;
     const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
     const classes = useStyles();
@@ -178,12 +178,6 @@ const ActionSheet: FC<ActionSheetPropTypes> = forwardRef(
       });
     };
 
-    const passThroughProps = usePassThroughHtmlProps(props, [
-      'onAfterClose',
-      'onAfterOpen',
-      'onBeforeClose',
-      'onBeforeOpen'
-    ]);
     const handleAfterOpen = useCallback(
       (e) => {
         if (isPhone()) {
@@ -216,7 +210,7 @@ const ActionSheet: FC<ActionSheetPropTypes> = forwardRef(
         onAfterClose={onAfterClose}
         onBeforeClose={onBeforeClose}
         onBeforeOpen={onBeforeOpen}
-        {...passThroughProps}
+        {...rest}
         onAfterOpen={handleAfterOpen}
         ref={popoverRef}
         className={actionSheetClasses.className}
