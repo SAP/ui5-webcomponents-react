@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.131.25](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.24...v0.131.25) (2021-12-03)
+
+
+### Bug Fixes
+
+* **ActionSheet:** add all `ResponsivePopover` ([1e620b4](https://github.com/SAP/ui5-webcomponents-react/commit/1e620b4baa88e70ab4f90d3d89d283e199a72ee9))
+
+
+### Features
+
+* **SelectDialog:** initial component implementation ([#2349](https://github.com/SAP/ui5-webcomponents-react/issues/2349)) ([183631f](https://github.com/SAP/ui5-webcomponents-react/commit/183631f9f1a04da342d2a856b87c278e4b670f1e))
+
+
+
+
+
 ## [0.131.24](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.23...v0.131.24) (2021-11-23)
 
 
