@@ -126,9 +126,9 @@ exports[`SelectDialog MultiSelect 1`] = `
       ui5-bar=""
     >
       <ui5-input
-        accessible-name="Search"
         class="SelectDialog-spread-0-2-2"
         placeholder="Search"
+        slot="middleContent"
         type="Text"
         ui5-input=""
         value=""
@@ -146,7 +146,6 @@ exports[`SelectDialog MultiSelect 1`] = `
     </ui5-bar>
     <ui5-list
       accessible-role="list"
-      busy-delay="1000"
       growing="None"
       mode="MultiSelect"
       separators="All"
@@ -175,11 +174,11 @@ exports[`SelectDialog MultiSelect 1`] = `
       <ui5-li
         _mode="MultiSelect"
         actionable=""
-        additional-text-state="None"
         data-li="0"
         description="description0"
         has-border=""
         has-title=""
+        info-state="None"
         type="Active"
         ui5-li=""
       >
@@ -188,11 +187,11 @@ exports[`SelectDialog MultiSelect 1`] = `
       <ui5-li
         _mode="MultiSelect"
         actionable=""
-        additional-text-state="None"
         data-li="1"
         description="description1"
         has-border=""
         has-title=""
+        info-state="None"
         selected=""
         type="Active"
         ui5-li=""
@@ -202,11 +201,11 @@ exports[`SelectDialog MultiSelect 1`] = `
       <ui5-li
         _mode="MultiSelect"
         actionable=""
-        additional-text-state="None"
         data-li="2"
         description="description2"
         has-border=""
         has-title=""
+        info-state="None"
         selected=""
         type="Active"
         ui5-li=""
@@ -216,11 +215,11 @@ exports[`SelectDialog MultiSelect 1`] = `
       <ui5-li
         _mode="MultiSelect"
         actionable=""
-        additional-text-state="None"
         data-li="3"
         description="description3"
         has-border=""
         has-title=""
+        info-state="None"
         type="Active"
         ui5-li=""
       >
@@ -229,11 +228,11 @@ exports[`SelectDialog MultiSelect 1`] = `
       <ui5-li
         _mode="MultiSelect"
         actionable=""
-        additional-text-state="None"
         data-li="4"
         description="description4"
         has-border=""
         has-title=""
+        info-state="None"
         type="Active"
         ui5-li=""
       >

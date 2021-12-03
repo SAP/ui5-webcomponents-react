@@ -50,7 +50,7 @@ describe('SelectDialog', () => {
       ['ui5-li']
     );
     const dialog = document.querySelector('ui5-dialog') as any;
-    dialog.show();
+    dialog.open();
     const li = getByText('Product1');
     await waitFor(() => li.shadowRoot.querySelector('li'));
     const wcListItem = li.shadowRoot.querySelector('li');
@@ -82,7 +82,7 @@ describe('SelectDialog', () => {
       ['ui5-li']
     );
     const dialog = document.querySelector('ui5-dialog') as any;
-    dialog.show();
+    dialog.open();
 
     const li = getByText('Product1');
     await waitFor(() => li.shadowRoot.querySelector('li'));
@@ -113,7 +113,7 @@ describe('SelectDialog', () => {
     expect(selectionChange).toHaveBeenCalledTimes(2);
     expect(dialog.isOpen()).toBeFalsy();
 
-    dialog.show();
+    dialog.open();
 
     expect(asFragment()).toMatchSnapshot();
 
