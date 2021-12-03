@@ -8,7 +8,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **ActionSheet:** add all `ResponsivePopover` ([1e620b4](https://github.com/SAP/ui5-webcomponents-react/commit/1e620b4baa88e70ab4f90d3d89d283e199a72ee9))
+* **ActionSheet:** add all `ResponsivePopover` props ([1e620b4](https://github.com/SAP/ui5-webcomponents-react/commit/1e620b4baa88e70ab4f90d3d89d283e199a72ee9))
 
 
 ### Features
