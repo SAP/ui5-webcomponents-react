@@ -5,6 +5,7 @@ import { useI18nBundle, useConsolidatedRef } from '@ui5/webcomponents-react-base
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
+import { Ui5DialogDomRef } from '@ui5/webcomponents-react/interfaces/Ui5DialogDomRef';
 import {
   CANCEL,
   CLEAR,
@@ -102,7 +103,7 @@ export interface SelectDialogPropTypes extends Omit<DialogPropTypes, 'header' | 
    *
    * __Note:__ Although this prop accepts all `ListMode`s, it is strongly recommended that you only use `SingleSelect` or `MultiSelect` in order to preserve the intended design.
    */
-  mode?: ListMode | keyof typeof ListMode;
+  mode?: ListMode;
   /**
    * Defines whether the `List` will have growing capability either by pressing a `More` button, or via user scroll. In both cases the `onLoadMore` event is fired.
    *
@@ -114,7 +115,7 @@ export interface SelectDialogPropTypes extends Omit<DialogPropTypes, 'header' | 
    *
    * **Limitations:** `growing="Scroll"` is not supported for Internet Explorer, on IE the component will fallback to `growing="Button"`.
    */
-  growing?: ListGrowingMode | keyof typeof ListGrowingMode;
+  growing?: ListGrowingMode;
   /**
    * Defines props you can pass to the internal `List` component.
    *
@@ -152,7 +153,7 @@ export interface SelectDialogPropTypes extends Omit<DialogPropTypes, 'header' | 
 /**
  * The SelectDialog enables users to filter a comprehensive list via a search field and to select one or more items.
  */
-const SelectDialog = forwardRef((props: SelectDialogPropTypes, ref: RefObject<HTMLDivElement>) => {
+const SelectDialog = forwardRef((props: SelectDialogPropTypes, ref: RefObject<Ui5DialogDomRef>) => {
   const {
     children,
     className,
@@ -178,7 +179,7 @@ const SelectDialog = forwardRef((props: SelectDialogPropTypes, ref: RefObject<HT
   const [searchValue, setSearchValue] = useState('');
   const [selectedItems, setSelectedItems] = useState([]);
   const [listMounted, setListMounted] = useState(true);
-  const selectDialogRef = useConsolidatedRef(ref);
+  const selectDialogRef = useConsolidatedRef<Ui5DialogDomRef>(ref);
 
   const handleSearchInput = (e) => {
     if (typeof onSearchInput === 'function') {
