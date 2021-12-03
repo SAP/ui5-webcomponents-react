@@ -3,7 +3,7 @@ import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignIte
 import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
 import { Label, LabelPropTypes } from '@ui5/webcomponents-react/dist/Label';
 import { WrappingType } from '@ui5/webcomponents-react/dist/WrappingType';
-import React, { cloneElement, CSSProperties, FC, isValidElement, ReactElement, ReactNode, ReactNodeArray } from 'react';
+import React, { cloneElement, CSSProperties, FC, isValidElement, ReactElement, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
 import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming.js';
 
@@ -15,7 +15,7 @@ export interface FormItemPropTypes {
   /**
    * Content of the FormItem. Can be an arbitrary React Node.
    */
-  children: ReactNode | ReactNodeArray;
+  children: ReactNode | ReactNode[];
 }
 
 //TODO: remove this when ui5-webcomponents adjusted this in their repo

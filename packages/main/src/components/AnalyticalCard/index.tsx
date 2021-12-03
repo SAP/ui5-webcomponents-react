@@ -1,6 +1,5 @@
 import { createUseStyles } from 'react-jss';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
-import React, { forwardRef, ReactNode, ReactNodeArray, Ref } from 'react';
+import React, { forwardRef, ReactNode, Ref } from 'react';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import clsx from 'clsx';
 
@@ -14,7 +13,7 @@ export interface AnalyticalCardPropTypes extends CommonProps {
   /**
    * The content of the `AnalyticalCard`.
    */
-  children: ReactNode | ReactNodeArray;
+  children: ReactNode | ReactNode[];
 }
 
 const useStyles = createUseStyles(styles, { name: 'AnalyticalCard' });
@@ -22,14 +21,12 @@ const useStyles = createUseStyles(styles, { name: 'AnalyticalCard' });
  * The `AnalyticalCard` is mainly used for data visualization. It consists of two areas – a header area and a chart area with a visual representation of the data.<br />
  */
 const AnalyticalCard = forwardRef((props: AnalyticalCardPropTypes, ref: Ref<HTMLDivElement>) => {
-  const { children, style, className, tooltip, header } = props;
+  const { children, style, className, tooltip, header, ...rest } = props;
   const classes = useStyles();
   const classNameString = clsx(classes.card, className);
 
-  const passThroughProps = usePassThroughHtmlProps(props);
-
   return (
-    <div ref={ref} className={classNameString} style={style} title={tooltip} {...passThroughProps}>
+    <div ref={ref} className={classNameString} style={style} title={tooltip} {...rest}>
       {header}
       <div className={classes.content}>{children}</div>
     </div>

@@ -2,7 +2,7 @@ import { fireEvent, render, screen } from '@shared/tests';
 import * as React from 'react';
 import { complexDataSet } from '../../resources/DemoProps';
 import { ColumnChartWithTrend } from './ColumnChartWithTrend';
-import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { createCustomPropsTest } from '@shared/tests/utils';
 
 enum ComposedChartChildrenQuery {
   'area' = 'g.recharts-area-dots',
@@ -124,5 +124,5 @@ describe('ColumnChart', () => {
     }).not.toThrow();
   });
 
-  createPassThroughPropsTest(ColumnChartWithTrend, { dimensions: [], measures: [] });
+  createCustomPropsTest(ColumnChartWithTrend, { dimensions: [], measures: [] });
 });

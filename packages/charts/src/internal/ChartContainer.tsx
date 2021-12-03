@@ -1,5 +1,4 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { Label } from '@ui5/webcomponents-react/dist/Label';
 import { Loader } from '@ui5/webcomponents-react/dist/Loader';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
@@ -62,7 +61,18 @@ class ErrorBoundary extends React.Component<{ children: ReactNode }, { errorCoun
 }
 
 const ChartContainer: FC<ContainerProps> = forwardRef((props: ContainerProps, ref: Ref<any>) => {
-  const { Placeholder, loading = false, dataset, style, className, tooltip, slot, children, resizeDebounce } = props;
+  const {
+    Placeholder,
+    loading = false,
+    dataset,
+    style,
+    className,
+    tooltip,
+    slot,
+    children,
+    resizeDebounce,
+    ...rest
+  } = props;
   useStyles();
 
   const internalStyles: CSSProperties = useMemo(() => {
@@ -77,10 +87,8 @@ const ChartContainer: FC<ContainerProps> = forwardRef((props: ContainerProps, re
     };
   }, [style]);
 
-  const passThroughProps = usePassThroughHtmlProps(props);
-
   return (
-    <div ref={ref} style={internalStyles} className={className} title={tooltip} slot={slot} {...passThroughProps}>
+    <div ref={ref} style={internalStyles} className={className} title={tooltip} slot={slot} {...rest}>
       {dataset?.length > 0 ? (
         <>
           {loading && <Loader style={loaderStyles} />}

@@ -1,16 +1,15 @@
-import { createUseStyles } from 'react-jss';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { BarChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/BarChartPlaceholder';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/dist/components/ChartContainer';
+import clsx from 'clsx';
 import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
+import { createUseStyles } from 'react-jss';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { defaultFormatter } from '../../internal/defaults';
-import clsx from 'clsx';
 
 interface MeasureConfig extends Omit<IChartMeasure, 'color'> {
   /**
@@ -32,7 +31,15 @@ interface MeasureConfig extends Omit<IChartMeasure, 'color'> {
 export interface MicroBarChartProps
   extends Omit<
     IChartBaseProps,
-    'noLegend' | 'onLegendClick' | 'noAnimation' | 'chartConfig' | 'children' | 'tooltipConfig'
+    | 'noLegend'
+    | 'onLegendClick'
+    | 'noAnimation'
+    | 'chartConfig'
+    | 'children'
+    | 'tooltipConfig'
+    | 'onClick'
+    | 'measures'
+    | 'dimensions'
   > {
   /**
    * A object which contains the configuration of the dimension.
@@ -133,7 +140,7 @@ const useStyles = createUseStyles(MicroBarChartStyles, { name: 'MicroBarChart' }
  * The `MicroBarChart` compares different values of the same category to each other by displaying them in a compact way.
  */
 const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartProps, ref: Ref<HTMLDivElement>) => {
-  const { loading, dataset, onDataPointClick, style, className, tooltip, slot, ChartPlaceholder } = props;
+  const { loading, dataset, onDataPointClick, style, className, tooltip, slot, ChartPlaceholder, ...rest } = props;
   const classes = useStyles();
 
   const dimension = useMemo<IChartDimension>(
@@ -177,8 +184,7 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
     [measure.accessor, onDataPointClick]
   );
   const barContainerClasses = clsx(classes.barContainer, onDataPointClick && classes.barContainerActive);
-  const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick']);
-
+  const { maxValue: _0, dimension: _1, measure: _2, ...propsWithoutOmitted } = rest;
   return (
     <ChartContainer
       dataset={dataset}
@@ -190,7 +196,7 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
       tooltip={tooltip}
       slot={slot}
       resizeDebounce={250}
-      {...passThroughProps}
+      {...propsWithoutOmitted}
     >
       <div className={classes.container}>
         {dataset?.map((item, index) => {

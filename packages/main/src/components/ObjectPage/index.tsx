@@ -1,7 +1,6 @@
 import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming.js';
 import { useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { debounce, enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { AvatarPropTypes } from '@ui5/webcomponents-react/dist/Avatar';
 import { AvatarSize } from '@ui5/webcomponents-react/dist/AvatarSize';
@@ -181,7 +180,8 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     headerContentPinnable,
     a11yConfig,
     placeholder,
-    portalContainer
+    portalContainer,
+    ...rest
   } = props;
 
   const classes = useStyles();
@@ -491,11 +491,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     mode === ObjectPageMode.IconTabBar && classes.iconTabBarMode
   );
 
-  const passThroughProps = usePassThroughHtmlProps(props, [
-    'onSelectedSectionChange',
-    'onSelectedSectionChanged',
-    'onScroll'
-  ]);
+  const { onScroll: _0, selectedSubSectionId: _1, ...propsWithoutOmitted } = rest;
 
   useEffect(() => {
     const sections = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
@@ -734,7 +730,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
       ref={componentRef}
       title={tooltip}
       onScroll={onObjectPageScroll}
-      {...passThroughProps}
+      {...propsWithoutOmitted}
     >
       <header
         onMouseOver={onHoverToggleButton}

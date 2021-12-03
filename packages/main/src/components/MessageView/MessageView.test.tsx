@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@shared/tests';
-import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { createCustomPropsTest } from '@shared/tests/utils';
 import { MessageView, MessageViewDomRef } from '@ui5/webcomponents-react/dist/MessageView';
 import { MessageItem } from '@ui5/webcomponents-react/dist/MessageItem';
 import React, { createRef, forwardRef } from 'react';
@@ -63,5 +63,5 @@ describe('MessageView', () => {
     expect(screen.queryAllByText('Error')).toHaveLength(1); // list
   });
 
-  createPassThroughPropsTest(MessageView);
+  createCustomPropsTest(MessageView);
 });

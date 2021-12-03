@@ -1,6 +1,6 @@
 import { CssSizeVariables } from '@ui5/webcomponents-react-base/dist/CssSizeVariables';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
-import React, { FC, ReactNode, ReactNodeArray } from 'react';
+import React, { FC, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
 
 export interface FormGroupPropTypes {
@@ -11,7 +11,7 @@ export interface FormGroupPropTypes {
   /**
    * Contents of the FormGroup. Please use only `FormItem` to keep the intended design.
    */
-  children: ReactNode | ReactNodeArray;
+  children: ReactNode | ReactNode[];
 }
 
 const useStyles = createUseStyles(

@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { createCustomPropsTest } from '@shared/tests/utils';
 import { ObjectPageSection } from '@ui5/webcomponents-react/dist/ObjectPageSection';
 import React from 'react';
 
@@ -27,5 +27,5 @@ describe('ObjectPageSection', () => {
     expect(renderer).toThrow();
   });
 
-  createPassThroughPropsTest(ObjectPageSection);
+  createCustomPropsTest(ObjectPageSection);
 });

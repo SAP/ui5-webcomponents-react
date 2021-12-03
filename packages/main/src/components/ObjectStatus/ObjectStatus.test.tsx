@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { createCustomPropsTest } from '@shared/tests/utils';
 import { ObjectStatus } from '@ui5/webcomponents-react/dist/ObjectStatus';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { IndicationColor } from '@ui5/webcomponents-react/dist/IndicationColor';
@@ -11,5 +11,5 @@ describe('ObjectStatus', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  createPassThroughPropsTest(ObjectStatus);
+  createCustomPropsTest(ObjectStatus);
 });

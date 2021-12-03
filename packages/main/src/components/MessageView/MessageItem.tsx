@@ -11,7 +11,7 @@ import { MessageViewContext } from '@ui5/webcomponents-react/dist/MessageViewCon
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
-import React, { forwardRef, ReactNode, ReactNodeArray, Ref, useContext } from 'react';
+import React, { forwardRef, ReactNode, Ref, useContext } from 'react';
 import { createUseStyles } from 'react-jss';
 import { getIconNameForType } from './utils';
 import clsx from 'clsx';
@@ -45,7 +45,7 @@ export interface MessageItemPropTypes extends CommonProps {
   /**
    * Specifies detailed description of the message
    */
-  children: ReactNode | ReactNodeArray;
+  children: ReactNode | ReactNode[];
 }
 
 const useStyles = createUseStyles(

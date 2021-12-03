@@ -9,7 +9,7 @@ export const modifyObjectProperty = (object: any, attr: string, value: any) => {
   });
 };
 
-export const createPassThroughPropsTest = (Component: ComponentType<any>, props = {}) => {
+export const createCustomPropsTest = (Component: ComponentType<any>, props = {}) => {
   test('Pass Through HTML Standard Props', () => {
     render(
       <Component
@@ -17,9 +17,9 @@ export const createPassThroughPropsTest = (Component: ComponentType<any>, props 
         data-special-test-prop="data-prop"
         aria-labelledby="aria-prop"
         id="element-id"
-        disabled-custom-prop
         className="thisClassIsUsedForTestingPurposesOnly"
         style={{ pointerEvents: 'none' }}
+        customattribute="true"
         {...props}
       />
     );
@@ -35,7 +35,7 @@ export const createPassThroughPropsTest = (Component: ComponentType<any>, props 
     if (Component.displayName !== 'ObjectPageSection' && Component.displayName !== 'ObjectPageSubSection') {
       expect(element.id).toBe('element-id');
     }
-    expect(element.hasAttribute('disabled-custom-prop')).toBeFalsy();
+    expect(element.hasAttribute('customattribute')).toBeTruthy();
   });
 };
 

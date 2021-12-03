@@ -1,4 +1,4 @@
-import { useSyncRef, useIsRTL, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/dist/components/ChartContainer';
@@ -150,7 +150,9 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     tooltip,
     slot,
     syncId,
-    ChartPlaceholder
+    ChartPlaceholder,
+    children,
+    ...rest
   } = props;
 
   const [componentRef, chartRef] = useSyncRef<any>(ref);
@@ -251,7 +253,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     return <ComposedChartPlaceholder layout={layout} measures={measures} />;
   }, [layout, measures]);
 
-  const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick', 'onClick']);
+  const { chartConfig: _0, dimensions: _1, measures: _2, ...propsWithoutOmitted } = rest;
   const isRTL = useIsRTL(chartRef);
 
   return (
@@ -265,7 +267,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
       tooltip={tooltip}
       slot={slot}
       resizeDebounce={chartConfig.resizeDebounce}
-      {...passThroughProps}
+      {...propsWithoutOmitted}
     >
       <ComposedChartLib
         syncId={syncId}
@@ -500,7 +502,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
             height={20}
           />
         )}
-        {props.children}
+        {children}
       </ComposedChartLib>
     </ChartContainer>
   );

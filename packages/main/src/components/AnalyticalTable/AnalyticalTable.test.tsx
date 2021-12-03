@@ -1,5 +1,5 @@
 import { act, fireEvent, getByText, getMouseEvent, render, renderRtl, screen } from '@shared/tests';
-import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { createCustomPropsTest } from '@shared/tests/utils';
 import { AnalyticalTable } from '@ui5/webcomponents-react/dist/AnalyticalTable';
 import {
   useRowDisableSelection,
@@ -1161,5 +1161,5 @@ describe('AnalyticalTable', () => {
     expect(container.querySelectorAll('ui5-checkbox')[2]).toHaveAttribute('checked', 'true');
   });
 
-  createPassThroughPropsTest(AnalyticalTable);
+  createCustomPropsTest(AnalyticalTable);
 });

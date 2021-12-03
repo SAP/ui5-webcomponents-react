@@ -1,4 +1,4 @@
-import { useIsRTL, usePassThroughHtmlProps, useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/dist/components/ChartContainer';
@@ -9,6 +9,7 @@ import { useLegendItemClick } from '@ui5/webcomponents-react-charts/dist/useLege
 import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo, useRef } from 'react';
 import {
   CartesianGrid,
+  Label,
   Legend,
   ReferenceLine,
   Scatter,
@@ -16,8 +17,7 @@ import {
   Tooltip,
   XAxis,
   YAxis,
-  ZAxis,
-  Label
+  ZAxis
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin';
 import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
@@ -143,7 +143,9 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
     className,
     tooltip,
     slot,
-    ChartPlaceholder
+    ChartPlaceholder,
+    children,
+    ...rest
   } = props;
 
   const chartConfig = useMemo(() => {
@@ -209,7 +211,7 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
   const [yAxisWidth, legendPosition] = useLongestYAxisLabel(dataset?.[0].data, [yMeasure]);
   const xAxisHeights = useObserveXAxisHeights(chartRef, 1);
   const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
-  const passThroughProps = usePassThroughHtmlProps(props, ['onDataPointClick', 'onLegendClick', 'onClick']);
+  const { chartConfig: _0, measures: _1, ...propsWithoutOmitted } = rest;
   const isRTL = useIsRTL(chartRef);
 
   return (
@@ -223,7 +225,7 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
       tooltip={tooltip}
       slot={slot}
       resizeDebounce={chartConfig.resizeDebounce}
-      {...passThroughProps}
+      {...propsWithoutOmitted}
     >
       <ScatterChartLib
         onClick={onClickInternal}
@@ -316,7 +318,7 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
           contentStyle={tooltipContentStyle}
           {...tooltipConfig}
         />
-        {props.children}
+        {children}
       </ScatterChartLib>
     </ChartContainer>
   );

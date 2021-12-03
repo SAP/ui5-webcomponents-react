@@ -1,4 +1,4 @@
-import { useI18nBundle, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
 import { createUseStyles } from 'react-jss';
 import { CssSizeVariables } from '@ui5/webcomponents-react-base/dist/CssSizeVariables';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
@@ -20,20 +20,13 @@ const useStyles = createUseStyles(styles, { name: 'ToolbarSeparator' });
 export type ToolbarSeparatorPropTypes = CommonProps;
 
 const ToolbarSeparator = forwardRef((props: ToolbarSeparatorPropTypes, ref: Ref<HTMLDivElement>) => {
-  const { style, className } = props;
+  const { style, className, ...rest } = props;
   const classes = useStyles();
   const separatorClasses = clsx(classes.separator, className);
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
-  const passThroughProps = usePassThroughHtmlProps(props);
 
   return (
-    <div
-      ref={ref}
-      style={style}
-      className={separatorClasses}
-      aria-label={i18nBundle.getText(SEPARATOR)}
-      {...passThroughProps}
-    />
+    <div ref={ref} style={style} className={separatorClasses} aria-label={i18nBundle.getText(SEPARATOR)} {...rest} />
   );
 });
 ToolbarSeparator.displayName = 'ToolbarSeparator';

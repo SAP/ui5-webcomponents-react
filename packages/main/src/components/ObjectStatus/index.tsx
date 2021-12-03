@@ -2,7 +2,6 @@ import '@ui5/webcomponents-icons/dist/hint.js';
 import '@ui5/webcomponents-icons/dist/status-critical.js';
 import '@ui5/webcomponents-icons/dist/status-negative.js';
 import '@ui5/webcomponents-icons/dist/status-positive.js';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { Icon } from '@ui5/webcomponents-react/dist/Icon';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { IndicationColor } from '@ui5/webcomponents-react/dist/IndicationColor';
@@ -83,7 +82,8 @@ const useStyles = createUseStyles(styles, { name: 'ObjectStatus' });
  * Status information that can be either text with a value state, or an icon.
  */
 const ObjectStatus = forwardRef((props: ObjectStatusPropTypes, ref: Ref<HTMLDivElement>) => {
-  const { state, showDefaultIcon, children, icon, className, style, tooltip, active, inverted, onClick } = props;
+  const { state, showDefaultIcon, children, icon, className, style, tooltip, active, inverted, onClick, ...rest } =
+    props;
 
   const iconToRender = (() => {
     if (icon) {
@@ -104,8 +104,6 @@ const ObjectStatus = forwardRef((props: ObjectStatusPropTypes, ref: Ref<HTMLDivE
     className
   );
 
-  const passThroughProps = usePassThroughHtmlProps(props);
-
   return (
     <div
       ref={ref}
@@ -113,7 +111,7 @@ const ObjectStatus = forwardRef((props: ObjectStatusPropTypes, ref: Ref<HTMLDivE
       style={style}
       title={tooltip}
       onClick={active ? onClick : undefined}
-      {...passThroughProps}
+      {...rest}
     >
       {iconToRender && <span className={classes.icon}>{iconToRender}</span>}
       {children && <span className={classes.text}>{children}</span>}
