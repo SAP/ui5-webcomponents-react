@@ -61,6 +61,10 @@ export interface ToolbarPropTypes extends Omit<CommonProps, 'onClick'> {
    * Fired when the user clicks on the `Toolbar`, if the `active` prop is set to "true".
    */
   onClick?: (event: CustomEvent) => void;
+  /**
+   * Fired when the content of the overflow popover has changed.
+   */
+  onOverflowChange?: (event: { toolbarElements: HTMLElement[]; overflowElements: HTMLCollection }) => void;
 }
 
 /**
@@ -82,12 +86,15 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
     slot,
     as,
     portalContainer,
+    onOverflowChange,
     ...rest
   } = props;
   const classes = useStyles();
   const [componentRef, outerContainer] = useSyncRef<HTMLDivElement>(ref);
   const controlMetaData = useRef([]);
   const [lastVisibleIndex, setLastVisibleIndex] = useState<number>(null);
+  const contentRef = useRef(null);
+  const overflowContentRef = useRef(null);
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
@@ -205,6 +212,18 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
     [onClick, active]
   );
 
+  useEffect(() => {
+    if (lastVisibleIndex !== null && typeof onOverflowChange === 'function') {
+      const toolbarChildren = contentRef.current?.children;
+      let toolbarElements = [];
+      const overflowElements = overflowContentRef.current?.children;
+      if (toolbarChildren?.length > 0) {
+        toolbarElements = Array.from(toolbarChildren).filter((item, index) => index <= lastVisibleIndex);
+      }
+      onOverflowChange({ toolbarElements: toolbarElements, overflowElements: overflowElements });
+    }
+  }, [lastVisibleIndex, onOverflowChange]);
+
   const CustomTag = as as React.ElementType;
   return (
     <CustomTag
@@ -216,7 +235,7 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
       onClick={handleToolbarClick}
       {...rest}
     >
-      <div className={classes.toolbar} data-component-name="ToolbarContent">
+      <div className={classes.toolbar} data-component-name="ToolbarContent" ref={contentRef}>
         {overflowNeeded &&
           React.Children.map(childrenWithRef, (item, index) => {
             if (index >= lastVisibleIndex + 1) {
@@ -236,6 +255,7 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
             lastVisibleIndex={lastVisibleIndex}
             contentClass={classes.popoverContent}
             portalContainer={portalContainer}
+            overflowContentRef={overflowContentRef}
           >
             {React.Children.toArray(children).map((child) => {
               if ((child as ReactElement).type === React.Fragment) {

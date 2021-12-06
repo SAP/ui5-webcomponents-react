@@ -87,9 +87,9 @@ describe('Toolbar', () => {
         right: 0
       };
     });
-
+    const onOverflowChange = jest.fn();
     const { getByTitle, getAllByTestId, getAllByText, rerender, queryByTitle, getByText, getAllByLabelText } = render(
-      <Toolbar data-testid="toolbar" style={{ width: '300px' }}>
+      <Toolbar data-testid="toolbar" style={{ width: '300px' }} onOverflowChange={onOverflowChange}>
         <Text data-testid="toolbar-item" style={{ width: '200px' }}>
           Item1
         </Text>
@@ -103,6 +103,7 @@ describe('Toolbar', () => {
     );
     expect(getByTitle('Show More')).toBeInTheDocument();
     expect(getAllByTestId('toolbar-item')).toHaveLength(5);
+    expect(onOverflowChange).toHaveBeenCalledTimes(1);
 
     const item1 = getAllByText('Item1');
     const item2 = getAllByText('Item2');
@@ -117,7 +118,7 @@ describe('Toolbar', () => {
     expect(document.body).toMatchSnapshot();
 
     rerender(
-      <Toolbar data-testid="toolbar" style={{ width: '1000px' }}>
+      <Toolbar data-testid="toolbar" style={{ width: '1000px' }} onOverflowChange={onOverflowChange}>
         <Text data-testid="toolbar-item" style={{ width: '200px' }}>
           Item1
         </Text>
@@ -139,6 +140,7 @@ describe('Toolbar', () => {
     expect(updatedItem1).not.toHaveStyle(`visibility: hidden`);
     expect(updatedItem2).not.toHaveStyle(`visibility: hidden`);
     expect(updatedItem3).not.toHaveStyle(`visibility: hidden`);
+    expect(onOverflowChange).toHaveBeenCalledTimes(2);
 
     //with fragments
     rerender(
