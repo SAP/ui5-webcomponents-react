@@ -93,8 +93,8 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
   const [componentRef, outerContainer] = useSyncRef<HTMLDivElement>(ref);
   const controlMetaData = useRef([]);
   const [lastVisibleIndex, setLastVisibleIndex] = useState<number>(null);
-  const contentRef = useRef();
-  const overflowContentRef = useRef();
+  const contentRef = useRef(null);
+  const overflowContentRef = useRef(null);
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
@@ -214,9 +214,9 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
 
   useEffect(() => {
     if (lastVisibleIndex !== null && typeof onOverflowChange === 'function') {
-      const toolbarChildren = contentRef?.current?.children;
+      const toolbarChildren = contentRef.current?.children;
       let toolbarElements = [];
-      const overflowElements = overflowContentRef?.current?.children;
+      const overflowElements = overflowContentRef.current?.children;
       if (toolbarChildren?.length > 0) {
         toolbarElements = Array.from(toolbarChildren).filter((item, index) => index <= lastVisibleIndex);
       }
