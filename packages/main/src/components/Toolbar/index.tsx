@@ -64,7 +64,11 @@ export interface ToolbarPropTypes extends Omit<CommonProps, 'onClick'> {
   /**
    * Fired when the content of the overflow popover has changed.
    */
-  onOverflowChange?: (event: { toolbarElements: HTMLElement[]; overflowElements: HTMLCollection }) => void;
+  onOverflowChange?: (event: {
+    toolbarElements: HTMLElement[];
+    overflowElements: HTMLCollection;
+    target: HTMLElement;
+  }) => void;
 }
 
 /**
@@ -220,9 +224,13 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
       if (toolbarChildren?.length > 0) {
         toolbarElements = Array.from(toolbarChildren).filter((item, index) => index <= lastVisibleIndex);
       }
-      onOverflowChange({ toolbarElements: toolbarElements, overflowElements: overflowElements });
+      onOverflowChange({
+        toolbarElements: toolbarElements,
+        overflowElements: overflowElements,
+        target: outerContainer.current
+      });
     }
-  }, [lastVisibleIndex, onOverflowChange]);
+  }, [lastVisibleIndex]);
 
   const CustomTag = as as React.ElementType;
   return (
