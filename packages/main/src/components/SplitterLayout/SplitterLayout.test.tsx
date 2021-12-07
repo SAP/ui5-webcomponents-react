@@ -16,7 +16,7 @@ describe('SplitterLayout', () => {
             Button 1
           </Button>
         </SplitterElement>
-        <SplitterElement minSize={'300px'} size={'400px'} maxSize={'500px'} data-testid={'SplitterElement2'}>
+        <SplitterElement minSize={300} size={'400px'} maxSize={500} data-testid={'SplitterElement2'}>
           <Button>Button 2</Button>
         </SplitterElement>
         <SplitterElement resizable={false} data-testid={'SplitterElement3'}>
@@ -44,7 +44,7 @@ describe('SplitterLayout', () => {
         <SplitterElement>
           <Button>Button 1</Button>
         </SplitterElement>
-        <SplitterElement data-testid={'Element'} minSize={'50px'} size={'100px'} maxSize={'200px'}>
+        <SplitterElement data-testid={'Element'} minSize={50} size={'100px'} maxSize={200}>
           <Button>Button 2</Button>
         </SplitterElement>
         <SplitterElement>

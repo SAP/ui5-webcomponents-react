@@ -25,11 +25,11 @@ import { SplitterElement } from '@ui5/webcomponents-react/dist/SplitterElement';
   <Story name="Vertical Layout">
     {(args) => {
       return (
-        <SplitterLayout orientation={'vertical'} {...args} width={'800px'} height={'400px'}>
+        <SplitterLayout vertical={true} {...args} style={{ width: '800px', height: '400px' }}>
           <SplitterElement size={'200px'}>
             <Button>Button 1</Button>
           </SplitterElement>
-          <SplitterElement size={'300px'} minSize={'200px'} maxSize={'400px'}>
+          <SplitterElement size={'300px'} minSize={200}>
             <Button>Button 2</Button>
           </SplitterElement>
           <SplitterElement>
@@ -48,11 +48,11 @@ import { SplitterElement } from '@ui5/webcomponents-react/dist/SplitterElement';
   <Story name="Horizontal Layout">
     {(args) => {
       return (
-        <SplitterLayout orientation={'horizontal'} {...args}>
-          <SplitterElement>
+        <SplitterLayout style={{ width: '500px', height: '800px' }} vertical={false} {...args}>
+          <SplitterElement size={'300px'}>
             <Button>Button 1</Button>
           </SplitterElement>
-          <SplitterElement minSize={'50px'} size={'100px'} maxSize={'200px'}>
+          <SplitterElement minSize={50} size={'100px'}>
             <Button>Button 2</Button>
           </SplitterElement>
           <SplitterElement>

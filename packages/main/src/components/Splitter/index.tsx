@@ -1,7 +1,7 @@
 import { useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { Icon } from '@ui5/webcomponents-react/dist/Icon';
-import React, { forwardRef, MouseEventHandler, Ref, TouchEventHandler, useCallback, useRef } from 'react';
+import React, { forwardRef, MouseEventHandler, Ref, TouchEventHandler, useCallback, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 
 const useStyles = createUseStyles(
@@ -16,7 +16,7 @@ const useStyles = createUseStyles(
       alignItems: 'center',
       justifyContent: 'center',
 
-      '&[data-splitter-orientation="vertical"]': {
+      '&[data-splitter-vertical=true]': {
         cursor: 'col-resize',
         minWidth: '1rem',
         width: '1rem',
@@ -43,7 +43,7 @@ const useStyles = createUseStyles(
         }
       },
 
-      '&[data-splitter-orientation="horizontal"]': {
+      '&[data-splitter-vertical=false]': {
         cursor: 'row-resize',
         minHeight: '1rem',
         height: '1rem',
@@ -94,23 +94,15 @@ const useStyles = createUseStyles(
 export interface SplitterPropTypes {
   height: string | number;
   width: string | number;
-  orientation: 'horizontal' | 'vertical';
+  vertical: boolean;
 }
-
-const isTouchEvent = (e, touchEvent) => {
-  if (e.type === touchEvent) {
-    return !(e.touches && e.touches.length > 1);
-  }
-  return false;
-};
 
 const verticalPositionInfo = {
   start: 'left',
   end: 'right',
   position: 'X',
   size: 'width',
-  min: 'minWidth',
-  max: 'maxWidth'
+  min: 'minWidth'
 };
 
 const horizontalPositionInfo = {
@@ -118,12 +110,11 @@ const horizontalPositionInfo = {
   end: 'bottom',
   position: 'Y',
   size: 'height',
-  min: 'minHeight',
-  max: 'maxHeight'
+  min: 'minHeight'
 };
 
 const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>) => {
-  const { orientation } = props;
+  const { vertical } = props;
   const classes = useStyles();
   const [componentRef, localRef] = useSyncRef<HTMLDivElement>(ref);
   const start = useRef(null);
@@ -131,20 +122,17 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
   const previousSiblingSize = useRef<number>(null);
   const nextSiblingSize = useRef<number>(null);
 
-  const positionKeys = orientation === 'vertical' ? verticalPositionInfo : horizontalPositionInfo;
+  const positionKeys = vertical ? verticalPositionInfo : horizontalPositionInfo;
 
   const handleSplitterMove = useCallback((e) => {
     const previousSibling = localRef.current.previousSibling;
     const nextSibling = localRef.current.nextSibling;
     const sizeDiv = e[`client${positionKeys.position}`] - start.current;
-
     // Move splitter left
     if (
       sizeDiv < 0 &&
       Number(window.getComputedStyle(previousSibling as HTMLElement)?.[positionKeys.min].replace('px', '')) !==
-        (previousSibling as HTMLElement).getBoundingClientRect()?.[positionKeys.size] &&
-      Number(window.getComputedStyle(nextSibling as HTMLElement)?.[positionKeys.max].replace('px', '')) !==
-        (nextSibling as HTMLElement).getBoundingClientRect()?.[positionKeys.size]
+        (previousSibling as HTMLElement).getBoundingClientRect()?.[positionKeys.size]
     ) {
       (previousSibling as HTMLElement).style.flex = `0 0 ${previousSiblingSize.current + sizeDiv}px`;
       if (nextSibling.nextSibling && previousSiblingSize.current + sizeDiv > 0) {
@@ -158,12 +146,10 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
       (nextSibling.nextSibling
         ? Math.round((nextSibling.nextSibling as HTMLElement)?.getBoundingClientRect()?.[positionKeys.start]) -
             Math.round(localRef.current.getBoundingClientRect()?.[positionKeys.end]) >
-          20
+          10
         : true) &&
       Number(window.getComputedStyle(nextSibling as HTMLElement)?.[positionKeys.min].replace('px', '')) !==
-        (nextSibling as HTMLElement).getBoundingClientRect()?.[positionKeys.size] &&
-      Number(window.getComputedStyle(previousSibling as HTMLElement)?.[positionKeys.max].replace('px', '')) !==
-        (previousSibling as HTMLElement).getBoundingClientRect()?.[positionKeys.size]
+        (nextSibling as HTMLElement).getBoundingClientRect()?.[positionKeys.size]
     ) {
       (previousSibling as HTMLElement).style.flex = `0 0 ${previousSiblingSize.current + sizeDiv}px`;
       if (nextSibling.nextSibling && previousSiblingSize.current + sizeDiv > 0) {
@@ -245,10 +231,10 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
       onMouseDown={handleMoveSplitterStart}
       ref={componentRef}
       role="separator"
-      data-splitter-orientation={orientation}
+      data-splitter-vertical={vertical}
     >
       <div className={classes.lineBefore} />
-      <Icon className={classes.icon} name={orientation === 'vertical' ? 'vertical-grip' : 'horizontal-grip'} />
+      <Icon className={classes.icon} name={vertical ? 'vertical-grip' : 'horizontal-grip'} />
       <div className={classes.lineAfter} />
     </div>
   );

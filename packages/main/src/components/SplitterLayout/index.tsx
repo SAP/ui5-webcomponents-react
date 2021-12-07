@@ -13,17 +13,9 @@ const useStyles = createUseStyles(styles, { name: 'SplitterLayout' });
 
 export interface SplitterLayoutPropTypes extends CommonProps {
   /**
-   * Controls the width of the `SplitterLayout` container.<br />
+   * Controls if a vertical or horizontal `SplitterLayout` is rendered.<br />
    */
-  width?: string;
-  /**
-   * Controls the height of the `SplitterLayout` container.<br />
-   */
-  height?: string;
-  /**
-   * Controls if the `SplitterLayout` is displayed `horizontal` or `vertical`.<br />
-   */
-  orientation?: 'horizontal' | 'vertical';
+  vertical?: boolean;
   /**
    * Content of the `SplitterLayout`.
    */
@@ -31,21 +23,20 @@ export interface SplitterLayoutPropTypes extends CommonProps {
 }
 
 const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTMLDivElement>) => {
-  const { width, height, orientation, children, title, tooltip, style, className, ...rest } = props;
+  const { vertical, children, title, tooltip, style, className, ...rest } = props;
 
   const classes = useStyles();
 
   const splitterLayoutClasses = clsx(classes.splitterLayout, className);
 
-  const layoutElements = useConcatSplitterElements(children ?? [], width, height, orientation);
+  const layoutElements = useConcatSplitterElements(children ?? [], style.width, style.height, vertical);
 
   return (
-    <SplitterLayoutContext.Provider value={{ orientation }}>
+    <SplitterLayoutContext.Provider value={{ vertical }}>
       <div
         style={
           {
-            width,
-            height,
+            flexDirection: vertical ? 'row' : 'column',
             ...style
           } as CSSProperties
         }
@@ -53,7 +44,7 @@ const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTML
         {...rest}
         className={splitterLayoutClasses}
         ref={ref}
-        data-splitter-orientation={orientation}
+        data-splitter-vertical={vertical}
       >
         {layoutElements}
       </div>
@@ -62,7 +53,7 @@ const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTML
 });
 
 SplitterLayout.defaultProps = {
-  orientation: 'vertical'
+  vertical: true
 };
 SplitterLayout.displayName = 'SplitterLayout';
 

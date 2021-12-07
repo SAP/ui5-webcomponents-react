@@ -1,9 +1,9 @@
 import { createContext } from 'react';
 
 interface ISplitterLayoutContext {
-  orientation: 'vertical' | 'horizontal';
+  vertical: boolean;
 }
 
 export const SplitterLayoutContext = createContext<ISplitterLayoutContext>({
-  orientation: 'vertical'
+  vertical: true
 });

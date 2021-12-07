@@ -35,7 +35,6 @@ const rollupConfigFactory = (pkgName, externals = []) => {
       'react-dom',
       'react-jss',
       'prop-types',
-      'lodash.throttle',
       packageJson.name,
       ...Object.keys(packageJson.dependencies || {}),
       ...Object.keys(packageJson.peerDependencies || {}),

@@ -1,13 +1,13 @@
-import { Splitter } from '@ui5/webcomponents-react/dist/Splitter';
 import { SplitterElementPropTypes } from '@ui5/webcomponents-react/dist/SplitterElement';
-import React, { ReactElement, useMemo } from 'react';
+import React, { CSSProperties, ReactElement, useMemo } from 'react';
 import { safeGetChildrenArray } from '../ObjectPage/ObjectPageUtils';
+import { Splitter } from '../Splitter';
 
 export const useConcatSplitterElements = (
   children: ReactElement<SplitterElementPropTypes> | ReactElement<SplitterElementPropTypes>[],
-  width: string,
-  height: string,
-  orientation: 'horizontal' | 'vertical'
+  width: CSSProperties['width'],
+  height: CSSProperties['height'],
+  vertical: boolean
 ) => {
   return useMemo(() => {
     if (React.isValidElement(children)) {
@@ -27,7 +27,7 @@ export const useConcatSplitterElements = (
         childrenArray.splice(
           index + splitterCount + 1,
           0,
-          <Splitter key={`splitter${index}`} height={height} width={width} orientation={orientation} />
+          <Splitter key={`splitter${index}`} height={height} width={width} vertical={vertical} />
         );
         ++splitterCount;
       } else if (index > 0 && splitterElementChild?.props.resizable === false) {
@@ -40,5 +40,5 @@ export const useConcatSplitterElements = (
     });
 
     return childrenArray;
-  }, [children, width, height, orientation]);
+  }, [children, width, height, vertical]);
 };
