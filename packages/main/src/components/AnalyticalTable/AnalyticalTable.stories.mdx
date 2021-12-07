@@ -124,17 +124,17 @@ import {
     visibleRowCountMode: TableVisibleRowCountMode.Fixed
   }}
   argTypes={{
-    data: { type: null },
+    data: { control: { disable: true } },
     columns: {
-      type: null,
+      control: { disable: true },
       description:
         'Defines the columns array where you can define the configuration for each column.<br />Please refer to the [AnalyticalTableColumnDefinition interface](#column-properties) for a full list of options.'
     },
-    reactTableOptions: { type: null },
-    tableHooks: { type: null },
-    NoDataComponent: { type: null },
-    LoadingComponent: { type: null },
-    extension: { type: null },
+    reactTableOptions: { control: { disable: true } },
+    tableHooks: { control: { disable: true } },
+    NoDataComponent: { control: { disable: true } },
+    LoadingComponent: { control: { disable: true } },
+    extension: { control: { disable: true } },
     tableInstance: { control: { disable: true } }
   }}
 />
@@ -409,10 +409,11 @@ For further details please refer to the [`react-table` documentation](https://re
 
 ### How to select rows containing active elements
 
-By default, the `AnalyticalTable` will not select any rows after clicking on active elements inside a table cell like a `Button`, `Link`,
-etc. <br />
-In case you want to select the row anyways, you can "mark" the event to allow such a behaviour. <br />
+We've restricted the propagation of `click` events of UI5 Web Components elements such as `Button`, `Link`, `Switch`, etc.
+In case you still want to select the row when clicking the respective element, you can "mark" the event to allow such behavior. <br />
 Example: `<Link onClick={(e) => {e.markerAllowTableRowSelection = true;}>My Link Text</Link>`
+
+For other elements or components, we recommend disabling event propagation by setting `event.stopPropagation()` on the respective event. Per default, propagation is not prevented!
 
 ### How to stop the table state from automatically resetting when the data changes
 
@@ -453,6 +454,17 @@ React.useEffect(() => {
 ```
 
 For more details on this behavior you can double check the [react-table docs](https://react-table.tanstack.com/docs/faq#how-do-i-stop-my-table-state-from-automatically-resetting-when-my-data-changes).
+
+### How to scroll to a specific row/offset?
+
+The instance of the `AnalyticalTable` exposes methods for scrolling to a specific index or offset. (You can access the instance e.g. by creating a `Ref`)
+
+- `scrollTo: (offset: number, align?: 'start' | 'center' | 'end' | 'auto') => void`
+- `scrollToItem: (index: number, align?: 'start' | 'center' | 'end' | 'auto') => void`
+- `horizontalScrollTo: (offset: number, align?: 'start' | 'center' | 'end' | 'auto') => void`
+- `horizontalScrollToItem: (index: number, align?: 'start' | 'center' | 'end' | 'auto') => void`
+
+`offset` is measured in `px` and `index` in rows. `align` places the item/offset at the corresponding position of the visible scroll area (`'auto'` brings the item/offset into the visible scroll area either at the start or end, depending on which is closer). The default value for `align` is `'start'`.
 
 # More Examples
 
