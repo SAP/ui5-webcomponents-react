@@ -101,6 +101,7 @@ const verticalPositionInfo = {
   start: 'left',
   end: 'right',
   position: 'X',
+  positionRect: 'x',
   size: 'width',
   min: 'minWidth'
 };
@@ -109,6 +110,7 @@ const horizontalPositionInfo = {
   start: 'top',
   end: 'bottom',
   position: 'Y',
+  positionRect: 'Y',
   size: 'height',
   min: 'minHeight'
 };
@@ -128,6 +130,7 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
     const previousSibling = localRef.current.previousSibling;
     const nextSibling = localRef.current.nextSibling;
     const sizeDiv = e[`client${positionKeys.position}`] - start.current;
+
     // Move splitter left
     if (
       sizeDiv < 0 &&
@@ -146,10 +149,13 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
       (nextSibling.nextSibling
         ? Math.round((nextSibling.nextSibling as HTMLElement)?.getBoundingClientRect()?.[positionKeys.start]) -
             Math.round(localRef.current.getBoundingClientRect()?.[positionKeys.end]) >
-          10
+          60
         : true) &&
       Number(window.getComputedStyle(nextSibling as HTMLElement)?.[positionKeys.min].replace('px', '')) !==
-        (nextSibling as HTMLElement).getBoundingClientRect()?.[positionKeys.size]
+        (nextSibling as HTMLElement).getBoundingClientRect()?.[positionKeys.size] &&
+      Math.round(localRef.current.parentElement.getBoundingClientRect()?.[positionKeys.end]) -
+        Math.round(localRef.current.getBoundingClientRect()?.[positionKeys.end]) >
+        60
     ) {
       (previousSibling as HTMLElement).style.flex = `0 0 ${previousSiblingSize.current + sizeDiv}px`;
       if (nextSibling.nextSibling && previousSiblingSize.current + sizeDiv > 0) {
@@ -160,6 +166,9 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
     if (!nextSibling.nextSibling) {
       (nextSibling as HTMLElement).style.flex = '1 0 auto';
     }
+
+    console.log(localRef.current.getBoundingClientRect().x);
+    console.log(e[`client${positionKeys.position}`]);
   }, []);
 
   const handleMoveSplitterStart: MouseEventHandler = useCallback(
@@ -177,7 +186,23 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
       document.addEventListener('mousemove', handleSplitterMove);
       document.addEventListener(
         'mouseup',
-        () => {
+        (e) => {
+          if (
+            e[`client${positionKeys.position}`] -
+              localRef.current.getBoundingClientRect()?.[positionKeys.positionRect] >
+            30
+          ) {
+            console.log('FALL BACK: MOVE SPLITTER TO NEXT SIBLING');
+          }
+
+          if (
+            e[`client${positionKeys.position}`] -
+              localRef.current.getBoundingClientRect()?.[positionKeys.positionRect] <
+            -30
+          ) {
+            console.log('FALL BACK: MOVE SPLITTER TO PREVIOUS SIBLING');
+          }
+
           document.removeEventListener('mousemove', handleSplitterMove);
         },
         { once: true }
