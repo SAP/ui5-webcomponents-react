@@ -14,7 +14,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Features
 
 * **DynamicPageTitle:** add `onToolbarOverflowChange` callback/prop ([c94f260](https://github.com/SAP/ui5-webcomponents-react/commit/c94f260886557b995199eefc0ad7fc757918ebba))
-* **Toolbar:** add  callback/prop ([#2377](https://github.com/SAP/ui5-webcomponents-react/issues/2377)) ([109b25f](https://github.com/SAP/ui5-webcomponents-react/commit/109b25f6e9747b9bcd2dbf8f8cca82a35edcad20))
+* **Toolbar:** add `onOverflowChange` callback/prop ([#2377](https://github.com/SAP/ui5-webcomponents-react/issues/2377)) ([109b25f](https://github.com/SAP/ui5-webcomponents-react/commit/109b25f6e9747b9bcd2dbf8f8cca82a35edcad20))
 * update ui5-webcomponents to 0.31.27 ([6325c02](https://github.com/SAP/ui5-webcomponents-react/commit/6325c02823ee0512f46718d5723aebaceb2cd99c))
 
 
