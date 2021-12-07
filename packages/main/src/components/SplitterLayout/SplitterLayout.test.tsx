@@ -3,7 +3,7 @@ import { fireEvent, screen } from '@shared/tests/index';
 import { SplitterLayout } from '@ui5/webcomponents-react/dist/SplitterLayout';
 import { SplitterElement } from '@ui5/webcomponents-react/dist/SplitterElement';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
-import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { createCustomPropsTest } from '@shared/tests/utils';
 import React from 'react';
 
 describe('SplitterLayout', () => {
@@ -68,5 +68,5 @@ describe('SplitterLayout', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  createPassThroughPropsTest(SplitterLayout);
+  createCustomPropsTest(SplitterLayout);
 });
