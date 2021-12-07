@@ -1,7 +1,7 @@
 import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
 import { useResponsiveContentPadding, useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
+import { debounce, enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { GlobalStyleClasses } from '@ui5/webcomponents-react/dist/GlobalStyleClasses';
 import { PageBackgroundDesign } from '@ui5/webcomponents-react/dist/PageBackgroundDesign';
@@ -132,12 +132,12 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([element]) => {
+      debounce(([element]) => {
         setIsOverflowing(!element.isIntersecting);
-      },
+      }, 250),
       {
         root: dynamicPageRef.current,
-        threshold: 1,
+        threshold: 0.98,
         rootMargin: '0px 0px -60px 0px' // negative bottom margin for footer height
       }
     );
