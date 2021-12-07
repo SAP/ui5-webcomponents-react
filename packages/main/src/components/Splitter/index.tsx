@@ -1,7 +1,7 @@
 import { useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { Icon } from '@ui5/webcomponents-react/dist/Icon';
-import React, { forwardRef, MouseEventHandler, Ref, TouchEventHandler, useCallback, useRef, useState } from 'react';
+import React, { forwardRef, MouseEventHandler, Ref, TouchEventHandler, useCallback, useRef } from 'react';
 import { createUseStyles } from 'react-jss';
 
 const useStyles = createUseStyles(
@@ -158,7 +158,7 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
     }
 
     if (!nextSibling.nextSibling) {
-      (nextSibling as HTMLElement).style.flex = `1 0 auto`;
+      (nextSibling as HTMLElement).style.flex = '1 0 auto';
     }
   }, []);
 

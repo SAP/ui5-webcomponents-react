@@ -1,5 +1,5 @@
 import { SplitterElementPropTypes } from '@ui5/webcomponents-react/dist/SplitterElement';
-import React, { CSSProperties, ReactElement, useMemo } from 'react';
+import React, { cloneElement, CSSProperties, ReactElement, useMemo } from 'react';
 import { safeGetChildrenArray } from '../ObjectPage/ObjectPageUtils';
 import { Splitter } from '../Splitter';
 
@@ -19,6 +19,7 @@ export const useConcatSplitterElements = (
 
     childrenArray.forEach((child, index) => {
       const splitterElementChild = childrenArray[index + splitterCount];
+
       if (
         childrenArray.length - splitterCount - 1 > index &&
         (splitterElementChild.props.resizable || splitterElementChild.props.resizable === undefined) &&
@@ -38,6 +39,17 @@ export const useConcatSplitterElements = (
         --splitterCount;
       }
     });
+
+    const indexOfLastElement = childrenArray.length - 1;
+    childrenArray[indexOfLastElement] = cloneElement(
+      childrenArray[indexOfLastElement],
+      Object.assign({}, childrenArray[indexOfLastElement].props, {
+        style: {
+          flex: '1 0 auto',
+          ...childrenArray[indexOfLastElement].props.style
+        }
+      })
+    );
 
     return childrenArray;
   }, [children, width, height, vertical]);
