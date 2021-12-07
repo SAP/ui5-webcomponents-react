@@ -7,7 +7,7 @@ import {
   createOnClickChartTest,
   createOnLegendClickNotCrashTest
 } from '@shared/tests/chartUtils';
-import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { createCustomPropsTest } from '@shared/tests/utils';
 
 enum ComposedChartChildrenQuery {
   'area' = 'g.recharts-area-dots',
@@ -71,5 +71,5 @@ describe('ComposedChart', () => {
 
   createOnLegendClickNotCrashTest(ComposedChart, { dataset: complexDataSet, dimensions, measures });
 
-  createPassThroughPropsTest(ComposedChart, { dimensions: [], measures: [] });
+  createCustomPropsTest(ComposedChart, { dimensions: [], measures: [] });
 });

@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@shared/tests';
-import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { createCustomPropsTest } from '@shared/tests/utils';
 import { ActionSheet } from '@ui5/webcomponents-react/dist/ActionSheet';
 import { PopoverDomRef } from '@ui5/webcomponents-react/dist/Popover';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
@@ -66,5 +66,5 @@ describe('ActionSheet', () => {
     expect(container.parentElement).toMatchSnapshot();
   });
 
-  createPassThroughPropsTest(ActionSheet);
+  createCustomPropsTest(ActionSheet);
 });

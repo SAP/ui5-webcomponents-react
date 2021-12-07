@@ -1,5 +1,4 @@
 import { createUseStyles } from 'react-jss';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import React, { forwardRef, ReactNode, Ref } from 'react';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { TextStyles } from './Text.jss';
@@ -26,7 +25,7 @@ const useStyles = createUseStyles(TextStyles, { name: 'Text' });
  * <br />__Note:__ Line breaks will always be visualized except when the wrapping property is set to false. In addition, tabs and whitespace can be preserved by setting the renderWhitespace property to true.
  */
 const Text = forwardRef((props: TextPropTypes, ref: Ref<HTMLSpanElement>) => {
-  const { children, renderWhitespace, wrapping, className, style, tooltip, slot } = props;
+  const { children, renderWhitespace, wrapping, className, style, tooltip, slot, ...rest } = props;
   const classes = useStyles();
   const classNameString = clsx(
     classes.text,
@@ -35,10 +34,8 @@ const Text = forwardRef((props: TextPropTypes, ref: Ref<HTMLSpanElement>) => {
     className
   );
 
-  const passThroughProps = usePassThroughHtmlProps(props);
-
   return (
-    <span ref={ref} style={style} className={classNameString} title={tooltip} slot={slot} {...passThroughProps}>
+    <span ref={ref} style={style} className={classNameString} title={tooltip} slot={slot} {...rest}>
       {children}
     </span>
   );

@@ -1,5 +1,4 @@
 import { useI18nBundle, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { debounce, enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import {
   ADAPT_FILTERS,
@@ -259,7 +258,8 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
     onFiltersDialogSelectionChange,
     onFiltersDialogSearch,
     onGo,
-    onRestore
+    onRestore,
+    ...rest
   } = props;
   const [showFilters, setShowFilters] = useState(useToolbar ? filterBarExpanded : true);
   const [mountFilters, setMountFilters] = useState(true);
@@ -362,20 +362,6 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
       onGo(enrichEventWithDetails(e, { elements: filterRefs.current, ...getFilterElements() }));
     }
   };
-
-  const passThroughProps = usePassThroughHtmlProps(props, [
-    'onToggleFilters',
-    'onFiltersDialogOpen',
-    'onFiltersDialogClose',
-    'onFiltersDialogSave',
-    'onFiltersDialogClear',
-    'onClear',
-    'onFiltersDialogSelectionChange',
-    'onFiltersDialogSearch',
-    'onGo',
-    'onRestore',
-    'onFiltersDialogCancel'
-  ]);
 
   const safeChildren = () => {
     if (Object.keys(toggledFilters).length > 0) {
@@ -649,7 +635,7 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
         style={{ ['--_ui5wcr_filter_group_item_flex_basis']: filterContainerWidth, ...style } as CSSProperties}
         title={tooltip}
         slot={slot}
-        {...passThroughProps}
+        {...rest}
       >
         {loading ? (
           <BusyIndicator active className={classes.loadingContainer} size={BusyIndicatorSize.Large} />

@@ -17,16 +17,7 @@ import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
 import { Dialog, DialogDomRef } from '@ui5/webcomponents-react/dist/Dialog';
 import { Table } from '@ui5/webcomponents-react/dist/Table';
 import { TableColumn } from '@ui5/webcomponents-react/dist/TableColumn';
-import React, {
-  Children,
-  ComponentElement,
-  MouseEventHandler,
-  ReactNode,
-  ReactNodeArray,
-  useEffect,
-  useRef,
-  useState
-} from 'react';
+import React, { Children, ComponentElement, MouseEventHandler, ReactNode, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { ManageViewsTableRows } from './MangeViewsTableRows';
 import { VariantItemPropTypes } from './VariantItem';
@@ -43,7 +34,7 @@ addCustomCSS(
 );
 
 interface ManageViewsDialogPropTypes {
-  children: ReactNode | ReactNodeArray;
+  children: ReactNode | ReactNode[];
   onAfterClose: any;
   handleSaveManageViews: (
     e: MouseEventHandler<HTMLElement>,

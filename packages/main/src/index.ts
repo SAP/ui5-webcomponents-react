@@ -128,6 +128,7 @@ import { ResponsivePopover } from './dist/ResponsivePopover';
 import { SegmentedButton } from './dist/SegmentedButton';
 import { SegmentedButtonItem } from './dist/SegmentedButtonItem';
 import { Select } from './dist/Select';
+import { SelectDialog } from './dist/SelectDialog';
 import { SemanticColor } from './dist/SemanticColor';
 import { ShellBar } from './dist/ShellBar';
 import { ShellBarItem } from './dist/ShellBarItem';
@@ -326,6 +327,7 @@ export {
   SegmentedButton,
   SegmentedButtonItem,
   Select,
+  SelectDialog,
   SemanticColor,
   ShellBar,
   ShellBarItem,

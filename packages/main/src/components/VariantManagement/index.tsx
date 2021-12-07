@@ -4,7 +4,6 @@ import '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
 import '@ui5/webcomponents-icons/dist/search.js';
 import { useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import {
   CANCEL,
@@ -40,7 +39,6 @@ import React, {
   forwardRef,
   isValidElement,
   ReactNode,
-  ReactNodeArray,
   Ref,
   useCallback,
   useEffect,
@@ -66,7 +64,7 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
    *
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `VariantItem` in order to preserve the intended design.
    */
-  children?: ReactNode | ReactNodeArray;
+  children?: ReactNode | ReactNode[];
   /**
    * Determines on which side the VariantManagement popover is placed at.
    */
@@ -245,7 +243,8 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
     dirtyState,
     showCancelButton,
     onSave,
-    portalContainer
+    portalContainer,
+    ...rest
   } = props;
 
   const classes = useStyles();
@@ -441,10 +440,8 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
 
   const showSaveBtn = dirtyState && !selectedVariant?.readOnly;
 
-  const passThroughProps = usePassThroughHtmlProps(props, ['onSelect', 'onSaveAs', 'onSaveManageViews', 'onSave']);
-
   return (
-    <div className={variantManagementClasses} style={style} title={tooltip} {...passThroughProps} ref={ref}>
+    <div className={variantManagementClasses} style={style} title={tooltip} {...rest} ref={ref}>
       <VariantManagementContext.Provider
         value={{
           selectVariantItem: setSelectedVariant

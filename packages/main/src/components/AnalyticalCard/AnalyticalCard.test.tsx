@@ -1,5 +1,5 @@
 import { render, screen } from '@shared/tests';
-import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { createCustomPropsTest } from '@shared/tests/utils';
 import { AnalyticalCard } from '@ui5/webcomponents-react/dist/AnalyticalCard';
 import { AnalyticalCardHeader } from '@ui5/webcomponents-react/dist/AnalyticalCardHeader';
 import { Text } from '@ui5/webcomponents-react/dist/Text';
@@ -40,5 +40,5 @@ describe('Analytical Card', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  createPassThroughPropsTest(AnalyticalCard);
+  createCustomPropsTest(AnalyticalCard);
 });

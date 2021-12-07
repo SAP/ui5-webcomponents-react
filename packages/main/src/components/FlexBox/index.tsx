@@ -1,10 +1,9 @@
 import { createUseStyles } from 'react-jss';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
 import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';
 import { FlexBoxWrap } from '@ui5/webcomponents-react/dist/FlexBoxWrap';
-import React, { forwardRef, ReactNode, ReactNodeArray, Ref } from 'react';
+import React, { forwardRef, ReactNode, Ref } from 'react';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { styles } from './FlexBox.jss';
 import clsx from 'clsx';
@@ -43,7 +42,7 @@ export interface FlexBoxPropTypes extends CommonProps {
   /**
    * Content of the `FlexBox`.
    */
-  children: ReactNode | ReactNodeArray;
+  children: ReactNode | ReactNode[];
   /**
    * Sets the components outer HTML tag.
    *
@@ -68,7 +67,8 @@ const FlexBox = forwardRef((props: FlexBoxPropTypes, ref: Ref<HTMLDivElement>) =
     tooltip,
     fitContainer,
     slot,
-    as
+    as,
+    ...rest
   } = props;
 
   const classes = useStyles();
@@ -83,10 +83,9 @@ const FlexBox = forwardRef((props: FlexBoxPropTypes, ref: Ref<HTMLDivElement>) =
     className
   );
 
-  const passThroughProps = usePassThroughHtmlProps(props);
   const CustomTag = as as React.ElementType;
   return (
-    <CustomTag ref={ref} className={flexBoxClasses} style={style} title={tooltip} slot={slot} {...passThroughProps}>
+    <CustomTag ref={ref} className={flexBoxClasses} style={style} title={tooltip} slot={slot} {...rest}>
       {children}
     </CustomTag>
   );

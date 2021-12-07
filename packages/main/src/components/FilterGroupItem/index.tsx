@@ -1,14 +1,13 @@
 import { useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
-import { createUseStyles } from 'react-jss';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/dist/usePassThroughHtmlProps';
 import { BusyIndicator } from '@ui5/webcomponents-react/dist/BusyIndicator';
 import { BusyIndicatorSize } from '@ui5/webcomponents-react/dist/BusyIndicatorSize';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { Label } from '@ui5/webcomponents-react/dist/Label';
-import React, { forwardRef, ReactElement, RefObject } from 'react';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import styles from './FilterGroupItem.jss';
 import clsx from 'clsx';
+import React, { forwardRef, ReactElement, RefObject } from 'react';
+import { createUseStyles } from 'react-jss';
+import styles from './FilterGroupItem.jss';
 
 const useStyles = createUseStyles(styles, { name: 'FilterGroupItem' });
 
@@ -76,9 +75,9 @@ export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref:
     loading,
     className,
     tooltip,
-    slot
+    slot,
+    ...rest
   } = props;
-  const passThroughProps = usePassThroughHtmlProps(props);
   const inFB = props['data-in-fb'];
   const [componentRef, filterGroupItemRef] = useSyncRef<HTMLDivElement>(ref);
 
@@ -95,7 +94,7 @@ export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref:
       ref={componentRef}
       title={tooltip}
       slot={slot}
-      {...passThroughProps}
+      {...rest}
       className={styleClasses}
       style={inFB ? inlineStyle : emptyObject}
     >

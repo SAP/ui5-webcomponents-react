@@ -1,5 +1,5 @@
 import { screen, render } from '@shared/tests';
-import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { createCustomPropsTest } from '@shared/tests/utils';
 import { ResponsiveGridLayout } from '@ui5/webcomponents-react/dist/ResponsiveGridLayout';
 import React from 'react';
 
@@ -34,5 +34,5 @@ describe('ResponsiveGridLayout', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  createPassThroughPropsTest(ResponsiveGridLayout);
+  createCustomPropsTest(ResponsiveGridLayout);
 });

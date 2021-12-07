@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { createCustomPropsTest } from '@shared/tests/utils';
 import { Grid } from '@ui5/webcomponents-react/dist/Grid';
 import React from 'react';
 import { GridPosition } from '@ui5/webcomponents-react/dist/GridPosition';
@@ -97,5 +97,5 @@ describe('Grid', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  createPassThroughPropsTest(Grid);
+  createCustomPropsTest(Grid);
 });

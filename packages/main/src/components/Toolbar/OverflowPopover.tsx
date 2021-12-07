@@ -3,7 +3,7 @@ import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
 import { PopoverPlacementType } from '@ui5/webcomponents-react/dist/PopoverPlacementType';
 import { Popover, PopoverDomRef } from '@ui5/webcomponents-react/dist/Popover';
 import { ToggleButton } from '@ui5/webcomponents-react/dist/ToggleButton';
-import React, { FC, ReactElement, ReactNode, useCallback, useEffect, useRef, useState } from 'react';
+import React, { FC, ReactElement, ReactNode, Ref, useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { stopPropagation } from '../../internal/stopPropagation';
 
@@ -12,10 +12,11 @@ interface OverflowPopoverProps {
   contentClass: string;
   children: ReactNode;
   portalContainer: Element;
+  overflowContentRef: Ref<HTMLDivElement>;
 }
 
 export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopoverProps) => {
-  const { lastVisibleIndex, contentClass, children, portalContainer } = props;
+  const { lastVisibleIndex, contentClass, children, portalContainer, overflowContentRef } = props;
   const popoverRef = useRef<PopoverDomRef>();
   const [pressed, setPressed] = useState(false);
 
@@ -80,7 +81,9 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
       />
       {createPortal(
         <Popover placementType={PopoverPlacementType.Bottom} ref={popoverRef} onAfterClose={handleClose}>
-          <div className={contentClass}>{renderChildren()}</div>
+          <div className={contentClass} ref={overflowContentRef}>
+            {renderChildren()}
+          </div>
         </Popover>,
         portalContainer
       )}

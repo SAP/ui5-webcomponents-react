@@ -1,6 +1,6 @@
 import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
 import { useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
-import { usePassThroughHtmlProps, useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import { debounce } from '@ui5/webcomponents-react-base/dist/Utils';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
@@ -68,6 +68,15 @@ export interface DynamicPageTitlePropTypes extends CommonProps {
    * Display the `subHeader` on the right instead of below the `header`.
    */
   showSubHeaderRight?: boolean;
+  /**
+   * Fired when the content of the `actions` or `navigationActions` toolbar overflow popover has been changed.
+   */
+  onToolbarOverflowChange?: (event: {
+    toolbarElements: HTMLElement[];
+    overflowElements: HTMLCollection;
+    target: HTMLElement;
+    origin: 'actions' | 'navigationActions';
+  }) => void;
 }
 
 interface InternalProps extends DynamicPageTitlePropTypes {
@@ -86,7 +95,6 @@ const useStyles = createUseStyles(DynamicPageTitleStyles, { name: 'DynamicPageTi
 const DynamicPageTitle = forwardRef((props: DynamicPageTitlePropTypes, ref: Ref<HTMLDivElement>) => {
   const {
     actions,
-    onToggleHeaderContentVisibility,
     breadcrumbs,
     children,
     header,
@@ -95,7 +103,10 @@ const DynamicPageTitle = forwardRef((props: DynamicPageTitlePropTypes, ref: Ref<
     navigationActions,
     className,
     style,
-    tooltip
+    tooltip,
+    onToggleHeaderContentVisibility,
+    onToolbarOverflowChange,
+    ...rest
   } = props as InternalProps;
 
   const classes = useStyles();
@@ -112,7 +123,7 @@ const DynamicPageTitle = forwardRef((props: DynamicPageTitlePropTypes, ref: Ref<
     };
   }, [isMounted]);
 
-  const passThroughProps = usePassThroughHtmlProps(props, ['onToggleHeaderContentVisibility', 'onClick']);
+  const { onClick: _0, ...propsWithoutOmitted } = rest;
 
   const onHeaderClick = useCallback(
     (e) => {
@@ -152,6 +163,16 @@ const DynamicPageTitle = forwardRef((props: DynamicPageTitlePropTypes, ref: Ref<
 
   const paddingLeftRtl = isRtl ? 'paddingRight' : 'paddingLeft';
 
+  const handleToolbarsOverflowChange = (e) => {
+    if (typeof onToolbarOverflowChange === 'function') {
+      let origin = 'actions';
+      if (e.target.dataset.componentName === 'DynamicPageTitleNavActions') {
+        origin = 'navigationActions';
+      }
+      onToolbarOverflowChange({ ...e, origin });
+    }
+  };
+
   return (
     <FlexBox
       className={containerClasses}
@@ -160,7 +181,7 @@ const DynamicPageTitle = forwardRef((props: DynamicPageTitlePropTypes, ref: Ref<
       tooltip={tooltip}
       data-component-name="DynamicPageTitle"
       onClick={onHeaderClick}
-      {...passThroughProps}
+      {...propsWithoutOmitted}
     >
       {(breadcrumbs || (navigationActions && showNavigationInTopArea)) && (
         <FlexBox justifyContent={FlexBoxJustifyContent.SpaceBetween} data-component-name="DynamicPageTitleBreadcrumbs">
@@ -177,6 +198,7 @@ const DynamicPageTitle = forwardRef((props: DynamicPageTitlePropTypes, ref: Ref<
               className={classes.toolbar}
               onClick={stopPropagation}
               data-component-name="DynamicPageTitleNavActions"
+              onOverflowChange={handleToolbarsOverflowChange}
             >
               <ActionsSpacer onClick={onHeaderClick} noHover={props?.['data-not-clickable']} />
               {navigationActions}
@@ -218,6 +240,7 @@ const DynamicPageTitle = forwardRef((props: DynamicPageTitlePropTypes, ref: Ref<
             className={classes.toolbar}
             onClick={stopPropagation}
             data-component-name="DynamicPageTitleActions"
+            onOverflowChange={handleToolbarsOverflowChange}
           >
             <ActionsSpacer onClick={onHeaderClick} noHover={props?.['data-not-clickable']} />
             {actions}

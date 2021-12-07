@@ -31,7 +31,7 @@ Please use TypeScript to write your components. A good introduction to TypeScrip
 - All Event handlers **must** start with `on`.<br />
    e.g. `onClick`, `onSelect`, `onSelectionChange`, .etc<br />
    All Events must pass an instance of the `Event`-Class as single parameter.
-- When passing additional elements into a component, a slot should be used. This prop should contain a `ReactNode` or an array of ReactNodes (`ReactNode[]` or `ReactNodeArray`)
+- When passing additional elements into a component, a slot should be used. This prop should contain a `ReactNode` or an array of ReactNodes (`ReactNode[]`)
 
 You must follow the coding style as best you can when submitting code. Take note of naming conventions, separation of concerns, and formatting rules. You can use the code formatter [Prettier](https://prettier.io/) to handle some of this for you automatically.
 

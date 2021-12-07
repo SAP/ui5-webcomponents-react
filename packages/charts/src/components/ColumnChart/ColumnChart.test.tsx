@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { complexDataSet } from '../../resources/DemoProps';
 import { ColumnChart } from './ColumnChart';
-import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { createCustomPropsTest } from '@shared/tests/utils';
 import {
   createChartRenderTest,
   createLoadingPlaceholderTest,
@@ -43,5 +43,5 @@ describe('ColumnChart', () => {
 
   createOnLegendClickNotCrashTest(ColumnChart, { dataset: complexDataSet, dimensions, measures });
 
-  createPassThroughPropsTest(ColumnChart, { dimensions: [], measures: [] });
+  createCustomPropsTest(ColumnChart, { dimensions: [], measures: [] });
 });

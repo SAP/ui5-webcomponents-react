@@ -2,7 +2,7 @@ import * as React from 'react';
 import { render, screen, fireEvent } from '@shared/tests/index';
 import { MicroBarChart } from '@ui5/webcomponents-react-charts/dist/MicroBarChart';
 import { createChartRenderTest, createLoadingPlaceholderTest, createOnClickChartTest } from '@shared/tests/chartUtils';
-import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { createCustomPropsTest } from '@shared/tests/utils';
 
 const text1 = 'January';
 const text2 = 'February';
@@ -108,7 +108,7 @@ describe('Micro Bar Chart', () => {
 
   createChartRenderTest(MicroBarChart, {
     dataset,
-    measures: {
+    measure: {
       accessor: 'value'
     },
     dimension: {
@@ -119,7 +119,7 @@ describe('Micro Bar Chart', () => {
   createOnClickChartTest(MicroBarChart, {
     dataset,
     noLegend: true,
-    measures: {
+    measure: {
       accessor: 'value'
     },
     dimension: {
@@ -127,7 +127,7 @@ describe('Micro Bar Chart', () => {
     }
   });
 
-  createLoadingPlaceholderTest(MicroBarChart, { dimensions: [], measures: [] });
+  createLoadingPlaceholderTest(MicroBarChart, { dimension: [], measure: [] });
 
-  createPassThroughPropsTest(MicroBarChart, { dimensions: [], measures: [] });
+  createCustomPropsTest(MicroBarChart, { dimension: [], measure: [] });
 });
