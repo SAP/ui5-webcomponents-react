@@ -10,13 +10,13 @@ describe('SplitterLayout', () => {
   test('Render Vertical SplitterLayout with multiple SplitterElements', () => {
     const onClick = jest.fn();
     const { asFragment } = render(
-      <SplitterLayout orientation={'vertical'} width={'800px'} height={'400px'} data-testid={'SplitterLayout'}>
+      <SplitterLayout vertical={true} style={{ width: '800px', height: '400px' }} data-testid={'SplitterLayout'}>
         <SplitterElement size={'200px'} data-testid={'SplitterElement1'}>
           <Button data-testid={'Button'} onClick={onClick}>
             Button 1
           </Button>
         </SplitterElement>
-        <SplitterElement minSize={300} size={'400px'} maxSize={500} data-testid={'SplitterElement2'}>
+        <SplitterElement minSize={300} size={'400px'} data-testid={'SplitterElement2'}>
           <Button>Button 2</Button>
         </SplitterElement>
         <SplitterElement resizable={false} data-testid={'SplitterElement3'}>
@@ -31,8 +31,8 @@ describe('SplitterLayout', () => {
     expect(AllSplitter.length).toBe(1);
     expect(screen.getByTestId('SplitterLayout')).toHaveStyle('width: 800px; height: 400px');
     expect(screen.getByTestId('SplitterElement1')).toHaveStyle('flex: 0 0 auto');
-    expect(screen.getByTestId('SplitterElement2')).toHaveStyle('flex: 0 0 auto; min-width: 300px; max-width: 500px');
-    expect(screen.getByTestId('SplitterElement3')).toHaveStyle('flex: 0 0 auto; min-width: 0; height: 100%');
+    expect(screen.getByTestId('SplitterElement2')).toHaveStyle('flex: 0 0 auto; min-width: 300px');
+    expect(screen.getByTestId('SplitterElement3')).toHaveStyle('flex: 0 0 auto');
     expect(onClick).toHaveBeenCalled();
 
     expect(asFragment()).toMatchSnapshot();
@@ -40,11 +40,11 @@ describe('SplitterLayout', () => {
 
   test('Render Horizontal SplitterLayout with multiple SplitterElements', () => {
     const { asFragment } = render(
-      <SplitterLayout data-testid={'Layout'} orientation={'horizontal'} width={'80vw'} height={'600px'}>
+      <SplitterLayout data-testid={'Layout'} vertical={false} style={{ width: '80vw', height: '600px' }}>
         <SplitterElement>
           <Button>Button 1</Button>
         </SplitterElement>
-        <SplitterElement data-testid={'Element'} minSize={50} size={'100px'} maxSize={200}>
+        <SplitterElement data-testid={'Element'} minSize={50} size={'100px'}>
           <Button>Button 2</Button>
         </SplitterElement>
         <SplitterElement>
@@ -57,7 +57,7 @@ describe('SplitterLayout', () => {
 
     expect(AllSplitter.length).toBe(2);
     expect(screen.getByTestId('Layout')).toHaveStyle('width: 80vw; height: 600px');
-    expect(screen.getByTestId('Element')).toHaveStyle('flex: 0 0 auto; min-height: 50px; max-height: 200px');
+    expect(screen.getByTestId('Element')).toHaveStyle('flex: 0 0 auto; min-height: 50px');
 
     expect(asFragment()).toMatchSnapshot();
   });

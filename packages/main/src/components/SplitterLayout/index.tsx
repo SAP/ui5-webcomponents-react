@@ -29,7 +29,7 @@ const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTML
 
   const splitterLayoutClasses = clsx(classes.splitterLayout, className);
 
-  const layoutElements = useConcatSplitterElements(children ?? [], style.width, style.height, vertical);
+  const layoutElements = useConcatSplitterElements(children ?? [], style?.width, style?.height, vertical);
 
   return (
     <SplitterLayoutContext.Provider value={{ vertical }}>

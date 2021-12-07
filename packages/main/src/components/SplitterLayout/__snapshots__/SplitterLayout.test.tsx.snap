@@ -4,13 +4,12 @@ exports[`SplitterLayout Render Horizontal SplitterLayout with multiple SplitterE
 <DocumentFragment>
   <div
     class="SplitterLayout-splitterLayout"
-    data-splitter-orientation="horizontal"
+    data-splitter-vertical="false"
     data-testid="Layout"
-    style="width: 80vw; height: 600px;"
+    style="flex-direction: column; width: 80vw; height: 600px;"
   >
     <div
       class="SplitterElement-splitterElement"
-      style="min-height: 0;"
     >
       <ui5-button
         design="Default"
@@ -21,7 +20,7 @@ exports[`SplitterLayout Render Horizontal SplitterLayout with multiple SplitterE
     </div>
     <div
       class="Splitter-splitter"
-      data-splitter-orientation="horizontal"
+      data-splitter-vertical="false"
       role="separator"
     >
       <div
@@ -39,7 +38,7 @@ exports[`SplitterLayout Render Horizontal SplitterLayout with multiple SplitterE
     <div
       class="SplitterElement-splitterElement"
       data-testid="Element"
-      style="min-height: 50px; max-height: 200px; flex-basis: 100px;"
+      style="min-height: 50px; flex-basis: 100px;"
     >
       <ui5-button
         design="Default"
@@ -50,7 +49,7 @@ exports[`SplitterLayout Render Horizontal SplitterLayout with multiple SplitterE
     </div>
     <div
       class="Splitter-splitter"
-      data-splitter-orientation="horizontal"
+      data-splitter-vertical="false"
       role="separator"
     >
       <div
@@ -67,7 +66,6 @@ exports[`SplitterLayout Render Horizontal SplitterLayout with multiple SplitterE
     </div>
     <div
       class="SplitterElement-splitterElement"
-      style="min-height: 0;"
     >
       <ui5-button
         design="Default"
@@ -84,7 +82,8 @@ exports[`SplitterLayout Render SplitterLayout without props and children 1`] = `
 <DocumentFragment>
   <div
     class="SplitterLayout-splitterLayout"
-    data-splitter-orientation="vertical"
+    data-splitter-vertical="true"
+    style="flex-direction: row;"
   />
 </DocumentFragment>
 `;
@@ -93,14 +92,14 @@ exports[`SplitterLayout Render Vertical SplitterLayout with multiple SplitterEle
 <DocumentFragment>
   <div
     class="SplitterLayout-splitterLayout"
-    data-splitter-orientation="vertical"
+    data-splitter-vertical="true"
     data-testid="SplitterLayout"
-    style="width: 800px; height: 400px;"
+    style="flex-direction: row; width: 800px; height: 400px;"
   >
     <div
       class="SplitterElement-splitterElement"
       data-testid="SplitterElement1"
-      style="min-width: 0; flex-basis: 200px;"
+      style="flex-basis: 200px;"
     >
       <ui5-button
         data-testid="Button"
@@ -112,7 +111,7 @@ exports[`SplitterLayout Render Vertical SplitterLayout with multiple SplitterEle
     </div>
     <div
       class="Splitter-splitter"
-      data-splitter-orientation="vertical"
+      data-splitter-vertical="true"
       role="separator"
     >
       <div
@@ -130,7 +129,7 @@ exports[`SplitterLayout Render Vertical SplitterLayout with multiple SplitterEle
     <div
       class="SplitterElement-splitterElement"
       data-testid="SplitterElement2"
-      style="min-width: 300px; max-width: 500px; flex-basis: 400px;"
+      style="min-width: 300px; flex-basis: 400px;"
     >
       <ui5-button
         design="Default"
@@ -142,7 +141,6 @@ exports[`SplitterLayout Render Vertical SplitterLayout with multiple SplitterEle
     <div
       class="SplitterElement-splitterElement"
       data-testid="SplitterElement3"
-      style="min-width: 0;"
     >
       <ui5-button
         design="Default"
