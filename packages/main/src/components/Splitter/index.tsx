@@ -110,7 +110,7 @@ const horizontalPositionInfo = {
   start: 'top',
   end: 'bottom',
   position: 'Y',
-  positionRect: 'Y',
+  positionRect: 'y',
   size: 'height',
   min: 'minHeight'
 };
