@@ -4,6 +4,10 @@ import { FC, ReactNode } from 'react';
 
 export interface SegmentedButtonPropTypes extends WithWebComponentPropTypes {
   /**
+   * Sets the accessible aria name of the component.
+   */
+  accessibleName?: string;
+  /**
    * Defines the items of `SegmentedButton`.
    *
    * **Note:** Multiple items are allowed.
@@ -26,7 +30,7 @@ export interface SegmentedButtonPropTypes extends WithWebComponentPropTypes {
  */
 const SegmentedButton: FC<SegmentedButtonPropTypes> = withWebComponent<SegmentedButtonPropTypes>(
   'ui5-segmented-button',
-  [],
+  ['accessibleName'],
   [],
   [],
   ['selection-change']
