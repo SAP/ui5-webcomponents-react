@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.131.26](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.25...v0.131.26) (2021-12-07)
+
+
+### Bug Fixes
+
+* **DynamicPage:** correctly display footer in FCL ([#2379](https://github.com/SAP/ui5-webcomponents-react/issues/2379)) ([ba3f857](https://github.com/SAP/ui5-webcomponents-react/commit/ba3f8575ddd3862802fae5a823993edd40fc7c7a))
+
+
+### Features
+
+* **DynamicPageTitle:** add `onToolbarOverflowChange` callback/prop ([c94f260](https://github.com/SAP/ui5-webcomponents-react/commit/c94f260886557b995199eefc0ad7fc757918ebba))
+* **Toolbar:** add  callback/prop ([#2377](https://github.com/SAP/ui5-webcomponents-react/issues/2377)) ([109b25f](https://github.com/SAP/ui5-webcomponents-react/commit/109b25f6e9747b9bcd2dbf8f8cca82a35edcad20))
+* update ui5-webcomponents to 0.31.27 ([6325c02](https://github.com/SAP/ui5-webcomponents-react/commit/6325c02823ee0512f46718d5723aebaceb2cd99c))
+
+
+
+
+
 ## [0.131.25](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.24...v0.131.25) (2021-12-03)
 
 
