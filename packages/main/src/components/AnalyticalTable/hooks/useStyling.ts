@@ -101,6 +101,10 @@ const getCellProps = (cellProps, { cell: { column }, instance }) => {
       style.justifyContent = 'right';
       style.textAlign = 'right';
       break;
+    case TextAlign.Initial:
+      style.justifyContent = 'initial';
+      style.textAlign = 'initial';
+      break;
   }
   switch (column.vAlign) {
     case VerticalAlign.Bottom:
