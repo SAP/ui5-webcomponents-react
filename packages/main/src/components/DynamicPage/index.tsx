@@ -7,6 +7,7 @@ import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { GlobalStyleClasses } from '@ui5/webcomponents-react/lib/GlobalStyleClasses';
 import { PageBackgroundDesign } from '@ui5/webcomponents-react/lib/PageBackgroundDesign';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import debounce from 'lodash/debounce';
 import React, {
   cloneElement,
   FC,
@@ -119,6 +120,7 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
 
   const anchorBarRef: RefObject<HTMLDivElement> = useRef();
   const dynamicPageRef: RefObject<HTMLDivElement> = useConsolidatedRef(ref);
+  const contentRef = useRef<HTMLDivElement>();
   // @ts-ignore
   const topHeaderRef: RefObject<HTMLDivElement> = useConsolidatedRef(headerTitle?.ref);
   // @ts-ignore
@@ -140,6 +142,29 @@ const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, r
   if (headerState === HEADER_STATES.HIDDEN || headerState === HEADER_STATES.HIDDEN_PINNED) {
     dynamicPageClasses.put(classes.headerCollapsed);
   }
+
+  const [isOverflowing, setIsOverflowing] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      debounce(([element]) => {
+        setIsOverflowing(!element.isIntersecting);
+      }, 250),
+      {
+        root: dynamicPageRef.current,
+        threshold: 0.98,
+        rootMargin: '0px 0px -60px 0px' // negative bottom margin for footer height
+      }
+    );
+
+    if (contentRef.current) {
+      observer.observe(contentRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   useEffect(() => {
     const oneTimeScrollHandler = () => {
