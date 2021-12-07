@@ -15,10 +15,11 @@ import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignIte
 import { Icon } from '@ui5/webcomponents-react/dist/Icon';
 import { List } from '@ui5/webcomponents-react/dist/List';
 import { ListItemType } from '@ui5/webcomponents-react/dist/ListItemType';
-import { PopoverPlacementType } from '@ui5/webcomponents-react/dist/PopoverPlacementType';
 import { Popover, PopoverDomRef } from '@ui5/webcomponents-react/dist/Popover';
 import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/dist/PopoverHorizontalAlign';
+import { PopoverPlacementType } from '@ui5/webcomponents-react/dist/PopoverPlacementType';
 import { StandardListItem } from '@ui5/webcomponents-react/dist/StandardListItem';
+import { TextAlign } from '@ui5/webcomponents-react/dist/TextAlign';
 import React, { RefObject, useCallback, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
@@ -33,6 +34,7 @@ export interface ColumnHeaderModalProperties {
   setPopoverOpen: (open: boolean) => void;
   targetRef: RefObject<any>;
   portalContainer: Element;
+  isRtl: boolean;
 }
 
 const styles = {
@@ -49,7 +51,7 @@ const styles = {
 const useStyles = createUseStyles(styles, { name: 'ColumnHeaderModal' });
 
 export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
-  const { column, onSort, onGroupBy, open, setPopoverOpen, targetRef, portalContainer } = props;
+  const { column, onSort, onGroupBy, open, setPopoverOpen, targetRef, portalContainer, isRtl } = props;
   const classes = useStyles();
   const showFilter = column.canFilter;
   const showGroup = column.canGroupBy;
@@ -149,11 +151,28 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
     listRef.current?.children?.[0]?.focus();
   };
 
+  const horizontalAlign = (() => {
+    switch (column.hAlign) {
+      case TextAlign.Begin:
+        return isRtl ? PopoverHorizontalAlign.Right : PopoverHorizontalAlign.Left;
+      case TextAlign.End:
+        return isRtl ? PopoverHorizontalAlign.Left : PopoverHorizontalAlign.Right;
+      case TextAlign.Left:
+        return PopoverHorizontalAlign.Left;
+      case TextAlign.Right:
+        return PopoverHorizontalAlign.Right;
+      case TextAlign.Center:
+        return PopoverHorizontalAlign.Center;
+      default:
+        return isRtl ? PopoverHorizontalAlign.Right : PopoverHorizontalAlign.Left;
+    }
+  })();
+
   if (!open) return null;
   return createPortal(
     <Popover
       hideArrow
-      horizontalAlign={PopoverHorizontalAlign.Left}
+      horizontalAlign={horizontalAlign}
       placementType={PopoverPlacementType.Bottom}
       ref={ref}
       className={classes.popover}
