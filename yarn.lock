@@ -3566,9 +3566,9 @@
     pretty-format "^27.0.2"
 
 "@testing-library/jest-dom@^5.11.4":
-  version "5.16.0"
-  resolved "https://registry.yarnpkg.com/@testing-library/jest-dom/-/jest-dom-5.16.0.tgz#de1a7c5fedfeb80eb2be9fc81f61473973b302b3"
-  integrity sha512-ECygvCL6ufPfHna4fsk7o24+3PVNhRbioDpFbfSVEZaglT6EjuRP+w8I5tzigFz1fobpvCrVRoKyR4qx2QUCxw==
+  version "5.16.1"
+  resolved "https://registry.yarnpkg.com/@testing-library/jest-dom/-/jest-dom-5.16.1.tgz#3db7df5ae97596264a7da9696fe14695ba02e51f"
+  integrity sha512-ajUJdfDIuTCadB79ukO+0l8O+QwN0LiSxDaYUTI4LndbbUsGi6rWU1SCexXzBA2NSjlVB9/vbkasQIL3tmPBjw==
   dependencies:
     "@babel/runtime" "^7.9.2"
     "@types/testing-library__jest-dom" "^5.9.1"
@@ -6858,10 +6858,10 @@ core-js-pure@^3.8.2:
   resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.19.0.tgz#db6fdadfdd4dc280ec93b64c3c2e8460e6f10094"
   integrity sha512-UEQk8AxyCYvNAs6baNoPqDADv7BX0AmBLGxVsrAifPPx/C8EAzV4Q+2ZUJqVzfI2TQQEZITnwUkWcHpgc/IubQ==
 
-core-js@3.19.2, core-js@^3.0.4, core-js@^3.19.1, core-js@^3.6.5, core-js@^3.8.2:
-  version "3.19.2"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.19.2.tgz#ae216d7f4f7e924d9a2e3ff1e4b1940220f9157b"
-  integrity sha512-ciYCResnLIATSsXuXnIOH4CbdfgV+H1Ltg16hJFN7/v6OxqnFr/IFGeLacaZ+fHLAm0TBbXwNK9/DNBzBUrO/g==
+core-js@3.19.3, core-js@^3.0.4, core-js@^3.19.1, core-js@^3.6.5, core-js@^3.8.2:
+  version "3.19.3"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.19.3.tgz#6df8142a996337503019ff3235a7022d7cdf4559"
+  integrity sha512-LeLBMgEGSsG7giquSzvgBrTS7V5UL6ks3eQlUSbN8dJStlLFiRzUm5iqsRyzUB8carhfKjkJ2vzKqE6z1Vga9g==
 
 core-util-is@1.0.2:
   version "1.0.2"
