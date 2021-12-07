@@ -231,6 +231,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
         </div>
         {hasPopover && targetRef.current && (
           <ColumnHeaderModal
+            isRtl={isRtl}
             column={column}
             onSort={onSort}
             onGroupBy={onGroupBy}
