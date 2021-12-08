@@ -126,49 +126,60 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
 
   const positionKeys = vertical ? verticalPositionInfo : horizontalPositionInfo;
 
+  let timestamp;
+  let mX = 0;
+
   const handleSplitterMove = useCallback((e) => {
+    const now = Date.now();
+    const currentX = e.screenX;
+    const dt = now - timestamp;
+    const distance = Math.abs(currentX - mX);
+    const speed = Math.round((distance / dt) * 1000);
+
     const previousSibling = localRef.current.previousSibling;
     const nextSibling = localRef.current.nextSibling;
     const sizeDiv = e[`client${positionKeys.position}`] - start.current;
 
-    // Move splitter left
-    if (
-      sizeDiv < 0 &&
-      Number(window.getComputedStyle(previousSibling as HTMLElement)?.[positionKeys.min].replace('px', '')) !==
-        (previousSibling as HTMLElement).getBoundingClientRect()?.[positionKeys.size]
-    ) {
-      (previousSibling as HTMLElement).style.flex = `0 0 ${previousSiblingSize.current + sizeDiv}px`;
-      if (nextSibling.nextSibling && previousSiblingSize.current + sizeDiv > 0) {
-        (nextSibling as HTMLElement).style.flex = `0 0 ${nextSiblingSize.current - sizeDiv}px`;
+    if (speed < 1000) {
+      // Move splitter left
+      if (
+        sizeDiv < 0 &&
+        Number(window.getComputedStyle(previousSibling as HTMLElement)?.[positionKeys.min].replace('px', '')) !==
+          (previousSibling as HTMLElement).getBoundingClientRect()?.[positionKeys.size]
+      ) {
+        (previousSibling as HTMLElement).style.flex = `0 0 ${previousSiblingSize.current + sizeDiv}px`;
+        if (nextSibling.nextSibling && previousSiblingSize.current + sizeDiv > 0) {
+          (nextSibling as HTMLElement).style.flex = `0 0 ${nextSiblingSize.current - sizeDiv}px`;
+        }
+      }
+
+      // Move splitter right
+      if (
+        sizeDiv > 0 &&
+        (nextSibling.nextSibling
+          ? Math.round((nextSibling.nextSibling as HTMLElement)?.getBoundingClientRect()?.[positionKeys.start]) -
+              Math.round(localRef.current.getBoundingClientRect()?.[positionKeys.end]) >
+            20
+          : true) &&
+        Number(window.getComputedStyle(nextSibling as HTMLElement)?.[positionKeys.min].replace('px', '')) !==
+          (nextSibling as HTMLElement).getBoundingClientRect()?.[positionKeys.size] &&
+        Math.round(localRef.current.parentElement.getBoundingClientRect()?.[positionKeys.end]) -
+          Math.round(localRef.current.getBoundingClientRect()?.[positionKeys.end]) >
+          20
+      ) {
+        (previousSibling as HTMLElement).style.flex = `0 0 ${previousSiblingSize.current + sizeDiv}px`;
+        if (nextSibling.nextSibling && previousSiblingSize.current + sizeDiv > 0) {
+          (nextSibling as HTMLElement).style.flex = `0 0 ${nextSiblingSize.current - sizeDiv}px`;
+        }
+      }
+
+      if (!nextSibling.nextSibling) {
+        (nextSibling as HTMLElement).style.flex = '1 0 0px';
       }
     }
 
-    // Move splitter right
-    if (
-      sizeDiv > 0 &&
-      (nextSibling.nextSibling
-        ? Math.round((nextSibling.nextSibling as HTMLElement)?.getBoundingClientRect()?.[positionKeys.start]) -
-            Math.round(localRef.current.getBoundingClientRect()?.[positionKeys.end]) >
-          60
-        : true) &&
-      Number(window.getComputedStyle(nextSibling as HTMLElement)?.[positionKeys.min].replace('px', '')) !==
-        (nextSibling as HTMLElement).getBoundingClientRect()?.[positionKeys.size] &&
-      Math.round(localRef.current.parentElement.getBoundingClientRect()?.[positionKeys.end]) -
-        Math.round(localRef.current.getBoundingClientRect()?.[positionKeys.end]) >
-        60
-    ) {
-      (previousSibling as HTMLElement).style.flex = `0 0 ${previousSiblingSize.current + sizeDiv}px`;
-      if (nextSibling.nextSibling && previousSiblingSize.current + sizeDiv > 0) {
-        (nextSibling as HTMLElement).style.flex = `0 0 ${nextSiblingSize.current - sizeDiv}px`;
-      }
-    }
-
-    if (!nextSibling.nextSibling) {
-      (nextSibling as HTMLElement).style.flex = '1 0 auto';
-    }
-
-    console.log(localRef.current.getBoundingClientRect().x);
-    console.log(e[`client${positionKeys.position}`]);
+    mX = currentX;
+    timestamp = now;
   }, []);
 
   const handleMoveSplitterStart: MouseEventHandler = useCallback(
@@ -187,12 +198,20 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
       document.addEventListener(
         'mouseup',
         (e) => {
+          const splitterRect = (localRef.current as HTMLElement).getBoundingClientRect();
+          const prevSiblingRect = (localRef.current.previousSibling as HTMLElement).getBoundingClientRect();
+          const nextSiblingRect = (localRef.current.nextSibling as HTMLElement).getBoundingClientRect();
+
           if (
             e[`client${positionKeys.position}`] -
               localRef.current.getBoundingClientRect()?.[positionKeys.positionRect] >
             30
           ) {
-            console.log('FALL BACK: MOVE SPLITTER TO NEXT SIBLING');
+            (localRef.current.nextSibling as HTMLElement).style.flex = '0 0 0px';
+            (localRef.current.previousSibling as HTMLElement).style.flex = `0 0 ${
+              prevSiblingRect?.width + nextSiblingRect.width
+            }px`;
+            console.log('RIGHT');
           }
 
           if (
@@ -200,9 +219,13 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
               localRef.current.getBoundingClientRect()?.[positionKeys.positionRect] <
             -30
           ) {
-            console.log('FALL BACK: MOVE SPLITTER TO PREVIOUS SIBLING');
-          }
+            (localRef.current.previousSibling as HTMLElement).style.flex = '0 0 0px';
+            (localRef.current.nextSibling as HTMLElement).style.flex = `0 0 ${
+              nextSiblingRect?.width + prevSiblingRect.width
+            }px`;
 
+            console.log('IN');
+          }
           document.removeEventListener('mousemove', handleSplitterMove);
         },
         { once: true }
