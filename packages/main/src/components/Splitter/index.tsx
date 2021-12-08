@@ -140,18 +140,22 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
     const nextSibling = localRef.current.nextSibling;
     const sizeDiv = e[`client${positionKeys.position}`] - start.current;
 
-    if (speed < 1000) {
+    if (speed < 1000 && speed !== 0) {
       // Move splitter left
       if (
         sizeDiv < 0 &&
-        Number(window.getComputedStyle(previousSibling as HTMLElement)?.[positionKeys.min].replace('px', '')) !==
-          (previousSibling as HTMLElement).getBoundingClientRect()?.[positionKeys.size]
+        (previousSibling as HTMLElement).getBoundingClientRect()?.[positionKeys.size] -
+          Number((previousSibling as HTMLElement).style?.[positionKeys.min].replace('px', '')) >
+          20
       ) {
         (previousSibling as HTMLElement).style.flex = `0 0 ${previousSiblingSize.current + sizeDiv}px`;
         if (nextSibling.nextSibling && previousSiblingSize.current + sizeDiv > 0) {
           (nextSibling as HTMLElement).style.flex = `0 0 ${nextSiblingSize.current - sizeDiv}px`;
         }
       }
+
+      console.log((nextSibling as HTMLElement)?.style[positionKeys.min].replace('px', ''));
+      console.log((nextSibling as HTMLElement).getBoundingClientRect()?.[positionKeys.size]);
 
       // Move splitter right
       if (
@@ -161,8 +165,9 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
               Math.round(localRef.current.getBoundingClientRect()?.[positionKeys.end]) >
             20
           : true) &&
-        Number(window.getComputedStyle(nextSibling as HTMLElement)?.[positionKeys.min].replace('px', '')) !==
-          (nextSibling as HTMLElement).getBoundingClientRect()?.[positionKeys.size] &&
+        (nextSibling as HTMLElement).getBoundingClientRect()?.[positionKeys.size] -
+          Number((nextSibling as HTMLElement)?.style[positionKeys.min].replace('px', '')) >
+          20 &&
         Math.round(localRef.current.parentElement.getBoundingClientRect()?.[positionKeys.end]) -
           Math.round(localRef.current.getBoundingClientRect()?.[positionKeys.end]) >
           20
@@ -198,34 +203,53 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
       document.addEventListener(
         'mouseup',
         (e) => {
-          const splitterRect = (localRef.current as HTMLElement).getBoundingClientRect();
+          const prevSibling = localRef.current.previousSibling as HTMLElement;
+          const nextSibling = localRef.current.nextSibling as HTMLElement;
           const prevSiblingRect = (localRef.current.previousSibling as HTMLElement).getBoundingClientRect();
           const nextSiblingRect = (localRef.current.nextSibling as HTMLElement).getBoundingClientRect();
 
-          if (
-            e[`client${positionKeys.position}`] -
-              localRef.current.getBoundingClientRect()?.[positionKeys.positionRect] >
-            30
-          ) {
-            (localRef.current.nextSibling as HTMLElement).style.flex = '0 0 0px';
-            (localRef.current.previousSibling as HTMLElement).style.flex = `0 0 ${
-              prevSiblingRect?.width + nextSiblingRect.width
-            }px`;
-            console.log('RIGHT');
-          }
-
+          // Move cursor left of stopped splitter
           if (
             e[`client${positionKeys.position}`] -
               localRef.current.getBoundingClientRect()?.[positionKeys.positionRect] <
-            -30
+            -10
           ) {
-            (localRef.current.previousSibling as HTMLElement).style.flex = '0 0 0px';
-            (localRef.current.nextSibling as HTMLElement).style.flex = `0 0 ${
-              nextSiblingRect?.width + prevSiblingRect.width
-            }px`;
+            prevSibling.style.flex = '0 0 0px';
 
-            console.log('IN');
+            // Check if minSize is set on previous sibling
+            if (prevSibling.style?.[positionKeys.min]) {
+              nextSibling.style.flex = `0 0 ${
+                (nextSiblingRect?.[positionKeys.size] as number) +
+                (prevSiblingRect?.[positionKeys.size] - prevSibling.style?.[positionKeys.min].replace('px', ''))
+              }px`;
+            } else {
+              nextSibling.style.flex = `0 0 ${
+                (nextSiblingRect?.[positionKeys.size] as number) + prevSiblingRect?.[positionKeys.size]
+              }px`;
+            }
           }
+
+          // Move cursor right of stopped splitter
+          if (
+            e[`client${positionKeys.position}`] -
+              localRef.current.getBoundingClientRect()?.[positionKeys.positionRect] >
+            10
+          ) {
+            nextSibling.style.flex = '0 0 0px';
+
+            // Check if minSize is set on next sibling
+            if (nextSibling.style?.[positionKeys.min]) {
+              prevSibling.style.flex = `0 0 ${
+                (prevSiblingRect?.[positionKeys.size] as number) +
+                (nextSiblingRect?.[positionKeys.size] - nextSibling.style?.[positionKeys.min].replace('px', ''))
+              }px`;
+            } else {
+              prevSibling.style.flex = `0 0 ${
+                (prevSiblingRect?.[positionKeys.size] as number) + nextSiblingRect?.[positionKeys.size]
+              }px`;
+            }
+          }
+
           document.removeEventListener('mousemove', handleSplitterMove);
         },
         { once: true }
