@@ -40,16 +40,18 @@ export const useConcatSplitterElements = (
       }
     });
 
-    const indexOfLastElement = childrenArray.length - 1;
-    childrenArray[indexOfLastElement] = cloneElement(
-      childrenArray[indexOfLastElement],
-      Object.assign({}, childrenArray?.[indexOfLastElement]?.props, {
-        style: {
-          flex: '1 0 auto',
-          ...childrenArray[indexOfLastElement].props.style
-        }
-      })
-    );
+    if (children.length !== 0) {
+      const indexOfLastElement = childrenArray?.length - 1;
+      childrenArray[indexOfLastElement] = cloneElement(
+        childrenArray?.[indexOfLastElement],
+        Object.assign({}, childrenArray?.[indexOfLastElement]?.props, {
+          style: {
+            flex: '1 0 auto',
+            ...childrenArray?.[indexOfLastElement]?.props?.style
+          }
+        })
+      );
+    }
 
     return childrenArray;
   }, [children, width, height, vertical]);

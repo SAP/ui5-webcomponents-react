@@ -32,7 +32,7 @@ describe('SplitterLayout', () => {
     expect(screen.getByTestId('SplitterLayout')).toHaveStyle('width: 800px; height: 400px');
     expect(screen.getByTestId('SplitterElement1')).toHaveStyle('flex: 0 0 auto');
     expect(screen.getByTestId('SplitterElement2')).toHaveStyle('flex: 0 0 auto; min-width: 300px');
-    expect(screen.getByTestId('SplitterElement3')).toHaveStyle('flex: 0 0 auto');
+    expect(screen.getByTestId('SplitterElement3')).toHaveStyle('flex: 1 0 auto');
     expect(onClick).toHaveBeenCalled();
 
     expect(asFragment()).toMatchSnapshot();
