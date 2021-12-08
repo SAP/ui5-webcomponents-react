@@ -209,6 +209,8 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
       document.addEventListener(
         'mouseup',
         (e) => {
+          document.removeEventListener('mousemove', handleSplitterMove);
+
           const prevSibling = localRef.current.previousSibling as HTMLElement;
           const nextSibling = localRef.current.nextSibling as HTMLElement;
           const prevSiblingRect = (localRef.current.previousSibling as HTMLElement).getBoundingClientRect();
@@ -256,8 +258,6 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
             }
           }
           setIsDragging(true);
-          console.log(isDragging);
-          document.removeEventListener('mousemove', handleSplitterMove);
         },
         { once: true }
       );
