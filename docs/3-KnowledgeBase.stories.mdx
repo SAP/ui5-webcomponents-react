@@ -31,11 +31,13 @@ Here you need to tell `jest` to transpile the UI5 Web Components as well as the 
 }
 ```
 
-Since the UI5 Web Components for React are based on the `ResizeObserver` and `matchMedia` API, you'll need to polyfill both APIs.
-Therefore, create (or edit) your `src/setupTests.js` file:
+Since the UI5 Web Components for React are based on the `ResizeObserver`, `IntersectionObserver`, `fetch` and `matchMedia` API, you'll need to polyfill all of them.
+Therefore, create (or edit) your `src/setupTests.js` file as follows:
 
 ```js
 import ResizeObserverPolyfill from 'resize-observer-polyfill';
+import 'intersection-observer';
+import 'whatwg-fetch';
 
 const setupMatchMedia = () => {
   Object.defineProperty(window, 'matchMedia', {
