@@ -1,7 +1,7 @@
 import { useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { Icon } from '@ui5/webcomponents-react/dist/Icon';
-import React, { forwardRef, MouseEventHandler, Ref, TouchEventHandler, useCallback, useRef } from 'react';
+import React, { forwardRef, MouseEventHandler, Ref, TouchEventHandler, useCallback, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 
 const useStyles = createUseStyles(
@@ -124,68 +124,74 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
   const previousSiblingSize = useRef<number>(null);
   const nextSiblingSize = useRef<number>(null);
 
+  const [isDragging, setIsDragging] = useState(true);
+
   const positionKeys = vertical ? verticalPositionInfo : horizontalPositionInfo;
 
   let timestamp;
   let mX = 0;
 
-  const handleSplitterMove = useCallback((e) => {
-    const now = Date.now();
-    const currentX = e.screenX;
-    const dt = now - timestamp;
-    const distance = Math.abs(currentX - mX);
-    const speed = Math.round((distance / dt) * 1000);
+  const handleSplitterMove = useCallback(
+    (e) => {
+      const now = Date.now();
+      const currentX = e.screenX;
+      const dt = now - timestamp;
+      const distance = Math.abs(currentX - mX);
+      const speed = Math.round((distance / dt) * 1000);
 
-    const previousSibling = localRef.current.previousSibling;
-    const nextSibling = localRef.current.nextSibling;
-    const sizeDiv = e[`client${positionKeys.position}`] - start.current;
+      const previousSibling = localRef.current.previousSibling;
+      const nextSibling = localRef.current.nextSibling;
+      const sizeDiv = e[`client${positionKeys.position}`] - start.current;
 
-    if (speed < 1000 && speed !== 0) {
-      // Move splitter left
-      if (
-        sizeDiv < 0 &&
-        (previousSibling as HTMLElement).getBoundingClientRect()?.[positionKeys.size] -
-          Number((previousSibling as HTMLElement).style?.[positionKeys.min].replace('px', '')) >
-          20
-      ) {
-        (previousSibling as HTMLElement).style.flex = `0 0 ${previousSiblingSize.current + sizeDiv}px`;
-        if (nextSibling.nextSibling && previousSiblingSize.current + sizeDiv > 0) {
-          (nextSibling as HTMLElement).style.flex = `0 0 ${nextSiblingSize.current - sizeDiv}px`;
-        }
+      if (speed > 1000) {
+        setIsDragging(false);
       }
 
-      console.log((nextSibling as HTMLElement)?.style[positionKeys.min].replace('px', ''));
-      console.log((nextSibling as HTMLElement).getBoundingClientRect()?.[positionKeys.size]);
-
-      // Move splitter right
-      if (
-        sizeDiv > 0 &&
-        (nextSibling.nextSibling
-          ? Math.round((nextSibling.nextSibling as HTMLElement)?.getBoundingClientRect()?.[positionKeys.start]) -
-              Math.round(localRef.current.getBoundingClientRect()?.[positionKeys.end]) >
+      if (speed < 1000 && isDragging) {
+        // Move splitter left
+        if (
+          sizeDiv < 0 &&
+          (previousSibling as HTMLElement).getBoundingClientRect()?.[positionKeys.size] -
+            Number((previousSibling as HTMLElement).style?.[positionKeys.min].replace('px', '')) >
             20
-          : true) &&
-        (nextSibling as HTMLElement).getBoundingClientRect()?.[positionKeys.size] -
-          Number((nextSibling as HTMLElement)?.style[positionKeys.min].replace('px', '')) >
-          20 &&
-        Math.round(localRef.current.parentElement.getBoundingClientRect()?.[positionKeys.end]) -
-          Math.round(localRef.current.getBoundingClientRect()?.[positionKeys.end]) >
-          20
-      ) {
-        (previousSibling as HTMLElement).style.flex = `0 0 ${previousSiblingSize.current + sizeDiv}px`;
-        if (nextSibling.nextSibling && previousSiblingSize.current + sizeDiv > 0) {
-          (nextSibling as HTMLElement).style.flex = `0 0 ${nextSiblingSize.current - sizeDiv}px`;
+        ) {
+          (previousSibling as HTMLElement).style.flex = `0 0 ${previousSiblingSize.current + sizeDiv}px`;
+          if (nextSibling.nextSibling && previousSiblingSize.current + sizeDiv > 0) {
+            (nextSibling as HTMLElement).style.flex = `0 0 ${nextSiblingSize.current - sizeDiv}px`;
+          }
+        }
+
+        // Move splitter right
+        if (
+          sizeDiv > 0 &&
+          (nextSibling.nextSibling
+            ? Math.round((nextSibling.nextSibling as HTMLElement)?.getBoundingClientRect()?.[positionKeys.start]) -
+                Math.round(localRef.current.getBoundingClientRect()?.[positionKeys.end]) >
+              20
+            : true) &&
+          (nextSibling as HTMLElement).getBoundingClientRect()?.[positionKeys.size] -
+            Number((nextSibling as HTMLElement)?.style[positionKeys.min].replace('px', '')) >
+            20 &&
+          Math.round(localRef.current.parentElement.getBoundingClientRect()?.[positionKeys.end]) -
+            Math.round(localRef.current.getBoundingClientRect()?.[positionKeys.end]) >
+            20
+        ) {
+          (previousSibling as HTMLElement).style.flex = `0 0 ${previousSiblingSize.current + sizeDiv}px`;
+          if (nextSibling.nextSibling && previousSiblingSize.current + sizeDiv > 0) {
+            (nextSibling as HTMLElement).style.flex = `0 0 ${nextSiblingSize.current - sizeDiv}px`;
+          }
+        }
+
+        if (!nextSibling.nextSibling) {
+          (nextSibling as HTMLElement).style.flex = '1 0 0px';
         }
       }
 
-      if (!nextSibling.nextSibling) {
-        (nextSibling as HTMLElement).style.flex = '1 0 0px';
-      }
-    }
-
-    mX = currentX;
-    timestamp = now;
-  }, []);
+      mX = currentX;
+      timestamp = now;
+    },
+    [isDragging]
+  );
 
   const handleMoveSplitterStart: MouseEventHandler = useCallback(
     (e) => {
@@ -212,7 +218,7 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
           if (
             e[`client${positionKeys.position}`] -
               localRef.current.getBoundingClientRect()?.[positionKeys.positionRect] <
-            -10
+            -20
           ) {
             prevSibling.style.flex = '0 0 0px';
 
@@ -233,7 +239,7 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
           if (
             e[`client${positionKeys.position}`] -
               localRef.current.getBoundingClientRect()?.[positionKeys.positionRect] >
-            10
+            20
           ) {
             nextSibling.style.flex = '0 0 0px';
 
@@ -249,7 +255,8 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
               }px`;
             }
           }
-
+          setIsDragging(true);
+          console.log(isDragging);
           document.removeEventListener('mousemove', handleSplitterMove);
         },
         { once: true }
@@ -261,7 +268,8 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
       nextSiblingSize.current,
       start.current,
       handleSplitterMove,
-      positionKeys
+      positionKeys,
+      isDragging
     ]
   );
 

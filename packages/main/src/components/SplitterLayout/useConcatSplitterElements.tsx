@@ -43,7 +43,7 @@ export const useConcatSplitterElements = (
     const indexOfLastElement = childrenArray.length - 1;
     childrenArray[indexOfLastElement] = cloneElement(
       childrenArray[indexOfLastElement],
-      Object.assign({}, childrenArray[indexOfLastElement].props, {
+      Object.assign({}, childrenArray?.[indexOfLastElement]?.props, {
         style: {
           flex: '1 0 auto',
           ...childrenArray[indexOfLastElement].props.style
