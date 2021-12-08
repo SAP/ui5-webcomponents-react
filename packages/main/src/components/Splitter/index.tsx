@@ -193,6 +193,55 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
     [isDragging]
   );
 
+  const handleFallback = useCallback(
+    (e, touchEvent: boolean) => {
+      const prevSibling = localRef.current.previousSibling as HTMLElement;
+      const nextSibling = localRef.current.nextSibling as HTMLElement;
+      const prevSiblingRect = (localRef.current.previousSibling as HTMLElement).getBoundingClientRect();
+      const nextSiblingRect = (localRef.current.nextSibling as HTMLElement).getBoundingClientRect();
+
+      const startPos = touchEvent
+        ? Math.round(e.touches[0][`client${positionKeys.position}`])
+        : e[`client${positionKeys.position}`];
+
+      // Move cursor left of stopped splitter
+      if (startPos - localRef.current.getBoundingClientRect()?.[positionKeys.positionRect] < -20) {
+        prevSibling.style.flex = '0 0 0px';
+
+        // Check if minSize is set on previous sibling
+        if (prevSibling.style?.[positionKeys.min]) {
+          nextSibling.style.flex = `0 0 ${
+            (nextSiblingRect?.[positionKeys.size] as number) +
+            (prevSiblingRect?.[positionKeys.size] - prevSibling.style?.[positionKeys.min].replace('px', ''))
+          }px`;
+        } else {
+          nextSibling.style.flex = `0 0 ${
+            (nextSiblingRect?.[positionKeys.size] as number) + prevSiblingRect?.[positionKeys.size]
+          }px`;
+        }
+      }
+
+      // Move cursor right of stopped splitter
+      if (startPos - localRef.current.getBoundingClientRect()?.[positionKeys.positionRect] > 20) {
+        nextSibling.style.flex = '0 0 0px';
+
+        // Check if minSize is set on next sibling
+        if (nextSibling.style?.[positionKeys.min]) {
+          prevSibling.style.flex = `0 0 ${
+            (prevSiblingRect?.[positionKeys.size] as number) +
+            (nextSiblingRect?.[positionKeys.size] - nextSibling.style?.[positionKeys.min].replace('px', ''))
+          }px`;
+        } else {
+          prevSibling.style.flex = `0 0 ${
+            (prevSiblingRect?.[positionKeys.size] as number) + nextSiblingRect?.[positionKeys.size]
+          }px`;
+        }
+      }
+      setIsDragging(true);
+    },
+    [isDragging]
+  );
+
   const handleMoveSplitterStart: MouseEventHandler = useCallback(
     (e) => {
       e.preventDefault();
@@ -211,53 +260,7 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
         (e) => {
           document.removeEventListener('mousemove', handleSplitterMove);
 
-          const prevSibling = localRef.current.previousSibling as HTMLElement;
-          const nextSibling = localRef.current.nextSibling as HTMLElement;
-          const prevSiblingRect = (localRef.current.previousSibling as HTMLElement).getBoundingClientRect();
-          const nextSiblingRect = (localRef.current.nextSibling as HTMLElement).getBoundingClientRect();
-
-          // Move cursor left of stopped splitter
-          if (
-            e[`client${positionKeys.position}`] -
-              localRef.current.getBoundingClientRect()?.[positionKeys.positionRect] <
-            -20
-          ) {
-            prevSibling.style.flex = '0 0 0px';
-
-            // Check if minSize is set on previous sibling
-            if (prevSibling.style?.[positionKeys.min]) {
-              nextSibling.style.flex = `0 0 ${
-                (nextSiblingRect?.[positionKeys.size] as number) +
-                (prevSiblingRect?.[positionKeys.size] - prevSibling.style?.[positionKeys.min].replace('px', ''))
-              }px`;
-            } else {
-              nextSibling.style.flex = `0 0 ${
-                (nextSiblingRect?.[positionKeys.size] as number) + prevSiblingRect?.[positionKeys.size]
-              }px`;
-            }
-          }
-
-          // Move cursor right of stopped splitter
-          if (
-            e[`client${positionKeys.position}`] -
-              localRef.current.getBoundingClientRect()?.[positionKeys.positionRect] >
-            20
-          ) {
-            nextSibling.style.flex = '0 0 0px';
-
-            // Check if minSize is set on next sibling
-            if (nextSibling.style?.[positionKeys.min]) {
-              prevSibling.style.flex = `0 0 ${
-                (prevSiblingRect?.[positionKeys.size] as number) +
-                (nextSiblingRect?.[positionKeys.size] - nextSibling.style?.[positionKeys.min].replace('px', ''))
-              }px`;
-            } else {
-              prevSibling.style.flex = `0 0 ${
-                (prevSiblingRect?.[positionKeys.size] as number) + nextSiblingRect?.[positionKeys.size]
-              }px`;
-            }
-          }
-          setIsDragging(true);
+          handleFallback(e, false);
         },
         { once: true }
       );
@@ -288,8 +291,10 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
       document.addEventListener('touchmove', handleSplitterMove);
       document.addEventListener(
         'touchend',
-        () => {
+        (e) => {
           document.removeEventListener('touchmove', handleSplitterMove);
+
+          handleFallback(e, true);
         },
         { once: true }
       );
