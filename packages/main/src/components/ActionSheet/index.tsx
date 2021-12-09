@@ -150,7 +150,12 @@ const ActionSheet: FC<ActionSheetPropTypes> = forwardRef(
       }
     };
 
-    const handleKeyDown = useCallback(
+    const handleFocus = (handler) => (e) => {
+    if (typeof handler === 'function') {
+      handler(e);
+    }
+    setFocusedItem(e);
+  };const handleKeyDown = useCallback(
       (e) => {
         const currentIndex = parseInt(e.target.dataset.actionBtnIndex);
         if (e.key === 'ArrowDown' && currentIndex + 1 < childrenLength) {
@@ -168,12 +173,12 @@ const ActionSheet: FC<ActionSheetPropTypes> = forwardRef(
         role: 'button',
 
         'aria-label': `${i18nBundle.getText(X_OF_Y, index + 1, childrenArray.length)} ${element.props?.children}`,
-        ...element.props,
+        key: index,
+      tabIndex: focusedItem === index ? 0 : -1,...element.props,
         design: ButtonDesign.Transparent,
         onClick: onActionButtonClicked(element.props?.onClick),
-        tabIndex: focusedItem === index ? 0 : -1,
-        onFocus: setFocusedItem,
-        key: index,
+        onFocus: handleFocus(element.props?.
+        onFocus),
         'data-action-btn-index': index
       });
     };
