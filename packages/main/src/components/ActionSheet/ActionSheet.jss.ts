@@ -7,8 +7,11 @@ const styles = {
   actionSheet: {
     margin: 0,
     padding: '0.1875rem 0.375rem',
-    '& ui5-button': {
+    '& [ui5-button]': {
       display: 'block'
+    },
+    '& [ui5-button]:not([data-cancel-btn])::part(button)': {
+      justifyContent: 'flex-start'
     }
   },
   contentMobile: {
