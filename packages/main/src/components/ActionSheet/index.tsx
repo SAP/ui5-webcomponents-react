@@ -60,23 +60,14 @@ export interface ActionSheetPropTypes extends Omit<ResponsivePopoverPropTypes, '
 
 const useStyles = createUseStyles(styles, { name: 'ActionSheet' });
 
-addCustomCSS(
-  'ui5-button',
-  `
-  :host([data-action-btn-index]:not([design="Negative"])) .ui5-button-root {
-    justify-content: flex-start;
-  }
-  `
-);
-
 if (isPhone()) {
   addCustomCSS(
     'ui5-responsive-popover',
     `
-  :host([data-actionsheet]) ui5-button {
+  :host([data-actionsheet]) [ui5-button] {
     display: none;
   }
-  :host([data-actionsheet]) ui5-dialog {
+  :host([data-actionsheet]) [ui5-dialog] {
     top: auto !important;
     bottom: 0;
     height: auto;
@@ -86,7 +77,7 @@ if (isPhone()) {
     box-sizing: border-box;
     min-height: unset;
   }
-  :host([data-actionsheet]) ui5-title {
+  :host([data-actionsheet]) [ui5-title] {
     color: ${ThemingParameters.sapContent_ContrastTextColor} !important;
     text-shadow: none;
     text-align: start !important;
@@ -236,6 +227,7 @@ const ActionSheet: FC<ActionSheetPropTypes> = forwardRef(
               onClick={handleCancelBtnClick}
               tabIndex={focusedItem === childrenLength - 1 ? 0 : -1}
               data-action-btn-index={childrenLength - 1}
+              data-cancel-btn
               onFocus={setFocusedItem}
             >
               {i18nBundle.getText(CANCEL)}
