@@ -136,6 +136,13 @@ const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: RefObject<Resp
     }
   };
 
+  const handleFocus = (handler) => (e) => {
+    if (typeof handler === 'function') {
+      handler(e);
+    }
+    setFocusedItem(e);
+  };
+
   const handleKeyDown = useCallback(
     (e) => {
       const currentIndex = parseInt(e.target.dataset.actionBtnIndex);
@@ -153,12 +160,12 @@ const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: RefObject<Resp
     return cloneElement(element, {
       role: 'button',
       'aria-label': `${i18nBundle.getText(X_OF_Y, index + 1, childrenArray.length)} ${element.props?.children}`,
+      key: index,
+      tabIndex: focusedItem === index ? 0 : -1,
       ...element.props,
       design: ButtonDesign.Transparent,
       onClick: onActionButtonClicked(element.props?.onClick),
-      tabIndex: focusedItem === index ? 0 : -1,
-      onFocus: setFocusedItem,
-      key: index,
+      onFocus: handleFocus(element.props?.onFocus),
       'data-action-btn-index': index
     });
   };
