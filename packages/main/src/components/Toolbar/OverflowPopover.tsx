@@ -80,7 +80,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
         pressed={pressed}
       />
       {createPortal(
-        <Popover placementType={PopoverPlacementType.Bottom} ref={popoverRef} onAfterClose={handleClose}>
+        <Popover placementType={PopoverPlacementType.Bottom} ref={popoverRef} onAfterClose={handleClose} hideArrow>
           <div className={contentClass} ref={overflowContentRef}>
             {renderChildren()}
           </div>
