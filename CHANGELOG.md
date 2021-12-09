@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.131.27](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.26...v0.131.27) (2021-12-09)
+
+
+### Bug Fixes
+
+* **ActionSheet:** expose `tabIndex` and `onFocus` of action buttons ([#2390](https://github.com/SAP/ui5-webcomponents-react/issues/2390)) ([57890d4](https://github.com/SAP/ui5-webcomponents-react/commit/57890d439cc5b9ac678c069a57cf9f7d8b6870bf))
+* **ActionSheet:** reduce customCSS and respect scoping ([#2392](https://github.com/SAP/ui5-webcomponents-react/issues/2392)) ([4c09667](https://github.com/SAP/ui5-webcomponents-react/commit/4c0966751926e5be488fb6cd1472a58646629d6e))
+* **AnalyticalTable:** align column header popover with `hAlign` column option ([#2384](https://github.com/SAP/ui5-webcomponents-react/issues/2384)) ([b6230bc](https://github.com/SAP/ui5-webcomponents-react/commit/b6230bc54fcb8e0a8447ad8d28e13cadfdb0ff25))
+* **Toolbar:** fix Button alignment in overflow popover (spec compliance) ([#2395](https://github.com/SAP/ui5-webcomponents-react/issues/2395)) ([3ce5ef1](https://github.com/SAP/ui5-webcomponents-react/commit/3ce5ef183d85c487f7f83782a0f55d4ecf5ce81b))
+
+
+
+
+
 ## [0.131.26](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.25...v0.131.26) (2021-12-07)
 
 
