@@ -1,5 +1,5 @@
-import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { CssSizeVariables } from '@ui5/webcomponents-react-base/dist/CssSizeVariables';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 
 export const styles = {
   outerContainer: {
@@ -72,7 +72,16 @@ export const styles = {
     maxWidth: '20rem',
     padding: CssSizeVariables.sapWcrToolbarPopoverContentPadding,
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    '& [ui5-button]': {
+      marginBottom: '0.25rem'
+    },
+    '& [ui5-button]::part(button)': {
+      justifyContent: 'flex-start'
+    },
+    '& :last-child': {
+      marginBottom: 0
+    }
   },
   childContainer: { display: 'flex' }
 };
