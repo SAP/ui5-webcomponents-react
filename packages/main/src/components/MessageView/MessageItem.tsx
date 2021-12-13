@@ -19,13 +19,17 @@ import clsx from 'clsx';
 export interface MessageItemPropTypes extends CommonProps {
   /**
    * Specifies the title of the message
+   *
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use text or `Link` in order to preserve the intended design.
    */
-  titleText: string;
+  titleText: ReactNode;
 
   /**
    * Specifies the subtitle of the message
+   *
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
-  subtitleText?: string;
+  subtitleText?: ReactNode;
 
   /**
    * Defines the number of messages for a given message.
