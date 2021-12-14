@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.20.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.20.2...v0.20.3) (2021-12-09)
+
+
+### Bug Fixes
+
+* **ActionSheet:** expose `tabIndex` and `onFocus` of action buttons ([#2390](https://github.com/SAP/ui5-webcomponents-react/issues/2390)) ([94f05e2](https://github.com/SAP/ui5-webcomponents-react/commit/94f05e28489cd53f44996b9b8a4aea6e522e2d60))
+* **ActionSheet:** reduce customCSS and respect scoping ([#2392](https://github.com/SAP/ui5-webcomponents-react/issues/2392)) ([657094e](https://github.com/SAP/ui5-webcomponents-react/commit/657094e87714e33d33cb229aaa5b18b3c0db5910))
+* **AnalyticalTable:** align column header popover with `hAlign` column option ([#2384](https://github.com/SAP/ui5-webcomponents-react/issues/2384)) ([acc79dd](https://github.com/SAP/ui5-webcomponents-react/commit/acc79ddc03937f457c8660215399a603e6492fd9))
+* **DynamicPage:** correctly display footer in FCL ([#2379](https://github.com/SAP/ui5-webcomponents-react/issues/2379)) ([1dddb5a](https://github.com/SAP/ui5-webcomponents-react/commit/1dddb5a2b6304de9b010c92e1f9597d827d72301))
+* **Toolbar:** fix Button alignment in overflow popover (spec compliance) ([#2395](https://github.com/SAP/ui5-webcomponents-react/issues/2395)) ([73ded91](https://github.com/SAP/ui5-webcomponents-react/commit/73ded91b297771eba640512712b3c7ad7d3dc8b9))
+
+
+### Features
+
+* **DynamicPageTitle:** add `onToolbarOverflowChange` callback/prop ([d224f67](https://github.com/SAP/ui5-webcomponents-react/commit/d224f677e34c03b822e1f3b38eb59502d3a152fc))
+* **Toolbar:** add `onOverflowChange` callback/prop ([#2377](https://github.com/SAP/ui5-webcomponents-react/issues/2377)) ([bf3b3aa](https://github.com/SAP/ui5-webcomponents-react/commit/bf3b3aa7b1d776d8545e5fce210b5d6899562443))
+
+
+
+
+
 ## [0.20.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.20.1...v0.20.2) (2021-12-03)
 
 
