@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.20.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.20.3...v0.20.4) (2021-12-15)
+
+
+### Bug Fixes
+
+* use fully specified paths for all web component imports ([#2418](https://github.com/SAP/ui5-webcomponents-react/issues/2418)) ([b972dc8](https://github.com/SAP/ui5-webcomponents-react/commit/b972dc867eface52814806796dcd111ec8761ac3))
+
+
+
+
+
 ## [0.20.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.20.2...v0.20.3) (2021-12-09)
 
 
