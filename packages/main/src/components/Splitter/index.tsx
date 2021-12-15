@@ -1,7 +1,16 @@
 import { useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { Icon } from '@ui5/webcomponents-react/dist/Icon';
-import React, { forwardRef, MouseEventHandler, Ref, TouchEventHandler, useCallback, useRef, useState } from 'react';
+import React, {
+  forwardRef,
+  MouseEventHandler,
+  Ref,
+  TouchEventHandler,
+  useCallback,
+  useEffect,
+  useRef,
+  useState
+} from 'react';
 import { createUseStyles } from 'react-jss';
 
 const useStyles = createUseStyles(
@@ -15,6 +24,8 @@ const useStyles = createUseStyles(
       backgroundColor: ThemingParameters.sapShell_Background,
       alignItems: 'center',
       justifyContent: 'center',
+      userSelect: 'none',
+      boxSizing: 'border-box',
 
       '&[data-splitter-vertical=true]': {
         cursor: 'col-resize',
@@ -190,7 +201,7 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
       mX = currentX;
       timestamp = now;
     },
-    [isDragging]
+    [isDragging, localRef.current]
   );
 
   const handleFallback = useCallback(
@@ -242,9 +253,26 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
     [isDragging]
   );
 
+  const setBorderStyle = useCallback(
+    (e) => {
+      if (!localRef.current?.contains(e.target as Node)) {
+        localRef.current.style.borderInline = 'none';
+        document.removeEventListener('keydown', onHandleKeyDown);
+        document.removeEventListener('click', setBorderStyle);
+        return;
+      }
+      localRef.current.style.borderInline = `1px dotted ${ThemingParameters.sapHighlightColor}`;
+    },
+    [localRef.current]
+  );
+
   const handleMoveSplitterStart: MouseEventHandler = useCallback(
     (e) => {
       e.preventDefault();
+
+      document.addEventListener('keydown', onHandleKeyDown);
+      document.addEventListener('click', setBorderStyle);
+
       previousSiblingSize.current = (localRef.current.previousSibling as HTMLElement).getBoundingClientRect()?.[
         positionKeys.size
       ];
@@ -259,7 +287,6 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
         'mouseup',
         (e) => {
           document.removeEventListener('mousemove', handleSplitterMove);
-
           handleFallback(e, false);
         },
         { once: true }
@@ -279,6 +306,7 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
   const handleTouchMoveSplitterStart: TouchEventHandler = useCallback(
     (e) => {
       e.preventDefault();
+
       previousSiblingSize.current = (localRef.current.previousSibling as HTMLElement).getBoundingClientRect()?.[
         positionKeys.size
       ];
@@ -307,6 +335,31 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
       handleSplitterMove,
       positionKeys
     ]
+  );
+
+  const onHandleKeyDown = useCallback(
+    (e: KeyboardEvent) => {
+      e.preventDefault();
+      const prevSibling = localRef.current.previousSibling as HTMLElement;
+      const nextSibling = localRef.current.nextSibling as HTMLElement;
+
+      if (
+        localRef.current?.style.borderInline === `1px dotted ${ThemingParameters.sapHighlightColor}` &&
+        e.code === 'ArrowRight'
+      ) {
+        nextSibling.style.flexBasis = `${nextSibling.getBoundingClientRect().width - 5}px`;
+        prevSibling.style.flexBasis = `${prevSibling.getBoundingClientRect().width + 5}px`;
+      }
+
+      if (
+        localRef.current?.style.borderInline === `1px dotted ${ThemingParameters.sapHighlightColor}` &&
+        e.key === 'ArrowLeft'
+      ) {
+        prevSibling.style.flexBasis = `${prevSibling.getBoundingClientRect().width - 5}px`;
+        nextSibling.style.flexBasis = `${nextSibling.getBoundingClientRect().width + 5}px`;
+      }
+    },
+    [localRef.current]
   );
 
   return (
