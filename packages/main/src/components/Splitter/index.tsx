@@ -359,7 +359,7 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
         if (
           localRef.current?.style.border === `1px dotted ${ThemingParameters.sapHighlightColor}` &&
           prevSibling.style.minWidth !== ''
-            ? prevSibling.getBoundingClientRect().width - 5 - Number(nextSibling.style.minWidth.replace('px', '')) > 0
+            ? prevSibling.getBoundingClientRect().width - 5 - Number(prevSibling.style.minWidth.replace('px', '')) > 0
             : prevSibling.getBoundingClientRect().width - 5 > 0
         ) {
           prevSibling.style.flexBasis = `${prevSibling.getBoundingClientRect().width - 5}px`;
