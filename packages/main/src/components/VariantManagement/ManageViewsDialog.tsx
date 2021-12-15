@@ -1,3 +1,5 @@
+import { isPhone, isTablet } from '@ui5/webcomponents-base/dist/Device.js';
+import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming.js';
 import '@ui5/webcomponents-icons/dist/decline.js';
 import '@ui5/webcomponents-icons/dist/favorite.js';
 import '@ui5/webcomponents-icons/dist/unfavorite.js';
@@ -21,8 +23,6 @@ import React, { Children, ComponentElement, MouseEventHandler, ReactNode, useEff
 import { createPortal } from 'react-dom';
 import { ManageViewsTableRows } from './MangeViewsTableRows';
 import { VariantItemPropTypes } from './VariantItem';
-import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming';
-import { isPhone, isTablet } from '@ui5/webcomponents-base/dist/Device';
 
 addCustomCSS(
   'ui5-dialog',
