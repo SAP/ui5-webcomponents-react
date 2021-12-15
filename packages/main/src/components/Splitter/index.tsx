@@ -106,7 +106,9 @@ const verticalPositionInfo = {
   position: 'X',
   positionRect: 'x',
   size: 'width',
-  min: 'minWidth'
+  min: 'minWidth',
+  arrowForward: 'Right',
+  arrowBackward: 'Left'
 };
 
 const horizontalPositionInfo = {
@@ -115,7 +117,9 @@ const horizontalPositionInfo = {
   position: 'Y',
   positionRect: 'y',
   size: 'height',
-  min: 'minHeight'
+  min: 'minHeight',
+  arrowForward: 'Down',
+  arrowBackward: 'Up'
 };
 
 const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>) => {
@@ -335,27 +339,33 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
       const prevSibling = localRef.current.previousSibling as HTMLElement;
       const nextSibling = localRef.current.nextSibling as HTMLElement;
 
-      if (e.code === 'ArrowRight') {
+      if (e.code === `Arrow${positionKeys.arrowForward}`) {
         if (
           localRef.current?.style.border === `1px dotted ${ThemingParameters.sapHighlightColor}` &&
-          nextSibling.style.minWidth !== ''
-            ? nextSibling.getBoundingClientRect().width - 5 - Number(nextSibling.style.minWidth.replace('px', '')) > 0
-            : nextSibling.getBoundingClientRect().width - 5 > 0
+          nextSibling.style[positionKeys.min] !== ''
+            ? nextSibling.getBoundingClientRect()?.[positionKeys.size] -
+                5 -
+                Number(nextSibling.style[positionKeys.min].replace('px', '')) >
+              0
+            : nextSibling.getBoundingClientRect()?.[positionKeys.size] - 5 > 0
         ) {
-          nextSibling.style.flexBasis = `${nextSibling.getBoundingClientRect().width - 5}px`;
-          prevSibling.style.flexBasis = `${prevSibling.getBoundingClientRect().width + 5}px`;
+          nextSibling.style.flexBasis = `${nextSibling.getBoundingClientRect()?.[positionKeys.size] - 5}px`;
+          prevSibling.style.flexBasis = `${prevSibling.getBoundingClientRect()?.[positionKeys.size] + 5}px`;
         }
       }
 
-      if (e.code === 'ArrowLeft') {
+      if (e.code === `Arrow${positionKeys.arrowBackward}`) {
         if (
           localRef.current?.style.border === `1px dotted ${ThemingParameters.sapHighlightColor}` &&
-          prevSibling.style.minWidth !== ''
-            ? prevSibling.getBoundingClientRect().width - 5 - Number(prevSibling.style.minWidth.replace('px', '')) > 0
-            : prevSibling.getBoundingClientRect().width - 5 > 0
+          prevSibling.style[positionKeys.min] !== ''
+            ? prevSibling.getBoundingClientRect()?.[positionKeys.size] -
+                5 -
+                Number(prevSibling.style[positionKeys.min].replace('px', '')) >
+              0
+            : prevSibling.getBoundingClientRect()?.[positionKeys.size] - 5 > 0
         ) {
-          prevSibling.style.flexBasis = `${prevSibling.getBoundingClientRect().width - 5}px`;
-          nextSibling.style.flexBasis = `${nextSibling.getBoundingClientRect().width + 5}px`;
+          prevSibling.style.flexBasis = `${prevSibling.getBoundingClientRect()?.[positionKeys.size] - 5}px`;
+          nextSibling.style.flexBasis = `${nextSibling.getBoundingClientRect()?.[positionKeys.size] + 5}px`;
         }
       }
     },
