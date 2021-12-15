@@ -1,16 +1,8 @@
 import { useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { Icon } from '@ui5/webcomponents-react/dist/Icon';
-import React, {
-  forwardRef,
-  MouseEventHandler,
-  Ref,
-  TouchEventHandler,
-  useCallback,
-  useEffect,
-  useRef,
-  useState
-} from 'react';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import React, { forwardRef, MouseEventHandler, Ref, TouchEventHandler, useCallback, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 
 const useStyles = createUseStyles(
@@ -102,7 +94,7 @@ const useStyles = createUseStyles(
   { name: 'Splitter' }
 );
 
-export interface SplitterPropTypes {
+export interface SplitterPropTypes extends CommonProps {
   height: string | number;
   width: string | number;
   vertical: boolean;
@@ -127,7 +119,7 @@ const horizontalPositionInfo = {
 };
 
 const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>) => {
-  const { vertical } = props;
+  const { vertical, tooltip } = props;
   const classes = useStyles();
   const [componentRef, localRef] = useSyncRef<HTMLDivElement>(ref);
   const start = useRef(null);
@@ -376,8 +368,10 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
       onTouchStart={handleTouchMoveSplitterStart}
       onMouseDown={handleMoveSplitterStart}
       ref={componentRef}
-      role="separator"
+      role="resizer"
       data-splitter-vertical={vertical}
+      aria-label={'Resizer'}
+      title={tooltip}
     >
       <div className={classes.lineBefore} />
       <Icon className={classes.icon} name={vertical ? 'vertical-grip' : 'horizontal-grip'} />
