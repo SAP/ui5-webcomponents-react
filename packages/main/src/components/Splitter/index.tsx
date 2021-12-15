@@ -343,20 +343,28 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
       const prevSibling = localRef.current.previousSibling as HTMLElement;
       const nextSibling = localRef.current.nextSibling as HTMLElement;
 
-      if (
-        localRef.current?.style.borderInline === `1px dotted ${ThemingParameters.sapHighlightColor}` &&
-        e.code === 'ArrowRight'
-      ) {
-        nextSibling.style.flexBasis = `${nextSibling.getBoundingClientRect().width - 5}px`;
-        prevSibling.style.flexBasis = `${prevSibling.getBoundingClientRect().width + 5}px`;
+      if (e.code === 'ArrowRight') {
+        if (
+          localRef.current?.style.borderInline === `1px dotted ${ThemingParameters.sapHighlightColor}` &&
+          nextSibling.style.minWidth !== ''
+            ? nextSibling.getBoundingClientRect().width - 5 - Number(nextSibling.style.minWidth.replace('px', '')) > 0
+            : nextSibling.getBoundingClientRect().width - 5 > 0
+        ) {
+          nextSibling.style.flexBasis = `${nextSibling.getBoundingClientRect().width - 5}px`;
+          prevSibling.style.flexBasis = `${prevSibling.getBoundingClientRect().width + 5}px`;
+        }
       }
 
-      if (
-        localRef.current?.style.borderInline === `1px dotted ${ThemingParameters.sapHighlightColor}` &&
-        e.key === 'ArrowLeft'
-      ) {
-        prevSibling.style.flexBasis = `${prevSibling.getBoundingClientRect().width - 5}px`;
-        nextSibling.style.flexBasis = `${nextSibling.getBoundingClientRect().width + 5}px`;
+      if (e.code === 'ArrowLeft') {
+        if (
+          localRef.current?.style.borderInline === `1px dotted ${ThemingParameters.sapHighlightColor}` &&
+          prevSibling.style.minWidth !== ''
+            ? prevSibling.getBoundingClientRect().width - 5 - Number(nextSibling.style.minWidth.replace('px', '')) > 0
+            : prevSibling.getBoundingClientRect().width - 5 > 0
+        ) {
+          prevSibling.style.flexBasis = `${prevSibling.getBoundingClientRect().width - 5}px`;
+          nextSibling.style.flexBasis = `${nextSibling.getBoundingClientRect().width + 5}px`;
+        }
       }
     },
     [localRef.current]
