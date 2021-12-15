@@ -256,12 +256,12 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
   const setBorderStyle = useCallback(
     (e) => {
       if (!localRef.current?.contains(e.target as Node)) {
-        localRef.current.style.borderInline = 'none';
+        localRef.current.style.border = 'none';
         document.removeEventListener('keydown', onHandleKeyDown);
         document.removeEventListener('click', setBorderStyle);
         return;
       }
-      localRef.current.style.borderInline = `1px dotted ${ThemingParameters.sapHighlightColor}`;
+      localRef.current.style.border = `1px dotted ${ThemingParameters.sapHighlightColor}`;
     },
     [localRef.current]
   );
@@ -345,7 +345,7 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
 
       if (e.code === 'ArrowRight') {
         if (
-          localRef.current?.style.borderInline === `1px dotted ${ThemingParameters.sapHighlightColor}` &&
+          localRef.current?.style.border === `1px dotted ${ThemingParameters.sapHighlightColor}` &&
           nextSibling.style.minWidth !== ''
             ? nextSibling.getBoundingClientRect().width - 5 - Number(nextSibling.style.minWidth.replace('px', '')) > 0
             : nextSibling.getBoundingClientRect().width - 5 > 0
@@ -357,7 +357,7 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
 
       if (e.code === 'ArrowLeft') {
         if (
-          localRef.current?.style.borderInline === `1px dotted ${ThemingParameters.sapHighlightColor}` &&
+          localRef.current?.style.border === `1px dotted ${ThemingParameters.sapHighlightColor}` &&
           prevSibling.style.minWidth !== ''
             ? prevSibling.getBoundingClientRect().width - 5 - Number(nextSibling.style.minWidth.replace('px', '')) > 0
             : prevSibling.getBoundingClientRect().width - 5 > 0
