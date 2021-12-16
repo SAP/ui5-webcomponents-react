@@ -144,20 +144,22 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
 
   const [componentRef, chartRef] = useSyncRef<any>(ref);
 
-  const chartConfig = useMemo(() => {
-    return {
-      yAxisVisible: false,
-      xAxisVisible: true,
-      gridStroke: ThemingParameters.sapList_BorderColor,
-      gridHorizontal: true,
-      gridVertical: false,
-      legendPosition: 'bottom',
-      legendHorizontalAlign: 'left',
-      zoomingTool: false,
-      resizeDebounce: 250,
-      ...props.chartConfig
-    };
-  }, [props.chartConfig]);
+  const chartConfig = {
+    yAxisVisible: false,
+    xAxisVisible: true,
+    gridStroke: ThemingParameters.sapList_BorderColor,
+    gridHorizontal: true,
+    gridVertical: false,
+    legendPosition: 'bottom',
+    legendHorizontalAlign: 'left',
+    zoomingTool: false,
+    resizeDebounce: 250,
+    yAxisConfig: {},
+    xAxisConfig: {},
+    secondYAxisConfig: {},
+    secondXAxisConfig: {},
+    ...props.chartConfig
+  };
 
   const { dimensions, measures } = usePrepareDimensionsAndMeasures(
     props.dimensions,
@@ -325,6 +327,7 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
             width={yAxisWidth}
             orientation={isRTL ? 'right' : 'left'}
             tick={<YAxisTicks config={primaryMeasure} />}
+            {...chartConfig.yAxisConfig}
           />
         )}
         {layout === 'vertical' && (
@@ -334,6 +337,7 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
             xAxisId="primary"
             type="number"
             tick={<XAxisTicks config={primaryMeasure} />}
+            {...chartConfig.xAxisConfig}
           />
         )}
         {chartConfig.secondYAxis?.dataKey && layout === 'horizontal' && (
@@ -364,6 +368,7 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
             orientation={isRTL ? 'left' : 'right'}
             interval={0}
             yAxisId="secondary"
+            {...chartConfig.secondYAxisConfig}
           />
         )}
         {chartConfig.secondYAxis?.dataKey && layout === 'vertical' && (
@@ -390,6 +395,7 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
             interval={0}
             xAxisId="secondary"
             type="number"
+            {...chartConfig.secondXAxisConfig}
           />
         )}
         {layout === 'horizontal' && <XAxis xAxisId={'comparisonXAxis'} hide />}

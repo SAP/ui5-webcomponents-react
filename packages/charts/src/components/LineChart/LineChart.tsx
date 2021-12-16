@@ -8,7 +8,7 @@ import { YAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/YAxi
 import { LineChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/LineChartPlaceholder';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/dist/useLegendItemClick';
 import { resolvePrimaryAndSecondaryMeasures } from '@ui5/webcomponents-react-charts/dist/Utils';
-import React, { FC, forwardRef, Ref, useCallback, useMemo, useRef } from 'react';
+import React, { FC, forwardRef, Ref, useCallback, useRef } from 'react';
 import {
   Brush,
   CartesianGrid,
@@ -124,21 +124,22 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     ...rest
   } = props;
 
-  const chartConfig = useMemo(() => {
-    return {
-      yAxisVisible: false,
-      xAxisVisible: true,
-      gridStroke: ThemingParameters.sapList_BorderColor,
-      gridHorizontal: true,
-      gridVertical: false,
-      legendPosition: 'bottom',
-      legendHorizontalAlign: 'left',
-      zoomingTool: false,
-      resizeDebounce: 250,
-      yAxisTicksVisible: true,
-      ...props.chartConfig
-    };
-  }, [props.chartConfig]);
+  const chartConfig = {
+    yAxisVisible: false,
+    xAxisVisible: true,
+    gridStroke: ThemingParameters.sapList_BorderColor,
+    gridHorizontal: true,
+    gridVertical: false,
+    legendPosition: 'bottom',
+    legendHorizontalAlign: 'left',
+    zoomingTool: false,
+    resizeDebounce: 250,
+    yAxisTicksVisible: true,
+    yAxisConfig: {},
+    xAxisConfig: {},
+    secondYAxisConfig: {},
+    ...props.chartConfig
+  };
 
   const { dimensions, measures } = usePrepareDimensionsAndMeasures(
     props.dimensions,
@@ -241,6 +242,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
               padding={xAxisPadding}
               allowDuplicatedCategory={index === 0}
               reversed={isRTL}
+              {...chartConfig.xAxisConfig}
             />
           );
         })}
@@ -253,6 +255,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
           interval={0}
           tick={chartConfig.yAxisTicksVisible && <YAxisTicks config={primaryMeasure} />}
           width={yAxisWidth}
+          {...chartConfig.yAxisConfig}
         />
         {chartConfig.secondYAxis?.dataKey && (
           <YAxis
@@ -277,6 +280,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
             orientation={isRTL === true ? 'left' : 'right'}
             yAxisId="right"
             interval={0}
+            {...chartConfig.secondYAxisConfig}
           />
         )}
         {measures.map((element, index) => {
