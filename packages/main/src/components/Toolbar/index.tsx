@@ -218,14 +218,7 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
       }
       setLastVisibleIndex(lastIndex);
     });
-  }, [
-    outerContainer.current,
-    controlMetaData.current,
-    setLastVisibleIndex,
-    childrenWithRef,
-    overflowNeeded,
-    numberOfAlwaysVisibleItems
-  ]);
+  }, [outerContainer.current, controlMetaData.current, setLastVisibleIndex, childrenWithRef, overflowNeeded]);
 
   const observer = useRef(new ResizeObserver(calculateVisibleItems));
 
