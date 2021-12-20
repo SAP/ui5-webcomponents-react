@@ -6,7 +6,7 @@ import { XAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/XAxi
 import { YAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/YAxisTicks';
 import { ScatterChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/ScatterChartPlaceholder';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/dist/useLegendItemClick';
-import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo, useRef } from 'react';
+import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useRef } from 'react';
 import {
   CartesianGrid,
   Label,
@@ -148,20 +148,18 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
     ...rest
   } = props;
 
-  const chartConfig = useMemo(() => {
-    return {
-      yAxisVisible: false,
-      xAxisVisible: true,
-      gridStroke: ThemingParameters.sapList_BorderColor,
-      gridHorizontal: true,
-      gridVertical: false,
-      legendPosition: 'bottom',
-      legendHorizontalAlign: 'left',
-      zoomingTool: false,
-      resizeDebounce: 250,
-      ...props.chartConfig
-    };
-  }, [props.chartConfig]);
+  const chartConfig = {
+    yAxisVisible: false,
+    xAxisVisible: true,
+    gridStroke: ThemingParameters.sapList_BorderColor,
+    gridHorizontal: true,
+    gridVertical: false,
+    legendPosition: 'bottom',
+    legendHorizontalAlign: 'left',
+    zoomingTool: false,
+    resizeDebounce: 250,
+    ...props.chartConfig
+  };
 
   const { measures } = usePrepareDimensionsAndMeasures([], props.measures, {}, measureDefaults);
 
