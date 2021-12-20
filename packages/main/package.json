@@ -42,6 +42,8 @@
     "react-virtual": "2.10.0"
   },
   "peerDependencies": {
+    "@types/react": "*",
+    "@types/react-dom": "*",
     "@ui5/webcomponents": "~1.0.2",
     "@ui5/webcomponents-base": "~1.0.2",
     "@ui5/webcomponents-fiori": "~1.0.2",
@@ -50,6 +52,12 @@
     "react-dom": "^16.8.0 || ^17.0.0"
   },
   "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    },
+    "@types/react-dom": {
+      "optional": true
+    },
     "@ui5/webcomponents-base": {
       "optional": true
     },
