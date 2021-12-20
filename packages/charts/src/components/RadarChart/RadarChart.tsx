@@ -4,7 +4,7 @@ import { ChartContainer } from '@ui5/webcomponents-react-charts/dist/components/
 import { ChartDataLabel } from '@ui5/webcomponents-react-charts/dist/components/ChartDataLabel';
 import { PieChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/PieChartPlaceholder';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/dist/useLegendItemClick';
-import React, { FC, forwardRef, Ref, useCallback, useMemo, useRef } from 'react';
+import React, { FC, forwardRef, Ref, useCallback, useRef } from 'react';
 import {
   Legend,
   PolarAngleAxis,
@@ -94,16 +94,14 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
     ...rest
   } = props;
 
-  const chartConfig = useMemo(() => {
-    return {
-      legendPosition: 'bottom',
-      legendHorizontalAlign: 'center',
-      dataLabel: true,
-      polarGridType: 'circle' as 'circle',
-      resizeDebounce: 250,
-      ...props.chartConfig
-    };
-  }, [props.chartConfig]);
+  const chartConfig = {
+    legendPosition: 'bottom',
+    legendHorizontalAlign: 'center',
+    dataLabel: true,
+    polarGridType: 'circle' as 'circle',
+    resizeDebounce: 250,
+    ...props.chartConfig
+  };
 
   const { dimensions, measures } = usePrepareDimensionsAndMeasures(
     props.dimensions,
