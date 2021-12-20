@@ -160,19 +160,19 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
     React.Children.count(childrenWithRef) !== lastVisibleIndex + 1 &&
     numberOfAlwaysVisibleItems < React.Children.count(children);
 
-  const lastElementResizeObserver = useRef(null);
   useEffect(() => {
+    let lastElementResizeObserver;
     const lastElement = contentRef.current.children[numberOfAlwaysVisibleItems - 1];
     if (numberOfAlwaysVisibleItems && overflowNeeded && lastElement) {
-      lastElementResizeObserver.current = new ResizeObserver(
+      lastElementResizeObserver = new ResizeObserver(
         debounce(() => {
           setMinWidth(`${lastElement.getBoundingClientRect().right + OVERFLOW_BUTTON_WIDTH}px`);
         }, 200)
       );
-      lastElementResizeObserver.current.observe(contentRef.current);
+      lastElementResizeObserver.observe(contentRef.current);
     }
     return () => {
-      lastElementResizeObserver.current?.disconnect();
+      lastElementResizeObserver?.disconnect();
     };
   }, [numberOfAlwaysVisibleItems, overflowNeeded]);
 
