@@ -110,7 +110,7 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
   const contentRef = useRef(null);
   const overflowContentRef = useRef(null);
   const overflowBtnRef = useRef(null);
-  const [minWidth, setMinWdith] = useState('0');
+  const [minWidth, setMinWidth] = useState('0');
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
@@ -158,15 +158,15 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
   const overflowNeeded =
     (lastVisibleIndex || lastVisibleIndex === 0) &&
     React.Children.count(childrenWithRef) !== lastVisibleIndex + 1 &&
-    (!numberOfAlwaysVisibleItems || numberOfAlwaysVisibleItems < React.Children.count(children));
+    numberOfAlwaysVisibleItems < React.Children.count(children);
 
   const lastElementResizeObserver = useRef(null);
   useEffect(() => {
     const lastElement = contentRef.current.children[numberOfAlwaysVisibleItems - 1];
     if (numberOfAlwaysVisibleItems && overflowNeeded && lastElement) {
       lastElementResizeObserver.current = new ResizeObserver(
-        debounce(([element]) => {
-          setMinWdith(`${lastElement.getBoundingClientRect().right + OVERFLOW_BUTTON_WIDTH}px`);
+        debounce(() => {
+          setMinWidth(`${lastElement.getBoundingClientRect().right + OVERFLOW_BUTTON_WIDTH}px`);
         }, 200)
       );
       lastElementResizeObserver.current.observe(contentRef.current);
@@ -275,10 +275,7 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
       <div className={classes.toolbar} data-component-name="ToolbarContent" ref={contentRef}>
         {overflowNeeded &&
           React.Children.map(childrenWithRef, (item, index) => {
-            if (
-              index >= lastVisibleIndex + 1 &&
-              (!numberOfAlwaysVisibleItems || index > numberOfAlwaysVisibleItems - 1)
-            ) {
+            if (index >= lastVisibleIndex + 1 && index > numberOfAlwaysVisibleItems - 1) {
               return React.cloneElement(item as ReactElement, { style: { visibility: 'hidden' } });
             }
             return item;
@@ -317,7 +314,8 @@ Toolbar.defaultProps = {
   toolbarStyle: ToolbarStyle.Standard,
   design: ToolbarDesign.Auto,
   active: false,
-  portalContainer: document.body
+  portalContainer: document.body,
+  numberOfAlwaysVisibleItems: 0
 };
 
 Toolbar.displayName = 'Toolbar';

@@ -57,7 +57,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
     return React.Children.toArray(
       (children as ReactElement)?.type === React.Fragment ? (children as ReactElement).props.children : children
     ).map((item: ReactElement<any>, index) => {
-      if (index > lastVisibleIndex && (!numberOfAlwaysVisibleItems || index > numberOfAlwaysVisibleItems - 1)) {
+      if (index > lastVisibleIndex && index > numberOfAlwaysVisibleItems - 1) {
         if ((item.type as any).displayName === 'ToolbarSeparator') {
           return React.cloneElement(item, {
             style: {
