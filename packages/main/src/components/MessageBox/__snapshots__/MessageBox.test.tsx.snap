@@ -172,6 +172,56 @@ exports[`MessageBox Custom Action Text 1`] = `
 </DocumentFragment>
 `;
 
+exports[`MessageBox Custom Button 1`] = `
+<DocumentFragment>
+  <ui5-dialog
+    accessible-name="Confirmation My Message Box Content"
+    class="MessageBox-messageBox"
+    opened=""
+    style="z-index: 104; display: flex; top: 384px; left: 512px;"
+    ui5-dialog=""
+  >
+    <header
+      class="MessageBox-header"
+      data-type="Confirm"
+      slot="header"
+    >
+      <ui5-icon
+        name="question-mark"
+        ui5-icon=""
+      />
+      <span
+        class="MessageBox-spacer"
+      />
+      <ui5-title
+        level="H2"
+        ui5-title=""
+      >
+        Confirmation
+      </ui5-title>
+    </header>
+    <span
+      class="Text-text MessageBox-content"
+    >
+      My Message Box Content
+    </span>
+    <footer
+      class="MessageBox-footer"
+      slot="footer"
+    >
+      <ui5-button
+        data-action="0: custom action"
+        design="Default"
+        id="0"
+        ui5-button=""
+      >
+        Custom
+      </ui5-button>
+    </footer>
+  </ui5-dialog>
+</DocumentFragment>
+`;
+
 exports[`MessageBox Don't crash on unknown type 1`] = `
 <DocumentFragment>
   <ui5-dialog

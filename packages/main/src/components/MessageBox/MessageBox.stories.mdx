@@ -169,7 +169,12 @@ const MessageBoxComponent = () => {
 ## MessageBox with custom actions
 
 <Canvas>
-  <Story name="With Custom Action">
+  <Story
+    name="With Custom Action"
+    args={{
+      actions: [MessageBoxActions.OK, 'Custom Action', MessageBoxActions.Cancel, <Button>Custom Button</Button>]
+    }}
+  >
     {(args) => {
       const [open, setOpen] = useState(false);
       const onButtonClick = () => {
@@ -185,12 +190,7 @@ const MessageBoxComponent = () => {
       return (
         <>
           <Button onClick={onButtonClick}>Open Messagebox</Button>
-          <MessageBox
-            {...args}
-            open={open}
-            onClose={handleClose}
-            actions={[MessageBoxActions.OK, 'Custom Action', MessageBoxActions.Cancel]}
-          />
+          <MessageBox {...args} open={open} onClose={handleClose} />
         </>
       );
     }}
