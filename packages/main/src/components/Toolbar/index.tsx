@@ -1,6 +1,6 @@
 import { createUseStyles } from 'react-jss';
 import { useSyncRef, useI18nBundle, useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base/dist/hooks';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
+import { debounce, enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { SHOW_MORE } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { ToolbarDesign } from '@ui5/webcomponents-react/dist/ToolbarDesign';
@@ -58,6 +58,13 @@ export interface ToolbarPropTypes extends Omit<CommonProps, 'onClick'> {
    */
   portalContainer?: Element;
   /**
+   * Defines the number of items inside the toolbar which should always be visible.
+   * _E.g.: `numberOfAlwaysVisibleItems={3}` would always show the first three items, no matter the size of the toolbar._
+   *
+   * __Note__: To preserve the intended design, it's not recommended to overwrite the `min-width` when using this prop.
+   */
+  numberOfAlwaysVisibleItems?: number;
+  /**
    * Fired when the user clicks on the `Toolbar`, if the `active` prop is set to "true".
    */
   onClick?: (event: CustomEvent) => void;
@@ -70,6 +77,8 @@ export interface ToolbarPropTypes extends Omit<CommonProps, 'onClick'> {
     target: HTMLElement;
   }) => void;
 }
+
+const OVERFLOW_BUTTON_WIDTH = 32 + 8;
 
 /**
  * Horizontal container most commonly used to display buttons, labels, selects and various other input controls.
@@ -90,6 +99,7 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
     slot,
     as,
     portalContainer,
+    numberOfAlwaysVisibleItems,
     onOverflowChange,
     ...rest
   } = props;
@@ -99,6 +109,8 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
   const [lastVisibleIndex, setLastVisibleIndex] = useState<number>(null);
   const contentRef = useRef(null);
   const overflowContentRef = useRef(null);
+  const overflowBtnRef = useRef(null);
+  const [minWidth, setMinWidth] = useState('0');
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
@@ -144,11 +156,28 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
   }, [children, controlMetaData, classes.childContainer]);
 
   const overflowNeeded =
-    (lastVisibleIndex || lastVisibleIndex === 0) && React.Children.count(childrenWithRef) !== lastVisibleIndex + 1;
+    (lastVisibleIndex || lastVisibleIndex === 0) &&
+    React.Children.count(childrenWithRef) !== lastVisibleIndex + 1 &&
+    numberOfAlwaysVisibleItems < React.Children.count(children);
+
+  useEffect(() => {
+    let lastElementResizeObserver;
+    const lastElement = contentRef.current.children[numberOfAlwaysVisibleItems - 1];
+    if (numberOfAlwaysVisibleItems && overflowNeeded && lastElement) {
+      lastElementResizeObserver = new ResizeObserver(
+        debounce(() => {
+          setMinWidth(`${lastElement.getBoundingClientRect().right + OVERFLOW_BUTTON_WIDTH}px`);
+        }, 200)
+      );
+      lastElementResizeObserver.observe(contentRef.current);
+    }
+    return () => {
+      lastElementResizeObserver?.disconnect();
+    };
+  }, [numberOfAlwaysVisibleItems, overflowNeeded]);
 
   const requestAnimationFrameRef = useRef<undefined | number>();
   const calculateVisibleItems = useCallback(() => {
-    const OVERFLOW_BUTTON_WIDTH = 32 + 8;
     requestAnimationFrameRef.current = requestAnimationFrame(() => {
       if (!outerContainer.current) return;
       const availableWidth = outerContainer.current.getBoundingClientRect().width;
@@ -231,12 +260,12 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
       });
     }
   }, [lastVisibleIndex]);
-
   const CustomTag = as as React.ElementType;
+  const styleWithMinWidth = minWidth !== '0' ? { minWidth: minWidth, ...style } : style;
   return (
     <CustomTag
       title={tooltip}
-      style={style}
+      style={styleWithMinWidth}
       className={clsx(toolbarClasses, overflowNeeded && classes.hasOverflow)}
       ref={componentRef}
       slot={slot}
@@ -246,7 +275,7 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
       <div className={classes.toolbar} data-component-name="ToolbarContent" ref={contentRef}>
         {overflowNeeded &&
           React.Children.map(childrenWithRef, (item, index) => {
-            if (index >= lastVisibleIndex + 1) {
+            if (index >= lastVisibleIndex + 1 && index > numberOfAlwaysVisibleItems - 1) {
               return React.cloneElement(item as ReactElement, { style: { visibility: 'hidden' } });
             }
             return item;
@@ -255,6 +284,7 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
       </div>
       {overflowNeeded && (
         <div
+          ref={overflowBtnRef}
           className={classes.overflowButtonContainer}
           title={i18nBundle.getText(SHOW_MORE)}
           data-component-name="ToolbarOverflowButtonContainer"
@@ -264,6 +294,7 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
             contentClass={classes.popoverContent}
             portalContainer={portalContainer}
             overflowContentRef={overflowContentRef}
+            numberOfAlwaysVisibleItems={numberOfAlwaysVisibleItems}
           >
             {React.Children.toArray(children).map((child) => {
               if ((child as ReactElement).type === React.Fragment) {
@@ -283,7 +314,8 @@ Toolbar.defaultProps = {
   toolbarStyle: ToolbarStyle.Standard,
   design: ToolbarDesign.Auto,
   active: false,
-  portalContainer: document.body
+  portalContainer: document.body,
+  numberOfAlwaysVisibleItems: 0
 };
 
 Toolbar.displayName = 'Toolbar';

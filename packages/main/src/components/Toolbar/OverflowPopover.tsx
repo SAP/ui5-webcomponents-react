@@ -13,10 +13,12 @@ interface OverflowPopoverProps {
   children: ReactNode;
   portalContainer: Element;
   overflowContentRef: Ref<HTMLDivElement>;
+  numberOfAlwaysVisibleItems?: number;
 }
 
 export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopoverProps) => {
-  const { lastVisibleIndex, contentClass, children, portalContainer, overflowContentRef } = props;
+  const { lastVisibleIndex, contentClass, children, portalContainer, overflowContentRef, numberOfAlwaysVisibleItems } =
+    props;
   const popoverRef = useRef<PopoverDomRef>();
   const [pressed, setPressed] = useState(false);
 
@@ -55,7 +57,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
     return React.Children.toArray(
       (children as ReactElement)?.type === React.Fragment ? (children as ReactElement).props.children : children
     ).map((item: ReactElement<any>, index) => {
-      if (index > lastVisibleIndex) {
+      if (index > lastVisibleIndex && index > numberOfAlwaysVisibleItems - 1) {
         if ((item.type as any).displayName === 'ToolbarSeparator') {
           return React.cloneElement(item, {
             style: {
