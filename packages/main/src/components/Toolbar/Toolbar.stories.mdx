@@ -24,13 +24,7 @@ import '@ui5/webcomponents-icons/dist/download.js';
   }}
   args={{
     design: ToolbarDesign.Auto,
-    toolbarStyle: ToolbarStyle.Standard,
-    active: false,
-    style: {},
-    className: '',
-    tooltip: '',
-    slot: '',
-    ref: null
+    toolbarStyle: ToolbarStyle.Standard
   }}
 />
 
@@ -97,18 +91,25 @@ If the horizontally available space isn't enough to fit all items in it, an over
     argTypes={{
       width: {
         control: { type: 'range', min: 0, max: 1100, step: 10 },
-        description: 'Drag the slider to change the width of the toolbar.'
+        description:
+          'Drag the slider to change the width of the toolbar.\n\n__Note:__ This is not an actual prop of the toolbar!'
       },
       children: { table: { disable: true } },
       toolbarStyle: { table: { disable: true } },
       design: { table: { disable: true } },
       active: { table: { disable: true } },
-      onClick: { table: { disable: true } }
+      onClick: { table: { disable: true } },
+      as: { table: { disable: true } },
+      portalContainer: { table: { disable: true } },
+      onOverflowChange: { table: { disable: true } },
+      className: { table: { disable: true } },
+      style: { table: { disable: true } },
+      tooltip: { table: { disable: true } }
     }}
   >
     {(args) => {
       return (
-        <Toolbar style={{ width: `${args.width}px` }}>
+        <Toolbar {...args} style={{ width: `${args.width}px` }}>
           <Text>Toolbar</Text>
           <Button>Button One</Button>
           <Button>Button Two</Button>

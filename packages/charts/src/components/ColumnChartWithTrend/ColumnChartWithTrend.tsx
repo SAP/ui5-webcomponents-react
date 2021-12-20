@@ -1,7 +1,7 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { ComposedChart } from '@ui5/webcomponents-react-charts/dist//ComposedChart';
 import { ColumnChartWithTrendPlaceholder } from '@ui5/webcomponents-react-charts/dist/ColumnChartWithTrendPlaceholder';
-import React, { CSSProperties, FC, forwardRef, Ref, useMemo } from 'react';
+import React, { CSSProperties, FC, forwardRef, Ref } from 'react';
 import { TooltipProps } from 'recharts';
 import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
@@ -117,21 +117,19 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
       ...rest
     } = props;
 
-    const chartConfig = useMemo(() => {
-      return {
-        yAxisVisible: false,
-        xAxisVisible: true,
-        gridStroke: ThemingParameters.sapList_BorderColor,
-        gridHorizontal: true,
-        gridVertical: false,
-        legendPosition: 'bottom',
-        legendHorizontalAlign: 'left',
-        barGap: 3,
-        zoomingTool: false,
-        resizeDebounce: 250,
-        ...props.chartConfig
-      };
-    }, [props.chartConfig]);
+    const chartConfig = {
+      yAxisVisible: false,
+      xAxisVisible: true,
+      gridStroke: ThemingParameters.sapList_BorderColor,
+      gridHorizontal: true,
+      gridVertical: false,
+      legendPosition: 'bottom',
+      legendHorizontalAlign: 'left',
+      barGap: 3,
+      zoomingTool: false,
+      resizeDebounce: 250,
+      ...props.chartConfig
+    };
 
     const { dimensions, measures } = usePrepareDimensionsAndMeasures(
       props.dimensions,

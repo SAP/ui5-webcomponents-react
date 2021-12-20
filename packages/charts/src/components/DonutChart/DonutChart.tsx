@@ -1,4 +1,4 @@
-import React, { FC, forwardRef, useMemo } from 'react';
+import React, { FC, forwardRef } from 'react';
 import { PieChart, PieChartProps } from '../PieChart/PieChart';
 
 /**
@@ -7,14 +7,12 @@ import { PieChart, PieChartProps } from '../PieChart/PieChart';
  * A `DonutChart` is basically a `PieChart` with a hole.
  */
 const DonutChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref) => {
-  const chartConfig = useMemo(() => {
-    return {
-      legendPosition: 'bottom',
-      paddingAngle: 0,
-      innerRadius: '50%',
-      ...props.chartConfig
-    };
-  }, [props.chartConfig]);
+  const chartConfig = {
+    legendPosition: 'bottom',
+    paddingAngle: 0,
+    innerRadius: '50%',
+    ...props.chartConfig
+  };
 
   return <PieChart {...props} ref={ref} chartConfig={chartConfig} />;
 });

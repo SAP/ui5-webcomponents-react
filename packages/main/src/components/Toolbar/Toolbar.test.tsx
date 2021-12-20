@@ -285,5 +285,46 @@ describe('Toolbar', () => {
     expect(screen.getByTestId('toolbar')).toHaveClass(expected);
   });
 
+  test('always visible items', () => {
+    jest.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => cb());
+
+    HTMLElement.prototype.getBoundingClientRect = jest.fn(function () {
+      return {
+        width: parseFloat(getComputedStyle(this).width || 100),
+        height: 10,
+        top: 0,
+        left: 200,
+        bottom: 0,
+        right: 0
+      };
+    });
+    const onOverflowChange = jest.fn();
+    const { getByTitle, getAllByTestId, getAllByText, rerender, queryByTitle, getByText, getAllByLabelText } = render(
+      <Toolbar
+        data-testid="toolbar"
+        style={{ width: '50px' }}
+        onOverflowChange={onOverflowChange}
+        numberOfAlwaysVisibleItems={2}
+      >
+        <Text data-testid="toolbar-item" style={{ width: '100px' }}>
+          Item1
+        </Text>
+        <Text data-testid="toolbar-item" style={{ width: '100px' }}>
+          Item2
+        </Text>
+        <Text data-testid="toolbar-item" style={{ width: '100px' }}>
+          Item3
+        </Text>
+      </Toolbar>
+    );
+
+    expect(getAllByText('Item1')).toHaveLength(1);
+    expect(getAllByText('Item2')).toHaveLength(1);
+    expect(getAllByText('Item3')).toHaveLength(2);
+    expect(getAllByText('Item1')[0]).not.toHaveStyle(`visibility: hidden`);
+    expect(getAllByText('Item2')[0]).not.toHaveStyle(`visibility: hidden`);
+    expect(getAllByText('Item3')[0]).toHaveStyle(`visibility: hidden`);
+  });
+
   createChangeTagNameTest(Toolbar);
 });
