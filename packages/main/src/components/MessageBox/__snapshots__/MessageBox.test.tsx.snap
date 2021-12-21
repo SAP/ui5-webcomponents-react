@@ -6,7 +6,7 @@ exports[`MessageBox Confirm - Cancel 1`] = `
     accessible-name="Confirmation Confirm"
     class="MessageBox-messageBox"
     opened=""
-    style="z-index: 128; display: flex; top: 384px; left: 512px;"
+    style="z-index: 132; display: flex; top: 384px; left: 512px;"
     ui5-dialog=""
   >
     <header
@@ -178,7 +178,7 @@ exports[`MessageBox Custom Button 1`] = `
     accessible-name="Confirmation My Message Box Content"
     class="MessageBox-messageBox"
     opened=""
-    style="z-index: 104; display: flex; top: 384px; left: 512px;"
+    style="z-index: 128; display: flex; top: 384px; left: 512px;"
     ui5-dialog=""
   >
     <header
@@ -228,7 +228,7 @@ exports[`MessageBox Don't crash on unknown type 1`] = `
     accessible-name=" Unknown Type!"
     class="MessageBox-messageBox"
     opened=""
-    style="z-index: 144; display: flex; top: 384px; left: 512px;"
+    style="z-index: 148; display: flex; top: 384px; left: 512px;"
     ui5-dialog=""
   >
     <header
@@ -419,7 +419,7 @@ exports[`MessageBox No Title 1`] = `
     accessible-name="Confirmation No Title"
     class="MessageBox-messageBox"
     opened=""
-    style="z-index: 140; display: flex; top: 384px; left: 512px;"
+    style="z-index: 144; display: flex; top: 384px; left: 512px;"
     ui5-dialog=""
   >
     <header
@@ -525,7 +525,7 @@ exports[`MessageBox Show 1`] = `
     accessible-name="Custom Custom"
     class="MessageBox-messageBox"
     opened=""
-    style="z-index: 132; display: flex; top: 384px; left: 512px;"
+    style="z-index: 136; display: flex; top: 384px; left: 512px;"
     ui5-dialog=""
   >
     <header
@@ -633,7 +633,7 @@ exports[`MessageBox Success w/ custom title 1`] = `
     accessible-name="Custom Success Custom Success"
     class="MessageBox-messageBox"
     opened=""
-    style="z-index: 136; display: flex; top: 384px; left: 512px;"
+    style="z-index: 140; display: flex; top: 384px; left: 512px;"
     ui5-dialog=""
   >
     <header
