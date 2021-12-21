@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.20.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.20.4...v0.20.5) (2021-12-21)
+
+
+### Features
+
+* **charts:** expose all `XAxis` and `YAxis` recharts props ([#2423](https://github.com/SAP/ui5-webcomponents-react/issues/2423)) ([9db0cf3](https://github.com/SAP/ui5-webcomponents-react/commit/9db0cf3e8f314877ba043241e6b06c3325454ae7))
+
+
+
+
+
 ## [0.20.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.20.3...v0.20.4) (2021-12-15)
 
 **Note:** Version bump only for package @ui5/webcomponents-react-charts

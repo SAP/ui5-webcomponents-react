@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.20.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.20.4...v0.20.5) (2021-12-21)
+
+
+### Bug Fixes
+
+* add missing translations ([#2422](https://github.com/SAP/ui5-webcomponents-react/issues/2422)) ([2b1b1cb](https://github.com/SAP/ui5-webcomponents-react/commit/2b1b1cb0e5d4306b1daa502850751d84b1d0211e))
+
+
+### Features
+
+* **charts:** expose all `XAxis` and `YAxis` recharts props ([#2423](https://github.com/SAP/ui5-webcomponents-react/issues/2423)) ([9db0cf3](https://github.com/SAP/ui5-webcomponents-react/commit/9db0cf3e8f314877ba043241e6b06c3325454ae7))
+* **MessageBox:** allow passing `Button`s as actions ([#2432](https://github.com/SAP/ui5-webcomponents-react/issues/2432)) ([cca2b61](https://github.com/SAP/ui5-webcomponents-react/commit/cca2b61c840f3f676f69c1337e803f1c4efc8ec9))
+* **Toolbar:** introduce `numberOfAlwaysVisibleItems` prop ([#2425](https://github.com/SAP/ui5-webcomponents-react/issues/2425)) ([1ee1705](https://github.com/SAP/ui5-webcomponents-react/commit/1ee1705f269477e4eccb1def03047185813259c1))
+
+
+
+
+
 ## [0.20.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.20.3...v0.20.4) (2021-12-15)
 
 
