@@ -5,6 +5,7 @@ import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { MessageBox } from '@ui5/webcomponents-react/lib/MessageBox';
 import { MessageBoxActions } from '@ui5/webcomponents-react/lib/MessageBoxActions';
 import { MessageBoxTypes } from '@ui5/webcomponents-react/lib/MessageBoxTypes';
+import { Button } from '@ui5/webcomponents-react/lib/Button';
 import React from 'react';
 
 const mockActionIds = (element) => {
@@ -35,6 +36,56 @@ describe('MessageBox', () => {
 
     expect(callback.mock.calls[0][0].detail.action).toEqual(buttonText);
     unmount();
+  });
+
+  test('Custom Button', () => {
+    const click = jest.fn();
+    const close = jest.fn();
+    const { asFragment, getByText, container, rerender, getByTestId } = render(
+      <MessageBox
+        open
+        onClose={close}
+        actions={[
+          <Button onClick={click} key="0">
+            Custom
+          </Button>
+        ]}
+      >
+        My Message Box Content
+      </MessageBox>
+    );
+    mockActionIds(container);
+    expect(asFragment()).toMatchSnapshot();
+
+    fireEvent.click(getByText('Custom'));
+    expect(close.mock.calls[0][0].detail.action).toEqual('0: custom action');
+    expect(close).toHaveBeenCalledTimes(1);
+    expect(click).toHaveBeenCalledTimes(1);
+
+    rerender(
+      <MessageBox
+        open
+        onClose={close}
+        actions={[
+          MessageBoxActions.CANCEL,
+          <Button onClick={click} key="0">
+            Custom
+          </Button>,
+          'Custom Text Action',
+          MessageBoxActions.OK
+        ]}
+      >
+        My Message Box Content
+      </MessageBox>
+    );
+
+    getByText('Cancel');
+    getByText('Custom Text Action');
+    getByText('OK');
+    fireEvent.click(getByText('Custom'));
+    expect(close.mock.calls[1][0].detail.action).toEqual('1: custom action');
+    expect(close).toHaveBeenCalledTimes(2);
+    expect(click).toHaveBeenCalledTimes(2);
   });
 
   test('Confirm - Cancel', () => {
@@ -195,6 +246,7 @@ describe('MessageBox', () => {
 
     expect(dialogInitialFocus).toEqual(cancelBtnId);
   });
+
   test('display custom header', () => {
     const { getByText, queryByText } = render(
       <MessageBox open header={<div>Custom Header</div>}>
