@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.131.28](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.27...v0.131.28) (2021-12-21)
+
+
+### Bug Fixes
+
+* add missing translations ([#2422](https://github.com/SAP/ui5-webcomponents-react/issues/2422)) ([8cffd20](https://github.com/SAP/ui5-webcomponents-react/commit/8cffd20375d8c928dd64073ad2ca77935c4667e6))
+
+
+### Features
+
+* **MessageBox:** allow passing `Button`s as actions ([#2432](https://github.com/SAP/ui5-webcomponents-react/issues/2432)) ([655eac7](https://github.com/SAP/ui5-webcomponents-react/commit/655eac70c05e8935ee81a0615a3d8754eb57ba12))
+* **Toolbar:** introduce `numberOfAlwaysVisibleItems` prop ([#2425](https://github.com/SAP/ui5-webcomponents-react/issues/2425)) ([cb38511](https://github.com/SAP/ui5-webcomponents-react/commit/cb385114d91aaa3edc1711902807b632997eeb3c))
+
+
+
+
+
 ## [0.131.27](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.26...v0.131.27) (2021-12-09)
 
 
