@@ -134,8 +134,9 @@ const MessageBoxComponent = () => {
       const onButtonClick = () => {
         setOpen(true);
       };
-      const handleClose = () => {
+      const handleClose = (e) => {
         setOpen(false);
+        args.onClose(e);
       };
       return (
         <>
@@ -144,7 +145,12 @@ const MessageBoxComponent = () => {
             {...args}
             open={open}
             onClose={handleClose}
-            actions={[MessageBoxActions.OK, 'A custom action', MessageBoxActions.CANCEL]}
+            actions={[
+              MessageBoxActions.OK,
+              'A custom action',
+              MessageBoxActions.CANCEL,
+              <Button>Custom Button</Button>
+            ]}
           />
         </>
       );

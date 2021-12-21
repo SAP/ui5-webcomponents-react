@@ -25,7 +25,7 @@ import {
   YES
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { Ui5DialogDomRef } from '@ui5/webcomponents-react/interfaces/Ui5DialogDomRef';
-import { Button } from '@ui5/webcomponents-react/lib/Button';
+import { Button, ButtonPropTypes } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { Dialog, DialogPropTypes } from '@ui5/webcomponents-react/lib/Dialog';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
@@ -37,18 +37,19 @@ import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import React, {
   FC,
   forwardRef,
+  cloneElement,
   isValidElement,
   ReactNode,
-  ReactNodeArray,
   Ref,
-  useCallback,
   useEffect,
-  useMemo,
-  useState
+  useState,
+  ReactElement
 } from 'react';
 import { createUseStyles } from 'react-jss';
 import { stopPropagation } from '../../internal/stopPropagation';
 import styles from './MessageBox.jss';
+
+type MessageBoxAction = MessageBoxActions | keyof typeof MessageBoxActions | string;
 
 export interface MessageBoxPropTypes
   extends Omit<DialogPropTypes, 'children' | 'footer' | 'headerText' | 'onAfterClose'> {
@@ -65,17 +66,19 @@ export interface MessageBoxPropTypes
    *
    * **Note:** Although this prop accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design and a11y capabilities.
    */
-  children: ReactNode | ReactNodeArray;
+  children: ReactNode | ReactNode[];
   /**
    * Array of actions of the MessageBox. Those actions will be transformed into buttons in the `MessageBox` footer.
+   *
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `MessageBoxAction`s (text) or the `Button` component in order to preserve the intended.
    */
-  actions?: (MessageBoxActions | string)[];
+  actions?: (MessageBoxAction | ReactNode)[];
   /**
    * Specifies which action of the created dialog will be emphasized.
    *
    * @since 0.16.3
    */
-  emphasizedAction?: MessageBoxActions | string;
+  emphasizedAction?: MessageBoxAction;
   /**
    * A custom icon. If not present, it will be derived from the `MessageBox` type.
    */
@@ -83,15 +86,15 @@ export interface MessageBoxPropTypes
   /**
    * Defines the type of the `MessageBox` with predefined title, icon, actions and a visual highlight color.
    */
-  type?: MessageBoxTypes;
+  type?: MessageBoxTypes | keyof typeof MessageBoxTypes;
   /**
    * Defines the ID of the HTML Element or the `MessageBoxAction`, which will get the initial focus.
    */
-  initialFocus?: string | MessageBoxActions;
+  initialFocus?: MessageBoxAction;
   /**
    * Callback to be executed when the `MessageBox` is closed (either by pressing on one of the `actions` or by pressing the `ESC` key). `event.detail.action` contains the pressed action button.
    */
-  onClose?: (event: CustomEvent<{ action: MessageBoxActions }>) => void;
+  onClose?: (event: CustomEvent<{ action: MessageBoxAction }>) => void;
   /**
    * Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. This event does not bubble.
    */
@@ -104,8 +107,47 @@ export interface MessageBoxPropTypes
 
 const useStyles = createUseStyles(styles, { name: 'MessageBox' });
 
-const createUniqueIds = (internalActions) =>
-  internalActions.map((_) => `${performance.now() + Math.random()}`.split('.')[1]);
+const createUniqueIds = (internalActions) => {
+  return internalActions.map((action) => {
+    if (typeof action === 'string') {
+      return `${performance.now() + Math.random()}`.split('.')[1];
+    }
+    return null;
+  });
+};
+
+const getIcon = (icon, type) => {
+  if (isValidElement(icon)) return icon;
+  switch (type) {
+    case MessageBoxTypes.CONFIRM:
+      return <Icon name="question-mark" />;
+    case MessageBoxTypes.ERROR:
+      return <Icon name="message-error" />;
+    case MessageBoxTypes.INFORMATION:
+      return <Icon name="message-information" />;
+    case MessageBoxTypes.SUCCESS:
+      return <Icon name="message-success" />;
+    case MessageBoxTypes.WARNING:
+      return <Icon name="message-warning" />;
+    case MessageBoxTypes.HIGHLIGHT:
+      return <Icon name="hint" />;
+    default:
+      return null;
+  }
+};
+
+const getActions = (actions, type) => {
+  if (actions && actions.length > 0) {
+    return actions;
+  }
+  if (type === MessageBoxTypes.CONFIRM) {
+    return [MessageBoxActions.OK, MessageBoxActions.CANCEL];
+  }
+  if (type === MessageBoxTypes.ERROR) {
+    return [MessageBoxActions.CLOSE];
+  }
+  return [MessageBoxActions.OK];
+};
 
 /**
  * The `MessageBox` component provides easier methods to create a `Dialog`, such as standard alerts, confirmation dialogs, or arbitrary message dialogs.
@@ -132,26 +174,6 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
   const dialogRef = useConsolidatedRef<Ui5DialogDomRef>(ref);
 
   const classes = useStyles();
-
-  const iconToRender = useMemo(() => {
-    if (isValidElement(icon)) return icon;
-    switch (type) {
-      case MessageBoxTypes.CONFIRM:
-        return <Icon name="question-mark" />;
-      case MessageBoxTypes.ERROR:
-        return <Icon name="message-error" />;
-      case MessageBoxTypes.INFORMATION:
-        return <Icon name="message-information" />;
-      case MessageBoxTypes.SUCCESS:
-        return <Icon name="message-success" />;
-      case MessageBoxTypes.WARNING:
-        return <Icon name="message-warning" />;
-      case MessageBoxTypes.HIGHLIGHT:
-        return <Icon name="hint" />;
-      default:
-        return null;
-    }
-  }, [icon, type]);
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
@@ -189,27 +211,11 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
     }
   };
 
-  const getActions = () => {
-    if (actions && actions.length > 0) {
-      return actions;
-    }
-    if (type === MessageBoxTypes.CONFIRM) {
-      return [MessageBoxActions.OK, MessageBoxActions.CANCEL];
-    }
-    if (type === MessageBoxTypes.ERROR) {
-      return [MessageBoxActions.CLOSE];
-    }
-    return [MessageBoxActions.OK];
+  const handleOnClose = (e) => {
+    const { action } = e.target.dataset;
+    stopPropagation(e);
+    onClose(enrichEventWithDetails(e, { action }));
   };
-
-  const handleOnClose = useCallback(
-    (e) => {
-      const { action } = e.target.dataset;
-      stopPropagation(e);
-      onClose(enrichEventWithDetails(e, { action }));
-    },
-    [onClose]
-  );
 
   useEffect(() => {
     if (dialogRef.current) {
@@ -222,7 +228,7 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
   }, [dialogRef.current, open]);
 
   const messageBoxClassNames = StyleClassHelper.of(classes.messageBox).putIfPresent(className).className;
-  const internalActions = getActions();
+  const internalActions = getActions(actions, type);
 
   const [uniqueIds, setUniqueIds] = useState(() => createUniqueIds(internalActions));
   useIsomorphicLayoutEffect(() => {
@@ -231,12 +237,17 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
 
   const getInitialFocus = () => {
     // todo: refactor to `indexOf` when deprecation is removed
-    const indexOfInitialFocus = internalActions.findIndex((item) => item.toLowerCase() === initialFocus?.toLowerCase());
-    if (~indexOfInitialFocus) {
+    const indexOfInitialFocus = internalActions.findIndex(
+      (item) => item?.toLowerCase?.() === initialFocus?.toLowerCase()
+    );
+    if (~indexOfInitialFocus && typeof internalActions[indexOfInitialFocus] === 'string') {
       return `${internalActions[indexOfInitialFocus].toLowerCase()}-${uniqueIds[indexOfInitialFocus]}`;
     }
     return initialFocus;
   };
+
+  const iconToRender = getIcon(icon, type);
+
   // @ts-ignore
   const { footer, headerText, onAfterClose, ...restWithoutOmitted } = rest;
   return (
@@ -261,6 +272,17 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
       <Text className={classes.content}>{children}</Text>
       <footer slot="footer" className={classes.footer}>
         {internalActions.map((action, index) => {
+          if (typeof action !== 'string' && isValidElement(action)) {
+            return cloneElement<ButtonPropTypes | { 'data-action': string }>(action, {
+              onClick: (action as ReactElement<ButtonPropTypes>)?.props?.onClick
+                ? (e) => {
+                    (action as ReactElement<ButtonPropTypes>)?.props?.onClick(e);
+                    handleOnClose(e);
+                  }
+                : handleOnClose,
+              'data-action': action?.props?.['data-action'] ?? `${index}: custom action`
+            });
+          }
           const lowerCaseAction = action?.toLowerCase();
           return (
             <Button
