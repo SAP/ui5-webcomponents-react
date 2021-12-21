@@ -49,7 +49,6 @@ import { stopPropagation } from '../../internal/stopPropagation';
 import styles from './MessageBox.jss';
 
 type MessageBoxAction = MessageBoxActions | keyof typeof MessageBoxActions | string;
-type MessageBoxActionWithComponent = MessageBoxAction | ReactNode;
 
 export interface MessageBoxPropTypes
   extends Omit<DialogPropTypes, 'children' | 'footer' | 'headerText' | 'onAfterClose'> {
@@ -72,7 +71,7 @@ export interface MessageBoxPropTypes
    *
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `MessageBoxAction`s (text) or the `Button` component in order to preserve the intended.
    */
-  actions?: MessageBoxActionWithComponent[];
+  actions?: (MessageBoxAction | ReactNode)[];
   /**
    * Specifies which action of the created dialog will be emphasized.
    *
