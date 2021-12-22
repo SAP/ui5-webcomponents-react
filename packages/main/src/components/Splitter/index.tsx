@@ -131,12 +131,11 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
   const previousSiblingSize = useRef<number>(null);
   const nextSiblingSize = useRef<number>(null);
 
-  const [isDragging, setIsDragging] = useState(true);
-
   const positionKeys = vertical ? verticalPositionInfo : horizontalPositionInfo;
 
   let timestamp;
   let mX = 0;
+  let isDragging = true;
 
   const handleSplitterMove = useCallback(
     (e) => {
@@ -150,8 +149,8 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
       const nextSibling = localRef.current.nextSibling;
       const sizeDiv = e[`client${positionKeys.position}`] - start.current;
 
-      if (speed > 1000) {
-        setIsDragging(false);
+      if (speed > 2000) {
+        isDragging = false;
       }
 
       if (isDragging) {
@@ -189,7 +188,7 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
       mX = currentX;
       timestamp = now;
     },
-    [isDragging, localRef.current]
+    [localRef.current, isDragging]
   );
 
   const handleFallback = useCallback(
@@ -275,7 +274,7 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
         (e) => {
           document.removeEventListener('mousemove', handleSplitterMove);
           handleFallback(e, false);
-          setIsDragging(true);
+          isDragging = true;
         },
         { once: true }
       );
