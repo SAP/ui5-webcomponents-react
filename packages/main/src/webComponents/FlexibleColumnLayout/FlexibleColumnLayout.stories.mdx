@@ -83,13 +83,29 @@ import { sapUiContentPadding } from '@ui5/webcomponents-react-base/dist/spacing'
 
 <ArgsTable story="." />
 
+## Readonly Properties
+
+This component exposes public `readonly` properties. You can invoke them directly on the instance of the component, e.g. by using React Refs.
+
+| Name                   | Description                                                                                                                                                                                                                                            |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **columnLayout**       | Returns the current column layout, based on both the `layout` property and the screen size. For example: `["67%", "33%", 0], ["100%", 0, 0], ["25%", "50%", "25%"]`, etc, where the numbers represents the width of the start, middle and end columns. |
+| **endColumnVisible**   | Returns if the `end` column is visible.                                                                                                                                                                                                                |
+| **midColumnVisible**   | Returns if the `middle` column is visible.                                                                                                                                                                                                             |
+| **startColumnVisible** | Returns if the `start` column is visible.                                                                                                                                                                                                              |
+| **visibleColumns**     | Returns the number of currently visible columns.                                                                                                                                                                                                       |
+
 ## Usage
 
 Use this component for applications that need to display several logical levels of related information side by side (e.g. list of items, item, sub-item, etc.). The Component is flexible in a sense that the application can focus the user's attention on one particular column.
 
 ## Responsive Behavior
 
-The `FlexibleColumnLayout` automatically displays the maximum possible number of columns based on `layout` property and the window size. The component would display 1 column for window size smaller than 900px, up to two columns between 900px and 1280px, and 3 columns for sizes bigger than 1280px.
+The `FlexibleColumnLayout` automatically displays the maximum possible number of columns based on `layout` property and the window size. The component would display 1 column for window size smaller than 599px, up to two columns between 599px and 1023px, and 3 columns for sizes bigger than 1023px.
+
+## Keyboard Handling
+
+\[SPACE, ENTER, RETURN\] - If focus is on the layout toggle button (arrow button), once activated, it triggers the associated action (such as expand/collapse the column).
 
 <br />
 
