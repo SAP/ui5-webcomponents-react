@@ -5,6 +5,7 @@ import { SplitterElement } from '@ui5/webcomponents-react/dist/SplitterElement';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { createCustomPropsTest } from '@shared/tests/utils';
 import React from 'react';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 
 describe('SplitterLayout', () => {
   test('Render Vertical SplitterLayout with multiple SplitterElements', () => {
@@ -27,12 +28,38 @@ describe('SplitterLayout', () => {
     const AllSplitter = document.querySelectorAll('[role="resizer"]');
 
     fireEvent.click(screen.getByTestId('Button'));
+    fireEvent.click(AllSplitter[0]);
 
     expect(AllSplitter.length).toBe(1);
+    expect(AllSplitter[0]).toHaveStyle(`border: 1px dotted ${ThemingParameters.sapHighlightColor}`);
+
     expect(screen.getByTestId('SplitterLayout')).toHaveStyle('width: 800px; height: 400px');
     expect(screen.getByTestId('SplitterElement1')).toHaveStyle('flex: 0 0 auto');
     expect(screen.getByTestId('SplitterElement2')).toHaveStyle('flex: 0 0 auto; min-width: 300px');
     expect(screen.getByTestId('SplitterElement3')).toHaveStyle('flex: 1 0 auto');
+    expect(onClick).toHaveBeenCalled();
+
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  test('Render Vertical SplitterLayout with only one SplitterElements', () => {
+    const onClick = jest.fn();
+    const { asFragment } = render(
+      <SplitterLayout vertical={true} style={{ width: '700px', height: '400px' }} data-testid={'SplitterLayout'}>
+        <SplitterElement size={'200px'} data-testid={'SplitterElement'}>
+          <Button data-testid={'Button'} onClick={onClick}>
+            Button 1
+          </Button>
+        </SplitterElement>
+      </SplitterLayout>
+    );
+    const AllSplitter = document.querySelectorAll('[role="resizer"]');
+
+    fireEvent.click(screen.getByTestId('Button'));
+
+    expect(AllSplitter.length).toBe(0);
+    expect(screen.getByTestId('SplitterLayout')).toHaveStyle('width: 700px; height: 400px');
+    expect(screen.getByTestId('SplitterElement')).toHaveStyle('flex: 0 0 auto');
     expect(onClick).toHaveBeenCalled();
 
     expect(asFragment()).toMatchSnapshot();
