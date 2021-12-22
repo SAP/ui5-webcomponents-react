@@ -11,7 +11,9 @@ const useStyles = createUseStyles(
       overflow: 'hidden',
       position: 'relative',
       willChange: 'flex-basis',
-      flex: '0 0 auto'
+      flex: '0 0 auto',
+      minWidth: '0px',
+      minHeight: '0px'
     }
   },
   { name: 'SplitterElement' }

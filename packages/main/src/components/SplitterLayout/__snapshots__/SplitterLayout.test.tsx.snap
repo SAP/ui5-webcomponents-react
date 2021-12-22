@@ -19,9 +19,10 @@ exports[`SplitterLayout Render Horizontal SplitterLayout with multiple SplitterE
       </ui5-button>
     </div>
     <div
+      aria-label="Resizer"
       class="Splitter-splitter"
       data-splitter-vertical="false"
-      role="separator"
+      role="resizer"
     >
       <div
         class="Splitter-lineBefore"
@@ -48,9 +49,10 @@ exports[`SplitterLayout Render Horizontal SplitterLayout with multiple SplitterE
       </ui5-button>
     </div>
     <div
+      aria-label="Resizer"
       class="Splitter-splitter"
       data-splitter-vertical="false"
-      role="separator"
+      role="resizer"
     >
       <div
         class="Splitter-lineBefore"
@@ -111,9 +113,10 @@ exports[`SplitterLayout Render Vertical SplitterLayout with multiple SplitterEle
       </ui5-button>
     </div>
     <div
+      aria-label="Resizer"
       class="Splitter-splitter"
       data-splitter-vertical="true"
-      role="separator"
+      role="resizer"
     >
       <div
         class="Splitter-lineBefore"
