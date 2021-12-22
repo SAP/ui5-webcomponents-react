@@ -25,7 +25,14 @@ interface ColorPalettePopoverAttributes {
   showRecentColors?: boolean;
 }
 
-export interface ColorPalettePopoverDomRef extends ColorPalettePopoverAttributes, Ui5DomRef {}
+export interface ColorPalettePopoverDomRef extends ColorPalettePopoverAttributes, Ui5DomRef {
+  /**
+   * Shows the popover.
+   *
+   * @param {HTMLElement | EventTarget} opener - the element that the popover is shown at.
+   */
+  openPopover: (opener: HTMLElement | EventTarget) => void;
+}
 
 export interface ColorPalettePopoverPropTypes extends ColorPalettePopoverAttributes, CommonProps {
   /**
