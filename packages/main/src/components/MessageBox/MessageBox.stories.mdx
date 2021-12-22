@@ -66,12 +66,12 @@ import { useEffect, useState } from 'react';
 
 This component exposes public methods. You can invoke them directly on the instance of the component, e.g. by using React Refs.
 
-| Name           | Parameters                                                                                                                                                                | Description                                                                                                               |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | --- |
-| **applyFocus** | &mdash;                                                                                                                                                                   | Focuses the element denoted by <code>initialFocus</code>, if provided, or the first focusable element otherwise.          |
-| **close**      | &mdash;                                                                                                                                                                   | Hides the block layer (for modal popups only)                                                                             |
-| **isOpen**     | &mdash;                                                                                                                                                                   | Override this method to provide custom logic for the popup's open/closed state. Maps to the "opened" property by default. |
-| **show**       | <dl><dt className="methodText">**preventInitialFocus**</dt><dd className="methodText">prevents applying the focus inside the popup</dd><dd><code>boolean</code></dd></dl> | Shows the block layer (for modal popups only) and sets the correct z-index for the purpose of popup stacking              |     |
+| Name           | Parameters                                                                                                                                                                           | Description                                                                                                               |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------- |
+| **applyFocus** | &mdash;                                                                                                                                                                              | Focuses the element denoted by <code>initialFocus</code>, if provided, or the first focusable element otherwise.          |
+| **close**      | &mdash;                                                                                                                                                                              | Hides the block layer (for modal popups only)                                                                             |
+| **isOpen**     | &mdash;                                                                                                                                                                              | Override this method to provide custom logic for the popup's open/closed state. Maps to the "opened" property by default. |
+| **show**       | <dl><dt className="methodText">**preventInitialFocus** _optional_</dt><dd className="methodText">prevents applying the focus inside the popup</dd><dd><code>boolean</code></dd></dl> | Shows the block layer (for modal popups only) and sets the correct z-index for the purpose of popup stacking              |
 
 ## Opening and Closing MessageBoxes
 
@@ -169,7 +169,12 @@ const MessageBoxComponent = () => {
 ## MessageBox with custom actions
 
 <Canvas>
-  <Story name="With Custom Action">
+  <Story
+    name="With Custom Action"
+    args={{
+      actions: [MessageBoxActions.OK, 'Custom Action', MessageBoxActions.Cancel, <Button>Custom Button</Button>]
+    }}
+  >
     {(args) => {
       const [open, setOpen] = useState(false);
       const onButtonClick = () => {
@@ -185,12 +190,7 @@ const MessageBoxComponent = () => {
       return (
         <>
           <Button onClick={onButtonClick}>Open Messagebox</Button>
-          <MessageBox
-            {...args}
-            open={open}
-            onClose={handleClose}
-            actions={[MessageBoxActions.OK, 'Custom Action', MessageBoxActions.Cancel]}
-          />
+          <MessageBox {...args} open={open} onClose={handleClose} />
         </>
       );
     }}

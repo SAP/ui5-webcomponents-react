@@ -1,20 +1,19 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { ColorPalettePopover } from '@ui5/webcomponents-react/dist/ColorPalettePopover';
+import { ColorPaletteItem } from '@ui5/webcomponents-react/dist/ColorPaletteItem';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import { useRef } from 'react';
+import '@ui5/webcomponents/dist/features/ColorPaletteMoreColors.js';
 
 <Meta
   title="Modals & Popovers / ColorPalettePopover"
   component={ColorPalettePopover}
+  subcomponents={{ ColorPaletteItem }}
   argTypes={{
-    children: { control: { disable: true } }
-  }}
-  args={{
-    style: {},
-    className: '',
-    tooltip: '',
-    slot: '',
-    ref: null
+    children: { control: { disable: true } },
+    defaultColor: { control: { type: 'color' } }
   }}
 />
 
@@ -27,7 +26,29 @@ import { Footer } from '@docs/Footer';
 <Canvas>
   <Story name="Default">
     {(args) => {
-      return <ColorPalettePopover {...args} />;
+      const popoverRef = useRef(null);
+      const onButtonClick = (e) => {
+        popoverRef.current.openPopover(e.target);
+      };
+      return (
+        <>
+          <Button onClick={onButtonClick}>Open Popover</Button>
+          <ColorPalettePopover {...args} ref={popoverRef}>
+            <ColorPaletteItem value="pink" />
+            <ColorPaletteItem value="darkblue" />
+            <ColorPaletteItem value="#444444" />
+            <ColorPaletteItem value="rgb(0,200,0)" />
+            <ColorPaletteItem value="green" />
+            <ColorPaletteItem value="darkred" />
+            <ColorPaletteItem value="yellow" />
+            <ColorPaletteItem value="blue" />
+            <ColorPaletteItem value="cyan" />
+            <ColorPaletteItem value="orange" />
+            <ColorPaletteItem value="#5480e7" />
+            <ColorPaletteItem value="#ff6699" />
+          </ColorPalettePopover>
+        </>
+      );
     }}
   </Story>
 </Canvas>
@@ -39,5 +60,13 @@ import { Footer } from '@docs/Footer';
 ## Usage
 
 The palette is intended for users, who don't want to check and remember the different values of the colors and spend large amount of time to configure the right color through the color picker. For the `ColorPalettePopover`
+
+## Methods
+
+This component exposes public methods. You can invoke them directly on the instance of the component, e.g. by using React Refs.
+
+| Name            | Parameters                                                                                                                                                    | Description        |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
+| **openPopover** | <dl><dt className="methodText">**opener**</dt><dd className="methodText">the element that the popover is opened by</dd><dd><code>HTMLElement</code></dd></dl> | Opens the popover. |
 
 <Footer />

@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.20.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.20.4...v0.20.5) (2021-12-21)
+
+
+### Bug Fixes
+
+* add missing translations ([#2422](https://github.com/SAP/ui5-webcomponents-react/issues/2422)) ([2b1b1cb](https://github.com/SAP/ui5-webcomponents-react/commit/2b1b1cb0e5d4306b1daa502850751d84b1d0211e))
+
+
+### Features
+
+* **MessageBox:** allow passing `Button`s as actions ([#2432](https://github.com/SAP/ui5-webcomponents-react/issues/2432)) ([cca2b61](https://github.com/SAP/ui5-webcomponents-react/commit/cca2b61c840f3f676f69c1337e803f1c4efc8ec9))
+* **Toolbar:** introduce `numberOfAlwaysVisibleItems` prop ([#2425](https://github.com/SAP/ui5-webcomponents-react/issues/2425)) ([1ee1705](https://github.com/SAP/ui5-webcomponents-react/commit/1ee1705f269477e4eccb1def03047185813259c1))
+
+
+
+
+
+## [0.20.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.20.3...v0.20.4) (2021-12-15)
+
+
+### Bug Fixes
+
+* use fully specified paths for all web component imports ([#2418](https://github.com/SAP/ui5-webcomponents-react/issues/2418)) ([b972dc8](https://github.com/SAP/ui5-webcomponents-react/commit/b972dc867eface52814806796dcd111ec8761ac3))
+
+
+
+
+
 ## [0.20.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.20.2...v0.20.3) (2021-12-09)
 
 

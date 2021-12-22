@@ -94,18 +94,16 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
     ...rest
   } = props;
 
-  const chartConfig = useMemo(() => {
-    return {
-      margin: { right: 30, left: 30, bottom: 30, top: 30, ...(props.chartConfig?.margin ?? {}) },
-      legendPosition: 'bottom',
-      legendHorizontalAlign: 'center',
-      paddingAngle: 0,
-      outerRadius: '80%',
-      resizeDebounce: 250,
-      tooltipItemStyle: tooltipItemDefaultStyle,
-      ...props.chartConfig
-    };
-  }, [props.chartConfig]);
+  const chartConfig = {
+    margin: { right: 30, left: 30, bottom: 30, top: 30, ...(props.chartConfig?.margin ?? {}) },
+    legendPosition: 'bottom',
+    legendHorizontalAlign: 'center',
+    paddingAngle: 0,
+    outerRadius: '80%',
+    resizeDebounce: 250,
+    tooltipItemStyle: tooltipItemDefaultStyle,
+    ...props.chartConfig
+  };
 
   const showActiveSegmentDataLabel = chartConfig.showActiveSegmentDataLabel ?? true;
 

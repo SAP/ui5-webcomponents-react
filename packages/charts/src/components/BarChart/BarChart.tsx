@@ -8,7 +8,7 @@ import { XAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/XAxi
 import { YAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/YAxisTicks';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/dist/useLegendItemClick';
 import { getCellColors, resolvePrimaryAndSecondaryMeasures } from '@ui5/webcomponents-react-charts/dist/Utils';
-import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
+import React, { CSSProperties, FC, forwardRef, Ref, useCallback } from 'react';
 import {
   Bar,
   BarChart as BarChartLib,
@@ -147,22 +147,23 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
     ...rest
   } = props;
 
-  const chartConfig = useMemo(() => {
-    return {
-      margin: {},
-      yAxisVisible: true,
-      xAxisVisible: true,
-      gridStroke: ThemingParameters.sapList_BorderColor,
-      gridHorizontal: true,
-      gridVertical: false,
-      legendPosition: 'bottom',
-      legendHorizontalAlign: 'left',
-      barGap: 3,
-      zoomingTool: false,
-      resizeDebounce: 250,
-      ...props.chartConfig
-    };
-  }, [props.chartConfig]);
+  const chartConfig = {
+    margin: {},
+    yAxisVisible: true,
+    xAxisVisible: true,
+    gridStroke: ThemingParameters.sapList_BorderColor,
+    gridHorizontal: true,
+    gridVertical: false,
+    legendPosition: 'bottom',
+    legendHorizontalAlign: 'left',
+    barGap: 3,
+    zoomingTool: false,
+    resizeDebounce: 250,
+    yAxisConfig: {},
+    xAxisConfig: {},
+    secondXAxisConfig: {},
+    ...props.chartConfig
+  };
 
   const { dimensions, measures } = usePrepareDimensionsAndMeasures(
     props.dimensions,
@@ -261,6 +262,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
             tickFormatter={primaryMeasure?.formatter}
             height={xAxisHeight}
             reversed={isRTL}
+            {...chartConfig.xAxisConfig}
           />
         )}
         {chartConfig.secondYAxis?.dataKey && (
@@ -287,6 +289,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
             interval={0}
             xAxisId="secondary"
             type="number"
+            {...chartConfig.secondXAxisConfig}
           />
         )}
         {chartConfig.yAxisVisible &&
@@ -304,6 +307,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
                 width={width[index]}
                 allowDuplicatedCategory={index === 0}
                 orientation={isRTL ? 'right' : 'left'}
+                {...chartConfig.yAxisConfig}
               />
             );
           })}

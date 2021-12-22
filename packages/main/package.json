@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react",
-  "version": "0.20.3",
+  "version": "0.20.5",
   "description": "React Wrapper for UI5 Web Components and additional components",
   "main": "index.esm.js",
   "module": "index.esm.js",
@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.8.4",
-    "@ui5/webcomponents-react-base": "^0.20.3",
+    "@ui5/webcomponents-react-base": "^0.20.5",
     "clsx": "^1.1.1",
     "lit-html": "2.0.1",
     "react-content-loader": "6.1.0",
@@ -42,6 +42,8 @@
     "react-virtual": "2.10.0"
   },
   "peerDependencies": {
+    "@types/react": "*",
+    "@types/react-dom": "*",
     "@ui5/webcomponents": "~1.0.2",
     "@ui5/webcomponents-base": "~1.0.2",
     "@ui5/webcomponents-fiori": "~1.0.2",
@@ -50,6 +52,12 @@
     "react-dom": "^16.8.0 || ^17.0.0"
   },
   "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    },
+    "@types/react-dom": {
+      "optional": true
+    },
     "@ui5/webcomponents-base": {
       "optional": true
     },

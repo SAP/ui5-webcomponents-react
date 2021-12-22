@@ -8,7 +8,7 @@ import { XAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/XAxi
 import { YAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/YAxisTicks';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/dist/useLegendItemClick';
 import { getCellColors, resolvePrimaryAndSecondaryMeasures } from '@ui5/webcomponents-react-charts/dist/Utils';
-import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
+import React, { CSSProperties, FC, forwardRef, Ref, useCallback } from 'react';
 import {
   Bar as Column,
   BarChart as ColumnChartLib,
@@ -145,21 +145,22 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
     ...rest
   } = props;
 
-  const chartConfig = useMemo(() => {
-    return {
-      yAxisVisible: false,
-      xAxisVisible: true,
-      gridStroke: ThemingParameters.sapList_BorderColor,
-      gridHorizontal: true,
-      gridVertical: false,
-      legendPosition: 'bottom',
-      legendHorizontalAlign: 'left',
-      barGap: 3,
-      zoomingTool: false,
-      resizeDebounce: 250,
-      ...props.chartConfig
-    };
-  }, [props.chartConfig]);
+  const chartConfig = {
+    yAxisVisible: false,
+    xAxisVisible: true,
+    gridStroke: ThemingParameters.sapList_BorderColor,
+    gridHorizontal: true,
+    gridVertical: false,
+    legendPosition: 'bottom',
+    legendHorizontalAlign: 'left',
+    barGap: 3,
+    zoomingTool: false,
+    resizeDebounce: 250,
+    yAxisConfig: {},
+    xAxisConfig: {},
+    secondYAxisConfig: {},
+    ...props.chartConfig
+  };
 
   const { dimensions, measures } = usePrepareDimensionsAndMeasures(
     props.dimensions,
@@ -263,6 +264,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
                 height={xAxisHeights[index]}
                 allowDuplicatedCategory={index === 0}
                 reversed={isRTL}
+                {...chartConfig.xAxisConfig}
               />
             );
           })}
@@ -274,6 +276,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
           interval={0}
           tick={<YAxisTicks config={primaryMeasure} />}
           width={yAxisWidth}
+          {...chartConfig.yAxisConfig}
         />
         {chartConfig.secondYAxis?.dataKey && (
           <YAxis
@@ -298,6 +301,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
             orientation={isRTL === true ? 'left' : 'right'}
             yAxisId="right"
             interval={0}
+            {...chartConfig.secondYAxisConfig}
           />
         )}
         {isMounted &&

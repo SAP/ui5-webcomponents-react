@@ -8,7 +8,7 @@ import { YAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/YAxi
 import { ComposedChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/ComposedChartPlaceholder';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/dist/useLegendItemClick';
 import { resolvePrimaryAndSecondaryMeasures } from '@ui5/webcomponents-react-charts/dist/Utils';
-import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
+import React, { CSSProperties, FC, forwardRef, Ref, useCallback } from 'react';
 import {
   Area,
   Bar,
@@ -157,22 +157,24 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
 
   const [componentRef, chartRef] = useSyncRef<any>(ref);
 
-  const chartConfig = useMemo(() => {
-    return {
-      yAxisLabelsVisible: true,
-      yAxisVisible: false,
-      xAxisVisible: true,
-      gridStroke: ThemingParameters.sapList_BorderColor,
-      gridHorizontal: true,
-      gridVertical: false,
-      legendPosition: 'bottom',
-      legendHorizontalAlign: 'left',
-      zoomingTool: false,
-      resizeDebounce: 250,
-      yAxisWidth: null,
-      ...props.chartConfig
-    };
-  }, [props.chartConfig]);
+  const chartConfig = {
+    yAxisLabelsVisible: true,
+    yAxisVisible: false,
+    xAxisVisible: true,
+    gridStroke: ThemingParameters.sapList_BorderColor,
+    gridHorizontal: true,
+    gridVertical: false,
+    legendPosition: 'bottom',
+    legendHorizontalAlign: 'left',
+    zoomingTool: false,
+    resizeDebounce: 250,
+    yAxisWidth: null,
+    yAxisConfig: {},
+    xAxisConfig: {},
+    secondYAxisConfig: {},
+    secondXAxisConfig: {},
+    ...props.chartConfig
+  };
 
   const { dimensions, measures } = usePrepareDimensionsAndMeasures(
     props.dimensions,
@@ -324,6 +326,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
             width={chartConfig.yAxisWidth ?? yAxisWidth}
             orientation={isRTL ? 'right' : 'left'}
             tick={chartConfig.yAxisLabelsVisible ? <YAxisTicks config={primaryMeasure} /> : false}
+            {...chartConfig.yAxisConfig}
           />
         )}
         {layout === 'vertical' && (
@@ -333,6 +336,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
             xAxisId="primary"
             type="number"
             tick={<XAxisTicks config={primaryMeasure} />}
+            {...chartConfig.xAxisConfig}
           />
         )}
 
@@ -364,6 +368,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
             orientation={isRTL ? 'left' : 'right'}
             interval={0}
             yAxisId="secondary"
+            {...chartConfig.secondYAxisConfig}
           />
         )}
         {chartConfig.secondYAxis?.dataKey && layout === 'vertical' && (
@@ -390,6 +395,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
             interval={0}
             xAxisId="secondary"
             type="number"
+            {...chartConfig.secondXAxisConfig}
           />
         )}
         {chartConfig.referenceLine && (
