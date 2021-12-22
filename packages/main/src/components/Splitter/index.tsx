@@ -134,15 +134,15 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
   const positionKeys = vertical ? verticalPositionInfo : horizontalPositionInfo;
 
   let timestamp;
-  let mX = 0;
+  let initPos = 0;
   let isDragging = true;
 
   const handleSplitterMove = useCallback(
     (e) => {
       const now = Date.now();
-      const currentX = e.screenX;
+      const currentPos = e[`screen${positionKeys.position}`];
       const dt = now - timestamp;
-      const distance = Math.abs(currentX - mX);
+      const distance = Math.abs(currentPos - initPos);
       const speed = Math.round((distance / dt) * 1000);
 
       const previousSibling = localRef.current.previousSibling;
@@ -185,7 +185,7 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
         }
       }
 
-      mX = currentX;
+      initPos = currentPos;
       timestamp = now;
     },
     [localRef.current, isDragging]
