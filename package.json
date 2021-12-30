@@ -86,7 +86,7 @@
     "whatwg-fetch": "^3.6.2"
   },
   "resolutions": {
-    "@types/react": "17.0.37",
+    "@types/react": "17.0.38",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "trim": "0.0.3",
