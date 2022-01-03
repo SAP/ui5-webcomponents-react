@@ -3,9 +3,8 @@ import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils
 import { ChartContainer } from '@ui5/webcomponents-react-charts/dist/components/ChartContainer';
 import { PieChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/PieChartPlaceholder';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
+import React, { CSSProperties, FC, forwardRef, Ref } from 'react';
 import { PolarAngleAxis, RadialBar, RadialBarChart } from 'recharts';
-import { AxisDomain } from 'recharts/types/util/types';
 import { useOnClickInternal } from '../../hooks/useOnClickInternal';
 
 export interface RadialChartProps extends Omit<CommonProps, 'onClick' | 'children' | 'onLegendClick'> {
@@ -40,6 +39,12 @@ export interface RadialChartProps extends Omit<CommonProps, 'onClick' | 'childre
    * `noAnimation` disables all chart animations when set to `true`.
    */
   noAnimation?: boolean;
+  /**
+   * Defines possible configurations of the chart.
+   *
+   * __Note:__ It is possible to overwrite internally used props. Please use use with caution!
+   */
+  chartConfig?: RadialChartProps;
 }
 
 const radialChartMargin = { right: 30, left: 30, top: 30, bottom: 30 };
@@ -63,29 +68,24 @@ const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, r
     tooltip,
     slot,
     noAnimation,
+    chartConfig,
     ...rest
   } = props;
 
-  const range = useMemo<AxisDomain>(() => {
-    return [0, maxValue];
-  }, [maxValue]);
+  const range = [0, maxValue];
+  const dataset = [{ value }];
 
-  const dataset = useMemo(() => [{ value }], [value]);
-
-  const onDataPointClickInternal = useCallback(
-    (payload, i, event) => {
-      if (payload && onDataPointClick) {
-        onDataPointClick(
-          enrichEventWithDetails(event, {
-            value: payload.value,
-            payload: payload.payload,
-            dataIndex: i
-          })
-        );
-      }
-    },
-    [onDataPointClick]
-  );
+  const onDataPointClickInternal = (payload, i, event) => {
+    if (payload && onDataPointClick) {
+      onDataPointClick(
+        enrichEventWithDetails(event, {
+          value: payload.value,
+          payload: payload.payload,
+          dataIndex: i
+        })
+      );
+    }
+  };
 
   const onClickInternal = useOnClickInternal(onClick);
 
@@ -94,11 +94,11 @@ const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, r
       dataset={dataset}
       ref={ref}
       Placeholder={PieChartPlaceholder}
-      style={style}
       className={className}
       tooltip={tooltip}
       slot={slot}
       resizeDebounce={250}
+      style={style}
       {...rest}
     >
       <RadialBarChart
@@ -112,15 +112,14 @@ const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, r
         cy="50%"
         startAngle={90}
         endAngle={-270}
+        {...chartConfig}
       >
         <PolarAngleAxis type="number" domain={range} tick={false} />
         <RadialBar
           isAnimationActive={noAnimation === false}
           background={radialBarBackground}
           dataKey="value"
-          cornerRadius="50%"
           fill={color ?? ThemingParameters.sapChart_OrderedColor_1}
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
           onClick={onDataPointClickInternal}
         />
