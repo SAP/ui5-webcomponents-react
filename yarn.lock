@@ -11860,6 +11860,13 @@ lit-html@2.0.1:
   dependencies:
     "@types/trusted-types" "^2.0.2"
 
+lit-html@2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/lit-html/-/lit-html-2.1.1.tgz#f4da485798a0d967514d31730d387350fafb79f7"
+  integrity sha512-E4BImK6lopAYanJpvcGaAG8kQFF1ccIulPu2BRNZI7acFB6i4ujjjsnaPVFT1j/4lD9r8GKih0Y8d7/LH8SeyQ==
+  dependencies:
+    "@types/trusted-types" "^2.0.2"
+
 livereload-js@^3.3.1:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/livereload-js/-/livereload-js-3.3.2.tgz#c88b009c6e466b15b91faa26fd7c99d620e12651"
