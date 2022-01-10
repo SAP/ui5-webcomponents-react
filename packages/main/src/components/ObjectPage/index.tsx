@@ -661,7 +661,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     (e) => {
       const selectedId = e.detail.item.dataset.key;
       const subSection = popoverContent.props.children
-        .filter((item) => item.props && item.props.isSubSection)
+        .filter((item) => item?.type?.displayName === 'ObjectPageSubSection')
         .find((item) => item.props.id === selectedId);
       if (subSection) {
         handleOnSubSectionSelected(enrichEventWithDetails(e, { section: popoverContent, subSection }));
@@ -823,7 +823,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
             >
               <List onItemClick={onSubSectionClick}>
                 {popoverContent?.props?.children
-                  .filter((item) => item.props && item.props.isSubSection)
+                  .filter((item) => item?.type?.displayName === 'ObjectPageSubSection')
                   .map((item) => (
                     <StandardListItem key={item.props.id} data-key={item.props.id}>
                       {item.props.titleText}
