@@ -13,5 +13,5 @@ describe('AvatarGroup', () => {
     );
     expect(asFragment()).toMatchSnapshot();
   });
-  createCustomPropsTest(AvatarGroup);
+  createCustomPropsTest(AvatarGroup, { children: <Avatar initials="UI5" /> });
 });

@@ -13,5 +13,5 @@ describe('Breadcrumbs', () => {
     );
     expect(asFragment()).toMatchSnapshot();
   });
-  createCustomPropsTest(Breadcrumbs);
+  createCustomPropsTest(Breadcrumbs, { children: <BreadcrumbsItem>Hello World!</BreadcrumbsItem> });
 });
