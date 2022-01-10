@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "build",
+    "outDir": "./dist",
     "module": "esnext",
     "target": "ES2015",
     "lib": ["es2019", "dom"],
@@ -10,18 +10,20 @@
     "paths": {
       "@docs/*": [".storybook/components/*"],
       "@shared/*": ["shared/*"],
-      "@ui5/webcomponents-react/*": ["node_modules/@ui5/webcomponents-react/src/*"],
-      "@ui5/webcomponents-react-base/*": ["node_modules/@ui5/webcomponents-react-base/src/*"],
-      "@ui5/webcomponents-react-charts/*": ["node_modules/@ui5/webcomponents-react-charts/src/*"]
+      "@ui5/webcomponents-react/*": ["./packages/main/src/*"],
+      "@ui5/webcomponents-react-base/*": ["./packages/base/src/*"],
+      "@ui5/webcomponents-react-charts/*": ["./packages/charts/src/*"]
     },
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,
     "strict": false,
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
-    "removeComments": true,
+    "removeComments": false,
     "esModuleInterop": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "declaration": true,
+    "declarationDir": "dist"
   },
   "include": ["packages/**/*", "shared/**/*"],
   "exclude": ["node_modules"],
