@@ -11,7 +11,7 @@ export const modifyObjectProperty = (object: any, attr: string, value: any) => {
 
 export const createCustomPropsTest = (Component: ComponentType<any>, props = {}) => {
   test('Pass Through HTML Standard Props', () => {
-    const { getByTitle, container } = render(
+    const { getByTitle } = render(
       <Component
         data-testid={'component-to-be-tested'}
         data-special-test-prop="data-prop"
