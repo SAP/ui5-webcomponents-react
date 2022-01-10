@@ -1,4 +1,5 @@
 import { render } from '@shared/tests';
+import { createCustomPropsTest } from '@shared/tests/utils';
 import { CalendarDate } from '@ui5/webcomponents-react/dist/CalendarDate';
 import React from 'react';
 
@@ -7,4 +8,5 @@ describe('CalendarDate', () => {
     const { asFragment } = render(<CalendarDate />);
     expect(asFragment()).toMatchSnapshot();
   });
+  createCustomPropsTest(CalendarDate);
 });

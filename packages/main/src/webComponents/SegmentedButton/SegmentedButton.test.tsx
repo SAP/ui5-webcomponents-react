@@ -1,4 +1,5 @@
 import { render } from '@shared/tests';
+import { createCustomPropsTest } from '@shared/tests/utils';
 import { SegmentedButtonItem } from '@ui5/webcomponents-react/dist/SegmentedButtonItem';
 import { SegmentedButton } from '@ui5/webcomponents-react/dist/SegmentedButton';
 import React from 'react';
@@ -14,4 +15,5 @@ describe('SegmentedButton', () => {
     );
     expect(asFragment()).toMatchSnapshot();
   });
+  createCustomPropsTest(SegmentedButton);
 });

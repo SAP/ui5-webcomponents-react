@@ -1,6 +1,7 @@
 import { createUseStyles } from 'react-jss';
 import React, { forwardRef, ReactNode, Ref } from 'react';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { TextStyles } from './Text.jss';
 import clsx from 'clsx';
 
@@ -26,6 +27,9 @@ const useStyles = createUseStyles(TextStyles, { name: 'Text' });
  */
 const Text = forwardRef((props: TextPropTypes, ref: Ref<HTMLSpanElement>) => {
   const { children, renderWhitespace, wrapping, className, style, tooltip, slot, ...rest } = props;
+
+  useDeprecationNoticeForTooltip('Text', props.tooltip);
+
   const classes = useStyles();
   const classNameString = clsx(
     classes.text,

@@ -26,6 +26,7 @@ import React, {
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
 import { PopoverHorizontalAlign } from '../../enums/PopoverHorizontalAlign';
+import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { PopoverDomRef } from '../../webComponents/Popover';
 import { stopPropagation } from '../../internal/stopPropagation';
 import { useObserveHeights } from '../../internal/useObserveHeights';
@@ -183,6 +184,8 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     portalContainer,
     ...rest
   } = props;
+
+  useDeprecationNoticeForTooltip('ObjectPage', props.tooltip);
 
   const classes = useStyles();
 

@@ -400,7 +400,7 @@ describe('FilterBar', () => {
     const onRestore = jest.fn();
     const { rerender } = render(
       <FilterBar
-        tooltip="FilterBar-Test"
+        title="FilterBar-Test"
         showFilterConfiguration
         showSearchOnFiltersDialog
         showClearOnFB
@@ -505,7 +505,7 @@ describe('FilterBar', () => {
 
     rerender(
       <FilterBar
-        tooltip="FilterBar-Test"
+        title="FilterBar-Test"
         showFilterConfiguration
         showSearchOnFiltersDialog
         showClearOnFB

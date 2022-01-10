@@ -37,6 +37,7 @@ import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { defaultFormatter } from '../../internal/defaults';
 import { tickLineConfig, tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
+import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 
 interface MeasureConfig extends IChartMeasure {
   /**
@@ -144,6 +145,8 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
     children,
     ...rest
   } = props;
+
+  useDeprecationNoticeForTooltip('ColumnChart', props.tooltip);
 
   const chartConfig = {
     yAxisVisible: false,

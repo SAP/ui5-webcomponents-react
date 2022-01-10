@@ -2,6 +2,7 @@ import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import React, { forwardRef, ReactNode, Ref, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
+import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { DynamicPageHeaderStyles } from './DynamicPageHeader.jss';
 import clsx from 'clsx';
 
@@ -31,6 +32,7 @@ const useStyles = createUseStyles(DynamicPageHeaderStyles, { name: 'DynamicPageH
  */
 const DynamicPageHeader = forwardRef((props: InternalProps, ref: Ref<HTMLDivElement>) => {
   const { children, headerPinned, topHeaderHeight, tooltip, className, style, ...rest } = props;
+  useDeprecationNoticeForTooltip('DynamicPageHeader', props.tooltip);
 
   const headerStyles = useMemo(() => {
     if (headerPinned) {

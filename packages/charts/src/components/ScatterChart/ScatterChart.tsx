@@ -29,6 +29,7 @@ import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { defaultFormatter } from '../../internal/defaults';
 import { tickLineConfig, tooltipContentStyle, tooltipFillOpacity, xAxisPadding } from '../../internal/staticProps';
+import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 
 interface MeasureConfig extends Omit<IChartMeasure, 'color' | 'hideDataLabel' | 'DataLabel'> {
   /**
@@ -147,6 +148,8 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
     children,
     ...rest
   } = props;
+
+  useDeprecationNoticeForTooltip('ScatterChart', props.tooltip);
 
   const chartConfig = {
     yAxisVisible: false,

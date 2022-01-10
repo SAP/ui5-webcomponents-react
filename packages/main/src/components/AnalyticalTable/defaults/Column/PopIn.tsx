@@ -63,7 +63,7 @@ export const PopIn = (instance) => {
               const cell = item.column.Cell;
               if (typeof cell === 'string') {
                 return (
-                  <Text wrapping={false} tooltip={cell}>
+                  <Text wrapping={false} title={cell}>
                     {cell}
                   </Text>
                 );
@@ -71,7 +71,7 @@ export const PopIn = (instance) => {
               return makeRenderer({ ...instance, ...popInInstanceProps, isPopIn: true }, item.column)(item.column.Cell);
             }
             return popInInstanceProps?.value ? (
-              <Text wrapping={false} tooltip={popInInstanceProps.value}>
+              <Text wrapping={false} title={popInInstanceProps.value}>
                 {popInInstanceProps.value}
               </Text>
             ) : null;
