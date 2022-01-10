@@ -1,6 +1,7 @@
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import React, { CSSProperties, forwardRef, ReactNode, Ref } from 'react';
 import { createUseStyles } from 'react-jss';
+import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { ResponsiveGridLayoutStyles } from './ResponsiveGridLayout.jss';
 import clsx from 'clsx';
 
@@ -92,6 +93,8 @@ const ResponsiveGridLayout = forwardRef((props: ResponsiveGridLayoutPropTypes, r
   } = props;
   const classes = useStyles();
   const finalClassNames = clsx(classes.container, className);
+
+  useDeprecationNoticeForTooltip('ResponsiveGridLayout', props.tooltip);
 
   return (
     <div

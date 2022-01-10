@@ -17,6 +17,7 @@ import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import React, { forwardRef, RefObject, useCallback } from 'react';
 import { createUseStyles } from 'react-jss';
 import clsx from 'clsx';
+import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 
 addCustomCSS(
   'ui5-button',
@@ -153,6 +154,7 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
     style,
     a11yConfig
   } = props;
+  useDeprecationNoticeForTooltip('DynamicPageAnchorBar', props.tooltip);
 
   const classes = useStyles();
   const [componentRef, anchorBarRef] = useSyncRef<HTMLElement>(ref);

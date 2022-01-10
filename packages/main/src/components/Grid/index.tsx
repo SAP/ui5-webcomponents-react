@@ -13,6 +13,7 @@ import React, {
   useCallback
 } from 'react';
 import { createUseStyles } from 'react-jss';
+import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { styles } from './Grid.jss';
 import clsx from 'clsx';
 
@@ -111,6 +112,9 @@ const Grid = forwardRef((props: GridPropTypes, ref: Ref<HTMLDivElement>) => {
     defaultSpan,
     ...rest
   } = props;
+
+  useDeprecationNoticeForTooltip('Grid', props.tooltip);
+
   const classes = useStyles();
   const currentRange = useViewportRange();
   const gridClasses = clsx(

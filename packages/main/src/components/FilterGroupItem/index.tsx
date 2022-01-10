@@ -7,6 +7,7 @@ import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import clsx from 'clsx';
 import React, { forwardRef, ReactElement, RefObject } from 'react';
 import { createUseStyles } from 'react-jss';
+import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import styles from './FilterGroupItem.jss';
 
 const useStyles = createUseStyles(styles, { name: 'FilterGroupItem' });
@@ -78,6 +79,9 @@ export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref:
     slot,
     ...rest
   } = props;
+
+  useDeprecationNoticeForTooltip('FilterGroupItem', props.tooltip);
+
   const inFB = props['data-in-fb'];
   const [componentRef, filterGroupItemRef] = useSyncRef<HTMLDivElement>(ref);
 

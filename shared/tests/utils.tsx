@@ -11,7 +11,7 @@ export const modifyObjectProperty = (object: any, attr: string, value: any) => {
 
 export const createCustomPropsTest = (Component: ComponentType<any>, props = {}) => {
   test('Pass Through HTML Standard Props', () => {
-    render(
+    const { getByTitle, container } = render(
       <Component
         data-testid={'component-to-be-tested'}
         data-special-test-prop="data-prop"
@@ -19,6 +19,7 @@ export const createCustomPropsTest = (Component: ComponentType<any>, props = {})
         id="element-id"
         className="thisClassIsUsedForTestingPurposesOnly"
         style={{ pointerEvents: 'none' }}
+        title="Tooltip"
         customattribute="true"
         {...props}
       />
@@ -26,6 +27,7 @@ export const createCustomPropsTest = (Component: ComponentType<any>, props = {})
 
     const element = screen.getByTestId('component-to-be-tested');
 
+    expect(getByTitle('Tooltip')).toBeInTheDocument();
     expect(element.classList.contains('thisClassIsUsedForTestingPurposesOnly')).toBeTruthy();
     expect(element.style.pointerEvents).toEqual('none');
 

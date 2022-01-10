@@ -49,6 +49,7 @@ import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { stopPropagation } from '../../internal/stopPropagation';
+import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { ManageViewsDialog } from './ManageViewsDialog';
 import { SaveViewDialog } from './SaveViewDialog';
 import { VariantItemPropTypes } from './VariantItem';
@@ -246,6 +247,8 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
     portalContainer,
     ...rest
   } = props;
+
+  useDeprecationNoticeForTooltip('VariantManagement', props.tooltip);
 
   const classes = useStyles();
   const popoverRef = useRef<ResponsivePopoverDomRef>(null);

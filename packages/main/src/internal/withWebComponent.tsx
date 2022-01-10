@@ -1,5 +1,5 @@
 import { getEffectiveScopingSuffixForTag } from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
-import { debounce } from '@ui5/webcomponents-react-base/dist/Utils';
+import { deprecationNotice } from '@ui5/webcomponents-react-base/dist/Utils';
 import { useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import React, { Children, cloneElement, ComponentType, forwardRef, ReactElement, Ref, useEffect, useRef } from 'react';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
@@ -84,12 +84,7 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
         eventProperties.forEach((eventName) => {
           const eventHandler = rest[createEventPropName(eventName)] as EventHandler;
           if (typeof eventHandler === 'function') {
-            //todo remove when UI5 Web Components have fixed this
-            if (tagName === 'ui5-card-header' && eventName === 'click') {
-              eventRegistry.current[eventName] = debounce(eventHandler, 100);
-            } else {
-              eventRegistry.current[eventName] = eventHandler;
-            }
+            eventRegistry.current[eventName] = eventHandler;
             ref.current.addEventListener(eventName, eventRegistry.current[eventName]);
           }
         });
@@ -117,22 +112,31 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
       CommonProps & { class: string }
     >;
 
+    useEffect(() => {
+      if (tooltip) {
+        // strip ui5 prefix and convert to PascalCase
+        const componentName = tagName.substring(3).replace(/(^\w|-\w)/g, (text) => text.replace(/-/, '').toUpperCase());
+        deprecationNotice(
+          componentName,
+          '`tooltip` has been deprecated, please use the native `title` attribute instead.'
+        );
+      }
+    }, [tooltip]);
+
     return (
       <Component
         ref={componentRef}
+        title={tooltip}
         {...booleanProps}
         {...regularProps}
         {...nonWebComponentRelatedProps}
         class={className}
-        title={tooltip}
       >
         {slots}
         {children}
       </Component>
     );
   });
-
-  WithWebComponent.displayName = `WithWebComponent(${tagName})`;
 
   return WithWebComponent;
 };

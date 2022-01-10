@@ -30,6 +30,7 @@ import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEve
 import clsx from 'clsx';
 import React, { forwardRef, ReactNode, Ref, useState } from 'react';
 import { createUseStyles } from 'react-jss';
+import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 
 const useStyles = createUseStyles(
   {
@@ -174,6 +175,9 @@ const SelectDialog = forwardRef((props: SelectDialogPropTypes, ref: Ref<DialogDo
     onSearchReset,
     ...rest
   } = props;
+
+  useDeprecationNoticeForTooltip('SelectDialog', props.tooltip);
+
   const classes = useStyles();
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const [searchValue, setSearchValue] = useState('');
