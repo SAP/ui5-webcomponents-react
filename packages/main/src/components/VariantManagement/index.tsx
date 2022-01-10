@@ -457,7 +457,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
           {dirtyState && <div className={dirtyStateClasses}>{dirtyStateText}</div>}
         </FlexBox>
         <Button
-          tooltip={selectViewText}
+          title={selectViewText}
           aria-label={selectViewText}
           onClick={handleOpenVariantManagement}
           design={ButtonDesign.Transparent}
@@ -537,7 +537,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
                             {filteredChildren && (
                               <Icon
                                 accessibleName={resetIconTitleText}
-                                tooltip={resetIconTitleText}
+                                title={resetIconTitleText}
                                 name="decline"
                                 interactive
                                 onClick={handleResetFilter}

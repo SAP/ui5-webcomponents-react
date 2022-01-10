@@ -309,7 +309,7 @@ const SelectDialog = forwardRef((props: SelectDialogPropTypes, ref: Ref<DialogDo
               {searchValue && (
                 <Icon
                   accessibleName={i18nBundle.getText(RESET)}
-                  tooltip={i18nBundle.getText(RESET)}
+                  title={i18nBundle.getText(RESET)}
                   name="decline"
                   interactive
                   onClick={handleResetSearch}
@@ -321,7 +321,7 @@ const SelectDialog = forwardRef((props: SelectDialogPropTypes, ref: Ref<DialogDo
                 className={classes.inputIcon}
                 onClick={handleSearchSubmit}
                 accessibleName={i18nBundle.getText(SEARCH)}
-                tooltip={i18nBundle.getText(SEARCH)}
+                title={i18nBundle.getText(SEARCH)}
               />
             </>
           }

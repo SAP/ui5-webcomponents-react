@@ -201,7 +201,7 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
           onClick={onToggleHeaderButtonClick}
           onMouseOver={onHoverToggleButton}
           onMouseLeave={onHoverToggleButton}
-          tooltip={i18nBundle.getText(!headerContentVisible ? EXPAND_HEADER : COLLAPSE_HEADER)}
+          title={i18nBundle.getText(!headerContentVisible ? EXPAND_HEADER : COLLAPSE_HEADER)}
           aria-label={i18nBundle.getText(!headerContentVisible ? EXPAND_HEADER : COLLAPSE_HEADER)}
         />
       )}
@@ -216,7 +216,7 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
           )}
           pressed={headerPinned}
           onClick={onPinHeader}
-          tooltip={i18nBundle.getText(headerPinned ? UNPIN_HEADER : PIN_HEADER)}
+          title={i18nBundle.getText(headerPinned ? UNPIN_HEADER : PIN_HEADER)}
           aria-label={i18nBundle.getText(headerPinned ? UNPIN_HEADER : PIN_HEADER)}
         />
       )}

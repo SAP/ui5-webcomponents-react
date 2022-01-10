@@ -104,7 +104,7 @@ export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref:
     >
       <div className={inFB ? classes.innerFilterItemContainer : classes.innerFilterItemContainerDialog}>
         <FlexBox>
-          <Label tooltip={labelTooltip ?? label} required={required}>
+          <Label title={labelTooltip ?? label} required={required}>
             {`${considerGroupName && groupName !== 'default' ? `${groupName}: ` : ''}
           ${label}`}
           </Label>
