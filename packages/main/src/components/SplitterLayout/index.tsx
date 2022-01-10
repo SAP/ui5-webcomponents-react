@@ -2,6 +2,7 @@ import { SplitterElementPropTypes } from '@ui5/webcomponents-react/dist/Splitter
 import { SplitterLayoutContext } from '@ui5/webcomponents-react/dist/SplitterLayoutContext';
 import React, { CSSProperties, forwardRef, ReactElement, Ref } from 'react';
 import { createUseStyles } from 'react-jss';
+//todo import
 import { CommonProps } from '../../interfaces/CommonProps';
 import { styles } from './SplitterLayout.jss';
 import '@ui5/webcomponents-icons/dist/vertical-grip.js';
@@ -24,10 +25,7 @@ export interface SplitterLayoutPropTypes extends CommonProps {
 
 const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTMLDivElement>) => {
   const { vertical, children, title, tooltip, style, className, ...rest } = props;
-
   const classes = useStyles();
-
-  const splitterLayoutClasses = clsx(classes.splitterLayout, className);
 
   const layoutElements = useConcatSplitterElements(children ?? [], style?.width, style?.height, vertical);
 
@@ -42,7 +40,7 @@ const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTML
         }
         title={title ?? tooltip}
         {...rest}
-        className={splitterLayoutClasses}
+        className={clsx(classes.splitterLayout, className)}
         ref={ref}
         data-splitter-vertical={vertical}
       >

@@ -42,7 +42,7 @@ export interface SplitterElementPropTypes extends CommonProps {
 }
 
 const SplitterElement = forwardRef((props: SplitterElementPropTypes, ref: RefObject<HTMLDivElement>) => {
-  const { children, style, tooltip, className, minSize = 0, size, resizable, ...rest } = props;
+  const { children, style, tooltip, className, minSize, size, resizable, ...rest } = props;
 
   const { vertical } = useContext(SplitterLayoutContext);
 
@@ -60,11 +60,16 @@ const SplitterElement = forwardRef((props: SplitterElementPropTypes, ref: RefObj
         ...style
       }}
       {...rest}
+      data-min-size={minSize}
     >
       {children}
     </div>
   );
 });
+
+SplitterElement.defaultProps = {
+  minSize: 0
+};
 
 SplitterElement.displayName = 'SplitterElement';
 

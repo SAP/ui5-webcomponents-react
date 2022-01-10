@@ -23,21 +23,30 @@ import { SplitterElement } from '@ui5/webcomponents-react/dist/SplitterElement';
   <Story name="Vertical Layout">
     {(args) => {
       return (
-        <SplitterLayout vertical={true} {...args} style={{ width: '800px', height: '400px' }}>
-          <SplitterElement size={'200px'}>
+        <SplitterLayout vertical={true} {...args} style={{ width: '1200px', height: '400px' }}>
+          <SplitterElement style={{ background: 'lightblue' }}>
             <Button>Button 1</Button>
           </SplitterElement>
-          <SplitterElement size={'300px'} minSize={200}>
+          <SplitterElement style={{ background: 'skyblue' }} minSize={200}>
             <Button>Button 2</Button>
           </SplitterElement>
-          <SplitterElement>
+          <SplitterElement style={{ background: 'lightskyblue' }}>
             <Button>Button 3</Button>
           </SplitterElement>
-          <SplitterElement>
+          <SplitterElement style={{ background: 'cadetblue' }}>
             <Button>Button 4</Button>
           </SplitterElement>
-          <SplitterElement>
-            <Button>Button 5</Button>
+          <SplitterElement style={{ background: 'lightyellow' }} resizable={false}>
+            <Button>Button 5 (no resize)</Button>
+          </SplitterElement>
+          <SplitterElement style={{ background: 'lightblue' }}>
+            <Button>Button 6</Button>
+          </SplitterElement>
+          <SplitterElement style={{ background: 'cadetblue' }} size={'200px'}>
+            <Button>Button 7</Button>
+          </SplitterElement>
+          <SplitterElement style={{ background: 'lightskyblue' }}>
+            <Button>Button 8</Button>
           </SplitterElement>
         </SplitterLayout>
       );
