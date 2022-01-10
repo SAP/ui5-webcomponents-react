@@ -6,6 +6,7 @@ import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import React, { CSSProperties, FC, forwardRef, Ref } from 'react';
 import { PolarAngleAxis, RadialBar, RadialBarChart } from 'recharts';
 import { useOnClickInternal } from '../../hooks/useOnClickInternal';
+import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 
 export interface RadialChartProps extends Omit<CommonProps, 'onClick' | 'children' | 'onLegendClick'> {
   /**
@@ -71,6 +72,8 @@ const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, r
     chartConfig,
     ...rest
   } = props;
+
+  useDeprecationNoticeForTooltip('RadialChart', props.tooltip);
 
   const range = [0, maxValue];
   const dataset = [{ value }];

@@ -1,4 +1,5 @@
 import { render } from '@shared/tests';
+import { createCustomPropsTest } from '@shared/tests/utils';
 import { Toast } from '@ui5/webcomponents-react/dist/Toast';
 import React from 'react';
 
@@ -7,4 +8,5 @@ describe('Toast', () => {
     const { asFragment } = render(<Toast />);
     expect(asFragment()).toMatchSnapshot();
   });
+  createCustomPropsTest(Toast);
 });

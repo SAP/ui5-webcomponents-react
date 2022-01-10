@@ -9,6 +9,7 @@ import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import clsx from 'clsx';
 import React, { cloneElement, forwardRef, ReactElement, ReactNode, Ref, useEffect, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
+import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { useObserveHeights } from '../../internal/useObserveHeights';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
 import { styles } from './DynamicPage.jss';
@@ -98,6 +99,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
     ...rest
   } = props;
   const { onScroll: _1, ...propsWithoutOmitted } = rest;
+  useDeprecationNoticeForTooltip('DynamicPage', props.tooltip);
 
   const anchorBarRef = useRef<HTMLDivElement>();
   const [componentRef, dynamicPageRef] = useSyncRef<HTMLDivElement>(ref);

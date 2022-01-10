@@ -1,6 +1,7 @@
 import React, { forwardRef, ReactNode, RefObject } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { EmptyIdPropException } from '../ObjectPage/EmptyIdPropException';
 import styles from './ObjectPageSection.jss';
 import clsx from 'clsx';
@@ -31,6 +32,9 @@ const useStyles = createUseStyles(styles, { name: 'ObjectPageSection' });
  */
 const ObjectPageSection = forwardRef((props: ObjectPageSectionPropTypes, ref: RefObject<HTMLElement>) => {
   const { titleText, id, children, titleTextUppercase, className, style, tooltip, ...rest } = props;
+
+  useDeprecationNoticeForTooltip('ObjectPageSection', props.tooltip);
+
   const classes = useStyles();
 
   if (!id) {

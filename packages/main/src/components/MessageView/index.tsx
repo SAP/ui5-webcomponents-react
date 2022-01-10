@@ -35,6 +35,7 @@ import React, {
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
+import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import type { MessageItemPropTypes } from './MessageItem';
 import { getIconNameForType } from './utils';
 
@@ -156,6 +157,8 @@ const useStyles = createUseStyles(
 
 const MessageView = forwardRef((props: MessageViewPropTypes, ref: Ref<MessageViewDomRef>) => {
   const { children, groupItems, showDetailsPageHeader, className, onItemSelect, tooltip, ...rest } = props;
+
+  useDeprecationNoticeForTooltip('MessageView', props.tooltip);
 
   const [componentRef, internalRef] = useSyncRef<MessageViewDomRef>(ref);
 

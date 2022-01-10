@@ -1,4 +1,5 @@
 import { render } from '@shared/tests';
+import { createCustomPropsTest } from '@shared/tests/utils';
 import { SideNavigationSubItem } from '@ui5/webcomponents-react/dist/SideNavigationSubItem';
 import React from 'react';
 
@@ -7,4 +8,5 @@ describe('SideNavigationSubItem', () => {
     const { asFragment } = render(<SideNavigationSubItem />);
     expect(asFragment()).toMatchSnapshot();
   });
+  createCustomPropsTest(SideNavigationSubItem);
 });

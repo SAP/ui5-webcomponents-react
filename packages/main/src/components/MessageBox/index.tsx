@@ -46,6 +46,7 @@ import React, {
 } from 'react';
 import { createUseStyles } from 'react-jss';
 import { stopPropagation } from '../../internal/stopPropagation';
+import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import styles from './MessageBox.jss';
 
 type MessageBoxAction = MessageBoxActions | keyof typeof MessageBoxActions | string;
@@ -170,6 +171,9 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<DialogDomRef
     accessibleName,
     ...rest
   } = props;
+
+  useDeprecationNoticeForTooltip('MessageBox', props.tooltip);
+
   const [componentRef, dialogRef] = useSyncRef<DialogDomRef>(ref);
 
   const classes = useStyles();

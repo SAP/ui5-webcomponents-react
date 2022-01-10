@@ -34,6 +34,7 @@ import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { defaultFormatter } from '../../internal/defaults';
 import { tickLineConfig, tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
+import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { ComparisonLine } from './ComparisonLine';
 
 const dimensionDefaults = {
@@ -141,6 +142,8 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
     children,
     ...rest
   } = props;
+
+  useDeprecationNoticeForTooltip('BulletChart', props.tooltip);
 
   const [componentRef, chartRef] = useSyncRef<any>(ref);
 

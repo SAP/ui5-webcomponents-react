@@ -5,6 +5,7 @@ import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJust
 import { FlexBoxWrap } from '@ui5/webcomponents-react/dist/FlexBoxWrap';
 import React, { forwardRef, ReactNode, Ref } from 'react';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { styles } from './FlexBox.jss';
 import clsx from 'clsx';
 
@@ -70,6 +71,8 @@ const FlexBox = forwardRef((props: FlexBoxPropTypes, ref: Ref<HTMLDivElement>) =
     as,
     ...rest
   } = props;
+
+  useDeprecationNoticeForTooltip('FlexBox', props.tooltip);
 
   const classes = useStyles();
   const flexBoxClasses = clsx(

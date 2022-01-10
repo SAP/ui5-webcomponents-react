@@ -40,6 +40,7 @@ import {
   useSortBy,
   useTable
 } from 'react-table';
+import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import styles from './AnayticalTable.jss';
 import { ColumnHeaderContainer } from './ColumnHeader/ColumnHeaderContainer';
 import { DefaultColumn } from './defaults/Column';
@@ -531,6 +532,8 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     NoDataComponent,
     ...rest
   } = props;
+
+  useDeprecationNoticeForTooltip('AnalyticalTable', props.tooltip);
 
   const classes = useStyles();
 
