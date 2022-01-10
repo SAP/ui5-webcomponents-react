@@ -12,7 +12,9 @@ export interface CommonProps extends HTMLAttributes<HTMLElement> {
    */
   className?: string;
   /**
-   * A tooltip which will be shown on hover
+   * A tooltip which will be shown on hover.
+   *
+   * @deprecated please use `title` attribute instead.
    */
   tooltip?: string;
   ref?: Ref<any>;

@@ -1,4 +1,5 @@
 import React, { FC, forwardRef } from 'react';
+import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { PieChart, PieChartProps } from '../PieChart/PieChart';
 
 /**
@@ -13,6 +14,8 @@ const DonutChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref) => 
     innerRadius: '50%',
     ...props.chartConfig
   };
+
+  useDeprecationNoticeForTooltip('DonutChart', props.tooltip);
 
   return <PieChart {...props} ref={ref} chartConfig={chartConfig} />;
 });

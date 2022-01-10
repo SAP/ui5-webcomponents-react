@@ -32,6 +32,7 @@ import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { defaultFormatter } from '../../internal/defaults';
 import { tickLineConfig, tooltipContentStyle, tooltipFillOpacity, xAxisPadding } from '../../internal/staticProps';
+import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 
 interface MeasureConfig extends IChartMeasure {
   /**
@@ -123,6 +124,8 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     children,
     ...rest
   } = props;
+
+  useDeprecationNoticeForTooltip('LineChart', props.tooltip);
 
   const chartConfig = {
     yAxisVisible: false,

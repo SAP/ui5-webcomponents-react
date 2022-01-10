@@ -7,6 +7,7 @@ import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 
 import { PolarAngleAxis, RadialBar, RadialBarChart } from 'recharts';
 import { AxisDomain } from 'recharts/types/util/types';
 import { useOnClickInternal } from '../../hooks/useOnClickInternal';
+import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 
 export interface RadialChartProps extends Omit<CommonProps, 'onClick' | 'children' | 'onLegendClick'> {
   /**
@@ -65,6 +66,8 @@ const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, r
     noAnimation,
     ...rest
   } = props;
+
+  useDeprecationNoticeForTooltip('RadialChart', props.tooltip);
 
   const range = useMemo<AxisDomain>(() => {
     return [0, maxValue];
