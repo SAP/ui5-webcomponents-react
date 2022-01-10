@@ -208,10 +208,12 @@ describe('VariantManagement', () => {
     const variantItems = [
       <VariantItem key="0">VariantItem 1</VariantItem>,
       <VariantItem key="1">VariantItem 2</VariantItem>,
-      <VariantItem favorite selected>
+      <VariantItem favorite selected key="2">
         Favorite VariantItem
       </VariantItem>,
-      <VariantItem isDefault>Default VariantItem</VariantItem>
+      <VariantItem isDefault key="3">
+        Default VariantItem
+      </VariantItem>
     ];
     const { rerender, queryByText, getAllByText, getByText } = render(
       <VariantManagement showOnlyFavorites>{variantItems}</VariantManagement>
@@ -333,8 +335,10 @@ describe('VariantManagement', () => {
     ];
     const { getByText } = render(
       <VariantManagement>
-        {variantItems.map((item) => (
-          <VariantItem {...item.props}>{item.rowId}</VariantItem>
+        {variantItems.map((item, index) => (
+          <VariantItem key={index} {...item.props}>
+            {item.rowId}
+          </VariantItem>
         ))}
       </VariantManagement>
     );
@@ -397,7 +401,12 @@ describe('VariantManagement', () => {
     const cb = jest.fn((e) => e.detail);
     const { getByText } = await renderWithDefine(
       <VariantManagement onSaveManageViews={cb}>
-        {[...TwoVariantItems, <VariantItem isDefault>VariantItem 3</VariantItem>]}
+        {[
+          ...TwoVariantItems,
+          <VariantItem isDefault key="2">
+            VariantItem 3
+          </VariantItem>
+        ]}
       </VariantManagement>,
       ['ui5-checkbox', 'ui5-radio-button']
     );
@@ -439,7 +448,12 @@ describe('VariantManagement', () => {
     const cb = jest.fn((e) => e.detail);
     const { getByText } = render(
       <VariantManagement onSaveManageViews={cb}>
-        {[...TwoVariantItems, <VariantItem isDefault>VariantItem 3</VariantItem>]}
+        {[
+          ...TwoVariantItems,
+          <VariantItem isDefault key="2">
+            VariantItem 3
+          </VariantItem>
+        ]}
       </VariantManagement>
     );
     const manageBtn = getByText('Manage');
@@ -463,7 +477,12 @@ describe('VariantManagement', () => {
     const cb = jest.fn((e) => e.detail);
     const { getByText } = render(
       <VariantManagement onSaveManageViews={cb}>
-        {[...TwoVariantItems, <VariantItem isDefault>VariantItem 3</VariantItem>]}
+        {[
+          ...TwoVariantItems,
+          <VariantItem isDefault key="2">
+            VariantItem 3
+          </VariantItem>
+        ]}
       </VariantManagement>
     );
     const manageBtn = getByText('Manage');

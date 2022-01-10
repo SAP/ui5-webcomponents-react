@@ -37,6 +37,7 @@ import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { defaultFormatter } from '../../internal/defaults';
 import { tickLineConfig, tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
+import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 
 const dimensionDefaults = {
   formatter: defaultFormatter
@@ -146,6 +147,8 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
     children,
     ...rest
   } = props;
+
+  useDeprecationNoticeForTooltip('BarChart', props.tooltip);
 
   const chartConfig = {
     margin: {},

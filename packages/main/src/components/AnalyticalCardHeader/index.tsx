@@ -12,6 +12,7 @@ import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import clsx from 'clsx';
 import React, { forwardRef, MouseEventHandler, Ref, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
+import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import styles from './AnalyticalCardHeader.jss';
 
 export interface AnalyticalCardHeaderPropTypes extends CommonProps {
@@ -107,6 +108,7 @@ export const AnalyticalCardHeader = forwardRef((props: AnalyticalCardHeaderPropT
     ...rest
   } = props;
   const classes = useStyles();
+  useDeprecationNoticeForTooltip('AnalyticalCardHeader', props.tooltip);
 
   const indicatorIcon = useMemo(() => {
     const arrowClasses = clsx(

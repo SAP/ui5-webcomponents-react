@@ -228,7 +228,7 @@ export const FilterDialog = (props) => {
               <Title
                 level={TitleLevel.H5}
                 className={index === 0 ? classes.groupTitle : ''}
-                tooltip={item === 'default' ? basicText : item}
+                title={item === 'default' ? basicText : item}
               >
                 {item === 'default' ? basicText : item}
               </Title>
@@ -246,7 +246,7 @@ export const FilterDialog = (props) => {
       ref={dialogRef}
       header={
         <FlexBox direction={FlexBoxDirection.Column} alignItems={FlexBoxAlignItems.Center} className={classes.header}>
-          <Title level={TitleLevel.H4} tooltip={filtersTitle}>
+          <Title level={TitleLevel.H4} title={filtersTitle}>
             {filtersTitle}
           </Title>
           {showSearch && (

@@ -36,6 +36,7 @@ import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { defaultFormatter } from '../../internal/defaults';
 import { tickLineConfig, tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
+import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { getCellColors } from '../../internal/Utils';
 
 const dimensionDefaults = {
@@ -154,6 +155,8 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     children,
     ...rest
   } = props;
+
+  useDeprecationNoticeForTooltip('ComposedChart', props.tooltip);
 
   const [componentRef, chartRef] = useSyncRef<any>(ref);
 

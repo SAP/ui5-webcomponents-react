@@ -34,6 +34,7 @@ import React, {
 } from 'react';
 import { createUseStyles } from 'react-jss';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
+import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import styles from './FilterBar.jss';
 import { FilterDialog } from './FilterDialog';
 import { filterValue, renderSearchWithValue, syncRef } from './utils';
@@ -261,6 +262,9 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
     onRestore,
     ...rest
   } = props;
+
+  useDeprecationNoticeForTooltip('FilterBar', props.tooltip);
+
   const [showFilters, setShowFilters] = useState(useToolbar ? filterBarExpanded : true);
   const [mountFilters, setMountFilters] = useState(true);
   const [dialogOpen, setDialogOpen] = useState(false);

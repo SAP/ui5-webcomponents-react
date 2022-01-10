@@ -22,6 +22,7 @@ import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { defaultFormatter } from '../../internal/defaults';
 import { tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
+import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 
 interface MeasureConfig extends IChartMeasure {
   /**
@@ -93,6 +94,8 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
     children,
     ...rest
   } = props;
+
+  useDeprecationNoticeForTooltip('RadarChart', props.tooltip);
 
   const chartConfig = {
     legendPosition: 'bottom',

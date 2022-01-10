@@ -5,6 +5,7 @@ import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import clsx from 'clsx';
 import React, { CSSProperties, forwardRef, RefObject, useEffect, useMemo, useState } from 'react';
 import { createUseStyles } from 'react-jss';
+import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { styles } from './Loader.jss';
 
 export interface LoaderPropTypes extends CommonProps {
@@ -31,6 +32,9 @@ const useStyles = createUseStyles(styles, { name: 'Loader' });
  */
 const Loader = forwardRef((props: LoaderPropTypes, ref: RefObject<HTMLDivElement>) => {
   const { className, type, progress, tooltip, slot, style, delay, ...rest } = props;
+
+  useDeprecationNoticeForTooltip('Loader', props.tooltip);
+
   const classes = useStyles();
   const [isVisible, setIsVisible] = useState(delay === 0);
 

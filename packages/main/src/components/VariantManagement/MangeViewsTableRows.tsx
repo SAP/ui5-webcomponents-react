@@ -171,7 +171,7 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
         ) : (
           <Icon
             aria-label={a11yFavoriteText}
-            tooltip={iconName === 'favorite' ? favoriteIconTitleText : unfavoriteIconTitleText}
+            title={iconName === 'favorite' ? favoriteIconTitleText : unfavoriteIconTitleText}
             name={iconName}
             interactive
             style={{ color: ThemingParameters.sapContent_MarkerIconColor, cursor: 'pointer' }}
@@ -205,7 +205,7 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
       <TableCell>
         {!(hideDelete ?? global) && (
           <Button
-            tooltip={a11yDeleteText}
+            title={a11yDeleteText}
             accessibleName={a11yDeleteText}
             icon="decline"
             design={ButtonDesign.Transparent}

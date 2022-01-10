@@ -2,6 +2,7 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingPar
 import React, { forwardRef, ReactNode, RefObject } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { EmptyIdPropException } from '../ObjectPage/EmptyIdPropException';
 import clsx from 'clsx';
 
@@ -44,6 +45,8 @@ const useStyles = createUseStyles(styles, { name: 'ObjectPageSubSection' });
  */
 const ObjectPageSubSection = forwardRef((props: ObjectPageSubSectionPropTypes, ref: RefObject<HTMLDivElement>) => {
   const { children, id, titleText, className, style, tooltip, ...rest } = props;
+
+  useDeprecationNoticeForTooltip('ObjectPageSubSection', props.tooltip);
 
   if (!id) {
     throw new EmptyIdPropException('ObjectPageSubSection requires a unique ID property!');

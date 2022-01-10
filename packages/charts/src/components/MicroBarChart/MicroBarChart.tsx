@@ -10,6 +10,7 @@ import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { defaultFormatter } from '../../internal/defaults';
+import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 
 interface MeasureConfig extends Omit<IChartMeasure, 'color'> {
   /**
@@ -141,6 +142,9 @@ const useStyles = createUseStyles(MicroBarChartStyles, { name: 'MicroBarChart' }
  */
 const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartProps, ref: Ref<HTMLDivElement>) => {
   const { loading, dataset, onDataPointClick, style, className, tooltip, slot, ChartPlaceholder, ...rest } = props;
+
+  useDeprecationNoticeForTooltip('MicroBarChart', props.tooltip);
+
   const classes = useStyles();
 
   const dimension = useMemo<IChartDimension>(

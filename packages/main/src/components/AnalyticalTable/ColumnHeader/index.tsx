@@ -220,7 +220,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
         onKeyUp={handleHeaderCellKeyUp}
       >
         <div className={classes.header} data-h-align={column.hAlign}>
-          <Text tooltip={tooltip} wrapping={false} style={textStyle} className={classes.text}>
+          <Text title={tooltip} wrapping={false} style={textStyle} className={classes.text}>
             {children}
           </Text>
           <div className={classes.iconContainer} style={iconContainerDirectionStyles}>

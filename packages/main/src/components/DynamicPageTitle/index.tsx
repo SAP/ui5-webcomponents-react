@@ -23,6 +23,7 @@ import React, {
 } from 'react';
 import { createUseStyles } from 'react-jss';
 import { stopPropagation } from '../../internal/stopPropagation';
+import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { ActionsSpacer } from './ActionsSpacer';
 import { DynamicPageTitleStyles } from './DynamicPageTitle.jss';
 import clsx from 'clsx';
@@ -108,6 +109,7 @@ const DynamicPageTitle = forwardRef((props: DynamicPageTitlePropTypes, ref: Ref<
     onToolbarOverflowChange,
     ...rest
   } = props as InternalProps;
+  useDeprecationNoticeForTooltip('DynamicPageTitle', props.tooltip);
 
   const classes = useStyles();
   const containerClasses = clsx(classes.container, className, isIE() && classes.iEClass);
