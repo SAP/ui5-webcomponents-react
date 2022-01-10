@@ -1,4 +1,5 @@
 import { render } from '@shared/tests';
+import { createCustomPropsTest } from '@shared/tests/utils';
 import { ProductSwitchItem } from '@ui5/webcomponents-react/dist/ProductSwitchItem';
 import React from 'react';
 
@@ -7,4 +8,5 @@ describe('ProductSwitchItem', () => {
     const { asFragment } = render(<ProductSwitchItem />);
     expect(asFragment()).toMatchSnapshot();
   });
+  createCustomPropsTest(ProductSwitchItem);
 });

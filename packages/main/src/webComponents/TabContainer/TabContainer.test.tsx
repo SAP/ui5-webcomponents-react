@@ -1,4 +1,5 @@
 import { render } from '@shared/tests';
+import { createCustomPropsTest } from '@shared/tests/utils';
 import { TabContainer } from '@ui5/webcomponents-react/dist/TabContainer';
 import React from 'react';
 
@@ -7,4 +8,5 @@ describe('TabContainer', () => {
     const { asFragment } = render(<TabContainer />);
     expect(asFragment()).toMatchSnapshot();
   });
+  createCustomPropsTest(TabContainer);
 });

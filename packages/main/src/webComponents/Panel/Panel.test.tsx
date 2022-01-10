@@ -1,4 +1,5 @@
 import { render } from '@shared/tests';
+import { createCustomPropsTest } from '@shared/tests/utils';
 import { Panel } from '@ui5/webcomponents-react/dist/Panel';
 import React from 'react';
 
@@ -7,4 +8,5 @@ describe('Panel', () => {
     const { asFragment } = render(<Panel />);
     expect(asFragment()).toMatchSnapshot();
   });
+  createCustomPropsTest(Panel);
 });
