@@ -1,5 +1,5 @@
-import { getCurrentRange, attachMediaHandler, detachMediaHandler } from '@ui5/webcomponents-react-base/dist/Device';
 import { useEffect, useState } from 'react';
+import { getCurrentRange, attachMediaHandler, detachMediaHandler } from '../Device';
 
 export const useViewportRange = () => {
   const [currentRange, setCurrentRange] = useState(getCurrentRange().name);
