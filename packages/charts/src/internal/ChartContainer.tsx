@@ -75,17 +75,15 @@ const ChartContainer: FC<ContainerProps> = forwardRef((props: ContainerProps, re
   } = props;
   useStyles();
 
-  const internalStyles: CSSProperties = useMemo(() => {
-    return {
-      fontSize: ThemingParameters.sapFontSmallSize,
-      color: ThemingParameters.sapTextColor,
-      fontFamily: ThemingParameters.sapFontFamily,
-      width: '100%',
-      height: '400px',
-      position: 'relative',
-      ...(style ?? {})
-    };
-  }, [style]);
+  const internalStyles: CSSProperties = {
+    fontSize: ThemingParameters.sapFontSmallSize,
+    color: ThemingParameters.sapTextColor,
+    fontFamily: ThemingParameters.sapFontFamily,
+    width: '100%',
+    height: '400px',
+    position: 'relative',
+    ...(style ?? {})
+  };
 
   return (
     <div ref={ref} style={internalStyles} className={className} title={tooltip} slot={slot} {...rest}>

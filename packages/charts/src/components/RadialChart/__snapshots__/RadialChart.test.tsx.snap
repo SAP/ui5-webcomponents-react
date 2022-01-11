@@ -27,10 +27,10 @@ exports[`RadialChart Check onClick events 1`] = `
               id="recharts3-clip"
             >
               <rect
-                height="340"
-                width="340"
-                x="30"
-                y="30"
+                height="390"
+                width="390"
+                x="5"
+                y="5"
               />
             </clippath>
           </defs>
@@ -41,10 +41,10 @@ exports[`RadialChart Check onClick events 1`] = `
               class="recharts-polygon angleAxis"
               cx="200"
               cy="200"
-              d="M200,30L299.9234928897204,62.46711095625892L361.67960777017606,147.46711095625895L361.67960777017606,252.53288904374108L299.9234928897204,337.5328890437411L200,370L100.07650711027958,337.5328890437411L38.32039222982391,252.53288904374108L38.32039222982388,147.46711095625898L100.07650711027955,62.46711095625895L199.99999999999997,30L200,30Z"
+              d="M200,5L314.6181241970323,42.241686096885246L385.45602067755493,139.74168609688525L385.45602067755493,260.25831390311475L314.6181241970323,357.75831390311475L200,395L85.38187580296776,357.75831390311475L14.543979322445068,260.25831390311475L14.54397932244504,139.74168609688527L85.38187580296771,42.241686096885275L199.99999999999997,5L200,5Z"
               fill="none"
               orientation="outer"
-              radius="170"
+              radius="195"
               type="number"
             />
             <g
@@ -59,12 +59,12 @@ exports[`RadialChart Check onClick events 1`] = `
                   cy="200"
                   fill="none"
                   orientation="outer"
-                  radius="170"
+                  radius="195"
                   type="number"
                   x1="200"
                   x2="200"
-                  y1="30"
-                  y2="22"
+                  y1="5"
+                  y2="-3"
                 />
               </g>
               <g
@@ -76,12 +76,12 @@ exports[`RadialChart Check onClick events 1`] = `
                   cy="200"
                   fill="none"
                   orientation="outer"
-                  radius="170"
+                  radius="195"
                   type="number"
-                  x1="299.9234928897204"
-                  x2="304.62577490806024"
-                  y1="62.46711095625892"
-                  y2="55.99497500125935"
+                  x1="314.6181241970323"
+                  x2="319.32040621537203"
+                  y1="42.241686096885246"
+                  y2="35.769550141885674"
                 />
               </g>
               <g
@@ -93,12 +93,12 @@ exports[`RadialChart Check onClick events 1`] = `
                   cy="200"
                   fill="none"
                   orientation="outer"
-                  radius="170"
+                  radius="195"
                   type="number"
-                  x1="361.67960777017606"
-                  x2="369.2880599005373"
-                  y1="147.46711095625895"
-                  y2="144.99497500125938"
+                  x1="385.45602067755493"
+                  x2="393.06447280791616"
+                  y1="139.74168609688525"
+                  y2="137.26955014188567"
                 />
               </g>
               <g
@@ -110,12 +110,12 @@ exports[`RadialChart Check onClick events 1`] = `
                   cy="200"
                   fill="none"
                   orientation="outer"
-                  radius="170"
+                  radius="195"
                   type="number"
-                  x1="361.67960777017606"
-                  x2="369.2880599005373"
-                  y1="252.53288904374108"
-                  y2="255.00502499874065"
+                  x1="385.45602067755493"
+                  x2="393.06447280791616"
+                  y1="260.25831390311475"
+                  y2="262.73044985811435"
                 />
               </g>
               <g
@@ -127,12 +127,12 @@ exports[`RadialChart Check onClick events 1`] = `
                   cy="200"
                   fill="none"
                   orientation="outer"
-                  radius="170"
+                  radius="195"
                   type="number"
-                  x1="299.9234928897204"
-                  x2="304.62577490806024"
-                  y1="337.5328890437411"
-                  y2="344.0050249987406"
+                  x1="314.6181241970323"
+                  x2="319.32040621537203"
+                  y1="357.75831390311475"
+                  y2="364.2304498581143"
                 />
               </g>
               <g
@@ -144,12 +144,12 @@ exports[`RadialChart Check onClick events 1`] = `
                   cy="200"
                   fill="none"
                   orientation="outer"
-                  radius="170"
+                  radius="195"
                   type="number"
                   x1="200"
                   x2="200"
-                  y1="370"
-                  y2="378"
+                  y1="395"
+                  y2="403"
                 />
               </g>
               <g
@@ -161,12 +161,12 @@ exports[`RadialChart Check onClick events 1`] = `
                   cy="200"
                   fill="none"
                   orientation="outer"
-                  radius="170"
+                  radius="195"
                   type="number"
-                  x1="100.07650711027958"
-                  x2="95.3742250919398"
-                  y1="337.5328890437411"
-                  y2="344.0050249987406"
+                  x1="85.38187580296776"
+                  x2="80.67959378462798"
+                  y1="357.75831390311475"
+                  y2="364.2304498581143"
                 />
               </g>
               <g
@@ -178,12 +178,12 @@ exports[`RadialChart Check onClick events 1`] = `
                   cy="200"
                   fill="none"
                   orientation="outer"
-                  radius="170"
+                  radius="195"
                   type="number"
-                  x1="38.32039222982391"
-                  x2="30.71194009946268"
-                  y1="252.53288904374108"
-                  y2="255.00502499874065"
+                  x1="14.543979322445068"
+                  x2="6.935527192083839"
+                  y1="260.25831390311475"
+                  y2="262.73044985811435"
                 />
               </g>
               <g
@@ -195,12 +195,12 @@ exports[`RadialChart Check onClick events 1`] = `
                   cy="200"
                   fill="none"
                   orientation="outer"
-                  radius="170"
+                  radius="195"
                   type="number"
-                  x1="38.32039222982388"
-                  x2="30.71194009946265"
-                  y1="147.46711095625898"
-                  y2="144.99497500125938"
+                  x1="14.54397932244504"
+                  x2="6.935527192083811"
+                  y1="139.74168609688527"
+                  y2="137.2695501418857"
                 />
               </g>
               <g
@@ -212,12 +212,12 @@ exports[`RadialChart Check onClick events 1`] = `
                   cy="200"
                   fill="none"
                   orientation="outer"
-                  radius="170"
+                  radius="195"
                   type="number"
-                  x1="100.07650711027955"
-                  x2="95.37422509193976"
-                  y1="62.46711095625895"
-                  y2="55.99497500125938"
+                  x1="85.38187580296771"
+                  x2="80.67959378462793"
+                  y1="42.241686096885275"
+                  y2="35.7695501418857"
                 />
               </g>
               <g
@@ -229,12 +229,12 @@ exports[`RadialChart Check onClick events 1`] = `
                   cy="200"
                   fill="none"
                   orientation="outer"
-                  radius="170"
+                  radius="195"
                   type="number"
                   x1="199.99999999999997"
                   x2="199.99999999999997"
-                  y1="30"
-                  y2="22"
+                  y1="5"
+                  y2="-3"
                 />
               </g>
             </g>
@@ -249,14 +249,14 @@ exports[`RadialChart Check onClick events 1`] = `
                 class="recharts-sector recharts-radial-bar-background-sector"
                 cx="200"
                 cy="200"
-                d="M 200,42.5
-    A 157.5,157.5,0,
+                d="M 200,20.25
+    A 179.75,179.75,0,
     1,1,
-    199.99725110642825,42.50000002398863
-  L 199.99742563935345,52.50000002246554
-            A 147.5,147.5,0,
+    199.9968627706697,20.250000027377496
+  L 199.9970373035949,30.250000025854405
+            A 169.75,169.75,0,
             1,0,
-            200,52.5 Z"
+            200,30.25 Z"
                 fill="var(--sapContent_ImagePlaceholderBackground)"
               />
             </g>
@@ -271,7 +271,7 @@ exports[`RadialChart Check onClick events 1`] = `
           <text
             class="progress-label"
             dominant-baseline="middle"
-            style="fill: var(--sapTextColor);"
+            style="font-size: 1.25rem; fill: var(--sapTextColor); font-family: var(--sapFontFamily);"
             text-anchor="middle"
             x="50%"
             y="50%"
@@ -312,10 +312,10 @@ exports[`RadialChart Render chart with data 1`] = `
               id="recharts1-clip"
             >
               <rect
-                height="340"
-                width="340"
-                x="30"
-                y="30"
+                height="390"
+                width="390"
+                x="5"
+                y="5"
               />
             </clippath>
           </defs>
@@ -326,10 +326,10 @@ exports[`RadialChart Render chart with data 1`] = `
               class="recharts-polygon angleAxis"
               cx="200"
               cy="200"
-              d="M200,30L299.9234928897204,62.46711095625892L361.67960777017606,147.46711095625895L361.67960777017606,252.53288904374108L299.9234928897204,337.5328890437411L200,370L100.07650711027958,337.5328890437411L38.32039222982391,252.53288904374108L38.32039222982388,147.46711095625898L100.07650711027955,62.46711095625895L199.99999999999997,30L200,30Z"
+              d="M200,5L314.6181241970323,42.241686096885246L385.45602067755493,139.74168609688525L385.45602067755493,260.25831390311475L314.6181241970323,357.75831390311475L200,395L85.38187580296776,357.75831390311475L14.543979322445068,260.25831390311475L14.54397932244504,139.74168609688527L85.38187580296771,42.241686096885275L199.99999999999997,5L200,5Z"
               fill="none"
               orientation="outer"
-              radius="170"
+              radius="195"
               type="number"
             />
             <g
@@ -344,12 +344,12 @@ exports[`RadialChart Render chart with data 1`] = `
                   cy="200"
                   fill="none"
                   orientation="outer"
-                  radius="170"
+                  radius="195"
                   type="number"
                   x1="200"
                   x2="200"
-                  y1="30"
-                  y2="22"
+                  y1="5"
+                  y2="-3"
                 />
               </g>
               <g
@@ -361,12 +361,12 @@ exports[`RadialChart Render chart with data 1`] = `
                   cy="200"
                   fill="none"
                   orientation="outer"
-                  radius="170"
+                  radius="195"
                   type="number"
-                  x1="299.9234928897204"
-                  x2="304.62577490806024"
-                  y1="62.46711095625892"
-                  y2="55.99497500125935"
+                  x1="314.6181241970323"
+                  x2="319.32040621537203"
+                  y1="42.241686096885246"
+                  y2="35.769550141885674"
                 />
               </g>
               <g
@@ -378,12 +378,12 @@ exports[`RadialChart Render chart with data 1`] = `
                   cy="200"
                   fill="none"
                   orientation="outer"
-                  radius="170"
+                  radius="195"
                   type="number"
-                  x1="361.67960777017606"
-                  x2="369.2880599005373"
-                  y1="147.46711095625895"
-                  y2="144.99497500125938"
+                  x1="385.45602067755493"
+                  x2="393.06447280791616"
+                  y1="139.74168609688525"
+                  y2="137.26955014188567"
                 />
               </g>
               <g
@@ -395,12 +395,12 @@ exports[`RadialChart Render chart with data 1`] = `
                   cy="200"
                   fill="none"
                   orientation="outer"
-                  radius="170"
+                  radius="195"
                   type="number"
-                  x1="361.67960777017606"
-                  x2="369.2880599005373"
-                  y1="252.53288904374108"
-                  y2="255.00502499874065"
+                  x1="385.45602067755493"
+                  x2="393.06447280791616"
+                  y1="260.25831390311475"
+                  y2="262.73044985811435"
                 />
               </g>
               <g
@@ -412,12 +412,12 @@ exports[`RadialChart Render chart with data 1`] = `
                   cy="200"
                   fill="none"
                   orientation="outer"
-                  radius="170"
+                  radius="195"
                   type="number"
-                  x1="299.9234928897204"
-                  x2="304.62577490806024"
-                  y1="337.5328890437411"
-                  y2="344.0050249987406"
+                  x1="314.6181241970323"
+                  x2="319.32040621537203"
+                  y1="357.75831390311475"
+                  y2="364.2304498581143"
                 />
               </g>
               <g
@@ -429,12 +429,12 @@ exports[`RadialChart Render chart with data 1`] = `
                   cy="200"
                   fill="none"
                   orientation="outer"
-                  radius="170"
+                  radius="195"
                   type="number"
                   x1="200"
                   x2="200"
-                  y1="370"
-                  y2="378"
+                  y1="395"
+                  y2="403"
                 />
               </g>
               <g
@@ -446,12 +446,12 @@ exports[`RadialChart Render chart with data 1`] = `
                   cy="200"
                   fill="none"
                   orientation="outer"
-                  radius="170"
+                  radius="195"
                   type="number"
-                  x1="100.07650711027958"
-                  x2="95.3742250919398"
-                  y1="337.5328890437411"
-                  y2="344.0050249987406"
+                  x1="85.38187580296776"
+                  x2="80.67959378462798"
+                  y1="357.75831390311475"
+                  y2="364.2304498581143"
                 />
               </g>
               <g
@@ -463,12 +463,12 @@ exports[`RadialChart Render chart with data 1`] = `
                   cy="200"
                   fill="none"
                   orientation="outer"
-                  radius="170"
+                  radius="195"
                   type="number"
-                  x1="38.32039222982391"
-                  x2="30.71194009946268"
-                  y1="252.53288904374108"
-                  y2="255.00502499874065"
+                  x1="14.543979322445068"
+                  x2="6.935527192083839"
+                  y1="260.25831390311475"
+                  y2="262.73044985811435"
                 />
               </g>
               <g
@@ -480,12 +480,12 @@ exports[`RadialChart Render chart with data 1`] = `
                   cy="200"
                   fill="none"
                   orientation="outer"
-                  radius="170"
+                  radius="195"
                   type="number"
-                  x1="38.32039222982388"
-                  x2="30.71194009946265"
-                  y1="147.46711095625898"
-                  y2="144.99497500125938"
+                  x1="14.54397932244504"
+                  x2="6.935527192083811"
+                  y1="139.74168609688527"
+                  y2="137.2695501418857"
                 />
               </g>
               <g
@@ -497,12 +497,12 @@ exports[`RadialChart Render chart with data 1`] = `
                   cy="200"
                   fill="none"
                   orientation="outer"
-                  radius="170"
+                  radius="195"
                   type="number"
-                  x1="100.07650711027955"
-                  x2="95.37422509193976"
-                  y1="62.46711095625895"
-                  y2="55.99497500125938"
+                  x1="85.38187580296771"
+                  x2="80.67959378462793"
+                  y1="42.241686096885275"
+                  y2="35.7695501418857"
                 />
               </g>
               <g
@@ -514,12 +514,12 @@ exports[`RadialChart Render chart with data 1`] = `
                   cy="200"
                   fill="none"
                   orientation="outer"
-                  radius="170"
+                  radius="195"
                   type="number"
                   x1="199.99999999999997"
                   x2="199.99999999999997"
-                  y1="30"
-                  y2="22"
+                  y1="5"
+                  y2="-3"
                 />
               </g>
             </g>
@@ -534,14 +534,14 @@ exports[`RadialChart Render chart with data 1`] = `
                 class="recharts-sector recharts-radial-bar-background-sector"
                 cx="200"
                 cy="200"
-                d="M 200,42.5
-    A 157.5,157.5,0,
+                d="M 200,20.25
+    A 179.75,179.75,0,
     1,1,
-    199.99725110642825,42.50000002398863
-  L 199.99742563935345,52.50000002246554
-            A 147.5,147.5,0,
+    199.9968627706697,20.250000027377496
+  L 199.9970373035949,30.250000025854405
+            A 169.75,169.75,0,
             1,0,
-            200,52.5 Z"
+            200,30.25 Z"
                 fill="var(--sapContent_ImagePlaceholderBackground)"
               />
             </g>
@@ -556,7 +556,7 @@ exports[`RadialChart Render chart with data 1`] = `
           <text
             class="progress-label"
             dominant-baseline="middle"
-            style="fill: var(--sapTextColor);"
+            style="font-size: 1.25rem; fill: var(--sapTextColor); font-family: var(--sapFontFamily);"
             text-anchor="middle"
             x="50%"
             y="50%"
