@@ -1,5 +1,5 @@
 import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming.js';
-import { useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useIsRTL, useSyncRef, useResponsiveContentPadding } from '@ui5/webcomponents-react-base';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { debounce, enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { AvatarPropTypes } from '@ui5/webcomponents-react/dist/Avatar';
@@ -30,7 +30,6 @@ import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNot
 import { PopoverDomRef } from '../../webComponents/Popover';
 import { stopPropagation } from '../../internal/stopPropagation';
 import { useObserveHeights } from '../../internal/useObserveHeights';
-import { useResponsiveContentPadding } from '@ui5/webcomponents-react-base/dist/hooks';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
 import { ObjectPageSectionPropTypes } from '../ObjectPageSection';
 import { ObjectPageSubSectionPropTypes } from '../ObjectPageSubSection';

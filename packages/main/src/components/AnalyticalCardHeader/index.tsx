@@ -1,4 +1,4 @@
-import { useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useI18nBundle } from '@ui5/webcomponents-react-base';
 import { DEVIATION, TARGET } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { DeviationIndicator } from '@ui5/webcomponents-react/dist/DeviationIndicator';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';

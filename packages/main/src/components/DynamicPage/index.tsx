@@ -1,5 +1,5 @@
 import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
-import { useResponsiveContentPadding, useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useResponsiveContentPadding, useSyncRef } from '@ui5/webcomponents-react-base';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { debounce, enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';

@@ -1,4 +1,4 @@
-import { useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useSyncRef } from '@ui5/webcomponents-react-base';
 import { StandardListItem, StandardListItemPropTypes } from '@ui5/webcomponents-react/dist/StandardListItem';
 import { VariantManagementContext } from '@ui5/webcomponents-react/dist/VariantManagementContext';
 import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
