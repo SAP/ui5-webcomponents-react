@@ -7,7 +7,6 @@ export default {
   collectCoverage: false,
   collectCoverageFrom: [
     'packages/{base,charts,main}/src/**/*.{ts,tsx}',
-    '!**/src/dist/**/*',
     '!**/src/interfaces/*',
     '!**/src/enums/*',
     '!**/*.stories.tsx',
@@ -15,7 +14,6 @@ export default {
     '!**/node_modules/**',
     '!packages/*/src/index.ts',
     '!packages/**/demo/*',
-    '!packages/base/src/polyfill/*', // no polyfills
     '!packages/main/src/components/AnalyticalTable/types/*' // no table enums
   ],
   setupFiles: ['jest-canvas-mock'],
@@ -32,7 +30,8 @@ export default {
     '^@ui5/webcomponents-react/dist/([Aa]ssets.*)$': '<rootDir>/packages/main/dist/$1',
     '^@ui5/webcomponents-react/(.*)$': '<rootDir>/packages/main/src/$1',
     '^@ui5/webcomponents-react-base/types(.*)$': '<rootDir>/packages/base/types/$1',
-    '^@ui5/webcomponents-react-base/(.*)$': '<rootDir>/packages/base/src/$1',
+    '^@ui5/webcomponents-react-base/dist/(.*)$': '<rootDir>/packages/base/src/$1',
+    '^@ui5/webcomponents-react-base$': '<rootDir>/packages/base/src/index.ts',
     '^@ui5/webcomponents-react-charts/(.*)$': '<rootDir>/packages/charts/src/$1',
     '\\.(css|less)$': 'identity-obj-proxy'
   },
