@@ -1,4 +1,4 @@
-import '@ui5/webcomponents-react-base/types/UI5Device.d.ts';
+import '../../types/UI5Device.d.ts';
 import { supportsTouch } from '@ui5/webcomponents-base/dist/Device.js';
 import { EventProvider } from './EventProvider';
 

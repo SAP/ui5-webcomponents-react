@@ -21,9 +21,8 @@ module.exports = {
       '@ui5/webcomponents-react/dist/Assets': path.join(root, 'packages', 'main', 'dist', 'Assets'),
       '@ui5/webcomponents-react': path.join(root, 'packages', 'main', 'src'),
       '@ui5/webcomponents-react-charts': path.join(root, 'packages', 'charts', 'src'),
-      '@ui5/webcomponents-react-base/types': path.join(root, 'packages', 'base', 'types'),
-      '@ui5/webcomponents-react-base/dist': path.join(root, 'packages', 'base', 'src'),
-      '@ui5/webcomponents-react-base': path.join(root, 'packages', 'base', 'src', 'index.ts')
+      '@ui5/webcomponents-react-base$': path.join(root, 'packages', 'base', 'src', 'index.ts'),
+      '@ui5/webcomponents-react-base/dist': path.join(root, 'packages', 'base', 'src')
     };
     return config;
   },
