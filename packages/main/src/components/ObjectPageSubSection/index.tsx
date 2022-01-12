@@ -90,11 +90,6 @@ const ObjectPageSubSection: FC<ObjectPageSubSectionPropTypes> = forwardRef(
   }
 );
 
-ObjectPageSubSection.defaultProps = {
-  // @ts-ignore
-  isSubSection: true
-};
-
 ObjectPageSubSection.displayName = 'ObjectPageSubSection';
 
 export { ObjectPageSubSection };
