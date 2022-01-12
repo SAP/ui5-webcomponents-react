@@ -130,11 +130,11 @@ export const withWebComponent = <T extends Record<string, any>>(
     return (
       <Component
         ref={ref}
+        title={tooltip}
         {...booleanProps}
         {...regularProps}
         {...nonWebComponentRelatedProps}
         class={className}
-        title={tooltip}
       >
         {slots}
         {children}
