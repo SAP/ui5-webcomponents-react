@@ -647,7 +647,7 @@ exports[`LineChart Check onClick events 1`] = `
                     fill="var(--sapContent_LabelColor)"
                     text-anchor="end"
                   >
-                    1,000
+                    1.000
                   </text>
                 </g>
               </g>
@@ -1564,7 +1564,7 @@ exports[`LineChart Render chart with data 1`] = `
                     fill="var(--sapContent_LabelColor)"
                     text-anchor="end"
                   >
-                    1,000
+                    1.000
                   </text>
                 </g>
               </g>
@@ -2389,7 +2389,7 @@ exports[`LineChart onLegendClick should not crash when invalid handler is provid
                     fill="var(--sapContent_LabelColor)"
                     text-anchor="end"
                   >
-                    1,000
+                    1.000
                   </text>
                 </g>
               </g>

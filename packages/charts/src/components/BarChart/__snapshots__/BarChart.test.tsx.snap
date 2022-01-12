@@ -394,7 +394,7 @@ exports[`BarChart Check onClick events 1`] = `
                     text-anchor="end"
                     transform="rotate(-35)"
                   >
-                    1,000
+                    1.000
                   </text>
                 </g>
               </g>
@@ -1538,7 +1538,7 @@ exports[`BarChart Render chart with data 1`] = `
                     text-anchor="end"
                     transform="rotate(-35)"
                   >
-                    1,000
+                    1.000
                   </text>
                 </g>
               </g>
@@ -2559,7 +2559,7 @@ exports[`BarChart onLegendClick should not crash when invalid handler is provide
                     text-anchor="end"
                     transform="rotate(-35)"
                   >
-                    1,000
+                    1.000
                   </text>
                 </g>
               </g>
