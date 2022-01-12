@@ -647,7 +647,7 @@ exports[`ColumnChart Check onClick events 1`] = `
                     fill="var(--sapContent_LabelColor)"
                     text-anchor="end"
                   >
-                    1.000
+                    1,000
                   </text>
                 </g>
               </g>
@@ -1673,7 +1673,7 @@ exports[`ColumnChart Render chart with data 1`] = `
                     fill="var(--sapContent_LabelColor)"
                     text-anchor="end"
                   >
-                    1.000
+                    1,000
                   </text>
                 </g>
               </g>
@@ -2576,7 +2576,7 @@ exports[`ColumnChart onLegendClick should not crash when invalid handler is prov
                     fill="var(--sapContent_LabelColor)"
                     text-anchor="end"
                   >
-                    1.000
+                    1,000
                   </text>
                 </g>
               </g>
