@@ -6693,6 +6693,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
                   indeterminate="false"
                   style="vertical-align: middle;"
                   tabindex="-1"
+                  title="Toggle Row Selected"
                   ui5-checkbox=""
                   value-state="None"
                 />
@@ -6792,6 +6793,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
                   indeterminate="false"
                   style="cursor: pointer; vertical-align: middle;"
                   tabindex="-1"
+                  title="Toggle Row Selected"
                   ui5-checkbox=""
                   value-state="None"
                 />
