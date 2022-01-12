@@ -14,11 +14,19 @@ interface OverflowPopoverProps {
   portalContainer: Element;
   overflowContentRef: Ref<HTMLDivElement>;
   numberOfAlwaysVisibleItems?: number;
+  showMoreText: string;
 }
 
 export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopoverProps) => {
-  const { lastVisibleIndex, contentClass, children, portalContainer, overflowContentRef, numberOfAlwaysVisibleItems } =
-    props;
+  const {
+    lastVisibleIndex,
+    contentClass,
+    children,
+    portalContainer,
+    overflowContentRef,
+    numberOfAlwaysVisibleItems,
+    showMoreText
+  } = props;
   const popoverRef = useRef<PopoverDomRef>();
   const [pressed, setPressed] = useState(false);
 
@@ -80,6 +88,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
         icon="overflow"
         onClick={handleToggleButtonClick}
         pressed={pressed}
+        accessibleName={showMoreText}
       />
       {createPortal(
         <Popover placementType={PopoverPlacementType.Bottom} ref={popoverRef} onAfterClose={handleClose} hideArrow>

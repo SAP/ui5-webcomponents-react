@@ -117,6 +117,7 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
   const [minWidth, setMinWidth] = useState('0');
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
+  const showMoreText = i18nBundle.getText(SHOW_MORE);
 
   const toolbarClasses = clsx(
     classes.outerContainer,
@@ -290,7 +291,7 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
         <div
           ref={overflowBtnRef}
           className={classes.overflowButtonContainer}
-          title={i18nBundle.getText(SHOW_MORE)}
+          title={showMoreText}
           data-component-name="ToolbarOverflowButtonContainer"
         >
           <OverflowPopover
@@ -299,6 +300,7 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
             portalContainer={portalContainer}
             overflowContentRef={overflowContentRef}
             numberOfAlwaysVisibleItems={numberOfAlwaysVisibleItems}
+            showMoreText={showMoreText}
           >
             {React.Children.toArray(children).map((child) => {
               if ((child as ReactElement).type === React.Fragment) {
