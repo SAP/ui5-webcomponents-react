@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.131.29](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.28...v0.131.29) (2022-01-12)
+
+
+### Bug Fixes
+
+* support title attribute by all components ([335b34e](https://github.com/SAP/ui5-webcomponents-react/commit/335b34eaed548a668631feb715161e5d13883922))
+
+
+
+
+
 ## [0.131.28](https://github.com/SAP/ui5-webcomponents-react/compare/v0.131.27...v0.131.28) (2021-12-21)
 
 
