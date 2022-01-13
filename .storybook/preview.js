@@ -25,6 +25,7 @@ export const parameters = {
     sort: 'requiredFirst'
     // exclude: /^on.*/
   },
+  backgrounds: { disable: true },
   options: {
     storySort: {
       method: 'alphabetical',
