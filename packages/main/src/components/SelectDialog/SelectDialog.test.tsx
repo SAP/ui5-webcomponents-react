@@ -148,4 +148,9 @@ describe('SelectDialog', () => {
     getByText('Exterminate');
     expect(asFragment()).toMatchSnapshot();
   });
+
+  test('numberOfSelectedItems', () => {
+    const { getByText } = render(<SelectDialog mode={ListMode.MultiSelect} numberOfSelectedItems={1337} />);
+    expect(getByText('Selected: 1337')).toBeInTheDocument();
+  });
 });

@@ -124,6 +124,10 @@ export interface SelectDialogPropTypes extends Omit<DialogPropTypes, 'header' | 
    */
   listProps?: Omit<ListPropTypes, 'mode' | 'children' | 'footerText' | 'growing' | 'onLoadMore'>;
   /**
+   * Defines the number of selected list items displayed above the list in `MultiSelect` mode. Programmatically setting the counter is necessary if all previously selected elements are to remain selected during search.
+   */
+  numberOfSelectedItems?: number;
+  /**
    * This event will be fired when the value of the search field is changed by a user - e.g. at each key press
    */
   onSearchInput?: (event: Ui5CustomEvent<HTMLInputElement, { value: string }>) => void;
@@ -164,6 +168,7 @@ const SelectDialog = forwardRef((props: SelectDialogPropTypes, ref: Ref<DialogDo
     headerTextAlignCenter,
     listProps,
     mode,
+    numberOfSelectedItems,
     rememberSelections,
     showClearButton,
     onAfterClose,
@@ -173,6 +178,7 @@ const SelectDialog = forwardRef((props: SelectDialogPropTypes, ref: Ref<DialogDo
     onSearch,
     onSearchInput,
     onSearchReset,
+    onBeforeOpen,
     ...rest
   } = props;
 
@@ -184,6 +190,16 @@ const SelectDialog = forwardRef((props: SelectDialogPropTypes, ref: Ref<DialogDo
   const [selectedItems, setSelectedItems] = useState([]);
   const [listMounted, setListMounted] = useState(true);
   const [componentRef, selectDialogRef] = useSyncRef(ref);
+  const [listComponentRef, listRef] = useSyncRef(listProps.ref);
+
+  const handleBeforeOpen = (e) => {
+    if (typeof onBeforeOpen === 'function') {
+      onBeforeOpen(e);
+    }
+    if (mode === ListMode.MultiSelect && listRef.current?.items) {
+      setSelectedItems(listRef.current.items.filter((el) => el.selected));
+    }
+  };
 
   const handleSearchInput = (e) => {
     if (typeof onSearchInput === 'function') {
@@ -275,6 +291,7 @@ const SelectDialog = forwardRef((props: SelectDialogPropTypes, ref: Ref<DialogDo
         />
       }
       onAfterClose={handleAfterClose}
+      onBeforeOpen={handleBeforeOpen}
     >
       <Bar
         slot="header"
@@ -329,14 +346,15 @@ const SelectDialog = forwardRef((props: SelectDialogPropTypes, ref: Ref<DialogDo
       </Bar>
       <List
         {...listProps}
+        ref={listComponentRef}
         growing={growing}
         onLoadMore={onLoadMore}
         mode={mode}
         header={
           mode === ListMode.MultiSelect &&
-          !!selectedItems.length && (
+          (!!selectedItems.length || numberOfSelectedItems > 0) && (
             <Toolbar design={ToolbarDesign.Info} className={classes.infoBar}>
-              <Text>{`${i18nBundle.getText(SELECTED)}: ${selectedItems.length}`}</Text>
+              <Text>{`${i18nBundle.getText(SELECTED)}: ${numberOfSelectedItems ?? selectedItems.length}`}</Text>
             </Toolbar>
           )
         }
