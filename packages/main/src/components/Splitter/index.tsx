@@ -265,8 +265,7 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
       const prevSibling = localRef.current.previousSibling as HTMLElement;
       const nextSibling = localRef.current.nextSibling as HTMLElement;
       if (
-        localRef.current?.style.border === `1px dotted ${ThemingParameters.sapHighlightColor}` &&
-        nextSibling.style[positionKeys.min] !== ''
+        document.activeElement === localRef.current && nextSibling.style[positionKeys.min] !== ''
           ? nextSibling.getBoundingClientRect()?.[positionKeys.size] -
               20 -
               Number(nextSibling.style[positionKeys.min].replace('px', '')) >
@@ -282,15 +281,19 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
       e.preventDefault();
       const prevSibling = localRef.current.previousSibling as HTMLElement;
       const nextSibling = localRef.current.nextSibling as HTMLElement;
+
+      console.log(document.activeElement === localRef.current);
+
       if (
-        localRef.current?.style.border === `1px dotted ${ThemingParameters.sapHighlightColor}` &&
-        prevSibling.style[positionKeys.min] !== ''
+        document.activeElement === localRef.current && prevSibling.style[positionKeys.min] !== ''
           ? prevSibling.getBoundingClientRect()?.[positionKeys.size] -
               20 -
               Number(prevSibling.style[positionKeys.min].replace('px', '')) >
             0
           : prevSibling.getBoundingClientRect()?.[positionKeys.size] - 20 > 0
       ) {
+        console.log('IN');
+
         prevSibling.style.flexBasis = `${prevSibling.getBoundingClientRect()?.[positionKeys.size] - 20}px`;
         nextSibling.style.flexBasis = `${nextSibling.getBoundingClientRect()?.[positionKeys.size] + 20}px`;
       }
