@@ -2,7 +2,7 @@ import { useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { Icon } from '@ui5/webcomponents-react/dist/Icon';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import React, { forwardRef, Ref, useCallback, useRef, useState, useEffect } from 'react';
+import React, { forwardRef, Ref, useRef, useState, useEffect } from 'react';
 import { createUseStyles } from 'react-jss';
 
 const useStyles = createUseStyles(
@@ -19,6 +19,11 @@ const useStyles = createUseStyles(
       justifyContent: 'center',
       userSelect: 'none',
       boxSizing: 'border-box',
+
+      '&:focus': {
+        border: `${ThemingParameters.sapContent_FocusWidth} ${ThemingParameters.sapContent_FocusStyle} ${ThemingParameters.sapContent_FocusColor}`,
+        outline: 'none'
+      },
 
       '&[data-splitter-vertical=true]': {
         cursor: 'col-resize',
@@ -126,7 +131,7 @@ const horizontalPositionInfo = {
 };
 
 const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>) => {
-  const { vertical, tooltip } = props;
+  const { vertical } = props;
   const classes = useStyles();
   const [componentRef, localRef] = useSyncRef<HTMLDivElement>(ref);
   const start = useRef(null);
@@ -219,18 +224,9 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
     }
   };
 
-  const setBorderStyle = useCallback(
-    (e) => {
-      if (!localRef.current?.contains(e.target as Node)) {
-        localRef.current.style.border = 'none';
-        document.removeEventListener('keydown', onHandleKeyDown);
-        document.removeEventListener('click', setBorderStyle);
-        return;
-      }
-      localRef.current.style.border = `1px dotted ${ThemingParameters.sapHighlightColor}`;
-    },
-    [localRef.current]
-  );
+  const handleSplitterClick = (e) => {
+    e.currentTarget.focus();
+  };
 
   const handleMoveSplitterStart = (e) => {
     if (e.type === 'pointerdown' && e.pointerType !== 'touch') {
@@ -239,10 +235,6 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
     e.preventDefault();
     setIsDragging(e.pointerType ?? 'mouse');
     resizerClickOffset.current = e.nativeEvent[positionKeys.offset];
-
-    //todo move this to onClick and onKeydown
-    // document.addEventListener('keydown', onHandleKeyDown);
-    // document.addEventListener('click', setBorderStyle);
 
     previousElementEnd.current = (localRef.current.previousSibling as HTMLElement).getBoundingClientRect()?.[
       positionKeys.end
@@ -265,44 +257,43 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
     start.current = e[`client${positionKeys.position}`];
   };
 
-  const onHandleKeyDown = useCallback(
-    (e: KeyboardEvent) => {
+  const onHandleKeyDown = (e: KeyboardEvent) => {
+    if (e.code === `Arrow${positionKeys.arrowForward}`) {
       e.preventDefault();
       const prevSibling = localRef.current.previousSibling as HTMLElement;
       const nextSibling = localRef.current.nextSibling as HTMLElement;
-
-      if (e.code === `Arrow${positionKeys.arrowForward}`) {
-        if (
-          localRef.current?.style.border === `1px dotted ${ThemingParameters.sapHighlightColor}` &&
-          nextSibling.style[positionKeys.min] !== ''
-            ? nextSibling.getBoundingClientRect()?.[positionKeys.size] -
-                5 -
-                Number(nextSibling.style[positionKeys.min].replace('px', '')) >
-              0
-            : nextSibling.getBoundingClientRect()?.[positionKeys.size] - 5 > 0
-        ) {
-          nextSibling.style.flexBasis = `${nextSibling.getBoundingClientRect()?.[positionKeys.size] - 5}px`;
-          prevSibling.style.flexBasis = `${prevSibling.getBoundingClientRect()?.[positionKeys.size] + 5}px`;
-        }
+      if (
+        localRef.current?.style.border === `1px dotted ${ThemingParameters.sapHighlightColor}` &&
+        nextSibling.style[positionKeys.min] !== ''
+          ? nextSibling.getBoundingClientRect()?.[positionKeys.size] -
+              20 -
+              Number(nextSibling.style[positionKeys.min].replace('px', '')) >
+            0
+          : nextSibling.getBoundingClientRect()?.[positionKeys.size] - 20 > 0
+      ) {
+        nextSibling.style.flexBasis = `${nextSibling.getBoundingClientRect()?.[positionKeys.size] - 20}px`;
+        prevSibling.style.flexBasis = `${prevSibling.getBoundingClientRect()?.[positionKeys.size] + 20}px`;
       }
+    }
 
-      if (e.code === `Arrow${positionKeys.arrowBackward}`) {
-        if (
-          localRef.current?.style.border === `1px dotted ${ThemingParameters.sapHighlightColor}` &&
-          prevSibling.style[positionKeys.min] !== ''
-            ? prevSibling.getBoundingClientRect()?.[positionKeys.size] -
-                5 -
-                Number(prevSibling.style[positionKeys.min].replace('px', '')) >
-              0
-            : prevSibling.getBoundingClientRect()?.[positionKeys.size] - 5 > 0
-        ) {
-          prevSibling.style.flexBasis = `${prevSibling.getBoundingClientRect()?.[positionKeys.size] - 5}px`;
-          nextSibling.style.flexBasis = `${nextSibling.getBoundingClientRect()?.[positionKeys.size] + 5}px`;
-        }
+    if (e.code === `Arrow${positionKeys.arrowBackward}`) {
+      e.preventDefault();
+      const prevSibling = localRef.current.previousSibling as HTMLElement;
+      const nextSibling = localRef.current.nextSibling as HTMLElement;
+      if (
+        localRef.current?.style.border === `1px dotted ${ThemingParameters.sapHighlightColor}` &&
+        prevSibling.style[positionKeys.min] !== ''
+          ? prevSibling.getBoundingClientRect()?.[positionKeys.size] -
+              20 -
+              Number(prevSibling.style[positionKeys.min].replace('px', '')) >
+            0
+          : prevSibling.getBoundingClientRect()?.[positionKeys.size] - 20 > 0
+      ) {
+        prevSibling.style.flexBasis = `${prevSibling.getBoundingClientRect()?.[positionKeys.size] - 20}px`;
+        nextSibling.style.flexBasis = `${nextSibling.getBoundingClientRect()?.[positionKeys.size] + 20}px`;
       }
-    },
-    [localRef.current]
-  );
+    }
+  };
 
   const end = (e) => {
     handleFallback(e, isDragging === 'touch');
@@ -338,15 +329,16 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
   return (
     <div
       className={classes.splitter}
-      // todo
       tabIndex={0}
+      onClick={handleSplitterClick}
+      onKeyDown={onHandleKeyDown}
       onPointerDown={handleMoveSplitterStart}
       onMouseDown={handleMoveSplitterStart}
       ref={componentRef}
       role="resizer"
       data-splitter-vertical={vertical}
-      aria-label={'Resizer'}
-      title={tooltip}
+      title={'TODO I18n übersetzung'}
+      aria-orientation={vertical ? 'vertical' : 'horizontal'}
     >
       <div className={classes.lineBefore} />
       <Icon className={classes.icon} name={vertical ? 'vertical-grip' : 'horizontal-grip'} />
