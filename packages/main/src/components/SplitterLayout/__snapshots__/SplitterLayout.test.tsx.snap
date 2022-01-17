@@ -10,6 +10,7 @@ exports[`SplitterLayout Render Horizontal SplitterLayout with multiple SplitterE
   >
     <div
       class="SplitterElement-splitterElement"
+      data-min-size="0"
     >
       <ui5-button
         design="Default"
@@ -19,10 +20,12 @@ exports[`SplitterLayout Render Horizontal SplitterLayout with multiple SplitterE
       </ui5-button>
     </div>
     <div
-      aria-label="Resizer"
+      aria-orientation="horizontal"
       class="Splitter-splitter"
       data-splitter-vertical="false"
       role="resizer"
+      tabindex="0"
+      title="Splitter"
     >
       <div
         class="Splitter-lineBefore"
@@ -38,6 +41,7 @@ exports[`SplitterLayout Render Horizontal SplitterLayout with multiple SplitterE
     </div>
     <div
       class="SplitterElement-splitterElement"
+      data-min-size="50"
       data-testid="Element"
       style="min-height: 50px; flex-basis: 100px;"
     >
@@ -49,10 +53,12 @@ exports[`SplitterLayout Render Horizontal SplitterLayout with multiple SplitterE
       </ui5-button>
     </div>
     <div
-      aria-label="Resizer"
+      aria-orientation="horizontal"
       class="Splitter-splitter"
       data-splitter-vertical="false"
       role="resizer"
+      tabindex="0"
+      title="Splitter"
     >
       <div
         class="Splitter-lineBefore"
@@ -68,6 +74,7 @@ exports[`SplitterLayout Render Horizontal SplitterLayout with multiple SplitterE
     </div>
     <div
       class="SplitterElement-splitterElement"
+      data-min-size="0"
       style="flex: 1 0 auto;"
     >
       <ui5-button
@@ -101,6 +108,7 @@ exports[`SplitterLayout Render Vertical SplitterLayout with multiple SplitterEle
   >
     <div
       class="SplitterElement-splitterElement"
+      data-min-size="0"
       data-testid="SplitterElement1"
       style="flex-basis: 200px;"
     >
@@ -113,10 +121,12 @@ exports[`SplitterLayout Render Vertical SplitterLayout with multiple SplitterEle
       </ui5-button>
     </div>
     <div
-      aria-label="Resizer"
+      aria-orientation="vertical"
       class="Splitter-splitter"
       data-splitter-vertical="true"
       role="resizer"
+      tabindex="0"
+      title="Splitter"
     >
       <div
         class="Splitter-lineBefore"
@@ -132,6 +142,7 @@ exports[`SplitterLayout Render Vertical SplitterLayout with multiple SplitterEle
     </div>
     <div
       class="SplitterElement-splitterElement"
+      data-min-size="300"
       data-testid="SplitterElement2"
       style="min-width: 300px; flex-basis: 400px;"
     >
@@ -144,6 +155,7 @@ exports[`SplitterLayout Render Vertical SplitterLayout with multiple SplitterEle
     </div>
     <div
       class="SplitterElement-splitterElement"
+      data-min-size="0"
       data-testid="SplitterElement3"
       style="flex: 1 0 auto;"
     >
@@ -168,6 +180,7 @@ exports[`SplitterLayout Render Vertical SplitterLayout with only one SplitterEle
   >
     <div
       class="SplitterElement-splitterElement"
+      data-min-size="0"
       data-testid="SplitterElement"
       style="flex-basis: 200px;"
     >
