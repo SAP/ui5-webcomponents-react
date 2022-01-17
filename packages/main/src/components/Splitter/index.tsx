@@ -1,5 +1,6 @@
-import { useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
+import { SPLITTER } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { Icon } from '@ui5/webcomponents-react/dist/Icon';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import React, { forwardRef, Ref, useRef, useState, useEffect } from 'react';
@@ -133,6 +134,7 @@ const horizontalPositionInfo = {
 const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>) => {
   const { vertical } = props;
   const classes = useStyles();
+  const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const [componentRef, localRef] = useSyncRef<HTMLDivElement>(ref);
   const start = useRef(null);
 
@@ -337,7 +339,7 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
       ref={componentRef}
       role="resizer"
       data-splitter-vertical={vertical}
-      title={'TODO I18n übersetzung'}
+      title={i18nBundle.getText(SPLITTER)}
       aria-orientation={vertical ? 'vertical' : 'horizontal'}
     >
       <div className={classes.lineBefore} />
