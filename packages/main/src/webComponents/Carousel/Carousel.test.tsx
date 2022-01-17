@@ -1,4 +1,5 @@
 import { render } from '@shared/tests';
+import { createCustomPropsTest } from '@shared/tests/utils';
 import { Carousel } from '@ui5/webcomponents-react/dist/Carousel';
 import React from 'react';
 
@@ -7,4 +8,5 @@ describe('Carousel', () => {
     const { asFragment } = render(<Carousel />);
     expect(asFragment()).toMatchSnapshot();
   });
+  createCustomPropsTest(Carousel);
 });

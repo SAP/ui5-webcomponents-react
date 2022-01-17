@@ -1,4 +1,5 @@
 import { render } from '@shared/tests';
+import { createCustomPropsTest } from '@shared/tests/utils';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { CustomListItem } from '@ui5/webcomponents-react/dist/CustomListItem';
 import { List } from '@ui5/webcomponents-react/dist/List';
@@ -17,4 +18,5 @@ describe('List', () => {
     );
     expect(asFragment()).toMatchSnapshot();
   });
+  createCustomPropsTest(List);
 });

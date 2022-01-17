@@ -19,6 +19,7 @@ import React, {
 } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
+import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { ButtonPropTypes } from '../../webComponents/Button';
 import { ResponsivePopoverDomRef, ResponsivePopoverPropTypes } from '../../webComponents/ResponsivePopover';
 import styles from './ActionSheet.jss';
@@ -114,6 +115,9 @@ const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: RefObject<Resp
     onBeforeOpen,
     ...rest
   } = props;
+
+  useDeprecationNoticeForTooltip('ActionSheet', props.tooltip);
+
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const classes = useStyles();
   const [componentRef, popoverRef] = useSyncRef(ref);

@@ -263,6 +263,7 @@ exports[`Toolbar overflow menu 1`] = `
         title="Show More"
       >
         <ui5-toggle-button
+          accessible-name="Show More"
           design="Transparent"
           icon="overflow"
           ui5-toggle-button=""
@@ -356,6 +357,7 @@ exports[`Toolbar overflow menu 2`] = `
         title="Show More"
       >
         <ui5-toggle-button
+          accessible-name="Show More"
           design="Transparent"
           icon="overflow"
           ui5-toggle-button=""
@@ -459,6 +461,7 @@ exports[`Toolbar overflow menu 3`] = `
         title="Show More"
       >
         <ui5-toggle-button
+          accessible-name="Show More"
           design="Transparent"
           icon="overflow"
           ui5-toggle-button=""

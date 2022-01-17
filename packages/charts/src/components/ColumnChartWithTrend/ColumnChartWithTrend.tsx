@@ -10,6 +10,7 @@ import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { defaultFormatter } from '../../internal/defaults';
+import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 
 interface MeasureConfig extends IChartMeasure {
   /**
@@ -116,6 +117,8 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
       ChartPlaceholder,
       ...rest
     } = props;
+
+    useDeprecationNoticeForTooltip('ColumnChartWithTrend', props.tooltip);
 
     const chartConfig = {
       yAxisVisible: false,

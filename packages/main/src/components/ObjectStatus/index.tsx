@@ -8,6 +8,7 @@ import { IndicationColor } from '@ui5/webcomponents-react/dist/IndicationColor';
 import React, { forwardRef, MouseEventHandler, ReactNode, Ref } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import styles from './ObjectStatus.jss';
 import clsx from 'clsx';
 
@@ -84,6 +85,8 @@ const useStyles = createUseStyles(styles, { name: 'ObjectStatus' });
 const ObjectStatus = forwardRef((props: ObjectStatusPropTypes, ref: Ref<HTMLDivElement>) => {
   const { state, showDefaultIcon, children, icon, className, style, tooltip, active, inverted, onClick, ...rest } =
     props;
+
+  useDeprecationNoticeForTooltip('ObjectStatus', props.tooltip);
 
   const iconToRender = (() => {
     if (icon) {

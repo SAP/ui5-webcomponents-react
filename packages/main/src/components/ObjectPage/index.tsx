@@ -26,6 +26,7 @@ import React, {
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
 import { PopoverHorizontalAlign } from '../../enums/PopoverHorizontalAlign';
+import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { PopoverDomRef } from '../../webComponents/Popover';
 import { stopPropagation } from '../../internal/stopPropagation';
 import { useObserveHeights } from '../../internal/useObserveHeights';
@@ -183,6 +184,8 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     portalContainer,
     ...rest
   } = props;
+
+  useDeprecationNoticeForTooltip('ObjectPage', props.tooltip);
 
   const classes = useStyles();
 
@@ -658,7 +661,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     (e) => {
       const selectedId = e.detail.item.dataset.key;
       const subSection = popoverContent.props.children
-        .filter((item) => item.props && item.props.isSubSection)
+        .filter((item) => item?.type?.displayName === 'ObjectPageSubSection')
         .find((item) => item.props.id === selectedId);
       if (subSection) {
         handleOnSubSectionSelected(enrichEventWithDetails(e, { section: popoverContent, subSection }));
@@ -820,7 +823,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
             >
               <List onItemClick={onSubSectionClick}>
                 {popoverContent?.props?.children
-                  .filter((item) => item.props && item.props.isSubSection)
+                  .filter((item) => item?.type?.displayName === 'ObjectPageSubSection')
                   .map((item) => (
                     <StandardListItem key={item.props.id} data-key={item.props.id}>
                       {item.props.titleText}

@@ -17,6 +17,7 @@ import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import React, { forwardRef, RefObject, useCallback } from 'react';
 import { createUseStyles } from 'react-jss';
 import clsx from 'clsx';
+import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 
 addCustomCSS(
   'ui5-button',
@@ -153,6 +154,7 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
     style,
     a11yConfig
   } = props;
+  useDeprecationNoticeForTooltip('DynamicPageAnchorBar', props.tooltip);
 
   const classes = useStyles();
   const [componentRef, anchorBarRef] = useSyncRef<HTMLElement>(ref);
@@ -199,7 +201,7 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
           onClick={onToggleHeaderButtonClick}
           onMouseOver={onHoverToggleButton}
           onMouseLeave={onHoverToggleButton}
-          tooltip={i18nBundle.getText(!headerContentVisible ? EXPAND_HEADER : COLLAPSE_HEADER)}
+          title={i18nBundle.getText(!headerContentVisible ? EXPAND_HEADER : COLLAPSE_HEADER)}
           aria-label={i18nBundle.getText(!headerContentVisible ? EXPAND_HEADER : COLLAPSE_HEADER)}
         />
       )}
@@ -214,7 +216,7 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
           )}
           pressed={headerPinned}
           onClick={onPinHeader}
-          tooltip={i18nBundle.getText(headerPinned ? UNPIN_HEADER : PIN_HEADER)}
+          title={i18nBundle.getText(headerPinned ? UNPIN_HEADER : PIN_HEADER)}
           aria-label={i18nBundle.getText(headerPinned ? UNPIN_HEADER : PIN_HEADER)}
         />
       )}
