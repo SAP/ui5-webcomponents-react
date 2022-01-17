@@ -279,16 +279,20 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
             0
           : nextSibling.getBoundingClientRect()?.[positionKeys.size] - 20 > 0
       ) {
-        nextSibling.style.flexBasis = `${nextSibling.getBoundingClientRect()?.[positionKeys.size] - 20}px`;
-        prevSibling.style.flexBasis = `${prevSibling.getBoundingClientRect()?.[positionKeys.size] + 20}px`;
+        nextSibling.style.flexBasis = `${(nextSibling.getBoundingClientRect()?.[positionKeys.size] as number) - 20}px`;
+        prevSibling.style.flexBasis = `${(prevSibling.getBoundingClientRect()?.[positionKeys.size] as number) + 20}px`;
       } else {
         const tickSize = nextSibling.style[positionKeys.min]
           ? nextSibling.getBoundingClientRect()?.[positionKeys.size] -
             Number(nextSibling.style[positionKeys.min].replace('px', ''))
           : nextSibling.getBoundingClientRect()?.[positionKeys.size];
 
-        nextSibling.style.flexBasis = `${nextSibling.getBoundingClientRect()?.[positionKeys.size] - tickSize}px`;
-        prevSibling.style.flexBasis = `${prevSibling.getBoundingClientRect()?.[positionKeys.size] + tickSize}px`;
+        nextSibling.style.flexBasis = `${
+          (nextSibling.getBoundingClientRect()?.[positionKeys.size] as number) - tickSize
+        }px`;
+        prevSibling.style.flexBasis = `${
+          (prevSibling.getBoundingClientRect()?.[positionKeys.size] as number) + tickSize
+        }px`;
       }
     }
   };
