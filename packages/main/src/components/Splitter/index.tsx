@@ -3,7 +3,7 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingPar
 import { SPLITTER } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { Icon } from '@ui5/webcomponents-react/dist/Icon';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import React, { forwardRef, Ref, useRef, useState, useEffect } from 'react';
+import React, { forwardRef, Ref, useRef, useState, useEffect, KeyboardEventHandler } from 'react';
 import { createUseStyles } from 'react-jss';
 
 const useStyles = createUseStyles(
@@ -271,7 +271,7 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
     start.current = e[`client${positionKeys.position}`];
   };
 
-  const onHandleKeyDown = (e: KeyboardEvent) => {
+  const onHandleKeyDown = (e) => {
     if (e.code === `Arrow${positionKeys.arrowForward}` || e.code === `Arrow${positionKeys.arrowBackward}`) {
       e.preventDefault();
 
