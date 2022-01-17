@@ -260,10 +260,17 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
   };
 
   const onHandleKeyDown = (e: KeyboardEvent) => {
-    if (e.code === `Arrow${positionKeys.arrowForward}`) {
+    if (e.code === `Arrow${positionKeys.arrowForward}` || e.code === `Arrow${positionKeys.arrowBackward}`) {
       e.preventDefault();
-      const prevSibling = localRef.current.previousSibling as HTMLElement;
-      const nextSibling = localRef.current.nextSibling as HTMLElement;
+
+      let prevSibling = localRef.current.previousSibling as HTMLElement;
+      let nextSibling = localRef.current.nextSibling as HTMLElement;
+
+      if (e.code === `Arrow${positionKeys.arrowBackward}`) {
+        nextSibling = localRef.current.previousSibling as HTMLElement;
+        prevSibling = localRef.current.nextSibling as HTMLElement;
+      }
+
       if (
         document.activeElement === localRef.current && nextSibling.style[positionKeys.min] !== ''
           ? nextSibling.getBoundingClientRect()?.[positionKeys.size] -
@@ -274,28 +281,14 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
       ) {
         nextSibling.style.flexBasis = `${nextSibling.getBoundingClientRect()?.[positionKeys.size] - 20}px`;
         prevSibling.style.flexBasis = `${prevSibling.getBoundingClientRect()?.[positionKeys.size] + 20}px`;
-      }
-    }
+      } else {
+        const tickSize = nextSibling.style[positionKeys.min]
+          ? nextSibling.getBoundingClientRect()?.[positionKeys.size] -
+            Number(nextSibling.style[positionKeys.min].replace('px', ''))
+          : nextSibling.getBoundingClientRect()?.[positionKeys.size];
 
-    if (e.code === `Arrow${positionKeys.arrowBackward}`) {
-      e.preventDefault();
-      const prevSibling = localRef.current.previousSibling as HTMLElement;
-      const nextSibling = localRef.current.nextSibling as HTMLElement;
-
-      console.log(document.activeElement === localRef.current);
-
-      if (
-        document.activeElement === localRef.current && prevSibling.style[positionKeys.min] !== ''
-          ? prevSibling.getBoundingClientRect()?.[positionKeys.size] -
-              20 -
-              Number(prevSibling.style[positionKeys.min].replace('px', '')) >
-            0
-          : prevSibling.getBoundingClientRect()?.[positionKeys.size] - 20 > 0
-      ) {
-        console.log('IN');
-
-        prevSibling.style.flexBasis = `${prevSibling.getBoundingClientRect()?.[positionKeys.size] - 20}px`;
-        nextSibling.style.flexBasis = `${nextSibling.getBoundingClientRect()?.[positionKeys.size] + 20}px`;
+        nextSibling.style.flexBasis = `${nextSibling.getBoundingClientRect()?.[positionKeys.size] - tickSize}px`;
+        prevSibling.style.flexBasis = `${prevSibling.getBoundingClientRect()?.[positionKeys.size] + tickSize}px`;
       }
     }
   };
