@@ -1,4 +1,4 @@
-import { useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useI18nBundle, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import { SPLITTER } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { Icon } from '@ui5/webcomponents-react/dist/Icon';
@@ -106,7 +106,7 @@ export interface SplitterPropTypes extends CommonProps {
   width: string | number;
   vertical: boolean;
 }
-//todo rtl
+
 const verticalPositionInfo = {
   start: 'left',
   end: 'right',
@@ -131,11 +131,24 @@ const horizontalPositionInfo = {
   offset: 'offsetY'
 };
 
+const verticalPositionInfoRtl = {
+  start: 'right',
+  end: 'left',
+  position: 'X',
+  positionRect: 'x',
+  size: 'width',
+  min: 'minWidth',
+  arrowForward: 'Left',
+  arrowBackward: 'Right',
+  offset: 'offsetX'
+};
+
 const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>) => {
   const { vertical } = props;
   const classes = useStyles();
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const [componentRef, localRef] = useSyncRef<HTMLDivElement>(ref);
+  const isRtl = useIsRTL(localRef);
   const start = useRef(null);
 
   const previousSiblingSize = useRef<number>(null);
@@ -144,8 +157,7 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
   const nextElementStart = useRef(null);
 
   const resizerClickOffset = useRef(0);
-
-  const positionKeys = vertical ? verticalPositionInfo : horizontalPositionInfo;
+  const positionKeys = vertical ? (isRtl ? verticalPositionInfoRtl : verticalPositionInfo) : horizontalPositionInfo;
 
   const [isDragging, setIsDragging] = useState<boolean | string>(false);
 
