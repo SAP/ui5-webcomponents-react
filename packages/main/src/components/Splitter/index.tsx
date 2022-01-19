@@ -3,7 +3,7 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingPar
 import { SPLITTER } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { Icon } from '@ui5/webcomponents-react/dist/Icon';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import React, { forwardRef, Ref, useRef, useState, useEffect, KeyboardEventHandler } from 'react';
+import React, { forwardRef, Ref, useRef, useState, useEffect } from 'react';
 import { createUseStyles } from 'react-jss';
 
 const useStyles = createUseStyles(
@@ -131,18 +131,6 @@ const horizontalPositionInfo = {
   offset: 'offsetY'
 };
 
-const verticalPositionInfoRtl = {
-  start: 'right',
-  end: 'left',
-  position: 'X',
-  positionRect: 'x',
-  size: 'width',
-  min: 'minWidth',
-  arrowForward: 'Left',
-  arrowBackward: 'Right',
-  offset: 'offsetX'
-};
-
 const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>) => {
   const { vertical } = props;
   const classes = useStyles();
@@ -160,12 +148,13 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
   const positionKeys = vertical ? verticalPositionInfo : horizontalPositionInfo;
 
   const [isDragging, setIsDragging] = useState<boolean | string>(false);
-  const [siblings] = useState(!isRtl ? ['previousSibling', 'nextSibling'] : ['nextSibling', 'previousSibling']);
+  const [isSiblings, setIsSiblings] = useState(['previousSibling', 'nextSibling']);
+
   const handleSplitterMove = (e) => {
     const offset = resizerClickOffset.current;
+    const previousSibling = localRef.current[isSiblings[0]] as HTMLDivElement;
+    const nextSibling = localRef.current[isSiblings[1]] as HTMLDivElement;
 
-    const previousSibling = localRef.current[siblings[0]] as HTMLDivElement;
-    const nextSibling = localRef.current[siblings[1]] as HTMLDivElement;
     const currentPosition =
       isDragging === 'touch' ? e.touches[0][`client${positionKeys.position}`] : e[`client${positionKeys.position}`];
     const sizeDiv = currentPosition - start.current;
@@ -192,16 +181,16 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
       }
     }
 
-    if (!nextSibling.nextSibling) {
+    if (!nextSibling[isSiblings[1]]) {
       (nextSibling as HTMLElement).style.flex = '1 0 0px';
     }
   };
 
   const handleFallback = (e, touchEvent: boolean) => {
-    const prevSibling = localRef.current.previousSibling as HTMLElement;
-    const nextSibling = localRef.current.nextSibling as HTMLElement;
-    const prevSiblingRect = (localRef.current.previousSibling as HTMLElement).getBoundingClientRect();
-    const nextSiblingRect = (localRef.current.nextSibling as HTMLElement).getBoundingClientRect();
+    const prevSibling = localRef.current[isSiblings[0]] as HTMLElement;
+    const nextSibling = localRef.current[isSiblings[1]] as HTMLElement;
+    const prevSiblingRect = (localRef.current[isSiblings[0]] as HTMLElement).getBoundingClientRect();
+    const nextSiblingRect = (localRef.current[isSiblings[1]] as HTMLElement).getBoundingClientRect();
     const currentPos = touchEvent
       ? Math.round(e.changedTouches[0][`client${positionKeys.position}`])
       : e[`client${positionKeys.position}`];
@@ -251,21 +240,21 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
     setIsDragging(e.pointerType ?? 'mouse');
     resizerClickOffset.current = e.nativeEvent[positionKeys.offset];
 
-    previousElementEnd.current = (localRef.current.previousSibling as HTMLElement).getBoundingClientRect()?.[
+    previousElementEnd.current = (localRef.current[isSiblings[0]] as HTMLElement).getBoundingClientRect()?.[
       positionKeys.end
     ];
     if (localRef.current.nextSibling.nextSibling) {
-      nextElementStart.current = (localRef.current.nextSibling.nextSibling as HTMLElement).getBoundingClientRect()?.[
-        positionKeys.start
-      ];
+      nextElementStart.current = (
+        localRef.current[isSiblings[1]][isSiblings[1]] as HTMLElement
+      ).getBoundingClientRect()?.[positionKeys.start];
     } else {
       nextElementStart.current = localRef.current.parentElement.getBoundingClientRect()[positionKeys.end];
     }
 
-    previousSiblingSize.current = (localRef.current.previousSibling as HTMLElement).getBoundingClientRect()?.[
+    previousSiblingSize.current = (localRef.current[isSiblings[0]] as HTMLElement).getBoundingClientRect()?.[
       positionKeys.size
     ];
-    nextSiblingSize.current = (localRef.current.nextSibling as HTMLElement).getBoundingClientRect()?.[
+    nextSiblingSize.current = (localRef.current[isSiblings[1]] as HTMLElement).getBoundingClientRect()?.[
       positionKeys.size
     ];
 
@@ -275,12 +264,12 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
   const onHandleKeyDown = (e) => {
     if (e.code === `Arrow${positionKeys.arrowForward}` || e.code === `Arrow${positionKeys.arrowBackward}`) {
       e.preventDefault();
-      let firstSibling = localRef.current[siblings[0]] as HTMLElement;
-      let secondSibling = localRef.current[siblings[1]] as HTMLElement;
+      let firstSibling = localRef.current[isSiblings[0]] as HTMLElement;
+      let secondSibling = localRef.current[isSiblings[1]] as HTMLElement;
 
       if (e.code === `Arrow${positionKeys.arrowBackward}`) {
-        secondSibling = localRef.current[siblings[0]] as HTMLElement;
-        firstSibling = localRef.current[siblings[1]] as HTMLElement;
+        secondSibling = localRef.current[isSiblings[0]] as HTMLElement;
+        firstSibling = localRef.current[isSiblings[1]] as HTMLElement;
       }
 
       const remainingSize = secondSibling.style[positionKeys.min]
@@ -301,7 +290,7 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
   };
 
   const end = (e) => {
-    // handleFallback(e, isDragging === 'touch');
+    handleFallback(e, isDragging === 'touch');
     setIsDragging(false);
   };
 
@@ -330,6 +319,10 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
       removeEventListeners();
     };
   }, [isDragging]);
+
+  useEffect(() => {
+    setIsSiblings(!isRtl ? ['previousSibling', 'nextSibling'] : ['nextSibling', 'previousSibling']);
+  }, [isRtl]);
 
   return (
     <div
