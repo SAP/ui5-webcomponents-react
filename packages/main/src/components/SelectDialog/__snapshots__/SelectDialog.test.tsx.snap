@@ -145,6 +145,25 @@ exports[`SelectDialog MultiSelect 1`] = `
         />
       </ui5-input>
     </ui5-bar>
+    <div
+      class="Toolbar-outerContainer-0-2-6 Toolbar-info-0-2-10 SelectDialog-infoBar-0-2-5"
+    >
+      <div
+        class="Toolbar-toolbar-0-2-13"
+        data-component-name="ToolbarContent"
+      >
+        <div
+          class="Toolbar-childContainer-0-2-16"
+          data-component-name="ToolbarChildContainer"
+        >
+          <span
+            class="Text-text-0-2-17"
+          >
+            Selected: 2
+          </span>
+        </div>
+      </div>
+    </div>
     <ui5-list
       accessible-role="list"
       busy-delay="1000"
@@ -153,26 +172,6 @@ exports[`SelectDialog MultiSelect 1`] = `
       separators="All"
       ui5-list=""
     >
-      <div
-        class="Toolbar-outerContainer-0-2-6 Toolbar-info-0-2-10 SelectDialog-infoBar-0-2-5"
-        slot="header"
-      >
-        <div
-          class="Toolbar-toolbar-0-2-13"
-          data-component-name="ToolbarContent"
-        >
-          <div
-            class="Toolbar-childContainer-0-2-16"
-            data-component-name="ToolbarChildContainer"
-          >
-            <span
-              class="Text-text-0-2-17"
-            >
-              Selected: 2
-            </span>
-          </div>
-        </div>
-      </div>
       <ui5-li
         _mode="MultiSelect"
         actionable=""
