@@ -289,13 +289,13 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
         : nextSibling.getBoundingClientRect()?.[positionKeys.size];
 
       if (document.activeElement === localRef.current && remainingSize >= 20) {
-        nextSibling.style.flexBasis = `${(nextSibling.getBoundingClientRect()?.[positionKeys.size] as number) - 20}px`;
-        prevSibling.style.flexBasis = `${(prevSibling.getBoundingClientRect()?.[positionKeys.size] as number) + 20}px`;
+        nextSibling.style.flex = `0 0 ${(nextSibling.getBoundingClientRect()?.[positionKeys.size] as number) - 20}px`;
+        prevSibling.style.flex = `0 0 ${(prevSibling.getBoundingClientRect()?.[positionKeys.size] as number) + 20}px`;
       } else {
-        nextSibling.style.flexBasis = `${
+        nextSibling.style.flex = `0 0 ${
           (nextSibling.getBoundingClientRect()?.[positionKeys.size] as number) - remainingSize
         }px`;
-        prevSibling.style.flexBasis = `${
+        prevSibling.style.flex = `0 0 ${
           (prevSibling.getBoundingClientRect()?.[positionKeys.size] as number) + remainingSize
         }px`;
       }
