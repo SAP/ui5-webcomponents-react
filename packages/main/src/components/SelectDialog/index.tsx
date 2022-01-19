@@ -38,7 +38,7 @@ const useStyles = createUseStyles(
     spread: { width: '100%' },
     noShadow: { boxShadow: 'none' },
     inputIcon: { cursor: 'pointer', color: ThemingParameters.sapContent_IconColor },
-    infoBar: { padding: '0 0.5rem' }
+    infoBar: { padding: '0 0.5rem', position: 'sticky', top: 0, zIndex: 1 }
   },
   { name: 'SelectDialog' }
 );
@@ -327,19 +327,16 @@ const SelectDialog = forwardRef((props: SelectDialogPropTypes, ref: Ref<DialogDo
           }
         />
       </Bar>
+      {mode === ListMode.MultiSelect && !!selectedItems.length && (
+        <Toolbar design={ToolbarDesign.Info} className={classes.infoBar}>
+          <Text>{`${i18nBundle.getText(SELECTED)}: ${selectedItems.length}`}</Text>
+        </Toolbar>
+      )}
       <List
         {...listProps}
         growing={growing}
         onLoadMore={onLoadMore}
         mode={mode}
-        header={
-          mode === ListMode.MultiSelect &&
-          !!selectedItems.length && (
-            <Toolbar design={ToolbarDesign.Info} className={classes.infoBar}>
-              <Text>{`${i18nBundle.getText(SELECTED)}: ${selectedItems.length}`}</Text>
-            </Toolbar>
-          )
-        }
         onSelectionChange={handleSelectionChange}
       >
         {listMounted && children}
