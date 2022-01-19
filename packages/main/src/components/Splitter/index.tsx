@@ -157,14 +157,15 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
   const nextElementStart = useRef(null);
 
   const resizerClickOffset = useRef(0);
-  const positionKeys = vertical ? (isRtl ? verticalPositionInfoRtl : verticalPositionInfo) : horizontalPositionInfo;
+  const positionKeys = vertical ? verticalPositionInfo : horizontalPositionInfo;
 
   const [isDragging, setIsDragging] = useState<boolean | string>(false);
-
+  const [siblings] = useState(!isRtl ? ['previousSibling', 'nextSibling'] : ['nextSibling', 'previousSibling']);
   const handleSplitterMove = (e) => {
     const offset = resizerClickOffset.current;
-    const previousSibling = localRef.current.previousSibling as HTMLDivElement;
-    const nextSibling = localRef.current.nextSibling as HTMLDivElement;
+
+    const previousSibling = localRef.current[siblings[0]] as HTMLDivElement;
+    const nextSibling = localRef.current[siblings[1]] as HTMLDivElement;
     const currentPosition =
       isDragging === 'touch' ? e.touches[0][`client${positionKeys.position}`] : e[`client${positionKeys.position}`];
     const sizeDiv = currentPosition - start.current;
@@ -181,7 +182,7 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
 
     if (
       previousSiblingSize.current + sizeDiv > 0 &&
-      currentPosition + (splitterWidth - offset) <= nextElementStart.current
+      (currentPosition as number) + (splitterWidth - offset) <= nextElementStart.current
     ) {
       if (parseInt(previousSibling.dataset.minSize, 10) <= previousSiblingSize.current + sizeDiv && moveLeft) {
         move();
@@ -274,13 +275,12 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
   const onHandleKeyDown = (e) => {
     if (e.code === `Arrow${positionKeys.arrowForward}` || e.code === `Arrow${positionKeys.arrowBackward}`) {
       e.preventDefault();
-
-      let firstSibling = localRef.current.previousSibling as HTMLElement;
-      let secondSibling = localRef.current.nextSibling as HTMLElement;
+      let firstSibling = localRef.current[siblings[0]] as HTMLElement;
+      let secondSibling = localRef.current[siblings[1]] as HTMLElement;
 
       if (e.code === `Arrow${positionKeys.arrowBackward}`) {
-        secondSibling = localRef.current.previousSibling as HTMLElement;
-        firstSibling = localRef.current.nextSibling as HTMLElement;
+        secondSibling = localRef.current[siblings[0]] as HTMLElement;
+        firstSibling = localRef.current[siblings[1]] as HTMLElement;
       }
 
       const remainingSize = secondSibling.style[positionKeys.min]
@@ -301,7 +301,7 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
   };
 
   const end = (e) => {
-    handleFallback(e, isDragging === 'touch');
+    // handleFallback(e, isDragging === 'touch');
     setIsDragging(false);
   };
 
