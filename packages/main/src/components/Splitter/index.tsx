@@ -275,28 +275,26 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
     if (e.code === `Arrow${positionKeys.arrowForward}` || e.code === `Arrow${positionKeys.arrowBackward}`) {
       e.preventDefault();
 
-      let prevSibling = localRef.current.previousSibling as HTMLElement;
-      let nextSibling = localRef.current.nextSibling as HTMLElement;
+      let firstSibling = localRef.current.previousSibling as HTMLElement;
+      let secondSibling = localRef.current.nextSibling as HTMLElement;
 
       if (e.code === `Arrow${positionKeys.arrowBackward}`) {
-        nextSibling = localRef.current.previousSibling as HTMLElement;
-        prevSibling = localRef.current.nextSibling as HTMLElement;
+        secondSibling = localRef.current.previousSibling as HTMLElement;
+        firstSibling = localRef.current.nextSibling as HTMLElement;
       }
 
-      const remainingSize = nextSibling.style[positionKeys.min]
-        ? nextSibling.getBoundingClientRect()?.[positionKeys.size] -
-          Number(nextSibling.style[positionKeys.min].replace('px', ''))
-        : nextSibling.getBoundingClientRect()?.[positionKeys.size];
+      const remainingSize = secondSibling.style[positionKeys.min]
+        ? secondSibling.getBoundingClientRect()?.[positionKeys.size] -
+          Number(secondSibling.style[positionKeys.min].replace('px', ''))
+        : secondSibling.getBoundingClientRect()?.[positionKeys.size];
 
-      if (document.activeElement === localRef.current && remainingSize >= 20) {
-        nextSibling.style.flex = `0 0 ${(nextSibling.getBoundingClientRect()?.[positionKeys.size] as number) - 20}px`;
-        prevSibling.style.flex = `0 0 ${(prevSibling.getBoundingClientRect()?.[positionKeys.size] as number) + 20}px`;
-      } else {
-        nextSibling.style.flex = `0 0 ${
-          (nextSibling.getBoundingClientRect()?.[positionKeys.size] as number) - remainingSize
+      if (document.activeElement === localRef.current) {
+        const tickSize = remainingSize >= 20 ? 20 : remainingSize;
+        secondSibling.style.flex = `0 0 ${
+          (secondSibling.getBoundingClientRect()?.[positionKeys.size] as number) - tickSize
         }px`;
-        prevSibling.style.flex = `0 0 ${
-          (prevSibling.getBoundingClientRect()?.[positionKeys.size] as number) + remainingSize
+        firstSibling.style.flex = `0 0 ${
+          (firstSibling.getBoundingClientRect()?.[positionKeys.size] as number) + tickSize
         }px`;
       }
     }
