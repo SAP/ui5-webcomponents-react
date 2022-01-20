@@ -25,7 +25,7 @@ exports[`SplitterLayout Render Horizontal SplitterLayout with multiple SplitterE
       data-splitter-vertical="false"
       role="separator"
       tabindex="0"
-      title="Splitter"
+      title="Press ARROW keys to move"
     >
       <div
         class="Splitter-lineBefore"
@@ -58,7 +58,7 @@ exports[`SplitterLayout Render Horizontal SplitterLayout with multiple SplitterE
       data-splitter-vertical="false"
       role="separator"
       tabindex="0"
-      title="Splitter"
+      title="Press ARROW keys to move"
     >
       <div
         class="Splitter-lineBefore"
@@ -126,7 +126,7 @@ exports[`SplitterLayout Render Vertical SplitterLayout with multiple SplitterEle
       data-splitter-vertical="true"
       role="separator"
       tabindex="0"
-      title="Splitter"
+      title="Press ARROW keys to move"
     >
       <div
         class="Splitter-lineBefore"
