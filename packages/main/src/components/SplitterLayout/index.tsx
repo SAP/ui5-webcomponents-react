@@ -2,8 +2,7 @@ import { SplitterElementPropTypes } from '@ui5/webcomponents-react/dist/Splitter
 import { SplitterLayoutContext } from '@ui5/webcomponents-react/dist/SplitterLayoutContext';
 import React, { CSSProperties, forwardRef, ReactElement, Ref } from 'react';
 import { createUseStyles } from 'react-jss';
-//todo import
-import { CommonProps } from '../../interfaces/CommonProps';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { styles } from './SplitterLayout.jss';
 import '@ui5/webcomponents-icons/dist/vertical-grip.js';
 import '@ui5/webcomponents-icons/dist/horizontal-grip.js';
@@ -14,13 +13,14 @@ const useStyles = createUseStyles(styles, { name: 'SplitterLayout' });
 
 export interface SplitterLayoutPropTypes extends CommonProps {
   /**
-   * Controls if a vertical or horizontal `SplitterLayout` is rendered.<br />
+   * Controls if a vertical or horizontal `SplitterLayout` is rendered.
    */
   vertical?: boolean;
+  //todo: children are optional everywhere, even a test exists for empty children
   /**
    * Content of the `SplitterLayout`.
    */
-  children: ReactElement<SplitterElementPropTypes> | ReactElement<SplitterElementPropTypes>[];
+  children?: ReactElement<SplitterElementPropTypes> | ReactElement<SplitterElementPropTypes>[];
 }
 
 const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTMLDivElement>) => {

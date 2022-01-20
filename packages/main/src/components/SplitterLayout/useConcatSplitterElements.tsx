@@ -1,5 +1,6 @@
 import { SplitterElementPropTypes } from '@ui5/webcomponents-react/dist/SplitterElement';
 import React, { cloneElement, CSSProperties, ReactElement, useMemo } from 'react';
+//todo:  please move it to the internals folder
 import { safeGetChildrenArray } from '../ObjectPage/ObjectPageUtils';
 import { Splitter } from '../Splitter';
 

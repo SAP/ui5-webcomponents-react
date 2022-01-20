@@ -12,12 +12,14 @@ const useStyles = createUseStyles(
       touchAction: 'none',
       position: 'relative',
       display: 'flex',
+      // todo: why 20?
       zIndex: 20,
       willChange: 'flex',
       border: 'none',
       backgroundColor: ThemingParameters.sapShell_Background,
       alignItems: 'center',
       justifyContent: 'center',
+      //todo: why necessary?
       userSelect: 'none',
       boxSizing: 'border-box',
 
@@ -333,8 +335,9 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
       onPointerDown={handleMoveSplitterStart}
       onMouseDown={handleMoveSplitterStart}
       ref={componentRef}
-      role="resizer"
+      role="separator"
       data-splitter-vertical={vertical}
+      //todo: wrong title - should be: Press ARROW keys to move
       title={i18nBundle.getText(SPLITTER)}
       aria-orientation={vertical ? 'vertical' : 'horizontal'}
     >
