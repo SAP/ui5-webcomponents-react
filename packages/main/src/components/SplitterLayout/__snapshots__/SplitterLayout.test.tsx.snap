@@ -23,7 +23,7 @@ exports[`SplitterLayout Render Horizontal SplitterLayout with multiple SplitterE
       aria-orientation="horizontal"
       class="Splitter-splitter"
       data-splitter-vertical="false"
-      role="resizer"
+      role="separator"
       tabindex="0"
       title="Splitter"
     >
@@ -56,7 +56,7 @@ exports[`SplitterLayout Render Horizontal SplitterLayout with multiple SplitterE
       aria-orientation="horizontal"
       class="Splitter-splitter"
       data-splitter-vertical="false"
-      role="resizer"
+      role="separator"
       tabindex="0"
       title="Splitter"
     >
@@ -124,7 +124,7 @@ exports[`SplitterLayout Render Vertical SplitterLayout with multiple SplitterEle
       aria-orientation="vertical"
       class="Splitter-splitter"
       data-splitter-vertical="true"
-      role="resizer"
+      role="separator"
       tabindex="0"
       title="Splitter"
     >
