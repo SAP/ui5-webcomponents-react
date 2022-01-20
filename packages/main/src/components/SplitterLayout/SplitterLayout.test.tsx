@@ -25,7 +25,7 @@ describe('SplitterLayout', () => {
         </SplitterElement>
       </SplitterLayout>
     );
-    const AllSplitter = document.querySelectorAll('[role="resizer"]');
+    const AllSplitter = document.querySelectorAll('[role="separator"]');
 
     fireEvent.click(screen.getByTestId('Button'));
     fireEvent.click(AllSplitter[0]);
@@ -53,7 +53,7 @@ describe('SplitterLayout', () => {
         </SplitterElement>
       </SplitterLayout>
     );
-    const AllSplitter = document.querySelectorAll('[role="resizer"]');
+    const AllSplitter = document.querySelectorAll('[role="separator"]');
 
     fireEvent.click(screen.getByTestId('Button'));
 
@@ -80,7 +80,7 @@ describe('SplitterLayout', () => {
       </SplitterLayout>
     );
 
-    const AllSplitter = document.querySelectorAll('[role="resizer"]');
+    const AllSplitter = document.querySelectorAll('[role="separator"]');
 
     expect(AllSplitter.length).toBe(2);
     expect(screen.getByTestId('Layout')).toHaveStyle('width: 80vw; height: 600px');
