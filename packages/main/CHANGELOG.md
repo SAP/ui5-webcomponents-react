@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.20.7](https://github.com/SAP/ui5-webcomponents-react/compare/v0.20.6...v0.20.7) (2022-01-19)
+
+
+### Features
+
+* **SelectDialog:** add `numberOfSelectedItems` prop to support `MultiSelect` mode ([#2494](https://github.com/SAP/ui5-webcomponents-react/issues/2494)) ([0077877](https://github.com/SAP/ui5-webcomponents-react/commit/00778776d265bfa481072a9def90858e655c02e0))
+* **SelectDialog:** make infobar sticky ([#2504](https://github.com/SAP/ui5-webcomponents-react/issues/2504)) ([ff4d207](https://github.com/SAP/ui5-webcomponents-react/commit/ff4d2076fc2c9b3cf2c0bcfba9903ed6bef66732))
+* **Toolbar:** add `aria-label` to overflow button ([#2488](https://github.com/SAP/ui5-webcomponents-react/issues/2488)) ([a4fd03d](https://github.com/SAP/ui5-webcomponents-react/commit/a4fd03d25bb22e50fd4bc1d72f0883cab1419658))
+
+
+
+
+
 ## [0.20.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.20.5...v0.20.6) (2022-01-12)
 
 
