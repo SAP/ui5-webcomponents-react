@@ -25,6 +25,7 @@ export interface SplitterElementPropTypes extends CommonProps {
    *
    * If the next `SplitterElement` has the prop `resizable={false}`, no resizer element will be shown after this
    * `SplitterElement`. The resizer element is only shown when all siblings of the resizer are resizable.
+   * Default value of resizable is `true`.
    */
   resizable?: boolean;
   /**
@@ -32,7 +33,7 @@ export interface SplitterElementPropTypes extends CommonProps {
    */
   size?: CSSProperties['width'] | CSSProperties['height'];
   /**
-   * Defines the minimum size of the `SplitterElement`. The resize element stops when the minimum size is reached.
+   * Defines the minimum size of the `SplitterElement`. The resizer element stops when the minimum size is reached.
    */
   minSize?: number;
   /**

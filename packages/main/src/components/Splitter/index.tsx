@@ -1,6 +1,6 @@
 import { useI18nBundle, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
-import { SPLITTER } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
+import { PRESS_ARROW_KEYS_TO_MOVE } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { Icon } from '@ui5/webcomponents-react/dist/Icon';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import React, { forwardRef, Ref, useRef, useState, useEffect } from 'react';
@@ -12,15 +12,11 @@ const useStyles = createUseStyles(
       touchAction: 'none',
       position: 'relative',
       display: 'flex',
-      // todo: why 20?
-      zIndex: 20,
       willChange: 'flex',
       border: 'none',
       backgroundColor: ThemingParameters.sapShell_Background,
       alignItems: 'center',
       justifyContent: 'center',
-      //todo: why necessary?
-      userSelect: 'none',
       boxSizing: 'border-box',
 
       '&:focus': {
@@ -337,8 +333,7 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
       ref={componentRef}
       role="separator"
       data-splitter-vertical={vertical}
-      //todo: wrong title - should be: Press ARROW keys to move
-      title={i18nBundle.getText(SPLITTER)}
+      title={i18nBundle.getText(PRESS_ARROW_KEYS_TO_MOVE)}
       aria-orientation={vertical ? 'vertical' : 'horizontal'}
     >
       <div className={classes.lineBefore} />
