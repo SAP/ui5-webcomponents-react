@@ -12,6 +12,10 @@ interface ButtonAttributes {
    */
   accessibleName?: string;
   /**
+   * Receives id(or many ids) of the elements that label the component.
+   */
+  accessibleNameRef?: string;
+  /**
    * Defines the component design.
    *
    * **The available values are:**
@@ -70,7 +74,7 @@ export interface ButtonPropTypes extends ButtonAttributes, Omit<CommonProps, 'on
  */
 const Button = withWebComponent<ButtonPropTypes, ButtonDomRef>(
   'ui5-button',
-  ['accessibleName', 'design', 'icon'],
+  ['accessibleName', 'accessibleNameRef', 'design', 'icon'],
   ['disabled', 'iconEnd', 'submits'],
   [],
   ['click']

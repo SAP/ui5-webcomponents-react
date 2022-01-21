@@ -9,6 +9,10 @@ import '@ui5/webcomponents/dist/RadioButton.js';
 
 interface RadioButtonAttributes {
   /**
+   * Defines the IDs of the elements that label the component.
+   */
+  accessibleNameRef?: string;
+  /**
    * Defines whether the component is checked or not.
    *
    * **Note:** The property value can be changed with user interaction, either by clicking/tapping on the component, or by using the Space or Enter key.
@@ -85,7 +89,7 @@ export interface RadioButtonPropTypes extends RadioButtonAttributes, Omit<Common
  */
 const RadioButton = withWebComponent<RadioButtonPropTypes, RadioButtonDomRef>(
   'ui5-radio-button',
-  ['name', 'text', 'value', 'valueState', 'wrappingType'],
+  ['accessibleNameRef', 'name', 'text', 'value', 'valueState', 'wrappingType'],
   ['checked', 'disabled', 'readonly'],
   [],
   ['change']

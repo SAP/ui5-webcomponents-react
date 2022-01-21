@@ -43,7 +43,7 @@ interface ListAttributes {
    * `Scroll` - The `load-more` event is triggered when the user scrolls to the bottom of the list;
    * `None` (default) - The growing is off.
    *
-   * **Limitations:** `growing="Scroll"` is not supported for Internet Explorer, on IE the component will fallback to `growing="Button"`.
+   * **Restrictions:** `growing="Scroll"` is not supported for Internet Explorer, on IE the component will fallback to `growing="Button"`.
    */
   growing?: ListGrowingMode | keyof typeof ListGrowingMode;
   /**

@@ -1,4 +1,5 @@
 import { TabLayout } from '@ui5/webcomponents-react/dist/TabLayout';
+import { TabsOverflowMode } from '@ui5/webcomponents-react/dist/TabsOverflowMode';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
@@ -19,7 +20,7 @@ interface TabContainerAttributes {
   /**
    * Defines whether the overflow select list is displayed.
    *
-   * The overflow select list represents a list, where all tab filters are displayed so that it's easier for the user to select a specific tab filter.
+   * The overflow select list represents a list, where all tabs are displayed so that it's easier for the user to select a specific tab.
    */
   showOverflow?: boolean;
   /**
@@ -33,6 +34,17 @@ interface TabContainerAttributes {
    * *   `Inline`
    */
   tabLayout?: TabLayout | keyof typeof TabLayout;
+  /**
+   * Defines the overflow mode of the tab strip. If you have a large number of tabs, only the tabs that can fit on screen will be visible. All other tabs that can 't fit on the screen are available in an overflow tab "More".
+   *
+   * **Note:** Only one overflow at the end would be displayed by default, but when set to `StartAndEnd`, there will be two overflows on both ends, and tab order will not change on tab selection.
+   *
+   * Available options are:
+   *
+   * *   `End`
+   * *   `StartAndEnd`
+   */
+  tabsOverflowMode?: TabsOverflowMode | keyof typeof TabsOverflowMode;
 }
 
 export interface TabContainerDomRef extends TabContainerAttributes, Ui5DomRef {}
@@ -52,6 +64,13 @@ export interface TabContainerPropTypes extends TabContainerAttributes, CommonPro
    */
   overflowButton?: ReactNode;
   /**
+   * Defines the button which will open the start overflow menu if available. If nothing is provided to this slot, the default button will be used.
+   *
+   * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
+   */
+  startOverflowButton?: ReactNode;
+  /**
    * Fired when a tab is selected.
    */
   onTabSelect?: (event: Ui5CustomEvent<HTMLElement, { tab: ReactNode; tabIndex: number }>) => void;
@@ -64,16 +83,17 @@ export interface TabContainerPropTypes extends TabContainerAttributes, CommonPro
  */
 const TabContainer = withWebComponent<TabContainerPropTypes, TabContainerDomRef>(
   'ui5-tabcontainer',
-  ['tabLayout'],
+  ['tabLayout', 'tabsOverflowMode'],
   ['collapsed', 'fixed', 'showOverflow'],
-  ['overflowButton'],
+  ['overflowButton', 'startOverflowButton'],
   ['tab-select']
 );
 
 TabContainer.displayName = 'TabContainer';
 
 TabContainer.defaultProps = {
-  tabLayout: TabLayout.Standard
+  tabLayout: TabLayout.Standard,
+  tabsOverflowMode: TabsOverflowMode.End
 };
 
 export { TabContainer };

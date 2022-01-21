@@ -16,6 +16,10 @@ interface SegmentedButtonItemAttributes {
    */
   accessibleName?: string;
   /**
+   * Receives id(or many ids) of the elements that label the component.
+   */
+  accessibleNameRef?: string;
+  /**
    * Defines whether the component is disabled. A disabled component can't be pressed or focused, and it is not in the tab chain.
    */
   disabled?: boolean;
@@ -53,7 +57,7 @@ export interface SegmentedButtonItemPropTypes extends SegmentedButtonItemAttribu
  */
 const SegmentedButtonItem = withWebComponent<SegmentedButtonItemPropTypes, SegmentedButtonItemDomRef>(
   'ui5-segmented-button-item',
-  ['accessibleName', 'icon'],
+  ['accessibleName', 'accessibleNameRef', 'icon'],
   ['pressed', 'disabled'],
   [],
   ['click']

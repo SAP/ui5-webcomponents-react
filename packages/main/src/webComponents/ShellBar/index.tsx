@@ -8,6 +8,10 @@ import '@ui5/webcomponents-fiori/dist/ShellBar.js';
 
 interface ShellBarAttributes {
   /**
+   * An object of strings that defines several additional accessibility texts for even further customization. It supports the following fields: - `profileButtonTitle`: defines the tooltip for the profile button - `logoTitle`: defines the tooltip for the logo
+   */
+  accessibilityTexts?: Record<string, unknown>;
+  /**
    * Defines the `notificationsCount`, displayed in the notification icon top-right corner.
    */
   notificationsCount?: string;
@@ -147,7 +151,7 @@ export interface ShellBarPropTypes extends ShellBarAttributes, CommonProps {
  */
 const ShellBar = withWebComponent<ShellBarPropTypes, ShellBarDomRef>(
   'ui5-shellbar',
-  ['notificationsCount', 'primaryTitle', 'secondaryTitle'],
+  ['accessibilityTexts', 'notificationsCount', 'primaryTitle', 'secondaryTitle'],
   ['showCoPilot', 'showNotifications', 'showProductSwitch'],
   ['logo', 'menuItems', 'profile', 'searchField', 'startButton'],
   ['co-pilot-click', 'logo-click', 'menu-item-click', 'notifications-click', 'product-switch-click', 'profile-click']
