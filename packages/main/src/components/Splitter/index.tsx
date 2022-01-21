@@ -319,8 +319,8 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
   }, [isDragging]);
 
   useEffect(() => {
-    setIsSiblings(!isRtl ? ['previousSibling', 'nextSibling'] : ['nextSibling', 'previousSibling']);
-  }, [isRtl]);
+    setIsSiblings(!isRtl || !vertical ? ['previousSibling', 'nextSibling'] : ['nextSibling', 'previousSibling']);
+  }, [isRtl, vertical]);
 
   return (
     <div
@@ -335,6 +335,7 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
       data-splitter-vertical={vertical}
       title={i18nBundle.getText(PRESS_ARROW_KEYS_TO_MOVE)}
       aria-orientation={vertical ? 'vertical' : 'horizontal'}
+      aria-label={i18nBundle.getText(PRESS_ARROW_KEYS_TO_MOVE)}
     >
       <div className={classes.lineBefore} />
       <Icon className={classes.icon} name={vertical ? 'vertical-grip' : 'horizontal-grip'} />
