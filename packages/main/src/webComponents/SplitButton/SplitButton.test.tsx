@@ -8,5 +8,5 @@ describe('SplitButton', () => {
     const { asFragment } = render(<SplitButton>SplitButton</SplitButton>);
     expect(asFragment()).toMatchSnapshot();
   });
-  createCustomPropsTest(SplitButton);
+  createCustomPropsTest(SplitButton, { children: 'SplitButton' });
 });
