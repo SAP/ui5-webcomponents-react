@@ -151,6 +151,10 @@ export const getTypeDefinitionForProperty = (property) => {
     case 'ListMode':
     case 'ListGrowingMode':
     case 'ListSeparators':
+    case 'MediaGalleryLayout':
+    case 'MediaGalleryItemLayout':
+    case 'MediaGalleryMenuHorizontalAlign':
+    case 'MediaGalleryMenuVerticalAlign':
     case 'MessageStripDesign':
     case 'PageBackgroundDesign':
     case 'PanelAccessibleRole':
@@ -159,8 +163,12 @@ export const getTypeDefinitionForProperty = (property) => {
     case 'PopoverVerticalAlign':
     case 'Priority':
     case 'SemanticColor':
+    case 'SideContentFallDown':
+    case 'SideContentPosition':
+    case 'SideContentVisibility':
     case 'SwitchDesign':
     case 'TabLayout':
+    case 'TabsOverflowMode':
     case 'TableGrowingMode':
     case 'TableMode':
     case 'TableRowType':
