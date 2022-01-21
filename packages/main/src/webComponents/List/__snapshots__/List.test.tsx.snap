@@ -5,6 +5,7 @@ exports[`List Basic Test (generated) 1`] = `
   <ui5-list
     accessible-role="list"
     busy-delay="1000"
+    data-sap-ui-fastnavgroup="true"
     growing="None"
     mode="None"
     separators="All"

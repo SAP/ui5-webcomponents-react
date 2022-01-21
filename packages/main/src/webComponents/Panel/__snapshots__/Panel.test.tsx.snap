@@ -4,6 +4,7 @@ exports[`Panel Basic Test (generated) 1`] = `
 <DocumentFragment>
   <ui5-panel
     accessible-role="Form"
+    data-sap-ui-fastnavgroup="true"
     header-level="H2"
     ui5-panel=""
   />
