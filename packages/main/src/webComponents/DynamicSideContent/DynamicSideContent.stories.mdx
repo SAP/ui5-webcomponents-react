@@ -1,0 +1,104 @@
+import { DocsHeader } from '@docs/DocsHeader';
+import { Footer } from '@docs/Footer';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { DynamicSideContent } from '@ui5/webcomponents-react/dist/DynamicSideContent';
+import { SideContentFallDown } from '@ui5/webcomponents-react/dist/SideContentFallDown';
+import { SideContentPosition } from '@ui5/webcomponents-react/dist/SideContentPosition';
+import { SideContentVisibility } from '@ui5/webcomponents-react/dist/SideContentVisibility';
+
+<Meta
+  title="Layouts & Floorplans / DynamicSideContent"
+  component={DynamicSideContent}
+  argTypes={{
+    children: { control: { disable: true } },
+    sideContent: { control: { disable: true } }
+  }}
+  args={{
+    sideContentFallDown: SideContentFallDown.OnMinimumWidth,
+    sideContentPosition: SideContentPosition.End,
+    sideContentVisibility: SideContentVisibility.ShowAboveS
+  }}
+/>
+
+<DocsHeader />
+
+<br />
+
+## Example
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return (
+        <DynamicSideContent
+          {...args}
+          sideContent={
+            <div>
+              <h1>Side Content</h1>
+              <p>
+                Morbi lorem libero, imperdiet id condimentum ac, tempor ut velit. Integer a laoreet sem. Nunc at
+                sagittis nisi. Sed placerat diam eu porttitor dignissim. Maecenas nec fringilla tortor. Pellentesque ut
+                elit est. Curabitur quis elit at mauris ullamcorper fringilla. Nullam diam mi, porttitor dictum orci
+                nec, molestie luctus metus. Nunc ut ex blandit, elementum erat eget, pulvinar sapien. Donec nec lorem eu
+                nunc eleifend tempor at non tortor. In quam velit, ornare at rutrum ac, porta ac augue. Suspendisse
+                venenatis semper lacus at venenatis. Praesent vestibulum ligula nulla, at tempus lorem consequat
+                suscipit. Aenean consequat dapibus dui, at bibendum mauris porta a.
+              </p>
+            </div>
+          }
+        >
+          <div>
+            <h1>Main Content</h1>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ex mi, elementum et ante commodo, semper
+              sollicitudin magna. Sed dapibus ut tortor quis varius. Sed luctus sem at nunc porta vulputate. Suspendisse
+              lobortis arcu est, quis ultrices ipsum fermentum a. Vestibulum a ipsum placerat ligula gravida fringilla
+              at id ex. Etiam pellentesque lorem sed sagittis aliquam. Quisque semper orci risus, vel efficitur dui
+              euismod aliquet. Morbi sapien sapien, rhoncus et rutrum nec, rhoncus id nisl. Cras non tincidunt enim, id
+              eleifend neque.
+            </p>
+          </div>
+        </DynamicSideContent>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Properties
+
+<ArgsTable story="." />
+
+## Methods
+
+This component exposes public methods. You can invoke them directly on the instance of the component, e.g. by using React Refs.
+
+| Name               | Parameters | Description                                                                    |
+| ------------------ | ---------- | ------------------------------------------------------------------------------ |
+| **toggleContents** | &mdash;    | Toggles visibility of main and side contents on S screen size (mobile device). |
+
+## Usage
+
+_When to use?_ Use this component if you want to display relevant information that is not critical for users to complete a task. Users should have access to all the key functions and critical information in the app even if they do not see the side content. This is important because on smaller screen sizes it may be difficult to display the side content in a way that is easily accessible for the user. _When not to use?_ Don't use it if you want to display navigation or critical information that prevents users from completing a task when they have no access to the side content.
+
+## Responsive Behavior
+
+Screen width > 1440px
+
+- Main vs. side content ratio is 75 vs. 25 percent (with a minimum of 320px each).
+- If the application defines a trigger, the side content can be hidden.
+
+Screen width <= 1440px and > 1024px
+
+- Main vs. side content ratio is 66.666 vs. 33.333 percent (with a minimum of 320px each). If the side content width falls below 320 px, it automatically slides under the main content, unless the app development team specifies that it should disappear.
+
+Screen width <= 1024px and > 720px
+
+- The side content ratio is fixed to 340px, and the main content takes the rest of the width. Only if the `sideContentFallDown` is set to `OnMinimumWidth` and screen width is <= 960px and > 720px the side content falls below the main content.
+
+Screen width <= 720px (for example on a mobile device)
+
+- In this case, the side content automatically disappears from the screen (unless specified to stay under the content by setting of `sideContentVisibility` property to `AlwaysShow`) and can be triggered from a pre-set trigger (specified within the app). When the side content is triggered, it replaces the main content. We recommend that you always place the trigger for the side content in the same location, such as in the app footer.
+
+A special case allows switching the comparison mode between the main and side content. In this case, the screen is split into 50:50 percent for main vs. side content. The responsive behavior of the equal split is the same as in the standard view - the side content disappears on screen widths of less than 720 px and can only be viewed by triggering it.
+
+<Footer />
