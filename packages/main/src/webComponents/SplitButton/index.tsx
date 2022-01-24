@@ -1,8 +1,9 @@
-import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
 import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
+import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
 import { ReactNode } from 'react';
+import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 
 import '@ui5/webcomponents/dist/SplitButton.js';
 
@@ -42,13 +43,21 @@ interface SplitButtonAttributes {
 
 export interface SplitButtonDomRef extends SplitButtonAttributes, Ui5DomRef {}
 
-export interface SplitButtonPropTypes extends SplitButtonAttributes, CommonProps {
+export interface SplitButtonPropTypes extends SplitButtonAttributes, Omit<CommonProps, 'onClick'> {
   /**
    * Defines the text of the component.
    *
    * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
   children?: ReactNode | ReactNode[];
+  /**
+   * Fired when the user clicks on the arrow action.
+   */
+  onArrowClick?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  /**
+   * Fired when the user clicks on the default action.
+   */
+  onClick?: (event: Ui5CustomEvent<HTMLElement>) => void;
 }
 
 /**
@@ -61,7 +70,7 @@ const SplitButton = withWebComponent<SplitButtonPropTypes, SplitButtonDomRef>(
   ['accessibleName', 'activeIcon', 'design', 'icon'],
   ['disabled'],
   [],
-  []
+  ['arrow-click', 'click']
 );
 
 SplitButton.displayName = 'SplitButton';
