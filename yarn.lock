@@ -4322,10 +4322,10 @@
     "@sap-theming/theming-base-content" "11.1.34"
     "@ui5/webcomponents-base" "1.0.2"
 
-"@ui5/webcomponents-tools@~1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-tools/-/webcomponents-tools-1.0.2.tgz#611ce0dec6dff4ee61e3bf9c89d4b241fb68bdf3"
-  integrity sha512-R8tGgbZJ6IQhSQyv6ktxoCcO2pPEWM+tyY9VXZhDdnvbUL5TCKHd1gfcwwD89c/HTphgseej6TG8gmVtH0yLSQ==
+"@ui5/webcomponents-tools@~1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-tools/-/webcomponents-tools-1.1.0.tgz#86f7f3f1704b2433285d037d0f700daa820940d1"
+  integrity sha512-p87F5NtFD0NAwWwqaKXDCsRACbDBtZHLWvebzUe6gchIWITbLaaBfjd8ijvXwvzGbe6fj++iabEoyH2mUv66Ow==
   dependencies:
     "@babel/core" "^7.13.10"
     "@babel/preset-env" "^7.13.10"
