@@ -24,6 +24,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@open-wc/webpack-import-meta-loader": "^0.4.7",
     "@storybook/addon-a11y": "6.4.14",
     "@storybook/addon-essentials": "6.4.14",
     "@storybook/react": "6.4.14",
