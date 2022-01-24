@@ -3,7 +3,7 @@ import fs from 'fs';
 import PATHS from '../../../config/paths.js';
 
 const LIB_BASE_PATH = path.resolve(PATHS.packages, 'main', 'src', 'dist');
-const INTERNAL_COMPONENTS = ['ScrollContext'];
+const INTERNAL_COMPONENTS = ['ScrollContext', 'GrowingMode'];
 
 const allLibFiles = fs
   .readdirSync(LIB_BASE_PATH)
