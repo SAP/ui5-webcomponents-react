@@ -24,6 +24,10 @@ module.exports = {
       '@ui5/webcomponents-react-base/types': path.join(root, 'packages', 'base', 'types'),
       '@ui5/webcomponents-react-base': path.join(root, 'packages', 'base', 'src')
     };
+    config.module.rules.push({
+      test: /\.js$/,
+      loader: require.resolve('@open-wc/webpack-import-meta-loader')
+    });
     return config;
   },
   features: {
