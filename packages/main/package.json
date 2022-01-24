@@ -44,10 +44,10 @@
   "peerDependencies": {
     "@types/react": "*",
     "@types/react-dom": "*",
-    "@ui5/webcomponents": "~1.1.0",
-    "@ui5/webcomponents-base": "~1.1.0",
-    "@ui5/webcomponents-fiori": "~1.1.0",
-    "@ui5/webcomponents-icons": "~1.1.0",
+    "@ui5/webcomponents": "~1.1.1",
+    "@ui5/webcomponents-base": "~1.1.1",
+    "@ui5/webcomponents-fiori": "~1.1.1",
+    "@ui5/webcomponents-icons": "~1.1.1",
     "react": "^16.8.0 || ^17.0.0",
     "react-dom": "^16.8.0 || ^17.0.0"
   },
