@@ -8,6 +8,14 @@ import { PolarAngleAxis, RadialBar, RadialBarChart } from 'recharts';
 import { useOnClickInternal } from '../../hooks/useOnClickInternal';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 
+// todo remove this when recharts export the `CategoricalChartProps` interface themselves
+interface RadialChartConfig {
+  margin?: { top?: number; right?: number; bottom?: number; left?: number };
+  innerRadius?: number | string;
+  outerRadius?: number | string;
+  [rest: string]: any;
+}
+
 export interface RadialChartProps extends Omit<CommonProps, 'onClick' | 'children' | 'onLegendClick'> {
   /**
    * The actual value which defines how much the ring is filled.
@@ -66,7 +74,7 @@ export interface RadialChartProps extends Omit<CommonProps, 'onClick' | 'childre
    * - innerRadius: `"90%"`
    * - outerRadius: `"100%"`
    */
-  chartConfig?: typeof RadialBarChart;
+  chartConfig?: RadialChartConfig;
 }
 
 const radialBarBackground = { fill: ThemingParameters.sapContent_ImagePlaceholderBackground };
