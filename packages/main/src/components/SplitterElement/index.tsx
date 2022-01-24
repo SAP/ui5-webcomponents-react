@@ -1,7 +1,7 @@
 import { SplitterLayoutContext } from '@ui5/webcomponents-react/dist/SplitterLayoutContext';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import clsx from 'clsx';
-import React, { CSSProperties, forwardRef, ReactElement, RefObject, useContext } from 'react';
+import React, { CSSProperties, forwardRef, ReactNode, RefObject, useContext } from 'react';
 import { createUseStyles } from 'react-jss';
 
 const useStyles = createUseStyles(
@@ -39,7 +39,7 @@ export interface SplitterElementPropTypes extends CommonProps {
   /**
    * Defines the content which is shown inside the `SplitterElement`.
    */
-  children?: ReactElement | ReactElement[];
+  children?: ReactNode | ReactNode[];
 }
 
 const SplitterElement = forwardRef((props: SplitterElementPropTypes, ref: RefObject<HTMLDivElement>) => {

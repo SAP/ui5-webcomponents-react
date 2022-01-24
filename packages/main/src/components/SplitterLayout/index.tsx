@@ -49,9 +49,6 @@ const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTML
   );
 });
 
-SplitterLayout.defaultProps = {
-  vertical: true
-};
 SplitterLayout.displayName = 'SplitterLayout';
 
 export { SplitterLayout };

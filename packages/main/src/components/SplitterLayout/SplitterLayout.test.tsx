@@ -95,5 +95,30 @@ describe('SplitterLayout', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
+  // todo do same with horizontal orientation - you can probably reuse most of the test below and just change the orientation
+  test('Splitter click, move, focus - vertical', () => {
+    const { getByTestId } = render(
+      <SplitterLayout vertical style={{ width: '800px', height: '800px' }} data-testid={'SplitterLayout'}>
+        <SplitterElement data-testid={'SplitterElement1'}>Content 1</SplitterElement>
+        <SplitterElement data-testid={'SplitterElement2'}>Content 2</SplitterElement>
+        <SplitterElement data-testid={'SplitterElement3'}>Content 3</SplitterElement>
+        <SplitterElement data-testid={'SplitterElement4'} size={'200px'}>
+          Content 4
+        </SplitterElement>
+      </SplitterLayout>
+    );
+    const AllSplitter = document.querySelectorAll('[role="separator"]');
+
+    // click focuses the corresponding splitter
+    fireEvent.click(AllSplitter[2]);
+    expect(document.activeElement).toBe(AllSplitter[2]);
+    console.log(getByTestId('SplitterElement4').style.flex);
+
+    // todo mock corresponding size values (probably sufficient to mock getBoundingClientRect of element)
+    fireEvent.keyDown(document.activeElement, { code: 'ArrowRight' });
+
+    console.log(getByTestId('SplitterElement4').style.flex);
+  });
+
   createCustomPropsTest(SplitterLayout);
 });
