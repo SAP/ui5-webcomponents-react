@@ -13,6 +13,9 @@ module.exports = {
   framework: '@storybook/react',
   stories: ['../docs/**/*.stories.mdx', '../packages/**/*.stories.@(tsx|jsx|mdx)'],
   addons: addons,
+  core: {
+    builder: 'webpack5'
+  },
   webpack: async (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,
@@ -24,14 +27,10 @@ module.exports = {
       '@ui5/webcomponents-react-base/types': path.join(root, 'packages', 'base', 'types'),
       '@ui5/webcomponents-react-base': path.join(root, 'packages', 'base', 'src')
     };
-    config.module.rules.push({
-      test: /\.js$/,
-      loader: require.resolve('@open-wc/webpack-import-meta-loader')
-    });
     return config;
   },
   features: {
-    storyStoreV7: true,
+    storyStoreV7: false,
     postcss: false
   },
   typescript: {
