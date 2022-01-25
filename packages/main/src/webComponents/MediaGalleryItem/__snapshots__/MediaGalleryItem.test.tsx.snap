@@ -3,10 +3,8 @@
 exports[`MediaGalleryItem Basic Test (generated) 1`] = `
 <DocumentFragment>
   <ui5-media-gallery-item
-    _interactive=""
-    _square=""
-    _thumbnail-design=""
     layout="Square"
+    ui5-media-gallery-item=""
   />
 </DocumentFragment>
 `;
