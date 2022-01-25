@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.21.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.20.7...v0.21.0) (2022-01-25)
+
+
+### Bug Fixes
+
+* **RadialChart:** correct `chartConfig` types ([#2525](https://github.com/SAP/ui5-webcomponents-react/issues/2525)) ([a5465df](https://github.com/SAP/ui5-webcomponents-react/commit/a5465df518444a2a8ec56f73167e7736bef0fc14))
+
+
+### Features
+
+* update UI5 Web Components to 1.1.1 ([#2517](https://github.com/SAP/ui5-webcomponents-react/issues/2517)) ([310b0d2](https://github.com/SAP/ui5-webcomponents-react/commit/310b0d2053422f1dee8e189cf0dfaefa72fd86c7))
+
+
+
+
+
 ## [0.20.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.20.5...v0.20.6) (2022-01-12)
 
 
