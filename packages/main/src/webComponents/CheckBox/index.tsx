@@ -9,6 +9,14 @@ import '@ui5/webcomponents/dist/CheckBox.js';
 
 interface CheckBoxAttributes {
   /**
+   * Sets the accessible aria name of the component.
+   */
+  accessibleName?: string;
+  /**
+   * Receives id(or many ids) of the elements that label the component
+   */
+  accessibleNameRef?: string;
+  /**
    * Defines if the component is checked.
    *
    * **Note:** The property can be changed with user interaction, either by cliking/tapping on the component, or by pressing the Enter or Space key.
@@ -91,7 +99,7 @@ export interface CheckBoxPropTypes extends CheckBoxAttributes, Omit<CommonProps,
  */
 const CheckBox = withWebComponent<CheckBoxPropTypes, CheckBoxDomRef>(
   'ui5-checkbox',
-  ['name', 'text', 'valueState', 'wrappingType'],
+  ['accessibleName', 'accessibleNameRef', 'name', 'text', 'valueState', 'wrappingType'],
   ['checked', 'disabled', 'indeterminate', 'readonly'],
   [],
   ['change']

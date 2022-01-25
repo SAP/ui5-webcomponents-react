@@ -15,14 +15,56 @@ interface IllustratedMessageAttributes {
    * *   `BeforeSearch`
    * *   `NoActivities`
    * *   `NoData`
-   * *   `NoEntries`
    * *   `NoMail`
+   * *   `NoMail_v1`
+   * *   `NoEntries`
    * *   `NoNotifications`
    * *   `NoSavedItems`
+   * *   `NoSavedItems_v1`
    * *   `NoSearchResults`
    * *   `NoTasks`
+   * *   `NoTasks_v1`
    * *   `UnableToLoad`
+   * *   `UnableToLoadImage`
    * *   `UnableToUpload`
+   * *   `AddColumn`
+   * *   `AddPeople`
+   * *   `BalloonSky`
+   * *   `Connection`
+   * *   `EmptyCalendar`
+   * *   `EmptyList`
+   * *   `EmptyPlanningCalendar`
+   * *   `ErrorScreen`
+   * *   `FilterTable`
+   * *   `GroupTable`
+   * *   `NoFilterResults`
+   * *   `PageNotFound`
+   * *   `ReloadScreen`
+   * *   `ResizeColumn`
+   * *   `SearchEarth`
+   * *   `SearchFolder`
+   * *   `SimpleBalloon`
+   * *   `SimpleBell`
+   * *   `SimpleCalendar`
+   * *   `SimpleCheckMark`
+   * *   `SimpleConnection`
+   * *   `SimpleEmptyDoc`
+   * *   `SimpleEmptyList`
+   * *   `SimpleError`
+   * *   `SimpleMagnifier`
+   * *   `SimpleMail`
+   * *   `SimpleNoSavedItems`
+   * *   `SimpleNotFoundMagnifier`
+   * *   `SimpleReload`
+   * *   `SimpleTask`
+   * *   `SleepingBell`
+   * *   `SortColumn`
+   * *   `SuccessBalloon`
+   * *   `SuccessCheckMark`
+   * *   `SuccessHighFive`
+   * *   `SuccessScreen`
+   * *   `Tent`
+   * *   `UploadCollection`
    * *   `TntCompany`
    * *   `TntExternalLink`
    * *   `TntFaceID`

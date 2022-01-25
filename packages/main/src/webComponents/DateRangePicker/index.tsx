@@ -101,10 +101,6 @@ export interface DateRangePickerDomRef extends DateRangePickerAttributes, Ui5Dom
    */
   readonly startDateValue: Date;
   /**
-   * Currently selected date represented as a Local JavaScript Date instance.
-   */
-  readonly dateValue: Date;
-  /**
    * Closes the picker.
    *
    */

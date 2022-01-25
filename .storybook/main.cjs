@@ -13,6 +13,9 @@ module.exports = {
   framework: '@storybook/react',
   stories: ['../docs/**/*.stories.mdx', '../packages/**/*.stories.@(tsx|jsx|mdx)'],
   addons: addons,
+  core: {
+    builder: 'webpack5'
+  },
   webpack: async (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,
@@ -27,7 +30,7 @@ module.exports = {
     return config;
   },
   features: {
-    storyStoreV7: true,
+    storyStoreV7: false,
     postcss: false
   },
   typescript: {

@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MediaGalleryItem Basic Test (generated) 1`] = `
+<DocumentFragment>
+  <ui5-media-gallery-item
+    layout="Square"
+    ui5-media-gallery-item=""
+  />
+</DocumentFragment>
+`;

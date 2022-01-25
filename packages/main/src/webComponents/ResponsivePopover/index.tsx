@@ -66,9 +66,13 @@ interface ResponsivePopoverAttributes {
    */
   verticalAlign?: PopoverVerticalAlign | keyof typeof PopoverVerticalAlign;
   /**
-   * Sets the accessible aria name of the component.
+   * Defines the accessible name of the component.
    */
   accessibleName?: string;
+  /**
+   * Defines the IDs of the elements that label the component.
+   */
+  accessibleNameRef?: string;
   /**
    * Defines the ID of the HTML Element, which will get the initial focus.
    */
@@ -147,7 +151,15 @@ export interface ResponsivePopoverPropTypes extends ResponsivePopoverAttributes,
  */
 const ResponsivePopover = withWebComponent<ResponsivePopoverPropTypes, ResponsivePopoverDomRef>(
   'ui5-responsive-popover',
-  ['headerText', 'horizontalAlign', 'placementType', 'verticalAlign', 'accessibleName', 'initialFocus'],
+  [
+    'headerText',
+    'horizontalAlign',
+    'placementType',
+    'verticalAlign',
+    'accessibleName',
+    'accessibleNameRef',
+    'initialFocus'
+  ],
   ['allowTargetOverlap', 'hideArrow', 'hideBackdrop', 'modal', 'preventFocusRestore'],
   ['footer', 'header'],
   ['after-close', 'after-open', 'before-close', 'before-open']

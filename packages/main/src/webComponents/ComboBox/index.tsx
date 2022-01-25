@@ -13,7 +13,7 @@ interface ComboBoxAttributes {
    */
   accessibleName?: string;
   /**
-   * Receives id(or many ids) of the elements that label the combo box
+   * Receives id(or many ids) of the elements that label the component
    */
   accessibleNameRef?: string;
   /**

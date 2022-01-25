@@ -26,7 +26,7 @@ interface TableAttributes {
    * `Scroll` - The `load-more` event is triggered when the user scrolls to the bottom of the table;
    * `None` (default) - The growing is off.
    *
-   * **Limitations:** `growing="Scroll"` is not supported for Internet Explorer, and the component will fallback to `growing="Button"`.
+   * **Restrictions:** `growing="Scroll"` is not supported for Internet Explorer, and the component will fallback to `growing="Button"`.
    */
   growing?: TableGrowingMode | keyof typeof TableGrowingMode;
   /**
@@ -63,7 +63,7 @@ interface TableAttributes {
   /**
    * Determines whether the column headers remain fixed at the top of the page during vertical scrolling as long as the Web Component is in the viewport.
    *
-   * **Limitations:**
+   * **Restrictions:**
    *
    * *   Browsers that do not support this feature:
    *     *   Internet Explorer

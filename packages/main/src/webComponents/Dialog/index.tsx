@@ -8,10 +8,6 @@ import '@ui5/webcomponents/dist/Dialog.js';
 
 interface DialogAttributes {
   /**
-   * Sets the accessible aria name of the component.
-   */
-  accessibleName?: string;
-  /**
    * Determines whether the component is draggable. If this property is set to true, the Dialog will be draggable by its header.
    *
    * **Note:** The component can be draggable only in desktop mode.
@@ -36,6 +32,14 @@ interface DialogAttributes {
    * **Note:** The component will be stretched to approximately 90% of the viewport.
    */
   stretch?: boolean;
+  /**
+   * Defines the accessible name of the component.
+   */
+  accessibleName?: string;
+  /**
+   * Defines the IDs of the elements that label the component.
+   */
+  accessibleNameRef?: string;
   /**
    * Defines the ID of the HTML Element, which will get the initial focus.
    */
@@ -117,7 +121,7 @@ export interface DialogPropTypes extends DialogAttributes, Omit<CommonProps, 'dr
  */
 const Dialog = withWebComponent<DialogPropTypes, DialogDomRef>(
   'ui5-dialog',
-  ['accessibleName', 'headerText', 'initialFocus'],
+  ['headerText', 'accessibleName', 'accessibleNameRef', 'initialFocus'],
   ['draggable', 'resizable', 'stretch', 'preventFocusRestore'],
   ['footer', 'header'],
   ['after-close', 'after-open', 'before-close', 'before-open']
