@@ -3,7 +3,7 @@
 exports[`MediaGallery Basic Test (generated) 1`] = `
 <DocumentFragment>
   <ui5-media-gallery
-    layout="Left"
+    layout="Auto"
     menu-horizontal-align="Left"
     menu-vertical-align="Bottom"
     ui5-media-gallery=""
