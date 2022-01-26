@@ -5,12 +5,6 @@
 import '@testing-library/jest-dom/extend-expect';
 import ResizeObserverPolyfill from 'resize-observer-polyfill';
 
-jest.mock('../node_modules/@ui5/webcomponents-base/dist/util/metaUrl.js', () => {
-  return {
-    default: 'mockedMetaUrl',
-  };
-});
-
 const setupMatchMedia = () => {
   Object.defineProperty(window, 'matchMedia', {
     writable: true,
