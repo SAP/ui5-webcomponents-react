@@ -9,19 +9,8 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingPar
 
 describe('SplitterLayout', () => {
   beforeEach(() => {
-    Object.defineProperties(window.HTMLElement.prototype, {
-      clientHeight: {
-        value: 800,
-        configurable: true
-      },
-      clientWidth: {
-        value: 800,
-        configurable: true
-      }
-    });
-
     // @ts-ignore
-    window.HTMLElement.prototype.getBoundingClientRect = jest.fn(() => {
+    window.HTMLElement.prototype.getBoundingClientRect = () => {
       return {
         width: 200,
         height: 800,
@@ -32,7 +21,7 @@ describe('SplitterLayout', () => {
         x: 0,
         y: 0
       };
-    });
+    };
   });
 
   test('Render Vertical SplitterLayout with multiple SplitterElements', () => {
@@ -63,6 +52,7 @@ describe('SplitterLayout', () => {
     expect(screen.getByTestId('SplitterLayout')).toHaveStyle('width: 800px; height: 400px');
     expect(screen.getByTestId('SplitterElement1')).toHaveStyle('flex: 0 0 auto');
     expect(screen.getByTestId('SplitterElement2')).toHaveStyle('flex: 0 0 auto; min-width: 300px');
+    expect(screen.getByTestId('SplitterElement2').dataset.minSize).toBe('300');
     expect(screen.getByTestId('SplitterElement3')).toHaveStyle('flex: 1 0 auto');
     expect(onClick).toHaveBeenCalled();
 
@@ -86,6 +76,7 @@ describe('SplitterLayout', () => {
 
     expect(AllSplitter.length).toBe(0);
     expect(screen.getByTestId('SplitterLayout')).toHaveStyle('width: 700px; height: 400px');
+    expect(screen.getByTestId('SplitterLayout').dataset.splitterVertical).toBe('true');
     expect(screen.getByTestId('SplitterElement')).toHaveStyle('flex: 0 0 auto');
     expect(onClick).toHaveBeenCalled();
 
@@ -94,7 +85,7 @@ describe('SplitterLayout', () => {
 
   test('Render Horizontal SplitterLayout with multiple SplitterElements', () => {
     const { asFragment } = render(
-      <SplitterLayout data-testid={'Layout'} vertical={false} style={{ width: '80vw', height: '600px' }}>
+      <SplitterLayout data-testid={'Layout'} style={{ width: '80vw', height: '600px' }}>
         <SplitterElement>
           <Button>Button 1</Button>
         </SplitterElement>
@@ -111,8 +102,9 @@ describe('SplitterLayout', () => {
 
     expect(AllSplitter.length).toBe(2);
     expect(screen.getByTestId('Layout')).toHaveStyle('width: 80vw; height: 600px');
+    expect(screen.getByTestId('Layout').dataset.splitterVertical).toBe('false');
     expect(screen.getByTestId('Element')).toHaveStyle('flex: 0 0 auto; min-height: 50px');
-
+    expect(screen.getByTestId('Element').dataset.minSize).toBe('50');
     expect(asFragment()).toMatchSnapshot();
   });
 
