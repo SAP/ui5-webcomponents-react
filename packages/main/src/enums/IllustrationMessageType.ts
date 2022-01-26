@@ -5,49 +5,249 @@
  */
 export enum IllustrationMessageType {
   /**
-   * "BeforeSearch" illustration type.
+   * "Add Column" illustration type.
+   */
+  AddColumn = 'AddColumn',
+
+  /**
+   * "Add People" illustration type.
+   */
+  AddPeople = 'AddPeople',
+
+  /**
+   * "Balloon Sky" illustration type.
+   */
+  BalloonSky = 'BalloonSky',
+
+  /**
+   * "Before Search" illustration type.
    */
   BeforeSearch = 'BeforeSearch',
 
   /**
-   * "NoActivities" illustration type.
+   * "Connection" illustration type.
+   */
+  Connection = 'Connection',
+
+  /**
+   * "Empty Calendar" illustration type.
+   */
+  EmptyCalendar = 'EmptyCalendar',
+
+  /**
+   * "Empty List" illustration type.
+   */
+  EmptyList = 'EmptyList',
+
+  /**
+   * "Empty Planning Calendar" illustration type.
+   */
+  EmptyPlanningCalendar = 'EmptyPlanningCalendar',
+
+  /**
+   * "Error Screen" illustration type.
+   */
+  ErrorScreen = 'ErrorScreen',
+
+  /**
+   * "Filter Table" illustration type.
+   */
+  FilterTable = 'FilterTable',
+
+  /**
+   * "Group Table" illustration type.
+   */
+  GroupTable = 'GroupTable',
+
+  /**
+   * "No Activities" illustration type.
    */
   NoActivities = 'NoActivities',
 
   /**
-   * "NoData" illustration type.
+   * "No Data" illustration type.
    */
   NoData = 'NoData',
 
   /**
-   * "NoEntries" illustration type.
+   * "No Entries" illustration type.
    */
   NoEntries = 'NoEntries',
 
   /**
-   * "NoMail" illustration type.
+   * "No Filter Results" illustration type.
+   */
+  NoFilterResults = 'NoFilterResults',
+
+  /**
+   * "No Email" illustration type.
    */
   NoMail = 'NoMail',
 
   /**
-   * "NoNotifications" illustration type.
+   * "No Email v1" illustration type.
+   */
+  NoMail_v1 = 'NoMail_v1',
+
+  /**
+   * "No Notifications" illustration type.
    */
   NoNotifications = 'NoNotifications',
 
   /**
-   * "NoSavedItems" illustration type.
+   * "No Saved Items" illustration type.
    */
   NoSavedItems = 'NoSavedItems',
 
   /**
-   * "NoSearchResults" illustration type.
+   * "No Saved Items v1" illustration type.
+   */
+  NoSavedItems_v1 = 'NoSavedItems_v1',
+
+  /**
+   * "No Search Results" illustration type.
    */
   NoSearchResults = 'NoSearchResults',
 
   /**
-   * "NoTasks" illustration type.
+   * "No Tasks" illustration type.
    */
   NoTasks = 'NoTasks',
+
+  /**
+   * "No Tasks v1" illustration type.
+   */
+  NoTasks_v1 = 'NoTasks_v1',
+
+  /**
+   * "Page Not Found" illustration type.
+   */
+  PageNotFound = 'PageNotFound',
+
+  /**
+   * "Reload Screen" illustration type.
+   */
+  ReloadScreen = 'ReloadScreen',
+
+  /**
+   * "Resize Column" illustration type.
+   */
+  ResizeColumn = 'ResizeColumn',
+
+  /**
+   * "Search Earth" illustration type.
+   */
+  SearchEarth = 'SearchEarth',
+
+  /**
+   * "Search Folder" illustration type.
+   */
+  SearchFolder = 'SearchFolder',
+
+  /**
+   * "Simple Balloon" illustration type.
+   */
+  SimpleBalloon = 'SimpleBalloon',
+
+  /**
+   * "Simple Bell" illustration type.
+   */
+  SimpleBell = 'SimpleBell',
+
+  /**
+   * "Simple Calendar" illustration type.
+   */
+  SimpleCalendar = 'SimpleCalendar',
+
+  /**
+   * "Simple CheckMark" illustration type.
+   */
+  SimpleCheckMark = 'SimpleCheckMark',
+
+  /**
+   * "Simple Connection" illustration type.
+   */
+  SimpleConnection = 'SimpleConnection',
+
+  /**
+   * "Simple Empty Doc" illustration type.
+   */
+  SimpleEmptyDoc = 'SimpleEmptyDoc',
+
+  /**
+   * "Simple Empty List" illustration type.
+   */
+  SimpleEmptyList = 'SimpleEmptyList',
+
+  /**
+   * "Simple Error" illustration type.
+   */
+  SimpleError = 'SimpleError',
+
+  /**
+   * "Simple Magnifier" illustration type.
+   */
+  SimpleMagnifier = 'SimpleMagnifier',
+
+  /**
+   * "Simple Mail" illustration type.
+   */
+  SimpleMail = 'SimpleMail',
+
+  /**
+   * "Simple No Saved Items" illustration type.
+   */
+  SimpleNoSavedItems = 'SimpleNoSavedItems',
+
+  /**
+   * "Simple Not Found Magnifier" illustration type.
+   */
+  SimpleNotFoundMagnifier = 'SimpleNotFoundMagnifier',
+
+  /**
+   * "Simple Reload" illustration type.
+   */
+  SimpleReload = 'SimpleReload',
+
+  /**
+   * "Simple Task" illustration type.
+   */
+  SimpleTask = 'SimpleTask',
+
+  /**
+   * "Sleeping Bell" illustration type.
+   */
+  SleepingBell = 'SleepingBell',
+
+  /**
+   * "Sort Column" illustration type.
+   */
+  SortColumn = 'SortColumn',
+
+  /**
+   * "Success Balloon" illustration type.
+   */
+  SuccessBalloon = 'SuccessBalloon',
+
+  /**
+   * "Success CheckMark" illustration type.
+   */
+  SuccessCheckMark = 'SuccessCheckMark',
+
+  /**
+   * "Success HighFive" illustration type.
+   */
+  SuccessHighFive = 'SuccessHighFive',
+
+  /**
+   * "Success Screen" illustration type.
+   */
+  SuccessScreen = 'SuccessScreen',
+
+  /**
+   * "Tent" illustration type.
+   */
+  Tent = 'Tent',
 
   /**
    * "TntCodePlaceholder" illustration type.
@@ -140,12 +340,22 @@ export enum IllustrationMessageType {
   TntUnsuccessfulAuth = 'TntUnsuccessfulAuth',
 
   /**
-   * "UnableToLoad" illustration type.
+   * "Unable To Load" illustration type.
    */
   UnableToLoad = 'UnableToLoad',
 
   /**
-   * "UnableToUpload" illustration type.
+   * "Unable To Load Image" illustration type.
    */
-  UnableToUpload = 'UnableToUpload'
+  UnableToLoadImage = 'UnableToLoadImage',
+
+  /**
+   * "Unable To Upload" illustration type.
+   */
+  UnableToUpload = 'UnableToUpload',
+
+  /**
+   * "Upload Collection" illustration type.
+   */
+  UploadCollection = 'UploadCollection'
 }

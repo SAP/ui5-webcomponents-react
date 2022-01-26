@@ -660,6 +660,7 @@ exports[`DynamicPage render footer 1`] = `
       style="position: absolute;"
     >
       <ui5-bar
+        data-sap-ui-fastnavgroup="true"
         design="FloatingFooter"
         ui5-bar=""
       >

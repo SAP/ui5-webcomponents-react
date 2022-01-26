@@ -12,6 +12,10 @@ interface IconAttributes {
    */
   accessibleName?: string;
   /**
+   * Defines the accessibility role of the component.
+   */
+  accessibleRole?: string;
+  /**
    * Defines if the icon is interactive (focusable and pressable)
    */
   interactive?: boolean;
@@ -49,7 +53,7 @@ export interface IconPropTypes extends IconAttributes, CommonProps {}
  */
 const Icon = withWebComponent<IconPropTypes, IconDomRef>(
   'ui5-icon',
-  ['accessibleName', 'name'],
+  ['accessibleName', 'accessibleRole', 'name'],
   ['interactive', 'showTooltip'],
   [],
   []

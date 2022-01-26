@@ -8,7 +8,7 @@ import '@ui5/webcomponents/dist/Tab.js';
 
 interface TabAttributes {
   /**
-   * Represents the "additionalText" text, which is displayed in the tab filter.
+   * Represents the "additionalText" text, which is displayed in the tab.
    */
   additionalText?: string;
   /**

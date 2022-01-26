@@ -3,6 +3,7 @@
 exports[`Bar Basic Test (generated) 1`] = `
 <DocumentFragment>
   <ui5-bar
+    data-sap-ui-fastnavgroup="true"
     design="Header"
     ui5-bar=""
   >

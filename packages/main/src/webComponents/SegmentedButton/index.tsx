@@ -6,7 +6,12 @@ import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/SegmentedButton.js';
 
-interface SegmentedButtonAttributes {}
+interface SegmentedButtonAttributes {
+  /**
+   * Sets the accessible aria name of the component.
+   */
+  accessibleName?: string;
+}
 
 export interface SegmentedButtonDomRef extends SegmentedButtonAttributes, Ui5DomRef {
   /**
@@ -39,7 +44,7 @@ export interface SegmentedButtonPropTypes extends SegmentedButtonAttributes, Com
  */
 const SegmentedButton = withWebComponent<SegmentedButtonPropTypes, SegmentedButtonDomRef>(
   'ui5-segmented-button',
-  [],
+  ['accessibleName'],
   [],
   [],
   ['selection-change']

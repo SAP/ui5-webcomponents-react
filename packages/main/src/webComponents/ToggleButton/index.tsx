@@ -16,6 +16,10 @@ interface ToggleButtonAttributes {
    */
   accessibleName?: string;
   /**
+   * Receives id(or many ids) of the elements that label the component.
+   */
+  accessibleNameRef?: string;
+  /**
    * Defines the component design.
    *
    * **The available values are:**
@@ -76,7 +80,7 @@ export interface ToggleButtonPropTypes extends ToggleButtonAttributes, Omit<Comm
  */
 const ToggleButton = withWebComponent<ToggleButtonPropTypes, ToggleButtonDomRef>(
   'ui5-toggle-button',
-  ['accessibleName', 'design', 'icon'],
+  ['accessibleName', 'accessibleNameRef', 'design', 'icon'],
   ['pressed', 'disabled', 'iconEnd', 'submits'],
   [],
   ['click']

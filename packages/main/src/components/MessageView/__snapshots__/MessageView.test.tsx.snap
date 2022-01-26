@@ -7,6 +7,7 @@ exports[`MessageView renders list view 1`] = `
   >
     <div>
       <ui5-bar
+        data-sap-ui-fastnavgroup="true"
         design="Header"
         ui5-bar=""
       >
@@ -58,6 +59,7 @@ exports[`MessageView renders list view 1`] = `
       <ui5-list
         accessible-role="list"
         busy-delay="1000"
+        data-sap-ui-fastnavgroup="true"
         growing="None"
         mode="None"
         separators="All"
@@ -262,6 +264,7 @@ exports[`MessageView renders list view with groups 1`] = `
   >
     <div>
       <ui5-bar
+        data-sap-ui-fastnavgroup="true"
         design="Header"
         ui5-bar=""
       >
@@ -313,6 +316,7 @@ exports[`MessageView renders list view with groups 1`] = `
       <ui5-list
         accessible-role="list"
         busy-delay="1000"
+        data-sap-ui-fastnavgroup="true"
         growing="None"
         mode="None"
         separators="All"

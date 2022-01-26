@@ -45,9 +45,9 @@ class ObjectPageAnchorTab extends Tab {
 
   static get stripTemplate() {
     return (context, tags, suffix) => {
-      return html` <li
+      return html` <div
         id="${ifDefined(context._id)}"
-        class="${ifDefined(context.headerClasses)}"
+        class="${ifDefined(context.stripClasses)}"
         tabindex="${ifDefined(context._tabIndex)}"
         role="tab"
         aria-posinset="${ifDefined(context._posinset)}"
@@ -79,7 +79,7 @@ class ObjectPageAnchorTab extends Tab {
               />`
             : undefined}
         </div>
-      </li>`;
+      </div>`;
     };
   }
 
@@ -120,6 +120,7 @@ TabContainer.registerTabStyles(`
   display: flex;
   align-items: center;
   pointer-events: all;
+  flex-direction: row;
 }
 
 .objectPageSubSectionsIcon {

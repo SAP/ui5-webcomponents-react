@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.21.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.21.0...v0.21.1) (2022-01-25)
+
+
+### Bug Fixes
+
+* **ObjectPage:** fix navigation bar styles ([#2528](https://github.com/SAP/ui5-webcomponents-react/issues/2528)) ([05840e1](https://github.com/SAP/ui5-webcomponents-react/commit/05840e1d4b7cd1ec1bcf936db4e88be18f1be9d2))
+
+
+
+
+
+# [0.21.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.20.7...v0.21.0) (2022-01-25)
+
+
+### Features
+
+* update UI5 Web Components to 1.1.1 ([#2517](https://github.com/SAP/ui5-webcomponents-react/issues/2517)) ([310b0d2](https://github.com/SAP/ui5-webcomponents-react/commit/310b0d2053422f1dee8e189cf0dfaefa72fd86c7))
+
+
+
+
+
 ## [0.20.7](https://github.com/SAP/ui5-webcomponents-react/compare/v0.20.6...v0.20.7) (2022-01-19)
 
 

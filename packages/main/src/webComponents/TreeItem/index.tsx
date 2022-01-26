@@ -30,6 +30,19 @@ interface TreeItemAttributes {
    */
   icon?: string;
   /**
+   * Defines whether the selection of a tree node is displayed as partially selected.
+   *
+   * **Note:** The indeterminate state can be set only programatically and can’t be achieved by user interaction, meaning that the resulting visual state depends on the values of the `indeterminate` and `selected` properties:
+   *
+   * *   If a tree node has both `selected` and `indeterminate` set to `true`, it is displayed as partially selected.
+   * *   If a tree node has `selected` set to `true` and `indeterminate` set to `false`, it is displayed as selected.
+   * *   If a tree node has `selected` set to `false`, it is displayed as not selected regardless of the value of the `indeterminate` property.
+   *
+   *
+   * **Note:** This property takes effect only when the `Tree` is in `MultiSelect` mode.
+   */
+  indeterminate?: boolean;
+  /**
    * Defines whether the tree node is selected by the user. Only has effect if the `Tree` is in one of the following modes: in `SingleSelect`, `SingleSelectBegin`, `SingleSelectEnd` and `MultiSelect`.
    */
   selected?: boolean;
@@ -62,7 +75,7 @@ export interface TreeItemPropTypes extends TreeItemAttributes, CommonProps {
 const TreeItem = withWebComponent<TreeItemPropTypes, TreeItemDomRef>(
   'ui5-tree-item',
   ['additionalText', 'additionalTextState', 'icon', 'text'],
-  ['expanded', 'hasChildren', 'selected'],
+  ['expanded', 'hasChildren', 'indeterminate', 'selected'],
   [],
   []
 );

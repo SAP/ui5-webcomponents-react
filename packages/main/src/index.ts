@@ -16,8 +16,8 @@ import { AvatarShape } from './dist/AvatarShape';
 import { AvatarSize } from './dist/AvatarSize';
 import { Badge } from './dist/Badge';
 import { Bar } from './dist/Bar';
-import { BarcodeScannerDialog } from './dist/BarcodeScannerDialog';
 import { BarDesign } from './dist/BarDesign';
+import { BarcodeScannerDialog } from './dist/BarcodeScannerDialog';
 import { Breadcrumbs } from './dist/Breadcrumbs';
 import { BreadcrumbsDesign } from './dist/BreadcrumbsDesign';
 import { BreadcrumbsItem } from './dist/BreadcrumbsItem';
@@ -53,6 +53,7 @@ import { Dialog } from './dist/Dialog';
 import { DynamicPage } from './dist/DynamicPage';
 import { DynamicPageHeader } from './dist/DynamicPageHeader';
 import { DynamicPageTitle } from './dist/DynamicPageTitle';
+import { DynamicSideContent } from './dist/DynamicSideContent';
 import { FCLLayout } from './dist/FCLLayout';
 import { FileUploader } from './dist/FileUploader';
 import { FilterBar } from './dist/FilterBar';
@@ -88,6 +89,12 @@ import { ListMode } from './dist/ListMode';
 import { ListSeparators } from './dist/ListSeparators';
 import { Loader } from './dist/Loader';
 import { LoaderType } from './dist/LoaderType';
+import { MediaGallery } from './dist/MediaGallery';
+import { MediaGalleryItem } from './dist/MediaGalleryItem';
+import { MediaGalleryItemLayout } from './dist/MediaGalleryItemLayout';
+import { MediaGalleryLayout } from './dist/MediaGalleryLayout';
+import { MediaGalleryMenuHorizontalAlign } from './dist/MediaGalleryMenuHorizontalAlign';
+import { MediaGalleryMenuVerticalAlign } from './dist/MediaGalleryMenuVerticalAlign';
 import { MessageBox } from './dist/MessageBox';
 import { MessageBoxActions } from './dist/MessageBoxActions';
 import { MessageBoxTypes } from './dist/MessageBoxTypes';
@@ -132,14 +139,16 @@ import { SelectDialog } from './dist/SelectDialog';
 import { SemanticColor } from './dist/SemanticColor';
 import { ShellBar } from './dist/ShellBar';
 import { ShellBarItem } from './dist/ShellBarItem';
+import { SideContentFallDown } from './dist/SideContentFallDown';
+import { SideContentPosition } from './dist/SideContentPosition';
+import { SideContentVisibility } from './dist/SideContentVisibility';
 import { SideNavigation } from './dist/SideNavigation';
 import { SideNavigationItem } from './dist/SideNavigationItem';
 import { SideNavigationSubItem } from './dist/SideNavigationSubItem';
 import { Size } from './dist/Size';
 import { Slider } from './dist/Slider';
-import { SplitterElement } from './dist/SplitterElement';
-import { SplitterLayout } from './dist/SplitterLayout';
 import { SortItem } from './dist/SortItem';
+import { SplitButton } from './dist/SplitButton';
 import { StandardListItem } from './dist/StandardListItem';
 import { StepInput } from './dist/StepInput';
 import { SuggestionGroupItem } from './dist/SuggestionGroupItem';
@@ -149,6 +158,7 @@ import { SwitchDesign } from './dist/SwitchDesign';
 import { Tab } from './dist/Tab';
 import { TabContainer } from './dist/TabContainer';
 import { TabLayout } from './dist/TabLayout';
+import { TabSeparator } from './dist/TabSeparator';
 import { Table } from './dist/Table';
 import { TableCell } from './dist/TableCell';
 import { TableColumn } from './dist/TableColumn';
@@ -162,16 +172,16 @@ import { TableScaleWidthMode } from './dist/TableScaleWidthMode';
 import { TableSelectionBehavior } from './dist/TableSelectionBehavior';
 import { TableSelectionMode } from './dist/TableSelectionMode';
 import { TableVisibleRowCountMode } from './dist/TableVisibleRowCountMode';
-import { TabSeparator } from './dist/TabSeparator';
+import { TabsOverflowMode } from './dist/TabsOverflowMode';
 import { Text } from './dist/Text';
 import { TextAlign } from './dist/TextAlign';
 import { TextArea } from './dist/TextArea';
 import { ThemeProvider } from './dist/ThemeProvider';
 import { Themes } from './dist/Themes';
+import { TimePicker } from './dist/TimePicker';
 import { Timeline } from './dist/Timeline';
 import { TimelineItem } from './dist/TimelineItem';
 import { TimelineLayout } from './dist/TimelineLayout';
-import { TimePicker } from './dist/TimePicker';
 import { Title } from './dist/Title';
 import { TitleLevel } from './dist/TitleLevel';
 import { Toast } from './dist/Toast';
@@ -193,11 +203,11 @@ import { VariantItem } from './dist/VariantItem';
 import { VariantManagement } from './dist/VariantManagement';
 import { VariantManagementContext } from './dist/VariantManagementContext';
 import { VerticalAlign } from './dist/VerticalAlign';
-import { withWebComponent } from './dist/withWebComponent';
 import { ViewSettingsDialog } from './dist/ViewSettingsDialog';
 import { Wizard } from './dist/Wizard';
 import { WizardStep } from './dist/WizardStep';
 import { WrappingType } from './dist/WrappingType';
+import { withWebComponent } from './dist/withWebComponent';
 
 export {
   ActionSheet,
@@ -251,6 +261,7 @@ export {
   DynamicPage,
   DynamicPageHeader,
   DynamicPageTitle,
+  DynamicSideContent,
   FCLLayout,
   FileUploader,
   FilterBar,
@@ -286,6 +297,12 @@ export {
   ListSeparators,
   Loader,
   LoaderType,
+  MediaGallery,
+  MediaGalleryItem,
+  MediaGalleryItemLayout,
+  MediaGalleryLayout,
+  MediaGalleryMenuHorizontalAlign,
+  MediaGalleryMenuVerticalAlign,
   MessageBox,
   MessageBoxActions,
   MessageBoxTypes,
@@ -330,14 +347,16 @@ export {
   SemanticColor,
   ShellBar,
   ShellBarItem,
+  SideContentFallDown,
+  SideContentPosition,
+  SideContentVisibility,
   SideNavigation,
   SideNavigationItem,
   SideNavigationSubItem,
   Size,
   Slider,
-  SplitterElement,
-  SplitterLayout,
   SortItem,
+  SplitButton,
   StandardListItem,
   StepInput,
   SuggestionGroupItem,
@@ -361,6 +380,7 @@ export {
   TableSelectionBehavior,
   TableSelectionMode,
   TableVisibleRowCountMode,
+  TabsOverflowMode,
   Text,
   TextAlign,
   TextArea,
