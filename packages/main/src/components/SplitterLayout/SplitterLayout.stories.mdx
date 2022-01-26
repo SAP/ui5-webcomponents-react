@@ -61,7 +61,7 @@ import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
     {() => {
       return (
         <>
-          <SplitterLayout style={{ width: '100%', height: '800px' }} vertical={false}>
+          <SplitterLayout style={{ width: '100%', height: '800px' }} vertical={true}>
             <SplitterElement size="40%">
               <FlexBox direction="Column" style={{ width: '100%', height: '100%' }}>
                 <Button style={{ width: '100%' }}>Content 1</Button>
@@ -85,7 +85,7 @@ import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
                         <SplitterElement size="50%">
                           <FlexBox direction="Column" style={{ width: '100%', height: '100%' }}>
                             <Button style={{ width: '100%' }}>Content 7</Button>
-                            <SplitterLayout vertical={false} style={{ height: '100%' }}>
+                            <SplitterLayout vertical={true} style={{ height: '100%' }}>
                               <SplitterElement style={{ background: 'lightgrey' }} size="50%">
                                 <Button>Content 8</Button>
                               </SplitterElement>
