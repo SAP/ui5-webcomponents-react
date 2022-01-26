@@ -12,7 +12,7 @@ import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
   argTypes={{
     children: { control: { disable: true } }
   }}
-  args={{ style: { width: '100%', height: '800px' } }}
+  args={{ style: { width: '80%', height: '800px' } }}
 />
 
 <DocsHeader />
@@ -25,7 +25,7 @@ import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
   <Story name="Default">
     {(args) => {
       return (
-        <SplitterLayout {...args}>
+        <SplitterLayout vertical={true} {...args}>
           <SplitterElement>
             <Button style={{ width: '100%' }}>Content 1</Button>
           </SplitterElement>
@@ -41,7 +41,7 @@ import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
           <SplitterElement>
             <Button style={{ width: '100%' }}>Content 5</Button>
           </SplitterElement>
-          <SplitterElement size={'200px'}>
+          <SplitterElement>
             <Button style={{ width: '100%' }}>Content 6 (size: 200px)</Button>
           </SplitterElement>
         </SplitterLayout>

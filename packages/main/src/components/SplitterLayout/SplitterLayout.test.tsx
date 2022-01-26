@@ -131,17 +131,13 @@ describe('SplitterLayout', () => {
     fireEvent.click(AllSplitter[2]);
     expect(document.activeElement).toBe(AllSplitter[2]);
 
-    act(() => {
-      fireEvent.keyDown(document.activeElement, { code: 'ArrowLeft' });
-    });
+    fireEvent.keyDown(document.activeElement, { code: 'ArrowLeft' });
 
     expect(getByTestId('SplitterElement3').style.flexBasis).toBe('180px');
     expect(getByTestId('SplitterElement4').style.flexBasis).toBe('220px');
 
-    act(() => {
-      fireEvent.keyDown(document.activeElement, { code: 'ArrowRight' });
-      fireEvent.keyDown(document.activeElement, { code: 'ArrowRight' });
-    });
+    fireEvent.keyDown(document.activeElement, { code: 'ArrowRight' });
+    fireEvent.keyDown(document.activeElement, { code: 'ArrowRight' });
 
     expect(getByTestId('SplitterElement3').style.flexBasis).toBe('220px');
     expect(getByTestId('SplitterElement4').style.flexBasis).toBe('180px');
@@ -166,17 +162,13 @@ describe('SplitterLayout', () => {
     fireEvent.click(AllSplitter[2]);
     expect(document.activeElement).toBe(AllSplitter[2]);
 
-    act(() => {
-      fireEvent.keyDown(document.activeElement, { code: 'ArrowUp' });
-    });
+    fireEvent.keyDown(document.activeElement, { code: 'ArrowUp' });
 
     expect(getByTestId('SplitterElement3').style.flexBasis).toBe('780px');
     expect(getByTestId('SplitterElement4').style.flexBasis).toBe('820px');
 
-    act(() => {
-      fireEvent.keyDown(document.activeElement, { code: 'ArrowDown' });
-      fireEvent.keyDown(document.activeElement, { code: 'ArrowDown' });
-    });
+    fireEvent.keyDown(document.activeElement, { code: 'ArrowDown' });
+    fireEvent.keyDown(document.activeElement, { code: 'ArrowDown' });
 
     expect(getByTestId('SplitterElement3').style.flexBasis).toBe('820px');
     expect(getByTestId('SplitterElement4').style.flexBasis).toBe('780px');

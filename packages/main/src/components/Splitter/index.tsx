@@ -237,7 +237,7 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
     previousElementEnd.current = (localRef.current[isSiblings[0]] as HTMLElement).getBoundingClientRect()?.[
       positionKeys.end
     ];
-    if (localRef.current.nextSibling.nextSibling) {
+    if (localRef.current[isSiblings[1]][isSiblings[1]]) {
       nextElementStart.current = (
         localRef.current[isSiblings[1]][isSiblings[1]] as HTMLElement
       ).getBoundingClientRect()?.[positionKeys.start];
