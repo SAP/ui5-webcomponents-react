@@ -39,12 +39,6 @@ import ResizeObserverPolyfill from 'resize-observer-polyfill';
 import 'intersection-observer';
 import 'whatwg-fetch';
 
-jest.mock('../node_modules/@ui5/webcomponents-base/dist/util/metaUrl.js', () => {
-  return {
-    default: 'mockedMetaUrl'
-  };
-});
-
 const setupMatchMedia = () => {
   Object.defineProperty(window, 'matchMedia', {
     writable: true,
