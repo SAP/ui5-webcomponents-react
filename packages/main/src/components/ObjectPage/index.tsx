@@ -37,13 +37,9 @@ import { ObjectPageSubSectionPropTypes } from '../ObjectPageSubSection';
 import { CollapsedAvatar } from './CollapsedAvatar';
 import { ObjectPageCssVariables, styles } from './ObjectPage.jss';
 import { ObjectPageAnchorButton } from './ObjectPageAnchorButton';
-import {
-  extractSectionIdFromHtmlId,
-  getLastObjectPageSection,
-  getSectionById,
-  safeGetChildrenArray
-} from './ObjectPageUtils';
+import { extractSectionIdFromHtmlId, getLastObjectPageSection, getSectionById } from './ObjectPageUtils';
 import clsx from 'clsx';
+import { safeGetChildrenArray } from '../../internal/safeGetChildrenArray';
 
 addCustomCSS(
   'ui5-tabcontainer',
