@@ -6,8 +6,25 @@ import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { createCustomPropsTest } from '@shared/tests/utils';
 import React from 'react';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
+import { act } from '@testing-library/react';
 
 describe('SplitterLayout', () => {
+  beforeEach(() => {
+    // @ts-ignore
+    Element.prototype.getBoundingClientRect = jest.fn(() => {
+      return {
+        width: 200,
+        height: 800,
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0,
+        x: 0,
+        y: 0
+      };
+    });
+  });
+
   test('Render Vertical SplitterLayout with multiple SplitterElements', () => {
     const onClick = jest.fn();
     const { asFragment } = render(
@@ -95,13 +112,14 @@ describe('SplitterLayout', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  // todo do same with horizontal orientation - you can probably reuse most of the test below and just change the orientation
   test('Splitter click, move, focus - vertical', () => {
     const { getByTestId } = render(
       <SplitterLayout vertical style={{ width: '800px', height: '800px' }} data-testid={'SplitterLayout'}>
         <SplitterElement data-testid={'SplitterElement1'}>Content 1</SplitterElement>
         <SplitterElement data-testid={'SplitterElement2'}>Content 2</SplitterElement>
-        <SplitterElement data-testid={'SplitterElement3'}>Content 3</SplitterElement>
+        <SplitterElement data-testid={'SplitterElement3'} size={'200px'}>
+          Content 3
+        </SplitterElement>
         <SplitterElement data-testid={'SplitterElement4'} size={'200px'}>
           Content 4
         </SplitterElement>
@@ -112,12 +130,56 @@ describe('SplitterLayout', () => {
     // click focuses the corresponding splitter
     fireEvent.click(AllSplitter[2]);
     expect(document.activeElement).toBe(AllSplitter[2]);
-    console.log(getByTestId('SplitterElement4').style.flex);
 
-    // todo mock corresponding size values (probably sufficient to mock getBoundingClientRect of element)
-    fireEvent.keyDown(document.activeElement, { code: 'ArrowRight' });
+    act(() => {
+      fireEvent.keyDown(document.activeElement, { code: 'ArrowLeft' });
+    });
 
-    console.log(getByTestId('SplitterElement4').style.flex);
+    expect(getByTestId('SplitterElement3').style.flexBasis).toBe('180px');
+    expect(getByTestId('SplitterElement4').style.flexBasis).toBe('220px');
+
+    act(() => {
+      fireEvent.keyDown(document.activeElement, { code: 'ArrowRight' });
+      fireEvent.keyDown(document.activeElement, { code: 'ArrowRight' });
+    });
+
+    expect(getByTestId('SplitterElement3').style.flexBasis).toBe('220px');
+    expect(getByTestId('SplitterElement4').style.flexBasis).toBe('180px');
+  });
+
+  test('Splitter click, move, focus - horizontal', () => {
+    const { getByTestId } = render(
+      <SplitterLayout style={{ width: '800px', height: '1600px' }} data-testid={'SplitterLayout'}>
+        <SplitterElement data-testid={'SplitterElement1'}>Content 1</SplitterElement>
+        <SplitterElement data-testid={'SplitterElement2'}>Content 2</SplitterElement>
+        <SplitterElement data-testid={'SplitterElement3'} size={'800px'}>
+          Content 3
+        </SplitterElement>
+        <SplitterElement data-testid={'SplitterElement4'} size={'800px'}>
+          Content 4
+        </SplitterElement>
+      </SplitterLayout>
+    );
+    const AllSplitter = document.querySelectorAll('[role="separator"]');
+
+    // click focuses the corresponding splitter
+    fireEvent.click(AllSplitter[2]);
+    expect(document.activeElement).toBe(AllSplitter[2]);
+
+    act(() => {
+      fireEvent.keyDown(document.activeElement, { code: 'ArrowUp' });
+    });
+
+    expect(getByTestId('SplitterElement3').style.flexBasis).toBe('780px');
+    expect(getByTestId('SplitterElement4').style.flexBasis).toBe('820px');
+
+    act(() => {
+      fireEvent.keyDown(document.activeElement, { code: 'ArrowDown' });
+      fireEvent.keyDown(document.activeElement, { code: 'ArrowDown' });
+    });
+
+    expect(getByTestId('SplitterElement3').style.flexBasis).toBe('820px');
+    expect(getByTestId('SplitterElement4').style.flexBasis).toBe('780px');
   });
 
   createCustomPropsTest(SplitterLayout);
