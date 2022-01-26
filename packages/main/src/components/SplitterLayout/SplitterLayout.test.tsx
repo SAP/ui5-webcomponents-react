@@ -6,7 +6,6 @@ import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { createCustomPropsTest } from '@shared/tests/utils';
 import React from 'react';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
-import { act } from '@testing-library/react';
 
 describe('SplitterLayout', () => {
   beforeEach(() => {

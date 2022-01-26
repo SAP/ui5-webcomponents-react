@@ -175,7 +175,7 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
       }
     }
 
-    if (!nextSibling[isSiblings[1]]) {
+    if (!nextSibling[isSiblings[1]] && !isRtl) {
       (nextSibling as HTMLElement).style.flex = '1 0 0px';
     }
   };
