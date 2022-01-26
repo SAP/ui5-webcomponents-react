@@ -65,7 +65,8 @@ const useStyles = createUseStyles(
         },
 
         '& $lineBefore': {
-          backgroundImage: `linear-gradient(to left, ${ThemingParameters.sapHighlightColor}, transparent)`
+          backgroundImage: (isRtl) =>
+            `linear-gradient(${isRtl ? 'to right' : 'to left'}, ${ThemingParameters.sapHighlightColor}, transparent)`
         },
 
         '& $icon': {
@@ -74,7 +75,8 @@ const useStyles = createUseStyles(
         },
 
         '& $lineAfter': {
-          backgroundImage: `linear-gradient(to right, ${ThemingParameters.sapHighlightColor}, transparent)`
+          backgroundImage: (isRtl) =>
+            `linear-gradient(${isRtl ? 'to left' : ' to right'}, ${ThemingParameters.sapHighlightColor}, transparent)`
         }
       },
       '&:hover': {
@@ -127,11 +129,11 @@ const horizontalPositionInfo = {
 
 const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>) => {
   const { vertical } = props;
-  const classes = useStyles();
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const [componentRef, localRef] = useSyncRef<HTMLDivElement>(ref);
   const isRtl = useIsRTL(localRef);
   const start = useRef(null);
+  const classes = useStyles(isRtl as unknown);
 
   const previousSiblingSize = useRef<number>(null);
   const nextSiblingSize = useRef<number>(null);
