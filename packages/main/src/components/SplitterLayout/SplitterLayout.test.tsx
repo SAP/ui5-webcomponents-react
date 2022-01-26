@@ -9,6 +9,17 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingPar
 
 describe('SplitterLayout', () => {
   beforeEach(() => {
+    Object.defineProperties(window.HTMLElement.prototype, {
+      clientHeight: {
+        value: 800,
+        configurable: true
+      },
+      clientWidth: {
+        value: 800,
+        configurable: true
+      }
+    });
+
     // @ts-ignore
     window.HTMLElement.prototype.getBoundingClientRect = jest.fn(() => {
       return {
@@ -144,7 +155,7 @@ describe('SplitterLayout', () => {
 
   test('Splitter click, move, focus - horizontal', () => {
     const { getByTestId } = render(
-      <SplitterLayout style={{ width: '800px', height: '1600px' }} data-testid={'SplitterLayout'}>
+      <SplitterLayout style={{ width: '800px', height: '800px' }} data-testid={'SplitterLayout'}>
         <SplitterElement data-testid={'SplitterElement1'}>Content 1</SplitterElement>
         <SplitterElement data-testid={'SplitterElement2'}>Content 2</SplitterElement>
         <SplitterElement data-testid={'SplitterElement3'} size={'800px'}>
