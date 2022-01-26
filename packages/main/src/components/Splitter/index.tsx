@@ -112,8 +112,6 @@ const verticalPositionInfo = {
   positionRect: 'x',
   size: 'width',
   min: 'minWidth',
-  arrowForward: 'Right',
-  arrowBackward: 'Left',
   offset: 'offsetX'
 };
 
@@ -124,8 +122,6 @@ const horizontalPositionInfo = {
   positionRect: 'y',
   size: 'height',
   min: 'minHeight',
-  arrowForward: 'Down',
-  arrowBackward: 'Up',
   offset: 'offsetY'
 };
 
@@ -260,12 +256,12 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
   };
 
   const onHandleKeyDown = (e) => {
-    if (e.code === `Arrow${positionKeys.arrowForward}` || e.code === `Arrow${positionKeys.arrowBackward}`) {
+    if (e.code === 'ArrowRight' || e.code === 'ArrowLeft' || e.code === 'ArrowUp' || e.code === 'ArrowDown') {
       e.preventDefault();
       let firstSibling = localRef.current[isSiblings[0]] as HTMLElement;
       let secondSibling = localRef.current[isSiblings[1]] as HTMLElement;
 
-      if (e.code === `Arrow${positionKeys.arrowBackward}`) {
+      if (e.code === 'ArrowLeft' || e.code === 'ArrowUp') {
         secondSibling = localRef.current[isSiblings[0]] as HTMLElement;
         firstSibling = localRef.current[isSiblings[1]] as HTMLElement;
       }
