@@ -20,6 +20,7 @@ exports[`SplitterLayout Render Horizontal SplitterLayout with multiple SplitterE
       </ui5-button>
     </div>
     <div
+      aria-label="Press ARROW keys to move"
       aria-orientation="horizontal"
       class="Splitter-splitter"
       data-splitter-vertical="false"
@@ -53,6 +54,7 @@ exports[`SplitterLayout Render Horizontal SplitterLayout with multiple SplitterE
       </ui5-button>
     </div>
     <div
+      aria-label="Press ARROW keys to move"
       aria-orientation="horizontal"
       class="Splitter-splitter"
       data-splitter-vertical="false"
@@ -92,8 +94,8 @@ exports[`SplitterLayout Render SplitterLayout without props and children 1`] = `
 <DocumentFragment>
   <div
     class="SplitterLayout-splitterLayout"
-    data-splitter-vertical="true"
-    style="flex-direction: row;"
+    data-splitter-vertical="false"
+    style="flex-direction: column;"
   />
 </DocumentFragment>
 `;
@@ -121,6 +123,7 @@ exports[`SplitterLayout Render Vertical SplitterLayout with multiple SplitterEle
       </ui5-button>
     </div>
     <div
+      aria-label="Press ARROW keys to move"
       aria-orientation="vertical"
       class="Splitter-splitter"
       data-splitter-vertical="true"
