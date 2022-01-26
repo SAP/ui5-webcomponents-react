@@ -8,22 +8,6 @@ import React from 'react';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 
 describe('SplitterLayout', () => {
-  beforeEach(() => {
-    // @ts-ignore
-    Element.prototype.getBoundingClientRect = jest.fn(() => {
-      return {
-        width: 200,
-        height: 800,
-        top: 0,
-        left: 0,
-        bottom: 0,
-        right: 0,
-        x: 0,
-        y: 0
-      };
-    });
-  });
-
   test('Render Vertical SplitterLayout with multiple SplitterElements', () => {
     const onClick = jest.fn();
     const { asFragment } = render(
@@ -112,6 +96,20 @@ describe('SplitterLayout', () => {
   });
 
   test('Splitter click, move, focus - vertical', () => {
+    // @ts-ignore
+    Element.prototype.getBoundingClientRect = jest.fn(() => {
+      return {
+        width: 200,
+        height: 800,
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0,
+        x: 0,
+        y: 0
+      };
+    });
+
     const { getByTestId } = render(
       <SplitterLayout vertical style={{ width: '800px', height: '800px' }} data-testid={'SplitterLayout'}>
         <SplitterElement data-testid={'SplitterElement1'}>Content 1</SplitterElement>
@@ -143,6 +141,20 @@ describe('SplitterLayout', () => {
   });
 
   test('Splitter click, move, focus - horizontal', () => {
+    // @ts-ignore
+    Element.prototype.getBoundingClientRect = jest.fn(() => {
+      return {
+        width: 200,
+        height: 800,
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0,
+        x: 0,
+        y: 0
+      };
+    });
+
     const { getByTestId } = render(
       <SplitterLayout style={{ width: '800px', height: '1600px' }} data-testid={'SplitterLayout'}>
         <SplitterElement data-testid={'SplitterElement1'}>Content 1</SplitterElement>
