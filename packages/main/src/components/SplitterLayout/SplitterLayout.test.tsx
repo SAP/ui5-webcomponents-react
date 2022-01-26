@@ -10,7 +10,7 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingPar
 describe('SplitterLayout', () => {
   beforeEach(() => {
     // @ts-ignore
-    Element.prototype.getBoundingClientRect = jest.fn(() => {
+    window.HTMLElement.prototype.getBoundingClientRect = jest.fn(() => {
       return {
         width: 200,
         height: 800,
