@@ -18,8 +18,10 @@ const RtlWrapper = ({ children }) => (
     <div dir="rtl">{children}</div>
   </WithJSSProvider>
 );
-export const renderRtl = (ui: ReactElement, options?: Omit<RenderOptions, 'queries'>): RenderResult =>
-  customRender(ui, { wrapper: RtlWrapper, ...options });
+export const renderRtl = (ui: ReactElement, options?: Omit<RenderOptions, 'queries'>): RenderResult => {
+  Object.defineProperty(global.document.body, 'dir', { value: 'rtl' });
+  return customRender(ui, { wrapper: RtlWrapper, ...options });
+};
 
 // re-export everything
 export * from '@testing-library/react';
