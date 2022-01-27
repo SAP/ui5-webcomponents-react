@@ -258,12 +258,18 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
   };
 
   const onHandleKeyDown = (e) => {
-    if (e.code === 'ArrowRight' || e.code === 'ArrowLeft' || e.code === 'ArrowUp' || e.code === 'ArrowDown') {
+    const keyEventProperties = e.code ?? e.key;
+    if (
+      keyEventProperties === 'ArrowRight' ||
+      keyEventProperties === 'ArrowLeft' ||
+      keyEventProperties === 'ArrowUp' ||
+      keyEventProperties === 'ArrowDown'
+    ) {
       e.preventDefault();
       let firstSibling = localRef.current[isSiblings[0]] as HTMLElement;
       let secondSibling = localRef.current[isSiblings[1]] as HTMLElement;
 
-      if (e.code === 'ArrowLeft' || e.code === 'ArrowUp') {
+      if (keyEventProperties === 'ArrowLeft' || keyEventProperties === 'ArrowUp') {
         secondSibling = localRef.current[isSiblings[0]] as HTMLElement;
         firstSibling = localRef.current[isSiblings[1]] as HTMLElement;
       }
