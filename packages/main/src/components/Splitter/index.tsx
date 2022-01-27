@@ -23,8 +23,7 @@ const useStyles = createUseStyles(
         border: `${ThemingParameters.sapContent_FocusWidth} ${ThemingParameters.sapContent_FocusStyle} ${ThemingParameters.sapContent_FocusColor}`,
         outline: 'none'
       },
-
-      '&[data-splitter-vertical=true]': {
+      '&[data-splitter-vertical=vertical]': {
         cursor: 'col-resize',
         minWidth: '1rem',
         width: '1rem',
@@ -36,22 +35,18 @@ const useStyles = createUseStyles(
           width: '1rem',
           height: '4rem'
         },
-
         '& $lineBefore': {
           backgroundImage: `linear-gradient(to top, ${ThemingParameters.sapHighlightColor}, transparent)`
         },
-
         '& $icon': {
           padding: '0.5rem 0',
           zIndex: 1
         },
-
         '& $lineAfter': {
           backgroundImage: `linear-gradient(to bottom, ${ThemingParameters.sapHighlightColor}, transparent)`
         }
       },
-
-      '&[data-splitter-vertical=false]': {
+      '&[data-splitter-vertical=horizontal]': {
         cursor: 'row-resize',
         minHeight: '1rem',
         height: '1rem',
@@ -63,20 +58,38 @@ const useStyles = createUseStyles(
           width: '5rem',
           height: '1rem'
         },
-
         '& $lineBefore': {
-          backgroundImage: (isRtl) =>
-            `linear-gradient(${isRtl ? 'to right' : 'to left'}, ${ThemingParameters.sapHighlightColor}, transparent)`
+          backgroundImage: `linear-gradient(to left, ${ThemingParameters.sapHighlightColor}, transparent)`
         },
-
         '& $icon': {
           padding: '0 0.5rem',
           zIndex: 1
         },
-
         '& $lineAfter': {
-          backgroundImage: (isRtl) =>
-            `linear-gradient(${isRtl ? 'to left' : ' to right'}, ${ThemingParameters.sapHighlightColor}, transparent)`
+          backgroundImage: `linear-gradient(to right, ${ThemingParameters.sapHighlightColor}, transparent)`
+        }
+      },
+      '&[data-splitter-vertical=horizontalRtl]': {
+        cursor: 'row-resize',
+        minHeight: '1rem',
+        height: '1rem',
+        width: '100%',
+        flexDirection: 'row',
+
+        '& $lineBefore, & $lineAfter': {
+          backgroundSize: '100% 0.0625rem ',
+          width: '5rem',
+          height: '1rem'
+        },
+        '& $lineBefore': {
+          backgroundImage: `linear-gradient(to right, ${ThemingParameters.sapHighlightColor}, transparent)`
+        },
+        '& $icon': {
+          padding: '0 0.5rem',
+          zIndex: 1
+        },
+        '& $lineAfter': {
+          backgroundImage: `linear-gradient(to left, ${ThemingParameters.sapHighlightColor}, transparent)`
         }
       },
       '&:hover': {
@@ -133,7 +146,7 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
   const [componentRef, localRef] = useSyncRef<HTMLDivElement>(ref);
   const isRtl = useIsRTL(localRef);
   const start = useRef(null);
-  const classes = useStyles(isRtl as unknown);
+  const classes = useStyles();
 
   const previousSiblingSize = useRef<number>(null);
   const nextSiblingSize = useRef<number>(null);
@@ -336,7 +349,7 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
       onMouseDown={handleMoveSplitterStart}
       ref={componentRef}
       role="separator"
-      data-splitter-vertical={vertical}
+      data-splitter-vertical={isRtl && !vertical ? 'horizontalRtl' : vertical ? 'vertical' : 'horizontal'}
       title={i18nBundle.getText(PRESS_ARROW_KEYS_TO_MOVE)}
       aria-orientation={vertical ? 'vertical' : 'horizontal'}
       aria-label={i18nBundle.getText(PRESS_ARROW_KEYS_TO_MOVE)}

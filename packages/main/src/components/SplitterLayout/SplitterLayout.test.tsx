@@ -178,5 +178,38 @@ describe('SplitterLayout', () => {
     expect(getByTestId('SplitterElement4').style.flex).toBe('0 0 780px');
   });
 
+  test('Splitter click, move, focus - vertical - RTL', () => {
+    Object.defineProperty(global.document.body, 'dir', { value: 'rtl' });
+
+    const { getByTestId } = render(
+      <SplitterLayout vertical style={{ width: '800px', height: '800px' }} data-testid={'SplitterLayout'}>
+        <SplitterElement data-testid={'SplitterElement1'}>Content 1</SplitterElement>
+        <SplitterElement data-testid={'SplitterElement2'}>Content 2</SplitterElement>
+        <SplitterElement data-testid={'SplitterElement3'} size={'200px'}>
+          Content 3
+        </SplitterElement>
+        <SplitterElement data-testid={'SplitterElement4'} size={'200px'}>
+          Content 4
+        </SplitterElement>
+      </SplitterLayout>
+    );
+    const AllSplitter = document.querySelectorAll('[role="separator"]');
+
+    // click focuses the corresponding splitter
+    fireEvent.click(AllSplitter[2]);
+    expect(document.activeElement).toBe(AllSplitter[2]);
+
+    fireEvent.keyDown(document.activeElement, keyDownOptions('Left'));
+
+    expect(getByTestId('SplitterElement3').style.flexBasis).toBe('220px');
+    expect(getByTestId('SplitterElement4').style.flexBasis).toBe('180px');
+
+    fireEvent.keyDown(document.activeElement, keyDownOptions('Right'));
+    fireEvent.keyDown(document.activeElement, keyDownOptions('Right'));
+
+    expect(getByTestId('SplitterElement3').style.flexBasis).toBe('180px');
+    expect(getByTestId('SplitterElement4').style.flexBasis).toBe('220px');
+  });
+
   createCustomPropsTest(SplitterLayout);
 });
