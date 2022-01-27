@@ -140,11 +140,11 @@ describe('SplitterLayout', () => {
     expect(getByTestId('SplitterElement3').style.flexBasis).toBe('180px');
     expect(getByTestId('SplitterElement4').style.flexBasis).toBe('220px');
 
-    // fireEvent.keyDown(document.activeElement, keyDownOptions('Right'));
-    // fireEvent.keyDown(document.activeElement, keyDownOptions('Right'));
-    //
-    // expect(getByTestId('SplitterElement3').style.flexBasis).toBe('220px');
-    // expect(getByTestId('SplitterElement4').style.flexBasis).toBe('180px');
+    fireEvent.keyDown(document.activeElement, keyDownOptions('Right'));
+    fireEvent.keyDown(document.activeElement, keyDownOptions('Right'));
+
+    expect(getByTestId('SplitterElement3').style.flexBasis).toBe('220px');
+    expect(getByTestId('SplitterElement4').style.flexBasis).toBe('180px');
   });
 
   test('Splitter click, move, focus - horizontal', () => {
@@ -170,12 +170,12 @@ describe('SplitterLayout', () => {
 
     expect(getByTestId('SplitterElement3').style.flex).toBe('0 0 780px');
     expect(getByTestId('SplitterElement4').style.flex).toBe('0 0 820px');
-    //
-    // fireEvent.keyDown(document.activeElement, keyDownOptions('Down'));
-    // fireEvent.keyDown(document.activeElement, keyDownOptions('Down'));
-    //
-    // expect(getByTestId('SplitterElement3').style.flex).toBe('0 0 820px');
-    // expect(getByTestId('SplitterElement4').style.flex).toBe('0 0 780px');
+
+    fireEvent.keyDown(document.activeElement, keyDownOptions('Down'));
+    fireEvent.keyDown(document.activeElement, keyDownOptions('Down'));
+
+    expect(getByTestId('SplitterElement3').style.flex).toBe('0 0 820px');
+    expect(getByTestId('SplitterElement4').style.flex).toBe('0 0 780px');
   });
 
   createCustomPropsTest(SplitterLayout);
