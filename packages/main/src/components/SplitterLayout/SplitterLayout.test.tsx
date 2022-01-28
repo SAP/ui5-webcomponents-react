@@ -1,4 +1,4 @@
-import { render } from '@shared/tests';
+import { render, renderRtl } from '@shared/tests';
 import { fireEvent, screen } from '@shared/tests/index';
 import { SplitterLayout } from '@ui5/webcomponents-react/dist/SplitterLayout';
 import { SplitterElement } from '@ui5/webcomponents-react/dist/SplitterElement';
@@ -179,9 +179,7 @@ describe('SplitterLayout', () => {
   });
 
   test('Splitter click, move, focus - vertical - RTL', () => {
-    Object.defineProperty(global.document.body, 'dir', { value: 'rtl' });
-
-    const { getByTestId } = render(
+    const { getByTestId } = renderRtl(
       <SplitterLayout vertical style={{ width: '800px', height: '800px' }} data-testid={'SplitterLayout'}>
         <SplitterElement data-testid={'SplitterElement1'}>Content 1</SplitterElement>
         <SplitterElement data-testid={'SplitterElement2'}>Content 2</SplitterElement>
