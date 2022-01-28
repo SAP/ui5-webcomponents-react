@@ -27,7 +27,6 @@ import { Input } from '@ui5/webcomponents-react/dist/Input';
 import { Text } from '@ui5/webcomponents-react/dist/Text';
 import { Title } from '@ui5/webcomponents-react/dist/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
-import { DialogDomRef } from '@ui5/webcomponents-react/dist/Dialog';
 import React, { Children, cloneElement, ReactElement, useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
@@ -56,14 +55,14 @@ export const FilterDialog = (props) => {
     handleSelectionChange,
     handleDialogSearch,
     handleDialogCancel,
-    portalContainer
+    portalContainer,
+    dialogRef
   } = props;
   const classes = useStyles();
   const [searchString, setSearchString] = useState('');
   const searchRef = useRef(null);
   const [toggledFilters, setToggledFilters] = useState({});
   const dialogRefs = useRef({});
-  const dialogRef = useRef<DialogDomRef>();
   const dialogSearchRef = useRef(null);
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
@@ -204,6 +203,7 @@ export const FilterDialog = (props) => {
         const filters = groups[item].map((el) => {
           return (
             <div
+              data-component-name="FilterDialogSingleFilterContainer"
               className={classes.singleFilter}
               key={`${el.key}-container`}
               ref={(node) => {
@@ -265,14 +265,33 @@ export const FilterDialog = (props) => {
           endContent={
             <FlexBox justifyContent={FlexBoxJustifyContent.End} className={classes.footer}>
               {showGoButton && (
-                <Button onClick={handleDialogGo} design={ButtonDesign.Emphasized} title={goText}>
+                <Button
+                  onClick={handleDialogGo}
+                  design={ButtonDesign.Emphasized}
+                  title={goText}
+                  data-component-name="FilterBarDialogGoBtn"
+                >
                   {goText}
                 </Button>
               )}
-              {showClearButton && <Button onClick={handleClear}>{clearText}</Button>}
-              {showRestoreButton && <Button onClick={handleRestore}>{restoreText}</Button>}
-              <Button onClick={handleSave}>{saveText}</Button>
-              <Button design={ButtonDesign.Transparent} onClick={handleCancel}>
+              {showClearButton && (
+                <Button onClick={handleClear} data-component-name="FilterBarDialogClearBtn">
+                  {clearText}
+                </Button>
+              )}
+              {showRestoreButton && (
+                <Button onClick={handleRestore} data-component-name="FilterBarDialogRestoreBtn">
+                  {restoreText}
+                </Button>
+              )}
+              <Button onClick={handleSave} data-component-name="FilterBarDialogSaveBtn">
+                {saveText}
+              </Button>
+              <Button
+                design={ButtonDesign.Transparent}
+                onClick={handleCancel}
+                data-component-name="FilterBarDialogCancelBtn"
+              >
                 {cancelText}
               </Button>
             </FlexBox>
@@ -280,8 +299,9 @@ export const FilterDialog = (props) => {
         />
       }
       onAfterClose={handleClose}
+      data-component-name="FilterBarDialog"
     >
-      <div className={classes.dialog} role="dialog">
+      <div className={classes.dialog} data-component-name="FilterBarDialogContent">
         {renderFBSearch && (
           <div className={classes.fbSearch} ref={searchRef}>
             <span />

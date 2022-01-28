@@ -42,6 +42,7 @@ const styles = {
     gridTemplateColumns: `auto minmax(${CssSizeVariables.sapWcrCheckBoxWidthHeight},7%)`,
     gridTemplateRows: 'auto',
     gridColumnGap: '0.5rem',
+    alignItems: 'center',
     '@media(max-width:700px)': {
       marginTop: '0.5rem'
     },
