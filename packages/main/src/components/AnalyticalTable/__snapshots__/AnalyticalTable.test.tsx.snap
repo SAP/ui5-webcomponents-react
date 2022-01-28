@@ -1411,10 +1411,10 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
               data-resizer="true"
               draggable="false"
               role="separator"
-              style="left: 148.5px; transform: translateX(-50%);"
+              style="right: 148.5px; transform: translateX(50%);"
             />
             <div
-              style="position: absolute; top: 0px; width: 148.5px; left: 0px; transform: translateX(0px);"
+              style="position: absolute; top: 0px; width: 148.5px; right: 0px; transform: translateX(-0px);"
             >
               <div
                 class="AnalyticalTable-th"
@@ -1440,7 +1440,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
-                    style="right: 0.5rem;"
+                    style="left: 0.5rem;"
                   />
                 </div>
               </div>
@@ -1450,10 +1450,10 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
               data-resizer="true"
               draggable="false"
               role="separator"
-              style="left: 297px; transform: translateX(-50%);"
+              style="right: 297px; transform: translateX(50%);"
             />
             <div
-              style="position: absolute; top: 0px; width: 148.5px; left: 0px; transform: translateX(148.5px);"
+              style="position: absolute; top: 0px; width: 148.5px; right: 0px; transform: translateX(-148.5px);"
             >
               <div
                 class="AnalyticalTable-th"
@@ -1479,7 +1479,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
-                    style="right: 0.5rem;"
+                    style="left: 0.5rem;"
                   />
                 </div>
               </div>
@@ -1489,10 +1489,10 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
               data-resizer="true"
               draggable="false"
               role="separator"
-              style="left: 445.5px; transform: translateX(-50%);"
+              style="right: 445.5px; transform: translateX(50%);"
             />
             <div
-              style="position: absolute; top: 0px; width: 148.5px; left: 0px; transform: translateX(297px);"
+              style="position: absolute; top: 0px; width: 148.5px; right: 0px; transform: translateX(-297px);"
             >
               <div
                 class="AnalyticalTable-th"
@@ -1518,7 +1518,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
-                    style="right: 0.5rem;"
+                    style="left: 0.5rem;"
                   />
                 </div>
               </div>
@@ -1528,10 +1528,10 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
               data-resizer="true"
               draggable="false"
               role="separator"
-              style="left: 594px; transform: translateX(-50%);"
+              style="right: 594px; transform: translateX(50%);"
             />
             <div
-              style="position: absolute; top: 0px; width: 148.5px; left: 0px; transform: translateX(445.5px);"
+              style="position: absolute; top: 0px; width: 148.5px; right: 0px; transform: translateX(-445.5px);"
             >
               <div
                 class="AnalyticalTable-th"
@@ -1558,13 +1558,13 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
-                    style="right: 0.5rem;"
+                    style="left: 0.5rem;"
                   />
                 </div>
               </div>
             </div>
             <div
-              style="position: absolute; top: 0px; width: 6px; left: 0px; transform: translateX(594px);"
+              style="position: absolute; top: 0px; width: 6px; right: 0px; transform: translateX(-594px);"
             >
               <div
                 class="AnalyticalTable-th"
@@ -1591,7 +1591,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
-                    style="right: 0.5rem;"
+                    style="left: 0.5rem;"
                   />
                 </div>
               </div>
@@ -1619,7 +1619,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                   data-visible-column-index="0"
                   data-visible-row-index="1"
                   role="cell"
-                  style="width: 148.5px; align-items: center; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                  style="width: 148.5px; align-items: center; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -1637,7 +1637,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                   data-visible-column-index="1"
                   data-visible-row-index="1"
                   role="cell"
-                  style="width: 148.5px; align-items: center; position: absolute; top: 0px; transform: translateX(148.5px); left: 0px;"
+                  style="width: 148.5px; align-items: center; position: absolute; top: 0px; transform: translateX(-148.5px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -1655,7 +1655,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                   data-visible-column-index="2"
                   data-visible-row-index="1"
                   role="cell"
-                  style="width: 148.5px; align-items: center; position: absolute; top: 0px; transform: translateX(297px); left: 0px;"
+                  style="width: 148.5px; align-items: center; position: absolute; top: 0px; transform: translateX(-297px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -1673,7 +1673,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                   data-visible-column-index="3"
                   data-visible-row-index="1"
                   role="cell"
-                  style="width: 148.5px; align-items: center; position: absolute; top: 0px; transform: translateX(445.5px); left: 0px;"
+                  style="width: 148.5px; align-items: center; position: absolute; top: 0px; transform: translateX(-445.5px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -1691,7 +1691,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                   data-visible-column-index="4"
                   data-visible-row-index="1"
                   role="cell"
-                  style="width: 6px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(594px); left: 0px;"
+                  style="width: 6px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(-594px); right: 0px;"
                   tabindex="-1"
                 >
                   <div
@@ -1713,7 +1713,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                   data-visible-column-index="0"
                   data-visible-row-index="2"
                   role="cell"
-                  style="width: 148.5px; align-items: center; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                  style="width: 148.5px; align-items: center; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -1731,7 +1731,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                   data-visible-column-index="1"
                   data-visible-row-index="2"
                   role="cell"
-                  style="width: 148.5px; align-items: center; position: absolute; top: 0px; transform: translateX(148.5px); left: 0px;"
+                  style="width: 148.5px; align-items: center; position: absolute; top: 0px; transform: translateX(-148.5px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -1749,7 +1749,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                   data-visible-column-index="2"
                   data-visible-row-index="2"
                   role="cell"
-                  style="width: 148.5px; align-items: center; position: absolute; top: 0px; transform: translateX(297px); left: 0px;"
+                  style="width: 148.5px; align-items: center; position: absolute; top: 0px; transform: translateX(-297px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -1767,7 +1767,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                   data-visible-column-index="3"
                   data-visible-row-index="2"
                   role="cell"
-                  style="width: 148.5px; align-items: center; position: absolute; top: 0px; transform: translateX(445.5px); left: 0px;"
+                  style="width: 148.5px; align-items: center; position: absolute; top: 0px; transform: translateX(-445.5px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -1785,7 +1785,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                   data-visible-column-index="4"
                   data-visible-row-index="2"
                   role="cell"
-                  style="width: 6px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(594px); left: 0px;"
+                  style="width: 6px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(-594px); right: 0px;"
                   tabindex="-1"
                 >
                   <div
@@ -1836,10 +1836,10 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
               data-resizer="true"
               draggable="false"
               role="separator"
-              style="left: 597px; transform: translateX(-50%);"
+              style="right: 597px; transform: translateX(50%);"
             />
             <div
-              style="position: absolute; top: 0px; width: 600px; left: 0px; transform: translateX(0px);"
+              style="position: absolute; top: 0px; width: 600px; right: 0px; transform: translateX(-0px);"
             >
               <div
                 class="AnalyticalTable-th"
@@ -1865,7 +1865,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
-                    style="right: 0.5rem;"
+                    style="left: 0.5rem;"
                   />
                 </div>
               </div>
@@ -1893,7 +1893,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
                   data-visible-column-index="0"
                   data-visible-row-index="1"
                   role="cell"
-                  style="width: 600px; align-items: center; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                  style="width: 600px; align-items: center; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                   tabindex="-1"
                 >
                   <div
@@ -1998,7 +1998,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
                   data-visible-column-index="0"
                   data-visible-row-index="2"
                   role="cell"
-                  style="width: 600px; align-items: center; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                  style="width: 600px; align-items: center; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                   tabindex="-1"
                 >
                   <div
@@ -2194,10 +2194,10 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
               data-resizer="true"
               draggable="false"
               role="separator"
-              style="left: 400px; transform: translateX(-50%);"
+              style="right: 400px; transform: translateX(50%);"
             />
             <div
-              style="position: absolute; top: 0px; width: 400px; left: 0px; transform: translateX(0px);"
+              style="position: absolute; top: 0px; width: 400px; right: 0px; transform: translateX(-0px);"
             >
               <div
                 class="AnalyticalTable-th"
@@ -2223,7 +2223,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
-                    style="right: 0.5rem;"
+                    style="left: 0.5rem;"
                   />
                 </div>
               </div>
@@ -2233,10 +2233,10 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
               data-resizer="true"
               draggable="false"
               role="separator"
-              style="left: 797px; transform: translateX(-50%);"
+              style="right: 797px; transform: translateX(50%);"
             />
             <div
-              style="position: absolute; top: 0px; width: 400px; left: 0px; transform: translateX(400px);"
+              style="position: absolute; top: 0px; width: 400px; right: 0px; transform: translateX(-400px);"
             >
               <div
                 class="AnalyticalTable-th"
@@ -2262,7 +2262,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
-                    style="right: 0.5rem;"
+                    style="left: 0.5rem;"
                   />
                 </div>
               </div>
@@ -2290,7 +2290,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
                   data-visible-column-index="0"
                   data-visible-row-index="1"
                   role="cell"
-                  style="width: 400px; align-items: center; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                  style="width: 400px; align-items: center; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                   tabindex="-1"
                 >
                   <div
@@ -2388,7 +2388,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
                   data-visible-column-index="1"
                   data-visible-row-index="1"
                   role="cell"
-                  style="width: 400px; align-items: center; position: absolute; top: 0px; transform: translateX(400px); left: 0px;"
+                  style="width: 400px; align-items: center; position: absolute; top: 0px; transform: translateX(-400px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -2413,7 +2413,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
                   data-visible-column-index="0"
                   data-visible-row-index="2"
                   role="cell"
-                  style="width: 400px; align-items: center; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                  style="width: 400px; align-items: center; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                   tabindex="-1"
                 >
                   <div
@@ -2511,7 +2511,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
                   data-visible-column-index="1"
                   data-visible-row-index="2"
                   role="cell"
-                  style="width: 400px; align-items: center; position: absolute; top: 0px; transform: translateX(400px); left: 0px;"
+                  style="width: 400px; align-items: center; position: absolute; top: 0px; transform: translateX(-400px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -2658,10 +2658,10 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
               data-resizer="true"
               draggable="false"
               role="separator"
-              style="left: 150px; transform: translateX(-50%);"
+              style="right: 150px; transform: translateX(50%);"
             />
             <div
-              style="position: absolute; top: 0px; width: 150px; left: 0px; transform: translateX(0px);"
+              style="position: absolute; top: 0px; width: 150px; right: 0px; transform: translateX(-0px);"
             >
               <div
                 class="AnalyticalTable-th"
@@ -2687,7 +2687,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
-                    style="right: 0.5rem;"
+                    style="left: 0.5rem;"
                   />
                 </div>
               </div>
@@ -2697,10 +2697,10 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
               data-resizer="true"
               draggable="false"
               role="separator"
-              style="left: 300px; transform: translateX(-50%);"
+              style="right: 300px; transform: translateX(50%);"
             />
             <div
-              style="position: absolute; top: 0px; width: 150px; left: 0px; transform: translateX(150px);"
+              style="position: absolute; top: 0px; width: 150px; right: 0px; transform: translateX(-150px);"
             >
               <div
                 class="AnalyticalTable-th"
@@ -2726,7 +2726,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
-                    style="right: 0.5rem;"
+                    style="left: 0.5rem;"
                   />
                 </div>
               </div>
@@ -2736,10 +2736,10 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
               data-resizer="true"
               draggable="false"
               role="separator"
-              style="left: 450px; transform: translateX(-50%);"
+              style="right: 450px; transform: translateX(50%);"
             />
             <div
-              style="position: absolute; top: 0px; width: 150px; left: 0px; transform: translateX(300px);"
+              style="position: absolute; top: 0px; width: 150px; right: 0px; transform: translateX(-300px);"
             >
               <div
                 class="AnalyticalTable-th"
@@ -2765,7 +2765,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
-                    style="right: 0.5rem;"
+                    style="left: 0.5rem;"
                   />
                 </div>
               </div>
@@ -2775,10 +2775,10 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
               data-resizer="true"
               draggable="false"
               role="separator"
-              style="left: 597px; transform: translateX(-50%);"
+              style="right: 597px; transform: translateX(50%);"
             />
             <div
-              style="position: absolute; top: 0px; width: 150px; left: 0px; transform: translateX(450px);"
+              style="position: absolute; top: 0px; width: 150px; right: 0px; transform: translateX(-450px);"
             >
               <div
                 class="AnalyticalTable-th"
@@ -2805,7 +2805,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
-                    style="right: 0.5rem;"
+                    style="left: 0.5rem;"
                   />
                 </div>
               </div>
@@ -2833,7 +2833,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                   data-visible-column-index="0"
                   data-visible-row-index="1"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -2851,7 +2851,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                   data-visible-column-index="1"
                   data-visible-row-index="1"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(150px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-150px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -2869,7 +2869,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                   data-visible-column-index="2"
                   data-visible-row-index="1"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(300px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-300px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -2887,7 +2887,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                   data-visible-column-index="3"
                   data-visible-row-index="1"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(450px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-450px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -2912,7 +2912,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                   data-visible-column-index="0"
                   data-visible-row-index="2"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -2930,7 +2930,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                   data-visible-column-index="1"
                   data-visible-row-index="2"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(150px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-150px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -2948,7 +2948,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                   data-visible-column-index="2"
                   data-visible-row-index="2"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(300px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-300px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -2966,7 +2966,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                   data-visible-column-index="3"
                   data-visible-row-index="2"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(450px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-450px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -3131,7 +3131,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
             style="width: 653px;"
           >
             <div
-              style="position: absolute; top: 0px; width: 6px; left: 0px; transform: translateX(0px);"
+              style="position: absolute; top: 0px; width: 6px; right: 0px; transform: translateX(-0px);"
             >
               <div
                 class="AnalyticalTable-th"
@@ -3158,13 +3158,13 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
-                    style="right: 0.5rem;"
+                    style="left: 0.5rem;"
                   />
                 </div>
               </div>
             </div>
             <div
-              style="position: absolute; top: 0px; width: 47px; left: 0px; transform: translateX(6px);"
+              style="position: absolute; top: 0px; width: 47px; right: 0px; transform: translateX(-6px);"
             >
               <div
                 class="AnalyticalTable-th"
@@ -3187,7 +3187,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                   />
                   <div
                     class="TableColumnHeader-iconContainer"
-                    style="right: 0.5rem;"
+                    style="left: 0.5rem;"
                   />
                 </div>
               </div>
@@ -3197,10 +3197,10 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
               data-resizer="true"
               draggable="false"
               role="separator"
-              style="left: 203px; transform: translateX(-50%);"
+              style="right: 203px; transform: translateX(50%);"
             />
             <div
-              style="position: absolute; top: 0px; width: 150px; left: 0px; transform: translateX(53px);"
+              style="position: absolute; top: 0px; width: 150px; right: 0px; transform: translateX(-53px);"
             >
               <div
                 class="AnalyticalTable-th"
@@ -3226,7 +3226,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
-                    style="right: 0.5rem;"
+                    style="left: 0.5rem;"
                   />
                 </div>
               </div>
@@ -3236,10 +3236,10 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
               data-resizer="true"
               draggable="false"
               role="separator"
-              style="left: 353px; transform: translateX(-50%);"
+              style="right: 353px; transform: translateX(50%);"
             />
             <div
-              style="position: absolute; top: 0px; width: 150px; left: 0px; transform: translateX(203px);"
+              style="position: absolute; top: 0px; width: 150px; right: 0px; transform: translateX(-203px);"
             >
               <div
                 class="AnalyticalTable-th"
@@ -3265,7 +3265,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
-                    style="right: 0.5rem;"
+                    style="left: 0.5rem;"
                   />
                 </div>
               </div>
@@ -3275,10 +3275,10 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
               data-resizer="true"
               draggable="false"
               role="separator"
-              style="left: 503px; transform: translateX(-50%);"
+              style="right: 503px; transform: translateX(50%);"
             />
             <div
-              style="position: absolute; top: 0px; width: 150px; left: 0px; transform: translateX(353px);"
+              style="position: absolute; top: 0px; width: 150px; right: 0px; transform: translateX(-353px);"
             >
               <div
                 class="AnalyticalTable-th"
@@ -3304,7 +3304,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
-                    style="right: 0.5rem;"
+                    style="left: 0.5rem;"
                   />
                 </div>
               </div>
@@ -3314,10 +3314,10 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
               data-resizer="true"
               draggable="false"
               role="separator"
-              style="left: 650px; transform: translateX(-50%);"
+              style="right: 650px; transform: translateX(50%);"
             />
             <div
-              style="position: absolute; top: 0px; width: 150px; left: 0px; transform: translateX(503px);"
+              style="position: absolute; top: 0px; width: 150px; right: 0px; transform: translateX(-503px);"
             >
               <div
                 class="AnalyticalTable-th"
@@ -3344,7 +3344,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
-                    style="right: 0.5rem;"
+                    style="left: 0.5rem;"
                   />
                 </div>
               </div>
@@ -3372,7 +3372,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                   data-visible-column-index="0"
                   data-visible-row-index="1"
                   role="cell"
-                  style="width: 6px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                  style="width: 6px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                   tabindex="-1"
                 >
                   <div
@@ -3388,7 +3388,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                   data-visible-column-index="1"
                   data-visible-row-index="1"
                   role="cell"
-                  style="width: 47px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(6px); left: 0px;"
+                  style="width: 47px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(-6px); right: 0px;"
                   tabindex="-1"
                 >
                   <div
@@ -3404,7 +3404,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                   data-visible-column-index="2"
                   data-visible-row-index="1"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(53px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-53px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -3422,7 +3422,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                   data-visible-column-index="3"
                   data-visible-row-index="1"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(203px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-203px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -3440,7 +3440,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                   data-visible-column-index="4"
                   data-visible-row-index="1"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(353px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-353px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -3458,7 +3458,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                   data-visible-column-index="5"
                   data-visible-row-index="1"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(503px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-503px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -3483,7 +3483,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                   data-visible-column-index="0"
                   data-visible-row-index="2"
                   role="cell"
-                  style="width: 6px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                  style="width: 6px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                   tabindex="-1"
                 >
                   <div
@@ -3498,7 +3498,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                   data-visible-column-index="1"
                   data-visible-row-index="2"
                   role="cell"
-                  style="width: 47px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(6px); left: 0px;"
+                  style="width: 47px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(-6px); right: 0px;"
                   tabindex="-1"
                 >
                   <div
@@ -3514,7 +3514,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                   data-visible-column-index="2"
                   data-visible-row-index="2"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(53px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-53px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -3532,7 +3532,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                   data-visible-column-index="3"
                   data-visible-row-index="2"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(203px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-203px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -3550,7 +3550,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                   data-visible-column-index="4"
                   data-visible-row-index="2"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(353px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-353px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -3568,7 +3568,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                   data-visible-column-index="5"
                   data-visible-row-index="2"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(503px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-503px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -3622,10 +3622,10 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
               data-resizer="true"
               draggable="false"
               role="separator"
-              style="left: 150px; transform: translateX(-50%);"
+              style="right: 150px; transform: translateX(50%);"
             />
             <div
-              style="position: absolute; top: 0px; width: 150px; left: 0px; transform: translateX(0px);"
+              style="position: absolute; top: 0px; width: 150px; right: 0px; transform: translateX(-0px);"
             >
               <div
                 class="AnalyticalTable-th"
@@ -3651,7 +3651,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
-                    style="right: 0.5rem;"
+                    style="left: 0.5rem;"
                   />
                 </div>
               </div>
@@ -3661,10 +3661,10 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
               data-resizer="true"
               draggable="false"
               role="separator"
-              style="left: 300px; transform: translateX(-50%);"
+              style="right: 300px; transform: translateX(50%);"
             />
             <div
-              style="position: absolute; top: 0px; width: 150px; left: 0px; transform: translateX(150px);"
+              style="position: absolute; top: 0px; width: 150px; right: 0px; transform: translateX(-150px);"
             >
               <div
                 class="AnalyticalTable-th"
@@ -3691,7 +3691,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
-                    style="right: 0.5rem;"
+                    style="left: 0.5rem;"
                   />
                 </div>
               </div>
@@ -3701,10 +3701,10 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
               data-resizer="true"
               draggable="false"
               role="separator"
-              style="left: 450px; transform: translateX(-50%);"
+              style="right: 450px; transform: translateX(50%);"
             />
             <div
-              style="position: absolute; top: 0px; width: 150px; left: 0px; transform: translateX(300px);"
+              style="position: absolute; top: 0px; width: 150px; right: 0px; transform: translateX(-300px);"
             >
               <div
                 class="AnalyticalTable-th"
@@ -3730,7 +3730,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
-                    style="right: 0.5rem;"
+                    style="left: 0.5rem;"
                   />
                 </div>
               </div>
@@ -3740,10 +3740,10 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
               data-resizer="true"
               draggable="false"
               role="separator"
-              style="left: 597px; transform: translateX(-50%);"
+              style="right: 597px; transform: translateX(50%);"
             />
             <div
-              style="position: absolute; top: 0px; width: 150px; left: 0px; transform: translateX(450px);"
+              style="position: absolute; top: 0px; width: 150px; right: 0px; transform: translateX(-450px);"
             >
               <div
                 class="AnalyticalTable-th"
@@ -3769,7 +3769,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
-                    style="right: 0.5rem;"
+                    style="left: 0.5rem;"
                   />
                 </div>
               </div>
@@ -3797,7 +3797,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                   data-visible-column-index="0"
                   data-visible-row-index="1"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -3815,7 +3815,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                   data-visible-column-index="1"
                   data-visible-row-index="1"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(150px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-150px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -3833,7 +3833,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                   data-visible-column-index="2"
                   data-visible-row-index="1"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(300px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-300px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -3851,7 +3851,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                   data-visible-column-index="3"
                   data-visible-row-index="1"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(450px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-450px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -3876,7 +3876,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                   data-visible-column-index="0"
                   data-visible-row-index="2"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -3894,7 +3894,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                   data-visible-column-index="1"
                   data-visible-row-index="2"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(150px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-150px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -3912,7 +3912,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                   data-visible-column-index="2"
                   data-visible-row-index="2"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(300px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-300px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -3930,7 +3930,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                   data-visible-column-index="3"
                   data-visible-row-index="2"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(450px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-450px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -5160,10 +5160,10 @@ exports[`AnalyticalTable expose table instance 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 400px; transform: translateX(-50%);"
+            style="right: 400px; transform: translateX(50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 400px; left: 0px; transform: translateX(0px);"
+            style="position: absolute; top: 0px; width: 400px; right: 0px; transform: translateX(-0px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -5189,7 +5189,7 @@ exports[`AnalyticalTable expose table instance 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -5199,10 +5199,10 @@ exports[`AnalyticalTable expose table instance 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 800px; transform: translateX(-50%);"
+            style="right: 800px; transform: translateX(50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 400px; left: 0px; transform: translateX(400px);"
+            style="position: absolute; top: 0px; width: 400px; right: 0px; transform: translateX(-400px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -5228,7 +5228,7 @@ exports[`AnalyticalTable expose table instance 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -5238,10 +5238,10 @@ exports[`AnalyticalTable expose table instance 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 1197px; transform: translateX(-50%);"
+            style="right: 1197px; transform: translateX(50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 400px; left: 0px; transform: translateX(800px);"
+            style="position: absolute; top: 0px; width: 400px; right: 0px; transform: translateX(-800px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -5268,7 +5268,7 @@ exports[`AnalyticalTable expose table instance 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -5296,7 +5296,7 @@ exports[`AnalyticalTable expose table instance 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 400px; align-items: center; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                style="width: 400px; align-items: center; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -5314,7 +5314,7 @@ exports[`AnalyticalTable expose table instance 1`] = `
                 data-visible-column-index="1"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 400px; align-items: center; position: absolute; top: 0px; transform: translateX(400px); left: 0px;"
+                style="width: 400px; align-items: center; position: absolute; top: 0px; transform: translateX(-400px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -5332,7 +5332,7 @@ exports[`AnalyticalTable expose table instance 1`] = `
                 data-visible-column-index="2"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 400px; align-items: center; position: absolute; top: 0px; transform: translateX(800px); left: 0px;"
+                style="width: 400px; align-items: center; position: absolute; top: 0px; transform: translateX(-800px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -5357,7 +5357,7 @@ exports[`AnalyticalTable expose table instance 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 400px; align-items: center; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                style="width: 400px; align-items: center; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -5375,7 +5375,7 @@ exports[`AnalyticalTable expose table instance 1`] = `
                 data-visible-column-index="1"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 400px; align-items: center; position: absolute; top: 0px; transform: translateX(400px); left: 0px;"
+                style="width: 400px; align-items: center; position: absolute; top: 0px; transform: translateX(-400px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -5393,7 +5393,7 @@ exports[`AnalyticalTable expose table instance 1`] = `
                 data-visible-column-index="2"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 400px; align-items: center; position: absolute; top: 0px; transform: translateX(800px); left: 0px;"
+                style="width: 400px; align-items: center; position: absolute; top: 0px; transform: translateX(-800px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -5523,7 +5523,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
           style="width: 647px;"
         >
           <div
-            style="position: absolute; top: 0px; width: 47px; left: 0px; transform: translateX(0px);"
+            style="position: absolute; top: 0px; width: 47px; right: 0px; transform: translateX(-0px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -5546,7 +5546,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
                 />
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -5556,10 +5556,10 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 197px; transform: translateX(-50%);"
+            style="right: 197px; transform: translateX(50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 150px; left: 0px; transform: translateX(47px);"
+            style="position: absolute; top: 0px; width: 150px; right: 0px; transform: translateX(-47px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -5585,7 +5585,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -5595,10 +5595,10 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 347px; transform: translateX(-50%);"
+            style="right: 347px; transform: translateX(50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 150px; left: 0px; transform: translateX(197px);"
+            style="position: absolute; top: 0px; width: 150px; right: 0px; transform: translateX(-197px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -5624,7 +5624,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -5634,10 +5634,10 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 497px; transform: translateX(-50%);"
+            style="right: 497px; transform: translateX(50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 150px; left: 0px; transform: translateX(347px);"
+            style="position: absolute; top: 0px; width: 150px; right: 0px; transform: translateX(-347px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -5663,7 +5663,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -5673,10 +5673,10 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 644px; transform: translateX(-50%);"
+            style="right: 644px; transform: translateX(50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 150px; left: 0px; transform: translateX(497px);"
+            style="position: absolute; top: 0px; width: 150px; right: 0px; transform: translateX(-497px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -5703,7 +5703,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -5732,7 +5732,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 47px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                style="width: 47px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               >
                 <div
@@ -5748,7 +5748,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
                 data-visible-column-index="1"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(47px); left: 0px;"
+                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-47px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -5766,7 +5766,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
                 data-visible-column-index="2"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(197px); left: 0px;"
+                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-197px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -5784,7 +5784,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
                 data-visible-column-index="3"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(347px); left: 0px;"
+                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-347px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -5802,7 +5802,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
                 data-visible-column-index="4"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(497px); left: 0px;"
+                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-497px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -5827,7 +5827,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 47px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                style="width: 47px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               >
                 <div
@@ -5843,7 +5843,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
                 data-visible-column-index="1"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(47px); left: 0px;"
+                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-47px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -5861,7 +5861,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
                 data-visible-column-index="2"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(197px); left: 0px;"
+                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-197px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -5879,7 +5879,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
                 data-visible-column-index="3"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(347px); left: 0px;"
+                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-347px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -5897,7 +5897,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
                 data-visible-column-index="4"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(497px); left: 0px;"
+                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-497px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -6073,10 +6073,10 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 148.5px; transform: translateX(-50%);"
+            style="right: 148.5px; transform: translateX(50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 148.5px; left: 0px; transform: translateX(0px);"
+            style="position: absolute; top: 0px; width: 148.5px; right: 0px; transform: translateX(-0px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -6102,7 +6102,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -6112,10 +6112,10 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 297px; transform: translateX(-50%);"
+            style="right: 297px; transform: translateX(50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 148.5px; left: 0px; transform: translateX(148.5px);"
+            style="position: absolute; top: 0px; width: 148.5px; right: 0px; transform: translateX(-148.5px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -6141,7 +6141,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -6151,10 +6151,10 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 445.5px; transform: translateX(-50%);"
+            style="right: 445.5px; transform: translateX(50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 148.5px; left: 0px; transform: translateX(297px);"
+            style="position: absolute; top: 0px; width: 148.5px; right: 0px; transform: translateX(-297px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -6180,7 +6180,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -6190,10 +6190,10 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 594px; transform: translateX(-50%);"
+            style="right: 594px; transform: translateX(50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 148.5px; left: 0px; transform: translateX(445.5px);"
+            style="position: absolute; top: 0px; width: 148.5px; right: 0px; transform: translateX(-445.5px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -6220,13 +6220,13 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
           </div>
           <div
-            style="position: absolute; top: 0px; width: 6px; left: 0px; transform: translateX(594px);"
+            style="position: absolute; top: 0px; width: 6px; right: 0px; transform: translateX(-594px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -6253,7 +6253,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -6281,7 +6281,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 148.5px; align-items: center; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                style="width: 148.5px; align-items: center; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -6299,7 +6299,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
                 data-visible-column-index="1"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 148.5px; align-items: center; position: absolute; top: 0px; transform: translateX(148.5px); left: 0px;"
+                style="width: 148.5px; align-items: center; position: absolute; top: 0px; transform: translateX(-148.5px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -6317,7 +6317,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
                 data-visible-column-index="2"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 148.5px; align-items: center; position: absolute; top: 0px; transform: translateX(297px); left: 0px;"
+                style="width: 148.5px; align-items: center; position: absolute; top: 0px; transform: translateX(-297px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -6335,7 +6335,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
                 data-visible-column-index="3"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 148.5px; align-items: center; position: absolute; top: 0px; transform: translateX(445.5px); left: 0px;"
+                style="width: 148.5px; align-items: center; position: absolute; top: 0px; transform: translateX(-445.5px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -6353,7 +6353,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
                 data-visible-column-index="4"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 6px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(594px); left: 0px;"
+                style="width: 6px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(-594px); right: 0px;"
                 tabindex="-1"
               >
                 <div
@@ -6375,7 +6375,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 148.5px; align-items: center; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                style="width: 148.5px; align-items: center; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -6393,7 +6393,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
                 data-visible-column-index="1"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 148.5px; align-items: center; position: absolute; top: 0px; transform: translateX(148.5px); left: 0px;"
+                style="width: 148.5px; align-items: center; position: absolute; top: 0px; transform: translateX(-148.5px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -6411,7 +6411,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
                 data-visible-column-index="2"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 148.5px; align-items: center; position: absolute; top: 0px; transform: translateX(297px); left: 0px;"
+                style="width: 148.5px; align-items: center; position: absolute; top: 0px; transform: translateX(-297px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -6429,7 +6429,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
                 data-visible-column-index="3"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 148.5px; align-items: center; position: absolute; top: 0px; transform: translateX(445.5px); left: 0px;"
+                style="width: 148.5px; align-items: center; position: absolute; top: 0px; transform: translateX(-445.5px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -6447,7 +6447,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
                 data-visible-column-index="4"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 6px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(594px); left: 0px;"
+                style="width: 6px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(-594px); right: 0px;"
                 tabindex="-1"
               >
                 <div
@@ -6490,7 +6490,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
           style="width: 600px;"
         >
           <div
-            style="position: absolute; top: 0px; width: 47px; left: 0px; transform: translateX(0px);"
+            style="position: absolute; top: 0px; width: 47px; right: 0px; transform: translateX(-0px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -6523,7 +6523,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -6533,10 +6533,10 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 185.25px; transform: translateX(-50%);"
+            style="right: 185.25px; transform: translateX(50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 138.25px; left: 0px; transform: translateX(47px);"
+            style="position: absolute; top: 0px; width: 138.25px; right: 0px; transform: translateX(-47px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -6562,7 +6562,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -6572,10 +6572,10 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 323.5px; transform: translateX(-50%);"
+            style="right: 323.5px; transform: translateX(50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 138.25px; left: 0px; transform: translateX(185.25px);"
+            style="position: absolute; top: 0px; width: 138.25px; right: 0px; transform: translateX(-185.25px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -6601,7 +6601,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -6611,10 +6611,10 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 461.75px; transform: translateX(-50%);"
+            style="right: 461.75px; transform: translateX(50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 138.25px; left: 0px; transform: translateX(323.5px);"
+            style="position: absolute; top: 0px; width: 138.25px; right: 0px; transform: translateX(-323.5px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -6640,7 +6640,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -6650,10 +6650,10 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 597px; transform: translateX(-50%);"
+            style="right: 597px; transform: translateX(50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 138.25px; left: 0px; transform: translateX(461.75px);"
+            style="position: absolute; top: 0px; width: 138.25px; right: 0px; transform: translateX(-461.75px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -6680,7 +6680,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -6708,7 +6708,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 47px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                style="width: 47px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               >
                 <ui5-checkbox
@@ -6730,11 +6730,11 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="1"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(47px); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(-47px); right: 0px;"
                 tabindex="-1"
               >
                 <span
-                  style="cursor: pointer; padding-left: 0px;"
+                  style="cursor: pointer; padding-right: 0px;"
                   title="Toggle Row Expanded"
                 >
                   <ui5-icon
@@ -6759,11 +6759,11 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="2"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(185.25px); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(-185.25px); right: 0px;"
                 tabindex="-1"
               >
                 <span
-                  style="padding-left: 0px;"
+                  style="padding-right: 0px;"
                 />
                 <span
                   class="Text-text Text-noWrap"
@@ -6780,11 +6780,11 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="3"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(323.5px); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(-323.5px); right: 0px;"
                 tabindex="-1"
               >
                 <span
-                  style="padding-left: 0px;"
+                  style="padding-right: 0px;"
                 />
                 <span
                   class="Text-text Text-noWrap"
@@ -6801,11 +6801,11 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="4"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(461.75px); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(-461.75px); right: 0px;"
                 tabindex="-1"
               >
                 <span
-                  style="padding-left: 0px;"
+                  style="padding-right: 0px;"
                 />
                 <span
                   class="Text-text Text-noWrap"
@@ -6829,7 +6829,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 47px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                style="width: 47px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               >
                 <ui5-checkbox
@@ -6851,7 +6851,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="1"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(47px); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(-47px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -6880,11 +6880,11 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="2"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(185.25px); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(-185.25px); right: 0px;"
                 tabindex="-1"
               >
                 <span
-                  style="padding-left: 0px;"
+                  style="padding-right: 0px;"
                 />
                 <span
                   class="Text-text Text-noWrap"
@@ -6901,11 +6901,11 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="3"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(323.5px); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(-323.5px); right: 0px;"
                 tabindex="-1"
               >
                 <span
-                  style="padding-left: 0px;"
+                  style="padding-right: 0px;"
                 />
                 <span
                   class="Text-text Text-noWrap"
@@ -6922,11 +6922,11 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="4"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(461.75px); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(-461.75px); right: 0px;"
                 tabindex="-1"
               >
                 <span
-                  style="padding-left: 0px;"
+                  style="padding-right: 0px;"
                 />
                 <span
                   class="Text-text Text-noWrap"
@@ -6950,7 +6950,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="3"
                 role="cell"
-                style="width: 47px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                style="width: 47px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               >
                 <ui5-checkbox
@@ -6972,7 +6972,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="1"
                 data-visible-row-index="3"
                 role="cell"
-                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(47px); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(-47px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -7001,11 +7001,11 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="2"
                 data-visible-row-index="3"
                 role="cell"
-                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(185.25px); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(-185.25px); right: 0px;"
                 tabindex="-1"
               >
                 <span
-                  style="padding-left: 0px;"
+                  style="padding-right: 0px;"
                 />
                 <span
                   class="Text-text Text-noWrap"
@@ -7022,11 +7022,11 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="3"
                 data-visible-row-index="3"
                 role="cell"
-                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(323.5px); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(-323.5px); right: 0px;"
                 tabindex="-1"
               >
                 <span
-                  style="padding-left: 0px;"
+                  style="padding-right: 0px;"
                 />
                 <span
                   class="Text-text Text-noWrap"
@@ -7043,11 +7043,11 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="4"
                 data-visible-row-index="3"
                 role="cell"
-                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(461.75px); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(-461.75px); right: 0px;"
                 tabindex="-1"
               >
                 <span
-                  style="padding-left: 0px;"
+                  style="padding-right: 0px;"
                 />
                 <span
                   class="Text-text Text-noWrap"
@@ -7072,7 +7072,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="4"
                 role="cell"
-                style="width: 47px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                style="width: 47px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               >
                 <ui5-checkbox
@@ -7093,7 +7093,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="1"
                 data-visible-row-index="4"
                 role="cell"
-                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(47px); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(-47px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -7122,11 +7122,11 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="2"
                 data-visible-row-index="4"
                 role="cell"
-                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(185.25px); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(-185.25px); right: 0px;"
                 tabindex="-1"
               >
                 <span
-                  style="padding-left: 0px;"
+                  style="padding-right: 0px;"
                 />
                 <span
                   class="Text-text Text-noWrap"
@@ -7143,11 +7143,11 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="3"
                 data-visible-row-index="4"
                 role="cell"
-                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(323.5px); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(-323.5px); right: 0px;"
                 tabindex="-1"
               >
                 <span
-                  style="padding-left: 0px;"
+                  style="padding-right: 0px;"
                 />
                 <span
                   class="Text-text Text-noWrap"
@@ -7164,11 +7164,11 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="4"
                 data-visible-row-index="4"
                 role="cell"
-                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(461.75px); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(-461.75px); right: 0px;"
                 tabindex="-1"
               >
                 <span
-                  style="padding-left: 0px;"
+                  style="padding-right: 0px;"
                 />
                 <span
                   class="Text-text Text-noWrap"
@@ -7192,7 +7192,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="5"
                 role="cell"
-                style="width: 47px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                style="width: 47px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               >
                 <ui5-checkbox
@@ -7212,7 +7212,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="1"
                 data-visible-row-index="5"
                 role="cell"
-                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(47px); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(-47px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -7241,11 +7241,11 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="2"
                 data-visible-row-index="5"
                 role="cell"
-                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(185.25px); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(-185.25px); right: 0px;"
                 tabindex="-1"
               >
                 <span
-                  style="padding-left: 0px;"
+                  style="padding-right: 0px;"
                 />
                 <span
                   class="Text-text Text-noWrap"
@@ -7262,11 +7262,11 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="3"
                 data-visible-row-index="5"
                 role="cell"
-                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(323.5px); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(-323.5px); right: 0px;"
                 tabindex="-1"
               >
                 <span
-                  style="padding-left: 0px;"
+                  style="padding-right: 0px;"
                 />
                 <span
                   class="Text-text Text-noWrap"
@@ -7283,11 +7283,11 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="4"
                 data-visible-row-index="5"
                 role="cell"
-                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(461.75px); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(-461.75px); right: 0px;"
                 tabindex="-1"
               >
                 <span
-                  style="padding-left: 0px;"
+                  style="padding-right: 0px;"
                 />
                 <span
                   class="Text-text Text-noWrap"
@@ -7311,7 +7311,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="6"
                 role="cell"
-                style="width: 47px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                style="width: 47px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               >
                 <ui5-checkbox
@@ -7331,7 +7331,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="1"
                 data-visible-row-index="6"
                 role="cell"
-                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(47px); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(-47px); right: 0px;"
                 tabindex="-1"
               >
                 <span />
@@ -7350,11 +7350,11 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="2"
                 data-visible-row-index="6"
                 role="cell"
-                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(185.25px); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(-185.25px); right: 0px;"
                 tabindex="-1"
               >
                 <span
-                  style="padding-left: 0px;"
+                  style="padding-right: 0px;"
                 />
                 <span
                   class="Text-text Text-noWrap"
@@ -7371,11 +7371,11 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="3"
                 data-visible-row-index="6"
                 role="cell"
-                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(323.5px); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(-323.5px); right: 0px;"
                 tabindex="-1"
               >
                 <span
-                  style="padding-left: 0px;"
+                  style="padding-right: 0px;"
                 />
                 <span
                   class="Text-text Text-noWrap"
@@ -7392,11 +7392,11 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="4"
                 data-visible-row-index="6"
                 role="cell"
-                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(461.75px); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(-461.75px); right: 0px;"
                 tabindex="-1"
               >
                 <span
-                  style="padding-left: 0px;"
+                  style="padding-right: 0px;"
                 />
                 <span
                   class="Text-text Text-noWrap"
@@ -7420,7 +7420,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="7"
                 role="cell"
-                style="width: 47px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                style="width: 47px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               >
                 <ui5-checkbox
@@ -7440,7 +7440,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="1"
                 data-visible-row-index="7"
                 role="cell"
-                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(47px); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(-47px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -7469,11 +7469,11 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="2"
                 data-visible-row-index="7"
                 role="cell"
-                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(185.25px); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(-185.25px); right: 0px;"
                 tabindex="-1"
               >
                 <span
-                  style="padding-left: 0px;"
+                  style="padding-right: 0px;"
                 />
                 <span
                   class="Text-text Text-noWrap"
@@ -7490,11 +7490,11 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="3"
                 data-visible-row-index="7"
                 role="cell"
-                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(323.5px); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(-323.5px); right: 0px;"
                 tabindex="-1"
               >
                 <span
-                  style="padding-left: 0px;"
+                  style="padding-right: 0px;"
                 />
                 <span
                   class="Text-text Text-noWrap"
@@ -7511,11 +7511,11 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="4"
                 data-visible-row-index="7"
                 role="cell"
-                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(461.75px); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(-461.75px); right: 0px;"
                 tabindex="-1"
               >
                 <span
-                  style="padding-left: 0px;"
+                  style="padding-right: 0px;"
                 />
                 <span
                   class="Text-text Text-noWrap"
@@ -7539,7 +7539,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="8"
                 role="cell"
-                style="width: 47px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                style="width: 47px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               >
                 <ui5-checkbox
@@ -7559,7 +7559,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="1"
                 data-visible-row-index="8"
                 role="cell"
-                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(47px); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(-47px); right: 0px;"
                 tabindex="-1"
               >
                 <span />
@@ -7578,11 +7578,11 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="2"
                 data-visible-row-index="8"
                 role="cell"
-                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(185.25px); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(-185.25px); right: 0px;"
                 tabindex="-1"
               >
                 <span
-                  style="padding-left: 0px;"
+                  style="padding-right: 0px;"
                 />
                 <span
                   class="Text-text Text-noWrap"
@@ -7599,11 +7599,11 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="3"
                 data-visible-row-index="8"
                 role="cell"
-                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(323.5px); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(-323.5px); right: 0px;"
                 tabindex="-1"
               >
                 <span
-                  style="padding-left: 0px;"
+                  style="padding-right: 0px;"
                 />
                 <span
                   class="Text-text Text-noWrap"
@@ -7620,11 +7620,11 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="4"
                 data-visible-row-index="8"
                 role="cell"
-                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(461.75px); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(-461.75px); right: 0px;"
                 tabindex="-1"
               >
                 <span
-                  style="padding-left: 0px;"
+                  style="padding-right: 0px;"
                 />
                 <span
                   class="Text-text Text-noWrap"
@@ -7795,7 +7795,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
           style="width: 600px;"
         >
           <div
-            style="position: absolute; top: 0px; width: 47px; left: 0px; transform: translateX(0px);"
+            style="position: absolute; top: 0px; width: 47px; right: 0px; transform: translateX(-0px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -7818,7 +7818,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
                 />
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -7828,10 +7828,10 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 185.25px; transform: translateX(-50%);"
+            style="right: 185.25px; transform: translateX(50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 138.25px; left: 0px; transform: translateX(47px);"
+            style="position: absolute; top: 0px; width: 138.25px; right: 0px; transform: translateX(-47px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -7857,7 +7857,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -7867,10 +7867,10 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 323.5px; transform: translateX(-50%);"
+            style="right: 323.5px; transform: translateX(50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 138.25px; left: 0px; transform: translateX(185.25px);"
+            style="position: absolute; top: 0px; width: 138.25px; right: 0px; transform: translateX(-185.25px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -7896,7 +7896,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -7906,10 +7906,10 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 461.75px; transform: translateX(-50%);"
+            style="right: 461.75px; transform: translateX(50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 138.25px; left: 0px; transform: translateX(323.5px);"
+            style="position: absolute; top: 0px; width: 138.25px; right: 0px; transform: translateX(-323.5px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -7935,7 +7935,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -7945,10 +7945,10 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 597px; transform: translateX(-50%);"
+            style="right: 597px; transform: translateX(50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 138.25px; left: 0px; transform: translateX(461.75px);"
+            style="position: absolute; top: 0px; width: 138.25px; right: 0px; transform: translateX(-461.75px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -7975,7 +7975,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -8003,7 +8003,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 47px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                style="width: 47px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               >
                 <ui5-checkbox
@@ -8024,7 +8024,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
                 data-visible-column-index="1"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(47px); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(-47px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -8042,7 +8042,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
                 data-visible-column-index="2"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(185.25px); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(-185.25px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -8060,7 +8060,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
                 data-visible-column-index="3"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(323.5px); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(-323.5px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -8078,7 +8078,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
                 data-visible-column-index="4"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(461.75px); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(-461.75px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -8103,7 +8103,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 47px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                style="width: 47px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               >
                 <ui5-checkbox
@@ -8123,7 +8123,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
                 data-visible-column-index="1"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(47px); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(-47px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -8141,7 +8141,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
                 data-visible-column-index="2"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(185.25px); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(-185.25px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -8159,7 +8159,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
                 data-visible-column-index="3"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(323.5px); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(-323.5px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -8177,7 +8177,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
                 data-visible-column-index="4"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(461.75px); left: 0px;"
+                style="width: 138.25px; align-items: center; position: absolute; top: 0px; transform: translateX(-461.75px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -8227,10 +8227,10 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins & hidden column 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 597px; transform: translateX(-50%);"
+            style="right: 597px; transform: translateX(50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 600px; left: 0px; transform: translateX(0px);"
+            style="position: absolute; top: 0px; width: 600px; right: 0px; transform: translateX(-0px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -8256,7 +8256,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins & hidden column 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -8284,7 +8284,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins & hidden column 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 600px; align-items: center; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                style="width: 600px; align-items: center; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               >
                 <div
@@ -8389,7 +8389,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins & hidden column 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 600px; align-items: center; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                style="width: 600px; align-items: center; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               >
                 <div
@@ -8581,10 +8581,10 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 400px; transform: translateX(-50%);"
+            style="right: 400px; transform: translateX(50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 400px; left: 0px; transform: translateX(0px);"
+            style="position: absolute; top: 0px; width: 400px; right: 0px; transform: translateX(-0px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -8610,7 +8610,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -8620,10 +8620,10 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 797px; transform: translateX(-50%);"
+            style="right: 797px; transform: translateX(50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 400px; left: 0px; transform: translateX(400px);"
+            style="position: absolute; top: 0px; width: 400px; right: 0px; transform: translateX(-400px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -8649,7 +8649,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -8677,7 +8677,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 400px; align-items: center; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                style="width: 400px; align-items: center; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               >
                 <div
@@ -8775,7 +8775,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 1`] = `
                 data-visible-column-index="1"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 400px; align-items: center; position: absolute; top: 0px; transform: translateX(400px); left: 0px;"
+                style="width: 400px; align-items: center; position: absolute; top: 0px; transform: translateX(-400px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -8800,7 +8800,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 400px; align-items: center; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                style="width: 400px; align-items: center; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               >
                 <div
@@ -8898,7 +8898,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 1`] = `
                 data-visible-column-index="1"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 400px; align-items: center; position: absolute; top: 0px; transform: translateX(400px); left: 0px;"
+                style="width: 400px; align-items: center; position: absolute; top: 0px; transform: translateX(-400px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -9401,10 +9401,10 @@ exports[`AnalyticalTable render subcomponents 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 150px; transform: translateX(-50%);"
+            style="right: 150px; transform: translateX(50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 150px; left: 0px; transform: translateX(0px);"
+            style="position: absolute; top: 0px; width: 150px; right: 0px; transform: translateX(-0px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -9430,7 +9430,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -9440,10 +9440,10 @@ exports[`AnalyticalTable render subcomponents 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 300px; transform: translateX(-50%);"
+            style="right: 300px; transform: translateX(50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 150px; left: 0px; transform: translateX(150px);"
+            style="position: absolute; top: 0px; width: 150px; right: 0px; transform: translateX(-150px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -9469,7 +9469,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -9479,10 +9479,10 @@ exports[`AnalyticalTable render subcomponents 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 450px; transform: translateX(-50%);"
+            style="right: 450px; transform: translateX(50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 150px; left: 0px; transform: translateX(300px);"
+            style="position: absolute; top: 0px; width: 150px; right: 0px; transform: translateX(-300px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -9508,7 +9508,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -9518,10 +9518,10 @@ exports[`AnalyticalTable render subcomponents 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 597px; transform: translateX(-50%);"
+            style="right: 597px; transform: translateX(50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 150px; left: 0px; transform: translateX(450px);"
+            style="position: absolute; top: 0px; width: 150px; right: 0px; transform: translateX(-450px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -9548,7 +9548,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -9588,7 +9588,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -9617,11 +9617,11 @@ exports[`AnalyticalTable render subcomponents 1`] = `
                 data-visible-column-index="1"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(150px); left: 0px;"
+                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-150px); right: 0px;"
                 tabindex="-1"
               >
                 <span
-                  style="padding-left: 0px;"
+                  style="padding-right: 0px;"
                 />
                 <span
                   class="Text-text Text-noWrap"
@@ -9638,11 +9638,11 @@ exports[`AnalyticalTable render subcomponents 1`] = `
                 data-visible-column-index="2"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(300px); left: 0px;"
+                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-300px); right: 0px;"
                 tabindex="-1"
               >
                 <span
-                  style="padding-left: 0px;"
+                  style="padding-right: 0px;"
                 />
                 <span
                   class="Text-text Text-noWrap"
@@ -9659,11 +9659,11 @@ exports[`AnalyticalTable render subcomponents 1`] = `
                 data-visible-column-index="3"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(450px); left: 0px;"
+                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-450px); right: 0px;"
                 tabindex="-1"
               >
                 <span
-                  style="padding-left: 0px;"
+                  style="padding-right: 0px;"
                 />
                 <span
                   class="Text-text Text-noWrap"
@@ -9699,7 +9699,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -9728,11 +9728,11 @@ exports[`AnalyticalTable render subcomponents 1`] = `
                 data-visible-column-index="1"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(150px); left: 0px;"
+                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-150px); right: 0px;"
                 tabindex="-1"
               >
                 <span
-                  style="padding-left: 0px;"
+                  style="padding-right: 0px;"
                 />
                 <span
                   class="Text-text Text-noWrap"
@@ -9749,11 +9749,11 @@ exports[`AnalyticalTable render subcomponents 1`] = `
                 data-visible-column-index="2"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(300px); left: 0px;"
+                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-300px); right: 0px;"
                 tabindex="-1"
               >
                 <span
-                  style="padding-left: 0px;"
+                  style="padding-right: 0px;"
                 />
                 <span
                   class="Text-text Text-noWrap"
@@ -9770,11 +9770,11 @@ exports[`AnalyticalTable render subcomponents 1`] = `
                 data-visible-column-index="3"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(450px); left: 0px;"
+                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-450px); right: 0px;"
                 tabindex="-1"
               >
                 <span
-                  style="padding-left: 0px;"
+                  style="padding-right: 0px;"
                 />
                 <span
                   class="Text-text Text-noWrap"
@@ -9938,10 +9938,10 @@ exports[`AnalyticalTable render without data 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 150px; transform: translateX(-50%);"
+            style="right: 150px; transform: translateX(50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 150px; left: 0px; transform: translateX(0px);"
+            style="position: absolute; top: 0px; width: 150px; right: 0px; transform: translateX(-0px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -9967,7 +9967,7 @@ exports[`AnalyticalTable render without data 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -9977,10 +9977,10 @@ exports[`AnalyticalTable render without data 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 300px; transform: translateX(-50%);"
+            style="right: 300px; transform: translateX(50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 150px; left: 0px; transform: translateX(150px);"
+            style="position: absolute; top: 0px; width: 150px; right: 0px; transform: translateX(-150px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -10006,7 +10006,7 @@ exports[`AnalyticalTable render without data 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -10016,10 +10016,10 @@ exports[`AnalyticalTable render without data 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 450px; transform: translateX(-50%);"
+            style="right: 450px; transform: translateX(50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 150px; left: 0px; transform: translateX(300px);"
+            style="position: absolute; top: 0px; width: 150px; right: 0px; transform: translateX(-300px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -10045,7 +10045,7 @@ exports[`AnalyticalTable render without data 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -10055,10 +10055,10 @@ exports[`AnalyticalTable render without data 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 597px; transform: translateX(-50%);"
+            style="right: 597px; transform: translateX(50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 150px; left: 0px; transform: translateX(450px);"
+            style="position: absolute; top: 0px; width: 150px; right: 0px; transform: translateX(-450px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -10085,7 +10085,7 @@ exports[`AnalyticalTable render without data 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -10135,10 +10135,10 @@ exports[`AnalyticalTable resize vertically 1`] = `
               data-resizer="true"
               draggable="false"
               role="separator"
-              style="left: 150px; transform: translateX(-50%);"
+              style="right: 150px; transform: translateX(50%);"
             />
             <div
-              style="position: absolute; top: 0px; width: 150px; left: 0px; transform: translateX(0px);"
+              style="position: absolute; top: 0px; width: 150px; right: 0px; transform: translateX(-0px);"
             >
               <div
                 class="AnalyticalTable-th"
@@ -10164,7 +10164,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
-                    style="right: 0.5rem;"
+                    style="left: 0.5rem;"
                   />
                 </div>
               </div>
@@ -10174,10 +10174,10 @@ exports[`AnalyticalTable resize vertically 1`] = `
               data-resizer="true"
               draggable="false"
               role="separator"
-              style="left: 300px; transform: translateX(-50%);"
+              style="right: 300px; transform: translateX(50%);"
             />
             <div
-              style="position: absolute; top: 0px; width: 150px; left: 0px; transform: translateX(150px);"
+              style="position: absolute; top: 0px; width: 150px; right: 0px; transform: translateX(-150px);"
             >
               <div
                 class="AnalyticalTable-th"
@@ -10203,7 +10203,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
-                    style="right: 0.5rem;"
+                    style="left: 0.5rem;"
                   />
                 </div>
               </div>
@@ -10213,10 +10213,10 @@ exports[`AnalyticalTable resize vertically 1`] = `
               data-resizer="true"
               draggable="false"
               role="separator"
-              style="left: 450px; transform: translateX(-50%);"
+              style="right: 450px; transform: translateX(50%);"
             />
             <div
-              style="position: absolute; top: 0px; width: 150px; left: 0px; transform: translateX(300px);"
+              style="position: absolute; top: 0px; width: 150px; right: 0px; transform: translateX(-300px);"
             >
               <div
                 class="AnalyticalTable-th"
@@ -10242,7 +10242,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
-                    style="right: 0.5rem;"
+                    style="left: 0.5rem;"
                   />
                 </div>
               </div>
@@ -10252,10 +10252,10 @@ exports[`AnalyticalTable resize vertically 1`] = `
               data-resizer="true"
               draggable="false"
               role="separator"
-              style="left: 597px; transform: translateX(-50%);"
+              style="right: 597px; transform: translateX(50%);"
             />
             <div
-              style="position: absolute; top: 0px; width: 150px; left: 0px; transform: translateX(450px);"
+              style="position: absolute; top: 0px; width: 150px; right: 0px; transform: translateX(-450px);"
             >
               <div
                 class="AnalyticalTable-th"
@@ -10282,7 +10282,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
-                    style="right: 0.5rem;"
+                    style="left: 0.5rem;"
                   />
                 </div>
               </div>
@@ -10310,7 +10310,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                   data-visible-column-index="0"
                   data-visible-row-index="1"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -10328,7 +10328,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                   data-visible-column-index="1"
                   data-visible-row-index="1"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(150px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-150px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -10346,7 +10346,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                   data-visible-column-index="2"
                   data-visible-row-index="1"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(300px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-300px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -10364,7 +10364,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                   data-visible-column-index="3"
                   data-visible-row-index="1"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(450px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-450px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -10389,7 +10389,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                   data-visible-column-index="0"
                   data-visible-row-index="2"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -10407,7 +10407,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                   data-visible-column-index="1"
                   data-visible-row-index="2"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(150px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-150px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -10425,7 +10425,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                   data-visible-column-index="2"
                   data-visible-row-index="2"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(300px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-300px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -10443,7 +10443,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                   data-visible-column-index="3"
                   data-visible-row-index="2"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(450px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-450px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -10468,7 +10468,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                   data-visible-column-index="0"
                   data-visible-row-index="3"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -10486,7 +10486,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                   data-visible-column-index="1"
                   data-visible-row-index="3"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(150px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-150px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -10504,7 +10504,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                   data-visible-column-index="2"
                   data-visible-row-index="3"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(300px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-300px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -10522,7 +10522,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                   data-visible-column-index="3"
                   data-visible-row-index="3"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(450px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-450px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -10547,7 +10547,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                   data-visible-column-index="0"
                   data-visible-row-index="4"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -10565,7 +10565,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                   data-visible-column-index="1"
                   data-visible-row-index="4"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(150px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-150px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -10583,7 +10583,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                   data-visible-column-index="2"
                   data-visible-row-index="4"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(300px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-300px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -10601,7 +10601,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                   data-visible-column-index="3"
                   data-visible-row-index="4"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(450px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-450px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -10626,7 +10626,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                   data-visible-column-index="0"
                   data-visible-row-index="5"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -10644,7 +10644,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                   data-visible-column-index="1"
                   data-visible-row-index="5"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(150px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-150px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -10662,7 +10662,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                   data-visible-column-index="2"
                   data-visible-row-index="5"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(300px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-300px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -10680,7 +10680,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                   data-visible-column-index="3"
                   data-visible-row-index="5"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(450px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-450px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -10705,7 +10705,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                   data-visible-column-index="0"
                   data-visible-row-index="6"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -10723,7 +10723,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                   data-visible-column-index="1"
                   data-visible-row-index="6"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(150px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-150px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -10741,7 +10741,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                   data-visible-column-index="2"
                   data-visible-row-index="6"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(300px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-300px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -10759,7 +10759,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                   data-visible-column-index="3"
                   data-visible-row-index="6"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(450px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-450px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -10784,7 +10784,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                   data-visible-column-index="0"
                   data-visible-row-index="7"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -10802,7 +10802,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                   data-visible-column-index="1"
                   data-visible-row-index="7"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(150px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-150px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -10820,7 +10820,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                   data-visible-column-index="2"
                   data-visible-row-index="7"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(300px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-300px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -10838,7 +10838,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                   data-visible-column-index="3"
                   data-visible-row-index="7"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(450px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-450px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -10863,7 +10863,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                   data-visible-column-index="0"
                   data-visible-row-index="8"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -10881,7 +10881,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                   data-visible-column-index="1"
                   data-visible-row-index="8"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(150px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-150px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -10899,7 +10899,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                   data-visible-column-index="2"
                   data-visible-row-index="8"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(300px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-300px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -10917,7 +10917,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                   data-visible-column-index="3"
                   data-visible-row-index="8"
                   role="cell"
-                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(450px); left: 0px;"
+                  style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-450px); right: 0px;"
                   tabindex="-1"
                 >
                   <span
@@ -12229,10 +12229,10 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 150px; transform: translateX(-50%);"
+            style="right: 150px; transform: translateX(50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 150px; left: 0px; transform: translateX(0px);"
+            style="position: absolute; top: 0px; width: 150px; right: 0px; transform: translateX(-0px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -12258,7 +12258,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -12268,10 +12268,10 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 300px; transform: translateX(-50%);"
+            style="right: 300px; transform: translateX(50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 150px; left: 0px; transform: translateX(150px);"
+            style="position: absolute; top: 0px; width: 150px; right: 0px; transform: translateX(-150px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -12297,7 +12297,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -12307,10 +12307,10 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 450px; transform: translateX(-50%);"
+            style="right: 450px; transform: translateX(50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 150px; left: 0px; transform: translateX(300px);"
+            style="position: absolute; top: 0px; width: 150px; right: 0px; transform: translateX(-300px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -12336,7 +12336,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -12346,10 +12346,10 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 597px; transform: translateX(-50%);"
+            style="right: 597px; transform: translateX(50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 150px; left: 0px; transform: translateX(450px);"
+            style="position: absolute; top: 0px; width: 150px; right: 0px; transform: translateX(-450px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -12376,7 +12376,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -12404,7 +12404,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -12422,7 +12422,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
                 data-visible-column-index="1"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(150px); left: 0px;"
+                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-150px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -12440,7 +12440,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
                 data-visible-column-index="2"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(300px); left: 0px;"
+                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-300px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -12458,7 +12458,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
                 data-visible-column-index="3"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(450px); left: 0px;"
+                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-450px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -12483,7 +12483,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -12501,7 +12501,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
                 data-visible-column-index="1"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(150px); left: 0px;"
+                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-150px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -12519,7 +12519,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
                 data-visible-column-index="2"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(300px); left: 0px;"
+                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-300px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -12537,7 +12537,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
                 data-visible-column-index="3"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(450px); left: 0px;"
+                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-450px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -12698,7 +12698,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
           style="width: 653px;"
         >
           <div
-            style="position: absolute; top: 0px; width: 6px; left: 0px; transform: translateX(0px);"
+            style="position: absolute; top: 0px; width: 6px; right: 0px; transform: translateX(-0px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -12725,13 +12725,13 @@ exports[`AnalyticalTable with highlight row 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
           </div>
           <div
-            style="position: absolute; top: 0px; width: 47px; left: 0px; transform: translateX(6px);"
+            style="position: absolute; top: 0px; width: 47px; right: 0px; transform: translateX(-6px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -12754,7 +12754,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
                 />
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -12764,10 +12764,10 @@ exports[`AnalyticalTable with highlight row 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 203px; transform: translateX(-50%);"
+            style="right: 203px; transform: translateX(50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 150px; left: 0px; transform: translateX(53px);"
+            style="position: absolute; top: 0px; width: 150px; right: 0px; transform: translateX(-53px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -12793,7 +12793,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -12803,10 +12803,10 @@ exports[`AnalyticalTable with highlight row 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 353px; transform: translateX(-50%);"
+            style="right: 353px; transform: translateX(50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 150px; left: 0px; transform: translateX(203px);"
+            style="position: absolute; top: 0px; width: 150px; right: 0px; transform: translateX(-203px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -12832,7 +12832,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -12842,10 +12842,10 @@ exports[`AnalyticalTable with highlight row 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 503px; transform: translateX(-50%);"
+            style="right: 503px; transform: translateX(50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 150px; left: 0px; transform: translateX(353px);"
+            style="position: absolute; top: 0px; width: 150px; right: 0px; transform: translateX(-353px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -12871,7 +12871,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -12881,10 +12881,10 @@ exports[`AnalyticalTable with highlight row 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 650px; transform: translateX(-50%);"
+            style="right: 650px; transform: translateX(50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 150px; left: 0px; transform: translateX(503px);"
+            style="position: absolute; top: 0px; width: 150px; right: 0px; transform: translateX(-503px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -12911,7 +12911,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -12939,7 +12939,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 6px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                style="width: 6px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               >
                 <div
@@ -12955,7 +12955,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
                 data-visible-column-index="1"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 47px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(6px); left: 0px;"
+                style="width: 47px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(-6px); right: 0px;"
                 tabindex="-1"
               >
                 <div
@@ -12971,7 +12971,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
                 data-visible-column-index="2"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(53px); left: 0px;"
+                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-53px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -12989,7 +12989,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
                 data-visible-column-index="3"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(203px); left: 0px;"
+                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-203px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -13007,7 +13007,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
                 data-visible-column-index="4"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(353px); left: 0px;"
+                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-353px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -13025,7 +13025,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
                 data-visible-column-index="5"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(503px); left: 0px;"
+                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-503px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -13050,7 +13050,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 6px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                style="width: 6px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               >
                 <div
@@ -13065,7 +13065,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
                 data-visible-column-index="1"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 47px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(6px); left: 0px;"
+                style="width: 47px; align-items: center; padding: 0px; position: absolute; top: 0px; transform: translateX(-6px); right: 0px;"
                 tabindex="-1"
               >
                 <div
@@ -13081,7 +13081,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
                 data-visible-column-index="2"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(53px); left: 0px;"
+                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-53px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -13099,7 +13099,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
                 data-visible-column-index="3"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(203px); left: 0px;"
+                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-203px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -13117,7 +13117,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
                 data-visible-column-index="4"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(353px); left: 0px;"
+                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-353px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -13135,7 +13135,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
                 data-visible-column-index="5"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(503px); left: 0px;"
+                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-503px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -13658,10 +13658,10 @@ exports[`AnalyticalTable without selection Column 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 150px; transform: translateX(-50%);"
+            style="right: 150px; transform: translateX(50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 150px; left: 0px; transform: translateX(0px);"
+            style="position: absolute; top: 0px; width: 150px; right: 0px; transform: translateX(-0px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -13687,7 +13687,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -13697,10 +13697,10 @@ exports[`AnalyticalTable without selection Column 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 300px; transform: translateX(-50%);"
+            style="right: 300px; transform: translateX(50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 150px; left: 0px; transform: translateX(150px);"
+            style="position: absolute; top: 0px; width: 150px; right: 0px; transform: translateX(-150px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -13726,7 +13726,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -13736,10 +13736,10 @@ exports[`AnalyticalTable without selection Column 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 450px; transform: translateX(-50%);"
+            style="right: 450px; transform: translateX(50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 150px; left: 0px; transform: translateX(300px);"
+            style="position: absolute; top: 0px; width: 150px; right: 0px; transform: translateX(-300px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -13765,7 +13765,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -13775,10 +13775,10 @@ exports[`AnalyticalTable without selection Column 1`] = `
             data-resizer="true"
             draggable="false"
             role="separator"
-            style="left: 597px; transform: translateX(-50%);"
+            style="right: 597px; transform: translateX(50%);"
           />
           <div
-            style="position: absolute; top: 0px; width: 150px; left: 0px; transform: translateX(450px);"
+            style="position: absolute; top: 0px; width: 150px; right: 0px; transform: translateX(-450px);"
           >
             <div
               class="AnalyticalTable-th"
@@ -13805,7 +13805,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
-                  style="right: 0.5rem;"
+                  style="left: 0.5rem;"
                 />
               </div>
             </div>
@@ -13833,7 +13833,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -13851,7 +13851,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
                 data-visible-column-index="1"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(150px); left: 0px;"
+                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-150px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -13869,7 +13869,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
                 data-visible-column-index="2"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(300px); left: 0px;"
+                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-300px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -13887,7 +13887,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
                 data-visible-column-index="3"
                 data-visible-row-index="1"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(450px); left: 0px;"
+                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-450px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -13912,7 +13912,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(0px); left: 0px;"
+                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -13930,7 +13930,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
                 data-visible-column-index="1"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(150px); left: 0px;"
+                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-150px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -13948,7 +13948,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
                 data-visible-column-index="2"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(300px); left: 0px;"
+                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-300px); right: 0px;"
                 tabindex="-1"
               >
                 <span
@@ -13966,7 +13966,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
                 data-visible-column-index="3"
                 data-visible-row-index="2"
                 role="cell"
-                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(450px); left: 0px;"
+                style="width: 150px; align-items: center; position: absolute; top: 0px; transform: translateX(-450px); right: 0px;"
                 tabindex="-1"
               >
                 <span
