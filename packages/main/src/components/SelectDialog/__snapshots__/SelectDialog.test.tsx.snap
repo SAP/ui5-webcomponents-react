@@ -8,6 +8,7 @@ exports[`SelectDialog Basic 1`] = `
     ui5-dialog=""
   >
     <ui5-bar
+      data-sap-ui-fastnavgroup="true"
       design="Footer"
       slot="footer"
       ui5-bar=""
@@ -22,6 +23,7 @@ exports[`SelectDialog Basic 1`] = `
     </ui5-bar>
     <ui5-bar
       class="SelectDialog-noShadow SelectDialog-spread"
+      data-sap-ui-fastnavgroup="true"
       design="Header"
       slot="header"
       ui5-bar=""
@@ -35,6 +37,7 @@ exports[`SelectDialog Basic 1`] = `
     <ui5-bar
       class="SelectDialog-noShadow"
       data-component-name="SelectDialogSubHeader"
+      data-sap-ui-fastnavgroup="true"
       design="Subheader"
       slot="header"
       ui5-bar=""
@@ -61,6 +64,7 @@ exports[`SelectDialog Basic 1`] = `
     <ui5-list
       accessible-role="list"
       busy-delay="1000"
+      data-sap-ui-fastnavgroup="true"
       growing="None"
       mode="SingleSelect"
       separators="All"
@@ -81,11 +85,13 @@ exports[`SelectDialog MultiSelect 1`] = `
     ui5-dialog=""
   >
     <ui5-bar
+      data-sap-ui-fastnavgroup="true"
       design="Footer"
       slot="footer"
       ui5-bar=""
     >
       <ui5-button
+        class="ui5-bar-content"
         design="Transparent"
         slot="endContent"
         ui5-button=""
@@ -93,6 +99,7 @@ exports[`SelectDialog MultiSelect 1`] = `
         Cancel
       </ui5-button>
       <ui5-button
+        class="ui5-bar-content"
         design="Emphasized"
         slot="endContent"
         ui5-button=""
@@ -102,11 +109,13 @@ exports[`SelectDialog MultiSelect 1`] = `
     </ui5-bar>
     <ui5-bar
       class="SelectDialog-noShadow-0-2-3 SelectDialog-spread-0-2-2"
+      data-sap-ui-fastnavgroup="true"
       design="Header"
       slot="header"
       ui5-bar=""
     >
       <ui5-button
+        class="ui5-bar-content"
         design="Transparent"
         slot="endContent"
         ui5-button=""
@@ -114,6 +123,7 @@ exports[`SelectDialog MultiSelect 1`] = `
         Clear
       </ui5-button>
       <ui5-title
+        class="ui5-bar-content"
         level="H2"
         slot="startContent"
         ui5-title=""
@@ -122,13 +132,14 @@ exports[`SelectDialog MultiSelect 1`] = `
     <ui5-bar
       class="SelectDialog-noShadow-0-2-3"
       data-component-name="SelectDialogSubHeader"
+      data-sap-ui-fastnavgroup="true"
       design="Subheader"
       slot="header"
       ui5-bar=""
     >
       <ui5-input
         accessible-name="Search"
-        class="SelectDialog-spread-0-2-2"
+        class="SelectDialog-spread-0-2-2 ui5-bar-content"
         placeholder="Search"
         type="Text"
         ui5-input=""
@@ -145,34 +156,34 @@ exports[`SelectDialog MultiSelect 1`] = `
         />
       </ui5-input>
     </ui5-bar>
+    <div
+      class="Toolbar-outerContainer-0-2-6 Toolbar-info-0-2-10 SelectDialog-infoBar-0-2-5"
+    >
+      <div
+        class="Toolbar-toolbar-0-2-13"
+        data-component-name="ToolbarContent"
+      >
+        <div
+          class="Toolbar-childContainer-0-2-16"
+          data-component-name="ToolbarChildContainer"
+        >
+          <span
+            class="Text-text-0-2-17"
+          >
+            Selected: 2
+          </span>
+        </div>
+      </div>
+    </div>
     <ui5-list
       accessible-role="list"
       busy-delay="1000"
+      data-sap-ui-fastnavgroup="true"
       growing="None"
       mode="MultiSelect"
       separators="All"
       ui5-list=""
     >
-      <div
-        class="Toolbar-outerContainer-0-2-6 Toolbar-info-0-2-10 SelectDialog-infoBar-0-2-5"
-        slot="header"
-      >
-        <div
-          class="Toolbar-toolbar-0-2-13"
-          data-component-name="ToolbarContent"
-        >
-          <div
-            class="Toolbar-childContainer-0-2-16"
-            data-component-name="ToolbarChildContainer"
-          >
-            <span
-              class="Text-text-0-2-17"
-            >
-              Selected: 2
-            </span>
-          </div>
-        </div>
-      </div>
       <ui5-li
         _mode="MultiSelect"
         actionable=""
@@ -253,6 +264,7 @@ exports[`SelectDialog confirmButtonText 1`] = `
     ui5-dialog=""
   >
     <ui5-bar
+      data-sap-ui-fastnavgroup="true"
       design="Footer"
       slot="footer"
       ui5-bar=""
@@ -274,6 +286,7 @@ exports[`SelectDialog confirmButtonText 1`] = `
     </ui5-bar>
     <ui5-bar
       class="SelectDialog-noShadow SelectDialog-spread"
+      data-sap-ui-fastnavgroup="true"
       design="Header"
       slot="header"
       ui5-bar=""
@@ -287,6 +300,7 @@ exports[`SelectDialog confirmButtonText 1`] = `
     <ui5-bar
       class="SelectDialog-noShadow"
       data-component-name="SelectDialogSubHeader"
+      data-sap-ui-fastnavgroup="true"
       design="Subheader"
       slot="header"
       ui5-bar=""
@@ -313,6 +327,7 @@ exports[`SelectDialog confirmButtonText 1`] = `
     <ui5-list
       accessible-role="list"
       busy-delay="1000"
+      data-sap-ui-fastnavgroup="true"
       growing="None"
       mode="MultiSelect"
       separators="All"
@@ -330,6 +345,7 @@ exports[`SelectDialog with children 1`] = `
     ui5-dialog=""
   >
     <ui5-bar
+      data-sap-ui-fastnavgroup="true"
       design="Footer"
       slot="footer"
       ui5-bar=""
@@ -344,6 +360,7 @@ exports[`SelectDialog with children 1`] = `
     </ui5-bar>
     <ui5-bar
       class="SelectDialog-noShadow SelectDialog-spread"
+      data-sap-ui-fastnavgroup="true"
       design="Header"
       slot="header"
       ui5-bar=""
@@ -357,6 +374,7 @@ exports[`SelectDialog with children 1`] = `
     <ui5-bar
       class="SelectDialog-noShadow"
       data-component-name="SelectDialogSubHeader"
+      data-sap-ui-fastnavgroup="true"
       design="Subheader"
       slot="header"
       ui5-bar=""
@@ -383,6 +401,7 @@ exports[`SelectDialog with children 1`] = `
     <ui5-list
       accessible-role="list"
       busy-delay="1000"
+      data-sap-ui-fastnavgroup="true"
       growing="None"
       mode="SingleSelect"
       separators="All"
@@ -456,6 +475,7 @@ exports[`SelectDialog with headerText 1`] = `
     ui5-dialog=""
   >
     <ui5-bar
+      data-sap-ui-fastnavgroup="true"
       design="Footer"
       slot="footer"
       ui5-bar=""
@@ -470,6 +490,7 @@ exports[`SelectDialog with headerText 1`] = `
     </ui5-bar>
     <ui5-bar
       class="SelectDialog-noShadow SelectDialog-spread"
+      data-sap-ui-fastnavgroup="true"
       design="Header"
       slot="header"
       ui5-bar=""
@@ -485,6 +506,7 @@ exports[`SelectDialog with headerText 1`] = `
     <ui5-bar
       class="SelectDialog-noShadow"
       data-component-name="SelectDialogSubHeader"
+      data-sap-ui-fastnavgroup="true"
       design="Subheader"
       slot="header"
       ui5-bar=""
@@ -511,6 +533,7 @@ exports[`SelectDialog with headerText 1`] = `
     <ui5-list
       accessible-role="list"
       busy-delay="1000"
+      data-sap-ui-fastnavgroup="true"
       growing="None"
       mode="SingleSelect"
       separators="All"

@@ -792,13 +792,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
                 : `${topHeaderHeight}px`
           }}
         >
-          <TabContainer
-            collapsed
-            fixed
-            onTabSelect={onTabItemSelect}
-            showOverflow
-            data-component-name="ObjectPageTabContainer"
-          >
+          <TabContainer collapsed fixed onTabSelect={onTabItemSelect} data-component-name="ObjectPageTabContainer">
             {safeGetChildrenArray(children).map((section: ReactElement, index) => {
               if (!section.props) return null;
               return (

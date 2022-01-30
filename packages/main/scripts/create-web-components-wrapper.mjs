@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import mainWebComponentsSpec from '@ui5/webcomponents/dist/api.json';
-import fioriWebComponentsSpec from '@ui5/webcomponents-fiori/dist/api.json';
+import mainWebComponentsSpec from '@ui5/webcomponents/dist/api.json' assert { type: 'json' };
+import fioriWebComponentsSpec from '@ui5/webcomponents-fiori/dist/api.json' assert { type: 'json' };
 import dedent from 'dedent';
 import prettier from 'prettier';
 import path from 'path';

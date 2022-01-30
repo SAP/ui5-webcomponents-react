@@ -3,6 +3,52 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.21.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.21.1...v0.21.2) (2022-01-26)
+
+
+### Bug Fixes
+
+* update UI5 Web Components to 1.1.2 ([#2533](https://github.com/SAP/ui5-webcomponents-react/issues/2533)) ([033bf41](https://github.com/SAP/ui5-webcomponents-react/commit/033bf41fdc24bcafa7bc9a4957c751a920c89737))
+
+
+
+
+
+## [0.21.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.21.0...v0.21.1) (2022-01-25)
+
+
+### Bug Fixes
+
+* **ObjectPage:** fix navigation bar styles ([#2528](https://github.com/SAP/ui5-webcomponents-react/issues/2528)) ([05840e1](https://github.com/SAP/ui5-webcomponents-react/commit/05840e1d4b7cd1ec1bcf936db4e88be18f1be9d2))
+
+
+
+
+
+# [0.21.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.20.7...v0.21.0) (2022-01-25)
+
+
+### Features
+
+* update UI5 Web Components to 1.1.1 ([#2517](https://github.com/SAP/ui5-webcomponents-react/issues/2517)) ([310b0d2](https://github.com/SAP/ui5-webcomponents-react/commit/310b0d2053422f1dee8e189cf0dfaefa72fd86c7))
+
+
+
+
+
+## [0.20.7](https://github.com/SAP/ui5-webcomponents-react/compare/v0.20.6...v0.20.7) (2022-01-19)
+
+
+### Features
+
+* **SelectDialog:** add `numberOfSelectedItems` prop to support `MultiSelect` mode ([#2494](https://github.com/SAP/ui5-webcomponents-react/issues/2494)) ([0077877](https://github.com/SAP/ui5-webcomponents-react/commit/00778776d265bfa481072a9def90858e655c02e0))
+* **SelectDialog:** make infobar sticky ([#2504](https://github.com/SAP/ui5-webcomponents-react/issues/2504)) ([ff4d207](https://github.com/SAP/ui5-webcomponents-react/commit/ff4d2076fc2c9b3cf2c0bcfba9903ed6bef66732))
+* **Toolbar:** add `aria-label` to overflow button ([#2488](https://github.com/SAP/ui5-webcomponents-react/issues/2488)) ([a4fd03d](https://github.com/SAP/ui5-webcomponents-react/commit/a4fd03d25bb22e50fd4bc1d72f0883cab1419658))
+
+
+
+
+
 ## [0.20.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.20.5...v0.20.6) (2022-01-12)
 
 

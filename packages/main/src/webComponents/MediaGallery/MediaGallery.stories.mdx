@@ -1,0 +1,126 @@
+import { DocsHeader } from '@docs/DocsHeader';
+import { Footer } from '@docs/Footer';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { MediaGallery } from '@ui5/webcomponents-react/dist/MediaGallery';
+import { MediaGalleryItem } from '@ui5/webcomponents-react/dist/MediaGalleryItem';
+import { MediaGalleryLayout } from '@ui5/webcomponents-react/dist/MediaGalleryLayout';
+import { MediaGalleryMenuHorizontalAlign } from '@ui5/webcomponents-react/dist/MediaGalleryMenuHorizontalAlign';
+import { MediaGalleryMenuVerticalAlign } from '@ui5/webcomponents-react/dist/MediaGalleryMenuVerticalAlign';
+import { useRef } from 'react';
+import { Toast } from '../Toast';
+
+<Meta
+  title="Layouts & Floorplans / MediaGallery"
+  component={MediaGallery}
+  subcomponents={{ MediaGalleryItem }}
+  argTypes={{
+    children: { control: { disable: true } }
+  }}
+  args={{
+    layout: MediaGalleryLayout.Auto,
+    menuHorizontalAlign: MediaGalleryMenuHorizontalAlign.Left,
+    menuVerticalAlign: MediaGalleryMenuVerticalAlign.Bottom
+  }}
+/>
+
+<DocsHeader />
+
+<br />
+
+## Example
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      return (
+        <MediaGallery {...args}>
+          <MediaGalleryItem>
+            <img src="https://sap.github.io/ui5-webcomponents/master/assets/images/HT-1000.jpg" />
+          </MediaGalleryItem>
+          <MediaGalleryItem>
+            <img src="https://sap.github.io/ui5-webcomponents/master/assets/images/HT-1010.jpg" />
+          </MediaGalleryItem>
+          <MediaGalleryItem>
+            <img src="https://sap.github.io/ui5-webcomponents/master/assets/images/HT-1022.jpg" />
+          </MediaGalleryItem>
+          <MediaGalleryItem>
+            <img src="https://sap.github.io/ui5-webcomponents/master/assets/images/HT-1030.jpg" />
+          </MediaGalleryItem>
+          <MediaGalleryItem>
+            <img src="https://sap.github.io/ui5-webcomponents/master/assets/images/HT-2002.jpg" />
+          </MediaGalleryItem>
+          <MediaGalleryItem>
+            <img src="https://sap.github.io/ui5-webcomponents/master/assets/images/HT-2026.jpg" />
+          </MediaGalleryItem>
+        </MediaGallery>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Properties
+
+<ArgsTable story="." />
+
+## Keyboard Handling
+
+The `MediaGallery` provides advanced keyboard handling.
+When the thumbnails menu is focused the following keyboard shortcuts allow the user to navigate through the thumbnail items:
+
+- \[UP/DOWN\] - Navigates up and down the items
+- \[HOME\] - Navigates to first item
+- \[END\] - Navigates to the last item
+- \[SPACE/ENTER\] - Select an item
+
+## More Examples
+
+### Custom Thumbnail Image
+
+<Canvas>
+  <Story name="Custom Thumbnail">
+    {(args) => {
+      return (
+        <MediaGallery {...args}>
+          <MediaGalleryItem>
+            <img
+              slot="thumbnail"
+              src="https://sap.github.io/ui5-webcomponents/master/assets/images/HT-1000-small.jpg"
+            />
+            <img src="https://sap.github.io/ui5-webcomponents/master/assets/images/HT-1000.jpg" />
+          </MediaGalleryItem>
+          <MediaGalleryItem disabled>
+            <img src="https://sap.github.io/ui5-webcomponents/master/assets/images/HT-1010.jpg" />
+          </MediaGalleryItem>
+        </MediaGallery>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Interactive Display Area
+
+<Canvas>
+  <Story name="Interactive Display Area">
+    {(args) => {
+      const ref = useRef();
+      const handleDisplayAreaClick = () => {
+        ref.current.show();
+      };
+      return (
+        <>
+          <Toast ref={ref}>Display Area Clicked!</Toast>
+          <MediaGallery {...args} interactiveDisplayArea onDisplayAreaClick={handleDisplayAreaClick}>
+            <MediaGalleryItem>
+              <img src="https://sap.github.io/ui5-webcomponents/master/assets/images/HT-1000.jpg" />
+            </MediaGalleryItem>
+            <MediaGalleryItem selected>
+              <img src="https://sap.github.io/ui5-webcomponents/master/assets/images/HT-1010.jpg" />
+            </MediaGalleryItem>
+          </MediaGallery>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<Footer />

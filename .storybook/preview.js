@@ -1,17 +1,15 @@
 import { makeDecorator } from '@storybook/addons';
-import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme';
-import '@ui5/webcomponents/dist/Assets.js';
+import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
+import applyDirection from '@ui5/webcomponents-base/dist/locale/applyDirection.js';
 import '@ui5/webcomponents-fiori/dist/Assets.js';
-import '@ui5/webcomponents-icons/dist/Assets.js';
-import '@ui5/webcomponents-react/dist/Assets';
 import '@ui5/webcomponents-icons/dist/AllIcons.js';
-import { ContentDensity } from '@ui5/webcomponents-react/dist/ContentDensity';
-import { ThemeProvider } from '@ui5/webcomponents-react/dist/ThemeProvider';
-import { Themes } from '@ui5/webcomponents-react/dist/Themes';
-import '@ui5/webcomponents/dist/features/InputElementsFormSupport';
+import '@ui5/webcomponents-icons/dist/Assets.js';
+import { ContentDensity, ThemeProvider, Themes } from '@ui5/webcomponents-react';
+import '@ui5/webcomponents-react/dist/Assets';
+import '@ui5/webcomponents/dist/Assets.js';
+import '@ui5/webcomponents/dist/features/InputElementsFormSupport.js';
 import React, { useEffect } from 'react';
 import { DocsPage } from './components/DocsPage';
-import applyDirection from '@ui5/webcomponents-base/dist/locale/applyDirection';
 
 const argTypesCategoryCommonProps = {
   table: { category: 'Common props' }
@@ -23,7 +21,6 @@ export const parameters = {
   actions: { argTypesRegex: '^on.*' },
   controls: {
     sort: 'requiredFirst'
-    // exclude: /^on.*/
   },
   backgrounds: { disable: true },
   options: {
@@ -46,40 +43,30 @@ export const argTypes = {
   }
 };
 
-const ThemeContainer = ({ theme, contentDensity, children, direction }) => {
-  useEffect(() => {
-    if (contentDensity === ContentDensity.Compact) {
-      document.body.classList.add('ui5-content-density-compact');
-    } else {
-      document.body.classList.remove('ui5-content-density-compact');
-    }
-  }, [contentDensity]);
-
-  useEffect(() => {
-    document.querySelector('html').setAttribute('dir', direction);
-    applyDirection();
-  }, [direction]);
-
-  useEffect(() => {
-    setTheme(theme);
-  }, [theme]);
-
-  return <ThemeProvider>{children}</ThemeProvider>;
-};
-
 const ThemeProviderDecorator = makeDecorator({
-  name: 'themr',
-  parameterName: 'themr',
+  name: 'ThemeProvider',
+  parameterName: 'ThemeProvider',
   wrapper: (getStory, context) => {
-    return (
-      <ThemeContainer
-        theme={context.globals.theme || Themes.sap_fiori_3}
-        contentDensity={context.globals.contentDensity}
-        direction={context.globals.direction}
-      >
-        {getStory(context)}
-      </ThemeContainer>
-    );
+    const { theme, contentDensity, direction } = context.globals;
+
+    useEffect(() => {
+      if (contentDensity === ContentDensity.Compact) {
+        document.body.classList.add('ui5-content-density-compact');
+      } else {
+        document.body.classList.remove('ui5-content-density-compact');
+      }
+    }, [contentDensity]);
+
+    useEffect(() => {
+      document.querySelector('html').setAttribute('dir', direction);
+      applyDirection();
+    }, [direction]);
+
+    useEffect(() => {
+      setTheme(theme);
+    }, [theme]);
+
+    return <ThemeProvider>{getStory(context)}</ThemeProvider>;
   }
 });
 

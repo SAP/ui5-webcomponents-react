@@ -3,6 +3,7 @@
 exports[`withWebComponent conditional rendering 1`] = `
 <DocumentFragment>
   <ui5-bar
+    data-sap-ui-fastnavgroup="true"
     design="Header"
     ui5-bar=""
   >
@@ -18,6 +19,7 @@ exports[`withWebComponent conditional rendering 1`] = `
 exports[`withWebComponent destruct fragments in slots 1`] = `
 <DocumentFragment>
   <ui5-bar
+    data-sap-ui-fastnavgroup="true"
     design="Header"
     ui5-bar=""
   >

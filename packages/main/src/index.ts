@@ -53,6 +53,7 @@ import { Dialog } from './dist/Dialog';
 import { DynamicPage } from './dist/DynamicPage';
 import { DynamicPageHeader } from './dist/DynamicPageHeader';
 import { DynamicPageTitle } from './dist/DynamicPageTitle';
+import { DynamicSideContent } from './dist/DynamicSideContent';
 import { FCLLayout } from './dist/FCLLayout';
 import { FileUploader } from './dist/FileUploader';
 import { FilterBar } from './dist/FilterBar';
@@ -88,6 +89,12 @@ import { ListMode } from './dist/ListMode';
 import { ListSeparators } from './dist/ListSeparators';
 import { Loader } from './dist/Loader';
 import { LoaderType } from './dist/LoaderType';
+import { MediaGallery } from './dist/MediaGallery';
+import { MediaGalleryItem } from './dist/MediaGalleryItem';
+import { MediaGalleryItemLayout } from './dist/MediaGalleryItemLayout';
+import { MediaGalleryLayout } from './dist/MediaGalleryLayout';
+import { MediaGalleryMenuHorizontalAlign } from './dist/MediaGalleryMenuHorizontalAlign';
+import { MediaGalleryMenuVerticalAlign } from './dist/MediaGalleryMenuVerticalAlign';
 import { MessageBox } from './dist/MessageBox';
 import { MessageBoxActions } from './dist/MessageBoxActions';
 import { MessageBoxTypes } from './dist/MessageBoxTypes';
@@ -132,12 +139,16 @@ import { SelectDialog } from './dist/SelectDialog';
 import { SemanticColor } from './dist/SemanticColor';
 import { ShellBar } from './dist/ShellBar';
 import { ShellBarItem } from './dist/ShellBarItem';
+import { SideContentFallDown } from './dist/SideContentFallDown';
+import { SideContentPosition } from './dist/SideContentPosition';
+import { SideContentVisibility } from './dist/SideContentVisibility';
 import { SideNavigation } from './dist/SideNavigation';
 import { SideNavigationItem } from './dist/SideNavigationItem';
 import { SideNavigationSubItem } from './dist/SideNavigationSubItem';
 import { Size } from './dist/Size';
 import { Slider } from './dist/Slider';
 import { SortItem } from './dist/SortItem';
+import { SplitButton } from './dist/SplitButton';
 import { StandardListItem } from './dist/StandardListItem';
 import { StepInput } from './dist/StepInput';
 import { SuggestionGroupItem } from './dist/SuggestionGroupItem';
@@ -161,6 +172,7 @@ import { TableScaleWidthMode } from './dist/TableScaleWidthMode';
 import { TableSelectionBehavior } from './dist/TableSelectionBehavior';
 import { TableSelectionMode } from './dist/TableSelectionMode';
 import { TableVisibleRowCountMode } from './dist/TableVisibleRowCountMode';
+import { TabsOverflowMode } from './dist/TabsOverflowMode';
 import { Text } from './dist/Text';
 import { TextAlign } from './dist/TextAlign';
 import { TextArea } from './dist/TextArea';
@@ -249,6 +261,7 @@ export {
   DynamicPage,
   DynamicPageHeader,
   DynamicPageTitle,
+  DynamicSideContent,
   FCLLayout,
   FileUploader,
   FilterBar,
@@ -284,6 +297,12 @@ export {
   ListSeparators,
   Loader,
   LoaderType,
+  MediaGallery,
+  MediaGalleryItem,
+  MediaGalleryItemLayout,
+  MediaGalleryLayout,
+  MediaGalleryMenuHorizontalAlign,
+  MediaGalleryMenuVerticalAlign,
   MessageBox,
   MessageBoxActions,
   MessageBoxTypes,
@@ -328,12 +347,16 @@ export {
   SemanticColor,
   ShellBar,
   ShellBarItem,
+  SideContentFallDown,
+  SideContentPosition,
+  SideContentVisibility,
   SideNavigation,
   SideNavigationItem,
   SideNavigationSubItem,
   Size,
   Slider,
   SortItem,
+  SplitButton,
   StandardListItem,
   StepInput,
   SuggestionGroupItem,
@@ -357,6 +380,7 @@ export {
   TableSelectionBehavior,
   TableSelectionMode,
   TableVisibleRowCountMode,
+  TabsOverflowMode,
   Text,
   TextAlign,
   TextArea,

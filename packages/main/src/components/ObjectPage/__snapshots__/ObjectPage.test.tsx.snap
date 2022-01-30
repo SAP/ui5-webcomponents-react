@@ -22,9 +22,10 @@ exports[`ObjectPage Default with Sections 1`] = `
       <ui5-tabcontainer
         collapsed="true"
         data-component-name="ObjectPageTabContainer"
+        data-sap-ui-fastnavgroup="true"
         fixed="true"
-        show-overflow="true"
         tab-layout="Standard"
+        tabs-overflow-mode="End"
         ui5-tabcontainer=""
       >
         <ui5-object-page-anchor-tab
@@ -171,9 +172,10 @@ exports[`ObjectPage Default with SubSections 1`] = `
       <ui5-tabcontainer
         collapsed="true"
         data-component-name="ObjectPageTabContainer"
+        data-sap-ui-fastnavgroup="true"
         fixed="true"
-        show-overflow="true"
         tab-layout="Standard"
+        tabs-overflow-mode="End"
         ui5-tabcontainer=""
       >
         <ui5-object-page-anchor-tab
@@ -478,9 +480,10 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
       <ui5-tabcontainer
         collapsed="true"
         data-component-name="ObjectPageTabContainer"
+        data-sap-ui-fastnavgroup="true"
         fixed="true"
-        show-overflow="true"
         tab-layout="Standard"
+        tabs-overflow-mode="End"
         ui5-tabcontainer=""
       >
         <ui5-object-page-anchor-tab
@@ -633,9 +636,10 @@ exports[`ObjectPage Not crashing with 0 sections 1`] = `
       <ui5-tabcontainer
         collapsed="true"
         data-component-name="ObjectPageTabContainer"
+        data-sap-ui-fastnavgroup="true"
         fixed="true"
-        show-overflow="true"
         tab-layout="Standard"
+        tabs-overflow-mode="End"
         ui5-tabcontainer=""
       />
     </div>
@@ -669,9 +673,10 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
       <ui5-tabcontainer
         collapsed="true"
         data-component-name="ObjectPageTabContainer"
+        data-sap-ui-fastnavgroup="true"
         fixed="true"
-        show-overflow="true"
         tab-layout="Standard"
+        tabs-overflow-mode="End"
         ui5-tabcontainer=""
       >
         <ui5-object-page-anchor-tab
@@ -740,9 +745,10 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
       <ui5-tabcontainer
         collapsed="true"
         data-component-name="ObjectPageTabContainer"
+        data-sap-ui-fastnavgroup="true"
         fixed="true"
-        show-overflow="true"
         tab-layout="Standard"
+        tabs-overflow-mode="End"
         ui5-tabcontainer=""
       >
         <ui5-object-page-anchor-tab
@@ -946,9 +952,10 @@ exports[`ObjectPage with anchor-bar 1`] = `
       <ui5-tabcontainer
         collapsed="true"
         data-component-name="ObjectPageTabContainer"
+        data-sap-ui-fastnavgroup="true"
         fixed="true"
-        show-overflow="true"
         tab-layout="Standard"
+        tabs-overflow-mode="End"
         ui5-tabcontainer=""
       >
         <ui5-object-page-anchor-tab
@@ -1236,6 +1243,7 @@ exports[`ObjectPage with anchor-bar 1`] = `
       data-component-name="ObjectPageFooter"
     >
       <ui5-bar
+        data-sap-ui-fastnavgroup="true"
         design="FloatingFooter"
         ui5-bar=""
       >
@@ -1272,9 +1280,10 @@ exports[`ObjectPage with footer 1`] = `
       <ui5-tabcontainer
         collapsed="true"
         data-component-name="ObjectPageTabContainer"
+        data-sap-ui-fastnavgroup="true"
         fixed="true"
-        show-overflow="true"
         tab-layout="Standard"
+        tabs-overflow-mode="End"
         ui5-tabcontainer=""
       >
         <ui5-object-page-anchor-tab
@@ -1562,6 +1571,7 @@ exports[`ObjectPage with footer 1`] = `
       data-component-name="ObjectPageFooter"
     >
       <ui5-bar
+        data-sap-ui-fastnavgroup="true"
         design="FloatingFooter"
         ui5-bar=""
       >
@@ -1613,9 +1623,10 @@ exports[`ObjectPage with header 1`] = `
       <ui5-tabcontainer
         collapsed="true"
         data-component-name="ObjectPageTabContainer"
+        data-sap-ui-fastnavgroup="true"
         fixed="true"
-        show-overflow="true"
         tab-layout="Standard"
+        tabs-overflow-mode="End"
         ui5-tabcontainer=""
       >
         <ui5-object-page-anchor-tab
@@ -1994,9 +2005,10 @@ exports[`ObjectPage with img 1`] = `
       <ui5-tabcontainer
         collapsed="true"
         data-component-name="ObjectPageTabContainer"
+        data-sap-ui-fastnavgroup="true"
         fixed="true"
-        show-overflow="true"
         tab-layout="Standard"
+        tabs-overflow-mode="End"
         ui5-tabcontainer=""
       >
         <ui5-object-page-anchor-tab
@@ -2284,6 +2296,7 @@ exports[`ObjectPage with img 1`] = `
       data-component-name="ObjectPageFooter"
     >
       <ui5-bar
+        data-sap-ui-fastnavgroup="true"
         design="FloatingFooter"
         ui5-bar=""
       >
@@ -2384,9 +2397,10 @@ exports[`ObjectPage with img 2`] = `
       <ui5-tabcontainer
         collapsed="true"
         data-component-name="ObjectPageTabContainer"
+        data-sap-ui-fastnavgroup="true"
         fixed="true"
-        show-overflow="true"
         tab-layout="Standard"
+        tabs-overflow-mode="End"
         ui5-tabcontainer=""
       >
         <ui5-object-page-anchor-tab
@@ -2674,6 +2688,7 @@ exports[`ObjectPage with img 2`] = `
       data-component-name="ObjectPageFooter"
     >
       <ui5-bar
+        data-sap-ui-fastnavgroup="true"
         design="FloatingFooter"
         ui5-bar=""
       >
@@ -2733,9 +2748,10 @@ exports[`ObjectPage with title 1`] = `
       <ui5-tabcontainer
         collapsed="true"
         data-component-name="ObjectPageTabContainer"
+        data-sap-ui-fastnavgroup="true"
         fixed="true"
-        show-overflow="true"
         tab-layout="Standard"
+        tabs-overflow-mode="End"
         ui5-tabcontainer=""
       >
         <ui5-object-page-anchor-tab
@@ -3088,9 +3104,10 @@ exports[`ObjectPage with title, header & footer 1`] = `
       <ui5-tabcontainer
         collapsed="true"
         data-component-name="ObjectPageTabContainer"
+        data-sap-ui-fastnavgroup="true"
         fixed="true"
-        show-overflow="true"
         tab-layout="Standard"
+        tabs-overflow-mode="End"
         ui5-tabcontainer=""
       >
         <ui5-object-page-anchor-tab
@@ -3378,6 +3395,7 @@ exports[`ObjectPage with title, header & footer 1`] = `
       data-component-name="ObjectPageFooter"
     >
       <ui5-bar
+        data-sap-ui-fastnavgroup="true"
         design="FloatingFooter"
         ui5-bar=""
       >

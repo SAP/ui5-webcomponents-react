@@ -8,6 +8,10 @@ import '@ui5/webcomponents/dist/Switch.js';
 
 interface SwitchAttributes {
   /**
+   * Receives id(or many ids) of the elements that label the component.
+   */
+  accessibleNameRef?: string;
+  /**
    * Defines if the component is checked.
    *
    * **Note:** The property can be changed with user interaction, either by cliking the component, or by pressing the `Enter` or `Space` key.
@@ -58,7 +62,7 @@ export interface SwitchPropTypes extends SwitchAttributes, Omit<CommonProps, 'on
  */
 const Switch = withWebComponent<SwitchPropTypes, SwitchDomRef>(
   'ui5-switch',
-  ['design', 'textOff', 'textOn'],
+  ['accessibleNameRef', 'design', 'textOff', 'textOn'],
   ['checked', 'disabled'],
   [],
   ['change']

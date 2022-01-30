@@ -35,6 +35,7 @@ import React, {
 import { createUseStyles } from 'react-jss';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
+import { DialogDomRef } from '@ui5/webcomponents-react/dist/Dialog';
 import styles from './FilterBar.jss';
 import { FilterDialog } from './FilterDialog';
 import { filterValue, renderSearchWithValue, syncRef } from './utils';
@@ -169,8 +170,10 @@ export interface FilterBarPropTypes extends CommonProps {
   onFiltersDialogCancel?: (event: Ui5CustomEvent<HTMLElement>) => void;
   /**
    * The event is fired when the filter configuration dialog is opened.
+   *
+   * __Note:__ By adding `event.preventDefault()` to the function body, opening the dialog is prevented and you can add your own custom component. Even though this is possible, we highly recommend using the default dialog in order to preserve the intended design.
    */
-  onFiltersDialogOpen?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  onFiltersDialogOpen?: (event: CustomEvent<{ dialog: HTMLElement }>) => void;
   /**
    * The event is fired when the filter configuration dialog is closed.
    */
@@ -271,6 +274,7 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
   const [searchValue, setSearchValue] = useState<string>(undefined);
   const searchRef = useRef(null);
   const filterRefs = useRef({});
+  const dialogRef = useRef<DialogDomRef>();
   const [dialogRefs, setDialogRefs] = useState({});
   const [toggledFilters, setToggledFilters] = useState({});
   const prevVisibleInFilterBarProps = useRef({});
@@ -350,7 +354,10 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
   const handleDialogOpen = (e) => {
     setDialogOpen(true);
     if (onFiltersDialogOpen) {
-      onFiltersDialogOpen(e);
+      onFiltersDialogOpen(enrichEventWithDetails(e, { dialog: dialogRef.current }));
+    }
+    if (e.defaultPrevented) {
+      setDialogOpen(false);
     }
   };
 
@@ -629,6 +636,7 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
           handleDialogSearch={onFiltersDialogSearch}
           handleDialogCancel={onFiltersDialogCancel}
           portalContainer={portalContainer}
+          dialogRef={dialogRef}
         >
           {safeChildren()}
         </FilterDialog>
