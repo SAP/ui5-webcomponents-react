@@ -1,5 +1,5 @@
 import { MutableRefObject, useEffect, useMemo, useRef } from 'react';
-import { deprecationNotice } from '@ui5/webcomponents-react-base/dist/Utils';
+import { deprecationNotice } from '../utils/index';
 
 export const useConsolidatedRef = <T>(ref): MutableRefObject<T> => {
   const localRef: MutableRefObject<T> = useRef(null);

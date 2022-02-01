@@ -4,8 +4,12 @@ import '@ui5/webcomponents-icons/dist/message-information.js';
 import '@ui5/webcomponents-icons/dist/message-success.js';
 import '@ui5/webcomponents-icons/dist/message-warning.js';
 import '@ui5/webcomponents-icons/dist/question-mark.js';
-import { useI18nBundle, useIsomorphicLayoutEffect, useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
+import {
+  enrichEventWithDetails,
+  useI18nBundle,
+  useIsomorphicLayoutEffect,
+  useSyncRef
+} from '@ui5/webcomponents-react-base';
 import {
   ABORT,
   CANCEL,

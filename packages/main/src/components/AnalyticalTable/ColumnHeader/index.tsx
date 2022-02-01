@@ -3,7 +3,7 @@ import '@ui5/webcomponents-icons/dist/group-2.js';
 import '@ui5/webcomponents-icons/dist/sort-ascending.js';
 import '@ui5/webcomponents-icons/dist/sort-descending.js';
 import { createUseStyles } from 'react-jss';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { Icon } from '@ui5/webcomponents-react/dist/Icon';
 import { Text } from '@ui5/webcomponents-react/dist/Text';
 import React, {

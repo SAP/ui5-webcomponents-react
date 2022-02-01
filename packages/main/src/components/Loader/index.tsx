@@ -1,4 +1,4 @@
-import { useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useI18nBundle } from '@ui5/webcomponents-react-base';
 import { PLEASE_WAIT } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { LoaderType } from '@ui5/webcomponents-react/dist/LoaderType';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';

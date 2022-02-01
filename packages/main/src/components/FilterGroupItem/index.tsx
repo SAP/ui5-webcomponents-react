@@ -1,4 +1,4 @@
-import { useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
 import { BusyIndicator } from '@ui5/webcomponents-react/dist/BusyIndicator';
 import { BusyIndicatorSize } from '@ui5/webcomponents-react/dist/BusyIndicatorSize';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';

@@ -1,4 +1,4 @@
-import { deprecationNotice } from '@ui5/webcomponents-react-base/dist/Utils';
+import { deprecationNotice } from '@ui5/webcomponents-react-base';
 import { useEffect } from 'react';
 
 export const useDeprecationNoticeForTooltip = (component, tooltip) => {

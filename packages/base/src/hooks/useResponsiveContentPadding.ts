@@ -1,6 +1,6 @@
-import { getCurrentRange } from '@ui5/webcomponents-react-base/dist/Device';
 import { useEffect, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
+import { getCurrentRange } from '../Device';
 
 const useStyles = createUseStyles(
   {

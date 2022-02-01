@@ -1,4 +1,3 @@
-import '@ui5/webcomponents-react-base/types/UI5Device.d.ts';
 import { supportsTouch } from '@ui5/webcomponents-base/dist/Device.js';
 import { EventProvider } from './EventProvider';
 
@@ -179,7 +178,7 @@ const handleResizeEvent = () => {
 };
 
 // re-export everything from the web components device
-export { isIE, isSafari, isDesktop, isTablet, isPhone, supportsTouch } from '@ui5/webcomponents-base/dist/Device.js';
+export * from './UI5Device';
 // export all media methods
 export { attachMediaHandler, detachMediaHandler, getCurrentRange } from './Media';
 

@@ -1,4 +1,4 @@
-import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
 
 export const DynamicPageCssVariables = {
   headerDisplay: '--ui5wcr_DynamicPage_header_display'

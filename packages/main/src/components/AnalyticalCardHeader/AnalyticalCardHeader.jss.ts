@@ -1,5 +1,4 @@
-import * as spacing from '@ui5/webcomponents-react-base/dist/spacing';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
+import { spacing, ThemingParameters } from '@ui5/webcomponents-react-base';
 
 const styles = {
   helpText: {
