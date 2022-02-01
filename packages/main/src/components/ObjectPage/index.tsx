@@ -1,7 +1,12 @@
 import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming.js';
-import { useIsRTL, useSyncRef, useResponsiveContentPadding } from '@ui5/webcomponents-react-base';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
-import { debounce, enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
+import {
+  debounce,
+  enrichEventWithDetails,
+  ThemingParameters,
+  useIsRTL,
+  useSyncRef,
+  useResponsiveContentPadding
+} from '@ui5/webcomponents-react-base';
 import { AvatarPropTypes } from '@ui5/webcomponents-react/dist/Avatar';
 import { AvatarSize } from '@ui5/webcomponents-react/dist/AvatarSize';
 import { GlobalStyleClasses } from '@ui5/webcomponents-react/dist/GlobalStyleClasses';

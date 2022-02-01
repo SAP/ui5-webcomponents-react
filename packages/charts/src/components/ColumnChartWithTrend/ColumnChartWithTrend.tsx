@@ -1,4 +1,4 @@
-import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { ComposedChart } from '@ui5/webcomponents-react-charts/dist//ComposedChart';
 import { ColumnChartWithTrendPlaceholder } from '@ui5/webcomponents-react-charts/dist/ColumnChartWithTrendPlaceholder';
 import React, { CSSProperties, FC, forwardRef, Ref } from 'react';

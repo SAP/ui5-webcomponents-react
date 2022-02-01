@@ -1,7 +1,11 @@
 import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
-import { useResponsiveContentPadding, useSyncRef } from '@ui5/webcomponents-react-base';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
-import { debounce, enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
+import {
+  debounce,
+  enrichEventWithDetails,
+  useResponsiveContentPadding,
+  useSyncRef,
+  ThemingParameters
+} from '@ui5/webcomponents-react-base';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { GlobalStyleClasses } from '@ui5/webcomponents-react/dist/GlobalStyleClasses';
 import { PageBackgroundDesign } from '@ui5/webcomponents-react/dist/PageBackgroundDesign';

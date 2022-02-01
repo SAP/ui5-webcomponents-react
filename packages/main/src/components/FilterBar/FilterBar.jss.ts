@@ -1,5 +1,5 @@
 import { isIE } from '@ui5/webcomponents-base/dist/Device.js';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
 
 const styles = {
   outerContainer: {

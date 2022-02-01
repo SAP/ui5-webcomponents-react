@@ -1,7 +1,5 @@
-import { CssSizeVariables } from '@ui5/webcomponents-react-base/dist/CssSizeVariables';
 import { getCurrentRange } from '@ui5/webcomponents-react-base/dist/Device';
-import { useSyncRef } from '@ui5/webcomponents-react-base';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
+import { CssSizeVariables, ThemingParameters, useSyncRef } from '@ui5/webcomponents-react-base';
 import { Title } from '@ui5/webcomponents-react/dist/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';

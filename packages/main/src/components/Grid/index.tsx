@@ -1,5 +1,5 @@
 import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
-import { useViewportRange } from '@ui5/webcomponents-react-base/dist/useViewportRange';
+import { useViewportRange } from '@ui5/webcomponents-react-base';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { GridPosition } from '@ui5/webcomponents-react/dist/GridPosition';
 import React, {

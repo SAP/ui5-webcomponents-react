@@ -1,5 +1,4 @@
-import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
+import { enrichEventWithDetails, ThemingParameters } from '@ui5/webcomponents-react-base';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/dist/components/ChartContainer';
 import { PieChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/PieChartPlaceholder';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';

@@ -3,7 +3,7 @@ import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignIte
 import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
 import { FlexBoxWrap } from '@ui5/webcomponents-react/dist/FlexBoxWrap';
 import { Text } from '@ui5/webcomponents-react/dist/Text';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import React from 'react';
 import { createUseStyles } from 'react-jss';
 import { makeRenderer } from 'react-table';

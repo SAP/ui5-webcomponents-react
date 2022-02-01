@@ -1,5 +1,4 @@
-import { CssSizeVariables } from '@ui5/webcomponents-react-base/dist/CssSizeVariables';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
+import { CssSizeVariables, ThemingParameters } from '@ui5/webcomponents-react-base';
 import { CustomListItem } from '@ui5/webcomponents-react/dist/CustomListItem';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';

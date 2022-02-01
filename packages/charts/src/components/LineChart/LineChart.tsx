@@ -1,6 +1,4 @@
-import { useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
+import { enrichEventWithDetails, ThemingParameters, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/dist/components/ChartContainer';
 import { ChartDataLabel } from '@ui5/webcomponents-react-charts/dist/components/ChartDataLabel';
 import { XAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/XAxisTicks';

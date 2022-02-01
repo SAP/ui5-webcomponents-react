@@ -1,4 +1,4 @@
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
 import { useCallback } from 'react';
 
 export const useOnClickInternal = (onClick) =>

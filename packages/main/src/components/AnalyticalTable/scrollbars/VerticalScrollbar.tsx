@@ -1,4 +1,4 @@
-import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
 import { GlobalStyleClasses } from '@ui5/webcomponents-react/dist/GlobalStyleClasses';

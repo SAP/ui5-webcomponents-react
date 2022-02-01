@@ -1,5 +1,4 @@
-import { CssSizeVariablesNames } from '@ui5/webcomponents-react-base/dist/CssSizeVariables';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
+import { CssSizeVariablesNames, enrichEventWithDetails } from '@ui5/webcomponents-react-base';
 import { CheckBox } from '@ui5/webcomponents-react/dist/CheckBox';
 import { TableSelectionBehavior } from '@ui5/webcomponents-react/dist/TableSelectionBehavior';
 import { TableSelectionMode } from '@ui5/webcomponents-react/dist/TableSelectionMode';

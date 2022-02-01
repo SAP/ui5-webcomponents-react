@@ -9,8 +9,7 @@ import {
   PopoverPlacementType,
   WrappingType
 } from '@ui5/webcomponents-react';
-import { useResponsiveContentPadding } from '@ui5/webcomponents-react-base/dist/hooks';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
+import { ThemingParameters, useResponsiveContentPadding } from '@ui5/webcomponents-react-base';
 import React, { useRef } from 'react';
 import BestRunLogo from '../../assets/SAP_Best_R_grad_blk_scrn.png';
 

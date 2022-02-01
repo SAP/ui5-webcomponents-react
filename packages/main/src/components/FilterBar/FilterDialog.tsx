@@ -1,6 +1,5 @@
 import '@ui5/webcomponents-icons/dist/search.js';
-import { useI18nBundle } from '@ui5/webcomponents-react-base';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
+import { enrichEventWithDetails, useI18nBundle } from '@ui5/webcomponents-react-base';
 import {
   BASIC,
   CANCEL,

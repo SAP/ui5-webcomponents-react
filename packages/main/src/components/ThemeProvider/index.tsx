@@ -1,5 +1,4 @@
-import { cssVariablesStyles } from '@ui5/webcomponents-react-base/dist/CssSizeVariables';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
+import { cssVariablesStyles, ThemingParameters } from '@ui5/webcomponents-react-base';
 import React, { FC, ReactNode, useEffect } from 'react';
 import { createUseStyles, ThemeProvider as ReactJssThemeProvider } from 'react-jss';
 import { GlobalStyleClassesStyles } from './GlobalStyleClasses.jss';

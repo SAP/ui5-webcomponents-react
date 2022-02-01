@@ -1,5 +1,4 @@
-import { useI18nBundle, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
-import { debounce, enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
+import { debounce, enrichEventWithDetails, useI18nBundle, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
 import {
   ADAPT_FILTERS,
   CLEAR,
