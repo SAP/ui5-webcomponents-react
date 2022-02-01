@@ -1,8 +1,8 @@
-import { CssSizeVariables, sapUiContentPadding } from '@ui5/webcomponents-react-base';
+import { CssSizeVariables, spacing } from '@ui5/webcomponents-react-base';
 
 const styles = {
   dialog: {
-    ...sapUiContentPadding,
+    ...spacing.sapUiContentPadding,
     display: 'flex',
     flexDirection: 'column',
     maxWidth: '960px',
