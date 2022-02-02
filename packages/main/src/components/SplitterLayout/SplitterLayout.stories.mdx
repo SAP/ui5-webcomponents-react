@@ -7,7 +7,7 @@ import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { SegmentedButton } from '@ui5/webcomponents-react/dist/SegmentedButton';
 import { SegmentedButtonItem } from '@ui5/webcomponents-react/dist/SegmentedButtonItem';
 import { Label } from '@ui5/webcomponents-react/dist/Label';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 <Meta
   title="Layouts & Floorplans / SplitterLayout"
@@ -61,12 +61,15 @@ import { useState } from 'react';
 ## Nested SplitterLayouts
 
 <Canvas>
-  <Story name="Nested">
+  <Story name="Nested" args={{ vertical: true }}>
     {(args) => {
-      const [vertical, setVertical] = useState(true);
+      const [vertical, setVertical] = useState(args.vertical);
       const handleChange = (e) => {
         setVertical(e.detail.selectedItem.textContent === 'Vertical');
       };
+      useEffect(() => {
+        setVertical(args.vertical);
+      }, [args.vertical]);
       return (
         <>
           <FlexBox direction="Column">
