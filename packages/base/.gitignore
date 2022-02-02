@@ -1,12 +1,3 @@
-/cjs
-/Device
-/hooks
-/interfaces
-/polyfill
-/styling
-/utils
 /LICENSE
 /NOTICE.txt
-/index.esm.js
-/index.d.ts
 /dist

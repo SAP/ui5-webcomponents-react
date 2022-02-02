@@ -1,4 +1,4 @@
-import { CssSizeVariables } from '@ui5/webcomponents-react-base/dist/CssSizeVariables';
+import { CssSizeVariables } from '@ui5/webcomponents-react-base';
 import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
 import { Icon } from '@ui5/webcomponents-react/dist/Icon';
 import React, { CSSProperties } from 'react';

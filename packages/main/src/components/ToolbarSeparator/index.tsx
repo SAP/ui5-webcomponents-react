@@ -1,7 +1,5 @@
-import { useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
+import { CssSizeVariables, ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base';
 import { createUseStyles } from 'react-jss';
-import { CssSizeVariables } from '@ui5/webcomponents-react-base/dist/CssSizeVariables';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
 import React, { forwardRef, Ref } from 'react';
 import { SEPARATOR } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';

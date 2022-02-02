@@ -1,7 +1,5 @@
+import { debounce, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
 import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
-import { useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
-import { useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
-import { debounce } from '@ui5/webcomponents-react-base/dist/Utils';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
 import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';

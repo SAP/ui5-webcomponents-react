@@ -1,4 +1,4 @@
-import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { getTextWidth } from '@ui5/webcomponents-react-charts/dist/Utils';
 import React, { createElement, FC } from 'react';
 import { Label } from 'recharts';

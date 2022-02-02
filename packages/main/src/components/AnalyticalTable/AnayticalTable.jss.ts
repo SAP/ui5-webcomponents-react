@@ -1,5 +1,4 @@
-import { CssSizeVariables } from '@ui5/webcomponents-react-base/dist/CssSizeVariables';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
+import { CssSizeVariables, ThemingParameters } from '@ui5/webcomponents-react-base';
 
 const styles = {
   table: {

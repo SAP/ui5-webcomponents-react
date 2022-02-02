@@ -3,7 +3,7 @@ import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming.js';
 import '@ui5/webcomponents-icons/dist/decline.js';
 import '@ui5/webcomponents-icons/dist/favorite.js';
 import '@ui5/webcomponents-icons/dist/unfavorite.js';
-import { useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useI18nBundle } from '@ui5/webcomponents-react-base';
 import {
   APPLY_AUTOMATICALLY,
   CANCEL,

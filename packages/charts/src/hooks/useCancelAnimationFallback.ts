@@ -1,4 +1,4 @@
-import { debounce } from '@ui5/webcomponents-react-base/dist/Utils';
+import { debounce } from '@ui5/webcomponents-react-base';
 import { useRef, useState } from 'react';
 
 export const useCancelAnimationFallback = (

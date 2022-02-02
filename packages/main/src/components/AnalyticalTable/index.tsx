@@ -1,6 +1,10 @@
-import { useIsomorphicLayoutEffect, useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
-import { debounce, enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
+import {
+  debounce,
+  enrichEventWithDetails,
+  ThemingParameters,
+  useIsomorphicLayoutEffect,
+  useIsRTL
+} from '@ui5/webcomponents-react-base';
 import { AnalyticalTableScrollMode } from '@ui5/webcomponents-react/dist/AnalyticalTableScrollMode';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { GlobalStyleClasses } from '@ui5/webcomponents-react/dist/GlobalStyleClasses';

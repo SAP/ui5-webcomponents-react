@@ -1,4 +1,4 @@
-import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { Label } from '@ui5/webcomponents-react/dist/Label';
 import { Loader } from '@ui5/webcomponents-react/dist/Loader';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';

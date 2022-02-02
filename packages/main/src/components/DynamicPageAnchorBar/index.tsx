@@ -2,9 +2,13 @@ import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming.js';
 import '@ui5/webcomponents-icons/dist/pushpin-off.js';
 import '@ui5/webcomponents-icons/dist/slim-arrow-down.js';
 import '@ui5/webcomponents-icons/dist/slim-arrow-up.js';
-import { useI18nBundle, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
+import {
+  enrichEventWithDetails,
+  ThemingParameters,
+  useI18nBundle,
+  useIsRTL,
+  useSyncRef
+} from '@ui5/webcomponents-react-base';
 import {
   COLLAPSE_HEADER,
   EXPAND_HEADER,

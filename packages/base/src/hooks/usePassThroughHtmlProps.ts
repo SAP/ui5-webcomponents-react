@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { deprecationNotice } from '@ui5/webcomponents-react-base/dist/Utils';
+import { deprecationNotice } from '../utils/index';
 
 const PROP_INCLUDELIST = /^(aria-|data-|id$|on[A-Z]|slot$|role$)/;
 

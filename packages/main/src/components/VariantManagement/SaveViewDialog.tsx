@@ -1,4 +1,4 @@
-import { useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
+import { useI18nBundle } from '@ui5/webcomponents-react-base';
 import {
   CANCEL,
   SAVE,

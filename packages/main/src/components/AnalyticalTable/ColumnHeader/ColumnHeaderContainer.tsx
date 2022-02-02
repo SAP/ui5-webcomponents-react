@@ -1,4 +1,4 @@
-import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import React, { forwardRef, Fragment, MutableRefObject, Ref, useCallback } from 'react';
 import { createUseStyles } from 'react-jss';
 import { useVirtual, VirtualItem } from 'react-virtual';

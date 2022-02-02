@@ -1,7 +1,5 @@
 import '@ui5/webcomponents-icons/dist/decline.js';
-import { useI18nBundle } from '@ui5/webcomponents-react-base/dist/hooks';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/dist/Utils';
+import { enrichEventWithDetails, ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base';
 import {
   CLEAR_SORTING,
   GROUP,

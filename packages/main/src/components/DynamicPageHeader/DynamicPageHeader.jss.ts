@@ -1,4 +1,4 @@
-import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { DynamicPageCssVariables } from '../DynamicPage/DynamicPage.jss';
 import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
 
