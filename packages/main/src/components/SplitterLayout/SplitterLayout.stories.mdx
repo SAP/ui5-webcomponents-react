@@ -62,7 +62,7 @@ import { useState } from 'react';
 
 <Canvas>
   <Story name="Nested">
-    {() => {
+    {(args) => {
       const [vertical, setVertical] = useState(true);
       const handleChange = (e) => {
         setVertical(e.detail.selectedItem.textContent === 'Vertical');
@@ -78,7 +78,7 @@ import { useState } from 'react';
           </FlexBox>
           <br />
           <br />
-          <SplitterLayout style={{ width: '100%', height: '1100px' }} vertical={vertical}>
+          <SplitterLayout style={args.style} vertical={vertical}>
             <SplitterElement size="40%">
               <FlexBox direction="Column" style={{ width: '100%', height: '100%' }}>
                 <Button style={{ width: '100%' }}>Content 1</Button>
