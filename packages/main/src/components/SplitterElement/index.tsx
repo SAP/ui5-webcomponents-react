@@ -42,12 +42,12 @@ export interface SplitterElementPropTypes extends CommonProps {
   children?: ReactNode | ReactNode[];
 }
 
-/*
- * The `SplitterElement` holds the data of the content area. Allowed size values are of the type css property width or
+/**
+ * The `SplitterElement` holds the component of the content area. Allowed size values are of the type css property width or
  * height according to the orientation of the `SplitterLayout`. If `size` isn't passed to the element, the width or
  * height of the content area will be calculated automatically according to the size of the given `SplitterLayout`.
  * The `minSize` defines the minimum width or height of the area and is set to 0 when no minimum size is given, so the
- * content are can be completely collapsed.
+ * content can be completely collapsed.
  */
 const SplitterElement = forwardRef((props: SplitterElementPropTypes, ref: RefObject<HTMLDivElement>) => {
   const { children, style, tooltip, className, minSize, size, resizable, ...rest } = props;

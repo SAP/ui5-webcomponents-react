@@ -4,6 +4,10 @@ import { DocsHeader } from '@docs/DocsHeader';
 import { SplitterLayout } from '@ui5/webcomponents-react/dist/SplitterLayout';
 import { SplitterElement } from '@ui5/webcomponents-react/dist/SplitterElement';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
+import { SegmentedButton } from '@ui5/webcomponents-react/dist/SegmentedButton';
+import { SegmentedButtonItem } from '@ui5/webcomponents-react/dist/SegmentedButtonItem';
+import { Label } from '@ui5/webcomponents-react/dist/Label';
+import { useState } from 'react';
 
 <Meta
   title="Layouts & Floorplans / SplitterLayout"
@@ -59,9 +63,22 @@ import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 <Canvas>
   <Story name="Nested">
     {() => {
+      const [vertical, setVertical] = useState(true);
+      const handleChange = (e) => {
+        setVertical(e.detail.selectedItem.textContent === 'Vertical');
+      };
       return (
         <>
-          <SplitterLayout style={{ width: '100%', height: '800px' }} vertical={true}>
+          <FlexBox direction="Column">
+            <Label showColon>Orientation of outer SplitterLayout</Label>
+            <SegmentedButton onSelectionChange={handleChange}>
+              <SegmentedButtonItem pressed={!vertical}>Horizontal</SegmentedButtonItem>
+              <SegmentedButtonItem pressed={vertical}>Vertical</SegmentedButtonItem>
+            </SegmentedButton>
+          </FlexBox>
+          <br />
+          <br />
+          <SplitterLayout style={{ width: '100%', height: '1100px' }} vertical={vertical}>
             <SplitterElement size="40%">
               <FlexBox direction="Column" style={{ width: '100%', height: '100%' }}>
                 <Button style={{ width: '100%' }}>Content 1</Button>

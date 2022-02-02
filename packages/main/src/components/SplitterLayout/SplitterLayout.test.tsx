@@ -1,11 +1,10 @@
-import { render, renderRtl } from '@shared/tests';
-import { fireEvent, screen } from '@shared/tests/index';
+import { fireEvent, render, renderRtl, screen } from '@shared/tests';
 import { SplitterLayout } from '@ui5/webcomponents-react/dist/SplitterLayout';
 import { SplitterElement } from '@ui5/webcomponents-react/dist/SplitterElement';
 import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { createCustomPropsTest } from '@shared/tests/utils';
 import React from 'react';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
 
 const keyDownOptions = (direction) => ({ code: `Arrow${direction}`, key: `Arrow${direction}` });
 

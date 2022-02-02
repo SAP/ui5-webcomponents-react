@@ -1,5 +1,4 @@
-import { useI18nBundle, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/dist/ThemingParameters';
+import { ThemingParameters, useI18nBundle, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
 import { PRESS_ARROW_KEYS_TO_MOVE } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { Icon } from '@ui5/webcomponents-react/dist/Icon';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';

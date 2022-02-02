@@ -24,17 +24,15 @@ export interface SplitterLayoutPropTypes extends CommonProps {
 
 /**
  * A layout that contains several content areas. The content that is added to the `SplitterLayout` should be wrapped
- * into 0-n `SplitterElements` which define the size and size constraints of the content area.
+ * into 0-n `SplitterElement`s which define the size and size constraints of the content area.
  * The orientation of the `SplitterLayout` can be set to horizontal (default) or vertical. All content areas of the
  * layout will be arranged in that way. In order to split vertically and horizontally at the same time, splitters need
  * to be nested.
- * By adding or changing `SplitterElements` to the controls that make up the content areas, the size can be changed
+ * By adding or changing `SplitterElement`s to the `SplitterLayout` that make up the content areas, the size can be changed
  * programmatically. Additionally the content areas can be made non-resizable individually and a minimal size (in px)
  * can be set.
  * The splitter bars are focusable to enable resizing of the content areas via keyboard. The size of the content areas
  * can be manipulated when the splitter bar is focused and Left/Down/Right/Up are pressed.
- * The splitter bars used for resizing the content areas by the user can be set to different widths (or heights in
- * vertical mode) and the splitter will automatically resize the other content areas accordingly.
  */
 const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTMLDivElement>) => {
   const { vertical = false, children, title, tooltip, style, className, ...rest } = props;
