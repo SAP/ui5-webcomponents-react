@@ -32,7 +32,6 @@ export default {
     '^@ui5/webcomponents-react-base/types(.*)$': '<rootDir>/packages/base/types/$1',
     '^@ui5/webcomponents-react-base/dist/(.*)$': '<rootDir>/packages/base/src/$1',
     '^@ui5/webcomponents-react-base$': '<rootDir>/packages/base/src/index.ts',
-    '^@ui5/webcomponents-react-charts/(.*)$': '<rootDir>/packages/charts/src/$1',
     '\\.(css|less)$': 'identity-obj-proxy'
   },
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx']
