@@ -35,7 +35,7 @@ export interface SplitterLayoutPropTypes extends CommonProps {
  * can be manipulated when the splitter bar is focused and Left/Down/Right/Up are pressed.
  */
 const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTMLDivElement>) => {
-  const { vertical = false, children, title, tooltip, style, className, ...rest } = props;
+  const { vertical, children, title, tooltip, style, className, ...rest } = props;
   const classes = useStyles();
 
   const layoutElements = useConcatSplitterElements(children ?? [], style?.width, style?.height, vertical);
