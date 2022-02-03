@@ -38,7 +38,12 @@ const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTML
   const { vertical, children, title, tooltip, style, className, ...rest } = props;
   const classes = useStyles();
 
-  const layoutElements = useConcatSplitterElements(children ?? [], style?.width, style?.height, vertical);
+  const layoutElements = useConcatSplitterElements({
+    children: children ?? [],
+    width: style?.width,
+    height: style?.height,
+    vertical
+  });
 
   return (
     <SplitterLayoutContext.Provider value={{ vertical }}>

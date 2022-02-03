@@ -3,18 +3,22 @@ import React, { cloneElement, CSSProperties, ReactElement, useMemo } from 'react
 import { safeGetChildrenArray } from '../../internal/safeGetChildrenArray';
 import { Splitter } from '../Splitter';
 
-export const useConcatSplitterElements = (
-  children: ReactElement<SplitterElementPropTypes> | ReactElement<SplitterElementPropTypes>[],
-  width: CSSProperties['width'],
-  height: CSSProperties['height'],
-  vertical: boolean
-) => {
+interface ConcatSplitterElements {
+  children: ReactElement<SplitterElementPropTypes> | ReactElement<SplitterElementPropTypes>[];
+  width: CSSProperties['width'];
+  height: CSSProperties['height'];
+  vertical: boolean;
+}
+
+export const useConcatSplitterElements = (concatSplitterElements: ConcatSplitterElements) => {
   return useMemo(() => {
-    if (React.isValidElement(children)) {
-      return children;
+    if (React.isValidElement(concatSplitterElements?.children)) {
+      return concatSplitterElements?.children;
     }
 
-    const childrenArray: ReactElement<SplitterElementPropTypes>[] = safeGetChildrenArray(children);
+    const childrenArray: ReactElement<SplitterElementPropTypes>[] = safeGetChildrenArray(
+      concatSplitterElements?.children
+    );
     let splitterCount = 0;
 
     childrenArray.forEach((child, index) => {
@@ -28,7 +32,12 @@ export const useConcatSplitterElements = (
         childrenArray.splice(
           index + splitterCount + 1,
           0,
-          <Splitter key={`splitter${index}`} height={height} width={width} vertical={vertical} />
+          <Splitter
+            key={`splitter${index}`}
+            height={concatSplitterElements?.height}
+            width={concatSplitterElements?.width}
+            vertical={concatSplitterElements?.vertical}
+          />
         );
         ++splitterCount;
       } else if (index > 0 && splitterElementChild?.props.resizable === false) {
@@ -40,7 +49,7 @@ export const useConcatSplitterElements = (
       }
     });
 
-    if (children.length !== 0) {
+    if (concatSplitterElements?.children.length !== 0) {
       const indexOfLastElement = childrenArray?.length - 1;
       childrenArray[indexOfLastElement] = cloneElement(
         childrenArray?.[indexOfLastElement],
@@ -54,5 +63,5 @@ export const useConcatSplitterElements = (
     }
 
     return childrenArray;
-  }, [children, width, height, vertical]);
+  }, [concatSplitterElements]);
 };
