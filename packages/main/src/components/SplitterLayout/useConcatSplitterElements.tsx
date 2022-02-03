@@ -1,5 +1,5 @@
 import { SplitterElementPropTypes } from '@ui5/webcomponents-react/dist/SplitterElement';
-import React, { cloneElement, CSSProperties, ReactElement, useMemo } from 'react';
+import React, { Children, cloneElement, CSSProperties, ReactElement, useMemo } from 'react';
 import { safeGetChildrenArray } from '../../internal/safeGetChildrenArray';
 import { Splitter } from '../Splitter';
 
@@ -16,9 +16,10 @@ export const useConcatSplitterElements = (concatSplitterElements: ConcatSplitter
       return concatSplitterElements?.children;
     }
 
-    const childrenArray: ReactElement<SplitterElementPropTypes>[] = safeGetChildrenArray(
-      concatSplitterElements?.children
-    );
+    const childrenArray = Children.toArray(concatSplitterElements?.children).filter(
+      React.isValidElement
+    ) as ReactElement<SplitterElementPropTypes>[];
+
     let splitterCount = 0;
 
     childrenArray.forEach((child, index) => {
