@@ -27,7 +27,7 @@ export const useConcatSplitterElements = (concatSplitterElements: ConcatSplitter
       if (
         childrenArray.length - splitterCount - 1 > index &&
         (splitterElementChild.props.resizable || splitterElementChild.props.resizable === undefined) &&
-        !(splitterElementChild.key as string).startsWith('splitter')
+        !splitterElementChild.props.minSize
       ) {
         childrenArray.splice(
           index + splitterCount + 1,
