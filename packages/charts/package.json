@@ -15,7 +15,7 @@
   "license": "Apache-2.0",
   "sideEffects": false,
   "scripts": {
-    "clean": "rimraf components interfaces internal util index.esm.js index.d.ts config.d.ts hooks dist",
+    "clean": "rimraf dist",
     "build": "tsc"
   },
   "dependencies": {
