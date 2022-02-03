@@ -3,11 +3,12 @@ import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { DocsHeader } from '@docs/DocsHeader';
 import { SplitterLayout } from '@ui5/webcomponents-react/dist/SplitterLayout';
 import { SplitterElement } from '@ui5/webcomponents-react/dist/SplitterElement';
-import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { SegmentedButton } from '@ui5/webcomponents-react/dist/SegmentedButton';
 import { SegmentedButtonItem } from '@ui5/webcomponents-react/dist/SegmentedButtonItem';
 import { Label } from '@ui5/webcomponents-react/dist/Label';
 import { useState, useEffect } from 'react';
+import { SplitterElementContent } from '../../../../../.storybook/components/SplitterElementContent';
+import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 
 <Meta
   title="Layouts & Floorplans / SplitterLayout"
@@ -31,22 +32,22 @@ import { useState, useEffect } from 'react';
       return (
         <SplitterLayout {...args}>
           <SplitterElement>
-            <Button style={{ width: '100%' }}>Content 1</Button>
-          </SplitterElement>
-          <SplitterElement minSize={200}>
-            <Button style={{ width: '100%' }}>Content 2 (minSize: 200)</Button>
+            <SplitterElementContent text="Content 1" />
           </SplitterElement>
           <SplitterElement>
-            <Button style={{ width: '100%' }}>Content 3</Button>
-          </SplitterElement>
-          <SplitterElement resizable={false}>
-            <Button style={{ width: '100%' }}>Content 4 (not resizable)</Button>
+            <SplitterElementContent
+              text={`Content 2
+            with
+            multi
+            lines
+            `}
+            />
           </SplitterElement>
           <SplitterElement>
-            <Button style={{ width: '100%' }}>Content 5</Button>
+            <SplitterElementContent text="Content 3 with long text: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet." />
           </SplitterElement>
           <SplitterElement>
-            <Button style={{ width: '100%' }}>Content 6 (size: 200px)</Button>
+            <SplitterElementContent text="Content 4" />
           </SplitterElement>
         </SplitterLayout>
       );
@@ -57,6 +58,43 @@ import { useState, useEffect } from 'react';
 ## Properties
 
 <ArgsTable story="." />
+
+## SplitterLayout with non-resizable areas & areas with min-width
+
+<Canvas>
+  <Story name="Limited areas">
+    {(args) => {
+      return (
+        <SplitterLayout {...args}>
+          <SplitterElement size="10%">
+            <SplitterElementContent text="Content 1 - (size: 10%)" background="cadetblue" />
+          </SplitterElement>
+          <SplitterElement>
+            <SplitterElementContent text="Content 2" background="skyblue" />
+          </SplitterElement>
+          <SplitterElement minSize={200}>
+            <SplitterElementContent text="Content 3 (minSize: 200)" background="lightblue" />
+          </SplitterElement>
+          <SplitterElement>
+            <SplitterElementContent text="Content 4" background="paleturquoise" />
+          </SplitterElement>
+          <SplitterElement>
+            <SplitterElementContent text="Content 5" background="lightskyblue" />
+          </SplitterElement>
+          <SplitterElement resizable={false} size="150px">
+            <SplitterElementContent text="Content 6 (not resizable - size: 150px)" background="powderblue" />
+          </SplitterElement>
+          <SplitterElement>
+            <SplitterElementContent text="Content 7" background="aliceblue" />
+          </SplitterElement>
+          <SplitterElement>
+            <SplitterElementContent text="Content 8" background="lightsteelblue" />
+          </SplitterElement>
+        </SplitterLayout>
+      );
+    }}
+  </Story>
+</Canvas>
 
 ## Nested SplitterLayouts
 
