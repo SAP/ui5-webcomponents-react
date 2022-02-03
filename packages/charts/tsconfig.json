@@ -1,4 +1,16 @@
 {
   "extends": "../../tsconfig.json",
-  "include": ["src/index.ts", "src/interfaces"]
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "./dist",
+    "declarationDir": "./dist"
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.test.ts",
+    "**/*.test.tsx"
+  ]
 }
