@@ -34,16 +34,8 @@
     "access": "public"
   },
   "files": [
-    "components",
     "dist",
-    "hooks",
-    "interfaces",
-    "internal",
     "CHANGELOG.md",
-    "index.d.ts",
-    "index.esm.js",
-    "LICENSE",
-    "NOTICE.txt",
-    "README.md"
+    "NOTICE.txt"
   ]
 }
