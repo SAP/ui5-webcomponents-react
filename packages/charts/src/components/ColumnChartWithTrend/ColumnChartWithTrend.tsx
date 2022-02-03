@@ -1,6 +1,4 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import { ComposedChart } from '@ui5/webcomponents-react-charts/dist//ComposedChart';
-import { ColumnChartWithTrendPlaceholder } from '@ui5/webcomponents-react-charts/dist/ColumnChartWithTrendPlaceholder';
 import React, { CSSProperties, FC, forwardRef, Ref } from 'react';
 import { TooltipProps } from 'recharts';
 import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
@@ -11,6 +9,8 @@ import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { defaultFormatter } from '../../internal/defaults';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
+import { ComposedChart } from '../ComposedChart';
+import { ColumnChartWithTrendPlaceholder } from './Placeholder';
 
 interface MeasureConfig extends IChartMeasure {
   /**

@@ -1,18 +1,18 @@
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
-import { ChartContainer } from '@ui5/webcomponents-react-charts/dist/components/ChartContainer';
-import { PieChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/PieChartPlaceholder';
-import { useLegendItemClick } from '@ui5/webcomponents-react-charts/dist/useLegendItemClick';
 import React, { cloneElement, CSSProperties, FC, forwardRef, isValidElement, Ref, useCallback, useMemo } from 'react';
 import { Cell, Label, Legend, Pie, PieChart as PieChartLib, Sector, Text, Tooltip } from 'recharts';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
+import { useLegendItemClick } from '../../hooks/useLegendItemClick';
 import { useOnClickInternal } from '../../hooks/useOnClickInternal';
 import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { IPolarChartConfig } from '../../interfaces/IPolarChartConfig';
+import { ChartContainer } from '../../internal/ChartContainer';
 import { defaultFormatter } from '../../internal/defaults';
 import { tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
+import { PieChartPlaceholder } from './Placeholder';
 
 interface MeasureConfig extends Omit<IChartMeasure, 'accessor' | 'label' | 'color' | 'hideDataLabel'> {
   /**

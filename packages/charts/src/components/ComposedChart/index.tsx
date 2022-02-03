@@ -1,11 +1,4 @@
 import { enrichEventWithDetails, ThemingParameters, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
-import { ChartContainer } from '@ui5/webcomponents-react-charts/dist/components/ChartContainer';
-import { ChartDataLabel } from '@ui5/webcomponents-react-charts/dist/components/ChartDataLabel';
-import { XAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/XAxisTicks';
-import { YAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/YAxisTicks';
-import { ComposedChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/ComposedChartPlaceholder';
-import { useLegendItemClick } from '@ui5/webcomponents-react-charts/dist/useLegendItemClick';
-import { resolvePrimaryAndSecondaryMeasures } from '@ui5/webcomponents-react-charts/dist/Utils';
 import React, { CSSProperties, FC, forwardRef, Ref, useCallback } from 'react';
 import {
   Area,
@@ -24,6 +17,7 @@ import {
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin';
 import { useLabelFormatter } from '../../hooks/useLabelFormatter';
+import { useLegendItemClick } from '../../hooks/useLegendItemClick';
 import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
 import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights';
 import { useOnClickInternal } from '../../hooks/useOnClickInternal';
@@ -32,10 +26,15 @@ import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
+import { ChartContainer } from '../../internal/ChartContainer';
+import { ChartDataLabel } from '../../internal/ChartDataLabel';
 import { defaultFormatter } from '../../internal/defaults';
 import { tickLineConfig, tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
-import { getCellColors } from '../../internal/Utils';
+import { resolvePrimaryAndSecondaryMeasures, getCellColors } from '../../internal/Utils';
+import { XAxisTicks } from '../../internal/XAxisTicks';
+import { YAxisTicks } from '../../internal/YAxisTicks';
+import { ComposedChartPlaceholder } from './Placeholder';
 
 const dimensionDefaults = {
   formatter: defaultFormatter

@@ -1,24 +1,23 @@
-// Library Export
-import { BarChart } from './dist/BarChart';
-import { BarChartPlaceholder } from './dist/BarChartPlaceholder';
-import { BulletChart } from './dist/BulletChart';
-import { BulletChartPlaceholder } from './dist/BulletChartPlaceholder';
-import { ColumnChart } from './dist/ColumnChart';
-import { ColumnChartPlaceholder } from './dist/ColumnChartPlaceholder';
-import { ColumnChartWithTrend } from './dist/ColumnChartWithTrend';
-import { ColumnChartWithTrendPlaceholder } from './dist/ColumnChartWithTrendPlaceholder';
-import { ComposedChart } from './dist/ComposedChart';
-import { ComposedChartPlaceholder } from './dist/ComposedChartPlaceholder';
-import { DonutChart } from './dist/DonutChart';
-import { LineChart } from './dist/LineChart';
-import { LineChartPlaceholder } from './dist/LineChartPlaceholder';
-import { MicroBarChart } from './dist/MicroBarChart';
-import { PieChart } from './dist/PieChart';
-import { PieChartPlaceholder } from './dist/PieChartPlaceholder';
-import { RadarChart } from './dist/RadarChart';
-import { RadialChart } from './dist/RadialChart';
-import { ScatterChart } from './dist/ScatterChart';
-import { ScatterChartPlaceholder } from './dist/ScatterChartPlaceholder';
+import { BarChart } from './components/BarChart/BarChart';
+import { BarChartPlaceholder } from './components/BarChart/Placeholder';
+import { BulletChart } from './components/BulletChart/BulletChart';
+import { BulletChartPlaceholder } from './components/BulletChart/Placeholder';
+import { ColumnChart } from './components/ColumnChart/ColumnChart';
+import { ColumnChartPlaceholder } from './components/ColumnChart/Placeholder';
+import { ColumnChartWithTrend } from './components/ColumnChartWithTrend/ColumnChartWithTrend';
+import { ColumnChartWithTrendPlaceholder } from './components/ColumnChartWithTrend/Placeholder';
+import { ComposedChart } from './components/ComposedChart';
+import { ComposedChartPlaceholder } from './components/ComposedChart/Placeholder';
+import { DonutChart } from './components/DonutChart/DonutChart';
+import { LineChart } from './components/LineChart/LineChart';
+import { LineChartPlaceholder } from './components/LineChart/Placeholder';
+import { MicroBarChart } from './components/MicroBarChart/MicroBarChart';
+import { PieChart } from './components/PieChart/PieChart';
+import { PieChartPlaceholder } from './components/PieChart/Placeholder';
+import { RadarChart } from './components/RadarChart/RadarChart';
+import { RadialChart } from './components/RadialChart/RadialChart';
+import { ScatterChartPlaceholder } from './components/ScatterChart/Placeholder';
+import { ScatterChart } from './components/ScatterChart/ScatterChart';
 
 export {
   BarChart,

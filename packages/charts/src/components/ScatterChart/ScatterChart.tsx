@@ -1,9 +1,4 @@
 import { enrichEventWithDetails, ThemingParameters, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
-import { ChartContainer } from '@ui5/webcomponents-react-charts/dist/components/ChartContainer';
-import { XAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/XAxisTicks';
-import { YAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/YAxisTicks';
-import { ScatterChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/ScatterChartPlaceholder';
-import { useLegendItemClick } from '@ui5/webcomponents-react-charts/dist/useLegendItemClick';
 import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useRef } from 'react';
 import {
   CartesianGrid,
@@ -18,6 +13,7 @@ import {
   ZAxis
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin';
+import { useLegendItemClick } from '../../hooks/useLegendItemClick';
 import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
 import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
@@ -25,9 +21,13 @@ import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { ICartesianChartConfig } from '../../interfaces/ICartesianChartConfig';
 import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
+import { ChartContainer } from '../../internal/ChartContainer';
 import { defaultFormatter } from '../../internal/defaults';
 import { tickLineConfig, tooltipContentStyle, tooltipFillOpacity, xAxisPadding } from '../../internal/staticProps';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
+import { XAxisTicks } from '../../internal/XAxisTicks';
+import { YAxisTicks } from '../../internal/YAxisTicks';
+import { ScatterChartPlaceholder } from './Placeholder';
 
 interface MeasureConfig extends Omit<IChartMeasure, 'color' | 'hideDataLabel' | 'DataLabel'> {
   /**

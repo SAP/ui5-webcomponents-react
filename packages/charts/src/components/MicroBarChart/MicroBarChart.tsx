@@ -1,6 +1,4 @@
 import { enrichEventWithDetails, ThemingParameters } from '@ui5/webcomponents-react-base';
-import { BarChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/BarChartPlaceholder';
-import { ChartContainer } from '@ui5/webcomponents-react-charts/dist/components/ChartContainer';
 import clsx from 'clsx';
 import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
@@ -8,8 +6,10 @@ import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
+import { ChartContainer } from '../../internal/ChartContainer';
 import { defaultFormatter } from '../../internal/defaults';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
+import { BarChartPlaceholder } from '../BarChart/Placeholder';
 
 interface MeasureConfig extends Omit<IChartMeasure, 'color'> {
   /**

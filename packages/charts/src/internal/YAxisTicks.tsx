@@ -1,8 +1,8 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import { getTextWidth, truncateLongLabel } from '@ui5/webcomponents-react-charts/dist/Utils';
 import React, { FC } from 'react';
 import { IChartMeasure } from '../interfaces/IChartMeasure';
 import { defaultMaxYAxisWidth } from './defaults';
+import { getTextWidth, truncateLongLabel } from './Utils';
 
 interface YAxisTicksProps {
   x?: number;
