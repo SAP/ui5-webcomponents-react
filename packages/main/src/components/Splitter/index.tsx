@@ -22,7 +22,7 @@ const useStyles = createUseStyles(
         border: `${ThemingParameters.sapContent_FocusWidth} ${ThemingParameters.sapContent_FocusStyle} ${ThemingParameters.sapContent_FocusColor}`,
         outline: 'none'
       },
-      '&[data-splitter-vertical=vertical]': {
+      '&[data-splitter-vertical=horizontal]': {
         cursor: 'col-resize',
         minWidth: '1rem',
         width: '1rem',
@@ -45,7 +45,7 @@ const useStyles = createUseStyles(
           backgroundImage: `linear-gradient(to bottom, ${ThemingParameters.sapHighlightColor}, transparent)`
         }
       },
-      '&[data-splitter-vertical=horizontal]': {
+      '&[data-splitter-vertical=vertical]': {
         cursor: 'row-resize',
         minHeight: '1rem',
         height: '1rem',
@@ -68,7 +68,7 @@ const useStyles = createUseStyles(
           backgroundImage: `linear-gradient(to right, ${ThemingParameters.sapHighlightColor}, transparent)`
         }
       },
-      '&[data-splitter-vertical=horizontalRtl]': {
+      '&[data-splitter-vertical=verticalRtl]': {
         cursor: 'row-resize',
         minHeight: '1rem',
         height: '1rem',
@@ -120,16 +120,6 @@ export interface SplitterPropTypes extends CommonProps {
 }
 
 const verticalPositionInfo = {
-  start: 'left',
-  end: 'right',
-  position: 'X',
-  positionRect: 'x',
-  size: 'width',
-  min: 'minWidth',
-  offset: 'offsetX'
-};
-
-const horizontalPositionInfo = {
   start: 'top',
   end: 'bottom',
   position: 'Y',
@@ -137,6 +127,16 @@ const horizontalPositionInfo = {
   size: 'height',
   min: 'minHeight',
   offset: 'offsetY'
+};
+
+const horizontalPositionInfo = {
+  start: 'left',
+  end: 'right',
+  position: 'X',
+  positionRect: 'x',
+  size: 'width',
+  min: 'minWidth',
+  offset: 'offsetX'
 };
 
 const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>) => {
@@ -335,7 +335,7 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
   }, [isDragging]);
 
   useEffect(() => {
-    setIsSiblings(!isRtl || !vertical ? ['previousSibling', 'nextSibling'] : ['nextSibling', 'previousSibling']);
+    setIsSiblings(isRtl && !vertical ? ['nextSibling', 'previousSibling'] : ['previousSibling', 'nextSibling']);
   }, [isRtl, vertical]);
 
   return (
@@ -348,13 +348,13 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
       onMouseDown={handleMoveSplitterStart}
       ref={componentRef}
       role="separator"
-      data-splitter-vertical={isRtl && !vertical ? 'horizontalRtl' : vertical ? 'vertical' : 'horizontal'}
+      data-splitter-vertical={isRtl && vertical ? 'verticalRtl' : vertical ? 'vertical' : 'horizontal'}
       title={i18nBundle.getText(PRESS_ARROW_KEYS_TO_MOVE)}
       aria-orientation={vertical ? 'vertical' : 'horizontal'}
       aria-label={i18nBundle.getText(PRESS_ARROW_KEYS_TO_MOVE)}
     >
       <div className={classes.lineBefore} />
-      <Icon className={classes.icon} name={vertical ? 'vertical-grip' : 'horizontal-grip'} />
+      <Icon className={classes.icon} name={vertical ? 'horizontal-grip' : 'vertical-grip'} />
       <div className={classes.lineAfter} />
     </div>
   );

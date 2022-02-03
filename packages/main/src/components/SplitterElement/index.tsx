@@ -62,8 +62,8 @@ const SplitterElement = forwardRef((props: SplitterElementPropTypes, ref: RefObj
       className={clsx(classes.splitterElement, classes[vertical ? 'vertical' : 'horizontal'], className)}
       title={tooltip}
       style={{
-        minHeight: !vertical && minSize ? `${minSize}px` : undefined,
-        minWidth: vertical && minSize ? `${minSize}px` : undefined,
+        minHeight: vertical && minSize ? `${minSize}px` : undefined,
+        minWidth: !vertical && minSize ? `${minSize}px` : undefined,
         flexBasis: size,
         ...style
       }}

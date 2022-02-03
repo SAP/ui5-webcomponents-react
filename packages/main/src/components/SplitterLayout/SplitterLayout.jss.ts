@@ -3,14 +3,14 @@ const styles = {
     display: 'flex',
     overflow: 'hidden',
     position: 'relative',
-    '&[data-splitter-orientation="vertical"]': {
+    '&[data-splitter-orientation="horizontal"]': {
       flexDirection: 'row',
       width: '100%',
       '& > *': {
         height: '100%'
       }
     },
-    '&[data-splitter-orientation="horizontal"]': {
+    '&[data-splitter-orientation="vertical"]': {
       flexDirection: 'column',
       height: '100%',
       '& > *': {

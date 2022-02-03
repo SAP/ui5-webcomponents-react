@@ -50,7 +50,7 @@ const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTML
       <div
         style={
           {
-            flexDirection: vertical ? 'row' : 'column',
+            flexDirection: vertical ? 'column' : 'row',
             ...style
           } as CSSProperties
         }
