@@ -23,11 +23,10 @@ export const useConcatSplitterElements = (concatSplitterElements: ConcatSplitter
 
     childrenArray.forEach((child, index) => {
       const splitterElementChild = childrenArray[index + splitterCount];
-
       if (
         childrenArray.length - splitterCount - 1 > index &&
         (splitterElementChild.props.resizable || splitterElementChild.props.resizable === undefined) &&
-        !splitterElementChild.props.minSize
+        splitterElementChild.props.minSize !== undefined
       ) {
         childrenArray.splice(
           index + splitterCount + 1,
@@ -42,7 +41,7 @@ export const useConcatSplitterElements = (concatSplitterElements: ConcatSplitter
         ++splitterCount;
       } else if (index > 0 && splitterElementChild?.props.resizable === false) {
         const indexOfSplitter = childrenArray.findIndex((element) => element === splitterElementChild) - 1;
-        if ((childrenArray[indexOfSplitter].key as string).startsWith('splitter')) {
+        if (childrenArray[indexOfSplitter].props.minSize === undefined) {
           childrenArray.splice(indexOfSplitter, 1);
         }
         --splitterCount;
