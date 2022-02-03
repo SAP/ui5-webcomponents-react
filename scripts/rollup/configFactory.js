@@ -34,7 +34,6 @@ const rollupConfigFactory = (pkgName, externals = []) => {
       'react',
       'react-dom',
       'react-jss',
-      'prop-types',
       packageJson.name,
       ...Object.keys(packageJson.dependencies || {}),
       ...Object.keys(packageJson.peerDependencies || {}),
