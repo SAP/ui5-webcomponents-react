@@ -1,5 +1,4 @@
-import { debounce, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
-import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
+import { debounce, Device, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
 import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';
@@ -110,7 +109,7 @@ const DynamicPageTitle = forwardRef((props: DynamicPageTitlePropTypes, ref: Ref<
   useDeprecationNoticeForTooltip('DynamicPageTitle', props.tooltip);
 
   const classes = useStyles();
-  const containerClasses = clsx(classes.container, className, isIE() && classes.iEClass);
+  const containerClasses = clsx(classes.container, className, Device.isIE() && classes.iEClass);
   const [componentRef, dynamicPageTitleRef] = useSyncRef<HTMLDivElement>(ref);
   const [showNavigationInTopArea, setShowNavigationInTopArea] = useState(undefined);
   const isRtl = useIsRTL(dynamicPageTitleRef);
