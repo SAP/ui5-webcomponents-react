@@ -1,4 +1,4 @@
-import { ScatterChart } from '@ui5/webcomponents-react-charts/dist/ScatterChart';
+import { ScatterChart } from './ScatterChart';
 import * as React from 'react';
 import { scatterComplexDataSet } from '../../resources/DemoProps';
 import {

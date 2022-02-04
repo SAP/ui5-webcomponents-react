@@ -1,4 +1,4 @@
-import { getTextWidth } from '@ui5/webcomponents-react-charts/dist/Utils';
+import { getTextWidth } from '../internal/Utils';
 import { useMemo } from 'react';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { defaultMaxYAxisWidth } from '../internal/defaults';

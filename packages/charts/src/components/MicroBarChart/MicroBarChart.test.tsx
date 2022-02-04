@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { render, screen, fireEvent } from '@shared/tests/index';
-import { MicroBarChart } from '@ui5/webcomponents-react-charts/dist/MicroBarChart';
+import { MicroBarChart } from './MicroBarChart';
 import { createChartRenderTest, createLoadingPlaceholderTest, createOnClickChartTest } from '@shared/tests/chartUtils';
 import { createCustomPropsTest } from '@shared/tests/utils';
 

@@ -1,6 +1,6 @@
-import { LineChart } from '@ui5/webcomponents-react-charts/dist/LineChart';
 import React from 'react';
 import { bigDataSet } from '../../resources/DemoProps';
+import { LineChart } from './LineChart';
 
 export const LinearGradientExample = (props: any) => {
   return (

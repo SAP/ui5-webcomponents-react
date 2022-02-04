@@ -1,8 +1,4 @@
 import { enrichEventWithDetails, ThemingParameters } from '@ui5/webcomponents-react-base';
-import { ChartContainer } from '@ui5/webcomponents-react-charts/dist/components/ChartContainer';
-import { ChartDataLabel } from '@ui5/webcomponents-react-charts/dist/components/ChartDataLabel';
-import { PieChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/PieChartPlaceholder';
-import { useLegendItemClick } from '@ui5/webcomponents-react-charts/dist/useLegendItemClick';
 import React, { FC, forwardRef, Ref, useCallback, useRef } from 'react';
 import {
   Legend,
@@ -14,14 +10,18 @@ import {
   Tooltip
 } from 'recharts';
 import { useLabelFormatter } from '../../hooks/useLabelFormatter';
+import { useLegendItemClick } from '../../hooks/useLegendItemClick';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
+import { ChartContainer } from '../../internal/ChartContainer';
+import { ChartDataLabel } from '../../internal/ChartDataLabel';
 import { defaultFormatter } from '../../internal/defaults';
 import { tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
+import { PieChartPlaceholder } from '../PieChart/Placeholder';
 
 interface MeasureConfig extends IChartMeasure {
   /**
@@ -100,7 +100,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
     legendPosition: 'bottom',
     legendHorizontalAlign: 'center',
     dataLabel: true,
-    polarGridType: 'circle' as 'circle',
+    polarGridType: 'circle' as const,
     resizeDebounce: 250,
     ...props.chartConfig
   };

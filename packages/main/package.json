@@ -22,7 +22,7 @@
   ],
   "scripts": {
     "clean": "rimraf components enums interfaces internal webComponents index.esm.js index.d.ts dist wrappers dist",
-    "build": "npm-run-all -s build:i18n build:rollup",
+    "build": "npm-run-all -s build:i18n build:rollup build:types",
     "build:rollup": "rollup -c rollup.config.mjs",
     "build:i18n": "npm-run-all -s build:i18n-bundles build:i18n-default build:i18n-imports build:assets",
     "build:i18n-bundles": "mkdirp dist/assets/i18n && node ../../node_modules/@ui5/webcomponents-tools/lib/i18n/toJSON.js src/i18n dist/assets/i18n",

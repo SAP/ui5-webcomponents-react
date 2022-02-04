@@ -1,7 +1,7 @@
-import { getTextWidth } from '@ui5/webcomponents-react-charts/dist/Utils';
 import { useMemo } from 'react';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { defaultMaxYAxisWidth } from '../internal/defaults';
+import { getTextWidth } from '../internal/Utils';
 
 export const useLongestYAxisLabelBar = (dataset: unknown[], elements): [number[], object] =>
   useMemo(() => {

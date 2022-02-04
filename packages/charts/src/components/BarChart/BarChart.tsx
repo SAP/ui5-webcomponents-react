@@ -1,12 +1,4 @@
-import { useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
-import { enrichEventWithDetails, ThemingParameters } from '@ui5/webcomponents-react-base';
-import { BarChartPlaceholder } from '@ui5/webcomponents-react-charts/dist/BarChartPlaceholder';
-import { ChartContainer } from '@ui5/webcomponents-react-charts/dist/components/ChartContainer';
-import { ChartDataLabel } from '@ui5/webcomponents-react-charts/dist/components/ChartDataLabel';
-import { XAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/XAxisTicks';
-import { YAxisTicks } from '@ui5/webcomponents-react-charts/dist/components/YAxisTicks';
-import { useLegendItemClick } from '@ui5/webcomponents-react-charts/dist/useLegendItemClick';
-import { getCellColors, resolvePrimaryAndSecondaryMeasures } from '@ui5/webcomponents-react-charts/dist/Utils';
+import { enrichEventWithDetails, ThemingParameters, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
 import React, { CSSProperties, FC, forwardRef, Ref, useCallback } from 'react';
 import {
   Bar,
@@ -26,6 +18,7 @@ import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { useCancelAnimationFallback } from '../../hooks/useCancelAnimationFallback';
 import { useChartMargin } from '../../hooks/useChartMargin';
 import { useLabelFormatter } from '../../hooks/useLabelFormatter';
+import { useLegendItemClick } from '../../hooks/useLegendItemClick';
 import { useLongestYAxisLabelBar } from '../../hooks/useLongestYAxisLabelBar';
 import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights';
 import { useOnClickInternal } from '../../hooks/useOnClickInternal';
@@ -34,9 +27,15 @@ import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
+import { ChartContainer } from '../../internal/ChartContainer';
+import { ChartDataLabel } from '../../internal/ChartDataLabel';
 import { defaultFormatter } from '../../internal/defaults';
 import { tickLineConfig, tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
+import { getCellColors, resolvePrimaryAndSecondaryMeasures } from '../../internal/Utils';
+import { XAxisTicks } from '../../internal/XAxisTicks';
+import { YAxisTicks } from '../../internal/YAxisTicks';
+import { BarChartPlaceholder } from './Placeholder';
 
 const dimensionDefaults = {
   formatter: defaultFormatter
