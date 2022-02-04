@@ -1,10 +1,10 @@
-import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
+import { Device } from '@ui5/webcomponents-react-base';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import clsx from 'clsx';
 import React, { forwardRef, ReactNode, Ref, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { DynamicPageHeaderStyles } from './DynamicPageHeader.jss';
-import clsx from 'clsx';
 
 export interface DynamicPageHeaderPropTypes extends CommonProps {
   /**
@@ -46,7 +46,7 @@ const DynamicPageHeader = forwardRef((props: InternalProps, ref: Ref<HTMLDivElem
   }, [headerPinned, topHeaderHeight, style]);
 
   const classes = useStyles();
-  const classNames = clsx(classes.header, className, isIE() && classes.iEClass);
+  const classNames = clsx(classes.header, className, Device.isIE() && classes.iEClass);
 
   return (
     <div

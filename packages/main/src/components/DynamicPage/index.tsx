@@ -1,10 +1,10 @@
-import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
 import {
   debounce,
+  Device,
   enrichEventWithDetails,
+  ThemingParameters,
   useResponsiveContentPadding,
-  useSyncRef,
-  ThemingParameters
+  useSyncRef
 } from '@ui5/webcomponents-react-base';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { GlobalStyleClasses } from '@ui5/webcomponents-react/dist/GlobalStyleClasses';
@@ -114,7 +114,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
   const [componentRefHeaderContent, headerContentRef] = useSyncRef(headerContent?.ref);
 
   const [headerState, setHeaderState] = useState<HEADER_STATES>(
-    alwaysShowContentHeader ? HEADER_STATES.VISIBLE_PINNED : isIE() ? HEADER_STATES.VISIBLE : HEADER_STATES.AUTO
+    alwaysShowContentHeader ? HEADER_STATES.VISIBLE_PINNED : Device.isIE() ? HEADER_STATES.VISIBLE : HEADER_STATES.AUTO
   );
 
   const classes = useStyles();
@@ -159,7 +159,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
 
   useEffect(() => {
     const oneTimeScrollHandler = () => {
-      if (!isIE()) {
+      if (!Device.isIE()) {
         setHeaderState(HEADER_STATES.AUTO);
       }
     };
@@ -202,12 +202,12 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
   useEffect(() => {
     if (alwaysShowContentHeader) {
       setHeaderState(HEADER_STATES.VISIBLE_PINNED);
-    } else if (!isIE()) {
+    } else if (!Device.isIE()) {
       setHeaderState(HEADER_STATES.AUTO);
     }
   }, [alwaysShowContentHeader, setHeaderState]);
 
-  const anchorBarClasses = clsx(classes.anchorBar, isIE() && classes.iEClass);
+  const anchorBarClasses = clsx(classes.anchorBar, Device.isIE() && classes.iEClass);
   const responsivePaddingClass = useResponsiveContentPadding(dynamicPageRef.current);
 
   const onDynamicPageScroll = (e) => {
@@ -271,7 +271,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
           a11yConfig={a11yConfig}
         />
       </FlexBox>
-      {isIE() && (
+      {Device.isIE() && (
         <div
           className={classes.iEBackgroundElement}
           style={{
@@ -287,7 +287,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
         data-component-name="DynamicPageContent"
         className={`${classes.contentContainer} ${responsivePaddingClass}`}
         style={{
-          marginTop: isIE() ? `${headerContentHeight + topHeaderHeight + 34}px` : 0,
+          marginTop: Device.isIE() ? `${headerContentHeight + topHeaderHeight + 34}px` : 0,
           paddingBottom: footer ? '1rem' : 0
         }}
       >

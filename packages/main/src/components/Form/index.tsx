@@ -1,5 +1,4 @@
-import { getCurrentRange } from '@ui5/webcomponents-react-base/dist/Device';
-import { CssSizeVariables, ThemingParameters, useSyncRef } from '@ui5/webcomponents-react-base';
+import { CssSizeVariables, Device, ThemingParameters, useSyncRef } from '@ui5/webcomponents-react-base';
 import { Title } from '@ui5/webcomponents-react/dist/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
@@ -141,12 +140,12 @@ const Form = forwardRef((props: FormPropTypes, ref: Ref<HTMLFormElement>) => {
 
   const [componentRef, formRef] = useSyncRef<HTMLFormElement>(ref);
   // use the window range set as first best guess
-  const [currentRange, setCurrentRange] = useState(getCurrentRange().name);
+  const [currentRange, setCurrentRange] = useState(Device.getCurrentRange().name);
   const lastRange = useRef(currentRange);
 
   useEffect(() => {
     const observer = new ResizeObserver(([form]) => {
-      const rangeInfo = getCurrentRange(form.contentRect.width);
+      const rangeInfo = Device.getCurrentRange(form.contentRect.width);
       if (rangeInfo && lastRange.current !== rangeInfo.name) {
         lastRange.current = rangeInfo.name;
         setCurrentRange(rangeInfo.name);

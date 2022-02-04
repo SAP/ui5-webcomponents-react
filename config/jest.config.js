@@ -30,7 +30,6 @@ export default {
     '^@ui5/webcomponents-react/dist/([Aa]ssets.*)$': '<rootDir>/packages/main/dist/$1',
     '^@ui5/webcomponents-react/(.*)$': '<rootDir>/packages/main/src/$1',
     '^@ui5/webcomponents-react$': '<rootDir>/packages/main/src/index.ts',
-    '^@ui5/webcomponents-react-base/dist/(.*)$': '<rootDir>/packages/base/src/$1',
     '^@ui5/webcomponents-react-base$': '<rootDir>/packages/base/src/index.ts',
     '\\.(css|less)$': 'identity-obj-proxy'
   },

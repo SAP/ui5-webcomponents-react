@@ -1,5 +1,4 @@
-import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
-import { useViewportRange } from '@ui5/webcomponents-react-base';
+import { Device, useViewportRange } from '@ui5/webcomponents-react-base';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { GridPosition } from '@ui5/webcomponents-react/dist/GridPosition';
 import React, {
@@ -139,7 +138,7 @@ const Grid = forwardRef((props: GridPropTypes, ref: Ref<HTMLDivElement>) => {
       if (indentSpan && indentSpan > 0) {
         childrenWithGridLayout.unshift(<span className={classes[`gridSpan${indentSpan}`]} />);
       }
-      if (isIE()) {
+      if (Device.isIE()) {
         return childrenWithGridLayout.map((item, index) => {
           let colStart;
           if (childrenWithGridLayout.length === 2 && index === 0) {

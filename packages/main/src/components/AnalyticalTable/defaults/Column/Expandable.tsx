@@ -1,5 +1,4 @@
-import { CssSizeVariables } from '@ui5/webcomponents-react-base';
-import { isIE } from '@ui5/webcomponents-react-base/dist/Device';
+import { CssSizeVariables, Device } from '@ui5/webcomponents-react-base';
 import { Icon } from '@ui5/webcomponents-react/dist/Icon';
 import React, { CSSProperties } from 'react';
 
@@ -10,7 +9,7 @@ const tableGroupExpandCollapseIcon = {
   padding: '0.625rem',
   display: 'block'
 };
-const isBrowserIe = isIE();
+const isBrowserIe = Device.isIE();
 const getPadding = (level) => {
   switch (level) {
     case 0:
