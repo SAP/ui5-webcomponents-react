@@ -1,8 +1,7 @@
+import { Label, Loader } from '@ui5/webcomponents-react';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import { Label } from '@ui5/webcomponents-react/dist/Label';
-import { Loader } from '@ui5/webcomponents-react/dist/Loader';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import React, { ComponentType, CSSProperties, FC, forwardRef, ReactElement, ReactNode, Ref, useMemo } from 'react';
+import type { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import React, { ComponentType, CSSProperties, FC, forwardRef, ReactElement, ReactNode, Ref } from 'react';
 import { createUseStyles } from 'react-jss';
 import { ResponsiveContainer } from 'recharts';
 

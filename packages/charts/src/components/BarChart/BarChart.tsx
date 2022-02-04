@@ -1,5 +1,4 @@
-import { enrichEventWithDetails, ThemingParameters } from '@ui5/webcomponents-react-base';
-import { useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks';
+import { enrichEventWithDetails, ThemingParameters, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
 import React, { CSSProperties, FC, forwardRef, Ref, useCallback } from 'react';
 import {
   Bar,
