@@ -187,8 +187,6 @@ const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: RefObject<Resp
   const displayHeader = alwaysShowHeader || isPhone();
   return createPortal(
     <ResponsivePopover
-      aria-modal
-      role="dialog"
       style={style}
       slot={slot}
       allowTargetOverlap={allowTargetOverlap}

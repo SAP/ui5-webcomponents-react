@@ -4,12 +4,10 @@ exports[`ActionSheet Render without Crashing 1`] = `
 <body>
   <div />
   <ui5-responsive-popover
-    aria-modal="true"
     class="ActionSheet-actionSheet myCustomClass"
     data-actionsheet="true"
     horizontal-align="Center"
     placement-type="Right"
-    role="dialog"
     ui5-responsive-popover=""
     vertical-align="Center"
   >
@@ -57,12 +55,10 @@ exports[`ActionSheet does not crash with other component 1`] = `
 <body>
   <div />
   <ui5-responsive-popover
-    aria-modal="true"
     class="ActionSheet-actionSheet"
     data-actionsheet="true"
     horizontal-align="Center"
     placement-type="Right"
-    role="dialog"
     ui5-responsive-popover=""
     vertical-align="Center"
   >
