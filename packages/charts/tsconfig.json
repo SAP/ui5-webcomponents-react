@@ -3,7 +3,12 @@
   "compilerOptions": {
     "baseUrl": ".",
     "outDir": "./dist",
-    "declarationDir": "./dist"
+    "declarationDir": "./dist",
+    "paths": {
+      "@ui5/webcomponents-react": ["../../node_modules/@ui5/webcomponents-react/src/index.ts"],
+      "@ui5/webcomponents-react/*": ["../../node_modules/@ui5/webcomponents-react/src/*"],
+      "@ui5/webcomponents-react-base/*": ["../main/src/*"]
+    }
   },
   "include": [
     "src/**/*"
