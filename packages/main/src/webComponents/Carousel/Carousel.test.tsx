@@ -1,6 +1,6 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { Carousel } from '@ui5/webcomponents-react/dist/Carousel';
+import { Carousel } from './index';
 import React from 'react';
 
 describe('Carousel', () => {

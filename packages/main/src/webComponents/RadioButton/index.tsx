@@ -1,9 +1,9 @@
-import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
-import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
+import { ValueState } from '../../enums/ValueState';
+import { withWebComponent } from '../../internal/withWebComponent';
 import { WrappingType } from '@ui5/webcomponents-react/dist/WrappingType';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
+import { CommonProps } from '../../interfaces/CommonProps';
+import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
+import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 
 import '@ui5/webcomponents/dist/RadioButton.js';
 

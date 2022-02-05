@@ -1,9 +1,9 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { Button } from '@ui5/webcomponents-react/dist/Button';
-import { CustomListItem } from '@ui5/webcomponents-react/dist/CustomListItem';
-import { List } from '@ui5/webcomponents-react/dist/List';
-import { StandardListItem } from '@ui5/webcomponents-react/dist/StandardListItem';
+import { Button } from '../Button';
+import { CustomListItem } from '../CustomListItem';
+import { List } from './index';
+import { StandardListItem } from '../StandardListItem';
 import React from 'react';
 
 describe('List', () => {

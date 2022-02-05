@@ -1,8 +1,8 @@
-import { LinkDesign } from '@ui5/webcomponents-react/dist/LinkDesign';
-import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
-import { WrappingType } from '@ui5/webcomponents-react/dist/WrappingType';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
+import { LinkDesign } from '../../enums/LinkDesign';
+import { withWebComponent } from '../../internal/withWebComponent';
+import { WrappingType } from '../../enums/WrappingType';
+import { CommonProps } from '../../interfaces/CommonProps';
+import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { ReactNode, MouseEventHandler } from 'react';
 
 import '@ui5/webcomponents/dist/Link.js';

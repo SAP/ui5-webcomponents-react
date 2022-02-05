@@ -1,8 +1,8 @@
-import { CarouselArrowsPlacement } from '@ui5/webcomponents-react/dist/CarouselArrowsPlacement';
-import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
+import { CarouselArrowsPlacement } from '../../enums/CarouselArrowsPlacement';
+import { withWebComponent } from '../../internal/withWebComponent';
+import { CommonProps } from '../../interfaces/CommonProps';
+import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
+import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/Carousel.js';

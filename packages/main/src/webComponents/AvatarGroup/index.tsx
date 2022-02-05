@@ -1,9 +1,9 @@
-import { AvatarColorScheme } from '@ui5/webcomponents-react/dist/AvatarColorScheme';
-import { AvatarGroupType } from '@ui5/webcomponents-react/dist/AvatarGroupType';
-import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
+import { AvatarColorScheme } from '../../enums/AvatarColorScheme';
+import { AvatarGroupType } from '../../enums/AvatarGroupType';
+import { withWebComponent } from '../../internal/withWebComponent';
+import { CommonProps } from '../../interfaces/CommonProps';
+import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
+import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
 
 import '@ui5/webcomponents/dist/AvatarGroup.js';

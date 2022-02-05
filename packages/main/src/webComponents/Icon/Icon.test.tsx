@@ -1,7 +1,7 @@
 import { render } from '@shared/tests';
 import '@ui5/webcomponents-icons/dist/add.js';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { Icon } from '@ui5/webcomponents-react/dist/Icon';
+import { Icon } from '../Icon';
 import React from 'react';
 
 describe('Icon', () => {
