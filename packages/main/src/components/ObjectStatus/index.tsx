@@ -7,7 +7,7 @@ import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import { IndicationColor } from '@ui5/webcomponents-react/dist/IndicationColor';
 import React, { forwardRef, MouseEventHandler, ReactNode, Ref } from 'react';
 import { createUseStyles } from 'react-jss';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import styles from './ObjectStatus.jss';
 import clsx from 'clsx';

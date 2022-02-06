@@ -6,7 +6,7 @@ import { Toolbar } from '@ui5/webcomponents-react/dist/Toolbar';
 import { ToolbarDesign } from '@ui5/webcomponents-react/dist/ToolbarDesign';
 import { ToolbarSeparator } from '@ui5/webcomponents-react/dist/ToolbarSeparator';
 import { ToolbarStyle } from '@ui5/webcomponents-react/dist/ToolbarStyle';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { CommonProps } from '../../interfaces/CommonProps';
 import React, {
   Children,
   forwardRef,

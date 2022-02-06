@@ -16,7 +16,7 @@ import { Popover } from '@ui5/webcomponents-react/dist/Popover';
 import { PopoverPlacementType } from '@ui5/webcomponents-react/dist/PopoverPlacementType';
 import { StandardListItem } from '@ui5/webcomponents-react/dist/StandardListItem';
 import { TabContainer } from '@ui5/webcomponents-react/dist/TabContainer';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { CommonProps } from '../../interfaces/CommonProps';
 import React, {
   forwardRef,
   ReactElement,

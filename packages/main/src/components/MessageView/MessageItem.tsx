@@ -8,7 +8,7 @@ import { Label } from '@ui5/webcomponents-react/dist/Label';
 import { ListItemType } from '@ui5/webcomponents-react/dist/ListItemType';
 import { MessageViewContext } from '@ui5/webcomponents-react/dist/MessageViewContext';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import React, { forwardRef, ReactNode, Ref, useContext } from 'react';
 import { createUseStyles } from 'react-jss';

@@ -1,6 +1,6 @@
 import { SplitterElementPropTypes } from '@ui5/webcomponents-react/dist/SplitterElement';
 import { SplitterLayoutContext } from '@ui5/webcomponents-react/dist/SplitterLayoutContext';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { CommonProps } from '../../interfaces/CommonProps';
 import React, { CSSProperties, forwardRef, ReactElement, Ref } from 'react';
 import { createUseStyles } from 'react-jss';
 import { styles } from './SplitterLayout.jss';

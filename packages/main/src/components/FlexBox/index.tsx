@@ -4,7 +4,7 @@ import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection
 import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';
 import { FlexBoxWrap } from '@ui5/webcomponents-react/dist/FlexBoxWrap';
 import React, { forwardRef, ReactNode, Ref } from 'react';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { styles } from './FlexBox.jss';
 import clsx from 'clsx';

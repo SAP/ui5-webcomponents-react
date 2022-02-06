@@ -1,6 +1,6 @@
 import { createUseStyles } from 'react-jss';
 import React, { forwardRef, ReactNode, Ref } from 'react';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { TextStyles } from './Text.jss';
 import clsx from 'clsx';

@@ -3,7 +3,7 @@ import { BusyIndicator } from '@ui5/webcomponents-react/dist/BusyIndicator';
 import { BusyIndicatorSize } from '@ui5/webcomponents-react/dist/BusyIndicatorSize';
 import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 import { Label } from '@ui5/webcomponents-react/dist/Label';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { CommonProps } from '../../interfaces/CommonProps';
 import clsx from 'clsx';
 import React, { forwardRef, ReactElement, RefObject } from 'react';
 import { createUseStyles } from 'react-jss';

@@ -1,5 +1,5 @@
 import { SplitterLayoutContext } from '@ui5/webcomponents-react/dist/SplitterLayoutContext';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { CommonProps } from '../../interfaces/CommonProps';
 import clsx from 'clsx';
 import React, { CSSProperties, forwardRef, ReactNode, RefObject, useContext } from 'react';
 import { createUseStyles } from 'react-jss';

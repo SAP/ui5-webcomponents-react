@@ -17,7 +17,7 @@ import { Toolbar } from '@ui5/webcomponents-react/dist/Toolbar';
 import { ToolbarSeparator } from '@ui5/webcomponents-react/dist/ToolbarSeparator';
 import { ToolbarSpacer } from '@ui5/webcomponents-react/dist/ToolbarSpacer';
 import { ToolbarStyle } from '@ui5/webcomponents-react/dist/ToolbarStyle';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { CommonProps } from '../../interfaces/CommonProps';
 import clsx from 'clsx';
 import React, {
   Children,

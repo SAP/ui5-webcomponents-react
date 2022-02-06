@@ -1,6 +1,6 @@
 import React, { forwardRef, ReactNode, RefObject } from 'react';
 import { createUseStyles } from 'react-jss';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { EmptyIdPropException } from '../ObjectPage/EmptyIdPropException';
 import styles from './ObjectPageSection.jss';

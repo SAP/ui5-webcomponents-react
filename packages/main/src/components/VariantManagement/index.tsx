@@ -29,7 +29,7 @@ import { ResponsivePopover, ResponsivePopoverDomRef } from '@ui5/webcomponents-r
 import { Title } from '@ui5/webcomponents-react/dist/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
 import { SelectedVariant, VariantManagementContext } from '@ui5/webcomponents-react/dist/VariantManagementContext';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { CommonProps } from '../../interfaces/CommonProps';
 import React, {
   Children,
   cloneElement,

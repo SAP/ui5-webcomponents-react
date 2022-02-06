@@ -19,7 +19,7 @@ import { SegmentedButtonItem } from '@ui5/webcomponents-react/dist/SegmentedButt
 import { Title } from '@ui5/webcomponents-react/dist/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import clsx from 'clsx';
 import React, {

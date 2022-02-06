@@ -7,7 +7,7 @@ import {
   useIsomorphicLayoutEffect
 } from '@ui5/webcomponents-react-base';
 import { SHOW_MORE } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { ToolbarDesign } from '@ui5/webcomponents-react/dist/ToolbarDesign';
 import { ToolbarStyle } from '@ui5/webcomponents-react/dist/ToolbarStyle';
 import React, {

@@ -8,7 +8,7 @@ import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJust
 import { FlexBoxWrap } from '@ui5/webcomponents-react/dist/FlexBoxWrap';
 import { ObjectStatus } from '@ui5/webcomponents-react/dist/ObjectStatus';
 import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { CommonProps } from '../../interfaces/CommonProps';
 import clsx from 'clsx';
 import React, { forwardRef, MouseEventHandler, Ref, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';

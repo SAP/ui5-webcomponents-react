@@ -1,7 +1,7 @@
 import { CssSizeVariables, Device, ThemingParameters, useSyncRef } from '@ui5/webcomponents-react-base';
 import { Title } from '@ui5/webcomponents-react/dist/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { CommonProps } from '../../interfaces/CommonProps';
 import clsx from 'clsx';
 import React, {
   Children,

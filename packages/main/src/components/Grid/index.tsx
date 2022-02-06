@@ -1,5 +1,5 @@
 import { Device, useViewportRange } from '@ui5/webcomponents-react-base';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { GridPosition } from '@ui5/webcomponents-react/dist/GridPosition';
 import React, {
   Children,
