@@ -1,6 +1,6 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { CardHeader } from '@ui5/webcomponents-react/dist/CardHeader';
+import { CardHeader } from './index';
 import React from 'react';
 
 describe('CardHeader', () => {

@@ -1,4 +1,4 @@
-import { Priority } from '@ui5/webcomponents-react/dist/Priority';
+import { Priority } from '../../enums/Priority';
 import { withWebComponent } from '../../internal/withWebComponent';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';

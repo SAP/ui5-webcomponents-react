@@ -1,9 +1,9 @@
 import { withWebComponent } from '../../internal/withWebComponent';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { MediaGalleryLayout } from '@ui5/webcomponents-react/dist/MediaGalleryLayout';
-import { MediaGalleryMenuHorizontalAlign } from '@ui5/webcomponents-react/dist/MediaGalleryMenuHorizontalAlign';
-import { MediaGalleryMenuVerticalAlign } from '@ui5/webcomponents-react/dist/MediaGalleryMenuVerticalAlign';
+import { MediaGalleryLayout } from '../../enums/MediaGalleryLayout';
+import { MediaGalleryMenuHorizontalAlign } from '../../enums/MediaGalleryMenuHorizontalAlign';
+import { MediaGalleryMenuVerticalAlign } from '../../enums/MediaGalleryMenuVerticalAlign';
 import { ReactNode } from 'react';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 

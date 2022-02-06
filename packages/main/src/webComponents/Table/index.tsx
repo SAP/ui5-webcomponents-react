@@ -1,5 +1,5 @@
-import { TableGrowingMode } from '@ui5/webcomponents-react/dist/TableGrowingMode';
-import { TableMode } from '@ui5/webcomponents-react/dist/TableMode';
+import { TableGrowingMode } from '../../enums/TableGrowingMode';
+import { TableMode } from '../../enums/TableMode';
 import { withWebComponent } from '../../internal/withWebComponent';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';

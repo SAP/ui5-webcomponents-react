@@ -1,5 +1,5 @@
 import { withWebComponent } from '../../internal/withWebComponent';
-import { WrappingType } from '@ui5/webcomponents-react/dist/WrappingType';
+import { WrappingType } from '../../enums/WrappingType';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { ReactNode } from 'react';

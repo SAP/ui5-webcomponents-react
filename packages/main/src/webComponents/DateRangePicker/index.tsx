@@ -1,4 +1,4 @@
-import { CalendarType } from '@ui5/webcomponents-react/dist/CalendarType';
+import { CalendarType } from '../../enums/CalendarType';
 import { ValueState } from '../../enums/ValueState';
 import { withWebComponent } from '../../internal/withWebComponent';
 import { CommonProps } from '../../interfaces/CommonProps';

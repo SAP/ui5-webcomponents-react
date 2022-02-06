@@ -1,4 +1,4 @@
-import { TimelineLayout } from '@ui5/webcomponents-react/dist/TimelineLayout';
+import { TimelineLayout } from '../../enums/TimelineLayout';
 import { withWebComponent } from '../../internal/withWebComponent';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';

@@ -1,4 +1,4 @@
-import { ToastPlacement } from '@ui5/webcomponents-react/dist/ToastPlacement';
+import { ToastPlacement } from '../../enums/ToastPlacement';
 import { withWebComponent } from '../../internal/withWebComponent';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';

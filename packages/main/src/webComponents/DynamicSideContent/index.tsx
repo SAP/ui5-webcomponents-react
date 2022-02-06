@@ -1,9 +1,9 @@
 import { withWebComponent } from '../../internal/withWebComponent';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { SideContentFallDown } from '@ui5/webcomponents-react/dist/SideContentFallDown';
-import { SideContentPosition } from '@ui5/webcomponents-react/dist/SideContentPosition';
-import { SideContentVisibility } from '@ui5/webcomponents-react/dist/SideContentVisibility';
+import { SideContentFallDown } from '../../enums/SideContentFallDown';
+import { SideContentPosition } from '../../enums/SideContentPosition';
+import { SideContentVisibility } from '../../enums/SideContentVisibility';
 import { ReactNode } from 'react';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 

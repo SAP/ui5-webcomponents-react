@@ -1,6 +1,6 @@
-import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/dist/PopoverHorizontalAlign';
-import { PopoverPlacementType } from '@ui5/webcomponents-react/dist/PopoverPlacementType';
-import { PopoverVerticalAlign } from '@ui5/webcomponents-react/dist/PopoverVerticalAlign';
+import { PopoverHorizontalAlign } from '../../enums/PopoverHorizontalAlign';
+import { PopoverPlacementType } from '../../enums/PopoverPlacementType';
+import { PopoverVerticalAlign } from '../../enums/PopoverVerticalAlign';
 import { withWebComponent } from '../../internal/withWebComponent';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';

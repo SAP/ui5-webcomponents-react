@@ -1,4 +1,4 @@
-import { MessageStripDesign } from '@ui5/webcomponents-react/dist/MessageStripDesign';
+import { MessageStripDesign } from '../../enums/MessageStripDesign';
 import { withWebComponent } from '../../internal/withWebComponent';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';

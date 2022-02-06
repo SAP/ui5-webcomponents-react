@@ -1,6 +1,6 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { ViewSettingsDialog } from '@ui5/webcomponents-react/dist/ViewSettingsDialog';
+import { ViewSettingsDialog } from './index';
 import React from 'react';
 
 describe('ViewSettingsDialog', () => {

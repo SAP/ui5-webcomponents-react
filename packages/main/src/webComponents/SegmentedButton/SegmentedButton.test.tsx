@@ -1,7 +1,7 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { SegmentedButtonItem } from '@ui5/webcomponents-react/dist/SegmentedButtonItem';
-import { SegmentedButton } from '@ui5/webcomponents-react/dist/SegmentedButton';
+import { SegmentedButtonItem } from '../SegmentedButtonItem';
+import { SegmentedButton } from './index';
 import React from 'react';
 
 describe('SegmentedButton', () => {

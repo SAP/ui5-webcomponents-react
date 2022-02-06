@@ -1,4 +1,4 @@
-import { ListItemType } from '@ui5/webcomponents-react/dist/ListItemType';
+import { ListItemType } from '../../enums/ListItemType';
 import { withWebComponent } from '../../internal/withWebComponent';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';

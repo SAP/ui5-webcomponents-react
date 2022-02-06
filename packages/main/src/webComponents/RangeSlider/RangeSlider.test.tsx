@@ -1,6 +1,6 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { RangeSlider } from '@ui5/webcomponents-react/dist/RangeSlider';
+import { RangeSlider } from './index';
 import React from 'react';
 
 describe('RangeSlider', () => {

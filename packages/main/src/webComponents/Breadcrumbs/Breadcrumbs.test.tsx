@@ -1,7 +1,7 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { Breadcrumbs } from '@ui5/webcomponents-react/dist/Breadcrumbs';
-import { BreadcrumbsItem } from '@ui5/webcomponents-react/dist/BreadcrumbsItem';
+import { Breadcrumbs } from './index';
+import { BreadcrumbsItem } from '../BreadcrumbsItem';
 import React from 'react';
 
 describe('Breadcrumbs', () => {

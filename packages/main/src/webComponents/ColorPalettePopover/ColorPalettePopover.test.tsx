@@ -1,6 +1,6 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { ColorPalettePopover } from '@ui5/webcomponents-react/dist/ColorPalettePopover';
+import { ColorPalettePopover } from './index';
 import React from 'react';
 
 describe('ColorPalettePopover', () => {

@@ -1,7 +1,7 @@
 import { withWebComponent } from '../../internal/withWebComponent';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
+import { ButtonDesign } from '../../enums/ButtonDesign';
 import { ReactNode } from 'react';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 

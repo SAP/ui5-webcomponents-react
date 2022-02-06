@@ -1,6 +1,6 @@
-import { Priority } from '@ui5/webcomponents-react/dist/Priority';
+import { Priority } from '../../enums/Priority';
 import { withWebComponent } from '../../internal/withWebComponent';
-import { WrappingType } from '@ui5/webcomponents-react/dist/WrappingType';
+import { WrappingType } from '../../enums/WrappingType';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';

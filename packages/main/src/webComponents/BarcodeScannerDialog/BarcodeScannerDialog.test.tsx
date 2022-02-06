@@ -1,6 +1,6 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { BarcodeScannerDialog } from '@ui5/webcomponents-react/dist/BarcodeScannerDialog';
+import { BarcodeScannerDialog } from './index';
 import React from 'react';
 
 describe('BarcodeScannerDialog', () => {

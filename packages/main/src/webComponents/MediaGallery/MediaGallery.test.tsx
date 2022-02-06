@@ -1,6 +1,6 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { MediaGallery } from '@ui5/webcomponents-react/dist/MediaGallery';
+import { MediaGallery } from './index';
 import React from 'react';
 
 describe('MediaGallery', () => {

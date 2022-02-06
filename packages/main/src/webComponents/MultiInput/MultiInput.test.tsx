@@ -1,6 +1,6 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { MultiInput } from '@ui5/webcomponents-react/dist/MultiInput';
+import { MultiInput } from './index';
 import React from 'react';
 
 describe('MultiInput', () => {

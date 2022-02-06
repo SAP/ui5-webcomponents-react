@@ -1,6 +1,6 @@
-import { ListGrowingMode } from '@ui5/webcomponents-react/dist/ListGrowingMode';
-import { ListMode } from '@ui5/webcomponents-react/dist/ListMode';
-import { ListSeparators } from '@ui5/webcomponents-react/dist/ListSeparators';
+import { ListGrowingMode } from '../../enums/ListGrowingMode';
+import { ListMode } from '../../enums/ListMode';
+import { ListSeparators } from '../../enums/ListSeparators';
 import { withWebComponent } from '../../internal/withWebComponent';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';

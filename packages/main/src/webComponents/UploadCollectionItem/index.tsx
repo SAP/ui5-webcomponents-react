@@ -1,5 +1,5 @@
-import { ListItemType } from '@ui5/webcomponents-react/dist/ListItemType';
-import { UploadState } from '@ui5/webcomponents-react/dist/UploadState';
+import { ListItemType } from '../../enums/ListItemType';
+import { UploadState } from '../../enums/UploadState';
 import { withWebComponent } from '../../internal/withWebComponent';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';

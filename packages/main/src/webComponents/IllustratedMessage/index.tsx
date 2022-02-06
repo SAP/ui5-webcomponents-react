@@ -1,4 +1,4 @@
-import { IllustrationMessageType } from '@ui5/webcomponents-react/dist/IllustrationMessageType';
+import { IllustrationMessageType } from '../../enums/IllustrationMessageType';
 import { withWebComponent } from '../../internal/withWebComponent';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';

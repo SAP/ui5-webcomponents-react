@@ -1,4 +1,4 @@
-import { FCLLayout } from '@ui5/webcomponents-react/dist/FCLLayout';
+import { FCLLayout } from '../../enums/FCLLayout';
 import { withWebComponent } from '../../internal/withWebComponent';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';

@@ -1,6 +1,6 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { RadioButton } from '@ui5/webcomponents-react/dist/RadioButton';
+import { RadioButton } from './index';
 import React from 'react';
 
 describe('RadioButton', () => {

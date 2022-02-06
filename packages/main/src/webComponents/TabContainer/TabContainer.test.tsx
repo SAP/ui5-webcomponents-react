@@ -1,6 +1,6 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { TabContainer } from '@ui5/webcomponents-react/dist/TabContainer';
+import { TabContainer } from './index';
 import React from 'react';
 
 describe('TabContainer', () => {

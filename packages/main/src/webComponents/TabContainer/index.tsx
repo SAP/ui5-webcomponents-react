@@ -1,5 +1,5 @@
-import { TabLayout } from '@ui5/webcomponents-react/dist/TabLayout';
-import { TabsOverflowMode } from '@ui5/webcomponents-react/dist/TabsOverflowMode';
+import { TabLayout } from '../../enums/TabLayout';
+import { TabsOverflowMode } from '../../enums/TabsOverflowMode';
 import { withWebComponent } from '../../internal/withWebComponent';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';

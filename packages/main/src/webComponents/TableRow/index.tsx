@@ -1,4 +1,4 @@
-import { TableRowType } from '@ui5/webcomponents-react/dist/TableRowType';
+import { TableRowType } from '../../enums/TableRowType';
 import { withWebComponent } from '../../internal/withWebComponent';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';

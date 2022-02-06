@@ -1,6 +1,6 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { Timeline } from '@ui5/webcomponents-react/dist/Timeline';
+import { Timeline } from './index';
 import React from 'react';
 
 describe('Timeline', () => {

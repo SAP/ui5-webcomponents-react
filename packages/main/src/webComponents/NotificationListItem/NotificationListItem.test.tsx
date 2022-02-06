@@ -1,8 +1,8 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { NotificationListItem } from '@ui5/webcomponents-react/dist/NotificationListItem';
-import { NotificationAction } from '@ui5/webcomponents-react/dist/NotificationAction';
-import { Priority } from '@ui5/webcomponents-react/dist/Priority';
+import { NotificationListItem } from './index';
+import { NotificationAction } from '../NotificationAction';
+import { Priority } from '../../enums/Priority';
 import React from 'react';
 
 describe('NotificationListItem', () => {

@@ -1,5 +1,5 @@
-import { PanelAccessibleRole } from '@ui5/webcomponents-react/dist/PanelAccessibleRole';
-import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
+import { PanelAccessibleRole } from '../../enums/PanelAccessibleRole';
+import { TitleLevel } from '../../enums/TitleLevel';
 import { withWebComponent } from '../../internal/withWebComponent';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';

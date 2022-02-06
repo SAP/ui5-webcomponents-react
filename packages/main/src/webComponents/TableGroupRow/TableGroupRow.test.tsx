@@ -1,6 +1,6 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { TableGroupRow } from '@ui5/webcomponents-react/dist/TableGroupRow';
+import { TableGroupRow } from './index';
 import React from 'react';
 
 describe('TableGroupRow', () => {

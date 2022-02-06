@@ -1,6 +1,6 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { FileUploader } from '@ui5/webcomponents-react/dist/FileUploader';
+import { FileUploader } from './index';
 import React from 'react';
 
 describe('FileUploader', () => {

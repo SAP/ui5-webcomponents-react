@@ -1,5 +1,5 @@
-import { BreadcrumbsDesign } from '@ui5/webcomponents-react/dist/BreadcrumbsDesign';
-import { BreadcrumbsSeparatorStyle } from '@ui5/webcomponents-react/dist/BreadcrumbsSeparatorStyle';
+import { BreadcrumbsDesign } from '../../enums/BreadcrumbsDesign';
+import { BreadcrumbsSeparatorStyle } from '../../enums/BreadcrumbsSeparatorStyle';
 import { withWebComponent } from '../../internal/withWebComponent';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';

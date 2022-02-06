@@ -1,6 +1,6 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { NotificationListGroupItem } from '@ui5/webcomponents-react/dist/NotificationListGroupItem';
+import { NotificationListGroupItem } from './index';
 import React from 'react';
 
 describe('NotificationListGroupItem', () => {

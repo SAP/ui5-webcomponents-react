@@ -6,9 +6,9 @@ import '@ui5/webcomponents-icons/dist/history.js';
 import '@ui5/webcomponents-icons/dist/home.js';
 import '@ui5/webcomponents-icons/dist/locate-me.js';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { SideNavigation } from '@ui5/webcomponents-react/dist/SideNavigation';
-import { SideNavigationItem } from '@ui5/webcomponents-react/dist/SideNavigationItem';
-import { SideNavigationSubItem } from '@ui5/webcomponents-react/dist/SideNavigationSubItem';
+import { SideNavigation } from './index';
+import { SideNavigationItem } from '../SideNavigationItem';
+import { SideNavigationSubItem } from '../SideNavigationSubItem';
 import React from 'react';
 
 describe('SideNavigation', () => {
