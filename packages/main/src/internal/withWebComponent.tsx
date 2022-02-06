@@ -1,8 +1,8 @@
 import { getEffectiveScopingSuffixForTag } from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
 import { deprecationNotice, useSyncRef } from '@ui5/webcomponents-react-base';
 import React, { Children, cloneElement, ComponentType, forwardRef, ReactElement, Ref, useEffect, useRef } from 'react';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
+import { CommonProps } from '../interfaces/CommonProps';
+import { Ui5DomRef } from '../interfaces/Ui5DomRef';
 
 const capitalizeFirstLetter = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
