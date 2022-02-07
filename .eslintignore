@@ -1,7 +1,7 @@
 packages/*/src/dist/
 
 # build results for base package
-packages/base/cjs
+packages/base/dist
 packages/base/Device
 packages/base/hooks
 packages/base/lib
@@ -12,24 +12,11 @@ packages/base/types
 packages/base/utils
 
 # build results for charts package
-packages/charts/cjs
-packages/charts/components
-packages/charts/hooks
-packages/charts/interfaces
-packages/charts/internal
-packages/charts/lib
+packages/charts/dist
 
 # build results for main package
-packages/main/cjs
-packages/main/components
 packages/main/dist
-packages/main/enums
-packages/main/interfaces
-packages/main/internal
-packages/main/lib
-packages/main/scripts
-packages/main/webComponents
-
+packages/main/wrappers
 
 scripts
 shared
