@@ -1,7 +1,7 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { ObjectPageSection } from '@ui5/webcomponents-react/dist/ObjectPageSection';
 import React from 'react';
+import { ObjectPageSection } from './index';
 
 describe('ObjectPageSection', () => {
   test('Renders with children', () => {

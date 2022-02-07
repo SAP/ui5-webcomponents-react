@@ -1,11 +1,11 @@
-import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
-import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
-import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
-import { Label, LabelPropTypes } from '@ui5/webcomponents-react/dist/Label';
-import { WrappingType } from '@ui5/webcomponents-react/dist/WrappingType';
+import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming.js';
 import React, { cloneElement, CSSProperties, FC, isValidElement, ReactElement, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
-import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming.js';
+import { FlexBoxAlignItems } from '../../enums/FlexBoxAlignItems';
+import { FlexBoxDirection } from '../../enums/FlexBoxDirection';
+import { WrappingType } from '../../enums/WrappingType';
+import { Label, LabelPropTypes } from '../../webComponents/Label';
+import { FlexBox } from '../FlexBox';
 
 export interface FormItemPropTypes {
   /**

@@ -1,19 +1,21 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
-import { Toolbar } from '@ui5/webcomponents-react/dist/Toolbar';
-import { Button } from '@ui5/webcomponents-react/dist/Button';
-import { ToolbarSpacer } from '@ui5/webcomponents-react/dist/ToolbarSpacer';
-import { Text } from '@ui5/webcomponents-react/dist/Text';
-import { Icon } from '@ui5/webcomponents-react/dist/Icon';
-import { Switch } from '@ui5/webcomponents-react/dist/Switch';
-import { Select } from '@ui5/webcomponents-react/dist/Select';
-import { ToolbarDesign } from '@ui5/webcomponents-react/dist/ToolbarDesign';
-import { ToolbarSeparator } from '@ui5/webcomponents-react/dist/ToolbarSeparator';
-import { ToolbarStyle } from '@ui5/webcomponents-react/dist/ToolbarStyle';
-import '@ui5/webcomponents-icons/dist/employee.js';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import '@ui5/webcomponents-icons/dist/settings.js';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import '@ui5/webcomponents-icons/dist/download.js';
+import '@ui5/webcomponents-icons/dist/employee.js';
+import '@ui5/webcomponents-icons/dist/settings.js';
+import {
+  Button,
+  Icon,
+  Select,
+  Switch,
+  Text,
+  ToolbarDesign,
+  ToolbarSeparator,
+  ToolbarSpacer,
+  ToolbarStyle
+} from '../..';
+import { Toolbar } from './index';
 
 <Meta
   title="Layouts & Floorplans / Toolbar"
@@ -79,7 +81,7 @@ To prevent this you can add `e.stopPropagation()` to your event handler.
 
 ## Toolbar with overflow button
 
-If the horizontally available space isn't enough to fit all items in it, an overflow button is displayed.<br />
+If the horizontally available space isn't enough to fit all items in it, an overflow button is displayed.<br/>
 **Note:** You can change the width of the toolbar by dragging the `width` slider in the table below.
 
 <ArgsTable story="With overflow button" />
@@ -130,7 +132,7 @@ If the horizontally available space isn't enough to fit all items in it, an over
 
 ## Align elements inside of the Toolbar
 
-To align items inside of the `Toolbar` you can use the `ToolbarSpacer` component.<br />
+To align items inside of the `Toolbar` you can use the `ToolbarSpacer` component.<br/>
 This will cover the remaining horizontal space between the `Toolbar` items and for example pushes one item to the edge of the `Toolbar`.
 
 ### Right aligned items
@@ -175,8 +177,11 @@ This will cover the remaining horizontal space between the `Toolbar` items and f
 
 ## Toolbar Separator
 
-You can add a visual separator between the preceding and succeeding `Toolbar` item with the use of the `ToolbarSeparator`.<br />
-**Note:** In the overflow popover the `ToolbarSeparator` is represented by a horizontal line, in the `Toolbar` by a vertical line.
+You can add a visual separator between the preceding and succeeding `Toolbar` item with the use of the `ToolbarSeparator`.
+
+<br />
+**Note:** In the overflow popover the `ToolbarSeparator` is represented by a horizontal line, in the `Toolbar` by a vertical
+line.
 
 <Canvas>
   <Story name="With separator">

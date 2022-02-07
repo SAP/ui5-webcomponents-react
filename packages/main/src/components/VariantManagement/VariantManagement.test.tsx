@@ -1,10 +1,10 @@
-import { fireEvent, getByText, render, renderWithDefine, screen, waitFor, within } from '@shared/tests';
+import { fireEvent, render, renderWithDefine, screen, waitFor, within } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { VariantManagement } from '@ui5/webcomponents-react/dist/VariantManagement';
 import React from 'react';
 import { TitleLevel } from '../..';
 import { DialogDomRef } from '../../webComponents/Dialog';
 import { PopoverDomRef } from '../../webComponents/Popover';
+import { VariantManagement } from './index';
 import { VariantItem } from './VariantItem';
 
 const TwoVariantItems = [

@@ -15,13 +15,13 @@ import {
   PIN_HEADER,
   UNPIN_HEADER
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
-import { Button } from '@ui5/webcomponents-react/dist/Button';
-import { ToggleButton } from '@ui5/webcomponents-react/dist/ToggleButton';
-import { CommonProps } from '../../interfaces/CommonProps';
+import clsx from 'clsx';
 import React, { forwardRef, RefObject, useCallback } from 'react';
 import { createUseStyles } from 'react-jss';
-import clsx from 'clsx';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
+import { Button } from '../../webComponents/Button';
+import { ToggleButton } from '../../webComponents/ToggleButton';
 
 addCustomCSS(
   'ui5-button',

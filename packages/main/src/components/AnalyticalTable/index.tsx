@@ -5,17 +5,6 @@ import {
   useIsomorphicLayoutEffect,
   useIsRTL
 } from '@ui5/webcomponents-react-base';
-import { AnalyticalTableScrollMode } from '@ui5/webcomponents-react/dist/AnalyticalTableScrollMode';
-import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
-import { GlobalStyleClasses } from '@ui5/webcomponents-react/dist/GlobalStyleClasses';
-import { TableScaleWidthMode } from '@ui5/webcomponents-react/dist/TableScaleWidthMode';
-import { TableSelectionBehavior } from '@ui5/webcomponents-react/dist/TableSelectionBehavior';
-import { TableSelectionMode } from '@ui5/webcomponents-react/dist/TableSelectionMode';
-import { TableVisibleRowCountMode } from '@ui5/webcomponents-react/dist/TableVisibleRowCountMode';
-import { TextAlign } from '@ui5/webcomponents-react/dist/TextAlign';
-import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
-import { VerticalAlign } from '@ui5/webcomponents-react/dist/VerticalAlign';
-import { CommonProps } from '../../interfaces/CommonProps';
 import clsx from 'clsx';
 import React, {
   ComponentType,
@@ -44,7 +33,18 @@ import {
   useSortBy,
   useTable
 } from 'react-table';
+import { AnalyticalTableScrollMode } from '../../enums/AnalyticalTableScrollMode';
+import { GlobalStyleClasses } from '../../enums/GlobalStyleClasses';
+import { TableScaleWidthMode } from '../../enums/TableScaleWidthMode';
+import { TableSelectionBehavior } from '../../enums/TableSelectionBehavior';
+import { TableSelectionMode } from '../../enums/TableSelectionMode';
+import { TableVisibleRowCountMode } from '../../enums/TableVisibleRowCountMode';
+import { TextAlign } from '../../enums/TextAlign';
+import { ValueState } from '../../enums/ValueState';
+import { VerticalAlign } from '../../enums/VerticalAlign';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
+import { FlexBox } from '../FlexBox';
 import styles from './AnayticalTable.jss';
 import { ColumnHeaderContainer } from './ColumnHeader/ColumnHeaderContainer';
 import { DefaultColumn } from './defaults/Column';

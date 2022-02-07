@@ -1,13 +1,13 @@
 import { useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
-import { BusyIndicator } from '@ui5/webcomponents-react/dist/BusyIndicator';
-import { BusyIndicatorSize } from '@ui5/webcomponents-react/dist/BusyIndicatorSize';
-import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
-import { Label } from '@ui5/webcomponents-react/dist/Label';
-import { CommonProps } from '../../interfaces/CommonProps';
 import clsx from 'clsx';
 import React, { forwardRef, ReactElement, RefObject } from 'react';
 import { createUseStyles } from 'react-jss';
+import { BusyIndicatorSize } from '../../enums/BusyIndicatorSize';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
+import { BusyIndicator } from '../../webComponents/BusyIndicator';
+import { Label } from '../../webComponents/Label';
+import { FlexBox } from '../FlexBox';
 import styles from './FilterGroupItem.jss';
 
 const useStyles = createUseStyles(styles, { name: 'FilterGroupItem' });

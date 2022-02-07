@@ -1,13 +1,13 @@
-import { SplitterElementPropTypes } from '@ui5/webcomponents-react/dist/SplitterElement';
-import { SplitterLayoutContext } from '@ui5/webcomponents-react/dist/SplitterLayoutContext';
-import { CommonProps } from '../../interfaces/CommonProps';
+import '@ui5/webcomponents-icons/dist/horizontal-grip.js';
+import '@ui5/webcomponents-icons/dist/vertical-grip.js';
+import clsx from 'clsx';
 import React, { CSSProperties, forwardRef, ReactElement, Ref } from 'react';
 import { createUseStyles } from 'react-jss';
+import { SplitterLayoutContext } from '../../internal/SplitterLayoutContext';
+import { CommonProps } from '../../interfaces/CommonProps';
+import { SplitterElementPropTypes } from '../SplitterElement';
 import { styles } from './SplitterLayout.jss';
-import '@ui5/webcomponents-icons/dist/vertical-grip.js';
-import '@ui5/webcomponents-icons/dist/horizontal-grip.js';
 import { useConcatSplitterElements } from './useConcatSplitterElements';
-import clsx from 'clsx';
 
 const useStyles = createUseStyles(styles, { name: 'SplitterLayout' });
 

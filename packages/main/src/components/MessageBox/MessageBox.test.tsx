@@ -1,11 +1,8 @@
 import { fireEvent, render, screen } from '@shared/tests';
 import '@ui5/webcomponents-icons/dist/add.js';
-import { Icon } from '@ui5/webcomponents-react/dist/Icon';
-import { MessageBox } from '@ui5/webcomponents-react/dist/MessageBox';
-import { Button } from '@ui5/webcomponents-react/dist/Button';
-import { MessageBoxActions } from '@ui5/webcomponents-react/dist/MessageBoxActions';
-import { MessageBoxTypes } from '@ui5/webcomponents-react/dist/MessageBoxTypes';
 import React from 'react';
+import { Button, Icon, MessageBoxActions, MessageBoxTypes } from '../..';
+import { MessageBox } from './index';
 
 const mockActionIds = (element) => {
   element.querySelectorAll('ui5-button').forEach((item, index) => {

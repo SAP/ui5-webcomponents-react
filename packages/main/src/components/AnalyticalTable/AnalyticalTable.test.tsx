@@ -1,16 +1,13 @@
 import { act, fireEvent, getByText, getMouseEvent, render, renderRtl, screen } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { AnalyticalTable } from '@ui5/webcomponents-react/dist/AnalyticalTable';
-import {
-  useRowDisableSelection,
-  useIndeterminateRowSelection
-} from '@ui5/webcomponents-react/dist/AnalyticalTableHooks';
-import { TableSelectionBehavior } from '@ui5/webcomponents-react/dist/TableSelectionBehavior';
-import { TableSelectionMode } from '@ui5/webcomponents-react/dist/TableSelectionMode';
-import { TableVisibleRowCountMode } from '@ui5/webcomponents-react/dist/TableVisibleRowCountMode';
-import { Button } from '@ui5/webcomponents-react/dist/Button';
-import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
+import { useIndeterminateRowSelection, useRowDisableSelection } from './pluginHooks/AnalyticalTableHooks';
 import React, { createRef, useRef } from 'react';
+import { TableSelectionBehavior } from '../../enums/TableSelectionBehavior';
+import { TableSelectionMode } from '../../enums/TableSelectionMode';
+import { TableVisibleRowCountMode } from '../../enums/TableVisibleRowCountMode';
+import { ValueState } from '../../enums/ValueState';
+import { Button } from '../../webComponents/Button';
+import { AnalyticalTable } from './index';
 
 const columns = [
   {

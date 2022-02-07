@@ -1,10 +1,10 @@
 import { fireEvent, render, screen } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { AnalyticalCard } from '@ui5/webcomponents-react/dist/AnalyticalCard';
-import { AnalyticalCardHeader } from '@ui5/webcomponents-react/dist/AnalyticalCardHeader';
-import { DeviationIndicator } from '@ui5/webcomponents-react/dist/DeviationIndicator';
-import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import React from 'react';
+import { DeviationIndicator } from '../../enums/DeviationIndicator';
+import { ValueState } from '../../enums/ValueState';
+import { AnalyticalCard } from '../AnalyticalCard';
+import { AnalyticalCardHeader } from './index';
 
 const valueStateMapping = [
   { state: 'Error', className: 'AnalyticalCardHeader-error' },

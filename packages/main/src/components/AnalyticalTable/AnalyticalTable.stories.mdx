@@ -1,36 +1,35 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
-import { AnalyticalTable } from '@ui5/webcomponents-react/dist/AnalyticalTable';
-import { TableScaleWidthMode } from '@ui5/webcomponents-react/dist/TableScaleWidthMode';
-import { TableSelectionBehavior } from '@ui5/webcomponents-react/dist/TableSelectionBehavior';
-import { TableSelectionMode } from '@ui5/webcomponents-react/dist/TableSelectionMode';
-import { TableVisibleRowCountMode } from '@ui5/webcomponents-react/dist/TableVisibleRowCountMode';
-import { SegmentedButton } from '@ui5/webcomponents-react/dist/SegmentedButton';
-import { SegmentedButtonItem } from '@ui5/webcomponents-react/dist/SegmentedButtonItem';
-import generateData from './demo/generateData';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import '@ui5/webcomponents-icons/dist/delete.js';
 import '@ui5/webcomponents-icons/dist/edit.js';
 import '@ui5/webcomponents-icons/dist/settings.js';
-import { Button } from '@ui5/webcomponents-react/dist/Button';
-import { Badge } from '@ui5/webcomponents-react/dist/Badge';
-import { Text } from '@ui5/webcomponents-react/dist/Text';
-import { BusyIndicator } from '@ui5/webcomponents-react/dist/BusyIndicator';
-import { ToggleButton } from '@ui5/webcomponents-react/dist/ToggleButton';
-import { Panel } from '@ui5/webcomponents-react/dist/Panel';
-import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
-import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
-import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
-import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';
-import { MessageStrip } from '@ui5/webcomponents-react/dist/MessageStrip';
-import { TextAlign } from '@ui5/webcomponents-react/dist/TextAlign';
-import { DefaultLoadingComponent } from './defaults/LoadingComponent';
-import { DefaultNoDataComponent } from './defaults/NoDataComponent';
 import { useCallback, useEffect, useReducer, useRef, useState } from 'react';
 import {
-  useRowDisableSelection,
-  useIndeterminateRowSelection
-} from '@ui5/webcomponents-react/dist/AnalyticalTableHooks';
+  AnalyticalTable,
+  Badge,
+  BusyIndicator,
+  Button,
+  FlexBox,
+  FlexBoxAlignItems,
+  FlexBoxDirection,
+  FlexBoxJustifyContent,
+  MessageStrip,
+  Panel,
+  SegmentedButton,
+  SegmentedButtonItem,
+  TableScaleWidthMode,
+  TableSelectionBehavior,
+  TableSelectionMode,
+  TableVisibleRowCountMode,
+  Text,
+  TextAlign,
+  ToggleButton
+} from '../..';
+import { DefaultLoadingComponent } from './defaults/LoadingComponent';
+import { DefaultNoDataComponent } from './defaults/NoDataComponent';
+import generateData from './demo/generateData';
+import { useIndeterminateRowSelection, useRowDisableSelection } from './pluginHooks/AnalyticalTableHooks';
 
 <Meta
   title="Data Display / AnalyticalTable"
@@ -203,7 +202,7 @@ Plugin hooks are adding features to the `AnalyticalTable` that are meant for spe
 To add a plugin hook you first need to `import` the corresponding hook and then add it to the `tableHooks` array.
 
 ```js
-import { useRowDisableSelection } from '@ui5/webcomponents-react/dist/AnalyticalTableHooks';
+import { useRowDisableSelection } from '@ui5/webcomponents-react';
 ```
 
 ```jsx
@@ -221,7 +220,7 @@ With the `useRowDisableSelection` it's possible to disable the selection of spec
 - `string`: Defines the key in the dataset for disabling rows. If the value of the key is `true`, then the row will not be selectable.
 - `Function(row) => boolean`: Programmatically disable rows for selection. The function receives the current row as parameter.
 
-_ES6 Import: `import { useRowDisableSelection } from '@ui5/webcomponents-react/dist/AnalyticalTableHooks';`_
+_ES6 Import: `import { useRowDisableSelection } from '@ui5/webcomponents-react';`_
 
 **Note:** The "Select All" checkbox is not available with this hook.
 
@@ -331,7 +330,7 @@ const data = [
 The `useIndeterminateRowSelection` plugin hook allows marking parent rows as indeterminate when a child row is selected.
 When using this hook, it is recommended to also select all sub-rows when selecting a row. (`reactTableOptions={{ selectSubRows: true }}`)
 
-_ES6 Import: `import { useIndeterminateRowSelection } from '@ui5/webcomponents-react/dist/AnalyticalTableHooks';`_
+_ES6 Import: `import { useIndeterminateRowSelection } from '@ui5/webcomponents-react';`_
 
 <Canvas>
   <Story name="Plugin: useIndeterminateRowSelection" args={{ data: generateData(3, true) }}>

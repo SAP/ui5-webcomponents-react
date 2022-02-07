@@ -1,4 +1,4 @@
-import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
+import { ValueState } from '../../../enums/ValueState';
 
 const getRandomArrayEntry = (array) => array[Math.floor(Math.random() * array.length)];
 

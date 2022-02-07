@@ -12,17 +12,17 @@ import {
   UNSELECTED_AS_FAVORITE,
   VIEW
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
-import { Button } from '@ui5/webcomponents-react/dist/Button';
-import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
-import { CheckBox } from '@ui5/webcomponents-react/dist/CheckBox';
-import { Icon } from '@ui5/webcomponents-react/dist/Icon';
-import { Input } from '@ui5/webcomponents-react/dist/Input';
-import { RadioButton } from '@ui5/webcomponents-react/dist/RadioButton';
-import { TableCell } from '@ui5/webcomponents-react/dist/TableCell';
-import { TableRow } from '@ui5/webcomponents-react/dist/TableRow';
-import { Text } from '@ui5/webcomponents-react/dist/Text';
-import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import React, { useReducer, useRef, useState } from 'react';
+import { ButtonDesign } from '../../enums/ButtonDesign';
+import { ValueState } from '../../enums/ValueState';
+import { Button } from '../../webComponents/Button';
+import { CheckBox } from '../../webComponents/CheckBox';
+import { Icon } from '../../webComponents/Icon';
+import { Input } from '../../webComponents/Input';
+import { RadioButton } from '../../webComponents/RadioButton';
+import { TableCell } from '../../webComponents/TableCell';
+import { TableRow } from '../../webComponents/TableRow';
+import { Text } from '../Text';
 import { VariantItemPropTypes } from './VariantItem';
 
 interface ManageViewsTableRowsProps extends VariantItemPropTypes {

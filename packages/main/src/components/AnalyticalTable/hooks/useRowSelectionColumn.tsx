@@ -1,8 +1,8 @@
 import { CssSizeVariablesNames, enrichEventWithDetails } from '@ui5/webcomponents-react-base';
-import { CheckBox } from '@ui5/webcomponents-react/dist/CheckBox';
-import { TableSelectionBehavior } from '@ui5/webcomponents-react/dist/TableSelectionBehavior';
-import { TableSelectionMode } from '@ui5/webcomponents-react/dist/TableSelectionMode';
 import React from 'react';
+import { TableSelectionBehavior } from '../../../enums/TableSelectionBehavior';
+import { TableSelectionMode } from '../../../enums/TableSelectionMode';
+import { CheckBox } from '../../../webComponents/CheckBox';
 
 const divStyle = { width: '100%', height: '100%', cursor: 'pointer' };
 const customCheckBoxStyling = {

@@ -2,15 +2,15 @@ import '@ui5/webcomponents-icons/dist/hint.js';
 import '@ui5/webcomponents-icons/dist/status-critical.js';
 import '@ui5/webcomponents-icons/dist/status-negative.js';
 import '@ui5/webcomponents-icons/dist/status-positive.js';
-import { Icon } from '@ui5/webcomponents-react/dist/Icon';
-import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
-import { IndicationColor } from '@ui5/webcomponents-react/dist/IndicationColor';
+import clsx from 'clsx';
 import React, { forwardRef, MouseEventHandler, ReactNode, Ref } from 'react';
 import { createUseStyles } from 'react-jss';
+import { IndicationColor } from '../../enums/IndicationColor';
+import { ValueState } from '../../enums/ValueState';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
+import { Icon } from '../../webComponents/Icon';
 import styles from './ObjectStatus.jss';
-import clsx from 'clsx';
 
 export interface ObjectStatusPropTypes extends CommonProps {
   /**

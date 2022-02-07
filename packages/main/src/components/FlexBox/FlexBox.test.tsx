@@ -1,7 +1,7 @@
 import { createChangeTagNameTest, createCustomPropsTest } from '@shared/tests/utils';
 import { render, screen } from '@shared/tests';
-import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
-import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';
+import { FlexBox } from './index';
+import { FlexBoxJustifyContent } from '../../enums/FlexBoxJustifyContent';
 import * as React from 'react';
 
 describe('FlexBox', () => {

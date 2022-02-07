@@ -1,12 +1,8 @@
 import { fireEvent, render, screen } from '@shared/tests';
 import { createChangeTagNameTest } from '@shared/tests/utils';
-import { Text } from '@ui5/webcomponents-react/dist/Text';
-import { Toolbar } from '@ui5/webcomponents-react/dist/Toolbar';
-import { ToolbarDesign } from '@ui5/webcomponents-react/dist/ToolbarDesign';
-import { ToolbarSeparator } from '@ui5/webcomponents-react/dist/ToolbarSeparator';
-import { ToolbarSpacer } from '@ui5/webcomponents-react/dist/ToolbarSpacer';
-import { ToolbarStyle } from '@ui5/webcomponents-react/dist/ToolbarStyle';
 import React from 'react';
+import { Text, ToolbarDesign, ToolbarSeparator, ToolbarSpacer, ToolbarStyle } from '../..';
+import { Toolbar } from './index';
 
 describe('Toolbar', () => {
   test('Renders with default Props', () => {

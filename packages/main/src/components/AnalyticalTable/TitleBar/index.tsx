@@ -1,5 +1,5 @@
-import { Title } from '@ui5/webcomponents-react/dist/Title';
 import React, { forwardRef, isValidElement, ReactNode, ReactText, Ref } from 'react';
+import { Title } from '../../../webComponents/Title';
 
 const styles = {
   minHeight: '1.5rem',

@@ -4,19 +4,10 @@ import {
   enrichEventWithDetails,
   ThemingParameters,
   useIsRTL,
-  useSyncRef,
-  useResponsiveContentPadding
+  useResponsiveContentPadding,
+  useSyncRef
 } from '@ui5/webcomponents-react-base';
-import { AvatarPropTypes } from '@ui5/webcomponents-react/dist/Avatar';
-import { AvatarSize } from '@ui5/webcomponents-react/dist/AvatarSize';
-import { GlobalStyleClasses } from '@ui5/webcomponents-react/dist/GlobalStyleClasses';
-import { List } from '@ui5/webcomponents-react/dist/List';
-import { ObjectPageMode } from '@ui5/webcomponents-react/dist/ObjectPageMode';
-import { Popover } from '@ui5/webcomponents-react/dist/Popover';
-import { PopoverPlacementType } from '@ui5/webcomponents-react/dist/PopoverPlacementType';
-import { StandardListItem } from '@ui5/webcomponents-react/dist/StandardListItem';
-import { TabContainer } from '@ui5/webcomponents-react/dist/TabContainer';
-import { CommonProps } from '../../interfaces/CommonProps';
+import clsx from 'clsx';
 import React, {
   forwardRef,
   ReactElement,
@@ -30,11 +21,21 @@ import React, {
 } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
+import { AvatarSize } from '../../enums/AvatarSize';
+import { GlobalStyleClasses } from '../../enums/GlobalStyleClasses';
+import { ObjectPageMode } from '../../enums/ObjectPageMode';
 import { PopoverHorizontalAlign } from '../../enums/PopoverHorizontalAlign';
-import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
-import { PopoverDomRef } from '../../webComponents/Popover';
+import { PopoverPlacementType } from '../../enums/PopoverPlacementType';
+import { CommonProps } from '../../interfaces/CommonProps';
+import { safeGetChildrenArray } from '../../internal/safeGetChildrenArray';
 import { stopPropagation } from '../../internal/stopPropagation';
+import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { useObserveHeights } from '../../internal/useObserveHeights';
+import { AvatarPropTypes } from '../../webComponents/Avatar';
+import { List } from '../../webComponents/List';
+import { Popover, PopoverDomRef } from '../../webComponents/Popover';
+import { StandardListItem } from '../../webComponents/StandardListItem';
+import { TabContainer } from '../../webComponents/TabContainer';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
 import { ObjectPageSectionPropTypes } from '../ObjectPageSection';
 import { ObjectPageSubSectionPropTypes } from '../ObjectPageSubSection';
@@ -42,8 +43,6 @@ import { CollapsedAvatar } from './CollapsedAvatar';
 import { ObjectPageCssVariables, styles } from './ObjectPage.jss';
 import { ObjectPageAnchorButton } from './ObjectPageAnchorButton';
 import { extractSectionIdFromHtmlId, getLastObjectPageSection, getSectionById } from './ObjectPageUtils';
-import clsx from 'clsx';
-import { safeGetChildrenArray } from '../../internal/safeGetChildrenArray';
 
 addCustomCSS(
   'ui5-tabcontainer',

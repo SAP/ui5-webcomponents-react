@@ -2,9 +2,6 @@ import { isPhone } from '@ui5/webcomponents-base/dist/Device.js';
 import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming.js';
 import { ThemingParameters, useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base';
 import { AVAILABLE_ACTIONS, CANCEL, X_OF_Y } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
-import { Button } from '@ui5/webcomponents-react/dist/Button';
-import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
-import { ResponsivePopover } from '@ui5/webcomponents-react/dist/ResponsivePopover';
 import clsx from 'clsx';
 import React, {
   Children,
@@ -18,9 +15,14 @@ import React, {
 } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
+import { ButtonDesign } from '../../enums/ButtonDesign';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
-import { ButtonPropTypes } from '../../webComponents/Button';
-import { ResponsivePopoverDomRef, ResponsivePopoverPropTypes } from '../../webComponents/ResponsivePopover';
+import { Button, ButtonPropTypes } from '../../webComponents/Button';
+import {
+  ResponsivePopover,
+  ResponsivePopoverDomRef,
+  ResponsivePopoverPropTypes
+} from '../../webComponents/ResponsivePopover';
 import styles from './ActionSheet.jss';
 
 export interface ActionSheetPropTypes extends Omit<ResponsivePopoverPropTypes, 'children'> {

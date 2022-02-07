@@ -1,13 +1,13 @@
-import { createUseStyles } from 'react-jss';
-import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
-import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
-import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';
-import { FlexBoxWrap } from '@ui5/webcomponents-react/dist/FlexBoxWrap';
+import clsx from 'clsx';
 import React, { forwardRef, ReactNode, Ref } from 'react';
+import { createUseStyles } from 'react-jss';
+import { FlexBoxAlignItems } from '../../enums/FlexBoxAlignItems';
+import { FlexBoxDirection } from '../../enums/FlexBoxDirection';
+import { FlexBoxJustifyContent } from '../../enums/FlexBoxJustifyContent';
+import { FlexBoxWrap } from '../../enums/FlexBoxWrap';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { styles } from './FlexBox.jss';
-import clsx from 'clsx';
 
 const useStyles = createUseStyles(styles, { name: 'FlexBox' });
 

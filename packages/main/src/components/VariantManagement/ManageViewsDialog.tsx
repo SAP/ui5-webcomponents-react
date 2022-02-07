@@ -13,14 +13,14 @@ import {
   SHARING,
   VIEW
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
-import { Bar } from '@ui5/webcomponents-react/dist/Bar';
-import { Button } from '@ui5/webcomponents-react/dist/Button';
-import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
-import { Dialog, DialogDomRef } from '@ui5/webcomponents-react/dist/Dialog';
-import { Table } from '@ui5/webcomponents-react/dist/Table';
-import { TableColumn } from '@ui5/webcomponents-react/dist/TableColumn';
 import React, { Children, ComponentElement, MouseEventHandler, ReactNode, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
+import { ButtonDesign } from '../../enums/ButtonDesign';
+import { Bar } from '../../webComponents/Bar';
+import { Button } from '../../webComponents/Button';
+import { Dialog, DialogDomRef } from '../../webComponents/Dialog';
+import { Table } from '../../webComponents/Table';
+import { TableColumn } from '../../webComponents/TableColumn';
 import { ManageViewsTableRows } from './MangeViewsTableRows';
 import { VariantItemPropTypes } from './VariantItem';
 

@@ -1,11 +1,11 @@
 import '@ui5/webcomponents-icons/dist/overflow.js';
-import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
-import { PopoverPlacementType } from '@ui5/webcomponents-react/dist/PopoverPlacementType';
-import { Popover, PopoverDomRef } from '@ui5/webcomponents-react/dist/Popover';
-import { ToggleButton } from '@ui5/webcomponents-react/dist/ToggleButton';
 import React, { FC, ReactElement, ReactNode, Ref, useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
+import { ButtonDesign } from '../../enums/ButtonDesign';
+import { PopoverPlacementType } from '../../enums/PopoverPlacementType';
 import { stopPropagation } from '../../internal/stopPropagation';
+import { Popover, PopoverDomRef } from '../../webComponents/Popover';
+import { ToggleButton } from '../../webComponents/ToggleButton';
 
 interface OverflowPopoverProps {
   lastVisibleIndex: number;

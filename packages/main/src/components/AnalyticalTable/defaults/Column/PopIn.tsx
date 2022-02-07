@@ -1,12 +1,12 @@
-import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
-import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
-import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
-import { FlexBoxWrap } from '@ui5/webcomponents-react/dist/FlexBoxWrap';
-import { Text } from '@ui5/webcomponents-react/dist/Text';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import React from 'react';
 import { createUseStyles } from 'react-jss';
 import { makeRenderer } from 'react-table';
+import { FlexBoxAlignItems } from '../../../../enums/FlexBoxAlignItems';
+import { FlexBoxDirection } from '../../../../enums/FlexBoxDirection';
+import { FlexBoxWrap } from '../../../../enums/FlexBoxWrap';
+import { FlexBox } from '../../../FlexBox';
+import { Text } from '../../../Text';
 
 const PopInStyles = {
   container: {

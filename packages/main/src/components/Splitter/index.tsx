@@ -1,9 +1,9 @@
 import { ThemingParameters, useI18nBundle, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
 import { PRESS_ARROW_KEYS_TO_MOVE } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
-import { Icon } from '@ui5/webcomponents-react/dist/Icon';
-import { CommonProps } from '../../interfaces/CommonProps';
-import React, { forwardRef, Ref, useRef, useState, useEffect } from 'react';
+import React, { forwardRef, Ref, useEffect, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
+import { CommonProps } from '../../interfaces/CommonProps';
+import { Icon } from '../../webComponents/Icon';
 
 const useStyles = createUseStyles(
   {

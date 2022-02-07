@@ -14,22 +14,7 @@ import {
   SEARCH_VARIANT,
   SELECT_VIEW
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
-import { Bar } from '@ui5/webcomponents-react/dist/Bar';
-import { Button } from '@ui5/webcomponents-react/dist/Button';
-import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
-import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
-import { Icon } from '@ui5/webcomponents-react/dist/Icon';
-import { IllustratedMessage } from '@ui5/webcomponents-react/dist/IllustratedMessage';
-import { IllustrationMessageType } from '@ui5/webcomponents-react/dist/IllustrationMessageType';
-import { Input } from '@ui5/webcomponents-react/dist/Input';
-import { List } from '@ui5/webcomponents-react/dist/List';
-import { ListMode } from '@ui5/webcomponents-react/dist/ListMode';
-import { PopoverPlacementType } from '@ui5/webcomponents-react/dist/PopoverPlacementType';
-import { ResponsivePopover, ResponsivePopoverDomRef } from '@ui5/webcomponents-react/dist/ResponsivePopover';
-import { Title } from '@ui5/webcomponents-react/dist/Title';
-import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
-import { SelectedVariant, VariantManagementContext } from '@ui5/webcomponents-react/dist/VariantManagementContext';
-import { CommonProps } from '../../interfaces/CommonProps';
+import clsx from 'clsx';
 import React, {
   Children,
   cloneElement,
@@ -45,13 +30,28 @@ import React, {
 } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
+import { SelectedVariant, VariantManagementContext } from '../../internal/VariantManagementContext';
+import { ButtonDesign } from '../../enums/ButtonDesign';
+import { IllustrationMessageType } from '../../enums/IllustrationMessageType';
+import { ListMode } from '../../enums/ListMode';
+import { PopoverPlacementType } from '../../enums/PopoverPlacementType';
+import { TitleLevel } from '../../enums/TitleLevel';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { stopPropagation } from '../../internal/stopPropagation';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
+import { Bar } from '../../webComponents/Bar';
+import { Button } from '../../webComponents/Button';
+import { Icon } from '../../webComponents/Icon';
+import { IllustratedMessage } from '../../webComponents/IllustratedMessage';
+import { Input } from '../../webComponents/Input';
+import { List } from '../../webComponents/List';
+import { ResponsivePopover, ResponsivePopoverDomRef } from '../../webComponents/ResponsivePopover';
+import { Title } from '../../webComponents/Title';
+import { FlexBox } from '../FlexBox';
 import { ManageViewsDialog } from './ManageViewsDialog';
 import { SaveViewDialog } from './SaveViewDialog';
 import { VariantItemPropTypes } from './VariantItem';
-import clsx from 'clsx';
 
 interface UpdatedVariant extends SelectedVariant {
   prevVariant?: VariantItemPropTypes;

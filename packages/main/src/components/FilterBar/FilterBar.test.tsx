@@ -1,25 +1,24 @@
 import { fireEvent, render, screen } from '@shared/tests';
 import { createChangeTagNameTest, createCustomPropsTest } from '@shared/tests/utils';
-import { Bar } from '@ui5/webcomponents-react/dist/Bar';
-import { Button } from '@ui5/webcomponents-react/dist/Button';
-import { DatePicker } from '@ui5/webcomponents-react/dist/DatePicker';
-import { FilterBar } from '@ui5/webcomponents-react/dist/FilterBar';
-import { FilterGroupItem } from '@ui5/webcomponents-react/dist/FilterGroupItem';
-import { Input } from '@ui5/webcomponents-react/dist/Input';
-import { MultiComboBox } from '@ui5/webcomponents-react/dist/MultiComboBox';
-import { MultiComboBoxItem } from '@ui5/webcomponents-react/dist/MultiComboBoxItem';
-import { ComboBox } from '@ui5/webcomponents-react/dist/ComboBox';
-import { ComboBoxItem } from '@ui5/webcomponents-react/dist/ComboBoxItem';
-import { Option } from '@ui5/webcomponents-react/dist/Option';
-import { Select } from '@ui5/webcomponents-react/dist/Select';
-import { Switch } from '@ui5/webcomponents-react/dist/Switch';
-import { Toolbar } from '@ui5/webcomponents-react/dist/Toolbar';
-import { VariantManagement } from '@ui5/webcomponents-react/dist/VariantManagement';
-import { VariantItem } from '@ui5/webcomponents-react/dist/VariantItem';
-import React from 'react';
+import React, { createRef } from 'react';
 import { act } from 'react-dom/test-utils';
-import { createRef } from 'react';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
+import { Bar } from '../../webComponents/Bar';
+import { Button } from '../../webComponents/Button';
+import { ComboBox } from '../../webComponents/ComboBox';
+import { ComboBoxItem } from '../../webComponents/ComboBoxItem';
+import { DatePicker } from '../../webComponents/DatePicker';
+import { Input } from '../../webComponents/Input';
+import { MultiComboBox } from '../../webComponents/MultiComboBox';
+import { MultiComboBoxItem } from '../../webComponents/MultiComboBoxItem';
+import { Option } from '../../webComponents/Option';
+import { Select } from '../../webComponents/Select';
+import { Switch } from '../../webComponents/Switch';
+import { FilterGroupItem } from '../FilterGroupItem';
+import { Toolbar } from '../Toolbar';
+import { VariantManagement } from '../VariantManagement';
+import { VariantItem } from '../VariantManagement/VariantItem';
+import { FilterBar } from './index';
 
 const variants = (
   <VariantManagement>

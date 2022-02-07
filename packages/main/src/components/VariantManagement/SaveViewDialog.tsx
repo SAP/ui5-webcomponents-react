@@ -1,28 +1,28 @@
 import { useI18nBundle } from '@ui5/webcomponents-react-base';
 import {
+  APPLY_AUTOMATICALLY,
   CANCEL,
+  FILE_ALREADY_EXISTS,
+  PUBLIC,
   SAVE,
   SAVE_VIEW,
-  VIEW,
   SET_AS_DEFAULT,
-  PUBLIC,
-  APPLY_AUTOMATICALLY,
-  FILE_ALREADY_EXISTS,
-  SPECIFY_VIEW_NAME
+  SPECIFY_VIEW_NAME,
+  VIEW
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
-import { Bar } from '@ui5/webcomponents-react/dist/Bar';
-import { Button } from '@ui5/webcomponents-react/dist/Button';
-import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
-import { CheckBox } from '@ui5/webcomponents-react/dist/CheckBox';
-import { Dialog, DialogDomRef } from '@ui5/webcomponents-react/dist/Dialog';
-import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
-import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
-import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
-import { Input } from '@ui5/webcomponents-react/dist/Input';
-import { Label } from '@ui5/webcomponents-react/dist/Label';
-import { SelectedVariant } from '@ui5/webcomponents-react/dist/VariantManagementContext';
-import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import React, { useEffect, useRef, useState } from 'react';
+import { SelectedVariant } from '../../internal/VariantManagementContext';
+import { ButtonDesign } from '../../enums/ButtonDesign';
+import { FlexBoxAlignItems } from '../../enums/FlexBoxAlignItems';
+import { FlexBoxDirection } from '../../enums/FlexBoxDirection';
+import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
+import { Bar } from '../../webComponents/Bar';
+import { Button } from '../../webComponents/Button';
+import { CheckBox } from '../../webComponents/CheckBox';
+import { Dialog, DialogDomRef } from '../../webComponents/Dialog';
+import { Input } from '../../webComponents/Input';
+import { Label } from '../../webComponents/Label';
+import { FlexBox } from '../FlexBox';
 
 interface SaveViewDialogPropTypes {
   onAfterClose: (event: Ui5CustomEvent<HTMLElement>) => void;

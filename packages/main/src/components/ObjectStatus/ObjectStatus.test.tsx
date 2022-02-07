@@ -1,9 +1,7 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { ObjectStatus } from '@ui5/webcomponents-react/dist/ObjectStatus';
-import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
-import { IndicationColor } from '@ui5/webcomponents-react/dist/IndicationColor';
 import React from 'react';
+import { IndicationColor, ObjectStatus, ValueState } from '../..';
 
 describe('ObjectStatus', () => {
   test.each(Object.values({ ...ValueState, ...IndicationColor }))('state=%s', (state) => {
