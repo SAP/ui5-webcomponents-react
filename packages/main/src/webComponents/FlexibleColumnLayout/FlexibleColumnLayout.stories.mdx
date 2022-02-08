@@ -4,20 +4,16 @@ import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import '@ui5/webcomponents-icons/dist/decline.js';
 import '@ui5/webcomponents-icons/dist/person-placeholder.js';
 import '@ui5/webcomponents-icons/dist/video.js';
-import { sapUiContentPadding } from '@ui5/webcomponents-react-base';
+import { spacing } from '@ui5/webcomponents-react-base';
 import { useState } from 'react';
 import { FlexBox } from '../../components/FlexBox';
 import { Text } from '../../components/Text';
 import { Toolbar } from '../../components/Toolbar';
-import { AvatarSize } from '../../enums/AvatarSize';
-import { ButtonDesign } from '../../enums/ButtonDesign';
-import { FlexBoxDirection } from '../../enums/FlexBoxDirection';
-import { ToolbarDesign } from '../../enums/ToolbarDesign';
-import { ToolbarSpacer } from '../../enums/ToolbarSpacer';
+import { ToolbarSpacer } from '../../components/ToolbarSpacer';
+import { AvatarSize, ButtonDesign, FCLLayout, FlexBoxDirection, ToolbarDesign } from '../../enums';
 import { Avatar } from '../Avatar';
 import { Button } from '../Button';
 import { Card } from '../Card';
-import { FCLLayout } from '../FCLLayout';
 import { Label } from '../Label';
 import { List } from '../List';
 import { RatingIndicator } from '../RatingIndicator';
@@ -446,7 +442,7 @@ Click on one of the list items to open the next column.
                 subtitleText={`age: ${Math.floor(Math.random() * (75 - 18 + 1) + 18)}`}
                 status={selectedCast.gender}
               >
-                <div style={sapUiContentPadding}>
+                <div style={spacing.sapUiContentPadding}>
                   <Text>
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                     et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
