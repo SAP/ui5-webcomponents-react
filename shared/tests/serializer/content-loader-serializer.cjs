@@ -1,6 +1,9 @@
 module.exports = {
   test(value) {
-    return (value && typeof value === 'string' && /url\(/.test(value)) || /-aria$/.test(value) || /-diff$/.test(value);
+    if (value && typeof value === 'string') {
+      return /url\(/.test(value) || /-aria$/.test(value) || /-diff$/.test(value);
+    }
+    return false;
   },
 
   print(value, serialize) {
