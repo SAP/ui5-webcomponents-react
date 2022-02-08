@@ -1,11 +1,9 @@
-import { withWebComponent } from '../../internal/withWebComponent';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { SideContentFallDown } from '../../enums/SideContentFallDown';
-import { SideContentPosition } from '../../enums/SideContentPosition';
-import { SideContentVisibility } from '../../enums/SideContentVisibility';
 import { ReactNode } from 'react';
+import { SideContentFallDown, SideContentPosition, SideContentVisibility } from '../../enums';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
+import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
+import { withWebComponent } from '../../internal/withWebComponent';
 
 import '@ui5/webcomponents-fiori/dist/DynamicSideContent.js';
 

@@ -263,7 +263,7 @@ const getEventParameters = (name, parameters) => {
     };
   });
 
-  const importStatements = [`import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';`];
+  const importStatements = [`import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';`];
 
   const eventTarget = Utils.getEventTargetForComponent(name);
 

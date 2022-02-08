@@ -1,8 +1,8 @@
-import { withWebComponent } from '../../internal/withWebComponent';
+import { ReactNode } from 'react';
+import { MediaGalleryItemLayout } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { MediaGalleryItemLayout } from '../../enums/MediaGalleryItemLayout';
-import { ReactNode } from 'react';
+import { withWebComponent } from '../../internal/withWebComponent';
 
 import '@ui5/webcomponents-fiori/dist/MediaGalleryItem.js';
 

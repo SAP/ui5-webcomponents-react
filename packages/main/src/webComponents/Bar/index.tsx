@@ -1,8 +1,8 @@
-import { BarDesign } from '../../enums/BarDesign';
-import { withWebComponent } from '../../internal/withWebComponent';
+import { ReactNode } from 'react';
+import { BarDesign } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { ReactNode } from 'react';
+import { withWebComponent } from '../../internal/withWebComponent';
 
 import '@ui5/webcomponents-fiori/dist/Bar.js';
 

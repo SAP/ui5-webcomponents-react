@@ -1,9 +1,9 @@
-import { Priority } from '../../enums/Priority';
-import { withWebComponent } from '../../internal/withWebComponent';
+import { ReactNode } from 'react';
+import { Priority } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { ReactNode } from 'react';
+import { withWebComponent } from '../../internal/withWebComponent';
 
 import '@ui5/webcomponents-fiori/dist/NotificationListGroupItem.js';
 

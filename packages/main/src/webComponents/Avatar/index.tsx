@@ -1,10 +1,8 @@
-import { AvatarColorScheme } from '../../enums/AvatarColorScheme';
-import { AvatarShape } from '../../enums/AvatarShape';
-import { AvatarSize } from '../../enums/AvatarSize';
-import { withWebComponent } from '../../internal/withWebComponent';
+import { ReactNode } from 'react';
+import { AvatarColorScheme, AvatarShape, AvatarSize } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { ReactNode } from 'react';
+import { withWebComponent } from '../../internal/withWebComponent';
 
 import '@ui5/webcomponents/dist/Avatar.js';
 

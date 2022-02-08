@@ -1,10 +1,9 @@
-import { AvatarColorScheme } from '../../enums/AvatarColorScheme';
-import { AvatarGroupType } from '../../enums/AvatarGroupType';
-import { withWebComponent } from '../../internal/withWebComponent';
+import { ReactNode } from 'react';
+import { AvatarColorScheme, AvatarGroupType } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { ReactNode } from 'react';
+import { withWebComponent } from '../../internal/withWebComponent';
 
 import '@ui5/webcomponents/dist/AvatarGroup.js';
 
@@ -24,7 +23,7 @@ export interface AvatarGroupDomRef extends AvatarGroupAttributes, Ui5DomRef {
   /**
    * Returns an array containing the <code>AvatarColorScheme</code> values that correspond to the avatars in the component.
    */
-  readonly colorScheme: (AvatarColorScheme[] | keyof typeof AvatarColorScheme[])[];
+  readonly colorScheme: (AvatarColorScheme | keyof typeof AvatarColorScheme)[];
   /**
    * Returns an array containing the <code>ui5-avatar</code> instances that are currently not displayed due to lack of space.
    */

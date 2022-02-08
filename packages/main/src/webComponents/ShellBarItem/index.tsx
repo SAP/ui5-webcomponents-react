@@ -1,7 +1,7 @@
-import { withWebComponent } from '../../internal/withWebComponent';
+import { MouseEventHandler } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { MouseEventHandler } from 'react';
+import { withWebComponent } from '../../internal/withWebComponent';
 
 import '@ui5/webcomponents-fiori/dist/ShellBarItem.js';
 
