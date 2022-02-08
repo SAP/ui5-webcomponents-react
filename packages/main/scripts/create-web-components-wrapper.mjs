@@ -799,3 +799,13 @@ allWebComponents
       }
     }
   });
+
+// create index file for exporting all web components
+fs.writeFileSync(
+    path.join(WEB_COMPONENTS_ROOT_DIR, 'index.ts'),
+    fs
+        .readdirSync(WEB_COMPONENTS_ROOT_DIR)
+        .filter((f) => fs.statSync(path.join(WEB_COMPONENTS_ROOT_DIR, f)).isDirectory())
+        .map((folder) => `export * from './${folder}';`)
+        .join('\n')
+);
