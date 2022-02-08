@@ -123,7 +123,7 @@ export const getTypeDefinitionForProperty = (property) => {
       };
     case 'AvatarColorScheme[]': {
       return {
-        importStatement: `import { AvatarColorScheme } from '@ui5/webcomponents-react/dist/AvatarColorScheme';`,
+        importStatement: `import { AvatarColorScheme } from '../../enums';`,
         tsType: `Array<${property.type} | keyof typeof ${property.type}>`,
         enum: `AvatarColorScheme`,
         isEnum: true
@@ -179,7 +179,7 @@ export const getTypeDefinitionForProperty = (property) => {
     case 'ValueState':
     case 'WrappingType':
       return {
-        importStatement: `import { ${property.type} } from '@ui5/webcomponents-react/dist/${property.type}';`,
+        importStatement: `import { ${property.type} } from '../../enums';`,
         tsType: `${property.type} | keyof typeof ${property.type}`,
         enum: `${property.type}`,
         isEnum: true

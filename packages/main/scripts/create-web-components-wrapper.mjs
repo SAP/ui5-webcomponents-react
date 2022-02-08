@@ -46,10 +46,6 @@ const componentTemplate = Handlebars.compile(
   fs.readFileSync(path.join(PATHS.root, 'scripts', 'web-component-wrappers', 'ComponentTemplate.hbs')).toString()
 );
 
-const libraryExportTemplate = Handlebars.compile(
-  fs.readFileSync(path.join(PATHS.root, 'scripts', 'web-component-wrappers', 'LibraryExportTemplate.hbs')).toString()
-);
-
 const storyTemplate = Handlebars.compile(
   fs.readFileSync(path.join(PATHS.root, 'scripts', 'web-component-wrappers', 'StoryTemplate.hbs')).toString()
 );
@@ -569,20 +565,6 @@ const resolveInheritedAttributes = (componentSpec) => {
   `;
 
   fs.writeFileSync(path.join(ENUMS_DIR, `${spec.basename}.ts`), prettier.format(template, Utils.prettierConfig));
-  fs.writeFileSync(
-    path.join(DIST_DIR, `${spec.basename}.ts`),
-    prettier.format(
-      dedent`
-  // Generated file - do not change manually!
-  
-  import { ${spec.basename} } from '../enums/${spec.basename}';
-  
-  export { ${spec.basename} };
-  
-  `,
-      Utils.prettierConfig
-    )
-  );
 });
 
 const propDescription = (componentSpec, property) => {
@@ -777,10 +759,6 @@ allWebComponents
         (componentSpec.events || []).filter(filterNonPublicAttributes).map(({ name }) => name)
       );
       fs.writeFileSync(webComponentWrapperPath, webComponentWrapper);
-
-      // create lib export
-      const libContent = prettier.format(libraryExportTemplate({ name: componentSpec.module }), Utils.prettierConfig);
-      fs.writeFileSync(path.join(DIST_DIR, `${componentSpec.module}.ts`), libContent);
 
       // create test
       if (!fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.test.tsx`))) {
