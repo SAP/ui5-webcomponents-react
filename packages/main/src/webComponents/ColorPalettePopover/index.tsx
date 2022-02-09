@@ -29,6 +29,7 @@ export interface ColorPalettePopoverDomRef extends ColorPalettePopoverAttributes
   /**
    * Shows the ColorPalettePopover. **Note:** The method is deprecated and will be removed in future, use `showAt` instead.
    * @param {HTMLElement | EventTarget} opener - the element that the popover is shown at
+   * @deprecated please use `showAt` instead
    */
   openPopover: (opener: HTMLElement | EventTarget) => void;
   /**
