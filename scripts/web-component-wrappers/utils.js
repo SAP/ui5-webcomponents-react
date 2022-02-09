@@ -324,7 +324,19 @@ export const replaceEventNamesInDescription = (description, componentSpec) => {
   let newDescription = description;
   const eventNamesToReplace = componentSpec.events.map((event) => event.name);
   eventNamesToReplace.forEach((eventName) => {
-    newDescription = newDescription.replaceAll(`\`${eventName}\``, `\`${eventNameToReactEventName(eventName)}\``);
+    // only replace events and not HTML elements with the same name.
+    switch (eventName) {
+      case 'input':
+        if (description.includes(`\`input\` HTML element`)) {
+          return;
+        }
+      case 'close':
+        if (description.includes(`\`close\` button`)) {
+          return;
+        }
+      default:
+        newDescription = newDescription.replaceAll(`\`${eventName}\``, `\`${eventNameToReactEventName(eventName)}\``);
+    }
   });
   return newDescription;
 };
