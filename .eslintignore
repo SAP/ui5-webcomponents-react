@@ -24,7 +24,6 @@ shared
 *.stories.tsx
 *.test.tsx
 *.test.ts
-rollup.config.js
 index.esm.js
 packages/cra-template
 
