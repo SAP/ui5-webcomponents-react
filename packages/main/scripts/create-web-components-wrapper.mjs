@@ -3,7 +3,6 @@ import fioriWebComponentsSpec from '@ui5/webcomponents-fiori/dist/api.json' asse
 import mainWebComponentsSpec from '@ui5/webcomponents/dist/api.json' assert { type: 'json' };
 import dedent from 'dedent';
 import fs from 'fs';
-import Handlebars from 'handlebars';
 import path from 'path';
 import prettier from 'prettier';
 import PATHS from '../../../config/paths.js';
@@ -13,41 +12,12 @@ import {
   KNOWN_EVENTS,
   PRIVATE_COMPONENTS
 } from '../../../scripts/web-component-wrappers/config.js';
+import {
+  renderComponentWrapper,
+  renderStory,
+  renderTest
+} from '../../../scripts/web-component-wrappers/templates/index.js';
 import * as Utils from '../../../scripts/web-component-wrappers/utils.js';
-
-Handlebars.registerPartial(
-  'methodParameters',
-  fs.readFileSync(path.join(PATHS.root, 'scripts', 'web-component-wrappers', 'MethodParameters.hbs')).toString()
-);
-
-Handlebars.registerHelper('convertToStringArray', function (array) {
-  if (typeof array === 'string') return array;
-  if (!Array.isArray(array)) return '';
-  return `[${array.map((v) => `'${v}'`).join(', ')}]`;
-});
-
-Handlebars.registerHelper('join', function (array, separator) {
-  if (typeof array === 'string') return array;
-  if (!Array.isArray(array)) return '';
-  separator = typeof separator === 'string' ? separator : ', ';
-  return array.join(separator);
-});
-
-Handlebars.registerHelper('storySubComponents', function (subcomponents) {
-  return `{{ ${subcomponents.join(', ')} }}`;
-});
-
-const testTemplate = Handlebars.compile(
-  fs.readFileSync(path.join(PATHS.root, 'scripts', 'web-component-wrappers', 'TestTemplate.hbs')).toString()
-);
-
-const componentTemplate = Handlebars.compile(
-  fs.readFileSync(path.join(PATHS.root, 'scripts', 'web-component-wrappers', 'ComponentTemplate.hbs')).toString()
-);
-
-const storyTemplate = Handlebars.compile(
-  fs.readFileSync(path.join(PATHS.root, 'scripts', 'web-component-wrappers', 'StoryTemplate.hbs')).toString()
-);
 
 // To only create a single component, replace "false" with the component (module) name
 // or execute the following command: "yarn create-webcomponents-wrapper [name]"
@@ -314,7 +284,7 @@ const createWebComponentWrapper = async (
     );
     componentDescription = '';
   }
-  
+
   const imports = [
     ...importStatements,
     '', // do not remove this empty line - otherwise the eslint/import-order plugin won't work as expected
@@ -323,28 +293,22 @@ const createWebComponentWrapper = async (
     }.js';`
   ];
 
-  return prettier.format(
-    await Utils.runEsLint(
-      componentTemplate({
-        name: componentSpec.module,
-        imports,
-        propTypesExtends: tsExtendsStatement,
-        domRefExtends,
-        attributes,
-        slotsAndEvents,
-        description: componentDescription,
-        tagName: componentSpec.tagname,
-        regularProps,
-        booleanProps,
-        slotProps: slotProps.filter((name) => name !== 'children'),
-        eventProps,
-        defaultProps,
-        domRef: Utils.createDomRef(componentSpec)
-      }),
-      componentSpec.module
-    ),
-    Utils.prettierConfig
-  );
+  return await renderComponentWrapper({
+    name: componentSpec.module,
+    imports,
+    propTypesExtends: tsExtendsStatement,
+    domRefExtends,
+    attributes,
+    slotsAndEvents,
+    description: componentDescription,
+    tagName: componentSpec.tagname,
+    regularProps,
+    booleanProps,
+    slotProps: slotProps.filter((name) => name !== 'children'),
+    eventProps,
+    defaultProps,
+    domRef: Utils.createDomRef(componentSpec)
+  });
 };
 
 const createWebComponentDemo = (componentSpec, componentProps, description) => {
@@ -434,18 +398,15 @@ const createWebComponentDemo = (componentSpec, componentProps, description) => {
     );
   }
 
-  return `${prettier.format(
-    storyTemplate({
-      name: componentName,
-      imports: [...enumImports, ...additionalComponentImports],
-      additionalComponentDocs,
-      selectArgTypes,
-      customArgTypes,
-      args,
-      methods: componentSpec.methods?.filter((item) => item.visibility === 'public') ?? []
-    }),
-    { ...Utils.prettierConfig, parser: 'mdx' }
-  )}\n${formattedDescription}`;
+  return `${renderStory({
+    name: componentName,
+    imports: [...enumImports, ...additionalComponentImports],
+    additionalComponentDocs,
+    selectArgTypes,
+    customArgTypes,
+    args,
+    methods: componentSpec.methods?.filter((item) => item.visibility === 'public') ?? []
+  })}\n${formattedDescription}`;
 };
 
 const assignComponentPropertiesToMaps = (componentSpec, { properties, slots, events, methods }) => {
@@ -745,7 +706,7 @@ allWebComponents
 
       // create test
       if (!fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.test.tsx`))) {
-        const webComponentTest = prettier.format(testTemplate({ name: componentSpec.module }), Utils.prettierConfig);
+        const webComponentTest = renderTest({ name: componentSpec.module });
         fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.test.tsx`), webComponentTest);
       }
 
