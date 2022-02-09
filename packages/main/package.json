@@ -66,6 +66,7 @@
   },
   "files": [
     "dist",
+    "interfaces",
     "wrappers",
     "CHANGELOG.md",
     "LICENSE",

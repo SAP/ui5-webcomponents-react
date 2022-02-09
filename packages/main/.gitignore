@@ -1,7 +1,5 @@
-/cjs
 /components
 /enums
-/interfaces
 /internal
 /webComponents
 /index.d.ts
