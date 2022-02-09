@@ -38,7 +38,7 @@ interface NotificationListItemAttributes {
    */
   read?: boolean;
   /**
-   * Defines if the `close` button would be displayed.
+   * Defines if the `onClose` button would be displayed.
    */
   showClose?: boolean;
   /**

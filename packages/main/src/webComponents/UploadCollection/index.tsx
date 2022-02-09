@@ -15,7 +15,7 @@ interface UploadCollectionAttributes {
   /**
    * By default there will be drag and drop overlay shown over the `UploadCollection` when files are dragged. If you don't intend to use drag and drop, set this property.
    *
-   * **Note:** It is up to the application developer to add handler for `drop` event and handle it. `UploadCollection` only displays an overlay.
+   * **Note:** It is up to the application developer to add handler for `onDrop` event and handle it. `UploadCollection` only displays an overlay.
    */
   hideDragOverlay?: boolean;
   /**

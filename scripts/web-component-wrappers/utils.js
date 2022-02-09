@@ -302,3 +302,10 @@ export const prettierConfig = {
   ...prettierConfigRaw,
   parser: 'typescript'
 };
+
+export const capitalizeFirstLetter = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+export const snakeToCamel = (str) => str.replace(/([-_]\w)/g, (g) => g[1].toUpperCase());
+
+export const eventNameToReactEventName = (eventName) => {
+  return `on${capitalizeFirstLetter(snakeToCamel(eventName))}`;
+};

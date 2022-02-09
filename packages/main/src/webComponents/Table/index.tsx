@@ -17,12 +17,12 @@ interface TableAttributes {
    */
   busyDelay?: number;
   /**
-   * Defines whether the table will have growing capability either by pressing a `More` button, or via user scroll. In both cases `load-more` event is fired.
+   * Defines whether the table will have growing capability either by pressing a `More` button, or via user scroll. In both cases `onLoadMore` event is fired.
    *
    * Available options:
    *
-   * `Button` - Shows a `More` button at the bottom of the table, pressing of which triggers the `load-more` event.
-   * `Scroll` - The `load-more` event is triggered when the user scrolls to the bottom of the table;
+   * `Button` - Shows a `More` button at the bottom of the table, pressing of which triggers the `onLoadMore` event.
+   * `Scroll` - The `onLoadMore` event is triggered when the user scrolls to the bottom of the table;
    * `None` (default) - The growing is off.
    *
    * **Restrictions:** `growing="Scroll"` is not supported for Internet Explorer, and the component will fallback to `growing="Button"`.

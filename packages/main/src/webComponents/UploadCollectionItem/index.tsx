@@ -21,7 +21,7 @@ interface UploadCollectionItemAttributes {
    */
   fileName?: string;
   /**
-   * If set to `true` the file name will be clickable and it will fire `file-name-click` event upon click.
+   * If set to `true` the file name will be clickable and it will fire `onFileNameClick` event upon click.
    */
   fileNameClickable?: boolean;
   /**
@@ -39,7 +39,7 @@ interface UploadCollectionItemAttributes {
    */
   progress?: number;
   /**
-   * If set to `Uploading` or `Error`, a progress indicator showing the `progress` is displayed. Also if set to `Error`, a refresh button is shown. When this icon is pressed `retry` event is fired. If set to `Uploading`, a terminate button is shown. When this icon is pressed `terminate` event is fired.
+   * If set to `Uploading` or `Error`, a progress indicator showing the `progress` is displayed. Also if set to `Error`, a refresh button is shown. When this icon is pressed `onRetry` event is fired. If set to `Uploading`, a terminate button is shown. When this icon is pressed `onTerminate` event is fired.
    */
   uploadState?: UploadState | keyof typeof UploadState;
   /**

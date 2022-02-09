@@ -8,7 +8,7 @@ import '@ui5/webcomponents/dist/CardHeader.js';
 
 interface CardHeaderAttributes {
   /**
-   * Defines if the component would be interactive, e.g gets hover effect, gets focus outline and `click` event is fired, when pressed.
+   * Defines if the component would be interactive, e.g gets hover effect, gets focus outline and `onClick` event is fired, when pressed.
    */
   interactive?: boolean;
   /**

@@ -37,8 +37,8 @@ interface ListAttributes {
    *
    * Available options:
    *
-   * `Button` - Shows a `More` button at the bottom of the list, pressing of which triggers the `load-more` event.
-   * `Scroll` - The `load-more` event is triggered when the user scrolls to the bottom of the list;
+   * `Button` - Shows a `More` button at the bottom of the list, pressing of which triggers the `onLoadMore` event.
+   * `Scroll` - The `onLoadMore` event is triggered when the user scrolls to the bottom of the list;
    * `None` (default) - The growing is off.
    *
    * **Restrictions:** `growing="Scroll"` is not supported for Internet Explorer, on IE the component will fallback to `growing="Button"`.

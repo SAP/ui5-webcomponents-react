@@ -8,6 +8,7 @@ import PATHS from '../../../config/paths.js';
 import fs from 'fs';
 import TurndownService from 'turndown';
 import Handlebars from 'handlebars';
+import { eventNameToReactEventName } from '../../../scripts/web-component-wrappers/utils.js';
 import * as Utils from '../../../scripts/web-component-wrappers/utils.js';
 import {
   COMPONENTS_WITHOUT_DEMOS,
@@ -64,7 +65,6 @@ const EXCLUDE_LIST = [];
 
 const WEB_COMPONENTS_ROOT_DIR = path.join(PATHS.packages, 'main', 'src', 'webComponents');
 const ENUMS_DIR = path.join(PATHS.packages, 'main', 'src', 'enums');
-const DIST_DIR = path.join(PATHS.packages, 'main', 'src', 'dist');
 
 const EXTENDED_PROP_DESCRIPTION = {
   primaryCalendarType: `<br/>__Note:__ Calendar types other than Gregorian must be imported manually:<br />\`import "@ui5/webcomponents-localization/dist/features/calendar/{primaryCalendarType}.js";\``
@@ -228,8 +228,6 @@ for (const spec of allWebComponents) {
   htmlTagToModuleNameMap.set(spec.tagname, spec.module);
 }
 
-const capitalizeFirstLetter = (s) => s.charAt(0).toUpperCase() + s.slice(1);
-const snakeToCamel = (str) => str.replace(/([-_]\w)/g, (g) => g[1].toUpperCase());
 const filterNonPublicAttributes = (prop) =>
   prop.visibility === 'public' && prop.readonly !== 'true' && prop.static !== true;
 
@@ -301,7 +299,7 @@ const createWebComponentWrapper = async (
 ) => {
   const eventsToBeOmitted = eventProps
     .filter((eventName) => KNOWN_EVENTS.has(eventName))
-    .map((eventName) => `'on${capitalizeFirstLetter(snakeToCamel(eventName))}'`);
+    .map((eventName) => `'${eventNameToReactEventName(eventName)}'`);
   const attributesToBeOmitted = [...regularProps, ...booleanProps]
     .filter((attribute) => KNOWN_ATTRIBUTES.has(attribute))
     .map((a) => `'${a}'`);
@@ -578,7 +576,7 @@ const propDescription = (componentSpec, property) => {
     formattedDescription = customDescriptionReplace[property.name](formattedDescription);
   }
 
-  const extendedDescription = EXTENDED_PROP_DESCRIPTION[property.name];
+  const extendedDescription = EXTENDED_PROP_DESCRIPTION[property.name] ?? '';
 
   if (property.name !== 'children' && componentSpec?.slots?.some((item) => item.name === property.name)) {
     formattedDescription += `
@@ -587,10 +585,14 @@ const propDescription = (componentSpec, property) => {
           * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).`;
   }
 
-  if (extendedDescription) {
-    return replaceTagNameWithModuleName(`${formattedDescription}${extendedDescription}`);
+  let description = replaceTagNameWithModuleName(`${formattedDescription}${extendedDescription}`);
+  if (componentSpec.events) {
+    const eventNamesToReplace = componentSpec.events.map((event) => event.name);
+    eventNamesToReplace.forEach((eventName) => {
+      description = description.replaceAll(`\`${eventName}\``, `\`${eventNameToReactEventName(eventName)}\``);
+    });
   }
-  return replaceTagNameWithModuleName(formattedDescription);
+  return description;
 };
 
 allWebComponents
@@ -692,7 +694,7 @@ allWebComponents
          turndownService.turndown((eventSpec.description || '').trim()).replace(/\n/g, '\n   * ')
        )}
        */
-       on${capitalizeFirstLetter(snakeToCamel(eventSpec.name))}?: ${eventParameters.tsType};
+       ${eventNameToReactEventName(eventSpec.name)}?: ${eventParameters.tsType};
       `);
       });
 
@@ -780,10 +782,10 @@ allWebComponents
 
 // create index file for exporting all web components
 fs.writeFileSync(
-    path.join(WEB_COMPONENTS_ROOT_DIR, 'index.ts'),
-    fs
-        .readdirSync(WEB_COMPONENTS_ROOT_DIR)
-        .filter((f) => fs.statSync(path.join(WEB_COMPONENTS_ROOT_DIR, f)).isDirectory())
-        .map((folder) => `export * from './${folder}';`)
-        .join('\n')
+  path.join(WEB_COMPONENTS_ROOT_DIR, 'index.ts'),
+  fs
+    .readdirSync(WEB_COMPONENTS_ROOT_DIR)
+    .filter((f) => fs.statSync(path.join(WEB_COMPONENTS_ROOT_DIR, f)).isDirectory())
+    .map((folder) => `export * from './${folder}';`)
+    .join('\n')
 );

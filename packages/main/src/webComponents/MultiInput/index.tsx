@@ -9,7 +9,7 @@ import '@ui5/webcomponents/dist/MultiInput.js';
 
 interface MultiInputAttributes {
   /**
-   * Determines whether a value help icon will be visualized in the end of the input. Pressing the icon will fire `value-help-trigger` event.
+   * Determines whether a value help icon will be visualized in the end of the input. Pressing the icon will fire `onValueHelpTrigger` event.
    */
   showValueHelpIcon?: boolean;
   /**
@@ -35,7 +35,7 @@ interface MultiInputAttributes {
    *
    * **Important:** For the `name` property to have effect, you must add the following import to your project: `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
    *
-   * **Note:** When set, a native `input` HTML element will be created inside the component so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
+   * **Note:** When set, a native `onInput` HTML element will be created inside the component so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
    */
   name?: string;
   /**
