@@ -1,8 +1,8 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { Grid } from '@ui5/webcomponents-react/dist/Grid';
+import { Grid } from './index';
 import React from 'react';
-import { GridPosition } from '@ui5/webcomponents-react/dist/GridPosition';
+import { GridPosition } from '../../enums/GridPosition';
 
 const GridContent = () => (
   <>

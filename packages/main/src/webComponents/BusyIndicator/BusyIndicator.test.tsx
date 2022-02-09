@@ -1,6 +1,6 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { BusyIndicator } from '@ui5/webcomponents-react/dist/BusyIndicator';
+import { BusyIndicator } from './index';
 import React from 'react';
 
 describe('BusyIndicator', () => {

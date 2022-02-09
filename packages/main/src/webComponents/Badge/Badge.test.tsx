@@ -1,6 +1,6 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { Badge } from '@ui5/webcomponents-react/dist/Badge';
+import { Badge } from './index';
 import React from 'react';
 
 describe('Badge', () => {

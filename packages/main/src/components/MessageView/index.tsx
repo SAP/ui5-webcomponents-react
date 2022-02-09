@@ -5,22 +5,6 @@ import '@ui5/webcomponents-icons/dist/slim-arrow-left.js';
 import '@ui5/webcomponents-icons/dist/sys-enter-2.js';
 import { ThemingParameters, useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base';
 import { ALL } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
-import { Bar } from '@ui5/webcomponents-react/dist/Bar';
-import { Button } from '@ui5/webcomponents-react/dist/Button';
-import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
-import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
-import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
-import { GroupHeaderListItem } from '@ui5/webcomponents-react/dist/GroupHeaderListItem';
-import { Icon } from '@ui5/webcomponents-react/dist/Icon';
-import { List } from '@ui5/webcomponents-react/dist/List';
-import { MessageViewContext } from '@ui5/webcomponents-react/dist/MessageViewContext';
-import { SegmentedButton } from '@ui5/webcomponents-react/dist/SegmentedButton';
-import { SegmentedButtonItem } from '@ui5/webcomponents-react/dist/SegmentedButtonItem';
-import { Title } from '@ui5/webcomponents-react/dist/Title';
-import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
-import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import clsx from 'clsx';
 import React, {
   Children,
@@ -34,7 +18,23 @@ import React, {
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
+import { MessageViewContext } from '../../internal/MessageViewContext';
+import { ButtonDesign } from '../../enums/ButtonDesign';
+import { FlexBoxDirection } from '../../enums/FlexBoxDirection';
+import { TitleLevel } from '../../enums/TitleLevel';
+import { ValueState } from '../../enums/ValueState';
+import { CommonProps } from '../../interfaces/CommonProps';
+import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
+import { Bar } from '../../webComponents/Bar';
+import { Button } from '../../webComponents/Button';
+import { GroupHeaderListItem } from '../../webComponents/GroupHeaderListItem';
+import { Icon } from '../../webComponents/Icon';
+import { List } from '../../webComponents/List';
+import { SegmentedButton } from '../../webComponents/SegmentedButton';
+import { SegmentedButtonItem } from '../../webComponents/SegmentedButtonItem';
+import { Title } from '../../webComponents/Title';
+import { FlexBox } from '../FlexBox';
 import type { MessageItemPropTypes } from './MessageItem';
 import { getIconNameForType } from './utils';
 

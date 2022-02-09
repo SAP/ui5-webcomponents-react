@@ -1,6 +1,6 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { GroupHeaderListItem } from '@ui5/webcomponents-react/dist/GroupHeaderListItem';
+import { GroupHeaderListItem } from './index';
 import React from 'react';
 
 describe('GroupHeaderListItem', () => {

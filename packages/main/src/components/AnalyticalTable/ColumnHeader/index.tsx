@@ -2,21 +2,21 @@ import '@ui5/webcomponents-icons/dist/filter.js';
 import '@ui5/webcomponents-icons/dist/group-2.js';
 import '@ui5/webcomponents-icons/dist/sort-ascending.js';
 import '@ui5/webcomponents-icons/dist/sort-descending.js';
-import { createUseStyles } from 'react-jss';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import { Icon } from '@ui5/webcomponents-react/dist/Icon';
-import { Text } from '@ui5/webcomponents-react/dist/Text';
 import React, {
   CSSProperties,
   DragEventHandler,
   FC,
-  MouseEventHandler,
   KeyboardEventHandler,
+  MouseEventHandler,
   ReactNode,
   useRef,
   useState
 } from 'react';
+import { createUseStyles } from 'react-jss';
 import { VirtualItem } from 'react-virtual';
+import { Icon } from '../../../webComponents/Icon';
+import { Text } from '../../Text';
 import { ColumnType } from '../types/ColumnType';
 import { ColumnHeaderModal } from './ColumnHeaderModal';
 

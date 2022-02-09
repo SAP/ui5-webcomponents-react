@@ -1,10 +1,9 @@
-import { TableGrowingMode } from '@ui5/webcomponents-react/dist/TableGrowingMode';
-import { TableMode } from '@ui5/webcomponents-react/dist/TableMode';
-import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
+import { TableGrowingMode, TableMode } from '../../enums';
+import { CommonProps } from '../../interfaces/CommonProps';
+import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
+import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
+import { withWebComponent } from '../../internal/withWebComponent';
 
 import '@ui5/webcomponents/dist/Table.js';
 
@@ -18,12 +17,12 @@ interface TableAttributes {
    */
   busyDelay?: number;
   /**
-   * Defines whether the table will have growing capability either by pressing a `More` button, or via user scroll. In both cases `load-more` event is fired.
+   * Defines whether the table will have growing capability either by pressing a `More` button, or via user scroll. In both cases `onLoadMore` event is fired.
    *
    * Available options:
    *
-   * `Button` - Shows a `More` button at the bottom of the table, pressing of which triggers the `load-more` event.
-   * `Scroll` - The `load-more` event is triggered when the user scrolls to the bottom of the table;
+   * `Button` - Shows a `More` button at the bottom of the table, pressing of which triggers the `onLoadMore` event.
+   * `Scroll` - The `onLoadMore` event is triggered when the user scrolls to the bottom of the table;
    * `None` (default) - The growing is off.
    *
    * **Restrictions:** `growing="Scroll"` is not supported for Internet Explorer, and the component will fallback to `growing="Button"`.

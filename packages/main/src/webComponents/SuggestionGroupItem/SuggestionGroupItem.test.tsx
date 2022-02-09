@@ -1,6 +1,6 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { SuggestionGroupItem } from '@ui5/webcomponents-react/dist/SuggestionGroupItem';
+import { SuggestionGroupItem } from './index';
 import React from 'react';
 
 describe('SuggestionGroupItem', () => {

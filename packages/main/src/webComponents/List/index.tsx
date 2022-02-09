@@ -1,11 +1,9 @@
-import { ListGrowingMode } from '@ui5/webcomponents-react/dist/ListGrowingMode';
-import { ListMode } from '@ui5/webcomponents-react/dist/ListMode';
-import { ListSeparators } from '@ui5/webcomponents-react/dist/ListSeparators';
-import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
+import { ListGrowingMode, ListMode, ListSeparators } from '../../enums';
+import { CommonProps } from '../../interfaces/CommonProps';
+import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
+import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
+import { withWebComponent } from '../../internal/withWebComponent';
 
 import '@ui5/webcomponents/dist/List.js';
 
@@ -35,12 +33,12 @@ interface ListAttributes {
    */
   footerText?: string;
   /**
-   * Defines whether the component will have growing capability either by pressing a `More` button, or via user scroll. In both cases the `onLoadMore` event is fired.
+   * Defines whether the component will have growing capability either by pressing a `More` button, or via user scroll. In both cases `onLoadMore` event is fired.
    *
    * Available options:
    *
-   * `Button` - Shows a `More` button at the bottom of the list, pressing of which triggers the `load-more` event.
-   * `Scroll` - The `load-more` event is triggered when the user scrolls to the bottom of the list;
+   * `Button` - Shows a `More` button at the bottom of the list, pressing of which triggers the `onLoadMore` event.
+   * `Scroll` - The `onLoadMore` event is triggered when the user scrolls to the bottom of the list;
    * `None` (default) - The growing is off.
    *
    * **Restrictions:** `growing="Scroll"` is not supported for Internet Explorer, on IE the component will fallback to `growing="Button"`.
@@ -103,7 +101,7 @@ export interface ListPropTypes extends ListAttributes, CommonProps {
   /**
    * Fired when the `Close` button of any item is clicked
    *
-   * **Note:** This event is applicable to `NotificationListItem` items only, not to be confused with `item-delete`.
+   * **Note:** This event is applicable to `NotificationListItem` items only, not to be confused with `onItemDelete`.
    */
   onItemClose?: (event: Ui5CustomEvent<HTMLElement, { item: ReactNode }>) => void;
   /**

@@ -1,15 +1,12 @@
-import { createUseStyles } from 'react-jss';
 import {
   debounce,
   enrichEventWithDetails,
-  useSyncRef,
   useI18nBundle,
-  useIsomorphicLayoutEffect
+  useIsomorphicLayoutEffect,
+  useSyncRef
 } from '@ui5/webcomponents-react-base';
 import { SHOW_MORE } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { ToolbarDesign } from '@ui5/webcomponents-react/dist/ToolbarDesign';
-import { ToolbarStyle } from '@ui5/webcomponents-react/dist/ToolbarStyle';
+import clsx from 'clsx';
 import React, {
   cloneElement,
   createRef,
@@ -25,10 +22,13 @@ import React, {
   useRef,
   useState
 } from 'react';
+import { createUseStyles } from 'react-jss';
+import { ToolbarDesign } from '../../enums/ToolbarDesign';
+import { ToolbarStyle } from '../../enums/ToolbarStyle';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { OverflowPopover } from './OverflowPopover';
 import { styles } from './Toolbar.jss';
-import clsx from 'clsx';
 
 const useStyles = createUseStyles(styles, { name: 'Toolbar' });
 

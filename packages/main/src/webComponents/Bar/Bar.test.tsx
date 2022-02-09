@@ -1,6 +1,6 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { Bar } from '@ui5/webcomponents-react/dist/Bar';
+import { Bar } from './index';
 import React from 'react';
 
 describe('Bar', () => {

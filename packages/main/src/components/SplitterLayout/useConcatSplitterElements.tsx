@@ -1,7 +1,6 @@
-import { SplitterElementPropTypes } from '@ui5/webcomponents-react/dist/SplitterElement';
 import React, { Children, cloneElement, CSSProperties, ReactElement, useMemo } from 'react';
-import { safeGetChildrenArray } from '../../internal/safeGetChildrenArray';
 import { Splitter } from '../Splitter';
+import { SplitterElementPropTypes } from '../SplitterElement';
 
 interface ConcatSplitterElements {
   children: ReactElement<SplitterElementPropTypes> | ReactElement<SplitterElementPropTypes>[];

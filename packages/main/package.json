@@ -2,9 +2,9 @@
   "name": "@ui5/webcomponents-react",
   "version": "0.21.2",
   "description": "React Wrapper for UI5 Web Components and additional components",
-  "main": "index.esm.js",
-  "module": "index.esm.js",
-  "types": "index.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "homepage": "https://sap.github.io/ui5-webcomponents-react",
   "repository": {
     "type": "git",
@@ -14,25 +14,21 @@
   "author": "SAP SE (https://www.sap.com)",
   "license": "Apache-2.0",
   "sideEffects": [
-    "@ui5/webcomponents-icons/dist/*",
-    "@ui5/webcomponents/dist/*",
-    "@ui5/webcomponents-fiori/dist/*",
     "./dist/Assets.js",
     "./dist/json-imports/*"
   ],
   "scripts": {
-    "clean": "rimraf components enums interfaces internal webComponents index.esm.js index.d.ts dist wrappers dist",
-    "build": "npm-run-all -s build:i18n build:rollup build:types",
-    "build:rollup": "rollup -c rollup.config.mjs",
+    "clean": "rimraf dist tmp wrappers",
+    "build": "npm-run-all -s build:i18n build:tsc build:wrappers",
+    "build:tsc": "tsc",
+    "build:wrappers": "node scripts/build-wrappers.mjs && tsc --project tsconfig.wrappers.json && rimraf tmp",
     "build:i18n": "npm-run-all -s build:i18n-bundles build:i18n-default build:i18n-imports build:assets",
     "build:i18n-bundles": "mkdirp dist/assets/i18n && node ../../node_modules/@ui5/webcomponents-tools/lib/i18n/toJSON.js src/i18n dist/assets/i18n",
     "build:i18n-default": "node ../../node_modules/@ui5/webcomponents-tools/lib/i18n/defaults.js src/i18n dist/assets/i18n && tsc dist/assets/i18n/i18n-defaults.js --allowJs --declaration --emitDeclarationOnly --declarationDir dist/assets/i18n",
     "build:i18n-imports": "mkdirp dist/json-imports && node ../../node_modules/@ui5/webcomponents-tools/lib/generate-json-imports/i18n.js dist/assets/i18n dist/json-imports/",
-    "build:assets": "node ../../scripts/generate-assets/index.js",
-    "build:types": "tsc --declaration --emitDeclarationOnly --declarationDir . --removeComments false"
+    "build:assets": "node ../../scripts/generate-assets/index.js"
   },
   "dependencies": {
-    "@babel/runtime": "^7.8.4",
     "@ui5/webcomponents-react-base": "^0.21.2",
     "clsx": "1.1.1",
     "lit-html": "2.0.1",
@@ -69,16 +65,10 @@
     "access": "public"
   },
   "files": [
-    "components",
     "dist",
-    "enums",
     "interfaces",
-    "internal",
-    "webComponents",
     "wrappers",
     "CHANGELOG.md",
-    "index.d.ts",
-    "index.esm.js",
     "LICENSE",
     "NOTICE.txt",
     "README.md"

@@ -1,6 +1,6 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { Token } from '@ui5/webcomponents-react/dist/Token';
+import { Token } from './index';
 import React from 'react';
 
 describe('Token', () => {

@@ -1,16 +1,15 @@
-import { InputType } from '@ui5/webcomponents-react/dist/InputType';
-import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
-import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
+import { InputType, ValueState } from '../../enums';
+import { CommonProps } from '../../interfaces/CommonProps';
+import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
+import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
+import { withWebComponent } from '../../internal/withWebComponent';
 
 import '@ui5/webcomponents/dist/MultiInput.js';
 
 interface MultiInputAttributes {
   /**
-   * Determines whether a value help icon will be visualized in the end of the input. Pressing the icon will fire `value-help-trigger` event.
+   * Determines whether a value help icon will be visualized in the end of the input. Pressing the icon will fire `onValueHelpTrigger` event.
    */
   showValueHelpIcon?: boolean;
   /**
@@ -180,9 +179,9 @@ export interface MultiInputPropTypes extends MultiInputAttributes, Omit<CommonPr
  *
  * A `MultiInput` field allows the user to enter multiple values, which are displayed as `Token`. User can choose interaction for creating tokens. Fiori Guidelines say that user should create tokens when:
  *
- * *   Type a value in the input and press enter or focus out the input field (`change` event is fired)
+ * *   Type a value in the input and press enter or focus out the input field (`onChange` event is fired)
  * *   Select a value from the suggestion list
- * (`suggestion-item-select` event is fired)
+ * (`onSuggestionItemSelect` event is fired)
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/MultiInput" target="_blank">UI5 Web Components Playground</ui5-link>
  */

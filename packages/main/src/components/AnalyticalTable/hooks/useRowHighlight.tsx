@@ -1,5 +1,5 @@
-import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import React from 'react';
+import { ValueState } from '../../../enums/ValueState';
 
 const baseStyles = {
   width: '100%',

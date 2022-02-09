@@ -1,8 +1,8 @@
-import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
-import { MediaGalleryItemLayout } from '@ui5/webcomponents-react/dist/MediaGalleryItemLayout';
 import { ReactNode } from 'react';
+import { MediaGalleryItemLayout } from '../../enums';
+import { CommonProps } from '../../interfaces/CommonProps';
+import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
+import { withWebComponent } from '../../internal/withWebComponent';
 
 import '@ui5/webcomponents-fiori/dist/MediaGalleryItem.js';
 

@@ -1,6 +1,6 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { TableRow } from '@ui5/webcomponents-react/dist/TableRow';
+import { TableRow } from './index';
 import React from 'react';
 
 describe('TableRow', () => {

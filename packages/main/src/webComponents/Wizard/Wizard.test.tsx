@@ -1,6 +1,6 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { Wizard } from '@ui5/webcomponents-react/dist/Wizard';
+import { Wizard } from './index';
 import React from 'react';
 
 describe('Wizard', () => {

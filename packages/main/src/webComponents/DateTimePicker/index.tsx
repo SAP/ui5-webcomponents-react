@@ -1,10 +1,9 @@
-import { CalendarType } from '@ui5/webcomponents-react/dist/CalendarType';
-import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
-import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
+import { ValueState, CalendarType } from '../../enums';
+import { CommonProps } from '../../interfaces/CommonProps';
+import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
+import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
+import { withWebComponent } from '../../internal/withWebComponent';
 
 import '@ui5/webcomponents/dist/DateTimePicker.js';
 
@@ -103,7 +102,7 @@ export interface DateTimePickerDomRef extends DateTimePickerAttributes, Ui5DomRe
    */
   closePicker: () => void;
   /**
-   * Formats a Java Script date object into a string representing a locale date according to the <code>formatPattern</code> property of the DatePicker instance
+   * Formats a Java Script date object into a string representing a locale date according to the `formatPattern` property of the DatePicker instance
    * @param {Date} date - A Java Script date object to be formatted as string
    */
   formatValue: (date: Date) => void;

@@ -1,6 +1,6 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { Slider } from '@ui5/webcomponents-react/dist/Slider';
+import { Slider } from './index';
 import React from 'react';
 
 describe('Slider', () => {

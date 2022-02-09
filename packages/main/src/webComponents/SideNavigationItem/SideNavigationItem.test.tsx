@@ -1,6 +1,6 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { SideNavigationItem } from '@ui5/webcomponents-react/dist/SideNavigationItem';
+import { SideNavigationItem } from './index';
 import React from 'react';
 
 describe('SideNavigationItem', () => {

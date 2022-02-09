@@ -1,30 +1,26 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
-import { FlexibleColumnLayout } from '@ui5/webcomponents-react/dist/FlexibleColumnLayout';
-import { List } from '@ui5/webcomponents-react/dist/List';
-import { StandardListItem } from '@ui5/webcomponents-react/dist/StandardListItem';
-import { FCLLayout } from '@ui5/webcomponents-react/dist/FCLLayout';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import { Avatar } from '@ui5/webcomponents-react/dist/Avatar';
-import { AvatarSize } from '@ui5/webcomponents-react/dist/AvatarSize';
-import { Button } from '@ui5/webcomponents-react/dist/Button';
-import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
-import { Card } from '@ui5/webcomponents-react/dist/Card';
-import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
-import { Label } from '@ui5/webcomponents-react/dist/Label';
-import { RatingIndicator } from '@ui5/webcomponents-react/dist/RatingIndicator';
-import { ShellBar } from '@ui5/webcomponents-react/dist/ShellBar';
-import { Title } from '@ui5/webcomponents-react/dist/Title';
-import { Toolbar } from '@ui5/webcomponents-react/dist/Toolbar';
-import { ToolbarDesign } from '@ui5/webcomponents-react/dist/ToolbarDesign';
-import { ToolbarSpacer } from '@ui5/webcomponents-react/dist/ToolbarSpacer';
-import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
-import { Text } from '@ui5/webcomponents-react/dist/Text';
-import { useState } from 'react';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import '@ui5/webcomponents-icons/dist/decline.js';
-import '@ui5/webcomponents-icons/dist/video.js';
 import '@ui5/webcomponents-icons/dist/person-placeholder.js';
-import { sapUiContentPadding } from '@ui5/webcomponents-react-base';
+import '@ui5/webcomponents-icons/dist/video.js';
+import { spacing } from '@ui5/webcomponents-react-base';
+import { useState } from 'react';
+import { FlexBox } from '../../components/FlexBox';
+import { Text } from '../../components/Text';
+import { Toolbar } from '../../components/Toolbar';
+import { ToolbarSpacer } from '../../components/ToolbarSpacer';
+import { AvatarSize, ButtonDesign, FCLLayout, FlexBoxDirection, ToolbarDesign } from '../../enums';
+import { Avatar } from '../Avatar';
+import { Button } from '../Button';
+import { Card } from '../Card';
+import { Label } from '../Label';
+import { List } from '../List';
+import { RatingIndicator } from '../RatingIndicator';
+import { ShellBar } from '../ShellBar';
+import { StandardListItem } from '../StandardListItem';
+import { Title } from '../Title';
+import { FlexibleColumnLayout } from './index';
 
 <Meta
   title="Layouts & Floorplans / FlexibleColumnLayout"
@@ -446,7 +442,7 @@ Click on one of the list items to open the next column.
                 subtitleText={`age: ${Math.floor(Math.random() * (75 - 18 + 1) + 18)}`}
                 status={selectedCast.gender}
               >
-                <div style={sapUiContentPadding}>
+                <div style={spacing.sapUiContentPadding}>
                   <Text>
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                     et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut

@@ -1,6 +1,6 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { SplitButton } from '@ui5/webcomponents-react/dist/SplitButton';
+import { SplitButton } from './index';
 import React from 'react';
 
 describe('SplitButton', () => {

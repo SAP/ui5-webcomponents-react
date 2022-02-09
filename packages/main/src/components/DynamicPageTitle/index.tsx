@@ -1,12 +1,5 @@
 import { debounce, Device, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
-import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
-import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
-import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';
-import { Toolbar } from '@ui5/webcomponents-react/dist/Toolbar';
-import { ToolbarDesign } from '@ui5/webcomponents-react/dist/ToolbarDesign';
-import { ToolbarSeparator } from '@ui5/webcomponents-react/dist/ToolbarSeparator';
-import { ToolbarStyle } from '@ui5/webcomponents-react/dist/ToolbarStyle';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import clsx from 'clsx';
 import React, {
   Children,
   forwardRef,
@@ -19,11 +12,18 @@ import React, {
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
+import { FlexBoxAlignItems } from '../../enums/FlexBoxAlignItems';
+import { FlexBoxJustifyContent } from '../../enums/FlexBoxJustifyContent';
+import { ToolbarDesign } from '../../enums/ToolbarDesign';
+import { ToolbarStyle } from '../../enums/ToolbarStyle';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { stopPropagation } from '../../internal/stopPropagation';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
+import { FlexBox } from '../FlexBox';
+import { Toolbar } from '../Toolbar';
+import { ToolbarSeparator } from '../ToolbarSeparator';
 import { ActionsSpacer } from './ActionsSpacer';
 import { DynamicPageTitleStyles } from './DynamicPageTitle.jss';
-import clsx from 'clsx';
 
 export interface DynamicPageTitlePropTypes extends CommonProps {
   /**

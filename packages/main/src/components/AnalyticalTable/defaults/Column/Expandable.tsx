@@ -1,6 +1,6 @@
 import { CssSizeVariables, Device } from '@ui5/webcomponents-react-base';
-import { Icon } from '@ui5/webcomponents-react/dist/Icon';
 import React, { CSSProperties } from 'react';
+import { Icon } from '../../../../webComponents/Icon';
 
 const tableGroupExpandCollapseIcon = {
   color: 'var(--sapContent_IconColor)',

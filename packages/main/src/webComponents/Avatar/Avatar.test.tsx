@@ -1,6 +1,6 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { Avatar } from '@ui5/webcomponents-react/dist/Avatar';
+import { Avatar } from './index';
 import React from 'react';
 
 describe('Avatar', () => {

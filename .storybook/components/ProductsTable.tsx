@@ -1,11 +1,13 @@
-import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
-import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
-import { Table } from '@ui5/webcomponents-react/dist/Table';
-import { Label } from '@ui5/webcomponents-react/dist/Label';
-import { TableCell } from '@ui5/webcomponents-react/dist/TableCell';
-import { TableColumn } from '@ui5/webcomponents-react/dist/TableColumn';
-import { TableRow } from '@ui5/webcomponents-react/dist/TableRow';
-import { Text } from '@ui5/webcomponents-react/dist/Text';
+import {
+  FlexBox,
+  FlexBoxDirection,
+  Label,
+  Table,
+  TableCell,
+  TableColumn,
+  TableRow,
+  Text
+} from '@ui5/webcomponents-react';
 import React from 'react';
 import { ProductCollection } from './products.json';
 

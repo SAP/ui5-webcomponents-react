@@ -1,6 +1,6 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { FilterItemOption } from '@ui5/webcomponents-react/dist/FilterItemOption';
+import { FilterItemOption } from './index';
 import React from 'react';
 
 describe('FilterItemOption', () => {

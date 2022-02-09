@@ -1,6 +1,6 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { Panel } from '@ui5/webcomponents-react/dist/Panel';
+import { Panel } from './index';
 import React from 'react';
 
 describe('Panel', () => {

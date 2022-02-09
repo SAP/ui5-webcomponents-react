@@ -1,0 +1,58 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+import { {{name}} } from './index';
+{{#each imports}}
+{{{this}}}
+{{/each}}
+import { DocsHeader } from '@docs/DocsHeader';
+import { Footer } from '@docs/Footer';
+
+<Meta
+  title="Components / {{name}}"
+  component={ {{{name}}} }
+  {{#if additionalComponentDocs}}
+  subcomponents={{storySubComponents additionalComponentDocs}}
+  {{/if}}
+  argTypes=\{{
+    {{#each customArgTypes}}
+    {{{this}}}{{#unless @last}},{{/unless}}
+    {{/each}}
+  }}
+  args=\{{
+    {{#each args}}
+    {{{this}}}{{#unless @last}},{{/unless}}
+    {{/each}}
+  }}
+/>
+
+<DocsHeader/>
+
+<br/>
+
+## Example
+
+<Canvas>
+    <Story name="Default">
+        {(args) => {
+          return (
+            <{{name}} {...args} />
+          );
+        }}
+    </Story>
+</Canvas>
+
+## Properties
+
+<ArgsTable story="."/>
+
+{{#if methods}}
+## Methods
+This component exposes public methods. You can invoke them directly on the instance of the component, e.g. by using React Refs.
+
+|Name|Parameters|Description|
+|----|----------|-----------|
+{{#each methods}}
+|**{{name}}**|{{> methodParameters parameters=parameters}}|{{{description}}}|
+{{/each}}
+{{/if}}
+
+<Footer />

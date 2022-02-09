@@ -1,6 +1,6 @@
-import { CheckBox } from '@ui5/webcomponents-react/dist/CheckBox';
-import { TableSelectionMode } from '@ui5/webcomponents-react/dist/TableSelectionMode';
 import React from 'react';
+import { TableSelectionMode } from '../../../enums/TableSelectionMode';
+import { CheckBox } from '../../../webComponents/CheckBox';
 import { getBy } from '../util';
 
 type DisableRowSelectionType = string | ((row: Record<any, any>) => boolean);

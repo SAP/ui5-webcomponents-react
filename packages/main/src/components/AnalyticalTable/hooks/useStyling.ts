@@ -1,8 +1,8 @@
-import { TableSelectionBehavior } from '@ui5/webcomponents-react/dist/TableSelectionBehavior';
-import { TableSelectionMode } from '@ui5/webcomponents-react/dist/TableSelectionMode';
-import { TextAlign } from '@ui5/webcomponents-react/dist/TextAlign';
-import { VerticalAlign } from '@ui5/webcomponents-react/dist/VerticalAlign';
 import { CSSProperties } from 'react';
+import { TableSelectionBehavior } from '../../../enums/TableSelectionBehavior';
+import { TableSelectionMode } from '../../../enums/TableSelectionMode';
+import { TextAlign } from '../../../enums/TextAlign';
+import { VerticalAlign } from '../../../enums/VerticalAlign';
 
 const getHeaderGroupProps = (headerGroupProps, { instance }) => {
   const { classes } = instance.webComponentsReactProperties;

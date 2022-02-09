@@ -1,9 +1,9 @@
-import { ListMode } from '@ui5/webcomponents-react/dist/ListMode';
-import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode, DragEventHandler } from 'react';
+import { ListMode } from '../../enums';
+import { CommonProps } from '../../interfaces/CommonProps';
+import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
+import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
+import { withWebComponent } from '../../internal/withWebComponent';
 
 import '@ui5/webcomponents-fiori/dist/UploadCollection.js';
 
@@ -15,7 +15,7 @@ interface UploadCollectionAttributes {
   /**
    * By default there will be drag and drop overlay shown over the `UploadCollection` when files are dragged. If you don't intend to use drag and drop, set this property.
    *
-   * **Note:** It is up to the application developer to add handler for `drop` event and handle it. `UploadCollection` only displays an overlay.
+   * **Note:** It is up to the application developer to add handler for `onDrop` event and handle it. `UploadCollection` only displays an overlay.
    */
   hideDragOverlay?: boolean;
   /**
@@ -59,7 +59,7 @@ export interface UploadCollectionPropTypes extends UploadCollectionAttributes, O
   /**
    * Fired when an element is dropped inside the drag and drop overlay.
    *
-   * **Note:** The `drop` event is fired only when elements are dropped within the drag and drop overlay and ignored for the other parts of the `UploadCollection`.
+   * **Note:** The `onDrop` event is fired only when elements are dropped within the drag and drop overlay and ignored for the other parts of the `UploadCollection`.
    */
   onDrop?: DragEventHandler<HTMLElement>;
   /**

@@ -208,6 +208,24 @@ exports[`Toolbar ToolbarSpacer 1`] = `
 
 exports[`Toolbar overflow menu 1`] = `
 <body>
+  Object {
+    Symbol(SameObject caches): Object {
+      "childNodes": NodeList [
+        <span
+          aria-live="polite"
+          class="ui5-invisiblemessage-polite"
+          role="alert"
+          style="position: absolute; clip: rect(1px, 1px, 1px, 1px); user-select: none; left: -1000px; top: -1000px; pointer-events: none;"
+        />,
+        <span
+          aria-live="assertive"
+          class="ui5-invisiblemessage-assertive"
+          role="alert"
+          style="position: absolute; clip: rect(1px, 1px, 1px, 1px); user-select: none; left: -1000px; top: -1000px; pointer-events: none;"
+        />,
+      ],
+    },
+  }
   <div>
     <div
       class="Toolbar-outerContainer Toolbar-hasOverflow"
@@ -302,6 +320,24 @@ exports[`Toolbar overflow menu 1`] = `
 
 exports[`Toolbar overflow menu 2`] = `
 <body>
+  Object {
+    Symbol(SameObject caches): Object {
+      "childNodes": NodeList [
+        <span
+          aria-live="polite"
+          class="ui5-invisiblemessage-polite"
+          role="alert"
+          style="position: absolute; clip: rect(1px, 1px, 1px, 1px); user-select: none; left: -1000px; top: -1000px; pointer-events: none;"
+        />,
+        <span
+          aria-live="assertive"
+          class="ui5-invisiblemessage-assertive"
+          role="alert"
+          style="position: absolute; clip: rect(1px, 1px, 1px, 1px); user-select: none; left: -1000px; top: -1000px; pointer-events: none;"
+        />,
+      ],
+    },
+  }
   <div>
     <div
       class="Toolbar-outerContainer Toolbar-hasOverflow"
@@ -396,6 +432,24 @@ exports[`Toolbar overflow menu 2`] = `
 
 exports[`Toolbar overflow menu 3`] = `
 <body>
+  Object {
+    Symbol(SameObject caches): Object {
+      "childNodes": NodeList [
+        <span
+          aria-live="polite"
+          class="ui5-invisiblemessage-polite"
+          role="alert"
+          style="position: absolute; clip: rect(1px, 1px, 1px, 1px); user-select: none; left: -1000px; top: -1000px; pointer-events: none;"
+        />,
+        <span
+          aria-live="assertive"
+          class="ui5-invisiblemessage-assertive"
+          role="alert"
+          style="position: absolute; clip: rect(1px, 1px, 1px, 1px); user-select: none; left: -1000px; top: -1000px; pointer-events: none;"
+        />,
+      ],
+    },
+  }
   <div>
     <div
       class="Toolbar-outerContainer Toolbar-hasOverflow"

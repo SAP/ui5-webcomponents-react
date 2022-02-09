@@ -1,9 +1,9 @@
-import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
-import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
+import { ValueState } from '../../enums';
+import { CommonProps } from '../../interfaces/CommonProps';
+import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
+import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
+import { withWebComponent } from '../../internal/withWebComponent';
 
 import '@ui5/webcomponents/dist/TimePicker.js';
 
@@ -55,7 +55,7 @@ export interface TimePickerDomRef extends TimePickerAttributes, Ui5DomRef {
    */
   closePicker: () => void;
   /**
-   * Formats a Java Script date object into a string representing a locale date and time according to the <code>formatPattern</code> property of the TimePicker instance
+   * Formats a Java Script date object into a string representing a locale date and time according to the `formatPattern` property of the TimePicker instance
    * @param {Date} date - A Java Script date object to be formatted as string
    */
   formatValue: (date: Date) => void;
@@ -65,9 +65,9 @@ export interface TimePickerDomRef extends TimePickerAttributes, Ui5DomRef {
    */
   isOpen: () => void;
   /**
-   * Checks if a value is valid against the current <code>formatPattern</code> value.
+   * Checks if a value is valid against the current `formatPattern` value.
    *
-   * <br><br> <b>Note:</b> an empty string is considered as valid value.
+   * **Note:** an empty string is considered as valid value.
    * @param {string} value - The value to be tested against the current date format
    */
   isValid: (value: string) => void;

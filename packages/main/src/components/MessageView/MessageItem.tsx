@@ -1,19 +1,19 @@
 import { CssSizeVariables, ThemingParameters } from '@ui5/webcomponents-react-base';
-import { CustomListItem } from '@ui5/webcomponents-react/dist/CustomListItem';
-import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
-import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
-import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
-import { Icon } from '@ui5/webcomponents-react/dist/Icon';
-import { Label } from '@ui5/webcomponents-react/dist/Label';
-import { ListItemType } from '@ui5/webcomponents-react/dist/ListItemType';
-import { MessageViewContext } from '@ui5/webcomponents-react/dist/MessageViewContext';
-import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
+import clsx from 'clsx';
 import React, { forwardRef, ReactNode, Ref, useContext } from 'react';
 import { createUseStyles } from 'react-jss';
+import { MessageViewContext } from '../../internal/MessageViewContext';
+import { FlexBoxAlignItems } from '../../enums/FlexBoxAlignItems';
+import { FlexBoxDirection } from '../../enums/FlexBoxDirection';
+import { ListItemType } from '../../enums/ListItemType';
+import { ValueState } from '../../enums/ValueState';
+import { CommonProps } from '../../interfaces/CommonProps';
+import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
+import { CustomListItem } from '../../webComponents/CustomListItem';
+import { Icon } from '../../webComponents/Icon';
+import { Label } from '../../webComponents/Label';
+import { FlexBox } from '../FlexBox';
 import { getIconNameForType } from './utils';
-import clsx from 'clsx';
 
 export interface MessageItemPropTypes extends CommonProps {
   /**

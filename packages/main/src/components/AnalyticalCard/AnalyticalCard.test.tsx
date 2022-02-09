@@ -1,9 +1,9 @@
 import { render, screen } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { AnalyticalCard } from '@ui5/webcomponents-react/dist/AnalyticalCard';
-import { AnalyticalCardHeader } from '@ui5/webcomponents-react/dist/AnalyticalCardHeader';
-import { Text } from '@ui5/webcomponents-react/dist/Text';
 import React from 'react';
+import { AnalyticalCardHeader } from '../AnalyticalCardHeader';
+import { Text } from '../Text';
+import { AnalyticalCard } from './index';
 
 const Header = <AnalyticalCardHeader titleText="Header Title" />;
 

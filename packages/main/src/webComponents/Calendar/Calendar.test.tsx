@@ -1,6 +1,6 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { Calendar } from '@ui5/webcomponents-react/dist/Calendar';
+import { Calendar } from './index';
 import React from 'react';
 
 describe('Calendar', () => {

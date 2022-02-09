@@ -6,16 +6,16 @@ import {
   useResponsiveContentPadding,
   useSyncRef
 } from '@ui5/webcomponents-react-base';
-import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
-import { GlobalStyleClasses } from '@ui5/webcomponents-react/dist/GlobalStyleClasses';
-import { PageBackgroundDesign } from '@ui5/webcomponents-react/dist/PageBackgroundDesign';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import clsx from 'clsx';
 import React, { cloneElement, forwardRef, ReactElement, ReactNode, Ref, useEffect, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
+import { GlobalStyleClasses } from '../../enums/GlobalStyleClasses';
+import { PageBackgroundDesign } from '../../enums/PageBackgroundDesign';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { useObserveHeights } from '../../internal/useObserveHeights';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
+import { FlexBox } from '../FlexBox';
 import { styles } from './DynamicPage.jss';
 
 export interface DynamicPagePropTypes extends Omit<CommonProps, 'title'> {

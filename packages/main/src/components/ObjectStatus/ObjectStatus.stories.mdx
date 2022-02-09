@@ -1,11 +1,7 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
-import { ObjectStatus } from '@ui5/webcomponents-react/dist/ObjectStatus';
-import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
-import { IndicationColor } from '@ui5/webcomponents-react/dist/IndicationColor';
-import { Label } from '@ui5/webcomponents-react/dist/Label';
-import { Icon } from '@ui5/webcomponents-react/dist/Icon';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Icon, IndicationColor, Label, ObjectStatus, ValueState } from '../..';
 
 <Meta
   title="Data Display / ObjectStatus"
@@ -50,7 +46,12 @@ import { Footer } from '@docs/Footer';
 <Canvas>
   <Story name="Default Icons">
     <div
-      style={{ display: 'grid', gridTemplateColumns: 'repeat(5, minmax(0, 1fr)', rowGap: '1rem', columnGap: '1rem' }}
+      style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(5, minmax(0, 1fr)',
+        rowGap: '1rem',
+        columnGap: '1rem'
+      }}
     >
       <ObjectStatus showDefaultIcon state={ValueState.None} children="ValueState.None" />
       <ObjectStatus showDefaultIcon state={ValueState.Success} children="ValueState.Success" />
@@ -88,7 +89,12 @@ The Object Status has an inverted visualisation, which is used in cases when the
 <Canvas>
   <Story name="Inverted">
     <div
-      style={{ display: 'grid', gridTemplateColumns: 'repeat(5, minmax(0, 1fr)', rowGap: '1rem', columnGap: '1rem' }}
+      style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(5, minmax(0, 1fr)',
+        rowGap: '1rem',
+        columnGap: '1rem'
+      }}
     >
       <Label style={{ gridColumn: 'span 5' }}>Standard mode:</Label>
       <ObjectStatus inverted state={ValueState.None} children="ValueState.None" />

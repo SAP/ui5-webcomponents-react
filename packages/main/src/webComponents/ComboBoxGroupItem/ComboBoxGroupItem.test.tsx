@@ -1,6 +1,6 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { ComboBoxGroupItem } from '@ui5/webcomponents-react/dist/ComboBoxGroupItem';
+import { ComboBoxGroupItem } from './index';
 import React from 'react';
 
 describe('ComboBoxGroupItem', () => {

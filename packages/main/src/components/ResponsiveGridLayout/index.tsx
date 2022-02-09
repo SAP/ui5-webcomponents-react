@@ -1,4 +1,4 @@
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { CommonProps } from '../../interfaces/CommonProps';
 import React, { CSSProperties, forwardRef, ReactNode, Ref } from 'react';
 import { createUseStyles } from 'react-jss';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';

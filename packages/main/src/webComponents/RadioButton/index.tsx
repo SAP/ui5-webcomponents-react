@@ -1,9 +1,8 @@
-import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
-import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
-import { WrappingType } from '@ui5/webcomponents-react/dist/WrappingType';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
+import { ValueState, WrappingType } from '../../enums';
+import { CommonProps } from '../../interfaces/CommonProps';
+import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
+import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
+import { withWebComponent } from '../../internal/withWebComponent';
 
 import '@ui5/webcomponents/dist/RadioButton.js';
 
@@ -82,7 +81,7 @@ export interface RadioButtonPropTypes extends RadioButtonAttributes, Omit<Common
 }
 
 /**
- * The `RadioButton` component enables users to select a single option from a set of options. When a `RadioButton` is selected by the user, the `change` event is fired. When a `RadioButton` that is within a group is selected, the one that was previously selected gets automatically deselected. You can group radio buttons by using the `name` property.
+ * The `RadioButton` component enables users to select a single option from a set of options. When a `RadioButton` is selected by the user, the `onChange` event is fired. When a `RadioButton` that is within a group is selected, the one that was previously selected gets automatically deselected. You can group radio buttons by using the `name` property.
  * **Note:** If `RadioButton` is not part of a group, it can be selected once, but can not be deselected back.
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/RadioButton" target="_blank">UI5 Web Components Playground</ui5-link>

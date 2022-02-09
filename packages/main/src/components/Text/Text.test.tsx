@@ -1,6 +1,6 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { Text } from '@ui5/webcomponents-react/dist/Text';
+import { Text } from './index';
 import React from 'react';
 
 describe('Text', () => {

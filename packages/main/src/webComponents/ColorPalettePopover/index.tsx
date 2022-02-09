@@ -1,8 +1,8 @@
-import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { CSSProperties, ReactNode } from 'react';
+import { CommonProps } from '../../interfaces/CommonProps';
+import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
+import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
+import { withWebComponent } from '../../internal/withWebComponent';
 
 import '@ui5/webcomponents/dist/ColorPalettePopover.js';
 
@@ -27,7 +27,7 @@ interface ColorPalettePopoverAttributes {
 
 export interface ColorPalettePopoverDomRef extends ColorPalettePopoverAttributes, Ui5DomRef {
   /**
-   * Shows the ColorPalettePopover. <b>Note:</b> The method is deprecated and will be removed in future, use <code>showAt</code> instead.
+   * Shows the ColorPalettePopover. **Note:** The method is deprecated and will be removed in future, use `showAt` instead.
    * @param {HTMLElement | EventTarget} opener - the element that the popover is shown at
    * @deprecated please use `showAt` instead
    */

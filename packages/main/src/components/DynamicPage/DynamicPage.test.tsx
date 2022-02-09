@@ -4,26 +4,27 @@ import '@ui5/webcomponents-icons/dist/action.js';
 import '@ui5/webcomponents-icons/dist/decline.js';
 import '@ui5/webcomponents-icons/dist/exit-full-screen.js';
 import '@ui5/webcomponents-icons/dist/full-screen.js';
-import { Badge } from '@ui5/webcomponents-react/dist/Badge';
-import { Bar } from '@ui5/webcomponents-react/dist/Bar';
-import { BarDesign } from '@ui5/webcomponents-react/dist/BarDesign';
-import { Breadcrumbs } from '@ui5/webcomponents-react/dist/Breadcrumbs';
-import { BreadcrumbsItem } from '@ui5/webcomponents-react/dist/BreadcrumbsItem';
-import { Button } from '@ui5/webcomponents-react/dist/Button';
-import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
-import { DynamicPage } from '@ui5/webcomponents-react/dist/DynamicPage';
-import { DynamicPageHeader } from '@ui5/webcomponents-react/dist/DynamicPageHeader';
-import { DynamicPageTitle } from '@ui5/webcomponents-react/dist/DynamicPageTitle';
-import { Form } from '@ui5/webcomponents-react/dist/Form';
-import { FormGroup } from '@ui5/webcomponents-react/dist/FormGroup';
-import { FormItem } from '@ui5/webcomponents-react/dist/FormItem';
-import { Label } from '@ui5/webcomponents-react/dist/Label';
-import { Link } from '@ui5/webcomponents-react/dist/Link';
-import { ObjectStatus } from '@ui5/webcomponents-react/dist/ObjectStatus';
-import { Text } from '@ui5/webcomponents-react/dist/Text';
-import { Title } from '@ui5/webcomponents-react/dist/Title';
-import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
 import React from 'react';
+import {
+  Badge,
+  Bar,
+  BarDesign,
+  Breadcrumbs,
+  BreadcrumbsItem,
+  Button,
+  ButtonDesign,
+  DynamicPage,
+  DynamicPageHeader,
+  DynamicPageTitle,
+  Form,
+  FormGroup,
+  FormItem,
+  Label,
+  ObjectStatus,
+  Text,
+  Title,
+  ValueState
+} from '../..';
 
 const renderComponent = () => (
   <DynamicPage

@@ -1,64 +1,23 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import mainWebComponentsSpec from '@ui5/webcomponents/dist/api.json' assert { type: 'json' };
 import fioriWebComponentsSpec from '@ui5/webcomponents-fiori/dist/api.json' assert { type: 'json' };
+import mainWebComponentsSpec from '@ui5/webcomponents/dist/api.json' assert { type: 'json' };
 import dedent from 'dedent';
-import prettier from 'prettier';
-import path from 'path';
-import PATHS from '../../../config/paths.js';
 import fs from 'fs';
-import TurndownService from 'turndown';
-import Handlebars from 'handlebars';
-import * as Utils from '../../../scripts/web-component-wrappers/utils.js';
+import path from 'path';
+import prettier from 'prettier';
+import PATHS from '../../../config/paths.js';
 import {
   COMPONENTS_WITHOUT_DEMOS,
   KNOWN_ATTRIBUTES,
   KNOWN_EVENTS,
   PRIVATE_COMPONENTS
 } from '../../../scripts/web-component-wrappers/config.js';
-
-Handlebars.registerPartial(
-  'methodParameters',
-  fs.readFileSync(path.join(PATHS.root, 'scripts', 'web-component-wrappers', 'MethodParameters.hbs')).toString()
-);
-
-Handlebars.registerHelper('convertToStringArray', function (array) {
-  if (typeof array === 'string') return array;
-  if (!Array.isArray(array)) return '';
-  return `[${array.map((v) => `'${v}'`).join(', ')}]`;
-});
-
-Handlebars.registerHelper('join', function (array, separator) {
-  if (typeof array === 'string') return array;
-  if (!Array.isArray(array)) return '';
-  separator = typeof separator === 'string' ? separator : ', ';
-  return array.join(separator);
-});
-
-Handlebars.registerHelper('storySubComponents', function (subcomponents) {
-  return `{{ ${subcomponents.join(', ')} }}`;
-});
-
-const testTemplate = Handlebars.compile(
-  fs.readFileSync(path.join(PATHS.root, 'scripts', 'web-component-wrappers', 'TestTemplate.hbs')).toString()
-);
-
-const componentTemplate = Handlebars.compile(
-  fs.readFileSync(path.join(PATHS.root, 'scripts', 'web-component-wrappers', 'ComponentTemplate.hbs')).toString()
-);
-
-const libraryExportTemplate = Handlebars.compile(
-  fs.readFileSync(path.join(PATHS.root, 'scripts', 'web-component-wrappers', 'LibraryExportTemplate.hbs')).toString()
-);
-
-const storyTemplate = Handlebars.compile(
-  fs.readFileSync(path.join(PATHS.root, 'scripts', 'web-component-wrappers', 'StoryTemplate.hbs')).toString()
-);
-
-const turndownService = new TurndownService({
-  headingStyle: 'atx',
-  codeBlockStyle: 'fenced'
-});
-turndownService.keep(['ui5-link']);
+import {
+  renderComponentWrapper,
+  renderStory,
+  renderTest
+} from '../../../scripts/web-component-wrappers/templates/index.js';
+import * as Utils from '../../../scripts/web-component-wrappers/utils.js';
 
 // To only create a single component, replace "false" with the component (module) name
 // or execute the following command: "yarn create-webcomponents-wrapper [name]"
@@ -68,7 +27,6 @@ const EXCLUDE_LIST = [];
 
 const WEB_COMPONENTS_ROOT_DIR = path.join(PATHS.packages, 'main', 'src', 'webComponents');
 const ENUMS_DIR = path.join(PATHS.packages, 'main', 'src', 'enums');
-const DIST_DIR = path.join(PATHS.packages, 'main', 'src', 'dist');
 
 const EXTENDED_PROP_DESCRIPTION = {
   primaryCalendarType: `<br/>__Note:__ Calendar types other than Gregorian must be imported manually:<br />\`import "@ui5/webcomponents-localization/dist/features/calendar/{primaryCalendarType}.js";\``
@@ -232,8 +190,6 @@ for (const spec of allWebComponents) {
   htmlTagToModuleNameMap.set(spec.tagname, spec.module);
 }
 
-const capitalizeFirstLetter = (s) => s.charAt(0).toUpperCase() + s.slice(1);
-const snakeToCamel = (str) => str.replace(/([-_]\w)/g, (g) => g[1].toUpperCase());
 const filterNonPublicAttributes = (prop) =>
   prop.visibility === 'public' && prop.readonly !== 'true' && prop.static !== true;
 
@@ -267,7 +223,7 @@ const getEventParameters = (name, parameters) => {
     };
   });
 
-  const importStatements = [`import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';`];
+  const importStatements = [`import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';`];
 
   const eventTarget = Utils.getEventTargetForComponent(name);
 
@@ -305,7 +261,7 @@ const createWebComponentWrapper = async (
 ) => {
   const eventsToBeOmitted = eventProps
     .filter((eventName) => KNOWN_EVENTS.has(eventName))
-    .map((eventName) => `'on${capitalizeFirstLetter(snakeToCamel(eventName))}'`);
+    .map((eventName) => `'${Utils.eventNameToReactEventName(eventName)}'`);
   const attributesToBeOmitted = [...regularProps, ...booleanProps]
     .filter((attribute) => KNOWN_ATTRIBUTES.has(attribute))
     .map((a) => `'${a}'`);
@@ -321,15 +277,13 @@ const createWebComponentWrapper = async (
   }
   let componentDescription;
   try {
-    componentDescription = turndownService.turndown(description).replace(/\n/g, '\n * ');
+    componentDescription = Utils.formatDescription(description, componentSpec);
   } catch (e) {
     console.warn(
       `----------------------\nHeader description of ${componentSpec.module} couldn't be generated. \nThere is probably a syntax error in the associated description that can't be fixed automatically.\n----------------------`
     );
     componentDescription = '';
   }
-
-  const domRef = Utils.createDomRef(componentSpec);
 
   const imports = [
     ...importStatements,
@@ -339,28 +293,22 @@ const createWebComponentWrapper = async (
     }.js';`
   ];
 
-  return prettier.format(
-    await Utils.runEsLint(
-      componentTemplate({
-        name: componentSpec.module,
-        imports,
-        propTypesExtends: tsExtendsStatement,
-        domRefExtends,
-        attributes,
-        slotsAndEvents,
-        description: componentDescription,
-        tagName: componentSpec.tagname,
-        regularProps,
-        booleanProps,
-        slotProps: slotProps.filter((name) => name !== 'children'),
-        eventProps,
-        defaultProps,
-        domRef
-      }),
-      componentSpec.module
-    ),
-    Utils.prettierConfig
-  );
+  return await renderComponentWrapper({
+    name: componentSpec.module,
+    imports,
+    propTypesExtends: tsExtendsStatement,
+    domRefExtends,
+    attributes,
+    slotsAndEvents,
+    description: componentDescription,
+    tagName: componentSpec.tagname,
+    regularProps,
+    booleanProps,
+    slotProps: slotProps.filter((name) => name !== 'children'),
+    eventProps,
+    defaultProps,
+    domRef: Utils.createDomRef(componentSpec)
+  });
 };
 
 const createWebComponentDemo = (componentSpec, componentProps, description) => {
@@ -441,7 +389,7 @@ const createWebComponentDemo = (componentSpec, componentProps, description) => {
 
   try {
     if (formattedDescription) {
-      formattedDescription = turndownService.turndown(formattedDescription);
+      formattedDescription = Utils.formatDescription(formattedDescription, componentSpec);
     }
   } catch (e) {
     formattedDescription = '';
@@ -450,18 +398,15 @@ const createWebComponentDemo = (componentSpec, componentProps, description) => {
     );
   }
 
-  return `${prettier.format(
-    storyTemplate({
-      name: componentName,
-      imports: [...enumImports, ...additionalComponentImports],
-      additionalComponentDocs,
-      selectArgTypes,
-      customArgTypes,
-      args,
-      methods: componentSpec.methods?.filter((item) => item.visibility === 'public') ?? []
-    }),
-    { ...Utils.prettierConfig, parser: 'mdx' }
-  )}\n${formattedDescription}`;
+  return `${renderStory({
+    name: componentName,
+    imports: [...enumImports, ...additionalComponentImports],
+    additionalComponentDocs,
+    selectArgTypes,
+    customArgTypes,
+    args,
+    methods: componentSpec.methods?.filter((item) => item.visibility === 'public') ?? []
+  })}\n${formattedDescription}`;
 };
 
 const assignComponentPropertiesToMaps = (componentSpec, { properties, slots, events, methods }) => {
@@ -569,34 +514,20 @@ const resolveInheritedAttributes = (componentSpec) => {
   `;
 
   fs.writeFileSync(path.join(ENUMS_DIR, `${spec.basename}.ts`), prettier.format(template, Utils.prettierConfig));
-  fs.writeFileSync(
-    path.join(DIST_DIR, `${spec.basename}.ts`),
-    prettier.format(
-      dedent`
-  // Generated file - do not change manually!
-  
-  import { ${spec.basename} } from '../enums/${spec.basename}';
-  
-  export { ${spec.basename} };
-  
-  `,
-      Utils.prettierConfig
-    )
-  );
 });
 
 const propDescription = (componentSpec, property) => {
   if (!componentSpec.tagname) {
     return property.description || '';
   }
-  let formattedDescription = turndownService.turndown((property.description || '').trim()).replace(/\n/g, '\n   * ');
+  let formattedDescription = Utils.formatDescription(property.description, componentSpec);
 
   const customDescriptionReplace = CUSTOM_DESCRIPTION_REPLACE[componentSpec.module];
   if (customDescriptionReplace && customDescriptionReplace[property.name]) {
     formattedDescription = customDescriptionReplace[property.name](formattedDescription);
   }
 
-  const extendedDescription = EXTENDED_PROP_DESCRIPTION[property.name];
+  const extendedDescription = EXTENDED_PROP_DESCRIPTION[property.name] ?? '';
 
   if (property.name !== 'children' && componentSpec?.slots?.some((item) => item.name === property.name)) {
     formattedDescription += `
@@ -605,10 +536,7 @@ const propDescription = (componentSpec, property) => {
           * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).`;
   }
 
-  if (extendedDescription) {
-    return replaceTagNameWithModuleName(`${formattedDescription}${extendedDescription}`);
-  }
-  return replaceTagNameWithModuleName(formattedDescription);
+  return replaceTagNameWithModuleName(`${formattedDescription}${extendedDescription}`);
 };
 
 allWebComponents
@@ -706,11 +634,9 @@ allWebComponents
         importStatements.push(...eventParameters.importStatements);
         slotsAndEvents.push(dedent`
       /**
-       * ${replaceTagNameWithModuleName(
-         turndownService.turndown((eventSpec.description || '').trim()).replace(/\n/g, '\n   * ')
-       )}
+       * ${replaceTagNameWithModuleName(Utils.formatDescription(eventSpec.description, componentSpec))}
        */
-       on${capitalizeFirstLetter(snakeToCamel(eventSpec.name))}?: ${eventParameters.tsType};
+       ${Utils.eventNameToReactEventName(eventSpec.name)}?: ${eventParameters.tsType};
       `);
       });
 
@@ -778,13 +704,9 @@ allWebComponents
       );
       fs.writeFileSync(webComponentWrapperPath, webComponentWrapper);
 
-      // create lib export
-      const libContent = prettier.format(libraryExportTemplate({ name: componentSpec.module }), Utils.prettierConfig);
-      fs.writeFileSync(path.join(DIST_DIR, `${componentSpec.module}.ts`), libContent);
-
       // create test
       if (!fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.test.tsx`))) {
-        const webComponentTest = prettier.format(testTemplate({ name: componentSpec.module }), Utils.prettierConfig);
+        const webComponentTest = renderTest({ name: componentSpec.module });
         fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.test.tsx`), webComponentTest);
       }
 
@@ -799,3 +721,13 @@ allWebComponents
       }
     }
   });
+
+// create index file for exporting all web components
+fs.writeFileSync(
+  path.join(WEB_COMPONENTS_ROOT_DIR, 'index.ts'),
+  fs
+    .readdirSync(WEB_COMPONENTS_ROOT_DIR)
+    .filter((f) => fs.statSync(path.join(WEB_COMPONENTS_ROOT_DIR, f)).isDirectory())
+    .map((folder) => `export * from './${folder}';`)
+    .join('\n')
+);

@@ -1,10 +1,9 @@
-import { ListItemType } from '@ui5/webcomponents-react/dist/ListItemType';
-import { UploadState } from '@ui5/webcomponents-react/dist/UploadState';
-import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
+import { UploadState, ListItemType } from '../../enums';
+import { CommonProps } from '../../interfaces/CommonProps';
+import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
+import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
+import { withWebComponent } from '../../internal/withWebComponent';
 
 import '@ui5/webcomponents-fiori/dist/UploadCollectionItem.js';
 
@@ -22,7 +21,7 @@ interface UploadCollectionItemAttributes {
    */
   fileName?: string;
   /**
-   * If set to `true` the file name will be clickable and it will fire `file-name-click` event upon click.
+   * If set to `true` the file name will be clickable and it will fire `onFileNameClick` event upon click.
    */
   fileNameClickable?: boolean;
   /**
@@ -40,7 +39,7 @@ interface UploadCollectionItemAttributes {
    */
   progress?: number;
   /**
-   * If set to `Uploading` or `Error`, a progress indicator showing the `progress` is displayed. Also if set to `Error`, a refresh button is shown. When this icon is pressed `retry` event is fired. If set to `Uploading`, a terminate button is shown. When this icon is pressed `terminate` event is fired.
+   * If set to `Uploading` or `Error`, a progress indicator showing the `progress` is displayed. Also if set to `Error`, a refresh button is shown. When this icon is pressed `onRetry` event is fired. If set to `Uploading`, a terminate button is shown. When this icon is pressed `onTerminate` event is fired.
    */
   uploadState?: UploadState | keyof typeof UploadState;
   /**

@@ -1,6 +1,6 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { UploadCollection } from '@ui5/webcomponents-react/dist/UploadCollection';
+import { UploadCollection } from './index';
 import React from 'react';
 
 describe('UploadCollection', () => {

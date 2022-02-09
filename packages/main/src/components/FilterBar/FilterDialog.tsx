@@ -11,25 +11,25 @@ import {
   SEARCH_FOR_FILTERS,
   SHOW_ON_FILTER_BAR
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
-import { Bar } from '@ui5/webcomponents-react/dist/Bar';
-import { BarDesign } from '@ui5/webcomponents-react/dist/BarDesign';
-import { Button } from '@ui5/webcomponents-react/dist/Button';
-import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
-import { CheckBox } from '@ui5/webcomponents-react/dist/CheckBox';
-import { Dialog } from '@ui5/webcomponents-react/dist/Dialog';
-import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
-import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
-import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
-import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';
-import { Icon } from '@ui5/webcomponents-react/dist/Icon';
-import { Input } from '@ui5/webcomponents-react/dist/Input';
-import { Text } from '@ui5/webcomponents-react/dist/Text';
-import { Title } from '@ui5/webcomponents-react/dist/Title';
-import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
 import React, { Children, cloneElement, ReactElement, useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
+import { BarDesign } from '../../enums/BarDesign';
+import { ButtonDesign } from '../../enums/ButtonDesign';
+import { FlexBoxAlignItems } from '../../enums/FlexBoxAlignItems';
+import { FlexBoxDirection } from '../../enums/FlexBoxDirection';
+import { FlexBoxJustifyContent } from '../../enums/FlexBoxJustifyContent';
+import { TitleLevel } from '../../enums/TitleLevel';
 import { stopPropagation } from '../../internal/stopPropagation';
+import { Bar } from '../../webComponents/Bar';
+import { Button } from '../../webComponents/Button';
+import { CheckBox } from '../../webComponents/CheckBox';
+import { Dialog } from '../../webComponents/Dialog';
+import { Icon } from '../../webComponents/Icon';
+import { Input } from '../../webComponents/Input';
+import { Title } from '../../webComponents/Title';
+import { FlexBox } from '../FlexBox';
+import { Text } from '../Text';
 import styles from './FilterBarDialog.jss';
 import { filterValue, renderSearchWithValue, syncRef } from './utils';
 

@@ -1,9 +1,9 @@
 import { fireEvent, render, renderWithDefine, waitFor } from '@shared/tests';
-import { SelectDialog } from '@ui5/webcomponents-react/dist/SelectDialog';
-import { DialogDomRef } from '@ui5/webcomponents-react/dist/Dialog';
-import { StandardListItem } from '@ui5/webcomponents-react/dist/StandardListItem';
-import { ListMode } from '@ui5/webcomponents-react/dist/ListMode';
 import React from 'react';
+import { ListMode } from '../../enums/ListMode';
+import { DialogDomRef } from '../../webComponents/Dialog';
+import { StandardListItem } from '../../webComponents/StandardListItem';
+import { SelectDialog } from './index';
 
 const listItems = new Array(5).fill('o_O').map((_, index) => (
   <StandardListItem key={index} data-li={index} description={`description${index}`}>

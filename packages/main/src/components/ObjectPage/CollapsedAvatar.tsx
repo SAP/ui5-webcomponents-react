@@ -1,7 +1,7 @@
-import { AvatarSize } from '@ui5/webcomponents-react/dist/AvatarSize';
+import clsx from 'clsx';
 import React, { CSSProperties, ReactElement, useEffect, useMemo, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
-import clsx from 'clsx';
+import { AvatarSize } from '../../enums/AvatarSize';
 
 const styles = {
   base: {

@@ -1,5 +1,5 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import { GlobalStyleClasses } from '@ui5/webcomponents-react/dist/GlobalStyleClasses';
+import { GlobalStyleClasses } from '../../enums/GlobalStyleClasses';
 
 export const GlobalStyleClassesStyles = {
   '@global': {

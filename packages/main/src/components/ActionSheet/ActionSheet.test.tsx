@@ -1,9 +1,9 @@
 import { fireEvent, render, screen } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { ActionSheet } from '@ui5/webcomponents-react/dist/ActionSheet';
-import { PopoverDomRef } from '@ui5/webcomponents-react/dist/Popover';
-import { Button } from '@ui5/webcomponents-react/dist/Button';
-import { Label } from '@ui5/webcomponents-react/dist/Label';
+import { ActionSheet } from './index';
+import { PopoverDomRef } from '../../webComponents/Popover';
+import { Button } from '../../webComponents/Button';
+import { Label } from '../../webComponents/Label';
 import React, { createRef, RefObject } from 'react';
 
 describe('ActionSheet', () => {

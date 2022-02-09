@@ -27,16 +27,6 @@ import {
   WARNING,
   YES
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
-import { Button, ButtonPropTypes } from '@ui5/webcomponents-react/dist/Button';
-import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
-import { Dialog, DialogPropTypes, DialogDomRef } from '@ui5/webcomponents-react/dist/Dialog';
-import { Icon } from '@ui5/webcomponents-react/dist/Icon';
-import { MessageBoxActions } from '@ui5/webcomponents-react/dist/MessageBoxActions';
-import { MessageBoxTypes } from '@ui5/webcomponents-react/dist/MessageBoxTypes';
-import { Text } from '@ui5/webcomponents-react/dist/Text';
-import { Title } from '@ui5/webcomponents-react/dist/Title';
-import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
-import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import clsx from 'clsx';
 import React, {
   cloneElement,
@@ -49,8 +39,18 @@ import React, {
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
+import { ButtonDesign } from '../../enums/ButtonDesign';
+import { MessageBoxActions } from '../../enums/MessageBoxActions';
+import { MessageBoxTypes } from '../../enums/MessageBoxTypes';
+import { TitleLevel } from '../../enums/TitleLevel';
+import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { stopPropagation } from '../../internal/stopPropagation';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
+import { Button, ButtonPropTypes } from '../../webComponents/Button';
+import { Dialog, DialogDomRef, DialogPropTypes } from '../../webComponents/Dialog';
+import { Icon } from '../../webComponents/Icon';
+import { Title } from '../../webComponents/Title';
+import { Text } from '../Text';
 import styles from './MessageBox.jss';
 
 type MessageBoxAction = MessageBoxActions | keyof typeof MessageBoxActions | string;

@@ -1,8 +1,8 @@
-import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
+import { CommonProps } from '../../interfaces/CommonProps';
+import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
+import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
+import { withWebComponent } from '../../internal/withWebComponent';
 
 import '@ui5/webcomponents-fiori/dist/ShellBar.js';
 
@@ -44,27 +44,27 @@ interface ShellBarAttributes {
 
 export interface ShellBarDomRef extends ShellBarAttributes, Ui5DomRef {
   /**
-   * Returns the <code>copilot</code> DOM ref.
+   * Returns the `copilot` DOM ref.
    */
   readonly copilotDomRef: ReactNode;
   /**
-   * Returns the <code>logo</code> DOM ref.
+   * Returns the `logo` DOM ref.
    */
   readonly logoDomRef: ReactNode;
   /**
-   * Returns the <code>notifications</code> icon DOM ref.
+   * Returns the `notifications` icon DOM ref.
    */
   readonly notificationsDomRef: ReactNode;
   /**
-   * Returns the <code>overflow</code> icon DOM ref.
+   * Returns the `overflow` icon DOM ref.
    */
   readonly overflowDomRef: ReactNode;
   /**
-   * Returns the <code>product-switch</code> icon DOM ref.
+   * Returns the `product-switch` icon DOM ref.
    */
   readonly productSwitchDomRef: ReactNode;
   /**
-   * Returns the <code>profile</code> icon DOM ref.
+   * Returns the `profile` icon DOM ref.
    */
   readonly profileDomRef: ReactNode;
   /**

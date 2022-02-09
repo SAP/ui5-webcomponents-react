@@ -1,6 +1,5 @@
 import { Device, useViewportRange } from '@ui5/webcomponents-react-base';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { GridPosition } from '@ui5/webcomponents-react/dist/GridPosition';
+import clsx from 'clsx';
 import React, {
   Children,
   cloneElement,
@@ -12,9 +11,10 @@ import React, {
   useCallback
 } from 'react';
 import { createUseStyles } from 'react-jss';
+import { GridPosition } from '../../enums/GridPosition';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { styles } from './Grid.jss';
-import clsx from 'clsx';
 
 export interface GridPropTypes extends CommonProps {
   /**

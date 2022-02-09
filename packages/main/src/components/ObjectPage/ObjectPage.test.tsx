@@ -1,19 +1,21 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { Avatar } from '@ui5/webcomponents-react/dist/Avatar';
-import { Bar } from '@ui5/webcomponents-react/dist/Bar';
-import { BarDesign } from '@ui5/webcomponents-react/dist/BarDesign';
-import { DynamicPageHeader } from '@ui5/webcomponents-react/dist/DynamicPageHeader';
-import { DynamicPageTitle } from '@ui5/webcomponents-react/dist/DynamicPageTitle';
-import { Label } from '@ui5/webcomponents-react/dist/Label';
-import { ObjectPage } from '@ui5/webcomponents-react/dist/ObjectPage';
-import { ObjectPageMode } from '@ui5/webcomponents-react/dist/ObjectPageMode';
-import { ObjectPageSection } from '@ui5/webcomponents-react/dist/ObjectPageSection';
-import { ObjectPageSubSection } from '@ui5/webcomponents-react/dist/ObjectPageSubSection';
-import { Text } from '@ui5/webcomponents-react/dist/Text';
-import { IllustratedMessage } from '@ui5/webcomponents-react/dist/IllustratedMessage';
-import { IllustrationMessageType } from '@ui5/webcomponents-react/dist/IllustrationMessageType';
 import React from 'react';
+import {
+  Avatar,
+  Bar,
+  BarDesign,
+  DynamicPageHeader,
+  DynamicPageTitle,
+  IllustratedMessage,
+  IllustrationMessageType,
+  Label,
+  ObjectPage,
+  ObjectPageMode,
+  ObjectPageSection,
+  ObjectPageSubSection,
+  Text
+} from '../..';
 
 const headerContent = <DynamicPageHeader>HeaderContent</DynamicPageHeader>;
 const headerTitle = <DynamicPageTitle>HeaderTitle</DynamicPageTitle>;

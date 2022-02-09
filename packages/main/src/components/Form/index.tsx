@@ -1,7 +1,4 @@
 import { CssSizeVariables, Device, ThemingParameters, useSyncRef } from '@ui5/webcomponents-react-base';
-import { Title } from '@ui5/webcomponents-react/dist/Title';
-import { TitleLevel } from '@ui5/webcomponents-react/dist/TitleLevel';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import clsx from 'clsx';
 import React, {
   Children,
@@ -16,7 +13,10 @@ import React, {
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
+import { TitleLevel } from '../../enums/TitleLevel';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
+import { Title } from '../../webComponents/Title';
 import { styles } from './Form.jss';
 
 export interface FormPropTypes extends CommonProps {

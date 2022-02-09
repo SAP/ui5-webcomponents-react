@@ -1,6 +1,6 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { Option } from '@ui5/webcomponents-react/dist/Option';
+import { Option } from './index';
 import React from 'react';
 
 describe('Option', () => {

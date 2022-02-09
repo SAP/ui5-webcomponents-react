@@ -1,7 +1,7 @@
-import { screen, render } from '@shared/tests';
+import { render, screen } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { ResponsiveGridLayout } from '@ui5/webcomponents-react/dist/ResponsiveGridLayout';
 import React from 'react';
+import { ResponsiveGridLayout } from './index';
 
 describe('ResponsiveGridLayout', () => {
   test('Render without Crashing', () => {

@@ -1,6 +1,6 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { ProgressIndicator } from '@ui5/webcomponents-react/dist/ProgressIndicator';
+import { ProgressIndicator } from './index';
 import React from 'react';
 
 describe('ProgressIndicator', () => {

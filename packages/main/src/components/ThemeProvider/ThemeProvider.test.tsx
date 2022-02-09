@@ -1,8 +1,8 @@
 import { render } from '@shared/tests';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import { ThemeProvider } from '@ui5/webcomponents-react/dist/ThemeProvider';
 import React from 'react';
 import { useTheme } from 'react-jss';
+import { ThemeProvider } from './index';
 
 describe('ThemeProvider', () => {
   it('Provides Correct Context', (done) => {

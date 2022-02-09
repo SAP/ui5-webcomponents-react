@@ -8,16 +8,6 @@ import {
   RESTORE,
   SHOW_FILTER_BAR
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
-import { BusyIndicator } from '@ui5/webcomponents-react/dist/BusyIndicator';
-import { BusyIndicatorSize } from '@ui5/webcomponents-react/dist/BusyIndicatorSize';
-import { Button } from '@ui5/webcomponents-react/dist/Button';
-import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
-import { InputPropTypes } from '@ui5/webcomponents-react/dist/Input';
-import { Toolbar } from '@ui5/webcomponents-react/dist/Toolbar';
-import { ToolbarSeparator } from '@ui5/webcomponents-react/dist/ToolbarSeparator';
-import { ToolbarSpacer } from '@ui5/webcomponents-react/dist/ToolbarSpacer';
-import { ToolbarStyle } from '@ui5/webcomponents-react/dist/ToolbarStyle';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import clsx from 'clsx';
 import React, {
   Children,
@@ -32,9 +22,19 @@ import React, {
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
+import { BusyIndicatorSize } from '../../enums/BusyIndicatorSize';
+import { ButtonDesign } from '../../enums/ButtonDesign';
+import { ToolbarStyle } from '../../enums/ToolbarStyle';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
-import { DialogDomRef } from '@ui5/webcomponents-react/dist/Dialog';
+import { BusyIndicator } from '../../webComponents/BusyIndicator';
+import { Button } from '../../webComponents/Button';
+import { DialogDomRef } from '../../webComponents/Dialog';
+import { InputPropTypes } from '../../webComponents/Input';
+import { Toolbar } from '../Toolbar';
+import { ToolbarSeparator } from '../ToolbarSeparator';
+import { ToolbarSpacer } from '../ToolbarSpacer';
 import styles from './FilterBar.jss';
 import { FilterDialog } from './FilterDialog';
 import { filterValue, renderSearchWithValue, syncRef } from './utils';

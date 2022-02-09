@@ -2,7 +2,7 @@ import { CssSizeVariables, ThemingParameters, useI18nBundle } from '@ui5/webcomp
 import { createUseStyles } from 'react-jss';
 import React, { forwardRef, Ref } from 'react';
 import { SEPARATOR } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { CommonProps } from '../../interfaces/CommonProps';
 import clsx from 'clsx';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 

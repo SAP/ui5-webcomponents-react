@@ -1,18 +1,18 @@
 import { useI18nBundle } from '@ui5/webcomponents-react-base';
 import { DEVIATION, TARGET } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
-import { DeviationIndicator } from '@ui5/webcomponents-react/dist/DeviationIndicator';
-import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
-import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
-import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/FlexBoxDirection';
-import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/dist/FlexBoxJustifyContent';
-import { FlexBoxWrap } from '@ui5/webcomponents-react/dist/FlexBoxWrap';
-import { ObjectStatus } from '@ui5/webcomponents-react/dist/ObjectStatus';
-import { ValueState } from '@ui5/webcomponents-react/dist/ValueState';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import clsx from 'clsx';
 import React, { forwardRef, MouseEventHandler, Ref, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
+import { DeviationIndicator } from '../../enums/DeviationIndicator';
+import { FlexBoxAlignItems } from '../../enums/FlexBoxAlignItems';
+import { FlexBoxDirection } from '../../enums/FlexBoxDirection';
+import { FlexBoxJustifyContent } from '../../enums/FlexBoxJustifyContent';
+import { FlexBoxWrap } from '../../enums/FlexBoxWrap';
+import { ValueState } from '../../enums/ValueState';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
+import { FlexBox } from '../FlexBox';
+import { ObjectStatus } from '../ObjectStatus';
 import styles from './AnalyticalCardHeader.jss';
 
 export interface AnalyticalCardHeaderPropTypes extends CommonProps {

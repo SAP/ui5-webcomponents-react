@@ -1,6 +1,6 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { DatePicker } from '@ui5/webcomponents-react/dist/DatePicker';
+import { DatePicker } from './index';
 import React from 'react';
 
 describe('DatePicker', () => {

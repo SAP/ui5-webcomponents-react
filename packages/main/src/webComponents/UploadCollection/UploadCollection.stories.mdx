@@ -1,18 +1,18 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
-import { UploadCollection } from '@ui5/webcomponents-react/dist/UploadCollection';
-import { ListMode } from '@ui5/webcomponents-react/dist/ListMode';
-import { useState } from 'react';
-import { UploadCollectionItem } from '@ui5/webcomponents-react/dist/UploadCollectionItem';
-import { UploadState } from '@ui5/webcomponents-react/dist/UploadState';
-import { Icon } from '@ui5/webcomponents-react/dist/Icon';
-import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
-import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
-import { Title } from '@ui5/webcomponents-react/dist/Title';
-import { Button } from '@ui5/webcomponents-react/dist/Button';
-import { Text } from '@ui5/webcomponents-react/dist/Text';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import '@ui5/webcomponents-icons/dist/document.js';
+import { useState } from 'react';
+import { FlexBox } from '../../components/FlexBox';
+import { Text } from '../../components/Text';
+import { FlexBoxAlignItems } from '../../enums/FlexBoxAlignItems';
+import { ListMode } from '../../enums/ListMode';
+import { UploadState } from '../../enums/UploadState';
+import { Button } from '../Button';
+import { Icon } from '../Icon';
+import { Title } from '../Title';
+import { UploadCollectionItem } from '../UploadCollectionItem';
+import { UploadCollection } from './index';
 
 <Meta
   title="Inputs / UploadCollection"
@@ -72,10 +72,7 @@ This example shows, how to dynamically render a `UploadCollectionItem` by droppi
 
 ```jsx
 import React, { useState } from 'react';
-import { UploadCollection } from '@ui5/webcomponents-react/dist/UploadCollection';
-import { UploadCollectionItem } from '@ui5/webcomponents-react/dist/UploadCollectionItem';
-import { Icon } from '@ui5/webcomponents-react/dist/Icon';
-import { Text } from '@ui5/webcomponents-react/dist/Text';
+import { Icon, Text, UploadCollection, UploadCollectionItem } from '@ui5/webcomponents-react';
 
 export const UploadCollectionComponent = () => {
   const [children, setChildren] = useState([]);

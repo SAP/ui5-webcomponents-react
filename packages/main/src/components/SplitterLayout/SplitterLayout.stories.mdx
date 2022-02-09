@@ -1,14 +1,8 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
-import { Button } from '@ui5/webcomponents-react/dist/Button';
 import { DocsHeader } from '@docs/DocsHeader';
-import { SplitterLayout } from '@ui5/webcomponents-react/dist/SplitterLayout';
-import { SplitterElement } from '@ui5/webcomponents-react/dist/SplitterElement';
-import { SegmentedButton } from '@ui5/webcomponents-react/dist/SegmentedButton';
-import { SegmentedButtonItem } from '@ui5/webcomponents-react/dist/SegmentedButtonItem';
-import { Label } from '@ui5/webcomponents-react/dist/Label';
-import { useState, useEffect } from 'react';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { useEffect, useState } from 'react';
+import { Button, FlexBox, Label, SegmentedButton, SegmentedButtonItem, SplitterElement, SplitterLayout } from '../..';
 import { SplitterElementContent } from '../../../../../.storybook/components/SplitterElementContent';
-import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
 
 <Meta
   title="Layouts & Floorplans / SplitterLayout"

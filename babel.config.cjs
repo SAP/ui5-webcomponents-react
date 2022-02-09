@@ -21,15 +21,6 @@ module.exports = function (api) {
       ],
       '@babel/preset-react',
       '@babel/preset-typescript'
-    ].filter(Boolean),
-    plugins: [
-      [
-        '@babel/plugin-transform-runtime',
-        {
-          version: require('@babel/runtime/package.json').version,
-          useESModules: api.env('esm')
-        }
-      ]
-    ]
+    ].filter(Boolean)
   };
 };

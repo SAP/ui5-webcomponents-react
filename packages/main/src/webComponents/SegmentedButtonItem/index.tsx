@@ -1,8 +1,8 @@
-import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
-import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode, MouseEventHandler } from 'react';
+import { ButtonDesign } from '../../enums';
+import { CommonProps } from '../../interfaces/CommonProps';
+import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
+import { withWebComponent } from '../../internal/withWebComponent';
 
 import '@ui5/webcomponents/dist/SegmentedButtonItem.js';
 

@@ -10,25 +10,25 @@ import {
   SELECT,
   SELECTED
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
-import { Bar } from '@ui5/webcomponents-react/dist/Bar';
-import { BarDesign } from '@ui5/webcomponents-react/dist/BarDesign';
-import { Button } from '@ui5/webcomponents-react/dist/Button';
-import { ButtonDesign } from '@ui5/webcomponents-react/dist/ButtonDesign';
-import { Dialog, DialogDomRef, DialogPropTypes } from '@ui5/webcomponents-react/dist/Dialog';
-import { Icon } from '@ui5/webcomponents-react/dist/Icon';
-import { Input } from '@ui5/webcomponents-react/dist/Input';
-import { List, ListPropTypes } from '@ui5/webcomponents-react/dist/List';
-import { ListGrowingMode } from '@ui5/webcomponents-react/dist/ListGrowingMode';
-import { ListMode } from '@ui5/webcomponents-react/dist/ListMode';
-import { Text } from '@ui5/webcomponents-react/dist/Text';
-import { Title } from '@ui5/webcomponents-react/dist/Title';
-import { Toolbar } from '@ui5/webcomponents-react/dist/Toolbar';
-import { ToolbarDesign } from '@ui5/webcomponents-react/dist/ToolbarDesign';
-import { Ui5CustomEvent } from '@ui5/webcomponents-react/interfaces/Ui5CustomEvent';
 import clsx from 'clsx';
 import React, { forwardRef, ReactNode, Ref, useState } from 'react';
 import { createUseStyles } from 'react-jss';
+import { BarDesign } from '../../enums/BarDesign';
+import { ButtonDesign } from '../../enums/ButtonDesign';
+import { ListGrowingMode } from '../../enums/ListGrowingMode';
+import { ListMode } from '../../enums/ListMode';
+import { ToolbarDesign } from '../../enums/ToolbarDesign';
+import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
+import { Bar } from '../../webComponents/Bar';
+import { Button } from '../../webComponents/Button';
+import { Dialog, DialogDomRef, DialogPropTypes } from '../../webComponents/Dialog';
+import { Icon } from '../../webComponents/Icon';
+import { Input } from '../../webComponents/Input';
+import { List, ListPropTypes } from '../../webComponents/List';
+import { Title } from '../../webComponents/Title';
+import { Text } from '../Text';
+import { Toolbar } from '../Toolbar';
 
 const useStyles = createUseStyles(
   {

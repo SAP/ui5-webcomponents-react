@@ -1,8 +1,9 @@
-import { ESLint } from 'eslint';
-import PATHS from '../../config/paths.js';
-import path from 'path';
-import fs from 'fs';
 import dedent from 'dedent';
+import { ESLint } from 'eslint';
+import fs from 'fs';
+import path from 'path';
+import TurndownService from 'turndown';
+import PATHS from '../../config/paths.js';
 import prettierConfigRaw from '../../prettier.config.cjs';
 
 const eslint = new ESLint({
@@ -123,7 +124,7 @@ export const getTypeDefinitionForProperty = (property) => {
       };
     case 'AvatarColorScheme[]': {
       return {
-        importStatement: `import { AvatarColorScheme } from '@ui5/webcomponents-react/dist/AvatarColorScheme';`,
+        importStatement: `import { AvatarColorScheme } from '../../enums';`,
         tsType: `Array<${property.type} | keyof typeof ${property.type}>`,
         enum: `AvatarColorScheme`,
         isEnum: true
@@ -179,7 +180,7 @@ export const getTypeDefinitionForProperty = (property) => {
     case 'ValueState':
     case 'WrappingType':
       return {
-        importStatement: `import { ${property.type} } from '@ui5/webcomponents-react/dist/${property.type}';`,
+        importStatement: `import { ${property.type} } from '../../enums';`,
         tsType: `${property.type} | keyof typeof ${property.type}`,
         enum: `${property.type}`,
         isEnum: true
@@ -269,7 +270,7 @@ export const createDomRef = (componentSpec) => {
     importStatements.add(tsDefinition.importStatement);
     return dedent`
     /**
-     * ${(prop.description ?? '').replaceAll('\n', '\n * ')}
+     * ${formatDescription(prop.description, componentSpec)}
      */
      readonly ${prop.name}: ${tsDefinition.tsType};
     `;
@@ -284,7 +285,7 @@ export const createDomRef = (componentSpec) => {
 
     return dedent`
           /**
-           * ${method.description.replaceAll('\n', '\n * ')}
+           * ${formatDescription(method.description, componentSpec)}
            ${params?.join('\n') ?? '*'}
            */
           ${method.name}: (${
@@ -295,10 +296,59 @@ export const createDomRef = (componentSpec) => {
           `;
   });
 
-  return [...getters, methods];
+  return [...getters, ...methods];
 };
 
 export const prettierConfig = {
   ...prettierConfigRaw,
   parser: 'typescript'
+};
+
+export const capitalizeFirstLetter = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+export const snakeToCamel = (str) => str.replace(/([-_]\w)/g, (g) => g[1].toUpperCase());
+
+export const eventNameToReactEventName = (eventName) => {
+  return `on${capitalizeFirstLetter(snakeToCamel(eventName))}`;
+};
+
+export const turndownService = new TurndownService({
+  headingStyle: 'atx',
+  codeBlockStyle: 'fenced'
+});
+turndownService.keep(['ui5-link']);
+
+export const replaceEventNamesInDescription = (description, componentSpec) => {
+  if (!componentSpec.events) {
+    return description;
+  }
+  let newDescription = description;
+  const eventNamesToReplace = componentSpec.events.map((event) => event.name);
+  eventNamesToReplace.forEach((eventName) => {
+    // only replace events and not HTML elements with the same name.
+    switch (eventName) {
+      case 'input':
+        if (description.includes(`\`input\` HTML element`)) {
+          return;
+        }
+      case 'close':
+        if (description.includes(`\`close\` button`)) {
+          return;
+        }
+      default:
+        newDescription = newDescription.replaceAll(`\`${eventName}\``, `\`${eventNameToReactEventName(eventName)}\``);
+    }
+  });
+  return newDescription;
+};
+
+/**
+ *
+ * @param {string} description description to format
+ * @param {object} componentSpec
+ * @return {string}
+ */
+export const formatDescription = (description, componentSpec) => {
+  let desc = turndownService.turndown((description || '').trim()).replaceAll('\n', '\n   * ');
+  desc = replaceEventNamesInDescription(desc, componentSpec);
+  return desc;
 };

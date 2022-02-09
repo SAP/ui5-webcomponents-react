@@ -7,21 +7,21 @@ import {
   SORT_DESCENDING,
   UNGROUP
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
-import { CustomListItem } from '@ui5/webcomponents-react/dist/CustomListItem';
-import { FlexBox } from '@ui5/webcomponents-react/dist/FlexBox';
-import { FlexBoxAlignItems } from '@ui5/webcomponents-react/dist/FlexBoxAlignItems';
-import { Icon } from '@ui5/webcomponents-react/dist/Icon';
-import { List } from '@ui5/webcomponents-react/dist/List';
-import { ListItemType } from '@ui5/webcomponents-react/dist/ListItemType';
-import { Popover, PopoverDomRef } from '@ui5/webcomponents-react/dist/Popover';
-import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/dist/PopoverHorizontalAlign';
-import { PopoverPlacementType } from '@ui5/webcomponents-react/dist/PopoverPlacementType';
-import { StandardListItem } from '@ui5/webcomponents-react/dist/StandardListItem';
-import { TextAlign } from '@ui5/webcomponents-react/dist/TextAlign';
 import React, { RefObject, useCallback, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
+import { FlexBoxAlignItems } from '../../../enums/FlexBoxAlignItems';
+import { ListItemType } from '../../../enums/ListItemType';
+import { PopoverHorizontalAlign } from '../../../enums/PopoverHorizontalAlign';
+import { PopoverPlacementType } from '../../../enums/PopoverPlacementType';
+import { TextAlign } from '../../../enums/TextAlign';
 import { stopPropagation } from '../../../internal/stopPropagation';
+import { CustomListItem } from '../../../webComponents/CustomListItem';
+import { Icon } from '../../../webComponents/Icon';
+import { List } from '../../../webComponents/List';
+import { Popover, PopoverDomRef } from '../../../webComponents/Popover';
+import { StandardListItem } from '../../../webComponents/StandardListItem';
+import { FlexBox } from '../../FlexBox';
 import { ColumnType } from '../types/ColumnType';
 
 export interface ColumnHeaderModalProperties {

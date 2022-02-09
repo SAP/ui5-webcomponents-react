@@ -1,6 +1,6 @@
-import { PopoverDomRef } from '@ui5/webcomponents-react/dist/Popover';
 import { ComponentType, RefObject } from 'react';
 import { Column } from 'react-table';
+import { PopoverDomRef } from '../../../webComponents/Popover';
 
 export interface ColumnType extends Column {
   show: boolean;

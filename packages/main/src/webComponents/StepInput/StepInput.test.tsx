@@ -1,6 +1,6 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { StepInput } from '@ui5/webcomponents-react/dist/StepInput';
+import { StepInput } from './index';
 import React from 'react';
 
 describe('StepInput', () => {

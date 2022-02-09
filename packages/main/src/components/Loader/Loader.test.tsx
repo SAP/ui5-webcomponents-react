@@ -1,7 +1,7 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { Loader } from '@ui5/webcomponents-react/dist/Loader';
-import { LoaderType } from '@ui5/webcomponents-react/dist/LoaderType';
+import { Loader } from './index';
+import { LoaderType } from '../../enums/LoaderType';
 import React from 'react';
 
 describe('Loader', () => {

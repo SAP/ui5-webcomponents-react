@@ -1,8 +1,8 @@
-import { SemanticColor } from '@ui5/webcomponents-react/dist/SemanticColor';
-import { withWebComponent } from '@ui5/webcomponents-react/dist/withWebComponent';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { Ui5DomRef } from '@ui5/webcomponents-react/interfaces/Ui5DomRef';
 import { ReactNode } from 'react';
+import { SemanticColor } from '../../enums';
+import { CommonProps } from '../../interfaces/CommonProps';
+import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
+import { withWebComponent } from '../../internal/withWebComponent';
 
 import '@ui5/webcomponents/dist/Tab.js';
 
@@ -47,7 +47,7 @@ interface TabAttributes {
 
 export interface TabDomRef extends TabAttributes, Ui5DomRef {
   /**
-   * Returns the DOM reference of the tab that is placed in the header. <b>Note:</b> If you need a DOM ref to the tab content please use the <code>getDomRef</code> method.
+   * Returns the DOM reference of the tab that is placed in the header. **Note:** If you need a DOM ref to the tab content please use the `getDomRef` method.
    *
    */
   getTabInStripDomRef: () => void;

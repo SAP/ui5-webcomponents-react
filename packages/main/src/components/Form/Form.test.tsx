@@ -1,11 +1,11 @@
 import { render } from '@shared/tests';
 import { createChangeTagNameTest, createCustomPropsTest } from '@shared/tests/utils';
-import { Form } from '@ui5/webcomponents-react/dist/Form';
-import { FormGroup } from '@ui5/webcomponents-react/dist/FormGroup';
-import { FormItem } from '@ui5/webcomponents-react/dist/FormItem';
-import { Input } from '@ui5/webcomponents-react/dist/Input';
-import { InputType } from '@ui5/webcomponents-react/dist/InputType';
 import * as React from 'react';
+import { InputType } from '../../enums/InputType';
+import { Input } from '../../webComponents/Input';
+import { FormGroup } from '../FormGroup';
+import { FormItem } from '../FormItem';
+import { Form } from './index';
 
 const SIZE_S = 200;
 const SIZE_M = 800;
