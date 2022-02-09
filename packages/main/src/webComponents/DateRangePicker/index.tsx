@@ -105,7 +105,7 @@ export interface DateRangePickerDomRef extends DateRangePickerAttributes, Ui5Dom
    */
   closePicker: () => void;
   /**
-   * Formats a Java Script date object into a string representing a locale date according to the <code>formatPattern</code> property of the DatePicker instance
+   * Formats a Java Script date object into a string representing a locale date according to the `formatPattern` property of the DatePicker instance
    * @param {Date} date - A Java Script date object to be formatted as string
    */
   formatValue: (date: Date) => void;

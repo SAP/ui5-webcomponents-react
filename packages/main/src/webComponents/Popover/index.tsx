@@ -89,7 +89,7 @@ export interface PopoverDomRef extends PopoverAttributes, Ui5DomRef {
    */
   showAt: (opener: HTMLElement | EventTarget, preventInitialFocus?: boolean) => void;
   /**
-   * Focuses the element denoted by <code>initialFocus</code>, if provided, or the first focusable element otherwise.
+   * Focuses the element denoted by `initialFocus`, if provided, or the first focusable element otherwise.
    *
    */
   applyFocus: () => void;

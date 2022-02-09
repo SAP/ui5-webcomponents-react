@@ -1,8 +1,9 @@
-import { ESLint } from 'eslint';
-import PATHS from '../../config/paths.js';
-import path from 'path';
-import fs from 'fs';
 import dedent from 'dedent';
+import { ESLint } from 'eslint';
+import fs from 'fs';
+import path from 'path';
+import TurndownService from 'turndown';
+import PATHS from '../../config/paths.js';
 import prettierConfigRaw from '../../prettier.config.cjs';
 
 const eslint = new ESLint({
@@ -269,7 +270,7 @@ export const createDomRef = (componentSpec) => {
     importStatements.add(tsDefinition.importStatement);
     return dedent`
     /**
-     * ${(prop.description ?? '').replaceAll('\n', '\n * ')}
+     * ${formatDescription(prop.description, componentSpec)}
      */
      readonly ${prop.name}: ${tsDefinition.tsType};
     `;
@@ -284,7 +285,7 @@ export const createDomRef = (componentSpec) => {
 
     return dedent`
           /**
-           * ${method.description.replaceAll('\n', '\n * ')}
+           * ${formatDescription(method.description, componentSpec)}
            ${params?.join('\n') ?? '*'}
            */
           ${method.name}: (${
@@ -295,7 +296,7 @@ export const createDomRef = (componentSpec) => {
           `;
   });
 
-  return [...getters, methods];
+  return [...getters, ...methods];
 };
 
 export const prettierConfig = {
@@ -308,4 +309,34 @@ export const snakeToCamel = (str) => str.replace(/([-_]\w)/g, (g) => g[1].toUppe
 
 export const eventNameToReactEventName = (eventName) => {
   return `on${capitalizeFirstLetter(snakeToCamel(eventName))}`;
+};
+
+export const turndownService = new TurndownService({
+  headingStyle: 'atx',
+  codeBlockStyle: 'fenced'
+});
+turndownService.keep(['ui5-link']);
+
+export const replaceEventNamesInDescription = (description, componentSpec) => {
+  if (!componentSpec.events) {
+    return description;
+  }
+  let newDescription = description;
+  const eventNamesToReplace = componentSpec.events.map((event) => event.name);
+  eventNamesToReplace.forEach((eventName) => {
+    newDescription = newDescription.replaceAll(`\`${eventName}\``, `\`${eventNameToReactEventName(eventName)}\``);
+  });
+  return newDescription;
+};
+
+/**
+ *
+ * @param {string} description description to format
+ * @param {object} componentSpec
+ * @return {string}
+ */
+export const formatDescription = (description, componentSpec) => {
+  let desc = turndownService.turndown((description || '').trim()).replaceAll('\n', '\n   * ');
+  desc = replaceEventNamesInDescription(desc, componentSpec);
+  return desc;
 };

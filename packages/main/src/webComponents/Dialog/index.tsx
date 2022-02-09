@@ -57,7 +57,7 @@ export interface DialogDomRef extends DialogAttributes, Omit<Ui5DomRef, 'draggab
    */
   show: (preventInitialFocus?: boolean) => void;
   /**
-   * Focuses the element denoted by <code>initialFocus</code>, if provided, or the first focusable element otherwise.
+   * Focuses the element denoted by `initialFocus`, if provided, or the first focusable element otherwise.
    *
    */
   applyFocus: () => void;

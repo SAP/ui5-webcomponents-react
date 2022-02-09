@@ -1,21 +1,19 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import mainWebComponentsSpec from '@ui5/webcomponents/dist/api.json' assert { type: 'json' };
 import fioriWebComponentsSpec from '@ui5/webcomponents-fiori/dist/api.json' assert { type: 'json' };
+import mainWebComponentsSpec from '@ui5/webcomponents/dist/api.json' assert { type: 'json' };
 import dedent from 'dedent';
-import prettier from 'prettier';
-import path from 'path';
-import PATHS from '../../../config/paths.js';
 import fs from 'fs';
-import TurndownService from 'turndown';
 import Handlebars from 'handlebars';
-import { eventNameToReactEventName } from '../../../scripts/web-component-wrappers/utils.js';
-import * as Utils from '../../../scripts/web-component-wrappers/utils.js';
+import path from 'path';
+import prettier from 'prettier';
+import PATHS from '../../../config/paths.js';
 import {
   COMPONENTS_WITHOUT_DEMOS,
   KNOWN_ATTRIBUTES,
   KNOWN_EVENTS,
   PRIVATE_COMPONENTS
 } from '../../../scripts/web-component-wrappers/config.js';
+import * as Utils from '../../../scripts/web-component-wrappers/utils.js';
 
 Handlebars.registerPartial(
   'methodParameters',
@@ -50,12 +48,6 @@ const componentTemplate = Handlebars.compile(
 const storyTemplate = Handlebars.compile(
   fs.readFileSync(path.join(PATHS.root, 'scripts', 'web-component-wrappers', 'StoryTemplate.hbs')).toString()
 );
-
-const turndownService = new TurndownService({
-  headingStyle: 'atx',
-  codeBlockStyle: 'fenced'
-});
-turndownService.keep(['ui5-link']);
 
 // To only create a single component, replace "false" with the component (module) name
 // or execute the following command: "yarn create-webcomponents-wrapper [name]"
@@ -299,7 +291,7 @@ const createWebComponentWrapper = async (
 ) => {
   const eventsToBeOmitted = eventProps
     .filter((eventName) => KNOWN_EVENTS.has(eventName))
-    .map((eventName) => `'${eventNameToReactEventName(eventName)}'`);
+    .map((eventName) => `'${Utils.eventNameToReactEventName(eventName)}'`);
   const attributesToBeOmitted = [...regularProps, ...booleanProps]
     .filter((attribute) => KNOWN_ATTRIBUTES.has(attribute))
     .map((a) => `'${a}'`);
@@ -315,16 +307,14 @@ const createWebComponentWrapper = async (
   }
   let componentDescription;
   try {
-    componentDescription = turndownService.turndown(description).replace(/\n/g, '\n * ');
+    componentDescription = Utils.formatDescription(description, componentSpec);
   } catch (e) {
     console.warn(
       `----------------------\nHeader description of ${componentSpec.module} couldn't be generated. \nThere is probably a syntax error in the associated description that can't be fixed automatically.\n----------------------`
     );
     componentDescription = '';
   }
-
-  const domRef = Utils.createDomRef(componentSpec);
-
+  
   const imports = [
     ...importStatements,
     '', // do not remove this empty line - otherwise the eslint/import-order plugin won't work as expected
@@ -349,7 +339,7 @@ const createWebComponentWrapper = async (
         slotProps: slotProps.filter((name) => name !== 'children'),
         eventProps,
         defaultProps,
-        domRef
+        domRef: Utils.createDomRef(componentSpec)
       }),
       componentSpec.module
     ),
@@ -435,7 +425,7 @@ const createWebComponentDemo = (componentSpec, componentProps, description) => {
 
   try {
     if (formattedDescription) {
-      formattedDescription = turndownService.turndown(formattedDescription);
+      formattedDescription = Utils.formatDescription(formattedDescription, componentSpec);
     }
   } catch (e) {
     formattedDescription = '';
@@ -569,7 +559,7 @@ const propDescription = (componentSpec, property) => {
   if (!componentSpec.tagname) {
     return property.description || '';
   }
-  let formattedDescription = turndownService.turndown((property.description || '').trim()).replace(/\n/g, '\n   * ');
+  let formattedDescription = Utils.formatDescription(property.description, componentSpec);
 
   const customDescriptionReplace = CUSTOM_DESCRIPTION_REPLACE[componentSpec.module];
   if (customDescriptionReplace && customDescriptionReplace[property.name]) {
@@ -585,14 +575,7 @@ const propDescription = (componentSpec, property) => {
           * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).`;
   }
 
-  let description = replaceTagNameWithModuleName(`${formattedDescription}${extendedDescription}`);
-  if (componentSpec.events) {
-    const eventNamesToReplace = componentSpec.events.map((event) => event.name);
-    eventNamesToReplace.forEach((eventName) => {
-      description = description.replaceAll(`\`${eventName}\``, `\`${eventNameToReactEventName(eventName)}\``);
-    });
-  }
-  return description;
+  return replaceTagNameWithModuleName(`${formattedDescription}${extendedDescription}`);
 };
 
 allWebComponents
@@ -690,11 +673,9 @@ allWebComponents
         importStatements.push(...eventParameters.importStatements);
         slotsAndEvents.push(dedent`
       /**
-       * ${replaceTagNameWithModuleName(
-         turndownService.turndown((eventSpec.description || '').trim()).replace(/\n/g, '\n   * ')
-       )}
+       * ${replaceTagNameWithModuleName(Utils.formatDescription(eventSpec.description, componentSpec))}
        */
-       ${eventNameToReactEventName(eventSpec.name)}?: ${eventParameters.tsType};
+       ${Utils.eventNameToReactEventName(eventSpec.name)}?: ${eventParameters.tsType};
       `);
       });
 

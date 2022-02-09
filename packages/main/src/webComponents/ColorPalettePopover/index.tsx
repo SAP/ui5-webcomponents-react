@@ -27,7 +27,7 @@ interface ColorPalettePopoverAttributes {
 
 export interface ColorPalettePopoverDomRef extends ColorPalettePopoverAttributes, Ui5DomRef {
   /**
-   * Shows the ColorPalettePopover. <b>Note:</b> The method is deprecated and will be removed in future, use <code>showAt</code> instead.
+   * Shows the ColorPalettePopover. **Note:** The method is deprecated and will be removed in future, use `showAt` instead.
    * @param {HTMLElement | EventTarget} opener - the element that the popover is shown at
    * @deprecated please use `showAt` instead
    */

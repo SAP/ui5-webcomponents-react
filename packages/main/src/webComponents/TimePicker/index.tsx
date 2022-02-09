@@ -55,7 +55,7 @@ export interface TimePickerDomRef extends TimePickerAttributes, Ui5DomRef {
    */
   closePicker: () => void;
   /**
-   * Formats a Java Script date object into a string representing a locale date and time according to the <code>formatPattern</code> property of the TimePicker instance
+   * Formats a Java Script date object into a string representing a locale date and time according to the `formatPattern` property of the TimePicker instance
    * @param {Date} date - A Java Script date object to be formatted as string
    */
   formatValue: (date: Date) => void;
@@ -65,9 +65,9 @@ export interface TimePickerDomRef extends TimePickerAttributes, Ui5DomRef {
    */
   isOpen: () => void;
   /**
-   * Checks if a value is valid against the current <code>formatPattern</code> value.
+   * Checks if a value is valid against the current `formatPattern` value.
    *
-   * <br><br> <b>Note:</b> an empty string is considered as valid value.
+   * **Note:** an empty string is considered as valid value.
    * @param {string} value - The value to be tested against the current date format
    */
   isValid: (value: string) => void;

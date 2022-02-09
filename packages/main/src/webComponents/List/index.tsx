@@ -33,7 +33,7 @@ interface ListAttributes {
    */
   footerText?: string;
   /**
-   * Defines whether the component will have growing capability either by pressing a `More` button, or via user scroll. In both cases the `onLoadMore` event is fired.
+   * Defines whether the component will have growing capability either by pressing a `More` button, or via user scroll. In both cases `onLoadMore` event is fired.
    *
    * Available options:
    *
@@ -101,7 +101,7 @@ export interface ListPropTypes extends ListAttributes, CommonProps {
   /**
    * Fired when the `Close` button of any item is clicked
    *
-   * **Note:** This event is applicable to `NotificationListItem` items only, not to be confused with `item-delete`.
+   * **Note:** This event is applicable to `NotificationListItem` items only, not to be confused with `onItemDelete`.
    */
   onItemClose?: (event: Ui5CustomEvent<HTMLElement, { item: ReactNode }>) => void;
   /**

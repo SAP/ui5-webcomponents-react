@@ -59,7 +59,7 @@ export interface UploadCollectionPropTypes extends UploadCollectionAttributes, O
   /**
    * Fired when an element is dropped inside the drag and drop overlay.
    *
-   * **Note:** The `drop` event is fired only when elements are dropped within the drag and drop overlay and ignored for the other parts of the `UploadCollection`.
+   * **Note:** The `onDrop` event is fired only when elements are dropped within the drag and drop overlay and ignored for the other parts of the `UploadCollection`.
    */
   onDrop?: DragEventHandler<HTMLElement>;
   /**
