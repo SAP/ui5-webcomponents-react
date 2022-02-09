@@ -29,7 +29,6 @@
     "build:assets": "node ../../scripts/generate-assets/index.js"
   },
   "dependencies": {
-    "@babel/runtime": "^7.8.4",
     "@ui5/webcomponents-react-base": "^0.21.2",
     "clsx": "1.1.1",
     "lit-html": "2.0.1",
