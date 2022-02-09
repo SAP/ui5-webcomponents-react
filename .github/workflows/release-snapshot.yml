@@ -14,10 +14,10 @@ jobs:
           token: ${{ secrets.ACCESS_TOKEN }}
           fetch-depth: 0
 
-      - name: Use Node.js
+      - name: Setup Node.js environment
         uses: actions/setup-node@v2.5.1
         with:
-          node-version: '14.x'
+          node-version-file: '.nvmrc'
 
       - name: Install, test and build
         run: |
