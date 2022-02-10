@@ -8,26 +8,25 @@ export const useObserveXAxisHeights = (chartRef: RefObject<SVGElement>, axisCoun
   const mostRecentXAxisHeights = useRef<number[]>(xAxisHeights);
 
   useEffect(() => {
-    const mutationObserver = new MutationObserver(
-      debounce(() => {
-        const defaultHeights = Array(axisCount).fill(defaultAxisHeight);
-        chartRef.current?.querySelectorAll<SVGGraphicsElement>('.xAxis').forEach((xAxis, index) => {
-          const currentAxisHeight = xAxis?.getBBox()?.height;
-          if (currentAxisHeight > 30) {
-            defaultHeights[index] = currentAxisHeight;
-          }
-        });
-
-        const arraysHaveTheSameLength = mostRecentXAxisHeights.current.length === defaultHeights.length;
-        const arrayContentIsIdentical = mostRecentXAxisHeights.current.every(
-          (value, index) => defaultHeights[index] === value
-        );
-        if (!(arraysHaveTheSameLength && arrayContentIsIdentical)) {
-          mostRecentXAxisHeights.current = defaultHeights;
-          setXAxisHeights(defaultHeights);
+    const debouncedObserverFn = debounce(() => {
+      const defaultHeights = Array(axisCount).fill(defaultAxisHeight);
+      chartRef.current?.querySelectorAll<SVGGraphicsElement>('.xAxis').forEach((xAxis, index) => {
+        const currentAxisHeight = xAxis?.getBBox()?.height;
+        if (currentAxisHeight > 30) {
+          defaultHeights[index] = currentAxisHeight;
         }
-      }, 75)
-    );
+      });
+
+      const arraysHaveTheSameLength = mostRecentXAxisHeights.current.length === defaultHeights.length;
+      const arrayContentIsIdentical = mostRecentXAxisHeights.current.every(
+        (value, index) => defaultHeights[index] === value
+      );
+      if (!(arraysHaveTheSameLength && arrayContentIsIdentical)) {
+        mostRecentXAxisHeights.current = defaultHeights;
+        setXAxisHeights(defaultHeights);
+      }
+    }, 75);
+    const mutationObserver = new MutationObserver(debouncedObserverFn);
 
     if (chartRef.current) {
       mutationObserver.observe(chartRef.current, {
@@ -39,6 +38,7 @@ export const useObserveXAxisHeights = (chartRef: RefObject<SVGElement>, axisCoun
       });
     }
     return () => {
+      debouncedObserverFn.cancel();
       mutationObserver.disconnect();
     };
   }, [chartRef, setXAxisHeights, mostRecentXAxisHeights]);

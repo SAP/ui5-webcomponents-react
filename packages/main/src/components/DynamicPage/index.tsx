@@ -137,16 +137,14 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
   const [isOverflowing, setIsOverflowing] = useState(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      debounce(([element]) => {
-        setIsOverflowing(!element.isIntersecting);
-      }, 250),
-      {
-        root: dynamicPageRef.current,
-        threshold: 0.98,
-        rootMargin: '0px 0px -60px 0px' // negative bottom margin for footer height
-      }
-    );
+    const debouncedObserverFn = debounce(([element]) => {
+      setIsOverflowing(!element.isIntersecting);
+    }, 250);
+    const observer = new IntersectionObserver(debouncedObserverFn, {
+      root: dynamicPageRef.current,
+      threshold: 0.98,
+      rootMargin: '0px 0px -60px 0px' // negative bottom margin for footer height
+    });
 
     if (contentRef.current) {
       observer.observe(contentRef.current);
@@ -154,6 +152,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
 
     return () => {
       observer.disconnect();
+      debouncedObserverFn.cancel();
     };
   }, []);
 

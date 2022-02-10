@@ -137,25 +137,25 @@ const DynamicPageTitle = forwardRef((props: DynamicPageTitlePropTypes, ref: Ref<
   );
 
   useEffect(() => {
-    const observer = new ResizeObserver(
-      debounce(([titleContainer]) => {
-        // Firefox implements `borderBoxSize` as a single content rect, rather than an array
-        const borderBoxSize = Array.isArray(titleContainer.borderBoxSize)
-          ? titleContainer.borderBoxSize[0]
-          : titleContainer.borderBoxSize;
-        // Safari doesn't implement `borderBoxSize`
-        const titleContainerWidth = borderBoxSize?.inlineSize ?? titleContainer.target.getBoundingClientRect().width;
-        if (titleContainerWidth < 1280 && !showNavigationInTopArea === true && isMounted.current) {
-          setShowNavigationInTopArea(true);
-        } else if (titleContainerWidth >= 1280 && !showNavigationInTopArea === false && isMounted.current) {
-          setShowNavigationInTopArea(false);
-        }
-      }, 150)
-    );
+    const debouncedObserverFn = debounce(([titleContainer]) => {
+      // Firefox implements `borderBoxSize` as a single content rect, rather than an array
+      const borderBoxSize = Array.isArray(titleContainer.borderBoxSize)
+        ? titleContainer.borderBoxSize[0]
+        : titleContainer.borderBoxSize;
+      // Safari doesn't implement `borderBoxSize`
+      const titleContainerWidth = borderBoxSize?.inlineSize ?? titleContainer.target.getBoundingClientRect().width;
+      if (titleContainerWidth < 1280 && !showNavigationInTopArea === true && isMounted.current) {
+        setShowNavigationInTopArea(true);
+      } else if (titleContainerWidth >= 1280 && !showNavigationInTopArea === false && isMounted.current) {
+        setShowNavigationInTopArea(false);
+      }
+    }, 150);
+    const observer = new ResizeObserver(debouncedObserverFn);
     if (dynamicPageTitleRef.current) {
       observer.observe(dynamicPageTitleRef.current);
     }
     return () => {
+      debouncedObserverFn.cancel();
       observer.disconnect();
     };
   }, [dynamicPageTitleRef.current, showNavigationInTopArea, isMounted]);
