@@ -19,4 +19,6 @@ updates:
       - dependency-name: '@storybook/addon-essentials'
       - dependency-name: '@storybook/react'
       - dependency-name: '@storybook/theming'
+      - dependency-name: '@storybook/builder-webpack5'
+      - dependency-name: '@storybook/manager-webpack5'
 
