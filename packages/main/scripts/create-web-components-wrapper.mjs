@@ -549,7 +549,10 @@ allWebComponents
     const importStatements = [];
     const defaultProps = [];
     const allComponentProperties = (componentSpec.properties || [])
-      .filter((prop) => prop.visibility === 'public' && prop.readonly !== 'true' && prop.static !== true)
+      .filter(
+        (prop) =>
+          prop.visibility === 'public' && prop.readonly !== 'true' && prop.static !== true && prop.type !== 'object'
+      )
       .map((property) => {
         const tsType = Utils.getTypeDefinitionForProperty(property);
         if (tsType.importStatement) {

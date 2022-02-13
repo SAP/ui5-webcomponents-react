@@ -8,21 +8,6 @@ import '@ui5/webcomponents/dist/Link.js';
 
 interface LinkAttributes {
   /**
-   * An object of strings that defines several additional accessibility attribute values for customization depending on the use case. It supports the following fields:
-   *
-   * *   `expanded`: Indicates whether the anchor element, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:
-   *     *   `true`
-   *     *   `false`
-   *
-   * *   `hasPopup`: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the anchor element. Accepts the following string values:
-   *     *   `Dialog`
-   *     *   `Grid`
-   *     *   `ListBox`
-   *     *   `Menu`
-   *     *   `Tree`
-   */
-  accessibilityAttributes?: Record<string, unknown>;
-  /**
    * Receives id(or many ids) of the elements that label the input
    */
   accessibleNameRef?: string;
@@ -67,7 +52,23 @@ interface LinkAttributes {
   wrappingType?: WrappingType | keyof typeof WrappingType;
 }
 
-export interface LinkDomRef extends LinkAttributes, Ui5DomRef {}
+export interface LinkDomRef extends LinkAttributes, Ui5DomRef {
+  /**
+   * An object of strings that defines several additional accessibility attribute values for customization depending on the use case. It supports the following fields:
+   *
+   * *   `expanded`: Indicates whether the anchor element, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:
+   *     *   `true`
+   *     *   `false`
+   *
+   * *   `hasPopup`: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the anchor element. Accepts the following string values:
+   *     *   `Dialog`
+   *     *   `Grid`
+   *     *   `ListBox`
+   *     *   `Menu`
+   *     *   `Tree`
+   */
+  accessibilityAttributes: Record<string, unknown>;
+}
 
 export interface LinkPropTypes extends LinkAttributes, Omit<CommonProps, 'onClick'> {
   /**
