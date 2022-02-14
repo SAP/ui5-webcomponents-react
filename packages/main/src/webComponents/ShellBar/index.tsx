@@ -64,9 +64,7 @@ export interface ShellBarDomRef extends ShellBarAttributes, Ui5DomRef {
    */
   readonly profileDomRef: ReactNode;
   /**
-   * An object of strings that defines several additional accessibility texts for even further customization. It supports the following fields:
-   * - `profileButtonTitle`: defines the tooltip for the profile button
-   * - `logoTitle`: defines the tooltip for the logo
+   * An object of strings that defines several additional accessibility texts for even further customization. It supports the following fields: - `profileButtonTitle`: defines the tooltip for the profile button - `logoTitle`: defines the tooltip for the logo
    */
   accessibilityTexts: Record<string, unknown>;
   /**
@@ -153,7 +151,7 @@ export interface ShellBarPropTypes extends ShellBarAttributes, CommonProps {
  */
 const ShellBar = withWebComponent<ShellBarPropTypes, ShellBarDomRef>(
   'ui5-shellbar',
-  ['accessibilityTexts', 'notificationsCount', 'primaryTitle', 'secondaryTitle'],
+  ['notificationsCount', 'primaryTitle', 'secondaryTitle'],
   ['showCoPilot', 'showNotifications', 'showProductSwitch'],
   ['logo', 'menuItems', 'profile', 'searchField', 'startButton'],
   ['co-pilot-click', 'logo-click', 'menu-item-click', 'notifications-click', 'product-switch-click', 'profile-click']

@@ -89,7 +89,7 @@ export interface LinkPropTypes extends LinkAttributes, Omit<CommonProps, 'onClic
  */
 const Link = withWebComponent<LinkPropTypes, LinkDomRef>(
   'ui5-link',
-  ['accessibilityAttributes', 'accessibleNameRef', 'design', 'href', 'target', 'wrappingType'],
+  ['accessibleNameRef', 'design', 'href', 'target', 'wrappingType'],
   ['disabled'],
   [],
   ['click']

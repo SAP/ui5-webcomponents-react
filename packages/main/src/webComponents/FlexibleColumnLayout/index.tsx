@@ -131,7 +131,7 @@ export interface FlexibleColumnLayoutPropTypes extends FlexibleColumnLayoutAttri
  */
 const FlexibleColumnLayout = withWebComponent<FlexibleColumnLayoutPropTypes, FlexibleColumnLayoutDomRef>(
   'ui5-flexible-column-layout',
-  ['accessibilityRoles', 'accessibilityTexts', 'layout'],
+  ['layout'],
   ['hideArrows'],
   ['endColumn', 'midColumn', 'startColumn'],
   ['layout-change']
