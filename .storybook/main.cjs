@@ -36,7 +36,9 @@ module.exports = {
     reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
-      propFilter: (prop) => (prop.parent ? !/(@types\/react|@emotion\/core)/.test(prop.parent.fileName) : true)
+      propFilter: (prop) => {
+        return (prop.parent ? !/(@types\/react|@emotion|@storybook)/.test(prop.parent.fileName) : true)
+      }
     }
   },
   staticDirs: [isDevMode ? 'images-dev' : 'images']
