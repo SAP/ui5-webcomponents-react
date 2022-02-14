@@ -40,7 +40,7 @@
     "@babel/preset-react": "^7.16.5",
     "@babel/preset-typescript": "^7.16.5",
     "@semantic-release/github": "^8.0.0",
-    "@storybook/builder-webpack5": "6.5.0-alpha.23",
+    "@storybook/builder-webpack5": "6.5.0-alpha.39",
     "@storybook/manager-webpack5": "6.5.0-alpha.23",
     "@storybook/storybook-deployer": "2.8.10",
     "@testing-library/jest-dom": "^5.11.4",
