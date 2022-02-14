@@ -523,52 +523,52 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
   const [filterAreaWidth, setFilterAreaWidth] = useState(undefined);
   const [firstChildWidth, setFirstChildWidth] = useState(undefined);
   useEffect(() => {
-    const filterAreaObserver = new ResizeObserver(
-      debounce(([area]) => {
-        const firstChild = area.target?.children?.[0];
-        if (firstChild && firstChild.offsetWidth !== firstChildWidth) {
-          setFirstChildWidth(firstChild.offsetWidth + 16 /*margin*/);
-        }
-      }, 100)
-    );
+    const debouncedObserverFn = debounce(([area]) => {
+      const firstChild = area.target?.children?.[0];
+      if (firstChild && firstChild.offsetWidth !== firstChildWidth) {
+        setFirstChildWidth(firstChild.offsetWidth + 16 /*margin*/);
+      }
+    }, 100);
+    const filterAreaObserver = new ResizeObserver(debouncedObserverFn);
     if (!useToolbar && filterAreaRef.current) {
       filterAreaObserver.observe(filterAreaRef.current);
     }
     return () => {
+      debouncedObserverFn.cancel();
       filterAreaObserver.disconnect();
     };
   }, [filterAreaRef.current, useToolbar]);
 
   useEffect(() => {
-    const filterAreaObserver = new ResizeObserver(
-      debounce(([area]) => {
-        const filterWidth = resizeObserverEntryWidth(area);
-        if (filterWidth !== filterBarButtonsWidth) {
-          setFilterAreaWidth(filterWidth);
-        }
-      }, 100)
-    );
+    const debouncedObserverFn = debounce(([area]) => {
+      const filterWidth = resizeObserverEntryWidth(area);
+      if (filterWidth !== filterBarButtonsWidth) {
+        setFilterAreaWidth(filterWidth);
+      }
+    }, 100);
+    const filterAreaObserver = new ResizeObserver(debouncedObserverFn);
     if (!useToolbar && filterAreaRef.current) {
       filterAreaObserver.observe(filterAreaRef.current);
     }
     return () => {
+      debouncedObserverFn.cancel();
       filterAreaObserver.disconnect();
     };
   }, [filterAreaWidth, filterAreaRef.current, useToolbar]);
 
   useEffect(() => {
-    const filterBarButtonsObserver = new ResizeObserver(
-      debounce(([buttons]) => {
-        const buttonsWidth = resizeObserverEntryWidth(buttons);
-        if (buttonsWidth !== filterBarButtonsWidth) {
-          setFilterBarButtonsWidth(buttonsWidth);
-        }
-      }, 100)
-    );
+    const debouncedObserverFn = debounce(([buttons]) => {
+      const buttonsWidth = resizeObserverEntryWidth(buttons);
+      if (buttonsWidth !== filterBarButtonsWidth) {
+        setFilterBarButtonsWidth(buttonsWidth);
+      }
+    }, 100);
+    const filterBarButtonsObserver = new ResizeObserver(debouncedObserverFn);
     if (!useToolbar && filterBarButtonsRef.current) {
       filterBarButtonsObserver.observe(filterBarButtonsRef.current);
     }
     return () => {
+      debouncedObserverFn.cancel();
       filterBarButtonsObserver.disconnect();
     };
   }, [filterBarButtonsRef.current, useToolbar, filterBarButtonsWidth]);

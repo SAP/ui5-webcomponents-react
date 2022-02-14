@@ -173,15 +173,15 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
   useEffect(() => {
     let lastElementResizeObserver;
     const lastElement = contentRef.current.children[numberOfAlwaysVisibleItems - 1];
+    const debouncedObserverFn = debounce(() => {
+      setMinWidth(`${lastElement.getBoundingClientRect().right + OVERFLOW_BUTTON_WIDTH}px`);
+    }, 200);
     if (numberOfAlwaysVisibleItems && overflowNeeded && lastElement) {
-      lastElementResizeObserver = new ResizeObserver(
-        debounce(() => {
-          setMinWidth(`${lastElement.getBoundingClientRect().right + OVERFLOW_BUTTON_WIDTH}px`);
-        }, 200)
-      );
+      lastElementResizeObserver = new ResizeObserver(debouncedObserverFn);
       lastElementResizeObserver.observe(contentRef.current);
     }
     return () => {
+      debouncedObserverFn.cancel();
       lastElementResizeObserver?.disconnect();
     };
   }, [numberOfAlwaysVisibleItems, overflowNeeded]);
