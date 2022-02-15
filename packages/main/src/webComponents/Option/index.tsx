@@ -1,9 +1,8 @@
+import '@ui5/webcomponents/dist/Option.js';
 import { ReactNode } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
-
-import '@ui5/webcomponents/dist/Option.js';
 
 interface OptionAttributes {
   /**
@@ -37,6 +36,12 @@ export interface OptionPropTypes extends OptionAttributes, CommonProps {
    * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
   children?: ReactNode | ReactNode[];
+  /**
+   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
+   *
+   * __Note:__ This adds a rendering cycle to your component.
+   */
+  waitForDefine?: boolean;
 }
 
 /**
@@ -46,7 +51,7 @@ export interface OptionPropTypes extends OptionAttributes, CommonProps {
  */
 const Option = withWebComponent<OptionPropTypes, OptionDomRef>(
   'ui5-option',
-  ['icon', 'value'],
+  ['icon', 'value', 'waitForDefine'],
   ['disabled', 'selected'],
   [],
   []

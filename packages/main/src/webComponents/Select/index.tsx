@@ -1,11 +1,10 @@
+import '@ui5/webcomponents/dist/Select.js';
 import { ReactNode } from 'react';
 import { ValueState } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
-
-import '@ui5/webcomponents/dist/Select.js';
 
 interface SelectAttributes {
   /**
@@ -78,6 +77,12 @@ export interface SelectPropTypes extends SelectAttributes, Omit<CommonProps, 'on
    * Fired when the selected option changes.
    */
   onChange?: (event: Ui5CustomEvent<HTMLSelectElement, { selectedOption: ReactNode }>) => void;
+  /**
+   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
+   *
+   * __Note:__ This adds a rendering cycle to your component.
+   */
+  waitForDefine?: boolean;
 }
 
 /**
@@ -87,7 +92,7 @@ export interface SelectPropTypes extends SelectAttributes, Omit<CommonProps, 'on
  */
 const Select = withWebComponent<SelectPropTypes, SelectDomRef>(
   'ui5-select',
-  ['accessibleName', 'accessibleNameRef', 'name', 'valueState'],
+  ['accessibleName', 'accessibleNameRef', 'name', 'valueState', 'waitForDefine'],
   ['disabled', 'required'],
   ['valueStateMessage'],
   ['change']

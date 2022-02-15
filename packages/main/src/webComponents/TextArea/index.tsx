@@ -1,11 +1,10 @@
+import '@ui5/webcomponents/dist/TextArea.js';
 import { ReactNode } from 'react';
 import { ValueState } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
-
-import '@ui5/webcomponents/dist/TextArea.js';
 
 interface TextAreaAttributes {
   /**
@@ -117,6 +116,12 @@ export interface TextAreaPropTypes extends TextAreaAttributes, Omit<CommonProps,
    * Fired when the value of the component changes at each keystroke or when something is pasted.
    */
   onInput?: (event: Ui5CustomEvent<HTMLTextAreaElement>) => void;
+  /**
+   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
+   *
+   * __Note:__ This adds a rendering cycle to your component.
+   */
+  waitForDefine?: boolean;
 }
 
 /**
@@ -137,7 +142,8 @@ const TextArea = withWebComponent<TextAreaPropTypes, TextAreaDomRef>(
     'placeholder',
     'rows',
     'value',
-    'valueState'
+    'valueState',
+    'waitForDefine'
   ],
   ['disabled', 'growing', 'readonly', 'required', 'showExceededText'],
   ['valueStateMessage'],

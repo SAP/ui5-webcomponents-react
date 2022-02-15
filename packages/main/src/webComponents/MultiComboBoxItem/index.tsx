@@ -1,8 +1,7 @@
+import '@ui5/webcomponents/dist/MultiComboBoxItem.js';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
-
-import '@ui5/webcomponents/dist/MultiComboBoxItem.js';
 
 interface MultiComboBoxItemAttributes {
   /**
@@ -21,7 +20,14 @@ interface MultiComboBoxItemAttributes {
 
 export interface MultiComboBoxItemDomRef extends MultiComboBoxItemAttributes, Ui5DomRef {}
 
-export interface MultiComboBoxItemPropTypes extends MultiComboBoxItemAttributes, CommonProps {}
+export interface MultiComboBoxItemPropTypes extends MultiComboBoxItemAttributes, CommonProps {
+  /**
+   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
+   *
+   * __Note:__ This adds a rendering cycle to your component.
+   */
+  waitForDefine?: boolean;
+}
 
 /**
  * The `MultiComboBoxItem` represents the item for a `MultiComboBox`
@@ -30,7 +36,7 @@ export interface MultiComboBoxItemPropTypes extends MultiComboBoxItemAttributes,
  */
 const MultiComboBoxItem = withWebComponent<MultiComboBoxItemPropTypes, MultiComboBoxItemDomRef>(
   'ui5-mcb-item',
-  ['additionalText', 'text'],
+  ['additionalText', 'text', 'waitForDefine'],
   ['selected'],
   [],
   []

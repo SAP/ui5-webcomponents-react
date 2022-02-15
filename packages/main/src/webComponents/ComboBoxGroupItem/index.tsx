@@ -1,8 +1,7 @@
+import '@ui5/webcomponents/dist/ComboBoxGroupItem.js';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
-
-import '@ui5/webcomponents/dist/ComboBoxGroupItem.js';
 
 interface ComboBoxGroupItemAttributes {
   /**
@@ -13,7 +12,14 @@ interface ComboBoxGroupItemAttributes {
 
 export interface ComboBoxGroupItemDomRef extends ComboBoxGroupItemAttributes, Ui5DomRef {}
 
-export interface ComboBoxGroupItemPropTypes extends ComboBoxGroupItemAttributes, CommonProps {}
+export interface ComboBoxGroupItemPropTypes extends ComboBoxGroupItemAttributes, CommonProps {
+  /**
+   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
+   *
+   * __Note:__ This adds a rendering cycle to your component.
+   */
+  waitForDefine?: boolean;
+}
 
 /**
  * The `undefined` is type of suggestion item, that can be used to split the `ComboBox` suggestions into groups
@@ -22,7 +28,7 @@ export interface ComboBoxGroupItemPropTypes extends ComboBoxGroupItemAttributes,
  */
 const ComboBoxGroupItem = withWebComponent<ComboBoxGroupItemPropTypes, ComboBoxGroupItemDomRef>(
   'ui5-cb-group-item',
-  ['text'],
+  ['text', 'waitForDefine'],
   [],
   [],
   []

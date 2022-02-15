@@ -1,11 +1,10 @@
+import '@ui5/webcomponents-fiori/dist/MediaGallery.js';
 import { ReactNode } from 'react';
 import { MediaGalleryLayout, MediaGalleryMenuHorizontalAlign, MediaGalleryMenuVerticalAlign } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
-
-import '@ui5/webcomponents-fiori/dist/MediaGallery.js';
 
 interface MediaGalleryAttributes {
   /**
@@ -71,6 +70,12 @@ export interface MediaGalleryPropTypes extends MediaGalleryAttributes, CommonPro
    * Fired when selection is changed by user interaction.
    */
   onSelectionChange?: (event: Ui5CustomEvent<HTMLElement, { item: ReactNode }>) => void;
+  /**
+   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
+   *
+   * __Note:__ This adds a rendering cycle to your component.
+   */
+  waitForDefine?: boolean;
 }
 
 /**
@@ -81,7 +86,7 @@ export interface MediaGalleryPropTypes extends MediaGalleryAttributes, CommonPro
  */
 const MediaGallery = withWebComponent<MediaGalleryPropTypes, MediaGalleryDomRef>(
   'ui5-media-gallery',
-  ['layout', 'menuHorizontalAlign', 'menuVerticalAlign'],
+  ['layout', 'menuHorizontalAlign', 'menuVerticalAlign', 'waitForDefine'],
   ['interactiveDisplayArea', 'showAllThumbnails'],
   [],
   ['display-area-click', 'overflow-click', 'selection-change']

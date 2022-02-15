@@ -1,10 +1,9 @@
+import '@ui5/webcomponents/dist/BusyIndicator.js';
 import { ReactNode } from 'react';
 import { BusyIndicatorSize } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
-
-import '@ui5/webcomponents/dist/BusyIndicator.js';
 
 interface BusyIndicatorAttributes {
   /**
@@ -38,6 +37,12 @@ export interface BusyIndicatorPropTypes extends BusyIndicatorAttributes, CommonP
    * Determines the content over which the component will appear.
    */
   children?: ReactNode | ReactNode[];
+  /**
+   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
+   *
+   * __Note:__ This adds a rendering cycle to your component.
+   */
+  waitForDefine?: boolean;
 }
 
 /**
@@ -47,7 +52,7 @@ export interface BusyIndicatorPropTypes extends BusyIndicatorAttributes, CommonP
  */
 const BusyIndicator = withWebComponent<BusyIndicatorPropTypes, BusyIndicatorDomRef>(
   'ui5-busy-indicator',
-  ['delay', 'size', 'text'],
+  ['delay', 'size', 'text', 'waitForDefine'],
   ['active'],
   [],
   []

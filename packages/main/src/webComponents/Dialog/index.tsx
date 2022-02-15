@@ -1,10 +1,9 @@
+import '@ui5/webcomponents/dist/Dialog.js';
 import { ReactNode } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
-
-import '@ui5/webcomponents/dist/Dialog.js';
 
 interface DialogAttributes {
   /**
@@ -110,6 +109,12 @@ export interface DialogPropTypes extends DialogAttributes, Omit<CommonProps, 'dr
    * Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. **This event does not bubble.**
    */
   onBeforeOpen?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  /**
+   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
+   *
+   * __Note:__ This adds a rendering cycle to your component.
+   */
+  waitForDefine?: boolean;
 }
 
 /**
@@ -121,7 +126,7 @@ export interface DialogPropTypes extends DialogAttributes, Omit<CommonProps, 'dr
  */
 const Dialog = withWebComponent<DialogPropTypes, DialogDomRef>(
   'ui5-dialog',
-  ['headerText', 'accessibleName', 'accessibleNameRef', 'initialFocus'],
+  ['headerText', 'accessibleName', 'accessibleNameRef', 'initialFocus', 'waitForDefine'],
   ['draggable', 'resizable', 'stretch', 'preventFocusRestore'],
   ['footer', 'header'],
   ['after-close', 'after-open', 'before-close', 'before-open']

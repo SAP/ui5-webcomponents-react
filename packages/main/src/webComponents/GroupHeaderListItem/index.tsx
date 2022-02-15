@@ -1,9 +1,8 @@
+import '@ui5/webcomponents/dist/GroupHeaderListItem.js';
 import { ReactNode } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
-
-import '@ui5/webcomponents/dist/GroupHeaderListItem.js';
 
 interface GroupHeaderListItemAttributes {
   /**
@@ -24,6 +23,12 @@ export interface GroupHeaderListItemPropTypes extends GroupHeaderListItemAttribu
    * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
   children?: ReactNode | ReactNode[];
+  /**
+   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
+   *
+   * __Note:__ This adds a rendering cycle to your component.
+   */
+  waitForDefine?: boolean;
 }
 
 /**
@@ -33,7 +38,7 @@ export interface GroupHeaderListItemPropTypes extends GroupHeaderListItemAttribu
  */
 const GroupHeaderListItem = withWebComponent<GroupHeaderListItemPropTypes, GroupHeaderListItemDomRef>(
   'ui5-li-groupheader',
-  ['accessibleName'],
+  ['accessibleName', 'waitForDefine'],
   ['selected'],
   [],
   []

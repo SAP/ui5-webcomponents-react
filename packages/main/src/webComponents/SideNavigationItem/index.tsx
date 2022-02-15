@@ -1,9 +1,8 @@
+import '@ui5/webcomponents-fiori/dist/SideNavigationItem.js';
 import { ReactNode } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
-
-import '@ui5/webcomponents-fiori/dist/SideNavigationItem.js';
 
 interface SideNavigationItemAttributes {
   /**
@@ -38,6 +37,12 @@ export interface SideNavigationItemPropTypes extends SideNavigationItemAttribute
    * If you wish to nest menus, you can pass inner menu items to the default slot.
    */
   children?: ReactNode | ReactNode[];
+  /**
+   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
+   *
+   * __Note:__ This adds a rendering cycle to your component.
+   */
+  waitForDefine?: boolean;
 }
 
 /**
@@ -47,7 +52,7 @@ export interface SideNavigationItemPropTypes extends SideNavigationItemAttribute
  */
 const SideNavigationItem = withWebComponent<SideNavigationItemPropTypes, SideNavigationItemDomRef>(
   'ui5-side-navigation-item',
-  ['icon', 'text'],
+  ['icon', 'text', 'waitForDefine'],
   ['expanded', 'selected', 'wholeItemToggleable'],
   [],
   []

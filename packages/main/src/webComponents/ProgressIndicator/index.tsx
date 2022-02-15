@@ -1,9 +1,8 @@
+import '@ui5/webcomponents/dist/ProgressIndicator.js';
 import { ValueState } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
-
-import '@ui5/webcomponents/dist/ProgressIndicator.js';
 
 interface ProgressIndicatorAttributes {
   /**
@@ -41,7 +40,14 @@ interface ProgressIndicatorAttributes {
 
 export interface ProgressIndicatorDomRef extends ProgressIndicatorAttributes, Ui5DomRef {}
 
-export interface ProgressIndicatorPropTypes extends ProgressIndicatorAttributes, CommonProps {}
+export interface ProgressIndicatorPropTypes extends ProgressIndicatorAttributes, CommonProps {
+  /**
+   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
+   *
+   * __Note:__ This adds a rendering cycle to your component.
+   */
+  waitForDefine?: boolean;
+}
 
 /**
  * Shows the progress of a process in a graphical way. To indicate the progress, the inside of the component is filled with a color.
@@ -50,7 +56,7 @@ export interface ProgressIndicatorPropTypes extends ProgressIndicatorAttributes,
  */
 const ProgressIndicator = withWebComponent<ProgressIndicatorPropTypes, ProgressIndicatorDomRef>(
   'ui5-progress-indicator',
-  ['displayValue', 'value', 'valueState'],
+  ['displayValue', 'value', 'valueState', 'waitForDefine'],
   ['disabled', 'hideValue'],
   [],
   []

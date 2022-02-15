@@ -293,16 +293,23 @@ const createWebComponentWrapper = async (
     }.js';`
   ];
 
+  const waitForDefineType = `/**
+   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
+   *
+   * __Note:__ This adds a rendering cycle to your component.
+   */
+  waitForDefine?: boolean;`;
+
   return await renderComponentWrapper({
     name: componentSpec.module,
     imports,
     propTypesExtends: tsExtendsStatement,
     domRefExtends,
     attributes,
-    slotsAndEvents,
+    slotsAndEvents: [...slotsAndEvents, waitForDefineType],
     description: componentDescription,
     tagName: componentSpec.tagname,
-    regularProps,
+    regularProps: [...regularProps, 'waitForDefine'],
     booleanProps,
     slotProps: slotProps.filter((name) => name !== 'children'),
     eventProps,

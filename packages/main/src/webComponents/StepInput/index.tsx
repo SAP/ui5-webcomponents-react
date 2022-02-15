@@ -1,11 +1,10 @@
+import '@ui5/webcomponents/dist/StepInput.js';
 import { ReactNode } from 'react';
 import { ValueState } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
-
-import '@ui5/webcomponents/dist/StepInput.js';
 
 interface StepInputAttributes {
   /**
@@ -93,6 +92,12 @@ export interface StepInputPropTypes extends StepInputAttributes, Omit<CommonProp
    * Fired when the input operation has finished by pressing Enter or on focusout.
    */
   onChange?: (event: Ui5CustomEvent<HTMLInputElement>) => void;
+  /**
+   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
+   *
+   * __Note:__ This adds a rendering cycle to your component.
+   */
+  waitForDefine?: boolean;
 }
 
 /**
@@ -114,7 +119,8 @@ const StepInput = withWebComponent<StepInputPropTypes, StepInputDomRef>(
     'step',
     'value',
     'valuePrecision',
-    'valueState'
+    'valueState',
+    'waitForDefine'
   ],
   ['disabled', 'readonly', 'required'],
   ['valueStateMessage'],

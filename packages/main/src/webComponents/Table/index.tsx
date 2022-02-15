@@ -1,11 +1,10 @@
+import '@ui5/webcomponents/dist/Table.js';
 import { ReactNode } from 'react';
 import { TableGrowingMode, TableMode } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
-
-import '@ui5/webcomponents/dist/Table.js';
 
 interface TableAttributes {
   /**
@@ -112,6 +111,12 @@ export interface TablePropTypes extends TableAttributes, CommonProps {
   onSelectionChange?: (
     event: Ui5CustomEvent<HTMLElement, { selectedRows: unknown[]; previouslySelectedRows: unknown[] }>
   ) => void;
+  /**
+   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
+   *
+   * __Note:__ This adds a rendering cycle to your component.
+   */
+  waitForDefine?: boolean;
 }
 
 /**
@@ -125,7 +130,7 @@ export interface TablePropTypes extends TableAttributes, CommonProps {
  */
 const Table = withWebComponent<TablePropTypes, TableDomRef>(
   'ui5-table',
-  ['busyDelay', 'growing', 'growingButtonSubtext', 'growingButtonText', 'mode', 'noDataText'],
+  ['busyDelay', 'growing', 'growingButtonSubtext', 'growingButtonText', 'mode', 'noDataText', 'waitForDefine'],
   ['busy', 'hideNoData', 'stickyColumnHeader'],
   ['columns'],
   ['load-more', 'popin-change', 'row-click', 'selection-change']

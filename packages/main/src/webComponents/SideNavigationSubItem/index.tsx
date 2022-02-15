@@ -1,8 +1,7 @@
+import '@ui5/webcomponents-fiori/dist/SideNavigationSubItem.js';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
-
-import '@ui5/webcomponents-fiori/dist/SideNavigationSubItem.js';
 
 interface SideNavigationSubItemAttributes {
   /**
@@ -24,7 +23,14 @@ interface SideNavigationSubItemAttributes {
 
 export interface SideNavigationSubItemDomRef extends SideNavigationSubItemAttributes, Ui5DomRef {}
 
-export interface SideNavigationSubItemPropTypes extends SideNavigationSubItemAttributes, CommonProps {}
+export interface SideNavigationSubItemPropTypes extends SideNavigationSubItemAttributes, CommonProps {
+  /**
+   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
+   *
+   * __Note:__ This adds a rendering cycle to your component.
+   */
+  waitForDefine?: boolean;
+}
 
 /**
  * The `SideNavigationSubItem` is intended to be used inside a `SideNavigationItem` only.
@@ -33,7 +39,7 @@ export interface SideNavigationSubItemPropTypes extends SideNavigationSubItemAtt
  */
 const SideNavigationSubItem = withWebComponent<SideNavigationSubItemPropTypes, SideNavigationSubItemDomRef>(
   'ui5-side-navigation-sub-item',
-  ['icon', 'text'],
+  ['icon', 'text', 'waitForDefine'],
   ['selected'],
   [],
   []

@@ -1,10 +1,9 @@
-import { ReactNode, MouseEventHandler } from 'react';
+import '@ui5/webcomponents/dist/ToggleButton.js';
+import { MouseEventHandler, ReactNode } from 'react';
 import { ButtonDesign } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
-
-import '@ui5/webcomponents/dist/ToggleButton.js';
 
 interface ToggleButtonAttributes {
   /**
@@ -69,6 +68,12 @@ export interface ToggleButtonPropTypes extends ToggleButtonAttributes, Omit<Comm
    * **Note:** The event will not be fired if the `disabled` property is set to `true`.
    */
   onClick?: MouseEventHandler<HTMLElement>;
+  /**
+   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
+   *
+   * __Note:__ This adds a rendering cycle to your component.
+   */
+  waitForDefine?: boolean;
 }
 
 /**
@@ -80,7 +85,7 @@ export interface ToggleButtonPropTypes extends ToggleButtonAttributes, Omit<Comm
  */
 const ToggleButton = withWebComponent<ToggleButtonPropTypes, ToggleButtonDomRef>(
   'ui5-toggle-button',
-  ['accessibleName', 'accessibleNameRef', 'design', 'icon'],
+  ['accessibleName', 'accessibleNameRef', 'design', 'icon', 'waitForDefine'],
   ['pressed', 'disabled', 'iconEnd', 'submits'],
   [],
   ['click']

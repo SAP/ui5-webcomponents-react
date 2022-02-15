@@ -1,10 +1,9 @@
+import '@ui5/webcomponents-fiori/dist/ViewSettingsDialog.js';
 import { ReactNode } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
-
-import '@ui5/webcomponents-fiori/dist/ViewSettingsDialog.js';
 
 interface ViewSettingsDialogAttributes {
   /**
@@ -44,6 +43,12 @@ export interface ViewSettingsDialogPropTypes extends ViewSettingsDialogAttribute
    * Fired when confirmation button is activated.
    */
   onConfirm?: (event: Ui5CustomEvent<HTMLElement, { sortOrder: string; sortBy: string }>) => void;
+  /**
+   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
+   *
+   * __Note:__ This adds a rendering cycle to your component.
+   */
+  waitForDefine?: boolean;
 }
 
 /**
@@ -53,7 +58,7 @@ export interface ViewSettingsDialogPropTypes extends ViewSettingsDialogAttribute
  */
 const ViewSettingsDialog = withWebComponent<ViewSettingsDialogPropTypes, ViewSettingsDialogDomRef>(
   'ui5-view-settings-dialog',
-  [],
+  ['waitForDefine'],
   ['sortDescending'],
   ['filterItems', 'sortItems'],
   ['cancel', 'confirm']

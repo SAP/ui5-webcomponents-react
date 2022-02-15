@@ -1,11 +1,10 @@
+import '@ui5/webcomponents/dist/Carousel.js';
 import { ReactNode } from 'react';
 import { CarouselArrowsPlacement } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
-
-import '@ui5/webcomponents/dist/Carousel.js';
 
 interface CarouselAttributes {
   /**
@@ -66,6 +65,12 @@ export interface CarouselPropTypes extends CarouselAttributes, CommonProps {
    * Fired whenever the page changes due to user interaction, when the user clicks on the navigation arrows or while resizing, based on the `items-per-page-l`, `items-per-page-m` and `items-per-page-s` properties.
    */
   onNavigate?: (event: Ui5CustomEvent<HTMLElement, { selectedIndex: number }>) => void;
+  /**
+   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
+   *
+   * __Note:__ This adds a rendering cycle to your component.
+   */
+  waitForDefine?: boolean;
 }
 
 /**
@@ -79,7 +84,7 @@ export interface CarouselPropTypes extends CarouselAttributes, CommonProps {
  */
 const Carousel = withWebComponent<CarouselPropTypes, CarouselDomRef>(
   'ui5-carousel',
-  ['arrowsPlacement', 'itemsPerPageL', 'itemsPerPageM', 'itemsPerPageS'],
+  ['arrowsPlacement', 'itemsPerPageL', 'itemsPerPageM', 'itemsPerPageS', 'waitForDefine'],
   ['cyclic', 'hideNavigationArrows', 'hidePageIndicator'],
   [],
   ['navigate']

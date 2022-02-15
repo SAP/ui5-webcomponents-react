@@ -1,11 +1,10 @@
+import '@ui5/webcomponents/dist/FileUploader.js';
 import { ReactNode } from 'react';
 import { ValueState } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
-
-import '@ui5/webcomponents/dist/FileUploader.js';
 
 interface FileUploaderAttributes {
   /**
@@ -84,6 +83,12 @@ export interface FileUploaderPropTypes extends FileUploaderAttributes, Omit<Comm
    * Event is fired when the value of the file path has been changed. **Note:** Keep in mind that because of the HTML input element of type file, the event is also fired in Chrome browser when the Cancel button of the uploads window is pressed.
    */
   onChange?: (event: Ui5CustomEvent<HTMLElement, { files: FileList }>) => void;
+  /**
+   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
+   *
+   * __Note:__ This adds a rendering cycle to your component.
+   */
+  waitForDefine?: boolean;
 }
 
 /**
@@ -95,7 +100,7 @@ export interface FileUploaderPropTypes extends FileUploaderAttributes, Omit<Comm
  */
 const FileUploader = withWebComponent<FileUploaderPropTypes, FileUploaderDomRef>(
   'ui5-file-uploader',
-  ['accept', 'name', 'placeholder', 'value', 'valueState'],
+  ['accept', 'name', 'placeholder', 'value', 'valueState', 'waitForDefine'],
   ['disabled', 'hideInput', 'multiple'],
   ['valueStateMessage'],
   ['change']

@@ -1,11 +1,10 @@
+import '@ui5/webcomponents-fiori/dist/DynamicSideContent.js';
 import { ReactNode } from 'react';
 import { SideContentFallDown, SideContentPosition, SideContentVisibility } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
-
-import '@ui5/webcomponents-fiori/dist/DynamicSideContent.js';
 
 interface DynamicSideContentAttributes {
   /**
@@ -88,6 +87,12 @@ export interface DynamicSideContentPropTypes extends DynamicSideContentAttribute
       }
     >
   ) => void;
+  /**
+   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
+   *
+   * __Note:__ This adds a rendering cycle to your component.
+   */
+  waitForDefine?: boolean;
 }
 
 /**
@@ -97,7 +102,7 @@ export interface DynamicSideContentPropTypes extends DynamicSideContentAttribute
  */
 const DynamicSideContent = withWebComponent<DynamicSideContentPropTypes, DynamicSideContentDomRef>(
   'ui5-dynamic-side-content',
-  ['sideContentFallDown', 'sideContentPosition', 'sideContentVisibility'],
+  ['sideContentFallDown', 'sideContentPosition', 'sideContentVisibility', 'waitForDefine'],
   ['equalSplit', 'hideMainContent', 'hideSideContent'],
   ['sideContent'],
   ['layout-change']

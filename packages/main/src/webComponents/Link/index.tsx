@@ -1,10 +1,9 @@
-import { ReactNode, MouseEventHandler } from 'react';
+import '@ui5/webcomponents/dist/Link.js';
+import { MouseEventHandler, ReactNode } from 'react';
 import { LinkDesign, WrappingType } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
-
-import '@ui5/webcomponents/dist/Link.js';
 
 interface LinkAttributes {
   /**
@@ -79,6 +78,12 @@ export interface LinkPropTypes extends LinkAttributes, Omit<CommonProps, 'onClic
    * Fired when the component is triggered either with a mouse/tap or by using the Enter key.
    */
   onClick?: MouseEventHandler<HTMLElement>;
+  /**
+   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
+   *
+   * __Note:__ This adds a rendering cycle to your component.
+   */
+  waitForDefine?: boolean;
 }
 
 /**
@@ -88,7 +93,7 @@ export interface LinkPropTypes extends LinkAttributes, Omit<CommonProps, 'onClic
  */
 const Link = withWebComponent<LinkPropTypes, LinkDomRef>(
   'ui5-link',
-  ['accessibilityAttributes', 'accessibleNameRef', 'design', 'href', 'target', 'wrappingType'],
+  ['accessibilityAttributes', 'accessibleNameRef', 'design', 'href', 'target', 'wrappingType', 'waitForDefine'],
   ['disabled'],
   [],
   ['click']

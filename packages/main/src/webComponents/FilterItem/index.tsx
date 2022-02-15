@@ -1,11 +1,10 @@
+import '@ui5/webcomponents-fiori/dist/FilterItem.js';
 import { ReactNode } from 'react';
 import { ListItemType } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
-
-import '@ui5/webcomponents-fiori/dist/FilterItem.js';
 
 interface FilterItemAttributes {
   /**
@@ -38,6 +37,12 @@ export interface FilterItemPropTypes extends FilterItemAttributes, CommonProps {
    * Fired when the user clicks on the detail button when type is `Detail`.
    */
   onDetailClick?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  /**
+   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
+   *
+   * __Note:__ This adds a rendering cycle to your component.
+   */
+  waitForDefine?: boolean;
 }
 
 /**
@@ -47,7 +52,7 @@ export interface FilterItemPropTypes extends FilterItemAttributes, CommonProps {
  */
 const FilterItem = withWebComponent<FilterItemPropTypes, FilterItemDomRef>(
   'ui5-filter-item',
-  ['text', 'type'],
+  ['text', 'type', 'waitForDefine'],
   ['selected'],
   ['values'],
   ['detail-click']

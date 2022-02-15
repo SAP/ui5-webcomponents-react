@@ -1,9 +1,8 @@
+import '@ui5/webcomponents/dist/RatingIndicator.js';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
-
-import '@ui5/webcomponents/dist/RatingIndicator.js';
 
 interface RatingIndicatorAttributes {
   /**
@@ -45,6 +44,12 @@ export interface RatingIndicatorPropTypes extends RatingIndicatorAttributes, Omi
    * The event is fired when the value changes.
    */
   onChange?: (event: Ui5CustomEvent<HTMLInputElement>) => void;
+  /**
+   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
+   *
+   * __Note:__ This adds a rendering cycle to your component.
+   */
+  waitForDefine?: boolean;
 }
 
 /**
@@ -54,7 +59,7 @@ export interface RatingIndicatorPropTypes extends RatingIndicatorAttributes, Omi
  */
 const RatingIndicator = withWebComponent<RatingIndicatorPropTypes, RatingIndicatorDomRef>(
   'ui5-rating-indicator',
-  ['accessibleName', 'max', 'value'],
+  ['accessibleName', 'max', 'value', 'waitForDefine'],
   ['disabled', 'readonly'],
   [],
   ['change']

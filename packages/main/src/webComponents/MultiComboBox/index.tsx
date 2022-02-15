@@ -1,11 +1,10 @@
+import '@ui5/webcomponents/dist/MultiComboBox.js';
 import { ReactNode } from 'react';
 import { ValueState } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
-
-import '@ui5/webcomponents/dist/MultiComboBox.js';
 
 interface MultiComboBoxAttributes {
   /**
@@ -101,6 +100,12 @@ export interface MultiComboBoxPropTypes extends MultiComboBoxAttributes, Omit<Co
    * Fired when selection is changed by user interaction in `SingleSelect` and `MultiSelect` modes.
    */
   onSelectionChange?: (event: Ui5CustomEvent<HTMLInputElement, { items: unknown[] }>) => void;
+  /**
+   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
+   *
+   * __Note:__ This adds a rendering cycle to your component.
+   */
+  waitForDefine?: boolean;
 }
 
 /**
@@ -110,7 +115,7 @@ export interface MultiComboBoxPropTypes extends MultiComboBoxAttributes, Omit<Co
  */
 const MultiComboBox = withWebComponent<MultiComboBoxPropTypes, MultiComboBoxDomRef>(
   'ui5-multi-combobox',
-  ['filter', 'placeholder', 'value', 'valueState'],
+  ['filter', 'placeholder', 'value', 'valueState', 'waitForDefine'],
   ['allowCustomValues', 'disabled', 'readonly', 'required'],
   ['icon', 'valueStateMessage'],
   ['change', 'input', 'open-change', 'selection-change']

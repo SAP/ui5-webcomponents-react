@@ -1,6 +1,16 @@
 import { getEffectiveScopingSuffixForTag } from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
 import { deprecationNotice, useSyncRef } from '@ui5/webcomponents-react-base';
-import React, { Children, cloneElement, ComponentType, forwardRef, ReactElement, Ref, useEffect, useRef } from 'react';
+import React, {
+  Children,
+  cloneElement,
+  ComponentType,
+  forwardRef,
+  ReactElement,
+  Ref,
+  useEffect,
+  useRef,
+  useState
+} from 'react';
 import { CommonProps } from '../interfaces/CommonProps';
 import { Ui5DomRef } from '../interfaces/Ui5DomRef';
 
@@ -21,10 +31,11 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
   eventProperties: string[]
 ) => {
   const WithWebComponent = forwardRef((props: Props, wcRef: Ref<RefType>) => {
-    const { className, tooltip, children, ...rest } = props;
+    const { className, tooltip, children, waitForDefine, ...rest } = props;
     //@ts-ignore
     const [componentRef, ref] = useSyncRef<HTMLElement>(wcRef);
     const eventRegistry = useRef<Record<string, EventHandler>>({});
+    const [isDefined, setIsDefined] = useState(false);
 
     // regular props (no booleans, no slots and no events)
     const regularProps = regularProperties.reduce((acc, name) => {
@@ -78,8 +89,8 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
       return [...acc, ...slottedChildren];
     }, []);
     // event binding
-    useEffect(
-      () => {
+    useEffect(() => {
+      if (!waitForDefine || isDefined) {
         eventProperties.forEach((eventName) => {
           const eventHandler = rest[createEventPropName(eventName)] as EventHandler;
           if (typeof eventHandler === 'function') {
@@ -94,9 +105,8 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
             ref.current?.removeEventListener(eventName, eventRegistry.current[eventName]);
           }
         };
-      },
-      eventProperties.map((eventName) => rest[createEventPropName(eventName)])
-    );
+      }
+    }, [...eventProperties.map((eventName) => rest[createEventPropName(eventName)]), isDefined, waitForDefine]);
 
     // non web component related props, just pass them
     const nonWebComponentRelatedProps = Object.entries(rest)
@@ -121,6 +131,15 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
         );
       }
     }, [tooltip]);
+
+    useEffect(() => {
+      if (waitForDefine) {
+        customElements.whenDefined(Component as unknown as string).then(() => {
+          setIsDefined(true);
+        });
+      }
+    }, [Component, waitForDefine]);
+    if (waitForDefine && !isDefined) return null;
 
     return (
       <Component
