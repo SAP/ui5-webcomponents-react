@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { createCustomPropsTest } from '@shared/tests/utils';
+import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
 import { NotificationListItem } from './index';
 import { NotificationAction } from '../NotificationAction';
 import { Priority } from '../../enums/Priority';
@@ -18,4 +18,5 @@ describe('NotificationListItem', () => {
     expect(asFragment()).toMatchSnapshot();
   });
   createCustomPropsTest(NotificationListItem);
+  createWaitForDefineTest(NotificationListItem);
 });

@@ -1,7 +1,7 @@
 import { render } from '@shared/tests';
-import { createCustomPropsTest } from '@shared/tests/utils';
-import { ProductSwitchItem } from './index';
+import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
 import React from 'react';
+import { ProductSwitchItem } from './index';
 
 describe('ProductSwitchItem', () => {
   test('Basic Test (generated)', () => {
@@ -9,4 +9,5 @@ describe('ProductSwitchItem', () => {
     expect(asFragment()).toMatchSnapshot();
   });
   createCustomPropsTest(ProductSwitchItem);
+  createWaitForDefineTest(ProductSwitchItem);
 });

@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { createCustomPropsTest } from '@shared/tests/utils';
+import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
 import { SplitButton } from './index';
 import React from 'react';
 
@@ -9,4 +9,5 @@ describe('SplitButton', () => {
     expect(asFragment()).toMatchSnapshot();
   });
   createCustomPropsTest(SplitButton, { children: 'SplitButton' });
+  createWaitForDefineTest(SplitButton);
 });

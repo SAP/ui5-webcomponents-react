@@ -1,7 +1,7 @@
 import { render } from '@shared/tests';
-import { createCustomPropsTest } from '@shared/tests/utils';
-import { Wizard } from './index';
+import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
 import React from 'react';
+import { Wizard } from './index';
 
 describe('Wizard', () => {
   test('Basic Test (generated)', () => {
@@ -9,4 +9,5 @@ describe('Wizard', () => {
     expect(asFragment()).toMatchSnapshot();
   });
   createCustomPropsTest(Wizard);
+  createWaitForDefineTest(Wizard);
 });

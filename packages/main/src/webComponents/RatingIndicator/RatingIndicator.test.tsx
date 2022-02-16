@@ -1,7 +1,7 @@
 import { render } from '@shared/tests';
-import { createCustomPropsTest } from '@shared/tests/utils';
-import { RatingIndicator } from './index';
+import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
 import React from 'react';
+import { RatingIndicator } from './index';
 
 describe('RatingIndicator', () => {
   test('Basic Test (generated)', () => {
@@ -9,4 +9,5 @@ describe('RatingIndicator', () => {
     expect(asFragment()).toMatchSnapshot();
   });
   createCustomPropsTest(RatingIndicator);
+  createWaitForDefineTest(RatingIndicator);
 });

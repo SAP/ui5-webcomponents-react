@@ -1,7 +1,7 @@
 import { render } from '@shared/tests';
-import { createCustomPropsTest } from '@shared/tests/utils';
-import { ComboBoxGroupItem } from './index';
+import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
 import React from 'react';
+import { ComboBoxGroupItem } from './index';
 
 describe('ComboBoxGroupItem', () => {
   test('Basic Test (generated)', () => {
@@ -9,4 +9,5 @@ describe('ComboBoxGroupItem', () => {
     expect(asFragment()).toMatchSnapshot();
   });
   createCustomPropsTest(ComboBoxGroupItem);
+  createWaitForDefineTest(ComboBoxGroupItem);
 });

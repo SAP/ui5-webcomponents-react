@@ -1,7 +1,7 @@
 import { render } from '@shared/tests';
-import { createCustomPropsTest } from '@shared/tests/utils';
-import { ColorPalette } from './index';
+import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
 import React from 'react';
+import { ColorPalette } from './index';
 
 describe('ColorPalette', () => {
   test('Basic Test (generated)', () => {
@@ -9,4 +9,5 @@ describe('ColorPalette', () => {
     expect(asFragment()).toMatchSnapshot();
   });
   createCustomPropsTest(ColorPalette);
+  createWaitForDefineTest(ColorPalette);
 });

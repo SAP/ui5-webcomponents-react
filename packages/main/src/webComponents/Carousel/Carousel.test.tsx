@@ -1,7 +1,7 @@
 import { render } from '@shared/tests';
-import { createCustomPropsTest } from '@shared/tests/utils';
-import { Carousel } from './index';
+import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
 import React from 'react';
+import { Carousel } from './index';
 
 describe('Carousel', () => {
   test('Basic Test (generated)', () => {
@@ -9,4 +9,5 @@ describe('Carousel', () => {
     expect(asFragment()).toMatchSnapshot();
   });
   createCustomPropsTest(Carousel);
+  createWaitForDefineTest(Carousel);
 });

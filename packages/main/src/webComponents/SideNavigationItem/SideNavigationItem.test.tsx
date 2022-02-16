@@ -1,7 +1,7 @@
 import { render } from '@shared/tests';
-import { createCustomPropsTest } from '@shared/tests/utils';
-import { SideNavigationItem } from './index';
+import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
 import React from 'react';
+import { SideNavigationItem } from './index';
 
 describe('SideNavigationItem', () => {
   test('Basic Test (generated)', () => {
@@ -9,4 +9,5 @@ describe('SideNavigationItem', () => {
     expect(asFragment()).toMatchSnapshot();
   });
   createCustomPropsTest(SideNavigationItem);
+  createWaitForDefineTest(SideNavigationItem);
 });

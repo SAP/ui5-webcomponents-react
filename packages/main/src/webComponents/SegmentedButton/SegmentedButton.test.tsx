@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { createCustomPropsTest } from '@shared/tests/utils';
+import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
 import { SegmentedButtonItem } from '../SegmentedButtonItem';
 import { SegmentedButton } from './index';
 import React from 'react';
@@ -16,4 +16,5 @@ describe('SegmentedButton', () => {
     expect(asFragment()).toMatchSnapshot();
   });
   createCustomPropsTest(SegmentedButton);
+  createWaitForDefineTest(SegmentedButton);
 });

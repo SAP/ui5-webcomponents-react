@@ -1,7 +1,7 @@
 import { render } from '@shared/tests';
-import { createCustomPropsTest } from '@shared/tests/utils';
-import { SuggestionGroupItem } from './index';
+import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
 import React from 'react';
+import { SuggestionGroupItem } from './index';
 
 describe('SuggestionGroupItem', () => {
   test('Basic Test (generated)', () => {
@@ -9,4 +9,5 @@ describe('SuggestionGroupItem', () => {
     expect(asFragment()).toMatchSnapshot();
   });
   createCustomPropsTest(SuggestionGroupItem);
+  createWaitForDefineTest(SuggestionGroupItem);
 });

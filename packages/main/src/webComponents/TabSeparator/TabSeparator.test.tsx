@@ -1,7 +1,7 @@
 import { render } from '@shared/tests';
-import { createCustomPropsTest } from '@shared/tests/utils';
-import { TabSeparator } from './index';
+import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
 import React from 'react';
+import { TabSeparator } from './index';
 
 describe('TabSeparator', () => {
   test('Basic Test (generated)', () => {
@@ -9,4 +9,5 @@ describe('TabSeparator', () => {
     expect(asFragment()).toMatchSnapshot();
   });
   createCustomPropsTest(TabSeparator);
+  createWaitForDefineTest(TabSeparator);
 });

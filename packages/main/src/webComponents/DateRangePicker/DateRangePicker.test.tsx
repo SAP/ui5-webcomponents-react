@@ -1,7 +1,7 @@
 import { render } from '@shared/tests';
-import { createCustomPropsTest } from '@shared/tests/utils';
-import { DateRangePicker } from './index';
+import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
 import React from 'react';
+import { DateRangePicker } from './index';
 
 describe('DateRangePicker', () => {
   test('Basic Test (generated)', () => {
@@ -9,4 +9,5 @@ describe('DateRangePicker', () => {
     expect(asFragment()).toMatchSnapshot();
   });
   createCustomPropsTest(DateRangePicker);
+  createWaitForDefineTest(DateRangePicker);
 });

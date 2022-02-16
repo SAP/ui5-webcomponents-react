@@ -1,7 +1,7 @@
 import { render } from '@shared/tests';
-import { createCustomPropsTest } from '@shared/tests/utils';
-import { MessageStrip } from './index';
+import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
 import React from 'react';
+import { MessageStrip } from './index';
 
 describe('MessageStrip', () => {
   test('Basic Test (generated)', () => {
@@ -9,4 +9,5 @@ describe('MessageStrip', () => {
     expect(asFragment()).toMatchSnapshot();
   });
   createCustomPropsTest(MessageStrip);
+  createWaitForDefineTest(MessageStrip);
 });

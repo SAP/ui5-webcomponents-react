@@ -1,7 +1,7 @@
 import { render } from '@shared/tests';
-import { createCustomPropsTest } from '@shared/tests/utils';
-import { MediaGalleryItem } from './index';
+import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
 import React from 'react';
+import { MediaGalleryItem } from './index';
 
 describe('MediaGalleryItem', () => {
   test('Basic Test (generated)', () => {
@@ -9,4 +9,5 @@ describe('MediaGalleryItem', () => {
     expect(asFragment()).toMatchSnapshot();
   });
   createCustomPropsTest(MediaGalleryItem);
+  createWaitForDefineTest(MediaGalleryItem);
 });

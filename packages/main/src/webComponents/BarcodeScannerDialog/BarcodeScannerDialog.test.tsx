@@ -1,7 +1,7 @@
 import { render } from '@shared/tests';
-import { createCustomPropsTest } from '@shared/tests/utils';
-import { BarcodeScannerDialog } from './index';
+import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
 import React from 'react';
+import { BarcodeScannerDialog } from './index';
 
 describe('BarcodeScannerDialog', () => {
   test('Basic Test (generated)', () => {
@@ -9,4 +9,5 @@ describe('BarcodeScannerDialog', () => {
     expect(asFragment()).toMatchSnapshot();
   });
   createCustomPropsTest(BarcodeScannerDialog);
+  createWaitForDefineTest(BarcodeScannerDialog);
 });

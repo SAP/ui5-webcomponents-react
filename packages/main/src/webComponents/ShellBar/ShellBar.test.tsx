@@ -1,7 +1,7 @@
 import { render } from '@shared/tests';
-import { createCustomPropsTest } from '@shared/tests/utils';
-import { ShellBar } from './index';
+import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
 import React from 'react';
+import { ShellBar } from './index';
 
 describe('ShellBar', () => {
   test('Basic Test (generated)', () => {
@@ -9,4 +9,5 @@ describe('ShellBar', () => {
     expect(asFragment()).toMatchSnapshot();
   });
   createCustomPropsTest(ShellBar);
+  createWaitForDefineTest(ShellBar);
 });

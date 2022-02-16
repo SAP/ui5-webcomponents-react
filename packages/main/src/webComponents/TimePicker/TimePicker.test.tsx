@@ -1,7 +1,7 @@
 import { render } from '@shared/tests';
-import { createCustomPropsTest } from '@shared/tests/utils';
-import { TimePicker } from './index';
+import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
 import React from 'react';
+import { TimePicker } from './index';
 
 describe('TimePicker', () => {
   test('Basic Test (generated)', () => {
@@ -9,4 +9,5 @@ describe('TimePicker', () => {
     expect(asFragment()).toMatchSnapshot();
   });
   createCustomPropsTest(TimePicker);
+  createWaitForDefineTest(TimePicker);
 });

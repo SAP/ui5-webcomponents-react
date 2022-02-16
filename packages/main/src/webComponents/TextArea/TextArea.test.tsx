@@ -1,7 +1,7 @@
 import { render } from '@shared/tests';
-import { createCustomPropsTest } from '@shared/tests/utils';
-import { TextArea } from './index';
+import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
 import React from 'react';
+import { TextArea } from './index';
 
 describe('TextArea', () => {
   test('Basic Test (generated)', () => {
@@ -9,4 +9,5 @@ describe('TextArea', () => {
     expect(asFragment()).toMatchSnapshot();
   });
   createCustomPropsTest(TextArea);
+  createWaitForDefineTest(TextArea);
 });

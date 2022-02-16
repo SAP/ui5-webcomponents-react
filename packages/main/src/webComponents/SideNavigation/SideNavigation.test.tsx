@@ -5,7 +5,7 @@ import '@ui5/webcomponents-icons/dist/group.js';
 import '@ui5/webcomponents-icons/dist/history.js';
 import '@ui5/webcomponents-icons/dist/home.js';
 import '@ui5/webcomponents-icons/dist/locate-me.js';
-import { createCustomPropsTest } from '@shared/tests/utils';
+import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
 import { SideNavigation } from './index';
 import { SideNavigationItem } from '../SideNavigationItem';
 import { SideNavigationSubItem } from '../SideNavigationSubItem';
@@ -37,4 +37,5 @@ describe('SideNavigation', () => {
     expect(asFragment()).toMatchSnapshot();
   });
   createCustomPropsTest(SideNavigation);
+  createWaitForDefineTest(SideNavigation);
 });

@@ -1,7 +1,7 @@
 import { render } from '@shared/tests';
-import { createCustomPropsTest } from '@shared/tests/utils';
-import { RangeSlider } from './index';
+import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
 import React from 'react';
+import { RangeSlider } from './index';
 
 describe('RangeSlider', () => {
   test('Basic Test (generated)', () => {
@@ -9,4 +9,5 @@ describe('RangeSlider', () => {
     expect(asFragment()).toMatchSnapshot();
   });
   createCustomPropsTest(RangeSlider);
+  createWaitForDefineTest(RangeSlider);
 });

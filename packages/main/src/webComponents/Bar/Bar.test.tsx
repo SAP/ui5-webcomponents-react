@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { createCustomPropsTest } from '@shared/tests/utils';
+import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
 import { Bar } from './index';
 import React from 'react';
 
@@ -11,4 +11,5 @@ describe('Bar', () => {
     expect(asFragment()).toMatchSnapshot();
   });
   createCustomPropsTest(Bar);
+  createWaitForDefineTest(Bar);
 });

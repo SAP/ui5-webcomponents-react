@@ -48,11 +48,11 @@ export const createChangeTagNameTest = (Component: ComponentType<any>) => {
   });
 };
 
-export const waitForDefineTest = (Component) => {
+export const createWaitForDefineTest = (Component, props = {}) => {
   test('Wait for define', async () => {
-    const { getByTestId, queryByTestId } = render(<Component waitForDefine data-testid="component" />);
+    const { getByTestId, queryByTestId } = render(<Component waitForDefine data-testid="component" {...props} />);
     expect(queryByTestId('component')).toBeFalsy();
     await waitFor(() => getByTestId('component').shadowRoot);
-    expect(getByTestId('component').shadowRoot).not.toBeNull();
+    expect(getByTestId('component')).toBeInTheDocument();
   });
 };
