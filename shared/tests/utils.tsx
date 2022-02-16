@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import React, { ComponentType } from 'react';
 
 export const modifyObjectProperty = (object: any, attr: string, value: any) => {
@@ -45,5 +45,14 @@ export const createChangeTagNameTest = (Component: ComponentType<any>) => {
   test('Change tag name', () => {
     const { getByTestId } = render(<Component data-testid={'component-to-be-tested'} as="header" />);
     expect(getByTestId('component-to-be-tested').tagName).toBe('HEADER');
+  });
+};
+
+export const waitForDefineTest = (Component) => {
+  test('Wait for define', async () => {
+    const { getByTestId, queryByTestId } = render(<Component waitForDefine data-testid="component" />);
+    expect(queryByTestId('component')).toBeFalsy();
+    await waitFor(() => getByTestId('component').shadowRoot);
+    expect(getByTestId('component').shadowRoot).not.toBeNull();
   });
 };
