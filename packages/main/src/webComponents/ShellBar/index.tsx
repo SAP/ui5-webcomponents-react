@@ -7,10 +7,6 @@ import { withWebComponent } from '../../internal/withWebComponent';
 
 interface ShellBarAttributes {
   /**
-   * An object of strings that defines several additional accessibility texts for even further customization. It supports the following fields: - `profileButtonTitle`: defines the tooltip for the profile button - `logoTitle`: defines the tooltip for the logo
-   */
-  accessibilityTexts?: Record<string, unknown>;
-  /**
    * Defines the `notificationsCount`, displayed in the notification icon top-right corner.
    */
   notificationsCount?: string;
@@ -66,6 +62,10 @@ export interface ShellBarDomRef extends ShellBarAttributes, Ui5DomRef {
    * Returns the `profile` icon DOM ref.
    */
   readonly profileDomRef: ReactNode;
+  /**
+   * An object of strings that defines several additional accessibility texts for even further customization. It supports the following fields: - `profileButtonTitle`: defines the tooltip for the profile button - `logoTitle`: defines the tooltip for the logo
+   */
+  accessibilityTexts: Record<string, unknown>;
   /**
    * Closes the overflow area. Useful to manually close the overflow after having suppressed automatic closing with preventDefault() of ShellbarItem's press event
    *

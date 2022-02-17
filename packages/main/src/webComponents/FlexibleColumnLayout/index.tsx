@@ -8,28 +8,6 @@ import { withWebComponent } from '../../internal/withWebComponent';
 
 interface FlexibleColumnLayoutAttributes {
   /**
-   * An object of strings that defines additional accessibility roles for further customization. It supports the following fields:
-   *  - `startColumnRole`: the accessibility role for the `startColumn`
-   *  - `startArrowContainerRole`: the accessibility role for the first arrow container (between the `begin` and `mid` columns)
-   *  - `midColumnRole`: the accessibility role for the `midColumn`
-   *  - `endArrowContainerRole`: the accessibility role for the second arrow container (between the `mid` and `end` columns)
-   *  - `endColumnRole`: the accessibility role for the `endColumn`
-   */
-  accessibilityRoles?: Record<string, unknown>;
-  /**
-   * An object of strings that defines several additional accessibility texts for even further customization. It supports the following fields:
-   * - `startColumnAccessibleName`: the accessibility name for the `startColumn` region
-   * - `midColumnAccessibleName`: the accessibility name for the `midColumn` region
-   * - `endColumnAccessibleName`: the accessibility name for the `endColumn` region
-   * - `startArrowLeftText`: the text that the first arrow (between the `begin` and `mid` columns) will have when pointing to the left
-   * - `startArrowRightText`: the text that the first arrow (between the `begin` and `mid` columns) will have when pointing to the right
-   * - `endArrowLeftText`: the text that the second arrow (between the `mid` and `end` columns) will have when pointing to the left
-   * - `endArrowRightText`: the text that the second arrow (between the `mid` and `end` columns) will have when pointing to the right
-   * - `startArrowContainerAccessibleName`: the text that the first arrow container (between the `begin` and `mid` columns) will have as `aria-label`
-   * - `endArrowContainerAccessibleName`: the text that the second arrow container (between the `mid` and `end` columns) will have as `aria-label`
-   */
-  accessibilityTexts?: Record<string, unknown>;
-  /**
    * Defines the visibility of the arrows, used for expanding and shrinking the columns.
    */
   hideArrows?: boolean;
@@ -80,6 +58,28 @@ export interface FlexibleColumnLayoutDomRef extends FlexibleColumnLayoutAttribut
    * Returns the number of currently visible columns.
    */
   readonly visibleColumns: number;
+  /**
+   * An object of strings that defines additional accessibility roles for further customization. It supports the following fields:
+   * - `startColumnRole`: the accessibility role for the `startColumn`
+   * - `startArrowContainerRole`: the accessibility role for the first arrow container (between the `begin` and `mid` columns)
+   * - `midColumnRole`: the accessibility role for the `midColumn`
+   * - `endArrowContainerRole`: the accessibility role for the second arrow container (between the `mid` and `end` columns)
+   * - `endColumnRole`: the accessibility role for the `endColumn`
+   */
+  accessibilityRoles: Record<string, unknown>;
+  /**
+   * An object of strings that defines several additional accessibility texts for even further customization. It supports the following fields:
+   * - `startColumnAccessibleName`: the accessibility name for the `startColumn` region
+   * - `midColumnAccessibleName`: the accessibility name for the `midColumn` region
+   * - `endColumnAccessibleName`: the accessibility name for the `endColumn` region
+   * - `startArrowLeftText`: the text that the first arrow (between the `begin` and `mid` columns) will have when pointing to the left
+   * - `startArrowRightText`: the text that the first arrow (between the `begin` and `mid` columns) will have when pointing to the right
+   * - `endArrowLeftText`: the text that the second arrow (between the `mid` and `end` columns) will have when pointing to the left
+   * - `endArrowRightText`: the text that the second arrow (between the `mid` and `end` columns) will have when pointing to the right
+   * - `startArrowContainerAccessibleName`: the text that the first arrow container (between the `begin` and `mid` columns) will have as `aria-label`
+   * - `endArrowContainerAccessibleName`: the text that the second arrow container (between the `mid` and `end` columns) will have as `aria-label`
+   */
+  accessibilityTexts: Record<string, unknown>;
 }
 
 export interface FlexibleColumnLayoutPropTypes extends FlexibleColumnLayoutAttributes, CommonProps {
