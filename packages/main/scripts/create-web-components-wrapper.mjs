@@ -293,23 +293,16 @@ const createWebComponentWrapper = async (
     }.js';`
   ];
 
-  const waitForDefineType = `/**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;`;
-
   return await renderComponentWrapper({
     name: componentSpec.module,
     imports,
     propTypesExtends: tsExtendsStatement,
     domRefExtends,
     attributes,
-    slotsAndEvents: [...slotsAndEvents, waitForDefineType],
+    slotsAndEvents,
     description: componentDescription,
     tagName: componentSpec.tagname,
-    regularProps: [...regularProps, 'waitForDefine'],
+    regularProps,
     booleanProps,
     slotProps: slotProps.filter((name) => name !== 'children'),
     eventProps,
@@ -556,7 +549,10 @@ allWebComponents
     const importStatements = [];
     const defaultProps = [];
     const allComponentProperties = (componentSpec.properties || [])
-      .filter((prop) => prop.visibility === 'public' && prop.readonly !== 'true' && prop.static !== true)
+      .filter(
+        (prop) =>
+          prop.visibility === 'public' && prop.readonly !== 'true' && prop.static !== true && prop.type !== 'object'
+      )
       .map((property) => {
         const tsType = Utils.getTypeDefinitionForProperty(property);
         if (tsType.importStatement) {
@@ -691,6 +687,7 @@ allWebComponents
       (CREATE_SINGLE_COMPONENT === componentSpec.module || !CREATE_SINGLE_COMPONENT) &&
       !EXCLUDE_LIST.includes(componentSpec.module)
     ) {
+      const regularPropsToOmit = new Set(['boolean', 'Boolean', 'object', 'Object']);
       const webComponentWrapper = await createWebComponentWrapper(
         componentSpec,
         mainDescription,
@@ -700,7 +697,7 @@ allWebComponents
         defaultProps,
         (componentSpec.properties || [])
           .filter(filterNonPublicAttributes)
-          .filter(({ type }) => type !== 'boolean' && type !== 'Boolean')
+          .filter(({ type }) => !regularPropsToOmit.has(type))
           .map(({ name }) => name),
         (componentSpec.properties || [])
           .filter(filterNonPublicAttributes)
