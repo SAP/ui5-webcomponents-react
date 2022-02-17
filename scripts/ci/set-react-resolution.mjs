@@ -1,7 +1,7 @@
+import { writeFileSync } from 'fs';
 import { dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
-import { writeFileSync } from 'fs';
-import pkgJson from '../../package.json';
+import pkgJson from '../../package.json' assert { type: 'json' };
 
 const [reactVersion] = process.argv.slice(2);
 

@@ -276,6 +276,17 @@ export const createDomRef = (componentSpec) => {
     `;
   });
 
+  const objects = (
+    componentSpec.properties?.filter((prop) => prop.visibility === 'public' && prop.type === 'object') ?? []
+  ).map((prop) => {
+    return dedent`
+    /**
+     * ${formatDescription(prop.description, componentSpec)}
+     */
+     ${prop.name}: Record<string, unknown>;
+    `;
+  });
+
   const methods = (componentSpec.methods?.filter((method) => method.visibility === 'public') ?? []).map((method) => {
     const params = method.parameters?.map((param) => {
       return ` * @param {${resolveTsTypeForMethods(param)}} ${isOptionalParameter(param) ? '[' : ''}${param.name}${
@@ -296,7 +307,7 @@ export const createDomRef = (componentSpec) => {
           `;
   });
 
-  return [...getters, ...methods];
+  return [...getters, ...objects, ...methods];
 };
 
 export const prettierConfig = {

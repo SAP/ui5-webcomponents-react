@@ -549,7 +549,10 @@ allWebComponents
     const importStatements = [];
     const defaultProps = [];
     const allComponentProperties = (componentSpec.properties || [])
-      .filter((prop) => prop.visibility === 'public' && prop.readonly !== 'true' && prop.static !== true)
+      .filter(
+        (prop) =>
+          prop.visibility === 'public' && prop.readonly !== 'true' && prop.static !== true && prop.type !== 'object'
+      )
       .map((property) => {
         const tsType = Utils.getTypeDefinitionForProperty(property);
         if (tsType.importStatement) {
@@ -684,6 +687,7 @@ allWebComponents
       (CREATE_SINGLE_COMPONENT === componentSpec.module || !CREATE_SINGLE_COMPONENT) &&
       !EXCLUDE_LIST.includes(componentSpec.module)
     ) {
+      const regularPropsToOmit = new Set(['boolean', 'Boolean', 'object', 'Object']);
       const webComponentWrapper = await createWebComponentWrapper(
         componentSpec,
         mainDescription,
@@ -693,7 +697,7 @@ allWebComponents
         defaultProps,
         (componentSpec.properties || [])
           .filter(filterNonPublicAttributes)
-          .filter(({ type }) => type !== 'boolean' && type !== 'Boolean')
+          .filter(({ type }) => !regularPropsToOmit.has(type))
           .map(({ name }) => name),
         (componentSpec.properties || [])
           .filter(filterNonPublicAttributes)
