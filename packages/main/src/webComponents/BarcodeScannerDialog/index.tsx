@@ -28,12 +28,6 @@ export interface BarcodeScannerDialogPropTypes extends BarcodeScannerDialogAttri
    * Fires when the scan is completed successfuuly.
    */
   onScanSuccess?: (event: Ui5CustomEvent<HTMLElement, { text: string; rawBytes: Record<string, unknown> }>) => void;
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -47,7 +41,7 @@ export interface BarcodeScannerDialogPropTypes extends BarcodeScannerDialogAttri
  */
 const BarcodeScannerDialog = withWebComponent<BarcodeScannerDialogPropTypes, BarcodeScannerDialogDomRef>(
   'ui5-barcode-scanner-dialog',
-  ['waitForDefine'],
+  [],
   [],
   [],
   ['scan-error', 'scan-success']

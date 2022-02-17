@@ -41,12 +41,6 @@ export interface LabelPropTypes extends LabelAttributes, CommonProps {
    * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
   children?: ReactNode | ReactNode[];
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -58,7 +52,7 @@ export interface LabelPropTypes extends LabelAttributes, CommonProps {
  */
 const Label = withWebComponent<LabelPropTypes, LabelDomRef>(
   'ui5-label',
-  ['for', 'wrappingType', 'waitForDefine'],
+  ['for', 'wrappingType'],
   ['required', 'showColon'],
   [],
   []

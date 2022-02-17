@@ -71,12 +71,6 @@ export interface UploadCollectionPropTypes extends UploadCollectionAttributes, O
    * Fired when selection is changed by user interaction in `SingleSelect` and `MultiSelect` modes.
    */
   onSelectionChange?: (event: Ui5CustomEvent<HTMLElement, { selectedItems: unknown[] }>) => void;
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -86,7 +80,7 @@ export interface UploadCollectionPropTypes extends UploadCollectionAttributes, O
  */
 const UploadCollection = withWebComponent<UploadCollectionPropTypes, UploadCollectionDomRef>(
   'ui5-upload-collection',
-  ['accessibleName', 'mode', 'noDataDescription', 'noDataText', 'waitForDefine'],
+  ['accessibleName', 'mode', 'noDataDescription', 'noDataText'],
   ['hideDragOverlay'],
   ['header'],
   ['drop', 'item-delete', 'selection-change']

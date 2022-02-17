@@ -51,12 +51,6 @@ export interface CardHeaderPropTypes extends CardHeaderAttributes, Omit<CommonPr
    * **Note:** The event would be fired only if the `interactive` property is set to true.
    */
   onClick?: (event: Ui5CustomEvent<HTMLElement>) => void;
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -66,7 +60,7 @@ export interface CardHeaderPropTypes extends CardHeaderAttributes, Omit<CommonPr
  */
 const CardHeader = withWebComponent<CardHeaderPropTypes, CardHeaderDomRef>(
   'ui5-card-header',
-  ['status', 'subtitleText', 'titleText', 'waitForDefine'],
+  ['status', 'subtitleText', 'titleText'],
   ['interactive'],
   ['action', 'avatar'],
   ['click']

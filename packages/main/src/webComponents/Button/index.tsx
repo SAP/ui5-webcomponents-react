@@ -64,12 +64,6 @@ export interface ButtonPropTypes extends ButtonAttributes, Omit<CommonProps, 'on
    * **Note:** The event will not be fired if the `disabled` property is set to `true`.
    */
   onClick?: MouseEventHandler<HTMLElement>;
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -79,7 +73,7 @@ export interface ButtonPropTypes extends ButtonAttributes, Omit<CommonProps, 'on
  */
 const Button = withWebComponent<ButtonPropTypes, ButtonDomRef>(
   'ui5-button',
-  ['accessibleName', 'accessibleNameRef', 'design', 'icon', 'waitForDefine'],
+  ['accessibleName', 'accessibleNameRef', 'design', 'icon'],
   ['disabled', 'iconEnd', 'submits'],
   [],
   ['click']

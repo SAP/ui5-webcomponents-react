@@ -57,12 +57,6 @@ export interface SplitButtonPropTypes extends SplitButtonAttributes, Omit<Common
    * Fired when the user clicks on the default action.
    */
   onClick?: (event: Ui5CustomEvent<HTMLElement>) => void;
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -72,7 +66,7 @@ export interface SplitButtonPropTypes extends SplitButtonAttributes, Omit<Common
  */
 const SplitButton = withWebComponent<SplitButtonPropTypes, SplitButtonDomRef>(
   'ui5-split-button',
-  ['accessibleName', 'activeIcon', 'design', 'icon', 'waitForDefine'],
+  ['accessibleName', 'activeIcon', 'design', 'icon'],
   ['disabled'],
   [],
   ['arrow-click', 'click']

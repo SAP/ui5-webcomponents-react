@@ -127,12 +127,6 @@ export interface ListPropTypes extends ListAttributes, CommonProps {
   onSelectionChange?: (
     event: Ui5CustomEvent<HTMLElement, { selectedItems: unknown[]; previouslySelectedItems: unknown[] }>
   ) => void;
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -164,8 +158,7 @@ const List = withWebComponent<ListPropTypes, ListDomRef>(
     'headerText',
     'mode',
     'noDataText',
-    'separators',
-    'waitForDefine'
+    'separators'
   ],
   ['busy', 'indent'],
   ['header'],

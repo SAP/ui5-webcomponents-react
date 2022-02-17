@@ -28,12 +28,6 @@ export interface BadgePropTypes extends BadgeAttributes, CommonProps {
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
    */
   icon?: ReactNode;
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -41,13 +35,7 @@ export interface BadgePropTypes extends BadgeAttributes, CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Badge" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Badge = withWebComponent<BadgePropTypes, BadgeDomRef>(
-  'ui5-badge',
-  ['colorScheme', 'waitForDefine'],
-  [],
-  ['icon'],
-  []
-);
+const Badge = withWebComponent<BadgePropTypes, BadgeDomRef>('ui5-badge', ['colorScheme'], [], ['icon'], []);
 
 Badge.displayName = 'Badge';
 

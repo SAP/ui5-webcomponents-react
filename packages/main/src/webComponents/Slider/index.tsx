@@ -56,12 +56,6 @@ export interface SliderPropTypes extends SliderAttributes, Omit<CommonProps, 'on
    * Fired when the value changes due to user interaction that is not yet finished - during mouse/touch dragging.
    */
   onInput?: (event: Ui5CustomEvent<HTMLInputElement>) => void;
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -71,7 +65,7 @@ export interface SliderPropTypes extends SliderAttributes, Omit<CommonProps, 'on
  */
 const Slider = withWebComponent<SliderPropTypes, SliderDomRef>(
   'ui5-slider',
-  ['value', 'labelInterval', 'max', 'min', 'step', 'waitForDefine'],
+  ['value', 'labelInterval', 'max', 'min', 'step'],
   ['disabled', 'showTickmarks', 'showTooltip'],
   [],
   ['change', 'input']

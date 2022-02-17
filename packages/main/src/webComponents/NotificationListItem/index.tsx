@@ -89,12 +89,6 @@ export interface NotificationListItemPropTypes extends NotificationListItemAttri
    * Fired when the `Close` button is pressed.
    */
   onClose?: (event: Ui5CustomEvent<HTMLElement>) => void;
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -110,7 +104,7 @@ export interface NotificationListItemPropTypes extends NotificationListItemAttri
  */
 const NotificationListItem = withWebComponent<NotificationListItemPropTypes, NotificationListItemDomRef>(
   'ui5-li-notification',
-  ['wrappingType', 'busyDelay', 'priority', 'titleText', 'waitForDefine'],
+  ['wrappingType', 'busyDelay', 'priority', 'titleText'],
   ['busy', 'read', 'showClose', 'selected'],
   ['avatar', 'footnotes', 'actions'],
   ['close']

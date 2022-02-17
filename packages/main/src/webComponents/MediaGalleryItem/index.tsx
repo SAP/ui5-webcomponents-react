@@ -39,12 +39,6 @@ export interface MediaGalleryItemPropTypes extends MediaGalleryItemAttributes, C
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
    */
   thumbnail?: ReactNode | ReactNode[];
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -56,7 +50,7 @@ export interface MediaGalleryItemPropTypes extends MediaGalleryItemAttributes, C
  */
 const MediaGalleryItem = withWebComponent<MediaGalleryItemPropTypes, MediaGalleryItemDomRef>(
   'ui5-media-gallery-item',
-  ['layout', 'waitForDefine'],
+  ['layout'],
   ['disabled', 'selected'],
   ['thumbnail'],
   []

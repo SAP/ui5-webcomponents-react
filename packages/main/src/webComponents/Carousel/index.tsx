@@ -65,12 +65,6 @@ export interface CarouselPropTypes extends CarouselAttributes, CommonProps {
    * Fired whenever the page changes due to user interaction, when the user clicks on the navigation arrows or while resizing, based on the `items-per-page-l`, `items-per-page-m` and `items-per-page-s` properties.
    */
   onNavigate?: (event: Ui5CustomEvent<HTMLElement, { selectedIndex: number }>) => void;
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -84,7 +78,7 @@ export interface CarouselPropTypes extends CarouselAttributes, CommonProps {
  */
 const Carousel = withWebComponent<CarouselPropTypes, CarouselDomRef>(
   'ui5-carousel',
-  ['arrowsPlacement', 'itemsPerPageL', 'itemsPerPageM', 'itemsPerPageS', 'waitForDefine'],
+  ['arrowsPlacement', 'itemsPerPageL', 'itemsPerPageM', 'itemsPerPageS'],
   ['cyclic', 'hideNavigationArrows', 'hidePageIndicator'],
   [],
   ['navigate']

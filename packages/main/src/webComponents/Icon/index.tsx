@@ -37,14 +37,7 @@ interface IconAttributes {
 
 export interface IconDomRef extends IconAttributes, Ui5DomRef {}
 
-export interface IconPropTypes extends IconAttributes, CommonProps {
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
-}
+export interface IconPropTypes extends IconAttributes, CommonProps {}
 
 /**
  * The `Icon` component represents an SVG icon. There are two main scenarios how the `Icon` component is used: as a purely decorative element; or as a visually appealing clickable area in the form of an icon button.
@@ -59,7 +52,7 @@ export interface IconPropTypes extends IconAttributes, CommonProps {
  */
 const Icon = withWebComponent<IconPropTypes, IconDomRef>(
   'ui5-icon',
-  ['accessibleName', 'accessibleRole', 'name', 'waitForDefine'],
+  ['accessibleName', 'accessibleRole', 'name'],
   ['interactive', 'showTooltip'],
   [],
   []

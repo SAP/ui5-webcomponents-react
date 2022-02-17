@@ -48,12 +48,6 @@ export interface ProductSwitchItemPropTypes extends ProductSwitchItemAttributes,
    * Fired when the `ProductSwitchItem` is activated either with a click/tap or by using the Enter or Space key.
    */
   onClick?: (event: Ui5CustomEvent<HTMLElement>) => void;
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -65,7 +59,7 @@ export interface ProductSwitchItemPropTypes extends ProductSwitchItemAttributes,
  */
 const ProductSwitchItem = withWebComponent<ProductSwitchItemPropTypes, ProductSwitchItemDomRef>(
   'ui5-product-switch-item',
-  ['icon', 'subtitleText', 'target', 'targetSrc', 'titleText', 'waitForDefine'],
+  ['icon', 'subtitleText', 'target', 'targetSrc', 'titleText'],
   [],
   [],
   ['click']

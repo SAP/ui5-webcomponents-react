@@ -99,12 +99,6 @@ export interface ComboBoxPropTypes extends ComboBoxAttributes, Omit<CommonProps,
    * Fired when selection is changed by user interaction
    */
   onSelectionChange?: (event: Ui5CustomEvent<HTMLInputElement, { item: ReactNode }>) => void;
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -114,7 +108,7 @@ export interface ComboBoxPropTypes extends ComboBoxAttributes, Omit<CommonProps,
  */
 const ComboBox = withWebComponent<ComboBoxPropTypes, ComboBoxDomRef>(
   'ui5-combobox',
-  ['accessibleName', 'accessibleNameRef', 'filter', 'placeholder', 'value', 'valueState', 'waitForDefine'],
+  ['accessibleName', 'accessibleNameRef', 'filter', 'placeholder', 'value', 'valueState'],
   ['disabled', 'loading', 'readonly', 'required'],
   ['icon', 'valueStateMessage'],
   ['change', 'input', 'selection-change']

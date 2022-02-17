@@ -171,12 +171,6 @@ export interface MultiInputPropTypes extends MultiInputAttributes, Omit<CommonPr
    * Fired when a suggestion item, that is displayed in the suggestion popup, is selected.
    */
   onSuggestionItemSelect?: (event: Ui5CustomEvent<HTMLInputElement, { item: ReactNode }>) => void;
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -192,17 +186,7 @@ export interface MultiInputPropTypes extends MultiInputAttributes, Omit<CommonPr
  */
 const MultiInput = withWebComponent<MultiInputPropTypes, MultiInputDomRef>(
   'ui5-multi-input',
-  [
-    'accessibleName',
-    'accessibleNameRef',
-    'maxlength',
-    'name',
-    'placeholder',
-    'type',
-    'value',
-    'valueState',
-    'waitForDefine'
-  ],
+  ['accessibleName', 'accessibleNameRef', 'maxlength', 'name', 'placeholder', 'type', 'value', 'valueState'],
   ['showValueHelpIcon', 'disabled', 'readonly', 'required', 'showSuggestions'],
   ['tokens', 'icon', 'valueStateMessage'],
   ['token-delete', 'value-help-trigger', 'change', 'input', 'suggestion-item-preview', 'suggestion-item-select']

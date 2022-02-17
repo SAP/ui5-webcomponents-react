@@ -88,12 +88,6 @@ export interface TreePropTypes extends TreeAttributes, CommonProps {
   onSelectionChange?: (
     event: Ui5CustomEvent<HTMLElement, { selectedItems: unknown[]; previouslySelectedItems: unknown[] }>
   ) => void;
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -103,7 +97,7 @@ export interface TreePropTypes extends TreeAttributes, CommonProps {
  */
 const Tree = withWebComponent<TreePropTypes, TreeDomRef>(
   'ui5-tree',
-  ['footerText', 'headerText', 'mode', 'noDataText', 'waitForDefine'],
+  ['footerText', 'headerText', 'mode', 'noDataText'],
   [],
   ['header'],
   ['item-click', 'item-delete', 'item-mouseout', 'item-mouseover', 'item-toggle', 'selection-change']

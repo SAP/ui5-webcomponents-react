@@ -87,12 +87,6 @@ export interface DynamicSideContentPropTypes extends DynamicSideContentAttribute
       }
     >
   ) => void;
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -102,7 +96,7 @@ export interface DynamicSideContentPropTypes extends DynamicSideContentAttribute
  */
 const DynamicSideContent = withWebComponent<DynamicSideContentPropTypes, DynamicSideContentDomRef>(
   'ui5-dynamic-side-content',
-  ['sideContentFallDown', 'sideContentPosition', 'sideContentVisibility', 'waitForDefine'],
+  ['sideContentFallDown', 'sideContentPosition', 'sideContentVisibility'],
   ['equalSplit', 'hideMainContent', 'hideSideContent'],
   ['sideContent'],
   ['layout-change']

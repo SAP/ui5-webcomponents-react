@@ -139,12 +139,6 @@ export interface ResponsivePopoverPropTypes extends ResponsivePopoverAttributes,
    * Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. **This event does not bubble.**
    */
   onBeforeOpen?: (event: Ui5CustomEvent<HTMLElement>) => void;
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -161,8 +155,7 @@ const ResponsivePopover = withWebComponent<ResponsivePopoverPropTypes, Responsiv
     'verticalAlign',
     'accessibleName',
     'accessibleNameRef',
-    'initialFocus',
-    'waitForDefine'
+    'initialFocus'
   ],
   ['allowTargetOverlap', 'hideArrow', 'hideBackdrop', 'modal', 'preventFocusRestore'],
   ['footer', 'header'],

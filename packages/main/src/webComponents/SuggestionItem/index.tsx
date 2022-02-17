@@ -51,14 +51,7 @@ interface SuggestionItemAttributes {
 
 export interface SuggestionItemDomRef extends SuggestionItemAttributes, Ui5DomRef {}
 
-export interface SuggestionItemPropTypes extends SuggestionItemAttributes, CommonProps {
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
-}
+export interface SuggestionItemPropTypes extends SuggestionItemAttributes, CommonProps {}
 
 /**
  * The `SuggestionItem` represents the suggestion item of the `Input`
@@ -67,7 +60,7 @@ export interface SuggestionItemPropTypes extends SuggestionItemAttributes, Commo
  */
 const SuggestionItem = withWebComponent<SuggestionItemPropTypes, SuggestionItemDomRef>(
   'ui5-suggestion-item',
-  ['additionalText', 'additionalTextState', 'description', 'icon', 'image', 'text', 'type', 'waitForDefine'],
+  ['additionalText', 'additionalTextState', 'description', 'icon', 'image', 'text', 'type'],
   ['iconEnd'],
   [],
   []

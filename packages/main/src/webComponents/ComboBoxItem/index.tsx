@@ -16,14 +16,7 @@ interface ComboBoxItemAttributes {
 
 export interface ComboBoxItemDomRef extends ComboBoxItemAttributes, Ui5DomRef {}
 
-export interface ComboBoxItemPropTypes extends ComboBoxItemAttributes, CommonProps {
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
-}
+export interface ComboBoxItemPropTypes extends ComboBoxItemAttributes, CommonProps {}
 
 /**
  * The `ComboBoxItem` represents the item for a `ComboBox`
@@ -32,7 +25,7 @@ export interface ComboBoxItemPropTypes extends ComboBoxItemAttributes, CommonPro
  */
 const ComboBoxItem = withWebComponent<ComboBoxItemPropTypes, ComboBoxItemDomRef>(
   'ui5-cb-item',
-  ['additionalText', 'text', 'waitForDefine'],
+  ['additionalText', 'text'],
   [],
   [],
   []

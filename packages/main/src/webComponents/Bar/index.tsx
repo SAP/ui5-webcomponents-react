@@ -40,12 +40,6 @@ export interface BarPropTypes extends BarAttributes, CommonProps {
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
    */
   startContent?: ReactNode | ReactNode[];
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -53,13 +47,7 @@ export interface BarPropTypes extends BarAttributes, CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Bar" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Bar = withWebComponent<BarPropTypes, BarDomRef>(
-  'ui5-bar',
-  ['design', 'waitForDefine'],
-  [],
-  ['endContent', 'startContent'],
-  []
-);
+const Bar = withWebComponent<BarPropTypes, BarDomRef>('ui5-bar', ['design'], [], ['endContent', 'startContent'], []);
 
 Bar.displayName = 'Bar';
 

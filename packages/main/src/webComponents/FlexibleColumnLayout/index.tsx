@@ -121,12 +121,6 @@ export interface FlexibleColumnLayoutPropTypes extends FlexibleColumnLayoutAttri
       }
     >
   ) => void;
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -136,7 +130,7 @@ export interface FlexibleColumnLayoutPropTypes extends FlexibleColumnLayoutAttri
  */
 const FlexibleColumnLayout = withWebComponent<FlexibleColumnLayoutPropTypes, FlexibleColumnLayoutDomRef>(
   'ui5-flexible-column-layout',
-  ['accessibilityRoles', 'accessibilityTexts', 'layout', 'waitForDefine'],
+  ['layout'],
   ['hideArrows'],
   ['endColumn', 'midColumn', 'startColumn'],
   ['layout-change']

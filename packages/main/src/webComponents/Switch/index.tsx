@@ -49,12 +49,6 @@ export interface SwitchPropTypes extends SwitchAttributes, Omit<CommonProps, 'on
    * Fired when the component checked state changes.
    */
   onChange?: (event: Ui5CustomEvent<HTMLInputElement>) => void;
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -67,7 +61,7 @@ export interface SwitchPropTypes extends SwitchAttributes, Omit<CommonProps, 'on
  */
 const Switch = withWebComponent<SwitchPropTypes, SwitchDomRef>(
   'ui5-switch',
-  ['accessibleNameRef', 'design', 'textOff', 'textOn', 'waitForDefine'],
+  ['accessibleNameRef', 'design', 'textOff', 'textOn'],
   ['checked', 'disabled'],
   [],
   ['change']

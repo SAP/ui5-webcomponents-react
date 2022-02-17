@@ -152,12 +152,6 @@ export interface InputPropTypes extends InputAttributes, Omit<CommonProps, 'onCh
    * Fired when a suggestion item, that is displayed in the suggestion popup, is selected.
    */
   onSuggestionItemSelect?: (event: Ui5CustomEvent<HTMLInputElement, { item: ReactNode }>) => void;
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -172,17 +166,7 @@ export interface InputPropTypes extends InputAttributes, Omit<CommonProps, 'onCh
  */
 const Input = withWebComponent<InputPropTypes, InputDomRef>(
   'ui5-input',
-  [
-    'accessibleName',
-    'accessibleNameRef',
-    'maxlength',
-    'name',
-    'placeholder',
-    'type',
-    'value',
-    'valueState',
-    'waitForDefine'
-  ],
+  ['accessibleName', 'accessibleNameRef', 'maxlength', 'name', 'placeholder', 'type', 'value', 'valueState'],
   ['disabled', 'readonly', 'required', 'showSuggestions'],
   ['icon', 'valueStateMessage'],
   ['change', 'input', 'suggestion-item-preview', 'suggestion-item-select']

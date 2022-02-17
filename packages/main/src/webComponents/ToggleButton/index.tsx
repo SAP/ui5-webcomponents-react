@@ -68,12 +68,6 @@ export interface ToggleButtonPropTypes extends ToggleButtonAttributes, Omit<Comm
    * **Note:** The event will not be fired if the `disabled` property is set to `true`.
    */
   onClick?: MouseEventHandler<HTMLElement>;
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -85,7 +79,7 @@ export interface ToggleButtonPropTypes extends ToggleButtonAttributes, Omit<Comm
  */
 const ToggleButton = withWebComponent<ToggleButtonPropTypes, ToggleButtonDomRef>(
   'ui5-toggle-button',
-  ['accessibleName', 'accessibleNameRef', 'design', 'icon', 'waitForDefine'],
+  ['accessibleName', 'accessibleNameRef', 'design', 'icon'],
   ['pressed', 'disabled', 'iconEnd', 'submits'],
   [],
   ['click']

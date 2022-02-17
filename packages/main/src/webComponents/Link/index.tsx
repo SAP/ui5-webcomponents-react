@@ -78,12 +78,6 @@ export interface LinkPropTypes extends LinkAttributes, Omit<CommonProps, 'onClic
    * Fired when the component is triggered either with a mouse/tap or by using the Enter key.
    */
   onClick?: MouseEventHandler<HTMLElement>;
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -93,7 +87,7 @@ export interface LinkPropTypes extends LinkAttributes, Omit<CommonProps, 'onClic
  */
 const Link = withWebComponent<LinkPropTypes, LinkDomRef>(
   'ui5-link',
-  ['accessibilityAttributes', 'accessibleNameRef', 'design', 'href', 'target', 'wrappingType', 'waitForDefine'],
+  ['accessibleNameRef', 'design', 'href', 'target', 'wrappingType'],
   ['disabled'],
   [],
   ['click']

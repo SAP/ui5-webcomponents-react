@@ -28,12 +28,6 @@ export interface TitlePropTypes extends TitleAttributes, CommonProps {
    * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
   children?: ReactNode | ReactNode[];
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -41,13 +35,7 @@ export interface TitlePropTypes extends TitleAttributes, CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Title" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Title = withWebComponent<TitlePropTypes, TitleDomRef>(
-  'ui5-title',
-  ['level', 'wrappingType', 'waitForDefine'],
-  [],
-  [],
-  []
-);
+const Title = withWebComponent<TitlePropTypes, TitleDomRef>('ui5-title', ['level', 'wrappingType'], [], [], []);
 
 Title.displayName = 'Title';
 

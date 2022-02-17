@@ -16,14 +16,7 @@ interface FilterItemOptionAttributes {
 
 export interface FilterItemOptionDomRef extends FilterItemOptionAttributes, Ui5DomRef {}
 
-export interface FilterItemOptionPropTypes extends FilterItemOptionAttributes, CommonProps {
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
-}
+export interface FilterItemOptionPropTypes extends FilterItemOptionAttributes, CommonProps {}
 
 /**
  *
@@ -32,7 +25,7 @@ export interface FilterItemOptionPropTypes extends FilterItemOptionAttributes, C
  */
 const FilterItemOption = withWebComponent<FilterItemOptionPropTypes, FilterItemOptionDomRef>(
   'ui5-filter-item-option',
-  ['text', 'waitForDefine'],
+  ['text'],
   ['selected'],
   [],
   []

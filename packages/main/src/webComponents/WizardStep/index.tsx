@@ -52,12 +52,6 @@ export interface WizardStepPropTypes extends WizardStepAttributes, CommonProps {
    * Defines the step content.
    */
   children?: ReactNode | ReactNode[];
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -67,7 +61,7 @@ export interface WizardStepPropTypes extends WizardStepAttributes, CommonProps {
  */
 const WizardStep = withWebComponent<WizardStepPropTypes, WizardStepDomRef>(
   'ui5-wizard-step',
-  ['icon', 'subtitleText', 'titleText', 'waitForDefine'],
+  ['icon', 'subtitleText', 'titleText'],
   ['branching', 'disabled', 'selected'],
   [],
   []

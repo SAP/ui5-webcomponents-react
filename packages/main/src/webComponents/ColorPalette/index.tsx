@@ -18,12 +18,6 @@ export interface ColorPalettePropTypes extends ColorPaletteAttributes, CommonPro
    * Fired when the user selects a color.
    */
   onItemClick?: (event: Ui5CustomEvent<HTMLElement, { color: string }>) => void;
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -33,7 +27,7 @@ export interface ColorPalettePropTypes extends ColorPaletteAttributes, CommonPro
  */
 const ColorPalette = withWebComponent<ColorPalettePropTypes, ColorPaletteDomRef>(
   'ui5-color-palette',
-  ['waitForDefine'],
+  [],
   [],
   [],
   ['item-click']

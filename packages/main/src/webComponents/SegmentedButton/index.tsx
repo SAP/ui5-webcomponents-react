@@ -32,12 +32,6 @@ export interface SegmentedButtonPropTypes extends SegmentedButtonAttributes, Com
    * Fired when the selected item changes.
    */
   onSelectionChange?: (event: Ui5CustomEvent<HTMLButtonElement, { selectedItem: ReactNode }>) => void;
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -49,7 +43,7 @@ export interface SegmentedButtonPropTypes extends SegmentedButtonAttributes, Com
  */
 const SegmentedButton = withWebComponent<SegmentedButtonPropTypes, SegmentedButtonDomRef>(
   'ui5-segmented-button',
-  ['accessibleName', 'waitForDefine'],
+  ['accessibleName'],
   [],
   [],
   ['selection-change']

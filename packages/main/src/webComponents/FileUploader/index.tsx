@@ -83,12 +83,6 @@ export interface FileUploaderPropTypes extends FileUploaderAttributes, Omit<Comm
    * Event is fired when the value of the file path has been changed. **Note:** Keep in mind that because of the HTML input element of type file, the event is also fired in Chrome browser when the Cancel button of the uploads window is pressed.
    */
   onChange?: (event: Ui5CustomEvent<HTMLElement, { files: FileList }>) => void;
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -100,7 +94,7 @@ export interface FileUploaderPropTypes extends FileUploaderAttributes, Omit<Comm
  */
 const FileUploader = withWebComponent<FileUploaderPropTypes, FileUploaderDomRef>(
   'ui5-file-uploader',
-  ['accept', 'name', 'placeholder', 'value', 'valueState', 'waitForDefine'],
+  ['accept', 'name', 'placeholder', 'value', 'valueState'],
   ['disabled', 'hideInput', 'multiple'],
   ['valueStateMessage'],
   ['change']

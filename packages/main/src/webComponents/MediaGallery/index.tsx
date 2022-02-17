@@ -70,12 +70,6 @@ export interface MediaGalleryPropTypes extends MediaGalleryAttributes, CommonPro
    * Fired when selection is changed by user interaction.
    */
   onSelectionChange?: (event: Ui5CustomEvent<HTMLElement, { item: ReactNode }>) => void;
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -86,7 +80,7 @@ export interface MediaGalleryPropTypes extends MediaGalleryAttributes, CommonPro
  */
 const MediaGallery = withWebComponent<MediaGalleryPropTypes, MediaGalleryDomRef>(
   'ui5-media-gallery',
-  ['layout', 'menuHorizontalAlign', 'menuVerticalAlign', 'waitForDefine'],
+  ['layout', 'menuHorizontalAlign', 'menuVerticalAlign'],
   ['interactiveDisplayArea', 'showAllThumbnails'],
   [],
   ['display-area-click', 'overflow-click', 'selection-change']

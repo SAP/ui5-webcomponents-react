@@ -12,14 +12,7 @@ interface SuggestionGroupItemAttributes {
 
 export interface SuggestionGroupItemDomRef extends SuggestionGroupItemAttributes, Ui5DomRef {}
 
-export interface SuggestionGroupItemPropTypes extends SuggestionGroupItemAttributes, CommonProps {
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
-}
+export interface SuggestionGroupItemPropTypes extends SuggestionGroupItemAttributes, CommonProps {}
 
 /**
  * The `SuggestionGroupItem` is type of suggestion item, that can be used to split the `Input` suggestions into groups
@@ -28,7 +21,7 @@ export interface SuggestionGroupItemPropTypes extends SuggestionGroupItemAttribu
  */
 const SuggestionGroupItem = withWebComponent<SuggestionGroupItemPropTypes, SuggestionGroupItemDomRef>(
   'ui5-suggestion-group-item',
-  ['text', 'waitForDefine'],
+  ['text'],
   [],
   [],
   []

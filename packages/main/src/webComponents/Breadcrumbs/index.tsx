@@ -41,12 +41,6 @@ export interface BreadcrumbsPropTypes extends BreadcrumbsAttributes, CommonProps
    * Fires when a `BreadcrumbsItem` is clicked.
    */
   onItemClick?: (event: Ui5CustomEvent<HTMLElement, { item: ReactNode }>) => void;
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -60,7 +54,7 @@ export interface BreadcrumbsPropTypes extends BreadcrumbsAttributes, CommonProps
  */
 const Breadcrumbs = withWebComponent<BreadcrumbsPropTypes, BreadcrumbsDomRef>(
   'ui5-breadcrumbs',
-  ['design', 'separatorStyle', 'waitForDefine'],
+  ['design', 'separatorStyle'],
   [],
   [],
   ['item-click']

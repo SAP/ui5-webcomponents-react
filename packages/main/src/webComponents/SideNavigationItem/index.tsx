@@ -37,12 +37,6 @@ export interface SideNavigationItemPropTypes extends SideNavigationItemAttribute
    * If you wish to nest menus, you can pass inner menu items to the default slot.
    */
   children?: ReactNode | ReactNode[];
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -52,7 +46,7 @@ export interface SideNavigationItemPropTypes extends SideNavigationItemAttribute
  */
 const SideNavigationItem = withWebComponent<SideNavigationItemPropTypes, SideNavigationItemDomRef>(
   'ui5-side-navigation-item',
-  ['icon', 'text', 'waitForDefine'],
+  ['icon', 'text'],
   ['expanded', 'selected', 'wholeItemToggleable'],
   [],
   []

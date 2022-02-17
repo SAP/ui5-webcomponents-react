@@ -39,12 +39,6 @@ export interface SideNavigationPropTypes extends SideNavigationAttributes, Commo
    * Fired when the selection has changed via user interaction
    */
   onSelectionChange?: (event: Ui5CustomEvent<HTMLElement, { item: ReactNode }>) => void;
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -58,7 +52,7 @@ export interface SideNavigationPropTypes extends SideNavigationAttributes, Commo
  */
 const SideNavigation = withWebComponent<SideNavigationPropTypes, SideNavigationDomRef>(
   'ui5-side-navigation',
-  ['waitForDefine'],
+  [],
   ['collapsed'],
   ['fixedItems', 'header'],
   ['selection-change']

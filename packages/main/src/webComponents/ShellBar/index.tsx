@@ -141,12 +141,6 @@ export interface ShellBarPropTypes extends ShellBarAttributes, CommonProps {
    * Fired, when the profile slot is present.
    */
   onProfileClick?: (event: Ui5CustomEvent<HTMLElement, { targetRef: ReactNode }>) => void;
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -156,7 +150,7 @@ export interface ShellBarPropTypes extends ShellBarAttributes, CommonProps {
  */
 const ShellBar = withWebComponent<ShellBarPropTypes, ShellBarDomRef>(
   'ui5-shellbar',
-  ['accessibilityTexts', 'notificationsCount', 'primaryTitle', 'secondaryTitle', 'waitForDefine'],
+  ['notificationsCount', 'primaryTitle', 'secondaryTitle'],
   ['showCoPilot', 'showNotifications', 'showProductSwitch'],
   ['logo', 'menuItems', 'profile', 'searchField', 'startButton'],
   ['co-pilot-click', 'logo-click', 'menu-item-click', 'notifications-click', 'product-switch-click', 'profile-click']

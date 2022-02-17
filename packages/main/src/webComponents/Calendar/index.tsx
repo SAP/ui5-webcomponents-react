@@ -54,12 +54,6 @@ export interface CalendarPropTypes extends CalendarAttributes, CommonProps {
    * Fired when the selected dates change. **Note:** If you call `preventDefault()` for this event, the component will not create instances of `CalendarDate` for the newly selected dates. In that case you should do this manually.
    */
   onSelectedDatesChange?: (event: Ui5CustomEvent<HTMLElement, { values: unknown[]; dates: unknown[] }>) => void;
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -71,15 +65,7 @@ export interface CalendarPropTypes extends CalendarAttributes, CommonProps {
  */
 const Calendar = withWebComponent<CalendarPropTypes, CalendarDomRef>(
   'ui5-calendar',
-  [
-    'selectionMode',
-    'formatPattern',
-    'maxDate',
-    'minDate',
-    'primaryCalendarType',
-    'secondaryCalendarType',
-    'waitForDefine'
-  ],
+  ['selectionMode', 'formatPattern', 'maxDate', 'minDate', 'primaryCalendarType', 'secondaryCalendarType'],
   ['hideWeekNumbers'],
   [],
   ['selected-dates-change']

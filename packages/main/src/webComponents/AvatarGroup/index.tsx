@@ -53,12 +53,6 @@ export interface AvatarGroupPropTypes extends AvatarGroupAttributes, Omit<Common
    * Fired when the count of visible `Avatar` elements in the component has changed
    */
   onOverflow?: (event: Ui5CustomEvent<HTMLElement>) => void;
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -71,7 +65,7 @@ export interface AvatarGroupPropTypes extends AvatarGroupAttributes, Omit<Common
  */
 const AvatarGroup = withWebComponent<AvatarGroupPropTypes, AvatarGroupDomRef>(
   'ui5-avatar-group',
-  ['type', 'waitForDefine'],
+  ['type'],
   [],
   ['overflowButton'],
   ['click', 'overflow']

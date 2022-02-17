@@ -34,12 +34,6 @@ export interface TableRowPropTypes extends TableRowAttributes, CommonProps {
    * **Note:** Use `TableCell` for the intended design.
    */
   children?: ReactNode | ReactNode[];
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -47,13 +41,7 @@ export interface TableRowPropTypes extends TableRowAttributes, CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/TableRow" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const TableRow = withWebComponent<TableRowPropTypes, TableRowDomRef>(
-  'ui5-table-row',
-  ['type', 'waitForDefine'],
-  ['selected'],
-  [],
-  []
-);
+const TableRow = withWebComponent<TableRowPropTypes, TableRowDomRef>('ui5-table-row', ['type'], ['selected'], [], []);
 
 TableRow.displayName = 'TableRow';
 

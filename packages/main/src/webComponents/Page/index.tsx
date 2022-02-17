@@ -55,12 +55,6 @@ export interface PagePropTypes extends PageAttributes, CommonProps {
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
    */
   header?: ReactNode | ReactNode[];
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -70,7 +64,7 @@ export interface PagePropTypes extends PageAttributes, CommonProps {
  */
 const Page = withWebComponent<PagePropTypes, PageDomRef>(
   'ui5-page',
-  ['backgroundDesign', 'waitForDefine'],
+  ['backgroundDesign'],
   ['disableScrolling', 'floatingFooter', 'hideFooter'],
   ['footer', 'header'],
   []

@@ -67,12 +67,6 @@ export interface StandardListItemPropTypes extends StandardListItemAttributes, C
    * Fired when the user clicks on the detail button when type is `Detail`.
    */
   onDetailClick?: (event: Ui5CustomEvent<HTMLLIElement>) => void;
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -82,7 +76,7 @@ export interface StandardListItemPropTypes extends StandardListItemAttributes, C
  */
 const StandardListItem = withWebComponent<StandardListItemPropTypes, StandardListItemDomRef>(
   'ui5-li',
-  ['accessibleName', 'additionalText', 'additionalTextState', 'description', 'icon', 'image', 'type', 'waitForDefine'],
+  ['accessibleName', 'additionalText', 'additionalTextState', 'description', 'icon', 'image', 'type'],
   ['iconEnd', 'selected'],
   [],
   ['detail-click']

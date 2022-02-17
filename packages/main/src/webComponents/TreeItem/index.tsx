@@ -64,12 +64,6 @@ export interface TreeItemPropTypes extends TreeItemAttributes, CommonProps {
    * Defines the items of this component.
    */
   children?: ReactNode | ReactNode[];
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -79,7 +73,7 @@ export interface TreeItemPropTypes extends TreeItemAttributes, CommonProps {
  */
 const TreeItem = withWebComponent<TreeItemPropTypes, TreeItemDomRef>(
   'ui5-tree-item',
-  ['additionalText', 'additionalTextState', 'icon', 'text', 'waitForDefine'],
+  ['additionalText', 'additionalTextState', 'icon', 'text'],
   ['expanded', 'hasChildren', 'indeterminate', 'selected'],
   [],
   []

@@ -37,12 +37,6 @@ export interface BusyIndicatorPropTypes extends BusyIndicatorAttributes, CommonP
    * Determines the content over which the component will appear.
    */
   children?: ReactNode | ReactNode[];
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -52,7 +46,7 @@ export interface BusyIndicatorPropTypes extends BusyIndicatorAttributes, CommonP
  */
 const BusyIndicator = withWebComponent<BusyIndicatorPropTypes, BusyIndicatorDomRef>(
   'ui5-busy-indicator',
-  ['delay', 'size', 'text', 'waitForDefine'],
+  ['delay', 'size', 'text'],
   ['active'],
   [],
   []

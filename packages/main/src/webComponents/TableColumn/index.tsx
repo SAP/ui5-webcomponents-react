@@ -31,12 +31,6 @@ export interface TableColumnPropTypes extends TableColumnAttributes, CommonProps
    * Defines the content of the column header.
    */
   children?: ReactNode | ReactNode[];
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -46,7 +40,7 @@ export interface TableColumnPropTypes extends TableColumnAttributes, CommonProps
  */
 const TableColumn = withWebComponent<TableColumnPropTypes, TableColumnDomRef>(
   'ui5-table-column',
-  ['minWidth', 'popinText', 'waitForDefine'],
+  ['minWidth', 'popinText'],
   ['demandPopin'],
   [],
   []

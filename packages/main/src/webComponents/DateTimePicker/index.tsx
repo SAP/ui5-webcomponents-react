@@ -141,12 +141,6 @@ export interface DateTimePickerPropTypes extends DateTimePickerAttributes, Omit<
    * Fired when the value of the component is changed at each key stroke.
    */
   onInput?: (event: Ui5CustomEvent<HTMLInputElement, { value: string; valid: boolean }>) => void;
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -167,8 +161,7 @@ const DateTimePicker = withWebComponent<DateTimePickerPropTypes, DateTimePickerD
     'maxDate',
     'minDate',
     'primaryCalendarType',
-    'secondaryCalendarType',
-    'waitForDefine'
+    'secondaryCalendarType'
   ],
   ['disabled', 'hideWeekNumbers', 'readonly', 'required'],
   ['valueStateMessage'],

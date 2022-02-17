@@ -13,12 +13,6 @@ export interface ProductSwitchPropTypes extends ProductSwitchAttributes, CommonP
    * Defines the items of the `ProductSwitch`.
    */
   children?: ReactNode | ReactNode[];
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -28,7 +22,7 @@ export interface ProductSwitchPropTypes extends ProductSwitchAttributes, CommonP
  */
 const ProductSwitch = withWebComponent<ProductSwitchPropTypes, ProductSwitchDomRef>(
   'ui5-product-switch',
-  ['waitForDefine'],
+  [],
   [],
   [],
   []
