@@ -19,6 +19,7 @@ import { ToolbarStyle } from '../../enums/ToolbarStyle';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { stopPropagation } from '../../internal/stopPropagation';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
+import { PopoverDomRef } from '../../webComponents';
 import { FlexBox } from '../FlexBox';
 import { Toolbar } from '../Toolbar';
 import { ToolbarSeparator } from '../ToolbarSeparator';
@@ -28,6 +29,8 @@ import { DynamicPageTitleStyles } from './DynamicPageTitle.jss';
 export interface DynamicPageTitlePropTypes extends CommonProps {
   /**
    * The `DynamicPageTitle` actions.
+   *
+   * __Note:__ When clicking on an action in the overflow popover it closes the popover. You can use `event.preventDefault` to prevent this.
    */
   actions?: ReactElement | ReactElement[];
 
@@ -60,6 +63,7 @@ export interface DynamicPageTitlePropTypes extends CommonProps {
    * Otherwise, they are rendered in the top-right area, above the actions.
    * If a large number of elements(buttons) are used, there could be visual degradations as the space for the `navigationActions` is limited.
    *
+   * __Note:__ When clicking on an action in the overflow popover it closes the popover. You can use `event.preventDefault` to prevent this.
    */
   navigationActions?: ReactElement | ReactElement[];
   /**
@@ -86,8 +90,22 @@ interface InternalProps extends DynamicPageTitlePropTypes {
 
 const useStyles = createUseStyles(DynamicPageTitleStyles, { name: 'DynamicPageTitle' });
 
+const enhanceActionsWithClick = (actions, ref) =>
+  React.Children.map(actions, (action) =>
+    React.cloneElement(action, {
+      onClick: (e) => {
+        if (typeof action.props?.onClick === 'function') {
+          action.props.onClick(e);
+        }
+        if (ref.current?.isOpen() && !e.defaultPrevented) {
+          ref.current.close();
+        }
+      }
+    })
+  );
+
 /**
- * The dynamic page title defines the elements in the top header.
+ * The `DynamicPageTitle` component is part of the `DynamicPage` family and is used to serve as title of the `DynamicPage` and `ObjectPage`.
  * It can contain Breadcrumbs, Title, Subtitle, Content, KPIs and Actions.
  */
 const DynamicPageTitle = forwardRef((props: DynamicPageTitlePropTypes, ref: Ref<HTMLDivElement>) => {
@@ -114,6 +132,9 @@ const DynamicPageTitle = forwardRef((props: DynamicPageTitlePropTypes, ref: Ref<
   const [showNavigationInTopArea, setShowNavigationInTopArea] = useState(undefined);
   const isRtl = useIsRTL(dynamicPageTitleRef);
   const isMounted = useRef(false);
+
+  const actionsOverflowPopoverRef = useRef<PopoverDomRef>(null);
+  const navActionsOverflowPopoverRef = useRef<PopoverDomRef>(null);
 
   useEffect(() => {
     isMounted.current = true;
@@ -198,9 +219,10 @@ const DynamicPageTitle = forwardRef((props: DynamicPageTitlePropTypes, ref: Ref<
               onClick={stopPropagation}
               data-component-name="DynamicPageTitleNavActions"
               onOverflowChange={handleToolbarsOverflowChange}
+              overflowPopoverRef={navActionsOverflowPopoverRef}
             >
               <ActionsSpacer onClick={onHeaderClick} noHover={props?.['data-not-clickable']} />
-              {navigationActions}
+              {enhanceActionsWithClick(navigationActions, navActionsOverflowPopoverRef)}
             </Toolbar>
           )}
         </FlexBox>
@@ -240,13 +262,14 @@ const DynamicPageTitle = forwardRef((props: DynamicPageTitlePropTypes, ref: Ref<
             onClick={stopPropagation}
             data-component-name="DynamicPageTitleActions"
             onOverflowChange={handleToolbarsOverflowChange}
+            overflowPopoverRef={actionsOverflowPopoverRef}
           >
             <ActionsSpacer onClick={onHeaderClick} noHover={props?.['data-not-clickable']} />
-            {actions}
+            {enhanceActionsWithClick(actions, actionsOverflowPopoverRef)}
             {!showNavigationInTopArea && Children.count(actions) > 0 && Children.count(navigationActions) > 0 && (
               <ToolbarSeparator />
             )}
-            {!showNavigationInTopArea && navigationActions}
+            {!showNavigationInTopArea && enhanceActionsWithClick(navigationActions, actionsOverflowPopoverRef)}
           </Toolbar>
         )}
       </FlexBox>
