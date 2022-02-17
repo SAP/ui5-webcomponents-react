@@ -23,6 +23,15 @@ const createEventPropName = (eventName) => `on${capitalizeFirstLetter(kebabToCam
 
 type EventHandler = (event: CustomEvent<unknown>) => void;
 
+export interface WithWebComponentPropTypes {
+  /**
+   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
+   *
+   * __Note:__ This adds a rendering cycle to your component.
+   */
+  waitForDefine?: boolean;
+}
+
 export const withWebComponent = <Props extends Record<string, any>, RefType = Ui5DomRef>(
   tagName: string,
   regularProperties: string[],
@@ -30,7 +39,7 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
   slotProperties: string[],
   eventProperties: string[]
 ) => {
-  const WithWebComponent = forwardRef((props: Props, wcRef: Ref<RefType>) => {
+  const WithWebComponent = forwardRef((props: Props & WithWebComponentPropTypes, wcRef: Ref<RefType>) => {
     const { className, tooltip, children, waitForDefine, ...rest } = props;
     //@ts-ignore
     const [componentRef, ref] = useSyncRef<HTMLElement>(wcRef);

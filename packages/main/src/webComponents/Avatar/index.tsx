@@ -83,12 +83,6 @@ export interface AvatarPropTypes extends AvatarAttributes, CommonProps {
    * `Avatar:not(:defined) {  visibility: hidden;   }   `
    */
   children?: ReactNode;
-  /**
-   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
-   *
-   * __Note:__ This adds a rendering cycle to your component.
-   */
-  waitForDefine?: boolean;
 }
 
 /**
@@ -98,7 +92,7 @@ export interface AvatarPropTypes extends AvatarAttributes, CommonProps {
  */
 const Avatar = withWebComponent<AvatarPropTypes, AvatarDomRef>(
   'ui5-avatar',
-  ['accessibleName', 'colorScheme', 'icon', 'initials', 'shape', 'size', 'waitForDefine'],
+  ['accessibleName', 'colorScheme', 'icon', 'initials', 'shape', 'size'],
   ['interactive'],
   [],
   []
