@@ -102,7 +102,7 @@ export interface PopoverDomRef extends PopoverAttributes, Ui5DomRef {
    * Tells if the component is opened
    *
    */
-  isOpen: () => void;
+  isOpen: () => boolean;
 }
 
 export interface PopoverPropTypes extends PopoverAttributes, CommonProps {

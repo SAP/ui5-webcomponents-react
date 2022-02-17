@@ -6,6 +6,7 @@ import { PopoverPlacementType } from '../../enums/PopoverPlacementType';
 import { stopPropagation } from '../../internal/stopPropagation';
 import { Popover, PopoverDomRef } from '../../webComponents/Popover';
 import { ToggleButton } from '../../webComponents/ToggleButton';
+import { useSyncRef } from '@ui5/webcomponents-react-base';
 
 interface OverflowPopoverProps {
   lastVisibleIndex: number;
@@ -15,6 +16,7 @@ interface OverflowPopoverProps {
   overflowContentRef: Ref<HTMLDivElement>;
   numberOfAlwaysVisibleItems?: number;
   showMoreText: string;
+  overflowPopoverRef?: Ref<PopoverDomRef>;
 }
 
 export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopoverProps) => {
@@ -25,9 +27,11 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
     portalContainer,
     overflowContentRef,
     numberOfAlwaysVisibleItems,
-    showMoreText
+    showMoreText,
+    overflowPopoverRef
   } = props;
-  const popoverRef = useRef<PopoverDomRef>();
+
+  const [componentRef, popoverRef] = useSyncRef<PopoverDomRef>(overflowPopoverRef);
   const [pressed, setPressed] = useState(false);
 
   const handleToggleButtonClick = useCallback(
@@ -91,7 +95,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
         accessibleName={showMoreText}
       />
       {createPortal(
-        <Popover placementType={PopoverPlacementType.Bottom} ref={popoverRef} onAfterClose={handleClose} hideArrow>
+        <Popover placementType={PopoverPlacementType.Bottom} ref={componentRef} onAfterClose={handleClose} hideArrow>
           <div className={contentClass} ref={overflowContentRef}>
             {renderChildren()}
           </div>

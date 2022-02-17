@@ -70,7 +70,7 @@ export interface DialogDomRef extends DialogAttributes, Omit<Ui5DomRef, 'draggab
    * Tells if the component is opened
    *
    */
-  isOpen: () => void;
+  isOpen: () => boolean;
 }
 
 export interface DialogPropTypes extends DialogAttributes, Omit<CommonProps, 'draggable'> {

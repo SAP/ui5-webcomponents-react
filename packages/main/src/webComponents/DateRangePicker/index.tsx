@@ -118,7 +118,7 @@ export interface DateRangePickerDomRef extends DateRangePickerAttributes, Ui5Dom
    * Checks if the picker is open.
    *
    */
-  isOpen: () => void;
+  isOpen: () => boolean;
   /**
    * Checks if a value is valid against the current date format of the DatePicker.
    * @param {string} value - A value to be tested against the current date format
