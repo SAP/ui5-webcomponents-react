@@ -31,7 +31,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
     overflowPopoverRef
   } = props;
 
-  const [componentRef, popoverRef] = useSyncRef<HTMLDivElement>(overflowPopoverRef);
+  const [componentRef, popoverRef] = useSyncRef<PopoverDomRef>(overflowPopoverRef);
   const [pressed, setPressed] = useState(false);
 
   const handleToggleButtonClick = useCallback(
