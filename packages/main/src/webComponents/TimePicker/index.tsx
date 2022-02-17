@@ -63,7 +63,7 @@ export interface TimePickerDomRef extends TimePickerAttributes, Ui5DomRef {
    * Checks if the picker is open
    *
    */
-  isOpen: () => void;
+  isOpen: () => boolean;
   /**
    * Checks if a value is valid against the current `formatPattern` value.
    *

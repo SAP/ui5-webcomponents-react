@@ -91,7 +91,7 @@ export interface ResponsivePopoverDomRef extends ResponsivePopoverAttributes, Ui
    * Tells if the responsive popover is open
    *
    */
-  isOpen: () => void;
+  isOpen: () => boolean;
   /**
    * Shows popover on desktop and dialog on mobile.
    * @param {HTMLElement | EventTarget} opener - the element that the popover is shown at

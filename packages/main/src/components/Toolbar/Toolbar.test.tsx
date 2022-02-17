@@ -1,7 +1,16 @@
-import { fireEvent, render, screen } from '@shared/tests';
+import { fireEvent, render, renderWithDefine, screen } from '@shared/tests';
 import { createChangeTagNameTest } from '@shared/tests/utils';
-import React from 'react';
-import { Text, ToolbarDesign, ToolbarSeparator, ToolbarSpacer, ToolbarStyle } from '../..';
+import React, { createRef } from 'react';
+import {
+  Button,
+  Input,
+  PopoverDomRef,
+  Text,
+  ToolbarDesign,
+  ToolbarSeparator,
+  ToolbarSpacer,
+  ToolbarStyle
+} from '../..';
 import { Toolbar } from './index';
 
 describe('Toolbar', () => {
@@ -320,6 +329,44 @@ describe('Toolbar', () => {
     expect(getAllByText('Item1')[0]).not.toHaveStyle(`visibility: hidden`);
     expect(getAllByText('Item2')[0]).not.toHaveStyle(`visibility: hidden`);
     expect(getAllByText('Item3')[0]).toHaveStyle(`visibility: hidden`);
+  });
+
+  test('close on interaction', async () => {
+    jest.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => cb());
+
+    HTMLElement.prototype.getBoundingClientRect = jest.fn(function () {
+      return {
+        width: parseFloat(getComputedStyle(this).width || 200),
+        height: 10,
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0
+      };
+    });
+    const overflowPopoverRef = createRef<PopoverDomRef>();
+    const handlePopoverClose = () => {
+      console.log('click');
+      if (overflowPopoverRef.current.isOpen()) {
+        overflowPopoverRef.current.close();
+      }
+    };
+    const { getAllByText, getAllByPlaceholderText, getByTitle } = await renderWithDefine(
+      <Toolbar overflowPopoverRef={overflowPopoverRef} style={{ width: '50px' }}>
+        <Button onClick={handlePopoverClose}>Button One</Button>
+        <Input placeholder="Input" onChange={handlePopoverClose} />
+      </Toolbar>,
+      ['ui5-popover']
+    );
+    expect(overflowPopoverRef.current.isOpen()).toBeFalsy();
+    overflowPopoverRef.current.showAt(getByTitle('Show More'));
+    expect(overflowPopoverRef.current.isOpen()).toBeTruthy();
+    fireEvent.click(getAllByText('Button One')[1]);
+    expect(overflowPopoverRef.current.isOpen()).toBeFalsy();
+    fireEvent.click(getByTitle('Show More'));
+    overflowPopoverRef.current.showAt(getByTitle('Show More'));
+    fireEvent.change(getAllByPlaceholderText('Input')[1], { target: { value: ':)' } });
+    expect(overflowPopoverRef.current.isOpen()).toBeFalsy();
   });
 
   createChangeTagNameTest(Toolbar);
