@@ -1,10 +1,9 @@
+import '@ui5/webcomponents-fiori/dist/MediaGalleryItem.js';
 import { ReactNode } from 'react';
 import { MediaGalleryItemLayout } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
-
-import '@ui5/webcomponents-fiori/dist/MediaGalleryItem.js';
 
 interface MediaGalleryItemAttributes {
   /**

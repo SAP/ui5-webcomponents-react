@@ -1,7 +1,7 @@
 import { render } from '@shared/tests';
-import { createCustomPropsTest } from '@shared/tests/utils';
-import { MultiComboBox } from './index';
+import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
 import React from 'react';
+import { MultiComboBox } from './index';
 
 describe('MultiComboBox', () => {
   test('Basic Test (generated)', () => {
@@ -9,4 +9,5 @@ describe('MultiComboBox', () => {
     expect(asFragment()).toMatchSnapshot();
   });
   createCustomPropsTest(MultiComboBox);
+  createWaitForDefineTest(MultiComboBox);
 });

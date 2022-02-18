@@ -1,10 +1,9 @@
+import '@ui5/webcomponents/dist/Title.js';
 import { ReactNode } from 'react';
 import { TitleLevel, WrappingType } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
-
-import '@ui5/webcomponents/dist/Title.js';
 
 interface TitleAttributes {
   /**

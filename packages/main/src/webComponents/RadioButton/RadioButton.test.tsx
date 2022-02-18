@@ -1,7 +1,7 @@
 import { render } from '@shared/tests';
-import { createCustomPropsTest } from '@shared/tests/utils';
-import { RadioButton } from './index';
+import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
 import React from 'react';
+import { RadioButton } from './index';
 
 describe('RadioButton', () => {
   test('Basic Test (generated)', () => {
@@ -9,4 +9,5 @@ describe('RadioButton', () => {
     expect(asFragment()).toMatchSnapshot();
   });
   createCustomPropsTest(RadioButton);
+  createWaitForDefineTest(RadioButton);
 });

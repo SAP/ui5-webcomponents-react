@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { createCustomPropsTest } from '@shared/tests/utils';
+import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
 import { Button } from '../Button';
 import { CustomListItem } from '../CustomListItem';
 import { List } from './index';
@@ -19,4 +19,5 @@ describe('List', () => {
     expect(asFragment()).toMatchSnapshot();
   });
   createCustomPropsTest(List);
+  createWaitForDefineTest(List);
 });

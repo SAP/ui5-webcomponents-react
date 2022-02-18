@@ -1,7 +1,7 @@
 import { render } from '@shared/tests';
-import { createCustomPropsTest } from '@shared/tests/utils';
-import { MultiInput } from './index';
+import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
 import React from 'react';
+import { MultiInput } from './index';
 
 describe('MultiInput', () => {
   test('Basic Test (generated)', () => {
@@ -9,4 +9,5 @@ describe('MultiInput', () => {
     expect(asFragment()).toMatchSnapshot();
   });
   createCustomPropsTest(MultiInput);
+  createWaitForDefineTest(MultiInput);
 });

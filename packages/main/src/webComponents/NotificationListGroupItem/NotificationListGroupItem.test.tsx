@@ -1,7 +1,7 @@
 import { render } from '@shared/tests';
-import { createCustomPropsTest } from '@shared/tests/utils';
-import { NotificationListGroupItem } from './index';
+import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
 import React from 'react';
+import { NotificationListGroupItem } from './index';
 
 describe('NotificationListGroupItem', () => {
   test('Basic Test (generated)', () => {
@@ -9,4 +9,5 @@ describe('NotificationListGroupItem', () => {
     expect(asFragment()).toMatchSnapshot();
   });
   createCustomPropsTest(NotificationListGroupItem);
+  createWaitForDefineTest(NotificationListGroupItem);
 });

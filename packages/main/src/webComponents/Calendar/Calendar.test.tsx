@@ -1,7 +1,7 @@
 import { render } from '@shared/tests';
-import { createCustomPropsTest } from '@shared/tests/utils';
-import { Calendar } from './index';
+import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
 import React from 'react';
+import { Calendar } from './index';
 
 describe('Calendar', () => {
   test('Basic Test (generated)', () => {
@@ -9,4 +9,5 @@ describe('Calendar', () => {
     expect(asFragment()).toMatchSnapshot();
   });
   createCustomPropsTest(Calendar);
+  createWaitForDefineTest(Calendar);
 });

@@ -1,7 +1,7 @@
 import { render } from '@shared/tests';
-import { createCustomPropsTest } from '@shared/tests/utils';
-import { CheckBox } from './index';
+import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
 import React from 'react';
+import { CheckBox } from './index';
 
 describe('CheckBox', () => {
   test('Basic Test (generated)', () => {
@@ -9,4 +9,5 @@ describe('CheckBox', () => {
     expect(asFragment()).toMatchSnapshot();
   });
   createCustomPropsTest(CheckBox);
+  createWaitForDefineTest(CheckBox);
 });

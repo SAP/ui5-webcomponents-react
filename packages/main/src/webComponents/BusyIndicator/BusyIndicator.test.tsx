@@ -1,7 +1,7 @@
 import { render } from '@shared/tests';
-import { createCustomPropsTest } from '@shared/tests/utils';
-import { BusyIndicator } from './index';
+import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
 import React from 'react';
+import { BusyIndicator } from './index';
 
 describe('BusyIndicator', () => {
   test('Basic Test (generated)', () => {
@@ -9,4 +9,5 @@ describe('BusyIndicator', () => {
     expect(asFragment()).toMatchSnapshot();
   });
   createCustomPropsTest(BusyIndicator);
+  createWaitForDefineTest(BusyIndicator);
 });

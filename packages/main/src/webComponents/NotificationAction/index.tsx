@@ -1,9 +1,8 @@
+import '@ui5/webcomponents-fiori/dist/NotificationAction.js';
 import { ButtonDesign } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
-
-import '@ui5/webcomponents-fiori/dist/NotificationAction.js';
 
 interface NotificationActionAttributes {
   /**

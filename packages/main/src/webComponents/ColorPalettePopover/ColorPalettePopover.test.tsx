@@ -1,7 +1,7 @@
 import { render } from '@shared/tests';
-import { createCustomPropsTest } from '@shared/tests/utils';
-import { ColorPalettePopover } from './index';
+import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
 import React from 'react';
+import { ColorPalettePopover } from './index';
 
 describe('ColorPalettePopover', () => {
   test('Basic Test (generated)', () => {
@@ -9,4 +9,5 @@ describe('ColorPalettePopover', () => {
     expect(asFragment()).toMatchSnapshot();
   });
   createCustomPropsTest(ColorPalettePopover);
+  createWaitForDefineTest(ColorPalettePopover);
 });

@@ -1,7 +1,7 @@
 import { render } from '@shared/tests';
-import { createCustomPropsTest } from '@shared/tests/utils';
-import { ProgressIndicator } from './index';
+import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
 import React from 'react';
+import { ProgressIndicator } from './index';
 
 describe('ProgressIndicator', () => {
   test('Basic Test (generated)', () => {
@@ -9,4 +9,5 @@ describe('ProgressIndicator', () => {
     expect(asFragment()).toMatchSnapshot();
   });
   createCustomPropsTest(ProgressIndicator);
+  createWaitForDefineTest(ProgressIndicator);
 });

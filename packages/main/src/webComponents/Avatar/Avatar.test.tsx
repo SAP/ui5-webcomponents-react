@@ -1,7 +1,7 @@
 import { render } from '@shared/tests';
-import { createCustomPropsTest } from '@shared/tests/utils';
-import { Avatar } from './index';
+import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
 import React from 'react';
+import { Avatar } from './index';
 
 describe('Avatar', () => {
   test('Basic Test (generated)', () => {
@@ -9,4 +9,5 @@ describe('Avatar', () => {
     expect(asFragment()).toMatchSnapshot();
   });
   createCustomPropsTest(Avatar);
+  createWaitForDefineTest(Avatar);
 });

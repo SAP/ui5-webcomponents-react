@@ -1,10 +1,9 @@
+import '@ui5/webcomponents-fiori/dist/IllustratedMessage.js';
 import { ReactNode } from 'react';
 import { IllustrationMessageType } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
-
-import '@ui5/webcomponents-fiori/dist/IllustratedMessage.js';
 
 interface IllustratedMessageAttributes {
   /**

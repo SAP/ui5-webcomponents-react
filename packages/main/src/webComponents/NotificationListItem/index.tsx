@@ -1,11 +1,10 @@
+import '@ui5/webcomponents-fiori/dist/NotificationListItem.js';
 import { ReactNode } from 'react';
-import { WrappingType, Priority } from '../../enums';
+import { Priority, WrappingType } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
-
-import '@ui5/webcomponents-fiori/dist/NotificationListItem.js';
 
 interface NotificationListItemAttributes {
   /**

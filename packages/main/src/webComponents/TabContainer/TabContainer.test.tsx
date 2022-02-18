@@ -1,7 +1,7 @@
 import { render } from '@shared/tests';
-import { createCustomPropsTest } from '@shared/tests/utils';
-import { TabContainer } from './index';
+import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
 import React from 'react';
+import { TabContainer } from './index';
 
 describe('TabContainer', () => {
   test('Basic Test (generated)', () => {
@@ -9,4 +9,5 @@ describe('TabContainer', () => {
     expect(asFragment()).toMatchSnapshot();
   });
   createCustomPropsTest(TabContainer);
+  createWaitForDefineTest(TabContainer);
 });

@@ -1,5 +1,5 @@
 import { render } from '@shared/tests';
-import { createCustomPropsTest } from '@shared/tests/utils';
+import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
 import { DynamicSideContent } from './index';
 import React from 'react';
 
@@ -38,4 +38,5 @@ describe('DynamicSideContent', () => {
     expect(asFragment()).toMatchSnapshot();
   });
   createCustomPropsTest(DynamicSideContent);
+  createWaitForDefineTest(DynamicSideContent);
 });

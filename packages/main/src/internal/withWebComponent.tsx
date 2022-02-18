@@ -1,6 +1,16 @@
 import { getEffectiveScopingSuffixForTag } from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
 import { deprecationNotice, useSyncRef } from '@ui5/webcomponents-react-base';
-import React, { Children, cloneElement, ComponentType, forwardRef, ReactElement, Ref, useEffect, useRef } from 'react';
+import React, {
+  Children,
+  cloneElement,
+  ComponentType,
+  forwardRef,
+  ReactElement,
+  Ref,
+  useEffect,
+  useRef,
+  useState
+} from 'react';
 import { CommonProps } from '../interfaces/CommonProps';
 import { Ui5DomRef } from '../interfaces/Ui5DomRef';
 
@@ -13,6 +23,17 @@ const createEventPropName = (eventName) => `on${capitalizeFirstLetter(kebabToCam
 
 type EventHandler = (event: CustomEvent<unknown>) => void;
 
+export interface WithWebComponentPropTypes {
+  /**
+   * Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
+   *
+   * __Note:__ This adds a rendering cycle to your component.
+   */
+  waitForDefine?: boolean;
+}
+
+const definedWebComponents = new Set([]);
+
 export const withWebComponent = <Props extends Record<string, any>, RefType = Ui5DomRef>(
   tagName: string,
   regularProperties: string[],
@@ -20,11 +41,17 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
   slotProperties: string[],
   eventProperties: string[]
 ) => {
-  const WithWebComponent = forwardRef((props: Props, wcRef: Ref<RefType>) => {
-    const { className, tooltip, children, ...rest } = props;
+  const WithWebComponent = forwardRef((props: Props & WithWebComponentPropTypes, wcRef: Ref<RefType>) => {
+    const { className, tooltip, children, waitForDefine, ...rest } = props;
     //@ts-ignore
     const [componentRef, ref] = useSyncRef<HTMLElement>(wcRef);
     const eventRegistry = useRef<Record<string, EventHandler>>({});
+    const tagNameSuffix: string = getEffectiveScopingSuffixForTag(tagName);
+    const Component = (tagNameSuffix ? `${tagName}-${tagNameSuffix}` : tagName) as unknown as ComponentType<
+      CommonProps & { class: string }
+    >;
+
+    const [isDefined, setIsDefined] = useState(definedWebComponents.has(Component));
 
     // regular props (no booleans, no slots and no events)
     const regularProps = regularProperties.reduce((acc, name) => {
@@ -78,8 +105,8 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
       return [...acc, ...slottedChildren];
     }, []);
     // event binding
-    useEffect(
-      () => {
+    useEffect(() => {
+      if (!waitForDefine || isDefined) {
         eventProperties.forEach((eventName) => {
           const eventHandler = rest[createEventPropName(eventName)] as EventHandler;
           if (typeof eventHandler === 'function') {
@@ -94,9 +121,8 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
             ref.current?.removeEventListener(eventName, eventRegistry.current[eventName]);
           }
         };
-      },
-      eventProperties.map((eventName) => rest[createEventPropName(eventName)])
-    );
+      }
+    }, [...eventProperties.map((eventName) => rest[createEventPropName(eventName)]), isDefined, waitForDefine]);
 
     // non web component related props, just pass them
     const nonWebComponentRelatedProps = Object.entries(rest)
@@ -105,11 +131,6 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
       .filter(([key]) => !booleanProperties.includes(key))
       .filter(([key]) => !eventProperties.map((eventName) => createEventPropName(eventName)).includes(key))
       .reduce((acc, [key, val]) => ({ ...acc, [key]: val }), {});
-
-    const tagNameSuffix: string = getEffectiveScopingSuffixForTag(tagName);
-    const Component = (tagNameSuffix ? `${tagName}-${tagNameSuffix}` : tagName) as unknown as ComponentType<
-      CommonProps & { class: string }
-    >;
 
     useEffect(() => {
       if (tooltip) {
@@ -121,6 +142,18 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
         );
       }
     }, [tooltip]);
+
+    useEffect(() => {
+      if (waitForDefine && !isDefined) {
+        customElements.whenDefined(Component as unknown as string).then(() => {
+          setIsDefined(true);
+          definedWebComponents.add(Component);
+        });
+      }
+    }, [Component, waitForDefine, isDefined]);
+    if (waitForDefine && !isDefined) {
+      return null;
+    }
 
     return (
       <Component

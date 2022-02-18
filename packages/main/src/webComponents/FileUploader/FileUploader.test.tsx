@@ -1,7 +1,7 @@
 import { render } from '@shared/tests';
-import { createCustomPropsTest } from '@shared/tests/utils';
-import { FileUploader } from './index';
+import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
 import React from 'react';
+import { FileUploader } from './index';
 
 describe('FileUploader', () => {
   test('Basic Test (generated)', () => {
@@ -9,4 +9,5 @@ describe('FileUploader', () => {
     expect(asFragment()).toMatchSnapshot();
   });
   createCustomPropsTest(FileUploader);
+  createWaitForDefineTest(FileUploader);
 });

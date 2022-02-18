@@ -1,12 +1,13 @@
 import { render } from '@shared/tests';
-import { createCustomPropsTest } from '@shared/tests/utils';
-import { DateTimePicker } from './index';
+import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
 import React from 'react';
+import { DateTimePicker } from './index';
 
 describe('DateTimePicker', () => {
-  test('Basic Test (generated)', async () => {
+  test('Basic Test (generated)', () => {
     const { asFragment } = render(<DateTimePicker />);
     expect(asFragment()).toMatchSnapshot();
   });
   createCustomPropsTest(DateTimePicker);
+  createWaitForDefineTest(DateTimePicker);
 });

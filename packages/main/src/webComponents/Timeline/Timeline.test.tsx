@@ -1,7 +1,7 @@
 import { render } from '@shared/tests';
-import { createCustomPropsTest } from '@shared/tests/utils';
-import { Timeline } from './index';
+import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
 import React from 'react';
+import { Timeline } from './index';
 
 describe('Timeline', () => {
   test('Basic Test (generated)', () => {
@@ -9,4 +9,5 @@ describe('Timeline', () => {
     expect(asFragment()).toMatchSnapshot();
   });
   createCustomPropsTest(Timeline);
+  createWaitForDefineTest(Timeline);
 });

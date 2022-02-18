@@ -1,9 +1,8 @@
+import '@ui5/webcomponents/dist/TableGroupRow.js';
 import { ReactNode } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
-
-import '@ui5/webcomponents/dist/TableGroupRow.js';
 
 interface TableGroupRowAttributes {}
 

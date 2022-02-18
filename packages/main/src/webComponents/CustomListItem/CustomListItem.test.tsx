@@ -1,7 +1,7 @@
 import { render } from '@shared/tests';
-import { createCustomPropsTest } from '@shared/tests/utils';
-import { CustomListItem } from './index';
+import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
 import React from 'react';
+import { CustomListItem } from './index';
 
 describe('CustomListItem', () => {
   test('Basic Test (generated)', () => {
@@ -9,4 +9,5 @@ describe('CustomListItem', () => {
     expect(asFragment()).toMatchSnapshot();
   });
   createCustomPropsTest(CustomListItem);
+  createWaitForDefineTest(CustomListItem);
 });

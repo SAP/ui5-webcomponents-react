@@ -1,7 +1,7 @@
 import { render } from '@shared/tests';
-import { createCustomPropsTest } from '@shared/tests/utils';
-import { FilterItemOption } from './index';
+import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
 import React from 'react';
+import { FilterItemOption } from './index';
 
 describe('FilterItemOption', () => {
   test('Basic Test (generated)', () => {
@@ -9,4 +9,5 @@ describe('FilterItemOption', () => {
     expect(asFragment()).toMatchSnapshot();
   });
   createCustomPropsTest(FilterItemOption);
+  createWaitForDefineTest(FilterItemOption);
 });

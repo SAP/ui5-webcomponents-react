@@ -1,6 +1,6 @@
 import { render } from '@shared/tests';
 import '@ui5/webcomponents-icons/dist/add.js';
-import { createCustomPropsTest } from '@shared/tests/utils';
+import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
 import { Icon } from '../Icon';
 import React from 'react';
 
@@ -10,4 +10,5 @@ describe('Icon', () => {
     expect(asFragment()).toMatchSnapshot();
   });
   createCustomPropsTest(Icon);
+  createWaitForDefineTest(Icon);
 });
