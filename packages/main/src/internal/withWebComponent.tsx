@@ -32,6 +32,8 @@ export interface WithWebComponentPropTypes {
   waitForDefine?: boolean;
 }
 
+const definedWebComponents = new Set([]);
+
 export const withWebComponent = <Props extends Record<string, any>, RefType = Ui5DomRef>(
   tagName: string,
   regularProperties: string[],
@@ -44,7 +46,12 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
     //@ts-ignore
     const [componentRef, ref] = useSyncRef<HTMLElement>(wcRef);
     const eventRegistry = useRef<Record<string, EventHandler>>({});
-    const [isDefined, setIsDefined] = useState(false);
+    const tagNameSuffix: string = getEffectiveScopingSuffixForTag(tagName);
+    const Component = (tagNameSuffix ? `${tagName}-${tagNameSuffix}` : tagName) as unknown as ComponentType<
+      CommonProps & { class: string }
+    >;
+
+    const [isDefined, setIsDefined] = useState(definedWebComponents.has(Component));
 
     // regular props (no booleans, no slots and no events)
     const regularProps = regularProperties.reduce((acc, name) => {
@@ -125,11 +132,6 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
       .filter(([key]) => !eventProperties.map((eventName) => createEventPropName(eventName)).includes(key))
       .reduce((acc, [key, val]) => ({ ...acc, [key]: val }), {});
 
-    const tagNameSuffix: string = getEffectiveScopingSuffixForTag(tagName);
-    const Component = (tagNameSuffix ? `${tagName}-${tagNameSuffix}` : tagName) as unknown as ComponentType<
-      CommonProps & { class: string }
-    >;
-
     useEffect(() => {
       if (tooltip) {
         // strip ui5 prefix and convert to PascalCase
@@ -142,13 +144,16 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
     }, [tooltip]);
 
     useEffect(() => {
-      if (waitForDefine) {
+      if (waitForDefine && !isDefined) {
         customElements.whenDefined(Component as unknown as string).then(() => {
           setIsDefined(true);
+          definedWebComponents.add(Component);
         });
       }
-    }, [Component, waitForDefine]);
-    if (waitForDefine && !isDefined) return null;
+    }, [Component, waitForDefine, isDefined]);
+    if (waitForDefine && !isDefined) {
+      return null;
+    }
 
     return (
       <Component
