@@ -54,7 +54,6 @@ interface TreeItemAttributes {
 export interface TreeItemDomRef extends TreeItemAttributes, Ui5DomRef {
   /**
    * Call this method to manually switch the `expanded` state of a tree item.
-   *
    */
   toggle: () => void;
 }

@@ -47,7 +47,6 @@ interface TabAttributes {
 export interface TabDomRef extends TabAttributes, Ui5DomRef {
   /**
    * Returns the DOM reference of the tab that is placed in the header. **Note:** If you need a DOM ref to the tab content please use the `getDomRef` method.
-   *
    */
   getTabInStripDomRef: () => void;
 }

@@ -288,22 +288,43 @@ export const createDomRef = (componentSpec) => {
   });
 
   const methods = (componentSpec.methods?.filter((method) => method.visibility === 'public') ?? []).map((method) => {
+    let returnValue = 'void';
     const params = method.parameters?.map((param) => {
       return ` * @param {${resolveTsTypeForMethods(param)}} ${isOptionalParameter(param) ? '[' : ''}${param.name}${
         isOptionalParameter(param) ? ']' : ''
       } - ${param.description}`;
     });
-
+    if (method.returnValue) {
+      switch (method.returnValue.type) {
+        case 'Promise':
+          returnValue = 'Promise<void>';
+          break;
+        case 'String':
+          //todo: remove this condition when > wc-1.1.2 is released
+          if (method.name === 'toggleContents') {
+            returnValue = 'void';
+            break;
+          }
+          returnValue = 'string';
+          break;
+        default:
+          returnValue = method.returnValue.type;
+      }
+    }
+    const joinedParams = params?.join('\n');
     return dedent`
           /**
-           * ${formatDescription(method.description, componentSpec)}
-           ${params?.join('\n') ?? '*'}
+           * ${formatDescription(method.description, componentSpec)}${joinedParams ? `\n${joinedParams}` : ''}${
+      returnValue && returnValue !== 'void'
+        ? `\n* @returns {${returnValue}} ${method.returnValue.description ?? ''}`
+        : ''
+    }
            */
           ${method.name}: (${
       method.parameters
         ?.map((p) => `${p.name}${isOptionalParameter(p) ? '?' : ''}: ${resolveTsTypeForMethods(p)}`)
         .join(', ') ?? ''
-    }) => void
+    }) => ${returnValue}
           `;
   });
 

@@ -15,7 +15,6 @@ interface ViewSettingsDialogAttributes {
 export interface ViewSettingsDialogDomRef extends ViewSettingsDialogAttributes, Ui5DomRef {
   /**
    * Shows the dialog.
-   *
    */
   show: () => void;
 }

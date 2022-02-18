@@ -33,7 +33,6 @@ interface ToastAttributes {
 export interface ToastDomRef extends ToastAttributes, Ui5DomRef {
   /**
    * Shows the component.
-   *
    */
   show: () => void;
 }

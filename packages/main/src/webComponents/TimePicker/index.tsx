@@ -50,31 +50,32 @@ export interface TimePickerDomRef extends TimePickerAttributes, Ui5DomRef {
   readonly dateValue: Date;
   /**
    * Closes the picker
-   *
    */
   closePicker: () => void;
   /**
    * Formats a Java Script date object into a string representing a locale date and time according to the `formatPattern` property of the TimePicker instance
    * @param {Date} date - A Java Script date object to be formatted as string
+   * @returns {string}
    */
-  formatValue: (date: Date) => void;
+  formatValue: (date: Date) => string;
   /**
    * Checks if the picker is open
-   *
+   * @returns {boolean}
    */
-  isOpen: () => void;
+  isOpen: () => boolean;
   /**
    * Checks if a value is valid against the current `formatPattern` value.
    *
    * **Note:** an empty string is considered as valid value.
    * @param {string} value - The value to be tested against the current date format
+   * @returns {boolean}
    */
-  isValid: (value: string) => void;
+  isValid: (value: string) => boolean;
   /**
    * Opens the picker.
-   *
+   * @returns {Promise<void>} Resolves when the picker is open
    */
-  openPicker: () => void;
+  openPicker: () => Promise<void>;
 }
 
 export interface TimePickerPropTypes extends TimePickerAttributes, Omit<CommonProps, 'onChange' | 'onInput'> {

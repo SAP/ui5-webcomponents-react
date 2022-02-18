@@ -85,23 +85,23 @@ export interface PopoverDomRef extends PopoverAttributes, Ui5DomRef {
    * Shows the popover.
    * @param {HTMLElement | EventTarget} opener - the element that the popover is shown at
    * @param {boolean} [preventInitialFocus] - prevents applying the focus inside the popover
+   * @returns {Promise<void>} Resolved when the popover is open
    */
-  showAt: (opener: HTMLElement | EventTarget, preventInitialFocus?: boolean) => void;
+  showAt: (opener: HTMLElement | EventTarget, preventInitialFocus?: boolean) => Promise<void>;
   /**
    * Focuses the element denoted by `initialFocus`, if provided, or the first focusable element otherwise.
-   *
+   * @returns {Promise<void>} Promise that resolves when the focus is applied
    */
-  applyFocus: () => void;
+  applyFocus: () => Promise<void>;
   /**
    * Hides the block layer (for modal popups only)
-   *
    */
   close: () => void;
   /**
    * Tells if the component is opened
-   *
+   * @returns {boolean}
    */
-  isOpen: () => void;
+  isOpen: () => boolean;
 }
 
 export interface PopoverPropTypes extends PopoverAttributes, CommonProps {

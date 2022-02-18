@@ -23,10 +23,10 @@ import React, {
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
-import { ToolbarDesign } from '../../enums/ToolbarDesign';
-import { ToolbarStyle } from '../../enums/ToolbarStyle';
+import { ToolbarDesign, ToolbarStyle } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
+import { PopoverDomRef } from '../../webComponents';
 import { OverflowPopover } from './OverflowPopover';
 import { styles } from './Toolbar.jss';
 
@@ -71,6 +71,11 @@ export interface ToolbarPropTypes extends Omit<CommonProps, 'onClick'> {
    */
   numberOfAlwaysVisibleItems?: number;
   /**
+   * Exposes the React Ref of the overflow popover.
+   * This can be useful, for example, when wanting to close the popover on click or selection of a child element.
+   */
+  overflowPopoverRef?: Ref<PopoverDomRef>;
+  /**
    * Fired when the user clicks on the `Toolbar`, if the `active` prop is set to "true".
    */
   onClick?: (event: CustomEvent) => void;
@@ -107,6 +112,7 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
     portalContainer,
     numberOfAlwaysVisibleItems,
     onOverflowChange,
+    overflowPopoverRef,
     ...rest
   } = props;
 
@@ -300,6 +306,7 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
           data-component-name="ToolbarOverflowButtonContainer"
         >
           <OverflowPopover
+            overflowPopoverRef={overflowPopoverRef}
             lastVisibleIndex={lastVisibleIndex}
             contentClass={classes.popoverContent}
             portalContainer={portalContainer}
