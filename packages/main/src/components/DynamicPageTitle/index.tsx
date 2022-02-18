@@ -30,7 +30,7 @@ export interface DynamicPageTitlePropTypes extends CommonProps {
   /**
    * The `DynamicPageTitle` actions.
    *
-   * __Note:__ When clicking on an action in the overflow popover it closes the popover. You can use `event.preventDefault` to prevent this.
+   * __Note:__ When clicking on an action in the overflow popover it closes the popover. You can use `event.preventDefault()` to prevent this.
    */
   actions?: ReactElement | ReactElement[];
 
