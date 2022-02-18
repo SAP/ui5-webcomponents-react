@@ -1,7 +1,7 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { Bar } from './index';
 import React from 'react';
+import { Bar } from './index';
 
 describe('Bar', () => {
   test('Basic Test (generated)', () => {

@@ -1,10 +1,9 @@
-import { ReactNode, MouseEventHandler } from 'react';
+import '@ui5/webcomponents/dist/Link.js';
+import { MouseEventHandler, ReactNode } from 'react';
 import { LinkDesign, WrappingType } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
-
-import '@ui5/webcomponents/dist/Link.js';
 
 interface LinkAttributes {
   /**
