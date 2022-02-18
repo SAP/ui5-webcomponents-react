@@ -1,11 +1,10 @@
+import '@ui5/webcomponents/dist/Popover.js';
 import { ReactNode } from 'react';
 import { PopoverHorizontalAlign, PopoverPlacementType, PopoverVerticalAlign } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
-
-import '@ui5/webcomponents/dist/Popover.js';
 
 interface PopoverAttributes {
   /**
@@ -86,21 +85,21 @@ export interface PopoverDomRef extends PopoverAttributes, Ui5DomRef {
    * Shows the popover.
    * @param {HTMLElement | EventTarget} opener - the element that the popover is shown at
    * @param {boolean} [preventInitialFocus] - prevents applying the focus inside the popover
+   * @returns {Promise<void>} Resolved when the popover is open
    */
-  showAt: (opener: HTMLElement | EventTarget, preventInitialFocus?: boolean) => void;
+  showAt: (opener: HTMLElement | EventTarget, preventInitialFocus?: boolean) => Promise<void>;
   /**
    * Focuses the element denoted by `initialFocus`, if provided, or the first focusable element otherwise.
-   *
+   * @returns {Promise<void>} Promise that resolves when the focus is applied
    */
-  applyFocus: () => void;
+  applyFocus: () => Promise<void>;
   /**
    * Hides the block layer (for modal popups only)
-   *
    */
   close: () => void;
   /**
    * Tells if the component is opened
-   *
+   * @returns {boolean}
    */
   isOpen: () => boolean;
 }

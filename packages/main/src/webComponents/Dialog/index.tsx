@@ -1,10 +1,9 @@
+import '@ui5/webcomponents/dist/Dialog.js';
 import { ReactNode } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
-
-import '@ui5/webcomponents/dist/Dialog.js';
 
 interface DialogAttributes {
   /**
@@ -54,21 +53,21 @@ export interface DialogDomRef extends DialogAttributes, Omit<Ui5DomRef, 'draggab
   /**
    * Shows the dialog.
    * @param {boolean} [preventInitialFocus] - Prevents applying the focus inside the popup
+   * @returns {Promise<void>} Resolves when the dialog is open
    */
-  show: (preventInitialFocus?: boolean) => void;
+  show: (preventInitialFocus?: boolean) => Promise<void>;
   /**
    * Focuses the element denoted by `initialFocus`, if provided, or the first focusable element otherwise.
-   *
+   * @returns {Promise<void>} Promise that resolves when the focus is applied
    */
-  applyFocus: () => void;
+  applyFocus: () => Promise<void>;
   /**
    * Hides the block layer (for modal popups only)
-   *
    */
   close: () => void;
   /**
    * Tells if the component is opened
-   *
+   * @returns {boolean}
    */
   isOpen: () => boolean;
 }

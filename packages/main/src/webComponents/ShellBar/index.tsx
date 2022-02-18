@@ -1,10 +1,9 @@
+import '@ui5/webcomponents-fiori/dist/ShellBar.js';
 import { ReactNode } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
-
-import '@ui5/webcomponents-fiori/dist/ShellBar.js';
 
 interface ShellBarAttributes {
   /**
@@ -69,7 +68,6 @@ export interface ShellBarDomRef extends ShellBarAttributes, Ui5DomRef {
   accessibilityTexts: Record<string, unknown>;
   /**
    * Closes the overflow area. Useful to manually close the overflow after having suppressed automatic closing with preventDefault() of ShellbarItem's press event
-   *
    */
   closeOverflow: () => void;
 }

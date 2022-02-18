@@ -1,11 +1,10 @@
+import '@ui5/webcomponents/dist/DatePicker.js';
 import { ReactNode } from 'react';
-import { ValueState, CalendarType } from '../../enums';
+import { CalendarType, ValueState } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
-
-import '@ui5/webcomponents/dist/DatePicker.js';
 
 interface DatePickerAttributes {
   /**
@@ -93,22 +92,23 @@ export interface DatePickerDomRef extends DatePickerAttributes, Ui5DomRef {
   readonly dateValue: Date;
   /**
    * Closes the picker.
-   *
    */
   closePicker: () => void;
   /**
    * Formats a Java Script date object into a string representing a locale date according to the `formatPattern` property of the DatePicker instance
    * @param {Date} date - A Java Script date object to be formatted as string
+   * @returns {string} The date as string
    */
-  formatValue: (date: Date) => void;
+  formatValue: (date: Date) => string;
   /**
    * Checks if a date is between the minimum and maximum date.
    * @param {string} value - A value to be checked
+   * @returns {boolean}
    */
-  isInValidRange: (value: string) => void;
+  isInValidRange: (value: string) => boolean;
   /**
    * Checks if the picker is open.
-   *
+   * @returns {boolean} true if the picker is open, false otherwise
    */
   isOpen: () => boolean;
   /**
@@ -118,9 +118,9 @@ export interface DatePickerDomRef extends DatePickerAttributes, Ui5DomRef {
   isValid: (value: string) => void;
   /**
    * Opens the picker.
-   *
+   * @returns {Promise<void>} Resolves when the picker is open
    */
-  openPicker: () => void;
+  openPicker: () => Promise<void>;
 }
 
 export interface DatePickerPropTypes extends DatePickerAttributes, Omit<CommonProps, 'onChange' | 'onInput'> {

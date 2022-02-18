@@ -1,21 +1,18 @@
+import '@ui5/webcomponents-fiori/dist/BarcodeScannerDialog.js';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
-
-import '@ui5/webcomponents-fiori/dist/BarcodeScannerDialog.js';
 
 interface BarcodeScannerDialogAttributes {}
 
 export interface BarcodeScannerDialogDomRef extends BarcodeScannerDialogAttributes, Ui5DomRef {
   /**
    * Closes the dialog and the scan session.
-   *
    */
   close: () => void;
   /**
    * Shows a dialog with the camera videostream. Starts a scan session.
-   *
    */
   show: () => void;
 }

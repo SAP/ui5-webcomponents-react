@@ -1,11 +1,10 @@
+import '@ui5/webcomponents/dist/ResponsivePopover.js';
 import { ReactNode } from 'react';
 import { PopoverHorizontalAlign, PopoverPlacementType, PopoverVerticalAlign } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
-
-import '@ui5/webcomponents/dist/ResponsivePopover.js';
 
 interface ResponsivePopoverAttributes {
   /**
@@ -84,25 +83,25 @@ interface ResponsivePopoverAttributes {
 export interface ResponsivePopoverDomRef extends ResponsivePopoverAttributes, Ui5DomRef {
   /**
    * Closes the popover/dialog.
-   *
    */
   close: () => void;
   /**
    * Tells if the responsive popover is open
-   *
+   * @returns {boolean}
    */
   isOpen: () => boolean;
   /**
    * Shows popover on desktop and dialog on mobile.
    * @param {HTMLElement | EventTarget} opener - the element that the popover is shown at
    * @param {boolean} [preventInitialFocus] - Prevents applying the focus inside the popup
+   * @returns {Promise<void>} Resolves when the responsive popover is open
    */
-  showAt: (opener: HTMLElement | EventTarget, preventInitialFocus?: boolean) => void;
+  showAt: (opener: HTMLElement | EventTarget, preventInitialFocus?: boolean) => Promise<void>;
   /**
    * Focuses the element denoted by `initialFocus`, if provided, or the first focusable element otherwise.
-   *
+   * @returns {Promise<void>} Promise that resolves when the focus is applied
    */
-  applyFocus: () => void;
+  applyFocus: () => Promise<void>;
 }
 
 export interface ResponsivePopoverPropTypes extends ResponsivePopoverAttributes, CommonProps {
