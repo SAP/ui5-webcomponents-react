@@ -300,6 +300,11 @@ export const createDomRef = (componentSpec) => {
           returnValue = 'Promise<void>';
           break;
         case 'String':
+          //todo: remove this condition when > wc-1.1.2 is released
+          if (method.name === 'toggleContents') {
+            returnValue = 'void';
+            break;
+          }
           returnValue = 'string';
           break;
         default:

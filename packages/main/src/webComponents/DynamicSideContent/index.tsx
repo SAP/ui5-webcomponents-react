@@ -56,9 +56,8 @@ interface DynamicSideContentAttributes {
 export interface DynamicSideContentDomRef extends DynamicSideContentAttributes, Ui5DomRef {
   /**
    * Toggles visibility of main and side contents on S screen size (mobile device).
-   * @returns {string}
    */
-  toggleContents: () => string;
+  toggleContents: () => void;
 }
 
 export interface DynamicSideContentPropTypes extends DynamicSideContentAttributes, CommonProps {
