@@ -63,7 +63,7 @@ export interface DynamicPageTitlePropTypes extends CommonProps {
    * Otherwise, they are rendered in the top-right area, above the actions.
    * If a large number of elements(buttons) are used, there could be visual degradations as the space for the `navigationActions` is limited.
    *
-   * __Note:__ When clicking on an action in the overflow popover it closes the popover. You can use `event.preventDefault` to prevent this.
+   * __Note:__ When clicking on an action in the overflow popover it closes the popover. You can use `event.preventDefault()` to prevent this.
    */
   navigationActions?: ReactElement | ReactElement[];
   /**
