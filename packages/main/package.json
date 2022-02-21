@@ -66,6 +66,7 @@
     "access": "public"
   },
   "files": [
+    "components",
     "dist",
     "interfaces",
     "webComponents",
