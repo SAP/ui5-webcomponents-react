@@ -18,7 +18,7 @@
     "./dist/json-imports/*"
   ],
   "scripts": {
-    "clean": "rimraf dist tmp wrappers webComponents",
+    "clean": "rimraf components dist tmp wrappers webComponents",
     "build": "npm-run-all -s build:i18n build:tsc build:wrappers build:redirects",
     "build:tsc": "tsc",
     "build:wrappers": "node scripts/build-wrappers.mjs && tsc --project tsconfig.wrappers.json",
