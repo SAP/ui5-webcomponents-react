@@ -1,5 +1,5 @@
 import '@ui5/webcomponents-icons/dist/decline.js';
-import { enrichEventWithDetails, ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base';
+import { enrichEventWithDetails, useI18nBundle } from '@ui5/webcomponents-react-base';
 import {
   CLEAR_SORTING,
   GROUP,
@@ -39,10 +39,12 @@ const styles = {
   popover: {
     fontWeight: 'normal'
   },
+  filterListItem: {
+    height: 'var(--_ui5_list_item_base_height)'
+  },
   filter: {
     padding: '0px 1rem',
-    height: 'var(--_ui5_custom_list_item_height)',
-    borderBottom: `1px solid ${ThemingParameters.sapList_BorderColor}`
+    height: 'var(--_ui5_list_item_base_height)'
   },
   filterIcon: { paddingRight: '0.5rem', minWidth: '1rem', minHeight: '1rem' }
 };
@@ -200,7 +202,7 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
         )}
         {showFilter && !column.isGrouped && (
           //todo maybe need to enhance Input selection after ui5-webcomponents issue has been fixed
-          <CustomListItem type={ListItemType.Inactive}>
+          <CustomListItem type={ListItemType.Inactive} className={classes.filterListItem}>
             <FlexBox alignItems={FlexBoxAlignItems.Center} className={classes.filter}>
               <Icon name="filter" className={classes.filterIcon} />
               <Filter column={column} popoverRef={ref} />
