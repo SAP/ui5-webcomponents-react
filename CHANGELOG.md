@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.21.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.21.4...v0.21.5) (2022-02-21)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** fix layout of Column Filter Input ([#2620](https://github.com/SAP/ui5-webcomponents-react/issues/2620)) ([59437f0](https://github.com/SAP/ui5-webcomponents-react/commit/59437f0d209d14037b0de40e40ffe5dc57ca3b68))
+* create re-export of AnalyticalTableHooks ([#2619](https://github.com/SAP/ui5-webcomponents-react/issues/2619)) ([b251c6d](https://github.com/SAP/ui5-webcomponents-react/commit/b251c6d9d3dd140925e7f44d942fe13df76a75c4))
+
+
+
+
+
 ## [0.21.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.21.3...v0.21.4) (2022-02-21)
 
 
