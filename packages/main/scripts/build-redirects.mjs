@@ -12,13 +12,10 @@ function createRedirects(folder) {
   // copy full src dir
   fs.cpSync(new URL(`../dist/${folder}`, import.meta.url), dir, { recursive: true });
 
-  rimraf.sync(`${folder}/**/*.js`);
-  rimraf.sync(`${folder}/**/*.js.map`);
-  rimraf.sync(`${folder}/**/*.d.ts`);
-
   fs.readdirSync(dir)
     .filter((file) => fs.statSync(resolve(dir, file)).isDirectory())
     .forEach((component) => {
+      rimraf.sync(`${resolve(dir, component)}/*`);
       fs.writeFileSync(resolve(dir, component, 'index.d.ts'), `export * from '../../dist/${folder}/${component}';\n`);
       fs.writeFileSync(
         resolve(dir, component, 'index.js'),
