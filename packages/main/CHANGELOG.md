@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.21.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.21.3...v0.21.4) (2022-02-21)
+
+
+### Bug Fixes
+
+* create re-export components for old folder structure ([#2618](https://github.com/SAP/ui5-webcomponents-react/issues/2618)) ([e3f4e38](https://github.com/SAP/ui5-webcomponents-react/commit/e3f4e3888147a254618ef1800959ea4541ad3271))
+
+
+
+
+
 ## [0.21.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.21.2...v0.21.3) (2022-02-21)
 
 
