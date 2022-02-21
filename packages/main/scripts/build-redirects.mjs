@@ -24,7 +24,7 @@ fs.readdirSync(dir)
        
         deprecationNotice('${component}', \`importing from '@ui5/webcomponents-react/webComponents/${component}' is deprecated. Please use "import { ${component} } from '@ui5/webcomponents-react';" instead.\`);
         
-        export * from '../../dist/webComponents/Avatar';\n
+        export * from '../../dist/webComponents/${component}';\n
         `
     );
   });
