@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.21.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.21.2...v0.21.3) (2022-02-21)
+
+
+### Bug Fixes
+
+* cancel debounced functions when component unmounts ([#2582](https://github.com/SAP/ui5-webcomponents-react/issues/2582)) ([d022da0](https://github.com/SAP/ui5-webcomponents-react/commit/d022da08db0b230b1c253c32137e337b0686d1c7))
+
+
+
+
+
 # [0.21.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.20.7...v0.21.0) (2022-01-25)
 
 

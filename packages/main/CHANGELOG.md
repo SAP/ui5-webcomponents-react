@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.21.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.21.2...v0.21.3) (2022-02-21)
+
+
+### Bug Fixes
+
+* **ActionSheet:** only announce aria role once ([#2562](https://github.com/SAP/ui5-webcomponents-react/issues/2562)) ([672fa3e](https://github.com/SAP/ui5-webcomponents-react/commit/672fa3eb4aba60406b3156f8c0fad0bb3fb6c156))
+* cancel debounced functions when component unmounts ([#2582](https://github.com/SAP/ui5-webcomponents-react/issues/2582)) ([d022da0](https://github.com/SAP/ui5-webcomponents-react/commit/d022da08db0b230b1c253c32137e337b0686d1c7))
+* **DynamicPageTitle:** close overflow popover on action click ([#2608](https://github.com/SAP/ui5-webcomponents-react/issues/2608)) ([ee246de](https://github.com/SAP/ui5-webcomponents-react/commit/ee246dee09447e480ba3f31d567883d16b63d904))
+* **i18n:** improve translation of cancel and clear ([#2605](https://github.com/SAP/ui5-webcomponents-react/issues/2605)) ([9124c72](https://github.com/SAP/ui5-webcomponents-react/commit/9124c72167a2804ede1355f48bb913c761798e81))
+* **types:** remove object properties from declarative prop types ([#2586](https://github.com/SAP/ui5-webcomponents-react/issues/2586)) ([beb334f](https://github.com/SAP/ui5-webcomponents-react/commit/beb334f870c7455020a5db2d1c38cacfef6c268e))
+* use correct return type for web component methods ([#2614](https://github.com/SAP/ui5-webcomponents-react/issues/2614)) ([74e800d](https://github.com/SAP/ui5-webcomponents-react/commit/74e800d1ae0bcf6ce83a5e195d90bfb996162176))
+
+
+### Features
+
+* add `waitForDefine` prop to all components with web component base ([#2594](https://github.com/SAP/ui5-webcomponents-react/issues/2594)) ([633a5b2](https://github.com/SAP/ui5-webcomponents-react/commit/633a5b2ce24345427a3c94d7fbfdd5cfece5994f))
+* **FilterBar:** make opening the filter dialog optional in `onFiltersDialogOpen`, fix alignment of checkbox ([#2537](https://github.com/SAP/ui5-webcomponents-react/issues/2537)) ([e761863](https://github.com/SAP/ui5-webcomponents-react/commit/e761863040a67b0785fac0abce25155e4a336e61))
+* **SplitterLayout:** initial component implementation ([#2487](https://github.com/SAP/ui5-webcomponents-react/issues/2487)) ([14d29aa](https://github.com/SAP/ui5-webcomponents-react/commit/14d29aa43a12142bb45c6886718c0cdafeb55331))
+* **Toolbar:** expose overflow popover Ref via `overflowPopoverRef` prop ([#2607](https://github.com/SAP/ui5-webcomponents-react/issues/2607)) ([f5ec6f9](https://github.com/SAP/ui5-webcomponents-react/commit/f5ec6f9fdb567b16bcfda905a37a75184bc3a3c9))
+
+
+
+
+
 ## [0.21.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.21.1...v0.21.2) (2022-01-26)
 
 
