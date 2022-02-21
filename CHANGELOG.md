@@ -35,6 +35,19 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **Toolbar:** expose overflow popover Ref via `overflowPopoverRef` prop ([#2607](https://github.com/SAP/ui5-webcomponents-react/issues/2607)) ([f5ec6f9](https://github.com/SAP/ui5-webcomponents-react/commit/f5ec6f9fdb567b16bcfda905a37a75184bc3a3c9))
 
 
+### Deprecation
+
+* All interfaces, enums, hooks, components, etc. should now be imported from the root path of their package.
+```js
+// Example for base package imports
+import { ThemingParameters, useSyncRef, Device } from "@ui5/webcomponents-react-base";
+// Example for chart package imports
+import { BarChart, BarChartPlaceholder } from "@ui5/webcomponents-react-charts";
+// Example for main package imports
+import { ActionSheet,AnalyticalTableHooks, AvatarGroup, AvatarShape } from "@ui5/webcomponents-react";
+```
+
+
 
 
 
