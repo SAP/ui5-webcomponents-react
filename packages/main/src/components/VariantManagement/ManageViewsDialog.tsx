@@ -1,5 +1,4 @@
 import { isPhone, isTablet } from '@ui5/webcomponents-base/dist/Device.js';
-import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming.js';
 import '@ui5/webcomponents-icons/dist/decline.js';
 import '@ui5/webcomponents-icons/dist/favorite.js';
 import '@ui5/webcomponents-icons/dist/unfavorite.js';
@@ -16,6 +15,7 @@ import {
 import React, { Children, ComponentElement, MouseEventHandler, ReactNode, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { ButtonDesign } from '../../enums/ButtonDesign';
+import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
 import { Bar } from '../../webComponents/Bar';
 import { Button } from '../../webComponents/Button';
 import { Dialog, DialogDomRef } from '../../webComponents/Dialog';
@@ -24,7 +24,7 @@ import { TableColumn } from '../../webComponents/TableColumn';
 import { ManageViewsTableRows } from './MangeViewsTableRows';
 import { VariantItemPropTypes } from './VariantItem';
 
-addCustomCSS(
+addCustomCSSWithScoping(
   'ui5-dialog',
   `
   :host([data-component-name="VariantManagementManageViewsDialog"]) .ui5-popup-content{
