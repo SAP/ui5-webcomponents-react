@@ -1,4 +1,3 @@
-import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming.js';
 import React, { cloneElement, CSSProperties, FC, isValidElement, ReactElement, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FlexBoxAlignItems } from '../../enums/FlexBoxAlignItems';
@@ -17,16 +16,6 @@ export interface FormItemPropTypes {
    */
   children: ReactNode | ReactNode[];
 }
-
-//TODO: remove this when ui5-webcomponents adjusted this in their repo
-addCustomCSS(
-  'ui5-checkbox',
-  `
-:host .ui5-checkbox-icon {
- position:absolute;
-}
- `
-);
 
 interface InternalProps extends FormItemPropTypes {
   columnIndex?: number;

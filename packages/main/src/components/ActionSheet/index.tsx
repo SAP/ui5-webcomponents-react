@@ -1,5 +1,4 @@
 import { isPhone } from '@ui5/webcomponents-base/dist/Device.js';
-import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming.js';
 import { ThemingParameters, useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base';
 import { AVAILABLE_ACTIONS, CANCEL, X_OF_Y } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import clsx from 'clsx';
@@ -16,6 +15,7 @@ import React, {
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
 import { ButtonDesign } from '../../enums/ButtonDesign';
+import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { Button, ButtonPropTypes } from '../../webComponents/Button';
 import {
@@ -60,7 +60,7 @@ export interface ActionSheetPropTypes extends Omit<ResponsivePopoverPropTypes, '
 const useStyles = createUseStyles(styles, { name: 'ActionSheet' });
 
 if (isPhone()) {
-  addCustomCSS(
+  addCustomCSSWithScoping(
     'ui5-responsive-popover',
     `
   :host([data-actionsheet]) [ui5-button] {

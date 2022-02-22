@@ -201,7 +201,7 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
           </StandardListItem>
         )}
         {showFilter && !column.isGrouped && (
-          //todo maybe need to enhance Input selection after ui5-webcomponents issue has been fixed
+          //todo maybe need to enhance Input selection after ui5-webcomponents issue has been fixed (undefined is displayed as val)
           <CustomListItem type={ListItemType.Inactive} className={classes.filterListItem}>
             <FlexBox alignItems={FlexBoxAlignItems.Center} className={classes.filter}>
               <Icon name="filter" className={classes.filterIcon} />

@@ -1,4 +1,3 @@
-import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming.js';
 import {
   debounce,
   enrichEventWithDetails,
@@ -27,6 +26,7 @@ import { ObjectPageMode } from '../../enums/ObjectPageMode';
 import { PopoverHorizontalAlign } from '../../enums/PopoverHorizontalAlign';
 import { PopoverPlacementType } from '../../enums/PopoverPlacementType';
 import { CommonProps } from '../../interfaces/CommonProps';
+import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
 import { safeGetChildrenArray } from '../../internal/safeGetChildrenArray';
 import { stopPropagation } from '../../internal/stopPropagation';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
@@ -44,7 +44,7 @@ import { ObjectPageCssVariables, styles } from './ObjectPage.jss';
 import { ObjectPageAnchorButton } from './ObjectPageAnchorButton';
 import { extractSectionIdFromHtmlId, getLastObjectPageSection, getSectionById } from './ObjectPageUtils';
 
-addCustomCSS(
+addCustomCSSWithScoping(
   'ui5-tabcontainer',
   `
   :host([data-component-name="ObjectPageTabContainer"]) .ui5-tc__header {
