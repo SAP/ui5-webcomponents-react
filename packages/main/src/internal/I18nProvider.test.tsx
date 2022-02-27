@@ -1,6 +1,6 @@
-import { render } from '@shared/tests';
+import { act, render, screen } from '@shared/tests';
 import { registerI18nLoader } from '@ui5/webcomponents-base/dist/asset-registries/i18n.js';
-import { setFetchDefaultLanguage } from '@ui5/webcomponents-base/dist/config/Language.js';
+import { setFetchDefaultLanguage, setLanguage } from '@ui5/webcomponents-base/dist/config/Language.js';
 import { useI18nBundle } from '@ui5/webcomponents-react-base';
 import React from 'react';
 import { ThemeProvider } from '../components/ThemeProvider';
@@ -25,6 +25,10 @@ const TestComponent3 = () => {
 describe('I18nProvider', () => {
   beforeAll(() => {
     setFetchDefaultLanguage(true);
+  });
+
+  beforeEach(async () => {
+    await setLanguage('en');
   });
 
   afterAll(() => {
@@ -75,5 +79,43 @@ describe('I18nProvider', () => {
         </div>
       </DocumentFragment>
     `);
+  });
+
+  test('Should update after changing the language', async () => {
+    let renderCounter = 0;
+    const TranslationComponent = () => {
+      renderCounter++;
+      const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
+      return <span>{i18nBundle.getText('PLEASE_WAIT')}</span>;
+    };
+    render(
+      <ThemeProvider>
+        <TranslationComponent />
+      </ThemeProvider>
+    );
+    expect(await screen.findByText('Please wait')).toBeInTheDocument();
+    expect(renderCounter).toBe(2);
+
+    await act(() => setLanguage('de'));
+    expect(await screen.findByText('Bitte warten')).toBeInTheDocument();
+    expect(renderCounter).toBe(3);
+
+    // should not rerender again
+    await act(() => setLanguage('de'));
+    expect(renderCounter).toBe(3);
+  });
+
+  test('should fill placeholders', async () => {
+    const PlaceholderComponent = () => {
+      const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
+      return <span>{i18nBundle.getText('X_OF_Y', 13, 37)}</span>;
+    };
+    render(
+      <ThemeProvider>
+        <PlaceholderComponent />
+      </ThemeProvider>
+    );
+
+    expect(await screen.findByText('13 of 37')).toBeInTheDocument();
   });
 });
