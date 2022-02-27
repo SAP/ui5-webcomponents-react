@@ -89,7 +89,13 @@ module.exports = {
         }
       }
     ],
-    'import/no-duplicates': 2
+    'import/no-duplicates': 2,
+    'prefer-arrow/prefer-arrow-functions': [
+      'error',
+      {
+        allowStandaloneDeclarations: true
+      }
+    ]
   },
   overrides: [
     {
