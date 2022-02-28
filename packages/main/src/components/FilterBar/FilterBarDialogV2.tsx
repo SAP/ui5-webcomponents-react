@@ -1,7 +1,9 @@
-import '@ui5/webcomponents-icons/dist/search.js';
-import '@ui5/webcomponents-icons/dist/list.js';
+import '@ui5/webcomponents-icons/dist/clear-all.js';
 import '@ui5/webcomponents-icons/dist/group-2.js';
+import '@ui5/webcomponents-icons/dist/list.js';
+import '@ui5/webcomponents-icons/dist/search.js';
 import { enrichEventWithDetails, useI18nBundle } from '@ui5/webcomponents-react-base';
+import { CssSizeVariables, ThemingParameters } from '@ui5/webcomponents-react-base/src';
 import {
   BASIC,
   CANCEL,
@@ -13,16 +15,24 @@ import {
   SEARCH_FOR_FILTERS,
   SHOW_ON_FILTER_BAR
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
-import React, { Children, cloneElement, ReactElement, useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+  Children,
+  cloneElement,
+  ReactElement,
+  useCallback,
+  useEffect,
+  useReducer,
+  useRef,
+  useState
+} from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
+import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent, FlexBoxWrap, ListMode } from '../../enums';
 import { BarDesign } from '../../enums/BarDesign';
 import { ButtonDesign } from '../../enums/ButtonDesign';
-import { FlexBoxAlignItems } from '../../enums/FlexBoxAlignItems';
-import { FlexBoxDirection } from '../../enums/FlexBoxDirection';
-import { FlexBoxJustifyContent } from '../../enums/FlexBoxJustifyContent';
 import { TitleLevel } from '../../enums/TitleLevel';
 import { stopPropagation } from '../../internal/stopPropagation';
+import { CustomListItem, List } from '../../webComponents';
 import { Bar } from '../../webComponents/Bar';
 import { Button } from '../../webComponents/Button';
 import { CheckBox } from '../../webComponents/CheckBox';
@@ -30,14 +40,24 @@ import { Dialog } from '../../webComponents/Dialog';
 import { Icon } from '../../webComponents/Icon';
 import { Input } from '../../webComponents/Input';
 import { Option } from '../../webComponents/Option';
-import { Select } from '../../webComponents/Select';
-import { Title } from '../../webComponents/Title';
 import { SegmentedButton } from '../../webComponents/SegmentedButton';
 import { SegmentedButtonItem } from '../../webComponents/SegmentedButtonItem';
+import { Select } from '../../webComponents/Select';
+import { Title } from '../../webComponents/Title';
+import { FilterGroupItemPropTypes } from '../FilterGroupItem';
 import { FlexBox } from '../FlexBox';
 import { Text } from '../Text';
 import styles from './FilterBarDialog.jss';
 import { filterValue, renderSearchWithValue, syncRef } from './utils';
+
+const preventEventPropagationFilter = (type, child, e) => {
+  e.isMarked = 'button';
+  stopPropagation(e);
+  e.preventDefault();
+  if (typeof child.props.children.props?.[type] === 'function') {
+    child.props.children.props[type](e);
+  }
+};
 
 const useStyles = createUseStyles(styles, { name: 'FilterBarDialog' });
 export const FilterDialogV2 = (props) => {
@@ -69,6 +89,8 @@ export const FilterDialogV2 = (props) => {
   const [toggledFilters, setToggledFilters] = useState({});
   const dialogRefs = useRef({});
   const dialogSearchRef = useRef(null);
+  //todo init false
+  const [showValues, toggleValues] = useReducer((prev) => !prev, true);
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
@@ -162,12 +184,20 @@ export const FilterDialogV2 = (props) => {
           filterItemProps = filterValue(filterBarItemRef, child);
         }
         if (!child.props.children) return child;
-        return cloneElement(child as ReactElement<any>, {
+        return cloneElement<FilterGroupItemPropTypes & { 'data-with-values': boolean }>(child, {
+          'data-with-values': showValues,
           children: {
             ...child.props.children,
             props: {
               ...child.props.children.props,
-              ...filterItemProps
+              ...filterItemProps,
+              onClick: (e) => {
+                console.log('Casdasd ajdhkjah');
+                e.preventDefault();
+                e.isMarked = 'button';
+              },
+              onKeyDown: (e) => preventEventPropagationFilter('onKeyDown', child, e),
+              onKeyUp: (e) => preventEventPropagationFilter('onKeyUp', child, e)
             },
             ref: (node) => {
               if (node) {
@@ -253,6 +283,7 @@ export const FilterDialogV2 = (props) => {
       onAfterClose={handleClose}
       resizable
       draggable
+      style={{ width: '40rem', '--_ui5_popup_content_padding': 0 }}
       header={
         <FlexBox
           alignItems={FlexBoxAlignItems.Center}
@@ -266,38 +297,127 @@ export const FilterDialogV2 = (props) => {
           <Button design={ButtonDesign.Transparent}>Reset</Button>
         </FlexBox>
       }
+      footer={
+        <Bar
+          design={BarDesign.Footer}
+          endContent={
+            <FlexBox justifyContent={FlexBoxJustifyContent.End} className={classes.footer}>
+              {showGoButton && (
+                <Button
+                  onClick={handleDialogGo}
+                  design={ButtonDesign.Emphasized}
+                  title={goText}
+                  data-component-name="FilterBarDialogGoBtn"
+                >
+                  {goText}
+                </Button>
+              )}
+              {showClearButton && (
+                <Button onClick={handleClear} data-component-name="FilterBarDialogClearBtn">
+                  {clearText}
+                </Button>
+              )}
+              {showRestoreButton && (
+                <Button onClick={handleRestore} data-component-name="FilterBarDialogRestoreBtn">
+                  {restoreText}
+                </Button>
+              )}
+              <Button onClick={handleSave} data-component-name="FilterBarDialogSaveBtn">
+                {saveText}
+              </Button>
+              <Button
+                design={ButtonDesign.Transparent}
+                onClick={handleCancel}
+                data-component-name="FilterBarDialogCancelBtn"
+              >
+                {cancelText}
+              </Button>
+            </FlexBox>
+          }
+        />
+      }
     >
-      {/*todo change to FlexBox because of bottom border in Bar*/}
-      <Bar
-        design={BarDesign.Subheader}
-        startContent={
-          // todo i18n, cb
+      <FlexBox
+        direction={FlexBoxDirection.Column}
+        style={{ padding: '0 1rem', boxShadow: ThemingParameters.sapContent_HeaderShadow }}
+      >
+        {/*todo a11y maybe use header tags here*/}
+        <FlexBox
+          wrap={FlexBoxWrap.NoWrap}
+          justifyContent={FlexBoxJustifyContent.SpaceBetween}
+          alignItems={FlexBoxAlignItems.Center}
+          style={{ height: CssSizeVariables.sapWcrToolbarHeight, paddingBottom: '0.25rem' }}
+        >
+          {/*// todo i18n, cb*/}
           <Select>
             <Option selected>All</Option>
           </Select>
-        }
-        endContent={
           <FlexBox alignItems={FlexBoxAlignItems.Center} justifyContent={FlexBoxJustifyContent.End}>
-            <Button design={ButtonDesign.Transparent}>Hide Values</Button>
+            <Button design={ButtonDesign.Transparent} onClick={toggleValues}>
+              {showValues ? 'Hide Values' : 'Show Values'}
+            </Button>
             <SegmentedButton>
               <SegmentedButtonItem icon="list" />
               <SegmentedButtonItem icon="group-2" />
             </SegmentedButton>
           </FlexBox>
+        </FlexBox>
+        {showSearch && (
+          <FlexBox style={{ height: CssSizeVariables.sapWcrToolbarHeight, paddingBottom: '0.25rem' }}>
+            {/*todo  clear btn*/}
+            <Input
+              placeholder={searchForFiltersText}
+              onInput={handleSearch}
+              icon={<Icon name="search" />}
+              ref={dialogSearchRef}
+              style={{ width: '100%' }}
+            />
+          </FlexBox>
+        )}
+      </FlexBox>
+      <List
+        //todo change visible items
+        onSelectionChange={(e) => {
+          // if (typeof handleSelectionChange === 'function') {
+          //   //todo null was rect node previously, check how this can be achieved
+          //   handleSelectionChange(enrichEventWithDetails(e, { element, checked: e.target.checked }));
+          // }
+          // setToggledFilters((old) => ({ ...old, [element.key]: e.target.checked }));
+          // console.log(e, e.detail.selectedItems, e.detail.previouslySelectedItems);
+        }}
+        mode={ListMode.MultiSelect}
+        header={
+          <FlexBox
+            alignItems={FlexBoxAlignItems.Center}
+            //todo rtl
+            style={{
+              paddingLeft: '0.5rem',
+              paddingRight: '1rem',
+              height: 'var(--_ui5_list_item_base_height)',
+              backgroundColor: ThemingParameters.sapList_HeaderBackground
+            }}
+            wrap={FlexBoxWrap.NoWrap}
+          >
+            <Icon
+              interactive
+              name="clear-all"
+              style={{ cursor: 'pointer', padding: '0 var(--_ui5_checkbox_wrapper_padding)' }}
+            />
+            <FlexBox style={{ flexGrow: 1 }}>
+              <Text style={{ flexBasis: '80%' }}>Filter</Text>
+              {!showValues && <Text style={{ flexGrow: 1, textAlign: 'center' }}>Active</Text>}
+            </FlexBox>
+          </FlexBox>
         }
-      />
-      {showSearch && (
-        //todo width 100%, clear btn
-        <Input
-          placeholder={searchForFiltersText}
-          onInput={handleSearch}
-          icon={<Icon name="search" />}
-          ref={dialogSearchRef}
-        />
-      )}
+      >
+        {renderChildren()}
+      </List>
     </Dialog>,
     portalContainer
   );
+
+  //todo old
+
   return createPortal(
     <Dialog
       ref={dialogRef}

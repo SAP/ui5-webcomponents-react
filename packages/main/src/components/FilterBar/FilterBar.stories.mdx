@@ -31,6 +31,7 @@ import {
     search: { control: { disable: true } },
     variants: { control: { disable: true } },
     children: { control: { disable: true } },
+    portalContainer: { control: { disable: true } },
     filterContainerWidth: { control: 'text' },
     as: { control: { disable: true } }
   }}
@@ -62,9 +63,14 @@ import {
   <Story name="Default">
     {(args) => {
       return (
-        <FilterBar {...args}>
+        <FilterBar {...args} showSearchOnFiltersDialog>
           <FilterGroupItem label="StepInput">
-            <StepInput />
+            <StepInput
+              onClick={(e) => {
+                console.log('click');
+                e.stopPropagation();
+              }}
+            />
           </FilterGroupItem>
           <FilterGroupItem label="RatingIndicator">
             <RatingIndicator />
@@ -195,6 +201,7 @@ import {
       search: { table: { disable: true } },
       variants: { table: { disable: true } },
       onToggleFilters: { table: { disable: true } },
+      portalContainer: { table: { disable: true } },
       onFiltersDialogOpen: { table: { disable: true } },
       onFiltersDialogCancel: { table: { disable: true } },
       onFiltersDialogClose: { table: { disable: true } },

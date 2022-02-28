@@ -36,9 +36,13 @@ import { Toolbar } from '../Toolbar';
 import { ToolbarSeparator } from '../ToolbarSeparator';
 import { ToolbarSpacer } from '../ToolbarSpacer';
 import styles from './FilterBar.jss';
+import { FilterDialogV2 } from './FilterBarDialogV2';
 import { FilterDialog } from './FilterDialog';
 import { filterValue, renderSearchWithValue, syncRef } from './utils';
 
+//todo missing props: useSnapshot, header (use headerText instead)
+//todo changed props:
+//todo deprecated props: showClearButton
 export interface FilterBarPropTypes extends CommonProps {
   /**
    * Defines the filters of the `FilterBar`.
@@ -616,7 +620,7 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
   return (
     <>
       {dialogOpen && showFilterConfiguration && (
-        <FilterDialog
+        <FilterDialogV2
           filterBarRefs={filterRefs}
           open={dialogOpen}
           handleDialogClose={handleDialogClose}
@@ -638,7 +642,7 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
           dialogRef={dialogRef}
         >
           {safeChildren()}
-        </FilterDialog>
+        </FilterDialogV2>
       )}
       <CustomTag
         ref={componentRef}
