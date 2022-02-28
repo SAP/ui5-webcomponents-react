@@ -36,7 +36,7 @@ describe('I18nProvider', () => {
   });
 
   test('should throw error when context is not present', () => {
-    expect(() => render(<TestComponent />)).toThrow(
+    expect(() => render(<TestComponent />, { wrapper: ({ children }) => <div>{children}</div> })).toThrow(
       `'useI18nBundle()' may be used only in the context of a '<ThemeProvider>' component.`
     );
   });

@@ -77,11 +77,11 @@ exports[`SelectDialog Basic 1`] = `
 exports[`SelectDialog MultiSelect 1`] = `
 <DocumentFragment>
   <ui5-dialog
-    class="SelectDialog-dialog-0-2-1"
+    class="SelectDialog-dialog"
     data-component-name="SelectDialog"
     on-desktop=""
     opened=""
-    style="z-index: 106; display: flex; top: 384px; left: 512px;"
+    style="z-index: 104; display: flex; top: 384px; left: 512px;"
     ui5-dialog=""
   >
     <ui5-bar
@@ -108,7 +108,7 @@ exports[`SelectDialog MultiSelect 1`] = `
       </ui5-button>
     </ui5-bar>
     <ui5-bar
-      class="SelectDialog-noShadow-0-2-3 SelectDialog-spread-0-2-2"
+      class="SelectDialog-noShadow SelectDialog-spread"
       data-sap-ui-fastnavgroup="true"
       design="Header"
       slot="header"
@@ -130,7 +130,7 @@ exports[`SelectDialog MultiSelect 1`] = `
       />
     </ui5-bar>
     <ui5-bar
-      class="SelectDialog-noShadow-0-2-3"
+      class="SelectDialog-noShadow"
       data-component-name="SelectDialogSubHeader"
       data-sap-ui-fastnavgroup="true"
       design="Subheader"
@@ -139,7 +139,7 @@ exports[`SelectDialog MultiSelect 1`] = `
     >
       <ui5-input
         accessible-name="Search"
-        class="SelectDialog-spread-0-2-2 ui5-bar-content"
+        class="SelectDialog-spread ui5-bar-content"
         placeholder="Search"
         type="Text"
         ui5-input=""
@@ -148,7 +148,7 @@ exports[`SelectDialog MultiSelect 1`] = `
       >
         <ui5-icon
           accessible-name="Search"
-          class="SelectDialog-inputIcon-0-2-4"
+          class="SelectDialog-inputIcon"
           name="search"
           slot="icon"
           title="Search"
@@ -157,18 +157,18 @@ exports[`SelectDialog MultiSelect 1`] = `
       </ui5-input>
     </ui5-bar>
     <div
-      class="Toolbar-outerContainer-0-2-6 Toolbar-info-0-2-10 SelectDialog-infoBar-0-2-5"
+      class="Toolbar-outerContainer Toolbar-info SelectDialog-infoBar"
     >
       <div
-        class="Toolbar-toolbar-0-2-13"
+        class="Toolbar-toolbar"
         data-component-name="ToolbarContent"
       >
         <div
-          class="Toolbar-childContainer-0-2-16"
+          class="Toolbar-childContainer"
           data-component-name="ToolbarChildContainer"
         >
           <span
-            class="Text-text-0-2-17"
+            class="Text-text"
           >
             Selected: 2
           </span>

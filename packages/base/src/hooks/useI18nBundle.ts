@@ -28,17 +28,18 @@ export const useI18nBundle = (bundleName: string): I18nBundle => {
 
   useIsomorphicLayoutEffect(() => {
     let isMounted = true;
-    const fetchI18n = async () => {
-      const internalBundle = await getI18nBundle(bundleName);
-      if (isMounted) {
-        setI18nBundle(bundleName, internalBundle);
-      }
+    const fetchI18n = () => {
+      getI18nBundle(bundleName).then((internalBundle) => {
+        if (isMounted) {
+          setI18nBundle(bundleName, internalBundle);
+        }
+      });
     };
-    void fetchI18n();
+    fetchI18n();
     attachLanguageChange(fetchI18n);
     return () => {
-      detachLanguageChange(fetchI18n);
       isMounted = false;
+      detachLanguageChange(fetchI18n);
     };
   }, [bundleName]);
 
