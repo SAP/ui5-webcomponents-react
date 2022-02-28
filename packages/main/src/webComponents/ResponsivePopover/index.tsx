@@ -41,6 +41,10 @@ interface ResponsivePopoverAttributes {
    */
   modal?: boolean;
   /**
+   * Defines the opener id of the element that the popover is shown at
+   */
+  opener?: string;
+  /**
    * Determines on which side the component is placed at.
    *
    * Available options are:
@@ -74,6 +78,10 @@ interface ResponsivePopoverAttributes {
    * Defines the ID of the HTML Element, which will get the initial focus.
    */
   initialFocus?: string;
+  /**
+   * Indicates if the element is open
+   */
+  open?: boolean;
   /**
    * Defines if the focus should be returned to the previously focused element, when the popup closes.
    */
@@ -151,13 +159,14 @@ const ResponsivePopover = withWebComponent<ResponsivePopoverPropTypes, Responsiv
   [
     'headerText',
     'horizontalAlign',
+    'opener',
     'placementType',
     'verticalAlign',
     'accessibleName',
     'accessibleNameRef',
     'initialFocus'
   ],
-  ['allowTargetOverlap', 'hideArrow', 'hideBackdrop', 'modal', 'preventFocusRestore'],
+  ['allowTargetOverlap', 'hideArrow', 'hideBackdrop', 'modal', 'open', 'preventFocusRestore'],
   ['footer', 'header'],
   ['after-close', 'after-open', 'before-close', 'before-open']
 );

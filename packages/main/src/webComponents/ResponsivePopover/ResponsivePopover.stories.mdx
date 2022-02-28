@@ -1,19 +1,19 @@
+import { DocsHeader } from '@docs/DocsHeader';
+import { Footer } from '@docs/Footer';
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
-import { ResponsivePopover } from './index';
+import '@ui5/webcomponents-icons/dist/settings.js';
+import { useRef } from 'react';
+import { PopoverHorizontalAlign } from '../../enums/PopoverHorizontalAlign';
+import { PopoverPlacementType } from '../../enums/PopoverPlacementType';
+import { PopoverVerticalAlign } from '../../enums/PopoverVerticalAlign';
 import { Bar } from '../Bar';
-import { Title } from '../Title';
+import { Button } from '../Button';
 import { Icon } from '../Icon';
 import { Label } from '../Label';
 import { List } from '../List';
 import { StandardListItem } from '../StandardListItem';
-import { Button } from '../Button';
-import { PopoverHorizontalAlign } from '../../enums/PopoverHorizontalAlign';
-import { PopoverPlacementType } from '../../enums/PopoverPlacementType';
-import { PopoverVerticalAlign } from '../../enums/PopoverVerticalAlign';
-import { useRef } from 'react';
-import '@ui5/webcomponents-icons/dist/settings.js';
-import { DocsHeader } from '@docs/DocsHeader';
-import { Footer } from '@docs/Footer';
+import { Title } from '../Title';
+import { ResponsivePopover } from './index';
 
 <Meta
   title="Modals & Popovers / ResponsivePopover"
@@ -32,11 +32,7 @@ import { Footer } from '@docs/Footer';
     horizontalAlign: PopoverHorizontalAlign.Center,
     placementType: PopoverPlacementType.Right,
     verticalAlign: PopoverVerticalAlign.Center,
-    style: {},
-    className: '',
-    tooltip: '',
-    slot: '',
-    ref: null
+    opener: 'openPopoverBtn'
   }}
 />
 
@@ -49,14 +45,10 @@ import { Footer } from '@docs/Footer';
 <Canvas>
   <Story name="Default">
     {(args) => {
-      const popoverRef = useRef(null);
-      const onButtonClick = (e) => {
-        popoverRef.current.showAt(e.target);
-      };
       return (
         <>
-          <Button onClick={onButtonClick}>Open Popover</Button>
-          <ResponsivePopover {...args} ref={popoverRef} />
+          <Button id="openPopoverBtn">Open Popover (set the open prop to true)</Button>
+          <ResponsivePopover {...args} />
         </>
       );
     }}
@@ -86,6 +78,34 @@ Use it when you want to make sure that all the content is visible on any device
 
 ## Opening ResponsivePopovers
 
+<br />
+
+#### since 0.22.0
+
+We recommend opening and closing the `ResponsivePopover` component in a declarative way using the `open` and `opener` prop.
+You can still use the imperative way which is outlined below.
+
+```jsx
+const MyComponentWithPopover = () => {
+  const [popoverIsOpen, setPopoverIsOpen] = useState(false);
+  return (
+    <>
+      <Button
+        id={'openPopoverBtn'}
+        onClick={() => {
+          setPopoverIsOpen(true);
+        }}
+      >
+        Open Popover
+      </Button>
+      <ResponsivePopover opener={'openPopoverBtn'} open={popoverIsOpen} />
+    </>
+  );
+};
+```
+
+#### before 0.22.0
+
 `ResponsivePopovers` can only be opened by attaching a `ref` to the component and then call the corresponding **`showAt`** method. The method receives the target element - _on which the `ResponsivePopover` is to be opened_ - as parameter.
 
 ```JSX
@@ -97,7 +117,7 @@ Use it when you want to make sure that all the content is visible on any device
     return (
       <>
         <Button onClick={onButtonClick}>Open Popover</Button>
-        <ResponsivePopovers ref={popoverRef}>Some Content</ResponsivePopovers>
+        <ResponsivePopover ref={popoverRef}>Some Content</ResponsivePopovers>
       </>
     );
   };
@@ -125,7 +145,8 @@ const PopoverComponent = () => {
 
 ## Closing ResponsivePopovers
 
-Closing `ResponsivePopovers` works in the same way as opening them. So again an attached `ref` is needed on which the corresponding `close` method is called.
+Closing `ResponsivePopovers` works in the same way as opening them.
+You can either set the `open` prop to `false` or attaching a `ref` on which the corresponding `close` method is called.
 
 ```JSX
   const PopoverComponent = () => {
