@@ -2,7 +2,7 @@ import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import '@ui5/webcomponents-icons/dist/settings.js';
-import { useRef } from 'react';
+import { useState } from 'react';
 import { PopoverHorizontalAlign } from '../../enums/PopoverHorizontalAlign';
 import { PopoverPlacementType } from '../../enums/PopoverPlacementType';
 import { PopoverVerticalAlign } from '../../enums/PopoverVerticalAlign';
@@ -45,10 +45,25 @@ import { ResponsivePopover } from './index';
 <Canvas>
   <Story name="Default">
     {(args) => {
+      const [responsivePopoverIsOpen, setResponsivePopoverIsOpen] = useState(args.open);
       return (
         <>
-          <Button id="openPopoverBtn">Open Popover (set the open prop to true)</Button>
-          <ResponsivePopover {...args} />
+          <Button
+            id={'openResponsivePopoverBtn'}
+            onClick={() => {
+              setResponsivePopoverIsOpen(true);
+            }}
+          >
+            Open Popover
+          </Button>
+          <ResponsivePopover
+            {...args}
+            onAfterClose={() => {
+              setResponsivePopoverIsOpen(false);
+            }}
+            opener="openResponsivePopoverBtn"
+            open={responsivePopoverIsOpen}
+          />
         </>
       );
     }}
@@ -98,7 +113,13 @@ const MyComponentWithPopover = () => {
       >
         Open Popover
       </Button>
-      <ResponsivePopover opener={'openPopoverBtn'} open={popoverIsOpen} />
+      <ResponsivePopover
+        opener={'openPopoverBtn'}
+        open={popoverIsOpen}
+        onAfterClose={() => {
+          setResponsivePopoverIsOpen(false);
+        }}
+      />
     </>
   );
 };
@@ -108,7 +129,7 @@ const MyComponentWithPopover = () => {
 
 `ResponsivePopovers` can only be opened by attaching a `ref` to the component and then call the corresponding **`showAt`** method. The method receives the target element - _on which the `ResponsivePopover` is to be opened_ - as parameter.
 
-```JSX
+```jsx
   const PopoverComponent = () => {
     const popoverRef = useRef();
     const onButtonClick = (e) => {
@@ -128,7 +149,7 @@ const MyComponentWithPopover = () => {
 `ResponsivePopovers` are often used within other components, when opened this could sometimes have unwanted side effects.
 In this case, we recommend using [createPortal](https://reactjs.org/docs/portals.html) to mount the `ResponsivePopover` outside of the DOM hierarchy of the parent component.
 
-```JSX
+```jsx
 const PopoverComponent = () => {
   const popoverRef = useRef(null);
   const onButtonClick = (e) => {
@@ -148,24 +169,24 @@ const PopoverComponent = () => {
 Closing `ResponsivePopovers` works in the same way as opening them.
 You can either set the `open` prop to `false` or attaching a `ref` on which the corresponding `close` method is called.
 
-```JSX
-  const PopoverComponent = () => {
-    const popoverRef = useRef();
-    const handleOpen = (e) => {
-        popoverRef.current.showAt(e.target);
-    };
-    const handleClose = () => {
-        popoverRef.current.close();
-    };
-    return (
-      <>
-        <Button onClick={handleOpen}>Open Popover</Button>
-        <ResponsivePopovers ref={popoverRef}>
-            <Button onClick={handleClose}>Close Popover</Button>
-        </ResponsivePopovers>
-      </>
-    );
+```jsx
+const PopoverComponent = () => {
+  const popoverRef = useRef();
+  const handleOpen = (e) => {
+    popoverRef.current.showAt(e.target);
   };
+  const handleClose = () => {
+    popoverRef.current.close();
+  };
+  return (
+    <>
+      <Button onClick={handleOpen}>Open Popover</Button>
+      <ResponsivePopovers ref={popoverRef}>
+        <Button onClick={handleClose}>Close Popover</Button>
+      </ResponsivePopovers>
+    </>
+  );
+};
 ```
 
 # More Examples
@@ -175,19 +196,23 @@ You can either set the `open` prop to `false` or attaching a `ref` on which the 
 <Canvas>
   <Story name="with content">
     {(args) => {
-      const popoverRef = useRef(null);
-      const onButtonClick = (e) => {
-        popoverRef.current.showAt(e.target);
+      const [responsivePopoverIsOpen, setResponsivePopoverIsOpen] = useState(false);
+      const onButtonClick = () => {
+        setResponsivePopoverIsOpen(true);
       };
       const handleClose = () => {
-        popoverRef.current.close();
+        setResponsivePopoverIsOpen(false);
       };
       return (
         <>
-          <Button onClick={onButtonClick}>Open Popover</Button>
+          <Button id="respPopoverBtn2" onClick={onButtonClick}>
+            Open Responsive Popover
+          </Button>
           <ResponsivePopover
             {...args}
-            ref={popoverRef}
+            opener="respPopoverBtn2"
+            open={responsivePopoverIsOpen}
+            onAfterClose={handleClose}
             header={
               <Bar endContent={<Icon name="settings" />}>
                 <Title>Popover</Title>
