@@ -81,7 +81,7 @@ exports[`SelectDialog MultiSelect 1`] = `
     data-component-name="SelectDialog"
     on-desktop=""
     opened=""
-    style="z-index: 104; display: flex; top: 384px; left: 512px;"
+    style="z-index: 106; display: flex; top: 384px; left: 512px;"
     ui5-dialog=""
   >
     <ui5-bar
