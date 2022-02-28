@@ -3,7 +3,7 @@ import { Footer } from '@docs/Footer';
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import '@ui5/webcomponents-icons/dist/settings.js';
 import { BarChart, MicroBarChart } from '@ui5/webcomponents-react-charts';
-import { useRef } from 'react';
+import { useState } from 'react';
 import { PopoverHorizontalAlign } from '../../enums/PopoverHorizontalAlign';
 import { PopoverPlacementType } from '../../enums/PopoverPlacementType';
 import { PopoverVerticalAlign } from '../../enums/PopoverVerticalAlign';
@@ -28,8 +28,7 @@ import { Popover } from './index';
     headerText: 'Popover Header',
     horizontalAlign: PopoverHorizontalAlign.Center,
     placementType: PopoverPlacementType.Right,
-    verticalAlign: PopoverVerticalAlign.Center,
-    opener: 'openPopoverBtn'
+    verticalAlign: PopoverVerticalAlign.Center
   }}
 />
 
@@ -42,10 +41,25 @@ import { Popover } from './index';
 <Canvas>
   <Story name="Default">
     {(args) => {
+      const [popoverIsOpen, setPopoverIsOpen] = useState(args.open);
       return (
         <>
-          <Button id={'openPopoverBtn'}>Open Popover (set the open prop to true)</Button>
-          <Popover {...args} />
+          <Button
+            id={'openPopoverBtn'}
+            onClick={() => {
+              setPopoverIsOpen(true);
+            }}
+          >
+            Open Popover
+          </Button>
+          <Popover
+            {...args}
+            onAfterClose={() => {
+              setPopoverIsOpen(false);
+            }}
+            opener="openPopoverBtn"
+            open={popoverIsOpen}
+          />
         </>
       );
     }}
@@ -101,7 +115,13 @@ const MyComponentWithPopover = () => {
       >
         Open Popover
       </Button>
-      <Popover opener={'openPopoverBtn'} open={popoverIsOpen} />
+      <Popover
+        opener={'openPopoverBtn'}
+        open={popoverIsOpen}
+        onAfterClose={() => {
+          setPopoverIsOpen(false);
+        }}
+      />
     </>
   );
 };
@@ -111,19 +131,19 @@ const MyComponentWithPopover = () => {
 
 `Popovers` can only be opened by attaching a `ref` to the component and then call the corresponding **`showAt`** method. The method receives the target element - _on which the `Popover` is to be opened_ - as parameter.
 
-```JSX
-  const PopoverComponent = () => {
-    const popoverRef = useRef();
-    const onButtonClick = (e) => {
-        popoverRef.current.showAt(e.target);
-    };
-    return (
-      <>
-        <Button onClick={onButtonClick}>Open Popover</Button>
-        <Popover ref={popoverRef}>Some Content</Popover>
-      </>
-    );
+```jsx
+const PopoverComponent = () => {
+  const popoverRef = useRef();
+  const onButtonClick = (e) => {
+    popoverRef.current.showAt(e.target);
   };
+  return (
+    <>
+      <Button onClick={onButtonClick}>Open Popover</Button>
+      <Popover ref={popoverRef}>Some Content</Popover>
+    </>
+  );
+};
 ```
 
 ## Using Popovers inside other components
@@ -131,7 +151,7 @@ const MyComponentWithPopover = () => {
 `Popovers` are often used within other components, when opened this could sometimes have unwanted side effects.
 In this case, we recommend using [createPortal](https://reactjs.org/docs/portals.html) to mount the `Popover` outside of the DOM hierarchy of the parent component.
 
-```JSX
+```jsx
 const PopoverComponent = () => {
   const popoverRef = useRef(null);
   const onButtonClick = (e) => {
@@ -151,24 +171,24 @@ const PopoverComponent = () => {
 Closing `Popovers` works in the same way as opening them.
 You can either set the `open` prop to `false` or attaching a `ref` on which the corresponding `close` method is called.
 
-```JSX
-  const PopoverComponent = () => {
-    const popoverRef = useRef();
-    const handleOpen = (e) => {
-        popoverRef.current.showAt(e.target);
-    };
-    const handleClose = () => {
-        popoverRef.current.close();
-    };
-    return (
-      <>
-        <Button onClick={handleOpen}>Open Popover</Button>
-        <Popover ref={popoverRef}>
-            <Button onClick={handleClose}>Close Popover</Button>
-        </Popover>
-      </>
-    );
+```jsx
+const PopoverComponent = () => {
+  const popoverRef = useRef();
+  const handleOpen = (e) => {
+    popoverRef.current.showAt(e.target);
   };
+  const handleClose = () => {
+    popoverRef.current.close();
+  };
+  return (
+    <>
+      <Button onClick={handleOpen}>Open Popover</Button>
+      <Popover ref={popoverRef}>
+        <Button onClick={handleClose}>Close Popover</Button>
+      </Popover>
+    </>
+  );
+};
 ```
 
 # More Examples
@@ -178,19 +198,22 @@ You can either set the `open` prop to `false` or attaching a `ref` on which the 
 <Canvas>
   <Story name="with content">
     {(args) => {
-      const popoverRef = useRef(null);
-      const onButtonClick = (e) => {
-        popoverRef.current.showAt(e.target);
+      const [popoverIsOpen, setPopoverIsOpen] = useState(false);
+      const onButtonClick = () => {
+        setPopoverIsOpen(true);
       };
       const handleClose = () => {
-        popoverRef.current.close();
+        setPopoverIsOpen(false);
       };
       return (
         <>
-          <Button onClick={onButtonClick}>Open Popover</Button>
+          <Button id="openPopoverBtn2" onClick={onButtonClick}>
+            Open Popover
+          </Button>
           <Popover
             {...args}
-            ref={popoverRef}
+            opener="openPopoverBtn2"
+            open={popoverIsOpen}
             header={
               <Bar endContent={<Icon name="settings" />}>
                 <Title>Popover</Title>
@@ -217,16 +240,16 @@ Hover over the `MicroBarChart` to see a more detailed view.
 <Canvas>
   <Story name="open on hover">
     {(args) => {
-      const popoverRef = useRef(null);
-      const handleOpen = (e) => {
-        popoverRef.current.showAt(e.target);
+      const [popoverIsOpen, setPopoverIsOpen] = useState(false);
+      const handleOpen = () => {
+        setPopoverIsOpen(true);
       };
       const handleClose = () => {
-        popoverRef.current.close();
+        setPopoverIsOpen(false);
       };
       return (
         <>
-          <div onMouseEnter={handleOpen} onMouseLeave={handleClose} style={{ width: '120px' }}>
+          <div id="microBarChart" onMouseEnter={handleOpen} onMouseLeave={handleClose} style={{ width: '120px' }}>
             <MicroBarChart
               style={{ height: '70px' }}
               dimension={{
@@ -251,7 +274,7 @@ Hover over the `MicroBarChart` to see a more detailed view.
               ]}
             />
           </div>
-          <Popover {...args} ref={popoverRef} headerText="Detailed Chart View">
+          <Popover {...args} open={popoverIsOpen} opener={'microBarChart'} headerText="Detailed Chart View">
             <BarChart
               style={{ height: '400px', width: '300px' }}
               dimensions={[
