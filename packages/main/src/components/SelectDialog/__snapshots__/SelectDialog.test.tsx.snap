@@ -80,7 +80,7 @@ exports[`SelectDialog MultiSelect 1`] = `
     class="SelectDialog-dialog-0-2-1"
     data-component-name="SelectDialog"
     on-desktop=""
-    opened=""
+    open=""
     style="z-index: 106; display: flex; top: 384px; left: 512px;"
     ui5-dialog=""
   >
