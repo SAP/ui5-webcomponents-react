@@ -7,6 +7,10 @@ import { withWebComponent } from '../../internal/withWebComponent';
 
 interface LinkAttributes {
   /**
+   * Defines the accessible aria name of the component.
+   */
+  accessibleName?: string;
+  /**
    * Receives id(or many ids) of the elements that label the input
    */
   accessibleNameRef?: string;
@@ -58,7 +62,6 @@ export interface LinkDomRef extends LinkAttributes, Ui5DomRef {
    * *   `expanded`: Indicates whether the anchor element, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:
    *     *   `true`
    *     *   `false`
-   *
    * *   `hasPopup`: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the anchor element. Accepts the following string values:
    *     *   `Dialog`
    *     *   `Grid`
@@ -88,7 +91,7 @@ export interface LinkPropTypes extends LinkAttributes, Omit<CommonProps, 'onClic
  */
 const Link = withWebComponent<LinkPropTypes, LinkDomRef>(
   'ui5-link',
-  ['accessibleNameRef', 'design', 'href', 'target', 'wrappingType'],
+  ['accessibleName', 'accessibleNameRef', 'design', 'href', 'target', 'wrappingType'],
   ['disabled'],
   [],
   ['click']

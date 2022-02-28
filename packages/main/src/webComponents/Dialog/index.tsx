@@ -44,6 +44,10 @@ interface DialogAttributes {
    */
   initialFocus?: string;
   /**
+   * Indicates if the element is open
+   */
+  open?: boolean;
+  /**
    * Defines if the focus should be returned to the previously focused element, when the popup closes.
    */
   preventFocusRestore?: boolean;
@@ -121,7 +125,7 @@ export interface DialogPropTypes extends DialogAttributes, Omit<CommonProps, 'dr
 const Dialog = withWebComponent<DialogPropTypes, DialogDomRef>(
   'ui5-dialog',
   ['headerText', 'accessibleName', 'accessibleNameRef', 'initialFocus'],
-  ['draggable', 'resizable', 'stretch', 'preventFocusRestore'],
+  ['draggable', 'resizable', 'stretch', 'open', 'preventFocusRestore'],
   ['footer', 'header'],
   ['after-close', 'after-open', 'before-close', 'before-open']
 );

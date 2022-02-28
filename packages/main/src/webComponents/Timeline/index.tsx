@@ -7,6 +7,10 @@ import { withWebComponent } from '../../internal/withWebComponent';
 
 interface TimelineAttributes {
   /**
+   * Defines the accessible aria name of the component.
+   */
+  accessibleName?: string;
+  /**
    * Defines the items orientation.
    *
    * **Note:** Available options are:
@@ -31,7 +35,13 @@ export interface TimelinePropTypes extends TimelineAttributes, CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Timeline" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Timeline = withWebComponent<TimelinePropTypes, TimelineDomRef>('ui5-timeline', ['layout'], [], [], []);
+const Timeline = withWebComponent<TimelinePropTypes, TimelineDomRef>(
+  'ui5-timeline',
+  ['accessibleName', 'layout'],
+  [],
+  [],
+  []
+);
 
 Timeline.displayName = 'Timeline';
 

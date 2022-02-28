@@ -12,7 +12,7 @@ interface MultiInputAttributes {
    */
   showValueHelpIcon?: boolean;
   /**
-   * Sets the accessible aria name of the component.
+   * Defines the accessible aria name of the component.
    */
   accessibleName?: string;
   /**
@@ -51,6 +51,10 @@ interface MultiInputAttributes {
    * Defines whether the component is required.
    */
   required?: boolean;
+  /**
+   * Defines whether the clear icon of the input will be shown.
+   */
+  showClearIcon?: boolean;
   /**
    * Defines whether the component should show suggestions, if such are present.
    *
@@ -187,7 +191,7 @@ export interface MultiInputPropTypes extends MultiInputAttributes, Omit<CommonPr
 const MultiInput = withWebComponent<MultiInputPropTypes, MultiInputDomRef>(
   'ui5-multi-input',
   ['accessibleName', 'accessibleNameRef', 'maxlength', 'name', 'placeholder', 'type', 'value', 'valueState'],
-  ['showValueHelpIcon', 'disabled', 'readonly', 'required', 'showSuggestions'],
+  ['showValueHelpIcon', 'disabled', 'readonly', 'required', 'showClearIcon', 'showSuggestions'],
   ['tokens', 'icon', 'valueStateMessage'],
   ['token-delete', 'value-help-trigger', 'change', 'input', 'suggestion-item-preview', 'suggestion-item-select']
 );
