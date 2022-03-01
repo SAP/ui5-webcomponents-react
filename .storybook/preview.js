@@ -34,7 +34,6 @@ export const parameters = {
 export const argTypes = {
   style: argTypesCategoryCommonProps,
   className: argTypesCategoryCommonProps,
-  tooltip: argTypesCategoryCommonProps,
   slot: {
     table: { disable: true }
   },
