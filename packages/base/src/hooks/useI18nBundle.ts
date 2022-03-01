@@ -1,5 +1,4 @@
 import { getI18nBundle } from '@ui5/webcomponents-base/dist/i18nBundle.js';
-import { attachLanguageChange, detachLanguageChange } from '@ui5/webcomponents-base/dist/locale/languageChange.js';
 import formatMessage from '@ui5/webcomponents-base/dist/util/formatMessage.js';
 import { useContext } from 'react';
 import { I18nContext } from '../context/I18nContext';
@@ -9,9 +8,11 @@ type TextWithDefault = { key: string; defaultText: string } | string;
 
 export interface I18nBundle {
   getText: (textObj: TextWithDefault, ...args: any[]) => string;
+  packageName: string;
 }
 
 const defaultBundle = {
+  packageName: 'defaultBundle',
   getText: (val, ...values) => {
     return formatMessage(val?.defaultText ?? val ?? '', values);
   }
@@ -28,18 +29,15 @@ export const useI18nBundle = (bundleName: string): I18nBundle => {
 
   useIsomorphicLayoutEffect(() => {
     let isMounted = true;
-    const fetchI18n = () => {
+    if (!i18nBundles.hasOwnProperty(bundleName)) {
       getI18nBundle(bundleName).then((internalBundle) => {
         if (isMounted) {
           setI18nBundle(bundleName, internalBundle);
         }
       });
-    };
-    fetchI18n();
-    attachLanguageChange(fetchI18n);
+    }
     return () => {
       isMounted = false;
-      detachLanguageChange(fetchI18n);
     };
   }, [bundleName]);
 

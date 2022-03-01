@@ -1,33 +1,58 @@
-import { I18nContext } from '@ui5/webcomponents-react-base';
-import React, { ReactNode, useCallback, useReducer } from 'react';
+import { getI18nBundle } from '@ui5/webcomponents-base/dist/i18nBundle.js';
+import { attachLanguageChange, detachLanguageChange } from '@ui5/webcomponents-base/dist/locale/languageChange.js';
+import { I18nBundle, I18nContext } from '@ui5/webcomponents-react-base';
+import React, { ReactNode, useCallback, useEffect, useReducer, useRef } from 'react';
 
 export interface I18nProviderPropTypes {
   children: ReactNode;
 }
 
-type TextWithDefault = { key: string; defaultText: string } | string;
-
-interface I18nBundle {
-  getText: (textObj: TextWithDefault, ...args: any[]) => string;
-}
-
 type I18nBundleMap = Record<string, I18nBundle>;
 
-const bundleReducer = (currentBundles: I18nBundleMap, action: { name: string; bundle: I18nBundle }) => {
+const bundleReducer = (currentBundles: I18nBundleMap, action: { payload: I18nBundleMap }) => {
   return {
     ...currentBundles,
-    [action.name]: action.bundle
+    ...action.payload
   };
 };
 
 export function I18nProvider({ children }: I18nProviderPropTypes): JSX.Element {
   const [i18nBundles, setI18nBundles] = useReducer(bundleReducer, {});
+  const localBundles = useRef<I18nBundleMap>({});
 
   const setI18nBundle = useCallback((name: string, bundle: I18nBundle) => {
     setI18nBundles({
-      name,
-      bundle
+      payload: {
+        [name]: bundle
+      }
     });
+    localBundles.current[name] = bundle;
+  }, []);
+
+  useEffect(() => {
+    let isMounted = true;
+    const fetchI18n = async () => {
+      const bundles = await Promise.all(
+        Object.keys(localBundles.current).map((bundleName) => getI18nBundle(bundleName))
+      );
+      const bundleMap = bundles.reduce(
+        (acc, bundle) => ({
+          ...acc,
+          [bundle.packageName]: bundle
+        }),
+        {}
+      );
+      if (isMounted) {
+        setI18nBundles({
+          payload: bundleMap
+        });
+      }
+    };
+    attachLanguageChange(fetchI18n);
+    return () => {
+      isMounted = false;
+      detachLanguageChange(fetchI18n);
+    };
   }, []);
 
   return (
