@@ -242,6 +242,7 @@ export const FilterDialog = (props) => {
   };
   return createPortal(
     <Dialog
+      className={classes.dialogComponent}
       ref={dialogRef}
       header={
         <FlexBox direction={FlexBoxDirection.Column} alignItems={FlexBoxAlignItems.Center} className={classes.header}>
