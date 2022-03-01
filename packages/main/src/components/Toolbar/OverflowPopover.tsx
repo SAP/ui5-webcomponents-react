@@ -5,7 +5,7 @@ import { ButtonDesign } from '../../enums/ButtonDesign';
 import { PopoverPlacementType } from '../../enums/PopoverPlacementType';
 import { stopPropagation } from '../../internal/stopPropagation';
 import { Popover, PopoverDomRef } from '../../webComponents/Popover';
-import { ToggleButton } from '../../webComponents/ToggleButton';
+import { ToggleButton, ToggleButtonDomRef } from '../../webComponents/ToggleButton';
 import { useSyncRef } from '@ui5/webcomponents-react-base';
 
 interface OverflowPopoverProps {
@@ -33,10 +33,13 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
 
   const [componentRef, popoverRef] = useSyncRef<PopoverDomRef>(overflowPopoverRef);
   const [pressed, setPressed] = useState(false);
+  const toggleBtnRef = useRef<ToggleButtonDomRef>(null);
 
   const handleToggleButtonClick = useCallback(
     (e) => {
       e.stopPropagation();
+      console.log(!pressed);
+      toggleBtnRef.current.accessibilityAttributes.expanded = `${!pressed}`;
       if (popoverRef.current) {
         if (!pressed) {
           popoverRef.current.showAt(e.target);
@@ -85,9 +88,20 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
     });
   }, [children, lastVisibleIndex]);
 
+  useEffect(() => {
+    const waitForDefine = async () => {
+      await customElements.whenDefined('ui5-toggle-button').then(() => {
+        toggleBtnRef.current.accessibilityAttributes.expanded = `${pressed}`;
+        toggleBtnRef.current.accessibilityAttributes.hasPopup = 'menu';
+      });
+    };
+    waitForDefine();
+  }, []);
+
   return (
     <>
       <ToggleButton
+        ref={toggleBtnRef}
         design={ButtonDesign.Transparent}
         icon="overflow"
         onClick={handleToggleButtonClick}
