@@ -101,7 +101,6 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
           ref={componentRef}
           onAfterClose={handleClose}
           hideArrow
-          style={{ padding: 0 }}
         >
           <div className={classes.popoverContent} ref={overflowContentRef}>
             {renderChildren()}

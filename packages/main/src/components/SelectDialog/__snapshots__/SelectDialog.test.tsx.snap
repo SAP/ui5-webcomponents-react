@@ -164,11 +164,11 @@ exports[`SelectDialog MultiSelect 1`] = `
         data-component-name="ToolbarContent"
       >
         <div
-          class="Toolbar-childContainer-0-2-16"
+          class="Toolbar-childContainer-0-2-17"
           data-component-name="ToolbarChildContainer"
         >
           <span
-            class="Text-text-0-2-17"
+            class="Text-text-0-2-18"
           >
             Selected: 2
           </span>
