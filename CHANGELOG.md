@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.22.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.21.5...v0.22.0) (2022-03-02)
+
+
+### Bug Fixes
+
+* apply custom styles to scoped ui5 web components ([#2622](https://github.com/SAP/ui5-webcomponents-react/issues/2622)) ([6af4f03](https://github.com/SAP/ui5-webcomponents-react/commit/6af4f03c95d80eb9315b4caa341e6e80efa7579f))
+* **ColumnChartWithTrend:** update measures on dataset change ([#2640](https://github.com/SAP/ui5-webcomponents-react/issues/2640)) ([cde4a55](https://github.com/SAP/ui5-webcomponents-react/commit/cde4a5551abef86ac104813696d79dc44b55c710))
+* **useI18nBundle:** update translations in all mounted components ([#2629](https://github.com/SAP/ui5-webcomponents-react/issues/2629)) ([6840840](https://github.com/SAP/ui5-webcomponents-react/commit/6840840605664df58b6a8ee9d8f706046a0777d3))
+
+
+### Features
+
+* **Toolbar:** add a11y attributes to overflow button ([#2634](https://github.com/SAP/ui5-webcomponents-react/issues/2634)) ([e0d2a5e](https://github.com/SAP/ui5-webcomponents-react/commit/e0d2a5e6c5d0ffcbb7a06b3c536941df3cc7f54f))
+* update @ui5/webcomponents to 1.2.1 ([#2631](https://github.com/SAP/ui5-webcomponents-react/issues/2631)) ([f9a0156](https://github.com/SAP/ui5-webcomponents-react/commit/f9a0156b6e8c40d4bd87ecf195f885e3d2b4e1dd))
+
+
+### BREAKING CHANGES
+
+* **useI18nBundle:** The `useI18nBundle` hook must now be used in the context of the `ThemeProvider`.
+
+
+
+
+
 ## [0.21.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.21.4...v0.21.5) (2022-02-21)
 
 
