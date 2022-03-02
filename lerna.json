@@ -7,7 +7,7 @@
   "useWorkspaces": true,
   "command": {
     "version": {
-      "allowBranch": "main",
+      "allowBranch": "v0.21.x",
       "conventionalCommits": true,
       "yes": true,
       "preid": "rc",
