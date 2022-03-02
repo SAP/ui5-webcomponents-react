@@ -52,4 +52,4 @@ export const usePrepareTrendMeasures = (measures: ITrendChartMeasure[], dataset:
       });
     });
     return { lineMeasures, columnMeasures, columnDataset };
-  }, [measures]);
+  }, [measures, dataset]);
