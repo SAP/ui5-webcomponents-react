@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.21.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.21.5...v0.21.6) (2022-03-02)
+
+
+### Bug Fixes
+
+* apply custom styles to scoped ui5 web components ([#2622](https://github.com/SAP/ui5-webcomponents-react/issues/2622)) ([6af4f03](https://github.com/SAP/ui5-webcomponents-react/commit/6af4f03c95d80eb9315b4caa341e6e80efa7579f))
+
+
+
+
+
 ## [0.21.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.21.4...v0.21.5) (2022-02-21)
 
 

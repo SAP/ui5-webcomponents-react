@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.21.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.21.5...v0.21.6) (2022-03-02)
+
+
+### Bug Fixes
+
+* **ColumnChartWithTrend:** update measures on dataset change ([#2640](https://github.com/SAP/ui5-webcomponents-react/issues/2640)) ([ae0714d](https://github.com/SAP/ui5-webcomponents-react/commit/ae0714d070380e024fbb2de5a1bf37e0be9d2856))
+
+
+
+
+
 ## [0.21.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.21.2...v0.21.3) (2022-02-21)
 
 
