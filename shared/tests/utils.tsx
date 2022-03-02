@@ -1,5 +1,5 @@
-import { render, screen, waitFor } from '@testing-library/react';
 import React, { ComponentType } from 'react';
+import { render, screen, waitFor } from './';
 
 export const modifyObjectProperty = (object: any, attr: string, value: any) => {
   Object.defineProperty(object, attr, {
