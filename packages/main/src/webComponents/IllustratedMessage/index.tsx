@@ -131,6 +131,8 @@ export interface IllustratedMessagePropTypes extends IllustratedMessageAttribute
  *
  * **Note:** By default the “BeforeSearch” illustration is loaded. To use other illustrations, make sure you import them in addition, for example:
  * `import "@ui5/webcomponents-fiori/dist/illustrations/NoData.js"`
+ * **Note:** Illustrations starting with the “Tnt” prefix are part of another illustration set. For example to use the “TntSuccess” illustration, add the following import::
+ * `import "@ui5/webcomponents-fiori/dist/illustrations/tnt/Success.js"`
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/IllustratedMessage" target="_blank">UI5 Web Components Playground</ui5-link>
  */

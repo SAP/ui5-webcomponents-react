@@ -7,7 +7,7 @@ import { withWebComponent } from '../../internal/withWebComponent';
 
 interface SegmentedButtonAttributes {
   /**
-   * Sets the accessible aria name of the component.
+   * Defines the accessible aria name of the component.
    */
   accessibleName?: string;
 }

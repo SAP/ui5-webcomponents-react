@@ -7,6 +7,10 @@ import { withWebComponent } from '../../internal/withWebComponent';
 
 interface SwitchAttributes {
   /**
+   * Sets the accessible aria name of the component.
+   */
+  accessibleName?: string;
+  /**
    * Receives id(or many ids) of the elements that label the component.
    */
   accessibleNameRef?: string;
@@ -61,7 +65,7 @@ export interface SwitchPropTypes extends SwitchAttributes, Omit<CommonProps, 'on
  */
 const Switch = withWebComponent<SwitchPropTypes, SwitchDomRef>(
   'ui5-switch',
-  ['accessibleNameRef', 'design', 'textOff', 'textOn'],
+  ['accessibleName', 'accessibleNameRef', 'design', 'textOff', 'textOn'],
   ['checked', 'disabled'],
   [],
   ['change']

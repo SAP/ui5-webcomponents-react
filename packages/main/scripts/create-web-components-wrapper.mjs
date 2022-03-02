@@ -286,11 +286,10 @@ const createWebComponentWrapper = async (
   }
 
   const imports = [
-    ...importStatements,
-    '', // do not remove this empty line - otherwise the eslint/import-order plugin won't work as expected
     `import '@ui5/webcomponents${componentsFromFioriPackage.has(componentSpec.module) ? '-fiori' : ''}/dist/${
-      componentSpec.module
-    }.js';`
+        componentSpec.module
+    }.js';`,
+    ...importStatements
   ];
 
   return await renderComponentWrapper({

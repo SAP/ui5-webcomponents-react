@@ -38,7 +38,7 @@ export interface BreadcrumbsPropTypes extends BreadcrumbsAttributes, CommonProps
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Fires when a `BreadcrumbsItem` is clicked.
+   * Fires when a `BreadcrumbsItem` is clicked. **Note:** You can prevent browser location change by calling `event.preventDefault()`.
    */
   onItemClick?: (event: Ui5CustomEvent<HTMLElement, { item: ReactNode }>) => void;
 }

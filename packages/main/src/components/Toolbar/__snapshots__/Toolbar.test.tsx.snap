@@ -290,6 +290,7 @@ exports[`Toolbar overflow menu 1`] = `
     </div>
   </div>
   <ui5-popover
+    class="Toolbar-popover"
     hide-arrow="true"
     horizontal-align="Center"
     placement-type="Bottom"
@@ -402,6 +403,7 @@ exports[`Toolbar overflow menu 2`] = `
     </div>
   </div>
   <ui5-popover
+    class="Toolbar-popover"
     hide-arrow="true"
     horizontal-align="Center"
     placement-type="Bottom"
@@ -524,6 +526,7 @@ exports[`Toolbar overflow menu 3`] = `
     </div>
   </div>
   <ui5-popover
+    class="Toolbar-popover"
     hide-arrow="true"
     horizontal-align="Center"
     placement-type="Bottom"

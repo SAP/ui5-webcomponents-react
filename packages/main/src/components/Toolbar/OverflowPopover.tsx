@@ -10,7 +10,7 @@ import { useSyncRef } from '@ui5/webcomponents-react-base';
 
 interface OverflowPopoverProps {
   lastVisibleIndex: number;
-  contentClass: string;
+  classes: any;
   children: ReactNode;
   portalContainer: Element;
   overflowContentRef: Ref<HTMLDivElement>;
@@ -22,7 +22,7 @@ interface OverflowPopoverProps {
 export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopoverProps) => {
   const {
     lastVisibleIndex,
-    contentClass,
+    classes,
     children,
     portalContainer,
     overflowContentRef,
@@ -95,8 +95,14 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
         accessibleName={showMoreText}
       />
       {createPortal(
-        <Popover placementType={PopoverPlacementType.Bottom} ref={componentRef} onAfterClose={handleClose} hideArrow>
-          <div className={contentClass} ref={overflowContentRef}>
+        <Popover
+          className={classes.popover}
+          placementType={PopoverPlacementType.Bottom}
+          ref={componentRef}
+          onAfterClose={handleClose}
+          hideArrow
+        >
+          <div className={classes.popoverContent} ref={overflowContentRef}>
             {renderChildren()}
           </div>
         </Popover>,
