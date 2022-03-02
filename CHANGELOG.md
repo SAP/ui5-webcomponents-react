@@ -8,8 +8,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* apply custom styles to scoped ui5 web components ([#2622](https://github.com/SAP/ui5-webcomponents-react/issues/2622)) ([6af4f03](https://github.com/SAP/ui5-webcomponents-react/commit/6af4f03c95d80eb9315b4caa341e6e80efa7579f))
-* **ColumnChartWithTrend:** update measures on dataset change ([#2640](https://github.com/SAP/ui5-webcomponents-react/issues/2640)) ([cde4a55](https://github.com/SAP/ui5-webcomponents-react/commit/cde4a5551abef86ac104813696d79dc44b55c710))
 * **useI18nBundle:** update translations in all mounted components ([#2629](https://github.com/SAP/ui5-webcomponents-react/issues/2629)) ([6840840](https://github.com/SAP/ui5-webcomponents-react/commit/6840840605664df58b6a8ee9d8f706046a0777d3))
 
 
