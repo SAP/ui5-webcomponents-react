@@ -19,7 +19,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### BREAKING CHANGES
 
-* **useI18nBundle:** The `useI18nBundle` hook must now be used in the context of the `ThemeProvider`.
+* **useI18nBundle:** The `useI18nBundle` hook must now be used in the context of the `ThemeProvider`.  
+_Please make sure that you have wrapped your App in the ThemeProvider component._
 
 
 
