@@ -89,8 +89,10 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
 
   useEffect(() => {
     customElements.whenDefined('ui5-toggle-button').then(() => {
-      toggleBtnRef.current.accessibilityAttributes.expanded = `${pressed}`;
-      toggleBtnRef.current.accessibilityAttributes.hasPopup = 'menu';
+      if (toggleBtnRef.current) {
+        toggleBtnRef.current.accessibilityAttributes.expanded = `${pressed}`;
+        toggleBtnRef.current.accessibilityAttributes.hasPopup = 'menu';
+      }
     });
   }, []);
 
