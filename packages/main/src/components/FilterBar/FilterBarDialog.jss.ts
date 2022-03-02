@@ -1,6 +1,11 @@
 import { CssSizeVariables, spacing } from '@ui5/webcomponents-react-base';
 
 const styles = {
+  dialogComponent: {
+    '&::part(content)': {
+      padding: 0
+    }
+  },
   dialog: {
     ...spacing.sapUiContentPadding,
     display: 'flex',

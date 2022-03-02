@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2.4.0
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 1
 
@@ -31,7 +31,7 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    - uses: actions/checkout@v2.4.0
+    - uses: actions/checkout@v3
       with:
         persist-credentials: false
 
@@ -62,13 +62,13 @@ jobs:
 
     strategy:
       matrix:
-        react-version: [16.8.0, 16.14.0, ^17.0.0]
+        react-version: [16.14.0, ^17.0.0]
 
     env:
       CI: true
 
     steps:
-      - uses: actions/checkout@v2.4.0
+      - uses: actions/checkout@v3
       - name: Use Node.js
         uses: actions/setup-node@v3.0.0
         with:
@@ -91,6 +91,6 @@ jobs:
   reuse-compliance:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.4.0
+      - uses: actions/checkout@v3
       - name: REUSE Compliance Check
         uses: fsfe/reuse-action@v1.1

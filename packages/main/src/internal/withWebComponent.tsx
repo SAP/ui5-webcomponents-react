@@ -41,8 +41,9 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
   slotProperties: string[],
   eventProperties: string[]
 ) => {
+  const hasTooltipProp = regularProperties.includes('tooltip');
   const WithWebComponent = forwardRef((props: Props & WithWebComponentPropTypes, wcRef: Ref<RefType>) => {
-    const { className, tooltip, children, waitForDefine, ...rest } = props;
+    const { className, children, waitForDefine, ...rest } = props;
     //@ts-ignore
     const [componentRef, ref] = useSyncRef<HTMLElement>(wcRef);
     const eventRegistry = useRef<Record<string, EventHandler>>({});
@@ -133,7 +134,7 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
       .reduce((acc, [key, val]) => ({ ...acc, [key]: val }), {});
 
     useEffect(() => {
-      if (tooltip) {
+      if (rest.tooltip && !hasTooltipProp) {
         // strip ui5 prefix and convert to PascalCase
         const componentName = tagName.substring(3).replace(/(^\w|-\w)/g, (text) => text.replace(/-/, '').toUpperCase());
         deprecationNotice(
@@ -141,7 +142,7 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
           '`tooltip` has been deprecated, please use the native `title` attribute instead.'
         );
       }
-    }, [tooltip]);
+    }, [rest.tooltip]);
 
     useEffect(() => {
       if (waitForDefine && !isDefined) {
@@ -158,7 +159,7 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
     return (
       <Component
         ref={componentRef}
-        title={tooltip}
+        title={hasTooltipProp ? null : rest.tooltip}
         {...booleanProps}
         {...regularProps}
         {...nonWebComponentRelatedProps}

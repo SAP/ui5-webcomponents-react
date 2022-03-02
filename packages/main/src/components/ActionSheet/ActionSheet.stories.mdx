@@ -1,12 +1,12 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
-import { ActionSheet } from './index';
-import { Button } from '../../webComponents/Button';
-import { PopoverPlacementType } from '../../enums/PopoverPlacementType';
-import { PopoverHorizontalAlign } from '../../enums/PopoverHorizontalAlign';
-import { PopoverVerticalAlign } from '../../enums/PopoverVerticalAlign';
-import { useCallback, useRef } from 'react';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { useState } from 'react';
+import { PopoverHorizontalAlign } from '../../enums/PopoverHorizontalAlign';
+import { PopoverPlacementType } from '../../enums/PopoverPlacementType';
+import { PopoverVerticalAlign } from '../../enums/PopoverVerticalAlign';
+import { Button } from '../../webComponents/Button';
+import { ActionSheet } from './index';
 
 <Meta
   title="Modals & Popovers / ActionSheet"
@@ -26,7 +26,8 @@ import { Footer } from '@docs/Footer';
   args={{
     horizontalAlign: PopoverHorizontalAlign.Center,
     placementType: PopoverPlacementType.Right,
-    verticalAlign: PopoverVerticalAlign.Center
+    verticalAlign: PopoverVerticalAlign.Center,
+    open: false
   }}
 />
 
@@ -39,22 +40,30 @@ import { Footer } from '@docs/Footer';
 <Canvas>
   <Story name="Default">
     {(args) => {
-      const actionSheetRef = useRef();
-      const onButtonClick = useCallback(
-        (e) => {
-          actionSheetRef.current.showAt(e.target);
-        },
-        [actionSheetRef]
-      );
+      const [actionSheetOpen, setActionSheetOpen] = useState(args.open);
       return (
-        <>
-          <Button onClick={onButtonClick}>Open ActionSheet</Button>
-          <ActionSheet {...args} ref={actionSheetRef}>
+        <div>
+          <Button
+            onClick={() => {
+              setActionSheetOpen(true);
+            }}
+            id={'actionSheetOpener'}
+          >
+            Open ActionSheet
+          </Button>
+          <ActionSheet
+            {...args}
+            opener="actionSheetOpener"
+            open={actionSheetOpen}
+            onAfterClose={() => {
+              setActionSheetOpen(false);
+            }}
+          >
             <Button icon="add">Accept</Button>
             <Button>Reject</Button>
             <Button>This is my super long text!</Button>
           </ActionSheet>
-        </>
+        </div>
       );
     }}
   </Story>
@@ -77,9 +86,43 @@ This component exposes public methods. You can invoke them directly on the insta
 
 ## Opening ActionSheets
 
-`ActionSheets` can only be opened by attaching a `ref` to the component and then call the corresponding **`open`** method. The method receives the target element - _on which the `ActionSheet` is to be opened_ - as parameter.
+<br />
 
-```JSX
+#### since 0.22.0
+
+We recommend opening and closing the `ActionSheet` component in a declarative way using the `open` and `opener` prop.
+You can still use the imperative way which is outlined below.
+
+```jsx
+const MyComponentWithActionSheet = () => {
+  const [actionSheetIsOpen, setActionSheetIsOpen] = useState(false);
+  return (
+    <>
+      <Button
+        id={'openActionSheetBtn'}
+        onClick={() => {
+          setActionSheetIsOpen(true);
+        }}
+      >
+        Open Action Sheet
+      </Button>
+      <ActionSheet
+        opener={'openActionSheetBtn'}
+        open={actionSheetIsOpen}
+        onAfterClose={() => {
+          setActionSheetIsOpen(false);
+        }}
+      />
+    </>
+  );
+};
+```
+
+#### before 0.22.0
+
+`ActionSheets` can only be opened by attaching a `ref` to the component and then call the corresponding **`showAt`** method. The method receives the target element - _on which the `ActionSheet` is to be opened_ - as parameter.
+
+```jsx
 const ActionSheetComponent = () => {
   const actionSheetRef = useRef();
   const onButtonClick = (e) => {

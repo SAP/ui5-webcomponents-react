@@ -125,7 +125,7 @@ export interface ShellBarPropTypes extends ShellBarAttributes, CommonProps {
    */
   onLogoClick?: (event: Ui5CustomEvent<HTMLElement, { targetRef: ReactNode }>) => void;
   /**
-   * Fired, when a menu item is activated **Note:** You can prevent closing of oveflow popover by calling `event.preventDefault()`.
+   * Fired, when a menu item is activated **Note:** You can prevent closing of overflow popover by calling `event.preventDefault()`.
    */
   onMenuItemClick?: (event: Ui5CustomEvent<HTMLElement, { item: ReactNode }>) => void;
   /**
@@ -133,7 +133,7 @@ export interface ShellBarPropTypes extends ShellBarAttributes, CommonProps {
    */
   onNotificationsClick?: (event: Ui5CustomEvent<HTMLElement, { targetRef: ReactNode }>) => void;
   /**
-   * Fired, when the product switch icon is activated. **Note:** You can prevent closing of oveflow popover by calling `event.preventDefault()`.
+   * Fired, when the product switch icon is activated. **Note:** You can prevent closing of overflow popover by calling `event.preventDefault()`.
    */
   onProductSwitchClick?: (event: Ui5CustomEvent<HTMLElement, { targetRef: ReactNode }>) => void;
   /**

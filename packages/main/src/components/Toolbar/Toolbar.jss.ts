@@ -67,6 +67,11 @@ export const styles = {
   overflowButtonContainer: {
     marginRight: '0.5rem'
   },
+  popover: {
+    '&[ui5-popover]::part(content)': {
+      padding: 0
+    }
+  },
   popoverContent: {
     maxWidth: '20rem',
     padding: CssSizeVariables.sapWcrToolbarPopoverContentPadding,

@@ -76,7 +76,7 @@ export interface AvatarDomRef extends AvatarAttributes, Ui5DomRef {}
 
 export interface AvatarPropTypes extends AvatarAttributes, CommonProps {
   /**
-   * Receives the desired `<img>` tag
+   * Receives the desired `<img>` tag **Note:** If you experience flickering of the provided image, you can hide the component until it is being defined with the following CSS:
    *
    * **Note:** If you experience flickering of the provided image, you can hide the component until it is being defined with the following CSS:
    *

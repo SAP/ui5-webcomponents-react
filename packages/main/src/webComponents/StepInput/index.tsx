@@ -8,7 +8,7 @@ import { withWebComponent } from '../../internal/withWebComponent';
 
 interface StepInputAttributes {
   /**
-   * Sets the accessible aria name of the component.
+   * Defines the accessible aria name of the component.
    */
   accessibleName?: string;
   /**
