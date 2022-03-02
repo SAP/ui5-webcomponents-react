@@ -38,7 +38,6 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
   const handleToggleButtonClick = useCallback(
     (e) => {
       e.stopPropagation();
-      console.log(!pressed);
       toggleBtnRef.current.accessibilityAttributes.expanded = `${!pressed}`;
       if (popoverRef.current) {
         if (!pressed) {
@@ -89,13 +88,10 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
   }, [children, lastVisibleIndex]);
 
   useEffect(() => {
-    const waitForDefine = async () => {
-      await customElements.whenDefined('ui5-toggle-button').then(() => {
-        toggleBtnRef.current.accessibilityAttributes.expanded = `${pressed}`;
-        toggleBtnRef.current.accessibilityAttributes.hasPopup = 'menu';
-      });
-    };
-    waitForDefine();
+    customElements.whenDefined('ui5-toggle-button').then(() => {
+      toggleBtnRef.current.accessibilityAttributes.expanded = `${pressed}`;
+      toggleBtnRef.current.accessibilityAttributes.hasPopup = 'menu';
+    });
   }, []);
 
   return (
