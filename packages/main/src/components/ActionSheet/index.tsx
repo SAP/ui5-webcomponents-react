@@ -76,6 +76,9 @@ if (isPhone()) {
     box-sizing: border-box;
     min-height: unset;
   }
+  :host([data-actionsheet]) [ui5-dialog] header {
+    box-shadow: none;
+  }
   :host([data-actionsheet]) [ui5-title] {
     color: ${ThemingParameters.sapContent_ContrastTextColor} !important;
     text-shadow: none;
