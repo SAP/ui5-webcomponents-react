@@ -67,12 +67,7 @@ const styles = {
     width: '100%',
     overflowX: 'hidden',
     overflowY: 'hidden',
-    boxSizing: 'border-box',
-    '&[data-h-align="End"]': {
-      '& $text': {
-        textAlign: 'end'
-      }
-    }
+    boxSizing: 'border-box'
   },
   text: {
     width: '100%',
@@ -130,25 +125,29 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
 
   const textStyle = (() => {
     let margin = 0;
+    let style: CSSProperties = {};
+
+    if (column.hAlign) {
+      style.textAlign = column.hAlign.toLowerCase() as any;
+    }
 
     if (column.isSorted) margin++;
     if (column.isGrouped) margin++;
     if (isFiltered) margin++;
 
     if (margin === 0) {
-      return {};
+      return style;
     }
 
     if (margin > 0) margin += 0.5;
 
     if (isRtl) {
-      return {
-        marginLeft: `${margin}rem`
-      };
+      style.marginLeft = `${margin}rem`;
+    } else {
+      style.marginRight = `${margin}rem`;
     }
-    return {
-      marginRight: `${margin}rem`
-    };
+
+    return style;
   })();
 
   const hasPopover = column.canGroupBy || column.canSort || column.canFilter;
