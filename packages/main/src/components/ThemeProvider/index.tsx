@@ -1,6 +1,7 @@
 import { cssVariablesStyles, ThemingParameters } from '@ui5/webcomponents-react-base';
 import React, { FC, ReactNode, useEffect } from 'react';
 import { createUseStyles, ThemeProvider as ReactJssThemeProvider } from 'react-jss';
+import { I18nProvider } from '../../internal/I18nProvider';
 import { GlobalStyleClassesStyles } from './GlobalStyleClasses.jss';
 
 const useStyles = createUseStyles(GlobalStyleClassesStyles);
@@ -34,7 +35,11 @@ const ThemeProvider: FC<ThemeProviderPropTypes> = (props: ThemeProviderPropTypes
     }
   }, []);
 
-  return <ReactJssThemeProvider theme={ThemingParameters}>{children}</ReactJssThemeProvider>;
+  return (
+    <ReactJssThemeProvider theme={ThemingParameters}>
+      <I18nProvider>{children}</I18nProvider>
+    </ReactJssThemeProvider>
+  );
 };
 
 ThemeProvider.displayName = 'ThemeProvider';

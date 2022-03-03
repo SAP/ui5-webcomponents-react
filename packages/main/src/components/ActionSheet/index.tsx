@@ -2,16 +2,7 @@ import { isPhone } from '@ui5/webcomponents-base/dist/Device.js';
 import { ThemingParameters, useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base';
 import { AVAILABLE_ACTIONS, CANCEL, X_OF_Y } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import clsx from 'clsx';
-import React, {
-  Children,
-  cloneElement,
-  forwardRef,
-  ReactElement,
-  RefObject,
-  useCallback,
-  useReducer,
-  useRef
-} from 'react';
+import React, { Children, cloneElement, forwardRef, ReactElement, Ref, useCallback, useReducer, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
 import { ButtonDesign } from '../../enums/ButtonDesign';
@@ -93,7 +84,7 @@ if (isPhone()) {
  * The `ActionSheet` holds a list of buttons from which the user can select to complete an action. <br />
  * The children of the action sheet should be `Button` components. Elements in the `ActionSheet` are left-aligned. Actions should be arranged in order of importance, from top to bottom.
  */
-const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: RefObject<ResponsivePopoverDomRef>) => {
+const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: Ref<ResponsivePopoverDomRef>) => {
   const {
     a11yConfig,
     allowTargetOverlap,

@@ -33,7 +33,11 @@ import { Toolbar } from '../Toolbar';
 
 const useStyles = createUseStyles(
   {
-    dialog: { '--_ui5_popup_content_padding': 0 },
+    dialog: {
+      '&::part(content)': {
+        padding: 0
+      }
+    },
     spread: { width: '100%' },
     noShadow: { boxShadow: 'none' },
     inputIcon: { cursor: 'pointer', color: ThemingParameters.sapContent_IconColor },

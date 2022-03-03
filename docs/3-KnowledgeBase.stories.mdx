@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/addon-docs';
 import { MyCustomElement } from './styling/MyCustomElement';
-import { ThemeProvider } from '@ui5/webcomponents-react';
+import { ThemeProvider, MessageStrip } from '@ui5/webcomponents-react';
 import { BarComponent, FaultyBarComponent } from './knowledgeBaseExamples/slotExamples';
 import { TableOfContent } from '../.storybook/components/TableOfContent';
 import { Footer } from '@docs/Footer';
@@ -72,6 +72,11 @@ beforeEach(() => {
   window.ResizeObserver = ResizeObserverPolyfill;
 });
 ```
+
+<MessageStrip hideCloseButton>
+  Please note that you must also wrap your components in the `ThemeProvider` component for testing, otherwise components
+  with translations will probably not render.
+</MessageStrip>
 
 Now you should be able to run your test by using `npm run test` or `yarn test`.
 

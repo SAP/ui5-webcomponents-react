@@ -250,6 +250,56 @@ export enum IllustrationMessageType {
   Tent = 'Tent',
 
   /**
+   * "TntChartArea" illustration type.
+   */
+  TntChartArea = 'TntChartArea',
+
+  /**
+   * "TntChartArea2" illustration type.
+   */
+  TntChartArea2 = 'TntChartArea2',
+
+  /**
+   * "TntChartBar" illustration type.
+   */
+  TntChartBar = 'TntChartBar',
+
+  /**
+   * "TntChartBPMNFlow" illustration type.
+   */
+  TntChartBPMNFlow = 'TntChartBPMNFlow',
+
+  /**
+   * "TntChartBullet" illustration type.
+   */
+  TntChartBullet = 'TntChartBullet',
+
+  /**
+   * "TntChartDoughnut" illustration type.
+   */
+  TntChartDoughnut = 'TntChartDoughnut',
+
+  /**
+   * "TntChartFlow" illustration type.
+   */
+  TntChartFlow = 'TntChartFlow',
+
+  /**
+   * "TntChartGantt" illustration type.
+   */
+  TntChartGantt = 'TntChartGantt',
+
+  /**
+   * "TntChartOrg" illustration type.
+   */
+  TntChartOrg = 'TntChartOrg',
+
+  /**
+   * "TntChartPie" illustration type.
+   */
+  TntChartPie = 'TntChartPie',
+
+  /**
    * "TntCodePlaceholder" illustration type.
    */
   TntCodePlaceholder = 'TntCodePlaceholder',
@@ -258,6 +308,11 @@ export enum IllustrationMessageType {
    * "TntCompany" illustration type.
    */
   TntCompany = 'TntCompany',
+
+  /**
+   * "TntComponents" illustration type.
+   */
+  TntComponents = 'TntComponents',
 
   /**
    * "TntExternalLink" illustration type.
@@ -305,6 +360,11 @@ export enum IllustrationMessageType {
   TntRadar = 'TntRadar',
 
   /**
+   * "TntSecrets" illustration type.
+   */
+  TntSecrets = 'TntSecrets',
+
+  /**
    * "TntServices" illustration type.
    */
   TntServices = 'TntServices',
@@ -330,6 +390,26 @@ export enum IllustrationMessageType {
   TntSuccessfulAuth = 'TntSuccessfulAuth',
 
   /**
+   * "TntSystems" illustration type.
+   */
+  TntSystems = 'TntSystems',
+
+  /**
+   * "TntTeams" illustration type.
+   */
+  TntTeams = 'TntTeams',
+
+  /**
+   * "TntTools" illustration type.
+   */
+  TntTools = 'TntTools',
+
+  /**
+   * "TntUnableToLoad" illustration type.
+   */
+  TntUnableToLoad = 'TntUnableToLoad',
+
+  /**
    * "TntUnlock" illustration type.
    */
   TntUnlock = 'TntUnlock',
@@ -338,6 +418,11 @@ export enum IllustrationMessageType {
    * "TntUnsuccessfulAuth" illustration type.
    */
   TntUnsuccessfulAuth = 'TntUnsuccessfulAuth',
+
+  /**
+   * "TntUser2" illustration type.
+   */
+  TntUser2 = 'TntUser2',
 
   /**
    * "Unable To Load" illustration type.

@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react-base",
-  "version": "0.21.3",
+  "version": "0.22.0",
   "description": "Base for ui5-webcomponents-react",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -28,7 +28,7 @@
   },
   "peerDependencies": {
     "@types/react": "*",
-    "@ui5/webcomponents-base": "~1.1.2",
+    "@ui5/webcomponents-base": "~1.2.1",
     "react": "^16.8.0 || ^17.0.0"
   },
   "peerDependenciesMeta": {
