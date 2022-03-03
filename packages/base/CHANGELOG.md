@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.22.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.21.5...v0.22.0) (2022-03-02)
+
+
+### Bug Fixes
+
+* **useI18nBundle:** update translations in all mounted components ([#2629](https://github.com/SAP/ui5-webcomponents-react/issues/2629)) ([6840840](https://github.com/SAP/ui5-webcomponents-react/commit/6840840605664df58b6a8ee9d8f706046a0777d3))
+
+
+### Features
+
+* update @ui5/webcomponents to 1.2.1 ([#2631](https://github.com/SAP/ui5-webcomponents-react/issues/2631)) ([f9a0156](https://github.com/SAP/ui5-webcomponents-react/commit/f9a0156b6e8c40d4bd87ecf195f885e3d2b4e1dd))
+
+
+### BREAKING CHANGES
+
+* **useI18nBundle:** The `useI18nBundle` hook must now be used in the context of the `ThemeProvider`.
+
+
+
+
+
 ## [0.21.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.21.2...v0.21.3) (2022-02-21)
 
 **Note:** Version bump only for package @ui5/webcomponents-react-base
