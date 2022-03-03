@@ -17,6 +17,13 @@ or the [changelog](https://github.com/SAP/ui5-webcomponents-react/blob/main/CHAN
 
 <TableOfContent headingSelector="h2.sbdocs-h2" />
 
+## Migrating from 0.21.x to 0.22.0
+
+**useI18nBundle:** The `useI18nBundle` hook must now be used in the context of the `ThemeProvider`.
+
+- You will not need to change anything in your app's code base, since all components should already be wrapped by the `ThemeProvider`, but now you have to make sure that even your test components are wrapped inside of it.
+  Otherwise, translatable components will likely not render.
+
 ## Migrating from 0.19.x to 0.20.0
 
 ### Changed TypeScript `interfaces` for `ref`
