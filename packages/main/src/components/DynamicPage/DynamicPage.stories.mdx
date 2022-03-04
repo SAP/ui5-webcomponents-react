@@ -56,23 +56,27 @@ import { ProductsTable } from '../../../../../.storybook/components/ProductsTabl
     style: { maxHeight: '700px' },
     headerTitle: (
       <DynamicPageTitle
-        actions={[
-          <Button key={'edit'} design={ButtonDesign.Emphasized}>
-            Edit
-          </Button>,
-          <Button key={'delete'} design={ButtonDesign.Transparent}>
-            Delete
-          </Button>,
-          <Button key={'copy'} design={ButtonDesign.Transparent}>
-            Copy
-          </Button>,
-          <Button key={'action'} icon="action" design={ButtonDesign.Transparent} />
-        ]}
-        navigationActions={[
-          <Button key={'fullscreen'} icon="full-screen" design={ButtonDesign.Transparent} />,
-          <Button key={'exitFullscreen'} icon="exit-full-screen" design={ButtonDesign.Transparent} />,
-          <Button key={'decline'} icon="decline" design={ButtonDesign.Transparent} />
-        ]}
+        actions={
+          <>
+            <Button key={'edit'} design={ButtonDesign.Emphasized}>
+              Edit
+            </Button>
+            <Button key={'delete'} design={ButtonDesign.Transparent}>
+              Delete
+            </Button>
+            <Button key={'copy'} design={ButtonDesign.Transparent}>
+              Copy
+            </Button>
+            <Button key={'action'} icon="action" design={ButtonDesign.Transparent} />
+          </>
+        }
+        navigationActions={
+          <>
+            <Button key={'fullscreen'} icon="full-screen" design={ButtonDesign.Transparent} />
+            <Button key={'exitFullscreen'} icon="exit-full-screen" design={ButtonDesign.Transparent} />
+            <Button key={'decline'} icon="decline" design={ButtonDesign.Transparent} />
+          </>
+        }
         breadcrumbs={
           <Breadcrumbs>
             <BreadcrumbsItem>Home</BreadcrumbsItem>

@@ -92,7 +92,7 @@ interface InternalProps extends DynamicPageTitlePropTypes {
 const useStyles = createUseStyles(DynamicPageTitleStyles, { name: 'DynamicPageTitle' });
 
 const enhanceActionsWithClick = (actions, ref) =>
-  flattenFragments(actions, Infinity).map(actions, (action) =>
+  flattenFragments(actions, Infinity).map((action: ReactElement) =>
     React.cloneElement(action, {
       onClick: (e) => {
         if (typeof action.props?.onClick === 'function') {
