@@ -1,7 +1,10 @@
 import { Children, Fragment, ReactNode } from 'react';
 
-export function flattenFragments(children: ReactNode | ReactNode[], depth = 1): ReactNode[] {
+export function flattenFragments(children: ReactNode | ReactNode[], depth = 1): ReactNode | ReactNode[] {
   const flatChildren = [];
+  if (!children || Array.isArray(children)) {
+    return children;
+  }
   const removeFragments = (element, level = 0) => {
     if (!element) {
       return;
