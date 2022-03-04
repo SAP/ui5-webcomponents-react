@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.21.7](https://github.com/SAP/ui5-webcomponents-react/compare/v0.21.6...v0.21.7) (2022-03-04)
+
+
+### Bug Fixes
+
+* fix build for "bring your own webcomponents" wrappers ([#2649](https://github.com/SAP/ui5-webcomponents-react/issues/2649)) ([e015966](https://github.com/SAP/ui5-webcomponents-react/commit/e015966bf08f9a9c989d92b748deab326000759c))
+
+
+
+
+
 ## [0.21.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.21.5...v0.21.6) (2022-03-02)
 
 
