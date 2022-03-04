@@ -13,6 +13,10 @@ const styles = {
     },
     '& [ui5-button]:not([data-cancel-btn])::part(button)': {
       justifyContent: 'flex-start'
+    },
+    '&::part(header)': {
+      background: 'transparent',
+      boxShadow: 'none'
     }
   },
   contentMobile: {
