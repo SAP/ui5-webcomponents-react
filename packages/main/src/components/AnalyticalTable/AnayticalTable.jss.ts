@@ -16,7 +16,6 @@ const styles = {
   },
   tableHeaderRow: {
     height: CssSizeVariables.sapWcrAnalyticalTableRowHeight,
-    display: 'inline-flex',
     '& div:first-child $th': {
       borderLeft: `1px solid ${ThemingParameters.sapList_BorderColor}`
     }
