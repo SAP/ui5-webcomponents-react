@@ -19,6 +19,7 @@ import { ToolbarStyle } from '../../enums/ToolbarStyle';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { stopPropagation } from '../../internal/stopPropagation';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
+import { flattenFragments } from '../../internal/utils';
 import { PopoverDomRef } from '../../webComponents';
 import { FlexBox } from '../FlexBox';
 import { Toolbar } from '../Toolbar';
@@ -91,7 +92,7 @@ interface InternalProps extends DynamicPageTitlePropTypes {
 const useStyles = createUseStyles(DynamicPageTitleStyles, { name: 'DynamicPageTitle' });
 
 const enhanceActionsWithClick = (actions, ref) =>
-  React.Children.map(actions, (action) =>
+  flattenFragments(actions, Infinity).map(actions, (action) =>
     React.cloneElement(action, {
       onClick: (e) => {
         if (typeof action.props?.onClick === 'function') {
