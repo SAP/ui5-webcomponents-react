@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.22.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.22.0...v0.22.1) (2022-03-04)
+
+
+### Bug Fixes
+
+* **ActionSheet:** fix unexpected white line ([#2645](https://github.com/SAP/ui5-webcomponents-react/issues/2645)) ([b891060](https://github.com/SAP/ui5-webcomponents-react/commit/b891060aec9007bbd582f12e5821dcd1a001f631))
+* **AnalyticalTable:** correct: h-align of header, padding of popover, spacing between header & body ([#2643](https://github.com/SAP/ui5-webcomponents-react/issues/2643)) ([d566dde](https://github.com/SAP/ui5-webcomponents-react/commit/d566ddef5aefbdd58f162df237581e44221be9cc))
+* **DynamicPageTitle:** make sure overflow popover for actions closes after interaction ([#2653](https://github.com/SAP/ui5-webcomponents-react/issues/2653)) ([fd495a7](https://github.com/SAP/ui5-webcomponents-react/commit/fd495a78a517d3082a22913f0de0aa7b77f7425a))
+* fix build for "bring your own webcomponents" wrappers ([#2649](https://github.com/SAP/ui5-webcomponents-react/issues/2649)) ([1ad0c4f](https://github.com/SAP/ui5-webcomponents-react/commit/1ad0c4fee406355072c4f33578df4821652fa939))
+
+
+
+
+
 # [0.22.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.21.5...v0.22.0) (2022-03-02)
 
 
