@@ -18,5 +18,4 @@ export interface CommonProps extends HTMLAttributes<HTMLElement> {
    * @deprecated please use `title` prop instead.
    */
   tooltip?: string;
-  ref?: Ref<any>;
 }
