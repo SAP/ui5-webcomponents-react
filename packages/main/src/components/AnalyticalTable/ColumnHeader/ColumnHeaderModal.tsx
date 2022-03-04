@@ -37,7 +37,10 @@ export interface ColumnHeaderModalProperties {
 
 const styles = {
   popover: {
-    fontWeight: 'normal'
+    fontWeight: 'normal',
+    '&::part(content)': {
+      padding: 0
+    }
   },
   filterListItem: {
     height: 'var(--_ui5_list_item_base_height)'
