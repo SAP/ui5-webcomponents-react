@@ -8,6 +8,7 @@ import {
   createOnClickChartTest,
   createOnLegendClickNotCrashTest
 } from '@shared/tests/chartUtils';
+import { defaultMeasuresFormatter } from '@shared/tests/formatter';
 
 const dimensions = [
   {
@@ -20,7 +21,7 @@ const measures = [
   {
     accessor: 'users',
     label: 'Users',
-    formatter: (val) => val.toLocaleString()
+    formatter: defaultMeasuresFormatter
   },
   {
     accessor: 'sessions',
