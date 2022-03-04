@@ -21,7 +21,7 @@
     "clean": "rimraf components dist tmp wrappers webComponents",
     "build": "npm-run-all -s build:i18n build:tsc build:wrappers build:redirects",
     "build:tsc": "tsc",
-    "build:wrappers": "node scripts/build-wrappers.mjs && tsc --project tsconfig.wrappers.json",
+    "build:wrappers": "node scripts/build-wrappers.mjs && tsc --project tsconfig.wrappers.json && rimraf tmp",
     "build:redirects": "node scripts/build-redirects.mjs",
     "build:i18n": "npm-run-all -s build:i18n-bundles build:i18n-default build:i18n-imports build:assets",
     "build:i18n-bundles": "mkdirp dist/assets/i18n && node ../../node_modules/@ui5/webcomponents-tools/lib/i18n/toJSON.js src/i18n dist/assets/i18n",
