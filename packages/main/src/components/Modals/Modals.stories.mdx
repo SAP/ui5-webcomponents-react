@@ -1,6 +1,7 @@
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story, ArgsTable } from '@storybook/addon-docs';
+import { MessageBoxTypes } from '../../enums';
 import { Button } from '../../webComponents';
 import * as Modals from './index';
 
@@ -10,11 +11,100 @@ import * as Modals from './index';
 
 <br />
 
-## Example
+## Dialog
+
+<Canvas>
+  <Story name="Dialog">
+    {() => {
+      return (
+        <Button
+          onClick={() => {
+            const { close } = Modals.showDialog({
+              headerText: 'Dialog Title',
+              children: "I'm a Dialog!",
+              footer: <Button onClick={() => close()}>Close</Button>
+            });
+          }}
+        >
+          Show Dialog
+        </Button>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Popover
+
+<Canvas>
+  <Story name="Popover">
+    {() => {
+      return (
+        <Button
+          id="modals-show-popover"
+          onClick={() => {
+            Modals.showPopover({
+              opener: 'modals-show-popover',
+              headerText: 'Popover Title',
+              children: "I'm a Popover!"
+            });
+          }}
+        >
+          Show Popover
+        </Button>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## ResponsivePopover
+
+<Canvas>
+  <Story name="ResponsivePopover">
+    {() => {
+      return (
+        <Button
+          id="modals-show-responsive-popover"
+          onClick={() => {
+            Modals.showResponsivePopover({
+              opener: 'modals-show-responsive-popover',
+              headerText: 'Responsive Popover Title',
+              children: "I'm a Responsive Popover!"
+            });
+          }}
+        >
+          Show ResponsivePopover
+        </Button>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## MessageBox
+
+<Canvas>
+  <Story name="MessageBox">
+    {() => {
+      return (
+        <Button
+          onClick={() => {
+            Modals.showMessageBox({
+              type: MessageBoxTypes.Confirm,
+              children: 'Can you see this MessageBox?'
+            });
+          }}
+        >
+          Show MessageBox
+        </Button>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Toast
 
 <Canvas>
   <Story name="Toast">
-    {(args) => {
+    {() => {
       return (
         <Button
           onClick={() => {
