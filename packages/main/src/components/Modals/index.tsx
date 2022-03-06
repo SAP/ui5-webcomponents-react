@@ -60,114 +60,124 @@ const render = (Element: ElementType, props: any, container: HTMLElement): Promi
   });
 };
 
-export function showDialog(props: DialogPropTypes, container?: HTMLElement): ClosableModalReturnType<DialogDomRef> {
-  const ref = createRef<DialogDomRef>();
-  const domContainer = getContainer(container);
-  render(
-    Dialog,
-    {
-      ...props,
-      ref,
-      open: true,
-      onAfterClose: popupOnAfterCloseFactory(props, domContainer)
-    },
-    domContainer
-  );
+/**
+ * Utility class for opening modals in an imperative way.
+ *
+ * These static helper methods might be useful for showing e.g. Toasts or MessageBoxes after successful or failed
+ * network calls.
+ *
+ * @since 0.22.2
+ */
+export class Modals {
+  public static showDialog(props: DialogPropTypes, container?: HTMLElement): ClosableModalReturnType<DialogDomRef> {
+    const ref = createRef<DialogDomRef>();
+    const domContainer = getContainer(container);
+    render(
+      Dialog,
+      {
+        ...props,
+        ref,
+        open: true,
+        onAfterClose: popupOnAfterCloseFactory(props, domContainer)
+      },
+      domContainer
+    );
 
-  return {
-    ref,
-    close: () => {
-      ref.current?.close();
-    }
-  };
-}
-
-export function showPopover(props: PopoverPropTypes, container?: HTMLElement): ClosableModalReturnType<PopoverDomRef> {
-  const ref = createRef<PopoverDomRef>();
-  const domContainer = getContainer(container);
-  render(
-    Popover,
-    {
-      ...props,
+    return {
       ref,
-      open: true,
-      onAfterClose: popupOnAfterCloseFactory(props, domContainer)
-    },
-    domContainer
-  );
-  return {
-    ref,
-    close: () => {
-      ref.current?.close();
-    }
-  };
-}
-
-export function showResponsivePopover(
-  props: ResponsivePopoverPropTypes,
-  container?: HTMLElement
-): ClosableModalReturnType<ResponsivePopoverDomRef> {
-  const ref = createRef<ResponsivePopoverDomRef>();
-  const domContainer = getContainer(container);
-  render(
-    ResponsivePopover,
-    {
-      ...props,
-      ref,
-      open: true,
-      onAfterClose: popupOnAfterCloseFactory(props, domContainer)
-    },
-    domContainer
-  );
-  return {
-    ref,
-    close: () => {
-      ref.current?.close();
-    }
-  };
-}
-
-export function showMessageBox(
-  props: MessageBoxPropTypes,
-  container?: HTMLElement
-): ClosableModalReturnType<DialogDomRef> {
-  const ref = createRef<DialogDomRef>();
-  const domContainer = getContainer(container);
-  render(
-    MessageBox,
-    {
-      ...props,
-      ref,
-      open: true,
-      onClose: (event) => {
-        if (typeof props.onClose === 'function') {
-          props.onClose(event);
-        }
-        unmountComponent(domContainer);
+      close: () => {
+        ref.current?.close();
       }
-    },
-    domContainer
-  );
+    };
+  }
 
-  return {
-    ref,
-    close: () => {
-      ref.current?.close();
-    }
-  };
-}
+  public static showPopover(props: PopoverPropTypes, container?: HTMLElement): ClosableModalReturnType<PopoverDomRef> {
+    const ref = createRef<PopoverDomRef>();
+    const domContainer = getContainer(container);
+    render(
+      Popover,
+      {
+        ...props,
+        ref,
+        open: true,
+        onAfterClose: popupOnAfterCloseFactory(props, domContainer)
+      },
+      domContainer
+    );
+    return {
+      ref,
+      close: () => {
+        ref.current?.close();
+      }
+    };
+  }
 
-export function showToast(props: ToastPropTypes, container?: HTMLElement): ModalReturnType<ToastDomRef> {
-  const ref = createRef<ToastDomRef>();
-  const domContainer = getContainer(container);
-  render(Toast, { ...props, ref }, domContainer).then(() => {
-    ref.current.show();
-    setTimeout(() => {
-      unmountComponent(domContainer);
-    }, props.duration ?? Toast.defaultProps.duration);
-  });
+  public static showResponsivePopover(
+    props: ResponsivePopoverPropTypes,
+    container?: HTMLElement
+  ): ClosableModalReturnType<ResponsivePopoverDomRef> {
+    const ref = createRef<ResponsivePopoverDomRef>();
+    const domContainer = getContainer(container);
+    render(
+      ResponsivePopover,
+      {
+        ...props,
+        ref,
+        open: true,
+        onAfterClose: popupOnAfterCloseFactory(props, domContainer)
+      },
+      domContainer
+    );
+    return {
+      ref,
+      close: () => {
+        ref.current?.close();
+      }
+    };
+  }
 
-  return {
-    ref
-  };
+  public static showMessageBox(
+    props: MessageBoxPropTypes,
+    container?: HTMLElement
+  ): ClosableModalReturnType<DialogDomRef> {
+    const ref = createRef<DialogDomRef>();
+    const domContainer = getContainer(container);
+    render(
+      MessageBox,
+      {
+        ...props,
+        ref,
+        open: true,
+        onClose: (event) => {
+          if (typeof props.onClose === 'function') {
+            props.onClose(event);
+          }
+          unmountComponent(domContainer);
+        }
+      },
+      domContainer
+    );
+
+    return {
+      ref,
+      close: () => {
+        ref.current?.close();
+      }
+    };
+  }
+
+  public static showToast(props: ToastPropTypes, container?: HTMLElement): ModalReturnType<ToastDomRef> {
+    const ref = createRef<ToastDomRef>();
+    const domContainer = getContainer(container);
+    render(Toast, { ...props, ref }, domContainer).then(() => {
+      ref.current.show();
+      setTimeout(() => {
+        unmountComponent(domContainer);
+      }, props.duration ?? Toast.defaultProps.duration);
+    });
+
+    return {
+      ref
+    };
+  }
 }
