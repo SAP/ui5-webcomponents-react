@@ -46,12 +46,12 @@ const popupOnAfterCloseFactory = (props, container) => (event) => {
   unmountComponent(container);
 };
 
-const render = (Element: ElementType, props: any, ref: RefObject<any>, container: HTMLElement): Promise<void> => {
+const render = (Element: ElementType, props: any, container: HTMLElement): Promise<void> => {
   return new Promise((resolve) => {
     setTimeout(() => {
       ReactDOM.render(
         <ThemeProvider>
-          <Element {...props} ref={ref} />
+          <Element {...props} />
         </ThemeProvider>,
         container
       );
@@ -67,10 +67,10 @@ export function showDialog(props: DialogPropTypes, container?: HTMLElement): Clo
     Dialog,
     {
       ...props,
+      ref,
       open: true,
       onAfterClose: popupOnAfterCloseFactory(props, domContainer)
     },
-    ref,
     domContainer
   );
 
@@ -89,10 +89,10 @@ export function showPopover(props: PopoverPropTypes, container?: HTMLElement): C
     Popover,
     {
       ...props,
+      ref,
       open: true,
       onAfterClose: popupOnAfterCloseFactory(props, domContainer)
     },
-    ref,
     domContainer
   );
   return {
@@ -113,10 +113,10 @@ export function showResponsivePopover(
     ResponsivePopover,
     {
       ...props,
+      ref,
       open: true,
       onAfterClose: popupOnAfterCloseFactory(props, domContainer)
     },
-    ref,
     domContainer
   );
   return {
@@ -137,6 +137,7 @@ export function showMessageBox(
     MessageBox,
     {
       ...props,
+      ref,
       open: true,
       onClose: (event) => {
         if (typeof props.onClose === 'function') {
@@ -145,7 +146,6 @@ export function showMessageBox(
         unmountComponent(domContainer);
       }
     },
-    ref,
     domContainer
   );
 
@@ -160,7 +160,7 @@ export function showMessageBox(
 export function showToast(props: ToastPropTypes, container?: HTMLElement): ModalReturnType<ToastDomRef> {
   const ref = createRef<ToastDomRef>();
   const domContainer = getContainer(container);
-  render(Toast, props, ref, domContainer).then(() => {
+  render(Toast, { ...props, ref }, domContainer).then(() => {
     ref.current.show();
     setTimeout(() => {
       unmountComponent(domContainer);

@@ -1,13 +1,13 @@
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import { Canvas, Meta, Story, ArgsTable } from '@storybook/addon-docs';
+import { Canvas, ComponentsTable, Meta, Story } from '@storybook/addon-docs';
 import { MessageBoxTypes } from '../../enums';
-import { Button } from '../../webComponents';
+import { Button, Panel } from '../../webComponents';
 import * as Modals from './index';
 
 <Meta title="User Feedback / Modals" />
 
-<DocsHeader />
+<DocsHeader since="0.22.2" />
 
 <br />
 
@@ -33,6 +33,34 @@ import * as Modals from './index';
   </Story>
 </Canvas>
 
+#### Usage
+
+```typescript
+import { Modals } from '@ui5/webcomponents-react';
+
+const { ref, close } = Modals.showDialog(props, container);
+```
+
+**Parameters**
+
+| Parameter     | Description                                                                                      |
+| ------------- | ------------------------------------------------------------------------------------------------ |
+| `props`       | All supported `Dialog` props (see table below). Open will always be set to `true`.               |
+| _`container`_ | Optional container where the `Dialog` should be mounted. Defaults to a div appended to the body. |
+
+**Return Value**
+
+The `showDialog` method returns an object with the following properties:
+
+| Property  | Description                                                            |
+| --------- | ---------------------------------------------------------------------- |
+| `ref`     | React `RefObject` which can be used to get interact with the `Dialog`. |
+| `close()` | Convenience Method for closing the `Dialog`.                           |
+
+<Panel header={<h4 className="noMargin">Dialog Props</h4>} collapsed>
+  <ComponentsTable components={{ showDialog: Modals.showDialog }} exclude={['open', 'ref']} />
+</Panel>
+
 ## Popover
 
 <Canvas>
@@ -55,6 +83,34 @@ import * as Modals from './index';
     }}
   </Story>
 </Canvas>
+
+#### Usage
+
+```typescript
+import { Modals } from '@ui5/webcomponents-react';
+
+const { ref, close } = Modals.showPopover(props, container);
+```
+
+**Parameters**
+
+| Parameter     | Description                                                                                       |
+| ------------- | ------------------------------------------------------------------------------------------------- |
+| `props`       | All supported `Popover` props (see table below). Open will always be set to `true`.               |
+| _`container`_ | Optional container where the `Popover` should be mounted. Defaults to a div appended to the body. |
+
+**Return Value**
+
+The `showPopover` method returns an object with the following properties:
+
+| Property  | Description                                                             |
+| --------- | ----------------------------------------------------------------------- |
+| `ref`     | React `RefObject` which can be used to get interact with the `Popover`. |
+| `close()` | Convenience Method for closing the `Popover`.                           |
+
+<Panel header={<h4 className="noMargin">Popover Props</h4>} collapsed>
+  <ComponentsTable components={{ showPopover: Modals.showPopover }} exclude={['open', 'ref']} />
+</Panel>
 
 ## ResponsivePopover
 
@@ -79,6 +135,34 @@ import * as Modals from './index';
   </Story>
 </Canvas>
 
+#### Usage
+
+```typescript
+import { Modals } from '@ui5/webcomponents-react';
+
+const { ref, close } = Modals.showResponsivePopover(props, container);
+```
+
+**Parameters**
+
+| Parameter     | Description                                                                                                 |
+| ------------- | ----------------------------------------------------------------------------------------------------------- |
+| `props`       | All supported `ResponsivePopover` props (see table below). Open will always be set to `true`.               |
+| _`container`_ | Optional container where the `ResponsivePopover` should be mounted. Defaults to a div appended to the body. |
+
+**Return Value**
+
+The `showResponsivePopover` method returns an object with the following properties:
+
+| Property  | Description                                                                       |
+| --------- | --------------------------------------------------------------------------------- |
+| `ref`     | React `RefObject` which can be used to get interact with the `ResponsivePopover`. |
+| `close()` | Convenience Method for closing the `ResponsivePopover`.                           |
+
+<Panel header={<h4 className="noMargin">ResponsivePopover Props</h4>} collapsed>
+  <ComponentsTable components={{ showResponsivePopover: Modals.showResponsivePopover }} exclude={['open', 'ref']} />
+</Panel>
+
 ## MessageBox
 
 <Canvas>
@@ -100,6 +184,34 @@ import * as Modals from './index';
   </Story>
 </Canvas>
 
+#### Usage
+
+```typescript
+import { Modals } from '@ui5/webcomponents-react';
+
+const { ref, close } = Modals.showMessageBox(props, container);
+```
+
+**Parameters**
+
+| Parameter     | Description                                                                                          |
+| ------------- | ---------------------------------------------------------------------------------------------------- |
+| `props`       | All supported `MessageBox` props (see table below). Open will always be set to `true`.               |
+| _`container`_ | Optional container where the `MessageBox` should be mounted. Defaults to a div appended to the body. |
+
+**Return Value**
+
+The `showMessageBox` method returns an object with the following properties:
+
+| Property  | Description                                                                |
+| --------- | -------------------------------------------------------------------------- |
+| `ref`     | React `RefObject` which can be used to get interact with the `MessageBox`. |
+| `close()` | Convenience Method for closing the `MessageBox`.                           |
+
+<Panel header={<h4 className="noMargin">MessageBox Props</h4>} collapsed>
+  <ComponentsTable components={{ showMessageBox: Modals.showMessageBox }} exclude={['open', 'ref']} />
+</Panel>
+
 ## Toast
 
 <Canvas>
@@ -119,6 +231,33 @@ import * as Modals from './index';
     }}
   </Story>
 </Canvas>
+
+#### Usage
+
+```typescript
+import { Modals } from '@ui5/webcomponents-react';
+
+const { ref } = Modals.showToast(props, container);
+```
+
+**Parameters**
+
+| Parameter     | Description                                                                                     |
+| ------------- | ----------------------------------------------------------------------------------------------- |
+| `props`       | All supported `Toast` props (see table below).                                                  |
+| _`container`_ | Optional container where the `Toast` should be mounted. Defaults to a div appended to the body. |
+
+**Return Value**
+
+The `showToast` method returns an object with the following properties:
+
+| Property | Description                                                           |
+| -------- | --------------------------------------------------------------------- |
+| `ref`    | React `RefObject` which can be used to get interact with the `Toast`. |
+
+<Panel header={<h4 className="noMargin">Toast Props</h4>} collapsed>
+  <ComponentsTable components={{ showToast: Modals.showToast }} exclude={'ref'} />
+</Panel>
 
 <br />
 

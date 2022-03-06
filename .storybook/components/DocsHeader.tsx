@@ -1,12 +1,9 @@
 import { Description, DocsContext, Subtitle, Title } from '@storybook/addon-docs';
+import { Badge, FlexBox, FlexBoxAlignItems, Link } from '@ui5/webcomponents-react';
 import React, { useContext } from 'react';
-import { version as chartsVersion } from '../../packages/charts/package.json';
-import { version } from '../../packages/main/package.json';
+import { GitHubLogo } from '../../.storybook/components/GitHub-Mark';
 import { Import } from '../../.storybook/components/Import';
 import { TableOfContent } from '../../.storybook/components/TableOfContent';
-import { GitHubLogo } from '../../.storybook/components/GitHub-Mark';
-import { FlexBox, FlexBoxAlignItems } from '@ui5/webcomponents-react';
-import { Footer } from '../../.storybook/components/Footer';
 
 const Links = () => {
   const docsContext = useContext(DocsContext);
@@ -18,36 +15,37 @@ const Links = () => {
   // const githubUrl = `https://github.com/SAP/ui5-webcomponents-react/tree/main/${folderPath}`;
   const githubUrl = `https://github.com/SAP/ui5-webcomponents-react`;
 
+  const packageName = `@ui5/webcomponents-react${isChart ? '-charts' : ''}`;
   return (
     <>
-      <br />
-      <FlexBox alignItems={FlexBoxAlignItems.Center}>
-        <a title={'View On GitHub'} href={githubUrl}>
-          <GitHubLogo />
-        </a>
-        &nbsp; &nbsp;
-        <a href={`https://www.npmjs.com/package/@ui5/webcomponents-react${isChart ? '-charts' : ''}`}>
-          <img
-            alt="npm badge"
-            src={`https://badgen.net/badge/@ui5%2Fwebcomponents-react${isChart ? '-charts' : ''}/v${
-              isChart ? chartsVersion : version
-            }/blue?icon=npm`}
-          />
-        </a>
-      </FlexBox>
-      <br />
+      <Link href={`https://www.npmjs.com/package/${packageName}`}>
+        <img alt="npm badge" src={`https://badgen.net/npm/v/${packageName}?icon=npm&label=&color=blue`} />
+      </Link>
+      &nbsp; &nbsp;
+      <Link title={'View On GitHub'} href={githubUrl}>
+        <GitHubLogo />
+      </Link>
     </>
   );
 };
 
-export const DocsHeader = () => {
+export const DocsHeader = ({ since }) => {
   return (
     <>
-      <Title />
+      <FlexBox alignItems={FlexBoxAlignItems.Center}>
+        <Title />
+        {since && (
+          <>
+            &nbsp; &nbsp;
+            <Badge colorScheme="7">Since {since}</Badge>
+          </>
+        )}
+        <span style={{ flexGrow: 1 }} />
+        <Links />
+      </FlexBox>
       <Subtitle />
       <Import />
       <Description />
-      <Links />
       <TableOfContent />
     </>
   );
