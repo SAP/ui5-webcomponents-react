@@ -26,7 +26,7 @@ import { Button } from '../../webComponents/Button';
 import { Dialog, DialogDomRef, DialogPropTypes } from '../../webComponents/Dialog';
 import { Icon } from '../../webComponents/Icon';
 import { Input } from '../../webComponents/Input';
-import { List, ListDomRef, ListPropTypes } from '../../webComponents/List';
+import { List, ListPropTypes } from '../../webComponents/List';
 import { Title } from '../../webComponents/Title';
 import { Text } from '../Text';
 import { Toolbar } from '../Toolbar';
@@ -125,9 +125,7 @@ export interface SelectDialogPropTypes extends Omit<DialogPropTypes, 'header' | 
    *
    * __Note:__ `mode`, `children`, `growing`, `onLoadMore` and `footerText` are not supported.
    */
-  listProps?: Omit<ListPropTypes, 'mode' | 'children' | 'footerText' | 'growing' | 'onLoadMore'> & {
-    ref: Ref<ListDomRef>;
-  };
+  listProps?: Omit<ListPropTypes, 'mode' | 'children' | 'footerText' | 'growing' | 'onLoadMore'>;
   /**
    * Defines the number of selected list items displayed above the list in `MultiSelect` mode. Programmatically setting the counter is necessary if all previously selected elements are to remain selected during search.
    */
