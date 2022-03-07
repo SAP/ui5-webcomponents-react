@@ -17,16 +17,16 @@ export const usePrepareTrendMeasures = (measures: ITrendChartMeasure[], dataset:
       if (measure.type === 'bar') {
         columnMeasures.push({
           color: measure.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`,
-          ...measure,
-          formatter: defaultFormatter
+          formatter: defaultFormatter,
+          ...measure
         });
       }
 
       if (measure.type === 'line') {
         lineMeasures.push({
           color: measure.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`,
-          ...measure,
-          formatter: defaultFormatter
+          formatter: defaultFormatter,
+          ...measure
         });
         columnMeasures.push({
           ...measure,
