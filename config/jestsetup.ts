@@ -5,7 +5,7 @@ import ResizeObserver from 'resize-observer-polyfill';
 import 'whatwg-fetch';
 
 const setupMatchMedia = () => {
-  Object.defineProperty(window, 'matchMedia', {
+  Object.defineProperty(globalThis, 'matchMedia', {
     writable: true,
     value: jest.fn().mockImplementation((query) => {
       const maxWidth = parseInt(/max-width:(?<maxWidth>\d+)px/.exec(query)?.groups?.maxWidth);
@@ -31,6 +31,12 @@ const setupMatchMedia = () => {
     })
   });
 };
+
+Object.defineProperty(globalThis, 'crypto', {
+  value: {
+    randomUUID: () => `1337`
+  }
+});
 
 beforeEach(async () => {
   (window as any).ResizeObserver = ResizeObserver;
