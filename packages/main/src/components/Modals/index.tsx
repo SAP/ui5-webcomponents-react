@@ -30,13 +30,16 @@ const getContainer = (givenContainer: HTMLElement) => {
     return givenContainer;
   }
   const container = document.createElement('div');
+  container.setAttribute('data-ui5wcr-modal', '');
   document.body.appendChild(container);
   return container;
 };
 
 const unmountComponent = (container: HTMLElement) => {
   ReactDOM.unmountComponentAtNode(container);
-  container.remove();
+  if (container.hasAttribute('data-ui5wcr-modal')) {
+    container.remove();
+  }
 };
 
 const popupOnAfterCloseFactory = (props, container) => (event) => {
