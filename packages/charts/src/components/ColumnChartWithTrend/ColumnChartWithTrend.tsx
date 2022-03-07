@@ -1,5 +1,5 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import React, { CSSProperties, FC, forwardRef, Ref } from 'react';
+import React, { CSSProperties, FC, forwardRef, Ref, useRef } from 'react';
 import { TooltipProps } from 'recharts';
 import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
@@ -93,6 +93,15 @@ const measureDefaults = {
   opacity: 1
 };
 
+const getRandomId = () => {
+  if ('randomUUID' in crypto) {
+    // @ts-ignore
+    return crypto.randomUUID();
+  }
+  const uint32 = window.crypto.getRandomValues(new Uint32Array(1))[0];
+  return uint32.toString(16);
+};
+
 const lineTooltipConfig = { wrapperStyle: { visibility: 'hidden' } } as TooltipProps<any, any>;
 
 type AvailableChartTypes = 'line' | 'bar' | string;
@@ -117,6 +126,8 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
       ChartPlaceholder,
       ...rest
     } = props;
+
+    const syncId = useRef(getRandomId()).current;
 
     useDeprecationNoticeForTooltip('ColumnChartWithTrend', props.tooltip);
 
@@ -175,7 +186,7 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
             noAnimation={noAnimation}
             loading={loading}
             onClick={onClick}
-            syncId={'trend'}
+            syncId={syncId}
             style={{ ...style, height: `calc(${style?.height} * 0.2)` }}
             dataset={dataset}
             measures={lineMeasures}
@@ -199,7 +210,7 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
           noLegend={noLegend}
           loading={loading}
           onClick={onClick}
-          syncId={'trend'}
+          syncId={syncId}
           ChartPlaceholder={ChartPlaceholder ?? ColumnChartWithTrendPlaceholder}
           dataset={columnDataset}
           measures={columnMeasures}
