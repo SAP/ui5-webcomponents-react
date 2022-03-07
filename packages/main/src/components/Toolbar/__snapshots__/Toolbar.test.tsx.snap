@@ -278,12 +278,12 @@ exports[`Toolbar overflow menu 1`] = `
       <div
         class="Toolbar-overflowButtonContainer"
         data-component-name="ToolbarOverflowButtonContainer"
-        title="Show More"
       >
         <ui5-toggle-button
           accessible-name="Show More"
           design="Transparent"
           icon="overflow"
+          tooltip="Show More"
           ui5-toggle-button=""
         />
       </div>
@@ -391,12 +391,12 @@ exports[`Toolbar overflow menu 2`] = `
       <div
         class="Toolbar-overflowButtonContainer"
         data-component-name="ToolbarOverflowButtonContainer"
-        title="Show More"
       >
         <ui5-toggle-button
           accessible-name="Show More"
           design="Transparent"
           icon="overflow"
+          tooltip="Show More"
           ui5-toggle-button=""
         />
       </div>
@@ -514,12 +514,12 @@ exports[`Toolbar overflow menu 3`] = `
       <div
         class="Toolbar-overflowButtonContainer"
         data-component-name="ToolbarOverflowButtonContainer"
-        title="Show More"
       >
         <ui5-toggle-button
           accessible-name="Show More"
           design="Transparent"
           icon="overflow"
+          tooltip="Show More"
           ui5-toggle-button=""
         />
       </div>
