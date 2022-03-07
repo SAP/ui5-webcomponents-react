@@ -19,6 +19,7 @@ export * from './components/Loader';
 export * from './components/MessageBox';
 export * from './components/MessageView';
 export * from './components/MessageView/MessageItem';
+export * from './components/Modals';
 export * from './components/ObjectPage';
 export * from './components/ObjectPageSection';
 export * from './components/ObjectPageSubSection';
