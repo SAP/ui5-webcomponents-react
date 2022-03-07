@@ -9,6 +9,7 @@ import '@ui5/webcomponents-react/dist/Assets';
 import '@ui5/webcomponents/dist/Assets.js';
 import '@ui5/webcomponents/dist/features/InputElementsFormSupport.js';
 import React, { useEffect } from 'react';
+import 'tocbot/dist/tocbot.css';
 import { DocsPage } from './components/DocsPage';
 
 const argTypesCategoryCommonProps = {
