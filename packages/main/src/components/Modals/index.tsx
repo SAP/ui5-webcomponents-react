@@ -34,9 +34,9 @@ const getContainer = (givenContainer: HTMLElement) => {
   return container;
 };
 
-const unmountComponent = (container: DocumentFragment | HTMLElement) => {
+const unmountComponent = (container: HTMLElement) => {
   ReactDOM.unmountComponentAtNode(container);
-  container.parentElement.removeChild(container);
+  container.remove();
 };
 
 const popupOnAfterCloseFactory = (props, container) => (event) => {
