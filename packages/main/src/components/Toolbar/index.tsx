@@ -302,7 +302,6 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
         <div
           ref={overflowBtnRef}
           className={classes.overflowButtonContainer}
-          title={showMoreText}
           data-component-name="ToolbarOverflowButtonContainer"
         >
           <OverflowPopover
