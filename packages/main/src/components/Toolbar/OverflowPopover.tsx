@@ -38,7 +38,6 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
   const handleToggleButtonClick = useCallback(
     (e) => {
       e.stopPropagation();
-      toggleBtnRef.current.accessibilityAttributes.expanded = `${!pressed}`;
       if (popoverRef.current) {
         if (!pressed) {
           popoverRef.current.showAt(e.target);
@@ -59,13 +58,19 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
     };
   }, []);
 
-  const handleClose = useCallback(
-    (e) => {
-      stopPropagation(e);
-      setPressed(false);
-    },
-    [setPressed]
-  );
+  const handleOpen = () => {
+    if (toggleBtnRef.current) {
+      toggleBtnRef.current.accessibilityAttributes.expanded = 'true';
+    }
+  };
+
+  const handleClose = (e) => {
+    if (toggleBtnRef.current) {
+      toggleBtnRef.current.accessibilityAttributes.expanded = 'false';
+    }
+    stopPropagation(e);
+    setPressed(false);
+  };
 
   const renderChildren = useCallback(() => {
     return React.Children.toArray(
@@ -105,6 +110,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
         onClick={handleToggleButtonClick}
         pressed={pressed}
         accessibleName={showMoreText}
+        tooltip={showMoreText}
       />
       {createPortal(
         <Popover
@@ -112,6 +118,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
           placementType={PopoverPlacementType.Bottom}
           ref={componentRef}
           onAfterClose={handleClose}
+          onBeforeOpen={handleOpen}
           hideArrow
         >
           <div className={classes.popoverContent} ref={overflowContentRef}>
