@@ -56,9 +56,11 @@ const render = (Element: ElementType, props: any, container: HTMLElement): Promi
         <ThemeProvider>
           <Element {...props} />
         </ThemeProvider>,
-        container
+        container,
+        () => {
+          resolve();
+        }
       );
-      resolve();
     }, 0);
   });
 };
