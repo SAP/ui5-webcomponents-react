@@ -204,7 +204,7 @@ const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: Ref<Responsive
       <div
         className={isPhone() ? classes.contentMobile : undefined}
         data-component-name="ActionSheetMobileContent"
-        role={a11yConfig?.actionSheetMobileContent?.role ?? 'presentation'}
+        role={a11yConfig?.actionSheetMobileContent?.role ?? 'application'}
         aria-label={a11yConfig?.actionSheetMobileContent?.ariaLabel ?? i18nBundle.getText(AVAILABLE_ACTIONS)}
         onKeyDown={handleKeyDown}
         ref={actionBtnsRef}
