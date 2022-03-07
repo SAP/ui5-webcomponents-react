@@ -8,6 +8,7 @@ import {
   Cell,
   ComposedChart as ComposedChartLib,
   Label,
+  LabelList,
   Legend,
   Line,
   ReferenceLine,
@@ -15,6 +16,7 @@ import {
   XAxis,
   YAxis
 } from 'recharts';
+import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { useChartMargin } from '../../hooks/useChartMargin';
 import { useLabelFormatter } from '../../hooks/useLabelFormatter';
 import { useLegendItemClick } from '../../hooks/useLegendItemClick';
@@ -31,7 +33,7 @@ import { ChartDataLabel } from '../../internal/ChartDataLabel';
 import { defaultFormatter } from '../../internal/defaults';
 import { tickLineConfig, tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
-import { resolvePrimaryAndSecondaryMeasures, getCellColors } from '../../internal/Utils';
+import { getCellColors, resolvePrimaryAndSecondaryMeasures } from '../../internal/Utils';
 import { XAxisTicks } from '../../internal/XAxisTicks';
 import { YAxisTicks } from '../../internal/YAxisTicks';
 import { ComposedChartPlaceholder } from './Placeholder';
@@ -197,6 +199,12 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
   const colorSecondY = chartConfig.secondYAxis
     ? dataKeys.findIndex((key) => key === chartConfig.secondYAxis?.dataKey)
     : 0;
+
+  const valueAccessor =
+    (attribute) =>
+    ({ payload }) => {
+      return getValueByDataKey(payload, attribute);
+    };
 
   const onDataPointClickInternal = useCallback(
     (payload, eventOrIndex, event) => {
@@ -475,7 +483,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               key={element.accessor}
               name={element.label ?? element.accessor}
               label={
-                isBigDataSet ? null : (
+                element.type === 'bar' || isBigDataSet ? undefined : (
                   <ChartDataLabel config={element} chartType={element.type} position={labelPosition} />
                 )
               }
@@ -485,16 +493,24 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               dataKey={element.accessor}
               {...chartElementProps}
             >
-              {element.type === 'bar' &&
-                dataset.map((data, i) => {
-                  return (
-                    <Cell
-                      key={i}
-                      fill={getCellColors(element, data, index)}
-                      stroke={getCellColors(element, data, index)}
-                    />
-                  );
-                })}
+              {element.type === 'bar' && (
+                <>
+                  <LabelList
+                    data={dataset}
+                    valueAccessor={valueAccessor(element.accessor)}
+                    content={<ChartDataLabel config={element} chartType="column" position={'insideTop'} />}
+                  />
+                  {dataset.map((data, i) => {
+                    return (
+                      <Cell
+                        key={i}
+                        fill={getCellColors(element, data, index)}
+                        stroke={getCellColors(element, data, index)}
+                      />
+                    );
+                  })}
+                </>
+              )}
             </ChartElement>
           );
         })}
