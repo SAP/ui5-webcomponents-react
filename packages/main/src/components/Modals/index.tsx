@@ -49,15 +49,18 @@ const popupOnAfterCloseFactory = (props, container) => (event) => {
   unmountComponent(container);
 };
 
-const render = (Element: ElementType, props: any, container: HTMLElement): void => {
-  setTimeout(() => {
-    ReactDOM.render(
-      <ThemeProvider>
-        <Element {...props} />
-      </ThemeProvider>,
-      container
-    );
-  }, 0);
+const render = (Element: ElementType, props: any, container: HTMLElement): Promise<void> => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      ReactDOM.render(
+        <ThemeProvider>
+          <Element {...props} />
+        </ThemeProvider>,
+        container
+      );
+      resolve();
+    }, 0);
+  });
 };
 
 /**
