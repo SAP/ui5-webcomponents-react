@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ColumnChart Check onClick events 1`] = `
+exports[`ColumnChartWithTrend Check onClick events 1`] = `
 <DocumentFragment>
   <div
     style="display: flex; flex-direction: column;"
@@ -886,7 +886,7 @@ exports[`ColumnChart Check onClick events 1`] = `
 </DocumentFragment>
 `;
 
-exports[`ColumnChart Loading placeholder 1`] = `
+exports[`ColumnChartWithTrend Loading placeholder 1`] = `
 <DocumentFragment>
   <div
     style="display: flex; flex-direction: column;"
@@ -1100,7 +1100,7 @@ exports[`ColumnChart Loading placeholder 1`] = `
 </DocumentFragment>
 `;
 
-exports[`ColumnChart Renders with data 1`] = `
+exports[`ColumnChartWithTrend Renders with data 1`] = `
 <DocumentFragment>
   <div
     style="display: flex; flex-direction: column;"
