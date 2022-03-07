@@ -59,13 +59,13 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
   }, []);
 
   const handleOpen = () => {
-    if (toggleBtnRef.current?.accessibilityAttributes) {
+    if (toggleBtnRef.current) {
       toggleBtnRef.current.accessibilityAttributes.expanded = 'true';
     }
   };
 
   const handleClose = (e) => {
-    if (toggleBtnRef.current?.accessibilityAttributes) {
+    if (toggleBtnRef.current) {
       toggleBtnRef.current.accessibilityAttributes.expanded = 'false';
     }
     stopPropagation(e);
@@ -94,7 +94,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
 
   useEffect(() => {
     customElements.whenDefined('ui5-toggle-button').then(() => {
-      if (toggleBtnRef.current?.accessibilityAttributes) {
+      if (toggleBtnRef.current) {
         toggleBtnRef.current.accessibilityAttributes.expanded = `${pressed}`;
         toggleBtnRef.current.accessibilityAttributes.hasPopup = 'menu';
       }
@@ -118,7 +118,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
           placementType={PopoverPlacementType.Bottom}
           ref={componentRef}
           onAfterClose={handleClose}
-          onAfterOpen={handleOpen}
+          onBeforeOpen={handleOpen}
           hideArrow
         >
           <div className={classes.popoverContent} ref={overflowContentRef}>
