@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.22.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.22.1...v0.22.2) (2022-03-08)
+
+
+### Bug Fixes
+
+* **ActionSheet:** allow key navigation between action buttons with screen readers ([#2658](https://github.com/SAP/ui5-webcomponents-react/issues/2658)) ([3cce57c](https://github.com/SAP/ui5-webcomponents-react/commit/3cce57ce386613f46d688e1e71f6062af2526723))
+* **ComposedChart:** fix formatters and create unique sync ids per chart  ([#2659](https://github.com/SAP/ui5-webcomponents-react/issues/2659)) ([895aa10](https://github.com/SAP/ui5-webcomponents-react/commit/895aa1027023cb5c88199541379012783e698087))
+* **Toolbar:** show correct value for `aria-expanded` ([#2657](https://github.com/SAP/ui5-webcomponents-react/issues/2657)) ([df80f5d](https://github.com/SAP/ui5-webcomponents-react/commit/df80f5d76dd6a0ce5c3c30211ab91d4ab6c6640e))
+
+
+### Features
+
+* add `Modals` component for opening modals imperatively ([#2654](https://github.com/SAP/ui5-webcomponents-react/issues/2654)) ([917f0b7](https://github.com/SAP/ui5-webcomponents-react/commit/917f0b7b452716c6980751f3aff0c16bfa0df3f8))
+
+
+
+
+
 ## [0.22.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.22.0...v0.22.1) (2022-03-04)
 
 
