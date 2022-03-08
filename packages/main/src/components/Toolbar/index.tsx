@@ -293,7 +293,7 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
           React.Children.map(childrenWithRef, (item, index) => {
             if (index >= lastVisibleIndex + 1 && index > numberOfAlwaysVisibleItems - 1) {
               return React.cloneElement(item as ReactElement, {
-                style: { visibility: 'hidden', position: 'absolute' }
+                style: { visibility: 'hidden', position: 'absolute', pointerEvents: 'none' }
               });
             }
             return item;
