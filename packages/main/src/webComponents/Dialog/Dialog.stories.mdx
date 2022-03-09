@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
@@ -35,6 +36,9 @@ import { Dialog } from './index';
   <Story name="Default">
     {(args) => {
       const [dialogOpen, setDialogOpen] = useState(args.open);
+      useEffect(() => {
+        setDialogOpen(args.open);
+      }, [args.open]);
       return (
         <>
           <Button
@@ -47,6 +51,10 @@ import { Dialog } from './index';
           <Dialog
             {...args}
             open={dialogOpen}
+            onAfterClose={(e) => {
+              args.onAfterClose(e);
+              setDialogOpen(false);
+            }}
             footer={
               <Button
                 onClick={() => {
