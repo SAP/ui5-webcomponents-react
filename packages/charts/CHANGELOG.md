@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.21.8](https://github.com/SAP/ui5-webcomponents-react/compare/v0.21.7...v0.21.8) (2022-03-09)
+
+
+### Bug Fixes
+
+* **ComposedChart:** fix formatters and create unique sync ids per chart  ([#2659](https://github.com/SAP/ui5-webcomponents-react/issues/2659)) ([e213678](https://github.com/SAP/ui5-webcomponents-react/commit/e213678c4fb1708b19f3298419b6854c434bd72c))
+
+
+
+
+
 ## [0.21.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.21.5...v0.21.6) (2022-03-02)
 
 
