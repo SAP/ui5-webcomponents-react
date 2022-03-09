@@ -251,7 +251,7 @@ exports[`Toolbar overflow menu 1`] = `
         <div
           class="Toolbar-childContainer"
           data-component-name="ToolbarChildContainer"
-          style="visibility: hidden;"
+          style="visibility: hidden; position: absolute; pointer-events: none;"
         >
           <span
             class="Text-text"
@@ -264,7 +264,7 @@ exports[`Toolbar overflow menu 1`] = `
         <div
           class="Toolbar-childContainer"
           data-component-name="ToolbarChildContainer"
-          style="visibility: hidden;"
+          style="visibility: hidden; position: absolute; pointer-events: none;"
         >
           <span
             class="Text-text"
@@ -364,7 +364,7 @@ exports[`Toolbar overflow menu 2`] = `
         <div
           class="Toolbar-childContainer"
           data-component-name="ToolbarChildContainer"
-          style="visibility: hidden;"
+          style="visibility: hidden; position: absolute; pointer-events: none;"
         >
           <span
             class="Text-text"
@@ -377,7 +377,7 @@ exports[`Toolbar overflow menu 2`] = `
         <div
           class="Toolbar-childContainer"
           data-component-name="ToolbarChildContainer"
-          style="visibility: hidden;"
+          style="visibility: hidden; position: absolute; pointer-events: none;"
         >
           <span
             class="Text-text"
@@ -477,7 +477,7 @@ exports[`Toolbar overflow menu 3`] = `
         <div
           class="Toolbar-childContainer"
           data-component-name="ToolbarChildContainer"
-          style="visibility: hidden;"
+          style="visibility: hidden; position: absolute; pointer-events: none;"
         >
           <div
             aria-label="Separator"
@@ -487,7 +487,7 @@ exports[`Toolbar overflow menu 3`] = `
         <div
           class="Toolbar-childContainer"
           data-component-name="ToolbarChildContainer"
-          style="visibility: hidden;"
+          style="visibility: hidden; position: absolute; pointer-events: none;"
         >
           <span
             class="Text-text"
@@ -500,7 +500,7 @@ exports[`Toolbar overflow menu 3`] = `
         <div
           class="Toolbar-childContainer"
           data-component-name="ToolbarChildContainer"
-          style="visibility: hidden;"
+          style="visibility: hidden; position: absolute; pointer-events: none;"
         >
           <span
             class="Text-text"
