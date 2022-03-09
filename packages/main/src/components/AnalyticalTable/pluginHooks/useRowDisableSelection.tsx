@@ -1,3 +1,4 @@
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/src';
 import React from 'react';
 import { TableSelectionMode } from '../../../enums/TableSelectionMode';
 import { CheckBox } from '../../../webComponents/CheckBox';
@@ -67,11 +68,15 @@ export const useRowDisableSelection = (disableRowSelection: DisableRowSelectionT
     typeof disableRowSelection === 'function'
       ? disableRowSelection
       : (d) => getBy(d.original, disableRowSelection, undefined);
+
   const getRowProps = (rowProps, { row, instance }) => {
     const { webComponentsReactProperties } = instance;
     if (disableRowAccessor(row) === true) {
       row.disableSelect = true;
-      return { ...rowProps, onClick: undefined, className: webComponentsReactProperties.classes.tr };
+      const handleClick = (e) => {
+        webComponentsReactProperties.onRowClick(enrichEventWithDetails(e, { row }));
+      };
+      return { ...rowProps, onClick: handleClick, className: webComponentsReactProperties.classes.tr };
     }
     return rowProps;
   };
