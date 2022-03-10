@@ -1,13 +1,18 @@
 import { render, RenderOptions, RenderResult } from '@testing-library/react';
 import React, { ReactElement } from 'react';
 import { JssProvider } from 'react-jss';
+import { I18nProvider } from '../../packages/main/src/internal/I18nProvider';
 
 const generateId = (rule, sheet) => {
   return `${sheet.options.classNamePrefix}${rule.key}`;
 };
 
 const WithJSSProvider = ({ children }) => {
-  return <JssProvider generateId={generateId}>{children}</JssProvider>;
+  return (
+    <I18nProvider>
+      <JssProvider generateId={generateId}>{children}</JssProvider>
+    </I18nProvider>
+  );
 };
 
 const customRender = (ui: ReactElement, options?: Omit<RenderOptions, 'queries'>): RenderResult =>
@@ -63,7 +68,7 @@ export function getMouseEvent(type: string, values = {}): FakeMouseEvent {
 }
 
 export const renderWithDefine = async (Component, elements: string[]) => {
-  const { ...rest } = render(Component);
+  const { ...rest } = customRender(Component);
   await Promise.all(elements.map((tag) => customElements.whenDefined(tag)));
   return { ...rest };
 };

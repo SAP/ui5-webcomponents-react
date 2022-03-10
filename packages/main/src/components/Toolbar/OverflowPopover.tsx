@@ -5,12 +5,12 @@ import { ButtonDesign } from '../../enums/ButtonDesign';
 import { PopoverPlacementType } from '../../enums/PopoverPlacementType';
 import { stopPropagation } from '../../internal/stopPropagation';
 import { Popover, PopoverDomRef } from '../../webComponents/Popover';
-import { ToggleButton } from '../../webComponents/ToggleButton';
+import { ToggleButton, ToggleButtonDomRef } from '../../webComponents/ToggleButton';
 import { useSyncRef } from '@ui5/webcomponents-react-base';
 
 interface OverflowPopoverProps {
   lastVisibleIndex: number;
-  contentClass: string;
+  classes: any;
   children: ReactNode;
   portalContainer: Element;
   overflowContentRef: Ref<HTMLDivElement>;
@@ -22,7 +22,7 @@ interface OverflowPopoverProps {
 export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopoverProps) => {
   const {
     lastVisibleIndex,
-    contentClass,
+    classes,
     children,
     portalContainer,
     overflowContentRef,
@@ -33,6 +33,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
 
   const [componentRef, popoverRef] = useSyncRef<PopoverDomRef>(overflowPopoverRef);
   const [pressed, setPressed] = useState(false);
+  const toggleBtnRef = useRef<ToggleButtonDomRef>(null);
 
   const handleToggleButtonClick = useCallback(
     (e) => {
@@ -57,13 +58,19 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
     };
   }, []);
 
-  const handleClose = useCallback(
-    (e) => {
-      stopPropagation(e);
-      setPressed(false);
-    },
-    [setPressed]
-  );
+  const handleOpen = () => {
+    if (toggleBtnRef.current) {
+      toggleBtnRef.current.accessibilityAttributes.expanded = 'true';
+    }
+  };
+
+  const handleClose = (e) => {
+    if (toggleBtnRef.current) {
+      toggleBtnRef.current.accessibilityAttributes.expanded = 'false';
+    }
+    stopPropagation(e);
+    setPressed(false);
+  };
 
   const renderChildren = useCallback(() => {
     return React.Children.toArray(
@@ -85,18 +92,36 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
     });
   }, [children, lastVisibleIndex]);
 
+  useEffect(() => {
+    customElements.whenDefined('ui5-toggle-button').then(() => {
+      if (toggleBtnRef.current) {
+        toggleBtnRef.current.accessibilityAttributes.expanded = `${pressed}`;
+        toggleBtnRef.current.accessibilityAttributes.hasPopup = 'menu';
+      }
+    });
+  }, []);
+
   return (
     <>
       <ToggleButton
+        ref={toggleBtnRef}
         design={ButtonDesign.Transparent}
         icon="overflow"
         onClick={handleToggleButtonClick}
         pressed={pressed}
         accessibleName={showMoreText}
+        tooltip={showMoreText}
       />
       {createPortal(
-        <Popover placementType={PopoverPlacementType.Bottom} ref={componentRef} onAfterClose={handleClose} hideArrow>
-          <div className={contentClass} ref={overflowContentRef}>
+        <Popover
+          className={classes.popover}
+          placementType={PopoverPlacementType.Bottom}
+          ref={componentRef}
+          onAfterClose={handleClose}
+          onBeforeOpen={handleOpen}
+          hideArrow
+        >
+          <div className={classes.popoverContent} ref={overflowContentRef}>
             {renderChildren()}
           </div>
         </Popover>,

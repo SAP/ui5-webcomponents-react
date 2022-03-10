@@ -3,6 +3,73 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.22.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.22.1...v0.22.2) (2022-03-08)
+
+
+### Bug Fixes
+
+* **ActionSheet:** allow key navigation between action buttons with screen readers ([#2658](https://github.com/SAP/ui5-webcomponents-react/issues/2658)) ([3cce57c](https://github.com/SAP/ui5-webcomponents-react/commit/3cce57ce386613f46d688e1e71f6062af2526723))
+* **ComposedChart:** fix formatters and create unique sync ids per chart  ([#2659](https://github.com/SAP/ui5-webcomponents-react/issues/2659)) ([895aa10](https://github.com/SAP/ui5-webcomponents-react/commit/895aa1027023cb5c88199541379012783e698087))
+* **Toolbar:** show correct value for `aria-expanded` ([#2657](https://github.com/SAP/ui5-webcomponents-react/issues/2657)) ([df80f5d](https://github.com/SAP/ui5-webcomponents-react/commit/df80f5d76dd6a0ce5c3c30211ab91d4ab6c6640e))
+
+
+### Features
+
+* add `Modals` component for opening modals imperatively ([#2654](https://github.com/SAP/ui5-webcomponents-react/issues/2654)) ([917f0b7](https://github.com/SAP/ui5-webcomponents-react/commit/917f0b7b452716c6980751f3aff0c16bfa0df3f8))
+
+
+
+
+
+## [0.22.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.22.0...v0.22.1) (2022-03-04)
+
+
+### Bug Fixes
+
+* **ActionSheet:** fix unexpected white line ([#2645](https://github.com/SAP/ui5-webcomponents-react/issues/2645)) ([b891060](https://github.com/SAP/ui5-webcomponents-react/commit/b891060aec9007bbd582f12e5821dcd1a001f631))
+* **AnalyticalTable:** correct: h-align of header, padding of popover, spacing between header & body ([#2643](https://github.com/SAP/ui5-webcomponents-react/issues/2643)) ([d566dde](https://github.com/SAP/ui5-webcomponents-react/commit/d566ddef5aefbdd58f162df237581e44221be9cc))
+* **DynamicPageTitle:** make sure overflow popover for actions closes after interaction ([#2653](https://github.com/SAP/ui5-webcomponents-react/issues/2653)) ([fd495a7](https://github.com/SAP/ui5-webcomponents-react/commit/fd495a78a517d3082a22913f0de0aa7b77f7425a))
+* fix build for "bring your own webcomponents" wrappers ([#2649](https://github.com/SAP/ui5-webcomponents-react/issues/2649)) ([1ad0c4f](https://github.com/SAP/ui5-webcomponents-react/commit/1ad0c4fee406355072c4f33578df4821652fa939))
+
+
+
+
+
+# [0.22.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.21.5...v0.22.0) (2022-03-02)
+
+
+### Bug Fixes
+
+* **useI18nBundle:** update translations in all mounted components ([#2629](https://github.com/SAP/ui5-webcomponents-react/issues/2629)) ([6840840](https://github.com/SAP/ui5-webcomponents-react/commit/6840840605664df58b6a8ee9d8f706046a0777d3))
+
+
+### Features
+
+* **Toolbar:** add a11y attributes to overflow button ([#2634](https://github.com/SAP/ui5-webcomponents-react/issues/2634)) ([e0d2a5e](https://github.com/SAP/ui5-webcomponents-react/commit/e0d2a5e6c5d0ffcbb7a06b3c536941df3cc7f54f))
+* update @ui5/webcomponents to 1.2.1 ([#2631](https://github.com/SAP/ui5-webcomponents-react/issues/2631)) ([f9a0156](https://github.com/SAP/ui5-webcomponents-react/commit/f9a0156b6e8c40d4bd87ecf195f885e3d2b4e1dd))
+
+
+### BREAKING CHANGES
+
+* **useI18nBundle:** The `useI18nBundle` hook must now be used in the context of the `ThemeProvider`.  
+_Please make sure that you have wrapped your App in the ThemeProvider component._
+
+
+
+
+
+## [0.21.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.21.4...v0.21.5) (2022-02-21)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** fix layout of Column Filter Input ([#2620](https://github.com/SAP/ui5-webcomponents-react/issues/2620)) ([59437f0](https://github.com/SAP/ui5-webcomponents-react/commit/59437f0d209d14037b0de40e40ffe5dc57ca3b68))
+* create re-export of AnalyticalTableHooks ([#2619](https://github.com/SAP/ui5-webcomponents-react/issues/2619)) ([b251c6d](https://github.com/SAP/ui5-webcomponents-react/commit/b251c6d9d3dd140925e7f44d942fe13df76a75c4))
+
+
+
+
+
 ## [0.21.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.21.3...v0.21.4) (2022-02-21)
 
 

@@ -38,5 +38,3 @@ fs.readdirSync(tmpDir)
     content = content.replaceAll(`'@ui5/webcomponents-react'`, `'@ui5/webcomponents-react/wrappers'`);
     fs.writeFileSync(resolve(tmpDir, file), content);
   });
-
-rimraf.sync(tmpDir);

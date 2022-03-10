@@ -1,21 +1,12 @@
 import { isPhone } from '@ui5/webcomponents-base/dist/Device.js';
-import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming.js';
 import { ThemingParameters, useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base';
 import { AVAILABLE_ACTIONS, CANCEL, X_OF_Y } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import clsx from 'clsx';
-import React, {
-  Children,
-  cloneElement,
-  forwardRef,
-  ReactElement,
-  RefObject,
-  useCallback,
-  useReducer,
-  useRef
-} from 'react';
+import React, { Children, cloneElement, forwardRef, ReactElement, Ref, useCallback, useReducer, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
 import { ButtonDesign } from '../../enums/ButtonDesign';
+import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { Button, ButtonPropTypes } from '../../webComponents/Button';
 import {
@@ -60,7 +51,7 @@ export interface ActionSheetPropTypes extends Omit<ResponsivePopoverPropTypes, '
 const useStyles = createUseStyles(styles, { name: 'ActionSheet' });
 
 if (isPhone()) {
-  addCustomCSS(
+  addCustomCSSWithScoping(
     'ui5-responsive-popover',
     `
   :host([data-actionsheet]) [ui5-button] {
@@ -90,7 +81,7 @@ if (isPhone()) {
  * The `ActionSheet` holds a list of buttons from which the user can select to complete an action. <br />
  * The children of the action sheet should be `Button` components. Elements in the `ActionSheet` are left-aligned. Actions should be arranged in order of importance, from top to bottom.
  */
-const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: RefObject<ResponsivePopoverDomRef>) => {
+const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: Ref<ResponsivePopoverDomRef>) => {
   const {
     a11yConfig,
     allowTargetOverlap,
@@ -213,7 +204,7 @@ const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: RefObject<Resp
       <div
         className={isPhone() ? classes.contentMobile : undefined}
         data-component-name="ActionSheetMobileContent"
-        role={a11yConfig?.actionSheetMobileContent?.role ?? 'presentation'}
+        role={a11yConfig?.actionSheetMobileContent?.role ?? 'application'}
         aria-label={a11yConfig?.actionSheetMobileContent?.ariaLabel ?? i18nBundle.getText(AVAILABLE_ACTIONS)}
         onKeyDown={handleKeyDown}
         ref={actionBtnsRef}

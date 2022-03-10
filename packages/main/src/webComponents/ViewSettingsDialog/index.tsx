@@ -37,11 +37,21 @@ export interface ViewSettingsDialogPropTypes extends ViewSettingsDialogAttribute
   /**
    * Fired when cancel button is activated.
    */
-  onCancel?: (event: Ui5CustomEvent<HTMLElement, { sortOrder: string; sortBy: string }>) => void;
+  onCancel?: (
+    event: Ui5CustomEvent<
+      HTMLElement,
+      { sortOrder: string; sortBy: string; sortByItem: ReactNode; sortDescending: boolean; filterItems: unknown[] }
+    >
+  ) => void;
   /**
    * Fired when confirmation button is activated.
    */
-  onConfirm?: (event: Ui5CustomEvent<HTMLElement, { sortOrder: string; sortBy: string }>) => void;
+  onConfirm?: (
+    event: Ui5CustomEvent<
+      HTMLElement,
+      { sortOrder: string; sortBy: string; sortByItem: ReactNode; sortDescending: boolean; filterItems: unknown[] }
+    >
+  ) => void;
 }
 
 /**

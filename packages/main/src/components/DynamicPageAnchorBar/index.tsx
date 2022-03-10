@@ -1,4 +1,3 @@
-import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming.js';
 import '@ui5/webcomponents-icons/dist/pushpin-off.js';
 import '@ui5/webcomponents-icons/dist/slim-arrow-down.js';
 import '@ui5/webcomponents-icons/dist/slim-arrow-up.js';
@@ -19,11 +18,12 @@ import clsx from 'clsx';
 import React, { forwardRef, RefObject, useCallback } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
+import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { Button } from '../../webComponents/Button';
 import { ToggleButton } from '../../webComponents/ToggleButton';
 
-addCustomCSS(
+addCustomCSSWithScoping(
   'ui5-button',
   `
   :host([data-ui5wcr-dynamic-page-header-action]){
@@ -35,7 +35,7 @@ addCustomCSS(
     padding: 0;
   }`
 );
-addCustomCSS(
+addCustomCSSWithScoping(
   'ui5-toggle-button',
   `
     :host([data-ui5wcr-dynamic-page-header-action]){

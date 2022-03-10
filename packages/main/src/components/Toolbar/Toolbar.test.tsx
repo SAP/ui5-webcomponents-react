@@ -1,4 +1,4 @@
-import { fireEvent, render, renderWithDefine, screen } from '@shared/tests';
+import { fireEvent, render, renderWithDefine, screen, waitFor } from '@shared/tests';
 import { createChangeTagNameTest } from '@shared/tests/utils';
 import React, { createRef } from 'react';
 import {
@@ -93,7 +93,7 @@ describe('Toolbar', () => {
       };
     });
     const onOverflowChange = jest.fn();
-    const { getByTitle, getAllByTestId, getAllByText, rerender, queryByTitle, getByText, getAllByLabelText } = render(
+    const { getAllByTestId, getAllByText, rerender, queryByTitle, getByText, getAllByLabelText, container } = render(
       <Toolbar data-testid="toolbar" style={{ width: '300px' }} onOverflowChange={onOverflowChange}>
         <Text data-testid="toolbar-item" style={{ width: '200px' }}>
           Item1
@@ -106,7 +106,7 @@ describe('Toolbar', () => {
         </Text>
       </Toolbar>
     );
-    expect(getByTitle('Show More')).toBeInTheDocument();
+    expect(container.querySelector(`[tooltip="Show More"]`)).toBeInTheDocument();
     expect(getAllByTestId('toolbar-item')).toHaveLength(5);
     expect(onOverflowChange).toHaveBeenCalledTimes(1);
 
@@ -161,7 +161,7 @@ describe('Toolbar', () => {
         </Text>
       </Toolbar>
     );
-    expect(getByTitle('Show More')).toBeInTheDocument();
+    expect(container.querySelector(`[tooltip="Show More"]`)).toBeInTheDocument();
     expect(getAllByTestId('toolbar-item')).toHaveLength(5);
 
     const item1frag = getAllByText('Item1');
@@ -304,7 +304,7 @@ describe('Toolbar', () => {
       };
     });
     const onOverflowChange = jest.fn();
-    const { getByTitle, getAllByTestId, getAllByText, rerender, queryByTitle, getByText, getAllByLabelText } = render(
+    const { getAllByText } = render(
       <Toolbar
         data-testid="toolbar"
         style={{ width: '50px' }}
@@ -351,7 +351,7 @@ describe('Toolbar', () => {
         overflowPopoverRef.current.close();
       }
     };
-    const { getAllByText, getAllByPlaceholderText, getByTitle } = await renderWithDefine(
+    const { getAllByText, getAllByPlaceholderText, container } = await renderWithDefine(
       <Toolbar overflowPopoverRef={overflowPopoverRef} style={{ width: '50px' }}>
         <Button onClick={handlePopoverClose}>Button One</Button>
         <Input placeholder="Input" onChange={handlePopoverClose} />
@@ -359,14 +359,48 @@ describe('Toolbar', () => {
       ['ui5-popover']
     );
     expect(overflowPopoverRef.current.isOpen()).toBeFalsy();
-    overflowPopoverRef.current.showAt(getByTitle('Show More'));
+    overflowPopoverRef.current.showAt(container.querySelector(`[tooltip="Show More"]`));
     expect(overflowPopoverRef.current.isOpen()).toBeTruthy();
     fireEvent.click(getAllByText('Button One')[1]);
     expect(overflowPopoverRef.current.isOpen()).toBeFalsy();
-    fireEvent.click(getByTitle('Show More'));
-    overflowPopoverRef.current.showAt(getByTitle('Show More'));
+    fireEvent.click(container.querySelector(`[tooltip="Show More"]`));
+    overflowPopoverRef.current.showAt(container.querySelector(`[tooltip="Show More"]`));
     fireEvent.change(getAllByPlaceholderText('Input')[1], { target: { value: ':)' } });
     expect(overflowPopoverRef.current.isOpen()).toBeFalsy();
+  });
+
+  test('a11y', async () => {
+    jest.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => cb());
+
+    HTMLElement.prototype.getBoundingClientRect = jest.fn(function () {
+      return {
+        width: parseFloat(getComputedStyle(this).width || 200),
+        height: 10,
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0
+      };
+    });
+    const overflowPopoverRef = createRef<PopoverDomRef>();
+    const { container, rerender } = await renderWithDefine(
+      <Toolbar overflowPopoverRef={overflowPopoverRef} style={{ width: '50px' }}>
+        <Button>Button One</Button>
+        <Input />
+      </Toolbar>,
+      ['ui5-popover', 'ui5-button']
+    );
+    const overflowBtn = container.querySelector(`[tooltip="Show More"]`);
+    await waitFor(() => overflowBtn.shadowRoot.querySelector('button'));
+    const srOverflowBtn = overflowBtn.shadowRoot.querySelector('button');
+
+    expect(srOverflowBtn).toHaveAttribute('aria-expanded', 'false');
+    expect(srOverflowBtn).toHaveAttribute('aria-haspopup', 'menu');
+
+    // todo: overflowPopoverRef.current.showAt never resolves
+    // await overflowPopoverRef.current.showAt(container.querySelector(`[tooltip="Show More"]`));
+    // expect(overflowPopoverRef.current.isOpen()).toBeTruthy();
+    // expect(overflowBtn.shadowRoot.querySelector('button')).toHaveAttribute('aria-expanded', 'true');
   });
 
   createChangeTagNameTest(Toolbar);

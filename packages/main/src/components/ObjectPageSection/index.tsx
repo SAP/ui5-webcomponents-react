@@ -58,7 +58,6 @@ const ObjectPageSection = forwardRef((props: ObjectPageSectionPropTypes, ref: Re
       <div role="heading" aria-level={3} className={classes.header} data-component-name="ObjectPageSectionTitleText">
         <div className={titleClasses}>{titleText}</div>
       </div>
-      {/* TODO Check for subsections as they should win over the children */}
       <div className={classes.sectionContent}>
         <div className={classes.sectionContentInner} data-component-name="ObjectPageSectionContent">
           {children}

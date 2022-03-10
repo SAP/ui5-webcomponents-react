@@ -1,5 +1,6 @@
 import '@ui5/webcomponents/dist/SegmentedButtonItem.js';
 import { MouseEventHandler, ReactNode } from 'react';
+import { ButtonDesign } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
@@ -10,7 +11,7 @@ interface SegmentedButtonItemAttributes {
    */
   pressed?: boolean;
   /**
-   * Sets the accessible aria name of the component.
+   * Defines the accessible aria name of the component.
    */
   accessibleName?: string;
   /**
@@ -27,9 +28,30 @@ interface SegmentedButtonItemAttributes {
    * Example: See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
    */
   icon?: string;
+  /**
+   * Defines the tooltip of the button.
+   * **Note:** Tooltips should only be set to icon-only buttons.
+   */
+  tooltip?: string;
 }
 
-export interface SegmentedButtonItemDomRef extends SegmentedButtonItemAttributes, Ui5DomRef {}
+export interface SegmentedButtonItemDomRef extends SegmentedButtonItemAttributes, Ui5DomRef {
+  /**
+   * An object of strings that defines several additional accessibility attribute values for customization depending on the use case. It supports the following fields:
+   *
+   * *   `expanded`: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:
+   *     *   `true`
+   *     *   `false`
+   * *   `hasPopup`: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button. Accepts the following string values:
+   *     *   `Dialog`
+   *     *   `Grid`
+   *     *   `ListBox`
+   *     *   `Menu`
+   *     *   `Tree`
+   * *   `controls`: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.
+   */
+  accessibilityAttributes: Record<string, unknown>;
+}
 
 export interface SegmentedButtonItemPropTypes extends SegmentedButtonItemAttributes, Omit<CommonProps, 'onClick'> {
   /**
@@ -55,8 +77,8 @@ export interface SegmentedButtonItemPropTypes extends SegmentedButtonItemAttribu
  */
 const SegmentedButtonItem = withWebComponent<SegmentedButtonItemPropTypes, SegmentedButtonItemDomRef>(
   'ui5-segmented-button-item',
-  ['accessibleName', 'accessibleNameRef', 'icon'],
-  ['pressed', 'disabled'],
+  ['design', 'accessibleName', 'accessibleNameRef', 'icon', 'tooltip'],
+  ['iconEnd', 'submits', 'pressed', 'disabled'],
   [],
   ['click']
 );

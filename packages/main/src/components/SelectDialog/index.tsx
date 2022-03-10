@@ -19,6 +19,7 @@ import { ListGrowingMode } from '../../enums/ListGrowingMode';
 import { ListMode } from '../../enums/ListMode';
 import { ToolbarDesign } from '../../enums/ToolbarDesign';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
+import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { Bar } from '../../webComponents/Bar';
 import { Button } from '../../webComponents/Button';
@@ -32,7 +33,11 @@ import { Toolbar } from '../Toolbar';
 
 const useStyles = createUseStyles(
   {
-    dialog: { '--_ui5_popup_content_padding': 0 },
+    dialog: {
+      '&::part(content)': {
+        padding: 0
+      }
+    },
     spread: { width: '100%' },
     noShadow: { boxShadow: 'none' },
     inputIcon: { cursor: 'pointer', color: ThemingParameters.sapContent_IconColor },
@@ -42,7 +47,7 @@ const useStyles = createUseStyles(
 );
 
 // necessary for draggable dialog
-addCustomCSS(
+addCustomCSSWithScoping(
   'ui5-dialog',
   `
 :host([data-component-name="SelectDialog"]) .ui5-popup-header-root {
@@ -51,7 +56,7 @@ addCustomCSS(
  `
 );
 
-addCustomCSS(
+addCustomCSSWithScoping(
   'ui5-bar',
   `
 :host([data-component-name="SelectDialogSubHeader"]) .ui5-bar-midcontent-container {

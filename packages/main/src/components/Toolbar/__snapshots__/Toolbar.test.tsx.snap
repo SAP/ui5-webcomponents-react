@@ -251,7 +251,7 @@ exports[`Toolbar overflow menu 1`] = `
         <div
           class="Toolbar-childContainer"
           data-component-name="ToolbarChildContainer"
-          style="visibility: hidden;"
+          style="visibility: hidden; position: absolute; pointer-events: none;"
         >
           <span
             class="Text-text"
@@ -264,7 +264,7 @@ exports[`Toolbar overflow menu 1`] = `
         <div
           class="Toolbar-childContainer"
           data-component-name="ToolbarChildContainer"
-          style="visibility: hidden;"
+          style="visibility: hidden; position: absolute; pointer-events: none;"
         >
           <span
             class="Text-text"
@@ -278,18 +278,19 @@ exports[`Toolbar overflow menu 1`] = `
       <div
         class="Toolbar-overflowButtonContainer"
         data-component-name="ToolbarOverflowButtonContainer"
-        title="Show More"
       >
         <ui5-toggle-button
           accessible-name="Show More"
           design="Transparent"
           icon="overflow"
+          tooltip="Show More"
           ui5-toggle-button=""
         />
       </div>
     </div>
   </div>
   <ui5-popover
+    class="Toolbar-popover"
     hide-arrow="true"
     horizontal-align="Center"
     placement-type="Bottom"
@@ -363,7 +364,7 @@ exports[`Toolbar overflow menu 2`] = `
         <div
           class="Toolbar-childContainer"
           data-component-name="ToolbarChildContainer"
-          style="visibility: hidden;"
+          style="visibility: hidden; position: absolute; pointer-events: none;"
         >
           <span
             class="Text-text"
@@ -376,7 +377,7 @@ exports[`Toolbar overflow menu 2`] = `
         <div
           class="Toolbar-childContainer"
           data-component-name="ToolbarChildContainer"
-          style="visibility: hidden;"
+          style="visibility: hidden; position: absolute; pointer-events: none;"
         >
           <span
             class="Text-text"
@@ -390,18 +391,19 @@ exports[`Toolbar overflow menu 2`] = `
       <div
         class="Toolbar-overflowButtonContainer"
         data-component-name="ToolbarOverflowButtonContainer"
-        title="Show More"
       >
         <ui5-toggle-button
           accessible-name="Show More"
           design="Transparent"
           icon="overflow"
+          tooltip="Show More"
           ui5-toggle-button=""
         />
       </div>
     </div>
   </div>
   <ui5-popover
+    class="Toolbar-popover"
     hide-arrow="true"
     horizontal-align="Center"
     placement-type="Bottom"
@@ -475,7 +477,7 @@ exports[`Toolbar overflow menu 3`] = `
         <div
           class="Toolbar-childContainer"
           data-component-name="ToolbarChildContainer"
-          style="visibility: hidden;"
+          style="visibility: hidden; position: absolute; pointer-events: none;"
         >
           <div
             aria-label="Separator"
@@ -485,7 +487,7 @@ exports[`Toolbar overflow menu 3`] = `
         <div
           class="Toolbar-childContainer"
           data-component-name="ToolbarChildContainer"
-          style="visibility: hidden;"
+          style="visibility: hidden; position: absolute; pointer-events: none;"
         >
           <span
             class="Text-text"
@@ -498,7 +500,7 @@ exports[`Toolbar overflow menu 3`] = `
         <div
           class="Toolbar-childContainer"
           data-component-name="ToolbarChildContainer"
-          style="visibility: hidden;"
+          style="visibility: hidden; position: absolute; pointer-events: none;"
         >
           <span
             class="Text-text"
@@ -512,18 +514,19 @@ exports[`Toolbar overflow menu 3`] = `
       <div
         class="Toolbar-overflowButtonContainer"
         data-component-name="ToolbarOverflowButtonContainer"
-        title="Show More"
       >
         <ui5-toggle-button
           accessible-name="Show More"
           design="Transparent"
           icon="overflow"
+          tooltip="Show More"
           ui5-toggle-button=""
         />
       </div>
     </div>
   </div>
   <ui5-popover
+    class="Toolbar-popover"
     hide-arrow="true"
     horizontal-align="Center"
     placement-type="Bottom"

@@ -32,7 +32,7 @@ const measures = [
   }
 ];
 
-describe('ColumnChart', () => {
+describe('ColumnChartWithTrend', () => {
   it('Renders with data', async () => {
     const { container, asFragment } = render(
       <ColumnChartWithTrend dataset={complexDataSet} dimensions={dimensions} measures={measures} />

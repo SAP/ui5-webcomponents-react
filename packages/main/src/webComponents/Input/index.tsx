@@ -8,7 +8,7 @@ import { withWebComponent } from '../../internal/withWebComponent';
 
 interface InputAttributes {
   /**
-   * Sets the accessible aria name of the component.
+   * Defines the accessible aria name of the component.
    */
   accessibleName?: string;
   /**
@@ -47,6 +47,10 @@ interface InputAttributes {
    * Defines whether the component is required.
    */
   required?: boolean;
+  /**
+   * Defines whether the clear icon of the input will be shown.
+   */
+  showClearIcon?: boolean;
   /**
    * Defines whether the component should show suggestions, if such are present.
    *
@@ -167,7 +171,7 @@ export interface InputPropTypes extends InputAttributes, Omit<CommonProps, 'onCh
 const Input = withWebComponent<InputPropTypes, InputDomRef>(
   'ui5-input',
   ['accessibleName', 'accessibleNameRef', 'maxlength', 'name', 'placeholder', 'type', 'value', 'valueState'],
-  ['disabled', 'readonly', 'required', 'showSuggestions'],
+  ['disabled', 'readonly', 'required', 'showClearIcon', 'showSuggestions'],
   ['icon', 'valueStateMessage'],
   ['change', 'input', 'suggestion-item-preview', 'suggestion-item-select']
 );

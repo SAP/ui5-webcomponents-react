@@ -4,12 +4,7 @@ import '@ui5/webcomponents-icons/dist/message-information.js';
 import '@ui5/webcomponents-icons/dist/message-success.js';
 import '@ui5/webcomponents-icons/dist/message-warning.js';
 import '@ui5/webcomponents-icons/dist/question-mark.js';
-import {
-  enrichEventWithDetails,
-  useI18nBundle,
-  useIsomorphicLayoutEffect,
-  useSyncRef
-} from '@ui5/webcomponents-react-base';
+import { enrichEventWithDetails, useI18nBundle, useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base';
 import {
   ABORT,
   CANCEL,
@@ -28,16 +23,7 @@ import {
   YES
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import clsx from 'clsx';
-import React, {
-  cloneElement,
-  forwardRef,
-  isValidElement,
-  ReactElement,
-  ReactNode,
-  Ref,
-  useEffect,
-  useState
-} from 'react';
+import React, { cloneElement, forwardRef, isValidElement, ReactElement, ReactNode, Ref, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { ButtonDesign } from '../../enums/ButtonDesign';
 import { MessageBoxActions } from '../../enums/MessageBoxActions';
@@ -178,8 +164,6 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<DialogDomRef
 
   useDeprecationNoticeForTooltip('MessageBox', props.tooltip);
 
-  const [componentRef, dialogRef] = useSyncRef<DialogDomRef>(ref);
-
   const classes = useStyles();
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
@@ -224,16 +208,6 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<DialogDomRef
     onClose(enrichEventWithDetails(e, { action }));
   };
 
-  useEffect(() => {
-    if (dialogRef.current) {
-      if (open) {
-        dialogRef.current.show?.();
-      } else {
-        dialogRef.current.close?.();
-      }
-    }
-  }, [dialogRef.current, open]);
-
   const messageBoxClassNames = clsx(classes.messageBox, className);
   const internalActions = getActions(actions, type);
 
@@ -257,8 +231,9 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<DialogDomRef
 
   return (
     <Dialog
+      open={open}
       slot={slot}
-      ref={componentRef}
+      ref={ref}
       style={style}
       title={tooltip ?? props.title}
       className={messageBoxClassNames}
@@ -266,15 +241,16 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<DialogDomRef
       {...restWithoutOmitted}
       accessibleName={accessibleName ?? `${titleToRender() ?? ''} ${typeof children === 'string' ? children : ''}`}
       initialFocus={getInitialFocus()}
+      data-type={type}
     >
       {!props.header && (
-        <header slot="header" className={classes.header} data-type={type}>
+        <header slot="header" className={classes.header}>
           {iconToRender}
           {iconToRender && <span className={classes.spacer} />}
           <Title level={TitleLevel.H2}>{titleToRender()}</Title>
         </header>
       )}
-      <Text className={classes.content}>{children}</Text>
+      <Text>{children}</Text>
       <footer slot="footer" className={classes.footer}>
         {internalActions.map((action, index) => {
           if (typeof action !== 'string' && isValidElement(action)) {

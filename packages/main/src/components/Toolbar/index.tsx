@@ -270,14 +270,14 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
         toolbarElements = Array.from(toolbarChildren).filter((item, index) => index <= lastVisibleIndex);
       }
       onOverflowChange({
-        toolbarElements: toolbarElements,
-        overflowElements: overflowElements,
+        toolbarElements,
+        overflowElements,
         target: outerContainer.current
       });
     }
   }, [lastVisibleIndex]);
   const CustomTag = as as React.ElementType;
-  const styleWithMinWidth = minWidth !== '0' ? { minWidth: minWidth, ...style } : style;
+  const styleWithMinWidth = minWidth !== '0' ? { minWidth, ...style } : style;
   return (
     <CustomTag
       title={tooltip}
@@ -292,7 +292,9 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
         {overflowNeeded &&
           React.Children.map(childrenWithRef, (item, index) => {
             if (index >= lastVisibleIndex + 1 && index > numberOfAlwaysVisibleItems - 1) {
-              return React.cloneElement(item as ReactElement, { style: { visibility: 'hidden' } });
+              return React.cloneElement(item as ReactElement, {
+                style: { visibility: 'hidden', position: 'absolute', pointerEvents: 'none' }
+              });
             }
             return item;
           })}
@@ -302,13 +304,12 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
         <div
           ref={overflowBtnRef}
           className={classes.overflowButtonContainer}
-          title={showMoreText}
           data-component-name="ToolbarOverflowButtonContainer"
         >
           <OverflowPopover
             overflowPopoverRef={overflowPopoverRef}
             lastVisibleIndex={lastVisibleIndex}
-            contentClass={classes.popoverContent}
+            classes={classes}
             portalContainer={portalContainer}
             overflowContentRef={overflowContentRef}
             numberOfAlwaysVisibleItems={numberOfAlwaysVisibleItems}
