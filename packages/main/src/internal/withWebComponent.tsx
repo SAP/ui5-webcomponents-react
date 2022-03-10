@@ -112,7 +112,7 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
           const eventHandler = rest[createEventPropName(eventName)] as EventHandler;
           if (typeof eventHandler === 'function') {
             eventRegistry.current[eventName] = eventHandler;
-            ref.current.addEventListener(eventName, eventRegistry.current[eventName]);
+            ref.current?.addEventListener(eventName, eventRegistry.current[eventName]);
           }
         });
 
