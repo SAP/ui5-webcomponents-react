@@ -22,7 +22,7 @@
       "@commitlint/cli": "^11.0.0",
       "@commitlint/config-conventional": "^11.0.0",
       "@types/jest": "^26.0.15",
-      "husky": "^4.3.8",
+      "husky": "^7.0.4",
       "json-server": "^0.16.2",
       "msw": "^0.26.2",
       "nodemon": "^2.0.6",
@@ -38,7 +38,7 @@
       "lint:fix": "eslint . --fix",
       "prettier": "prettier --config .prettierrc --check \"src/**/*.js\"",
       "prettier:fix": "prettier --config .prettierrc --write \"src/**/*.js\"",
-      "pre:push": "npm-run-all --parallel lint prettier test:ci"
+      "prepare": "husky install"
     },
     "browserslist": {
       "production": [
@@ -58,13 +58,6 @@
       "transformIgnorePatterns": [
         "node_modules/(?!(@ui5|lit-html)).*\\.js$"
       ]
-    },
-    "husky": {
-      "hooks": {
-        "pre-push": "npm run pre:push",
-        "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-        "prepare-commit-msg": "exec < /dev/tty && true"
-      }
     }
   }
 }
