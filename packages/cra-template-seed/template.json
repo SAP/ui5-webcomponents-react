@@ -19,15 +19,15 @@
       "yup": "^0.32.8"
     },
     "devDependencies": {
-      "@commitlint/cli": "^11.0.0",
-      "@commitlint/config-conventional": "^11.0.0",
-      "@types/jest": "^26.0.15",
+      "@commitlint/cli": "^16.2.1",
+      "@commitlint/config-conventional": "^16.2.1",
+      "@types/jest": "^27.4.1",
       "husky": "^7.0.4",
-      "json-server": "^0.16.2",
-      "msw": "^0.26.2",
-      "nodemon": "^2.0.6",
+      "json-server": "^0.17.0",
+      "msw": "^0.39.1",
+      "nodemon": "^2.0.15",
       "npm-run-all": "^4.1.5",
-      "prettier": "^2.1.2"
+      "prettier": "^2.5.1"
     },
     "scripts": {
       "start:mock-server": "nodemon --watch server --exec npx json-server --p 3001 server/mockserver.js --routes server/routes.json",
