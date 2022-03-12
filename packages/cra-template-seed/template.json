@@ -15,7 +15,7 @@
       "react-helmet": "^6.1.0",
       "react-i18next": "^11.15.6",
       "react-query": "^3.34.16",
-      "react-router-dom": "^5.2.0",
+      "react-router-dom": "^6.2.2",
       "yup": "^0.32.11"
     },
     "devDependencies": {
@@ -38,7 +38,7 @@
       "lint:fix": "eslint . --fix",
       "prettier": "prettier --config .prettierrc --check \"src/**/*.js\"",
       "prettier:fix": "prettier --config .prettierrc --write \"src/**/*.js\"",
-      "prepare": "husky install"
+      "prepare": "husky install || exit 0"
     },
     "browserslist": {
       "production": [

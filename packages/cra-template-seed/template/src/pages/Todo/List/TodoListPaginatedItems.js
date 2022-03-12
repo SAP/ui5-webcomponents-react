@@ -1,18 +1,17 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import { useTodos } from '../../../hooks/services/useTodos';
-
 import { BusyIndicator, List, StandardListItem, Title, TitleLevel } from '@ui5/webcomponents-react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Pagination } from '../../../components/Pagination/Pagination';
+import { useTodos } from '../../../hooks/services/useTodos';
 import { getRoute, ROUTES } from '../../../routes/Routes';
 
 const TodoListPaginatedItems = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [page, setPage] = useState(0);
   const { data, isLoading } = useTodos(page);
 
   const navToTodoEditPage = (e) => {
-    history.push(getRoute(ROUTES.TODO_EDIT, { id: e.detail.item.dataset.id }));
+    navigate(getRoute(ROUTES.TODO_EDIT, { id: e.detail.item.dataset.id }));
   };
 
   return (
