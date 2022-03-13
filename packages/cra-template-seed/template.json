@@ -24,6 +24,7 @@
       "@types/jest": "^27.4.1",
       "husky": "^7.0.4",
       "json-server": "^0.17.0",
+      "lint-staged": "^12.3.5",
       "msw": "^0.39.1",
       "nodemon": "^2.0.15",
       "npm-run-all": "^4.1.5",
@@ -57,6 +58,12 @@
     "jest": {
       "transformIgnorePatterns": [
         "node_modules/(?!(@ui5|lit-html)).*\\.js$"
+      ]
+    },
+    "lint-staged": {
+      "*.{js,jsx}": [
+        "prettier --write",
+        "eslint --quiet"
       ]
     }
   }
