@@ -47,13 +47,13 @@ import { Title } from '../../webComponents/Title';
 import { FilterGroupItemPropTypes } from '../FilterGroupItem';
 import { FlexBox } from '../FlexBox';
 import { Text } from '../Text';
+import { Toolbar } from '../Toolbar';
+import { ToolbarSpacer } from '../ToolbarSpacer';
 import styles from './FilterBarDialog.jss';
 import { filterValue, renderSearchWithValue, syncRef } from './utils';
 
-const preventEventPropagationFilter = (type, child, e) => {
-  e.isMarked = 'button';
-  stopPropagation(e);
-  e.preventDefault();
+//todo doesn't work
+const userEvent = (e, type, child) => {
   if (typeof child.props.children.props?.[type] === 'function') {
     child.props.children.props[type](e);
   }
@@ -91,6 +91,9 @@ export const FilterDialogV2 = (props) => {
   const dialogSearchRef = useRef(null);
   //todo init false
   const [showValues, toggleValues] = useReducer((prev) => !prev, true);
+  const [selectedItems, setSelectedItems] = useState({});
+  const [set, setSet] = useState(true);
+  const [selectedItem, setSelectedItem] = useState(true);
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
@@ -168,6 +171,8 @@ export const FilterDialogV2 = (props) => {
     }
   };
 
+  const timeout = useRef();
+
   const renderChildren = () => {
     return children
       .filter((item) => {
@@ -184,29 +189,46 @@ export const FilterDialogV2 = (props) => {
           filterItemProps = filterValue(filterBarItemRef, child);
         }
         if (!child.props.children) return child;
-        return cloneElement<FilterGroupItemPropTypes & { 'data-with-values': boolean }>(child, {
-          'data-with-values': showValues,
-          children: {
-            ...child.props.children,
-            props: {
-              ...child.props.children.props,
-              ...filterItemProps,
-              onClick: (e) => {
-                console.log('Casdasd ajdhkjah');
-                e.preventDefault();
-                e.isMarked = 'button';
+        return cloneElement<FilterGroupItemPropTypes & { 'data-with-values': boolean; 'data-selected': boolean }>(
+          child,
+          {
+            'data-with-values': showValues,
+            'data-selected': selectedItem,
+            children: {
+              ...child.props.children,
+              props: {
+                ...child.props.children.props,
+                ...filterItemProps,
+                onClick: (e) => {
+                  clearTimeout(timeout.current);
+                  userEvent(e, 'onClick', child);
+                },
+                onKeyDown: (e) => {
+                  if (e.code === 'Enter' || e.code === 'Space') {
+                    clearTimeout(timeout.current);
+                  }
+                  // todo: workaround for https://github.com/SAP/ui5-webcomponents/issues/974
+                  if (e.code === 'Space') {
+                    e.target.value += ' ';
+                  }
+                  userEvent(e, 'onKeyDown', child);
+                },
+                onKeyUp: (e) => {
+                  if (e.code === 'Enter' || e.code === 'Space') {
+                    clearTimeout(timeout.current);
+                  }
+                  userEvent(e, 'onKeyUp', child);
+                }
               },
-              onKeyDown: (e) => preventEventPropagationFilter('onKeyDown', child, e),
-              onKeyUp: (e) => preventEventPropagationFilter('onKeyUp', child, e)
-            },
-            ref: (node) => {
-              if (node) {
-                dialogRefs.current[child.key] = node;
-                syncRef(child.props.children.ref, node);
+              ref: (node) => {
+                if (node) {
+                  dialogRefs.current[child.key] = node;
+                  syncRef(child.props.children.ref, node);
+                }
               }
             }
           }
-        });
+        );
       });
   };
 
@@ -276,6 +298,9 @@ export const FilterDialogV2 = (props) => {
     dialogFilterRefs.current = dialogFilters;
     return filterGroups;
   };
+
+  console.log(selectedItem);
+
   return createPortal(
     <Dialog
       ref={dialogRef}
@@ -283,7 +308,8 @@ export const FilterDialogV2 = (props) => {
       onAfterClose={handleClose}
       resizable
       draggable
-      style={{ width: '40rem', '--_ui5_popup_content_padding': 0 }}
+      style={{ width: '40rem' }}
+      className={classes.dialogComponent}
       header={
         <FlexBox
           alignItems={FlexBoxAlignItems.Center}
@@ -342,26 +368,20 @@ export const FilterDialogV2 = (props) => {
         style={{ padding: '0 1rem', boxShadow: ThemingParameters.sapContent_HeaderShadow }}
       >
         {/*todo a11y maybe use header tags here*/}
-        <FlexBox
-          wrap={FlexBoxWrap.NoWrap}
-          justifyContent={FlexBoxJustifyContent.SpaceBetween}
-          alignItems={FlexBoxAlignItems.Center}
-          style={{ height: CssSizeVariables.sapWcrToolbarHeight, paddingBottom: '0.25rem' }}
-        >
+        <Toolbar style={{ paddingBottom: '0.25rem' }} className={classes.subheader}>
           {/*// todo i18n, cb*/}
           <Select>
             <Option selected>All</Option>
           </Select>
-          <FlexBox alignItems={FlexBoxAlignItems.Center} justifyContent={FlexBoxJustifyContent.End}>
-            <Button design={ButtonDesign.Transparent} onClick={toggleValues}>
-              {showValues ? 'Hide Values' : 'Show Values'}
-            </Button>
-            <SegmentedButton>
-              <SegmentedButtonItem icon="list" />
-              <SegmentedButtonItem icon="group-2" />
-            </SegmentedButton>
-          </FlexBox>
-        </FlexBox>
+          <ToolbarSpacer />
+          <Button design={ButtonDesign.Transparent} onClick={toggleValues}>
+            {showValues ? 'Hide Values' : 'Show Values'}
+          </Button>
+          <SegmentedButton>
+            <SegmentedButtonItem icon="list" />
+            <SegmentedButtonItem icon="group-2" />
+          </SegmentedButton>
+        </Toolbar>
         {showSearch && (
           <FlexBox style={{ height: CssSizeVariables.sapWcrToolbarHeight, paddingBottom: '0.25rem' }}>
             {/*todo  clear btn*/}
@@ -376,10 +396,27 @@ export const FilterDialogV2 = (props) => {
         )}
       </FlexBox>
       <List
+        onItemClick={(e) => {
+          // e.isMarked = 'button';
+          // todo save the clicked item here, add a timeout and cancel it if filter item is clicked
+          e.preventDefault();
+          timeout.current = setTimeout(() => {
+            setSelectedItem((prev) => !prev);
+          });
+          console.log('li-click', e);
+        }}
         //todo change visible items
         onSelectionChange={(e) => {
+          console.log('change', e);
+
+          // setSelectedItems(
+          //   e.detail.selectedItems.reduce(
+          //     (acc: Record<string, any>, cur: HTMLElement) => ({ ...acc, [cur.dataset.uuid]: true }),
+          //     {}
+          //   )
+          // );
           // if (typeof handleSelectionChange === 'function') {
-          //   //todo null was rect node previously, check how this can be achieved
+          //   //todo element was rect node previously, check how this can be achieved
           //   handleSelectionChange(enrichEventWithDetails(e, { element, checked: e.target.checked }));
           // }
           // setToggledFilters((old) => ({ ...old, [element.key]: e.target.checked }));

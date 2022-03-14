@@ -2,7 +2,7 @@ import { CssSizeVariables, spacing } from '@ui5/webcomponents-react-base';
 
 const styles = {
   dialogComponent: {
-    '&::part(content)': {
+    '&::part(content), &::part(footer), &::part(header)': {
       padding: 0
     }
   },
@@ -23,6 +23,11 @@ const styles = {
     },
     '& ui5-input': {
       width: '100%'
+    }
+  },
+  subheader: {
+    '& [data-component-name="ToolbarContent"] >:last-child': {
+      margin: 0
     }
   },
   footer: {

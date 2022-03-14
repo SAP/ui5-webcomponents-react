@@ -1,12 +1,11 @@
 import { useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/src';
 import clsx from 'clsx';
-import React, { forwardRef, ReactElement, RefObject } from 'react';
+import React, { forwardRef, ReactElement, RefObject, useRef } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxWrap } from '../../enums';
 import { BusyIndicatorSize } from '../../enums/BusyIndicatorSize';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { stopPropagation } from '../../internal/stopPropagation';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { CustomListItem } from '../../webComponents';
 import { BusyIndicator } from '../../webComponents/BusyIndicator';
@@ -89,6 +88,8 @@ export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref:
 
   const inFB = props['data-in-fb'];
   const withValues = props['data-with-values'];
+  const selected = props['data-selected'];
+  console.log(selected);
   const [componentRef, filterGroupItemRef] = useSyncRef<HTMLDivElement>(ref);
 
   const isRtl = useIsRTL(filterGroupItemRef);
@@ -104,7 +105,10 @@ export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref:
       /*todo rtl, somehow only active :active effect if really clicked on li (try :focus-within)*/
       <CustomListItem
         style={{ paddingLeft: '0.5rem', padding: '0.25rem 0 0.25rem 0.5rem' }}
-        selected={required || visibleInFilterBar}
+        selected={typeof selected === 'boolean' ? selected : required || visibleInFilterBar}
+        onClick={(e) => {
+          e.preventDefault();
+        }}
       >
         <FlexBox alignItems={FlexBoxAlignItems.Center} style={{ width: '100%' }} wrap={FlexBoxWrap.NoWrap}>
           <FlexBox style={{ flexBasis: '80%' }} direction={FlexBoxDirection.Column}>
