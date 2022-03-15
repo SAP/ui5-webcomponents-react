@@ -205,11 +205,21 @@ const styles = {
     fontWeight: 'normal'
   },
   footer: {
-    margin: '0.4375rem 1rem 0.4325rem auto'
+    '& > :last-child': {
+      marginRight: 0
+    }
   },
   inputIcon: { cursor: 'pointer', color: ThemingParameters.sapContent_IconColor },
-  searchInput: { padding: '0.25rem 0.5rem 0.25rem 0.25rem' },
-  popover: { minWidth: '25rem' }
+  searchInput: { padding: '0.25rem 1rem' },
+  popover: {
+    minWidth: '25rem',
+    '&::part(content)': {
+      padding: 0
+    },
+    '&::part(header), &::part(footer)': {
+      padding: '0 1rem'
+    }
+  }
 };
 
 const useStyles = createUseStyles(styles, { name: 'VariantManagement' });
@@ -471,6 +481,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
             footer={
               (showSaveBtn || !hideSaveAs || !hideManageVariants || showCancelButton) && (
                 <Bar
+                  className={classes.footer}
                   endContent={
                     <>
                       {!inErrorState && showSaveBtn && (
@@ -571,6 +582,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
         )}
         {saveAsDialogOpen && (
           <SaveViewDialog
+            portalContainer={portalContainer}
             showShare={!hideShare}
             showApplyAutomatically={!hideApplyAutomatically}
             showSetAsDefault={!hideSetAsDefault}
