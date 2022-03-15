@@ -11,6 +11,7 @@ import {
   VIEW
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import React, { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { SelectedVariant } from '../../internal/VariantManagementContext';
 import { ButtonDesign } from '../../enums/ButtonDesign';
 import { FlexBoxAlignItems } from '../../enums/FlexBoxAlignItems';
@@ -32,6 +33,7 @@ interface SaveViewDialogPropTypes {
   showApplyAutomatically: boolean;
   showSetAsDefault: boolean;
   variantNames: string[];
+  portalContainer: Element;
 }
 
 export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
@@ -42,7 +44,8 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
     showShare,
     showApplyAutomatically,
     showSetAsDefault,
-    variantNames
+    variantNames,
+    portalContainer
   } = props;
   const saveViewDialogRef = useRef<DialogDomRef>(null);
   const inputRef = useRef(undefined);
@@ -102,7 +105,7 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
     };
   }, []);
 
-  return (
+  return createPortal(
     <Dialog
       ref={saveViewDialogRef}
       headerText={headingText}
@@ -152,6 +155,7 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
           )}
         </FlexBox>
       </FlexBox>
-    </Dialog>
+    </Dialog>,
+    portalContainer
   );
 };

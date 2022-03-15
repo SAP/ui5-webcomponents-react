@@ -16,6 +16,6 @@ describe('Routes.js Test Suite', () => {
   test("should throw an error in case parameters and path doesn't match", () => {
     const replaceUrl = () => getRoute(ROUTES.TODO_DETAIL, { incorrectId: 1 });
 
-    expect(replaceUrl).toThrow('Expected "id" to be defined');
+    expect(replaceUrl).toThrow('Missing ":id" param');
   });
 });

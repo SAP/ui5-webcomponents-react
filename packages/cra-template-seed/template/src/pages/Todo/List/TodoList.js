@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { isDesktop, isTablet, isPhone } from '@ui5/webcomponents-base/dist/Device.js';
 
 import { Link, Text, Title, TitleLevel } from '@ui5/webcomponents-react';
@@ -10,7 +10,7 @@ import TodoListPaginatedItems from './TodoListPaginatedItems';
 import { ROUTES } from '../../../routes/Routes';
 
 const TodoList = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   return (
     <CenteredContent>
@@ -20,9 +20,9 @@ const TodoList = () => {
 
       <Title level={TitleLevel.H3}>Routing</Title>
       <br />
-      <Link onClick={() => history.push('/dontexist')}>Test NotFound Page</Link>
+      <Link onClick={() => navigate('/dontexist')}>Test NotFound Page</Link>
       <br />
-      <Link onClick={() => history.push(ROUTES.BUGGY)}>Test Error Page</Link>
+      <Link onClick={() => navigate(ROUTES.BUGGY)}>Test Error Page</Link>
       <br />
       <br />
       <ComponentWithAuthorizationRestriction allowedAuthorities={['canAccessDropApplication']} authorityKey="permissions">
