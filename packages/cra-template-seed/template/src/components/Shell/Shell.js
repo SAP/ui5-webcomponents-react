@@ -1,6 +1,6 @@
 import React, { useMemo, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { Avatar, AvatarShape, ShellBar } from '@ui5/webcomponents-react';
 import '@ui5/webcomponents-icons/dist/customer.js';
@@ -22,7 +22,7 @@ const style = {
 
 const Shell = ({ title, ...props }) => {
   const { t } = useTranslation();
-  const history = useHistory();
+  const navigate = useNavigate();
   const popoverConfigItemsRef = useRef(null);
   const popoverItems = useMemo(
     () => [
@@ -47,7 +47,7 @@ const Shell = ({ title, ...props }) => {
         primaryTitle={title}
         style={style.shell}
         logo={<img alt={t('shell.logo.alt')} src="https://sap.github.io/ui5-webcomponents/assets/images/sap-logo-svg.svg" />}
-        onLogoClick={() => history.push(ROUTES.HOME)}
+        onLogoClick={() => navigate(ROUTES.HOME)}
         profile={<Avatar icon="customer" shape={AvatarShape.Circle} />}
         onProfileClick={(e) => popoverConfigItemsRef.current.showAt(e.detail.targetRef)}
         {...props}

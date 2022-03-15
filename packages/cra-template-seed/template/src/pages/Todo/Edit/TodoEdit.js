@@ -1,10 +1,10 @@
-import React, { Suspense, lazy } from 'react';
-import { Helmet } from 'react-helmet';
-import { useTodo } from '../../../hooks/services/useTodos';
-
 import { BusyIndicator } from '@ui5/webcomponents-react';
-import NavBack from '../../../components/NavBack/NavBack';
+import React, { lazy, Suspense } from 'react';
+import { Helmet } from 'react-helmet';
+import { useParams } from 'react-router-dom';
 import CenteredContent from '../../../components/Layout/CenteredContent';
+import NavBack from '../../../components/NavBack/NavBack';
+import { useTodo } from '../../../hooks/services/useTodos';
 
 const TodoEditForm = lazy(() => import('./TodoEditForm'));
 
@@ -15,8 +15,9 @@ const onSubmitEditForm = (values, actions) => {
   actions.setSubmitting(false);
 };
 
-const TodoEdit = ({ match }) => {
-  const { data, isLoading, isSuccess } = useTodo(match.params.id);
+const TodoEdit = () => {
+  const params = useParams();
+  const { data, isLoading, isSuccess } = useTodo(params.id);
 
   return (
     <>

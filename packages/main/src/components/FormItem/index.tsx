@@ -108,15 +108,17 @@ const FormItem: FC<FormItemPropTypes> = (props: FormItemPropTypes) => {
     }
     return styles;
   };
-
+  const calculatedGridRowStart = labelSpan === 12 ? gridRowStart + 1 : gridRowStart;
   return (
     <>
       {renderLabel(label, classes, inlineLabelStyles())}
       <div
+        data-grid-column-start={contentGridColumnStart}
+        data-grid-row-start={calculatedGridRowStart}
         className={classes.content}
         style={{
           gridColumnStart: contentGridColumnStart,
-          gridRowStart: labelSpan === 12 ? gridRowStart + 1 : gridRowStart,
+          gridRowStart: calculatedGridRowStart,
           paddingBottom: lastGroupItem ? '1rem' : 0
         }}
       >
