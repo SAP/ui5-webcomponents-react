@@ -1,7 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import { html, scopeTag } from '@ui5/webcomponents-base/dist/renderer/LitRenderer.js';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import Icon from '@ui5/webcomponents/dist/Icon.js';
 import Tab from '@ui5/webcomponents/dist/Tab.js';
 import TabContainer from '@ui5/webcomponents/dist/TabContainer.js';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
@@ -37,10 +36,6 @@ const metadata = {
 class ObjectPageAnchorTab extends Tab {
   static get metadata() {
     return metadata;
-  }
-
-  static get dependencies() {
-    return [Icon];
   }
 
   static get stripTemplate() {
@@ -92,26 +87,6 @@ class ObjectPageAnchorTab extends Tab {
       targetRef: (e.target as any).parentElement.parentElement
     });
   };
-
-  // maybe we can look into a custom overflow template as well
-  // static get overflowTemplate() {
-  //   return (context, tags, suffix) => {
-  //     setTags(tags);
-  //     setSuffix(suffix);
-  //     return html`<ui5-li-custom
-  //       id="${ifDefined(context._id)}"
-  //       class="${ifDefined(context.overflowClasses)}"
-  //       type="${ifDefined(context.overflowState)}"
-  //       ?selected="${context.effectiveSelected}"
-  //       ?disabled="${context.effectiveDisabled}"
-  //       aria-disabled="${ifDefined(context.effectiveDisabled)}"
-  //       aria-selected="${ifDefined(context.effectiveSelected)}"
-  //       aria-labelledby="${ifDefined(context.ariaLabelledBy)}"
-  //     >
-  //       <div class="ui5-tab-overflow-itemContent">${ifDefined(context.text)}</div>
-  //     </ui5-li-custom>`;
-  //   };
-  // }
 }
 
 TabContainer.registerTabStyles(`
@@ -135,6 +110,5 @@ TabContainer.registerTabStyles(`
   color: ${ThemingParameters.sapButton_Lite_Hover_TextColor};
 }
 `);
-// TabContainer.registerStaticAreaTabStyles(overflowCss);
 
 export { ObjectPageAnchorTab };
