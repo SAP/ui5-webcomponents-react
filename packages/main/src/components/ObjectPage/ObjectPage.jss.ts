@@ -118,5 +118,10 @@ export const styles = {
     position: 'sticky',
     bottom: '0.5rem',
     margin: '0 0.5rem'
+  },
+  subSectionPopover: {
+    '&::part(content)': {
+      padding: 0
+    }
   }
 };
