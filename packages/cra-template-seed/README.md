@@ -161,9 +161,9 @@ Used to identify the browsers culture and change the applications text according
 
 Used to check the commits before actually commits.
 
-### `husky`
+### `husky` & `lint-staged`
 
-Used to provide a checker before actions.
+Used to run checks before committing changes to git.
 
 ### `nodemon`
 
