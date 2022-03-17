@@ -679,7 +679,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
           : 0;
       const parentHeight = parentElement?.getBoundingClientRect().height;
       const tableHeight = parentHeight ? parentHeight - tableYPosition : 0;
-      const rowCount = Math.floor((tableHeight - extensionsHeight) / popInRowHeight);
+      const rowCount = Math.max(1, Math.floor((tableHeight - extensionsHeight) / popInRowHeight));
       dispatch({
         type: 'VISIBLE_ROWS',
         payload: { visibleRows: rowCount }
@@ -985,6 +985,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
         </div>
         {(tableState.isScrollable === undefined || tableState.isScrollable) && (
           <VerticalScrollbar
+            tableBodyHeight={tableBodyHeight}
             internalRowHeight={internalRowHeight}
             popInRowHeight={popInRowHeight}
             tableRef={tableRef}
