@@ -2144,7 +2144,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
           />
           <div
             class="sapScrollBar VerticalScrollbar-scrollbar"
-            style="height: -44px;"
+            style="height: 220px;"
           >
             <div
               style="height: 1420px; width: 1px;"
@@ -2598,7 +2598,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
           />
           <div
             class="sapScrollBar VerticalScrollbar-scrollbar"
-            style="height: -44px;"
+            style="height: 220px;"
           >
             <div
               style="height: 1420px; width: 1px;"
@@ -8535,7 +8535,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins & hidden column 1`] = `
         />
         <div
           class="sapScrollBar VerticalScrollbar-scrollbar"
-          style="height: -44px;"
+          style="height: 220px;"
         >
           <div
             style="height: 1420px; width: 1px;"
@@ -8985,7 +8985,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 1`] = `
         />
         <div
           class="sapScrollBar VerticalScrollbar-scrollbar"
-          style="height: -44px;"
+          style="height: 220px;"
         >
           <div
             style="height: 1420px; width: 1px;"
