@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.22.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.22.2...v0.22.3) (2022-03-18)
+
+
+### Bug Fixes
+
+* **cra-template:** update from official `cra-template` ([#2673](https://github.com/SAP/ui5-webcomponents-react/issues/2673)) ([1e687a1](https://github.com/SAP/ui5-webcomponents-react/commit/1e687a1841c1b7672907520a265717a84c1ffe46))
+
+
+
+
+
 # [0.22.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.21.5...v0.22.0) (2022-03-02)
 
 
