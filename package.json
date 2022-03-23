@@ -42,7 +42,7 @@
     "@semantic-release/github": "^8.0.0",
     "@storybook/builder-webpack5": "6.5.0-alpha.45",
     "@storybook/manager-webpack5": "6.5.0-alpha.45",
-    "@storybook/storybook-deployer": "2.8.10",
+    "@storybook/storybook-deployer": "2.8.11",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^12.0.0",
     "@testing-library/react-hooks": "^7.0.0",
