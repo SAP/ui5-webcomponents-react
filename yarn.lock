@@ -4258,9 +4258,9 @@
     "@ui5/webcomponents-base" "1.2.1"
 
 "@ui5/webcomponents-tools@~1.2.1":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-tools/-/webcomponents-tools-1.2.1.tgz#6c442d3efcfaa57f2b6e0c6d2ec9704e5871e1ee"
-  integrity sha512-ZeQqiZiV3b5DQ3uEsKV6Z9mfi5Vdw+HaVNU2/G2uIlTpKC/hUpD17LYFy1kOZI/sOzL8ck0w+jZJlUgLnlacbw==
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-tools/-/webcomponents-tools-1.2.2.tgz#bc84683c43e4ee9bba28baaa70b7b3429023975f"
+  integrity sha512-n6mRLAQDfJbYFvdru8Kd15jWfvx94hgUm3F/ABjWxJD0SLkH4SufoUxUyZrGkfDuTaziJ65qXg2oLRTUHHZ+MQ==
   dependencies:
     "@babel/core" "^7.13.10"
     "@babel/preset-env" "^7.13.10"
