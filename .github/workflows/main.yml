@@ -87,6 +87,12 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: build project
         run: yarn build
+      - name: Chromatic
+        uses: chromaui/action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          buildScriptName: 'build:storybook'
 
   reuse-compliance:
     runs-on: ubuntu-latest

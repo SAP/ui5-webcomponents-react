@@ -19,7 +19,8 @@
     "create-webcomponents-wrapper": "node --experimental-json-modules ./packages/main/scripts/create-web-components-wrapper.mjs",
     "examples:recreate-seed": "rimraf examples/seed-test && yarn create react-app examples/seed-test --template file:./packages/cra-template-seed",
     "examples:start-seed": "cd examples/seed-test && SKIP_PREFLIGHT_CHECK=true yarn start",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "chromatic": "npx chromatic --build-script-name build:storybook"
   },
   "dependencies": {
     "@storybook/addon-a11y": "6.5.0-alpha.51",
@@ -53,6 +54,7 @@
     "@typescript-eslint/eslint-plugin": "^4.4.0",
     "@typescript-eslint/parser": "^4.4.0",
     "@ui5/webcomponents-tools": "~1.2.4",
+    "chromatic": "^6.5.3",
     "dedent": "^0.7.0",
     "eslint": "^7.10.0",
     "eslint-config-prettier": "^8.0.0",
