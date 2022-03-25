@@ -88,6 +88,7 @@ jobs:
       - name: build project
         run: yarn build
       - name: Chromatic
+        if: ${{ github.base_ref == 'main' }} # only for PRs targeting main branch
         uses: chromaui/action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
