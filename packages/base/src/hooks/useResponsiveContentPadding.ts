@@ -18,7 +18,7 @@ const useStyles = createUseStyles(
  * @param {HTMLElement} element
  */
 export const useResponsiveContentPadding = (element: HTMLElement) => {
-  const [currentRange, setCurrentRange] = useState(getCurrentRange().name);
+  const [currentRange, setCurrentRange] = useState(() => getCurrentRange().name);
   const classes = useStyles();
   const requestAnimationFrameRef = useRef<number | undefined>();
 
@@ -26,7 +26,7 @@ export const useResponsiveContentPadding = (element: HTMLElement) => {
     const observer = new ResizeObserver(([el]) => {
       cancelAnimationFrame(requestAnimationFrameRef.current);
       requestAnimationFrameRef.current = requestAnimationFrame(() => {
-        setCurrentRange(() => getCurrentRange(el.contentRect.width)?.name);
+        setCurrentRange(() => getCurrentRange(el.borderBoxSize[0].inlineSize)?.name);
       });
     });
     if (element) {
