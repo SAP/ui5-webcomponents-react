@@ -94,6 +94,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           buildScriptName: 'build:storybook'
+          skip: 'dependabot/**'
 
   reuse-compliance:
     runs-on: ubuntu-latest
