@@ -75,7 +75,6 @@ import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../
       dataset: simpleDataSet,
       style: { width: '95%', height: '40vh' }
     }}
-    parameters={{ chromatic: { disableSnapshot: true } }}
   >
     {(props) => <ColumnChart {...props} />}
   </Story>
@@ -92,7 +91,6 @@ import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../
       dataset: secondaryDimensionDataSet,
       style: { width: '95%', height: '60vh' }
     }}
-    parameters={{ chromatic: { disableSnapshot: true } }}
   >
     {(props) => <ColumnChart {...props} />}
   </Story>
@@ -121,7 +119,6 @@ import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../
       dataset: complexDataSet,
       style: { width: '95%', height: '40vh' }
     }}
-    parameters={{ chromatic: { disableSnapshot: true } }}
   >
     {(props) => <ColumnChart {...props} />}
   </Story>
@@ -150,7 +147,6 @@ import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../
       dataset: complexDataSet,
       style: { width: '95%', height: '40vh' }
     }}
-    parameters={{ chromatic: { disableSnapshot: true } }}
   >
     {(props) => <ColumnChart {...props} />}
   </Story>
@@ -159,7 +155,7 @@ import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../
 ### Loading Placeholder
 
 <Canvas>
-  <Story name="Loading Placeholder" parameters={{ chromatic: { disableSnapshot: true } }}>
+  <Story name="Loading Placeholder">
     <ColumnChart style={{ width: '30%' }} dimensions={[]} measures={[]} />
   </Story>
 </Canvas>
@@ -192,7 +188,6 @@ import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../
         }
       }
     }}
-    parameters={{ chromatic: { disableSnapshot: true } }}
   >
     {(props) => <ColumnChart {...props} />}
   </Story>
@@ -235,7 +230,6 @@ import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../
         }
       ]
     }}
-    parameters={{ chromatic: { disableSnapshot: true } }}
   >
     {(props) => <ColumnChart {...props} />}
   </Story>

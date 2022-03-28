@@ -1,5 +1,8 @@
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import dataLarge from '../../../../../.storybook/mockData/Friends500.json';
+import dataSmall from '../../../../../.storybook/mockData/Friends500.json';
+import dataTree from '../../../../../.storybook/mockData/FriendsTree.json';
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import '@ui5/webcomponents-icons/dist/delete.js';
 import '@ui5/webcomponents-icons/dist/edit.js';
@@ -28,14 +31,13 @@ import {
 } from '../..';
 import { DefaultLoadingComponent } from './defaults/LoadingComponent';
 import { DefaultNoDataComponent } from './defaults/NoDataComponent';
-import generateData from './demo/generateData';
 import { useIndeterminateRowSelection, useRowDisableSelection } from './pluginHooks/AnalyticalTableHooks';
 
 <Meta
   title="Data Display / AnalyticalTable"
   component={AnalyticalTable}
   args={{
-    data: generateData(500),
+    data: dataLarge,
     columns: [
       {
         Header: 'Name',
@@ -229,7 +231,7 @@ _ES6 Import: `import { useRowDisableSelection } from '@ui5/webcomponents-react';
   <Story
     name="Plugin: useRowDisableSelection"
     args={{
-      data: generateData(20).map((item) => ({ ...item, disableSelection: Math.random() < 0.5 })),
+      data: dataSmall.map((item) => ({ ...item, disableSelection: Math.random() < 0.5 })),
       selectionMode: TableSelectionMode.MultiSelect
     }}
   >
@@ -334,7 +336,7 @@ When using this hook, it is recommended to also select all sub-rows when selecti
 _ES6 Import: `import { useIndeterminateRowSelection } from '@ui5/webcomponents-react';`_
 
 <Canvas>
-  <Story name="Plugin: useIndeterminateRowSelection" args={{ data: generateData(3, true) }}>
+  <Story name="Plugin: useIndeterminateRowSelection" args={{ data: dataTree }}>
     {(args) => {
       const [collapsed, setCollapsed] = useReducer((coll) => !coll, true);
       const [selectSubRows, setSelectSubRows] = useReducer((prev) => !prev, true);
@@ -473,7 +475,7 @@ The instance of the `AnalyticalTable` exposes methods for scrolling to a specifi
 ## Tree Table
 
 <Canvas>
-  <Story name="Tree Table" args={{ data: generateData(15, true), isTreeTable: true }}>
+  <Story name="Tree Table" args={{ data: dataTree, isTreeTable: true }}>
     {(args) => {
       const [collapsed, setCollapsed] = useReducer((coll) => !coll, true);
       return (
@@ -613,7 +615,7 @@ The prop expects a function with an optional parameter containing the `row` inst
 <Canvas>
   <Story
     name="with subcomponents"
-    args={{ data: generateData(50) }}
+    args={{ data: dataSmall }}
     argTypes={{
       columns: { table: { disable: true } },
       data: { table: { disable: true } },
@@ -881,7 +883,7 @@ In the example below you can have a look at this behavior:
     args={{
       visibleRowCountMode: TableVisibleRowCountMode.Fixed,
       containerWidth: 'auto',
-      data: generateData(50),
+      data: dataSmall,
       columns: [
         {
           Header: 'Name',
@@ -1086,7 +1088,7 @@ Click on any of the rows in the example below to display the "navigated" indicat
 <Canvas>
   <Story
     name="with navigation indicator"
-    args={{ withNavigationHighlight: true, selectionMode: TableSelectionMode.MultiSelect, data: generateData(20) }}
+    args={{ withNavigationHighlight: true, selectionMode: TableSelectionMode.MultiSelect, data: dataSmall }}
   >
     {(args) => {
       const [selectedRow, setSelectedRow] = useState();

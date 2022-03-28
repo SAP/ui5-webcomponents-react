@@ -86,7 +86,7 @@ jobs:
       - name: build project
         run: yarn build
 
-  chormatic:
+  chromatic:
     if: ${{ github.base_ref == 'main' }} # only for PRs targeting main branch
     runs-on: ubuntu-latest
     steps:
