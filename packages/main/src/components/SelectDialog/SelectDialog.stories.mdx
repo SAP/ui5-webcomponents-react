@@ -36,7 +36,7 @@ import Pc2 from '../../../../../.storybook/demoImages/PC2.jpg';
       };
       return (
         <>
-          <Button onClick={onButtonClick}>Open Dialog</Button>
+          <Button onClick={onButtonClick}>Open SelectDialog</Button>
           <SelectDialog {...args} ref={dialogRef}>
             {new Array(40).fill('').map((_, index) => {
               const currentProduct = images[index % 4];
