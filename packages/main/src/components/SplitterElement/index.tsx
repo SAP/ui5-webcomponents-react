@@ -53,14 +53,14 @@ const SplitterElement = forwardRef((props: SplitterElementPropTypes, ref: RefObj
   const { children, style, tooltip, className, minSize, size, resizable, ...rest } = props;
   const [componentRef, splitterElementRef] = useSyncRef(ref);
   const { vertical, reset } = useContext(SplitterLayoutContext);
-  const [flex, setFlex] = useState(size && size !== 'auto' ? `0 0 ${size}` : '1 0 auto');
+  const [flex, setFlex] = useState(size !== 'auto' ? `0 0 ${size}` : '1 0 min-content');
   const [flexBasisApplied, setFlexBasisApplied] = useState(false);
   const classes = useStyles();
 
   useEffect(() => {
     const elementObserver = new ResizeObserver(([element]) => {
-      if (element.target.clientWidth !== 0 && !flexBasisApplied) {
-        setFlex(`0 0 ${element.target.clientWidth}px`);
+      if (element.target.getBoundingClientRect().width !== 0 && !flexBasisApplied) {
+        setFlex(`0 0 ${element.target.getBoundingClientRect().width}px`);
         setFlexBasisApplied(true);
       }
     });
@@ -105,7 +105,8 @@ const SplitterElement = forwardRef((props: SplitterElementPropTypes, ref: RefObj
 });
 
 SplitterElement.defaultProps = {
-  minSize: 0
+  minSize: 0,
+  size: 'auto'
 };
 
 SplitterElement.displayName = 'SplitterElement';
