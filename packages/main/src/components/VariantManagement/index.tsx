@@ -350,13 +350,13 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
             });
           }
           callbackProperties.variants.push({ ...child.props, ...updatedProps, variantItem: currentVariant });
-          if (typeof onSaveManageViews === 'function') {
-            onSaveManageViews(enrichEventWithDetails(e, callbackProperties));
-          }
           return cloneElement(child, updatedProps);
         })
         .filter(Boolean)
     );
+    if (typeof onSaveManageViews === 'function') {
+      onSaveManageViews(enrichEventWithDetails(e, callbackProperties));
+    }
     handleManageClose();
   };
 
