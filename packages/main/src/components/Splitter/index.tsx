@@ -1,4 +1,10 @@
-import { ThemingParameters, useI18nBundle, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
+import {
+  ThemingParameters,
+  useI18nBundle,
+  useIsRTL,
+  useSyncRef,
+  CssSizeVariables
+} from '@ui5/webcomponents-react-base';
 import { PRESS_ARROW_KEYS_TO_MOVE } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import React, { forwardRef, Ref, useEffect, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
@@ -12,26 +18,25 @@ const useStyles = createUseStyles(
       position: 'relative',
       display: 'flex',
       willChange: 'flex',
-      border: 'none',
+      border: `${ThemingParameters.sapContent_FocusWidth} ${ThemingParameters.sapContent_FocusStyle} transparent`,
       backgroundColor: ThemingParameters.sapShell_Background,
       alignItems: 'center',
       justifyContent: 'center',
       boxSizing: 'border-box',
-
       '&:focus': {
         border: `${ThemingParameters.sapContent_FocusWidth} ${ThemingParameters.sapContent_FocusStyle} ${ThemingParameters.sapContent_FocusColor}`,
         outline: 'none'
       },
       '&[data-splitter-vertical=horizontal]': {
         cursor: 'col-resize',
-        minWidth: '1rem',
-        width: '1rem',
+        minWidth: CssSizeVariables.sapWcrSplitterSize,
+        width: CssSizeVariables.sapWcrSplitterSize,
         height: '100%',
         flexDirection: 'column',
 
         '& $lineBefore, & $lineAfter': {
           backgroundSize: '0.0625rem 100%',
-          width: '1rem',
+          width: CssSizeVariables.sapWcrSplitterSize,
           height: '4rem'
         },
         '& $lineBefore': {
@@ -47,15 +52,15 @@ const useStyles = createUseStyles(
       },
       '&[data-splitter-vertical=vertical]': {
         cursor: 'row-resize',
-        minHeight: '1rem',
-        height: '1rem',
+        minHeight: CssSizeVariables.sapWcrSplitterSize,
+        height: CssSizeVariables.sapWcrSplitterSize,
         width: '100%',
         flexDirection: 'row',
 
         '& $lineBefore, & $lineAfter': {
           backgroundSize: '100% 0.0625rem ',
           width: '5rem',
-          height: '1rem'
+          height: CssSizeVariables.sapWcrSplitterSize
         },
         '& $lineBefore': {
           backgroundImage: `linear-gradient(to left, ${ThemingParameters.sapHighlightColor}, transparent)`
@@ -70,15 +75,15 @@ const useStyles = createUseStyles(
       },
       '&[data-splitter-vertical=verticalRtl]': {
         cursor: 'row-resize',
-        minHeight: '1rem',
-        height: '1rem',
+        minHeight: CssSizeVariables.sapWcrSplitterSize,
+        height: CssSizeVariables.sapWcrSplitterSize,
         width: '100%',
         flexDirection: 'row',
 
         '& $lineBefore, & $lineAfter': {
           backgroundSize: '100% 0.0625rem ',
           width: '5rem',
-          height: '1rem'
+          height: CssSizeVariables.sapWcrSplitterSize
         },
         '& $lineBefore': {
           backgroundImage: `linear-gradient(to right, ${ThemingParameters.sapHighlightColor}, transparent)`

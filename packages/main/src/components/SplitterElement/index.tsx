@@ -1,5 +1,6 @@
+import { useIsomorphicLayoutEffect, useSyncRef } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
-import React, { CSSProperties, forwardRef, ReactNode, RefObject, useContext } from 'react';
+import React, { CSSProperties, forwardRef, ReactNode, RefObject, useContext, useEffect, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { SplitterLayoutContext } from '../../internal/SplitterLayoutContext';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -11,7 +12,6 @@ const useStyles = createUseStyles(
       overflow: 'hidden',
       position: 'relative',
       willChange: 'flex-basis',
-      flex: '0 0 auto',
       minWidth: '0px',
       minHeight: '0px'
     }
@@ -51,20 +51,49 @@ export interface SplitterElementPropTypes extends CommonProps {
  */
 const SplitterElement = forwardRef((props: SplitterElementPropTypes, ref: RefObject<HTMLDivElement>) => {
   const { children, style, tooltip, className, minSize, size, resizable, ...rest } = props;
-
-  const { vertical } = useContext(SplitterLayoutContext);
-
+  const [componentRef, splitterElementRef] = useSyncRef(ref);
+  const { vertical, reset } = useContext(SplitterLayoutContext);
+  const [flex, setFlex] = useState(size && size !== 'auto' ? `0 0 ${size}` : '1 0 auto');
+  const [flexBasisApplied, setFlexBasisApplied] = useState(false);
   const classes = useStyles();
 
+  useEffect(() => {
+    const elementObserver = new ResizeObserver(([element]) => {
+      if (element.target.clientWidth !== 0 && !flexBasisApplied) {
+        setFlex(`0 0 ${element.target.clientWidth}px`);
+        setFlexBasisApplied(true);
+      }
+    });
+    if (size === 'auto') {
+      elementObserver.observe(splitterElementRef.current);
+    } else {
+      setFlex(`0 0 ${size}`);
+    }
+
+    return () => {
+      elementObserver.disconnect();
+    };
+  }, [size, flexBasisApplied]);
+
+  useIsomorphicLayoutEffect(() => {
+    if (reset) {
+      setFlex(size && size !== 'auto' ? `0 0 ${size}` : '1 0 auto');
+      setFlexBasisApplied(false);
+    }
+  }, [reset, size]);
+
+  if (reset) {
+    return null;
+  }
   return (
     <div
-      ref={ref}
+      ref={componentRef}
       className={clsx(classes.splitterElement, classes[vertical ? 'vertical' : 'horizontal'], className)}
       title={tooltip}
       style={{
         minHeight: vertical && minSize ? `${minSize}px` : undefined,
         minWidth: !vertical && minSize ? `${minSize}px` : undefined,
-        flexBasis: size,
+        flex,
         ...style
       }}
       {...rest}
