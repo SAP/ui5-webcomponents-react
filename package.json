@@ -20,7 +20,7 @@
     "examples:recreate-seed": "rimraf examples/seed-test && yarn create react-app examples/seed-test --template file:./packages/cra-template-seed",
     "examples:start-seed": "cd examples/seed-test && SKIP_PREFLIGHT_CHECK=true yarn start",
     "prepare": "husky install",
-    "chromatic": "npx chromatic --build-script-name build:storybook"
+    "chromatic": "cross-env STORYBOOK_ENV=chromatic npx chromatic --build-script-name build:storybook"
   },
   "dependencies": {
     "@storybook/addon-a11y": "6.5.0-alpha.51",

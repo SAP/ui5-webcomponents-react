@@ -109,6 +109,8 @@ jobs:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           buildScriptName: 'build:storybook'
           skip: 'dependabot/**'
+        env:
+          STORYBOOK_ENV: chromatic
 
   reuse-compliance:
     runs-on: ubuntu-latest

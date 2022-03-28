@@ -9,9 +9,11 @@ if (isDevMode) {
   addons.push('@storybook/addon-a11y');
 }
 
+const isChromatic = process.env.STORYBOOK_ENV === 'chromatic';
+
 module.exports = {
   framework: '@storybook/react',
-  stories: ['../docs/**/*.stories.mdx', '../packages/**/*.stories.@(tsx|jsx|mdx)'],
+  stories: isChromatic ? ['../packages/main/**/*.stories.@(tsx|jsx|mdx)'] : ['../docs/**/*.stories.mdx', '../packages/**/*.stories.@(tsx|jsx|mdx)'],
   addons: addons,
   core: {
     builder: 'webpack5'
