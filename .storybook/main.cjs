@@ -13,7 +13,7 @@ const isChromatic = process.env.STORYBOOK_ENV === 'chromatic';
 
 module.exports = {
   framework: '@storybook/react',
-  stories: isChromatic ? ['../packages/main/**/*.stories.@(tsx|jsx|mdx)'] : ['../docs/**/*.stories.mdx', '../packages/**/*.stories.@(tsx|jsx|mdx)'],
+  stories: isChromatic ? ['../packages/main/src/components/**/*.stories.@(tsx|jsx|mdx)'] : ['../docs/**/*.stories.mdx', '../packages/**/*.stories.@(tsx|jsx|mdx)'],
   addons: addons,
   core: {
     builder: 'webpack5'
