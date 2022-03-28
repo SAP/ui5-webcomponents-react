@@ -57,7 +57,6 @@ import { LineChart } from '@ui5/webcomponents-react-charts';
       ];
       return (
         <AnalyticalCard
-          className="chromatic-ignore"
           header={
             <AnalyticalCardHeader
               titleText="Title"
@@ -78,6 +77,7 @@ import { LineChart } from '@ui5/webcomponents-react-charts';
           }
         >
           <LineChart
+            className="chromatic-ignore"
             noLegend
             dimensions={[{ accessor: 'name' }]}
             measures={[{ accessor: 'users', formatter: (val) => `${val}k` }]}
@@ -184,6 +184,7 @@ import { LineChart } from '@ui5/webcomponents-react-charts';
           }
         >
           <LineChart
+            className="chromatic-ignore"
             noLegend
             dimensions={[{ accessor: 'name' }]}
             measures={[{ accessor: 'users', formatter: (val) => `${val}m` }]}
