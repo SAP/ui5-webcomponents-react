@@ -77,7 +77,7 @@ const SplitterElement = forwardRef((props: SplitterElementPropTypes, ref: RefObj
 
   useIsomorphicLayoutEffect(() => {
     if (reset) {
-      setFlex(size && size !== 'auto' ? `0 0 ${size}` : '1 0 min-size');
+      setFlex(size && size !== 'auto' ? `0 0 ${size}` : '1 0 min-content');
       setFlexBasisApplied(false);
     }
   }, [reset, size]);
