@@ -26,7 +26,7 @@ export const useResponsiveContentPadding = (element: HTMLElement) => {
     const observer = new ResizeObserver(([el]) => {
       cancelAnimationFrame(requestAnimationFrameRef.current);
       requestAnimationFrameRef.current = requestAnimationFrame(() => {
-        setCurrentRange(() => getCurrentRange(el.borderBoxSize[0].inlineSize)?.name);
+        setCurrentRange(getCurrentRange(el.target.getBoundingClientRect().width)?.name);
       });
     });
     if (element) {
