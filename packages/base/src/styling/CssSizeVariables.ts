@@ -22,7 +22,8 @@ export enum CssSizeVariablesNames {
   sapWcrFormLabelPaddingTop = 'sapWcrFormLabelPaddingTop',
   sapWcrFormGroupTitleHeight = 'sapWcrFormGroupTitleHeight',
   sapWcrMessageViewListItemHeightSingle = 'sapWcrMessageViewListItemHeightSingle',
-  sapWcrMessageViewListItemHeightByLine = 'sapWcrMessageViewListItemHeightByLine'
+  sapWcrMessageViewListItemHeightByLine = 'sapWcrMessageViewListItemHeightByLine',
+  sapWcrSplitterSize = 'sapWcrSplitterSize'
 }
 
 export const CssSizeVariables: Record<CssSizeVariablesNames, string> = Object.values(CssSizeVariablesNames).reduce(
@@ -59,6 +60,7 @@ export const cssVariablesStyles = `
   --${CssSizeVariablesNames.sapWcrFormGroupTitleHeight}: 2.75rem;
   --${CssSizeVariablesNames.sapWcrMessageViewListItemHeightSingle}: 2.75rem;
   --${CssSizeVariablesNames.sapWcrMessageViewListItemHeightByLine}: 3.325rem;
+  --${CssSizeVariablesNames.sapWcrSplitterSize}: 1rem;
 }
 
 [data-ui5-compact-size],

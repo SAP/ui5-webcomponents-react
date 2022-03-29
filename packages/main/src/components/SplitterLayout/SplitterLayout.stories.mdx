@@ -53,6 +53,14 @@ import { SplitterElementContent } from '../../../../../.storybook/components/Spl
 
 <ArgsTable story="." />
 
+### SplitterLayoutOptions
+
+| Property                  | Type                   | Description                                                                                              |
+| ------------------------- | ---------------------- | -------------------------------------------------------------------------------------------------------- |
+| `resetOnSizeChange`       | `boolean`              | Defines whether the `SplitterLayout` should be reset when its size changes depending on the orientation. |
+| `resetOnChildrenChange`   | `boolean`              | Defines whether the `SplitterLayout` should be reset when its `children` change.                         |
+| `resetOnCustomDepsChange` | `React.DependencyList` | Defines a list of dependencies that trigger a reset of the `SplitterLayout` when they are changed.       |
+
 ## SplitterLayout with non-resizable areas & areas with min-width
 
 <Canvas>
@@ -118,16 +126,16 @@ import { SplitterElementContent } from '../../../../../.storybook/components/Spl
               <FlexBox direction="Column" style={{ width: '100%', height: '100%' }}>
                 <Button style={{ width: '100%' }}>Content 1</Button>
                 <SplitterLayout style={{ height: '100%' }}>
-                  <SplitterElement style={{ background: 'lightblue' }}>
+                  <SplitterElement style={{ background: 'lightblue' }} size="auto">
                     <Button>Content 2</Button>
                   </SplitterElement>
-                  <SplitterElement style={{ background: 'skyblue' }}>
-                    <Button>Content 3</Button>
+                  <SplitterElement style={{ background: 'skyblue' }} size="10%">
+                    <Button data-auto>Content 3</Button>
                   </SplitterElement>
-                  <SplitterElement style={{ background: 'cadetblue' }}>
+                  <SplitterElement style={{ background: 'cadetblue' }} size="auto">
                     <Button>Content 4</Button>
                   </SplitterElement>
-                  <SplitterElement style={{ background: 'lightskyblue' }}>
+                  <SplitterElement style={{ background: 'lightskyblue' }} size="60%">
                     <FlexBox direction="Column" style={{ width: '100%' }}>
                       <Button style={{ width: '100%' }}>Content 5</Button>
                       <SplitterLayout style={{ height: '100%' }}>

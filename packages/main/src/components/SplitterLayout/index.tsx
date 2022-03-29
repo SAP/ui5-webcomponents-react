@@ -1,7 +1,17 @@
 import '@ui5/webcomponents-icons/dist/horizontal-grip.js';
 import '@ui5/webcomponents-icons/dist/vertical-grip.js';
+import { debounce, useSyncRef } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
-import React, { CSSProperties, forwardRef, ReactElement, Ref } from 'react';
+import React, {
+  CSSProperties,
+  DependencyList,
+  forwardRef,
+  ReactElement,
+  Ref,
+  useEffect,
+  useRef,
+  useState
+} from 'react';
 import { createUseStyles } from 'react-jss';
 import { SplitterLayoutContext } from '../../internal/SplitterLayoutContext';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -10,6 +20,23 @@ import { styles } from './SplitterLayout.jss';
 import { useConcatSplitterElements } from './useConcatSplitterElements';
 
 const useStyles = createUseStyles(styles, { name: 'SplitterLayout' });
+
+interface SplitterLayoutOptions {
+  /**
+   * Defines whether the `SplitterLayout` should be reset when its size changes depending on the orientation.
+   */
+  resetOnSizeChange?: boolean;
+  /**
+   * Defines whether the `SplitterLayout` should be reset when its `children` change.
+   */
+  resetOnChildrenChange?: boolean;
+  /**
+   * Defines a list of dependencies that trigger a reset of the `SplitterLayout` when they are changed.
+   *
+   * __Note:__ The order and size of arrays of dependencies must remain constant in React, it's therefore not possible to change size or order between renders.
+   */
+  resetOnCustomDepsChange?: DependencyList;
+}
 
 export interface SplitterLayoutPropTypes extends CommonProps {
   /**
@@ -20,6 +47,10 @@ export interface SplitterLayoutPropTypes extends CommonProps {
    * The content areas (optional) to be split. The control will show n-1 splitter bars between n controls in this aggregation.
    */
   children?: ReactElement<SplitterElementPropTypes> | ReactElement<SplitterElementPropTypes>[];
+  /**
+   * Defines options to customize the behavior of the SplitterLayout.
+   */
+  options?: SplitterLayoutOptions;
 }
 
 /**
@@ -35,8 +66,13 @@ export interface SplitterLayoutPropTypes extends CommonProps {
  * can be manipulated when the splitter bar is focused and Left/Down/Right/Up are pressed.
  */
 const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTMLDivElement>) => {
-  const { vertical, children, title, tooltip, style, className, ...rest } = props;
+  const { vertical, children, title, tooltip, style, className, options, ...rest } = props;
+  const [componentRef, sLRef] = useSyncRef(ref);
+  const [reset, setReset] = useState(undefined);
   const classes = useStyles();
+  const prevSize = useRef({ width: undefined, height: undefined });
+  const initialChildren = useRef(true);
+  const initialCustomDep = useRef(true);
 
   const layoutElements = useConcatSplitterElements({
     children: children ?? [],
@@ -45,8 +81,51 @@ const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTML
     vertical
   });
 
+  useEffect(() => {
+    if (!initialChildren.current && options?.resetOnChildrenChange) {
+      setReset(true);
+    }
+    initialChildren.current = false;
+  }, [children, options?.resetOnChildrenChange]);
+
+  useEffect(() => {
+    if (!initialCustomDep.current) {
+      setReset(true);
+    }
+    initialCustomDep.current = false;
+  }, options?.resetOnCustomDepsChange ?? []);
+
+  useEffect(() => {
+    if (options?.resetOnSizeChange) {
+      const layoutObserver = new ResizeObserver(
+        debounce(([container]) => {
+          const containerRect = container.target.getBoundingClientRect();
+          if (!vertical && containerRect.width !== prevSize.current.width) {
+            prevSize.current.width = containerRect.width;
+            setReset(true);
+          } else if (vertical && containerRect.height !== prevSize.current.height) {
+            prevSize.current.height = containerRect.height;
+            setReset(true);
+          }
+        }, 500)
+      );
+
+      layoutObserver.observe(sLRef.current);
+
+      return () => {
+        layoutObserver.disconnect();
+      };
+    }
+  }, [vertical, options?.resetOnSizeChange]);
+
+  useEffect(() => {
+    if (reset) {
+      setReset(false);
+    }
+  }, [reset]);
+
   return (
-    <SplitterLayoutContext.Provider value={{ vertical }}>
+    <SplitterLayoutContext.Provider value={{ vertical, reset }}>
       <div
         style={
           {
@@ -57,7 +136,7 @@ const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTML
         title={title ?? tooltip}
         {...rest}
         className={clsx(classes.splitterLayout, className)}
-        ref={ref}
+        ref={componentRef}
         data-splitter-vertical={vertical}
       >
         {layoutElements}
