@@ -32,6 +32,8 @@ interface SplitterLayoutOptions {
   resetOnChildrenChange?: boolean;
   /**
    * Defines a list of dependencies that trigger a reset of the `SplitterLayout` when they are changed.
+   *
+   * __Note:__ The order and size of arrays of dependencies must remain constant in React, it's therefore not possible to change size or order between renders.
    */
   resetOnCustomDepsChange?: DependencyList;
 }
@@ -84,10 +86,10 @@ const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTML
       setReset(true);
     }
     initialChildren.current = false;
-  }, [children]);
+  }, [children, options?.resetOnChildrenChange]);
 
   useEffect(() => {
-    if (!initialCustomDep.current && options?.resetOnCustomDepsChange) {
+    if (!initialCustomDep.current) {
       setReset(true);
     }
     initialCustomDep.current = false;

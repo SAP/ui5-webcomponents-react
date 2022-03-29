@@ -1,4 +1,4 @@
-import { useIsomorphicLayoutEffect, useSyncRef } from '@ui5/webcomponents-react-base';
+import { Device, useIsomorphicLayoutEffect, useSyncRef } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
 import React, { CSSProperties, forwardRef, ReactNode, RefObject, useContext, useEffect, useState } from 'react';
 import { createUseStyles } from 'react-jss';
@@ -53,21 +53,25 @@ const SplitterElement = forwardRef((props: SplitterElementPropTypes, ref: RefObj
   const { children, style, tooltip, className, minSize, size, resizable, ...rest } = props;
   const [componentRef, splitterElementRef] = useSyncRef(ref);
   const { vertical, reset } = useContext(SplitterLayoutContext);
-  const [flex, setFlex] = useState(size !== 'auto' ? `0 0 ${size}` : '1 0 min-content');
+  const safariStyles = Device.isSafari() ? { width: 'min-content', flex: '1 0 auto' } : {};
+  const [flexStyles, setFlexStyles] = useState(
+    size !== 'auto' ? { flex: `0 0 ${size}` } : { flex: '1 0 min-content', ...safariStyles }
+  );
   const [flexBasisApplied, setFlexBasisApplied] = useState(false);
   const classes = useStyles();
 
   useEffect(() => {
     const elementObserver = new ResizeObserver(([element]) => {
       if (element.target.getBoundingClientRect().width !== 0 && !flexBasisApplied) {
-        setFlex(`0 0 ${element.target.getBoundingClientRect().width}px`);
+        const resetSafariStyles = Device.isSafari() ? { width: 'unset' } : {};
+        setFlexStyles({ flex: `0 0 ${element.target.getBoundingClientRect().width}px`, ...resetSafariStyles });
         setFlexBasisApplied(true);
       }
     });
     if (size === 'auto') {
       elementObserver.observe(splitterElementRef.current);
     } else {
-      setFlex(`0 0 ${size}`);
+      setFlexStyles({ flex: `0 0 ${size}` });
     }
 
     return () => {
@@ -77,7 +81,7 @@ const SplitterElement = forwardRef((props: SplitterElementPropTypes, ref: RefObj
 
   useIsomorphicLayoutEffect(() => {
     if (reset) {
-      setFlex(size && size !== 'auto' ? `0 0 ${size}` : '1 0 min-content');
+      setFlexStyles(size !== 'auto' ? { flex: `0 0 ${size}` } : { flex: '1 0 min-content', ...safariStyles });
       setFlexBasisApplied(false);
     }
   }, [reset, size]);
@@ -93,7 +97,7 @@ const SplitterElement = forwardRef((props: SplitterElementPropTypes, ref: RefObj
       style={{
         minHeight: vertical && minSize ? `${minSize}px` : undefined,
         minWidth: !vertical && minSize ? `${minSize}px` : undefined,
-        flex,
+        ...flexStyles,
         ...style
       }}
       {...rest}
