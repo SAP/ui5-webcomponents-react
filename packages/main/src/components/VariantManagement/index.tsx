@@ -320,9 +320,6 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
   const handleSaveManageViews = (e, payload) => {
     const { defaultView, updatedRows, deletedRows } = payload;
     let callbackProperties = { deletedVariants: [], prevVariants: [], updatedVariants: [], variants: [] };
-    if (typeof onSaveManageViews === 'function') {
-      onSaveManageViews(enrichEventWithDetails(e, callbackProperties));
-    }
     setSafeChildren((prev) =>
       prev
         .map((child: ComponentElement<any, any>) => {
@@ -357,6 +354,9 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
         })
         .filter(Boolean)
     );
+    if (typeof onSaveManageViews === 'function') {
+      onSaveManageViews(enrichEventWithDetails(e, callbackProperties));
+    }
     handleManageClose();
   };
 
