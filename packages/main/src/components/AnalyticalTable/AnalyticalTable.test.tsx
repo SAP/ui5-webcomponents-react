@@ -838,7 +838,7 @@ describe('AnalyticalTable', () => {
 
     expect(asFragment()).toMatchSnapshot();
 
-    rerender(<AnalyticalTable data={data} columns={columnsWithPopIn} calculatePopInRowHeight />);
+    rerender(<AnalyticalTable data={data} columns={columnsWithPopIn} adjustTableHeightOnPopIn />);
 
     expect(document.querySelector(`[data-component-name="AnalyticalTableBody"]`)).toHaveStyle('height: 1420px');
     expect(asFragment()).toMatchSnapshot();

@@ -276,7 +276,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    *
    * __Note:__ If set so `true` the table will change its height depending whether columns are popped in or not.
    */
-  calculatePopInRowHeight?: boolean;
+  adjustTableHeightOnPopIn?: boolean;
   /**
    * Indicates whether a loading indicator should be shown.
    *
@@ -495,7 +495,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
   const {
     alternateRowColor,
     alwaysShowSubComponent,
-    calculatePopInRowHeight,
+    adjustTableHeightOnPopIn,
     className,
     columnOrder,
     columns,
@@ -760,7 +760,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     const rowHeight =
       visibleRowCountMode === TableVisibleRowCountMode.Auto ||
       tableState?.interactiveRowsHavePopIn ||
-      calculatePopInRowHeight
+      adjustTableHeightOnPopIn
         ? popInRowHeight
         : internalRowHeight;
     return rowHeight * rowNum;
@@ -772,7 +772,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     popInRowHeight,
     visibleRowCountMode,
     tableState?.interactiveRowsHavePopIn,
-    calculatePopInRowHeight
+    adjustTableHeightOnPopIn
   ]);
 
   // scroll bar detection
