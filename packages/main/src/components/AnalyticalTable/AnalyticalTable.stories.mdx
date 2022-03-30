@@ -134,7 +134,8 @@ import { useIndeterminateRowSelection, useRowDisableSelection } from './pluginHo
     NoDataComponent: { control: { disable: true } },
     LoadingComponent: { control: { disable: true } },
     extension: { control: { disable: true } },
-    tableInstance: { control: { disable: true } }
+    tableInstance: { control: { disable: true } },
+    portalContainer: { control: { disable: true } }
   }}
 />
 
@@ -833,6 +834,7 @@ By adding the `visibleRowCountMode` prop and setting it to `TableVisibleRowCount
       markNavigatedRow: { table: { disable: true } },
       globalFilterValue: { table: { disable: true } },
       tableInstance: { table: { disable: true } },
+      portalContainer: { table: { disable: true } },
       containerHeight: {
         options: [250, 500, 750, 1000],
         control: {
@@ -973,6 +975,7 @@ In the example below you can have a look at this behavior:
       markNavigatedRow: { table: { disable: true } },
       globalFilterValue: { table: { disable: true } },
       tableInstance: { table: { disable: true } },
+      portalContainer: { table: { disable: true } },
       containerWidth: {
         options: [400, 600, 800, 'auto'],
         control: {
@@ -993,7 +996,8 @@ In the example below you can have a look at this behavior:
           <AnalyticalTable
             data={args.data}
             columns={args.columns}
-            visibleRowCountMode={args.visibleRowCountMode}
+            visibleRows={5}
+            calculatePopInRowHeight={args.calculatePopInRowHeight}
             header={`Current width: ${args.containerWidth}`}
           />
         </div>
