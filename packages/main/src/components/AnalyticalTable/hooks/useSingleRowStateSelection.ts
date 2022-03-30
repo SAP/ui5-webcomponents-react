@@ -81,7 +81,7 @@ const getRowProps = (rowProps, { row, instance }) => {
           if (!webComponentsReactProperties.tagNamesWhichShouldNotSelectARow.has(e.target.tagName)) {
             e.preventDefault();
           }
-          handleRowSelect(e, selectionCellClick);
+          handleRowSelect(e, selectionCellClick || e.target.dataset.selectionCell === 'true');
         }
       },
       onClick: handleRowSelect
