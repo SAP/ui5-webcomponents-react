@@ -207,6 +207,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
                   data-column-index={virtualColumn.index}
                   data-visible-row-index={visibleRowIndex + 1}
                   data-row-index={rowIndexWithHeader}
+                  data-selection-cell={cell.column.id === '__ui5wcr__internal_selection_column'}
                   style={{
                     ...cellProps.style,
                     position: 'absolute',
