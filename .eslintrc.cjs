@@ -71,7 +71,7 @@ module.exports = {
     'prefer-arrow/prefer-arrow-functions': 'error',
     'prefer-const': 'error',
     radix: 'off',
-    'react/jsx-no-bind': 'error',
+    'react/jsx-no-bind': 'off',
     'react/jsx-key': 'error',
     'react/jsx-boolean-value': 'error',
     'react/no-string-refs': 'error',
