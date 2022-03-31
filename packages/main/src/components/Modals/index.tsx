@@ -17,12 +17,13 @@ import {
 import { MessageBox, MessageBoxPropTypes } from '../MessageBox';
 import { ThemeProvider } from '../ThemeProvider';
 
-let createRoot;
-if ('createRoot' in ReactDOM) {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  createRoot = require('react-dom/client').createRoot;
-}
+// let createRoot;
+// if ('createRoot' in ReactDOM) {
+//   // eslint-disable-next-line @typescript-eslint/no-var-requires
+//   createRoot = require(/* webpackIgnore: true */ 'react-dom/client').createRoot;
+// }
 
+// ReactDOM@18 Root
 interface Root {
   render(children: React.ReactChild | Iterable<React.ReactNode>): void;
 
@@ -64,32 +65,32 @@ const render = async (
   container: HTMLElement
 ): Promise<void | Root> => {
   return new Promise((resolve) => {
-    if (createRoot) {
-      const root = createRoot(container);
-      root.render(
+    // if (createRoot) {
+    //   const root = createRoot(container);
+    //   root.render(
+    //     <ThemeProvider>
+    //       <Element
+    //         {...props}
+    //         ref={(el) => {
+    //           resolve(root);
+    //           props.ref.current = el;
+    //         }}
+    //       />
+    //     </ThemeProvider>
+    //   );
+    // } else {
+    setTimeout(() => {
+      ReactDOM.render(
         <ThemeProvider>
-          <Element
-            {...props}
-            ref={(el) => {
-              resolve(root);
-              props.ref.current = el;
-            }}
-          />
-        </ThemeProvider>
+          <Element {...props} />
+        </ThemeProvider>,
+        container,
+        () => {
+          resolve();
+        }
       );
-    } else {
-      setTimeout(() => {
-        ReactDOM.render(
-          <ThemeProvider>
-            <Element {...props} />
-          </ThemeProvider>,
-          container,
-          () => {
-            resolve();
-          }
-        );
-      }, 0);
-    }
+    }, 0);
+    // }
   });
 };
 
