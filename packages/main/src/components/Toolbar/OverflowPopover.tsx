@@ -60,13 +60,13 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
 
   const handleOpen = () => {
     if (toggleBtnRef.current) {
-      toggleBtnRef.current.accessibilityAttributes.expanded = 'true';
+      toggleBtnRef.current.accessibilityAttributes = { expanded: true, hasPopup: 'menu' };
     }
   };
 
   const handleClose = (e) => {
     if (toggleBtnRef.current) {
-      toggleBtnRef.current.accessibilityAttributes.expanded = 'false';
+      toggleBtnRef.current.accessibilityAttributes = { expanded: false, hasPopup: 'menu' };
     }
     stopPropagation(e);
     setPressed(false);
@@ -95,8 +95,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
   useEffect(() => {
     customElements.whenDefined('ui5-toggle-button').then(() => {
       if (toggleBtnRef.current) {
-        toggleBtnRef.current.accessibilityAttributes.expanded = `${pressed}`;
-        toggleBtnRef.current.accessibilityAttributes.hasPopup = 'menu';
+        toggleBtnRef.current.accessibilityAttributes = { expanded: pressed, hasPopup: 'menu' };
       }
     });
   }, []);
