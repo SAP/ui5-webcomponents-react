@@ -48,8 +48,8 @@ interface ButtonAttributes {
    */
   submits?: boolean;
   /**
-   * Defines the tooltip of the button.
-   * **Note:** Tooltips should only be set to icon-only buttons.
+   * Defines the tooltip of the component.
+   * **Note:** We recommend setting tooltip to icon-only components.
    */
   tooltip?: string;
 }

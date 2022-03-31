@@ -1,3 +1,4 @@
+import { CssSizeVariables } from '@ui5/webcomponents-react-base';
 import React, { Children, cloneElement, CSSProperties, ReactElement, useMemo } from 'react';
 import { Splitter } from '../Splitter';
 import { SplitterElementPropTypes } from '../SplitterElement';
@@ -20,6 +21,7 @@ export const useConcatSplitterElements = (concatSplitterElements: ConcatSplitter
     ) as ReactElement<SplitterElementPropTypes>[];
 
     let splitterCount = 0;
+    const indicesWithSplitter = [];
 
     childrenArray.forEach((child, index) => {
       const splitterElementChild = childrenArray[index + splitterCount];
@@ -38,28 +40,27 @@ export const useConcatSplitterElements = (concatSplitterElements: ConcatSplitter
             vertical={concatSplitterElements?.vertical}
           />
         );
+        // -1 => prev element
+        indicesWithSplitter.push(index + 1 + splitterCount - 1);
         ++splitterCount;
       } else if (index > 0 && splitterElementChild?.props.resizable === false) {
         const indexOfSplitter = childrenArray.findIndex((element) => element === splitterElementChild) - 1;
         if (childrenArray[indexOfSplitter].props.minSize === undefined) {
           childrenArray.splice(indexOfSplitter, 1);
         }
+        indicesWithSplitter.pop();
         --splitterCount;
       }
     });
 
-    if (concatSplitterElements?.children.length !== 0) {
-      const indexOfLastElement = childrenArray?.length - 1;
-      childrenArray[indexOfLastElement] = cloneElement(
-        childrenArray?.[indexOfLastElement],
-        Object.assign({}, childrenArray?.[indexOfLastElement]?.props, {
-          style: {
-            flex: '1 0 auto',
-            ...childrenArray?.[indexOfLastElement]?.props?.style
-          }
-        })
-      );
-    }
+    indicesWithSplitter.forEach((index) => {
+      const size = childrenArray[index]?.props?.size;
+      if (size && size !== 'auto') {
+        childrenArray[index] = cloneElement(childrenArray[index], {
+          size: `calc(${size} - ${CssSizeVariables.sapWcrSplitterSize})`
+        });
+      }
+    });
 
     return childrenArray;
   }, [concatSplitterElements]);

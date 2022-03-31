@@ -182,8 +182,10 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
 
   const onHoverToggleButton = (e) => {
     // TODO background color should be sapObjectHeader_Hover_Background (same color as sapTile_Active_Background)
-    topHeaderRef.current.style.backgroundColor =
-      e?.type === 'mouseover' ? ThemingParameters.sapTile_Active_Background : null;
+    if (topHeaderRef.current) {
+      topHeaderRef.current.style.backgroundColor =
+        e?.type === 'mouseover' ? ThemingParameters.sapTile_Active_Background : null;
+    }
   };
 
   const onToggleHeaderContent = (e) => {

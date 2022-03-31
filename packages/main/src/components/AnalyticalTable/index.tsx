@@ -272,6 +272,12 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    */
   visibleRows?: number;
   /**
+   * Defines whether the row height of popped-in columns should be considered when calculating the body height of the table.
+   *
+   * __Note:__ If set so `true` the table will change its height depending whether columns are popped in or not.
+   */
+  adjustTableHeightOnPopIn?: boolean;
+  /**
    * Indicates whether a loading indicator should be shown.
    *
    * __Note:__ If the data array is not empty and loading is set to `true` a `Loader` will be displayed underneath the header, otherwise a loading placeholder will be shown.
@@ -489,6 +495,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
   const {
     alternateRowColor,
     alwaysShowSubComponent,
+    adjustTableHeightOnPopIn,
     className,
     columnOrder,
     columns,
@@ -679,7 +686,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
           : 0;
       const parentHeight = parentElement?.getBoundingClientRect().height;
       const tableHeight = parentHeight ? parentHeight - tableYPosition : 0;
-      const rowCount = Math.floor((tableHeight - extensionsHeight) / popInRowHeight);
+      const rowCount = Math.max(1, Math.floor((tableHeight - extensionsHeight) / popInRowHeight));
       dispatch({
         type: 'VISIBLE_ROWS',
         payload: { visibleRows: rowCount }
@@ -751,7 +758,9 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
   const tableBodyHeight = useMemo(() => {
     const rowNum = rows.length < internalVisibleRowCount ? Math.max(rows.length, minRows) : internalVisibleRowCount;
     const rowHeight =
-      visibleRowCountMode === TableVisibleRowCountMode.Auto || tableState?.interactiveRowsHavePopIn
+      visibleRowCountMode === TableVisibleRowCountMode.Auto ||
+      tableState?.interactiveRowsHavePopIn ||
+      adjustTableHeightOnPopIn
         ? popInRowHeight
         : internalRowHeight;
     return rowHeight * rowNum;
@@ -762,7 +771,8 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     minRows,
     popInRowHeight,
     visibleRowCountMode,
-    tableState?.interactiveRowsHavePopIn
+    tableState?.interactiveRowsHavePopIn,
+    adjustTableHeightOnPopIn
   ]);
 
   // scroll bar detection
@@ -985,6 +995,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
         </div>
         {(tableState.isScrollable === undefined || tableState.isScrollable) && (
           <VerticalScrollbar
+            tableBodyHeight={tableBodyHeight}
             internalRowHeight={internalRowHeight}
             popInRowHeight={popInRowHeight}
             tableRef={tableRef}

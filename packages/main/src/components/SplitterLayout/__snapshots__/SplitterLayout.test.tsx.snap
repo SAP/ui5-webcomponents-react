@@ -43,7 +43,7 @@ exports[`SplitterLayout Render Horizontal SplitterLayout with multiple SplitterE
       class="SplitterElement-splitterElement"
       data-min-size="50"
       data-testid="Element"
-      style="min-width: 50px; flex-basis: 100px;"
+      style="min-width: 50px;"
     >
       <ui5-button
         design="Default"
@@ -76,7 +76,6 @@ exports[`SplitterLayout Render Horizontal SplitterLayout with multiple SplitterE
     <div
       class="SplitterElement-splitterElement"
       data-min-size="0"
-      style="flex: 1 0 auto;"
     >
       <ui5-button
         design="Default"
@@ -110,7 +109,6 @@ exports[`SplitterLayout Render Vertical SplitterLayout with multiple SplitterEle
       class="SplitterElement-splitterElement"
       data-min-size="0"
       data-testid="SplitterElement1"
-      style="flex-basis: 200px;"
     >
       <ui5-button
         data-testid="Button"
@@ -145,7 +143,7 @@ exports[`SplitterLayout Render Vertical SplitterLayout with multiple SplitterEle
       class="SplitterElement-splitterElement"
       data-min-size="300"
       data-testid="SplitterElement2"
-      style="min-height: 300px; flex-basis: 400px;"
+      style="min-height: 300px; flex: 0 0 400px;"
     >
       <ui5-button
         design="Default"
@@ -158,7 +156,6 @@ exports[`SplitterLayout Render Vertical SplitterLayout with multiple SplitterEle
       class="SplitterElement-splitterElement"
       data-min-size="0"
       data-testid="SplitterElement3"
-      style="flex: 1 0 auto;"
     >
       <ui5-button
         design="Default"
@@ -171,7 +168,7 @@ exports[`SplitterLayout Render Vertical SplitterLayout with multiple SplitterEle
 </DocumentFragment>
 `;
 
-exports[`SplitterLayout Render Vertical SplitterLayout with only one SplitterElements 1`] = `
+exports[`SplitterLayout Render Vertical SplitterLayout with only one SplitterElement 1`] = `
 <DocumentFragment>
   <div
     class="SplitterLayout-splitterLayout"
@@ -183,7 +180,7 @@ exports[`SplitterLayout Render Vertical SplitterLayout with only one SplitterEle
       class="SplitterElement-splitterElement"
       data-min-size="0"
       data-testid="SplitterElement"
-      style="flex-basis: 200px;"
+      style="flex: 0 0 200px;"
     >
       <ui5-button
         data-testid="Button"

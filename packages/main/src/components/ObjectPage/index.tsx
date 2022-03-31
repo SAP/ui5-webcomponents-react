@@ -808,6 +808,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
           </TabContainer>
           {createPortal(
             <Popover
+              className={classes.subSectionPopover}
               placementType={PopoverPlacementType.Bottom}
               horizontalAlign={PopoverHorizontalAlign.Left}
               hideArrow

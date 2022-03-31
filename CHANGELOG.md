@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.22.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.22.3...v0.22.4) (2022-03-23)
+
+
+### Bug Fixes
+
+* update to @ui5/webcomponents 1.2.3 ([#2700](https://github.com/SAP/ui5-webcomponents-react/issues/2700)) ([d6c7659](https://github.com/SAP/ui5-webcomponents-react/commit/d6c76592e4a545da215daa829810c641cb9dfc58))
+
+
+
+
+
+## [0.22.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.22.2...v0.22.3) (2022-03-18)
+
+
+### Bug Fixes
+
+* **AnalyticalTable - `useRowDisableSelection` :** fire `onRowClick` event on non selectable rows ([#2664](https://github.com/SAP/ui5-webcomponents-react/issues/2664)) ([11610e9](https://github.com/SAP/ui5-webcomponents-react/commit/11610e9dee45504e74310b2c37788bd7f8d869ff))
+* **AnalyticalTable:** update table body height when changed on runtime ([#2688](https://github.com/SAP/ui5-webcomponents-react/issues/2688)) ([fbc306d](https://github.com/SAP/ui5-webcomponents-react/commit/fbc306d530418c135a894cb1fa2c62def0814304))
+* **cra-template-seed:** update all dependencies ([#2674](https://github.com/SAP/ui5-webcomponents-react/issues/2674)) ([042ee74](https://github.com/SAP/ui5-webcomponents-react/commit/042ee743446413f3734053e1884e8ad6dd43ed8d))
+* **cra-template:** update from official `cra-template` ([#2673](https://github.com/SAP/ui5-webcomponents-react/issues/2673)) ([1e687a1](https://github.com/SAP/ui5-webcomponents-react/commit/1e687a1841c1b7672907520a265717a84c1ffe46))
+* **DynamicPage:** prevent error in React Strict Mode ([#2684](https://github.com/SAP/ui5-webcomponents-react/issues/2684)) ([0a69903](https://github.com/SAP/ui5-webcomponents-react/commit/0a69903f23068e5bed5ba981db4b3a55aea1d759))
+* **ObjectPage:** remove content padding of sub-section popover ([#2681](https://github.com/SAP/ui5-webcomponents-react/issues/2681)) ([3acfeb6](https://github.com/SAP/ui5-webcomponents-react/commit/3acfeb6a21eaf7e4c2e5cfdf36da28e66fd437db))
+* **Toolbar:** spacings between elements ([#2660](https://github.com/SAP/ui5-webcomponents-react/issues/2660)) ([fce68fa](https://github.com/SAP/ui5-webcomponents-react/commit/fce68fa38af64b53ec721ed34d62bbca36a693cd))
+* **VariantManagement:** render save-as dialog with portal, fix styles ([#2676](https://github.com/SAP/ui5-webcomponents-react/issues/2676)) ([0a88653](https://github.com/SAP/ui5-webcomponents-react/commit/0a886533eae80de85d4c4e27ee437704f2c78cf0))
+* **withWebcomponent:** add optional chaining for event listener registration ([#2670](https://github.com/SAP/ui5-webcomponents-react/issues/2670)) ([96f1337](https://github.com/SAP/ui5-webcomponents-react/commit/96f13373dae60099828a8df24d8bd678399e6ba4))
+
+
+### Features
+
+* **FormItem:** add data attributes to form item container ([#2668](https://github.com/SAP/ui5-webcomponents-react/issues/2668)) ([484f7ad](https://github.com/SAP/ui5-webcomponents-react/commit/484f7ad052138ba8ded955e8b05f81f565d8d5f1))
+
+
+
+
+
 ## [0.22.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.22.1...v0.22.2) (2022-03-08)
 
 

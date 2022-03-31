@@ -812,7 +812,7 @@ describe('AnalyticalTable', () => {
       }
     });
 
-    const { asFragment } = render(<AnalyticalTable data={data} columns={columnsWithPopIn} />);
+    const { asFragment, rerender } = render(<AnalyticalTable data={data} columns={columnsWithPopIn} />);
 
     screen.getByText('Name');
     screen.getByText('Age');
@@ -834,6 +834,13 @@ describe('AnalyticalTable', () => {
     getByText(cells[0], 'Custom Cell:');
     getByText(cells[0], 'pop-in content');
 
+    expect(document.querySelector(`[data-component-name="AnalyticalTableBody"]`)).toHaveStyle('height: 220px');
+
+    expect(asFragment()).toMatchSnapshot();
+
+    rerender(<AnalyticalTable data={data} columns={columnsWithPopIn} adjustTableHeightOnPopIn />);
+
+    expect(document.querySelector(`[data-component-name="AnalyticalTableBody"]`)).toHaveStyle('height: 1420px');
     expect(asFragment()).toMatchSnapshot();
   });
 
@@ -1006,14 +1013,16 @@ describe('AnalyticalTable', () => {
 
   test('plugin hook: useRowDisableSelection', () => {
     const cb = jest.fn();
+    const click = jest.fn();
     const TestComponent = (props) => {
-      const { cb } = props;
+      const { cb, click } = props;
       const dataWithDisableSelectProp = data.map((item, index) => ({ ...item, disableSelection: index === 0 }));
       return (
         <AnalyticalTable
           data={dataWithDisableSelectProp}
           columns={columns}
           onRowSelected={cb}
+          onRowClick={click}
           selectionMode={TableSelectionMode.MultiSelect}
           tableHooks={[useRowDisableSelection('disableSelection')]}
           minRows={1}
@@ -1021,7 +1030,7 @@ describe('AnalyticalTable', () => {
       );
     };
 
-    const { getAllByRole, asFragment } = render(<TestComponent cb={cb} />);
+    const { getAllByRole, asFragment } = render(<TestComponent cb={cb} click={click} />);
 
     //first row is disabled, so all selection cells, and "normal" cells should not fire the event there
     const cells = getAllByRole('cell', { hidden: true });
@@ -1029,13 +1038,18 @@ describe('AnalyticalTable', () => {
     expect(selectionCells).toHaveLength(2);
     fireEvent.click(selectionCells[0]);
     expect(cb).toBeCalledTimes(0);
+    expect(click).toBeCalledTimes(1);
     fireEvent.click(selectionCells[0].children[0]);
     expect(selectionCells[0].children[0].getAttribute('disabled')).toEqual('true');
     expect(cb).toBeCalledTimes(0);
+    expect(click).toBeCalledTimes(2);
     fireEvent.click(selectionCells[1]);
     expect(cb).toBeCalledTimes(1);
+    expect(click).toBeCalledTimes(3);
+    // checkbox
     fireEvent.click(selectionCells[1].children[0]);
     expect(cb).toBeCalledTimes(2);
+    expect(click).toBeCalledTimes(3);
 
     const extCells = cells.filter(
       (item) => item.getAttribute('aria-colindex') && item.getAttribute('aria-colindex') !== '1'
@@ -1043,6 +1057,7 @@ describe('AnalyticalTable', () => {
     let counter = 2;
     extCells.forEach((item, index) => {
       fireEvent.click(item);
+      expect(click).toBeCalledTimes(3 + index + 1);
       if (index <= 3) {
         expect(cb).toBeCalledTimes(2);
       } else {

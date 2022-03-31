@@ -13,6 +13,7 @@ interface VerticalScrollbarProps {
   rows: any[];
   handleVerticalScrollBarScroll: any;
   popInRowHeight: number;
+  tableBodyHeight: number;
 }
 
 const styles = {
@@ -45,7 +46,8 @@ const styles = {
 const useStyles = createUseStyles(styles, { name: 'VerticalScrollbar' });
 
 export const VerticalScrollbar = forwardRef((props: VerticalScrollbarProps, ref: Ref<HTMLDivElement>) => {
-  const { internalRowHeight, tableRef, minRows, rows, handleVerticalScrollBarScroll, popInRowHeight } = props;
+  const { internalRowHeight, tableRef, minRows, rows, handleVerticalScrollBarScroll, popInRowHeight, tableBodyHeight } =
+    props;
   const classes = useStyles();
   const hasHorizontalScrollbar = tableRef?.current?.clientWidth !== tableRef?.current?.scrollWidth;
 
@@ -65,7 +67,7 @@ export const VerticalScrollbar = forwardRef((props: VerticalScrollbarProps, ref:
       <div
         ref={ref}
         style={{
-          height: tableRef.current ? `${tableRef.current.clientHeight - internalRowHeight}px` : '0'
+          height: tableRef.current ? `${tableBodyHeight}px` : '0'
         }}
         onScroll={handleVerticalScrollBarScroll}
         className={`${GlobalStyleClasses.sapScrollBar} ${classes.scrollbar}`}

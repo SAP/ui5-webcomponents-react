@@ -1,6 +1,6 @@
 {
   "name": "@ui5/cra-template-webcomponents-react-seed",
-  "version": "0.22.0",
+  "version": "0.22.4",
   "keywords": [
     "react",
     "create-react-app",
@@ -17,7 +17,7 @@
   "license": "Apache-2.0",
   "main": "template.json",
   "engines": {
-    "node": ">=8"
+    "node": ">=12"
   },
   "bugs": {
     "url": "https://github.com/SAP/ui5-webcomponents-react/issues"
