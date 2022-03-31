@@ -812,7 +812,7 @@ describe('AnalyticalTable', () => {
       }
     });
 
-    const { asFragment } = render(<AnalyticalTable data={data} columns={columnsWithPopIn} />);
+    const { asFragment, rerender } = render(<AnalyticalTable data={data} columns={columnsWithPopIn} />);
 
     screen.getByText('Name');
     screen.getByText('Age');
@@ -834,6 +834,13 @@ describe('AnalyticalTable', () => {
     getByText(cells[0], 'Custom Cell:');
     getByText(cells[0], 'pop-in content');
 
+    expect(document.querySelector(`[data-component-name="AnalyticalTableBody"]`)).toHaveStyle('height: 220px');
+
+    expect(asFragment()).toMatchSnapshot();
+
+    rerender(<AnalyticalTable data={data} columns={columnsWithPopIn} adjustTableHeightOnPopIn />);
+
+    expect(document.querySelector(`[data-component-name="AnalyticalTableBody"]`)).toHaveStyle('height: 1420px');
     expect(asFragment()).toMatchSnapshot();
   });
 
