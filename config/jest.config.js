@@ -13,7 +13,6 @@ export default {
     '!**/*.jss.ts',
     '!**/node_modules/**',
     '!packages/*/src/index.ts',
-    '!packages/**/demo/*',
     '!packages/main/src/components/AnalyticalTable/types/*' // no table enums
   ],
   setupFiles: ['jest-canvas-mock'],
