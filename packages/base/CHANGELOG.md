@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.22.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.22.4...v0.22.5) (2022-03-31)
+
+
+### Bug Fixes
+
+* **useResponsiveContentPadding:** calculate paddings based on border box ([#2710](https://github.com/SAP/ui5-webcomponents-react/issues/2710)) ([cf3c8e4](https://github.com/SAP/ui5-webcomponents-react/commit/cf3c8e4ebc96651d8f4d2bf805062c5b639974ae))
+
+
+### Features
+
+* **SplitterLayout:** add `options` prop to customize reset behavior, correct sizing of elements ([#2713](https://github.com/SAP/ui5-webcomponents-react/issues/2713)) ([4dc15f4](https://github.com/SAP/ui5-webcomponents-react/commit/4dc15f45e5b319bbccca5e88864bc4c82909d886))
+* support react 18 ([#2719](https://github.com/SAP/ui5-webcomponents-react/issues/2719)) ([e0f12d9](https://github.com/SAP/ui5-webcomponents-react/commit/e0f12d9514e067e644becaad5dc156459bf837ac))
+
+
+
+
+
 ## [0.22.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.22.3...v0.22.4) (2022-03-23)
 
 

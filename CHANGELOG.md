@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.22.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.22.4...v0.22.5) (2022-03-31)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** enable keyboard selection with RowSelector selection behavior ([#2723](https://github.com/SAP/ui5-webcomponents-react/issues/2723)) ([01bf233](https://github.com/SAP/ui5-webcomponents-react/commit/01bf233fa0a18091d474a78de1ee1cc7d4c303dc))
+* **Toolbar:** only assign aria attributes when needed ([#2729](https://github.com/SAP/ui5-webcomponents-react/issues/2729)) ([c698a37](https://github.com/SAP/ui5-webcomponents-react/commit/c698a375a16c684bf12c169353903655d2dd66d0))
+* **useResponsiveContentPadding:** calculate paddings based on border box ([#2710](https://github.com/SAP/ui5-webcomponents-react/issues/2710)) ([cf3c8e4](https://github.com/SAP/ui5-webcomponents-react/commit/cf3c8e4ebc96651d8f4d2bf805062c5b639974ae))
+* **VariantManagement:** call onSaveManageViews with current callback properties ([#2701](https://github.com/SAP/ui5-webcomponents-react/issues/2701)) ([d66188e](https://github.com/SAP/ui5-webcomponents-react/commit/d66188ee821ab2cf68499d2cd9b24223c7dc0121))
+
+
+### Features
+
+* **AnalyticalTable:** add `adjustTableHeightOnPopIn` prop to calculate body height based on pop-in rows ([#2721](https://github.com/SAP/ui5-webcomponents-react/issues/2721)) ([b3dab3f](https://github.com/SAP/ui5-webcomponents-react/commit/b3dab3fe84f41ddd615ba84f9e655590e30f1e95))
+* **SplitterLayout:** add `options` prop to customize reset behavior, correct sizing of elements ([#2713](https://github.com/SAP/ui5-webcomponents-react/issues/2713)) ([4dc15f4](https://github.com/SAP/ui5-webcomponents-react/commit/4dc15f45e5b319bbccca5e88864bc4c82909d886))
+* support react 18 ([#2719](https://github.com/SAP/ui5-webcomponents-react/issues/2719)) ([e0f12d9](https://github.com/SAP/ui5-webcomponents-react/commit/e0f12d9514e067e644becaad5dc156459bf837ac))
+
+
+
+
+
 ## [0.22.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.22.3...v0.22.4) (2022-03-23)
 
 
