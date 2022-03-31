@@ -1,8 +1,12 @@
 import { render, screen } from '@shared/tests';
 import React from 'react';
 import { Modals } from './index';
+import { version } from 'react-dom/package.json';
 
 describe('Modals', function () {
+  if (version.startsWith('18')) {
+    return;
+  }
   beforeAll(() => {
     jest.useFakeTimers();
   });

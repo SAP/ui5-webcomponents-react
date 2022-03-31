@@ -1,6 +1,5 @@
 import React, { createRef, ElementType, MutableRefObject, RefObject } from 'react';
-import ReactDOM from 'react-dom';
-import { Root } from 'react-dom/client';
+import * as ReactDOM from 'react-dom';
 import {
   Dialog,
   DialogDomRef,
@@ -19,20 +18,16 @@ import { MessageBox, MessageBoxPropTypes } from '../MessageBox';
 import { ThemeProvider } from '../ThemeProvider';
 
 let createRoot;
+if ('createRoot' in ReactDOM) {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  createRoot = require('react-dom/client').createRoot;
+}
 
-const fetchReactDOMClientOnce = async () => {
-  if (createRoot || createRoot === null) {
-    return;
-  }
-  try {
-    const module = await import('react-dom/client');
-    createRoot = module.createRoot;
-  } catch (e) {
-    // eslint-disable-next-line no-console
-    console.warn(`Failed to fetch 'ReactDOMClient.createRoot'. Fallback to 'ReactDOM.render'`);
-    createRoot = null;
-  }
-};
+interface Root {
+  render(children: React.ReactChild | Iterable<React.ReactNode>): void;
+
+  unmount(): void;
+}
 
 type ModalReturnType<DomRef> = {
   ref: RefObject<DomRef>;
@@ -68,38 +63,33 @@ const render = async (
   props: { ref: MutableRefObject<any> } & Record<string, unknown>,
   container: HTMLElement
 ): Promise<void | Root> => {
-  await fetchReactDOMClientOnce();
   return new Promise((resolve) => {
-    setTimeout(() => {
-      if (createRoot) {
-        const root = createRoot(container);
-        root.render(
-          <ThemeProvider>
-            <Element
-              {...props}
-              ref={(el) => {
-                resolve(root);
-                props.ref.current = el;
-              }}
-            />
-          </ThemeProvider>
-        );
-      } else {
+    if (createRoot) {
+      const root = createRoot(container);
+      root.render(
+        <ThemeProvider>
+          <Element
+            {...props}
+            ref={(el) => {
+              resolve(root);
+              props.ref.current = el;
+            }}
+          />
+        </ThemeProvider>
+      );
+    } else {
+      setTimeout(() => {
         ReactDOM.render(
           <ThemeProvider>
-            <Element
-              {...props}
-              ref={(el) => {
-                resolve();
-                props.ref.current = el;
-              }}
-            />
+            <Element {...props} />
           </ThemeProvider>,
-          container
+          container,
+          () => {
+            resolve();
+          }
         );
-        resolve();
-      }
-    }, 0);
+      }, 0);
+    }
   });
 };
 
