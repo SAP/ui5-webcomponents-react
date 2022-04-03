@@ -28,6 +28,17 @@ jest.mock('react-dom', () => {
   return jest.requireActual(packages[version]);
 });
 
+jest.mock('react-dom/test-utils', () => {
+  const packages = {
+    18: 'react-dom/test-utils',
+    17: 'react-dom-17/test-utils',
+    16: 'react-dom-16/test-utils'
+  };
+  const version = process.env.REACTJS_VERSION || DEFAULT_REACT_VERSION;
+
+  return jest.requireActual(packages[version]);
+});
+
 jest.mock('@testing-library/react', () => {
   const packages = {
     18: '@testing-library/react',
