@@ -4,6 +4,41 @@ import 'intersection-observer';
 import ResizeObserver from 'resize-observer-polyfill';
 import 'whatwg-fetch';
 
+const DEFAULT_REACT_VERSION = '18';
+
+jest.mock('react', () => {
+  const packages = {
+    18: 'react',
+    17: 'react-17',
+    16: 'react-16'
+  };
+  const version = process.env.REACTJS_VERSION || DEFAULT_REACT_VERSION;
+
+  return jest.requireActual(packages[version]);
+});
+
+jest.mock('react-dom', () => {
+  const packages = {
+    18: 'react-dom',
+    17: 'react-dom-17',
+    16: 'react-dom-16'
+  };
+  const version = process.env.REACTJS_VERSION || DEFAULT_REACT_VERSION;
+
+  return jest.requireActual(packages[version]);
+});
+
+jest.mock('@testing-library/react', () => {
+  const packages = {
+    18: '@testing-library/react',
+    17: '@testing-library/react-17',
+    16: '@testing-library/react-17'
+  };
+  const version = process.env.REACTJS_VERSION || DEFAULT_REACT_VERSION;
+
+  return jest.requireActual(packages[version]);
+});
+
 const setupMatchMedia = () => {
   Object.defineProperty(globalThis, 'matchMedia', {
     writable: true,

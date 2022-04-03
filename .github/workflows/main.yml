@@ -62,7 +62,7 @@ jobs:
 
     strategy:
       matrix:
-        react-version: [16.14.0, 17.0.2, 18.0.0]
+        react: [16, 17, 18]
 
     env:
       CI: true
@@ -73,12 +73,12 @@ jobs:
         uses: actions/setup-node@v3.0.0
         with:
           node-version-file: '.nvmrc'
-      - name: install dependencies - React ${{ matrix.react-version }}
-        run: |
-          node --experimental-json-modules scripts/ci/set-react-resolution.mjs ${{ matrix.react-version }}
-          yarn install
+      - name: install dependencies
+        run: yarn install
       - name: run tests
         run: yarn test --runInBand
+        env:
+          REACTJS_VERSION: ${{ matrix.react }}
       - name: Coveralls
         uses: coverallsapp/github-action@1.1.3
         with:
