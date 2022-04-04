@@ -428,20 +428,22 @@ describe('VariantManagement', () => {
     fireEvent.click(checkbox);
 
     // TODO Enable this code snippet again!
-    // fireEvent.click(screen.getByText('Save'));
-    // expect(cb).toHaveBeenCalledTimes(1);
-    //
-    // expect(cb.mock.results[0].value.updatedVariants[0].children).toBe('Updated!');
-    // expect(cb.mock.results[0].value.updatedVariants[0].isDefault).toBe(true);
-    // expect(cb.mock.results[0].value.updatedVariants[0].favorite).toBe(true);
-    // expect(cb.mock.results[0].value.updatedVariants[0].applyAutomatically).toBe(true);
-    // expect(cb.mock.results[0].value.variants[2].isDefault).toBe(false);
-    // expect(document.querySelector('ui5-dialog')).not.toBeInTheDocument();
-    //
-    // fireEvent.click(manageBtn);
-    // expect(document.querySelector('ui5-dialog')).toBeInTheDocument();
-    // fireEvent.click(screen.getByText('Cancel'));
-    // expect(document.querySelector('ui5-dialog')).not.toBeInTheDocument();
+    if (process.env.REACTJS_VERSION !== '18') {
+      fireEvent.click(screen.getByText('Save'));
+      expect(cb).toHaveBeenCalledTimes(1);
+
+      expect(cb.mock.results[0].value.updatedVariants[0].children).toBe('Updated!');
+      expect(cb.mock.results[0].value.updatedVariants[0].isDefault).toBe(true);
+      expect(cb.mock.results[0].value.updatedVariants[0].favorite).toBe(true);
+      expect(cb.mock.results[0].value.updatedVariants[0].applyAutomatically).toBe(true);
+      expect(cb.mock.results[0].value.variants[2].isDefault).toBe(false);
+      expect(document.querySelector('ui5-dialog')).not.toBeInTheDocument();
+
+      fireEvent.click(manageBtn);
+      expect(document.querySelector('ui5-dialog')).toBeInTheDocument();
+      fireEvent.click(screen.getByText('Cancel'));
+      expect(document.querySelector('ui5-dialog')).not.toBeInTheDocument();
+    }
   });
 
   test('Delete variants', () => {
