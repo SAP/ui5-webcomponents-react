@@ -1086,10 +1086,14 @@ describe('AnalyticalTable', () => {
       />
     );
     //set internal clientWidth
-    ref.current.dispatch({ type: 'TABLE_RESIZE', payload: { tableClientWidth: 1200 } });
+    act(() => {
+      ref.current.dispatch({ type: 'TABLE_RESIZE', payload: { tableClientWidth: 1200 } });
+    });
     const nameHeaderCell = getByText('Name').parentElement.parentElement;
     expect(nameHeaderCell).toHaveStyle({ width: '300px' });
-    ref.current.toggleHideColumn('age', true);
+    act(() => {
+      ref.current.toggleHideColumn('age', true);
+    });
     expect(nameHeaderCell).toHaveStyle({ width: '400px' });
     expect(queryAllByText('Age')).toHaveLength(0);
 
@@ -1152,7 +1156,7 @@ describe('AnalyticalTable', () => {
     expect(asFragment()).toMatchSnapshot();
 
     unmount();
-    rerender(
+    const { container: newContainer } = render(
       <AnalyticalTable
         data={dataTree}
         columns={columns}
@@ -1167,10 +1171,10 @@ describe('AnalyticalTable', () => {
       />
     );
 
-    expect(container.querySelectorAll('ui5-checkbox')[0]).toHaveAttribute('indeterminate', 'true');
-    expect(container.querySelectorAll('ui5-checkbox')[1]).toHaveAttribute('indeterminate', 'true');
-    expect(container.querySelectorAll('ui5-checkbox')[2]).not.toHaveAttribute('indeterminate', 'true');
-    expect(container.querySelectorAll('ui5-checkbox')[2]).toHaveAttribute('checked', 'true');
+    expect(newContainer.querySelectorAll('ui5-checkbox')[0]).toHaveAttribute('indeterminate', 'true');
+    expect(newContainer.querySelectorAll('ui5-checkbox')[1]).toHaveAttribute('indeterminate', 'true');
+    expect(newContainer.querySelectorAll('ui5-checkbox')[2]).not.toHaveAttribute('indeterminate', 'true');
+    expect(newContainer.querySelectorAll('ui5-checkbox')[2]).toHaveAttribute('checked', 'true');
   });
 
   createCustomPropsTest(AnalyticalTable);
