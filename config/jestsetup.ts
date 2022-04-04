@@ -84,6 +84,14 @@ Object.defineProperty(globalThis, 'crypto', {
   }
 });
 
+const consoleError = console.error;
+console.error = (...args) => {
+  if (args[0].includes('Error: Could not parse CSS stylesheet')) {
+    return;
+  }
+  consoleError(...args);
+};
+
 beforeEach(async () => {
   (window as any).ResizeObserver = ResizeObserver;
   window.scrollTo = jest.fn();
