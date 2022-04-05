@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.22.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.22.5...v0.22.6) (2022-04-05)
+
+
+### Bug Fixes
+
+* **i18nBundle:** support micro front ends ([#2743](https://github.com/SAP/ui5-webcomponents-react/issues/2743)) ([cc2fe72](https://github.com/SAP/ui5-webcomponents-react/commit/cc2fe728a47a42c5719a57f46ebdd8281d75dec7))
+
+
+
+
+
 ## [0.22.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.22.4...v0.22.5) (2022-03-31)
 
 
