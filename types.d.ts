@@ -1,13 +1,15 @@
 import { Context } from 'react';
 
-interface Window {
-  CSSVarsPonyfill: {
-    cssVars: (options: any) => void;
-  };
+declare global {
+  interface Window {
+    CSSVarsPonyfill: {
+      cssVars: (options: any) => void;
+    };
 
-  ['@ui5/webcomponents-react']: {
-    I18nContext: Context<any>;
-  };
+    ['@ui5/webcomponents-react']: {
+      I18nContext?: Context<any>;
+    };
+  }
 }
 
 declare module '*.md' {
