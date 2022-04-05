@@ -30,6 +30,10 @@ export function I18nProvider({ children }: I18nProviderPropTypes): JSX.Element {
   }, []);
 
   useEffect(() => {
+    if (!window['@ui5/webcomponents-react']) {
+      window['@ui5/webcomponents-react'] = {};
+    }
+    window['@ui5/webcomponents-react'].I18nContext = I18nContext;
     let isMounted = true;
     const fetchI18n = async () => {
       const bundles = await Promise.all(
