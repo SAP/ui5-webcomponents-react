@@ -36,7 +36,7 @@ export interface ToolbarPropTypes extends Omit<CommonProps, 'onClick'> {
   /**
    * Defines the content of the `Toolbar`.
    */
-  children?: ReactNode | ReactNode[] | ReactFragment;
+  children?: ReactNode | ReactNode[];
   /**
    * Defines the visual style of the `Toolbar`.<br />
    * <b>Note:</b> The visual styles are theme-dependent.
