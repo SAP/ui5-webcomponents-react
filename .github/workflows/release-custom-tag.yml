@@ -33,6 +33,8 @@ jobs:
           yarn install
           yarn test
           yarn build
+        env:
+          REACTJS_VERSION: 18
 
       - name: publish
         run: |
