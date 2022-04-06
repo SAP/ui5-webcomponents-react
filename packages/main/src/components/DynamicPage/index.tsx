@@ -64,6 +64,9 @@ export interface DynamicPagePropTypes extends Omit<CommonProps, 'title'> {
     dynamicPageAnchorBar?: {
       role?: string;
     };
+    dynamicPageFooter?: {
+      role?: string;
+    };
   };
 }
 
@@ -251,7 +254,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
           topHeaderHeight
         })}
       <FlexBox
-        data-component-name="DynamicPageAnchorBar"
+        data-component-name="DynamicPageAnchorBarContainer"
         className={anchorBarClasses}
         ref={anchorBarRef}
         style={{
@@ -295,13 +298,14 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
         {children}
       </div>
       {footer && (
-        <footer
+        <div
           className={classes.footer}
           style={{ position: isOverflowing ? 'sticky' : 'absolute' }}
           data-component-name="DynamicPageFooter"
+          role={a11yConfig?.dynamicPageFooter?.role ?? 'contentinfo'}
         >
           {footer}
-        </footer>
+        </div>
       )}
     </div>
   );
