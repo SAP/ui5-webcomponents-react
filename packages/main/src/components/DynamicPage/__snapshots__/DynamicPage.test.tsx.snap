@@ -254,7 +254,7 @@ exports[`DynamicPage always show content header 1`] = `
     </div>
     <div
       class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPage-anchorBar"
-      data-component-name="DynamicPageAnchorBar"
+      data-component-name="DynamicPageAnchorBarContainer"
       style="top: 0px;"
     >
       <section
@@ -440,7 +440,7 @@ exports[`DynamicPage hider header button 1`] = `
     </div>
     <div
       class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPage-anchorBar"
-      data-component-name="DynamicPageAnchorBar"
+      data-component-name="DynamicPageAnchorBarContainer"
       style="top: 0px;"
     >
       <section
@@ -644,7 +644,7 @@ exports[`DynamicPage render footer 1`] = `
   >
     <div
       class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPage-anchorBar"
-      data-component-name="DynamicPageAnchorBar"
+      data-component-name="DynamicPageAnchorBarContainer"
       style="top: 0px;"
     >
       <section
@@ -668,9 +668,10 @@ exports[`DynamicPage render footer 1`] = `
       data-component-name="DynamicPageContent"
       style="margin-top: 0px; padding-bottom: 1rem;"
     />
-    <footer
+    <div
       class="DynamicPage-footer"
       data-component-name="DynamicPageFooter"
+      role="contentinfo"
       style="position: absolute;"
     >
       <ui5-bar
@@ -685,7 +686,7 @@ exports[`DynamicPage render footer 1`] = `
           Footer
         </span>
       </ui5-bar>
-    </footer>
+    </div>
   </div>
 </DocumentFragment>
 `;
@@ -943,7 +944,7 @@ exports[`DynamicPage with content 1`] = `
     </div>
     <div
       class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPage-anchorBar"
-      data-component-name="DynamicPageAnchorBar"
+      data-component-name="DynamicPageAnchorBarContainer"
       style="top: 0px;"
     >
       <section
@@ -1937,7 +1938,7 @@ exports[`DynamicPage without content 1`] = `
     </div>
     <div
       class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPage-anchorBar"
-      data-component-name="DynamicPageAnchorBar"
+      data-component-name="DynamicPageAnchorBarContainer"
       style="top: 0px;"
     >
       <section
