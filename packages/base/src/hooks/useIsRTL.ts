@@ -4,7 +4,7 @@ import { useIsomorphicLayoutEffect } from '../hooks';
 
 const GLOBAL_DIR_CSS_VAR = '--_ui5_dir';
 
-const detectRTL = (elementRef: RefObject<HTMLElement>) => {
+const detectRTL = <RefType extends HTMLElement>(elementRef: RefObject<RefType>) => {
   if (!elementRef.current) {
     return getRTL();
   }
@@ -30,7 +30,7 @@ const detectRTL = (elementRef: RefObject<HTMLElement>) => {
   return getRTL();
 };
 
-const useIsRTL = (elementRef: RefObject<HTMLElement>): boolean => {
+const useIsRTL = <RefType extends HTMLElement>(elementRef: RefObject<RefType>): boolean => {
   const [isRTL, setRTL] = useState<boolean>(getRTL()); // use config RTL as best guess
   const isMounted = useRef(false);
   useIsomorphicLayoutEffect(() => {
