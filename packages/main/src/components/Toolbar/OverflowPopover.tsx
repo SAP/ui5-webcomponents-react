@@ -1,4 +1,6 @@
 import '@ui5/webcomponents-icons/dist/overflow.js';
+import { Device, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
+import clsx from 'clsx';
 import React, { FC, ReactElement, ReactNode, Ref, useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { ButtonDesign } from '../../enums/ButtonDesign';
@@ -6,7 +8,6 @@ import { PopoverPlacementType } from '../../enums/PopoverPlacementType';
 import { stopPropagation } from '../../internal/stopPropagation';
 import { Popover, PopoverDomRef } from '../../webComponents/Popover';
 import { ToggleButton, ToggleButtonDomRef } from '../../webComponents/ToggleButton';
-import { useSyncRef } from '@ui5/webcomponents-react-base';
 
 interface OverflowPopoverProps {
   lastVisibleIndex: number;
@@ -18,6 +19,8 @@ interface OverflowPopoverProps {
   showMoreText: string;
   overflowPopoverRef?: Ref<PopoverDomRef>;
 }
+
+const isPhone = Device.isPhone();
 
 export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopoverProps) => {
   const {
@@ -34,6 +37,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
   const [componentRef, popoverRef] = useSyncRef<PopoverDomRef>(overflowPopoverRef);
   const [pressed, setPressed] = useState(false);
   const toggleBtnRef = useRef<ToggleButtonDomRef>(null);
+  const isRtl = useIsRTL(popoverRef);
 
   const handleToggleButtonClick = useCallback(
     (e) => {
@@ -113,14 +117,18 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
       />
       {createPortal(
         <Popover
-          className={classes.popover}
+          className={clsx(classes.popover, isPhone && classes.popoverPhone)}
           placementType={PopoverPlacementType.Bottom}
           ref={componentRef}
           onAfterClose={handleClose}
           onBeforeOpen={handleOpen}
           hideArrow
         >
-          <div className={classes.popoverContent} ref={overflowContentRef}>
+          <div
+            className={clsx(classes.popoverContent, isPhone && classes.popoverContentPhone)}
+            ref={overflowContentRef}
+            data-rtl={isRtl}
+          >
             {renderChildren()}
           </div>
         </Popover>,
