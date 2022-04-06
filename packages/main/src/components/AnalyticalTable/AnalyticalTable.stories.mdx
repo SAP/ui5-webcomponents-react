@@ -10,6 +10,7 @@ import '@ui5/webcomponents-icons/dist/settings.js';
 import { useCallback, useEffect, useReducer, useRef, useState } from 'react';
 import {
   AnalyticalTable,
+  AnalyticalTableHooks,
   Badge,
   BusyIndicator,
   Button,
@@ -31,7 +32,6 @@ import {
 } from '../..';
 import { DefaultLoadingComponent } from './defaults/LoadingComponent';
 import { DefaultNoDataComponent } from './defaults/NoDataComponent';
-import { useIndeterminateRowSelection, useRowDisableSelection } from './pluginHooks/AnalyticalTableHooks';
 
 <Meta
   title="Data Display / AnalyticalTable"
@@ -205,14 +205,14 @@ Plugin hooks are adding features to the `AnalyticalTable` that are meant for spe
 To add a plugin hook you first need to `import` the corresponding hook and then add it to the `tableHooks` array.
 
 ```js
-import { useRowDisableSelection } from '@ui5/webcomponents-react';
+import { AnalyticalTableHooks } from '@ui5/webcomponents-react';
 ```
 
 ```jsx
 <AnalyticalTable
   data={data}
   columns={columns}
-  tableHooks={[useRowDisableSelection('myAccessorToDisableRowSelection')]}
+  tableHooks={[AnalyticalTableHooks.useRowDisableSelection('myAccessorToDisableRowSelection')]}
 />
 ```
 
@@ -223,7 +223,7 @@ With the `useRowDisableSelection` it's possible to disable the selection of spec
 - `string`: Defines the key in the dataset for disabling rows. If the value of the key is `true`, then the row will not be selectable.
 - `Function(row) => boolean`: Programmatically disable rows for selection. The function receives the current row as parameter.
 
-_ES6 Import: `import { useRowDisableSelection } from '@ui5/webcomponents-react';`_
+_ES6 Import: `import { AnalyticalTableHooks } from '@ui5/webcomponents-react';`_
 
 **Note:** The "Select All" checkbox is not available with this hook.
 
@@ -270,7 +270,7 @@ _ES6 Import: `import { useRowDisableSelection } from '@ui5/webcomponents-react';
                   columns={args.columns}
                   selectionMode={args.selectionMode}
                   selectedRowIds={[]}
-                  tableHooks={[useRowDisableSelection(disableRowFunc)]}
+                  tableHooks={[AnalyticalTableHooks.useRowDisableSelection(disableRowFunc)]}
                   visibleRows={10}
                   header="All under 40 are not selectable"
                 />
@@ -279,7 +279,7 @@ _ES6 Import: `import { useRowDisableSelection } from '@ui5/webcomponents-react';
                   data={args.data}
                   columns={args.columns}
                   selectionMode={args.selectionMode}
-                  tableHooks={[useRowDisableSelection('disableSelection')]}
+                  tableHooks={[AnalyticalTableHooks.useRowDisableSelection('disableSelection')]}
                   visibleRows={10}
                   header={`All with "disableSelection: true" are not selectable`}
                 />
@@ -302,7 +302,7 @@ const WithFunctionParameter = () => {
       data={data}
       columns={columns}
       selectionMode={TableSelectionMode.MultiSelect}
-      tableHooks={[useRowDisableSelection(disableRowFunc)]}
+      tableHooks={[AnalyticalTableHooks.useRowDisableSelection(disableRowFunc)]}
     />
   );
 };
@@ -322,7 +322,7 @@ const data = [
       data={data}
       columns={columns}
       selectionMode={TableSelectionMode.MultiSelect}
-      tableHooks={[useRowDisableSelection('disableSelection')]}
+      tableHooks={[AnalyticalTableHooks.useRowDisableSelection('disableSelection')]}
     />
   );
 };
@@ -333,7 +333,7 @@ const data = [
 The `useIndeterminateRowSelection` plugin hook allows marking parent rows as indeterminate when a child row is selected.
 When using this hook, it is recommended to also select all sub-rows when selecting a row. (`reactTableOptions={{ selectSubRows: true }}`)
 
-_ES6 Import: `import { useIndeterminateRowSelection } from '@ui5/webcomponents-react';`_
+_ES6 Import: `import { AnalyticalTableHooks } from '@ui5/webcomponents-react';`_
 
 <Canvas>
   <Story name="Plugin: useIndeterminateRowSelection" args={{ data: dataTree }}>
@@ -356,7 +356,7 @@ _ES6 Import: `import { useIndeterminateRowSelection } from '@ui5/webcomponents-r
                 data={args.data}
                 columns={args.columns}
                 isTreeTable
-                tableHooks={[useIndeterminateRowSelection()]}
+                tableHooks={[AnalyticalTableHooks.useIndeterminateRowSelection()]}
                 reactTableOptions={{ selectSubRows: selectSubRows }}
               />
             </>
@@ -373,7 +373,7 @@ _ES6 Import: `import { useIndeterminateRowSelection } from '@ui5/webcomponents-r
   data={data}
   columns={columns}
   isTreeTable
-  tableHooks={[useIndeterminateRowSelection()]}
+  tableHooks={[AnalyticalTableHooks.useIndeterminateRowSelection()]}
   reactTableOptions={{ selectSubRows: true }}
 />
 ```
