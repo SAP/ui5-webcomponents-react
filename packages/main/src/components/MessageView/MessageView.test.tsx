@@ -1,9 +1,9 @@
 import { act, fireEvent, render, screen } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { MessageView, MessageViewDomRef } from './index';
-import { MessageItem } from './MessageItem';
 import React, { createRef, forwardRef } from 'react';
 import { ValueState } from '../../enums/ValueState';
+import { MessageView, MessageViewDomRef } from './index';
+import { MessageItem } from './MessageItem';
 
 const TestComponent = forwardRef((props, ref) => {
   return (

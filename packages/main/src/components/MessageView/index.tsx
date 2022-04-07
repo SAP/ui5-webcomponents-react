@@ -4,7 +4,7 @@ import '@ui5/webcomponents-icons/dist/information.js';
 import '@ui5/webcomponents-icons/dist/slim-arrow-left.js';
 import '@ui5/webcomponents-icons/dist/sys-enter-2.js';
 import { ThemingParameters, useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base';
-import { ALL } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
+import { ALL, LIST_NO_DATA } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import clsx from 'clsx';
 import React, {
   Children,
@@ -235,7 +235,7 @@ const MessageView = forwardRef((props: MessageViewPropTypes, ref: Ref<MessageVie
               }
             />
           )}
-          <List onItemClick={onItemSelect}>
+          <List onItemClick={onItemSelect} noDataText={i18nBundle.getText(LIST_NO_DATA)}>
             {groupItems
               ? groupedMessages.map(([groupName, items]) => {
                   return (
@@ -249,26 +249,32 @@ const MessageView = forwardRef((props: MessageViewPropTypes, ref: Ref<MessageVie
           </List>
         </div>
         <div>
-          {showDetailsPageHeader && (
-            <Bar
-              startContent={<Button design={ButtonDesign.Transparent} icon="slim-arrow-left" onClick={navigateBack} />}
-            />
-          )}
-          {selectedMessage && (
-            <FlexBox className={classes.detailsContainer}>
-              <Icon
-                data-type={selectedMessage.type}
-                name={getIconNameForType(selectedMessage.type)}
-                className={classes.detailsIcon}
-              />
-              <FlexBox direction={FlexBoxDirection.Column}>
-                <Title level={TitleLevel.H5} className={classes.detailsTitle}>
-                  {selectedMessage.titleText}
-                </Title>
-                <div className={classes.detailsText}>{selectedMessage.children}</div>
-              </FlexBox>
-            </FlexBox>
-          )}
+          {childrenArray.length > 0 ? (
+            <>
+              {showDetailsPageHeader && (
+                <Bar
+                  startContent={
+                    <Button design={ButtonDesign.Transparent} icon="slim-arrow-left" onClick={navigateBack} />
+                  }
+                />
+              )}
+              {selectedMessage && (
+                <FlexBox className={classes.detailsContainer}>
+                  <Icon
+                    data-type={selectedMessage.type}
+                    name={getIconNameForType(selectedMessage.type)}
+                    className={classes.detailsIcon}
+                  />
+                  <FlexBox direction={FlexBoxDirection.Column}>
+                    <Title level={TitleLevel.H5} className={classes.detailsTitle}>
+                      {selectedMessage.titleText}
+                    </Title>
+                    <div className={classes.detailsText}>{selectedMessage.children}</div>
+                  </FlexBox>
+                </FlexBox>
+              )}
+            </>
+          ) : null}
         </div>
       </MessageViewContext.Provider>
     </div>
