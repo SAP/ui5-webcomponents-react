@@ -8,8 +8,10 @@ import {
   Link,
   MessageItem,
   MessageView,
+  Text,
   Title,
   TitleLevel,
+  ResponsivePopover,
   ValueState
 } from '@ui5/webcomponents-react';
 import { DocsHeader } from '@docs/DocsHeader';
@@ -223,5 +225,44 @@ function MyComponent() {
   );
 }
 ```
+
+### MessageView in Popover
+
+<Canvas>
+  <Story name="Message View in Popover">
+    {(args) => {
+      const notifications = [];
+      for (let i = 0; i < 15; i++) {
+        notifications.push(
+          <MessageItem
+            key={i}
+            titleText={<Text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonum</Text>}
+          >
+            <Text>
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
+              et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+              Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            </Text>
+          </MessageItem>
+        );
+      }
+      const ref = useRef();
+      return (
+        <>
+          <Button
+            onClick={(e) => {
+              ref.current.showAt(e.target);
+            }}
+          >
+            Messages
+          </Button>
+          <ResponsivePopover placementType="Bottom" ref={ref}>
+            <MessageView showDetailsPageHeader>{notifications}</MessageView>
+          </ResponsivePopover>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
 
 <Footer />
