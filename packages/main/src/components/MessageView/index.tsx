@@ -109,7 +109,8 @@ const useStyles = createUseStyles(
   {
     container: {
       width: '100%',
-      overflow: 'hidden',
+      overflowX: 'hidden',
+      overflowY: 'auto',
       display: 'flex',
       height: 500,
       '& > *': {
