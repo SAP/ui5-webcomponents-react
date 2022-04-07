@@ -32,7 +32,7 @@
   "dependencies": {
     "@ui5/webcomponents-react-base": "^0.22.6",
     "clsx": "1.1.1",
-    "lit-html": "2.0.1",
+    "lit-html": "2.2.2",
     "react-content-loader": "6.2.0",
     "react-jss": "10.9.0",
     "react-table": "7.7.0",
