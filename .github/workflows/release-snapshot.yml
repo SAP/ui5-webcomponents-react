@@ -5,9 +5,10 @@ on:
 
 jobs:
   build-and-release:
-    if: github.actor == 'MarcusNotheis' || github.actor == 'vbersch' || github.actor == 'Lukas742'
     runs-on: ubuntu-latest
-
+    environment:
+      name: 'npm'
+      url: 'https://www.npmjs.com/package/@ui5/webcomponents-react'
     steps:
       - uses: actions/checkout@v3
         with:
