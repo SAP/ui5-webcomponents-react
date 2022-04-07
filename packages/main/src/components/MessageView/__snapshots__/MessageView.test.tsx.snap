@@ -62,6 +62,7 @@ exports[`MessageView renders list view 1`] = `
         data-sap-ui-fastnavgroup="true"
         growing="None"
         mode="None"
+        no-data-text="No data"
         separators="All"
         ui5-list=""
       >
@@ -319,6 +320,7 @@ exports[`MessageView renders list view with groups 1`] = `
         data-sap-ui-fastnavgroup="true"
         growing="None"
         mode="None"
+        no-data-text="No data"
         separators="All"
         ui5-list=""
       >
