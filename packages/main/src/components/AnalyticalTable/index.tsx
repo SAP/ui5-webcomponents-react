@@ -553,7 +553,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
 
   const isRtl = useIsRTL(analyticalTableRef);
 
-  const getSubRows = useCallback((row) => row[subRowsKey] || [], [subRowsKey]);
+  const getSubRows = useCallback((row) => row.subRows || row[subRowsKey] || [], [subRowsKey]);
 
   const data = useMemo(() => {
     if (props.data.length === 0) {
