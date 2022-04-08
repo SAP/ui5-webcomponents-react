@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.22.7](https://github.com/SAP/ui5-webcomponents-react/compare/v0.22.6...v0.22.7) (2022-04-08)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** support custom `subRowsKey` in combination with `selectSubRows` ([#2761](https://github.com/SAP/ui5-webcomponents-react/issues/2761)) ([92bf138](https://github.com/SAP/ui5-webcomponents-react/commit/92bf138eab2e465aafa966609bd3ef10d88b770c))
+* **MessageView:** fix scroll behaviour and add no data handling ([#2759](https://github.com/SAP/ui5-webcomponents-react/issues/2759)) ([502394a](https://github.com/SAP/ui5-webcomponents-react/commit/502394ae874f88309ba0f49820f241381fad13b4))
+* **Toolbar:** stretch overflow popover to available screen width on phones ([#2747](https://github.com/SAP/ui5-webcomponents-react/issues/2747)) ([e6ea478](https://github.com/SAP/ui5-webcomponents-react/commit/e6ea4786d89f19542f9b44026cebefa60dd523d3))
+
+
+### Features
+
+* **DynamicPage:** make role of footer customizable ([#2753](https://github.com/SAP/ui5-webcomponents-react/issues/2753)) ([c5c4d9d](https://github.com/SAP/ui5-webcomponents-react/commit/c5c4d9d318c027d5be9fc033c85c031c7ea1df54))
+
+
+
+
+
 ## [0.22.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.22.5...v0.22.6) (2022-04-05)
 
 
