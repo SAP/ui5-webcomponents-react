@@ -65,6 +65,7 @@ export const Expandable = (props) => {
   return (
     <>
       {columnIndex === 0 && (row.canExpand || subComponentExpandable) ? (
+        // todo rowProps should be applied to the whole row, not just the cell. We should consider refactoring this.
         <span onClick={rowProps.onClick} title={rowProps.title} style={{ ...rowProps.style, ...style }}>
           <Icon
             interactive

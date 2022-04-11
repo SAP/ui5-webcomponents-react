@@ -43,7 +43,14 @@ const ROW_SELECTION_ATTRIBUTE = 'data-is-selected';
 
 const getRowProps = (rowProps, { instance, row }) => {
   const { webComponentsReactProperties } = instance;
-  const { classes, selectionBehavior, selectionMode, alternateRowColor } = webComponentsReactProperties;
+  const {
+    classes,
+    selectionBehavior,
+    selectionMode,
+    alternateRowColor,
+    renderRowSubComponent,
+    alwaysShowSubComponent
+  } = webComponentsReactProperties;
   const isEmptyRow = row.original?.emptyRow;
   let className = classes.tr;
   const rowCanBeSelected =
@@ -69,6 +76,18 @@ const getRowProps = (rowProps, { instance, row }) => {
     }
     if (row.isSelected) {
       newRowProps[ROW_SELECTION_ATTRIBUTE] = '';
+    }
+  }
+
+  // Todo: move this to `useToggleRowExpand` hook when it was refactored
+  const RowSubComponent = typeof renderRowSubComponent === 'function' ? renderRowSubComponent(row) : undefined;
+  const rowIsExpandable = row.canExpand || (RowSubComponent && !alwaysShowSubComponent);
+  console.log(rowIsExpandable);
+  if (rowIsExpandable) {
+    if (row.isExpanded) {
+      newRowProps['aria-expanded'] = 'true';
+    } else {
+      newRowProps['aria-expanded'] = 'false';
     }
   }
 
