@@ -4355,6 +4355,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
             style="position: relative; height: 220px; width: 647px;"
           >
             <div
+              aria-expanded="false"
               aria-rowindex="0"
               class="AnalyticalTable-tr AnalyticalTable-trActive"
               role="row"
@@ -6799,6 +6800,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
             style="position: relative; height: 484px; width: 600px;"
           >
             <div
+              aria-expanded="true"
               aria-rowindex="0"
               class="AnalyticalTable-tr AnalyticalTable-trActive"
               role="row"
@@ -6925,6 +6927,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
             </div>
             <div
+              aria-expanded="true"
               aria-rowindex="0"
               class="AnalyticalTable-tr AnalyticalTable-trActive"
               role="row"
@@ -7051,6 +7054,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
             </div>
             <div
+              aria-expanded="true"
               aria-rowindex="0"
               class="AnalyticalTable-tr AnalyticalTable-trActive"
               role="row"
@@ -7177,6 +7181,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
             </div>
             <div
+              aria-expanded="true"
               aria-rowindex="0"
               class="AnalyticalTable-tr AnalyticalTable-trActive"
               data-is-selected=""
@@ -7303,6 +7308,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
             </div>
             <div
+              aria-expanded="false"
               aria-rowindex="0"
               class="AnalyticalTable-tr AnalyticalTable-trActive"
               role="row"
@@ -7541,6 +7547,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
             </div>
             <div
+              aria-expanded="false"
               aria-rowindex="2"
               class="AnalyticalTable-tr AnalyticalTable-trActive"
               role="row"
@@ -10163,6 +10170,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
             style="position: relative; height: 220px; width: 600px;"
           >
             <div
+              aria-expanded="true"
               aria-rowindex="0"
               class="AnalyticalTable-tr"
               role="row"
@@ -10278,6 +10286,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
               </div>
             </div>
             <div
+              aria-expanded="true"
               aria-rowindex="1"
               class="AnalyticalTable-tr"
               role="row"
@@ -10393,6 +10402,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
               </div>
             </div>
             <div
+              aria-expanded="false"
               aria-rowindex="2"
               class="AnalyticalTable-tr"
               role="row"
@@ -10428,6 +10438,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
               />
             </div>
             <div
+              aria-expanded="false"
               aria-rowindex="3"
               class="AnalyticalTable-tr"
               role="row"
@@ -10463,6 +10474,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
               />
             </div>
             <div
+              aria-expanded="false"
               aria-rowindex="4"
               class="AnalyticalTable-tr"
               role="row"
