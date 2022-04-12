@@ -66,8 +66,7 @@ export const styles = {
       cursor: 'unset'
     },
     '&[data-not-clickable="false"]': {
-      // TODO background color should be sapObjectHeader_Hover_Background (same color as sapTile_Active_Background)
-      backgroundColor: `${ThemingParameters.sapTile_Active_Background}`,
+      backgroundColor: `${ThemingParameters.sapObjectHeader_Hover_Background}`,
       '& [data-component-name="DynamicPageTitle"]': {
         backgroundColor: ThemingParameters.sapTile_Active_Background
       }
