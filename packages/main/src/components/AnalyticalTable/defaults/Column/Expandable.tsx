@@ -71,12 +71,15 @@ export const Expandable = (props) => {
           title={rowProps.title}
           style={{ ...rowProps.style, ...style }}
           aria-expanded={row.isExpanded}
-          aria-label={row.isExpanded ? translatableTexts.collapseNodeA11yText : translatableTexts.expandNodeA11yText}
+          aria-label={row.isExpanded ? translatableTexts.collapseA11yText : translatableTexts.expandA11yText}
         >
           <Icon
             interactive
             name={`${row.isExpanded ? 'navigation-down-arrow' : 'navigation-right-arrow'}`}
             style={tableGroupExpandCollapseIcon}
+            accessibleName={
+              row.isExpanded ? translatableTexts.collapseNodeA11yText : translatableTexts.expandNodeA11yText
+            }
           />
         </span>
       ) : (

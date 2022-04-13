@@ -8,7 +8,7 @@ interface UpdatedCellProptypes {
   'aria-label'?: string;
 }
 
-const getCellProps = (cellProps, { cell: { column, row }, instance }) => {
+const getCellProps = (cellProps, { cell: { column, row, value }, instance }) => {
   const columnIndex = instance.visibleColumns.findIndex(({ id }) => id === column.id);
   const { alwaysShowSubComponent, renderRowSubComponent, translatableTexts, selectionMode, selectionBehavior } =
     instance.webComponentsReactProperties;
@@ -35,12 +35,13 @@ const getCellProps = (cellProps, { cell: { column, row }, instance }) => {
         row.toggleRowExpanded();
       }
     };
+    console.log(value);
     if (row.isExpanded) {
       updatedCellProps['aria-expanded'] = 'true';
-      updatedCellProps['aria-label'] = translatableTexts.collapseA11yText;
+      // updatedCellProps['aria-label'] = translatableTexts.collapseA11yText;
     } else {
       updatedCellProps['aria-expanded'] = 'false';
-      updatedCellProps['aria-label'] = translatableTexts.expandA11yText;
+      // updatedCellProps['aria-label'] = translatableTexts.expandA11yText;
     }
   } else if (
     (selectionMode !== TableSelectionMode.None && selectionBehavior !== TableSelectionBehavior.RowSelector) ||
@@ -48,10 +49,10 @@ const getCellProps = (cellProps, { cell: { column, row }, instance }) => {
   ) {
     if (row.isSelected) {
       updatedCellProps['aria-selected'] = 'true';
-      updatedCellProps['aria-label'] = translatableTexts.unselectA11yText;
+      updatedCellProps['aria-label'] = `${value ?? ''} ${translatableTexts.unselectA11yText}`;
     } else {
       updatedCellProps['aria-selected'] = 'false';
-      updatedCellProps['aria-label'] = translatableTexts.selectA11yText;
+      updatedCellProps['aria-label'] = `${value ?? ''} ${translatableTexts.selectA11yText}`;
     }
   }
 
