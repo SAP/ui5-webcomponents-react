@@ -35,7 +35,9 @@ import {
   useTable
 } from 'react-table';
 import {
+  COLLAPSE_NODE,
   COLLAPSE_PRESS_SPACE,
+  EXPAND_NODE,
   EXPAND_PRESS_SPACE,
   SELECT_PRESS_SPACE,
   UNSELECT_PRESS_SPACE
@@ -595,7 +597,9 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
           expandA11yText: i18nBundle.getText(EXPAND_PRESS_SPACE),
           collapseA11yText: i18nBundle.getText(COLLAPSE_PRESS_SPACE),
           selectA11yText: i18nBundle.getText(SELECT_PRESS_SPACE),
-          unselectA11yText: i18nBundle.getText(UNSELECT_PRESS_SPACE)
+          unselectA11yText: i18nBundle.getText(UNSELECT_PRESS_SPACE),
+          expandNodeA11yText: i18nBundle.getText(EXPAND_NODE),
+          collapseNodeA11yText: i18nBundle.getText(COLLAPSE_NODE)
         },
         tagNamesWhichShouldNotSelectARow,
         tableRef,

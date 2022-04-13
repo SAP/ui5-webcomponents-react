@@ -53,14 +53,6 @@ const getCellProps = (cellProps, { cell: { column, row }, instance }) => {
       updatedCellProps['aria-selected'] = 'false';
       updatedCellProps['aria-label'] = translatableTexts.selectA11yText;
     }
-  } else if (row.id === '__ui5wcr__internal_selection_column') {
-    if (row.isSelected) {
-      updatedCellProps['aria-selected'] = 'true';
-      updatedCellProps['aria-label'] = translatableTexts.unselectA11yText;
-    } else {
-      updatedCellProps['aria-selected'] = 'false';
-      updatedCellProps['aria-label'] = translatableTexts.selectA11yText;
-    }
   }
 
   return [
