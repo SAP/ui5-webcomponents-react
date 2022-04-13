@@ -37,8 +37,6 @@ export const Expandable = (props) => {
     state: { isRtl }
   } = props;
   const { renderRowSubComponent, alwaysShowSubComponent, translatableTexts } = webComponentsReactProperties;
-  // todo remove this line
-  console.warn = () => {};
   const tableColumns = columns.filter(
     ({ id }) =>
       id !== '__ui5wcr__internal_selection_column' &&

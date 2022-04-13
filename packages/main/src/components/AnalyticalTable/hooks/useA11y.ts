@@ -35,13 +35,10 @@ const getCellProps = (cellProps, { cell: { column, row, value }, instance }) => 
         row.toggleRowExpanded();
       }
     };
-    console.log(value);
     if (row.isExpanded) {
       updatedCellProps['aria-expanded'] = 'true';
-      // updatedCellProps['aria-label'] = translatableTexts.collapseA11yText;
     } else {
       updatedCellProps['aria-expanded'] = 'false';
-      // updatedCellProps['aria-label'] = translatableTexts.expandA11yText;
     }
   } else if (
     (selectionMode !== TableSelectionMode.None && selectionBehavior !== TableSelectionBehavior.RowSelector) ||
