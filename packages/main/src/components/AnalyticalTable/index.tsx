@@ -41,7 +41,7 @@ import {
   EXPAND_PRESS_SPACE,
   SELECT_PRESS_SPACE,
   UNSELECT_PRESS_SPACE
-} from '../../../dist/assets/i18n/i18n-defaults';
+} from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { AnalyticalTableScrollMode } from '../../enums/AnalyticalTableScrollMode';
 import { GlobalStyleClasses } from '../../enums/GlobalStyleClasses';
 import { TableScaleWidthMode } from '../../enums/TableScaleWidthMode';
