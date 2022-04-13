@@ -31,6 +31,7 @@ const getCellProps = (cellProps, { cell: { column, row }, instance }) => {
       if (e.key === 'Enter' || e.code === 'Space') {
         // don't bubble event to prevent click of selection row
         stopPropagation(e);
+        e.preventDefault();
         row.toggleRowExpanded();
       }
     };
@@ -41,16 +42,23 @@ const getCellProps = (cellProps, { cell: { column, row }, instance }) => {
       updatedCellProps['aria-expanded'] = 'false';
       updatedCellProps['aria-label'] = translatableTexts.expandA11yText;
     }
-  } else if (selectionMode !== TableSelectionMode.None && selectionBehavior !== TableSelectionBehavior.RowSelector) {
+  } else if (
+    (selectionMode !== TableSelectionMode.None && selectionBehavior !== TableSelectionBehavior.RowSelector) ||
+    row.id === '__ui5wcr__internal_selection_column'
+  ) {
     if (row.isSelected) {
+      updatedCellProps['aria-selected'] = 'true';
       updatedCellProps['aria-label'] = translatableTexts.unselectA11yText;
     } else {
+      updatedCellProps['aria-selected'] = 'false';
       updatedCellProps['aria-label'] = translatableTexts.selectA11yText;
     }
   } else if (row.id === '__ui5wcr__internal_selection_column') {
     if (row.isSelected) {
+      updatedCellProps['aria-selected'] = 'true';
       updatedCellProps['aria-label'] = translatableTexts.unselectA11yText;
     } else {
+      updatedCellProps['aria-selected'] = 'false';
       updatedCellProps['aria-label'] = translatableTexts.selectA11yText;
     }
   }
