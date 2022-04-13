@@ -1,0 +1,70 @@
+import { KeyboardEventHandler } from 'react';
+import { TableSelectionBehavior, TableSelectionMode } from '../../../enums';
+import { stopPropagation } from '../../../internal/stopPropagation';
+
+interface UpdatedCellProptypes {
+  onKeyDown?: KeyboardEventHandler<HTMLDivElement>;
+  'aria-expanded'?: string | boolean;
+  'aria-label'?: string;
+}
+
+const getCellProps = (cellProps, { cell: { column, row }, instance }) => {
+  const columnIndex = instance.visibleColumns.findIndex(({ id }) => id === column.id);
+  const { alwaysShowSubComponent, renderRowSubComponent, translatableTexts, selectionMode, selectionBehavior } =
+    instance.webComponentsReactProperties;
+
+  const RowSubComponent = typeof renderRowSubComponent === 'function' ? renderRowSubComponent(row) : undefined;
+  const rowIsExpandable = row.canExpand || (RowSubComponent && !alwaysShowSubComponent);
+
+  const updatedCellProps: UpdatedCellProptypes = {};
+  const userCols = instance.visibleColumns.filter(
+    ({ id }) =>
+      id !== '__ui5wcr__internal_selection_column' &&
+      id !== '__ui5wcr__internal_highlight_column' &&
+      id !== '__ui5wcr__internal_navigation_column'
+  );
+
+  const isFirstUserCol = userCols[0].id === column.id || userCols[0].accessor === column.accessor;
+
+  if (isFirstUserCol && rowIsExpandable) {
+    updatedCellProps.onKeyDown = (e) => {
+      if (e.key === 'Enter' || e.code === 'Space') {
+        // don't bubble event to prevent click of selection row
+        stopPropagation(e);
+        row.toggleRowExpanded();
+      }
+    };
+    if (row.isExpanded) {
+      updatedCellProps['aria-expanded'] = 'true';
+      updatedCellProps['aria-label'] = translatableTexts.collapseA11yText;
+    } else {
+      updatedCellProps['aria-expanded'] = 'false';
+      updatedCellProps['aria-label'] = translatableTexts.expandA11yText;
+    }
+  } else if (selectionMode !== TableSelectionMode.None && selectionBehavior !== TableSelectionBehavior.RowSelector) {
+    if (row.isSelected) {
+      updatedCellProps['aria-label'] = translatableTexts.unselectA11yText;
+    } else {
+      updatedCellProps['aria-label'] = translatableTexts.selectA11yText;
+    }
+  } else if (row.id === '__ui5wcr__internal_selection_column') {
+    if (row.isSelected) {
+      updatedCellProps['aria-label'] = translatableTexts.unselectA11yText;
+    } else {
+      updatedCellProps['aria-label'] = translatableTexts.selectA11yText;
+    }
+  }
+
+  return [
+    cellProps,
+    {
+      ...updatedCellProps,
+      'aria-colindex': columnIndex + 1 // aria index is 1 based, not 0
+    }
+  ];
+};
+
+export const useA11y = (hooks) => {
+  hooks.getCellProps.push(getCellProps);
+};
+useA11y.pluginName = 'useA11y';

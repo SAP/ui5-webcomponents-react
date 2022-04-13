@@ -67,7 +67,7 @@ const getRowProps = (rowProps, { instance, row }) => {
   const newRowProps = {
     className,
     role: 'row',
-    'aria-rowindex': row.index
+    'aria-rowindex': row.index + 1
   };
 
   if (rowCanBeSelected) {
@@ -79,23 +79,10 @@ const getRowProps = (rowProps, { instance, row }) => {
     }
   }
 
-  // Todo: move this to `useToggleRowExpand` hook when it was refactored
-  const RowSubComponent = typeof renderRowSubComponent === 'function' ? renderRowSubComponent(row) : undefined;
-  const rowIsExpandable = row.canExpand || (RowSubComponent && !alwaysShowSubComponent);
-  console.log(rowIsExpandable);
-  if (rowIsExpandable) {
-    if (row.isExpanded) {
-      newRowProps['aria-expanded'] = 'true';
-    } else {
-      newRowProps['aria-expanded'] = 'false';
-    }
-  }
-
   return [rowProps, newRowProps];
 };
 
 const getCellProps = (cellProps, { cell: { column }, instance }) => {
-  const columnIndex = instance.visibleColumns.findIndex(({ id }) => id === column.id);
   const { classes } = instance.webComponentsReactProperties;
   const style: CSSProperties = { width: `${column.totalWidth}px` };
 
@@ -155,8 +142,7 @@ const getCellProps = (cellProps, { cell: { column }, instance }) => {
     {
       className,
       style,
-      tabIndex: -1,
-      'aria-colindex': columnIndex + 1 // aria index is 1 based, not 0
+      tabIndex: -1
     }
   ];
 };

@@ -32,11 +32,13 @@ export const Expandable = (props) => {
     cell,
     row,
     column,
-    columns,
+    visibleColumns: columns,
     webComponentsReactProperties,
     state: { isRtl }
   } = props;
-
+  const { renderRowSubComponent, alwaysShowSubComponent, translatableTexts } = webComponentsReactProperties;
+  // todo remove this line
+  console.warn = () => {};
   const tableColumns = columns.filter(
     ({ id }) =>
       id !== '__ui5wcr__internal_selection_column' &&
@@ -58,15 +60,19 @@ export const Expandable = (props) => {
   const rowProps = row.getToggleRowExpandedProps();
 
   const subComponentExpandable =
-    typeof webComponentsReactProperties?.renderRowSubComponent === 'function' &&
-    !!webComponentsReactProperties?.renderRowSubComponent(row) &&
-    !webComponentsReactProperties.alwaysShowSubComponent;
+    typeof renderRowSubComponent === 'function' && !!renderRowSubComponent(row) && !alwaysShowSubComponent;
 
   return (
     <>
       {columnIndex === 0 && (row.canExpand || subComponentExpandable) ? (
         // todo rowProps should be applied to the whole row, not just the cell. We should consider refactoring this.
-        <span onClick={rowProps.onClick} title={rowProps.title} style={{ ...rowProps.style, ...style }}>
+        <span
+          onClick={rowProps.onClick}
+          title={rowProps.title}
+          style={{ ...rowProps.style, ...style }}
+          aria-expanded={row.isExpanded}
+          aria-label={row.isExpanded ? translatableTexts.collapseNodeA11yText : translatableTexts.expandNodeA11yText}
+        >
           <Icon
             interactive
             name={`${row.isExpanded ? 'navigation-down-arrow' : 'navigation-right-arrow'}`}
