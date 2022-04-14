@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.22.8](https://github.com/SAP/ui5-webcomponents-react/compare/v0.22.7...v0.22.8) (2022-04-14)
+
+
+### Bug Fixes
+
+* update theming parameters ([#2779](https://github.com/SAP/ui5-webcomponents-react/issues/2779)) ([f60bb0c](https://github.com/SAP/ui5-webcomponents-react/commit/f60bb0c038ab06f3fd1931eb82a77caeee3f011b))
+
+
+
+
+
 ## [0.22.7](https://github.com/SAP/ui5-webcomponents-react/compare/v0.22.6...v0.22.7) (2022-04-08)
 
 

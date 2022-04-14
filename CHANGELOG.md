@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.22.8](https://github.com/SAP/ui5-webcomponents-react/compare/v0.22.7...v0.22.8) (2022-04-14)
+
+
+### Bug Fixes
+
+* **SplitterElement:** don't crash if element ref is undefined ([#2789](https://github.com/SAP/ui5-webcomponents-react/issues/2789)) ([d6d8b16](https://github.com/SAP/ui5-webcomponents-react/commit/d6d8b1637513c92a246474123bc3f2d2a1876e0c))
+* **Toolbar:** correct overflow behavior with single item and alignment of overflow button ([#2792](https://github.com/SAP/ui5-webcomponents-react/issues/2792)) ([5b7ff6a](https://github.com/SAP/ui5-webcomponents-react/commit/5b7ff6a823b6a0b374a4d421a938a1a0ada3b161))
+* update theming parameters ([#2779](https://github.com/SAP/ui5-webcomponents-react/issues/2779)) ([f60bb0c](https://github.com/SAP/ui5-webcomponents-react/commit/f60bb0c038ab06f3fd1931eb82a77caeee3f011b))
+
+
+
+
+
 ## [0.22.7](https://github.com/SAP/ui5-webcomponents-react/compare/v0.22.6...v0.22.7) (2022-04-08)
 
 
