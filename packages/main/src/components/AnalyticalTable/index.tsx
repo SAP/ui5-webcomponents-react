@@ -2,6 +2,7 @@ import {
   debounce,
   enrichEventWithDetails,
   ThemingParameters,
+  useI18nBundle,
   useIsomorphicLayoutEffect,
   useIsRTL
 } from '@ui5/webcomponents-react-base';
@@ -33,6 +34,14 @@ import {
   useSortBy,
   useTable
 } from 'react-table';
+import {
+  COLLAPSE_NODE,
+  COLLAPSE_PRESS_SPACE,
+  EXPAND_NODE,
+  EXPAND_PRESS_SPACE,
+  SELECT_PRESS_SPACE,
+  UNSELECT_PRESS_SPACE
+} from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { AnalyticalTableScrollMode } from '../../enums/AnalyticalTableScrollMode';
 import { GlobalStyleClasses } from '../../enums/GlobalStyleClasses';
 import { TableScaleWidthMode } from '../../enums/TableScaleWidthMode';
@@ -51,6 +60,7 @@ import { DefaultColumn } from './defaults/Column';
 import { DefaultLoadingComponent } from './defaults/LoadingComponent';
 import { TablePlaceholder } from './defaults/LoadingComponent/TablePlaceholder';
 import { DefaultNoDataComponent } from './defaults/NoDataComponent';
+import { useA11y } from './hooks/useA11y';
 import { useDragAndDrop } from './hooks/useDragAndDrop';
 import { useDynamicColumnWidths } from './hooks/useDynamicColumnWidths';
 import { useKeyboardNavigation } from './hooks/useKeyboardNavigation';
@@ -545,6 +555,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
   } = props;
 
   useDeprecationNoticeForTooltip('AnalyticalTable', props.tooltip);
+  const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
   const classes = useStyles();
 
@@ -569,7 +580,6 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
   }, [props.data, minRows]);
 
   const tableInstanceRef = useRef<Record<string, any>>(null);
-
   tableInstanceRef.current = useTable(
     {
       columns,
@@ -583,6 +593,14 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
       disableGroupBy: isTreeTable || renderRowSubComponent ? true : !groupable,
       selectSubRows: false,
       webComponentsReactProperties: {
+        translatableTexts: {
+          expandA11yText: i18nBundle.getText(EXPAND_PRESS_SPACE),
+          collapseA11yText: i18nBundle.getText(COLLAPSE_PRESS_SPACE),
+          selectA11yText: i18nBundle.getText(SELECT_PRESS_SPACE),
+          unselectA11yText: i18nBundle.getText(UNSELECT_PRESS_SPACE),
+          expandNodeA11yText: i18nBundle.getText(EXPAND_NODE),
+          collapseNodeA11yText: i18nBundle.getText(COLLAPSE_NODE)
+        },
         tagNamesWhichShouldNotSelectARow,
         tableRef,
         selectionMode,
@@ -620,6 +638,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     useDynamicColumnWidths,
     useStyling,
     useToggleRowExpand,
+    useA11y,
     usePopIn,
     useVisibleColumnsWidth,
     useKeyboardNavigation,
