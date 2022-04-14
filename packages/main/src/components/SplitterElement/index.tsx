@@ -68,7 +68,7 @@ const SplitterElement = forwardRef((props: SplitterElementPropTypes, ref: RefObj
         setFlexBasisApplied(true);
       }
     });
-    if (size === 'auto') {
+    if (size === 'auto' && splitterElementRef.current) {
       elementObserver.observe(splitterElementRef.current);
     } else {
       setFlexStyles({ flex: `0 0 ${size}` });
