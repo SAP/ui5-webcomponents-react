@@ -65,6 +65,7 @@ export const styles = {
     maxWidth: '100%'
   },
   overflowButtonContainer: {
+    display: 'flex',
     marginRight: '0.5rem'
   },
   popover: {
