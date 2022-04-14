@@ -158,8 +158,6 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
         ref: itemRef,
         isSpacer
       });
-
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       if (isSpacer) {
         return item;
       }
@@ -237,7 +235,6 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
           }
         });
       }
-
       setLastVisibleIndex(lastIndex);
     });
   }, [outerContainer.current, controlMetaData.current, setLastVisibleIndex, childrenWithRef, overflowNeeded]);
