@@ -12,7 +12,6 @@ import React, {
   createRef,
   forwardRef,
   ReactElement,
-  ReactFragment,
   ReactNode,
   Ref,
   RefObject,
@@ -154,13 +153,12 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
 
     return refactoredChildren.flat().map((item: ReactElement, index) => {
       const itemRef: RefObject<HTMLDivElement> = createRef();
-
+      const isSpacer = (item?.type as any)?.displayName === 'ToolbarSpacer';
       controlMetaData.current.push({
-        ref: itemRef
+        ref: itemRef,
+        isSpacer
       });
-
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-      if ((item?.type as any)?.displayName === 'ToolbarSpacer') {
+      if (isSpacer) {
         return item;
       }
       return (
@@ -200,11 +198,11 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
       let consumedWidth = 0;
       let lastIndex = null;
       let lastFitWidth = 0;
-
       if (availableWidth - OVERFLOW_BUTTON_WIDTH <= 0) {
         lastIndex = -1;
         lastFitWidth = 0;
       } else {
+        let prevItemsAreSpacer = true;
         controlMetaData.current.forEach((item, index) => {
           const currentMeta = controlMetaData.current[index] as { ref: RefObject<HTMLElement> };
           if (currentMeta && currentMeta.ref && currentMeta.ref.current) {
@@ -214,6 +212,8 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
               if (consumedWidth + nextWidth <= availableWidth - 8) {
                 lastIndex = index;
                 lastFitWidth = consumedWidth + nextWidth;
+              } else if (index === 0 || prevItemsAreSpacer) {
+                lastIndex = index - 1;
               }
             } else {
               if (consumedWidth + nextWidth <= availableWidth - OVERFLOW_BUTTON_WIDTH) {
@@ -227,6 +227,9 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
                 lastIndex = index - 1;
                 lastFitWidth = 0;
               }
+            }
+            if (prevItemsAreSpacer && !item.isSpacer) {
+              prevItemsAreSpacer = false;
             }
             consumedWidth += nextWidth;
           }
