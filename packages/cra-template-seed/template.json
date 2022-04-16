@@ -1,9 +1,6 @@
 {
   "package": {
     "dependencies": {
-      "@testing-library/jest-dom": "^5.14.1",
-      "@testing-library/react": "^12.0.0",
-      "@testing-library/user-event": "^13.2.1",
       "@ui5/webcomponents": "~1.2.3",
       "@ui5/webcomponents-fiori": "~1.2.3",
       "@ui5/webcomponents-icons": "~1.2.3",
@@ -21,6 +18,9 @@
     "devDependencies": {
       "@commitlint/cli": "^16.2.1",
       "@commitlint/config-conventional": "^16.2.1",
+      "@testing-library/jest-dom": "^5.16.4",
+      "@testing-library/react": "^13.1.1",
+      "@testing-library/user-event": "^14.1.0",
       "@types/jest": "^27.4.1",
       "husky": "^7.0.4",
       "json-server": "^0.17.0",
