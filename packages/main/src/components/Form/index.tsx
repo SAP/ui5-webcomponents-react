@@ -103,6 +103,7 @@ export interface FormPropTypes extends CommonProps {
 const useStyles = createUseStyles(styles, { name: 'Form' });
 /**
  * The `Form` component arranges labels and fields into groups and rows. There are different ways to visualize forms for different screen sizes.
+ * It is possible to change the alignment of all labels by setting the CSS `align-items` property, per default all labels are centered.
  */
 const Form = forwardRef((props: FormPropTypes, ref: Ref<HTMLFormElement>) => {
   const {

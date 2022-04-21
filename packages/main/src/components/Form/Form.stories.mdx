@@ -28,7 +28,8 @@ import { CheckBox, Form, FormGroup, FormItem, Input, InputType, Label, Option, S
     columnsS: 1,
     columnsM: 1,
     columnsL: 1,
-    columnsXL: 2
+    columnsXL: 2,
+    style: { alignItems: 'center' }
   }}
 />
 
@@ -59,8 +60,15 @@ import { CheckBox, Form, FormGroup, FormItem, Input, InputType, Label, Option, S
               <Option>Italy</Option>
             </Select>
           </FormItem>
-          <FormItem label="Additional Comment">
-            <TextArea rows={5} style={{ width: '210px' }} />
+          <FormItem
+            style={{ alignSelf: 'start' }}
+            label={<Label style={{ alignSelf: 'start', paddingTop: '0.25rem' }}>Additional Comment</Label>}
+          >
+            <TextArea
+              rows={5}
+              style={{ width: '210px', '--_ui5_textarea_margin': 0 }}
+              placeholder="The styles of the Label of the TextArea FormItem is set to: alignSelf: 'start', paddingTop: '0.25rem'"
+            />
           </FormItem>
           <FormItem label={'Home address'}>
             <CheckBox checked />
