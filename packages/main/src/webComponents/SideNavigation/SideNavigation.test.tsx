@@ -1,15 +1,15 @@
 import { render } from '@shared/tests';
+import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
 import '@ui5/webcomponents-icons/dist/calendar.js';
 import '@ui5/webcomponents-icons/dist/chain-link.js';
 import '@ui5/webcomponents-icons/dist/group.js';
 import '@ui5/webcomponents-icons/dist/history.js';
 import '@ui5/webcomponents-icons/dist/home.js';
 import '@ui5/webcomponents-icons/dist/locate-me.js';
-import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
-import { SideNavigation } from './index';
+import React from 'react';
 import { SideNavigationItem } from '../SideNavigationItem';
 import { SideNavigationSubItem } from '../SideNavigationSubItem';
-import React from 'react';
+import { SideNavigation } from './index';
 
 describe('SideNavigation', () => {
   test('Basic Test (generated)', () => {

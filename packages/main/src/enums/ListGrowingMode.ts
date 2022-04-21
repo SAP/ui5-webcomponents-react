@@ -1,7 +1,7 @@
 // Generated file - do not change manually!
 
 /**
- * Defines the growing mode of the component.
+ * Defines the growing mode, used in the <code>ui5-list</code>.
  */
 export enum ListGrowingMode {
   /**

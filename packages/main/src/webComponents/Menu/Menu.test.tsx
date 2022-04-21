@@ -1,14 +1,13 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
-import '@ui5/webcomponents-icons/dist/add.js';
 import React from 'react';
-import { Icon } from '../Icon';
+import { Menu } from './index';
 
-describe('Icon', () => {
+describe('Menu', () => {
   test('Basic Test (generated)', () => {
-    const { asFragment } = render(<Icon name="add" />);
+    const { asFragment } = render(<Menu />);
     expect(asFragment()).toMatchSnapshot();
   });
-  createCustomPropsTest(Icon);
-  createWaitForDefineTest(Icon);
+  createCustomPropsTest(Menu);
+  createWaitForDefineTest(Menu);
 });

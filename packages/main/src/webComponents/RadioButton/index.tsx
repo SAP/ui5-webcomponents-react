@@ -57,6 +57,8 @@ interface RadioButtonAttributes {
    * *   `None`
    * *   `Error`
    * *   `Warning`
+   * *   `Success`
+   * *   `Information`
    */
   valueState?: ValueState | keyof typeof ValueState;
   /**

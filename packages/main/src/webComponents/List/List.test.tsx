@@ -1,10 +1,10 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
+import React from 'react';
 import { Button } from '../Button';
 import { CustomListItem } from '../CustomListItem';
-import { List } from './index';
 import { StandardListItem } from '../StandardListItem';
-import React from 'react';
+import { List } from './index';
 
 describe('List', () => {
   test('Basic Test (generated)', () => {

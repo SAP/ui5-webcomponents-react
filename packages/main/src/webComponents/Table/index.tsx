@@ -8,6 +8,14 @@ import { withWebComponent } from '../../internal/withWebComponent';
 
 interface TableAttributes {
   /**
+   * Defines the accessible aria name of the component.
+   */
+  accessibleName?: string;
+  /**
+   * Receives id(or many ids) of the elements that label the component.
+   */
+  accessibleNameRef?: string;
+  /**
    * Defines if the table is in busy state. **In this state the component's opacity is reduced and busy indicator is displayed at the bottom of the table.**
    */
   busy?: boolean;
@@ -124,7 +132,16 @@ export interface TablePropTypes extends TableAttributes, CommonProps {
  */
 const Table = withWebComponent<TablePropTypes, TableDomRef>(
   'ui5-table',
-  ['busyDelay', 'growing', 'growingButtonSubtext', 'growingButtonText', 'mode', 'noDataText'],
+  [
+    'accessibleName',
+    'accessibleNameRef',
+    'busyDelay',
+    'growing',
+    'growingButtonSubtext',
+    'growingButtonText',
+    'mode',
+    'noDataText'
+  ],
   ['busy', 'hideNoData', 'stickyColumnHeader'],
   ['columns'],
   ['load-more', 'popin-change', 'row-click', 'selection-change']

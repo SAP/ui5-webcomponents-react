@@ -11,24 +11,10 @@ interface IllustratedMessageAttributes {
    *
    * Available illustrations are:
    *
-   * *   `BeforeSearch`
-   * *   `NoActivities`
-   * *   `NoData`
-   * *   `NoMail`
-   * *   `NoMail_v1`
-   * *   `NoEntries`
-   * *   `NoNotifications`
-   * *   `NoSavedItems`
-   * *   `NoSavedItems_v1`
-   * *   `NoSearchResults`
-   * *   `NoTasks`
-   * *   `NoTasks_v1`
-   * *   `UnableToLoad`
-   * *   `UnableToLoadImage`
-   * *   `UnableToUpload`
    * *   `AddColumn`
    * *   `AddPeople`
    * *   `BalloonSky`
+   * *   `BeforeSearch`
    * *   `Connection`
    * *   `EmptyCalendar`
    * *   `EmptyList`
@@ -36,7 +22,18 @@ interface IllustratedMessageAttributes {
    * *   `ErrorScreen`
    * *   `FilterTable`
    * *   `GroupTable`
+   * *   `NoActivities`
+   * *   `NoData`
+   * *   `NoEntries`
    * *   `NoFilterResults`
+   * *   `NoMail_v1`
+   * *   `NoMail`
+   * *   `NoNotifications`
+   * *   `NoSavedItems_v1`
+   * *   `NoSavedItems`
+   * *   `NoSearchResults`
+   * *   `NoTasks_v1`
+   * *   `NoTasks`
    * *   `PageNotFound`
    * *   `ReloadScreen`
    * *   `ResizeColumn`
@@ -63,8 +60,23 @@ interface IllustratedMessageAttributes {
    * *   `SuccessHighFive`
    * *   `SuccessScreen`
    * *   `Tent`
+   * *   `UnableToLoad`
+   * *   `UnableToLoadImage`
+   * *   `UnableToUpload`
    * *   `UploadCollection`
+   * *   `TntChartArea`
+   * *   `TntChartArea2`
+   * *   `TntChartBar`
+   * *   `TntChartBPMNFlow`
+   * *   `TntChartBullet`
+   * *   `TntChartDoughnut`
+   * *   `TntChartFlow`
+   * *   `TntChartGantt`
+   * *   `TntChartOrg`
+   * *   `TntChartPie`
+   * *   `TntCodePlaceholder`
    * *   `TntCompany`
+   * *   `TntComponents`
    * *   `TntExternalLink`
    * *   `TntFaceID`
    * *   `TntFingerprint`
@@ -74,13 +86,19 @@ interface IllustratedMessageAttributes {
    * *   `TntNoFlows`
    * *   `TntNoUsers`
    * *   `TntRadar`
+   * *   `TntSecrets`
    * *   `TntServices`
    * *   `TntSessionExpired`
    * *   `TntSessionExpiring`
    * *   `TntSuccess`
    * *   `TntSuccessfulAuth`
+   * *   `TntSystems`
+   * *   `TntTeams`
+   * *   `TntTools`
+   * *   `TntUnableToLoad`
    * *   `TntUnlock`
    * *   `TntUnsuccessfulAuth`
+   * *   `TntUser2`
    *
    *
    *
