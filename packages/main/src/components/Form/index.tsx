@@ -139,8 +139,8 @@ const Form = forwardRef((props: FormPropTypes, ref: Ref<HTMLFormElement>) => {
   labelSpanMap.set('LargeDesktop', labelSpanXL);
 
   const [componentRef, formRef] = useSyncRef<HTMLFormElement>(ref);
-  // use the window range set as first best guess
-  const [currentRange, setCurrentRange] = useState(Device.getCurrentRange().name);
+  // use the window range set as first best guess, if not available use Desktop
+  const [currentRange, setCurrentRange] = useState(Device.getCurrentRange()?.name ?? 'Desktop');
   const lastRange = useRef(currentRange);
 
   useEffect(() => {
