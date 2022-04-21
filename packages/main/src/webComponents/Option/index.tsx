@@ -6,6 +6,10 @@ import { withWebComponent } from '../../internal/withWebComponent';
 
 interface OptionAttributes {
   /**
+   * Defines the additional text displayed at the end of the option element.
+   */
+  additionalText?: string;
+  /**
    * Defines whether the component is in disabled state.
    *
    * **Note:** A disabled component is noninteractive.
@@ -45,7 +49,7 @@ export interface OptionPropTypes extends OptionAttributes, CommonProps {
  */
 const Option = withWebComponent<OptionPropTypes, OptionDomRef>(
   'ui5-option',
-  ['icon', 'value'],
+  ['additionalText', 'icon', 'value'],
   ['disabled', 'selected'],
   [],
   []
