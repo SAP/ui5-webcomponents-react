@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.23.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.22.8...v0.23.0) (2022-04-22)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** add a11y attribute for expanded and selected state of row ([#2774](https://github.com/SAP/ui5-webcomponents-react/issues/2774)) ([1397335](https://github.com/SAP/ui5-webcomponents-react/commit/139733559f79dba5015fb14ec082e56391aeed1b))
+* **Form:** correct alignment ([#2827](https://github.com/SAP/ui5-webcomponents-react/issues/2827)) ([faa1d28](https://github.com/SAP/ui5-webcomponents-react/commit/faa1d2861c7317a6f197e510dbdc3515cd378c6f))
+* **Form:** preven crash if window range is not available ([#2818](https://github.com/SAP/ui5-webcomponents-react/issues/2818)) ([df7ecd4](https://github.com/SAP/ui5-webcomponents-react/commit/df7ecd4051af16f0c48d431e5ae92fe5ea627b2e))
+* **ObjectPage:** don't crash on tab select after ui5-wc update ([#2833](https://github.com/SAP/ui5-webcomponents-react/issues/2833)) ([a5b5aa6](https://github.com/SAP/ui5-webcomponents-react/commit/a5b5aa67b46b53fb40884b43f0181c8c90852997))
+
+
+### Features
+
+* update @ui5/webcomponents to 1.3.0 ([#2796](https://github.com/SAP/ui5-webcomponents-react/issues/2796)) ([21b2e9f](https://github.com/SAP/ui5-webcomponents-react/commit/21b2e9f153b0a9b9ca98d93a8dede41ef7a9aa40))
+
+
+
+
+
 ## [0.22.8](https://github.com/SAP/ui5-webcomponents-react/compare/v0.22.7...v0.22.8) (2022-04-14)
 
 
