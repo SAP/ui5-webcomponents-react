@@ -74,8 +74,9 @@ export const styles = {
     }
   },
   popoverPhone: {
-    width: 'calc(100% - 20px)',
-    maxWidth: 'calc(100% - 20px)'
+    width: 'calc(100% - 10px)',
+    maxWidth: 'calc(100% - 10px)',
+    left: '5px !important'
   },
   popoverContent: {
     padding: CssSizeVariables.sapWcrToolbarPopoverContentPadding,
