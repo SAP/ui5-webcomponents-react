@@ -74,11 +74,8 @@ export const styles = {
     }
   },
   popoverPhone: {
-    width: '100%',
-    maxWidth: '100%',
-    left: '0 !important',
-    borderTopLeftRadius: 0,
-    borderTopRightRadius: 0
+    width: 'calc(100% - 20px)',
+    maxWidth: 'calc(100% - 20px)'
   },
   popoverContent: {
     padding: CssSizeVariables.sapWcrToolbarPopoverContentPadding,
@@ -93,10 +90,6 @@ export const styles = {
     '& :last-child': {
       marginBottom: 0
     }
-  },
-  popoverContentPhone: {
-    '&[data-rtl="true"]': { paddingLeft: 0 },
-    '&[data-rtl="false"]': { paddingRight: 0 }
   },
   childContainer: { display: 'flex' }
 };
