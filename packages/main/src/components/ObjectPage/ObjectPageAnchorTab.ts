@@ -1,10 +1,16 @@
 /* eslint-disable no-underscore-dangle */
-import { html, scopeTag } from '@ui5/webcomponents-base/dist/renderer/LitRenderer.js';
+import { html } from '@ui5/webcomponents-base/dist/renderer/LitRenderer.js';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import Tab from '@ui5/webcomponents/dist/Tab.js';
 import TabContainer from '@ui5/webcomponents/dist/TabContainer.js';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { DetailedHTMLProps, HTMLAttributes, MouseEventHandler } from 'react';
+import { unsafeStatic } from 'lit-html/static.js';
+
+const scopeTag = (tag, tags, suffix) => {
+  const resultTag = suffix && (tags || []).includes(tag) ? `${tag}-${suffix}` : tag;
+  return unsafeStatic(resultTag);
+};
 
 interface ObjectPageAnchorTabPropTypes extends HTMLAttributes<HTMLElement> {
   text: string;
@@ -47,13 +53,13 @@ class ObjectPageAnchorTab extends Tab {
         role="tab"
         aria-posinset="${ifDefined(context._posinset)}"
         aria-setsize="${ifDefined(context._setsize)}"
-        aria-controls="ui5-tc-contentItem-${ifDefined(context._posinset)}"
+        aria-controls="ui5-tc-content"
         aria-selected="${ifDefined(context.effectiveSelected)}"
         aria-disabled="${ifDefined(context.effectiveDisabled)}"
         ?disabled="${context.effectiveDisabled}"
         aria-labelledby="${ifDefined(context.ariaLabelledBy)}"
         data-ui5-stable="${ifDefined(context.stableDomRef)}"
-        style="list-style-type: none;"
+        ._realTab="${ifDefined(context)}"
       >
         <div class="ui5-tab-strip-itemContent">
           ${context.text
