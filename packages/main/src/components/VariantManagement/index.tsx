@@ -30,7 +30,6 @@ import React, {
 } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
-import { SelectedVariant, VariantManagementContext } from '../../internal/VariantManagementContext';
 import { ButtonDesign } from '../../enums/ButtonDesign';
 import { IllustrationMessageType } from '../../enums/IllustrationMessageType';
 import { ListMode } from '../../enums/ListMode';
@@ -40,6 +39,7 @@ import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { stopPropagation } from '../../internal/stopPropagation';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
+import { SelectedVariant, VariantManagementContext } from '../../internal/VariantManagementContext';
 import { Bar } from '../../webComponents/Bar';
 import { Button } from '../../webComponents/Button';
 import { Icon } from '../../webComponents/Icon';
@@ -321,8 +321,8 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
     const { defaultView, updatedRows, deletedRows } = payload;
     let callbackProperties = { deletedVariants: [], prevVariants: [], updatedVariants: [], variants: [] };
     setSafeChildren((prev) =>
-      prev
-        .map((child: ComponentElement<any, any>) => {
+      Children.toArray(
+        prev.map((child: ComponentElement<any, any>) => {
           let updatedProps: Omit<SelectedVariant, 'children' | 'variantItem'> = {};
           const currentVariant = popoverRef.current.querySelector(`ui5-li[data-text="${child.props.children}"]`);
           callbackProperties.prevVariants.push(child.props);
@@ -352,7 +352,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
           callbackProperties.variants.push({ ...child.props, ...updatedProps, variantItem: currentVariant });
           return cloneElement(child, updatedProps);
         })
-        .filter(Boolean)
+      )
     );
     if (typeof onSaveManageViews === 'function') {
       onSaveManageViews(enrichEventWithDetails(e, callbackProperties));
