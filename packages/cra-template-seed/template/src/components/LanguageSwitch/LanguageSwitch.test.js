@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render, screen } from '../../util/TestSetup';
+import { act, render, screen } from '../../util/TestSetup';
 
 import LanguageSwitch from './LanguageSwitch';
 import i18n from '../../util/i18n';
@@ -19,7 +19,9 @@ describe('LanguageSwitch.js Test Suite', () => {
     const language = screen.getByTestId('language-switch-wrapper');
     const languageOptions = screen.getAllByTestId('language-switch-option-wrapper');
 
-    i18n.changeLanguage('en-US');
+    act(() => {
+      i18n.changeLanguage('en-US');
+    });
 
     expect(i18n.language).toBe('en-US');
     expect(language).toBeInTheDocument();
@@ -31,7 +33,9 @@ describe('LanguageSwitch.js Test Suite', () => {
     const language = screen.getByTestId('language-switch-wrapper');
     const languageOptions = screen.getAllByTestId('language-switch-option-wrapper');
 
-    i18n.changeLanguage('pt');
+    act(() => {
+      i18n.changeLanguage('pt');
+    });
 
     expect(i18n.language).toBe('pt');
     expect(language).toBeInTheDocument();
