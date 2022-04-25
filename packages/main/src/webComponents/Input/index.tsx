@@ -91,6 +91,10 @@ export interface InputDomRef extends InputAttributes, Ui5DomRef {
    * The suggestion item on preview.
    */
   readonly previewItem: ReactNode;
+  /**
+   * Manually opens the suggestions popover, assuming suggestions are enabled. Items must be preloaded for it to open.
+   */
+  openPicker: () => void;
 }
 
 export interface InputPropTypes extends InputAttributes, Omit<CommonProps, 'onChange' | 'onInput'> {

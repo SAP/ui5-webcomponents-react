@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.23.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.22.8...v0.23.0) (2022-04-22)
+
+
+### Bug Fixes
+
+* **Form:** preven crash if window range is not available ([#2818](https://github.com/SAP/ui5-webcomponents-react/issues/2818)) ([df7ecd4](https://github.com/SAP/ui5-webcomponents-react/commit/df7ecd4051af16f0c48d431e5ae92fe5ea627b2e))
+
+
+### Features
+
+* update @ui5/webcomponents to 1.3.0 ([#2796](https://github.com/SAP/ui5-webcomponents-react/issues/2796)) ([21b2e9f](https://github.com/SAP/ui5-webcomponents-react/commit/21b2e9f153b0a9b9ca98d93a8dede41ef7a9aa40))
+
+
+
+
+
 ## [0.22.8](https://github.com/SAP/ui5-webcomponents-react/compare/v0.22.7...v0.22.8) (2022-04-14)
 
 

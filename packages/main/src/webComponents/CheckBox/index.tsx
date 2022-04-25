@@ -51,6 +51,10 @@ interface CheckBoxAttributes {
    */
   readonly?: boolean;
   /**
+   * Defines whether the component is required.
+   */
+  required?: boolean;
+  /**
    * Defines the text of the component.
    */
   text?: string;
@@ -98,7 +102,7 @@ export interface CheckBoxPropTypes extends CheckBoxAttributes, Omit<CommonProps,
 const CheckBox = withWebComponent<CheckBoxPropTypes, CheckBoxDomRef>(
   'ui5-checkbox',
   ['accessibleName', 'accessibleNameRef', 'name', 'text', 'valueState', 'wrappingType'],
-  ['checked', 'disabled', 'indeterminate', 'readonly'],
+  ['checked', 'disabled', 'indeterminate', 'readonly', 'required'],
   [],
   ['change']
 );

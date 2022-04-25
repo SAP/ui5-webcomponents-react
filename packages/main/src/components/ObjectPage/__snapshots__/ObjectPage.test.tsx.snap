@@ -34,18 +34,21 @@ exports[`ObjectPage Default with Sections 1`] = `
           selected="true"
           text="Title 1"
           ui5-object-page-anchor-tab=""
+          ui5-tab="true"
         />
         <ui5-object-page-anchor-tab
           data-index="1"
           data-section-id="2"
           text="Title 2"
           ui5-object-page-anchor-tab=""
+          ui5-tab="true"
         />
         <ui5-object-page-anchor-tab
           data-index="2"
           data-section-id="3"
           text="Title 3"
           ui5-object-page-anchor-tab=""
+          ui5-tab="true"
         />
       </ui5-tabcontainer>
     </div>
@@ -184,18 +187,21 @@ exports[`ObjectPage Default with SubSections 1`] = `
           selected="true"
           text="Title Section 1"
           ui5-object-page-anchor-tab=""
+          ui5-tab="true"
         />
         <ui5-object-page-anchor-tab
           data-index="1"
           data-section-id="2"
           text="Title Section 2"
           ui5-object-page-anchor-tab=""
+          ui5-tab="true"
         />
         <ui5-object-page-anchor-tab
           data-index="2"
           data-section-id="3"
           text="Title Section 3"
           ui5-object-page-anchor-tab=""
+          ui5-tab="true"
           with-sub-sections="true"
         />
         <ui5-object-page-anchor-tab
@@ -203,6 +209,7 @@ exports[`ObjectPage Default with SubSections 1`] = `
           data-section-id="4"
           text="Title Section 4"
           ui5-object-page-anchor-tab=""
+          ui5-tab="true"
           with-sub-sections="true"
         />
       </ui5-tabcontainer>
@@ -491,12 +498,14 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
           data-section-id="1"
           text="Title Section 1"
           ui5-object-page-anchor-tab=""
+          ui5-tab="true"
         />
         <ui5-object-page-anchor-tab
           data-index="1"
           data-section-id="2"
           text="Title Section 2"
           ui5-object-page-anchor-tab=""
+          ui5-tab="true"
         />
         <ui5-object-page-anchor-tab
           data-index="2"
@@ -504,6 +513,7 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
           selected="true"
           text="Title Section 3"
           ui5-object-page-anchor-tab=""
+          ui5-tab="true"
           with-sub-sections="true"
         />
         <ui5-object-page-anchor-tab
@@ -511,6 +521,7 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
           data-section-id="4"
           text="Title Section 4"
           ui5-object-page-anchor-tab=""
+          ui5-tab="true"
           with-sub-sections="true"
         />
       </ui5-tabcontainer>
@@ -685,6 +696,7 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
           selected="true"
           text=""
           ui5-object-page-anchor-tab=""
+          ui5-tab="true"
         />
       </ui5-tabcontainer>
     </div>
@@ -757,6 +769,7 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
           selected="true"
           text=""
           ui5-object-page-anchor-tab=""
+          ui5-tab="true"
         />
       </ui5-tabcontainer>
     </div>
@@ -964,18 +977,21 @@ exports[`ObjectPage with anchor-bar 1`] = `
           selected="true"
           text="Title Section 1"
           ui5-object-page-anchor-tab=""
+          ui5-tab="true"
         />
         <ui5-object-page-anchor-tab
           data-index="1"
           data-section-id="2"
           text="Title Section 2"
           ui5-object-page-anchor-tab=""
+          ui5-tab="true"
         />
         <ui5-object-page-anchor-tab
           data-index="2"
           data-section-id="3"
           text="Title Section 3"
           ui5-object-page-anchor-tab=""
+          ui5-tab="true"
           with-sub-sections="true"
         />
         <ui5-object-page-anchor-tab
@@ -983,6 +999,7 @@ exports[`ObjectPage with anchor-bar 1`] = `
           data-section-id="4"
           text="Title Section 4"
           ui5-object-page-anchor-tab=""
+          ui5-tab="true"
           with-sub-sections="true"
         />
       </ui5-tabcontainer>
@@ -1292,18 +1309,21 @@ exports[`ObjectPage with footer 1`] = `
           selected="true"
           text="Title Section 1"
           ui5-object-page-anchor-tab=""
+          ui5-tab="true"
         />
         <ui5-object-page-anchor-tab
           data-index="1"
           data-section-id="2"
           text="Title Section 2"
           ui5-object-page-anchor-tab=""
+          ui5-tab="true"
         />
         <ui5-object-page-anchor-tab
           data-index="2"
           data-section-id="3"
           text="Title Section 3"
           ui5-object-page-anchor-tab=""
+          ui5-tab="true"
           with-sub-sections="true"
         />
         <ui5-object-page-anchor-tab
@@ -1311,6 +1331,7 @@ exports[`ObjectPage with footer 1`] = `
           data-section-id="4"
           text="Title Section 4"
           ui5-object-page-anchor-tab=""
+          ui5-tab="true"
           with-sub-sections="true"
         />
       </ui5-tabcontainer>
@@ -1635,18 +1656,21 @@ exports[`ObjectPage with header 1`] = `
           selected="true"
           text="Title Section 1"
           ui5-object-page-anchor-tab=""
+          ui5-tab="true"
         />
         <ui5-object-page-anchor-tab
           data-index="1"
           data-section-id="2"
           text="Title Section 2"
           ui5-object-page-anchor-tab=""
+          ui5-tab="true"
         />
         <ui5-object-page-anchor-tab
           data-index="2"
           data-section-id="3"
           text="Title Section 3"
           ui5-object-page-anchor-tab=""
+          ui5-tab="true"
           with-sub-sections="true"
         />
         <ui5-object-page-anchor-tab
@@ -1654,6 +1678,7 @@ exports[`ObjectPage with header 1`] = `
           data-section-id="4"
           text="Title Section 4"
           ui5-object-page-anchor-tab=""
+          ui5-tab="true"
           with-sub-sections="true"
         />
       </ui5-tabcontainer>
@@ -2017,18 +2042,21 @@ exports[`ObjectPage with img 1`] = `
           selected="true"
           text="Title Section 1"
           ui5-object-page-anchor-tab=""
+          ui5-tab="true"
         />
         <ui5-object-page-anchor-tab
           data-index="1"
           data-section-id="2"
           text="Title Section 2"
           ui5-object-page-anchor-tab=""
+          ui5-tab="true"
         />
         <ui5-object-page-anchor-tab
           data-index="2"
           data-section-id="3"
           text="Title Section 3"
           ui5-object-page-anchor-tab=""
+          ui5-tab="true"
           with-sub-sections="true"
         />
         <ui5-object-page-anchor-tab
@@ -2036,6 +2064,7 @@ exports[`ObjectPage with img 1`] = `
           data-section-id="4"
           text="Title Section 4"
           ui5-object-page-anchor-tab=""
+          ui5-tab="true"
           with-sub-sections="true"
         />
       </ui5-tabcontainer>
@@ -2409,18 +2438,21 @@ exports[`ObjectPage with img 2`] = `
           selected="true"
           text="Title Section 1"
           ui5-object-page-anchor-tab=""
+          ui5-tab="true"
         />
         <ui5-object-page-anchor-tab
           data-index="1"
           data-section-id="2"
           text="Title Section 2"
           ui5-object-page-anchor-tab=""
+          ui5-tab="true"
         />
         <ui5-object-page-anchor-tab
           data-index="2"
           data-section-id="3"
           text="Title Section 3"
           ui5-object-page-anchor-tab=""
+          ui5-tab="true"
           with-sub-sections="true"
         />
         <ui5-object-page-anchor-tab
@@ -2428,6 +2460,7 @@ exports[`ObjectPage with img 2`] = `
           data-section-id="4"
           text="Title Section 4"
           ui5-object-page-anchor-tab=""
+          ui5-tab="true"
           with-sub-sections="true"
         />
       </ui5-tabcontainer>
@@ -2760,18 +2793,21 @@ exports[`ObjectPage with title 1`] = `
           selected="true"
           text="Title Section 1"
           ui5-object-page-anchor-tab=""
+          ui5-tab="true"
         />
         <ui5-object-page-anchor-tab
           data-index="1"
           data-section-id="2"
           text="Title Section 2"
           ui5-object-page-anchor-tab=""
+          ui5-tab="true"
         />
         <ui5-object-page-anchor-tab
           data-index="2"
           data-section-id="3"
           text="Title Section 3"
           ui5-object-page-anchor-tab=""
+          ui5-tab="true"
           with-sub-sections="true"
         />
         <ui5-object-page-anchor-tab
@@ -2779,6 +2815,7 @@ exports[`ObjectPage with title 1`] = `
           data-section-id="4"
           text="Title Section 4"
           ui5-object-page-anchor-tab=""
+          ui5-tab="true"
           with-sub-sections="true"
         />
       </ui5-tabcontainer>
@@ -3116,18 +3153,21 @@ exports[`ObjectPage with title, header & footer 1`] = `
           selected="true"
           text="Title Section 1"
           ui5-object-page-anchor-tab=""
+          ui5-tab="true"
         />
         <ui5-object-page-anchor-tab
           data-index="1"
           data-section-id="2"
           text="Title Section 2"
           ui5-object-page-anchor-tab=""
+          ui5-tab="true"
         />
         <ui5-object-page-anchor-tab
           data-index="2"
           data-section-id="3"
           text="Title Section 3"
           ui5-object-page-anchor-tab=""
+          ui5-tab="true"
           with-sub-sections="true"
         />
         <ui5-object-page-anchor-tab
@@ -3135,6 +3175,7 @@ exports[`ObjectPage with title, header & footer 1`] = `
           data-section-id="4"
           text="Title Section 4"
           ui5-object-page-anchor-tab=""
+          ui5-tab="true"
           with-sub-sections="true"
         />
       </ui5-tabcontainer>

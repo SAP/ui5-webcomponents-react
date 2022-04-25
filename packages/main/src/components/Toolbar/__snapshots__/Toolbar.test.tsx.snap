@@ -299,7 +299,6 @@ exports[`Toolbar overflow menu 1`] = `
   >
     <div
       class="Toolbar-popoverContent"
-      data-rtl="false"
     >
       <span
         class="Text-text"
@@ -413,7 +412,6 @@ exports[`Toolbar overflow menu 2`] = `
   >
     <div
       class="Toolbar-popoverContent"
-      data-rtl="false"
     >
       <span
         class="Text-text"
@@ -537,7 +535,6 @@ exports[`Toolbar overflow menu 3`] = `
   >
     <div
       class="Toolbar-popoverContent"
-      data-rtl="false"
     >
       <div
         aria-label="Separator"
