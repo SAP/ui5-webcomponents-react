@@ -39,6 +39,8 @@ export * from './Link';
 export * from './List';
 export * from './MediaGallery';
 export * from './MediaGalleryItem';
+export * from './Menu';
+export * from './MenuItem';
 export * from './MessageStrip';
 export * from './MultiComboBox';
 export * from './MultiComboBoxItem';

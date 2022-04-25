@@ -18,7 +18,7 @@ const useStyles = createUseStyles(
  * @param {HTMLElement} element
  */
 export const useResponsiveContentPadding = (element: HTMLElement) => {
-  const [currentRange, setCurrentRange] = useState(() => getCurrentRange().name);
+  const [currentRange, setCurrentRange] = useState(() => getCurrentRange()?.name ?? 'Desktop');
   const classes = useStyles();
   const requestAnimationFrameRef = useRef<number | undefined>();
 

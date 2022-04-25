@@ -1,7 +1,7 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
-import { DynamicSideContent } from './index';
 import React from 'react';
+import { DynamicSideContent } from './index';
 
 describe('DynamicSideContent', () => {
   test('Basic Test (generated)', () => {
