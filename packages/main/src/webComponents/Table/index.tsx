@@ -112,7 +112,7 @@ export interface TablePropTypes extends TableAttributes, CommonProps {
   /**
    * Fired when a row in `Active` mode is clicked or `Enter` key is pressed.
    */
-  onRowClick?: (event: Ui5CustomEvent<HTMLElement, { row: ReactNode }>) => void;
+  onRowClick?: (event: Ui5CustomEvent<HTMLElement, { row: HTMLElement }>) => void;
   /**
    * Fired when selection is changed by user interaction in `SingleSelect` and `MultiSelect` modes.
    */

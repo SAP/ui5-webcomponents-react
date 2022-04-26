@@ -96,25 +96,25 @@ export interface ListPropTypes extends ListAttributes, CommonProps {
   /**
    * Fired when an item is activated, unless the item's `type` property is set to `Inactive`.
    */
-  onItemClick?: (event: Ui5CustomEvent<HTMLElement, { item: ReactNode }>) => void;
+  onItemClick?: (event: Ui5CustomEvent<HTMLElement, { item: HTMLElement }>) => void;
   /**
    * Fired when the `Close` button of any item is clicked
    *
    * **Note:** This event is applicable to `NotificationListItem` items only, not to be confused with `onItemDelete`.
    */
-  onItemClose?: (event: Ui5CustomEvent<HTMLElement, { item: ReactNode }>) => void;
+  onItemClose?: (event: Ui5CustomEvent<HTMLElement, { item: HTMLElement }>) => void;
   /**
    * Fired when the Delete button of any item is pressed.
    *
    * **Note:** A Delete button is displayed on each item, when the component `mode` property is set to `Delete`.
    */
-  onItemDelete?: (event: Ui5CustomEvent<HTMLElement, { item: ReactNode }>) => void;
+  onItemDelete?: (event: Ui5CustomEvent<HTMLElement, { item: HTMLElement }>) => void;
   /**
    * Fired when the `Toggle` button of any item is clicked.
    *
    * **Note:** This event is applicable to `NotificationListItemBase` items only.
    */
-  onItemToggle?: (event: Ui5CustomEvent<HTMLElement, { item: ReactNode }>) => void;
+  onItemToggle?: (event: Ui5CustomEvent<HTMLElement, { item: HTMLElement }>) => void;
   /**
    * Fired when the user scrolls to the bottom of the list.
    *

@@ -219,7 +219,7 @@ const getEventParameters = (name, parameters) => {
   const resolvedEventParameters = parameters.map((property) => {
     return {
       ...property,
-      ...Utils.getTypeDefinitionForProperty(property, interfaces)
+      ...Utils.getTypeDefinitionForProperty(property, true)
     };
   });
 
@@ -287,7 +287,7 @@ const createWebComponentWrapper = async (
 
   const imports = [
     `import '@ui5/webcomponents${componentsFromFioriPackage.has(componentSpec.module) ? '-fiori' : ''}/dist/${
-        componentSpec.module
+      componentSpec.module
     }.js';`,
     ...importStatements
   ];
