@@ -100,10 +100,4 @@ const Avatar = withWebComponent<AvatarPropTypes, AvatarDomRef>(
 
 Avatar.displayName = 'Avatar';
 
-Avatar.defaultProps = {
-  colorScheme: AvatarColorScheme.Accent6,
-  shape: AvatarShape.Circle,
-  size: AvatarSize.S
-};
-
 export { Avatar };
