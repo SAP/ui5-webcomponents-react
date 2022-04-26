@@ -18,7 +18,7 @@ const eslint = new ESLint({
   fix: true
 });
 
-export const getTypeDefinitionForProperty = (property) => {
+export const getTypeDefinitionForProperty = (property, isEventProperty = false) => {
   const interfaces = new Set([
     ...JSON.parse(
       fs.readFileSync(path.join(PATHS.root, 'scripts', 'web-component-wrappers', 'interfaces.json')).toString()
@@ -27,7 +27,6 @@ export const getTypeDefinitionForProperty = (property) => {
     'ui5-segmented-button-item',
     'ui5-option'
   ]);
-
   if (interfaces.has(property.type.replace(/\[]$/, ''))) {
     if (/\[]$/.test(property.type)) {
       return {
@@ -108,11 +107,21 @@ export const getTypeDefinitionForProperty = (property) => {
     // react ts types
     case 'Node[]':
     case 'HTMLElement[]':
+      if (isEventProperty) {
+        return {
+          tsType: 'HTMLElement[]'
+        };
+      }
       return {
         tsType: 'ReactNode | ReactNode[]',
         importStatement: "import { ReactNode } from 'react';"
       };
     case 'HTMLElement':
+      if (isEventProperty) {
+        return {
+          tsType: 'HTMLElement'
+        };
+      }
       return {
         tsType: 'ReactNode',
         importStatement: "import { ReactNode } from 'react';"
