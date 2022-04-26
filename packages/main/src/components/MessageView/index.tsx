@@ -66,7 +66,7 @@ export interface MessageViewPropTypes extends CommonProps {
   /**
    * Event is fired when the details of a message are shown
    */
-  onItemSelect?: (event: Ui5CustomEvent<HTMLElement, { item: ReactNode }>) => void;
+  onItemSelect?: (event: Ui5CustomEvent<HTMLElement, { item: HTMLElement }>) => void;
 }
 
 export const resolveMessageTypes = (children: ReactElement<MessageItemPropTypes>[]) => {
