@@ -88,9 +88,7 @@
     "whatwg-fetch": "^3.6.2"
   },
   "resolutions": {
-    "@types/react": "18.0.8",
     "trim": "0.0.3",
-    "browserslist": "4.16.7",
     "@storybook/react/webpack": "^5.67.0"
   },
   "lint-staged": {
