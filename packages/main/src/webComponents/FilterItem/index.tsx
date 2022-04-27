@@ -1,8 +1,6 @@
 import '@ui5/webcomponents-fiori/dist/FilterItem.js';
 import { ReactNode } from 'react';
-import { ListItemType } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
 
@@ -11,16 +9,6 @@ interface FilterItemAttributes {
    * Defines the text of the component.
    */
   text?: string;
-  /**
-   * Defines the visual indication and behavior of the list items. Available options are `Active` (by default), `Inactive` and `Detail`.
-   *
-   * **Note:** When set to `Active`, the item will provide visual response upon press and hover, while with type `Inactive` and `Detail` - will not.
-   */
-  type?: ListItemType | keyof typeof ListItemType;
-  /**
-   * Defines the selected state of the `ListItem`.
-   */
-  selected?: boolean;
 }
 
 export interface FilterItemDomRef extends FilterItemAttributes, Ui5DomRef {}
@@ -33,10 +21,6 @@ export interface FilterItemPropTypes extends FilterItemAttributes, CommonProps {
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
    */
   values?: ReactNode | ReactNode[];
-  /**
-   * Fired when the user clicks on the detail button when type is `Detail`.
-   */
-  onDetailClick?: (event: Ui5CustomEvent<HTMLElement>) => void;
 }
 
 /**
@@ -46,16 +30,12 @@ export interface FilterItemPropTypes extends FilterItemAttributes, CommonProps {
  */
 const FilterItem = withWebComponent<FilterItemPropTypes, FilterItemDomRef>(
   'ui5-filter-item',
-  ['text', 'type'],
-  ['selected'],
+  ['text'],
+  [],
   ['values'],
-  ['detail-click']
+  []
 );
 
 FilterItem.displayName = 'FilterItem';
-
-FilterItem.defaultProps = {
-  type: ListItemType.Active
-};
 
 export { FilterItem };

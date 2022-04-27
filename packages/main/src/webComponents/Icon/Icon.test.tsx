@@ -1,8 +1,8 @@
 import { render } from '@shared/tests';
-import '@ui5/webcomponents-icons/dist/add.js';
 import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
-import { Icon } from '../Icon';
+import '@ui5/webcomponents-icons/dist/add.js';
 import React from 'react';
+import { Icon } from '../Icon';
 
 describe('Icon', () => {
   test('Basic Test (generated)', () => {

@@ -69,7 +69,7 @@ export interface MediaGalleryPropTypes extends MediaGalleryAttributes, CommonPro
   /**
    * Fired when selection is changed by user interaction.
    */
-  onSelectionChange?: (event: Ui5CustomEvent<HTMLElement, { item: ReactNode }>) => void;
+  onSelectionChange?: (event: Ui5CustomEvent<HTMLElement, { item: HTMLElement }>) => void;
 }
 
 /**

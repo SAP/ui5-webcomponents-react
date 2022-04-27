@@ -52,6 +52,7 @@ import { TextAlign } from '../../enums/TextAlign';
 import { ValueState } from '../../enums/ValueState';
 import { VerticalAlign } from '../../enums/VerticalAlign';
 import { CommonProps } from '../../interfaces/CommonProps';
+import { getRandomId } from '../../internal/getRandomId';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { FlexBox } from '../FlexBox';
 import styles from './AnayticalTable.jss';
@@ -256,7 +257,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    *
    * __Note:__ If not set, it will be hidden.
    */
-  header?: ReactText | ReactNode;
+  header?: ReactNode;
   /**
    * Extension section of the Table. If not set, no extension area will be rendered
    */
@@ -560,6 +561,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
 
   useDeprecationNoticeForTooltip('AnalyticalTable', props.tooltip);
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
+  const titleBarId = useRef(`titlebar-${getRandomId()}`).current;
 
   const classes = useStyles();
 
@@ -916,10 +918,15 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
 
   return (
     <div className={className} style={inlineStyle} title={tooltip} ref={analyticalTableRef} {...propsWithoutOmitted}>
-      {header && <TitleBar ref={titleBarRef}>{header}</TitleBar>}
+      {header && (
+        <TitleBar ref={titleBarRef} titleBarId={titleBarId}>
+          {header}
+        </TitleBar>
+      )}
       {extension && <div ref={extensionRef}>{extension}</div>}
       <FlexBox>
         <div
+          aria-labelledby={titleBarId}
           {...getTableProps()}
           tabIndex={0}
           role="grid"

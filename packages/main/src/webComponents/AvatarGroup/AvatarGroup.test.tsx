@@ -1,8 +1,8 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
-import { AvatarGroup } from './index';
-import { Avatar } from '../Avatar';
 import React from 'react';
+import { Avatar } from '../Avatar';
+import { AvatarGroup } from './index';
 
 describe('AvatarGroup', () => {
   test('Basic Test (generated)', () => {
