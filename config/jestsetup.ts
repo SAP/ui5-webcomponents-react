@@ -85,11 +85,11 @@ Object.defineProperty(globalThis, 'crypto', {
 });
 
 const consoleError = console.error;
-console.error = (...args) => {
-  if (args[0].includes('Error: Could not parse CSS stylesheet')) {
+console.error = (message: string | Error, ...args) => {
+  if (typeof message === 'string' && message.includes('Error: Could not parse CSS stylesheet')) {
     return;
   }
-  consoleError(...args);
+  consoleError(message, ...args);
 };
 
 beforeEach(async () => {
@@ -97,10 +97,10 @@ beforeEach(async () => {
   window.scrollTo = jest.fn();
   setupMatchMedia();
 
-  await import('@ui5/webcomponents/dist/Assets');
-  await import('@ui5/webcomponents-fiori/dist/Assets');
-  await import('@ui5/webcomponents-icons/dist/Assets');
-  await import('@ui5/webcomponents-react/dist/Assets');
+  await import('@ui5/webcomponents/dist/Assets.js');
+  await import('@ui5/webcomponents-fiori/dist/Assets.js');
+  await import('@ui5/webcomponents-icons/dist/Assets.js');
+  await import('@ui5/webcomponents-react/dist/Assets.js');
 });
 
 expect.addSnapshotSerializer(contentLoaderSerializer);
