@@ -1,7 +1,7 @@
+import { Option, Select } from '@ui5/webcomponents-react';
+import { setLanguage } from "@ui5/webcomponents-base/dist/config/Language.js";
 import React, { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-
-import { Option, Select } from '@ui5/webcomponents-react';
 import i18n, { getSupportedLanguageResources } from '../../util/i18n';
 
 const style = {
@@ -15,6 +15,7 @@ const LanguageSwitch = () => {
 
   const onChange = useCallback((event) => {
     i18n.changeLanguage(event.detail.selectedOption.dataset.code);
+    setLanguage(event.detail.selectedOption.dataset.code);
   }, []);
 
   return (
