@@ -4317,9 +4317,9 @@
     "@ui5/webcomponents-base" "1.3.0"
 
 "@ui5/webcomponents-tools@~1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-tools/-/webcomponents-tools-1.3.0.tgz#53e4ca01fbb11781f3ad5ed9de0c1e724d5cef22"
-  integrity sha512-nWNJQ9tAv4mZit2usI5eicMwxxdvnlzVbUjuRvlsbH9PHxkJdwYsivntbmO7aB7+FKJAxrPqCGa2bYKv6VJICw==
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-tools/-/webcomponents-tools-1.3.1.tgz#46685059873359436d04602fb9ce5a2cfa448095"
+  integrity sha512-GknwatlPX9lTa3pVegN4BNi5uWmVqc7SYdkpv4lf2U9Z/BNRcDFH8GUrXNOMlqg6nCj7qs4qPRN6yJpKad4UKQ==
   dependencies:
     "@openui5/sap.ui.core" "1.95.0"
     "@rollup/plugin-json" "^4.1.0"
@@ -14634,15 +14634,7 @@ postcss-selector-parser@^3.0.0:
     indexes-of "^1.0.1"
     uniq "^1.0.1"
 
-postcss-selector-parser@^6.0.0, postcss-selector-parser@^6.0.2, postcss-selector-parser@^6.0.4:
-  version "6.0.7"
-  resolved "https://registry.yarnpkg.com/postcss-selector-parser/-/postcss-selector-parser-6.0.7.tgz#48404830a635113a71fd79397de8209ed05a66fc"
-  integrity sha512-U+b/Deoi4I/UmE6KOVPpnhS7I7AYdKbhGcat+qTQ27gycvaACvNEw11ba6RrkwVmDVRW7sigWgLj4/KbbJjeDA==
-  dependencies:
-    cssesc "^3.0.0"
-    util-deprecate "^1.0.2"
-
-postcss-selector-parser@^6.0.10:
+postcss-selector-parser@^6.0.0, postcss-selector-parser@^6.0.10, postcss-selector-parser@^6.0.2, postcss-selector-parser@^6.0.4:
   version "6.0.10"
   resolved "https://registry.yarnpkg.com/postcss-selector-parser/-/postcss-selector-parser-6.0.10.tgz#79b61e2c0d1bfc2602d549e11d0876256f8df88d"
   integrity sha512-IQ7TZdoaqbT+LCpShg46jnZVlhWD2w6iQYAcYXfHARZ7X1t/UGhhceQDs5X0cGqKvYlHNOuv7Oa1xmb0oQuA3w==
