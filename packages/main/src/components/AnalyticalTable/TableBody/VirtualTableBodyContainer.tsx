@@ -1,5 +1,6 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 export const VirtualTableBodyContainer = (props) => {
   const {
@@ -45,7 +46,7 @@ export const VirtualTableBodyContainer = (props) => {
 
   const onScroll = useCallback(
     (event) => {
-      handleExternalScroll();
+      handleExternalScroll(enrichEventWithDetails(event, { rows, rowElements: event.target.children[0].children }));
       const scrollOffset = event.target.scrollTop;
       const isScrollingDown = lastScrollTop.current < scrollOffset;
       if (isScrollingDown && infiniteScroll) {
@@ -71,7 +72,7 @@ export const VirtualTableBodyContainer = (props) => {
       infiniteScroll,
       infiniteScrollThreshold,
       onLoadMore,
-      rows.length,
+      rows,
       internalRowHeight,
       firedInfiniteLoadEvents,
       lastScrollTop,

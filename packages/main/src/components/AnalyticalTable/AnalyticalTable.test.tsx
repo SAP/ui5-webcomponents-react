@@ -1,6 +1,5 @@
 import { act, fireEvent, getByText, getMouseEvent, render, renderRtl, screen } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { useIndeterminateRowSelection, useRowDisableSelection } from './pluginHooks/AnalyticalTableHooks';
 import React, { createRef, useRef } from 'react';
 import { TableSelectionBehavior } from '../../enums/TableSelectionBehavior';
 import { TableSelectionMode } from '../../enums/TableSelectionMode';
@@ -8,6 +7,7 @@ import { TableVisibleRowCountMode } from '../../enums/TableVisibleRowCountMode';
 import { ValueState } from '../../enums/ValueState';
 import { Button } from '../../webComponents/Button';
 import { AnalyticalTable } from './index';
+import { useIndeterminateRowSelection, useRowDisableSelection } from './pluginHooks/AnalyticalTableHooks';
 
 const columns = [
   {
@@ -1175,6 +1175,24 @@ describe('AnalyticalTable', () => {
     expect(newContainer.querySelectorAll('ui5-checkbox')[1]).toHaveAttribute('indeterminate', 'true');
     expect(newContainer.querySelectorAll('ui5-checkbox')[2]).not.toHaveAttribute('indeterminate', 'true');
     expect(newContainer.querySelectorAll('ui5-checkbox')[2]).toHaveAttribute('checked', 'true');
+  });
+
+  test('body scroll', () => {
+    const data100 = new Array(100).fill({
+      name: 'Chris P.',
+      age: 42,
+      friend: {
+        name: 'Bacon',
+        age: 42
+      },
+      status: ValueState.Success
+    });
+    const scroll = jest.fn();
+    const { container } = render(<AnalyticalTable data={data100} columns={columns} onTableScroll={scroll} />);
+    fireEvent.scroll(container.querySelector(`[data-component-name="AnalyticalTableBody"]`), {
+      target: { scrollY: 100 }
+    });
+    expect(scroll).toHaveBeenCalledTimes(1);
   });
 
   createCustomPropsTest(AnalyticalTable);

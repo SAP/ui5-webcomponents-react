@@ -108,6 +108,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
 
   return (
     <div
+      data-component-name="AnalyticalTableBodyScrollableContainer"
       style={{
         position: 'relative',
         height: `${rowVirtualizer.totalSize}px`,

@@ -6,6 +6,14 @@ import {
   useIsomorphicLayoutEffect,
   useIsRTL
 } from '@ui5/webcomponents-react-base';
+import {
+  COLLAPSE_NODE,
+  COLLAPSE_PRESS_SPACE,
+  EXPAND_NODE,
+  EXPAND_PRESS_SPACE,
+  SELECT_PRESS_SPACE,
+  UNSELECT_PRESS_SPACE
+} from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import clsx from 'clsx';
 import React, {
   ComponentType,
@@ -34,14 +42,6 @@ import {
   useSortBy,
   useTable
 } from 'react-table';
-import {
-  COLLAPSE_NODE,
-  COLLAPSE_PRESS_SPACE,
-  EXPAND_NODE,
-  EXPAND_PRESS_SPACE,
-  SELECT_PRESS_SPACE,
-  UNSELECT_PRESS_SPACE
-} from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { AnalyticalTableScrollMode } from '../../enums/AnalyticalTableScrollMode';
 import { GlobalStyleClasses } from '../../enums/GlobalStyleClasses';
 import { TableScaleWidthMode } from '../../enums/TableScaleWidthMode';
@@ -475,7 +475,10 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * @param {number} e.detail.totalRowCount - The total number of rows, including sub-rows
    */
   onLoadMore?: (e?: { detail: { rowCount: number; totalRowCount: number } }) => void;
-
+  /**
+   * Fired when the body of the table is scrolled.
+   */
+  onTableScroll?: (e) => (e?: CustomEvent<{ rows: Record<string, any>[]; rowElements: HTMLCollection }>) => void;
   // default components
   /**
    * Component that will be rendered when the table is not loading and has no data.
@@ -550,6 +553,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     onRowExpandChange,
     onRowSelected,
     onSort,
+    onTableScroll,
     LoadingComponent,
     NoDataComponent,
     ...rest
@@ -885,7 +889,10 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
 
   const verticalScrollBarRef: RefObject<DivWithCustomScrollProp> = useRef(null);
 
-  const handleBodyScroll = () => {
+  const handleBodyScroll = (e) => {
+    if (typeof onTableScroll === 'function') {
+      onTableScroll(e);
+    }
     if (verticalScrollBarRef.current && verticalScrollBarRef.current.scrollTop !== parentRef.current.scrollTop) {
       if (!parentRef.current.isExternalVerticalScroll) {
         verticalScrollBarRef.current.scrollTop = parentRef.current.scrollTop;
