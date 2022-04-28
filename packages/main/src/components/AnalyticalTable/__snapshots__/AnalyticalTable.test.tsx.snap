@@ -202,6 +202,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
           style="position: relative; overflow-y: auto; height: 220px; width: 600px;"
         >
           <div
+            data-component-name="AnalyticalTableBodyScrollableContainer"
             style="position: relative; height: 220px; width: 600px;"
           >
             <div
@@ -685,6 +686,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
           style="position: relative; overflow-y: auto; height: 220px; width: 600px;"
         >
           <div
+            data-component-name="AnalyticalTableBodyScrollableContainer"
             style="position: relative; height: 220px; width: 600px;"
           >
             <div
@@ -1626,6 +1628,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
             style="position: relative; overflow-y: auto; height: 88px; width: 600px;"
           >
             <div
+              data-component-name="AnalyticalTableBodyScrollableContainer"
               style="position: relative; height: 88px; width: 600px;"
             >
               <div
@@ -1911,6 +1914,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
             style="position: relative; overflow-y: auto; height: 220px; width: 600px;"
           >
             <div
+              data-component-name="AnalyticalTableBodyScrollableContainer"
               style="position: relative; height: 1420px; width: 600px;"
             >
               <div
@@ -2311,6 +2315,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
             style="position: relative; overflow-y: auto; height: 220px; width: 800px;"
           >
             <div
+              data-component-name="AnalyticalTableBodyScrollableContainer"
               style="position: relative; height: 1420px; width: 800px;"
             >
               <div
@@ -2860,6 +2865,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
             style="position: relative; overflow-y: auto; height: 220px; width: 600px;"
           >
             <div
+              data-component-name="AnalyticalTableBodyScrollableContainer"
               style="position: relative; height: 220px; width: 600px;"
             >
               <div
@@ -3409,6 +3415,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
             style="position: relative; overflow-y: auto; height: 88px; width: 653px;"
           >
             <div
+              data-component-name="AnalyticalTableBodyScrollableContainer"
               style="position: relative; height: 88px; width: 653px;"
             >
               <div
@@ -3871,6 +3878,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
             style="position: relative; overflow-y: auto; height: 220px; width: 600px;"
           >
             <div
+              data-component-name="AnalyticalTableBodyScrollableContainer"
               style="position: relative; height: 220px; width: 600px;"
             >
               <div
@@ -4392,6 +4400,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
           style="position: relative; overflow-y: auto; height: 220px; width: 647px;"
         >
           <div
+            data-component-name="AnalyticalTableBodyScrollableContainer"
             style="position: relative; height: 220px; width: 647px;"
           >
             <div
@@ -5019,6 +5028,7 @@ exports[`AnalyticalTable custom row height 1`] = `
           style="position: relative; overflow-y: auto; height: 300px; width: 600px;"
         >
           <div
+            data-component-name="AnalyticalTableBodyScrollableContainer"
             style="position: relative; height: 300px; width: 600px;"
           >
             <div
@@ -5452,6 +5462,7 @@ exports[`AnalyticalTable expose table instance 1`] = `
           style="position: relative; overflow-y: auto; height: 220px; width: 1200px;"
         >
           <div
+            data-component-name="AnalyticalTableBodyScrollableContainer"
             style="position: relative; height: 220px; width: 1200px;"
           >
             <div
@@ -5894,6 +5905,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
           style="position: relative; overflow-y: auto; height: 220px; width: 647px;"
         >
           <div
+            data-component-name="AnalyticalTableBodyScrollableContainer"
             style="position: relative; height: 220px; width: 647px;"
           >
             <div
@@ -6505,6 +6517,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
           style="position: relative; overflow-y: auto; height: 88px; width: 600px;"
         >
           <div
+            data-component-name="AnalyticalTableBodyScrollableContainer"
             style="position: relative; height: 88px; width: 600px;"
           >
             <div
@@ -6943,6 +6956,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
           style="position: relative; overflow-y: auto; height: 484px; width: 600px;"
         >
           <div
+            data-component-name="AnalyticalTableBodyScrollableContainer"
             style="position: relative; height: 484px; width: 600px;"
           >
             <div
@@ -8399,6 +8413,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
           style="position: relative; overflow-y: auto; height: 88px; width: 600px;"
         >
           <div
+            data-component-name="AnalyticalTableBodyScrollableContainer"
             style="position: relative; height: 88px; width: 600px;"
           >
             <div
@@ -8711,6 +8726,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins & hidden column 1`] = `
           style="position: relative; overflow-y: auto; height: 220px; width: 600px;"
         >
           <div
+            data-component-name="AnalyticalTableBodyScrollableContainer"
             style="position: relative; height: 1420px; width: 600px;"
           >
             <div
@@ -9107,6 +9123,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 1`] = `
           style="position: relative; overflow-y: auto; height: 220px; width: 800px;"
         >
           <div
+            data-component-name="AnalyticalTableBodyScrollableContainer"
             style="position: relative; height: 1420px; width: 800px;"
           >
             <div
@@ -9562,6 +9579,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 2`] = `
           style="position: relative; overflow-y: auto; height: 1420px; width: 800px;"
         >
           <div
+            data-component-name="AnalyticalTableBodyScrollableContainer"
             style="position: relative; height: 1420px; width: 800px;"
           >
             <div
@@ -10040,6 +10058,7 @@ exports[`AnalyticalTable render custom Cell & Header 1`] = `
           style="position: relative; overflow-y: auto; height: 220px; width: 450px;"
         >
           <div
+            data-component-name="AnalyticalTableBodyScrollableContainer"
             style="position: relative; height: 220px; width: 450px;"
           >
             <div
@@ -10453,6 +10472,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
           style="position: relative; overflow-y: auto; height: 220px; width: 600px;"
         >
           <div
+            data-component-name="AnalyticalTableBodyScrollableContainer"
             style="position: relative; height: 220px; width: 600px;"
           >
             <div
@@ -11209,6 +11229,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
             style="position: relative; overflow-y: auto; height: 352px; width: 600px;"
           >
             <div
+              data-component-name="AnalyticalTableBodyScrollableContainer"
               style="position: relative; height: 352px; width: 600px;"
             >
               <div
@@ -13337,6 +13358,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
           style="position: relative; overflow-y: auto; height: 220px; width: 600px;"
         >
           <div
+            data-component-name="AnalyticalTableBodyScrollableContainer"
             style="position: relative; height: 220px; width: 600px;"
           >
             <div
@@ -13882,6 +13904,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
           style="position: relative; overflow-y: auto; height: 88px; width: 653px;"
         >
           <div
+            data-component-name="AnalyticalTableBodyScrollableContainer"
             style="position: relative; height: 88px; width: 653px;"
           >
             <div
@@ -14340,6 +14363,7 @@ exports[`AnalyticalTable with initial column order 1`] = `
           style="position: relative; overflow-y: auto; height: 220px; width: 600px;"
         >
           <div
+            data-component-name="AnalyticalTableBodyScrollableContainer"
             style="position: relative; height: 220px; width: 600px;"
           >
             <div
@@ -14823,6 +14847,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
           style="position: relative; overflow-y: auto; height: 220px; width: 600px;"
         >
           <div
+            data-component-name="AnalyticalTableBodyScrollableContainer"
             style="position: relative; height: 220px; width: 600px;"
           >
             <div
