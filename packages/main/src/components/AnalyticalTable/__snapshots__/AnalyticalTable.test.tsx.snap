@@ -6996,7 +6996,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                   title="Toggle Row Expanded"
                 >
                   <ui5-icon
-                    accessible-name="Expand Node"
+                    accessible-name="Collapse Node"
                     interactive="true"
                     name="navigation-down-arrow"
                     style="height: 0.75rem; width: 0.75rem; padding: 0.625rem; display: block;"
@@ -7134,7 +7134,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                   title="Toggle Row Expanded"
                 >
                   <ui5-icon
-                    accessible-name="Expand Node"
+                    accessible-name="Collapse Node"
                     interactive="true"
                     name="navigation-down-arrow"
                     style="height: 0.75rem; width: 0.75rem; padding: 0.625rem; display: block;"
@@ -7272,7 +7272,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                   title="Toggle Row Expanded"
                 >
                   <ui5-icon
-                    accessible-name="Expand Node"
+                    accessible-name="Collapse Node"
                     interactive="true"
                     name="navigation-down-arrow"
                     style="height: 0.75rem; width: 0.75rem; padding: 0.625rem; display: block;"
@@ -7410,7 +7410,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                   title="Toggle Row Expanded"
                 >
                   <ui5-icon
-                    accessible-name="Expand Node"
+                    accessible-name="Collapse Node"
                     interactive="true"
                     name="navigation-down-arrow"
                     style="height: 0.75rem; width: 0.75rem; padding: 0.625rem; display: block;"
@@ -10493,7 +10493,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
                   title="Toggle Row Expanded"
                 >
                   <ui5-icon
-                    accessible-name="Expand Node"
+                    accessible-name="Collapse Node"
                     interactive="true"
                     name="navigation-down-arrow"
                     style="height: 0.75rem; width: 0.75rem; padding: 0.625rem; display: block;"
@@ -10612,7 +10612,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
                   title="Toggle Row Expanded"
                 >
                   <ui5-icon
-                    accessible-name="Expand Node"
+                    accessible-name="Collapse Node"
                     interactive="true"
                     name="navigation-down-arrow"
                     style="height: 0.75rem; width: 0.75rem; padding: 0.625rem; display: block;"
