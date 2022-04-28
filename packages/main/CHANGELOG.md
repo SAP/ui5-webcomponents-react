@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.23.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.23.0...v0.23.1) (2022-04-28)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** announce content of `header` in screen readers ([#2816](https://github.com/SAP/ui5-webcomponents-react/issues/2816)) ([a9964e9](https://github.com/SAP/ui5-webcomponents-react/commit/a9964e902f2eaa397383cafcb5fe9f049bf2d660))
+* **i18nProvider:** make sure I18nContext is always available ([#2869](https://github.com/SAP/ui5-webcomponents-react/issues/2869)) ([f74d47b](https://github.com/SAP/ui5-webcomponents-react/commit/f74d47b2b20e004c8d9abf4ae02e4b607e00fad4))
+* **Toolbar:** correct styles for overflow popover in mobile mode ([#2834](https://github.com/SAP/ui5-webcomponents-react/issues/2834)) ([51e955b](https://github.com/SAP/ui5-webcomponents-react/commit/51e955bbcc5b93c59000e11a74cacb15c06bfb8d))
+* **TypeScript:** correct typings of `detail` property of CustomElements ([#2845](https://github.com/SAP/ui5-webcomponents-react/issues/2845)) ([261edc5](https://github.com/SAP/ui5-webcomponents-react/commit/261edc58ded067a4c5ab10a57a7680b089926ce9))
+* update @ui5/webcomponents to 1.3.1 ([#2870](https://github.com/SAP/ui5-webcomponents-react/issues/2870)) ([9366adc](https://github.com/SAP/ui5-webcomponents-react/commit/9366adc03679f6704e059927ea5c5fb468180d81))
+
+
+### Features
+
+* **AnalyticalTable:** add `onTableScroll` prop ([#2817](https://github.com/SAP/ui5-webcomponents-react/issues/2817)) ([c9cc986](https://github.com/SAP/ui5-webcomponents-react/commit/c9cc986e3b23e2666cbc9143864b525a72876fc5))
+
+
+
+
+
 # [0.23.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.22.8...v0.23.0) (2022-04-22)
 
 

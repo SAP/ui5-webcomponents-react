@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.23.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.23.0...v0.23.1) (2022-04-28)
+
+
+### Bug Fixes
+
+* **cra-template-seed:** update UI5 Web Components language when user changes language ([#2872](https://github.com/SAP/ui5-webcomponents-react/issues/2872)) ([ead5c60](https://github.com/SAP/ui5-webcomponents-react/commit/ead5c605d22b19b1b62a8a1a96e2d7a0d61f87c2))
+* **cra-template:** update testing-library to latest versions ([#2801](https://github.com/SAP/ui5-webcomponents-react/issues/2801)) ([ab2f22d](https://github.com/SAP/ui5-webcomponents-react/commit/ab2f22dbe5f700e706c69248fe755569bcb27da2))
+* update @ui5/webcomponents to 1.3.1 ([#2870](https://github.com/SAP/ui5-webcomponents-react/issues/2870)) ([9366adc](https://github.com/SAP/ui5-webcomponents-react/commit/9366adc03679f6704e059927ea5c5fb468180d81))
+
+
+
+
+
 # [0.23.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.22.8...v0.23.0) (2022-04-22)
 
 
