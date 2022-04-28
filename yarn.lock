@@ -4283,6 +4283,13 @@
   dependencies:
     lit-html "2.0.1"
 
+"@ui5/webcomponents-base@1.3.1":
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-base/-/webcomponents-base-1.3.1.tgz#0bc5153abe46105a6547198e3469e11f9ac2039a"
+  integrity sha512-aueH/C/a98NhONLeIylH4YvzV1erEJEncl2ELIsUBoz/oSo9CTtcDNf4Rq12ruN1YsBWh9SLtVQGo22uG6/23Q==
+  dependencies:
+    lit-html "^2.0.1"
+
 "@ui5/webcomponents-fiori@~1.3.0":
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/@ui5/webcomponents-fiori/-/webcomponents-fiori-1.3.0.tgz#2a9a4f9d19caac4477d962ee5c0ac0bbb2cca39e"
@@ -4294,12 +4301,19 @@
     "@ui5/webcomponents-theming" "1.3.0"
     "@zxing/library" "^0.18.3"
 
-"@ui5/webcomponents-icons@1.3.0", "@ui5/webcomponents-icons@~1.3.0":
+"@ui5/webcomponents-icons@1.3.0":
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/@ui5/webcomponents-icons/-/webcomponents-icons-1.3.0.tgz#c9f3bd6fb30c964452cdc49b1ec697b68c659edc"
   integrity sha512-/xtfHWTAiATKk289iGKLhcIEjDOdjBrkyOeHWnz/LFFFZ9WQth2hafkL0VNOkndEN8wp/+vMhdXU2Ub0hQxgXA==
   dependencies:
     "@ui5/webcomponents-base" "1.3.0"
+
+"@ui5/webcomponents-icons@~1.3.0":
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-icons/-/webcomponents-icons-1.3.1.tgz#5ff9ab464ba8d3ef950686345ff73afaa366dc4e"
+  integrity sha512-/EkHY66X/1/tiS8C5/vCn2nYk/CHkevUdNSMwI0WpzIQL8h82nvwLRDCh5a80Eb/sM4gDsyNhzgyBxKN2THJhw==
+  dependencies:
+    "@ui5/webcomponents-base" "1.3.1"
 
 "@ui5/webcomponents-localization@1.3.0":
   version "1.3.0"
@@ -12032,6 +12046,13 @@ lit-html@2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/lit-html/-/lit-html-2.0.1.tgz#63241015efa07bc9259b6f96f04abd052d2a1f95"
   integrity sha512-KF5znvFdXbxTYM/GjpdOOnMsjgRcFGusTnB54ixnCTya5zUR0XqrDRj29ybuLS+jLXv1jji6Y8+g4W7WP8uL4w==
+  dependencies:
+    "@types/trusted-types" "^2.0.2"
+
+lit-html@^2.0.1:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/lit-html/-/lit-html-2.2.2.tgz#06ced65dd3fb2d7a214d998c65acc576ae2cb3c4"
+  integrity sha512-cJofCRXuizwyaiGt9pJjJOcauezUlSB6t87VBXsPwRhbzF29MgD8GH6fZ0BuZdXAAC02IRONZBd//VPUuU8QbQ==
   dependencies:
     "@types/trusted-types" "^2.0.2"
 
