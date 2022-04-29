@@ -198,7 +198,7 @@ const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: Ref<Responsive
       {...rest}
       onAfterOpen={handleAfterOpen}
       ref={componentRef}
-      className={clsx(classes.actionSheet, className)}
+      className={clsx(classes.actionSheet, isPhone() && classes.actionSheetMobile, className)}
       data-actionsheet
     >
       <div
