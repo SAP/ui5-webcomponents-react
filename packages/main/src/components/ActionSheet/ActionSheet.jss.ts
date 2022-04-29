@@ -12,11 +12,16 @@ const styles = {
       display: 'block'
     },
     '& [ui5-button]:not([data-cancel-btn])::part(button)': {
-      justifyContent: 'flex-start'
+      justifyContent: 'start'
     },
     '&::part(header)': {
       background: 'transparent',
       boxShadow: 'none'
+    }
+  },
+  actionSheetMobile: {
+    '&::part(content)': {
+      padding: '0.1875rem 0.375rem 0 0.375rem'
     }
   },
   contentMobile: {
