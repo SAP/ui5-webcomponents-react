@@ -88,6 +88,9 @@ export const styles = {
     '& [ui5-button]::part(button)': {
       justifyContent: 'flex-start'
     },
+    '& [ui5-button][icon-only]::part(button)': {
+      padding: 'revert'
+    },
     '& :last-child': {
       marginBottom: 0
     }
