@@ -246,12 +246,16 @@ export interface AnalyticalTableDomRef extends Omit<HTMLDivElement, 'scrollTo'> 
 export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * Defines the columns array where you can define the configuration for each column.
+   *
+   * __Must be memoized!__
    */
   columns: AnalyticalTableColumnDefinition[];
   /**
    * The data array that you want to display on the table.
+   *
+   * __Must be memoized!__
    */
-  data: Record<any, any>[];
+  data: Record<string, any>[];
   /**
    * Component or text rendered in the header section of the `AnalyticalTable`.
    *
