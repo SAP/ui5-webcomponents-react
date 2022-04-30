@@ -237,7 +237,7 @@ const DynamicPageTitle = forwardRef((props: DynamicPageTitlePropTypes, ref: Ref<
           )}
           {subHeader && showSubHeaderRight && (
             <div
-              className={classes.subTitleRight}
+              className={classes.subTitle}
               style={{ [paddingLeftRtl]: '0.5rem' }}
               data-component-name="DynamicPageTitleSubHeader"
             >
@@ -276,7 +276,10 @@ const DynamicPageTitle = forwardRef((props: DynamicPageTitlePropTypes, ref: Ref<
       </FlexBox>
       {subHeader && !showSubHeaderRight && (
         <FlexBox>
-          <div className={classes.subTitleBottom} data-component-name="DynamicPageTitleSubHeader">
+          <div
+            className={clsx(classes.subTitle, classes.subTitleBottom)}
+            data-component-name="DynamicPageTitleSubHeader"
+          >
             {subHeader}
           </div>
         </FlexBox>

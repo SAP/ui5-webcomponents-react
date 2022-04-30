@@ -120,15 +120,6 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
     alwaysShowContentHeader ? HEADER_STATES.VISIBLE_PINNED : Device.isIE() ? HEADER_STATES.VISIBLE : HEADER_STATES.AUTO
   );
 
-  const classes = useStyles();
-  const dynamicPageClasses = clsx(
-    classes.dynamicPage,
-    GlobalStyleClasses.sapScrollBar,
-    classes[`background${backgroundDesign}`],
-    className,
-    [HEADER_STATES.HIDDEN, HEADER_STATES.HIDDEN_PINNED].includes(headerState) && classes.headerCollapsed
-  );
-
   // observe heights of header parts
   const { topHeaderHeight, headerContentHeight } = useObserveHeights(
     dynamicPageRef,
@@ -138,6 +129,16 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
     { noHeader: false }
   );
   const [isOverflowing, setIsOverflowing] = useState(false);
+
+  const classes = useStyles();
+  const dynamicPageClasses = clsx(
+    classes.dynamicPage,
+    GlobalStyleClasses.sapScrollBar,
+    classes[`background${backgroundDesign}`],
+    className,
+    [HEADER_STATES.HIDDEN, HEADER_STATES.HIDDEN_PINNED].includes(headerState) && classes.headerCollapsed,
+    headerContentHeight === 0 && classes.headerSnapped
+  );
 
   useEffect(() => {
     const debouncedObserverFn = debounce(([element]) => {
