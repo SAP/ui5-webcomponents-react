@@ -490,7 +490,8 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     classes.objectPage,
     GlobalStyleClasses.sapScrollBar,
     className,
-    mode === ObjectPageMode.IconTabBar && classes.iconTabBarMode
+    mode === ObjectPageMode.IconTabBar && classes.iconTabBarMode,
+    headerContentHeight === 0 && classes.headerSnapped
   );
 
   const { onScroll: _0, selectedSubSectionId: _1, ...propsWithoutOmitted } = rest;
