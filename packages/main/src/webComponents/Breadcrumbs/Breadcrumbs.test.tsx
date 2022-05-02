@@ -1,8 +1,8 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
-import { Breadcrumbs } from './index';
-import { BreadcrumbsItem } from '../BreadcrumbsItem';
 import React from 'react';
+import { BreadcrumbsItem } from '../BreadcrumbsItem';
+import { Breadcrumbs } from './index';
 
 describe('Breadcrumbs', () => {
   test('Basic Test (generated)', () => {

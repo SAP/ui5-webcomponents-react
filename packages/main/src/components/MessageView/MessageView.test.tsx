@@ -1,9 +1,9 @@
-import { fireEvent, render, screen } from '@shared/tests';
+import { act, fireEvent, render, screen } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { MessageView, MessageViewDomRef } from './index';
-import { MessageItem } from './MessageItem';
 import React, { createRef, forwardRef } from 'react';
 import { ValueState } from '../../enums/ValueState';
+import { MessageView, MessageViewDomRef } from './index';
+import { MessageItem } from './MessageItem';
 
 const TestComponent = forwardRef((props, ref) => {
   return (
@@ -58,7 +58,9 @@ describe('MessageView', () => {
 
     expect(screen.queryAllByText('Error')).toHaveLength(3); // list, details page header and children
 
-    ref.current.navigateBack();
+    act(() => {
+      ref.current.navigateBack();
+    });
 
     expect(screen.queryAllByText('Error')).toHaveLength(1); // list
   });

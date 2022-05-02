@@ -1,6 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks';
 import { usePrepareDimensionsAndMeasures } from './usePrepareDimensionsAndMeasures';
-import { version as reactVersion } from 'react/package.json';
 
 const dimensions = [
   {
@@ -16,10 +15,6 @@ const measures = [
 
 describe('useLabelFormatter', () => {
   test('should not throw an error when no defaults are passed', () => {
-    if (reactVersion === '16.8.0') {
-      // not testable with 16.8.0
-      return;
-    }
     const { result } = renderHook(() => usePrepareDimensionsAndMeasures(dimensions, measures));
 
     expect(result.current.dimensions).toMatchInlineSnapshot(`
@@ -39,10 +34,6 @@ describe('useLabelFormatter', () => {
   });
 
   test('should merge defaults', () => {
-    if (reactVersion === '16.8.0') {
-      // not testable with 16.8.0
-      return;
-    }
     const { result } = renderHook(() =>
       usePrepareDimensionsAndMeasures(dimensions, measures, { dimensionDefault: true }, { measureDefault: true })
     );
@@ -65,10 +56,6 @@ describe('useLabelFormatter', () => {
   });
 
   test('should merge defaults but not overwrite existing properties', () => {
-    if (reactVersion === '16.8.0') {
-      // not testable with 16.8.0
-      return;
-    }
     const { result } = renderHook(() =>
       usePrepareDimensionsAndMeasures(
         dimensions,

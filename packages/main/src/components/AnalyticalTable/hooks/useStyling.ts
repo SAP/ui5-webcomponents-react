@@ -43,7 +43,14 @@ const ROW_SELECTION_ATTRIBUTE = 'data-is-selected';
 
 const getRowProps = (rowProps, { instance, row }) => {
   const { webComponentsReactProperties } = instance;
-  const { classes, selectionBehavior, selectionMode, alternateRowColor } = webComponentsReactProperties;
+  const {
+    classes,
+    selectionBehavior,
+    selectionMode,
+    alternateRowColor,
+    renderRowSubComponent,
+    alwaysShowSubComponent
+  } = webComponentsReactProperties;
   const isEmptyRow = row.original?.emptyRow;
   let className = classes.tr;
   const rowCanBeSelected =
@@ -60,7 +67,7 @@ const getRowProps = (rowProps, { instance, row }) => {
   const newRowProps = {
     className,
     role: 'row',
-    'aria-rowindex': row.index
+    'aria-rowindex': row.index + 1
   };
 
   if (rowCanBeSelected) {
@@ -76,7 +83,6 @@ const getRowProps = (rowProps, { instance, row }) => {
 };
 
 const getCellProps = (cellProps, { cell: { column }, instance }) => {
-  const columnIndex = instance.visibleColumns.findIndex(({ id }) => id === column.id);
   const { classes } = instance.webComponentsReactProperties;
   const style: CSSProperties = { width: `${column.totalWidth}px` };
 
@@ -136,8 +142,7 @@ const getCellProps = (cellProps, { cell: { column }, instance }) => {
     {
       className,
       style,
-      tabIndex: -1,
-      'aria-colindex': columnIndex + 1 // aria index is 1 based, not 0
+      tabIndex: -1
     }
   ];
 };

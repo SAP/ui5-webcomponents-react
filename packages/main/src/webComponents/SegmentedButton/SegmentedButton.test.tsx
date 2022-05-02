@@ -1,8 +1,8 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
+import React from 'react';
 import { SegmentedButtonItem } from '../SegmentedButtonItem';
 import { SegmentedButton } from './index';
-import React from 'react';
 
 describe('SegmentedButton', () => {
   test('Basic Test (generated)', () => {

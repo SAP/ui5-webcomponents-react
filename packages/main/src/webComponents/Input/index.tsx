@@ -91,6 +91,10 @@ export interface InputDomRef extends InputAttributes, Ui5DomRef {
    * The suggestion item on preview.
    */
   readonly previewItem: ReactNode;
+  /**
+   * Manually opens the suggestions popover, assuming suggestions are enabled. Items must be preloaded for it to open.
+   */
+  openPicker: () => void;
 }
 
 export interface InputPropTypes extends InputAttributes, Omit<CommonProps, 'onChange' | 'onInput'> {
@@ -150,12 +154,12 @@ export interface InputPropTypes extends InputAttributes, Omit<CommonProps, 'onCh
    * Fired when the user navigates to a suggestion item via the ARROW keys, as a preview, before the final selection.
    */
   onSuggestionItemPreview?: (
-    event: Ui5CustomEvent<HTMLInputElement, { item: ReactNode; targetRef: ReactNode }>
+    event: Ui5CustomEvent<HTMLInputElement, { item: HTMLElement; targetRef: HTMLElement }>
   ) => void;
   /**
    * Fired when a suggestion item, that is displayed in the suggestion popup, is selected.
    */
-  onSuggestionItemSelect?: (event: Ui5CustomEvent<HTMLInputElement, { item: ReactNode }>) => void;
+  onSuggestionItemSelect?: (event: Ui5CustomEvent<HTMLInputElement, { item: HTMLElement }>) => void;
 }
 
 /**

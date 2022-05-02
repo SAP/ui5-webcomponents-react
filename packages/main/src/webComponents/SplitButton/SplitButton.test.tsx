@@ -1,7 +1,7 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
-import { SplitButton } from './index';
 import React from 'react';
+import { SplitButton } from './index';
 
 describe('SplitButton', () => {
   test('Basic Test (generated)', () => {

@@ -2,9 +2,18 @@ import {
   debounce,
   enrichEventWithDetails,
   ThemingParameters,
+  useI18nBundle,
   useIsomorphicLayoutEffect,
   useIsRTL
 } from '@ui5/webcomponents-react-base';
+import {
+  COLLAPSE_NODE,
+  COLLAPSE_PRESS_SPACE,
+  EXPAND_NODE,
+  EXPAND_PRESS_SPACE,
+  SELECT_PRESS_SPACE,
+  UNSELECT_PRESS_SPACE
+} from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import clsx from 'clsx';
 import React, {
   ComponentType,
@@ -43,6 +52,7 @@ import { TextAlign } from '../../enums/TextAlign';
 import { ValueState } from '../../enums/ValueState';
 import { VerticalAlign } from '../../enums/VerticalAlign';
 import { CommonProps } from '../../interfaces/CommonProps';
+import { getRandomId } from '../../internal/getRandomId';
 import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { FlexBox } from '../FlexBox';
 import styles from './AnayticalTable.jss';
@@ -51,6 +61,7 @@ import { DefaultColumn } from './defaults/Column';
 import { DefaultLoadingComponent } from './defaults/LoadingComponent';
 import { TablePlaceholder } from './defaults/LoadingComponent/TablePlaceholder';
 import { DefaultNoDataComponent } from './defaults/NoDataComponent';
+import { useA11y } from './hooks/useA11y';
 import { useDragAndDrop } from './hooks/useDragAndDrop';
 import { useDynamicColumnWidths } from './hooks/useDynamicColumnWidths';
 import { useKeyboardNavigation } from './hooks/useKeyboardNavigation';
@@ -235,18 +246,22 @@ export interface AnalyticalTableDomRef extends Omit<HTMLDivElement, 'scrollTo'> 
 export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * Defines the columns array where you can define the configuration for each column.
+   *
+   * __Must be memoized!__
    */
   columns: AnalyticalTableColumnDefinition[];
   /**
    * The data array that you want to display on the table.
+   *
+   * __Must be memoized!__
    */
-  data: Record<any, any>[];
+  data: Record<string, any>[];
   /**
    * Component or text rendered in the header section of the `AnalyticalTable`.
    *
    * __Note:__ If not set, it will be hidden.
    */
-  header?: ReactText | ReactNode;
+  header?: ReactNode;
   /**
    * Extension section of the Table. If not set, no extension area will be rendered
    */
@@ -464,7 +479,10 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * @param {number} e.detail.totalRowCount - The total number of rows, including sub-rows
    */
   onLoadMore?: (e?: { detail: { rowCount: number; totalRowCount: number } }) => void;
-
+  /**
+   * Fired when the body of the table is scrolled.
+   */
+  onTableScroll?: (e) => (e?: CustomEvent<{ rows: Record<string, any>[]; rowElements: HTMLCollection }>) => void;
   // default components
   /**
    * Component that will be rendered when the table is not loading and has no data.
@@ -539,12 +557,15 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     onRowExpandChange,
     onRowSelected,
     onSort,
+    onTableScroll,
     LoadingComponent,
     NoDataComponent,
     ...rest
   } = props;
 
   useDeprecationNoticeForTooltip('AnalyticalTable', props.tooltip);
+  const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
+  const titleBarId = useRef(`titlebar-${getRandomId()}`).current;
 
   const classes = useStyles();
 
@@ -553,7 +574,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
 
   const isRtl = useIsRTL(analyticalTableRef);
 
-  const getSubRows = useCallback((row) => row[subRowsKey] || [], [subRowsKey]);
+  const getSubRows = useCallback((row) => row.subRows || row[subRowsKey] || [], [subRowsKey]);
 
   const data = useMemo(() => {
     if (props.data.length === 0) {
@@ -569,7 +590,6 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
   }, [props.data, minRows]);
 
   const tableInstanceRef = useRef<Record<string, any>>(null);
-
   tableInstanceRef.current = useTable(
     {
       columns,
@@ -583,6 +603,14 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
       disableGroupBy: isTreeTable || renderRowSubComponent ? true : !groupable,
       selectSubRows: false,
       webComponentsReactProperties: {
+        translatableTexts: {
+          expandA11yText: i18nBundle.getText(EXPAND_PRESS_SPACE),
+          collapseA11yText: i18nBundle.getText(COLLAPSE_PRESS_SPACE),
+          selectA11yText: i18nBundle.getText(SELECT_PRESS_SPACE),
+          unselectA11yText: i18nBundle.getText(UNSELECT_PRESS_SPACE),
+          expandNodeA11yText: i18nBundle.getText(EXPAND_NODE),
+          collapseNodeA11yText: i18nBundle.getText(COLLAPSE_NODE)
+        },
         tagNamesWhichShouldNotSelectARow,
         tableRef,
         selectionMode,
@@ -620,6 +648,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     useDynamicColumnWidths,
     useStyling,
     useToggleRowExpand,
+    useA11y,
     usePopIn,
     useVisibleColumnsWidth,
     useKeyboardNavigation,
@@ -864,7 +893,10 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
 
   const verticalScrollBarRef: RefObject<DivWithCustomScrollProp> = useRef(null);
 
-  const handleBodyScroll = () => {
+  const handleBodyScroll = (e) => {
+    if (typeof onTableScroll === 'function') {
+      onTableScroll(e);
+    }
     if (verticalScrollBarRef.current && verticalScrollBarRef.current.scrollTop !== parentRef.current.scrollTop) {
       if (!parentRef.current.isExternalVerticalScroll) {
         verticalScrollBarRef.current.scrollTop = parentRef.current.scrollTop;
@@ -890,10 +922,15 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
 
   return (
     <div className={className} style={inlineStyle} title={tooltip} ref={analyticalTableRef} {...propsWithoutOmitted}>
-      {header && <TitleBar ref={titleBarRef}>{header}</TitleBar>}
+      {header && (
+        <TitleBar ref={titleBarRef} titleBarId={titleBarId}>
+          {header}
+        </TitleBar>
+      )}
       {extension && <div ref={extensionRef}>{extension}</div>}
       <FlexBox>
         <div
+          aria-labelledby={titleBarId}
           {...getTableProps()}
           tabIndex={0}
           role="grid"

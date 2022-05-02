@@ -19,6 +19,13 @@ const bundleReducer = (currentBundles: I18nBundleMap, action: { payload: I18nBun
 export function I18nProvider({ children }: I18nProviderPropTypes): JSX.Element {
   const [i18nBundles, setI18nBundles] = useReducer(bundleReducer, {});
   const localBundles = useRef<I18nBundleMap>({});
+  const isSyncedWithWindow = useRef(false);
+
+  if (!isSyncedWithWindow.current && typeof window !== 'undefined') {
+    window['@ui5/webcomponents-react'] ??= {};
+    window['@ui5/webcomponents-react'].I18nContext = I18nContext;
+    isSyncedWithWindow.current = true;
+  }
 
   const setI18nBundle = useCallback((name: string, bundle: I18nBundle) => {
     setI18nBundles({

@@ -21,8 +21,7 @@ export const DynamicPageTitleStyles = {
       }
     },
     '&:hover': {
-      // TODO background color should be sapObjectHeader_Hover_Background (same color as sapTile_Active_Background)
-      backgroundColor: ThemingParameters.sapTile_Active_Background
+      backgroundColor: ThemingParameters.sapObjectHeader_Hover_Background
     }
   },
   iEClass: {

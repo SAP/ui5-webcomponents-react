@@ -29,7 +29,8 @@ export const parameters = {
       method: 'alphabetical',
       order: ['Getting Started', 'Migration Guide', 'Knowledge Base', 'Internationalization', 'Public Utils']
     }
-  }
+  },
+  chromatic: { pauseAnimationAtEnd: true }
 };
 
 export const argTypes = {

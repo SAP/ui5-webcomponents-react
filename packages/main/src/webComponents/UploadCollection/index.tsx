@@ -66,7 +66,7 @@ export interface UploadCollectionPropTypes extends UploadCollectionAttributes, O
    *
    * **Note:** A Delete button is displayed on each item, when the `UploadCollection` `mode` property is set to `Delete`.
    */
-  onItemDelete?: (event: Ui5CustomEvent<HTMLElement, { item: ReactNode }>) => void;
+  onItemDelete?: (event: Ui5CustomEvent<HTMLElement, { item: HTMLElement }>) => void;
   /**
    * Fired when selection is changed by user interaction in `SingleSelect` and `MultiSelect` modes.
    */

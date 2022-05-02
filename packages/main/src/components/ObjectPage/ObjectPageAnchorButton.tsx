@@ -48,6 +48,7 @@ export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props: Obj
       text={section.props.titleText}
       selected={selected || undefined}
       with-sub-sections={hasSubSections || undefined}
+      ui5-tab
     />
   );
 };

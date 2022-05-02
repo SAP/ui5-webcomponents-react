@@ -98,7 +98,7 @@ export interface ComboBoxPropTypes extends ComboBoxAttributes, Omit<CommonProps,
   /**
    * Fired when selection is changed by user interaction
    */
-  onSelectionChange?: (event: Ui5CustomEvent<HTMLInputElement, { item: ReactNode }>) => void;
+  onSelectionChange?: (event: Ui5CustomEvent<HTMLInputElement, { item: HTMLElement }>) => void;
 }
 
 /**

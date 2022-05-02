@@ -3,6 +3,83 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.23.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.23.0...v0.23.1) (2022-04-28)
+
+
+### Bug Fixes
+
+* update @ui5/webcomponents to 1.3.1 ([#2870](https://github.com/SAP/ui5-webcomponents-react/issues/2870)) ([9366adc](https://github.com/SAP/ui5-webcomponents-react/commit/9366adc03679f6704e059927ea5c5fb468180d81))
+
+
+
+
+
+# [0.23.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.22.8...v0.23.0) (2022-04-22)
+
+
+### Bug Fixes
+
+* **Form:** preven crash if window range is not available ([#2818](https://github.com/SAP/ui5-webcomponents-react/issues/2818)) ([df7ecd4](https://github.com/SAP/ui5-webcomponents-react/commit/df7ecd4051af16f0c48d431e5ae92fe5ea627b2e))
+
+
+### Features
+
+* update @ui5/webcomponents to 1.3.0 ([#2796](https://github.com/SAP/ui5-webcomponents-react/issues/2796)) ([21b2e9f](https://github.com/SAP/ui5-webcomponents-react/commit/21b2e9f153b0a9b9ca98d93a8dede41ef7a9aa40))
+
+
+
+
+
+## [0.22.8](https://github.com/SAP/ui5-webcomponents-react/compare/v0.22.7...v0.22.8) (2022-04-14)
+
+
+### Bug Fixes
+
+* update theming parameters ([#2779](https://github.com/SAP/ui5-webcomponents-react/issues/2779)) ([f60bb0c](https://github.com/SAP/ui5-webcomponents-react/commit/f60bb0c038ab06f3fd1931eb82a77caeee3f011b))
+
+
+
+
+
+## [0.22.7](https://github.com/SAP/ui5-webcomponents-react/compare/v0.22.6...v0.22.7) (2022-04-08)
+
+
+### Bug Fixes
+
+* **Toolbar:** stretch overflow popover to available screen width on phones ([#2747](https://github.com/SAP/ui5-webcomponents-react/issues/2747)) ([e6ea478](https://github.com/SAP/ui5-webcomponents-react/commit/e6ea4786d89f19542f9b44026cebefa60dd523d3))
+
+
+
+
+
+## [0.22.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.22.5...v0.22.6) (2022-04-05)
+
+
+### Bug Fixes
+
+* **i18nBundle:** support micro front ends ([#2743](https://github.com/SAP/ui5-webcomponents-react/issues/2743)) ([cc2fe72](https://github.com/SAP/ui5-webcomponents-react/commit/cc2fe728a47a42c5719a57f46ebdd8281d75dec7))
+
+
+
+
+
+## [0.22.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.22.4...v0.22.5) (2022-03-31)
+
+
+### Bug Fixes
+
+* **useResponsiveContentPadding:** calculate paddings based on border box ([#2710](https://github.com/SAP/ui5-webcomponents-react/issues/2710)) ([cf3c8e4](https://github.com/SAP/ui5-webcomponents-react/commit/cf3c8e4ebc96651d8f4d2bf805062c5b639974ae))
+
+
+### Features
+
+* **SplitterLayout:** add `options` prop to customize reset behavior, correct sizing of elements ([#2713](https://github.com/SAP/ui5-webcomponents-react/issues/2713)) ([4dc15f4](https://github.com/SAP/ui5-webcomponents-react/commit/4dc15f45e5b319bbccca5e88864bc4c82909d886))
+* support react 18 ([#2719](https://github.com/SAP/ui5-webcomponents-react/issues/2719)) ([e0f12d9](https://github.com/SAP/ui5-webcomponents-react/commit/e0f12d9514e067e644becaad5dc156459bf837ac))
+
+
+
+
+
 ## [0.22.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.22.3...v0.22.4) (2022-03-23)
 
 

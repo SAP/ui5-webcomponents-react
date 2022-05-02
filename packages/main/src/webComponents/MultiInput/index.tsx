@@ -95,6 +95,10 @@ export interface MultiInputDomRef extends MultiInputAttributes, Ui5DomRef {
    * The suggestion item on preview.
    */
   readonly previewItem: ReactNode;
+  /**
+   * Manually opens the suggestions popover, assuming suggestions are enabled. Items must be preloaded for it to open.
+   */
+  openPicker: () => void;
 }
 
 export interface MultiInputPropTypes extends MultiInputAttributes, Omit<CommonProps, 'onChange' | 'onInput'> {
@@ -152,7 +156,7 @@ export interface MultiInputPropTypes extends MultiInputAttributes, Omit<CommonPr
   /**
    * Fired when a token is about to be deleted.
    */
-  onTokenDelete?: (event: Ui5CustomEvent<HTMLInputElement, { token: ReactNode }>) => void;
+  onTokenDelete?: (event: Ui5CustomEvent<HTMLInputElement, { token: HTMLElement }>) => void;
   /**
    * Fired when the value help icon is pressed and F4 or ALT/OPTION + ARROW\_UP/ARROW\_DOWN keyboard keys are used.
    */
@@ -169,12 +173,12 @@ export interface MultiInputPropTypes extends MultiInputAttributes, Omit<CommonPr
    * Fired when the user navigates to a suggestion item via the ARROW keys, as a preview, before the final selection.
    */
   onSuggestionItemPreview?: (
-    event: Ui5CustomEvent<HTMLInputElement, { item: ReactNode; targetRef: ReactNode }>
+    event: Ui5CustomEvent<HTMLInputElement, { item: HTMLElement; targetRef: HTMLElement }>
   ) => void;
   /**
    * Fired when a suggestion item, that is displayed in the suggestion popup, is selected.
    */
-  onSuggestionItemSelect?: (event: Ui5CustomEvent<HTMLInputElement, { item: ReactNode }>) => void;
+  onSuggestionItemSelect?: (event: Ui5CustomEvent<HTMLInputElement, { item: HTMLElement }>) => void;
 }
 
 /**

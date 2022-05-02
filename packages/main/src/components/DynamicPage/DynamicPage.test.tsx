@@ -396,6 +396,31 @@ describe('DynamicPage', () => {
     getByText('Footer');
     expect(asFragment()).toMatchSnapshot();
   });
+  test('a11y config', () => {
+    const { rerender } = render(
+      <DynamicPage
+        headerTitle={<DynamicPageTitle />}
+        headerContent={<DynamicPageHeader />}
+        footer={<Bar data-testid="footer" design={BarDesign.FloatingFooter} />}
+      />
+    );
+    expect(document.querySelector('[data-component-name="DynamicPageFooter"]')).toHaveAttribute('role', 'contentinfo');
+    expect(document.querySelector('[data-component-name="DynamicPageAnchorBar"]')).toHaveAttribute(
+      'role',
+      'navigation'
+    );
+
+    rerender(
+      <DynamicPage
+        headerTitle={<DynamicPageTitle />}
+        headerContent={<DynamicPageHeader />}
+        footer={<Bar data-testid="footer" design={BarDesign.FloatingFooter} />}
+        a11yConfig={{ dynamicPageAnchorBar: { role: 'anchorbar' }, dynamicPageFooter: { role: 'footer' } }}
+      />
+    );
+    expect(document.querySelector('[data-component-name="DynamicPageFooter"]')).toHaveAttribute('role', 'footer');
+    expect(document.querySelector('[data-component-name="DynamicPageAnchorBar"]')).toHaveAttribute('role', 'anchorbar');
+  });
 
   createCustomPropsTest(DynamicPage);
 });

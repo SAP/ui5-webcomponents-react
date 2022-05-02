@@ -6,6 +6,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
     style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column; visibility: hidden;"
   >
     <div
+      id="titlebar-1337"
       style="min-height: 1.5rem; display: flex; align-items: center;"
     >
       <ui5-title
@@ -20,6 +21,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
     >
       <div
         aria-colcount="4"
+        aria-labelledby="titlebar-1337"
         aria-rowcount="5"
         class="AnalyticalTable-table sapScrollBar"
         data-component-name="AnalyticalTableContainer"
@@ -200,10 +202,11 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
           style="position: relative; overflow-y: auto; height: 220px; width: 600px;"
         >
           <div
+            data-component-name="AnalyticalTableBodyScrollableContainer"
             style="position: relative; height: 220px; width: 600px;"
           >
             <div
-              aria-rowindex="0"
+              aria-rowindex="1"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 44px; transform: translateY(0px); position: absolute;"
@@ -286,7 +289,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
               </div>
             </div>
             <div
-              aria-rowindex="1"
+              aria-rowindex="2"
               class="AnalyticalTable-tr AnalyticalTable-alternateRowColor"
               role="row"
               style="height: 44px; transform: translateY(44px); position: absolute;"
@@ -369,7 +372,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
               </div>
             </div>
             <div
-              aria-rowindex="2"
+              aria-rowindex="3"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 44px; transform: translateY(88px); position: absolute;"
@@ -404,7 +407,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
               />
             </div>
             <div
-              aria-rowindex="3"
+              aria-rowindex="4"
               class="AnalyticalTable-tr AnalyticalTable-alternateRowColor"
               role="row"
               style="height: 44px; transform: translateY(132px); position: absolute;"
@@ -439,7 +442,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
               />
             </div>
             <div
-              aria-rowindex="4"
+              aria-rowindex="5"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 44px; transform: translateY(176px); position: absolute;"
@@ -487,6 +490,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
     style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column; visibility: hidden;"
   >
     <div
+      id="titlebar-1337"
       style="min-height: 1.5rem; display: flex; align-items: center;"
     >
       <ui5-title
@@ -501,6 +505,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
     >
       <div
         aria-colcount="4"
+        aria-labelledby="titlebar-1337"
         aria-rowcount="5"
         class="AnalyticalTable-table sapScrollBar"
         data-component-name="AnalyticalTableContainer"
@@ -681,10 +686,11 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
           style="position: relative; overflow-y: auto; height: 220px; width: 600px;"
         >
           <div
+            data-component-name="AnalyticalTableBodyScrollableContainer"
             style="position: relative; height: 220px; width: 600px;"
           >
             <div
-              aria-rowindex="0"
+              aria-rowindex="1"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 44px; transform: translateY(0px); position: absolute;"
@@ -767,7 +773,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
               </div>
             </div>
             <div
-              aria-rowindex="1"
+              aria-rowindex="2"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 44px; transform: translateY(44px); position: absolute;"
@@ -850,7 +856,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
               </div>
             </div>
             <div
-              aria-rowindex="2"
+              aria-rowindex="3"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 44px; transform: translateY(88px); position: absolute;"
@@ -885,7 +891,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
               />
             </div>
             <div
-              aria-rowindex="3"
+              aria-rowindex="4"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 44px; transform: translateY(132px); position: absolute;"
@@ -920,7 +926,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
               />
             </div>
             <div
-              aria-rowindex="4"
+              aria-rowindex="5"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 44px; transform: translateY(176px); position: absolute;"
@@ -968,6 +974,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
     style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column; visibility: hidden;"
   >
     <div
+      id="titlebar-1337"
       style="min-height: 1.5rem; display: flex; align-items: center;"
     >
       <ui5-title
@@ -982,6 +989,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
     >
       <div
         aria-colcount="4"
+        aria-labelledby="titlebar-1337"
         aria-rowcount="0"
         class="AnalyticalTable-table sapScrollBar"
         data-component-name="AnalyticalTableContainer"
@@ -1406,6 +1414,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
       >
         <div
           aria-colcount="5"
+          aria-labelledby="titlebar-1337"
           aria-rowcount="2"
           class="AnalyticalTable-table sapScrollBar AnalyticalTable-hasNavigationIndicator"
           data-component-name="AnalyticalTableContainer"
@@ -1619,10 +1628,11 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
             style="position: relative; overflow-y: auto; height: 88px; width: 600px;"
           >
             <div
+              data-component-name="AnalyticalTableBodyScrollableContainer"
               style="position: relative; height: 88px; width: 600px;"
             >
               <div
-                aria-rowindex="0"
+                aria-rowindex="1"
                 class="AnalyticalTable-tr"
                 role="row"
                 style="height: 44px; transform: translateY(0px); position: absolute;"
@@ -1721,7 +1731,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                 </div>
               </div>
               <div
-                aria-rowindex="1"
+                aria-rowindex="2"
                 class="AnalyticalTable-tr"
                 role="row"
                 style="height: 44px; transform: translateY(44px); position: absolute;"
@@ -1841,6 +1851,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
       >
         <div
           aria-colcount="1"
+          aria-labelledby="titlebar-1337"
           aria-rowcount="5"
           class="AnalyticalTable-table sapScrollBar"
           data-component-name="AnalyticalTableContainer"
@@ -1903,10 +1914,11 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
             style="position: relative; overflow-y: auto; height: 220px; width: 600px;"
           >
             <div
+              data-component-name="AnalyticalTableBodyScrollableContainer"
               style="position: relative; height: 1420px; width: 600px;"
             >
               <div
-                aria-rowindex="0"
+                aria-rowindex="1"
                 class="AnalyticalTable-tr"
                 role="row"
                 style="height: 284px; transform: translateY(0px); position: absolute;"
@@ -2012,7 +2024,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
                 </div>
               </div>
               <div
-                aria-rowindex="1"
+                aria-rowindex="2"
                 class="AnalyticalTable-tr"
                 role="row"
                 style="height: 284px; transform: translateY(284px); position: absolute;"
@@ -2118,7 +2130,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
                 </div>
               </div>
               <div
-                aria-rowindex="2"
+                aria-rowindex="3"
                 class="AnalyticalTable-tr"
                 role="row"
                 style="height: 284px; transform: translateY(568px); position: absolute;"
@@ -2132,7 +2144,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
                 />
               </div>
               <div
-                aria-rowindex="3"
+                aria-rowindex="4"
                 class="AnalyticalTable-tr"
                 role="row"
                 style="height: 284px; transform: translateY(852px); position: absolute;"
@@ -2146,7 +2158,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
                 />
               </div>
               <div
-                aria-rowindex="4"
+                aria-rowindex="5"
                 class="AnalyticalTable-tr"
                 role="row"
                 style="height: 284px; transform: translateY(1136px); position: absolute;"
@@ -2201,6 +2213,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
       >
         <div
           aria-colcount="2"
+          aria-labelledby="titlebar-1337"
           aria-rowcount="5"
           class="AnalyticalTable-table sapScrollBar"
           data-component-name="AnalyticalTableContainer"
@@ -2302,10 +2315,11 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
             style="position: relative; overflow-y: auto; height: 220px; width: 800px;"
           >
             <div
+              data-component-name="AnalyticalTableBodyScrollableContainer"
               style="position: relative; height: 1420px; width: 800px;"
             >
               <div
-                aria-rowindex="0"
+                aria-rowindex="1"
                 class="AnalyticalTable-tr"
                 role="row"
                 style="height: 284px; transform: translateY(0px); position: absolute;"
@@ -2430,7 +2444,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
                 </div>
               </div>
               <div
-                aria-rowindex="1"
+                aria-rowindex="2"
                 class="AnalyticalTable-tr"
                 role="row"
                 style="height: 284px; transform: translateY(284px); position: absolute;"
@@ -2555,7 +2569,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
                 </div>
               </div>
               <div
-                aria-rowindex="2"
+                aria-rowindex="3"
                 class="AnalyticalTable-tr"
                 role="row"
                 style="height: 284px; transform: translateY(568px); position: absolute;"
@@ -2576,7 +2590,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
                 />
               </div>
               <div
-                aria-rowindex="3"
+                aria-rowindex="4"
                 class="AnalyticalTable-tr"
                 role="row"
                 style="height: 284px; transform: translateY(852px); position: absolute;"
@@ -2597,7 +2611,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
                 />
               </div>
               <div
-                aria-rowindex="4"
+                aria-rowindex="5"
                 class="AnalyticalTable-tr"
                 role="row"
                 style="height: 284px; transform: translateY(1136px); position: absolute;"
@@ -2655,6 +2669,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
       style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column; visibility: hidden;"
     >
       <div
+        id="titlebar-1337"
         style="min-height: 1.5rem; display: flex; align-items: center;"
       >
         <ui5-title
@@ -2669,6 +2684,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
       >
         <div
           aria-colcount="4"
+          aria-labelledby="titlebar-1337"
           aria-rowcount="5"
           class="AnalyticalTable-table sapScrollBar"
           data-component-name="AnalyticalTableContainer"
@@ -2849,10 +2865,11 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
             style="position: relative; overflow-y: auto; height: 220px; width: 600px;"
           >
             <div
+              data-component-name="AnalyticalTableBodyScrollableContainer"
               style="position: relative; height: 220px; width: 600px;"
             >
               <div
-                aria-rowindex="0"
+                aria-rowindex="1"
                 class="AnalyticalTable-tr"
                 role="row"
                 style="height: 44px; transform: translateY(0px); position: absolute;"
@@ -2935,7 +2952,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                 </div>
               </div>
               <div
-                aria-rowindex="1"
+                aria-rowindex="2"
                 class="AnalyticalTable-tr"
                 role="row"
                 style="height: 44px; transform: translateY(44px); position: absolute;"
@@ -3018,7 +3035,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                 </div>
               </div>
               <div
-                aria-rowindex="2"
+                aria-rowindex="3"
                 class="AnalyticalTable-tr"
                 role="row"
                 style="height: 44px; transform: translateY(88px); position: absolute;"
@@ -3053,7 +3070,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                 />
               </div>
               <div
-                aria-rowindex="3"
+                aria-rowindex="4"
                 class="AnalyticalTable-tr"
                 role="row"
                 style="height: 44px; transform: translateY(132px); position: absolute;"
@@ -3088,7 +3105,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                 />
               </div>
               <div
-                aria-rowindex="4"
+                aria-rowindex="5"
                 class="AnalyticalTable-tr"
                 role="row"
                 style="height: 44px; transform: translateY(176px); position: absolute;"
@@ -3140,6 +3157,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
       style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column; visibility: hidden;"
     >
       <div
+        id="titlebar-1337"
         style="min-height: 1.5rem; display: flex; align-items: center;"
       >
         <ui5-title
@@ -3154,6 +3172,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
       >
         <div
           aria-colcount="6"
+          aria-labelledby="titlebar-1337"
           aria-rowcount="2"
           class="AnalyticalTable-table sapScrollBar"
           data-component-name="AnalyticalTableContainer"
@@ -3396,16 +3415,19 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
             style="position: relative; overflow-y: auto; height: 88px; width: 653px;"
           >
             <div
+              data-component-name="AnalyticalTableBodyScrollableContainer"
               style="position: relative; height: 88px; width: 653px;"
             >
               <div
-                aria-rowindex="0"
+                aria-rowindex="1"
                 class="AnalyticalTable-tr AnalyticalTable-trActive"
                 role="row"
                 style="height: 44px; transform: translateY(0px); position: absolute;"
               >
                 <div
                   aria-colindex="1"
+                  aria-label="Success To select the row, press the spacebar"
+                  aria-selected="false"
                   class="AnalyticalTable-tableCell"
                   data-column-index="0"
                   data-row-index="1"
@@ -3423,6 +3445,8 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                 </div>
                 <div
                   aria-colindex="2"
+                  aria-label=" To select the row, press the spacebar"
+                  aria-selected="false"
                   class="AnalyticalTable-tableCell"
                   data-column-index="1"
                   data-row-index="1"
@@ -3440,6 +3464,8 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                 </div>
                 <div
                   aria-colindex="3"
+                  aria-label="Fra To select the row, press the spacebar"
+                  aria-selected="false"
                   class="AnalyticalTable-tableCell"
                   data-column-index="2"
                   data-row-index="1"
@@ -3459,6 +3485,8 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                 </div>
                 <div
                   aria-colindex="4"
+                  aria-label="40 To select the row, press the spacebar"
+                  aria-selected="false"
                   class="AnalyticalTable-tableCell"
                   data-column-index="3"
                   data-row-index="1"
@@ -3478,6 +3506,8 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                 </div>
                 <div
                   aria-colindex="5"
+                  aria-label="MAR To select the row, press the spacebar"
+                  aria-selected="false"
                   class="AnalyticalTable-tableCell"
                   data-column-index="4"
                   data-row-index="1"
@@ -3497,6 +3527,8 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                 </div>
                 <div
                   aria-colindex="6"
+                  aria-label="28 To select the row, press the spacebar"
+                  aria-selected="false"
                   class="AnalyticalTable-tableCell"
                   data-column-index="5"
                   data-row-index="1"
@@ -3516,13 +3548,15 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                 </div>
               </div>
               <div
-                aria-rowindex="1"
+                aria-rowindex="2"
                 class="AnalyticalTable-tr AnalyticalTable-trActive"
                 role="row"
                 style="height: 44px; transform: translateY(44px); position: absolute;"
               >
                 <div
                   aria-colindex="1"
+                  aria-label=" To select the row, press the spacebar"
+                  aria-selected="false"
                   class="AnalyticalTable-tableCell"
                   data-column-index="0"
                   data-row-index="2"
@@ -3539,6 +3573,8 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                 </div>
                 <div
                   aria-colindex="2"
+                  aria-label=" To select the row, press the spacebar"
+                  aria-selected="false"
                   class="AnalyticalTable-tableCell"
                   data-column-index="1"
                   data-row-index="2"
@@ -3556,6 +3592,8 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                 </div>
                 <div
                   aria-colindex="3"
+                  aria-label="bla To select the row, press the spacebar"
+                  aria-selected="false"
                   class="AnalyticalTable-tableCell"
                   data-column-index="2"
                   data-row-index="2"
@@ -3575,6 +3613,8 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                 </div>
                 <div
                   aria-colindex="4"
+                  aria-label="20 To select the row, press the spacebar"
+                  aria-selected="false"
                   class="AnalyticalTable-tableCell"
                   data-column-index="3"
                   data-row-index="2"
@@ -3594,6 +3634,8 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                 </div>
                 <div
                   aria-colindex="5"
+                  aria-label="Nei To select the row, press the spacebar"
+                  aria-selected="false"
                   class="AnalyticalTable-tableCell"
                   data-column-index="4"
                   data-row-index="2"
@@ -3613,6 +3655,8 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                 </div>
                 <div
                   aria-colindex="6"
+                  aria-label="50 To select the row, press the spacebar"
+                  aria-selected="false"
                   class="AnalyticalTable-tableCell"
                   data-column-index="5"
                   data-row-index="2"
@@ -3653,6 +3697,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
       >
         <div
           aria-colcount="4"
+          aria-labelledby="titlebar-1337"
           aria-rowcount="5"
           class="AnalyticalTable-table sapScrollBar"
           data-component-name="AnalyticalTableContainer"
@@ -3833,10 +3878,11 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
             style="position: relative; overflow-y: auto; height: 220px; width: 600px;"
           >
             <div
+              data-component-name="AnalyticalTableBodyScrollableContainer"
               style="position: relative; height: 220px; width: 600px;"
             >
               <div
-                aria-rowindex="0"
+                aria-rowindex="1"
                 class="AnalyticalTable-tr"
                 role="row"
                 style="height: 44px; transform: translateY(0px); position: absolute;"
@@ -3919,7 +3965,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                 </div>
               </div>
               <div
-                aria-rowindex="1"
+                aria-rowindex="2"
                 class="AnalyticalTable-tr"
                 role="row"
                 style="height: 44px; transform: translateY(44px); position: absolute;"
@@ -4002,7 +4048,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                 </div>
               </div>
               <div
-                aria-rowindex="2"
+                aria-rowindex="3"
                 class="AnalyticalTable-tr"
                 role="row"
                 style="height: 44px; transform: translateY(88px); position: absolute;"
@@ -4037,7 +4083,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                 />
               </div>
               <div
-                aria-rowindex="3"
+                aria-rowindex="4"
                 class="AnalyticalTable-tr"
                 role="row"
                 style="height: 44px; transform: translateY(132px); position: absolute;"
@@ -4072,7 +4118,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                 />
               </div>
               <div
-                aria-rowindex="4"
+                aria-rowindex="5"
                 class="AnalyticalTable-tr"
                 role="row"
                 style="height: 44px; transform: translateY(176px); position: absolute;"
@@ -4121,6 +4167,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
     style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column; visibility: hidden;"
   >
     <div
+      id="titlebar-1337"
       style="min-height: 1.5rem; display: flex; align-items: center;"
     >
       <ui5-title
@@ -4135,6 +4182,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
     >
       <div
         aria-colcount="5"
+        aria-labelledby="titlebar-1337"
         aria-rowcount="5"
         class="AnalyticalTable-table sapScrollBar"
         data-component-name="AnalyticalTableContainer"
@@ -4352,16 +4400,19 @@ exports[`AnalyticalTable Tree Table 1`] = `
           style="position: relative; overflow-y: auto; height: 220px; width: 647px;"
         >
           <div
+            data-component-name="AnalyticalTableBodyScrollableContainer"
             style="position: relative; height: 220px; width: 647px;"
           >
             <div
-              aria-rowindex="0"
+              aria-rowindex="1"
               class="AnalyticalTable-tr AnalyticalTable-trActive"
               role="row"
               style="height: 44px; transform: translateY(0px); position: absolute;"
             >
               <div
                 aria-colindex="1"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="0"
                 data-row-index="1"
@@ -4383,6 +4434,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               </div>
               <div
                 aria-colindex="2"
+                aria-expanded="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="1"
                 data-row-index="1"
@@ -4394,10 +4446,12 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 tabindex="-1"
               >
                 <span
+                  aria-label="To expand the row, press the spacebar"
                   style="cursor: pointer; padding-left: 0px;"
                   title="Toggle Row Expanded"
                 >
                   <ui5-icon
+                    accessible-name="Expand Node"
                     interactive="true"
                     name="navigation-right-arrow"
                     style="height: 0.75rem; width: 0.75rem; padding: 0.625rem; display: block;"
@@ -4413,6 +4467,8 @@ exports[`AnalyticalTable Tree Table 1`] = `
               </div>
               <div
                 aria-colindex="3"
+                aria-label="40 To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="2"
                 data-row-index="1"
@@ -4435,6 +4491,8 @@ exports[`AnalyticalTable Tree Table 1`] = `
               </div>
               <div
                 aria-colindex="4"
+                aria-label="MAR To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="3"
                 data-row-index="1"
@@ -4457,6 +4515,8 @@ exports[`AnalyticalTable Tree Table 1`] = `
               </div>
               <div
                 aria-colindex="5"
+                aria-label="28 To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="4"
                 data-row-index="1"
@@ -4479,13 +4539,15 @@ exports[`AnalyticalTable Tree Table 1`] = `
               </div>
             </div>
             <div
-              aria-rowindex="1"
+              aria-rowindex="2"
               class="AnalyticalTable-tr AnalyticalTable-trActive"
               role="row"
               style="height: 44px; transform: translateY(44px); position: absolute;"
             >
               <div
                 aria-colindex="1"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="0"
                 data-row-index="2"
@@ -4507,6 +4569,8 @@ exports[`AnalyticalTable Tree Table 1`] = `
               </div>
               <div
                 aria-colindex="2"
+                aria-label="bla To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="1"
                 data-row-index="2"
@@ -4527,6 +4591,8 @@ exports[`AnalyticalTable Tree Table 1`] = `
               </div>
               <div
                 aria-colindex="3"
+                aria-label="20 To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="2"
                 data-row-index="2"
@@ -4549,6 +4615,8 @@ exports[`AnalyticalTable Tree Table 1`] = `
               </div>
               <div
                 aria-colindex="4"
+                aria-label="Nei To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="3"
                 data-row-index="2"
@@ -4571,6 +4639,8 @@ exports[`AnalyticalTable Tree Table 1`] = `
               </div>
               <div
                 aria-colindex="5"
+                aria-label="50 To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="4"
                 data-row-index="2"
@@ -4593,13 +4663,15 @@ exports[`AnalyticalTable Tree Table 1`] = `
               </div>
             </div>
             <div
-              aria-rowindex="2"
+              aria-rowindex="3"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 44px; transform: translateY(88px); position: absolute;"
             >
               <div
                 aria-colindex="1"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
                 style="width: 47px; align-items: center; padding: 0px;"
@@ -4607,6 +4679,8 @@ exports[`AnalyticalTable Tree Table 1`] = `
               />
               <div
                 aria-colindex="2"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
                 style="width: 150px; align-items: center;"
@@ -4614,6 +4688,8 @@ exports[`AnalyticalTable Tree Table 1`] = `
               />
               <div
                 aria-colindex="3"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
                 style="width: 150px; align-items: center;"
@@ -4621,6 +4697,8 @@ exports[`AnalyticalTable Tree Table 1`] = `
               />
               <div
                 aria-colindex="4"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
                 style="width: 150px; align-items: center;"
@@ -4628,48 +4706,8 @@ exports[`AnalyticalTable Tree Table 1`] = `
               />
               <div
                 aria-colindex="5"
-                class="AnalyticalTable-tableCell"
-                role="cell"
-                style="width: 150px; align-items: center;"
-                tabindex="-1"
-              />
-            </div>
-            <div
-              aria-rowindex="3"
-              class="AnalyticalTable-tr"
-              role="row"
-              style="height: 44px; transform: translateY(132px); position: absolute;"
-            >
-              <div
-                aria-colindex="1"
-                class="AnalyticalTable-tableCell"
-                role="cell"
-                style="width: 47px; align-items: center; padding: 0px;"
-                tabindex="-1"
-              />
-              <div
-                aria-colindex="2"
-                class="AnalyticalTable-tableCell"
-                role="cell"
-                style="width: 150px; align-items: center;"
-                tabindex="-1"
-              />
-              <div
-                aria-colindex="3"
-                class="AnalyticalTable-tableCell"
-                role="cell"
-                style="width: 150px; align-items: center;"
-                tabindex="-1"
-              />
-              <div
-                aria-colindex="4"
-                class="AnalyticalTable-tableCell"
-                role="cell"
-                style="width: 150px; align-items: center;"
-                tabindex="-1"
-              />
-              <div
-                aria-colindex="5"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
                 style="width: 150px; align-items: center;"
@@ -4680,10 +4718,12 @@ exports[`AnalyticalTable Tree Table 1`] = `
               aria-rowindex="4"
               class="AnalyticalTable-tr"
               role="row"
-              style="height: 44px; transform: translateY(176px); position: absolute;"
+              style="height: 44px; transform: translateY(132px); position: absolute;"
             >
               <div
                 aria-colindex="1"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
                 style="width: 47px; align-items: center; padding: 0px;"
@@ -4691,6 +4731,8 @@ exports[`AnalyticalTable Tree Table 1`] = `
               />
               <div
                 aria-colindex="2"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
                 style="width: 150px; align-items: center;"
@@ -4698,6 +4740,8 @@ exports[`AnalyticalTable Tree Table 1`] = `
               />
               <div
                 aria-colindex="3"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
                 style="width: 150px; align-items: center;"
@@ -4705,6 +4749,8 @@ exports[`AnalyticalTable Tree Table 1`] = `
               />
               <div
                 aria-colindex="4"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
                 style="width: 150px; align-items: center;"
@@ -4712,6 +4758,60 @@ exports[`AnalyticalTable Tree Table 1`] = `
               />
               <div
                 aria-colindex="5"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="width: 150px; align-items: center;"
+                tabindex="-1"
+              />
+            </div>
+            <div
+              aria-rowindex="5"
+              class="AnalyticalTable-tr"
+              role="row"
+              style="height: 44px; transform: translateY(176px); position: absolute;"
+            >
+              <div
+                aria-colindex="1"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="width: 47px; align-items: center; padding: 0px;"
+                tabindex="-1"
+              />
+              <div
+                aria-colindex="2"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="width: 150px; align-items: center;"
+                tabindex="-1"
+              />
+              <div
+                aria-colindex="3"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="width: 150px; align-items: center;"
+                tabindex="-1"
+              />
+              <div
+                aria-colindex="4"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="width: 150px; align-items: center;"
+                tabindex="-1"
+              />
+              <div
+                aria-colindex="5"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
                 style="width: 150px; align-items: center;"
@@ -4732,6 +4832,7 @@ exports[`AnalyticalTable custom row height 1`] = `
     style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column; --sapWcrAnalyticalTableRowHeight: 60px; visibility: hidden;"
   >
     <div
+      id="titlebar-1337"
       style="min-height: 1.5rem; display: flex; align-items: center;"
     >
       <ui5-title
@@ -4746,6 +4847,7 @@ exports[`AnalyticalTable custom row height 1`] = `
     >
       <div
         aria-colcount="4"
+        aria-labelledby="titlebar-1337"
         aria-rowcount="5"
         class="AnalyticalTable-table sapScrollBar"
         data-component-name="AnalyticalTableContainer"
@@ -4926,10 +5028,11 @@ exports[`AnalyticalTable custom row height 1`] = `
           style="position: relative; overflow-y: auto; height: 300px; width: 600px;"
         >
           <div
+            data-component-name="AnalyticalTableBodyScrollableContainer"
             style="position: relative; height: 300px; width: 600px;"
           >
             <div
-              aria-rowindex="0"
+              aria-rowindex="1"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 60px; transform: translateY(0px); position: absolute;"
@@ -5012,7 +5115,7 @@ exports[`AnalyticalTable custom row height 1`] = `
               </div>
             </div>
             <div
-              aria-rowindex="1"
+              aria-rowindex="2"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 60px; transform: translateY(60px); position: absolute;"
@@ -5095,7 +5198,7 @@ exports[`AnalyticalTable custom row height 1`] = `
               </div>
             </div>
             <div
-              aria-rowindex="2"
+              aria-rowindex="3"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 60px; transform: translateY(120px); position: absolute;"
@@ -5130,7 +5233,7 @@ exports[`AnalyticalTable custom row height 1`] = `
               />
             </div>
             <div
-              aria-rowindex="3"
+              aria-rowindex="4"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 60px; transform: translateY(180px); position: absolute;"
@@ -5165,7 +5268,7 @@ exports[`AnalyticalTable custom row height 1`] = `
               />
             </div>
             <div
-              aria-rowindex="4"
+              aria-rowindex="5"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 60px; transform: translateY(240px); position: absolute;"
@@ -5217,6 +5320,7 @@ exports[`AnalyticalTable expose table instance 1`] = `
     >
       <div
         aria-colcount="3"
+        aria-labelledby="titlebar-1337"
         aria-rowcount="5"
         class="AnalyticalTable-table sapScrollBar"
         data-component-name="AnalyticalTableContainer"
@@ -5358,10 +5462,11 @@ exports[`AnalyticalTable expose table instance 1`] = `
           style="position: relative; overflow-y: auto; height: 220px; width: 1200px;"
         >
           <div
+            data-component-name="AnalyticalTableBodyScrollableContainer"
             style="position: relative; height: 220px; width: 1200px;"
           >
             <div
-              aria-rowindex="0"
+              aria-rowindex="1"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 44px; transform: translateY(0px); position: absolute;"
@@ -5425,7 +5530,7 @@ exports[`AnalyticalTable expose table instance 1`] = `
               </div>
             </div>
             <div
-              aria-rowindex="1"
+              aria-rowindex="2"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 44px; transform: translateY(44px); position: absolute;"
@@ -5489,7 +5594,7 @@ exports[`AnalyticalTable expose table instance 1`] = `
               </div>
             </div>
             <div
-              aria-rowindex="2"
+              aria-rowindex="3"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 44px; transform: translateY(88px); position: absolute;"
@@ -5517,7 +5622,7 @@ exports[`AnalyticalTable expose table instance 1`] = `
               />
             </div>
             <div
-              aria-rowindex="3"
+              aria-rowindex="4"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 44px; transform: translateY(132px); position: absolute;"
@@ -5545,7 +5650,7 @@ exports[`AnalyticalTable expose table instance 1`] = `
               />
             </div>
             <div
-              aria-rowindex="4"
+              aria-rowindex="5"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 44px; transform: translateY(176px); position: absolute;"
@@ -5590,6 +5695,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
     >
       <div
         aria-colcount="5"
+        aria-labelledby="titlebar-1337"
         aria-rowcount="5"
         class="AnalyticalTable-table sapScrollBar"
         data-component-name="AnalyticalTableContainer"
@@ -5799,10 +5905,11 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
           style="position: relative; overflow-y: auto; height: 220px; width: 647px;"
         >
           <div
+            data-component-name="AnalyticalTableBodyScrollableContainer"
             style="position: relative; height: 220px; width: 647px;"
           >
             <div
-              aria-rowindex="0"
+              aria-rowindex="1"
               class="AnalyticalTable-tr AnalyticalTable-trActive"
               data-is-selected=""
               role="row"
@@ -5810,6 +5917,8 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
             >
               <div
                 aria-colindex="1"
+                aria-label=" To unselect the row, press the spacebar"
+                aria-selected="true"
                 class="AnalyticalTable-tableCell"
                 data-column-index="0"
                 data-row-index="1"
@@ -5827,6 +5936,8 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               </div>
               <div
                 aria-colindex="2"
+                aria-label="Fra To unselect the row, press the spacebar"
+                aria-selected="true"
                 class="AnalyticalTable-tableCell"
                 data-column-index="1"
                 data-row-index="1"
@@ -5846,6 +5957,8 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               </div>
               <div
                 aria-colindex="3"
+                aria-label="40 To unselect the row, press the spacebar"
+                aria-selected="true"
                 class="AnalyticalTable-tableCell"
                 data-column-index="2"
                 data-row-index="1"
@@ -5865,6 +5978,8 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               </div>
               <div
                 aria-colindex="4"
+                aria-label="MAR To unselect the row, press the spacebar"
+                aria-selected="true"
                 class="AnalyticalTable-tableCell"
                 data-column-index="3"
                 data-row-index="1"
@@ -5884,6 +5999,8 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               </div>
               <div
                 aria-colindex="5"
+                aria-label="28 To unselect the row, press the spacebar"
+                aria-selected="true"
                 class="AnalyticalTable-tableCell"
                 data-column-index="4"
                 data-row-index="1"
@@ -5903,13 +6020,15 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               </div>
             </div>
             <div
-              aria-rowindex="1"
+              aria-rowindex="2"
               class="AnalyticalTable-tr AnalyticalTable-trActive"
               role="row"
               style="height: 44px; transform: translateY(44px); position: absolute;"
             >
               <div
                 aria-colindex="1"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="0"
                 data-row-index="2"
@@ -5927,6 +6046,8 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               </div>
               <div
                 aria-colindex="2"
+                aria-label="bla To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="1"
                 data-row-index="2"
@@ -5946,6 +6067,8 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               </div>
               <div
                 aria-colindex="3"
+                aria-label="20 To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="2"
                 data-row-index="2"
@@ -5965,6 +6088,8 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               </div>
               <div
                 aria-colindex="4"
+                aria-label="Nei To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="3"
                 data-row-index="2"
@@ -5984,6 +6109,8 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               </div>
               <div
                 aria-colindex="5"
+                aria-label="50 To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="4"
                 data-row-index="2"
@@ -6003,13 +6130,15 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               </div>
             </div>
             <div
-              aria-rowindex="2"
+              aria-rowindex="3"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 44px; transform: translateY(88px); position: absolute;"
             >
               <div
                 aria-colindex="1"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
                 style="width: 47px; align-items: center; padding: 0px;"
@@ -6017,6 +6146,8 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               />
               <div
                 aria-colindex="2"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
                 style="width: 150px; align-items: center;"
@@ -6024,6 +6155,8 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               />
               <div
                 aria-colindex="3"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
                 style="width: 150px; align-items: center;"
@@ -6031,6 +6164,8 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               />
               <div
                 aria-colindex="4"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
                 style="width: 150px; align-items: center;"
@@ -6038,48 +6173,8 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               />
               <div
                 aria-colindex="5"
-                class="AnalyticalTable-tableCell"
-                role="cell"
-                style="width: 150px; align-items: center;"
-                tabindex="-1"
-              />
-            </div>
-            <div
-              aria-rowindex="3"
-              class="AnalyticalTable-tr"
-              role="row"
-              style="height: 44px; transform: translateY(132px); position: absolute;"
-            >
-              <div
-                aria-colindex="1"
-                class="AnalyticalTable-tableCell"
-                role="cell"
-                style="width: 47px; align-items: center; padding: 0px;"
-                tabindex="-1"
-              />
-              <div
-                aria-colindex="2"
-                class="AnalyticalTable-tableCell"
-                role="cell"
-                style="width: 150px; align-items: center;"
-                tabindex="-1"
-              />
-              <div
-                aria-colindex="3"
-                class="AnalyticalTable-tableCell"
-                role="cell"
-                style="width: 150px; align-items: center;"
-                tabindex="-1"
-              />
-              <div
-                aria-colindex="4"
-                class="AnalyticalTable-tableCell"
-                role="cell"
-                style="width: 150px; align-items: center;"
-                tabindex="-1"
-              />
-              <div
-                aria-colindex="5"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
                 style="width: 150px; align-items: center;"
@@ -6090,10 +6185,12 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               aria-rowindex="4"
               class="AnalyticalTable-tr"
               role="row"
-              style="height: 44px; transform: translateY(176px); position: absolute;"
+              style="height: 44px; transform: translateY(132px); position: absolute;"
             >
               <div
                 aria-colindex="1"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
                 style="width: 47px; align-items: center; padding: 0px;"
@@ -6101,6 +6198,8 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               />
               <div
                 aria-colindex="2"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
                 style="width: 150px; align-items: center;"
@@ -6108,6 +6207,8 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               />
               <div
                 aria-colindex="3"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
                 style="width: 150px; align-items: center;"
@@ -6115,6 +6216,8 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               />
               <div
                 aria-colindex="4"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
                 style="width: 150px; align-items: center;"
@@ -6122,6 +6225,60 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               />
               <div
                 aria-colindex="5"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="width: 150px; align-items: center;"
+                tabindex="-1"
+              />
+            </div>
+            <div
+              aria-rowindex="5"
+              class="AnalyticalTable-tr"
+              role="row"
+              style="height: 44px; transform: translateY(176px); position: absolute;"
+            >
+              <div
+                aria-colindex="1"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="width: 47px; align-items: center; padding: 0px;"
+                tabindex="-1"
+              />
+              <div
+                aria-colindex="2"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="width: 150px; align-items: center;"
+                tabindex="-1"
+              />
+              <div
+                aria-colindex="3"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="width: 150px; align-items: center;"
+                tabindex="-1"
+              />
+              <div
+                aria-colindex="4"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="width: 150px; align-items: center;"
+                tabindex="-1"
+              />
+              <div
+                aria-colindex="5"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
                 style="width: 150px; align-items: center;"
@@ -6146,6 +6303,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
     >
       <div
         aria-colcount="5"
+        aria-labelledby="titlebar-1337"
         aria-rowcount="2"
         class="AnalyticalTable-table sapScrollBar AnalyticalTable-hasNavigationIndicator"
         data-component-name="AnalyticalTableContainer"
@@ -6359,10 +6517,11 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
           style="position: relative; overflow-y: auto; height: 88px; width: 600px;"
         >
           <div
+            data-component-name="AnalyticalTableBodyScrollableContainer"
             style="position: relative; height: 88px; width: 600px;"
           >
             <div
-              aria-rowindex="0"
+              aria-rowindex="1"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 44px; transform: translateY(0px); position: absolute;"
@@ -6461,7 +6620,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
               </div>
             </div>
             <div
-              aria-rowindex="1"
+              aria-rowindex="2"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 44px; transform: translateY(44px); position: absolute;"
@@ -6577,6 +6736,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
     >
       <div
         aria-colcount="5"
+        aria-labelledby="titlebar-1337"
         aria-rowcount="11"
         class="AnalyticalTable-table sapScrollBar"
         data-component-name="AnalyticalTableContainer"
@@ -6796,16 +6956,19 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
           style="position: relative; overflow-y: auto; height: 484px; width: 600px;"
         >
           <div
+            data-component-name="AnalyticalTableBodyScrollableContainer"
             style="position: relative; height: 484px; width: 600px;"
           >
             <div
-              aria-rowindex="0"
+              aria-rowindex="1"
               class="AnalyticalTable-tr AnalyticalTable-trActive"
               role="row"
               style="height: 44px; transform: translateY(0px); position: absolute;"
             >
               <div
                 aria-colindex="1"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="0"
                 data-row-index="1"
@@ -6829,6 +6992,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="2"
+                aria-expanded="true"
                 class="AnalyticalTable-tableCell"
                 data-column-index="1"
                 data-row-index="1"
@@ -6840,10 +7004,13 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 tabindex="-1"
               >
                 <span
+                  aria-expanded="true"
+                  aria-label="To collapse the row, press the spacebar"
                   style="cursor: pointer; padding-right: 0px;"
                   title="Toggle Row Expanded"
                 >
                   <ui5-icon
+                    accessible-name="Collapse Node"
                     interactive="true"
                     name="navigation-down-arrow"
                     style="height: 0.75rem; width: 0.75rem; padding: 0.625rem; display: block;"
@@ -6859,6 +7026,8 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="3"
+                aria-label="40 To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="2"
                 data-row-index="1"
@@ -6881,6 +7050,8 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="4"
+                aria-label="MAR To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="3"
                 data-row-index="1"
@@ -6903,6 +7074,8 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="5"
+                aria-label="28 To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="4"
                 data-row-index="1"
@@ -6925,13 +7098,15 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
             </div>
             <div
-              aria-rowindex="0"
+              aria-rowindex="1"
               class="AnalyticalTable-tr AnalyticalTable-trActive"
               role="row"
               style="height: 44px; transform: translateY(44px); position: absolute;"
             >
               <div
                 aria-colindex="1"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="0"
                 data-row-index="2"
@@ -6955,6 +7130,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="2"
+                aria-expanded="true"
                 class="AnalyticalTable-tableCell"
                 data-column-index="1"
                 data-row-index="2"
@@ -6966,10 +7142,13 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 tabindex="-1"
               >
                 <span
+                  aria-expanded="true"
+                  aria-label="To collapse the row, press the spacebar"
                   style="cursor: pointer;"
                   title="Toggle Row Expanded"
                 >
                   <ui5-icon
+                    accessible-name="Collapse Node"
                     interactive="true"
                     name="navigation-down-arrow"
                     style="height: 0.75rem; width: 0.75rem; padding: 0.625rem; display: block;"
@@ -6985,6 +7164,8 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="3"
+                aria-label="40 To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="2"
                 data-row-index="2"
@@ -7007,6 +7188,8 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="4"
+                aria-label="longlonglong To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="3"
                 data-row-index="2"
@@ -7029,6 +7212,8 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="5"
+                aria-label="28 To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="4"
                 data-row-index="2"
@@ -7051,13 +7236,15 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
             </div>
             <div
-              aria-rowindex="0"
+              aria-rowindex="1"
               class="AnalyticalTable-tr AnalyticalTable-trActive"
               role="row"
               style="height: 44px; transform: translateY(88px); position: absolute;"
             >
               <div
                 aria-colindex="1"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="0"
                 data-row-index="3"
@@ -7081,6 +7268,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="2"
+                aria-expanded="true"
                 class="AnalyticalTable-tableCell"
                 data-column-index="1"
                 data-row-index="3"
@@ -7092,10 +7280,13 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 tabindex="-1"
               >
                 <span
+                  aria-expanded="true"
+                  aria-label="To collapse the row, press the spacebar"
                   style="cursor: pointer;"
                   title="Toggle Row Expanded"
                 >
                   <ui5-icon
+                    accessible-name="Collapse Node"
                     interactive="true"
                     name="navigation-down-arrow"
                     style="height: 0.75rem; width: 0.75rem; padding: 0.625rem; display: block;"
@@ -7111,6 +7302,8 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="3"
+                aria-label="40 To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="2"
                 data-row-index="3"
@@ -7133,6 +7326,8 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="4"
+                aria-label="DEF To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="3"
                 data-row-index="3"
@@ -7155,6 +7350,8 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="5"
+                aria-label="28 To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="4"
                 data-row-index="3"
@@ -7177,7 +7374,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
             </div>
             <div
-              aria-rowindex="0"
+              aria-rowindex="1"
               class="AnalyticalTable-tr AnalyticalTable-trActive"
               data-is-selected=""
               role="row"
@@ -7185,6 +7382,8 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
             >
               <div
                 aria-colindex="1"
+                aria-label=" To unselect the row, press the spacebar"
+                aria-selected="true"
                 class="AnalyticalTable-tableCell"
                 data-column-index="0"
                 data-row-index="4"
@@ -7207,6 +7406,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="2"
+                aria-expanded="true"
                 class="AnalyticalTable-tableCell"
                 data-column-index="1"
                 data-row-index="4"
@@ -7218,10 +7418,13 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 tabindex="-1"
               >
                 <span
+                  aria-expanded="true"
+                  aria-label="To collapse the row, press the spacebar"
                   style="cursor: pointer;"
                   title="Toggle Row Expanded"
                 >
                   <ui5-icon
+                    accessible-name="Collapse Node"
                     interactive="true"
                     name="navigation-down-arrow"
                     style="height: 0.75rem; width: 0.75rem; padding: 0.625rem; display: block;"
@@ -7237,6 +7440,8 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="3"
+                aria-label="40 To unselect the row, press the spacebar"
+                aria-selected="true"
                 class="AnalyticalTable-tableCell"
                 data-column-index="2"
                 data-row-index="4"
@@ -7259,6 +7464,8 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="4"
+                aria-label="mnop To unselect the row, press the spacebar"
+                aria-selected="true"
                 class="AnalyticalTable-tableCell"
                 data-column-index="3"
                 data-row-index="4"
@@ -7281,6 +7488,8 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="5"
+                aria-label="28 To unselect the row, press the spacebar"
+                aria-selected="true"
                 class="AnalyticalTable-tableCell"
                 data-column-index="4"
                 data-row-index="4"
@@ -7303,13 +7512,15 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
             </div>
             <div
-              aria-rowindex="0"
+              aria-rowindex="1"
               class="AnalyticalTable-tr AnalyticalTable-trActive"
               role="row"
               style="height: 44px; transform: translateY(176px); position: absolute;"
             >
               <div
                 aria-colindex="1"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="0"
                 data-row-index="5"
@@ -7331,6 +7542,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="2"
+                aria-expanded="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="1"
                 data-row-index="5"
@@ -7342,10 +7554,12 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 tabindex="-1"
               >
                 <span
+                  aria-label="To expand the row, press the spacebar"
                   style="cursor: pointer;"
                   title="Toggle Row Expanded"
                 >
                   <ui5-icon
+                    accessible-name="Expand Node"
                     interactive="true"
                     name="navigation-right-arrow"
                     style="height: 0.75rem; width: 0.75rem; padding: 0.625rem; display: block;"
@@ -7361,6 +7575,8 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="3"
+                aria-label="40 To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="2"
                 data-row-index="5"
@@ -7383,6 +7599,8 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="4"
+                aria-label="MAR To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="3"
                 data-row-index="5"
@@ -7405,6 +7623,8 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="5"
+                aria-label="28 To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="4"
                 data-row-index="5"
@@ -7427,13 +7647,15 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
             </div>
             <div
-              aria-rowindex="1"
+              aria-rowindex="2"
               class="AnalyticalTable-tr AnalyticalTable-trActive"
               role="row"
               style="height: 44px; transform: translateY(220px); position: absolute;"
             >
               <div
                 aria-colindex="1"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="0"
                 data-row-index="6"
@@ -7455,6 +7677,8 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="2"
+                aria-label="Fra To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="1"
                 data-row-index="6"
@@ -7475,6 +7699,8 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="3"
+                aria-label="40 To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="2"
                 data-row-index="6"
@@ -7497,6 +7723,8 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="4"
+                aria-label="MAR To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="3"
                 data-row-index="6"
@@ -7519,6 +7747,8 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="5"
+                aria-label="28 To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="4"
                 data-row-index="6"
@@ -7541,13 +7771,15 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
             </div>
             <div
-              aria-rowindex="2"
+              aria-rowindex="3"
               class="AnalyticalTable-tr AnalyticalTable-trActive"
               role="row"
               style="height: 44px; transform: translateY(264px); position: absolute;"
             >
               <div
                 aria-colindex="1"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="0"
                 data-row-index="7"
@@ -7569,6 +7801,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="2"
+                aria-expanded="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="1"
                 data-row-index="7"
@@ -7580,10 +7813,12 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 tabindex="-1"
               >
                 <span
+                  aria-label="To expand the row, press the spacebar"
                   style="cursor: pointer;"
                   title="Toggle Row Expanded"
                 >
                   <ui5-icon
+                    accessible-name="Expand Node"
                     interactive="true"
                     name="navigation-right-arrow"
                     style="height: 0.75rem; width: 0.75rem; padding: 0.625rem; display: block;"
@@ -7599,6 +7834,8 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="3"
+                aria-label="40 To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="2"
                 data-row-index="7"
@@ -7621,6 +7858,8 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="4"
+                aria-label="MAR To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="3"
                 data-row-index="7"
@@ -7643,6 +7882,8 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="5"
+                aria-label="28 To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="4"
                 data-row-index="7"
@@ -7665,13 +7906,15 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
             </div>
             <div
-              aria-rowindex="1"
+              aria-rowindex="2"
               class="AnalyticalTable-tr AnalyticalTable-trActive"
               role="row"
               style="height: 44px; transform: translateY(308px); position: absolute;"
             >
               <div
                 aria-colindex="1"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="0"
                 data-row-index="8"
@@ -7693,6 +7936,8 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="2"
+                aria-label="bla To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="1"
                 data-row-index="8"
@@ -7713,6 +7958,8 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="3"
+                aria-label="20 To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="2"
                 data-row-index="8"
@@ -7735,6 +7982,8 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="4"
+                aria-label="Nei To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="3"
                 data-row-index="8"
@@ -7757,6 +8006,8 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="5"
+                aria-label="50 To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="4"
                 data-row-index="8"
@@ -7779,13 +8030,15 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
             </div>
             <div
-              aria-rowindex="2"
+              aria-rowindex="3"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 44px; transform: translateY(352px); position: absolute;"
             >
               <div
                 aria-colindex="1"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
                 style="width: 47px; align-items: center; padding: 0px;"
@@ -7793,6 +8046,8 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               />
               <div
                 aria-colindex="2"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
                 style="width: 138.25px; align-items: center;"
@@ -7800,6 +8055,8 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               />
               <div
                 aria-colindex="3"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
                 style="width: 138.25px; align-items: center;"
@@ -7807,6 +8064,8 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               />
               <div
                 aria-colindex="4"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
                 style="width: 138.25px; align-items: center;"
@@ -7814,48 +8073,8 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               />
               <div
                 aria-colindex="5"
-                class="AnalyticalTable-tableCell"
-                role="cell"
-                style="width: 138.25px; align-items: center;"
-                tabindex="-1"
-              />
-            </div>
-            <div
-              aria-rowindex="3"
-              class="AnalyticalTable-tr"
-              role="row"
-              style="height: 44px; transform: translateY(396px); position: absolute;"
-            >
-              <div
-                aria-colindex="1"
-                class="AnalyticalTable-tableCell"
-                role="cell"
-                style="width: 47px; align-items: center; padding: 0px;"
-                tabindex="-1"
-              />
-              <div
-                aria-colindex="2"
-                class="AnalyticalTable-tableCell"
-                role="cell"
-                style="width: 138.25px; align-items: center;"
-                tabindex="-1"
-              />
-              <div
-                aria-colindex="3"
-                class="AnalyticalTable-tableCell"
-                role="cell"
-                style="width: 138.25px; align-items: center;"
-                tabindex="-1"
-              />
-              <div
-                aria-colindex="4"
-                class="AnalyticalTable-tableCell"
-                role="cell"
-                style="width: 138.25px; align-items: center;"
-                tabindex="-1"
-              />
-              <div
-                aria-colindex="5"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
                 style="width: 138.25px; align-items: center;"
@@ -7866,10 +8085,12 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               aria-rowindex="4"
               class="AnalyticalTable-tr"
               role="row"
-              style="height: 44px; transform: translateY(440px); position: absolute;"
+              style="height: 44px; transform: translateY(396px); position: absolute;"
             >
               <div
                 aria-colindex="1"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
                 style="width: 47px; align-items: center; padding: 0px;"
@@ -7877,6 +8098,8 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               />
               <div
                 aria-colindex="2"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
                 style="width: 138.25px; align-items: center;"
@@ -7884,6 +8107,8 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               />
               <div
                 aria-colindex="3"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
                 style="width: 138.25px; align-items: center;"
@@ -7891,6 +8116,8 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               />
               <div
                 aria-colindex="4"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
                 style="width: 138.25px; align-items: center;"
@@ -7898,6 +8125,60 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               />
               <div
                 aria-colindex="5"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="width: 138.25px; align-items: center;"
+                tabindex="-1"
+              />
+            </div>
+            <div
+              aria-rowindex="5"
+              class="AnalyticalTable-tr"
+              role="row"
+              style="height: 44px; transform: translateY(440px); position: absolute;"
+            >
+              <div
+                aria-colindex="1"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="width: 47px; align-items: center; padding: 0px;"
+                tabindex="-1"
+              />
+              <div
+                aria-colindex="2"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="width: 138.25px; align-items: center;"
+                tabindex="-1"
+              />
+              <div
+                aria-colindex="3"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="width: 138.25px; align-items: center;"
+                tabindex="-1"
+              />
+              <div
+                aria-colindex="4"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="width: 138.25px; align-items: center;"
+                tabindex="-1"
+              />
+              <div
+                aria-colindex="5"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
                 style="width: 138.25px; align-items: center;"
@@ -7922,6 +8203,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
     >
       <div
         aria-colcount="5"
+        aria-labelledby="titlebar-1337"
         aria-rowcount="2"
         class="AnalyticalTable-table sapScrollBar"
         data-component-name="AnalyticalTableContainer"
@@ -8131,16 +8413,19 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
           style="position: relative; overflow-y: auto; height: 88px; width: 600px;"
         >
           <div
+            data-component-name="AnalyticalTableBodyScrollableContainer"
             style="position: relative; height: 88px; width: 600px;"
           >
             <div
-              aria-rowindex="0"
+              aria-rowindex="1"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 44px; transform: translateY(0px); position: absolute;"
             >
               <div
                 aria-colindex="1"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="0"
                 data-row-index="1"
@@ -8163,6 +8448,8 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
               </div>
               <div
                 aria-colindex="2"
+                aria-label="Fra To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="1"
                 data-row-index="1"
@@ -8182,6 +8469,8 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
               </div>
               <div
                 aria-colindex="3"
+                aria-label="40 To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="2"
                 data-row-index="1"
@@ -8201,6 +8490,8 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
               </div>
               <div
                 aria-colindex="4"
+                aria-label="MAR To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="3"
                 data-row-index="1"
@@ -8220,6 +8511,8 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
               </div>
               <div
                 aria-colindex="5"
+                aria-label="28 To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="4"
                 data-row-index="1"
@@ -8239,13 +8532,15 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
               </div>
             </div>
             <div
-              aria-rowindex="1"
+              aria-rowindex="2"
               class="AnalyticalTable-tr AnalyticalTable-trActive"
               role="row"
               style="height: 44px; transform: translateY(44px); position: absolute;"
             >
               <div
                 aria-colindex="1"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="0"
                 data-row-index="2"
@@ -8267,6 +8562,8 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
               </div>
               <div
                 aria-colindex="2"
+                aria-label="bla To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="1"
                 data-row-index="2"
@@ -8286,6 +8583,8 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
               </div>
               <div
                 aria-colindex="3"
+                aria-label="20 To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="2"
                 data-row-index="2"
@@ -8305,6 +8604,8 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
               </div>
               <div
                 aria-colindex="4"
+                aria-label="Nei To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="3"
                 data-row-index="2"
@@ -8324,6 +8625,8 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
               </div>
               <div
                 aria-colindex="5"
+                aria-label="50 To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="4"
                 data-row-index="2"
@@ -8360,6 +8663,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins & hidden column 1`] = `
     >
       <div
         aria-colcount="1"
+        aria-labelledby="titlebar-1337"
         aria-rowcount="5"
         class="AnalyticalTable-table sapScrollBar"
         data-component-name="AnalyticalTableContainer"
@@ -8422,10 +8726,11 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins & hidden column 1`] = `
           style="position: relative; overflow-y: auto; height: 220px; width: 600px;"
         >
           <div
+            data-component-name="AnalyticalTableBodyScrollableContainer"
             style="position: relative; height: 1420px; width: 600px;"
           >
             <div
-              aria-rowindex="0"
+              aria-rowindex="1"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 284px; transform: translateY(0px); position: absolute;"
@@ -8531,7 +8836,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins & hidden column 1`] = `
               </div>
             </div>
             <div
-              aria-rowindex="1"
+              aria-rowindex="2"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 284px; transform: translateY(284px); position: absolute;"
@@ -8637,7 +8942,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins & hidden column 1`] = `
               </div>
             </div>
             <div
-              aria-rowindex="2"
+              aria-rowindex="3"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 284px; transform: translateY(568px); position: absolute;"
@@ -8651,7 +8956,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins & hidden column 1`] = `
               />
             </div>
             <div
-              aria-rowindex="3"
+              aria-rowindex="4"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 284px; transform: translateY(852px); position: absolute;"
@@ -8665,7 +8970,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins & hidden column 1`] = `
               />
             </div>
             <div
-              aria-rowindex="4"
+              aria-rowindex="5"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 284px; transform: translateY(1136px); position: absolute;"
@@ -8716,6 +9021,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 1`] = `
     >
       <div
         aria-colcount="2"
+        aria-labelledby="titlebar-1337"
         aria-rowcount="5"
         class="AnalyticalTable-table sapScrollBar"
         data-component-name="AnalyticalTableContainer"
@@ -8817,10 +9123,11 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 1`] = `
           style="position: relative; overflow-y: auto; height: 220px; width: 800px;"
         >
           <div
+            data-component-name="AnalyticalTableBodyScrollableContainer"
             style="position: relative; height: 1420px; width: 800px;"
           >
             <div
-              aria-rowindex="0"
+              aria-rowindex="1"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 284px; transform: translateY(0px); position: absolute;"
@@ -8945,7 +9252,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 1`] = `
               </div>
             </div>
             <div
-              aria-rowindex="1"
+              aria-rowindex="2"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 284px; transform: translateY(284px); position: absolute;"
@@ -9070,7 +9377,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 1`] = `
               </div>
             </div>
             <div
-              aria-rowindex="2"
+              aria-rowindex="3"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 284px; transform: translateY(568px); position: absolute;"
@@ -9091,7 +9398,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 1`] = `
               />
             </div>
             <div
-              aria-rowindex="3"
+              aria-rowindex="4"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 284px; transform: translateY(852px); position: absolute;"
@@ -9112,7 +9419,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 1`] = `
               />
             </div>
             <div
-              aria-rowindex="4"
+              aria-rowindex="5"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 284px; transform: translateY(1136px); position: absolute;"
@@ -9170,6 +9477,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 2`] = `
     >
       <div
         aria-colcount="2"
+        aria-labelledby="titlebar-1337"
         aria-rowcount="5"
         class="AnalyticalTable-table sapScrollBar"
         data-component-name="AnalyticalTableContainer"
@@ -9271,10 +9579,11 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 2`] = `
           style="position: relative; overflow-y: auto; height: 1420px; width: 800px;"
         >
           <div
+            data-component-name="AnalyticalTableBodyScrollableContainer"
             style="position: relative; height: 1420px; width: 800px;"
           >
             <div
-              aria-rowindex="0"
+              aria-rowindex="1"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 284px; transform: translateY(0px); position: absolute;"
@@ -9399,7 +9708,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 2`] = `
               </div>
             </div>
             <div
-              aria-rowindex="1"
+              aria-rowindex="2"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 284px; transform: translateY(284px); position: absolute;"
@@ -9524,7 +9833,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 2`] = `
               </div>
             </div>
             <div
-              aria-rowindex="2"
+              aria-rowindex="3"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 284px; transform: translateY(568px); position: absolute;"
@@ -9545,7 +9854,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 2`] = `
               />
             </div>
             <div
-              aria-rowindex="3"
+              aria-rowindex="4"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 284px; transform: translateY(852px); position: absolute;"
@@ -9566,7 +9875,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 2`] = `
               />
             </div>
             <div
-              aria-rowindex="4"
+              aria-rowindex="5"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 284px; transform: translateY(1136px); position: absolute;"
@@ -9604,6 +9913,7 @@ exports[`AnalyticalTable render custom Cell & Header 1`] = `
     >
       <div
         aria-colcount="3"
+        aria-labelledby="titlebar-1337"
         aria-rowcount="5"
         class="AnalyticalTable-table sapScrollBar"
         data-component-name="AnalyticalTableContainer"
@@ -9748,10 +10058,11 @@ exports[`AnalyticalTable render custom Cell & Header 1`] = `
           style="position: relative; overflow-y: auto; height: 220px; width: 450px;"
         >
           <div
+            data-component-name="AnalyticalTableBodyScrollableContainer"
             style="position: relative; height: 220px; width: 450px;"
           >
             <div
-              aria-rowindex="0"
+              aria-rowindex="1"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 44px; transform: translateY(0px); position: absolute;"
@@ -9815,7 +10126,7 @@ exports[`AnalyticalTable render custom Cell & Header 1`] = `
               </div>
             </div>
             <div
-              aria-rowindex="1"
+              aria-rowindex="2"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 44px; transform: translateY(44px); position: absolute;"
@@ -9879,7 +10190,7 @@ exports[`AnalyticalTable render custom Cell & Header 1`] = `
               </div>
             </div>
             <div
-              aria-rowindex="2"
+              aria-rowindex="3"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 44px; transform: translateY(88px); position: absolute;"
@@ -9907,7 +10218,7 @@ exports[`AnalyticalTable render custom Cell & Header 1`] = `
               />
             </div>
             <div
-              aria-rowindex="3"
+              aria-rowindex="4"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 44px; transform: translateY(132px); position: absolute;"
@@ -9935,7 +10246,7 @@ exports[`AnalyticalTable render custom Cell & Header 1`] = `
               />
             </div>
             <div
-              aria-rowindex="4"
+              aria-rowindex="5"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 44px; transform: translateY(176px); position: absolute;"
@@ -9980,6 +10291,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
     >
       <div
         aria-colcount="4"
+        aria-labelledby="titlebar-1337"
         aria-rowcount="5"
         class="AnalyticalTable-table sapScrollBar"
         data-component-name="AnalyticalTableContainer"
@@ -10160,10 +10472,11 @@ exports[`AnalyticalTable render subcomponents 1`] = `
           style="position: relative; overflow-y: auto; height: 220px; width: 600px;"
         >
           <div
+            data-component-name="AnalyticalTableBodyScrollableContainer"
             style="position: relative; height: 220px; width: 600px;"
           >
             <div
-              aria-rowindex="0"
+              aria-rowindex="1"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 44px; transform: translateY(0px); position: absolute;"
@@ -10182,6 +10495,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
               </div>
               <div
                 aria-colindex="1"
+                aria-expanded="true"
                 class="AnalyticalTable-tableCell"
                 data-column-index="0"
                 data-row-index="1"
@@ -10193,10 +10507,13 @@ exports[`AnalyticalTable render subcomponents 1`] = `
                 tabindex="-1"
               >
                 <span
+                  aria-expanded="true"
+                  aria-label="To collapse the row, press the spacebar"
                   style="cursor: pointer;"
                   title="Toggle Row Expanded"
                 >
                   <ui5-icon
+                    accessible-name="Collapse Node"
                     interactive="true"
                     name="navigation-down-arrow"
                     style="height: 0.75rem; width: 0.75rem; padding: 0.625rem; display: block;"
@@ -10278,7 +10595,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
               </div>
             </div>
             <div
-              aria-rowindex="1"
+              aria-rowindex="2"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 44px; transform: translateY(44px); position: absolute;"
@@ -10297,6 +10614,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
               </div>
               <div
                 aria-colindex="1"
+                aria-expanded="true"
                 class="AnalyticalTable-tableCell"
                 data-column-index="0"
                 data-row-index="2"
@@ -10308,10 +10626,13 @@ exports[`AnalyticalTable render subcomponents 1`] = `
                 tabindex="-1"
               >
                 <span
+                  aria-expanded="true"
+                  aria-label="To collapse the row, press the spacebar"
                   style="cursor: pointer;"
                   title="Toggle Row Expanded"
                 >
                   <ui5-icon
+                    accessible-name="Collapse Node"
                     interactive="true"
                     name="navigation-down-arrow"
                     style="height: 0.75rem; width: 0.75rem; padding: 0.625rem; display: block;"
@@ -10393,48 +10714,14 @@ exports[`AnalyticalTable render subcomponents 1`] = `
               </div>
             </div>
             <div
-              aria-rowindex="2"
+              aria-rowindex="3"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 44px; transform: translateY(88px); position: absolute;"
             >
               <div
                 aria-colindex="1"
-                class="AnalyticalTable-tableCell"
-                role="cell"
-                style="width: 150px; align-items: center;"
-                tabindex="-1"
-              />
-              <div
-                aria-colindex="2"
-                class="AnalyticalTable-tableCell"
-                role="cell"
-                style="width: 150px; align-items: center;"
-                tabindex="-1"
-              />
-              <div
-                aria-colindex="3"
-                class="AnalyticalTable-tableCell"
-                role="cell"
-                style="width: 150px; align-items: center;"
-                tabindex="-1"
-              />
-              <div
-                aria-colindex="4"
-                class="AnalyticalTable-tableCell"
-                role="cell"
-                style="width: 150px; align-items: center;"
-                tabindex="-1"
-              />
-            </div>
-            <div
-              aria-rowindex="3"
-              class="AnalyticalTable-tr"
-              role="row"
-              style="height: 44px; transform: translateY(132px); position: absolute;"
-            >
-              <div
-                aria-colindex="1"
+                aria-expanded="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
                 style="width: 150px; align-items: center;"
@@ -10466,10 +10753,47 @@ exports[`AnalyticalTable render subcomponents 1`] = `
               aria-rowindex="4"
               class="AnalyticalTable-tr"
               role="row"
+              style="height: 44px; transform: translateY(132px); position: absolute;"
+            >
+              <div
+                aria-colindex="1"
+                aria-expanded="false"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="width: 150px; align-items: center;"
+                tabindex="-1"
+              />
+              <div
+                aria-colindex="2"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="width: 150px; align-items: center;"
+                tabindex="-1"
+              />
+              <div
+                aria-colindex="3"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="width: 150px; align-items: center;"
+                tabindex="-1"
+              />
+              <div
+                aria-colindex="4"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="width: 150px; align-items: center;"
+                tabindex="-1"
+              />
+            </div>
+            <div
+              aria-rowindex="5"
+              class="AnalyticalTable-tr"
+              role="row"
               style="height: 44px; transform: translateY(176px); position: absolute;"
             >
               <div
                 aria-colindex="1"
+                aria-expanded="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
                 style="width: 150px; align-items: center;"
@@ -10511,6 +10835,7 @@ exports[`AnalyticalTable render without data 1`] = `
     style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column; visibility: hidden;"
   >
     <div
+      id="titlebar-1337"
       style="min-height: 1.5rem; display: flex; align-items: center;"
     >
       <ui5-title
@@ -10525,6 +10850,7 @@ exports[`AnalyticalTable render without data 1`] = `
     >
       <div
         aria-colcount="4"
+        aria-labelledby="titlebar-1337"
         aria-rowcount="0"
         class="AnalyticalTable-table sapScrollBar"
         data-component-name="AnalyticalTableContainer"
@@ -10722,6 +11048,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
       >
         <div
           aria-colcount="4"
+          aria-labelledby="titlebar-1337"
           aria-rowcount="8"
           class="AnalyticalTable-table sapScrollBar"
           data-component-name="AnalyticalTableContainer"
@@ -10902,10 +11229,11 @@ exports[`AnalyticalTable resize vertically 1`] = `
             style="position: relative; overflow-y: auto; height: 352px; width: 600px;"
           >
             <div
+              data-component-name="AnalyticalTableBodyScrollableContainer"
               style="position: relative; height: 352px; width: 600px;"
             >
               <div
-                aria-rowindex="0"
+                aria-rowindex="1"
                 class="AnalyticalTable-tr"
                 role="row"
                 style="height: 44px; transform: translateY(0px); position: absolute;"
@@ -10988,7 +11316,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                 </div>
               </div>
               <div
-                aria-rowindex="1"
+                aria-rowindex="2"
                 class="AnalyticalTable-tr"
                 role="row"
                 style="height: 44px; transform: translateY(44px); position: absolute;"
@@ -11071,7 +11399,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                 </div>
               </div>
               <div
-                aria-rowindex="2"
+                aria-rowindex="3"
                 class="AnalyticalTable-tr"
                 role="row"
                 style="height: 44px; transform: translateY(88px); position: absolute;"
@@ -11154,7 +11482,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                 </div>
               </div>
               <div
-                aria-rowindex="3"
+                aria-rowindex="4"
                 class="AnalyticalTable-tr"
                 role="row"
                 style="height: 44px; transform: translateY(132px); position: absolute;"
@@ -11237,7 +11565,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                 </div>
               </div>
               <div
-                aria-rowindex="4"
+                aria-rowindex="5"
                 class="AnalyticalTable-tr"
                 role="row"
                 style="height: 44px; transform: translateY(176px); position: absolute;"
@@ -11320,7 +11648,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                 </div>
               </div>
               <div
-                aria-rowindex="5"
+                aria-rowindex="6"
                 class="AnalyticalTable-tr"
                 role="row"
                 style="height: 44px; transform: translateY(220px); position: absolute;"
@@ -11403,7 +11731,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                 </div>
               </div>
               <div
-                aria-rowindex="6"
+                aria-rowindex="7"
                 class="AnalyticalTable-tr"
                 role="row"
                 style="height: 44px; transform: translateY(264px); position: absolute;"
@@ -11486,7 +11814,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                 </div>
               </div>
               <div
-                aria-rowindex="7"
+                aria-rowindex="8"
                 class="AnalyticalTable-tr"
                 role="row"
                 style="height: 44px; transform: translateY(308px); position: absolute;"
@@ -12834,6 +13162,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
     style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column; visibility: hidden;"
   >
     <div
+      id="titlebar-1337"
       style="min-height: 1.5rem; display: flex; align-items: center;"
     >
       <ui5-title
@@ -12848,6 +13177,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
     >
       <div
         aria-colcount="4"
+        aria-labelledby="titlebar-1337"
         aria-rowcount="5"
         class="AnalyticalTable-table sapScrollBar"
         data-component-name="AnalyticalTableContainer"
@@ -13028,10 +13358,11 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
           style="position: relative; overflow-y: auto; height: 220px; width: 600px;"
         >
           <div
+            data-component-name="AnalyticalTableBodyScrollableContainer"
             style="position: relative; height: 220px; width: 600px;"
           >
             <div
-              aria-rowindex="0"
+              aria-rowindex="1"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 44px; transform: translateY(0px); position: absolute;"
@@ -13114,7 +13445,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
               </div>
             </div>
             <div
-              aria-rowindex="1"
+              aria-rowindex="2"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 44px; transform: translateY(44px); position: absolute;"
@@ -13197,7 +13528,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
               </div>
             </div>
             <div
-              aria-rowindex="2"
+              aria-rowindex="3"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 44px; transform: translateY(88px); position: absolute;"
@@ -13232,7 +13563,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
               />
             </div>
             <div
-              aria-rowindex="3"
+              aria-rowindex="4"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 44px; transform: translateY(132px); position: absolute;"
@@ -13267,7 +13598,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
               />
             </div>
             <div
-              aria-rowindex="4"
+              aria-rowindex="5"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 44px; transform: translateY(176px); position: absolute;"
@@ -13315,6 +13646,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
     style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column; visibility: hidden;"
   >
     <div
+      id="titlebar-1337"
       style="min-height: 1.5rem; display: flex; align-items: center;"
     >
       <ui5-title
@@ -13329,6 +13661,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
     >
       <div
         aria-colcount="6"
+        aria-labelledby="titlebar-1337"
         aria-rowcount="2"
         class="AnalyticalTable-table sapScrollBar"
         data-component-name="AnalyticalTableContainer"
@@ -13571,16 +13904,19 @@ exports[`AnalyticalTable with highlight row 1`] = `
           style="position: relative; overflow-y: auto; height: 88px; width: 653px;"
         >
           <div
+            data-component-name="AnalyticalTableBodyScrollableContainer"
             style="position: relative; height: 88px; width: 653px;"
           >
             <div
-              aria-rowindex="0"
+              aria-rowindex="1"
               class="AnalyticalTable-tr AnalyticalTable-trActive"
               role="row"
               style="height: 44px; transform: translateY(0px); position: absolute;"
             >
               <div
                 aria-colindex="1"
+                aria-label="Success To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="0"
                 data-row-index="1"
@@ -13598,6 +13934,8 @@ exports[`AnalyticalTable with highlight row 1`] = `
               </div>
               <div
                 aria-colindex="2"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="1"
                 data-row-index="1"
@@ -13615,6 +13953,8 @@ exports[`AnalyticalTable with highlight row 1`] = `
               </div>
               <div
                 aria-colindex="3"
+                aria-label="Fra To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="2"
                 data-row-index="1"
@@ -13634,6 +13974,8 @@ exports[`AnalyticalTable with highlight row 1`] = `
               </div>
               <div
                 aria-colindex="4"
+                aria-label="40 To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="3"
                 data-row-index="1"
@@ -13653,6 +13995,8 @@ exports[`AnalyticalTable with highlight row 1`] = `
               </div>
               <div
                 aria-colindex="5"
+                aria-label="MAR To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="4"
                 data-row-index="1"
@@ -13672,6 +14016,8 @@ exports[`AnalyticalTable with highlight row 1`] = `
               </div>
               <div
                 aria-colindex="6"
+                aria-label="28 To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="5"
                 data-row-index="1"
@@ -13691,13 +14037,15 @@ exports[`AnalyticalTable with highlight row 1`] = `
               </div>
             </div>
             <div
-              aria-rowindex="1"
+              aria-rowindex="2"
               class="AnalyticalTable-tr AnalyticalTable-trActive"
               role="row"
               style="height: 44px; transform: translateY(44px); position: absolute;"
             >
               <div
                 aria-colindex="1"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="0"
                 data-row-index="2"
@@ -13714,6 +14062,8 @@ exports[`AnalyticalTable with highlight row 1`] = `
               </div>
               <div
                 aria-colindex="2"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="1"
                 data-row-index="2"
@@ -13731,6 +14081,8 @@ exports[`AnalyticalTable with highlight row 1`] = `
               </div>
               <div
                 aria-colindex="3"
+                aria-label="bla To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="2"
                 data-row-index="2"
@@ -13750,6 +14102,8 @@ exports[`AnalyticalTable with highlight row 1`] = `
               </div>
               <div
                 aria-colindex="4"
+                aria-label="20 To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="3"
                 data-row-index="2"
@@ -13769,6 +14123,8 @@ exports[`AnalyticalTable with highlight row 1`] = `
               </div>
               <div
                 aria-colindex="5"
+                aria-label="Nei To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="4"
                 data-row-index="2"
@@ -13788,6 +14144,8 @@ exports[`AnalyticalTable with highlight row 1`] = `
               </div>
               <div
                 aria-colindex="6"
+                aria-label="50 To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="5"
                 data-row-index="2"
@@ -13824,6 +14182,7 @@ exports[`AnalyticalTable with initial column order 1`] = `
     >
       <div
         aria-colcount="4"
+        aria-labelledby="titlebar-1337"
         aria-rowcount="5"
         class="AnalyticalTable-table sapScrollBar"
         data-component-name="AnalyticalTableContainer"
@@ -14004,10 +14363,11 @@ exports[`AnalyticalTable with initial column order 1`] = `
           style="position: relative; overflow-y: auto; height: 220px; width: 600px;"
         >
           <div
+            data-component-name="AnalyticalTableBodyScrollableContainer"
             style="position: relative; height: 220px; width: 600px;"
           >
             <div
-              aria-rowindex="0"
+              aria-rowindex="1"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 44px; transform: translateY(0px); position: absolute;"
@@ -14090,7 +14450,7 @@ exports[`AnalyticalTable with initial column order 1`] = `
               </div>
             </div>
             <div
-              aria-rowindex="1"
+              aria-rowindex="2"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 44px; transform: translateY(44px); position: absolute;"
@@ -14173,7 +14533,7 @@ exports[`AnalyticalTable with initial column order 1`] = `
               </div>
             </div>
             <div
-              aria-rowindex="2"
+              aria-rowindex="3"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 44px; transform: translateY(88px); position: absolute;"
@@ -14208,7 +14568,7 @@ exports[`AnalyticalTable with initial column order 1`] = `
               />
             </div>
             <div
-              aria-rowindex="3"
+              aria-rowindex="4"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 44px; transform: translateY(132px); position: absolute;"
@@ -14243,7 +14603,7 @@ exports[`AnalyticalTable with initial column order 1`] = `
               />
             </div>
             <div
-              aria-rowindex="4"
+              aria-rowindex="5"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 44px; transform: translateY(176px); position: absolute;"
@@ -14291,6 +14651,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
     style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column; visibility: hidden;"
   >
     <div
+      id="titlebar-1337"
       style="min-height: 1.5rem; display: flex; align-items: center;"
     >
       <ui5-title
@@ -14305,6 +14666,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
     >
       <div
         aria-colcount="4"
+        aria-labelledby="titlebar-1337"
         aria-rowcount="5"
         class="AnalyticalTable-table sapScrollBar"
         data-component-name="AnalyticalTableContainer"
@@ -14485,16 +14847,19 @@ exports[`AnalyticalTable without selection Column 1`] = `
           style="position: relative; overflow-y: auto; height: 220px; width: 600px;"
         >
           <div
+            data-component-name="AnalyticalTableBodyScrollableContainer"
             style="position: relative; height: 220px; width: 600px;"
           >
             <div
-              aria-rowindex="0"
+              aria-rowindex="1"
               class="AnalyticalTable-tr AnalyticalTable-trActive"
               role="row"
               style="height: 44px; transform: translateY(0px); position: absolute;"
             >
               <div
                 aria-colindex="1"
+                aria-label="Fra To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="0"
                 data-row-index="1"
@@ -14514,6 +14879,8 @@ exports[`AnalyticalTable without selection Column 1`] = `
               </div>
               <div
                 aria-colindex="2"
+                aria-label="40 To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="1"
                 data-row-index="1"
@@ -14533,6 +14900,8 @@ exports[`AnalyticalTable without selection Column 1`] = `
               </div>
               <div
                 aria-colindex="3"
+                aria-label="MAR To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="2"
                 data-row-index="1"
@@ -14552,6 +14921,8 @@ exports[`AnalyticalTable without selection Column 1`] = `
               </div>
               <div
                 aria-colindex="4"
+                aria-label="28 To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="3"
                 data-row-index="1"
@@ -14571,13 +14942,15 @@ exports[`AnalyticalTable without selection Column 1`] = `
               </div>
             </div>
             <div
-              aria-rowindex="1"
+              aria-rowindex="2"
               class="AnalyticalTable-tr AnalyticalTable-trActive"
               role="row"
               style="height: 44px; transform: translateY(44px); position: absolute;"
             >
               <div
                 aria-colindex="1"
+                aria-label="bla To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="0"
                 data-row-index="2"
@@ -14597,6 +14970,8 @@ exports[`AnalyticalTable without selection Column 1`] = `
               </div>
               <div
                 aria-colindex="2"
+                aria-label="20 To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="1"
                 data-row-index="2"
@@ -14616,6 +14991,8 @@ exports[`AnalyticalTable without selection Column 1`] = `
               </div>
               <div
                 aria-colindex="3"
+                aria-label="Nei To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="2"
                 data-row-index="2"
@@ -14635,6 +15012,8 @@ exports[`AnalyticalTable without selection Column 1`] = `
               </div>
               <div
                 aria-colindex="4"
+                aria-label="50 To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="3"
                 data-row-index="2"
@@ -14654,13 +15033,15 @@ exports[`AnalyticalTable without selection Column 1`] = `
               </div>
             </div>
             <div
-              aria-rowindex="2"
+              aria-rowindex="3"
               class="AnalyticalTable-tr"
               role="row"
               style="height: 44px; transform: translateY(88px); position: absolute;"
             >
               <div
                 aria-colindex="1"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
                 style="width: 150px; align-items: center;"
@@ -14668,6 +15049,8 @@ exports[`AnalyticalTable without selection Column 1`] = `
               />
               <div
                 aria-colindex="2"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
                 style="width: 150px; align-items: center;"
@@ -14675,6 +15058,8 @@ exports[`AnalyticalTable without selection Column 1`] = `
               />
               <div
                 aria-colindex="3"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
                 style="width: 150px; align-items: center;"
@@ -14682,41 +15067,8 @@ exports[`AnalyticalTable without selection Column 1`] = `
               />
               <div
                 aria-colindex="4"
-                class="AnalyticalTable-tableCell"
-                role="cell"
-                style="width: 150px; align-items: center;"
-                tabindex="-1"
-              />
-            </div>
-            <div
-              aria-rowindex="3"
-              class="AnalyticalTable-tr"
-              role="row"
-              style="height: 44px; transform: translateY(132px); position: absolute;"
-            >
-              <div
-                aria-colindex="1"
-                class="AnalyticalTable-tableCell"
-                role="cell"
-                style="width: 150px; align-items: center;"
-                tabindex="-1"
-              />
-              <div
-                aria-colindex="2"
-                class="AnalyticalTable-tableCell"
-                role="cell"
-                style="width: 150px; align-items: center;"
-                tabindex="-1"
-              />
-              <div
-                aria-colindex="3"
-                class="AnalyticalTable-tableCell"
-                role="cell"
-                style="width: 150px; align-items: center;"
-                tabindex="-1"
-              />
-              <div
-                aria-colindex="4"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
                 style="width: 150px; align-items: center;"
@@ -14727,10 +15079,12 @@ exports[`AnalyticalTable without selection Column 1`] = `
               aria-rowindex="4"
               class="AnalyticalTable-tr"
               role="row"
-              style="height: 44px; transform: translateY(176px); position: absolute;"
+              style="height: 44px; transform: translateY(132px); position: absolute;"
             >
               <div
                 aria-colindex="1"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
                 style="width: 150px; align-items: center;"
@@ -14738,6 +15092,8 @@ exports[`AnalyticalTable without selection Column 1`] = `
               />
               <div
                 aria-colindex="2"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
                 style="width: 150px; align-items: center;"
@@ -14745,6 +15101,8 @@ exports[`AnalyticalTable without selection Column 1`] = `
               />
               <div
                 aria-colindex="3"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
                 style="width: 150px; align-items: center;"
@@ -14752,6 +15110,51 @@ exports[`AnalyticalTable without selection Column 1`] = `
               />
               <div
                 aria-colindex="4"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="width: 150px; align-items: center;"
+                tabindex="-1"
+              />
+            </div>
+            <div
+              aria-rowindex="5"
+              class="AnalyticalTable-tr"
+              role="row"
+              style="height: 44px; transform: translateY(176px); position: absolute;"
+            >
+              <div
+                aria-colindex="1"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="width: 150px; align-items: center;"
+                tabindex="-1"
+              />
+              <div
+                aria-colindex="2"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="width: 150px; align-items: center;"
+                tabindex="-1"
+              />
+              <div
+                aria-colindex="3"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="width: 150px; align-items: center;"
+                tabindex="-1"
+              />
+              <div
+                aria-colindex="4"
+                aria-label=" To select the row, press the spacebar"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
                 style="width: 150px; align-items: center;"

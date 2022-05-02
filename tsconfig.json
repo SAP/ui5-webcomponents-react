@@ -4,7 +4,6 @@
     "module": "esnext",
     "target": "ES2015",
     "lib": ["es2019", "dom"],
-    "sourceMap": true,
     "jsx": "react",
     "baseUrl": ".",
     "paths": {

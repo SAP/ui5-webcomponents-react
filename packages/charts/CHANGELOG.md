@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.23.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.22.8...v0.23.0) (2022-04-22)
+
+
+### Features
+
+* update @ui5/webcomponents to 1.3.0 ([#2796](https://github.com/SAP/ui5-webcomponents-react/issues/2796)) ([21b2e9f](https://github.com/SAP/ui5-webcomponents-react/commit/21b2e9f153b0a9b9ca98d93a8dede41ef7a9aa40))
+
+
+
+
+
+## [0.22.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.22.5...v0.22.6) (2022-04-05)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-charts
+
+
+
+
+
+## [0.22.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.22.4...v0.22.5) (2022-03-31)
+
+
+### Features
+
+* support react 18 ([#2719](https://github.com/SAP/ui5-webcomponents-react/issues/2719)) ([e0f12d9](https://github.com/SAP/ui5-webcomponents-react/commit/e0f12d9514e067e644becaad5dc156459bf837ac))
+
+
+
+
+
 ## [0.22.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.22.2...v0.22.3) (2022-03-18)
 
 **Note:** Version bump only for package @ui5/webcomponents-react-charts

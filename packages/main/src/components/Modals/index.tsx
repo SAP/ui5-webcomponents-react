@@ -1,5 +1,5 @@
-import React, { createRef, ElementType, RefObject } from 'react';
-import ReactDOM from 'react-dom';
+import React, { createRef, ElementType, MutableRefObject, RefObject } from 'react';
+import * as ReactDOM from 'react-dom';
 import {
   Dialog,
   DialogDomRef,
@@ -16,6 +16,19 @@ import {
 } from '../../webComponents';
 import { MessageBox, MessageBoxPropTypes } from '../MessageBox';
 import { ThemeProvider } from '../ThemeProvider';
+
+// let createRoot;
+// if ('createRoot' in ReactDOM) {
+//   // eslint-disable-next-line @typescript-eslint/no-var-requires
+//   createRoot = require(/* webpackIgnore: true */ 'react-dom/client').createRoot;
+// }
+
+// ReactDOM@18 Root
+interface Root {
+  render(children: React.ReactChild | Iterable<React.ReactNode>): void;
+
+  unmount(): void;
+}
 
 type ModalReturnType<DomRef> = {
   ref: RefObject<DomRef>;
@@ -35,22 +48,37 @@ const getContainer = (givenContainer: HTMLElement) => {
   return container;
 };
 
-const unmountComponent = (container: HTMLElement) => {
-  ReactDOM.unmountComponentAtNode(container);
+const unmountComponent = (container: HTMLElement, root?: Root) => {
+  if (root) {
+    root.unmount();
+  } else {
+    ReactDOM.unmountComponentAtNode(container);
+  }
   if (container.hasAttribute('data-ui5wcr-modal')) {
     container.remove();
   }
 };
 
-const popupOnAfterCloseFactory = (props, container) => (event) => {
-  if (typeof props.onAfterClose === 'function') {
-    props.onAfterClose(event);
-  }
-  unmountComponent(container);
-};
-
-const render = (Element: ElementType, props: any, container: HTMLElement): Promise<void> => {
+const render = async (
+  Element: ElementType,
+  props: { ref: MutableRefObject<any> } & Record<string, unknown>,
+  container: HTMLElement
+): Promise<void | Root> => {
   return new Promise((resolve) => {
+    // if (createRoot) {
+    //   const root = createRoot(container);
+    //   root.render(
+    //     <ThemeProvider>
+    //       <Element
+    //         {...props}
+    //         ref={(el) => {
+    //           resolve(root);
+    //           props.ref.current = el;
+    //         }}
+    //       />
+    //     </ThemeProvider>
+    //   );
+    // } else {
     setTimeout(() => {
       ReactDOM.render(
         <ThemeProvider>
@@ -62,6 +90,7 @@ const render = (Element: ElementType, props: any, container: HTMLElement): Promi
         }
       );
     }, 0);
+    // }
   });
 };
 
@@ -77,16 +106,24 @@ export class Modals {
   public static showDialog(props: DialogPropTypes, container?: HTMLElement): ClosableModalReturnType<DialogDomRef> {
     const ref = createRef<DialogDomRef>();
     const domContainer = getContainer(container);
+    let root;
     render(
       Dialog,
       {
         ...props,
         ref,
         open: true,
-        onAfterClose: popupOnAfterCloseFactory(props, domContainer)
+        onAfterClose: (event) => {
+          if (typeof props.onAfterClose === 'function') {
+            props.onAfterClose(event);
+          }
+          unmountComponent(domContainer, root);
+        }
       },
       domContainer
-    );
+    ).then((componentRoot) => {
+      root = componentRoot;
+    });
 
     return {
       ref,
@@ -99,16 +136,24 @@ export class Modals {
   public static showPopover(props: PopoverPropTypes, container?: HTMLElement): ClosableModalReturnType<PopoverDomRef> {
     const ref = createRef<PopoverDomRef>();
     const domContainer = getContainer(container);
+    let root;
     render(
       Popover,
       {
         ...props,
         ref,
         open: true,
-        onAfterClose: popupOnAfterCloseFactory(props, domContainer)
+        onAfterClose: (event) => {
+          if (typeof props.onAfterClose === 'function') {
+            props.onAfterClose(event);
+          }
+          unmountComponent(domContainer, root);
+        }
       },
       domContainer
-    );
+    ).then((componentRoot) => {
+      root = componentRoot;
+    });
     return {
       ref,
       close: () => {
@@ -123,16 +168,24 @@ export class Modals {
   ): ClosableModalReturnType<ResponsivePopoverDomRef> {
     const ref = createRef<ResponsivePopoverDomRef>();
     const domContainer = getContainer(container);
+    let root;
     render(
       ResponsivePopover,
       {
         ...props,
         ref,
         open: true,
-        onAfterClose: popupOnAfterCloseFactory(props, domContainer)
+        onAfterClose: (event) => {
+          if (typeof props.onAfterClose === 'function') {
+            props.onAfterClose(event);
+          }
+          unmountComponent(domContainer, root);
+        }
       },
       domContainer
-    );
+    ).then((componentRoot) => {
+      root = componentRoot;
+    });
     return {
       ref,
       close: () => {
@@ -147,6 +200,7 @@ export class Modals {
   ): ClosableModalReturnType<DialogDomRef> {
     const ref = createRef<DialogDomRef>();
     const domContainer = getContainer(container);
+    let root;
     render(
       MessageBox,
       {
@@ -157,11 +211,13 @@ export class Modals {
           if (typeof props.onClose === 'function') {
             props.onClose(event);
           }
-          unmountComponent(domContainer);
+          unmountComponent(domContainer, root);
         }
       },
       domContainer
-    );
+    ).then((componentRoot) => {
+      root = componentRoot;
+    });
 
     return {
       ref,
@@ -174,10 +230,14 @@ export class Modals {
   public static showToast(props: ToastPropTypes, container?: HTMLElement): ModalReturnType<ToastDomRef> {
     const ref = createRef<ToastDomRef>();
     const domContainer = getContainer(container);
-    render(Toast, { ...props, ref }, domContainer).then(() => {
+    render(Toast, { ...props, ref }, domContainer).then((root) => {
       ref.current.show();
       setTimeout(() => {
-        unmountComponent(domContainer);
+        if (root) {
+          root.unmount();
+        } else {
+          unmountComponent(domContainer);
+        }
       }, props.duration ?? Toast.defaultProps.duration);
     });
 

@@ -1,8 +1,8 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
-import { ProductSwitch } from './index';
-import { ProductSwitchItem } from '../ProductSwitchItem';
 import React from 'react';
+import { ProductSwitchItem } from '../ProductSwitchItem';
+import { ProductSwitch } from './index';
 
 describe('ProductSwitch', () => {
   test('Basic Test (generated)', () => {

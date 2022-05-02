@@ -64,6 +64,9 @@ export interface DynamicPagePropTypes extends Omit<CommonProps, 'title'> {
     dynamicPageAnchorBar?: {
       role?: string;
     };
+    dynamicPageFooter?: {
+      role?: string;
+    };
   };
 }
 
@@ -181,10 +184,9 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
   };
 
   const onHoverToggleButton = (e) => {
-    // TODO background color should be sapObjectHeader_Hover_Background (same color as sapTile_Active_Background)
     if (topHeaderRef.current) {
       topHeaderRef.current.style.backgroundColor =
-        e?.type === 'mouseover' ? ThemingParameters.sapTile_Active_Background : null;
+        e?.type === 'mouseover' ? ThemingParameters.sapObjectHeader_Hover_Background : null;
     }
   };
 
@@ -251,7 +253,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
           topHeaderHeight
         })}
       <FlexBox
-        data-component-name="DynamicPageAnchorBar"
+        data-component-name="DynamicPageAnchorBarContainer"
         className={anchorBarClasses}
         ref={anchorBarRef}
         style={{
@@ -295,13 +297,14 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
         {children}
       </div>
       {footer && (
-        <footer
+        <div
           className={classes.footer}
           style={{ position: isOverflowing ? 'sticky' : 'absolute' }}
           data-component-name="DynamicPageFooter"
+          role={a11yConfig?.dynamicPageFooter?.role ?? 'contentinfo'}
         >
           {footer}
-        </footer>
+        </div>
       )}
     </div>
   );

@@ -65,6 +65,7 @@ export const styles = {
     maxWidth: '100%'
   },
   overflowButtonContainer: {
+    display: 'flex',
     marginRight: '0.5rem'
   },
   popover: {
@@ -72,8 +73,12 @@ export const styles = {
       padding: 0
     }
   },
+  popoverPhone: {
+    width: 'calc(100% - 10px)',
+    maxWidth: 'calc(100% - 10px)',
+    left: '5px !important'
+  },
   popoverContent: {
-    maxWidth: '20rem',
     padding: CssSizeVariables.sapWcrToolbarPopoverContentPadding,
     display: 'flex',
     flexDirection: 'column',
@@ -82,6 +87,9 @@ export const styles = {
     },
     '& [ui5-button]::part(button)': {
       justifyContent: 'flex-start'
+    },
+    '& [ui5-button][icon-only]::part(button)': {
+      padding: 'revert'
     },
     '& :last-child': {
       marginBottom: 0
