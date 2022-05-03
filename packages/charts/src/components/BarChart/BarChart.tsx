@@ -138,7 +138,6 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
     onClick,
     style,
     className,
-    tooltip,
     slot,
     syncId,
     ChartPlaceholder,
@@ -231,7 +230,6 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
       ref={componentRef}
       style={style}
       className={className}
-      tooltip={tooltip}
       slot={slot}
       resizeDebounce={chartConfig.resizeDebounce}
       {...propsWithoutOmitted}

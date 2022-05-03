@@ -24,7 +24,6 @@ import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { ChartContainer } from '../../internal/ChartContainer';
 import { defaultFormatter } from '../../internal/defaults';
 import { tickLineConfig, tooltipContentStyle, tooltipFillOpacity, xAxisPadding } from '../../internal/staticProps';
-import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { XAxisTicks } from '../../internal/XAxisTicks';
 import { YAxisTicks } from '../../internal/YAxisTicks';
 import { ScatterChartPlaceholder } from './Placeholder';
@@ -140,14 +139,11 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
     onClick,
     style,
     className,
-    tooltip,
     slot,
     ChartPlaceholder,
     children,
     ...rest
   } = props;
-
-  useDeprecationNoticeForTooltip('ScatterChart', props.tooltip);
 
   const chartConfig = {
     yAxisVisible: false,
@@ -221,7 +217,6 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
       ref={componentRef}
       style={style}
       className={className}
-      tooltip={tooltip}
       slot={slot}
       resizeDebounce={chartConfig.resizeDebounce}
       {...propsWithoutOmitted}

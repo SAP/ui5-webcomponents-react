@@ -28,7 +28,6 @@ import { ChartContainer } from '../../internal/ChartContainer';
 import { ChartDataLabel } from '../../internal/ChartDataLabel';
 import { defaultFormatter } from '../../internal/defaults';
 import { tickLineConfig, tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
-import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { getCellColors, resolvePrimaryAndSecondaryMeasures } from '../../internal/Utils';
 import { XAxisTicks } from '../../internal/XAxisTicks';
 import { YAxisTicks } from '../../internal/YAxisTicks';
@@ -133,15 +132,12 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
     layout,
     style,
     className,
-    tooltip,
     slot,
     syncId,
     ChartPlaceholder,
     children,
     ...rest
   } = props;
-
-  useDeprecationNoticeForTooltip('BulletChart', props.tooltip);
 
   const [componentRef, chartRef] = useSyncRef<any>(ref);
 
@@ -271,7 +267,6 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
       Placeholder={ChartPlaceholder ?? Placeholder}
       style={style}
       className={className}
-      tooltip={tooltip}
       slot={slot}
       resizeDebounce={chartConfig.resizeDebounce}
       {...propsWithoutOmitted}
