@@ -28,7 +28,13 @@ const columns = (columns, { instance }) => {
   const { hiddenColumns, tableClientWidth: totalWidth } = state;
   const { scaleWidthMode, loading } = instance.webComponentsReactProperties;
 
-  if (columns.length === 0 || !totalWidth) return columns;
+  if (
+    columns.length === 0 ||
+    !totalWidth ||
+    !TableScaleWidthMode[instance.webComponentsReactProperties.scaleWidthMode]
+  ) {
+    return columns;
+  }
 
   //map columns to visibleColumns
   const visibleColumns = instance.visibleColumns
