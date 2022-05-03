@@ -3,15 +3,15 @@ import { CustomThemingParameters } from '../../themes/CustomVariables';
 
 const styles = {
   header: {
-    borderBottom: `1px solid ${ThemingParameters.sapGroup_TitleBorderColor}`,
+    borderTop: CustomThemingParameters.ObjectPageSectionBorderTop,
     boxSizing: 'border-box',
-    height: '2.75rem'
+    height: '2.25rem'
   },
   title: {
-    height: '2.75rem',
-    color: ThemingParameters.sapTextColor,
+    height: '2.25rem',
+    lineHeight: '2.25rem',
+    color: ThemingParameters.sapGroup_TitleTextColor,
     fontSize: ThemingParameters.sapFontHeader4Size,
-    borderBottom: `1px solid ${ThemingParameters.sapActiveColor}`,
     display: 'inline-block',
     maxWidth: '100%',
     overflow: 'hidden',
