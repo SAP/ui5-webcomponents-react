@@ -11,12 +11,5 @@ export interface CommonProps extends HTMLAttributes<HTMLElement> {
    * Use this prop carefully, overwriting CSS rules might break the component.
    */
   className?: string;
-  /**
-   * A tooltip which will be shown on hover.
-   * This prop is deprecated as of v0.20.6, please use the native `title` prop instead.
-   *
-   * @deprecated please use `title` prop instead.
-   */
-  tooltip?: string;
   ref?: Ref<any>;
 }

@@ -31,7 +31,6 @@ import { ChartContainer } from '../../internal/ChartContainer';
 import { ChartDataLabel } from '../../internal/ChartDataLabel';
 import { defaultFormatter } from '../../internal/defaults';
 import { tickLineConfig, tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
-import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { getCellColors, resolvePrimaryAndSecondaryMeasures } from '../../internal/Utils';
 import { XAxisTicks } from '../../internal/XAxisTicks';
 import { YAxisTicks } from '../../internal/YAxisTicks';
@@ -144,8 +143,6 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
     children,
     ...rest
   } = props;
-
-  useDeprecationNoticeForTooltip('BarChart', props.tooltip);
 
   const chartConfig = {
     margin: {},
