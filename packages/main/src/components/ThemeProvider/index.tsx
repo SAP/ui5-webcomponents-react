@@ -6,7 +6,9 @@ import { createUseStyles, ThemeProvider as ReactJssThemeProvider } from 'react-j
 import { I18nProvider } from '../../internal/I18nProvider';
 import { GlobalStyleClassesStyles } from './GlobalStyleClasses.jss';
 
-const useStyles = createUseStyles(GlobalStyleClassesStyles);
+const useStyles = createUseStyles(GlobalStyleClassesStyles, {
+  name: 'ThemeProvider'
+});
 
 const cssVarsPonyfillNeeded = () => !!window.CSSVarsPonyfill;
 
