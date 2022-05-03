@@ -24,4 +24,4 @@ jobs:
           Hey there, it's me again! 
           I am going close this issue to help our maintainers focus on the current development roadmap instead. 
           If the issue mentioned is still a concern, please open a new ticket and mention this old one. 
-        any-of-labels: 'author action'
+        any-of-labels: 'author action,wontfix'
