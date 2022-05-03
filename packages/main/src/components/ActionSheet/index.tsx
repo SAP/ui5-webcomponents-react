@@ -7,7 +7,6 @@ import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
 import { ButtonDesign } from '../../enums/ButtonDesign';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
-import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { Button, ButtonPropTypes } from '../../webComponents/Button';
 import {
   ResponsivePopover,
@@ -107,8 +106,6 @@ const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: Ref<Responsive
     onBeforeOpen,
     ...rest
   } = props;
-
-  useDeprecationNoticeForTooltip('ActionSheet', props.tooltip);
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const classes = useStyles();

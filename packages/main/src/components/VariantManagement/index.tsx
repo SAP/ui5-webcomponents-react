@@ -38,7 +38,6 @@ import { TitleLevel } from '../../enums/TitleLevel';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { stopPropagation } from '../../internal/stopPropagation';
-import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { SelectedVariant, VariantManagementContext } from '../../internal/VariantManagementContext';
 import { Bar } from '../../webComponents/Bar';
 import { Button } from '../../webComponents/Button';
@@ -232,7 +231,6 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
     titleText = i18nBundle.getText(MY_VIEWS),
     className,
     style,
-    tooltip,
     placement,
     level,
     onSelect,
@@ -255,8 +253,6 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
     portalContainer,
     ...rest
   } = props;
-
-  useDeprecationNoticeForTooltip('VariantManagement', props.tooltip);
 
   const classes = useStyles();
   const popoverRef = useRef<ResponsivePopoverDomRef>(null);
@@ -452,7 +448,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
   const showSaveBtn = dirtyState && !selectedVariant?.readOnly;
 
   return (
-    <div className={variantManagementClasses} style={style} title={tooltip} {...rest} ref={ref}>
+    <div className={variantManagementClasses} style={style} {...rest} ref={ref}>
       <VariantManagementContext.Provider
         value={{
           selectVariantItem: setSelectedVariant

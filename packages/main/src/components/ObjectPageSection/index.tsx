@@ -1,7 +1,6 @@
 import React, { forwardRef, ReactNode, RefObject } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { EmptyIdPropException } from '../ObjectPage/EmptyIdPropException';
 import styles from './ObjectPageSection.jss';
 import clsx from 'clsx';
@@ -31,9 +30,7 @@ const useStyles = createUseStyles(styles, { name: 'ObjectPageSection' });
  * Top-level information container of an `ObjectPage`.
  */
 const ObjectPageSection = forwardRef((props: ObjectPageSectionPropTypes, ref: RefObject<HTMLElement>) => {
-  const { titleText, id, children, titleTextUppercase, className, style, tooltip, ...rest } = props;
-
-  useDeprecationNoticeForTooltip('ObjectPageSection', props.tooltip);
+  const { titleText, id, children, titleTextUppercase, className, style, ...rest } = props;
 
   const classes = useStyles();
 
@@ -50,7 +47,6 @@ const ObjectPageSection = forwardRef((props: ObjectPageSectionPropTypes, ref: Re
       role="region"
       className={className}
       style={style}
-      title={tooltip}
       {...rest}
       id={htmlId}
       data-component-name="ObjectPageSection"

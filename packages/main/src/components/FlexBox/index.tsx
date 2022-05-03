@@ -6,7 +6,6 @@ import { FlexBoxDirection } from '../../enums/FlexBoxDirection';
 import { FlexBoxJustifyContent } from '../../enums/FlexBoxJustifyContent';
 import { FlexBoxWrap } from '../../enums/FlexBoxWrap';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { styles } from './FlexBox.jss';
 
 const useStyles = createUseStyles(styles, { name: 'FlexBox' });
@@ -65,14 +64,11 @@ const FlexBox = forwardRef((props: FlexBoxPropTypes, ref: Ref<HTMLDivElement>) =
     wrap,
     style,
     className,
-    tooltip,
     fitContainer,
     slot,
     as,
     ...rest
   } = props;
-
-  useDeprecationNoticeForTooltip('FlexBox', props.tooltip);
 
   const classes = useStyles();
   const flexBoxClasses = clsx(
@@ -88,7 +84,7 @@ const FlexBox = forwardRef((props: FlexBoxPropTypes, ref: Ref<HTMLDivElement>) =
 
   const CustomTag = as as React.ElementType;
   return (
-    <CustomTag ref={ref} className={flexBoxClasses} style={style} title={tooltip} slot={slot} {...rest}>
+    <CustomTag ref={ref} className={flexBoxClasses} style={style} slot={slot} {...rest}>
       {children}
     </CustomTag>
   );

@@ -3,7 +3,6 @@ import { CommonProps } from '../../interfaces/CommonProps';
 import clsx from 'clsx';
 import React, { forwardRef, ReactNode, Ref, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
-import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { DynamicPageHeaderStyles } from './DynamicPageHeader.jss';
 
 export interface DynamicPageHeaderPropTypes extends CommonProps {
@@ -31,8 +30,7 @@ const useStyles = createUseStyles(DynamicPageHeaderStyles, { name: 'DynamicPageH
  * This component can be collapsed and pinned by the anchorbar.
  */
 const DynamicPageHeader = forwardRef((props: InternalProps, ref: Ref<HTMLDivElement>) => {
-  const { children, headerPinned, topHeaderHeight, tooltip, className, style, ...rest } = props;
-  useDeprecationNoticeForTooltip('DynamicPageHeader', props.tooltip);
+  const { children, headerPinned, topHeaderHeight, className, style, ...rest } = props;
 
   const headerStyles = useMemo(() => {
     if (headerPinned) {
@@ -49,14 +47,7 @@ const DynamicPageHeader = forwardRef((props: InternalProps, ref: Ref<HTMLDivElem
   const classNames = clsx(classes.header, className, Device.isIE() && classes.iEClass);
 
   return (
-    <div
-      title={tooltip}
-      ref={ref}
-      {...rest}
-      className={classNames}
-      data-component-name="DynamicPageHeader"
-      style={headerStyles}
-    >
+    <div ref={ref} {...rest} className={classNames} data-component-name="DynamicPageHeader" style={headerStyles}>
       {children}
     </div>
   );

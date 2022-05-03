@@ -15,7 +15,6 @@ import React, {
 import { createUseStyles } from 'react-jss';
 import { TitleLevel } from '../../enums/TitleLevel';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { Title } from '../../webComponents/Title';
 import { styles } from './Form.jss';
 
@@ -112,7 +111,6 @@ const Form = forwardRef((props: FormPropTypes, ref: Ref<HTMLFormElement>) => {
     className,
     slot,
     style,
-    tooltip,
     columnsS,
     columnsM,
     columnsL,
@@ -124,8 +122,6 @@ const Form = forwardRef((props: FormPropTypes, ref: Ref<HTMLFormElement>) => {
     as,
     ...rest
   } = props;
-
-  useDeprecationNoticeForTooltip('Form', props.tooltip);
 
   const columnsMap = new Map();
   columnsMap.set('Phone', columnsS);
@@ -273,7 +269,6 @@ const Form = forwardRef((props: FormPropTypes, ref: Ref<HTMLFormElement>) => {
       ref={componentRef}
       slot={slot}
       className={formClassNames}
-      title={tooltip}
       style={style}
       data-columns={currentNumberOfColumns}
       {...rest}

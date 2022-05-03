@@ -31,7 +31,6 @@ import { MessageBoxTypes } from '../../enums/MessageBoxTypes';
 import { TitleLevel } from '../../enums/TitleLevel';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { stopPropagation } from '../../internal/stopPropagation';
-import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { Button, ButtonPropTypes } from '../../webComponents/Button';
 import { Dialog, DialogDomRef, DialogPropTypes } from '../../webComponents/Dialog';
 import { Icon } from '../../webComponents/Icon';
@@ -150,7 +149,6 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<DialogDomRef
     children,
     className,
     style,
-    tooltip,
     slot,
     titleText,
     icon,
@@ -161,8 +159,6 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<DialogDomRef
     accessibleName,
     ...rest
   } = props;
-
-  useDeprecationNoticeForTooltip('MessageBox', props.tooltip);
 
   const classes = useStyles();
 
@@ -235,7 +231,7 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<DialogDomRef
       slot={slot}
       ref={ref}
       style={style}
-      title={tooltip ?? props.title}
+      title={props.title}
       className={messageBoxClassNames}
       onAfterClose={open ? handleOnClose : stopPropagation}
       {...restWithoutOmitted}

@@ -19,7 +19,6 @@ import React, { forwardRef, RefObject, useCallback } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
-import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { Button } from '../../webComponents/Button';
 import { ToggleButton } from '../../webComponents/ToggleButton';
 
@@ -158,7 +157,6 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
     style,
     a11yConfig
   } = props;
-  useDeprecationNoticeForTooltip('DynamicPageAnchorBar', props.tooltip);
 
   const classes = useStyles();
   const [componentRef, anchorBarRef] = useSyncRef<HTMLElement>(ref);

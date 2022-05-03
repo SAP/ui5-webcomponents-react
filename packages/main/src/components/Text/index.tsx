@@ -1,7 +1,6 @@
 import { createUseStyles } from 'react-jss';
 import React, { forwardRef, ReactNode, Ref } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { TextStyles } from './Text.jss';
 import clsx from 'clsx';
 
@@ -26,9 +25,7 @@ const useStyles = createUseStyles(TextStyles, { name: 'Text' });
  * <br />__Note:__ Line breaks will always be visualized except when the wrapping property is set to false. In addition, tabs and whitespace can be preserved by setting the renderWhitespace property to true.
  */
 const Text = forwardRef((props: TextPropTypes, ref: Ref<HTMLSpanElement>) => {
-  const { children, renderWhitespace, wrapping, className, style, tooltip, slot, ...rest } = props;
-
-  useDeprecationNoticeForTooltip('Text', props.tooltip);
+  const { children, renderWhitespace, wrapping, className, style, slot, ...rest } = props;
 
   const classes = useStyles();
   const classNameString = clsx(
@@ -39,7 +36,7 @@ const Text = forwardRef((props: TextPropTypes, ref: Ref<HTMLSpanElement>) => {
   );
 
   return (
-    <span ref={ref} style={style} className={classNameString} title={tooltip} slot={slot} {...rest}>
+    <span ref={ref} style={style} className={classNameString} slot={slot} {...rest}>
       {children}
     </span>
   );

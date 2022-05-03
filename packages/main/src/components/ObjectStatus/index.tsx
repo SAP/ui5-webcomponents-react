@@ -8,7 +8,6 @@ import { createUseStyles } from 'react-jss';
 import { IndicationColor } from '../../enums/IndicationColor';
 import { ValueState } from '../../enums/ValueState';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { Icon } from '../../webComponents/Icon';
 import styles from './ObjectStatus.jss';
 
@@ -83,10 +82,7 @@ const useStyles = createUseStyles(styles, { name: 'ObjectStatus' });
  * Status information that can be either text with a value state, or an icon.
  */
 const ObjectStatus = forwardRef((props: ObjectStatusPropTypes, ref: Ref<HTMLDivElement>) => {
-  const { state, showDefaultIcon, children, icon, className, style, tooltip, active, inverted, onClick, ...rest } =
-    props;
-
-  useDeprecationNoticeForTooltip('ObjectStatus', props.tooltip);
+  const { state, showDefaultIcon, children, icon, className, style, active, inverted, onClick, ...rest } = props;
 
   const iconToRender = (() => {
     if (icon) {
@@ -108,14 +104,7 @@ const ObjectStatus = forwardRef((props: ObjectStatusPropTypes, ref: Ref<HTMLDivE
   );
 
   return (
-    <div
-      ref={ref}
-      className={objStatusClasses}
-      style={style}
-      title={tooltip}
-      onClick={active ? onClick : undefined}
-      {...rest}
-    >
+    <div ref={ref} className={objStatusClasses} style={style} onClick={active ? onClick : undefined} {...rest}>
       {iconToRender && <span className={classes.icon}>{iconToRender}</span>}
       {children && <span className={classes.text}>{children}</span>}
     </div>

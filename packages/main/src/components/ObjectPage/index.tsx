@@ -29,7 +29,6 @@ import { CommonProps } from '../../interfaces/CommonProps';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
 import { safeGetChildrenArray } from '../../internal/safeGetChildrenArray';
 import { stopPropagation } from '../../internal/stopPropagation';
-import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { useObserveHeights } from '../../internal/useObserveHeights';
 import { AvatarPropTypes } from '../../webComponents/Avatar';
 import { List } from '../../webComponents/List';
@@ -168,7 +167,6 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     imageShapeCircle,
     className,
     style,
-    tooltip,
     slot,
     showHideHeaderButton,
     children,
@@ -183,8 +181,6 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     portalContainer,
     ...rest
   } = props;
-
-  useDeprecationNoticeForTooltip('ObjectPage', props.tooltip);
 
   const classes = useStyles();
 
@@ -730,7 +726,6 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
       className={objectPageClasses}
       style={style}
       ref={componentRef}
-      title={tooltip}
       onScroll={onObjectPageScroll}
       {...propsWithoutOmitted}
     >
