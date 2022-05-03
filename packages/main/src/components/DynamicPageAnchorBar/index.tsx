@@ -30,13 +30,15 @@ const anchorBarStyles = {
     zIndex: 3,
     '--_ui5_button_base_min_width': '1.5rem',
     '--_ui5_button_base_height': '1.5rem',
-    backgroundColor: ThemingParameters.sapObjectHeader_Background,
     '&:before, &:after': {
       content: '""',
       position: 'absolute',
       width: '4rem',
       top: '50%',
       height: '0.0625rem'
+    },
+    '&:not([pressed])': {
+      backgroundColor: ThemingParameters.sapObjectHeader_Background
     },
     '&:before': {
       right: '100%',
@@ -55,10 +57,7 @@ const anchorBarStyles = {
   anchorBarActionButtonPinnable: {},
   anchorBarActionPinnableAndExpandable: {
     '&$anchorBarActionButtonPinnable': {
-      marginLeft: '0.25rem',
-      '&:before': {
-        backgroundColor: 'white'
-      }
+      marginLeft: '0.25rem'
     },
     '&$anchorBarActionButtonExpandable': {
       marginLeft: '-1.75rem'
@@ -66,10 +65,7 @@ const anchorBarStyles = {
   },
   anchorBarActionPinnableAndExpandableRtl: {
     '&$anchorBarActionButtonPinnable': {
-      marginRight: '0.25rem',
-      '&:before': {
-        backgroundColor: 'white'
-      }
+      marginRight: '0.25rem'
     },
     '&$anchorBarActionButtonExpandable': {
       marginRight: '-1.75rem'
