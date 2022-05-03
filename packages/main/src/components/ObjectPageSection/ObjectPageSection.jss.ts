@@ -1,4 +1,5 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
+import { CustomThemingParameters } from '../../themes/CustomVariables';
 
 const styles = {
   header: {
@@ -16,7 +17,7 @@ const styles = {
     overflow: 'hidden',
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis',
-    fontFamily: ThemingParameters.sapFontFamily
+    fontFamily: CustomThemingParameters.ObjectPageSectionTitleFontFamily
   },
   uppercase: {
     textTransform: 'uppercase'

@@ -1,5 +1,7 @@
-import { cssVariablesStyles, ThemingParameters } from '@ui5/webcomponents-react-base';
-import React, { FC, ReactNode, useEffect } from 'react';
+import { getTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
+import { attachThemeLoaded, detachThemeLoaded } from '@ui5/webcomponents-base/dist/theming/ThemeLoaded.js';
+import { ThemingParameters, useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base';
+import React, { FC, ReactNode, useEffect, useState } from 'react';
 import { createUseStyles, ThemeProvider as ReactJssThemeProvider } from 'react-jss';
 import { I18nProvider } from '../../internal/I18nProvider';
 import { GlobalStyleClassesStyles } from './GlobalStyleClasses.jss';
@@ -12,17 +14,21 @@ export interface ThemeProviderPropTypes {
   children: ReactNode;
 }
 
-// inject the size variables first before the ThemeProvider Component is mounted, otherwise there will be some flickering
-if (!document.querySelector('style[data-ui5-webcomponents-react-sizes]')) {
-  const variables = document.createElement('style');
-  variables.setAttribute('data-ui5-webcomponents-react-sizes', '');
-  variables.innerHTML = cssVariablesStyles;
-  document.head.appendChild(variables);
-}
-
 const ThemeProvider: FC<ThemeProviderPropTypes> = (props: ThemeProviderPropTypes) => {
   const { children } = props;
+  const [theme, setTheme] = useState<string>(() => getTheme());
   useStyles();
+
+  useIsomorphicLayoutEffect(() => {
+    attachThemeLoaded(setTheme);
+    return () => {
+      detachThemeLoaded(setTheme);
+    };
+  }, []);
+
+  useIsomorphicLayoutEffect(() => {
+    document.documentElement.setAttribute('data-sap-theme', theme);
+  }, [theme]);
 
   useEffect(() => {
     if (cssVarsPonyfillNeeded()) {
