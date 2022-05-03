@@ -5,6 +5,7 @@ exports[`ObjectPage Default with Sections 1`] = `
   <div
     class="ObjectPage-objectPage sapScrollBar"
     data-component-name="ObjectPage"
+    style="--ui5wcr_DynamicPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);"
   >
     <header
       aria-roledescription="Object Page header"
@@ -158,6 +159,7 @@ exports[`ObjectPage Default with SubSections 1`] = `
   <div
     class="ObjectPage-objectPage sapScrollBar"
     data-component-name="ObjectPage"
+    style="--ui5wcr_DynamicPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);"
   >
     <header
       aria-roledescription="Object Page header"
@@ -312,7 +314,7 @@ exports[`ObjectPage Default with SubSections 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -333,7 +335,7 @@ exports[`ObjectPage Default with SubSections 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -354,7 +356,7 @@ exports[`ObjectPage Default with SubSections 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -402,7 +404,7 @@ exports[`ObjectPage Default with SubSections 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -423,7 +425,7 @@ exports[`ObjectPage Default with SubSections 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -444,7 +446,7 @@ exports[`ObjectPage Default with SubSections 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -470,6 +472,7 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
   <div
     class="ObjectPage-objectPage sapScrollBar ObjectPage-iconTabBarMode"
     data-component-name="ObjectPage"
+    style="--ui5wcr_DynamicPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);"
   >
     <header
       aria-roledescription="Object Page header"
@@ -562,7 +565,7 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -583,7 +586,7 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -604,7 +607,7 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -630,6 +633,7 @@ exports[`ObjectPage Not crashing with 0 sections 1`] = `
   <div
     class="ObjectPage-objectPage sapScrollBar ObjectPage-iconTabBarMode"
     data-component-name="ObjectPage"
+    style="--ui5wcr_DynamicPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);"
   >
     <header
       aria-roledescription="Object Page header"
@@ -667,6 +671,7 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
   <div
     class="ObjectPage-objectPage sapScrollBar"
     data-component-name="ObjectPage"
+    style="--ui5wcr_DynamicPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);"
   >
     <header
       aria-roledescription="Object Page header"
@@ -740,6 +745,7 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
   <div
     class="ObjectPage-objectPage sapScrollBar ObjectPage-iconTabBarMode"
     data-component-name="ObjectPage"
+    style="--ui5wcr_DynamicPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);"
   >
     <header
       aria-roledescription="Object Page header"
@@ -813,6 +819,7 @@ exports[`ObjectPage with IllustratedMessage 1`] = `
   <div
     class="ObjectPage-objectPage sapScrollBar"
     data-component-name="ObjectPage"
+    style="--ui5wcr_DynamicPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);"
   >
     <header
       aria-roledescription="Object Page header"
@@ -889,6 +896,7 @@ exports[`ObjectPage with anchor-bar 1`] = `
   <div
     class="ObjectPage-objectPage sapScrollBar"
     data-component-name="ObjectPage"
+    style="--ui5wcr_DynamicPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);"
   >
     <header
       aria-roledescription="Object Page header"
@@ -1102,7 +1110,7 @@ exports[`ObjectPage with anchor-bar 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -1123,7 +1131,7 @@ exports[`ObjectPage with anchor-bar 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -1144,7 +1152,7 @@ exports[`ObjectPage with anchor-bar 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -1192,7 +1200,7 @@ exports[`ObjectPage with anchor-bar 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -1213,7 +1221,7 @@ exports[`ObjectPage with anchor-bar 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -1234,7 +1242,7 @@ exports[`ObjectPage with anchor-bar 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -1280,6 +1288,7 @@ exports[`ObjectPage with footer 1`] = `
   <div
     class="ObjectPage-objectPage sapScrollBar"
     data-component-name="ObjectPage"
+    style="--ui5wcr_DynamicPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);"
   >
     <header
       aria-roledescription="Object Page header"
@@ -1434,7 +1443,7 @@ exports[`ObjectPage with footer 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -1455,7 +1464,7 @@ exports[`ObjectPage with footer 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -1476,7 +1485,7 @@ exports[`ObjectPage with footer 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -1524,7 +1533,7 @@ exports[`ObjectPage with footer 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -1545,7 +1554,7 @@ exports[`ObjectPage with footer 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -1566,7 +1575,7 @@ exports[`ObjectPage with footer 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -1612,6 +1621,7 @@ exports[`ObjectPage with header 1`] = `
   <div
     class="ObjectPage-objectPage sapScrollBar"
     data-component-name="ObjectPage"
+    style="--ui5wcr_DynamicPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);"
   >
     <header
       aria-roledescription="Object Page header"
@@ -1781,7 +1791,7 @@ exports[`ObjectPage with header 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -1802,7 +1812,7 @@ exports[`ObjectPage with header 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -1823,7 +1833,7 @@ exports[`ObjectPage with header 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -1871,7 +1881,7 @@ exports[`ObjectPage with header 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -1892,7 +1902,7 @@ exports[`ObjectPage with header 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -1913,7 +1923,7 @@ exports[`ObjectPage with header 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -1939,6 +1949,7 @@ exports[`ObjectPage with img 1`] = `
   <div
     class="ObjectPage-objectPage sapScrollBar"
     data-component-name="ObjectPage"
+    style="--ui5wcr_DynamicPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);"
   >
     <header
       aria-roledescription="Object Page header"
@@ -2167,7 +2178,7 @@ exports[`ObjectPage with img 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -2188,7 +2199,7 @@ exports[`ObjectPage with img 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -2209,7 +2220,7 @@ exports[`ObjectPage with img 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -2257,7 +2268,7 @@ exports[`ObjectPage with img 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -2278,7 +2289,7 @@ exports[`ObjectPage with img 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -2299,7 +2310,7 @@ exports[`ObjectPage with img 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -2345,6 +2356,7 @@ exports[`ObjectPage with img 2`] = `
   <div
     class="ObjectPage-objectPage sapScrollBar"
     data-component-name="ObjectPage"
+    style="--ui5wcr_DynamicPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);"
   >
     <header
       aria-roledescription="Object Page header"
@@ -2563,7 +2575,7 @@ exports[`ObjectPage with img 2`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -2584,7 +2596,7 @@ exports[`ObjectPage with img 2`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -2605,7 +2617,7 @@ exports[`ObjectPage with img 2`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -2653,7 +2665,7 @@ exports[`ObjectPage with img 2`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -2674,7 +2686,7 @@ exports[`ObjectPage with img 2`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -2695,7 +2707,7 @@ exports[`ObjectPage with img 2`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -2741,6 +2753,7 @@ exports[`ObjectPage with title 1`] = `
   <div
     class="ObjectPage-objectPage sapScrollBar"
     data-component-name="ObjectPage"
+    style="--ui5wcr_DynamicPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);"
   >
     <header
       aria-roledescription="Object Page header"
@@ -2918,7 +2931,7 @@ exports[`ObjectPage with title 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -2939,7 +2952,7 @@ exports[`ObjectPage with title 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -2960,7 +2973,7 @@ exports[`ObjectPage with title 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -3008,7 +3021,7 @@ exports[`ObjectPage with title 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -3029,7 +3042,7 @@ exports[`ObjectPage with title 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -3050,7 +3063,7 @@ exports[`ObjectPage with title 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -3076,6 +3089,7 @@ exports[`ObjectPage with title, header & footer 1`] = `
   <div
     class="ObjectPage-objectPage sapScrollBar"
     data-component-name="ObjectPage"
+    style="--ui5wcr_DynamicPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);"
   >
     <header
       aria-roledescription="Object Page header"
@@ -3278,7 +3292,7 @@ exports[`ObjectPage with title, header & footer 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -3299,7 +3313,7 @@ exports[`ObjectPage with title, header & footer 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -3320,7 +3334,7 @@ exports[`ObjectPage with title, header & footer 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -3368,7 +3382,7 @@ exports[`ObjectPage with title, header & footer 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -3389,7 +3403,7 @@ exports[`ObjectPage with title, header & footer 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -3410,7 +3424,7 @@ exports[`ObjectPage with title, header & footer 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >

@@ -4,6 +4,7 @@ exports[`DynamicPage always show content header 1`] = `
 <DocumentFragment>
   <div
     class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundSolid"
+    style="--ui5wcr_DynamicPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);"
   >
     <div
       class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container StdExtPadding-Desktop"
@@ -198,7 +199,7 @@ exports[`DynamicPage always show content header 1`] = `
         class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
       >
         <div
-          class="DynamicPageTitle-subTitleBottom"
+          class="DynamicPageTitle-subTitle DynamicPageTitle-subTitleBottom"
           data-component-name="DynamicPageTitleSubHeader"
         >
           <ui5-label
@@ -286,6 +287,7 @@ exports[`DynamicPage hider header button 1`] = `
 <DocumentFragment>
   <div
     class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundSolid"
+    style="--ui5wcr_DynamicPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);"
   >
     <div
       class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container StdExtPadding-Desktop"
@@ -384,7 +386,7 @@ exports[`DynamicPage hider header button 1`] = `
         class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
       >
         <div
-          class="DynamicPageTitle-subTitleBottom"
+          class="DynamicPageTitle-subTitle DynamicPageTitle-subTitleBottom"
           data-component-name="DynamicPageTitleSubHeader"
         >
           <ui5-label
@@ -641,6 +643,7 @@ exports[`DynamicPage render footer 1`] = `
 <DocumentFragment>
   <div
     class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundSolid"
+    style="--ui5wcr_DynamicPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);"
   >
     <div
       class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPage-anchorBar"
@@ -695,6 +698,7 @@ exports[`DynamicPage with content 1`] = `
 <DocumentFragment>
   <div
     class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundSolid"
+    style="--ui5wcr_DynamicPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);"
   >
     <div
       class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container StdExtPadding-Desktop"
@@ -889,7 +893,7 @@ exports[`DynamicPage with content 1`] = `
         class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
       >
         <div
-          class="DynamicPageTitle-subTitleBottom"
+          class="DynamicPageTitle-subTitle DynamicPageTitle-subTitleBottom"
           data-component-name="DynamicPageTitleSubHeader"
         >
           <ui5-label
@@ -1689,6 +1693,7 @@ exports[`DynamicPage without content 1`] = `
 <DocumentFragment>
   <div
     class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundSolid"
+    style="--ui5wcr_DynamicPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);"
   >
     <div
       class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container StdExtPadding-Desktop"
@@ -1883,7 +1888,7 @@ exports[`DynamicPage without content 1`] = `
         class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
       >
         <div
-          class="DynamicPageTitle-subTitleBottom"
+          class="DynamicPageTitle-subTitle DynamicPageTitle-subTitleBottom"
           data-component-name="DynamicPageTitleSubHeader"
         >
           <ui5-label
