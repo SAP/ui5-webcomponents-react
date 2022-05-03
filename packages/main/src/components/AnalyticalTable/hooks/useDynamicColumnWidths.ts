@@ -28,11 +28,7 @@ const columns = (columns, { instance }) => {
   const { hiddenColumns, tableClientWidth: totalWidth } = state;
   const { scaleWidthMode, loading } = instance.webComponentsReactProperties;
 
-  if (
-    columns.length === 0 ||
-    !totalWidth ||
-    !TableScaleWidthMode[instance.webComponentsReactProperties.scaleWidthMode]
-  ) {
+  if (columns.length === 0 || !totalWidth || !TableScaleWidthMode[scaleWidthMode]) {
     return columns;
   }
 
