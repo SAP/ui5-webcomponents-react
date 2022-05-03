@@ -15,7 +15,7 @@ import { CommonProps } from '../../interfaces/CommonProps';
 import { useObserveHeights } from '../../internal/useObserveHeights';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
 import { FlexBox } from '../FlexBox';
-import { styles } from './DynamicPage.jss';
+import { DynamicPageCssVariables, styles } from './DynamicPage.jss';
 
 export interface DynamicPagePropTypes extends Omit<CommonProps, 'title'> {
   /**
@@ -117,15 +117,6 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
     alwaysShowContentHeader ? HEADER_STATES.VISIBLE_PINNED : Device.isIE() ? HEADER_STATES.VISIBLE : HEADER_STATES.AUTO
   );
 
-  const classes = useStyles();
-  const dynamicPageClasses = clsx(
-    classes.dynamicPage,
-    GlobalStyleClasses.sapScrollBar,
-    classes[`background${backgroundDesign}`],
-    className,
-    [HEADER_STATES.HIDDEN, HEADER_STATES.HIDDEN_PINNED].includes(headerState) && classes.headerCollapsed
-  );
-
   // observe heights of header parts
   const { topHeaderHeight, headerContentHeight } = useObserveHeights(
     dynamicPageRef,
@@ -135,6 +126,15 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
     { noHeader: false }
   );
   const [isOverflowing, setIsOverflowing] = useState(false);
+
+  const classes = useStyles();
+  const dynamicPageClasses = clsx(
+    classes.dynamicPage,
+    GlobalStyleClasses.sapScrollBar,
+    classes[`background${backgroundDesign}`],
+    className,
+    [HEADER_STATES.HIDDEN, HEADER_STATES.HIDDEN_PINNED].includes(headerState) && classes.headerCollapsed
+  );
 
   useEffect(() => {
     const debouncedObserverFn = debounce(([element]) => {
@@ -219,11 +219,16 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
     }
   };
 
+  const dynamicPageStyles = { ...style };
+  if (headerContentHeight === 0) {
+    dynamicPageStyles[DynamicPageCssVariables.titleFontSize] = ThemingParameters.sapObjectHeader_Title_SnappedFontSize;
+  }
+
   return (
     <div
       ref={componentRef}
       className={dynamicPageClasses}
-      style={style}
+      style={dynamicPageStyles}
       onScroll={onDynamicPageScroll}
       {...propsWithoutOmitted}
     >

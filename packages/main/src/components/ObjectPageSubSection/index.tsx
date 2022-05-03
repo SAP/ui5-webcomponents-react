@@ -1,9 +1,10 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
+import clsx from 'clsx';
 import React, { forwardRef, ReactNode, RefObject } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
+import { CustomThemingParameters } from '../../themes/CustomVariables';
 import { EmptyIdPropException } from '../ObjectPage/EmptyIdPropException';
-import clsx from 'clsx';
 
 export interface ObjectPageSubSectionPropTypes extends CommonProps {
   /**
@@ -22,18 +23,22 @@ export interface ObjectPageSubSectionPropTypes extends CommonProps {
 
 const styles = {
   objectPageSubSection: {
+    padding: '1rem 0',
     '&:focus': {
       outline: `${ThemingParameters.sapContent_FocusWidth} ${ThemingParameters.sapContent_FocusStyle} ${ThemingParameters.sapContent_FocusColor}`,
       outlineOffset: `calc(-1 * ${ThemingParameters.sapContent_FocusWidth})`
     }
   },
-  objectPageSubSectionHeaderTitle: {
+  subSectionTitle: {
+    fontFamily: CustomThemingParameters.ObjectPageSectionTitleFontFamily,
     fontSize: ThemingParameters.sapFontHeader5Size,
     color: ThemingParameters.sapGroup_TitleTextColor,
     marginBottom: '0.5rem'
   },
   subSectionContent: {
-    padding: '1rem 0 3rem 0'
+    backgroundColor: CustomThemingParameters.ObjectPageSubSectionBackgroundColor,
+    borderRadius: CustomThemingParameters.ObjectPageSubSectionBorderRadius,
+    padding: '0 0.5rem'
   }
 };
 
@@ -59,7 +64,7 @@ const ObjectPageSubSection = forwardRef((props: ObjectPageSubSectionPropTypes, r
       <div
         role="heading"
         aria-level={4}
-        className={classes.objectPageSubSectionHeaderTitle}
+        className={classes.subSectionTitle}
         data-component-name="ObjectPageSubSectionTitleText"
       >
         {titleText}
