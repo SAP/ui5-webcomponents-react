@@ -10,7 +10,7 @@ exports[`ObjectPageSubSection Render without Crashing 1`] = `
   >
     <div
       aria-level="4"
-      class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+      class="ObjectPageSubSection-subSectionTitle"
       data-component-name="ObjectPageSubSectionTitleText"
       role="heading"
     />
