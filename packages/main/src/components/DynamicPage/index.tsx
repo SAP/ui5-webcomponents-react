@@ -16,7 +16,7 @@ import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNot
 import { useObserveHeights } from '../../internal/useObserveHeights';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
 import { FlexBox } from '../FlexBox';
-import { styles } from './DynamicPage.jss';
+import { DynamicPageCssVariables, styles } from './DynamicPage.jss';
 
 export interface DynamicPagePropTypes extends Omit<CommonProps, 'title'> {
   /**
@@ -136,8 +136,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
     GlobalStyleClasses.sapScrollBar,
     classes[`background${backgroundDesign}`],
     className,
-    [HEADER_STATES.HIDDEN, HEADER_STATES.HIDDEN_PINNED].includes(headerState) && classes.headerCollapsed,
-    headerContentHeight === 0 && classes.headerSnapped
+    [HEADER_STATES.HIDDEN, HEADER_STATES.HIDDEN_PINNED].includes(headerState) && classes.headerCollapsed
   );
 
   useEffect(() => {
@@ -223,12 +222,17 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
     }
   };
 
+  const dynamicPageStyles = { ...style };
+  if (headerContentHeight === 0) {
+    dynamicPageStyles[DynamicPageCssVariables.titleFontSize] = ThemingParameters.sapObjectHeader_Title_SnappedFontSize;
+  }
+
   return (
     <div
       ref={componentRef}
       title={tooltip}
       className={dynamicPageClasses}
-      style={style}
+      style={dynamicPageStyles}
       onScroll={onDynamicPageScroll}
       {...propsWithoutOmitted}
     >

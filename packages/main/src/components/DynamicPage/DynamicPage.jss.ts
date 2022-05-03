@@ -26,9 +26,6 @@ export const styles = {
       top: '-0.025rem'
     }
   },
-  headerSnapped: {
-    [DynamicPageCssVariables.titleFontSize]: ThemingParameters.sapObjectHeader_Title_SnappedFontSize
-  },
   anchorBar: {
     position: 'sticky',
     boxShadow: ThemingParameters.sapContent_HeaderShadow,

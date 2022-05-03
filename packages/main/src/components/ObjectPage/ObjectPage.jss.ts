@@ -54,9 +54,6 @@ export const styles = {
     [DynamicPageCssVariables.headerDisplay]: 'none',
     [DynamicPageCssVariables.titleFontSize]: ThemingParameters.sapObjectHeader_Title_SnappedFontSize
   },
-  headerSnapped: {
-    [DynamicPageCssVariables.titleFontSize]: ThemingParameters.sapObjectHeader_Title_SnappedFontSize
-  },
   headerContainer: {
     marginBottom: '0.25rem',
     backgroundColor: ThemingParameters.sapObjectHeader_Background,
@@ -73,7 +70,7 @@ export const styles = {
     '&[data-not-clickable="false"]': {
       backgroundColor: `${ThemingParameters.sapObjectHeader_Hover_Background}`,
       '& [data-component-name="DynamicPageTitle"]': {
-        backgroundColor: ThemingParameters.sapTile_Active_Background
+        backgroundColor: ThemingParameters.sapObjectHeader_Hover_Background
       }
     }
   },

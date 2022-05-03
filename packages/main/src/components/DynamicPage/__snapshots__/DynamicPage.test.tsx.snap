@@ -3,7 +3,8 @@
 exports[`DynamicPage always show content header 1`] = `
 <DocumentFragment>
   <div
-    class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundSolid DynamicPage-headerSnapped"
+    class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundSolid"
+    style="--ui5wcr_DynamicPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);"
   >
     <div
       class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container StdExtPadding-Desktop"
@@ -285,7 +286,8 @@ exports[`DynamicPage always show content header 1`] = `
 exports[`DynamicPage hider header button 1`] = `
 <DocumentFragment>
   <div
-    class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundSolid DynamicPage-headerSnapped"
+    class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundSolid"
+    style="--ui5wcr_DynamicPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);"
   >
     <div
       class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container StdExtPadding-Desktop"
@@ -640,7 +642,8 @@ exports[`DynamicPage hider header button 1`] = `
 exports[`DynamicPage render footer 1`] = `
 <DocumentFragment>
   <div
-    class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundSolid DynamicPage-headerSnapped"
+    class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundSolid"
+    style="--ui5wcr_DynamicPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);"
   >
     <div
       class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPage-anchorBar"
@@ -694,7 +697,8 @@ exports[`DynamicPage render footer 1`] = `
 exports[`DynamicPage with content 1`] = `
 <DocumentFragment>
   <div
-    class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundSolid DynamicPage-headerSnapped"
+    class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundSolid"
+    style="--ui5wcr_DynamicPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);"
   >
     <div
       class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container StdExtPadding-Desktop"
@@ -1688,7 +1692,8 @@ exports[`DynamicPage with content 1`] = `
 exports[`DynamicPage without content 1`] = `
 <DocumentFragment>
   <div
-    class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundSolid DynamicPage-headerSnapped"
+    class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundSolid"
+    style="--ui5wcr_DynamicPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);"
   >
     <div
       class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container StdExtPadding-Desktop"

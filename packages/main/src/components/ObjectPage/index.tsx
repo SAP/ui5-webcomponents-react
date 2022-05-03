@@ -36,6 +36,7 @@ import { List } from '../../webComponents/List';
 import { Popover, PopoverDomRef } from '../../webComponents/Popover';
 import { StandardListItem } from '../../webComponents/StandardListItem';
 import { TabContainer } from '../../webComponents/TabContainer';
+import { DynamicPageCssVariables } from '../DynamicPage/DynamicPage.jss';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
 import { ObjectPageSectionPropTypes } from '../ObjectPageSection';
 import { ObjectPageSubSectionPropTypes } from '../ObjectPageSubSection';
@@ -476,7 +477,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
   );
   const [scrolledHeaderExpanded, setScrolledHeaderExpanded] = useState(false);
   const scrollTimout = useRef(0);
-  const onToggleHeaderContentVisibility = (e) => {
+  const onToggleHeaderContentVisibility = useCallback((e) => {
     scrollTimout.current = performance.now() + 500;
     if (!e.detail.visible) {
       objectPageRef.current?.classList.add(classes.headerCollapsed);
@@ -484,14 +485,13 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
       setScrolledHeaderExpanded(true);
       objectPageRef.current?.classList.remove(classes.headerCollapsed);
     }
-  };
+  }, []);
 
   const objectPageClasses = clsx(
     classes.objectPage,
     GlobalStyleClasses.sapScrollBar,
     className,
-    mode === ObjectPageMode.IconTabBar && classes.iconTabBarMode,
-    headerContentHeight === 0 && classes.headerSnapped
+    mode === ObjectPageMode.IconTabBar && classes.iconTabBarMode
   );
 
   const { onScroll: _0, selectedSubSectionId: _1, ...propsWithoutOmitted } = rest;
@@ -724,12 +724,17 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     [classes.headerHoverStyles]
   );
 
+  const objectPageStyles = { ...style };
+  if (headerContentHeight === 0) {
+    objectPageStyles[DynamicPageCssVariables.titleFontSize] = ThemingParameters.sapObjectHeader_Title_SnappedFontSize;
+  }
+
   return (
     <div
       data-component-name="ObjectPage"
       slot={slot}
       className={objectPageClasses}
-      style={style}
+      style={objectPageStyles}
       ref={componentRef}
       title={tooltip}
       onScroll={onObjectPageScroll}
