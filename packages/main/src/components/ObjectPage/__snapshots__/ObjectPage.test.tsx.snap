@@ -314,7 +314,7 @@ exports[`ObjectPage Default with SubSections 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -335,7 +335,7 @@ exports[`ObjectPage Default with SubSections 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -356,7 +356,7 @@ exports[`ObjectPage Default with SubSections 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -404,7 +404,7 @@ exports[`ObjectPage Default with SubSections 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -425,7 +425,7 @@ exports[`ObjectPage Default with SubSections 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -446,7 +446,7 @@ exports[`ObjectPage Default with SubSections 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -565,7 +565,7 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -586,7 +586,7 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -607,7 +607,7 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -1110,7 +1110,7 @@ exports[`ObjectPage with anchor-bar 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -1131,7 +1131,7 @@ exports[`ObjectPage with anchor-bar 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -1152,7 +1152,7 @@ exports[`ObjectPage with anchor-bar 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -1200,7 +1200,7 @@ exports[`ObjectPage with anchor-bar 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -1221,7 +1221,7 @@ exports[`ObjectPage with anchor-bar 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -1242,7 +1242,7 @@ exports[`ObjectPage with anchor-bar 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -1443,7 +1443,7 @@ exports[`ObjectPage with footer 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -1464,7 +1464,7 @@ exports[`ObjectPage with footer 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -1485,7 +1485,7 @@ exports[`ObjectPage with footer 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -1533,7 +1533,7 @@ exports[`ObjectPage with footer 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -1554,7 +1554,7 @@ exports[`ObjectPage with footer 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -1575,7 +1575,7 @@ exports[`ObjectPage with footer 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -1791,7 +1791,7 @@ exports[`ObjectPage with header 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -1812,7 +1812,7 @@ exports[`ObjectPage with header 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -1833,7 +1833,7 @@ exports[`ObjectPage with header 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -1881,7 +1881,7 @@ exports[`ObjectPage with header 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -1902,7 +1902,7 @@ exports[`ObjectPage with header 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -1923,7 +1923,7 @@ exports[`ObjectPage with header 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -2178,7 +2178,7 @@ exports[`ObjectPage with img 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -2199,7 +2199,7 @@ exports[`ObjectPage with img 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -2220,7 +2220,7 @@ exports[`ObjectPage with img 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -2268,7 +2268,7 @@ exports[`ObjectPage with img 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -2289,7 +2289,7 @@ exports[`ObjectPage with img 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -2310,7 +2310,7 @@ exports[`ObjectPage with img 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -2575,7 +2575,7 @@ exports[`ObjectPage with img 2`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -2596,7 +2596,7 @@ exports[`ObjectPage with img 2`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -2617,7 +2617,7 @@ exports[`ObjectPage with img 2`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -2665,7 +2665,7 @@ exports[`ObjectPage with img 2`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -2686,7 +2686,7 @@ exports[`ObjectPage with img 2`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -2707,7 +2707,7 @@ exports[`ObjectPage with img 2`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -2931,7 +2931,7 @@ exports[`ObjectPage with title 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -2952,7 +2952,7 @@ exports[`ObjectPage with title 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -2973,7 +2973,7 @@ exports[`ObjectPage with title 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -3021,7 +3021,7 @@ exports[`ObjectPage with title 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -3042,7 +3042,7 @@ exports[`ObjectPage with title 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -3063,7 +3063,7 @@ exports[`ObjectPage with title 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -3292,7 +3292,7 @@ exports[`ObjectPage with title, header & footer 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -3313,7 +3313,7 @@ exports[`ObjectPage with title, header & footer 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -3334,7 +3334,7 @@ exports[`ObjectPage with title, header & footer 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -3382,7 +3382,7 @@ exports[`ObjectPage with title, header & footer 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -3403,7 +3403,7 @@ exports[`ObjectPage with title, header & footer 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
@@ -3424,7 +3424,7 @@ exports[`ObjectPage with title, header & footer 1`] = `
             >
               <div
                 aria-level="4"
-                class="ObjectPageSubSection-objectPageSubSectionHeaderTitle"
+                class="ObjectPageSubSection-subSectionTitle"
                 data-component-name="ObjectPageSubSectionTitleText"
                 role="heading"
               >
