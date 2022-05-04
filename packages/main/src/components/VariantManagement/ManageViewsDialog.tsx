@@ -47,6 +47,7 @@ interface ManageViewsDialogPropTypes {
   showShare: boolean;
   showApplyAutomatically: boolean;
   showSetAsDefault: boolean;
+  showCreatedBy: boolean;
   variantNames: string[];
   portalContainer: Element;
 }
@@ -59,6 +60,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
     showShare,
     showApplyAutomatically,
     showSetAsDefault,
+    showCreatedBy,
     variantNames,
     portalContainer
   } = props;
@@ -93,9 +95,11 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
           {applyAutomaticallyHeaderText}
         </TableColumn>
       )}
-      <TableColumn demandPopin minWidth={600} popinText={createdByHeaderText}>
-        {createdByHeaderText}
-      </TableColumn>
+      {showCreatedBy && (
+        <TableColumn demandPopin minWidth={600} popinText={createdByHeaderText}>
+          {createdByHeaderText}
+        </TableColumn>
+      )}
       <TableColumn key="delete-variant-item" />
     </>
   );
@@ -197,6 +201,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
               showShare={showShare}
               showApplyAutomatically={showApplyAutomatically}
               showSetAsDefault={showSetAsDefault}
+              showCreatedBy={showCreatedBy}
               key={itemProps?.children}
             />
           );

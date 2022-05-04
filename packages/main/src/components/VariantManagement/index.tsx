@@ -126,6 +126,10 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
    */
   hideApplyAutomatically?: boolean;
   /**
+   * Indicates that the Author is visible in the Manage Views dialog.
+   */
+  hideCreatedBy?: boolean;
+  /**
    * Indicates that the Save View dialog button is visible.
    */
   hideSaveAs?: boolean;
@@ -247,6 +251,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
     hideManageVariants,
     hideApplyAutomatically,
     hideSetAsDefault,
+    hideCreatedBy,
     hideSaveAs,
     dirtyStateText,
     dirtyState,
@@ -573,6 +578,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
             handleSaveManageViews={handleSaveManageViews}
             showShare={!hideShare}
             showApplyAutomatically={!hideApplyAutomatically}
+            showCreatedBy={!hideCreatedBy}
             showSetAsDefault={!hideSetAsDefault}
             variantNames={variantNames}
             portalContainer={portalContainer}

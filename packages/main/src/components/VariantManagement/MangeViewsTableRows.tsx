@@ -34,6 +34,7 @@ interface ManageViewsTableRowsProps extends VariantItemPropTypes {
   showShare: boolean;
   showApplyAutomatically: boolean;
   showSetAsDefault: boolean;
+  showCreatedBy: boolean;
   changedVariantNames: Map<string, any>;
   setChangedVariantNames: (varNames: any) => void;
   setInvalidVariants: (invalidVars: any) => void;
@@ -51,6 +52,7 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
     showShare,
     showApplyAutomatically,
     showSetAsDefault,
+    showCreatedBy,
     labelReadOnly,
     favorite,
     children,
@@ -198,9 +200,11 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
           />
         </TableCell>
       )}
-      <TableCell>
-        <Text>{author}</Text>
-      </TableCell>
+      {showCreatedBy && (
+        <TableCell>
+          <Text>{author}</Text>
+        </TableCell>
+      )}
       <TableCell>
         {!(hideDelete ?? global) && (
           <Button

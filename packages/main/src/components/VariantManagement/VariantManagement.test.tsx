@@ -232,7 +232,7 @@ describe('VariantManagement', () => {
 
   test('Hide variant props', () => {
     const { getByText } = render(
-      <VariantManagement hideApplyAutomatically hideSetAsDefault hideShare>
+      <VariantManagement hideApplyAutomatically hideSetAsDefault hideShare hideCreatedBy>
         {TwoVariantItems}
       </VariantManagement>
     );
@@ -250,6 +250,7 @@ describe('VariantManagement', () => {
     expect(within(table).queryByText('Sharing')).toBeNull();
     expect(within(table).queryByText('Default')).toBeNull();
     expect(within(table).queryByText('ApplyAutomatically')).toBeNull();
+    expect(within(table).queryByText('Created By')).toBeNull();
   });
 
   test('Save As', () => {
