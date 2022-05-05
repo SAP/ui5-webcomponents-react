@@ -32,6 +32,14 @@ addCustomCSSWithScoping(
   }
   `
 );
+addCustomCSSWithScoping(
+  'ui5-dialog',
+  `
+  :host([data-component-name="VariantManagementManageViewsDialog"]) .ui5-popup-footer-root{
+    padding: 0;
+  }
+  `
+);
 
 interface ManageViewsDialogPropTypes {
   children: ReactNode | ReactNode[];
