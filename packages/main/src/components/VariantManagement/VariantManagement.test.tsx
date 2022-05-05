@@ -271,20 +271,22 @@ describe('VariantManagement', () => {
       expect(item.checked).toBeFalsy();
       fireEvent.change(item, { target: { checked: true } });
     });
+
     // invalid entries
-    fireEvent.change(inputField, { target: { value: '' } });
+    fireEvent.input(inputField, { target: { value: '' } });
     fireEvent.click(saveBtn);
     expect(dialog).toBeInTheDocument();
     expect(inputField).toHaveAttribute('value-state', 'Error');
     getByText('Please specify a view name');
-    fireEvent.change(inputField, { target: { value: 'VariantItem 1' } });
+
+    fireEvent.input(inputField, { target: { value: 'VariantItem 1' } });
     fireEvent.click(saveBtn);
     expect(dialog).toBeInTheDocument();
     expect(inputField).toHaveAttribute('value-state', 'Error');
     getByText('A file with this name already exists');
 
     // valid entry & save
-    fireEvent.change(inputField, { target: { value: 'Updated!' } });
+    fireEvent.input(inputField, { target: { value: 'Updated!' } });
     expect(inputField).toHaveValue('Updated!');
     checkboxes.forEach((item: HTMLInputElement) => {
       expect(item.checked).toBeTruthy();

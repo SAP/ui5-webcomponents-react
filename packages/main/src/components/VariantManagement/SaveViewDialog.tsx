@@ -137,7 +137,7 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
           value={variantName}
           valueState={!variantNameInvalid ? 'None' : 'Error'}
           valueStateMessage={<div>{variantNameInvalid}</div>}
-          onChange={handleInputChange}
+          onInput={handleInputChange}
         />
         <FlexBox
           alignItems={FlexBoxAlignItems.Start}
