@@ -8424,8 +8424,6 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
             >
               <div
                 aria-colindex="1"
-                aria-label=" To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="0"
                 data-row-index="1"
@@ -8441,15 +8439,12 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
                   disabled="true"
                   style="vertical-align: middle;"
                   tabindex="-1"
-                  title="Toggle Row Selected"
                   ui5-checkbox=""
                   value-state="None"
                 />
               </div>
               <div
                 aria-colindex="2"
-                aria-label="Fra To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="1"
                 data-row-index="1"
@@ -8469,8 +8464,6 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
               </div>
               <div
                 aria-colindex="3"
-                aria-label="40 To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="2"
                 data-row-index="1"
@@ -8490,8 +8483,6 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
               </div>
               <div
                 aria-colindex="4"
-                aria-label="MAR To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="3"
                 data-row-index="1"
@@ -8511,8 +8502,6 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
               </div>
               <div
                 aria-colindex="5"
-                aria-label="28 To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="4"
                 data-row-index="1"

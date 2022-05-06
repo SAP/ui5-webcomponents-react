@@ -96,16 +96,17 @@ export const useRowDisableSelection = (disableRowSelection: DisableRowSelectionT
     return [...deps, disableRowSelection];
   };
 
-  const cellProps = (cellProps, { cell: { row }, instance }) => {
+  const cellProps = (cellProps, { cell: { row, column }, instance }) => {
     const { selectionMode, selectionBehavior } = instance.webComponentsReactProperties;
     if (
       (disableRowAccessor(row) === true &&
         selectionMode !== TableSelectionMode.None &&
         selectionBehavior !== TableSelectionBehavior.RowSelector) ||
-      row.id === '__ui5wcr__internal_selection_column'
+      column.id === '__ui5wcr__internal_selection_column'
     ) {
       const { 'aria-label': _0, ...updatedCellProps } = cellProps;
-      if (row.id === '__ui5wcr__internal_selection_column') {
+      if (column.id === '__ui5wcr__internal_selection_column') {
+        console.log('in', { ...updatedCellProps, 'aria-disabled': true });
         return { ...updatedCellProps, 'aria-disabled': true };
       }
       const { 'aria-selected': _1, ...updatedCellProsWithOutSelected } = updatedCellProps;
@@ -115,7 +116,7 @@ export const useRowDisableSelection = (disableRowSelection: DisableRowSelectionT
     return cellProps;
   };
 
-  const toggleRowSelectedProps = (rowProps, { cell: { row } }) => {
+  const toggleRowSelectedProps = (rowProps, { row }) => {
     if (disableRowAccessor(row) === true) {
       const { title, ...updatedRowProps } = rowProps;
       return updatedRowProps;
