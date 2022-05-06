@@ -1,5 +1,6 @@
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
 import React from 'react';
+import { TableSelectionBehavior } from '../../../enums';
 import { TableSelectionMode } from '../../../enums/TableSelectionMode';
 import { CheckBox } from '../../../webComponents/CheckBox';
 import { getBy } from '../util';
@@ -74,9 +75,19 @@ export const useRowDisableSelection = (disableRowSelection: DisableRowSelectionT
     if (disableRowAccessor(row) === true) {
       row.disableSelect = true;
       const handleClick = (e) => {
-        webComponentsReactProperties.onRowClick(enrichEventWithDetails(e, { row }));
+        if (typeof webComponentsReactProperties.onRowClick === 'function') {
+          webComponentsReactProperties.onRowClick(enrichEventWithDetails(e, { row }));
+        }
       };
-      return { ...rowProps, onClick: handleClick, className: webComponentsReactProperties.classes.tr };
+      const onKeyDown = (e) => {
+        if (e.code === 'Space' || e.code === 'Enter') {
+          e.preventDefault();
+          if (typeof webComponentsReactProperties.onRowClick === 'function') {
+            webComponentsReactProperties.onRowClick(enrichEventWithDetails(e, { row }));
+          }
+        }
+      };
+      return { ...rowProps, onClick: handleClick, onKeyDown, className: webComponentsReactProperties.classes.tr };
     }
     return rowProps;
   };
@@ -85,11 +96,39 @@ export const useRowDisableSelection = (disableRowSelection: DisableRowSelectionT
     return [...deps, disableRowSelection];
   };
 
+  const cellProps = (cellProps, { cell: { row, column }, instance }) => {
+    const { selectionMode, selectionBehavior } = instance.webComponentsReactProperties;
+    if (
+      disableRowAccessor(row) === true &&
+      selectionMode !== TableSelectionMode.None &&
+      (selectionBehavior !== TableSelectionBehavior.RowSelector || column.id === '__ui5wcr__internal_selection_column')
+    ) {
+      const { 'aria-label': _0, ...updatedCellProps } = cellProps;
+      if (column.id === '__ui5wcr__internal_selection_column') {
+        return { ...updatedCellProps, 'aria-disabled': true };
+      }
+      const { 'aria-selected': _1, ...updatedCellProsWithOutSelected } = updatedCellProps;
+      return updatedCellProsWithOutSelected;
+    }
+
+    return cellProps;
+  };
+
+  const toggleRowSelectedProps = (rowProps, { row }) => {
+    if (disableRowAccessor(row) === true) {
+      const { title, ...updatedRowProps } = rowProps;
+      return updatedRowProps;
+    }
+    return rowProps;
+  };
+
   const useDisableSelectionRow = (hooks) => {
     hooks.getHeaderProps.push(headerProps);
     hooks.getRowProps.push(getRowProps);
     hooks.columns.push(columns);
     hooks.columnsDeps.push(columnDeps);
+    hooks.getCellProps.push(cellProps);
+    hooks.getToggleRowSelectedProps.push(toggleRowSelectedProps);
   };
 
   useDisableSelectionRow.pluginName = 'useRowDisableSelection';

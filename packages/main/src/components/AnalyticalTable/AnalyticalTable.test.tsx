@@ -1051,16 +1051,27 @@ describe('AnalyticalTable', () => {
     expect(cb).toBeCalledTimes(2);
     expect(click).toBeCalledTimes(3);
 
+    // a11y
+    expect(selectionCells[0]).toHaveAttribute('aria-disabled', 'true');
+    expect(selectionCells[0]).not.toHaveAttribute('aria-label');
+    expect(selectionCells[1]).not.toHaveAttribute('aria-disabled');
+    expect(selectionCells[1]).toHaveAttribute('aria-label');
+
     const extCells = cells.filter(
       (item) => item.getAttribute('aria-colindex') && item.getAttribute('aria-colindex') !== '1'
     );
+
     let counter = 2;
     extCells.forEach((item, index) => {
       fireEvent.click(item);
       expect(click).toBeCalledTimes(3 + index + 1);
+      // non selectable cells
       if (index <= 3) {
+        expect(item).not.toHaveAttribute('aria-label');
         expect(cb).toBeCalledTimes(2);
+        // selectable cells
       } else {
+        expect(item).toHaveAttribute('aria-label');
         counter++;
         expect(cb).toBeCalledTimes(counter);
       }
