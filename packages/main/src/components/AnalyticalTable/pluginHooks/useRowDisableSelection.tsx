@@ -105,11 +105,12 @@ export const useRowDisableSelection = (disableRowSelection: DisableRowSelectionT
       row.id === '__ui5wcr__internal_selection_column'
     ) {
       console.log(cellProps);
-      const { 'aria-label': omit, ...updatedCellProps } = cellProps;
+      const { 'aria-label': _0, ...updatedCellProps } = cellProps;
       if (row.id === '__ui5wcr__internal_selection_column') {
         return { ...updatedCellProps, 'aria-disabled': true };
       }
-      return updatedCellProps;
+      const { 'aria-selected': _1, ...updatedCellProsWithOutSelected } = updatedCellProps;
+      return updatedCellProsWithOutSelected;
     }
 
     return cellProps;
