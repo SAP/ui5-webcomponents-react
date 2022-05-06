@@ -104,7 +104,6 @@ export const useRowDisableSelection = (disableRowSelection: DisableRowSelectionT
         selectionBehavior !== TableSelectionBehavior.RowSelector) ||
       row.id === '__ui5wcr__internal_selection_column'
     ) {
-      console.log(cellProps);
       const { 'aria-label': _0, ...updatedCellProps } = cellProps;
       if (row.id === '__ui5wcr__internal_selection_column') {
         return { ...updatedCellProps, 'aria-disabled': true };
@@ -116,12 +115,21 @@ export const useRowDisableSelection = (disableRowSelection: DisableRowSelectionT
     return cellProps;
   };
 
+  const toggleRowSelectedProps = (rowProps, { cell: { row } }) => {
+    if (disableRowAccessor(row) === true) {
+      const { title, ...updatedRowProps } = rowProps;
+      return updatedRowProps;
+    }
+    return rowProps;
+  };
+
   const useDisableSelectionRow = (hooks) => {
     hooks.getHeaderProps.push(headerProps);
     hooks.getRowProps.push(getRowProps);
     hooks.columns.push(columns);
     hooks.columnsDeps.push(columnDeps);
     hooks.getCellProps.push(cellProps);
+    hooks.getToggleRowSelectedProps.push(toggleRowSelectedProps);
   };
 
   useDisableSelectionRow.pluginName = 'useRowDisableSelection';
