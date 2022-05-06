@@ -99,14 +99,12 @@ export const useRowDisableSelection = (disableRowSelection: DisableRowSelectionT
   const cellProps = (cellProps, { cell: { row, column }, instance }) => {
     const { selectionMode, selectionBehavior } = instance.webComponentsReactProperties;
     if (
-      (disableRowAccessor(row) === true &&
-        selectionMode !== TableSelectionMode.None &&
-        selectionBehavior !== TableSelectionBehavior.RowSelector) ||
-      column.id === '__ui5wcr__internal_selection_column'
+      disableRowAccessor(row) === true &&
+      selectionMode !== TableSelectionMode.None &&
+      (selectionBehavior !== TableSelectionBehavior.RowSelector || column.id === '__ui5wcr__internal_selection_column')
     ) {
       const { 'aria-label': _0, ...updatedCellProps } = cellProps;
       if (column.id === '__ui5wcr__internal_selection_column') {
-        console.log('in', { ...updatedCellProps, 'aria-disabled': true });
         return { ...updatedCellProps, 'aria-disabled': true };
       }
       const { 'aria-selected': _1, ...updatedCellProsWithOutSelected } = updatedCellProps;
