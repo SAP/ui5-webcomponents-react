@@ -8424,6 +8424,8 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
             >
               <div
                 aria-colindex="1"
+                aria-disabled="true"
+                aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="0"
                 data-row-index="1"
