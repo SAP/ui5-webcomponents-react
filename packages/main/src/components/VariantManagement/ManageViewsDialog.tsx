@@ -21,7 +21,7 @@ import { Button } from '../../webComponents/Button';
 import { Dialog, DialogDomRef } from '../../webComponents/Dialog';
 import { Table } from '../../webComponents/Table';
 import { TableColumn } from '../../webComponents/TableColumn';
-import { ManageViewsTableRows } from './MangeViewsTableRows';
+import { ManageViewsTableRows } from './ManageViewsTableRows';
 import { VariantItemPropTypes } from './VariantItem';
 
 addCustomCSSWithScoping(
