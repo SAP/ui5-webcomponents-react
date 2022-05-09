@@ -505,10 +505,6 @@ describe('VariantManagement', () => {
     fireEvent.input(screen.getAllByPlaceholderText('View')[1], { target: { value: '2' } });
     fireEvent.click(saveBtn);
     expect(cb).toHaveBeenCalledTimes(0);
-    // focuses the 3rd item so the error state is cleared (happens automatically outside of tests)
-    fireEvent.focus(screen.getAllByPlaceholderText('View')[2]);
-    fireEvent.click(saveBtn);
-    expect(cb).toHaveBeenCalledTimes(1);
   });
 
   createCustomPropsTest(VariantManagement);
