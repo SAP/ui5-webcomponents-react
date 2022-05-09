@@ -126,7 +126,7 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
    */
   hideApplyAutomatically?: boolean;
   /**
-   * Indicates that the Author is visible in the Manage Views dialogs.
+   * Indicates that the Author is visible in the Manage Views dialog.
    */
   hideCreatedBy?: boolean;
   /**
