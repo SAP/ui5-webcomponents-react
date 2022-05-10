@@ -2,6 +2,7 @@
 
 exports[`ActionSheet Render without Crashing 1`] = `
 <body>
+  Object {}
   <div />
   <ui5-responsive-popover
     class="ActionSheet-actionSheet myCustomClass"
@@ -53,6 +54,24 @@ exports[`ActionSheet Render without Crashing 1`] = `
 
 exports[`ActionSheet does not crash with other component 1`] = `
 <body>
+  Object {
+    Symbol(SameObject caches): Object {
+      "childNodes": NodeList [
+        <span
+          aria-live="polite"
+          class="ui5-invisiblemessage-polite"
+          role="alert"
+          style="position: absolute; clip: rect(1px, 1px, 1px, 1px); user-select: none; left: -1000px; top: -1000px; pointer-events: none;"
+        />,
+        <span
+          aria-live="assertive"
+          class="ui5-invisiblemessage-assertive"
+          role="alert"
+          style="position: absolute; clip: rect(1px, 1px, 1px, 1px); user-select: none; left: -1000px; top: -1000px; pointer-events: none;"
+        />,
+      ],
+    },
+  }
   <div />
   <ui5-responsive-popover
     class="ActionSheet-actionSheet"
