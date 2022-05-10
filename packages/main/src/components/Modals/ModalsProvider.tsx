@@ -6,19 +6,19 @@ export interface ModalsProviderPropTypes {
   children: ReactNode;
 }
 
-const modalStateReducer = (state: Partial<ModalState>, action: UpdateModalStateAction) => {
+const modalStateReducer = (state: ModalState[], action: UpdateModalStateAction) => {
   switch (action.type) {
     case 'set':
-      return action.payload;
+      return [...state, action.payload as ModalState];
     case 'reset':
-      return {};
+      return state.filter((modal) => modal.id !== action.payload.id);
     default:
       return state;
   }
 };
 
 export function ModalsProvider({ children }: ModalsProviderPropTypes) {
-  const [modal, setModal] = useReducer(modalStateReducer, {});
+  const [modals, setModal] = useReducer(modalStateReducer, []);
 
   const isSyncedWithWindow = useRef(false);
 
@@ -31,7 +31,14 @@ export function ModalsProvider({ children }: ModalsProviderPropTypes) {
 
   return (
     <ModalsContext.Provider value={{ setModal }}>
-      {modal.Component ? createPortal(<modal.Component {...modal.props} />, modal.container ?? document.body) : null}
+      {modals.map((modal) => {
+        if (modal?.Component) {
+          return createPortal(
+            <modal.Component {...modal.props} key={modal.id} data-id={modal.id} />,
+            modal.container ?? document.body
+          );
+        }
+      })}
       {children}
     </ModalsContext.Provider>
   );

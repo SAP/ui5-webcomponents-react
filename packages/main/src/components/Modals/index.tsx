@@ -1,4 +1,5 @@
 import React, { createRef, MutableRefObject, Ref, RefObject, useCallback, useRef } from 'react';
+import { getRandomId } from '../../internal/getRandomId';
 import { UpdateModalStateAction, useModalsContext } from '../../internal/ModalsContext';
 import {
   Dialog,
@@ -37,13 +38,10 @@ const checkContext = (context: any): void => {
   }
 };
 
-const showDialog = (
-  props: any,
-  ref: Ref<any>,
-  setModal: React.Dispatch<UpdateModalStateAction>,
-  container?: HTMLElement
-) => {
+const showDialog = (props: any, setModal: React.Dispatch<UpdateModalStateAction>, container?: HTMLElement) => {
   checkContext(setModal);
+  const id = getRandomId();
+  const ref = createRef<DialogDomRef>();
   setModal?.({
     type: 'set',
     payload: {
@@ -57,22 +55,22 @@ const showDialog = (
             props.onAfterClose(event);
           }
           setModal({
-            type: 'reset'
+            type: 'reset',
+            payload: { id }
           });
         }
       },
-      container
+      container,
+      id
     }
   });
+  return { ref };
 };
 
-const showPopover = (
-  props: any,
-  ref: Ref<any>,
-  setModal: React.Dispatch<UpdateModalStateAction>,
-  container?: HTMLElement
-) => {
+const showPopover = (props: any, setModal: React.Dispatch<UpdateModalStateAction>, container?: HTMLElement) => {
   checkContext(setModal);
+  const id = getRandomId();
+  const ref = createRef<PopoverDomRef>();
   setModal?.({
     type: 'set',
     payload: {
@@ -86,22 +84,26 @@ const showPopover = (
             props.onAfterClose(event);
           }
           setModal({
-            type: 'reset'
+            type: 'reset',
+            payload: { id }
           });
         }
       },
-      container
+      container,
+      id
     }
   });
+  return { ref };
 };
 
 const showResponsivePopover = (
   props: any,
-  ref: Ref<any>,
   setModal: React.Dispatch<UpdateModalStateAction>,
   container?: HTMLElement
 ) => {
   checkContext(setModal);
+  const id = getRandomId();
+  const ref = createRef<ResponsivePopoverDomRef>();
   setModal?.({
     type: 'set',
     payload: {
@@ -115,22 +117,22 @@ const showResponsivePopover = (
             props.onAfterClose(event);
           }
           setModal({
-            type: 'reset'
+            type: 'reset',
+            payload: { id }
           });
         }
       },
-      container
+      container,
+      id
     }
   });
+  return { ref };
 };
 
-const showMessageBox = (
-  props: any,
-  ref: Ref<any>,
-  setModal: React.Dispatch<UpdateModalStateAction>,
-  container?: HTMLElement
-) => {
+const showMessageBox = (props: any, setModal: React.Dispatch<UpdateModalStateAction>, container?: HTMLElement) => {
   checkContext(setModal);
+  const id = getRandomId();
+  const ref = createRef<DialogDomRef>();
   setModal?.({
     type: 'set',
     payload: {
@@ -144,23 +146,22 @@ const showMessageBox = (
             props.onClose(event);
           }
           setModal({
-            type: 'reset'
+            type: 'reset',
+            payload: { id }
           });
         }
       },
-      container
+      container,
+      id
     }
   });
+  return { ref };
 };
 
-const showToast = (
-  props: any,
-  ref: MutableRefObject<any>,
-  setModal: React.Dispatch<UpdateModalStateAction>,
-  container?: HTMLElement
-) => {
-  let isOpen = false;
+const showToast = (props: any, setModal: React.Dispatch<UpdateModalStateAction>, container?: HTMLElement) => {
+  const ref = createRef<ToastDomRef>() as MutableRefObject<ToastDomRef>;
   checkContext(setModal);
+  const id = getRandomId();
   setModal?.({
     type: 'set',
     payload: {
@@ -169,20 +170,22 @@ const showToast = (
         ...props,
         ref: (el: ToastDomRef) => {
           ref.current = el;
-          if (el && !isOpen) {
+          if (el && !(el as any).open) {
             el.show();
             setTimeout(() => {
               setModal({
-                type: 'reset'
+                type: 'reset',
+                payload: { id }
               });
             }, props.duration ?? Toast.defaultProps.duration);
-            isOpen = true;
           }
         }
       },
-      container
+      container,
+      id
     }
   });
+  return { ref };
 };
 
 /**
@@ -195,9 +198,8 @@ const showToast = (
  */
 export const Modals = {
   showDialog: (props: DialogPropTypes, container?: HTMLElement): ClosableModalReturnType<DialogDomRef> => {
-    const ref = createRef<DialogDomRef>();
     const setModal = window['@ui5/webcomponents-react']?.setModal;
-    showDialog(props, ref, setModal, container);
+    const { ref } = showDialog(props, setModal, container);
 
     return {
       ref,
@@ -208,12 +210,11 @@ export const Modals = {
   },
 
   useShowDialog: (): CloseableModalHookReturnType<DialogPropTypes, DialogDomRef> => {
-    const ref = useRef<DialogDomRef>(null);
     const { setModal } = useModalsContext();
 
     return useCallback(
       (props, container) => {
-        showDialog(props, ref, setModal, container);
+        const { ref } = showDialog(props, setModal, container);
 
         return {
           ref,
@@ -227,9 +228,8 @@ export const Modals = {
   },
 
   showPopover: (props: PopoverPropTypes, container?: HTMLElement): ClosableModalReturnType<PopoverDomRef> => {
-    const ref = createRef<PopoverDomRef>();
     const setModal = window['@ui5/webcomponents-react']?.setModal;
-    showPopover(props, ref, setModal, container);
+    const { ref } = showPopover(props, setModal, container);
 
     return {
       ref,
@@ -240,11 +240,10 @@ export const Modals = {
   },
 
   useShowPopover: (): CloseableModalHookReturnType<PopoverPropTypes, PopoverDomRef> => {
-    const ref = useRef<PopoverDomRef>();
     const { setModal } = useModalsContext();
     return useCallback(
       (props, container) => {
-        showPopover(props, ref, setModal, container);
+        const { ref } = showPopover(props, setModal, container);
 
         return {
           ref,
@@ -261,9 +260,8 @@ export const Modals = {
     props: ResponsivePopoverPropTypes,
     container?: HTMLElement
   ): ClosableModalReturnType<ResponsivePopoverDomRef> => {
-    const ref = createRef<ResponsivePopoverDomRef>();
     const setModal = window['@ui5/webcomponents-react']?.setModal;
-    showResponsivePopover(props, ref, setModal, container);
+    const { ref } = showResponsivePopover(props, setModal, container);
 
     return {
       ref,
@@ -274,11 +272,10 @@ export const Modals = {
   },
 
   useShowResponsivePopover: (): CloseableModalHookReturnType<ResponsivePopoverPropTypes, ResponsivePopoverDomRef> => {
-    const ref = useRef<ResponsivePopoverDomRef>();
     const { setModal } = useModalsContext();
     return useCallback(
       (props, container) => {
-        showResponsivePopover(props, ref, setModal, container);
+        const { ref } = showResponsivePopover(props, setModal, container);
 
         return {
           ref,
@@ -292,9 +289,8 @@ export const Modals = {
   },
 
   showMessageBox: (props: MessageBoxPropTypes, container?: HTMLElement): ClosableModalReturnType<DialogDomRef> => {
-    const ref = createRef<DialogDomRef>();
     const setModal = window['@ui5/webcomponents-react']?.setModal;
-    showMessageBox(props, ref, setModal, container);
+    const { ref } = showMessageBox(props, setModal, container);
 
     return {
       ref,
@@ -305,11 +301,10 @@ export const Modals = {
   },
 
   useShowMessageBox: (): CloseableModalHookReturnType<MessageBoxPropTypes, DialogDomRef> => {
-    const ref = useRef<DialogDomRef>();
     const { setModal } = useModalsContext();
     return useCallback(
       (props, container) => {
-        showMessageBox(props, ref, setModal, container);
+        const { ref } = showMessageBox(props, setModal, container);
 
         return {
           ref,
@@ -323,21 +318,19 @@ export const Modals = {
   },
 
   showToast: (props: ToastPropTypes, container?: HTMLElement): ModalReturnType<ToastDomRef> => {
-    const ref = createRef<ToastDomRef>() as MutableRefObject<ToastDomRef>;
     const setModal = window['@ui5/webcomponents-react']?.setModal;
-    showToast(props, ref, setModal, container);
+    const { ref } = showToast(props, setModal, container);
 
     return {
       ref
     };
   },
   useShowToast: (): ModalHookReturnType<ToastPropTypes, ToastDomRef> => {
-    const ref = useRef<ToastDomRef>();
     const { setModal } = useModalsContext();
 
     return useCallback(
       (props: ToastPropTypes, container?: HTMLElement) => {
-        showToast(props, ref, setModal, container);
+        const { ref } = showToast(props, setModal, container);
         return {
           ref
         };

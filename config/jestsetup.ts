@@ -89,10 +89,8 @@ console.error = (message: string | Error, ...args) => {
   if (typeof message === 'string' && message.includes('Error: Could not parse CSS stylesheet')) {
     return;
   }
-  if (message instanceof Error) {
-    if (message.message && message.message.includes('Error: Could not parse CSS stylesheet')) {
-      return;
-    }
+  if ((message as Error)?.message?.includes('Could not parse CSS stylesheet')) {
+    return;
   }
 
   consoleError(message, ...args);

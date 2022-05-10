@@ -2,13 +2,14 @@ import { ComponentType, ContextType, createContext, Dispatch, useContext } from 
 
 export interface UpdateModalStateAction {
   type: 'set' | 'reset';
-  payload?: ModalState;
+  payload?: ModalState | { id: string };
 }
 
 export interface ModalState {
   Component: ComponentType;
   props: Record<string, any>;
   container: HTMLElement;
+  id: string;
 }
 
 interface IModalsContext {
