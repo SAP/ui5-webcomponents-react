@@ -1,4 +1,5 @@
-import { Context } from 'react';
+import { ComponentType, Context, Dispatch, Ref } from 'react';
+import { UpdateModalStateAction } from './packages/main/src/internal/ModalsContext';
 
 declare global {
   interface Window {
@@ -8,6 +9,8 @@ declare global {
 
     ['@ui5/webcomponents-react']: {
       I18nContext?: Context<any>;
+      ModalsContext?: Context<any>;
+      setModal?: Dispatch<UpdateModalStateAction>;
     };
   }
 }
