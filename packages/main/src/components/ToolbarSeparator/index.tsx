@@ -1,10 +1,9 @@
 import { CssSizeVariables, ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base';
-import { createUseStyles } from 'react-jss';
-import React, { forwardRef, Ref } from 'react';
 import { SEPARATOR } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
-import { CommonProps } from '../../interfaces/CommonProps';
 import clsx from 'clsx';
-import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
+import React, { forwardRef, Ref } from 'react';
+import { createUseStyles } from 'react-jss';
+import { CommonProps } from '../../interfaces/CommonProps';
 
 const styles = {
   separator: {
@@ -20,8 +19,6 @@ export type ToolbarSeparatorPropTypes = CommonProps;
 
 const ToolbarSeparator = forwardRef((props: ToolbarSeparatorPropTypes, ref: Ref<HTMLDivElement>) => {
   const { style, className, ...rest } = props;
-
-  useDeprecationNoticeForTooltip('ToolbarSeparator', props.tooltip);
 
   const classes = useStyles();
   const separatorClasses = clsx(classes.separator, className);

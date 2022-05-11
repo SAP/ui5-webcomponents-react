@@ -1,4 +1,3 @@
-import { useConsolidatedRef } from './useConsolidatedRef';
 import { I18nBundle, useI18nBundle } from './useI18nBundle';
 import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
 import { useIsRTL } from './useIsRTL';
@@ -9,7 +8,6 @@ import { useViewportRange } from './useViewportRange';
 
 export {
   I18nBundle,
-  useConsolidatedRef,
   useI18nBundle,
   useIsomorphicLayoutEffect,
   useIsRTL,

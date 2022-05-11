@@ -20,7 +20,6 @@ import { ChartContainer } from '../../internal/ChartContainer';
 import { ChartDataLabel } from '../../internal/ChartDataLabel';
 import { defaultFormatter } from '../../internal/defaults';
 import { tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
-import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { PieChartPlaceholder } from '../PieChart/Placeholder';
 
 interface MeasureConfig extends IChartMeasure {
@@ -87,14 +86,11 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
     onClick,
     style,
     className,
-    tooltip,
     slot,
     ChartPlaceholder,
     children,
     ...rest
   } = props;
-
-  useDeprecationNoticeForTooltip('RadarChart', props.tooltip);
 
   const chartConfig = {
     legendPosition: 'bottom',
@@ -167,7 +163,6 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
       Placeholder={ChartPlaceholder ?? PieChartPlaceholder}
       style={style}
       className={className}
-      tooltip={tooltip}
       slot={slot}
       resizeDebounce={chartConfig.resizeDebounce}
       {...propsWithoutOmitted}

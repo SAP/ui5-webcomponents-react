@@ -11,7 +11,6 @@ import { IPolarChartConfig } from '../../interfaces/IPolarChartConfig';
 import { ChartContainer } from '../../internal/ChartContainer';
 import { defaultFormatter } from '../../internal/defaults';
 import { tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
-import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { PieChartPlaceholder } from './Placeholder';
 
 interface MeasureConfig extends Omit<IChartMeasure, 'accessor' | 'label' | 'color' | 'hideDataLabel'> {
@@ -88,14 +87,11 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
     centerLabel,
     style,
     className,
-    tooltip,
     slot,
     ChartPlaceholder,
     children,
     ...rest
   } = props;
-
-  useDeprecationNoticeForTooltip('PieChart', props.tooltip);
 
   const chartConfig = {
     margin: { right: 30, left: 30, bottom: 30, top: 30, ...(props.chartConfig?.margin ?? {}) },
@@ -261,7 +257,6 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
       Placeholder={ChartPlaceholder ?? PieChartPlaceholder}
       style={style}
       className={className}
-      tooltip={tooltip}
       slot={slot}
       resizeDebounce={chartConfig.resizeDebounce}
       {...propsWithoutOmitted}

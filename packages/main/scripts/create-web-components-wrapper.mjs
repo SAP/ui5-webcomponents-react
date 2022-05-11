@@ -378,7 +378,6 @@ const createWebComponentDemo = (componentSpec, componentProps, description) => {
   //todo remove after 'react-docgen' can handle this
   args.push(`style: {}`);
   args.push(`className: ''`);
-  args.push(`tooltip: ''`);
   args.push(`slot: ''`);
   args.push(`ref: null`);
   enumImports.push(`import { CSSProperties, Ref } from 'react';`);

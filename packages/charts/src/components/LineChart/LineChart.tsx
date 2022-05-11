@@ -26,7 +26,6 @@ import { ChartContainer } from '../../internal/ChartContainer';
 import { ChartDataLabel } from '../../internal/ChartDataLabel';
 import { defaultFormatter } from '../../internal/defaults';
 import { tickLineConfig, tooltipContentStyle, tooltipFillOpacity, xAxisPadding } from '../../internal/staticProps';
-import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { resolvePrimaryAndSecondaryMeasures } from '../../internal/Utils';
 import { XAxisTicks } from '../../internal/XAxisTicks';
 import { YAxisTicks } from '../../internal/YAxisTicks';
@@ -115,15 +114,12 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     onClick,
     style,
     className,
-    tooltip,
     slot,
     syncId,
     ChartPlaceholder,
     children,
     ...rest
   } = props;
-
-  useDeprecationNoticeForTooltip('LineChart', props.tooltip);
 
   const chartConfig = {
     yAxisVisible: false,
@@ -212,7 +208,6 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
       ref={componentRef}
       style={style}
       className={className}
-      tooltip={tooltip}
       slot={slot}
       resizeDebounce={chartConfig.resizeDebounce}
       {...propsWithoutOmitted}

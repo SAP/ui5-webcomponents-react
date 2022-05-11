@@ -13,7 +13,6 @@ import React, {
 import { createUseStyles } from 'react-jss';
 import { GridPosition } from '../../enums/GridPosition';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { styles } from './Grid.jss';
 
 export interface GridPropTypes extends CommonProps {
@@ -98,21 +97,7 @@ const useStyles = createUseStyles(styles, { name: 'Grid' });
  * A layout container component used for aligning items with various sizes in a simple grid.
  */
 const Grid = forwardRef((props: GridPropTypes, ref: Ref<HTMLDivElement>) => {
-  const {
-    position,
-    children,
-    hSpacing,
-    vSpacing,
-    style,
-    className,
-    tooltip,
-    slot,
-    defaultIndent,
-    defaultSpan,
-    ...rest
-  } = props;
-
-  useDeprecationNoticeForTooltip('Grid', props.tooltip);
+  const { position, children, hSpacing, vSpacing, style, className, slot, defaultIndent, defaultSpan, ...rest } = props;
 
   const classes = useStyles();
   const currentRange = useViewportRange();
@@ -163,7 +148,6 @@ const Grid = forwardRef((props: GridPropTypes, ref: Ref<HTMLDivElement>) => {
       ref={ref}
       className={gridClasses}
       style={{ gridRowGap: vSpacing, gridColumnGap: hSpacing, ...style }}
-      title={tooltip}
       slot={slot}
       {...rest}
     >

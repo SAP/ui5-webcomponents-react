@@ -17,6 +17,12 @@ or the [changelog](https://github.com/SAP/ui5-webcomponents-react/blob/main/CHAN
 
 <TableOfContent headingSelector="h2.sbdocs-h2" />
 
+## Migrating from 0.23.x to 0.24.0
+
+- The deprecated `tooltip` prop has been removed, please use the native `title` attribute instead. (This does not remove the `tooltip` prop of the `Button`, `ToggleButton` or `SegmentedButtonItem`.)
+- The deprecated `useConsolidatedRef` hook has been removed, please use `useSyncRef` instead.
+- The deprecated `StyleClassHelper` class has been removed, please use `clsx` instead or implement your own `className` constructor.
+
 ## Migrating from 0.21.x to 0.22.0
 
 **useI18nBundle:** The `useI18nBundle` hook must now be used in the context of the `ThemeProvider`.

@@ -4,7 +4,6 @@ import React, { CSSProperties, FC, forwardRef, Ref } from 'react';
 import { PolarAngleAxis, RadialBar, RadialBarChart } from 'recharts';
 import { useOnClickInternal } from '../../hooks/useOnClickInternal';
 import { ChartContainer } from '../../internal/ChartContainer';
-import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { PieChartPlaceholder } from '../PieChart/Placeholder';
 
 // todo remove this when recharts export the `CategoricalChartProps` interface themselves
@@ -97,15 +96,12 @@ const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, r
     color,
     style,
     className,
-    tooltip,
     slot,
     noAnimation,
     chartConfig,
     displayValueStyle,
     ...rest
   } = props;
-
-  useDeprecationNoticeForTooltip('RadialChart', props.tooltip);
 
   const range = [0, maxValue];
   const dataset = [{ value }];
@@ -130,7 +126,6 @@ const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, r
       ref={ref}
       Placeholder={PieChartPlaceholder}
       className={className}
-      tooltip={tooltip}
       slot={slot}
       resizeDebounce={250}
       style={style}

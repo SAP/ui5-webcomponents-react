@@ -12,7 +12,6 @@ import { createUseStyles } from 'react-jss';
 import { GlobalStyleClasses } from '../../enums/GlobalStyleClasses';
 import { PageBackgroundDesign } from '../../enums/PageBackgroundDesign';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { useObserveHeights } from '../../internal/useObserveHeights';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
 import { FlexBox } from '../FlexBox';
@@ -93,7 +92,6 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
   const {
     headerTitle,
     headerContent,
-    tooltip,
     style,
     backgroundDesign,
     showHideHeaderButton,
@@ -106,7 +104,6 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
     ...rest
   } = props;
   const { onScroll: _1, ...propsWithoutOmitted } = rest;
-  useDeprecationNoticeForTooltip('DynamicPage', props.tooltip);
 
   const anchorBarRef = useRef<HTMLDivElement>();
   const [componentRef, dynamicPageRef] = useSyncRef<HTMLDivElement>(ref);
@@ -230,7 +227,6 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
   return (
     <div
       ref={componentRef}
-      title={tooltip}
       className={dynamicPageClasses}
       style={dynamicPageStyles}
       onScroll={onDynamicPageScroll}
