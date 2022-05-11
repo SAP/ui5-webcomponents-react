@@ -21,7 +21,6 @@ import React, {
   forwardRef,
   MutableRefObject,
   ReactNode,
-  ReactText,
   Ref,
   RefObject,
   useCallback,
@@ -999,6 +998,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
               rows={rows}
               handleExternalScroll={handleBodyScroll}
               visibleRows={internalVisibleRowCount}
+              dataLength={data?.length}
             >
               <VirtualTableBody
                 classes={classes}

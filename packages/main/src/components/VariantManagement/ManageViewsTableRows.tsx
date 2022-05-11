@@ -34,6 +34,7 @@ interface ManageViewsTableRowsProps extends VariantItemPropTypes {
   showShare: boolean;
   showApplyAutomatically: boolean;
   showSetAsDefault: boolean;
+  showCreatedBy: boolean;
   changedVariantNames: Map<string, any>;
   setChangedVariantNames: (varNames: any) => void;
   setInvalidVariants: (invalidVars: any) => void;
@@ -51,6 +52,7 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
     showShare,
     showApplyAutomatically,
     showSetAsDefault,
+    showCreatedBy,
     labelReadOnly,
     favorite,
     children,
@@ -99,7 +101,7 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
     } else {
       setVariantNameInvalid(false);
       setInvalidVariants((prev) => {
-        let invalidRows = { ...prev };
+        const invalidRows = { ...prev };
         if (prev.hasOwnProperty(children)) {
           delete invalidRows[children];
         }
@@ -108,26 +110,10 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
       handleRowChange(e, { currentVariant: children, children: e.target.value });
     }
     setChangedVariantNames((prev) => {
-      let currentChangedVariants = new Map(prev);
+      const currentChangedVariants = new Map(prev);
       currentChangedVariants.set(children, e.target.value);
       return currentChangedVariants;
     });
-  };
-
-  const handleVariantFocus = () => {
-    const filteredChangedValues = Array.from(changedVariantNames.values()).filter(
-      (item) => item === inputRef.current.value
-    );
-    if (filteredChangedValues.length === 1) {
-      setVariantNameInvalid(false);
-      setInvalidVariants((prev) => {
-        let invalidRows = { ...prev };
-        if (prev.hasOwnProperty(children)) {
-          delete invalidRows[children];
-        }
-        return invalidRows;
-      });
-    }
   };
 
   const handleDefaultChange = () => {
@@ -155,7 +141,6 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
         placeholder={inputPlaceHolder}
         value={children}
         onInput={handleVariantInput}
-        onFocus={handleVariantFocus}
         ref={inputRef}
         valueStateMessage={<div>{variantNameInvalid}</div>}
         valueState={!variantNameInvalid ? ValueState.None : ValueState.Error}
@@ -198,9 +183,11 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
           />
         </TableCell>
       )}
-      <TableCell>
-        <Text>{author}</Text>
-      </TableCell>
+      {showCreatedBy && (
+        <TableCell>
+          <Text>{author}</Text>
+        </TableCell>
+      )}
       <TableCell>
         {!(hideDelete ?? global) && (
           <Button

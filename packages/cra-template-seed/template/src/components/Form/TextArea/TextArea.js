@@ -1,13 +1,14 @@
-import React from 'react';
-
-import { spacing } from '@ui5/webcomponents-react-base';
 import { TextArea as UI5TextArea, ValueState } from '@ui5/webcomponents-react';
+import { spacing } from '@ui5/webcomponents-react-base';
+import React from 'react';
 
 import FieldBase from '../FieldBase/FieldBase';
 
 const TextArea = ({ field, form: { touched, errors }, labelText, rows, style, ...props }) => {
   const errorMsg = touched[field.name] && errors[field.name];
   const errorState = errorMsg ? ValueState.Error : ValueState.None;
+
+  const { onChange, ...formikProps } = field;
 
   return (
     <FieldBase labelText={labelText} required={props.required} for={props.for} showColon={props.showColon}>
@@ -18,7 +19,8 @@ const TextArea = ({ field, form: { touched, errors }, labelText, rows, style, ..
         rows={rows}
         style={style ? style : spacing.sapUiSmallMarginBottom}
         {...props}
-        {...field}
+        {...formikProps}
+        onInput={onChange}
       />
     </FieldBase>
   );
