@@ -11030,24 +11030,6 @@ exports[`AnalyticalTable render without data 1`] = `
 
 exports[`AnalyticalTable resize vertically 1`] = `
 <body>
-  Object {
-    Symbol(SameObject caches): Object {
-      "childNodes": NodeList [
-        <span
-          aria-live="polite"
-          class="ui5-invisiblemessage-polite"
-          role="alert"
-          style="position: absolute; clip: rect(1px, 1px, 1px, 1px); user-select: none; left: -1000px; top: -1000px; pointer-events: none;"
-        />,
-        <span
-          aria-live="assertive"
-          class="ui5-invisiblemessage-assertive"
-          role="alert"
-          style="position: absolute; clip: rect(1px, 1px, 1px, 1px); user-select: none; left: -1000px; top: -1000px; pointer-events: none;"
-        />,
-      ],
-    },
-  }
   <div>
     <div
       style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column; visibility: hidden;"

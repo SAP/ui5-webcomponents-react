@@ -1,5 +1,5 @@
 import { render, RenderOptions, RenderResult } from '@testing-library/react';
-import { ThemeProvider } from '@ui5/webcomponents-react';
+import { ThemeProvider } from '../../packages/main/src/components/ThemeProvider';
 import React, { ReactElement } from 'react';
 import { JssProvider } from 'react-jss';
 
