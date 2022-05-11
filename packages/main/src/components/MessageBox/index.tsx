@@ -223,7 +223,7 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<DialogDomRef
   const iconToRender = getIcon(icon, type);
 
   // @ts-ignore
-  const { footer, headerText, title, onAfterClose, ...restWithoutOmitted } = rest;
+  const { footer, headerText, onAfterClose, ...restWithoutOmitted } = rest;
 
   return (
     <Dialog
@@ -231,7 +231,6 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<DialogDomRef
       slot={slot}
       ref={ref}
       style={style}
-      title={props.title}
       className={messageBoxClassNames}
       onAfterClose={open ? handleOnClose : stopPropagation}
       {...restWithoutOmitted}

@@ -86,7 +86,6 @@ const ResponsiveGridLayout = forwardRef((props: ResponsiveGridLayoutPropTypes, r
     columnSpanXL,
     style,
     className,
-    title,
     ...rest
   } = props;
   const classes = useStyles();
@@ -96,7 +95,6 @@ const ResponsiveGridLayout = forwardRef((props: ResponsiveGridLayoutPropTypes, r
     <div
       ref={ref}
       className={finalClassNames}
-      title={title}
       style={
         {
           gridRowGap: rowGap,
