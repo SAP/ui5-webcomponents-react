@@ -8,7 +8,6 @@ import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { defaultFormatter } from '../../internal/defaults';
-import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { ComposedChart } from '../ComposedChart';
 import { ColumnChartWithTrendPlaceholder } from './Placeholder';
 
@@ -116,7 +115,6 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
       style,
       className,
       slot,
-      tooltip,
       onClick,
       noLegend,
       noAnimation,
@@ -128,8 +126,6 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
     } = props;
 
     const syncId = useRef(getRandomId()).current;
-
-    useDeprecationNoticeForTooltip('ColumnChartWithTrend', props.tooltip);
 
     const chartConfig = {
       yAxisVisible: false,
@@ -191,7 +187,6 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
             dataset={dataset}
             measures={lineMeasures}
             dimensions={dimensions}
-            tooltip={tooltip}
             noLegend
             chartConfig={{
               xAxisVisible: false,
@@ -216,7 +211,6 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
           measures={columnMeasures}
           dimensions={dimensions}
           chartConfig={chartConfig}
-          tooltip={tooltip}
           style={{ ...style, height: `calc(${style?.height} * ${dataset?.length !== 0 ? 0.8 : 1})` }}
           className={
             typeof onDataPointClick === 'function' || typeof onClick === 'function' ? 'has-click-handler' : undefined

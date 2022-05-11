@@ -5,7 +5,6 @@ import { CommonProps } from '../../interfaces/CommonProps';
 import clsx from 'clsx';
 import React, { CSSProperties, forwardRef, RefObject, useEffect, useMemo, useState } from 'react';
 import { createUseStyles } from 'react-jss';
-import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { styles } from './Loader.jss';
 
 export interface LoaderPropTypes extends CommonProps {
@@ -31,9 +30,7 @@ const useStyles = createUseStyles(styles, { name: 'Loader' });
  * It can be used to signal a data update on an already existing dataset, or where an expansion will happen.
  */
 const Loader = forwardRef((props: LoaderPropTypes, ref: RefObject<HTMLDivElement>) => {
-  const { className, type, progress, tooltip, slot, style, delay, ...rest } = props;
-
-  useDeprecationNoticeForTooltip('Loader', props.tooltip);
+  const { className, type, progress, slot, style, delay, ...rest } = props;
 
   const classes = useStyles();
   const [isVisible, setIsVisible] = useState(delay === 0);
@@ -73,7 +70,7 @@ const Loader = forwardRef((props: LoaderPropTypes, ref: RefObject<HTMLDivElement
       data-component-name="Loader"
       aria-busy="true"
       role="progressbar"
-      title={tooltip || i18nBundle.getText(PLEASE_WAIT)}
+      title={i18nBundle.getText(PLEASE_WAIT)}
       slot={slot}
       style={inlineStyles}
       {...rest}

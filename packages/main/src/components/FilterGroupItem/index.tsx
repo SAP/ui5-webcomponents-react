@@ -4,7 +4,6 @@ import React, { forwardRef, ReactElement, RefObject } from 'react';
 import { createUseStyles } from 'react-jss';
 import { BusyIndicatorSize } from '../../enums/BusyIndicatorSize';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { BusyIndicator } from '../../webComponents/BusyIndicator';
 import { Label } from '../../webComponents/Label';
 import { FlexBox } from '../FlexBox';
@@ -75,12 +74,9 @@ export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref:
     style,
     loading,
     className,
-    tooltip,
     slot,
     ...rest
   } = props;
-
-  useDeprecationNoticeForTooltip('FilterGroupItem', props.tooltip);
 
   const inFB = props['data-in-fb'];
   const [componentRef, filterGroupItemRef] = useSyncRef<HTMLDivElement>(ref);
@@ -94,14 +90,7 @@ export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref:
 
   if (!required && (!visible || (inFB && !visibleInFilterBar))) return null;
   return (
-    <div
-      ref={componentRef}
-      title={tooltip}
-      slot={slot}
-      {...rest}
-      className={styleClasses}
-      style={inFB ? inlineStyle : emptyObject}
-    >
+    <div ref={componentRef} slot={slot} {...rest} className={styleClasses} style={inFB ? inlineStyle : emptyObject}>
       <div className={inFB ? classes.innerFilterItemContainer : classes.innerFilterItemContainerDialog}>
         <FlexBox>
           <Label title={labelTooltip ?? label} required={required}>

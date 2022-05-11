@@ -8,7 +8,6 @@ import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { ChartContainer } from '../../internal/ChartContainer';
 import { defaultFormatter } from '../../internal/defaults';
-import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { BarChartPlaceholder } from '../BarChart/Placeholder';
 
 interface MeasureConfig extends Omit<IChartMeasure, 'color'> {
@@ -140,9 +139,7 @@ const useStyles = createUseStyles(MicroBarChartStyles, { name: 'MicroBarChart' }
  * The `MicroBarChart` compares different values of the same category to each other by displaying them in a compact way.
  */
 const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartProps, ref: Ref<HTMLDivElement>) => {
-  const { loading, dataset, onDataPointClick, style, className, tooltip, slot, ChartPlaceholder, ...rest } = props;
-
-  useDeprecationNoticeForTooltip('MicroBarChart', props.tooltip);
+  const { loading, dataset, onDataPointClick, style, className, slot, ChartPlaceholder, ...rest } = props;
 
   const classes = useStyles();
 
@@ -196,7 +193,6 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
       ref={ref}
       style={style}
       className={className}
-      tooltip={tooltip}
       slot={slot}
       resizeDebounce={250}
       {...propsWithoutOmitted}

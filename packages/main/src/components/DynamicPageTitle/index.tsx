@@ -18,7 +18,6 @@ import { ToolbarDesign } from '../../enums/ToolbarDesign';
 import { ToolbarStyle } from '../../enums/ToolbarStyle';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { stopPropagation } from '../../internal/stopPropagation';
-import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { flattenFragments } from '../../internal/utils';
 import { PopoverDomRef } from '../../webComponents';
 import { FlexBox } from '../FlexBox';
@@ -120,12 +119,10 @@ const DynamicPageTitle = forwardRef((props: DynamicPageTitlePropTypes, ref: Ref<
     navigationActions,
     className,
     style,
-    tooltip,
     onToggleHeaderContentVisibility,
     onToolbarOverflowChange,
     ...rest
   } = props as InternalProps;
-  useDeprecationNoticeForTooltip('DynamicPageTitle', props.tooltip);
 
   const classes = useStyles();
   const containerClasses = clsx(classes.container, className, Device.isIE() && classes.iEClass);
@@ -199,7 +196,6 @@ const DynamicPageTitle = forwardRef((props: DynamicPageTitlePropTypes, ref: Ref<
       className={containerClasses}
       style={style}
       ref={componentRef}
-      tooltip={tooltip}
       data-component-name="DynamicPageTitle"
       onClick={onHeaderClick}
       {...propsWithoutOmitted}
