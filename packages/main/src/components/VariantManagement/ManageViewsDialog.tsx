@@ -25,7 +25,7 @@ import { ManageViewsTableRows } from './ManageViewsTableRows';
 import { VariantItemPropTypes } from './VariantItem';
 
 const styles = {
-  ManageViewsDialog: {
+  manageViewsDialog: {
     '&::part(content)': {
       padding: 0
     },
@@ -171,7 +171,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
 
   return createPortal(
     <Dialog
-      className={classes.ManageViewsDialog}
+      className={classes.manageViewsDialog}
       style={{ width: isPhone() || isTablet() ? '100%' : '70vw' }}
       data-component-name="VariantManagementManageViewsDialog"
       ref={manageViewsRef}
