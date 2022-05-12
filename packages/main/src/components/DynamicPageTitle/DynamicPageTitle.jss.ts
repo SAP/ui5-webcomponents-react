@@ -25,6 +25,9 @@ export const DynamicPageTitleStyles = {
       backgroundColor: ThemingParameters.sapObjectHeader_Hover_Background
     }
   },
+  phone: {
+    [DynamicPageCssVariables.titleFontSize]: ThemingParameters.sapObjectHeader_Title_SnappedFontSize
+  },
   iEClass: {
     position: 'fixed',
     // page width - padding - scrollbar
