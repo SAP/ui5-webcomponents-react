@@ -130,7 +130,7 @@ const DynamicPageTitle = forwardRef((props: DynamicPageTitlePropTypes, ref: Ref<
   const isRtl = useIsRTL(dynamicPageTitleRef);
   const isMounted = useRef(false);
   const [isPhone, setIsPhone] = useState(
-    Device.getCurrentRange(dynamicPageTitleRef.current?.getBoundingClientRect().width).name === 'Phone'
+    Device.getCurrentRange(dynamicPageTitleRef.current?.getBoundingClientRect().width)?.name === 'Phone'
   );
   const containerClasses = clsx(
     classes.container,
