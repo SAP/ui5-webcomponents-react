@@ -171,7 +171,7 @@ const DynamicPageTitle = forwardRef((props: DynamicPageTitlePropTypes, ref: Ref<
         : titleContainer.borderBoxSize;
       // Safari doesn't implement `borderBoxSize`
       const titleContainerWidth = borderBoxSize?.inlineSize ?? titleContainer.target.getBoundingClientRect().width;
-      setIsPhone(Device.getCurrentRange(titleContainerWidth).name === 'Phone');
+      setIsPhone(Device.getCurrentRange(titleContainerWidth)?.name === 'Phone');
       if (titleContainerWidth < 1280 && !showNavigationInTopArea === true && isMounted.current) {
         setShowNavigationInTopArea(true);
       } else if (titleContainerWidth >= 1280 && !showNavigationInTopArea === false && isMounted.current) {
