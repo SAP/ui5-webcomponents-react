@@ -68,6 +68,11 @@ const setupMatchMedia = () => {
 };
 
 beforeEach(() => {
+  Object.defineProperty(globalThis, 'crypto', {
+    value: {
+      randomUUID: () => '1'
+    }
+  });
   setupMatchMedia();
   window.ResizeObserver = ResizeObserverPolyfill;
 });
