@@ -125,11 +125,19 @@ const DynamicPageTitle = forwardRef((props: DynamicPageTitlePropTypes, ref: Ref<
   } = props as InternalProps;
 
   const classes = useStyles();
-  const containerClasses = clsx(classes.container, className, Device.isIE() && classes.iEClass);
   const [componentRef, dynamicPageTitleRef] = useSyncRef<HTMLDivElement>(ref);
   const [showNavigationInTopArea, setShowNavigationInTopArea] = useState(undefined);
   const isRtl = useIsRTL(dynamicPageTitleRef);
   const isMounted = useRef(false);
+  const [isPhone, setIsPhone] = useState(
+    Device.getCurrentRange(dynamicPageTitleRef.current?.getBoundingClientRect().width)?.name === 'Phone'
+  );
+  const containerClasses = clsx(
+    classes.container,
+    isPhone && classes.phone,
+    className,
+    Device.isIE() && classes.iEClass
+  );
 
   const actionsOverflowPopoverRef = useRef<PopoverDomRef>(null);
   const navActionsOverflowPopoverRef = useRef<PopoverDomRef>(null);
@@ -163,6 +171,7 @@ const DynamicPageTitle = forwardRef((props: DynamicPageTitlePropTypes, ref: Ref<
         : titleContainer.borderBoxSize;
       // Safari doesn't implement `borderBoxSize`
       const titleContainerWidth = borderBoxSize?.inlineSize ?? titleContainer.target.getBoundingClientRect().width;
+      setIsPhone(Device.getCurrentRange(titleContainerWidth)?.name === 'Phone');
       if (titleContainerWidth < 1280 && !showNavigationInTopArea === true && isMounted.current) {
         setShowNavigationInTopArea(true);
       } else if (titleContainerWidth >= 1280 && !showNavigationInTopArea === false && isMounted.current) {
