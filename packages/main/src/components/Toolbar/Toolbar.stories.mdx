@@ -16,6 +16,8 @@ import {
   ToolbarStyle
 } from '../..';
 import { Toolbar } from './index';
+import { OverflowToolbarButton } from '../OverflowToolbarButton';
+import { OverflowToolbarToggleButton } from '../OverflowToolbarToggleButton';
 
 <Meta
   title="Layouts & Floorplans / Toolbar"
@@ -195,8 +197,8 @@ If the horizontally available space isn't enough to fit all items in it, an over
           <Switch />
           <Button>Button Three</Button>
           <Button>Button Four</Button>
-          <Button>Button Five</Button>
-          <Button>Button Six</Button>
+          <OverflowToolbarButton icon="edit">Edit</OverflowToolbarButton>
+          <OverflowToolbarToggleButton icon="favorite">Favorite</OverflowToolbarToggleButton>
         </Toolbar>
       );
     }}
