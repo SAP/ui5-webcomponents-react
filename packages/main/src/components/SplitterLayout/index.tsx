@@ -66,7 +66,7 @@ export interface SplitterLayoutPropTypes extends CommonProps {
  * can be manipulated when the splitter bar is focused and Left/Down/Right/Up are pressed.
  */
 const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTMLDivElement>) => {
-  const { vertical, children, title, tooltip, style, className, options, ...rest } = props;
+  const { vertical, children, title, style, className, options, ...rest } = props;
   const [componentRef, sLRef] = useSyncRef(ref);
   const [reset, setReset] = useState(undefined);
   const classes = useStyles();
@@ -133,7 +133,7 @@ const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTML
             ...style
           } as CSSProperties
         }
-        title={title ?? tooltip}
+        title={title}
         {...rest}
         className={clsx(classes.splitterLayout, className)}
         ref={componentRef}

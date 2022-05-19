@@ -10,7 +10,6 @@ import { FlexBoxJustifyContent } from '../../enums/FlexBoxJustifyContent';
 import { FlexBoxWrap } from '../../enums/FlexBoxWrap';
 import { ValueState } from '../../enums/ValueState';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { FlexBox } from '../FlexBox';
 import { ObjectStatus } from '../ObjectStatus';
 import styles from './AnalyticalCardHeader.jss';
@@ -96,7 +95,6 @@ export const AnalyticalCardHeader = forwardRef((props: AnalyticalCardHeaderPropT
     valueState,
     onClick,
     showIndicator,
-    tooltip,
     className,
     description,
     counter,
@@ -108,7 +106,6 @@ export const AnalyticalCardHeader = forwardRef((props: AnalyticalCardHeaderPropT
     ...rest
   } = props;
   const classes = useStyles();
-  useDeprecationNoticeForTooltip('AnalyticalCardHeader', props.tooltip);
 
   const indicatorIcon = useMemo(() => {
     const arrowClasses = clsx(
@@ -142,7 +139,7 @@ export const AnalyticalCardHeader = forwardRef((props: AnalyticalCardHeaderPropT
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
   return (
-    <div ref={ref} className={headerClasses} title={tooltip} style={style} {...rest} onClick={onClick}>
+    <div ref={ref} className={headerClasses} style={style} {...rest} onClick={onClick}>
       <div className={classes.headerContent}>
         <div className={classes.headerTitles}>
           <FlexBox justifyContent={FlexBoxJustifyContent.SpaceBetween} wrap={FlexBoxWrap.NoWrap}>
