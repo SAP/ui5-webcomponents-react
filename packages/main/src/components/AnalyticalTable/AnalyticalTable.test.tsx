@@ -652,6 +652,10 @@ describe('AnalyticalTable', () => {
       clientHeight: {
         value: 100,
         configurable: true
+      },
+      offsetHeight: {
+        value: 100,
+        configurable: true
       }
     });
     window.HTMLElement.prototype.getBoundingClientRect = function () {
@@ -673,6 +677,10 @@ describe('AnalyticalTable', () => {
 
     Object.defineProperties(window.HTMLElement.prototype, {
       clientHeight: {
+        value: 1000,
+        configurable: true
+      },
+      offsetHeight: {
         value: 1000,
         configurable: true
       }
@@ -729,6 +737,10 @@ describe('AnalyticalTable', () => {
   test('resize vertically', () => {
     Object.defineProperties(window.HTMLElement.prototype, {
       clientHeight: {
+        value: 0,
+        configurable: true
+      },
+      offsetHeight: {
         value: 0,
         configurable: true
       }
