@@ -648,8 +648,6 @@ describe('AnalyticalTable', () => {
   });
 
   test('render rows', () => {
-    jest.spyOn(global.console, 'warn').mockImplementation();
-    jest.spyOn(global.console, 'error').mockImplementation();
     window.HTMLElement.prototype.getBoundingClientRect = function () {
       return {
         height: 132
@@ -664,7 +662,6 @@ describe('AnalyticalTable', () => {
     );
 
     const tableContainer = screen.getByRole('grid', { hidden: true });
-    console.log(tableContainer.getAttribute('data-per-page'));
 
     // header height cannot be mocked w/o mocking all other elements using `offsetHeight`
     // this causes `data-per-page` to have one more row than expected (the header)
