@@ -3,6 +3,7 @@ import React, { forwardRef, Fragment, MutableRefObject, Ref, useCallback } from 
 import { createUseStyles } from 'react-jss';
 import { useVirtual, VirtualItem } from 'react-virtual';
 import { ColumnHeader } from './index';
+import { useRect } from '../../../internal/useRect';
 
 const styles = {
   resizer: {
@@ -73,7 +74,8 @@ export const ColumnHeaderContainer = forwardRef((props: ColumnHeaderContainerPro
       [visibleColumnsWidth]
     ),
     horizontal: true,
-    overscan: overscanCountHorizontal
+    overscan: overscanCountHorizontal,
+    useObserver: useRect
   });
 
   reactWindowRef.current = {
