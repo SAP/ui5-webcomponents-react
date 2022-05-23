@@ -72,6 +72,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-name"
                   style="right: 0.5rem;"
                 />
               </div>
@@ -111,6 +112,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-age"
                   style="right: 0.5rem;"
                 />
               </div>
@@ -150,6 +152,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-friend.name"
                   style="right: 0.5rem;"
                 />
               </div>
@@ -181,15 +184,12 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
               <div
                 class="TableColumnHeader-header"
               >
-                <span
-                  class="Text-text Text-noWrap TableColumnHeader-text"
-                >
-                  <span>
-                    Friend Age
-                  </span>
+                <span>
+                  Friend Age
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-friend.age"
                   style="right: 0.5rem;"
                 />
               </div>
@@ -556,6 +556,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-name"
                   style="right: 0.5rem;"
                 />
               </div>
@@ -595,6 +596,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-age"
                   style="right: 0.5rem;"
                 />
               </div>
@@ -634,6 +636,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-friend.name"
                   style="right: 0.5rem;"
                 />
               </div>
@@ -665,15 +668,12 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
               <div
                 class="TableColumnHeader-header"
               >
-                <span
-                  class="Text-text Text-noWrap TableColumnHeader-text"
-                >
-                  <span>
-                    Friend Age
-                  </span>
+                <span>
+                  Friend Age
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-friend.age"
                   style="right: 0.5rem;"
                 />
               </div>
@@ -1040,6 +1040,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-name"
                   style="right: 0.5rem;"
                 />
               </div>
@@ -1079,6 +1080,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-age"
                   style="right: 0.5rem;"
                 />
               </div>
@@ -1118,6 +1120,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-friend.name"
                   style="right: 0.5rem;"
                 />
               </div>
@@ -1149,15 +1152,12 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
               <div
                 class="TableColumnHeader-header"
               >
-                <span
-                  class="Text-text Text-noWrap TableColumnHeader-text"
-                >
-                  <span>
-                    Friend Age
-                  </span>
+                <span>
+                  Friend Age
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-friend.age"
                   style="right: 0.5rem;"
                 />
               </div>
@@ -1465,6 +1465,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
+                    data-component-name="AnalyticalTableHeaderIconsContainer-name"
                     style="left: 0.5rem;"
                   />
                 </div>
@@ -1504,6 +1505,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
+                    data-component-name="AnalyticalTableHeaderIconsContainer-age"
                     style="left: 0.5rem;"
                   />
                 </div>
@@ -1543,6 +1545,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
+                    data-component-name="AnalyticalTableHeaderIconsContainer-friend.name"
                     style="left: 0.5rem;"
                   />
                 </div>
@@ -1574,15 +1577,12 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                 <div
                   class="TableColumnHeader-header"
                 >
-                  <span
-                    class="Text-text Text-noWrap TableColumnHeader-text"
-                  >
-                    <span>
-                      Friend Age
-                    </span>
+                  <span>
+                    Friend Age
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
+                    data-component-name="AnalyticalTableHeaderIconsContainer-friend.age"
                     style="left: 0.5rem;"
                   />
                 </div>
@@ -1607,15 +1607,12 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                 <div
                   class="TableColumnHeader-header"
                 >
-                  <span
-                    class="Text-text Text-noWrap TableColumnHeader-text"
-                  >
-                    <div
-                      style="width: 6px;"
-                    />
-                  </span>
+                  <div
+                    style="width: 6px;"
+                  />
                   <div
                     class="TableColumnHeader-iconContainer"
+                    data-component-name="AnalyticalTableHeaderIconsContainer-__ui5wcr__internal_navigation_column"
                     style="left: 0.5rem;"
                   />
                 </div>
@@ -1902,6 +1899,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
+                    data-component-name="AnalyticalTableHeaderIconsContainer-name"
                     style="left: 0.5rem;"
                   />
                 </div>
@@ -2264,6 +2262,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
+                    data-component-name="AnalyticalTableHeaderIconsContainer-name"
                     style="left: 0.5rem;"
                   />
                 </div>
@@ -2303,6 +2302,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
+                    data-component-name="AnalyticalTableHeaderIconsContainer-age"
                     style="left: 0.5rem;"
                   />
                 </div>
@@ -2735,6 +2735,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
+                    data-component-name="AnalyticalTableHeaderIconsContainer-name"
                     style="left: 0.5rem;"
                   />
                 </div>
@@ -2774,6 +2775,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
+                    data-component-name="AnalyticalTableHeaderIconsContainer-age"
                     style="left: 0.5rem;"
                   />
                 </div>
@@ -2813,6 +2815,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
+                    data-component-name="AnalyticalTableHeaderIconsContainer-friend.name"
                     style="left: 0.5rem;"
                   />
                 </div>
@@ -2844,15 +2847,12 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                 <div
                   class="TableColumnHeader-header"
                 >
-                  <span
-                    class="Text-text Text-noWrap TableColumnHeader-text"
-                  >
-                    <span>
-                      Friend Age
-                    </span>
+                  <span>
+                    Friend Age
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
+                    data-component-name="AnalyticalTableHeaderIconsContainer-friend.age"
                     style="left: 0.5rem;"
                   />
                 </div>
@@ -3208,15 +3208,12 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                 <div
                   class="TableColumnHeader-header"
                 >
-                  <span
-                    class="Text-text Text-noWrap TableColumnHeader-text"
-                  >
-                    <div
-                      style="width: 6px;"
-                    />
-                  </span>
+                  <div
+                    style="width: 6px;"
+                  />
                   <div
                     class="TableColumnHeader-iconContainer"
+                    data-component-name="AnalyticalTableHeaderIconsContainer-__ui5wcr__internal_highlight_column"
                     style="left: 0.5rem;"
                   />
                 </div>
@@ -3241,11 +3238,9 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                 <div
                   class="TableColumnHeader-header"
                 >
-                  <span
-                    class="Text-text Text-noWrap TableColumnHeader-text"
-                  />
                   <div
                     class="TableColumnHeader-iconContainer"
+                    data-component-name="AnalyticalTableHeaderIconsContainer-__ui5wcr__internal_selection_column"
                     style="left: 0.5rem;"
                   />
                 </div>
@@ -3285,6 +3280,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
+                    data-component-name="AnalyticalTableHeaderIconsContainer-name"
                     style="left: 0.5rem;"
                   />
                 </div>
@@ -3324,6 +3320,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
+                    data-component-name="AnalyticalTableHeaderIconsContainer-age"
                     style="left: 0.5rem;"
                   />
                 </div>
@@ -3363,6 +3360,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
+                    data-component-name="AnalyticalTableHeaderIconsContainer-friend.name"
                     style="left: 0.5rem;"
                   />
                 </div>
@@ -3394,15 +3392,12 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                 <div
                   class="TableColumnHeader-header"
                 >
-                  <span
-                    class="Text-text Text-noWrap TableColumnHeader-text"
-                  >
-                    <span>
-                      Friend Age
-                    </span>
+                  <span>
+                    Friend Age
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
+                    data-component-name="AnalyticalTableHeaderIconsContainer-friend.age"
                     style="left: 0.5rem;"
                   />
                 </div>
@@ -3748,6 +3743,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
+                    data-component-name="AnalyticalTableHeaderIconsContainer-age"
                     style="left: 0.5rem;"
                   />
                 </div>
@@ -3779,15 +3775,12 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                 <div
                   class="TableColumnHeader-header"
                 >
-                  <span
-                    class="Text-text Text-noWrap TableColumnHeader-text"
-                  >
-                    <span>
-                      Friend Age
-                    </span>
+                  <span>
+                    Friend Age
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
+                    data-component-name="AnalyticalTableHeaderIconsContainer-friend.age"
                     style="left: 0.5rem;"
                   />
                 </div>
@@ -3827,6 +3820,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
+                    data-component-name="AnalyticalTableHeaderIconsContainer-friend.name"
                     style="left: 0.5rem;"
                   />
                 </div>
@@ -3866,6 +3860,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
+                    data-component-name="AnalyticalTableHeaderIconsContainer-name"
                     style="left: 0.5rem;"
                   />
                 </div>
@@ -4218,19 +4213,16 @@ exports[`AnalyticalTable Tree Table 1`] = `
               <div
                 class="TableColumnHeader-header"
               >
-                <span
-                  class="Text-text Text-noWrap TableColumnHeader-text"
-                >
-                  <ui5-checkbox
-                    style="cursor: pointer; vertical-align: middle;"
-                    tabindex="-1"
-                    title="Toggle All Rows Selected"
-                    ui5-checkbox=""
-                    value-state="None"
-                  />
-                </span>
+                <ui5-checkbox
+                  style="cursor: pointer; vertical-align: middle;"
+                  tabindex="-1"
+                  title="Toggle All Rows Selected"
+                  ui5-checkbox=""
+                  value-state="None"
+                />
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-__ui5wcr__internal_selection_column"
                   style="right: 0.5rem;"
                 />
               </div>
@@ -4270,6 +4262,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-name"
                   style="right: 0.5rem;"
                 />
               </div>
@@ -4309,6 +4302,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-age"
                   style="right: 0.5rem;"
                 />
               </div>
@@ -4348,6 +4342,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-friend.name"
                   style="right: 0.5rem;"
                 />
               </div>
@@ -4379,15 +4374,12 @@ exports[`AnalyticalTable Tree Table 1`] = `
               <div
                 class="TableColumnHeader-header"
               >
-                <span
-                  class="Text-text Text-noWrap TableColumnHeader-text"
-                >
-                  <span>
-                    Friend Age
-                  </span>
+                <span>
+                  Friend Age
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-friend.age"
                   style="right: 0.5rem;"
                 />
               </div>
@@ -4898,6 +4890,7 @@ exports[`AnalyticalTable custom row height 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-name"
                   style="right: 0.5rem;"
                 />
               </div>
@@ -4937,6 +4930,7 @@ exports[`AnalyticalTable custom row height 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-age"
                   style="right: 0.5rem;"
                 />
               </div>
@@ -4976,6 +4970,7 @@ exports[`AnalyticalTable custom row height 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-friend.name"
                   style="right: 0.5rem;"
                 />
               </div>
@@ -5007,15 +5002,12 @@ exports[`AnalyticalTable custom row height 1`] = `
               <div
                 class="TableColumnHeader-header"
               >
-                <span
-                  class="Text-text Text-noWrap TableColumnHeader-text"
-                >
-                  <span>
-                    Friend Age
-                  </span>
+                <span>
+                  Friend Age
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-friend.age"
                   style="right: 0.5rem;"
                 />
               </div>
@@ -5371,6 +5363,7 @@ exports[`AnalyticalTable expose table instance 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-name"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -5410,6 +5403,7 @@ exports[`AnalyticalTable expose table instance 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-friend.name"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -5441,15 +5435,12 @@ exports[`AnalyticalTable expose table instance 1`] = `
               <div
                 class="TableColumnHeader-header"
               >
-                <span
-                  class="Text-text Text-noWrap TableColumnHeader-text"
-                >
-                  <span>
-                    Friend Age
-                  </span>
+                <span>
+                  Friend Age
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-friend.age"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -5731,11 +5722,9 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               <div
                 class="TableColumnHeader-header"
               >
-                <span
-                  class="Text-text Text-noWrap TableColumnHeader-text"
-                />
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-__ui5wcr__internal_selection_column"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -5775,6 +5764,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-name"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -5814,6 +5804,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-age"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -5853,6 +5844,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-friend.name"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -5884,15 +5876,12 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               <div
                 class="TableColumnHeader-header"
               >
-                <span
-                  class="Text-text Text-noWrap TableColumnHeader-text"
-                >
-                  <span>
-                    Friend Age
-                  </span>
+                <span>
+                  Friend Age
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-friend.age"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -6354,6 +6343,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-name"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -6393,6 +6383,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-age"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -6432,6 +6423,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-friend.name"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -6463,15 +6455,12 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
               <div
                 class="TableColumnHeader-header"
               >
-                <span
-                  class="Text-text Text-noWrap TableColumnHeader-text"
-                >
-                  <span>
-                    Friend Age
-                  </span>
+                <span>
+                  Friend Age
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-friend.age"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -6496,15 +6485,12 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
               <div
                 class="TableColumnHeader-header"
               >
-                <span
-                  class="Text-text Text-noWrap TableColumnHeader-text"
-                >
-                  <div
-                    style="width: 6px;"
-                  />
-                </span>
+                <div
+                  style="width: 6px;"
+                />
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-__ui5wcr__internal_navigation_column"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -6772,21 +6758,18 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               <div
                 class="TableColumnHeader-header"
               >
-                <span
-                  class="Text-text Text-noWrap TableColumnHeader-text"
-                >
-                  <ui5-checkbox
-                    checked="true"
-                    indeterminate="true"
-                    style="cursor: pointer; vertical-align: middle;"
-                    tabindex="-1"
-                    title="Toggle All Rows Selected"
-                    ui5-checkbox=""
-                    value-state="None"
-                  />
-                </span>
+                <ui5-checkbox
+                  checked="true"
+                  indeterminate="true"
+                  style="cursor: pointer; vertical-align: middle;"
+                  tabindex="-1"
+                  title="Toggle All Rows Selected"
+                  ui5-checkbox=""
+                  value-state="None"
+                />
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-__ui5wcr__internal_selection_column"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -6826,6 +6809,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-name"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -6865,6 +6849,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-age"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -6904,6 +6889,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-friend.name"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -6935,15 +6921,12 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               <div
                 class="TableColumnHeader-header"
               >
-                <span
-                  class="Text-text Text-noWrap TableColumnHeader-text"
-                >
-                  <span>
-                    Friend Age
-                  </span>
+                <span>
+                  Friend Age
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-friend.age"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -8239,11 +8222,9 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
               <div
                 class="TableColumnHeader-header"
               >
-                <span
-                  class="Text-text Text-noWrap TableColumnHeader-text"
-                />
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-__ui5wcr__internal_selection_column"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -8283,6 +8264,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-name"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -8322,6 +8304,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-age"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -8361,6 +8344,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-friend.name"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -8392,15 +8376,12 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
               <div
                 class="TableColumnHeader-header"
               >
-                <span
-                  class="Text-text Text-noWrap TableColumnHeader-text"
-                >
-                  <span>
-                    Friend Age
-                  </span>
+                <span>
+                  Friend Age
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-friend.age"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -8705,6 +8686,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins & hidden column 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-name"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -9063,6 +9045,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-name"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -9102,6 +9085,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-age"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -9519,6 +9503,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 2`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-name"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -9558,6 +9543,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 2`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-age"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -9955,6 +9941,7 @@ exports[`AnalyticalTable render custom Cell & Header 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-name"
                   style="right: 0.5rem;"
                 />
               </div>
@@ -9994,6 +9981,7 @@ exports[`AnalyticalTable render custom Cell & Header 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-age"
                   style="right: 0.5rem;"
                 />
               </div>
@@ -10025,18 +10013,15 @@ exports[`AnalyticalTable render custom Cell & Header 1`] = `
               <div
                 class="TableColumnHeader-header"
               >
-                <span
-                  class="Text-text Text-noWrap TableColumnHeader-text"
+                <ui5-button
+                  design="Default"
+                  ui5-button=""
                 >
-                  <ui5-button
-                    design="Default"
-                    ui5-button=""
-                  >
-                    Custom Header Button
-                  </ui5-button>
-                </span>
+                  Custom Header Button
+                </ui5-button>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-friend.name"
                   style="right: 0.5rem;"
                 />
               </div>
@@ -10333,6 +10318,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-name"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -10372,6 +10358,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-age"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -10411,6 +10398,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-friend.name"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -10442,15 +10430,12 @@ exports[`AnalyticalTable render subcomponents 1`] = `
               <div
                 class="TableColumnHeader-header"
               >
-                <span
-                  class="Text-text Text-noWrap TableColumnHeader-text"
-                >
-                  <span>
-                    Friend Age
-                  </span>
+                <span>
+                  Friend Age
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-friend.age"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -10892,6 +10877,7 @@ exports[`AnalyticalTable render without data 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-name"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -10931,6 +10917,7 @@ exports[`AnalyticalTable render without data 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-age"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -10970,6 +10957,7 @@ exports[`AnalyticalTable render without data 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-friend.name"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -11001,15 +10989,12 @@ exports[`AnalyticalTable render without data 1`] = `
               <div
                 class="TableColumnHeader-header"
               >
-                <span
-                  class="Text-text Text-noWrap TableColumnHeader-text"
-                >
-                  <span>
-                    Friend Age
-                  </span>
+                <span>
+                  Friend Age
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-friend.age"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -11090,6 +11075,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
+                    data-component-name="AnalyticalTableHeaderIconsContainer-name"
                     style="left: 0.5rem;"
                   />
                 </div>
@@ -11129,6 +11115,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
+                    data-component-name="AnalyticalTableHeaderIconsContainer-age"
                     style="left: 0.5rem;"
                   />
                 </div>
@@ -11168,6 +11155,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
+                    data-component-name="AnalyticalTableHeaderIconsContainer-friend.name"
                     style="left: 0.5rem;"
                   />
                 </div>
@@ -11199,15 +11187,12 @@ exports[`AnalyticalTable resize vertically 1`] = `
                 <div
                   class="TableColumnHeader-header"
                 >
-                  <span
-                    class="Text-text Text-noWrap TableColumnHeader-text"
-                  >
-                    <span>
-                      Friend Age
-                    </span>
+                  <span>
+                    Friend Age
                   </span>
                   <div
                     class="TableColumnHeader-iconContainer"
+                    data-component-name="AnalyticalTableHeaderIconsContainer-friend.age"
                     style="left: 0.5rem;"
                   />
                 </div>
@@ -13219,6 +13204,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-name"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -13258,6 +13244,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-age"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -13297,6 +13284,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-friend.name"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -13328,15 +13316,12 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
               <div
                 class="TableColumnHeader-header"
               >
-                <span
-                  class="Text-text Text-noWrap TableColumnHeader-text"
-                >
-                  <span>
-                    Friend Age
-                  </span>
+                <span>
+                  Friend Age
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-friend.age"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -13688,15 +13673,12 @@ exports[`AnalyticalTable with highlight row 1`] = `
               <div
                 class="TableColumnHeader-header"
               >
-                <span
-                  class="Text-text Text-noWrap TableColumnHeader-text"
-                >
-                  <div
-                    style="width: 6px;"
-                  />
-                </span>
+                <div
+                  style="width: 6px;"
+                />
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-__ui5wcr__internal_highlight_column"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -13721,11 +13703,9 @@ exports[`AnalyticalTable with highlight row 1`] = `
               <div
                 class="TableColumnHeader-header"
               >
-                <span
-                  class="Text-text Text-noWrap TableColumnHeader-text"
-                />
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-__ui5wcr__internal_selection_column"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -13765,6 +13745,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-name"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -13804,6 +13785,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-age"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -13843,6 +13825,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-friend.name"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -13874,15 +13857,12 @@ exports[`AnalyticalTable with highlight row 1`] = `
               <div
                 class="TableColumnHeader-header"
               >
-                <span
-                  class="Text-text Text-noWrap TableColumnHeader-text"
-                >
-                  <span>
-                    Friend Age
-                  </span>
+                <span>
+                  Friend Age
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-friend.age"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -14224,6 +14204,7 @@ exports[`AnalyticalTable with initial column order 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-age"
                   style="right: 0.5rem;"
                 />
               </div>
@@ -14255,15 +14236,12 @@ exports[`AnalyticalTable with initial column order 1`] = `
               <div
                 class="TableColumnHeader-header"
               >
-                <span
-                  class="Text-text Text-noWrap TableColumnHeader-text"
-                >
-                  <span>
-                    Friend Age
-                  </span>
+                <span>
+                  Friend Age
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-friend.age"
                   style="right: 0.5rem;"
                 />
               </div>
@@ -14303,6 +14281,7 @@ exports[`AnalyticalTable with initial column order 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-friend.name"
                   style="right: 0.5rem;"
                 />
               </div>
@@ -14342,6 +14321,7 @@ exports[`AnalyticalTable with initial column order 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-name"
                   style="right: 0.5rem;"
                 />
               </div>
@@ -14708,6 +14688,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-name"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -14747,6 +14728,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-age"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -14786,6 +14768,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-friend.name"
                   style="left: 0.5rem;"
                 />
               </div>
@@ -14817,15 +14800,12 @@ exports[`AnalyticalTable without selection Column 1`] = `
               <div
                 class="TableColumnHeader-header"
               >
-                <span
-                  class="Text-text Text-noWrap TableColumnHeader-text"
-                >
-                  <span>
-                    Friend Age
-                  </span>
+                <span>
+                  Friend Age
                 </span>
                 <div
                   class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-friend.age"
                   style="left: 0.5rem;"
                 />
               </div>
