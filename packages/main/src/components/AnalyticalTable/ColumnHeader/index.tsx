@@ -222,7 +222,11 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
           <Text title={tooltip} wrapping={false} style={textStyle} className={classes.text}>
             {children}
           </Text>
-          <div className={classes.iconContainer} style={iconContainerDirectionStyles}>
+          <div
+            className={classes.iconContainer}
+            style={iconContainerDirectionStyles}
+            data-component-name={`AnalyticalTableHeaderIconsContainer-${id}`}
+          >
             {isFiltered && <Icon name="filter" />}
             {column.isSorted && <Icon name={column.isSortedDesc ? 'sort-descending' : 'sort-ascending'} />}
             {column.isGrouped && <Icon name="group-2" />}
